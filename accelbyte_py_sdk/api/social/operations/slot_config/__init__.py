@@ -1,0 +1,8 @@
+# pylint: disable=line-too-long
+
+from .get_namespace_slot_config import GetNamespaceSlotConfig
+from .update_namespace_slot_config import UpdateNamespaceSlotConfig
+from .delete_namespace_slot_config import DeleteNamespaceSlotConfig
+from .get_user_slot_config import GetUserSlotConfig
+from .update_user_slot_config import UpdateUserSlotConfig
+from .delete_user_slot_config import DeleteUserSlotConfig
