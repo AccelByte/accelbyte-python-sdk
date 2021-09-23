@@ -600,6 +600,7 @@ Commands:
   create-client
   create-role
   create-role-permission
+  create-stat
   delete-client
   delete-client-permission
   delete-role
@@ -608,6 +609,7 @@ Commands:
   delete-role-members
   delete-role-permission
   delete-role-permissions
+  delete-stat
   delete-user
   delete-user-permission
   delete-user-permissions
@@ -626,6 +628,8 @@ Commands:
   get-role-managers
   get-role-members
   get-search-user
+  get-stat
+  get-stats
   get-user-bans
   get-user-by-user-id
   get-user-roles
@@ -634,12 +638,14 @@ Commands:
   login
   login-client
   logout
+  query-stats
   register-user
   send-verification-code
   set-role-as-admin
   update-client
   update-client-permissions
   update-role
+  update-stat
   update-user
   update-user-ban
   update-user-permissions
