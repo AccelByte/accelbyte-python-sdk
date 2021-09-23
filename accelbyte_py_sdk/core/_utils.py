@@ -75,14 +75,14 @@ def infer_headers_from_operation(operation, existing: Union[None, dict] = None) 
     result = existing if existing is not None else {}
 
     if "Accept" not in result:
-        if operation.produces is not None:
+        if operation.produces is not None and len(operation.produces) > 0:
             accept = operation.produces[0]
         else:
             accept = "application/json"
         result["Accept"] = accept
 
     if "Content-Type" not in result:
-        if operation.consumes is not None:
+        if operation.consumes is not None and len(operation.consumes) > 0:
             content_type = operation.consumes[0]
         else:
             params = operation.get_all_params()
