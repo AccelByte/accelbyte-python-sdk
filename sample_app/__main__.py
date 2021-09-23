@@ -9,6 +9,7 @@ from ._add_user_role import add_user_role
 from ._create_client import create_client
 from ._create_role import create_role
 from ._create_role_permission import create_role_permission
+from ._create_stat import create_stat
 from ._delete_client import delete_client
 from ._delete_client_permission import delete_client_permission
 from ._delete_role import delete_role
@@ -17,6 +18,7 @@ from ._delete_role_managers import delete_role_managers
 from ._delete_role_members import delete_role_members
 from ._delete_role_permission import delete_role_permission
 from ._delete_role_permissions import delete_role_permissions
+from ._delete_stat import delete_stat
 from ._delete_user import delete_user
 from ._delete_user_permission import delete_user_permission
 from ._delete_user_permissions import delete_user_permissions
@@ -37,18 +39,22 @@ from ._get_role_by_id import get_role_by_id
 from ._get_role_managers import get_role_managers
 from ._get_role_members import get_role_members
 from ._get_search_user import get_search_user
+from ._get_stat import get_stat
+from ._get_stats import get_stats
 from ._get_user_bans import get_user_bans
 from ._get_user_roles import get_user_roles
 from ._get_verification_code import get_verification_code
 from ._login import login
 from ._login_client import login_client
 from ._logout import logout
+from ._query_stats import query_stats
 from ._register_user import register_user
 from ._set_role_as_admin import set_role_as_admin
 from ._send_verification_code import send_verification_code
 from ._update_client import update_client
 from ._update_client_permissions import update_client_permissions
 from ._update_role import update_role
+from ._update_stat import update_stat
 from ._update_user import update_user
 from ._update_user_ban import update_user_ban
 from ._update_user_permissions import update_user_permissions
@@ -74,6 +80,7 @@ entry_point.add_command(add_user_role)
 entry_point.add_command(create_client)
 entry_point.add_command(create_role)
 entry_point.add_command(create_role_permission)
+entry_point.add_command(create_stat)
 entry_point.add_command(delete_client)
 entry_point.add_command(delete_client_permission)
 entry_point.add_command(delete_role)
@@ -82,6 +89,7 @@ entry_point.add_command(delete_role_managers)
 entry_point.add_command(delete_role_members)
 entry_point.add_command(delete_role_permission)
 entry_point.add_command(delete_role_permissions)
+entry_point.add_command(delete_stat)
 entry_point.add_command(delete_user)
 entry_point.add_command(delete_user_permission)
 entry_point.add_command(delete_user_permissions)
@@ -102,18 +110,22 @@ entry_point.add_command(get_role_by_id)
 entry_point.add_command(get_role_managers)
 entry_point.add_command(get_role_members)
 entry_point.add_command(get_search_user)
+entry_point.add_command(get_stat)
+entry_point.add_command(get_stats)
 entry_point.add_command(get_user_bans)
 entry_point.add_command(get_user_roles)
 entry_point.add_command(get_verification_code)
 entry_point.add_command(login)
 entry_point.add_command(login_client)
 entry_point.add_command(logout)
+entry_point.add_command(query_stats)
 entry_point.add_command(register_user)
 entry_point.add_command(set_role_as_admin)
 entry_point.add_command(send_verification_code)
 entry_point.add_command(update_client)
 entry_point.add_command(update_client_permissions)
 entry_point.add_command(update_role)
+entry_point.add_command(update_stat)
 entry_point.add_command(update_user)
 entry_point.add_command(update_user_ban)
 entry_point.add_command(update_user_permissions)
