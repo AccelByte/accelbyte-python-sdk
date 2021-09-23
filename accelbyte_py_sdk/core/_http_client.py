@@ -1,3 +1,4 @@
+import json
 from abc import ABC, abstractmethod
 from typing import Any, Tuple, Union
 
@@ -83,13 +84,19 @@ class RequestsHttpClient(HttpClient):
 
         body_params = operation.get_body_params()
         form_data_params = operation.get_form_data_params()
-        data = body_params if body_params else form_data_params
+
+        if body_params:
+            files, data, json_ = None, json.dumps(body_params), None
+        else:
+            files, data, json_ = None, form_data_params, None
 
         prepared_request = requests.Request(
             method=operation.method,
             url=operation.get_full_url(base_url=base_url),
             headers=headers,
-            data=data
+            files=files,
+            data=data,
+            json=json_,
         ).prepare()
 
         return prepared_request, None
