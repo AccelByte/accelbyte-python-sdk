@@ -567,3 +567,251 @@ if __name__ == "__main__":
 
     print(f"Hello there {user_profile_info.first_name}!")
 ```
+
+## Sample App
+
+The SDK also comes with a sample app.
+
+To install follow these commands:
+
+```sh
+$ python -m venv venv-sample
+$ source venv-sample/bin/activate
+$ pip install -r requirements-sample.txt
+
+$ python -m sample_app --help
+```
+
+The last command should output this:
+
+```sh
+Usage: python -m sample_app [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  add-client-permissions
+  add-role-managers
+  add-role-members
+  add-user-ban
+  add-user-permissions
+  add-user-role
+  create-client
+  create-role
+  create-role-permission
+  delete-client
+  delete-client-permission
+  delete-role
+  delete-role-as-admin
+  delete-role-managers
+  delete-role-members
+  delete-role-permission
+  delete-role-permissions
+  delete-user
+  delete-user-permission
+  delete-user-permissions
+  delete-user-role
+  delete-user-roles
+  get-ban-reasons
+  get-ban-types
+  get-ban-types-with-namespace
+  get-banned-users
+  get-clients-by-namespace
+  get-clients-by-namespace-by-id
+  get-my-admin-user
+  get-my-public-user
+  get-public-user-by-id
+  get-role-by-id
+  get-role-managers
+  get-role-members
+  get-search-user
+  get-user-bans
+  get-user-by-user-id
+  get-user-roles
+  get-users-by-email-addresses
+  get-verification-code
+  login
+  login-client
+  logout
+  register-user
+  send-verification-code
+  set-role-as-admin
+  update-client
+  update-client-permissions
+  update-role
+  update-user
+  update-user-ban
+  update-user-permissions
+  update-user-roles
+  verify-account
+  verify-code
+  verify-user
+```
+
+You can get more information for each command by using this syntax:
+
+```sh
+$ python -m sample_app COMMAND --help
+```
+
+### Examples
+
+```sh
+Usage: python -m sample_app login [OPTIONS] USERNAME PASSWORD
+
+Options:
+  --doc BOOLEAN
+  --help         Show this message and exit.
+
+$ python -m sample_app login USERNAME PASSWORD
+
+Login success.
+```
+
+```sh
+Usage: python -m sample_app login-client [OPTIONS]
+
+Options:
+  --doc BOOLEAN
+  --help         Show this message and exit.
+
+$ python -m sample_app login-client --doc true
+
+OAuth2 access token generation endpoint (TokenGrantV3)
+
+    Properties:
+        url: /iam/v3/oauth/token
+
+        method: POST
+
+        tags: OAuth2.0
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        security: basic
+
+        device_id: (device_id) OPTIONAL str in header
+
+        grant_type: (grant_type) REQUIRED str in form_data
+
+        code: (code) OPTIONAL str in form_data
+
+        code_verifier: (code_verifier) OPTIONAL str in form_data
+
+        client_id: (client_id) OPTIONAL str in form_data
+
+        redirect_uri: (redirect_uri) OPTIONAL str in form_data
+
+        refresh_token: (refresh_token) OPTIONAL str in form_data
+
+    Responses:
+        200: OK - OauthmodelTokenResponseV3 (Token returned)
+
+        400: Bad Request - OauthmodelErrorResponse (InvalidRequest)
+
+        401: Unauthorized - OauthmodelErrorResponse (Client authentication failed)
+
+        403: Forbidden - OauthmodelErrorResponse (Unauthorized access)
+
+Login success.
+```
+
+```sh
+Usage: python -m sample_app get-ban-types [OPTIONS]
+
+Options:
+  --doc BOOLEAN
+  --help         Show this message and exit.
+
+$ python -m sample_app get-ban-types
+
+Get ban types success.
+Ban Types: CHAT_SEND, CHAT_ALL, VOICE_SEND, VOICE_ALL, COMMUNITY, TRADE_INITIATE, TRADE_ALL, ORDER_AND_PAYMENT, MARKETPLACE_LIST, MARKETPLACE_ALL, LOGIN, STATISTICS, MATCHMAKING, UGC_CREATE_UPDATE
+```
+
+```sh
+Usage: python -m sample_app register-user [OPTIONS] DISPLAY_NAME EMAIL_ADDRESS
+                                          DATE_OF_BIRTH COUNTRY PASSWORD
+
+Options:
+  --namespace TEXT
+  --role_id TEXT
+  --doc BOOLEAN
+  --help            Show this message and exit.
+
+$ python -m sample_app register-user eagerhamster6800 vi7xUuNc4j@fakemail.com 2000-09-23 US "****************"
+
+User registration success.
+authType: EMAILPASSWD
+country: US
+dateOfBirth: '2000-09-23T00:00:00Z'
+displayName: eagerhamster6800
+emailAddress: vi7xuunc4j@fakemail.com
+namespace: *******
+userId: ********************************
+```
+
+```sh
+Usage: python -m sample_app get-my-admin-user [OPTIONS]
+
+Options:
+  --doc BOOLEAN
+  --help         Show this message and exit.
+
+$ python -m sample_app get-my-admin-user
+
+Get my admin user success.
+...
+userId: ********************************
+userName: ************
+```
+
+```sh
+Usage: python -m sample_app update-client [OPTIONS] CLIENT_ID
+                                          CLIENT_UPDATE_REQUEST
+
+Options:
+  --namespace TEXT
+  --doc BOOLEAN
+  --help            Show this message and exit.
+
+$ python -m sample_app update-client ******************************** {"clientName": "**********"}
+
+Update client success.
+clientId: ********************************
+clientName: **********
+clientPermissions:
+- action: 2
+  resource: CLIENT
+createdAt: '2020-09-23T00:00:00.000000Z'
+modifiedAt: '2021-09-23T00:00:30.000000Z'
+namespace: *******
+oauthClientType: Confidential
+redirectUri: http://127.0.0.1
+scopes:
+- account
+```
+
+```sh
+Usage: python -m sample_app update-user [OPTIONS] USER_ID
+
+Options:
+  --country TEXT
+  --date_of_birth TEXT
+  --display_name TEXT
+  --language_tag TEXT
+  --user_name TEXT
+  --namespace TEXT
+  --doc BOOLEAN
+  --help                Show this message and exit.
+
+$ python -m sample_app update-user ******************************** --date_of_birth 2000-09-23
+
+Update user success.
+...
+dateOfBirth: '2000-09-23T00:00:00Z'
+lastDateOfBirthChangedTime: '2021-09-23T07:00:00.000000Z'
+```
