@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:38.639571+08:00
+# Auto-generated at 2021-09-24T09:01:00.690426+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -23,8 +23,6 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
-
-from ..models.hierarchical_category_info import HierarchicalCategoryInfo
 
 
 class HierarchicalCategoryInfo(Model):
