@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:39.876678+08:00
+# Auto-generated at 2021-09-27T17:12:37.839881+08:00
 # from: Justice Group Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -72,6 +72,8 @@ class ModelsUpdateGroupCustomAttributesRequestV1(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsUpdateGroupCustomAttributesRequestV1:
         instance = cls()
+        if not dict_:
+            return instance
         if "customAttributes" in dict_ and dict_["customAttributes"] is not None:
             instance.custom_attributes = {str(k0): v0 for k0, v0 in dict_["customAttributes"].items()}
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:38.649919+08:00
+# Auto-generated at 2021-09-27T17:12:36.168315+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -72,6 +72,8 @@ class ItemId(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ItemId:
         instance = cls()
+        if not dict_:
+            return instance
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:

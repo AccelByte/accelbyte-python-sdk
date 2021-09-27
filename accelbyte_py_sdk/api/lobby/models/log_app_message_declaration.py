@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.181884+08:00
+# Auto-generated at 2021-09-27T17:12:33.413432+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -137,6 +137,8 @@ class LogAppMessageDeclaration(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> LogAppMessageDeclaration:
         instance = cls()
+        if not dict_:
+            return instance
         if "Attributes" in dict_ and dict_["Attributes"] is not None:
             instance.attributes = [str(i0) for i0 in dict_["Attributes"]]
         elif include_empty:

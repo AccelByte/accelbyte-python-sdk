@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.842836+08:00
+# Auto-generated at 2021-09-27T17:12:34.240176+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -245,6 +245,8 @@ class StatInfo(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> StatInfo:
         instance = cls()
+        if not dict_:
+            return instance
         if "statCode" in dict_ and dict_["statCode"] is not None:
             instance.stat_code = str(dict_["statCode"])
         elif include_empty:

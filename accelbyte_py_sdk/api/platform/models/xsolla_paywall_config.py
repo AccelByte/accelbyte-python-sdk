@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:38.816305+08:00
+# Auto-generated at 2021-09-27T17:12:36.409950+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -111,6 +111,8 @@ class XsollaPaywallConfig(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> XsollaPaywallConfig:
         instance = cls()
+        if not dict_:
+            return instance
         if "theme" in dict_ and dict_["theme"] is not None:
             instance.theme = str(dict_["theme"])
         elif include_empty:

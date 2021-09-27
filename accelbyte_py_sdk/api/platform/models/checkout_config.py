@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:38.806188+08:00
+# Auto-generated at 2021-09-27T17:12:36.390988+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -87,6 +87,8 @@ class CheckoutConfig(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> CheckoutConfig:
         instance = cls()
+        if not dict_:
+            return instance
         if "publicKey" in dict_ and dict_["publicKey"] is not None:
             instance.public_key = str(dict_["publicKey"])
         elif include_empty:

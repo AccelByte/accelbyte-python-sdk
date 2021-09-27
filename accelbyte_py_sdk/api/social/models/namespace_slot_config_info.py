@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.855847+08:00
+# Auto-generated at 2021-09-27T17:12:34.261044+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -101,6 +101,8 @@ class NamespaceSlotConfigInfo(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> NamespaceSlotConfigInfo:
         instance = cls()
+        if not dict_:
+            return instance
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:

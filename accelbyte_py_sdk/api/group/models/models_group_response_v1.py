@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:39.857235+08:00
+# Auto-generated at 2021-09-27T17:12:37.814830+08:00
 # from: Justice Group Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -205,6 +205,8 @@ class ModelsGroupResponseV1(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsGroupResponseV1:
         instance = cls()
+        if not dict_:
+            return instance
         if "configurationCode" in dict_ and dict_["configurationCode"] is not None:
             instance.configuration_code = str(dict_["configurationCode"])
         elif include_empty:

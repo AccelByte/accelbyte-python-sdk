@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.229368+08:00
+# Auto-generated at 2021-09-27T17:12:33.484252+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -85,6 +85,8 @@ class ModelsCreateConfigResponse(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsCreateConfigResponse:
         instance = cls()
+        if not dict_:
+            return instance
         if "apiKey" in dict_ and dict_["apiKey"] is not None:
             instance.api_key = str(dict_["apiKey"])
         elif include_empty:

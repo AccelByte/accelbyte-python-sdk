@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.851825+08:00
+# Auto-generated at 2021-09-27T17:12:34.255182+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -73,6 +73,8 @@ class StatResetInfo(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> StatResetInfo:
         instance = cls()
+        if not dict_:
+            return instance
         if "additionalData" in dict_ and dict_["additionalData"] is not None:
             instance.additional_data = {str(k0): v0 for k0, v0 in dict_["additionalData"].items()}
         elif include_empty:

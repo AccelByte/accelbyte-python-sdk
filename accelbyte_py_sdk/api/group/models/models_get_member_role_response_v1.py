@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:39.853162+08:00
+# Auto-generated at 2021-09-27T17:12:37.809694+08:00
 # from: Justice Group Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -100,6 +100,8 @@ class ModelsGetMemberRoleResponseV1(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsGetMemberRoleResponseV1:
         instance = cls()
+        if not dict_:
+            return instance
         if "memberRoleId" in dict_ and dict_["memberRoleId"] is not None:
             instance.member_role_id = str(dict_["memberRoleId"])
         elif include_empty:

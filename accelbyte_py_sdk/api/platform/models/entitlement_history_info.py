@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:38.617956+08:00
+# Auto-generated at 2021-09-27T17:12:36.127240+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -178,6 +178,8 @@ class EntitlementHistoryInfo(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> EntitlementHistoryInfo:
         instance = cls()
+        if not dict_:
+            return instance
         if "entitlementId" in dict_ and dict_["entitlementId"] is not None:
             instance.entitlement_id = str(dict_["entitlementId"])
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:34.854451+08:00
+# Auto-generated at 2021-09-27T17:12:31.691263+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -111,6 +111,8 @@ class ModelVerificationCodeResponse(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelVerificationCodeResponse:
         instance = cls()
+        if not dict_:
+            return instance
         if "accountRegistration" in dict_ and dict_["accountRegistration"] is not None:
             instance.account_registration = str(dict_["accountRegistration"])
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:40.314101+08:00
+# Auto-generated at 2021-09-27T17:12:38.378481+08:00
 # from: Justice AmalgamGameTelemetry Service (0.0.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -126,6 +126,8 @@ class TelemetryBody(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> TelemetryBody:
         instance = cls()
+        if not dict_:
+            return instance
         if "EventId" in dict_ and dict_["EventId"] is not None:
             instance.event_id = str(dict_["EventId"])
         elif include_empty:

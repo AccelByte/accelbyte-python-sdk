@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:38.716959+08:00
+# Auto-generated at 2021-09-27T17:12:36.265221+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -115,6 +115,8 @@ class CurrencyUpdate(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> CurrencyUpdate:
         instance = cls()
+        if not dict_:
+            return instance
         if "localizationDescriptions" in dict_ and dict_["localizationDescriptions"] is not None:
             instance.localization_descriptions = {str(k0): str(v0) for k0, v0 in dict_["localizationDescriptions"].items()}
         elif include_empty:

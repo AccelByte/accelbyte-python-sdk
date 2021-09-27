@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:35.384954+08:00
+# Auto-generated at 2021-09-27T17:01:25.366574+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -138,6 +138,9 @@ class Logout(Operation):
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None
+        was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
+        if was_handled:
+            return None, undocumented_response
         return None, HttpResponse.create_unhandled_error()
 
     # endregion response methods

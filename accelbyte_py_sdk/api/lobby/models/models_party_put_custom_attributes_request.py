@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.236002+08:00
+# Auto-generated at 2021-09-27T17:12:33.495002+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -85,6 +85,8 @@ class ModelsPartyPUTCustomAttributesRequest(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsPartyPUTCustomAttributesRequest:
         instance = cls()
+        if not dict_:
+            return instance
         if "custom_attribute" in dict_ and dict_["custom_attribute"] is not None:
             instance.custom_attribute = {str(k0): v0 for k0, v0 in dict_["custom_attribute"].items()}
         elif include_empty:

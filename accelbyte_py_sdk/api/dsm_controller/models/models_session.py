@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:33.119230+08:00
+# Auto-generated at 2021-09-27T17:12:29.781122+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -126,6 +126,8 @@ class ModelsSession(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsSession:
         instance = cls()
+        if not dict_:
+            return instance
         if "Server" in dict_ and dict_["Server"] is not None:
             instance.server = ModelsServer.create_from_dict(dict_["Server"], include_empty=include_empty)
         elif include_empty:

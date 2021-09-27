@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.854969+08:00
+# Auto-generated at 2021-09-27T17:12:34.259682+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -99,6 +99,8 @@ class StatItemUpdate(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> StatItemUpdate:
         instance = cls()
+        if not dict_:
+            return instance
         if "updateStrategy" in dict_ and dict_["updateStrategy"] is not None:
             instance.update_strategy = str(dict_["updateStrategy"])
         elif include_empty:

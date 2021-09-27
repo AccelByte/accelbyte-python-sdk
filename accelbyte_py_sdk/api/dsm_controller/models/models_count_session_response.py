@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:33.091054+08:00
+# Auto-generated at 2021-09-27T17:12:29.710859+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -72,6 +72,8 @@ class ModelsCountSessionResponse(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsCountSessionResponse:
         instance = cls()
+        if not dict_:
+            return instance
         if "count" in dict_ and dict_["count"] is not None:
             instance.count = int(dict_["count"])
         elif include_empty:

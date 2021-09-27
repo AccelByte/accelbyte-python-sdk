@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:33.124524+08:00
+# Auto-generated at 2021-09-27T17:12:29.790301+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -176,6 +176,8 @@ class ModelsUpdateDSMConfigRequest(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsUpdateDSMConfigRequest:
         instance = cls()
+        if not dict_:
+            return instance
         if "claim_timeout" in dict_ and dict_["claim_timeout"] is not None:
             instance.claim_timeout = int(dict_["claim_timeout"])
         elif include_empty:

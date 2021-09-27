@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:38.769045+08:00
+# Auto-generated at 2021-09-27T17:12:36.331750+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -89,6 +89,8 @@ class PaymentOrderPagingSlicedResult(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PaymentOrderPagingSlicedResult:
         instance = cls()
+        if not dict_:
+            return instance
         if "data" in dict_ and dict_["data"] is not None:
             instance.data = [PaymentOrderInfo.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["data"]]
         elif include_empty:

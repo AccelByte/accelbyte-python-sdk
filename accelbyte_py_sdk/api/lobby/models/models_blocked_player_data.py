@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.221956+08:00
+# Auto-generated at 2021-09-27T17:12:33.476293+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -85,6 +85,8 @@ class ModelsBlockedPlayerData(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsBlockedPlayerData:
         instance = cls()
+        if not dict_:
+            return instance
         if "blockedAt" in dict_ and dict_["blockedAt"] is not None:
             instance.blocked_at = str(dict_["blockedAt"])
         elif include_empty:

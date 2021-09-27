@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:34.771434+08:00
+# Auto-generated at 2021-09-27T17:12:31.557640+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -180,6 +180,8 @@ class ModelLinkRequest(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelLinkRequest:
         instance = cls()
+        if not dict_:
+            return instance
         if "client_id" in dict_ and dict_["client_id"] is not None:
             instance.client_id = str(dict_["client_id"])
         elif include_empty:

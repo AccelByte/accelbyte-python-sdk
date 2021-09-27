@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:33.102674+08:00
+# Auto-generated at 2021-09-27T17:12:29.738068+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -111,6 +111,8 @@ class ModelsImageRecordUpdate(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsImageRecordUpdate:
         instance = cls()
+        if not dict_:
+            return instance
         if "image" in dict_ and dict_["image"] is not None:
             instance.image = str(dict_["image"])
         elif include_empty:

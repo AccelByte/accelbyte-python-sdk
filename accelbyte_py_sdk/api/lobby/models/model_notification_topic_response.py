@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.198801+08:00
+# Auto-generated at 2021-09-27T17:12:33.437781+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -111,6 +111,8 @@ class ModelNotificationTopicResponse(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelNotificationTopicResponse:
         instance = cls()
+        if not dict_:
+            return instance
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = int(dict_["createdAt"])
         elif include_empty:

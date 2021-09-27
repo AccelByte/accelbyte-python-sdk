@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:38.834711+08:00
+# Auto-generated at 2021-09-27T17:12:36.436518+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -115,6 +115,8 @@ class PaymentTaxConfigEdit(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PaymentTaxConfigEdit:
         instance = cls()
+        if not dict_:
+            return instance
         if "taxJarEnabled" in dict_ and dict_["taxJarEnabled"] is not None:
             instance.tax_jar_enabled = bool(dict_["taxJarEnabled"])
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:34.730031+08:00
+# Auto-generated at 2021-09-27T17:12:31.497329+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -88,6 +88,8 @@ class AccountcommonUserLinkedPlatformsResponseV3(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AccountcommonUserLinkedPlatformsResponseV3:
         instance = cls()
+        if not dict_:
+            return instance
         if "data" in dict_ and dict_["data"] is not None:
             instance.data = [AccountcommonUserLinkedPlatformV3.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["data"]]
         elif include_empty:

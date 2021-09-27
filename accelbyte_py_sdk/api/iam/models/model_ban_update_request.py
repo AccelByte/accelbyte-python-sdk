@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:34.756618+08:00
+# Auto-generated at 2021-09-27T17:12:31.535268+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -85,6 +85,8 @@ class ModelBanUpdateRequest(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelBanUpdateRequest:
         instance = cls()
+        if not dict_:
+            return instance
         if "enabled" in dict_ and dict_["enabled"] is not None:
             instance.enabled = bool(dict_["enabled"])
         elif include_empty:

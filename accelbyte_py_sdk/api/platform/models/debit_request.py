@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:38.720939+08:00
+# Auto-generated at 2021-09-27T17:12:36.270988+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -86,6 +86,8 @@ class DebitRequest(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> DebitRequest:
         instance = cls()
+        if not dict_:
+            return instance
         if "amount" in dict_ and dict_["amount"] is not None:
             instance.amount = int(dict_["amount"])
         elif include_empty:

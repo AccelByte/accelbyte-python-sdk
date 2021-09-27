@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:33.107116+08:00
+# Auto-generated at 2021-09-27T17:12:29.751105+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -113,6 +113,8 @@ class ModelsMatchResult(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsMatchResult:
         instance = cls()
+        if not dict_:
+            return instance
         if "game_mode" in dict_ and dict_["game_mode"] is not None:
             instance.game_mode = str(dict_["game_mode"])
         elif include_empty:

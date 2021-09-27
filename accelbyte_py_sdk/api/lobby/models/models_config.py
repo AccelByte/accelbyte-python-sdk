@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.223198+08:00
+# Auto-generated at 2021-09-27T17:12:33.477330+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -213,6 +213,8 @@ class ModelsConfig(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsConfig:
         instance = cls()
+        if not dict_:
+            return instance
         if "autoKickOnDisconnect" in dict_ and dict_["autoKickOnDisconnect"] is not None:
             instance.auto_kick_on_disconnect = bool(dict_["autoKickOnDisconnect"])
         elif include_empty:

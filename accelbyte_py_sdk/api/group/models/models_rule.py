@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:39.868853+08:00
+# Auto-generated at 2021-09-27T17:12:37.833641+08:00
 # from: Justice Group Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -87,6 +87,8 @@ class ModelsRule(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsRule:
         instance = cls()
+        if not dict_:
+            return instance
         if "allowedAction" in dict_ and dict_["allowedAction"] is not None:
             instance.allowed_action = str(dict_["allowedAction"])
         elif include_empty:

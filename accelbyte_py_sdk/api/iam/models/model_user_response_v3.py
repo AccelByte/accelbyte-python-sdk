@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:34.847278+08:00
+# Auto-generated at 2021-09-27T17:12:31.676316+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -380,6 +380,8 @@ class ModelUserResponseV3(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelUserResponseV3:
         instance = cls()
+        if not dict_:
+            return instance
         if "authType" in dict_ and dict_["authType"] is not None:
             instance.auth_type = str(dict_["authType"])
         elif include_empty:

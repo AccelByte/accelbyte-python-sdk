@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:38.827811+08:00
+# Auto-generated at 2021-09-27T17:12:36.424555+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -127,6 +127,8 @@ class PaymentUrlCreate(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PaymentUrlCreate:
         instance = cls()
+        if not dict_:
+            return instance
         if "paymentOrderNo" in dict_ and dict_["paymentOrderNo"] is not None:
             instance.payment_order_no = str(dict_["paymentOrderNo"])
         elif include_empty:

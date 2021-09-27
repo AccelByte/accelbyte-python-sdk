@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:38.731124+08:00
+# Auto-generated at 2021-09-27T17:12:36.284404+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -204,6 +204,8 @@ class WalletTransactionInfo(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> WalletTransactionInfo:
         instance = cls()
+        if not dict_:
+            return instance
         if "walletId" in dict_ and dict_["walletId"] is not None:
             instance.wallet_id = str(dict_["walletId"])
         elif include_empty:

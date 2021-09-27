@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:34.824460+08:00
+# Auto-generated at 2021-09-27T17:12:31.636572+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -85,6 +85,8 @@ class ModelUpgradeHeadlessAccountRequest(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelUpgradeHeadlessAccountRequest:
         instance = cls()
+        if not dict_:
+            return instance
         if "LoginID" in dict_ and dict_["LoginID"] is not None:
             instance.login_id = str(dict_["LoginID"])
         elif include_empty:

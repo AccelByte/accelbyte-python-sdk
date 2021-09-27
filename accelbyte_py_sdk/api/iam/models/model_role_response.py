@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:34.802015+08:00
+# Auto-generated at 2021-09-27T17:12:31.604802+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -113,6 +113,8 @@ class ModelRoleResponse(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelRoleResponse:
         instance = cls()
+        if not dict_:
+            return instance
         if "IsWildcard" in dict_ and dict_["IsWildcard"] is not None:
             instance.is_wildcard = bool(dict_["IsWildcard"])
         elif include_empty:

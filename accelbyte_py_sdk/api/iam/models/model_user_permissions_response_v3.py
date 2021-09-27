@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:34.843103+08:00
+# Auto-generated at 2021-09-27T17:12:31.669060+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -127,6 +127,8 @@ class ModelUserPermissionsResponseV3(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelUserPermissionsResponseV3:
         instance = cls()
+        if not dict_:
+            return instance
         if "action" in dict_ and dict_["action"] is not None:
             instance.action = int(dict_["action"])
         elif include_empty:

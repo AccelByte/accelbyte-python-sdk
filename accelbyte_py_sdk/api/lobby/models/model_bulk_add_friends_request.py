@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.182970+08:00
+# Auto-generated at 2021-09-27T17:12:33.415030+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -72,6 +72,8 @@ class ModelBulkAddFriendsRequest(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelBulkAddFriendsRequest:
         instance = cls()
+        if not dict_:
+            return instance
         if "friendIds" in dict_ and dict_["friendIds"] is not None:
             instance.friend_ids = [str(i0) for i0 in dict_["friendIds"]]
         elif include_empty:

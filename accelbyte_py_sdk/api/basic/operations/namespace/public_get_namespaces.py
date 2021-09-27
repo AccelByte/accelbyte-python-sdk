@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:40.692454+08:00
+# Auto-generated at 2021-09-27T17:01:31.778097+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -169,6 +169,9 @@ class PublicGetNamespaces(Operation):
             return [NamespaceInfo.create_from_dict(i) for i in content], None
         if code == 401:
             return None, ErrorEntity.create_from_dict(content)
+        was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
+        if was_handled:
+            return None, undocumented_response
         return None, HttpResponse.create_unhandled_error()
 
     # endregion response methods

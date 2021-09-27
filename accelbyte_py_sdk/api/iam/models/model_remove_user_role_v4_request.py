@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:34.791009+08:00
+# Auto-generated at 2021-09-27T17:12:31.585111+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -85,6 +85,8 @@ class ModelRemoveUserRoleV4Request(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelRemoveUserRoleV4Request:
         instance = cls()
+        if not dict_:
+            return instance
         if "assignedNamespaces" in dict_ and dict_["assignedNamespaces"] is not None:
             instance.assigned_namespaces = [str(i0) for i0 in dict_["assignedNamespaces"]]
         elif include_empty:

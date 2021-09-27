@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.180848+08:00
+# Auto-generated at 2021-09-27T17:12:33.411461+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -124,6 +124,8 @@ class HandlersUserPresence(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> HandlersUserPresence:
         instance = cls()
+        if not dict_:
+            return instance
         if "activity" in dict_ and dict_["activity"] is not None:
             instance.activity = str(dict_["activity"])
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.191323+08:00
+# Auto-generated at 2021-09-27T17:12:33.428470+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -137,6 +137,8 @@ class ModelGetStoredNotificationResp(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelGetStoredNotificationResp:
         instance = cls()
+        if not dict_:
+            return instance
         if "from" in dict_ and dict_["from"] is not None:
             instance.from_ = str(dict_["from"])
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:33.101232+08:00
+# Auto-generated at 2021-09-27T17:12:29.734658+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -85,6 +85,8 @@ class ModelsGetImageLimitResponseData(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsGetImageLimitResponseData:
         instance = cls()
+        if not dict_:
+            return instance
         if "image_count" in dict_ and dict_["image_count"] is not None:
             instance.image_count = int(dict_["image_count"])
         elif include_empty:

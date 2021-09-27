@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:40.593268+08:00
+# Auto-generated at 2021-09-27T17:12:38.692924+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -115,6 +115,8 @@ class FileUploadUrlInfo(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> FileUploadUrlInfo:
         instance = cls()
+        if not dict_:
+            return instance
         if "url" in dict_ and dict_["url"] is not None:
             instance.url = str(dict_["url"])
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.230034+08:00
+# Auto-generated at 2021-09-27T17:12:33.485193+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -72,6 +72,8 @@ class ModelsDebugProfanityFilterRequest(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsDebugProfanityFilterRequest:
         instance = cls()
+        if not dict_:
+            return instance
         if "text" in dict_ and dict_["text"] is not None:
             instance.text = str(dict_["text"])
         elif include_empty:

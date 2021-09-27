@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.851286+08:00
+# Auto-generated at 2021-09-27T17:12:34.254305+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -72,6 +72,8 @@ class StatItemIncResult(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> StatItemIncResult:
         instance = cls()
+        if not dict_:
+            return instance
         if "currentValue" in dict_ and dict_["currentValue"] is not None:
             instance.current_value = float(dict_["currentValue"])
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:34.705130+08:00
+# Auto-generated at 2021-09-27T17:12:31.461731+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -85,6 +85,8 @@ class AccountcommonClientPermission(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AccountcommonClientPermission:
         instance = cls()
+        if not dict_:
+            return instance
         if "Action" in dict_ and dict_["Action"] is not None:
             instance.action = int(dict_["Action"])
         elif include_empty:

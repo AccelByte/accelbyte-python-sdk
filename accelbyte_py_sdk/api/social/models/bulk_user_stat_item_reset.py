@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.842165+08:00
+# Auto-generated at 2021-09-27T17:12:34.239157+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -85,6 +85,8 @@ class BulkUserStatItemReset(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> BulkUserStatItemReset:
         instance = cls()
+        if not dict_:
+            return instance
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:

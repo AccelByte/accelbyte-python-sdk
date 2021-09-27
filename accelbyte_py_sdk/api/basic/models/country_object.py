@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:40.597348+08:00
+# Auto-generated at 2021-09-27T17:12:38.702451+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -87,6 +87,8 @@ class CountryObject(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> CountryObject:
         instance = cls()
+        if not dict_:
+            return instance
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = str(dict_["code"])
         elif include_empty:

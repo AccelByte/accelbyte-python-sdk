@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:38.799741+08:00
+# Auto-generated at 2021-09-27T17:12:36.380383+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -152,6 +152,8 @@ class GoogleIAPReceipt(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> GoogleIAPReceipt:
         instance = cls()
+        if not dict_:
+            return instance
         if "orderId" in dict_ and dict_["orderId"] is not None:
             instance.order_id = str(dict_["orderId"])
         elif include_empty:

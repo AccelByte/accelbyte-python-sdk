@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:34.721674+08:00
+# Auto-generated at 2021-09-27T17:12:31.486524+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -98,6 +98,8 @@ class AccountcommonRoleManager(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AccountcommonRoleManager:
         instance = cls()
+        if not dict_:
+            return instance
         if "DisplayName" in dict_ and dict_["DisplayName"] is not None:
             instance.display_name = str(dict_["DisplayName"])
         elif include_empty:

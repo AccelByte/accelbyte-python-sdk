@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:33.106421+08:00
+# Auto-generated at 2021-09-27T17:12:29.749302+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -88,6 +88,8 @@ class ModelsListSessionResponse(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsListSessionResponse:
         instance = cls()
+        if not dict_:
+            return instance
         if "paging" in dict_ and dict_["paging"] is not None:
             instance.paging = ModelsPagingCursor.create_from_dict(dict_["paging"], include_empty=include_empty)
         elif include_empty:

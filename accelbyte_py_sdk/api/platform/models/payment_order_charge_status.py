@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:38.768028+08:00
+# Auto-generated at 2021-09-27T17:12:36.330733+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -87,6 +87,8 @@ class PaymentOrderChargeStatus(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PaymentOrderChargeStatus:
         instance = cls()
+        if not dict_:
+            return instance
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:

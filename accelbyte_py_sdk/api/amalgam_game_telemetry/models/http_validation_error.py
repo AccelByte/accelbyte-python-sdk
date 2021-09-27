@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:40.313553+08:00
+# Auto-generated at 2021-09-27T17:12:38.375245+08:00
 # from: Justice AmalgamGameTelemetry Service (0.0.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -75,6 +75,8 @@ class HTTPValidationError(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> HTTPValidationError:
         instance = cls()
+        if not dict_:
+            return instance
         if "detail" in dict_ and dict_["detail"] is not None:
             instance.detail = [ValidationError.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["detail"]]
         elif include_empty:

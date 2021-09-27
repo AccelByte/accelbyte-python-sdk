@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.234206+08:00
+# Auto-generated at 2021-09-27T17:12:33.492448+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -72,6 +72,8 @@ class ModelsListBlockedPlayerRequest(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsListBlockedPlayerRequest:
         instance = cls()
+        if not dict_:
+            return instance
         if "listBlockedUserId" in dict_ and dict_["listBlockedUserId"] is not None:
             instance.list_blocked_user_id = [str(i0) for i0 in dict_["listBlockedUserId"]]
         elif include_empty:

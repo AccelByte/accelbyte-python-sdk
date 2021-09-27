@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:38.742342+08:00
+# Auto-generated at 2021-09-27T17:12:36.298433+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -678,6 +678,8 @@ class Order(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> Order:
         instance = cls()
+        if not dict_:
+            return instance
         if "rvn" in dict_ and dict_["rvn"] is not None:
             instance.rvn = int(dict_["rvn"])
         elif include_empty:

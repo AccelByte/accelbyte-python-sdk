@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:34.855762+08:00
+# Auto-generated at 2021-09-27T17:12:31.693364+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -88,6 +88,8 @@ class OauthapiRevocationList(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> OauthapiRevocationList:
         instance = cls()
+        if not dict_:
+            return instance
         if "revoked_tokens" in dict_ and dict_["revoked_tokens"] is not None:
             instance.revoked_tokens = BloomFilterJSON.create_from_dict(dict_["revoked_tokens"], include_empty=include_empty)
         elif include_empty:

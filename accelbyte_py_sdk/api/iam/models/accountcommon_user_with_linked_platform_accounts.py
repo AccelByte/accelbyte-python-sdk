@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:34.735051+08:00
+# Auto-generated at 2021-09-27T17:12:31.504568+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -126,6 +126,8 @@ class AccountcommonUserWithLinkedPlatformAccounts(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AccountcommonUserWithLinkedPlatformAccounts:
         instance = cls()
+        if not dict_:
+            return instance
         if "displayName" in dict_ and dict_["displayName"] is not None:
             instance.display_name = str(dict_["displayName"])
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:34.792908+08:00
+# Auto-generated at 2021-09-27T17:12:31.588551+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -85,6 +85,8 @@ class ModelRevokeUserV4Request(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelRevokeUserV4Request:
         instance = cls()
+        if not dict_:
+            return instance
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:

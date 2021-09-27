@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.197979+08:00
+# Auto-generated at 2021-09-27T17:12:33.436703+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -87,6 +87,8 @@ class ModelNotificationTemplateResponse(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelNotificationTemplateResponse:
         instance = cls()
+        if not dict_:
+            return instance
         if "templateLocalizations" in dict_ and dict_["templateLocalizations"] is not None:
             instance.template_localizations = [ModelLocalization.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["templateLocalizations"]]
         elif include_empty:

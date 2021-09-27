@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:38.951277+08:00
+# Auto-generated at 2021-09-27T17:01:29.539050+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -207,6 +207,9 @@ class DownloadCategories(Operation):
             return [HierarchicalCategoryInfo.create_from_dict(i) for i in content], None
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
+        was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
+        if was_handled:
+            return None, undocumented_response
         return None, HttpResponse.create_unhandled_error()
 
     # endregion response methods

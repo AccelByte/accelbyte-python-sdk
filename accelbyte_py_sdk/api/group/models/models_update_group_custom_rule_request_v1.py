@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:39.877719+08:00
+# Auto-generated at 2021-09-27T17:12:37.840811+08:00
 # from: Justice Group Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -74,6 +74,8 @@ class ModelsUpdateGroupCustomRuleRequestV1(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsUpdateGroupCustomRuleRequestV1:
         instance = cls()
+        if not dict_:
+            return instance
         if "groupCustomRule" in dict_ and dict_["groupCustomRule"] is not None:
             instance.group_custom_rule = ModelsUpdateGroupCustomRuleRequestV1GroupCustomRule.create_from_dict(dict_["groupCustomRule"], include_empty=include_empty)
         elif include_empty:

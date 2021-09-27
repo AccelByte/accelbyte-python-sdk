@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:38.793728+08:00
+# Auto-generated at 2021-09-27T17:12:36.369800+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -72,6 +72,8 @@ class SteamIAPConfigRequest(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> SteamIAPConfigRequest:
         instance = cls()
+        if not dict_:
+            return instance
         if "publisherAuthenticationKey" in dict_ and dict_["publisherAuthenticationKey"] is not None:
             instance.publisher_authentication_key = str(dict_["publisherAuthenticationKey"])
         elif include_empty:

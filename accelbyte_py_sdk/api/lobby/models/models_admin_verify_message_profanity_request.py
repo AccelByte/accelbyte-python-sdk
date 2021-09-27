@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.219742+08:00
+# Auto-generated at 2021-09-27T17:12:33.473183+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -85,6 +85,8 @@ class ModelsAdminVerifyMessageProfanityRequest(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsAdminVerifyMessageProfanityRequest:
         instance = cls()
+        if not dict_:
+            return instance
         if "message" in dict_ and dict_["message"] is not None:
             instance.message = str(dict_["message"])
         elif include_empty:

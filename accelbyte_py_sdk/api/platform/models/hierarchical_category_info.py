@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-24T09:01:00.690426+08:00
+# Auto-generated at 2021-09-27T17:12:36.153434+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -164,6 +164,8 @@ class HierarchicalCategoryInfo(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> HierarchicalCategoryInfo:
         instance = cls()
+        if not dict_:
+            return instance
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:

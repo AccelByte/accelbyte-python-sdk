@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.214220+08:00
+# Auto-generated at 2021-09-27T17:12:33.463316+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -74,6 +74,8 @@ class ModelsAdminAddProfanityFiltersRequest(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsAdminAddProfanityFiltersRequest:
         instance = cls()
+        if not dict_:
+            return instance
         if "filters" in dict_ and dict_["filters"] is not None:
             instance.filters = [ModelsAdminAddProfanityFiltersFilterRequest.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["filters"]]
         elif include_empty:

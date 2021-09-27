@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:34.744042+08:00
+# Auto-generated at 2021-09-27T17:12:31.517547+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -72,6 +72,8 @@ class ClientmodelClientUpdateSecretRequest(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ClientmodelClientUpdateSecretRequest:
         instance = cls()
+        if not dict_:
+            return instance
         if "NewSecret" in dict_ and dict_["NewSecret"] is not None:
             instance.new_secret = str(dict_["NewSecret"])
         elif include_empty:

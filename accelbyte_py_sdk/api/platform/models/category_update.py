@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:38.674395+08:00
+# Auto-generated at 2021-09-27T17:12:36.204349+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -72,6 +72,8 @@ class CategoryUpdate(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> CategoryUpdate:
         instance = cls()
+        if not dict_:
+            return instance
         if "localizationDisplayNames" in dict_ and dict_["localizationDisplayNames"] is not None:
             instance.localization_display_names = {str(k0): str(v0) for k0, v0 in dict_["localizationDisplayNames"].items()}
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:33.110661+08:00
+# Auto-generated at 2021-09-27T17:12:29.762969+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -111,6 +111,8 @@ class ModelsRegisterLocalServerRequest(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsRegisterLocalServerRequest:
         instance = cls()
+        if not dict_:
+            return instance
         if "custom_attribute" in dict_ and dict_["custom_attribute"] is not None:
             instance.custom_attribute = str(dict_["custom_attribute"])
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:39.871830+08:00
+# Auto-generated at 2021-09-27T17:12:37.835848+08:00
 # from: Justice Group Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -74,6 +74,8 @@ class ModelsUpdateGroupConfigurationGlobalRulesRequestV1(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsUpdateGroupConfigurationGlobalRulesRequestV1:
         instance = cls()
+        if not dict_:
+            return instance
         if "ruleDetail" in dict_ and dict_["ruleDetail"] is not None:
             instance.rule_detail = [ModelsRuleInformation.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["ruleDetail"]]
         elif include_empty:

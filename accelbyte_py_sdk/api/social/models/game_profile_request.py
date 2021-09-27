@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.832999+08:00
+# Auto-generated at 2021-09-27T17:12:34.223736+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -171,6 +171,8 @@ class GameProfileRequest(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> GameProfileRequest:
         instance = cls()
+        if not dict_:
+            return instance
         if "profileName" in dict_ and dict_["profileName"] is not None:
             instance.profile_name = str(dict_["profileName"])
         elif include_empty:

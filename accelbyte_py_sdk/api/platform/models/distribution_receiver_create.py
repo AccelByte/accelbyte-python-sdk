@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:38.631966+08:00
+# Auto-generated at 2021-09-27T17:12:36.143265+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -73,6 +73,8 @@ class DistributionReceiverCreate(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> DistributionReceiverCreate:
         instance = cls()
+        if not dict_:
+            return instance
         if "attributes" in dict_ and dict_["attributes"] is not None:
             instance.attributes = {str(k0): str(v0) for k0, v0 in dict_["attributes"].items()}
         elif include_empty:

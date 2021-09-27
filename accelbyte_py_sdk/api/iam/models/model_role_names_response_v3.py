@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:34.801389+08:00
+# Auto-generated at 2021-09-27T17:12:31.603314+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -87,6 +87,8 @@ class ModelRoleNamesResponseV3(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelRoleNamesResponseV3:
         instance = cls()
+        if not dict_:
+            return instance
         if "data" in dict_ and dict_["data"] is not None:
             instance.data = [str(i0) for i0 in dict_["data"]]
         elif include_empty:

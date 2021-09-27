@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.826846+08:00
+# Auto-generated at 2021-09-27T17:12:34.213412+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -157,6 +157,8 @@ class GameProfileHeader(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> GameProfileHeader:
         instance = cls()
+        if not dict_:
+            return instance
         if "profileId" in dict_ and dict_["profileId"] is not None:
             instance.profile_id = str(dict_["profileId"])
         elif include_empty:

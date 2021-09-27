@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:39.497315+08:00
+# Auto-generated at 2021-09-27T17:12:37.363812+08:00
 # from: Justice SessionBrowser Service ()
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -85,6 +85,8 @@ class ModelsPartyMember(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsPartyMember:
         instance = cls()
+        if not dict_:
+            return instance
         if "extra_attributes" in dict_ and dict_["extra_attributes"] is not None:
             instance.extra_attributes = {str(k0): v0 for k0, v0 in dict_["extra_attributes"].items()}
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:40.609173+08:00
+# Auto-generated at 2021-09-27T17:12:38.721484+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -199,6 +199,8 @@ class UserProfilePrivateCreate(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> UserProfilePrivateCreate:
         instance = cls()
+        if not dict_:
+            return instance
         if "firstName" in dict_ and dict_["firstName"] is not None:
             instance.first_name = str(dict_["firstName"])
         elif include_empty:

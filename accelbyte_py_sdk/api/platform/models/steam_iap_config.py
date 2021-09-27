@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:38.792234+08:00
+# Auto-generated at 2021-09-27T17:12:36.365965+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -129,6 +129,8 @@ class SteamIAPConfig(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> SteamIAPConfig:
         instance = cls()
+        if not dict_:
+            return instance
         if "rvn" in dict_ and dict_["rvn"] is not None:
             instance.rvn = int(dict_["rvn"])
         elif include_empty:

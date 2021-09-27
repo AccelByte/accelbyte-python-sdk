@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.857271+08:00
+# Auto-generated at 2021-09-27T17:12:34.263291+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -255,6 +255,8 @@ class SlotInfo(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> SlotInfo:
         instance = cls()
+        if not dict_:
+            return instance
         if "slotId" in dict_ and dict_["slotId"] is not None:
             instance.slot_id = str(dict_["slotId"])
         elif include_empty:

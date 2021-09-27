@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:40.314980+08:00
+# Auto-generated at 2021-09-27T17:12:38.381739+08:00
 # from: Justice AmalgamGameTelemetry Service (0.0.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -98,6 +98,8 @@ class ValidationError(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ValidationError:
         instance = cls()
+        if not dict_:
+            return instance
         if "loc" in dict_ and dict_["loc"] is not None:
             instance.loc = [str(i0) for i0 in dict_["loc"]]
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:34.830770+08:00
+# Auto-generated at 2021-09-27T17:12:31.646473+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -204,6 +204,8 @@ class ModelUserBanResponseV3(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelUserBanResponseV3:
         instance = cls()
+        if not dict_:
+            return instance
         if "ban" in dict_ and dict_["ban"] is not None:
             instance.ban = str(dict_["ban"])
         elif include_empty:

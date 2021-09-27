@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:34.970903+08:00
+# Auto-generated at 2021-09-27T17:01:24.691659+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -226,6 +226,9 @@ class AddUserRole(Operation):
             return None, HttpResponse.create(code, "Conflict")
         if code == 500:
             return None, HttpResponse.create(code, "Internal Server Error")
+        was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
+        if was_handled:
+            return None, undocumented_response
         return None, HttpResponse.create_unhandled_error()
 
     # endregion response methods

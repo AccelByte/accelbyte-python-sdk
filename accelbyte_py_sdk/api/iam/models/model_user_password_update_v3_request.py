@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:34.842405+08:00
+# Auto-generated at 2021-09-27T17:12:31.667578+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -98,6 +98,8 @@ class ModelUserPasswordUpdateV3Request(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelUserPasswordUpdateV3Request:
         instance = cls()
+        if not dict_:
+            return instance
         if "languageTag" in dict_ and dict_["languageTag"] is not None:
             instance.language_tag = str(dict_["languageTag"])
         elif include_empty:

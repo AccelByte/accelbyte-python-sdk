@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:40.241253+08:00
+# Auto-generated at 2021-09-27T17:12:38.266662+08:00
 # from: Justice Cloudsave Service (3.38.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -150,6 +150,8 @@ class ModelsPlayerRecord(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsPlayerRecord:
         instance = cls()
+        if not dict_:
+            return instance
         if "created_at" in dict_ and dict_["created_at"] is not None:
             instance.created_at = str(dict_["created_at"])
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:35.259527+08:00
+# Auto-generated at 2021-09-27T17:01:25.168201+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -198,6 +198,9 @@ class AdminDeleteUserInformationV3(Operation):
             return None, HttpResponse.create(code, "Forbidden")
         if code == 404:
             return None, HttpResponse.create(code, "Not Found")
+        was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
+        if was_handled:
+            return None, undocumented_response
         return None, HttpResponse.create_unhandled_error()
 
     # endregion response methods

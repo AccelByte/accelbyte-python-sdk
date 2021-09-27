@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:34.813272+08:00
+# Auto-generated at 2021-09-27T17:12:31.622932+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -74,6 +74,8 @@ class ModelSearchUsersResponse(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelSearchUsersResponse:
         instance = cls()
+        if not dict_:
+            return instance
         if "Data" in dict_ and dict_["Data"] is not None:
             instance.data = [AccountcommonUserSearchResult.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["Data"]]
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:38.724447+08:00
+# Auto-generated at 2021-09-27T17:12:36.276313+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -198,6 +198,8 @@ class RewardInfo(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> RewardInfo:
         instance = cls()
+        if not dict_:
+            return instance
         if "rewardId" in dict_ and dict_["rewardId"] is not None:
             instance.reward_id = str(dict_["rewardId"])
         elif include_empty:

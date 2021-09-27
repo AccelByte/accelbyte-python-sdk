@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:39.504810+08:00
+# Auto-generated at 2021-09-27T17:12:37.378411+08:00
 # from: Justice SessionBrowser Service ()
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -85,6 +85,8 @@ class ModelsUpdateSessionRequest(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsUpdateSessionRequest:
         instance = cls()
+        if not dict_:
+            return instance
         if "game_current_player" in dict_ and dict_["game_current_player"] is not None:
             instance.game_current_player = int(dict_["game_current_player"])
         elif include_empty:

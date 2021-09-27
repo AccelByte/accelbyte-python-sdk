@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:38.812841+08:00
+# Auto-generated at 2021-09-27T17:12:36.403549+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -115,6 +115,8 @@ class StripeConfig(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> StripeConfig:
         instance = cls()
+        if not dict_:
+            return instance
         if "publishableKey" in dict_ and dict_["publishableKey"] is not None:
             instance.publishable_key = str(dict_["publishableKey"])
         elif include_empty:

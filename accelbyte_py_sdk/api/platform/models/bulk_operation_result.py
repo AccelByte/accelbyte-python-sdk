@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:38.631438+08:00
+# Auto-generated at 2021-09-27T17:12:36.141809+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -73,6 +73,8 @@ class BulkOperationResult(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> BulkOperationResult:
         instance = cls()
+        if not dict_:
+            return instance
         if "affected" in dict_ and dict_["affected"] is not None:
             instance.affected = int(dict_["affected"])
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:35.396097+08:00
+# Auto-generated at 2021-09-27T17:01:25.393534+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -147,6 +147,9 @@ class GetRevocationListV3(Operation):
             return OauthapiRevocationList.create_from_dict(content), None
         if code == 401:
             return None, RestErrorResponse.create_from_dict(content)
+        was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
+        if was_handled:
+            return None, undocumented_response
         return None, HttpResponse.create_unhandled_error()
 
     # endregion response methods

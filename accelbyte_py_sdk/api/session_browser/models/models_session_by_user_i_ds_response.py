@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:39.501299+08:00
+# Auto-generated at 2021-09-27T17:12:37.370089+08:00
 # from: Justice SessionBrowser Service ()
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -74,6 +74,8 @@ class ModelsSessionByUserIDsResponse(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsSessionByUserIDsResponse:
         instance = cls()
+        if not dict_:
+            return instance
         if "data" in dict_ and dict_["data"] is not None:
             instance.data = [ModelsGameSession.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["data"]]
         elif include_empty:

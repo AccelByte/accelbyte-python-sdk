@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:38.832301+08:00
+# Auto-generated at 2021-09-27T17:12:36.432441+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -195,6 +195,8 @@ class PaymentProviderConfigInfo(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PaymentProviderConfigInfo:
         instance = cls()
+        if not dict_:
+            return instance
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:

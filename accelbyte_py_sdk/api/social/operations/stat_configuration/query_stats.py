@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.899734+08:00
+# Auto-generated at 2021-09-27T17:01:27.285697+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -216,6 +216,9 @@ class QueryStats(Operation):
         """
         if code == 200:
             return StatPagingSlicedResult.create_from_dict(content), None
+        was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
+        if was_handled:
+            return None, undocumented_response
         return None, HttpResponse.create_unhandled_error()
 
     # endregion response methods

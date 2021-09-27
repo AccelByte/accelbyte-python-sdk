@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:34.864893+08:00
+# Auto-generated at 2021-09-27T17:12:31.709581+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -86,6 +86,8 @@ class OauthmodelTokenThirdPartyResponse(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> OauthmodelTokenThirdPartyResponse:
         instance = cls()
+        if not dict_:
+            return instance
         if "platform_token" in dict_ and dict_["platform_token"] is not None:
             instance.platform_token = str(dict_["platform_token"])
         elif include_empty:

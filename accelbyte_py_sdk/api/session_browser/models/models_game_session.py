@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:39.490816+08:00
+# Auto-generated at 2021-09-27T17:12:37.353464+08:00
 # from: Justice SessionBrowser Service ()
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -206,6 +206,8 @@ class ModelsGameSession(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsGameSession:
         instance = cls()
+        if not dict_:
+            return instance
         if "created_at" in dict_ and dict_["created_at"] is not None:
             instance.created_at = str(dict_["created_at"])
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:34.751371+08:00
+# Auto-generated at 2021-09-27T17:12:31.528036+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -85,6 +85,8 @@ class ModelAgeRestrictionRequestV3(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelAgeRestrictionRequestV3:
         instance = cls()
+        if not dict_:
+            return instance
         if "ageRestriction" in dict_ and dict_["ageRestriction"] is not None:
             instance.age_restriction = int(dict_["ageRestriction"])
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:39.510484+08:00
+# Auto-generated at 2021-09-27T17:01:30.352493+08:00
 # from: Justice SessionBrowser Service ()
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -203,6 +203,9 @@ class GetSessionByUserIDs(Operation):
             return None, ResponseError.create_from_dict(content)
         if code == 500:
             return None, ResponseError.create_from_dict(content)
+        was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
+        if was_handled:
+            return None, undocumented_response
         return None, HttpResponse.create_unhandled_error()
 
     # endregion response methods

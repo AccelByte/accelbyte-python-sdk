@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.203862+08:00
+# Auto-generated at 2021-09-27T17:12:33.446629+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -85,6 +85,8 @@ class ModelTemplateContent(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelTemplateContent:
         instance = cls()
+        if not dict_:
+            return instance
         if "draft" in dict_ and dict_["draft"] is not None:
             instance.draft = str(dict_["draft"])
         elif include_empty:

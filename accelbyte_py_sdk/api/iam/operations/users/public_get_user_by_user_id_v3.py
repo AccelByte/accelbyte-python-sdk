@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:35.487491+08:00
+# Auto-generated at 2021-09-27T17:01:25.539800+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -201,6 +201,9 @@ class PublicGetUserByUserIdV3(Operation):
             return None, RestErrorResponse.create_from_dict(content)
         if code == 500:
             return None, RestErrorResponse.create_from_dict(content)
+        was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
+        if was_handled:
+            return None, undocumented_response
         return None, HttpResponse.create_unhandled_error()
 
     # endregion response methods

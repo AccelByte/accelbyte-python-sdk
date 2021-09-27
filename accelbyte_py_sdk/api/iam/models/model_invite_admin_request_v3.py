@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:34.768018+08:00
+# Auto-generated at 2021-09-27T17:12:31.554184+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -85,6 +85,8 @@ class ModelInviteAdminRequestV3(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelInviteAdminRequestV3:
         instance = cls()
+        if not dict_:
+            return instance
         if "emailAddresses" in dict_ and dict_["emailAddresses"] is not None:
             instance.email_addresses = [str(i0) for i0 in dict_["emailAddresses"]]
         elif include_empty:

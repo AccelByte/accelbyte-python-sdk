@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:34.745782+08:00
+# Auto-generated at 2021-09-27T17:12:31.520096+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -204,6 +204,8 @@ class ClientmodelClientV3Response(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ClientmodelClientV3Response:
         instance = cls()
+        if not dict_:
+            return instance
         if "audiences" in dict_ and dict_["audiences"] is not None:
             instance.audiences = [str(i0) for i0 in dict_["audiences"]]
         elif include_empty:

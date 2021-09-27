@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:39.496637+08:00
+# Auto-generated at 2021-09-27T17:12:37.362623+08:00
 # from: Justice SessionBrowser Service ()
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -111,6 +111,8 @@ class ModelsPagination(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsPagination:
         instance = cls()
+        if not dict_:
+            return instance
         if "first" in dict_ and dict_["first"] is not None:
             instance.first = str(dict_["first"])
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:40.612190+08:00
+# Auto-generated at 2021-09-27T17:12:38.725898+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -73,6 +73,8 @@ class UserZipCode(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> UserZipCode:
         instance = cls()
+        if not dict_:
+            return instance
         if "zipCode" in dict_ and dict_["zipCode"] is not None:
             instance.zip_code = str(dict_["zipCode"])
         elif include_empty:

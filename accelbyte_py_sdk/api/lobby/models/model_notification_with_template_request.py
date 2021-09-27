@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.200577+08:00
+# Auto-generated at 2021-09-27T17:12:33.441520+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -111,6 +111,8 @@ class ModelNotificationWithTemplateRequest(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelNotificationWithTemplateRequest:
         instance = cls()
+        if not dict_:
+            return instance
         if "templateContext" in dict_ and dict_["templateContext"] is not None:
             instance.template_context = {str(k0): str(v0) for k0, v0 in dict_["templateContext"].items()}
         elif include_empty:

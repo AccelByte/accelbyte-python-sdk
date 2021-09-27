@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:38.663041+08:00
+# Auto-generated at 2021-09-27T17:12:36.190372+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -440,6 +440,8 @@ class ItemUpdate(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ItemUpdate:
         instance = cls()
+        if not dict_:
+            return instance
         if "itemType" in dict_ and dict_["itemType"] is not None:
             instance.item_type = str(dict_["itemType"])
         elif include_empty:

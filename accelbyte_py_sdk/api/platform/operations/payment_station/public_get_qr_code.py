@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:39.333560+08:00
+# Auto-generated at 2021-09-27T17:01:30.125040+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -188,6 +188,9 @@ class PublicGetQRCode(Operation):
         """
         if code == 200:
             return Any(content), None
+        was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
+        if was_handled:
+            return None, undocumented_response
         return None, HttpResponse.create_unhandled_error()
 
     # endregion response methods

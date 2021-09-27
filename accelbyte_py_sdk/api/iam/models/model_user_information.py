@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:34.839494+08:00
+# Auto-generated at 2021-09-27T17:12:31.660951+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -153,6 +153,8 @@ class ModelUserInformation(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelUserInformation:
         instance = cls()
+        if not dict_:
+            return instance
         if "Country" in dict_ and dict_["Country"] is not None:
             instance.country = str(dict_["Country"])
         elif include_empty:

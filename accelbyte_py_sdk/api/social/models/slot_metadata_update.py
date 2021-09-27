@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-21T14:10:36.859865+08:00
+# Auto-generated at 2021-09-27T17:12:34.267867+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -101,6 +101,8 @@ class SlotMetadataUpdate(Model):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> SlotMetadataUpdate:
         instance = cls()
+        if not dict_:
+            return instance
         if "label" in dict_ and dict_["label"] is not None:
             instance.label = str(dict_["label"])
         elif include_empty:
