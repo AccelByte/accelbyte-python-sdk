@@ -2,6 +2,7 @@ import urllib.parse
 
 from typing import Any, Dict
 
+from ._http_status_codes import HTTP_STATUS_CODES
 from ._model import Model
 
 
@@ -63,6 +64,16 @@ class HttpResponse(Model):
         instance.content_type = "error"
         instance.content = "Unhandled Error"
         return instance
+
+    @classmethod
+    def try_create_undocumented_response(cls, code: int, content: Any):
+        if code not in HTTP_STATUS_CODES:
+            return False, None
+        instance = cls()
+        instance.code = code
+        instance.content_type = "error"
+        instance.content = content
+        return True, instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
