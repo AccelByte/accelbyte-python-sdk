@@ -15,9 +15,9 @@ def login_client():
 
 def login_user(username: Optional[str] = None, password: Optional[str] = None):
     if username is None:
-        username = os.environ["ACB_DEV_ADMIN_USERNAME"]
+        username = os.environ["ACB_USERNAME"]
     if password is None:
-        password = os.environ["ACB_DEV_ADMIN_PASSWORD"]
+        password = os.environ["ACB_PASSWORD"]
     _, error = login(username, password)
     if error:
         raise Exception(str(error))
