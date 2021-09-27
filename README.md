@@ -26,10 +26,10 @@ import accelbyte_py_sdk
 from accelbyte_py_sdk.core import MyConfigRepository
 
 my_config_repository = MyConfigRepository(
-    base_url=environ["ACB_DEV_BASE_URL"],
-    client_id=environ["ACB_DEV_CLIENT_ID"],
-    client_secret=environ["ACB_DEV_CLIENT_SECRET"],
-    namespace=environ["ACB_DEV_PRODUCT_NAMESPACE"],
+    base_url=environ["ACB_BASE_URL"],
+    client_id=environ["ACB_CLIENT_ID"],
+    client_secret=environ["ACB_CLIENT_SECRET"],
+    namespace=environ["ACB_NAMESPACE"],
 )
 options = {
     "config": my_config_repository
@@ -53,8 +53,8 @@ from accelbyte_py_sdk.services.auth import login, logout
 if __name__ == "__main__":
     accelbyte_py_sdk.initialize()
 
-    username = environ["ACB_DEV_ADMIN_USERNAME"]
-    password = environ["ACB_DEV_ADMIN_PASSWORD"]
+    username = environ["ACB_USERNAME"]
+    password = environ["ACB_PASSWORD"]
 
     _, error = login(username, password)
     assert error is None

@@ -10,8 +10,8 @@ if __name__ == "__main__":
     _, error = get_access_token()
     assert error is not None
 
-    username = environ["ACB_DEV_ADMIN_USERNAME"]
-    password = environ["ACB_DEV_ADMIN_PASSWORD"]
+    username = environ["ACB_USERNAME"]
+    password = environ["ACB_PASSWORD"]
 
     _, error = login(username, password)
     assert error is None
