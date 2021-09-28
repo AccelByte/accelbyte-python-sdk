@@ -58,10 +58,10 @@ class MyConfigRepository(ConfigRepository):
 class EnvironmentConfigRepository(ConfigRepository):
 
     def __init__(self):
-        self._base_url = environ["ACB_DEV_BASE_URL"]
-        self._client_id = environ["ACB_DEV_CLIENT_ID"]
-        self._client_secret = environ["ACB_DEV_CLIENT_SECRET"]
-        self._namespace = environ["ACB_DEV_PRODUCT_NAMESPACE"]
+        self._base_url = environ["AB_BASE_URL"]
+        self._client_id = environ["AB_CLIENT_ID"]
+        self._client_secret = environ["AB_CLIENT_SECRET"]
+        self._namespace = environ["AB_NAMESPACE"]
 
     def get_base_url(self) -> str:
         return self._base_url
