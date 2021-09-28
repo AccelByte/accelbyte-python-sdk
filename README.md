@@ -3,7 +3,10 @@
 ## Installation
 
 ```sh
-pip install git+ssh://git@bitbucket.org/accelbyte/justice-codegen-sdk.git@feature/JSC-158-python-3.9-sdk-poc#egg=accelbyte_py_sdk&subdirectory=accelbyte-py-sdk
+pip install requests pyyaml pyjwt
+```
+```sh
+pip install git+https://github.com/AccelByte/accelbyte-python-sdk.git@main#egg=accelbyte_py_sdk
 ```
 
 ## Usage
