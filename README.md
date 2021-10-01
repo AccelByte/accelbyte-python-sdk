@@ -664,6 +664,24 @@ You can get more information for each command by using this syntax:
 $ python -m sample_app COMMAND --help
 ```
 
+You will have to set first the following environment variables:
+
+```sh
+#Used by all operations
+export AB_BASE_URL="https://env.accelbyte.io"
+
+#Used by some operations
+export AB_NAMESPACE="accelbyte"
+
+#Used when logging in as client
+export AB_CLIENT_ID="your-client-id"
+export AB_CLIENT_SECRET="your-client-secret"
+
+#Used when logging in as user
+export AB_USERNAME="your-username"
+export AB_PASSWORD="your-password"
+```
+
 ### Examples
 
 ```sh
@@ -676,6 +694,7 @@ Options:
 $ python -m sample_app login USERNAME PASSWORD
 
 Login success.
+access_token: ****
 ```
 
 ```sh
@@ -726,16 +745,21 @@ OAuth2 access token generation endpoint (TokenGrantV3)
         403: Forbidden - OauthmodelErrorResponse (Unauthorized access)
 
 Login success.
+access_token: ****
 ```
+
+Most commands will require you to login as either a `client` or as a `user`.
+For these commands you'll have to pass either `--login_as client` or `--login_as user`.
 
 ```sh
 Usage: python -m sample_app get-ban-types [OPTIONS]
 
 Options:
   --doc BOOLEAN
-  --help         Show this message and exit.
+  --login_as [client|user]
+  --help                    Show this message and exit.
 
-$ python -m sample_app get-ban-types
+$ python -m sample_app get-ban-types --login_as user
 
 Get ban types success.
 Ban Types: CHAT_SEND, CHAT_ALL, VOICE_SEND, VOICE_ALL, COMMUNITY, TRADE_INITIATE, TRADE_ALL, ORDER_AND_PAYMENT, MARKETPLACE_LIST, MARKETPLACE_ALL, LOGIN, STATISTICS, MATCHMAKING, UGC_CREATE_UPDATE
@@ -749,9 +773,10 @@ Options:
   --namespace TEXT
   --role_id TEXT
   --doc BOOLEAN
+  --login_as [client|user]
   --help            Show this message and exit.
 
-$ python -m sample_app register-user eagerhamster6800 vi7xUuNc4j@fakemail.com 2000-09-23 US "****************"
+$ python -m sample_app register-user eagerhamster6800 vi7xUuNc4j@fakemail.com 2000-09-23 US "****" --login_as client
 
 User registration success.
 authType: EMAILPASSWD
@@ -759,8 +784,8 @@ country: US
 dateOfBirth: '2000-09-23T00:00:00Z'
 displayName: eagerhamster6800
 emailAddress: vi7xuunc4j@fakemail.com
-namespace: *******
-userId: ********************************
+namespace: ****
+userId: ****
 ```
 
 ```sh
@@ -768,14 +793,15 @@ Usage: python -m sample_app get-my-admin-user [OPTIONS]
 
 Options:
   --doc BOOLEAN
+  --login_as [client|user]
   --help         Show this message and exit.
 
-$ python -m sample_app get-my-admin-user
+$ python -m sample_app get-my-admin-user --login_as user
 
 Get my admin user success.
 ...
-userId: ********************************
-userName: ************
+userId: ****
+userName: ****
 ```
 
 ```sh
@@ -785,19 +811,20 @@ Usage: python -m sample_app update-client [OPTIONS] CLIENT_ID
 Options:
   --namespace TEXT
   --doc BOOLEAN
+  --login_as [client|user]
   --help            Show this message and exit.
 
-$ python -m sample_app update-client ******************************** {"clientName": "**********"}
+$ python -m sample_app update-client **** {"clientName": "****"} --login_as user
 
 Update client success.
-clientId: ********************************
-clientName: **********
+clientId: ****
+clientName: ****
 clientPermissions:
 - action: 2
   resource: CLIENT
 createdAt: '2020-09-23T00:00:00.000000Z'
 modifiedAt: '2021-09-23T00:00:30.000000Z'
-namespace: *******
+namespace: ****
 oauthClientType: Confidential
 redirectUri: http://127.0.0.1
 scopes:
@@ -815,9 +842,10 @@ Options:
   --user_name TEXT
   --namespace TEXT
   --doc BOOLEAN
+  --login_as [client|user]
   --help                Show this message and exit.
 
-$ python -m sample_app update-user ******************************** --date_of_birth 2000-09-23
+$ python -m sample_app update-user **** --date_of_birth 2000-09-23 --login_as user
 
 Update user success.
 ...
