@@ -39,7 +39,8 @@ class PartyKickRequest(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {PartyKickRequest.get_type()}"]
-        wsm.append(self.id_ if hasattr(self, "id_") else generate_websocket_message_id())
+        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
+        wsm.append(f"id: {id_}")
         if hasattr(self, "member_id") and self.member_id:
             wsm.append(f"memberId: {self.member_id}")
         return "\n".join(wsm)
@@ -56,7 +57,10 @@ class PartyKickRequest(WebSocketMessage):
         lines = wsm.splitlines(keepends=False)
         if len(lines) < 2:
             raise WebSocketMessageParserException(WebSocketMessageParserError.TypeFormatInvalid)
-        instance.id_ = lines[1]
+        id_line = lines[1]
+        if not id_line.startswith("id: "):
+            raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
+        instance.id_ = id_line.removeprefix("id: ")
         for line in lines[2:]:
             parts = line.split(":", 1)
             if len(parts) != 2:
