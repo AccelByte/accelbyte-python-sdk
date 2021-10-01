@@ -45,6 +45,11 @@ def generate_amazon_xray_trace_id(version: int = 1) -> str:
     return f"{version}-{unix_timestamp_hex}-{uuid_str}"
 
 
+def generate_websocket_message_id() -> str:
+    uuid_str = str(uuid4()).replace("-", "")[0:24]
+    return uuid_str
+
+
 def get_query_from_http_redirect_response(
         http_response: HttpResponse,
         query_key: str
