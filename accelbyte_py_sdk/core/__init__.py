@@ -23,6 +23,11 @@ from ._utils import get_query_from_http_redirect_response
 from ._utils import infer_content_type_from_params
 from ._utils import infer_headers_from_operation
 
+from ._wsm import WebSocketMessage
+from ._wsm import WebSocketMessageParserError
+from ._wsm import WebSocketMessageParserException
+from ._wsm import parse_wsm
+
 from ._decorators import same_doc_as
 
 from ._core import initialize
