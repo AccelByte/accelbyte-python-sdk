@@ -1,5 +1,6 @@
 import click
 
+from accelbyte_py_sdk.core import get_access_token
 from accelbyte_py_sdk.services.auth import login as acb_login
 
 
@@ -21,3 +22,7 @@ def login(
     if error:
         raise Exception(str(error))
     click.echo("Login success.")
+    access_token, error = get_access_token()
+    if error:
+        raise Exception(str(error))
+    click.echo(f"access token: {access_token}")
