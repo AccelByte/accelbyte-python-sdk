@@ -6,7 +6,7 @@ from accelbyte_py_sdk.api.iam import admin_add_user_role_v3
 from accelbyte_py_sdk.api.iam import public_create_user_v3
 from accelbyte_py_sdk.api.iam.models import ModelUserCreateRequestV3
 
-from ._utils import login_client
+from ._utils import login_as as login_as_internal
 
 
 @click.command()
@@ -18,6 +18,7 @@ from ._utils import login_client
 @click.option("--namespace")
 @click.option("--role_id")
 @click.option("--doc", type=bool)
+@click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 def register_user(
         display_name,
         email_address,
@@ -27,8 +28,9 @@ def register_user(
         namespace,
         role_id,
         doc,
+        login_as,
 ):
-    login_client()
+    login_as_internal(login_as)
     if doc:
         click.echo(public_create_user_v3.__doc__)
     result, error = public_create_user_v3(

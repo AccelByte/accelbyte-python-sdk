@@ -5,7 +5,7 @@ import click
 from accelbyte_py_sdk.api.iam import admin_update_client_permission_v3
 from accelbyte_py_sdk.api.iam.models import AccountcommonClientPermissionsV3
 
-from ._utils import login_user
+from ._utils import login_as as login_as_internal
 
 
 @click.command()
@@ -13,13 +13,15 @@ from ._utils import login_user
 @click.argument("permissions")
 @click.option("--namespace")
 @click.option("--doc", type=bool)
+@click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 def update_client_permissions(
         client_id,
         permissions,
         namespace,
         doc,
+        login_as,
 ):
-    login_user(None, None)
+    login_as_internal(login_as)
     if doc:
         click.echo(admin_update_client_permission_v3.__doc__)
     permissions = json.loads(permissions)

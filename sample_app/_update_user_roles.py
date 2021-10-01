@@ -5,7 +5,7 @@ import click
 from accelbyte_py_sdk.api.iam import admin_save_user_role_v3
 from accelbyte_py_sdk.api.iam.models import ModelNamespaceRoleRequest
 
-from ._utils import login_user
+from ._utils import login_as as login_as_internal
 
 
 @click.command()
@@ -13,13 +13,15 @@ from ._utils import login_user
 @click.argument("role_update_requests")
 @click.option("--namespace")
 @click.option("--doc", type=bool)
+@click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 def update_user_roles(
         user_id,
         role_update_requests,
         namespace,
         doc,
+        login_as,
 ):
-    login_user(None, None)
+    login_as_internal(login_as)
     if doc:
         click.echo(admin_save_user_role_v3.__doc__)
     role_update_requests = json.loads(role_update_requests)

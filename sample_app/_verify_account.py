@@ -3,7 +3,7 @@ import click
 from accelbyte_py_sdk.api.iam import admin_verify_account_v3
 from accelbyte_py_sdk.api.iam.models import ModelUserVerificationRequest
 
-from ._utils import login_user
+from ._utils import login_as as login_as_internal
 
 
 @click.command()
@@ -13,6 +13,7 @@ from ._utils import login_user
 @click.argument("language_tag")
 @click.option("--namespace")
 @click.option("--doc", type=bool)
+@click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 def verify_account(
         user_id,
         code,
@@ -20,9 +21,9 @@ def verify_account(
         language_tag,
         namespace,
         doc,
+        login_as,
 ):
-    login_user(None, None)
-
+    login_as_internal(login_as)
     if doc:
         click.echo(admin_verify_account_v3.__doc__)
     result, error = admin_verify_account_v3(

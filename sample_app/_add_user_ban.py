@@ -3,7 +3,7 @@ import click
 from accelbyte_py_sdk.api.iam import admin_ban_user_v3
 from accelbyte_py_sdk.api.iam.models import ModelBanCreateRequest
 
-from ._utils import login_client
+from ._utils import login_as as login_as_internal
 
 
 @click.command()
@@ -15,6 +15,7 @@ from ._utils import login_client
 @click.option("--namespace")
 @click.option("--skip_notif", type=bool, default=True)
 @click.option("--doc", type=bool)
+@click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 def add_user_ban(
         user_id,
         ban,
@@ -24,8 +25,9 @@ def add_user_ban(
         namespace,
         skip_notif,
         doc,
+        login_as,
 ):
-    login_client()
+    login_as_internal(login_as)
     if doc:
         click.echo(admin_ban_user_v3.__doc__)
     result, error = admin_ban_user_v3(

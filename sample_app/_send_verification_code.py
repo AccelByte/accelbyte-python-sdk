@@ -3,7 +3,7 @@ import click
 from accelbyte_py_sdk.api.iam import admin_send_verification_code_v3
 from accelbyte_py_sdk.api.iam.models import ModelSendVerificationCodeRequestV3
 
-from ._utils import login_user
+from ._utils import login_as as login_as_internal
 
 
 @click.command()
@@ -13,6 +13,7 @@ from ._utils import login_user
 @click.argument("language_tag")
 @click.option("--namespace")
 @click.option("--doc", type=bool)
+@click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 def send_verification_code(
         user_id,
         context,
@@ -20,9 +21,9 @@ def send_verification_code(
         language_tag,
         namespace,
         doc,
+        login_as,
 ):
-    login_user(None, None)
-
+    login_as_internal(login_as)
     if doc:
         click.echo(admin_send_verification_code_v3.__doc__)
     result, error = admin_send_verification_code_v3(

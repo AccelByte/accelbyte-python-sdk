@@ -6,7 +6,7 @@ import click
 from accelbyte_py_sdk.api.social import update_stat as update_stat_internal
 from accelbyte_py_sdk.api.social.models import StatUpdate
 
-from ._utils import login_user
+from ._utils import login_as as login_as_internal
 
 
 @click.command()
@@ -14,13 +14,15 @@ from ._utils import login_user
 @click.argument("stat_update")
 @click.option("--namespace")
 @click.option("--doc", type=bool)
+@click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 def update_stat(
         stat_code,
         stat_update,
         namespace,
         doc,
+        login_as,
 ):
-    login_user(None, None)
+    login_as_internal(login_as)
     if doc:
         click.echo(update_stat_internal.__doc__)
     stat_update = json.loads(stat_update)
