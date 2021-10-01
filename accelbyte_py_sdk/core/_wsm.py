@@ -10,11 +10,15 @@ class WebSocketMessageParserError(Enum):
     TypeFormatInvalid = auto()
     TypeNotSupported = auto()
 
+    def __str__(self):
+        return str(self.name)
+
 
 class WebSocketMessageParserException(Exception):
 
     def __init__(self, error: WebSocketMessageParserError):
         self.error = error
+        super().__init__()
 
 
 class WebSocketMessage:
