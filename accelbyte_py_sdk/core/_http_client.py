@@ -7,6 +7,7 @@ import requests
 from ._header import Header
 from ._http_response import HttpResponse
 from ._operation import Operation
+from ._utils import create_curl_request
 
 
 # NOTE(elmer): convert into a class if needed
@@ -144,3 +145,12 @@ class RequestsHttpClient(HttpClient):
             content = None
 
         return (status_code, content_type, content), None
+
+    @staticmethod
+    def convert_to_curl(prepared_request: requests.PreparedRequest) -> str:
+        return create_curl_request(
+            uri=prepared_request.url,
+            method=prepared_request.method,
+            headers={k: v for k, v in prepared_request.headers.items()},
+            data=prepared_request.body
+        )
