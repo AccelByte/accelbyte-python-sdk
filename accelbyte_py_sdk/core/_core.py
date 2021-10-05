@@ -237,7 +237,9 @@ def run_request(operation: Operation, base_url: Union[None, str] = None, headers
 
     headers = headers if headers is not None else operation.get_headers()
 
-    if operation.security == "basic":
+    if hasattr(operation, "authorization_override") and operation.authorization_override:
+        headers.add_authorization(operation.authorization_override)
+    elif operation.security == "basic":
         client_auth, error = get_client_auth()
         if error:
             return None, error

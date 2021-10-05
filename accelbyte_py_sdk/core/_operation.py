@@ -20,6 +20,7 @@ class Operation:
     produces: List[str] = []
     security: Optional[str] = None
     location_query: Optional[str] = None
+    authorization_override: Optional[str] = None
 
     def get_full_url(self, base_url: Union[None, str] = None) -> str:
         raise NotImplementedError
