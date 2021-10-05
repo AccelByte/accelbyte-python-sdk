@@ -4,7 +4,7 @@ import os
 
 from base64 import b64encode
 from time import time
-from typing import Dict, Tuple, Union
+from typing import Any, Dict, Tuple, Union
 from uuid import uuid4
 
 from ._http_response import HttpResponse
@@ -12,6 +12,15 @@ from ._http_response import HttpResponse
 
 def create_basic_authentication(username: str, password: str) -> str:
     return f'Basic {b64encode(f"{username}:{password}".encode("utf-8")).decode("utf-8")}'
+
+
+def create_curl_request(uri: str, method: str, headers: Dict[str, str], data: Any, delimiter: str = "\n"):
+    parts = [f'curl -X {method} "{uri}"']
+    for k, v in headers.items():
+        parts.append(f'-H "{k}: {v}"')
+    parts.append(f"-d '{data if data else ''}'")
+    result = delimiter.join(parts)
+    return result
 
 
 def create_pkce_verifier_and_challenge_plain(
