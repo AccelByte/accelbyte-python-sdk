@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 import asyncio
-from typing import Optional, Type, Union
+from typing import Callable, Optional, Type, Union
 
 from autobahn.asyncio.websocket import WebSocketClientFactory
 from autobahn.asyncio.websocket import WebSocketClientProtocol
@@ -42,10 +42,11 @@ class AutobahnWSClientProtocol(WebSocketClientProtocol):
 
     def __init__(self):
         super().__init__()
-        self.on_message_callback = None
+        self.on_message_callback: Optional[Callable[[Union[bytes, str], bool], None]] = None
 
     def onMessage(self, payload, isBinary):
         if self.on_message_callback:
+            # pylint: disable=not-callable
             self.on_message_callback(payload, isBinary)
 
 
@@ -104,12 +105,15 @@ class AutobahnWSClient(WSClient):
 class WebsocketsWSClient(WSClient):
 
     def __init__(self, **kwargs):
+        # pylint: disable=no-member
+        # NOTE(elmer): websockets uses __all__ to import
         super().__init__(**kwargs)
         self.connection: Optional[websockets.WebSocketClientProtocol] = None
 
     def __del__(self):
         if self.connection is not None:
             # noinspection PyBroadException
+            # pylint: disable=broad-except
             try:
                 loop = asyncio.get_event_loop()
                 if loop.is_running():
@@ -122,6 +126,8 @@ class WebsocketsWSClient(WSClient):
     async def connect(self):
         if self.connection is None:
             try:
+                # pylint: disable=no-member
+                # NOTE(elmer): websockets uses __all__ to import
                 self.connection = await websockets.connect(self.uri)
                 asyncio.create_task(self._receive())
             except ConnectionRefusedError:
