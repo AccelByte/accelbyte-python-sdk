@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import AccountcommonCountryAgeRestriction
@@ -1062,6 +1063,7 @@ def delete_user_role(user_id: str, role_id: str, namespace: Optional[str] = None
     return run_request(request)
 
 
+@deprecated
 @same_doc_as(DisableUser)
 def disable_user(body: ModelDisableUserRequest, user_id: str, namespace: Optional[str] = None):
     if namespace is None:
@@ -1090,6 +1092,7 @@ def disable_user_ban(user_id: str, ban_id: str, namespace: Optional[str] = None)
     return run_request(request)
 
 
+@deprecated
 @same_doc_as(EnableUser)
 def enable_user(user_id: str, namespace: Optional[str] = None):
     if namespace is None:
@@ -1279,6 +1282,7 @@ def get_user_information(user_id: str, namespace: Optional[str] = None):
     return run_request(request)
 
 
+@deprecated
 @same_doc_as(GetUserJusticePlatformAccount)
 def get_user_justice_platform_account(user_id: str, target_namespace: str, namespace: Optional[str] = None):
     if namespace is None:
@@ -1377,6 +1381,7 @@ def list_admins_v3(limit: Optional[int] = None, after: Optional[str] = None, bef
     return run_request(request)
 
 
+@deprecated
 @same_doc_as(ListCrossNamespaceAccountLink)
 def list_cross_namespace_account_link(linking_token: str, user_id: str, platform_id: Optional[str] = None, namespace: Optional[str] = None):
     if namespace is None:
@@ -1926,6 +1931,7 @@ def save_user_roles(body: List[str], user_id: str, namespace: Optional[str] = No
     return run_request(request)
 
 
+@deprecated
 @same_doc_as(SearchUser)
 def search_user(query: Optional[str] = None, namespace: Optional[str] = None):
     if namespace is None:
@@ -1967,6 +1973,7 @@ def update_country_age_restriction(body: ModelCountryAgeRestrictionRequest, coun
     return run_request(request)
 
 
+@deprecated
 @same_doc_as(UpdatePassword)
 def update_password(body: ModelUserPasswordUpdateRequest, user_id: str, namespace: Optional[str] = None):
     if namespace is None:

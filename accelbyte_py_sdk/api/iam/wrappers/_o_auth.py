@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import OauthapiRevocationList
@@ -73,6 +74,7 @@ def platform_token_grant(platform_id: str, device_id: Optional[str] = None, plat
     return run_request(request)
 
 
+@deprecated
 @same_doc_as(PlatformTokenRequestHandler)
 def platform_token_request_handler(platform_id: str, platform_token: Optional[str] = None, device_id: Optional[str] = None, namespace: Optional[str] = None):
     if namespace is None:
@@ -88,6 +90,7 @@ def platform_token_request_handler(platform_id: str, platform_token: Optional[st
     return run_request(request)
 
 
+@deprecated
 @same_doc_as(RevokeAUser)
 def revoke_a_user(user_id: str):
     request = RevokeAUser.create(
@@ -96,6 +99,7 @@ def revoke_a_user(user_id: str):
     return run_request(request)
 
 
+@deprecated
 @same_doc_as(RevokeToken)
 def revoke_token(token: str):
     request = RevokeToken.create(

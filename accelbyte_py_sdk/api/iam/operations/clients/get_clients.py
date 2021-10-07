@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.507320+08:00
+# Auto-generated at 2021-10-07T15:03:03.429459+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -24,10 +24,12 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ClientmodelClientResponse
 
 
+@deprecated
 class GetClients(Operation):
     """Get All Clients (GetClients)
 
