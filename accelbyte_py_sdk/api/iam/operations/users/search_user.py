@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.573499+08:00
+# Auto-generated at 2021-10-07T15:03:03.462413+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -24,10 +24,12 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ModelSearchUsersResponse
 
 
+@deprecated
 class SearchUser(Operation):
     """Search users (SearchUser)
 

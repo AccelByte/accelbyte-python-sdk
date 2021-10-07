@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import AccountcommonClientPermissions
@@ -176,6 +177,7 @@ def admin_update_client_v3(body: ClientmodelClientUpdateV3Request, client_id: st
     return run_request(request)
 
 
+@deprecated
 @same_doc_as(CreateClient)
 def create_client(body: ClientmodelClientCreateRequest):
     request = CreateClient.create(
@@ -197,6 +199,7 @@ def create_client_by_namespace(body: ClientmodelClientCreateRequest, namespace: 
     return run_request(request)
 
 
+@deprecated
 @same_doc_as(DeleteClient)
 def delete_client(client_id: str):
     request = DeleteClient.create(
@@ -236,6 +239,7 @@ def get_client(client_id: str):
     return run_request(request)
 
 
+@deprecated
 @same_doc_as(GetClients)
 def get_clients():
     request = GetClients.create()
