@@ -32,6 +32,7 @@ from ._ws_client import AutobahnWSClientProtocol
 from ._ws_client import AutobahnWSClient
 from ._ws_client import WebsocketsWSClient
 
+from ._decorators import deprecated
 from ._decorators import same_doc_as
 
 from ._core import initialize
