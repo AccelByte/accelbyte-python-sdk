@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 
 import asyncio
+import logging
 from typing import Callable, Optional, Type, Union
 
 from autobahn.asyncio.websocket import WebSocketClientFactory
@@ -8,6 +9,8 @@ from autobahn.asyncio.websocket import WebSocketClientProtocol
 from autobahn.websocket.protocol import WebSocketProtocol
 
 import websockets
+
+_LOGGER = logging.getLogger("accelbyte_py_sdk.ws")
 
 
 class WSClient(ABC):
@@ -35,7 +38,7 @@ class WSClient(ABC):
     # noinspection PyMethodMayBeStatic
     def on_message(self, data: Union[bytes, str], is_binary: bool = False):
         # pylint: disable=no-self-use
-        print(data)
+        _LOGGER.debug(data)
 
 
 class AutobahnWSClientProtocol(WebSocketClientProtocol):
@@ -43,6 +46,19 @@ class AutobahnWSClientProtocol(WebSocketClientProtocol):
     def __init__(self):
         super().__init__()
         self.on_message_callback: Optional[Callable[[Union[bytes, str], bool], None]] = None
+
+    def onConnect(self, response):
+        _LOGGER.debug(f"Server connected: {response.peer}")
+
+    def onConnecting(self, transport_details):
+        _LOGGER.debug(f"Connecting transport details: {transport_details}")
+        return None
+
+    def onOpen(self):
+        _LOGGER.debug("Connection open.")
+
+    def onClose(self, wasClean, code, reason):
+        _LOGGER.debug(f"Connection closed: [{code}] {reason}")
 
     def onMessage(self, payload, isBinary):
         if self.on_message_callback:
@@ -128,7 +144,7 @@ class WebsocketsWSClient(WSClient):
             try:
                 # pylint: disable=no-member
                 # NOTE(elmer): websockets uses __all__ to import
-                self.connection = await websockets.connect(self.uri)
+                self.connection = await websockets.connect(self.uri, logger=_LOGGER)
                 asyncio.create_task(self._receive())
             except ConnectionRefusedError:
                 raise

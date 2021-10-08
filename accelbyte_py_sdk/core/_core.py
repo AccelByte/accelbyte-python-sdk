@@ -1,3 +1,4 @@
+import logging
 from typing import Any, Dict, Tuple, Union
 
 from ._config_repository import ConfigRepository
@@ -15,6 +16,8 @@ from ._header import Header
 from ._http_response import HttpResponse
 from ._operation import Operation
 from ._utils import get_query_from_http_redirect_response
+
+_LOGGER = logging.getLogger("accelbyte_py_sdk")
 
 _CONFIG_REPOSITORY: Union[None, ConfigRepository] = None
 _TOKEN_REPOSITORY: Union[None, TokenRepository] = None
@@ -93,6 +96,8 @@ def initialize(
         _HTTP_CLIENT = http_client()
 
     # endregion http client
+
+    _LOGGER.info("AccelByte Python SDK initialized.")
 
 
 # region ConfigRepository
@@ -226,9 +231,6 @@ Response = Tuple[int, str, Any]
 
 def run_request(operation: Operation, base_url: Union[None, str] = None, headers: Union[None, Header] = None, **kwargs) -> Tuple[Any, Any]:
     http_client = get_http_client()
-
-    # TODO(elmer): fill up client_id, namespace only if operation needs it
-    # here
 
     if base_url is None:
         config_base_url, error = get_base_url()
