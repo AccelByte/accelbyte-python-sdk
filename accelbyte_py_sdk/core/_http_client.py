@@ -1,4 +1,5 @@
 import json
+import logging
 from abc import ABC, abstractmethod
 from typing import Any, Tuple, Union
 
@@ -9,6 +10,7 @@ from ._http_response import HttpResponse
 from ._operation import Operation
 from ._utils import create_curl_request
 
+_LOGGER = logging.getLogger("accelbyte_py_sdk.http")
 
 # NOTE(elmer): convert into a class if needed
 Response = Tuple[int, str, Any]  # code, content-type, content
@@ -109,6 +111,7 @@ class RequestsHttpClient(HttpClient):
     ) -> Tuple[Any, Union[None, HttpResponse]]:
         if "allow_redirects" not in kwargs:
             kwargs["allow_redirects"] = self.allow_redirects
+        _LOGGER.debug(RequestsHttpClient.convert_to_curl(request))
         raw_response = self.session.send(request, **kwargs)
         return raw_response, None
 

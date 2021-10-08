@@ -18,7 +18,8 @@ def create_curl_request(uri: str, method: str, headers: Dict[str, str], data: An
     parts = [f'curl -X {method} "{uri}"']
     for k, v in headers.items():
         parts.append(f'-H "{k}: {v}"')
-    parts.append(f"-d '{data if data else ''}'")
+    if data:
+        parts.append(f"-d '{data}'")
     result = delimiter.join(parts)
     return result
 
