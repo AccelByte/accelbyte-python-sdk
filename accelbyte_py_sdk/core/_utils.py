@@ -67,8 +67,20 @@ def get_query_from_http_redirect_response(
     if http_response.content_type != "location":
         return None, HttpResponse.create_error(http_response.code, "Can't find 'Location' in Header.")
     query = http_response.get_query_params()
-    if query_key not in query or len(query[query_key]) < 1:
-        return None, HttpResponse.create_error(http_response.code, f"Can't '{query_key}' in query.")
+    if query_key not in query:
+        error_related_keys = ["error", "error_code", "error_description", "error_message"]
+        if any(q in error_related_keys for q in query):
+            error_parts = []
+            if "error" in query:
+                error_parts.append(f"[{str(query['error'][0])}]")
+            elif "error_code" in query:
+                error_parts.append(f"[{str(query['error_code'][0])}]")
+            if "error_description" in query:
+                error_parts.append(str(query["error_description"][0]))
+            elif "error_message" in query:
+                error_parts.append(str(query["error_message"][0]))
+            return None, HttpResponse.create_error(http_response.code, " ".join(error_parts))
+        return None, HttpResponse.create_error(http_response.code, f"Can't find '{query_key}' in query.")
     query_value = str(query[query_key][0])
     return query_value, None
 
