@@ -85,12 +85,12 @@ def initialize(
             implementation = next((impl for impl in _HTTP_CLIENT_IMPL if impl.__name__ == http_client), None)
             if implementation is None:
                 raise ValueError(f"HTTP Client '{token_repository}' not recognized.")
+            http_client = implementation
         elif not isinstance(http_client, HttpClient):
             raise ValueError(f"HTTP Client '{token_repository}' not recognized.")
-        _HTTP_CLIENT = http_client
     else:
         http_client = _HTTP_CLIENT_IMPL[0]
-        _HTTP_CLIENT = http_client()
+    _HTTP_CLIENT = http_client()
 
     # endregion http client
 
