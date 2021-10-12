@@ -59,7 +59,7 @@ class RematchmakingNotif(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "banDuration":
+            if (not is_strict and name.casefold() == "banDuration".casefold()) or (name == "banDuration"):
                 instance.ban_duration = value
                 continue
             if is_strict:

@@ -68,16 +68,16 @@ class ChannelChatNotif(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "from":
+            if (not is_strict and name.casefold() == "from".casefold()) or (name == "from"):
                 instance.from_ = value
                 continue
-            if name == "channelSlug":
+            if (not is_strict and name.casefold() == "channelSlug".casefold()) or (name == "channelSlug"):
                 instance.channel_slug = value
                 continue
-            if name == "payload":
+            if (not is_strict and name.casefold() == "payload".casefold()) or (name == "payload"):
                 instance.payload = value
                 continue
-            if name == "sentAt":
+            if (not is_strict and name.casefold() == "sentAt".casefold()) or (name == "sentAt"):
                 instance.sent_at = value
                 continue
             if is_strict:

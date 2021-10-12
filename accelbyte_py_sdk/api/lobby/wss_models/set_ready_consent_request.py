@@ -66,7 +66,7 @@ class SetReadyConsentRequest(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "matchId":
+            if (not is_strict and name.casefold() == "matchId".casefold()) or (name == "matchId"):
                 instance.match_id = value
                 continue
             if is_strict:

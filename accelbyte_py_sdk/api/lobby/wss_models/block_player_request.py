@@ -69,10 +69,10 @@ class BlockPlayerRequest(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "namespace":
+            if (not is_strict and name.casefold() == "namespace".casefold()) or (name == "namespace"):
                 instance.namespace = value
                 continue
-            if name == "blockUserId":
+            if (not is_strict and name.casefold() == "blockUserId".casefold()) or (name == "blockUserId"):
                 instance.block_user_id = value
                 continue
             if is_strict:

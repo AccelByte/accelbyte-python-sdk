@@ -78,19 +78,19 @@ class MessageNotif(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "from":
+            if (not is_strict and name.casefold() == "from".casefold()) or (name == "from"):
                 instance.from_ = value
                 continue
-            if name == "to":
+            if (not is_strict and name.casefold() == "to".casefold()) or (name == "to"):
                 instance.to = value
                 continue
-            if name == "topic":
+            if (not is_strict and name.casefold() == "topic".casefold()) or (name == "topic"):
                 instance.topic = value
                 continue
-            if name == "payload":
+            if (not is_strict and name.casefold() == "payload".casefold()) or (name == "payload"):
                 instance.payload = value
                 continue
-            if name == "sentAt":
+            if (not is_strict and name.casefold() == "sentAt".casefold()) or (name == "sentAt"):
                 instance.sent_at = value
                 continue
             if is_strict:

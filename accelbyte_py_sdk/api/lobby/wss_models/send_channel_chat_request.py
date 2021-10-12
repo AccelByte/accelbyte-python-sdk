@@ -69,10 +69,10 @@ class SendChannelChatRequest(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "channelSlug":
+            if (not is_strict and name.casefold() == "channelSlug".casefold()) or (name == "channelSlug"):
                 instance.channel_slug = value
                 continue
-            if name == "payload":
+            if (not is_strict and name.casefold() == "payload".casefold()) or (name == "payload"):
                 instance.payload = value
                 continue
             if is_strict:

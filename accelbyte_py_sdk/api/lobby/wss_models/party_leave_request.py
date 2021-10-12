@@ -66,7 +66,7 @@ class PartyLeaveRequest(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "ignoreUserRegistry":
+            if (not is_strict and name.casefold() == "ignoreUserRegistry".casefold()) or (name == "ignoreUserRegistry"):
                 instance.ignore_user_registry = value
                 continue
             if is_strict:

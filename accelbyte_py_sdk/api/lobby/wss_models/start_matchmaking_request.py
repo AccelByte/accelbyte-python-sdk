@@ -78,19 +78,19 @@ class StartMatchmakingRequest(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "gameMode":
+            if (not is_strict and name.casefold() == "gameMode".casefold()) or (name == "gameMode"):
                 instance.game_mode = value
                 continue
-            if name == "priority":
+            if (not is_strict and name.casefold() == "priority".casefold()) or (name == "priority"):
                 instance.priority = value
                 continue
-            if name == "partyAttributes":
+            if (not is_strict and name.casefold() == "partyAttributes".casefold()) or (name == "partyAttributes"):
                 instance.party_attributes = json.loads(value)
                 continue
-            if name == "tempParty":
+            if (not is_strict and name.casefold() == "tempParty".casefold()) or (name == "tempParty"):
                 instance.temp_party = value
                 continue
-            if name == "extraAttributes":
+            if (not is_strict and name.casefold() == "extraAttributes".casefold()) or (name == "extraAttributes"):
                 instance.extra_attributes = value
                 continue
             if is_strict:

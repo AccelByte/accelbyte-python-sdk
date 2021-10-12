@@ -66,7 +66,7 @@ class GetSessionAttributeRequest(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "key":
+            if (not is_strict and name.casefold() == "key".casefold()) or (name == "key"):
                 instance.key = value
                 continue
             if is_strict:

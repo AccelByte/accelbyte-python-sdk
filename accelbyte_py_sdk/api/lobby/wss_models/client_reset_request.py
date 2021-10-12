@@ -62,10 +62,10 @@ class ClientResetRequest(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "userId":
+            if (not is_strict and name.casefold() == "userId".casefold()) or (name == "userId"):
                 instance.user_id = value
                 continue
-            if name == "namespace":
+            if (not is_strict and name.casefold() == "namespace".casefold()) or (name == "namespace"):
                 instance.namespace = value
                 continue
             if is_strict:

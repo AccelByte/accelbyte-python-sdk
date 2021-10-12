@@ -26,20 +26,12 @@ from ....core import generate_websocket_message_id
 
 class Heartbeat(WebSocketMessage):
 
-    # region fields
-
-    id_: str
-
-    # endregion fields
-
     # region methods
 
     # noinspection PyMethodMayBeStatic
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {Heartbeat.get_type()}"]
-        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
-        wsm.append(f"id: {id_}")
         return "\n".join(wsm)
 
     # endregion methods
@@ -52,12 +44,8 @@ class Heartbeat(WebSocketMessage):
         if not wsm:
             return instance
         lines = wsm.splitlines(keepends=False)
-        if len(lines) < 2:
+        if len(lines) < 1:
             raise WebSocketMessageParserException(WebSocketMessageParserError.TypeFormatInvalid)
-        id_line = lines[1]
-        if not id_line.startswith("id: "):
-            raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
-        instance.id_ = id_line.removeprefix("id: ")
         return instance
 
     @staticmethod
@@ -67,7 +55,6 @@ class Heartbeat(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
         }
 
     # endregion static methods

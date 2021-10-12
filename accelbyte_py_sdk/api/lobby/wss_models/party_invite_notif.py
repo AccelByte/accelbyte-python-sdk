@@ -62,10 +62,10 @@ class PartyInviteNotif(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "inviterId":
+            if (not is_strict and name.casefold() == "inviterId".casefold()) or (name == "inviterId"):
                 instance.inviter_id = value
                 continue
-            if name == "inviteeId":
+            if (not is_strict and name.casefold() == "inviteeId".casefold()) or (name == "inviteeId"):
                 instance.invitee_id = value
                 continue
             if is_strict:

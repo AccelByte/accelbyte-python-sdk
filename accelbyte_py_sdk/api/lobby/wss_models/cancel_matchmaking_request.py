@@ -69,10 +69,10 @@ class CancelMatchmakingRequest(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "gameMode":
+            if (not is_strict and name.casefold() == "gameMode".casefold()) or (name == "gameMode"):
                 instance.game_mode = value
                 continue
-            if name == "isTempParty":
+            if (not is_strict and name.casefold() == "isTempParty".casefold()) or (name == "isTempParty"):
                 instance.is_temp_party = value
                 continue
             if is_strict:

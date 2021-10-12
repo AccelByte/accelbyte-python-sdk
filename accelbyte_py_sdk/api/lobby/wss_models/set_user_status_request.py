@@ -69,10 +69,10 @@ class SetUserStatusRequest(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "availability":
+            if (not is_strict and name.casefold() == "availability".casefold()) or (name == "availability"):
                 instance.availability = value
                 continue
-            if name == "activity":
+            if (not is_strict and name.casefold() == "activity".casefold()) or (name == "activity"):
                 instance.activity = value
                 continue
             if is_strict:

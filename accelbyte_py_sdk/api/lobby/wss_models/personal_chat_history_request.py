@@ -66,7 +66,7 @@ class PersonalChatHistoryRequest(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "friendId":
+            if (not is_strict and name.casefold() == "friendId".casefold()) or (name == "friendId"):
                 instance.friend_id = value
                 continue
             if is_strict:

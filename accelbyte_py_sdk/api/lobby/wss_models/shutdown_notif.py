@@ -59,7 +59,7 @@ class ShutdownNotif(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "message":
+            if (not is_strict and name.casefold() == "message".casefold()) or (name == "message"):
                 instance.message = value
                 continue
             if is_strict:
