@@ -34,23 +34,19 @@ x-dsmmodel.Session: &dsmmodel_Session
 
 # Server Message
 connectNotif:
-  <<: *BaseResponse
   lobbySessionId: string
   x-tag: Server Messages
 disconnectNotif:
-  <<: *BaseRequest
   namespace: string
   connectionId: string
   x-tag: Server Messages
 errorNotif:
-  <<: *BaseResponse
   message: string
   x-tag: Server Messages
 shutdownNotif:
   message: string
   x-tag: Server Messages
 heartbeat:
-  <<: *BaseRequest
   x-tag: Server Messages
 
 # Party
@@ -474,7 +470,6 @@ setSessionAttributeResponse:
 
 # Signaling
 signalingP2PNotif:
-  <<: *BaseRequest
   destinationId: string
   message: string
   x-tag: Signaling
