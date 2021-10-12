@@ -1,19 +1,13 @@
-# Platform Index
+# Platform Index (3.24.0)
 
 
 ## Operations
+
+### Item
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /platform/admin/namespaces/{namespace}/items/{itemId}/app | GET | getApp | [GetApp](../accelbyte_py_sdk/api/platform/operations/item/get_app.py) | [get_app](../accelbyte_py_sdk/api/platform/wrappers/_item.py) |
 | /platform/admin/namespaces/{namespace}/items/{itemId}/app | PUT | updateApp | [UpdateApp](../accelbyte_py_sdk/api/platform/operations/item/update_app.py) | [update_app](../accelbyte_py_sdk/api/platform/wrappers/_item.py) |
-| /platform/admin/namespaces/{namespace}/categories/{categoryPath} | GET | getCategory | [GetCategory](../accelbyte_py_sdk/api/platform/operations/category/get_category.py) | [get_category](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
-| /platform/admin/namespaces/{namespace}/categories/{categoryPath} | PUT | updateCategory | [UpdateCategory](../accelbyte_py_sdk/api/platform/operations/category/update_category.py) | [update_category](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
-| /platform/admin/namespaces/{namespace}/categories/{categoryPath} | DELETE | deleteCategory | [DeleteCategory](../accelbyte_py_sdk/api/platform/operations/category/delete_category.py) | [delete_category](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
-| /platform/admin/namespaces/{namespace}/categories/basic | GET | listCategoriesBasic | [ListCategoriesBasic](../accelbyte_py_sdk/api/platform/operations/category/list_categories_basic.py) | [list_categories_basic](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
-| /platform/admin/namespaces/{namespace}/categories/{categoryPath}/descendants | GET | getDescendantCategories | [GetDescendantCategories](../accelbyte_py_sdk/api/platform/operations/category/get_descendant_categories.py) | [get_descendant_categories](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
-| /platform/admin/namespaces/{namespace}/categories/{categoryPath}/children | GET | getChildCategories | [GetChildCategories](../accelbyte_py_sdk/api/platform/operations/category/get_child_categories.py) | [get_child_categories](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
-| /platform/admin/namespaces/{namespace}/categories | GET | getRootCategories | [GetRootCategories](../accelbyte_py_sdk/api/platform/operations/category/get_root_categories.py) | [get_root_categories](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
-| /platform/admin/namespaces/{namespace}/categories | POST | createCategory | [CreateCategory](../accelbyte_py_sdk/api/platform/operations/category/create_category.py) | [create_category](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
 | /platform/admin/namespaces/{namespace}/items/{itemId} | GET | getItem | [GetItem](../accelbyte_py_sdk/api/platform/operations/item/get_item.py) | [get_item](../accelbyte_py_sdk/api/platform/wrappers/_item.py) |
 | /platform/admin/namespaces/{namespace}/items/{itemId} | PUT | updateItem | [UpdateItem](../accelbyte_py_sdk/api/platform/operations/item/update_item.py) | [update_item](../accelbyte_py_sdk/api/platform/wrappers/_item.py) |
 | /platform/admin/namespaces/{namespace}/items/{itemId} | DELETE | deleteItem | [DeleteItem](../accelbyte_py_sdk/api/platform/operations/item/delete_item.py) | [delete_item](../accelbyte_py_sdk/api/platform/wrappers/_item.py) |
@@ -36,6 +30,35 @@
 | /platform/admin/namespaces/{namespace}/items/{itemId}/locale | GET | getLocaleItem | [GetLocaleItem](../accelbyte_py_sdk/api/platform/operations/item/get_locale_item.py) | [get_locale_item](../accelbyte_py_sdk/api/platform/wrappers/_item.py) |
 | /platform/admin/namespaces/{namespace}/items/byFeatures/basic | GET | listBasicItemsByFeatures | [ListBasicItemsByFeatures](../accelbyte_py_sdk/api/platform/operations/item/list_basic_items_by_features.py) | [list_basic_items_by_features](../accelbyte_py_sdk/api/platform/wrappers/_item.py) |
 | /platform/admin/namespaces/{namespace}/items/{itemId}/disable | PUT | disableItem | [DisableItem](../accelbyte_py_sdk/api/platform/operations/item/disable_item.py) | [disable_item](../accelbyte_py_sdk/api/platform/wrappers/_item.py) |
+| /platform/public/namespaces/{namespace}/items/{itemId}/app/locale | GET | publicGetApp | [PublicGetApp](../accelbyte_py_sdk/api/platform/operations/item/public_get_app.py) | [public_get_app](../accelbyte_py_sdk/api/platform/wrappers/_item.py) |
+| /platform/public/namespaces/{namespace}/items/bySku | GET | publicGetItemBySku | [PublicGetItemBySku](../accelbyte_py_sdk/api/platform/operations/item/public_get_item_by_sku.py) | [public_get_item_by_sku](../accelbyte_py_sdk/api/platform/wrappers/_item.py) |
+| /platform/public/namespaces/{namespace}/items/search | GET | publicSearchItems | [PublicSearchItems](../accelbyte_py_sdk/api/platform/operations/item/public_search_items.py) | [public_search_items](../accelbyte_py_sdk/api/platform/wrappers/_item.py) |
+| /platform/public/namespaces/{namespace}/items/byAppId | GET | publicGetItemByAppId | [PublicGetItemByAppId](../accelbyte_py_sdk/api/platform/operations/item/public_get_item_by_app_id.py) | [public_get_item_by_app_id](../accelbyte_py_sdk/api/platform/wrappers/_item.py) |
+| /platform/public/namespaces/{namespace}/items/{itemId}/locale | GET | publicGetItem | [PublicGetItem](../accelbyte_py_sdk/api/platform/operations/item/public_get_item.py) | [public_get_item](../accelbyte_py_sdk/api/platform/wrappers/_item.py) |
+| /platform/public/namespaces/{namespace}/items/byCriteria | GET | publicQueryItems | [PublicQueryItems](../accelbyte_py_sdk/api/platform/operations/item/public_query_items.py) | [public_query_items](../accelbyte_py_sdk/api/platform/wrappers/_item.py) |
+| /platform/public/namespaces/{namespace}/items/{itemId}/dynamic | GET | publicGetItemDynamicData | [PublicGetItemDynamicData](../accelbyte_py_sdk/api/platform/operations/item/public_get_item_dynamic_data.py) | [public_get_item_dynamic_data](../accelbyte_py_sdk/api/platform/wrappers/_item.py) |
+| /platform/public/namespaces/{namespace}/items/locale/byIds | GET | publicBulkGetItems | [PublicBulkGetItems](../accelbyte_py_sdk/api/platform/operations/item/public_bulk_get_items.py) | [public_bulk_get_items](../accelbyte_py_sdk/api/platform/wrappers/_item.py) |
+
+### Category
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
+| /platform/admin/namespaces/{namespace}/categories/{categoryPath} | GET | getCategory | [GetCategory](../accelbyte_py_sdk/api/platform/operations/category/get_category.py) | [get_category](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
+| /platform/admin/namespaces/{namespace}/categories/{categoryPath} | PUT | updateCategory | [UpdateCategory](../accelbyte_py_sdk/api/platform/operations/category/update_category.py) | [update_category](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
+| /platform/admin/namespaces/{namespace}/categories/{categoryPath} | DELETE | deleteCategory | [DeleteCategory](../accelbyte_py_sdk/api/platform/operations/category/delete_category.py) | [delete_category](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
+| /platform/admin/namespaces/{namespace}/categories/basic | GET | listCategoriesBasic | [ListCategoriesBasic](../accelbyte_py_sdk/api/platform/operations/category/list_categories_basic.py) | [list_categories_basic](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
+| /platform/admin/namespaces/{namespace}/categories/{categoryPath}/descendants | GET | getDescendantCategories | [GetDescendantCategories](../accelbyte_py_sdk/api/platform/operations/category/get_descendant_categories.py) | [get_descendant_categories](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
+| /platform/admin/namespaces/{namespace}/categories/{categoryPath}/children | GET | getChildCategories | [GetChildCategories](../accelbyte_py_sdk/api/platform/operations/category/get_child_categories.py) | [get_child_categories](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
+| /platform/admin/namespaces/{namespace}/categories | GET | getRootCategories | [GetRootCategories](../accelbyte_py_sdk/api/platform/operations/category/get_root_categories.py) | [get_root_categories](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
+| /platform/admin/namespaces/{namespace}/categories | POST | createCategory | [CreateCategory](../accelbyte_py_sdk/api/platform/operations/category/create_category.py) | [create_category](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
+| /platform/public/namespaces/{namespace}/categories/{categoryPath}/children | GET | publicGetChildCategories | [PublicGetChildCategories](../accelbyte_py_sdk/api/platform/operations/category/public_get_child_categories.py) | [public_get_child_categories](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
+| /platform/public/namespaces/{namespace}/categories/{categoryPath} | GET | publicGetCategory | [PublicGetCategory](../accelbyte_py_sdk/api/platform/operations/category/public_get_category.py) | [public_get_category](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
+| /platform/public/namespaces/{namespace}/categories | GET | publicGetRootCategories | [PublicGetRootCategories](../accelbyte_py_sdk/api/platform/operations/category/public_get_root_categories.py) | [public_get_root_categories](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
+| /platform/public/namespaces/{namespace}/categories/{categoryPath}/descendants | GET | publicGetDescendantCategories | [PublicGetDescendantCategories](../accelbyte_py_sdk/api/platform/operations/category/public_get_descendant_categories.py) | [public_get_descendant_categories](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
+| /platform/public/namespaces/{namespace}/categories/download | GET | downloadCategories | [DownloadCategories](../accelbyte_py_sdk/api/platform/operations/category/download_categories.py) | [download_categories](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
+
+### Store
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /platform/admin/namespaces/{namespace}/stores/published/backup | GET | getPublishedStoreBackup | [GetPublishedStoreBackup](../accelbyte_py_sdk/api/platform/operations/store/get_published_store_backup.py) | [get_published_store_backup](../accelbyte_py_sdk/api/platform/wrappers/_store.py) |
 | /platform/admin/namespaces/{namespace}/stores/{storeId} | GET | getStore | [GetStore](../accelbyte_py_sdk/api/platform/operations/store/get_store.py) | [get_store](../accelbyte_py_sdk/api/platform/wrappers/_store.py) |
 | /platform/admin/namespaces/{namespace}/stores/{storeId} | PUT | updateStore | [UpdateStore](../accelbyte_py_sdk/api/platform/operations/store/update_store.py) | [update_store](../accelbyte_py_sdk/api/platform/wrappers/_store.py) |
@@ -48,21 +71,18 @@
 | /platform/admin/namespaces/{namespace}/stores/published/rollback | PUT | rollbackPublishedStore | [RollbackPublishedStore](../accelbyte_py_sdk/api/platform/operations/store/rollback_published_store.py) | [rollback_published_store](../accelbyte_py_sdk/api/platform/wrappers/_store.py) |
 | /platform/admin/namespaces/{namespace}/stores/{storeId}/export | GET | exportStore | [ExportStore](../accelbyte_py_sdk/api/platform/operations/store/export_store.py) | [export_store](../accelbyte_py_sdk/api/platform/wrappers/_store.py) |
 | /platform/admin/namespaces/{namespace}/stores/import | PUT | importStore | [ImportStore](../accelbyte_py_sdk/api/platform/operations/store/import_store.py) | [import_store](../accelbyte_py_sdk/api/platform/wrappers/_store.py) |
-| /platform/public/namespaces/{namespace}/items/{itemId}/app/locale | GET | publicGetApp | [PublicGetApp](../accelbyte_py_sdk/api/platform/operations/item/public_get_app.py) | [public_get_app](../accelbyte_py_sdk/api/platform/wrappers/_item.py) |
-| /platform/public/namespaces/{namespace}/categories/{categoryPath}/children | GET | publicGetChildCategories | [PublicGetChildCategories](../accelbyte_py_sdk/api/platform/operations/category/public_get_child_categories.py) | [public_get_child_categories](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
-| /platform/public/namespaces/{namespace}/categories/{categoryPath} | GET | publicGetCategory | [PublicGetCategory](../accelbyte_py_sdk/api/platform/operations/category/public_get_category.py) | [public_get_category](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
-| /platform/public/namespaces/{namespace}/categories | GET | publicGetRootCategories | [PublicGetRootCategories](../accelbyte_py_sdk/api/platform/operations/category/public_get_root_categories.py) | [public_get_root_categories](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
-| /platform/public/namespaces/{namespace}/categories/{categoryPath}/descendants | GET | publicGetDescendantCategories | [PublicGetDescendantCategories](../accelbyte_py_sdk/api/platform/operations/category/public_get_descendant_categories.py) | [public_get_descendant_categories](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
-| /platform/public/namespaces/{namespace}/categories/download | GET | downloadCategories | [DownloadCategories](../accelbyte_py_sdk/api/platform/operations/category/download_categories.py) | [download_categories](../accelbyte_py_sdk/api/platform/wrappers/_category.py) |
-| /platform/public/namespaces/{namespace}/items/bySku | GET | publicGetItemBySku | [PublicGetItemBySku](../accelbyte_py_sdk/api/platform/operations/item/public_get_item_by_sku.py) | [public_get_item_by_sku](../accelbyte_py_sdk/api/platform/wrappers/_item.py) |
-| /platform/public/namespaces/{namespace}/items/search | GET | publicSearchItems | [PublicSearchItems](../accelbyte_py_sdk/api/platform/operations/item/public_search_items.py) | [public_search_items](../accelbyte_py_sdk/api/platform/wrappers/_item.py) |
-| /platform/public/namespaces/{namespace}/items/byAppId | GET | publicGetItemByAppId | [PublicGetItemByAppId](../accelbyte_py_sdk/api/platform/operations/item/public_get_item_by_app_id.py) | [public_get_item_by_app_id](../accelbyte_py_sdk/api/platform/wrappers/_item.py) |
-| /platform/public/namespaces/{namespace}/items/{itemId}/locale | GET | publicGetItem | [PublicGetItem](../accelbyte_py_sdk/api/platform/operations/item/public_get_item.py) | [public_get_item](../accelbyte_py_sdk/api/platform/wrappers/_item.py) |
-| /platform/public/namespaces/{namespace}/items/byCriteria | GET | publicQueryItems | [PublicQueryItems](../accelbyte_py_sdk/api/platform/operations/item/public_query_items.py) | [public_query_items](../accelbyte_py_sdk/api/platform/wrappers/_item.py) |
-| /platform/public/namespaces/{namespace}/items/{itemId}/dynamic | GET | publicGetItemDynamicData | [PublicGetItemDynamicData](../accelbyte_py_sdk/api/platform/operations/item/public_get_item_dynamic_data.py) | [public_get_item_dynamic_data](../accelbyte_py_sdk/api/platform/wrappers/_item.py) |
-| /platform/public/namespaces/{namespace}/items/locale/byIds | GET | publicBulkGetItems | [PublicBulkGetItems](../accelbyte_py_sdk/api/platform/operations/item/public_bulk_get_items.py) | [public_bulk_get_items](../accelbyte_py_sdk/api/platform/wrappers/_item.py) |
 | /platform/public/namespaces/{namespace}/stores | GET | publicListStores | [PublicListStores](../accelbyte_py_sdk/api/platform/operations/store/public_list_stores.py) | [public_list_stores](../accelbyte_py_sdk/api/platform/wrappers/_store.py) |
+
+### Anonymization
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/entitlements | DELETE | anonymizeEntitlement | [AnonymizeEntitlement](../accelbyte_py_sdk/api/platform/operations/anonymization/anonymize_entitlement.py) | [anonymize_entitlement](../accelbyte_py_sdk/api/platform/wrappers/_anonymization.py) |
+| /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/fulfillment | DELETE | anonymizeFulfillment | [AnonymizeFulfillment](../accelbyte_py_sdk/api/platform/operations/anonymization/anonymize_fulfillment.py) | [anonymize_fulfillment](../accelbyte_py_sdk/api/platform/wrappers/_anonymization.py) |
+| /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/wallets | DELETE | anonymizeWallet | [AnonymizeWallet](../accelbyte_py_sdk/api/platform/operations/anonymization/anonymize_wallet.py) | [anonymize_wallet](../accelbyte_py_sdk/api/platform/wrappers/_anonymization.py) |
+
+### Entitlement
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /platform/admin/namespaces/{namespace}/entitlements | GET | queryEntitlements | [QueryEntitlements](../accelbyte_py_sdk/api/platform/operations/entitlement/query_entitlements.py) | [query_entitlements](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/admin/namespaces/{namespace}/entitlements/{entitlementId} | GET | getEntitlement | [GetEntitlement](../accelbyte_py_sdk/api/platform/operations/entitlement/get_entitlement.py) | [get_entitlement](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/history | GET | getUserEntitlementHistories | [GetUserEntitlementHistories](../accelbyte_py_sdk/api/platform/operations/entitlement/get_user_entitlement_histories.py) | [get_user_entitlement_histories](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
@@ -103,10 +123,17 @@
 | /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/distribute | PUT | publicDistributeUserDistribution | [PublicDistributeUserDistribution](../accelbyte_py_sdk/api/platform/operations/entitlement/public_distribute_user_distribution.py) | [public_distribute_user_distribution](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/entitlements/byAppType | GET | publicQueryUserEntitlementsByAppType | [PublicQueryUserEntitlementsByAppType](../accelbyte_py_sdk/api/platform/operations/entitlement/public_query_user_entitlements_by_app_type.py) | [public_query_user_entitlements_by_app_type](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/decrement | PUT | publicConsumeUserEntitlement | [PublicConsumeUserEntitlement](../accelbyte_py_sdk/api/platform/operations/entitlement/public_consume_user_entitlement.py) | [public_consume_user_entitlement](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
-| /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/fulfillment | DELETE | anonymizeFulfillment | [AnonymizeFulfillment](../accelbyte_py_sdk/api/platform/operations/anonymization/anonymize_fulfillment.py) | [anonymize_fulfillment](../accelbyte_py_sdk/api/platform/wrappers/_anonymization.py) |
+
+### Fulfillment
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /platform/admin/namespaces/{namespace}/fulfillment/history | GET | queryFulfillmentHistories | [QueryFulfillmentHistories](../accelbyte_py_sdk/api/platform/operations/fulfillment/query_fulfillment_histories.py) | [query_fulfillment_histories](../accelbyte_py_sdk/api/platform/wrappers/_fulfillment.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/fulfillment | POST | fulfillItem | [FulfillItem](../accelbyte_py_sdk/api/platform/operations/fulfillment/fulfill_item.py) | [fulfill_item](../accelbyte_py_sdk/api/platform/wrappers/_fulfillment.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/fulfillment/code | POST | publicRedeemCode | [PublicRedeemCode](../accelbyte_py_sdk/api/platform/operations/fulfillment/public_redeem_code.py) | [public_redeem_code](../accelbyte_py_sdk/api/platform/wrappers/_fulfillment.py) |
+
+### Currency
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /platform/admin/namespaces/{namespace}/currencies | GET | listCurrencies | [ListCurrencies](../accelbyte_py_sdk/api/platform/operations/currency/list_currencies.py) | [list_currencies](../accelbyte_py_sdk/api/platform/wrappers/_currency.py) |
 | /platform/admin/namespaces/{namespace}/currencies | POST | createCurrency | [CreateCurrency](../accelbyte_py_sdk/api/platform/operations/currency/create_currency.py) | [create_currency](../accelbyte_py_sdk/api/platform/wrappers/_currency.py) |
 | /platform/admin/namespaces/{namespace}/currencies/{currencyCode}/summary | GET | getCurrencySummary | [GetCurrencySummary](../accelbyte_py_sdk/api/platform/operations/currency/get_currency_summary.py) | [get_currency_summary](../accelbyte_py_sdk/api/platform/wrappers/_currency.py) |
@@ -114,6 +141,10 @@
 | /platform/admin/namespaces/{namespace}/currencies/{currencyCode} | DELETE | deleteCurrency | [DeleteCurrency](../accelbyte_py_sdk/api/platform/operations/currency/delete_currency.py) | [delete_currency](../accelbyte_py_sdk/api/platform/wrappers/_currency.py) |
 | /platform/admin/namespaces/{namespace}/currencies/{currencyCode}/config | GET | getCurrencyConfig | [GetCurrencyConfig](../accelbyte_py_sdk/api/platform/operations/currency/get_currency_config.py) | [get_currency_config](../accelbyte_py_sdk/api/platform/wrappers/_currency.py) |
 | /platform/public/namespaces/{namespace}/currencies | GET | publicListCurrencies | [PublicListCurrencies](../accelbyte_py_sdk/api/platform/operations/currency/public_list_currencies.py) | [public_list_currencies](../accelbyte_py_sdk/api/platform/wrappers/_currency.py) |
+
+### Wallet
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{walletId}/transactions | GET | listUserWalletTransactions | [ListUserWalletTransactions](../accelbyte_py_sdk/api/platform/operations/wallet/list_user_wallet_transactions.py) | [list_user_wallet_transactions](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/checkTransactionCreditLimit | POST | checkTransactionCreditLimit | [CheckTransactionCreditLimit](../accelbyte_py_sdk/api/platform/operations/wallet/check_transaction_credit_limit.py) | [check_transaction_credit_limit](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{walletId}/enable | PUT | enableUserWallet | [EnableUserWallet](../accelbyte_py_sdk/api/platform/operations/wallet/enable_user_wallet.py) | [enable_user_wallet](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) |
@@ -122,12 +153,15 @@
 | /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{walletId}/disable | PUT | disableUserWallet | [DisableUserWallet](../accelbyte_py_sdk/api/platform/operations/wallet/disable_user_wallet.py) | [disable_user_wallet](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/credit | PUT | creditUserWallet | [CreditUserWallet](../accelbyte_py_sdk/api/platform/operations/wallet/credit_user_wallet.py) | [credit_user_wallet](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/payment | PUT | payWithUserWallet | [PayWithUserWallet](../accelbyte_py_sdk/api/platform/operations/wallet/pay_with_user_wallet.py) | [pay_with_user_wallet](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) |
-| /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/wallets | DELETE | anonymizeWallet | [AnonymizeWallet](../accelbyte_py_sdk/api/platform/operations/anonymization/anonymize_wallet.py) | [anonymize_wallet](../accelbyte_py_sdk/api/platform/wrappers/_anonymization.py) |
 | /platform/admin/namespaces/{namespace}/wallets | GET | queryWallets | [QueryWallets](../accelbyte_py_sdk/api/platform/operations/wallet/query_wallets.py) | [query_wallets](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) |
 | /platform/admin/namespaces/{namespace}/wallets/{walletId} | GET | getWallet | [GetWallet](../accelbyte_py_sdk/api/platform/operations/wallet/get_wallet.py) | [get_wallet](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) |
 | /platform/public/namespaces/{namespace}/users/me/wallets/{currencyCode} | GET | publicGetMyWallet | [PublicGetMyWallet](../accelbyte_py_sdk/api/platform/operations/wallet/public_get_my_wallet.py) | [public_get_my_wallet](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/transactions | GET | publicListUserWalletTransactions | [PublicListUserWalletTransactions](../accelbyte_py_sdk/api/platform/operations/wallet/public_list_user_wallet_transactions.py) | [public_list_user_wallet_transactions](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/wallets/{currencyCode} | GET | publicGetWallet | [PublicGetWallet](../accelbyte_py_sdk/api/platform/operations/wallet/public_get_wallet.py) | [public_get_wallet](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) |
+
+### Reward
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /platform/admin/namespaces/{namespace}/rewards/export | GET | exportRewards | [ExportRewards](../accelbyte_py_sdk/api/platform/operations/reward/export_rewards.py) | [export_rewards](../accelbyte_py_sdk/api/platform/wrappers/_reward.py) |
 | /platform/admin/namespaces/{namespace}/rewards/{rewardId} | GET | getReward | [GetReward](../accelbyte_py_sdk/api/platform/operations/reward/get_reward.py) | [get_reward](../accelbyte_py_sdk/api/platform/wrappers/_reward.py) |
 | /platform/admin/namespaces/{namespace}/rewards/{rewardId} | PUT | updateReward | [UpdateReward](../accelbyte_py_sdk/api/platform/operations/reward/update_reward.py) | [update_reward](../accelbyte_py_sdk/api/platform/wrappers/_reward.py) |
@@ -137,11 +171,14 @@
 | /platform/admin/namespaces/{namespace}/rewards/byCriteria | GET | queryRewards | [QueryRewards](../accelbyte_py_sdk/api/platform/operations/reward/query_rewards.py) | [query_rewards](../accelbyte_py_sdk/api/platform/wrappers/_reward.py) |
 | /platform/public/namespaces/{namespace}/rewards/{rewardId} | GET | getReward_1 | [GetReward1](../accelbyte_py_sdk/api/platform/operations/reward/get_reward_1.py) | [get_reward_1](../accelbyte_py_sdk/api/platform/wrappers/_reward.py) |
 | /platform/public/namespaces/{namespace}/rewards/byCriteria | GET | queryRewards_1 | [QueryRewards1](../accelbyte_py_sdk/api/platform/operations/reward/query_rewards_1.py) | [query_rewards_1](../accelbyte_py_sdk/api/platform/wrappers/_reward.py) |
+
+### Order
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /platform/admin/namespaces/{namespace}/orders/stats | GET | getOrderStatistics | [GetOrderStatistics](../accelbyte_py_sdk/api/platform/operations/order/get_order_statistics.py) | [get_order_statistics](../accelbyte_py_sdk/api/platform/wrappers/_order.py) |
 | /platform/admin/namespaces/{namespace}/orders/{orderNo}/refund | PUT | refundOrder | [RefundOrder](../accelbyte_py_sdk/api/platform/operations/order/refund_order.py) | [refund_order](../accelbyte_py_sdk/api/platform/wrappers/_order.py) |
 | /platform/admin/namespaces/{namespace}/orders | GET | queryOrders | [QueryOrders](../accelbyte_py_sdk/api/platform/operations/order/query_orders.py) | [query_orders](../accelbyte_py_sdk/api/platform/wrappers/_order.py) |
 | /platform/admin/namespaces/{namespace}/orders/{orderNo} | GET | getOrder | [GetOrder](../accelbyte_py_sdk/api/platform/operations/order/get_order.py) | [get_order](../accelbyte_py_sdk/api/platform/wrappers/_order.py) |
-| /platform/admin/orders | GET | syncOrders | [SyncOrders](../accelbyte_py_sdk/api/platform/operations/order_dedicated/sync_orders.py) | [sync_orders](../accelbyte_py_sdk/api/platform/wrappers/_order_dedicated.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/receipt.pdf | GET | downloadUserOrderReceipt | [DownloadUserOrderReceipt](../accelbyte_py_sdk/api/platform/operations/order/download_user_order_receipt.py) | [download_user_order_receipt](../accelbyte_py_sdk/api/platform/wrappers/_order.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/history | GET | getUserOrderHistories | [GetUserOrderHistories](../accelbyte_py_sdk/api/platform/operations/order/get_user_order_histories.py) | [get_user_order_histories](../accelbyte_py_sdk/api/platform/wrappers/_order.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/orders | GET | queryUserOrders | [QueryUserOrders](../accelbyte_py_sdk/api/platform/operations/order/query_user_orders.py) | [query_user_orders](../accelbyte_py_sdk/api/platform/wrappers/_order.py) |
@@ -157,17 +194,34 @@
 | /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/receipt.pdf | GET | publicDownloadUserOrderReceipt | [PublicDownloadUserOrderReceipt](../accelbyte_py_sdk/api/platform/operations/order/public_download_user_order_receipt.py) | [public_download_user_order_receipt](../accelbyte_py_sdk/api/platform/wrappers/_order.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/cancel | PUT | publicCancelUserOrder | [PublicCancelUserOrder](../accelbyte_py_sdk/api/platform/operations/order/public_cancel_user_order.py) | [public_cancel_user_order](../accelbyte_py_sdk/api/platform/wrappers/_order.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/history | GET | publicGetUserOrderHistories | [PublicGetUserOrderHistories](../accelbyte_py_sdk/api/platform/operations/order/public_get_user_order_histories.py) | [public_get_user_order_histories](../accelbyte_py_sdk/api/platform/wrappers/_order.py) |
+
+### OrderDedicated
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
+| /platform/admin/orders | GET | syncOrders | [SyncOrders](../accelbyte_py_sdk/api/platform/operations/order_dedicated/sync_orders.py) | [sync_orders](../accelbyte_py_sdk/api/platform/wrappers/_order_dedicated.py) |
+
+### Payment
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /platform/admin/namespaces/{namespace}/payment/notifications | GET | queryPaymentNotifications | [QueryPaymentNotifications](../accelbyte_py_sdk/api/platform/operations/payment/query_payment_notifications.py) | [query_payment_notifications](../accelbyte_py_sdk/api/platform/wrappers/_payment.py) |
 | /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo} | GET | getPaymentOrder | [GetPaymentOrder](../accelbyte_py_sdk/api/platform/operations/payment/get_payment_order.py) | [get_payment_order](../accelbyte_py_sdk/api/platform/wrappers/_payment.py) |
 | /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo} | PUT | chargePaymentOrder | [ChargePaymentOrder](../accelbyte_py_sdk/api/platform/operations/payment/charge_payment_order.py) | [charge_payment_order](../accelbyte_py_sdk/api/platform/wrappers/_payment.py) |
 | /platform/admin/namespaces/{namespace}/payment/orders/byExtTxId | GET | listExtOrderNoByExtTxId | [ListExtOrderNoByExtTxId](../accelbyte_py_sdk/api/platform/operations/payment/list_ext_order_no_by_ext_tx_id.py) | [list_ext_order_no_by_ext_tx_id](../accelbyte_py_sdk/api/platform/wrappers/_payment.py) |
 | /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}/status | GET | getPaymentOrderChargeStatus | [GetPaymentOrderChargeStatus](../accelbyte_py_sdk/api/platform/operations/payment/get_payment_order_charge_status.py) | [get_payment_order_charge_status](../accelbyte_py_sdk/api/platform/wrappers/_payment.py) |
 | /platform/admin/namespaces/{namespace}/payment/orders | GET | queryPaymentOrders | [QueryPaymentOrders](../accelbyte_py_sdk/api/platform/operations/payment/query_payment_orders.py) | [query_payment_orders](../accelbyte_py_sdk/api/platform/wrappers/_payment.py) |
-| /platform/admin/namespaces/{namespace}/payment/orders | POST | createPaymentOrderByDedicated | [CreatePaymentOrderByDedicated](../accelbyte_py_sdk/api/platform/operations/payment_dedicated/create_payment_order_by_dedicated.py) | [create_payment_order_by_dedicated](../accelbyte_py_sdk/api/platform/wrappers/_payment_dedicated.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/payment/orders | POST | createUserPaymentOrder | [CreateUserPaymentOrder](../accelbyte_py_sdk/api/platform/operations/payment/create_user_payment_order.py) | [create_user_payment_order](../accelbyte_py_sdk/api/platform/wrappers/_payment.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/payment/orders/{paymentOrderNo}/refund | PUT | refundUserPaymentOrder | [RefundUserPaymentOrder](../accelbyte_py_sdk/api/platform/operations/payment/refund_user_payment_order.py) | [refund_user_payment_order](../accelbyte_py_sdk/api/platform/wrappers/_payment.py) |
+
+### PaymentDedicated
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
+| /platform/admin/namespaces/{namespace}/payment/orders | POST | createPaymentOrderByDedicated | [CreatePaymentOrderByDedicated](../accelbyte_py_sdk/api/platform/operations/payment_dedicated/create_payment_order_by_dedicated.py) | [create_payment_order_by_dedicated](../accelbyte_py_sdk/api/platform/wrappers/_payment_dedicated.py) |
 | /platform/admin/payment/orders | GET | syncPaymentOrders | [SyncPaymentOrders](../accelbyte_py_sdk/api/platform/operations/payment_dedicated/sync_payment_orders.py) | [sync_payment_orders](../accelbyte_py_sdk/api/platform/wrappers/_payment_dedicated.py) |
 | /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}/refund | PUT | refundPaymentOrderByDedicated | [RefundPaymentOrderByDedicated](../accelbyte_py_sdk/api/platform/operations/payment_dedicated/refund_payment_order_by_dedicated.py) | [refund_payment_order_by_dedicated](../accelbyte_py_sdk/api/platform/wrappers/_payment_dedicated.py) |
+
+### IAP
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /platform/admin/namespaces/{namespace}/iap/config/xbl/cert | PUT | updateXblBPCertFile | [UpdateXblBPCertFile](../accelbyte_py_sdk/api/platform/operations/iap/update_xbl_bp_cert_file.py) | [update_xbl_bp_cert_file](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/epicgames | GET | getEpicGamesIAPConfig | [GetEpicGamesIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/get_epic_games_iap_config.py) | [get_epic_games_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/epicgames | PUT | updateEpicGamesIAPConfig | [UpdateEpicGamesIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/update_epic_games_iap_config.py) | [update_epic_games_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
@@ -200,6 +254,10 @@
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/google/receipt | PUT | publicFulfillGoogleIAPItem | [PublicFulfillGoogleIAPItem](../accelbyte_py_sdk/api/platform/operations/iap/public_fulfill_google_iap_item.py) | [public_fulfill_google_iap_item](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/xbl/sync | PUT | syncXboxInventory | [SyncXboxInventory](../accelbyte_py_sdk/api/platform/operations/iap/sync_xbox_inventory.py) | [sync_xbox_inventory](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/epicgames/sync | PUT | syncEpicGamesInventory | [SyncEpicGamesInventory](../accelbyte_py_sdk/api/platform/operations/iap/sync_epic_games_inventory.py) | [sync_epic_games_inventory](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
+
+### PaymentConfig
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /platform/admin/payment/config/merchant/{id}/checkoutconfig | PUT | updateCheckoutConfig | [UpdateCheckoutConfig](../accelbyte_py_sdk/api/platform/operations/payment_config/update_checkout_config.py) | [update_checkout_config](../accelbyte_py_sdk/api/platform/wrappers/_payment_config.py) |
 | /platform/admin/payment/config/merchant/matched | GET | debugMatchedPaymentMerchantConfig | [DebugMatchedPaymentMerchantConfig](../accelbyte_py_sdk/api/platform/operations/payment_config/debug_matched_payment_merchant_config.py) | [debug_matched_payment_merchant_config](../accelbyte_py_sdk/api/platform/wrappers/_payment_config.py) |
 | /platform/admin/payment/config/merchant/checkoutconfig/test | POST | testCheckoutConfig | [TestCheckoutConfig](../accelbyte_py_sdk/api/platform/operations/payment_config/test_checkout_config.py) | [test_checkout_config](../accelbyte_py_sdk/api/platform/wrappers/_payment_config.py) |
@@ -225,8 +283,25 @@
 | /platform/admin/payment/config/merchant/{id}/xsollauiconfig | PUT | updateXsollaUIConfig | [UpdateXsollaUIConfig](../accelbyte_py_sdk/api/platform/operations/payment_config/update_xsolla_ui_config.py) | [update_xsolla_ui_config](../accelbyte_py_sdk/api/platform/wrappers/_payment_config.py) |
 | /platform/admin/payment/config/merchant/{id}/paypalconfig | PUT | updatePayPalConfig | [UpdatePayPalConfig](../accelbyte_py_sdk/api/platform/operations/payment_config/update_pay_pal_config.py) | [update_pay_pal_config](../accelbyte_py_sdk/api/platform/wrappers/_payment_config.py) |
 | /platform/admin/payment/config/merchant/{id}/xsollaconfig/test | GET | testXsollaConfigById | [TestXsollaConfigById](../accelbyte_py_sdk/api/platform/operations/payment_config/test_xsolla_config_by_id.py) | [test_xsolla_config_by_id](../accelbyte_py_sdk/api/platform/wrappers/_payment_config.py) |
+| /platform/admin/payment/config/provider | GET | queryPaymentProviderConfig | [QueryPaymentProviderConfig](../accelbyte_py_sdk/api/platform/operations/payment_config/query_payment_provider_config.py) | [query_payment_provider_config](../accelbyte_py_sdk/api/platform/wrappers/_payment_config.py) |
+| /platform/admin/payment/config/provider | POST | createPaymentProviderConfig | [CreatePaymentProviderConfig](../accelbyte_py_sdk/api/platform/operations/payment_config/create_payment_provider_config.py) | [create_payment_provider_config](../accelbyte_py_sdk/api/platform/wrappers/_payment_config.py) |
+| /platform/admin/payment/config/provider/aggregate | GET | getAggregatePaymentProviders | [GetAggregatePaymentProviders](../accelbyte_py_sdk/api/platform/operations/payment_config/get_aggregate_payment_providers.py) | [get_aggregate_payment_providers](../accelbyte_py_sdk/api/platform/wrappers/_payment_config.py) |
+| /platform/admin/payment/config/provider/matched | GET | debugMatchedPaymentProviderConfig | [DebugMatchedPaymentProviderConfig](../accelbyte_py_sdk/api/platform/operations/payment_config/debug_matched_payment_provider_config.py) | [debug_matched_payment_provider_config](../accelbyte_py_sdk/api/platform/wrappers/_payment_config.py) |
+| /platform/admin/payment/config/provider/special | GET | getSpecialPaymentProviders | [GetSpecialPaymentProviders](../accelbyte_py_sdk/api/platform/operations/payment_config/get_special_payment_providers.py) | [get_special_payment_providers](../accelbyte_py_sdk/api/platform/wrappers/_payment_config.py) |
+| /platform/admin/payment/config/provider/{id} | PUT | updatePaymentProviderConfig | [UpdatePaymentProviderConfig](../accelbyte_py_sdk/api/platform/operations/payment_config/update_payment_provider_config.py) | [update_payment_provider_config](../accelbyte_py_sdk/api/platform/wrappers/_payment_config.py) |
+| /platform/admin/payment/config/provider/{id} | DELETE | deletePaymentProviderConfig | [DeletePaymentProviderConfig](../accelbyte_py_sdk/api/platform/operations/payment_config/delete_payment_provider_config.py) | [delete_payment_provider_config](../accelbyte_py_sdk/api/platform/wrappers/_payment_config.py) |
+| /platform/admin/payment/config/tax | GET | getPaymentTaxConfig | [GetPaymentTaxConfig](../accelbyte_py_sdk/api/platform/operations/payment_config/get_payment_tax_config.py) | [get_payment_tax_config](../accelbyte_py_sdk/api/platform/wrappers/_payment_config.py) |
+| /platform/admin/payment/config/tax | PUT | updatePaymentTaxConfig | [UpdatePaymentTaxConfig](../accelbyte_py_sdk/api/platform/operations/payment_config/update_payment_tax_config.py) | [update_payment_tax_config](../accelbyte_py_sdk/api/platform/wrappers/_payment_config.py) |
+
+### PaymentAccount
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /platform/public/namespaces/{namespace}/users/{userId}/payment/accounts | GET | publicGetPaymentAccounts | [PublicGetPaymentAccounts](../accelbyte_py_sdk/api/platform/operations/payment_account/public_get_payment_accounts.py) | [public_get_payment_accounts](../accelbyte_py_sdk/api/platform/wrappers/_payment_account.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/payment/accounts/{type}/{id} | DELETE | publicDeletePaymentAccount | [PublicDeletePaymentAccount](../accelbyte_py_sdk/api/platform/operations/payment_account/public_delete_payment_account.py) | [public_delete_payment_account](../accelbyte_py_sdk/api/platform/wrappers/_payment_account.py) |
+
+### PaymentStation
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /platform/public/namespaces/{namespace}/payment/orders/{paymentOrderNo}/status | GET | publicCheckPaymentOrderPaidStatus | [PublicCheckPaymentOrderPaidStatus](../accelbyte_py_sdk/api/platform/operations/payment_station/public_check_payment_order_paid_status.py) | [public_check_payment_order_paid_status](../accelbyte_py_sdk/api/platform/wrappers/_payment_station.py) |
 | /platform/public/namespaces/{namespace}/payment/tax | GET | getPaymentTaxValue | [GetPaymentTaxValue](../accelbyte_py_sdk/api/platform/operations/payment_station/get_payment_tax_value.py) | [get_payment_tax_value](../accelbyte_py_sdk/api/platform/wrappers/_payment_station.py) |
 | /platform/public/namespaces/{namespace}/payment/orders/{paymentOrderNo}/pay | POST | pay | [Pay](../accelbyte_py_sdk/api/platform/operations/payment_station/pay.py) | [pay](../accelbyte_py_sdk/api/platform/wrappers/_payment_station.py) |
@@ -237,15 +312,6 @@
 | /platform/public/namespaces/{namespace}/payment/qrcode | GET | publicGetQRCode | [PublicGetQRCode](../accelbyte_py_sdk/api/platform/operations/payment_station/public_get_qr_code.py) | [public_get_qr_code](../accelbyte_py_sdk/api/platform/wrappers/_payment_station.py) |
 | /platform/public/namespaces/{namespace}/payment/customization | GET | getPaymentCustomization | [GetPaymentCustomization](../accelbyte_py_sdk/api/platform/operations/payment_station/get_payment_customization.py) | [get_payment_customization](../accelbyte_py_sdk/api/platform/wrappers/_payment_station.py) |
 | /platform/public/namespaces/{namespace}/payment/link | POST | publicGetPaymentUrl | [PublicGetPaymentUrl](../accelbyte_py_sdk/api/platform/operations/payment_station/public_get_payment_url.py) | [public_get_payment_url](../accelbyte_py_sdk/api/platform/wrappers/_payment_station.py) |
-| /platform/admin/payment/config/provider | GET | queryPaymentProviderConfig | [QueryPaymentProviderConfig](../accelbyte_py_sdk/api/platform/operations/payment_config/query_payment_provider_config.py) | [query_payment_provider_config](../accelbyte_py_sdk/api/platform/wrappers/_payment_config.py) |
-| /platform/admin/payment/config/provider | POST | createPaymentProviderConfig | [CreatePaymentProviderConfig](../accelbyte_py_sdk/api/platform/operations/payment_config/create_payment_provider_config.py) | [create_payment_provider_config](../accelbyte_py_sdk/api/platform/wrappers/_payment_config.py) |
-| /platform/admin/payment/config/provider/aggregate | GET | getAggregatePaymentProviders | [GetAggregatePaymentProviders](../accelbyte_py_sdk/api/platform/operations/payment_config/get_aggregate_payment_providers.py) | [get_aggregate_payment_providers](../accelbyte_py_sdk/api/platform/wrappers/_payment_config.py) |
-| /platform/admin/payment/config/provider/matched | GET | debugMatchedPaymentProviderConfig | [DebugMatchedPaymentProviderConfig](../accelbyte_py_sdk/api/platform/operations/payment_config/debug_matched_payment_provider_config.py) | [debug_matched_payment_provider_config](../accelbyte_py_sdk/api/platform/wrappers/_payment_config.py) |
-| /platform/admin/payment/config/provider/special | GET | getSpecialPaymentProviders | [GetSpecialPaymentProviders](../accelbyte_py_sdk/api/platform/operations/payment_config/get_special_payment_providers.py) | [get_special_payment_providers](../accelbyte_py_sdk/api/platform/wrappers/_payment_config.py) |
-| /platform/admin/payment/config/provider/{id} | PUT | updatePaymentProviderConfig | [UpdatePaymentProviderConfig](../accelbyte_py_sdk/api/platform/operations/payment_config/update_payment_provider_config.py) | [update_payment_provider_config](../accelbyte_py_sdk/api/platform/wrappers/_payment_config.py) |
-| /platform/admin/payment/config/provider/{id} | DELETE | deletePaymentProviderConfig | [DeletePaymentProviderConfig](../accelbyte_py_sdk/api/platform/operations/payment_config/delete_payment_provider_config.py) | [delete_payment_provider_config](../accelbyte_py_sdk/api/platform/wrappers/_payment_config.py) |
-| /platform/admin/payment/config/tax | GET | getPaymentTaxConfig | [GetPaymentTaxConfig](../accelbyte_py_sdk/api/platform/operations/payment_config/get_payment_tax_config.py) | [get_payment_tax_config](../accelbyte_py_sdk/api/platform/wrappers/_payment_config.py) |
-| /platform/admin/payment/config/tax | PUT | updatePaymentTaxConfig | [UpdatePaymentTaxConfig](../accelbyte_py_sdk/api/platform/operations/payment_config/update_payment_tax_config.py) | [update_payment_tax_config](../accelbyte_py_sdk/api/platform/wrappers/_payment_config.py) |
 
 
 ## Models
