@@ -1,7 +1,9 @@
-# DsmController Index
+# DsmController Index (2.4.0)
 
 
 ## Operations
+
+### Config
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /dsmcontroller/admin/configs | GET | ListConfig | [ListConfig](../accelbyte_py_sdk/api/dsm_controller/operations/config/list_config.py) | [list_config](../accelbyte_py_sdk/api/dsm_controller/wrappers/_config.py) |
@@ -17,6 +19,12 @@
 | /dsmcontroller/admin/namespaces/{namespace}/images/export | GET | ExportImages | [ExportImages](../accelbyte_py_sdk/api/dsm_controller/operations/config/export_images.py) | [export_images](../accelbyte_py_sdk/api/dsm_controller/wrappers/_config.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/images/limit | GET | GetImageLimit | [GetImageLimit](../accelbyte_py_sdk/api/dsm_controller/operations/config/get_image_limit.py) | [get_image_limit](../accelbyte_py_sdk/api/dsm_controller/wrappers/_config.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/images/versions/{version} | GET | GetImageDetail | [GetImageDetail](../accelbyte_py_sdk/api/dsm_controller/operations/config/get_image_detail.py) | [get_image_detail](../accelbyte_py_sdk/api/dsm_controller/wrappers/_config.py) |
+| /dsmcontroller/admin/v1/namespaces/{namespace}/configs/export | GET | exportConfigV1 | [ExportConfigV1](../accelbyte_py_sdk/api/dsm_controller/operations/config/export_config_v1.py) | [export_config_v1](../accelbyte_py_sdk/api/dsm_controller/wrappers/_config.py) |
+| /dsmcontroller/admin/v1/namespaces/{namespace}/configs/import | POST | importConfigV1 | [ImportConfigV1](../accelbyte_py_sdk/api/dsm_controller/operations/config/import_config_v1.py) | [import_config_v1](../accelbyte_py_sdk/api/dsm_controller/wrappers/_config.py) |
+
+### Admin
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /dsmcontroller/admin/namespaces/{namespace}/servers | GET | ListServer | [ListServer](../accelbyte_py_sdk/api/dsm_controller/operations/admin/list_server.py) | [list_server](../accelbyte_py_sdk/api/dsm_controller/wrappers/_admin.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/servers/count | GET | CountServer | [CountServer](../accelbyte_py_sdk/api/dsm_controller/operations/admin/count_server.py) | [count_server](../accelbyte_py_sdk/api/dsm_controller/wrappers/_admin.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/servers/count/detailed | GET | CountServerDetailed | [CountServerDetailed](../accelbyte_py_sdk/api/dsm_controller/operations/admin/count_server_detailed.py) | [count_server_detailed](../accelbyte_py_sdk/api/dsm_controller/wrappers/_admin.py) |
@@ -28,18 +36,32 @@
 | /dsmcontroller/admin/namespaces/{namespace}/sessions | GET | ListSession | [ListSession](../accelbyte_py_sdk/api/dsm_controller/operations/admin/list_session.py) | [list_session](../accelbyte_py_sdk/api/dsm_controller/wrappers/_admin.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/sessions/count | GET | CountSession | [CountSession](../accelbyte_py_sdk/api/dsm_controller/operations/admin/count_session.py) | [count_session](../accelbyte_py_sdk/api/dsm_controller/wrappers/_admin.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/sessions/{sessionID} | DELETE | DeleteSession | [DeleteSession](../accelbyte_py_sdk/api/dsm_controller/operations/admin/delete_session.py) | [delete_session](../accelbyte_py_sdk/api/dsm_controller/wrappers/_admin.py) |
-| /dsmcontroller/admin/v1/namespaces/{namespace}/configs/export | GET | exportConfigV1 | [ExportConfigV1](../accelbyte_py_sdk/api/dsm_controller/operations/config/export_config_v1.py) | [export_config_v1](../accelbyte_py_sdk/api/dsm_controller/wrappers/_config.py) |
-| /dsmcontroller/admin/v1/namespaces/{namespace}/configs/import | POST | importConfigV1 | [ImportConfigV1](../accelbyte_py_sdk/api/dsm_controller/operations/config/import_config_v1.py) | [import_config_v1](../accelbyte_py_sdk/api/dsm_controller/wrappers/_config.py) |
+
+### Server
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /dsmcontroller/namespaces/{namespace}/servers/local/deregister | POST | DeregisterLocalServer | [DeregisterLocalServer](../accelbyte_py_sdk/api/dsm_controller/operations/server/deregister_local_server.py) | [deregister_local_server](../accelbyte_py_sdk/api/dsm_controller/wrappers/_server.py) |
 | /dsmcontroller/namespaces/{namespace}/servers/local/register | POST | RegisterLocalServer | [RegisterLocalServer](../accelbyte_py_sdk/api/dsm_controller/operations/server/register_local_server.py) | [register_local_server](../accelbyte_py_sdk/api/dsm_controller/wrappers/_server.py) |
 | /dsmcontroller/namespaces/{namespace}/servers/register | POST | RegisterServer | [RegisterServer](../accelbyte_py_sdk/api/dsm_controller/operations/server/register_server.py) | [register_server](../accelbyte_py_sdk/api/dsm_controller/wrappers/_server.py) |
 | /dsmcontroller/namespaces/{namespace}/servers/shutdown | POST | ShutdownServer | [ShutdownServer](../accelbyte_py_sdk/api/dsm_controller/operations/server/shutdown_server.py) | [shutdown_server](../accelbyte_py_sdk/api/dsm_controller/wrappers/_server.py) |
 | /dsmcontroller/namespaces/{namespace}/servers/{podName}/session | GET | GetServerSession | [GetServerSession](../accelbyte_py_sdk/api/dsm_controller/operations/server/get_server_session.py) | [get_server_session](../accelbyte_py_sdk/api/dsm_controller/wrappers/_server.py) |
+
+### Session
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /dsmcontroller/namespaces/{namespace}/sessions | POST | CreateSession | [CreateSession](../accelbyte_py_sdk/api/dsm_controller/operations/session/create_session.py) | [create_session](../accelbyte_py_sdk/api/dsm_controller/wrappers/_session.py) |
 | /dsmcontroller/namespaces/{namespace}/sessions/claim | POST | ClaimServer | [ClaimServer](../accelbyte_py_sdk/api/dsm_controller/operations/session/claim_server.py) | [claim_server](../accelbyte_py_sdk/api/dsm_controller/wrappers/_session.py) |
 | /dsmcontroller/namespaces/{namespace}/sessions/{sessionID} | GET | GetSession | [GetSession](../accelbyte_py_sdk/api/dsm_controller/operations/session/get_session.py) | [get_session](../accelbyte_py_sdk/api/dsm_controller/wrappers/_session.py) |
+
+### Public
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /dsmcontroller/public/provider/default | GET | GetDefaultProvider | [GetDefaultProvider](../accelbyte_py_sdk/api/dsm_controller/operations/public/get_default_provider.py) | [get_default_provider](../accelbyte_py_sdk/api/dsm_controller/wrappers/_public.py) |
 | /dsmcontroller/public/providers | GET | ListProviders | [ListProviders](../accelbyte_py_sdk/api/dsm_controller/operations/public/list_providers.py) | [list_providers](../accelbyte_py_sdk/api/dsm_controller/wrappers/_public.py) |
+
+### Operations
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /dsmcontroller/v1/messages | GET | publicGetMessages | [PublicGetMessages](../accelbyte_py_sdk/api/dsm_controller/operations/operations/public_get_messages.py) | [public_get_messages](../accelbyte_py_sdk/api/dsm_controller/wrappers/_operations.py) |
 
 

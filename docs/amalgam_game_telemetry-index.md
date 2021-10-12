@@ -1,7 +1,9 @@
-# AmalgamGameTelemetry Index
+# AmalgamGameTelemetry Index (0.0.1)
 
 
 ## Operations
+
+### Operations
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /game-telemetry/v1/protected/events | POST | protected_save_events_game_telemetry_v1_protected_events_post | [ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost](../accelbyte_py_sdk/api/amalgam_game_telemetry/operations/operations/protected_save_events_game_telemetry_v1_protected_events_post.py) | [protected_save_events_game_telemetry_v1_protected_events_post](../accelbyte_py_sdk/api/amalgam_game_telemetry/wrappers/_operations.py) |

@@ -1,13 +1,19 @@
-# Basic Index
+# Basic Index (1.17.0)
 
 
 ## Operations
+
+### FileUpload
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /basic/v1/admin/namespaces/{namespace}/folders/{folder}/files | POST | generatedUploadUrl | [GeneratedUploadUrl](../accelbyte_py_sdk/api/basic/operations/file_upload/generated_upload_url.py) | [generated_upload_url](../accelbyte_py_sdk/api/basic/wrappers/_file_upload.py) |
 | /basic/v1/admin/namespaces/{namespace}/users/{userId}/files | POST | generatedUserUploadContentUrl | [GeneratedUserUploadContentUrl](../accelbyte_py_sdk/api/basic/operations/file_upload/generated_user_upload_content_url.py) | [generated_user_upload_content_url](../accelbyte_py_sdk/api/basic/wrappers/_file_upload.py) |
 | /basic/v1/public/namespaces/{namespace}/folders/{folder}/files | POST | publicGeneratedUploadUrl | [PublicGeneratedUploadUrl](../accelbyte_py_sdk/api/basic/operations/file_upload/public_generated_upload_url.py) | [public_generated_upload_url](../accelbyte_py_sdk/api/basic/wrappers/_file_upload.py) |
 | /basic/v1/public/namespaces/{namespace}/users/{userId}/files | POST | publicGeneratedUserUploadContentUrl | [PublicGeneratedUserUploadContentUrl](../accelbyte_py_sdk/api/basic/operations/file_upload/public_generated_user_upload_content_url.py) | [public_generated_user_upload_content_url](../accelbyte_py_sdk/api/basic/wrappers/_file_upload.py) |
+
+### Misc
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /basic/v1/admin/namespaces/{namespace}/misc/countrygroups/{countryGroupCode} | PUT | updateCountryGroup | [UpdateCountryGroup](../accelbyte_py_sdk/api/basic/operations/misc/update_country_group.py) | [update_country_group](../accelbyte_py_sdk/api/basic/wrappers/_misc.py) |
 | /basic/v1/admin/namespaces/{namespace}/misc/countrygroups/{countryGroupCode} | DELETE | deleteCountryGroup | [DeleteCountryGroup](../accelbyte_py_sdk/api/basic/operations/misc/delete_country_group.py) | [delete_country_group](../accelbyte_py_sdk/api/basic/wrappers/_misc.py) |
 | /basic/v1/admin/namespaces/{namespace}/misc/languages | GET | getLanguages | [GetLanguages](../accelbyte_py_sdk/api/basic/operations/misc/get_languages.py) | [get_languages](../accelbyte_py_sdk/api/basic/wrappers/_misc.py) |
@@ -18,6 +24,10 @@
 | /basic/v1/public/namespaces/{namespace}/misc/timezones | GET | publicGetTimeZones | [PublicGetTimeZones](../accelbyte_py_sdk/api/basic/operations/misc/public_get_time_zones.py) | [public_get_time_zones](../accelbyte_py_sdk/api/basic/wrappers/_misc.py) |
 | /basic/v1/public/namespaces/{namespace}/misc/languages | GET | publicGetLanguages | [PublicGetLanguages](../accelbyte_py_sdk/api/basic/operations/misc/public_get_languages.py) | [public_get_languages](../accelbyte_py_sdk/api/basic/wrappers/_misc.py) |
 | /basic/v1/public/namespaces/{namespace}/misc/countries | GET | publicGetCountries | [PublicGetCountries](../accelbyte_py_sdk/api/basic/operations/misc/public_get_countries.py) | [public_get_countries](../accelbyte_py_sdk/api/basic/wrappers/_misc.py) |
+
+### Namespace
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /basic/v1/admin/namespaces | GET | getNamespaces | [GetNamespaces](../accelbyte_py_sdk/api/basic/operations/namespace/get_namespaces.py) | [get_namespaces](../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) |
 | /basic/v1/admin/namespaces | POST | createNamespace | [CreateNamespace](../accelbyte_py_sdk/api/basic/operations/namespace/create_namespace.py) | [create_namespace](../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) |
 | /basic/v1/admin/namespaces/{namespace}/status | PATCH | changeNamespaceStatus | [ChangeNamespaceStatus](../accelbyte_py_sdk/api/basic/operations/namespace/change_namespace_status.py) | [change_namespace_status](../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) |
@@ -27,7 +37,15 @@
 | /basic/v1/admin/namespaces/{namespace} | DELETE | deleteNamespace | [DeleteNamespace](../accelbyte_py_sdk/api/basic/operations/namespace/delete_namespace.py) | [delete_namespace](../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) |
 | /basic/v1/public/namespaces/{namespace}/publisher | GET | publicGetNamespacePublisher | [PublicGetNamespacePublisher](../accelbyte_py_sdk/api/basic/operations/namespace/public_get_namespace_publisher.py) | [public_get_namespace_publisher](../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) |
 | /basic/v1/public/namespaces | GET | publicGetNamespaces | [PublicGetNamespaces](../accelbyte_py_sdk/api/basic/operations/namespace/public_get_namespaces.py) | [public_get_namespaces](../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) |
+
+### Anonymization
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /basic/v1/admin/namespaces/{namespace}/users/{userId}/anonymization/profiles | DELETE | anonymizeUserProfile | [AnonymizeUserProfile](../accelbyte_py_sdk/api/basic/operations/anonymization/anonymize_user_profile.py) | [anonymize_user_profile](../accelbyte_py_sdk/api/basic/wrappers/_anonymization.py) |
+
+### UserProfile
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles | GET | getUserProfileInfo | [GetUserProfileInfo](../accelbyte_py_sdk/api/basic/operations/user_profile/get_user_profile_info.py) | [get_user_profile_info](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
 | /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles | PUT | updateUserProfile | [UpdateUserProfile](../accelbyte_py_sdk/api/basic/operations/user_profile/update_user_profile.py) | [update_user_profile](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
 | /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles | DELETE | deleteUserProfile | [DeleteUserProfile](../accelbyte_py_sdk/api/basic/operations/user_profile/delete_user_profile.py) | [delete_user_profile](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |

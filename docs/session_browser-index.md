@@ -2,6 +2,8 @@
 
 
 ## Operations
+
+### Session
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /sessionbrowser/namespaces/{namespace}/gamesession | GET | QuerySession | [QuerySession](../accelbyte_py_sdk/api/session_browser/operations/session/query_session.py) | [query_session](../accelbyte_py_sdk/api/session_browser/wrappers/_session.py) |

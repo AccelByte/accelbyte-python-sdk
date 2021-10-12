@@ -1,7 +1,9 @@
-# Cloudsave Index
+# Cloudsave Index (3.38.0)
 
 
 ## Operations
+
+### AdminGameRecord
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /cloudsave/v1/admin/namespaces/{namespace}/records | GET | listGameRecordsHandlerV1 | [ListGameRecordsHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/admin_game_record/list_game_records_handler_v1.py) | [list_game_records_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_game_record.py) |
@@ -9,6 +11,10 @@
 | /cloudsave/v1/admin/namespaces/{namespace}/records/{key} | PUT | putAdminGameRecordHandlerV1 | [PutAdminGameRecordHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/admin_game_record/put_admin_game_record_handler_v1.py) | [put_admin_game_record_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_game_record.py) |
 | /cloudsave/v1/admin/namespaces/{namespace}/records/{key} | POST | postAdminGameRecordHandlerV1 | [PostAdminGameRecordHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/admin_game_record/post_admin_game_record_handler_v1.py) | [post_admin_game_record_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_game_record.py) |
 | /cloudsave/v1/admin/namespaces/{namespace}/records/{key} | DELETE | deleteAdminGameRecordHandlerV1 | [DeleteAdminGameRecordHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/admin_game_record/delete_admin_game_record_handler_v1.py) | [delete_admin_game_record_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_game_record.py) |
+
+### AdminPlayerRecord
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /cloudsave/v1/admin/namespaces/{namespace}/users/records | GET | listPlayerRecordHandlerV1 | [ListPlayerRecordHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/admin_player_record/list_player_record_handler_v1.py) | [list_player_record_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_player_record.py) |
 | /cloudsave/v1/admin/namespaces/{namespace}/users/{userID}/records/{key} | GET | adminGetPlayerRecordHandlerV1 | [AdminGetPlayerRecordHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/admin_player_record/admin_get_player_record_handler_v1.py) | [admin_get_player_record_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_player_record.py) |
 | /cloudsave/v1/admin/namespaces/{namespace}/users/{userID}/records/{key} | PUT | adminPutPlayerRecordHandlerV1 | [AdminPutPlayerRecordHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/admin_player_record/admin_put_player_record_handler_v1.py) | [admin_put_player_record_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_player_record.py) |
@@ -18,12 +24,24 @@
 | /cloudsave/v1/admin/namespaces/{namespace}/users/{userID}/records/{key}/public | PUT | adminPutPlayerPublicRecordHandlerV1 | [AdminPutPlayerPublicRecordHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/admin_player_record/admin_put_player_public_record_handler_v1.py) | [admin_put_player_public_record_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_player_record.py) |
 | /cloudsave/v1/admin/namespaces/{namespace}/users/{userID}/records/{key}/public | POST | adminPostPlayerPublicRecordHandlerV1 | [AdminPostPlayerPublicRecordHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/admin_player_record/admin_post_player_public_record_handler_v1.py) | [admin_post_player_public_record_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_player_record.py) |
 | /cloudsave/v1/admin/namespaces/{namespace}/users/{userID}/records/{key}/public | DELETE | adminDeletePlayerPublicRecordHandlerV1 | [AdminDeletePlayerPublicRecordHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/admin_player_record/admin_delete_player_public_record_handler_v1.py) | [admin_delete_player_public_record_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_player_record.py) |
+
+### ConcurrentRecord
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /cloudsave/v1/namespaces/{namespace}/concurrent/records/{key} | PUT | putGameRecordConcurrentHandlerV1 | [PutGameRecordConcurrentHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/concurrent_record/put_game_record_concurrent_handler_v1.py) | [put_game_record_concurrent_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_concurrent_record.py) |
+| /cloudsave/v1/namespaces/{namespace}/users/{userID}/concurrent/records/{key}/public | PUT | putPlayerPublicRecordConcurrentHandlerV1 | [PutPlayerPublicRecordConcurrentHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/concurrent_record/put_player_public_record_concurrent_handler_v1.py) | [put_player_public_record_concurrent_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_concurrent_record.py) |
+
+### PublicGameRecord
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /cloudsave/v1/namespaces/{namespace}/records/{key} | GET | getGameRecordHandlerV1 | [GetGameRecordHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/public_game_record/get_game_record_handler_v1.py) | [get_game_record_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_public_game_record.py) |
 | /cloudsave/v1/namespaces/{namespace}/records/{key} | PUT | putGameRecordHandlerV1 | [PutGameRecordHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/public_game_record/put_game_record_handler_v1.py) | [put_game_record_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_public_game_record.py) |
 | /cloudsave/v1/namespaces/{namespace}/records/{key} | POST | postGameRecordHandlerV1 | [PostGameRecordHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/public_game_record/post_game_record_handler_v1.py) | [post_game_record_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_public_game_record.py) |
 | /cloudsave/v1/namespaces/{namespace}/records/{key} | DELETE | deleteGameRecordHandlerV1 | [DeleteGameRecordHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/public_game_record/delete_game_record_handler_v1.py) | [delete_game_record_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_public_game_record.py) |
-| /cloudsave/v1/namespaces/{namespace}/users/{userID}/concurrent/records/{key}/public | PUT | putPlayerPublicRecordConcurrentHandlerV1 | [PutPlayerPublicRecordConcurrentHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/concurrent_record/put_player_public_record_concurrent_handler_v1.py) | [put_player_public_record_concurrent_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_concurrent_record.py) |
+
+### PublicPlayerRecord
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /cloudsave/v1/namespaces/{namespace}/users/{userID}/records/{key} | GET | getPlayerRecordHandlerV1 | [GetPlayerRecordHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/public_player_record/get_player_record_handler_v1.py) | [get_player_record_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_public_player_record.py) |
 | /cloudsave/v1/namespaces/{namespace}/users/{userID}/records/{key} | PUT | putPlayerRecordHandlerV1 | [PutPlayerRecordHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/public_player_record/put_player_record_handler_v1.py) | [put_player_record_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_public_player_record.py) |
 | /cloudsave/v1/namespaces/{namespace}/users/{userID}/records/{key} | POST | postPlayerRecordHandlerV1 | [PostPlayerRecordHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/public_player_record/post_player_record_handler_v1.py) | [post_player_record_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_public_player_record.py) |

@@ -1,7 +1,9 @@
-# Social Index
+# Social Index (1.17.1)
 
 
 ## Operations
+
+### GameProfile
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /social/admin/namespaces/{namespace}/users/{userId}/profiles | GET | getUserProfiles | [GetUserProfiles](../accelbyte_py_sdk/api/social/operations/game_profile/get_user_profiles.py) | [get_user_profiles](../accelbyte_py_sdk/api/social/wrappers/_game_profile.py) |
@@ -14,19 +16,19 @@
 | /social/public/namespaces/{namespace}/users/{userId}/profiles/{profileId} | PUT | publicUpdateProfile | [PublicUpdateProfile](../accelbyte_py_sdk/api/social/operations/game_profile/public_update_profile.py) | [public_update_profile](../accelbyte_py_sdk/api/social/wrappers/_game_profile.py) |
 | /social/public/namespaces/{namespace}/users/{userId}/profiles/{profileId} | DELETE | publicDeleteProfile | [PublicDeleteProfile](../accelbyte_py_sdk/api/social/operations/game_profile/public_delete_profile.py) | [public_delete_profile](../accelbyte_py_sdk/api/social/wrappers/_game_profile.py) |
 | /social/public/namespaces/{namespace}/profiles | GET | publicGetUserGameProfiles | [PublicGetUserGameProfiles](../accelbyte_py_sdk/api/social/operations/game_profile/public_get_user_game_profiles.py) | [public_get_user_game_profiles](../accelbyte_py_sdk/api/social/wrappers/_game_profile.py) |
+
+### GlobalStatistic
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /social/v1/admin/namespaces/{namespace}/globalstatitems | GET | getGlobalStatItems | [GetGlobalStatItems](../accelbyte_py_sdk/api/social/operations/global_statistic/get_global_stat_items.py) | [get_global_stat_items](../accelbyte_py_sdk/api/social/wrappers/_global_statistic.py) |
+
+### UserStatistic
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /social/v1/admin/namespaces/{namespace}/statitems/value/bulk | PUT | bulkIncUserStatItem | [BulkIncUserStatItem](../accelbyte_py_sdk/api/social/operations/user_statistic/bulk_inc_user_stat_item.py) | [bulk_inc_user_stat_item](../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) |
 | /social/v1/admin/namespaces/{namespace}/statitems/value/bulk | PATCH | bulkIncUserStatItemValue | [BulkIncUserStatItemValue](../accelbyte_py_sdk/api/social/operations/user_statistic/bulk_inc_user_stat_item_value.py) | [bulk_inc_user_stat_item_value](../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) |
 | /social/v1/admin/namespaces/{namespace}/statitems/bulk | GET | bulkFetchStatItems | [BulkFetchStatItems](../accelbyte_py_sdk/api/social/operations/user_statistic/bulk_fetch_stat_items.py) | [bulk_fetch_stat_items](../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) |
 | /social/v1/admin/namespaces/{namespace}/statitems/value/reset/bulk | PUT | bulkResetUserStatItem | [BulkResetUserStatItem](../accelbyte_py_sdk/api/social/operations/user_statistic/bulk_reset_user_stat_item.py) | [bulk_reset_user_stat_item](../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) |
-| /social/v1/admin/namespaces/{namespace}/stats/{statCode} | GET | getStat | [GetStat](../accelbyte_py_sdk/api/social/operations/stat_configuration/get_stat.py) | [get_stat](../accelbyte_py_sdk/api/social/wrappers/_stat_configuration.py) |
-| /social/v1/admin/namespaces/{namespace}/stats/{statCode} | DELETE | deleteStat | [DeleteStat](../accelbyte_py_sdk/api/social/operations/stat_configuration/delete_stat.py) | [delete_stat](../accelbyte_py_sdk/api/social/wrappers/_stat_configuration.py) |
-| /social/v1/admin/namespaces/{namespace}/stats/{statCode} | PATCH | updateStat | [UpdateStat](../accelbyte_py_sdk/api/social/operations/stat_configuration/update_stat.py) | [update_stat](../accelbyte_py_sdk/api/social/wrappers/_stat_configuration.py) |
-| /social/v1/admin/namespaces/{namespace}/stats | GET | getStats | [GetStats](../accelbyte_py_sdk/api/social/operations/stat_configuration/get_stats.py) | [get_stats](../accelbyte_py_sdk/api/social/wrappers/_stat_configuration.py) |
-| /social/v1/admin/namespaces/{namespace}/stats | POST | createStat | [CreateStat](../accelbyte_py_sdk/api/social/operations/stat_configuration/create_stat.py) | [create_stat](../accelbyte_py_sdk/api/social/wrappers/_stat_configuration.py) |
-| /social/v1/admin/namespaces/{namespace}/stats/search | GET | queryStats | [QueryStats](../accelbyte_py_sdk/api/social/operations/stat_configuration/query_stats.py) | [query_stats](../accelbyte_py_sdk/api/social/wrappers/_stat_configuration.py) |
-| /social/v1/admin/namespaces/{namespace}/stats/export | GET | exportStats | [ExportStats](../accelbyte_py_sdk/api/social/operations/stat_configuration/export_stats.py) | [export_stats](../accelbyte_py_sdk/api/social/wrappers/_stat_configuration.py) |
-| /social/v1/admin/namespaces/{namespace}/stats/import | POST | importStats | [ImportStats](../accelbyte_py_sdk/api/social/operations/stat_configuration/import_stats.py) | [import_stats](../accelbyte_py_sdk/api/social/wrappers/_stat_configuration.py) |
 | /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk | PUT | bulkIncUserStatItem_1 | [BulkIncUserStatItem1](../accelbyte_py_sdk/api/social/operations/user_statistic/bulk_inc_user_stat_item_1.py) | [bulk_inc_user_stat_item_1](../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) |
 | /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk | PATCH | bulkIncUserStatItemValue_1 | [BulkIncUserStatItemValue1](../accelbyte_py_sdk/api/social/operations/user_statistic/bulk_inc_user_stat_item_value_1.py) | [bulk_inc_user_stat_item_value_1](../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) |
 | /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems | GET | getUserStatItems | [GetUserStatItems](../accelbyte_py_sdk/api/social/operations/user_statistic/get_user_stat_items.py) | [get_user_stat_items](../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) |
@@ -40,7 +42,6 @@
 | /social/v1/public/namespaces/{namespace}/statitems/value/bulk | PATCH | publicBulkIncUserStatItemValue | [PublicBulkIncUserStatItemValue](../accelbyte_py_sdk/api/social/operations/user_statistic/public_bulk_inc_user_stat_item_value.py) | [public_bulk_inc_user_stat_item_value](../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) |
 | /social/v1/public/namespaces/{namespace}/statitems/bulk | GET | bulkFetchStatItems_1 | [BulkFetchStatItems1](../accelbyte_py_sdk/api/social/operations/user_statistic/bulk_fetch_stat_items_1.py) | [bulk_fetch_stat_items_1](../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) |
 | /social/v1/public/namespaces/{namespace}/statitems/value/reset/bulk | PUT | bulkResetUserStatItem_2 | [BulkResetUserStatItem2](../accelbyte_py_sdk/api/social/operations/user_statistic/bulk_reset_user_stat_item_2.py) | [bulk_reset_user_stat_item_2](../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) |
-| /social/v1/public/namespaces/{namespace}/stats | POST | createStat_1 | [CreateStat1](../accelbyte_py_sdk/api/social/operations/stat_configuration/create_stat_1.py) | [create_stat_1](../accelbyte_py_sdk/api/social/wrappers/_stat_configuration.py) |
 | /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk | PUT | publicBulkIncUserStatItem_1 | [PublicBulkIncUserStatItem1](../accelbyte_py_sdk/api/social/operations/user_statistic/public_bulk_inc_user_stat_item_1.py) | [public_bulk_inc_user_stat_item_1](../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) |
 | /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk | PATCH | bulkIncUserStatItemValue_2 | [BulkIncUserStatItemValue2](../accelbyte_py_sdk/api/social/operations/user_statistic/bulk_inc_user_stat_item_value_2.py) | [bulk_inc_user_stat_item_value_2](../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) |
 | /social/v1/public/namespaces/{namespace}/users/{userId}/statitems | GET | publicQueryUserStatItems | [PublicQueryUserStatItems](../accelbyte_py_sdk/api/social/operations/user_statistic/public_query_user_stat_items.py) | [public_query_user_stat_items](../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) |
@@ -58,14 +59,35 @@
 | /social/v2/public/namespaces/{namespace}/statitems/value/bulk | PUT | bulkUpdateUserStatItem_1 | [BulkUpdateUserStatItem1](../accelbyte_py_sdk/api/social/operations/user_statistic/bulk_update_user_stat_item_1.py) | [bulk_update_user_stat_item_1](../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) |
 | /social/v2/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk | PUT | bulkUpdateUserStatItem_2 | [BulkUpdateUserStatItem2](../accelbyte_py_sdk/api/social/operations/user_statistic/bulk_update_user_stat_item_2.py) | [bulk_update_user_stat_item_2](../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) |
 | /social/v2/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value | PUT | updateUserStatItemValue_1 | [UpdateUserStatItemValue1](../accelbyte_py_sdk/api/social/operations/user_statistic/update_user_stat_item_value_1.py) | [update_user_stat_item_value_1](../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) |
+
+### StatConfiguration
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
+| /social/v1/admin/namespaces/{namespace}/stats/{statCode} | GET | getStat | [GetStat](../accelbyte_py_sdk/api/social/operations/stat_configuration/get_stat.py) | [get_stat](../accelbyte_py_sdk/api/social/wrappers/_stat_configuration.py) |
+| /social/v1/admin/namespaces/{namespace}/stats/{statCode} | DELETE | deleteStat | [DeleteStat](../accelbyte_py_sdk/api/social/operations/stat_configuration/delete_stat.py) | [delete_stat](../accelbyte_py_sdk/api/social/wrappers/_stat_configuration.py) |
+| /social/v1/admin/namespaces/{namespace}/stats/{statCode} | PATCH | updateStat | [UpdateStat](../accelbyte_py_sdk/api/social/operations/stat_configuration/update_stat.py) | [update_stat](../accelbyte_py_sdk/api/social/wrappers/_stat_configuration.py) |
+| /social/v1/admin/namespaces/{namespace}/stats | GET | getStats | [GetStats](../accelbyte_py_sdk/api/social/operations/stat_configuration/get_stats.py) | [get_stats](../accelbyte_py_sdk/api/social/wrappers/_stat_configuration.py) |
+| /social/v1/admin/namespaces/{namespace}/stats | POST | createStat | [CreateStat](../accelbyte_py_sdk/api/social/operations/stat_configuration/create_stat.py) | [create_stat](../accelbyte_py_sdk/api/social/wrappers/_stat_configuration.py) |
+| /social/v1/admin/namespaces/{namespace}/stats/search | GET | queryStats | [QueryStats](../accelbyte_py_sdk/api/social/operations/stat_configuration/query_stats.py) | [query_stats](../accelbyte_py_sdk/api/social/wrappers/_stat_configuration.py) |
+| /social/v1/admin/namespaces/{namespace}/stats/export | GET | exportStats | [ExportStats](../accelbyte_py_sdk/api/social/operations/stat_configuration/export_stats.py) | [export_stats](../accelbyte_py_sdk/api/social/wrappers/_stat_configuration.py) |
+| /social/v1/admin/namespaces/{namespace}/stats/import | POST | importStats | [ImportStats](../accelbyte_py_sdk/api/social/operations/stat_configuration/import_stats.py) | [import_stats](../accelbyte_py_sdk/api/social/wrappers/_stat_configuration.py) |
+| /social/v1/public/namespaces/{namespace}/stats | POST | createStat_1 | [CreateStat1](../accelbyte_py_sdk/api/social/operations/stat_configuration/create_stat_1.py) | [create_stat_1](../accelbyte_py_sdk/api/social/wrappers/_stat_configuration.py) |
+
+### SlotConfig
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
 | /social/admin/namespaces/{namespace}/config | GET | getNamespaceSlotConfig | [GetNamespaceSlotConfig](../accelbyte_py_sdk/api/social/operations/slot_config/get_namespace_slot_config.py) | [get_namespace_slot_config](../accelbyte_py_sdk/api/social/wrappers/_slot_config.py) |
 | /social/admin/namespaces/{namespace}/config | PUT | updateNamespaceSlotConfig | [UpdateNamespaceSlotConfig](../accelbyte_py_sdk/api/social/operations/slot_config/update_namespace_slot_config.py) | [update_namespace_slot_config](../accelbyte_py_sdk/api/social/wrappers/_slot_config.py) |
 | /social/admin/namespaces/{namespace}/config | DELETE | deleteNamespaceSlotConfig | [DeleteNamespaceSlotConfig](../accelbyte_py_sdk/api/social/operations/slot_config/delete_namespace_slot_config.py) | [delete_namespace_slot_config](../accelbyte_py_sdk/api/social/wrappers/_slot_config.py) |
-| /social/admin/namespaces/{namespace}/users/{userId}/slots/{slotId} | GET | getSlotData | [GetSlotData](../accelbyte_py_sdk/api/social/operations/slot/get_slot_data.py) | [get_slot_data](../accelbyte_py_sdk/api/social/wrappers/_slot.py) |
-| /social/admin/namespaces/{namespace}/users/{userId}/slots | GET | getUserNamespaceSlots | [GetUserNamespaceSlots](../accelbyte_py_sdk/api/social/operations/slot/get_user_namespace_slots.py) | [get_user_namespace_slots](../accelbyte_py_sdk/api/social/wrappers/_slot.py) |
 | /social/admin/namespaces/{namespace}/users/{userId}/config | GET | getUserSlotConfig | [GetUserSlotConfig](../accelbyte_py_sdk/api/social/operations/slot_config/get_user_slot_config.py) | [get_user_slot_config](../accelbyte_py_sdk/api/social/wrappers/_slot_config.py) |
 | /social/admin/namespaces/{namespace}/users/{userId}/config | PUT | updateUserSlotConfig | [UpdateUserSlotConfig](../accelbyte_py_sdk/api/social/operations/slot_config/update_user_slot_config.py) | [update_user_slot_config](../accelbyte_py_sdk/api/social/wrappers/_slot_config.py) |
 | /social/admin/namespaces/{namespace}/users/{userId}/config | DELETE | deleteUserSlotConfig | [DeleteUserSlotConfig](../accelbyte_py_sdk/api/social/operations/slot_config/delete_user_slot_config.py) | [delete_user_slot_config](../accelbyte_py_sdk/api/social/wrappers/_slot_config.py) |
+
+### Slot
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
+| /social/admin/namespaces/{namespace}/users/{userId}/slots/{slotId} | GET | getSlotData | [GetSlotData](../accelbyte_py_sdk/api/social/operations/slot/get_slot_data.py) | [get_slot_data](../accelbyte_py_sdk/api/social/wrappers/_slot.py) |
+| /social/admin/namespaces/{namespace}/users/{userId}/slots | GET | getUserNamespaceSlots | [GetUserNamespaceSlots](../accelbyte_py_sdk/api/social/operations/slot/get_user_namespace_slots.py) | [get_user_namespace_slots](../accelbyte_py_sdk/api/social/wrappers/_slot.py) |
 | /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId} | GET | publicGetSlotData | [PublicGetSlotData](../accelbyte_py_sdk/api/social/operations/slot/public_get_slot_data.py) | [public_get_slot_data](../accelbyte_py_sdk/api/social/wrappers/_slot.py) |
 | /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId} | PUT | publicUpdateUserNamespaceSlot | [PublicUpdateUserNamespaceSlot](../accelbyte_py_sdk/api/social/operations/slot/public_update_user_namespace_slot.py) | [public_update_user_namespace_slot](../accelbyte_py_sdk/api/social/wrappers/_slot.py) |
 | /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId} | DELETE | publicDeleteUserNamespaceSlot | [PublicDeleteUserNamespaceSlot](../accelbyte_py_sdk/api/social/operations/slot/public_delete_user_namespace_slot.py) | [public_delete_user_namespace_slot](../accelbyte_py_sdk/api/social/wrappers/_slot.py) |
