@@ -40,6 +40,7 @@ from ._wsm import WebSocketMessageParserException
 from ._wsm import parse_wsm
 
 from ._ws_client import WebsocketsWSClient
+from ._ws_client import Websockets2WSClient
 
 from ._decorators import deprecated
 from ._decorators import same_doc_as
