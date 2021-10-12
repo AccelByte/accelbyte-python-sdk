@@ -72,13 +72,13 @@ class UnblockPlayerResponse(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "code":
+            if (not is_strict and name.casefold() == "code".casefold()) or (name == "code"):
                 instance.code = value
                 continue
-            if name == "namespace":
+            if (not is_strict and name.casefold() == "namespace".casefold()) or (name == "namespace"):
                 instance.namespace = value
                 continue
-            if name == "unblockedUserId":
+            if (not is_strict and name.casefold() == "unblockedUserId".casefold()) or (name == "unblockedUserId"):
                 instance.unblocked_user_id = value
                 continue
             if is_strict:

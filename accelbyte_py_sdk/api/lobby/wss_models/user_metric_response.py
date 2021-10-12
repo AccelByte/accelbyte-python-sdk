@@ -69,10 +69,10 @@ class UserMetricResponse(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "code":
+            if (not is_strict and name.casefold() == "code".casefold()) or (name == "code"):
                 instance.code = value
                 continue
-            if name == "playerCount":
+            if (not is_strict and name.casefold() == "playerCount".casefold()) or (name == "playerCount"):
                 instance.player_count = value
                 continue
             if is_strict:

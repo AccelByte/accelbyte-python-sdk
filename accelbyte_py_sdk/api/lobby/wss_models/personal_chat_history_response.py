@@ -72,13 +72,13 @@ class PersonalChatHistoryResponse(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "code":
+            if (not is_strict and name.casefold() == "code".casefold()) or (name == "code"):
                 instance.code = value
                 continue
-            if name == "friendId":
+            if (not is_strict and name.casefold() == "friendId".casefold()) or (name == "friendId"):
                 instance.friend_id = value
                 continue
-            if name == "chat":
+            if (not is_strict and name.casefold() == "chat".casefold()) or (name == "chat"):
                 instance.chat = value
                 continue
             if is_strict:

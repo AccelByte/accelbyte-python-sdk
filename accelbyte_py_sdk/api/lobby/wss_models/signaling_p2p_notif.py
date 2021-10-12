@@ -28,7 +28,6 @@ class SignalingP2PNotif(WebSocketMessage):
 
     # region fields
 
-    id_: str
     destination_id: str
     message: str
 
@@ -40,8 +39,6 @@ class SignalingP2PNotif(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {SignalingP2PNotif.get_type()}"]
-        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
-        wsm.append(f"id: {id_}")
         if hasattr(self, "destination_id") and self.destination_id:
             wsm.append(f"destinationId: {self.destination_id}")
         if hasattr(self, "message") and self.message:
@@ -58,21 +55,17 @@ class SignalingP2PNotif(WebSocketMessage):
         if not wsm:
             return instance
         lines = wsm.splitlines(keepends=False)
-        if len(lines) < 2:
+        if len(lines) < 1:
             raise WebSocketMessageParserException(WebSocketMessageParserError.TypeFormatInvalid)
-        id_line = lines[1]
-        if not id_line.startswith("id: "):
-            raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
-        instance.id_ = id_line.removeprefix("id: ")
-        for line in lines[2:]:
+        for line in lines[1:]:
             parts = line.split(":", 1)
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "destinationId":
+            if (not is_strict and name.casefold() == "destinationId".casefold()) or (name == "destinationId"):
                 instance.destination_id = value
                 continue
-            if name == "message":
+            if (not is_strict and name.casefold() == "message".casefold()) or (name == "message"):
                 instance.message = value
                 continue
             if is_strict:
@@ -86,7 +79,6 @@ class SignalingP2PNotif(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
             "destinationId": "destination_id",
             "message": "message",
         }

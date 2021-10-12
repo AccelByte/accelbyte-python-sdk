@@ -66,7 +66,7 @@ class PartyKickRequest(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "memberId":
+            if (not is_strict and name.casefold() == "memberId".casefold()) or (name == "memberId"):
                 instance.member_id = value
                 continue
             if is_strict:

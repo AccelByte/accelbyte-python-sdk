@@ -66,7 +66,7 @@ class PartyPromoteLeaderRequest(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "newLeaderUserId":
+            if (not is_strict and name.casefold() == "newLeaderUserId".casefold()) or (name == "newLeaderUserId"):
                 instance.new_leader_user_id = value
                 continue
             if is_strict:

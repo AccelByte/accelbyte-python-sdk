@@ -72,13 +72,13 @@ class SetSessionAttributeRequest(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "namespace":
+            if (not is_strict and name.casefold() == "namespace".casefold()) or (name == "namespace"):
                 instance.namespace = value
                 continue
-            if name == "key":
+            if (not is_strict and name.casefold() == "key".casefold()) or (name == "key"):
                 instance.key = value
                 continue
-            if name == "value":
+            if (not is_strict and name.casefold() == "value".casefold()) or (name == "value"):
                 instance.value = value
                 continue
             if is_strict:

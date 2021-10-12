@@ -74,22 +74,22 @@ class MatchmakingNotif(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "status":
+            if (not is_strict and name.casefold() == "status".casefold()) or (name == "status"):
                 instance.status = value
                 continue
-            if name == "matchId":
+            if (not is_strict and name.casefold() == "matchId".casefold()) or (name == "matchId"):
                 instance.match_id = value
                 continue
-            if name == "partyMember":
+            if (not is_strict and name.casefold() == "partyMember".casefold()) or (name == "partyMember"):
                 instance.party_member = [str(i) for i in value.removeprefix("[").removesuffix("]").split(",")]
                 continue
-            if name == "counterPartyMember":
+            if (not is_strict and name.casefold() == "counterPartyMember".casefold()) or (name == "counterPartyMember"):
                 instance.counter_party_member = [str(i) for i in value.removeprefix("[").removesuffix("]").split(",")]
                 continue
-            if name == "message":
+            if (not is_strict and name.casefold() == "message".casefold()) or (name == "message"):
                 instance.message = value
                 continue
-            if name == "readyDuration":
+            if (not is_strict and name.casefold() == "readyDuration".casefold()) or (name == "readyDuration"):
                 instance.ready_duration = value
                 continue
             if is_strict:

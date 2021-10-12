@@ -65,13 +65,13 @@ class PartyKickNotif(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "partyId":
+            if (not is_strict and name.casefold() == "partyId".casefold()) or (name == "partyId"):
                 instance.party_id = value
                 continue
-            if name == "leaderId":
+            if (not is_strict and name.casefold() == "leaderId".casefold()) or (name == "leaderId"):
                 instance.leader_id = value
                 continue
-            if name == "userId":
+            if (not is_strict and name.casefold() == "userId".casefold()) or (name == "userId"):
                 instance.user_id = value
                 continue
             if is_strict:

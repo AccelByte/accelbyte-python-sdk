@@ -81,22 +81,22 @@ class PartyCreateResponse(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "code":
+            if (not is_strict and name.casefold() == "code".casefold()) or (name == "code"):
                 instance.code = value
                 continue
-            if name == "partyId":
+            if (not is_strict and name.casefold() == "partyId".casefold()) or (name == "partyId"):
                 instance.party_id = value
                 continue
-            if name == "leaderId":
+            if (not is_strict and name.casefold() == "leaderId".casefold()) or (name == "leaderId"):
                 instance.leader_id = value
                 continue
-            if name == "members":
+            if (not is_strict and name.casefold() == "members".casefold()) or (name == "members"):
                 instance.members = value
                 continue
-            if name == "invitees":
+            if (not is_strict and name.casefold() == "invitees".casefold()) or (name == "invitees"):
                 instance.invitees = value
                 continue
-            if name == "invitationToken":
+            if (not is_strict and name.casefold() == "invitationToken".casefold()) or (name == "invitationToken"):
                 instance.invitation_token = value
                 continue
             if is_strict:

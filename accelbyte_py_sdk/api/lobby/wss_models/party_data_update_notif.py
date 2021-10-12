@@ -77,25 +77,25 @@ class PartyDataUpdateNotif(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "partyId":
+            if (not is_strict and name.casefold() == "partyId".casefold()) or (name == "partyId"):
                 instance.party_id = value
                 continue
-            if name == "leader":
+            if (not is_strict and name.casefold() == "leader".casefold()) or (name == "leader"):
                 instance.leader = value
                 continue
-            if name == "namespace":
+            if (not is_strict and name.casefold() == "namespace".casefold()) or (name == "namespace"):
                 instance.namespace = value
                 continue
-            if name == "members":
+            if (not is_strict and name.casefold() == "members".casefold()) or (name == "members"):
                 instance.members = [str(i) for i in value.removeprefix("[").removesuffix("]").split(",")]
                 continue
-            if name == "invitees":
+            if (not is_strict and name.casefold() == "invitees".casefold()) or (name == "invitees"):
                 instance.invitees = [str(i) for i in value.removeprefix("[").removesuffix("]").split(",")]
                 continue
-            if name == "customAttributes":
+            if (not is_strict and name.casefold() == "customAttributes".casefold()) or (name == "customAttributes"):
                 instance.custom_attributes = json.loads(value)
                 continue
-            if name == "updatedAt":
+            if (not is_strict and name.casefold() == "updatedAt".casefold()) or (name == "updatedAt"):
                 instance.updated_at = value
                 continue
             if is_strict:

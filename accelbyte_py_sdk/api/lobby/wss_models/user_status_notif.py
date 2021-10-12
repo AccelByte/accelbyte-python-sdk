@@ -68,16 +68,16 @@ class UserStatusNotif(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if name == "userId":
+            if (not is_strict and name.casefold() == "userId".casefold()) or (name == "userId"):
                 instance.user_id = value
                 continue
-            if name == "availability":
+            if (not is_strict and name.casefold() == "availability".casefold()) or (name == "availability"):
                 instance.availability = value
                 continue
-            if name == "activity":
+            if (not is_strict and name.casefold() == "activity".casefold()) or (name == "activity"):
                 instance.activity = value
                 continue
-            if name == "lastSeenAt":
+            if (not is_strict and name.casefold() == "lastSeenAt".casefold()) or (name == "lastSeenAt"):
                 instance.last_seen_at = value
                 continue
             if is_strict:
