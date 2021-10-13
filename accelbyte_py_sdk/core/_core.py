@@ -49,12 +49,14 @@ def initialize(
             implementation = next((impl for impl in _CONFIG_REPOSITORY_IMPL if impl.__name__ == impl), None)
             if implementation is None:
                 raise ValueError(f"Config repository '{config_repository}' not recognized.")
-        elif not isinstance(config_repository, ConfigRepository):
-            raise ValueError(f"Config repository '{config_repository}' not recognized.")
-        _CONFIG_REPOSITORY = config_repository
+            config_repository = implementation()
     else:
-        config_repository = _CONFIG_REPOSITORY_IMPL[0]
-        _CONFIG_REPOSITORY = config_repository()
+        config_repository = _CONFIG_REPOSITORY_IMPL[0]()
+
+    if not isinstance(config_repository, ConfigRepository):
+        raise TypeError(f"Config repository '{type(config_repository).__name__}' not valid.")
+
+    _CONFIG_REPOSITORY = config_repository
 
     # endregion config repository
 
@@ -67,12 +69,14 @@ def initialize(
             implementation = next((impl for impl in _TOKEN_REPOSITORY_IMPL if impl.__name__ == impl), None)
             if implementation is None:
                 raise ValueError(f"Token repository '{token_repository}' not recognized.")
-        elif not isinstance(token_repository, TokenRepository):
-            raise ValueError(f"Token repository '{token_repository}' not recognized.")
-        _TOKEN_REPOSITORY = token_repository
+            token_repository = implementation()
     else:
-        token_repository = _TOKEN_REPOSITORY_IMPL[0]
-        _TOKEN_REPOSITORY = token_repository()
+        token_repository = _TOKEN_REPOSITORY_IMPL[0]()
+
+    if not isinstance(token_repository, TokenRepository):
+        raise TypeError(f"Token repository '{type(token_repository).__name__}' not valid.")
+
+    _TOKEN_REPOSITORY = token_repository
 
     # endregion token repository
 
@@ -84,13 +88,15 @@ def initialize(
         if isinstance(http_client, str):
             implementation = next((impl for impl in _HTTP_CLIENT_IMPL if impl.__name__ == http_client), None)
             if implementation is None:
-                raise ValueError(f"HTTP Client '{token_repository}' not recognized.")
-        elif not isinstance(http_client, HttpClient):
-            raise ValueError(f"HTTP Client '{token_repository}' not recognized.")
-        _HTTP_CLIENT = http_client
+                raise ValueError(f"HTTP Client '{http_client}' not recognized.")
+            http_client = implementation()
     else:
-        http_client = _HTTP_CLIENT_IMPL[0]
-        _HTTP_CLIENT = http_client()
+        http_client = _HTTP_CLIENT_IMPL[0]()
+
+    if not isinstance(http_client, HttpClient):
+        raise TypeError(f"HTTP Client '{type(http_client).__name__}' not valid.")
+
+    _HTTP_CLIENT = http_client
 
     # endregion http client
 
