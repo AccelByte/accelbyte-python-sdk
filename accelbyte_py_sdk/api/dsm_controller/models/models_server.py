@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:29.770860+08:00
+# Auto-generated at 2021-10-14T22:17:08.980127+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.models_status_history import ModelsStatusHistory
 
 
 class ModelsServer(Model):
-    """Models server
+    """Models server (models.Server)
 
     Properties:
         allocation_id: (allocation_id) REQUIRED str
@@ -212,7 +212,7 @@ class ModelsServer(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "allocation_id") and self.allocation_id:
             result["allocation_id"] = str(self.allocation_id)
         elif include_empty:

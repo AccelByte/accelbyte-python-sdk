@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:29.734658+08:00
+# Auto-generated at 2021-10-14T22:17:08.958192+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsGetImageLimitResponseData(Model):
-    """Models get image limit response data
+    """Models get image limit response data (models.GetImageLimitResponseData)
 
     Properties:
         image_count: (image_count) REQUIRED int
@@ -56,7 +56,7 @@ class ModelsGetImageLimitResponseData(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "image_count") and self.image_count:
             result["image_count"] = int(self.image_count)
         elif include_empty:

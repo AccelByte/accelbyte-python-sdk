@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:29.723871+08:00
+# Auto-generated at 2021-10-14T22:17:08.950213+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsDeploymentConfig(Model):
-    """Models deployment config
+    """Models deployment config (models.DeploymentConfig)
 
     Properties:
         buffer_count: (buffer_count) REQUIRED int
@@ -84,7 +84,7 @@ class ModelsDeploymentConfig(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "buffer_count") and self.buffer_count:
             result["buffer_count"] = int(self.buffer_count)
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:29.767749+08:00
+# Auto-generated at 2021-10-14T22:17:08.977807+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.models_request_match_member import ModelsRequestMatchMember
 
 
 class ModelsRequestMatchParty(Model):
-    """Models request match party
+    """Models request match party (models.RequestMatchParty)
 
     Properties:
         party_attributes: (party_attributes) REQUIRED Dict[str, Any]
@@ -65,7 +65,7 @@ class ModelsRequestMatchParty(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "party_attributes") and self.party_attributes:
             result["party_attributes"] = {str(k0): v0 for k0, v0 in self.party_attributes.items()}
         elif include_empty:

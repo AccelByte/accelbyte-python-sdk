@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:22.729885+08:00
+# Auto-generated at 2021-10-14T22:17:09.019598+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,16 @@ from ...models import ResponseError
 class ExportImages(Operation):
     """export DSM Controller images for a namespace (ExportImages)
 
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ] Required
+    scope: social This endpoint export a dedicated servers images in a namespace.
+
+
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/images/export
 
         method: GET
 
-        tags: Config
+        tags: ["Config"]
 
         consumes: ["application/json"]
 
@@ -156,7 +160,7 @@ class ExportImages(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

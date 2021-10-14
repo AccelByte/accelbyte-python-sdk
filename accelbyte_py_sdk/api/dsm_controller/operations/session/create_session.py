@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:22.797311+08:00
+# Auto-generated at 2021-10-14T22:17:09.070862+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,24 @@ from ...models import ResponseError
 class CreateSession(Operation):
     """Register a new game session (CreateSession)
 
+    Required permission: NAMESPACE:{namespace}:DSM:SESSION [CREATE] Required
+    scope: social This endpoint is intended to be called by game session manager
+    (matchmaker, lobby, etc.) to get a dedicated server for a game session. If a
+    dedicated server is available, it will respond with a dedicated server details
+    ready to be used. Otherwise it will trigger new dedicated server creation and
+    respond with a server status CREATING. The game session manager then expected
+    to wait and query the server readiness with GET
+    /namespaces/{namespace}/sessions/{sessionID} endpoint until the serverstatus
+    is READY Specify pod_name with name of local DS in the request to create a
+    session using the registered local DS
+
+
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/sessions
 
         method: POST
 
-        tags: Session
+        tags: ["Session"]
 
         consumes: ["application/json"]
 
@@ -175,7 +187,7 @@ class CreateSession(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

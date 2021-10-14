@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:22.809336+08:00
+# Auto-generated at 2021-10-14T22:17:09.083058+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,15 @@ from ...models import ResponseError
 class PublicGetMessages(Operation):
     """get service messages (publicGetMessages)
 
+    get the list of messages.
+
+
     Properties:
         url: /dsmcontroller/v1/messages
 
         method: GET
 
-        tags: 
+        tags: []
 
         consumes: ["application/json"]
 
@@ -128,7 +131,7 @@ class PublicGetMessages(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         return result
 
     # endregion to methods

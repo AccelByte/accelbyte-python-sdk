@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:22.751931+08:00
+# Auto-generated at 2021-10-14T22:17:09.035108+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,17 @@ from ...models import ResponseError
 class DeleteLocalServer(Operation):
     """Delete a local server (DeleteLocalServer)
 
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE] Required
+    scope: social This endpoint deletes a specified local dedicated server from
+    DB. Note that DSM has no ability to shutdown local DS.
+
+
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/servers/local/{name}
 
         method: DELETE
 
-        tags: Admin
+        tags: ["Admin"]
 
         consumes: ["application/json"]
 
@@ -163,7 +168,7 @@ class DeleteLocalServer(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

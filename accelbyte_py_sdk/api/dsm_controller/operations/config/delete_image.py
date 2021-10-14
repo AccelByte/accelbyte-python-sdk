@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:22.726901+08:00
+# Auto-generated at 2021-10-14T22:17:09.016615+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,17 @@ from ...models import ResponseError
 class DeleteImage(Operation):
     """Delete an image (DeleteImage)
 
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE] Required
+    scope: social This endpoint will delete an image that specified in the request
+    parameter
+
+
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/images
 
         method: DELETE
 
-        tags: Config
+        tags: ["Config"]
 
         consumes: ["application/json"]
 
@@ -189,7 +194,7 @@ class DeleteImage(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

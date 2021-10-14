@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:22.794130+08:00
+# Auto-generated at 2021-10-14T22:17:09.068049+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,18 @@ from ...models import ResponseError
 class GetServerSession(Operation):
     """Get Session ID (GetServerSession)
 
+    ``` Required permission: NAMESPACE:{namespace}:DSM:SERVER [UPDATE] Required
+    scope: social This endpoint is intended to be called by dedicated server to
+    query its session ID. DS should call this when it first receive player
+    connection, to see if it is actually claimed```
+
+
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/{podName}/session
 
         method: GET
 
-        tags: Server
+        tags: ["Server"]
 
         consumes: ["application/json"]
 
@@ -168,7 +174,7 @@ class GetServerSession(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

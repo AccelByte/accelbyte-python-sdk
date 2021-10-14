@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:29.755541+08:00
+# Auto-generated at 2021-10-14T22:17:08.972313+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsPodConfig(Model):
-    """Models pod config
+    """Models pod config (models.PodConfig)
 
     Properties:
         artifact_path: (artifact_path) REQUIRED str
@@ -70,7 +70,7 @@ class ModelsPodConfig(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "artifact_path") and self.artifact_path:
             result["artifact_path"] = str(self.artifact_path)
         elif include_empty:

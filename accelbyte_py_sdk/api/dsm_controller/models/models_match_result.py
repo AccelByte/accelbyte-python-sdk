@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:29.751105+08:00
+# Auto-generated at 2021-10-14T22:17:08.968336+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.models_request_matching_ally import ModelsRequestMatchingAlly
 
 
 class ModelsMatchResult(Model):
-    """Models match result
+    """Models match result (models.MatchResult)
 
     Properties:
         game_mode: (game_mode) REQUIRED str
@@ -72,7 +72,7 @@ class ModelsMatchResult(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "game_mode") and self.game_mode:
             result["game_mode"] = str(self.game_mode)
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:22.716782+08:00
+# Auto-generated at 2021-10-14T22:17:09.007027+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,42 @@ from ...models import ResponseError
 class UpdateConfig(Operation):
     """Update config (UpdateConfig)
 
+    ``` Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+    Required scope: social This endpoint modifies config. When there are ready
+    servers and the server version is updated, those servers will be replaced with
+    newer version. Port is where your game listens for incoming UDP connection, if
+    empty it'll be set to 15000 CPU and Memory limit / request are formatted with
+    Kubernetes format, e.g. CPU of 1000m is 1 core, and Memory of 512Mi is 512 MB.
+    The creation/claim/session/unreachable/heartbeat timeouts are all in seconds.
+    Creation timeout is time limit for DS to startup until registers itself. Claim
+    timeout is time limit for game session manager to claim its ready DS. Session
+    timeout is time limit for match session before deleted. Unreachable timeout is
+    time limit for DS in UNREACHABLE state before deleted. Heartbeat timeout is
+    time limit for DS to give heartbeat before marked as UNREACHABLE. Sample
+    config: { "namespace": "accelbyte", "providers": [ "aws" ], "port": 7777,
+    "protocol": "udp", "creation_timeout": 120, "claim_timeout": 60,
+    "session_timeout": 1800, "heartbeat_timeout": 30, "unreachable_timeout": 30,
+    "image_version_mapping": { "1.4.0": "accelbyte/sample-ds-go:1.4.0" },
+    "default_version": "1.4.0", "cpu_limit": "100", "mem_limit": "64",
+    "artifact_path":"/srv/datads/artifacts/", "params": "", "min_count": 0,
+    "max_count": 0, "buffer_count": 0, "configurations": { "1player": {
+    "cpu_limit": "100", "mem_limit": "64", "params": "-gamemode 1p",
+    "artifact_path":"/srv/datads/artifacts/", }, "50players": { "cpu_limit":
+    "200", "mem_limit": "512", "params": "-gamemode 50p",
+    "artifact_path":"/srv/datads/artifacts/", } }, "deployments": { "global-1p": {
+    "game_version": "1.4.0"", "regions": ["us-west", "ap-southeast"],
+    "configuration": "1player", "min_count": 0, "max_count": 0, "buffer_count": 2
+    }, "us-50p": { "game_version": "1.4.0"", "regions": ["us-west"],
+    "configuration": "50players", "min_count": 0, "max_count": 0, "buffer_count":
+    5 }, }, } ```
+
+
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs
 
         method: PATCH
 
-        tags: Config
+        tags: ["Config"]
 
         consumes: ["application/json"]
 
@@ -168,7 +198,7 @@ class UpdateConfig(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

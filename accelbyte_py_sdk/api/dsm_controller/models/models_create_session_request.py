@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:29.713386+08:00
+# Auto-generated at 2021-10-14T22:17:08.942732+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.models_match_result import ModelsMatchResult
 
 
 class ModelsCreateSessionRequest(Model):
-    """Models create session request
+    """Models create session request (models.CreateSessionRequest)
 
     Properties:
         match_result: (MatchResult) REQUIRED ModelsMatchResult
@@ -86,7 +86,7 @@ class ModelsCreateSessionRequest(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "match_result") and self.match_result:
             result["MatchResult"] = self.match_result.to_dict(include_empty=include_empty)
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:29.704893+08:00
+# Auto-generated at 2021-10-14T22:17:08.936223+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class LogAppMessageDeclaration(Model):
-    """Log app message declaration
+    """Log app message declaration (log.AppMessageDeclaration)
 
     Properties:
         attributes: (Attributes) REQUIRED List[str]
@@ -84,7 +84,7 @@ class LogAppMessageDeclaration(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "attributes") and self.attributes:
             result["Attributes"] = [str(i0) for i0 in self.attributes]
         elif include_empty:

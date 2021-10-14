@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:29.752862+08:00
+# Auto-generated at 2021-10-14T22:17:08.969778+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.models_deployment_config import ModelsDeploymentConfig
 
 
 class ModelsOverrideConfig(Model):
-    """Models override config
+    """Models override config (models.OverrideConfig)
 
     Properties:
         allow_version_override: (allow_version_override) REQUIRED bool
@@ -58,7 +58,7 @@ class ModelsOverrideConfig(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "allow_version_override") and self.allow_version_override:
             result["allow_version_override"] = bool(self.allow_version_override)
         elif include_empty:

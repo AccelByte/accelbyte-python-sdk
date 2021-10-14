@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:22.807982+08:00
+# Auto-generated at 2021-10-14T22:17:09.081894+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,12 +29,16 @@ from .....core import HttpResponse
 class ListProviders(Operation):
     """List all supported providers (ListProviders)
 
+    This endpoints returns list of supported providers. Armada is the default
+    provider.
+
+
     Properties:
         url: /dsmcontroller/public/providers
 
         method: GET
 
-        tags: Public
+        tags: ["Public"]
 
         consumes: ["application/json"]
 
@@ -123,7 +127,7 @@ class ListProviders(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         return result
 
     # endregion to methods

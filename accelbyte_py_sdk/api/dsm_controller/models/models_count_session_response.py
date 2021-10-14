@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:29.710859+08:00
+# Auto-generated at 2021-10-14T22:17:08.940300+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsCountSessionResponse(Model):
-    """Models count session response
+    """Models count session response (models.CountSessionResponse)
 
     Properties:
         count: (count) REQUIRED int
@@ -49,7 +49,7 @@ class ModelsCountSessionResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "count") and self.count:
             result["count"] = int(self.count)
         elif include_empty:

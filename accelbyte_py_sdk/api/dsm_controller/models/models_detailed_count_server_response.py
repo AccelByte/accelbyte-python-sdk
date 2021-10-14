@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:29.730024+08:00
+# Auto-generated at 2021-10-14T22:17:08.954805+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsDetailedCountServerResponse(Model):
-    """Models detailed count server response
+    """Models detailed count server response (models.DetailedCountServerResponse)
 
     Properties:
         busy_count: (busy_count) REQUIRED int
@@ -70,7 +70,7 @@ class ModelsDetailedCountServerResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "busy_count") and self.busy_count:
             result["busy_count"] = int(self.busy_count)
         elif include_empty:

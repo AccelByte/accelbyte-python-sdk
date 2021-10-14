@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:22.710511+08:00
+# Auto-generated at 2021-10-14T22:17:09.002517+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,20 @@ from ...models import ResponseError
 class ImportImages(Operation):
     """import images for a namespace (ImportImages)
 
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE] Required
+    scope: social This endpoint import a dedicated servers images in a namespace.
+    The image will be upsert. Existing version will be replaced with imported
+    image, will create new one if not found. Example data inside imported file [ {
+    "namespace": "dewa", "image": "123456789.dkr.ecr.us-west-2.amazonaws.com/ds-
+    dewa:0.0.1-alpha", "version": "0.0.1", "persistent": true } ]
+
+
     Properties:
         url: /dsmcontroller/admin/images/import
 
         method: POST
 
-        tags: Config
+        tags: ["Config"]
 
         consumes: ["multipart/form-data"]
 
@@ -152,7 +160,7 @@ class ImportImages(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "file") and self.file:
             result["file"] = Any(self.file)
         elif include_empty:

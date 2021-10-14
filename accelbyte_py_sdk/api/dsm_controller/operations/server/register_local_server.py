@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:22.783878+08:00
+# Auto-generated at 2021-10-14T22:17:09.058191+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,22 @@ from ...models import ResponseError
 class RegisterLocalServer(Operation):
     """Register a local DS (RegisterLocalServer)
 
+    ``` Required permission: NAMESPACE:{namespace}:DSM:SERVER [UPDATE] Required
+    scope: social Use the alternative GET of the same endpoint to upgrade DS
+    connection to DSM via websocket. This endpoint is intended to be called by
+    local dedicated server to let DSM know that it is ready for use. Use local DS
+    only for development purposes since DSM wouldn't be able to properly manage
+    local DS in production. This MUST be called by DS after it is ready to accept
+    match data and incoming client connections. Upon successfully calling this
+    endpoint, the dedicated server is listed under READY local servers.```
+
+
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/local/register
 
         method: POST
 
-        tags: Server
+        tags: ["Server"]
 
         consumes: ["application/json"]
 
@@ -171,7 +181,7 @@ class RegisterLocalServer(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

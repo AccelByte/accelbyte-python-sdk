@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:22.803642+08:00
+# Auto-generated at 2021-10-14T22:17:09.077675+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,20 @@ from ...models import ResponseError
 class GetSession(Operation):
     """Query specified session (GetSession)
 
+    Required permission: NAMESPACE:{namespace}:DSM:SESSION [READ] Required scope:
+    social This endpoint is intended to be called by game session manager
+    (matchmaker, lobby, etc.) to query the status of dedicated server that is
+    created for the session. The server is ready to use when the status is READY.
+    At which point, the game session manager can claim the server using the GET
+    /namespaces/{namespace}/sessions/{sessionID}/claim endpoint
+
+
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/sessions/{sessionID}
 
         method: GET
 
-        tags: Session
+        tags: ["Session"]
 
         consumes: ["application/json"]
 
@@ -166,7 +174,7 @@ class GetSession(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:22.786747+08:00
+# Auto-generated at 2021-10-14T22:17:09.062278+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,19 @@ from ...models import ResponseError
 class RegisterServer(Operation):
     """Register a DS (RegisterServer)
 
+    ``` Required permission: NAMESPACE:{namespace}:DSM:SERVER [UPDATE] Required
+    scope: social This endpoint is intended to be called by dedicated server to
+    let DSM know that it is ready for use. This MUST be called by DS after it is
+    ready to accept match data and incoming client connections. Upon successfully
+    calling this endpoint, the dedicated server is listed under READY servers.```
+
+
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/register
 
         method: POST
 
-        tags: Server
+        tags: ["Server"]
 
         consumes: ["application/json"]
 
@@ -171,7 +178,7 @@ class RegisterServer(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

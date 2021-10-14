@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:29.783547+08:00
+# Auto-generated at 2021-10-14T22:17:08.986761+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.models_session import ModelsSession
 
 
 class ModelsSessionResponse(Model):
-    """Models session response
+    """Models session response (models.SessionResponse)
 
     Properties:
         session: (session) REQUIRED ModelsSession
@@ -51,7 +51,7 @@ class ModelsSessionResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "session") and self.session:
             result["session"] = self.session.to_dict(include_empty=include_empty)
         elif include_empty:

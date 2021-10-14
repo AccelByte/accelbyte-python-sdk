@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:22.800509+08:00
+# Auto-generated at 2021-10-14T22:17:09.074323+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,18 @@ from ...models import ResponseError
 class ClaimServer(Operation):
     """Claim a DS for a game session (ClaimServer)
 
+    Required permission: NAMESPACE:{namespace}:DSM:SESSION [UPDATE] Required
+    scope: social This endpoint is intended to be called by game session manager
+    (matchmaker, lobby, etc.) to claim a dedicated server. The dedicated server
+    cannot be claimed unless the status is READY
+
+
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/sessions/claim
 
         method: POST
 
-        tags: Session
+        tags: ["Session"]
 
         consumes: ["application/json"]
 
@@ -174,7 +180,7 @@ class ClaimServer(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

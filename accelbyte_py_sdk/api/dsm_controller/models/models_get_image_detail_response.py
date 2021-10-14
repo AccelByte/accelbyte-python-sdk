@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:29.731535+08:00
+# Auto-generated at 2021-10-14T22:17:08.956110+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.models_image_record import ModelsImageRecord
 
 
 class ModelsGetImageDetailResponse(Model):
-    """Models get image detail response
+    """Models get image detail response (models.GetImageDetailResponse)
 
     Properties:
         data: (data) REQUIRED ModelsImageRecord
@@ -51,7 +51,7 @@ class ModelsGetImageDetailResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "data") and self.data:
             result["data"] = self.data.to_dict(include_empty=include_empty)
         elif include_empty:

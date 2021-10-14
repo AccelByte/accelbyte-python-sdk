@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:22.777736+08:00
+# Auto-generated at 2021-10-14T22:17:09.053420+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,18 @@ from ...models import ResponseError
 class ImportConfigV1(Operation):
     """import config for a namespace (importConfigV1)
 
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE] Required
+    scope: social This endpoint import a dedicated servers config in a namespace.
+    The configurations would be replaced except Image Version Mapping. The
+    existing Image Version Mapping will be kept.
+
+
     Properties:
         url: /dsmcontroller/admin/v1/namespaces/{namespace}/configs/import
 
         method: POST
 
-        tags: Config
+        tags: ["Config"]
 
         consumes: ["multipart/form-data"]
 
@@ -172,7 +178,7 @@ class ImportConfigV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "file") and self.file:
             result["file"] = Any(self.file)
         elif include_empty:

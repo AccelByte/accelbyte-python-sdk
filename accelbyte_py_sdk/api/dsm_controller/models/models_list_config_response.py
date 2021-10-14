@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:29.740806+08:00
+# Auto-generated at 2021-10-14T22:17:08.963240+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.models_dsm_config import ModelsDSMConfig
 
 
 class ModelsListConfigResponse(Model):
-    """Models list config response
+    """Models list config response (models.ListConfigResponse)
 
     Properties:
         configs: (configs) REQUIRED List[ModelsDSMConfig]
@@ -51,7 +51,7 @@ class ModelsListConfigResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "configs") and self.configs:
             result["configs"] = [i0.to_dict(include_empty=include_empty) for i0 in self.configs]
         elif include_empty:

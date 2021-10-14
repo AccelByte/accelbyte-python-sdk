@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:29.741916+08:00
+# Auto-generated at 2021-10-14T22:17:08.964143+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,7 +29,7 @@ from ..models.models_paging_cursor import ModelsPagingCursor
 
 
 class ModelsListImageResponse(Model):
-    """Models list image response
+    """Models list image response (models.ListImageResponse)
 
     Properties:
         images: (images) REQUIRED List[ModelsImageRecord]
@@ -59,7 +59,7 @@ class ModelsListImageResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "images") and self.images:
             result["images"] = [i0.to_dict(include_empty=include_empty) for i0 in self.images]
         elif include_empty:

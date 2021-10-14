@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:29.754147+08:00
+# Auto-generated at 2021-10-14T22:17:08.971014+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsPagingCursor(Model):
-    """Models paging cursor
+    """Models paging cursor (models.PagingCursor)
 
     Properties:
         next_: (next) REQUIRED str
@@ -56,7 +56,7 @@ class ModelsPagingCursor(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "next_") and self.next_:
             result["next"] = str(self.next_)
         elif include_empty:

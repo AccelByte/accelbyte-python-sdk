@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:29.743364+08:00
+# Auto-generated at 2021-10-14T22:17:08.965960+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,7 +29,7 @@ from ..models.models_server import ModelsServer
 
 
 class ModelsListServerResponse(Model):
-    """Models list server response
+    """Models list server response (models.ListServerResponse)
 
     Properties:
         paging: (paging) REQUIRED ModelsPagingCursor
@@ -59,7 +59,7 @@ class ModelsListServerResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "paging") and self.paging:
             result["paging"] = self.paging.to_dict(include_empty=include_empty)
         elif include_empty:

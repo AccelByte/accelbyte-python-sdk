@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:29.728938+08:00
+# Auto-generated at 2021-10-14T22:17:08.953944+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsDeregisterLocalServerRequest(Model):
-    """Models deregister local server request
+    """Models deregister local server request (models.DeregisterLocalServerRequest)
 
     Properties:
         name: (name) REQUIRED str
@@ -49,7 +49,7 @@ class ModelsDeregisterLocalServerRequest(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "name") and self.name:
             result["name"] = str(self.name)
         elif include_empty:

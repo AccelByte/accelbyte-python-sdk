@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:22.769274+08:00
+# Auto-generated at 2021-10-14T22:17:09.046836+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,17 @@ from ...models import ResponseError
 class CountSession(Operation):
     """Count all sessions (CountSession)
 
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SESSION [READ] Required
+    scope: social This endpoint count all of sessions in a namespace managed by
+    this service.
+
+
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/sessions/count
 
         method: GET
 
-        tags: Admin
+        tags: ["Admin"]
 
         consumes: ["application/json"]
 
@@ -169,7 +174,7 @@ class CountSession(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

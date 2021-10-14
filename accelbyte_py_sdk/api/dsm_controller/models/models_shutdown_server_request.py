@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:29.786245+08:00
+# Auto-generated at 2021-10-14T22:17:08.987551+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsShutdownServerRequest(Model):
-    """Models shutdown server request
+    """Models shutdown server request (models.ShutdownServerRequest)
 
     Properties:
         kill_me: (kill_me) REQUIRED bool
@@ -56,7 +56,7 @@ class ModelsShutdownServerRequest(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "kill_me") and self.kill_me:
             result["kill_me"] = bool(self.kill_me)
         elif include_empty:

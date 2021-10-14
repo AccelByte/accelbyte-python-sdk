@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:29.711694+08:00
+# Auto-generated at 2021-10-14T22:17:08.941309+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsCreateImageRequest(Model):
-    """Models create image request
+    """Models create image request (models.CreateImageRequest)
 
     Properties:
         image: (image) REQUIRED str
@@ -70,7 +70,7 @@ class ModelsCreateImageRequest(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "image") and self.image:
             result["image"] = str(self.image)
         elif include_empty:

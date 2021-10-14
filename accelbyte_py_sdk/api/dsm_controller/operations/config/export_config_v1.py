@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:22.775130+08:00
+# Auto-generated at 2021-10-14T22:17:09.050887+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,16 @@ from ...models import ResponseError
 class ExportConfigV1(Operation):
     """export DSM Controller configuration for a namespace (exportConfigV1)
 
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ] Required
+    scope: social This endpoint export a dedicated servers config in a namespace.
+
+
     Properties:
         url: /dsmcontroller/admin/v1/namespaces/{namespace}/configs/export
 
         method: GET
 
-        tags: Config
+        tags: ["Config"]
 
         consumes: ["application/json"]
 
@@ -156,7 +160,7 @@ class ExportConfigV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

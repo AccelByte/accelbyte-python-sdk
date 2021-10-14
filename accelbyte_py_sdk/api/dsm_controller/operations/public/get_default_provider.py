@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:22.806638+08:00
+# Auto-generated at 2021-10-14T22:17:09.080430+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,15 @@ from ...models import ModelsDefaultProvider
 class GetDefaultProvider(Operation):
     """Get default provider (GetDefaultProvider)
 
+    This endpoints returns the default provider.
+
+
     Properties:
         url: /dsmcontroller/public/provider/default
 
         method: GET
 
-        tags: Public
+        tags: ["Public"]
 
         consumes: ["application/json"]
 
@@ -125,7 +128,7 @@ class GetDefaultProvider(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         return result
 
     # endregion to methods

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:22.790884+08:00
+# Auto-generated at 2021-10-14T22:17:09.065232+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import ResponseError
 class ShutdownServer(Operation):
     """Mark a DS is shutting down (ShutdownServer)
 
+    Required permission: NAMESPACE:{namespace}:DSM:SERVER [UPDATE] Required scope:
+    social This endpoint is intended to be called by dedicated server to let DSM
+    know that it is shutting down. Calling this will remove the server and session
+    records from DB.Set 'kill_me' in request to 'true' if the DS cannot shut
+    itself down.
+
+
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/shutdown
 
         method: POST
 
-        tags: Server
+        tags: ["Server"]
 
         consumes: ["application/json"]
 
@@ -170,7 +177,7 @@ class ShutdownServer(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:29.722536+08:00
+# Auto-generated at 2021-10-14T22:17:08.949347+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsDefaultProvider(Model):
-    """Models default provider
+    """Models default provider (models.DefaultProvider)
 
     Properties:
         provider_name: (provider_name) REQUIRED str
@@ -49,7 +49,7 @@ class ModelsDefaultProvider(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "provider_name") and self.provider_name:
             result["provider_name"] = str(self.provider_name)
         elif include_empty:

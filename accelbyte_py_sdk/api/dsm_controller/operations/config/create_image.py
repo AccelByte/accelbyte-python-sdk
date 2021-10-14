@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:22.706929+08:00
+# Auto-generated at 2021-10-14T22:17:09.000184+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,18 @@ from ...models import ResponseError
 class CreateImage(Operation):
     """Create image (CreateImage)
 
+    ``` Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+    Required scope: social This endpoint will create image. Sample image: {
+    "namespace":"dewa", "version":"1.0.0", "image":"144436415367.dkr.ecr.us-
+    west-2.amazonaws.com/dewa:1.0.0", "persistent":false } ```
+
+
     Properties:
         url: /dsmcontroller/admin/images
 
         method: POST
 
-        tags: Config
+        tags: ["Config"]
 
         consumes: ["application/json"]
 
@@ -149,7 +155,7 @@ class CreateImage(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

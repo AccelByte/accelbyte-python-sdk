@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:22.749855+08:00
+# Auto-generated at 2021-10-14T22:17:09.033083+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,17 @@ from ...models import ResponseError
 class ListLocalServer(Operation):
     """List all managed local servers (ListLocalServer)
 
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ] Required
+    scope: social This endpoint lists all of local dedicated servers in a
+    namespace managed by this service.
+
+
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/servers/local
 
         method: GET
 
-        tags: Admin
+        tags: ["Admin"]
 
         consumes: ["application/json"]
 
@@ -152,7 +157,7 @@ class ListLocalServer(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

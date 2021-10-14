@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:29.762969+08:00
+# Auto-generated at 2021-10-14T22:17:08.974823+08:00
 # from: Justice DsmController Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsRegisterLocalServerRequest(Model):
-    """Models register local server request
+    """Models register local server request (models.RegisterLocalServerRequest)
 
     Properties:
         custom_attribute: (custom_attribute) REQUIRED str
@@ -70,7 +70,7 @@ class ModelsRegisterLocalServerRequest(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "custom_attribute") and self.custom_attribute:
             result["custom_attribute"] = str(self.custom_attribute)
         elif include_empty:
