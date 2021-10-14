@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.753220+08:00
+# Auto-generated at 2021-10-14T22:17:19.450334+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -34,12 +34,20 @@ from ...models import ValidationErrorEntity
 class UpdateNamespace(Operation):
     """Update namespace basic info (updateNamespace)
 
+    Update namespace basic info.  
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=4 (UPDATE)
+      *  Action code : 11302
+      *  Returns : updated namespace
+
+
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/basic
 
         method: PATCH
 
-        tags: Namespace
+        tags: ["Namespace"]
 
         consumes: ["application/json"]
 
@@ -54,15 +62,15 @@ class UpdateNamespace(Operation):
     Responses:
         200: OK - NamespaceInfo (Successful operation)
 
-        400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (errorCode: 11337 | errorMessage: namespace not found)
+        404: Not Found - ErrorEntity (11337: namespace not found)
 
-        409: Conflict - ErrorEntity (errorCode: 20006 | errorMessage: optimistic lock)
+        409: Conflict - ErrorEntity (20006: optimistic lock)
     """
 
     # region fields
@@ -171,7 +179,7 @@ class UpdateNamespace(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -192,15 +200,15 @@ class UpdateNamespace(Operation):
 
         200: OK - NamespaceInfo (Successful operation)
 
-        400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (errorCode: 11337 | errorMessage: namespace not found)
+        404: Not Found - ErrorEntity (11337: namespace not found)
 
-        409: Conflict - ErrorEntity (errorCode: 20006 | errorMessage: optimistic lock)
+        409: Conflict - ErrorEntity (20006: optimistic lock)
         """
         if code == 200:
             return NamespaceInfo.create_from_dict(content), None

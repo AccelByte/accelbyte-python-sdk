@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.717291+08:00
+# Auto-generated at 2021-10-14T22:17:19.412684+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,20 @@ from ...models import ValidationErrorEntity
 class GetTimeZones(Operation):
     """List time zones (getTimeZones)
 
+    List time zones.  
+    Other detail info:
+
+      * Required permission : login user
+      *  Action code : 11205
+      *  Returns : time zones
+
+
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/misc/timezones
 
         method: GET
 
-        tags: Misc
+        tags: ["Misc"]
 
         consumes: []
 
@@ -50,9 +58,9 @@ class GetTimeZones(Operation):
     Responses:
         200: OK - List[str] (successful operation)
 
-        400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
     """
 
     # region fields
@@ -152,7 +160,7 @@ class GetTimeZones(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -169,9 +177,9 @@ class GetTimeZones(Operation):
 
         200: OK - List[str] (successful operation)
 
-        400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
         """
         if code == 200:
             return [str(i) for i in content], None

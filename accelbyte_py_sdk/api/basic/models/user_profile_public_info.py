@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:38.719910+08:00
+# Auto-generated at 2021-10-14T22:17:19.363121+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class UserProfilePublicInfo(Model):
-    """User profile public info
+    """User profile public info (UserProfilePublicInfo)
 
     Properties:
         user_id: (userId) OPTIONAL str
@@ -84,7 +84,7 @@ class UserProfilePublicInfo(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "user_id") and self.user_id:
             result["userId"] = str(self.user_id)
         elif include_empty:

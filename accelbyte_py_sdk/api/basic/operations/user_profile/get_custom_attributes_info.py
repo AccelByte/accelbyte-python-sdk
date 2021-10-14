@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.806675+08:00
+# Auto-generated at 2021-10-14T22:17:19.508194+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,20 @@ from ...models import ErrorEntity
 class GetCustomAttributesInfo(Operation):
     """Get user custom attributes (getCustomAttributesInfo)
 
+    Get user custom attributes.  
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)
+      *  Returns : custom attributes
+      *  Action code : 11403
+
+
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/customAttributes
 
         method: GET
 
-        tags: UserProfile
+        tags: ["UserProfile"]
 
         consumes: []
 
@@ -51,11 +59,11 @@ class GetCustomAttributesInfo(Operation):
     Responses:
         200: OK - Dict[str, Any] (successful operation)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (errorCode: 11440 | errorMessage: user profile not found)
+        404: Not Found - ErrorEntity (11440: user profile not found)
     """
 
     # region fields
@@ -165,7 +173,7 @@ class GetCustomAttributesInfo(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -186,11 +194,11 @@ class GetCustomAttributesInfo(Operation):
 
         200: OK - Dict[str, Any] (successful operation)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (errorCode: 11440 | errorMessage: user profile not found)
+        404: Not Found - ErrorEntity (11440: user profile not found)
         """
         if code == 200:
             return {str(k): v for k, v in content.items()}, None

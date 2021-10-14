@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.709491+08:00
+# Auto-generated at 2021-10-14T22:17:19.405062+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import ValidationErrorEntity
 class DeleteCountryGroup(Operation):
     """Delete a country group (deleteCountryGroup)
 
+    Delete a country groups by its country group code. This endpoint usually used
+    for testing purpose to cleanup test data.  
+    Other detail info:
+
+      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=8 (DELETE)
+
+
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups/{countryGroupCode}
 
         method: DELETE
 
-        tags: Misc
+        tags: ["Misc"]
 
         consumes: []
 
@@ -50,13 +57,13 @@ class DeleteCountryGroup(Operation):
         country_group_code: (countryGroupCode) REQUIRED str in path
 
     Responses:
-        400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (errorCode: 11233 | errorMessage: country group not found)
+        404: Not Found - ErrorEntity (11233: country group not found)
     """
 
     # region fields
@@ -166,7 +173,7 @@ class DeleteCountryGroup(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -185,13 +192,13 @@ class DeleteCountryGroup(Operation):
     def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, ErrorEntity, ValidationErrorEntity]]:
         """Parse the given response.
 
-        400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (errorCode: 11233 | errorMessage: country group not found)
+        404: Not Found - ErrorEntity (11233: country group not found)
         """
         if code == 400:
             return None, ValidationErrorEntity.create_from_dict(content)

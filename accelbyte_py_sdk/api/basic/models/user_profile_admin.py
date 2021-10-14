@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:38.716553+08:00
+# Auto-generated at 2021-10-14T22:17:19.358289+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class UserProfileAdmin(Model):
-    """A DTO object for updating user profile API call.
+    """A DTO object for updating user profile API call. (UserProfileAdmin)
 
     Properties:
         first_name: (firstName) OPTIONAL str
@@ -119,7 +119,7 @@ class UserProfileAdmin(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "first_name") and self.first_name:
             result["firstName"] = str(self.first_name)
         elif include_empty:

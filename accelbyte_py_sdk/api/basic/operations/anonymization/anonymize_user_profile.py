@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.780764+08:00
+# Auto-generated at 2021-10-14T22:17:19.477694+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import ValidationErrorEntity
 class AnonymizeUserProfile(Operation):
     """anonymize user profile (anonymizeUserProfile)
 
+    Anonymize user profile.  
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION" , action=8 (DELETE)
+      *  Action code : 11501
+
+
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/anonymization/profiles
 
         method: DELETE
 
-        tags: Anonymization
+        tags: ["Anonymization"]
 
         consumes: ["application/json"]
 
@@ -52,13 +59,13 @@ class AnonymizeUserProfile(Operation):
     Responses:
         204: No Content - (Anonymized profile successfully)
 
-        400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - ErrorEntity (20001: unauthorized access)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (errorCode: 11540 | errorMessage: user profile not found)
+        404: Not Found - ErrorEntity (11540: user profile not found)
     """
 
     # region fields
@@ -168,7 +175,7 @@ class AnonymizeUserProfile(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -189,13 +196,13 @@ class AnonymizeUserProfile(Operation):
 
         204: No Content - (Anonymized profile successfully)
 
-        400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - ErrorEntity (20001: unauthorized access)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (errorCode: 11540 | errorMessage: user profile not found)
+        404: Not Found - ErrorEntity (11540: user profile not found)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

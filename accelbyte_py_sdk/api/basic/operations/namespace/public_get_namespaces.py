@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.778097+08:00
+# Auto-generated at 2021-10-14T22:17:19.475395+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,20 @@ from ...models import NamespaceInfo
 class PublicGetNamespaces(Operation):
     """Get all namespaces (publicGetNamespaces)
 
+    Get all namespaces.  
+    Other detail info:
+
+      * Required permission : login user
+      *  Action code : 11303
+      *  Returns : list of namespaces
+
+
     Properties:
         url: /basic/v1/public/namespaces
 
         method: GET
 
-        tags: Namespace
+        tags: ["Namespace"]
 
         consumes: []
 
@@ -50,7 +58,7 @@ class PublicGetNamespaces(Operation):
     Responses:
         200: OK - List[NamespaceInfo] (Successful operation)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
     """
 
     # region fields
@@ -146,7 +154,7 @@ class PublicGetNamespaces(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "active_only") and self.active_only:
             result["activeOnly"] = bool(self.active_only)
         elif include_empty:
@@ -163,7 +171,7 @@ class PublicGetNamespaces(Operation):
 
         200: OK - List[NamespaceInfo] (Successful operation)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
         """
         if code == 200:
             return [NamespaceInfo.create_from_dict(i) for i in content], None

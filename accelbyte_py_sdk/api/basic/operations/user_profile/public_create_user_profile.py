@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.868375+08:00
+# Auto-generated at 2021-10-14T22:17:19.585929+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -34,12 +34,22 @@ from ...models import ValidationErrorEntity
 class PublicCreateUserProfile(Operation):
     """Create user profile (publicCreateUserProfile)
 
+    Create user profile.  
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=1 (CREATE)
+      *  Action code : 11401
+      *  Language : allowed format: en, en-US
+      *  Timezone : IANA time zone, e.g. Asia/Shanghai
+      *  Returns : Created user profile
+
+
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles
 
         method: POST
 
-        tags: UserProfile
+        tags: ["UserProfile"]
 
         consumes: ["application/json"]
 
@@ -56,13 +66,13 @@ class PublicCreateUserProfile(Operation):
     Responses:
         201: Created - UserProfileInfo (Successful operation)
 
-        400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        409: Conflict - ErrorEntity (errorCode: 11441 | errorMessage: user profile already exists)
+        409: Conflict - ErrorEntity (11441: user profile already exists)
     """
 
     # region fields
@@ -181,7 +191,7 @@ class PublicCreateUserProfile(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -206,13 +216,13 @@ class PublicCreateUserProfile(Operation):
 
         201: Created - UserProfileInfo (Successful operation)
 
-        400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        409: Conflict - ErrorEntity (errorCode: 11441 | errorMessage: user profile already exists)
+        409: Conflict - ErrorEntity (11441: user profile already exists)
         """
         if code == 201:
             return UserProfileInfo.create_from_dict(content), None

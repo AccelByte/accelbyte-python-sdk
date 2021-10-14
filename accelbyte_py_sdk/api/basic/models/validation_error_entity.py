@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:38.698560+08:00
+# Auto-generated at 2021-10-14T22:17:19.343501+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.field_validation_error import FieldValidationError
 
 
 class ValidationErrorEntity(Model):
-    """Validation error entity
+    """Validation error entity (ValidationErrorEntity)
 
     Properties:
         error_code: (errorCode) REQUIRED int
@@ -65,7 +65,7 @@ class ValidationErrorEntity(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "error_code") and self.error_code:
             result["errorCode"] = int(self.error_code)
         elif include_empty:

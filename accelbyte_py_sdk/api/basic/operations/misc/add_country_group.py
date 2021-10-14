@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.724306+08:00
+# Auto-generated at 2021-10-14T22:17:19.420109+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,21 @@ from ...models import ErrorEntity
 class AddCountryGroup(Operation):
     """Add a country group (addCountryGroup)
 
+    Add a country groups  
+    Country code must follow ISO3166-1 alpha-2.  
+    Other detail info:
+
+      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=1 (CREATE)
+      *  Action code : 11201
+      *  Returns : newly created country group
+
+
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups
 
         method: POST
 
-        tags: Misc
+        tags: ["Misc"]
 
         consumes: []
 
@@ -53,13 +62,13 @@ class AddCountryGroup(Operation):
     Responses:
         201: Created - AddCountryGroupResponse (successful operation)
 
-        400: Bad Request - ErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ErrorEntity (20002: validation error | 20019: unable to parse request body | 11234: country belongs to more than one group)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        409: Conflict - ErrorEntity (errorCode: 11235 | errorMessage: country group already exist)
+        409: Conflict - ErrorEntity (11235: country group already exist)
     """
 
     # region fields
@@ -168,7 +177,7 @@ class AddCountryGroup(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -189,13 +198,13 @@ class AddCountryGroup(Operation):
 
         201: Created - AddCountryGroupResponse (successful operation)
 
-        400: Bad Request - ErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ErrorEntity (20002: validation error | 20019: unable to parse request body | 11234: country belongs to more than one group)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        409: Conflict - ErrorEntity (errorCode: 11235 | errorMessage: country group already exist)
+        409: Conflict - ErrorEntity (11235: country group already exist)
         """
         if code == 201:
             return AddCountryGroupResponse.create_from_dict(content), None

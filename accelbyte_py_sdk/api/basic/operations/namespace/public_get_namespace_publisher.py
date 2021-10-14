@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.773896+08:00
+# Auto-generated at 2021-10-14T22:17:19.470143+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,20 @@ from ...models import ValidationErrorEntity
 class PublicGetNamespacePublisher(Operation):
     """Get namespace info related publisher namespace (publicGetNamespacePublisher)
 
+    Get namespace info related publisher namespace.  
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
+      *  Action code : 11305
+      *  Returns : Namespace info related publisher namespace
+
+
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/publisher
 
         method: GET
 
-        tags: Namespace
+        tags: ["Namespace"]
 
         consumes: ["application/json"]
 
@@ -51,13 +59,13 @@ class PublicGetNamespacePublisher(Operation):
     Responses:
         200: OK - NamespacePublisherInfo (Successful operation)
 
-        400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (errorCode: 11337 | errorMessage: namespace not found)
+        404: Not Found - ErrorEntity (11337: namespace not found)
     """
 
     # region fields
@@ -157,7 +165,7 @@ class PublicGetNamespacePublisher(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -174,13 +182,13 @@ class PublicGetNamespacePublisher(Operation):
 
         200: OK - NamespacePublisherInfo (Successful operation)
 
-        400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (errorCode: 11337 | errorMessage: namespace not found)
+        404: Not Found - ErrorEntity (11337: namespace not found)
         """
         if code == 200:
             return NamespacePublisherInfo.create_from_dict(content), None

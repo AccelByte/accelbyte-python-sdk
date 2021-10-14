@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.693241+08:00
+# Auto-generated at 2021-10-14T22:17:19.387883+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,20 @@ from ...models import ValidationErrorEntity
 class PublicGeneratedUploadUrl(Operation):
     """Generate Upload URL (publicGeneratedUploadUrl)
 
+    Generate an upload URL. It's valid for 10 minutes.  
+    Other detail info:
+
+      * Required permission : resource = "NAMESPACE:{namespace}:FILEUPLOAD" , action=1 (CREATE)
+      *  Action code : 11101
+      *  Returns : URL data
+
+
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/folders/{folder}/files
 
         method: POST
 
-        tags: FileUpload
+        tags: ["FileUpload"]
 
         consumes: []
 
@@ -55,13 +63,13 @@ class PublicGeneratedUploadUrl(Operation):
     Responses:
         200: OK - FileUploadUrlInfo (Successful operation)
 
-        400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 11131: file type not supported)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        500: Internal Server Error - ErrorEntity (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - ErrorEntity (20000: internal server error)
     """
 
     # region fields
@@ -189,7 +197,7 @@ class PublicGeneratedUploadUrl(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -214,13 +222,13 @@ class PublicGeneratedUploadUrl(Operation):
 
         200: OK - FileUploadUrlInfo (Successful operation)
 
-        400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 11131: file type not supported)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        500: Internal Server Error - ErrorEntity (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - ErrorEntity (20000: internal server error)
         """
         if code == 200:
             return FileUploadUrlInfo.create_from_dict(content), None

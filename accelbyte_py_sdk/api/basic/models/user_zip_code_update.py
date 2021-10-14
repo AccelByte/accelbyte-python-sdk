@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:38.726817+08:00
+# Auto-generated at 2021-10-14T22:17:19.369371+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class UserZipCodeUpdate(Model):
-    """User zip code update
+    """User zip code update (UserZipCodeUpdate)
 
     Properties:
         zip_code: (zipCode) REQUIRED str
@@ -49,7 +49,7 @@ class UserZipCodeUpdate(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "zip_code") and self.zip_code:
             result["zipCode"] = str(self.zip_code)
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.738605+08:00
+# Auto-generated at 2021-10-14T22:17:19.437329+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,20 @@ from ...models import NamespaceInfo
 class GetNamespaces(Operation):
     """Get all namespaces (getNamespaces)
 
+    Get all namespaces.  
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE" , action=2 (READ)
+      *  Action code : 11303
+      *  Returns : list of namespaces
+
+
     Properties:
         url: /basic/v1/admin/namespaces
 
         method: GET
 
-        tags: Namespace
+        tags: ["Namespace"]
 
         consumes: []
 
@@ -50,9 +58,9 @@ class GetNamespaces(Operation):
     Responses:
         200: OK - List[NamespaceInfo] (Successful operation)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
     """
 
     # region fields
@@ -148,7 +156,7 @@ class GetNamespaces(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "active_only") and self.active_only:
             result["activeOnly"] = bool(self.active_only)
         elif include_empty:
@@ -165,9 +173,9 @@ class GetNamespaces(Operation):
 
         200: OK - List[NamespaceInfo] (Successful operation)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
         """
         if code == 200:
             return [NamespaceInfo.create_from_dict(i) for i in content], None

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.863208+08:00
+# Auto-generated at 2021-10-14T22:17:19.578590+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -34,12 +34,22 @@ from ...models import ValidationErrorEntity
 class PublicUpdateUserProfile(Operation):
     """Update user profile (publicUpdateUserProfile)
 
+    Update user profile.  
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
+      *  Action code : 11402
+      *  Language : allowed format: en, en-US
+      *  Timezone : IANA time zone, e.g. Asia/Shanghai
+      *  Returns : Updated user profile
+
+
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles
 
         method: PUT
 
-        tags: UserProfile
+        tags: ["UserProfile"]
 
         consumes: ["application/json"]
 
@@ -56,13 +66,13 @@ class PublicUpdateUserProfile(Operation):
     Responses:
         200: OK - UserProfileInfo (Successful operation)
 
-        400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (errorCode: 11440 | errorMessage: user profile not found)
+        404: Not Found - ErrorEntity (11440: user profile not found)
     """
 
     # region fields
@@ -181,7 +191,7 @@ class PublicUpdateUserProfile(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -206,13 +216,13 @@ class PublicUpdateUserProfile(Operation):
 
         200: OK - UserProfileInfo (Successful operation)
 
-        400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (errorCode: 11440 | errorMessage: user profile not found)
+        404: Not Found - ErrorEntity (11440: user profile not found)
         """
         if code == 200:
             return UserProfileInfo.create_from_dict(content), None

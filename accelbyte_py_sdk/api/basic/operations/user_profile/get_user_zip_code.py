@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.842188+08:00
+# Auto-generated at 2021-10-14T22:17:19.549019+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,20 @@ from ...models import UserZipCode
 class GetUserZipCode(Operation):
     """Get user zip code (getUserZipCode)
 
+    Get user zip code.  
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=2 (READ)
+      *  Action code : 11407
+      *  Returns : user zip code
+
+
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/me/profiles/zipCode
 
         method: GET
 
-        tags: UserProfile
+        tags: ["UserProfile"]
 
         consumes: ["application/json"]
 
@@ -50,9 +58,9 @@ class GetUserZipCode(Operation):
     Responses:
         200: OK - UserZipCode (Successful operation)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
     """
 
     # region fields
@@ -152,7 +160,7 @@ class GetUserZipCode(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -169,9 +177,9 @@ class GetUserZipCode(Operation):
 
         200: OK - UserZipCode (Successful operation)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
         """
         if code == 200:
             return UserZipCode.create_from_dict(content), None

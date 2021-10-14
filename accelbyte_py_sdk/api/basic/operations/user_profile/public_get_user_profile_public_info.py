@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.819016+08:00
+# Auto-generated at 2021-10-14T22:17:19.522702+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,19 @@ from ...models import ValidationErrorEntity
 class PublicGetUserProfilePublicInfo(Operation):
     """Get user profile public info (publicGetUserProfilePublicInfo)
 
+    Get user profile public info.  
+    Other detail info:
+
+      * Action code : 11404
+      *  Returns : user public profile
+
+
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles/public
 
         method: GET
 
-        tags: UserProfile
+        tags: ["UserProfile"]
 
         consumes: []
 
@@ -53,9 +60,9 @@ class PublicGetUserProfilePublicInfo(Operation):
     Responses:
         200: OK - UserProfilePublicInfo (Successful operation)
 
-        400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
 
-        404: Not Found - ErrorEntity (errorCode: 11440 | errorMessage: user profile not found)
+        404: Not Found - ErrorEntity (11440: user profile not found)
     """
 
     # region fields
@@ -165,7 +172,7 @@ class PublicGetUserProfilePublicInfo(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -186,9 +193,9 @@ class PublicGetUserProfilePublicInfo(Operation):
 
         200: OK - UserProfilePublicInfo (Successful operation)
 
-        400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
 
-        404: Not Found - ErrorEntity (errorCode: 11440 | errorMessage: user profile not found)
+        404: Not Found - ErrorEntity (11440: user profile not found)
         """
         if code == 200:
             return UserProfilePublicInfo.create_from_dict(content), None

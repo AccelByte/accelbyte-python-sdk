@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.801589+08:00
+# Auto-generated at 2021-10-14T22:17:19.503144+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,21 @@ from ...models import ValidationErrorEntity
 class UpdatePrivateCustomAttributesPartially(Operation):
     """Update partially private custom attributes tied to the user id (updatePrivateCustomAttributesPartially)
 
+    Update partially private custom attributes tied to the user id.  
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
+      *  Action code : 11402
+      *  Request body : allowed format: JSON object
+      *  Returns : Updated custom attributes
+
+
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/privateCustomAttributes
 
         method: PUT
 
-        tags: UserProfile
+        tags: ["UserProfile"]
 
         consumes: ["application/json"]
 
@@ -54,13 +63,13 @@ class UpdatePrivateCustomAttributesPartially(Operation):
     Responses:
         200: OK - Dict[str, Any] (successful operation)
 
-        400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (errorCode: 11440 | errorMessage: user profile not found)
+        404: Not Found - ErrorEntity (11440: user profile not found)
     """
 
     # region fields
@@ -179,7 +188,7 @@ class UpdatePrivateCustomAttributesPartially(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = {str(k0): v0 for k0, v0 in self.body.items()}
         elif include_empty:
@@ -204,13 +213,13 @@ class UpdatePrivateCustomAttributesPartially(Operation):
 
         200: OK - Dict[str, Any] (successful operation)
 
-        400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (errorCode: 11440 | errorMessage: user profile not found)
+        404: Not Found - ErrorEntity (11440: user profile not found)
         """
         if code == 200:
             return {str(k): v for k, v in content.items()}, None

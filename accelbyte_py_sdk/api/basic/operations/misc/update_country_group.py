@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.703693+08:00
+# Auto-generated at 2021-10-14T22:17:19.399132+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -34,12 +34,25 @@ from ...models import ValidationErrorEntity
 class UpdateCountryGroup(Operation):
     """Update a country group (updateCountryGroup)
 
+    Update a country groups. The countryGroupCode must be exist beforehand.  
+    Valid update behaviour :  
+    \- To update countryGroupName only, do not include countries key or just
+    specify it with empty array.  
+    \- To update countries only, do not include countryGroupName key or just
+    specify it with blank value.  
+    Other detail info:
+
+      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=4 (UPDATE)
+      *  Action code : 11202
+      *  Returns : updated country group
+
+
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups/{countryGroupCode}
 
         method: PUT
 
-        tags: Misc
+        tags: ["Misc"]
 
         consumes: []
 
@@ -56,13 +69,13 @@ class UpdateCountryGroup(Operation):
     Responses:
         200: OK - CountryGroupObject (successful operation)
 
-        400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body | 11234: country belongs to more than one group)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (errorCode: 11233 | errorMessage: country group not found)
+        404: Not Found - ErrorEntity (11233: country group not found)
     """
 
     # region fields
@@ -181,7 +194,7 @@ class UpdateCountryGroup(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -206,13 +219,13 @@ class UpdateCountryGroup(Operation):
 
         200: OK - CountryGroupObject (successful operation)
 
-        400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body | 11234: country belongs to more than one group)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (errorCode: 11233 | errorMessage: country group not found)
+        404: Not Found - ErrorEntity (11233: country group not found)
         """
         if code == 200:
             return CountryGroupObject.create_from_dict(content), None

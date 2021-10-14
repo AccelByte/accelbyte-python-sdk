@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.741241+08:00
+# Auto-generated at 2021-10-14T22:17:19.440054+08:00
 # from: Justice Basic Service (1.17.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -34,12 +34,21 @@ from ...models import ValidationErrorEntity
 class CreateNamespace(Operation):
     """Create a namespace (createNamespace)
 
+    Create a namespace.  
+    By default the namespace is enabled.  
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE" , action=1 (CREATE)
+      *  Action code : 11301
+      *  Returns : created namespace
+
+
     Properties:
         url: /basic/v1/admin/namespaces
 
         method: POST
 
-        tags: Namespace
+        tags: ["Namespace"]
 
         consumes: ["application/json"]
 
@@ -52,13 +61,13 @@ class CreateNamespace(Operation):
     Responses:
         201: Created - NamespaceInfo (Successful operation)
 
-        400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body | 11338: namespace contains invalid character | 11339: namespace display name contains invalid character)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        409: Conflict - ErrorEntity (errorCode: 11336 | errorMessage: namespace already exists)
+        409: Conflict - ErrorEntity (11336: namespace already exists)
     """
 
     # region fields
@@ -148,7 +157,7 @@ class CreateNamespace(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -165,13 +174,13 @@ class CreateNamespace(Operation):
 
         201: Created - NamespaceInfo (Successful operation)
 
-        400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body | 11338: namespace contains invalid character | 11339: namespace display name contains invalid character)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        409: Conflict - ErrorEntity (errorCode: 11336 | errorMessage: namespace already exists)
+        409: Conflict - ErrorEntity (11336: namespace already exists)
         """
         if code == 201:
             return NamespaceInfo.create_from_dict(content), None
