@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.231723+08:00
+# Auto-generated at 2021-10-14T22:17:14.182683+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,23 @@ from ...models import ValidationErrorEntity
 class PublicCreateProfile(Operation):
     """Create a new profile for user (publicCreateProfile)
 
+    Create new profile for user.  
+    Other detail info:
+
+      *  Required permission
+    : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=1
+    (CREATE)
+
+      *  Returns
+    : created game profile
+
+
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/profiles
 
         method: POST
 
-        tags: GameProfile
+        tags: ["GameProfile"]
 
         consumes: ["application/json"]
 
@@ -54,7 +65,7 @@ class PublicCreateProfile(Operation):
     Responses:
         201: Created - (Profile has been created)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -173,7 +184,7 @@ class PublicCreateProfile(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -198,7 +209,7 @@ class PublicCreateProfile(Operation):
 
         201: Created - (Profile has been created)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 201:
             return HttpResponse.create(code, "Created"), None

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.281929+08:00
+# Auto-generated at 2021-10-14T22:17:14.226678+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,19 @@ from ...models import StatInfo
 class CreateStat(Operation):
     """Create stat (createStat)
 
+    Create stat.  
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=1 (CREATE)
+      *  Returns : created stat template
+
+
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/stats
 
         method: POST
 
-        tags: StatConfiguration
+        tags: ["StatConfiguration"]
 
         consumes: ["application/json"]
 
@@ -53,7 +60,7 @@ class CreateStat(Operation):
     Responses:
         201: Created - StatInfo (Create stat successfully)
 
-        409: Conflict - ErrorEntity (ErrorCode: 12271 | ErrorMessage: Stat template with code [{statCode}] already exists in namespace [{namespace}])
+        409: Conflict - ErrorEntity (12271: Stat template with code [{statCode}] already exists in namespace [{namespace}])
     """
 
     # region fields
@@ -162,7 +169,7 @@ class CreateStat(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -183,7 +190,7 @@ class CreateStat(Operation):
 
         201: Created - StatInfo (Create stat successfully)
 
-        409: Conflict - ErrorEntity (ErrorCode: 12271 | ErrorMessage: Stat template with code [{statCode}] already exists in namespace [{namespace}])
+        409: Conflict - ErrorEntity (12271: Stat template with code [{statCode}] already exists in namespace [{namespace}])
         """
         if code == 201:
             return StatInfo.create_from_dict(content), None

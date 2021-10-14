@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.408116+08:00
+# Auto-generated at 2021-10-14T22:17:14.359494+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,20 @@ from ...models import UserSlotConfigInfo
 class GetUserSlotConfig(Operation):
     """Returns a user slot configuration (getUserSlotConfig)
 
+    Get a user slot configuration in given namespace. In case the user slot
+    configuration is not set, the namespace configuration will be returned.  
+    Other detail info:
+
+      * Required permission: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG", action=2 (READ)
+      * Returns: slot config info
+
+
     Properties:
         url: /social/admin/namespaces/{namespace}/users/{userId}/config
 
         method: GET
 
-        tags: SlotConfig
+        tags: ["SlotConfig"]
 
         consumes: []
 
@@ -159,7 +167,7 @@ class GetUserSlotConfig(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

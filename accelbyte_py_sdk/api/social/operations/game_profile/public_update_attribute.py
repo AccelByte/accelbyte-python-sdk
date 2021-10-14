@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.238347+08:00
+# Auto-generated at 2021-10-14T22:17:14.188466+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,19 @@ from ...models import GameProfileInfo
 class PublicUpdateAttribute(Operation):
     """Updates game profile attribute (publicUpdateAttribute)
 
+    Updates game profile attribute, returns updated profile.  
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=4 (UPDATE)
+      *  Returns : updated attribute
+
+
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/profiles/{profileId}/attributes/{attributeName}
 
         method: PUT
 
-        tags: GameProfile
+        tags: ["GameProfile"]
 
         consumes: ["application/json"]
 
@@ -59,9 +66,9 @@ class PublicUpdateAttribute(Operation):
     Responses:
         200: OK - GameProfileInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 12022 | ErrorMessage: Game profile attribute name [{attrName1}] passed in request url mismatch the name [{attrName2}] in body)
+        400: Bad Request - ErrorEntity (12022: Game profile attribute name [{attrName1}] passed in request url mismatch the name [{attrName2}] in body)
 
-        404: Not Found - ErrorEntity (ErrorCode: 12041 | ErrorMessage: Game profile with id [{profileId}] is not found)
+        404: Not Found - ErrorEntity (12041: Game profile with id [{profileId}] is not found)
     """
 
     # region fields
@@ -200,7 +207,7 @@ class PublicUpdateAttribute(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -233,9 +240,9 @@ class PublicUpdateAttribute(Operation):
 
         200: OK - GameProfileInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 12022 | ErrorMessage: Game profile attribute name [{attrName1}] passed in request url mismatch the name [{attrName2}] in body)
+        400: Bad Request - ErrorEntity (12022: Game profile attribute name [{attrName1}] passed in request url mismatch the name [{attrName2}] in body)
 
-        404: Not Found - ErrorEntity (ErrorCode: 12041 | ErrorMessage: Game profile with id [{profileId}] is not found)
+        404: Not Found - ErrorEntity (12041: Game profile with id [{profileId}] is not found)
         """
         if code == 200:
             return GameProfileInfo.create_from_dict(content), None

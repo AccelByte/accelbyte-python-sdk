@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.307661+08:00
+# Auto-generated at 2021-10-14T22:17:14.249805+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,19 @@ from ...models import ErrorEntity
 class CreateUserStatItem(Operation):
     """Create user's statItem (createUserStatItem)
 
+    Create statItem for a user.  
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
+      *  Returns : created user's statItem
+
+
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
 
         method: POST
 
-        tags: UserStatistic
+        tags: ["UserStatistic"]
 
         consumes: ["application/json"]
 
@@ -53,9 +60,9 @@ class CreateUserStatItem(Operation):
     Responses:
         201: Created - (Create user statItem successfully)
 
-        404: Not Found - ErrorEntity (ErrorCode: 12241 | ErrorMessage: Stat [{statCode}] cannot be found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 12274 | ErrorMessage: Stat item with code [{statCode}] of user [{profileId}] already exists in namespace [{namespace}])
+        409: Conflict - ErrorEntity (12274: Stat item with code [{statCode}] of user [{profileId}] already exists in namespace [{namespace}])
     """
 
     # region fields
@@ -175,7 +182,7 @@ class CreateUserStatItem(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -200,9 +207,9 @@ class CreateUserStatItem(Operation):
 
         201: Created - (Create user statItem successfully)
 
-        404: Not Found - ErrorEntity (ErrorCode: 12241 | ErrorMessage: Stat [{statCode}] cannot be found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 12274 | ErrorMessage: Stat item with code [{statCode}] of user [{profileId}] already exists in namespace [{namespace}])
+        409: Conflict - ErrorEntity (12274: Stat item with code [{statCode}] of user [{profileId}] already exists in namespace [{namespace}])
         """
         if code == 201:
             return HttpResponse.create(code, "Created"), None

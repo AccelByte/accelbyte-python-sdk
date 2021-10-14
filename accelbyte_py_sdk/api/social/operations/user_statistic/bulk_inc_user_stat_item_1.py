@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.293618+08:00
+# Auto-generated at 2021-10-14T22:17:14.235649+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,19 @@ from ...models import ValidationErrorEntity
 class BulkIncUserStatItem1(Operation):
     """Bulk update user's statitems value (bulkIncUserStatItem_1)
 
+    Bulk update user's statitems value.  
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+      *  Returns : bulk updated result
+
+
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk
 
         method: PUT
 
-        tags: UserStatistic
+        tags: ["UserStatistic"]
 
         consumes: ["application/json"]
 
@@ -55,7 +62,7 @@ class BulkIncUserStatItem1(Operation):
     Responses:
         200: OK - List[BulkStatItemOperationResult] (successful operation)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -174,7 +181,7 @@ class BulkIncUserStatItem1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = [i0.to_dict(include_empty=include_empty) for i0 in self.body]
         elif include_empty:
@@ -199,7 +206,7 @@ class BulkIncUserStatItem1(Operation):
 
         200: OK - List[BulkStatItemOperationResult] (successful operation)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return [BulkStatItemOperationResult.create_from_dict(i) for i in content], None

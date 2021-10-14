@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.247962+08:00
+# Auto-generated at 2021-10-14T22:17:14.198844+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,18 @@ from ...models import ErrorEntity
 class PublicDeleteProfile(Operation):
     """Deletes game profile (publicDeleteProfile)
 
+    Deletes game profile.  
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=8 (DELETE)
+
+
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/profiles/{profileId}
 
         method: DELETE
 
-        tags: GameProfile
+        tags: ["GameProfile"]
 
         consumes: []
 
@@ -53,7 +59,7 @@ class PublicDeleteProfile(Operation):
     Responses:
         204: No Content - (Game profile has been deleted)
 
-        404: Not Found - ErrorEntity (ErrorCode: 12041 | ErrorMessage: Game profile with id [{profileId}] is not found)
+        404: Not Found - ErrorEntity (12041: Game profile with id [{profileId}] is not found)
     """
 
     # region fields
@@ -173,7 +179,7 @@ class PublicDeleteProfile(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -198,7 +204,7 @@ class PublicDeleteProfile(Operation):
 
         204: No Content - (Game profile has been deleted)
 
-        404: Not Found - ErrorEntity (ErrorCode: 12041 | ErrorMessage: Game profile with id [{profileId}] is not found)
+        404: Not Found - ErrorEntity (12041: Game profile with id [{profileId}] is not found)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

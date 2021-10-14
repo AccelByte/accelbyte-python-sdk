@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.244552+08:00
+# Auto-generated at 2021-10-14T22:17:14.195189+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -34,12 +34,19 @@ from ...models import ValidationErrorEntity
 class PublicUpdateProfile(Operation):
     """Updates user game profile (publicUpdateProfile)
 
+    Updates user game profile, returns updated profile.  
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=4 (UPDATE)
+      *  Returns : updated game profile
+
+
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/profiles/{profileId}
 
         method: PUT
 
-        tags: GameProfile
+        tags: ["GameProfile"]
 
         consumes: ["application/json"]
 
@@ -58,9 +65,9 @@ class PublicUpdateProfile(Operation):
     Responses:
         200: OK - GameProfileInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 12041 | ErrorMessage: Game profile with id [{profileId}] is not found)
+        404: Not Found - ErrorEntity (12041: Game profile with id [{profileId}] is not found)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -189,7 +196,7 @@ class PublicUpdateProfile(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -218,9 +225,9 @@ class PublicUpdateProfile(Operation):
 
         200: OK - GameProfileInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 12041 | ErrorMessage: Game profile with id [{profileId}] is not found)
+        404: Not Found - ErrorEntity (12041: Game profile with id [{profileId}] is not found)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return GameProfileInfo.create_from_dict(content), None

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.429670+08:00
+# Auto-generated at 2021-10-14T22:17:14.384166+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,19 @@ from ...models import ErrorEntity
 class PublicCreateUserNamespaceSlot(Operation):
     """Creates a slot (publicCreateUserNamespaceSlot)
 
+    Creates a slot.  
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=1 (CREATE)
+      *  Returns : created slot info
+
+
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/slots
 
         method: POST
 
-        tags: Slot
+        tags: ["Slot"]
 
         consumes: ["multipart/form-data"]
 
@@ -61,9 +68,9 @@ class PublicCreateUserNamespaceSlot(Operation):
     Responses:
         201: Created - (Successful create of a slot)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 12121 | ErrorMessage: Checksum mismatch for [{filename}])
+        400: Bad Request - ErrorEntity (12121: Checksum mismatch for [{filename}] | 12122: [{filename}] exceeds the upload limit size of [{sizeLimit}] bytes)
 
-        409: Conflict - ErrorEntity (ErrorCode: 12171 | ErrorMessage: User [{userId}] exceed max slot count [{maxCount}] in namespace [{namespace}])
+        409: Conflict - ErrorEntity (12171: User [{userId}] exceed max slot count [{maxCount}] in namespace [{namespace}])
     """
 
     # region fields
@@ -221,7 +228,7 @@ class PublicCreateUserNamespaceSlot(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "custom_attribute") and self.custom_attribute:
             result["customAttribute"] = str(self.custom_attribute)
         elif include_empty:
@@ -262,9 +269,9 @@ class PublicCreateUserNamespaceSlot(Operation):
 
         201: Created - (Successful create of a slot)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 12121 | ErrorMessage: Checksum mismatch for [{filename}])
+        400: Bad Request - ErrorEntity (12121: Checksum mismatch for [{filename}] | 12122: [{filename}] exceeds the upload limit size of [{sizeLimit}] bytes)
 
-        409: Conflict - ErrorEntity (ErrorCode: 12171 | ErrorMessage: User [{userId}] exceed max slot count [{maxCount}] in namespace [{namespace}])
+        409: Conflict - ErrorEntity (12171: User [{userId}] exceed max slot count [{maxCount}] in namespace [{namespace}])
         """
         if code == 201:
             return HttpResponse.create(code, "Created"), None

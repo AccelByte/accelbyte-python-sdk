@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.225855+08:00
+# Auto-generated at 2021-10-14T22:17:14.177086+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import GameProfileInfo
 class GetProfile(Operation):
     """Returns profile for a user (getProfile)
 
+    Returns profile for a user.  
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=2 (READ)
+      *  Returns : game profile info
+
+
     Properties:
         url: /social/admin/namespaces/{namespace}/users/{userId}/profiles/{profileId}
 
         method: GET
 
-        tags: GameProfile
+        tags: ["GameProfile"]
 
         consumes: []
 
@@ -54,7 +61,7 @@ class GetProfile(Operation):
     Responses:
         200: OK - GameProfileInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 12041 | ErrorMessage: Game profile with id [{profileId}] is not found)
+        404: Not Found - ErrorEntity (12041: Game profile with id [{profileId}] is not found)
     """
 
     # region fields
@@ -174,7 +181,7 @@ class GetProfile(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -199,7 +206,7 @@ class GetProfile(Operation):
 
         200: OK - GameProfileInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 12041 | ErrorMessage: Game profile with id [{profileId}] is not found)
+        404: Not Found - ErrorEntity (12041: Game profile with id [{profileId}] is not found)
         """
         if code == 200:
             return GameProfileInfo.create_from_dict(content), None

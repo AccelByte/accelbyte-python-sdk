@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.275851+08:00
+# Auto-generated at 2021-10-14T22:17:14.222060+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,19 @@ from ...models import StatUpdate
 class UpdateStat(Operation):
     """Update stat (updateStat)
 
+    Update stat.  
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=4 (UPDATE)
+      *  Returns : updated stat
+
+
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/stats/{statCode}
 
         method: PATCH
 
-        tags: StatConfiguration
+        tags: ["StatConfiguration"]
 
         consumes: ["application/json"]
 
@@ -55,7 +62,7 @@ class UpdateStat(Operation):
     Responses:
         200: OK - StatInfo (successful update of stat)
 
-        404: Not Found - ErrorEntity (ErrorCode: 12241 | ErrorMessage: Stat [{statCode}] cannot be found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
     """
 
     # region fields
@@ -174,7 +181,7 @@ class UpdateStat(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -199,7 +206,7 @@ class UpdateStat(Operation):
 
         200: OK - StatInfo (successful update of stat)
 
-        404: Not Found - ErrorEntity (ErrorCode: 12241 | ErrorMessage: Stat [{statCode}] cannot be found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
         """
         if code == 200:
             return StatInfo.create_from_dict(content), None

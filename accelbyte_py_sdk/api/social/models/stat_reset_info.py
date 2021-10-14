@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:34.255182+08:00
+# Auto-generated at 2021-10-14T22:17:14.163252+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class StatResetInfo(Model):
-    """Stat reset info
+    """Stat reset info (StatResetInfo)
 
     Properties:
         additional_data: (additionalData) OPTIONAL Dict[str, Any]
@@ -49,7 +49,7 @@ class StatResetInfo(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "additional_data") and self.additional_data:
             result["additionalData"] = {str(k0): v0 for k0, v0 in self.additional_data.items()}
         elif include_empty:

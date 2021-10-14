@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.290287+08:00
+# Auto-generated at 2021-10-14T22:17:14.233051+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,20 @@ from ...models import StatImportInfo
 class ImportStats(Operation):
     """Import stat configurations (importStats)
 
+    Import stat configurations for a given namespace from file. At current, only
+    JSON file is supported.
+
+    Other detail info:
+
+      *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STAT", action=1 (CREATE)
+
+
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/stats/import
 
         method: POST
 
-        tags: StatConfiguration
+        tags: ["StatConfiguration"]
 
         consumes: ["multipart/form-data"]
 
@@ -54,7 +62,7 @@ class ImportStats(Operation):
     Responses:
         200: OK - StatImportInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (errorCode: 70138 | errorMessage: Stats data for namespace [{namespace}] is invalid)
+        400: Bad Request - ErrorEntity (70138: Stats data for namespace [{namespace}] is invalid)
     """
 
     # region fields
@@ -181,7 +189,7 @@ class ImportStats(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "file") and self.file:
             result["file"] = Any(self.file)
         elif include_empty:
@@ -206,7 +214,7 @@ class ImportStats(Operation):
 
         200: OK - StatImportInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (errorCode: 70138 | errorMessage: Stats data for namespace [{namespace}] is invalid)
+        400: Bad Request - ErrorEntity (70138: Stats data for namespace [{namespace}] is invalid)
         """
         if code == 200:
             return StatImportInfo.create_from_dict(content), None

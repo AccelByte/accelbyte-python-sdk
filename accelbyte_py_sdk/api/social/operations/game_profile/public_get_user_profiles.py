@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.228706+08:00
+# Auto-generated at 2021-10-14T22:17:14.180763+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,19 @@ from ...models import GameProfileHeader
 class PublicGetUserProfiles(Operation):
     """Returns all profiles' header for a user (publicGetUserProfiles)
 
+    Returns all profiles' header for a user.  
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=2 (READ)
+      *  Returns : list of profiles
+
+
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/profiles
 
         method: GET
 
-        tags: GameProfile
+        tags: ["GameProfile"]
 
         consumes: []
 
@@ -159,7 +166,7 @@ class PublicGetUserProfiles(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

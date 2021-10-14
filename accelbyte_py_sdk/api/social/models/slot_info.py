@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:34.263291+08:00
+# Auto-generated at 2021-10-14T22:17:14.170258+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class SlotInfo(Model):
-    """Slot info
+    """Slot info (SlotInfo)
 
     Properties:
         slot_id: (slotId) OPTIONAL str
@@ -140,7 +140,7 @@ class SlotInfo(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "slot_id") and self.slot_id:
             result["slotId"] = str(self.slot_id)
         elif include_empty:

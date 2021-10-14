@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.392088+08:00
+# Auto-generated at 2021-10-14T22:17:14.341143+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -34,12 +34,26 @@ from ...models import ValidationErrorEntity
 class UpdateUserStatItemValue1(Operation):
     """Public update user's statitem value (updateUserStatItemValue_1)
 
+    Public update user's statitem value for a given namespace and user with a
+    certain update strategy. There are four supported update strategies: \+
+    *OVERRIDE*: update user statitem with the new value \+ *INCREMENT*: increment
+    user statitem with the specified value \+ *MAX*: update user statitem with the
+    specified value if it's larger than the existing value \+ *MIN*: update user
+    statitem with the specified value if it's lower than the existing value The
+    *additionalKey* parameter will be suffixed to *userId* and is used to support
+    multi level user's statitems, such as character's statitems. If provided,
+    user's statitems will be saved with key: *userId_additionalKey* Other detail
+    info: \+ *Required permission*:
+    resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE) \+
+    *Returns*: updated user's statItem
+
+
     Properties:
         url: /social/v2/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value
 
         method: PUT
 
-        tags: UserStatistic
+        tags: ["UserStatistic"]
 
         consumes: ["application/json"]
 
@@ -60,13 +74,13 @@ class UpdateUserStatItemValue1(Operation):
     Responses:
         200: OK - StatItemIncResult (successful operation)
 
-        400: Bad Request - ErrorEntity (errorCode: 12221 | errorMessage: Invalid stat operator, expect [{expected}] but actual [{actual}])
+        400: Bad Request - ErrorEntity (12221: Invalid stat operator, expect [{expected}] but actual [{actual}])
 
-        404: Not Found - ErrorEntity (errorCode: 12241 | errorMessage: Stat [{statCode}] cannot be found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 12273 | ErrorMessage: Stat [{statCode}] is not decreasable)
+        409: Conflict - ErrorEntity (12273: Stat [{statCode}] is not decreasable | 12275: [{action}] value: [{value}] of stat [{statCode}] is out of range while minimum [{minimum}] and maximum [{maximum}] in namespace [{namespace}])
 
-        422: Unprocessable Entity - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -210,7 +224,7 @@ class UpdateUserStatItemValue1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -243,13 +257,13 @@ class UpdateUserStatItemValue1(Operation):
 
         200: OK - StatItemIncResult (successful operation)
 
-        400: Bad Request - ErrorEntity (errorCode: 12221 | errorMessage: Invalid stat operator, expect [{expected}] but actual [{actual}])
+        400: Bad Request - ErrorEntity (12221: Invalid stat operator, expect [{expected}] but actual [{actual}])
 
-        404: Not Found - ErrorEntity (errorCode: 12241 | errorMessage: Stat [{statCode}] cannot be found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 12273 | ErrorMessage: Stat [{statCode}] is not decreasable)
+        409: Conflict - ErrorEntity (12273: Stat [{statCode}] is not decreasable | 12275: [{action}] value: [{value}] of stat [{statCode}] is out of range while minimum [{minimum}] and maximum [{maximum}] in namespace [{namespace}])
 
-        422: Unprocessable Entity - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return StatItemIncResult.create_from_dict(content), None

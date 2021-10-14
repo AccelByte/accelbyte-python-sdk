@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.364307+08:00
+# Auto-generated at 2021-10-14T22:17:14.307466+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,19 @@ from ...models import ErrorEntity
 class DeleteUserStatItems1(Operation):
     """Delete User's statItems (deleteUserStatItems_1)
 
+    Delete user's statItems given stat code.  
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=8 (DELETE)
+      *  Returns : no content
+
+
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
 
         method: DELETE
 
-        tags: UserStatistic
+        tags: ["UserStatistic"]
 
         consumes: []
 
@@ -53,11 +60,11 @@ class DeleteUserStatItems1(Operation):
     Responses:
         204: No Content - (delete successfully)
 
-        401: Unauthorized - ErrorEntity (ErrorCode: 20001 | ErrorMessage: unauthorized access)
+        401: Unauthorized - ErrorEntity (20001: unauthorized access)
 
-        403: Forbidden - ErrorEntity (ErrorCode: 20013 | ErrorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (ErrorCode: 12242 | ErrorMessage: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
     """
 
     # region fields
@@ -177,7 +184,7 @@ class DeleteUserStatItems1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -202,11 +209,11 @@ class DeleteUserStatItems1(Operation):
 
         204: No Content - (delete successfully)
 
-        401: Unauthorized - ErrorEntity (ErrorCode: 20001 | ErrorMessage: unauthorized access)
+        401: Unauthorized - ErrorEntity (20001: unauthorized access)
 
-        403: Forbidden - ErrorEntity (ErrorCode: 20013 | ErrorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (ErrorCode: 12242 | ErrorMessage: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

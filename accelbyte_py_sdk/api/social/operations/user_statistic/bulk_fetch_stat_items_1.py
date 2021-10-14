@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.329924+08:00
+# Auto-generated at 2021-10-14T22:17:14.272375+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,18 @@ from ...models import ValidationErrorEntity
 class BulkFetchStatItems1(Operation):
     """Public bulk fetch statitems value (bulkFetchStatItems_1)
 
+    Public bulk fetch multiple user's statitem value for a given namespace and
+    statCode. Other detail info: \+ *Required permission*:
+    resource="NAMESPACE:{namespace}:STATITEM", action=2 (READ) \+ *Returns*: list
+    of user's statItem
+
+
     Properties:
         url: /social/v1/public/namespaces/{namespace}/statitems/bulk
 
         method: GET
 
-        tags: UserStatistic
+        tags: ["UserStatistic"]
 
         consumes: []
 
@@ -54,7 +60,7 @@ class BulkFetchStatItems1(Operation):
     Responses:
         200: OK - List[UserStatItemInfo] (successful operation)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -182,7 +188,7 @@ class BulkFetchStatItems1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -207,7 +213,7 @@ class BulkFetchStatItems1(Operation):
 
         200: OK - List[UserStatItemInfo] (successful operation)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return [UserStatItemInfo.create_from_dict(i) for i in content], None

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:34.245217+08:00
+# Auto-generated at 2021-10-14T22:17:14.154492+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,7 +29,7 @@ from ..models.stat_info import StatInfo
 
 
 class StatPagingSlicedResult(Model):
-    """Stat paging sliced result
+    """Stat paging sliced result (StatPagingSlicedResult)
 
     Properties:
         data: (data) REQUIRED List[StatInfo]
@@ -59,7 +59,7 @@ class StatPagingSlicedResult(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "data") and self.data:
             result["data"] = [i0.to_dict(include_empty=include_empty) for i0 in self.data]
         elif include_empty:

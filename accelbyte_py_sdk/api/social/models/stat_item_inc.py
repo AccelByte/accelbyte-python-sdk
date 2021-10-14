@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:34.256076+08:00
+# Auto-generated at 2021-10-14T22:17:14.163963+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class StatItemInc(Model):
-    """Stat item inc
+    """Stat item inc (StatItemInc)
 
     Properties:
         inc: (inc) OPTIONAL float
@@ -49,7 +49,7 @@ class StatItemInc(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "inc") and self.inc:
             result["inc"] = float(self.inc)
         elif include_empty:

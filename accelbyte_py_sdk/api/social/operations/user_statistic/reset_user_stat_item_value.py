@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.315233+08:00
+# Auto-generated at 2021-10-14T22:17:14.257676+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,19 @@ from ...models import StatResetInfo
 class ResetUserStatItemValue(Operation):
     """Reset user's statitem value (resetUserStatItemValue)
 
+    Reset user's statitem value for a given namespace and user. User's statitem
+    value will be reset to the default value defined in the statistic
+    configuration. Other detail info: \+ *Required permission*:
+    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4
+    (UPDATE) \+ *Returns*: updated user's statItem
+
+
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value/reset
 
         method: PUT
 
-        tags: UserStatistic
+        tags: ["UserStatistic"]
 
         consumes: ["application/json"]
 
@@ -59,9 +66,9 @@ class ResetUserStatItemValue(Operation):
     Responses:
         200: OK - StatItemIncResult (successful operation)
 
-        400: Bad Request - ErrorEntity (errorCode: 12221 | errorMessage: Invalid stat operator, expect [{expected}] but actual [{actual}])
+        400: Bad Request - ErrorEntity (12221: Invalid stat operator, expect [{expected}] but actual [{actual}])
 
-        404: Not Found - ErrorEntity (errorCode: 12241 | errorMessage: Stat [{statCode}] cannot be found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
     """
 
     # region fields
@@ -205,7 +212,7 @@ class ResetUserStatItemValue(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -238,9 +245,9 @@ class ResetUserStatItemValue(Operation):
 
         200: OK - StatItemIncResult (successful operation)
 
-        400: Bad Request - ErrorEntity (errorCode: 12221 | errorMessage: Invalid stat operator, expect [{expected}] but actual [{actual}])
+        400: Bad Request - ErrorEntity (12221: Invalid stat operator, expect [{expected}] but actual [{actual}])
 
-        404: Not Found - ErrorEntity (errorCode: 12241 | errorMessage: Stat [{statCode}] cannot be found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
         """
         if code == 200:
             return StatItemIncResult.create_from_dict(content), None

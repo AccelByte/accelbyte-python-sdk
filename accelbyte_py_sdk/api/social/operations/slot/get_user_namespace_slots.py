@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.405850+08:00
+# Auto-generated at 2021-10-14T22:17:14.357536+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,19 @@ from ...models import SlotInfo
 class GetUserNamespaceSlots(Operation):
     """Returns list of slots for given user (getUserNamespaceSlots)
 
+    Get slots for a given user.  
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)
+      *  Returns : list of slots
+
+
     Properties:
         url: /social/admin/namespaces/{namespace}/users/{userId}/slots
 
         method: GET
 
-        tags: Slot
+        tags: ["Slot"]
 
         consumes: []
 
@@ -159,7 +166,7 @@ class GetUserNamespaceSlots(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

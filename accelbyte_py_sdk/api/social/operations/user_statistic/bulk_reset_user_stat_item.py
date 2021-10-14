@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.262730+08:00
+# Auto-generated at 2021-10-14T22:17:14.214399+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,19 @@ from ...models import ValidationErrorEntity
 class BulkResetUserStatItem(Operation):
     """Bulk reset multiple user's statitems value (bulkResetUserStatItem)
 
+    Bulk reset multiple user's statitems value. User's statitem value will be
+    reset to the default value defined in the statistic configuration. Other
+    detail info: \+ *Required permission*:
+    resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE) \+
+    *Returns*: bulk updated result
+
+
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/statitems/value/reset/bulk
 
         method: PUT
 
-        tags: UserStatistic
+        tags: ["UserStatistic"]
 
         consumes: ["application/json"]
 
@@ -53,7 +60,7 @@ class BulkResetUserStatItem(Operation):
     Responses:
         200: OK - List[BulkStatItemOperationResult] (successful operation)
 
-        422: Unprocessable Entity - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -162,7 +169,7 @@ class BulkResetUserStatItem(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = [i0.to_dict(include_empty=include_empty) for i0 in self.body]
         elif include_empty:
@@ -183,7 +190,7 @@ class BulkResetUserStatItem(Operation):
 
         200: OK - List[BulkStatItemOperationResult] (successful operation)
 
-        422: Unprocessable Entity - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return [BulkStatItemOperationResult.create_from_dict(i) for i in content], None

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.250307+08:00
+# Auto-generated at 2021-10-14T22:17:14.201399+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import UserGameProfiles
 class PublicGetUserGameProfiles(Operation):
     """Returns all profiles for specified users (publicGetUserGameProfiles)
 
+    Returns all profiles for specified users.  
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:GAMEPROFILE", action=2 (READ) 
+      * Returns : list of profiles
+
+
     Properties:
         url: /social/public/namespaces/{namespace}/profiles
 
         method: GET
 
-        tags: GameProfile
+        tags: ["GameProfile"]
 
         consumes: []
 
@@ -52,7 +59,7 @@ class PublicGetUserGameProfiles(Operation):
     Responses:
         200: OK - List[UserGameProfiles] (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 12021 | ErrorMessage: {totalUser} users is requested. Cannot retrieve more than {limitUser} users at once)
+        400: Bad Request - ErrorEntity (12021: {totalUser} users is requested. Cannot retrieve more than {limitUser} users at once)
     """
 
     # region fields
@@ -170,7 +177,7 @@ class PublicGetUserGameProfiles(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -191,7 +198,7 @@ class PublicGetUserGameProfiles(Operation):
 
         200: OK - List[UserGameProfiles] (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 12021 | ErrorMessage: {totalUser} users is requested. Cannot retrieve more than {limitUser} users at once)
+        400: Bad Request - ErrorEntity (12021: {totalUser} users is requested. Cannot retrieve more than {limitUser} users at once)
         """
         if code == 200:
             return [UserGameProfiles.create_from_dict(i) for i in content], None

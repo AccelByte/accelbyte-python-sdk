@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:34.248335+08:00
+# Auto-generated at 2021-10-14T22:17:14.157206+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class StatImportInfo(Model):
-    """Stat import info
+    """Stat import info (StatImportInfo)
 
     Properties:
         new_configs: (newConfigs) REQUIRED List[str]
@@ -70,7 +70,7 @@ class StatImportInfo(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "new_configs") and self.new_configs:
             result["newConfigs"] = [str(i0) for i0 in self.new_configs]
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.424808+08:00
+# Auto-generated at 2021-10-14T22:17:14.377128+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,18 @@ from ...models import ErrorEntity
 class PublicDeleteUserNamespaceSlot(Operation):
     """Deletes the slot (publicDeleteUserNamespaceSlot)
 
+    Deletes the slot.  
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=8 (DELETE)
+
+
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}
 
         method: DELETE
 
-        tags: Slot
+        tags: ["Slot"]
 
         consumes: []
 
@@ -53,7 +59,7 @@ class PublicDeleteUserNamespaceSlot(Operation):
     Responses:
         204: No Content - (Successful delete of a slot)
 
-        404: Not Found - ErrorEntity (ErrorCode: 12141 | ErrorMessage: Slot [{slotId}] not found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (12141: Slot [{slotId}] not found in namespace [{namespace}])
     """
 
     # region fields
@@ -173,7 +179,7 @@ class PublicDeleteUserNamespaceSlot(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -198,7 +204,7 @@ class PublicDeleteUserNamespaceSlot(Operation):
 
         204: No Content - (Successful delete of a slot)
 
-        404: Not Found - ErrorEntity (ErrorCode: 12141 | ErrorMessage: Slot [{slotId}] not found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (12141: Slot [{slotId}] not found in namespace [{namespace}])
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

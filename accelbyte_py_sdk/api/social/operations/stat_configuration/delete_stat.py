@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.268634+08:00
+# Auto-generated at 2021-10-14T22:17:14.219431+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,18 @@ from ...models import ErrorEntity
 class DeleteStat(Operation):
     """Deletes stat (deleteStat)
 
+    Deletes stat template.  
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=8 (DELETE)
+
+
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/stats/{statCode}
 
         method: DELETE
 
-        tags: StatConfiguration
+        tags: ["StatConfiguration"]
 
         consumes: []
 
@@ -51,7 +57,7 @@ class DeleteStat(Operation):
     Responses:
         204: No Content - (Successful delete of stat)
 
-        404: Not Found - ErrorEntity (ErrorCode: 12241 | ErrorMessage: Stat [{statCode}] cannot be found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
     """
 
     # region fields
@@ -161,7 +167,7 @@ class DeleteStat(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -182,7 +188,7 @@ class DeleteStat(Operation):
 
         204: No Content - (Successful delete of stat)
 
-        404: Not Found - ErrorEntity (ErrorCode: 12241 | ErrorMessage: Stat [{statCode}] cannot be found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

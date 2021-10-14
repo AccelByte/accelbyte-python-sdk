@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.411694+08:00
+# Auto-generated at 2021-10-14T22:17:14.365019+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,12 +29,19 @@ from .....core import HttpResponse
 class DeleteUserSlotConfig(Operation):
     """Deletes a user slot configuration (deleteUserSlotConfig)
 
+    Deletes a user slot configuration in given namespace, the namespace slot
+    configuration will be returned after delete.  
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG", action=8 (DELETE)
+
+
     Properties:
         url: /social/admin/namespaces/{namespace}/users/{userId}/config
 
         method: DELETE
 
-        tags: SlotConfig
+        tags: ["SlotConfig"]
 
         consumes: []
 
@@ -157,7 +164,7 @@ class DeleteUserSlotConfig(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.299302+08:00
+# Auto-generated at 2021-10-14T22:17:14.241595+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,19 @@ from ...models import UserStatItemPagingSlicedResult
 class GetUserStatItems(Operation):
     """List user's statItems (getUserStatItems)
 
+    List user's statItems.  
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
+      *  Returns : stat items
+
+
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems
 
         method: GET
 
-        tags: UserStatistic
+        tags: ["UserStatistic"]
 
         consumes: []
 
@@ -203,7 +210,7 @@ class GetUserStatItems(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

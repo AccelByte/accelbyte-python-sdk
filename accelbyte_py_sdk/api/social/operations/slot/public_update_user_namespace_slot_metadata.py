@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.434697+08:00
+# Auto-generated at 2021-10-14T22:17:14.389614+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,19 @@ from ...models import SlotMetadataUpdate
 class PublicUpdateUserNamespaceSlotMetadata(Operation):
     """Updates the slot metadata (publicUpdateUserNamespaceSlotMetadata)
 
+    Updates the slot metadata.  
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=4 (UPDATE)
+      *  Returns : updated slot
+
+
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}/metadata
 
         method: PUT
 
-        tags: Slot
+        tags: ["Slot"]
 
         consumes: ["application/json"]
 
@@ -57,7 +64,7 @@ class PublicUpdateUserNamespaceSlotMetadata(Operation):
     Responses:
         200: OK - SlotInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 12141 | ErrorMessage: Slot [{slotId}] not found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (12141: Slot [{slotId}] not found in namespace [{namespace}])
     """
 
     # region fields
@@ -186,7 +193,7 @@ class PublicUpdateUserNamespaceSlotMetadata(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -215,7 +222,7 @@ class PublicUpdateUserNamespaceSlotMetadata(Operation):
 
         200: OK - SlotInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 12141 | ErrorMessage: Slot [{slotId}] not found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (12141: Slot [{slotId}] not found in namespace [{namespace}])
         """
         if code == 200:
             return SlotInfo.create_from_dict(content), None

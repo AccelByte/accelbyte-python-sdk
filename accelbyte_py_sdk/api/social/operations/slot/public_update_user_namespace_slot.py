@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.416458+08:00
+# Auto-generated at 2021-10-14T22:17:14.371859+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import SlotInfo
 class PublicUpdateUserNamespaceSlot(Operation):
     """Updates a slot (publicUpdateUserNamespaceSlot)
 
+    Updates a slot.  
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=4 (UPDATE)
+      *  Returns : updated slot
+
+
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}
 
         method: PUT
 
-        tags: Slot
+        tags: ["Slot"]
 
         consumes: ["multipart/form-data"]
 
@@ -64,9 +71,9 @@ class PublicUpdateUserNamespaceSlot(Operation):
     Responses:
         200: OK - SlotInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 12121 | ErrorMessage: Checksum mismatch for [{filename}])
+        400: Bad Request - ErrorEntity (12121: Checksum mismatch for [{filename}] | 12122: [{filename}] exceeds the upload limit size of [{sizeLimit}] bytes)
 
-        404: Not Found - ErrorEntity (ErrorCode: 12141 | ErrorMessage: Slot [{slotId}] not found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (12141: Slot [{slotId}] not found in namespace [{namespace}])
     """
 
     # region fields
@@ -234,7 +241,7 @@ class PublicUpdateUserNamespaceSlot(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "custom_attribute") and self.custom_attribute:
             result["customAttribute"] = str(self.custom_attribute)
         elif include_empty:
@@ -279,9 +286,9 @@ class PublicUpdateUserNamespaceSlot(Operation):
 
         200: OK - SlotInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 12121 | ErrorMessage: Checksum mismatch for [{filename}])
+        400: Bad Request - ErrorEntity (12121: Checksum mismatch for [{filename}] | 12122: [{filename}] exceeds the upload limit size of [{sizeLimit}] bytes)
 
-        404: Not Found - ErrorEntity (ErrorCode: 12141 | ErrorMessage: Slot [{slotId}] not found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (12141: Slot [{slotId}] not found in namespace [{namespace}])
         """
         if code == 200:
             return SlotInfo.create_from_dict(content), None

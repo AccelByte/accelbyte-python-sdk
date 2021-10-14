@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:27.413395+08:00
+# Auto-generated at 2021-10-14T22:17:14.367731+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,19 @@ from ...models import ErrorEntity
 class PublicGetSlotData(Operation):
     """Returns slot data (publicGetSlotData)
 
+    Get slot data.  
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)
+      *  Returns : slot data
+
+
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}
 
         method: GET
 
-        tags: Slot
+        tags: ["Slot"]
 
         consumes: []
 
@@ -53,7 +60,7 @@ class PublicGetSlotData(Operation):
     Responses:
         200: OK - Any (suscessfull operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 12141 | ErrorMessage: Slot [{slotId}] not found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (12141: Slot [{slotId}] not found in namespace [{namespace}])
     """
 
     # region fields
@@ -173,7 +180,7 @@ class PublicGetSlotData(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -198,7 +205,7 @@ class PublicGetSlotData(Operation):
 
         200: OK - Any (suscessfull operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 12141 | ErrorMessage: Slot [{slotId}] not found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (12141: Slot [{slotId}] not found in namespace [{namespace}])
         """
         if code == 200:
             return Any(content), None

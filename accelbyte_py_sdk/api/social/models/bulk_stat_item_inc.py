@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:34.249644+08:00
+# Auto-generated at 2021-10-14T22:17:14.158372+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class BulkStatItemInc(Model):
-    """Bulk stat item inc
+    """Bulk stat item inc (BulkStatItemInc)
 
     Properties:
         stat_code: (statCode) REQUIRED str
@@ -56,7 +56,7 @@ class BulkStatItemInc(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "stat_code") and self.stat_code:
             result["statCode"] = str(self.stat_code)
         elif include_empty:

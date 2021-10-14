@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:34.219053+08:00
+# Auto-generated at 2021-10-14T22:17:14.135905+08:00
 # from: Justice Social Service (1.17.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ErrorEntity(Model):
-    """Error entity
+    """Error entity (ErrorEntity)
 
     Properties:
         error_code: (errorCode) REQUIRED int
@@ -70,7 +70,7 @@ class ErrorEntity(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "error_code") and self.error_code:
             result["errorCode"] = int(self.error_code)
         elif include_empty:
