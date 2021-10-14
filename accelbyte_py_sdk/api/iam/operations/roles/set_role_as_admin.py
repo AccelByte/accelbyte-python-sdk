@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.763568+08:00
+# Auto-generated at 2021-10-14T22:17:11.289033+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,12 +29,23 @@ from .....core import HttpResponse
 class SetRoleAsAdmin(Operation):
     """Set Role as Admin Role (SetRoleAsAdmin)
 
+    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
+
+    Required Permission 'ROLE:ADMIN [UPDATE]' is going to be DEPRECATED for
+    security purpose. It is going to be deprecated on 31 JANUARY 2019 , please use
+    permission 'ADMIN:ROLE [UPDATE]' instead.
+
+    Admin roles has its members listed in the role.
+
+    Role can be set as admin role only when it has at least 1 manager.
+
+
     Properties:
         url: /iam/roles/{roleId}/admin
 
         method: POST
 
-        tags: Roles
+        tags: ["Roles"]
 
         consumes: ["application/json"]
 
@@ -153,7 +164,7 @@ class SetRoleAsAdmin(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "role_id") and self.role_id:
             result["roleId"] = str(self.role_id)
         elif include_empty:

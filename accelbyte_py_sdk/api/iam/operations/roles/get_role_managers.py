@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.768335+08:00
+# Auto-generated at 2021-10-14T22:17:11.296698+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,17 @@ from ...models import ModelRoleManagersResponse
 class GetRoleManagers(Operation):
     """Get Role Managers (GetRoleManagers)
 
+    Required permission 'ROLE [READ]'
+
+    Role can only be assigned to other users by the role's manager.
+
+
     Properties:
         url: /iam/roles/{roleId}/managers
 
         method: GET
 
-        tags: Roles
+        tags: ["Roles"]
 
         consumes: ["application/json"]
 
@@ -155,7 +160,7 @@ class GetRoleManagers(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "role_id") and self.role_id:
             result["roleId"] = str(self.role_id)
         elif include_empty:

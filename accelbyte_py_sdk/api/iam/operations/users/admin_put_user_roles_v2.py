@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.873673+08:00
+# Auto-generated at 2021-10-14T22:17:11.402983+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,12 +29,15 @@ from .....core import HttpResponse
 class AdminPutUserRolesV2(Operation):
     """Update User Roles, will replace all the existing roles (AdminPutUserRolesV2)
 
+    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]'
+
+
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/roles
 
         method: PUT
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: []
 
@@ -179,7 +182,7 @@ class AdminPutUserRolesV2(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = [str(i0) for i0 in self.body]
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.569550+08:00
+# Auto-generated at 2021-10-14T22:17:10.883772+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelPlatformUserIDRequest(Model):
-    """Model platform user ID request
+    """Model platform user ID request (model.PlatformUserIDRequest)
 
     Properties:
         platform_user_ids: (platformUserIds) REQUIRED List[str]
@@ -49,7 +49,7 @@ class ModelPlatformUserIDRequest(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "platform_user_ids") and self.platform_user_ids:
             result["platformUserIds"] = [str(i0) for i0 in self.platform_user_ids]
         elif include_empty:

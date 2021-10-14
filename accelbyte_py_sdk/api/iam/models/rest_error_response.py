@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.710582+08:00
+# Auto-generated at 2021-10-14T22:17:11.004093+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.accountcommon_conflicted_user_platform_accounts import Accountcomm
 
 
 class RestErrorResponse(Model):
-    """Rest error response
+    """Rest error response (rest.ErrorResponse)
 
     Properties:
         error_code: (errorCode) REQUIRED int
@@ -65,7 +65,7 @@ class RestErrorResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "error_code") and self.error_code:
             result["errorCode"] = int(self.error_code)
         elif include_empty:

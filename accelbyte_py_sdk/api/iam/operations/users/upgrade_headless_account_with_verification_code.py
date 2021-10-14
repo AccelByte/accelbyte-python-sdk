@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.703326+08:00
+# Auto-generated at 2021-10-14T22:17:11.203778+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,22 @@ from ...models import ModelUserResponse
 class UpgradeHeadlessAccountWithVerificationCode(Operation):
     """Upgrade headless account and automatically verified the email address if it is succeeded (UpgradeHeadlessAccountWithVerificationCode)
 
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+    The endpoint upgrades a headless account by linking the headless account with
+    the email address and the password. By upgrading the headless account into a
+    full account, the user could use the email address and password for using
+    Justice IAM. The endpoint is a shortcut for upgrading a headless account and
+    verifying the email address in one call. In order to get a verification code
+    for the endpoint, please check the send verification code endpoint.
+
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/upgradeHeadlessAccountWithVerificationCode
 
         method: POST
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -182,7 +192,7 @@ class UpgradeHeadlessAccountWithVerificationCode(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

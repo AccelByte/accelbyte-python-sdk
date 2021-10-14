@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.583795+08:00
+# Auto-generated at 2021-10-14T22:17:10.896643+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.model_public_user_response import ModelPublicUserResponse
 
 
 class ModelPublicUsersResponse(Model):
-    """Model public users response
+    """Model public users response (model.PublicUsersResponse)
 
     Properties:
         users: (Users) OPTIONAL List[ModelPublicUserResponse]
@@ -51,7 +51,7 @@ class ModelPublicUsersResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "users") and self.users:
             result["Users"] = [i0.to_dict(include_empty=include_empty) for i0 in self.users]
         elif include_empty:

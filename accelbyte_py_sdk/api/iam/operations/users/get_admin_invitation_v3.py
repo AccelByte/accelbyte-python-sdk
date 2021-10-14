@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.454709+08:00
+# Auto-generated at 2021-10-14T22:17:12.096665+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,16 @@ from ...models import RestErrorResponse
 class GetAdminInvitationV3(Operation):
     """Get User Admin Invitation (GetAdminInvitationV3)
 
+    Endpoint to validate user admin invitation. When not found, it could also
+    means the invitation has expired.
+
+
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/invite/{invitationId}
 
         method: GET
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: []
 
@@ -52,9 +56,9 @@ class GetAdminInvitationV3(Operation):
     Responses:
         200: OK - ModelAdminInvitationV3 (OK)
 
-        404: Not Found - RestErrorResponse (errorCode: 10180 | errorMessage: admin invitation not found or expired)
+        404: Not Found - RestErrorResponse (10180: admin invitation not found or expired)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -164,7 +168,7 @@ class GetAdminInvitationV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -185,9 +189,9 @@ class GetAdminInvitationV3(Operation):
 
         200: OK - ModelAdminInvitationV3 (OK)
 
-        404: Not Found - RestErrorResponse (errorCode: 10180 | errorMessage: admin invitation not found or expired)
+        404: Not Found - RestErrorResponse (10180: admin invitation not found or expired)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
         """
         if code == 200:
             return ModelAdminInvitationV3.create_from_dict(content), None

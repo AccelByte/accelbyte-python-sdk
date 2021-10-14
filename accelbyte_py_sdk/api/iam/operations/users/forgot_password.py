@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.562522+08:00
+# Auto-generated at 2021-10-14T22:17:11.070808+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,22 @@ from ...models import ModelSendVerificationCodeRequest
 class ForgotPassword(Operation):
     """Request Password Reset Code (ForgotPassword)
 
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]' or
+    valid basic auth header
+
+     Special note for publisher-game scenario: Game Client should provide game
+    namespace path parameter and Publisher Client should provide publisher
+    namespace path parameter.
+
+    The password reset code will be sent to the publisher account's email address.
+
+
     Properties:
         url: /iam/namespaces/{namespace}/users/forgotPassword
 
         method: POST
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -169,7 +179,7 @@ class ForgotPassword(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

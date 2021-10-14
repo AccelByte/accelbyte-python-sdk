@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.380330+08:00
+# Auto-generated at 2021-10-14T22:17:12.008185+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,27 @@ from ...models import OauthmodelTokenThirdPartyResponse
 class RetrieveUserThirdPartyPlatformTokenV3(Operation):
     """Retrieve User Third Party Platform Token (RetrieveUserThirdPartyPlatformTokenV3)
 
+    Retrieve User Third Party Platform Token  
+
+    This endpoint used for retrieving third party platform token for user that
+    login using third party. Passing platform group name or it's member will
+    return same access token that can be used across the platform members.
+
+    The third party platform and platform group covered for this is:
+
+      * (psn) ps4web
+      * (psn) ps4
+      * (psn) ps5
+      * epicgames
+      * twitch
+
+
     Properties:
         url: /iam/v3/oauth/namespaces/{namespace}/users/{userId}/platforms/{platformId}/platformToken
 
         method: GET
 
-        tags: OAuth2.0
+        tags: ["OAuth2.0"]
 
         consumes: ["application/x-www-form-urlencoded"]
 
@@ -178,7 +193,7 @@ class RetrieveUserThirdPartyPlatformTokenV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

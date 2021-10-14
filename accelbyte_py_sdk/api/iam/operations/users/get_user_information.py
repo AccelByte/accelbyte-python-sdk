@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.632645+08:00
+# Auto-generated at 2021-10-14T22:17:11.136370+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,15 @@ from ...models import ModelUserInformation
 class GetUserInformation(Operation):
     """Get user's information (GetUserInformation)
 
+    Required permissions 'NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]'.
+
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/information
 
         method: GET
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -165,7 +168,7 @@ class GetUserInformation(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

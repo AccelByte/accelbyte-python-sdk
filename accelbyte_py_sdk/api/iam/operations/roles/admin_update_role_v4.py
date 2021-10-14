@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.660490+08:00
+# Auto-generated at 2021-10-14T22:17:12.346466+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,19 @@ from ...models import RestapiErrorResponse
 class AdminUpdateRoleV4(Operation):
     """Update Role (AdminUpdateRoleV4)
 
+    Required permission ADMIN:ROLE [UPDATE] Update role request body: \- roleName:
+    specify role name, alphanumeric, cannot have special character (required) \-
+    adminRole: specify if role is for admin user (default false) \- isWildcard:
+    specify if role can be assigned to wildcard (*) namespace (default false)
+    action code: 10402
+
+
     Properties:
         url: /iam/v4/admin/roles/{roleId}
 
         method: PATCH
 
-        tags: Roles
+        tags: ["Roles"]
 
         consumes: ["application/json"]
 
@@ -53,13 +60,13 @@ class AdminUpdateRoleV4(Operation):
     Responses:
         200: OK - ModelRoleV4Response (OK)
 
-        400: Bad Request - RestapiErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestapiErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - RestapiErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestapiErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestapiErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestapiErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestapiErrorResponse (errorCode: 10456 | errorMessage: role not found)
+        404: Not Found - RestapiErrorResponse (10456: role not found)
     """
 
     # region fields
@@ -171,7 +178,7 @@ class AdminUpdateRoleV4(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -192,13 +199,13 @@ class AdminUpdateRoleV4(Operation):
 
         200: OK - ModelRoleV4Response (OK)
 
-        400: Bad Request - RestapiErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestapiErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - RestapiErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestapiErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestapiErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestapiErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestapiErrorResponse (errorCode: 10456 | errorMessage: role not found)
+        404: Not Found - RestapiErrorResponse (10456: role not found)
         """
         if code == 200:
             return ModelRoleV4Response.create_from_dict(content), None

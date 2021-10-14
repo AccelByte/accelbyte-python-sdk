@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.613489+08:00
+# Auto-generated at 2021-10-14T22:17:10.923953+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelRoleUpdateRequestV3(Model):
-    """Model role update request V3
+    """Model role update request V3 (model.RoleUpdateRequestV3)
 
     Properties:
         is_wildcard: (isWildcard) REQUIRED bool
@@ -56,7 +56,7 @@ class ModelRoleUpdateRequestV3(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "is_wildcard") and self.is_wildcard:
             result["isWildcard"] = bool(self.is_wildcard)
         elif include_empty:

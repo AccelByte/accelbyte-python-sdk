@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.517547+08:00
+# Auto-generated at 2021-10-14T22:17:10.841465+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ClientmodelClientUpdateSecretRequest(Model):
-    """Clientmodel client update secret request
+    """Clientmodel client update secret request (clientmodel.ClientUpdateSecretRequest)
 
     Properties:
         new_secret: (NewSecret) REQUIRED str
@@ -49,7 +49,7 @@ class ClientmodelClientUpdateSecretRequest(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "new_secret") and self.new_secret:
             result["NewSecret"] = str(self.new_secret)
         elif include_empty:

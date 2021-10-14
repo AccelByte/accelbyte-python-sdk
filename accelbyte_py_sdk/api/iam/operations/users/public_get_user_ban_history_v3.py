@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.547119+08:00
+# Auto-generated at 2021-10-14T22:17:12.213285+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,20 @@ from ...models import ModelGetUserBanV3Response
 class PublicGetUserBanHistoryV3(Operation):
     """Get user's bans (PublicGetUserBanHistoryV3)
 
+    Required valid user authorization.
+
+    Notes:
+
+      * This endpoint retrieve the first page of the data if after and before parameters is empty
+      * The pagination is not working yet
+
+
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/bans
 
         method: GET
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: []
 
@@ -59,15 +67,15 @@ class PublicGetUserBanHistoryV3(Operation):
     Responses:
         200: OK - ModelGetUserBanV3Response (OK)
 
-        400: Bad Request - (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - (20019: unable to parse request body)
 
         401: Unauthorized - (Unauthorized access)
 
         403: Forbidden - (Forbidden)
 
-        404: Not Found - (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - (20008: user not found | 10139: platform account not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
     """
 
     # region fields
@@ -213,7 +221,7 @@ class PublicGetUserBanHistoryV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -250,15 +258,15 @@ class PublicGetUserBanHistoryV3(Operation):
 
         200: OK - ModelGetUserBanV3Response (OK)
 
-        400: Bad Request - (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - (20019: unable to parse request body)
 
         401: Unauthorized - (Unauthorized access)
 
         403: Forbidden - (Forbidden)
 
-        404: Not Found - (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - (20008: user not found | 10139: platform account not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
         """
         if code == 200:
             return ModelGetUserBanV3Response.create_from_dict(content), None

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.760914+08:00
+# Auto-generated at 2021-10-14T22:17:11.285766+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,17 @@ from ...models import ModelRoleAdminStatusResponse
 class GetRoleAdminStatus(Operation):
     """Get Role Admin Status (GetRoleAdminStatus)
 
+    Required permission 'ROLE [READ]'
+
+    Admin roles has its members listed in the role.
+
+
     Properties:
         url: /iam/roles/{roleId}/admin
 
         method: GET
 
-        tags: Roles
+        tags: ["Roles"]
 
         consumes: ["application/json"]
 
@@ -155,7 +160,7 @@ class GetRoleAdminStatus(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "role_id") and self.role_id:
             result["roleId"] = str(self.role_id)
         elif include_empty:

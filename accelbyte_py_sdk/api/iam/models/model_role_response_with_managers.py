@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.608731+08:00
+# Auto-generated at 2021-10-14T22:17:10.918724+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,7 +29,7 @@ from ..models.accountcommon_role_manager import AccountcommonRoleManager
 
 
 class ModelRoleResponseWithManagers(Model):
-    """Model role response with managers
+    """Model role response with managers (model.RoleResponseWithManagers)
 
     Properties:
         is_wildcard: (IsWildcard) REQUIRED bool
@@ -80,7 +80,7 @@ class ModelRoleResponseWithManagers(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "is_wildcard") and self.is_wildcard:
             result["IsWildcard"] = bool(self.is_wildcard)
         elif include_empty:

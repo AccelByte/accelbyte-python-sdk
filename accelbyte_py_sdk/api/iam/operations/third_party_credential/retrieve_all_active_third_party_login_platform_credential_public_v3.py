@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.411274+08:00
+# Auto-generated at 2021-10-14T22:17:12.046698+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,15 @@ from ...models import RestErrorResponse
 class RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3(Operation):
     """Get All Active Third Party Platform Active Credential for Public Usage (RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3)
 
+    This is the Public API to Get All Active 3rd Platform Credential.
+
+
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/platforms/clients/active
 
         method: GET
 
-        tags: Third Party Credential
+        tags: ["Third Party Credential"]
 
         consumes: []
 
@@ -156,7 +159,7 @@ class RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.075434+08:00
+# Auto-generated at 2021-10-14T22:17:11.637778+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,18 @@ from ...models import RestErrorResponse
 class AdminListUsersV3(Operation):
     """Admin List Users V3 (AdminListUsersV3)
 
+    This endpoint requires ADMIN:NAMESPACE:{namespace}:USER [READ] permission.
+    Returns list of users ID and namespace with their Justice platform account,
+    under a namespace. If user doesn't have Justice platform account, the
+    linkedPlatforms will be empty array.'
+
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/platforms/justice
 
         method: GET
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: []
 
@@ -54,13 +60,13 @@ class AdminListUsersV3(Operation):
     Responses:
         200: OK - AccountcommonListUsersWithPlatformAccountsResponse (Operation succeeded)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20003 | errorMessage: forbidden access)
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -182,7 +188,7 @@ class AdminListUsersV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -207,13 +213,13 @@ class AdminListUsersV3(Operation):
 
         200: OK - AccountcommonListUsersWithPlatformAccountsResponse (Operation succeeded)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20003 | errorMessage: forbidden access)
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
         """
         if code == 200:
             return AccountcommonListUsersWithPlatformAccountsResponse.create_from_dict(content), None

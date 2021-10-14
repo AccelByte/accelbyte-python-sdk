@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.183929+08:00
+# Auto-generated at 2021-10-14T22:17:11.772131+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,16 @@ from ...models import ModelPermissionDeleteRequest
 class AdminDeleteUserPermissionBulkV3(Operation):
     """Delete User Permission (AdminDeleteUserPermissionBulkV3)
 
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId}
+    [DELETE]'
+
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions
 
         method: DELETE
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -181,7 +185,7 @@ class AdminDeleteUserPermissionBulkV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = [i0.to_dict(include_empty=include_empty) for i0 in self.body]
         elif include_empty:

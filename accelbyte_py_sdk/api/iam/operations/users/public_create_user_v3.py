@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.442300+08:00
+# Auto-generated at 2021-10-14T22:17:12.079831+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,24 @@ from ...models import RestErrorResponse
 class PublicCreateUserV3(Operation):
     """Create User (PublicCreateUserV3)
 
+    Available Authentication Types:
+
+      1. EMAILPASSWD : an authentication type used for new user registration through email.
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+    Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
+
+    This endpoint support accepting agreements for the created user. Supply the
+    accepted agreements in acceptedPolicies attribute.
+
+
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users
 
         method: POST
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -53,13 +65,13 @@ class PublicCreateUserV3(Operation):
     Responses:
         201: Created - ModelUserCreateResponseV3 (Created)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age)
 
-        404: Not Found - RestErrorResponse (errorCode: 10154 | errorMessage: country not found)
+        404: Not Found - RestErrorResponse (10154: country not found)
 
-        409: Conflict - RestErrorResponse (errorCode: 10133 | errorMessage: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -171,7 +183,7 @@ class PublicCreateUserV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -192,13 +204,13 @@ class PublicCreateUserV3(Operation):
 
         201: Created - ModelUserCreateResponseV3 (Created)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age)
 
-        404: Not Found - RestErrorResponse (errorCode: 10154 | errorMessage: country not found)
+        404: Not Found - RestErrorResponse (10154: country not found)
 
-        409: Conflict - RestErrorResponse (errorCode: 10133 | errorMessage: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
         """
         if code == 201:
             return ModelUserCreateResponseV3.create_from_dict(content), None

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.540198+08:00
+# Auto-generated at 2021-10-14T22:17:11.055363+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,21 @@ from ...models import RestErrorResponse
 class GetAdminUsersByRoleID(Operation):
     """Get Admin Users By RoleId (GetAdminUsersByRoleID)
 
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
+
+    This endpoint search admin users which have the roleId
+
+    Notes : this endpoint only accept admin role. Admin Role is role which have
+    admin status and members. Use endpoint [GET] /roles/{roleId}/admin to check
+    the role status
+
+
     Properties:
         url: /iam/namespaces/{namespace}/users/admin
 
         method: GET
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -58,7 +67,7 @@ class GetAdminUsersByRoleID(Operation):
     Responses:
         200: OK - ModelGetAdminUsersResponse (OK)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20021 | errorMessage: invalid pagination parameter)
+        400: Bad Request - RestErrorResponse (20021: invalid pagination parameter | 20002: validation error | 10157: specified role is not admin role)
 
         401: Unauthorized - (Unauthorized access)
 
@@ -66,7 +75,7 @@ class GetAdminUsersByRoleID(Operation):
 
         404: Not Found - (Data not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
     """
 
     # region fields
@@ -202,7 +211,7 @@ class GetAdminUsersByRoleID(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -235,7 +244,7 @@ class GetAdminUsersByRoleID(Operation):
 
         200: OK - ModelGetAdminUsersResponse (OK)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20021 | errorMessage: invalid pagination parameter)
+        400: Bad Request - RestErrorResponse (20021: invalid pagination parameter | 20002: validation error | 10157: specified role is not admin role)
 
         401: Unauthorized - (Unauthorized access)
 
@@ -243,7 +252,7 @@ class GetAdminUsersByRoleID(Operation):
 
         404: Not Found - (Data not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
         """
         if code == 200:
             return ModelGetAdminUsersResponse.create_from_dict(content), None

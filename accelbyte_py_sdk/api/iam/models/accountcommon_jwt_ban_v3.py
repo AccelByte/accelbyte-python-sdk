@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.471773+08:00
+# Auto-generated at 2021-10-14T22:17:10.803683+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class AccountcommonJWTBanV3(Model):
-    """Accountcommon JWT ban V3
+    """Accountcommon JWT ban V3 (accountcommon.JWTBanV3)
 
     Properties:
         ban: (ban) REQUIRED str
@@ -56,7 +56,7 @@ class AccountcommonJWTBanV3(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "ban") and self.ban:
             result["ban"] = str(self.ban)
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.653701+08:00
+# Auto-generated at 2021-10-14T22:17:10.959459+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelUserCreateRequest(Model):
-    """Model user create request
+    """Model user create request (model.UserCreateRequest)
 
     Properties:
         auth_type: (AuthType) REQUIRED str
@@ -84,7 +84,7 @@ class ModelUserCreateRequest(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "auth_type") and self.auth_type:
             result["AuthType"] = str(self.auth_type)
         elif include_empty:

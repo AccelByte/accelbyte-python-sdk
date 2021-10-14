@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.746647+08:00
+# Auto-generated at 2021-10-14T22:17:11.264189+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,15 @@ from ...models import ModelRoleResponseWithManagers
 class GetRoles(Operation):
     """Get Roles (GetRoles)
 
+    Required permission 'ROLE [READ]'
+
+
     Properties:
         url: /iam/roles
 
         method: GET
 
-        tags: Roles
+        tags: ["Roles"]
 
         consumes: ["application/json"]
 
@@ -147,7 +150,7 @@ class GetRoles(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "is_wildcard") and self.is_wildcard:
             result["isWildcard"] = str(self.is_wildcard)
         elif include_empty:

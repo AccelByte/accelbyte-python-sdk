@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.677954+08:00
+# Auto-generated at 2021-10-14T22:17:12.376752+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,16 @@ from ...models import RestErrorResponse
 class AdminListAssignedUsersV4(Operation):
     """Get Role's Assigned Users (AdminListAssignedUsersV4)
 
+    Required permission ADMIN:ROLE [READ] Query all users that has the specified
+    role. action code: 10416
+
+
     Properties:
         url: /iam/v4/admin/roles/{roleId}/users
 
         method: GET
 
-        tags: Roles
+        tags: ["Roles"]
 
         consumes: []
 
@@ -56,13 +60,13 @@ class AdminListAssignedUsersV4(Operation):
     Responses:
         200: OK - ModelListAssignedUsersV4Response (OK)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestErrorResponse (errorCode: 10456 | errorMessage: role not found)
+        404: Not Found - RestErrorResponse (10456: role not found)
     """
 
     # region fields
@@ -191,7 +195,7 @@ class AdminListAssignedUsersV4(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "role_id") and self.role_id:
             result["roleId"] = str(self.role_id)
         elif include_empty:
@@ -220,13 +224,13 @@ class AdminListAssignedUsersV4(Operation):
 
         200: OK - ModelListAssignedUsersV4Response (OK)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestErrorResponse (errorCode: 10456 | errorMessage: role not found)
+        404: Not Found - RestErrorResponse (10456: role not found)
         """
         if code == 200:
             return ModelListAssignedUsersV4Response.create_from_dict(content), None

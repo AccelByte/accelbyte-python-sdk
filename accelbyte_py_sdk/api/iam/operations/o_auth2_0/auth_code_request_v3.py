@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.386829+08:00
+# Auto-generated at 2021-10-14T22:17:12.012469+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,12 +29,40 @@ from .....core import HttpResponse
 class AuthCodeRequestV3(Operation):
     """Generate url to request auth code from third party platform. (AuthCodeRequestV3)
 
+    'Generate url to request auth code from third party platform  
+
+    ## Supported platforms:
+
+      * steamopenid
+    This endpoint redirects to steam login page, then redirect back to platform
+    authenticate endpoint after successfully authenticating user steam.
+
+      * xblweb
+    This endpoint redirects to xbox login page, then redirect back to platform
+    authenticate endpoint after successfully authenticating xbox user.
+
+      * ps4web
+    This endpoint redirects to psn login page, then redirect back to platform
+    authenticate endpoint after successfully authenticating psn user.
+
+      * epicgames
+    This endpoint redirects to Epicgames OAuth login page. then redirect to
+    platform authenticate endpoint after successfully authenticating an Epicgames
+    credential
+
+      * twitch
+    This endpoint redirects to twitch login page, then redirect back to platform
+    authenticate endpoint after successfully authenticating twitch user.
+
+    action code : 10702'
+
+
     Properties:
         url: /iam/v3/oauth/platforms/{platformId}/authorize
 
         method: GET
 
-        tags: OAuth2.0
+        tags: ["OAuth2.0"]
 
         consumes: ["application/x-www-form-urlencoded"]
 
@@ -193,7 +221,7 @@ class AuthCodeRequestV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "platform_id") and self.platform_id:
             result["platformId"] = str(self.platform_id)
         elif include_empty:

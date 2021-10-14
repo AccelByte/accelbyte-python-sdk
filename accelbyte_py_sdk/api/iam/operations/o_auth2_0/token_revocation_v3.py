@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.396021+08:00
+# Auto-generated at 2021-10-14T22:17:12.026787+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,20 @@ from ...models import OauthmodelErrorResponse
 class TokenRevocationV3(Operation):
     """OAuth2 token revocation API (TokenRevocationV3)
 
+    This endpoint revokes a token.
+
+    This endpoint requires authorized requests header with valid access token.
+
+
+    action code: 10706
+
+
     Properties:
         url: /iam/v3/oauth/revoke
 
         method: POST
 
-        tags: OAuth2.0
+        tags: ["OAuth2.0"]
 
         consumes: ["application/x-www-form-urlencoded"]
 
@@ -147,7 +155,7 @@ class TokenRevocationV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "token") and self.token:
             result["token"] = str(self.token)
         elif include_empty:

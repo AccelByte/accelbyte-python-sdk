@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.655249+08:00
+# Auto-generated at 2021-10-14T22:17:10.961574+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.legal_accepted_policies_request import LegalAcceptedPoliciesReques
 
 
 class ModelUserCreateRequestV3(Model):
-    """Model user create request V3
+    """Model user create request V3 (model.UserCreateRequestV3)
 
     Properties:
         password_md5_sum: (PasswordMD5Sum) OPTIONAL str
@@ -100,7 +100,7 @@ class ModelUserCreateRequestV3(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "password_md5_sum") and self.password_md5_sum:
             result["PasswordMD5Sum"] = str(self.password_md5_sum)
         elif include_empty:

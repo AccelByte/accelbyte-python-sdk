@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.585111+08:00
+# Auto-generated at 2021-10-14T22:17:10.897454+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelRemoveUserRoleV4Request(Model):
-    """Model remove user role V4 request
+    """Model remove user role V4 request (model.RemoveUserRoleV4Request)
 
     Properties:
         assigned_namespaces: (assignedNamespaces) REQUIRED List[str]
@@ -56,7 +56,7 @@ class ModelRemoveUserRoleV4Request(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "assigned_namespaces") and self.assigned_namespaces:
             result["assignedNamespaces"] = [str(i0) for i0 in self.assigned_namespaces]
         elif include_empty:

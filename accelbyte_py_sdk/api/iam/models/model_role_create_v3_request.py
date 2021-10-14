@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.592641+08:00
+# Auto-generated at 2021-10-14T22:17:10.903920+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -30,7 +30,7 @@ from ..models.accountcommon_role_member_v3 import AccountcommonRoleMemberV3
 
 
 class ModelRoleCreateV3Request(Model):
-    """Model role create V3 request
+    """Model role create V3 request (model.RoleCreateV3Request)
 
     Properties:
         admin_role: (adminRole) REQUIRED bool
@@ -88,7 +88,7 @@ class ModelRoleCreateV3Request(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "admin_role") and self.admin_role:
             result["adminRole"] = bool(self.admin_role)
         elif include_empty:

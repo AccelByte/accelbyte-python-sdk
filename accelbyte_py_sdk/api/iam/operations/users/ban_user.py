@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.593062+08:00
+# Auto-generated at 2021-10-14T22:17:11.099894+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,15 @@ from ...models import ModelUserBanResponse
 class BanUser(Operation):
     """Ban a single user (BanUser)
 
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]'.
+
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/ban
 
         method: POST
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -54,15 +57,15 @@ class BanUser(Operation):
     Responses:
         201: Created - ModelUserBanResponse (Created)
 
-        400: Bad Request - (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - (20002: validation error | 20019: unable to parse request body)
 
         401: Unauthorized - (Unauthorized access)
 
         403: Forbidden - (Forbidden)
 
-        404: Not Found - (errorCode: 10139 | errorMessage: platform account not found)
+        404: Not Found - (10139: platform account not found | 20008: user not found | 10158: ban not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
     """
 
     # region fields
@@ -184,7 +187,7 @@ class BanUser(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -209,15 +212,15 @@ class BanUser(Operation):
 
         201: Created - ModelUserBanResponse (Created)
 
-        400: Bad Request - (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - (20002: validation error | 20019: unable to parse request body)
 
         401: Unauthorized - (Unauthorized access)
 
         403: Forbidden - (Forbidden)
 
-        404: Not Found - (errorCode: 10139 | errorMessage: platform account not found)
+        404: Not Found - (10139: platform account not found | 20008: user not found | 10158: ban not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
         """
         if code == 201:
             return ModelUserBanResponse.create_from_dict(content), None

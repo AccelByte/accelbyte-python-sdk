@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.069062+08:00
+# Auto-generated at 2021-10-14T22:17:11.630346+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,20 @@ from ...models import RestErrorResponse
 class AdminInviteUserV3(Operation):
     """Invite User Admin (AdminInviteUserV3)
 
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:INVITE [CREATE] Use this
+    endpoint to invite admin user and assign role to them. The role must be scoped
+    to namespace. Substitute the namespace in path parameter to desired role's
+    namespace'. An admin user can only assign role to namespaces that the admin
+    user has the required permission. The invited admin will also assigned with
+    "User" role by default.
+
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/invite
 
         method: POST
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: []
 
@@ -53,15 +61,15 @@ class AdminInviteUserV3(Operation):
     Responses:
         201: Created - ModelInviteAdminResponseV3 (Created)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
 
-        404: Not Found - RestErrorResponse (errorCode: 10154 | errorMessage: country not found)
+        404: Not Found - RestErrorResponse (10154: country not found)
 
-        409: Conflict - RestErrorResponse (errorCode: 10133 | errorMessage: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used)
 
-        422: Unprocessable Entity - RestErrorResponse (errorCode: 10183 | errorMessage: validation error)
+        422: Unprocessable Entity - RestErrorResponse (10183: validation error)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -173,7 +181,7 @@ class AdminInviteUserV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -194,15 +202,15 @@ class AdminInviteUserV3(Operation):
 
         201: Created - ModelInviteAdminResponseV3 (Created)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
 
-        404: Not Found - RestErrorResponse (errorCode: 10154 | errorMessage: country not found)
+        404: Not Found - RestErrorResponse (10154: country not found)
 
-        409: Conflict - RestErrorResponse (errorCode: 10133 | errorMessage: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used)
 
-        422: Unprocessable Entity - RestErrorResponse (errorCode: 10183 | errorMessage: validation error)
+        422: Unprocessable Entity - RestErrorResponse (10183: validation error)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
         """
         if code == 201:
             return ModelInviteAdminResponseV3.create_from_dict(content), None

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.501473+08:00
+# Auto-generated at 2021-10-14T22:17:10.828008+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.accountcommon_user_linked_platform import AccountcommonUserLinkedP
 
 
 class AccountcommonUserSearchByPlatformIDResult(Model):
-    """Accountcommon user search by platform ID result
+    """Accountcommon user search by platform ID result (accountcommon.UserSearchByPlatformIDResult)
 
     Properties:
         display_name: (DisplayName) REQUIRED str
@@ -79,7 +79,7 @@ class AccountcommonUserSearchByPlatformIDResult(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "display_name") and self.display_name:
             result["DisplayName"] = str(self.display_name)
         elif include_empty:

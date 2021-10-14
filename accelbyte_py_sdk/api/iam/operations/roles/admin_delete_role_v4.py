@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.654978+08:00
+# Auto-generated at 2021-10-14T22:17:12.339338+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,16 @@ from ...models import RestapiErrorResponse
 class AdminDeleteRoleV4(Operation):
     """Delete Role (AdminDeleteRoleV4)
 
+    Required permission ADMIN:ROLE [DELETE] Removes role ID from user's Roles and
+    NamespaceRoles before deleting the role. action code: 10403
+
+
     Properties:
         url: /iam/v4/admin/roles/{roleId}
 
         method: DELETE
 
-        tags: Roles
+        tags: ["Roles"]
 
         consumes: []
 
@@ -49,13 +53,13 @@ class AdminDeleteRoleV4(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestapiErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestapiErrorResponse (20002: validation error)
 
-        401: Unauthorized - RestapiErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestapiErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestapiErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestapiErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestapiErrorResponse (errorCode: 10456 | errorMessage: role not found)
+        404: Not Found - RestapiErrorResponse (10456: role not found)
 
         500: Internal Server Error - (Internal Server Error)
     """
@@ -157,7 +161,7 @@ class AdminDeleteRoleV4(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "role_id") and self.role_id:
             result["roleId"] = str(self.role_id)
         elif include_empty:
@@ -174,13 +178,13 @@ class AdminDeleteRoleV4(Operation):
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestapiErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestapiErrorResponse (20002: validation error)
 
-        401: Unauthorized - RestapiErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestapiErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestapiErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestapiErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestapiErrorResponse (errorCode: 10456 | errorMessage: role not found)
+        404: Not Found - RestapiErrorResponse (10456: role not found)
 
         500: Internal Server Error - (Internal Server Error)
         """

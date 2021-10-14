@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.002612+08:00
+# Auto-generated at 2021-10-14T22:17:11.567995+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,17 @@ from ...models import RestapiErrorResponse
 class AdminAddClientPermissionsV3(Operation):
     """Add Client Permissions (AdminAddClientPermissionsV3)
 
+    Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT' [UPDATE]'
+
+    action code: 10303
+
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions
 
         method: POST
 
-        tags: Clients
+        tags: ["Clients"]
 
         consumes: ["application/json"]
 
@@ -54,13 +59,13 @@ class AdminAddClientPermissionsV3(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestapiErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestapiErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - RestapiErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestapiErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestapiErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestapiErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestapiErrorResponse (errorCode: 10365 | errorMessage: client not found)
+        404: Not Found - RestapiErrorResponse (10365: client not found)
     """
 
     # region fields
@@ -182,7 +187,7 @@ class AdminAddClientPermissionsV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -207,13 +212,13 @@ class AdminAddClientPermissionsV3(Operation):
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestapiErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestapiErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - RestapiErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestapiErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestapiErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestapiErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestapiErrorResponse (errorCode: 10365 | errorMessage: client not found)
+        404: Not Found - RestapiErrorResponse (10365: client not found)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

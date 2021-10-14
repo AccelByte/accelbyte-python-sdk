@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.696642+08:00
+# Auto-generated at 2021-10-14T22:17:11.196995+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,12 +29,15 @@ from .....core import HttpResponse
 class DeleteUserRole(Operation):
     """Delete User Role (DeleteUserRole)
 
+    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]'
+
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/roles/{roleId}
 
         method: DELETE
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json", "text/plain"]
 
@@ -53,11 +56,11 @@ class DeleteUserRole(Operation):
 
         401: Unauthorized - (Unauthorized access)
 
-        403: Forbidden - (errorCode: 10159 | errorMessage: operator is not a role manager)
+        403: Forbidden - (10159: operator is not a role manager)
 
-        404: Not Found - (errorCode: 10156 | errorMessage: role not found)
+        404: Not Found - (10156: role not found | 20008: user not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
     """
 
     # region fields
@@ -177,7 +180,7 @@ class DeleteUserRole(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -204,11 +207,11 @@ class DeleteUserRole(Operation):
 
         401: Unauthorized - (Unauthorized access)
 
-        403: Forbidden - (errorCode: 10159 | errorMessage: operator is not a role manager)
+        403: Forbidden - (10159: operator is not a role manager)
 
-        404: Not Found - (errorCode: 10156 | errorMessage: role not found)
+        404: Not Found - (10156: role not found | 20008: user not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

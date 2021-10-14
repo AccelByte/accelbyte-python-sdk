@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.528036+08:00
+# Auto-generated at 2021-10-14T22:17:10.851132+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelAgeRestrictionRequestV3(Model):
-    """Model age restriction request V3
+    """Model age restriction request V3 (model.AgeRestrictionRequestV3)
 
     Properties:
         age_restriction: (ageRestriction) REQUIRED int
@@ -56,7 +56,7 @@ class ModelAgeRestrictionRequestV3(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "age_restriction") and self.age_restriction:
             result["ageRestriction"] = int(self.age_restriction)
         elif include_empty:

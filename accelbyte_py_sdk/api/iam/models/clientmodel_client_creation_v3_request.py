@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.511825+08:00
+# Auto-generated at 2021-10-14T22:17:10.837258+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.accountcommon_permission_v3 import AccountcommonPermissionV3
 
 
 class ClientmodelClientCreationV3Request(Model):
-    """Clientmodel client creation V3 request
+    """Clientmodel client creation V3 request (clientmodel.ClientCreationV3Request)
 
     Properties:
         audiences: (audiences) REQUIRED List[str]
@@ -107,7 +107,7 @@ class ClientmodelClientCreationV3Request(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "audiences") and self.audiences:
             result["audiences"] = [str(i0) for i0 in self.audiences]
         elif include_empty:

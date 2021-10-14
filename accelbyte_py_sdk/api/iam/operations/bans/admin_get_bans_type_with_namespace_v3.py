@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.958714+08:00
+# Auto-generated at 2021-10-14T22:17:11.518730+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,18 @@ from ...models import RestapiErrorResponse
 class AdminGetBansTypeWithNamespaceV3(Operation):
     """Get list of ban types (AdminGetBansTypeWithNamespaceV3)
 
+    Required permission 'ADMIN:BAN [READ]'  
+    Ban type is the code available for ban assignment. It is applicable globally
+    for any namespace.  
+    action code : 10201
+
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/bantypes
 
         method: GET
 
-        tags: Bans
+        tags: ["Bans"]
 
         consumes: []
 
@@ -50,9 +56,9 @@ class AdminGetBansTypeWithNamespaceV3(Operation):
     Responses:
         200: OK - AccountcommonBansV3 (OK)
 
-        401: Unauthorized - RestapiErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestapiErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestapiErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestapiErrorResponse (20013: insufficient permissions)
     """
 
     # region fields
@@ -152,7 +158,7 @@ class AdminGetBansTypeWithNamespaceV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -169,9 +175,9 @@ class AdminGetBansTypeWithNamespaceV3(Operation):
 
         200: OK - AccountcommonBansV3 (OK)
 
-        401: Unauthorized - RestapiErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestapiErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestapiErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestapiErrorResponse (20013: insufficient permissions)
         """
         if code == 200:
             return AccountcommonBansV3.create_from_dict(content), None

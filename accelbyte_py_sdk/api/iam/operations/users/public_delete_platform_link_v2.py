@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.915497+08:00
+# Auto-generated at 2021-10-14T22:17:11.458654+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,12 +29,32 @@ from .....core import HttpResponse
 class PublicDeletePlatformLinkV2(Operation):
     """Delete the link of user's account with platform (PublicDeletePlatformLinkV2)
 
+    ## Supported platforms:
+
+      * steam
+      * steamopenid
+      * facebook
+      * google
+      * oculus
+      * twitch
+      * android
+      * ios
+      * device
+      * discord
+
+    Delete link of user's account with platform. 'justice' platform might have
+    multiple accounts from different namespaces linked. platform_namespace need to
+    be specified when the platform ID is 'justice'.  
+    Delete link of justice platform will enable password token grant and password
+    update.
+
+
     Properties:
         url: /iam/v2/public/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link
 
         method: DELETE
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/x-www-form-urlencoded", "text/plain"]
 
@@ -53,15 +73,15 @@ class PublicDeletePlatformLinkV2(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - (20019: unable to parse request body)
 
         401: Unauthorized - (Unauthorized access)
 
         403: Forbidden - (Forbidden)
 
-        404: Not Found - (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - (20008: user not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
     """
 
     # region fields
@@ -193,7 +213,7 @@ class PublicDeletePlatformLinkV2(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "platform_namespace") and self.platform_namespace:
             result["platform_namespace"] = str(self.platform_namespace)
         elif include_empty:
@@ -222,15 +242,15 @@ class PublicDeletePlatformLinkV2(Operation):
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - (20019: unable to parse request body)
 
         401: Unauthorized - (Unauthorized access)
 
         403: Forbidden - (Forbidden)
 
-        404: Not Found - (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - (20008: user not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

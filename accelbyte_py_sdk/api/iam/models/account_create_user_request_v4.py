@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.444428+08:00
+# Auto-generated at 2021-10-14T22:17:10.781926+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.legal_accepted_policies_request import LegalAcceptedPoliciesReques
 
 
 class AccountCreateUserRequestV4(Model):
-    """Account create user request V4
+    """Account create user request V4 (account.createUserRequestV4)
 
     Properties:
         accepted_policies: (acceptedPolicies) OPTIONAL List[LegalAcceptedPoliciesRequest]
@@ -107,7 +107,7 @@ class AccountCreateUserRequestV4(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "accepted_policies") and self.accepted_policies:
             result["acceptedPolicies"] = [i0.to_dict(include_empty=include_empty) for i0 in self.accepted_policies]
         elif include_empty:

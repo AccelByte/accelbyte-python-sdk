@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.580858+08:00
+# Auto-generated at 2021-10-14T22:17:11.089331+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,31 @@ from ...models import ModelUserUpdateRequest
 class UpdateUser(Operation):
     """Update User (UpdateUser)
 
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+
+
+    This Endpoint support update user based on given data. Single request can
+    update single field or multi fields.
+
+    Supported field {Country, DisplayName, LanguageTag}
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+
+     Several case of updating email address
+
+      * User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
+      * User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address. 
+      * User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address. 
+
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}
 
         method: PUT
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -54,15 +73,15 @@ class UpdateUser(Operation):
     Responses:
         200: OK - ModelUserResponse (OK)
 
-        400: Bad Request - (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - (20019: unable to parse request body | 10131: invalid date of birth | 10155: country is not defined | 10154: country not found | 10130: user under age | 10132: invalid email address)
 
         401: Unauthorized - (Unauthorized access)
 
-        404: Not Found - (errorCode: 10139 | errorMessage: platform account not found)
+        404: Not Found - (10139: platform account not found | 20008: user not found)
 
-        409: Conflict - (errorCode: 10133 | errorMessage: email already used)
+        409: Conflict - (10133: email already used)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
     """
 
     # region fields
@@ -184,7 +203,7 @@ class UpdateUser(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -209,15 +228,15 @@ class UpdateUser(Operation):
 
         200: OK - ModelUserResponse (OK)
 
-        400: Bad Request - (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - (20019: unable to parse request body | 10131: invalid date of birth | 10155: country is not defined | 10154: country not found | 10130: user under age | 10132: invalid email address)
 
         401: Unauthorized - (Unauthorized access)
 
-        404: Not Found - (errorCode: 10139 | errorMessage: platform account not found)
+        404: Not Found - (10139: platform account not found | 20008: user not found)
 
-        409: Conflict - (errorCode: 10133 | errorMessage: email already used)
+        409: Conflict - (10133: email already used)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
         """
         if code == 200:
             return ModelUserResponse.create_from_dict(content), None

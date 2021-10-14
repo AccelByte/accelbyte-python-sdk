@@ -1,4 +1,4 @@
-# Auto-generated at 2021-10-07T15:03:03.563858+08:00
+# Auto-generated at 2021-10-14T22:17:11.248298+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,27 @@ from .....core import deprecated
 class RevokeAUser(Operation):
     """OAuth2 user revocation API (RevokeAUser)
 
+    ## The endpoint is going to be deprecated at 21 August, 2018. Please use this
+    instead: oauth/namespaces/{namespace}/users/{userId}/revoke
+
+    This endpoint revokes a user.
+
+    This endpoint requires all requests to have Authorization header set with
+    Bearer access authentication with valid access token.
+
+    Required permission 'NAMESPACE:{namespace}:USER:{userID}:ADMIN [UPDATE]'
+
+    When other clients know that the userID has been revoked and the token is
+    issued before the revocation, forcing a new token will contain banned
+    permissions.
+
+
     Properties:
         url: /iam/oauth/revoke/user
 
         method: POST
 
-        tags: OAuth
+        tags: ["OAuth"]
 
         consumes: ["application/x-www-form-urlencoded"]
 
@@ -147,7 +162,7 @@ class RevokeAUser(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "user_id") and self.user_id:
             result["userID"] = str(self.user_id)
         elif include_empty:

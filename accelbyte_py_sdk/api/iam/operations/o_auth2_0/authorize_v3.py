@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.371397+08:00
+# Auto-generated at 2021-10-14T22:17:11.997297+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,12 +29,49 @@ from .....core import HttpResponse
 class AuthorizeV3(Operation):
     """OAuth2 authorize API (AuthorizeV3)
 
+    Initializes OAuth2.0 authorization code flow  
+
+    The endpoint stores authorization request and redirects to login page with the
+    authorization request id. The user can then do the authentication on the login
+    page. The user will be redirected back to the requesting client with
+    authorization code if successfully authenticated.
+
+    Only authorization code flow supported by this endpoint, implicit flow is not
+    supported.
+
+      * Authorize success : redirects to login page with the following information: ?request_id={authorization_request_id}
+
+      * Authorize failure : redirects to the given redirect uri with the following information: ?error={error_code}&error;_description={error description}
+
+    Following are the error code based on the specification:
+
+      * invalid_request: The request is missing a required parameter, includes an invalid parameter value, includes a parameter more than once, or is otherwise malformed.
+
+      * server_error: The authorization server encountered an unexpected condition that prevented it from fulfilling the request.
+
+      * unauthorized_client: The client is not authorized to request a token using this method.
+
+      * access_denied: The resource owner or authorization server denied the request.
+
+      * invalid_scope: The requested scope is invalid, unknown, or malformed.
+
+      * unsupported_response_type: The authorization server does not support obtaining a token using this method.
+
+      * temporarily_unavailable: The authorization server is currently unable to handle the request due to a temporary overloading or maintenance of the server.
+
+    Please refer to the RFC for more information about authorization code flow:
+    https://tools.ietf.org/html/rfc6749#section-4.1
+
+
+    action code: 10701
+
+
     Properties:
         url: /iam/v3/oauth/authorize
 
         method: GET
 
-        tags: OAuth2.0
+        tags: ["OAuth2.0"]
 
         consumes: ["application/json"]
 
@@ -220,7 +257,7 @@ class AuthorizeV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "response_type") and self.response_type:
             result["response_type"] = str(self.response_type)
         elif include_empty:

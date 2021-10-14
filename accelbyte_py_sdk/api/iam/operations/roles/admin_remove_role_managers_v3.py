@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.312967+08:00
+# Auto-generated at 2021-10-14T22:17:11.915816+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,20 @@ from ...models import RestErrorResponse
 class AdminRemoveRoleManagersV3(Operation):
     """Remove Role Managers (AdminRemoveRoleManagersV3)
 
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+    Role can only be assigned to other users by the role's manager.
+
+
+    action code: 10409
+
+
     Properties:
         url: /iam/v3/admin/roles/{roleId}/managers
 
         method: DELETE
 
-        tags: Roles
+        tags: ["Roles"]
 
         consumes: ["application/json"]
 
@@ -52,13 +60,13 @@ class AdminRemoveRoleManagersV3(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestErrorResponse (errorCode: 10456 | errorMessage: role not found)
+        404: Not Found - RestErrorResponse (10456: role not found)
     """
 
     # region fields
@@ -170,7 +178,7 @@ class AdminRemoveRoleManagersV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -191,13 +199,13 @@ class AdminRemoveRoleManagersV3(Operation):
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestErrorResponse (errorCode: 10456 | errorMessage: role not found)
+        404: Not Found - RestErrorResponse (10456: role not found)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

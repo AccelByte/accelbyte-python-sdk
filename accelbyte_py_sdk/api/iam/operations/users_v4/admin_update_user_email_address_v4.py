@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.601233+08:00
+# Auto-generated at 2021-10-14T22:17:12.269797+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,25 @@ from ...models import RestErrorResponse
 class AdminUpdateUserEmailAddressV4(Operation):
     """Update a User Email Address (AdminUpdateUserEmailAddressV4)
 
+    Required permission
+
+
+
+        'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+
+
+    This is the endpoint for an admin to update a user email address. This
+    endpoint need a valid user token from an admin to verify its identity (email)
+    before updating a user.
+
+
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/email
 
         method: PUT
 
-        tags: Users V4
+        tags: ["Users V4"]
 
         consumes: ["application/json"]
 
@@ -54,15 +67,15 @@ class AdminUpdateUserEmailAddressV4(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        404: Not Found - RestErrorResponse (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found)
 
-        409: Conflict - RestErrorResponse (errorCode: 10133 | errorMessage: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -184,7 +197,7 @@ class AdminUpdateUserEmailAddressV4(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -209,15 +222,15 @@ class AdminUpdateUserEmailAddressV4(Operation):
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        404: Not Found - RestErrorResponse (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found)
 
-        409: Conflict - RestErrorResponse (errorCode: 10133 | errorMessage: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

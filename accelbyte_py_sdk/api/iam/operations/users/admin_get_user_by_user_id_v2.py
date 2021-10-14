@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.823205+08:00
+# Auto-generated at 2021-10-14T22:17:11.356574+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,15 @@ from ...models import ModelUserResponse
 class AdminGetUserByUserIdV2(Operation):
     """Get User By User Id (AdminGetUserByUserIdV2)
 
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]'
+
+
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}
 
         method: GET
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: []
 
@@ -51,9 +54,9 @@ class AdminGetUserByUserIdV2(Operation):
     Responses:
         200: OK - ModelUserResponse (OK)
 
-        404: Not Found - (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - (20008: user not found | 10139: platform account not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
     """
 
     # region fields
@@ -163,7 +166,7 @@ class AdminGetUserByUserIdV2(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -184,9 +187,9 @@ class AdminGetUserByUserIdV2(Operation):
 
         200: OK - ModelUserResponse (OK)
 
-        404: Not Found - (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - (20008: user not found | 10139: platform account not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
         """
         if code == 200:
             return ModelUserResponse.create_from_dict(content), None

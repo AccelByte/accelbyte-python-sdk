@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.882271+08:00
+# Auto-generated at 2021-10-14T22:17:11.412380+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,19 @@ from ...models import ModelSendVerificationCodeRequest
 class PublicForgotPasswordV2(Operation):
     """Request Password Reset Code (PublicForgotPasswordV2)
 
+    Special note for publisher-game scenario: Game Client should provide game
+    namespace path parameter and Publisher Client should provide publisher
+    namespace path parameter.
+
+    The password reset code will be sent to the publisher account's email address.
+
+
     Properties:
         url: /iam/v2/public/namespaces/{namespace}/users/forgotPassword
 
         method: POST
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: []
 
@@ -51,13 +58,13 @@ class PublicForgotPasswordV2(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - (20019: unable to parse request body)
 
-        404: Not Found - (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - (20008: user not found)
 
-        429: Too Many Requests - (errorCode: 20007 | errorMessage: too many requests)
+        429: Too Many Requests - (20007: too many requests)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
     """
 
     # region fields
@@ -169,7 +176,7 @@ class PublicForgotPasswordV2(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -190,13 +197,13 @@ class PublicForgotPasswordV2(Operation):
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - (20019: unable to parse request body)
 
-        404: Not Found - (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - (20008: user not found)
 
-        429: Too Many Requests - (errorCode: 20007 | errorMessage: too many requests)
+        429: Too Many Requests - (20007: too many requests)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

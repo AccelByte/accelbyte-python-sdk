@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.968920+08:00
+# Auto-generated at 2021-10-14T22:17:11.529630+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,33 @@ from ...models import RestErrorResponse
 class AdminCreateClientV3(Operation):
     """Create Client (AdminCreateClientV3)
 
+    Add a new OAuth 2.0 client. Protected by the permission:
+    ADMIN:NAMESPACE:{namespace}:CLIENT [CREATE]  
+    A new client automatically granted with these scopes: commerce, account,
+    analytics, publishing, social.  
+    action code: 10301  
+
+    Fields Description:
+
+      * clientId : The client ID. e.g f815e5c44f364993961be3b3f26a7bf4
+      * clientName : The client name. e.g E-commerce
+      * secret : The client's secret. It's empty if the client's type is a public client. Otherwise, the client secret is required
+      * namespace : The namespace where the client lives. e.g sample-game
+      * redirectUri : Contains the redirect URI used in OAuth callback. e.g https://example.net/platform
+      * oauthClientType : The OAuth 2.0 client type. The client type determines whether the authorization needs Proof Of Key Exchange or not. A public client type doesn't have a client secret and should use PKCE flow. A confidential client type has a client secret and don't use PKCE flow Supported oAuthClientType : 
+        * Public
+        * Confidential
+      * audiences : List of target client IDs who is intended to receive the token. e.g ["eaaa65618fe24293b00a61454182b435", "40073ee9bc3446d3a051a71b48509a5d"]
+      * baseUri : A base URI of the application. It is used for making sure the token is intended to be used by the client. e.g https://example.net/platform
+      * clientPermissions : Contains the client's permissions
+
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients
 
         method: POST
 
-        tags: Clients
+        tags: ["Clients"]
 
         consumes: ["application/json"]
 
@@ -53,13 +74,13 @@ class AdminCreateClientV3(Operation):
     Responses:
         201: Created - ClientmodelClientV3Response (Created)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        409: Conflict - RestErrorResponse (errorCode: 10364 | errorMessage: client exists)
+        409: Conflict - RestErrorResponse (10364: client exists)
     """
 
     # region fields
@@ -171,7 +192,7 @@ class AdminCreateClientV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -192,13 +213,13 @@ class AdminCreateClientV3(Operation):
 
         201: Created - ClientmodelClientV3Response (Created)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        409: Conflict - RestErrorResponse (errorCode: 10364 | errorMessage: client exists)
+        409: Conflict - RestErrorResponse (10364: client exists)
         """
         if code == 201:
             return ClientmodelClientV3Response.create_from_dict(content), None

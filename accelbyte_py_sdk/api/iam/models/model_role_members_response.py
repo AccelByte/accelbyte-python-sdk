@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.601025+08:00
+# Auto-generated at 2021-10-14T22:17:10.911633+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.accountcommon_role_member import AccountcommonRoleMember
 
 
 class ModelRoleMembersResponse(Model):
-    """Model role members response
+    """Model role members response (model.RoleMembersResponse)
 
     Properties:
         members: (Members) REQUIRED List[AccountcommonRoleMember]
@@ -51,7 +51,7 @@ class ModelRoleMembersResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "members") and self.members:
             result["Members"] = [i0.to_dict(include_empty=include_empty) for i0 in self.members]
         elif include_empty:

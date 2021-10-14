@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.046224+08:00
+# Auto-generated at 2021-10-14T22:17:11.606500+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,30 @@ from ...models import RestErrorResponse
 class AddSSOLoginPlatformCredential(Operation):
     """Add SSO Platform Credential (AddSSOLoginPlatformCredential)
 
+    This is the API to Add SSO Platform Credential. It needs
+    ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [CREATE] resource.
+
+    ## Supported platforms:
+
+      * discourse
+    the ssoUrl of the discourse is the discourse forum url. example:
+    https://forum.example.com
+
+      * azure with SAML
+     appId is an application identifier in IdP, in azure it's called EntityID
+    acsUrl is an endpoint on the service provider where the identity provider will
+    redirect to with its authentication response. example:
+    /iam/v3/sso/saml/azuresaml/authenticate federationMetadataUrl is an endpoint
+    on the Identity Provider(IdP) to get IdP federation metadata for service
+    provider to build trust relationship
+
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/sso
 
         method: POST
 
-        tags: SSO Credential
+        tags: ["SSO Credential"]
 
         consumes: ["application/json"]
 
@@ -183,7 +201,7 @@ class AddSSOLoginPlatformCredential(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

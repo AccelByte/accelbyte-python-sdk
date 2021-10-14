@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.694841+08:00
+# Auto-generated at 2021-10-14T22:17:12.397242+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,35 @@ from ...models import RestErrorResponse
 class AdminUpdateMyUserV4(Operation):
     """Admin Update My User (AdminUpdateMyUserV4)
 
+    Requires valid user access token
+
+
+
+    This Endpoint support update user based on given data. Single request can
+    update single field or multi fields.
+
+    Supported field {country, displayName, emailAddress, languageTag, dateOfBirth}
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+    Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
+
+
+    Several case of updating email address
+
+      * User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
+      * User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address. 
+      * User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address. 
+
+    action code : 10103
+
+
     Properties:
         url: /iam/v4/admin/users/me
 
         method: PATCH
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: []
 
@@ -51,11 +74,11 @@ class AdminUpdateMyUserV4(Operation):
     Responses:
         200: OK - ModelUserResponseV3 (OK)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10154: country not found | 10130: user under age)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        409: Conflict - RestErrorResponse (errorCode: 10133 | errorMessage: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used | 10133: email already used)
 
         500: Internal Server Error - (Internal Server Error)
     """
@@ -150,7 +173,7 @@ class AdminUpdateMyUserV4(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -167,11 +190,11 @@ class AdminUpdateMyUserV4(Operation):
 
         200: OK - ModelUserResponseV3 (OK)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10154: country not found | 10130: user under age)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        409: Conflict - RestErrorResponse (errorCode: 10133 | errorMessage: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used | 10133: email already used)
 
         500: Internal Server Error - (Internal Server Error)
         """

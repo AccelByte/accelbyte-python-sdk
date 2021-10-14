@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.571929+08:00
+# Auto-generated at 2021-10-14T22:17:12.235484+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,18 @@ from ...models import RestErrorResponse
 class PublicGetRolesV3(Operation):
     """Get Roles (PublicGetRolesV3)
 
+
+    This endpoint is used to get all non-admin role.  
+
+    action code: 10418
+
+
     Properties:
         url: /iam/v3/public/roles
 
         method: GET
 
-        tags: Roles
+        tags: ["Roles"]
 
         consumes: ["application/json"]
 
@@ -56,7 +62,7 @@ class PublicGetRolesV3(Operation):
     Responses:
         200: OK - ModelRoleNamesResponseV3 (OK)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
     """
 
     # region fields
@@ -173,7 +179,7 @@ class PublicGetRolesV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
@@ -202,7 +208,7 @@ class PublicGetRolesV3(Operation):
 
         200: OK - ModelRoleNamesResponseV3 (OK)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
         """
         if code == 200:
             return ModelRoleNamesResponseV3.create_from_dict(content), None

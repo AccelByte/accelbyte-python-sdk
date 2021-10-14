@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.449641+08:00
+# Auto-generated at 2021-10-14T22:17:12.087861+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,21 @@ from ...models import RestErrorResponse
 class PublicForgotPasswordV3(Operation):
     """Request Password Reset Code (PublicForgotPasswordV3)
 
+    Special note for publisher-game scenario: Game Client should provide game
+    namespace path parameter and Publisher Client should provide publisher
+    namespace path parameter.
+
+    The password reset code will be sent to the publisher account's email address.
+
+    action code : 10104
+
+
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/forgot
 
         method: POST
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -52,11 +61,11 @@ class PublicForgotPasswordV3(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        404: Not Found - RestErrorResponse (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found)
 
-        429: Too Many Requests - RestErrorResponse (errorCode: 20007 | errorMessage: too many requests)
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
     """
 
     # region fields
@@ -168,7 +177,7 @@ class PublicForgotPasswordV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -189,11 +198,11 @@ class PublicForgotPasswordV3(Operation):
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        404: Not Found - RestErrorResponse (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found)
 
-        429: Too Many Requests - RestErrorResponse (errorCode: 20007 | errorMessage: too many requests)
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

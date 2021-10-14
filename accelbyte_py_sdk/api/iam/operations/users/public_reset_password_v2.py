@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.886717+08:00
+# Auto-generated at 2021-10-14T22:17:11.417199+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -36,7 +36,7 @@ class PublicResetPasswordV2(Operation):
 
         method: POST
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: []
 
@@ -51,13 +51,13 @@ class PublicResetPasswordV2(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - (20019: unable to parse request body | 10142: new password cannot be same with original)
 
-        403: Forbidden - (errorCode: 10137 | errorMessage: code is expired)
+        403: Forbidden - (10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10152: verification code not found)
 
-        404: Not Found - (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - (20008: user not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
     """
 
     # region fields
@@ -169,7 +169,7 @@ class PublicResetPasswordV2(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -190,13 +190,13 @@ class PublicResetPasswordV2(Operation):
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - (20019: unable to parse request body | 10142: new password cannot be same with original)
 
-        403: Forbidden - (errorCode: 10137 | errorMessage: code is expired)
+        403: Forbidden - (10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10152: verification code not found)
 
-        404: Not Found - (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - (20008: user not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.030082+08:00
+# Auto-generated at 2021-10-14T22:17:11.593166+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,16 @@ from ...models import RestErrorResponse
 class AddThirdPartyLoginPlatformCredentialV3(Operation):
     """Add Third Party Platform Credential (AddThirdPartyLoginPlatformCredentialV3)
 
+    This is the API to Add 3rd Platform Credential. It needs
+    ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE] resource
+
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
 
         method: POST
 
-        tags: Third Party Credential
+        tags: ["Third Party Credential"]
 
         consumes: ["application/json"]
 
@@ -183,7 +187,7 @@ class AddThirdPartyLoginPlatformCredentialV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

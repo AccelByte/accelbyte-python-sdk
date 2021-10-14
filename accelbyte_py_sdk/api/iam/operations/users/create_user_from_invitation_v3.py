@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.458994+08:00
+# Auto-generated at 2021-10-14T22:17:12.102545+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,20 @@ from ...models import RestErrorResponse
 class CreateUserFromInvitationV3(Operation):
     """Create User Admin From Invitation (CreateUserFromInvitationV3)
 
+    This endpoint create user from saved roles when creating invitation and
+    submitted data. User will be able to login after completing submitting the
+    data through this endpoint. Available Authentication Types: EMAILPASSWD: an
+    authentication type used for new user registration through email. Country use
+    ISO3166-1 alpha-2 two letter, e.g. US. Date of Birth format : YYYY-MM-DD, e.g.
+    2019-04-29.
+
+
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/invite/{invitationId}
 
         method: POST
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: []
 
@@ -55,11 +63,11 @@ class CreateUserFromInvitationV3(Operation):
     Responses:
         201: Created - ModelUserCreateResponseV3 (Created)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 10130: user under age)
 
-        404: Not Found - RestErrorResponse (errorCode: 10180 | errorMessage: admin invitation not found or expired)
+        404: Not Found - RestErrorResponse (10180: admin invitation not found or expired | 10154: country not found)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -181,7 +189,7 @@ class CreateUserFromInvitationV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -206,11 +214,11 @@ class CreateUserFromInvitationV3(Operation):
 
         201: Created - ModelUserCreateResponseV3 (Created)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 10130: user under age)
 
-        404: Not Found - RestErrorResponse (errorCode: 10180 | errorMessage: admin invitation not found or expired)
+        404: Not Found - RestErrorResponse (10180: admin invitation not found or expired | 10154: country not found)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
         """
         if code == 201:
             return ModelUserCreateResponseV3.create_from_dict(content), None

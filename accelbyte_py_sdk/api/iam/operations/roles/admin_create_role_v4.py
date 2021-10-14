@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.642817+08:00
+# Auto-generated at 2021-10-14T22:17:12.324588+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,19 @@ from ...models import RestErrorResponse
 class AdminCreateRoleV4(Operation):
     """Create Role (AdminCreateRoleV4)
 
+    Required permission: ADMIN:ROLE [CREATE] Create role request body: \-
+    roleName: specify role name, alphanumeric, cannot have special character
+    (required) \- adminRole: specify if role is for admin user (default false) \-
+    isWildcard: specify if role can be assigned to wildcard (*) namespace (default
+    false) action code: 10401
+
+
     Properties:
         url: /iam/v4/admin/roles
 
         method: POST
 
-        tags: Roles
+        tags: ["Roles"]
 
         consumes: ["application/json"]
 
@@ -51,11 +58,11 @@ class AdminCreateRoleV4(Operation):
     Responses:
         201: Created - ModelRoleV4Response (Created)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10466: invalid role members)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
     """
 
     # region fields
@@ -148,7 +155,7 @@ class AdminCreateRoleV4(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -165,11 +172,11 @@ class AdminCreateRoleV4(Operation):
 
         201: Created - ModelRoleV4Response (Created)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10466: invalid role members)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
         """
         if code == 201:
             return ModelRoleV4Response.create_from_dict(content), None

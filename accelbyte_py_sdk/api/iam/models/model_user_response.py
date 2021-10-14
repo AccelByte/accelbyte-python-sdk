@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.670739+08:00
+# Auto-generated at 2021-10-14T22:17:10.973435+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -30,7 +30,7 @@ from ..models.model_user_active_ban_response import ModelUserActiveBanResponse
 
 
 class ModelUserResponse(Model):
-    """Model user response
+    """Model user response (model.UserResponse)
 
     Properties:
         auth_type: (AuthType) REQUIRED str
@@ -228,7 +228,7 @@ class ModelUserResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "auth_type") and self.auth_type:
             result["AuthType"] = str(self.auth_type)
         elif include_empty:

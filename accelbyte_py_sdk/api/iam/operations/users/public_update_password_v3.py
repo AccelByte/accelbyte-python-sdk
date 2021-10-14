@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.503005+08:00
+# Auto-generated at 2021-10-14T22:17:12.169120+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,16 @@ from ...models import RestErrorResponse
 class PublicUpdatePasswordV3(Operation):
     """Update User Password (PublicUpdatePasswordV3)
 
+    Required valid user authorization.  
+    action code: 10107
+
+
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/password
 
         method: PUT
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -52,11 +56,11 @@ class PublicUpdatePasswordV3(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10142: new password cannot be same with original | 10143: password not match)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -168,7 +172,7 @@ class PublicUpdatePasswordV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -189,11 +193,11 @@ class PublicUpdatePasswordV3(Operation):
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10142: new password cannot be same with original | 10143: password not match)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

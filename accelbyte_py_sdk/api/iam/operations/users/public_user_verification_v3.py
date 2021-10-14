@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.483261+08:00
+# Auto-generated at 2021-10-14T22:17:12.141759+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,22 @@ from ...models import RestErrorResponse
 class PublicUserVerificationV3(Operation):
     """Redeem verification code sent to user (PublicUserVerificationV3)
 
+    Required valid user authorization
+
+    Redeems a verification code sent to a user to verify the user's contact
+    address is correct
+
+    Available ContactType : email
+
+    action code: 10107
+
+
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/code/verify
 
         method: POST
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -52,13 +62,13 @@ class PublicUserVerificationV3(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        403: Forbidden - RestErrorResponse (errorCode: 10152 | errorMessage: verification code not found)
+        403: Forbidden - RestErrorResponse (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context)
 
-        409: Conflict - RestErrorResponse (errorCode: 10141 | errorMessage: email verified)
+        409: Conflict - RestErrorResponse (10141: email verified)
     """
 
     # region fields
@@ -170,7 +180,7 @@ class PublicUserVerificationV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -191,13 +201,13 @@ class PublicUserVerificationV3(Operation):
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        403: Forbidden - RestErrorResponse (errorCode: 10152 | errorMessage: verification code not found)
+        403: Forbidden - RestErrorResponse (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context)
 
-        409: Conflict - RestErrorResponse (errorCode: 10141 | errorMessage: email verified)
+        409: Conflict - RestErrorResponse (10141: email verified)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

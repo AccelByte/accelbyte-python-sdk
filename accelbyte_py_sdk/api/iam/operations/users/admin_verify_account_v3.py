@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.137277+08:00
+# Auto-generated at 2021-10-14T22:17:11.719764+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,20 @@ from ...models import ModelUserVerificationRequest
 class AdminVerifyAccountV3(Operation):
     """Verify account by validating verification code (AdminVerifyAccountV3)
 
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+    Redeems a verification code sent to a user to verify the user's contact
+    address is correct
+
+    Available ContactType : email or phone
+
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/code/verify
 
         method: POST
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -53,15 +61,15 @@ class AdminVerifyAccountV3(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - (20019: unable to parse request body)
 
         401: Unauthorized - (Unauthorized access)
 
-        403: Forbidden - (errorCode: 10152 | errorMessage: verification code not found)
+        403: Forbidden - (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context | 10162: invalid verification)
 
-        404: Not Found - (errorCode: 10139 | errorMessage: platform account not found)
+        404: Not Found - (10139: platform account not found | 20008: user not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
     """
 
     # region fields
@@ -183,7 +191,7 @@ class AdminVerifyAccountV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -208,15 +216,15 @@ class AdminVerifyAccountV3(Operation):
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - (20019: unable to parse request body)
 
         401: Unauthorized - (Unauthorized access)
 
-        403: Forbidden - (errorCode: 10152 | errorMessage: verification code not found)
+        403: Forbidden - (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context | 10162: invalid verification)
 
-        404: Not Found - (errorCode: 10139 | errorMessage: platform account not found)
+        404: Not Found - (10139: platform account not found | 20008: user not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.712375+08:00
+# Auto-generated at 2021-10-14T22:17:11.213924+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,38 @@ from ...models import ModelSendVerificationCodeRequest
 class SendVerificationCode(Operation):
     """Send verification code to user (SendVerificationCode)
 
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+    The verification code is sent to either the phone number or email address. It
+    depends on the LoginID's value.
+
+    Available contexts for use :
+
+      1. UserAccountRegistration
+
+    a context type used for verifying email address in user account registration.
+    It returns 409 if the email address already verified. It is the default
+    context if the Context field is empty
+
+      2. UpdateEmailAddress
+
+    a context type used for verify user before updating email address.(Without
+    email address verified checking)
+
+      3. upgradeHeadlessAccount
+
+    The context is intended to be used whenever the email address wanted to be
+    automatically verified on upgrading a headless account. If this context used,
+    IAM rejects the request if the loginId field's value is already used by others
+    by returning HTTP Status Code 409.
+
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/verificationcode
 
         method: POST
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -53,19 +79,19 @@ class SendVerificationCode(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - (20019: unable to parse request body)
 
         401: Unauthorized - (Unauthorized access)
 
-        403: Forbidden - (errorCode: 10146 | errorMessage: userID not match)
+        403: Forbidden - (10146: userID not match)
 
-        404: Not Found - (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - (20008: user not found | 10171: email address not found | 10139: platform account not found)
 
-        409: Conflict - (errorCode: 10140 | errorMessage: user verified)
+        409: Conflict - (10140: user verified | 10133: email already used)
 
-        429: Too Many Requests - (errorCode: 20007 | errorMessage: too many requests)
+        429: Too Many Requests - (20007: too many requests)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
     """
 
     # region fields
@@ -187,7 +213,7 @@ class SendVerificationCode(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -212,19 +238,19 @@ class SendVerificationCode(Operation):
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - (20019: unable to parse request body)
 
         401: Unauthorized - (Unauthorized access)
 
-        403: Forbidden - (errorCode: 10146 | errorMessage: userID not match)
+        403: Forbidden - (10146: userID not match)
 
-        404: Not Found - (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - (20008: user not found | 10171: email address not found | 10139: platform account not found)
 
-        409: Conflict - (errorCode: 10140 | errorMessage: user verified)
+        409: Conflict - (10140: user verified | 10133: email already used)
 
-        429: Too Many Requests - (errorCode: 20007 | errorMessage: too many requests)
+        429: Too Many Requests - (20007: too many requests)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

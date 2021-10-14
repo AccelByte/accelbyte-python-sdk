@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.522148+08:00
+# Auto-generated at 2021-10-14T22:17:10.845994+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,7 +29,7 @@ from ..models.clientmodel_client_v3_response import ClientmodelClientV3Response
 
 
 class ClientmodelClientsV3Response(Model):
-    """Clientmodel clients V3 response
+    """Clientmodel clients V3 response (clientmodel.ClientsV3Response)
 
     Properties:
         data: (data) REQUIRED List[ClientmodelClientV3Response]
@@ -59,7 +59,7 @@ class ClientmodelClientsV3Response(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "data") and self.data:
             result["data"] = [i0.to_dict(include_empty=include_empty) for i0 in self.data]
         elif include_empty:

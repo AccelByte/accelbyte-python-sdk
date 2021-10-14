@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.632684+08:00
+# Auto-generated at 2021-10-14T22:17:10.941036+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelUnlinkUserPlatformRequest(Model):
-    """Model unlink user platform request
+    """Model unlink user platform request (model.UnlinkUserPlatformRequest)
 
     Properties:
         platform_namespace: (platformNamespace) OPTIONAL str
@@ -49,7 +49,7 @@ class ModelUnlinkUserPlatformRequest(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "platform_namespace") and self.platform_namespace:
             result["platformNamespace"] = str(self.platform_namespace)
         elif include_empty:

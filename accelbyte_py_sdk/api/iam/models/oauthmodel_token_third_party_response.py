@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.709581+08:00
+# Auto-generated at 2021-10-14T22:17:11.003141+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class OauthmodelTokenThirdPartyResponse(Model):
-    """Oauthmodel token third party response
+    """Oauthmodel token third party response (oauthmodel.TokenThirdPartyResponse)
 
     Properties:
         platform_token: (platform_token) REQUIRED str
@@ -56,7 +56,7 @@ class OauthmodelTokenThirdPartyResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "platform_token") and self.platform_token:
             result["platform_token"] = str(self.platform_token)
         elif include_empty:

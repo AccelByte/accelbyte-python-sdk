@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.121566+08:00
+# Auto-generated at 2021-10-14T22:17:11.698465+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,19 @@ from ...models import RestErrorResponse
 class AdminUpdateUserBanV3(Operation):
     """Enable or disable ban for a single user (AdminUpdateUserBanV3)
 
+    Required permission ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]  
+    Set ban status for a single user for a specific ban. Retrieve user ban and
+    choose the ban ID. Set the form parameter to true/false to enable or disable
+    the ban.  
+    action code : 10142'
+
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId}
 
         method: PATCH
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -57,15 +64,15 @@ class AdminUpdateUserBanV3(Operation):
     Responses:
         200: OK - ModelUserBanResponseV3 (OK)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 10145 | errorMessage: disallow game access publisher user's ban)
+        403: Forbidden - RestErrorResponse (10145: disallow game access publisher user's ban)
 
-        404: Not Found - RestErrorResponse (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found | 10158: ban not found)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -197,7 +204,7 @@ class AdminUpdateUserBanV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -226,15 +233,15 @@ class AdminUpdateUserBanV3(Operation):
 
         200: OK - ModelUserBanResponseV3 (OK)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 10145 | errorMessage: disallow game access publisher user's ban)
+        403: Forbidden - RestErrorResponse (10145: disallow game access publisher user's ban)
 
-        404: Not Found - RestErrorResponse (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found | 10158: ban not found)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
         """
         if code == 200:
             return ModelUserBanResponseV3.create_from_dict(content), None

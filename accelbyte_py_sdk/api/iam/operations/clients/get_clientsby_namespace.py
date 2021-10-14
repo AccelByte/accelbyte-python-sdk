@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.531175+08:00
+# Auto-generated at 2021-10-14T22:17:11.042462+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,15 @@ from ...models import ClientmodelClientResponse
 class GetClientsbyNamespace(Operation):
     """Get clients by namespace (GetClientsbyNamespace)
 
+    Required permission 'NAMESPACE:{namespace}:CLIENT [READ]'
+
+
     Properties:
         url: /iam/namespaces/{namespace}/clients
 
         method: GET
 
-        tags: Clients
+        tags: ["Clients"]
 
         consumes: ["application/json"]
 
@@ -151,7 +154,7 @@ class GetClientsbyNamespace(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

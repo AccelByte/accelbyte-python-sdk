@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.393534+08:00
+# Auto-generated at 2021-10-14T22:17:12.024064+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,22 @@ from ...models import RestErrorResponse
 class GetRevocationListV3(Operation):
     """OAuth2 revocation list API (GetRevocationListV3)
 
+    This endpoint will return a list of revoked users and revoked tokens. List of
+    revoked tokens in bloom filter format.
+
+    This endpoint requires authorized requests header with valid access token.
+
+    The bloom filter uses MurmurHash3 algorithm for hashing the values
+
+    action code : 10708
+
+
     Properties:
         url: /iam/v3/oauth/revocationlist
 
         method: GET
 
-        tags: OAuth2.0
+        tags: ["OAuth2.0"]
 
         consumes: [""]
 
@@ -48,7 +58,7 @@ class GetRevocationListV3(Operation):
     Responses:
         200: OK - OauthapiRevocationList (Revocation list returned)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
     """
 
     # region fields
@@ -128,7 +138,7 @@ class GetRevocationListV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         return result
 
     # endregion to methods
@@ -141,7 +151,7 @@ class GetRevocationListV3(Operation):
 
         200: OK - OauthapiRevocationList (Revocation list returned)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
         """
         if code == 200:
             return OauthapiRevocationList.create_from_dict(content), None

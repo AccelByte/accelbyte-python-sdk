@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.575435+08:00
+# Auto-generated at 2021-10-14T22:17:12.238970+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,17 @@ from ...models import RestErrorResponse
 class PublicGetRoleV3(Operation):
     """Get Public Role (PublicGetRoleV3)
 
+
+    This endpoint is used to get non-admin role based on specify roleId.  
+    action code : 10417
+
+
     Properties:
         url: /iam/v3/public/roles/{roleId}
 
         method: GET
 
-        tags: Roles
+        tags: ["Roles"]
 
         consumes: ["application/json"]
 
@@ -50,9 +55,9 @@ class PublicGetRoleV3(Operation):
     Responses:
         200: OK - ModelRoleResponse (OK)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
 
-        404: Not Found - RestErrorResponse (errorCode: 10456 | errorMessage: role not found)
+        404: Not Found - RestErrorResponse (10456: role not found)
     """
 
     # region fields
@@ -152,7 +157,7 @@ class PublicGetRoleV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "role_id") and self.role_id:
             result["roleId"] = str(self.role_id)
         elif include_empty:
@@ -169,9 +174,9 @@ class PublicGetRoleV3(Operation):
 
         200: OK - ModelRoleResponse (OK)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
 
-        404: Not Found - RestErrorResponse (errorCode: 10456 | errorMessage: role not found)
+        404: Not Found - RestErrorResponse (10456: role not found)
         """
         if code == 200:
             return ModelRoleResponse.create_from_dict(content), None

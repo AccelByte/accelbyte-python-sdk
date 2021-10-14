@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.527593+08:00
+# Auto-generated at 2021-10-14T22:17:11.039373+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,15 @@ from ...models import ClientmodelClientUpdateSecretRequest
 class UpdateClientSecret(Operation):
     """Update Client Secret (UpdateClientSecret)
 
+    Required permission 'CLIENT:ADMIN [UPDATE]'
+
+
     Properties:
         url: /iam/clients/{clientId}/secret
 
         method: PUT
 
-        tags: Clients
+        tags: ["Clients"]
 
         consumes: ["application/json"]
 
@@ -169,7 +172,7 @@ class UpdateClientSecret(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

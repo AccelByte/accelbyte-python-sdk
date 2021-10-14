@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.254091+08:00
+# Auto-generated at 2021-10-14T22:17:11.829418+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,28 @@ from ...models import RestErrorResponse
 class AdminUpdateUserStatusV3(Operation):
     """Update user status (AdminUpdateUserStatusV3)
 
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId}
+    [UPDATE]'
+
+    This endpoint disable or enable user account. Set the enable status on the
+    request body to true to enable user account or set to false to disable it.
+
+    Disable user for Account Disable purpose fill the reason with:
+
+      * AdminDeactivateAccount : if your disable account request comes from admin
+
+    Enable user ignore field 'reason' in the request body.
+
+
+    action code : 10143
+
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status
 
         method: PATCH
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -54,13 +70,13 @@ class AdminUpdateUserStatusV3(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - (20013: insufficient permissions)
 
-        404: Not Found - RestErrorResponse (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found)
     """
 
     # region fields
@@ -182,7 +198,7 @@ class AdminUpdateUserStatusV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -207,13 +223,13 @@ class AdminUpdateUserStatusV3(Operation):
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - (20013: insufficient permissions)
 
-        404: Not Found - RestErrorResponse (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

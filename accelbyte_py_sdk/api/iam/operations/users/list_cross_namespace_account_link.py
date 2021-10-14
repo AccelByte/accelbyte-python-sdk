@@ -1,4 +1,4 @@
-# Auto-generated at 2021-10-07T15:03:03.482710+08:00
+# Auto-generated at 2021-10-14T22:17:11.121924+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,24 @@ from .....core import deprecated
 class ListCrossNamespaceAccountLink(Operation):
     """Links existing account with another account in different namespace.  (ListCrossNamespaceAccountLink)
 
+    ## The endpoint is going to be deprecated at 9 July, 2018. Please use this
+    instead: /users/{userId}/platforms/{platformId}/link
+
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'.
+
+    Access token from original namespace is needed as authorization header. Access
+    token from designated account needed as form parameter to verify the ownership
+    of that account. When platformID (device platfom ID) is specified, platform
+    login method for that specific platform ID is removed. This means to protect
+    account from second hand device usage.
+
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/crosslink
 
         method: POST
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/x-www-form-urlencoded"]
 
@@ -193,7 +205,7 @@ class ListCrossNamespaceAccountLink(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "linking_token") and self.linking_token:
             result["linkingToken"] = str(self.linking_token)
         elif include_empty:

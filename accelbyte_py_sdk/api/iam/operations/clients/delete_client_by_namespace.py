@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.534894+08:00
+# Auto-generated at 2021-10-14T22:17:11.048103+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,12 +29,15 @@ from .....core import HttpResponse
 class DeleteClientByNamespace(Operation):
     """Delete Client (DeleteClientByNamespace)
 
+    Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT:{clientId} [DELETE]'
+
+
     Properties:
         url: /iam/namespaces/{namespace}/clients/{clientId}
 
         method: DELETE
 
-        tags: Clients
+        tags: ["Clients"]
 
         consumes: ["application/json"]
 
@@ -163,7 +166,7 @@ class DeleteClientByNamespace(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.697811+08:00
+# Auto-generated at 2021-10-14T22:17:10.994043+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class OauthmodelCountryLocationResponse(Model):
-    """Oauthmodel country location response
+    """Oauthmodel country location response (oauthmodel.CountryLocationResponse)
 
     Properties:
         city: (city) REQUIRED str
@@ -70,7 +70,7 @@ class OauthmodelCountryLocationResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "city") and self.city:
             result["city"] = str(self.city)
         elif include_empty:

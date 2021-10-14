@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.354588+08:00
+# Auto-generated at 2021-10-14T22:17:11.983627+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,17 @@ from ...models import RestErrorResponse
 class AdminGetMyUserV3(Operation):
     """Get My User (AdminGetMyUserV3)
 
+    Require valid user authorization  
+    Get my user data  
+    action code : 10147
+
+
     Properties:
         url: /iam/v3/admin/users/me
 
         method: GET
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: []
 
@@ -48,9 +53,9 @@ class AdminGetMyUserV3(Operation):
     Responses:
         200: OK - ModelUserResponseV3 (OK)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -130,7 +135,7 @@ class AdminGetMyUserV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         return result
 
     # endregion to methods
@@ -143,9 +148,9 @@ class AdminGetMyUserV3(Operation):
 
         200: OK - ModelUserResponseV3 (OK)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
         """
         if code == 200:
             return ModelUserResponseV3.create_from_dict(content), None

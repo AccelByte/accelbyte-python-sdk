@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.603314+08:00
+# Auto-generated at 2021-10-14T22:17:10.914781+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.accountcommon_pagination_v3 import AccountcommonPaginationV3
 
 
 class ModelRoleNamesResponseV3(Model):
-    """Model role names response V3
+    """Model role names response V3 (model.RoleNamesResponseV3)
 
     Properties:
         data: (data) REQUIRED List[str]
@@ -58,7 +58,7 @@ class ModelRoleNamesResponseV3(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "data") and self.data:
             result["data"] = [str(i0) for i0 in self.data]
         elif include_empty:

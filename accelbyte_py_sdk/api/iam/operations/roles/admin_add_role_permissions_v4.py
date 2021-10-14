@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.670464+08:00
+# Auto-generated at 2021-10-14T22:17:12.365257+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,53 @@ from ...models import RestErrorResponse
 class AdminAddRolePermissionsV4(Operation):
     """Add Role Permissions V4 (AdminAddRolePermissionsV4)
 
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+    This endpoint will ATTACH permission(s) into the role
+
+
+    action code: 10404  
+
+    Schedule contains cron string or date range (both are UTC, also in cron
+    syntax) to indicate when a permission and action are in effect.
+
+    Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
+
+    In ranged schedule, first element will be start date, and second one will be
+    end date
+
+    If schedule is set, the scheduled action must be valid too, that is between 1
+    to 15, inclusive
+
+    Syntax reference
+
+    Fields:
+
+      1. Seconds: 0-59 * / , -
+      2. Minutes: 0-59 * / , -
+      3. Hours: 0-23 * / , -
+      4. Day of month: 1-31 * / , - L W
+      5. Month: 1-12 JAN-DEC * / , -
+      6. Day of week: 0-6 SUN-SAT * / , - L #
+      7. Year: 1970-2099 * / , -
+
+    Special characters:
+
+      1. *: all values in the fields, e.g. * in seconds fields indicates every second
+      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
+
+
     Properties:
         url: /iam/v4/admin/roles/{roleId}/permissions
 
         method: POST
 
-        tags: Roles
+        tags: ["Roles"]
 
         consumes: ["application/json"]
 
@@ -53,13 +94,13 @@ class AdminAddRolePermissionsV4(Operation):
     Responses:
         200: OK - ModelRoleV4Response (OK)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestErrorResponse (errorCode: 10456 | errorMessage: role not found)
+        404: Not Found - RestErrorResponse (10456: role not found)
     """
 
     # region fields
@@ -171,7 +212,7 @@ class AdminAddRolePermissionsV4(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -192,13 +233,13 @@ class AdminAddRolePermissionsV4(Operation):
 
         200: OK - ModelRoleV4Response (OK)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestErrorResponse (errorCode: 10456 | errorMessage: role not found)
+        404: Not Found - RestErrorResponse (10456: role not found)
         """
         if code == 200:
             return ModelRoleV4Response.create_from_dict(content), None

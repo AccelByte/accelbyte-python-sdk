@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.536546+08:00
+# Auto-generated at 2021-10-14T22:17:11.050623+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,22 @@ from ...models import ModelUserCreateResponse
 class CreateUser(Operation):
     """Create User (CreateUser)
 
+    Required permission 'NAMESPACE:{namespace}:USER [CREATE]'.
+
+    Available Authentication Types:
+
+      1. EMAILPASSWD : an authentication type used for new user registration through email.
+      2. PHONEPASSWD : an authentication type used for new user registration through phone number.
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+
     Properties:
         url: /iam/namespaces/{namespace}/users
 
         method: POST
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -170,7 +180,7 @@ class CreateUser(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.610218+08:00
+# Auto-generated at 2021-10-14T22:17:12.280425+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,16 @@ from ...models import RestErrorResponse
 class AdminListUserRolesV4(Operation):
     """Admin List User's Roles V4 (AdminListUserRolesV4)
 
+    This endpoint requires ADMIN:NAMESPACE:{namespace}:ROLE:USER:* [READ]
+    permission. List roles assigned to a user
+
+
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles
 
         method: GET
 
-        tags: Users V4
+        tags: ["Users V4"]
 
         consumes: []
 
@@ -52,11 +56,11 @@ class AdminListUserRolesV4(Operation):
     Responses:
         200: OK - ModelListUserRolesV4Response (Operation succeeded)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20003 | errorMessage: forbidden access)
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
 
-        404: Not Found - RestErrorResponse (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -166,7 +170,7 @@ class AdminListUserRolesV4(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -187,11 +191,11 @@ class AdminListUserRolesV4(Operation):
 
         200: OK - ModelListUserRolesV4Response (Operation succeeded)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20003 | errorMessage: forbidden access)
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
 
-        404: Not Found - RestErrorResponse (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
         """
         if code == 200:
             return ModelListUserRolesV4Response.create_from_dict(content), None

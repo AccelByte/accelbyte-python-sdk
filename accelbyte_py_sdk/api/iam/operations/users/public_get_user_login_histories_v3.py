@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.551755+08:00
+# Auto-generated at 2021-10-14T22:17:12.218185+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,22 @@ from ...models import ModelLoginHistoriesResponse
 class PublicGetUserLoginHistoriesV3(Operation):
     """Get User's Login Histories (PublicGetUserLoginHistoriesV3)
 
+    Required valid user authorization.
+
+    Notes for this endpoint:
+
+      * This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
+      * The maximum value of the limit is 100 and the minimum value of the limit is 1.
+      * This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
+      * This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
+
+
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/logins/histories
 
         method: GET
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: []
 
@@ -200,7 +210,7 @@ class PublicGetUserLoginHistoriesV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

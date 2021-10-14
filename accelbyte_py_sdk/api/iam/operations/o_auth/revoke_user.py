@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.731758+08:00
+# Auto-generated at 2021-10-14T22:17:11.232591+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,12 +29,23 @@ from .....core import HttpResponse
 class RevokeUser(Operation):
     """Revokes user's tokens' (RevokeUser)
 
+    This endpoint requires all requests to have authorization header set with
+    bearer token.
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+    The endpoint revokes all access tokens and refresh tokens a user has prior the
+    revocation time. It is a convenient feature for the developer (or admin) who
+    wanted to revokes all user's access tokens and refresh tokens generated before
+    some period of time.
+
+
     Properties:
         url: /iam/oauth/namespaces/{namespace}/users/{userId}/revoke
 
         method: POST
 
-        tags: OAuth
+        tags: ["OAuth"]
 
         consumes: ["application/json"]
 
@@ -159,7 +170,7 @@ class RevokeUser(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

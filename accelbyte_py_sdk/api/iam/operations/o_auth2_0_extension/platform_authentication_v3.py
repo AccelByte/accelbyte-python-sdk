@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.403196+08:00
+# Auto-generated at 2021-10-14T22:17:12.037448+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,12 +29,44 @@ from .....core import HttpResponse
 class PlatformAuthenticationV3(Operation):
     """Platform Authentication API (PlatformAuthenticationV3)
 
+    This endpoint authenticates user platform. It validates user to its respective
+    platforms. Deactivated or login-banned users are unable to login.  
+
+    ## Supported platforms:
+
+      * steamopenid
+    Steam login page will redirects to this endpoint after login success as
+    previously defined on openID request parameter `openid.return_to` when request
+    login to steam https://openid.net/specs/openid-
+    authentication-2_0.html#anchor27
+
+      * ps4web
+    PS4 login page will redirects to this endpoint after login success as
+    previously defined on authorize request parameter `redirect_uri`
+    https://ps4.siedev.net/resources/documents/WebAPI/1/Auth_WebAPI-
+    Reference/0002.html#0GetAccessTokenUsingAuthorizationCode
+
+      * xblweb
+    XBL login page will redirects to this endpoint after login success as
+    previously defined on authorize request parameter `redirect_uri`
+
+      * epicgames
+    Epicgames login page will redirects to this endpoint after login success or an
+    error occurred. If error, it redirects to the login page.
+
+      * twitch
+    Twitch login page will redirects to this endpoint after login success as
+    previously defined on authorize request parameter `redirect_uri`
+
+    action code : 10709
+
+
     Properties:
         url: /iam/v3/platforms/{platformId}/authenticate
 
         method: GET
 
-        tags: OAuth2.0 - Extension
+        tags: ["OAuth2.0 - Extension"]
 
         consumes: ["application/x-www-form-urlencoded"]
 
@@ -283,7 +315,7 @@ class PlatformAuthenticationV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "platform_id") and self.platform_id:
             result["platformId"] = str(self.platform_id)
         elif include_empty:

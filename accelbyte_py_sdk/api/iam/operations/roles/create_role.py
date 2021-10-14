@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.749113+08:00
+# Auto-generated at 2021-10-14T22:17:11.266575+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,26 @@ from ...models import ModelRoleCreateRequest
 class CreateRole(Operation):
     """Create Role (CreateRole)
 
+    Required permission 'ROLE:ADMIN [CREATE]' or 'ADMIN:ROLE [CREATE]'
+
+    Required Permission 'ROLE:ADMIN [CREATE]' is going to be DEPRECATED for
+    security purpose. It is going to be deprecated on 31 JANUARY 2019 , please use
+    permission 'ADMIN:ROLE [CREATE]' instead.
+
+    Role can only be assigned to other users by the role's manager.
+
+    If role is an administrator role (i.e. AdminRole == true), it will list out
+    the role's members.
+
+    Administrator role can be created only when at least 1 manager is specified.
+
+
     Properties:
         url: /iam/roles
 
         method: POST
 
-        tags: Roles
+        tags: ["Roles"]
 
         consumes: ["application/json"]
 
@@ -147,7 +161,7 @@ class CreateRole(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.667389+08:00
+# Auto-generated at 2021-10-14T22:17:11.162063+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,12 +29,16 @@ from .....core import HttpResponse
 class DeleteUserPermission(Operation):
     """Delete User Permission (DeleteUserPermission)
 
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId}
+    [DELETE]'
+
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action}
 
         method: DELETE
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -189,7 +193,7 @@ class DeleteUserPermission(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.375436+08:00
+# Auto-generated at 2021-10-14T22:17:12.002330+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,21 @@ from ...models import OauthmodelTokenIntrospectResponse
 class TokenIntrospectionV3(Operation):
     """OAuth2 token introspection API (TokenIntrospectionV3)
 
+    This endpoint returns information about an access token intended to be used by
+    resource servers or other internal servers.
+
+    This endpoint requires authorized requests header with valid basic or bearer
+    token.
+
+    action code : 10705
+
+
     Properties:
         url: /iam/v3/oauth/introspect
 
         method: POST
 
-        tags: OAuth2.0
+        tags: ["OAuth2.0"]
 
         consumes: ["application/x-www-form-urlencoded"]
 
@@ -148,7 +157,7 @@ class TokenIntrospectionV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "token") and self.token:
             result["token"] = str(self.token)
         elif include_empty:

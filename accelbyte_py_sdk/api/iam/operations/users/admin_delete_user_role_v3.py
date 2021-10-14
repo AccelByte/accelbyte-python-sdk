@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.248258+08:00
+# Auto-generated at 2021-10-14T22:17:11.823839+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,18 @@ from ...models import RestErrorResponse
 class AdminDeleteUserRoleV3(Operation):
     """Delete User Role (AdminDeleteUserRoleV3)
 
+    This endpoint removes role from user. Required permission
+    ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]
+
+    action code: 10110
+
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId}
 
         method: DELETE
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: []
 
@@ -53,13 +59,13 @@ class AdminDeleteUserRoleV3(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10159: operator is not a role manager)
 
-        404: Not Found - RestErrorResponse (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found | 10156: role not found)
     """
 
     # region fields
@@ -179,7 +185,7 @@ class AdminDeleteUserRoleV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -204,13 +210,13 @@ class AdminDeleteUserRoleV3(Operation):
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10159: operator is not a role manager)
 
-        404: Not Found - RestErrorResponse (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found | 10156: role not found)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

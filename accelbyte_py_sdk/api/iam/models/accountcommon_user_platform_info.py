@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.498658+08:00
+# Auto-generated at 2021-10-14T22:17:10.826150+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class AccountcommonUserPlatformInfo(Model):
-    """Accountcommon user platform info
+    """Accountcommon user platform info (accountcommon.UserPlatformInfo)
 
     Properties:
         platform_id: (platformId) REQUIRED str
@@ -63,7 +63,7 @@ class AccountcommonUserPlatformInfo(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "platform_id") and self.platform_id:
             result["platformId"] = str(self.platform_id)
         elif include_empty:

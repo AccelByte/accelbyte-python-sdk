@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.489345+08:00
+# Auto-generated at 2021-10-14T22:17:12.151815+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,35 @@ from ...models import RestErrorResponse
 class PublicUpgradeHeadlessAccountV3(Operation):
     """Upgrade headless account and automatically verified the email address if it is succeeded (PublicUpgradeHeadlessAccountV3)
 
+    Require valid user access token.
+
+    The endpoint upgrades a headless account by linking the headless account with
+    the email address and the password. By upgrading the headless account into a
+    full account, the user could use the email address and password for using
+    Justice IAM.
+
+    The endpoint is a shortcut for upgrading a headless account and verifying the
+    email address in one call. In order to get a verification code for the
+    endpoint, please check the send verification code endpoint.
+
+    This endpoint also have an ability to update user data (if the user data field
+    is specified) right after the upgrade account process is done.  
+    Supported user data fields :
+
+      * displayName
+      * dateOfBirth : format YYYY-MM-DD, e.g. 2019-04-29
+      * country : format ISO3166-1 alpha-2 two letter, e.g. US
+
+
+    action code : 10124
+
+
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/headless/code/verify
 
         method: POST
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -53,15 +76,15 @@ class PublicUpgradeHeadlessAccountV3(Operation):
     Responses:
         200: OK - ModelUserResponseV3 (OK)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10155: country is not defined | 10130: user under age)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        403: Forbidden - RestErrorResponse (errorCode: 10152 | errorMessage: verification code not found)
+        403: Forbidden - RestErrorResponse (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context)
 
-        404: Not Found - RestErrorResponse (errorCode: 10139 | errorMessage: platform account not found)
+        404: Not Found - RestErrorResponse (10139: platform account not found | 10154: country not found)
 
-        409: Conflict - RestErrorResponse (errorCode: 10153 | errorMessage: user exist)
+        409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account)
 
         500: Internal Server Error - (Internal Server Error)
     """
@@ -175,7 +198,7 @@ class PublicUpgradeHeadlessAccountV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -196,15 +219,15 @@ class PublicUpgradeHeadlessAccountV3(Operation):
 
         200: OK - ModelUserResponseV3 (OK)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10155: country is not defined | 10130: user under age)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        403: Forbidden - RestErrorResponse (errorCode: 10152 | errorMessage: verification code not found)
+        403: Forbidden - RestErrorResponse (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context)
 
-        404: Not Found - RestErrorResponse (errorCode: 10139 | errorMessage: platform account not found)
+        404: Not Found - RestErrorResponse (10139: platform account not found | 10154: country not found)
 
-        409: Conflict - RestErrorResponse (errorCode: 10153 | errorMessage: user exist)
+        409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account)
 
         500: Internal Server Error - (Internal Server Error)
         """

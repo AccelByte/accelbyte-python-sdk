@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.539800+08:00
+# Auto-generated at 2021-10-14T22:17:12.209423+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,15 @@ from ...models import RestErrorResponse
 class PublicGetUserByUserIdV3(Operation):
     """Get User By User ID (PublicGetUserByUserIdV3)
 
+    This endpoint retrieve user attributes. action code: 10129
+
+
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}
 
         method: GET
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: []
 
@@ -52,11 +55,11 @@ class PublicGetUserByUserIdV3(Operation):
     Responses:
         200: OK - ModelPublicUserResponseV3 (OK)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
 
-        404: Not Found - RestErrorResponse (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -166,7 +169,7 @@ class PublicGetUserByUserIdV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -187,11 +190,11 @@ class PublicGetUserByUserIdV3(Operation):
 
         200: OK - ModelPublicUserResponseV3 (OK)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
 
-        404: Not Found - RestErrorResponse (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
         """
         if code == 200:
             return ModelPublicUserResponseV3.create_from_dict(content), None

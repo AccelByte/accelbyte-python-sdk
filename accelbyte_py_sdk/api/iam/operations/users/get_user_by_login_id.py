@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.545000+08:00
+# Auto-generated at 2021-10-14T22:17:11.062347+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,15 @@ from ...models import ModelPublicUserResponse
 class GetUserByLoginID(Operation):
     """Get User By Login Id (GetUserByLoginID)
 
+    Required permission 'NAMESPACE:{namespace}:USER [READ]'
+
+
     Properties:
         url: /iam/namespaces/{namespace}/users/byLoginId
 
         method: GET
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -51,11 +54,11 @@ class GetUserByLoginID(Operation):
     Responses:
         200: OK - ModelPublicUserResponse (OK)
 
-        400: Bad Request - (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - (20002: validation error)
 
-        404: Not Found - (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - (20008: user not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
     """
 
     # region fields
@@ -170,7 +173,7 @@ class GetUserByLoginID(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -191,11 +194,11 @@ class GetUserByLoginID(Operation):
 
         200: OK - ModelPublicUserResponse (OK)
 
-        400: Bad Request - (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - (20002: validation error)
 
-        404: Not Found - (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - (20008: user not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
         """
         if code == 200:
             return ModelPublicUserResponse.create_from_dict(content), None

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.466845+08:00
+# Auto-generated at 2021-10-14T22:17:10.799546+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.accountcommon_user_with_linked_platform_accounts import Accountcom
 
 
 class AccountcommonConflictedUserPlatformAccounts(Model):
-    """Accountcommon conflicted user platform accounts
+    """Accountcommon conflicted user platform accounts (accountcommon.ConflictedUserPlatformAccounts)
 
     Properties:
         platform_user_id: (platformUserID) REQUIRED str
@@ -58,7 +58,7 @@ class AccountcommonConflictedUserPlatformAccounts(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "platform_user_id") and self.platform_user_id:
             result["platformUserID"] = str(self.platform_user_id)
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.569110+08:00
+# Auto-generated at 2021-10-14T22:17:11.077449+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,16 @@ from ...models import ModelResetPasswordRequest
 class ResetPassword(Operation):
     """Reset User Password (ResetPassword)
 
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]' or
+    valid basic auth header
+
+
     Properties:
         url: /iam/namespaces/{namespace}/users/resetPassword
 
         method: POST
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -57,7 +61,7 @@ class ResetPassword(Operation):
 
         404: Not Found - (Data not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
     """
 
     # region fields
@@ -169,7 +173,7 @@ class ResetPassword(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -196,7 +200,7 @@ class ResetPassword(Operation):
 
         404: Not Found - (Data not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

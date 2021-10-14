@@ -1,4 +1,4 @@
-# Auto-generated at 2021-10-07T15:03:03.484791+08:00
+# Auto-generated at 2021-10-14T22:17:11.125986+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,26 @@ from ...models import ModelDisableUserRequest
 class DisableUser(Operation):
     """Disable a user (DisableUser)
 
+    ## The endpoint is going to be deprecated. Please use this instead:
+    iam/v2/admin/namespaces/{namespace}/users/{userId}/disable
+
+    \+
+
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId}
+    [UPDATE]'
+
+    For Deletion Account purpose fill the reason with:
+
+      * DeactivateAccount : if your deletion request comes from user
+      * AdminDeactivateAccount : if your deletion request comes from admin
+
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/disable
 
         method: PUT
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -55,7 +69,7 @@ class DisableUser(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - (20019: unable to parse request body)
 
         401: Unauthorized - (Unauthorized access)
 
@@ -63,7 +77,7 @@ class DisableUser(Operation):
 
         404: Not Found - (Data not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
     """
 
     # region fields
@@ -185,7 +199,7 @@ class DisableUser(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -210,7 +224,7 @@ class DisableUser(Operation):
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - (20019: unable to parse request body)
 
         401: Unauthorized - (Unauthorized access)
 
@@ -218,7 +232,7 @@ class DisableUser(Operation):
 
         404: Not Found - (Data not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

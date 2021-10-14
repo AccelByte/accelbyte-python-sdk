@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.936355+08:00
+# Auto-generated at 2021-10-14T22:17:11.489822+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,16 @@ from ...models import RestErrorResponse
 class AdminUpdateAgeRestrictionConfigV3(Operation):
     """Update age restriction config value (AdminUpdateAgeRestrictionConfigV3)
 
+    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]'  
+    action code: 10122
+
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/agerestrictions
 
         method: PATCH
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -53,13 +57,13 @@ class AdminUpdateAgeRestrictionConfigV3(Operation):
     Responses:
         200: OK - ModelAgeRestrictionResponseV3 (OK)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -171,7 +175,7 @@ class AdminUpdateAgeRestrictionConfigV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -192,13 +196,13 @@ class AdminUpdateAgeRestrictionConfigV3(Operation):
 
         200: OK - ModelAgeRestrictionResponseV3 (OK)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
         """
         if code == 200:
             return ModelAgeRestrictionResponseV3.create_from_dict(content), None

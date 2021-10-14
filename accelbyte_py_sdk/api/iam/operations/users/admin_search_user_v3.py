@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.080537+08:00
+# Auto-generated at 2021-10-14T22:17:11.645675+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,27 @@ from ...models import RestErrorResponse
 class AdminSearchUserV3(Operation):
     """Search User (AdminSearchUserV3)
 
+    Required permission ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Endpoint behavior :
+
+      * by default this endpoint searches all users on the specified namespace
+      * if query parameter is defined, endpoint will search users whose email address, display name, or username partially match with the query
+      * if startDate and endDate parameters is defined, endpoint will search users which created on the certain date range
+      * if query, startDate and endDate parameters are defined, endpoint will search users whose email address and display name match and created on the certain date range
+      * if startDate parameter is defined, endpoint will search users that created start from the defined date
+      * if endDate parameter is defined, endpoint will search users that created until the defined date
+
+
+    action code : 10133
+
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/search
 
         method: GET
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -62,11 +77,11 @@ class AdminSearchUserV3(Operation):
     Responses:
         200: OK - ModelSearchUsersResponseWithPaginationV3 (OK)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         500: Internal Server Error - (Internal Server Error)
     """
@@ -218,7 +233,7 @@ class AdminSearchUserV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -259,11 +274,11 @@ class AdminSearchUserV3(Operation):
 
         200: OK - ModelSearchUsersResponseWithPaginationV3 (OK)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         500: Internal Server Error - (Internal Server Error)
         """

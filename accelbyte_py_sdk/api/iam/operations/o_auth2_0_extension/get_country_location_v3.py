@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.363988+08:00
+# Auto-generated at 2021-10-14T22:17:11.990838+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,15 @@ from ...models import OauthmodelCountryLocationResponse
 class GetCountryLocationV3(Operation):
     """Get Country Location (GetCountryLocationV3)
 
+    This endpoint get country location based on the request.
+
+
     Properties:
         url: /iam/v3/location/country
 
         method: GET
 
-        tags: OAuth2.0 - Extension
+        tags: ["OAuth2.0 - Extension"]
 
         consumes: [""]
 
@@ -125,7 +128,7 @@ class GetCountryLocationV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         return result
 
     # endregion to methods

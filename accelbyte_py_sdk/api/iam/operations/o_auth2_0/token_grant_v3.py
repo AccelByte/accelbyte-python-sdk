@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.398561+08:00
+# Auto-generated at 2021-10-14T22:17:12.029485+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,74 @@ from ...models import OauthmodelTokenResponseV3
 class TokenGrantV3(Operation):
     """OAuth2 access token generation endpoint (TokenGrantV3)
 
+    This endpoint supports grant type:
+
+      1. Grant Type == `authorization_code`:  
+        It generates the user token by given the authorization code which generated in "/v3/oauth/auth" API response. It should also pass in the redirect_uri, which should be the same as generating the authorization code request. 
+      2. Grant Type == `refresh_token`:  
+        Used to get a new access token for a valid refresh token. 
+      3. Grant Type == `client_credentials`:  
+        It generates a token by checking the client credentials provided through Authorization header. 
+
+    ## Access Token Content
+
+    Following is the access token’s content:
+
+      * namespace. It is the namespace the token was generated from.
+
+      * display_name. The display name of the sub. It is empty if the token is generated from the client credential
+
+      * roles. The sub’s roles. It is empty if the token is generated from the client credential
+
+      * namespace_roles. The sub’s roles scoped to namespace. Improvement from roles, which make the role scoped to specific namespace instead of global to publisher namespace
+
+      * permissions. The sub or aud’ permissions
+
+      * bans. The sub’s list of bans. It is used by the IAM client for validating the token.
+
+      * jflgs. It stands for Justice Flags. It is a special flag used for storing additional status information regarding the sub. It is implemented as a bit mask. Following explains what each bit represents:
+
+        * 1: Email Address Verified
+
+        * 2: Phone Number Verified
+
+        * 4: Anonymous
+
+        * 8: Suspicious Login
+
+      * aud. The aud is the targeted resource server.
+
+      * iat. The time the token issues at. It is in Epoch time format
+
+      * exp. The time the token expires. It is in Epoch time format
+
+      * client_id. The UserID. The sub is omitted if the token is generated from client credential
+
+      * scope. The scope of the access request, expressed as a list of space-delimited, case-sensitive strings
+
+    ## Bans
+
+    The JWT contains user's active bans with its expiry date. List of ban types
+    can be obtained from /bans.
+
+    ## Track Login History
+
+    This endpoint will track login history to detect suspicious login activity,
+    please provide "device_id" (alphanumeric) in request header parameter
+    otherwise we will set to "unknown".
+
+    Align with General Data Protection Regulation in Europe, user login history
+    will be kept within 28 days by default"
+
+    action code: 10703
+
+
     Properties:
         url: /iam/v3/oauth/token
 
         method: POST
 
-        tags: OAuth2.0
+        tags: ["OAuth2.0"]
 
         consumes: ["application/x-www-form-urlencoded"]
 
@@ -209,7 +271,7 @@ class TokenGrantV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "device_id") and self.device_id:
             result["device_id"] = str(self.device_id)
         elif include_empty:

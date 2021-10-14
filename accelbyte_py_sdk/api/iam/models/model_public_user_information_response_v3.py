@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.573772+08:00
+# Auto-generated at 2021-10-14T22:17:10.887526+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,7 +29,7 @@ from ..models.model_public_user_information_v3 import ModelPublicUserInformation
 
 
 class ModelPublicUserInformationResponseV3(Model):
-    """Model public user information response V3
+    """Model public user information response V3 (model.PublicUserInformationResponseV3)
 
     Properties:
         data: (data) REQUIRED List[ModelPublicUserInformationV3]
@@ -59,7 +59,7 @@ class ModelPublicUserInformationResponseV3(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "data") and self.data:
             result["data"] = [i0.to_dict(include_empty=include_empty) for i0 in self.data]
         elif include_empty:

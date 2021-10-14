@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.212162+08:00
+# Auto-generated at 2021-10-14T22:17:11.796781+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,40 @@ from ...models import RestapiErrorResponse
 class AdminPlatformUnlinkV3(Operation):
     """Unlink user's account from specific platform (AdminPlatformUnlinkV3)
 
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]'.
+
+    ## Supported platforms:
+
+      * steam
+      * steamopenid
+      * facebook
+      * google
+      * oculus
+      * twitch
+      * android
+      * ios
+      * device
+      * discord
+
+    Unlink user's account from a specific platform. 'justice' platform might have
+    multiple accounts from different namespaces linked.  
+    platformNamespace need to be specified when the platform ID is 'justice'.  
+
+    Unlink user's account from justice platform will enable password token grant
+    and password update.  
+
+    If you want to unlink user's account in a game namespace, you have to specify
+    platformNamespace to that game namespace.  
+
+    action code : 10121
+
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}
 
         method: DELETE
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -56,13 +84,13 @@ class AdminPlatformUnlinkV3(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestapiErrorResponse (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - RestapiErrorResponse (20019: unable to parse request body | 20002: validation error)
 
-        401: Unauthorized - RestapiErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestapiErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestapiErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestapiErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestapiErrorResponse (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - RestapiErrorResponse (20008: user not found)
 
         500: Internal Server Error - (Internal Server Error)
     """
@@ -196,7 +224,7 @@ class AdminPlatformUnlinkV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -225,13 +253,13 @@ class AdminPlatformUnlinkV3(Operation):
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestapiErrorResponse (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - RestapiErrorResponse (20019: unable to parse request body | 20002: validation error)
 
-        401: Unauthorized - RestapiErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestapiErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestapiErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestapiErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestapiErrorResponse (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - RestapiErrorResponse (20008: user not found)
 
         500: Internal Server Error - (Internal Server Error)
         """

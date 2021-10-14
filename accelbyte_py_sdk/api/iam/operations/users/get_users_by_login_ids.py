@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.565780+08:00
+# Auto-generated at 2021-10-14T22:17:11.074625+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,15 @@ from ...models import ModelPublicUsersResponse
 class GetUsersByLoginIds(Operation):
     """Get a List of Users By Their Login Id (GetUsersByLoginIds)
 
+    Required permission 'NAMESPACE:{namespace}:USER [READ]'
+
+
     Properties:
         url: /iam/namespaces/{namespace}/users/listByLoginIds
 
         method: GET
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -170,7 +173,7 @@ class GetUsersByLoginIds(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

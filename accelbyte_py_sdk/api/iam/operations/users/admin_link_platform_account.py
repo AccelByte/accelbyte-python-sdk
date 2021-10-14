@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.205785+08:00
+# Auto-generated at 2021-10-14T22:17:11.791684+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,18 @@ from ...models import RestErrorResponse
 class AdminLinkPlatformAccount(Operation):
     """Link a Platform User Account to User Account (AdminLinkPlatformAccount)
 
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+    Force linking platform account to user User Account. This endpoint intended
+    for admin to forcefully link account to user.
+
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/link
 
         method: POST
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: []
 
@@ -54,13 +60,13 @@ class AdminLinkPlatformAccount(Operation):
     Responses:
         204: No Content - (No Content)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -182,7 +188,7 @@ class AdminLinkPlatformAccount(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -207,13 +213,13 @@ class AdminLinkPlatformAccount(Operation):
 
         204: No Content - (No Content)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

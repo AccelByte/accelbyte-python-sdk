@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.879601+08:00
+# Auto-generated at 2021-10-14T22:17:11.408813+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import ModelUserCreateResponse
 class PublicCreateUserV2(Operation):
     """Create User (PublicCreateUserV2)
 
+    Available Authentication Types:
+
+      1. EMAILPASSWD : an authentication type used for new user registration through email.
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+
     Properties:
         url: /iam/v2/public/namespaces/{namespace}/users
 
         method: POST
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: []
 
@@ -170,7 +177,7 @@ class PublicCreateUserV2(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

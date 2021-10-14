@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.231485+08:00
+# Auto-generated at 2021-10-14T22:17:11.811818+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,20 @@ from ...models import RestErrorResponse
 class AdminSaveUserRoleV3(Operation):
     """Admin Save User Role V3 (AdminSaveUserRoleV3)
 
+    This endpoint requires ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+    permission. User's roles will be updated with given roles (replacing current
+    user's role). Request body need to specify allowed namespace for given role to
+    support new role restriction. Skipped the check whether the user performing
+    the request is a role manager / assigner since there is a plan to discard the
+    role manager / assigner.
+
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles
 
         method: PATCH
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: []
 
@@ -54,15 +62,15 @@ class AdminSaveUserRoleV3(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20003 | errorMessage: forbidden access)
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
 
-        404: Not Found - RestErrorResponse (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found)
 
-        422: Unprocessable Entity - RestErrorResponse (errorCode: 10183 | errorMessage: validation error)
+        422: Unprocessable Entity - RestErrorResponse (10183: validation error)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -184,7 +192,7 @@ class AdminSaveUserRoleV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = [i0.to_dict(include_empty=include_empty) for i0 in self.body]
         elif include_empty:
@@ -209,15 +217,15 @@ class AdminSaveUserRoleV3(Operation):
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20003 | errorMessage: forbidden access)
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
 
-        404: Not Found - RestErrorResponse (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found)
 
-        422: Unprocessable Entity - RestErrorResponse (errorCode: 10183 | errorMessage: validation error)
+        422: Unprocessable Entity - RestErrorResponse (10183: validation error)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

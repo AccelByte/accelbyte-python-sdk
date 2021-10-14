@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.439417+08:00
+# Auto-generated at 2021-10-14T22:17:10.777222+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,7 +29,7 @@ from ..models.account_user_permissions_response_v4 import AccountUserPermissions
 
 
 class AccountUserResponseV4(Model):
-    """Account user response V4
+    """Account user response V4 (account.UserResponseV4)
 
     Properties:
         auth_type: (authType) REQUIRED str
@@ -206,7 +206,7 @@ class AccountUserResponseV4(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "auth_type") and self.auth_type:
             result["authType"] = str(self.auth_type)
         elif include_empty:

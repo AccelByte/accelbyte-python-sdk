@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.431110+08:00
+# Auto-generated at 2021-10-14T22:17:12.065563+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,15 @@ from ...models import RestErrorResponse
 class PublicGetAsyncStatus(Operation):
     """Get Linking Progress Status (PublicGetAsyncStatus)
 
+    This endpoint is used to get linking status.
+
+
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/requests/{requestId}/async/status
 
         method: GET
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: []
 
@@ -52,11 +55,11 @@ class PublicGetAsyncStatus(Operation):
     Responses:
         200: OK - ModelLinkRequest (OK)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -166,7 +169,7 @@ class PublicGetAsyncStatus(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -187,11 +190,11 @@ class PublicGetAsyncStatus(Operation):
 
         200: OK - ModelLinkRequest (OK)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        500: Internal Server Error - RestErrorResponse (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
         """
         if code == 200:
             return ModelLinkRequest.create_from_dict(content), None

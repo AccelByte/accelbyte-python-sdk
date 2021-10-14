@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.602221+08:00
+# Auto-generated at 2021-10-14T22:17:11.109146+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,25 @@ from ...models import ModelUserBanResponse
 class DisableUserBan(Operation):
     """Disable ban for a single user. (DisableUserBan)
 
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]'.  
+
+     Notes for using IAM in publisher - game studio scenarios  
+
+    The endpoint allows:
+
+      * The admin user in publisher namespace disables user’s ban in publisher namespace.
+      * The admin user in game namespace disables user’s ban in game namespace.
+      * The admin user in publisher namespace disables user’s ban in publisher namespace.
+
+    Other scenarios are not supported and will return 403: Forbidden.
+
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/bans/{banId}/disable
 
         method: PUT
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["text/plain"]
 
@@ -55,11 +68,11 @@ class DisableUserBan(Operation):
 
         401: Unauthorized - (Unauthorized access)
 
-        403: Forbidden - (errorCode: 10145 | errorMessage: disallow game access publisher user's ban)
+        403: Forbidden - (10145: disallow game access publisher user's ban)
 
-        404: Not Found - (errorCode: 10139 | errorMessage: platform account not found)
+        404: Not Found - (10139: platform account not found | 20008: user not found | 10158: ban not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
     """
 
     # region fields
@@ -179,7 +192,7 @@ class DisableUserBan(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -206,11 +219,11 @@ class DisableUserBan(Operation):
 
         401: Unauthorized - (Unauthorized access)
 
-        403: Forbidden - (errorCode: 10145 | errorMessage: disallow game access publisher user's ban)
+        403: Forbidden - (10145: disallow game access publisher user's ban)
 
-        404: Not Found - (errorCode: 10139 | errorMessage: platform account not found)
+        404: Not Found - (10139: platform account not found | 20008: user not found | 10158: ban not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
         """
         if code == 200:
             return ModelUserBanResponse.create_from_dict(content), None

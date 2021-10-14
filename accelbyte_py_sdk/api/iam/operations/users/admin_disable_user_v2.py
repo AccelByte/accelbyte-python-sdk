@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.850139+08:00
+# Auto-generated at 2021-10-14T22:17:11.383059+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,21 @@ from ...models import ModelDisableUserRequest
 class AdminDisableUserV2(Operation):
     """Disable a user (AdminDisableUserV2)
 
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId}
+    [UPDATE]'
+
+    For Deletion Account purpose fill the reason with:
+
+      * DeactivateAccount : if your deletion request comes from user
+      * AdminDeactivateAccount : if your deletion request comes from admin
+
+
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/disable
 
         method: PUT
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: []
 
@@ -53,15 +62,15 @@ class AdminDisableUserV2(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - (20019: unable to parse request body)
 
         401: Unauthorized - (Unauthorized access)
 
         403: Forbidden - (Forbidden)
 
-        404: Not Found - (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - (20008: user not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
     """
 
     # region fields
@@ -183,7 +192,7 @@ class AdminDisableUserV2(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -208,15 +217,15 @@ class AdminDisableUserV2(Operation):
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - (20019: unable to parse request body)
 
         401: Unauthorized - (Unauthorized access)
 
         403: Forbidden - (Forbidden)
 
-        404: Not Found - (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - (20008: user not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

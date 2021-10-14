@@ -1,4 +1,4 @@
-# Auto-generated at 2021-10-07T15:03:03.511719+08:00
+# Auto-generated at 2021-10-14T22:17:11.171416+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,30 @@ from ...models import ModelGetUserJusticePlatformAccountResponse
 class GetUserJusticePlatformAccount(Operation):
     """Get the Justice linked accounts on the designated namespace (GetUserJusticePlatformAccount)
 
+    This endpoint requires the client access token as the bearer token. Required
+    permission 'ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [UPDATE]'
+
+    It is going to be removed on November 26th, 2018
+
+    The endpoint returns user Justice platform account linked with the given user.
+    If the user Justice platform account doesn't exist in the designated
+    namespace, the endpoint is going to create and return the new Justice platform
+    account. The newly user Justice platform account is going to be forced to
+    perform token grant through the given user and can't perform password update
+
+    ### Read Justice Platform Account UserID
+
+    In order to read the Justice platform account UserID, it is required to have
+    the permission: NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ] , otherwise
+    the UserID is going to be censored and replaced with “Redacted” text.
+
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
 
         method: POST
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -179,7 +197,7 @@ class GetUserJusticePlatformAccount(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

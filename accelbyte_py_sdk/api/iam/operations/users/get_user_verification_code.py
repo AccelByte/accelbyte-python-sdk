@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.143273+08:00
+# Auto-generated at 2021-10-14T22:17:11.728869+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,21 @@ from ...models import ModelVerificationCodeResponse
 class GetUserVerificationCode(Operation):
     """Get verification code sent to user (getUserVerificationCode)
 
+    [WARNING] This endpoint is only for testing purpose.  
+    This endpoint get active user verification code. There are 3 scenario of
+    getting verification codes : after account registration, after reset password
+    request, and after headless account upgrade. All of them will be returned on
+    this endpoint. Required permission
+    'ADMIN:NAMESPACE:{namespace}:USER:{userId}:CODE' [READ]  
+    action code: 10146
+
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/codes
 
         method: GET
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: []
 
@@ -167,7 +176,7 @@ class GetUserVerificationCode(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

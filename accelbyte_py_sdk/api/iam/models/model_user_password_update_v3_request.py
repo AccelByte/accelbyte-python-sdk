@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.667578+08:00
+# Auto-generated at 2021-10-14T22:17:10.971256+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelUserPasswordUpdateV3Request(Model):
-    """Model user password update V3 request
+    """Model user password update V3 request (model.UserPasswordUpdateV3Request)
 
     Properties:
         language_tag: (languageTag) REQUIRED str
@@ -63,7 +63,7 @@ class ModelUserPasswordUpdateV3Request(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "language_tag") and self.language_tag:
             result["languageTag"] = str(self.language_tag)
         elif include_empty:

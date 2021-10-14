@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.461731+08:00
+# Auto-generated at 2021-10-14T22:17:10.796431+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class AccountcommonClientPermission(Model):
-    """Accountcommon client permission
+    """Accountcommon client permission (accountcommon.ClientPermission)
 
     Properties:
         action: (Action) REQUIRED int
@@ -56,7 +56,7 @@ class AccountcommonClientPermission(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "action") and self.action:
             result["Action"] = int(self.action)
         elif include_empty:

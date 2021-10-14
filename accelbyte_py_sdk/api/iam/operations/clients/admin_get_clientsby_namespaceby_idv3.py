@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.975163+08:00
+# Auto-generated at 2021-10-14T22:17:11.538539+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,16 @@ from ...models import RestErrorResponse
 class AdminGetClientsbyNamespacebyIDV3(Operation):
     """Get clients by namespace and client id (AdminGetClientsbyNamespacebyIDV3)
 
+    Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT [READ]'  
+    action code: 10309
+
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}
 
         method: GET
 
-        tags: Clients
+        tags: ["Clients"]
 
         consumes: []
 
@@ -52,13 +56,13 @@ class AdminGetClientsbyNamespacebyIDV3(Operation):
     Responses:
         200: OK - ClientmodelClientV3Response (OK)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestErrorResponse (errorCode: 10365 | errorMessage: client not found)
+        404: Not Found - RestErrorResponse (10365: client not found)
     """
 
     # region fields
@@ -168,7 +172,7 @@ class AdminGetClientsbyNamespacebyIDV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -189,13 +193,13 @@ class AdminGetClientsbyNamespacebyIDV3(Operation):
 
         200: OK - ClientmodelClientV3Response (OK)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestErrorResponse (errorCode: 10365 | errorMessage: client not found)
+        404: Not Found - RestErrorResponse (10365: client not found)
         """
         if code == 200:
             return ClientmodelClientV3Response.create_from_dict(content), None

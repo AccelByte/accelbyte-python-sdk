@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.366574+08:00
+# Auto-generated at 2021-10-14T22:17:11.992424+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,12 +29,15 @@ from .....core import HttpResponse
 class Logout(Operation):
     """Logout (Logout)
 
+    This endpoint is used to remove access_token cookie and refresh_token cookie.
+
+
     Properties:
         url: /iam/v3/logout
 
         method: POST
 
-        tags: OAuth2.0 - Extension
+        tags: ["OAuth2.0 - Extension"]
 
         consumes: ["text/plain"]
 
@@ -123,7 +126,7 @@ class Logout(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         return result
 
     # endregion to methods

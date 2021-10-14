@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.545235+08:00
+# Auto-generated at 2021-10-14T22:17:10.864949+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelForgotPasswordRequestV3(Model):
-    """Model forgot password request V3
+    """Model forgot password request V3 (model.ForgotPasswordRequestV3)
 
     Properties:
         email_address: (emailAddress) REQUIRED str
@@ -56,7 +56,7 @@ class ModelForgotPasswordRequestV3(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "email_address") and self.email_address:
             result["emailAddress"] = str(self.email_address)
         elif include_empty:

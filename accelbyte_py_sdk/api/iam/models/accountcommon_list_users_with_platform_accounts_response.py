@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.472757+08:00
+# Auto-generated at 2021-10-14T22:17:10.804531+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,7 +29,7 @@ from ..models.accountcommon_user_with_platform_accounts import AccountcommonUser
 
 
 class AccountcommonListUsersWithPlatformAccountsResponse(Model):
-    """Accountcommon list users with platform accounts response
+    """Accountcommon list users with platform accounts response (accountcommon.ListUsersWithPlatformAccountsResponse)
 
     Properties:
         data: (data) REQUIRED List[AccountcommonUserWithPlatformAccounts]
@@ -66,7 +66,7 @@ class AccountcommonListUsersWithPlatformAccountsResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "data") and self.data:
             result["data"] = [i0.to_dict(include_empty=include_empty) for i0 in self.data]
         elif include_empty:

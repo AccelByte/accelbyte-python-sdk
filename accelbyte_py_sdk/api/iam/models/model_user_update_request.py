@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.683856+08:00
+# Auto-generated at 2021-10-14T22:17:10.983821+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelUserUpdateRequest(Model):
-    """Model user update request
+    """Model user update request (model.UserUpdateRequest)
 
     Properties:
         country: (Country) OPTIONAL str
@@ -70,7 +70,7 @@ class ModelUserUpdateRequest(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "country") and self.country:
             result["Country"] = str(self.country)
         elif include_empty:

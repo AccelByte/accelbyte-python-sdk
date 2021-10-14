@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.582345+08:00
+# Auto-generated at 2021-10-14T22:17:12.248174+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,12 +29,23 @@ from .....core import HttpResponse
 class PlatformAuthenticateSAMLV3Handler(Operation):
     """SAML platform Authentication API (platformAuthenticateSAMLV3Handler)
 
+    This endpoint authenticates user platform for SAML protocol. It validates user
+    to its respective platforms. Deactivated or login-banned users are unable to
+    login.  
+
+    ## Supported platforms:
+
+      * azure
+    Microsoft login page will redirects to this endpoint after login success as
+    previously defined on authentication request SAML
+
+
     Properties:
         url: /iam/v3/sso/saml/platforms/{platformId}/authenticate
 
         method: POST
 
-        tags: SSO SAML 2.0
+        tags: ["SSO SAML 2.0"]
 
         consumes: ["application/x-www-form-urlencoded"]
 
@@ -193,7 +204,7 @@ class PlatformAuthenticateSAMLV3Handler(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "platform_id") and self.platform_id:
             result["platformId"] = str(self.platform_id)
         elif include_empty:

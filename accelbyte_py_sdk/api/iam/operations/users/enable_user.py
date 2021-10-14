@@ -1,4 +1,4 @@
-# Auto-generated at 2021-10-07T15:03:03.487907+08:00
+# Auto-generated at 2021-10-14T22:17:11.131606+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,19 @@ from .....core import deprecated
 class EnableUser(Operation):
     """Enable a user (EnableUser)
 
+    ## The endpoint is going to be deprecated. Please use this instead:
+    iam/v2/admin/namespaces/{namespace}/users/{userId}/enable
+
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId}
+    [UPDATE]'
+
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/enable
 
         method: PUT
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["text/plain"]
 
@@ -55,9 +62,9 @@ class EnableUser(Operation):
 
         403: Forbidden - (Forbidden)
 
-        404: Not Found - (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - (20008: user not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
     """
 
     # region fields
@@ -167,7 +174,7 @@ class EnableUser(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -192,9 +199,9 @@ class EnableUser(Operation):
 
         403: Forbidden - (Forbidden)
 
-        404: Not Found - (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - (20008: user not found)
 
-        500: Internal Server Error - (errorCode: 20000 | errorMessage: internal server error)
+        500: Internal Server Error - (20000: internal server error)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

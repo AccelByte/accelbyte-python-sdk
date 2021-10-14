@@ -1,4 +1,4 @@
-# Auto-generated at 2021-10-07T15:03:03.562122+08:00
+# Auto-generated at 2021-10-14T22:17:11.244249+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,22 @@ from .....core import deprecated
 class RevokeToken(Operation):
     """OAuth2 token revocation API (RevokeToken)
 
+    # Deprecated at August 30, 2019. Please use the /v3/oauth/revoke endpoint
+    instead
+
+    Revokes a token.
+
+    This endpoint requires all requests to have Authorization header set with
+    Basic access authentication constructed from client id and client secret or
+    Bearer access authentication with valid access token.
+
+
     Properties:
         url: /iam/oauth/revoke/token
 
         method: POST
 
-        tags: OAuth
+        tags: ["OAuth"]
 
         consumes: ["application/x-www-form-urlencoded"]
 
@@ -147,7 +157,7 @@ class RevokeToken(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "token") and self.token:
             result["token"] = str(self.token)
         elif include_empty:

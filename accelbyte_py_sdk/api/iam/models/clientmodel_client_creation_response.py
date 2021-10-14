@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.510281+08:00
+# Auto-generated at 2021-10-14T22:17:10.835924+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.accountcommon_permission import AccountcommonPermission
 
 
 class ClientmodelClientCreationResponse(Model):
-    """Clientmodel client creation response
+    """Clientmodel client creation response (clientmodel.ClientCreationResponse)
 
     Properties:
         client_id: (ClientId) REQUIRED str
@@ -79,7 +79,7 @@ class ClientmodelClientCreationResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "client_id") and self.client_id:
             result["ClientId"] = str(self.client_id)
         elif include_empty:

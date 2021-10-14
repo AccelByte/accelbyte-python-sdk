@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.690009+08:00
+# Auto-generated at 2021-10-14T22:17:12.390878+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,18 @@ from ...models import RestErrorResponse
 class AdminRevokeUserFromRoleV4(Operation):
     """Revoke User from Role (AdminRevokeUserFromRoleV4)
 
+    Required permission ADMIN:ROLE [UPDATE] Current implementation will revoke
+    user from role in all assigned namespaces. Parameters: \- userId: string
+    (required) \- namespace: string (user’s namespace) (required) action code:
+    10411
+
+
     Properties:
         url: /iam/v4/admin/roles/{roleId}/users
 
         method: DELETE
 
-        tags: Roles
+        tags: ["Roles"]
 
         consumes: ["application/json"]
 
@@ -52,13 +58,13 @@ class AdminRevokeUserFromRoleV4(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10457: specified role is not admin role)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10459: operator is not a role manager)
 
-        404: Not Found - RestErrorResponse (errorCode: 10456 | errorMessage: role not found)
+        404: Not Found - RestErrorResponse (10456: role not found)
     """
 
     # region fields
@@ -170,7 +176,7 @@ class AdminRevokeUserFromRoleV4(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -191,13 +197,13 @@ class AdminRevokeUserFromRoleV4(Operation):
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10457: specified role is not admin role)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10459: operator is not a role manager)
 
-        404: Not Found - RestErrorResponse (errorCode: 10456 | errorMessage: role not found)
+        404: Not Found - RestErrorResponse (10456: role not found)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

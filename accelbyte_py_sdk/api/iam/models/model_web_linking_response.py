@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.692556+08:00
+# Auto-generated at 2021-10-14T22:17:10.989492+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelWebLinkingResponse(Model):
-    """Model web linking response
+    """Model web linking response (model.WebLinkingResponse)
 
     Properties:
         third_party_url: (third_party_url) REQUIRED str
@@ -49,7 +49,7 @@ class ModelWebLinkingResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "third_party_url") and self.third_party_url:
             result["third_party_url"] = str(self.third_party_url)
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.561525+08:00
+# Auto-generated at 2021-10-14T22:17:10.877432+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelListEmailAddressRequest(Model):
-    """Model list email address request
+    """Model list email address request (model.ListEmailAddressRequest)
 
     Properties:
         list_email_address_request: (listEmailAddressRequest) REQUIRED List[str]
@@ -49,7 +49,7 @@ class ModelListEmailAddressRequest(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "list_email_address_request") and self.list_email_address_request:
             result["listEmailAddressRequest"] = [str(i0) for i0 in self.list_email_address_request]
         elif include_empty:

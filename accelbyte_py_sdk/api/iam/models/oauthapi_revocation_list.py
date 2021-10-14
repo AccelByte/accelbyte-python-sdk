@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.693364+08:00
+# Auto-generated at 2021-10-14T22:17:10.990188+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,7 +29,7 @@ from ..models.oauthcommon_user_revocation_list_record import OauthcommonUserRevo
 
 
 class OauthapiRevocationList(Model):
-    """Oauthapi revocation list
+    """Oauthapi revocation list (oauthapi.RevocationList)
 
     Properties:
         revoked_tokens: (revoked_tokens) REQUIRED BloomFilterJSON
@@ -59,7 +59,7 @@ class OauthapiRevocationList(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "revoked_tokens") and self.revoked_tokens:
             result["revoked_tokens"] = self.revoked_tokens.to_dict(include_empty=include_empty)
         elif include_empty:

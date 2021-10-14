@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.534930+08:00
+# Auto-generated at 2021-10-14T22:17:12.204779+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,15 @@ from ...models import RestErrorResponse
 class ResetPasswordV3(Operation):
     """Reset User Password (ResetPasswordV3)
 
+    action code: 10105
+
+
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/reset
 
         method: POST
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -52,11 +55,11 @@ class ResetPasswordV3(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10142: new password cannot be same with original)
 
-        403: Forbidden - RestErrorResponse (errorCode: 10137 | errorMessage: code is expired)
+        403: Forbidden - RestErrorResponse (10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10152: verification code not found)
 
-        404: Not Found - RestErrorResponse (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found)
     """
 
     # region fields
@@ -168,7 +171,7 @@ class ResetPasswordV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -189,11 +192,11 @@ class ResetPasswordV3(Operation):
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10142: new password cannot be same with original)
 
-        403: Forbidden - RestErrorResponse (errorCode: 10137 | errorMessage: code is expired)
+        403: Forbidden - RestErrorResponse (10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10152: verification code not found)
 
-        404: Not Found - RestErrorResponse (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

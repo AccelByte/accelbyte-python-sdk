@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.691263+08:00
+# Auto-generated at 2021-10-14T22:17:10.988330+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelVerificationCodeResponse(Model):
-    """Model verification code response
+    """Model verification code response (model.VerificationCodeResponse)
 
     Properties:
         account_registration: (accountRegistration) REQUIRED str
@@ -70,7 +70,7 @@ class ModelVerificationCodeResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "account_registration") and self.account_registration:
             result["accountRegistration"] = str(self.account_registration)
         elif include_empty:

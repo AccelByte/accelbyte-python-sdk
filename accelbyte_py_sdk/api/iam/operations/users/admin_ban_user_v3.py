@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.115805+08:00
+# Auto-generated at 2021-10-14T22:17:11.690160+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,19 @@ from ...models import RestErrorResponse
 class AdminBanUserV3(Operation):
     """Ban a single user (AdminBanUserV3)
 
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]'.
+
+    Bans a user with specific type of ban. Ban types and reason can be queried.
+
+    action code : 10141
+
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans
 
         method: POST
 
-        tags: Users
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -55,13 +62,13 @@ class AdminBanUserV3(Operation):
     Responses:
         201: Created - ModelUserBanResponseV3 (Created)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestErrorResponse (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found | 10158: ban not found)
     """
 
     # region fields
@@ -183,7 +190,7 @@ class AdminBanUserV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -208,13 +215,13 @@ class AdminBanUserV3(Operation):
 
         201: Created - ModelUserBanResponseV3 (Created)
 
-        400: Bad Request - RestErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - RestErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestErrorResponse (errorCode: 20008 | errorMessage: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found | 10158: ban not found)
         """
         if code == 201:
             return ModelUserBanResponseV3.create_from_dict(content), None

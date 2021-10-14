@@ -1,4 +1,4 @@
-# Auto-generated at 2021-10-07T15:03:03.435404+08:00
+# Auto-generated at 2021-10-14T22:17:11.026441+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,18 @@ from .....core import deprecated
 class DeleteClient(Operation):
     """Delete Client (DeleteClient)
 
+    ## The endpoint is going to be deprecated at 16 August, 2018. Please use this
+    instead: namespaces/{namespace}/clients/{clientId}
+
+    Required permission 'CLIENT:ADMIN [DELETE]'
+
+
     Properties:
         url: /iam/clients/{clientId}
 
         method: DELETE
 
-        tags: Clients
+        tags: ["Clients"]
 
         consumes: ["application/json"]
 
@@ -153,7 +159,7 @@ class DeleteClient(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "client_id") and self.client_id:
             result["clientId"] = str(self.client_id)
         elif include_empty:

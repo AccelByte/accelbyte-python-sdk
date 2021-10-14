@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:25.590307+08:00
+# Auto-generated at 2021-10-14T22:17:12.253459+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,16 @@ from ...models import RestErrorResponse
 class LogoutSSOClient(Operation):
     """Logout (LogoutSSOClient)
 
+    Logout user's session on platform that logged in using SSO. Supported
+    platforms: \- discourse
+
+
     Properties:
         url: /iam/v3/sso/{platformId}/logout
 
         method: POST
 
-        tags: SSO
+        tags: ["SSO"]
 
         consumes: []
 
@@ -153,7 +157,7 @@ class LogoutSSOClient(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "platform_id") and self.platform_id:
             result["platformId"] = str(self.platform_id)
         elif include_empty:

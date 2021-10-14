@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.505761+08:00
+# Auto-generated at 2021-10-14T22:17:11.011398+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,19 @@ from ...models import AccountcommonBanReasons
 class GetListBanReason(Operation):
     """Get list of ban reasons (GetListBanReason)
 
+    Required permission 'BAN:ADMIN [READ]' or 'ADMIN:BAN [READ]'
+
+    Required Permission 'BAN:ADMIN [READ]' is going to be DEPRECATED for security
+    purpose. It is going to be deprecated on 31 JANUARY 2019 , please use
+    permission 'ADMIN:BAN [READ]' instead.
+
+
     Properties:
         url: /iam/bans/reasons
 
         method: GET
 
-        tags: Bans
+        tags: ["Bans"]
 
         consumes: []
 
@@ -129,7 +136,7 @@ class GetListBanReason(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         return result
 
     # endregion to methods

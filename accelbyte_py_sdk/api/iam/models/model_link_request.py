@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.557640+08:00
+# Auto-generated at 2021-10-14T22:17:10.874308+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.rest_error_response import RestErrorResponse
 
 
 class ModelLinkRequest(Model):
-    """Model link request
+    """Model link request (model.LinkRequest)
 
     Properties:
         client_id: (client_id) REQUIRED str
@@ -107,7 +107,7 @@ class ModelLinkRequest(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "client_id") and self.client_id:
             result["client_id"] = str(self.client_id)
         elif include_empty:

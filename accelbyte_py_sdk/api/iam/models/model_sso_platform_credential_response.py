@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:31.619930+08:00
+# Auto-generated at 2021-10-14T22:17:10.929211+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelSSOPlatformCredentialResponse(Model):
-    """Model SSO platform credential response
+    """Model SSO platform credential response (model.SSOPlatformCredentialResponse)
 
     Properties:
         acs_url: (acsUrl) REQUIRED str
@@ -112,7 +112,7 @@ class ModelSSOPlatformCredentialResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "acs_url") and self.acs_url:
             result["acsUrl"] = str(self.acs_url)
         elif include_empty:

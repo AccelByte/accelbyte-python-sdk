@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:24.922292+08:00
+# Auto-generated at 2021-10-14T22:17:11.470890+08:00
 # from: Justice Iam Service (4.1.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,20 @@ from ...models import RestapiErrorResponse
 class AdminGetListBanReasonV3(Operation):
     """Get list of ban reasons (AdminGetListBanReasonV3)
 
+    Required permission 'ADMIN:BAN [READ]'
+
+    Ban reasons is the code available to justify ban assignment. It is applicable
+    globally for any namespace.
+
+    action code : 10202
+
+
     Properties:
         url: /iam/v3/admin/bans/reasons
 
         method: GET
 
-        tags: Bans
+        tags: ["Bans"]
 
         consumes: []
 
@@ -48,9 +56,9 @@ class AdminGetListBanReasonV3(Operation):
     Responses:
         200: OK - AccountcommonBanReasonsV3 (OK)
 
-        401: Unauthorized - RestapiErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestapiErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestapiErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestapiErrorResponse (20013: insufficient permissions)
     """
 
     # region fields
@@ -130,7 +138,7 @@ class AdminGetListBanReasonV3(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         return result
 
     # endregion to methods
@@ -143,9 +151,9 @@ class AdminGetListBanReasonV3(Operation):
 
         200: OK - AccountcommonBanReasonsV3 (OK)
 
-        401: Unauthorized - RestapiErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - RestapiErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestapiErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - RestapiErrorResponse (20013: insufficient permissions)
         """
         if code == 200:
             return AccountcommonBanReasonsV3.create_from_dict(content), None
