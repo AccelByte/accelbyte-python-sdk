@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.518319+08:00
+# Auto-generated at 2021-10-14T22:17:13.329835+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,22 @@ from ...models import RestapiErrorResponseV1
 class CreateNotificationTemplateV1Admin(Operation):
     """create new notification template (createNotificationTemplateV1Admin)
 
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with
+    scope `social`  
+    Create new notification template. Include handlebars {{key}} for replaceable
+    contexts. The the key inside handlebars will be the key to be replaced when
+    sending notification. Already existing template with the same slug and
+    language can not be created.  
+    Check model description for detailed input restrictions.  
+    Action Code: 50204
+
+
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates
 
         method: POST
 
-        tags: notification
+        tags: ["notification"]
 
         consumes: ["application/json"]
 
@@ -172,7 +182,7 @@ class CreateNotificationTemplateV1Admin(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

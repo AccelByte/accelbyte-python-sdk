@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:33.408684+08:00
+# Auto-generated at 2021-10-14T22:17:13.183013+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.handlers_user_presence import HandlersUserPresence
 
 
 class HandlersGetUsersPresenceResponse(Model):
-    """Handlers get users presence response
+    """Handlers get users presence response (handlers.GetUsersPresenceResponse)
 
     Properties:
         busy: (busy) REQUIRED int
@@ -79,7 +79,7 @@ class HandlersGetUsersPresenceResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "busy") and self.busy:
             result["busy"] = int(self.busy)
         elif include_empty:

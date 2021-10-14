@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:33.471756+08:00
+# Auto-generated at 2021-10-14T22:17:13.241519+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsAdminUpdateProfanityList(Model):
-    """Models admin update profanity list
+    """Models admin update profanity list (models.AdminUpdateProfanityList)
 
     Properties:
         is_enabled: (isEnabled) REQUIRED bool
@@ -63,7 +63,7 @@ class ModelsAdminUpdateProfanityList(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "is_enabled") and self.is_enabled:
             result["isEnabled"] = bool(self.is_enabled)
         elif include_empty:

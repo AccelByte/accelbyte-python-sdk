@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.442990+08:00
+# Auto-generated at 2021-10-14T22:17:13.273510+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,17 @@ from ...models import RestapiErrorResponseBody
 class PersonalChatHistory(Operation):
     """load personal chat history (personalChatHistory)
 
+    Required permission : `NAMESPACE:{namespace}:USER:{userId}:CHAT [READ]` with
+    scope `social`  
+    load personal chat history in a namespace.
+
+
     Properties:
         url: /chat/namespaces/{namespace}/users/{userId}/friend/{friendId}
 
         method: GET
 
-        tags: chat
+        tags: ["chat"]
 
         consumes: ["application/json"]
 
@@ -182,7 +187,7 @@ class PersonalChatHistory(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

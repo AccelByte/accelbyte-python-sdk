@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.525950+08:00
+# Auto-generated at 2021-10-14T22:17:13.336025+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,18 @@ from ...models import RestapiErrorResponseV1
 class GetTemplateSlugLocalizationsTemplateV1Admin(Operation):
     """get all notification template localization in a slug (getTemplateSlugLocalizationsTemplateV1Admin)
 
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with
+    scope `social`  
+    Get all templates in a namespace  
+    Action Code: 50205
+
+
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}
 
         method: GET
 
-        tags: notification
+        tags: ["notification"]
 
         consumes: ["application/json"]
 
@@ -203,7 +209,7 @@ class GetTemplateSlugLocalizationsTemplateV1Admin(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

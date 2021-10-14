@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.499351+08:00
+# Auto-generated at 2021-10-14T22:17:13.318312+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,17 @@ from ...models import RestapiErrorResponseBody
 class GetListOfFriends(Operation):
     """get list of friends (get list of friends)
 
+    Required permission : `NAMESPACE:{namespace}:USER:{userId}:FRIENDS [READ]`
+    with scope `social`  
+    get list of friends in a namespace.
+
+
     Properties:
         url: /lobby/v1/admin/friend/namespaces/{namespace}/users/{userId}
 
         method: GET
 
-        tags: friends
+        tags: ["friends"]
 
         consumes: ["application/json"]
 
@@ -194,7 +199,7 @@ class GetListOfFriends(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:33.475367+08:00
+# Auto-generated at 2021-10-14T22:17:13.244688+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsBlockedByPlayerData(Model):
-    """Models blocked by player data
+    """Models blocked by player data (models.BlockedByPlayerData)
 
     Properties:
         blocked_at: (blockedAt) REQUIRED str
@@ -56,7 +56,7 @@ class ModelsBlockedByPlayerData(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "blocked_at") and self.blocked_at:
             result["blockedAt"] = str(self.blocked_at)
         elif include_empty:

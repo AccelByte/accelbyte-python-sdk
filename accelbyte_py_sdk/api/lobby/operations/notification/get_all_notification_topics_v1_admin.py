@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.549060+08:00
+# Auto-generated at 2021-10-14T22:17:13.354918+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,18 @@ from ...models import RestapiErrorResponseV1
 class GetAllNotificationTopicsV1Admin(Operation):
     """get topic by namespace (getAllNotificationTopicsV1Admin)
 
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with
+    scope `social`  
+    get topic by namespace.  
+    Action Code: 50213
+
+
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics
 
         method: GET
 
-        tags: notification
+        tags: ["notification"]
 
         consumes: ["application/json"]
 
@@ -191,7 +197,7 @@ class GetAllNotificationTopicsV1Admin(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

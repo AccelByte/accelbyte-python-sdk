@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:33.500186+08:00
+# Auto-generated at 2021-10-14T22:17:13.269300+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsUpdateConfigResponse(Model):
-    """Models update config response
+    """Models update config response (models.UpdateConfigResponse)
 
     Properties:
         api_key: (apiKey) REQUIRED str
@@ -56,7 +56,7 @@ class ModelsUpdateConfigResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "api_key") and self.api_key:
             result["apiKey"] = str(self.api_key)
         elif include_empty:

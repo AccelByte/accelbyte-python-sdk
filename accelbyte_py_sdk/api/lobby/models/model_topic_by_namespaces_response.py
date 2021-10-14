@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:33.452133+08:00
+# Auto-generated at 2021-10-14T22:17:13.224518+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.model_notification_topic_response import ModelNotificationTopicRes
 
 
 class ModelTopicByNamespacesResponse(Model):
-    """Model topic by namespaces response
+    """Model topic by namespaces response (model.TopicByNamespacesResponse)
 
     Properties:
         first: (first) REQUIRED str
@@ -79,7 +79,7 @@ class ModelTopicByNamespacesResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "first") and self.first:
             result["first"] = str(self.first)
         elif include_empty:

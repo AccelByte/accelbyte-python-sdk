@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:33.481088+08:00
+# Auto-generated at 2021-10-14T22:17:13.250213+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsConfigReq(Model):
-    """Models config req
+    """Models config req (models.ConfigReq)
 
     Properties:
         auto_kick_on_disconnect: (autoKickOnDisconnect) OPTIONAL bool
@@ -112,7 +112,7 @@ class ModelsConfigReq(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "auto_kick_on_disconnect") and self.auto_kick_on_disconnect:
             result["autoKickOnDisconnect"] = bool(self.auto_kick_on_disconnect)
         elif include_empty:

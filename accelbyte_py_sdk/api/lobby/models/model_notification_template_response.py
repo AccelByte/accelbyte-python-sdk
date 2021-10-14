@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:33.436703+08:00
+# Auto-generated at 2021-10-14T22:17:13.209179+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.model_localization import ModelLocalization
 
 
 class ModelNotificationTemplateResponse(Model):
-    """Model notification template response
+    """Model notification template response (model.NotificationTemplateResponse)
 
     Properties:
         template_localizations: (templateLocalizations) REQUIRED List[ModelLocalization]
@@ -58,7 +58,7 @@ class ModelNotificationTemplateResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "template_localizations") and self.template_localizations:
             result["templateLocalizations"] = [i0.to_dict(include_empty=include_empty) for i0 in self.template_localizations]
         elif include_empty:

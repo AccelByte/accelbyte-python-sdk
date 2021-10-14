@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:33.418577+08:00
+# Auto-generated at 2021-10-14T22:17:13.191603+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelCreateTemplateRequest(Model):
-    """Model create template request
+    """Model create template request (model.CreateTemplateRequest)
 
     Properties:
         template_content: (templateContent) REQUIRED str
@@ -63,7 +63,7 @@ class ModelCreateTemplateRequest(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "template_content") and self.template_content:
             result["templateContent"] = str(self.template_content)
         elif include_empty:

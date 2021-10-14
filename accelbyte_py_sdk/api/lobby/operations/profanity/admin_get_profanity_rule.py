@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.641479+08:00
+# Auto-generated at 2021-10-14T22:17:13.457688+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,17 @@ from ...models import RestapiErrorResponseBody
 class AdminGetProfanityRule(Operation):
     """get current profanity rule (adminGetProfanityRule)
 
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with
+    scope `social`  
+    get current profanity rule
+
+
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/rule
 
         method: GET
 
-        tags: profanity
+        tags: ["profanity"]
 
         consumes: ["application/json"]
 
@@ -158,7 +163,7 @@ class AdminGetProfanityRule(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

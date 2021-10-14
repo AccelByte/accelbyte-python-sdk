@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.575471+08:00
+# Auto-generated at 2021-10-14T22:17:13.381127+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,17 @@ from ...models import RestapiErrorResponseBody
 class AdminGetPartyDataV1(Operation):
     """admin get party data (adminGetPartyDataV1)
 
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [READ]` with
+    scope `social`  
+    get party data in a namespace.
+
+
     Properties:
         url: /lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}
 
         method: GET
 
-        tags: party
+        tags: ["party"]
 
         consumes: ["application/json"]
 
@@ -170,7 +175,7 @@ class AdminGetPartyDataV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

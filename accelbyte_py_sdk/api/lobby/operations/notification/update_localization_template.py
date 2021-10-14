@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.722212+08:00
+# Auto-generated at 2021-10-14T22:17:13.557053+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,17 @@ from ...models import RestapiErrorResponseBody
 class UpdateLocalizationTemplate(Operation):
     """update template draft (updateLocalizationTemplate)
 
+    Required permission : `NAMESPACE:{namespace}:TEMPLATE [UPDATE]` with scope
+    `social`  
+    Modify draft template
+
+
     Properties:
         url: /notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
 
         method: PUT
 
-        tags: notification
+        tags: ["notification"]
 
         consumes: ["application/json"]
 
@@ -194,7 +199,7 @@ class UpdateLocalizationTemplate(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

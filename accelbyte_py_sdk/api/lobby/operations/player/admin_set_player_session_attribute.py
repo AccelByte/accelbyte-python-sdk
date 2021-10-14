@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.588557+08:00
+# Auto-generated at 2021-10-14T22:17:13.393734+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,18 @@ from ...models import RestapiErrorResponseBody
 class AdminSetPlayerSessionAttribute(Operation):
     """admin set player's session attribute (adminSetPlayerSessionAttribute)
 
+    Required permission :
+    `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:ATTRIBUTES [UPDATE]` with
+    scope `social`  
+    set player's session attribute by user id in a namespace.
+
+
     Properties:
         url: /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/attributes
 
         method: PUT
 
-        tags: player
+        tags: ["player"]
 
         consumes: ["application/json"]
 
@@ -184,7 +190,7 @@ class AdminSetPlayerSessionAttribute(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

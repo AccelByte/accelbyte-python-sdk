@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:33.438984+08:00
+# Auto-generated at 2021-10-14T22:17:13.212456+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelNotificationTopicResponseV1(Model):
-    """Model notification topic response V1
+    """Model notification topic response V1 (model.NotificationTopicResponseV1)
 
     Properties:
         created_at: (createdAt) REQUIRED int
@@ -70,7 +70,7 @@ class ModelNotificationTopicResponseV1(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "created_at") and self.created_at:
             result["createdAt"] = int(self.created_at)
         elif include_empty:

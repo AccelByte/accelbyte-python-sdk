@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:33.480296+08:00
+# Auto-generated at 2021-10-14T22:17:13.249345+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.models_config import ModelsConfig
 
 
 class ModelsConfigList(Model):
-    """Models config list
+    """Models config list (models.ConfigList)
 
     Properties:
         configs: (configs) REQUIRED List[ModelsConfig]
@@ -51,7 +51,7 @@ class ModelsConfigList(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "configs") and self.configs:
             result["configs"] = [i0.to_dict(include_empty=include_empty) for i0 in self.configs]
         elif include_empty:

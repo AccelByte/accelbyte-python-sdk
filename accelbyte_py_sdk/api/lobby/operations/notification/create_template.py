@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.702000+08:00
+# Auto-generated at 2021-10-14T22:17:13.539746+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,21 @@ from ...models import RestapiErrorResponseBody
 class CreateTemplate(Operation):
     """create new notification template (createTemplate)
 
+    Required permission : `NAMESPACE:{namespace}:TEMPLATE [CREATE]` with scope
+    `social`  
+    Create new notification template. Include handlebars {{key}} for replaceable
+    contexts. The the key inside handlebars will be the key to be replaced when
+    sending notification. Already existing template with the same slug and
+    language can not be created.  
+    Check model description for detailed input restrictions.
+
+
     Properties:
         url: /notification/namespaces/{namespace}/templates
 
         method: POST
 
-        tags: notification
+        tags: ["notification"]
 
         consumes: ["application/json"]
 
@@ -170,7 +179,7 @@ class CreateTemplate(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.742452+08:00
+# Auto-generated at 2021-10-14T22:17:13.579243+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import RestapiErrorResponseBody
 class UpdateTopicByTopicName(Operation):
     """update topic information by topic name (updateTopicByTopicName)
 
+    Required permission : `NAMESPACE:{namespace}:TOPIC [UPDATE]` with scope
+    `social`  
+    update topic information by topic name.  
+    topic should be alphabets, no special char except underscore, uppercase and no
+    spacing. for example: TOPIC_TEST. Already existing topic can not be created
+
+
     Properties:
         url: /notification/namespaces/{namespace}/topics/{topic}
 
         method: PUT
 
-        tags: notification
+        tags: ["notification"]
 
         consumes: ["application/json"]
 
@@ -182,7 +189,7 @@ class UpdateTopicByTopicName(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

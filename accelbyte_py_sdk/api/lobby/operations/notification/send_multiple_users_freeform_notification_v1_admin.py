@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.501829+08:00
+# Auto-generated at 2021-10-14T22:17:13.321181+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,20 @@ from ...models import RestapiErrorResponseV1
 class SendMultipleUsersFreeformNotificationV1Admin(Operation):
     """send freeform notification to multiple users (sendMultipleUsersFreeformNotificationV1Admin)
 
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with
+    scope `social`  
+    Sends notification to multiple user. There are two types of notification: sync
+    and async. Async message will be stored to database if the receiver is
+    offline. This stored message could be retrieved later via websocket command.  
+    Action Code: 50211
+
+
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/bulkUsers/freeform/notify
 
         method: POST
 
-        tags: notification
+        tags: ["notification"]
 
         consumes: ["application/json"]
 
@@ -185,7 +193,7 @@ class SendMultipleUsersFreeformNotificationV1Admin(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

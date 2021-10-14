@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:33.430308+08:00
+# Auto-generated at 2021-10-14T22:17:13.202341+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.model_pagination import ModelPagination
 
 
 class ModelGetUserFriendsResponse(Model):
-    """Model get user friends response
+    """Model get user friends response (model.GetUserFriendsResponse)
 
     Properties:
         friend_i_ds: (friendIDs) REQUIRED List[str]
@@ -58,7 +58,7 @@ class ModelGetUserFriendsResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "friend_i_ds") and self.friend_i_ds:
             result["friendIDs"] = [str(i0) for i0 in self.friend_i_ds]
         elif include_empty:

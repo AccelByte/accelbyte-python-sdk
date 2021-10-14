@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.709004+08:00
+# Auto-generated at 2021-10-14T22:17:13.548897+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,17 @@ from ...models import RestapiErrorResponseBody
 class DeleteTemplateSlug(Operation):
     """delete template localization (deleteTemplateSlug)
 
+    Required permission : `NAMESPACE:{namespace}:TEMPLATE [DELETE]` with scope
+    `social`  
+    Delete localization template
+
+
     Properties:
         url: /notification/namespaces/{namespace}/templates/{templateSlug}
 
         method: DELETE
 
-        tags: notification
+        tags: ["notification"]
 
         consumes: ["application/json"]
 
@@ -167,7 +172,7 @@ class DeleteTemplateSlug(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

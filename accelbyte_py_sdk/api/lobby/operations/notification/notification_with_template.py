@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.695122+08:00
+# Auto-generated at 2021-10-14T22:17:13.530963+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,23 @@ from ...models import RestapiErrorResponseBody
 class NotificationWithTemplate(Operation):
     """send notification to a user with template (notificationWithTemplate)
 
+    Required permission : `NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope
+    `social`  
+    Sends notification to all connected users in a namespace with predefined
+    template.  
+    In the request body, specify which template slug (template identifier) to use
+    and the template language.  
+    NotificationTemplate context is the key-value pair defining the value of each
+    handlebar specified in the template content. Template need to be published
+    before it can be use to send notifications
+
+
     Properties:
         url: /notification/namespaces/{namespace}/templated
 
         method: POST
 
-        tags: notification
+        tags: ["notification"]
 
         consumes: ["application/json"]
 
@@ -170,7 +181,7 @@ class NotificationWithTemplate(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

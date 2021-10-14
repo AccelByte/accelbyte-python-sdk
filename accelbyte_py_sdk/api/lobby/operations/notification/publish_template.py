@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.729676+08:00
+# Auto-generated at 2021-10-14T22:17:13.565503+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,17 @@ from ...models import RestapiErrorResponseBody
 class PublishTemplate(Operation):
     """publish draft template (publishTemplate)
 
+    Required permission : `NAMESPACE:{namespace}:TEMPLATE [CREATE]` with scope
+    `social`  
+    Publish notification template draft. Empty draft can not be published.
+
+
     Properties:
         url: /notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}/publish
 
         method: POST
 
-        tags: notification
+        tags: ["notification"]
 
         consumes: ["application/json"]
 
@@ -179,7 +184,7 @@ class PublishTemplate(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

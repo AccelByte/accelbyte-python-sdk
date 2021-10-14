@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.645051+08:00
+# Auto-generated at 2021-10-14T22:17:13.462407+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,17 @@ from ...models import RestapiErrorResponseBody
 class AdminSetProfanityRuleForNamespace(Operation):
     """set current profanity rule (adminSetProfanityRuleForNamespace)
 
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [UPDATE]` with
+    scope `social`  
+    set current profanity rule
+
+
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/rule
 
         method: POST
 
-        tags: profanity
+        tags: ["profanity"]
 
         consumes: ["application/json"]
 
@@ -172,7 +177,7 @@ class AdminSetProfanityRuleForNamespace(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

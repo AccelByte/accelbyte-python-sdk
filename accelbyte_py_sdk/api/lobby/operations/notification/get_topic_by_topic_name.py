@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.739361+08:00
+# Auto-generated at 2021-10-14T22:17:13.575963+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,16 @@ from ...models import RestapiErrorResponseBody
 class GetTopicByTopicName(Operation):
     """get topic information by topic name (getTopicByTopicName)
 
+    Required permission : `NAMESPACE:{namespace}:TOPIC [READ]` with scope `social`  
+    get topic information by topic name.
+
+
     Properties:
         url: /notification/namespaces/{namespace}/topics/{topic}
 
         method: GET
 
-        tags: notification
+        tags: ["notification"]
 
         consumes: ["application/json"]
 
@@ -168,7 +172,7 @@ class GetTopicByTopicName(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

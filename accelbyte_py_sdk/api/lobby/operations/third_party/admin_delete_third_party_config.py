@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.661751+08:00
+# Auto-generated at 2021-10-14T22:17:13.484732+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,17 @@ from ...models import RestapiErrorResponseV1
 class AdminDeleteThirdPartyConfig(Operation):
     """Delete Third Party Steam Config (adminDeleteThirdPartyConfig)
 
+    Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [DELETE]`
+    with scope `social`  
+    delete third party config in a namespace.
+
+
     Properties:
         url: /lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam
 
         method: DELETE
 
-        tags: thirdParty
+        tags: ["thirdParty"]
 
         consumes: []
 
@@ -155,7 +160,7 @@ class AdminDeleteThirdPartyConfig(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

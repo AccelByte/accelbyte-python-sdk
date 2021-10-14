@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:33.493384+08:00
+# Auto-generated at 2021-10-14T22:17:13.262536+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsPartyData(Model):
-    """Models party data
+    """Models party data (models.PartyData)
 
     Properties:
         custom_attribute: (custom_attribute) REQUIRED Dict[str, Any]
@@ -91,7 +91,7 @@ class ModelsPartyData(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "custom_attribute") and self.custom_attribute:
             result["custom_attribute"] = {str(k0): v0 for k0, v0 in self.custom_attribute.items()}
         elif include_empty:

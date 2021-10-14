@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:33.443038+08:00
+# Auto-generated at 2021-10-14T22:17:13.215160+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelNotificationWithTemplateRequestV1(Model):
-    """Model notification with template request V1
+    """Model notification with template request V1 (model.NotificationWithTemplateRequestV1)
 
     Properties:
         template_context: (templateContext) REQUIRED Dict[str, str]
@@ -70,7 +70,7 @@ class ModelNotificationWithTemplateRequestV1(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "template_context") and self.template_context:
             result["templateContext"] = {str(k0): str(v0) for k0, v0 in self.template_context.items()}
         elif include_empty:

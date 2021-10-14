@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.698389+08:00
+# Auto-generated at 2021-10-14T22:17:13.535226+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,17 @@ from ...models import RestapiErrorResponseBody
 class GetGameTemplate(Operation):
     """get all notification template in a namespace (getGameTemplate)
 
+    Required permission : `NAMESPACE:{namespace}:TEMPLATE [READ]` with scope
+    `social`  
+    Get all templates in a namespace
+
+
     Properties:
         url: /notification/namespaces/{namespace}/templates
 
         method: GET
 
-        tags: notification
+        tags: ["notification"]
 
         consumes: ["application/json"]
 
@@ -156,7 +161,7 @@ class GetGameTemplate(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

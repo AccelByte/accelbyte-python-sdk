@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:33.473183+08:00
+# Auto-generated at 2021-10-14T22:17:13.242680+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsAdminVerifyMessageProfanityRequest(Model):
-    """Models admin verify message profanity request
+    """Models admin verify message profanity request (models.AdminVerifyMessageProfanityRequest)
 
     Properties:
         message: (message) REQUIRED str
@@ -56,7 +56,7 @@ class ModelsAdminVerifyMessageProfanityRequest(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "message") and self.message:
             result["message"] = str(self.message)
         elif include_empty:

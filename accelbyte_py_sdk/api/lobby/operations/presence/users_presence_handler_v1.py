@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.686024+08:00
+# Auto-generated at 2021-10-14T22:17:13.522179+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,15 @@ from ...models import RestapiErrorResponseBody
 class UsersPresenceHandlerV1(Operation):
     """Query users presence (UsersPresenceHandlerV1)
 
+    Query users presence with given namespace and userIds.
+
+
     Properties:
         url: /lobby/v1/public/presence/namespaces/{namespace}/users/presence
 
         method: GET
 
-        tags: presence
+        tags: ["presence"]
 
         consumes: ["application/json"]
 
@@ -183,7 +186,7 @@ class UsersPresenceHandlerV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

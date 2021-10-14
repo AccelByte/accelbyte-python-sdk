@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.491727+08:00
+# Auto-generated at 2021-10-14T22:17:13.309533+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,17 @@ from ...models import RestapiErrorResponseBody
 class AdminGetAllConfigV1(Operation):
     """admin get all namespaces config (adminGetAllConfigV1)
 
+    Required permission : `ADMIN:NAMESPACE:*:LOBBY:CONFIG [READ]` with scope
+    `social`  
+    get lobby config of all namespaces.
+
+
     Properties:
         url: /lobby/v1/admin/config
 
         method: GET
 
-        tags: config
+        tags: ["config"]
 
         consumes: ["application/json"]
 
@@ -136,7 +141,7 @@ class AdminGetAllConfigV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         return result
 
     # endregion to methods

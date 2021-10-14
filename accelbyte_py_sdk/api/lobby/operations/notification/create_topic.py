@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.736187+08:00
+# Auto-generated at 2021-10-14T22:17:13.572560+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import RestapiErrorResponseBody
 class CreateTopic(Operation):
     """create new notification topic (createTopic)
 
+    Required permission : `NAMESPACE:{namespace}:TOPIC [CREATE]` with scope
+    `social`  
+    Create new notification topic.  
+    topic should be alphabets, no special char except underscore, uppercase and no
+    spacing. for example: TOPIC_TEST. Already existing topic can not be created
+
+
     Properties:
         url: /notification/namespaces/{namespace}/topics
 
         method: POST
 
-        tags: notification
+        tags: ["notification"]
 
         consumes: ["application/json"]
 
@@ -170,7 +177,7 @@ class CreateTopic(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:33.415989+08:00
+# Auto-generated at 2021-10-14T22:17:13.188904+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelBulkUsersFreeFormNotificationRequestV1(Model):
-    """Model bulk users free form notification request V1
+    """Model bulk users free form notification request V1 (model.BulkUsersFreeFormNotificationRequestV1)
 
     Properties:
         message: (message) REQUIRED str
@@ -63,7 +63,7 @@ class ModelBulkUsersFreeFormNotificationRequestV1(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "message") and self.message:
             result["message"] = str(self.message)
         elif include_empty:

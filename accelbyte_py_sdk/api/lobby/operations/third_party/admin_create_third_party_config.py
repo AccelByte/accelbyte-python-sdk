@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.657459+08:00
+# Auto-generated at 2021-10-14T22:17:13.480667+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,17 @@ from ...models import RestapiErrorResponseV1
 class AdminCreateThirdPartyConfig(Operation):
     """Create Third Party Steam Config (adminCreateThirdPartyConfig)
 
+    Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [CREATE]`
+    with scope `social`  
+    create third party config in a namespace.
+
+
     Properties:
         url: /lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam
 
         method: POST
 
-        tags: thirdParty
+        tags: ["thirdParty"]
 
         consumes: []
 
@@ -171,7 +176,7 @@ class AdminCreateThirdPartyConfig(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

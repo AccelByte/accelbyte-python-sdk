@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:33.463316+08:00
+# Auto-generated at 2021-10-14T22:17:13.234875+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.models_admin_add_profanity_filters_filter_request import ModelsAdm
 
 
 class ModelsAdminAddProfanityFiltersRequest(Model):
-    """Models admin add profanity filters request
+    """Models admin add profanity filters request (models.AdminAddProfanityFiltersRequest)
 
     Properties:
         filters: (filters) REQUIRED List[ModelsAdminAddProfanityFiltersFilterRequest]
@@ -51,7 +51,7 @@ class ModelsAdminAddProfanityFiltersRequest(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "filters") and self.filters:
             result["filters"] = [i0.to_dict(include_empty=include_empty) for i0 in self.filters]
         elif include_empty:

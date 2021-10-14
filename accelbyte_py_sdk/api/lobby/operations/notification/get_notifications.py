@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.747773+08:00
+# Auto-generated at 2021-10-14T22:17:13.586182+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,18 @@ from ...models import RestapiErrorResponseBody
 class GetNotifications(Operation):
     """get all stored notification for a user. (getNotifications)
 
+    Required permission : `NAMESPACE:{namespace}:USER:{userId}:NOTIFICATION
+    [READ]` with scope `social`  
+    Retrieve all notification stored for a user. Successfully retrieved
+    notifications will not be deleted.
+
+
     Properties:
         url: /notification/namespaces/{namespace}/users/{userId}
 
         method: GET
 
-        tags: notification
+        tags: ["notification"]
 
         consumes: ["application/json"]
 
@@ -168,7 +174,7 @@ class GetNotifications(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

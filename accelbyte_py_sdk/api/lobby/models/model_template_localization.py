@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:33.447676+08:00
+# Auto-generated at 2021-10-14T22:17:13.220095+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.model_template_content import ModelTemplateContent
 
 
 class ModelTemplateLocalization(Model):
-    """Model template localization
+    """Model template localization (model.TemplateLocalization)
 
     Properties:
         last_draft_at: (lastDraftAt) REQUIRED str
@@ -79,7 +79,7 @@ class ModelTemplateLocalization(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "last_draft_at") and self.last_draft_at:
             result["lastDraftAt"] = str(self.last_draft_at)
         elif include_empty:

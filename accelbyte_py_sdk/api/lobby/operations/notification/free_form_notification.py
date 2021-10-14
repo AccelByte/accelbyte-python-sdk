@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.691956+08:00
+# Auto-generated at 2021-10-14T22:17:13.526373+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,17 @@ from ...models import RestapiErrorResponseBody
 class FreeFormNotification(Operation):
     """send freeform notification to a user (freeFormNotification)
 
+    Required permission : `NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope
+    `social`  
+    Sends notification to all connected users in a namespace.
+
+
     Properties:
         url: /notification/namespaces/{namespace}/freeform
 
         method: POST
 
-        tags: notification
+        tags: ["notification"]
 
         consumes: ["application/json"]
 
@@ -170,7 +175,7 @@ class FreeFormNotification(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

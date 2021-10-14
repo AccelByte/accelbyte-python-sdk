@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:26.666607+08:00
+# Auto-generated at 2021-10-14T22:17:13.491306+08:00
 # from: Justice Lobby Service (1.33.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,18 @@ from ...models import RestapiErrorResponseBody
 class GetPersonalChatHistoryV1Public(Operation):
     """load personal chat history (getPersonalChatHistoryV1Public)
 
+    Required valid user authorization  
+
+    load personal chat history in a namespace based on Friend User ID  
+    Action Code: 50101
+
+
     Properties:
         url: /lobby/v1/public/chat/namespaces/{namespace}/users/me/friends/{friendId}
 
         method: GET
 
-        tags: chat
+        tags: ["chat"]
 
         consumes: ["application/json"]
 
@@ -170,7 +176,7 @@ class GetPersonalChatHistoryV1Public(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
