@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:37.807165+08:00
+# Auto-generated at 2021-10-14T22:17:18.322167+08:00
 # from: Justice Group Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,7 +29,7 @@ from ..models.models_pagination import ModelsPagination
 
 
 class ModelsGetGroupsListResponseV1(Model):
-    """Models get groups list response V1
+    """Models get groups list response V1 (models.GetGroupsListResponseV1)
 
     Properties:
         data: (data) REQUIRED List[ModelsGroupResponseV1]
@@ -59,7 +59,7 @@ class ModelsGetGroupsListResponseV1(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "data") and self.data:
             result["data"] = [i0.to_dict(include_empty=include_empty) for i0 in self.data]
         elif include_empty:

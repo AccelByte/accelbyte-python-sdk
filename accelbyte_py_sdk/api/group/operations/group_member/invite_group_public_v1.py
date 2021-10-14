@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.000949+08:00
+# Auto-generated at 2021-10-14T22:17:18.604285+08:00
 # from: Justice Group Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,27 @@ from ...models import ResponseErrorResponse
 class InviteGroupPublicV1(Operation):
     """Invite user to group (inviteGroupPublicV1)
 
+    Required valid user authentication
+
+    Required Member Role Permission: "GROUP:INVITE [CREATE]"
+
+    This endpoint is used to invite specific user to the group.
+
+    invite specific user to the group. If specific user is already have the join
+    request to the group, this endpoint will notify if this user already have join
+    request that needs to be accepted / rejected
+
+    Invited user will receive notification through lobby.
+
+    Action Code: 73406
+
+
     Properties:
         url: /group/v1/public/namespaces/{namespace}/users/{userId}/invite
 
         method: POST
 
-        tags: Group Member
+        tags: ["Group Member"]
 
         consumes: []
 
@@ -52,15 +67,15 @@ class InviteGroupPublicV1(Operation):
     Responses:
         200: OK - ModelsUserInvitationResponseV1 (OK)
 
-        400: Bad Request - ResponseErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (errorCode: 20022 | errorMessage: token is not user token)
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
 
-        404: Not Found - ResponseErrorResponse (errorCode: 73034 | errorMessage: user not belong to any group)
+        404: Not Found - ResponseErrorResponse (73034: user not belong to any group)
 
-        409: Conflict - ResponseErrorResponse (errorCode: 73442 | errorMessage: user already joined in another group)
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group | 73437: user already invited | 73438: user already requested to join)
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
@@ -172,7 +187,7 @@ class InviteGroupPublicV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -193,15 +208,15 @@ class InviteGroupPublicV1(Operation):
 
         200: OK - ModelsUserInvitationResponseV1 (OK)
 
-        400: Bad Request - ResponseErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (errorCode: 20022 | errorMessage: token is not user token)
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
 
-        404: Not Found - ResponseErrorResponse (errorCode: 73034 | errorMessage: user not belong to any group)
+        404: Not Found - ResponseErrorResponse (73034: user not belong to any group)
 
-        409: Conflict - ResponseErrorResponse (errorCode: 73442 | errorMessage: user already joined in another group)
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group | 73437: user already invited | 73438: user already requested to join)
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
         """

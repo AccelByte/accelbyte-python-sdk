@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:37.846955+08:00
+# Auto-generated at 2021-10-14T22:17:18.353490+08:00
 # from: Justice Group Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.models_role_permission import ModelsRolePermission
 
 
 class ModelsUpdateMemberRolePermissionsRequestV1(Model):
-    """Models update member role permissions request V1
+    """Models update member role permissions request V1 (models.UpdateMemberRolePermissionsRequestV1)
 
     Properties:
         member_role_permissions: (memberRolePermissions) REQUIRED List[ModelsRolePermission]
@@ -51,7 +51,7 @@ class ModelsUpdateMemberRolePermissionsRequestV1(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "member_role_permissions") and self.member_role_permissions:
             result["memberRolePermissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.member_role_permissions]
         elif include_empty:

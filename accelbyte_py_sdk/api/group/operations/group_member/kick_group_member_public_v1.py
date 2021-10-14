@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.020665+08:00
+# Auto-generated at 2021-10-14T22:17:18.632728+08:00
 # from: Justice Group Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,27 @@ from ...models import ResponseErrorResponse
 class KickGroupMemberPublicV1(Operation):
     """Kick Group Member (kickGroupMemberPublicV1)
 
+    Required valid user authentication
+
+    Required Member Role Permission: "GROUP:KICK [CREATE]"
+
+    This endpoint is used to kick group member.
+
+    Kick group member. This endpoint will check the member and group information,
+    and also the role permission of the the user who accesses this endpoint
+
+    This endpoint will also check if the user that wanted to be kicked is the
+    group member or not.
+
+    Action Code: 73409
+
+
     Properties:
         url: /group/v1/public/namespaces/{namespace}/users/{userId}/kick
 
         method: POST
 
-        tags: Group Member
+        tags: ["Group Member"]
 
         consumes: []
 
@@ -52,13 +67,13 @@ class KickGroupMemberPublicV1(Operation):
     Responses:
         200: OK - ModelsKickGroupMemberResponseV1 (OK)
 
-        400: Bad Request - ResponseErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (errorCode: 20022 | errorMessage: token is not user token)
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
 
-        404: Not Found - ResponseErrorResponse (errorCode: 73433 | errorMessage: member group not found)
+        404: Not Found - ResponseErrorResponse (73433: member group not found | 73034: user not belong to any group)
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
@@ -170,7 +185,7 @@ class KickGroupMemberPublicV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -191,13 +206,13 @@ class KickGroupMemberPublicV1(Operation):
 
         200: OK - ModelsKickGroupMemberResponseV1 (OK)
 
-        400: Bad Request - ResponseErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (errorCode: 20022 | errorMessage: token is not user token)
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
 
-        404: Not Found - ResponseErrorResponse (errorCode: 73433 | errorMessage: member group not found)
+        404: Not Found - ResponseErrorResponse (73433: member group not found | 73034: user not belong to any group)
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
         """

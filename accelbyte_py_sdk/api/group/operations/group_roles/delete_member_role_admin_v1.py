@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.871023+08:00
+# Auto-generated at 2021-10-14T22:17:18.436539+08:00
 # from: Justice Group Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,20 @@ from ...models import ResponseErrorResponse
 class DeleteMemberRoleAdminV1(Operation):
     """delete member role (deleteMemberRoleAdminV1)
 
+    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [DELETE]
+
+    This endpoint is used to delete member role. Any member role can't be deleted
+    if the specific role is applied to the configuration (admin and member role)
+
+    Action Code: 73207
+
+
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/roles/{memberRoleId}
 
         method: DELETE
 
-        tags: Group Roles
+        tags: ["Group Roles"]
 
         consumes: []
 
@@ -51,13 +59,13 @@ class DeleteMemberRoleAdminV1(Operation):
     Responses:
         204: No Content - (No Content)
 
-        400: Bad Request - ResponseErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (errorCode: 20022 | errorMessage: token is not user token)
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (errorCode: 73232 | errorMessage: member role not found)
+        404: Not Found - ResponseErrorResponse (73232: member role not found)
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
@@ -169,7 +177,7 @@ class DeleteMemberRoleAdminV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -190,13 +198,13 @@ class DeleteMemberRoleAdminV1(Operation):
 
         204: No Content - (No Content)
 
-        400: Bad Request - ResponseErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (errorCode: 20022 | errorMessage: token is not user token)
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (errorCode: 73232 | errorMessage: member role not found)
+        404: Not Found - ResponseErrorResponse (73232: member role not found)
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
         """

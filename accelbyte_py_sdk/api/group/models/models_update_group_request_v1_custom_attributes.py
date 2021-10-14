@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:37.845990+08:00
+# Auto-generated at 2021-10-14T22:17:18.352995+08:00
 # from: Justice Group Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsUpdateGroupRequestV1CustomAttributes(Model):
-    """Models update group request V1 custom attributes
+    """Models update group request V1 custom attributes (models.UpdateGroupRequestV1.customAttributes)
 
     Properties:
     """
@@ -43,7 +43,7 @@ class ModelsUpdateGroupRequestV1CustomAttributes(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         return result
 
     # endregion to methods

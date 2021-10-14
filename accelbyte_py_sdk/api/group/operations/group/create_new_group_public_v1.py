@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.892733+08:00
+# Auto-generated at 2021-10-14T22:17:18.463590+08:00
 # from: Justice Group Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,32 @@ from ...models import ResponseErrorResponse
 class CreateNewGroupPublicV1(Operation):
     """create new group (createNewGroupPublicV1)
 
+    Required valid user authentication
+
+    This endpoint is used to create new group
+
+    There are some fields that needs to be fulfilled
+
+      * groupDescription : the description of the group (optional)
+      * groupIcon : group icon URL link (optional)
+      * groupName : name of the group
+      * groupRegion : region of the group
+      * groupRules : rules for specific group. It consists of groupCustomRule that can be used to save custom rule, and groupPredefinedRules that has similar usage with configuration, but this rule only works in specific group
+      * allowedAction : available action in group service. It consist of joinGroup and inviteGroup
+      * ruleAttribute : attribute of the player that needs to be checked
+      * ruleCriteria : criteria of the value. The value will be in enum of EQUAL, MINIMUM, MAXIMUM
+      * ruleValue : value that needs to be checked
+      * customAttributes : additional custom group attributes (optional)
+
+    Action Code: 73304
+
+
     Properties:
         url: /group/v1/public/namespaces/{namespace}/groups
 
         method: POST
 
-        tags: Group
+        tags: ["Group"]
 
         consumes: ["application/json"]
 
@@ -53,13 +73,13 @@ class CreateNewGroupPublicV1(Operation):
     Responses:
         201: Created - ModelsGroupResponseV1 (Created)
 
-        400: Bad Request - ResponseErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 20022: token is not user token)
 
-        409: Conflict - ResponseErrorResponse (errorCode: 73342 | errorMessage: user already joined group)
+        409: Conflict - ResponseErrorResponse (73342: user already joined group)
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
@@ -173,7 +193,7 @@ class CreateNewGroupPublicV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -194,13 +214,13 @@ class CreateNewGroupPublicV1(Operation):
 
         201: Created - ModelsGroupResponseV1 (Created)
 
-        400: Bad Request - ResponseErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 20022: token is not user token)
 
-        409: Conflict - ResponseErrorResponse (errorCode: 73342 | errorMessage: user already joined group)
+        409: Conflict - ResponseErrorResponse (73342: user already joined group)
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
         """

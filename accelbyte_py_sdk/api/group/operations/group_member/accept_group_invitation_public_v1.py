@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.922607+08:00
+# Auto-generated at 2021-10-14T22:17:18.499860+08:00
 # from: Justice Group Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,30 @@ from ...models import ResponseErrorResponse
 class AcceptGroupInvitationPublicV1(Operation):
     """Accept Group Invitation (acceptGroupInvitationPublicV1)
 
+    Required valid user authentication
+
+    This endpoint is used to accept group invitation.
+
+    Accept group invitation. If specific user is not invited in the specific group
+    ID, it will show the the error to show if the user is not invited yet.
+
+    This endpoint will also check if the user who access this endpoint is already
+    joined to specific group
+
+    Accessing this endpoint will make all requests (invite / join request) will be
+    deleted for the user who access this endpoint
+
+    Existing members will receive notification of newly accepted member.
+
+    Action Code: 73401
+
+
     Properties:
         url: /group/v1/public/namespaces/{namespace}/groups/{groupId}/invite/accept
 
         method: POST
 
-        tags: Group Member
+        tags: ["Group Member"]
 
         consumes: []
 
@@ -52,15 +70,15 @@ class AcceptGroupInvitationPublicV1(Operation):
     Responses:
         200: OK - ModelsMemberRequestGroupResponseV1 (OK)
 
-        400: Bad Request - ResponseErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (errorCode: 20022 | errorMessage: token is not user token)
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
 
-        404: Not Found - ResponseErrorResponse (errorCode: 73443 | errorMessage: member request not found)
+        404: Not Found - ResponseErrorResponse (73443: member request not found)
 
-        409: Conflict - ResponseErrorResponse (errorCode: 73442 | errorMessage: user already joined in another group)
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group)
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
@@ -172,7 +190,7 @@ class AcceptGroupInvitationPublicV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -193,15 +211,15 @@ class AcceptGroupInvitationPublicV1(Operation):
 
         200: OK - ModelsMemberRequestGroupResponseV1 (OK)
 
-        400: Bad Request - ResponseErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (errorCode: 20022 | errorMessage: token is not user token)
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
 
-        404: Not Found - ResponseErrorResponse (errorCode: 73443 | errorMessage: member request not found)
+        404: Not Found - ResponseErrorResponse (73443: member request not found)
 
-        409: Conflict - ResponseErrorResponse (errorCode: 73442 | errorMessage: user already joined in another group)
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group)
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
         """

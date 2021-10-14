@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.866233+08:00
+# Auto-generated at 2021-10-14T22:17:18.432513+08:00
 # from: Justice Group Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import ResponseErrorResponse
 class GetSingleMemberRoleAdminV1(Operation):
     """get member role (getSingleMemberRoleAdminV1)
 
+    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [READ]
+
+    This endpoint is used to get member role based on the role ID
+
+    Action Code: 73203
+
+
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/roles/{memberRoleId}
 
         method: GET
 
-        tags: Group Roles
+        tags: ["Group Roles"]
 
         consumes: []
 
@@ -52,13 +59,13 @@ class GetSingleMemberRoleAdminV1(Operation):
     Responses:
         200: OK - ModelsGetMemberRoleResponseV1 (OK)
 
-        400: Bad Request - ResponseErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (errorCode: 73232 | errorMessage: member role not found)
+        404: Not Found - ResponseErrorResponse (73232: member role not found)
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
@@ -170,7 +177,7 @@ class GetSingleMemberRoleAdminV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -191,13 +198,13 @@ class GetSingleMemberRoleAdminV1(Operation):
 
         200: OK - ModelsGetMemberRoleResponseV1 (OK)
 
-        400: Bad Request - ResponseErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (errorCode: 73232 | errorMessage: member role not found)
+        404: Not Found - ResponseErrorResponse (73232: member role not found)
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
         """

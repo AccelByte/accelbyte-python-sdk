@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.846604+08:00
+# Auto-generated at 2021-10-14T22:17:18.413915+08:00
 # from: Justice Group Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,20 @@ from ...models import ResponseErrorResponse
 class DeleteGroupAdminV1(Operation):
     """Delete existing group (deleteGroupAdminV1)
 
+    Required Permission: "ADMIN:NAMESPACE:{namespace}:GROUP:{groupId} [DELETE]"
+
+    Delete existing group. It will check whether the groupID is exist before doing
+    the process to delete the group.
+
+    Action Code: 73302
+
+
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/groups/{groupId}
 
         method: DELETE
 
-        tags: Group
+        tags: ["Group"]
 
         consumes: []
 
@@ -51,13 +59,13 @@ class DeleteGroupAdminV1(Operation):
     Responses:
         204: No Content - (No Content)
 
-        400: Bad Request - ResponseErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 20022: token is not user token)
 
-        404: Not Found - ResponseErrorResponse (errorCode: 73333 | errorMessage: group not found)
+        404: Not Found - ResponseErrorResponse (73333: group not found)
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
@@ -169,7 +177,7 @@ class DeleteGroupAdminV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -190,13 +198,13 @@ class DeleteGroupAdminV1(Operation):
 
         204: No Content - (No Content)
 
-        400: Bad Request - ResponseErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 20022: token is not user token)
 
-        404: Not Found - ResponseErrorResponse (errorCode: 73333 | errorMessage: group not found)
+        404: Not Found - ResponseErrorResponse (73333: group not found)
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
         """

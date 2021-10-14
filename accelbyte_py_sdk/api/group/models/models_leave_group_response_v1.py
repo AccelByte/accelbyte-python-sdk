@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:37.824608+08:00
+# Auto-generated at 2021-10-14T22:17:18.334780+08:00
 # from: Justice Group Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsLeaveGroupResponseV1(Model):
-    """Models leave group response V1
+    """Models leave group response V1 (models.LeaveGroupResponseV1)
 
     Properties:
         group_id: (groupId) REQUIRED str
@@ -56,7 +56,7 @@ class ModelsLeaveGroupResponseV1(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "group_id") and self.group_id:
             result["groupId"] = str(self.group_id)
         elif include_empty:

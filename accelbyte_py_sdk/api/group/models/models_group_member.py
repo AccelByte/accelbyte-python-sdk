@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:37.813670+08:00
+# Auto-generated at 2021-10-14T22:17:18.328145+08:00
 # from: Justice Group Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsGroupMember(Model):
-    """Models group member
+    """Models group member (models.GroupMember)
 
     Properties:
         member_role_id: (memberRoleId) REQUIRED List[str]
@@ -56,7 +56,7 @@ class ModelsGroupMember(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "member_role_id") and self.member_role_id:
             result["memberRoleId"] = [str(i0) for i0 in self.member_role_id]
         elif include_empty:

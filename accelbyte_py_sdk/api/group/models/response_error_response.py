@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:37.852262+08:00
+# Auto-generated at 2021-10-14T22:17:18.356797+08:00
 # from: Justice Group Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ResponseErrorResponse(Model):
-    """Response error response
+    """Response error response (response.ErrorResponse)
 
     Properties:
         error_code: (errorCode) REQUIRED int
@@ -56,7 +56,7 @@ class ResponseErrorResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "error_code") and self.error_code:
             result["errorCode"] = int(self.error_code)
         elif include_empty:

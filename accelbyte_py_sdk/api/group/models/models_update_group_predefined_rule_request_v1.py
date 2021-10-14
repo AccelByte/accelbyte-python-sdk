@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:37.843156+08:00
+# Auto-generated at 2021-10-14T22:17:18.350849+08:00
 # from: Justice Group Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.models_rule_information import ModelsRuleInformation
 
 
 class ModelsUpdateGroupPredefinedRuleRequestV1(Model):
-    """Models update group predefined rule request V1
+    """Models update group predefined rule request V1 (models.UpdateGroupPredefinedRuleRequestV1)
 
     Properties:
         rule_detail: (ruleDetail) REQUIRED List[ModelsRuleInformation]
@@ -51,7 +51,7 @@ class ModelsUpdateGroupPredefinedRuleRequestV1(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "rule_detail") and self.rule_detail:
             result["ruleDetail"] = [i0.to_dict(include_empty=include_empty) for i0 in self.rule_detail]
         elif include_empty:

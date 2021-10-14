@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.819474+08:00
+# Auto-generated at 2021-10-14T22:17:18.385405+08:00
 # from: Justice Group Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,21 @@ from ...models import ResponseErrorResponse
 class UpdateGroupConfigurationAdminV1(Operation):
     """update existing configuration (updateGroupConfigurationAdminV1)
 
+    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]'
+
+    This endpoint is used to update existing configuration. groupAdminRoleId and
+    groupMemberRoleId won't be able to be updated. User can try to change the
+    member role permission instead for each of those member role
+
+    Action Code: 73102
+
+
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}
 
         method: PATCH
 
-        tags: Configuration
+        tags: ["Configuration"]
 
         consumes: ["application/json"]
 
@@ -55,13 +64,13 @@ class UpdateGroupConfigurationAdminV1(Operation):
     Responses:
         200: OK - ModelsUpdateGroupConfigurationResponseV1 (OK)
 
-        400: Bad Request - ResponseErrorResponse (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - ResponseErrorResponse (20019: unable to parse request body | 20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 20022: token is not user token)
 
-        404: Not Found - ResponseErrorResponse (errorCode: 73131 | errorMessage: global configuration not found)
+        404: Not Found - ResponseErrorResponse (73131: global configuration not found)
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
@@ -185,7 +194,7 @@ class UpdateGroupConfigurationAdminV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -210,13 +219,13 @@ class UpdateGroupConfigurationAdminV1(Operation):
 
         200: OK - ModelsUpdateGroupConfigurationResponseV1 (OK)
 
-        400: Bad Request - ResponseErrorResponse (errorCode: 20019 | errorMessage: unable to parse request body)
+        400: Bad Request - ResponseErrorResponse (20019: unable to parse request body | 20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (errorCode: 20013 | errorMessage: insufficient permissions)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 20022: token is not user token)
 
-        404: Not Found - ResponseErrorResponse (errorCode: 73131 | errorMessage: global configuration not found)
+        404: Not Found - ResponseErrorResponse (73131: global configuration not found)
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
         """

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.965505+08:00
+# Auto-generated at 2021-10-14T22:17:18.559201+08:00
 # from: Justice Group Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,22 @@ from ...models import ResponseErrorResponse
 class LeaveGroupPublicV1(Operation):
     """Leave group (leaveGroupPublicV1)
 
+    Required valid user authentication
+
+    This endpoint is used to leave from group.
+
+    leave from group. Admin is not allowed to leave the group. This endpoint will
+    also give response if the user is not belong to any group.
+
+    Action Code: 73404
+
+
     Properties:
         url: /group/v1/public/namespaces/{namespace}/leave
 
         method: POST
 
-        tags: Group Member
+        tags: ["Group Member"]
 
         consumes: []
 
@@ -50,13 +60,13 @@ class LeaveGroupPublicV1(Operation):
     Responses:
         200: OK - ModelsLeaveGroupResponseV1 (OK)
 
-        400: Bad Request - ResponseErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 73440: group admin cannot leave group)
 
-        401: Unauthorized - ResponseErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (errorCode: 20022 | errorMessage: token is not user token)
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
 
-        404: Not Found - ResponseErrorResponse (errorCode: 73034 | errorMessage: user not belong to any group)
+        404: Not Found - ResponseErrorResponse (73034: user not belong to any group)
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
@@ -158,7 +168,7 @@ class LeaveGroupPublicV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -175,13 +185,13 @@ class LeaveGroupPublicV1(Operation):
 
         200: OK - ModelsLeaveGroupResponseV1 (OK)
 
-        400: Bad Request - ResponseErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 73440: group admin cannot leave group)
 
-        401: Unauthorized - ResponseErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (errorCode: 20022 | errorMessage: token is not user token)
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
 
-        404: Not Found - ResponseErrorResponse (errorCode: 73034 | errorMessage: user not belong to any group)
+        404: Not Found - ResponseErrorResponse (73034: user not belong to any group)
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
         """

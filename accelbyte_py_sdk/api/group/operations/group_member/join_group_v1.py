@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.932027+08:00
+# Auto-generated at 2021-10-14T22:17:18.511070+08:00
 # from: Justice Group Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,31 @@ from ...models import ResponseErrorResponse
 class JoinGroupV1(Operation):
     """Join to group (JoinGroupV1)
 
+    Required valid user authentication
+
+    This endpoint is used to join as group member
+
+    Join to the group. This endpoint will check the the the type of the group
+    based on the groupID.
+
+    Additional Information:
+
+      * User cannot join to the group with PRIVATE type
+      * Joining PUBLIC group type will create join request and need approval from the privileged group member to accept the request to become the member
+      * Joining OPEN group type will make this user become member of that group immediately
+
+    This endpoint will return status field to give information whether the user is
+    JOINED or REQUESTED to join to the specific group
+
+    Action Code: 73403
+
+
     Properties:
         url: /group/v1/public/namespaces/{namespace}/groups/{groupId}/join
 
         method: POST
 
-        tags: Group Member
+        tags: ["Group Member"]
 
         consumes: []
 
@@ -52,13 +71,13 @@ class JoinGroupV1(Operation):
     Responses:
         201: Created - ModelsJoinGroupResponseV1 (Created)
 
-        400: Bad Request - ResponseErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (errorCode: 20022 | errorMessage: token is not user token)
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
 
-        409: Conflict - ResponseErrorResponse (errorCode: 73442 | errorMessage: user already joined in another group)
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group)
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
@@ -170,7 +189,7 @@ class JoinGroupV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -191,13 +210,13 @@ class JoinGroupV1(Operation):
 
         201: Created - ModelsJoinGroupResponseV1 (Created)
 
-        400: Bad Request - ResponseErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (errorCode: 20022 | errorMessage: token is not user token)
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
 
-        409: Conflict - ResponseErrorResponse (errorCode: 73442 | errorMessage: user already joined in another group)
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group)
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
         """

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:37.839881+08:00
+# Auto-generated at 2021-10-14T22:17:18.348677+08:00
 # from: Justice Group Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsUpdateGroupCustomAttributesRequestV1(Model):
-    """Models update group custom attributes request V1
+    """Models update group custom attributes request V1 (models.UpdateGroupCustomAttributesRequestV1)
 
     Properties:
         custom_attributes: (customAttributes) REQUIRED Dict[str, Any]
@@ -49,7 +49,7 @@ class ModelsUpdateGroupCustomAttributesRequestV1(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "custom_attributes") and self.custom_attributes:
             result["customAttributes"] = {str(k0): v0 for k0, v0 in self.custom_attributes.items()}
         elif include_empty:

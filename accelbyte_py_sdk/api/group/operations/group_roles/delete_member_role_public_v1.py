@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.984500+08:00
+# Auto-generated at 2021-10-14T22:17:18.581895+08:00
 # from: Justice Group Service (2.4.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,19 @@ from ...models import ResponseErrorResponse
 class DeleteMemberRolePublicV1(Operation):
     """Remove role from group member (deleteMemberRolePublicV1)
 
+    Required Member Role Permission: "GROUP:ROLE [UPDATE]"
+
+    This endpoint is used to remove role from group member
+
+    Action Code: 73204
+
+
     Properties:
         url: /group/v1/public/namespaces/{namespace}/roles/{memberRoleId}/members
 
         method: DELETE
 
-        tags: Group Roles
+        tags: ["Group Roles"]
 
         consumes: ["application/json"]
 
@@ -55,13 +62,13 @@ class DeleteMemberRolePublicV1(Operation):
     Responses:
         200: OK - ModelsUpdateMemberRoleResponseV1 (OK)
 
-        400: Bad Request - ResponseErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - ResponseErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (errorCode: 20022 | errorMessage: token is not user token)
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (errorCode: 73232 | errorMessage: member role not found)
+        404: Not Found - ResponseErrorResponse (73232: member role not found)
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
@@ -185,7 +192,7 @@ class DeleteMemberRolePublicV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -210,13 +217,13 @@ class DeleteMemberRolePublicV1(Operation):
 
         200: OK - ModelsUpdateMemberRoleResponseV1 (OK)
 
-        400: Bad Request - ResponseErrorResponse (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - ResponseErrorResponse (errorCode: 20001 | errorMessage: unauthorized access)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (errorCode: 20022 | errorMessage: token is not user token)
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (errorCode: 73232 | errorMessage: member role not found)
+        404: Not Found - ResponseErrorResponse (73232: member role not found)
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
         """
