@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:38.265352+08:00
+# Auto-generated at 2021-10-14T22:17:18.873699+08:00
 # from: Justice Cloudsave Service (3.38.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsPagination(Model):
-    """Models pagination
+    """Models pagination (models.Pagination)
 
     Properties:
         first: (first) REQUIRED str
@@ -70,7 +70,7 @@ class ModelsPagination(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "first") and self.first:
             result["first"] = str(self.first)
         elif include_empty:

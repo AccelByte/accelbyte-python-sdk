@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:38.270444+08:00
+# Auto-generated at 2021-10-14T22:17:18.877903+08:00
 # from: Justice Cloudsave Service (3.38.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsPlayerRecordRequest(Model):
-    """Models player record request
+    """Models player record request (models.PlayerRecordRequest)
 
     Properties:
     """
@@ -43,7 +43,7 @@ class ModelsPlayerRecordRequest(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         return result
 
     # endregion to methods

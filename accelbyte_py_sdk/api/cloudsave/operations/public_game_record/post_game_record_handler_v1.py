@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.265058+08:00
+# Auto-generated at 2021-10-14T22:17:18.927143+08:00
 # from: Justice Cloudsave Service (3.38.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,61 @@ from ...models import ResponseError
 class PostGameRecordHandlerV1(Operation):
     """Create or append game record (postGameRecordHandlerV1)
 
+    Required Permission | `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]`  
+    ---|---  
+    Required Scope | `social`  
+
+    If there's already record, the record will be merged with conditions: \- If
+    field name is already exist, the value will be replaced \- If field name is
+    not exists it will append the field and its value Example: Replace value in a
+    specific JSON key
+
+
+
+        // existed record
+        {
+            "foo": "bar"
+        }
+
+        // new update (request body)
+        {
+            "foo": "barUpdated"
+        }
+
+        // result
+        {
+            "foo": "barUpdated"
+        }
+
+
+    Append new json item
+
+
+
+        // existed record
+        {
+            "foo": "bar"
+        }
+
+        // new update (request body)
+        {
+            "foo_new": "bar_new"
+        }
+
+        // result
+        {
+            "foo": "bar",
+            "foo_new": "bar_new"
+        }
+
+
+
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/records/{key}
 
         method: POST
 
-        tags: PublicGameRecord
+        tags: ["PublicGameRecord"]
 
         consumes: ["application/json"]
 
@@ -176,7 +225,7 @@ class PostGameRecordHandlerV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

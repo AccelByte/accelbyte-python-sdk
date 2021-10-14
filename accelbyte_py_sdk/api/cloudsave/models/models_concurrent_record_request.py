@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:38.258099+08:00
+# Auto-generated at 2021-10-14T22:17:18.867929+08:00
 # from: Justice Cloudsave Service (3.38.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsConcurrentRecordRequest(Model):
-    """Models concurrent record request
+    """Models concurrent record request (models.ConcurrentRecordRequest)
 
     Properties:
         updated_at: (updatedAt) REQUIRED str
@@ -56,7 +56,7 @@ class ModelsConcurrentRecordRequest(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "updated_at") and self.updated_at:
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:

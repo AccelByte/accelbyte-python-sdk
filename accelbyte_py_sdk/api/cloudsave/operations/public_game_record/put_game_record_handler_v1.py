@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.262118+08:00
+# Auto-generated at 2021-10-14T22:17:18.924496+08:00
 # from: Justice Cloudsave Service (3.38.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,39 @@ from ...models import ResponseError
 class PutGameRecordHandlerV1(Operation):
     """Create or replace game record (putGameRecordHandlerV1)
 
+    Required Permission | `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]`  
+    ---|---  
+    Required Scope | `social`  
+
+    If record already exists, it will be replaced with the one from request body
+    (all fields will be deleted). If record is not exists, it will create a new
+    one with value from request body. Example: Replace all records
+
+
+
+            // existed record
+            {
+                "foo": "bar"
+            }
+
+            // new update (request body)
+            {
+                "foo_new": "bar_new"
+            }
+
+            // result
+            {
+                "foo_new": "bar_new"
+            }
+
+
+
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/records/{key}
 
         method: PUT
 
-        tags: PublicGameRecord
+        tags: ["PublicGameRecord"]
 
         consumes: ["application/json"]
 
@@ -176,7 +203,7 @@ class PutGameRecordHandlerV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

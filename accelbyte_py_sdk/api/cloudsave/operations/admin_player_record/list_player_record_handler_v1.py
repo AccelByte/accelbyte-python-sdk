@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.226014+08:00
+# Auto-generated at 2021-10-14T22:17:18.893789+08:00
 # from: Justice Cloudsave Service (3.38.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,17 @@ from ...models import ResponseError
 class ListPlayerRecordHandlerV1(Operation):
     """Retrieve list of public player records (listPlayerRecordHandlerV1)
 
+    Required permission: ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
+    Required scope: social Retrieve list of player records key and userID under
+    given namespace.
+
+
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/records
 
         method: GET
 
-        tags: AdminPlayerRecord
+        tags: ["AdminPlayerRecord"]
 
         consumes: ["application/json"]
 
@@ -187,7 +192,7 @@ class ListPlayerRecordHandlerV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

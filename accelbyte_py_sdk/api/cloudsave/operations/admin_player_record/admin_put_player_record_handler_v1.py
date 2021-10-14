@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.233296+08:00
+# Auto-generated at 2021-10-14T22:17:18.899212+08:00
 # from: Justice Cloudsave Service (3.38.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import ResponseError
 class AdminPutPlayerRecordHandlerV1(Operation):
     """Create or replace player record (adminPutPlayerRecordHandlerV1)
 
+    Required permission:
+    ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE] Required
+    scope: social Save a record (arbitrary JSON data) in user-level. If a record
+    already exist with given key, this endpoint will replace the record. Record
+    saved will be a private record.
+
+
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userID}/records/{key}
 
         method: PUT
 
-        tags: AdminPlayerRecord
+        tags: ["AdminPlayerRecord"]
 
         consumes: ["application/json"]
 
@@ -188,7 +195,7 @@ class AdminPutPlayerRecordHandlerV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

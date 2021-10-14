@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.250545+08:00
+# Auto-generated at 2021-10-14T22:17:18.913668+08:00
 # from: Justice Cloudsave Service (3.38.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,21 @@ from ...models import ResponseError
 class AdminPostPlayerPublicRecordHandlerV1(Operation):
     """Save user level record (adminPostPlayerPublicRecordHandlerV1)
 
+    Required permission:
+    ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [CREATE]
+    Required scope: social Save a record (arbitrary JSON data) in user-level. If a
+    record already exist with given record key, this endpoint will try to merge.
+    Same top level key inside body will be replaced, different top level key will
+    be appended. Record saved will be a public record. If existing record is not
+    public (is_public false) then this endpoint won't make it public.
+
+
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userID}/records/{key}/public
 
         method: POST
 
-        tags: AdminPlayerRecord
+        tags: ["AdminPlayerRecord"]
 
         consumes: ["application/json"]
 
@@ -190,7 +199,7 @@ class AdminPostPlayerPublicRecordHandlerV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

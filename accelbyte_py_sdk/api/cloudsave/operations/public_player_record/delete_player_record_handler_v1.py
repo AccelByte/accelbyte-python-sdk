@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.284269+08:00
+# Auto-generated at 2021-10-14T22:17:18.943919+08:00
 # from: Justice Cloudsave Service (3.38.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,20 @@ from ...models import ResponseError
 class DeletePlayerRecordHandlerV1(Operation):
     """Delete player record (deletePlayerRecordHandlerV1)
 
+    Required Permission | `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD
+    [DELETE]`  
+    ---|---  
+    Required Scope | `social`  
+
+    Delete player record by its key
+
+
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userID}/records/{key}
 
         method: DELETE
 
-        tags: PublicPlayerRecord
+        tags: ["PublicPlayerRecord"]
 
         consumes: ["application/json"]
 
@@ -173,7 +181,7 @@ class DeletePlayerRecordHandlerV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

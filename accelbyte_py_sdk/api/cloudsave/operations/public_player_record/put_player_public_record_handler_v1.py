@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.291349+08:00
+# Auto-generated at 2021-10-14T22:17:18.948908+08:00
 # from: Justice Cloudsave Service (3.38.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,40 @@ from ...models import ResponseError
 class PutPlayerPublicRecordHandlerV1(Operation):
     """Create or replace player record (putPlayerPublicRecordHandlerV1)
 
+    Required Permission |
+    `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]`  
+    ---|---  
+    Required Scope | `social`  
+
+    If the record is not exist, it will create. If the record already exist, it
+    will replace the record instead. And this operation can only be applied to
+    record with `isPublic=true`. Example Replace record
+
+
+
+        // existed record
+        {
+            "foo": "bar"
+        }
+
+        // new record (request body)
+        {
+            "foo_new": "bar_new"
+        }
+
+        // result
+        {
+            "foo_new": "bar_new"
+        }
+
+
+
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userID}/records/{key}/public
 
         method: PUT
 
-        tags: PublicPlayerRecord
+        tags: ["PublicPlayerRecord"]
 
         consumes: ["application/json"]
 
@@ -188,7 +216,7 @@ class PutPlayerPublicRecordHandlerV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

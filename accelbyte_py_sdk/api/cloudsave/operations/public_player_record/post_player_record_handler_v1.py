@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.281581+08:00
+# Auto-generated at 2021-10-14T22:17:18.940996+08:00
 # from: Justice Cloudsave Service (3.38.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,61 @@ from ...models import ResponseError
 class PostPlayerRecordHandlerV1(Operation):
     """Create or append player record (postPlayerRecordHandlerV1)
 
+    Required Permission | `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD
+    [WRITE]`  
+    ---|---  
+    Required Scope | `social`  
+
+    Create player record if it is not exists otherwise merge with these criteria:
+    \- If field name is already exists, replace the value \- If field name is not
+    exists, append it Example Replace value:
+
+
+
+            // existed record
+            {
+                "foo": "bar"
+            }
+
+            // new record (request body)
+            {
+                "foo": "bar_updated"
+            }
+
+            // result
+            {
+                "foo": "bar_updated"
+            }
+
+
+    Append value:
+
+
+
+            // existed record
+            {
+                "foo": "bar"
+            }
+
+            // new record (request body)
+            {
+                "foo_new": "bar_new"
+            }
+
+            // result
+            {
+                "foo": "bar",
+                "foo_new": "bar_new"
+            }
+
+
+
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userID}/records/{key}
 
         method: POST
 
-        tags: PublicPlayerRecord
+        tags: ["PublicPlayerRecord"]
 
         consumes: ["application/json"]
 
@@ -188,7 +237,7 @@ class PostPlayerRecordHandlerV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

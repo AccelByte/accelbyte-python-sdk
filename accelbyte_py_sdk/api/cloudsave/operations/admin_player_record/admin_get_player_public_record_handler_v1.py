@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.242466+08:00
+# Auto-generated at 2021-10-14T22:17:18.907372+08:00
 # from: Justice Cloudsave Service (3.38.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,18 @@ from ...models import ResponseError
 class AdminGetPlayerPublicRecordHandlerV1(Operation):
     """Retrieve a player public record value by its key (adminGetPlayerPublicRecordHandlerV1)
 
+    Required permission:
+    ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]
+    Required scope: social Get a record in user-level (arbitrary JSON data) by its
+    key.
+
+
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userID}/records/{key}/public
 
         method: GET
 
-        tags: AdminPlayerRecord
+        tags: ["AdminPlayerRecord"]
 
         consumes: ["application/json"]
 
@@ -176,7 +182,7 @@ class AdminGetPlayerPublicRecordHandlerV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

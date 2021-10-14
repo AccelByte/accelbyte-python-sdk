@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.221405+08:00
+# Auto-generated at 2021-10-14T22:17:18.887664+08:00
 # from: Justice Cloudsave Service (3.38.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,17 @@ from ...models import ResponseError
 class PostAdminGameRecordHandlerV1(Operation):
     """Save namespace level record (postAdminGameRecordHandlerV1)
 
+    Required permission: ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [WRITE]
+    Required scope: social This endpoints is to store arbitrary JSON data in
+    namespace-level.
+
+
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}
 
         method: POST
 
-        tags: AdminGameRecord
+        tags: ["AdminGameRecord"]
 
         consumes: ["application/json"]
 
@@ -176,7 +181,7 @@ class PostAdminGameRecordHandlerV1(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
