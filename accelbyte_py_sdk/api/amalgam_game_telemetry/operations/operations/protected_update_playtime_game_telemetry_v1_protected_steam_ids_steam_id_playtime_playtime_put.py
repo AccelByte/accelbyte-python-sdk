@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.335501+08:00
+# Auto-generated at 2021-10-14T22:17:18.993441+08:00
 # from: Justice AmalgamGameTelemetry Service (0.0.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,16 @@ from ...models import HTTPValidationError
 class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut(Operation):
     """Protected Update Playtime (protected_update_playtime_game_telemetry_v1_protected_steamIds__steamId__playtime__playtime__put)
 
+    This endpoint update player's total playtime in a specific game (AppId) from
+    service's cache.
+
+
     Properties:
         url: /game-telemetry/v1/protected/steamIds/{steamId}/playtime/{playtime}
 
         method: PUT
 
-        tags: 
+        tags: []
 
         consumes: []
 
@@ -161,7 +165,7 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "steam_id") and self.steam_id:
             result["steamId"] = str(self.steam_id)
         elif include_empty:

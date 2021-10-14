@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.331097+08:00
+# Auto-generated at 2021-10-14T22:17:18.989472+08:00
 # from: Justice AmalgamGameTelemetry Service (0.0.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,33 @@ from ...models import TelemetryBody
 class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
     """Protected Save Events (protected_save_events_game_telemetry_v1_protected_events_post)
 
+    This endpoint require valid JWT token. This endpoint send events into
+    designated streaming pipeline and each request can contain single or multiple
+    events.
+
+    Format of the event: \- **EventNamespace (required)**: namespace of the
+    relevant game with domain name format.
+
+    Only accept input with valid characters. Allowed characters: Aa-Zz0-9_.-
+
+    Example: io.accelbyte.justice.dev.samplegame
+
+    \- **EventName (required)**: name of the event.
+
+    Only accept input with valid characters. Allowed characters: Aa-Zz0-9_.-
+
+    Example: player_killed, mission_accomplished
+
+    \- **Payload (required)**: an arbitrary json with the payload of the said
+    event
+
+
     Properties:
         url: /game-telemetry/v1/protected/events
 
         method: POST
 
-        tags: 
+        tags: []
 
         consumes: ["application/json"]
 
@@ -143,7 +164,7 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

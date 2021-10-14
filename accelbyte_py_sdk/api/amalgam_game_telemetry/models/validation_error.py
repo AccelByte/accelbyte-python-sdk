@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:38.381739+08:00
+# Auto-generated at 2021-10-14T22:17:18.988317+08:00
 # from: Justice AmalgamGameTelemetry Service (0.0.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ValidationError(Model):
-    """Validation error
+    """Validation error (ValidationError)
 
     Properties:
         loc: (loc) REQUIRED List[str]
@@ -63,7 +63,7 @@ class ValidationError(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "loc") and self.loc:
             result["loc"] = [str(i0) for i0 in self.loc]
         elif include_empty:

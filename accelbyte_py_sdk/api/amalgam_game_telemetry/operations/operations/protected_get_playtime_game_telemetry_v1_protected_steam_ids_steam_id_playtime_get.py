@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:31.333207+08:00
+# Auto-generated at 2021-10-14T22:17:18.991731+08:00
 # from: Justice AmalgamGameTelemetry Service (0.0.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,17 @@ from ...models import HTTPValidationError
 class ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet(Operation):
     """Protected Get Playtime (protected_get_playtime_game_telemetry_v1_protected_steamIds__steamId__playtime_get)
 
+    This endpoint retrieves player's total playtime in Steam for a specific game
+    (AppId) and store them in service's cache. Players' Steam account must be set
+    into public to enable the service fetch their total playtime data.
+
+
     Properties:
         url: /game-telemetry/v1/protected/steamIds/{steamId}/playtime
 
         method: GET
 
-        tags: 
+        tags: []
 
         consumes: []
 
@@ -149,7 +154,7 @@ class ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet(Ope
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "steam_id") and self.steam_id:
             result["steamId"] = str(self.steam_id)
         elif include_empty:

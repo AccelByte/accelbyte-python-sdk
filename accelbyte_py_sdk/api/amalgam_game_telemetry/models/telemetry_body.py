@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:38.378481+08:00
+# Auto-generated at 2021-10-14T22:17:18.987093+08:00
 # from: Justice AmalgamGameTelemetry Service (0.0.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class TelemetryBody(Model):
-    """Telemetry body
+    """Telemetry body (TelemetryBody)
 
     Properties:
         event_id: (EventId) OPTIONAL str
@@ -77,7 +77,7 @@ class TelemetryBody(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "event_id") and self.event_id:
             result["EventId"] = str(self.event_id)
         elif include_empty:
