@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:37.371103+08:00
+# Auto-generated at 2021-10-14T22:17:17.881158+08:00
 # from: Justice SessionBrowser Service ()
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,7 +29,7 @@ from ..models.models_pagination import ModelsPagination
 
 
 class ModelsSessionQueryResponse(Model):
-    """Models session query response
+    """Models session query response (models.SessionQueryResponse)
 
     Properties:
         pagination: (pagination) REQUIRED ModelsPagination
@@ -59,7 +59,7 @@ class ModelsSessionQueryResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "pagination") and self.pagination:
             result["pagination"] = self.pagination.to_dict(include_empty=include_empty)
         elif include_empty:

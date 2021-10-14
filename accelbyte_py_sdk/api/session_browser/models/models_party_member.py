@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:37.363812+08:00
+# Auto-generated at 2021-10-14T22:17:17.873544+08:00
 # from: Justice SessionBrowser Service ()
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsPartyMember(Model):
-    """Models party member
+    """Models party member (models.PartyMember)
 
     Properties:
         extra_attributes: (extra_attributes) REQUIRED Dict[str, Any]
@@ -56,7 +56,7 @@ class ModelsPartyMember(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "extra_attributes") and self.extra_attributes:
             result["extra_attributes"] = {str(k0): v0 for k0, v0 in self.extra_attributes.items()}
         elif include_empty:

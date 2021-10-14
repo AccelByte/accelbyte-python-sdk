@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:37.378411+08:00
+# Auto-generated at 2021-10-14T22:17:17.885991+08:00
 # from: Justice SessionBrowser Service ()
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsUpdateSessionRequest(Model):
-    """Models update session request
+    """Models update session request (models.UpdateSessionRequest)
 
     Properties:
         game_current_player: (game_current_player) REQUIRED int
@@ -56,7 +56,7 @@ class ModelsUpdateSessionRequest(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "game_current_player") and self.game_current_player:
             result["game_current_player"] = int(self.game_current_player)
         elif include_empty:

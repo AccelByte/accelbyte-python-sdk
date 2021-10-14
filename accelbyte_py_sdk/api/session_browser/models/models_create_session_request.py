@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:37.351688+08:00
+# Auto-generated at 2021-10-14T22:17:17.860675+08:00
 # from: Justice SessionBrowser Service ()
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.models_game_session_setting import ModelsGameSessionSetting
 
 
 class ModelsCreateSessionRequest(Model):
-    """Models create session request
+    """Models create session request (models.CreateSessionRequest)
 
     Properties:
         game_session_setting: (game_session_setting) REQUIRED ModelsGameSessionSetting
@@ -72,7 +72,7 @@ class ModelsCreateSessionRequest(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "game_session_setting") and self.game_session_setting:
             result["game_session_setting"] = self.game_session_setting.to_dict(include_empty=include_empty)
         elif include_empty:

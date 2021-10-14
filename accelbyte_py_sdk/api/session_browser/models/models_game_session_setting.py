@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:37.355954+08:00
+# Auto-generated at 2021-10-14T22:17:17.865158+08:00
 # from: Justice SessionBrowser Service ()
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ModelsGameSessionSetting(Model):
-    """Models game session setting
+    """Models game session setting (models.GameSessionSetting)
 
     Properties:
         allow_join_in_progress: (allow_join_in_progress) REQUIRED bool
@@ -91,7 +91,7 @@ class ModelsGameSessionSetting(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "allow_join_in_progress") and self.allow_join_in_progress:
             result["allow_join_in_progress"] = bool(self.allow_join_in_progress)
         elif include_empty:

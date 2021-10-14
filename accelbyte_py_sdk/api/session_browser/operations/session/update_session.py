@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.357829+08:00
+# Auto-generated at 2021-10-14T22:17:17.901000+08:00
 # from: Justice SessionBrowser Service ()
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,16 @@ from ...models import ResponseError
 class UpdateSession(Operation):
     """Update session (UpdateSession)
 
+    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]
+    Required scope: social Update game session, used to update the current player
+
+
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}
 
         method: PUT
 
-        tags: Session
+        tags: ["Session"]
 
         consumes: ["application/json"]
 
@@ -181,7 +185,7 @@ class UpdateSession(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

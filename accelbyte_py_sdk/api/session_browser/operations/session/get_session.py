@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.355087+08:00
+# Auto-generated at 2021-10-14T22:17:17.898537+08:00
 # from: Justice SessionBrowser Service ()
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,16 @@ from ...models import ResponseError
 class GetSession(Operation):
     """Get specified session by session ID (GetSession)
 
+    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
+    Required scope: social Get the session by session ID
+
+
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}
 
         method: GET
 
-        tags: Session
+        tags: ["Session"]
 
         consumes: ["application/json"]
 
@@ -164,7 +168,7 @@ class GetSession(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

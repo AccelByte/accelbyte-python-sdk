@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:37.357578+08:00
+# Auto-generated at 2021-10-14T22:17:17.866882+08:00
 # from: Justice SessionBrowser Service ()
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.models_matching_ally import ModelsMatchingAlly
 
 
 class ModelsMatchMaking(Model):
-    """Models match making
+    """Models match making (models.MatchMaking)
 
     Properties:
         channel: (channel) REQUIRED str
@@ -156,7 +156,7 @@ class ModelsMatchMaking(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "channel") and self.channel:
             result["channel"] = str(self.channel)
         elif include_empty:

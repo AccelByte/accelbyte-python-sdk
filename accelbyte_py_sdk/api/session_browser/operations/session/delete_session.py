@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.361784+08:00
+# Auto-generated at 2021-10-14T22:17:17.903946+08:00
 # from: Justice SessionBrowser Service ()
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,16 @@ from ...models import ResponseError
 class DeleteSession(Operation):
     """Delete specified session by session ID (DeleteSession)
 
+    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [DELETE]
+    Required scope: social Delete the session by session ID
+
+
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}
 
         method: DELETE
 
-        tags: Session
+        tags: ["Session"]
 
         consumes: ["application/json"]
 
@@ -166,7 +170,7 @@ class DeleteSession(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

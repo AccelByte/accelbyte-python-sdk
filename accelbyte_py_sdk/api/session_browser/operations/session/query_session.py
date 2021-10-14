@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.346078+08:00
+# Auto-generated at 2021-10-14T22:17:17.888432+08:00
 # from: Justice SessionBrowser Service ()
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,16 @@ from ...models import ResponseError
 class QuerySession(Operation):
     """Query to available game session (QuerySession)
 
+    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
+    Required scope: social Query available game session
+
+
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession
 
         method: GET
 
-        tags: Session
+        tags: ["Session"]
 
         consumes: ["application/json"]
 
@@ -244,7 +248,7 @@ class QuerySession(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

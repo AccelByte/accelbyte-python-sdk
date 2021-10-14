@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:37.372332+08:00
+# Auto-generated at 2021-10-14T22:17:17.882316+08:00
 # from: Justice SessionBrowser Service ()
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -30,7 +30,7 @@ from ..models.models_server import ModelsServer
 
 
 class ModelsSessionResponse(Model):
-    """Models session response
+    """Models session response (models.SessionResponse)
 
     Properties:
         created_at: (created_at) REQUIRED str
@@ -123,7 +123,7 @@ class ModelsSessionResponse(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "created_at") and self.created_at:
             result["created_at"] = str(self.created_at)
         elif include_empty:
