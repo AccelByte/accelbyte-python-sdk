@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.457219+08:00
+# Auto-generated at 2021-10-14T22:17:16.632672+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,20 @@ from ...models import ItemAcquireResult
 class AcquireItem(Operation):
     """Acquire item (acquireItem)
 
+    [SERVICE COMMUNICATION ONLY] This api is used for acquiring a published item
+    while the item is maxCount limited, it will decrease the sale available count.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+      *  Returns : acquire result
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/items/{itemId}/acquire
 
         method: PUT
 
-        tags: Item
+        tags: ["Item"]
 
         consumes: []
 
@@ -55,7 +63,7 @@ class AcquireItem(Operation):
     Responses:
         200: OK - ItemAcquireResult (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30341 | ErrorMessage: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
     """
 
     # region fields
@@ -174,7 +182,7 @@ class AcquireItem(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -199,7 +207,7 @@ class AcquireItem(Operation):
 
         200: OK - ItemAcquireResult (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30341 | ErrorMessage: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
         """
         if code == 200:
             return ItemAcquireResult.create_from_dict(content), None

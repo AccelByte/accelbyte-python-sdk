@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.380383+08:00
+# Auto-generated at 2021-10-14T22:17:16.460095+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class GoogleIAPReceipt(Model):
-    """Google IAP receipt
+    """Google IAP receipt (GoogleIAPReceipt)
 
     Properties:
         order_id: (orderId) REQUIRED str
@@ -91,7 +91,7 @@ class GoogleIAPReceipt(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "order_id") and self.order_id:
             result["orderId"] = str(self.order_id)
         elif include_empty:

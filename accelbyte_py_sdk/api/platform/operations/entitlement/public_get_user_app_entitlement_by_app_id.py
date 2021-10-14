@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.662895+08:00
+# Auto-generated at 2021-10-14T22:17:16.907778+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import ErrorEntity
 class PublicGetUserAppEntitlementByAppId(Operation):
     """Get user app entitlement by appId (publicGetUserAppEntitlementByAppId)
 
+    Get user app entitlement by appId.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/byAppId
 
         method: GET
 
-        tags: Entitlement
+        tags: ["Entitlement"]
 
         consumes: []
 
@@ -54,7 +61,7 @@ class PublicGetUserAppEntitlementByAppId(Operation):
     Responses:
         200: OK - AppEntitlementInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 31142 | ErrorMessage: Entitlement with appId [{appId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (31142: Entitlement with appId [{appId}] does not exist in namespace [{namespace}])
     """
 
     # region fields
@@ -182,7 +189,7 @@ class PublicGetUserAppEntitlementByAppId(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -207,7 +214,7 @@ class PublicGetUserAppEntitlementByAppId(Operation):
 
         200: OK - AppEntitlementInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 31142 | ErrorMessage: Entitlement with appId [{appId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (31142: Entitlement with appId [{appId}] does not exist in namespace [{namespace}])
         """
         if code == 200:
             return AppEntitlementInfo.create_from_dict(content), None

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.536708+08:00
+# Auto-generated at 2021-10-14T22:17:16.749154+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,20 @@ from ...models import CategoryInfo
 class PublicGetDescendantCategories(Operation):
     """Get Descendant Categories (publicGetDescendantCategories)
 
+    This API is used to get descendant categories by category path.
+
+    Other detail info:
+
+      * Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store category)
+      *  Returns : list of descendant categories data
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/categories/{categoryPath}/descendants
 
         method: GET
 
-        tags: Category
+        tags: ["Category"]
 
         consumes: []
 
@@ -185,7 +193,7 @@ class PublicGetDescendantCategories(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

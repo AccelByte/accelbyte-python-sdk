@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.119227+08:00
+# Auto-generated at 2021-10-14T22:17:17.548951+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,18 @@ from ...models import PaymentMethod
 class PublicGetPaymentMethods(Operation):
     """Get payment methods (publicGetPaymentMethods)
 
+    Get payment methods.  
+    Other detail info:
+
+      * Returns : Payment method list
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/payment/methods
 
         method: GET
 
-        tags: PaymentStation
+        tags: ["PaymentStation"]
 
         consumes: ["application/json"]
 
@@ -52,7 +58,7 @@ class PublicGetPaymentMethods(Operation):
     Responses:
         200: OK - List[PaymentMethod] (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33141 | ErrorMessage: Payment Order [{paymentOrderNo}] does not exist)
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
     """
 
     # region fields
@@ -170,7 +176,7 @@ class PublicGetPaymentMethods(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -191,7 +197,7 @@ class PublicGetPaymentMethods(Operation):
 
         200: OK - List[PaymentMethod] (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33141 | ErrorMessage: Payment Order [{paymentOrderNo}] does not exist)
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
         """
         if code == 200:
             return [PaymentMethod.create_from_dict(i) for i in content], None

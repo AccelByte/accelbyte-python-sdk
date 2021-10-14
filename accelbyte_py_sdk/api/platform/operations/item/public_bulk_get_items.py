@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.562131+08:00
+# Auto-generated at 2021-10-14T22:17:16.790200+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,21 @@ from ...models import ItemInfo
 class PublicBulkGetItems(Operation):
     """Bulk get locale items (publicBulkGetItems)
 
+    This API is used to bulk get locale items. If item not exist in specific
+    region, default region item will return.
+
+    Other detail info:
+
+      * Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store items)
+      *  Returns : the list of items info
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/items/locale/byIds
 
         method: GET
 
-        tags: Item
+        tags: ["Item"]
 
         consumes: []
 
@@ -194,7 +203,7 @@ class PublicBulkGetItems(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

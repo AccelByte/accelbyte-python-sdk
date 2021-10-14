@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.925491+08:00
+# Auto-generated at 2021-10-14T22:17:17.267112+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -34,12 +34,19 @@ from ...models import ValidationErrorEntity
 class RefundUserPaymentOrder(Operation):
     """Refund payment order (refundUserPaymentOrder)
 
+    [SERVICE COMMUNICATION ONLY] This API is used to refund order by
+    paymentOrderNo from justice service.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT", action=4 (UPDATE)
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/payment/orders/{paymentOrderNo}/refund
 
         method: PUT
 
-        tags: Payment
+        tags: ["Payment"]
 
         consumes: ["application/json"]
 
@@ -58,11 +65,11 @@ class RefundUserPaymentOrder(Operation):
     Responses:
         200: OK - PaymentOrderInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33141 | ErrorMessage: Payment Order [{paymentOrderNo}] does not exist)
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
 
-        409: Conflict - ErrorEntity (ErrorCode: 33172 | ErrorMessage: Payment order [{paymentOrderNo}] is not refundable)
+        409: Conflict - ErrorEntity (33172: Payment order [{paymentOrderNo}] is not refundable)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -191,7 +198,7 @@ class RefundUserPaymentOrder(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -220,11 +227,11 @@ class RefundUserPaymentOrder(Operation):
 
         200: OK - PaymentOrderInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33141 | ErrorMessage: Payment Order [{paymentOrderNo}] does not exist)
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
 
-        409: Conflict - ErrorEntity (ErrorCode: 33172 | ErrorMessage: Payment order [{paymentOrderNo}] is not refundable)
+        409: Conflict - ErrorEntity (33172: Payment order [{paymentOrderNo}] is not refundable)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return PaymentOrderInfo.create_from_dict(content), None

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.440714+08:00
+# Auto-generated at 2021-10-14T22:17:16.508486+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class PaymentOrderCreate(Model):
-    """Payment order create
+    """Payment order create (PaymentOrderCreate)
 
     Properties:
         ext_order_no: (extOrderNo) REQUIRED str
@@ -175,7 +175,7 @@ class PaymentOrderCreate(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "ext_order_no") and self.ext_order_no:
             result["extOrderNo"] = str(self.ext_order_no)
         elif include_empty:

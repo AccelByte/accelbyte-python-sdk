@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.212151+08:00
+# Auto-generated at 2021-10-14T22:17:16.314808+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class CreditSummary(Model):
-    """Credit summary
+    """Credit summary (CreditSummary)
 
     Properties:
         wallet_id: (walletId) REQUIRED str
@@ -70,7 +70,7 @@ class CreditSummary(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "wallet_id") and self.wallet_id:
             result["walletId"] = str(self.wallet_id)
         elif include_empty:

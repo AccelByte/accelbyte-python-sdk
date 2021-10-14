@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.101690+08:00
+# Auto-generated at 2021-10-14T22:17:17.493125+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,18 @@ from ...models import PaymentOrderPaidResult
 class PublicCheckPaymentOrderPaidStatus(Operation):
     """Check payment order paid status (publicCheckPaymentOrderPaidStatus)
 
+    Check payment order paid status.  
+    Other detail info:
+
+      * Returns : Payment order paid result
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/payment/orders/{paymentOrderNo}/status
 
         method: GET
 
-        tags: PaymentStation
+        tags: ["PaymentStation"]
 
         consumes: ["application/json"]
 
@@ -52,7 +58,7 @@ class PublicCheckPaymentOrderPaidStatus(Operation):
     Responses:
         200: OK - PaymentOrderPaidResult (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33141 | ErrorMessage: Payment Order [{paymentOrderNo}] does not exist)
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
     """
 
     # region fields
@@ -162,7 +168,7 @@ class PublicCheckPaymentOrderPaidStatus(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -183,7 +189,7 @@ class PublicCheckPaymentOrderPaidStatus(Operation):
 
         200: OK - PaymentOrderPaidResult (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33141 | ErrorMessage: Payment Order [{paymentOrderNo}] does not exist)
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
         """
         if code == 200:
             return PaymentOrderPaidResult.create_from_dict(content), None

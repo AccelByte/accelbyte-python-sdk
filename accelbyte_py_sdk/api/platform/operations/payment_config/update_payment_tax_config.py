@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.154328+08:00
+# Auto-generated at 2021-10-14T22:17:17.626736+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -34,12 +34,32 @@ from ...models import ValidationErrorEntity
 class UpdatePaymentTaxConfig(Operation):
     """Update payment global tax config (updatePaymentTaxConfig)
 
+    Update payment tax config.  
+
+
+
+         Request Body Parameters:
+
+
+         Parameter| Type| Required| Description  
+        ---|---|---|---  
+        taxJarEnabled| Boolean| false  
+        taxJarApiToken| String| false| required, when taxJarEnabled is true and there is no existing token  
+        sandboxTaxJarApiToken| String| false| optional  
+        taxJarProductCodesMapping| Map| No| kye is item type and value is Product tax code, currently support those item types: APP, COINS, INGAMEITEM, BUNDLE, CODE, SUBSCRIPTION  
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
+      *  Returns : payment global tax config
+
+
     Properties:
         url: /platform/admin/payment/config/tax
 
         method: PUT
 
-        tags: PaymentConfig
+        tags: ["PaymentConfig"]
 
         consumes: ["application/json"]
 
@@ -52,9 +72,9 @@ class UpdatePaymentTaxConfig(Operation):
     Responses:
         200: OK - PaymentTaxConfigInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 33221 | ErrorMessage: TaxJar api token required)
+        400: Bad Request - ErrorEntity (33221: TaxJar api token required)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -144,7 +164,7 @@ class UpdatePaymentTaxConfig(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -161,9 +181,9 @@ class UpdatePaymentTaxConfig(Operation):
 
         200: OK - PaymentTaxConfigInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 33221 | ErrorMessage: TaxJar api token required)
+        400: Bad Request - ErrorEntity (33221: TaxJar api token required)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return PaymentTaxConfigInfo.create_from_dict(content), None

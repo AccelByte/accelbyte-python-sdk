@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.940838+08:00
+# Auto-generated at 2021-10-14T22:17:17.288105+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import ErrorEntity
 class GetEpicGamesIAPConfig(Operation):
     """Get epicgames iap config (getEpicGamesIAPConfig)
 
+    Get epic games iap config.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
+      *  Returns : epic games iap config
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/epicgames
 
         method: GET
 
-        tags: IAP
+        tags: ["IAP"]
 
         consumes: []
 
@@ -50,7 +57,7 @@ class GetEpicGamesIAPConfig(Operation):
     Responses:
         200: OK - EpicGamesIAPConfigInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 39243 | ErrorMessage: EpicGames config does not exist)
+        404: Not Found - ErrorEntity (39243: EpicGames config does not exist)
     """
 
     # region fields
@@ -150,7 +157,7 @@ class GetEpicGamesIAPConfig(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -167,7 +174,7 @@ class GetEpicGamesIAPConfig(Operation):
 
         200: OK - EpicGamesIAPConfigInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 39243 | ErrorMessage: EpicGames config does not exist)
+        404: Not Found - ErrorEntity (39243: EpicGames config does not exist)
         """
         if code == 200:
             return EpicGamesIAPConfigInfo.create_from_dict(content), None

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.406427+08:00
+# Auto-generated at 2021-10-14T22:17:16.481738+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class PayPalConfig(Model):
-    """A DTO object for updating PayPal config.
+    """A DTO object for updating PayPal config. (PayPalConfig)
 
     Properties:
         client_id: (clientID) OPTIONAL str
@@ -70,7 +70,7 @@ class PayPalConfig(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "client_id") and self.client_id:
             result["clientID"] = str(self.client_id)
         elif include_empty:

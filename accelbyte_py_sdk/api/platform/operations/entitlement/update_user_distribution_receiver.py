@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.606275+08:00
+# Auto-generated at 2021-10-14T22:17:16.845644+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,19 @@ from ...models import DistributionReceiverCreate
 class UpdateUserDistributionReceiver(Operation):
     """Update distribution receiver (updateUserDistributionReceiver)
 
+    Update distribution receiver for a specific user by dedicated server. It will
+    create a new one if not exists.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:DISTRIBUTION", action=4 (UPDATE)
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/receivers/{extUserId}
 
         method: PUT
 
-        tags: Entitlement
+        tags: ["Entitlement"]
 
         consumes: ["application/json"]
 
@@ -182,7 +189,7 @@ class UpdateUserDistributionReceiver(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

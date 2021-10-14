@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.785594+08:00
+# Auto-generated at 2021-10-14T22:17:17.082754+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,22 @@ from ...models import WalletInfo
 class PublicGetMyWallet(Operation):
     """Get my wallet by currency code and namespace (publicGetMyWallet)
 
+    get my wallet by currency code and namespace.  
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:WALLET", action=2 (READ)
+      *  Returns : wallet info
+      *  Path's namespace : 
+        * can be filled with publisher namespace in order to get publisher user wallet
+        * can be filled with game namespace in order to get game user wallet
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/me/wallets/{currencyCode}
 
         method: GET
 
-        tags: Wallet
+        tags: ["Wallet"]
 
         consumes: ["application/json"]
 
@@ -159,7 +169,7 @@ class PublicGetMyWallet(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

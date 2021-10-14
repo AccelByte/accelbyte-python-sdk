@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.080242+08:00
+# Auto-generated at 2021-10-14T22:17:17.466412+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,18 @@ from ...models import TestResult
 class TestPayPalConfigById(Operation):
     """Test PayPal configuration by id (testPayPalConfigById)
 
+    Test PayPal configuration in payment merchant config. Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
+      *  Returns : test result
+
+
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/paypalconfig/test
 
         method: GET
 
-        tags: PaymentConfig
+        tags: ["PaymentConfig"]
 
         consumes: ["application/json"]
 
@@ -52,7 +58,7 @@ class TestPayPalConfigById(Operation):
     Responses:
         200: OK - TestResult (successful operation)
 
-        404: Not Found - ErrorEntity (NumericErrorCode: 33045 | ErrorCode: errors.net.accelbyte.platform.payment.payment_merchant_config_not_found)
+        404: Not Found - ErrorEntity (33045: errors.net.accelbyte.platform.payment.payment_merchant_config_not_found)
     """
 
     # region fields
@@ -167,7 +173,7 @@ class TestPayPalConfigById(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "id_") and self.id_:
             result["id"] = str(self.id_)
         elif include_empty:
@@ -188,7 +194,7 @@ class TestPayPalConfigById(Operation):
 
         200: OK - TestResult (successful operation)
 
-        404: Not Found - ErrorEntity (NumericErrorCode: 33045 | ErrorCode: errors.net.accelbyte.platform.payment.payment_merchant_config_not_found)
+        404: Not Found - ErrorEntity (33045: errors.net.accelbyte.platform.payment.payment_merchant_config_not_found)
         """
         if code == 200:
             return TestResult.create_from_dict(content), None

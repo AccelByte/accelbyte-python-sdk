@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.204349+08:00
+# Auto-generated at 2021-10-14T22:17:16.307372+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class CategoryUpdate(Model):
-    """A DTO object for updating category API call.
+    """A DTO object for updating category API call. (CategoryUpdate)
 
     Properties:
         localization_display_names: (localizationDisplayNames) REQUIRED Dict[str, str]
@@ -49,7 +49,7 @@ class CategoryUpdate(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "localization_display_names") and self.localization_display_names:
             result["localizationDisplayNames"] = {str(k0): str(v0) for k0, v0 in self.localization_display_names.items()}
         elif include_empty:

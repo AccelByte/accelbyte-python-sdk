@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.368789+08:00
+# Auto-generated at 2021-10-14T22:17:16.528790+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -34,12 +34,29 @@ from ...models import ValidationErrorEntity
 class UpdateCategory(Operation):
     """Update category (updateCategory)
 
+    This API is used to update category.
+
+    The category update data is a category object, example as:
+
+
+
+        {
+            "storeId": "store-id",
+            "localizationDisplayNames": {"en" : "Games"}
+        }
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=4 (UPDATE)
+      *  Returns : the updated category data
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}
 
         method: PUT
 
-        tags: Category
+        tags: ["Category"]
 
         consumes: ["application/json"]
 
@@ -58,13 +75,13 @@ class UpdateCategory(Operation):
     Responses:
         200: OK - FullCategoryInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 30021 | ErrorMessage: Default language [{language}] required)
+        400: Bad Request - ErrorEntity (30021: Default language [{language}] required)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30241 | ErrorMessage: Category [{categoryPath}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 30173 | ErrorMessage: Published store can't modify content)
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -201,7 +218,7 @@ class UpdateCategory(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -230,13 +247,13 @@ class UpdateCategory(Operation):
 
         200: OK - FullCategoryInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 30021 | ErrorMessage: Default language [{language}] required)
+        400: Bad Request - ErrorEntity (30021: Default language [{language}] required)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30241 | ErrorMessage: Category [{categoryPath}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 30173 | ErrorMessage: Published store can't modify content)
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return FullCategoryInfo.create_from_dict(content), None

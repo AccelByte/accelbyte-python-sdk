@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.148329+08:00
+# Auto-generated at 2021-10-14T22:17:16.262907+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,7 +31,7 @@ from ..models.fulfillment_item import FulfillmentItem
 
 
 class FulfillmentHistoryInfo(Model):
-    """Fulfillment history info
+    """Fulfillment history info (FulfillmentHistoryInfo)
 
     Properties:
         id_: (id) REQUIRED str
@@ -138,7 +138,7 @@ class FulfillmentHistoryInfo(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "id_") and self.id_:
             result["id"] = str(self.id_)
         elif include_empty:

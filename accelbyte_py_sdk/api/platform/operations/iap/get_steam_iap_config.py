@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.973422+08:00
+# Auto-generated at 2021-10-14T22:17:17.339444+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,19 @@ from ...models import SteamIAPConfig
 class GetSteamIAPConfig(Operation):
     """Get steam iap config (getSteamIAPConfig)
 
+    Get steam iap config.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
+      *  Returns : steam iap config
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/steam
 
         method: GET
 
-        tags: IAP
+        tags: ["IAP"]
 
         consumes: []
 
@@ -147,7 +154,7 @@ class GetSteamIAPConfig(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

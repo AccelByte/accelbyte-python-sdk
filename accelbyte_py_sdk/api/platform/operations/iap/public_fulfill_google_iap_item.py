@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.014943+08:00
+# Auto-generated at 2021-10-14T22:17:17.395329+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,20 @@ from ...models import GoogleIAPReceipt
 class PublicFulfillGoogleIAPItem(Operation):
     """Fulfill google iap item. (publicFulfillGoogleIAPItem)
 
+    Verify google iap receipt and fulfill item.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
+      *  Returns : 
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/google/receipt
 
         method: PUT
 
-        tags: IAP
+        tags: ["IAP"]
 
         consumes: []
 
@@ -54,11 +62,11 @@ class PublicFulfillGoogleIAPItem(Operation):
     Responses:
         204: No Content - (Fulfill item successfully)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 39122 | ErrorMessage: Google iap receipt is invalid with status code [{statusCode}] and error message [{message}])
+        400: Bad Request - ErrorEntity (39122: Google iap receipt is invalid with status code [{statusCode}] and error message [{message}] | 35121: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per day | 35122: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per transaction | 35123: Wallet [{walletId}] is inactive | 35125: Balance exceed max balance [{maxAmount}] | 38121: Duplicate permanent item exists | 38122: Subscription endDate required)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30341 | ErrorMessage: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 39172 | ErrorMessage: The order id in namespace [{namespace}] expect [{expected}] but was [{actual}])
+        409: Conflict - ErrorEntity (39172: The order id in namespace [{namespace}] expect [{expected}] but was [{actual}] | 39173: The purchase status of google play order [{orderId}] in namespace [{namespace}] expect [{expected}] but was [{actual}] | 39174: The google iap purchase time of order [{orderId}] in namespace [{namespace}] expect [{expected}] but was [{actual}] | 20006: optimistic lock)
     """
 
     # region fields
@@ -177,7 +185,7 @@ class PublicFulfillGoogleIAPItem(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -202,11 +210,11 @@ class PublicFulfillGoogleIAPItem(Operation):
 
         204: No Content - (Fulfill item successfully)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 39122 | ErrorMessage: Google iap receipt is invalid with status code [{statusCode}] and error message [{message}])
+        400: Bad Request - ErrorEntity (39122: Google iap receipt is invalid with status code [{statusCode}] and error message [{message}] | 35121: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per day | 35122: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per transaction | 35123: Wallet [{walletId}] is inactive | 35125: Balance exceed max balance [{maxAmount}] | 38121: Duplicate permanent item exists | 38122: Subscription endDate required)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30341 | ErrorMessage: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 39172 | ErrorMessage: The order id in namespace [{namespace}] expect [{expected}] but was [{actual}])
+        409: Conflict - ErrorEntity (39172: The order id in namespace [{namespace}] expect [{expected}] but was [{actual}] | 39173: The purchase status of google play order [{orderId}] in namespace [{namespace}] expect [{expected}] but was [{actual}] | 39174: The google iap purchase time of order [{orderId}] in namespace [{namespace}] expect [{expected}] but was [{actual}] | 20006: optimistic lock)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

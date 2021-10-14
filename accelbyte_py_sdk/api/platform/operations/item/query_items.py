@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.450422+08:00
+# Auto-generated at 2021-10-14T22:17:16.624325+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,20 @@ from ...models import ValidationErrorEntity
 class QueryItems(Operation):
     """Query items by criteria (queryItems)
 
+    This API is used to query items by criteria within a store.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the list of items
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/items/byCriteria
 
         method: GET
 
-        tags: Item
+        tags: ["Item"]
 
         consumes: []
 
@@ -79,9 +87,9 @@ class QueryItems(Operation):
     Responses:
         200: OK - FullItemPagingSlicedResult (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30141 | ErrorMessage: Store [{storeId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -287,7 +295,7 @@ class QueryItems(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -360,9 +368,9 @@ class QueryItems(Operation):
 
         200: OK - FullItemPagingSlicedResult (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30141 | ErrorMessage: Store [{storeId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return FullItemPagingSlicedResult.create_from_dict(content), None

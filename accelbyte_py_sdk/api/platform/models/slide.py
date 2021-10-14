@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.184699+08:00
+# Auto-generated at 2021-10-14T22:17:16.291314+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class Slide(Model):
-    """Slide
+    """Slide (Slide)
 
     Properties:
         type_: (type) OPTIONAL str
@@ -84,7 +84,7 @@ class Slide(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "type_") and self.type_:
             result["type"] = str(self.type_)
         elif include_empty:

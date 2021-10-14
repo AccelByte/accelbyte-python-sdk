@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.635558+08:00
+# Auto-generated at 2021-10-14T22:17:16.873514+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import ErrorEntity
 class EnableUserEntitlement(Operation):
     """Enable user entitlement (enableUserEntitlement)
 
+    Enable user entitlement.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : enable entitlement
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/enable
 
         method: PUT
 
-        tags: Entitlement
+        tags: ["Entitlement"]
 
         consumes: []
 
@@ -54,9 +61,9 @@ class EnableUserEntitlement(Operation):
     Responses:
         200: OK - EntitlementInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 31141 | ErrorMessage: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 31171 | ErrorMessage: Entitlement [{entitlementId}] already revoked)
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31174: Entitlement [{entitlementId}] already consumed | 31175: Entitlement [{entitlementId}] already distributed | 31177: Permanent item already owned | 20006: optimistic lock)
     """
 
     # region fields
@@ -176,7 +183,7 @@ class EnableUserEntitlement(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -201,9 +208,9 @@ class EnableUserEntitlement(Operation):
 
         200: OK - EntitlementInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 31141 | ErrorMessage: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 31171 | ErrorMessage: Entitlement [{entitlementId}] already revoked)
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31174: Entitlement [{entitlementId}] already consumed | 31175: Entitlement [{entitlementId}] already distributed | 31177: Permanent item already owned | 20006: optimistic lock)
         """
         if code == 200:
             return EntitlementInfo.create_from_dict(content), None

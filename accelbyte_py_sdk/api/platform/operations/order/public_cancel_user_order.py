@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.885824+08:00
+# Auto-generated at 2021-10-14T22:17:17.221685+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import OrderInfo
 class PublicCancelUserOrder(Operation):
     """Cancel user order (publicCancelUserOrder)
 
+    Cancel user order.  
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
+      *  Returns : cancelled order
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/cancel
 
         method: PUT
 
-        tags: Order
+        tags: ["Order"]
 
         consumes: ["application/json"]
 
@@ -54,9 +61,9 @@ class PublicCancelUserOrder(Operation):
     Responses:
         200: OK - OrderInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 32141 | ErrorMessage: Order [{orderNo}] does not exist)
+        404: Not Found - ErrorEntity (32141: Order [{orderNo}] does not exist)
 
-        409: Conflict - ErrorEntity (ErrorCode: 32177 | ErrorMessage: Order [{orderNo}] is not cancelable)
+        409: Conflict - ErrorEntity (32177: Order [{orderNo}] is not cancelable)
     """
 
     # region fields
@@ -176,7 +183,7 @@ class PublicCancelUserOrder(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -201,9 +208,9 @@ class PublicCancelUserOrder(Operation):
 
         200: OK - OrderInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 32141 | ErrorMessage: Order [{orderNo}] does not exist)
+        404: Not Found - ErrorEntity (32141: Order [{orderNo}] does not exist)
 
-        409: Conflict - ErrorEntity (ErrorCode: 32177 | ErrorMessage: Order [{orderNo}] is not cancelable)
+        409: Conflict - ErrorEntity (32177: Order [{orderNo}] is not cancelable)
         """
         if code == 200:
             return OrderInfo.create_from_dict(content), None

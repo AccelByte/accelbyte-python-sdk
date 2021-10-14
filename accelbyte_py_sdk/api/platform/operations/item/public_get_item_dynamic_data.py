@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.559678+08:00
+# Auto-generated at 2021-10-14T22:17:16.786695+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,18 @@ from ...models import ItemDynamicDataInfo
 class PublicGetItemDynamicData(Operation):
     """Get item dynamic data (publicGetItemDynamicData)
 
+    Get item dynamic data for a published item.  
+    Other detail info:
+
+      * Returns : item dynamic data
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/items/{itemId}/dynamic
 
         method: GET
 
-        tags: Item
+        tags: ["Item"]
 
         consumes: []
 
@@ -52,7 +58,7 @@ class PublicGetItemDynamicData(Operation):
     Responses:
         200: OK - ItemDynamicDataInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30341 | ErrorMessage: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
     """
 
     # region fields
@@ -162,7 +168,7 @@ class PublicGetItemDynamicData(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -183,7 +189,7 @@ class PublicGetItemDynamicData(Operation):
 
         200: OK - ItemDynamicDataInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30341 | ErrorMessage: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
         """
         if code == 200:
             return ItemDynamicDataInfo.create_from_dict(content), None

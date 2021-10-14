@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.589058+08:00
+# Auto-generated at 2021-10-14T22:17:16.826568+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -34,12 +34,19 @@ from ...models import ValidationErrorEntity
 class GrantUserEntitlement(Operation):
     """Grant user entitlement (grantUserEntitlement)
 
+    Grant user entitlement.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=1 (CREATE)
+      *  Returns : granted entitlement
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements
 
         method: POST
 
-        tags: Entitlement
+        tags: ["Entitlement"]
 
         consumes: ["application/json"]
 
@@ -56,9 +63,9 @@ class GrantUserEntitlement(Operation):
     Responses:
         201: Created - List[StackableEntitlementInfo] (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30341 | ErrorMessage: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -177,7 +184,7 @@ class GrantUserEntitlement(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = [i0.to_dict(include_empty=include_empty) for i0 in self.body]
         elif include_empty:
@@ -202,9 +209,9 @@ class GrantUserEntitlement(Operation):
 
         201: Created - List[StackableEntitlementInfo] (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30341 | ErrorMessage: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 201:
             return [StackableEntitlementInfo.create_from_dict(i) for i in content], None

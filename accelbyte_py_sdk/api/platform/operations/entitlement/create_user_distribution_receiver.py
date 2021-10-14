@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.608457+08:00
+# Auto-generated at 2021-10-14T22:17:16.848349+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,20 @@ from ...models import ErrorEntity
 class CreateUserDistributionReceiver(Operation):
     """Create distribution receiver (createUserDistributionReceiver)
 
+    Create distribution receiver for a specific user by dedicated server. Once
+    user distribution receiver created, user can distribute distribution to
+    receiver.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:DISTRIBUTION", action=1 (CREATE)
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/receivers/{extUserId}
 
         method: POST
 
-        tags: Entitlement
+        tags: ["Entitlement"]
 
         consumes: ["application/json"]
 
@@ -56,7 +64,7 @@ class CreateUserDistributionReceiver(Operation):
     Responses:
         201: Created - (create distribution receiver successfully)
 
-        409: Conflict - ErrorEntity (ErrorCode: 31271 | ErrorMessage: Distribution receiver of user [{userId}] and extUserId [{extUserId}] already exists in namespace [{namespace}])
+        409: Conflict - ErrorEntity (31271: Distribution receiver of user [{userId}] and extUserId [{extUserId}] already exists in namespace [{namespace}])
     """
 
     # region fields
@@ -185,7 +193,7 @@ class CreateUserDistributionReceiver(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -214,7 +222,7 @@ class CreateUserDistributionReceiver(Operation):
 
         201: Created - (create distribution receiver successfully)
 
-        409: Conflict - ErrorEntity (ErrorCode: 31271 | ErrorMessage: Distribution receiver of user [{userId}] and extUserId [{extUserId}] already exists in namespace [{namespace}])
+        409: Conflict - ErrorEntity (31271: Distribution receiver of user [{userId}] and extUserId [{extUserId}] already exists in namespace [{namespace}])
         """
         if code == 201:
             return HttpResponse.create(code, "Created"), None

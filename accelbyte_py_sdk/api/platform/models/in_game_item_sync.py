@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.174867+08:00
+# Auto-generated at 2021-10-14T22:17:16.283666+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class InGameItemSync(Model):
-    """In game item sync
+    """In game item sync (InGameItemSync)
 
     Properties:
         target_namespace: (targetNamespace) REQUIRED str
@@ -63,7 +63,7 @@ class InGameItemSync(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "target_namespace") and self.target_namespace:
             result["targetNamespace"] = str(self.target_namespace)
         elif include_empty:

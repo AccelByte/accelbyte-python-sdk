@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.130462+08:00
+# Auto-generated at 2021-10-14T22:17:16.248464+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class DistributionReceiverInfo(Model):
-    """Distribution receiver info
+    """Distribution receiver info (DistributionReceiverInfo)
 
     Properties:
         user_id: (userId) REQUIRED str
@@ -70,7 +70,7 @@ class DistributionReceiverInfo(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "user_id") and self.user_id:
             result["userId"] = str(self.user_id)
         elif include_empty:

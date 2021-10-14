@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.671367+08:00
+# Auto-generated at 2021-10-14T22:17:16.920426+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,18 @@ from ...models import ErrorEntity
 class PublicDeleteUserDistributionReceiver(Operation):
     """Delete a user distribution receiver (publicDeleteUserDistributionReceiver)
 
+    Delete a distribution receiver for a specific user.  
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:DISTRIBUTION", action=8 (DELETE)
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/receivers/{extUserId}
 
         method: DELETE
 
-        tags: Entitlement
+        tags: ["Entitlement"]
 
         consumes: ["application/json"]
 
@@ -53,7 +59,7 @@ class PublicDeleteUserDistributionReceiver(Operation):
     Responses:
         204: No Content - (delete a distribution receiver successfully)
 
-        404: Not Found - ErrorEntity (ErrorCode: 31241 | ErrorMessage: Distribution receiver of user [{userId}] and extUserId [{extUserId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (31241: Distribution receiver of user [{userId}] and extUserId [{extUserId}] does not exist in namespace [{namespace}])
     """
 
     # region fields
@@ -173,7 +179,7 @@ class PublicDeleteUserDistributionReceiver(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -198,7 +204,7 @@ class PublicDeleteUserDistributionReceiver(Operation):
 
         204: No Content - (delete a distribution receiver successfully)
 
-        404: Not Found - ErrorEntity (ErrorCode: 31241 | ErrorMessage: Distribution receiver of user [{userId}] and extUserId [{extUserId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (31241: Distribution receiver of user [{userId}] and extUserId [{extUserId}] does not exist in namespace [{namespace}])
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

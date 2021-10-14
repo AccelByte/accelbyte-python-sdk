@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.814759+08:00
+# Auto-generated at 2021-10-14T22:17:17.120594+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,20 @@ from ...models import ValidationErrorEntity
 class QueryRewards(Operation):
     """Query rewards by criteria (queryRewards)
 
+    This API is used to query rewards by criteria.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
+      *  Returns : the list of rewards
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/byCriteria
 
         method: GET
 
-        tags: Reward
+        tags: ["Reward"]
 
         consumes: []
 
@@ -58,7 +66,7 @@ class QueryRewards(Operation):
     Responses:
         200: OK - RewardPagingSlicedResult (successful operation)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -194,7 +202,7 @@ class QueryRewards(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -227,7 +235,7 @@ class QueryRewards(Operation):
 
         200: OK - RewardPagingSlicedResult (successful operation)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return RewardPagingSlicedResult.create_from_dict(content), None

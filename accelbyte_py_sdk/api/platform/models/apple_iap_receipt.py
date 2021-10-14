@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.375535+08:00
+# Auto-generated at 2021-10-14T22:17:16.455830+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class AppleIAPReceipt(Model):
-    """Apple IAP receipt
+    """Apple IAP receipt (AppleIAPReceipt)
 
     Properties:
         product_id: (productId) REQUIRED str
@@ -84,7 +84,7 @@ class AppleIAPReceipt(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "product_id") and self.product_id:
             result["productId"] = str(self.product_id)
         elif include_empty:

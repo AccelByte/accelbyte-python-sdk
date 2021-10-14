@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.190372+08:00
+# Auto-generated at 2021-10-14T22:17:16.295916+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,7 +31,7 @@ from ..models.region_data_item import RegionDataItem
 
 
 class ItemUpdate(Model):
-    """A DTO object for updating item API call.
+    """A DTO object for updating item API call. (ItemUpdate)
 
     Properties:
         item_type: (itemType) REQUIRED str
@@ -236,7 +236,7 @@ class ItemUpdate(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "item_type") and self.item_type:
             result["itemType"] = str(self.item_type)
         elif include_empty:

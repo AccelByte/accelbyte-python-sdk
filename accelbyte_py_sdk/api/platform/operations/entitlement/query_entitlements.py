@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.569507+08:00
+# Auto-generated at 2021-10-14T22:17:16.799644+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,20 @@ from ...models import EntitlementPagingSlicedResult
 class QueryEntitlements(Operation):
     """Query entitlements (queryEntitlements)
 
+    Query entitlements.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
+      *  Returns : entitlement list
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/entitlements
 
         method: GET
 
-        tags: Entitlement
+        tags: ["Entitlement"]
 
         consumes: []
 
@@ -227,7 +235,7 @@ class QueryEntitlements(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

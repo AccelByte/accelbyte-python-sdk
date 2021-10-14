@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.411333+08:00
+# Auto-generated at 2021-10-14T22:17:16.485289+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class XsollaPaywallConfigRequest(Model):
-    """Xsolla paywall config request
+    """Xsolla paywall config request (XsollaPaywallConfigRequest)
 
     Properties:
         theme: (theme) OPTIONAL str
@@ -70,7 +70,7 @@ class XsollaPaywallConfigRequest(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "theme") and self.theme:
             result["theme"] = str(self.theme)
         elif include_empty:

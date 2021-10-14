@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.132892+08:00
+# Auto-generated at 2021-10-14T22:17:17.580108+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,19 @@ from ...models import PaymentProviderConfigPagingSlicedResult
 class QueryPaymentProviderConfig(Operation):
     """Query payment provider config (queryPaymentProviderConfig)
 
+    Query payment provider config.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
+      *  Returns : payment provider config list
+
+
     Properties:
         url: /platform/admin/payment/config/provider
 
         method: GET
 
-        tags: PaymentConfig
+        tags: ["PaymentConfig"]
 
         consumes: []
 
@@ -170,7 +177,7 @@ class QueryPaymentProviderConfig(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

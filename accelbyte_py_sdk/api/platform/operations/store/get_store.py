@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.494527+08:00
+# Auto-generated at 2021-10-14T22:17:16.686833+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,20 @@ from ...models import StoreInfo
 class GetStore(Operation):
     """Get a store (getStore)
 
+    This API is used to get a store.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
+      *  Returns : store data
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}
 
         method: GET
 
-        tags: Store
+        tags: ["Store"]
 
         consumes: []
 
@@ -52,7 +60,7 @@ class GetStore(Operation):
     Responses:
         200: OK - StoreInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30141 | ErrorMessage: Store [{storeId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
     """
 
     # region fields
@@ -162,7 +170,7 @@ class GetStore(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -183,7 +191,7 @@ class GetStore(Operation):
 
         200: OK - StoreInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30141 | ErrorMessage: Store [{storeId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
         """
         if code == 200:
             return StoreInfo.create_from_dict(content), None

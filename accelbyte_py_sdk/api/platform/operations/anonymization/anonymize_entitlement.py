@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.566042+08:00
+# Auto-generated at 2021-10-14T22:17:16.797064+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,12 +29,19 @@ from .....core import HttpResponse
 class AnonymizeEntitlement(Operation):
     """anonymize entitlement (anonymizeEntitlement)
 
+    Anonymize entitlement. At current it will only anonymize entitlement,
+    entitlement history and distribution receiver.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/entitlements
 
         method: DELETE
 
-        tags: Anonymization
+        tags: ["Anonymization"]
 
         consumes: ["application/json"]
 
@@ -157,7 +164,7 @@ class AnonymizeEntitlement(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

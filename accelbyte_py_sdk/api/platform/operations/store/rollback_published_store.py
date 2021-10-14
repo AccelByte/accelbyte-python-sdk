@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.517521+08:00
+# Auto-generated at 2021-10-14T22:17:16.718519+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,20 @@ from ...models import StoreInfo
 class RollbackPublishedStore(Operation):
     """Rollback a published store (rollbackPublishedStore)
 
+    This API is used to rollback a published store.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
+      *  Returns : updated store info
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/published/rollback
 
         method: PUT
 
-        tags: Store
+        tags: ["Store"]
 
         consumes: ["application/json"]
 
@@ -50,7 +58,7 @@ class RollbackPublishedStore(Operation):
     Responses:
         200: OK - StoreInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30142 | ErrorMessage: Published store does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30142: Published store does not exist in namespace [{namespace}] | 30143: Published store [{storeId}] backup doest not exist in namespace [{namespace}])
     """
 
     # region fields
@@ -150,7 +158,7 @@ class RollbackPublishedStore(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -167,7 +175,7 @@ class RollbackPublishedStore(Operation):
 
         200: OK - StoreInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30142 | ErrorMessage: Published store does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30142: Published store does not exist in namespace [{namespace}] | 30143: Published store [{storeId}] backup doest not exist in namespace [{namespace}])
         """
         if code == 200:
             return StoreInfo.create_from_dict(content), None

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.504714+08:00
+# Auto-generated at 2021-10-14T22:17:16.700676+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,20 @@ from ...models import StoreInfo
 class ListStores(Operation):
     """List stores (listStores)
 
+    This API is used to list stores in a namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
+      *  Returns : the list of stores
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores
 
         method: GET
 
-        tags: Store
+        tags: ["Store"]
 
         consumes: []
 
@@ -147,7 +155,7 @@ class ListStores(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

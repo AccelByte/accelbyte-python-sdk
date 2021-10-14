@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.550547+08:00
+# Auto-generated at 2021-10-14T22:17:16.772194+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,21 @@ from ...models import PopulatedItemInfo
 class PublicGetItem(Operation):
     """Get an item in locale (publicGetItem)
 
+    This API is used to get an item in locale. If item not exist in specific
+    region, default region item will return.
+
+    Other detail info:
+
+      * Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store item)
+      *  Returns : item data
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/items/{itemId}/locale
 
         method: GET
 
-        tags: Item
+        tags: ["Item"]
 
         consumes: []
 
@@ -60,7 +69,7 @@ class PublicGetItem(Operation):
     Responses:
         200: OK - PopulatedItemInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30341 | ErrorMessage: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
     """
 
     # region fields
@@ -206,7 +215,7 @@ class PublicGetItem(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -243,7 +252,7 @@ class PublicGetItem(Operation):
 
         200: OK - PopulatedItemInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30341 | ErrorMessage: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
         """
         if code == 200:
             return PopulatedItemInfo.create_from_dict(content), None

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.525614+08:00
+# Auto-generated at 2021-10-14T22:17:16.733962+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,21 @@ from ...models import ErrorEntity
 class PublicGetApp(Operation):
     """Get an app in locale (publicGetApp)
 
+    This API is used to get an app in locale. If app not exist in specific region,
+    default region app will return.
+
+    Other detail info:
+
+      * Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store app)
+      *  Returns : app data
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/items/{itemId}/app/locale
 
         method: GET
 
-        tags: Item
+        tags: ["Item"]
 
         consumes: []
 
@@ -58,7 +67,7 @@ class PublicGetApp(Operation):
     Responses:
         200: OK - AppInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30341 | ErrorMessage: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
     """
 
     # region fields
@@ -197,7 +206,7 @@ class PublicGetApp(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -230,7 +239,7 @@ class PublicGetApp(Operation):
 
         200: OK - AppInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30341 | ErrorMessage: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
         """
         if code == 200:
             return AppInfo.create_from_dict(content), None

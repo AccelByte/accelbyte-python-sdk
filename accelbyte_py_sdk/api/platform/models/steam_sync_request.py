@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.374218+08:00
+# Auto-generated at 2021-10-14T22:17:16.454779+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class SteamSyncRequest(Model):
-    """Steam sync request
+    """Steam sync request (SteamSyncRequest)
 
     Properties:
         steam_id: (steamId) REQUIRED str
@@ -70,7 +70,7 @@ class SteamSyncRequest(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "steam_id") and self.steam_id:
             result["steamId"] = str(self.steam_id)
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.581950+08:00
+# Auto-generated at 2021-10-14T22:17:16.818377+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import ErrorEntity
 class GetUserEntitlementBySku(Operation):
     """Get user entitlement by sku (getUserEntitlementBySku)
 
+    Get user entitlement by sku.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/bySku
 
         method: GET
 
-        tags: Entitlement
+        tags: ["Entitlement"]
 
         consumes: []
 
@@ -58,7 +65,7 @@ class GetUserEntitlementBySku(Operation):
     Responses:
         200: OK - EntitlementInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 31143 | ErrorMessage: Entitlement with sku [{sku}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (31143: Entitlement with sku [{sku}] does not exist in namespace [{namespace}])
     """
 
     # region fields
@@ -200,7 +207,7 @@ class GetUserEntitlementBySku(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -233,7 +240,7 @@ class GetUserEntitlementBySku(Operation):
 
         200: OK - EntitlementInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 31143 | ErrorMessage: Entitlement with sku [{sku}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (31143: Entitlement with sku [{sku}] does not exist in namespace [{namespace}])
         """
         if code == 200:
             return EntitlementInfo.create_from_dict(content), None

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.838752+08:00
+# Auto-generated at 2021-10-14T22:17:17.154540+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,21 @@ from ...models import OrderSyncResult
 class SyncOrders(Operation):
     """Sync orders (syncOrders)
 
+    Sync orders. If response contains nextEvaluatedKey, please use it as query
+    param in the next call to fetch the next batch, a batch has 1000 elements or
+    less.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:ORDER", action=2 (READ)
+      *  Returns : sync orders
+
+
     Properties:
         url: /platform/admin/orders
 
         method: GET
 
-        tags: Order(Dedicated)
+        tags: ["Order(Dedicated)"]
 
         consumes: []
 
@@ -167,7 +176,7 @@ class SyncOrders(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "start") and self.start:
             result["start"] = str(self.start)
         elif include_empty:

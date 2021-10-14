@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.854157+08:00
+# Auto-generated at 2021-10-14T22:17:17.179600+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -34,12 +34,19 @@ from ...models import ValidationErrorEntity
 class UpdateUserOrderStatus(Operation):
     """Update order status (updateUserOrderStatus)
 
+    Update order status.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
+      *  Returns : updated order
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}
 
         method: PUT
 
-        tags: Order
+        tags: ["Order"]
 
         consumes: ["application/json"]
 
@@ -58,11 +65,11 @@ class UpdateUserOrderStatus(Operation):
     Responses:
         200: OK - OrderInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 32141 | ErrorMessage: Order [{orderNo}] does not exist)
+        404: Not Found - ErrorEntity (32141: Order [{orderNo}] does not exist)
 
-        409: Conflict - ErrorEntity (ErrorCode: 20006 | ErrorMessage: optimistic lock)
+        409: Conflict - ErrorEntity (20006: optimistic lock)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -191,7 +198,7 @@ class UpdateUserOrderStatus(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -220,11 +227,11 @@ class UpdateUserOrderStatus(Operation):
 
         200: OK - OrderInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 32141 | ErrorMessage: Order [{orderNo}] does not exist)
+        404: Not Found - ErrorEntity (32141: Order [{orderNo}] does not exist)
 
-        409: Conflict - ErrorEntity (ErrorCode: 20006 | ErrorMessage: optimistic lock)
+        409: Conflict - ErrorEntity (20006: optimistic lock)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return OrderInfo.create_from_dict(content), None

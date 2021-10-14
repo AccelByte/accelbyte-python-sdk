@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.359679+08:00
+# Auto-generated at 2021-10-14T22:17:16.517087+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -34,12 +34,67 @@ from ...models import ValidationErrorEntity
 class UpdateApp(Operation):
     """Update an app (updateApp)
 
+    This API is used to update an app.
+
+    An app update example:
+
+
+
+        {
+          "developer": "accelbyte",
+          "publisher": "accelbyte",
+          "websiteUrl": "http://accelbyte.io",
+          "forumUrl": "http://accelbyte.io",
+          "platforms": ["Windows(allowed values: Windows, MacOS, Linux, IOS, Android)"],
+          "platformRequirements": {
+            "Windows": [
+              {
+                "label":"minimum(can be minimum or recommended)",
+                "osVersion":"os version",
+                "processor":"processor",
+                "ram":"RAM",
+                "graphics":"graphics",
+                "directXVersion":"directXVersion",
+                "diskSpace":"diskSpace",
+                "soundCard":"soundCard",
+                "additionals":"additionals"
+              }
+             ]
+          },
+          "carousel": [
+            {
+              "type":"image(allowed values: image, video)",
+              "videoSource":"generic(allowed values:generic, youtube, viemo)",
+              "url":"url",
+              "alt":"alternative url or text",
+              "thumbnailUrl":"thumbnail url",
+              "previewUrl":"preview url",
+            }
+          ],
+          "localizations": {
+            "en": {
+              "slogan":"slogan",
+              "announcement":"announcement",
+            }
+          },
+          "primaryGenre": "Action",
+          "genres": ["Action", "Adventure"],
+          "players": ["Single"],
+          "releaseDate": "optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        }
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+      *  Returns : updated app data
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/items/{itemId}/app
 
         method: PUT
 
-        tags: Item
+        tags: ["Item"]
 
         consumes: ["application/json"]
 
@@ -58,11 +113,11 @@ class UpdateApp(Operation):
     Responses:
         200: OK - FullAppInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorMessage: 30341 | Description: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 30173 | ErrorMessage: Published store can't modify content)
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -199,7 +254,7 @@ class UpdateApp(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -228,11 +283,11 @@ class UpdateApp(Operation):
 
         200: OK - FullAppInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorMessage: 30341 | Description: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 30173 | ErrorMessage: Published store can't modify content)
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return FullAppInfo.create_from_dict(content), None

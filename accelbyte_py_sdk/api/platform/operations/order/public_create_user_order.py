@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.872780+08:00
+# Auto-generated at 2021-10-14T22:17:17.204229+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -34,12 +34,23 @@ from ...models import ValidationErrorEntity
 class PublicCreateUserOrder(Operation):
     """Create an order (publicCreateUserOrder)
 
+    Create an order. The result contains the checkout link and payment token. User
+    with permission SANDBOX will create sandbox order that not real paid for
+    xsolla/alipay and not validate price for wxpay.  
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=1 (CREATE)
+      *  Optional permission(user with this permission will create sandbox order) : resource="SANDBOX", action=1 (CREATE)
+      * It will be forbidden while the user is banned: ORDER_INITIATE or ORDER_AND_PAYMENT
+      *  Returns : created order
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/orders
 
         method: POST
 
-        tags: Order
+        tags: ["Order"]
 
         consumes: ["application/json"]
 
@@ -56,15 +67,15 @@ class PublicCreateUserOrder(Operation):
     Responses:
         201: Created - OrderInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 32121 | ErrorMessage: Order price mismatch)
+        400: Bad Request - ErrorEntity (32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 35121: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per day | 35122: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per transaction | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 35125: Balance exceed max balance [{maxAmount}] | 38121: Duplicate permanent item exists)
 
-        403: Forbidden - ErrorEntity (ErrorCode: 20016 | ErrorMessage: action is banned)
+        403: Forbidden - ErrorEntity (20016: action is banned)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30341 | ErrorMessage: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 32175 | ErrorMessage: User [{userId}] exceed item max count [{maxCount}] of per user)
+        409: Conflict - ErrorEntity (32175: User [{userId}] exceed item max count [{maxCount}] of per user | 32176: Exceed item [{itemId}] max count [{maxCount}] | 31177: Permanent item already owned | 20006: optimistic lock)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -183,7 +194,7 @@ class PublicCreateUserOrder(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -208,15 +219,15 @@ class PublicCreateUserOrder(Operation):
 
         201: Created - OrderInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 32121 | ErrorMessage: Order price mismatch)
+        400: Bad Request - ErrorEntity (32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 35121: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per day | 35122: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per transaction | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 35125: Balance exceed max balance [{maxAmount}] | 38121: Duplicate permanent item exists)
 
-        403: Forbidden - ErrorEntity (ErrorCode: 20016 | ErrorMessage: action is banned)
+        403: Forbidden - ErrorEntity (20016: action is banned)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30341 | ErrorMessage: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 32175 | ErrorMessage: User [{userId}] exceed item max count [{maxCount}] of per user)
+        409: Conflict - ErrorEntity (32175: User [{userId}] exceed item max count [{maxCount}] of per user | 32176: Exceed item [{itemId}] max count [{maxCount}] | 31177: Permanent item already owned | 20006: optimistic lock)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 201:
             return OrderInfo.create_from_dict(content), None

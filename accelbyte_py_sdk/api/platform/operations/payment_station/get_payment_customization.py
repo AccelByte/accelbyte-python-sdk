@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.126705+08:00
+# Auto-generated at 2021-10-14T22:17:17.566392+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,19 @@ from ...models import Customization
 class GetPaymentCustomization(Operation):
     """Get payment provider customization (getPaymentCustomization)
 
+    Get payment provider customization, at current only Adyen provide
+    customization.  
+    Other detail info:
+
+      * Returns : customization
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/payment/customization
 
         method: GET
 
-        tags: PaymentStation
+        tags: ["PaymentStation"]
 
         consumes: ["application/json"]
 
@@ -188,7 +195,7 @@ class GetPaymentCustomization(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.706716+08:00
+# Auto-generated at 2021-10-14T22:17:16.978909+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,19 @@ from ...models import FulfillmentResult
 class FulfillItem(Operation):
     """Fulfill item (fulfillItem)
 
+    Fulfill item.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=1 (CREATED)
+      *  Returns : fulfillment result
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/fulfillment
 
         method: POST
 
-        tags: Fulfillment
+        tags: ["Fulfillment"]
 
         consumes: ["application/json"]
 
@@ -55,11 +62,11 @@ class FulfillItem(Operation):
     Responses:
         200: OK - FulfillmentResult (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 35121 | ErrorMessage: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per day)
+        400: Bad Request - ErrorEntity (35121: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per day | 35122: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per transaction | 35123: Wallet [{walletId}] is inactive | 35125: Balance exceed max balance [{maxAmount}] | 38121: Duplicate permanent item exists | 38122: Subscription endDate required)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30341 | ErrorMessage: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 20006 | ErrorMessage: optimistic lock)
+        409: Conflict - ErrorEntity (20006: optimistic lock)
     """
 
     # region fields
@@ -178,7 +185,7 @@ class FulfillItem(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -203,11 +210,11 @@ class FulfillItem(Operation):
 
         200: OK - FulfillmentResult (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 35121 | ErrorMessage: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per day)
+        400: Bad Request - ErrorEntity (35121: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per day | 35122: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per transaction | 35123: Wallet [{walletId}] is inactive | 35125: Balance exceed max balance [{maxAmount}] | 38121: Duplicate permanent item exists | 38122: Subscription endDate required)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30341 | ErrorMessage: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 20006 | ErrorMessage: optimistic lock)
+        409: Conflict - ErrorEntity (20006: optimistic lock)
         """
         if code == 200:
             return FulfillmentResult.create_from_dict(content), None

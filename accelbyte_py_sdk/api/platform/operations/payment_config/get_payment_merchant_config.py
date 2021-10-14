@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.040542+08:00
+# Auto-generated at 2021-10-14T22:17:17.427187+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import PaymentMerchantConfigInfo
 class GetPaymentMerchantConfig(Operation):
     """Get payment merchant config (getPaymentMerchantConfig)
 
+    Get payment merchant config by id.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
+      *  Returns : payment merchant config info
+
+
     Properties:
         url: /platform/admin/payment/config/merchant/{id}
 
         method: GET
 
-        tags: PaymentConfig
+        tags: ["PaymentConfig"]
 
         consumes: []
 
@@ -50,7 +57,7 @@ class GetPaymentMerchantConfig(Operation):
     Responses:
         200: OK - PaymentMerchantConfigInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33242 | ErrorMessage: Payment merchant config [{id}] does not exist)
+        404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist)
     """
 
     # region fields
@@ -150,7 +157,7 @@ class GetPaymentMerchantConfig(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "id_") and self.id_:
             result["id"] = str(self.id_)
         elif include_empty:
@@ -167,7 +174,7 @@ class GetPaymentMerchantConfig(Operation):
 
         200: OK - PaymentMerchantConfigInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33242 | ErrorMessage: Payment merchant config [{id}] does not exist)
+        404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist)
         """
         if code == 200:
             return PaymentMerchantConfigInfo.create_from_dict(content), None

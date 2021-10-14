@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.386415+08:00
+# Auto-generated at 2021-10-14T22:17:16.465251+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class EpicGamesReconcileResult(Model):
-    """Epic games reconcile result
+    """Epic games reconcile result (EpicGamesReconcileResult)
 
     Properties:
         transaction_id: (transactionId) OPTIONAL str
@@ -77,7 +77,7 @@ class EpicGamesReconcileResult(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "transaction_id") and self.transaction_id:
             result["transactionId"] = str(self.transaction_id)
         elif include_empty:

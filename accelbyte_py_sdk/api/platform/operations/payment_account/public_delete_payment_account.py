@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.099794+08:00
+# Auto-generated at 2021-10-14T22:17:17.489532+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,12 +29,19 @@ from .....core import HttpResponse
 class PublicDeletePaymentAccount(Operation):
     """Delete payment account (publicDeletePaymentAccount)
 
+    Delete payment account.  
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT", action=8 (DELETE)
+      *  Returns :
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/payment/accounts/{type}/{id}
 
         method: DELETE
 
-        tags: PaymentAccount
+        tags: ["PaymentAccount"]
 
         consumes: ["application/json"]
 
@@ -181,7 +188,7 @@ class PublicDeletePaymentAccount(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

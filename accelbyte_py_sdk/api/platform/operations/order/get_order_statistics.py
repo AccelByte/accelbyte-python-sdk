@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.823268+08:00
+# Auto-generated at 2021-10-14T22:17:17.135350+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,19 @@ from ...models import OrderStatistics
 class GetOrderStatistics(Operation):
     """Get Order Statistics (getOrderStatistics)
 
+    Get Order Statistics.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)
+      *  Returns : order statistics
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/orders/stats
 
         method: GET
 
-        tags: Order
+        tags: ["Order"]
 
         consumes: []
 
@@ -147,7 +154,7 @@ class GetOrderStatistics(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

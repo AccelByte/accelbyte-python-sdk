@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.089708+08:00
+# Auto-generated at 2021-10-14T22:17:17.477407+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,20 @@ from ...models import XsollaPaywallConfigRequest
 class UpdateXsollaUIConfig(Operation):
     """Update xsolla UI configuration (updateXsollaUIConfig)
 
+    Update xsolla UI configuration.Reference: [Xsolla
+    Document](https://developers.xsolla.com/api.html#ui-integrations).  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
+      *  Returns : updated payment merchant config
+
+
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/xsollauiconfig
 
         method: PUT
 
-        tags: PaymentConfig
+        tags: ["PaymentConfig"]
 
         consumes: ["application/json"]
 
@@ -53,7 +61,7 @@ class UpdateXsollaUIConfig(Operation):
     Responses:
         200: OK - PaymentMerchantConfigInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33242 | ErrorMessage: Payment merchant config [{id}] does not exist)
+        404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist)
     """
 
     # region fields
@@ -162,7 +170,7 @@ class UpdateXsollaUIConfig(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -183,7 +191,7 @@ class UpdateXsollaUIConfig(Operation):
 
         200: OK - PaymentMerchantConfigInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33242 | ErrorMessage: Payment merchant config [{id}] does not exist)
+        404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist)
         """
         if code == 200:
             return PaymentMerchantConfigInfo.create_from_dict(content), None

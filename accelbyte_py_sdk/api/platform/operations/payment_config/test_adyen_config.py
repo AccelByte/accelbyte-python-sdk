@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.038475+08:00
+# Auto-generated at 2021-10-14T22:17:17.423591+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,35 @@ from ...models import TestResult
 class TestAdyenConfig(Operation):
     """Test adyen configuration (testAdyenConfig)
 
+    Test adyen configuration.
+
+    #### Check List:
+
+      * apiKey
+      * merchantAccount
+
+    #### Non-check list:
+
+      * notificationHmacKey
+      * notificationUsername
+      * notificationPassword
+      * liveEndpointUrlPrefix
+      * allowedPaymentMethods
+      * blockedPaymentMethods
+      * settings
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
+      *  Returns : test adyen config
+
+
     Properties:
         url: /platform/admin/payment/config/merchant/adyenconfig/test
 
         method: POST
 
-        tags: PaymentConfig
+        tags: ["PaymentConfig"]
 
         consumes: ["application/json"]
 
@@ -155,7 +178,7 @@ class TestAdyenConfig(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

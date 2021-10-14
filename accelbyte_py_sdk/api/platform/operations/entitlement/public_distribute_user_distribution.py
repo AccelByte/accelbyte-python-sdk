@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.691109+08:00
+# Auto-generated at 2021-10-14T22:17:16.949827+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,71 @@ from ...models import ErrorEntity
 class PublicDistributeUserDistribution(Operation):
     """Distribute my distribution (publicDistributeUserDistribution)
 
+    Distribute my distribution with my user credentials. After successfully
+    distributed, a notification will be send to configured web hook  
+
+     Notification Body:
+
+
+
+         Parameter| Type| Description  
+        ---|---|---  
+        payload| String| Business object in compact json string   
+        sign| String| Sha1 hex signature for payload and private key  
+
+         Notification Body Example:
+
+
+        {
+               "payload":"{
+                   \"namespace\": \"publisherNamespace\",
+                   \"targetNamespace\": \"game1\",
+                   \"targetUserId\": \"94451623768940d58416ca33ca767ec3\",
+                   \"issuedAt\": \"2018-07-26T07:11:16.547Z\",
+                   \"type\": \"distribution\",
+                   \"extUserId\": \"1234abcd\",
+                   \"sku\": \"1234asdf\",
+                   \"quantity\": 1,
+                   \"nonceStr\": \"34c1dcf3eb58455eb161465bbfc0b590\"
+               }",
+               "sign":"e31fb92516cc9faaf50ad70343e1293acec6f3d5"
+        }
+
+    `
+
+    `
+
+     Payload Parameters:
+
+
+
+         Parameter| Type| Description  
+        ---|---|---  
+        namespace| String| The publisher namespace  
+        targetNamespace| String| The target game namespace  
+        targetUserId| String| The user id in target game namespace  
+        issuedAt| String| Issue time  
+        type| String| Notification type, it is a fixed value 'distribution'  
+        extUserId| String| Unique identity, e.g. character id  
+        sku| String| Item unique identity  
+        quantity| Integer| quantity  
+        nonceStr| String| Random string, max length is 32, can be timestamp or uuid  
+
+    #### Encryption Rule:
+
+    Concat payload json string and private key and then do sha1Hex.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:DISTRIBUTION", action=4 (UPDATE)
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/distribute
 
         method: PUT
 
-        tags: Entitlement
+        tags: ["Entitlement"]
 
         consumes: ["application/json"]
 
@@ -60,9 +119,9 @@ class PublicDistributeUserDistribution(Operation):
     Responses:
         200: OK - EntitlementInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 31121 | ErrorMessage: Entitlement [{entitlementId}] is not distributable)
+        400: Bad Request - ErrorEntity (31121: Entitlement [{entitlementId}] is not distributable | 31122: Exceed entitlement available distribute quantity | 31123: Publisher namespace [{namespace}] is not distributable)
 
-        404: Not Found - ErrorEntity (ErrorCode: 20017 | ErrorMessage: user [{userId}] in namespace [{namespaceA}] does not linked in [{namespaceB}])
+        404: Not Found - ErrorEntity (20017: user [{userId}] in namespace [{namespaceA}] does not linked in [{namespaceB}] | 31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}] | 31241: Distribution receiver of user [{userId}] and extUserId [{extUserId}] does not exist in namespace [{namespace}])
     """
 
     # region fields
@@ -217,7 +276,7 @@ class PublicDistributeUserDistribution(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -254,9 +313,9 @@ class PublicDistributeUserDistribution(Operation):
 
         200: OK - EntitlementInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 31121 | ErrorMessage: Entitlement [{entitlementId}] is not distributable)
+        400: Bad Request - ErrorEntity (31121: Entitlement [{entitlementId}] is not distributable | 31122: Exceed entitlement available distribute quantity | 31123: Publisher namespace [{namespace}] is not distributable)
 
-        404: Not Found - ErrorEntity (ErrorCode: 20017 | ErrorMessage: user [{userId}] in namespace [{namespaceA}] does not linked in [{namespaceB}])
+        404: Not Found - ErrorEntity (20017: user [{userId}] in namespace [{namespaceA}] does not linked in [{namespaceB}] | 31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}] | 31241: Distribution receiver of user [{userId}] and extUserId [{extUserId}] does not exist in namespace [{namespace}])
         """
         if code == 200:
             return EntitlementInfo.create_from_dict(content), None

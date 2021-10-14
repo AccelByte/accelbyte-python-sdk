@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.289286+08:00
+# Auto-generated at 2021-10-14T22:17:16.380188+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class OrderRefundCreate(Model):
-    """Order refund create
+    """Order refund create (OrderRefundCreate)
 
     Properties:
         description: (description) REQUIRED str
@@ -49,7 +49,7 @@ class OrderRefundCreate(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "description") and self.description:
             result["description"] = str(self.description)
         elif include_empty:

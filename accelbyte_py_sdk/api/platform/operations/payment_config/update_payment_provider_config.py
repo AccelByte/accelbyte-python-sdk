@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.146533+08:00
+# Auto-generated at 2021-10-14T22:17:17.607107+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -34,12 +34,39 @@ from ...models import ValidationErrorEntity
 class UpdatePaymentProviderConfig(Operation):
     """Update payment provider config (updatePaymentProviderConfig)
 
+    Update payment provider config.  
+
+
+
+         Request Body Parameters:
+
+
+         Parameter| Type| Required| Description  
+        ---|---|---|---  
+        namespace| String| Yes| namespace, * indicates all namespace  
+        region| String| Yes| region, * indicates all regions  
+        aggregate| String| No| aggregate payment provider, such as XSOLLA, ADYEN, STRIPE  
+        specials| List| No| special payment provider, such as ALIPAY, WXPAY  
+
+    payment provider applied has priority:
+
+      1. namespace and region match
+      2. namespace matches and region is *
+      3. region matches and namespace is *
+      4. namespace and region are *
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
+      *  Returns : payment provider config
+
+
     Properties:
         url: /platform/admin/payment/config/provider/{id}
 
         method: PUT
 
-        tags: PaymentConfig
+        tags: ["PaymentConfig"]
 
         consumes: ["application/json"]
 
@@ -54,13 +81,13 @@ class UpdatePaymentProviderConfig(Operation):
     Responses:
         200: OK - PaymentProviderConfigInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 33221 | ErrorMessage: TaxJar api token required)
+        400: Bad Request - ErrorEntity (33221: TaxJar api token required)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33241 | ErrorMessage: Payment provider config [{id}] does not exist)
+        404: Not Found - ErrorEntity (33241: Payment provider config [{id}] does not exist)
 
-        409: Conflict - ErrorEntity (ErrorCode: 33271 | ErrorMessage: Payment provider config for namespace [{namespace}] and region [{region}] already exists)
+        409: Conflict - ErrorEntity (33271: Payment provider config for namespace [{namespace}] and region [{region}] already exists)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -169,7 +196,7 @@ class UpdatePaymentProviderConfig(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -190,13 +217,13 @@ class UpdatePaymentProviderConfig(Operation):
 
         200: OK - PaymentProviderConfigInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 33221 | ErrorMessage: TaxJar api token required)
+        400: Bad Request - ErrorEntity (33221: TaxJar api token required)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33241 | ErrorMessage: Payment provider config [{id}] does not exist)
+        404: Not Found - ErrorEntity (33241: Payment provider config [{id}] does not exist)
 
-        409: Conflict - ErrorEntity (ErrorCode: 33271 | ErrorMessage: Payment provider config for namespace [{namespace}] and region [{region}] already exists)
+        409: Conflict - ErrorEntity (33271: Payment provider config for namespace [{namespace}] and region [{region}] already exists)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return PaymentProviderConfigInfo.create_from_dict(content), None

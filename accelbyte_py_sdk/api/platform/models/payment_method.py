@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.420892+08:00
+# Auto-generated at 2021-10-14T22:17:16.492076+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class PaymentMethod(Model):
-    """Payment method
+    """Payment method (PaymentMethod)
 
     Properties:
         name: (name) REQUIRED str
@@ -56,7 +56,7 @@ class PaymentMethod(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "name") and self.name:
             result["name"] = str(self.name)
         elif include_empty:

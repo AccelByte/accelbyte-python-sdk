@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.617283+08:00
+# Auto-generated at 2021-10-14T22:17:16.859508+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,19 @@ from ...models import Ownership
 class GetUserAppEntitlementOwnershipByAppId(Operation):
     """Get user app entitlement ownership by appId (getUserAppEntitlementOwnershipByAppId)
 
+    Get user app entitlement ownership by appId.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/ownership/byAppId
 
         method: GET
 
-        tags: Entitlement
+        tags: ["Entitlement"]
 
         consumes: []
 
@@ -179,7 +186,7 @@ class GetUserAppEntitlementOwnershipByAppId(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

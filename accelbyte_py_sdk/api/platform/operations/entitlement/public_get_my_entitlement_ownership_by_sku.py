@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.657767+08:00
+# Auto-generated at 2021-10-14T22:17:16.900342+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,22 @@ from ...models import Ownership
 class PublicGetMyEntitlementOwnershipBySku(Operation):
     """Get my entitlement ownership by sku (publicGetMyEntitlementOwnershipBySku)
 
+    Get my entitlement ownership by sku.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
+      *  Path's namespace : 
+        * can be filled with publisher namespace in order to get publisher namespace entitlement ownership by sku
+        * can be filled with game namespace in order to get game namespace entitlement ownership by sku
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/me/entitlements/ownership/bySku
 
         method: GET
 
-        tags: Entitlement
+        tags: ["Entitlement"]
 
         consumes: []
 
@@ -176,7 +186,7 @@ class PublicGetMyEntitlementOwnershipBySku(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

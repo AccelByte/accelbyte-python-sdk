@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.864330+08:00
+# Auto-generated at 2021-10-14T22:17:17.193969+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,20 @@ from ...models import TradeNotification
 class ProcessUserOrderNotification(Operation):
     """Web hook for payment notification (processUserOrderNotification)
 
+    [SERVICE COMMUNICATION ONLY] This API is used as a web hook for payment
+    notification from justice payment service.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
+      *  Returns : Process result
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/notifications
 
         method: POST
 
-        tags: Order
+        tags: ["Order"]
 
         consumes: ["application/json"]
 
@@ -184,7 +192,7 @@ class ProcessUserOrderNotification(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

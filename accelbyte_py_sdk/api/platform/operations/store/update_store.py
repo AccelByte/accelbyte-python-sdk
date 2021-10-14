@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.497266+08:00
+# Auto-generated at 2021-10-14T22:17:16.689930+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -34,12 +34,20 @@ from ...models import ValidationErrorEntity
 class UpdateStore(Operation):
     """Update a store (updateStore)
 
+    This API is used to Update a store basic info.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
+      *  Returns : updated store data
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}
 
         method: PUT
 
-        tags: Store
+        tags: ["Store"]
 
         consumes: ["application/json"]
 
@@ -56,11 +64,11 @@ class UpdateStore(Operation):
     Responses:
         200: OK - StoreInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30141 | ErrorMessage: Store [{storeId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 30171 | ErrorMessage: Store [{store}] can't change default language to [{language}])
+        409: Conflict - ErrorEntity (30171: Store [{store}] can't change default language to [{language}] | 30172: Store [{store}] can't change default region to [{region}])
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -179,7 +187,7 @@ class UpdateStore(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -204,11 +212,11 @@ class UpdateStore(Operation):
 
         200: OK - StoreInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30141 | ErrorMessage: Store [{storeId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 30171 | ErrorMessage: Store [{store}] can't change default language to [{language}])
+        409: Conflict - ErrorEntity (30171: Store [{store}] can't change default language to [{language}] | 30172: Store [{store}] can't change default region to [{region}])
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return StoreInfo.create_from_dict(content), None

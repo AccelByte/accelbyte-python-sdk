@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.227688+08:00
+# Auto-generated at 2021-10-14T22:17:16.329028+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,7 +31,7 @@ from ..models.region_data_item import RegionDataItem
 
 
 class PopulatedItemInfo(Model):
-    """Populated item info
+    """Populated item info (PopulatedItemInfo)
 
     Properties:
         title: (title) REQUIRED str
@@ -313,7 +313,7 @@ class PopulatedItemInfo(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "title") and self.title:
             result["title"] = str(self.title)
         elif include_empty:

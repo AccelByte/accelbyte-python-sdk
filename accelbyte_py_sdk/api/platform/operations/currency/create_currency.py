@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.719016+08:00
+# Auto-generated at 2021-10-14T22:17:16.998807+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -34,12 +34,19 @@ from ...models import ValidationErrorEntity
 class CreateCurrency(Operation):
     """Create a currency (createCurrency)
 
+    Create a currency.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=1 (CREATE)
+      *  Returns : created currency
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/currencies
 
         method: POST
 
-        tags: Currency
+        tags: ["Currency"]
 
         consumes: ["application/json"]
 
@@ -54,9 +61,9 @@ class CreateCurrency(Operation):
     Responses:
         200: OK - CurrencyInfo (successful operation)
 
-        409: Conflict - ErrorEntity (ErrorCode: 36171 | ErrorMessage: Currency [{currencyCode}] already exists in namespace [{namespace}])
+        409: Conflict - ErrorEntity (36171: Currency [{currencyCode}] already exists in namespace [{namespace}])
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -165,7 +172,7 @@ class CreateCurrency(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -186,9 +193,9 @@ class CreateCurrency(Operation):
 
         200: OK - CurrencyInfo (successful operation)
 
-        409: Conflict - ErrorEntity (ErrorCode: 36171 | ErrorMessage: Currency [{currencyCode}] already exists in namespace [{namespace}])
+        409: Conflict - ErrorEntity (36171: Currency [{currencyCode}] already exists in namespace [{namespace}])
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return CurrencyInfo.create_from_dict(content), None

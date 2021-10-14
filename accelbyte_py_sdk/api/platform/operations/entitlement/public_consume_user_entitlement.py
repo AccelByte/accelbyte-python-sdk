@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.698537+08:00
+# Auto-generated at 2021-10-14T22:17:16.965074+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,20 @@ from ...models import ErrorEntity
 class PublicConsumeUserEntitlement(Operation):
     """Consume user entitlement (publicConsumeUserEntitlement)
 
+    Consume user entitlement. If the entitlement useCount is 0, the status will be
+    CONSUMED.  
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : consumed entitlement
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/decrement
 
         method: PUT
 
-        tags: Entitlement
+        tags: ["Entitlement"]
 
         consumes: []
 
@@ -57,9 +65,9 @@ class PublicConsumeUserEntitlement(Operation):
     Responses:
         200: OK - EntitlementInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 31141 | ErrorMessage: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 31171 | ErrorMessage: Entitlement [{entitlementId}] already revoked)
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31173: Entitlement [{entitlementId}] is not consumable | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 20006: optimistic lock)
     """
 
     # region fields
@@ -188,7 +196,7 @@ class PublicConsumeUserEntitlement(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -217,9 +225,9 @@ class PublicConsumeUserEntitlement(Operation):
 
         200: OK - EntitlementInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 31141 | ErrorMessage: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 31171 | ErrorMessage: Entitlement [{entitlementId}] already revoked)
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31173: Entitlement [{entitlementId}] is not consumable | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 20006: optimistic lock)
         """
         if code == 200:
             return EntitlementInfo.create_from_dict(content), None

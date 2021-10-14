@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.032941+08:00
+# Auto-generated at 2021-10-14T22:17:17.416755+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import PaymentMerchantConfigInfo
 class DebugMatchedPaymentMerchantConfig(Operation):
     """Debug matched payment merchant config(internal) (debugMatchedPaymentMerchantConfig)
 
+    Debug matched payment merchant config.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
+      *  Returns : payment merchant config info
+
+
     Properties:
         url: /platform/admin/payment/config/merchant/matched
 
         method: GET
 
-        tags: PaymentConfig
+        tags: ["PaymentConfig"]
 
         consumes: []
 
@@ -52,7 +59,7 @@ class DebugMatchedPaymentMerchantConfig(Operation):
     Responses:
         200: OK - PaymentMerchantConfigInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33242 | ErrorMessage: Payment merchant config [{id}] does not exist)
+        404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist)
     """
 
     # region fields
@@ -155,7 +162,7 @@ class DebugMatchedPaymentMerchantConfig(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -176,7 +183,7 @@ class DebugMatchedPaymentMerchantConfig(Operation):
 
         200: OK - PaymentMerchantConfigInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33242 | ErrorMessage: Payment merchant config [{id}] does not exist)
+        404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist)
         """
         if code == 200:
             return PaymentMerchantConfigInfo.create_from_dict(content), None

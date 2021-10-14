@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.506185+08:00
+# Auto-generated at 2021-10-14T22:17:16.703049+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,20 @@ from ...models import ValidationErrorEntity
 class CreateStore(Operation):
     """Create a store (createStore)
 
+    This API is used to create a non published store in a namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
+      *  Returns : created store data
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores
 
         method: POST
 
-        tags: Store
+        tags: ["Store"]
 
         consumes: ["application/json"]
 
@@ -53,7 +61,7 @@ class CreateStore(Operation):
     Responses:
         201: Created - StoreInfo (successful operation)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -162,7 +170,7 @@ class CreateStore(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -183,7 +191,7 @@ class CreateStore(Operation):
 
         201: Created - StoreInfo (successful operation)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 201:
             return StoreInfo.create_from_dict(content), None

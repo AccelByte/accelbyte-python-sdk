@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.364824+08:00
+# Auto-generated at 2021-10-14T22:17:16.448335+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class GoogleIAPConfigRequest(Model):
-    """Google IAP config request
+    """Google IAP config request (GoogleIAPConfigRequest)
 
     Properties:
         application_name: (applicationName) REQUIRED str
@@ -56,7 +56,7 @@ class GoogleIAPConfigRequest(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "application_name") and self.application_name:
             result["applicationName"] = str(self.application_name)
         elif include_empty:

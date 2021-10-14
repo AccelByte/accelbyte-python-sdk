@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.072784+08:00
+# Auto-generated at 2021-10-14T22:17:17.457812+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,20 @@ from ...models import TestResult
 class TestAliPayConfigById(Operation):
     """Test Alipay configuration by id (testAliPayConfigById)
 
+    Test AliPay configuration in payment merchant config. Reference: [Alipay
+    Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
+      *  Returns : test alipay config
+
+
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/alipayconfig/test
 
         method: GET
 
-        tags: PaymentConfig
+        tags: ["PaymentConfig"]
 
         consumes: ["application/json"]
 
@@ -52,7 +60,7 @@ class TestAliPayConfigById(Operation):
     Responses:
         200: OK - TestResult (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33242 | ErrorMessage: Payment merchant config [{id}] does not exist)
+        404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist)
     """
 
     # region fields
@@ -167,7 +175,7 @@ class TestAliPayConfigById(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "id_") and self.id_:
             result["id"] = str(self.id_)
         elif include_empty:
@@ -188,7 +196,7 @@ class TestAliPayConfigById(Operation):
 
         200: OK - TestResult (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33242 | ErrorMessage: Payment merchant config [{id}] does not exist)
+        404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist)
         """
         if code == 200:
             return TestResult.create_from_dict(content), None

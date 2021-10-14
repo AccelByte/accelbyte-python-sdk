@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.168315+08:00
+# Auto-generated at 2021-10-14T22:17:16.279509+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class ItemId(Model):
-    """Item id
+    """Item id (ItemId)
 
     Properties:
         item_id: (itemId) REQUIRED str
@@ -49,7 +49,7 @@ class ItemId(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "item_id") and self.item_id:
             result["itemId"] = str(self.item_id)
         elif include_empty:

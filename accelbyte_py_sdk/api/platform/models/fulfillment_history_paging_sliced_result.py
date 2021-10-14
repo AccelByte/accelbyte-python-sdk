@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.151225+08:00
+# Auto-generated at 2021-10-14T22:17:16.265495+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,7 +29,7 @@ from ..models.paging import Paging
 
 
 class FulfillmentHistoryPagingSlicedResult(Model):
-    """Fulfillment history paging sliced result
+    """Fulfillment history paging sliced result (FulfillmentHistoryPagingSlicedResult)
 
     Properties:
         data: (data) REQUIRED List[FulfillmentHistoryInfo]
@@ -59,7 +59,7 @@ class FulfillmentHistoryPagingSlicedResult(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "data") and self.data:
             result["data"] = [i0.to_dict(include_empty=include_empty) for i0 in self.data]
         elif include_empty:

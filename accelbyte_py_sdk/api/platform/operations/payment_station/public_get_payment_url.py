@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.128654+08:00
+# Auto-generated at 2021-10-14T22:17:17.571458+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,18 @@ from ...models import PaymentUrlCreate
 class PublicGetPaymentUrl(Operation):
     """Get payment url (publicGetPaymentUrl)
 
+    Get payment url.  
+    Other detail info:
+
+      * Returns : Get payment link
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/payment/link
 
         method: POST
 
-        tags: PaymentStation
+        tags: ["PaymentStation"]
 
         consumes: ["application/json"]
 
@@ -53,11 +59,11 @@ class PublicGetPaymentUrl(Operation):
     Responses:
         200: OK - PaymentUrl (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 33321 | ErrorMessage: Payment provider [{paymentProvider}] not support currency [{currency}])
+        400: Bad Request - ErrorEntity (33321: Payment provider [{paymentProvider}] not support currency [{currency}] | 33322: Payment provider [{paymentProvider}] not supported)
 
-        403: Forbidden - ErrorEntity (ErrorCode: 20016 | ErrorMessage: action is banned)
+        403: Forbidden - ErrorEntity (20016: action is banned)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33141 | ErrorMessage: Payment Order [{paymentOrderNo}] does not exist)
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist | 20008: user [{userId}] does not exist in namespace [{namespace}])
     """
 
     # region fields
@@ -166,7 +172,7 @@ class PublicGetPaymentUrl(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -187,11 +193,11 @@ class PublicGetPaymentUrl(Operation):
 
         200: OK - PaymentUrl (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 33321 | ErrorMessage: Payment provider [{paymentProvider}] not support currency [{currency}])
+        400: Bad Request - ErrorEntity (33321: Payment provider [{paymentProvider}] not support currency [{currency}] | 33322: Payment provider [{paymentProvider}] not supported)
 
-        403: Forbidden - ErrorEntity (ErrorCode: 20016 | ErrorMessage: action is banned)
+        403: Forbidden - ErrorEntity (20016: action is banned)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33141 | ErrorMessage: Payment Order [{paymentOrderNo}] does not exist)
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist | 20008: user [{userId}] does not exist in namespace [{namespace}])
         """
         if code == 200:
             return PaymentUrl.create_from_dict(content), None

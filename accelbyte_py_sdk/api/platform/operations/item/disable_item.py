@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.488471+08:00
+# Auto-generated at 2021-10-14T22:17:16.677383+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import FullItemInfo
 class DisableItem(Operation):
     """Disable an item (disableItem)
 
+    Disable an item.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+      *  Returns : updated item
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/items/{itemId}/disable
 
         method: PUT
 
-        tags: Item
+        tags: ["Item"]
 
         consumes: ["application/json"]
 
@@ -54,9 +61,9 @@ class DisableItem(Operation):
     Responses:
         200: OK - FullItemInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30341 | ErrorMessage: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 30173 | ErrorMessage: Published store can't modify content)
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
     """
 
     # region fields
@@ -184,7 +191,7 @@ class DisableItem(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -209,9 +216,9 @@ class DisableItem(Operation):
 
         200: OK - FullItemInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30341 | ErrorMessage: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 30173 | ErrorMessage: Published store can't modify content)
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
         """
         if code == 200:
             return FullItemInfo.create_from_dict(content), None

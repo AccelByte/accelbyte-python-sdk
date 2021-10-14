@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.086204+08:00
+# Auto-generated at 2021-10-14T22:17:17.473374+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,20 @@ from ...models import WxPayConfigRequest
 class TestWxPayConfig(Operation):
     """Test wxPay configuration (testWxPayConfig)
 
+    Test WxPay configuration. Reference: [WxPay
+    Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
+      *  Returns : test WxPay config
+
+
     Properties:
         url: /platform/admin/payment/config/merchant/wxpayconfig/test
 
         method: POST
 
-        tags: PaymentConfig
+        tags: ["PaymentConfig"]
 
         consumes: ["application/json"]
 
@@ -138,7 +146,7 @@ class TestWxPayConfig(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

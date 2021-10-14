@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.316780+08:00
+# Auto-generated at 2021-10-14T22:17:16.407158+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,7 +29,7 @@ from ..models.entitlement_summary import EntitlementSummary
 
 
 class OrderGrantInfo(Model):
-    """Order grant info
+    """Order grant info (OrderGrantInfo)
 
     Properties:
         entitlements: (entitlements) OPTIONAL List[EntitlementSummary]
@@ -59,7 +59,7 @@ class OrderGrantInfo(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "entitlements") and self.entitlements:
             result["entitlements"] = [i0.to_dict(include_empty=include_empty) for i0 in self.entitlements]
         elif include_empty:

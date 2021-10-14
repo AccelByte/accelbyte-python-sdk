@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.802388+08:00
+# Auto-generated at 2021-10-14T22:17:17.106154+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,20 @@ from ...models import RewardInfo
 class DeleteReward(Operation):
     """Delete a reward (deleteReward)
 
+    This API is used to delete a reward by reward Id.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=8 (DELETE)
+      *  Returns : the deleted reward data
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}
 
         method: DELETE
 
-        tags: Reward
+        tags: ["Reward"]
 
         consumes: []
 
@@ -52,7 +60,7 @@ class DeleteReward(Operation):
     Responses:
         200: OK - RewardInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 34041 | ErrorMessage: Reward [{rewardId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (34041: Reward [{rewardId}] does not exist in namespace [{namespace}])
     """
 
     # region fields
@@ -162,7 +170,7 @@ class DeleteReward(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -183,7 +191,7 @@ class DeleteReward(Operation):
 
         200: OK - RewardInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 34041 | ErrorMessage: Reward [{rewardId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (34041: Reward [{rewardId}] does not exist in namespace [{namespace}])
         """
         if code == 200:
             return RewardInfo.create_from_dict(content), None

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.098091+08:00
+# Auto-generated at 2021-10-14T22:17:17.486909+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,19 @@ from ...models import PaymentAccount
 class PublicGetPaymentAccounts(Operation):
     """Get payment accounts (publicGetPaymentAccounts)
 
+    Get payment accounts.  
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT", action=2 (READ)
+      *  Returns : Payment account list
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/payment/accounts
 
         method: GET
 
-        tags: PaymentAccount
+        tags: ["PaymentAccount"]
 
         consumes: ["application/json"]
 
@@ -159,7 +166,7 @@ class PublicGetPaymentAccounts(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

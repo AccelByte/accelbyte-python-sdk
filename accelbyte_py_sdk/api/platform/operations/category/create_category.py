@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.386799+08:00
+# Auto-generated at 2021-10-14T22:17:16.552236+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -34,12 +34,30 @@ from ...models import ValidationErrorEntity
 class CreateCategory(Operation):
     """Create category (createCategory)
 
+    This API is used to create category.
+
+    A category is a path separated by "/". A category also has localized display
+    names. Example:
+
+
+
+        {
+            "categoryPath": "/games",
+            "localizationDisplayNames": {"en" : "Games"}
+        }
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=1 (CREATE)
+      *  Returns : created category data
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories
 
         method: POST
 
-        tags: Category
+        tags: ["Category"]
 
         consumes: ["application/json"]
 
@@ -56,13 +74,13 @@ class CreateCategory(Operation):
     Responses:
         201: Created - FullCategoryInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 30021 | ErrorMessage: Default language [{language}] required)
+        400: Bad Request - ErrorEntity (30021: Default language [{language}] required)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30241 | ErrorMessage: Category [{categoryPath}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 30271 | ErrorMessage: Category [{categoryPath}] already exists in namespace [{namespace}])
+        409: Conflict - ErrorEntity (30271: Category [{categoryPath}] already exists in namespace [{namespace}] | 30173: Published store can't modify content)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -189,7 +207,7 @@ class CreateCategory(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -214,13 +232,13 @@ class CreateCategory(Operation):
 
         201: Created - FullCategoryInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 30021 | ErrorMessage: Default language [{language}] required)
+        400: Bad Request - ErrorEntity (30021: Default language [{language}] required)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30241 | ErrorMessage: Category [{categoryPath}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 30271 | ErrorMessage: Category [{categoryPath}] already exists in namespace [{namespace}])
+        409: Conflict - ErrorEntity (30271: Category [{categoryPath}] already exists in namespace [{namespace}] | 30173: Published store can't modify content)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 201:
             return FullCategoryInfo.create_from_dict(content), None

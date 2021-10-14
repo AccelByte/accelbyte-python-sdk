@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.951800+08:00
+# Auto-generated at 2021-10-14T22:17:17.305997+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,12 +29,18 @@ from .....core import HttpResponse
 class DeleteXblAPConfig(Operation):
     """Delete xbl iap config (deleteXblAPConfig)
 
+    Delete xbl iap config.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/xbl
 
         method: DELETE
 
-        tags: IAP
+        tags: ["IAP"]
 
         consumes: []
 
@@ -145,7 +151,7 @@ class DeleteXblAPConfig(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

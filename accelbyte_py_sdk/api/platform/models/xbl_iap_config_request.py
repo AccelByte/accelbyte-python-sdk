@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.358350+08:00
+# Auto-generated at 2021-10-14T22:17:16.443260+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class XblIAPConfigRequest(Model):
-    """Xbl IAP config request
+    """Xbl IAP config request (XblIAPConfigRequest)
 
     Properties:
         relying_party_cert: (relyingPartyCert) REQUIRED str
@@ -49,7 +49,7 @@ class XblIAPConfigRequest(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "relying_party_cert") and self.relying_party_cert:
             result["relyingPartyCert"] = str(self.relying_party_cert)
         elif include_empty:

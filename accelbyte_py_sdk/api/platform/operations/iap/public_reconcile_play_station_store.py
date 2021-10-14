@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.009475+08:00
+# Auto-generated at 2021-10-14T22:17:17.387888+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,20 @@ from ...models import PlayStationReconcileResult
 class PublicReconcilePlayStationStore(Operation):
     """Synchronize with entitlements in PSN Store. (publicReconcilePlayStationStore)
 
+    Synchronize with entitlements in PSN Store.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
+      *  Returns : result of synchronization
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/psn/sync
 
         method: PUT
 
-        tags: IAP
+        tags: ["IAP"]
 
         consumes: ["application/json"]
 
@@ -52,7 +60,7 @@ class PublicReconcilePlayStationStore(Operation):
     Responses:
         200: OK - List[PlayStationReconcileResult] (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 39123 | ErrorMessage: PSN Sync failed with status code [{statusCode}] and psnAuthCode is [{psnAuthCode}])
+        400: Bad Request - ErrorEntity (39123: PSN Sync failed with status code [{statusCode}] and psnAuthCode is [{psnAuthCode}])
     """
 
     # region fields
@@ -162,7 +170,7 @@ class PublicReconcilePlayStationStore(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -183,7 +191,7 @@ class PublicReconcilePlayStationStore(Operation):
 
         200: OK - List[PlayStationReconcileResult] (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 39123 | ErrorMessage: PSN Sync failed with status code [{statusCode}] and psnAuthCode is [{psnAuthCode}])
+        400: Bad Request - ErrorEntity (39123: PSN Sync failed with status code [{statusCode}] and psnAuthCode is [{psnAuthCode}])
         """
         if code == 200:
             return [PlayStationReconcileResult.create_from_dict(i) for i in content], None

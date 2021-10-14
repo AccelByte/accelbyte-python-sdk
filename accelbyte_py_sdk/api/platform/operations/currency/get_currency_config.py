@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.730943+08:00
+# Auto-generated at 2021-10-14T22:17:17.019200+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import ErrorEntity
 class GetCurrencyConfig(Operation):
     """Get currency config (getCurrencyConfig)
 
+    [SERVICE COMMUNICATION ONLY] Get currency config by code.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=2 (READ)
+      *  Returns : simplified Currency
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/currencies/{currencyCode}/config
 
         method: GET
 
-        tags: Currency
+        tags: ["Currency"]
 
         consumes: ["application/json"]
 
@@ -52,7 +59,7 @@ class GetCurrencyConfig(Operation):
     Responses:
         200: OK - CurrencyConfig (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 36141 | ErrorMessage: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
     """
 
     # region fields
@@ -162,7 +169,7 @@ class GetCurrencyConfig(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -183,7 +190,7 @@ class GetCurrencyConfig(Operation):
 
         200: OK - CurrencyConfig (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 36141 | ErrorMessage: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
         """
         if code == 200:
             return CurrencyConfig.create_from_dict(content), None

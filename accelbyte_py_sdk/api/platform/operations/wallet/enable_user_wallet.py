@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.746894+08:00
+# Auto-generated at 2021-10-14T22:17:17.040717+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,18 @@ from ...models import ErrorEntity
 class EnableUserWallet(Operation):
     """Enable a user wallet (enableUserWallet)
 
+    enable a user wallet.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4 (UPDATE)
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{walletId}/enable
 
         method: PUT
 
-        tags: Wallet
+        tags: ["Wallet"]
 
         consumes: ["application/json"]
 
@@ -51,9 +57,9 @@ class EnableUserWallet(Operation):
         wallet_id: (walletId) REQUIRED str in path
 
     Responses:
-        404: Not Found - ErrorEntity (ErrorCode: 35141 | ErrorMessage: Wallet [{walletId}] does not exist)
+        404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
 
-        409: Conflict - ErrorEntity (ErrorCode: 20006 | ErrorMessage: optimistic lock)
+        409: Conflict - ErrorEntity (20006: optimistic lock)
     """
 
     # region fields
@@ -173,7 +179,7 @@ class EnableUserWallet(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -196,9 +202,9 @@ class EnableUserWallet(Operation):
     def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, ErrorEntity]]:
         """Parse the given response.
 
-        404: Not Found - ErrorEntity (ErrorCode: 35141 | ErrorMessage: Wallet [{walletId}] does not exist)
+        404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
 
-        409: Conflict - ErrorEntity (ErrorCode: 20006 | ErrorMessage: optimistic lock)
+        409: Conflict - ErrorEntity (20006: optimistic lock)
         """
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)

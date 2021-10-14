@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.036227+08:00
+# Auto-generated at 2021-10-14T22:17:17.419876+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,25 @@ from ...models import TestResult
 class TestCheckoutConfig(Operation):
     """Test checkout.com configuration (testCheckoutConfig)
 
+    Test checkout.com configuration.
+
+    #### Check List:
+
+      * publicKey
+      * secretKey
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
+      *  Returns : test result
+
+
     Properties:
         url: /platform/admin/payment/config/merchant/checkoutconfig/test
 
         method: POST
 
-        tags: PaymentConfig
+        tags: ["PaymentConfig"]
 
         consumes: ["application/json"]
 
@@ -155,7 +168,7 @@ class TestCheckoutConfig(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:

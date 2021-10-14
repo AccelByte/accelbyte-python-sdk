@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.083942+08:00
+# Auto-generated at 2021-10-14T22:17:17.470929+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import PaymentMerchantConfigInfo
 class UpdateWxPayConfigCert(Operation):
     """Upload wxpay cert file (updateWxPayConfigCert)
 
+    Upload wxpay cert file.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
+      *  Returns : updated payment merchant config
+
+
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/wxpayconfig/cert
 
         method: PUT
 
-        tags: PaymentConfig
+        tags: ["PaymentConfig"]
 
         consumes: ["multipart/form-data"]
 
@@ -52,7 +59,7 @@ class UpdateWxPayConfigCert(Operation):
     Responses:
         200: OK - PaymentMerchantConfigInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33242 | ErrorMessage: Payment merchant config [{id}] does not exist)
+        404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist)
     """
 
     # region fields
@@ -164,7 +171,7 @@ class UpdateWxPayConfigCert(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "file") and self.file:
             result["file"] = Any(self.file)
         elif include_empty:
@@ -185,7 +192,7 @@ class UpdateWxPayConfigCert(Operation):
 
         200: OK - PaymentMerchantConfigInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33242 | ErrorMessage: Payment merchant config [{id}] does not exist)
+        404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist)
         """
         if code == 200:
             return PaymentMerchantConfigInfo.create_from_dict(content), None

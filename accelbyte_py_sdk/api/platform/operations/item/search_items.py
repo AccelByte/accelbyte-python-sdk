@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.459838+08:00
+# Auto-generated at 2021-10-14T22:17:16.636145+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,21 @@ from ...models import FullItemPagingSlicedResult
 class SearchItems(Operation):
     """Search items by keyword (searchItems)
 
+    This API is used to search items by keyword in title, description and long
+    description within a store.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the list of items
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/items/search
 
         method: GET
 
-        tags: Item
+        tags: ["Item"]
 
         consumes: []
 
@@ -215,7 +224,7 @@ class SearchItems(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

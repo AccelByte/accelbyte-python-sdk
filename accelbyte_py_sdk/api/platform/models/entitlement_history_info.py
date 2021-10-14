@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.127240+08:00
+# Auto-generated at 2021-10-14T22:17:16.246393+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class EntitlementHistoryInfo(Model):
-    """Entitlement history info
+    """Entitlement history info (EntitlementHistoryInfo)
 
     Properties:
         entitlement_id: (entitlementId) REQUIRED str
@@ -105,7 +105,7 @@ class EntitlementHistoryInfo(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "entitlement_id") and self.entitlement_id:
             result["entitlementId"] = str(self.entitlement_id)
         elif include_empty:

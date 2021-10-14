@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.322163+08:00
+# Auto-generated at 2021-10-14T22:17:16.411746+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,7 +29,7 @@ from ..models.transaction import Transaction
 
 
 class PaymentOrderInfo(Model):
-    """Payment order info
+    """Payment order info (PaymentOrderInfo)
 
     Properties:
         payment_order_no: (paymentOrderNo) REQUIRED str
@@ -374,7 +374,7 @@ class PaymentOrderInfo(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "payment_order_no") and self.payment_order_no:
             result["paymentOrderNo"] = str(self.payment_order_no)
         elif include_empty:

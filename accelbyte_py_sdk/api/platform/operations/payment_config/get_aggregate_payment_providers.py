@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.139105+08:00
+# Auto-generated at 2021-10-14T22:17:17.595749+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,12 +29,19 @@ from .....core import HttpResponse
 class GetAggregatePaymentProviders(Operation):
     """Get aggregate payment providers (getAggregatePaymentProviders)
 
+    Get aggregate payment providers, such as XSOLLA, ADYEN.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
+      *  Returns : payment provider list
+
+
     Properties:
         url: /platform/admin/payment/config/provider/aggregate
 
         method: GET
 
-        tags: PaymentConfig
+        tags: ["PaymentConfig"]
 
         consumes: []
 
@@ -123,7 +130,7 @@ class GetAggregatePaymentProviders(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         return result
 
     # endregion to methods

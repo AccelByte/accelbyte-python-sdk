@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.539050+08:00
+# Auto-generated at 2021-10-14T22:17:16.753169+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,20 @@ from ...models import HierarchicalCategoryInfo
 class DownloadCategories(Operation):
     """Download store's structured categories (downloadCategories)
 
+    This API is used to download store's structured categories.
+
+    Other detail info:
+
+      * Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store content)
+      *  Returns : structured categories
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/categories/download
 
         method: GET
 
-        tags: Category
+        tags: ["Category"]
 
         consumes: []
 
@@ -54,7 +62,7 @@ class DownloadCategories(Operation):
     Responses:
         200: OK - List[HierarchicalCategoryInfo] (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30141 | ErrorMessage: Store [{storeId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
     """
 
     # region fields
@@ -176,7 +184,7 @@ class DownloadCategories(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -201,7 +209,7 @@ class DownloadCategories(Operation):
 
         200: OK - List[HierarchicalCategoryInfo] (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30141 | ErrorMessage: Store [{storeId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
         """
         if code == 200:
             return [HierarchicalCategoryInfo.create_from_dict(i) for i in content], None

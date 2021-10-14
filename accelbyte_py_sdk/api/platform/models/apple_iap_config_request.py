@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.360311+08:00
+# Auto-generated at 2021-10-14T22:17:16.444917+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class AppleIAPConfigRequest(Model):
-    """Apple IAP config request
+    """Apple IAP config request (AppleIAPConfigRequest)
 
     Properties:
         bundle_id: (bundleId) REQUIRED str
@@ -56,7 +56,7 @@ class AppleIAPConfigRequest(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "bundle_id") and self.bundle_id:
             result["bundleId"] = str(self.bundle_id)
         elif include_empty:

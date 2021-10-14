@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.501599+08:00
+# Auto-generated at 2021-10-14T22:17:16.695783+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import StoreInfo
 class DeleteStore(Operation):
     """Delete a store (deleteStore)
 
+    This API is used to delete a store. Only non published store can be deleted.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8 (DELETE)
+      *  Returns : store
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}
 
         method: DELETE
 
-        tags: Store
+        tags: ["Store"]
 
         consumes: []
 
@@ -52,9 +59,9 @@ class DeleteStore(Operation):
     Responses:
         200: OK - StoreInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30141 | ErrorMessage: Store [{storeId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 30173 | ErrorMessage: Published store can't modify content)
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
     """
 
     # region fields
@@ -164,7 +171,7 @@ class DeleteStore(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -185,9 +192,9 @@ class DeleteStore(Operation):
 
         200: OK - StoreInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30141 | ErrorMessage: Store [{storeId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 30173 | ErrorMessage: Published store can't modify content)
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
         """
         if code == 200:
             return StoreInfo.create_from_dict(content), None

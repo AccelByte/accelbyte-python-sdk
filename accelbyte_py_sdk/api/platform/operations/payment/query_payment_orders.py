@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.910372+08:00
+# Auto-generated at 2021-10-14T22:17:17.245657+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,19 @@ from ...models import PaymentOrderPagingSlicedResult
 class QueryPaymentOrders(Operation):
     """Query payment orders (queryPaymentOrders)
 
+    Query payment orders.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
+      *  Returns : query payment orders
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders
 
         method: GET
 
-        tags: Payment
+        tags: ["Payment"]
 
         consumes: []
 
@@ -200,7 +207,7 @@ class QueryPaymentOrders(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

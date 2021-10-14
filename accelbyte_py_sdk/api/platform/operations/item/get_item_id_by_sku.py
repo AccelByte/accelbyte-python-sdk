@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.431395+08:00
+# Auto-generated at 2021-10-14T22:17:16.608180+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,20 @@ from ...models import ItemId
 class GetItemIdBySku(Operation):
     """Get itemId by sku (getItemIdBySku)
 
+    [SERVICE COMMUNICATION ONLY] This API is used to get the itemId by sku.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the itemId with sku
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/items/itemId/bySku
 
         method: GET
 
-        tags: Item
+        tags: ["Item"]
 
         consumes: []
 
@@ -56,7 +64,7 @@ class GetItemIdBySku(Operation):
     Responses:
         200: OK - ItemId (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30343 | ErrorMessage: Item of sku [{sku}] does not exist)
+        404: Not Found - ErrorEntity (30343: Item of sku [{sku}] does not exist)
     """
 
     # region fields
@@ -188,7 +196,7 @@ class GetItemIdBySku(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -217,7 +225,7 @@ class GetItemIdBySku(Operation):
 
         200: OK - ItemId (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30343 | ErrorMessage: Item of sku [{sku}] does not exist)
+        404: Not Found - ErrorEntity (30343: Item of sku [{sku}] does not exist)
         """
         if code == 200:
             return ItemId.create_from_dict(content), None

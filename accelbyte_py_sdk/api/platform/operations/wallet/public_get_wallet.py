@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.790749+08:00
+# Auto-generated at 2021-10-14T22:17:17.088937+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,19 @@ from ...models import WalletInfo
 class PublicGetWallet(Operation):
     """Get a wallet by currency code (publicGetWallet)
 
+    get a wallet by currency code.  
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
+      *  Returns : wallet info
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}
 
         method: GET
 
-        tags: Wallet
+        tags: ["Wallet"]
 
         consumes: ["application/json"]
 
@@ -171,7 +178,7 @@ class PublicGetWallet(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

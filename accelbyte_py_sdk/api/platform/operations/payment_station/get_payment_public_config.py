@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.112868+08:00
+# Auto-generated at 2021-10-14T22:17:17.532835+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,12 +29,19 @@ from .....core import HttpResponse
 class GetPaymentPublicConfig(Operation):
     """Get payment provider public config (getPaymentPublicConfig)
 
+    Get payment provider public config, at current only Strip provide public
+    config.  
+    Other detail info:
+
+      * Returns : Public config
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/payment/publicconfig
 
         method: GET
 
-        tags: PaymentStation
+        tags: ["PaymentStation"]
 
         consumes: ["application/json"]
 
@@ -186,7 +193,7 @@ class GetPaymentPublicConfig(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

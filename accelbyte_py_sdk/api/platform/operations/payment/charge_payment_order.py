@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.897344+08:00
+# Auto-generated at 2021-10-14T22:17:17.235872+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,21 @@ from ...models import PaymentOrderInfo
 class ChargePaymentOrder(Operation):
     """Charge payment order without payment flow (chargePaymentOrder)
 
+    [TEST FACILITY ONLY] Charge payment order without payment flow for unpaid
+    payment order, usually for test usage to simulate real currency payment
+    process.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=4 (UPDATE)
+      *  Returns : payment order instance
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}
 
         method: PUT
 
-        tags: Payment
+        tags: ["Payment"]
 
         consumes: []
 
@@ -55,11 +64,11 @@ class ChargePaymentOrder(Operation):
     Responses:
         200: OK - PaymentOrderInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 33322 | ErrorMessage: Payment provider [{paymentProvider}] not supported)
+        400: Bad Request - ErrorEntity (33322: Payment provider [{paymentProvider}] not supported)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33141 | ErrorMessage: Payment Order [{paymentOrderNo}] does not exist)
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
 
-        409: Conflict - ErrorEntity (ErrorCode: 33171 | ErrorMessage: Invalid payment order status [{status}] for payment order [{paymentOrderNo}])
+        409: Conflict - ErrorEntity (33171: Invalid payment order status [{status}] for payment order [{paymentOrderNo}])
     """
 
     # region fields
@@ -178,7 +187,7 @@ class ChargePaymentOrder(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -203,11 +212,11 @@ class ChargePaymentOrder(Operation):
 
         200: OK - PaymentOrderInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 33322 | ErrorMessage: Payment provider [{paymentProvider}] not supported)
+        400: Bad Request - ErrorEntity (33322: Payment provider [{paymentProvider}] not supported)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33141 | ErrorMessage: Payment Order [{paymentOrderNo}] does not exist)
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
 
-        409: Conflict - ErrorEntity (ErrorCode: 33171 | ErrorMessage: Invalid payment order status [{status}] for payment order [{paymentOrderNo}])
+        409: Conflict - ErrorEntity (33171: Invalid payment order status [{status}] for payment order [{paymentOrderNo}])
         """
         if code == 200:
             return PaymentOrderInfo.create_from_dict(content), None

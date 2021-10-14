@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.329362+08:00
+# Auto-generated at 2021-10-14T22:17:16.418431+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class PaymentOrderChargeRequest(Model):
-    """Payment order charge request
+    """Payment order charge request (PaymentOrderChargeRequest)
 
     Properties:
         payment_provider: (paymentProvider) REQUIRED str
@@ -63,7 +63,7 @@ class PaymentOrderChargeRequest(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "payment_provider") and self.payment_provider:
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:

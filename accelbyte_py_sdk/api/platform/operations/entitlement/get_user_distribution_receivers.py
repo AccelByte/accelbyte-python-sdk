@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.579059+08:00
+# Auto-generated at 2021-10-14T22:17:16.814040+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import ErrorEntity
 class GetUserDistributionReceivers(Operation):
     """Get distribution receivers (getUserDistributionReceivers)
 
+    Get distribution receivers for a specific game user by dedicated server.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:DISTRIBUTION", action=2 (READ)
+      *  Returns : distribution receiver info list
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/receivers
 
         method: GET
 
-        tags: Entitlement
+        tags: ["Entitlement"]
 
         consumes: []
 
@@ -52,7 +59,7 @@ class GetUserDistributionReceivers(Operation):
     Responses:
         200: OK - List[DistributionReceiverInfo] (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 31123 | ErrorMessage: Publisher namespace [{namespace}] is not distributable)
+        400: Bad Request - ErrorEntity (31123: Publisher namespace [{namespace}] is not distributable)
     """
 
     # region fields
@@ -162,7 +169,7 @@ class GetUserDistributionReceivers(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -183,7 +190,7 @@ class GetUserDistributionReceivers(Operation):
 
         200: OK - List[DistributionReceiverInfo] (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 31123 | ErrorMessage: Publisher namespace [{namespace}] is not distributable)
+        400: Bad Request - ErrorEntity (31123: Publisher namespace [{namespace}] is not distributable)
         """
         if code == 200:
             return [DistributionReceiverInfo.create_from_dict(i) for i in content], None

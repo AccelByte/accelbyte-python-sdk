@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.151098+08:00
+# Auto-generated at 2021-10-14T22:17:17.620005+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,19 @@ from ...models import ErrorEntity
 class DeletePaymentProviderConfig(Operation):
     """Delete payment provider config (deletePaymentProviderConfig)
 
+    Delete payment provider config.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=8 (DELETE)
+      *  Returns : payment provider config
+
+
     Properties:
         url: /platform/admin/payment/config/provider/{id}
 
         method: DELETE
 
-        tags: PaymentConfig
+        tags: ["PaymentConfig"]
 
         consumes: []
 
@@ -49,7 +56,7 @@ class DeletePaymentProviderConfig(Operation):
     Responses:
         204: No Content - (Delete successfully)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33241 | ErrorMessage: Payment provider config [{id}] does not exist)
+        404: Not Found - ErrorEntity (33241: Payment provider config [{id}] does not exist)
     """
 
     # region fields
@@ -149,7 +156,7 @@ class DeletePaymentProviderConfig(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "id_") and self.id_:
             result["id"] = str(self.id_)
         elif include_empty:
@@ -166,7 +173,7 @@ class DeletePaymentProviderConfig(Operation):
 
         204: No Content - (Delete successfully)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33241 | ErrorMessage: Payment provider config [{id}] does not exist)
+        404: Not Found - ErrorEntity (33241: Payment provider config [{id}] does not exist)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

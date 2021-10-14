@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.680278+08:00
+# Auto-generated at 2021-10-14T22:17:16.933065+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,20 @@ from ...models import ErrorEntity
 class PublicGetUserEntitlement(Operation):
     """Get user entitlement (publicGetUserEntitlement)
 
+    Get user entitlement.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+      *  Returns : entitlement
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}
 
         method: GET
 
-        tags: Entitlement
+        tags: ["Entitlement"]
 
         consumes: []
 
@@ -54,7 +62,7 @@ class PublicGetUserEntitlement(Operation):
     Responses:
         200: OK - EntitlementInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 31141 | ErrorMessage: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
     """
 
     # region fields
@@ -174,7 +182,7 @@ class PublicGetUserEntitlement(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -199,7 +207,7 @@ class PublicGetUserEntitlement(Operation):
 
         200: OK - EntitlementInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 31141 | ErrorMessage: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
         """
         if code == 200:
             return EntitlementInfo.create_from_dict(content), None

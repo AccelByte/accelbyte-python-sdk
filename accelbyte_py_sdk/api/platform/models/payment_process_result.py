@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.419408+08:00
+# Auto-generated at 2021-10-14T22:17:16.491033+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class PaymentProcessResult(Model):
-    """Payment process result
+    """Payment process result (PaymentProcessResult)
 
     Properties:
         success: (success) REQUIRED bool
@@ -70,7 +70,7 @@ class PaymentProcessResult(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "success") and self.success:
             result["success"] = bool(self.success)
         elif include_empty:

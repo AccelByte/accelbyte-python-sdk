@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.929713+08:00
+# Auto-generated at 2021-10-14T22:17:17.271893+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,21 @@ from ...models import PaymentOrderSyncResult
 class SyncPaymentOrders(Operation):
     """Sync payment orders (syncPaymentOrders)
 
+    Sync payment orders. If response contains nextEvaluatedKey, please use it as
+    query param in the next call to fetch the next batch, a batch has 1000
+    elements or less.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT", action=2 (READ)
+      *  Returns : sync payment orders
+
+
     Properties:
         url: /platform/admin/payment/orders
 
         method: GET
 
-        tags: Payment(Dedicated)
+        tags: ["Payment(Dedicated)"]
 
         consumes: []
 
@@ -167,7 +176,7 @@ class SyncPaymentOrders(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "start") and self.start:
             result["start"] = str(self.start)
         elif include_empty:

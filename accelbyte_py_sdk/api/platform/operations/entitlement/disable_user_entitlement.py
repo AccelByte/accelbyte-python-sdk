@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.619378+08:00
+# Auto-generated at 2021-10-14T22:17:16.862744+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,22 @@ from ...models import ErrorEntity
 class DisableUserEntitlement(Operation):
     """Disable user entitlement (disableUserEntitlement)
 
+    Disable user entitlement if entitlement, only active entitlement can be
+    disable, disabled entitlement can't consume/distribute.  
+     Like revoke, it will lose the entitlement ownership, except disabled
+    entitlement can enable.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : disable entitlement
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/disable
 
         method: PUT
 
-        tags: Entitlement
+        tags: ["Entitlement"]
 
         consumes: []
 
@@ -54,9 +64,9 @@ class DisableUserEntitlement(Operation):
     Responses:
         200: OK - EntitlementInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 31141 | ErrorMessage: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 31172 | ErrorMessage: Entitlement [{entitlementId}] not active)
+        409: Conflict - ErrorEntity (31172: Entitlement [{entitlementId}] not active | 20006: optimistic lock)
     """
 
     # region fields
@@ -176,7 +186,7 @@ class DisableUserEntitlement(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -201,9 +211,9 @@ class DisableUserEntitlement(Operation):
 
         200: OK - EntitlementInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 31141 | ErrorMessage: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 31172 | ErrorMessage: Entitlement [{entitlementId}] not active)
+        409: Conflict - ErrorEntity (31172: Entitlement [{entitlementId}] not active | 20006: optimistic lock)
         """
         if code == 200:
             return EntitlementInfo.create_from_dict(content), None

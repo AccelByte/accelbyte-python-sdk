@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.378593+08:00
+# Auto-generated at 2021-10-14T22:17:16.540781+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,21 @@ from ...models import BasicCategoryInfo
 class ListCategoriesBasic(Operation):
     """List categories' basic info (listCategoriesBasic)
 
+    This API is used to list all categories' basic info of a store ordered by
+    category path.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
+      *  Returns : list of categories' paths
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories/basic
 
         method: GET
 
-        tags: Category
+        tags: ["Category"]
 
         consumes: []
 
@@ -164,7 +173,7 @@ class ListCategoriesBasic(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

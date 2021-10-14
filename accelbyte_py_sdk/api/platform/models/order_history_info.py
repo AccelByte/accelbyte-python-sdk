@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.305381+08:00
+# Auto-generated at 2021-10-14T22:17:16.396279+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class OrderHistoryInfo(Model):
-    """Order history info
+    """Order history info (OrderHistoryInfo)
 
     Properties:
         order_no: (orderNo) REQUIRED str
@@ -98,7 +98,7 @@ class OrderHistoryInfo(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "order_no") and self.order_no:
             result["orderNo"] = str(self.order_no)
         elif include_empty:

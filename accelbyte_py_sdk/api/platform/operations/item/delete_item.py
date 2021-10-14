@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.404221+08:00
+# Auto-generated at 2021-10-14T22:17:16.576959+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,20 @@ from ...models import ErrorEntity
 class DeleteItem(Operation):
     """Delete an item (deleteItem)
 
+    This API is used to delete an item permanently, usually for test purpose. DO
+    NOT delete already published item.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=8 (DELETE)
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/items/{itemId}
 
         method: DELETE
 
-        tags: Item
+        tags: ["Item"]
 
         consumes: []
 
@@ -53,7 +61,7 @@ class DeleteItem(Operation):
     Responses:
         204: No Content - (Delete item successfully)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30341 | ErrorMessage: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
     """
 
     # region fields
@@ -178,7 +186,7 @@ class DeleteItem(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -203,7 +211,7 @@ class DeleteItem(Operation):
 
         204: No Content - (Delete item successfully)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30341 | ErrorMessage: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

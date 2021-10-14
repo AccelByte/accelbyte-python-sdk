@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.530978+08:00
+# Auto-generated at 2021-10-14T22:17:16.741701+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,20 @@ from ...models import ErrorEntity
 class PublicGetCategory(Operation):
     """Get Category (publicGetCategory)
 
+    This API is used to get category by category path.
+
+    Other detail info:
+
+      * Optional permission : resource="SANDBOX", action=1 (CREATE)(user with this permission can view draft store category)
+      *  Returns : category data
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/categories/{categoryPath}
 
         method: GET
 
-        tags: Category
+        tags: ["Category"]
 
         consumes: []
 
@@ -56,7 +64,7 @@ class PublicGetCategory(Operation):
     Responses:
         200: OK - CategoryInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30241 | ErrorMessage: Category [{categoryPath}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}])
     """
 
     # region fields
@@ -188,7 +196,7 @@ class PublicGetCategory(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -217,7 +225,7 @@ class PublicGetCategory(Operation):
 
         200: OK - CategoryInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30241 | ErrorMessage: Category [{categoryPath}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}])
         """
         if code == 200:
             return CategoryInfo.create_from_dict(content), None

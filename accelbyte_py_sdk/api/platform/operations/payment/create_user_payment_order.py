@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.919264+08:00
+# Auto-generated at 2021-10-14T22:17:17.260491+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -34,12 +34,21 @@ from ...models import ValidationErrorEntity
 class CreateUserPaymentOrder(Operation):
     """Create payment order (createUserPaymentOrder)
 
+    [SERVICE COMMUNICATION ONLY] This API is used to create payment order from
+    justice service. The result contains the payment station url.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT", action=1 (CREATE)
+      * It will be forbidden while the user is banned: PAYMENT_INITIATE or ORDER_AND_PAYMENT
+      *  Returns : created order
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/payment/orders
 
         method: POST
 
-        tags: Payment
+        tags: ["Payment"]
 
         consumes: ["application/json"]
 
@@ -56,15 +65,15 @@ class CreateUserPaymentOrder(Operation):
     Responses:
         201: Created - PaymentOrderInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 33121 | ErrorMessage: Recurring payment failed with code: [{errorCode}] and message: [{errorMessage}])
+        400: Bad Request - ErrorEntity (33121: Recurring payment failed with code: [{errorCode}] and message: [{errorMessage}] | 33122: Subscription not match when create payment order)
 
-        403: Forbidden - ErrorEntity (ErrorCode: 20016 | ErrorMessage: action is banned)
+        403: Forbidden - ErrorEntity (20016: action is banned)
 
-        404: Not Found - ErrorEntity (ErrorCode: 36141 | ErrorMessage: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 33141: Payment Order [{paymentOrderNo}] does not exist | 33145: Recurring token not found | 20008: user [{userId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 20006 | ErrorMessage: optimistic lock)
+        409: Conflict - ErrorEntity (20006: optimistic lock)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -183,7 +192,7 @@ class CreateUserPaymentOrder(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -208,15 +217,15 @@ class CreateUserPaymentOrder(Operation):
 
         201: Created - PaymentOrderInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 33121 | ErrorMessage: Recurring payment failed with code: [{errorCode}] and message: [{errorMessage}])
+        400: Bad Request - ErrorEntity (33121: Recurring payment failed with code: [{errorCode}] and message: [{errorMessage}] | 33122: Subscription not match when create payment order)
 
-        403: Forbidden - ErrorEntity (ErrorCode: 20016 | ErrorMessage: action is banned)
+        403: Forbidden - ErrorEntity (20016: action is banned)
 
-        404: Not Found - ErrorEntity (ErrorCode: 36141 | ErrorMessage: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 33141: Payment Order [{paymentOrderNo}] does not exist | 33145: Recurring token not found | 20008: user [{userId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 20006 | ErrorMessage: optimistic lock)
+        409: Conflict - ErrorEntity (20006: optimistic lock)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 201:
             return PaymentOrderInfo.create_from_dict(content), None

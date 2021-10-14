@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.762919+08:00
+# Auto-generated at 2021-10-14T22:17:17.058116+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -34,12 +34,19 @@ from ...models import WalletInfo
 class CreditUserWallet(Operation):
     """Credit a user wallet by currency code (creditUserWallet)
 
+    Credit a user wallet by currency code, if wallet not exists, it will create a
+    new wallet.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4 (UPDATE)
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/credit
 
         method: PUT
 
-        tags: Wallet
+        tags: ["Wallet"]
 
         consumes: ["application/json"]
 
@@ -58,11 +65,11 @@ class CreditUserWallet(Operation):
     Responses:
         200: OK - WalletInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 35121 | ErrorMessage: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per day)
+        400: Bad Request - ErrorEntity (35121: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per day | 35122: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per transaction | 35123: Wallet [{walletId}] is inactive | 35125: Balance exceed max balance [{maxAmount}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 20006 | ErrorMessage: optimistic lock)
+        409: Conflict - ErrorEntity (20006: optimistic lock)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -191,7 +198,7 @@ class CreditUserWallet(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -220,11 +227,11 @@ class CreditUserWallet(Operation):
 
         200: OK - WalletInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 35121 | ErrorMessage: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per day)
+        400: Bad Request - ErrorEntity (35121: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per day | 35122: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per transaction | 35123: Wallet [{walletId}] is inactive | 35125: Balance exceed max balance [{maxAmount}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 20006 | ErrorMessage: optimistic lock)
+        409: Conflict - ErrorEntity (20006: optimistic lock)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return WalletInfo.create_from_dict(content), None

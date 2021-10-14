@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.308263+08:00
+# Auto-generated at 2021-10-14T22:17:16.399850+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class PurchasedItemCount(Model):
-    """Purchased item count
+    """Purchased item count (PurchasedItemCount)
 
     Properties:
         count: (count) OPTIONAL int
@@ -49,7 +49,7 @@ class PurchasedItemCount(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "count") and self.count:
             result["count"] = int(self.count)
         elif include_empty:

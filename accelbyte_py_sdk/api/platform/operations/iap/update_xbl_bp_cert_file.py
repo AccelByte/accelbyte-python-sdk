@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.938641+08:00
+# Auto-generated at 2021-10-14T22:17:17.285610+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,19 @@ from ...models import XblIAPConfigInfo
 class UpdateXblBPCertFile(Operation):
     """Upload xbl business partner cert file (updateXblBPCertFile)
 
+    Upload xbl business partner cert file.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
+      *  Returns : updated xbl iap config
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/xbl/cert
 
         method: PUT
 
-        tags: IAP
+        tags: ["IAP"]
 
         consumes: ["multipart/form-data"]
 
@@ -170,7 +177,7 @@ class UpdateXblBPCertFile(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "file") and self.file:
             result["file"] = Any(self.file)
         elif include_empty:

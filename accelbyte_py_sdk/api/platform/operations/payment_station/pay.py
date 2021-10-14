@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.108132+08:00
+# Auto-generated at 2021-10-14T22:17:17.502516+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,18 @@ from ...models import PaymentToken
 class Pay(Operation):
     """Do payment (pay)
 
+    Do payment(For now, this only support checkout.com).  
+    Other detail info:
+
+      * Returns : Payment process result
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/payment/orders/{paymentOrderNo}/pay
 
         method: POST
 
-        tags: PaymentStation
+        tags: ["PaymentStation"]
 
         consumes: ["application/json"]
 
@@ -59,11 +65,11 @@ class Pay(Operation):
     Responses:
         200: OK - PaymentProcessResult (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 33322 | ErrorMessage: Payment provider [{paymentProvider}] not supported)
+        400: Bad Request - ErrorEntity (33322: Payment provider [{paymentProvider}] not supported)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33141 | ErrorMessage: Payment Order [{paymentOrderNo}] does not exist)
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
 
-        409: Conflict - ErrorEntity (ErrorCode: 33171 | ErrorMessage: Invalid payment order status [{status}] for payment order [{paymentOrderNo}])
+        409: Conflict - ErrorEntity (33171: Invalid payment order status [{status}] for payment order [{paymentOrderNo}])
     """
 
     # region fields
@@ -204,7 +210,7 @@ class Pay(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -237,11 +243,11 @@ class Pay(Operation):
 
         200: OK - PaymentProcessResult (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 33322 | ErrorMessage: Payment provider [{paymentProvider}] not supported)
+        400: Bad Request - ErrorEntity (33322: Payment provider [{paymentProvider}] not supported)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33141 | ErrorMessage: Payment Order [{paymentOrderNo}] does not exist)
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
 
-        409: Conflict - ErrorEntity (ErrorCode: 33171 | ErrorMessage: Invalid payment order status [{status}] for payment order [{paymentOrderNo}])
+        409: Conflict - ErrorEntity (33171: Invalid payment order status [{status}] for payment order [{paymentOrderNo}])
         """
         if code == 200:
             return PaymentProcessResult.create_from_dict(content), None

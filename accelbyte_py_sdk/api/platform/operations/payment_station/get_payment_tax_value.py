@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.104525+08:00
+# Auto-generated at 2021-10-14T22:17:17.497635+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,18 @@ from ...models import TaxResult
 class GetPaymentTaxValue(Operation):
     """get tax result of a payment order (getPaymentTaxValue)
 
+    Check and get a payment order's should pay tax.  
+    Other detail info:
+
+      * Returns : tax result
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/payment/tax
 
         method: GET
 
-        tags: PaymentStation
+        tags: ["PaymentStation"]
 
         consumes: ["application/json"]
 
@@ -56,9 +62,9 @@ class GetPaymentTaxValue(Operation):
     Responses:
         200: OK - TaxResult (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 33123 | ErrorMessage: Invalid zipcode)
+        400: Bad Request - ErrorEntity (33123: Invalid zipcode)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33141 | ErrorMessage: Payment Order [{paymentOrderNo}] does not exist)
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
     """
 
     # region fields
@@ -193,7 +199,7 @@ class GetPaymentTaxValue(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -222,9 +228,9 @@ class GetPaymentTaxValue(Operation):
 
         200: OK - TaxResult (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 33123 | ErrorMessage: Invalid zipcode)
+        400: Bad Request - ErrorEntity (33123: Invalid zipcode)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33141 | ErrorMessage: Payment Order [{paymentOrderNo}] does not exist)
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
         """
         if code == 200:
             return TaxResult.create_from_dict(content), None

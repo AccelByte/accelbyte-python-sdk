@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.195350+08:00
+# Auto-generated at 2021-10-14T22:17:16.300068+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,7 +31,7 @@ from ..models.region_data_item import RegionDataItem
 
 
 class FullItemInfo(Model):
-    """Full item info
+    """Full item info (FullItemInfo)
 
     Properties:
         item_id: (itemId) REQUIRED str
@@ -271,7 +271,7 @@ class FullItemInfo(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "item_id") and self.item_id:
             result["itemId"] = str(self.item_id)
         elif include_empty:

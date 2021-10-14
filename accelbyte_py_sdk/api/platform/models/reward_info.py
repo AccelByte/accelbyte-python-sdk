@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.276313+08:00
+# Auto-generated at 2021-10-14T22:17:16.368890+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -28,7 +28,7 @@ from ..models.reward_condition import RewardCondition
 
 
 class RewardInfo(Model):
-    """Reward info
+    """Reward info (RewardInfo)
 
     Properties:
         reward_id: (rewardId) REQUIRED str
@@ -114,7 +114,7 @@ class RewardInfo(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "reward_id") and self.reward_id:
             result["rewardId"] = str(self.reward_id)
         elif include_empty:

@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.652695+08:00
+# Auto-generated at 2021-10-14T22:17:16.892977+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,21 @@ from ...models import Ownership
 class PublicGetMyAppEntitlementOwnershipByAppId(Operation):
     """Get my app entitlement ownership by appId (publicGetMyAppEntitlementOwnershipByAppId)
 
+    Get my app entitlement ownership by appId.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
+      *  Path's namespace : 
+        * can be filled with publisher namespace in order to get publisher namespace app entitlement ownership
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/me/entitlements/ownership/byAppId
 
         method: GET
 
-        tags: Entitlement
+        tags: ["Entitlement"]
 
         consumes: []
 
@@ -167,7 +176,7 @@ class PublicGetMyAppEntitlementOwnershipByAppId(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

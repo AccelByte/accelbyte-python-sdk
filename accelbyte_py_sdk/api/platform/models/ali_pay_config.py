@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:12:36.402002+08:00
+# Auto-generated at 2021-10-14T22:17:16.477654+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -26,7 +26,7 @@ from ....core import Model
 
 
 class AliPayConfig(Model):
-    """A DTO object for updating alipay config.
+    """A DTO object for updating alipay config. (AliPayConfig)
 
     Properties:
         app_id: (appId) OPTIONAL str
@@ -70,7 +70,7 @@ class AliPayConfig(Model):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "app_id") and self.app_id:
             result["appId"] = str(self.app_id)
         elif include_empty:

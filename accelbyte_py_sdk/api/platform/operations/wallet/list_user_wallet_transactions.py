@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.736301+08:00
+# Auto-generated at 2021-10-14T22:17:17.027291+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import WalletTransactionPagingSlicedResult
 class ListUserWalletTransactions(Operation):
     """List user wallet transactions (listUserWalletTransactions)
 
+    List user wallet transactions ordered by create time desc.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
+      *  Returns : wallet transaction info
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{walletId}/transactions
 
         method: GET
 
-        tags: Wallet
+        tags: ["Wallet"]
 
         consumes: ["application/json"]
 
@@ -58,7 +65,7 @@ class ListUserWalletTransactions(Operation):
     Responses:
         200: OK - WalletTransactionPagingSlicedResult (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 35141 | ErrorMessage: Wallet [{walletId}] does not exist)
+        404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
     """
 
     # region fields
@@ -200,7 +207,7 @@ class ListUserWalletTransactions(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -233,7 +240,7 @@ class ListUserWalletTransactions(Operation):
 
         200: OK - WalletTransactionPagingSlicedResult (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 35141 | ErrorMessage: Wallet [{walletId}] does not exist)
+        404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
         """
         if code == 200:
             return WalletTransactionPagingSlicedResult.create_from_dict(content), None

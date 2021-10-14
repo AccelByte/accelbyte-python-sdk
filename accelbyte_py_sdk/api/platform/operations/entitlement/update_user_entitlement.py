@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.599031+08:00
+# Auto-generated at 2021-10-14T22:17:16.836672+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -34,12 +34,21 @@ from ...models import ValidationErrorEntity
 class UpdateUserEntitlement(Operation):
     """Update user entitlement (updateUserEntitlement)
 
+    Update user entitlement. If update CONSUMABLE entitlement useCount to 0, the
+    status will be CONSUMED, if update quantity of DISTRIBUTION, the status will
+    be DISTRIBUTED.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : updated entitlement
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}
 
         method: PUT
 
-        tags: Entitlement
+        tags: ["Entitlement"]
 
         consumes: ["application/json"]
 
@@ -58,11 +67,11 @@ class UpdateUserEntitlement(Operation):
     Responses:
         200: OK - EntitlementInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 31141 | ErrorMessage: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 31171 | ErrorMessage: Entitlement [{entitlementId}] already revoked)
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 20006: optimistic lock)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -191,7 +200,7 @@ class UpdateUserEntitlement(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -220,11 +229,11 @@ class UpdateUserEntitlement(Operation):
 
         200: OK - EntitlementInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 31141 | ErrorMessage: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 31171 | ErrorMessage: Entitlement [{entitlementId}] already revoked)
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 20006: optimistic lock)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return EntitlementInfo.create_from_dict(content), None

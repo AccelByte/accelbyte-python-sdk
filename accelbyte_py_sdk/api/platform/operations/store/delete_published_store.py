@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.510844+08:00
+# Auto-generated at 2021-10-14T22:17:16.709153+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,22 @@ from ...models import StoreInfo
 class DeletePublishedStore(Operation):
     """Delete published store (deletePublishedStore)
 
+    This API is used to delete published store including category and items before
+    release to public.
+
+     Warning: Please do not use this API once published to public user.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8 (DELETE)
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/published
 
         method: DELETE
 
-        tags: Store
+        tags: ["Store"]
 
         consumes: []
 
@@ -50,7 +60,7 @@ class DeletePublishedStore(Operation):
     Responses:
         200: OK - StoreInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30142 | ErrorMessage: Published store does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30142: Published store does not exist in namespace [{namespace}])
     """
 
     # region fields
@@ -150,7 +160,7 @@ class DeletePublishedStore(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -167,7 +177,7 @@ class DeletePublishedStore(Operation):
 
         200: OK - StoreInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30142 | ErrorMessage: Published store does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30142: Published store does not exist in namespace [{namespace}])
         """
         if code == 200:
             return StoreInfo.create_from_dict(content), None

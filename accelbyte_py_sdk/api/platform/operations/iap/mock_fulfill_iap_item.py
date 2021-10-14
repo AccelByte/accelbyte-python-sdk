@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.987871+08:00
+# Auto-generated at 2021-10-14T22:17:17.361041+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,20 @@ from ...models import MockIAPReceipt
 class MockFulfillIAPItem(Operation):
     """Mock fulfill iap item. (mockFulfillIAPItem)
 
+    [TEST FACILITY ONLY] Mock fulfill iap item without validate receipt.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
+      *  Returns : 
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/iap/mock/receipt
 
         method: PUT
 
-        tags: IAP
+        tags: ["IAP"]
 
         consumes: []
 
@@ -54,11 +62,11 @@ class MockFulfillIAPItem(Operation):
     Responses:
         204: No Content - (Fulfill item successfully)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 35121 | ErrorMessage: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per day)
+        400: Bad Request - ErrorEntity (35121: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per day | 35122: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per transaction | 35123: Wallet [{walletId}] is inactive | 35125: Balance exceed max balance [{maxAmount}] | 38121: Duplicate permanent item exists | 38122: Subscription endDate required)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30341 | ErrorMessage: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 20006 | ErrorMessage: optimistic lock)
+        409: Conflict - ErrorEntity (20006: optimistic lock)
     """
 
     # region fields
@@ -177,7 +185,7 @@ class MockFulfillIAPItem(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -202,11 +210,11 @@ class MockFulfillIAPItem(Operation):
 
         204: No Content - (Fulfill item successfully)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 35121 | ErrorMessage: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per day)
+        400: Bad Request - ErrorEntity (35121: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per day | 35122: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per transaction | 35123: Wallet [{walletId}] is inactive | 35125: Balance exceed max balance [{maxAmount}] | 38121: Duplicate permanent item exists | 38122: Subscription endDate required)
 
-        404: Not Found - ErrorEntity (ErrorCode: 30341 | ErrorMessage: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 20006 | ErrorMessage: optimistic lock)
+        409: Conflict - ErrorEntity (20006: optimistic lock)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

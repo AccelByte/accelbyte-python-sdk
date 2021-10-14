@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.882952+08:00
+# Auto-generated at 2021-10-14T22:17:17.217838+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,19 @@ from ...models import ErrorEntity
 class PublicDownloadUserOrderReceipt(Operation):
     """Download user order receipt (publicDownloadUserOrderReceipt)
 
+    Download user order receipt by orderNo.  
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
+      *  Returns : order receipt pdf
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/receipt.pdf
 
         method: GET
 
-        tags: Order
+        tags: ["Order"]
 
         consumes: []
 
@@ -51,9 +58,9 @@ class PublicDownloadUserOrderReceipt(Operation):
         order_no: (orderNo) REQUIRED str in path
 
     Responses:
-        404: Not Found - ErrorEntity (ErrorCode: 32141 | ErrorMessage: Order [{orderNo}] does not exist)
+        404: Not Found - ErrorEntity (32141: Order [{orderNo}] does not exist)
 
-        409: Conflict - ErrorEntity (ErrorCode: 32173 | ErrorMessage: Receipt of order [{orderNo}] is not downloadable)
+        409: Conflict - ErrorEntity (32173: Receipt of order [{orderNo}] is not downloadable)
     """
 
     # region fields
@@ -173,7 +180,7 @@ class PublicDownloadUserOrderReceipt(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -196,9 +203,9 @@ class PublicDownloadUserOrderReceipt(Operation):
     def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, ErrorEntity]]:
         """Parse the given response.
 
-        404: Not Found - ErrorEntity (ErrorCode: 32141 | ErrorMessage: Order [{orderNo}] does not exist)
+        404: Not Found - ErrorEntity (32141: Order [{orderNo}] does not exist)
 
-        409: Conflict - ErrorEntity (ErrorCode: 32173 | ErrorMessage: Receipt of order [{orderNo}] is not downloadable)
+        409: Conflict - ErrorEntity (32173: Receipt of order [{orderNo}] is not downloadable)
         """
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)

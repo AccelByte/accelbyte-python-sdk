@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.114922+08:00
+# Auto-generated at 2021-10-14T22:17:17.538046+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -29,12 +29,33 @@ from .....core import HttpResponse
 class PublicNormalizePaymentReturnUrl(Operation):
     """Normalize payment return url (publicNormalizePaymentReturnUrl)
 
+    Normalize payment return url for payment provider  
+    Payment response: Field| Type| Required| Description  
+    ---|---|---|---  
+    orderNo| String| Yes| order no  
+    paymentStatus| String| Yes|
+
+      * DONE: The payment was successfully completed.
+      * CANCELLED: The payment was cancelled by the shopper before completion, or the shopper returned to the merchant's site before completing the transaction.
+      * PENDING: Inform the shopper that you've received their order, and are waiting for the payment to be completed. When the shopper has completed the payment you will receive a successful AUTHORISATION.
+      * RECEIVED: Inform the shopper that you've received their order, and are waiting for the payment to clear.
+      * UNKNOWN: An error occurred during the payment processing.
+      * FAILED: Shopper paid failed because of various reasons.
+
+
+    reason| String| No| payment status reason  
+    Other detail info:
+
+      * xsolla : parameters 'user_id', 'foreinginvoice', 'invoice_id' and 'status' will be automatically added to the link
+      *  adyen : https://docs.adyen.com/developers/checkout/web-sdk
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/payment/returnurl
 
         method: GET
 
-        tags: PaymentStation
+        tags: ["PaymentStation"]
 
         consumes: []
 
@@ -282,7 +303,7 @@ class PublicNormalizePaymentReturnUrl(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

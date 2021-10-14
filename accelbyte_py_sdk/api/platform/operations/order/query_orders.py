@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.831233+08:00
+# Auto-generated at 2021-10-14T22:17:17.144621+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import ValidationErrorEntity
 class QueryOrders(Operation):
     """Query orders (queryOrders)
 
+    Query orders.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)
+      *  Returns : query orders
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/orders
 
         method: GET
 
-        tags: Order
+        tags: ["Order"]
 
         consumes: []
 
@@ -66,7 +73,7 @@ class QueryOrders(Operation):
     Responses:
         200: OK - OrderPagingResult (successful operation)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -230,7 +237,7 @@ class QueryOrders(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -279,7 +286,7 @@ class QueryOrders(Operation):
 
         200: OK - OrderPagingResult (successful operation)
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return OrderPagingResult.create_from_dict(content), None

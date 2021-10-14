@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.534548+08:00
+# Auto-generated at 2021-10-14T22:17:16.745443+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,20 @@ from ...models import CategoryInfo
 class PublicGetRootCategories(Operation):
     """Get Root Categories (publicGetRootCategories)
 
+    This API is used to get root categories.
+
+    Other detail info:
+
+      * Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store category)
+      *  Returns : root category data
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/categories
 
         method: GET
 
-        tags: Category
+        tags: ["Category"]
 
         consumes: []
 
@@ -173,7 +181,7 @@ class PublicGetRootCategories(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

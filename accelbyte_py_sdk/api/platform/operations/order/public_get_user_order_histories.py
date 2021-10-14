@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.889324+08:00
+# Auto-generated at 2021-10-14T22:17:17.225670+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -31,12 +31,19 @@ from ...models import OrderHistoryInfo
 class PublicGetUserOrderHistories(Operation):
     """Get user order histories (publicGetUserOrderHistories)
 
+    Get user order histories.  
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
+      *  Returns : get order history
+
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/history
 
         method: GET
 
-        tags: Order
+        tags: ["Order"]
 
         consumes: []
 
@@ -171,7 +178,7 @@ class PublicGetUserOrderHistories(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:

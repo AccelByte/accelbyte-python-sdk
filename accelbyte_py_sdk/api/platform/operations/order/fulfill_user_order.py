@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.859080+08:00
+# Auto-generated at 2021-10-14T22:17:17.186351+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import OrderInfo
 class FulfillUserOrder(Operation):
     """Fulfill an order (fulfillUserOrder)
 
+    Fulfill an order if the order is charged but fulfill failed.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
+      *  Returns : fulfilled order
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/fulfill
 
         method: PUT
 
-        tags: Order
+        tags: ["Order"]
 
         consumes: ["application/json"]
 
@@ -54,11 +61,11 @@ class FulfillUserOrder(Operation):
     Responses:
         200: OK - OrderInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 35121 | ErrorMessage: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per day)
+        400: Bad Request - ErrorEntity (35121: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per day | 35122: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per transaction | 35123: Wallet [{walletId}] is inactive | 35125: Balance exceed max balance [{maxAmount}])
 
-        404: Not Found - ErrorEntity (ErrorCode: 30341 | ErrorMessage: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 32141: Order [{orderNo}] does not exist)
 
-        409: Conflict - ErrorEntity (ErrorCode: 32172 | ErrorMessage: Invalid order status [{status}] for order [{orderNo}])
+        409: Conflict - ErrorEntity (32172: Invalid order status [{status}] for order [{orderNo}] | 20006: optimistic lock)
     """
 
     # region fields
@@ -178,7 +185,7 @@ class FulfillUserOrder(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -203,11 +210,11 @@ class FulfillUserOrder(Operation):
 
         200: OK - OrderInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (ErrorCode: 35121 | ErrorMessage: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per day)
+        400: Bad Request - ErrorEntity (35121: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per day | 35122: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per transaction | 35123: Wallet [{walletId}] is inactive | 35125: Balance exceed max balance [{maxAmount}])
 
-        404: Not Found - ErrorEntity (ErrorCode: 30341 | ErrorMessage: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 32141: Order [{orderNo}] does not exist)
 
-        409: Conflict - ErrorEntity (ErrorCode: 32172 | ErrorMessage: Invalid order status [{status}] for order [{orderNo}])
+        409: Conflict - ErrorEntity (32172: Invalid order status [{status}] for order [{orderNo}] | 20006: optimistic lock)
         """
         if code == 200:
             return OrderInfo.create_from_dict(content), None

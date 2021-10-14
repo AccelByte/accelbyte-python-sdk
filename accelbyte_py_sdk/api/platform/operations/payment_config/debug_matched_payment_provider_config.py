@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:30.142353+08:00
+# Auto-generated at 2021-10-14T22:17:17.599740+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -32,12 +32,19 @@ from ...models import PaymentProviderConfigInfo
 class DebugMatchedPaymentProviderConfig(Operation):
     """Debug matched payment provider config(internal) (debugMatchedPaymentProviderConfig)
 
+    Debug matched payment provider config.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
+      *  Returns : payment provider config
+
+
     Properties:
         url: /platform/admin/payment/config/provider/matched
 
         method: GET
 
-        tags: PaymentConfig
+        tags: ["PaymentConfig"]
 
         consumes: []
 
@@ -52,7 +59,7 @@ class DebugMatchedPaymentProviderConfig(Operation):
     Responses:
         200: OK - PaymentProviderConfigInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33241 | ErrorMessage: Payment provider config [{id}] does not exist)
+        404: Not Found - ErrorEntity (33241: Payment provider config [{id}] does not exist)
     """
 
     # region fields
@@ -155,7 +162,7 @@ class DebugMatchedPaymentProviderConfig(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -176,7 +183,7 @@ class DebugMatchedPaymentProviderConfig(Operation):
 
         200: OK - PaymentProviderConfigInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 33241 | ErrorMessage: Payment provider config [{id}] does not exist)
+        404: Not Found - ErrorEntity (33241: Payment provider config [{id}] does not exist)
         """
         if code == 200:
             return PaymentProviderConfigInfo.create_from_dict(content), None

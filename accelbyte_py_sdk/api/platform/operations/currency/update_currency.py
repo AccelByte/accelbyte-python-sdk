@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.724481+08:00
+# Auto-generated at 2021-10-14T22:17:17.007474+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -34,12 +34,19 @@ from ...models import ValidationErrorEntity
 class UpdateCurrency(Operation):
     """Update a currency (updateCurrency)
 
+    Update a currency by currency code.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=4 (UPDATE)
+      *  Returns : updated currency
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/currencies/{currencyCode}
 
         method: PUT
 
-        tags: Currency
+        tags: ["Currency"]
 
         consumes: ["application/json"]
 
@@ -56,9 +63,9 @@ class UpdateCurrency(Operation):
     Responses:
         200: OK - CurrencyInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 36141 | ErrorMessage: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -177,7 +184,7 @@ class UpdateCurrency(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -202,9 +209,9 @@ class UpdateCurrency(Operation):
 
         200: OK - CurrencyInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 36141 | ErrorMessage: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
 
-        422: Unprocessable Entity - ValidationErrorEntity (ErrorCode: 20002 | ErrorMessage: validation error)
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return CurrencyInfo.create_from_dict(content), None

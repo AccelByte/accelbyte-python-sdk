@@ -1,4 +1,4 @@
-# Auto-generated at 2021-09-27T17:01:29.798393+08:00
+# Auto-generated at 2021-10-14T22:17:17.100117+08:00
 # from: Justice Platform Service (3.24.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -33,12 +33,19 @@ from ...models import RewardUpdate
 class UpdateReward(Operation):
     """Update a reward (updateReward)
 
+    This API is used to update a reward.  
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=4 (UPDATE)
+      *  Returns : reward instance
+
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}
 
         method: PUT
 
-        tags: Reward
+        tags: ["Reward"]
 
         consumes: []
 
@@ -55,9 +62,9 @@ class UpdateReward(Operation):
     Responses:
         200: OK - RewardInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 34041 | ErrorMessage: Reward [{rewardId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (34041: Reward [{rewardId}] does not exist in namespace [{namespace}] | 34042: Reward item [{itemId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 34072 | ErrorMessage: Duplicate reward condition [{rewardConditionName}] found in reward [{rewardCode}])
+        409: Conflict - ErrorEntity (34072: Duplicate reward condition [{rewardConditionName}] found in reward [{rewardCode}])
     """
 
     # region fields
@@ -176,7 +183,7 @@ class UpdateReward(Operation):
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result = {}
+        result: dict = {}
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -201,9 +208,9 @@ class UpdateReward(Operation):
 
         200: OK - RewardInfo (successful operation)
 
-        404: Not Found - ErrorEntity (ErrorCode: 34041 | ErrorMessage: Reward [{rewardId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (34041: Reward [{rewardId}] does not exist in namespace [{namespace}] | 34042: Reward item [{itemId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (ErrorCode: 34072 | ErrorMessage: Duplicate reward condition [{rewardConditionName}] found in reward [{rewardCode}])
+        409: Conflict - ErrorEntity (34072: Duplicate reward condition [{rewardConditionName}] found in reward [{rewardCode}])
         """
         if code == 200:
             return RewardInfo.create_from_dict(content), None
