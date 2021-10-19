@@ -20,7 +20,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "title": "Body"
+              "$ref": "#/definitions/TelemetryBody"
             }
           }
         ],
