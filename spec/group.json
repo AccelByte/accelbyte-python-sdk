@@ -1,7 +1,5 @@
 {
   "swagger": "2.0",
-  "host": "jib.noice.accelbyte.io",
-  "schemes": ["https"],
   "info": {
     "description": "Justice Group Service",
     "title": "justice-group-service",
@@ -10,7 +8,7 @@
       "url": "https://accelbyte.io",
       "email": "engineering@accelbyte.io"
     },
-    "version": "2.4.0"
+    "version": "2.8.0"
   },
   "paths": {
     "/group/v1/admin/namespaces/{namespace}/configuration": {
@@ -46,10 +44,10 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created",
+          "200": {
+            "description": "OK",
             "schema": {
-              "$ref": "#/definitions/models.GetGroupConfigurationResponseV1"
+              "$ref": "#/definitions/models.ListConfigurationResponseV1"
             }
           },
           "400": {
@@ -82,15 +80,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "resource": "ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION",
-          "action": "2"
         }
       },
       "post": {
@@ -160,15 +149,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "resource": "ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION",
-          "action": "1"
         }
       }
     },
@@ -223,15 +203,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "resource": "ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION",
-          "action": "1"
         }
       }
     },
@@ -263,8 +234,8 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created",
+          "200": {
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/models.GetGroupConfigurationResponseV1"
             }
@@ -299,15 +270,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "resource": "ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION",
-          "action": "2"
         }
       },
       "delete": {
@@ -319,7 +281,7 @@
           "Configuration"
         ],
         "summary": "Delete group configuration",
-        "operationId": "deleteGroupConfigurationAdminV1",
+        "operationId": "deleteGroupConfigurationV1",
         "parameters": [
           {
             "type": "string",
@@ -337,11 +299,8 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created",
-            "schema": {
-              "$ref": "#/definitions/models.GetGroupConfigurationResponseV1"
-            }
+          "204": {
+            "description": "No Content"
           },
           "400": {
             "description": "<table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>20002</td><td>validation error</td></tr></table>",
@@ -373,17 +332,7 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "resource": "ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION",
-          "action": "8"
         }
-
       },
       "patch": {
         "description": "<p>Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]'</p>\n\t\t\t<p>This endpoint is used to update existing configuration. groupAdminRoleId and groupMemberRoleId won't be able to be updated. User can try to change the member role permission instead for each of those member role</p>\n\t\t\t<p>Action Code: 73102</p>\n\t\t",
@@ -459,15 +408,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "resource": "ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION",
-          "action": "4"
         }
       }
     },
@@ -553,15 +493,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "resource": "ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION",
-          "action": "4"
         }
       },
       "delete": {
@@ -634,15 +565,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "resource": "ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION",
-          "action": "8"
         }
       }
     },
@@ -727,15 +649,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "resource": "ADMIN:NAMESPACE:{namespace}:GROUP",
-          "action": "2"
         }
       }
     },
@@ -803,15 +716,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "resource": "ADMIN:NAMESPACE:{namespace}:GROUP",
-          "action": "2"
         }
       },
       "delete": {
@@ -874,15 +778,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "resource": "ADMIN:NAMESPACE:{namespace}:GROUP:{groupId}",
-          "action": "8"
         }
       }
     },
@@ -896,7 +791,7 @@
           "Group Member"
         ],
         "summary": "Get list of group members",
-        "operationId": "getGroupMembersListV1",
+        "operationId": "getGroupMembersListAdminV1",
         "parameters": [
           {
             "type": "string",
@@ -968,15 +863,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "resource": "ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER",
-          "action": "2"
         }
       }
     },
@@ -1043,15 +929,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "resource": "ADMIN:NAMESPACE:{namespace}:GROUP:ROLE",
-          "action": "2"
         }
       },
       "post": {
@@ -1115,15 +992,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "resource": "ADMIN:NAMESPACE:{namespace}:GROUP:ROLE",
-          "action": "1"
         }
       }
     },
@@ -1191,15 +1059,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "resource": "ADMIN:NAMESPACE:{namespace}:GROUP:ROLE",
-          "action": "2"
         }
       },
       "delete": {
@@ -1262,15 +1121,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "resource": "ADMIN:NAMESPACE:{namespace}:GROUP:ROLE",
-          "action": "8"
         }
       },
       "patch": {
@@ -1347,15 +1197,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "resource": "ADMIN:NAMESPACE:{namespace}:GROUP:ROLE",
-          "action": "4"
         }
       }
     },
@@ -1434,15 +1275,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "resource": "ADMIN:NAMESPACE:{namespace}:GROUP:ROLE",
-          "action": "4"
         }
       }
     },
@@ -1521,14 +1353,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authenticated": "true"
         }
       },
       "post": {
@@ -1598,14 +1422,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authentiated": "true"
         }
       }
     },
@@ -1673,17 +1489,147 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authentiated": "true"
         }
       },
       "put": {
+        "description": "<p>Required valid user authentication </p>\n\t\t\t<p>Required Member Role Permission: \"GROUP [UPDATE]\"</p>\n\t\t\t<p>Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. \n\t\t\tIt will also check the member role of the user based on the access token</p>\n\t\t\t<p>Action Code: 73307</p>\n\t\t",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Group"
+        ],
+        "summary": "update existing group",
+        "operationId": "updateSingleGroupV1",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "namespace",
+            "name": "namespace",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/models.UpdateGroupRequestV1"
+            }
+          },
+          {
+            "type": "string",
+            "description": "Group ID",
+            "name": "groupId",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/models.GroupResponseV1"
+            }
+          },
+          "400": {
+            "description": "<table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>20002</td><td>validation error</td></tr></table>",
+            "schema": {
+              "$ref": "#/definitions/response.ErrorResponse"
+            }
+          },
+          "401": {
+            "description": "<table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>20001</td><td>unauthorized access</td></tr></table>",
+            "schema": {
+              "$ref": "#/definitions/response.ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "<table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>20013</td><td>insufficient permissions</td></tr><tr><td>20022</td><td>token is not user token</td></tr><tr><td>73036</td><td>insufficient member role permission</td></tr></table>",
+            "schema": {
+              "$ref": "#/definitions/response.ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "<table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>73333</td><td>group not found</td></tr></table>",
+            "schema": {
+              "$ref": "#/definitions/response.ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/response.ErrorResponse"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "<p>Required valid user authentication </p>\n\t\t\t<p>Required Member Role Permission: \"GROUP [DELETE]\"</p>\n\t\t\t<p>Delete existing group. This endpoint will check the group ID of the user based on the access token\n\t\t\tand compare it with the group ID in path parameter. It will also check the member role of the user based on \n\t\t\tthe access token</p>\n\t\t\t<p>Action Code: 73305</p>\n\t\t",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Group"
+        ],
+        "summary": "Delete existing group",
+        "operationId": "deleteGroupPublicV1",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "namespace",
+            "name": "namespace",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "Group ID",
+            "name": "groupId",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "<table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>20002</td><td>validation error</td></tr></table>",
+            "schema": {
+              "$ref": "#/definitions/response.ErrorResponse"
+            }
+          },
+          "401": {
+            "description": "<table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>20001</td><td>unauthorized access</td></tr></table>",
+            "schema": {
+              "$ref": "#/definitions/response.ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "<table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>20013</td><td>insufficient permissions</td></tr><tr><td>20022</td><td>token is not user token</td></tr><tr><td>73036</td><td>insufficient member role permission</td></tr></table>",
+            "schema": {
+              "$ref": "#/definitions/response.ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "<table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>73333</td><td>group not found</td></tr></table>",
+            "schema": {
+              "$ref": "#/definitions/response.ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/response.ErrorResponse"
+            }
+          }
+        }
+      },
+      "patch": {
         "description": "<p>Required valid user authentication </p>\n\t\t\t<p>Required Member Role Permission: \"GROUP [UPDATE]\"</p>\n\t\t\t<p>Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. \n\t\t\tIt will also check the member role of the user based on the access token</p>\n\t\t\t<p>Action Code: 73307</p>\n\t\t",
         "consumes": [
           "application/json"
@@ -1757,174 +1703,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authentiated": "true",
-          "resource": "GROUP",
-          "action": "4"
-        }
-      },
-      "delete": {
-        "description": "<p>Required valid user authentication </p>\n\t\t\t<p>Required Member Role Permission: \"GROUP [DELETE]\"</p>\n\t\t\t<p>Delete existing group. This endpoint will check the group ID of the user based on the access token\n\t\t\tand compare it with the group ID in path parameter. It will also check the member role of the user based on \n\t\t\tthe access token</p>\n\t\t\t<p>Action Code: 73305</p>\n\t\t",
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "Group"
-        ],
-        "summary": "Delete existing group",
-        "operationId": "deleteGroupPublicV1",
-        "parameters": [
-          {
-            "type": "string",
-            "description": "namespace",
-            "name": "namespace",
-            "in": "path",
-            "required": true
-          },
-          {
-            "type": "string",
-            "description": "Group ID",
-            "name": "groupId",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "<table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>20002</td><td>validation error</td></tr></table>",
-            "schema": {
-              "$ref": "#/definitions/response.ErrorResponse"
-            }
-          },
-          "401": {
-            "description": "<table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>20001</td><td>unauthorized access</td></tr></table>",
-            "schema": {
-              "$ref": "#/definitions/response.ErrorResponse"
-            }
-          },
-          "403": {
-            "description": "<table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>20013</td><td>insufficient permissions</td></tr><tr><td>20022</td><td>token is not user token</td></tr><tr><td>73036</td><td>insufficient member role permission</td></tr></table>",
-            "schema": {
-              "$ref": "#/definitions/response.ErrorResponse"
-            }
-          },
-          "404": {
-            "description": "<table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>73333</td><td>group not found</td></tr></table>",
-            "schema": {
-              "$ref": "#/definitions/response.ErrorResponse"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/response.ErrorResponse"
-            }
-          }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authentiated": "true",
-          "resource": "GROUP",
-          "action": "8"
-        }
-      },
-      "patch": {
-        "description": "<p>Required valid user authentication </p>\n\t\t\t<p>Required Member Role Permission: \"GROUP [UPDATE]\"</p>\n\t\t\t<p>Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. \n\t\t\tIt will also check the member role of the user based on the access token</p>\n\t\t\t<p>Action Code: 73307</p>\n\t\t",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "Group"
-        ],
-        "summary": "update existing group",
-        "operationId": "updateSingleGroupPartialPublicV1",
-        "parameters": [
-          {
-            "type": "string",
-            "description": "namespace",
-            "name": "namespace",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/models.UpdateGroupRequestV1"
-            }
-          },
-          {
-            "type": "string",
-            "description": "Group ID",
-            "name": "groupId",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/models.GroupResponseV1"
-            }
-          },
-          "400": {
-            "description": "<table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>20002</td><td>validation error</td></tr></table>",
-            "schema": {
-              "$ref": "#/definitions/response.ErrorResponse"
-            }
-          },
-          "401": {
-            "description": "<table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>20001</td><td>unauthorized access</td></tr></table>",
-            "schema": {
-              "$ref": "#/definitions/response.ErrorResponse"
-            }
-          },
-          "403": {
-            "description": "<table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>20013</td><td>insufficient permissions</td></tr><tr><td>20022</td><td>token is not user token</td></tr><tr><td>73036</td><td>insufficient member role permission</td></tr></table>",
-            "schema": {
-              "$ref": "#/definitions/response.ErrorResponse"
-            }
-          },
-          "404": {
-            "description": "<table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>73333</td><td>group not found</td></tr></table>",
-            "schema": {
-              "$ref": "#/definitions/response.ErrorResponse"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/response.ErrorResponse"
-            }
-          }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authentiated": "true",
-          "resource": "GROUP",
-          "action": "4"
         }
       }
     },
@@ -2003,16 +1781,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authentiated": "true",
-          "resource": "GROUP",
-          "action": "4"
         }
       }
     },
@@ -2086,14 +1854,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authentiated": "true"
         }
       }
     },
@@ -2167,14 +1927,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authentiated": "true"
         }
       }
     },
@@ -2242,14 +1994,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authentiated": "true"
         }
       }
     },
@@ -2317,14 +2061,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authentiated": "true"
         }
       }
     },
@@ -2398,16 +2134,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authentiated": "true",
-          "resource": "GROUP:JOIN",
-          "action": "2"
         }
       }
     },
@@ -2493,14 +2219,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authentiated": "true"
         }
       }
     },
@@ -2579,14 +2297,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authentiated": "true"
         }
       }
     },
@@ -2672,16 +2382,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authentiated": "true",
-          "resource": "GROUP",
-          "action": "4"
         }
       },
       "delete": {
@@ -2751,16 +2451,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authentiated": "true",
-          "resource": "GROUP",
-          "action": "8"
         }
       }
     },
@@ -2821,14 +2511,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authentiated": "true"
         }
       }
     },
@@ -2895,16 +2577,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authentiated": "true",
-          "resource": "GROUP:ROLE",
-          "action": "2"
         }
       }
     },
@@ -2921,7 +2593,7 @@
           "Group Roles"
         ],
         "summary": "Assign role to group member",
-        "operationId": "assignRoleToGroupMemberAdminV1",
+        "operationId": "updateMemberRolePublicV1",
         "parameters": [
           {
             "type": "string",
@@ -2950,7 +2622,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/models.UpdateMemberRoleResponseV1"
+              "$ref": "#/definitions/models.GetUserGroupInformationResponseV1"
             }
           },
           "400": {
@@ -2983,16 +2655,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authentiated": "true",
-          "resource": "GROUP:ROLE",
-          "action": "4"
         }
       },
       "delete": {
@@ -3063,22 +2725,18 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           },
+          "422": {
+            "description": "<table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>73444</td><td>member must have role</td></tr></table>",
+            "schema": {
+              "$ref": "#/definitions/response.ErrorResponse"
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "schema": {
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authentiated": "true",
-          "resource": "GROUP:ROLE",
-          "action": "8"
         }
       }
     },
@@ -3145,14 +2803,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authentiated": "true"
         }
       }
     },
@@ -3220,14 +2870,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authentiated": "true"
         }
       }
     },
@@ -3301,16 +2943,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authentiated": "true",
-          "resource": "GROUP:INVITE",
-          "action": "1"
         }
       }
     },
@@ -3384,16 +3016,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authentiated": "true",
-          "resource": "GROUP:JOIN",
-          "action": "1"
         }
       }
     },
@@ -3467,22 +3089,12 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authentiated": "true",
-          "resource": "GROUP:JOIN",
-          "action": "1"
         }
       }
     },
     "/group/v1/public/namespaces/{namespace}/users/{userId}/kick": {
       "post": {
-        "description": "<p>Required valid user authentication </p>\n\t\t\t<p>Required Member Role Permission: \"GROUP:KICK [CREATE]\"</p>\n\t\t\t<p>This endpoint is used to kick group member.</p>\n\t\t\t<p>Kick group member. This endpoint will check the member and group information, and also the role permission of the the user who accesses this endpoint</p>\n\t\t\t<p>This endpoint will also check if the user that wanted to be kicked is the group member or not.</p>\n\t\t\t<p>Action Code: 73409</p>\n\t\t",
+        "description": "<p>Required valid user authentication </p>\n\t\t\t<p>Required Member Role Permission: \"GROUP:KICK [CREATE]\"</p>\n\t\t\t<p>This endpoint is used to kick group member.</p>\n\t\t\t<p>Kick group member. This endpoint will check the member and group information, and also the role permission of the the user who accesses this endpoint</p>\n\t\t\t<p>Action Code: 73409</p>\n\t\t",
         "produces": [
           "application/json"
         ],
@@ -3544,16 +3156,6 @@
               "$ref": "#/definitions/response.ErrorResponse"
             }
           }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-authorization": {
-          "authentiated": "true",
-          "resource": "GROUP:KICK",
-          "action": "1"
         }
       }
     }
@@ -3973,6 +3575,23 @@
         }
       }
     },
+    "models.ListConfigurationResponseV1": {
+      "required": [
+        "data",
+        "paging"
+      ],
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/models.GetGroupConfigurationResponseV1"
+          }
+        },
+        "paging": {
+          "$ref": "#/definitions/models.Pagination"
+        }
+      }
+    },
     "models.MemberRequestGroupResponseV1": {
       "required": [
         "groupId",
@@ -4265,7 +3884,9 @@
         }
       }
     },
-    "models.UpdateGroupRequestV1.customAttributes": {},
+    "models.UpdateGroupRequestV1.customAttributes": {
+      "type": "object"
+    },
     "models.UpdateMemberRolePermissionsRequestV1": {
       "required": [
         "memberRolePermissions"
@@ -4346,5 +3967,10 @@
       "name": "Authorization",
       "in": "header"
     }
-  }
+  },
+  "security": [
+    {
+      "authorization": []
+    }
+  ]
 }

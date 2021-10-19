@@ -3099,7 +3099,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/models.ProfanityFilter"
+                "$ref": "#/definitions/*models.ProfanityFilter"
               }
             }
           },
@@ -3480,7 +3480,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/models.ProfanityFilter"
+                "$ref": "#/definitions/*models.ProfanityFilter"
               }
             }
           },
@@ -5944,6 +5944,7 @@
     }
   },
   "definitions": {
+    "*models.ProfanityFilter": {},
     "handlers.GetUsersPresenceResponse": {
       "required": [
         "data",
