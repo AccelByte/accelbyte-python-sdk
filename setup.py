@@ -25,8 +25,8 @@ config = {
     "license": LICENSE_TYPE,
     "license_files": ["LICENSE"],
 
-    "package_dir": {"": NAME},
-    "packages": setuptools.find_packages(where=NAME),
+    "package_dir": {"": "."},
+    "packages": setuptools.find_packages(where=".", exclude=("sample_app",)),
 
     "python_requires": f">={PYTHON_VERSION}",
     "classifiers": [
