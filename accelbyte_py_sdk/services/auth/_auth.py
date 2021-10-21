@@ -1,10 +1,11 @@
-from typing import List, Union
+from typing import Dict, List, Union
 
 from ...core import get_access_token
 from ...core import get_client_id
 from ...core import remove_token
 
 from ...core import create_pkce_verifier_and_challenge_s256
+from ...core import create_basic_authentication
 
 from ...api.iam import authorize_v3
 from ...api.iam import user_authentication_v3
@@ -12,7 +13,18 @@ from ...api.iam import token_grant_v3
 from ...api.iam import token_revocation_v3
 
 
-def login(username: str, password: str, scope: Union[None, str, List[str]] = None):
+def login_client(client_id: Union[None, str] = None, client_secret: Union[None, str] = None, x_additional_headers: Union[None, Dict[str, str]] = None):
+    if client_id is not None and client_secret is not None:
+        x_additional_headers = x_additional_headers or {}
+        x_additional_headers["Authorization"] = create_basic_authentication(client_id, client_secret)
+    token, error = token_grant_v3("client_credentials")
+    if error:
+        return None, error
+
+    return token, None
+
+
+def login_user(username: str, password: str, scope: Union[None, str, List[str]] = None, x_additional_headers: Union[None, Dict[str, str]] = None):
     code_verifier, code_challenge, code_challenge_method \
         = create_pkce_verifier_and_challenge_s256()
 
@@ -30,7 +42,8 @@ def login(username: str, password: str, scope: Union[None, str, List[str]] = Non
         client_id=client_id,
         scope=scope,
         code_challenge=code_challenge,
-        code_challenge_method=code_challenge_method
+        code_challenge_method=code_challenge_method,
+        x_additional_headers=x_additional_headers
     )
     if error:
         return None, error
@@ -39,29 +52,34 @@ def login(username: str, password: str, scope: Union[None, str, List[str]] = Non
         user_name=username,
         password=password,
         request_id=request_id,
-        client_id=client_id
+        client_id=client_id,
+        x_additional_headers=x_additional_headers
     )
     if error:
         return None, error
 
-    _, error = token_grant_v3(
+    token, error = token_grant_v3(
         grant_type="authorization_code",
         code=code,
         code_verifier=code_verifier,
-        redirect_uri=""
+        redirect_uri="",
+        x_additional_headers=x_additional_headers
     )
     if error:
         return None, error
 
-    return None, None
+    return token, None
 
 
-def logout():
+def logout(x_additional_headers: Union[None, Dict[str, str]] = None):
     access_token, error = get_access_token()
     if error:
         return None, error
 
-    _, error = token_revocation_v3(access_token)
+    _, error = token_revocation_v3(
+        token=access_token,
+        x_additional_headers=x_additional_headers
+    )
     if error:
         return None, error
 
@@ -70,3 +88,6 @@ def logout():
         return None, error
 
     return None, None
+
+
+login = login_user
