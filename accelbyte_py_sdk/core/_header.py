@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import Tuple, Union
+from typing import Dict, Tuple, Union
 
 from ._utils import create_basic_authentication
 from ._utils import generate_amazon_xray_trace_id
@@ -25,3 +25,10 @@ class Header(dict):
             amazon_xray_trace_id = generate_amazon_xray_trace_id()
         self["X-Amzn-TraceId"] = amazon_xray_trace_id
         return self
+
+    @classmethod
+    def create_from_dict(cls, dict_: Dict[str, str]):
+        instance = cls()
+        for k, v in dict_.items():
+            instance[k] = v
+        return instance

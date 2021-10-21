@@ -235,7 +235,13 @@ def set_http_client(http_client: HttpClient) -> None:
 Response = Tuple[int, str, Any]
 
 
-def run_request(operation: Operation, base_url: Union[None, str] = None, headers: Union[None, Header] = None, **kwargs) -> Tuple[Any, Any]:
+def run_request(
+        operation: Operation,
+        base_url: Union[None, str] = None,
+        headers: Union[None, Header] = None,
+        additional_headers: Union[None, Dict[str, str]] = None,
+        additional_headers_override: bool = True,
+        **kwargs) -> Tuple[Any, Any]:
     http_client = get_http_client()
 
     if base_url is None:
@@ -245,18 +251,32 @@ def run_request(operation: Operation, base_url: Union[None, str] = None, headers
 
     headers = headers if headers is not None else operation.get_headers()
 
-    if hasattr(operation, "authorization_override") and operation.authorization_override:
-        headers.add_authorization(operation.authorization_override)
-    elif operation.security == "basic":
-        client_auth, error = get_client_auth()
-        if error:
-            return None, error
-        headers.add_basic_authorization2(client_auth)
-    elif operation.security == "bearer":
-        access_token, error = get_access_token()
-        if error:
-            return None, error
-        headers.add_bearer_authorization(access_token)
+    add_authorization = True
+
+    if "Authorization" in headers:
+        add_authorization = False
+    elif additional_headers and "Authorization" in additional_headers:
+        add_authorization = False
+
+    if add_authorization:
+        if hasattr(operation, "authorization_override") and operation.authorization_override:
+            headers.add_authorization(operation.authorization_override)
+        elif operation.security == "basic":
+            client_auth, error = get_client_auth()
+            if error:
+                return None, error
+            headers.add_basic_authorization2(client_auth)
+        elif operation.security == "bearer":
+            access_token, error = get_access_token()
+            if error:
+                return None, error
+            headers.add_bearer_authorization(access_token)
+
+    if additional_headers:
+        for k, v in additional_headers.items():
+            if not additional_headers_override and k in headers:
+                continue
+            headers[k] = v
 
     if operation.has_redirects() and "allow_redirects" not in kwargs:
         kwargs["allow_redirects"] = False
