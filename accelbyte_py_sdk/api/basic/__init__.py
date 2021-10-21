@@ -1,8 +1,10 @@
-"""Auto-generated top-level package for the basic API."""
+"""Auto-generated top-level package for the justice-basic-service."""
 
 __version__ = "1.23.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
+
+# pylint: disable=line-too-long
 
 # file_upload
 from .wrappers import generated_upload_url

@@ -1,5 +1,4 @@
-# Auto-generated at 2021-10-21T08:52:28.395670+08:00
-# from: Justice social Service (1.18.1)
+# justice-social-service (1.18.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations

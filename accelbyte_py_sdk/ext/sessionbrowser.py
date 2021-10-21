@@ -1,0 +1,314 @@
+from .utils import randomize
+
+from ..api.sessionbrowser.models import ModelsActiveCustomGameResponse
+from ..api.sessionbrowser.models import ModelsActiveMatchmakingGameResponse
+from ..api.sessionbrowser.models import ModelsAddPlayerRequest
+from ..api.sessionbrowser.models import ModelsAddPlayerResponse
+from ..api.sessionbrowser.models import ModelsAdminSessionResponse
+from ..api.sessionbrowser.models import ModelsCountActiveSessionResponse
+from ..api.sessionbrowser.models import ModelsCreateSessionRequest
+from ..api.sessionbrowser.models import ModelsCustomGameResponse
+from ..api.sessionbrowser.models import ModelsGameSession
+from ..api.sessionbrowser.models import ModelsGameSessionSetting
+from ..api.sessionbrowser.models import ModelsJoinGameSessionRequest
+from ..api.sessionbrowser.models import ModelsMatchMaking
+from ..api.sessionbrowser.models import ModelsMatchingAlly
+from ..api.sessionbrowser.models import ModelsMatchingParty
+from ..api.sessionbrowser.models import ModelsPagingCursor
+from ..api.sessionbrowser.models import ModelsPartyMember
+from ..api.sessionbrowser.models import ModelsPodConfig
+from ..api.sessionbrowser.models import ModelsRecentPlayerHistory
+from ..api.sessionbrowser.models import ModelsRecentPlayerQueryResponse
+from ..api.sessionbrowser.models import ModelsServer
+from ..api.sessionbrowser.models import ModelsSessionByUserIDsResponse
+from ..api.sessionbrowser.models import ModelsSessionQueryResponse
+from ..api.sessionbrowser.models import ModelsSessionResponse
+from ..api.sessionbrowser.models import ModelsStatusHistory
+from ..api.sessionbrowser.models import ModelsUpdateSessionRequest
+from ..api.sessionbrowser.models import ResponseError
+from ..api.sessionbrowser.models import RestapiErrorResponseV2
+
+
+def create_models_active_custom_game_response_example() -> ModelsActiveCustomGameResponse:
+    instance = ModelsActiveCustomGameResponse()
+    instance.pagination = create_models_paging_cursor_example()
+    instance.sessions = [create_models_custom_game_response_example()]
+    return instance
+
+
+def create_models_active_matchmaking_game_response_example() -> ModelsActiveMatchmakingGameResponse:
+    instance = ModelsActiveMatchmakingGameResponse()
+    instance.pagination = create_models_paging_cursor_example()
+    instance.sessions = [create_models_game_session_example()]
+    return instance
+
+
+def create_models_add_player_request_example() -> ModelsAddPlayerRequest:
+    instance = ModelsAddPlayerRequest()
+    instance.as_spectator = randomize("bool")
+    instance.user_id = randomize("uid")
+    return instance
+
+
+def create_models_add_player_response_example() -> ModelsAddPlayerResponse:
+    instance = ModelsAddPlayerResponse()
+    instance.status = randomize("bool")
+    return instance
+
+
+def create_models_admin_session_response_example() -> ModelsAdminSessionResponse:
+    instance = ModelsAdminSessionResponse()
+    instance.all_players = [randomize()]
+    instance.created_at = randomize("date")
+    instance.game_session_setting = create_models_game_session_setting_example()
+    instance.game_version = randomize("version")
+    instance.joinable = randomize("bool")
+    instance.match = create_models_match_making_example()
+    instance.namespace = randomize("slug")
+    instance.players = [randomize()]
+    instance.server = create_models_server_example()
+    instance.session_id = randomize("uid")
+    instance.session_type = randomize()
+    instance.spectators = [randomize()]
+    instance.user_id = randomize("uid")
+    instance.username = randomize("slug")
+    return instance
+
+
+def create_models_count_active_session_response_example() -> ModelsCountActiveSessionResponse:
+    instance = ModelsCountActiveSessionResponse()
+    instance.custom_game = randomize("int")
+    instance.matchmaking_game = randomize("int")
+    instance.total = randomize("int")
+    return instance
+
+
+def create_models_create_session_request_example() -> ModelsCreateSessionRequest:
+    instance = ModelsCreateSessionRequest()
+    instance.game_session_setting = create_models_game_session_setting_example()
+    instance.game_version = randomize("version")
+    instance.namespace = randomize("slug")
+    instance.session_type = randomize()
+    instance.username = randomize("slug")
+    return instance
+
+
+def create_models_custom_game_response_example() -> ModelsCustomGameResponse:
+    instance = ModelsCustomGameResponse()
+    instance.all_players = [randomize()]
+    instance.created_at = randomize("date")
+    instance.game_session_setting = create_models_game_session_setting_example()
+    instance.joinable = randomize("bool")
+    instance.namespace = randomize("slug")
+    instance.players = [randomize()]
+    instance.server = create_models_server_example()
+    instance.session_id = randomize("uid")
+    instance.session_type = randomize()
+    instance.spectators = [randomize()]
+    return instance
+
+
+def create_models_game_session_example() -> ModelsGameSession:
+    instance = ModelsGameSession()
+    instance.all_players = [randomize()]
+    instance.created_at = randomize("date")
+    instance.game_session_setting = create_models_game_session_setting_example()
+    instance.game_version = randomize("version")
+    instance.joinable = randomize("bool")
+    instance.match = create_models_match_making_example()
+    instance.namespace = randomize("slug")
+    instance.players = [randomize()]
+    instance.server = create_models_server_example()
+    instance.session_id = randomize("uid")
+    instance.session_type = randomize()
+    instance.spectators = [randomize()]
+    instance.user_id = randomize("uid")
+    instance.username = randomize("slug")
+    return instance
+
+
+def create_models_game_session_setting_example() -> ModelsGameSessionSetting:
+    instance = ModelsGameSessionSetting()
+    instance.allow_join_in_progress = randomize("bool")
+    instance.current_internal_player = randomize("int")
+    instance.current_player = randomize("int")
+    instance.map_name = randomize()
+    instance.max_internal_player = randomize("int")
+    instance.max_player = randomize("int")
+    instance.mode = randomize()
+    instance.num_bot = randomize("int")
+    instance.password = randomize("password")
+    instance.settings = {randomize(): randomize()}
+    return instance
+
+
+def create_models_join_game_session_request_example() -> ModelsJoinGameSessionRequest:
+    instance = ModelsJoinGameSessionRequest()
+    instance.password = randomize("password")
+    return instance
+
+
+def create_models_match_making_example() -> ModelsMatchMaking:
+    instance = ModelsMatchMaking()
+    instance.channel = randomize()
+    instance.client_version = randomize()
+    instance.created_at = randomize("date")
+    instance.deployment = randomize()
+    instance.event = randomize()
+    instance.game_mode = randomize()
+    instance.joinable = randomize("bool")
+    instance.match_id = randomize()
+    instance.matching_allies = [create_models_matching_ally_example()]
+    instance.namespace = randomize("slug")
+    instance.party_attributes = {randomize(): randomize()}
+    instance.party_id = randomize("uid")
+    instance.queued_at = randomize("int")
+    instance.region = randomize()
+    instance.server_name = randomize()
+    instance.status = randomize()
+    return instance
+
+
+def create_models_matching_ally_example() -> ModelsMatchingAlly:
+    instance = ModelsMatchingAlly()
+    instance.matching_parties = [create_models_matching_party_example()]
+    return instance
+
+
+def create_models_matching_party_example() -> ModelsMatchingParty:
+    instance = ModelsMatchingParty()
+    instance.party_attributes = {randomize(): randomize()}
+    instance.party_id = randomize("uid")
+    instance.party_members = [create_models_party_member_example()]
+    return instance
+
+
+def create_models_paging_cursor_example() -> ModelsPagingCursor:
+    instance = ModelsPagingCursor()
+    instance.next_ = randomize()
+    instance.previous = randomize()
+    return instance
+
+
+def create_models_party_member_example() -> ModelsPartyMember:
+    instance = ModelsPartyMember()
+    instance.extra_attributes = {randomize(): randomize()}
+    instance.user_id = randomize("uid")
+    return instance
+
+
+def create_models_pod_config_example() -> ModelsPodConfig:
+    instance = ModelsPodConfig()
+    instance.cpu_limit = randomize("int")
+    instance.cpu_request = randomize()
+    instance.mem_limit = randomize("int")
+    instance.mem_request = randomize()
+    instance.params = randomize()
+    return instance
+
+
+def create_models_recent_player_history_example() -> ModelsRecentPlayerHistory:
+    instance = ModelsRecentPlayerHistory()
+    instance.created_at = randomize("date")
+    instance.namespace = randomize("slug")
+    instance.other_display_name = randomize()
+    instance.other_id = randomize()
+    instance.updated_at = randomize("date")
+    instance.user_id = randomize("uid")
+    return instance
+
+
+def create_models_recent_player_query_response_example() -> ModelsRecentPlayerQueryResponse:
+    instance = ModelsRecentPlayerQueryResponse()
+    instance.data = [create_models_recent_player_history_example()]
+    return instance
+
+
+def create_models_server_example() -> ModelsServer:
+    instance = ModelsServer()
+    instance.allocation_id = randomize()
+    instance.alternate_ips = [randomize()]
+    instance.cpu_limit = randomize("int")
+    instance.cpu_request = randomize()
+    instance.deployment = randomize()
+    instance.game_version = randomize("version")
+    instance.image_version = randomize()
+    instance.ip = randomize()
+    instance.is_override_game_version = randomize("bool")
+    instance.last_update = randomize()
+    instance.mem_limit = randomize("int")
+    instance.mem_request = randomize()
+    instance.namespace = randomize("slug")
+    instance.params = randomize()
+    instance.pod_name = randomize()
+    instance.port = randomize("int")
+    instance.ports = {}
+    instance.provider = randomize()
+    instance.region = randomize()
+    instance.session_id = randomize("uid")
+    instance.status = randomize()
+    instance.status_history = [create_models_status_history_example()]
+    return instance
+
+
+def create_models_session_by_user_i_ds_response_example() -> ModelsSessionByUserIDsResponse:
+    instance = ModelsSessionByUserIDsResponse()
+    instance.data = [create_models_game_session_example()]
+    return instance
+
+
+def create_models_session_query_response_example() -> ModelsSessionQueryResponse:
+    instance = ModelsSessionQueryResponse()
+    instance.pagination = create_models_paging_cursor_example()
+    instance.sessions = [create_models_game_session_example()]
+    return instance
+
+
+def create_models_session_response_example() -> ModelsSessionResponse:
+    instance = ModelsSessionResponse()
+    instance.all_players = [randomize()]
+    instance.created_at = randomize("date")
+    instance.game_session_setting = create_models_game_session_setting_example()
+    instance.game_version = randomize("version")
+    instance.joinable = randomize("bool")
+    instance.match = create_models_match_making_example()
+    instance.namespace = randomize("slug")
+    instance.players = [randomize()]
+    instance.server = create_models_server_example()
+    instance.session_id = randomize("uid")
+    instance.session_type = randomize()
+    instance.spectators = [randomize()]
+    instance.user_id = randomize("uid")
+    instance.username = randomize("slug")
+    return instance
+
+
+def create_models_status_history_example() -> ModelsStatusHistory:
+    instance = ModelsStatusHistory()
+    instance.status = randomize()
+    instance.time_stamp = randomize()
+    return instance
+
+
+def create_models_update_session_request_example() -> ModelsUpdateSessionRequest:
+    instance = ModelsUpdateSessionRequest()
+    instance.game_current_player = randomize("int")
+    instance.game_max_player = randomize("int")
+    return instance
+
+
+def create_response_error_example() -> ResponseError:
+    instance = ResponseError()
+    instance.error_code = randomize("int")
+    instance.error_message = randomize()
+    return instance
+
+
+def create_restapi_error_response_v2_example() -> RestapiErrorResponseV2:
+    instance = RestapiErrorResponseV2()
+    instance.attributes = {randomize(): randomize()}
+    instance.error_code = randomize("int")
+    instance.error_message = randomize()
+    instance.message = randomize()
+    instance.name = randomize()
+    return instance

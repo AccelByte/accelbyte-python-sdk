@@ -1,8 +1,10 @@
-"""Auto-generated top-level package for the dsmc API."""
+"""Auto-generated top-level package for the justice-dsm-controller-service."""
 
 __version__ = "2.6.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
+
+# pylint: disable=line-too-long
 
 # config
 from .wrappers import list_config

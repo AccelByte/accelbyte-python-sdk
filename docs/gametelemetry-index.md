@@ -1,4 +1,4 @@
-# gametelemetry Index (0.0.1)
+# Analytics Game Telemetry Index (0.0.1)
 
 
 ## Operations

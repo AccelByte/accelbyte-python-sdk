@@ -1,4 +1,4 @@
-# basic Index (1.23.0)
+# justice-basic-service Index (1.23.0)
 
 
 ## Operations

@@ -1,5 +1,4 @@
-# Auto-generated at 2021-10-21T08:52:30.656936+08:00
-# from: Justice platform Service (3.34.0)
+# justice-platform-service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations

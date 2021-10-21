@@ -1,8 +1,10 @@
-"""Auto-generated top-level package for the iam API."""
+"""Auto-generated top-level package for the justice-iam-service."""
 
 __version__ = "4.4.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
+
+# pylint: disable=line-too-long
 
 # bans
 from .wrappers import get_bans_type

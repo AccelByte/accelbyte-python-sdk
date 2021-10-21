@@ -1,8 +1,10 @@
-"""Auto-generated top-level package for the lobby API."""
+"""Auto-generated top-level package for the justice-lobby-server."""
 
 __version__ = "1.33.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
+
+# pylint: disable=line-too-long
 
 # chat
 from .wrappers import personal_chat_history

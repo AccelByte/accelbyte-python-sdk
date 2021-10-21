@@ -1,4 +1,4 @@
-"""Auto-generated package that contains models used by the cloudsave API."""
+"""Auto-generated package that contains models used by the justice-cloudsave-service."""
 
 __version__ = "1.8.0"
 __author__ = "AccelByte"

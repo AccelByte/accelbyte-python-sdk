@@ -1,8 +1,9 @@
-"""Auto-generated package that contains utility functions for the platform API."""
+"""Auto-generated package that contains utility functions for the justice-platform-service."""
 
 __version__ = "3.34.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
+
 # pylint: disable=line-too-long
 
 from ._anonymization import anonymize_campaign

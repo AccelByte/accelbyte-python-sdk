@@ -1,8 +1,10 @@
-"""Auto-generated top-level package for the group API."""
+"""Auto-generated top-level package for the justice-group-service."""
 
 __version__ = "2.8.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
+
+# pylint: disable=line-too-long
 
 # configuration
 from .wrappers import list_group_configuration_admin_v1

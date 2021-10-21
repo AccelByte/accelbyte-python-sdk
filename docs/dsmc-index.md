@@ -1,4 +1,4 @@
-# dsmc Index (2.6.0)
+# justice-dsm-controller-service Index (2.6.0)
 
 
 ## Operations

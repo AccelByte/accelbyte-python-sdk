@@ -1,8 +1,9 @@
-"""Auto-generated package that contains utility functions for the gametelemetry API."""
+"""Auto-generated package that contains utility functions for the Analytics Game Telemetry."""
 
 __version__ = "0.0.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
+
 # pylint: disable=line-too-long
 
 from ._operations import protected_save_events_game_telemetry_v1_protected_events_post

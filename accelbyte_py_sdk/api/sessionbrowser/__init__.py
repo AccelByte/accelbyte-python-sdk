@@ -1,8 +1,10 @@
-"""Auto-generated top-level package for the sessionbrowser API."""
+"""Auto-generated top-level package for the justice-session-browser-service."""
 
 __version__ = ""
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
+
+# pylint: disable=line-too-long
 
 # session
 from .wrappers import get_total_active_session

@@ -1,4 +1,4 @@
-"""Auto-generated package that contains websocket models used by the lobby API."""
+"""Auto-generated package that contains websocket models used by the lobby."""
 
 # pylint: disable=line-too-long
 

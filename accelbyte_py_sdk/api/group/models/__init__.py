@@ -1,4 +1,4 @@
-"""Auto-generated package that contains models used by the group API."""
+"""Auto-generated package that contains models used by the justice-group-service."""
 
 __version__ = "2.8.0"
 __author__ = "AccelByte"

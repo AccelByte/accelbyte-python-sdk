@@ -1,4 +1,4 @@
-# group Index (2.8.0)
+# justice-group-service Index (2.8.0)
 
 
 ## Operations

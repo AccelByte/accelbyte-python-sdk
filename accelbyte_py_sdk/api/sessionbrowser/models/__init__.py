@@ -1,4 +1,4 @@
-"""Auto-generated package that contains models used by the sessionbrowser API."""
+"""Auto-generated package that contains models used by the justice-session-browser-service."""
 
 __version__ = ""
 __author__ = "AccelByte"

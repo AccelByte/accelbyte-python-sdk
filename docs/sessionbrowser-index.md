@@ -1,4 +1,4 @@
-# sessionbrowser Index
+# justice-session-browser-service Index
 
 
 ## Operations

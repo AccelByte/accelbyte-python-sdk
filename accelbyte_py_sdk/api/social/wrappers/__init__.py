@@ -1,8 +1,9 @@
-"""Auto-generated package that contains utility functions for the social API."""
+"""Auto-generated package that contains utility functions for the justice-social-service."""
 
 __version__ = "1.18.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
+
 # pylint: disable=line-too-long
 
 from ._game_profile import get_user_profiles

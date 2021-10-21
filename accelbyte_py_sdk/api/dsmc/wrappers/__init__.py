@@ -1,8 +1,9 @@
-"""Auto-generated package that contains utility functions for the dsmc API."""
+"""Auto-generated package that contains utility functions for the justice-dsm-controller-service."""
 
 __version__ = "2.6.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
+
 # pylint: disable=line-too-long
 
 from ._config import list_config

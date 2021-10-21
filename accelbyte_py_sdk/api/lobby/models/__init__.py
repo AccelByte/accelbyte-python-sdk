@@ -1,4 +1,4 @@
-"""Auto-generated package that contains models used by the lobby API."""
+"""Auto-generated package that contains models used by the justice-lobby-server."""
 
 __version__ = "1.33.0"
 __author__ = "AccelByte"

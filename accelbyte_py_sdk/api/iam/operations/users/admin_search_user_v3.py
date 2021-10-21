@@ -1,5 +1,4 @@
-# Auto-generated at 2021-10-21T08:52:26.537399+08:00
-# from: Justice iam Service (4.4.1)
+# justice-iam-service (4.4.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations

@@ -1,8 +1,9 @@
-"""Auto-generated package that contains utility functions for the lobby API."""
+"""Auto-generated package that contains utility functions for the justice-lobby-server."""
 
 __version__ = "1.33.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
+
 # pylint: disable=line-too-long
 
 from ._chat import personal_chat_history

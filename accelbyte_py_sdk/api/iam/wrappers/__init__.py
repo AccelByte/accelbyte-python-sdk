@@ -1,8 +1,9 @@
-"""Auto-generated package that contains utility functions for the iam API."""
+"""Auto-generated package that contains utility functions for the justice-iam-service."""
 
 __version__ = "4.4.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
+
 # pylint: disable=line-too-long
 
 from ._bans import get_bans_type

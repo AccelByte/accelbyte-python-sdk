@@ -1,4 +1,4 @@
-"""Auto-generated package that contains models used by the gametelemetry API."""
+"""Auto-generated package that contains models used by the Analytics Game Telemetry."""
 
 __version__ = "0.0.1"
 __author__ = "AccelByte"

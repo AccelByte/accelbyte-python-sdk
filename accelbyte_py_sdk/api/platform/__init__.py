@@ -1,8 +1,10 @@
-"""Auto-generated top-level package for the platform API."""
+"""Auto-generated top-level package for the justice-platform-service."""
 
 __version__ = "3.34.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
+
+# pylint: disable=line-too-long
 
 # anonymization
 from .wrappers import anonymize_campaign

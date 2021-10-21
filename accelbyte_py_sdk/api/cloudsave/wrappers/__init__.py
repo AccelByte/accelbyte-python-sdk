@@ -1,8 +1,9 @@
-"""Auto-generated package that contains utility functions for the cloudsave API."""
+"""Auto-generated package that contains utility functions for the justice-cloudsave-service."""
 
 __version__ = "1.8.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
+
 # pylint: disable=line-too-long
 
 from ._admin_game_record import list_game_records_handler_v1

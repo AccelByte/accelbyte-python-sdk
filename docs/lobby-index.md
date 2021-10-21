@@ -1,4 +1,4 @@
-# lobby Index (1.33.0)
+# justice-lobby-server Index (1.33.0)
 
 
 ## Operations

@@ -1,4 +1,4 @@
-"""Auto-generated package that contains models used by the dsmc API."""
+"""Auto-generated package that contains models used by the justice-dsm-controller-service."""
 
 __version__ = "2.6.0"
 __author__ = "AccelByte"

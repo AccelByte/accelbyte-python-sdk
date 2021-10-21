@@ -1,5 +1,4 @@
-# Auto-generated at 2021-10-21T08:52:33.146559+08:00
-# from: Justice gametelemetry Service (0.0.1)
+# Analytics Game Telemetry (0.0.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations

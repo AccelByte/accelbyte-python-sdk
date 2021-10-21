@@ -1,8 +1,9 @@
-"""Auto-generated package that contains utility functions for the basic API."""
+"""Auto-generated package that contains utility functions for the justice-basic-service."""
 
 __version__ = "1.23.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
+
 # pylint: disable=line-too-long
 
 from ._file_upload import generated_upload_url

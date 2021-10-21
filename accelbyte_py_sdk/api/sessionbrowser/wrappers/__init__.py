@@ -1,8 +1,9 @@
-"""Auto-generated package that contains utility functions for the sessionbrowser API."""
+"""Auto-generated package that contains utility functions for the justice-session-browser-service."""
 
 __version__ = ""
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
+
 # pylint: disable=line-too-long
 
 from ._session import get_total_active_session

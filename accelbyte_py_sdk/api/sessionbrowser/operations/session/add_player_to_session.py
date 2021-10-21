@@ -1,5 +1,4 @@
-# Auto-generated at 2021-10-21T08:52:31.865742+08:00
-# from: Justice sessionbrowser Service ()
+# justice-session-browser-service ()
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations

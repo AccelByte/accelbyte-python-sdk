@@ -1,8 +1,10 @@
-"""Auto-generated top-level package for the cloudsave API."""
+"""Auto-generated top-level package for the justice-cloudsave-service."""
 
 __version__ = "1.8.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
+
+# pylint: disable=line-too-long
 
 # admin_game_record
 from .wrappers import list_game_records_handler_v1

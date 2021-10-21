@@ -1,8 +1,10 @@
-"""Auto-generated top-level package for the social API."""
+"""Auto-generated top-level package for the justice-social-service."""
 
 __version__ = "1.18.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
+
+# pylint: disable=line-too-long
 
 # game_profile
 from .wrappers import get_user_profiles

@@ -1,4 +1,4 @@
-"""Auto-generated package that contains models used by the social API."""
+"""Auto-generated package that contains models used by the justice-social-service."""
 
 __version__ = "1.18.1"
 __author__ = "AccelByte"

@@ -1,4 +1,4 @@
-# platform Index (3.34.0)
+# justice-platform-service Index (3.34.0)
 
 
 ## Operations
