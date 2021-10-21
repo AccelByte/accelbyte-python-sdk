@@ -80,39 +80,39 @@ def create_models_claim_session_request_example() -> ModelsClaimSessionRequest:
 
 def create_models_count_server_response_example() -> ModelsCountServerResponse:
     instance = ModelsCountServerResponse()
-    instance.count = randomize("int")
+    instance.count = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
 def create_models_count_session_response_example() -> ModelsCountSessionResponse:
     instance = ModelsCountSessionResponse()
-    instance.count = randomize("int")
+    instance.count = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
 def create_models_create_dsm_config_request_example() -> ModelsCreateDSMConfigRequest:
     instance = ModelsCreateDSMConfigRequest()
-    instance.claim_timeout = randomize("int")
-    instance.creation_timeout = randomize("int")
+    instance.claim_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.creation_timeout = randomize("int", min_val=1, max_val=1000)
     instance.default_version = randomize()
-    instance.port = randomize("int")
+    instance.port = randomize("int", min_val=1, max_val=1000)
     instance.ports = {}
     instance.protocol = randomize()
     instance.providers = [randomize()]
-    instance.session_timeout = randomize("int")
-    instance.unreachable_timeout = randomize("int")
+    instance.session_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.unreachable_timeout = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
 def create_models_create_deployment_override_request_example() -> ModelsCreateDeploymentOverrideRequest:
     instance = ModelsCreateDeploymentOverrideRequest()
-    instance.buffer_count = randomize("int")
-    instance.buffer_percent = randomize("int")
+    instance.buffer_count = randomize("int", min_val=1, max_val=1000)
+    instance.buffer_percent = randomize("int", min_val=1, max_val=1000)
     instance.configuration = randomize()
     instance.enable_region_overrides = randomize("bool")
     instance.game_version = randomize("version")
-    instance.max_count = randomize("int")
-    instance.min_count = randomize("int")
+    instance.max_count = randomize("int", min_val=1, max_val=1000)
+    instance.min_count = randomize("int", min_val=1, max_val=1000)
     instance.region_overrides = {}
     instance.regions = [randomize()]
     instance.use_buffer_percent = randomize("bool")
@@ -122,13 +122,13 @@ def create_models_create_deployment_override_request_example() -> ModelsCreateDe
 def create_models_create_deployment_request_example() -> ModelsCreateDeploymentRequest:
     instance = ModelsCreateDeploymentRequest()
     instance.allow_version_override = randomize("bool")
-    instance.buffer_count = randomize("int")
-    instance.buffer_percent = randomize("int")
+    instance.buffer_count = randomize("int", min_val=1, max_val=1000)
+    instance.buffer_percent = randomize("int", min_val=1, max_val=1000)
     instance.configuration = randomize()
     instance.enable_region_overrides = randomize("bool")
     instance.game_version = randomize("version")
-    instance.max_count = randomize("int")
-    instance.min_count = randomize("int")
+    instance.max_count = randomize("int", min_val=1, max_val=1000)
+    instance.min_count = randomize("int", min_val=1, max_val=1000)
     instance.overrides = {}
     instance.region_overrides = {}
     instance.regions = [randomize()]
@@ -149,24 +149,24 @@ def create_models_create_image_request_example() -> ModelsCreateImageRequest:
 
 def create_models_create_pod_config_request_example() -> ModelsCreatePodConfigRequest:
     instance = ModelsCreatePodConfigRequest()
-    instance.cpu_limit = randomize("int")
-    instance.mem_limit = randomize("int")
+    instance.cpu_limit = randomize("int", min_val=1, max_val=1000)
+    instance.mem_limit = randomize("int", min_val=1, max_val=1000)
     instance.params = randomize()
     return instance
 
 
 def create_models_create_port_request_example() -> ModelsCreatePortRequest:
     instance = ModelsCreatePortRequest()
-    instance.port = randomize("int")
+    instance.port = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
 def create_models_create_region_override_request_example() -> ModelsCreateRegionOverrideRequest:
     instance = ModelsCreateRegionOverrideRequest()
-    instance.buffer_count = randomize("int")
-    instance.buffer_percent = randomize("int")
-    instance.max_count = randomize("int")
-    instance.min_count = randomize("int")
+    instance.buffer_count = randomize("int", min_val=1, max_val=1000)
+    instance.buffer_percent = randomize("int", min_val=1, max_val=1000)
+    instance.max_count = randomize("int", min_val=1, max_val=1000)
+    instance.min_count = randomize("int", min_val=1, max_val=1000)
     instance.use_buffer_percent = randomize("bool")
     return instance
 
@@ -187,38 +187,38 @@ def create_models_create_session_request_example() -> ModelsCreateSessionRequest
 
 def create_models_dsm_config_export_example() -> ModelsDSMConfigExport:
     instance = ModelsDSMConfigExport()
-    instance.claim_timeout = randomize("int")
+    instance.claim_timeout = randomize("int", min_val=1, max_val=1000)
     instance.created_at = randomize("date")
-    instance.creation_timeout = randomize("int")
+    instance.creation_timeout = randomize("int", min_val=1, max_val=1000)
     instance.default_version = randomize()
     instance.deployments = [create_models_deployment_with_override_example()]
     instance.images = [create_models_image_record_example()]
     instance.namespace = randomize("slug")
     instance.pod_configs = [create_models_pod_config_record_example()]
-    instance.port = randomize("int")
+    instance.port = randomize("int", min_val=1, max_val=1000)
     instance.ports = {}
     instance.protocol = randomize()
     instance.providers = [randomize()]
-    instance.session_timeout = randomize("int")
-    instance.unreachable_timeout = randomize("int")
+    instance.session_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.unreachable_timeout = randomize("int", min_val=1, max_val=1000)
     instance.updated_at = randomize("date")
     return instance
 
 
 def create_models_dsm_config_record_example() -> ModelsDSMConfigRecord:
     instance = ModelsDSMConfigRecord()
-    instance.claim_timeout = randomize("int")
+    instance.claim_timeout = randomize("int", min_val=1, max_val=1000)
     instance.created_at = randomize("date")
-    instance.creation_timeout = randomize("int")
+    instance.creation_timeout = randomize("int", min_val=1, max_val=1000)
     instance.default_version = randomize()
     instance.modified_by = randomize()
     instance.namespace = randomize("slug")
-    instance.port = randomize("int")
+    instance.port = randomize("int", min_val=1, max_val=1000)
     instance.ports = {}
     instance.protocol = randomize()
     instance.providers = [randomize()]
-    instance.session_timeout = randomize("int")
-    instance.unreachable_timeout = randomize("int")
+    instance.session_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.unreachable_timeout = randomize("int", min_val=1, max_val=1000)
     instance.updated_at = randomize("date")
     return instance
 
@@ -231,13 +231,13 @@ def create_models_default_provider_example() -> ModelsDefaultProvider:
 
 def create_models_deployment_config_example() -> ModelsDeploymentConfig:
     instance = ModelsDeploymentConfig()
-    instance.buffer_count = randomize("int")
-    instance.buffer_percent = randomize("int")
+    instance.buffer_count = randomize("int", min_val=1, max_val=1000)
+    instance.buffer_percent = randomize("int", min_val=1, max_val=1000)
     instance.configuration = randomize()
     instance.enable_region_overrides = randomize("bool")
     instance.game_version = randomize("version")
-    instance.max_count = randomize("int")
-    instance.min_count = randomize("int")
+    instance.max_count = randomize("int", min_val=1, max_val=1000)
+    instance.min_count = randomize("int", min_val=1, max_val=1000)
     instance.region_overrides = {}
     instance.regions = [randomize()]
     instance.use_buffer_percent = randomize("bool")
@@ -246,13 +246,13 @@ def create_models_deployment_config_example() -> ModelsDeploymentConfig:
 
 def create_models_deployment_config_override_example() -> ModelsDeploymentConfigOverride:
     instance = ModelsDeploymentConfigOverride()
-    instance.buffer_count = randomize("int")
-    instance.buffer_percent = randomize("int")
+    instance.buffer_count = randomize("int", min_val=1, max_val=1000)
+    instance.buffer_percent = randomize("int", min_val=1, max_val=1000)
     instance.configuration = randomize()
     instance.enable_region_overrides = randomize("bool")
     instance.game_version = randomize("version")
-    instance.max_count = randomize("int")
-    instance.min_count = randomize("int")
+    instance.max_count = randomize("int", min_val=1, max_val=1000)
+    instance.min_count = randomize("int", min_val=1, max_val=1000)
     instance.name = randomize()
     instance.region_overrides = {}
     instance.regions = [randomize()]
@@ -263,14 +263,14 @@ def create_models_deployment_config_override_example() -> ModelsDeploymentConfig
 def create_models_deployment_with_override_example() -> ModelsDeploymentWithOverride:
     instance = ModelsDeploymentWithOverride()
     instance.allow_version_override = randomize("bool")
-    instance.buffer_count = randomize("int")
-    instance.buffer_percent = randomize("int")
+    instance.buffer_count = randomize("int", min_val=1, max_val=1000)
+    instance.buffer_percent = randomize("int", min_val=1, max_val=1000)
     instance.configuration = randomize()
     instance.created_at = randomize("date")
     instance.enable_region_overrides = randomize("bool")
     instance.game_version = randomize("version")
-    instance.max_count = randomize("int")
-    instance.min_count = randomize("int")
+    instance.max_count = randomize("int", min_val=1, max_val=1000)
+    instance.min_count = randomize("int", min_val=1, max_val=1000)
     instance.modified_by = randomize()
     instance.name = randomize()
     instance.namespace = randomize("slug")
@@ -290,10 +290,10 @@ def create_models_deregister_local_server_request_example() -> ModelsDeregisterL
 
 def create_models_detailed_count_server_response_example() -> ModelsDetailedCountServerResponse:
     instance = ModelsDetailedCountServerResponse()
-    instance.busy_count = randomize("int")
-    instance.creating_count = randomize("int")
-    instance.ready_count = randomize("int")
-    instance.unreachable_count = randomize("int")
+    instance.busy_count = randomize("int", min_val=1, max_val=1000)
+    instance.creating_count = randomize("int", min_val=1, max_val=1000)
+    instance.ready_count = randomize("int", min_val=1, max_val=1000)
+    instance.unreachable_count = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -311,8 +311,8 @@ def create_models_get_image_limit_response_example() -> ModelsGetImageLimitRespo
 
 def create_models_get_image_limit_response_data_example() -> ModelsGetImageLimitResponseData:
     instance = ModelsGetImageLimitResponseData()
-    instance.image_count = randomize("int")
-    instance.image_limit = randomize("int")
+    instance.image_count = randomize("int", min_val=1, max_val=1000)
+    instance.image_limit = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -413,17 +413,17 @@ def create_models_paging_cursor_example() -> ModelsPagingCursor:
 
 def create_models_pod_config_example() -> ModelsPodConfig:
     instance = ModelsPodConfig()
-    instance.cpu_limit = randomize("int")
-    instance.mem_limit = randomize("int")
+    instance.cpu_limit = randomize("int", min_val=1, max_val=1000)
+    instance.mem_limit = randomize("int", min_val=1, max_val=1000)
     instance.params = randomize()
     return instance
 
 
 def create_models_pod_config_record_example() -> ModelsPodConfigRecord:
     instance = ModelsPodConfigRecord()
-    instance.cpu_limit = randomize("int")
+    instance.cpu_limit = randomize("int", min_val=1, max_val=1000)
     instance.created_at = randomize("date")
-    instance.mem_limit = randomize("int")
+    instance.mem_limit = randomize("int", min_val=1, max_val=1000)
     instance.modified_by = randomize()
     instance.name = randomize()
     instance.namespace = randomize("slug")
@@ -434,20 +434,20 @@ def create_models_pod_config_record_example() -> ModelsPodConfigRecord:
 
 def create_models_pod_count_config_example() -> ModelsPodCountConfig:
     instance = ModelsPodCountConfig()
-    instance.buffer_count = randomize("int")
-    instance.buffer_percent = randomize("int")
-    instance.max_count = randomize("int")
-    instance.min_count = randomize("int")
+    instance.buffer_count = randomize("int", min_val=1, max_val=1000)
+    instance.buffer_percent = randomize("int", min_val=1, max_val=1000)
+    instance.max_count = randomize("int", min_val=1, max_val=1000)
+    instance.min_count = randomize("int", min_val=1, max_val=1000)
     instance.use_buffer_percent = randomize("bool")
     return instance
 
 
 def create_models_pod_count_config_override_example() -> ModelsPodCountConfigOverride:
     instance = ModelsPodCountConfigOverride()
-    instance.buffer_count = randomize("int")
-    instance.buffer_percent = randomize("int")
-    instance.max_count = randomize("int")
-    instance.min_count = randomize("int")
+    instance.buffer_count = randomize("int", min_val=1, max_val=1000)
+    instance.buffer_percent = randomize("int", min_val=1, max_val=1000)
+    instance.max_count = randomize("int", min_val=1, max_val=1000)
+    instance.min_count = randomize("int", min_val=1, max_val=1000)
     instance.name = randomize()
     instance.use_buffer_percent = randomize("bool")
     return instance
@@ -455,10 +455,10 @@ def create_models_pod_count_config_override_example() -> ModelsPodCountConfigOve
 
 def create_models_pod_count_config_update_example() -> ModelsPodCountConfigUpdate:
     instance = ModelsPodCountConfigUpdate()
-    instance.buffer_count = randomize("int")
-    instance.buffer_percent = randomize("int")
-    instance.max_count = randomize("int")
-    instance.min_count = randomize("int")
+    instance.buffer_count = randomize("int", min_val=1, max_val=1000)
+    instance.buffer_percent = randomize("int", min_val=1, max_val=1000)
+    instance.max_count = randomize("int", min_val=1, max_val=1000)
+    instance.min_count = randomize("int", min_val=1, max_val=1000)
     instance.use_buffer_percent = randomize("bool")
     return instance
 
@@ -468,7 +468,7 @@ def create_models_register_local_server_request_example() -> ModelsRegisterLocal
     instance.custom_attribute = randomize()
     instance.ip = randomize()
     instance.name = randomize()
-    instance.port = randomize("int")
+    instance.port = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -503,7 +503,7 @@ def create_models_server_example() -> ModelsServer:
     instance = ModelsServer()
     instance.allocation_id = randomize()
     instance.alternate_ips = [randomize()]
-    instance.cpu_limit = randomize("int")
+    instance.cpu_limit = randomize("int", min_val=1, max_val=1000)
     instance.created_at = randomize("date")
     instance.custom_attribute = randomize()
     instance.deployment = randomize()
@@ -511,12 +511,12 @@ def create_models_server_example() -> ModelsServer:
     instance.image_version = randomize()
     instance.ip = randomize()
     instance.is_override_game_version = randomize("bool")
-    instance.last_update = randomize()
-    instance.mem_limit = randomize("int")
+    instance.last_update = randomize("date")
+    instance.mem_limit = randomize("int", min_val=1, max_val=1000)
     instance.namespace = randomize("slug")
     instance.params = randomize()
     instance.pod_name = randomize()
-    instance.port = randomize("int")
+    instance.port = randomize("int", min_val=1, max_val=1000)
     instance.ports = {}
     instance.protocol = randomize()
     instance.provider = randomize()
@@ -565,32 +565,32 @@ def create_models_shutdown_server_request_example() -> ModelsShutdownServerReque
 def create_models_status_history_example() -> ModelsStatusHistory:
     instance = ModelsStatusHistory()
     instance.status = randomize()
-    instance.time_stamp = randomize()
+    instance.time_stamp = randomize("date")
     return instance
 
 
 def create_models_update_dsm_config_request_example() -> ModelsUpdateDSMConfigRequest:
     instance = ModelsUpdateDSMConfigRequest()
-    instance.claim_timeout = randomize("int")
-    instance.creation_timeout = randomize("int")
+    instance.claim_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.creation_timeout = randomize("int", min_val=1, max_val=1000)
     instance.default_version = randomize()
-    instance.port = randomize("int")
+    instance.port = randomize("int", min_val=1, max_val=1000)
     instance.protocol = randomize()
     instance.providers = [randomize()]
-    instance.session_timeout = randomize("int")
-    instance.unreachable_timeout = randomize("int")
+    instance.session_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.unreachable_timeout = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
 def create_models_update_deployment_override_request_example() -> ModelsUpdateDeploymentOverrideRequest:
     instance = ModelsUpdateDeploymentOverrideRequest()
-    instance.buffer_count = randomize("int")
-    instance.buffer_percent = randomize("int")
+    instance.buffer_count = randomize("int", min_val=1, max_val=1000)
+    instance.buffer_percent = randomize("int", min_val=1, max_val=1000)
     instance.configuration = randomize()
     instance.enable_region_overrides = randomize("bool")
     instance.game_version = randomize("version")
-    instance.max_count = randomize("int")
-    instance.min_count = randomize("int")
+    instance.max_count = randomize("int", min_val=1, max_val=1000)
+    instance.min_count = randomize("int", min_val=1, max_val=1000)
     instance.regions = [randomize()]
     instance.use_buffer_percent = randomize("bool")
     return instance
@@ -599,13 +599,13 @@ def create_models_update_deployment_override_request_example() -> ModelsUpdateDe
 def create_models_update_deployment_request_example() -> ModelsUpdateDeploymentRequest:
     instance = ModelsUpdateDeploymentRequest()
     instance.allow_version_override = randomize("bool")
-    instance.buffer_count = randomize("int")
-    instance.buffer_percent = randomize("int")
+    instance.buffer_count = randomize("int", min_val=1, max_val=1000)
+    instance.buffer_percent = randomize("int", min_val=1, max_val=1000)
     instance.configuration = randomize()
     instance.enable_region_overrides = randomize("bool")
     instance.game_version = randomize("version")
-    instance.max_count = randomize("int")
-    instance.min_count = randomize("int")
+    instance.max_count = randomize("int", min_val=1, max_val=1000)
+    instance.min_count = randomize("int", min_val=1, max_val=1000)
     instance.regions = [randomize()]
     instance.use_buffer_percent = randomize("bool")
     return instance
@@ -613,8 +613,8 @@ def create_models_update_deployment_request_example() -> ModelsUpdateDeploymentR
 
 def create_models_update_pod_config_request_example() -> ModelsUpdatePodConfigRequest:
     instance = ModelsUpdatePodConfigRequest()
-    instance.cpu_limit = randomize("int")
-    instance.mem_limit = randomize("int")
+    instance.cpu_limit = randomize("int", min_val=1, max_val=1000)
+    instance.mem_limit = randomize("int", min_val=1, max_val=1000)
     instance.name = randomize()
     instance.params = randomize()
     return instance
@@ -623,22 +623,22 @@ def create_models_update_pod_config_request_example() -> ModelsUpdatePodConfigRe
 def create_models_update_port_request_example() -> ModelsUpdatePortRequest:
     instance = ModelsUpdatePortRequest()
     instance.name = randomize()
-    instance.port = randomize("int")
+    instance.port = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
 def create_models_update_region_override_request_example() -> ModelsUpdateRegionOverrideRequest:
     instance = ModelsUpdateRegionOverrideRequest()
-    instance.buffer_count = randomize("int")
-    instance.buffer_percent = randomize("int")
-    instance.max_count = randomize("int")
-    instance.min_count = randomize("int")
+    instance.buffer_count = randomize("int", min_val=1, max_val=1000)
+    instance.buffer_percent = randomize("int", min_val=1, max_val=1000)
+    instance.max_count = randomize("int", min_val=1, max_val=1000)
+    instance.min_count = randomize("int", min_val=1, max_val=1000)
     instance.use_buffer_percent = randomize("bool")
     return instance
 
 
 def create_response_error_example() -> ResponseError:
     instance = ResponseError()
-    instance.error_code = randomize("int")
+    instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
     return instance

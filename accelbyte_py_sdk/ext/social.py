@@ -68,7 +68,7 @@ def create_game_profile_info_example() -> GameProfileInfo:
 
 def create_error_entity_example() -> ErrorEntity:
     instance = ErrorEntity()
-    instance.error_code = randomize("int")
+    instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
     instance.message_variables = {randomize(): randomize()}
     instance.dev_stack_trace = randomize()
@@ -87,7 +87,7 @@ def create_field_validation_error_example() -> FieldValidationError:
 
 def create_validation_error_entity_example() -> ValidationErrorEntity:
     instance = ValidationErrorEntity()
-    instance.error_code = randomize("int")
+    instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
     instance.errors = [create_field_validation_error_example()]
     return instance
@@ -134,7 +134,7 @@ def create_global_stat_item_info_example() -> GlobalStatItemInfo:
     instance.stat_code = randomize()
     instance.stat_name = randomize()
     instance.namespace = randomize("slug")
-    instance.value = randomize()
+    instance.value = randomize("int", min_val=1, max_val=1000)
     instance.tags = [randomize()]
     instance.created_at = randomize("date")
     instance.updated_at = randomize("date")
@@ -167,7 +167,7 @@ def create_bulk_user_stat_item_inc_example() -> BulkUserStatItemInc:
     instance = BulkUserStatItemInc()
     instance.user_id = randomize("uid")
     instance.stat_code = randomize()
-    instance.inc = randomize()
+    instance.inc = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -176,7 +176,7 @@ def create_user_stat_item_info_example() -> UserStatItemInfo:
     instance.stat_code = randomize()
     instance.stat_name = randomize()
     instance.namespace = randomize("slug")
-    instance.value = randomize()
+    instance.value = randomize("int", min_val=1, max_val=1000)
     instance.tags = [randomize()]
     instance.created_at = randomize("date")
     instance.updated_at = randomize("date")
@@ -198,9 +198,9 @@ def create_stat_info_example() -> StatInfo:
     instance.status = randomize()
     instance.name = randomize()
     instance.description = randomize()
-    instance.minimum = randomize()
-    instance.maximum = randomize()
-    instance.default_value = randomize()
+    instance.minimum = randomize("int", min_val=1, max_val=1000)
+    instance.maximum = randomize("int", min_val=1, max_val=1000)
+    instance.default_value = randomize("int", min_val=1, max_val=1000)
     instance.increment_only = randomize("bool")
     instance.set_as_global = randomize("bool")
     instance.set_by = randomize()
@@ -230,9 +230,9 @@ def create_stat_create_example() -> StatCreate:
     instance.stat_code = randomize()
     instance.name = randomize()
     instance.description = randomize()
-    instance.minimum = randomize()
-    instance.maximum = randomize()
-    instance.default_value = randomize()
+    instance.minimum = randomize("int", min_val=1, max_val=1000)
+    instance.maximum = randomize("int", min_val=1, max_val=1000)
+    instance.default_value = randomize("int", min_val=1, max_val=1000)
     instance.increment_only = randomize("bool")
     instance.set_as_global = randomize("bool")
     instance.set_by = randomize()
@@ -252,7 +252,7 @@ def create_stat_import_info_example() -> StatImportInfo:
 def create_bulk_stat_item_inc_example() -> BulkStatItemInc:
     instance = BulkStatItemInc()
     instance.stat_code = randomize()
-    instance.inc = randomize()
+    instance.inc = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -277,7 +277,7 @@ def create_bulk_stat_item_reset_example() -> BulkStatItemReset:
 
 def create_stat_item_inc_result_example() -> StatItemIncResult:
     instance = StatItemIncResult()
-    instance.current_value = randomize()
+    instance.current_value = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -289,7 +289,7 @@ def create_stat_reset_info_example() -> StatResetInfo:
 
 def create_stat_item_inc_example() -> StatItemInc:
     instance = StatItemInc()
-    instance.inc = randomize()
+    instance.inc = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -299,7 +299,7 @@ def create_bulk_user_stat_item_update_example() -> BulkUserStatItemUpdate:
     instance.additional_key = randomize()
     instance.stat_code = randomize()
     instance.update_strategy = randomize()
-    instance.value = randomize()
+    instance.value = randomize("int", min_val=1, max_val=1000)
     instance.additional_data = {randomize(): randomize()}
     return instance
 
@@ -308,7 +308,7 @@ def create_bulk_stat_item_update_example() -> BulkStatItemUpdate:
     instance = BulkStatItemUpdate()
     instance.stat_code = randomize()
     instance.update_strategy = randomize()
-    instance.value = randomize()
+    instance.value = randomize("int", min_val=1, max_val=1000)
     instance.additional_data = {randomize(): randomize()}
     return instance
 
@@ -316,7 +316,7 @@ def create_bulk_stat_item_update_example() -> BulkStatItemUpdate:
 def create_stat_item_update_example() -> StatItemUpdate:
     instance = StatItemUpdate()
     instance.update_strategy = randomize()
-    instance.value = randomize()
+    instance.value = randomize("int", min_val=1, max_val=1000)
     instance.additional_data = {randomize(): randomize()}
     return instance
 
@@ -324,15 +324,15 @@ def create_stat_item_update_example() -> StatItemUpdate:
 def create_namespace_slot_config_info_example() -> NamespaceSlotConfigInfo:
     instance = NamespaceSlotConfigInfo()
     instance.namespace = randomize("slug")
-    instance.max_slots = randomize("int")
-    instance.max_slot_size = randomize("int")
+    instance.max_slots = randomize("int", min_val=1, max_val=1000)
+    instance.max_slot_size = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
 def create_slot_config_update_example() -> SlotConfigUpdate:
     instance = SlotConfigUpdate()
-    instance.max_slots = randomize("int")
-    instance.max_slot_size = randomize("int")
+    instance.max_slots = randomize("int", min_val=1, max_val=1000)
+    instance.max_slot_size = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -345,10 +345,10 @@ def create_slot_info_example() -> SlotInfo:
     instance.original_name = randomize()
     instance.stored_name = randomize()
     instance.mime_type = randomize()
-    instance.size = randomize("int")
-    instance.date_created = randomize()
-    instance.date_modified = randomize()
-    instance.date_accessed = randomize()
+    instance.size = randomize("int", min_val=1, max_val=1000)
+    instance.date_created = randomize("date")
+    instance.date_modified = randomize("date")
+    instance.date_accessed = randomize("date")
     instance.checksum = randomize()
     instance.tags = [randomize()]
     instance.custom_attribute = randomize()
@@ -359,8 +359,8 @@ def create_user_slot_config_info_example() -> UserSlotConfigInfo:
     instance = UserSlotConfigInfo()
     instance.user_id = randomize("uid")
     instance.namespace = randomize("slug")
-    instance.max_slots = randomize("int")
-    instance.max_slot_size = randomize("int")
+    instance.max_slots = randomize("int", min_val=1, max_val=1000)
+    instance.max_slot_size = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

@@ -217,12 +217,12 @@ def create_campaign_info_example() -> CampaignInfo:
     instance.description = randomize()
     instance.tags = [randomize()]
     instance.status = randomize()
-    instance.redeem_start = randomize()
-    instance.redeem_end = randomize()
-    instance.max_redeem_count_per_code = randomize("int")
-    instance.max_redeem_count_per_code_per_user = randomize("int")
-    instance.max_redeem_count_per_campaign_per_user = randomize("int")
-    instance.max_sale_count = randomize("int")
+    instance.redeem_start = randomize("date")
+    instance.redeem_end = randomize("date")
+    instance.max_redeem_count_per_code = randomize("int", min_val=1, max_val=1000)
+    instance.max_redeem_count_per_code_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_redeem_count_per_campaign_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_sale_count = randomize("int", min_val=1, max_val=1000)
     instance.redeem_type = randomize()
     instance.items = [create_redeemable_item_example()]
     instance.booth_name = randomize()
@@ -235,14 +235,14 @@ def create_redeemable_item_example() -> RedeemableItem:
     instance = RedeemableItem()
     instance.item_id = randomize()
     instance.item_name = randomize()
-    instance.quantity = randomize("int")
-    instance.extra_subscription_days = randomize("int")
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
+    instance.extra_subscription_days = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
 def create_error_entity_example() -> ErrorEntity:
     instance = ErrorEntity()
-    instance.error_code = randomize("int")
+    instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
     instance.message_variables = {randomize(): randomize()}
     instance.dev_stack_trace = randomize()
@@ -261,7 +261,7 @@ def create_field_validation_error_example() -> FieldValidationError:
 
 def create_validation_error_entity_example() -> ValidationErrorEntity:
     instance = ValidationErrorEntity()
-    instance.error_code = randomize("int")
+    instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
     instance.errors = [create_field_validation_error_example()]
     return instance
@@ -274,12 +274,12 @@ def create_campaign_create_example() -> CampaignCreate:
     instance.description = randomize()
     instance.tags = [randomize()]
     instance.status = randomize()
-    instance.max_redeem_count_per_code = randomize("int")
-    instance.max_redeem_count_per_code_per_user = randomize("int")
-    instance.max_redeem_count_per_campaign_per_user = randomize("int")
-    instance.max_sale_count = randomize("int")
-    instance.redeem_start = randomize()
-    instance.redeem_end = randomize()
+    instance.max_redeem_count_per_code = randomize("int", min_val=1, max_val=1000)
+    instance.max_redeem_count_per_code_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_redeem_count_per_campaign_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_sale_count = randomize("int", min_val=1, max_val=1000)
+    instance.redeem_start = randomize("date")
+    instance.redeem_end = randomize("date")
     instance.redeem_type = randomize()
     instance.items = [create_redeemable_item_example()]
     return instance
@@ -301,11 +301,11 @@ def create_paging_example() -> Paging:
 
 def create_campaign_dynamic_info_example() -> CampaignDynamicInfo:
     instance = CampaignDynamicInfo()
-    instance.available_sale_count = randomize("int")
-    instance.quantity = randomize("int")
-    instance.sale_count = randomize("int")
-    instance.last_batch_no = randomize("int")
-    instance.remainder = randomize("int")
+    instance.available_sale_count = randomize("int", min_val=1, max_val=1000)
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
+    instance.sale_count = randomize("int", min_val=1, max_val=1000)
+    instance.last_batch_no = randomize("int", min_val=1, max_val=1000)
+    instance.remainder = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -315,12 +315,12 @@ def create_campaign_update_example() -> CampaignUpdate:
     instance.description = randomize()
     instance.status = randomize()
     instance.tags = [randomize()]
-    instance.max_redeem_count_per_code = randomize("int")
-    instance.max_redeem_count_per_code_per_user = randomize("int")
-    instance.max_redeem_count_per_campaign_per_user = randomize("int")
-    instance.max_sale_count = randomize("int")
-    instance.redeem_start = randomize()
-    instance.redeem_end = randomize()
+    instance.max_redeem_count_per_code = randomize("int", min_val=1, max_val=1000)
+    instance.max_redeem_count_per_code_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_redeem_count_per_campaign_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_sale_count = randomize("int", min_val=1, max_val=1000)
+    instance.redeem_start = randomize("date")
+    instance.redeem_end = randomize("date")
     instance.redeem_type = randomize()
     instance.items = [create_redeemable_item_example()]
     return instance
@@ -333,17 +333,17 @@ def create_code_info_example() -> CodeInfo:
     instance.namespace = randomize("slug")
     instance.campaign_id = randomize()
     instance.value = randomize()
-    instance.max_redeem_count_per_code = randomize("int")
-    instance.max_redeem_count_per_code_per_user = randomize("int")
-    instance.max_redeem_count_per_campaign_per_user = randomize("int")
-    instance.remainder = randomize("int")
-    instance.redeemed_count = randomize("int")
+    instance.max_redeem_count_per_code = randomize("int", min_val=1, max_val=1000)
+    instance.max_redeem_count_per_code_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_redeem_count_per_campaign_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.remainder = randomize("int", min_val=1, max_val=1000)
+    instance.redeemed_count = randomize("int", min_val=1, max_val=1000)
     instance.status = randomize()
-    instance.redeem_start = randomize()
-    instance.redeem_end = randomize()
+    instance.redeem_start = randomize("date")
+    instance.redeem_end = randomize("date")
     instance.redeem_type = randomize()
     instance.items = [create_redeemable_item_example()]
-    instance.batch_no = randomize("int")
+    instance.batch_no = randomize("int", min_val=1, max_val=1000)
     instance.acquire_order_no = randomize()
     instance.acquire_user_id = randomize()
     instance.created_at = randomize("date")
@@ -361,7 +361,7 @@ def create_redeem_history_info_example() -> RedeemHistoryInfo:
     instance.order_no = randomize()
     instance.created_at = randomize("date")
     instance.updated_at = randomize("date")
-    instance.redeemed_at = randomize()
+    instance.redeemed_at = randomize("date")
     return instance
 
 
@@ -374,19 +374,19 @@ def create_redeem_history_paging_sliced_result_example() -> RedeemHistoryPagingS
 
 def create_bulk_operation_result_example() -> BulkOperationResult:
     instance = BulkOperationResult()
-    instance.affected = randomize("int")
+    instance.affected = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
 def create_code_create_result_example() -> CodeCreateResult:
     instance = CodeCreateResult()
-    instance.num_created = randomize("int")
+    instance.num_created = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
 def create_code_create_example() -> CodeCreate:
     instance = CodeCreate()
-    instance.quantity = randomize("int")
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -444,9 +444,9 @@ def create_key_paging_slice_result_example() -> KeyPagingSliceResult:
 
 def create_key_group_dynamic_info_example() -> KeyGroupDynamicInfo:
     instance = KeyGroupDynamicInfo()
-    instance.available_sale_count = randomize("int")
-    instance.quantity = randomize("int")
-    instance.sale_count = randomize("int")
+    instance.available_sale_count = randomize("int", min_val=1, max_val=1000)
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
+    instance.sale_count = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -469,13 +469,13 @@ def create_key_group_create_example() -> KeyGroupCreate:
 def create_ticket_sale_increment_result_example() -> TicketSaleIncrementResult:
     instance = TicketSaleIncrementResult()
     instance.success = randomize("bool")
-    instance.max_sale_count = randomize("int")
+    instance.max_sale_count = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
 def create_ticket_sale_increment_request_example() -> TicketSaleIncrementRequest:
     instance = TicketSaleIncrementRequest()
-    instance.count = randomize("int")
+    instance.count = randomize("int", min_val=1, max_val=1000)
     instance.order_no = randomize()
     return instance
 
@@ -489,7 +489,7 @@ def create_ticket_booth_id_example() -> TicketBoothID:
 
 def create_ticket_dynamic_info_example() -> TicketDynamicInfo:
     instance = TicketDynamicInfo()
-    instance.available_sale_count = randomize("int")
+    instance.available_sale_count = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -520,7 +520,7 @@ def create_ticket_acquire_result_example() -> TicketAcquireResult:
 
 def create_ticket_acquire_request_example() -> TicketAcquireRequest:
     instance = TicketAcquireRequest()
-    instance.count = randomize("int")
+    instance.count = randomize("int", min_val=1, max_val=1000)
     instance.order_no = randomize()
     return instance
 
@@ -547,7 +547,7 @@ def create_full_app_info_example() -> FullAppInfo:
     instance.primary_genre = randomize()
     instance.genres = [randomize()]
     instance.players = [randomize()]
-    instance.release_date = randomize()
+    instance.release_date = randomize("date")
     return instance
 
 
@@ -589,7 +589,7 @@ def create_app_update_example() -> AppUpdate:
     instance.primary_genre = randomize()
     instance.genres = [randomize()]
     instance.players = [randomize()]
-    instance.release_date = randomize()
+    instance.release_date = randomize("date")
     return instance
 
 
@@ -640,7 +640,7 @@ def create_full_item_info_example() -> FullItemInfo:
     instance.sku = randomize("slug")
     instance.name = randomize()
     instance.entitlement_type = randomize()
-    instance.use_count = randomize("int")
+    instance.use_count = randomize("int", min_val=1, max_val=1000)
     instance.stackable = randomize("bool")
     instance.category_path = randomize()
     instance.images = [create_image_example()]
@@ -659,12 +659,12 @@ def create_full_item_info_example() -> FullItemInfo:
     instance.bound_item_ids = [randomize()]
     instance.tags = [randomize()]
     instance.features = [randomize()]
-    instance.max_count_per_user = randomize("int")
-    instance.max_count = randomize("int")
+    instance.max_count_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.clazz = randomize()
     instance.ext = {randomize(): randomize()}
     instance.booth_name = randomize()
-    instance.display_order = randomize("int")
+    instance.display_order = randomize("int", min_val=1, max_val=1000)
     instance.created_at = randomize("date")
     instance.updated_at = randomize("date")
     return instance
@@ -674,8 +674,8 @@ def create_image_example() -> Image:
     instance = Image()
     instance.as_ = randomize()
     instance.caption = randomize()
-    instance.height = randomize("int")
-    instance.width = randomize("int")
+    instance.height = randomize("int", min_val=1, max_val=1000)
+    instance.width = randomize("int", min_val=1, max_val=1000)
     instance.image_url = randomize("url")
     instance.small_image_url = randomize("url")
     return instance
@@ -693,26 +693,26 @@ def create_localization_example() -> Localization:
 def create_recurring_example() -> Recurring:
     instance = Recurring()
     instance.cycle = randomize()
-    instance.fixed_free_days = randomize("int")
-    instance.fixed_trial_cycles = randomize("int")
-    instance.grace_days = randomize("int")
+    instance.fixed_free_days = randomize("int", min_val=1, max_val=1000)
+    instance.fixed_trial_cycles = randomize("int", min_val=1, max_val=1000)
+    instance.grace_days = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
 def create_region_data_item_example() -> RegionDataItem:
     instance = RegionDataItem()
-    instance.price = randomize("int")
-    instance.discount_percentage = randomize("int")
-    instance.discount_amount = randomize("int")
-    instance.discounted_price = randomize("int")
+    instance.price = randomize("int", min_val=1, max_val=1000)
+    instance.discount_percentage = randomize("int", min_val=1, max_val=1000)
+    instance.discount_amount = randomize("int", min_val=1, max_val=1000)
+    instance.discounted_price = randomize("int", min_val=1, max_val=1000)
     instance.currency_code = randomize()
     instance.currency_type = randomize()
     instance.currency_namespace = randomize("slug")
-    instance.trial_price = randomize("int")
-    instance.purchase_at = randomize()
-    instance.expire_at = randomize()
-    instance.discount_purchase_at = randomize()
-    instance.discount_expire_at = randomize()
+    instance.trial_price = randomize("int", min_val=1, max_val=1000)
+    instance.purchase_at = randomize("date")
+    instance.expire_at = randomize("date")
+    instance.discount_purchase_at = randomize("date")
+    instance.discount_expire_at = randomize("date")
     return instance
 
 
@@ -730,7 +730,7 @@ def create_item_info_example() -> ItemInfo:
     instance.namespace = randomize("slug")
     instance.name = randomize()
     instance.entitlement_type = randomize()
-    instance.use_count = randomize("int")
+    instance.use_count = randomize("int", min_val=1, max_val=1000)
     instance.stackable = randomize("bool")
     instance.category_path = randomize()
     instance.status = randomize()
@@ -748,11 +748,11 @@ def create_item_info_example() -> ItemInfo:
     instance.bound_item_ids = [randomize()]
     instance.tags = [randomize()]
     instance.features = [randomize()]
-    instance.max_count_per_user = randomize("int")
-    instance.max_count = randomize("int")
+    instance.max_count_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.clazz = randomize()
     instance.booth_name = randomize()
-    instance.display_order = randomize("int")
+    instance.display_order = randomize("int", min_val=1, max_val=1000)
     instance.ext = {randomize(): randomize()}
     instance.region = randomize()
     instance.language = randomize()
@@ -776,7 +776,7 @@ def create_populated_item_info_example() -> PopulatedItemInfo:
     instance.namespace = randomize("slug")
     instance.name = randomize()
     instance.entitlement_type = randomize()
-    instance.use_count = randomize("int")
+    instance.use_count = randomize("int", min_val=1, max_val=1000)
     instance.stackable = randomize("bool")
     instance.category_path = randomize()
     instance.status = randomize()
@@ -794,11 +794,11 @@ def create_populated_item_info_example() -> PopulatedItemInfo:
     instance.bound_item_ids = [randomize()]
     instance.tags = [randomize()]
     instance.features = [randomize()]
-    instance.max_count_per_user = randomize("int")
-    instance.max_count = randomize("int")
+    instance.max_count_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.clazz = randomize()
     instance.booth_name = randomize()
-    instance.display_order = randomize("int")
+    instance.display_order = randomize("int", min_val=1, max_val=1000)
     instance.ext = {randomize(): randomize()}
     instance.region = randomize()
     instance.language = randomize()
@@ -831,14 +831,14 @@ def create_full_item_paging_sliced_result_example() -> FullItemPagingSlicedResul
 def create_item_acquire_result_example() -> ItemAcquireResult:
     instance = ItemAcquireResult()
     instance.success = randomize("bool")
-    instance.max_count = randomize("int")
+    instance.max_count = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
 def create_item_acquire_request_example() -> ItemAcquireRequest:
     instance = ItemAcquireRequest()
     instance.order_no = randomize()
-    instance.count = randomize("int")
+    instance.count = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -847,7 +847,7 @@ def create_item_update_example() -> ItemUpdate:
     instance.item_type = randomize()
     instance.name = randomize()
     instance.entitlement_type = randomize()
-    instance.use_count = randomize("int")
+    instance.use_count = randomize("int", min_val=1, max_val=1000)
     instance.stackable = randomize("bool")
     instance.app_id = randomize("uid")
     instance.app_type = randomize()
@@ -868,10 +868,10 @@ def create_item_update_example() -> ItemUpdate:
     instance.recurring = create_recurring_example()
     instance.tags = [randomize()]
     instance.features = [randomize()]
-    instance.max_count_per_user = randomize("int")
-    instance.max_count = randomize("int")
+    instance.max_count_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.booth_name = randomize()
-    instance.display_order = randomize("int")
+    instance.display_order = randomize("int", min_val=1, max_val=1000)
     instance.clazz = randomize()
     instance.ext = {randomize(): randomize()}
     return instance
@@ -881,9 +881,9 @@ def create_item_dynamic_data_info_example() -> ItemDynamicDataInfo:
     instance = ItemDynamicDataInfo()
     instance.item_id = randomize()
     instance.namespace = randomize("slug")
-    instance.available_count = randomize("int")
-    instance.user_available_count = randomize("int")
-    instance.user_purchase_limit = randomize("int")
+    instance.available_count = randomize("int", min_val=1, max_val=1000)
+    instance.user_available_count = randomize("int", min_val=1, max_val=1000)
+    instance.user_purchase_limit = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -900,7 +900,7 @@ def create_item_create_example() -> ItemCreate:
     instance.item_type = randomize()
     instance.name = randomize()
     instance.entitlement_type = randomize()
-    instance.use_count = randomize("int")
+    instance.use_count = randomize("int", min_val=1, max_val=1000)
     instance.stackable = randomize("bool")
     instance.app_id = randomize("uid")
     instance.app_type = randomize()
@@ -921,10 +921,10 @@ def create_item_create_example() -> ItemCreate:
     instance.recurring = create_recurring_example()
     instance.tags = [randomize()]
     instance.features = [randomize()]
-    instance.max_count_per_user = randomize("int")
-    instance.max_count = randomize("int")
+    instance.max_count_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.booth_name = randomize()
-    instance.display_order = randomize("int")
+    instance.display_order = randomize("int", min_val=1, max_val=1000)
     instance.clazz = randomize()
     instance.ext = {randomize(): randomize()}
     return instance
@@ -941,7 +941,7 @@ def create_basic_item_example() -> BasicItem:
     instance.namespace = randomize("slug")
     instance.name = randomize()
     instance.entitlement_type = randomize()
-    instance.use_count = randomize("int")
+    instance.use_count = randomize("int", min_val=1, max_val=1000)
     instance.status = randomize()
     instance.item_type = randomize()
     instance.tags = [randomize()]
@@ -973,7 +973,7 @@ def create_store_info_example() -> StoreInfo:
     instance.supported_regions = [randomize()]
     instance.default_region = randomize()
     instance.default_language = randomize()
-    instance.published_time = randomize()
+    instance.published_time = randomize("date")
     instance.created_at = randomize("date")
     instance.updated_at = randomize("date")
     return instance
@@ -1017,7 +1017,7 @@ def create_app_info_example() -> AppInfo:
     instance.primary_genre = randomize()
     instance.genres = [randomize()]
     instance.players = [randomize()]
-    instance.release_date = randomize()
+    instance.release_date = randomize("date")
     instance.region = randomize()
     instance.language = randomize()
     return instance
@@ -1062,7 +1062,7 @@ def create_currency_info_example() -> CurrencyInfo:
     instance.currency_symbol = randomize()
     instance.namespace = randomize("slug")
     instance.currency_type = randomize()
-    instance.decimals = randomize("int")
+    instance.decimals = randomize("int", min_val=1, max_val=1000)
     instance.created_at = randomize("date")
     instance.updated_at = randomize("date")
     return instance
@@ -1074,7 +1074,7 @@ def create_currency_create_example() -> CurrencyCreate:
     instance.localization_descriptions = {randomize(): randomize()}
     instance.currency_symbol = randomize()
     instance.currency_type = randomize()
-    instance.decimals = randomize("int")
+    instance.decimals = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -1084,7 +1084,7 @@ def create_currency_summary_example() -> CurrencySummary:
     instance.currency_symbol = randomize()
     instance.currency_type = randomize()
     instance.namespace = randomize("slug")
-    instance.decimals = randomize("int")
+    instance.decimals = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -1117,16 +1117,16 @@ def create_entitlement_info_example() -> EntitlementInfo:
     instance.item_namespace = randomize("slug")
     instance.name = randomize()
     instance.features = [randomize()]
-    instance.use_count = randomize("int")
-    instance.quantity = randomize("int")
+    instance.use_count = randomize("int", min_val=1, max_val=1000)
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
     instance.source = randomize()
-    instance.distributed_quantity = randomize("int")
+    instance.distributed_quantity = randomize("int", min_val=1, max_val=1000)
     instance.target_namespace = randomize("slug")
     instance.item_snapshot = create_item_snapshot_example()
     instance.start_date = randomize("date")
     instance.end_date = randomize("date")
     instance.stackable = randomize("bool")
-    instance.granted_at = randomize()
+    instance.granted_at = randomize("date")
     instance.created_at = randomize("date")
     instance.updated_at = randomize("date")
     return instance
@@ -1152,7 +1152,7 @@ def create_item_snapshot_example() -> ItemSnapshot:
     instance.listable = randomize("bool")
     instance.purchasable = randomize("bool")
     instance.entitlement_type = randomize()
-    instance.use_count = randomize("int")
+    instance.use_count = randomize("int", min_val=1, max_val=1000)
     instance.stackable = randomize("bool")
     instance.item_type = randomize()
     instance.thumbnail_url = randomize("url")
@@ -1165,8 +1165,8 @@ def create_item_snapshot_example() -> ItemSnapshot:
     instance.recurring = create_recurring_example()
     instance.item_ids = [randomize()]
     instance.features = [randomize()]
-    instance.max_count_per_user = randomize("int")
-    instance.max_count = randomize("int")
+    instance.max_count_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.booth_name = randomize()
     instance.region = randomize()
     instance.language = randomize()
@@ -1182,8 +1182,8 @@ def create_entitlement_history_info_example() -> EntitlementHistoryInfo:
     instance.action = randomize()
     instance.operator = randomize()
     instance.user_id = randomize("uid")
-    instance.use_count = randomize("int")
-    instance.quantity = randomize("int")
+    instance.use_count = randomize("int", min_val=1, max_val=1000)
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
     instance.created_at = randomize("date")
     instance.updated_at = randomize("date")
     return instance
@@ -1202,8 +1202,8 @@ def create_entitlement_update_example() -> EntitlementUpdate:
     instance = EntitlementUpdate()
     instance.null_field_list = [randomize()]
     instance.status = randomize()
-    instance.use_count = randomize("int")
-    instance.quantity = randomize("int")
+    instance.use_count = randomize("int", min_val=1, max_val=1000)
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
     instance.start_date = randomize("date")
     instance.end_date = randomize("date")
     return instance
@@ -1232,7 +1232,7 @@ def create_app_entitlement_info_example() -> AppEntitlementInfo:
     instance.item_id = randomize()
     instance.start_date = randomize("date")
     instance.end_date = randomize("date")
-    instance.granted_at = randomize()
+    instance.granted_at = randomize("date")
     instance.status = randomize()
     instance.item_snapshot = create_item_snapshot_example()
     return instance
@@ -1240,7 +1240,7 @@ def create_app_entitlement_info_example() -> AppEntitlementInfo:
 
 def create_entitlement_decrement_example() -> EntitlementDecrement:
     instance = EntitlementDecrement()
-    instance.use_count = randomize("int")
+    instance.use_count = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -1268,20 +1268,20 @@ def create_stackable_entitlement_info_example() -> StackableEntitlementInfo:
     instance.item_namespace = randomize("slug")
     instance.name = randomize()
     instance.features = [randomize()]
-    instance.use_count = randomize("int")
-    instance.quantity = randomize("int")
+    instance.use_count = randomize("int", min_val=1, max_val=1000)
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
     instance.source = randomize()
-    instance.distributed_quantity = randomize("int")
+    instance.distributed_quantity = randomize("int", min_val=1, max_val=1000)
     instance.target_namespace = randomize("slug")
     instance.item_snapshot = create_item_snapshot_example()
     instance.start_date = randomize("date")
     instance.end_date = randomize("date")
     instance.stackable = randomize("bool")
-    instance.granted_at = randomize()
+    instance.granted_at = randomize("date")
     instance.created_at = randomize("date")
     instance.updated_at = randomize("date")
-    instance.stacked_use_count = randomize("int")
-    instance.stacked_quantity = randomize("int")
+    instance.stacked_use_count = randomize("int", min_val=1, max_val=1000)
+    instance.stacked_quantity = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -1291,7 +1291,7 @@ def create_entitlement_grant_example() -> EntitlementGrant:
     instance.item_id = randomize()
     instance.granted_code = randomize()
     instance.item_namespace = randomize("slug")
-    instance.quantity = randomize("int")
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
     instance.source = randomize()
     instance.start_date = randomize("date")
     instance.end_date = randomize("date")
@@ -1311,7 +1311,7 @@ def create_credit_summary_example() -> CreditSummary:
     instance.wallet_id = randomize()
     instance.namespace = randomize("slug")
     instance.user_id = randomize("uid")
-    instance.amount = randomize("int")
+    instance.amount = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -1323,8 +1323,8 @@ def create_entitlement_summary_example() -> EntitlementSummary:
     instance.clazz = randomize()
     instance.type_ = randomize()
     instance.stackable = randomize("bool")
-    instance.stacked_use_count = randomize("int")
-    instance.stacked_quantity = randomize("int")
+    instance.stacked_use_count = randomize("int", min_val=1, max_val=1000)
+    instance.stacked_quantity = randomize("int", min_val=1, max_val=1000)
     instance.store_id = randomize()
     instance.item_id = randomize()
     instance.created_at = randomize("date")
@@ -1337,8 +1337,8 @@ def create_entitlement_summary_example() -> EntitlementSummary:
 
 def create_fulfillment_error_example() -> FulfillmentError:
     instance = FulfillmentError()
-    instance.http_status = randomize("int")
-    instance.code = randomize("int")
+    instance.http_status = randomize("int", min_val=1, max_val=1000)
+    instance.code = randomize("int", min_val=1, max_val=1000)
     instance.message = randomize()
     return instance
 
@@ -1375,8 +1375,8 @@ def create_fulfillment_item_example() -> FulfillmentItem:
     instance.item_sku = randomize()
     instance.item_type = randomize()
     instance.item_name = randomize()
-    instance.quantity = randomize("int")
-    instance.extra_subscription_days = randomize("int")
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
+    instance.extra_subscription_days = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -1398,8 +1398,8 @@ def create_subscription_summary_example() -> SubscriptionSummary:
     instance.item_id = randomize()
     instance.sku = randomize("slug")
     instance.status = randomize()
-    instance.current_period_start = randomize()
-    instance.current_period_end = randomize()
+    instance.current_period_start = randomize("date")
+    instance.current_period_end = randomize("date")
     instance.subscribed_by = randomize()
     return instance
 
@@ -1409,7 +1409,7 @@ def create_fulfillment_request_example() -> FulfillmentRequest:
     instance.store_id = randomize()
     instance.item_id = randomize()
     instance.item_sku = randomize()
-    instance.quantity = randomize("int")
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
     instance.order_no = randomize()
     instance.source = randomize()
     instance.start_date = randomize("date")
@@ -1488,7 +1488,7 @@ def create_google_iap_config_request_example() -> GoogleIAPConfigRequest:
 
 def create_steam_iap_config_example() -> SteamIAPConfig:
     instance = SteamIAPConfig()
-    instance.rvn = randomize("int")
+    instance.rvn = randomize("int", min_val=1, max_val=1000)
     instance.created_at = randomize("date")
     instance.updated_at = randomize("date")
     instance.namespace = randomize("slug")
@@ -1558,10 +1558,10 @@ def create_iap_order_info_example() -> IAPOrderInfo:
     instance.status_reason = randomize()
     instance.region = randomize()
     instance.language = randomize()
-    instance.quantity = randomize("int")
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
     instance.sandbox = randomize("bool")
     instance.type_ = randomize()
-    instance.fulfilled_time = randomize()
+    instance.fulfilled_time = randomize("date")
     instance.entitlements = [create_entitlement_summary_example()]
     instance.credits = [create_credit_summary_example()]
     return instance
@@ -1618,7 +1618,7 @@ def create_google_iap_receipt_example() -> GoogleIAPReceipt:
     instance.order_id = randomize()
     instance.package_name = randomize()
     instance.product_id = randomize("uid")
-    instance.purchase_time = randomize("int")
+    instance.purchase_time = randomize("int", min_val=1, max_val=1000)
     instance.purchase_token = randomize()
     instance.region = randomize()
     instance.language = randomize()
@@ -1659,7 +1659,7 @@ def create_epic_games_reconcile_request_example() -> EpicGamesReconcileRequest:
 
 def create_order_statistics_example() -> OrderStatistics:
     instance = OrderStatistics()
-    instance.total = randomize("int")
+    instance.total = randomize("int", min_val=1, max_val=1000)
     instance.status_count = {}
     return instance
 
@@ -1672,16 +1672,16 @@ def create_order_info_example() -> OrderInfo:
     instance.user_id = randomize("uid")
     instance.item_id = randomize()
     instance.sandbox = randomize("bool")
-    instance.quantity = randomize("int")
-    instance.price = randomize("int")
-    instance.discounted_price = randomize("int")
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
+    instance.price = randomize("int", min_val=1, max_val=1000)
+    instance.discounted_price = randomize("int", min_val=1, max_val=1000)
     instance.payment_provider = randomize()
     instance.payment_method = randomize()
-    instance.tax = randomize("int")
-    instance.vat = randomize("int")
-    instance.sales_tax = randomize("int")
-    instance.payment_provider_fee = randomize("int")
-    instance.payment_method_fee = randomize("int")
+    instance.tax = randomize("int", min_val=1, max_val=1000)
+    instance.vat = randomize("int", min_val=1, max_val=1000)
+    instance.sales_tax = randomize("int", min_val=1, max_val=1000)
+    instance.payment_provider_fee = randomize("int", min_val=1, max_val=1000)
+    instance.payment_method_fee = randomize("int", min_val=1, max_val=1000)
     instance.currency = create_currency_summary_example()
     instance.payment_station_url = randomize("url")
     instance.item_snapshot = create_item_snapshot_example()
@@ -1689,18 +1689,18 @@ def create_order_info_example() -> OrderInfo:
     instance.language = randomize()
     instance.status = randomize()
     instance.status_reason = randomize()
-    instance.created_time = randomize()
-    instance.charged_time = randomize()
-    instance.fulfilled_time = randomize()
-    instance.refunded_time = randomize()
-    instance.chargeback_time = randomize()
-    instance.chargeback_reversed_time = randomize()
-    instance.expire_time = randomize()
-    instance.payment_remain_seconds = randomize("int")
+    instance.created_time = randomize("date")
+    instance.charged_time = randomize("date")
+    instance.fulfilled_time = randomize("date")
+    instance.refunded_time = randomize("date")
+    instance.chargeback_time = randomize("date")
+    instance.chargeback_reversed_time = randomize("date")
+    instance.expire_time = randomize("date")
+    instance.payment_remain_seconds = randomize("int", min_val=1, max_val=1000)
     instance.ext = {randomize(): randomize()}
-    instance.total_tax = randomize("int")
-    instance.total_price = randomize("int")
-    instance.subtotal_price = randomize("int")
+    instance.total_tax = randomize("int", min_val=1, max_val=1000)
+    instance.total_price = randomize("int", min_val=1, max_val=1000)
+    instance.subtotal_price = randomize("int", min_val=1, max_val=1000)
     instance.created_at = randomize("date")
     instance.updated_at = randomize("date")
     return instance
@@ -1716,13 +1716,13 @@ def create_order_paging_result_example() -> OrderPagingResult:
     instance = OrderPagingResult()
     instance.data = [create_order_info_example()]
     instance.paging = create_paging_example()
-    instance.total = randomize("int")
+    instance.total = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
 def create_order_example() -> Order:
     instance = Order()
-    instance.rvn = randomize("int")
+    instance.rvn = randomize("int", min_val=1, max_val=1000)
     instance.created_at = randomize("date")
     instance.updated_at = randomize("date")
     instance.order_no = randomize()
@@ -1732,25 +1732,25 @@ def create_order_example() -> Order:
     instance.status = randomize()
     instance.sandbox = randomize("bool")
     instance.item_id = randomize()
-    instance.quantity = randomize("int")
-    instance.price = randomize("int")
-    instance.discounted_price = randomize("int")
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
+    instance.price = randomize("int", min_val=1, max_val=1000)
+    instance.discounted_price = randomize("int", min_val=1, max_val=1000)
     instance.payment_provider = randomize()
     instance.payment_method = randomize()
-    instance.tax = randomize("int")
-    instance.vat = randomize("int")
-    instance.sales_tax = randomize("int")
-    instance.payment_provider_fee = randomize("int")
-    instance.payment_method_fee = randomize("int")
+    instance.tax = randomize("int", min_val=1, max_val=1000)
+    instance.vat = randomize("int", min_val=1, max_val=1000)
+    instance.sales_tax = randomize("int", min_val=1, max_val=1000)
+    instance.payment_provider_fee = randomize("int", min_val=1, max_val=1000)
+    instance.payment_method_fee = randomize("int", min_val=1, max_val=1000)
     instance.currency = create_currency_summary_example()
     instance.payment_station_url = randomize("url")
     instance.status_reason = randomize()
-    instance.created_time = randomize()
-    instance.charged_time = randomize()
-    instance.fulfilled_time = randomize()
-    instance.refunded_time = randomize()
-    instance.chargeback_time = randomize()
-    instance.chargeback_reversed_time = randomize()
+    instance.created_time = randomize("date")
+    instance.charged_time = randomize("date")
+    instance.fulfilled_time = randomize("date")
+    instance.refunded_time = randomize("date")
+    instance.chargeback_time = randomize("date")
+    instance.chargeback_reversed_time = randomize("date")
     instance.return_url = randomize("url")
     instance.ext = {randomize(): randomize()}
     instance.item_snapshot = create_item_snapshot_example()
@@ -1759,13 +1759,13 @@ def create_order_example() -> Order:
     instance.count_namespace = randomize("slug")
     instance.count_item_id = randomize()
     instance.count_user_id = randomize()
-    instance.expire_time = randomize()
-    instance.payment_remain_seconds = randomize("int")
+    instance.expire_time = randomize("date")
+    instance.payment_remain_seconds = randomize("int", min_val=1, max_val=1000)
     instance.charged = randomize("bool")
     instance.free = randomize("bool")
-    instance.total_tax = randomize("int")
-    instance.total_price = randomize("int")
-    instance.subtotal_price = randomize("int")
+    instance.total_tax = randomize("int", min_val=1, max_val=1000)
+    instance.total_price = randomize("int", min_val=1, max_val=1000)
+    instance.subtotal_price = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -1798,7 +1798,7 @@ def create_order_paging_sliced_result_example() -> OrderPagingSlicedResult:
 
 def create_purchased_item_count_example() -> PurchasedItemCount:
     instance = PurchasedItemCount()
-    instance.count = randomize("int")
+    instance.count = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -1819,7 +1819,7 @@ def create_trade_notification_example() -> TradeNotification:
     instance = TradeNotification()
     instance.namespace = randomize("slug")
     instance.user_id = randomize("uid")
-    instance.issued_at = randomize()
+    instance.issued_at = randomize("date")
     instance.type_ = randomize()
     instance.target_namespace = randomize("slug")
     instance.target_user_id = randomize()
@@ -1829,32 +1829,32 @@ def create_trade_notification_example() -> TradeNotification:
     instance.sku = randomize("slug")
     instance.ext_user_id = randomize()
     instance.sandbox = randomize("bool")
-    instance.price = randomize("int")
+    instance.price = randomize("int", min_val=1, max_val=1000)
     instance.payment_provider = randomize()
     instance.payment_method = randomize()
-    instance.tax = randomize("int")
-    instance.vat = randomize("int")
-    instance.sales_tax = randomize("int")
-    instance.payment_provider_fee = randomize("int")
-    instance.payment_method_fee = randomize("int")
+    instance.tax = randomize("int", min_val=1, max_val=1000)
+    instance.vat = randomize("int", min_val=1, max_val=1000)
+    instance.sales_tax = randomize("int", min_val=1, max_val=1000)
+    instance.payment_provider_fee = randomize("int", min_val=1, max_val=1000)
+    instance.payment_method_fee = randomize("int", min_val=1, max_val=1000)
     instance.currency = create_currency_summary_example()
     instance.payment_station_url = randomize("url")
     instance.status = randomize()
     instance.status_reason = randomize()
-    instance.authorised_time = randomize()
-    instance.created_time = randomize()
-    instance.charged_time = randomize()
-    instance.refunded_time = randomize()
-    instance.chargeback_time = randomize()
-    instance.chargeback_reversed_time = randomize()
+    instance.authorised_time = randomize("date")
+    instance.created_time = randomize("date")
+    instance.charged_time = randomize("date")
+    instance.refunded_time = randomize("date")
+    instance.chargeback_time = randomize("date")
+    instance.chargeback_reversed_time = randomize("date")
     instance.custom_parameters = {randomize(): randomize()}
     instance.metadata = {randomize(): randomize()}
     instance.subscription_id = randomize()
-    instance.total_tax = randomize("int")
-    instance.total_price = randomize("int")
-    instance.subtotal_price = randomize("int")
+    instance.total_tax = randomize("int", min_val=1, max_val=1000)
+    instance.total_price = randomize("int", min_val=1, max_val=1000)
+    instance.subtotal_price = randomize("int", min_val=1, max_val=1000)
     instance.ext_tx_id = randomize()
-    instance.tx_end_time = randomize()
+    instance.tx_end_time = randomize("date")
     instance.additional_data = create_additional_data_example()
     return instance
 
@@ -1869,9 +1869,9 @@ def create_order_grant_info_example() -> OrderGrantInfo:
 def create_order_create_example() -> OrderCreate:
     instance = OrderCreate()
     instance.item_id = randomize()
-    instance.quantity = randomize("int")
-    instance.price = randomize("int")
-    instance.discounted_price = randomize("int")
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
+    instance.price = randomize("int", min_val=1, max_val=1000)
+    instance.discounted_price = randomize("int", min_val=1, max_val=1000)
     instance.currency_code = randomize()
     instance.region = randomize()
     instance.language = randomize()
@@ -1963,8 +1963,8 @@ def create_wx_pay_config_info_example() -> WxPayConfigInfo:
 
 def create_xsolla_config_example() -> XsollaConfig:
     instance = XsollaConfig()
-    instance.merchant_id = randomize("int")
-    instance.project_id = randomize("int")
+    instance.merchant_id = randomize("int", min_val=1, max_val=1000)
+    instance.project_id = randomize("int", min_val=1, max_val=1000)
     instance.project_secret_key = randomize()
     instance.api_key = randomize()
     instance.flow_completion_url = randomize("url")
@@ -2039,27 +2039,27 @@ def create_payment_order_info_example() -> PaymentOrderInfo:
     instance.sku = randomize("slug")
     instance.ext_user_id = randomize()
     instance.sandbox = randomize("bool")
-    instance.price = randomize("int")
+    instance.price = randomize("int", min_val=1, max_val=1000)
     instance.payment_provider = randomize()
     instance.payment_method = randomize()
     instance.region = randomize()
     instance.language = randomize()
-    instance.tax = randomize("int")
-    instance.vat = randomize("int")
-    instance.sales_tax = randomize("int")
-    instance.payment_provider_fee = randomize("int")
-    instance.payment_method_fee = randomize("int")
+    instance.tax = randomize("int", min_val=1, max_val=1000)
+    instance.vat = randomize("int", min_val=1, max_val=1000)
+    instance.sales_tax = randomize("int", min_val=1, max_val=1000)
+    instance.payment_provider_fee = randomize("int", min_val=1, max_val=1000)
+    instance.payment_method_fee = randomize("int", min_val=1, max_val=1000)
     instance.currency = create_currency_summary_example()
     instance.payment_station_url = randomize("url")
     instance.transactions = [create_transaction_example()]
     instance.status = randomize()
     instance.status_reason = randomize()
-    instance.created_time = randomize()
-    instance.authorised_time = randomize()
-    instance.charged_time = randomize()
-    instance.refunded_time = randomize()
-    instance.chargeback_time = randomize()
-    instance.chargeback_reversed_time = randomize()
+    instance.created_time = randomize("date")
+    instance.authorised_time = randomize("date")
+    instance.charged_time = randomize("date")
+    instance.refunded_time = randomize("date")
+    instance.chargeback_time = randomize("date")
+    instance.chargeback_reversed_time = randomize("date")
     instance.return_url = randomize("url")
     instance.notify_url = randomize("url")
     instance.title = randomize()
@@ -2072,9 +2072,9 @@ def create_payment_order_info_example() -> PaymentOrderInfo:
     instance.charging = randomize("bool")
     instance.omit_notification = randomize("bool")
     instance.metadata = {randomize(): randomize()}
-    instance.total_tax = randomize("int")
-    instance.total_price = randomize("int")
-    instance.subtotal_price = randomize("int")
+    instance.total_tax = randomize("int", min_val=1, max_val=1000)
+    instance.total_price = randomize("int", min_val=1, max_val=1000)
+    instance.subtotal_price = randomize("int", min_val=1, max_val=1000)
     instance.created_at = randomize("date")
     instance.updated_at = randomize("date")
     return instance
@@ -2083,12 +2083,12 @@ def create_payment_order_info_example() -> PaymentOrderInfo:
 def create_transaction_example() -> Transaction:
     instance = Transaction()
     instance.tx_id = randomize()
-    instance.amount = randomize("int")
-    instance.tax = randomize("int")
-    instance.vat = randomize("int")
-    instance.sales_tax = randomize("int")
-    instance.payment_provider_fee = randomize("int")
-    instance.payment_method_fee = randomize("int")
+    instance.amount = randomize("int", min_val=1, max_val=1000)
+    instance.tax = randomize("int", min_val=1, max_val=1000)
+    instance.vat = randomize("int", min_val=1, max_val=1000)
+    instance.sales_tax = randomize("int", min_val=1, max_val=1000)
+    instance.payment_provider_fee = randomize("int", min_val=1, max_val=1000)
+    instance.payment_method_fee = randomize("int", min_val=1, max_val=1000)
     instance.currency = create_currency_summary_example()
     instance.type_ = randomize()
     instance.status = randomize()
@@ -2098,7 +2098,7 @@ def create_transaction_example() -> Transaction:
     instance.ext_tx_id = randomize()
     instance.ext_status_code = randomize()
     instance.ext_message = randomize()
-    instance.tx_end_time = randomize()
+    instance.tx_end_time = randomize("date")
     instance.additional_data = create_additional_data_example()
     instance.notified = randomize("bool")
     return instance
@@ -2117,7 +2117,7 @@ def create_notification_process_result_example() -> NotificationProcessResult:
     instance.status = randomize()
     instance.code = randomize()
     instance.custom_param = {randomize(): randomize()}
-    instance.severity = randomize("int")
+    instance.severity = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -2126,9 +2126,9 @@ def create_payment_order_notify_simulation_example() -> PaymentOrderNotifySimula
     instance.payment_provider = randomize()
     instance.notify_type = randomize()
     instance.currency_code = randomize()
-    instance.amount = randomize("int")
-    instance.vat = randomize("int")
-    instance.sales_tax = randomize("int")
+    instance.amount = randomize("int", min_val=1, max_val=1000)
+    instance.vat = randomize("int", min_val=1, max_val=1000)
+    instance.sales_tax = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -2148,7 +2148,7 @@ def create_payment_order_paging_sliced_result_example() -> PaymentOrderPagingSli
 
 def create_payment_order_example() -> PaymentOrder:
     instance = PaymentOrder()
-    instance.rvn = randomize("int")
+    instance.rvn = randomize("int", min_val=1, max_val=1000)
     instance.created_at = randomize("date")
     instance.updated_at = randomize("date")
     instance.payment_order_no = randomize()
@@ -2160,7 +2160,7 @@ def create_payment_order_example() -> PaymentOrder:
     instance.title = randomize()
     instance.description = randomize()
     instance.item_type = randomize()
-    instance.price = randomize("int")
+    instance.price = randomize("int", min_val=1, max_val=1000)
     instance.sku = randomize("slug")
     instance.ext_user_id = randomize()
     instance.target_namespace = randomize("slug")
@@ -2171,21 +2171,21 @@ def create_payment_order_example() -> PaymentOrder:
     instance.language = randomize()
     instance.zip_code = randomize("zip_code")
     instance.state = randomize()
-    instance.tax = randomize("int")
-    instance.vat = randomize("int")
-    instance.sales_tax = randomize("int")
-    instance.payment_provider_fee = randomize("int")
-    instance.payment_method_fee = randomize("int")
+    instance.tax = randomize("int", min_val=1, max_val=1000)
+    instance.vat = randomize("int", min_val=1, max_val=1000)
+    instance.sales_tax = randomize("int", min_val=1, max_val=1000)
+    instance.payment_provider_fee = randomize("int", min_val=1, max_val=1000)
+    instance.payment_method_fee = randomize("int", min_val=1, max_val=1000)
     instance.currency = create_currency_summary_example()
     instance.payment_station_url = randomize("url")
     instance.transactions = [create_transaction_example()]
     instance.status_reason = randomize()
-    instance.created_time = randomize()
-    instance.charged_time = randomize()
-    instance.authorised_time = randomize()
-    instance.refunded_time = randomize()
-    instance.chargeback_time = randomize()
-    instance.chargeback_reversed_time = randomize()
+    instance.created_time = randomize("date")
+    instance.charged_time = randomize("date")
+    instance.authorised_time = randomize("date")
+    instance.refunded_time = randomize("date")
+    instance.chargeback_time = randomize("date")
+    instance.chargeback_reversed_time = randomize("date")
     instance.return_url = randomize("url")
     instance.channel = randomize()
     instance.notify_url = randomize("url")
@@ -2195,9 +2195,9 @@ def create_payment_order_example() -> PaymentOrder:
     instance.recurring_payment_order_no = randomize()
     instance.omit_notification = randomize("bool")
     instance.metadata = {randomize(): randomize()}
-    instance.total_tax = randomize("int")
-    instance.total_price = randomize("int")
-    instance.subtotal_price = randomize("int")
+    instance.total_tax = randomize("int", min_val=1, max_val=1000)
+    instance.total_price = randomize("int", min_val=1, max_val=1000)
+    instance.subtotal_price = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -2266,7 +2266,7 @@ def create_payment_order_create_example() -> PaymentOrderCreate:
     instance.ext_order_no = randomize()
     instance.sku = randomize("slug")
     instance.ext_user_id = randomize()
-    instance.price = randomize("int")
+    instance.price = randomize("int", min_val=1, max_val=1000)
     instance.title = randomize()
     instance.description = randomize()
     instance.item_type = randomize()
@@ -2299,7 +2299,7 @@ def create_payment_order_create_result_example() -> PaymentOrderCreateResult:
     instance.target_user_id = randomize()
     instance.status = randomize()
     instance.payment_station_url = randomize("url")
-    instance.created_time = randomize()
+    instance.created_time = randomize("date")
     return instance
 
 
@@ -2308,7 +2308,7 @@ def create_external_payment_order_create_example() -> ExternalPaymentOrderCreate
     instance.ext_order_no = randomize()
     instance.sku = randomize("slug")
     instance.ext_user_id = randomize()
-    instance.price = randomize("int")
+    instance.price = randomize("int", min_val=1, max_val=1000)
     instance.title = randomize()
     instance.description = randomize()
     instance.item_type = randomize()
@@ -2336,8 +2336,8 @@ def create_payment_order_refund_result_example() -> PaymentOrderRefundResult:
     instance.target_namespace = randomize("slug")
     instance.target_user_id = randomize()
     instance.status = randomize()
-    instance.created_time = randomize()
-    instance.refunded_time = randomize()
+    instance.created_time = randomize("date")
+    instance.refunded_time = randomize("date")
     return instance
 
 
@@ -2359,7 +2359,7 @@ def create_payment_order_paid_result_example() -> PaymentOrderPaidResult:
 def create_tax_result_example() -> TaxResult:
     instance = TaxResult()
     instance.enable_tax = randomize("bool")
-    instance.tax = randomize("int")
+    instance.tax = randomize("int", min_val=1, max_val=1000)
     instance.formatted_tax = randomize()
     instance.state = randomize()
     return instance
@@ -2443,8 +2443,8 @@ def create_reward_info_example() -> RewardInfo:
     instance.description = randomize()
     instance.event_topic = randomize()
     instance.reward_conditions = [create_reward_condition_example()]
-    instance.max_awarded = randomize("int")
-    instance.max_awarded_per_user = randomize("int")
+    instance.max_awarded = randomize("int", min_val=1, max_val=1000)
+    instance.max_awarded_per_user = randomize("int", min_val=1, max_val=1000)
     instance.created_at = randomize("date")
     instance.updated_at = randomize("date")
     return instance
@@ -2453,7 +2453,7 @@ def create_reward_info_example() -> RewardInfo:
 def create_reward_item_example() -> RewardItem:
     instance = RewardItem()
     instance.item_id = randomize()
-    instance.quantity = randomize("int")
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -2463,8 +2463,8 @@ def create_reward_create_example() -> RewardCreate:
     instance.description = randomize()
     instance.event_topic = randomize()
     instance.reward_conditions = [create_reward_condition_example()]
-    instance.max_awarded = randomize("int")
-    instance.max_awarded_per_user = randomize("int")
+    instance.max_awarded = randomize("int", min_val=1, max_val=1000)
+    instance.max_awarded_per_user = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -2474,8 +2474,8 @@ def create_reward_update_example() -> RewardUpdate:
     instance.description = randomize()
     instance.event_topic = randomize()
     instance.reward_conditions = [create_reward_condition_example()]
-    instance.max_awarded = randomize("int")
-    instance.max_awarded_per_user = randomize("int")
+    instance.max_awarded = randomize("int", min_val=1, max_val=1000)
+    instance.max_awarded_per_user = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -2512,21 +2512,21 @@ def create_subscription_info_example() -> SubscriptionInfo:
     instance.title = randomize()
     instance.description = randomize()
     instance.currency = create_currency_summary_example()
-    instance.price = randomize("int")
-    instance.trial_price = randomize("int")
+    instance.price = randomize("int", min_val=1, max_val=1000)
+    instance.trial_price = randomize("int", min_val=1, max_val=1000)
     instance.recurring = create_recurring_example()
     instance.status = randomize()
     instance.charge_status = randomize()
-    instance.next_billing_date = randomize()
+    instance.next_billing_date = randomize("date")
     instance.entitlements = [create_entitlement_summary_example()]
     instance.item_snapshot = create_item_snapshot_example()
-    instance.current_period_start = randomize()
-    instance.current_period_end = randomize()
-    instance.start = randomize()
-    instance.end = randomize()
-    instance.current_cycle = randomize("int")
-    instance.charged_cycles = randomize("int")
-    instance.trialed_cycles = randomize("int")
+    instance.current_period_start = randomize("date")
+    instance.current_period_end = randomize("date")
+    instance.start = randomize("date")
+    instance.end = randomize("date")
+    instance.current_cycle = randomize("int", min_val=1, max_val=1000)
+    instance.charged_cycles = randomize("int", min_val=1, max_val=1000)
+    instance.trialed_cycles = randomize("int", min_val=1, max_val=1000)
     instance.in_fixed_free_days = randomize("bool")
     instance.in_fixed_cycle_trial = randomize("bool")
     instance.first_subscribe = randomize("bool")
@@ -2535,8 +2535,8 @@ def create_subscription_info_example() -> SubscriptionInfo:
     instance.payment_station_url = randomize("url")
     instance.source = randomize()
     instance.subscribed_by = randomize()
-    instance.subscribed_at = randomize()
-    instance.unsubscribed_at = randomize()
+    instance.subscribed_at = randomize("date")
+    instance.unsubscribed_at = randomize("date")
     instance.unsubscribe_reason = randomize()
     instance.payment_order_no = randomize()
     instance.billing_account = create_billing_account_example()
@@ -2544,7 +2544,7 @@ def create_subscription_info_example() -> SubscriptionInfo:
     instance.region = randomize()
     instance.language = randomize()
     instance.sandbox = randomize("bool")
-    instance.retry_attempted = randomize("int")
+    instance.retry_attempted = randomize("int", min_val=1, max_val=1000)
     instance.created_at = randomize("date")
     instance.updated_at = randomize("date")
     return instance
@@ -2574,20 +2574,20 @@ def create_billing_history_info_example() -> BillingHistoryInfo:
     instance.sku = randomize("slug")
     instance.title = randomize()
     instance.description = randomize()
-    instance.amount = randomize("int")
-    instance.total_tax = randomize("int")
-    instance.total_price = randomize("int")
-    instance.subtotal_price = randomize("int")
+    instance.amount = randomize("int", min_val=1, max_val=1000)
+    instance.total_tax = randomize("int", min_val=1, max_val=1000)
+    instance.total_price = randomize("int", min_val=1, max_val=1000)
+    instance.subtotal_price = randomize("int", min_val=1, max_val=1000)
     instance.sandbox = randomize("bool")
     instance.currency = create_currency_summary_example()
     instance.payment_order_no = randomize()
     instance.billing_account = create_billing_account_example()
     instance.status = randomize()
     instance.status_reason = randomize()
-    instance.tx_end_time = randomize()
+    instance.tx_end_time = randomize("date")
     instance.ext_tx_id = randomize()
     instance.change_billing_account = randomize("bool")
-    instance.retry_attempted = randomize("int")
+    instance.retry_attempted = randomize("int", min_val=1, max_val=1000)
     instance.created_at = randomize("date")
     instance.updated_at = randomize("date")
     return instance
@@ -2603,7 +2603,7 @@ def create_billing_history_paging_sliced_result_example() -> BillingHistoryPagin
 def create_platform_subscribe_request_example() -> PlatformSubscribeRequest:
     instance = PlatformSubscribeRequest()
     instance.item_id = randomize()
-    instance.grant_days = randomize("int")
+    instance.grant_days = randomize("int", min_val=1, max_val=1000)
     instance.source = randomize()
     instance.reason = randomize()
     instance.region = randomize()
@@ -2613,7 +2613,7 @@ def create_platform_subscribe_request_example() -> PlatformSubscribeRequest:
 
 def create_grant_subscription_days_request_example() -> GrantSubscriptionDaysRequest:
     instance = GrantSubscriptionDaysRequest()
-    instance.grant_days = randomize("int")
+    instance.grant_days = randomize("int", min_val=1, max_val=1000)
     instance.reason = randomize()
     return instance
 
@@ -2626,13 +2626,13 @@ def create_subscription_activity_info_example() -> SubscriptionActivityInfo:
     instance.operator = randomize()
     instance.action = randomize()
     instance.subscribed_by = randomize()
-    instance.current_cycle = randomize("int")
-    instance.charged_cycles = randomize("int")
-    instance.trialed_cycles = randomize("int")
+    instance.current_cycle = randomize("int", min_val=1, max_val=1000)
+    instance.charged_cycles = randomize("int", min_val=1, max_val=1000)
+    instance.trialed_cycles = randomize("int", min_val=1, max_val=1000)
     instance.in_fixed_free_days = randomize("bool")
     instance.in_fixed_cycle_trial = randomize("bool")
     instance.reason = randomize()
-    instance.grant_days = randomize("int")
+    instance.grant_days = randomize("int", min_val=1, max_val=1000)
     instance.created_at = randomize("date")
     instance.updated_at = randomize("date")
     return instance
@@ -2665,7 +2665,7 @@ def create_subscribe_request_example() -> SubscribeRequest:
 def create_wallet_transaction_info_example() -> WalletTransactionInfo:
     instance = WalletTransactionInfo()
     instance.wallet_id = randomize()
-    instance.amount = randomize("int")
+    instance.amount = randomize("int", min_val=1, max_val=1000)
     instance.reason = randomize()
     instance.namespace = randomize("slug")
     instance.user_id = randomize("uid")
@@ -2692,7 +2692,7 @@ def create_wallet_info_example() -> WalletInfo:
     instance.user_id = randomize("uid")
     instance.currency_code = randomize()
     instance.currency_symbol = randomize()
-    instance.balance = randomize("int")
+    instance.balance = randomize("int", min_val=1, max_val=1000)
     instance.created_at = randomize("date")
     instance.updated_at = randomize("date")
     instance.status = randomize()
@@ -2701,14 +2701,14 @@ def create_wallet_info_example() -> WalletInfo:
 
 def create_debit_request_example() -> DebitRequest:
     instance = DebitRequest()
-    instance.amount = randomize("int")
+    instance.amount = randomize("int", min_val=1, max_val=1000)
     instance.reason = randomize()
     return instance
 
 
 def create_credit_request_example() -> CreditRequest:
     instance = CreditRequest()
-    instance.amount = randomize("int")
+    instance.amount = randomize("int", min_val=1, max_val=1000)
     instance.source = randomize()
     instance.reason = randomize()
     return instance
@@ -2716,7 +2716,7 @@ def create_credit_request_example() -> CreditRequest:
 
 def create_payment_request_example() -> PaymentRequest:
     instance = PaymentRequest()
-    instance.amount = randomize("int")
+    instance.amount = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

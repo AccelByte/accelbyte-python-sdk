@@ -204,9 +204,9 @@ def create_account_user_active_ban_response_v4_example() -> AccountUserActiveBan
 
 def create_account_user_permissions_response_v4_example() -> AccountUserPermissionsResponseV4:
     instance = AccountUserPermissionsResponseV4()
-    instance.action = randomize("int")
+    instance.action = randomize("int", min_val=1, max_val=1000)
     instance.resource = randomize()
-    instance.sched_action = randomize("int")
+    instance.sched_action = randomize("int", min_val=1, max_val=1000)
     instance.sched_cron = randomize()
     instance.sched_range = [randomize()]
     return instance
@@ -224,8 +224,8 @@ def create_account_user_response_v4_example() -> AccountUserResponseV4:
     instance.email_address = randomize("email")
     instance.email_verified = randomize("bool")
     instance.enabled = randomize("bool")
-    instance.last_date_of_birth_changed_time = randomize()
-    instance.last_enabled_changed_time = randomize()
+    instance.last_date_of_birth_changed_time = randomize("date")
+    instance.last_enabled_changed_time = randomize("date")
     instance.namespace = randomize("slug")
     instance.new_email_address = randomize()
     instance.old_email_address = randomize()
@@ -350,14 +350,14 @@ def create_accountcommon_bans_v3_example() -> AccountcommonBansV3:
 
 def create_accountcommon_client_permission_example() -> AccountcommonClientPermission:
     instance = AccountcommonClientPermission()
-    instance.action = randomize("int")
+    instance.action = randomize("int", min_val=1, max_val=1000)
     instance.resource = randomize()
     return instance
 
 
 def create_accountcommon_client_permission_v3_example() -> AccountcommonClientPermissionV3:
     instance = AccountcommonClientPermissionV3()
-    instance.action = randomize("int")
+    instance.action = randomize("int", min_val=1, max_val=1000)
     instance.resource = randomize()
     return instance
 
@@ -383,7 +383,7 @@ def create_accountcommon_conflicted_user_platform_accounts_example() -> Accountc
 
 def create_accountcommon_country_age_restriction_example() -> AccountcommonCountryAgeRestriction:
     instance = AccountcommonCountryAgeRestriction()
-    instance.age_restriction = randomize("int")
+    instance.age_restriction = randomize("int", min_val=1, max_val=1000)
     instance.country_code = randomize()
     instance.country_name = randomize()
     instance.enable = randomize("bool")
@@ -400,7 +400,7 @@ def create_accountcommon_description_example() -> AccountcommonDescription:
 def create_accountcommon_jwt_ban_example() -> AccountcommonJWTBan:
     instance = AccountcommonJWTBan()
     instance.ban = randomize()
-    instance.disabled_date = randomize()
+    instance.disabled_date = randomize("date")
     instance.enabled = randomize("bool")
     instance.end_date = randomize("date")
     instance.targeted_namespace = randomize("slug")
@@ -410,7 +410,7 @@ def create_accountcommon_jwt_ban_example() -> AccountcommonJWTBan:
 def create_accountcommon_jwt_ban_v3_example() -> AccountcommonJWTBanV3:
     instance = AccountcommonJWTBanV3()
     instance.ban = randomize()
-    instance.disabled_date = randomize()
+    instance.disabled_date = randomize("date")
     instance.enabled = randomize("bool")
     instance.end_date = randomize("date")
     instance.targeted_namespace = randomize("slug")
@@ -421,7 +421,7 @@ def create_accountcommon_list_users_with_platform_accounts_response_example() ->
     instance = AccountcommonListUsersWithPlatformAccountsResponse()
     instance.data = [create_accountcommon_user_with_platform_accounts_example()]
     instance.paging = create_accountcommon_pagination_v3_example()
-    instance.total_data = randomize("int")
+    instance.total_data = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -452,9 +452,9 @@ def create_accountcommon_pagination_v3_example() -> AccountcommonPaginationV3:
 
 def create_accountcommon_permission_example() -> AccountcommonPermission:
     instance = AccountcommonPermission()
-    instance.action = randomize("int")
+    instance.action = randomize("int", min_val=1, max_val=1000)
     instance.resource = randomize()
-    instance.sched_action = randomize("int")
+    instance.sched_action = randomize("int", min_val=1, max_val=1000)
     instance.sched_cron = randomize()
     instance.sched_range = [randomize()]
     return instance
@@ -462,9 +462,9 @@ def create_accountcommon_permission_example() -> AccountcommonPermission:
 
 def create_accountcommon_permission_v3_example() -> AccountcommonPermissionV3:
     instance = AccountcommonPermissionV3()
-    instance.action = randomize("int")
+    instance.action = randomize("int", min_val=1, max_val=1000)
     instance.resource = randomize()
-    instance.sched_action = randomize("int")
+    instance.sched_action = randomize("int", min_val=1, max_val=1000)
     instance.sched_cron = randomize()
     instance.sched_range = [randomize()]
     return instance
@@ -634,9 +634,9 @@ def create_accountcommon_user_with_platform_accounts_example() -> AccountcommonU
 
 def create_bloom_filter_json_example() -> BloomFilterJSON:
     instance = BloomFilterJSON()
-    instance.bits = [randomize("int")]
-    instance.k = randomize("int")
-    instance.m = randomize("int")
+    instance.bits = [randomize("int", min_val=1, max_val=1000)]
+    instance.k = randomize("int", min_val=1, max_val=1000)
+    instance.m = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -718,7 +718,7 @@ def create_clientmodel_client_v3_response_example() -> ClientmodelClientV3Respon
     instance.client_name = randomize()
     instance.client_permissions = [create_accountcommon_permission_v3_example()]
     instance.created_at = randomize("date")
-    instance.modified_at = randomize()
+    instance.modified_at = randomize("date")
     instance.namespace = randomize("slug")
     instance.oauth_client_type = randomize()
     instance.redirect_uri = randomize()
@@ -760,28 +760,28 @@ def create_model_admin_invitation_v3_example() -> ModelAdminInvitationV3:
 
 def create_model_age_restriction_request_example() -> ModelAgeRestrictionRequest:
     instance = ModelAgeRestrictionRequest()
-    instance.age_restriction = randomize("int")
+    instance.age_restriction = randomize("int", min_val=1, max_val=1000)
     instance.enable = randomize("bool")
     return instance
 
 
 def create_model_age_restriction_request_v3_example() -> ModelAgeRestrictionRequestV3:
     instance = ModelAgeRestrictionRequestV3()
-    instance.age_restriction = randomize("int")
+    instance.age_restriction = randomize("int", min_val=1, max_val=1000)
     instance.enable = randomize("bool")
     return instance
 
 
 def create_model_age_restriction_response_example() -> ModelAgeRestrictionResponse:
     instance = ModelAgeRestrictionResponse()
-    instance.age_restriction = randomize("int")
+    instance.age_restriction = randomize("int", min_val=1, max_val=1000)
     instance.enable = randomize("bool")
     return instance
 
 
 def create_model_age_restriction_response_v3_example() -> ModelAgeRestrictionResponseV3:
     instance = ModelAgeRestrictionResponseV3()
-    instance.age_restriction = randomize("int")
+    instance.age_restriction = randomize("int", min_val=1, max_val=1000)
     instance.enable = randomize("bool")
     return instance
 
@@ -823,7 +823,7 @@ def create_model_ban_update_request_example() -> ModelBanUpdateRequest:
 
 def create_model_country_example() -> ModelCountry:
     instance = ModelCountry()
-    instance.age_restriction = randomize("int")
+    instance.age_restriction = randomize("int", min_val=1, max_val=1000)
     instance.country_code = randomize()
     instance.country_name = randomize()
     instance.enable = randomize("bool")
@@ -832,19 +832,19 @@ def create_model_country_example() -> ModelCountry:
 
 def create_model_country_age_restriction_request_example() -> ModelCountryAgeRestrictionRequest:
     instance = ModelCountryAgeRestrictionRequest()
-    instance.age_restriction = randomize("int")
+    instance.age_restriction = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
 def create_model_country_age_restriction_v3_request_example() -> ModelCountryAgeRestrictionV3Request:
     instance = ModelCountryAgeRestrictionV3Request()
-    instance.age_restriction = randomize("int")
+    instance.age_restriction = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
 def create_model_country_v3_response_example() -> ModelCountryV3Response:
     instance = ModelCountryV3Response()
-    instance.age_restriction = randomize("int")
+    instance.age_restriction = randomize("int", min_val=1, max_val=1000)
     instance.country_code = randomize()
     instance.country_name = randomize()
     instance.enable = randomize("bool")
@@ -944,7 +944,7 @@ def create_model_link_request_example() -> ModelLinkRequest:
     instance = ModelLinkRequest()
     instance.client_id = randomize("uid")
     instance.error = create_rest_error_response_example()
-    instance.expiration = randomize("int")
+    instance.expiration = randomize("int", min_val=1, max_val=1000)
     instance.namespace = randomize("slug")
     instance.operation_name = randomize()
     instance.payload = {randomize(): randomize()}
@@ -1003,7 +1003,7 @@ def create_model_namespace_role_request_example() -> ModelNamespaceRoleRequest:
 
 def create_model_permission_delete_request_example() -> ModelPermissionDeleteRequest:
     instance = ModelPermissionDeleteRequest()
-    instance.action = randomize("int")
+    instance.action = randomize("int", min_val=1, max_val=1000)
     instance.resource = randomize()
     return instance
 
@@ -1018,7 +1018,7 @@ def create_model_platform_user_information_example() -> ModelPlatformUserInforma
     instance = ModelPlatformUserInformation()
     instance.display_name = randomize("slug")
     instance.email_address = randomize("email")
-    instance.linked_at = randomize()
+    instance.linked_at = randomize("date")
     instance.namespace = randomize("slug")
     instance.platform_id = randomize()
     instance.platform_user_id = randomize()
@@ -1062,7 +1062,7 @@ def create_model_public_user_response_example() -> ModelPublicUserResponse:
     instance.display_name = randomize("slug")
     instance.email_verified = randomize("bool")
     instance.enabled = randomize("bool")
-    instance.last_enabled_changed_time = randomize()
+    instance.last_enabled_changed_time = randomize("date")
     instance.login_id = randomize()
     instance.namespace = randomize("slug")
     instance.namespace_roles = [create_accountcommon_namespace_role_example()]
@@ -1086,8 +1086,8 @@ def create_model_public_user_response_v3_example() -> ModelPublicUserResponseV3:
     instance.display_name = randomize("slug")
     instance.email_verified = randomize("bool")
     instance.enabled = randomize("bool")
-    instance.last_date_of_birth_changed_time = randomize()
-    instance.last_enabled_changed_time = randomize()
+    instance.last_date_of_birth_changed_time = randomize("date")
+    instance.last_enabled_changed_time = randomize("date")
     instance.namespace = randomize("slug")
     instance.namespace_roles = [create_accountcommon_namespace_role_example()]
     instance.permissions = [create_model_user_permissions_response_v3_example()]
@@ -1349,7 +1349,7 @@ def create_model_search_users_response_with_pagination_v3_example() -> ModelSear
     instance = ModelSearchUsersResponseWithPaginationV3()
     instance.data = [create_model_user_response_v3_example()]
     instance.paging = create_accountcommon_pagination_v3_example()
-    instance.total_data = randomize("int")
+    instance.total_data = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -1411,7 +1411,7 @@ def create_model_unlink_user_platform_request_example() -> ModelUnlinkUserPlatfo
 
 def create_model_update_permission_schedule_request_example() -> ModelUpdatePermissionScheduleRequest:
     instance = ModelUpdatePermissionScheduleRequest()
-    instance.sched_action = randomize("int")
+    instance.sched_action = randomize("int", min_val=1, max_val=1000)
     instance.sched_cron = randomize()
     instance.sched_range = [randomize()]
     return instance
@@ -1486,7 +1486,7 @@ def create_model_user_ban_response_example() -> ModelUserBanResponse:
     instance.banned_by = create_banned_by_example()
     instance.comment = randomize()
     instance.created_at = randomize("date")
-    instance.disabled_date = randomize()
+    instance.disabled_date = randomize("date")
     instance.enabled = randomize("bool")
     instance.end_date = randomize("date")
     instance.namespace = randomize("slug")
@@ -1502,7 +1502,7 @@ def create_model_user_ban_response_v3_example() -> ModelUserBanResponseV3:
     instance.banned_by = create_accountcommon_banned_by_v3_example()
     instance.comment = randomize()
     instance.created_at = randomize("date")
-    instance.disabled_date = randomize()
+    instance.disabled_date = randomize("date")
     instance.enabled = randomize("bool")
     instance.end_date = randomize("date")
     instance.namespace = randomize("slug")
@@ -1605,7 +1605,7 @@ def create_model_user_login_history_response_example() -> ModelUserLoginHistoryR
     instance.country = randomize("country")
     instance.device_id = randomize()
     instance.state = randomize()
-    instance.timestamp = randomize("int")
+    instance.timestamp = randomize("int", min_val=1, max_val=1000)
     instance.device_name = randomize()
     return instance
 
@@ -1628,9 +1628,9 @@ def create_model_user_password_update_v3_request_example() -> ModelUserPasswordU
 
 def create_model_user_permissions_response_v3_example() -> ModelUserPermissionsResponseV3:
     instance = ModelUserPermissionsResponseV3()
-    instance.action = randomize("int")
+    instance.action = randomize("int", min_val=1, max_val=1000)
     instance.resource = randomize()
-    instance.sched_action = randomize("int")
+    instance.sched_action = randomize("int", min_val=1, max_val=1000)
     instance.sched_cron = randomize()
     instance.sched_range = [randomize()]
     return instance
@@ -1648,8 +1648,8 @@ def create_model_user_response_example() -> ModelUserResponse:
     instance.email_address = randomize("email")
     instance.email_verified = randomize("bool")
     instance.enabled = randomize("bool")
-    instance.last_date_of_birth_changed_time = randomize()
-    instance.last_enabled_changed_time = randomize()
+    instance.last_date_of_birth_changed_time = randomize("date")
+    instance.last_enabled_changed_time = randomize("date")
     instance.login_id = randomize()
     instance.namespace = randomize("slug")
     instance.namespace_roles = [create_accountcommon_namespace_role_example()]
@@ -1679,8 +1679,8 @@ def create_model_user_response_v3_example() -> ModelUserResponseV3:
     instance.email_address = randomize("email")
     instance.email_verified = randomize("bool")
     instance.enabled = randomize("bool")
-    instance.last_date_of_birth_changed_time = randomize()
-    instance.last_enabled_changed_time = randomize()
+    instance.last_date_of_birth_changed_time = randomize("date")
+    instance.last_enabled_changed_time = randomize("date")
     instance.namespace = randomize("slug")
     instance.namespace_roles = [create_accountcommon_namespace_role_example()]
     instance.new_email_address = randomize()
@@ -1781,7 +1781,7 @@ def create_oauthcommon_jwk_set_example() -> OauthcommonJWKSet:
 def create_oauthcommon_user_revocation_list_record_example() -> OauthcommonUserRevocationListRecord:
     instance = OauthcommonUserRevocationListRecord()
     instance.id_ = randomize()
-    instance.revoked_at = randomize()
+    instance.revoked_at = randomize("date")
     return instance
 
 
@@ -1807,8 +1807,8 @@ def create_oauthmodel_token_introspect_response_example() -> OauthmodelTokenIntr
     instance.active = randomize("bool")
     instance.aud = randomize()
     instance.client_id = randomize("uid")
-    instance.exp = randomize("int")
-    instance.iat = randomize("int")
+    instance.exp = randomize("int", min_val=1, max_val=1000)
+    instance.iat = randomize("int", min_val=1, max_val=1000)
     instance.scope = randomize()
     instance.sub = randomize()
     return instance
@@ -1819,9 +1819,9 @@ def create_oauthmodel_token_response_example() -> OauthmodelTokenResponse:
     instance.access_token = randomize()
     instance.bans = [create_accountcommon_jwt_ban_example()]
     instance.display_name = randomize("slug")
-    instance.expires_in = randomize("int")
+    instance.expires_in = randomize("int", min_val=1, max_val=1000)
     instance.is_comply = randomize("bool")
-    instance.jflgs = randomize("int")
+    instance.jflgs = randomize("int", min_val=1, max_val=1000)
     instance.namespace = randomize("slug")
     instance.namespace_roles = [create_accountcommon_namespace_role_example()]
     instance.permissions = [create_accountcommon_permission_example()]
@@ -1839,9 +1839,9 @@ def create_oauthmodel_token_response_v3_example() -> OauthmodelTokenResponseV3:
     instance.access_token = randomize()
     instance.bans = [create_accountcommon_jwt_ban_v3_example()]
     instance.display_name = randomize("slug")
-    instance.expires_in = randomize("int")
+    instance.expires_in = randomize("int", min_val=1, max_val=1000)
     instance.is_comply = randomize("bool")
-    instance.jflgs = randomize("int")
+    instance.jflgs = randomize("int", min_val=1, max_val=1000)
     instance.namespace = randomize("slug")
     instance.namespace_roles = [create_accountcommon_namespace_role_example()]
     instance.permissions = [create_accountcommon_permission_v3_example()]
@@ -1863,7 +1863,7 @@ def create_oauthmodel_token_third_party_response_example() -> OauthmodelTokenThi
 
 def create_rest_error_response_example() -> RestErrorResponse:
     instance = RestErrorResponse()
-    instance.error_code = randomize("int")
+    instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
     instance.message_variables = create_accountcommon_conflicted_user_platform_accounts_example()
     return instance
@@ -1871,6 +1871,6 @@ def create_rest_error_response_example() -> RestErrorResponse:
 
 def create_restapi_error_response_example() -> RestapiErrorResponse:
     instance = RestapiErrorResponse()
-    instance.code = randomize("int")
+    instance.code = randomize("int", min_val=1, max_val=1000)
     instance.message = randomize()
     return instance

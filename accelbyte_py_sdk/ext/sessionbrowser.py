@@ -77,9 +77,9 @@ def create_models_admin_session_response_example() -> ModelsAdminSessionResponse
 
 def create_models_count_active_session_response_example() -> ModelsCountActiveSessionResponse:
     instance = ModelsCountActiveSessionResponse()
-    instance.custom_game = randomize("int")
-    instance.matchmaking_game = randomize("int")
-    instance.total = randomize("int")
+    instance.custom_game = randomize("int", min_val=1, max_val=1000)
+    instance.matchmaking_game = randomize("int", min_val=1, max_val=1000)
+    instance.total = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -130,13 +130,13 @@ def create_models_game_session_example() -> ModelsGameSession:
 def create_models_game_session_setting_example() -> ModelsGameSessionSetting:
     instance = ModelsGameSessionSetting()
     instance.allow_join_in_progress = randomize("bool")
-    instance.current_internal_player = randomize("int")
-    instance.current_player = randomize("int")
+    instance.current_internal_player = randomize("int", min_val=1, max_val=1000)
+    instance.current_player = randomize("int", min_val=1, max_val=1000)
     instance.map_name = randomize()
-    instance.max_internal_player = randomize("int")
-    instance.max_player = randomize("int")
+    instance.max_internal_player = randomize("int", min_val=1, max_val=1000)
+    instance.max_player = randomize("int", min_val=1, max_val=1000)
     instance.mode = randomize()
-    instance.num_bot = randomize("int")
+    instance.num_bot = randomize("int", min_val=1, max_val=1000)
     instance.password = randomize("password")
     instance.settings = {randomize(): randomize()}
     return instance
@@ -162,7 +162,7 @@ def create_models_match_making_example() -> ModelsMatchMaking:
     instance.namespace = randomize("slug")
     instance.party_attributes = {randomize(): randomize()}
     instance.party_id = randomize("uid")
-    instance.queued_at = randomize("int")
+    instance.queued_at = randomize("int", min_val=1, max_val=1000)
     instance.region = randomize()
     instance.server_name = randomize()
     instance.status = randomize()
@@ -199,9 +199,9 @@ def create_models_party_member_example() -> ModelsPartyMember:
 
 def create_models_pod_config_example() -> ModelsPodConfig:
     instance = ModelsPodConfig()
-    instance.cpu_limit = randomize("int")
+    instance.cpu_limit = randomize("int", min_val=1, max_val=1000)
     instance.cpu_request = randomize()
-    instance.mem_limit = randomize("int")
+    instance.mem_limit = randomize("int", min_val=1, max_val=1000)
     instance.mem_request = randomize()
     instance.params = randomize()
     return instance
@@ -228,20 +228,20 @@ def create_models_server_example() -> ModelsServer:
     instance = ModelsServer()
     instance.allocation_id = randomize()
     instance.alternate_ips = [randomize()]
-    instance.cpu_limit = randomize("int")
+    instance.cpu_limit = randomize("int", min_val=1, max_val=1000)
     instance.cpu_request = randomize()
     instance.deployment = randomize()
     instance.game_version = randomize("version")
     instance.image_version = randomize()
     instance.ip = randomize()
     instance.is_override_game_version = randomize("bool")
-    instance.last_update = randomize()
-    instance.mem_limit = randomize("int")
+    instance.last_update = randomize("date")
+    instance.mem_limit = randomize("int", min_val=1, max_val=1000)
     instance.mem_request = randomize()
     instance.namespace = randomize("slug")
     instance.params = randomize()
     instance.pod_name = randomize()
-    instance.port = randomize("int")
+    instance.port = randomize("int", min_val=1, max_val=1000)
     instance.ports = {}
     instance.provider = randomize()
     instance.region = randomize()
@@ -286,20 +286,20 @@ def create_models_session_response_example() -> ModelsSessionResponse:
 def create_models_status_history_example() -> ModelsStatusHistory:
     instance = ModelsStatusHistory()
     instance.status = randomize()
-    instance.time_stamp = randomize()
+    instance.time_stamp = randomize("date")
     return instance
 
 
 def create_models_update_session_request_example() -> ModelsUpdateSessionRequest:
     instance = ModelsUpdateSessionRequest()
-    instance.game_current_player = randomize("int")
-    instance.game_max_player = randomize("int")
+    instance.game_current_player = randomize("int", min_val=1, max_val=1000)
+    instance.game_max_player = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
 def create_response_error_example() -> ResponseError:
     instance = ResponseError()
-    instance.error_code = randomize("int")
+    instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
     return instance
 
@@ -307,7 +307,7 @@ def create_response_error_example() -> ResponseError:
 def create_restapi_error_response_v2_example() -> RestapiErrorResponseV2:
     instance = RestapiErrorResponseV2()
     instance.attributes = {randomize(): randomize()}
-    instance.error_code = randomize("int")
+    instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
     instance.message = randomize()
     instance.name = randomize()

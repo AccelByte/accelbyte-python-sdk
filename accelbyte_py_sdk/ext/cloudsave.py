@@ -83,6 +83,6 @@ def create_models_player_record_request_example() -> ModelsPlayerRecordRequest:
 
 def create_models_response_error_example() -> ModelsResponseError:
     instance = ModelsResponseError()
-    instance.error_code = randomize("int")
+    instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
     return instance

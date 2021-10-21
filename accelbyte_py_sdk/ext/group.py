@@ -56,7 +56,7 @@ def create_models_create_group_configuration_request_v1_example() -> ModelsCreat
     instance.description = randomize()
     instance.global_rules = [create_models_rule_example()]
     instance.group_admin_role_id = randomize()
-    instance.group_max_member = randomize("int")
+    instance.group_max_member = randomize("int", min_val=1, max_val=1000)
     instance.group_member_role_id = randomize()
     instance.name = randomize()
     return instance
@@ -68,7 +68,7 @@ def create_models_create_group_configuration_response_v1_example() -> ModelsCrea
     instance.description = randomize()
     instance.global_rules = [create_models_rule_example()]
     instance.group_admin_role_id = randomize()
-    instance.group_max_member = randomize("int")
+    instance.group_max_member = randomize("int", min_val=1, max_val=1000)
     instance.group_member_role_id = randomize()
     instance.name = randomize()
     return instance
@@ -95,7 +95,7 @@ def create_models_get_group_configuration_response_v1_example() -> ModelsGetGrou
     instance.description = randomize()
     instance.global_rules = [create_models_rule_example()]
     instance.group_admin_role_id = randomize()
-    instance.group_max_member = randomize("int")
+    instance.group_max_member = randomize("int", min_val=1, max_val=1000)
     instance.group_member_role_id = randomize()
     instance.name = randomize()
     instance.namespace = randomize("slug")
@@ -161,7 +161,7 @@ def create_models_group_response_v1_example() -> ModelsGroupResponseV1:
     instance.group_description = randomize()
     instance.group_icon = randomize()
     instance.group_id = randomize()
-    instance.group_max_member = randomize("int")
+    instance.group_max_member = randomize("int", min_val=1, max_val=1000)
     instance.group_members = [create_models_group_member_example()]
     instance.group_name = randomize()
     instance.group_region = randomize()
@@ -241,7 +241,7 @@ def create_models_public_create_new_group_request_v1_example() -> ModelsPublicCr
     instance.custom_attributes = {randomize(): randomize()}
     instance.group_description = randomize()
     instance.group_icon = randomize()
-    instance.group_max_member = randomize("int")
+    instance.group_max_member = randomize("int", min_val=1, max_val=1000)
     instance.group_name = randomize()
     instance.group_region = randomize()
     instance.group_rules = create_models_group_rule_example()
@@ -257,7 +257,7 @@ def create_models_remove_role_from_member_request_v1_example() -> ModelsRemoveRo
 
 def create_models_role_permission_example() -> ModelsRolePermission:
     instance = ModelsRolePermission()
-    instance.action = randomize("int")
+    instance.action = randomize("int", min_val=1, max_val=1000)
     instance.resource_name = randomize()
     return instance
 
@@ -273,7 +273,7 @@ def create_models_rule_information_example() -> ModelsRuleInformation:
     instance = ModelsRuleInformation()
     instance.rule_attribute = randomize()
     instance.rule_criteria = randomize()
-    instance.rule_value = randomize()
+    instance.rule_value = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -286,7 +286,7 @@ def create_models_update_group_configuration_global_rules_request_v1_example() -
 def create_models_update_group_configuration_request_v1_example() -> ModelsUpdateGroupConfigurationRequestV1:
     instance = ModelsUpdateGroupConfigurationRequestV1()
     instance.description = randomize()
-    instance.group_max_member = randomize("int")
+    instance.group_max_member = randomize("int", min_val=1, max_val=1000)
     instance.name = randomize()
     return instance
 
@@ -297,7 +297,7 @@ def create_models_update_group_configuration_response_v1_example() -> ModelsUpda
     instance.description = randomize()
     instance.global_rules = [create_models_rule_example()]
     instance.group_admin_role_id = randomize()
-    instance.group_max_member = randomize("int")
+    instance.group_max_member = randomize("int", min_val=1, max_val=1000)
     instance.group_member_role_id = randomize()
     instance.name = randomize()
     return instance
@@ -371,6 +371,6 @@ def create_models_user_invitation_response_v1_example() -> ModelsUserInvitationR
 
 def create_response_error_response_example() -> ResponseErrorResponse:
     instance = ResponseErrorResponse()
-    instance.error_code = randomize("int")
+    instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
     return instance

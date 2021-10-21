@@ -83,11 +83,11 @@ def create_models_profanity_filter_example() -> ModelsProfanityFilter:
 
 def create_handlers_get_users_presence_response_example() -> HandlersGetUsersPresenceResponse:
     instance = HandlersGetUsersPresenceResponse()
-    instance.busy = randomize("int")
+    instance.busy = randomize("int", min_val=1, max_val=1000)
     instance.data = [create_handlers_user_presence_example()]
-    instance.invisible = randomize("int")
-    instance.offline = randomize("int")
-    instance.online = randomize("int")
+    instance.invisible = randomize("int", min_val=1, max_val=1000)
+    instance.offline = randomize("int", min_val=1, max_val=1000)
+    instance.online = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -131,7 +131,7 @@ def create_model_chat_message_response_example() -> ModelChatMessageResponse:
     instance.from_ = randomize()
     instance.id_ = randomize()
     instance.payload = randomize()
-    instance.received_at = randomize("int")
+    instance.received_at = randomize("int", min_val=1, max_val=1000)
     instance.to = randomize()
     return instance
 
@@ -198,7 +198,7 @@ def create_model_get_stored_notification_resp_example() -> ModelGetStoredNotific
     instance.from_ = randomize()
     instance.id_ = randomize()
     instance.payload = randomize()
-    instance.sent_at = randomize("int")
+    instance.sent_at = randomize("int", min_val=1, max_val=1000)
     instance.to = randomize()
     instance.topic_name = randomize()
     return instance
@@ -239,7 +239,7 @@ def create_model_notification_response_example() -> ModelNotificationResponse:
     instance.from_ = randomize()
     instance.id_ = randomize()
     instance.payload = randomize()
-    instance.sent_at = randomize("int")
+    instance.sent_at = randomize("int", min_val=1, max_val=1000)
     instance.to = randomize()
     instance.topic = randomize()
     return instance
@@ -254,7 +254,7 @@ def create_model_notification_template_response_example() -> ModelNotificationTe
 
 def create_model_notification_topic_response_example() -> ModelNotificationTopicResponse:
     instance = ModelNotificationTopicResponse()
-    instance.created_at = randomize("int")
+    instance.created_at = randomize("int", min_val=1, max_val=1000)
     instance.description = randomize()
     instance.namespace = randomize("slug")
     instance.topic = randomize()
@@ -263,7 +263,7 @@ def create_model_notification_topic_response_example() -> ModelNotificationTopic
 
 def create_model_notification_topic_response_v1_example() -> ModelNotificationTopicResponseV1:
     instance = ModelNotificationTopicResponseV1()
-    instance.created_at = randomize("int")
+    instance.created_at = randomize("int", min_val=1, max_val=1000)
     instance.description = randomize()
     instance.namespace = randomize("slug")
     instance.topic_name = randomize()
@@ -373,7 +373,7 @@ def create_model_user_cancel_friend_request_example() -> ModelUserCancelFriendRe
 
 def create_model_user_get_friendship_status_response_example() -> ModelUserGetFriendshipStatusResponse:
     instance = ModelUserGetFriendshipStatusResponse()
-    instance.code = randomize("int")
+    instance.code = randomize("int", min_val=1, max_val=1000)
     instance.name = randomize()
     return instance
 
@@ -468,14 +468,14 @@ def create_models_admin_verify_message_profanity_response_example() -> ModelsAdm
 
 def create_models_blocked_by_player_data_example() -> ModelsBlockedByPlayerData:
     instance = ModelsBlockedByPlayerData()
-    instance.blocked_at = randomize()
+    instance.blocked_at = randomize("date")
     instance.user_id = randomize("uid")
     return instance
 
 
 def create_models_blocked_player_data_example() -> ModelsBlockedPlayerData:
     instance = ModelsBlockedPlayerData()
-    instance.blocked_at = randomize()
+    instance.blocked_at = randomize("date")
     instance.blocked_user_id = randomize()
     return instance
 
@@ -483,14 +483,14 @@ def create_models_blocked_player_data_example() -> ModelsBlockedPlayerData:
 def create_models_config_example() -> ModelsConfig:
     instance = ModelsConfig()
     instance.auto_kick_on_disconnect = randomize("bool")
-    instance.chat_rate_limit_burst = randomize("int")
-    instance.chat_rate_limit_duration = randomize("int")
+    instance.chat_rate_limit_burst = randomize("int", min_val=1, max_val=1000)
+    instance.chat_rate_limit_duration = randomize("int", min_val=1, max_val=1000)
     instance.enable_chat = randomize("bool")
     instance.entitlement_check = randomize("bool")
     instance.entitlement_item_id = randomize()
-    instance.general_rate_limit_burst = randomize("int")
-    instance.general_rate_limit_duration = randomize("int")
-    instance.max_party_member = randomize("int")
+    instance.general_rate_limit_burst = randomize("int", min_val=1, max_val=1000)
+    instance.general_rate_limit_duration = randomize("int", min_val=1, max_val=1000)
+    instance.max_party_member = randomize("int", min_val=1, max_val=1000)
     instance.namespace = randomize("slug")
     instance.profanity_filter = randomize("bool")
     return instance
@@ -505,14 +505,14 @@ def create_models_config_list_example() -> ModelsConfigList:
 def create_models_config_req_example() -> ModelsConfigReq:
     instance = ModelsConfigReq()
     instance.auto_kick_on_disconnect = randomize("bool")
-    instance.chat_rate_limit_burst = randomize("int")
-    instance.chat_rate_limit_duration = randomize("int")
+    instance.chat_rate_limit_burst = randomize("int", min_val=1, max_val=1000)
+    instance.chat_rate_limit_duration = randomize("int", min_val=1, max_val=1000)
     instance.enable_chat = randomize("bool")
     instance.entitlement_check = randomize("bool")
     instance.entitlement_item_id = randomize()
-    instance.general_rate_limit_burst = randomize("int")
-    instance.general_rate_limit_duration = randomize("int")
-    instance.max_party_member = randomize("int")
+    instance.general_rate_limit_burst = randomize("int", min_val=1, max_val=1000)
+    instance.general_rate_limit_duration = randomize("int", min_val=1, max_val=1000)
+    instance.max_party_member = randomize("int", min_val=1, max_val=1000)
     instance.profanity_filter = randomize("bool")
     return instance
 
@@ -582,14 +582,14 @@ def create_models_party_data_example() -> ModelsPartyData:
     instance.members = [randomize()]
     instance.namespace = randomize("slug")
     instance.party_id = randomize("uid")
-    instance.updated_at = randomize("int")
+    instance.updated_at = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
 def create_models_party_put_custom_attributes_request_example() -> ModelsPartyPUTCustomAttributesRequest:
     instance = ModelsPartyPUTCustomAttributesRequest()
     instance.custom_attribute = {randomize(): randomize()}
-    instance.updated_at = randomize("int")
+    instance.updated_at = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -630,13 +630,13 @@ def create_models_update_config_response_example() -> ModelsUpdateConfigResponse
 
 def create_restapi_error_response_body_example() -> RestapiErrorResponseBody:
     instance = RestapiErrorResponseBody()
-    instance.error_code = randomize("int")
+    instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
     return instance
 
 
 def create_restapi_error_response_v1_example() -> RestapiErrorResponseV1:
     instance = RestapiErrorResponseV1()
-    instance.error_code = randomize("int")
+    instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
     return instance

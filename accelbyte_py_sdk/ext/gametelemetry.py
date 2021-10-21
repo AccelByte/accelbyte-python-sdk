@@ -16,7 +16,7 @@ def create_telemetry_body_example() -> TelemetryBody:
     instance.event_id = randomize()
     instance.event_name = randomize()
     instance.event_namespace = randomize("slug")
-    instance.event_timestamp = randomize()
+    instance.event_timestamp = randomize("date")
     instance.payload = {randomize(): randomize()}
     return instance
 

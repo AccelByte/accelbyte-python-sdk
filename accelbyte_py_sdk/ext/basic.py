@@ -50,7 +50,7 @@ def create_field_validation_error_example() -> FieldValidationError:
 
 def create_validation_error_entity_example() -> ValidationErrorEntity:
     instance = ValidationErrorEntity()
-    instance.error_code = randomize("int")
+    instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
     instance.errors = [create_field_validation_error_example()]
     return instance
@@ -58,7 +58,7 @@ def create_validation_error_entity_example() -> ValidationErrorEntity:
 
 def create_error_entity_example() -> ErrorEntity:
     instance = ErrorEntity()
-    instance.error_code = randomize("int")
+    instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
     instance.message_variables = {randomize(): randomize()}
     instance.dev_stack_trace = randomize()
