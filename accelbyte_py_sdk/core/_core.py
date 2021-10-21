@@ -311,7 +311,7 @@ def run_request(
         if error:
             return None, error
         else:
-            return None, None
+            return success, None
 
     return success, None
 
