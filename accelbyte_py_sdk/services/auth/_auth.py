@@ -13,10 +13,15 @@ from ...api.iam import token_grant_v3
 from ...api.iam import token_revocation_v3
 
 
-def login_client(client_id: Union[None, str] = None, client_secret: Union[None, str] = None, x_additional_headers: Union[None, Dict[str, str]] = None):
+def login_client(
+        client_id: Union[None, str] = None,
+        client_secret: Union[None, str] = None,
+        x_additional_headers: Union[None, Dict[str, str]] = None
+):
     if client_id is not None and client_secret is not None:
         x_additional_headers = x_additional_headers or {}
-        x_additional_headers["Authorization"] = create_basic_authentication(client_id, client_secret)
+        x_additional_headers["Authorization"] \
+            = create_basic_authentication(client_id, client_secret)
     token, error = token_grant_v3("client_credentials")
     if error:
         return None, error
@@ -24,7 +29,12 @@ def login_client(client_id: Union[None, str] = None, client_secret: Union[None, 
     return token, None
 
 
-def login_user(username: str, password: str, scope: Union[None, str, List[str]] = None, x_additional_headers: Union[None, Dict[str, str]] = None):
+def login_user(
+        username: str,
+        password: str,
+        scope: Union[None, str, List[str]] = None,
+        x_additional_headers: Union[None, Dict[str, str]] = None
+):
     code_verifier, code_challenge, code_challenge_method \
         = create_pkce_verifier_and_challenge_s256()
 
