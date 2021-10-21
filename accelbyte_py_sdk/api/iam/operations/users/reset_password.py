@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:11.077449+08:00
-# from: Justice Iam Service (4.1.0)
+# Auto-generated at 2021-10-21T08:52:26.209694+08:00
+# from: Justice iam Service (4.4.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -55,11 +55,11 @@ class ResetPassword(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - (Invalid request)
+        400: Bad Request -
 
-        403: Forbidden - (Unauthorized access)
+        403: Forbidden -
 
-        404: Not Found - (Data not found)
+        404: Not Found -
 
         500: Internal Server Error - (20000: internal server error)
     """
@@ -194,11 +194,11 @@ class ResetPassword(Operation):
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - (Invalid request)
+        400: Bad Request -
 
-        403: Forbidden - (Unauthorized access)
+        403: Forbidden -
 
-        404: Not Found - (Data not found)
+        404: Not Found -
 
         500: Internal Server Error - (20000: internal server error)
         """

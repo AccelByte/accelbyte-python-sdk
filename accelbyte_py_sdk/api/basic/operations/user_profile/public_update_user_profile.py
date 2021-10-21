@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:19.578590+08:00
-# from: Justice Basic Service (1.17.0)
+# Auto-generated at 2021-10-21T08:52:33.097933+08:00
+# from: Justice basic Service (1.23.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -37,7 +37,7 @@ class PublicUpdateUserProfile(Operation):
     Update user profile.  
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
+      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
       *  Action code : 11402
       *  Language : allowed format: en, en-US
       *  Timezone : IANA time zone, e.g. Asia/Shanghai
@@ -72,7 +72,7 @@ class PublicUpdateUserProfile(Operation):
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (11440: user profile not found)
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
     """
 
     # region fields
@@ -222,7 +222,7 @@ class PublicUpdateUserProfile(Operation):
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (11440: user profile not found)
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
         """
         if code == 200:
             return UserProfileInfo.create_from_dict(content), None

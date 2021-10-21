@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:18.632728+08:00
-# from: Justice Group Service (2.4.0)
+# Auto-generated at 2021-10-21T08:52:32.392622+08:00
+# from: Justice group Service (2.8.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -40,9 +40,6 @@ class KickGroupMemberPublicV1(Operation):
 
     Kick group member. This endpoint will check the member and group information,
     and also the role permission of the the user who accesses this endpoint
-
-    This endpoint will also check if the user that wanted to be kicked is the
-    group member or not.
 
     Action Code: 73409
 

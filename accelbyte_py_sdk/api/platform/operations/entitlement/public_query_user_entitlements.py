@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:16.926870+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:31.206117+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -62,7 +62,7 @@ class PublicQueryUserEntitlements(Operation):
 
         entitlement_name: (entitlementName) OPTIONAL str in query
 
-        item_id: (itemId) OPTIONAL str in query
+        item_id: (itemId) OPTIONAL List[str] in query
 
         offset: (offset) OPTIONAL int in query
 
@@ -86,7 +86,7 @@ class PublicQueryUserEntitlements(Operation):
     entitlement_clazz: str                                                                         # OPTIONAL in [query]
     app_type: str                                                                                  # OPTIONAL in [query]
     entitlement_name: str                                                                          # OPTIONAL in [query]
-    item_id: str                                                                                   # OPTIONAL in [query]
+    item_id: List[str]                                                                             # OPTIONAL in [query]
     offset: int                                                                                    # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
 
@@ -212,7 +212,7 @@ class PublicQueryUserEntitlements(Operation):
         self.entitlement_name = value
         return self
 
-    def with_item_id(self, value: str) -> PublicQueryUserEntitlements:
+    def with_item_id(self, value: List[str]) -> PublicQueryUserEntitlements:
         self.item_id = value
         return self
 
@@ -251,9 +251,9 @@ class PublicQueryUserEntitlements(Operation):
         elif include_empty:
             result["entitlementName"] = str()
         if hasattr(self, "item_id") and self.item_id:
-            result["itemId"] = str(self.item_id)
+            result["itemId"] = [str(i0) for i0 in self.item_id]
         elif include_empty:
-            result["itemId"] = str()
+            result["itemId"] = []
         if hasattr(self, "offset") and self.offset:
             result["offset"] = int(self.offset)
         elif include_empty:
@@ -293,7 +293,7 @@ class PublicQueryUserEntitlements(Operation):
         entitlement_clazz: Optional[str] = None,
         app_type: Optional[str] = None,
         entitlement_name: Optional[str] = None,
-        item_id: Optional[str] = None,
+        item_id: Optional[List[str]] = None,
         offset: Optional[int] = None,
         limit: Optional[int] = None,
     ) -> PublicQueryUserEntitlements:
@@ -338,9 +338,9 @@ class PublicQueryUserEntitlements(Operation):
         elif include_empty:
             instance.entitlement_name = str()
         if "itemId" in dict_ and dict_["itemId"] is not None:
-            instance.item_id = str(dict_["itemId"])
+            instance.item_id = [str(i0) for i0 in dict_["itemId"]]
         elif include_empty:
-            instance.item_id = str()
+            instance.item_id = []
         if "offset" in dict_ and dict_["offset"] is not None:
             instance.offset = int(dict_["offset"])
         elif include_empty:

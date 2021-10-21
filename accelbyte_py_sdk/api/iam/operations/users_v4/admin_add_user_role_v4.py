@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:12.297957+08:00
-# from: Justice Iam Service (4.1.0)
+# Auto-generated at 2021-10-21T08:52:26.908178+08:00
+# from: Justice iam Service (4.4.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -69,9 +69,9 @@ class AdminAddUserRoleV4(Operation):
 
         404: Not Found - RestErrorResponse (20008: user not found)
 
-        422: Unprocessable Entity - RestErrorResponse (10183: unprocessable entity)
+        422: Unprocessable Entity - RestErrorResponse
 
-        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+        500: Internal Server Error - RestErrorResponse
     """
 
     # region fields
@@ -224,9 +224,9 @@ class AdminAddUserRoleV4(Operation):
 
         404: Not Found - RestErrorResponse (20008: user not found)
 
-        422: Unprocessable Entity - RestErrorResponse (10183: unprocessable entity)
+        422: Unprocessable Entity - RestErrorResponse
 
-        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+        500: Internal Server Error - RestErrorResponse
         """
         if code == 200:
             return ModelListUserRolesV4Response.create_from_dict(content), None

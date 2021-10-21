@@ -140,7 +140,6 @@ from ..operations.users import AdminSendVerificationCodeV3
 from ..operations.users import AdminUpdateAgeRestrictionConfigV2
 from ..operations.users import AdminUpdateAgeRestrictionConfigV3
 from ..operations.users import AdminUpdateCountryAgeRestrictionV3
-from ..operations.users import AdminUpdateMyUserV4
 from ..operations.users import AdminUpdateUserBanV3
 from ..operations.users import AdminUpdateUserDeletionStatusV3
 from ..operations.users import AdminUpdateUserPermissionV3
@@ -829,14 +828,6 @@ def admin_update_country_age_restriction_v3(body: ModelCountryAgeRestrictionV3Re
         body=body,
         country_code=country_code,
         namespace=namespace,
-    )
-    return run_request(request)
-
-
-@same_doc_as(AdminUpdateMyUserV4)
-def admin_update_my_user_v4(body: ModelUserUpdateRequestV3):
-    request = AdminUpdateMyUserV4.create(
-        body=body,
     )
     return run_request(request)
 

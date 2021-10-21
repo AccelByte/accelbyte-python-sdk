@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:16.552236+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:30.982035+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -74,11 +74,11 @@ class CreateCategory(Operation):
     Responses:
         201: Created - FullCategoryInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (30021: Default language [{language}] required)
+        409: Conflict - ErrorEntity (30271: Category [{categoryPath}] already exists in namespace [{namespace}] | 30173: Published store can't modify content)
 
         404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (30271: Category [{categoryPath}] already exists in namespace [{namespace}] | 30173: Published store can't modify content)
+        400: Bad Request - ErrorEntity (30021: Default language [{language}] required)
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -232,21 +232,21 @@ class CreateCategory(Operation):
 
         201: Created - FullCategoryInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (30021: Default language [{language}] required)
+        409: Conflict - ErrorEntity (30271: Category [{categoryPath}] already exists in namespace [{namespace}] | 30173: Published store can't modify content)
 
         404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (30271: Category [{categoryPath}] already exists in namespace [{namespace}] | 30173: Published store can't modify content)
+        400: Bad Request - ErrorEntity (30021: Default language [{language}] required)
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 201:
             return FullCategoryInfo.create_from_dict(content), None
-        if code == 400:
+        if code == 409:
             return None, ErrorEntity.create_from_dict(content)
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
-        if code == 409:
+        if code == 400:
             return None, ErrorEntity.create_from_dict(content)
         if code == 422:
             return None, ValidationErrorEntity.create_from_dict(content)

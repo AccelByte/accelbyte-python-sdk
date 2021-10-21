@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:14.354886+08:00
-# from: Justice Social Service (1.17.1)
+# Auto-generated at 2021-10-21T08:52:28.525136+08:00
+# from: Justice social Service (1.18.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -58,7 +58,7 @@ class GetSlotData(Operation):
         slot_id: (slotId) REQUIRED str in path
 
     Responses:
-        200: OK - Any (Slot data)
+        200: OK - (Successful operation)
 
         404: Not Found - ErrorEntity (12141: Slot [{slotId}] not found in namespace [{namespace}])
     """
@@ -200,15 +200,15 @@ class GetSlotData(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, Any], Union[None, ErrorEntity]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ErrorEntity]]:
         """Parse the given response.
 
-        200: OK - Any (Slot data)
+        200: OK - (Successful operation)
 
         404: Not Found - ErrorEntity (12141: Slot [{slotId}] not found in namespace [{namespace}])
         """
         if code == 200:
-            return Any(content), None
+            return HttpResponse.create(code, "OK"), None
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)

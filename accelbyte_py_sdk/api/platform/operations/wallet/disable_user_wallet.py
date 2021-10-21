@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:17.054525+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:31.579192+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -57,6 +57,8 @@ class DisableUserWallet(Operation):
         wallet_id: (walletId) REQUIRED str in path
 
     Responses:
+        204: No Content - (Successful operation)
+
         404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
 
         409: Conflict - ErrorEntity (20006: optimistic lock)
@@ -199,13 +201,17 @@ class DisableUserWallet(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, ErrorEntity]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ErrorEntity]]:
         """Parse the given response.
+
+        204: No Content - (Successful operation)
 
         404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
 
         409: Conflict - ErrorEntity (20006: optimistic lock)
         """
+        if code == 204:
+            return HttpResponse.create(code, "No Content"), None
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 409:

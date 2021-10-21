@@ -31,6 +31,7 @@ from ..operations.reward import DeleteReward
 from ..operations.reward import ExportRewards
 from ..operations.reward import GetReward
 from ..operations.reward import GetReward1
+from ..operations.reward import GetRewardByCode
 from ..operations.reward import ImportRewards
 from ..operations.reward import QueryRewards
 from ..operations.reward import QueryRewards1
@@ -96,6 +97,19 @@ def get_reward_1(reward_id: str, namespace: Optional[str] = None):
             return None, error
     request = GetReward1.create(
         reward_id=reward_id,
+        namespace=namespace,
+    )
+    return run_request(request)
+
+
+@same_doc_as(GetRewardByCode)
+def get_reward_by_code(reward_code: str, namespace: Optional[str] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetRewardByCode.create(
+        reward_code=reward_code,
         namespace=namespace,
     )
     return run_request(request)

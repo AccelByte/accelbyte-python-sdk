@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:18.374316+08:00
-# from: Justice Group Service (2.4.0)
+# Auto-generated at 2021-10-21T08:52:32.219244+08:00
+# from: Justice group Service (2.8.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -59,7 +59,7 @@ class GetGroupConfigurationAdminV1(Operation):
         configuration_code: (configurationCode) REQUIRED str in path
 
     Responses:
-        201: Created - ModelsGetGroupConfigurationResponseV1 (Created)
+        200: OK - ModelsGetGroupConfigurationResponseV1 (OK)
 
         400: Bad Request - ResponseErrorResponse (20002: validation error)
 
@@ -198,7 +198,7 @@ class GetGroupConfigurationAdminV1(Operation):
     def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsGetGroupConfigurationResponseV1], Union[None, ResponseErrorResponse]]:
         """Parse the given response.
 
-        201: Created - ModelsGetGroupConfigurationResponseV1 (Created)
+        200: OK - ModelsGetGroupConfigurationResponseV1 (OK)
 
         400: Bad Request - ResponseErrorResponse (20002: validation error)
 
@@ -210,7 +210,7 @@ class GetGroupConfigurationAdminV1(Operation):
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
         """
-        if code == 201:
+        if code == 200:
             return ModelsGetGroupConfigurationResponseV1.create_from_dict(content), None
         if code == 400:
             return None, ResponseErrorResponse.create_from_dict(content)

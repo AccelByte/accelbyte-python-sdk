@@ -20,9 +20,27 @@ from ....core import run_request
 from ....core import same_doc_as
 
 
+from ..operations.anonymization import AnonymizeCampaign
 from ..operations.anonymization import AnonymizeEntitlement
 from ..operations.anonymization import AnonymizeFulfillment
+from ..operations.anonymization import AnonymizeIntegration
+from ..operations.anonymization import AnonymizeOrder
+from ..operations.anonymization import AnonymizePayment
+from ..operations.anonymization import AnonymizeSubscription
 from ..operations.anonymization import AnonymizeWallet
+
+
+@same_doc_as(AnonymizeCampaign)
+def anonymize_campaign(user_id: str, namespace: Optional[str] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AnonymizeCampaign.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request)
 
 
 @same_doc_as(AnonymizeEntitlement)
@@ -45,6 +63,58 @@ def anonymize_fulfillment(user_id: str, namespace: Optional[str] = None):
         if error:
             return None, error
     request = AnonymizeFulfillment.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request)
+
+
+@same_doc_as(AnonymizeIntegration)
+def anonymize_integration(user_id: str, namespace: Optional[str] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AnonymizeIntegration.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request)
+
+
+@same_doc_as(AnonymizeOrder)
+def anonymize_order(user_id: str, namespace: Optional[str] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AnonymizeOrder.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request)
+
+
+@same_doc_as(AnonymizePayment)
+def anonymize_payment(user_id: str, namespace: Optional[str] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AnonymizePayment.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request)
+
+
+@same_doc_as(AnonymizeSubscription)
+def anonymize_subscription(user_id: str, namespace: Optional[str] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AnonymizeSubscription.create(
         user_id=user_id,
         namespace=namespace,
     )

@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:16.280188+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:30.704527+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -35,6 +35,8 @@ class BasicItem(Model):
 
         app_type: (appType) OPTIONAL str
 
+        season_type: (seasonType) OPTIONAL str
+
         base_app_id: (baseAppId) OPTIONAL str
 
         sku: (sku) OPTIONAL str
@@ -65,6 +67,7 @@ class BasicItem(Model):
     item_id: str                                                                                   # REQUIRED
     app_id: str                                                                                    # OPTIONAL
     app_type: str                                                                                  # OPTIONAL
+    season_type: str                                                                               # OPTIONAL
     base_app_id: str                                                                               # OPTIONAL
     sku: str                                                                                       # OPTIONAL
     namespace: str                                                                                 # REQUIRED
@@ -92,6 +95,10 @@ class BasicItem(Model):
 
     def with_app_type(self, value: str) -> BasicItem:
         self.app_type = value
+        return self
+
+    def with_season_type(self, value: str) -> BasicItem:
+        self.season_type = value
         return self
 
     def with_base_app_id(self, value: str) -> BasicItem:
@@ -160,6 +167,10 @@ class BasicItem(Model):
             result["appType"] = str(self.app_type)
         elif include_empty:
             result["appType"] = str()
+        if hasattr(self, "season_type") and self.season_type:
+            result["seasonType"] = str(self.season_type)
+        elif include_empty:
+            result["seasonType"] = str()
         if hasattr(self, "base_app_id") and self.base_app_id:
             result["baseAppId"] = str(self.base_app_id)
         elif include_empty:
@@ -227,6 +238,7 @@ class BasicItem(Model):
         updated_at: str,
         app_id: Optional[str] = None,
         app_type: Optional[str] = None,
+        season_type: Optional[str] = None,
         base_app_id: Optional[str] = None,
         sku: Optional[str] = None,
         use_count: Optional[int] = None,
@@ -246,6 +258,8 @@ class BasicItem(Model):
             instance.app_id = app_id
         if app_type is not None:
             instance.app_type = app_type
+        if season_type is not None:
+            instance.season_type = season_type
         if base_app_id is not None:
             instance.base_app_id = base_app_id
         if sku is not None:
@@ -275,6 +289,10 @@ class BasicItem(Model):
             instance.app_type = str(dict_["appType"])
         elif include_empty:
             instance.app_type = str()
+        if "seasonType" in dict_ and dict_["seasonType"] is not None:
+            instance.season_type = str(dict_["seasonType"])
+        elif include_empty:
+            instance.season_type = str()
         if "baseAppId" in dict_ and dict_["baseAppId"] is not None:
             instance.base_app_id = str(dict_["baseAppId"])
         elif include_empty:
@@ -331,6 +349,7 @@ class BasicItem(Model):
             "itemId": "item_id",
             "appId": "app_id",
             "appType": "app_type",
+            "seasonType": "season_type",
             "baseAppId": "base_app_id",
             "sku": "sku",
             "namespace": "namespace",

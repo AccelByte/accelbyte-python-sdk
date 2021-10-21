@@ -131,4 +131,3 @@ from .public_get_user_platform_accounts_v3 import PublicGetUserPlatformAccountsV
 from .public_link_platform_account import PublicLinkPlatformAccount
 from .public_validate_user_by_user_id_and_password_v3 import PublicValidateUserByUserIDAndPasswordV3
 from .public_get_my_user_v3 import PublicGetMyUserV3
-from .admin_update_my_user_v4 import AdminUpdateMyUserV4

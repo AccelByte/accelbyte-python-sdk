@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:16.650843+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:31.042134+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -68,9 +68,9 @@ class SyncInGameItem(Operation):
     Responses:
         200: OK - FullItemInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (30021: Default language [{language}] required | 30022: Default region [{region}] is required | 30324: Invalid namespace [{namespace}])
-
         404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
+
+        400: Bad Request - ErrorEntity (30021: Default language [{language}] required | 30022: Default region [{region}] is required | 30324: Invalid namespace [{namespace}])
 
         409: Conflict - ErrorEntity (30173: Published store can't modify content | 30373: ItemType [{itemType}] is not allowed in namespace [{namespace}])
 
@@ -226,9 +226,9 @@ class SyncInGameItem(Operation):
 
         200: OK - FullItemInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (30021: Default language [{language}] required | 30022: Default region [{region}] is required | 30324: Invalid namespace [{namespace}])
-
         404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
+
+        400: Bad Request - ErrorEntity (30021: Default language [{language}] required | 30022: Default region [{region}] is required | 30324: Invalid namespace [{namespace}])
 
         409: Conflict - ErrorEntity (30173: Published store can't modify content | 30373: ItemType [{itemType}] is not allowed in namespace [{namespace}])
 
@@ -236,9 +236,9 @@ class SyncInGameItem(Operation):
         """
         if code == 200:
             return FullItemInfo.create_from_dict(content), None
-        if code == 400:
-            return None, ErrorEntity.create_from_dict(content)
         if code == 404:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 400:
             return None, ErrorEntity.create_from_dict(content)
         if code == 409:
             return None, ErrorEntity.create_from_dict(content)

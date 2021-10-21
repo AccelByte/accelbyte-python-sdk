@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:17.186351+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:31.325233+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -61,7 +61,7 @@ class FulfillUserOrder(Operation):
     Responses:
         200: OK - OrderInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (35121: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per day | 35122: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per transaction | 35123: Wallet [{walletId}] is inactive | 35125: Balance exceed max balance [{maxAmount}])
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive)
 
         404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 32141: Order [{orderNo}] does not exist)
 
@@ -210,7 +210,7 @@ class FulfillUserOrder(Operation):
 
         200: OK - OrderInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (35121: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per day | 35122: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per transaction | 35123: Wallet [{walletId}] is inactive | 35125: Balance exceed max balance [{maxAmount}])
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive)
 
         404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 32141: Order [{orderNo}] does not exist)
 

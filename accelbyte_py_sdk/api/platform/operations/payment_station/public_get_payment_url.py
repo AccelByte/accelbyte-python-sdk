@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:17.571458+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:31.491957+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -59,7 +59,7 @@ class PublicGetPaymentUrl(Operation):
     Responses:
         200: OK - PaymentUrl (successful operation)
 
-        400: Bad Request - ErrorEntity (33321: Payment provider [{paymentProvider}] not support currency [{currency}] | 33322: Payment provider [{paymentProvider}] not supported)
+        400: Bad Request - ErrorEntity (33321: Payment provider [{paymentProvider}] not support currency [{currency}] | 33322: Payment provider [{paymentProvider}] not supported | 33332: Amount too small, please contact administrator)
 
         403: Forbidden - ErrorEntity (20016: action is banned)
 
@@ -193,7 +193,7 @@ class PublicGetPaymentUrl(Operation):
 
         200: OK - PaymentUrl (successful operation)
 
-        400: Bad Request - ErrorEntity (33321: Payment provider [{paymentProvider}] not support currency [{currency}] | 33322: Payment provider [{paymentProvider}] not supported)
+        400: Bad Request - ErrorEntity (33321: Payment provider [{paymentProvider}] not support currency [{currency}] | 33322: Payment provider [{paymentProvider}] not supported | 33332: Amount too small, please contact administrator)
 
         403: Forbidden - ErrorEntity (20016: action is banned)
 

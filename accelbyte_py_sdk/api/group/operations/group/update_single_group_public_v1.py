@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:18.475752+08:00
-# from: Justice Group Service (2.4.0)
+# Auto-generated at 2021-10-21T08:52:32.304578+08:00
+# from: Justice group Service (2.8.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -48,7 +48,7 @@ class UpdateSingleGroupPublicV1(Operation):
     Properties:
         url: /group/v1/public/namespaces/{namespace}/groups/{groupId}
 
-        method: PUT
+        method: PATCH
 
         tags: ["Group"]
 
@@ -81,7 +81,7 @@ class UpdateSingleGroupPublicV1(Operation):
     # region fields
 
     _url: str = "/group/v1/public/namespaces/{namespace}/groups/{groupId}"
-    _method: str = "PUT"
+    _method: str = "PATCH"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _security: Optional[str] = "bearer"

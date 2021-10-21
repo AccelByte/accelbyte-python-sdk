@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:16.352866+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:30.724768+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -38,6 +38,8 @@ class ItemSnapshot(Model):
 
         app_type: (appType) OPTIONAL str
 
+        season_type: (seasonType) OPTIONAL str
+
         base_app_id: (baseAppId) OPTIONAL str
 
         sku: (sku) OPTIONAL str
@@ -45,6 +47,10 @@ class ItemSnapshot(Model):
         namespace: (namespace) REQUIRED str
 
         name: (name) REQUIRED str
+
+        listable: (listable) OPTIONAL bool
+
+        purchasable: (purchasable) OPTIONAL bool
 
         entitlement_type: (entitlementType) REQUIRED str
 
@@ -94,10 +100,13 @@ class ItemSnapshot(Model):
     item_id: str                                                                                   # REQUIRED
     app_id: str                                                                                    # OPTIONAL
     app_type: str                                                                                  # OPTIONAL
+    season_type: str                                                                               # OPTIONAL
     base_app_id: str                                                                               # OPTIONAL
     sku: str                                                                                       # OPTIONAL
     namespace: str                                                                                 # REQUIRED
     name: str                                                                                      # REQUIRED
+    listable: bool                                                                                 # OPTIONAL
+    purchasable: bool                                                                              # OPTIONAL
     entitlement_type: str                                                                          # REQUIRED
     use_count: int                                                                                 # OPTIONAL
     stackable: bool                                                                                # OPTIONAL
@@ -136,6 +145,10 @@ class ItemSnapshot(Model):
         self.app_type = value
         return self
 
+    def with_season_type(self, value: str) -> ItemSnapshot:
+        self.season_type = value
+        return self
+
     def with_base_app_id(self, value: str) -> ItemSnapshot:
         self.base_app_id = value
         return self
@@ -150,6 +163,14 @@ class ItemSnapshot(Model):
 
     def with_name(self, value: str) -> ItemSnapshot:
         self.name = value
+        return self
+
+    def with_listable(self, value: bool) -> ItemSnapshot:
+        self.listable = value
+        return self
+
+    def with_purchasable(self, value: bool) -> ItemSnapshot:
+        self.purchasable = value
         return self
 
     def with_entitlement_type(self, value: str) -> ItemSnapshot:
@@ -254,6 +275,10 @@ class ItemSnapshot(Model):
             result["appType"] = str(self.app_type)
         elif include_empty:
             result["appType"] = str()
+        if hasattr(self, "season_type") and self.season_type:
+            result["seasonType"] = str(self.season_type)
+        elif include_empty:
+            result["seasonType"] = str()
         if hasattr(self, "base_app_id") and self.base_app_id:
             result["baseAppId"] = str(self.base_app_id)
         elif include_empty:
@@ -270,6 +295,14 @@ class ItemSnapshot(Model):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = str()
+        if hasattr(self, "listable") and self.listable:
+            result["listable"] = bool(self.listable)
+        elif include_empty:
+            result["listable"] = bool()
+        if hasattr(self, "purchasable") and self.purchasable:
+            result["purchasable"] = bool(self.purchasable)
+        elif include_empty:
+            result["purchasable"] = bool()
         if hasattr(self, "entitlement_type") and self.entitlement_type:
             result["entitlementType"] = str(self.entitlement_type)
         elif include_empty:
@@ -373,8 +406,11 @@ class ItemSnapshot(Model):
         language: str,
         app_id: Optional[str] = None,
         app_type: Optional[str] = None,
+        season_type: Optional[str] = None,
         base_app_id: Optional[str] = None,
         sku: Optional[str] = None,
+        listable: Optional[bool] = None,
+        purchasable: Optional[bool] = None,
         use_count: Optional[int] = None,
         stackable: Optional[bool] = None,
         thumbnail_url: Optional[str] = None,
@@ -405,10 +441,16 @@ class ItemSnapshot(Model):
             instance.app_id = app_id
         if app_type is not None:
             instance.app_type = app_type
+        if season_type is not None:
+            instance.season_type = season_type
         if base_app_id is not None:
             instance.base_app_id = base_app_id
         if sku is not None:
             instance.sku = sku
+        if listable is not None:
+            instance.listable = listable
+        if purchasable is not None:
+            instance.purchasable = purchasable
         if use_count is not None:
             instance.use_count = use_count
         if stackable is not None:
@@ -460,6 +502,10 @@ class ItemSnapshot(Model):
             instance.app_type = str(dict_["appType"])
         elif include_empty:
             instance.app_type = str()
+        if "seasonType" in dict_ and dict_["seasonType"] is not None:
+            instance.season_type = str(dict_["seasonType"])
+        elif include_empty:
+            instance.season_type = str()
         if "baseAppId" in dict_ and dict_["baseAppId"] is not None:
             instance.base_app_id = str(dict_["baseAppId"])
         elif include_empty:
@@ -476,6 +522,14 @@ class ItemSnapshot(Model):
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = str()
+        if "listable" in dict_ and dict_["listable"] is not None:
+            instance.listable = bool(dict_["listable"])
+        elif include_empty:
+            instance.listable = bool()
+        if "purchasable" in dict_ and dict_["purchasable"] is not None:
+            instance.purchasable = bool(dict_["purchasable"])
+        elif include_empty:
+            instance.purchasable = bool()
         if "entitlementType" in dict_ and dict_["entitlementType"] is not None:
             instance.entitlement_type = str(dict_["entitlementType"])
         elif include_empty:
@@ -568,10 +622,13 @@ class ItemSnapshot(Model):
             "itemId": "item_id",
             "appId": "app_id",
             "appType": "app_type",
+            "seasonType": "season_type",
             "baseAppId": "base_app_id",
             "sku": "sku",
             "namespace": "namespace",
             "name": "name",
+            "listable": "listable",
+            "purchasable": "purchasable",
             "entitlementType": "entitlement_type",
             "useCount": "use_count",
             "stackable": "stackable",

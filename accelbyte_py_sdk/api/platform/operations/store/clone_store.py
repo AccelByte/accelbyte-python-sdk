@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:16.713869+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:31.078105+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -63,9 +63,9 @@ class CloneStore(Operation):
     Responses:
         200: OK - StoreInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (30122: Store's meta mismatch)
-
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
+
+        400: Bad Request - ErrorEntity (30122: Store's meta mismatch)
     """
 
     # region fields
@@ -215,15 +215,15 @@ class CloneStore(Operation):
 
         200: OK - StoreInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (30122: Store's meta mismatch)
-
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
+
+        400: Bad Request - ErrorEntity (30122: Store's meta mismatch)
         """
         if code == 200:
             return StoreInfo.create_from_dict(content), None
-        if code == 400:
-            return None, ErrorEntity.create_from_dict(content)
         if code == 404:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 400:
             return None, ErrorEntity.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:

@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:17.044898+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:31.570063+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -64,9 +64,9 @@ class DebitUserWallet(Operation):
     Responses:
         200: OK - WalletInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
-
         404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
 
         409: Conflict - ErrorEntity (20006: optimistic lock)
 
@@ -228,9 +228,9 @@ class DebitUserWallet(Operation):
 
         200: OK - WalletInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
-
         404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
 
         409: Conflict - ErrorEntity (20006: optimistic lock)
 
@@ -238,9 +238,9 @@ class DebitUserWallet(Operation):
         """
         if code == 200:
             return WalletInfo.create_from_dict(content), None
-        if code == 400:
-            return None, ErrorEntity.create_from_dict(content)
         if code == 404:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 400:
             return None, ErrorEntity.create_from_dict(content)
         if code == 409:
             return None, ErrorEntity.create_from_dict(content)

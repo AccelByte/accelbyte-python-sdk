@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:16.295916+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:30.694837+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -48,6 +48,8 @@ class ItemUpdate(Model):
 
         app_type: (appType) OPTIONAL str
 
+        season_type: (seasonType) OPTIONAL str
+
         base_app_id: (baseAppId) OPTIONAL str
 
         target_currency_code: (targetCurrencyCode) OPTIONAL str
@@ -63,6 +65,10 @@ class ItemUpdate(Model):
         localizations: (localizations) OPTIONAL Dict[str, Localization]
 
         status: (status) OPTIONAL str
+
+        listable: (listable) OPTIONAL bool
+
+        purchasable: (purchasable) OPTIONAL bool
 
         sku: (sku) OPTIONAL str
 
@@ -98,6 +104,7 @@ class ItemUpdate(Model):
     stackable: bool                                                                                # OPTIONAL
     app_id: str                                                                                    # OPTIONAL
     app_type: str                                                                                  # OPTIONAL
+    season_type: str                                                                               # OPTIONAL
     base_app_id: str                                                                               # OPTIONAL
     target_currency_code: str                                                                      # OPTIONAL
     target_namespace: str                                                                          # OPTIONAL
@@ -106,6 +113,8 @@ class ItemUpdate(Model):
     thumbnail_url: str                                                                             # OPTIONAL
     localizations: Dict[str, Localization]                                                         # OPTIONAL
     status: str                                                                                    # OPTIONAL
+    listable: bool                                                                                 # OPTIONAL
+    purchasable: bool                                                                              # OPTIONAL
     sku: str                                                                                       # OPTIONAL
     region_data: Dict[str, List[RegionDataItem]]                                                   # OPTIONAL
     item_ids: List[str]                                                                            # OPTIONAL
@@ -151,6 +160,10 @@ class ItemUpdate(Model):
         self.app_type = value
         return self
 
+    def with_season_type(self, value: str) -> ItemUpdate:
+        self.season_type = value
+        return self
+
     def with_base_app_id(self, value: str) -> ItemUpdate:
         self.base_app_id = value
         return self
@@ -181,6 +194,14 @@ class ItemUpdate(Model):
 
     def with_status(self, value: str) -> ItemUpdate:
         self.status = value
+        return self
+
+    def with_listable(self, value: bool) -> ItemUpdate:
+        self.listable = value
+        return self
+
+    def with_purchasable(self, value: bool) -> ItemUpdate:
+        self.purchasable = value
         return self
 
     def with_sku(self, value: str) -> ItemUpdate:
@@ -265,6 +286,10 @@ class ItemUpdate(Model):
             result["appType"] = str(self.app_type)
         elif include_empty:
             result["appType"] = str()
+        if hasattr(self, "season_type") and self.season_type:
+            result["seasonType"] = str(self.season_type)
+        elif include_empty:
+            result["seasonType"] = str()
         if hasattr(self, "base_app_id") and self.base_app_id:
             result["baseAppId"] = str(self.base_app_id)
         elif include_empty:
@@ -297,6 +322,14 @@ class ItemUpdate(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
+        if hasattr(self, "listable") and self.listable:
+            result["listable"] = bool(self.listable)
+        elif include_empty:
+            result["listable"] = bool()
+        if hasattr(self, "purchasable") and self.purchasable:
+            result["purchasable"] = bool(self.purchasable)
+        elif include_empty:
+            result["purchasable"] = bool()
         if hasattr(self, "sku") and self.sku:
             result["sku"] = str(self.sku)
         elif include_empty:
@@ -361,6 +394,7 @@ class ItemUpdate(Model):
         stackable: Optional[bool] = None,
         app_id: Optional[str] = None,
         app_type: Optional[str] = None,
+        season_type: Optional[str] = None,
         base_app_id: Optional[str] = None,
         target_currency_code: Optional[str] = None,
         target_namespace: Optional[str] = None,
@@ -369,6 +403,8 @@ class ItemUpdate(Model):
         thumbnail_url: Optional[str] = None,
         localizations: Optional[Dict[str, Localization]] = None,
         status: Optional[str] = None,
+        listable: Optional[bool] = None,
+        purchasable: Optional[bool] = None,
         sku: Optional[str] = None,
         region_data: Optional[Dict[str, List[RegionDataItem]]] = None,
         item_ids: Optional[List[str]] = None,
@@ -395,6 +431,8 @@ class ItemUpdate(Model):
             instance.app_id = app_id
         if app_type is not None:
             instance.app_type = app_type
+        if season_type is not None:
+            instance.season_type = season_type
         if base_app_id is not None:
             instance.base_app_id = base_app_id
         if target_currency_code is not None:
@@ -411,6 +449,10 @@ class ItemUpdate(Model):
             instance.localizations = localizations
         if status is not None:
             instance.status = status
+        if listable is not None:
+            instance.listable = listable
+        if purchasable is not None:
+            instance.purchasable = purchasable
         if sku is not None:
             instance.sku = sku
         if region_data is not None:
@@ -470,6 +512,10 @@ class ItemUpdate(Model):
             instance.app_type = str(dict_["appType"])
         elif include_empty:
             instance.app_type = str()
+        if "seasonType" in dict_ and dict_["seasonType"] is not None:
+            instance.season_type = str(dict_["seasonType"])
+        elif include_empty:
+            instance.season_type = str()
         if "baseAppId" in dict_ and dict_["baseAppId"] is not None:
             instance.base_app_id = str(dict_["baseAppId"])
         elif include_empty:
@@ -502,6 +548,14 @@ class ItemUpdate(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = str()
+        if "listable" in dict_ and dict_["listable"] is not None:
+            instance.listable = bool(dict_["listable"])
+        elif include_empty:
+            instance.listable = bool()
+        if "purchasable" in dict_ and dict_["purchasable"] is not None:
+            instance.purchasable = bool(dict_["purchasable"])
+        elif include_empty:
+            instance.purchasable = bool()
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:
@@ -562,6 +616,7 @@ class ItemUpdate(Model):
             "stackable": "stackable",
             "appId": "app_id",
             "appType": "app_type",
+            "seasonType": "season_type",
             "baseAppId": "base_app_id",
             "targetCurrencyCode": "target_currency_code",
             "targetNamespace": "target_namespace",
@@ -570,6 +625,8 @@ class ItemUpdate(Model):
             "thumbnailUrl": "thumbnail_url",
             "localizations": "localizations",
             "status": "status",
+            "listable": "listable",
+            "purchasable": "purchasable",
             "sku": "sku",
             "regionData": "region_data",
             "itemIds": "item_ids",

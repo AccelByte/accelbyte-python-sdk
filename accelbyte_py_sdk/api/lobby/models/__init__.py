@@ -6,6 +6,7 @@ __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .models_profanity_filter import ModelsProfanityFilter
 from .handlers_get_users_presence_response import HandlersGetUsersPresenceResponse
 from .handlers_user_presence import HandlersUserPresence
 from .log_app_message_declaration import LogAppMessageDeclaration

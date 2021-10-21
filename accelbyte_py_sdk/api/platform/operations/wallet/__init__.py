@@ -1,10 +1,10 @@
 # pylint: disable=line-too-long
 
 from .list_user_wallet_transactions import ListUserWalletTransactions
-from .check_transaction_credit_limit import CheckTransactionCreditLimit
 from .enable_user_wallet import EnableUserWallet
 from .debit_user_wallet import DebitUserWallet
 from .get_user_wallet import GetUserWallet
+from .check_wallet import CheckWallet
 from .disable_user_wallet import DisableUserWallet
 from .credit_user_wallet import CreditUserWallet
 from .pay_with_user_wallet import PayWithUserWallet

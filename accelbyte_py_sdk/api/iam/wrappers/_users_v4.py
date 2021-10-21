@@ -36,6 +36,7 @@ from ..models import RestErrorResponse
 from ..operations.users_v4 import AdminAddUserRoleV4
 from ..operations.users_v4 import AdminListUserRolesV4
 from ..operations.users_v4 import AdminRemoveUserRoleV4
+from ..operations.users_v4 import AdminUpdateMyUserV4
 from ..operations.users_v4 import AdminUpdateUserEmailAddressV4
 from ..operations.users_v4 import AdminUpdateUserRoleV4
 from ..operations.users_v4 import AdminUpdateUserV4
@@ -84,6 +85,14 @@ def admin_remove_user_role_v4(body: ModelRemoveUserRoleV4Request, user_id: str, 
         body=body,
         user_id=user_id,
         namespace=namespace,
+    )
+    return run_request(request)
+
+
+@same_doc_as(AdminUpdateMyUserV4)
+def admin_update_my_user_v4(body: ModelUserUpdateRequestV3):
+    request = AdminUpdateMyUserV4.create(
+        body=body,
     )
     return run_request(request)
 

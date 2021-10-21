@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:12.049576+08:00
-# from: Justice Iam Service (4.1.0)
+# Auto-generated at 2021-10-21T08:52:26.770738+08:00
+# from: Justice iam Service (4.4.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -35,7 +35,9 @@ class PublicListUserIDByPlatformUserIDsV3(Operation):
 
     List User ID By Platform User ID This endpoint intended to list game user ID
     from the given namespace This endpoint return list of user ID by given
-    platform ID and list of platform user ID
+    platform ID and list of platform user ID nintendo platform user ID : NSA ID
+    need to be appended with Environment ID using colon as separator. e.g
+    kmzwa8awaa:dd1
 
 
     Properties:

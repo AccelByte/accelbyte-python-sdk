@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:16.608180+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:31.015527+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -64,7 +64,7 @@ class GetItemIdBySku(Operation):
     Responses:
         200: OK - ItemId (successful operation)
 
-        404: Not Found - ErrorEntity (30343: Item of sku [{sku}] does not exist)
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30343: Item of sku [{sku}] does not exist)
     """
 
     # region fields
@@ -225,7 +225,7 @@ class GetItemIdBySku(Operation):
 
         200: OK - ItemId (successful operation)
 
-        404: Not Found - ErrorEntity (30343: Item of sku [{sku}] does not exist)
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30343: Item of sku [{sku}] does not exist)
         """
         if code == 200:
             return ItemId.create_from_dict(content), None

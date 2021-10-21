@@ -24,13 +24,13 @@ from ..models import ModelsCreateMemberRoleRequestV1
 from ..models import ModelsCreateMemberRoleResponseV1
 from ..models import ModelsGetMemberRoleResponseV1
 from ..models import ModelsGetMemberRolesListResponseV1
+from ..models import ModelsGetUserGroupInformationResponseV1
 from ..models import ModelsRemoveRoleFromMemberRequestV1
 from ..models import ModelsUpdateMemberRolePermissionsRequestV1
 from ..models import ModelsUpdateMemberRoleRequestV1
 from ..models import ModelsUpdateMemberRoleResponseV1
 from ..models import ResponseErrorResponse
 
-from ..operations.group_roles import AssignRoleToGroupMemberAdminV1
 from ..operations.group_roles import CreateMemberRoleAdminV1
 from ..operations.group_roles import DeleteMemberRoleAdminV1
 from ..operations.group_roles import DeleteMemberRolePublicV1
@@ -39,20 +39,7 @@ from ..operations.group_roles import GetMemberRolesListPublicV1
 from ..operations.group_roles import GetSingleMemberRoleAdminV1
 from ..operations.group_roles import UpdateMemberRoleAdminV1
 from ..operations.group_roles import UpdateMemberRolePermissionAdminV1
-
-
-@same_doc_as(AssignRoleToGroupMemberAdminV1)
-def assign_role_to_group_member_admin_v1(body: ModelsAssignRoleToMemberRequestV1, member_role_id: str, namespace: Optional[str] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = AssignRoleToGroupMemberAdminV1.create(
-        body=body,
-        member_role_id=member_role_id,
-        namespace=namespace,
-    )
-    return run_request(request)
+from ..operations.group_roles import UpdateMemberRolePublicV1
 
 
 @same_doc_as(CreateMemberRoleAdminV1)
@@ -157,6 +144,20 @@ def update_member_role_permission_admin_v1(body: ModelsUpdateMemberRolePermissio
         if error:
             return None, error
     request = UpdateMemberRolePermissionAdminV1.create(
+        body=body,
+        member_role_id=member_role_id,
+        namespace=namespace,
+    )
+    return run_request(request)
+
+
+@same_doc_as(UpdateMemberRolePublicV1)
+def update_member_role_public_v1(body: ModelsAssignRoleToMemberRequestV1, member_role_id: str, namespace: Optional[str] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateMemberRolePublicV1.create(
         body=body,
         member_role_id=member_role_id,
         namespace=namespace,

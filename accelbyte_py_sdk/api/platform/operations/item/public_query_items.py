@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:16.778206+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:31.112367+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -38,7 +38,8 @@ class PublicQueryItems(Operation):
 
     Other detail info:
 
-      * Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store item)
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store item)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store item)
       *  Returns : the list of items
 
 
@@ -84,7 +85,7 @@ class PublicQueryItems(Operation):
     Responses:
         200: OK - ItemPagingSlicedResult (successful operation)
 
-        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -343,7 +344,7 @@ class PublicQueryItems(Operation):
 
         200: OK - ItemPagingSlicedResult (successful operation)
 
-        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """

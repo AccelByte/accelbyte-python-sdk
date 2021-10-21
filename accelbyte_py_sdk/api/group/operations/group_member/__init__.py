@@ -1,6 +1,6 @@
 # pylint: disable=line-too-long
 
-from .get_group_members_list_v1 import GetGroupMembersListV1
+from .get_group_members_list_admin_v1 import GetGroupMembersListAdminV1
 from .accept_group_invitation_public_v1 import AcceptGroupInvitationPublicV1
 from .reject_group_invitation_public_v1 import RejectGroupInvitationPublicV1
 from .join_group_v1 import JoinGroupV1

@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:16.836672+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:31.155356+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -67,11 +67,11 @@ class UpdateUserEntitlement(Operation):
     Responses:
         200: OK - EntitlementInfo (successful operation)
 
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
         404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 20006: optimistic lock)
-
-        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -229,20 +229,20 @@ class UpdateUserEntitlement(Operation):
 
         200: OK - EntitlementInfo (successful operation)
 
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
         404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 20006: optimistic lock)
-
-        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return EntitlementInfo.create_from_dict(content), None
+        if code == 422:
+            return None, ValidationErrorEntity.create_from_dict(content)
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 409:
             return None, ErrorEntity.create_from_dict(content)
-        if code == 422:
-            return None, ValidationErrorEntity.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
             return None, undocumented_response

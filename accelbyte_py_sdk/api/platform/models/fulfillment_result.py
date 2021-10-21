@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:16.318374+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:30.750847+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -26,6 +26,7 @@ from ....core import Model
 
 from ..models.credit_summary import CreditSummary
 from ..models.entitlement_summary import EntitlementSummary
+from ..models.subscription_summary import SubscriptionSummary
 
 
 class FulfillmentResult(Model):
@@ -39,6 +40,8 @@ class FulfillmentResult(Model):
         entitlement_summaries: (entitlementSummaries) OPTIONAL List[EntitlementSummary]
 
         credit_summaries: (creditSummaries) OPTIONAL List[CreditSummary]
+
+        subscription_summaries: (subscriptionSummaries) OPTIONAL List[SubscriptionSummary]
     """
 
     # region fields
@@ -47,6 +50,7 @@ class FulfillmentResult(Model):
     user_id: str                                                                                   # REQUIRED
     entitlement_summaries: List[EntitlementSummary]                                                # OPTIONAL
     credit_summaries: List[CreditSummary]                                                          # OPTIONAL
+    subscription_summaries: List[SubscriptionSummary]                                              # OPTIONAL
 
     # endregion fields
 
@@ -66,6 +70,10 @@ class FulfillmentResult(Model):
 
     def with_credit_summaries(self, value: List[CreditSummary]) -> FulfillmentResult:
         self.credit_summaries = value
+        return self
+
+    def with_subscription_summaries(self, value: List[SubscriptionSummary]) -> FulfillmentResult:
+        self.subscription_summaries = value
         return self
 
     # endregion with_x methods
@@ -90,6 +98,10 @@ class FulfillmentResult(Model):
             result["creditSummaries"] = [i0.to_dict(include_empty=include_empty) for i0 in self.credit_summaries]
         elif include_empty:
             result["creditSummaries"] = []
+        if hasattr(self, "subscription_summaries") and self.subscription_summaries:
+            result["subscriptionSummaries"] = [i0.to_dict(include_empty=include_empty) for i0 in self.subscription_summaries]
+        elif include_empty:
+            result["subscriptionSummaries"] = []
         return result
 
     # endregion to methods
@@ -103,6 +115,7 @@ class FulfillmentResult(Model):
         user_id: str,
         entitlement_summaries: Optional[List[EntitlementSummary]] = None,
         credit_summaries: Optional[List[CreditSummary]] = None,
+        subscription_summaries: Optional[List[SubscriptionSummary]] = None,
     ) -> FulfillmentResult:
         instance = cls()
         instance.namespace = namespace
@@ -111,6 +124,8 @@ class FulfillmentResult(Model):
             instance.entitlement_summaries = entitlement_summaries
         if credit_summaries is not None:
             instance.credit_summaries = credit_summaries
+        if subscription_summaries is not None:
+            instance.subscription_summaries = subscription_summaries
         return instance
 
     @classmethod
@@ -134,6 +149,10 @@ class FulfillmentResult(Model):
             instance.credit_summaries = [CreditSummary.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["creditSummaries"]]
         elif include_empty:
             instance.credit_summaries = []
+        if "subscriptionSummaries" in dict_ and dict_["subscriptionSummaries"] is not None:
+            instance.subscription_summaries = [SubscriptionSummary.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["subscriptionSummaries"]]
+        elif include_empty:
+            instance.subscription_summaries = []
         return instance
 
     @staticmethod
@@ -143,6 +162,7 @@ class FulfillmentResult(Model):
             "userId": "user_id",
             "entitlementSummaries": "entitlement_summaries",
             "creditSummaries": "credit_summaries",
+            "subscriptionSummaries": "subscription_summaries",
         }
 
     # endregion static methods

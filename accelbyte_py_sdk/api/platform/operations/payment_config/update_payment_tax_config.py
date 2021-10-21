@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:17.626736+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:31.448182+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -46,7 +46,7 @@ class UpdatePaymentTaxConfig(Operation):
         taxJarEnabled| Boolean| false  
         taxJarApiToken| String| false| required, when taxJarEnabled is true and there is no existing token  
         sandboxTaxJarApiToken| String| false| optional  
-        taxJarProductCodesMapping| Map| No| kye is item type and value is Product tax code, currently support those item types: APP, COINS, INGAMEITEM, BUNDLE, CODE, SUBSCRIPTION  
+        taxJarProductCodesMapping| Map| No| key is item type(APP|COINS|INGAMEITEM|BUNDLE|CODE|SUBSCRIPTION) and value is product tax code: https://developers.taxjar.com/api/reference/?ruby#get-list-tax-categories  
 
     Other detail info:
 

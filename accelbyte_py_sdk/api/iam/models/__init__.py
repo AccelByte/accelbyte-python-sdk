@@ -1,6 +1,6 @@
 """Auto-generated package that contains models used by the iam API."""
 
-__version__ = "4.1.0"
+__version__ = "4.4.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

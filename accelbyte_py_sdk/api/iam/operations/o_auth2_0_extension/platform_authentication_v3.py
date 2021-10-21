@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:12.037448+08:00
-# from: Justice Iam Service (4.1.0)
+# Auto-generated at 2021-10-21T08:52:26.764405+08:00
+# from: Justice iam Service (4.4.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -68,7 +68,7 @@ class PlatformAuthenticationV3(Operation):
 
         tags: ["OAuth2.0 - Extension"]
 
-        consumes: ["application/x-www-form-urlencoded"]
+        consumes: ["*/*"]
 
         produces: ["application/json"]
 
@@ -112,7 +112,7 @@ class PlatformAuthenticationV3(Operation):
 
     _url: str = "/iam/v3/platforms/{platformId}/authenticate"
     _method: str = "GET"
-    _consumes: List[str] = ["application/x-www-form-urlencoded"]
+    _consumes: List[str] = ["*/*"]
     _produces: List[str] = ["application/json"]
     _security: Optional[str] = "bearer"
     _location_query: str = "PLACEHOLDER"

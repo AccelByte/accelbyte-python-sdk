@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:19.381627+08:00
-# from: Justice Basic Service (1.17.0)
+# Auto-generated at 2021-10-21T08:52:32.946264+08:00
+# from: Justice basic Service (1.23.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -67,13 +67,13 @@ class GeneratedUserUploadContentUrl(Operation):
     Responses:
         200: OK - FileUploadUrlInfo (Successful operation)
 
-        400: Bad Request - ValidationErrorEntity (20002: validation error | 11131: file type not supported)
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 11131: Unable to {action}: File type is not supported)
 
         401: Unauthorized - ErrorEntity (20001: unauthorized)
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        409: Conflict - ErrorEntity (11132: storage limit exceeded)
+        409: Conflict - ErrorEntity (11132: Unable to {action}: file storage exceed limitation, user ID: {userId}, namespace: {namespace})
 
         500: Internal Server Error - ErrorEntity (20000: internal server error)
     """
@@ -228,13 +228,13 @@ class GeneratedUserUploadContentUrl(Operation):
 
         200: OK - FileUploadUrlInfo (Successful operation)
 
-        400: Bad Request - ValidationErrorEntity (20002: validation error | 11131: file type not supported)
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 11131: Unable to {action}: File type is not supported)
 
         401: Unauthorized - ErrorEntity (20001: unauthorized)
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        409: Conflict - ErrorEntity (11132: storage limit exceeded)
+        409: Conflict - ErrorEntity (11132: Unable to {action}: file storage exceed limitation, user ID: {userId}, namespace: {namespace})
 
         500: Internal Server Error - ErrorEntity (20000: internal server error)
         """

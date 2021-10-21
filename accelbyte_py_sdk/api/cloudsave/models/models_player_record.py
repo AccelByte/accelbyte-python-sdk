@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:18.874963+08:00
-# from: Justice Cloudsave Service (3.38.0)
+# Auto-generated at 2021-10-21T08:52:32.557096+08:00
+# from: Justice cloudsave Service (1.8.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations

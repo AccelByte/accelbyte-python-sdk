@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:19.420109+08:00
-# from: Justice Basic Service (1.17.0)
+# Auto-generated at 2021-10-21T08:52:32.978022+08:00
+# from: Justice basic Service (1.23.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -62,13 +62,13 @@ class AddCountryGroup(Operation):
     Responses:
         201: Created - AddCountryGroupResponse (successful operation)
 
-        400: Bad Request - ErrorEntity (20002: validation error | 20019: unable to parse request body | 11234: country belongs to more than one group)
+        400: Bad Request - ErrorEntity (20002: validation error | 20019: unable to parse request body | 11234: Unable to {action}: A country can't be assigned to more than one country group)
 
         401: Unauthorized - ErrorEntity (20001: unauthorized)
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        409: Conflict - ErrorEntity (11235: country group already exist)
+        409: Conflict - ErrorEntity (11235: Unable to {action}: Country group with specified code is already exist)
     """
 
     # region fields
@@ -198,13 +198,13 @@ class AddCountryGroup(Operation):
 
         201: Created - AddCountryGroupResponse (successful operation)
 
-        400: Bad Request - ErrorEntity (20002: validation error | 20019: unable to parse request body | 11234: country belongs to more than one group)
+        400: Bad Request - ErrorEntity (20002: validation error | 20019: unable to parse request body | 11234: Unable to {action}: A country can't be assigned to more than one country group)
 
         401: Unauthorized - ErrorEntity (20001: unauthorized)
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        409: Conflict - ErrorEntity (11235: country group already exist)
+        409: Conflict - ErrorEntity (11235: Unable to {action}: Country group with specified code is already exist)
         """
         if code == 201:
             return AddCountryGroupResponse.create_from_dict(content), None

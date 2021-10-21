@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:18.910274+08:00
-# from: Justice Cloudsave Service (3.38.0)
+# Auto-generated at 2021-10-21T08:52:32.580408+08:00
+# from: Justice cloudsave Service (1.8.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -26,7 +26,7 @@ from .....core import Operation
 from .....core import HttpResponse
 
 from ...models import ModelsPlayerRecordRequest
-from ...models import ResponseError
+from ...models import ModelsResponseError
 
 
 class AdminPutPlayerPublicRecordHandlerV1(Operation):
@@ -35,12 +35,12 @@ class AdminPutPlayerPublicRecordHandlerV1(Operation):
     Required permission:
     ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]
     Required scope: social Save a record (arbitrary JSON data) in user-level. If a
-    record already exist with given key, this endpoint will replace the record.
-    Record saved will be a public record.
+    record already exist with given key, this endpoint will replace the record,
+    else it will create new Record. Record saved will be a public record.
 
 
     Properties:
-        url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userID}/records/{key}/public
+        url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}/public
 
         method: PUT
 
@@ -56,21 +56,23 @@ class AdminPutPlayerPublicRecordHandlerV1(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userID) REQUIRED str in path
+        user_id: (userId) REQUIRED str in path
 
         key: (key) REQUIRED str in path
 
     Responses:
         200: OK - (Record in user-level saved)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ModelsResponseError (Bad Request)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
     """
 
     # region fields
 
-    _url: str = "/cloudsave/v1/admin/namespaces/{namespace}/users/{userID}/records/{key}/public"
+    _url: str = "/cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}/public"
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
@@ -152,7 +154,7 @@ class AdminPutPlayerPublicRecordHandlerV1(Operation):
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
         if hasattr(self, "user_id"):
-            result["userID"] = self.user_id
+            result["userId"] = self.user_id
         if hasattr(self, "key"):
             result["key"] = self.key
         return result
@@ -207,9 +209,9 @@ class AdminPutPlayerPublicRecordHandlerV1(Operation):
         elif include_empty:
             result["namespace"] = str()
         if hasattr(self, "user_id") and self.user_id:
-            result["userID"] = str(self.user_id)
+            result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userID"] = str()
+            result["userId"] = str()
         if hasattr(self, "key") and self.key:
             result["key"] = str(self.key)
         elif include_empty:
@@ -221,21 +223,25 @@ class AdminPutPlayerPublicRecordHandlerV1(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ResponseError]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ModelsResponseError]]:
         """Parse the given response.
 
         200: OK - (Record in user-level saved)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ModelsResponseError (Bad Request)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
         """
         if code == 200:
             return HttpResponse.create(code, "OK"), None
         if code == 400:
-            return None, ResponseError.create_from_dict(content)
+            return None, ModelsResponseError.create_from_dict(content)
+        if code == 401:
+            return None, ModelsResponseError.create_from_dict(content)
         if code == 500:
-            return None, ResponseError.create_from_dict(content)
+            return None, ModelsResponseError.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
             return None, undocumented_response
@@ -271,8 +277,8 @@ class AdminPutPlayerPublicRecordHandlerV1(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "userID" in dict_ and dict_["userID"] is not None:
-            instance.user_id = str(dict_["userID"])
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
         if "key" in dict_ and dict_["key"] is not None:
@@ -286,7 +292,7 @@ class AdminPutPlayerPublicRecordHandlerV1(Operation):
         return {
             "body": "body",
             "namespace": "namespace",
-            "userID": "user_id",
+            "userId": "user_id",
             "key": "key",
         }
 

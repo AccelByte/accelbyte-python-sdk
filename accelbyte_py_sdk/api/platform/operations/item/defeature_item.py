@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:16.602256+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:31.012017+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -63,7 +63,7 @@ class DefeatureItem(Operation):
     Responses:
         200: OK - FullItemInfo (successful operation)
 
-        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (30173: Published store can't modify content)
     """
@@ -232,7 +232,7 @@ class DefeatureItem(Operation):
 
         200: OK - FullItemInfo (successful operation)
 
-        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (30173: Published store can't modify content)
         """

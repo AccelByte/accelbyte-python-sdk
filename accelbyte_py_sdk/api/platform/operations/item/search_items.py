@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:16.636145+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:31.030905+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -25,6 +25,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
+from ...models import ErrorEntity
 from ...models import FullItemPagingSlicedResult
 
 
@@ -69,6 +70,8 @@ class SearchItems(Operation):
 
     Responses:
         200: OK - FullItemPagingSlicedResult (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
     """
 
     # region fields
@@ -260,13 +263,17 @@ class SearchItems(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, FullItemPagingSlicedResult], Union[None, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, FullItemPagingSlicedResult], Union[None, ErrorEntity]]:
         """Parse the given response.
 
         200: OK - FullItemPagingSlicedResult (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
         """
         if code == 200:
             return FullItemPagingSlicedResult.create_from_dict(content), None
+        if code == 404:
+            return None, ErrorEntity.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
             return None, undocumented_response

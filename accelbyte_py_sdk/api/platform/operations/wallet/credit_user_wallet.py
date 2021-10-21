@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:17.058116+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:31.582465+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -65,7 +65,7 @@ class CreditUserWallet(Operation):
     Responses:
         200: OK - WalletInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (35121: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per day | 35122: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per transaction | 35123: Wallet [{walletId}] is inactive | 35125: Balance exceed max balance [{maxAmount}])
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive)
 
         409: Conflict - ErrorEntity (20006: optimistic lock)
 
@@ -227,7 +227,7 @@ class CreditUserWallet(Operation):
 
         200: OK - WalletInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (35121: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per day | 35122: Transaction amount [{actualAmount}] exceed max amount [{maxAmount}] per transaction | 35123: Wallet [{walletId}] is inactive | 35125: Balance exceed max balance [{maxAmount}])
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive)
 
         409: Conflict - ErrorEntity (20006: optimistic lock)
 

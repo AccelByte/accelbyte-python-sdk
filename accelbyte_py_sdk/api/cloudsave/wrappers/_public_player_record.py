@@ -21,13 +21,14 @@ from ....core import same_doc_as
 
 from ..models import ModelsPlayerRecord
 from ..models import ModelsPlayerRecordRequest
-from ..models import ResponseError
+from ..models import ModelsResponseError
 
 from ..operations.public_player_record import DeletePlayerRecordHandlerV1
 from ..operations.public_player_record import GetPlayerPublicRecordHandlerV1
 from ..operations.public_player_record import GetPlayerRecordHandlerV1
 from ..operations.public_player_record import PostPlayerPublicRecordHandlerV1
 from ..operations.public_player_record import PostPlayerRecordHandlerV1
+from ..operations.public_player_record import PublicDeletePlayerPublicRecordHandlerV1
 from ..operations.public_player_record import PutPlayerPublicRecordHandlerV1
 from ..operations.public_player_record import PutPlayerRecordHandlerV1
 
@@ -98,6 +99,19 @@ def post_player_record_handler_v1(body: ModelsPlayerRecordRequest, user_id: str,
     request = PostPlayerRecordHandlerV1.create(
         body=body,
         user_id=user_id,
+        key=key,
+        namespace=namespace,
+    )
+    return run_request(request)
+
+
+@same_doc_as(PublicDeletePlayerPublicRecordHandlerV1)
+def public_delete_player_public_record_handler_v1(key: str, namespace: Optional[str] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicDeletePlayerPublicRecordHandlerV1.create(
         key=key,
         namespace=namespace,
     )

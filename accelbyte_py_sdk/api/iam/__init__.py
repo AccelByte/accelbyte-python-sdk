@@ -1,6 +1,6 @@
 """Auto-generated top-level package for the iam API."""
 
-__version__ = "4.1.0"
+__version__ = "4.4.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -166,7 +166,6 @@ from .wrappers import public_get_user_platform_accounts_v3
 from .wrappers import public_link_platform_account
 from .wrappers import public_validate_user_by_user_id_and_password_v3
 from .wrappers import public_get_my_user_v3
-from .wrappers import admin_update_my_user_v4
 
 # o_auth
 from .wrappers import authorization
@@ -278,6 +277,7 @@ from .wrappers import admin_list_user_roles_v4
 from .wrappers import admin_update_user_role_v4
 from .wrappers import admin_add_user_role_v4
 from .wrappers import admin_remove_user_role_v4
+from .wrappers import admin_update_my_user_v4
 from .wrappers import public_create_user_v4
 from .wrappers import create_user_from_invitation_v4
 from .wrappers import public_update_user_v4

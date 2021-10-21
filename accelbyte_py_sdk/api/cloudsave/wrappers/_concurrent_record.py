@@ -20,7 +20,7 @@ from ....core import run_request
 from ....core import same_doc_as
 
 from ..models import ModelsConcurrentRecordRequest
-from ..models import ResponseError
+from ..models import ModelsResponseError
 
 from ..operations.concurrent_record import PutGameRecordConcurrentHandlerV1
 from ..operations.concurrent_record import PutPlayerPublicRecordConcurrentHandlerV1

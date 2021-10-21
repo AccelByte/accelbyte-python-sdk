@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:16.326288+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:30.716782+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -41,12 +41,6 @@ class CurrencyInfo(Model):
 
         decimals: (decimals) REQUIRED int
 
-        max_amount_per_transaction: (maxAmountPerTransaction) REQUIRED int
-
-        max_transaction_amount_per_day: (maxTransactionAmountPerDay) REQUIRED int
-
-        max_balance_amount: (maxBalanceAmount) REQUIRED int
-
         created_at: (createdAt) REQUIRED str
 
         updated_at: (updatedAt) REQUIRED str
@@ -60,9 +54,6 @@ class CurrencyInfo(Model):
     namespace: str                                                                                 # REQUIRED
     currency_type: str                                                                             # REQUIRED
     decimals: int                                                                                  # REQUIRED
-    max_amount_per_transaction: int                                                                # REQUIRED
-    max_transaction_amount_per_day: int                                                            # REQUIRED
-    max_balance_amount: int                                                                        # REQUIRED
     created_at: str                                                                                # REQUIRED
     updated_at: str                                                                                # REQUIRED
 
@@ -92,18 +83,6 @@ class CurrencyInfo(Model):
 
     def with_decimals(self, value: int) -> CurrencyInfo:
         self.decimals = value
-        return self
-
-    def with_max_amount_per_transaction(self, value: int) -> CurrencyInfo:
-        self.max_amount_per_transaction = value
-        return self
-
-    def with_max_transaction_amount_per_day(self, value: int) -> CurrencyInfo:
-        self.max_transaction_amount_per_day = value
-        return self
-
-    def with_max_balance_amount(self, value: int) -> CurrencyInfo:
-        self.max_balance_amount = value
         return self
 
     def with_created_at(self, value: str) -> CurrencyInfo:
@@ -144,18 +123,6 @@ class CurrencyInfo(Model):
             result["decimals"] = int(self.decimals)
         elif include_empty:
             result["decimals"] = int()
-        if hasattr(self, "max_amount_per_transaction") and self.max_amount_per_transaction:
-            result["maxAmountPerTransaction"] = int(self.max_amount_per_transaction)
-        elif include_empty:
-            result["maxAmountPerTransaction"] = int()
-        if hasattr(self, "max_transaction_amount_per_day") and self.max_transaction_amount_per_day:
-            result["maxTransactionAmountPerDay"] = int(self.max_transaction_amount_per_day)
-        elif include_empty:
-            result["maxTransactionAmountPerDay"] = int()
-        if hasattr(self, "max_balance_amount") and self.max_balance_amount:
-            result["maxBalanceAmount"] = int(self.max_balance_amount)
-        elif include_empty:
-            result["maxBalanceAmount"] = int()
         if hasattr(self, "created_at") and self.created_at:
             result["createdAt"] = str(self.created_at)
         elif include_empty:
@@ -178,9 +145,6 @@ class CurrencyInfo(Model):
         namespace: str,
         currency_type: str,
         decimals: int,
-        max_amount_per_transaction: int,
-        max_transaction_amount_per_day: int,
-        max_balance_amount: int,
         created_at: str,
         updated_at: str,
         localization_descriptions: Optional[Dict[str, str]] = None,
@@ -191,9 +155,6 @@ class CurrencyInfo(Model):
         instance.namespace = namespace
         instance.currency_type = currency_type
         instance.decimals = decimals
-        instance.max_amount_per_transaction = max_amount_per_transaction
-        instance.max_transaction_amount_per_day = max_transaction_amount_per_day
-        instance.max_balance_amount = max_balance_amount
         instance.created_at = created_at
         instance.updated_at = updated_at
         if localization_descriptions is not None:
@@ -229,18 +190,6 @@ class CurrencyInfo(Model):
             instance.decimals = int(dict_["decimals"])
         elif include_empty:
             instance.decimals = int()
-        if "maxAmountPerTransaction" in dict_ and dict_["maxAmountPerTransaction"] is not None:
-            instance.max_amount_per_transaction = int(dict_["maxAmountPerTransaction"])
-        elif include_empty:
-            instance.max_amount_per_transaction = int()
-        if "maxTransactionAmountPerDay" in dict_ and dict_["maxTransactionAmountPerDay"] is not None:
-            instance.max_transaction_amount_per_day = int(dict_["maxTransactionAmountPerDay"])
-        elif include_empty:
-            instance.max_transaction_amount_per_day = int()
-        if "maxBalanceAmount" in dict_ and dict_["maxBalanceAmount"] is not None:
-            instance.max_balance_amount = int(dict_["maxBalanceAmount"])
-        elif include_empty:
-            instance.max_balance_amount = int()
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
@@ -260,9 +209,6 @@ class CurrencyInfo(Model):
             "namespace": "namespace",
             "currencyType": "currency_type",
             "decimals": "decimals",
-            "maxAmountPerTransaction": "max_amount_per_transaction",
-            "maxTransactionAmountPerDay": "max_transaction_amount_per_day",
-            "maxBalanceAmount": "max_balance_amount",
             "createdAt": "created_at",
             "updatedAt": "updated_at",
         }

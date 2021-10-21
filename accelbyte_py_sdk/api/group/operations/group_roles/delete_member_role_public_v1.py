@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:18.581895+08:00
-# from: Justice Group Service (2.4.0)
+# Auto-generated at 2021-10-21T08:52:32.364237+08:00
+# from: Justice group Service (2.8.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -69,6 +69,8 @@ class DeleteMemberRolePublicV1(Operation):
         403: Forbidden - ResponseErrorResponse (20022: token is not user token | 20013: insufficient permissions)
 
         404: Not Found - ResponseErrorResponse (73232: member role not found)
+
+        422: Unprocessable Entity - ResponseErrorResponse (73444: member must have role)
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
@@ -225,6 +227,8 @@ class DeleteMemberRolePublicV1(Operation):
 
         404: Not Found - ResponseErrorResponse (73232: member role not found)
 
+        422: Unprocessable Entity - ResponseErrorResponse (73444: member must have role)
+
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
         """
         if code == 200:
@@ -236,6 +240,8 @@ class DeleteMemberRolePublicV1(Operation):
         if code == 403:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 404:
+            return None, ResponseErrorResponse.create_from_dict(content)
+        if code == 422:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 500:
             return None, ResponseErrorResponse.create_from_dict(content)

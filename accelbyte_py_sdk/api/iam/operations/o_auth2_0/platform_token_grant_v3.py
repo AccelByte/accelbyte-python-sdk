@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:12.015997+08:00
-# from: Justice Iam Service (4.1.0)
+# Auto-generated at 2021-10-21T08:52:26.750070+08:00
+# from: Justice iam Service (4.4.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -61,6 +61,7 @@ class PlatformTokenGrantV3(Operation):
       * ps4 : The platform_token’s value is the authorization code returned by Sony OAuth.
       * ps5 : The platform_token’s value is the authorization code returned by Sony OAuth.
       * nintendo : The platform_token’s value is the authorization code(id_token) returned by Nintendo OAuth.
+      * awscognito : The platform_token’s value is the aws cognito access token (JWT).
 
     ## Account Group
 

@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:16.259177+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:30.733742+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -41,6 +41,10 @@ class AppEntitlementInfo(Model):
 
         user_id: (userId) REQUIRED str
 
+        store_id: (storeId) OPTIONAL str
+
+        item_id: (itemId) OPTIONAL str
+
         start_date: (startDate) OPTIONAL str
 
         end_date: (endDate) OPTIONAL str
@@ -59,6 +63,8 @@ class AppEntitlementInfo(Model):
     app_type: str                                                                                  # OPTIONAL
     sku: str                                                                                       # OPTIONAL
     user_id: str                                                                                   # REQUIRED
+    store_id: str                                                                                  # OPTIONAL
+    item_id: str                                                                                   # OPTIONAL
     start_date: str                                                                                # OPTIONAL
     end_date: str                                                                                  # OPTIONAL
     granted_at: str                                                                                # REQUIRED
@@ -87,6 +93,14 @@ class AppEntitlementInfo(Model):
 
     def with_user_id(self, value: str) -> AppEntitlementInfo:
         self.user_id = value
+        return self
+
+    def with_store_id(self, value: str) -> AppEntitlementInfo:
+        self.store_id = value
+        return self
+
+    def with_item_id(self, value: str) -> AppEntitlementInfo:
+        self.item_id = value
         return self
 
     def with_start_date(self, value: str) -> AppEntitlementInfo:
@@ -135,6 +149,14 @@ class AppEntitlementInfo(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
+        if hasattr(self, "store_id") and self.store_id:
+            result["storeId"] = str(self.store_id)
+        elif include_empty:
+            result["storeId"] = str()
+        if hasattr(self, "item_id") and self.item_id:
+            result["itemId"] = str(self.item_id)
+        elif include_empty:
+            result["itemId"] = str()
         if hasattr(self, "start_date") and self.start_date:
             result["startDate"] = str(self.start_date)
         elif include_empty:
@@ -171,6 +193,8 @@ class AppEntitlementInfo(Model):
         app_id: Optional[str] = None,
         app_type: Optional[str] = None,
         sku: Optional[str] = None,
+        store_id: Optional[str] = None,
+        item_id: Optional[str] = None,
         start_date: Optional[str] = None,
         end_date: Optional[str] = None,
         item_snapshot: Optional[ItemSnapshot] = None,
@@ -186,6 +210,10 @@ class AppEntitlementInfo(Model):
             instance.app_type = app_type
         if sku is not None:
             instance.sku = sku
+        if store_id is not None:
+            instance.store_id = store_id
+        if item_id is not None:
+            instance.item_id = item_id
         if start_date is not None:
             instance.start_date = start_date
         if end_date is not None:
@@ -219,6 +247,14 @@ class AppEntitlementInfo(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
+        if "storeId" in dict_ and dict_["storeId"] is not None:
+            instance.store_id = str(dict_["storeId"])
+        elif include_empty:
+            instance.store_id = str()
+        if "itemId" in dict_ and dict_["itemId"] is not None:
+            instance.item_id = str(dict_["itemId"])
+        elif include_empty:
+            instance.item_id = str()
         if "startDate" in dict_ and dict_["startDate"] is not None:
             instance.start_date = str(dict_["startDate"])
         elif include_empty:
@@ -249,6 +285,8 @@ class AppEntitlementInfo(Model):
             "appType": "app_type",
             "sku": "sku",
             "userId": "user_id",
+            "storeId": "store_id",
+            "itemId": "item_id",
             "startDate": "start_date",
             "endDate": "end_date",
             "grantedAt": "granted_at",

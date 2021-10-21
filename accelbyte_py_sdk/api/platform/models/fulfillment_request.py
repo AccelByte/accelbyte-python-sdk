@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:16.320039+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:30.753255+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -29,7 +29,11 @@ class FulfillmentRequest(Model):
     """A DTO object for fulfillment request API call. (FulfillmentRequest)
 
     Properties:
-        item_id: (itemId) REQUIRED str
+        store_id: (storeId) OPTIONAL str
+
+        item_id: (itemId) OPTIONAL str
+
+        item_sku: (itemSku) OPTIONAL str
 
         quantity: (quantity) REQUIRED int
 
@@ -48,7 +52,9 @@ class FulfillmentRequest(Model):
 
     # region fields
 
-    item_id: str                                                                                   # REQUIRED
+    store_id: str                                                                                  # OPTIONAL
+    item_id: str                                                                                   # OPTIONAL
+    item_sku: str                                                                                  # OPTIONAL
     quantity: int                                                                                  # REQUIRED
     order_no: str                                                                                  # OPTIONAL
     source: str                                                                                    # OPTIONAL
@@ -61,8 +67,16 @@ class FulfillmentRequest(Model):
 
     # region with_x methods
 
+    def with_store_id(self, value: str) -> FulfillmentRequest:
+        self.store_id = value
+        return self
+
     def with_item_id(self, value: str) -> FulfillmentRequest:
         self.item_id = value
+        return self
+
+    def with_item_sku(self, value: str) -> FulfillmentRequest:
+        self.item_sku = value
         return self
 
     def with_quantity(self, value: int) -> FulfillmentRequest:
@@ -99,10 +113,18 @@ class FulfillmentRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "store_id") and self.store_id:
+            result["storeId"] = str(self.store_id)
+        elif include_empty:
+            result["storeId"] = str()
         if hasattr(self, "item_id") and self.item_id:
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
+        if hasattr(self, "item_sku") and self.item_sku:
+            result["itemSku"] = str(self.item_sku)
+        elif include_empty:
+            result["itemSku"] = str()
         if hasattr(self, "quantity") and self.quantity:
             result["quantity"] = int(self.quantity)
         elif include_empty:
@@ -140,8 +162,10 @@ class FulfillmentRequest(Model):
     @classmethod
     def create(
         cls,
-        item_id: str,
         quantity: int,
+        store_id: Optional[str] = None,
+        item_id: Optional[str] = None,
+        item_sku: Optional[str] = None,
         order_no: Optional[str] = None,
         source: Optional[str] = None,
         start_date: Optional[str] = None,
@@ -150,8 +174,13 @@ class FulfillmentRequest(Model):
         language: Optional[str] = None,
     ) -> FulfillmentRequest:
         instance = cls()
-        instance.item_id = item_id
         instance.quantity = quantity
+        if store_id is not None:
+            instance.store_id = store_id
+        if item_id is not None:
+            instance.item_id = item_id
+        if item_sku is not None:
+            instance.item_sku = item_sku
         if order_no is not None:
             instance.order_no = order_no
         if source is not None:
@@ -171,10 +200,18 @@ class FulfillmentRequest(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "storeId" in dict_ and dict_["storeId"] is not None:
+            instance.store_id = str(dict_["storeId"])
+        elif include_empty:
+            instance.store_id = str()
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
             instance.item_id = str()
+        if "itemSku" in dict_ and dict_["itemSku"] is not None:
+            instance.item_sku = str(dict_["itemSku"])
+        elif include_empty:
+            instance.item_sku = str()
         if "quantity" in dict_ and dict_["quantity"] is not None:
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
@@ -208,7 +245,9 @@ class FulfillmentRequest(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "storeId": "store_id",
             "itemId": "item_id",
+            "itemSku": "item_sku",
             "quantity": "quantity",
             "orderNo": "order_no",
             "source": "source",

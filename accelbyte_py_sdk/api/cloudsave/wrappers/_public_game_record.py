@@ -21,7 +21,7 @@ from ....core import same_doc_as
 
 from ..models import ModelsGameRecord
 from ..models import ModelsGameRecordRequest
-from ..models import ResponseError
+from ..models import ModelsResponseError
 
 from ..operations.public_game_record import DeleteGameRecordHandlerV1
 from ..operations.public_game_record import GetGameRecordHandlerV1

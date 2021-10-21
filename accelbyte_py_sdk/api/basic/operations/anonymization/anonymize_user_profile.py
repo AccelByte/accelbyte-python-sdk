@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:19.477694+08:00
-# from: Justice Basic Service (1.17.0)
+# Auto-generated at 2021-10-21T08:52:33.025495+08:00
+# from: Justice basic Service (1.23.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -64,8 +64,6 @@ class AnonymizeUserProfile(Operation):
         401: Unauthorized - ErrorEntity (20001: unauthorized access)
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
-
-        404: Not Found - ErrorEntity (11540: user profile not found)
     """
 
     # region fields
@@ -201,8 +199,6 @@ class AnonymizeUserProfile(Operation):
         401: Unauthorized - ErrorEntity (20001: unauthorized access)
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
-
-        404: Not Found - ErrorEntity (11540: user profile not found)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None
@@ -211,8 +207,6 @@ class AnonymizeUserProfile(Operation):
         if code == 401:
             return None, ErrorEntity.create_from_dict(content)
         if code == 403:
-            return None, ErrorEntity.create_from_dict(content)
-        if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:

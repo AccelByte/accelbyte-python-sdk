@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:16.703049+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:31.071923+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -25,6 +25,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
+from ...models import ErrorEntity
 from ...models import StoreCreate
 from ...models import StoreInfo
 from ...models import ValidationErrorEntity
@@ -62,6 +63,8 @@ class CreateStore(Operation):
         201: Created - StoreInfo (successful operation)
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        409: Conflict - ErrorEntity (30174: Draft store already exists in namespace [{namespace}])
     """
 
     # region fields
@@ -186,17 +189,21 @@ class CreateStore(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, StoreInfo], Union[None, ValidationErrorEntity]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, StoreInfo], Union[None, ErrorEntity, ValidationErrorEntity]]:
         """Parse the given response.
 
         201: Created - StoreInfo (successful operation)
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        409: Conflict - ErrorEntity (30174: Draft store already exists in namespace [{namespace}])
         """
         if code == 201:
             return StoreInfo.create_from_dict(content), None
         if code == 422:
             return None, ValidationErrorEntity.create_from_dict(content)
+        if code == 409:
+            return None, ErrorEntity.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
             return None, undocumented_response

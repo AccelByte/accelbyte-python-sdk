@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:16.336319+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:30.681237+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -45,6 +45,8 @@ class ItemInfo(Model):
 
         app_type: (appType) OPTIONAL str
 
+        season_type: (seasonType) OPTIONAL str
+
         base_app_id: (baseAppId) OPTIONAL str
 
         sku: (sku) OPTIONAL str
@@ -63,6 +65,10 @@ class ItemInfo(Model):
 
         status: (status) REQUIRED str
 
+        listable: (listable) OPTIONAL bool
+
+        purchasable: (purchasable) OPTIONAL bool
+
         item_type: (itemType) REQUIRED str
 
         target_namespace: (targetNamespace) OPTIONAL str
@@ -80,6 +86,8 @@ class ItemInfo(Model):
         recurring: (recurring) OPTIONAL Recurring
 
         item_ids: (itemIds) OPTIONAL List[str]
+
+        bound_item_ids: (boundItemIds) OPTIONAL List[str]
 
         tags: (tags) OPTIONAL List[str]
 
@@ -116,6 +124,7 @@ class ItemInfo(Model):
     item_id: str                                                                                   # REQUIRED
     app_id: str                                                                                    # OPTIONAL
     app_type: str                                                                                  # OPTIONAL
+    season_type: str                                                                               # OPTIONAL
     base_app_id: str                                                                               # OPTIONAL
     sku: str                                                                                       # OPTIONAL
     namespace: str                                                                                 # REQUIRED
@@ -125,6 +134,8 @@ class ItemInfo(Model):
     stackable: bool                                                                                # OPTIONAL
     category_path: str                                                                             # REQUIRED
     status: str                                                                                    # REQUIRED
+    listable: bool                                                                                 # OPTIONAL
+    purchasable: bool                                                                              # OPTIONAL
     item_type: str                                                                                 # REQUIRED
     target_namespace: str                                                                          # OPTIONAL
     target_currency_code: str                                                                      # OPTIONAL
@@ -134,6 +145,7 @@ class ItemInfo(Model):
     region_data: List[RegionDataItem]                                                              # OPTIONAL
     recurring: Recurring                                                                           # OPTIONAL
     item_ids: List[str]                                                                            # OPTIONAL
+    bound_item_ids: List[str]                                                                      # OPTIONAL
     tags: List[str]                                                                                # OPTIONAL
     features: List[str]                                                                            # OPTIONAL
     max_count_per_user: int                                                                        # OPTIONAL
@@ -176,6 +188,10 @@ class ItemInfo(Model):
         self.app_type = value
         return self
 
+    def with_season_type(self, value: str) -> ItemInfo:
+        self.season_type = value
+        return self
+
     def with_base_app_id(self, value: str) -> ItemInfo:
         self.base_app_id = value
         return self
@@ -212,6 +228,14 @@ class ItemInfo(Model):
         self.status = value
         return self
 
+    def with_listable(self, value: bool) -> ItemInfo:
+        self.listable = value
+        return self
+
+    def with_purchasable(self, value: bool) -> ItemInfo:
+        self.purchasable = value
+        return self
+
     def with_item_type(self, value: str) -> ItemInfo:
         self.item_type = value
         return self
@@ -246,6 +270,10 @@ class ItemInfo(Model):
 
     def with_item_ids(self, value: List[str]) -> ItemInfo:
         self.item_ids = value
+        return self
+
+    def with_bound_item_ids(self, value: List[str]) -> ItemInfo:
+        self.bound_item_ids = value
         return self
 
     def with_tags(self, value: List[str]) -> ItemInfo:
@@ -330,6 +358,10 @@ class ItemInfo(Model):
             result["appType"] = str(self.app_type)
         elif include_empty:
             result["appType"] = str()
+        if hasattr(self, "season_type") and self.season_type:
+            result["seasonType"] = str(self.season_type)
+        elif include_empty:
+            result["seasonType"] = str()
         if hasattr(self, "base_app_id") and self.base_app_id:
             result["baseAppId"] = str(self.base_app_id)
         elif include_empty:
@@ -366,6 +398,14 @@ class ItemInfo(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
+        if hasattr(self, "listable") and self.listable:
+            result["listable"] = bool(self.listable)
+        elif include_empty:
+            result["listable"] = bool()
+        if hasattr(self, "purchasable") and self.purchasable:
+            result["purchasable"] = bool(self.purchasable)
+        elif include_empty:
+            result["purchasable"] = bool()
         if hasattr(self, "item_type") and self.item_type:
             result["itemType"] = str(self.item_type)
         elif include_empty:
@@ -402,6 +442,10 @@ class ItemInfo(Model):
             result["itemIds"] = [str(i0) for i0 in self.item_ids]
         elif include_empty:
             result["itemIds"] = []
+        if hasattr(self, "bound_item_ids") and self.bound_item_ids:
+            result["boundItemIds"] = [str(i0) for i0 in self.bound_item_ids]
+        elif include_empty:
+            result["boundItemIds"] = []
         if hasattr(self, "tags") and self.tags:
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -479,10 +523,13 @@ class ItemInfo(Model):
         long_description: Optional[str] = None,
         app_id: Optional[str] = None,
         app_type: Optional[str] = None,
+        season_type: Optional[str] = None,
         base_app_id: Optional[str] = None,
         sku: Optional[str] = None,
         use_count: Optional[int] = None,
         stackable: Optional[bool] = None,
+        listable: Optional[bool] = None,
+        purchasable: Optional[bool] = None,
         target_namespace: Optional[str] = None,
         target_currency_code: Optional[str] = None,
         target_item_id: Optional[str] = None,
@@ -491,6 +538,7 @@ class ItemInfo(Model):
         region_data: Optional[List[RegionDataItem]] = None,
         recurring: Optional[Recurring] = None,
         item_ids: Optional[List[str]] = None,
+        bound_item_ids: Optional[List[str]] = None,
         tags: Optional[List[str]] = None,
         features: Optional[List[str]] = None,
         max_count_per_user: Optional[int] = None,
@@ -522,6 +570,8 @@ class ItemInfo(Model):
             instance.app_id = app_id
         if app_type is not None:
             instance.app_type = app_type
+        if season_type is not None:
+            instance.season_type = season_type
         if base_app_id is not None:
             instance.base_app_id = base_app_id
         if sku is not None:
@@ -530,6 +580,10 @@ class ItemInfo(Model):
             instance.use_count = use_count
         if stackable is not None:
             instance.stackable = stackable
+        if listable is not None:
+            instance.listable = listable
+        if purchasable is not None:
+            instance.purchasable = purchasable
         if target_namespace is not None:
             instance.target_namespace = target_namespace
         if target_currency_code is not None:
@@ -546,6 +600,8 @@ class ItemInfo(Model):
             instance.recurring = recurring
         if item_ids is not None:
             instance.item_ids = item_ids
+        if bound_item_ids is not None:
+            instance.bound_item_ids = bound_item_ids
         if tags is not None:
             instance.tags = tags
         if features is not None:
@@ -595,6 +651,10 @@ class ItemInfo(Model):
             instance.app_type = str(dict_["appType"])
         elif include_empty:
             instance.app_type = str()
+        if "seasonType" in dict_ and dict_["seasonType"] is not None:
+            instance.season_type = str(dict_["seasonType"])
+        elif include_empty:
+            instance.season_type = str()
         if "baseAppId" in dict_ and dict_["baseAppId"] is not None:
             instance.base_app_id = str(dict_["baseAppId"])
         elif include_empty:
@@ -631,6 +691,14 @@ class ItemInfo(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = str()
+        if "listable" in dict_ and dict_["listable"] is not None:
+            instance.listable = bool(dict_["listable"])
+        elif include_empty:
+            instance.listable = bool()
+        if "purchasable" in dict_ and dict_["purchasable"] is not None:
+            instance.purchasable = bool(dict_["purchasable"])
+        elif include_empty:
+            instance.purchasable = bool()
         if "itemType" in dict_ and dict_["itemType"] is not None:
             instance.item_type = str(dict_["itemType"])
         elif include_empty:
@@ -667,6 +735,10 @@ class ItemInfo(Model):
             instance.item_ids = [str(i0) for i0 in dict_["itemIds"]]
         elif include_empty:
             instance.item_ids = []
+        if "boundItemIds" in dict_ and dict_["boundItemIds"] is not None:
+            instance.bound_item_ids = [str(i0) for i0 in dict_["boundItemIds"]]
+        elif include_empty:
+            instance.bound_item_ids = []
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
@@ -730,6 +802,7 @@ class ItemInfo(Model):
             "itemId": "item_id",
             "appId": "app_id",
             "appType": "app_type",
+            "seasonType": "season_type",
             "baseAppId": "base_app_id",
             "sku": "sku",
             "namespace": "namespace",
@@ -739,6 +812,8 @@ class ItemInfo(Model):
             "stackable": "stackable",
             "categoryPath": "category_path",
             "status": "status",
+            "listable": "listable",
+            "purchasable": "purchasable",
             "itemType": "item_type",
             "targetNamespace": "target_namespace",
             "targetCurrencyCode": "target_currency_code",
@@ -748,6 +823,7 @@ class ItemInfo(Model):
             "regionData": "region_data",
             "recurring": "recurring",
             "itemIds": "item_ids",
+            "boundItemIds": "bound_item_ids",
             "tags": "tags",
             "features": "features",
             "maxCountPerUser": "max_count_per_user",

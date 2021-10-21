@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:16.356647+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:30.717997+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -38,12 +38,6 @@ class CurrencyCreate(Model):
         currency_type: (currencyType) OPTIONAL str
 
         decimals: (decimals) OPTIONAL int
-
-        max_amount_per_transaction: (maxAmountPerTransaction) OPTIONAL int
-
-        max_transaction_amount_per_day: (maxTransactionAmountPerDay) OPTIONAL int
-
-        max_balance_amount: (maxBalanceAmount) OPTIONAL int
     """
 
     # region fields
@@ -53,9 +47,6 @@ class CurrencyCreate(Model):
     currency_symbol: str                                                                           # OPTIONAL
     currency_type: str                                                                             # OPTIONAL
     decimals: int                                                                                  # OPTIONAL
-    max_amount_per_transaction: int                                                                # OPTIONAL
-    max_transaction_amount_per_day: int                                                            # OPTIONAL
-    max_balance_amount: int                                                                        # OPTIONAL
 
     # endregion fields
 
@@ -79,18 +70,6 @@ class CurrencyCreate(Model):
 
     def with_decimals(self, value: int) -> CurrencyCreate:
         self.decimals = value
-        return self
-
-    def with_max_amount_per_transaction(self, value: int) -> CurrencyCreate:
-        self.max_amount_per_transaction = value
-        return self
-
-    def with_max_transaction_amount_per_day(self, value: int) -> CurrencyCreate:
-        self.max_transaction_amount_per_day = value
-        return self
-
-    def with_max_balance_amount(self, value: int) -> CurrencyCreate:
-        self.max_balance_amount = value
         return self
 
     # endregion with_x methods
@@ -119,18 +98,6 @@ class CurrencyCreate(Model):
             result["decimals"] = int(self.decimals)
         elif include_empty:
             result["decimals"] = int()
-        if hasattr(self, "max_amount_per_transaction") and self.max_amount_per_transaction:
-            result["maxAmountPerTransaction"] = int(self.max_amount_per_transaction)
-        elif include_empty:
-            result["maxAmountPerTransaction"] = int()
-        if hasattr(self, "max_transaction_amount_per_day") and self.max_transaction_amount_per_day:
-            result["maxTransactionAmountPerDay"] = int(self.max_transaction_amount_per_day)
-        elif include_empty:
-            result["maxTransactionAmountPerDay"] = int()
-        if hasattr(self, "max_balance_amount") and self.max_balance_amount:
-            result["maxBalanceAmount"] = int(self.max_balance_amount)
-        elif include_empty:
-            result["maxBalanceAmount"] = int()
         return result
 
     # endregion to methods
@@ -145,9 +112,6 @@ class CurrencyCreate(Model):
         currency_symbol: Optional[str] = None,
         currency_type: Optional[str] = None,
         decimals: Optional[int] = None,
-        max_amount_per_transaction: Optional[int] = None,
-        max_transaction_amount_per_day: Optional[int] = None,
-        max_balance_amount: Optional[int] = None,
     ) -> CurrencyCreate:
         instance = cls()
         instance.currency_code = currency_code
@@ -159,12 +123,6 @@ class CurrencyCreate(Model):
             instance.currency_type = currency_type
         if decimals is not None:
             instance.decimals = decimals
-        if max_amount_per_transaction is not None:
-            instance.max_amount_per_transaction = max_amount_per_transaction
-        if max_transaction_amount_per_day is not None:
-            instance.max_transaction_amount_per_day = max_transaction_amount_per_day
-        if max_balance_amount is not None:
-            instance.max_balance_amount = max_balance_amount
         return instance
 
     @classmethod
@@ -192,18 +150,6 @@ class CurrencyCreate(Model):
             instance.decimals = int(dict_["decimals"])
         elif include_empty:
             instance.decimals = int()
-        if "maxAmountPerTransaction" in dict_ and dict_["maxAmountPerTransaction"] is not None:
-            instance.max_amount_per_transaction = int(dict_["maxAmountPerTransaction"])
-        elif include_empty:
-            instance.max_amount_per_transaction = int()
-        if "maxTransactionAmountPerDay" in dict_ and dict_["maxTransactionAmountPerDay"] is not None:
-            instance.max_transaction_amount_per_day = int(dict_["maxTransactionAmountPerDay"])
-        elif include_empty:
-            instance.max_transaction_amount_per_day = int()
-        if "maxBalanceAmount" in dict_ and dict_["maxBalanceAmount"] is not None:
-            instance.max_balance_amount = int(dict_["maxBalanceAmount"])
-        elif include_empty:
-            instance.max_balance_amount = int()
         return instance
 
     @staticmethod
@@ -214,9 +160,6 @@ class CurrencyCreate(Model):
             "currencySymbol": "currency_symbol",
             "currencyType": "currency_type",
             "decimals": "decimals",
-            "maxAmountPerTransaction": "max_amount_per_transaction",
-            "maxTransactionAmountPerDay": "max_transaction_amount_per_day",
-            "maxBalanceAmount": "max_balance_amount",
         }
 
     # endregion static methods

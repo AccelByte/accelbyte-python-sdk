@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:19.491927+08:00
-# from: Justice Basic Service (1.17.0)
+# Auto-generated at 2021-10-21T08:52:33.037472+08:00
+# from: Justice basic Service (1.23.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -67,7 +67,7 @@ class DeleteUserProfile(Operation):
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (11440: user profile not found)
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
     """
 
     # region fields
@@ -204,7 +204,7 @@ class DeleteUserProfile(Operation):
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (11440: user profile not found)
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
         """
         if code == 200:
             return UserProfilePrivateInfo.create_from_dict(content), None

@@ -1,6 +1,6 @@
 """Auto-generated package that contains utility functions for the social API."""
 
-__version__ = "1.17.1"
+__version__ = "1.18.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 # pylint: disable=line-too-long

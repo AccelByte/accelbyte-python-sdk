@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:18.946332+08:00
-# from: Justice Cloudsave Service (3.38.0)
+# Auto-generated at 2021-10-21T08:52:32.612823+08:00
+# from: Justice cloudsave Service (1.8.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -26,7 +26,7 @@ from .....core import Operation
 from .....core import HttpResponse
 
 from ...models import ModelsPlayerRecord
-from ...models import ResponseError
+from ...models import ModelsResponseError
 
 
 class GetPlayerPublicRecordHandlerV1(Operation):
@@ -42,7 +42,7 @@ class GetPlayerPublicRecordHandlerV1(Operation):
 
 
     Properties:
-        url: /cloudsave/v1/namespaces/{namespace}/users/{userID}/records/{key}/public
+        url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}/public
 
         method: GET
 
@@ -56,19 +56,23 @@ class GetPlayerPublicRecordHandlerV1(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userID) REQUIRED str in path
+        user_id: (userId) REQUIRED str in path
 
         key: (key) REQUIRED str in path
 
     Responses:
         200: OK - ModelsPlayerRecord (Record retrieved)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        404: Not Found - ModelsResponseError (Not Found)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
     """
 
     # region fields
 
-    _url: str = "/cloudsave/v1/namespaces/{namespace}/users/{userID}/records/{key}/public"
+    _url: str = "/cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}/public"
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
@@ -144,7 +148,7 @@ class GetPlayerPublicRecordHandlerV1(Operation):
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
         if hasattr(self, "user_id"):
-            result["userID"] = self.user_id
+            result["userId"] = self.user_id
         if hasattr(self, "key"):
             result["key"] = self.key
         return result
@@ -189,9 +193,9 @@ class GetPlayerPublicRecordHandlerV1(Operation):
         elif include_empty:
             result["namespace"] = str()
         if hasattr(self, "user_id") and self.user_id:
-            result["userID"] = str(self.user_id)
+            result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userID"] = str()
+            result["userId"] = str()
         if hasattr(self, "key") and self.key:
             result["key"] = str(self.key)
         elif include_empty:
@@ -203,17 +207,25 @@ class GetPlayerPublicRecordHandlerV1(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsPlayerRecord], Union[None, ResponseError]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsPlayerRecord], Union[None, ModelsResponseError]]:
         """Parse the given response.
 
         200: OK - ModelsPlayerRecord (Record retrieved)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        404: Not Found - ModelsResponseError (Not Found)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
         """
         if code == 200:
             return ModelsPlayerRecord.create_from_dict(content), None
+        if code == 401:
+            return None, ModelsResponseError.create_from_dict(content)
+        if code == 404:
+            return None, ModelsResponseError.create_from_dict(content)
         if code == 500:
-            return None, ResponseError.create_from_dict(content)
+            return None, ModelsResponseError.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
             return None, undocumented_response
@@ -243,8 +255,8 @@ class GetPlayerPublicRecordHandlerV1(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "userID" in dict_ and dict_["userID"] is not None:
-            instance.user_id = str(dict_["userID"])
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
         if "key" in dict_ and dict_["key"] is not None:
@@ -257,7 +269,7 @@ class GetPlayerPublicRecordHandlerV1(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "userID": "user_id",
+            "userId": "user_id",
             "key": "key",
         }
 

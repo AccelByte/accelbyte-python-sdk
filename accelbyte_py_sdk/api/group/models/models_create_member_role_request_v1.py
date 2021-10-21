@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:18.317101+08:00
-# from: Justice Group Service (2.4.0)
+# Auto-generated at 2021-10-21T08:52:32.172696+08:00
+# from: Justice group Service (2.8.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations

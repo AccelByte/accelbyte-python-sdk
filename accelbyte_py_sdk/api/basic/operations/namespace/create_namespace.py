@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:19.440054+08:00
-# from: Justice Basic Service (1.17.0)
+# Auto-generated at 2021-10-21T08:52:32.993522+08:00
+# from: Justice basic Service (1.23.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -61,13 +61,13 @@ class CreateNamespace(Operation):
     Responses:
         201: Created - NamespaceInfo (Successful operation)
 
-        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body | 11338: namespace contains invalid character | 11339: namespace display name contains invalid character)
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body | 11338: Unable to {action}: Namespace contains invalid character(s) | 11339: Unable to {action}: Display name contains invalid character(s))
 
         401: Unauthorized - ErrorEntity (20001: unauthorized)
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        409: Conflict - ErrorEntity (11336: namespace already exists)
+        409: Conflict - ErrorEntity (11336: Unable to {action}: Namespace already exists)
     """
 
     # region fields
@@ -174,13 +174,13 @@ class CreateNamespace(Operation):
 
         201: Created - NamespaceInfo (Successful operation)
 
-        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body | 11338: namespace contains invalid character | 11339: namespace display name contains invalid character)
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body | 11338: Unable to {action}: Namespace contains invalid character(s) | 11339: Unable to {action}: Display name contains invalid character(s))
 
         401: Unauthorized - ErrorEntity (20001: unauthorized)
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        409: Conflict - ErrorEntity (11336: namespace already exists)
+        409: Conflict - ErrorEntity (11336: Unable to {action}: Namespace already exists)
         """
         if code == 201:
             return NamespaceInfo.create_from_dict(content), None

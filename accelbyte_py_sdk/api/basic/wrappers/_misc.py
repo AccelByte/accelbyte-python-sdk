@@ -25,6 +25,7 @@ from ..models import CountryGroupObject
 from ..models import CountryObject
 from ..models import ErrorEntity
 from ..models import RetrieveCountryGroupResponse
+from ..models import RetrieveTimeResponse
 from ..models import UpdateCountryGroupRequest
 from ..models import ValidationErrorEntity
 
@@ -36,6 +37,7 @@ from ..operations.misc import GetLanguages
 from ..operations.misc import GetTimeZones
 from ..operations.misc import PublicGetCountries
 from ..operations.misc import PublicGetLanguages
+from ..operations.misc import PublicGetTime
 from ..operations.misc import PublicGetTimeZones
 from ..operations.misc import UpdateCountryGroup
 
@@ -138,6 +140,12 @@ def public_get_languages(namespace: Optional[str] = None):
     request = PublicGetLanguages.create(
         namespace=namespace,
     )
+    return run_request(request)
+
+
+@same_doc_as(PublicGetTime)
+def public_get_time():
+    request = PublicGetTime.create()
     return run_request(request)
 
 

@@ -32,6 +32,7 @@ from ..models import EntitlementPagingSlicedResult
 from ..models import EntitlementUpdate
 from ..models import ErrorEntity
 from ..models import Ownership
+from ..models import OwnershipToken
 from ..models import StackableEntitlementInfo
 from ..models import ValidationErrorEntity
 
@@ -57,6 +58,7 @@ from ..operations.entitlement import PublicDeleteUserDistributionReceiver
 from ..operations.entitlement import PublicDistributeUserDistribution
 from ..operations.entitlement import PublicExistsAnyMyActiveEntitlement
 from ..operations.entitlement import PublicExistsAnyUserActiveEntitlement
+from ..operations.entitlement import PublicGetEntitlementOwnershipToken
 from ..operations.entitlement import PublicGetMyAppEntitlementOwnershipByAppId
 from ..operations.entitlement import PublicGetMyEntitlementOwnershipBySku
 from ..operations.entitlement import PublicGetUserAppEntitlementByAppId
@@ -399,6 +401,21 @@ def public_exists_any_user_active_entitlement(user_id: str, item_ids: Optional[L
     return run_request(request)
 
 
+@same_doc_as(PublicGetEntitlementOwnershipToken)
+def public_get_entitlement_ownership_token(item_ids: Optional[List[str]] = None, app_ids: Optional[List[str]] = None, skus: Optional[List[str]] = None, namespace: Optional[str] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetEntitlementOwnershipToken.create(
+        item_ids=item_ids,
+        app_ids=app_ids,
+        skus=skus,
+        namespace=namespace,
+    )
+    return run_request(request)
+
+
 @same_doc_as(PublicGetMyAppEntitlementOwnershipByAppId)
 def public_get_my_app_entitlement_ownership_by_app_id(app_id: str, namespace: Optional[str] = None):
     if namespace is None:
@@ -513,7 +530,7 @@ def public_get_user_entitlement_ownership_by_sku(user_id: str, sku: str, entitle
 
 
 @same_doc_as(PublicQueryUserEntitlements)
-def public_query_user_entitlements(user_id: str, entitlement_clazz: Optional[str] = None, app_type: Optional[str] = None, entitlement_name: Optional[str] = None, item_id: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
+def public_query_user_entitlements(user_id: str, entitlement_clazz: Optional[str] = None, app_type: Optional[str] = None, entitlement_name: Optional[str] = None, item_id: Optional[List[str]] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -563,7 +580,7 @@ def public_update_user_distribution_receiver(user_id: str, ext_user_id: str, bod
 
 
 @same_doc_as(QueryEntitlements)
-def query_entitlements(user_id: Optional[str] = None, entitlement_clazz: Optional[str] = None, app_type: Optional[str] = None, entitlement_name: Optional[str] = None, item_id: Optional[str] = None, active_only: Optional[bool] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
+def query_entitlements(user_id: Optional[str] = None, entitlement_clazz: Optional[str] = None, app_type: Optional[str] = None, entitlement_name: Optional[str] = None, item_id: Optional[List[str]] = None, active_only: Optional[bool] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -583,7 +600,7 @@ def query_entitlements(user_id: Optional[str] = None, entitlement_clazz: Optiona
 
 
 @same_doc_as(QueryUserEntitlements)
-def query_user_entitlements(user_id: str, entitlement_clazz: Optional[str] = None, app_type: Optional[str] = None, entitlement_name: Optional[str] = None, item_id: Optional[str] = None, active_only: Optional[bool] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
+def query_user_entitlements(user_id: str, entitlement_clazz: Optional[str] = None, app_type: Optional[str] = None, entitlement_name: Optional[str] = None, item_id: Optional[List[str]] = None, active_only: Optional[bool] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

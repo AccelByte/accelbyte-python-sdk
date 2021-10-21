@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:16.763096+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:31.103854+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -25,6 +25,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
+from ...models import ErrorEntity
 from ...models import ItemPagingSlicedResult
 
 
@@ -37,7 +38,8 @@ class PublicSearchItems(Operation):
 
     Other detail info:
 
-      * Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store item)
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store item)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store item)
       *  Returns : the list of items
 
 
@@ -70,6 +72,8 @@ class PublicSearchItems(Operation):
 
     Responses:
         200: OK - ItemPagingSlicedResult (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
     """
 
     # region fields
@@ -261,13 +265,17 @@ class PublicSearchItems(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ItemPagingSlicedResult], Union[None, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ItemPagingSlicedResult], Union[None, ErrorEntity]]:
         """Parse the given response.
 
         200: OK - ItemPagingSlicedResult (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
         """
         if code == 200:
             return ItemPagingSlicedResult.create_from_dict(content), None
+        if code == 404:
+            return None, ErrorEntity.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
             return None, undocumented_response

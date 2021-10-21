@@ -31,8 +31,8 @@ from ..models import ResponseErrorResponse
 from ..operations.group_member import AcceptGroupInvitationPublicV1
 from ..operations.group_member import AcceptGroupJoinRequestPublicV1
 from ..operations.group_member import CancelGroupJoinRequestV1
+from ..operations.group_member import GetGroupMembersListAdminV1
 from ..operations.group_member import GetGroupMembersListPublicV1
-from ..operations.group_member import GetGroupMembersListV1
 from ..operations.group_member import GetUserGroupInformationPublicV1
 from ..operations.group_member import InviteGroupPublicV1
 from ..operations.group_member import JoinGroupV1
@@ -81,13 +81,13 @@ def cancel_group_join_request_v1(group_id: str, namespace: Optional[str] = None)
     return run_request(request)
 
 
-@same_doc_as(GetGroupMembersListPublicV1)
-def get_group_members_list_public_v1(group_id: str, limit: Optional[int] = None, offset: Optional[int] = None, order: Optional[str] = None, namespace: Optional[str] = None):
+@same_doc_as(GetGroupMembersListAdminV1)
+def get_group_members_list_admin_v1(group_id: str, limit: Optional[int] = None, offset: Optional[int] = None, order: Optional[str] = None, namespace: Optional[str] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = GetGroupMembersListPublicV1.create(
+    request = GetGroupMembersListAdminV1.create(
         group_id=group_id,
         limit=limit,
         offset=offset,
@@ -97,13 +97,13 @@ def get_group_members_list_public_v1(group_id: str, limit: Optional[int] = None,
     return run_request(request)
 
 
-@same_doc_as(GetGroupMembersListV1)
-def get_group_members_list_v1(group_id: str, limit: Optional[int] = None, offset: Optional[int] = None, order: Optional[str] = None, namespace: Optional[str] = None):
+@same_doc_as(GetGroupMembersListPublicV1)
+def get_group_members_list_public_v1(group_id: str, limit: Optional[int] = None, offset: Optional[int] = None, order: Optional[str] = None, namespace: Optional[str] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = GetGroupMembersListV1.create(
+    request = GetGroupMembersListPublicV1.create(
         group_id=group_id,
         limit=limit,
         offset=offset,

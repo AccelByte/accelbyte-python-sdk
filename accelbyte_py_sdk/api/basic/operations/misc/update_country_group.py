@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:19.399132+08:00
-# from: Justice Basic Service (1.17.0)
+# Auto-generated at 2021-10-21T08:52:32.960667+08:00
+# from: Justice basic Service (1.23.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -69,13 +69,13 @@ class UpdateCountryGroup(Operation):
     Responses:
         200: OK - CountryGroupObject (successful operation)
 
-        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body | 11234: country belongs to more than one group)
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body | 11234: Unable to {action}: A country can't be assigned to more than one country group)
 
         401: Unauthorized - ErrorEntity (20001: unauthorized)
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (11233: country group not found)
+        404: Not Found - ErrorEntity (11233: Unable to {action}: Country group with code [{countryGroupCode}] is not found)
     """
 
     # region fields
@@ -219,13 +219,13 @@ class UpdateCountryGroup(Operation):
 
         200: OK - CountryGroupObject (successful operation)
 
-        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body | 11234: country belongs to more than one group)
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body | 11234: Unable to {action}: A country can't be assigned to more than one country group)
 
         401: Unauthorized - ErrorEntity (20001: unauthorized)
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (11233: country group not found)
+        404: Not Found - ErrorEntity (11233: Unable to {action}: Country group with code [{countryGroupCode}] is not found)
         """
         if code == 200:
             return CountryGroupObject.create_from_dict(content), None

@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:19.540355+08:00
-# from: Justice Basic Service (1.17.0)
+# Auto-generated at 2021-10-21T08:52:33.072185+08:00
+# from: Justice basic Service (1.23.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,9 +32,9 @@ from ...models import ValidationErrorEntity
 
 
 class CreateMyProfile(Operation):
-    """Create user profile (createMyProfile)
+    """Create my profile (createMyProfile)
 
-    Create user profile.  
+    Create my profile.  
      Client with user token can create user profile in target namespace  
     Other detail info:
 
@@ -77,7 +77,7 @@ class CreateMyProfile(Operation):
 
         404: Not Found - ErrorEntity (20008: user not found | 20017: user not linked)
 
-        409: Conflict - ErrorEntity (11441: user profile already exists)
+        409: Conflict - ErrorEntity (11441: Unable to {action}: User profile already exists)
     """
 
     # region fields
@@ -215,7 +215,7 @@ class CreateMyProfile(Operation):
 
         404: Not Found - ErrorEntity (20008: user not found | 20017: user not linked)
 
-        409: Conflict - ErrorEntity (11441: user profile already exists)
+        409: Conflict - ErrorEntity (11441: Unable to {action}: User profile already exists)
         """
         if code == 201:
             return UserProfilePrivateInfo.create_from_dict(content), None

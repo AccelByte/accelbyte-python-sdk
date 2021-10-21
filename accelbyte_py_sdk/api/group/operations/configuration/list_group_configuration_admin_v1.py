@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:18.357836+08:00
-# from: Justice Group Service (2.4.0)
+# Auto-generated at 2021-10-21T08:52:32.205816+08:00
+# from: Justice group Service (2.8.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -25,7 +25,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
-from ...models import ModelsGetGroupConfigurationResponseV1
+from ...models import ModelsListConfigurationResponseV1
 from ...models import ResponseErrorResponse
 
 
@@ -61,7 +61,7 @@ class ListGroupConfigurationAdminV1(Operation):
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        201: Created - ModelsGetGroupConfigurationResponseV1 (Created)
+        200: OK - ModelsListConfigurationResponseV1 (OK)
 
         400: Bad Request - ResponseErrorResponse (20002: validation error)
 
@@ -213,10 +213,10 @@ class ListGroupConfigurationAdminV1(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsGetGroupConfigurationResponseV1], Union[None, ResponseErrorResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsListConfigurationResponseV1], Union[None, ResponseErrorResponse]]:
         """Parse the given response.
 
-        201: Created - ModelsGetGroupConfigurationResponseV1 (Created)
+        200: OK - ModelsListConfigurationResponseV1 (OK)
 
         400: Bad Request - ResponseErrorResponse (20002: validation error)
 
@@ -228,8 +228,8 @@ class ListGroupConfigurationAdminV1(Operation):
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
         """
-        if code == 201:
-            return ModelsGetGroupConfigurationResponseV1.create_from_dict(content), None
+        if code == 200:
+            return ModelsListConfigurationResponseV1.create_from_dict(content), None
         if code == 400:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 401:

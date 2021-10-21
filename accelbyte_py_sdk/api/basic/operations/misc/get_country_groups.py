@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:19.415798+08:00
-# from: Justice Basic Service (1.17.0)
+# Auto-generated at 2021-10-21T08:52:32.974224+08:00
+# from: Justice basic Service (1.23.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -68,7 +68,7 @@ class GetCountryGroups(Operation):
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (11233: country group not found)
+        404: Not Found - ErrorEntity (11233: Unable to {action}: Country group with code [{countryGroupCode}] is not found)
     """
 
     # region fields
@@ -210,7 +210,7 @@ class GetCountryGroups(Operation):
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (11233: country group not found)
+        404: Not Found - ErrorEntity (11233: Unable to {action}: Country group with code [{countryGroupCode}] is not found)
         """
         if code == 200:
             return [RetrieveCountryGroupResponse.create_from_dict(i) for i in content], None

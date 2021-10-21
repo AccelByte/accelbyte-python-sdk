@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:10.802474+08:00
-# from: Justice Iam Service (4.1.0)
+# Auto-generated at 2021-10-21T08:52:26.013718+08:00
+# from: Justice iam Service (4.4.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -29,15 +29,15 @@ class AccountcommonJWTBan(Model):
     """Accountcommon JWT ban (accountcommon.JWTBan)
 
     Properties:
-        ban: (Ban) REQUIRED str
+        ban: (ban) REQUIRED str
 
-        disabled_date: (DisabledDate) OPTIONAL str
+        disabled_date: (disabledDate) OPTIONAL str
 
-        enabled: (Enabled) REQUIRED bool
+        enabled: (enabled) REQUIRED bool
 
-        end_date: (EndDate) REQUIRED str
+        end_date: (endDate) REQUIRED str
 
-        targeted_namespace: (TargetedNamespace) REQUIRED str
+        targeted_namespace: (targetedNamespace) REQUIRED str
     """
 
     # region fields
@@ -79,25 +79,25 @@ class AccountcommonJWTBan(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "ban") and self.ban:
-            result["Ban"] = str(self.ban)
+            result["ban"] = str(self.ban)
         elif include_empty:
-            result["Ban"] = str()
+            result["ban"] = str()
         if hasattr(self, "disabled_date") and self.disabled_date:
-            result["DisabledDate"] = str(self.disabled_date)
+            result["disabledDate"] = str(self.disabled_date)
         elif include_empty:
-            result["DisabledDate"] = str()
+            result["disabledDate"] = str()
         if hasattr(self, "enabled") and self.enabled:
-            result["Enabled"] = bool(self.enabled)
+            result["enabled"] = bool(self.enabled)
         elif include_empty:
-            result["Enabled"] = bool()
+            result["enabled"] = bool()
         if hasattr(self, "end_date") and self.end_date:
-            result["EndDate"] = str(self.end_date)
+            result["endDate"] = str(self.end_date)
         elif include_empty:
-            result["EndDate"] = str()
+            result["endDate"] = str()
         if hasattr(self, "targeted_namespace") and self.targeted_namespace:
-            result["TargetedNamespace"] = str(self.targeted_namespace)
+            result["targetedNamespace"] = str(self.targeted_namespace)
         elif include_empty:
-            result["TargetedNamespace"] = str()
+            result["targetedNamespace"] = str()
         return result
 
     # endregion to methods
@@ -127,24 +127,24 @@ class AccountcommonJWTBan(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "Ban" in dict_ and dict_["Ban"] is not None:
-            instance.ban = str(dict_["Ban"])
+        if "ban" in dict_ and dict_["ban"] is not None:
+            instance.ban = str(dict_["ban"])
         elif include_empty:
             instance.ban = str()
-        if "DisabledDate" in dict_ and dict_["DisabledDate"] is not None:
-            instance.disabled_date = str(dict_["DisabledDate"])
+        if "disabledDate" in dict_ and dict_["disabledDate"] is not None:
+            instance.disabled_date = str(dict_["disabledDate"])
         elif include_empty:
             instance.disabled_date = str()
-        if "Enabled" in dict_ and dict_["Enabled"] is not None:
-            instance.enabled = bool(dict_["Enabled"])
+        if "enabled" in dict_ and dict_["enabled"] is not None:
+            instance.enabled = bool(dict_["enabled"])
         elif include_empty:
             instance.enabled = bool()
-        if "EndDate" in dict_ and dict_["EndDate"] is not None:
-            instance.end_date = str(dict_["EndDate"])
+        if "endDate" in dict_ and dict_["endDate"] is not None:
+            instance.end_date = str(dict_["endDate"])
         elif include_empty:
             instance.end_date = str()
-        if "TargetedNamespace" in dict_ and dict_["TargetedNamespace"] is not None:
-            instance.targeted_namespace = str(dict_["TargetedNamespace"])
+        if "targetedNamespace" in dict_ and dict_["targetedNamespace"] is not None:
+            instance.targeted_namespace = str(dict_["targetedNamespace"])
         elif include_empty:
             instance.targeted_namespace = str()
         return instance
@@ -152,11 +152,11 @@ class AccountcommonJWTBan(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "Ban": "ban",
-            "DisabledDate": "disabled_date",
-            "Enabled": "enabled",
-            "EndDate": "end_date",
-            "TargetedNamespace": "targeted_namespace",
+            "ban": "ban",
+            "disabledDate": "disabled_date",
+            "enabled": "enabled",
+            "endDate": "end_date",
+            "targetedNamespace": "targeted_namespace",
         }
 
     # endregion static methods

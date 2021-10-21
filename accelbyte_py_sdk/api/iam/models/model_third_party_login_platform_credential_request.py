@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:10.937170+08:00
-# from: Justice Iam Service (4.1.0)
+# Auto-generated at 2021-10-21T08:52:26.118064+08:00
+# from: Justice iam Service (4.4.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,6 +31,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     Properties:
         acsurl: (ACSURL) REQUIRED str
 
+        aws_cognito_region: (AWSCognitoRegion) REQUIRED str
+
+        aws_cognito_user_pool: (AWSCognitoUserPool) REQUIRED str
+
         app_id: (AppId) REQUIRED str
 
         client_id: (ClientId) REQUIRED str
@@ -51,6 +55,8 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     # region fields
 
     acsurl: str                                                                                    # REQUIRED
+    aws_cognito_region: str                                                                        # REQUIRED
+    aws_cognito_user_pool: str                                                                     # REQUIRED
     app_id: str                                                                                    # REQUIRED
     client_id: str                                                                                 # REQUIRED
     environment: str                                                                               # REQUIRED
@@ -66,6 +72,14 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
 
     def with_acsurl(self, value: str) -> ModelThirdPartyLoginPlatformCredentialRequest:
         self.acsurl = value
+        return self
+
+    def with_aws_cognito_region(self, value: str) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.aws_cognito_region = value
+        return self
+
+    def with_aws_cognito_user_pool(self, value: str) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.aws_cognito_user_pool = value
         return self
 
     def with_app_id(self, value: str) -> ModelThirdPartyLoginPlatformCredentialRequest:
@@ -110,6 +124,14 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             result["ACSURL"] = str(self.acsurl)
         elif include_empty:
             result["ACSURL"] = str()
+        if hasattr(self, "aws_cognito_region") and self.aws_cognito_region:
+            result["AWSCognitoRegion"] = str(self.aws_cognito_region)
+        elif include_empty:
+            result["AWSCognitoRegion"] = str()
+        if hasattr(self, "aws_cognito_user_pool") and self.aws_cognito_user_pool:
+            result["AWSCognitoUserPool"] = str(self.aws_cognito_user_pool)
+        elif include_empty:
+            result["AWSCognitoUserPool"] = str()
         if hasattr(self, "app_id") and self.app_id:
             result["AppId"] = str(self.app_id)
         elif include_empty:
@@ -152,6 +174,8 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     def create(
         cls,
         acsurl: str,
+        aws_cognito_region: str,
+        aws_cognito_user_pool: str,
         app_id: str,
         client_id: str,
         environment: str,
@@ -163,6 +187,8 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     ) -> ModelThirdPartyLoginPlatformCredentialRequest:
         instance = cls()
         instance.acsurl = acsurl
+        instance.aws_cognito_region = aws_cognito_region
+        instance.aws_cognito_user_pool = aws_cognito_user_pool
         instance.app_id = app_id
         instance.client_id = client_id
         instance.environment = environment
@@ -182,6 +208,14 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             instance.acsurl = str(dict_["ACSURL"])
         elif include_empty:
             instance.acsurl = str()
+        if "AWSCognitoRegion" in dict_ and dict_["AWSCognitoRegion"] is not None:
+            instance.aws_cognito_region = str(dict_["AWSCognitoRegion"])
+        elif include_empty:
+            instance.aws_cognito_region = str()
+        if "AWSCognitoUserPool" in dict_ and dict_["AWSCognitoUserPool"] is not None:
+            instance.aws_cognito_user_pool = str(dict_["AWSCognitoUserPool"])
+        elif include_empty:
+            instance.aws_cognito_user_pool = str()
         if "AppId" in dict_ and dict_["AppId"] is not None:
             instance.app_id = str(dict_["AppId"])
         elif include_empty:
@@ -220,6 +254,8 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "ACSURL": "acsurl",
+            "AWSCognitoRegion": "aws_cognito_region",
+            "AWSCognitoUserPool": "aws_cognito_user_pool",
             "AppId": "app_id",
             "ClientId": "client_id",
             "Environment": "environment",

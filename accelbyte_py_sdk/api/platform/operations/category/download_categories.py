@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:16.753169+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:31.098485+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -36,7 +36,8 @@ class DownloadCategories(Operation):
 
     Other detail info:
 
-      * Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store content)
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store content)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store content)
       *  Returns : structured categories
 
 

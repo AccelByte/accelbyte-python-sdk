@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:11.630346+08:00
-# from: Justice Iam Service (4.1.0)
+# Auto-generated at 2021-10-21T08:52:26.529661+08:00
+# from: Justice iam Service (4.4.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -67,7 +67,7 @@ class AdminInviteUserV3(Operation):
 
         409: Conflict - RestErrorResponse (10133: email already used)
 
-        422: Unprocessable Entity - RestErrorResponse (10183: validation error)
+        422: Unprocessable Entity - RestErrorResponse (20002: validation error)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -208,7 +208,7 @@ class AdminInviteUserV3(Operation):
 
         409: Conflict - RestErrorResponse (10133: email already used)
 
-        422: Unprocessable Entity - RestErrorResponse (10183: validation error)
+        422: Unprocessable Entity - RestErrorResponse (20002: validation error)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
         """

@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:18.932313+08:00
-# from: Justice Cloudsave Service (3.38.0)
+# Auto-generated at 2021-10-21T08:52:32.600755+08:00
+# from: Justice cloudsave Service (1.8.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -26,7 +26,7 @@ from .....core import Operation
 from .....core import HttpResponse
 
 from ...models import ModelsConcurrentRecordRequest
-from ...models import ResponseError
+from ...models import ModelsResponseError
 
 
 class PutPlayerPublicRecordConcurrentHandlerV1(Operation):
@@ -68,7 +68,7 @@ class PutPlayerPublicRecordConcurrentHandlerV1(Operation):
 
 
     Properties:
-        url: /cloudsave/v1/namespaces/{namespace}/users/{userID}/concurrent/records/{key}/public
+        url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/concurrent/records/{key}/public
 
         method: PUT
 
@@ -84,23 +84,25 @@ class PutPlayerPublicRecordConcurrentHandlerV1(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userID) REQUIRED str in path
+        user_id: (userId) REQUIRED str in path
 
         key: (key) REQUIRED str in path
 
     Responses:
         204: No Content - (Record saved)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ModelsResponseError (Bad Request)
 
-        412: Precondition Failed - ResponseError (Precondition Failed)
+        401: Unauthorized - ModelsResponseError (Unauthorized)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        412: Precondition Failed - ModelsResponseError (Precondition Failed)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
     """
 
     # region fields
 
-    _url: str = "/cloudsave/v1/namespaces/{namespace}/users/{userID}/concurrent/records/{key}/public"
+    _url: str = "/cloudsave/v1/namespaces/{namespace}/users/{userId}/concurrent/records/{key}/public"
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
@@ -182,7 +184,7 @@ class PutPlayerPublicRecordConcurrentHandlerV1(Operation):
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
         if hasattr(self, "user_id"):
-            result["userID"] = self.user_id
+            result["userId"] = self.user_id
         if hasattr(self, "key"):
             result["key"] = self.key
         return result
@@ -237,9 +239,9 @@ class PutPlayerPublicRecordConcurrentHandlerV1(Operation):
         elif include_empty:
             result["namespace"] = str()
         if hasattr(self, "user_id") and self.user_id:
-            result["userID"] = str(self.user_id)
+            result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userID"] = str()
+            result["userId"] = str()
         if hasattr(self, "key") and self.key:
             result["key"] = str(self.key)
         elif include_empty:
@@ -251,25 +253,29 @@ class PutPlayerPublicRecordConcurrentHandlerV1(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ResponseError]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ModelsResponseError]]:
         """Parse the given response.
 
         204: No Content - (Record saved)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ModelsResponseError (Bad Request)
 
-        412: Precondition Failed - ResponseError (Precondition Failed)
+        401: Unauthorized - ModelsResponseError (Unauthorized)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        412: Precondition Failed - ModelsResponseError (Precondition Failed)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None
         if code == 400:
-            return None, ResponseError.create_from_dict(content)
+            return None, ModelsResponseError.create_from_dict(content)
+        if code == 401:
+            return None, ModelsResponseError.create_from_dict(content)
         if code == 412:
-            return None, ResponseError.create_from_dict(content)
+            return None, ModelsResponseError.create_from_dict(content)
         if code == 500:
-            return None, ResponseError.create_from_dict(content)
+            return None, ModelsResponseError.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
             return None, undocumented_response
@@ -305,8 +311,8 @@ class PutPlayerPublicRecordConcurrentHandlerV1(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "userID" in dict_ and dict_["userID"] is not None:
-            instance.user_id = str(dict_["userID"])
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
         if "key" in dict_ and dict_["key"] is not None:
@@ -320,7 +326,7 @@ class PutPlayerPublicRecordConcurrentHandlerV1(Operation):
         return {
             "body": "body",
             "namespace": "namespace",
-            "userID": "user_id",
+            "userId": "user_id",
             "key": "key",
         }
 

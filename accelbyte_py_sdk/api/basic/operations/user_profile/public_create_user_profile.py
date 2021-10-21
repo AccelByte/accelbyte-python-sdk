@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:19.585929+08:00
-# from: Justice Basic Service (1.17.0)
+# Auto-generated at 2021-10-21T08:52:33.102807+08:00
+# from: Justice basic Service (1.23.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -72,7 +72,7 @@ class PublicCreateUserProfile(Operation):
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        409: Conflict - ErrorEntity (11441: user profile already exists)
+        409: Conflict - ErrorEntity (11441: Unable to {action}: User profile already exists)
     """
 
     # region fields
@@ -222,7 +222,7 @@ class PublicCreateUserProfile(Operation):
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        409: Conflict - ErrorEntity (11441: user profile already exists)
+        409: Conflict - ErrorEntity (11441: Unable to {action}: User profile already exists)
         """
         if code == 201:
             return UserProfileInfo.create_from_dict(content), None

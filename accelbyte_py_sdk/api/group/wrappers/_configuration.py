@@ -22,14 +22,15 @@ from ....core import same_doc_as
 from ..models import ModelsCreateGroupConfigurationRequestV1
 from ..models import ModelsCreateGroupConfigurationResponseV1
 from ..models import ModelsGetGroupConfigurationResponseV1
+from ..models import ModelsListConfigurationResponseV1
 from ..models import ModelsUpdateGroupConfigurationGlobalRulesRequestV1
 from ..models import ModelsUpdateGroupConfigurationRequestV1
 from ..models import ModelsUpdateGroupConfigurationResponseV1
 from ..models import ResponseErrorResponse
 
 from ..operations.configuration import CreateGroupConfigurationAdminV1
-from ..operations.configuration import DeleteGroupConfigurationAdminV1
 from ..operations.configuration import DeleteGroupConfigurationGlobalRuleAdminV1
+from ..operations.configuration import DeleteGroupConfigurationV1
 from ..operations.configuration import GetGroupConfigurationAdminV1
 from ..operations.configuration import InitiateGroupConfigurationAdminV1
 from ..operations.configuration import ListGroupConfigurationAdminV1
@@ -50,19 +51,6 @@ def create_group_configuration_admin_v1(body: ModelsCreateGroupConfigurationRequ
     return run_request(request)
 
 
-@same_doc_as(DeleteGroupConfigurationAdminV1)
-def delete_group_configuration_admin_v1(configuration_code: str, namespace: Optional[str] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = DeleteGroupConfigurationAdminV1.create(
-        configuration_code=configuration_code,
-        namespace=namespace,
-    )
-    return run_request(request)
-
-
 @same_doc_as(DeleteGroupConfigurationGlobalRuleAdminV1)
 def delete_group_configuration_global_rule_admin_v1(configuration_code: str, allowed_action: str, namespace: Optional[str] = None):
     if namespace is None:
@@ -72,6 +60,19 @@ def delete_group_configuration_global_rule_admin_v1(configuration_code: str, all
     request = DeleteGroupConfigurationGlobalRuleAdminV1.create(
         configuration_code=configuration_code,
         allowed_action=allowed_action,
+        namespace=namespace,
+    )
+    return run_request(request)
+
+
+@same_doc_as(DeleteGroupConfigurationV1)
+def delete_group_configuration_v1(configuration_code: str, namespace: Optional[str] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteGroupConfigurationV1.create(
+        configuration_code=configuration_code,
         namespace=namespace,
     )
     return run_request(request)

@@ -1,4 +1,4 @@
-# Iam Index (4.1.0)
+# iam Index (4.4.1)
 
 
 ## Operations
@@ -171,7 +171,6 @@
 | /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms/link | POST | PublicLinkPlatformAccount | [PublicLinkPlatformAccount](../accelbyte_py_sdk/api/iam/operations/users/public_link_platform_account.py) | [public_link_platform_account](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/public/namespaces/{namespace}/users/{userId}/validate | POST | PublicValidateUserByUserIDAndPasswordV3 | [PublicValidateUserByUserIDAndPasswordV3](../accelbyte_py_sdk/api/iam/operations/users/public_validate_user_by_user_id_and_password_v3.py) | [public_validate_user_by_user_id_and_password_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/public/users/me | GET | PublicGetMyUserV3 | [PublicGetMyUserV3](../accelbyte_py_sdk/api/iam/operations/users/public_get_my_user_v3.py) | [public_get_my_user_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
-| /iam/v4/admin/users/me | PATCH | AdminUpdateMyUserV4 | [AdminUpdateMyUserV4](../accelbyte_py_sdk/api/iam/operations/users/admin_update_my_user_v4.py) | [admin_update_my_user_v4](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 
 ### OAuth
 | Endpoint | Method | ID | Class | Wrapper |
@@ -301,6 +300,7 @@
 | /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles | PUT | AdminUpdateUserRoleV4 | [AdminUpdateUserRoleV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_update_user_role_v4.py) | [admin_update_user_role_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
 | /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles | POST | AdminAddUserRoleV4 | [AdminAddUserRoleV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_add_user_role_v4.py) | [admin_add_user_role_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
 | /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles | DELETE | AdminRemoveUserRoleV4 | [AdminRemoveUserRoleV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_remove_user_role_v4.py) | [admin_remove_user_role_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
+| /iam/v4/admin/users/me | PATCH | AdminUpdateMyUserV4 | [AdminUpdateMyUserV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_update_my_user_v4.py) | [admin_update_my_user_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
 | /iam/v4/public/namespaces/{namespace}/users | POST | PublicCreateUserV4 | [PublicCreateUserV4](../accelbyte_py_sdk/api/iam/operations/users_v4/public_create_user_v4.py) | [public_create_user_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
 | /iam/v4/public/namespaces/{namespace}/users/invite/{invitationId} | POST | CreateUserFromInvitationV4 | [CreateUserFromInvitationV4](../accelbyte_py_sdk/api/iam/operations/users_v4/create_user_from_invitation_v4.py) | [create_user_from_invitation_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
 | /iam/v4/public/namespaces/{namespace}/users/me | PATCH | PublicUpdateUserV4 | [PublicUpdateUserV4](../accelbyte_py_sdk/api/iam/operations/users_v4/public_update_user_v4.py) | [public_update_user_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |

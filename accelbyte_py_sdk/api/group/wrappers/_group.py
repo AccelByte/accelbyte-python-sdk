@@ -39,8 +39,8 @@ from ..operations.group import GetSingleGroupPublicV1
 from ..operations.group import UpdateGroupCustomAttributesPublicV1
 from ..operations.group import UpdateGroupCustomRulePublicV1
 from ..operations.group import UpdateGroupPredefinedRulePublicV1
-from ..operations.group import UpdateSingleGroupPartialPublicV1
 from ..operations.group import UpdateSingleGroupPublicV1
+from ..operations.group import UpdateSingleGroupV1
 
 
 @same_doc_as(CreateNewGroupPublicV1)
@@ -198,20 +198,6 @@ def update_group_predefined_rule_public_v1(body: ModelsUpdateGroupPredefinedRule
     return run_request(request)
 
 
-@same_doc_as(UpdateSingleGroupPartialPublicV1)
-def update_single_group_partial_public_v1(body: ModelsUpdateGroupRequestV1, group_id: str, namespace: Optional[str] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = UpdateSingleGroupPartialPublicV1.create(
-        body=body,
-        group_id=group_id,
-        namespace=namespace,
-    )
-    return run_request(request)
-
-
 @same_doc_as(UpdateSingleGroupPublicV1)
 def update_single_group_public_v1(body: ModelsUpdateGroupRequestV1, group_id: str, namespace: Optional[str] = None):
     if namespace is None:
@@ -219,6 +205,20 @@ def update_single_group_public_v1(body: ModelsUpdateGroupRequestV1, group_id: st
         if error:
             return None, error
     request = UpdateSingleGroupPublicV1.create(
+        body=body,
+        group_id=group_id,
+        namespace=namespace,
+    )
+    return run_request(request)
+
+
+@same_doc_as(UpdateSingleGroupV1)
+def update_single_group_v1(body: ModelsUpdateGroupRequestV1, group_id: str, namespace: Optional[str] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateSingleGroupV1.create(
         body=body,
         group_id=group_id,
         namespace=namespace,

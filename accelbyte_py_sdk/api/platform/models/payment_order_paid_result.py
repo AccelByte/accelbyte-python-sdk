@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:16.488603+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:30.853450+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,11 +30,14 @@ class PaymentOrderPaidResult(Model):
 
     Properties:
         success: (success) REQUIRED bool
+
+        charging: (charging) REQUIRED bool
     """
 
     # region fields
 
     success: bool                                                                                  # REQUIRED
+    charging: bool                                                                                 # REQUIRED
 
     # endregion fields
 
@@ -42,6 +45,10 @@ class PaymentOrderPaidResult(Model):
 
     def with_success(self, value: bool) -> PaymentOrderPaidResult:
         self.success = value
+        return self
+
+    def with_charging(self, value: bool) -> PaymentOrderPaidResult:
+        self.charging = value
         return self
 
     # endregion with_x methods
@@ -54,6 +61,10 @@ class PaymentOrderPaidResult(Model):
             result["success"] = bool(self.success)
         elif include_empty:
             result["success"] = bool()
+        if hasattr(self, "charging") and self.charging:
+            result["charging"] = bool(self.charging)
+        elif include_empty:
+            result["charging"] = bool()
         return result
 
     # endregion to methods
@@ -64,9 +75,11 @@ class PaymentOrderPaidResult(Model):
     def create(
         cls,
         success: bool,
+        charging: bool,
     ) -> PaymentOrderPaidResult:
         instance = cls()
         instance.success = success
+        instance.charging = charging
         return instance
 
     @classmethod
@@ -78,12 +91,17 @@ class PaymentOrderPaidResult(Model):
             instance.success = bool(dict_["success"])
         elif include_empty:
             instance.success = bool()
+        if "charging" in dict_ and dict_["charging"] is not None:
+            instance.charging = bool(dict_["charging"])
+        elif include_empty:
+            instance.charging = bool()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "success": "success",
+            "charging": "charging",
         }
 
     # endregion static methods

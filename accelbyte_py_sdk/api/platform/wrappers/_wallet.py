@@ -28,7 +28,7 @@ from ..models import WalletInfo
 from ..models import WalletPagingSlicedResult
 from ..models import WalletTransactionPagingSlicedResult
 
-from ..operations.wallet import CheckTransactionCreditLimit
+from ..operations.wallet import CheckWallet
 from ..operations.wallet import CreditUserWallet
 from ..operations.wallet import DebitUserWallet
 from ..operations.wallet import DisableUserWallet
@@ -43,16 +43,15 @@ from ..operations.wallet import PublicListUserWalletTransactions
 from ..operations.wallet import QueryWallets
 
 
-@same_doc_as(CheckTransactionCreditLimit)
-def check_transaction_credit_limit(user_id: str, currency_code: str, body: Optional[CreditRequest] = None, namespace: Optional[str] = None):
+@same_doc_as(CheckWallet)
+def check_wallet(user_id: str, currency_code: str, namespace: Optional[str] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = CheckTransactionCreditLimit.create(
+    request = CheckWallet.create(
         user_id=user_id,
         currency_code=currency_code,
-        body=body,
         namespace=namespace,
     )
     return run_request(request)

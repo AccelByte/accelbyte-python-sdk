@@ -1,6 +1,6 @@
 """Auto-generated package that contains models used by the cloudsave API."""
 
-__version__ = "3.38.0"
+__version__ = "1.8.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -15,4 +15,4 @@ from .models_pagination import ModelsPagination
 from .models_player_record import ModelsPlayerRecord
 from .models_player_record_key import ModelsPlayerRecordKey
 from .models_player_record_request import ModelsPlayerRecordRequest
-from .response_error import ResponseError
+from .models_response_error import ModelsResponseError

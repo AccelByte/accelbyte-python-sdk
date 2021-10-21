@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:16.245280+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:30.749725+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -29,25 +29,49 @@ class FulfillmentItem(Model):
     """Fulfillment item (FulfillmentItem)
 
     Properties:
-        item_id: (itemId) REQUIRED str
+        store_id: (storeId) OPTIONAL str
+
+        item_id: (itemId) OPTIONAL str
+
+        item_sku: (itemSku) OPTIONAL str
+
+        item_type: (itemType) OPTIONAL str
 
         item_name: (itemName) OPTIONAL str
 
         quantity: (quantity) REQUIRED int
+
+        extra_subscription_days: (extraSubscriptionDays) OPTIONAL int
     """
 
     # region fields
 
-    item_id: str                                                                                   # REQUIRED
+    store_id: str                                                                                  # OPTIONAL
+    item_id: str                                                                                   # OPTIONAL
+    item_sku: str                                                                                  # OPTIONAL
+    item_type: str                                                                                 # OPTIONAL
     item_name: str                                                                                 # OPTIONAL
     quantity: int                                                                                  # REQUIRED
+    extra_subscription_days: int                                                                   # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
+    def with_store_id(self, value: str) -> FulfillmentItem:
+        self.store_id = value
+        return self
+
     def with_item_id(self, value: str) -> FulfillmentItem:
         self.item_id = value
+        return self
+
+    def with_item_sku(self, value: str) -> FulfillmentItem:
+        self.item_sku = value
+        return self
+
+    def with_item_type(self, value: str) -> FulfillmentItem:
+        self.item_type = value
         return self
 
     def with_item_name(self, value: str) -> FulfillmentItem:
@@ -58,16 +82,32 @@ class FulfillmentItem(Model):
         self.quantity = value
         return self
 
+    def with_extra_subscription_days(self, value: int) -> FulfillmentItem:
+        self.extra_subscription_days = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "store_id") and self.store_id:
+            result["storeId"] = str(self.store_id)
+        elif include_empty:
+            result["storeId"] = str()
         if hasattr(self, "item_id") and self.item_id:
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
+        if hasattr(self, "item_sku") and self.item_sku:
+            result["itemSku"] = str(self.item_sku)
+        elif include_empty:
+            result["itemSku"] = str()
+        if hasattr(self, "item_type") and self.item_type:
+            result["itemType"] = str(self.item_type)
+        elif include_empty:
+            result["itemType"] = str()
         if hasattr(self, "item_name") and self.item_name:
             result["itemName"] = str(self.item_name)
         elif include_empty:
@@ -76,6 +116,10 @@ class FulfillmentItem(Model):
             result["quantity"] = int(self.quantity)
         elif include_empty:
             result["quantity"] = int()
+        if hasattr(self, "extra_subscription_days") and self.extra_subscription_days:
+            result["extraSubscriptionDays"] = int(self.extra_subscription_days)
+        elif include_empty:
+            result["extraSubscriptionDays"] = int()
         return result
 
     # endregion to methods
@@ -85,15 +129,28 @@ class FulfillmentItem(Model):
     @classmethod
     def create(
         cls,
-        item_id: str,
         quantity: int,
+        store_id: Optional[str] = None,
+        item_id: Optional[str] = None,
+        item_sku: Optional[str] = None,
+        item_type: Optional[str] = None,
         item_name: Optional[str] = None,
+        extra_subscription_days: Optional[int] = None,
     ) -> FulfillmentItem:
         instance = cls()
-        instance.item_id = item_id
         instance.quantity = quantity
+        if store_id is not None:
+            instance.store_id = store_id
+        if item_id is not None:
+            instance.item_id = item_id
+        if item_sku is not None:
+            instance.item_sku = item_sku
+        if item_type is not None:
+            instance.item_type = item_type
         if item_name is not None:
             instance.item_name = item_name
+        if extra_subscription_days is not None:
+            instance.extra_subscription_days = extra_subscription_days
         return instance
 
     @classmethod
@@ -101,10 +158,22 @@ class FulfillmentItem(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "storeId" in dict_ and dict_["storeId"] is not None:
+            instance.store_id = str(dict_["storeId"])
+        elif include_empty:
+            instance.store_id = str()
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
             instance.item_id = str()
+        if "itemSku" in dict_ and dict_["itemSku"] is not None:
+            instance.item_sku = str(dict_["itemSku"])
+        elif include_empty:
+            instance.item_sku = str()
+        if "itemType" in dict_ and dict_["itemType"] is not None:
+            instance.item_type = str(dict_["itemType"])
+        elif include_empty:
+            instance.item_type = str()
         if "itemName" in dict_ and dict_["itemName"] is not None:
             instance.item_name = str(dict_["itemName"])
         elif include_empty:
@@ -113,14 +182,22 @@ class FulfillmentItem(Model):
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
             instance.quantity = int()
+        if "extraSubscriptionDays" in dict_ and dict_["extraSubscriptionDays"] is not None:
+            instance.extra_subscription_days = int(dict_["extraSubscriptionDays"])
+        elif include_empty:
+            instance.extra_subscription_days = int()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "storeId": "store_id",
             "itemId": "item_id",
+            "itemSku": "item_sku",
+            "itemType": "item_type",
             "itemName": "item_name",
             "quantity": "quantity",
+            "extraSubscriptionDays": "extra_subscription_days",
         }
 
     # endregion static methods

@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:11.032607+08:00
-# from: Justice Iam Service (4.1.0)
+# Auto-generated at 2021-10-21T08:52:26.182658+08:00
+# from: Justice iam Service (4.4.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -39,7 +39,7 @@ class AddClientPermission(Operation):
 
         tags: ["Clients"]
 
-        consumes: ["text/plain"]
+        consumes: ["*/*"]
 
         produces: ["application/json"]
 
@@ -67,7 +67,7 @@ class AddClientPermission(Operation):
 
     _url: str = "/iam/clients/{clientId}/clientpermissions/{resource}/{action}"
     _method: str = "POST"
-    _consumes: List[str] = ["text/plain"]
+    _consumes: List[str] = ["*/*"]
     _produces: List[str] = ["application/json"]
     _security: Optional[str] = "bearer"
     _location_query: str = None

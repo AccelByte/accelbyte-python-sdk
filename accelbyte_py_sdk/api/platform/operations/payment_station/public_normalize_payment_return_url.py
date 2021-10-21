@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:17.538046+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:31.480030+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -92,7 +92,7 @@ class PublicNormalizePaymentReturnUrl(Operation):
         payer_id: (PayerID) OPTIONAL str in query
 
     Responses:
-        204: No Content - (successful operation)
+        default: (successful operation)
     """
 
     # region fields
@@ -370,10 +370,10 @@ class PublicNormalizePaymentReturnUrl(Operation):
     def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        204: No Content - (successful operation)
+        default: (successful operation)
         """
-        if code == 204:
-            return HttpResponse.create(code, "No Content"), None
+        if code == 200:
+            return HttpResponse.create(code, "OK"), None
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
             return None, undocumented_response

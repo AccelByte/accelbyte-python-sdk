@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:18.927143+08:00
-# from: Justice Cloudsave Service (3.38.0)
+# Auto-generated at 2021-10-21T08:52:32.594307+08:00
+# from: Justice cloudsave Service (1.8.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -26,7 +26,7 @@ from .....core import Operation
 from .....core import HttpResponse
 
 from ...models import ModelsGameRecordRequest
-from ...models import ResponseError
+from ...models import ModelsResponseError
 
 
 class PostGameRecordHandlerV1(Operation):
@@ -101,9 +101,11 @@ class PostGameRecordHandlerV1(Operation):
         key: (key) REQUIRED str in path
 
     Responses:
-        200: OK - (Record saved)
+        201: Created - (Record saved)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        400: Bad Request - ModelsResponseError (Bad Request)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
     """
 
     # region fields
@@ -245,17 +247,21 @@ class PostGameRecordHandlerV1(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ResponseError]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ModelsResponseError]]:
         """Parse the given response.
 
-        200: OK - (Record saved)
+        201: Created - (Record saved)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        400: Bad Request - ModelsResponseError (Bad Request)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
         """
-        if code == 200:
-            return HttpResponse.create(code, "OK"), None
+        if code == 201:
+            return HttpResponse.create(code, "Created"), None
+        if code == 400:
+            return None, ModelsResponseError.create_from_dict(content)
         if code == 500:
-            return None, ResponseError.create_from_dict(content)
+            return None, ModelsResponseError.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
             return None, undocumented_response

@@ -1,6 +1,6 @@
 """Auto-generated top-level package for the social API."""
 
-__version__ = "1.17.1"
+__version__ = "1.18.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

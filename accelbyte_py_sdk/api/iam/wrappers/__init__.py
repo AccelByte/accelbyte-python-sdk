@@ -1,6 +1,6 @@
 """Auto-generated package that contains utility functions for the iam API."""
 
-__version__ = "4.1.0"
+__version__ = "4.4.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 # pylint: disable=line-too-long
@@ -164,7 +164,6 @@ from ._users import public_get_user_platform_accounts_v3
 from ._users import public_link_platform_account
 from ._users import public_validate_user_by_user_id_and_password_v3
 from ._users import public_get_my_user_v3
-from ._users import admin_update_my_user_v4
 
 from ._o_auth import authorization
 from ._o_auth import get_jwks
@@ -267,6 +266,7 @@ from ._users_v4 import admin_list_user_roles_v4
 from ._users_v4 import admin_update_user_role_v4
 from ._users_v4 import admin_add_user_role_v4
 from ._users_v4 import admin_remove_user_role_v4
+from ._users_v4 import admin_update_my_user_v4
 from ._users_v4 import public_create_user_v4
 from ._users_v4 import create_user_from_invitation_v4
 from ._users_v4 import public_update_user_v4

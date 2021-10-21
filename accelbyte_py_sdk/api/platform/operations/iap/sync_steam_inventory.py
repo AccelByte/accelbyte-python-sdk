@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:17.373955+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:31.278762+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -59,7 +59,7 @@ class SyncSteamInventory(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (successful operation)
+        204: No Content - (Successful operation)
     """
 
     # region fields
@@ -201,7 +201,7 @@ class SyncSteamInventory(Operation):
     def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        204: No Content - (successful operation)
+        204: No Content - (Successful operation)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None

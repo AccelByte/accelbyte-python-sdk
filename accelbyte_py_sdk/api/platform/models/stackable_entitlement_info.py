@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:16.251751+08:00
-# from: Justice Platform Service (3.24.0)
+# Auto-generated at 2021-10-21T08:52:30.737544+08:00
+# from: Justice platform Service (3.34.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -48,6 +48,8 @@ class StackableEntitlementInfo(Model):
         sku: (sku) OPTIONAL str
 
         user_id: (userId) REQUIRED str
+
+        store_id: (storeId) OPTIONAL str
 
         item_id: (itemId) REQUIRED str
 
@@ -99,6 +101,7 @@ class StackableEntitlementInfo(Model):
     app_type: str                                                                                  # OPTIONAL
     sku: str                                                                                       # OPTIONAL
     user_id: str                                                                                   # REQUIRED
+    store_id: str                                                                                  # OPTIONAL
     item_id: str                                                                                   # REQUIRED
     granted_code: str                                                                              # OPTIONAL
     item_namespace: str                                                                            # REQUIRED
@@ -157,6 +160,10 @@ class StackableEntitlementInfo(Model):
 
     def with_user_id(self, value: str) -> StackableEntitlementInfo:
         self.user_id = value
+        return self
+
+    def with_store_id(self, value: str) -> StackableEntitlementInfo:
+        self.store_id = value
         return self
 
     def with_item_id(self, value: str) -> StackableEntitlementInfo:
@@ -277,6 +284,10 @@ class StackableEntitlementInfo(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
+        if hasattr(self, "store_id") and self.store_id:
+            result["storeId"] = str(self.store_id)
+        elif include_empty:
+            result["storeId"] = str()
         if hasattr(self, "item_id") and self.item_id:
             result["itemId"] = str(self.item_id)
         elif include_empty:
@@ -378,6 +389,7 @@ class StackableEntitlementInfo(Model):
         app_id: Optional[str] = None,
         app_type: Optional[str] = None,
         sku: Optional[str] = None,
+        store_id: Optional[str] = None,
         granted_code: Optional[str] = None,
         features: Optional[List[str]] = None,
         use_count: Optional[int] = None,
@@ -411,6 +423,8 @@ class StackableEntitlementInfo(Model):
             instance.app_type = app_type
         if sku is not None:
             instance.sku = sku
+        if store_id is not None:
+            instance.store_id = store_id
         if granted_code is not None:
             instance.granted_code = granted_code
         if features is not None:
@@ -478,6 +492,10 @@ class StackableEntitlementInfo(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
+        if "storeId" in dict_ and dict_["storeId"] is not None:
+            instance.store_id = str(dict_["storeId"])
+        elif include_empty:
+            instance.store_id = str()
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
@@ -568,6 +586,7 @@ class StackableEntitlementInfo(Model):
             "appType": "app_type",
             "sku": "sku",
             "userId": "user_id",
+            "storeId": "store_id",
             "itemId": "item_id",
             "grantedCode": "granted_code",
             "itemNamespace": "item_namespace",

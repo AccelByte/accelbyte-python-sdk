@@ -22,35 +22,63 @@ from ....core import same_doc_as
 from ..models import ModelsGameRecord
 from ..models import ModelsGameRecordRequest
 from ..models import ModelsListGameRecordKeys
-from ..models import ResponseError
+from ..models import ModelsResponseError
 
-from ..operations.admin_game_record import DeleteAdminGameRecordHandlerV1
-from ..operations.admin_game_record import GetGameRecordHandlerByKeyV1
+from ..operations.admin_game_record import AdminDeleteGameRecordHandlerV1
+from ..operations.admin_game_record import AdminGetGameRecordHandlerV1
+from ..operations.admin_game_record import AdminPostGameRecordHandlerV1
+from ..operations.admin_game_record import AdminPutGameRecordHandlerV1
 from ..operations.admin_game_record import ListGameRecordsHandlerV1
-from ..operations.admin_game_record import PostAdminGameRecordHandlerV1
-from ..operations.admin_game_record import PutAdminGameRecordHandlerV1
 
 
-@same_doc_as(DeleteAdminGameRecordHandlerV1)
-def delete_admin_game_record_handler_v1(key: str, namespace: Optional[str] = None):
+@same_doc_as(AdminDeleteGameRecordHandlerV1)
+def admin_delete_game_record_handler_v1(key: str, namespace: Optional[str] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = DeleteAdminGameRecordHandlerV1.create(
+    request = AdminDeleteGameRecordHandlerV1.create(
         key=key,
         namespace=namespace,
     )
     return run_request(request)
 
 
-@same_doc_as(GetGameRecordHandlerByKeyV1)
-def get_game_record_handler_by_key_v1(key: str, namespace: Optional[str] = None):
+@same_doc_as(AdminGetGameRecordHandlerV1)
+def admin_get_game_record_handler_v1(key: str, namespace: Optional[str] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = GetGameRecordHandlerByKeyV1.create(
+    request = AdminGetGameRecordHandlerV1.create(
+        key=key,
+        namespace=namespace,
+    )
+    return run_request(request)
+
+
+@same_doc_as(AdminPostGameRecordHandlerV1)
+def admin_post_game_record_handler_v1(body: ModelsGameRecordRequest, key: str, namespace: Optional[str] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminPostGameRecordHandlerV1.create(
+        body=body,
+        key=key,
+        namespace=namespace,
+    )
+    return run_request(request)
+
+
+@same_doc_as(AdminPutGameRecordHandlerV1)
+def admin_put_game_record_handler_v1(body: ModelsGameRecordRequest, key: str, namespace: Optional[str] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminPutGameRecordHandlerV1.create(
+        body=body,
         key=key,
         namespace=namespace,
     )
@@ -66,34 +94,6 @@ def list_game_records_handler_v1(offset: int, limit: int, namespace: Optional[st
     request = ListGameRecordsHandlerV1.create(
         offset=offset,
         limit=limit,
-        namespace=namespace,
-    )
-    return run_request(request)
-
-
-@same_doc_as(PostAdminGameRecordHandlerV1)
-def post_admin_game_record_handler_v1(body: ModelsGameRecordRequest, key: str, namespace: Optional[str] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = PostAdminGameRecordHandlerV1.create(
-        body=body,
-        key=key,
-        namespace=namespace,
-    )
-    return run_request(request)
-
-
-@same_doc_as(PutAdminGameRecordHandlerV1)
-def put_admin_game_record_handler_v1(body: ModelsGameRecordRequest, key: str, namespace: Optional[str] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = PutAdminGameRecordHandlerV1.create(
-        body=body,
-        key=key,
         namespace=namespace,
     )
     return run_request(request)

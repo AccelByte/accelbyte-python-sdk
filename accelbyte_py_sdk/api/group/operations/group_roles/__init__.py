@@ -7,5 +7,5 @@ from .delete_member_role_admin_v1 import DeleteMemberRoleAdminV1
 from .update_member_role_admin_v1 import UpdateMemberRoleAdminV1
 from .update_member_role_permission_admin_v1 import UpdateMemberRolePermissionAdminV1
 from .get_member_roles_list_public_v1 import GetMemberRolesListPublicV1
-from .assign_role_to_group_member_admin_v1 import AssignRoleToGroupMemberAdminV1
+from .update_member_role_public_v1 import UpdateMemberRolePublicV1
 from .delete_member_role_public_v1 import DeleteMemberRolePublicV1

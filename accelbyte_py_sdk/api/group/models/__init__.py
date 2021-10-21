@@ -1,6 +1,6 @@
 """Auto-generated package that contains models used by the group API."""
 
-__version__ = "2.4.0"
+__version__ = "2.8.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -25,6 +25,7 @@ from .models_group_rule_group_custom_rule import ModelsGroupRuleGroupCustomRule
 from .models_join_group_response_v1 import ModelsJoinGroupResponseV1
 from .models_kick_group_member_response_v1 import ModelsKickGroupMemberResponseV1
 from .models_leave_group_response_v1 import ModelsLeaveGroupResponseV1
+from .models_list_configuration_response_v1 import ModelsListConfigurationResponseV1
 from .models_member_request_group_response_v1 import ModelsMemberRequestGroupResponseV1
 from .models_member_request_response_v1 import ModelsMemberRequestResponseV1
 from .models_pagination import ModelsPagination

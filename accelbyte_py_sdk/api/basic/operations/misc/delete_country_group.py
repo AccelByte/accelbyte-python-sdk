@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:19.405062+08:00
-# from: Justice Basic Service (1.17.0)
+# Auto-generated at 2021-10-21T08:52:32.965339+08:00
+# from: Justice basic Service (1.23.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -57,13 +57,15 @@ class DeleteCountryGroup(Operation):
         country_group_code: (countryGroupCode) REQUIRED str in path
 
     Responses:
+        200: OK - (Successful operation)
+
         400: Bad Request - ValidationErrorEntity (20002: validation error)
 
         401: Unauthorized - ErrorEntity (20001: unauthorized)
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (11233: country group not found)
+        404: Not Found - ErrorEntity (11233: Unable to {action}: Country group with code [{countryGroupCode}] is not found)
     """
 
     # region fields
@@ -189,8 +191,10 @@ class DeleteCountryGroup(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, ErrorEntity, ValidationErrorEntity]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ErrorEntity, ValidationErrorEntity]]:
         """Parse the given response.
+
+        200: OK - (Successful operation)
 
         400: Bad Request - ValidationErrorEntity (20002: validation error)
 
@@ -198,8 +202,10 @@ class DeleteCountryGroup(Operation):
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (11233: country group not found)
+        404: Not Found - ErrorEntity (11233: Unable to {action}: Country group with code [{countryGroupCode}] is not found)
         """
+        if code == 200:
+            return HttpResponse.create(code, "OK"), None
         if code == 400:
             return None, ValidationErrorEntity.create_from_dict(content)
         if code == 401:

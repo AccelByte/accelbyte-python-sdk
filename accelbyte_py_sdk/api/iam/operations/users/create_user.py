@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:11.050623+08:00
-# from: Justice Iam Service (4.1.0)
+# Auto-generated at 2021-10-21T08:52:26.192762+08:00
+# from: Justice iam Service (4.4.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -62,13 +62,13 @@ class CreateUser(Operation):
     Responses:
         201: Created - ModelUserCreateResponse (Created)
 
-        400: Bad Request - ModelUserCreateResponse (Bad request)
+        400: Bad Request -
 
         401: Unauthorized - (Unauthorized access)
 
         403: Forbidden - (Forbidden)
 
-        409: Conflict - ModelUserCreateResponse (Conflict)
+        409: Conflict -
     """
 
     # region fields
@@ -196,29 +196,29 @@ class CreateUser(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelUserCreateResponse], Union[None, HttpResponse, ModelUserCreateResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelUserCreateResponse], Union[None, HttpResponse]]:
         """Parse the given response.
 
         201: Created - ModelUserCreateResponse (Created)
 
-        400: Bad Request - ModelUserCreateResponse (Bad request)
+        400: Bad Request -
 
         401: Unauthorized - (Unauthorized access)
 
         403: Forbidden - (Forbidden)
 
-        409: Conflict - ModelUserCreateResponse (Conflict)
+        409: Conflict -
         """
         if code == 201:
             return ModelUserCreateResponse.create_from_dict(content), None
         if code == 400:
-            return None, ModelUserCreateResponse.create_from_dict(content)
+            return None, HttpResponse.create(code, "Bad Request")
         if code == 401:
             return None, HttpResponse.create(code, "Unauthorized")
         if code == 403:
             return None, HttpResponse.create(code, "Forbidden")
         if code == 409:
-            return None, ModelUserCreateResponse.create_from_dict(content)
+            return None, HttpResponse.create(code, "Conflict")
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
             return None, undocumented_response

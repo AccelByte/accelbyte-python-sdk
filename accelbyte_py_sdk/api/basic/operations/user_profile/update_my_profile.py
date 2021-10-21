@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:19.533667+08:00
-# from: Justice Basic Service (1.17.0)
+# Auto-generated at 2021-10-21T08:52:33.067541+08:00
+# from: Justice basic Service (1.23.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,9 +32,9 @@ from ...models import ValidationErrorEntity
 
 
 class UpdateMyProfile(Operation):
-    """Update user profile (updateMyProfile)
+    """Update my profile (updateMyProfile)
 
-    Update user profile.  
+    Update my profile.  
     Updates user profile in the target namespace (namespace in the path). If
     token's namespace doesn't match the target namespace, the service
     automatically maps the token's user ID into the user ID in the target
@@ -77,7 +77,7 @@ class UpdateMyProfile(Operation):
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (20008: user not found | 20017: user not linked | 11440: user profile not found)
+        404: Not Found - ErrorEntity (20008: user not found | 20017: user not linked | 11440: Unable to {action}: User profile not found in namespace [{namespace}])
     """
 
     # region fields
@@ -213,7 +213,7 @@ class UpdateMyProfile(Operation):
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (20008: user not found | 20017: user not linked | 11440: user profile not found)
+        404: Not Found - ErrorEntity (20008: user not found | 20017: user not linked | 11440: Unable to {action}: User profile not found in namespace [{namespace}])
         """
         if code == 200:
             return UserProfilePrivateInfo.create_from_dict(content), None

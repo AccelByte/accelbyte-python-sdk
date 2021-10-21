@@ -1,5 +1,5 @@
-# Auto-generated at 2021-10-14T22:17:18.918917+08:00
-# from: Justice Cloudsave Service (3.38.0)
+# Auto-generated at 2021-10-21T08:52:32.587295+08:00
+# from: Justice cloudsave Service (1.8.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -26,7 +26,7 @@ from .....core import Operation
 from .....core import HttpResponse
 
 from ...models import ModelsConcurrentRecordRequest
-from ...models import ResponseError
+from ...models import ModelsResponseError
 
 
 class PutGameRecordConcurrentHandlerV1(Operation):
@@ -88,11 +88,13 @@ class PutGameRecordConcurrentHandlerV1(Operation):
     Responses:
         204: No Content - (Record saved)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ModelsResponseError (Bad Request)
 
-        412: Precondition Failed - ResponseError (Precondition Failed)
+        401: Unauthorized - ModelsResponseError (Unauthorized)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        412: Precondition Failed - ModelsResponseError (Precondition Failed)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
     """
 
     # region fields
@@ -234,25 +236,29 @@ class PutGameRecordConcurrentHandlerV1(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ResponseError]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ModelsResponseError]]:
         """Parse the given response.
 
         204: No Content - (Record saved)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ModelsResponseError (Bad Request)
 
-        412: Precondition Failed - ResponseError (Precondition Failed)
+        401: Unauthorized - ModelsResponseError (Unauthorized)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        412: Precondition Failed - ModelsResponseError (Precondition Failed)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None
         if code == 400:
-            return None, ResponseError.create_from_dict(content)
+            return None, ModelsResponseError.create_from_dict(content)
+        if code == 401:
+            return None, ModelsResponseError.create_from_dict(content)
         if code == 412:
-            return None, ResponseError.create_from_dict(content)
+            return None, ModelsResponseError.create_from_dict(content)
         if code == 500:
-            return None, ResponseError.create_from_dict(content)
+            return None, ModelsResponseError.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
             return None, undocumented_response

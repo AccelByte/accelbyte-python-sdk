@@ -20,11 +20,13 @@ from ....core import run_request
 from ....core import same_doc_as
 
 from ..models import ErrorEntity
+from ..models import NotificationProcessResult
 from ..models import PaymentNotificationPagingSlicedResult
 from ..models import PaymentOrderChargeRequest
 from ..models import PaymentOrderChargeStatus
 from ..models import PaymentOrderCreate
 from ..models import PaymentOrderInfo
+from ..models import PaymentOrderNotifySimulation
 from ..models import PaymentOrderPagingSlicedResult
 from ..models import PaymentOrderRefund
 from ..models import ValidationErrorEntity
@@ -37,6 +39,7 @@ from ..operations.payment import ListExtOrderNoByExtTxId
 from ..operations.payment import QueryPaymentNotifications
 from ..operations.payment import QueryPaymentOrders
 from ..operations.payment import RefundUserPaymentOrder
+from ..operations.payment import SimulatePaymentOrderNotification
 
 
 @same_doc_as(ChargePaymentOrder)
@@ -153,6 +156,20 @@ def refund_user_payment_order(payment_order_no: str, user_id: str, body: Optiona
     request = RefundUserPaymentOrder.create(
         payment_order_no=payment_order_no,
         user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request)
+
+
+@same_doc_as(SimulatePaymentOrderNotification)
+def simulate_payment_order_notification(payment_order_no: str, body: Optional[PaymentOrderNotifySimulation] = None, namespace: Optional[str] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = SimulatePaymentOrderNotification.create(
+        payment_order_no=payment_order_no,
         body=body,
         namespace=namespace,
     )

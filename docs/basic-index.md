@@ -1,4 +1,4 @@
-# Basic Index (1.17.0)
+# basic Index (1.23.0)
 
 
 ## Operations
@@ -21,6 +21,7 @@
 | /basic/v1/admin/namespaces/{namespace}/misc/countrygroups | GET | getCountryGroups | [GetCountryGroups](../accelbyte_py_sdk/api/basic/operations/misc/get_country_groups.py) | [get_country_groups](../accelbyte_py_sdk/api/basic/wrappers/_misc.py) |
 | /basic/v1/admin/namespaces/{namespace}/misc/countrygroups | POST | addCountryGroup | [AddCountryGroup](../accelbyte_py_sdk/api/basic/operations/misc/add_country_group.py) | [add_country_group](../accelbyte_py_sdk/api/basic/wrappers/_misc.py) |
 | /basic/v1/admin/namespaces/{namespace}/misc/countries | GET | getCountries | [GetCountries](../accelbyte_py_sdk/api/basic/operations/misc/get_countries.py) | [get_countries](../accelbyte_py_sdk/api/basic/wrappers/_misc.py) |
+| /basic/v1/public/misc/time | GET | publicGetTime | [PublicGetTime](../accelbyte_py_sdk/api/basic/operations/misc/public_get_time.py) | [public_get_time](../accelbyte_py_sdk/api/basic/wrappers/_misc.py) |
 | /basic/v1/public/namespaces/{namespace}/misc/timezones | GET | publicGetTimeZones | [PublicGetTimeZones](../accelbyte_py_sdk/api/basic/operations/misc/public_get_time_zones.py) | [public_get_time_zones](../accelbyte_py_sdk/api/basic/wrappers/_misc.py) |
 | /basic/v1/public/namespaces/{namespace}/misc/languages | GET | publicGetLanguages | [PublicGetLanguages](../accelbyte_py_sdk/api/basic/operations/misc/public_get_languages.py) | [public_get_languages](../accelbyte_py_sdk/api/basic/wrappers/_misc.py) |
 | /basic/v1/public/namespaces/{namespace}/misc/countries | GET | publicGetCountries | [PublicGetCountries](../accelbyte_py_sdk/api/basic/operations/misc/public_get_countries.py) | [public_get_countries](../accelbyte_py_sdk/api/basic/wrappers/_misc.py) |
@@ -53,20 +54,20 @@
 | /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/privateCustomAttributes | PUT | updatePrivateCustomAttributesPartially | [UpdatePrivateCustomAttributesPartially](../accelbyte_py_sdk/api/basic/operations/user_profile/update_private_custom_attributes_partially.py) | [update_private_custom_attributes_partially](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
 | /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/customAttributes | GET | getCustomAttributesInfo | [GetCustomAttributesInfo](../accelbyte_py_sdk/api/basic/operations/user_profile/get_custom_attributes_info.py) | [get_custom_attributes_info](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
 | /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/customAttributes | PUT | updateCustomAttributesPartially | [UpdateCustomAttributesPartially](../accelbyte_py_sdk/api/basic/operations/user_profile/update_custom_attributes_partially.py) | [update_custom_attributes_partially](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
-| /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/status | PATCH | enableUserProfileStatus | [EnableUserProfileStatus](../accelbyte_py_sdk/api/basic/operations/user_profile/enable_user_profile_status.py) | [enable_user_profile_status](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
-| /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles/public | GET | publicGetUserProfilePublicInfo | [PublicGetUserProfilePublicInfo](../accelbyte_py_sdk/api/basic/operations/user_profile/public_get_user_profile_public_info.py) | [public_get_user_profile_public_info](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
+| /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/status | PATCH | updateUserProfileStatus | [UpdateUserProfileStatus](../accelbyte_py_sdk/api/basic/operations/user_profile/update_user_profile_status.py) | [update_user_profile_status](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
+| /basic/v1/public/namespaces/{namespace}/profiles/public | GET | publicGetUserProfilePublicInfoByIds | [PublicGetUserProfilePublicInfoByIds](../accelbyte_py_sdk/api/basic/operations/user_profile/public_get_user_profile_public_info_by_ids.py) | [public_get_user_profile_public_info_by_ids](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
 | /basic/v1/public/namespaces/{namespace}/users/me/profiles | GET | getMyProfileInfo | [GetMyProfileInfo](../accelbyte_py_sdk/api/basic/operations/user_profile/get_my_profile_info.py) | [get_my_profile_info](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
 | /basic/v1/public/namespaces/{namespace}/users/me/profiles | PUT | updateMyProfile | [UpdateMyProfile](../accelbyte_py_sdk/api/basic/operations/user_profile/update_my_profile.py) | [update_my_profile](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
 | /basic/v1/public/namespaces/{namespace}/users/me/profiles | POST | createMyProfile | [CreateMyProfile](../accelbyte_py_sdk/api/basic/operations/user_profile/create_my_profile.py) | [create_my_profile](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
-| /basic/v1/public/namespaces/{namespace}/users/me/profiles/zipCode | GET | getUserZipCode | [GetUserZipCode](../accelbyte_py_sdk/api/basic/operations/user_profile/get_user_zip_code.py) | [get_user_zip_code](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
-| /basic/v1/public/namespaces/{namespace}/users/me/profiles/zipCode | PATCH | updateUserZipCode | [UpdateUserZipCode](../accelbyte_py_sdk/api/basic/operations/user_profile/update_user_zip_code.py) | [update_user_zip_code](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
-| /basic/v1/public/namespaces/{namespace}/profiles/public | GET | publicGetUserProfilePublicInfoByIds | [PublicGetUserProfilePublicInfoByIds](../accelbyte_py_sdk/api/basic/operations/user_profile/public_get_user_profile_public_info_by_ids.py) | [public_get_user_profile_public_info_by_ids](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
-| /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles/customAttributes | GET | getCustomAttributesInfo_1 | [GetCustomAttributesInfo1](../accelbyte_py_sdk/api/basic/operations/user_profile/get_custom_attributes_info_1.py) | [get_custom_attributes_info_1](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
-| /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles/customAttributes | PUT | updateCustomAttributesPartially_1 | [UpdateCustomAttributesPartially1](../accelbyte_py_sdk/api/basic/operations/user_profile/update_custom_attributes_partially_1.py) | [update_custom_attributes_partially_1](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
+| /basic/v1/public/namespaces/{namespace}/users/me/profiles/zipCode | GET | getMyZipCode | [GetMyZipCode](../accelbyte_py_sdk/api/basic/operations/user_profile/get_my_zip_code.py) | [get_my_zip_code](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
+| /basic/v1/public/namespaces/{namespace}/users/me/profiles/zipCode | PATCH | updateMyZipCode | [UpdateMyZipCode](../accelbyte_py_sdk/api/basic/operations/user_profile/update_my_zip_code.py) | [update_my_zip_code](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
+| /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles/public | GET | publicGetUserProfilePublicInfo | [PublicGetUserProfilePublicInfo](../accelbyte_py_sdk/api/basic/operations/user_profile/public_get_user_profile_public_info.py) | [public_get_user_profile_public_info](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
+| /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles/customAttributes | GET | publicGetCustomAttributesInfo | [PublicGetCustomAttributesInfo](../accelbyte_py_sdk/api/basic/operations/user_profile/public_get_custom_attributes_info.py) | [public_get_custom_attributes_info](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
+| /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles/customAttributes | PUT | publicUpdateCustomAttributesPartially | [PublicUpdateCustomAttributesPartially](../accelbyte_py_sdk/api/basic/operations/user_profile/public_update_custom_attributes_partially.py) | [public_update_custom_attributes_partially](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
 | /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles | GET | publicGetUserProfileInfo | [PublicGetUserProfileInfo](../accelbyte_py_sdk/api/basic/operations/user_profile/public_get_user_profile_info.py) | [public_get_user_profile_info](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
 | /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles | PUT | publicUpdateUserProfile | [PublicUpdateUserProfile](../accelbyte_py_sdk/api/basic/operations/user_profile/public_update_user_profile.py) | [public_update_user_profile](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
 | /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles | POST | publicCreateUserProfile | [PublicCreateUserProfile](../accelbyte_py_sdk/api/basic/operations/user_profile/public_create_user_profile.py) | [public_create_user_profile](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
-| /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles/status | PATCH | publicEnableUserProfileStatus | [PublicEnableUserProfileStatus](../accelbyte_py_sdk/api/basic/operations/user_profile/public_enable_user_profile_status.py) | [public_enable_user_profile_status](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
+| /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles/status | PATCH | publicUpdateUserProfileStatus | [PublicUpdateUserProfileStatus](../accelbyte_py_sdk/api/basic/operations/user_profile/public_update_user_profile_status.py) | [public_update_user_profile_status](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
 
 
 ## Models
@@ -82,14 +83,15 @@
 | AddCountryGroupResponse | [AddCountryGroupResponse](../accelbyte_py_sdk/api/basic/models/add_country_group_response.py) |
 | AddCountryGroupRequest | [AddCountryGroupRequest](../accelbyte_py_sdk/api/basic/models/add_country_group_request.py) |
 | RetrieveCountryGroupResponse | [RetrieveCountryGroupResponse](../accelbyte_py_sdk/api/basic/models/retrieve_country_group_response.py) |
+| RetrieveTimeResponse | [RetrieveTimeResponse](../accelbyte_py_sdk/api/basic/models/retrieve_time_response.py) |
 | NamespaceInfo | [NamespaceInfo](../accelbyte_py_sdk/api/basic/models/namespace_info.py) |
 | NamespaceStatusUpdate | [NamespaceStatusUpdate](../accelbyte_py_sdk/api/basic/models/namespace_status_update.py) |
 | NamespaceUpdate | [NamespaceUpdate](../accelbyte_py_sdk/api/basic/models/namespace_update.py) |
 | NamespacePublisherInfo | [NamespacePublisherInfo](../accelbyte_py_sdk/api/basic/models/namespace_publisher_info.py) |
 | NamespaceCreate | [NamespaceCreate](../accelbyte_py_sdk/api/basic/models/namespace_create.py) |
 | UserProfilePrivateInfo | [UserProfilePrivateInfo](../accelbyte_py_sdk/api/basic/models/user_profile_private_info.py) |
-| UserProfileAdmin | [UserProfileAdmin](../accelbyte_py_sdk/api/basic/models/user_profile_admin.py) |
 | UserProfileStatusUpdate | [UserProfileStatusUpdate](../accelbyte_py_sdk/api/basic/models/user_profile_status_update.py) |
+| UserProfileAdmin | [UserProfileAdmin](../accelbyte_py_sdk/api/basic/models/user_profile_admin.py) |
 | UserProfilePublicInfo | [UserProfilePublicInfo](../accelbyte_py_sdk/api/basic/models/user_profile_public_info.py) |
 | UserProfilePrivateCreate | [UserProfilePrivateCreate](../accelbyte_py_sdk/api/basic/models/user_profile_private_create.py) |
 | UserProfilePrivateUpdate | [UserProfilePrivateUpdate](../accelbyte_py_sdk/api/basic/models/user_profile_private_update.py) |
