@@ -112,15 +112,21 @@ class RequestsHttpClient(HttpClient):
         if "allow_redirects" not in kwargs:
             kwargs["allow_redirects"] = self.allow_redirects
         _LOGGER.debug(RequestsHttpClient.convert_to_curl(request))
-        raw_response = self.session.send(request, **kwargs)
+        try:
+            raw_response = self.session.send(request, **kwargs)
+        except requests.exceptions.ConnectionError as e:
+            _LOGGER.error(str(e))
+            return None, HttpResponse.create_connection_error()
         return raw_response, None
 
     def handle_response(
             self,
-            raw_response: Any,
+            raw_response: requests.Response,
             **kwargs
     ) -> Tuple[Union[None, Response], Union[None, HttpResponse]]:
         status_code = raw_response.status_code
+        if 400 <= status_code <= 599:
+            _LOGGER.error(f"[{status_code}] {raw_response.text}")
 
         if raw_response.is_redirect:
             content_type = "location"

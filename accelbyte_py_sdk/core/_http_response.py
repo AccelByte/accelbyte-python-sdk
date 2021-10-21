@@ -42,6 +42,14 @@ class HttpResponse(Model):
         return instance
 
     @classmethod
+    def create_redirect(cls, code: int, location: str):
+        instance = cls()
+        instance.code = code
+        instance.content_type = "location"
+        instance.content = location
+        return instance
+
+    @classmethod
     def create_error(cls, code: int, error: str):
         instance = cls()
         instance.code = code
@@ -50,11 +58,11 @@ class HttpResponse(Model):
         return instance
 
     @classmethod
-    def create_redirect(cls, code: int, location: str):
+    def create_connection_error(cls):
         instance = cls()
-        instance.code = code
-        instance.content_type = "location"
-        instance.content = location
+        instance.code = 0
+        instance.content_type = "error"
+        instance.content = "Connection Error"
         return instance
 
     @classmethod
