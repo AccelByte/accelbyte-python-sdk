@@ -31,7 +31,7 @@ from ...models import ErrorEntity
 class RevokeUserEntitlement(Operation):
     """Revoke user entitlement (revokeUserEntitlement)
 
-    Revoke user entitlement.  
+    Revoke user entitlement.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)

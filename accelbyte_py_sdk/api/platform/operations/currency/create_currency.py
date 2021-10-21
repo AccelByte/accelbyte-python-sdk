@@ -33,7 +33,7 @@ from ...models import ValidationErrorEntity
 class CreateCurrency(Operation):
     """Create a currency (createCurrency)
 
-    Create a currency.  
+    Create a currency.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=1 (CREATE)

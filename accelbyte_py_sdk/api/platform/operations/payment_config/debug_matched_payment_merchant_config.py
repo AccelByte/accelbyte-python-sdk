@@ -31,7 +31,7 @@ from ...models import PaymentMerchantConfigInfo
 class DebugMatchedPaymentMerchantConfig(Operation):
     """Debug matched payment merchant config(internal) (debugMatchedPaymentMerchantConfig)
 
-    Debug matched payment merchant config.  
+    Debug matched payment merchant config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)

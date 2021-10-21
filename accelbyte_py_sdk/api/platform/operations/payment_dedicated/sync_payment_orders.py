@@ -32,7 +32,7 @@ class SyncPaymentOrders(Operation):
 
     Sync payment orders. If response contains nextEvaluatedKey, please use it as
     query param in the next call to fetch the next batch, a batch has 1000
-    elements or less.  
+    elements or less.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT", action=2 (READ)

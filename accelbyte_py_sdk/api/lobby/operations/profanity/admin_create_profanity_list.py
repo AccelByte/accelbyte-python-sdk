@@ -32,7 +32,7 @@ class AdminCreateProfanityList(Operation):
     """create a new list (adminCreateProfanityList)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with
-    scope `social`  
+    scope `social`
     create a new list
 
 

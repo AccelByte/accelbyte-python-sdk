@@ -28,7 +28,7 @@ from .....core import HttpResponse
 class DeleteSteamIAPConfig(Operation):
     """Delete steam iap config (deleteSteamIAPConfig)
 
-    Delete steam iap config.  
+    Delete steam iap config.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)

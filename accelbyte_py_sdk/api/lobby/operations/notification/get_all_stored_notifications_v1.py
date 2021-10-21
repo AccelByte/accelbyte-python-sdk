@@ -31,7 +31,7 @@ from ...models import RestapiErrorResponseV1
 class GetAllStoredNotificationsV1(Operation):
     """get all stored notification for a user. (getAllStoredNotificationsV1)
 
-    Required valid user authorization  
+    Required valid user authorization
     Retrieve all notification stored for a user. Successfully retrieved
     notifications will not be deleted.
 

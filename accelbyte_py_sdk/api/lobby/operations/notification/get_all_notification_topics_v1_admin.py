@@ -32,8 +32,8 @@ class GetAllNotificationTopicsV1Admin(Operation):
     """get topic by namespace (getAllNotificationTopicsV1Admin)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with
-    scope `social`  
-    get topic by namespace.  
+    scope `social`
+    get topic by namespace.
     Action Code: 50213
 
 

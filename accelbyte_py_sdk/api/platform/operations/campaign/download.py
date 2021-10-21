@@ -28,7 +28,7 @@ from .....core import HttpResponse
 class Download(Operation):
     """Download codes (download)
 
-    Download all or a batch of campaign's codes as a csv file.  
+    Download all or a batch of campaign's codes as a csv file.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)

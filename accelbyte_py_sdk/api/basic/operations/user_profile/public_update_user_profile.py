@@ -33,7 +33,7 @@ from ...models import ValidationErrorEntity
 class PublicUpdateUserProfile(Operation):
     """Update user profile (publicUpdateUserProfile)
 
-    Update user profile.  
+    Update user profile.
     Other detail info:
 
       * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)

@@ -32,7 +32,7 @@ from ...models import ValidationErrorEntity
 class PublicGetUserProfilePublicInfo(Operation):
     """Get user profile public info (publicGetUserProfilePublicInfo)
 
-    Get user profile public info.  
+    Get user profile public info.
     Other detail info:
 
       * Action code : 11404

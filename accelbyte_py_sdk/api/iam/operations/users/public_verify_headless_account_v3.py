@@ -32,7 +32,7 @@ from ...models import RestErrorResponse
 class PublicVerifyHeadlessAccountV3(Operation):
     """Upgrade user account to full account (with email) (PublicVerifyHeadlessAccountV3)
 
-    Require valid user authorization  
+    Require valid user authorization
     action code : 10124
 
 

@@ -33,7 +33,7 @@ from ...models import ValidationErrorEntity
 class UpdateCurrency(Operation):
     """Update a currency (updateCurrency)
 
-    Update a currency by currency code.  
+    Update a currency by currency code.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=4 (UPDATE)

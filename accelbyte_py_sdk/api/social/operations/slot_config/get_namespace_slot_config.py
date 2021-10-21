@@ -31,7 +31,7 @@ class GetNamespaceSlotConfig(Operation):
     """Returns a namespace slot configuration (getNamespaceSlotConfig)
 
     Get slot configuration for a given namespace. In case slot configuration is
-    not set, the default will be returned.  
+    not set, the default will be returned.
     Other detail info:
 
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:SLOTCONFIG", action=2 (READ)

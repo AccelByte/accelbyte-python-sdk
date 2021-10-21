@@ -31,7 +31,7 @@ from ...models import ValidationErrorEntity
 class GetLanguages(Operation):
     """List languages. (getLanguages)
 
-    List languages.  
+    List languages.
     Other detail info:
 
       * Required permission : login user

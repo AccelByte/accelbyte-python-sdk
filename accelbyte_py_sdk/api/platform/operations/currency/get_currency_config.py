@@ -31,7 +31,7 @@ from ...models import ErrorEntity
 class GetCurrencyConfig(Operation):
     """Get currency config (getCurrencyConfig)
 
-    [SERVICE COMMUNICATION ONLY] Get currency config by code.  
+    [SERVICE COMMUNICATION ONLY] Get currency config by code.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=2 (READ)

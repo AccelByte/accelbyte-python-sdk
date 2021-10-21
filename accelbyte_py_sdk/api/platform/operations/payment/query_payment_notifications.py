@@ -30,7 +30,7 @@ from ...models import PaymentNotificationPagingSlicedResult
 class QueryPaymentNotifications(Operation):
     """Query payment notifications (queryPaymentNotifications)
 
-    Query payment notifications.  
+    Query payment notifications.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:NOTIFICATION", action=2 (READ)

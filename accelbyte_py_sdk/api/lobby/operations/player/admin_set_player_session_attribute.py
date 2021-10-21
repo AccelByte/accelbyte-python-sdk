@@ -33,7 +33,7 @@ class AdminSetPlayerSessionAttribute(Operation):
 
     Required permission :
     `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:ATTRIBUTES [UPDATE]` with
-    scope `social`  
+    scope `social`
     set player's session attribute by user id in a namespace.
 
 

@@ -31,9 +31,9 @@ from ...models import ModelsResponseError
 class PostGameRecordHandlerV1(Operation):
     """Create or append game record (postGameRecordHandlerV1)
 
-    Required Permission | `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]`  
-    ---|---  
-    Required Scope | `social`  
+    Required Permission | `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]`
+    ---|---
+    Required Scope | `social`
 
     If there's already record, the record will be merged with conditions: - If
     field name is already exist, the value will be replaced - If field name is

@@ -33,7 +33,7 @@ from ...models import ValidationErrorEntity
 class UpdateCampaign(Operation):
     """Update campaign (updateCampaign)
 
-    Update campaign.  
+    Update campaign.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)

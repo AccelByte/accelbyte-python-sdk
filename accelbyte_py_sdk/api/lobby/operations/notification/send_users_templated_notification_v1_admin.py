@@ -32,14 +32,14 @@ class SendUsersTemplatedNotificationV1Admin(Operation):
     """send notification to a user with template (sendUsersTemplatedNotificationV1Admin)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with
-    scope `social`  
+    scope `social`
     Sends notification to all connected users in a namespace with predefined
-    template.  
+    template.
     In the request body, specify which template slug (template identifier) to use
-    and the template language.  
+    and the template language.
     NotificationTemplate context is the key-value pair defining the value of each
     handlebar specified in the template content. Template need to be published
-    before it can be use to send notifications  
+    before it can be use to send notifications
     Action Code: 50202
 
 

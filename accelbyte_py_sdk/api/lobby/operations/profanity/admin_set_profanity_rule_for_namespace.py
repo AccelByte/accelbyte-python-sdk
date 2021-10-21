@@ -32,7 +32,7 @@ class AdminSetProfanityRuleForNamespace(Operation):
     """set current profanity rule (adminSetProfanityRuleForNamespace)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [UPDATE]` with
-    scope `social`  
+    scope `social`
     set current profanity rule
 
 

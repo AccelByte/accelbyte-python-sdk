@@ -32,7 +32,7 @@ class GetLocalizationTemplate(Operation):
     """get a template localization (getLocalizationTemplate)
 
     Required permission : `NAMESPACE:{namespace}:TEMPLATE [READ]` with scope
-    `social`  
+    `social`
     Get a template localization
 
 

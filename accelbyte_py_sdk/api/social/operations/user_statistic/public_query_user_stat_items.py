@@ -30,7 +30,7 @@ from ...models import UserStatItemPagingSlicedResult
 class PublicQueryUserStatItems(Operation):
     """Public list user's statItems (publicQueryUserStatItems)
 
-    Public list all statItems by pagination.  
+    Public list all statItems by pagination.
     Other detail info:
 
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)

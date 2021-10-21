@@ -30,7 +30,7 @@ from ...models import PurchasedItemCount
 class CountOfPurchasedItem(Operation):
     """Get the count of purchased item (countOfPurchasedItem)
 
-    This API is used to get the count of purchased item which is the order target.  
+    This API is used to get the count of purchased item which is the order target.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)

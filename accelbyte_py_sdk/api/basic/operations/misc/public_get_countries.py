@@ -31,7 +31,7 @@ from ...models import ValidationErrorEntity
 class PublicGetCountries(Operation):
     """List countries (publicGetCountries)
 
-    List countries.  
+    List countries.
     Other detail info:
 
       * Returns : country code list

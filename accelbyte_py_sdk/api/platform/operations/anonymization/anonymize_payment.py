@@ -29,7 +29,7 @@ class AnonymizePayment(Operation):
     """anonymize payment (anonymizePayment)
 
     Anonymize payment. At current it will only anonymize payment order, payment
-    order history.  
+    order history.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)

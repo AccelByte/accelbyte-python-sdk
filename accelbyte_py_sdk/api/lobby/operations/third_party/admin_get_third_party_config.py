@@ -32,7 +32,7 @@ class AdminGetThirdPartyConfig(Operation):
     """Get Third Party Steam Config (adminGetThirdPartyConfig)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [READ]`
-    with scope `social`  
+    with scope `social`
     get third party config for specified namespace.
 
 

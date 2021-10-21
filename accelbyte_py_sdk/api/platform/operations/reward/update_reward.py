@@ -32,7 +32,7 @@ from ...models import RewardUpdate
 class UpdateReward(Operation):
     """Update a reward (updateReward)
 
-    This API is used to update a reward.  
+    This API is used to update a reward.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=4 (UPDATE)

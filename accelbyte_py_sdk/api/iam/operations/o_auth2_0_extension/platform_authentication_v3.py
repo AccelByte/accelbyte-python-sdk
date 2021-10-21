@@ -29,7 +29,7 @@ class PlatformAuthenticationV3(Operation):
     """Platform Authentication API (PlatformAuthenticationV3)
 
     This endpoint authenticates user platform. It validates user to its respective
-    platforms. Deactivated or login-banned users are unable to login.  
+    platforms. Deactivated or login-banned users are unable to login.
 
     ## Supported platforms:
 

@@ -33,7 +33,7 @@ from ...models import ValidationErrorEntity
 class CreateCampaign(Operation):
     """Create campaign (createCampaign)
 
-    Create campaign.  
+    Create campaign.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=1 (CREATE)

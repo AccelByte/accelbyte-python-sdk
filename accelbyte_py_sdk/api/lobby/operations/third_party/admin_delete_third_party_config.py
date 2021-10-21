@@ -31,7 +31,7 @@ class AdminDeleteThirdPartyConfig(Operation):
     """Delete Third Party Steam Config (adminDeleteThirdPartyConfig)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [DELETE]`
-    with scope `social`  
+    with scope `social`
     delete third party config in a namespace.
 
 

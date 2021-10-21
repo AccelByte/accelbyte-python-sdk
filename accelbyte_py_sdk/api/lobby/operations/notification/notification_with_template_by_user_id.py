@@ -32,13 +32,13 @@ class NotificationWithTemplateByUserID(Operation):
     """send notification to a user with template (notificationWithTemplateByUserID)
 
     Required permission : `NAMESPACE:{namespace}:USER:{userId}:NOTIFICATION
-    [CREATE]` with scope `social`  
+    [CREATE]` with scope `social`
     Sends notification to a user with predefined template. There are two types of
     notification: sync and async. Async message will be stored to database if the
     receiver is offline. This stored message could be retrieved later via
-    websocket command.  
+    websocket command.
     In the request body, specify which template slug (template identifier) to use
-    and the template language.  
+    and the template language.
     NotificationTemplate context is the key-value pair defining the value of each
     handlebar specified in the template content. Template need to be published
     before it can be use to send notifications

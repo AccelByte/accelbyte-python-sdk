@@ -43,18 +43,18 @@ class RefundPaymentOrderByDedicated(Operation):
 
 
 
-         Parameter| Type| Required| Description  
-        ---|---|---|---  
-        namespace| String| Yes| Namespace that payment order resides in  
-        paymentOrderNo| String| Yes| Payment order number  
+         Parameter| Type| Required| Description
+        ---|---|---|---
+        namespace| String| Yes| Namespace that payment order resides in
+        paymentOrderNo| String| Yes| Payment order number
 
      Request Body Parameters:
 
 
 
-         Parameter| Type| Required| Description  
-        ---|---|---|---  
-        description| String| Yes| Refund description  
+         Parameter| Type| Required| Description
+        ---|---|---|---
+        description| String| Yes| Refund description
 
      Request Body Example:
 
@@ -76,10 +76,10 @@ class RefundPaymentOrderByDedicated(Operation):
 
 
 
-         Parameter| Type| Required| Description  
-        ---|---|---|---  
-        payload| String| Yes| Refund notification payload in json string   
-        sign| String| Yes| sha1 hex signature for payload and private key  
+         Parameter| Type| Required| Description
+        ---|---|---|---
+        payload| String| Yes| Refund notification payload in json string
+        sign| String| Yes| sha1 hex signature for payload and private key
 
      Refund notification Example:
 
@@ -123,42 +123,42 @@ class RefundPaymentOrderByDedicated(Operation):
 
 
 
-         Parameter| Type| Required| Description  
-        ---|---|---|---  
-        type| String| Yes| Notification type: 'payment'  
-        paymentOrderNo| String| Yes| Payment system generated order number  
-        extOrderNo| String| No| External order number that passed by invoker  
-        namespace| String| Yes| Namespace that related payment order resides in  
-        targetNamespace| String| Yes| The game namespace  
-        targetUserId| String| Yes| The user id in game namespace  
-        sku| String| No| Item identify, it will return if pass it when create payment  
-        extUserId| String| No| External user id, can be character id, it will return if pass it when create payment  
-        price| int| Yes| Price of item  
-        paymentProvider| String| Yes| Payment provider: xsolla/alipay/wxpay/wallet  
-        vat| int| Yes| Payment order VAT  
-        salesTax| int| Yes| Payment order sales tax  
-        paymentProviderFee| int| Yes| Payment provider fee  
-        paymentMethodFee| int| Yes| Payment method fee  
-        currency| Map| Yes| Payment order currency info  
-        status| String| Yes| Payment order status  
-        statusReason| String| No| Payment order refund status reason  
-        createdTime| Datetime| No| The time of the order created  
-        chargedTime| Datetime| No| The time of the order charged  
-        refundedTime| Datetime| No| The time of the order refunded  
-        customParameters| Map| No| custom parameters, will return if pass it when create payment  
-        nonceStr| String| Yes| Random string, max length is 32,   
+         Parameter| Type| Required| Description
+        ---|---|---|---
+        type| String| Yes| Notification type: 'payment'
+        paymentOrderNo| String| Yes| Payment system generated order number
+        extOrderNo| String| No| External order number that passed by invoker
+        namespace| String| Yes| Namespace that related payment order resides in
+        targetNamespace| String| Yes| The game namespace
+        targetUserId| String| Yes| The user id in game namespace
+        sku| String| No| Item identify, it will return if pass it when create payment
+        extUserId| String| No| External user id, can be character id, it will return if pass it when create payment
+        price| int| Yes| Price of item
+        paymentProvider| String| Yes| Payment provider: xsolla/alipay/wxpay/wallet
+        vat| int| Yes| Payment order VAT
+        salesTax| int| Yes| Payment order sales tax
+        paymentProviderFee| int| Yes| Payment provider fee
+        paymentMethodFee| int| Yes| Payment method fee
+        currency| Map| Yes| Payment order currency info
+        status| String| Yes| Payment order status
+        statusReason| String| No| Payment order refund status reason
+        createdTime| Datetime| No| The time of the order created
+        chargedTime| Datetime| No| The time of the order charged
+        refundedTime| Datetime| No| The time of the order refunded
+        customParameters| Map| No| custom parameters, will return if pass it when create payment
+        nonceStr| String| Yes| Random string, max length is 32,
 
     Currency info parameter list:
 
 
 
-         Parameter| Type| Required| Description  
-        ---|---|---|---  
-        currencyCode| String| Yes| Currency Code  
-        currencySymbol| String| Yes| Currency Symbol  
-        currencyType| String| Yes| Currency type(REAL/VIRTUAL)  
-        namespace| String| Yes| Currency namespace  
-        decimals| int| Yes| Currency decimals  
+         Parameter| Type| Required| Description
+        ---|---|---|---
+        currencyCode| String| Yes| Currency Code
+        currencySymbol| String| Yes| Currency Symbol
+        currencyType| String| Yes| Currency type(REAL/VIRTUAL)
+        namespace| String| Yes| Currency namespace
+        decimals| int| Yes| Currency decimals
 
     #### Encryption Rule:
 

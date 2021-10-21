@@ -30,7 +30,7 @@ from ...models import RedeemHistoryPagingSlicedResult
 class QueryRedeemHistory(Operation):
     """Query redeem history (queryRedeemHistory)
 
-    Query redeem history.  
+    Query redeem history.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)

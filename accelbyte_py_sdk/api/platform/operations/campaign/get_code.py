@@ -32,7 +32,7 @@ class GetCode(Operation):
     """Get code info (getCode)
 
     Get campaign code, it will check code whether available to redeem if
-    redeemable true.  
+    redeemable true.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ) (READ)

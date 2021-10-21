@@ -31,7 +31,7 @@ from ...models import SlotConfigUpdate
 class UpdateNamespaceSlotConfig(Operation):
     """Update a namespace slot configuration (updateNamespaceSlotConfig)
 
-    Update a slot namespace configuration.  
+    Update a slot namespace configuration.
     Other detail info:
 
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:SLOTCONFIG", action=4 (UPDATE)

@@ -31,7 +31,7 @@ from ...models import WalletInfo
 class GetWallet(Operation):
     """Get a wallet by wallet id (getWallet)
 
-    get a wallet by wallet id.  
+    get a wallet by wallet id.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:WALLET", action=2 (READ)

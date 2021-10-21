@@ -34,7 +34,7 @@ class PlatformSubscribeSubscription(Operation):
     """Free subscribe by platform (platformSubscribeSubscription)
 
     Free subscribe by platform, can used by other justice service to redeem/reward
-    the subscription.  
+    the subscription.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=1 (CREATE)

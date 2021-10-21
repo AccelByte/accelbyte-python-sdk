@@ -30,7 +30,7 @@ from ...models import SteamIAPConfig
 class GetSteamIAPConfig(Operation):
     """Get steam iap config (getSteamIAPConfig)
 
-    Get steam iap config.  
+    Get steam iap config.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)

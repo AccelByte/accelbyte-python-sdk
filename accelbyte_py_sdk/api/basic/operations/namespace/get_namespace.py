@@ -32,7 +32,7 @@ from ...models import ValidationErrorEntity
 class GetNamespace(Operation):
     """Get a namespace (getNamespace)
 
-    Get a namespace.  
+    Get a namespace.
     Other detail info:
 
       * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)

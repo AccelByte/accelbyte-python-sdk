@@ -32,9 +32,9 @@ class PostPlayerPublicRecordHandlerV1(Operation):
     """Create public player record (postPlayerPublicRecordHandlerV1)
 
     Required Permission |
-    `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [WRITE]`  
-    ---|---  
-    Required Scope | `social`  
+    `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [WRITE]`
+    ---|---
+    Required Scope | `social`
 
     This endpoint will create or update player record with `isPublic=true` meaning
     that the record will be available for other player to be retrieved. Other

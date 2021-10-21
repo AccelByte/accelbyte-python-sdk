@@ -31,7 +31,7 @@ class ProcessUserOrderNotification(Operation):
     """Web hook for payment notification (processUserOrderNotification)
 
     [SERVICE COMMUNICATION ONLY] This API is used as a web hook for payment
-    notification from justice payment service.  
+    notification from justice payment service.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)

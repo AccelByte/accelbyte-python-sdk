@@ -31,9 +31,9 @@ from ...models import RestapiErrorResponse
 class AdminGetBansTypeWithNamespaceV3(Operation):
     """Get list of ban types (AdminGetBansTypeWithNamespaceV3)
 
-    Required permission 'ADMIN:BAN [READ]'  
+    Required permission 'ADMIN:BAN [READ]'
     Ban type is the code available for ban assignment. It is applicable globally
-    for any namespace.  
+    for any namespace.
     action code : 10201
 
 

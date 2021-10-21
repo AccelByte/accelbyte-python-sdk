@@ -32,7 +32,7 @@ from ...models import StatUpdate
 class UpdateStat(Operation):
     """Update stat (updateStat)
 
-    Update stat.  
+    Update stat.
     Other detail info:
 
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=4 (UPDATE)

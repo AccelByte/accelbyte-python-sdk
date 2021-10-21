@@ -29,7 +29,7 @@ class DeleteNamespaceSlotConfig(Operation):
     """Deletes a namespace slot configuration (deleteNamespaceSlotConfig)
 
     Deletes a namespace slot configuration, the configuration will be default
-    after delete.  
+    after delete.
     Other detail info:
 
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:SLOTCONFIG", action=8 (DELETE)

@@ -31,9 +31,9 @@ from ...models import RestapiErrorResponseBody
 class PublicGetPartyDataV1(Operation):
     """get party data by party id (publicGetPartyDataV1)
 
-    Required valid user authorization  
+    Required valid user authorization
 
-    load personal party data in a namespace based on Party ID  
+    load personal party data in a namespace based on Party ID
     Action Code: 50101
 
 

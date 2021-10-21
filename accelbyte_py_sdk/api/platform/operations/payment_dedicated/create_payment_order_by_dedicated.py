@@ -40,34 +40,34 @@ class CreatePaymentOrderByDedicated(Operation):
 
 
 
-         Parameter| Type| Required| Description  
-        ---|---|---|---  
-        namespace| String| Yes| Namespace that payment order resides in, should be publisher namespace if it's a Steam like platform that share   
-        payment config cross namespaces, otherwise it's the game namespace  
+         Parameter| Type| Required| Description
+        ---|---|---|---
+        namespace| String| Yes| Namespace that payment order resides in, should be publisher namespace if it's a Steam like platform that share
+        payment config cross namespaces, otherwise it's the game namespace
 
          Request Body Parameters:
 
 
-         Parameter| Type| Required| Description  
-        ---|---|---|---  
-        extOrderNo| String| Yes| External order number, it should be unique in invoker order system  
-        sku| String| No| Item identity  
-        targetNamespace| String| Yes| The game namespace  
-        targetUserId| String| Yes| User id for the order owner in game namespace  
-        extUserId| String| No| External user id, can be user character id   
-        price| int| Yes| price which should be greater than 0  
-        title| String| Yes| Item title  
-        description| String| Yes| Item description  
-        currencyCode| String| No| Currency code, default is USD  
-        currencyNamespace| String| No| Currency namespace, default is publisher namespace  
-        region| String| No| Country of the user, will get from user info if not present  
-        language| String| No| Language of the user  
-        sandbox| Boolean| No| set to true will create sandbox order that not real paid for xsolla/alipay and will not validate   
-        price for wxpay.  
-        returnUrl| String| No| customized return url for redirect once payment finished, leave unset to use configuration in   
-        namespace  
-        notifyUrl| String| No| customized notify url for payment web hook, leave unset to use configuration in namespace  
-        customParameters| String| No| Custom parameters  
+         Parameter| Type| Required| Description
+        ---|---|---|---
+        extOrderNo| String| Yes| External order number, it should be unique in invoker order system
+        sku| String| No| Item identity
+        targetNamespace| String| Yes| The game namespace
+        targetUserId| String| Yes| User id for the order owner in game namespace
+        extUserId| String| No| External user id, can be user character id
+        price| int| Yes| price which should be greater than 0
+        title| String| Yes| Item title
+        description| String| Yes| Item description
+        currencyCode| String| No| Currency code, default is USD
+        currencyNamespace| String| No| Currency namespace, default is publisher namespace
+        region| String| No| Country of the user, will get from user info if not present
+        language| String| No| Language of the user
+        sandbox| Boolean| No| set to true will create sandbox order that not real paid for xsolla/alipay and will not validate
+        price for wxpay.
+        returnUrl| String| No| customized return url for redirect once payment finished, leave unset to use configuration in
+        namespace
+        notifyUrl| String| No| customized notify url for payment web hook, leave unset to use configuration in namespace
+        customParameters| String| No| Custom parameters
 
      Request Body Example:
 
@@ -82,8 +82,8 @@ class CreatePaymentOrderByDedicated(Operation):
                    "title": "Frostmourne",
                    "description": "Here was power. Here was despair",
                    "price": 100,
-                   "region": "CN", 
-                   "language": "zh-CN", 
+                   "region": "CN",
+                   "language": "zh-CN",
                    "currencyCode": "USD",
                    "currencyNamespace": "accelbyte"
         }
@@ -100,10 +100,10 @@ class CreatePaymentOrderByDedicated(Operation):
 
 
 
-         Parameter| Type| Required| Description  
-        ---|---|---|---  
-        payload| String| Yes| Payment notification payload in json string   
-        sign| String| Yes| sha1 hex signature for payload and private key  
+         Parameter| Type| Required| Description
+        ---|---|---|---
+        payload| String| Yes| Payment notification payload in json string
+        sign| String| Yes| sha1 hex signature for payload and private key
 
      Payment notification parameter Example:
 
@@ -146,41 +146,41 @@ class CreatePaymentOrderByDedicated(Operation):
 
 
 
-         Parameter| Type| Required| Description  
-        ---|---|---|---  
-        type| String| Yes| Notification type: 'payment'  
-        paymentOrderNo| String| Yes| Payment system generated order number  
-        extOrderNo| String| No| External order number that passed by invoker  
-        namespace| String| Yes| Namespace that related payment order resides in  
-        targetNamespace| String| Yes| The game namespace  
-        targetUserId| String| Yes| The user id in game namespace  
-        sku| String| No| Item identify, it will return if pass it when create payment  
-        extUserId| String| No| External user id, can be character id, it will return if pass it when create payment  
-        price| int| Yes| Price of item  
-        paymentProvider| String| Yes| Payment provider, allowed values: xsolla/alipay/wxpay/wallet  
-        vat| int| Yes| Payment order VAT  
-        salesTax| int| Yes| Payment order sales tax  
-        paymentProviderFee| int| Yes| Payment provider fee  
-        paymentMethodFee| int| Yes| Payment method fee  
-        currency| Map| Yes| Payment order currency info  
-        status| String| Yes| Payment order status  
-        statusReason| String| No| Payment order status reason  
-        createdTime| Datetime| No| The time of the order created  
-        chargedTime| Datetime| No| The time of the order charged  
-        customParameters| Map| No| custom parameters, will return if pass it when create payment  
-        nonceStr| String| Yes| Random string, max length is 32, can be timestamp or uuid  
+         Parameter| Type| Required| Description
+        ---|---|---|---
+        type| String| Yes| Notification type: 'payment'
+        paymentOrderNo| String| Yes| Payment system generated order number
+        extOrderNo| String| No| External order number that passed by invoker
+        namespace| String| Yes| Namespace that related payment order resides in
+        targetNamespace| String| Yes| The game namespace
+        targetUserId| String| Yes| The user id in game namespace
+        sku| String| No| Item identify, it will return if pass it when create payment
+        extUserId| String| No| External user id, can be character id, it will return if pass it when create payment
+        price| int| Yes| Price of item
+        paymentProvider| String| Yes| Payment provider, allowed values: xsolla/alipay/wxpay/wallet
+        vat| int| Yes| Payment order VAT
+        salesTax| int| Yes| Payment order sales tax
+        paymentProviderFee| int| Yes| Payment provider fee
+        paymentMethodFee| int| Yes| Payment method fee
+        currency| Map| Yes| Payment order currency info
+        status| String| Yes| Payment order status
+        statusReason| String| No| Payment order status reason
+        createdTime| Datetime| No| The time of the order created
+        chargedTime| Datetime| No| The time of the order charged
+        customParameters| Map| No| custom parameters, will return if pass it when create payment
+        nonceStr| String| Yes| Random string, max length is 32, can be timestamp or uuid
 
      Currency info parameter list:
 
 
 
-         Parameter| Type| Required| Description  
-        ---|---|---|---  
-        currencyCode| String| Yes| Currency Code  
-        currencySymbol| String| Yes| Currency Symbol  
-        currencyType| String| Yes| Currency type(REAL/VIRTUAL)  
-        namespace| String| Yes| Currency namespace  
-        decimals| int| Yes| Currency decimals  
+         Parameter| Type| Required| Description
+        ---|---|---|---
+        currencyCode| String| Yes| Currency Code
+        currencySymbol| String| Yes| Currency Symbol
+        currencyType| String| Yes| Currency type(REAL/VIRTUAL)
+        namespace| String| Yes| Currency namespace
+        decimals| int| Yes| Currency decimals
 
     #### Encryption Rule:
 

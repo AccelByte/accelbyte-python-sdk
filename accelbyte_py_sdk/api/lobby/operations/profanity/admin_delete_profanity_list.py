@@ -31,7 +31,7 @@ class AdminDeleteProfanityList(Operation):
     """delete a list include all filters inside of it (adminDeleteProfanityList)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [DELETE]` with
-    scope `social`  
+    scope `social`
     delete a list include all filters inside of it
 
 

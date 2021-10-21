@@ -32,9 +32,9 @@ class PutPlayerRecordHandlerV1(Operation):
     """Create or replace player record (putPlayerRecordHandlerV1)
 
     Required Permission | `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD
-    [UPDATE]`  
-    ---|---  
-    Required Scope | `social`  
+    [UPDATE]`
+    ---|---
+    Required Scope | `social`
 
     This endpoint will create new record if it is not exists and it will replace
     if already exists. Example Replace record

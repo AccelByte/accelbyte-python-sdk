@@ -31,7 +31,7 @@ from ...models import XblIAPConfigInfo
 class GetXblIAPConfig(Operation):
     """Get xbox iap config (getXblIAPConfig)
 
-    Get xbox iap config.  
+    Get xbox iap config.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)

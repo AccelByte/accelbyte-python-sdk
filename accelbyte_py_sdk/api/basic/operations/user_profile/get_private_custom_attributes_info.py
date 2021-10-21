@@ -30,7 +30,7 @@ from ...models import ErrorEntity
 class GetPrivateCustomAttributesInfo(Operation):
     """Get user private custom attributes (getPrivateCustomAttributesInfo)
 
-    Get user private custom attributes.  
+    Get user private custom attributes.
     Other detail info:
 
       * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)

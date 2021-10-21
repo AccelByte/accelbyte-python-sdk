@@ -30,7 +30,7 @@ from ...models import StadiaIAPConfigInfo
 class GetStadiaIAPConfig(Operation):
     """Get stadia iap config (getStadiaIAPConfig)
 
-    Get stadia iap config.  
+    Get stadia iap config.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)

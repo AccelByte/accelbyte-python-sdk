@@ -31,7 +31,7 @@ from ...models import RewardInfo
 class GetReward(Operation):
     """Get a reward (getReward)
 
-    This API is used to get reward by reward Id.  
+    This API is used to get reward by reward Id.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)

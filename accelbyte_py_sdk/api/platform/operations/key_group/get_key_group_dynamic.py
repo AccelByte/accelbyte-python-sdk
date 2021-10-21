@@ -31,7 +31,7 @@ from ...models import KeyGroupDynamicInfo
 class GetKeyGroupDynamic(Operation):
     """Get key group dynamic (getKeyGroupDynamic)
 
-    Get key group dynamic.  
+    Get key group dynamic.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2 (READ)

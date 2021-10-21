@@ -30,7 +30,7 @@ from ...models import ErrorEntity
 class DeletePaymentProviderConfig(Operation):
     """Delete payment provider config (deletePaymentProviderConfig)
 
-    Delete payment provider config.  
+    Delete payment provider config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=8 (DELETE)

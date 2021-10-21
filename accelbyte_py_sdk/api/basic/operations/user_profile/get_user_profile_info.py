@@ -32,7 +32,7 @@ from ...models import ValidationErrorEntity
 class GetUserProfileInfo(Operation):
     """Get user profile (getUserProfileInfo)
 
-    Get user profile.  
+    Get user profile.
     Other detail info:
 
       * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)

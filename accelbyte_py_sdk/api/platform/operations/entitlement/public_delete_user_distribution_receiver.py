@@ -30,7 +30,7 @@ from ...models import ErrorEntity
 class PublicDeleteUserDistributionReceiver(Operation):
     """Delete a user distribution receiver (publicDeleteUserDistributionReceiver)
 
-    Delete a distribution receiver for a specific user.  
+    Delete a distribution receiver for a specific user.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:DISTRIBUTION", action=8 (DELETE)

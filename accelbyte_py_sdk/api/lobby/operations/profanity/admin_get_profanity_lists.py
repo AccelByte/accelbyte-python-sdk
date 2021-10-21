@@ -32,7 +32,7 @@ class AdminGetProfanityLists(Operation):
     """get lists (adminGetProfanityLists)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with
-    scope `social`  
+    scope `social`
     get lists
 
 

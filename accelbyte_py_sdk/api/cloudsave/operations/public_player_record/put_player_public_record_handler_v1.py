@@ -32,9 +32,9 @@ class PutPlayerPublicRecordHandlerV1(Operation):
     """Create or replace player record (putPlayerPublicRecordHandlerV1)
 
     Required Permission |
-    `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]`  
-    ---|---  
-    Required Scope | `social`  
+    `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]`
+    ---|---
+    Required Scope | `social`
 
     If the record is not exist, it will create. If the record already exist, it
     will replace the record instead. And this operation can only be applied to

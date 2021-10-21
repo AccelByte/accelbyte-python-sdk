@@ -31,7 +31,7 @@ from ...models import GameProfileInfo
 class GetProfile(Operation):
     """Returns profile for a user (getProfile)
 
-    Returns profile for a user.  
+    Returns profile for a user.
     Other detail info:
 
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=2 (READ)

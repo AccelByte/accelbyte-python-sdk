@@ -32,9 +32,9 @@ class PostPlayerRecordHandlerV1(Operation):
     """Create or append player record (postPlayerRecordHandlerV1)
 
     Required Permission | `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD
-    [WRITE]`  
-    ---|---  
-    Required Scope | `social`  
+    [WRITE]`
+    ---|---
+    Required Scope | `social`
 
     Create player record if it is not exists otherwise merge with these criteria:
     - If field name is already exists, replace the value - If field name is not

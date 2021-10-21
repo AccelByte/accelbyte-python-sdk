@@ -30,8 +30,8 @@ from ...models import RestapiErrorResponse
 class AdminDeleteRolePermissionV3(Operation):
     """Delete Role Permission (AdminDeleteRolePermissionV3)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'  
-    action code: 10406  
+    Required permission 'ADMIN:ROLE [UPDATE]'
+    action code: 10406
 
 
     Properties:

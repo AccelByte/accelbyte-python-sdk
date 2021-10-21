@@ -32,7 +32,7 @@ from ...models import StripeConfig
 class UpdateStripeConfig(Operation):
     """Update stripe config (updateStripeConfig)
 
-    Update stripe config.  
+    Update stripe config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)

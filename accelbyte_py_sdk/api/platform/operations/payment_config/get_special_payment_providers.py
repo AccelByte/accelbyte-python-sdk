@@ -28,7 +28,7 @@ from .....core import HttpResponse
 class GetSpecialPaymentProviders(Operation):
     """Get special payment providers (getSpecialPaymentProviders)
 
-    Get special payment providers, such as ALIPAY, WXPAY.  
+    Get special payment providers, such as ALIPAY, WXPAY.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)

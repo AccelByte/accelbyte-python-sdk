@@ -33,12 +33,12 @@ class PublicSubscribeSubscription(Operation):
     """Subscribe a subscription (publicSubscribeSubscription)
 
     Subscribe a subscription. Support both real and virtual payment. Need go
-    through payment flow using the paymentOrderNo if paymentFlowRequired true.  
-     ACTIVE USER subscription can't do subscribe again.  
+    through payment flow using the paymentOrderNo if paymentFlowRequired true.
+     ACTIVE USER subscription can't do subscribe again.
      The next billing date will be X(default 4) hours before the current period
-    ends if correctly subscribed.  
+    ends if correctly subscribed.
     User with permission SANDBOX will create sandbox subscription that not real
-    paid.  
+    paid.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=1 (CREATE)

@@ -30,7 +30,7 @@ from ...models import OrderPagingSlicedResult
 class PublicQueryUserOrders(Operation):
     """Query user orders (publicQueryUserOrders)
 
-    Query user orders.  
+    Query user orders.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)

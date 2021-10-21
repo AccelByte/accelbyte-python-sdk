@@ -31,7 +31,7 @@ from ...models import ValidationErrorEntity
 class PublicCreateProfile(Operation):
     """Create a new profile for user (publicCreateProfile)
 
-    Create new profile for user.  
+    Create new profile for user.
     Other detail info:
 
       *  Required permission

@@ -32,7 +32,7 @@ from ...models import ValidationErrorEntity
 class PublicBulkCreateUserStatItems(Operation):
     """Bulk create user's statItems (publicBulkCreateUserStatItems)
 
-    Bulk create statItems.  
+    Bulk create statItems.
     Other detail info:
 
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)

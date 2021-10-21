@@ -31,7 +31,7 @@ from ...models import ErrorEntity
 class GetCurrencySummary(Operation):
     """Get currency summary (getCurrencySummary)
 
-    Get currency summary by code.  
+    Get currency summary by code.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=2 (READ)

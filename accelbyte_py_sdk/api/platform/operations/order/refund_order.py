@@ -33,7 +33,7 @@ from ...models import ValidationErrorEntity
 class RefundOrder(Operation):
     """Refund order (refundOrder)
 
-    Refund order by orderNo.  
+    Refund order by orderNo.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=4 (UPDATE)

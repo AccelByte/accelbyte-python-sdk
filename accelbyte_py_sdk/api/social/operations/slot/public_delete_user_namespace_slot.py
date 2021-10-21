@@ -30,7 +30,7 @@ from ...models import ErrorEntity
 class PublicDeleteUserNamespaceSlot(Operation):
     """Deletes the slot (publicDeleteUserNamespaceSlot)
 
-    Deletes the slot.  
+    Deletes the slot.
     Other detail info:
 
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=8 (DELETE)

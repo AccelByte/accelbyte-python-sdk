@@ -31,7 +31,7 @@ class GetPaymentCustomization(Operation):
     """Get payment provider customization (getPaymentCustomization)
 
     Get payment provider customization, at current only Adyen provide
-    customization.  
+    customization.
     Other detail info:
 
       * Returns : customization

@@ -32,7 +32,7 @@ from ...models import PaymentMerchantConfigInfo
 class UpdateAdyenConfig(Operation):
     """Update adyen config (updateAdyenConfig)
 
-    Update adyen config.  
+    Update adyen config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)

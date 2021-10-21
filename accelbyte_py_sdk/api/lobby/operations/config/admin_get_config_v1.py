@@ -32,7 +32,7 @@ class AdminGetConfigV1(Operation):
     """admin get namespace config (adminGetConfigV1)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]` with
-    scope `social`  
+    scope `social`
     get lobby config of a namespace.
 
 

@@ -32,7 +32,7 @@ from ...models import StatItemIncResult
 class PublicIncUserStatItemValue(Operation):
     """Public update user's statitem value (publicIncUserStatItemValue)
 
-    Public update user's statitem value.  
+    Public update user's statitem value.
     Other detail info:
 
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)

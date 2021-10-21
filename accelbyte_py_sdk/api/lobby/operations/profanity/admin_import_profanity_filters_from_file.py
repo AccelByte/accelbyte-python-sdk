@@ -31,7 +31,7 @@ class AdminImportProfanityFiltersFromFile(Operation):
     """import a file with filters (adminImportProfanityFiltersFromFile)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with
-    scope `social`  
+    scope `social`
     import a file with filters
 
 

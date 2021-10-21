@@ -33,7 +33,7 @@ from ...models import ValidationErrorEntity
 class UpdateMyZipCode(Operation):
     """Update my zip code (updateMyZipCode)
 
-    Update my zip code.  
+    Update my zip code.
     Other detail info:
 
       * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=4 (UPDATE)

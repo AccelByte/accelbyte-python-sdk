@@ -29,7 +29,7 @@ class AnonymizeWallet(Operation):
     """anonymize wallet (anonymizeWallet)
 
     Anonymize wallet. At current it will only anonymize wallet, wallet
-    transaction.  
+    transaction.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)

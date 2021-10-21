@@ -31,7 +31,7 @@ from ...models import ValidationErrorEntity
 class AnonymizeUserProfile(Operation):
     """anonymize user profile (anonymizeUserProfile)
 
-    Anonymize user profile.  
+    Anonymize user profile.
     Other detail info:
 
       * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION" , action=8 (DELETE)

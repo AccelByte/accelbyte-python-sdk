@@ -31,7 +31,7 @@ from ...models import ValidationErrorEntity
 class PublicGetUserProfilePublicInfoByIds(Operation):
     """Get user profile public info by ids (publicGetUserProfilePublicInfoByIds)
 
-    Get user public profile by ids.  
+    Get user public profile by ids.
     Other detail info:
 
       * Action code : 11405

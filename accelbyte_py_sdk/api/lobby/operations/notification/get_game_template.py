@@ -32,7 +32,7 @@ class GetGameTemplate(Operation):
     """get all notification template in a namespace (getGameTemplate)
 
     Required permission : `NAMESPACE:{namespace}:TEMPLATE [READ]` with scope
-    `social`  
+    `social`
     Get all templates in a namespace
 
 

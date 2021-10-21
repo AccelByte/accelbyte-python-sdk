@@ -44,7 +44,7 @@ class AdminUpgradeHeadlessAccountV3(Operation):
     endpoint, please check the send verification code endpoint.
 
     This endpoint also have an ability to update user data (if the user data field
-    is specified) right after the upgrade account process is done.  
+    is specified) right after the upgrade account process is done.
     Supported user data fields :
 
       * displayName

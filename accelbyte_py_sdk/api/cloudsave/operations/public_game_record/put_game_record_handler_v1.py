@@ -31,9 +31,9 @@ from ...models import ModelsResponseError
 class PutGameRecordHandlerV1(Operation):
     """Create or replace game record (putGameRecordHandlerV1)
 
-    Required Permission | `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]`  
-    ---|---  
-    Required Scope | `social`  
+    Required Permission | `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]`
+    ---|---
+    Required Scope | `social`
 
     If record already exists, it will be replaced with the one from request body
     (all fields will be deleted). If record is not exists, it will create a new

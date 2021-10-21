@@ -35,10 +35,10 @@ class PublicUpgradeHeadlessAccountWithVerificationCodeV4(Operation):
     Require valid user access token. The endpoint upgrades a headless account by
     linking the headless account with the email address, username, and password.
     By upgrading the headless account into a full account, the user could use the
-    email address, username, and password for using Justice IAM.  
+    email address, username, and password for using Justice IAM.
     The endpoint is a shortcut for upgrading a headless account and verifying the
     email address in one call. In order to get a verification code for the
-    endpoint, please check the send verification code endpoint.  
+    endpoint, please check the send verification code endpoint.
     This endpoint also have an ability to update user data (if the user data field
     is specified) right after the upgrade account process is done. Supported user
     data fields:

@@ -32,9 +32,9 @@ class PutPlayerPublicRecordConcurrentHandlerV1(Operation):
     """Create or replace player record (putPlayerPublicRecordConcurrentHandlerV1)
 
     Required Permission |
-    `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]`  
-    ---|---  
-    Required Scope | `social`  
+    `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]`
+    ---|---
+    Required Scope | `social`
 
     If the record is not exist, it will create. If the record already exist, it
     will replace the record instead. And this operation can only be applied to
@@ -58,7 +58,7 @@ class PutPlayerPublicRecordConcurrentHandlerV1(Operation):
         }
 
 
-    Optimistic Concurrency Control  
+    Optimistic Concurrency Control
     This endpoint implement optimistic concurrency control to avoid race
     condition. If the record has been updated since the client fetch it, the
     server will return HTTP status code 412 (precondition failed) and client need

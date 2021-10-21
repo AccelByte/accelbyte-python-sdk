@@ -30,7 +30,7 @@ from ...models import CodeInfoPagingSlicedResult
 class QueryCodes(Operation):
     """Query codes (queryCodes)
 
-    Query campaign codes.  
+    Query campaign codes.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ) (READ)

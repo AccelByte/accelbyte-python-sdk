@@ -30,7 +30,7 @@ from ...models import OrderStatistics
 class GetOrderStatistics(Operation):
     """Get Order Statistics (getOrderStatistics)
 
-    Get Order Statistics.  
+    Get Order Statistics.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)

@@ -28,7 +28,7 @@ from .....core import HttpResponse
 class DeleteEpicGamesIAPConfig(Operation):
     """Delete epic games iap config (deleteEpicGamesIAPConfig)
 
-    Delete epic games iap config.  
+    Delete epic games iap config.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)

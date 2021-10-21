@@ -32,7 +32,7 @@ from ...models import ValidationErrorEntity
 class DeleteNamespace(Operation):
     """Delete a namespace (deleteNamespace)
 
-    Delete a namespace.  
+    Delete a namespace.
     Other detail info:
 
       * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=8 (DELETE)

@@ -31,7 +31,7 @@ from ...models import OrderInfo
 class PublicGetUserOrder(Operation):
     """Get user order (publicGetUserOrder)
 
-    Get user order.  
+    Get user order.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)

@@ -36,7 +36,7 @@ class MockFulfillIAPItem(Operation):
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns : 
+      *  Returns :
 
 
     Properties:

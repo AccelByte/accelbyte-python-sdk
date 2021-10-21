@@ -32,7 +32,7 @@ from ...models import FulfillmentResult
 class FulfillItem(Operation):
     """Fulfill item (fulfillItem)
 
-    Fulfill item.  
+    Fulfill item.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=1 (CREATED)

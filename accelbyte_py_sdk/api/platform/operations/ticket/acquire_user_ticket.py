@@ -33,7 +33,7 @@ from ...models import ValidationErrorEntity
 class AcquireUserTicket(Operation):
     """Acquire ticket (acquireUserTicket)
 
-    [SERVICE COMMUNICATION ONLY] Acquire ticket(code/key) based on booth name.  
+    [SERVICE COMMUNICATION ONLY] Acquire ticket(code/key) based on booth name.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:TICKET", action=1 (CREATE)

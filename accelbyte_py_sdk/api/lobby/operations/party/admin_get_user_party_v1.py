@@ -32,7 +32,7 @@ class AdminGetUserPartyV1(Operation):
     """admin get user party data (adminGetUserPartyV1)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [READ]` with
-    scope `social`  
+    scope `social`
     get party data in a namespace.
 
 

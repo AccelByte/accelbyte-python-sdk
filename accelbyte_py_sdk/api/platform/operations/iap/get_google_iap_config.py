@@ -30,7 +30,7 @@ from ...models import GoogleIAPConfigInfo
 class GetGoogleIAPConfig(Operation):
     """Get google iap config (getGoogleIAPConfig)
 
-    Get google iap config.  
+    Get google iap config.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)

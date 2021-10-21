@@ -31,7 +31,7 @@ from ...models import PaymentOrderPaidResult
 class PublicCheckPaymentOrderPaidStatus(Operation):
     """Check payment order paid status (publicCheckPaymentOrderPaidStatus)
 
-    Check payment order paid status.  
+    Check payment order paid status.
     Other detail info:
 
       * Returns : Payment order paid result

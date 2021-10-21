@@ -28,7 +28,7 @@ from .....core import HttpResponse
 class AuthorizeV3(Operation):
     """OAuth2 authorize API (AuthorizeV3)
 
-    Initializes OAuth2.0 authorization code flow  
+    Initializes OAuth2.0 authorization code flow
 
     The endpoint stores authorization request and redirects to login page with the
     authorization request id. The user can then do the authentication on the login

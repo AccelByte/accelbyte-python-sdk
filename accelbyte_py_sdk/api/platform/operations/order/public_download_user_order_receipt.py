@@ -30,7 +30,7 @@ from ...models import ErrorEntity
 class PublicDownloadUserOrderReceipt(Operation):
     """Download user order receipt (publicDownloadUserOrderReceipt)
 
-    Download user order receipt by orderNo.  
+    Download user order receipt by orderNo.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)

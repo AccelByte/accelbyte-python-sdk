@@ -39,7 +39,7 @@ class AdminGetUserPlatformAccountsV3(Operation):
     required in order to read the UserID who linked with the user.
 
 
-    Gets platform accounts that are already linked with user account  
+    Gets platform accounts that are already linked with user account
     action code : 10128
 
 

@@ -30,7 +30,7 @@ from ...models import ErrorEntity
 class DisableUserWallet(Operation):
     """Disable a user wallet (disableUserWallet)
 
-    disable a user wallet.  
+    disable a user wallet.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4 (UPDATE)

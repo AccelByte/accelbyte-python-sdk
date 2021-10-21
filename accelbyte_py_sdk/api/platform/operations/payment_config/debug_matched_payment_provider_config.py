@@ -31,7 +31,7 @@ from ...models import PaymentProviderConfigInfo
 class DebugMatchedPaymentProviderConfig(Operation):
     """Debug matched payment provider config(internal) (debugMatchedPaymentProviderConfig)
 
-    Debug matched payment provider config.  
+    Debug matched payment provider config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)

@@ -30,7 +30,7 @@ from ...models import PaymentTaxConfigInfo
 class GetPaymentTaxConfig(Operation):
     """Get payment global tax config (getPaymentTaxConfig)
 
-    Get payment global tax config.  
+    Get payment global tax config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)

@@ -31,7 +31,7 @@ class PublicUpdateUserDistributionReceiver(Operation):
     """Update user distribution receiver (publicUpdateUserDistributionReceiver)
 
     Update distribution receiver for a specific user. It will create a new one if
-    not exist.  
+    not exist.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:DISTRIBUTION", action=4 (UPDATE)

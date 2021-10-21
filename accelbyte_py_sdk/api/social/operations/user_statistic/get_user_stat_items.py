@@ -30,7 +30,7 @@ from ...models import UserStatItemPagingSlicedResult
 class GetUserStatItems(Operation):
     """List user's statItems (getUserStatItems)
 
-    List user's statItems.  
+    List user's statItems.
     Other detail info:
 
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)

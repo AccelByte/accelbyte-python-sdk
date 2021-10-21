@@ -32,8 +32,8 @@ class UpdateTemplateLocalizationV1Admin(Operation):
     """update template localization (updateTemplateLocalizationV1Admin)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [UPDATE]` with
-    scope `social`  
-    update template localization  
+    scope `social`
+    update template localization
     Action Code: 50208
 
 

@@ -30,7 +30,7 @@ from ...models import OrderHistoryInfo
 class PublicGetUserOrderHistories(Operation):
     """Get user order histories (publicGetUserOrderHistories)
 
-    Get user order histories.  
+    Get user order histories.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)

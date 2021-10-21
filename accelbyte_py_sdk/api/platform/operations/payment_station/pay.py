@@ -32,7 +32,7 @@ from ...models import PaymentToken
 class Pay(Operation):
     """Do payment (pay)
 
-    Do payment(For now, this only support checkout.com).  
+    Do payment(For now, this only support checkout.com).
     Other detail info:
 
       * Returns : Payment process result

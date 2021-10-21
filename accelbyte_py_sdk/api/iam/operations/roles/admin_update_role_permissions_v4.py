@@ -37,7 +37,7 @@ class AdminUpdateRolePermissionsV4(Operation):
     This endpoint will REPLACE role's permissions with the ones defined in body
 
 
-    action code: 10405  
+    action code: 10405
 
     Schedule contains cron string or date range (both are UTC, also in cron
     syntax) to indicate when a permission and action are in effect.

@@ -32,8 +32,8 @@ class GetNotificationTopicV1Admin(Operation):
     """get topic information by topic name (getNotificationTopicV1Admin)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with
-    scope `social`  
-    get topic information by topic name.  
+    scope `social`
+    get topic information by topic name.
     Action Code: 50215
 
 

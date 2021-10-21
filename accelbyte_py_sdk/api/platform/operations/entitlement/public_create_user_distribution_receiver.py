@@ -32,7 +32,7 @@ class PublicCreateUserDistributionReceiver(Operation):
     """Create user distribution receiver (publicCreateUserDistributionReceiver)
 
     Create distribution receiver for a specific user. Once user distribution
-    receiver created, user can distribute distribution to receiver.  
+    receiver created, user can distribute distribution to receiver.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:DISTRIBUTION", action=1 (CREATE)

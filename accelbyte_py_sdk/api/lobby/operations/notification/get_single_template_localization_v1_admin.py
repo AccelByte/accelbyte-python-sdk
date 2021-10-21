@@ -32,8 +32,8 @@ class GetSingleTemplateLocalizationV1Admin(Operation):
     """get a template localization (getSingleTemplateLocalizationV1Admin)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with
-    scope `social`  
-    Get a template localization  
+    scope `social`
+    Get a template localization
     Action Code: 50207
 
 

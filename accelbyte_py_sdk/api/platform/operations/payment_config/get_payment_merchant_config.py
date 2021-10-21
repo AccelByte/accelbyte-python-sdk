@@ -31,7 +31,7 @@ from ...models import PaymentMerchantConfigInfo
 class GetPaymentMerchantConfig(Operation):
     """Get payment merchant config (getPaymentMerchantConfig)
 
-    Get payment merchant config by id.  
+    Get payment merchant config by id.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)

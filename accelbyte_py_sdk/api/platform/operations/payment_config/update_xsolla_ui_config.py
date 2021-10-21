@@ -33,7 +33,7 @@ class UpdateXsollaUIConfig(Operation):
     """Update xsolla UI configuration (updateXsollaUIConfig)
 
     Update xsolla UI configuration.Reference: [Xsolla
-    Document](https://developers.xsolla.com/api.html#ui-integrations).  
+    Document](https://developers.xsolla.com/api.html#ui-integrations).
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)

@@ -30,7 +30,7 @@ from ...models import StadiaIAPConfigInfo
 class UpdateStadiaJsonConfigFile(Operation):
     """Upload stadia json config file (updateStadiaJsonConfigFile)
 
-    Upload stadia json config file.  
+    Upload stadia json config file.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)

@@ -32,7 +32,7 @@ class AdminUpdateConfigV1(Operation):
     """admin update namespace config (adminUpdateConfigV1)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]` with
-    scope `social`  
+    scope `social`
     update lobby config of a namespace.
 
 

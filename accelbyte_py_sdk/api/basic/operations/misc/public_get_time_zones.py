@@ -30,7 +30,7 @@ from ...models import ValidationErrorEntity
 class PublicGetTimeZones(Operation):
     """List time zones (publicGetTimeZones)
 
-    List time zones.  
+    List time zones.
     Other detail info:
 
       * Returns : time zones

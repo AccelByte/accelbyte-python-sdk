@@ -31,9 +31,9 @@ class DeletePlayerRecordHandlerV1(Operation):
     """Delete player record (deletePlayerRecordHandlerV1)
 
     Required Permission | `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD
-    [DELETE]`  
-    ---|---  
-    Required Scope | `social`  
+    [DELETE]`
+    ---|---
+    Required Scope | `social`
 
     Delete player record by its key
 

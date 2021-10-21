@@ -31,8 +31,8 @@ from ...models import RestErrorResponse
 class PublicGetMyUserV3(Operation):
     """Get My User (PublicGetMyUserV3)
 
-    Require valid user authorization  
-    Get my user data  
+    Require valid user authorization
+    Get my user data
     action code : 10147
 
 

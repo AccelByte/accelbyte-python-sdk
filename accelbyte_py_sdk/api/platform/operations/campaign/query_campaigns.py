@@ -30,7 +30,7 @@ from ...models import CampaignPagingSlicedResult
 class QueryCampaigns(Operation):
     """Query campaigns (queryCampaigns)
 
-    Query campaigns, if name is presented, it's fuzzy match.  
+    Query campaigns, if name is presented, it's fuzzy match.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ) (READ)

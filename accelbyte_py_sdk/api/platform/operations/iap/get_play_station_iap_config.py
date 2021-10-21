@@ -30,7 +30,7 @@ from ...models import PlayStationIAPConfigInfo
 class GetPlayStationIAPConfig(Operation):
     """Get playstation iap config (getPlayStationIAPConfig)
 
-    Get playstation iap config.  
+    Get playstation iap config.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)

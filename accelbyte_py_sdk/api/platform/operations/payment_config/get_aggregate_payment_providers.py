@@ -28,7 +28,7 @@ from .....core import HttpResponse
 class GetAggregatePaymentProviders(Operation):
     """Get aggregate payment providers (getAggregatePaymentProviders)
 
-    Get aggregate payment providers, such as XSOLLA, ADYEN.  
+    Get aggregate payment providers, such as XSOLLA, ADYEN.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)

@@ -31,7 +31,7 @@ from ...models import PaymentOrderInfo
 class GetPaymentOrder(Operation):
     """Get payment order (getPaymentOrder)
 
-    Get payment order by paymentOrderNo.  
+    Get payment order by paymentOrderNo.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)

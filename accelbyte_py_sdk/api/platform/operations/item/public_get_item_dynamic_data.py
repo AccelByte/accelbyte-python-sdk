@@ -31,7 +31,7 @@ from ...models import ItemDynamicDataInfo
 class PublicGetItemDynamicData(Operation):
     """Get item dynamic data (publicGetItemDynamicData)
 
-    Get item dynamic data for a published item.  
+    Get item dynamic data for a published item.
     Other detail info:
 
       * Returns : item dynamic data

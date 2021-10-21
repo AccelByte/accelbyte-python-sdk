@@ -32,7 +32,7 @@ class AdminUpdateProfanityList(Operation):
     """update the list (adminUpdateProfanityList)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [UPDATE]` with
-    scope `social`  
+    scope `social`
     update the list
 
 

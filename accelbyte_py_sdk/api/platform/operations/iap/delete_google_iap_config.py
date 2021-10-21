@@ -28,7 +28,7 @@ from .....core import HttpResponse
 class DeleteGoogleIAPConfig(Operation):
     """Delete google iap config (deleteGoogleIAPConfig)
 
-    Delete google iap config.  
+    Delete google iap config.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)

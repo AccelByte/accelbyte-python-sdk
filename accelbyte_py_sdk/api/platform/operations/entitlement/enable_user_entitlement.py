@@ -31,7 +31,7 @@ from ...models import ErrorEntity
 class EnableUserEntitlement(Operation):
     """Enable user entitlement (enableUserEntitlement)
 
-    Enable user entitlement.  
+    Enable user entitlement.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)

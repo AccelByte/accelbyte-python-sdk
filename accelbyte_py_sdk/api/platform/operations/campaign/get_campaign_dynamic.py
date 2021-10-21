@@ -31,7 +31,7 @@ from ...models import ErrorEntity
 class GetCampaignDynamic(Operation):
     """Get campaign dynamic (getCampaignDynamic)
 
-    Get campaign dynamic.  
+    Get campaign dynamic.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)

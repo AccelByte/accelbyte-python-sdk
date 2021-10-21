@@ -28,7 +28,7 @@ from .....core import HttpResponse
 class Authorization(Operation):
     """OAuth2 authorize API (Authorization)
 
-    The endpoint supports two response types:  
+    The endpoint supports two response types:
 
     1. Response Type == "code":
 

@@ -33,7 +33,7 @@ class ConsumeUserEntitlement(Operation):
     """Consume user entitlement (consumeUserEntitlement)
 
     Consume user entitlement. If the entitlement useCount is 0, the status will be
-    CONSUMED.  
+    CONSUMED.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)

@@ -32,7 +32,7 @@ from ...models import ValidationErrorEntity
 class PublicBulkIncUserStatItemValue(Operation):
     """Public bulk update multiple user's statitems value (publicBulkIncUserStatItemValue)
 
-    Public bulk update multiple user's statitems value.  
+    Public bulk update multiple user's statitems value.
     Other detail info:
 
       *  Required permission : resource="NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)

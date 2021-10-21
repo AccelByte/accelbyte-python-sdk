@@ -28,7 +28,7 @@ from .....core import HttpResponse
 class AnonymizeFulfillment(Operation):
     """anonymize fulfillment (anonymizeFulfillment)
 
-    Anonymize fulfillment. At current it will only anonymize fulfillment history.  
+    Anonymize fulfillment. At current it will only anonymize fulfillment history.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)

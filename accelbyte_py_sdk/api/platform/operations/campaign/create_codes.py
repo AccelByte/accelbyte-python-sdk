@@ -34,7 +34,7 @@ class CreateCodes(Operation):
     """Create campaign codes (createCodes)
 
     This API is used to create campaign codes, it will increase the batch No.
-    based on last creation.  
+    based on last creation.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=1 (CREATE)

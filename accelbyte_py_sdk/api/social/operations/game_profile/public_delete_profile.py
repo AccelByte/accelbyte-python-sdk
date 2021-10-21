@@ -30,7 +30,7 @@ from ...models import ErrorEntity
 class PublicDeleteProfile(Operation):
     """Deletes game profile (publicDeleteProfile)
 
-    Deletes game profile.  
+    Deletes game profile.
     Other detail info:
 
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=8 (DELETE)

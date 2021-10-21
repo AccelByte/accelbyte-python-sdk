@@ -28,7 +28,7 @@ from .....core import HttpResponse
 class PublicDeletePaymentAccount(Operation):
     """Delete payment account (publicDeletePaymentAccount)
 
-    Delete payment account.  
+    Delete payment account.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT", action=8 (DELETE)

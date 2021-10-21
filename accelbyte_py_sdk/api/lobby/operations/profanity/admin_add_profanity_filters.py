@@ -32,7 +32,7 @@ class AdminAddProfanityFilters(Operation):
     """add multiple filters into the list (adminAddProfanityFilters)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with
-    scope `social`  
+    scope `social`
     add multiple filters into the list
 
 

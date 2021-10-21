@@ -33,8 +33,8 @@ from ...models import ValidationErrorEntity
 class CreateNamespace(Operation):
     """Create a namespace (createNamespace)
 
-    Create a namespace.  
-    By default the namespace is enabled.  
+    Create a namespace.
+    By default the namespace is enabled.
     Other detail info:
 
       * Required permission : resource= "ADMIN:NAMESPACE" , action=1 (CREATE)

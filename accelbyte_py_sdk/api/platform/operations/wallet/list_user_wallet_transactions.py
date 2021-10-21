@@ -31,7 +31,7 @@ from ...models import WalletTransactionPagingSlicedResult
 class ListUserWalletTransactions(Operation):
     """List user wallet transactions (listUserWalletTransactions)
 
-    List user wallet transactions ordered by create time desc.  
+    List user wallet transactions ordered by create time desc.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)

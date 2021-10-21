@@ -31,7 +31,7 @@ from ...models import ErrorEntity
 class EnableCode(Operation):
     """Enable code (enableCode)
 
-    Enable code.  
+    Enable code.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)

@@ -31,7 +31,7 @@ class DeleteTemplateLocalization(Operation):
     """delete template localization (deleteTemplateLocalization)
 
     Required permission : `NAMESPACE:{namespace}:TEMPLATE [DELETE]` with scope
-    `social`  
+    `social`
     Delete all template in a slug
 
 

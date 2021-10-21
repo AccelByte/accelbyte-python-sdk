@@ -30,7 +30,7 @@ from ...models import WalletInfo
 class PublicGetWallet(Operation):
     """Get a wallet by currency code (publicGetWallet)
 
-    get a wallet by currency code.  
+    get a wallet by currency code.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)

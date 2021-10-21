@@ -32,7 +32,7 @@ class RecurringChargeSubscription(Operation):
 
     [TEST FACILITY ONLY] Recurring charge subscription, it will trigger recurring
     charge if the USER subscription status is ACTIVE, nextBillingDate is before
-    now and no fail recurring charge within X(default 12) hours.  
+    now and no fail recurring charge within X(default 12) hours.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION", action=4 (UPDATE)

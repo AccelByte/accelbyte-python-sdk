@@ -31,7 +31,7 @@ from ...models import ErrorEntity
 class PublicGetUserDistributionReceivers(Operation):
     """Get distribution receivers (publicGetUserDistributionReceivers)
 
-    Get distribution receivers in a specific namespace.  
+    Get distribution receivers in a specific namespace.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:DISTRIBUTION", action=2 (READ)

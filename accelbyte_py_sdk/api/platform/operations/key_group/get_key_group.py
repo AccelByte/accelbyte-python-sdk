@@ -31,7 +31,7 @@ from ...models import KeyGroupInfo
 class GetKeyGroup(Operation):
     """Get key group (getKeyGroup)
 
-    Get key group.  
+    Get key group.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2 (READ)

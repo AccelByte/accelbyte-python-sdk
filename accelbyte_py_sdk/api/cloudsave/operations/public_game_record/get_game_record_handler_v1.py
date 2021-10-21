@@ -31,9 +31,9 @@ from ...models import ModelsResponseError
 class GetGameRecordHandlerV1(Operation):
     """Get game record (getGameRecordHandlerV1)
 
-    Required Permission | `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`  
-    ---|---  
-    Required Scope | `social`  
+    Required Permission | `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
+    ---|---
+    Required Scope | `social`
 
     Get game record by its key.
 

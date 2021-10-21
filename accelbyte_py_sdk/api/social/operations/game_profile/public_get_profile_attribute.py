@@ -31,7 +31,7 @@ from ...models import ErrorEntity
 class PublicGetProfileAttribute(Operation):
     """Returns game profile attribute (publicGetProfileAttribute)
 
-    Returns game profile attribute.  
+    Returns game profile attribute.
     Other detail info:
 
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=2 (READ)

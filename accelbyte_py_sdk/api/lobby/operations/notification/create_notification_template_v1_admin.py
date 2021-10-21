@@ -32,12 +32,12 @@ class CreateNotificationTemplateV1Admin(Operation):
     """create new notification template (createNotificationTemplateV1Admin)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with
-    scope `social`  
+    scope `social`
     Create new notification template. Include handlebars {{key}} for replaceable
     contexts. The the key inside handlebars will be the key to be replaced when
     sending notification. Already existing template with the same slug and
-    language can not be created.  
-    Check model description for detailed input restrictions.  
+    language can not be created.
+    Check model description for detailed input restrictions.
     Action Code: 50204
 
 

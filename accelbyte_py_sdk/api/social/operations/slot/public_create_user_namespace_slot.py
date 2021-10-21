@@ -30,7 +30,7 @@ from ...models import ErrorEntity
 class PublicCreateUserNamespaceSlot(Operation):
     """Creates a slot (publicCreateUserNamespaceSlot)
 
-    Creates a slot.  
+    Creates a slot.
     Other detail info:
 
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=1 (CREATE)

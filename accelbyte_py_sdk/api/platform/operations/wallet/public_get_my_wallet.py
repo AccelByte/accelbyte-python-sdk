@@ -30,12 +30,12 @@ from ...models import WalletInfo
 class PublicGetMyWallet(Operation):
     """Get my wallet by currency code and namespace (publicGetMyWallet)
 
-    get my wallet by currency code and namespace.  
+    get my wallet by currency code and namespace.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:WALLET", action=2 (READ)
       *  Returns : wallet info
-      *  Path's namespace : 
+      *  Path's namespace :
         * can be filled with publisher namespace in order to get publisher user wallet
         * can be filled with game namespace in order to get game user wallet
 

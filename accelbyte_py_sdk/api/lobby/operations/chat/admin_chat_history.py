@@ -32,7 +32,7 @@ class AdminChatHistory(Operation):
     """admin get chat history (adminChatHistory)
 
     Required permission : `NAMESPACE:{namespace}:USER:{userId}:CHAT [READ]` with
-    scope `social`  
+    scope `social`
     get chat history in a namespace.
 
 

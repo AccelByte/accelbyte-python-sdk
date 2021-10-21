@@ -33,7 +33,7 @@ class AdminUpdatePartyAttributesV1(Operation):
     """admin update party attributes (adminUpdatePartyAttributesV1)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]`
-    with scope `social`  
+    with scope `social`
     update party attributes in a namespace.
 
 

@@ -33,7 +33,7 @@ from ...models import ValidationErrorEntity
 class CreateKeyGroup(Operation):
     """Create key group (createKeyGroup)
 
-    Create key group.  
+    Create key group.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=1 (CREATE)

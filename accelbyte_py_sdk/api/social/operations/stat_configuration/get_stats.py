@@ -30,7 +30,7 @@ from ...models import StatPagingSlicedResult
 class GetStats(Operation):
     """List stats (getStats)
 
-    List stats by pagination.  
+    List stats by pagination.
     Other detail info:
 
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=2 (READ)

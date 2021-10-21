@@ -32,9 +32,9 @@ from ...models import ValidationErrorEntity
 class PublicGeneratedUserUploadContentUrl(Operation):
     """Generate Upload URL For User Content (publicGeneratedUserUploadContentUrl)
 
-    Generate an upload URL for user content. It's valid for 10 minutes.  
+    Generate an upload URL for user content. It's valid for 10 minutes.
     There are 2 kinds of storage limitation per user : maximum file count and
-    maximum file size.  
+    maximum file size.
     Other detail info:
 
       * Required permission : resource = "NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD" , action=1 (CREATE)

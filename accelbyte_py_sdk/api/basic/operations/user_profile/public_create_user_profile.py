@@ -33,7 +33,7 @@ from ...models import ValidationErrorEntity
 class PublicCreateUserProfile(Operation):
     """Create user profile (publicCreateUserProfile)
 
-    Create user profile.  
+    Create user profile.
     Other detail info:
 
       * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=1 (CREATE)

@@ -33,7 +33,7 @@ from ...models import ValidationErrorEntity
 class PublicUpdateProfile(Operation):
     """Updates user game profile (publicUpdateProfile)
 
-    Updates user game profile, returns updated profile.  
+    Updates user game profile, returns updated profile.
     Other detail info:
 
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=4 (UPDATE)

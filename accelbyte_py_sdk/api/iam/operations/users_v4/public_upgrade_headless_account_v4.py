@@ -34,7 +34,7 @@ class PublicUpgradeHeadlessAccountV4(Operation):
 
     Require valid user authorization Upgrade headless account to full account
     without verifying email address. Client does not need to provide verification
-    code which sent to email address.  
+    code which sent to email address.
     action code : 10124
 
 

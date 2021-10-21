@@ -35,7 +35,7 @@ class UpdateUserEntitlement(Operation):
 
     Update user entitlement. If update CONSUMABLE entitlement useCount to 0, the
     status will be CONSUMED, if update quantity of DISTRIBUTION, the status will
-    be DISTRIBUTED.  
+    be DISTRIBUTED.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)

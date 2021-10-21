@@ -30,7 +30,7 @@ from ...models import BulkOperationResult
 class RevokeUserEntitlements(Operation):
     """Revoke user's entitlements by ids (revokeUserEntitlements)
 
-    Revoke user's entitlements by ids.  
+    Revoke user's entitlements by ids.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)

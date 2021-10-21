@@ -33,7 +33,7 @@ from ...models import ValidationErrorEntity
 class CreateReward(Operation):
     """Create a reward (createReward)
 
-    This API is used to create a reward.  
+    This API is used to create a reward.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=1 (CREATE)

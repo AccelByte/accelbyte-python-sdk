@@ -30,7 +30,7 @@ class PlatformAuthenticateSAMLV3Handler(Operation):
 
     This endpoint authenticates user platform for SAML protocol. It validates user
     to its respective platforms. Deactivated or login-banned users are unable to
-    login.  
+    login.
 
     ## Supported platforms:
 

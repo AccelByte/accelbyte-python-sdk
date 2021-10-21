@@ -31,7 +31,7 @@ from ...models import WalletInfo
 class GetUserWallet(Operation):
     """Get a user wallet (getUserWallet)
 
-    get a user wallet.  
+    get a user wallet.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)

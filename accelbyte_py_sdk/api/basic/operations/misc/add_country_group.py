@@ -32,8 +32,8 @@ from ...models import ErrorEntity
 class AddCountryGroup(Operation):
     """Add a country group (addCountryGroup)
 
-    Add a country groups  
-    Country code must follow ISO3166-1 alpha-2.  
+    Add a country groups
+    Country code must follow ISO3166-1 alpha-2.
     Other detail info:
 
       * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=1 (CREATE)

@@ -31,7 +31,7 @@ from ...models import NamespaceInfo
 class PublicGetNamespaces(Operation):
     """Get all namespaces (publicGetNamespaces)
 
-    Get all namespaces.  
+    Get all namespaces.
     Other detail info:
 
       * Required permission : login user

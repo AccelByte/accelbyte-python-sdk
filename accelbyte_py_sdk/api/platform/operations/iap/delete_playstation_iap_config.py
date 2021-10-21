@@ -28,7 +28,7 @@ from .....core import HttpResponse
 class DeletePlaystationIAPConfig(Operation):
     """Delete playstation iap config (deletePlaystationIAPConfig)
 
-    Delete playstation iap config.  
+    Delete playstation iap config.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)

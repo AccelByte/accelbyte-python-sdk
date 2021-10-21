@@ -32,7 +32,7 @@ class PersonalChatHistory(Operation):
     """load personal chat history (personalChatHistory)
 
     Required permission : `NAMESPACE:{namespace}:USER:{userId}:CHAT [READ]` with
-    scope `social`  
+    scope `social`
     load personal chat history in a namespace.
 
 

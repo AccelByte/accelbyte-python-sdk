@@ -28,10 +28,10 @@ from .....core import HttpResponse
 class PublicNormalizePaymentReturnUrl(Operation):
     """Normalize payment return url (publicNormalizePaymentReturnUrl)
 
-    Normalize payment return url for payment provider  
-    Payment response: Field| Type| Required| Description  
-    ---|---|---|---  
-    orderNo| String| Yes| order no  
+    Normalize payment return url for payment provider
+    Payment response: Field| Type| Required| Description
+    ---|---|---|---
+    orderNo| String| Yes| order no
     paymentStatus| String| Yes|
 
       * DONE: The payment was successfully completed.
@@ -42,7 +42,7 @@ class PublicNormalizePaymentReturnUrl(Operation):
       * FAILED: Shopper paid failed because of various reasons.
 
 
-    reason| String| No| payment status reason  
+    reason| String| No| payment status reason
     Other detail info:
 
       * xsolla : parameters 'user_id', 'foreinginvoice', 'invoice_id' and 'status' will be automatically added to the link

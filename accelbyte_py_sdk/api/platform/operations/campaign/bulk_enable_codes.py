@@ -30,7 +30,7 @@ from ...models import BulkOperationResult
 class BulkEnableCodes(Operation):
     """Bulk enable codes (bulkEnableCodes)
 
-    Bulk enable campaign codes.  
+    Bulk enable campaign codes.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)

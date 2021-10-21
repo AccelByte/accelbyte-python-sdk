@@ -45,7 +45,7 @@ class PlatformUnlink(Operation):
 
     Unlink user's account with platform. 'justice' platform might have multiple
     accounts from different namespaces linked. platform_namespace need to be
-    specified when the platform ID is 'justice'.  
+    specified when the platform ID is 'justice'.
     Unlinking justice platform will enable password token grant and password
     update.
 

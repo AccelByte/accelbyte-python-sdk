@@ -31,7 +31,7 @@ from ...models import StoreInfo
 class DeleteStore(Operation):
     """Delete a store (deleteStore)
 
-    This API is used to delete a store. Only non published store can be deleted.  
+    This API is used to delete a store. Only non published store can be deleted.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8 (DELETE)

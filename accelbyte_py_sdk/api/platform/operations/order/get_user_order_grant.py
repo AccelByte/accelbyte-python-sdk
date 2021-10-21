@@ -30,7 +30,7 @@ from ...models import OrderGrantInfo
 class GetUserOrderGrant(Operation):
     """Get user order grant (getUserOrderGrant)
 
-    Get user order grant that fulfilled by this order.  
+    Get user order grant that fulfilled by this order.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)

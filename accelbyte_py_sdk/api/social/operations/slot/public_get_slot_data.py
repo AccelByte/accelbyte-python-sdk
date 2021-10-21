@@ -30,7 +30,7 @@ from ...models import ErrorEntity
 class PublicGetSlotData(Operation):
     """Returns slot data (publicGetSlotData)
 
-    Get slot data.  
+    Get slot data.
     Other detail info:
 
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)

@@ -30,7 +30,7 @@ from ...models import PaymentAccount
 class PublicGetPaymentAccounts(Operation):
     """Get payment accounts (publicGetPaymentAccounts)
 
-    Get payment accounts.  
+    Get payment accounts.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT", action=2 (READ)

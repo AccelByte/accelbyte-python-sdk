@@ -31,7 +31,7 @@ from ...models import ValidationErrorEntity
 class UpdateCustomAttributesPartially(Operation):
     """Update partially custom attributes tied to the user id (updateCustomAttributesPartially)
 
-    Update partially custom attributes tied to the user id.  
+    Update partially custom attributes tied to the user id.
     Other detail info:
 
       * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)

@@ -32,7 +32,7 @@ from ...models import ValidationErrorEntity
 class DeleteUserProfile(Operation):
     """Delete user profile (deleteUserProfile)
 
-    Delete user profile.  
+    Delete user profile.
     Other detail info:
 
       * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=8 (DELETE)

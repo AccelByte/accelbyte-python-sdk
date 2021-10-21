@@ -28,7 +28,7 @@ from .....core import HttpResponse
 class ListExtOrderNoByExtTxId(Operation):
     """List external order No by external transaction id (listExtOrderNoByExtTxId)
 
-    List external order No by external transaction id.  
+    List external order No by external transaction id.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)

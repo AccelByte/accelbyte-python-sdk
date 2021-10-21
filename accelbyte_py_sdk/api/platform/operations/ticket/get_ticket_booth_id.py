@@ -31,7 +31,7 @@ from ...models import TicketBoothID
 class GetTicketBoothID(Operation):
     """Get ticket booth ID (getTicketBoothID)
 
-    Get ticket(code/key) booth ID.  
+    Get ticket(code/key) booth ID.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=2 (READ)

@@ -37,7 +37,7 @@ class AdminAddRolePermissionsV4(Operation):
     This endpoint will ATTACH permission(s) into the role
 
 
-    action code: 10404  
+    action code: 10404
 
     Schedule contains cron string or date range (both are UTC, also in cron
     syntax) to indicate when a permission and action are in effect.

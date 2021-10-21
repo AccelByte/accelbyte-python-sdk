@@ -30,7 +30,7 @@ from ...models import KeyGroupPagingSlicedResult
 class QueryKeyGroups(Operation):
     """Query key groups (queryKeyGroups)
 
-    Query key groups, if name is presented, it's fuzzy match.  
+    Query key groups, if name is presented, it's fuzzy match.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2 (READ)

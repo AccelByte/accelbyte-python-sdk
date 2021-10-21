@@ -31,7 +31,7 @@ class UpdateUserDistributionReceiver(Operation):
     """Update distribution receiver (updateUserDistributionReceiver)
 
     Update distribution receiver for a specific user by dedicated server. It will
-    create a new one if not exists.  
+    create a new one if not exists.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:DISTRIBUTION", action=4 (UPDATE)

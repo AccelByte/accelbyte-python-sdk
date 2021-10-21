@@ -33,7 +33,7 @@ from ...models import WalletInfo
 class PayWithUserWallet(Operation):
     """Pay with user wallet by currency code (payWithUserWallet)
 
-    Pay with user wallet by currency code.  
+    Pay with user wallet by currency code.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4 (UPDATE)

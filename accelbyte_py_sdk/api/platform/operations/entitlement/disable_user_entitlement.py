@@ -32,9 +32,9 @@ class DisableUserEntitlement(Operation):
     """Disable user entitlement (disableUserEntitlement)
 
     Disable user entitlement if entitlement, only active entitlement can be
-    disable, disabled entitlement can't consume/distribute.  
+    disable, disabled entitlement can't consume/distribute.
      Like revoke, it will lose the entitlement ownership, except disabled
-    entitlement can enable.  
+    entitlement can enable.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)

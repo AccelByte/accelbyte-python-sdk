@@ -33,7 +33,7 @@ from ...models import ValidationErrorEntity
 class ChangeNamespaceStatus(Operation):
     """Change namespace status (changeNamespaceStatus)
 
-    Change a namespace status.  
+    Change a namespace status.
     Other detail info:
 
       * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=4 (UPDATE)

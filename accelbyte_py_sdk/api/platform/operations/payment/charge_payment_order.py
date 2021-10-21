@@ -34,7 +34,7 @@ class ChargePaymentOrder(Operation):
 
     [TEST FACILITY ONLY] Charge payment order without payment flow for unpaid
     payment order, usually for test usage to simulate real currency payment
-    process.  
+    process.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=4 (UPDATE)

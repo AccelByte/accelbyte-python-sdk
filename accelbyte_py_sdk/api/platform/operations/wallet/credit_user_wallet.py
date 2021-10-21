@@ -34,7 +34,7 @@ class CreditUserWallet(Operation):
     """Credit a user wallet by currency code (creditUserWallet)
 
     Credit a user wallet by currency code, if wallet not exists, it will create a
-    new wallet.  
+    new wallet.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4 (UPDATE)

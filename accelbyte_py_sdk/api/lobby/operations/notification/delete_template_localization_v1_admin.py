@@ -31,8 +31,8 @@ class DeleteTemplateLocalizationV1Admin(Operation):
     """delete template localization (deleteTemplateLocalizationV1Admin)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]` with
-    scope `social`  
-    delete template localization  
+    scope `social`
+    delete template localization
     Action Code: 50209
 
 

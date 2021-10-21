@@ -31,7 +31,7 @@ class PublishTemplate(Operation):
     """publish draft template (publishTemplate)
 
     Required permission : `NAMESPACE:{namespace}:TEMPLATE [CREATE]` with scope
-    `social`  
+    `social`
     Publish notification template draft. Empty draft can not be published.
 
 

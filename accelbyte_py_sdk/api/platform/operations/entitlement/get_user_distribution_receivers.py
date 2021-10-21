@@ -31,7 +31,7 @@ from ...models import ErrorEntity
 class GetUserDistributionReceivers(Operation):
     """Get distribution receivers (getUserDistributionReceivers)
 
-    Get distribution receivers for a specific game user by dedicated server.  
+    Get distribution receivers for a specific game user by dedicated server.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:DISTRIBUTION", action=2 (READ)

@@ -33,7 +33,7 @@ class AdminCreateThirdPartyConfig(Operation):
     """Create Third Party Steam Config (adminCreateThirdPartyConfig)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [CREATE]`
-    with scope `social`  
+    with scope `social`
     create third party config in a namespace.
 
 

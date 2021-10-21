@@ -32,15 +32,15 @@ class SendSpecificUserTemplatedNotificationV1Admin(Operation):
     """send templated notification to specific user (sendSpecificUserTemplatedNotificationV1Admin)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with
-    scope `social`  
+    scope `social`
     Sends templated notification to a user. There are two types of notification:
     sync and async. Async message will be stored to database if the receiver is
-    offline. This stored message could be retrieved later via websocket command.  
+    offline. This stored message could be retrieved later via websocket command.
     In the request body, specify which template slug (template identifier) to use
-    and the template language.  
+    and the template language.
     NotificationTemplate context is the key-value pair defining the value of each
     handlebar specified in the template content. Template need to be published
-    before it can be use to send notifications  
+    before it can be use to send notifications
     Action Code: 50212
 
 

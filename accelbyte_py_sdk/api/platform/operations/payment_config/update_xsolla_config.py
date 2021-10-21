@@ -33,7 +33,7 @@ class UpdateXsollaConfig(Operation):
     """Update xsolla configuration (updateXsollaConfig)
 
     Update xsolla configuration. Reference: [Xsolla
-    Document](https://developers.xsolla.com/?#simple-checkout).  
+    Document](https://developers.xsolla.com/?#simple-checkout).
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)

@@ -31,7 +31,7 @@ from ...models import OrderInfo
 class PublicCancelUserOrder(Operation):
     """Cancel user order (publicCancelUserOrder)
 
-    Cancel user order.  
+    Cancel user order.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)

@@ -28,7 +28,7 @@ from .....core import HttpResponse
 class DeleteStadiaIAPConfig(Operation):
     """Delete stadia iap config (deleteStadiaIAPConfig)
 
-    Delete stadia iap config.  
+    Delete stadia iap config.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)

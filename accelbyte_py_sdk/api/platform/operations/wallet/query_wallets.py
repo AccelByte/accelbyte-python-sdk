@@ -30,7 +30,7 @@ from ...models import WalletPagingSlicedResult
 class QueryWallets(Operation):
     """Query wallets (queryWallets)
 
-    Query wallets.  
+    Query wallets.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:WALLET", action=2 (READ)

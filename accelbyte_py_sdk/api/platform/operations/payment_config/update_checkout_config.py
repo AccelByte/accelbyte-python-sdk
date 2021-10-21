@@ -32,7 +32,7 @@ from ...models import PaymentMerchantConfigInfo
 class UpdateCheckoutConfig(Operation):
     """Update checkout.com config (updateCheckoutConfig)
 
-    Update checkout.com config.  
+    Update checkout.com config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)

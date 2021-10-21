@@ -31,11 +31,11 @@ from ...models import ErrorEntity
 class DeleteCurrency(Operation):
     """Delete a currency (deleteCurrency)
 
-    Delete a currency by currency code.  
+    Delete a currency by currency code.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=8 (DELETE)
-      *  Returns : 
+      *  Returns :
 
 
     Properties:

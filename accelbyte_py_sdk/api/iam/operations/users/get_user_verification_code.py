@@ -30,12 +30,12 @@ from ...models import ModelVerificationCodeResponse
 class GetUserVerificationCode(Operation):
     """Get verification code sent to user (getUserVerificationCode)
 
-    [WARNING] This endpoint is only for testing purpose.  
+    [WARNING] This endpoint is only for testing purpose.
     This endpoint get active user verification code. There are 3 scenario of
     getting verification codes : after account registration, after reset password
     request, and after headless account upgrade. All of them will be returned on
     this endpoint. Required permission
-    'ADMIN:NAMESPACE:{namespace}:USER:{userId}:CODE' [READ]  
+    'ADMIN:NAMESPACE:{namespace}:USER:{userId}:CODE' [READ]
     action code: 10146
 
 

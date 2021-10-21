@@ -32,7 +32,7 @@ from ...models import FulfillmentResult
 class PublicRedeemCode(Operation):
     """Redeem campaign code (publicRedeemCode)
 
-    Redeem campaign code.  
+    Redeem campaign code.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=1 (CREATED)

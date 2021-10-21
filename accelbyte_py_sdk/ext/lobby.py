@@ -95,11 +95,6 @@ from ..api.lobby.models import RestapiErrorResponseBody
 from ..api.lobby.models import RestapiErrorResponseV1
 
 
-def create_models_profanity_filter_example() -> ModelsProfanityFilter:
-    instance = ModelsProfanityFilter()
-    return instance
-
-
 def create_handlers_get_users_presence_response_example() -> HandlersGetUsersPresenceResponse:
     instance = HandlersGetUsersPresenceResponse()
     instance.busy = randomize("int", min_val=1, max_val=1000)

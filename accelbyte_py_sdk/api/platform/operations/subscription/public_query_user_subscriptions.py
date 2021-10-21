@@ -30,7 +30,7 @@ from ...models import SubscriptionPagingSlicedResult
 class PublicQueryUserSubscriptions(Operation):
     """Query user subscriptions (publicQueryUserSubscriptions)
 
-    Query user subscriptions.  
+    Query user subscriptions.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)

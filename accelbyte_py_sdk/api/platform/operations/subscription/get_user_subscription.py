@@ -31,7 +31,7 @@ from ...models import SubscriptionInfo
 class GetUserSubscription(Operation):
     """Get user subscription (getUserSubscription)
 
-    Get user subscription.  
+    Get user subscription.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)

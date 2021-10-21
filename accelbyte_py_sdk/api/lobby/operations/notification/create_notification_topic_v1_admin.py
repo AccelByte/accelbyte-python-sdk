@@ -32,10 +32,10 @@ class CreateNotificationTopicV1Admin(Operation):
     """create new notification topic (createNotificationTopicV1Admin)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with
-    scope `social`  
-    Create new notification topic.  
+    scope `social`
+    Create new notification topic.
     topic should be alphabets, no special char except underscore, uppercase and no
-    spacing. for example: TOPIC_TEST. Already existing topic can not be created  
+    spacing. for example: TOPIC_TEST. Already existing topic can not be created
     Action Code: 50214
 
 

@@ -49,13 +49,13 @@ class PublicUpdateUserV3(Operation):
     Several case of updating email address
 
       * User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
-      * User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address. 
-      * User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address. 
+      * User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address.
+      * User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
 
-    Important notes:  
+    Important notes:
 
     This endpoint provides support for client that doesn't have PATCH support,
-    i.e. UE4 before v4.23 released.  
+    i.e. UE4 before v4.23 released.
     If the client support PATCH method, use [PATCH]
     /iam/v3/public/namespaces/{namespace}/users/me instead
 

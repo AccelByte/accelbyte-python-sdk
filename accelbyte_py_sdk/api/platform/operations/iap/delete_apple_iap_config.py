@@ -28,7 +28,7 @@ from .....core import HttpResponse
 class DeleteAppleIAPConfig(Operation):
     """Delete apple iap config (deleteAppleIAPConfig)
 
-    Delete apple iap config.  
+    Delete apple iap config.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)

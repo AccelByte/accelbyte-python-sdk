@@ -32,16 +32,16 @@ class PublicDistributeUserDistribution(Operation):
     """Distribute my distribution (publicDistributeUserDistribution)
 
     Distribute my distribution with my user credentials. After successfully
-    distributed, a notification will be send to configured web hook  
+    distributed, a notification will be send to configured web hook
 
      Notification Body:
 
 
 
-         Parameter| Type| Description  
-        ---|---|---  
-        payload| String| Business object in compact json string   
-        sign| String| Sha1 hex signature for payload and private key  
+         Parameter| Type| Description
+        ---|---|---
+        payload| String| Business object in compact json string
+        sign| String| Sha1 hex signature for payload and private key
 
          Notification Body Example:
 
@@ -69,17 +69,17 @@ class PublicDistributeUserDistribution(Operation):
 
 
 
-         Parameter| Type| Description  
-        ---|---|---  
-        namespace| String| The publisher namespace  
-        targetNamespace| String| The target game namespace  
-        targetUserId| String| The user id in target game namespace  
-        issuedAt| String| Issue time  
-        type| String| Notification type, it is a fixed value 'distribution'  
-        extUserId| String| Unique identity, e.g. character id  
-        sku| String| Item unique identity  
-        quantity| Integer| quantity  
-        nonceStr| String| Random string, max length is 32, can be timestamp or uuid  
+         Parameter| Type| Description
+        ---|---|---
+        namespace| String| The publisher namespace
+        targetNamespace| String| The target game namespace
+        targetUserId| String| The user id in target game namespace
+        issuedAt| String| Issue time
+        type| String| Notification type, it is a fixed value 'distribution'
+        extUserId| String| Unique identity, e.g. character id
+        sku| String| Item unique identity
+        quantity| Integer| quantity
+        nonceStr| String| Random string, max length is 32, can be timestamp or uuid
 
     #### Encryption Rule:
 

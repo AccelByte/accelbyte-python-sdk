@@ -31,7 +31,7 @@ from ...models import OrderInfo
 class GetUserOrder(Operation):
     """Get an order (getUserOrder)
 
-    Get an order.  
+    Get an order.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)

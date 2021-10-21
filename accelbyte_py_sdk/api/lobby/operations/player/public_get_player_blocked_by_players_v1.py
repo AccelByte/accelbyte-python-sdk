@@ -31,9 +31,9 @@ from ...models import RestapiErrorResponseBody
 class PublicGetPlayerBlockedByPlayersV1(Operation):
     """get players who blocked this player by user id (publicGetPlayerBlockedByPlayersV1)
 
-    Required valid user authorization  
+    Required valid user authorization
 
-    load get players who blocked this player in a namespace based on user id  
+    load get players who blocked this player in a namespace based on user id
     Action Code: 50101
 
 

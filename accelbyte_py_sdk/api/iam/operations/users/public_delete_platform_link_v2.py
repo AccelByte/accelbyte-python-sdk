@@ -43,7 +43,7 @@ class PublicDeletePlatformLinkV2(Operation):
 
     Delete link of user's account with platform. 'justice' platform might have
     multiple accounts from different namespaces linked. platform_namespace need to
-    be specified when the platform ID is 'justice'.  
+    be specified when the platform ID is 'justice'.
     Delete link of justice platform will enable password token grant and password
     update.
 

@@ -33,12 +33,12 @@ from ...models import ValidationErrorEntity
 class UpdateCountryGroup(Operation):
     """Update a country group (updateCountryGroup)
 
-    Update a country groups. The countryGroupCode must be exist beforehand.  
-    Valid update behaviour :  
+    Update a country groups. The countryGroupCode must be exist beforehand.
+    Valid update behaviour :
     - To update countryGroupName only, do not include countries key or just
-    specify it with empty array.  
+    specify it with empty array.
     - To update countries only, do not include countryGroupName key or just
-    specify it with blank value.  
+    specify it with blank value.
     Other detail info:
 
       * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=4 (UPDATE)

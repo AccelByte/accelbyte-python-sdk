@@ -30,7 +30,7 @@ from ...models import KeyPagingSliceResult
 class ListKeys(Operation):
     """List keys of a key group (listKeys)
 
-    This API is used to list keys of a key group.  
+    This API is used to list keys of a key group.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2 (READ)

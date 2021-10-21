@@ -31,7 +31,7 @@ from ...models import UserSlotConfigInfo
 class UpdateUserSlotConfig(Operation):
     """Update a user slot configuration (updateUserSlotConfig)
 
-    Update a user slot configuration in given namespace.  
+    Update a user slot configuration in given namespace.
     Other detail info:
 
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG", action=4 (UPDATE)

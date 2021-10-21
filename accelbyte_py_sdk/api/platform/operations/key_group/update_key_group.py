@@ -33,7 +33,7 @@ from ...models import ValidationErrorEntity
 class UpdateKeyGroup(Operation):
     """Update key group (updateKeyGroup)
 
-    Update key group.  
+    Update key group.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=4 (UPDATE)

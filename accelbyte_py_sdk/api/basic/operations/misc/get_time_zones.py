@@ -31,7 +31,7 @@ from ...models import ValidationErrorEntity
 class GetTimeZones(Operation):
     """List time zones (getTimeZones)
 
-    List time zones.  
+    List time zones.
     Other detail info:
 
       * Required permission : login user

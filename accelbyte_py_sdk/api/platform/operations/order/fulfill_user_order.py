@@ -31,7 +31,7 @@ from ...models import OrderInfo
 class FulfillUserOrder(Operation):
     """Fulfill an order (fulfillUserOrder)
 
-    Fulfill an order if the order is charged but fulfill failed.  
+    Fulfill an order if the order is charged but fulfill failed.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)

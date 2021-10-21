@@ -31,10 +31,10 @@ from ...models import UserGameProfiles
 class PublicGetUserGameProfiles(Operation):
     """Returns all profiles for specified users (publicGetUserGameProfiles)
 
-    Returns all profiles for specified users.  
+    Returns all profiles for specified users.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:GAMEPROFILE", action=2 (READ) 
+      *  Required permission : resource="NAMESPACE:{namespace}:GAMEPROFILE", action=2 (READ)
       * Returns : list of profiles
 
 

@@ -33,7 +33,7 @@ from ...models import ValidationErrorEntity
 class GrantUserEntitlement(Operation):
     """Grant user entitlement (grantUserEntitlement)
 
-    Grant user entitlement.  
+    Grant user entitlement.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=1 (CREATE)

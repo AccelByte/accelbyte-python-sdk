@@ -30,7 +30,7 @@ from ...models import WalletTransactionPagingSlicedResult
 class PublicListUserWalletTransactions(Operation):
     """List wallet transactions by currency code (publicListUserWalletTransactions)
 
-    List wallet transactions by currency code ordered by create time desc.  
+    List wallet transactions by currency code ordered by create time desc.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)

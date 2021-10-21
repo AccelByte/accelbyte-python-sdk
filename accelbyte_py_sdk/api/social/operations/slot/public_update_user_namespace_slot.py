@@ -31,7 +31,7 @@ from ...models import SlotInfo
 class PublicUpdateUserNamespaceSlot(Operation):
     """Updates a slot (publicUpdateUserNamespaceSlot)
 
-    Updates a slot.  
+    Updates a slot.
     Other detail info:
 
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=4 (UPDATE)

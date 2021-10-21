@@ -134,7 +134,6 @@
 ## Models
 | Model | Class |
 |---|---|
-| *models.ProfanityFilter | [ModelsProfanityFilter](../accelbyte_py_sdk/api/lobby/models/models_profanity_filter.py) |
 | handlers.GetUsersPresenceResponse | [HandlersGetUsersPresenceResponse](../accelbyte_py_sdk/api/lobby/models/handlers_get_users_presence_response.py) |
 | handlers.UserPresence | [HandlersUserPresence](../accelbyte_py_sdk/api/lobby/models/handlers_user_presence.py) |
 | log.AppMessageDeclaration | [LogAppMessageDeclaration](../accelbyte_py_sdk/api/lobby/models/log_app_message_declaration.py) |

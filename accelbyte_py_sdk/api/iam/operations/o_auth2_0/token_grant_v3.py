@@ -33,12 +33,12 @@ class TokenGrantV3(Operation):
 
     This endpoint supports grant type:
 
-      1. Grant Type == `authorization_code`:  
-        It generates the user token by given the authorization code which generated in "/v3/oauth/auth" API response. It should also pass in the redirect_uri, which should be the same as generating the authorization code request. 
-      2. Grant Type == `refresh_token`:  
-        Used to get a new access token for a valid refresh token. 
-      3. Grant Type == `client_credentials`:  
-        It generates a token by checking the client credentials provided through Authorization header. 
+      1. Grant Type == `authorization_code`:
+        It generates the user token by given the authorization code which generated in "/v3/oauth/auth" API response. It should also pass in the redirect_uri, which should be the same as generating the authorization code request.
+      2. Grant Type == `refresh_token`:
+        Used to get a new access token for a valid refresh token.
+      3. Grant Type == `client_credentials`:
+        It generates a token by checking the client credentials provided through Authorization header.
 
     ## Access Token Content
 

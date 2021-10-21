@@ -70,9 +70,9 @@ class PlatformTokenGrantV3(Operation):
 
     Following is the current registered account grouping:
 
-      * (psn) ps4web 
-      * (psn) ps4 
-      * (psn) ps5 
+      * (psn) ps4web
+      * (psn) ps4
+      * (psn) ps5
 
     ## Access Token Content
 

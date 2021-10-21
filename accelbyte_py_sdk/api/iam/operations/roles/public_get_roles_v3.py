@@ -32,7 +32,7 @@ class PublicGetRolesV3(Operation):
     """Get Roles (PublicGetRolesV3)
 
 
-    This endpoint is used to get all non-admin role.  
+    This endpoint is used to get all non-admin role.
 
     action code: 10418
 

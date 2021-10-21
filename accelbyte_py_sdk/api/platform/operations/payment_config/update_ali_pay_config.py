@@ -32,7 +32,7 @@ from ...models import PaymentMerchantConfigInfo
 class UpdateAliPayConfig(Operation):
     """Update alipay configuration (updateAliPayConfig)
 
-    Update alipay configuration.  
+    Update alipay configuration.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)

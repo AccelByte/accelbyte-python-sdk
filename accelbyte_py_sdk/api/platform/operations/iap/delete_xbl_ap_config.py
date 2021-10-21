@@ -28,7 +28,7 @@ from .....core import HttpResponse
 class DeleteXblAPConfig(Operation):
     """Delete xbl iap config (deleteXblAPConfig)
 
-    Delete xbl iap config.  
+    Delete xbl iap config.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)

@@ -24,8 +24,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
-from ...models import ModelsProfanityFilter
 from ...models import ModelsDebugProfanityFilterRequest
+from ...models import ModelsProfanityFilter
 from ...models import RestapiErrorResponseBody
 
 
@@ -33,7 +33,7 @@ class AdminDebugProfanityFilters(Operation):
     """get the list of filters that would modify the phrase (adminDebugProfanityFilters)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with
-    scope `social`  
+    scope `social`
     get the list of filters that would modify the phrase
 
 

@@ -79,7 +79,7 @@ class CreateItem(Operation):
            "purchasable": true,
            "itemType": "APP(allowed: [APP,COINS,INGAMEITEM,CODE,BUNDLE])",
            "name": "required, also will be used as entitlement name",
-           "entitlementType": "DURABLE(allowed:[DURABLE,CONSUMABLE], should be CONSUMABLE when item type is COINS)", 
+           "entitlementType": "DURABLE(allowed:[DURABLE,CONSUMABLE], should be CONSUMABLE when item type is COINS)",
            "useCount": 1(optional, required if the entitlement type is consumable),
            "stackable": false,
            "appId": "optional, required if itemType is APP",

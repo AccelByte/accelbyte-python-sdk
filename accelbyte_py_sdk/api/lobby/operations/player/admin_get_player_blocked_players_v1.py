@@ -32,7 +32,7 @@ class AdminGetPlayerBlockedPlayersV1(Operation):
     """admin get blocked players by user id (adminGetPlayerBlockedPlayersV1)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK
-    [READ]` with scope `social`  
+    [READ]` with scope `social`
     get blocked players data by user id in a namespace.
 
 

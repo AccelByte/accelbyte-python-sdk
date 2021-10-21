@@ -31,8 +31,8 @@ class DeleteNotificationTemplateSlugV1Admin(Operation):
     """delete template slug in notification template (deleteNotificationTemplateSlugV1Admin)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]` with
-    scope `social`  
-    Delete template slug in notification template  
+    scope `social`
+    Delete template slug in notification template
     Action Code: 50206
 
 

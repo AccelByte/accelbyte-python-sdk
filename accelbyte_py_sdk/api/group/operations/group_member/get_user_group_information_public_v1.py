@@ -40,8 +40,8 @@ class GetUserGroupInformationPublicV1(Operation):
 
     Group Member Status:
 
-      * JOIN : status of user requested to join group 
-      * INVITE: status of user invited to a group 
+      * JOIN : status of user requested to join group
+      * INVITE: status of user invited to a group
       * JOINED: status of user already joined to a group
 
     Action Code: 73405

@@ -49,8 +49,8 @@ class AdminUpdateMyUserV4(Operation):
     Several case of updating email address
 
       * User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
-      * User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address. 
-      * User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address. 
+      * User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address.
+      * User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
 
     action code : 10103
 

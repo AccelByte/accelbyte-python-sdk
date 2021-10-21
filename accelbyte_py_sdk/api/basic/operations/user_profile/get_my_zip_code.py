@@ -31,7 +31,7 @@ from ...models import UserZipCode
 class GetMyZipCode(Operation):
     """Get my zip code (getMyZipCode)
 
-    Get my zip code.  
+    Get my zip code.
     Other detail info:
 
       * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=2 (READ)

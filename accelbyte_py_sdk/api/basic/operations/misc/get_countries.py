@@ -32,7 +32,7 @@ from ...models import ValidationErrorEntity
 class GetCountries(Operation):
     """List countries (getCountries)
 
-    List countries.  
+    List countries.
     Other detail info:
 
       * Required permission : login user

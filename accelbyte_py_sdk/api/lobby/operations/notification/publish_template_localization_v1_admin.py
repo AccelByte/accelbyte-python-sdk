@@ -31,8 +31,8 @@ class PublishTemplateLocalizationV1Admin(Operation):
     """publish template localization draft (publishTemplateLocalizationV1Admin)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with
-    scope `social`  
-    Publish notification template draft. Empty draft can not be published.  
+    scope `social`
+    Publish notification template draft. Empty draft can not be published.
     Action Code: 50210
 
 

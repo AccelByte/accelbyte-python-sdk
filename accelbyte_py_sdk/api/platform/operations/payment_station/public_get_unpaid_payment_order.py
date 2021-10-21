@@ -31,7 +31,7 @@ from ...models import PaymentOrderDetails
 class PublicGetUnpaidPaymentOrder(Operation):
     """Get payment order info (publicGetUnpaidPaymentOrder)
 
-    Get payment order info.  
+    Get payment order info.
     Other detail info:
 
       * Returns : Payment order details

@@ -31,7 +31,7 @@ from ...models import TaxResult
 class GetPaymentTaxValue(Operation):
     """get tax result of a payment order (getPaymentTaxValue)
 
-    Check and get a payment order's should pay tax.  
+    Check and get a payment order's should pay tax.
     Other detail info:
 
       * Returns : tax result

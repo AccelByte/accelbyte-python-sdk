@@ -30,7 +30,7 @@ from ...models import ErrorEntity
 class DeleteUserStatItems1(Operation):
     """Delete User's statItems (deleteUserStatItems_1)
 
-    Delete user's statItems given stat code.  
+    Delete user's statItems given stat code.
     Other detail info:
 
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=8 (DELETE)

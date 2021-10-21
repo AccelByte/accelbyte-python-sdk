@@ -31,7 +31,7 @@ from ...models import ValidationErrorEntity
 class QueryOrders(Operation):
     """Query orders (queryOrders)
 
-    Query orders.  
+    Query orders.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)

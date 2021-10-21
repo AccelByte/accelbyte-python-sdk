@@ -33,7 +33,7 @@ from ...models import ValidationErrorEntity
 class IncreaseTicketSale(Operation):
     """Increase ticket sale (increaseTicketSale)
 
-    [SERVICE COMMUNICATION ONLY] increase ticket(code/key) sale.  
+    [SERVICE COMMUNICATION ONLY] increase ticket(code/key) sale.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=4 (UPDATE)

@@ -30,7 +30,7 @@ from ...models import GoogleIAPConfigInfo
 class UpdateGoogleP12File(Operation):
     """Upload google play p12 file (updateGoogleP12File)
 
-    Upload google play p12 file.  
+    Upload google play p12 file.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)

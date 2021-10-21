@@ -31,10 +31,10 @@ class DeleteNotificationTopicV1Admin(Operation):
     """delete topic information by topic name (deleteNotificationTopicV1Admin)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]` with
-    scope `social`  
-    delete topic information by topic name.  
+    scope `social`
+    delete topic information by topic name.
     topic should be alphabets, no special char except underscore, uppercase and no
-    spacing. for example: TOPIC_TEST. Already existing topic can not be created  
+    spacing. for example: TOPIC_TEST. Already existing topic can not be created
     Action Code: 50217
 
 

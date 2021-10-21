@@ -31,7 +31,7 @@ from ...models import PaymentMethod
 class PublicGetPaymentMethods(Operation):
     """Get payment methods (publicGetPaymentMethods)
 
-    Get payment methods.  
+    Get payment methods.
     Other detail info:
 
       * Returns : Payment method list

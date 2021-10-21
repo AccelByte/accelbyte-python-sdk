@@ -33,7 +33,7 @@ from ...models import ValidationErrorEntity
 class UpdateNamespace(Operation):
     """Update namespace basic info (updateNamespace)
 
-    Update namespace basic info.  
+    Update namespace basic info.
     Other detail info:
 
       * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=4 (UPDATE)

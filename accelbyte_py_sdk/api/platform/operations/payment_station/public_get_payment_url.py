@@ -32,7 +32,7 @@ from ...models import PaymentUrlCreate
 class PublicGetPaymentUrl(Operation):
     """Get payment url (publicGetPaymentUrl)
 
-    Get payment url.  
+    Get payment url.
     Other detail info:
 
       * Returns : Get payment link

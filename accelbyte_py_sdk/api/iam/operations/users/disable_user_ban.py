@@ -30,9 +30,9 @@ from ...models import ModelUserBanResponse
 class DisableUserBan(Operation):
     """Disable ban for a single user. (DisableUserBan)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]'.  
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]'.
 
-     Notes for using IAM in publisher - game studio scenarios  
+     Notes for using IAM in publisher - game studio scenarios
 
     The endpoint allows:
 

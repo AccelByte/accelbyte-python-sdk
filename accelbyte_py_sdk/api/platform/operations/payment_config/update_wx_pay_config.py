@@ -32,7 +32,7 @@ from ...models import WxPayConfigRequest
 class UpdateWxPayConfig(Operation):
     """Update wxpay configuration (updateWxPayConfig)
 
-    Update wxpay configuration.  
+    Update wxpay configuration.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)

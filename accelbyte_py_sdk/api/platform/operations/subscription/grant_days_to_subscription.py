@@ -33,10 +33,10 @@ class GrantDaysToSubscription(Operation):
     """Grant days to a subscription (grantDaysToSubscription)
 
     Grant days to a subscription, if grantDays is positive, it will add free days
-    and push the next billing date by the amount of day.  
+    and push the next billing date by the amount of day.
     if the grantDays is negative or zero, it only apply to active/cancelled
     subscription, remove days will decrease current period end, and move the next
-    billing date closer.  
+    billing date closer.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)

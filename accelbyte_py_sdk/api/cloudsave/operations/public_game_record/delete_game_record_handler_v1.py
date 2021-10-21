@@ -30,9 +30,9 @@ from ...models import ModelsResponseError
 class DeleteGameRecordHandlerV1(Operation):
     """Delete game record (deleteGameRecordHandlerV1)
 
-    Required Permission | `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]`  
-    ---|---  
-    Required Scope | `social`  
+    Required Permission | `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]`
+    ---|---
+    Required Scope | `social`
 
     Delete records by its key
 

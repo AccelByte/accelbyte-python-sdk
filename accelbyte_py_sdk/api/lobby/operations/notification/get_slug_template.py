@@ -32,7 +32,7 @@ class GetSlugTemplate(Operation):
     """get all notification template in a slug (getSlugTemplate)
 
     Required permission : `NAMESPACE:{namespace}:TEMPLATE [READ]` with scope
-    `social`  
+    `social`
     Get all templates in a namespace
 
 

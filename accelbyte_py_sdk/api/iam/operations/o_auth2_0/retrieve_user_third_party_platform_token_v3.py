@@ -31,7 +31,7 @@ from ...models import OauthmodelTokenThirdPartyResponse
 class RetrieveUserThirdPartyPlatformTokenV3(Operation):
     """Retrieve User Third Party Platform Token (RetrieveUserThirdPartyPlatformTokenV3)
 
-    Retrieve User Third Party Platform Token  
+    Retrieve User Third Party Platform Token
 
     This endpoint used for retrieving third party platform token for user that
     login using third party. Passing platform group name or it's member will

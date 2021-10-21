@@ -30,7 +30,7 @@ from ...models import PaymentOrderPagingSlicedResult
 class QueryPaymentOrders(Operation):
     """Query payment orders (queryPaymentOrders)
 
-    Query payment orders.  
+    Query payment orders.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)

@@ -32,10 +32,10 @@ class SendSpecificUserFreeformNotificationV1Admin(Operation):
     """send freeform notification to a user (sendSpecificUserFreeformNotificationV1Admin)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with
-    scope `social`  
+    scope `social`
     Sends notification to a user. There are two types of notification: sync and
     async. Async message will be stored to database if the receiver is offline.
-    This stored message could be retrieved later via websocket command.  
+    This stored message could be retrieved later via websocket command.
     Action Code: 50211
 
 

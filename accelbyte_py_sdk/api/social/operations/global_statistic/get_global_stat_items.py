@@ -30,7 +30,7 @@ from ...models import GlobalStatItemPagingSlicedResult
 class GetGlobalStatItems(Operation):
     """List global statItems (getGlobalStatItems)
 
-    List global statItems by pagination.  
+    List global statItems by pagination.
     Other detail info:
 
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=2 (READ)

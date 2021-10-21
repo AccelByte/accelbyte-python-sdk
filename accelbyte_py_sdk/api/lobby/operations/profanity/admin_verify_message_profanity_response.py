@@ -33,7 +33,7 @@ class AdminVerifyMessageProfanityResponse(Operation):
     """verify a message directly from the UI or other services (adminVerifyMessageProfanityResponse)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with
-    scope `social`  
+    scope `social`
     verify a message directly from the UI or other services
 
 

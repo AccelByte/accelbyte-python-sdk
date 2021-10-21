@@ -32,7 +32,7 @@ from ...models import StatInfo
 class CreateStat1(Operation):
     """Create stat (createStat_1)
 
-    Create stat.  
+    Create stat.
     Other detail info:
 
       *  Required permission : resource="NAMESPACE:{namespace}:STAT", action=1 (CREATE)

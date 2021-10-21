@@ -33,19 +33,19 @@ from ...models import ValidationErrorEntity
 class UpdatePaymentProviderConfig(Operation):
     """Update payment provider config (updatePaymentProviderConfig)
 
-    Update payment provider config.  
+    Update payment provider config.
 
 
 
          Request Body Parameters:
 
 
-         Parameter| Type| Required| Description  
-        ---|---|---|---  
-        namespace| String| Yes| namespace, * indicates all namespace  
-        region| String| Yes| region, * indicates all regions  
-        aggregate| String| No| aggregate payment provider, such as XSOLLA, ADYEN, STRIPE  
-        specials| List| No| special payment provider, such as ALIPAY, WXPAY  
+         Parameter| Type| Required| Description
+        ---|---|---|---
+        namespace| String| Yes| namespace, * indicates all namespace
+        region| String| Yes| region, * indicates all regions
+        aggregate| String| No| aggregate payment provider, such as XSOLLA, ADYEN, STRIPE
+        specials| List| No| special payment provider, such as ALIPAY, WXPAY
 
     payment provider applied has priority:
 

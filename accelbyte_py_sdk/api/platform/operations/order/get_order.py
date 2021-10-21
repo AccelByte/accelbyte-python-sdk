@@ -31,7 +31,7 @@ from ...models import OrderInfo
 class GetOrder(Operation):
     """Get order (getOrder)
 
-    Get order by orderNo.  
+    Get order by orderNo.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)

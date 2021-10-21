@@ -30,7 +30,7 @@ from ...models import GameProfileHeader
 class GetUserProfiles(Operation):
     """Returns all profiles' header for a user (getUserProfiles)
 
-    Returns all profiles' header for a user.  
+    Returns all profiles' header for a user.
     Other detail info:
 
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=2 (READ)

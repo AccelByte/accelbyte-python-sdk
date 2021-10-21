@@ -31,7 +31,7 @@ from ...models import RestErrorResponse
 class AdminGetListCountryAgeRestrictionV3(Operation):
     """Get List Country age restriction (AdminGetListCountryAgeRestrictionV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]  
+    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]
     action code : 10139
 
 

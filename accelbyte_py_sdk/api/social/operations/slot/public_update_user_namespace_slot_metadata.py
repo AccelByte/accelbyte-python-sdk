@@ -32,7 +32,7 @@ from ...models import SlotMetadataUpdate
 class PublicUpdateUserNamespaceSlotMetadata(Operation):
     """Updates the slot metadata (publicUpdateUserNamespaceSlotMetadata)
 
-    Updates the slot metadata.  
+    Updates the slot metadata.
     Other detail info:
 
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=4 (UPDATE)

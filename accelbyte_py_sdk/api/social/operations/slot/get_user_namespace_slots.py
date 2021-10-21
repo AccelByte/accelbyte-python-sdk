@@ -30,7 +30,7 @@ from ...models import SlotInfo
 class GetUserNamespaceSlots(Operation):
     """Returns list of slots for given user (getUserNamespaceSlots)
 
-    Get slots for a given user.  
+    Get slots for a given user.
     Other detail info:
 
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)

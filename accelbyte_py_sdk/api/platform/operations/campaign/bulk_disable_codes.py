@@ -33,7 +33,7 @@ class BulkDisableCodes(Operation):
     Bulk disable codes.
 
     Bulk disable campaign codes, all matched codes will be disabled except those
-    have already been redeemed.  
+    have already been redeemed.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)

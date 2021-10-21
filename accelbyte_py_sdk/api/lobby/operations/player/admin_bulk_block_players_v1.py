@@ -32,7 +32,7 @@ class AdminBulkBlockPlayersV1(Operation):
     """Admin bulk blocks player by list user id (adminBulkBlockPlayersV1)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK
-    [CREATE]` with scope `social`  
+    [CREATE]` with scope `social`
     Bulk block player in a namespace by list of user id
 
 

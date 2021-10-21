@@ -47,14 +47,14 @@ class AdminPlatformUnlinkV3(Operation):
       * discord
 
     Unlink user's account from a specific platform. 'justice' platform might have
-    multiple accounts from different namespaces linked.  
-    platformNamespace need to be specified when the platform ID is 'justice'.  
+    multiple accounts from different namespaces linked.
+    platformNamespace need to be specified when the platform ID is 'justice'.
 
     Unlink user's account from justice platform will enable password token grant
-    and password update.  
+    and password update.
 
     If you want to unlink user's account in a game namespace, you have to specify
-    platformNamespace to that game namespace.  
+    platformNamespace to that game namespace.
 
     action code : 10121
 

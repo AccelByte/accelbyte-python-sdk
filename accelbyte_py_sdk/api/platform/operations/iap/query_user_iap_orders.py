@@ -30,7 +30,7 @@ from ...models import IAPOrderPagingSlicedResult
 class QueryUserIAPOrders(Operation):
     """Query IAP orders (queryUserIAPOrders)
 
-    Query IAP orders.  
+    Query IAP orders.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=2 (READ)

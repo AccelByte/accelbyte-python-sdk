@@ -30,7 +30,7 @@ from ...models import XblIAPConfigInfo
 class UpdateXblBPCertFile(Operation):
     """Upload xbl business partner cert file (updateXblBPCertFile)
 
-    Upload xbl business partner cert file.  
+    Upload xbl business partner cert file.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)

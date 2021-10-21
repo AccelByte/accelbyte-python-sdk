@@ -24,8 +24,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
-from ...models import ModelsProfanityFilter
 from ...models import ModelsAdminDeleteProfanityFilterRequest
+from ...models import ModelsProfanityFilter
 from ...models import RestapiErrorResponseBody
 
 
@@ -33,7 +33,7 @@ class AdminDeleteProfanityFilter(Operation):
     """delete the filter from the list (adminDeleteProfanityFilter)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [DELETE]` with
-    scope `social`  
+    scope `social`
     delete the filter from the list
 
 

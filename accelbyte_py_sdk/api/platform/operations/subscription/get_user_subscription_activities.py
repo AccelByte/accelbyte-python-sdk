@@ -30,7 +30,7 @@ from ...models import SubscriptionActivityPagingSlicedResult
 class GetUserSubscriptionActivities(Operation):
     """Get user subscription activity (getUserSubscriptionActivities)
 
-    Get user subscription activity.  
+    Get user subscription activity.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)

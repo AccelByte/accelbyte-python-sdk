@@ -32,7 +32,7 @@ from ...models import GameProfileInfo
 class PublicUpdateAttribute(Operation):
     """Updates game profile attribute (publicUpdateAttribute)
 
-    Updates game profile attribute, returns updated profile.  
+    Updates game profile attribute, returns updated profile.
     Other detail info:
 
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=4 (UPDATE)

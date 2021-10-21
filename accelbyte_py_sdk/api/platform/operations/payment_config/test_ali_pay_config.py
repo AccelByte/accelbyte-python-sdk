@@ -32,7 +32,7 @@ class TestAliPayConfig(Operation):
     """Test Alipay configuration (testAliPayConfig)
 
     Test AliPay configuration.Reference: [Alipay
-    Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).  
+    Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)

@@ -31,7 +31,7 @@ from ...models import GameServerConfig
 class GetGameServerConfig(Operation):
     """Get game server configuration (getGameServerConfig)
 
-    Get game server configuration.  
+    Get game server configuration.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:INTEGRATION", action=2 (READ)

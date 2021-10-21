@@ -36,13 +36,13 @@ class TokenGrant(Operation):
 
     This endpoint supports different grant types :
 
-      1. Grant Type == `client_credentials`:  
+      1. Grant Type == `client_credentials`:
         This endpoint will check the client credentials provided through Authorization header.
-      2. Grant Type == `password`:  
+      2. Grant Type == `password`:
         The grant type to use for authenticating a user, whether it's by email / username and password combination or through platform.
-      3. Grant Type == `refresh_token`:  
+      3. Grant Type == `refresh_token`:
         Used to get a new access token for a valid refresh token.
-      4. Grant Type == `authorization_code`:  
+      4. Grant Type == `authorization_code`:
         It generates the user token by given the authorization code which generated in "/authorize" API response. It should also pass in the redirect_uri, which should be the same as generating the authorization code request.
 
     For platform authentication, use grant type `password`. The `username` field

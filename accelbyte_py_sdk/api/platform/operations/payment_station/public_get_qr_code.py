@@ -28,7 +28,7 @@ from .....core import HttpResponse
 class PublicGetQRCode(Operation):
     """Get qrcode (publicGetQRCode)
 
-    Get qrcode.  
+    Get qrcode.
     Other detail info:
 
       * Returns : QRCode image stream

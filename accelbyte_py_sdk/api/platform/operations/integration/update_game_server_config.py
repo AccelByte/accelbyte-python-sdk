@@ -30,7 +30,7 @@ from ...models import GameServerConfig
 class UpdateGameServerConfig(Operation):
     """Update game server configuration (updateGameServerConfig)
 
-    Update game server configuration.  
+    Update game server configuration.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:INTEGRATION", action=4 (UPDATE)

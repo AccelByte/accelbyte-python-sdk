@@ -32,7 +32,7 @@ from ...models import ValidationErrorEntity
 class PublicGetNamespacePublisher(Operation):
     """Get namespace info related publisher namespace (publicGetNamespacePublisher)
 
-    Get namespace info related publisher namespace.  
+    Get namespace info related publisher namespace.
     Other detail info:
 
       * Required permission : resource= "NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)

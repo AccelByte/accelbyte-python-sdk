@@ -28,7 +28,7 @@ from .....core import HttpResponse
 class AnonymizeIntegration(Operation):
     """anonymize integrations (anonymizeIntegration)
 
-    Anonymize integrations. At current it will only anonymize iap histories.  
+    Anonymize integrations. At current it will only anonymize iap histories.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)

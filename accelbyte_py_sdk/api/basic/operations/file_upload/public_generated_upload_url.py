@@ -32,7 +32,7 @@ from ...models import ValidationErrorEntity
 class PublicGeneratedUploadUrl(Operation):
     """Generate Upload URL (publicGeneratedUploadUrl)
 
-    Generate an upload URL. It's valid for 10 minutes.  
+    Generate an upload URL. It's valid for 10 minutes.
     Other detail info:
 
       * Required permission : resource = "NAMESPACE:{namespace}:FILEUPLOAD" , action=1 (CREATE)

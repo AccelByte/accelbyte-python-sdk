@@ -28,7 +28,7 @@ from .....core import HttpResponse
 class DeleteUserSubscription(Operation):
     """Delete user subscription (deleteUserSubscription)
 
-    [TEST FACILITY ONLY] Delete user subscription.  
+    [TEST FACILITY ONLY] Delete user subscription.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=8 (DELETE)

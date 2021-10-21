@@ -34,7 +34,7 @@ class DisableCode(Operation):
     Disable code.
 
     Disable an active code, the code can't be disabled if it has already been
-    redeemed.  
+    redeemed.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)

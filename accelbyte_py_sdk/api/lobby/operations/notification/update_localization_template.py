@@ -32,7 +32,7 @@ class UpdateLocalizationTemplate(Operation):
     """update template draft (updateLocalizationTemplate)
 
     Required permission : `NAMESPACE:{namespace}:TEMPLATE [UPDATE]` with scope
-    `social`  
+    `social`
     Modify draft template
 
 

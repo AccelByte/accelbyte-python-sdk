@@ -29,7 +29,7 @@ class AnonymizeEntitlement(Operation):
     """anonymize entitlement (anonymizeEntitlement)
 
     Anonymize entitlement. At current it will only anonymize entitlement,
-    entitlement history and distribution receiver.  
+    entitlement history and distribution receiver.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)

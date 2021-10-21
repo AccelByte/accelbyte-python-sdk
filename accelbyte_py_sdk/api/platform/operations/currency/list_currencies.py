@@ -30,7 +30,7 @@ from ...models import CurrencyInfo
 class ListCurrencies(Operation):
     """List currencies (listCurrencies)
 
-    List currencies of a namespace.  
+    List currencies of a namespace.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=2 (READ)

@@ -33,7 +33,7 @@ from ...models import WalletInfo
 class DebitUserWallet(Operation):
     """Debit a user wallet (debitUserWallet)
 
-    Debit a user wallet.  
+    Debit a user wallet.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4 (UPDATE)

@@ -31,7 +31,7 @@ from ...models import FullItemInfo
 class FeatureItem(Operation):
     """Feature an item (featureItem)
 
-    Add a feature to an item.  
+    Add a feature to an item.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)

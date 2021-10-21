@@ -29,7 +29,7 @@ class GetPaymentPublicConfig(Operation):
     """Get payment provider public config (getPaymentPublicConfig)
 
     Get payment provider public config, at current only Strip provide public
-    config.  
+    config.
     Other detail info:
 
       * Returns : Public config

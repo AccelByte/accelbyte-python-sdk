@@ -33,7 +33,7 @@ class CreateUserDistributionReceiver(Operation):
 
     Create distribution receiver for a specific user by dedicated server. Once
     user distribution receiver created, user can distribute distribution to
-    receiver.  
+    receiver.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:DISTRIBUTION", action=1 (CREATE)

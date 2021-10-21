@@ -31,7 +31,7 @@ from ...models import ErrorEntity
 class GetCampaign(Operation):
     """Get campaign (getCampaign)
 
-    Get campaign info.  
+    Get campaign info.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)

@@ -30,7 +30,7 @@ from ...models import BillingHistoryPagingSlicedResult
 class PublicGetUserSubscriptionBillingHistories(Operation):
     """Get user subscription billing histories (publicGetUserSubscriptionBillingHistories)
 
-    Get user subscription billing histories.  
+    Get user subscription billing histories.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)

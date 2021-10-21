@@ -31,7 +31,7 @@ from ...models import ItemDynamicDataInfo
 class GetItemDynamicData(Operation):
     """Get item dynamic data (getItemDynamicData)
 
-    Get item dynamic data for published item.  
+    Get item dynamic data for published item.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)

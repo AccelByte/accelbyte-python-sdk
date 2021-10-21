@@ -30,7 +30,7 @@ from ...models import ErrorEntity
 class PublicCreateUserStatItem(Operation):
     """Create user's statItem (publicCreateUserStatItem)
 
-    Create user's statItem.  
+    Create user's statItem.
     Other detail info:
 
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)

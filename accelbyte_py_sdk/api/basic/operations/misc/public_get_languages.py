@@ -30,7 +30,7 @@ from ...models import ValidationErrorEntity
 class PublicGetLanguages(Operation):
     """List languages. (publicGetLanguages)
 
-    List languages.  
+    List languages.
     Other detail info:
 
       * Returns : language list

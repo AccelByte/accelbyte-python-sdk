@@ -30,7 +30,7 @@ from ...models import PaymentProviderConfigPagingSlicedResult
 class QueryPaymentProviderConfig(Operation):
     """Query payment provider config (queryPaymentProviderConfig)
 
-    Query payment provider config.  
+    Query payment provider config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)

@@ -28,7 +28,7 @@ from .....core import HttpResponse
 class AuthCodeRequestV3(Operation):
     """Generate url to request auth code from third party platform. (AuthCodeRequestV3)
 
-    'Generate url to request auth code from third party platform  
+    'Generate url to request auth code from third party platform
 
     ## Supported platforms:
 

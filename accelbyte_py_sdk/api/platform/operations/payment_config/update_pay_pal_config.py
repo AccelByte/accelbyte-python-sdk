@@ -32,7 +32,7 @@ from ...models import PaymentMerchantConfigInfo
 class UpdatePayPalConfig(Operation):
     """Update PayPal config (updatePayPalConfig)
 
-    Update PayPal config.  
+    Update PayPal config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)

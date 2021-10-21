@@ -32,7 +32,7 @@ class GetNotifications(Operation):
     """get all stored notification for a user. (getNotifications)
 
     Required permission : `NAMESPACE:{namespace}:USER:{userId}:NOTIFICATION
-    [READ]` with scope `social`  
+    [READ]` with scope `social`
     Retrieve all notification stored for a user. Successfully retrieved
     notifications will not be deleted.
 

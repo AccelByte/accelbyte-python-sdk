@@ -31,7 +31,7 @@ from ...models import PaymentOrderChargeStatus
 class GetPaymentOrderChargeStatus(Operation):
     """Get payment order charge status (getPaymentOrderChargeStatus)
 
-    Get payment order charge status.  
+    Get payment order charge status.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)

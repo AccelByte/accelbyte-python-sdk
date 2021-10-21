@@ -31,8 +31,8 @@ class DeleteTopicByTopicName(Operation):
     """delete topic information by topic name (deleteTopicByTopicName)
 
     Required permission : `NAMESPACE:{namespace}:TOPIC [DELETE]` with scope
-    `social`  
-    delete topic information by topic name.  
+    `social`
+    delete topic information by topic name.
     topic should be alphabets, no special char except underscore, uppercase and no
     spacing. for example: TOPIC_TEST. Already existing topic can not be created
 

@@ -30,7 +30,7 @@ from ...models import StatPagingSlicedResult
 class QueryStats(Operation):
     """Query stats by keyword (queryStats)
 
-    Query stats stats by keyword.  
+    Query stats stats by keyword.
     Other detail info:
 
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=2 (READ)

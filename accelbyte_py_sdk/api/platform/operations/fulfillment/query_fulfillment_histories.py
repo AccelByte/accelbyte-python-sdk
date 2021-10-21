@@ -30,7 +30,7 @@ from ...models import FulfillmentHistoryPagingSlicedResult
 class QueryFulfillmentHistories(Operation):
     """Query fulfillment histories (queryFulfillmentHistories)
 
-    Query fulfillment histories in a namespace.  
+    Query fulfillment histories in a namespace.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:FULFILLMENT", action=2 (READ)

@@ -31,7 +31,7 @@ from ...models import ErrorEntity
 class GetEpicGamesIAPConfig(Operation):
     """Get epicgames iap config (getEpicGamesIAPConfig)
 
-    Get epic games iap config.  
+    Get epic games iap config.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
