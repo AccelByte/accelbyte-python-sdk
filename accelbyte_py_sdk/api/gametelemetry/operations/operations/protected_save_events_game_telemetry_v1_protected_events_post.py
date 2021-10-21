@@ -1,4 +1,4 @@
-# Auto-generated at 2021-10-21T08:52:33.143572+08:00
+# Auto-generated at 2021-10-21T10:46:10.717098+08:00
 # from: Justice gametelemetry Service (0.0.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
@@ -66,7 +66,7 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
 
         security: bearer
 
-        body: (body) REQUIRED TelemetryBody in body
+        body: (body) REQUIRED List[TelemetryBody] in body
 
     Responses:
         204: No Content - (Successful Response)
@@ -83,7 +83,7 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    body: TelemetryBody                                                                            # REQUIRED in [body]
+    body: List[TelemetryBody]                                                                      # REQUIRED in [body]
 
     # endregion fields
 
@@ -140,7 +140,7 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
         }
 
     def get_body_params(self) -> Any:
-        return self.body.to_dict()
+        return [i.to_dict() for i in self.body]
 
     # endregion get_x_params methods
 
@@ -155,7 +155,7 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: TelemetryBody) -> ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost:
+    def with_body(self, value: List[TelemetryBody]) -> ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost:
         self.body = value
         return self
 
@@ -166,9 +166,9 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "body") and self.body:
-            result["body"] = self.body.to_dict(include_empty=include_empty)
+            result["body"] = [i0.to_dict(include_empty=include_empty) for i0 in self.body]
         elif include_empty:
-            result["body"] = TelemetryBody()
+            result["body"] = []
         return result
 
     # endregion to methods
@@ -199,7 +199,7 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
     @classmethod
     def create(
         cls,
-        body: TelemetryBody,
+        body: List[TelemetryBody],
     ) -> ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost:
         instance = cls()
         instance.body = body
@@ -209,9 +209,9 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = TelemetryBody.create_from_dict(dict_["body"], include_empty=include_empty)
+            instance.body = [TelemetryBody.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["body"]]
         elif include_empty:
-            instance.body = TelemetryBody()
+            instance.body = []
         return instance
 
     @staticmethod

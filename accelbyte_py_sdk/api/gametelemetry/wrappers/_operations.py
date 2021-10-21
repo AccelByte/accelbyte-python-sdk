@@ -36,7 +36,7 @@ def protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playti
 
 
 @same_doc_as(ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost)
-def protected_save_events_game_telemetry_v1_protected_events_post(body: TelemetryBody):
+def protected_save_events_game_telemetry_v1_protected_events_post(body: List[TelemetryBody]):
     request = ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost.create(
         body=body,
     )
