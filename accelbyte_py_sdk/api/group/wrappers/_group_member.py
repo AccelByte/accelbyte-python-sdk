@@ -43,7 +43,7 @@ from ..operations.group_member import RejectGroupJoinRequestPublicV1
 
 
 @same_doc_as(AcceptGroupInvitationPublicV1)
-def accept_group_invitation_public_v1(group_id: str, namespace: Optional[str] = None):
+def accept_group_invitation_public_v1(group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -52,11 +52,11 @@ def accept_group_invitation_public_v1(group_id: str, namespace: Optional[str] = 
         group_id=group_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AcceptGroupJoinRequestPublicV1)
-def accept_group_join_request_public_v1(user_id: str, namespace: Optional[str] = None):
+def accept_group_join_request_public_v1(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -65,11 +65,11 @@ def accept_group_join_request_public_v1(user_id: str, namespace: Optional[str] =
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(CancelGroupJoinRequestV1)
-def cancel_group_join_request_v1(group_id: str, namespace: Optional[str] = None):
+def cancel_group_join_request_v1(group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -78,11 +78,11 @@ def cancel_group_join_request_v1(group_id: str, namespace: Optional[str] = None)
         group_id=group_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetGroupMembersListAdminV1)
-def get_group_members_list_admin_v1(group_id: str, limit: Optional[int] = None, offset: Optional[int] = None, order: Optional[str] = None, namespace: Optional[str] = None):
+def get_group_members_list_admin_v1(group_id: str, limit: Optional[int] = None, offset: Optional[int] = None, order: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -94,11 +94,11 @@ def get_group_members_list_admin_v1(group_id: str, limit: Optional[int] = None, 
         order=order,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetGroupMembersListPublicV1)
-def get_group_members_list_public_v1(group_id: str, limit: Optional[int] = None, offset: Optional[int] = None, order: Optional[str] = None, namespace: Optional[str] = None):
+def get_group_members_list_public_v1(group_id: str, limit: Optional[int] = None, offset: Optional[int] = None, order: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -110,11 +110,11 @@ def get_group_members_list_public_v1(group_id: str, limit: Optional[int] = None,
         order=order,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserGroupInformationPublicV1)
-def get_user_group_information_public_v1(user_id: str, namespace: Optional[str] = None):
+def get_user_group_information_public_v1(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -123,11 +123,11 @@ def get_user_group_information_public_v1(user_id: str, namespace: Optional[str] 
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(InviteGroupPublicV1)
-def invite_group_public_v1(user_id: str, namespace: Optional[str] = None):
+def invite_group_public_v1(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -136,11 +136,11 @@ def invite_group_public_v1(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(JoinGroupV1)
-def join_group_v1(group_id: str, namespace: Optional[str] = None):
+def join_group_v1(group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -149,11 +149,11 @@ def join_group_v1(group_id: str, namespace: Optional[str] = None):
         group_id=group_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(KickGroupMemberPublicV1)
-def kick_group_member_public_v1(user_id: str, namespace: Optional[str] = None):
+def kick_group_member_public_v1(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -162,11 +162,11 @@ def kick_group_member_public_v1(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(LeaveGroupPublicV1)
-def leave_group_public_v1(namespace: Optional[str] = None):
+def leave_group_public_v1(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -174,11 +174,11 @@ def leave_group_public_v1(namespace: Optional[str] = None):
     request = LeaveGroupPublicV1.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(RejectGroupInvitationPublicV1)
-def reject_group_invitation_public_v1(group_id: str, namespace: Optional[str] = None):
+def reject_group_invitation_public_v1(group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -187,11 +187,11 @@ def reject_group_invitation_public_v1(group_id: str, namespace: Optional[str] = 
         group_id=group_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(RejectGroupJoinRequestPublicV1)
-def reject_group_join_request_public_v1(user_id: str, namespace: Optional[str] = None):
+def reject_group_join_request_public_v1(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -200,4 +200,4 @@ def reject_group_join_request_public_v1(user_id: str, namespace: Optional[str] =
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

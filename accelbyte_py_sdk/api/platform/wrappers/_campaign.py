@@ -53,7 +53,7 @@ from ..operations.campaign import UpdateCampaign
 
 
 @same_doc_as(ApplyUserRedemption)
-def apply_user_redemption(user_id: str, body: Optional[RedeemRequest] = None, namespace: Optional[str] = None):
+def apply_user_redemption(user_id: str, body: Optional[RedeemRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -63,11 +63,11 @@ def apply_user_redemption(user_id: str, body: Optional[RedeemRequest] = None, na
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(BulkDisableCodes)
-def bulk_disable_codes(campaign_id: str, batch_no: Optional[int] = None, namespace: Optional[str] = None):
+def bulk_disable_codes(campaign_id: str, batch_no: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -77,11 +77,11 @@ def bulk_disable_codes(campaign_id: str, batch_no: Optional[int] = None, namespa
         batch_no=batch_no,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(BulkEnableCodes)
-def bulk_enable_codes(campaign_id: str, batch_no: Optional[int] = None, namespace: Optional[str] = None):
+def bulk_enable_codes(campaign_id: str, batch_no: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -91,11 +91,11 @@ def bulk_enable_codes(campaign_id: str, batch_no: Optional[int] = None, namespac
         batch_no=batch_no,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(CreateCampaign)
-def create_campaign(body: Optional[CampaignCreate] = None, namespace: Optional[str] = None):
+def create_campaign(body: Optional[CampaignCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -104,11 +104,11 @@ def create_campaign(body: Optional[CampaignCreate] = None, namespace: Optional[s
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(CreateCodes)
-def create_codes(campaign_id: str, body: Optional[CodeCreate] = None, namespace: Optional[str] = None):
+def create_codes(campaign_id: str, body: Optional[CodeCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -118,11 +118,11 @@ def create_codes(campaign_id: str, body: Optional[CodeCreate] = None, namespace:
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DisableCode)
-def disable_code(code: str, namespace: Optional[str] = None):
+def disable_code(code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -131,11 +131,11 @@ def disable_code(code: str, namespace: Optional[str] = None):
         code=code,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(Download)
-def download(campaign_id: str, batch_no: Optional[int] = None, namespace: Optional[str] = None):
+def download(campaign_id: str, batch_no: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -145,11 +145,11 @@ def download(campaign_id: str, batch_no: Optional[int] = None, namespace: Option
         batch_no=batch_no,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(EnableCode)
-def enable_code(code: str, namespace: Optional[str] = None):
+def enable_code(code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -158,11 +158,11 @@ def enable_code(code: str, namespace: Optional[str] = None):
         code=code,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetCampaign)
-def get_campaign(campaign_id: str, namespace: Optional[str] = None):
+def get_campaign(campaign_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -171,11 +171,11 @@ def get_campaign(campaign_id: str, namespace: Optional[str] = None):
         campaign_id=campaign_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetCampaignDynamic)
-def get_campaign_dynamic(campaign_id: str, namespace: Optional[str] = None):
+def get_campaign_dynamic(campaign_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -184,11 +184,11 @@ def get_campaign_dynamic(campaign_id: str, namespace: Optional[str] = None):
         campaign_id=campaign_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetCode)
-def get_code(code: str, redeemable: Optional[bool] = None, namespace: Optional[str] = None):
+def get_code(code: str, redeemable: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -198,11 +198,11 @@ def get_code(code: str, redeemable: Optional[bool] = None, namespace: Optional[s
         redeemable=redeemable,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QueryCampaigns)
-def query_campaigns(name: Optional[str] = None, tag: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
+def query_campaigns(name: Optional[str] = None, tag: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -214,11 +214,11 @@ def query_campaigns(name: Optional[str] = None, tag: Optional[str] = None, offse
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QueryCodes)
-def query_codes(campaign_id: str, batch_no: Optional[int] = None, code: Optional[str] = None, active_only: Optional[bool] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
+def query_codes(campaign_id: str, batch_no: Optional[int] = None, code: Optional[str] = None, active_only: Optional[bool] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -232,11 +232,11 @@ def query_codes(campaign_id: str, batch_no: Optional[int] = None, code: Optional
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QueryRedeemHistory)
-def query_redeem_history(campaign_id: str, user_id: Optional[str] = None, code: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
+def query_redeem_history(campaign_id: str, user_id: Optional[str] = None, code: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -249,11 +249,11 @@ def query_redeem_history(campaign_id: str, user_id: Optional[str] = None, code: 
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateCampaign)
-def update_campaign(campaign_id: str, body: Optional[CampaignUpdate] = None, namespace: Optional[str] = None):
+def update_campaign(campaign_id: str, body: Optional[CampaignUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -263,4 +263,4 @@ def update_campaign(campaign_id: str, body: Optional[CampaignUpdate] = None, nam
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

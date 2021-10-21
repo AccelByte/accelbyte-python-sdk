@@ -37,7 +37,7 @@ from ..operations.ticket import IncreaseTicketSale
 
 
 @same_doc_as(AcquireUserTicket)
-def acquire_user_ticket(user_id: str, booth_name: str, body: Optional[TicketAcquireRequest] = None, namespace: Optional[str] = None):
+def acquire_user_ticket(user_id: str, booth_name: str, body: Optional[TicketAcquireRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -48,11 +48,11 @@ def acquire_user_ticket(user_id: str, booth_name: str, body: Optional[TicketAcqu
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DecreaseTicketSale)
-def decrease_ticket_sale(booth_name: str, body: Optional[TicketSaleDecrementRequest] = None, namespace: Optional[str] = None):
+def decrease_ticket_sale(booth_name: str, body: Optional[TicketSaleDecrementRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -62,11 +62,11 @@ def decrease_ticket_sale(booth_name: str, body: Optional[TicketSaleDecrementRequ
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetTicketBoothID)
-def get_ticket_booth_id(booth_name: str, namespace: Optional[str] = None):
+def get_ticket_booth_id(booth_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -75,11 +75,11 @@ def get_ticket_booth_id(booth_name: str, namespace: Optional[str] = None):
         booth_name=booth_name,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetTicketDynamic)
-def get_ticket_dynamic(booth_name: str, namespace: Optional[str] = None):
+def get_ticket_dynamic(booth_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -88,11 +88,11 @@ def get_ticket_dynamic(booth_name: str, namespace: Optional[str] = None):
         booth_name=booth_name,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(IncreaseTicketSale)
-def increase_ticket_sale(booth_name: str, body: Optional[TicketSaleIncrementRequest] = None, namespace: Optional[str] = None):
+def increase_ticket_sale(booth_name: str, body: Optional[TicketSaleIncrementRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -102,4 +102,4 @@ def increase_ticket_sale(booth_name: str, body: Optional[TicketSaleIncrementRequ
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

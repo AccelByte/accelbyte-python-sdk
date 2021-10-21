@@ -73,7 +73,7 @@ from ..operations.user_statistic import UpdateUserStatItemValue1
 
 
 @same_doc_as(BulkCreateUserStatItems)
-def bulk_create_user_stat_items(user_id: str, body: Optional[List[BulkStatItemCreate]] = None, namespace: Optional[str] = None):
+def bulk_create_user_stat_items(user_id: str, body: Optional[List[BulkStatItemCreate]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -83,11 +83,11 @@ def bulk_create_user_stat_items(user_id: str, body: Optional[List[BulkStatItemCr
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(BulkFetchStatItems)
-def bulk_fetch_stat_items(stat_code: str, user_ids: str, namespace: Optional[str] = None):
+def bulk_fetch_stat_items(stat_code: str, user_ids: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -97,11 +97,11 @@ def bulk_fetch_stat_items(stat_code: str, user_ids: str, namespace: Optional[str
         user_ids=user_ids,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(BulkFetchStatItems1)
-def bulk_fetch_stat_items_1(stat_code: str, user_ids: str, namespace: Optional[str] = None):
+def bulk_fetch_stat_items_1(stat_code: str, user_ids: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -111,11 +111,11 @@ def bulk_fetch_stat_items_1(stat_code: str, user_ids: str, namespace: Optional[s
         user_ids=user_ids,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(BulkIncUserStatItem)
-def bulk_inc_user_stat_item(body: Optional[List[BulkUserStatItemInc]] = None, namespace: Optional[str] = None):
+def bulk_inc_user_stat_item(body: Optional[List[BulkUserStatItemInc]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -124,11 +124,11 @@ def bulk_inc_user_stat_item(body: Optional[List[BulkUserStatItemInc]] = None, na
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(BulkIncUserStatItem1)
-def bulk_inc_user_stat_item_1(user_id: str, body: Optional[List[BulkStatItemInc]] = None, namespace: Optional[str] = None):
+def bulk_inc_user_stat_item_1(user_id: str, body: Optional[List[BulkStatItemInc]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -138,11 +138,11 @@ def bulk_inc_user_stat_item_1(user_id: str, body: Optional[List[BulkStatItemInc]
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(BulkIncUserStatItemValue)
-def bulk_inc_user_stat_item_value(body: Optional[List[BulkUserStatItemInc]] = None, namespace: Optional[str] = None):
+def bulk_inc_user_stat_item_value(body: Optional[List[BulkUserStatItemInc]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -151,11 +151,11 @@ def bulk_inc_user_stat_item_value(body: Optional[List[BulkUserStatItemInc]] = No
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(BulkIncUserStatItemValue1)
-def bulk_inc_user_stat_item_value_1(user_id: str, body: Optional[List[BulkStatItemInc]] = None, namespace: Optional[str] = None):
+def bulk_inc_user_stat_item_value_1(user_id: str, body: Optional[List[BulkStatItemInc]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -165,11 +165,11 @@ def bulk_inc_user_stat_item_value_1(user_id: str, body: Optional[List[BulkStatIt
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(BulkIncUserStatItemValue2)
-def bulk_inc_user_stat_item_value_2(user_id: str, body: Optional[List[BulkStatItemInc]] = None, namespace: Optional[str] = None):
+def bulk_inc_user_stat_item_value_2(user_id: str, body: Optional[List[BulkStatItemInc]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -179,11 +179,11 @@ def bulk_inc_user_stat_item_value_2(user_id: str, body: Optional[List[BulkStatIt
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(BulkResetUserStatItem)
-def bulk_reset_user_stat_item(body: Optional[List[BulkUserStatItemReset]] = None, namespace: Optional[str] = None):
+def bulk_reset_user_stat_item(body: Optional[List[BulkUserStatItemReset]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -192,11 +192,11 @@ def bulk_reset_user_stat_item(body: Optional[List[BulkUserStatItemReset]] = None
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(BulkResetUserStatItem1)
-def bulk_reset_user_stat_item_1(user_id: str, body: Optional[List[BulkStatItemReset]] = None, namespace: Optional[str] = None):
+def bulk_reset_user_stat_item_1(user_id: str, body: Optional[List[BulkStatItemReset]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -206,11 +206,11 @@ def bulk_reset_user_stat_item_1(user_id: str, body: Optional[List[BulkStatItemRe
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(BulkResetUserStatItem2)
-def bulk_reset_user_stat_item_2(body: Optional[List[BulkUserStatItemReset]] = None, namespace: Optional[str] = None):
+def bulk_reset_user_stat_item_2(body: Optional[List[BulkUserStatItemReset]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -219,11 +219,11 @@ def bulk_reset_user_stat_item_2(body: Optional[List[BulkUserStatItemReset]] = No
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(BulkResetUserStatItem3)
-def bulk_reset_user_stat_item_3(user_id: str, body: Optional[List[BulkStatItemReset]] = None, namespace: Optional[str] = None):
+def bulk_reset_user_stat_item_3(user_id: str, body: Optional[List[BulkStatItemReset]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -233,11 +233,11 @@ def bulk_reset_user_stat_item_3(user_id: str, body: Optional[List[BulkStatItemRe
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(BulkUpdateUserStatItem)
-def bulk_update_user_stat_item(user_id: str, body: Optional[List[BulkStatItemUpdate]] = None, additional_key: Optional[str] = None, namespace: Optional[str] = None):
+def bulk_update_user_stat_item(user_id: str, body: Optional[List[BulkStatItemUpdate]] = None, additional_key: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -248,11 +248,11 @@ def bulk_update_user_stat_item(user_id: str, body: Optional[List[BulkStatItemUpd
         additional_key=additional_key,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(BulkUpdateUserStatItem1)
-def bulk_update_user_stat_item_1(body: Optional[List[BulkUserStatItemUpdate]] = None, namespace: Optional[str] = None):
+def bulk_update_user_stat_item_1(body: Optional[List[BulkUserStatItemUpdate]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -261,11 +261,11 @@ def bulk_update_user_stat_item_1(body: Optional[List[BulkUserStatItemUpdate]] = 
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(BulkUpdateUserStatItem2)
-def bulk_update_user_stat_item_2(user_id: str, body: Optional[List[BulkStatItemUpdate]] = None, additional_key: Optional[str] = None, namespace: Optional[str] = None):
+def bulk_update_user_stat_item_2(user_id: str, body: Optional[List[BulkStatItemUpdate]] = None, additional_key: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -276,11 +276,11 @@ def bulk_update_user_stat_item_2(user_id: str, body: Optional[List[BulkStatItemU
         additional_key=additional_key,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(BulkUpdateUserStatItemV2)
-def bulk_update_user_stat_item_v2(body: Optional[List[BulkUserStatItemUpdate]] = None, namespace: Optional[str] = None):
+def bulk_update_user_stat_item_v2(body: Optional[List[BulkUserStatItemUpdate]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -289,11 +289,11 @@ def bulk_update_user_stat_item_v2(body: Optional[List[BulkUserStatItemUpdate]] =
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(CreateUserStatItem)
-def create_user_stat_item(user_id: str, stat_code: str, namespace: Optional[str] = None):
+def create_user_stat_item(user_id: str, stat_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -303,11 +303,11 @@ def create_user_stat_item(user_id: str, stat_code: str, namespace: Optional[str]
         stat_code=stat_code,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteUserStatItems)
-def delete_user_stat_items(user_id: str, stat_code: str, namespace: Optional[str] = None):
+def delete_user_stat_items(user_id: str, stat_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -317,11 +317,11 @@ def delete_user_stat_items(user_id: str, stat_code: str, namespace: Optional[str
         stat_code=stat_code,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteUserStatItems1)
-def delete_user_stat_items_1(user_id: str, stat_code: str, namespace: Optional[str] = None):
+def delete_user_stat_items_1(user_id: str, stat_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -331,11 +331,11 @@ def delete_user_stat_items_1(user_id: str, stat_code: str, namespace: Optional[s
         stat_code=stat_code,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteUserStatItems2)
-def delete_user_stat_items_2(user_id: str, stat_code: str, additional_key: Optional[str] = None, namespace: Optional[str] = None):
+def delete_user_stat_items_2(user_id: str, stat_code: str, additional_key: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -346,11 +346,11 @@ def delete_user_stat_items_2(user_id: str, stat_code: str, additional_key: Optio
         additional_key=additional_key,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserStatItems)
-def get_user_stat_items(user_id: str, stat_codes: Optional[str] = None, tags: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
+def get_user_stat_items(user_id: str, stat_codes: Optional[str] = None, tags: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -363,11 +363,11 @@ def get_user_stat_items(user_id: str, stat_codes: Optional[str] = None, tags: Op
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(IncUserStatItemValue)
-def inc_user_stat_item_value(user_id: str, stat_code: str, body: Optional[StatItemInc] = None, namespace: Optional[str] = None):
+def inc_user_stat_item_value(user_id: str, stat_code: str, body: Optional[StatItemInc] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -378,11 +378,11 @@ def inc_user_stat_item_value(user_id: str, stat_code: str, body: Optional[StatIt
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicBulkCreateUserStatItems)
-def public_bulk_create_user_stat_items(user_id: str, body: Optional[List[BulkStatItemCreate]] = None, namespace: Optional[str] = None):
+def public_bulk_create_user_stat_items(user_id: str, body: Optional[List[BulkStatItemCreate]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -392,11 +392,11 @@ def public_bulk_create_user_stat_items(user_id: str, body: Optional[List[BulkSta
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicBulkIncUserStatItem)
-def public_bulk_inc_user_stat_item(body: Optional[List[BulkUserStatItemInc]] = None, namespace: Optional[str] = None):
+def public_bulk_inc_user_stat_item(body: Optional[List[BulkUserStatItemInc]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -405,11 +405,11 @@ def public_bulk_inc_user_stat_item(body: Optional[List[BulkUserStatItemInc]] = N
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicBulkIncUserStatItem1)
-def public_bulk_inc_user_stat_item_1(user_id: str, body: Optional[List[BulkStatItemInc]] = None, namespace: Optional[str] = None):
+def public_bulk_inc_user_stat_item_1(user_id: str, body: Optional[List[BulkStatItemInc]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -419,11 +419,11 @@ def public_bulk_inc_user_stat_item_1(user_id: str, body: Optional[List[BulkStatI
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicBulkIncUserStatItemValue)
-def public_bulk_inc_user_stat_item_value(body: Optional[List[BulkUserStatItemInc]] = None, namespace: Optional[str] = None):
+def public_bulk_inc_user_stat_item_value(body: Optional[List[BulkUserStatItemInc]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -432,11 +432,11 @@ def public_bulk_inc_user_stat_item_value(body: Optional[List[BulkUserStatItemInc
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicCreateUserStatItem)
-def public_create_user_stat_item(user_id: str, stat_code: str, namespace: Optional[str] = None):
+def public_create_user_stat_item(user_id: str, stat_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -446,11 +446,11 @@ def public_create_user_stat_item(user_id: str, stat_code: str, namespace: Option
         stat_code=stat_code,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicIncUserStatItem)
-def public_inc_user_stat_item(user_id: str, stat_code: str, body: Optional[StatItemInc] = None, namespace: Optional[str] = None):
+def public_inc_user_stat_item(user_id: str, stat_code: str, body: Optional[StatItemInc] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -461,11 +461,11 @@ def public_inc_user_stat_item(user_id: str, stat_code: str, body: Optional[StatI
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicIncUserStatItemValue)
-def public_inc_user_stat_item_value(user_id: str, stat_code: str, body: Optional[StatItemInc] = None, namespace: Optional[str] = None):
+def public_inc_user_stat_item_value(user_id: str, stat_code: str, body: Optional[StatItemInc] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -476,11 +476,11 @@ def public_inc_user_stat_item_value(user_id: str, stat_code: str, body: Optional
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicQueryUserStatItems)
-def public_query_user_stat_items(user_id: str, stat_codes: Optional[str] = None, tags: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
+def public_query_user_stat_items(user_id: str, stat_codes: Optional[str] = None, tags: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -493,11 +493,11 @@ def public_query_user_stat_items(user_id: str, stat_codes: Optional[str] = None,
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ResetUserStatItemValue)
-def reset_user_stat_item_value(user_id: str, stat_code: str, body: Optional[StatResetInfo] = None, additional_key: Optional[str] = None, namespace: Optional[str] = None):
+def reset_user_stat_item_value(user_id: str, stat_code: str, body: Optional[StatResetInfo] = None, additional_key: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -509,11 +509,11 @@ def reset_user_stat_item_value(user_id: str, stat_code: str, body: Optional[Stat
         additional_key=additional_key,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ResetUserStatItemValue1)
-def reset_user_stat_item_value_1(user_id: str, stat_code: str, namespace: Optional[str] = None):
+def reset_user_stat_item_value_1(user_id: str, stat_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -523,11 +523,11 @@ def reset_user_stat_item_value_1(user_id: str, stat_code: str, namespace: Option
         stat_code=stat_code,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateUserStatItemValue)
-def update_user_stat_item_value(user_id: str, stat_code: str, body: Optional[StatItemUpdate] = None, additional_key: Optional[str] = None, namespace: Optional[str] = None):
+def update_user_stat_item_value(user_id: str, stat_code: str, body: Optional[StatItemUpdate] = None, additional_key: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -539,11 +539,11 @@ def update_user_stat_item_value(user_id: str, stat_code: str, body: Optional[Sta
         additional_key=additional_key,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateUserStatItemValue1)
-def update_user_stat_item_value_1(user_id: str, stat_code: str, body: Optional[StatItemUpdate] = None, additional_key: Optional[str] = None, namespace: Optional[str] = None):
+def update_user_stat_item_value_1(user_id: str, stat_code: str, body: Optional[StatItemUpdate] = None, additional_key: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -555,4 +555,4 @@ def update_user_stat_item_value_1(user_id: str, stat_code: str, body: Optional[S
         additional_key=additional_key,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

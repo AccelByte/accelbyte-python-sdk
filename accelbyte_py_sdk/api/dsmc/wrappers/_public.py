@@ -26,12 +26,12 @@ from ..operations.public import ListProviders
 
 
 @same_doc_as(GetDefaultProvider)
-def get_default_provider():
+def get_default_provider(x_additional_headers: Optional[Dict[str, str]] = None):
     request = GetDefaultProvider.create()
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ListProviders)
-def list_providers():
+def list_providers(x_additional_headers: Optional[Dict[str, str]] = None):
     request = ListProviders.create()
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

@@ -26,17 +26,17 @@ from ..operations.sso import LogoutSSOClient
 
 
 @same_doc_as(LoginSSOClient)
-def login_sso_client(platform_id: str, payload: Optional[str] = None):
+def login_sso_client(platform_id: str, payload: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = LoginSSOClient.create(
         platform_id=platform_id,
         payload=payload,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(LogoutSSOClient)
-def logout_sso_client(platform_id: str):
+def logout_sso_client(platform_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
     request = LogoutSSOClient.create(
         platform_id=platform_id,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

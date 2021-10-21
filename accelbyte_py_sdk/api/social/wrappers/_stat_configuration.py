@@ -38,7 +38,7 @@ from ..operations.stat_configuration import UpdateStat
 
 
 @same_doc_as(CreateStat)
-def create_stat(body: Optional[StatCreate] = None, namespace: Optional[str] = None):
+def create_stat(body: Optional[StatCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -47,11 +47,11 @@ def create_stat(body: Optional[StatCreate] = None, namespace: Optional[str] = No
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(CreateStat1)
-def create_stat_1(body: Optional[StatCreate] = None, namespace: Optional[str] = None):
+def create_stat_1(body: Optional[StatCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -60,11 +60,11 @@ def create_stat_1(body: Optional[StatCreate] = None, namespace: Optional[str] = 
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteStat)
-def delete_stat(stat_code: str, namespace: Optional[str] = None):
+def delete_stat(stat_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -73,11 +73,11 @@ def delete_stat(stat_code: str, namespace: Optional[str] = None):
         stat_code=stat_code,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ExportStats)
-def export_stats(namespace: Optional[str] = None):
+def export_stats(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -85,11 +85,11 @@ def export_stats(namespace: Optional[str] = None):
     request = ExportStats.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetStat)
-def get_stat(stat_code: str, namespace: Optional[str] = None):
+def get_stat(stat_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -98,11 +98,11 @@ def get_stat(stat_code: str, namespace: Optional[str] = None):
         stat_code=stat_code,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetStats)
-def get_stats(offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
+def get_stats(offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -112,11 +112,11 @@ def get_stats(offset: Optional[int] = None, limit: Optional[int] = None, namespa
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ImportStats)
-def import_stats(file: Optional[Any] = None, replace_existing: Optional[bool] = None, namespace: Optional[str] = None):
+def import_stats(file: Optional[Any] = None, replace_existing: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -126,11 +126,11 @@ def import_stats(file: Optional[Any] = None, replace_existing: Optional[bool] = 
         replace_existing=replace_existing,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QueryStats)
-def query_stats(keyword: str, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
+def query_stats(keyword: str, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -141,11 +141,11 @@ def query_stats(keyword: str, offset: Optional[int] = None, limit: Optional[int]
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateStat)
-def update_stat(stat_code: str, body: Optional[StatUpdate] = None, namespace: Optional[str] = None):
+def update_stat(stat_code: str, body: Optional[StatUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -155,4 +155,4 @@ def update_stat(stat_code: str, body: Optional[StatUpdate] = None, namespace: Op
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

@@ -47,7 +47,7 @@ from ..operations.friends import UserUnfriendRequest
 
 
 @same_doc_as(AddFriendsWithoutConfirmation)
-def add_friends_without_confirmation(body: ModelBulkAddFriendsRequest, user_id: str, namespace: Optional[str] = None):
+def add_friends_without_confirmation(body: ModelBulkAddFriendsRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -57,11 +57,11 @@ def add_friends_without_confirmation(body: ModelBulkAddFriendsRequest, user_id: 
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetListOfFriends)
-def get_list_of_friends(user_id: str, limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None):
+def get_list_of_friends(user_id: str, limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -72,11 +72,11 @@ def get_list_of_friends(user_id: str, limit: Optional[str] = None, offset: Optio
         offset=offset,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserFriends)
-def get_user_friends(namespace: Optional[str] = None):
+def get_user_friends(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -84,11 +84,11 @@ def get_user_friends(namespace: Optional[str] = None):
     request = GetUserFriends.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserIncomingFriends)
-def get_user_incoming_friends(namespace: Optional[str] = None):
+def get_user_incoming_friends(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -96,11 +96,11 @@ def get_user_incoming_friends(namespace: Optional[str] = None):
     request = GetUserIncomingFriends.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserOutgoingFriends)
-def get_user_outgoing_friends(namespace: Optional[str] = None):
+def get_user_outgoing_friends(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -108,11 +108,11 @@ def get_user_outgoing_friends(namespace: Optional[str] = None):
     request = GetUserOutgoingFriends.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UserAcceptFriendRequest)
-def user_accept_friend_request(body: ModelUserAcceptFriendRequest, namespace: Optional[str] = None):
+def user_accept_friend_request(body: ModelUserAcceptFriendRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -121,11 +121,11 @@ def user_accept_friend_request(body: ModelUserAcceptFriendRequest, namespace: Op
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UserCancelFriendRequest)
-def user_cancel_friend_request(body: ModelUserCancelFriendRequest, namespace: Optional[str] = None):
+def user_cancel_friend_request(body: ModelUserCancelFriendRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -134,11 +134,11 @@ def user_cancel_friend_request(body: ModelUserCancelFriendRequest, namespace: Op
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UserGetFriendshipStatus)
-def user_get_friendship_status(friend_id: str, namespace: Optional[str] = None):
+def user_get_friendship_status(friend_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -147,11 +147,11 @@ def user_get_friendship_status(friend_id: str, namespace: Optional[str] = None):
         friend_id=friend_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UserRejectFriendRequest)
-def user_reject_friend_request(body: ModelUserRejectFriendRequest, namespace: Optional[str] = None):
+def user_reject_friend_request(body: ModelUserRejectFriendRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -160,11 +160,11 @@ def user_reject_friend_request(body: ModelUserRejectFriendRequest, namespace: Op
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UserRequestFriend)
-def user_request_friend(body: ModelRequestFriendsRequest, namespace: Optional[str] = None):
+def user_request_friend(body: ModelRequestFriendsRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -173,11 +173,11 @@ def user_request_friend(body: ModelRequestFriendsRequest, namespace: Optional[st
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UserUnfriendRequest)
-def user_unfriend_request(body: ModelUserUnfriendRequest, namespace: Optional[str] = None):
+def user_unfriend_request(body: ModelUserUnfriendRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -186,4 +186,4 @@ def user_unfriend_request(body: ModelUserUnfriendRequest, namespace: Optional[st
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

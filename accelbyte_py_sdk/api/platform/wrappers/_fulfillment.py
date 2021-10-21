@@ -31,7 +31,7 @@ from ..operations.fulfillment import QueryFulfillmentHistories
 
 
 @same_doc_as(FulfillItem)
-def fulfill_item(user_id: str, body: Optional[FulfillmentRequest] = None, namespace: Optional[str] = None):
+def fulfill_item(user_id: str, body: Optional[FulfillmentRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -41,11 +41,11 @@ def fulfill_item(user_id: str, body: Optional[FulfillmentRequest] = None, namesp
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicRedeemCode)
-def public_redeem_code(user_id: str, body: Optional[FulfillCodeRequest] = None, namespace: Optional[str] = None):
+def public_redeem_code(user_id: str, body: Optional[FulfillCodeRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -55,11 +55,11 @@ def public_redeem_code(user_id: str, body: Optional[FulfillCodeRequest] = None, 
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QueryFulfillmentHistories)
-def query_fulfillment_histories(status: Optional[str] = None, user_id: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
+def query_fulfillment_histories(status: Optional[str] = None, user_id: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -71,4 +71,4 @@ def query_fulfillment_histories(status: Optional[str] = None, user_id: Optional[
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

@@ -39,7 +39,7 @@ from ..operations.reward import UpdateReward
 
 
 @same_doc_as(CreateReward)
-def create_reward(body: Optional[RewardCreate] = None, namespace: Optional[str] = None):
+def create_reward(body: Optional[RewardCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -48,11 +48,11 @@ def create_reward(body: Optional[RewardCreate] = None, namespace: Optional[str] 
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteReward)
-def delete_reward(reward_id: str, namespace: Optional[str] = None):
+def delete_reward(reward_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -61,11 +61,11 @@ def delete_reward(reward_id: str, namespace: Optional[str] = None):
         reward_id=reward_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ExportRewards)
-def export_rewards(namespace: Optional[str] = None):
+def export_rewards(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -73,11 +73,11 @@ def export_rewards(namespace: Optional[str] = None):
     request = ExportRewards.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetReward)
-def get_reward(reward_id: str, namespace: Optional[str] = None):
+def get_reward(reward_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -86,11 +86,11 @@ def get_reward(reward_id: str, namespace: Optional[str] = None):
         reward_id=reward_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetReward1)
-def get_reward_1(reward_id: str, namespace: Optional[str] = None):
+def get_reward_1(reward_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -99,11 +99,11 @@ def get_reward_1(reward_id: str, namespace: Optional[str] = None):
         reward_id=reward_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetRewardByCode)
-def get_reward_by_code(reward_code: str, namespace: Optional[str] = None):
+def get_reward_by_code(reward_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -112,11 +112,11 @@ def get_reward_by_code(reward_code: str, namespace: Optional[str] = None):
         reward_code=reward_code,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ImportRewards)
-def import_rewards(replace_existing: bool, file: Optional[Any] = None, namespace: Optional[str] = None):
+def import_rewards(replace_existing: bool, file: Optional[Any] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -126,11 +126,11 @@ def import_rewards(replace_existing: bool, file: Optional[Any] = None, namespace
         file=file,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QueryRewards)
-def query_rewards(event_topic: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, sort_by: Optional[str] = None, namespace: Optional[str] = None):
+def query_rewards(event_topic: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, sort_by: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -142,11 +142,11 @@ def query_rewards(event_topic: Optional[str] = None, offset: Optional[int] = Non
         sort_by=sort_by,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QueryRewards1)
-def query_rewards_1(event_topic: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, sort_by: Optional[str] = None, namespace: Optional[str] = None):
+def query_rewards_1(event_topic: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, sort_by: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -158,11 +158,11 @@ def query_rewards_1(event_topic: Optional[str] = None, offset: Optional[int] = N
         sort_by=sort_by,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateReward)
-def update_reward(reward_id: str, body: Optional[RewardUpdate] = None, namespace: Optional[str] = None):
+def update_reward(reward_id: str, body: Optional[RewardUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -172,4 +172,4 @@ def update_reward(reward_id: str, body: Optional[RewardUpdate] = None, namespace
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

@@ -42,7 +42,7 @@ from ..operations.admin import ListSession
 
 
 @same_doc_as(CountServer)
-def count_server(namespace: Optional[str] = None):
+def count_server(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -50,11 +50,11 @@ def count_server(namespace: Optional[str] = None):
     request = CountServer.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(CountServerDetailed)
-def count_server_detailed(region: Optional[str] = None, namespace: Optional[str] = None):
+def count_server_detailed(region: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -63,11 +63,11 @@ def count_server_detailed(region: Optional[str] = None, namespace: Optional[str]
         region=region,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(CountSession)
-def count_session(region: Optional[str] = None, namespace: Optional[str] = None):
+def count_session(region: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -76,11 +76,11 @@ def count_session(region: Optional[str] = None, namespace: Optional[str] = None)
         region=region,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteLocalServer)
-def delete_local_server(name: str, namespace: Optional[str] = None):
+def delete_local_server(name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -89,11 +89,11 @@ def delete_local_server(name: str, namespace: Optional[str] = None):
         name=name,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteServer)
-def delete_server(pod_name: str, namespace: Optional[str] = None):
+def delete_server(pod_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -102,11 +102,11 @@ def delete_server(pod_name: str, namespace: Optional[str] = None):
         pod_name=pod_name,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteSession)
-def delete_session(session_id: str, namespace: Optional[str] = None):
+def delete_session(session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -115,11 +115,11 @@ def delete_session(session_id: str, namespace: Optional[str] = None):
         session_id=session_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetServer)
-def get_server(pod_name: str, namespace: Optional[str] = None):
+def get_server(pod_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -128,11 +128,11 @@ def get_server(pod_name: str, namespace: Optional[str] = None):
         pod_name=pod_name,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetServerLogs)
-def get_server_logs(pod_name: str, namespace: Optional[str] = None):
+def get_server_logs(pod_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -141,11 +141,11 @@ def get_server_logs(pod_name: str, namespace: Optional[str] = None):
         pod_name=pod_name,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ListLocalServer)
-def list_local_server(namespace: Optional[str] = None):
+def list_local_server(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -153,11 +153,11 @@ def list_local_server(namespace: Optional[str] = None):
     request = ListLocalServer.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ListServer)
-def list_server(region: Optional[str] = None, offset: Optional[int] = None, count: Optional[int] = None, namespace: Optional[str] = None):
+def list_server(region: Optional[str] = None, offset: Optional[int] = None, count: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -168,11 +168,11 @@ def list_server(region: Optional[str] = None, offset: Optional[int] = None, coun
         count=count,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ListSession)
-def list_session(region: Optional[str] = None, offset: Optional[int] = None, count: Optional[int] = None, with_server: Optional[bool] = None, namespace: Optional[str] = None):
+def list_session(region: Optional[str] = None, offset: Optional[int] = None, count: Optional[int] = None, with_server: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -184,4 +184,4 @@ def list_session(region: Optional[str] = None, offset: Optional[int] = None, cou
         with_server=with_server,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

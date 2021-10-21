@@ -26,7 +26,7 @@ from ..operations.payment_account import PublicGetPaymentAccounts
 
 
 @same_doc_as(PublicDeletePaymentAccount)
-def public_delete_payment_account(user_id: str, type_: str, id_: str, namespace: Optional[str] = None):
+def public_delete_payment_account(user_id: str, type_: str, id_: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -37,11 +37,11 @@ def public_delete_payment_account(user_id: str, type_: str, id_: str, namespace:
         id_=id_,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetPaymentAccounts)
-def public_get_payment_accounts(user_id: str, namespace: Optional[str] = None):
+def public_get_payment_accounts(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -50,4 +50,4 @@ def public_get_payment_accounts(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

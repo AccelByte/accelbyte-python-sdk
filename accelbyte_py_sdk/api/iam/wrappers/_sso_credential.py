@@ -31,7 +31,7 @@ from ..operations.sso_credential import UpdateSSOPlatformCredential
 
 
 @same_doc_as(AddSSOLoginPlatformCredential)
-def add_sso_login_platform_credential(body: ModelSSOPlatformCredentialRequest, platform_id: str, namespace: Optional[str] = None):
+def add_sso_login_platform_credential(body: ModelSSOPlatformCredentialRequest, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -41,11 +41,11 @@ def add_sso_login_platform_credential(body: ModelSSOPlatformCredentialRequest, p
         platform_id=platform_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteSSOLoginPlatformCredentialV3)
-def delete_sso_login_platform_credential_v3(platform_id: str, namespace: Optional[str] = None):
+def delete_sso_login_platform_credential_v3(platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -54,11 +54,11 @@ def delete_sso_login_platform_credential_v3(platform_id: str, namespace: Optiona
         platform_id=platform_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(RetrieveAllSSOLoginPlatformCredentialV3)
-def retrieve_all_sso_login_platform_credential_v3(limit: Optional[int] = None, offset: Optional[str] = None, namespace: Optional[str] = None):
+def retrieve_all_sso_login_platform_credential_v3(limit: Optional[int] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -68,11 +68,11 @@ def retrieve_all_sso_login_platform_credential_v3(limit: Optional[int] = None, o
         offset=offset,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(RetrieveSSOLoginPlatformCredential)
-def retrieve_sso_login_platform_credential(platform_id: str, namespace: Optional[str] = None):
+def retrieve_sso_login_platform_credential(platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -81,11 +81,11 @@ def retrieve_sso_login_platform_credential(platform_id: str, namespace: Optional
         platform_id=platform_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateSSOPlatformCredential)
-def update_sso_platform_credential(body: ModelSSOPlatformCredentialRequest, platform_id: str, namespace: Optional[str] = None):
+def update_sso_platform_credential(body: ModelSSOPlatformCredentialRequest, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -95,4 +95,4 @@ def update_sso_platform_credential(body: ModelSSOPlatformCredentialRequest, plat
         platform_id=platform_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

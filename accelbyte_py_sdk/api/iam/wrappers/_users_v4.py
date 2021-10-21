@@ -49,7 +49,7 @@ from ..operations.users_v4 import PublicUpgradeHeadlessAccountWithVerificationCo
 
 
 @same_doc_as(AdminAddUserRoleV4)
-def admin_add_user_role_v4(body: ModelAddUserRoleV4Request, user_id: str, namespace: Optional[str] = None):
+def admin_add_user_role_v4(body: ModelAddUserRoleV4Request, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -59,11 +59,11 @@ def admin_add_user_role_v4(body: ModelAddUserRoleV4Request, user_id: str, namesp
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminListUserRolesV4)
-def admin_list_user_roles_v4(user_id: str, namespace: Optional[str] = None):
+def admin_list_user_roles_v4(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -72,11 +72,11 @@ def admin_list_user_roles_v4(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminRemoveUserRoleV4)
-def admin_remove_user_role_v4(body: ModelRemoveUserRoleV4Request, user_id: str, namespace: Optional[str] = None):
+def admin_remove_user_role_v4(body: ModelRemoveUserRoleV4Request, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -86,19 +86,19 @@ def admin_remove_user_role_v4(body: ModelRemoveUserRoleV4Request, user_id: str, 
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminUpdateMyUserV4)
-def admin_update_my_user_v4(body: ModelUserUpdateRequestV3):
+def admin_update_my_user_v4(body: ModelUserUpdateRequestV3, x_additional_headers: Optional[Dict[str, str]] = None):
     request = AdminUpdateMyUserV4.create(
         body=body,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminUpdateUserEmailAddressV4)
-def admin_update_user_email_address_v4(body: ModelEmailUpdateRequestV4, user_id: str, namespace: Optional[str] = None):
+def admin_update_user_email_address_v4(body: ModelEmailUpdateRequestV4, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -108,11 +108,11 @@ def admin_update_user_email_address_v4(body: ModelEmailUpdateRequestV4, user_id:
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminUpdateUserRoleV4)
-def admin_update_user_role_v4(body: ModelAddUserRoleV4Request, user_id: str, namespace: Optional[str] = None):
+def admin_update_user_role_v4(body: ModelAddUserRoleV4Request, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -122,11 +122,11 @@ def admin_update_user_role_v4(body: ModelAddUserRoleV4Request, user_id: str, nam
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminUpdateUserV4)
-def admin_update_user_v4(body: ModelUserUpdateRequestV3, user_id: str, namespace: Optional[str] = None):
+def admin_update_user_v4(body: ModelUserUpdateRequestV3, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -136,11 +136,11 @@ def admin_update_user_v4(body: ModelUserUpdateRequestV3, user_id: str, namespace
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(CreateUserFromInvitationV4)
-def create_user_from_invitation_v4(body: ModelUserCreateFromInvitationRequestV4, invitation_id: str, namespace: Optional[str] = None):
+def create_user_from_invitation_v4(body: ModelUserCreateFromInvitationRequestV4, invitation_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -150,11 +150,11 @@ def create_user_from_invitation_v4(body: ModelUserCreateFromInvitationRequestV4,
         invitation_id=invitation_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicCreateUserV4)
-def public_create_user_v4(body: AccountCreateUserRequestV4, namespace: Optional[str] = None):
+def public_create_user_v4(body: AccountCreateUserRequestV4, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -163,11 +163,11 @@ def public_create_user_v4(body: AccountCreateUserRequestV4, namespace: Optional[
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicUpdateUserEmailAddressV4)
-def public_update_user_email_address_v4(body: ModelEmailUpdateRequestV4, namespace: Optional[str] = None):
+def public_update_user_email_address_v4(body: ModelEmailUpdateRequestV4, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -176,11 +176,11 @@ def public_update_user_email_address_v4(body: ModelEmailUpdateRequestV4, namespa
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicUpdateUserV4)
-def public_update_user_v4(body: ModelUserUpdateRequestV3, namespace: Optional[str] = None):
+def public_update_user_v4(body: ModelUserUpdateRequestV3, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -189,11 +189,11 @@ def public_update_user_v4(body: ModelUserUpdateRequestV3, namespace: Optional[st
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicUpgradeHeadlessAccountV4)
-def public_upgrade_headless_account_v4(body: AccountUpgradeHeadlessAccountRequestV4, namespace: Optional[str] = None):
+def public_upgrade_headless_account_v4(body: AccountUpgradeHeadlessAccountRequestV4, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -202,11 +202,11 @@ def public_upgrade_headless_account_v4(body: AccountUpgradeHeadlessAccountReques
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicUpgradeHeadlessAccountWithVerificationCodeV4)
-def public_upgrade_headless_account_with_verification_code_v4(body: AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4, namespace: Optional[str] = None):
+def public_upgrade_headless_account_with_verification_code_v4(body: AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -215,4 +215,4 @@ def public_upgrade_headless_account_with_verification_code_v4(body: AccountUpgra
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

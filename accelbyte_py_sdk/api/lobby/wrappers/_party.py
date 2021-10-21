@@ -32,7 +32,7 @@ from ..operations.party import PublicUpdatePartyAttributesV1
 
 
 @same_doc_as(AdminGetPartiesDataV1)
-def admin_get_parties_data_v1(limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None):
+def admin_get_parties_data_v1(limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -42,11 +42,11 @@ def admin_get_parties_data_v1(limit: Optional[str] = None, offset: Optional[str]
         offset=offset,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetPartyDataV1)
-def admin_get_party_data_v1(party_id: str, namespace: Optional[str] = None):
+def admin_get_party_data_v1(party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -55,11 +55,11 @@ def admin_get_party_data_v1(party_id: str, namespace: Optional[str] = None):
         party_id=party_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetUserPartyV1)
-def admin_get_user_party_v1(user_id: str, namespace: Optional[str] = None):
+def admin_get_user_party_v1(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -68,11 +68,11 @@ def admin_get_user_party_v1(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminUpdatePartyAttributesV1)
-def admin_update_party_attributes_v1(body: ModelsPartyPUTCustomAttributesRequest, party_id: str, namespace: Optional[str] = None):
+def admin_update_party_attributes_v1(body: ModelsPartyPUTCustomAttributesRequest, party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -82,11 +82,11 @@ def admin_update_party_attributes_v1(body: ModelsPartyPUTCustomAttributesRequest
         party_id=party_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetPartyDataV1)
-def public_get_party_data_v1(party_id: str, namespace: Optional[str] = None):
+def public_get_party_data_v1(party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -95,11 +95,11 @@ def public_get_party_data_v1(party_id: str, namespace: Optional[str] = None):
         party_id=party_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicUpdatePartyAttributesV1)
-def public_update_party_attributes_v1(body: ModelsPartyPUTCustomAttributesRequest, party_id: str, namespace: Optional[str] = None):
+def public_update_party_attributes_v1(body: ModelsPartyPUTCustomAttributesRequest, party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -109,4 +109,4 @@ def public_update_party_attributes_v1(body: ModelsPartyPUTCustomAttributesReques
         party_id=party_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

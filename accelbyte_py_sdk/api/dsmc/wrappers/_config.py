@@ -45,7 +45,7 @@ from ..operations.config import UpdatePort
 
 
 @same_doc_as(AddPort)
-def add_port(body: ModelsCreatePortRequest, name: str, namespace: Optional[str] = None):
+def add_port(body: ModelsCreatePortRequest, name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -55,11 +55,11 @@ def add_port(body: ModelsCreatePortRequest, name: str, namespace: Optional[str] 
         name=name,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ClearCache)
-def clear_cache(namespace: Optional[str] = None):
+def clear_cache(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -67,11 +67,11 @@ def clear_cache(namespace: Optional[str] = None):
     request = ClearCache.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(CreateConfig)
-def create_config(body: ModelsCreateDSMConfigRequest, namespace: Optional[str] = None):
+def create_config(body: ModelsCreateDSMConfigRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -80,11 +80,11 @@ def create_config(body: ModelsCreateDSMConfigRequest, namespace: Optional[str] =
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteConfig)
-def delete_config(namespace: Optional[str] = None):
+def delete_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -92,11 +92,11 @@ def delete_config(namespace: Optional[str] = None):
     request = DeleteConfig.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeletePort)
-def delete_port(name: str, namespace: Optional[str] = None):
+def delete_port(name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -105,11 +105,11 @@ def delete_port(name: str, namespace: Optional[str] = None):
         name=name,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ExportConfigV1)
-def export_config_v1(namespace: Optional[str] = None):
+def export_config_v1(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -117,11 +117,11 @@ def export_config_v1(namespace: Optional[str] = None):
     request = ExportConfigV1.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetConfig)
-def get_config(namespace: Optional[str] = None):
+def get_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -129,11 +129,11 @@ def get_config(namespace: Optional[str] = None):
     request = GetConfig.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ImportConfigV1)
-def import_config_v1(file: Optional[Any] = None, namespace: Optional[str] = None):
+def import_config_v1(file: Optional[Any] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -142,26 +142,26 @@ def import_config_v1(file: Optional[Any] = None, namespace: Optional[str] = None
         file=file,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ListConfig)
-def list_config():
+def list_config(x_additional_headers: Optional[Dict[str, str]] = None):
     request = ListConfig.create()
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @deprecated
 @same_doc_as(SaveConfig)
-def save_config(body: ModelsDSMConfigRecord):
+def save_config(body: ModelsDSMConfigRecord, x_additional_headers: Optional[Dict[str, str]] = None):
     request = SaveConfig.create(
         body=body,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateConfig)
-def update_config(body: ModelsUpdateDSMConfigRequest, namespace: Optional[str] = None):
+def update_config(body: ModelsUpdateDSMConfigRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -170,11 +170,11 @@ def update_config(body: ModelsUpdateDSMConfigRequest, namespace: Optional[str] =
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdatePort)
-def update_port(body: ModelsUpdatePortRequest, name: str, namespace: Optional[str] = None):
+def update_port(body: ModelsUpdatePortRequest, name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -184,4 +184,4 @@ def update_port(body: ModelsUpdatePortRequest, name: str, namespace: Optional[st
         name=name,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

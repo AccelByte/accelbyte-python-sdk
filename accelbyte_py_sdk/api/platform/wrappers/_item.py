@@ -74,7 +74,7 @@ from ..operations.item import UpdateItem
 
 
 @same_doc_as(AcquireItem)
-def acquire_item(item_id: str, body: Optional[ItemAcquireRequest] = None, namespace: Optional[str] = None):
+def acquire_item(item_id: str, body: Optional[ItemAcquireRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -84,11 +84,11 @@ def acquire_item(item_id: str, body: Optional[ItemAcquireRequest] = None, namesp
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(BulkGetLocaleItems)
-def bulk_get_locale_items(item_ids: str, store_id: Optional[str] = None, region: Optional[str] = None, language: Optional[str] = None, active_only: Optional[bool] = None, namespace: Optional[str] = None):
+def bulk_get_locale_items(item_ids: str, store_id: Optional[str] = None, region: Optional[str] = None, language: Optional[str] = None, active_only: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -101,11 +101,11 @@ def bulk_get_locale_items(item_ids: str, store_id: Optional[str] = None, region:
         active_only=active_only,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(CreateItem)
-def create_item(store_id: str, body: Optional[ItemCreate] = None, namespace: Optional[str] = None):
+def create_item(store_id: str, body: Optional[ItemCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -115,11 +115,11 @@ def create_item(store_id: str, body: Optional[ItemCreate] = None, namespace: Opt
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DefeatureItem)
-def defeature_item(item_id: str, feature: str, store_id: str, namespace: Optional[str] = None):
+def defeature_item(item_id: str, feature: str, store_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -130,11 +130,11 @@ def defeature_item(item_id: str, feature: str, store_id: str, namespace: Optiona
         store_id=store_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteItem)
-def delete_item(item_id: str, store_id: Optional[str] = None, namespace: Optional[str] = None):
+def delete_item(item_id: str, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -144,11 +144,11 @@ def delete_item(item_id: str, store_id: Optional[str] = None, namespace: Optiona
         store_id=store_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DisableItem)
-def disable_item(item_id: str, store_id: str, namespace: Optional[str] = None):
+def disable_item(item_id: str, store_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -158,11 +158,11 @@ def disable_item(item_id: str, store_id: str, namespace: Optional[str] = None):
         store_id=store_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(EnableItem)
-def enable_item(item_id: str, store_id: str, namespace: Optional[str] = None):
+def enable_item(item_id: str, store_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -172,11 +172,11 @@ def enable_item(item_id: str, store_id: str, namespace: Optional[str] = None):
         store_id=store_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(FeatureItem)
-def feature_item(item_id: str, feature: str, store_id: str, namespace: Optional[str] = None):
+def feature_item(item_id: str, feature: str, store_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -187,11 +187,11 @@ def feature_item(item_id: str, feature: str, store_id: str, namespace: Optional[
         store_id=store_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetApp)
-def get_app(item_id: str, store_id: Optional[str] = None, active_only: Optional[bool] = None, namespace: Optional[str] = None):
+def get_app(item_id: str, store_id: Optional[str] = None, active_only: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -202,11 +202,11 @@ def get_app(item_id: str, store_id: Optional[str] = None, active_only: Optional[
         active_only=active_only,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetItem)
-def get_item(item_id: str, store_id: Optional[str] = None, active_only: Optional[bool] = None, namespace: Optional[str] = None):
+def get_item(item_id: str, store_id: Optional[str] = None, active_only: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -217,11 +217,11 @@ def get_item(item_id: str, store_id: Optional[str] = None, active_only: Optional
         active_only=active_only,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetItemByAppId)
-def get_item_by_app_id(app_id: str, store_id: Optional[str] = None, active_only: Optional[bool] = None, namespace: Optional[str] = None):
+def get_item_by_app_id(app_id: str, store_id: Optional[str] = None, active_only: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -232,11 +232,11 @@ def get_item_by_app_id(app_id: str, store_id: Optional[str] = None, active_only:
         active_only=active_only,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetItemBySku)
-def get_item_by_sku(sku: str, store_id: Optional[str] = None, active_only: Optional[bool] = None, namespace: Optional[str] = None):
+def get_item_by_sku(sku: str, store_id: Optional[str] = None, active_only: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -247,11 +247,11 @@ def get_item_by_sku(sku: str, store_id: Optional[str] = None, active_only: Optio
         active_only=active_only,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetItemDynamicData)
-def get_item_dynamic_data(item_id: str, namespace: Optional[str] = None):
+def get_item_dynamic_data(item_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -260,11 +260,11 @@ def get_item_dynamic_data(item_id: str, namespace: Optional[str] = None):
         item_id=item_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetItemIdBySku)
-def get_item_id_by_sku(sku: str, store_id: Optional[str] = None, active_only: Optional[bool] = None, namespace: Optional[str] = None):
+def get_item_id_by_sku(sku: str, store_id: Optional[str] = None, active_only: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -275,11 +275,11 @@ def get_item_id_by_sku(sku: str, store_id: Optional[str] = None, active_only: Op
         active_only=active_only,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetLocaleItem)
-def get_locale_item(item_id: str, store_id: Optional[str] = None, region: Optional[str] = None, language: Optional[str] = None, active_only: Optional[bool] = None, populate_bundle: Optional[bool] = None, namespace: Optional[str] = None):
+def get_locale_item(item_id: str, store_id: Optional[str] = None, region: Optional[str] = None, language: Optional[str] = None, active_only: Optional[bool] = None, populate_bundle: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -293,11 +293,11 @@ def get_locale_item(item_id: str, store_id: Optional[str] = None, region: Option
         populate_bundle=populate_bundle,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetLocaleItemBySku)
-def get_locale_item_by_sku(sku: str, store_id: Optional[str] = None, region: Optional[str] = None, language: Optional[str] = None, active_only: Optional[bool] = None, populate_bundle: Optional[bool] = None, namespace: Optional[str] = None):
+def get_locale_item_by_sku(sku: str, store_id: Optional[str] = None, region: Optional[str] = None, language: Optional[str] = None, active_only: Optional[bool] = None, populate_bundle: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -311,11 +311,11 @@ def get_locale_item_by_sku(sku: str, store_id: Optional[str] = None, region: Opt
         populate_bundle=populate_bundle,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ListBasicItemsByFeatures)
-def list_basic_items_by_features(features: Optional[List[str]] = None, active_only: Optional[bool] = None, namespace: Optional[str] = None):
+def list_basic_items_by_features(features: Optional[List[str]] = None, active_only: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -325,11 +325,11 @@ def list_basic_items_by_features(features: Optional[List[str]] = None, active_on
         active_only=active_only,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicBulkGetItems)
-def public_bulk_get_items(item_ids: str, store_id: Optional[str] = None, region: Optional[str] = None, language: Optional[str] = None, namespace: Optional[str] = None):
+def public_bulk_get_items(item_ids: str, store_id: Optional[str] = None, region: Optional[str] = None, language: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -341,11 +341,11 @@ def public_bulk_get_items(item_ids: str, store_id: Optional[str] = None, region:
         language=language,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetApp)
-def public_get_app(item_id: str, store_id: Optional[str] = None, region: Optional[str] = None, language: Optional[str] = None, namespace: Optional[str] = None):
+def public_get_app(item_id: str, store_id: Optional[str] = None, region: Optional[str] = None, language: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -357,11 +357,11 @@ def public_get_app(item_id: str, store_id: Optional[str] = None, region: Optiona
         language=language,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetItem)
-def public_get_item(item_id: str, store_id: Optional[str] = None, region: Optional[str] = None, language: Optional[str] = None, populate_bundle: Optional[bool] = None, namespace: Optional[str] = None):
+def public_get_item(item_id: str, store_id: Optional[str] = None, region: Optional[str] = None, language: Optional[str] = None, populate_bundle: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -374,11 +374,11 @@ def public_get_item(item_id: str, store_id: Optional[str] = None, region: Option
         populate_bundle=populate_bundle,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetItemByAppId)
-def public_get_item_by_app_id(app_id: str, store_id: Optional[str] = None, language: Optional[str] = None, region: Optional[str] = None, namespace: Optional[str] = None):
+def public_get_item_by_app_id(app_id: str, store_id: Optional[str] = None, language: Optional[str] = None, region: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -390,11 +390,11 @@ def public_get_item_by_app_id(app_id: str, store_id: Optional[str] = None, langu
         region=region,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetItemBySku)
-def public_get_item_by_sku(sku: str, store_id: Optional[str] = None, language: Optional[str] = None, region: Optional[str] = None, namespace: Optional[str] = None):
+def public_get_item_by_sku(sku: str, store_id: Optional[str] = None, language: Optional[str] = None, region: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -406,11 +406,11 @@ def public_get_item_by_sku(sku: str, store_id: Optional[str] = None, language: O
         region=region,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetItemDynamicData)
-def public_get_item_dynamic_data(item_id: str, namespace: Optional[str] = None):
+def public_get_item_dynamic_data(item_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -419,11 +419,11 @@ def public_get_item_dynamic_data(item_id: str, namespace: Optional[str] = None):
         item_id=item_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicQueryItems)
-def public_query_items(store_id: Optional[str] = None, language: Optional[str] = None, region: Optional[str] = None, category_path: Optional[str] = None, item_type: Optional[str] = None, app_type: Optional[str] = None, base_app_id: Optional[str] = None, tags: Optional[str] = None, features: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, sort_by: Optional[str] = None, namespace: Optional[str] = None):
+def public_query_items(store_id: Optional[str] = None, language: Optional[str] = None, region: Optional[str] = None, category_path: Optional[str] = None, item_type: Optional[str] = None, app_type: Optional[str] = None, base_app_id: Optional[str] = None, tags: Optional[str] = None, features: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, sort_by: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -443,11 +443,11 @@ def public_query_items(store_id: Optional[str] = None, language: Optional[str] =
         sort_by=sort_by,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicSearchItems)
-def public_search_items(language: str, keyword: str, store_id: Optional[str] = None, region: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
+def public_search_items(language: str, keyword: str, store_id: Optional[str] = None, region: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -461,11 +461,11 @@ def public_search_items(language: str, keyword: str, store_id: Optional[str] = N
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QueryItems)
-def query_items(store_id: Optional[str] = None, category_path: Optional[str] = None, item_type: Optional[str] = None, app_type: Optional[str] = None, base_app_id: Optional[str] = None, tags: Optional[str] = None, features: Optional[str] = None, active_only: Optional[bool] = None, region: Optional[str] = None, available_date: Optional[str] = None, target_namespace: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, sort_by: Optional[str] = None, namespace: Optional[str] = None):
+def query_items(store_id: Optional[str] = None, category_path: Optional[str] = None, item_type: Optional[str] = None, app_type: Optional[str] = None, base_app_id: Optional[str] = None, tags: Optional[str] = None, features: Optional[str] = None, active_only: Optional[bool] = None, region: Optional[str] = None, available_date: Optional[str] = None, target_namespace: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, sort_by: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -487,11 +487,11 @@ def query_items(store_id: Optional[str] = None, category_path: Optional[str] = N
         sort_by=sort_by,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QueryUncategorizedItems)
-def query_uncategorized_items(store_id: Optional[str] = None, active_only: Optional[bool] = None, offset: Optional[int] = None, limit: Optional[int] = None, sort_by: Optional[str] = None, namespace: Optional[str] = None):
+def query_uncategorized_items(store_id: Optional[str] = None, active_only: Optional[bool] = None, offset: Optional[int] = None, limit: Optional[int] = None, sort_by: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -504,11 +504,11 @@ def query_uncategorized_items(store_id: Optional[str] = None, active_only: Optio
         sort_by=sort_by,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ReturnItem)
-def return_item(item_id: str, body: Optional[ItemReturnRequest] = None, namespace: Optional[str] = None):
+def return_item(item_id: str, body: Optional[ItemReturnRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -518,11 +518,11 @@ def return_item(item_id: str, body: Optional[ItemReturnRequest] = None, namespac
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(SearchItems)
-def search_items(language: str, keyword: str, store_id: Optional[str] = None, active_only: Optional[bool] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
+def search_items(language: str, keyword: str, store_id: Optional[str] = None, active_only: Optional[bool] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -536,11 +536,11 @@ def search_items(language: str, keyword: str, store_id: Optional[str] = None, ac
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(SyncInGameItem)
-def sync_in_game_item(store_id: str, body: Optional[InGameItemSync] = None, namespace: Optional[str] = None):
+def sync_in_game_item(store_id: str, body: Optional[InGameItemSync] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -550,11 +550,11 @@ def sync_in_game_item(store_id: str, body: Optional[InGameItemSync] = None, name
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateApp)
-def update_app(item_id: str, store_id: str, body: Optional[AppUpdate] = None, namespace: Optional[str] = None):
+def update_app(item_id: str, store_id: str, body: Optional[AppUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -565,11 +565,11 @@ def update_app(item_id: str, store_id: str, body: Optional[AppUpdate] = None, na
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateItem)
-def update_item(item_id: str, store_id: str, body: Optional[ItemUpdate] = None, namespace: Optional[str] = None):
+def update_item(item_id: str, store_id: str, body: Optional[ItemUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -580,4 +580,4 @@ def update_item(item_id: str, store_id: str, body: Optional[ItemUpdate] = None, 
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

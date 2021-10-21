@@ -39,7 +39,7 @@ from ..operations.namespace import UpdateNamespace
 
 
 @same_doc_as(ChangeNamespaceStatus)
-def change_namespace_status(body: Optional[NamespaceStatusUpdate] = None, namespace: Optional[str] = None):
+def change_namespace_status(body: Optional[NamespaceStatusUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -48,19 +48,19 @@ def change_namespace_status(body: Optional[NamespaceStatusUpdate] = None, namesp
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(CreateNamespace)
-def create_namespace(body: Optional[NamespaceCreate] = None):
+def create_namespace(body: Optional[NamespaceCreate] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = CreateNamespace.create(
         body=body,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteNamespace)
-def delete_namespace(namespace: Optional[str] = None):
+def delete_namespace(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -68,11 +68,11 @@ def delete_namespace(namespace: Optional[str] = None):
     request = DeleteNamespace.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetNamespace)
-def get_namespace(active_only: Optional[bool] = None, namespace: Optional[str] = None):
+def get_namespace(active_only: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -81,11 +81,11 @@ def get_namespace(active_only: Optional[bool] = None, namespace: Optional[str] =
         active_only=active_only,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetNamespacePublisher)
-def get_namespace_publisher(namespace: Optional[str] = None):
+def get_namespace_publisher(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -93,19 +93,19 @@ def get_namespace_publisher(namespace: Optional[str] = None):
     request = GetNamespacePublisher.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetNamespaces)
-def get_namespaces(active_only: Optional[bool] = None):
+def get_namespaces(active_only: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = GetNamespaces.create(
         active_only=active_only,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetNamespacePublisher)
-def public_get_namespace_publisher(namespace: Optional[str] = None):
+def public_get_namespace_publisher(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -113,19 +113,19 @@ def public_get_namespace_publisher(namespace: Optional[str] = None):
     request = PublicGetNamespacePublisher.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetNamespaces)
-def public_get_namespaces(active_only: Optional[bool] = None):
+def public_get_namespaces(active_only: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = PublicGetNamespaces.create(
         active_only=active_only,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateNamespace)
-def update_namespace(body: Optional[NamespaceUpdate] = None, namespace: Optional[str] = None):
+def update_namespace(body: Optional[NamespaceUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -134,4 +134,4 @@ def update_namespace(body: Optional[NamespaceUpdate] = None, namespace: Optional
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

@@ -38,7 +38,7 @@ from ..operations.player import PublicGetPlayerBlockedPlayersV1
 
 
 @same_doc_as(AdminBulkBlockPlayersV1)
-def admin_bulk_block_players_v1(body: ModelsListBlockedPlayerRequest, user_id: str, namespace: Optional[str] = None):
+def admin_bulk_block_players_v1(body: ModelsListBlockedPlayerRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -48,11 +48,11 @@ def admin_bulk_block_players_v1(body: ModelsListBlockedPlayerRequest, user_id: s
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetAllPlayerSessionAttribute)
-def admin_get_all_player_session_attribute(user_id: str, namespace: Optional[str] = None):
+def admin_get_all_player_session_attribute(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -61,11 +61,11 @@ def admin_get_all_player_session_attribute(user_id: str, namespace: Optional[str
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetPlayerBlockedByPlayersV1)
-def admin_get_player_blocked_by_players_v1(user_id: str, namespace: Optional[str] = None):
+def admin_get_player_blocked_by_players_v1(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -74,11 +74,11 @@ def admin_get_player_blocked_by_players_v1(user_id: str, namespace: Optional[str
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetPlayerBlockedPlayersV1)
-def admin_get_player_blocked_players_v1(user_id: str, namespace: Optional[str] = None):
+def admin_get_player_blocked_players_v1(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -87,11 +87,11 @@ def admin_get_player_blocked_players_v1(user_id: str, namespace: Optional[str] =
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetPlayerSessionAttribute)
-def admin_get_player_session_attribute(user_id: str, attribute: str, namespace: Optional[str] = None):
+def admin_get_player_session_attribute(user_id: str, attribute: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -101,11 +101,11 @@ def admin_get_player_session_attribute(user_id: str, attribute: str, namespace: 
         attribute=attribute,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminSetPlayerSessionAttribute)
-def admin_set_player_session_attribute(body: ModelsSetPlayerSessionAttributeRequest, user_id: str, namespace: Optional[str] = None):
+def admin_set_player_session_attribute(body: ModelsSetPlayerSessionAttributeRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -115,11 +115,11 @@ def admin_set_player_session_attribute(body: ModelsSetPlayerSessionAttributeRequ
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetPlayerBlockedByPlayersV1)
-def public_get_player_blocked_by_players_v1(namespace: Optional[str] = None):
+def public_get_player_blocked_by_players_v1(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -127,11 +127,11 @@ def public_get_player_blocked_by_players_v1(namespace: Optional[str] = None):
     request = PublicGetPlayerBlockedByPlayersV1.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetPlayerBlockedPlayersV1)
-def public_get_player_blocked_players_v1(namespace: Optional[str] = None):
+def public_get_player_blocked_players_v1(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -139,4 +139,4 @@ def public_get_player_blocked_players_v1(namespace: Optional[str] = None):
     request = PublicGetPlayerBlockedPlayersV1.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

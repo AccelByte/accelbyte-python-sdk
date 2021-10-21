@@ -28,25 +28,25 @@ from ..operations.operations import ProtectedUpdatePlaytimeGameTelemetryV1Protec
 
 
 @same_doc_as(ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet)
-def protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get(steam_id: str):
+def protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get(steam_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
     request = ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet.create(
         steam_id=steam_id,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost)
-def protected_save_events_game_telemetry_v1_protected_events_post(body: List[TelemetryBody]):
+def protected_save_events_game_telemetry_v1_protected_events_post(body: List[TelemetryBody], x_additional_headers: Optional[Dict[str, str]] = None):
     request = ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost.create(
         body=body,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut)
-def protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_playtime_put(steam_id: str, playtime: str):
+def protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_playtime_put(steam_id: str, playtime: str, x_additional_headers: Optional[Dict[str, str]] = None):
     request = ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut.create(
         steam_id=steam_id,
         playtime=playtime,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

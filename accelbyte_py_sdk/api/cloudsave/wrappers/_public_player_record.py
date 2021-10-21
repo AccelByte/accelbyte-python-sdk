@@ -34,7 +34,7 @@ from ..operations.public_player_record import PutPlayerRecordHandlerV1
 
 
 @same_doc_as(DeletePlayerRecordHandlerV1)
-def delete_player_record_handler_v1(user_id: str, key: str, namespace: Optional[str] = None):
+def delete_player_record_handler_v1(user_id: str, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -44,11 +44,11 @@ def delete_player_record_handler_v1(user_id: str, key: str, namespace: Optional[
         key=key,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetPlayerPublicRecordHandlerV1)
-def get_player_public_record_handler_v1(user_id: str, key: str, namespace: Optional[str] = None):
+def get_player_public_record_handler_v1(user_id: str, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -58,11 +58,11 @@ def get_player_public_record_handler_v1(user_id: str, key: str, namespace: Optio
         key=key,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetPlayerRecordHandlerV1)
-def get_player_record_handler_v1(user_id: str, key: str, namespace: Optional[str] = None):
+def get_player_record_handler_v1(user_id: str, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -72,11 +72,11 @@ def get_player_record_handler_v1(user_id: str, key: str, namespace: Optional[str
         key=key,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PostPlayerPublicRecordHandlerV1)
-def post_player_public_record_handler_v1(body: ModelsPlayerRecordRequest, user_id: str, key: str, namespace: Optional[str] = None):
+def post_player_public_record_handler_v1(body: ModelsPlayerRecordRequest, user_id: str, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -87,11 +87,11 @@ def post_player_public_record_handler_v1(body: ModelsPlayerRecordRequest, user_i
         key=key,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PostPlayerRecordHandlerV1)
-def post_player_record_handler_v1(body: ModelsPlayerRecordRequest, user_id: str, key: str, namespace: Optional[str] = None):
+def post_player_record_handler_v1(body: ModelsPlayerRecordRequest, user_id: str, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -102,11 +102,11 @@ def post_player_record_handler_v1(body: ModelsPlayerRecordRequest, user_id: str,
         key=key,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicDeletePlayerPublicRecordHandlerV1)
-def public_delete_player_public_record_handler_v1(key: str, namespace: Optional[str] = None):
+def public_delete_player_public_record_handler_v1(key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -115,11 +115,11 @@ def public_delete_player_public_record_handler_v1(key: str, namespace: Optional[
         key=key,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PutPlayerPublicRecordHandlerV1)
-def put_player_public_record_handler_v1(body: ModelsPlayerRecordRequest, user_id: str, key: str, namespace: Optional[str] = None):
+def put_player_public_record_handler_v1(body: ModelsPlayerRecordRequest, user_id: str, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -130,11 +130,11 @@ def put_player_public_record_handler_v1(body: ModelsPlayerRecordRequest, user_id
         key=key,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PutPlayerRecordHandlerV1)
-def put_player_record_handler_v1(body: ModelsPlayerRecordRequest, user_id: str, key: str, namespace: Optional[str] = None):
+def put_player_record_handler_v1(body: ModelsPlayerRecordRequest, user_id: str, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -145,4 +145,4 @@ def put_player_record_handler_v1(body: ModelsPlayerRecordRequest, user_id: str, 
         key=key,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

@@ -53,7 +53,7 @@ from ..operations.session import UpdateSession
 
 
 @same_doc_as(AddPlayerToSession)
-def add_player_to_session(body: ModelsAddPlayerRequest, session_id: str, namespace: Optional[str] = None):
+def add_player_to_session(body: ModelsAddPlayerRequest, session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -63,11 +63,11 @@ def add_player_to_session(body: ModelsAddPlayerRequest, session_id: str, namespa
         session_id=session_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetSession)
-def admin_get_session(session_id: str, namespace: Optional[str] = None):
+def admin_get_session(session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -76,11 +76,11 @@ def admin_get_session(session_id: str, namespace: Optional[str] = None):
         session_id=session_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(CreateSession)
-def create_session(body: ModelsCreateSessionRequest, namespace: Optional[str] = None):
+def create_session(body: ModelsCreateSessionRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -89,11 +89,11 @@ def create_session(body: ModelsCreateSessionRequest, namespace: Optional[str] = 
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteSession)
-def delete_session(session_id: str, namespace: Optional[str] = None):
+def delete_session(session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -102,11 +102,11 @@ def delete_session(session_id: str, namespace: Optional[str] = None):
         session_id=session_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteSessionLocalDS)
-def delete_session_local_ds(session_id: str, namespace: Optional[str] = None):
+def delete_session_local_ds(session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -115,11 +115,11 @@ def delete_session_local_ds(session_id: str, namespace: Optional[str] = None):
         session_id=session_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetActiveCustomGameSessions)
-def get_active_custom_game_sessions(session_id: Optional[str] = None, server_region: Optional[str] = None, namespace: Optional[str] = None):
+def get_active_custom_game_sessions(session_id: Optional[str] = None, server_region: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -129,11 +129,11 @@ def get_active_custom_game_sessions(session_id: Optional[str] = None, server_reg
         server_region=server_region,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetActiveMatchmakingGameSessions)
-def get_active_matchmaking_game_sessions(session_id: Optional[str] = None, match_id: Optional[str] = None, server_region: Optional[str] = None, namespace: Optional[str] = None):
+def get_active_matchmaking_game_sessions(session_id: Optional[str] = None, match_id: Optional[str] = None, server_region: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -144,11 +144,11 @@ def get_active_matchmaking_game_sessions(session_id: Optional[str] = None, match
         server_region=server_region,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetRecentPlayer)
-def get_recent_player(user_id: str, namespace: Optional[str] = None):
+def get_recent_player(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -157,11 +157,11 @@ def get_recent_player(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetSession)
-def get_session(session_id: str, namespace: Optional[str] = None):
+def get_session(session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -170,11 +170,11 @@ def get_session(session_id: str, namespace: Optional[str] = None):
         session_id=session_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetSessionByUserIDs)
-def get_session_by_user_i_ds(user_ids: str, namespace: Optional[str] = None):
+def get_session_by_user_i_ds(user_ids: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -183,11 +183,11 @@ def get_session_by_user_i_ds(user_ids: str, namespace: Optional[str] = None):
         user_ids=user_ids,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetTotalActiveSession)
-def get_total_active_session(session_type: Optional[str] = None, namespace: Optional[str] = None):
+def get_total_active_session(session_type: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -196,11 +196,11 @@ def get_total_active_session(session_type: Optional[str] = None, namespace: Opti
         session_type=session_type,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(JoinSession)
-def join_session(body: ModelsJoinGameSessionRequest, session_id: str, namespace: Optional[str] = None):
+def join_session(body: ModelsJoinGameSessionRequest, session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -210,11 +210,11 @@ def join_session(body: ModelsJoinGameSessionRequest, session_id: str, namespace:
         session_id=session_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QuerySession)
-def query_session(session_type: str, user_id: Optional[str] = None, game_mode: Optional[str] = None, game_version: Optional[str] = None, joinable: Optional[str] = None, match_id: Optional[str] = None, match_exist: Optional[str] = None, server_status: Optional[str] = None, offset: Optional[str] = None, limit: Optional[str] = None, namespace: Optional[str] = None):
+def query_session(session_type: str, user_id: Optional[str] = None, game_mode: Optional[str] = None, game_version: Optional[str] = None, joinable: Optional[str] = None, match_id: Optional[str] = None, match_exist: Optional[str] = None, server_status: Optional[str] = None, offset: Optional[str] = None, limit: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -232,11 +232,11 @@ def query_session(session_type: str, user_id: Optional[str] = None, game_mode: O
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(RemovePlayerFromSession)
-def remove_player_from_session(session_id: str, user_id: str, namespace: Optional[str] = None):
+def remove_player_from_session(session_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -246,11 +246,11 @@ def remove_player_from_session(session_id: str, user_id: str, namespace: Optiona
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateSession)
-def update_session(body: ModelsUpdateSessionRequest, session_id: str, namespace: Optional[str] = None):
+def update_session(body: ModelsUpdateSessionRequest, session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -260,4 +260,4 @@ def update_session(body: ModelsUpdateSessionRequest, session_id: str, namespace:
         session_id=session_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

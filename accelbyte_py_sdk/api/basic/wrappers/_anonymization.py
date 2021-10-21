@@ -26,7 +26,7 @@ from ..operations.anonymization import AnonymizeUserProfile
 
 
 @same_doc_as(AnonymizeUserProfile)
-def anonymize_user_profile(user_id: str, namespace: Optional[str] = None):
+def anonymize_user_profile(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -35,4 +35,4 @@ def anonymize_user_profile(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

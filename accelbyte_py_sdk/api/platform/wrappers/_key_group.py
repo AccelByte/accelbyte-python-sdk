@@ -39,7 +39,7 @@ from ..operations.key_group import UploadKeys
 
 
 @same_doc_as(CreateKeyGroup)
-def create_key_group(body: Optional[KeyGroupCreate] = None, namespace: Optional[str] = None):
+def create_key_group(body: Optional[KeyGroupCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -48,11 +48,11 @@ def create_key_group(body: Optional[KeyGroupCreate] = None, namespace: Optional[
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetKeyGroup)
-def get_key_group(key_group_id: str, namespace: Optional[str] = None):
+def get_key_group(key_group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -61,11 +61,11 @@ def get_key_group(key_group_id: str, namespace: Optional[str] = None):
         key_group_id=key_group_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetKeyGroupDynamic)
-def get_key_group_dynamic(key_group_id: str, namespace: Optional[str] = None):
+def get_key_group_dynamic(key_group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -74,11 +74,11 @@ def get_key_group_dynamic(key_group_id: str, namespace: Optional[str] = None):
         key_group_id=key_group_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ListKeys)
-def list_keys(key_group_id: str, status: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
+def list_keys(key_group_id: str, status: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -90,11 +90,11 @@ def list_keys(key_group_id: str, status: Optional[str] = None, offset: Optional[
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QueryKeyGroups)
-def query_key_groups(name: Optional[str] = None, tag: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
+def query_key_groups(name: Optional[str] = None, tag: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -106,11 +106,11 @@ def query_key_groups(name: Optional[str] = None, tag: Optional[str] = None, offs
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateKeyGroup)
-def update_key_group(key_group_id: str, body: Optional[KeyGroupUpdate] = None, namespace: Optional[str] = None):
+def update_key_group(key_group_id: str, body: Optional[KeyGroupUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -120,11 +120,11 @@ def update_key_group(key_group_id: str, body: Optional[KeyGroupUpdate] = None, n
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UploadKeys)
-def upload_keys(key_group_id: str, file: Optional[Any] = None, namespace: Optional[str] = None):
+def upload_keys(key_group_id: str, file: Optional[Any] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -134,4 +134,4 @@ def upload_keys(key_group_id: str, file: Optional[Any] = None, namespace: Option
         file=file,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

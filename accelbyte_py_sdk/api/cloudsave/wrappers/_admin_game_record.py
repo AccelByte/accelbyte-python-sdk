@@ -32,7 +32,7 @@ from ..operations.admin_game_record import ListGameRecordsHandlerV1
 
 
 @same_doc_as(AdminDeleteGameRecordHandlerV1)
-def admin_delete_game_record_handler_v1(key: str, namespace: Optional[str] = None):
+def admin_delete_game_record_handler_v1(key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -41,11 +41,11 @@ def admin_delete_game_record_handler_v1(key: str, namespace: Optional[str] = Non
         key=key,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetGameRecordHandlerV1)
-def admin_get_game_record_handler_v1(key: str, namespace: Optional[str] = None):
+def admin_get_game_record_handler_v1(key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -54,11 +54,11 @@ def admin_get_game_record_handler_v1(key: str, namespace: Optional[str] = None):
         key=key,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminPostGameRecordHandlerV1)
-def admin_post_game_record_handler_v1(body: ModelsGameRecordRequest, key: str, namespace: Optional[str] = None):
+def admin_post_game_record_handler_v1(body: ModelsGameRecordRequest, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -68,11 +68,11 @@ def admin_post_game_record_handler_v1(body: ModelsGameRecordRequest, key: str, n
         key=key,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminPutGameRecordHandlerV1)
-def admin_put_game_record_handler_v1(body: ModelsGameRecordRequest, key: str, namespace: Optional[str] = None):
+def admin_put_game_record_handler_v1(body: ModelsGameRecordRequest, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -82,11 +82,11 @@ def admin_put_game_record_handler_v1(body: ModelsGameRecordRequest, key: str, na
         key=key,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ListGameRecordsHandlerV1)
-def list_game_records_handler_v1(offset: int, limit: int, namespace: Optional[str] = None):
+def list_game_records_handler_v1(offset: int, limit: int, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -96,4 +96,4 @@ def list_game_records_handler_v1(offset: int, limit: int, namespace: Optional[st
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

@@ -33,7 +33,7 @@ from ..operations.pod_config import UpdatePodConfig
 
 
 @same_doc_as(CreatePodConfig)
-def create_pod_config(body: ModelsCreatePodConfigRequest, name: str, namespace: Optional[str] = None):
+def create_pod_config(body: ModelsCreatePodConfigRequest, name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -43,11 +43,11 @@ def create_pod_config(body: ModelsCreatePodConfigRequest, name: str, namespace: 
         name=name,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeletePodConfig)
-def delete_pod_config(name: str, namespace: Optional[str] = None):
+def delete_pod_config(name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -56,11 +56,11 @@ def delete_pod_config(name: str, namespace: Optional[str] = None):
         name=name,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetAllPodConfig)
-def get_all_pod_config(offset: Optional[int] = None, count: Optional[int] = None, namespace: Optional[str] = None):
+def get_all_pod_config(offset: Optional[int] = None, count: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -70,11 +70,11 @@ def get_all_pod_config(offset: Optional[int] = None, count: Optional[int] = None
         count=count,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetPodConfig)
-def get_pod_config(name: str, namespace: Optional[str] = None):
+def get_pod_config(name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -83,11 +83,11 @@ def get_pod_config(name: str, namespace: Optional[str] = None):
         name=name,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdatePodConfig)
-def update_pod_config(body: ModelsUpdatePodConfigRequest, name: str, namespace: Optional[str] = None):
+def update_pod_config(body: ModelsUpdatePodConfigRequest, name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -97,4 +97,4 @@ def update_pod_config(body: ModelsUpdatePodConfigRequest, name: str, namespace: 
         name=name,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

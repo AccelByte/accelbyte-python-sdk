@@ -50,7 +50,7 @@ from ..operations.profanity import AdminVerifyMessageProfanityResponse
 
 
 @same_doc_as(AdminAddProfanityFilterIntoList)
-def admin_add_profanity_filter_into_list(body: ModelsAdminAddProfanityFilterIntoListRequest, list_: str, namespace: Optional[str] = None):
+def admin_add_profanity_filter_into_list(body: ModelsAdminAddProfanityFilterIntoListRequest, list_: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -60,11 +60,11 @@ def admin_add_profanity_filter_into_list(body: ModelsAdminAddProfanityFilterInto
         list_=list_,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminAddProfanityFilters)
-def admin_add_profanity_filters(body: ModelsAdminAddProfanityFiltersRequest, list_: str, namespace: Optional[str] = None):
+def admin_add_profanity_filters(body: ModelsAdminAddProfanityFiltersRequest, list_: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -74,11 +74,11 @@ def admin_add_profanity_filters(body: ModelsAdminAddProfanityFiltersRequest, lis
         list_=list_,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminCreateProfanityList)
-def admin_create_profanity_list(body: ModelsAdminCreateProfanityListRequest, namespace: Optional[str] = None):
+def admin_create_profanity_list(body: ModelsAdminCreateProfanityListRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -87,11 +87,11 @@ def admin_create_profanity_list(body: ModelsAdminCreateProfanityListRequest, nam
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminDebugProfanityFilters)
-def admin_debug_profanity_filters(body: ModelsDebugProfanityFilterRequest, namespace: Optional[str] = None):
+def admin_debug_profanity_filters(body: ModelsDebugProfanityFilterRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -100,11 +100,11 @@ def admin_debug_profanity_filters(body: ModelsDebugProfanityFilterRequest, names
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminDeleteProfanityFilter)
-def admin_delete_profanity_filter(body: ModelsAdminDeleteProfanityFilterRequest, list_: str, namespace: Optional[str] = None):
+def admin_delete_profanity_filter(body: ModelsAdminDeleteProfanityFilterRequest, list_: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -114,11 +114,11 @@ def admin_delete_profanity_filter(body: ModelsAdminDeleteProfanityFilterRequest,
         list_=list_,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminDeleteProfanityList)
-def admin_delete_profanity_list(list_: str, namespace: Optional[str] = None):
+def admin_delete_profanity_list(list_: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -127,11 +127,11 @@ def admin_delete_profanity_list(list_: str, namespace: Optional[str] = None):
         list_=list_,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetProfanityListFiltersV1)
-def admin_get_profanity_list_filters_v1(list_: str, namespace: Optional[str] = None):
+def admin_get_profanity_list_filters_v1(list_: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -140,11 +140,11 @@ def admin_get_profanity_list_filters_v1(list_: str, namespace: Optional[str] = N
         list_=list_,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetProfanityLists)
-def admin_get_profanity_lists(namespace: Optional[str] = None):
+def admin_get_profanity_lists(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -152,11 +152,11 @@ def admin_get_profanity_lists(namespace: Optional[str] = None):
     request = AdminGetProfanityLists.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetProfanityRule)
-def admin_get_profanity_rule(namespace: Optional[str] = None):
+def admin_get_profanity_rule(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -164,11 +164,11 @@ def admin_get_profanity_rule(namespace: Optional[str] = None):
     request = AdminGetProfanityRule.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminImportProfanityFiltersFromFile)
-def admin_import_profanity_filters_from_file(body: List[int], list_: str, namespace: Optional[str] = None):
+def admin_import_profanity_filters_from_file(body: List[int], list_: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -178,11 +178,11 @@ def admin_import_profanity_filters_from_file(body: List[int], list_: str, namesp
         list_=list_,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminSetProfanityRuleForNamespace)
-def admin_set_profanity_rule_for_namespace(body: ModelsAdminSetProfanityRuleForNamespaceRequest, namespace: Optional[str] = None):
+def admin_set_profanity_rule_for_namespace(body: ModelsAdminSetProfanityRuleForNamespaceRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -191,11 +191,11 @@ def admin_set_profanity_rule_for_namespace(body: ModelsAdminSetProfanityRuleForN
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminUpdateProfanityList)
-def admin_update_profanity_list(body: ModelsAdminUpdateProfanityList, list_: str, namespace: Optional[str] = None):
+def admin_update_profanity_list(body: ModelsAdminUpdateProfanityList, list_: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -205,11 +205,11 @@ def admin_update_profanity_list(body: ModelsAdminUpdateProfanityList, list_: str
         list_=list_,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminVerifyMessageProfanityResponse)
-def admin_verify_message_profanity_response(body: ModelsAdminVerifyMessageProfanityRequest, namespace: Optional[str] = None):
+def admin_verify_message_profanity_response(body: ModelsAdminVerifyMessageProfanityRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -218,4 +218,4 @@ def admin_verify_message_profanity_response(body: ModelsAdminVerifyMessageProfan
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

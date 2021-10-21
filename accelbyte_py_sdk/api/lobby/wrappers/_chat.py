@@ -28,7 +28,7 @@ from ..operations.chat import PersonalChatHistory
 
 
 @same_doc_as(AdminChatHistory)
-def admin_chat_history(user_id: str, friend_id: str, namespace: Optional[str] = None):
+def admin_chat_history(user_id: str, friend_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -38,11 +38,11 @@ def admin_chat_history(user_id: str, friend_id: str, namespace: Optional[str] = 
         friend_id=friend_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetPersonalChatHistoryV1Public)
-def get_personal_chat_history_v1_public(friend_id: str, namespace: Optional[str] = None):
+def get_personal_chat_history_v1_public(friend_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -51,11 +51,11 @@ def get_personal_chat_history_v1_public(friend_id: str, namespace: Optional[str]
         friend_id=friend_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PersonalChatHistory)
-def personal_chat_history(user_id: str, friend_id: str, namespace: Optional[str] = None):
+def personal_chat_history(user_id: str, friend_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -65,4 +65,4 @@ def personal_chat_history(user_id: str, friend_id: str, namespace: Optional[str]
         friend_id=friend_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

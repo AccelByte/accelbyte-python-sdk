@@ -80,7 +80,7 @@ from ..operations.entitlement import UpdateUserEntitlement
 
 
 @same_doc_as(ConsumeUserEntitlement)
-def consume_user_entitlement(user_id: str, entitlement_id: str, body: Optional[EntitlementDecrement] = None, namespace: Optional[str] = None):
+def consume_user_entitlement(user_id: str, entitlement_id: str, body: Optional[EntitlementDecrement] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -91,11 +91,11 @@ def consume_user_entitlement(user_id: str, entitlement_id: str, body: Optional[E
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(CreateUserDistributionReceiver)
-def create_user_distribution_receiver(user_id: str, ext_user_id: str, body: Optional[DistributionReceiverCreate] = None, namespace: Optional[str] = None):
+def create_user_distribution_receiver(user_id: str, ext_user_id: str, body: Optional[DistributionReceiverCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -106,11 +106,11 @@ def create_user_distribution_receiver(user_id: str, ext_user_id: str, body: Opti
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteUserDistributionReceiver)
-def delete_user_distribution_receiver(user_id: str, ext_user_id: str, namespace: Optional[str] = None):
+def delete_user_distribution_receiver(user_id: str, ext_user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -120,11 +120,11 @@ def delete_user_distribution_receiver(user_id: str, ext_user_id: str, namespace:
         ext_user_id=ext_user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DisableUserEntitlement)
-def disable_user_entitlement(user_id: str, entitlement_id: str, namespace: Optional[str] = None):
+def disable_user_entitlement(user_id: str, entitlement_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -134,11 +134,11 @@ def disable_user_entitlement(user_id: str, entitlement_id: str, namespace: Optio
         entitlement_id=entitlement_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(EnableUserEntitlement)
-def enable_user_entitlement(user_id: str, entitlement_id: str, namespace: Optional[str] = None):
+def enable_user_entitlement(user_id: str, entitlement_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -148,11 +148,11 @@ def enable_user_entitlement(user_id: str, entitlement_id: str, namespace: Option
         entitlement_id=entitlement_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ExistsAnyUserActiveEntitlement)
-def exists_any_user_active_entitlement(user_id: str, item_ids: Optional[List[str]] = None, app_ids: Optional[List[str]] = None, skus: Optional[List[str]] = None, namespace: Optional[str] = None):
+def exists_any_user_active_entitlement(user_id: str, item_ids: Optional[List[str]] = None, app_ids: Optional[List[str]] = None, skus: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -164,11 +164,11 @@ def exists_any_user_active_entitlement(user_id: str, item_ids: Optional[List[str
         skus=skus,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ExistsAnyUserActiveEntitlementByItemIds)
-def exists_any_user_active_entitlement_by_item_ids(user_id: str, item_ids: List[str], namespace: Optional[str] = None):
+def exists_any_user_active_entitlement_by_item_ids(user_id: str, item_ids: List[str], namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -178,11 +178,11 @@ def exists_any_user_active_entitlement_by_item_ids(user_id: str, item_ids: List[
         item_ids=item_ids,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetEntitlement)
-def get_entitlement(entitlement_id: str, namespace: Optional[str] = None):
+def get_entitlement(entitlement_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -191,11 +191,11 @@ def get_entitlement(entitlement_id: str, namespace: Optional[str] = None):
         entitlement_id=entitlement_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserAppEntitlementByAppId)
-def get_user_app_entitlement_by_app_id(user_id: str, app_id: str, active_only: Optional[bool] = None, namespace: Optional[str] = None):
+def get_user_app_entitlement_by_app_id(user_id: str, app_id: str, active_only: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -206,11 +206,11 @@ def get_user_app_entitlement_by_app_id(user_id: str, app_id: str, active_only: O
         active_only=active_only,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserAppEntitlementOwnershipByAppId)
-def get_user_app_entitlement_ownership_by_app_id(user_id: str, app_id: str, namespace: Optional[str] = None):
+def get_user_app_entitlement_ownership_by_app_id(user_id: str, app_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -220,11 +220,11 @@ def get_user_app_entitlement_ownership_by_app_id(user_id: str, app_id: str, name
         app_id=app_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserDistributionReceivers)
-def get_user_distribution_receivers(user_id: str, namespace: Optional[str] = None):
+def get_user_distribution_receivers(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -233,11 +233,11 @@ def get_user_distribution_receivers(user_id: str, namespace: Optional[str] = Non
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserEntitlement)
-def get_user_entitlement(user_id: str, entitlement_id: str, namespace: Optional[str] = None):
+def get_user_entitlement(user_id: str, entitlement_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -247,11 +247,11 @@ def get_user_entitlement(user_id: str, entitlement_id: str, namespace: Optional[
         entitlement_id=entitlement_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserEntitlementBySku)
-def get_user_entitlement_by_sku(user_id: str, sku: str, entitlement_clazz: Optional[str] = None, active_only: Optional[bool] = None, namespace: Optional[str] = None):
+def get_user_entitlement_by_sku(user_id: str, sku: str, entitlement_clazz: Optional[str] = None, active_only: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -263,11 +263,11 @@ def get_user_entitlement_by_sku(user_id: str, sku: str, entitlement_clazz: Optio
         active_only=active_only,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserEntitlementHistories)
-def get_user_entitlement_histories(user_id: str, entitlement_id: str, namespace: Optional[str] = None):
+def get_user_entitlement_histories(user_id: str, entitlement_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -277,11 +277,11 @@ def get_user_entitlement_histories(user_id: str, entitlement_id: str, namespace:
         entitlement_id=entitlement_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserEntitlementOwnershipBySku)
-def get_user_entitlement_ownership_by_sku(user_id: str, sku: str, entitlement_clazz: Optional[str] = None, namespace: Optional[str] = None):
+def get_user_entitlement_ownership_by_sku(user_id: str, sku: str, entitlement_clazz: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -292,11 +292,11 @@ def get_user_entitlement_ownership_by_sku(user_id: str, sku: str, entitlement_cl
         entitlement_clazz=entitlement_clazz,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GrantUserEntitlement)
-def grant_user_entitlement(user_id: str, body: Optional[List[EntitlementGrant]] = None, namespace: Optional[str] = None):
+def grant_user_entitlement(user_id: str, body: Optional[List[EntitlementGrant]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -306,11 +306,11 @@ def grant_user_entitlement(user_id: str, body: Optional[List[EntitlementGrant]] 
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicConsumeUserEntitlement)
-def public_consume_user_entitlement(user_id: str, entitlement_id: str, body: Optional[EntitlementDecrement] = None, namespace: Optional[str] = None):
+def public_consume_user_entitlement(user_id: str, entitlement_id: str, body: Optional[EntitlementDecrement] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -321,11 +321,11 @@ def public_consume_user_entitlement(user_id: str, entitlement_id: str, body: Opt
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicCreateUserDistributionReceiver)
-def public_create_user_distribution_receiver(user_id: str, ext_user_id: str, body: Optional[DistributionReceiverCreate] = None, namespace: Optional[str] = None):
+def public_create_user_distribution_receiver(user_id: str, ext_user_id: str, body: Optional[DistributionReceiverCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -336,11 +336,11 @@ def public_create_user_distribution_receiver(user_id: str, ext_user_id: str, bod
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicDeleteUserDistributionReceiver)
-def public_delete_user_distribution_receiver(user_id: str, ext_user_id: str, namespace: Optional[str] = None):
+def public_delete_user_distribution_receiver(user_id: str, ext_user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -350,11 +350,11 @@ def public_delete_user_distribution_receiver(user_id: str, ext_user_id: str, nam
         ext_user_id=ext_user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicDistributeUserDistribution)
-def public_distribute_user_distribution(user_id: str, entitlement_id: str, target_namespace: str, ext_user_id: str, quantity: Optional[int] = None, namespace: Optional[str] = None):
+def public_distribute_user_distribution(user_id: str, entitlement_id: str, target_namespace: str, ext_user_id: str, quantity: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -367,11 +367,11 @@ def public_distribute_user_distribution(user_id: str, entitlement_id: str, targe
         quantity=quantity,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicExistsAnyMyActiveEntitlement)
-def public_exists_any_my_active_entitlement(item_ids: Optional[List[str]] = None, app_ids: Optional[List[str]] = None, skus: Optional[List[str]] = None, namespace: Optional[str] = None):
+def public_exists_any_my_active_entitlement(item_ids: Optional[List[str]] = None, app_ids: Optional[List[str]] = None, skus: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -382,11 +382,11 @@ def public_exists_any_my_active_entitlement(item_ids: Optional[List[str]] = None
         skus=skus,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicExistsAnyUserActiveEntitlement)
-def public_exists_any_user_active_entitlement(user_id: str, item_ids: Optional[List[str]] = None, app_ids: Optional[List[str]] = None, skus: Optional[List[str]] = None, namespace: Optional[str] = None):
+def public_exists_any_user_active_entitlement(user_id: str, item_ids: Optional[List[str]] = None, app_ids: Optional[List[str]] = None, skus: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -398,11 +398,11 @@ def public_exists_any_user_active_entitlement(user_id: str, item_ids: Optional[L
         skus=skus,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetEntitlementOwnershipToken)
-def public_get_entitlement_ownership_token(item_ids: Optional[List[str]] = None, app_ids: Optional[List[str]] = None, skus: Optional[List[str]] = None, namespace: Optional[str] = None):
+def public_get_entitlement_ownership_token(item_ids: Optional[List[str]] = None, app_ids: Optional[List[str]] = None, skus: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -413,11 +413,11 @@ def public_get_entitlement_ownership_token(item_ids: Optional[List[str]] = None,
         skus=skus,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetMyAppEntitlementOwnershipByAppId)
-def public_get_my_app_entitlement_ownership_by_app_id(app_id: str, namespace: Optional[str] = None):
+def public_get_my_app_entitlement_ownership_by_app_id(app_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -426,11 +426,11 @@ def public_get_my_app_entitlement_ownership_by_app_id(app_id: str, namespace: Op
         app_id=app_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetMyEntitlementOwnershipBySku)
-def public_get_my_entitlement_ownership_by_sku(sku: str, entitlement_clazz: Optional[str] = None, namespace: Optional[str] = None):
+def public_get_my_entitlement_ownership_by_sku(sku: str, entitlement_clazz: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -440,11 +440,11 @@ def public_get_my_entitlement_ownership_by_sku(sku: str, entitlement_clazz: Opti
         entitlement_clazz=entitlement_clazz,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetUserAppEntitlementByAppId)
-def public_get_user_app_entitlement_by_app_id(user_id: str, app_id: str, namespace: Optional[str] = None):
+def public_get_user_app_entitlement_by_app_id(user_id: str, app_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -454,11 +454,11 @@ def public_get_user_app_entitlement_by_app_id(user_id: str, app_id: str, namespa
         app_id=app_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetUserAppEntitlementOwnershipByAppId)
-def public_get_user_app_entitlement_ownership_by_app_id(user_id: str, app_id: str, namespace: Optional[str] = None):
+def public_get_user_app_entitlement_ownership_by_app_id(user_id: str, app_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -468,11 +468,11 @@ def public_get_user_app_entitlement_ownership_by_app_id(user_id: str, app_id: st
         app_id=app_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetUserDistributionReceivers)
-def public_get_user_distribution_receivers(user_id: str, target_namespace: str, namespace: Optional[str] = None):
+def public_get_user_distribution_receivers(user_id: str, target_namespace: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -482,11 +482,11 @@ def public_get_user_distribution_receivers(user_id: str, target_namespace: str, 
         target_namespace=target_namespace,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetUserEntitlement)
-def public_get_user_entitlement(user_id: str, entitlement_id: str, namespace: Optional[str] = None):
+def public_get_user_entitlement(user_id: str, entitlement_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -496,11 +496,11 @@ def public_get_user_entitlement(user_id: str, entitlement_id: str, namespace: Op
         entitlement_id=entitlement_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetUserEntitlementBySku)
-def public_get_user_entitlement_by_sku(user_id: str, sku: str, entitlement_clazz: Optional[str] = None, namespace: Optional[str] = None):
+def public_get_user_entitlement_by_sku(user_id: str, sku: str, entitlement_clazz: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -511,11 +511,11 @@ def public_get_user_entitlement_by_sku(user_id: str, sku: str, entitlement_clazz
         entitlement_clazz=entitlement_clazz,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetUserEntitlementOwnershipBySku)
-def public_get_user_entitlement_ownership_by_sku(user_id: str, sku: str, entitlement_clazz: Optional[str] = None, namespace: Optional[str] = None):
+def public_get_user_entitlement_ownership_by_sku(user_id: str, sku: str, entitlement_clazz: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -526,11 +526,11 @@ def public_get_user_entitlement_ownership_by_sku(user_id: str, sku: str, entitle
         entitlement_clazz=entitlement_clazz,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicQueryUserEntitlements)
-def public_query_user_entitlements(user_id: str, entitlement_clazz: Optional[str] = None, app_type: Optional[str] = None, entitlement_name: Optional[str] = None, item_id: Optional[List[str]] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
+def public_query_user_entitlements(user_id: str, entitlement_clazz: Optional[str] = None, app_type: Optional[str] = None, entitlement_name: Optional[str] = None, item_id: Optional[List[str]] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -545,11 +545,11 @@ def public_query_user_entitlements(user_id: str, entitlement_clazz: Optional[str
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicQueryUserEntitlementsByAppType)
-def public_query_user_entitlements_by_app_type(user_id: str, app_type: str, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
+def public_query_user_entitlements_by_app_type(user_id: str, app_type: str, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -561,11 +561,11 @@ def public_query_user_entitlements_by_app_type(user_id: str, app_type: str, offs
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicUpdateUserDistributionReceiver)
-def public_update_user_distribution_receiver(user_id: str, ext_user_id: str, body: Optional[DistributionReceiverCreate] = None, namespace: Optional[str] = None):
+def public_update_user_distribution_receiver(user_id: str, ext_user_id: str, body: Optional[DistributionReceiverCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -576,11 +576,11 @@ def public_update_user_distribution_receiver(user_id: str, ext_user_id: str, bod
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QueryEntitlements)
-def query_entitlements(user_id: Optional[str] = None, entitlement_clazz: Optional[str] = None, app_type: Optional[str] = None, entitlement_name: Optional[str] = None, item_id: Optional[List[str]] = None, active_only: Optional[bool] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
+def query_entitlements(user_id: Optional[str] = None, entitlement_clazz: Optional[str] = None, app_type: Optional[str] = None, entitlement_name: Optional[str] = None, item_id: Optional[List[str]] = None, active_only: Optional[bool] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -596,11 +596,11 @@ def query_entitlements(user_id: Optional[str] = None, entitlement_clazz: Optiona
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QueryUserEntitlements)
-def query_user_entitlements(user_id: str, entitlement_clazz: Optional[str] = None, app_type: Optional[str] = None, entitlement_name: Optional[str] = None, item_id: Optional[List[str]] = None, active_only: Optional[bool] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
+def query_user_entitlements(user_id: str, entitlement_clazz: Optional[str] = None, app_type: Optional[str] = None, entitlement_name: Optional[str] = None, item_id: Optional[List[str]] = None, active_only: Optional[bool] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -616,11 +616,11 @@ def query_user_entitlements(user_id: str, entitlement_clazz: Optional[str] = Non
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QueryUserEntitlementsByAppType)
-def query_user_entitlements_by_app_type(user_id: str, app_type: str, active_only: Optional[bool] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
+def query_user_entitlements_by_app_type(user_id: str, app_type: str, active_only: Optional[bool] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -633,11 +633,11 @@ def query_user_entitlements_by_app_type(user_id: str, app_type: str, active_only
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(RevokeUserEntitlement)
-def revoke_user_entitlement(user_id: str, entitlement_id: str, namespace: Optional[str] = None):
+def revoke_user_entitlement(user_id: str, entitlement_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -647,11 +647,11 @@ def revoke_user_entitlement(user_id: str, entitlement_id: str, namespace: Option
         entitlement_id=entitlement_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(RevokeUserEntitlements)
-def revoke_user_entitlements(user_id: str, entitlement_ids: str, namespace: Optional[str] = None):
+def revoke_user_entitlements(user_id: str, entitlement_ids: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -661,11 +661,11 @@ def revoke_user_entitlements(user_id: str, entitlement_ids: str, namespace: Opti
         entitlement_ids=entitlement_ids,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateUserDistributionReceiver)
-def update_user_distribution_receiver(user_id: str, ext_user_id: str, body: Optional[DistributionReceiverCreate] = None, namespace: Optional[str] = None):
+def update_user_distribution_receiver(user_id: str, ext_user_id: str, body: Optional[DistributionReceiverCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -676,11 +676,11 @@ def update_user_distribution_receiver(user_id: str, ext_user_id: str, body: Opti
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateUserEntitlement)
-def update_user_entitlement(user_id: str, entitlement_id: str, body: Optional[EntitlementUpdate] = None, namespace: Optional[str] = None):
+def update_user_entitlement(user_id: str, entitlement_id: str, body: Optional[EntitlementUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -691,4 +691,4 @@ def update_user_entitlement(user_id: str, entitlement_id: str, body: Optional[En
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

@@ -30,7 +30,7 @@ from ..operations.public_game_record import PutGameRecordHandlerV1
 
 
 @same_doc_as(DeleteGameRecordHandlerV1)
-def delete_game_record_handler_v1(key: str, namespace: Optional[str] = None):
+def delete_game_record_handler_v1(key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -39,11 +39,11 @@ def delete_game_record_handler_v1(key: str, namespace: Optional[str] = None):
         key=key,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetGameRecordHandlerV1)
-def get_game_record_handler_v1(key: str, namespace: Optional[str] = None):
+def get_game_record_handler_v1(key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -52,11 +52,11 @@ def get_game_record_handler_v1(key: str, namespace: Optional[str] = None):
         key=key,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PostGameRecordHandlerV1)
-def post_game_record_handler_v1(body: ModelsGameRecordRequest, key: str, namespace: Optional[str] = None):
+def post_game_record_handler_v1(body: ModelsGameRecordRequest, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -66,11 +66,11 @@ def post_game_record_handler_v1(body: ModelsGameRecordRequest, key: str, namespa
         key=key,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PutGameRecordHandlerV1)
-def put_game_record_handler_v1(body: ModelsGameRecordRequest, key: str, namespace: Optional[str] = None):
+def put_game_record_handler_v1(body: ModelsGameRecordRequest, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -80,4 +80,4 @@ def put_game_record_handler_v1(body: ModelsGameRecordRequest, key: str, namespac
         key=key,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

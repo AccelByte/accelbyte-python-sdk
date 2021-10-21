@@ -25,7 +25,7 @@ from ..operations.global_statistic import GetGlobalStatItems
 
 
 @same_doc_as(GetGlobalStatItems)
-def get_global_stat_items(offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
+def get_global_stat_items(offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -35,4 +35,4 @@ def get_global_stat_items(offset: Optional[int] = None, limit: Optional[int] = N
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

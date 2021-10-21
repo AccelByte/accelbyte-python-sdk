@@ -44,7 +44,7 @@ from ..operations.category import UpdateCategory
 
 
 @same_doc_as(CreateCategory)
-def create_category(store_id: str, body: Optional[CategoryCreate] = None, namespace: Optional[str] = None):
+def create_category(store_id: str, body: Optional[CategoryCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -54,11 +54,11 @@ def create_category(store_id: str, body: Optional[CategoryCreate] = None, namesp
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteCategory)
-def delete_category(category_path: str, store_id: str, namespace: Optional[str] = None):
+def delete_category(category_path: str, store_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -68,11 +68,11 @@ def delete_category(category_path: str, store_id: str, namespace: Optional[str] 
         store_id=store_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DownloadCategories)
-def download_categories(store_id: Optional[str] = None, language: Optional[str] = None, namespace: Optional[str] = None):
+def download_categories(store_id: Optional[str] = None, language: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -82,11 +82,11 @@ def download_categories(store_id: Optional[str] = None, language: Optional[str] 
         language=language,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetCategory)
-def get_category(category_path: str, store_id: Optional[str] = None, namespace: Optional[str] = None):
+def get_category(category_path: str, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -96,11 +96,11 @@ def get_category(category_path: str, store_id: Optional[str] = None, namespace: 
         store_id=store_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetChildCategories)
-def get_child_categories(category_path: str, store_id: Optional[str] = None, namespace: Optional[str] = None):
+def get_child_categories(category_path: str, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -110,11 +110,11 @@ def get_child_categories(category_path: str, store_id: Optional[str] = None, nam
         store_id=store_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetDescendantCategories)
-def get_descendant_categories(category_path: str, store_id: Optional[str] = None, namespace: Optional[str] = None):
+def get_descendant_categories(category_path: str, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -124,11 +124,11 @@ def get_descendant_categories(category_path: str, store_id: Optional[str] = None
         store_id=store_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetRootCategories)
-def get_root_categories(store_id: Optional[str] = None, namespace: Optional[str] = None):
+def get_root_categories(store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -137,11 +137,11 @@ def get_root_categories(store_id: Optional[str] = None, namespace: Optional[str]
         store_id=store_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ListCategoriesBasic)
-def list_categories_basic(store_id: Optional[str] = None, namespace: Optional[str] = None):
+def list_categories_basic(store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -150,11 +150,11 @@ def list_categories_basic(store_id: Optional[str] = None, namespace: Optional[st
         store_id=store_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetCategory)
-def public_get_category(category_path: str, store_id: Optional[str] = None, language: Optional[str] = None, namespace: Optional[str] = None):
+def public_get_category(category_path: str, store_id: Optional[str] = None, language: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -165,11 +165,11 @@ def public_get_category(category_path: str, store_id: Optional[str] = None, lang
         language=language,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetChildCategories)
-def public_get_child_categories(category_path: str, store_id: Optional[str] = None, language: Optional[str] = None, namespace: Optional[str] = None):
+def public_get_child_categories(category_path: str, store_id: Optional[str] = None, language: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -180,11 +180,11 @@ def public_get_child_categories(category_path: str, store_id: Optional[str] = No
         language=language,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetDescendantCategories)
-def public_get_descendant_categories(category_path: str, language: Optional[str] = None, store_id: Optional[str] = None, namespace: Optional[str] = None):
+def public_get_descendant_categories(category_path: str, language: Optional[str] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -195,11 +195,11 @@ def public_get_descendant_categories(category_path: str, language: Optional[str]
         store_id=store_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetRootCategories)
-def public_get_root_categories(store_id: Optional[str] = None, language: Optional[str] = None, namespace: Optional[str] = None):
+def public_get_root_categories(store_id: Optional[str] = None, language: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -209,11 +209,11 @@ def public_get_root_categories(store_id: Optional[str] = None, language: Optiona
         language=language,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateCategory)
-def update_category(category_path: str, store_id: str, body: Optional[CategoryUpdate] = None, namespace: Optional[str] = None):
+def update_category(category_path: str, store_id: str, body: Optional[CategoryUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -224,4 +224,4 @@ def update_category(category_path: str, store_id: str, body: Optional[CategoryUp
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

@@ -38,7 +38,7 @@ from ..operations.o_auth import VerifyToken
 
 
 @same_doc_as(Authorization)
-def authorization(client_id: str, redirect_uri: str, response_type: str, login: Optional[str] = None, password: Optional[str] = None, scope: Optional[str] = None, state: Optional[str] = None):
+def authorization(client_id: str, redirect_uri: str, response_type: str, login: Optional[str] = None, password: Optional[str] = None, scope: Optional[str] = None, state: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = Authorization.create(
         client_id=client_id,
         redirect_uri=redirect_uri,
@@ -48,35 +48,35 @@ def authorization(client_id: str, redirect_uri: str, response_type: str, login: 
         scope=scope,
         state=state,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetJWKS)
-def get_jwks():
+def get_jwks(x_additional_headers: Optional[Dict[str, str]] = None):
     request = GetJWKS.create()
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetRevocationList)
-def get_revocation_list():
+def get_revocation_list(x_additional_headers: Optional[Dict[str, str]] = None):
     request = GetRevocationList.create()
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PlatformTokenGrant)
-def platform_token_grant(platform_id: str, device_id: Optional[str] = None, platform_token: Optional[str] = None, namespace: Optional[str] = None):
+def platform_token_grant(platform_id: str, device_id: Optional[str] = None, platform_token: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = PlatformTokenGrant.create(
         platform_id=platform_id,
         device_id=device_id,
         platform_token=platform_token,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @deprecated
 @same_doc_as(PlatformTokenRequestHandler)
-def platform_token_request_handler(platform_id: str, platform_token: Optional[str] = None, device_id: Optional[str] = None, namespace: Optional[str] = None):
+def platform_token_request_handler(platform_id: str, platform_token: Optional[str] = None, device_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -87,29 +87,29 @@ def platform_token_request_handler(platform_id: str, platform_token: Optional[st
         device_id=device_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @deprecated
 @same_doc_as(RevokeAUser)
-def revoke_a_user(user_id: str):
+def revoke_a_user(user_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
     request = RevokeAUser.create(
         user_id=user_id,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @deprecated
 @same_doc_as(RevokeToken)
-def revoke_token(token: str):
+def revoke_token(token: str, x_additional_headers: Optional[Dict[str, str]] = None):
     request = RevokeToken.create(
         token=token,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(RevokeUser)
-def revoke_user(user_id: str, namespace: Optional[str] = None):
+def revoke_user(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -118,11 +118,11 @@ def revoke_user(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(TokenGrant)
-def token_grant(grant_type: str, device_id: Optional[str] = None, username: Optional[str] = None, password: Optional[str] = None, refresh_token: Optional[str] = None, code: Optional[str] = None, redirect_uri: Optional[str] = None, namespace: Optional[str] = None, extend_exp: Optional[bool] = None):
+def token_grant(grant_type: str, device_id: Optional[str] = None, username: Optional[str] = None, password: Optional[str] = None, refresh_token: Optional[str] = None, code: Optional[str] = None, redirect_uri: Optional[str] = None, namespace: Optional[str] = None, extend_exp: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = TokenGrant.create(
         grant_type=grant_type,
         device_id=device_id,
@@ -134,12 +134,12 @@ def token_grant(grant_type: str, device_id: Optional[str] = None, username: Opti
         namespace=namespace,
         extend_exp=extend_exp,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(VerifyToken)
-def verify_token(token: str):
+def verify_token(token: str, x_additional_headers: Optional[Dict[str, str]] = None):
     request = VerifyToken.create(
         token=token,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

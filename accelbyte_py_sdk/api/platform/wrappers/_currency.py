@@ -37,7 +37,7 @@ from ..operations.currency import UpdateCurrency
 
 
 @same_doc_as(CreateCurrency)
-def create_currency(body: Optional[CurrencyCreate] = None, namespace: Optional[str] = None):
+def create_currency(body: Optional[CurrencyCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -46,11 +46,11 @@ def create_currency(body: Optional[CurrencyCreate] = None, namespace: Optional[s
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteCurrency)
-def delete_currency(currency_code: str, namespace: Optional[str] = None):
+def delete_currency(currency_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -59,11 +59,11 @@ def delete_currency(currency_code: str, namespace: Optional[str] = None):
         currency_code=currency_code,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetCurrencyConfig)
-def get_currency_config(currency_code: str, namespace: Optional[str] = None):
+def get_currency_config(currency_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -72,11 +72,11 @@ def get_currency_config(currency_code: str, namespace: Optional[str] = None):
         currency_code=currency_code,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetCurrencySummary)
-def get_currency_summary(currency_code: str, namespace: Optional[str] = None):
+def get_currency_summary(currency_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -85,11 +85,11 @@ def get_currency_summary(currency_code: str, namespace: Optional[str] = None):
         currency_code=currency_code,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ListCurrencies)
-def list_currencies(namespace: Optional[str] = None):
+def list_currencies(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -97,11 +97,11 @@ def list_currencies(namespace: Optional[str] = None):
     request = ListCurrencies.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicListCurrencies)
-def public_list_currencies(namespace: Optional[str] = None):
+def public_list_currencies(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -109,11 +109,11 @@ def public_list_currencies(namespace: Optional[str] = None):
     request = PublicListCurrencies.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateCurrency)
-def update_currency(currency_code: str, body: Optional[CurrencyUpdate] = None, namespace: Optional[str] = None):
+def update_currency(currency_code: str, body: Optional[CurrencyUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -123,4 +123,4 @@ def update_currency(currency_code: str, body: Optional[CurrencyUpdate] = None, n
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

@@ -27,7 +27,7 @@ from ..operations.member_request import GetGroupJoinRequestPublicV1
 
 
 @same_doc_as(GetGroupInvitationRequestPublicV1)
-def get_group_invitation_request_public_v1(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None):
+def get_group_invitation_request_public_v1(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -37,11 +37,11 @@ def get_group_invitation_request_public_v1(limit: Optional[int] = None, offset: 
         offset=offset,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetGroupJoinRequestPublicV1)
-def get_group_join_request_public_v1(group_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None):
+def get_group_join_request_public_v1(group_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -52,4 +52,4 @@ def get_group_join_request_public_v1(group_id: str, limit: Optional[int] = None,
         offset=offset,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

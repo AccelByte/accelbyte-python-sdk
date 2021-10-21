@@ -29,13 +29,13 @@ from ..operations.config import AdminUpdateConfigV1
 
 
 @same_doc_as(AdminGetAllConfigV1)
-def admin_get_all_config_v1():
+def admin_get_all_config_v1(x_additional_headers: Optional[Dict[str, str]] = None):
     request = AdminGetAllConfigV1.create()
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetConfigV1)
-def admin_get_config_v1(namespace: Optional[str] = None):
+def admin_get_config_v1(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -43,11 +43,11 @@ def admin_get_config_v1(namespace: Optional[str] = None):
     request = AdminGetConfigV1.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminUpdateConfigV1)
-def admin_update_config_v1(body: ModelsConfigReq, namespace: Optional[str] = None):
+def admin_update_config_v1(body: ModelsConfigReq, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -56,4 +56,4 @@ def admin_update_config_v1(body: ModelsConfigReq, namespace: Optional[str] = Non
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

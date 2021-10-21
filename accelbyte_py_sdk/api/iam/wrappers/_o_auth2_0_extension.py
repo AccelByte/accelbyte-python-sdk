@@ -28,19 +28,19 @@ from ..operations.o_auth2_0_extension import UserAuthenticationV3
 
 
 @same_doc_as(GetCountryLocationV3)
-def get_country_location_v3():
+def get_country_location_v3(x_additional_headers: Optional[Dict[str, str]] = None):
     request = GetCountryLocationV3.create()
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(Logout)
-def logout():
+def logout(x_additional_headers: Optional[Dict[str, str]] = None):
     request = Logout.create()
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PlatformAuthenticationV3)
-def platform_authentication_v3(platform_id: str, state: str, openid_ns: Optional[str] = None, openid_mode: Optional[str] = None, openid_op_endpoint: Optional[str] = None, openid_claimed_id: Optional[str] = None, openid_identity: Optional[str] = None, openid_return_to: Optional[str] = None, openid_response_nonce: Optional[str] = None, openid_assoc_handle: Optional[str] = None, openid_signed: Optional[str] = None, openid_sig: Optional[str] = None, code: Optional[str] = None, error: Optional[str] = None):
+def platform_authentication_v3(platform_id: str, state: str, openid_ns: Optional[str] = None, openid_mode: Optional[str] = None, openid_op_endpoint: Optional[str] = None, openid_claimed_id: Optional[str] = None, openid_identity: Optional[str] = None, openid_return_to: Optional[str] = None, openid_response_nonce: Optional[str] = None, openid_assoc_handle: Optional[str] = None, openid_signed: Optional[str] = None, openid_sig: Optional[str] = None, code: Optional[str] = None, error: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = PlatformAuthenticationV3.create(
         platform_id=platform_id,
         state=state,
@@ -57,11 +57,11 @@ def platform_authentication_v3(platform_id: str, state: str, openid_ns: Optional
         code=code,
         error=error,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UserAuthenticationV3)
-def user_authentication_v3(user_name: str, password: str, request_id: str, redirect_uri: Optional[str] = None, client_id: Optional[str] = None, extend_exp: Optional[bool] = None):
+def user_authentication_v3(user_name: str, password: str, request_id: str, redirect_uri: Optional[str] = None, client_id: Optional[str] = None, extend_exp: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = UserAuthenticationV3.create(
         user_name=user_name,
         password=password,
@@ -70,4 +70,4 @@ def user_authentication_v3(user_name: str, password: str, request_id: str, redir
         client_id=client_id,
         extend_exp=extend_exp,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

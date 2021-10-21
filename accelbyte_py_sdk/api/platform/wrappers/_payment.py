@@ -43,7 +43,7 @@ from ..operations.payment import SimulatePaymentOrderNotification
 
 
 @same_doc_as(ChargePaymentOrder)
-def charge_payment_order(payment_order_no: str, body: Optional[PaymentOrderChargeRequest] = None, namespace: Optional[str] = None):
+def charge_payment_order(payment_order_no: str, body: Optional[PaymentOrderChargeRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -53,11 +53,11 @@ def charge_payment_order(payment_order_no: str, body: Optional[PaymentOrderCharg
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(CreateUserPaymentOrder)
-def create_user_payment_order(user_id: str, body: Optional[PaymentOrderCreate] = None, namespace: Optional[str] = None):
+def create_user_payment_order(user_id: str, body: Optional[PaymentOrderCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -67,11 +67,11 @@ def create_user_payment_order(user_id: str, body: Optional[PaymentOrderCreate] =
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetPaymentOrder)
-def get_payment_order(payment_order_no: str, namespace: Optional[str] = None):
+def get_payment_order(payment_order_no: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -80,11 +80,11 @@ def get_payment_order(payment_order_no: str, namespace: Optional[str] = None):
         payment_order_no=payment_order_no,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetPaymentOrderChargeStatus)
-def get_payment_order_charge_status(payment_order_no: str, namespace: Optional[str] = None):
+def get_payment_order_charge_status(payment_order_no: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -93,11 +93,11 @@ def get_payment_order_charge_status(payment_order_no: str, namespace: Optional[s
         payment_order_no=payment_order_no,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ListExtOrderNoByExtTxId)
-def list_ext_order_no_by_ext_tx_id(ext_tx_id: str, namespace: Optional[str] = None):
+def list_ext_order_no_by_ext_tx_id(ext_tx_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -106,11 +106,11 @@ def list_ext_order_no_by_ext_tx_id(ext_tx_id: str, namespace: Optional[str] = No
         ext_tx_id=ext_tx_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QueryPaymentNotifications)
-def query_payment_notifications(payment_order_no: Optional[str] = None, external_id: Optional[str] = None, status: Optional[str] = None, notification_type: Optional[str] = None, notification_source: Optional[str] = None, start_date: Optional[str] = None, end_date: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
+def query_payment_notifications(payment_order_no: Optional[str] = None, external_id: Optional[str] = None, status: Optional[str] = None, notification_type: Optional[str] = None, notification_source: Optional[str] = None, start_date: Optional[str] = None, end_date: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -127,11 +127,11 @@ def query_payment_notifications(payment_order_no: Optional[str] = None, external
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QueryPaymentOrders)
-def query_payment_orders(status: Optional[str] = None, channel: Optional[str] = None, ext_tx_id: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
+def query_payment_orders(status: Optional[str] = None, channel: Optional[str] = None, ext_tx_id: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -144,11 +144,11 @@ def query_payment_orders(status: Optional[str] = None, channel: Optional[str] = 
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(RefundUserPaymentOrder)
-def refund_user_payment_order(payment_order_no: str, user_id: str, body: Optional[PaymentOrderRefund] = None, namespace: Optional[str] = None):
+def refund_user_payment_order(payment_order_no: str, user_id: str, body: Optional[PaymentOrderRefund] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -159,11 +159,11 @@ def refund_user_payment_order(payment_order_no: str, user_id: str, body: Optiona
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(SimulatePaymentOrderNotification)
-def simulate_payment_order_notification(payment_order_no: str, body: Optional[PaymentOrderNotifySimulation] = None, namespace: Optional[str] = None):
+def simulate_payment_order_notification(payment_order_no: str, body: Optional[PaymentOrderNotifySimulation] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -173,4 +173,4 @@ def simulate_payment_order_notification(payment_order_no: str, body: Optional[Pa
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

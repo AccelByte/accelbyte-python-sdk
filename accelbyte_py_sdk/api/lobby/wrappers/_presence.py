@@ -26,7 +26,7 @@ from ..operations.presence import UsersPresenceHandlerV1
 
 
 @same_doc_as(UsersPresenceHandlerV1)
-def users_presence_handler_v1(user_ids: str, count_only: Optional[bool] = None, namespace: Optional[str] = None):
+def users_presence_handler_v1(user_ids: str, count_only: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -36,4 +36,4 @@ def users_presence_handler_v1(user_ids: str, count_only: Optional[bool] = None, 
         count_only=count_only,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

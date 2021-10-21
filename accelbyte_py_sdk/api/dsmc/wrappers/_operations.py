@@ -26,6 +26,6 @@ from ..operations.operations import PublicGetMessages
 
 
 @same_doc_as(PublicGetMessages)
-def public_get_messages():
+def public_get_messages(x_additional_headers: Optional[Dict[str, str]] = None):
     request = PublicGetMessages.create()
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

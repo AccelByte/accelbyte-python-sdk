@@ -30,7 +30,7 @@ from ..operations.file_upload import PublicGeneratedUserUploadContentUrl
 
 
 @same_doc_as(GeneratedUploadUrl)
-def generated_upload_url(folder: str, file_type: str, namespace: Optional[str] = None):
+def generated_upload_url(folder: str, file_type: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -40,11 +40,11 @@ def generated_upload_url(folder: str, file_type: str, namespace: Optional[str] =
         file_type=file_type,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GeneratedUserUploadContentUrl)
-def generated_user_upload_content_url(user_id: str, file_type: str, namespace: Optional[str] = None):
+def generated_user_upload_content_url(user_id: str, file_type: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -54,11 +54,11 @@ def generated_user_upload_content_url(user_id: str, file_type: str, namespace: O
         file_type=file_type,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGeneratedUploadUrl)
-def public_generated_upload_url(folder: str, file_type: str, namespace: Optional[str] = None):
+def public_generated_upload_url(folder: str, file_type: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -68,11 +68,11 @@ def public_generated_upload_url(folder: str, file_type: str, namespace: Optional
         file_type=file_type,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGeneratedUserUploadContentUrl)
-def public_generated_user_upload_content_url(user_id: str, file_type: str, namespace: Optional[str] = None):
+def public_generated_user_upload_content_url(user_id: str, file_type: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -82,4 +82,4 @@ def public_generated_user_upload_content_url(user_id: str, file_type: str, names
         file_type=file_type,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

@@ -33,7 +33,7 @@ from ..operations.payment_dedicated import SyncPaymentOrders
 
 
 @same_doc_as(CreatePaymentOrderByDedicated)
-def create_payment_order_by_dedicated(body: Optional[ExternalPaymentOrderCreate] = None, namespace: Optional[str] = None):
+def create_payment_order_by_dedicated(body: Optional[ExternalPaymentOrderCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -42,11 +42,11 @@ def create_payment_order_by_dedicated(body: Optional[ExternalPaymentOrderCreate]
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(RefundPaymentOrderByDedicated)
-def refund_payment_order_by_dedicated(payment_order_no: str, body: Optional[PaymentOrderRefund] = None, namespace: Optional[str] = None):
+def refund_payment_order_by_dedicated(payment_order_no: str, body: Optional[PaymentOrderRefund] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -56,14 +56,14 @@ def refund_payment_order_by_dedicated(payment_order_no: str, body: Optional[Paym
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(SyncPaymentOrders)
-def sync_payment_orders(start: str, end: str, next_evaluated_key: Optional[str] = None):
+def sync_payment_orders(start: str, end: str, next_evaluated_key: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = SyncPaymentOrders.create(
         start=start,
         end=end,
         next_evaluated_key=next_evaluated_key,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

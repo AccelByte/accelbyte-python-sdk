@@ -35,7 +35,7 @@ from ..operations.bans import GetListBanReason
 
 
 @same_doc_as(AdminGetBannedUsersV3)
-def admin_get_banned_users_v3(active_only: Optional[bool] = None, ban_type: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None):
+def admin_get_banned_users_v3(active_only: Optional[bool] = None, ban_type: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -47,17 +47,17 @@ def admin_get_banned_users_v3(active_only: Optional[bool] = None, ban_type: Opti
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetBansTypeV3)
-def admin_get_bans_type_v3():
+def admin_get_bans_type_v3(x_additional_headers: Optional[Dict[str, str]] = None):
     request = AdminGetBansTypeV3.create()
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetBansTypeWithNamespaceV3)
-def admin_get_bans_type_with_namespace_v3(namespace: Optional[str] = None):
+def admin_get_bans_type_with_namespace_v3(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -65,22 +65,22 @@ def admin_get_bans_type_with_namespace_v3(namespace: Optional[str] = None):
     request = AdminGetBansTypeWithNamespaceV3.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetListBanReasonV3)
-def admin_get_list_ban_reason_v3():
+def admin_get_list_ban_reason_v3(x_additional_headers: Optional[Dict[str, str]] = None):
     request = AdminGetListBanReasonV3.create()
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetBansType)
-def get_bans_type():
+def get_bans_type(x_additional_headers: Optional[Dict[str, str]] = None):
     request = GetBansType.create()
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetListBanReason)
-def get_list_ban_reason():
+def get_list_ban_reason(x_additional_headers: Optional[Dict[str, str]] = None):
     request = GetListBanReason.create()
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

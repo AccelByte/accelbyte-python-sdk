@@ -31,7 +31,7 @@ from ..operations.anonymization import AnonymizeWallet
 
 
 @same_doc_as(AnonymizeCampaign)
-def anonymize_campaign(user_id: str, namespace: Optional[str] = None):
+def anonymize_campaign(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -40,11 +40,11 @@ def anonymize_campaign(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AnonymizeEntitlement)
-def anonymize_entitlement(user_id: str, namespace: Optional[str] = None):
+def anonymize_entitlement(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -53,11 +53,11 @@ def anonymize_entitlement(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AnonymizeFulfillment)
-def anonymize_fulfillment(user_id: str, namespace: Optional[str] = None):
+def anonymize_fulfillment(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -66,11 +66,11 @@ def anonymize_fulfillment(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AnonymizeIntegration)
-def anonymize_integration(user_id: str, namespace: Optional[str] = None):
+def anonymize_integration(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -79,11 +79,11 @@ def anonymize_integration(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AnonymizeOrder)
-def anonymize_order(user_id: str, namespace: Optional[str] = None):
+def anonymize_order(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -92,11 +92,11 @@ def anonymize_order(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AnonymizePayment)
-def anonymize_payment(user_id: str, namespace: Optional[str] = None):
+def anonymize_payment(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -105,11 +105,11 @@ def anonymize_payment(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AnonymizeSubscription)
-def anonymize_subscription(user_id: str, namespace: Optional[str] = None):
+def anonymize_subscription(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -118,11 +118,11 @@ def anonymize_subscription(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AnonymizeWallet)
-def anonymize_wallet(user_id: str, namespace: Optional[str] = None):
+def anonymize_wallet(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -131,4 +131,4 @@ def anonymize_wallet(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

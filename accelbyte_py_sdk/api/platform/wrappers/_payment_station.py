@@ -43,7 +43,7 @@ from ..operations.payment_station import PublicNormalizePaymentReturnUrl
 
 
 @same_doc_as(GetPaymentCustomization)
-def get_payment_customization(payment_provider: str, region: str, sandbox: Optional[bool] = None, namespace: Optional[str] = None):
+def get_payment_customization(payment_provider: str, region: str, sandbox: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -54,11 +54,11 @@ def get_payment_customization(payment_provider: str, region: str, sandbox: Optio
         sandbox=sandbox,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetPaymentPublicConfig)
-def get_payment_public_config(payment_provider: str, region: str, sandbox: Optional[bool] = None, namespace: Optional[str] = None):
+def get_payment_public_config(payment_provider: str, region: str, sandbox: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -69,11 +69,11 @@ def get_payment_public_config(payment_provider: str, region: str, sandbox: Optio
         sandbox=sandbox,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetPaymentTaxValue)
-def get_payment_tax_value(payment_provider: str, payment_order_no: str, zip_code: Optional[str] = None, namespace: Optional[str] = None):
+def get_payment_tax_value(payment_provider: str, payment_order_no: str, zip_code: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -84,11 +84,11 @@ def get_payment_tax_value(payment_provider: str, payment_order_no: str, zip_code
         zip_code=zip_code,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(Pay)
-def pay(payment_order_no: str, body: Optional[PaymentToken] = None, payment_provider: Optional[str] = None, zip_code: Optional[str] = None, namespace: Optional[str] = None):
+def pay(payment_order_no: str, body: Optional[PaymentToken] = None, payment_provider: Optional[str] = None, zip_code: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -100,11 +100,11 @@ def pay(payment_order_no: str, body: Optional[PaymentToken] = None, payment_prov
         zip_code=zip_code,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicCheckPaymentOrderPaidStatus)
-def public_check_payment_order_paid_status(payment_order_no: str, namespace: Optional[str] = None):
+def public_check_payment_order_paid_status(payment_order_no: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -113,11 +113,11 @@ def public_check_payment_order_paid_status(payment_order_no: str, namespace: Opt
         payment_order_no=payment_order_no,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetPaymentMethods)
-def public_get_payment_methods(payment_order_no: str, namespace: Optional[str] = None):
+def public_get_payment_methods(payment_order_no: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -126,11 +126,11 @@ def public_get_payment_methods(payment_order_no: str, namespace: Optional[str] =
         payment_order_no=payment_order_no,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetPaymentUrl)
-def public_get_payment_url(body: Optional[PaymentUrlCreate] = None, namespace: Optional[str] = None):
+def public_get_payment_url(body: Optional[PaymentUrlCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -139,11 +139,11 @@ def public_get_payment_url(body: Optional[PaymentUrlCreate] = None, namespace: O
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetQRCode)
-def public_get_qr_code(code: str, namespace: Optional[str] = None):
+def public_get_qr_code(code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -152,11 +152,11 @@ def public_get_qr_code(code: str, namespace: Optional[str] = None):
         code=code,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetUnpaidPaymentOrder)
-def public_get_unpaid_payment_order(payment_order_no: str, namespace: Optional[str] = None):
+def public_get_unpaid_payment_order(payment_order_no: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -165,11 +165,11 @@ def public_get_unpaid_payment_order(payment_order_no: str, namespace: Optional[s
         payment_order_no=payment_order_no,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicNormalizePaymentReturnUrl)
-def public_normalize_payment_return_url(return_url: str, order_no: str, payment_order_no: str, payment_provider: str, user_id: Optional[str] = None, foreinginvoice: Optional[str] = None, invoice_id: Optional[str] = None, status: Optional[str] = None, result_code: Optional[str] = None, payload: Optional[str] = None, type_: Optional[str] = None, token: Optional[str] = None, payer_id: Optional[str] = None, namespace: Optional[str] = None):
+def public_normalize_payment_return_url(return_url: str, order_no: str, payment_order_no: str, payment_provider: str, user_id: Optional[str] = None, foreinginvoice: Optional[str] = None, invoice_id: Optional[str] = None, status: Optional[str] = None, result_code: Optional[str] = None, payload: Optional[str] = None, type_: Optional[str] = None, token: Optional[str] = None, payer_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -190,4 +190,4 @@ def public_normalize_payment_return_url(return_url: str, order_no: str, payment_
         payer_id=payer_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

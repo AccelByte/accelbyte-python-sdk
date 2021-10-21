@@ -231,7 +231,7 @@ from ..operations.users import UserVerification
 
 
 @same_doc_as(AddUserPermission)
-def add_user_permission(body: ModelUpdatePermissionScheduleRequest, user_id: str, resource: str, action: int, namespace: Optional[str] = None):
+def add_user_permission(body: ModelUpdatePermissionScheduleRequest, user_id: str, resource: str, action: int, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -243,11 +243,11 @@ def add_user_permission(body: ModelUpdatePermissionScheduleRequest, user_id: str
         action=action,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AddUserRole)
-def add_user_role(user_id: str, role_id: str, namespace: Optional[str] = None):
+def add_user_role(user_id: str, role_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -257,11 +257,11 @@ def add_user_role(user_id: str, role_id: str, namespace: Optional[str] = None):
         role_id=role_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminAddUserPermissionsV3)
-def admin_add_user_permissions_v3(body: AccountcommonPermissions, user_id: str, namespace: Optional[str] = None):
+def admin_add_user_permissions_v3(body: AccountcommonPermissions, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -271,11 +271,11 @@ def admin_add_user_permissions_v3(body: AccountcommonPermissions, user_id: str, 
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminAddUserRoleV3)
-def admin_add_user_role_v3(user_id: str, role_id: str, namespace: Optional[str] = None):
+def admin_add_user_role_v3(user_id: str, role_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -285,11 +285,11 @@ def admin_add_user_role_v3(user_id: str, role_id: str, namespace: Optional[str] 
         role_id=role_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminBanUserV2)
-def admin_ban_user_v2(body: ModelBanCreateRequest, user_id: str, namespace: Optional[str] = None):
+def admin_ban_user_v2(body: ModelBanCreateRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -299,11 +299,11 @@ def admin_ban_user_v2(body: ModelBanCreateRequest, user_id: str, namespace: Opti
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminBanUserV3)
-def admin_ban_user_v3(body: ModelBanCreateRequest, user_id: str, namespace: Optional[str] = None):
+def admin_ban_user_v3(body: ModelBanCreateRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -313,11 +313,11 @@ def admin_ban_user_v3(body: ModelBanCreateRequest, user_id: str, namespace: Opti
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminCreateJusticeUser)
-def admin_create_justice_user(user_id: str, target_namespace: str, namespace: Optional[str] = None):
+def admin_create_justice_user(user_id: str, target_namespace: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -327,11 +327,11 @@ def admin_create_justice_user(user_id: str, target_namespace: str, namespace: Op
         target_namespace=target_namespace,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminCreateUserRolesV2)
-def admin_create_user_roles_v2(body: List[str], user_id: str, namespace: Optional[str] = None):
+def admin_create_user_roles_v2(body: List[str], user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -341,11 +341,11 @@ def admin_create_user_roles_v2(body: List[str], user_id: str, namespace: Optiona
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminDeletePlatformLinkV2)
-def admin_delete_platform_link_v2(user_id: str, platform_id: str, platform_namespace: Optional[str] = None, namespace: Optional[str] = None):
+def admin_delete_platform_link_v2(user_id: str, platform_id: str, platform_namespace: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -356,11 +356,11 @@ def admin_delete_platform_link_v2(user_id: str, platform_id: str, platform_names
         platform_namespace=platform_namespace,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminDeleteUserInformationV3)
-def admin_delete_user_information_v3(user_id: str, namespace: Optional[str] = None):
+def admin_delete_user_information_v3(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -369,11 +369,11 @@ def admin_delete_user_information_v3(user_id: str, namespace: Optional[str] = No
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminDeleteUserPermissionBulkV3)
-def admin_delete_user_permission_bulk_v3(body: List[ModelPermissionDeleteRequest], user_id: str, namespace: Optional[str] = None):
+def admin_delete_user_permission_bulk_v3(body: List[ModelPermissionDeleteRequest], user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -383,11 +383,11 @@ def admin_delete_user_permission_bulk_v3(body: List[ModelPermissionDeleteRequest
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminDeleteUserPermissionV3)
-def admin_delete_user_permission_v3(user_id: str, resource: str, action: int, namespace: Optional[str] = None):
+def admin_delete_user_permission_v3(user_id: str, resource: str, action: int, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -398,11 +398,11 @@ def admin_delete_user_permission_v3(user_id: str, resource: str, action: int, na
         action=action,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminDeleteUserRoleV3)
-def admin_delete_user_role_v3(user_id: str, role_id: str, namespace: Optional[str] = None):
+def admin_delete_user_role_v3(user_id: str, role_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -412,11 +412,11 @@ def admin_delete_user_role_v3(user_id: str, role_id: str, namespace: Optional[st
         role_id=role_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminDeleteUserRolesV3)
-def admin_delete_user_roles_v3(body: List[str], user_id: str, namespace: Optional[str] = None):
+def admin_delete_user_roles_v3(body: List[str], user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -426,11 +426,11 @@ def admin_delete_user_roles_v3(body: List[str], user_id: str, namespace: Optiona
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminDisableUserV2)
-def admin_disable_user_v2(body: ModelDisableUserRequest, user_id: str, namespace: Optional[str] = None):
+def admin_disable_user_v2(body: ModelDisableUserRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -440,11 +440,11 @@ def admin_disable_user_v2(body: ModelDisableUserRequest, user_id: str, namespace
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminEnableUserV2)
-def admin_enable_user_v2(user_id: str, namespace: Optional[str] = None):
+def admin_enable_user_v2(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -453,11 +453,11 @@ def admin_enable_user_v2(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetAgeRestrictionStatusV2)
-def admin_get_age_restriction_status_v2(namespace: Optional[str] = None):
+def admin_get_age_restriction_status_v2(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -465,11 +465,11 @@ def admin_get_age_restriction_status_v2(namespace: Optional[str] = None):
     request = AdminGetAgeRestrictionStatusV2.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetAgeRestrictionStatusV3)
-def admin_get_age_restriction_status_v3(namespace: Optional[str] = None):
+def admin_get_age_restriction_status_v3(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -477,11 +477,11 @@ def admin_get_age_restriction_status_v3(namespace: Optional[str] = None):
     request = AdminGetAgeRestrictionStatusV3.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetBulkUserByEmailAddressV3)
-def admin_get_bulk_user_by_email_address_v3(body: ModelListEmailAddressRequest, namespace: Optional[str] = None):
+def admin_get_bulk_user_by_email_address_v3(body: ModelListEmailAddressRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -490,11 +490,11 @@ def admin_get_bulk_user_by_email_address_v3(body: ModelListEmailAddressRequest, 
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetListCountryAgeRestrictionV3)
-def admin_get_list_country_age_restriction_v3(namespace: Optional[str] = None):
+def admin_get_list_country_age_restriction_v3(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -502,17 +502,17 @@ def admin_get_list_country_age_restriction_v3(namespace: Optional[str] = None):
     request = AdminGetListCountryAgeRestrictionV3.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetMyUserV3)
-def admin_get_my_user_v3():
+def admin_get_my_user_v3(x_additional_headers: Optional[Dict[str, str]] = None):
     request = AdminGetMyUserV3.create()
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetUserBanV2)
-def admin_get_user_ban_v2(user_id: str, active_only: Optional[bool] = None, namespace: Optional[str] = None):
+def admin_get_user_ban_v2(user_id: str, active_only: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -522,11 +522,11 @@ def admin_get_user_ban_v2(user_id: str, active_only: Optional[bool] = None, name
         active_only=active_only,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetUserBanV3)
-def admin_get_user_ban_v3(user_id: str, active_only: Optional[bool] = None, limit: Optional[int] = None, before: Optional[str] = None, after: Optional[str] = None, namespace: Optional[str] = None):
+def admin_get_user_ban_v3(user_id: str, active_only: Optional[bool] = None, limit: Optional[int] = None, before: Optional[str] = None, after: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -539,11 +539,11 @@ def admin_get_user_ban_v3(user_id: str, active_only: Optional[bool] = None, limi
         after=after,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetUserByEmailAddressV3)
-def admin_get_user_by_email_address_v3(email_address: Optional[str] = None, namespace: Optional[str] = None):
+def admin_get_user_by_email_address_v3(email_address: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -552,11 +552,11 @@ def admin_get_user_by_email_address_v3(email_address: Optional[str] = None, name
         email_address=email_address,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetUserByUserIdV2)
-def admin_get_user_by_user_id_v2(user_id: str, namespace: Optional[str] = None):
+def admin_get_user_by_user_id_v2(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -565,11 +565,11 @@ def admin_get_user_by_user_id_v2(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetUserByUserIdV3)
-def admin_get_user_by_user_id_v3(user_id: str, namespace: Optional[str] = None):
+def admin_get_user_by_user_id_v3(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -578,11 +578,11 @@ def admin_get_user_by_user_id_v3(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetUserDeletionStatusV3)
-def admin_get_user_deletion_status_v3(user_id: str, namespace: Optional[str] = None):
+def admin_get_user_deletion_status_v3(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -591,11 +591,11 @@ def admin_get_user_deletion_status_v3(user_id: str, namespace: Optional[str] = N
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetUserLoginHistoriesV3)
-def admin_get_user_login_histories_v3(user_id: str, before: Optional[float] = None, after: Optional[float] = None, limit: Optional[float] = None, namespace: Optional[str] = None):
+def admin_get_user_login_histories_v3(user_id: str, before: Optional[float] = None, after: Optional[float] = None, limit: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -607,11 +607,11 @@ def admin_get_user_login_histories_v3(user_id: str, before: Optional[float] = No
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetUserPlatformAccountsV3)
-def admin_get_user_platform_accounts_v3(user_id: str, limit: Optional[int] = None, after: Optional[str] = None, before: Optional[str] = None, namespace: Optional[str] = None):
+def admin_get_user_platform_accounts_v3(user_id: str, limit: Optional[int] = None, after: Optional[str] = None, before: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -623,11 +623,11 @@ def admin_get_user_platform_accounts_v3(user_id: str, limit: Optional[int] = Non
         before=before,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminInviteUserV3)
-def admin_invite_user_v3(body: ModelInviteAdminRequestV3, namespace: Optional[str] = None):
+def admin_invite_user_v3(body: ModelInviteAdminRequestV3, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -636,11 +636,11 @@ def admin_invite_user_v3(body: ModelInviteAdminRequestV3, namespace: Optional[st
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminLinkPlatformAccount)
-def admin_link_platform_account(body: ModelLinkPlatformAccountRequest, user_id: str, namespace: Optional[str] = None):
+def admin_link_platform_account(body: ModelLinkPlatformAccountRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -650,11 +650,11 @@ def admin_link_platform_account(body: ModelLinkPlatformAccountRequest, user_id: 
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminListUsersV3)
-def admin_list_users_v3(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None):
+def admin_list_users_v3(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -664,11 +664,11 @@ def admin_list_users_v3(limit: Optional[int] = None, offset: Optional[int] = Non
         offset=offset,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminPlatformLinkV3)
-def admin_platform_link_v3(ticket: str, user_id: str, platform_id: str, namespace: Optional[str] = None):
+def admin_platform_link_v3(ticket: str, user_id: str, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -679,11 +679,11 @@ def admin_platform_link_v3(ticket: str, user_id: str, platform_id: str, namespac
         platform_id=platform_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminPlatformUnlinkV3)
-def admin_platform_unlink_v3(body: ModelUnlinkUserPlatformRequest, platform_id: str, user_id: str, namespace: Optional[str] = None):
+def admin_platform_unlink_v3(body: ModelUnlinkUserPlatformRequest, platform_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -694,11 +694,11 @@ def admin_platform_unlink_v3(body: ModelUnlinkUserPlatformRequest, platform_id: 
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminPutUserRolesV2)
-def admin_put_user_roles_v2(body: List[str], user_id: str, namespace: Optional[str] = None):
+def admin_put_user_roles_v2(body: List[str], user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -708,11 +708,11 @@ def admin_put_user_roles_v2(body: List[str], user_id: str, namespace: Optional[s
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminResetPasswordV2)
-def admin_reset_password_v2(body: ModelUserPasswordUpdateRequest, user_id: str, namespace: Optional[str] = None):
+def admin_reset_password_v2(body: ModelUserPasswordUpdateRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -722,11 +722,11 @@ def admin_reset_password_v2(body: ModelUserPasswordUpdateRequest, user_id: str, 
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminSaveUserRoleV3)
-def admin_save_user_role_v3(body: List[ModelNamespaceRoleRequest], user_id: str, namespace: Optional[str] = None):
+def admin_save_user_role_v3(body: List[ModelNamespaceRoleRequest], user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -736,11 +736,11 @@ def admin_save_user_role_v3(body: List[ModelNamespaceRoleRequest], user_id: str,
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminSearchUserV3)
-def admin_search_user_v3(query: Optional[str] = None, limit: Optional[int] = None, offset: Optional[str] = None, start_date: Optional[str] = None, end_date: Optional[str] = None, by: Optional[str] = None, namespace: Optional[str] = None):
+def admin_search_user_v3(query: Optional[str] = None, limit: Optional[int] = None, offset: Optional[str] = None, start_date: Optional[str] = None, end_date: Optional[str] = None, by: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -754,11 +754,11 @@ def admin_search_user_v3(query: Optional[str] = None, limit: Optional[int] = Non
         by=by,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminSearchUsersV2)
-def admin_search_users_v2(platform_id: str, role_id: Optional[str] = None, login_id: Optional[str] = None, user_id: Optional[str] = None, platform_user_id: Optional[str] = None, display_name: Optional[str] = None, limit: Optional[str] = None, before: Optional[str] = None, after: Optional[str] = None, namespace: Optional[str] = None):
+def admin_search_users_v2(platform_id: str, role_id: Optional[str] = None, login_id: Optional[str] = None, user_id: Optional[str] = None, platform_user_id: Optional[str] = None, display_name: Optional[str] = None, limit: Optional[str] = None, before: Optional[str] = None, after: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -775,11 +775,11 @@ def admin_search_users_v2(platform_id: str, role_id: Optional[str] = None, login
         after=after,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminSendVerificationCodeV3)
-def admin_send_verification_code_v3(body: ModelSendVerificationCodeRequestV3, user_id: str, namespace: Optional[str] = None):
+def admin_send_verification_code_v3(body: ModelSendVerificationCodeRequestV3, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -789,11 +789,11 @@ def admin_send_verification_code_v3(body: ModelSendVerificationCodeRequestV3, us
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminUpdateAgeRestrictionConfigV2)
-def admin_update_age_restriction_config_v2(body: ModelAgeRestrictionRequest, namespace: Optional[str] = None):
+def admin_update_age_restriction_config_v2(body: ModelAgeRestrictionRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -802,11 +802,11 @@ def admin_update_age_restriction_config_v2(body: ModelAgeRestrictionRequest, nam
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminUpdateAgeRestrictionConfigV3)
-def admin_update_age_restriction_config_v3(body: ModelAgeRestrictionRequestV3, namespace: Optional[str] = None):
+def admin_update_age_restriction_config_v3(body: ModelAgeRestrictionRequestV3, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -815,11 +815,11 @@ def admin_update_age_restriction_config_v3(body: ModelAgeRestrictionRequestV3, n
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminUpdateCountryAgeRestrictionV3)
-def admin_update_country_age_restriction_v3(body: ModelCountryAgeRestrictionV3Request, country_code: str, namespace: Optional[str] = None):
+def admin_update_country_age_restriction_v3(body: ModelCountryAgeRestrictionV3Request, country_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -829,11 +829,11 @@ def admin_update_country_age_restriction_v3(body: ModelCountryAgeRestrictionV3Re
         country_code=country_code,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminUpdateUserBanV3)
-def admin_update_user_ban_v3(body: ModelBanUpdateRequest, user_id: str, ban_id: str, namespace: Optional[str] = None):
+def admin_update_user_ban_v3(body: ModelBanUpdateRequest, user_id: str, ban_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -844,11 +844,11 @@ def admin_update_user_ban_v3(body: ModelBanUpdateRequest, user_id: str, ban_id: 
         ban_id=ban_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminUpdateUserDeletionStatusV3)
-def admin_update_user_deletion_status_v3(body: ModelUpdateUserDeletionStatusRequest, user_id: str, namespace: Optional[str] = None):
+def admin_update_user_deletion_status_v3(body: ModelUpdateUserDeletionStatusRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -858,11 +858,11 @@ def admin_update_user_deletion_status_v3(body: ModelUpdateUserDeletionStatusRequ
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminUpdateUserPermissionV3)
-def admin_update_user_permission_v3(body: AccountcommonPermissions, user_id: str, namespace: Optional[str] = None):
+def admin_update_user_permission_v3(body: AccountcommonPermissions, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -872,11 +872,11 @@ def admin_update_user_permission_v3(body: AccountcommonPermissions, user_id: str
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminUpdateUserStatusV3)
-def admin_update_user_status_v3(body: ModelUpdateUserStatusRequest, user_id: str, namespace: Optional[str] = None):
+def admin_update_user_status_v3(body: ModelUpdateUserStatusRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -886,11 +886,11 @@ def admin_update_user_status_v3(body: ModelUpdateUserStatusRequest, user_id: str
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminUpdateUserV2)
-def admin_update_user_v2(body: ModelUserUpdateRequest, user_id: str, namespace: Optional[str] = None):
+def admin_update_user_v2(body: ModelUserUpdateRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -900,11 +900,11 @@ def admin_update_user_v2(body: ModelUserUpdateRequest, user_id: str, namespace: 
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminUpdateUserV3)
-def admin_update_user_v3(body: ModelUserUpdateRequestV3, user_id: str, namespace: Optional[str] = None):
+def admin_update_user_v3(body: ModelUserUpdateRequestV3, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -914,11 +914,11 @@ def admin_update_user_v3(body: ModelUserUpdateRequestV3, user_id: str, namespace
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminUpgradeHeadlessAccountV3)
-def admin_upgrade_headless_account_v3(body: ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3, user_id: str, namespace: Optional[str] = None):
+def admin_upgrade_headless_account_v3(body: ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -928,11 +928,11 @@ def admin_upgrade_headless_account_v3(body: ModelUpgradeHeadlessAccountWithVerif
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminVerifyAccountV3)
-def admin_verify_account_v3(body: ModelUserVerificationRequest, user_id: str, namespace: Optional[str] = None):
+def admin_verify_account_v3(body: ModelUserVerificationRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -942,11 +942,11 @@ def admin_verify_account_v3(body: ModelUserVerificationRequest, user_id: str, na
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminVerifyUserWithoutVerificationCodeV3)
-def admin_verify_user_without_verification_code_v3(user_id: str, namespace: Optional[str] = None):
+def admin_verify_user_without_verification_code_v3(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -955,11 +955,11 @@ def admin_verify_user_without_verification_code_v3(user_id: str, namespace: Opti
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(BanUser)
-def ban_user(body: ModelBanCreateRequest, user_id: str, namespace: Optional[str] = None):
+def ban_user(body: ModelBanCreateRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -969,11 +969,11 @@ def ban_user(body: ModelBanCreateRequest, user_id: str, namespace: Optional[str]
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(CreateUser)
-def create_user(body: ModelUserCreateRequest, namespace: Optional[str] = None):
+def create_user(body: ModelUserCreateRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -982,11 +982,11 @@ def create_user(body: ModelUserCreateRequest, namespace: Optional[str] = None):
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(CreateUserFromInvitationV3)
-def create_user_from_invitation_v3(body: ModelUserCreateFromInvitationRequestV3, invitation_id: str, namespace: Optional[str] = None):
+def create_user_from_invitation_v3(body: ModelUserCreateFromInvitationRequestV3, invitation_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -996,11 +996,11 @@ def create_user_from_invitation_v3(body: ModelUserCreateFromInvitationRequestV3,
         invitation_id=invitation_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteUser)
-def delete_user(user_id: str, namespace: Optional[str] = None):
+def delete_user(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1009,11 +1009,11 @@ def delete_user(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteUserInformation)
-def delete_user_information(user_id: str, namespace: Optional[str] = None):
+def delete_user_information(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1022,11 +1022,11 @@ def delete_user_information(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteUserPermission)
-def delete_user_permission(user_id: str, resource: str, action: int, namespace: Optional[str] = None):
+def delete_user_permission(user_id: str, resource: str, action: int, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1037,11 +1037,11 @@ def delete_user_permission(user_id: str, resource: str, action: int, namespace: 
         action=action,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteUserRole)
-def delete_user_role(user_id: str, role_id: str, namespace: Optional[str] = None):
+def delete_user_role(user_id: str, role_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1051,12 +1051,12 @@ def delete_user_role(user_id: str, role_id: str, namespace: Optional[str] = None
         role_id=role_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @deprecated
 @same_doc_as(DisableUser)
-def disable_user(body: ModelDisableUserRequest, user_id: str, namespace: Optional[str] = None):
+def disable_user(body: ModelDisableUserRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1066,11 +1066,11 @@ def disable_user(body: ModelDisableUserRequest, user_id: str, namespace: Optiona
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DisableUserBan)
-def disable_user_ban(user_id: str, ban_id: str, namespace: Optional[str] = None):
+def disable_user_ban(user_id: str, ban_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1080,12 +1080,12 @@ def disable_user_ban(user_id: str, ban_id: str, namespace: Optional[str] = None)
         ban_id=ban_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @deprecated
 @same_doc_as(EnableUser)
-def enable_user(user_id: str, namespace: Optional[str] = None):
+def enable_user(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1094,11 +1094,11 @@ def enable_user(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(EnableUserBan)
-def enable_user_ban(user_id: str, ban_id: str, namespace: Optional[str] = None):
+def enable_user_ban(user_id: str, ban_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1108,11 +1108,11 @@ def enable_user_ban(user_id: str, ban_id: str, namespace: Optional[str] = None):
         ban_id=ban_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ForgotPassword)
-def forgot_password(body: ModelSendVerificationCodeRequest, namespace: Optional[str] = None):
+def forgot_password(body: ModelSendVerificationCodeRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1121,11 +1121,11 @@ def forgot_password(body: ModelSendVerificationCodeRequest, namespace: Optional[
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetAdminInvitationV3)
-def get_admin_invitation_v3(invitation_id: str, namespace: Optional[str] = None):
+def get_admin_invitation_v3(invitation_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1134,11 +1134,11 @@ def get_admin_invitation_v3(invitation_id: str, namespace: Optional[str] = None)
         invitation_id=invitation_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetAdminUsersByRoleID)
-def get_admin_users_by_role_id(role_id: Optional[str] = None, limit: Optional[int] = None, after: Optional[int] = None, before: Optional[int] = None, namespace: Optional[str] = None):
+def get_admin_users_by_role_id(role_id: Optional[str] = None, limit: Optional[int] = None, after: Optional[int] = None, before: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1150,11 +1150,11 @@ def get_admin_users_by_role_id(role_id: Optional[str] = None, limit: Optional[in
         before=before,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetAdminUsersByRoleIdV3)
-def get_admin_users_by_role_id_v3(role_id: str, limit: Optional[int] = None, after: Optional[int] = None, before: Optional[int] = None, namespace: Optional[str] = None):
+def get_admin_users_by_role_id_v3(role_id: str, limit: Optional[int] = None, after: Optional[int] = None, before: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1166,11 +1166,11 @@ def get_admin_users_by_role_id_v3(role_id: str, limit: Optional[int] = None, aft
         before=before,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetListCountryAgeRestriction)
-def get_list_country_age_restriction(namespace: Optional[str] = None):
+def get_list_country_age_restriction(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1178,11 +1178,11 @@ def get_list_country_age_restriction(namespace: Optional[str] = None):
     request = GetListCountryAgeRestriction.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetListJusticePlatformAccounts)
-def get_list_justice_platform_accounts(user_id: str, namespace: Optional[str] = None):
+def get_list_justice_platform_accounts(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1191,11 +1191,11 @@ def get_list_justice_platform_accounts(user_id: str, namespace: Optional[str] = 
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetPublisherUser)
-def get_publisher_user(user_id: str, namespace: Optional[str] = None):
+def get_publisher_user(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1204,11 +1204,11 @@ def get_publisher_user(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserBanHistory)
-def get_user_ban_history(user_id: str, namespace: Optional[str] = None):
+def get_user_ban_history(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1217,11 +1217,11 @@ def get_user_ban_history(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserByLoginID)
-def get_user_by_login_id(login_id: Optional[str] = None, namespace: Optional[str] = None):
+def get_user_by_login_id(login_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1230,11 +1230,11 @@ def get_user_by_login_id(login_id: Optional[str] = None, namespace: Optional[str
         login_id=login_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserByPlatformUserID)
-def get_user_by_platform_user_id(platform_id: str, platform_user_id: str, namespace: Optional[str] = None):
+def get_user_by_platform_user_id(platform_id: str, platform_user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1244,11 +1244,11 @@ def get_user_by_platform_user_id(platform_id: str, platform_user_id: str, namesp
         platform_user_id=platform_user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserByUserID)
-def get_user_by_user_id(user_id: str, namespace: Optional[str] = None):
+def get_user_by_user_id(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1257,11 +1257,11 @@ def get_user_by_user_id(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserInformation)
-def get_user_information(user_id: str, namespace: Optional[str] = None):
+def get_user_information(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1270,12 +1270,12 @@ def get_user_information(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @deprecated
 @same_doc_as(GetUserJusticePlatformAccount)
-def get_user_justice_platform_account(user_id: str, target_namespace: str, namespace: Optional[str] = None):
+def get_user_justice_platform_account(user_id: str, target_namespace: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1285,11 +1285,11 @@ def get_user_justice_platform_account(user_id: str, target_namespace: str, names
         target_namespace=target_namespace,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserLoginHistories)
-def get_user_login_histories(user_id: str, before: Optional[float] = None, after: Optional[float] = None, limit: Optional[float] = None, namespace: Optional[str] = None):
+def get_user_login_histories(user_id: str, before: Optional[float] = None, after: Optional[float] = None, limit: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1301,11 +1301,11 @@ def get_user_login_histories(user_id: str, before: Optional[float] = None, after
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserMapping)
-def get_user_mapping(user_id: str, target_namespace: str, namespace: Optional[str] = None):
+def get_user_mapping(user_id: str, target_namespace: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1315,11 +1315,11 @@ def get_user_mapping(user_id: str, target_namespace: str, namespace: Optional[st
         target_namespace=target_namespace,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserPlatformAccounts)
-def get_user_platform_accounts(user_id: str, namespace: Optional[str] = None):
+def get_user_platform_accounts(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1328,11 +1328,11 @@ def get_user_platform_accounts(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserVerificationCode)
-def get_user_verification_code(user_id: str, namespace: Optional[str] = None):
+def get_user_verification_code(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1341,11 +1341,11 @@ def get_user_verification_code(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUsersByLoginIds)
-def get_users_by_login_ids(login_ids: Optional[str] = None, namespace: Optional[str] = None):
+def get_users_by_login_ids(login_ids: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1354,11 +1354,11 @@ def get_users_by_login_ids(login_ids: Optional[str] = None, namespace: Optional[
         login_ids=login_ids,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ListAdminsV3)
-def list_admins_v3(limit: Optional[int] = None, after: Optional[str] = None, before: Optional[str] = None, namespace: Optional[str] = None):
+def list_admins_v3(limit: Optional[int] = None, after: Optional[str] = None, before: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1369,12 +1369,12 @@ def list_admins_v3(limit: Optional[int] = None, after: Optional[str] = None, bef
         before=before,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @deprecated
 @same_doc_as(ListCrossNamespaceAccountLink)
-def list_cross_namespace_account_link(linking_token: str, user_id: str, platform_id: Optional[str] = None, namespace: Optional[str] = None):
+def list_cross_namespace_account_link(linking_token: str, user_id: str, platform_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1385,11 +1385,11 @@ def list_cross_namespace_account_link(linking_token: str, user_id: str, platform
         platform_id=platform_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PlatformLink)
-def platform_link(ticket: str, user_id: str, platform_id: str, namespace: Optional[str] = None):
+def platform_link(ticket: str, user_id: str, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1400,11 +1400,11 @@ def platform_link(ticket: str, user_id: str, platform_id: str, namespace: Option
         platform_id=platform_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PlatformUnlink)
-def platform_unlink(user_id: str, platform_id: str, platform_namespace: Optional[str] = None, namespace: Optional[str] = None):
+def platform_unlink(user_id: str, platform_id: str, platform_namespace: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1415,11 +1415,11 @@ def platform_unlink(user_id: str, platform_id: str, platform_namespace: Optional
         platform_namespace=platform_namespace,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicCreateJusticeUser)
-def public_create_justice_user(target_namespace: str, namespace: Optional[str] = None):
+def public_create_justice_user(target_namespace: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1428,11 +1428,11 @@ def public_create_justice_user(target_namespace: str, namespace: Optional[str] =
         target_namespace=target_namespace,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicCreateUserV2)
-def public_create_user_v2(body: ModelUserCreateRequest, namespace: Optional[str] = None):
+def public_create_user_v2(body: ModelUserCreateRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1441,11 +1441,11 @@ def public_create_user_v2(body: ModelUserCreateRequest, namespace: Optional[str]
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicCreateUserV3)
-def public_create_user_v3(body: ModelUserCreateRequestV3, namespace: Optional[str] = None):
+def public_create_user_v3(body: ModelUserCreateRequestV3, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1454,11 +1454,11 @@ def public_create_user_v3(body: ModelUserCreateRequestV3, namespace: Optional[st
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicDeletePlatformLinkV2)
-def public_delete_platform_link_v2(user_id: str, platform_id: str, platform_namespace: Optional[str] = None, namespace: Optional[str] = None):
+def public_delete_platform_link_v2(user_id: str, platform_id: str, platform_namespace: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1469,11 +1469,11 @@ def public_delete_platform_link_v2(user_id: str, platform_id: str, platform_name
         platform_namespace=platform_namespace,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicForgotPasswordV2)
-def public_forgot_password_v2(body: ModelSendVerificationCodeRequest, namespace: Optional[str] = None):
+def public_forgot_password_v2(body: ModelSendVerificationCodeRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1482,11 +1482,11 @@ def public_forgot_password_v2(body: ModelSendVerificationCodeRequest, namespace:
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicForgotPasswordV3)
-def public_forgot_password_v3(body: ModelForgotPasswordRequestV3, namespace: Optional[str] = None):
+def public_forgot_password_v3(body: ModelForgotPasswordRequestV3, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1495,11 +1495,11 @@ def public_forgot_password_v3(body: ModelForgotPasswordRequestV3, namespace: Opt
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetAsyncStatus)
-def public_get_async_status(request_id: str, namespace: Optional[str] = None):
+def public_get_async_status(request_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1508,17 +1508,17 @@ def public_get_async_status(request_id: str, namespace: Optional[str] = None):
         request_id=request_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetMyUserV3)
-def public_get_my_user_v3():
+def public_get_my_user_v3(x_additional_headers: Optional[Dict[str, str]] = None):
     request = PublicGetMyUserV3.create()
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetUserBan)
-def public_get_user_ban(user_id: str, active_only: Optional[bool] = None, namespace: Optional[str] = None):
+def public_get_user_ban(user_id: str, active_only: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1528,11 +1528,11 @@ def public_get_user_ban(user_id: str, active_only: Optional[bool] = None, namesp
         active_only=active_only,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetUserBanHistoryV3)
-def public_get_user_ban_history_v3(user_id: str, active_only: Optional[bool] = None, limit: Optional[int] = None, before: Optional[str] = None, after: Optional[str] = None, namespace: Optional[str] = None):
+def public_get_user_ban_history_v3(user_id: str, active_only: Optional[bool] = None, limit: Optional[int] = None, before: Optional[str] = None, after: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1545,11 +1545,11 @@ def public_get_user_ban_history_v3(user_id: str, active_only: Optional[bool] = N
         after=after,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetUserByPlatformUserIDV3)
-def public_get_user_by_platform_user_idv3(platform_id: str, platform_user_id: str, namespace: Optional[str] = None):
+def public_get_user_by_platform_user_idv3(platform_id: str, platform_user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1559,11 +1559,11 @@ def public_get_user_by_platform_user_idv3(platform_id: str, platform_user_id: st
         platform_user_id=platform_user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetUserByUserIdV3)
-def public_get_user_by_user_id_v3(user_id: str, namespace: Optional[str] = None):
+def public_get_user_by_user_id_v3(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1572,11 +1572,11 @@ def public_get_user_by_user_id_v3(user_id: str, namespace: Optional[str] = None)
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetUserByUserIDV2)
-def public_get_user_by_user_idv2(user_id: str, namespace: Optional[str] = None):
+def public_get_user_by_user_idv2(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1585,11 +1585,11 @@ def public_get_user_by_user_idv2(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetUserLoginHistoriesV3)
-def public_get_user_login_histories_v3(user_id: str, before: Optional[float] = None, after: Optional[float] = None, limit: Optional[float] = None, namespace: Optional[str] = None):
+def public_get_user_login_histories_v3(user_id: str, before: Optional[float] = None, after: Optional[float] = None, limit: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1601,11 +1601,11 @@ def public_get_user_login_histories_v3(user_id: str, before: Optional[float] = N
         limit=limit,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetUserPlatformAccountsV3)
-def public_get_user_platform_accounts_v3(user_id: str, limit: Optional[int] = None, after: Optional[str] = None, before: Optional[str] = None, namespace: Optional[str] = None):
+def public_get_user_platform_accounts_v3(user_id: str, limit: Optional[int] = None, after: Optional[str] = None, before: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1617,11 +1617,11 @@ def public_get_user_platform_accounts_v3(user_id: str, limit: Optional[int] = No
         before=before,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicLinkPlatformAccount)
-def public_link_platform_account(body: ModelLinkPlatformAccountRequest, user_id: str, namespace: Optional[str] = None):
+def public_link_platform_account(body: ModelLinkPlatformAccountRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1631,11 +1631,11 @@ def public_link_platform_account(body: ModelLinkPlatformAccountRequest, user_id:
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicListUserIDByPlatformUserIDsV3)
-def public_list_user_id_by_platform_user_i_ds_v3(body: ModelPlatformUserIDRequest, platform_id: str, namespace: Optional[str] = None):
+def public_list_user_id_by_platform_user_i_ds_v3(body: ModelPlatformUserIDRequest, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1645,11 +1645,11 @@ def public_list_user_id_by_platform_user_i_ds_v3(body: ModelPlatformUserIDReques
         platform_id=platform_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicPlatformLinkV2)
-def public_platform_link_v2(ticket: str, user_id: str, platform_id: str, namespace: Optional[str] = None):
+def public_platform_link_v2(ticket: str, user_id: str, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1660,11 +1660,11 @@ def public_platform_link_v2(ticket: str, user_id: str, platform_id: str, namespa
         platform_id=platform_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicPlatformLinkV3)
-def public_platform_link_v3(ticket: str, platform_id: str, redirect_uri: Optional[str] = None, namespace: Optional[str] = None):
+def public_platform_link_v3(ticket: str, platform_id: str, redirect_uri: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1675,11 +1675,11 @@ def public_platform_link_v3(ticket: str, platform_id: str, redirect_uri: Optiona
         redirect_uri=redirect_uri,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicPlatformUnlinkV3)
-def public_platform_unlink_v3(body: ModelUnlinkUserPlatformRequest, platform_id: str, namespace: Optional[str] = None):
+def public_platform_unlink_v3(body: ModelUnlinkUserPlatformRequest, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1689,11 +1689,11 @@ def public_platform_unlink_v3(body: ModelUnlinkUserPlatformRequest, platform_id:
         platform_id=platform_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicResetPasswordV2)
-def public_reset_password_v2(body: ModelResetPasswordRequest, namespace: Optional[str] = None):
+def public_reset_password_v2(body: ModelResetPasswordRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1702,11 +1702,11 @@ def public_reset_password_v2(body: ModelResetPasswordRequest, namespace: Optiona
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicSearchUserV3)
-def public_search_user_v3(query: Optional[str] = None, by: Optional[str] = None, namespace: Optional[str] = None):
+def public_search_user_v3(query: Optional[str] = None, by: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1716,11 +1716,11 @@ def public_search_user_v3(query: Optional[str] = None, by: Optional[str] = None,
         by=by,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicSendVerificationCodeV3)
-def public_send_verification_code_v3(body: ModelSendVerificationCodeRequestV3, namespace: Optional[str] = None):
+def public_send_verification_code_v3(body: ModelSendVerificationCodeRequestV3, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1729,11 +1729,11 @@ def public_send_verification_code_v3(body: ModelSendVerificationCodeRequestV3, n
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicUpdatePasswordV2)
-def public_update_password_v2(body: ModelUserPasswordUpdateRequest, user_id: str, namespace: Optional[str] = None):
+def public_update_password_v2(body: ModelUserPasswordUpdateRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1743,11 +1743,11 @@ def public_update_password_v2(body: ModelUserPasswordUpdateRequest, user_id: str
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicUpdatePasswordV3)
-def public_update_password_v3(body: ModelUserPasswordUpdateV3Request, namespace: Optional[str] = None):
+def public_update_password_v3(body: ModelUserPasswordUpdateV3Request, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1756,11 +1756,11 @@ def public_update_password_v3(body: ModelUserPasswordUpdateV3Request, namespace:
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicUpdateUserV2)
-def public_update_user_v2(body: ModelUserUpdateRequest, user_id: str, namespace: Optional[str] = None):
+def public_update_user_v2(body: ModelUserUpdateRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1770,11 +1770,11 @@ def public_update_user_v2(body: ModelUserUpdateRequest, user_id: str, namespace:
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicUpdateUserV3)
-def public_update_user_v3(body: ModelUserUpdateRequestV3, namespace: Optional[str] = None):
+def public_update_user_v3(body: ModelUserUpdateRequestV3, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1783,11 +1783,11 @@ def public_update_user_v3(body: ModelUserUpdateRequestV3, namespace: Optional[st
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicUpgradeHeadlessAccountV3)
-def public_upgrade_headless_account_v3(body: ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3, namespace: Optional[str] = None):
+def public_upgrade_headless_account_v3(body: ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1796,11 +1796,11 @@ def public_upgrade_headless_account_v3(body: ModelUpgradeHeadlessAccountWithVeri
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicUserVerificationV3)
-def public_user_verification_v3(body: ModelUserVerificationRequestV3, namespace: Optional[str] = None):
+def public_user_verification_v3(body: ModelUserVerificationRequestV3, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1809,11 +1809,11 @@ def public_user_verification_v3(body: ModelUserVerificationRequestV3, namespace:
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicValidateUserByUserIDAndPasswordV3)
-def public_validate_user_by_user_id_and_password_v3(password: str, user_id: str, namespace: Optional[str] = None):
+def public_validate_user_by_user_id_and_password_v3(password: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1823,11 +1823,11 @@ def public_validate_user_by_user_id_and_password_v3(password: str, user_id: str,
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicVerifyHeadlessAccountV3)
-def public_verify_headless_account_v3(body: ModelUpgradeHeadlessAccountV3Request, namespace: Optional[str] = None):
+def public_verify_headless_account_v3(body: ModelUpgradeHeadlessAccountV3Request, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1836,11 +1836,11 @@ def public_verify_headless_account_v3(body: ModelUpgradeHeadlessAccountV3Request
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicWebLinkPlatform)
-def public_web_link_platform(platform_id: str, client_id: Optional[str] = None, redirect_uri: Optional[str] = None, namespace: Optional[str] = None):
+def public_web_link_platform(platform_id: str, client_id: Optional[str] = None, redirect_uri: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1851,11 +1851,11 @@ def public_web_link_platform(platform_id: str, client_id: Optional[str] = None, 
         redirect_uri=redirect_uri,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicWebLinkPlatformEstablish)
-def public_web_link_platform_establish(platform_id: str, state: str, namespace: Optional[str] = None):
+def public_web_link_platform_establish(platform_id: str, state: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1865,11 +1865,11 @@ def public_web_link_platform_establish(platform_id: str, state: str, namespace: 
         state=state,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ResetPassword)
-def reset_password(body: ModelResetPasswordRequest, namespace: Optional[str] = None):
+def reset_password(body: ModelResetPasswordRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1878,11 +1878,11 @@ def reset_password(body: ModelResetPasswordRequest, namespace: Optional[str] = N
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ResetPasswordV3)
-def reset_password_v3(body: ModelResetPasswordRequestV3, namespace: Optional[str] = None):
+def reset_password_v3(body: ModelResetPasswordRequestV3, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1891,11 +1891,11 @@ def reset_password_v3(body: ModelResetPasswordRequestV3, namespace: Optional[str
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(SaveUserPermission)
-def save_user_permission(body: AccountcommonPermissions, user_id: str, namespace: Optional[str] = None):
+def save_user_permission(body: AccountcommonPermissions, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1905,11 +1905,11 @@ def save_user_permission(body: AccountcommonPermissions, user_id: str, namespace
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(SaveUserRoles)
-def save_user_roles(body: List[str], user_id: str, namespace: Optional[str] = None):
+def save_user_roles(body: List[str], user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1919,12 +1919,12 @@ def save_user_roles(body: List[str], user_id: str, namespace: Optional[str] = No
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @deprecated
 @same_doc_as(SearchUser)
-def search_user(query: Optional[str] = None, namespace: Optional[str] = None):
+def search_user(query: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1933,11 +1933,11 @@ def search_user(query: Optional[str] = None, namespace: Optional[str] = None):
         query=query,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(SendVerificationCode)
-def send_verification_code(body: ModelSendVerificationCodeRequest, user_id: str, namespace: Optional[str] = None):
+def send_verification_code(body: ModelSendVerificationCodeRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1947,11 +1947,11 @@ def send_verification_code(body: ModelSendVerificationCodeRequest, user_id: str,
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateCountryAgeRestriction)
-def update_country_age_restriction(body: ModelCountryAgeRestrictionRequest, country_code: str, namespace: Optional[str] = None):
+def update_country_age_restriction(body: ModelCountryAgeRestrictionRequest, country_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1961,12 +1961,12 @@ def update_country_age_restriction(body: ModelCountryAgeRestrictionRequest, coun
         country_code=country_code,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @deprecated
 @same_doc_as(UpdatePassword)
-def update_password(body: ModelUserPasswordUpdateRequest, user_id: str, namespace: Optional[str] = None):
+def update_password(body: ModelUserPasswordUpdateRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1976,11 +1976,11 @@ def update_password(body: ModelUserPasswordUpdateRequest, user_id: str, namespac
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateUser)
-def update_user(body: ModelUserUpdateRequest, user_id: str, namespace: Optional[str] = None):
+def update_user(body: ModelUserUpdateRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1990,11 +1990,11 @@ def update_user(body: ModelUserUpdateRequest, user_id: str, namespace: Optional[
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateUserV3)
-def update_user_v3(body: ModelUserUpdateRequestV3, namespace: Optional[str] = None):
+def update_user_v3(body: ModelUserUpdateRequestV3, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2003,11 +2003,11 @@ def update_user_v3(body: ModelUserUpdateRequestV3, namespace: Optional[str] = No
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpgradeHeadlessAccount)
-def upgrade_headless_account(body: ModelUpgradeHeadlessAccountRequest, user_id: str, namespace: Optional[str] = None):
+def upgrade_headless_account(body: ModelUpgradeHeadlessAccountRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2017,11 +2017,11 @@ def upgrade_headless_account(body: ModelUpgradeHeadlessAccountRequest, user_id: 
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpgradeHeadlessAccountWithVerificationCode)
-def upgrade_headless_account_with_verification_code(body: ModelUpgradeHeadlessAccountWithVerificationCodeRequest, user_id: str, namespace: Optional[str] = None):
+def upgrade_headless_account_with_verification_code(body: ModelUpgradeHeadlessAccountWithVerificationCodeRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2031,11 +2031,11 @@ def upgrade_headless_account_with_verification_code(body: ModelUpgradeHeadlessAc
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UserVerification)
-def user_verification(body: ModelUserVerificationRequest, user_id: str, namespace: Optional[str] = None):
+def user_verification(body: ModelUserVerificationRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2045,4 +2045,4 @@ def user_verification(body: ModelUserVerificationRequest, user_id: str, namespac
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

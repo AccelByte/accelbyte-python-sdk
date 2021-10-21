@@ -32,7 +32,7 @@ from ..operations.slot_config import UpdateUserSlotConfig
 
 
 @same_doc_as(DeleteNamespaceSlotConfig)
-def delete_namespace_slot_config(namespace: Optional[str] = None):
+def delete_namespace_slot_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -40,11 +40,11 @@ def delete_namespace_slot_config(namespace: Optional[str] = None):
     request = DeleteNamespaceSlotConfig.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteUserSlotConfig)
-def delete_user_slot_config(user_id: str, namespace: Optional[str] = None):
+def delete_user_slot_config(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -53,11 +53,11 @@ def delete_user_slot_config(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetNamespaceSlotConfig)
-def get_namespace_slot_config(namespace: Optional[str] = None):
+def get_namespace_slot_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -65,11 +65,11 @@ def get_namespace_slot_config(namespace: Optional[str] = None):
     request = GetNamespaceSlotConfig.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserSlotConfig)
-def get_user_slot_config(user_id: str, namespace: Optional[str] = None):
+def get_user_slot_config(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -78,11 +78,11 @@ def get_user_slot_config(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateNamespaceSlotConfig)
-def update_namespace_slot_config(body: Optional[SlotConfigUpdate] = None, namespace: Optional[str] = None):
+def update_namespace_slot_config(body: Optional[SlotConfigUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -91,11 +91,11 @@ def update_namespace_slot_config(body: Optional[SlotConfigUpdate] = None, namesp
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateUserSlotConfig)
-def update_user_slot_config(user_id: str, body: Optional[SlotConfigUpdate] = None, namespace: Optional[str] = None):
+def update_user_slot_config(user_id: str, body: Optional[SlotConfigUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -105,4 +105,4 @@ def update_user_slot_config(user_id: str, body: Optional[SlotConfigUpdate] = Non
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

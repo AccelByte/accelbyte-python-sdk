@@ -39,7 +39,7 @@ from ..operations.configuration import UpdateGroupConfigurationGlobalRuleAdminV1
 
 
 @same_doc_as(CreateGroupConfigurationAdminV1)
-def create_group_configuration_admin_v1(body: ModelsCreateGroupConfigurationRequestV1, namespace: Optional[str] = None):
+def create_group_configuration_admin_v1(body: ModelsCreateGroupConfigurationRequestV1, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -48,11 +48,11 @@ def create_group_configuration_admin_v1(body: ModelsCreateGroupConfigurationRequ
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteGroupConfigurationGlobalRuleAdminV1)
-def delete_group_configuration_global_rule_admin_v1(configuration_code: str, allowed_action: str, namespace: Optional[str] = None):
+def delete_group_configuration_global_rule_admin_v1(configuration_code: str, allowed_action: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -62,11 +62,11 @@ def delete_group_configuration_global_rule_admin_v1(configuration_code: str, all
         allowed_action=allowed_action,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteGroupConfigurationV1)
-def delete_group_configuration_v1(configuration_code: str, namespace: Optional[str] = None):
+def delete_group_configuration_v1(configuration_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -75,11 +75,11 @@ def delete_group_configuration_v1(configuration_code: str, namespace: Optional[s
         configuration_code=configuration_code,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetGroupConfigurationAdminV1)
-def get_group_configuration_admin_v1(configuration_code: str, namespace: Optional[str] = None):
+def get_group_configuration_admin_v1(configuration_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -88,11 +88,11 @@ def get_group_configuration_admin_v1(configuration_code: str, namespace: Optiona
         configuration_code=configuration_code,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(InitiateGroupConfigurationAdminV1)
-def initiate_group_configuration_admin_v1(namespace: Optional[str] = None):
+def initiate_group_configuration_admin_v1(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -100,11 +100,11 @@ def initiate_group_configuration_admin_v1(namespace: Optional[str] = None):
     request = InitiateGroupConfigurationAdminV1.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ListGroupConfigurationAdminV1)
-def list_group_configuration_admin_v1(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None):
+def list_group_configuration_admin_v1(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -114,11 +114,11 @@ def list_group_configuration_admin_v1(limit: Optional[int] = None, offset: Optio
         offset=offset,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateGroupConfigurationAdminV1)
-def update_group_configuration_admin_v1(body: ModelsUpdateGroupConfigurationRequestV1, configuration_code: str, namespace: Optional[str] = None):
+def update_group_configuration_admin_v1(body: ModelsUpdateGroupConfigurationRequestV1, configuration_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -128,11 +128,11 @@ def update_group_configuration_admin_v1(body: ModelsUpdateGroupConfigurationRequ
         configuration_code=configuration_code,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateGroupConfigurationGlobalRuleAdminV1)
-def update_group_configuration_global_rule_admin_v1(body: ModelsUpdateGroupConfigurationGlobalRulesRequestV1, configuration_code: str, allowed_action: str, namespace: Optional[str] = None):
+def update_group_configuration_global_rule_admin_v1(body: ModelsUpdateGroupConfigurationGlobalRulesRequestV1, configuration_code: str, allowed_action: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -143,4 +143,4 @@ def update_group_configuration_global_rule_admin_v1(body: ModelsUpdateGroupConfi
         allowed_action=allowed_action,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

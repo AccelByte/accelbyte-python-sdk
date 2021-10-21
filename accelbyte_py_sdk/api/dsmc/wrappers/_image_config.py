@@ -39,15 +39,15 @@ from ..operations.image_config import UpdateImage
 
 
 @same_doc_as(CreateImage)
-def create_image(body: ModelsCreateImageRequest):
+def create_image(body: ModelsCreateImageRequest, x_additional_headers: Optional[Dict[str, str]] = None):
     request = CreateImage.create(
         body=body,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteImage)
-def delete_image(image_uri: str, version: str, namespace: Optional[str] = None):
+def delete_image(image_uri: str, version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -57,11 +57,11 @@ def delete_image(image_uri: str, version: str, namespace: Optional[str] = None):
         version=version,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ExportImages)
-def export_images(namespace: Optional[str] = None):
+def export_images(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -69,11 +69,11 @@ def export_images(namespace: Optional[str] = None):
     request = ExportImages.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetImageDetail)
-def get_image_detail(version: str, namespace: Optional[str] = None):
+def get_image_detail(version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -82,11 +82,11 @@ def get_image_detail(version: str, namespace: Optional[str] = None):
         version=version,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetImageLimit)
-def get_image_limit(namespace: Optional[str] = None):
+def get_image_limit(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -94,19 +94,19 @@ def get_image_limit(namespace: Optional[str] = None):
     request = GetImageLimit.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ImportImages)
-def import_images(file: Any):
+def import_images(file: Any, x_additional_headers: Optional[Dict[str, str]] = None):
     request = ImportImages.create(
         file=file,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ListImages)
-def list_images(q: Optional[str] = None, offset: Optional[int] = None, count: Optional[int] = None, namespace: Optional[str] = None):
+def list_images(q: Optional[str] = None, offset: Optional[int] = None, count: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -117,12 +117,12 @@ def list_images(q: Optional[str] = None, offset: Optional[int] = None, count: Op
         count=count,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateImage)
-def update_image(body: ModelsImageRecordUpdate):
+def update_image(body: ModelsImageRecordUpdate, x_additional_headers: Optional[Dict[str, str]] = None):
     request = UpdateImage.create(
         body=body,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

@@ -27,7 +27,7 @@ from ..operations.integration import UpdateGameServerConfig
 
 
 @same_doc_as(GetGameServerConfig)
-def get_game_server_config(namespace: Optional[str] = None):
+def get_game_server_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -35,11 +35,11 @@ def get_game_server_config(namespace: Optional[str] = None):
     request = GetGameServerConfig.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateGameServerConfig)
-def update_game_server_config(body: Optional[GameServerConfig] = None, namespace: Optional[str] = None):
+def update_game_server_config(body: Optional[GameServerConfig] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -48,4 +48,4 @@ def update_game_server_config(body: Optional[GameServerConfig] = None, namespace
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

@@ -30,7 +30,7 @@ from ..operations.session import GetSession
 
 
 @same_doc_as(ClaimServer)
-def claim_server(body: ModelsClaimSessionRequest, namespace: Optional[str] = None):
+def claim_server(body: ModelsClaimSessionRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -39,11 +39,11 @@ def claim_server(body: ModelsClaimSessionRequest, namespace: Optional[str] = Non
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(CreateSession)
-def create_session(body: ModelsCreateSessionRequest, namespace: Optional[str] = None):
+def create_session(body: ModelsCreateSessionRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -52,11 +52,11 @@ def create_session(body: ModelsCreateSessionRequest, namespace: Optional[str] = 
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetSession)
-def get_session(session_id: str, namespace: Optional[str] = None):
+def get_session(session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -65,4 +65,4 @@ def get_session(session_id: str, namespace: Optional[str] = None):
         session_id=session_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

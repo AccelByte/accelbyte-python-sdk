@@ -24,11 +24,11 @@ from ..operations.sso_saml_2_0 import PlatformAuthenticateSAMLV3Handler
 
 
 @same_doc_as(PlatformAuthenticateSAMLV3Handler)
-def platform_authenticate_samlv3_handler(platform_id: str, state: str, code: Optional[str] = None, error: Optional[str] = None):
+def platform_authenticate_samlv3_handler(platform_id: str, state: str, code: Optional[str] = None, error: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = PlatformAuthenticateSAMLV3Handler.create(
         platform_id=platform_id,
         state=state,
         code=code,
         error=error,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)

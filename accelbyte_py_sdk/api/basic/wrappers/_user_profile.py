@@ -57,7 +57,7 @@ from ..operations.user_profile import UpdateUserProfileStatus
 
 
 @same_doc_as(CreateMyProfile)
-def create_my_profile(body: Optional[UserProfilePrivateCreate] = None, namespace: Optional[str] = None):
+def create_my_profile(body: Optional[UserProfilePrivateCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -66,11 +66,11 @@ def create_my_profile(body: Optional[UserProfilePrivateCreate] = None, namespace
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteUserProfile)
-def delete_user_profile(user_id: str, namespace: Optional[str] = None):
+def delete_user_profile(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -79,11 +79,11 @@ def delete_user_profile(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetCustomAttributesInfo)
-def get_custom_attributes_info(user_id: str, namespace: Optional[str] = None):
+def get_custom_attributes_info(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -92,11 +92,11 @@ def get_custom_attributes_info(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetMyProfileInfo)
-def get_my_profile_info(namespace: Optional[str] = None):
+def get_my_profile_info(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -104,11 +104,11 @@ def get_my_profile_info(namespace: Optional[str] = None):
     request = GetMyProfileInfo.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetMyZipCode)
-def get_my_zip_code(namespace: Optional[str] = None):
+def get_my_zip_code(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -116,11 +116,11 @@ def get_my_zip_code(namespace: Optional[str] = None):
     request = GetMyZipCode.create(
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetPrivateCustomAttributesInfo)
-def get_private_custom_attributes_info(user_id: str, namespace: Optional[str] = None):
+def get_private_custom_attributes_info(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -129,11 +129,11 @@ def get_private_custom_attributes_info(user_id: str, namespace: Optional[str] = 
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserProfileInfo)
-def get_user_profile_info(user_id: str, namespace: Optional[str] = None):
+def get_user_profile_info(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -142,11 +142,11 @@ def get_user_profile_info(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicCreateUserProfile)
-def public_create_user_profile(user_id: str, body: Optional[UserProfileCreate] = None, namespace: Optional[str] = None):
+def public_create_user_profile(user_id: str, body: Optional[UserProfileCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -156,11 +156,11 @@ def public_create_user_profile(user_id: str, body: Optional[UserProfileCreate] =
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetCustomAttributesInfo)
-def public_get_custom_attributes_info(user_id: str, namespace: Optional[str] = None):
+def public_get_custom_attributes_info(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -169,11 +169,11 @@ def public_get_custom_attributes_info(user_id: str, namespace: Optional[str] = N
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetUserProfileInfo)
-def public_get_user_profile_info(user_id: str, namespace: Optional[str] = None):
+def public_get_user_profile_info(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -182,11 +182,11 @@ def public_get_user_profile_info(user_id: str, namespace: Optional[str] = None):
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetUserProfilePublicInfo)
-def public_get_user_profile_public_info(user_id: str, namespace: Optional[str] = None):
+def public_get_user_profile_public_info(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -195,11 +195,11 @@ def public_get_user_profile_public_info(user_id: str, namespace: Optional[str] =
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetUserProfilePublicInfoByIds)
-def public_get_user_profile_public_info_by_ids(user_ids: str, namespace: Optional[str] = None):
+def public_get_user_profile_public_info_by_ids(user_ids: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -208,11 +208,11 @@ def public_get_user_profile_public_info_by_ids(user_ids: str, namespace: Optiona
         user_ids=user_ids,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicUpdateCustomAttributesPartially)
-def public_update_custom_attributes_partially(user_id: str, body: Optional[Dict[str, Any]] = None, namespace: Optional[str] = None):
+def public_update_custom_attributes_partially(user_id: str, body: Optional[Dict[str, Any]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -222,11 +222,11 @@ def public_update_custom_attributes_partially(user_id: str, body: Optional[Dict[
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicUpdateUserProfile)
-def public_update_user_profile(user_id: str, body: Optional[UserProfileUpdate] = None, namespace: Optional[str] = None):
+def public_update_user_profile(user_id: str, body: Optional[UserProfileUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -236,11 +236,11 @@ def public_update_user_profile(user_id: str, body: Optional[UserProfileUpdate] =
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicUpdateUserProfileStatus)
-def public_update_user_profile_status(user_id: str, body: Optional[UserProfileStatusUpdate] = None, namespace: Optional[str] = None):
+def public_update_user_profile_status(user_id: str, body: Optional[UserProfileStatusUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -250,11 +250,11 @@ def public_update_user_profile_status(user_id: str, body: Optional[UserProfileSt
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateCustomAttributesPartially)
-def update_custom_attributes_partially(user_id: str, body: Optional[Dict[str, Any]] = None, namespace: Optional[str] = None):
+def update_custom_attributes_partially(user_id: str, body: Optional[Dict[str, Any]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -264,11 +264,11 @@ def update_custom_attributes_partially(user_id: str, body: Optional[Dict[str, An
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateMyProfile)
-def update_my_profile(body: Optional[UserProfilePrivateUpdate] = None, namespace: Optional[str] = None):
+def update_my_profile(body: Optional[UserProfilePrivateUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -277,11 +277,11 @@ def update_my_profile(body: Optional[UserProfilePrivateUpdate] = None, namespace
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateMyZipCode)
-def update_my_zip_code(user_zip_code_update: UserZipCodeUpdate, namespace: Optional[str] = None):
+def update_my_zip_code(user_zip_code_update: UserZipCodeUpdate, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -290,11 +290,11 @@ def update_my_zip_code(user_zip_code_update: UserZipCodeUpdate, namespace: Optio
         user_zip_code_update=user_zip_code_update,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdatePrivateCustomAttributesPartially)
-def update_private_custom_attributes_partially(user_id: str, body: Optional[Dict[str, Any]] = None, namespace: Optional[str] = None):
+def update_private_custom_attributes_partially(user_id: str, body: Optional[Dict[str, Any]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -304,11 +304,11 @@ def update_private_custom_attributes_partially(user_id: str, body: Optional[Dict
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateUserProfile)
-def update_user_profile(user_id: str, body: Optional[UserProfileAdmin] = None, namespace: Optional[str] = None):
+def update_user_profile(user_id: str, body: Optional[UserProfileAdmin] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -318,11 +318,11 @@ def update_user_profile(user_id: str, body: Optional[UserProfileAdmin] = None, n
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateUserProfileStatus)
-def update_user_profile_status(user_id: str, body: Optional[UserProfileStatusUpdate] = None, namespace: Optional[str] = None):
+def update_user_profile_status(user_id: str, body: Optional[UserProfileStatusUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -332,4 +332,4 @@ def update_user_profile_status(user_id: str, body: Optional[UserProfileStatusUpd
         body=body,
         namespace=namespace,
     )
-    return run_request(request)
+    return run_request(request, additional_headers=x_additional_headers)
