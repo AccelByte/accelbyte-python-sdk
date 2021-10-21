@@ -20,7 +20,10 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/TelemetryBody"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TelemetryBody"
+              }
             }
           }
         ],
