@@ -34,8 +34,8 @@ class BulkResetUserStatItem(Operation):
 
     Bulk reset multiple user's statitems value. User's statitem value will be
     reset to the default value defined in the statistic configuration. Other
-    detail info: \+ *Required permission*:
-    resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE) \+
+    detail info: + *Required permission*:
+    resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE) +
     *Returns*: bulk updated result
 
 

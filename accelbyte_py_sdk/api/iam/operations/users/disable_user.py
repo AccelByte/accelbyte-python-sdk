@@ -35,7 +35,7 @@ class DisableUser(Operation):
     ## The endpoint is going to be deprecated. Please use this instead:
     iam/v2/admin/namespaces/{namespace}/users/{userId}/disable
 
-    \+
+    +
 
     Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId}
     [UPDATE]'

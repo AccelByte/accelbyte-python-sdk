@@ -35,8 +35,8 @@ class PostGameRecordHandlerV1(Operation):
     ---|---  
     Required Scope | `social`  
 
-    If there's already record, the record will be merged with conditions: \- If
-    field name is already exist, the value will be replaced \- If field name is
+    If there's already record, the record will be merged with conditions: - If
+    field name is already exist, the value will be replaced - If field name is
     not exists it will append the field and its value Example: Replace value in a
     specific JSON key
 

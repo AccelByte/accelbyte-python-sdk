@@ -31,7 +31,7 @@ class LogoutSSOClient(Operation):
     """Logout (LogoutSSOClient)
 
     Logout user's session on platform that logged in using SSO. Supported
-    platforms: \- discourse
+    platforms: - discourse
 
 
     Properties:

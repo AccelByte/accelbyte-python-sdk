@@ -52,10 +52,10 @@ class TokenGrant(Operation):
     platform SDK after authenticated the user to the platform. Supported
     platforms:
 
-      * steam \- use `platform:steam` as the username and use the authentication ticket obtained from Steam through the Steam SDK as the password.
-      * ps4 \- use `platform:ps4` as the username and use the authorization code obtained from the PlayStation Network through a player PS4 unit as the password.
-      * live \- use `platform:live` as the username and use token obtained from Xbox Secure Token Service (XSTS) as the password.
-      * oculus \- use `platform:oculus` as the username and use the `user_id:nonce` as password obtained from Oculus through the Oculus SDK.
+      * steam - use `platform:steam` as the username and use the authentication ticket obtained from Steam through the Steam SDK as the password.
+      * ps4 - use `platform:ps4` as the username and use the authorization code obtained from the PlayStation Network through a player PS4 unit as the password.
+      * live - use `platform:live` as the username and use token obtained from Xbox Secure Token Service (XSTS) as the password.
+      * oculus - use `platform:oculus` as the username and use the `user_id:nonce` as password obtained from Oculus through the Oculus SDK.
 
     The access token and refresh token are in form of JWT token. An access token
     JWT contains data which structure is similar to the Response Class below, but

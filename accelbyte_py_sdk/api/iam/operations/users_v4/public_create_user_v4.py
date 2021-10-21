@@ -34,12 +34,12 @@ class PublicCreateUserV4(Operation):
 
     Create a new user with unique email address and username.
 
-    Required attributes: \- authType: possible value is EMAILPASSWD \-
-    emailAddress \- username: case insensitive, alphanumeric with allowed symbols
-    underscore (_) and dot (.) \- password: 8 to 32 characters, satisfy at least 3
+    Required attributes: - authType: possible value is EMAILPASSWD -
+    emailAddress - username: case insensitive, alphanumeric with allowed symbols
+    underscore (_) and dot (.) - password: 8 to 32 characters, satisfy at least 3
     out of 4 conditions(uppercase, lowercase letters, numbers and special
-    characters) and should not have more than 2 equal characters in a row. \-
-    country: ISO3166-1 alpha-2 two letter, e.g. US. \- dateOfBirth: YYYY-MM-DD,
+    characters) and should not have more than 2 equal characters in a row. -
+    country: ISO3166-1 alpha-2 two letter, e.g. US. - dateOfBirth: YYYY-MM-DD,
     e.g. 1990-01-01. valid values are between 1905-01-01 until current date.
 
     This endpoint support accepting agreements for the created user. Supply the

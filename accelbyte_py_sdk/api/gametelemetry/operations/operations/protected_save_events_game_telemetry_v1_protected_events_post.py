@@ -35,20 +35,20 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
     designated streaming pipeline and each request can contain single or multiple
     events.
 
-    Format of the event: \- **EventNamespace (required)**: namespace of the
+    Format of the event: - **EventNamespace (required)**: namespace of the
     relevant game with domain name format.
 
     Only accept input with valid characters. Allowed characters: Aa-Zz0-9_.-
 
     Example: io.accelbyte.justice.dev.samplegame
 
-    \- **EventName (required)**: name of the event.
+    - **EventName (required)**: name of the event.
 
     Only accept input with valid characters. Allowed characters: Aa-Zz0-9_.-
 
     Example: player_killed, mission_accomplished
 
-    \- **Payload (required)**: an arbitrary json with the payload of the said
+    - **Payload (required)**: an arbitrary json with the payload of the said
     event
 
 

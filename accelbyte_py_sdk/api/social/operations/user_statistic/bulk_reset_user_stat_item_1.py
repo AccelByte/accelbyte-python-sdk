@@ -33,9 +33,9 @@ class BulkResetUserStatItem1(Operation):
     """Bulk reset user's statitems value (bulkResetUserStatItem_1)
 
     Bulk reset user's statitems value for given namespace and user. Other detail
-    info: \+ *Required permission*:
+    info: + *Required permission*:
     resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4
-    (UPDATE) \+ *Returns*: bulk updated result
+    (UPDATE) + *Returns*: bulk updated result
 
 
     Properties:

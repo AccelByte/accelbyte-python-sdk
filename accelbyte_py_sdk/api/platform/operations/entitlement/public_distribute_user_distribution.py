@@ -48,15 +48,15 @@ class PublicDistributeUserDistribution(Operation):
 
         {
                "payload":"{
-                   \"namespace\": \"publisherNamespace\",
-                   \"targetNamespace\": \"game1\",
-                   \"targetUserId\": \"94451623768940d58416ca33ca767ec3\",
-                   \"issuedAt\": \"2018-07-26T07:11:16.547Z\",
-                   \"type\": \"distribution\",
-                   \"extUserId\": \"1234abcd\",
-                   \"sku\": \"1234asdf\",
-                   \"quantity\": 1,
-                   \"nonceStr\": \"34c1dcf3eb58455eb161465bbfc0b590\"
+                   "namespace": "publisherNamespace",
+                   "targetNamespace": "game1",
+                   "targetUserId": "94451623768940d58416ca33ca767ec3",
+                   "issuedAt": "2018-07-26T07:11:16.547Z",
+                   "type": "distribution",
+                   "extUserId": "1234abcd",
+                   "sku": "1234asdf",
+                   "quantity": 1,
+                   "nonceStr": "34c1dcf3eb58455eb161465bbfc0b590"
                }",
                "sign":"e31fb92516cc9faaf50ad70343e1293acec6f3d5"
         }

@@ -30,7 +30,7 @@ class Authorization(Operation):
 
     The endpoint supports two response types:  
 
-    1\. Response Type == "code":
+    1. Response Type == "code":
 
     The endpoint returns an authorization code that will be used by the IAM client
     to exchange for an access token. It supports two different headers, the basic
@@ -55,7 +55,7 @@ class Authorization(Operation):
 
       * Authorize failure : redirects to the given URL with the following information:?error=access_denied&error;_description=...
 
-    2\. Response Type == "token":
+    2. Response Type == "token":
 
       * Authorize success : redirects to the given URL with the following information:
 

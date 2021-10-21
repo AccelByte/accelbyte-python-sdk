@@ -1,41 +1,61 @@
+# justice-social-service (1.18.1)
+
+# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# This is licensed software from AccelByte Inc, for limitations
+# and restrictions contact your company contract manager.
+
+# pylint: disable=duplicate-code
+# pylint: disable=line-too-long
+# pylint: disable=missing-function-docstring
+# pylint: disable=missing-module-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-branches
+# pylint: disable=too-many-instance-attributes
+# pylint: disable=too-many-lines
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-public-methods
+# pylint: disable=too-many-return-statements
+# pylint: disable=too-many-statements
+# pylint: disable=unused-import
+
 from .utils import randomize
 
-from ..api.social.models import GameProfileHeader
-from ..api.social.models import GameProfileInfo
+from ..api.social.models import Attribute
+from ..api.social.models import BulkStatItemCreate
+from ..api.social.models import BulkStatItemInc
+from ..api.social.models import BulkStatItemOperationResult
+from ..api.social.models import BulkStatItemReset
+from ..api.social.models import BulkStatItemUpdate
+from ..api.social.models import BulkUserStatItemInc
+from ..api.social.models import BulkUserStatItemReset
+from ..api.social.models import BulkUserStatItemUpdate
 from ..api.social.models import ErrorEntity
 from ..api.social.models import FieldValidationError
-from ..api.social.models import ValidationErrorEntity
-from ..api.social.models import GameProfileRequest
-from ..api.social.models import Attribute
+from ..api.social.models import GameProfileHeader
+from ..api.social.models import GameProfileInfo
 from ..api.social.models import GameProfilePublicInfo
-from ..api.social.models import UserGameProfiles
+from ..api.social.models import GameProfileRequest
 from ..api.social.models import GlobalStatItemInfo
 from ..api.social.models import GlobalStatItemPagingSlicedResult
-from ..api.social.models import Paging
-from ..api.social.models import BulkStatItemOperationResult
-from ..api.social.models import BulkUserStatItemInc
-from ..api.social.models import UserStatItemInfo
-from ..api.social.models import BulkUserStatItemReset
-from ..api.social.models import StatInfo
-from ..api.social.models import StatUpdate
-from ..api.social.models import StatPagingSlicedResult
-from ..api.social.models import StatCreate
-from ..api.social.models import StatImportInfo
-from ..api.social.models import BulkStatItemInc
-from ..api.social.models import UserStatItemPagingSlicedResult
-from ..api.social.models import BulkStatItemCreate
-from ..api.social.models import BulkStatItemReset
-from ..api.social.models import StatItemIncResult
-from ..api.social.models import StatResetInfo
-from ..api.social.models import StatItemInc
-from ..api.social.models import BulkUserStatItemUpdate
-from ..api.social.models import BulkStatItemUpdate
-from ..api.social.models import StatItemUpdate
 from ..api.social.models import NamespaceSlotConfigInfo
+from ..api.social.models import Paging
 from ..api.social.models import SlotConfigUpdate
 from ..api.social.models import SlotInfo
-from ..api.social.models import UserSlotConfigInfo
 from ..api.social.models import SlotMetadataUpdate
+from ..api.social.models import StatCreate
+from ..api.social.models import StatImportInfo
+from ..api.social.models import StatInfo
+from ..api.social.models import StatItemInc
+from ..api.social.models import StatItemIncResult
+from ..api.social.models import StatItemUpdate
+from ..api.social.models import StatPagingSlicedResult
+from ..api.social.models import StatResetInfo
+from ..api.social.models import StatUpdate
+from ..api.social.models import UserGameProfiles
+from ..api.social.models import UserSlotConfigInfo
+from ..api.social.models import UserStatItemInfo
+from ..api.social.models import UserStatItemPagingSlicedResult
+from ..api.social.models import ValidationErrorEntity
 
 
 def create_game_profile_header_example() -> GameProfileHeader:

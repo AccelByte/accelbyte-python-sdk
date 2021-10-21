@@ -32,9 +32,9 @@ from ...models import RestapiErrorResponse
 class AdminUpdateRoleV4(Operation):
     """Update Role (AdminUpdateRoleV4)
 
-    Required permission ADMIN:ROLE [UPDATE] Update role request body: \- roleName:
-    specify role name, alphanumeric, cannot have special character (required) \-
-    adminRole: specify if role is for admin user (default false) \- isWildcard:
+    Required permission ADMIN:ROLE [UPDATE] Update role request body: - roleName:
+    specify role name, alphanumeric, cannot have special character (required) -
+    adminRole: specify if role is for admin user (default false) - isWildcard:
     specify if role can be assigned to wildcard (*) namespace (default false)
     action code: 10402
 

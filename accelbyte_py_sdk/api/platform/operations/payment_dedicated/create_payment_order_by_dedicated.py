@@ -80,7 +80,7 @@ class CreatePaymentOrderByDedicated(Operation):
                    "targetUserId": "94451623768940d58416ca33ca767ec3",
                    "extUserId": "678",
                    "title": "Frostmourne",
-                   "description\": "Here was power. Here was despair",
+                   "description": "Here was power. Here was despair",
                    "price": 100,
                    "region": "CN", 
                    "language": "zh-CN", 
@@ -111,31 +111,31 @@ class CreatePaymentOrderByDedicated(Operation):
 
         {
                "payload": "{
-                   \"type\": \"payment\",
-                   \"nonceStr\": \"34c1dcf3eb58455eb161465bbfc0b590\",
-                   \"paymentOrderNo\": \"18081239088\",
-                   \"namespace\": \"accelbyte\",
-                   \"targetNamespace\": \"game1\",
-                   \"targetUserId\": \"94451623768940d58416ca33ca767ec3\",
-                   \"extOrderNo\": \"123456789\",
-                   \"sku\": \"sku\",
-                   \"extUserId\": \"678\",
-                   \"price\": 100,
-                   \"paymentProvider\": \"XSOLLA\",
-                   \"vat\": 0,
-                   \"salesTax\": 0,
-                   \"paymentProviderFee\": 0,
-                   \"paymentMethodFee\": 0,
-                   \"currency\": {
-                           \"currencyCode\": \"USD\",
-                           \"currencySymbol\": \"$\",
-                           \"currencyType\": \"REAL\",
-                           \"namespace\": \"accelbyte\",
-                           \"decimals\": 2
+                   "type": "payment",
+                   "nonceStr": "34c1dcf3eb58455eb161465bbfc0b590",
+                   "paymentOrderNo": "18081239088",
+                   "namespace": "accelbyte",
+                   "targetNamespace": "game1",
+                   "targetUserId": "94451623768940d58416ca33ca767ec3",
+                   "extOrderNo": "123456789",
+                   "sku": "sku",
+                   "extUserId": "678",
+                   "price": 100,
+                   "paymentProvider": "XSOLLA",
+                   "vat": 0,
+                   "salesTax": 0,
+                   "paymentProviderFee": 0,
+                   "paymentMethodFee": 0,
+                   "currency": {
+                           "currencyCode": "USD",
+                           "currencySymbol": "$",
+                           "currencyType": "REAL",
+                           "namespace": "accelbyte",
+                           "decimals": 2
                        },
-                   \"status\": \"CHARGED\",
-                   \"createdTime\": \"2018-07-28T00:39:16.274Z\",
-                   \"chargedTime\": \"2018-07-28T00:39:16.274Z\"
+                   "status": "CHARGED",
+                   "createdTime": "2018-07-28T00:39:16.274Z",
+                   "chargedTime": "2018-07-28T00:39:16.274Z"
                }",
                "sign":"e31fb92516cc9faaf50ad70343e1293acec6f3d5"
         }

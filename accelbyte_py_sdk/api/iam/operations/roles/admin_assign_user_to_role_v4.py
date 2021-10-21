@@ -32,8 +32,8 @@ from ...models import RestErrorResponse
 class AdminAssignUserToRoleV4(Operation):
     """Assign User to Role (AdminAssignUserToRoleV4)
 
-    Required permission ADMIN:ROLE [UPDATE] Parameters: \- userId: string
-    (required) \- namespace: string (user’s namespace) (required) \-
+    Required permission ADMIN:ROLE [UPDATE] Parameters: - userId: string
+    (required) - namespace: string (user’s namespace) (required) -
     assignedNamespaces: array of string (namespaces to be assigned on role)
     (required) action code: 10410
 

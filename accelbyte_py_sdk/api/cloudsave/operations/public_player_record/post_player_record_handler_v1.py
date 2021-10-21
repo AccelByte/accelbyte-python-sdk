@@ -37,7 +37,7 @@ class PostPlayerRecordHandlerV1(Operation):
     Required Scope | `social`  
 
     Create player record if it is not exists otherwise merge with these criteria:
-    \- If field name is already exists, replace the value \- If field name is not
+    - If field name is already exists, replace the value - If field name is not
     exists, append it Example Replace value:
 
 

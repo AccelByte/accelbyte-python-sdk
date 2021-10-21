@@ -93,7 +93,7 @@ class UpdateItem(Operation):
                "US(store's default region is required)": [
                  {
                     "price":10,
-                    "discountPercentage":0(integer, optional, range[0,100], discountedPrice = price\*((100 - discountPercentage) \* 0.01),
+                    "discountPercentage":0(integer, optional, range[0,100], discountedPrice = price*((100 - discountPercentage) * 0.01),
                       if it is not 0, will use it to calculate discounted price),
                     "discountAmount":0(integer, optional, range[0,itemPrice], will use it to calculate discounted price if discountPercentage is 0),
                     "currencyCode":"code(required, example: USD)",
