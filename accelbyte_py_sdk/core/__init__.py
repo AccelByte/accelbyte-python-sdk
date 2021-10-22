@@ -12,8 +12,6 @@ from ._http_response import HttpResponse
 from ._model import Model
 from ._operation import Operation
 
-from ._jwt import decode_jwt
-
 from ._utils import create_basic_authentication
 from ._utils import create_pkce_verifier_and_challenge_plain
 from ._utils import create_pkce_verifier_and_challenge_s256
@@ -28,8 +26,6 @@ from ._wsm import WebSocketMessageParserError
 from ._wsm import WebSocketMessageParserException
 from ._wsm import parse_wsm
 
-from ._ws_client import AutobahnWSClientProtocol
-from ._ws_client import AutobahnWSClient
 from ._ws_client import WebsocketsWSClient
 
 from ._decorators import deprecated

@@ -2,11 +2,7 @@ from abc import ABC, abstractmethod
 
 import asyncio
 import logging
-from typing import Callable, Optional, Type, Union
-
-from autobahn.asyncio.websocket import WebSocketClientFactory
-from autobahn.asyncio.websocket import WebSocketClientProtocol
-from autobahn.websocket.protocol import WebSocketProtocol
+from typing import Optional, Union
 
 import websockets
 
@@ -39,83 +35,6 @@ class WSClient(ABC):
     def on_message(self, data: Union[bytes, str], is_binary: bool = False):
         # pylint: disable=no-self-use
         _LOGGER.debug(data)
-
-
-class AutobahnWSClientProtocol(WebSocketClientProtocol):
-
-    def __init__(self):
-        super().__init__()
-        self.on_message_callback: Optional[Callable[[Union[bytes, str], bool], None]] = None
-
-    def onConnect(self, response):
-        _LOGGER.debug(f"Server connected: {response.peer}")
-
-    def onConnecting(self, transport_details):
-        _LOGGER.debug(f"Connecting transport details: {transport_details}")
-        return None
-
-    def onOpen(self):
-        _LOGGER.debug("Connection open.")
-
-    def onClose(self, wasClean, code, reason):
-        _LOGGER.debug(f"Connection closed: [{code}] {reason}")
-
-    def onMessage(self, payload, isBinary):
-        if self.on_message_callback:
-            # pylint: disable=not-callable
-            self.on_message_callback(payload, isBinary)
-
-
-class AutobahnWSClient(WSClient):
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        if "protocol" not in kwargs:
-            raise ValueError
-        client_protocol = kwargs.get("protocol")
-        if not issubclass(client_protocol, WebSocketClientProtocol):
-            raise ValueError
-        self.client_protocol = client_protocol
-        self.transport = None
-        self.protocol = None
-
-    async def connect(self):
-        if self.protocol is None:
-            factory = WebSocketClientFactory()
-            factory.protocol = self.client_protocol
-            loop = asyncio.get_event_loop()
-            connection = await loop.create_connection(factory, self.host, self.port)
-            self.transport, self.protocol = connection
-            self.protocol.on_message_callback = self._on_message
-            await self._sleep_until_state_open()
-
-    async def disconnect(self):
-        if self.protocol is not None:
-            self.protocol.sendClose(code=WebSocketProtocol.CLOSE_STATUS_CODE_NORMAL)
-
-    async def send(self, data, is_binary: bool = False):
-        if self.protocol is not None:
-            self._send(data, is_binary)
-
-    def _on_message(self, data: Union[bytes, str], is_binary: bool = False):
-        data = data if is_binary else data.decode("utf-8")
-        self.on_message(data, is_binary)
-
-    def _send(self, data, is_binary: bool = False):
-        data = data if is_binary else data.encode("utf-8")
-        self.protocol.sendMessage(payload=data, isBinary=is_binary)
-
-    async def _sleep_until_state_open(self, timeout: float = 3.0, check_interval: float = 0.003):
-        elapsed = 0.0
-        while elapsed < timeout and self.protocol.state != WebSocketProtocol.STATE_OPEN:
-            await asyncio.sleep(check_interval)
-            elapsed += check_interval
-        if self.protocol.state != WebSocketProtocol.STATE_OPEN:
-            raise asyncio.TimeoutError
-
-    @classmethod
-    def create(cls, protocol: Type[WebSocketClientProtocol], host: str, port: int):
-        return cls(protocol=protocol, host=host, port=port)
 
 
 class WebsocketsWSClient(WSClient):

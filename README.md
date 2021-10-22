@@ -3,7 +3,7 @@
 ## Installation
 
 ```sh
-pip install requests pyyaml pyjwt
+pip install requests websockets
 ```
 ```sh
 pip install git+https://github.com/AccelByte/accelbyte-python-sdk.git@main#egg=accelbyte_py_sdk
