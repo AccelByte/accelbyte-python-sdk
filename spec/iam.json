@@ -10652,8 +10652,8 @@
                 "description": "The Location header",
                 "type": "string"
               }
-            }
-
+            },
+            "x-location-query": "code"
           }
         }
       }
@@ -10842,7 +10842,8 @@
                 "description": "The Location header",
                 "type": "string"
               }
-            }
+            },
+            "x-location-query": "request_id"
           }
         }
       }
@@ -11025,7 +11026,8 @@
         ],
         "responses": {
           "302": {
-            "description": "Found. Redirect to client’s redirect URI with either code or error on the query parameter"
+            "description": "Found. Redirect to client’s redirect URI with either code or error on the query parameter",
+            "x-location-query": "code"
           }
         }
       }
