@@ -10646,7 +10646,14 @@
         ],
         "responses": {
           "302": {
-            "description": "Found. Redirect successful requests to consent page with \"list of consent\" in query params."
+            "description": "Found. Redirect successful requests to consent page with \"list of consent\" in query params.",
+            "headers": {
+              "Location": {
+                "description": "The Location header",
+                "type": "string"
+              }
+            }
+
           }
         }
       }
@@ -10829,7 +10836,13 @@
         ],
         "responses": {
           "302": {
-            "description": "Found. Redirected to login page with either request_id or error."
+            "description": "Found. Redirected to login page with either request_id or error.",
+            "headers": {
+              "Location": {
+                "description": "The Location header",
+                "type": "string"
+              }
+            }
           }
         }
       }
@@ -11349,7 +11362,13 @@
         ],
         "responses": {
           "302": {
-            "description": "Found. Redirect to clients redirection URL with either code or error on the query parameter"
+            "description": "Found. Redirect to clients redirection URL with either code or error on the query parameter",
+            "headers": {
+              "Location": {
+                "description": "The Location header",
+                "type": "string"
+              }
+            }
           }
         }
       }
@@ -13294,7 +13313,13 @@
         ],
         "responses": {
           "302": {
-            "description": "Found. Redirect to clients redirection URL with either code or error on the query parameter"
+            "description": "Found. Redirect to clients redirection URL with either code or error on the query parameter",
+            "headers": {
+              "Location": {
+                "description": "The Location header",
+                "type": "string"
+              }
+            }
           }
         }
       }

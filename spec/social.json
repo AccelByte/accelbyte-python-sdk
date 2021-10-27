@@ -3717,7 +3717,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful operation"
+            "description": "Slot data",
+            "schema":{
+              "type":"string",
+              "format": "binary"
+            }
           },
           "404": {
             "description": "<table><tr><td>ErrorCode</td><td>ErrorMessage</td></tr><tr><td>12141</td><td>Slot [{slotId}] not found in namespace [{namespace}]</td></tr></table>",
@@ -3961,7 +3965,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful operation"
+            "description": "suscessfull operation",
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
           },
           "404": {
             "description": "<table><tr><td>ErrorCode</td><td>ErrorMessage</td></tr><tr><td>12141</td><td>Slot [{slotId}] not found in namespace [{namespace}]</td></tr></table>",

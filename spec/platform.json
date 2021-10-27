@@ -15131,8 +15131,17 @@
           }
         ],
         "responses": {
-          "default": {
-            "description": "successful operation"
+          "307": {
+            "description": "successful operation",
+            "headers": {
+              "Location": {
+                "description": "The Location header",
+                "type": "string"
+              }
+            }
+          },
+          "204": {
+            "description": "no content"
           }
         }
       }
@@ -15261,7 +15270,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful operation"
+            "description": "successful operation",
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
           }
         }
       }

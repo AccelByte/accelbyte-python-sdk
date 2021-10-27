@@ -55,13 +55,16 @@ partyInfoRequest:
   x-tag: Party
 partyInfoResponse:
   <<: *BaseResponse
-  partyId: string
+  partyId:
+    type: string
+    description: The party identifier.
   leaderId: string
   members: string
   invitees: string
   invitationToken: string
   customAttributes: string:object
   x-tag: Party
+  x-description: Party Information
 partyCreateRequest:
   <<: *BaseRequest
   x-tag: Party

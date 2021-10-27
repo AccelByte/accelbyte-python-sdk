@@ -6531,10 +6531,10 @@
     "model.TemplateLocalization": {
       "required": [
         "templateSlug",
+        "templateLanguage",
         "lastPublishedAt",
         "lastDraftAt",
-        "templateContent",
-        "templateLanguage"
+        "templateContent"
       ],
       "properties": {
         "lastDraftAt": {
@@ -6912,6 +6912,10 @@
           "type": "integer",
           "format": "integer"
         },
+        "concurrentUsersLimit": {
+          "type": "integer",
+          "format": "int32"
+        },
         "enableChat": {
           "type": "boolean"
         },
@@ -6966,6 +6970,10 @@
         "chatRateLimitDuration": {
           "type": "integer",
           "format": "integer"
+        },
+        "concurrentUsersLimit": {
+          "type": "integer",
+          "format": "int32"
         },
         "enableChat": {
           "type": "boolean"
