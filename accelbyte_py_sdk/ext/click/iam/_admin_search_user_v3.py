@@ -10,12 +10,12 @@ from ....api.iam.models import RestErrorResponse
 
 
 @click.command()
-@click.option("--query", type=str)
-@click.option("--limit", type=int)
-@click.option("--offset", type=str)
-@click.option("--start_date", type=str)
-@click.option("--end_date", type=str)
-@click.option("--by", type=str)
+@click.option("--query", "query", type=str)
+@click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=str)
+@click.option("--start_date", "start_date", type=str)
+@click.option("--end_date", "end_date", type=str)
+@click.option("--by", "by", type=str)
 @click.option("--namespace", type=str)
 @click.option("--doc", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))

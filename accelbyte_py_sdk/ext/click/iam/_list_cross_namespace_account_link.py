@@ -10,7 +10,7 @@ from ....api.iam import list_cross_namespace_account_link as list_cross_namespac
 @click.command()
 @click.argument("linking_token", type=str)
 @click.argument("user_id", type=str)
-@click.option("--platform_id", type=str)
+@click.option("--platform_id", "platform_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--doc", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))

@@ -10,8 +10,8 @@ from ....api.iam import auth_code_request_v3 as auth_code_request_v3_internal
 @click.command()
 @click.argument("platform_id", type=str)
 @click.argument("request_id", type=str)
-@click.option("--client_id", type=str)
-@click.option("--redirect_uri", type=str)
+@click.option("--client_id", "client_id", type=str)
+@click.option("--redirect_uri", "redirect_uri", type=str)
 @click.option("--doc", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 def auth_code_request_v3(

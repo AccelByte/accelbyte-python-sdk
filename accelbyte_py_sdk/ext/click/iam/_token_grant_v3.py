@@ -11,12 +11,12 @@ from ....api.iam.models import OauthmodelTokenResponseV3
 
 @click.command()
 @click.argument("grant_type", type=str)
-@click.option("--device_id", type=str)
-@click.option("--code", type=str)
-@click.option("--code_verifier", type=str)
-@click.option("--client_id", type=str)
-@click.option("--redirect_uri", type=str)
-@click.option("--refresh_token", type=str)
+@click.option("--device_id", "device_id", type=str)
+@click.option("--code", "code", type=str)
+@click.option("--code_verifier", "code_verifier", type=str)
+@click.option("--client_id", "client_id", type=str)
+@click.option("--redirect_uri", "redirect_uri", type=str)
+@click.option("--refresh_token", "refresh_token", type=str)
 @click.option("--doc", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 def token_grant_v3(

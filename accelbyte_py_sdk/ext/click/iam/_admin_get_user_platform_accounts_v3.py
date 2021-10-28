@@ -11,9 +11,9 @@ from ....api.iam.models import RestErrorResponse
 
 @click.command()
 @click.argument("user_id", type=str)
-@click.option("--limit", type=int)
-@click.option("--after", type=str)
-@click.option("--before", type=str)
+@click.option("--limit", "limit", type=int)
+@click.option("--after", "after", type=str)
+@click.option("--before", "before", type=str)
 @click.option("--namespace", type=str)
 @click.option("--doc", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))

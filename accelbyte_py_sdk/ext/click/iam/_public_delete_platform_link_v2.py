@@ -10,7 +10,7 @@ from ....api.iam import public_delete_platform_link_v2 as public_delete_platform
 @click.command()
 @click.argument("user_id", type=str)
 @click.argument("platform_id", type=str)
-@click.option("--platform_namespace", type=str)
+@click.option("--platform_namespace", "platform_namespace", type=str)
 @click.option("--namespace", type=str)
 @click.option("--doc", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))

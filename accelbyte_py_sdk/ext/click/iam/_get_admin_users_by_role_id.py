@@ -10,10 +10,10 @@ from ....api.iam.models import RestErrorResponse
 
 
 @click.command()
-@click.option("--role_id", type=str)
-@click.option("--limit", type=int)
-@click.option("--after", type=int)
-@click.option("--before", type=int)
+@click.option("--role_id", "role_id", type=str)
+@click.option("--limit", "limit", type=int)
+@click.option("--after", "after", type=int)
+@click.option("--before", "before", type=int)
 @click.option("--namespace", type=str)
 @click.option("--doc", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))

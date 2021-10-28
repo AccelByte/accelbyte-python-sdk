@@ -11,9 +11,9 @@ from ....api.iam import user_authentication_v3 as user_authentication_v3_interna
 @click.argument("user_name", type=str)
 @click.argument("password", type=str)
 @click.argument("request_id", type=str)
-@click.option("--redirect_uri", type=str)
-@click.option("--client_id", type=str)
-@click.option("--extend_exp", type=bool)
+@click.option("--redirect_uri", "redirect_uri", type=str)
+@click.option("--client_id", "client_id", type=str)
+@click.option("--extend_exp", "extend_exp", type=bool)
 @click.option("--doc", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 def user_authentication_v3(

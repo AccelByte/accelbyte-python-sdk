@@ -10,8 +10,8 @@ from ....api.iam import platform_authenticate_samlv3_handler as platform_authent
 @click.command()
 @click.argument("platform_id", type=str)
 @click.argument("state", type=str)
-@click.option("--code", type=str)
-@click.option("--error", type=str)
+@click.option("--code", "code", type=str)
+@click.option("--error", "error", type=str)
 @click.option("--doc", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 def platform_authenticate_samlv3_handler(

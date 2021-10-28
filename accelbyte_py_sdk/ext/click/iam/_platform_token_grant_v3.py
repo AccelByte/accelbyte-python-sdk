@@ -11,9 +11,9 @@ from ....api.iam.models import OauthmodelTokenResponse
 
 @click.command()
 @click.argument("platform_id", type=str)
-@click.option("--platform_token", type=str)
-@click.option("--client_id", type=str)
-@click.option("--device_id", type=str)
+@click.option("--platform_token", "platform_token", type=str)
+@click.option("--client_id", "client_id", type=str)
+@click.option("--device_id", "device_id", type=str)
 @click.option("--doc", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 def platform_token_grant_v3(

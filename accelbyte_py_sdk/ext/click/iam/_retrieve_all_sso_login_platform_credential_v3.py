@@ -10,8 +10,8 @@ from ....api.iam.models import RestErrorResponse
 
 
 @click.command()
-@click.option("--limit", type=int)
-@click.option("--offset", type=str)
+@click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=str)
 @click.option("--namespace", type=str)
 @click.option("--doc", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))

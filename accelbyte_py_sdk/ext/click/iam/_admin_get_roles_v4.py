@@ -10,11 +10,11 @@ from ....api.iam.models import RestErrorResponse
 
 
 @click.command()
-@click.option("--is_wildcard", type=bool)
-@click.option("--admin_role", type=bool)
-@click.option("--limit", type=int)
-@click.option("--after", type=str)
-@click.option("--before", type=str)
+@click.option("--is_wildcard", "is_wildcard", type=bool)
+@click.option("--admin_role", "admin_role", type=bool)
+@click.option("--limit", "limit", type=int)
+@click.option("--after", "after", type=str)
+@click.option("--before", "before", type=str)
 @click.option("--doc", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 def admin_get_roles_v4(

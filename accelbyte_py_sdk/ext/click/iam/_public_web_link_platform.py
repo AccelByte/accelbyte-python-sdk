@@ -11,8 +11,8 @@ from ....api.iam.models import RestErrorResponse
 
 @click.command()
 @click.argument("platform_id", type=str)
-@click.option("--client_id", type=str)
-@click.option("--redirect_uri", type=str)
+@click.option("--client_id", "client_id", type=str)
+@click.option("--redirect_uri", "redirect_uri", type=str)
 @click.option("--namespace", type=str)
 @click.option("--doc", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))

@@ -10,7 +10,7 @@ from ....api.iam import platform_unlink as platform_unlink_internal
 @click.command()
 @click.argument("user_id", type=str)
 @click.argument("platform_id", type=str)
-@click.option("--platform_namespace", type=str)
+@click.option("--platform_namespace", "platform_namespace", type=str)
 @click.option("--namespace", type=str)
 @click.option("--doc", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))

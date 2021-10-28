@@ -9,7 +9,7 @@ from ....api.iam.models import ModelPublicUsersResponse
 
 
 @click.command()
-@click.option("--login_ids", type=str)
+@click.option("--login_ids", "login_ids", type=str)
 @click.option("--namespace", type=str)
 @click.option("--doc", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))

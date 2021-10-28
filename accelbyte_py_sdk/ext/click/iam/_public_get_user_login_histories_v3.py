@@ -10,9 +10,9 @@ from ....api.iam.models import ModelLoginHistoriesResponse
 
 @click.command()
 @click.argument("user_id", type=str)
-@click.option("--before", type=float)
-@click.option("--after", type=float)
-@click.option("--limit", type=float)
+@click.option("--before", "before", type=float)
+@click.option("--after", "after", type=float)
+@click.option("--limit", "limit", type=float)
 @click.option("--namespace", type=str)
 @click.option("--doc", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))

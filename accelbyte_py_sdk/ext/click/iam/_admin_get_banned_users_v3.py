@@ -9,10 +9,10 @@ from ....api.iam.models import ModelGetUserBanV3Response
 
 
 @click.command()
-@click.option("--active_only", type=bool)
-@click.option("--ban_type", type=str)
-@click.option("--offset", type=int)
-@click.option("--limit", type=int)
+@click.option("--active_only", "active_only", type=bool)
+@click.option("--ban_type", "ban_type", type=str)
+@click.option("--offset", "offset", type=int)
+@click.option("--limit", "limit", type=int)
 @click.option("--namespace", type=str)
 @click.option("--doc", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))

@@ -9,7 +9,7 @@ from ....api.iam.models import ModelRoleResponseWithManagers
 
 
 @click.command()
-@click.option("--is_wildcard", type=str)
+@click.option("--is_wildcard", "is_wildcard", type=str)
 @click.option("--doc", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 def get_roles(

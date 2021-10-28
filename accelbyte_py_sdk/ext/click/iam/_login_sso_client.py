@@ -9,7 +9,7 @@ from ....api.iam import login_sso_client as login_sso_client_internal
 
 @click.command()
 @click.argument("platform_id", type=str)
-@click.option("--payload", type=str)
+@click.option("--payload", "payload", type=str)
 @click.option("--doc", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 def login_sso_client(
