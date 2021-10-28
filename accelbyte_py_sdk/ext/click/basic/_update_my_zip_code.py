@@ -1,3 +1,23 @@
+# justice-basic-service (1.23.0)
+
+# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# This is licensed software from AccelByte Inc, for limitations
+# and restrictions contact your company contract manager.
+
+# pylint: disable=duplicate-code
+# pylint: disable=line-too-long
+# pylint: disable=missing-function-docstring
+# pylint: disable=missing-module-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-branches
+# pylint: disable=too-many-instance-attributes
+# pylint: disable=too-many-lines
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-public-methods
+# pylint: disable=too-many-return-statements
+# pylint: disable=too-many-statements
+# pylint: disable=unused-import
+
 import json
 from typing import Optional
 
@@ -14,23 +34,24 @@ from ....api.basic.models import ValidationErrorEntity
 @click.command()
 @click.argument("user_zip_code_update", type=str)
 @click.option("--namespace", type=str)
-@click.option("--doc", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--doc", type=bool)
 def update_my_zip_code(
         user_zip_code_update: str,
         namespace: Optional[str] = None,
-        doc: Optional[bool] = None,
         login_as: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
-    login_as_internal(login_as)
     if doc:
         click.echo(update_my_zip_code_internal.__doc__)
+        return
+    login_as_internal(login_as)
     try:
         user_zip_code_update_json = json.loads(user_zip_code_update)
         user_zip_code_update = UserZipCodeUpdate.create_from_dict(user_zip_code_update_json)
     except ValueError as e:
-        raise Exception(f"Invalid JSON for 'userZipCodeUpdate'. {str(e)}")
-    result, error = update_my_zip_code_internal(
+        raise Exception(f"Invalid JSON for 'userZipCodeUpdate'. {str(e)}") from e
+    _, error = update_my_zip_code_internal(
         user_zip_code_update=user_zip_code_update,
         namespace=namespace,
     )

@@ -1,3 +1,23 @@
+# justice-iam-service (4.4.1)
+
+# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# This is licensed software from AccelByte Inc, for limitations
+# and restrictions contact your company contract manager.
+
+# pylint: disable=duplicate-code
+# pylint: disable=line-too-long
+# pylint: disable=missing-function-docstring
+# pylint: disable=missing-module-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-branches
+# pylint: disable=too-many-instance-attributes
+# pylint: disable=too-many-lines
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-public-methods
+# pylint: disable=too-many-return-statements
+# pylint: disable=too-many-statements
+# pylint: disable=unused-import
+
 import json
 from typing import Optional
 
@@ -10,17 +30,18 @@ from ....api.iam.models import ClientmodelClientResponse
 
 @click.command()
 @click.argument("client_id", type=str)
-@click.option("--doc", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--doc", type=bool)
 def get_client(
         client_id: str,
-        doc: Optional[bool] = None,
         login_as: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
-    login_as_internal(login_as)
     if doc:
         click.echo(get_client_internal.__doc__)
-    result, error = get_client_internal(
+        return
+    login_as_internal(login_as)
+    _, error = get_client_internal(
         client_id=client_id,
     )
     if error:

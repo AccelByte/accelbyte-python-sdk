@@ -1,3 +1,23 @@
+# justice-social-service (1.18.1)
+
+# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# This is licensed software from AccelByte Inc, for limitations
+# and restrictions contact your company contract manager.
+
+# pylint: disable=duplicate-code
+# pylint: disable=line-too-long
+# pylint: disable=missing-function-docstring
+# pylint: disable=missing-module-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-branches
+# pylint: disable=too-many-instance-attributes
+# pylint: disable=too-many-lines
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-public-methods
+# pylint: disable=too-many-return-statements
+# pylint: disable=too-many-statements
+# pylint: disable=unused-import
+
 import json
 from typing import Optional
 
@@ -18,8 +38,8 @@ from ....api.social.models import SlotInfo
 @click.option("--label", "label", type=str)
 @click.option("--tags", "tags", type=str)
 @click.option("--namespace", type=str)
-@click.option("--doc", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--doc", type=bool)
 def public_update_user_namespace_slot(
         user_id: str,
         slot_id: str,
@@ -29,23 +49,19 @@ def public_update_user_namespace_slot(
         label: Optional[str] = None,
         tags: Optional[str] = None,
         namespace: Optional[str] = None,
-        doc: Optional[bool] = None,
         login_as: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
-    login_as_internal(login_as)
     if doc:
         click.echo(public_update_user_namespace_slot_internal.__doc__)
-    try:
-        file_json = json.loads(file)
-        file = Any.create_from_dict(file_json)
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'file'. {str(e)}")
+        return
+    login_as_internal(login_as)
     try:
         tags_json = json.loads(tags)
-        tags = [str.create_from_dict(i0) for i0 in tags_json]
+        tags = [str(i0) for i0 in tags_json]
     except ValueError as e:
-        raise Exception(f"Invalid JSON for 'tags'. {str(e)}")
-    result, error = public_update_user_namespace_slot_internal(
+        raise Exception(f"Invalid JSON for 'tags'. {str(e)}") from e
+    _, error = public_update_user_namespace_slot_internal(
         user_id=user_id,
         slot_id=slot_id,
         custom_attribute=custom_attribute,

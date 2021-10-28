@@ -1,3 +1,23 @@
+# justice-session-browser-service ()
+
+# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# This is licensed software from AccelByte Inc, for limitations
+# and restrictions contact your company contract manager.
+
+# pylint: disable=duplicate-code
+# pylint: disable=line-too-long
+# pylint: disable=missing-function-docstring
+# pylint: disable=missing-module-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-branches
+# pylint: disable=too-many-instance-attributes
+# pylint: disable=too-many-lines
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-public-methods
+# pylint: disable=too-many-return-statements
+# pylint: disable=too-many-statements
+# pylint: disable=unused-import
+
 import json
 from typing import Optional
 
@@ -13,19 +33,20 @@ from ....api.sessionbrowser.models import RestapiErrorResponseV2
 @click.argument("session_id", type=str)
 @click.argument("user_id", type=str)
 @click.option("--namespace", type=str)
-@click.option("--doc", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--doc", type=bool)
 def remove_player_from_session(
         session_id: str,
         user_id: str,
         namespace: Optional[str] = None,
-        doc: Optional[bool] = None,
         login_as: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
-    login_as_internal(login_as)
     if doc:
         click.echo(remove_player_from_session_internal.__doc__)
-    result, error = remove_player_from_session_internal(
+        return
+    login_as_internal(login_as)
+    _, error = remove_player_from_session_internal(
         session_id=session_id,
         user_id=user_id,
         namespace=namespace,
