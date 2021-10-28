@@ -120,7 +120,7 @@ def set_config_repository(config_repository: ConfigRepository) -> None:
 
 
 def get_base_url() -> Tuple[Union[None, str], Union[None, HttpResponse]]:
-    config_repo = get_config_repository()
+    config_repo = _CONFIG_REPOSITORY
     if not config_repo:
         return None, HttpResponse.create_error(400, "Can't find config repository.")
     base_url = config_repo.get_base_url()
@@ -130,7 +130,7 @@ def get_base_url() -> Tuple[Union[None, str], Union[None, HttpResponse]]:
 
 
 def get_client_auth() -> Tuple[Union[None, Tuple[str, str]], Union[None, HttpResponse]]:
-    config_repo = get_config_repository()
+    config_repo = _CONFIG_REPOSITORY
     if not config_repo:
         return None, HttpResponse.create_error(400, "Can't find config repository.")
     client_id = config_repo.get_client_id()
@@ -141,7 +141,7 @@ def get_client_auth() -> Tuple[Union[None, Tuple[str, str]], Union[None, HttpRes
 
 
 def get_client_id() -> Tuple[Union[None, str], Union[None, HttpResponse]]:
-    config_repo = get_config_repository()
+    config_repo = _CONFIG_REPOSITORY
     if not config_repo:
         return None, HttpResponse.create_error(400, "Can't find config repository.")
     client_id = config_repo.get_client_id()
@@ -151,7 +151,7 @@ def get_client_id() -> Tuple[Union[None, str], Union[None, HttpResponse]]:
 
 
 def get_client_secret() -> Tuple[Union[None, str], Union[None, HttpResponse]]:
-    config_repo = get_config_repository()
+    config_repo = _CONFIG_REPOSITORY
     if not config_repo:
         return None, HttpResponse.create_error(400, "Can't find config repository.")
     client_secret = config_repo.get_client_secret()
@@ -161,7 +161,7 @@ def get_client_secret() -> Tuple[Union[None, str], Union[None, HttpResponse]]:
 
 
 def get_namespace() -> Tuple[Union[None, str], Union[None, HttpResponse]]:
-    config_repo = get_config_repository()
+    config_repo = _CONFIG_REPOSITORY
     if not config_repo:
         return None, HttpResponse.create_error(400, "Can't find config repository.")
     namespace = config_repo.get_namespace()
@@ -186,7 +186,7 @@ def set_token_repository(token_repository: TokenRepository) -> None:
 
 
 def get_access_token() -> Tuple[Union[None, str], Union[None, HttpResponse]]:
-    token_repo = get_token_repository()
+    token_repo = _TOKEN_REPOSITORY
     if not token_repo:
         return None, HttpResponse.create_error(400, "Can't find token repository.")
     token = token_repo.get_token()
@@ -198,7 +198,7 @@ def get_access_token() -> Tuple[Union[None, str], Union[None, HttpResponse]]:
 
 
 def remove_token() -> Tuple[None, Union[None, HttpResponse]]:
-    token_repo = get_token_repository()
+    token_repo = _TOKEN_REPOSITORY
     if not token_repo:
         return None, HttpResponse.create_error(400, "Can't find token repository.")
     success = token_repo.remove_token()
@@ -208,7 +208,7 @@ def remove_token() -> Tuple[None, Union[None, HttpResponse]]:
 
 
 def set_token(token: Any) -> Tuple[None, Union[None, HttpResponse]]:
-    token_repo = get_token_repository()
+    token_repo = _TOKEN_REPOSITORY
     if not token_repo:
         return None, HttpResponse.create_error(400, "Can't find token repository.")
     success = token_repo.store_token(token)
@@ -242,7 +242,10 @@ def run_request(
         additional_headers: Union[None, Dict[str, str]] = None,
         additional_headers_override: bool = True,
         **kwargs) -> Tuple[Any, Any]:
-    http_client = get_http_client()
+    http_client = _HTTP_CLIENT
+
+    if not http_client:
+        return None, HttpResponse.create_error(400, "Can't find HTTP client.")
 
     if base_url is None:
         config_base_url, error = get_base_url()
