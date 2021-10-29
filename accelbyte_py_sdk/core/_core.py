@@ -55,7 +55,6 @@ def initialize(
 
     # region config repository
 
-    global _CONFIG_REPOSITORY
     if "config" in options:
         config_repository = options["config"]
         if isinstance(config_repository, str):
@@ -69,13 +68,12 @@ def initialize(
     if not isinstance(config_repository, ConfigRepository):
         raise TypeError(f"Config repository '{type(config_repository).__name__}' not valid.")
 
-    _CONFIG_REPOSITORY = config_repository
+    set_config_repository(config_repository)
 
     # endregion config repository
 
     # region token repository
 
-    global _TOKEN_REPOSITORY
     if "token" in options:
         token_repository = options["token"]
         if isinstance(token_repository, str):
@@ -86,16 +84,12 @@ def initialize(
     else:
         token_repository = _TOKEN_REPOSITORY_IMPL[0]()
 
-    if not isinstance(token_repository, TokenRepository):
-        raise TypeError(f"Token repository '{type(token_repository).__name__}' not valid.")
-
-    _TOKEN_REPOSITORY = token_repository
+    set_token_repository(token_repository)
 
     # endregion token repository
 
     # region http client
 
-    global _HTTP_CLIENT
     if "http" in options:
         http_client = options["http"]
         if isinstance(http_client, str):
@@ -106,10 +100,7 @@ def initialize(
     else:
         http_client = _HTTP_CLIENT_IMPL[0]()
 
-    if not isinstance(http_client, HttpClient):
-        raise TypeError(f"HTTP Client '{type(http_client).__name__}' not valid.")
-
-    _HTTP_CLIENT = http_client
+    set_http_client(http_client)
 
     # endregion http client
 
@@ -138,6 +129,8 @@ def get_config_repository() -> ConfigRepository:
 
 
 def set_config_repository(config_repository: ConfigRepository) -> None:
+    if not isinstance(config_repository, ConfigRepository):
+        raise TypeError(f"Config repository '{type(config_repository).__name__}' not valid.")
     global _CONFIG_REPOSITORY
     _CONFIG_REPOSITORY = config_repository
 
@@ -204,6 +197,8 @@ def get_token_repository() -> TokenRepository:
 
 
 def set_token_repository(token_repository: TokenRepository) -> None:
+    if not isinstance(token_repository, TokenRepository):
+        raise TypeError(f"Token repository '{type(token_repository).__name__}' not valid.")
     global _TOKEN_REPOSITORY
     _TOKEN_REPOSITORY = token_repository
 
@@ -251,6 +246,8 @@ def get_http_client() -> HttpClient:
 
 
 def set_http_client(http_client: HttpClient) -> None:
+    if not isinstance(http_client, HttpClient):
+        raise TypeError(f"HTTP Client '{type(http_client).__name__}' not valid.")
     global _HTTP_CLIENT
     _HTTP_CLIENT = http_client
 
