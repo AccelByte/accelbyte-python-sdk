@@ -4,4 +4,6 @@ __version__ = "0.2.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
+from .core import is_initialized
 from .core import initialize
+from .core import reset

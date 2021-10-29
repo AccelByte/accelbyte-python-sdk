@@ -8,6 +8,8 @@ from ._token_repository import InMemoryTokenRepository
 from ._token_repository import MyTokenRepository
 
 from ._header import Header
+from ._http_client import HttpClient
+from ._http_client import HttpRawResponse
 from ._http_response import HttpResponse
 from ._model import Model
 from ._operation import Operation
@@ -31,7 +33,9 @@ from ._ws_client import WebsocketsWSClient
 from ._decorators import deprecated
 from ._decorators import same_doc_as
 
+from ._core import is_initialized
 from ._core import initialize
+from ._core import reset
 
 from ._core import get_config_repository
 from ._core import set_config_repository

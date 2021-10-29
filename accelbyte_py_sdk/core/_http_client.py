@@ -13,7 +13,7 @@ from ._utils import create_curl_request
 _LOGGER = logging.getLogger("accelbyte_py_sdk.http")
 
 # NOTE(elmer): convert into a class if needed
-Response = Tuple[int, str, Any]  # code, content-type, content
+HttpRawResponse = Tuple[int, str, Any]  # code, content-type, content
 
 
 class HttpClient(ABC):
@@ -41,7 +41,7 @@ class HttpClient(ABC):
             self,
             raw_response: Any,
             **kwargs
-    ) -> Tuple[Union[None, Response], Union[None, HttpResponse]]:
+    ) -> Tuple[Union[None, HttpRawResponse], Union[None, HttpResponse]]:
         pass
 
     def run_request(
@@ -50,7 +50,7 @@ class HttpClient(ABC):
             base_url: Union[None, str] = None,
             headers: Union[None, Header] = None,
             **kwargs
-    ) -> Tuple[Union[None, Response], Union[None, HttpResponse]]:
+    ) -> Tuple[Union[None, HttpRawResponse], Union[None, HttpResponse]]:
         request, error = self.create_request(operation, base_url, headers, **kwargs)
         if error:
             return None, error
@@ -123,7 +123,7 @@ class RequestsHttpClient(HttpClient):
             self,
             raw_response: requests.Response,
             **kwargs
-    ) -> Tuple[Union[None, Response], Union[None, HttpResponse]]:
+    ) -> Tuple[Union[None, HttpRawResponse], Union[None, HttpResponse]]:
         status_code = raw_response.status_code
         if 400 <= status_code <= 599:
             _LOGGER.error(f"[{status_code}] {raw_response.text}")
