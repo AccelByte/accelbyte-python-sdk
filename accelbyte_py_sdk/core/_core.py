@@ -19,6 +19,7 @@ from ._utils import get_query_from_http_redirect_response
 
 _LOGGER = logging.getLogger("accelbyte_py_sdk")
 
+_IS_INITIALIZED: bool = False
 _CONFIG_REPOSITORY: Union[None, ConfigRepository] = None
 _TOKEN_REPOSITORY: Union[None, TokenRepository] = None
 _HTTP_CLIENT: Union[None, HttpClient] = None
@@ -38,9 +39,18 @@ _HTTP_CLIENT_IMPL = [
 ]
 
 
+def is_initialized() -> bool:
+    return _IS_INITIALIZED
+
+
 def initialize(
         options: Union[None, Dict[str, Any]] = None
 ) -> None:
+    global _IS_INITIALIZED
+    if _IS_INITIALIZED:
+        _LOGGER.warning(f"Already initialized.")
+        return
+
     options = options if options is not None else {}
 
     # region config repository
@@ -103,7 +113,20 @@ def initialize(
 
     # endregion http client
 
+    _IS_INITIALIZED = True
     _LOGGER.info("AccelByte Python SDK initialized.")
+
+
+def reset() -> None:
+    global _IS_INITIALIZED
+    global _CONFIG_REPOSITORY
+    global _TOKEN_REPOSITORY
+    global _HTTP_CLIENT
+
+    _IS_INITIALIZED = False
+    _CONFIG_REPOSITORY = None
+    _TOKEN_REPOSITORY = None
+    _HTTP_CLIENT = None
 
 
 # region ConfigRepository
@@ -230,9 +253,6 @@ def get_http_client() -> HttpClient:
 def set_http_client(http_client: HttpClient) -> None:
     global _HTTP_CLIENT
     _HTTP_CLIENT = http_client
-
-
-Response = Tuple[int, str, Any]
 
 
 def run_request(
