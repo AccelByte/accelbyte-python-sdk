@@ -210,9 +210,12 @@ def get_access_token() -> Tuple[Union[None, str], Union[None, HttpResponse]]:
     token = token_repo.get_token()
     if not token:
         return None, HttpResponse.create_error(400, "Can't find token.")
-    if not hasattr(token, "access_token"):
+    if hasattr(token, "access_token"):
+        return str(token.access_token), None
+    elif hasattr(token, "__iter__") and "access_token" in token:
+        return str(token["access_token"]), None
+    else:
         return None, HttpResponse.create_error(400, "Failed to get access token.")
-    return str(token.access_token), None
 
 
 def remove_token() -> Tuple[None, Union[None, HttpResponse]]:
