@@ -49,7 +49,7 @@ def initialize(
     if "config" in options:
         config_repository = options["config"]
         if isinstance(config_repository, str):
-            implementation = next((impl for impl in _CONFIG_REPOSITORY_IMPL if impl.__name__ == impl), None)
+            implementation = next((impl for impl in _CONFIG_REPOSITORY_IMPL if impl.__name__ == config_repository), None)
             if implementation is None:
                 raise ValueError(f"Config repository '{config_repository}' not recognized.")
             config_repository = implementation()
@@ -69,7 +69,7 @@ def initialize(
     if "token" in options:
         token_repository = options["token"]
         if isinstance(token_repository, str):
-            implementation = next((impl for impl in _TOKEN_REPOSITORY_IMPL if impl.__name__ == impl), None)
+            implementation = next((impl for impl in _TOKEN_REPOSITORY_IMPL if impl.__name__ == token_repository), None)
             if implementation is None:
                 raise ValueError(f"Token repository '{token_repository}' not recognized.")
             token_repository = implementation()
