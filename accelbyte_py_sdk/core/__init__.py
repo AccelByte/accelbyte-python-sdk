@@ -1,5 +1,7 @@
 from ._config_repository import ConfigRepository
+from ._config_repository import DictConfigRepository
 from ._config_repository import EnvironmentConfigRepository
+from ._config_repository import JsonConfigRepository
 from ._config_repository import JsonFileConfigRepository
 from ._config_repository import MyConfigRepository
 
