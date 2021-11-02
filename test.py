@@ -11,7 +11,6 @@ def set_logger_level(level):
 
 
 if __name__ == "__main__":
-    set_logger_level(logging.INFO)
 
     loader = TestLoader()
     suite = loader.loadTestsFromModule(tests)
