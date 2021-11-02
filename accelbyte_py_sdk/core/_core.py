@@ -237,6 +237,28 @@ def set_token(token: Any) -> Tuple[None, Union[None, HttpResponse]]:
         return None, HttpResponse.create_error(400, "Failed to set token.")
     return None, None
 
+
+def _is_valid_token(token: Any) -> bool:
+    if token is None:
+        return False
+    access_token_key = "access_token"
+    if hasattr(token, access_token_key):  # in attr
+        return True
+    if hasattr(token, "__iter__") and access_token_key in token:  # in dict
+        return True
+    return False
+
+
+def _try_set_token(token: Any) -> Tuple[bool, Union[None, HttpResponse]]:
+    if token is None:
+        return False, HttpResponse.create_error(400, "Empty token.")
+    if not _is_valid_token(token):
+        return False, HttpResponse.create_error(400, "Failed to set token. The token is not valid.")
+    _, error = set_token(token)
+    if error:
+        return True, error
+    return True, None
+
 # endregion TokenRepository
 
 
@@ -328,13 +350,12 @@ def run_request(
         else:
             return query, None
 
-    # # TODO(elmer): not a fan of this bit
-    if hasattr(success, "access_token"):
-        _, error = set_token(success)
+    # TODO(elmer): still not a fan of this bit
+    is_valid_token, error = _try_set_token(success)
+    if is_valid_token:
         if error:
             return None, error
-        else:
-            return success, None
+        return success, None
 
     return success, None
 
