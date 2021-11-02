@@ -2,7 +2,10 @@ import logging
 from typing import Any, Dict, Tuple, Union
 
 from ._config_repository import ConfigRepository
+from ._config_repository import DictConfigRepository
 from ._config_repository import EnvironmentConfigRepository
+from ._config_repository import JsonConfigRepository
+from ._config_repository import JsonFileConfigRepository
 from ._config_repository import MyConfigRepository
 
 from ._token_repository import TokenRepository
@@ -26,6 +29,9 @@ _HTTP_CLIENT: Union[None, HttpClient] = None
 
 _CONFIG_REPOSITORY_IMPL = [
     EnvironmentConfigRepository,
+    DictConfigRepository,
+    JsonConfigRepository,
+    JsonFileConfigRepository,
     MyConfigRepository,
 ]
 
@@ -46,6 +52,39 @@ def is_initialized() -> bool:
 def initialize(
         options: Union[None, Dict[str, Any]] = None
 ) -> None:
+    """Initializes the AccelByte Python SDK.
+
+    Args:
+        options (dict): Options used by the SDK. It can contain any of the following:
+         -- config (Optional[Union[str, Type[ConfigRepository]]]): Config Repository to use.
+         -- config_params (Optional[Tuple[List[Any], Dict[str, Any]]]): Config Repository parameters.
+         -- token (Optional[Union[str, Type[TokenRepository]]]): Token Repository to use.
+         -- token_params (Optional[Tuple[List[Any], Dict[str, Any]]]): Token Repository parameters.
+         -- http (Optional[Union[str, Type[HttpClient]]]): Http Client to use.
+         -- http_params (Optional[Tuple[List[Any], Dict[str, Any]]]): Http Client parameters.
+
+     Raises:
+         ValueError: If 'options.config_params' is not Tuple[List[Any], Dict[str, Any]].
+         ValueError: If 'options.config' is not recognized.
+         ValueError: If 'options.token_params' is not Tuple[List[Any], Dict[str, Any]].
+         ValueError: If 'options.token' is not recognized.
+         ValueError: If 'options.http_params' is not Tuple[List[Any], Dict[str, Any]].
+         ValueError: If 'options.http' is not recognized.
+    """
+    def is_valid_params(params) -> Tuple[bool, list, dict]:
+        if params is None:
+            return True, [], {}
+        if not isinstance(params, tuple):
+            return False, [], {}
+        if len(params) != 2:
+            return False, [], {}
+        args, kwargs = params
+        if not isinstance(args, list):
+            return False, [], {}
+        if not isinstance(kwargs, dict):
+            return False, args, {}
+        return True, args, kwargs
+
     global _IS_INITIALIZED
     if _IS_INITIALIZED:
         _LOGGER.warning(f"Already initialized.")
@@ -58,15 +97,16 @@ def initialize(
     if "config" in options:
         config_repository = options["config"]
         if isinstance(config_repository, str):
+            config_params = options.get("config_params")
+            is_valid_config_params, config_args, config_kwargs = is_valid_params(config_params)
+            if not is_valid_config_params:
+                raise ValueError(f"Config params must be a Tuple[List[Any], Dict[str, Any]].")
             implementation = next((impl for impl in _CONFIG_REPOSITORY_IMPL if impl.__name__ == config_repository), None)
             if implementation is None:
                 raise ValueError(f"Config repository '{config_repository}' not recognized.")
-            config_repository = implementation()
+            config_repository = implementation(*config_args, **config_kwargs)
     else:
         config_repository = _CONFIG_REPOSITORY_IMPL[0]()
-
-    if not isinstance(config_repository, ConfigRepository):
-        raise TypeError(f"Config repository '{type(config_repository).__name__}' not valid.")
 
     set_config_repository(config_repository)
 
@@ -77,10 +117,14 @@ def initialize(
     if "token" in options:
         token_repository = options["token"]
         if isinstance(token_repository, str):
+            token_params = options.get("token_params")
+            is_valid_token_params, token_args, token_kwargs = is_valid_params(token_params)
+            if not is_valid_token_params:
+                raise ValueError(f"Token params must be a Tuple[List[Any], Dict[str, Any]].")
             implementation = next((impl for impl in _TOKEN_REPOSITORY_IMPL if impl.__name__ == token_repository), None)
             if implementation is None:
                 raise ValueError(f"Token repository '{token_repository}' not recognized.")
-            token_repository = implementation()
+            token_repository = implementation(*token_args, **token_kwargs)
     else:
         token_repository = _TOKEN_REPOSITORY_IMPL[0]()
 
@@ -93,10 +137,14 @@ def initialize(
     if "http" in options:
         http_client = options["http"]
         if isinstance(http_client, str):
+            http_params = options.get("http_params")
+            is_valid_http_params, http_args, http_kwargs = is_valid_params(http_params)
+            if not is_valid_http_params:
+                raise ValueError(f"HTTP params must be a Tuple[List[Any], Dict[str, Any]].")
             implementation = next((impl for impl in _HTTP_CLIENT_IMPL if impl.__name__ == http_client), None)
             if implementation is None:
                 raise ValueError(f"HTTP Client '{http_client}' not recognized.")
-            http_client = implementation()
+            http_client = implementation(*http_args, **http_kwargs)
     else:
         http_client = _HTTP_CLIENT_IMPL[0]()
 
