@@ -144,7 +144,10 @@ class RequestsHttpClient(HttpClient):
         elif "Content-Type" in raw_response.headers:
             content_type = raw_response.headers["Content-Type"]
             if content_type == "application/json":
-                content = raw_response.json()
+                try:
+                    content = raw_response.json()
+                except ValueError:
+                    content = ""
             elif content_type.startswith("text/"):
                 content = raw_response.text
             else:
