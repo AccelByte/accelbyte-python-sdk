@@ -70,19 +70,19 @@ class XsollaPaywallConfig(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "theme") and self.theme:
+        if hasattr(self, "theme"):
             result["theme"] = str(self.theme)
         elif include_empty:
             result["theme"] = str()
-        if hasattr(self, "size") and self.size:
+        if hasattr(self, "size"):
             result["size"] = str(self.size)
         elif include_empty:
             result["size"] = str()
-        if hasattr(self, "device") and self.device:
+        if hasattr(self, "device"):
             result["device"] = str(self.device)
         elif include_empty:
             result["device"] = str()
-        if hasattr(self, "show_close_button") and self.show_close_button:
+        if hasattr(self, "show_close_button"):
             result["showCloseButton"] = bool(self.show_close_button)
         elif include_empty:
             result["showCloseButton"] = bool()

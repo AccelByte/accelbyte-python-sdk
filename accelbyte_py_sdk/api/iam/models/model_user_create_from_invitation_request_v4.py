@@ -84,27 +84,27 @@ class ModelUserCreateFromInvitationRequestV4(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "auth_type") and self.auth_type:
+        if hasattr(self, "auth_type"):
             result["authType"] = str(self.auth_type)
         elif include_empty:
             result["authType"] = str()
-        if hasattr(self, "country") and self.country:
+        if hasattr(self, "country"):
             result["country"] = str(self.country)
         elif include_empty:
             result["country"] = str()
-        if hasattr(self, "date_of_birth") and self.date_of_birth:
+        if hasattr(self, "date_of_birth"):
             result["dateOfBirth"] = str(self.date_of_birth)
         elif include_empty:
             result["dateOfBirth"] = str()
-        if hasattr(self, "display_name") and self.display_name:
+        if hasattr(self, "display_name"):
             result["displayName"] = str(self.display_name)
         elif include_empty:
             result["displayName"] = str()
-        if hasattr(self, "password") and self.password:
+        if hasattr(self, "password"):
             result["password"] = str(self.password)
         elif include_empty:
             result["password"] = str()
-        if hasattr(self, "username") and self.username:
+        if hasattr(self, "username"):
             result["username"] = str(self.username)
         elif include_empty:
             result["username"] = str()

@@ -98,35 +98,35 @@ class ModelsPodConfigRecord(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "cpu_limit") and self.cpu_limit:
+        if hasattr(self, "cpu_limit"):
             result["cpu_limit"] = int(self.cpu_limit)
         elif include_empty:
             result["cpu_limit"] = int()
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "mem_limit") and self.mem_limit:
+        if hasattr(self, "mem_limit"):
             result["mem_limit"] = int(self.mem_limit)
         elif include_empty:
             result["mem_limit"] = int()
-        if hasattr(self, "modified_by") and self.modified_by:
+        if hasattr(self, "modified_by"):
             result["modifiedBy"] = str(self.modified_by)
         elif include_empty:
             result["modifiedBy"] = str()
-        if hasattr(self, "name") and self.name:
+        if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "params") and self.params:
+        if hasattr(self, "params"):
             result["params"] = str(self.params)
         elif include_empty:
             result["params"] = str()
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()

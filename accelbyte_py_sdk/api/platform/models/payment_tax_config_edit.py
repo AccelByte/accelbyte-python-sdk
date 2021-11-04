@@ -70,19 +70,19 @@ class PaymentTaxConfigEdit(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "tax_jar_enabled") and self.tax_jar_enabled:
+        if hasattr(self, "tax_jar_enabled"):
             result["taxJarEnabled"] = bool(self.tax_jar_enabled)
         elif include_empty:
             result["taxJarEnabled"] = bool()
-        if hasattr(self, "tax_jar_api_token") and self.tax_jar_api_token:
+        if hasattr(self, "tax_jar_api_token"):
             result["taxJarApiToken"] = str(self.tax_jar_api_token)
         elif include_empty:
             result["taxJarApiToken"] = str()
-        if hasattr(self, "sandbox_tax_jar_api_token") and self.sandbox_tax_jar_api_token:
+        if hasattr(self, "sandbox_tax_jar_api_token"):
             result["sandboxTaxJarApiToken"] = str(self.sandbox_tax_jar_api_token)
         elif include_empty:
             result["sandboxTaxJarApiToken"] = str()
-        if hasattr(self, "tax_jar_product_codes_mapping") and self.tax_jar_product_codes_mapping:
+        if hasattr(self, "tax_jar_product_codes_mapping"):
             result["taxJarProductCodesMapping"] = {str(k0): str(v0) for k0, v0 in self.tax_jar_product_codes_mapping.items()}
         elif include_empty:
             result["taxJarProductCodesMapping"] = {}

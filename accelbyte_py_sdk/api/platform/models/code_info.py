@@ -184,83 +184,83 @@ class CodeInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "id_") and self.id_:
+        if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = str()
-        if hasattr(self, "type_") and self.type_:
+        if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "campaign_id") and self.campaign_id:
+        if hasattr(self, "campaign_id"):
             result["campaignId"] = str(self.campaign_id)
         elif include_empty:
             result["campaignId"] = str()
-        if hasattr(self, "value") and self.value:
+        if hasattr(self, "value"):
             result["value"] = str(self.value)
         elif include_empty:
             result["value"] = str()
-        if hasattr(self, "max_redeem_count_per_code") and self.max_redeem_count_per_code:
+        if hasattr(self, "max_redeem_count_per_code"):
             result["maxRedeemCountPerCode"] = int(self.max_redeem_count_per_code)
         elif include_empty:
             result["maxRedeemCountPerCode"] = int()
-        if hasattr(self, "max_redeem_count_per_code_per_user") and self.max_redeem_count_per_code_per_user:
+        if hasattr(self, "max_redeem_count_per_code_per_user"):
             result["maxRedeemCountPerCodePerUser"] = int(self.max_redeem_count_per_code_per_user)
         elif include_empty:
             result["maxRedeemCountPerCodePerUser"] = int()
-        if hasattr(self, "max_redeem_count_per_campaign_per_user") and self.max_redeem_count_per_campaign_per_user:
+        if hasattr(self, "max_redeem_count_per_campaign_per_user"):
             result["maxRedeemCountPerCampaignPerUser"] = int(self.max_redeem_count_per_campaign_per_user)
         elif include_empty:
             result["maxRedeemCountPerCampaignPerUser"] = int()
-        if hasattr(self, "remainder") and self.remainder:
+        if hasattr(self, "remainder"):
             result["remainder"] = int(self.remainder)
         elif include_empty:
             result["remainder"] = int()
-        if hasattr(self, "redeemed_count") and self.redeemed_count:
+        if hasattr(self, "redeemed_count"):
             result["redeemedCount"] = int(self.redeemed_count)
         elif include_empty:
             result["redeemedCount"] = int()
-        if hasattr(self, "status") and self.status:
+        if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
-        if hasattr(self, "redeem_start") and self.redeem_start:
+        if hasattr(self, "redeem_start"):
             result["redeemStart"] = str(self.redeem_start)
         elif include_empty:
             result["redeemStart"] = str()
-        if hasattr(self, "redeem_end") and self.redeem_end:
+        if hasattr(self, "redeem_end"):
             result["redeemEnd"] = str(self.redeem_end)
         elif include_empty:
             result["redeemEnd"] = str()
-        if hasattr(self, "redeem_type") and self.redeem_type:
+        if hasattr(self, "redeem_type"):
             result["redeemType"] = str(self.redeem_type)
         elif include_empty:
             result["redeemType"] = str()
-        if hasattr(self, "items") and self.items:
+        if hasattr(self, "items"):
             result["items"] = [i0.to_dict(include_empty=include_empty) for i0 in self.items]
         elif include_empty:
             result["items"] = []
-        if hasattr(self, "batch_no") and self.batch_no:
+        if hasattr(self, "batch_no"):
             result["batchNo"] = int(self.batch_no)
         elif include_empty:
             result["batchNo"] = int()
-        if hasattr(self, "acquire_order_no") and self.acquire_order_no:
+        if hasattr(self, "acquire_order_no"):
             result["acquireOrderNo"] = str(self.acquire_order_no)
         elif include_empty:
             result["acquireOrderNo"] = str()
-        if hasattr(self, "acquire_user_id") and self.acquire_user_id:
+        if hasattr(self, "acquire_user_id"):
             result["acquireUserId"] = str(self.acquire_user_id)
         elif include_empty:
             result["acquireUserId"] = str()
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()

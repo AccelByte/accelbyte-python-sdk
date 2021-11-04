@@ -59,11 +59,11 @@ class ModelsListImageResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "images") and self.images:
+        if hasattr(self, "images"):
             result["images"] = [i0.to_dict(include_empty=include_empty) for i0 in self.images]
         elif include_empty:
             result["images"] = []
-        if hasattr(self, "paging") and self.paging:
+        if hasattr(self, "paging"):
             result["paging"] = self.paging.to_dict(include_empty=include_empty)
         elif include_empty:
             result["paging"] = ModelsPagingCursor()

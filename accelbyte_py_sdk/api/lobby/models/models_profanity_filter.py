@@ -70,19 +70,19 @@ class ModelsProfanityFilter(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "filter_") and self.filter_:
+        if hasattr(self, "filter_"):
             result["filter"] = str(self.filter_)
         elif include_empty:
             result["filter"] = str()
-        if hasattr(self, "list_name") and self.list_name:
+        if hasattr(self, "list_name"):
             result["listName"] = str(self.list_name)
         elif include_empty:
             result["listName"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "note") and self.note:
+        if hasattr(self, "note"):
             result["note"] = str(self.note)
         elif include_empty:
             result["note"] = str()

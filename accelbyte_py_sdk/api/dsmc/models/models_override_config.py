@@ -58,11 +58,11 @@ class ModelsOverrideConfig(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "allow_version_override") and self.allow_version_override:
+        if hasattr(self, "allow_version_override"):
             result["allow_version_override"] = bool(self.allow_version_override)
         elif include_empty:
             result["allow_version_override"] = bool()
-        if hasattr(self, "overrides") and self.overrides:
+        if hasattr(self, "overrides"):
             result["overrides"] = {str(k0): v0.to_dict(include_empty=include_empty) for k0, v0 in self.overrides.items()}
         elif include_empty:
             result["overrides"] = {}

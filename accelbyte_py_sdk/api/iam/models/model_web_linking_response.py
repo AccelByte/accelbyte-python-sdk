@@ -49,7 +49,7 @@ class ModelWebLinkingResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "third_party_url") and self.third_party_url:
+        if hasattr(self, "third_party_url"):
             result["third_party_url"] = str(self.third_party_url)
         elif include_empty:
             result["third_party_url"] = str()

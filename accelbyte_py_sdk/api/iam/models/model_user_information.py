@@ -93,31 +93,31 @@ class ModelUserInformation(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "country") and self.country:
+        if hasattr(self, "country"):
             result["Country"] = str(self.country)
         elif include_empty:
             result["Country"] = str()
-        if hasattr(self, "display_name") and self.display_name:
+        if hasattr(self, "display_name"):
             result["DisplayName"] = str(self.display_name)
         elif include_empty:
             result["DisplayName"] = str()
-        if hasattr(self, "email_addresses") and self.email_addresses:
+        if hasattr(self, "email_addresses"):
             result["EmailAddresses"] = [str(i0) for i0 in self.email_addresses]
         elif include_empty:
             result["EmailAddresses"] = []
-        if hasattr(self, "linked_platform_accounts") and self.linked_platform_accounts:
+        if hasattr(self, "linked_platform_accounts"):
             result["LinkedPlatformAccounts"] = [i0.to_dict(include_empty=include_empty) for i0 in self.linked_platform_accounts]
         elif include_empty:
             result["LinkedPlatformAccounts"] = []
-        if hasattr(self, "phone_number") and self.phone_number:
+        if hasattr(self, "phone_number"):
             result["PhoneNumber"] = str(self.phone_number)
         elif include_empty:
             result["PhoneNumber"] = str()
-        if hasattr(self, "username") and self.username:
+        if hasattr(self, "username"):
             result["Username"] = str(self.username)
         elif include_empty:
             result["Username"] = str()
-        if hasattr(self, "xuid") and self.xuid:
+        if hasattr(self, "xuid"):
             result["XUID"] = str(self.xuid)
         elif include_empty:
             result["XUID"] = str()

@@ -70,19 +70,19 @@ class StripeConfig(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "publishable_key") and self.publishable_key:
+        if hasattr(self, "publishable_key"):
             result["publishableKey"] = str(self.publishable_key)
         elif include_empty:
             result["publishableKey"] = str()
-        if hasattr(self, "secret_key") and self.secret_key:
+        if hasattr(self, "secret_key"):
             result["secretKey"] = str(self.secret_key)
         elif include_empty:
             result["secretKey"] = str()
-        if hasattr(self, "webhook_secret") and self.webhook_secret:
+        if hasattr(self, "webhook_secret"):
             result["webhookSecret"] = str(self.webhook_secret)
         elif include_empty:
             result["webhookSecret"] = str()
-        if hasattr(self, "allowed_payment_method_types") and self.allowed_payment_method_types:
+        if hasattr(self, "allowed_payment_method_types"):
             result["allowedPaymentMethodTypes"] = [str(i0) for i0 in self.allowed_payment_method_types]
         elif include_empty:
             result["allowedPaymentMethodTypes"] = []

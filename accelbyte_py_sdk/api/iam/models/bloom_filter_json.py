@@ -63,15 +63,15 @@ class BloomFilterJSON(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "bits") and self.bits:
+        if hasattr(self, "bits"):
             result["bits"] = [int(i0) for i0 in self.bits]
         elif include_empty:
             result["bits"] = []
-        if hasattr(self, "k") and self.k:
+        if hasattr(self, "k"):
             result["k"] = int(self.k)
         elif include_empty:
             result["k"] = int()
-        if hasattr(self, "m") and self.m:
+        if hasattr(self, "m"):
             result["m"] = int(self.m)
         elif include_empty:
             result["m"] = int()

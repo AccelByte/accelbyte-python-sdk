@@ -51,7 +51,7 @@ class ModelsListConfigResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "configs") and self.configs:
+        if hasattr(self, "configs"):
             result["configs"] = [i0.to_dict(include_empty=include_empty) for i0 in self.configs]
         elif include_empty:
             result["configs"] = []

@@ -70,19 +70,19 @@ class ModelUserUpdateRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "country") and self.country:
+        if hasattr(self, "country"):
             result["Country"] = str(self.country)
         elif include_empty:
             result["Country"] = str()
-        if hasattr(self, "date_of_birth") and self.date_of_birth:
+        if hasattr(self, "date_of_birth"):
             result["DateOfBirth"] = str(self.date_of_birth)
         elif include_empty:
             result["DateOfBirth"] = str()
-        if hasattr(self, "display_name") and self.display_name:
+        if hasattr(self, "display_name"):
             result["DisplayName"] = str(self.display_name)
         elif include_empty:
             result["DisplayName"] = str()
-        if hasattr(self, "language_tag") and self.language_tag:
+        if hasattr(self, "language_tag"):
             result["LanguageTag"] = str(self.language_tag)
         elif include_empty:
             result["LanguageTag"] = str()

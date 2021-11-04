@@ -58,11 +58,11 @@ class UpdateCountryGroupRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "country_group_name") and self.country_group_name:
+        if hasattr(self, "country_group_name"):
             result["countryGroupName"] = str(self.country_group_name)
         elif include_empty:
             result["countryGroupName"] = str()
-        if hasattr(self, "countries") and self.countries:
+        if hasattr(self, "countries"):
             result["countries"] = [i0.to_dict(include_empty=include_empty) for i0 in self.countries]
         elif include_empty:
             result["countries"] = []

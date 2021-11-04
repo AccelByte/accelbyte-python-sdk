@@ -49,7 +49,7 @@ class EpicGamesIAPConfigRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "sandbox_id") and self.sandbox_id:
+        if hasattr(self, "sandbox_id"):
             result["sandboxId"] = str(self.sandbox_id)
         elif include_empty:
             result["sandboxId"] = str()

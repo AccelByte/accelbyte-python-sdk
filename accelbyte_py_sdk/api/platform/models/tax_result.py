@@ -70,19 +70,19 @@ class TaxResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "enable_tax") and self.enable_tax:
+        if hasattr(self, "enable_tax"):
             result["enableTax"] = bool(self.enable_tax)
         elif include_empty:
             result["enableTax"] = bool()
-        if hasattr(self, "tax") and self.tax:
+        if hasattr(self, "tax"):
             result["tax"] = int(self.tax)
         elif include_empty:
             result["tax"] = int()
-        if hasattr(self, "formatted_tax") and self.formatted_tax:
+        if hasattr(self, "formatted_tax"):
             result["formattedTax"] = str(self.formatted_tax)
         elif include_empty:
             result["formattedTax"] = str()
-        if hasattr(self, "state") and self.state:
+        if hasattr(self, "state"):
             result["state"] = str(self.state)
         elif include_empty:
             result["state"] = str()

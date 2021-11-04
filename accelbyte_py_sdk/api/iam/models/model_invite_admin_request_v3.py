@@ -56,11 +56,11 @@ class ModelInviteAdminRequestV3(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "email_addresses") and self.email_addresses:
+        if hasattr(self, "email_addresses"):
             result["emailAddresses"] = [str(i0) for i0 in self.email_addresses]
         elif include_empty:
             result["emailAddresses"] = []
-        if hasattr(self, "roles") and self.roles:
+        if hasattr(self, "roles"):
             result["roles"] = [str(i0) for i0 in self.roles]
         elif include_empty:
             result["roles"] = []

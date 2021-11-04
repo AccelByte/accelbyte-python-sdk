@@ -147,63 +147,63 @@ class EntitlementSummary(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "id_") and self.id_:
+        if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "clazz") and self.clazz:
+        if hasattr(self, "clazz"):
             result["clazz"] = str(self.clazz)
         elif include_empty:
             result["clazz"] = str()
-        if hasattr(self, "type_") and self.type_:
+        if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = str()
-        if hasattr(self, "stackable") and self.stackable:
+        if hasattr(self, "stackable"):
             result["stackable"] = bool(self.stackable)
         elif include_empty:
             result["stackable"] = bool()
-        if hasattr(self, "stacked_use_count") and self.stacked_use_count:
+        if hasattr(self, "stacked_use_count"):
             result["stackedUseCount"] = int(self.stacked_use_count)
         elif include_empty:
             result["stackedUseCount"] = int()
-        if hasattr(self, "stacked_quantity") and self.stacked_quantity:
+        if hasattr(self, "stacked_quantity"):
             result["stackedQuantity"] = int(self.stacked_quantity)
         elif include_empty:
             result["stackedQuantity"] = int()
-        if hasattr(self, "store_id") and self.store_id:
+        if hasattr(self, "store_id"):
             result["storeId"] = str(self.store_id)
         elif include_empty:
             result["storeId"] = str()
-        if hasattr(self, "item_id") and self.item_id:
+        if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()
-        if hasattr(self, "granted_code") and self.granted_code:
+        if hasattr(self, "granted_code"):
             result["grantedCode"] = str(self.granted_code)
         elif include_empty:
             result["grantedCode"] = str()
-        if hasattr(self, "start_date") and self.start_date:
+        if hasattr(self, "start_date"):
             result["startDate"] = str(self.start_date)
         elif include_empty:
             result["startDate"] = str()
-        if hasattr(self, "end_date") and self.end_date:
+        if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
             result["endDate"] = str()

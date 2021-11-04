@@ -77,23 +77,23 @@ class ItemDynamicDataInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "item_id") and self.item_id:
+        if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "available_count") and self.available_count:
+        if hasattr(self, "available_count"):
             result["availableCount"] = int(self.available_count)
         elif include_empty:
             result["availableCount"] = int()
-        if hasattr(self, "user_available_count") and self.user_available_count:
+        if hasattr(self, "user_available_count"):
             result["userAvailableCount"] = int(self.user_available_count)
         elif include_empty:
             result["userAvailableCount"] = int()
-        if hasattr(self, "user_purchase_limit") and self.user_purchase_limit:
+        if hasattr(self, "user_purchase_limit"):
             result["userPurchaseLimit"] = int(self.user_purchase_limit)
         elif include_empty:
             result["userPurchaseLimit"] = int()

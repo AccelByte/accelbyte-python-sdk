@@ -341,171 +341,171 @@ class PopulatedItemInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "title") and self.title:
+        if hasattr(self, "title"):
             result["title"] = str(self.title)
         elif include_empty:
             result["title"] = str()
-        if hasattr(self, "description") and self.description:
+        if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = str()
-        if hasattr(self, "long_description") and self.long_description:
+        if hasattr(self, "long_description"):
             result["longDescription"] = str(self.long_description)
         elif include_empty:
             result["longDescription"] = str()
-        if hasattr(self, "item_id") and self.item_id:
+        if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
-        if hasattr(self, "app_id") and self.app_id:
+        if hasattr(self, "app_id"):
             result["appId"] = str(self.app_id)
         elif include_empty:
             result["appId"] = str()
-        if hasattr(self, "app_type") and self.app_type:
+        if hasattr(self, "app_type"):
             result["appType"] = str(self.app_type)
         elif include_empty:
             result["appType"] = str()
-        if hasattr(self, "season_type") and self.season_type:
+        if hasattr(self, "season_type"):
             result["seasonType"] = str(self.season_type)
         elif include_empty:
             result["seasonType"] = str()
-        if hasattr(self, "base_app_id") and self.base_app_id:
+        if hasattr(self, "base_app_id"):
             result["baseAppId"] = str(self.base_app_id)
         elif include_empty:
             result["baseAppId"] = str()
-        if hasattr(self, "sku") and self.sku:
+        if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
             result["sku"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "name") and self.name:
+        if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = str()
-        if hasattr(self, "entitlement_type") and self.entitlement_type:
+        if hasattr(self, "entitlement_type"):
             result["entitlementType"] = str(self.entitlement_type)
         elif include_empty:
             result["entitlementType"] = str()
-        if hasattr(self, "use_count") and self.use_count:
+        if hasattr(self, "use_count"):
             result["useCount"] = int(self.use_count)
         elif include_empty:
             result["useCount"] = int()
-        if hasattr(self, "stackable") and self.stackable:
+        if hasattr(self, "stackable"):
             result["stackable"] = bool(self.stackable)
         elif include_empty:
             result["stackable"] = bool()
-        if hasattr(self, "category_path") and self.category_path:
+        if hasattr(self, "category_path"):
             result["categoryPath"] = str(self.category_path)
         elif include_empty:
             result["categoryPath"] = str()
-        if hasattr(self, "status") and self.status:
+        if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
-        if hasattr(self, "listable") and self.listable:
+        if hasattr(self, "listable"):
             result["listable"] = bool(self.listable)
         elif include_empty:
             result["listable"] = bool()
-        if hasattr(self, "purchasable") and self.purchasable:
+        if hasattr(self, "purchasable"):
             result["purchasable"] = bool(self.purchasable)
         elif include_empty:
             result["purchasable"] = bool()
-        if hasattr(self, "item_type") and self.item_type:
+        if hasattr(self, "item_type"):
             result["itemType"] = str(self.item_type)
         elif include_empty:
             result["itemType"] = str()
-        if hasattr(self, "target_namespace") and self.target_namespace:
+        if hasattr(self, "target_namespace"):
             result["targetNamespace"] = str(self.target_namespace)
         elif include_empty:
             result["targetNamespace"] = str()
-        if hasattr(self, "target_currency_code") and self.target_currency_code:
+        if hasattr(self, "target_currency_code"):
             result["targetCurrencyCode"] = str(self.target_currency_code)
         elif include_empty:
             result["targetCurrencyCode"] = str()
-        if hasattr(self, "target_item_id") and self.target_item_id:
+        if hasattr(self, "target_item_id"):
             result["targetItemId"] = str(self.target_item_id)
         elif include_empty:
             result["targetItemId"] = str()
-        if hasattr(self, "images") and self.images:
+        if hasattr(self, "images"):
             result["images"] = [i0.to_dict(include_empty=include_empty) for i0 in self.images]
         elif include_empty:
             result["images"] = []
-        if hasattr(self, "thumbnail_url") and self.thumbnail_url:
+        if hasattr(self, "thumbnail_url"):
             result["thumbnailUrl"] = str(self.thumbnail_url)
         elif include_empty:
             result["thumbnailUrl"] = str()
-        if hasattr(self, "region_data") and self.region_data:
+        if hasattr(self, "region_data"):
             result["regionData"] = [i0.to_dict(include_empty=include_empty) for i0 in self.region_data]
         elif include_empty:
             result["regionData"] = []
-        if hasattr(self, "recurring") and self.recurring:
+        if hasattr(self, "recurring"):
             result["recurring"] = self.recurring.to_dict(include_empty=include_empty)
         elif include_empty:
             result["recurring"] = Recurring()
-        if hasattr(self, "item_ids") and self.item_ids:
+        if hasattr(self, "item_ids"):
             result["itemIds"] = [str(i0) for i0 in self.item_ids]
         elif include_empty:
             result["itemIds"] = []
-        if hasattr(self, "bound_item_ids") and self.bound_item_ids:
+        if hasattr(self, "bound_item_ids"):
             result["boundItemIds"] = [str(i0) for i0 in self.bound_item_ids]
         elif include_empty:
             result["boundItemIds"] = []
-        if hasattr(self, "tags") and self.tags:
+        if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
             result["tags"] = []
-        if hasattr(self, "features") and self.features:
+        if hasattr(self, "features"):
             result["features"] = [str(i0) for i0 in self.features]
         elif include_empty:
             result["features"] = []
-        if hasattr(self, "max_count_per_user") and self.max_count_per_user:
+        if hasattr(self, "max_count_per_user"):
             result["maxCountPerUser"] = int(self.max_count_per_user)
         elif include_empty:
             result["maxCountPerUser"] = int()
-        if hasattr(self, "max_count") and self.max_count:
+        if hasattr(self, "max_count"):
             result["maxCount"] = int(self.max_count)
         elif include_empty:
             result["maxCount"] = int()
-        if hasattr(self, "clazz") and self.clazz:
+        if hasattr(self, "clazz"):
             result["clazz"] = str(self.clazz)
         elif include_empty:
             result["clazz"] = str()
-        if hasattr(self, "booth_name") and self.booth_name:
+        if hasattr(self, "booth_name"):
             result["boothName"] = str(self.booth_name)
         elif include_empty:
             result["boothName"] = str()
-        if hasattr(self, "display_order") and self.display_order:
+        if hasattr(self, "display_order"):
             result["displayOrder"] = int(self.display_order)
         elif include_empty:
             result["displayOrder"] = int()
-        if hasattr(self, "ext") and self.ext:
+        if hasattr(self, "ext"):
             result["ext"] = {str(k0): v0 for k0, v0 in self.ext.items()}
         elif include_empty:
             result["ext"] = {}
-        if hasattr(self, "region") and self.region:
+        if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = str()
-        if hasattr(self, "language") and self.language:
+        if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = str()
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()
-        if hasattr(self, "items") and self.items:
+        if hasattr(self, "items"):
             result["items"] = [i0.to_dict(include_empty=include_empty) for i0 in self.items]
         elif include_empty:
             result["items"] = []
-        if hasattr(self, "local_ext") and self.local_ext:
+        if hasattr(self, "local_ext"):
             result["localExt"] = {str(k0): v0 for k0, v0 in self.local_ext.items()}
         elif include_empty:
             result["localExt"] = {}

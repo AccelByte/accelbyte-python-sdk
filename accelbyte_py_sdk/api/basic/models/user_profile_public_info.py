@@ -84,27 +84,27 @@ class UserProfilePublicInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "time_zone") and self.time_zone:
+        if hasattr(self, "time_zone"):
             result["timeZone"] = str(self.time_zone)
         elif include_empty:
             result["timeZone"] = str()
-        if hasattr(self, "avatar_small_url") and self.avatar_small_url:
+        if hasattr(self, "avatar_small_url"):
             result["avatarSmallUrl"] = str(self.avatar_small_url)
         elif include_empty:
             result["avatarSmallUrl"] = str()
-        if hasattr(self, "avatar_url") and self.avatar_url:
+        if hasattr(self, "avatar_url"):
             result["avatarUrl"] = str(self.avatar_url)
         elif include_empty:
             result["avatarUrl"] = str()
-        if hasattr(self, "avatar_large_url") and self.avatar_large_url:
+        if hasattr(self, "avatar_large_url"):
             result["avatarLargeUrl"] = str(self.avatar_large_url)
         elif include_empty:
             result["avatarLargeUrl"] = str()

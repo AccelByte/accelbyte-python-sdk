@@ -112,43 +112,43 @@ class KeyInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "id_") and self.id_:
+        if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "key_group_id") and self.key_group_id:
+        if hasattr(self, "key_group_id"):
             result["keyGroupId"] = str(self.key_group_id)
         elif include_empty:
             result["keyGroupId"] = str()
-        if hasattr(self, "value") and self.value:
+        if hasattr(self, "value"):
             result["value"] = str(self.value)
         elif include_empty:
             result["value"] = str()
-        if hasattr(self, "status") and self.status:
+        if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
-        if hasattr(self, "key_file") and self.key_file:
+        if hasattr(self, "key_file"):
             result["keyFile"] = str(self.key_file)
         elif include_empty:
             result["keyFile"] = str()
-        if hasattr(self, "acquire_order_no") and self.acquire_order_no:
+        if hasattr(self, "acquire_order_no"):
             result["acquireOrderNo"] = str(self.acquire_order_no)
         elif include_empty:
             result["acquireOrderNo"] = str()
-        if hasattr(self, "acquire_user_id") and self.acquire_user_id:
+        if hasattr(self, "acquire_user_id"):
             result["acquireUserId"] = str(self.acquire_user_id)
         elif include_empty:
             result["acquireUserId"] = str()
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()

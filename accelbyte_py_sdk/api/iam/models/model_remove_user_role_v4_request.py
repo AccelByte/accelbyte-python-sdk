@@ -56,11 +56,11 @@ class ModelRemoveUserRoleV4Request(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "assigned_namespaces") and self.assigned_namespaces:
+        if hasattr(self, "assigned_namespaces"):
             result["assignedNamespaces"] = [str(i0) for i0 in self.assigned_namespaces]
         elif include_empty:
             result["assignedNamespaces"] = []
-        if hasattr(self, "role_id") and self.role_id:
+        if hasattr(self, "role_id"):
             result["roleId"] = str(self.role_id)
         elif include_empty:
             result["roleId"] = str()

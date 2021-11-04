@@ -51,7 +51,7 @@ class ModelRoleMembersRequestV3(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "members") and self.members:
+        if hasattr(self, "members"):
             result["members"] = [i0.to_dict(include_empty=include_empty) for i0 in self.members]
         elif include_empty:
             result["members"] = []

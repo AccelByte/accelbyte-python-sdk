@@ -56,11 +56,11 @@ class CheckoutConfig(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "public_key") and self.public_key:
+        if hasattr(self, "public_key"):
             result["publicKey"] = str(self.public_key)
         elif include_empty:
             result["publicKey"] = str()
-        if hasattr(self, "secret_key") and self.secret_key:
+        if hasattr(self, "secret_key"):
             result["secretKey"] = str(self.secret_key)
         elif include_empty:
             result["secretKey"] = str()

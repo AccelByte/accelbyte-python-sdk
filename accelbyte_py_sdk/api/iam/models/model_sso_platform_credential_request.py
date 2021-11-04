@@ -98,35 +98,35 @@ class ModelSSOPlatformCredentialRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "acs_url") and self.acs_url:
+        if hasattr(self, "acs_url"):
             result["acsUrl"] = str(self.acs_url)
         elif include_empty:
             result["acsUrl"] = str()
-        if hasattr(self, "api_key") and self.api_key:
+        if hasattr(self, "api_key"):
             result["apiKey"] = str(self.api_key)
         elif include_empty:
             result["apiKey"] = str()
-        if hasattr(self, "app_id") and self.app_id:
+        if hasattr(self, "app_id"):
             result["appId"] = str(self.app_id)
         elif include_empty:
             result["appId"] = str()
-        if hasattr(self, "federation_metadata_url") and self.federation_metadata_url:
+        if hasattr(self, "federation_metadata_url"):
             result["federationMetadataUrl"] = str(self.federation_metadata_url)
         elif include_empty:
             result["federationMetadataUrl"] = str()
-        if hasattr(self, "is_active") and self.is_active:
+        if hasattr(self, "is_active"):
             result["isActive"] = bool(self.is_active)
         elif include_empty:
             result["isActive"] = bool()
-        if hasattr(self, "redirect_uri") and self.redirect_uri:
+        if hasattr(self, "redirect_uri"):
             result["redirectUri"] = str(self.redirect_uri)
         elif include_empty:
             result["redirectUri"] = str()
-        if hasattr(self, "secret") and self.secret:
+        if hasattr(self, "secret"):
             result["secret"] = str(self.secret)
         elif include_empty:
             result["secret"] = str()
-        if hasattr(self, "sso_url") and self.sso_url:
+        if hasattr(self, "sso_url"):
             result["ssoUrl"] = str(self.sso_url)
         elif include_empty:
             result["ssoUrl"] = str()

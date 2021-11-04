@@ -128,51 +128,51 @@ class CampaignUpdate(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "name") and self.name:
+        if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = str()
-        if hasattr(self, "description") and self.description:
+        if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = str()
-        if hasattr(self, "status") and self.status:
+        if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
-        if hasattr(self, "tags") and self.tags:
+        if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
             result["tags"] = []
-        if hasattr(self, "max_redeem_count_per_code") and self.max_redeem_count_per_code:
+        if hasattr(self, "max_redeem_count_per_code"):
             result["maxRedeemCountPerCode"] = int(self.max_redeem_count_per_code)
         elif include_empty:
             result["maxRedeemCountPerCode"] = int()
-        if hasattr(self, "max_redeem_count_per_code_per_user") and self.max_redeem_count_per_code_per_user:
+        if hasattr(self, "max_redeem_count_per_code_per_user"):
             result["maxRedeemCountPerCodePerUser"] = int(self.max_redeem_count_per_code_per_user)
         elif include_empty:
             result["maxRedeemCountPerCodePerUser"] = int()
-        if hasattr(self, "max_redeem_count_per_campaign_per_user") and self.max_redeem_count_per_campaign_per_user:
+        if hasattr(self, "max_redeem_count_per_campaign_per_user"):
             result["maxRedeemCountPerCampaignPerUser"] = int(self.max_redeem_count_per_campaign_per_user)
         elif include_empty:
             result["maxRedeemCountPerCampaignPerUser"] = int()
-        if hasattr(self, "max_sale_count") and self.max_sale_count:
+        if hasattr(self, "max_sale_count"):
             result["maxSaleCount"] = int(self.max_sale_count)
         elif include_empty:
             result["maxSaleCount"] = int()
-        if hasattr(self, "redeem_start") and self.redeem_start:
+        if hasattr(self, "redeem_start"):
             result["redeemStart"] = str(self.redeem_start)
         elif include_empty:
             result["redeemStart"] = str()
-        if hasattr(self, "redeem_end") and self.redeem_end:
+        if hasattr(self, "redeem_end"):
             result["redeemEnd"] = str(self.redeem_end)
         elif include_empty:
             result["redeemEnd"] = str()
-        if hasattr(self, "redeem_type") and self.redeem_type:
+        if hasattr(self, "redeem_type"):
             result["redeemType"] = str(self.redeem_type)
         elif include_empty:
             result["redeemType"] = str()
-        if hasattr(self, "items") and self.items:
+        if hasattr(self, "items"):
             result["items"] = [i0.to_dict(include_empty=include_empty) for i0 in self.items]
         elif include_empty:
             result["items"] = []

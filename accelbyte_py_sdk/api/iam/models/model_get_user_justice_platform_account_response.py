@@ -56,11 +56,11 @@ class ModelGetUserJusticePlatformAccountResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "designated_namespace") and self.designated_namespace:
+        if hasattr(self, "designated_namespace"):
             result["DesignatedNamespace"] = str(self.designated_namespace)
         elif include_empty:
             result["DesignatedNamespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["UserID"] = str(self.user_id)
         elif include_empty:
             result["UserID"] = str()

@@ -56,11 +56,11 @@ class Attribute(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "name") and self.name:
+        if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = str()
-        if hasattr(self, "value") and self.value:
+        if hasattr(self, "value"):
             result["value"] = str(self.value)
         elif include_empty:
             result["value"] = str()

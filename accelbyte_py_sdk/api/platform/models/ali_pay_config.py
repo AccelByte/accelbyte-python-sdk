@@ -70,19 +70,19 @@ class AliPayConfig(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "app_id") and self.app_id:
+        if hasattr(self, "app_id"):
             result["appId"] = str(self.app_id)
         elif include_empty:
             result["appId"] = str()
-        if hasattr(self, "private_key") and self.private_key:
+        if hasattr(self, "private_key"):
             result["privateKey"] = str(self.private_key)
         elif include_empty:
             result["privateKey"] = str()
-        if hasattr(self, "public_key") and self.public_key:
+        if hasattr(self, "public_key"):
             result["publicKey"] = str(self.public_key)
         elif include_empty:
             result["publicKey"] = str()
-        if hasattr(self, "return_url") and self.return_url:
+        if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
             result["returnUrl"] = str()

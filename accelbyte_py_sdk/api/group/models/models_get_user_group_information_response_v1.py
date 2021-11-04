@@ -70,19 +70,19 @@ class ModelsGetUserGroupInformationResponseV1(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "group_id") and self.group_id:
+        if hasattr(self, "group_id"):
             result["groupId"] = str(self.group_id)
         elif include_empty:
             result["groupId"] = str()
-        if hasattr(self, "member_role_id") and self.member_role_id:
+        if hasattr(self, "member_role_id"):
             result["memberRoleId"] = [str(i0) for i0 in self.member_role_id]
         elif include_empty:
             result["memberRoleId"] = []
-        if hasattr(self, "status") and self.status:
+        if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()

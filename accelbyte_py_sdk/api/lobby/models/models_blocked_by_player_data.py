@@ -56,11 +56,11 @@ class ModelsBlockedByPlayerData(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "blocked_at") and self.blocked_at:
+        if hasattr(self, "blocked_at"):
             result["blockedAt"] = str(self.blocked_at)
         elif include_empty:
             result["blockedAt"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()

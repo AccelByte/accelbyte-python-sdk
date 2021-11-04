@@ -105,39 +105,39 @@ class RedeemHistoryInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "id_") and self.id_:
+        if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "campaign_id") and self.campaign_id:
+        if hasattr(self, "campaign_id"):
             result["campaignId"] = str(self.campaign_id)
         elif include_empty:
             result["campaignId"] = str()
-        if hasattr(self, "code") and self.code:
+        if hasattr(self, "code"):
             result["code"] = str(self.code)
         elif include_empty:
             result["code"] = str()
-        if hasattr(self, "order_no") and self.order_no:
+        if hasattr(self, "order_no"):
             result["orderNo"] = str(self.order_no)
         elif include_empty:
             result["orderNo"] = str()
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()
-        if hasattr(self, "redeemed_at") and self.redeemed_at:
+        if hasattr(self, "redeemed_at"):
             result["redeemedAt"] = str(self.redeemed_at)
         elif include_empty:
             result["redeemedAt"] = str()

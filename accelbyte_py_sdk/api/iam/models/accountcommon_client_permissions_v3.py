@@ -51,7 +51,7 @@ class AccountcommonClientPermissionsV3(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "permissions") and self.permissions:
+        if hasattr(self, "permissions"):
             result["permissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.permissions]
         elif include_empty:
             result["permissions"] = []

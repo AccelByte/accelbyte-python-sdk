@@ -49,7 +49,7 @@ class ModelUpdateTopicRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "description") and self.description:
+        if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = str()

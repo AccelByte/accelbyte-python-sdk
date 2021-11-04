@@ -84,27 +84,27 @@ class ModelUserCreateRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "auth_type") and self.auth_type:
+        if hasattr(self, "auth_type"):
             result["AuthType"] = str(self.auth_type)
         elif include_empty:
             result["AuthType"] = str()
-        if hasattr(self, "country") and self.country:
+        if hasattr(self, "country"):
             result["Country"] = str(self.country)
         elif include_empty:
             result["Country"] = str()
-        if hasattr(self, "display_name") and self.display_name:
+        if hasattr(self, "display_name"):
             result["DisplayName"] = str(self.display_name)
         elif include_empty:
             result["DisplayName"] = str()
-        if hasattr(self, "login_id") and self.login_id:
+        if hasattr(self, "login_id"):
             result["LoginId"] = str(self.login_id)
         elif include_empty:
             result["LoginId"] = str()
-        if hasattr(self, "password") and self.password:
+        if hasattr(self, "password"):
             result["Password"] = str(self.password)
         elif include_empty:
             result["Password"] = str()
-        if hasattr(self, "password_md5_sum") and self.password_md5_sum:
+        if hasattr(self, "password_md5_sum"):
             result["PasswordMD5Sum"] = str(self.password_md5_sum)
         elif include_empty:
             result["PasswordMD5Sum"] = str()

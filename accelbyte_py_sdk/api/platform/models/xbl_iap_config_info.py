@@ -70,19 +70,19 @@ class XblIAPConfigInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "relying_party_cert") and self.relying_party_cert:
+        if hasattr(self, "relying_party_cert"):
             result["relyingPartyCert"] = str(self.relying_party_cert)
         elif include_empty:
             result["relyingPartyCert"] = str()
-        if hasattr(self, "business_partner_cert_file_name") and self.business_partner_cert_file_name:
+        if hasattr(self, "business_partner_cert_file_name"):
             result["businessPartnerCertFileName"] = str(self.business_partner_cert_file_name)
         elif include_empty:
             result["businessPartnerCertFileName"] = str()
-        if hasattr(self, "password") and self.password:
+        if hasattr(self, "password"):
             result["password"] = str(self.password)
         elif include_empty:
             result["password"] = str()

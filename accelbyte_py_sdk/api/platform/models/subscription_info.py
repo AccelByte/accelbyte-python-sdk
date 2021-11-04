@@ -349,175 +349,175 @@ class SubscriptionInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "id_") and self.id_:
+        if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "item_id") and self.item_id:
+        if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
-        if hasattr(self, "sku") and self.sku:
+        if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
             result["sku"] = str()
-        if hasattr(self, "title") and self.title:
+        if hasattr(self, "title"):
             result["title"] = str(self.title)
         elif include_empty:
             result["title"] = str()
-        if hasattr(self, "description") and self.description:
+        if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = str()
-        if hasattr(self, "currency") and self.currency:
+        if hasattr(self, "currency"):
             result["currency"] = self.currency.to_dict(include_empty=include_empty)
         elif include_empty:
             result["currency"] = CurrencySummary()
-        if hasattr(self, "price") and self.price:
+        if hasattr(self, "price"):
             result["price"] = int(self.price)
         elif include_empty:
             result["price"] = int()
-        if hasattr(self, "trial_price") and self.trial_price:
+        if hasattr(self, "trial_price"):
             result["trialPrice"] = int(self.trial_price)
         elif include_empty:
             result["trialPrice"] = int()
-        if hasattr(self, "recurring") and self.recurring:
+        if hasattr(self, "recurring"):
             result["recurring"] = self.recurring.to_dict(include_empty=include_empty)
         elif include_empty:
             result["recurring"] = Recurring()
-        if hasattr(self, "status") and self.status:
+        if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
-        if hasattr(self, "charge_status") and self.charge_status:
+        if hasattr(self, "charge_status"):
             result["chargeStatus"] = str(self.charge_status)
         elif include_empty:
             result["chargeStatus"] = str()
-        if hasattr(self, "next_billing_date") and self.next_billing_date:
+        if hasattr(self, "next_billing_date"):
             result["nextBillingDate"] = str(self.next_billing_date)
         elif include_empty:
             result["nextBillingDate"] = str()
-        if hasattr(self, "entitlements") and self.entitlements:
+        if hasattr(self, "entitlements"):
             result["entitlements"] = [i0.to_dict(include_empty=include_empty) for i0 in self.entitlements]
         elif include_empty:
             result["entitlements"] = []
-        if hasattr(self, "item_snapshot") and self.item_snapshot:
+        if hasattr(self, "item_snapshot"):
             result["itemSnapshot"] = self.item_snapshot.to_dict(include_empty=include_empty)
         elif include_empty:
             result["itemSnapshot"] = ItemSnapshot()
-        if hasattr(self, "current_period_start") and self.current_period_start:
+        if hasattr(self, "current_period_start"):
             result["currentPeriodStart"] = str(self.current_period_start)
         elif include_empty:
             result["currentPeriodStart"] = str()
-        if hasattr(self, "current_period_end") and self.current_period_end:
+        if hasattr(self, "current_period_end"):
             result["currentPeriodEnd"] = str(self.current_period_end)
         elif include_empty:
             result["currentPeriodEnd"] = str()
-        if hasattr(self, "start") and self.start:
+        if hasattr(self, "start"):
             result["start"] = str(self.start)
         elif include_empty:
             result["start"] = str()
-        if hasattr(self, "end") and self.end:
+        if hasattr(self, "end"):
             result["end"] = str(self.end)
         elif include_empty:
             result["end"] = str()
-        if hasattr(self, "current_cycle") and self.current_cycle:
+        if hasattr(self, "current_cycle"):
             result["currentCycle"] = int(self.current_cycle)
         elif include_empty:
             result["currentCycle"] = int()
-        if hasattr(self, "charged_cycles") and self.charged_cycles:
+        if hasattr(self, "charged_cycles"):
             result["chargedCycles"] = int(self.charged_cycles)
         elif include_empty:
             result["chargedCycles"] = int()
-        if hasattr(self, "trialed_cycles") and self.trialed_cycles:
+        if hasattr(self, "trialed_cycles"):
             result["trialedCycles"] = int(self.trialed_cycles)
         elif include_empty:
             result["trialedCycles"] = int()
-        if hasattr(self, "in_fixed_free_days") and self.in_fixed_free_days:
+        if hasattr(self, "in_fixed_free_days"):
             result["inFixedFreeDays"] = bool(self.in_fixed_free_days)
         elif include_empty:
             result["inFixedFreeDays"] = bool()
-        if hasattr(self, "in_fixed_cycle_trial") and self.in_fixed_cycle_trial:
+        if hasattr(self, "in_fixed_cycle_trial"):
             result["inFixedCycleTrial"] = bool(self.in_fixed_cycle_trial)
         elif include_empty:
             result["inFixedCycleTrial"] = bool()
-        if hasattr(self, "first_subscribe") and self.first_subscribe:
+        if hasattr(self, "first_subscribe"):
             result["firstSubscribe"] = bool(self.first_subscribe)
         elif include_empty:
             result["firstSubscribe"] = bool()
-        if hasattr(self, "paid") and self.paid:
+        if hasattr(self, "paid"):
             result["paid"] = bool(self.paid)
         elif include_empty:
             result["paid"] = bool()
-        if hasattr(self, "payment_flow_required") and self.payment_flow_required:
+        if hasattr(self, "payment_flow_required"):
             result["paymentFlowRequired"] = bool(self.payment_flow_required)
         elif include_empty:
             result["paymentFlowRequired"] = bool()
-        if hasattr(self, "payment_station_url") and self.payment_station_url:
+        if hasattr(self, "payment_station_url"):
             result["paymentStationUrl"] = str(self.payment_station_url)
         elif include_empty:
             result["paymentStationUrl"] = str()
-        if hasattr(self, "source") and self.source:
+        if hasattr(self, "source"):
             result["source"] = str(self.source)
         elif include_empty:
             result["source"] = str()
-        if hasattr(self, "subscribed_by") and self.subscribed_by:
+        if hasattr(self, "subscribed_by"):
             result["subscribedBy"] = str(self.subscribed_by)
         elif include_empty:
             result["subscribedBy"] = str()
-        if hasattr(self, "subscribed_at") and self.subscribed_at:
+        if hasattr(self, "subscribed_at"):
             result["subscribedAt"] = str(self.subscribed_at)
         elif include_empty:
             result["subscribedAt"] = str()
-        if hasattr(self, "unsubscribed_at") and self.unsubscribed_at:
+        if hasattr(self, "unsubscribed_at"):
             result["unsubscribedAt"] = str(self.unsubscribed_at)
         elif include_empty:
             result["unsubscribedAt"] = str()
-        if hasattr(self, "unsubscribe_reason") and self.unsubscribe_reason:
+        if hasattr(self, "unsubscribe_reason"):
             result["unsubscribeReason"] = str(self.unsubscribe_reason)
         elif include_empty:
             result["unsubscribeReason"] = str()
-        if hasattr(self, "payment_order_no") and self.payment_order_no:
+        if hasattr(self, "payment_order_no"):
             result["paymentOrderNo"] = str(self.payment_order_no)
         elif include_empty:
             result["paymentOrderNo"] = str()
-        if hasattr(self, "billing_account") and self.billing_account:
+        if hasattr(self, "billing_account"):
             result["billingAccount"] = self.billing_account.to_dict(include_empty=include_empty)
         elif include_empty:
             result["billingAccount"] = BillingAccount()
-        if hasattr(self, "return_url") and self.return_url:
+        if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
             result["returnUrl"] = str()
-        if hasattr(self, "region") and self.region:
+        if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = str()
-        if hasattr(self, "language") and self.language:
+        if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = str()
-        if hasattr(self, "sandbox") and self.sandbox:
+        if hasattr(self, "sandbox"):
             result["sandbox"] = bool(self.sandbox)
         elif include_empty:
             result["sandbox"] = bool()
-        if hasattr(self, "retry_attempted") and self.retry_attempted:
+        if hasattr(self, "retry_attempted"):
             result["retryAttempted"] = int(self.retry_attempted)
         elif include_empty:
             result["retryAttempted"] = int()
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()

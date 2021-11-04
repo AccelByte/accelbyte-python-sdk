@@ -51,7 +51,7 @@ class OauthcommonJWKSet(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "keys") and self.keys:
+        if hasattr(self, "keys"):
             result["keys"] = [i0.to_dict(include_empty=include_empty) for i0 in self.keys]
         elif include_empty:
             result["keys"] = []

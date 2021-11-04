@@ -49,7 +49,7 @@ class StatItemIncResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "current_value") and self.current_value:
+        if hasattr(self, "current_value"):
             result["currentValue"] = float(self.current_value)
         elif include_empty:
             result["currentValue"] = float()

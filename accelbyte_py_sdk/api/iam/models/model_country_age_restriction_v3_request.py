@@ -49,7 +49,7 @@ class ModelCountryAgeRestrictionV3Request(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "age_restriction") and self.age_restriction:
+        if hasattr(self, "age_restriction"):
             result["ageRestriction"] = int(self.age_restriction)
         elif include_empty:
             result["ageRestriction"] = int()

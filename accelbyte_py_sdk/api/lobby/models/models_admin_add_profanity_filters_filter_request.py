@@ -56,11 +56,11 @@ class ModelsAdminAddProfanityFiltersFilterRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "filter_") and self.filter_:
+        if hasattr(self, "filter_"):
             result["filter"] = str(self.filter_)
         elif include_empty:
             result["filter"] = str()
-        if hasattr(self, "note") and self.note:
+        if hasattr(self, "note"):
             result["note"] = str(self.note)
         elif include_empty:
             result["note"] = str()

@@ -49,7 +49,7 @@ class XblReconcileRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "xsts_token") and self.xsts_token:
+        if hasattr(self, "xsts_token"):
             result["xstsToken"] = str(self.xsts_token)
         elif include_empty:
             result["xstsToken"] = str()

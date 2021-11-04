@@ -77,23 +77,23 @@ class PlayStationReconcileResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "transaction_id") and self.transaction_id:
+        if hasattr(self, "transaction_id"):
             result["transactionId"] = str(self.transaction_id)
         elif include_empty:
             result["transactionId"] = str()
-        if hasattr(self, "psn_item_id") and self.psn_item_id:
+        if hasattr(self, "psn_item_id"):
             result["psnItemId"] = str(self.psn_item_id)
         elif include_empty:
             result["psnItemId"] = str()
-        if hasattr(self, "item_id") and self.item_id:
+        if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
-        if hasattr(self, "sku") and self.sku:
+        if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
             result["sku"] = str()
-        if hasattr(self, "status") and self.status:
+        if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()

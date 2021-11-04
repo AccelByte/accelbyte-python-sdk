@@ -70,19 +70,19 @@ class ModelNotificationTopicResponseV1(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["createdAt"] = int(self.created_at)
         elif include_empty:
             result["createdAt"] = int()
-        if hasattr(self, "description") and self.description:
+        if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "topic_name") and self.topic_name:
+        if hasattr(self, "topic_name"):
             result["topicName"] = str(self.topic_name)
         elif include_empty:
             result["topicName"] = str()

@@ -56,11 +56,11 @@ class AccountcommonDescription(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "en_us") and self.en_us:
+        if hasattr(self, "en_us"):
             result["en-US"] = str(self.en_us)
         elif include_empty:
             result["en-US"] = str()
-        if hasattr(self, "zh_cn") and self.zh_cn:
+        if hasattr(self, "zh_cn"):
             result["zh-CN"] = str(self.zh_cn)
         elif include_empty:
             result["zh-CN"] = str()

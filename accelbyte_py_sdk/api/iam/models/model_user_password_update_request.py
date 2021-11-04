@@ -63,15 +63,15 @@ class ModelUserPasswordUpdateRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "language_tag") and self.language_tag:
+        if hasattr(self, "language_tag"):
             result["LanguageTag"] = str(self.language_tag)
         elif include_empty:
             result["LanguageTag"] = str()
-        if hasattr(self, "new_password") and self.new_password:
+        if hasattr(self, "new_password"):
             result["NewPassword"] = str(self.new_password)
         elif include_empty:
             result["NewPassword"] = str()
-        if hasattr(self, "old_password") and self.old_password:
+        if hasattr(self, "old_password"):
             result["OldPassword"] = str(self.old_password)
         elif include_empty:
             result["OldPassword"] = str()

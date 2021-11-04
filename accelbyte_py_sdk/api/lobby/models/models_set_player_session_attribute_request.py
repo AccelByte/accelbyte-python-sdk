@@ -49,7 +49,7 @@ class ModelsSetPlayerSessionAttributeRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "attributes") and self.attributes:
+        if hasattr(self, "attributes"):
             result["attributes"] = {str(k0): str(v0) for k0, v0 in self.attributes.items()}
         elif include_empty:
             result["attributes"] = {}

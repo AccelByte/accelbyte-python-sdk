@@ -49,7 +49,7 @@ class PaymentToken(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "token") and self.token:
+        if hasattr(self, "token"):
             result["token"] = str(self.token)
         elif include_empty:
             result["token"] = str()

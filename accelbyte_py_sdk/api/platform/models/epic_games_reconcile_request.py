@@ -49,7 +49,7 @@ class EpicGamesReconcileRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "epic_games_jwt_token") and self.epic_games_jwt_token:
+        if hasattr(self, "epic_games_jwt_token"):
             result["epicGamesJwtToken"] = str(self.epic_games_jwt_token)
         elif include_empty:
             result["epicGamesJwtToken"] = str()

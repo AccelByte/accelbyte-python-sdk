@@ -72,19 +72,19 @@ class ModelAdminInvitationV3(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "email") and self.email:
+        if hasattr(self, "email"):
             result["email"] = str(self.email)
         elif include_empty:
             result["email"] = str()
-        if hasattr(self, "expired_at") and self.expired_at:
+        if hasattr(self, "expired_at"):
             result["expiredAt"] = str(self.expired_at)
         elif include_empty:
             result["expiredAt"] = str()
-        if hasattr(self, "id_") and self.id_:
+        if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = str()
-        if hasattr(self, "roles") and self.roles:
+        if hasattr(self, "roles"):
             result["roles"] = [i0.to_dict(include_empty=include_empty) for i0 in self.roles]
         elif include_empty:
             result["roles"] = []

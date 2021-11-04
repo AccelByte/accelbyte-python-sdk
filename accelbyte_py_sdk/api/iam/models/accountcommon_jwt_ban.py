@@ -77,23 +77,23 @@ class AccountcommonJWTBan(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "ban") and self.ban:
+        if hasattr(self, "ban"):
             result["ban"] = str(self.ban)
         elif include_empty:
             result["ban"] = str()
-        if hasattr(self, "disabled_date") and self.disabled_date:
+        if hasattr(self, "disabled_date"):
             result["disabledDate"] = str(self.disabled_date)
         elif include_empty:
             result["disabledDate"] = str()
-        if hasattr(self, "enabled") and self.enabled:
+        if hasattr(self, "enabled"):
             result["enabled"] = bool(self.enabled)
         elif include_empty:
             result["enabled"] = bool()
-        if hasattr(self, "end_date") and self.end_date:
+        if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
             result["endDate"] = str()
-        if hasattr(self, "targeted_namespace") and self.targeted_namespace:
+        if hasattr(self, "targeted_namespace"):
             result["targetedNamespace"] = str(self.targeted_namespace)
         elif include_empty:
             result["targetedNamespace"] = str()

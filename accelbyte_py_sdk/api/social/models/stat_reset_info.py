@@ -49,7 +49,7 @@ class StatResetInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "additional_data") and self.additional_data:
+        if hasattr(self, "additional_data"):
             result["additionalData"] = {str(k0): v0 for k0, v0 in self.additional_data.items()}
         elif include_empty:
             result["additionalData"] = {}

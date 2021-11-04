@@ -49,7 +49,7 @@ class OwnershipToken(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "ownership_token") and self.ownership_token:
+        if hasattr(self, "ownership_token"):
             result["ownershipToken"] = str(self.ownership_token)
         elif include_empty:
             result["ownershipToken"] = str()

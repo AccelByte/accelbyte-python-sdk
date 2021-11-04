@@ -56,11 +56,11 @@ class ModelsRegisterServerRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "custom_attribute") and self.custom_attribute:
+        if hasattr(self, "custom_attribute"):
             result["custom_attribute"] = str(self.custom_attribute)
         elif include_empty:
             result["custom_attribute"] = str()
-        if hasattr(self, "pod_name") and self.pod_name:
+        if hasattr(self, "pod_name"):
             result["pod_name"] = str(self.pod_name)
         elif include_empty:
             result["pod_name"] = str()

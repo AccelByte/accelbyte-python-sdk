@@ -91,31 +91,31 @@ class PaymentOrderRefundResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "payment_order_no") and self.payment_order_no:
+        if hasattr(self, "payment_order_no"):
             result["paymentOrderNo"] = str(self.payment_order_no)
         elif include_empty:
             result["paymentOrderNo"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "target_namespace") and self.target_namespace:
+        if hasattr(self, "target_namespace"):
             result["targetNamespace"] = str(self.target_namespace)
         elif include_empty:
             result["targetNamespace"] = str()
-        if hasattr(self, "target_user_id") and self.target_user_id:
+        if hasattr(self, "target_user_id"):
             result["targetUserId"] = str(self.target_user_id)
         elif include_empty:
             result["targetUserId"] = str()
-        if hasattr(self, "status") and self.status:
+        if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
-        if hasattr(self, "created_time") and self.created_time:
+        if hasattr(self, "created_time"):
             result["createdTime"] = str(self.created_time)
         elif include_empty:
             result["createdTime"] = str()
-        if hasattr(self, "refunded_time") and self.refunded_time:
+        if hasattr(self, "refunded_time"):
             result["refundedTime"] = str(self.refunded_time)
         elif include_empty:
             result["refundedTime"] = str()

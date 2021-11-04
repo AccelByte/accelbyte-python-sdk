@@ -56,11 +56,11 @@ class ModelUpdateUserStatusRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "enabled") and self.enabled:
+        if hasattr(self, "enabled"):
             result["enabled"] = bool(self.enabled)
         elif include_empty:
             result["enabled"] = bool()
-        if hasattr(self, "reason") and self.reason:
+        if hasattr(self, "reason"):
             result["reason"] = str(self.reason)
         elif include_empty:
             result["reason"] = str()

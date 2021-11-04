@@ -51,7 +51,7 @@ class ModelsSessionResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "session") and self.session:
+        if hasattr(self, "session"):
             result["session"] = self.session.to_dict(include_empty=include_empty)
         elif include_empty:
             result["session"] = ModelsSession()

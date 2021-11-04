@@ -56,11 +56,11 @@ class ModelsUpdateSessionRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "game_current_player") and self.game_current_player:
+        if hasattr(self, "game_current_player"):
             result["game_current_player"] = int(self.game_current_player)
         elif include_empty:
             result["game_current_player"] = int()
-        if hasattr(self, "game_max_player") and self.game_max_player:
+        if hasattr(self, "game_max_player"):
             result["game_max_player"] = int(self.game_max_player)
         elif include_empty:
             result["game_max_player"] = int()

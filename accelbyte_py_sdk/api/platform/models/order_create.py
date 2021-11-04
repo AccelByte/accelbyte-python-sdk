@@ -105,39 +105,39 @@ class OrderCreate(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "item_id") and self.item_id:
+        if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
-        if hasattr(self, "quantity") and self.quantity:
+        if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
             result["quantity"] = int()
-        if hasattr(self, "price") and self.price:
+        if hasattr(self, "price"):
             result["price"] = int(self.price)
         elif include_empty:
             result["price"] = int()
-        if hasattr(self, "discounted_price") and self.discounted_price:
+        if hasattr(self, "discounted_price"):
             result["discountedPrice"] = int(self.discounted_price)
         elif include_empty:
             result["discountedPrice"] = int()
-        if hasattr(self, "currency_code") and self.currency_code:
+        if hasattr(self, "currency_code"):
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
             result["currencyCode"] = str()
-        if hasattr(self, "region") and self.region:
+        if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = str()
-        if hasattr(self, "language") and self.language:
+        if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = str()
-        if hasattr(self, "return_url") and self.return_url:
+        if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
             result["returnUrl"] = str()
-        if hasattr(self, "ext") and self.ext:
+        if hasattr(self, "ext"):
             result["ext"] = {str(k0): v0 for k0, v0 in self.ext.items()}
         elif include_empty:
             result["ext"] = {}

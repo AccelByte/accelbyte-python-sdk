@@ -56,11 +56,11 @@ class OrderStatistics(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "total") and self.total:
+        if hasattr(self, "total"):
             result["total"] = int(self.total)
         elif include_empty:
             result["total"] = int()
-        if hasattr(self, "status_count") and self.status_count:
+        if hasattr(self, "status_count"):
             result["statusCount"] = {str(k0): int(v0) for k0, v0 in self.status_count.items()}
         elif include_empty:
             result["statusCount"] = {}

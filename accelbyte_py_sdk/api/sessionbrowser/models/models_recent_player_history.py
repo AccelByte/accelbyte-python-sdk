@@ -84,27 +84,27 @@ class ModelsRecentPlayerHistory(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["created_at"] = str(self.created_at)
         elif include_empty:
             result["created_at"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "other_display_name") and self.other_display_name:
+        if hasattr(self, "other_display_name"):
             result["other_display_name"] = str(self.other_display_name)
         elif include_empty:
             result["other_display_name"] = str()
-        if hasattr(self, "other_id") and self.other_id:
+        if hasattr(self, "other_id"):
             result["other_id"] = str(self.other_id)
         elif include_empty:
             result["other_id"] = str()
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updated_at"] = str(self.updated_at)
         elif include_empty:
             result["updated_at"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["user_id"] = str(self.user_id)
         elif include_empty:
             result["user_id"] = str()

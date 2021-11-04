@@ -70,19 +70,19 @@ class LegalAcceptedPoliciesRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "is_accepted") and self.is_accepted:
+        if hasattr(self, "is_accepted"):
             result["isAccepted"] = bool(self.is_accepted)
         elif include_empty:
             result["isAccepted"] = bool()
-        if hasattr(self, "localized_policy_version_id") and self.localized_policy_version_id:
+        if hasattr(self, "localized_policy_version_id"):
             result["localizedPolicyVersionId"] = str(self.localized_policy_version_id)
         elif include_empty:
             result["localizedPolicyVersionId"] = str()
-        if hasattr(self, "policy_id") and self.policy_id:
+        if hasattr(self, "policy_id"):
             result["policyId"] = str(self.policy_id)
         elif include_empty:
             result["policyId"] = str()
-        if hasattr(self, "policy_version_id") and self.policy_version_id:
+        if hasattr(self, "policy_version_id"):
             result["policyVersionId"] = str(self.policy_version_id)
         elif include_empty:
             result["policyVersionId"] = str()

@@ -49,7 +49,7 @@ class Subscribable(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "subscribable") and self.subscribable:
+        if hasattr(self, "subscribable"):
             result["subscribable"] = bool(self.subscribable)
         elif include_empty:
             result["subscribable"] = bool()

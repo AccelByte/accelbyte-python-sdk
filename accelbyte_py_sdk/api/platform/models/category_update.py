@@ -49,7 +49,7 @@ class CategoryUpdate(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "localization_display_names") and self.localization_display_names:
+        if hasattr(self, "localization_display_names"):
             result["localizationDisplayNames"] = {str(k0): str(v0) for k0, v0 in self.localization_display_names.items()}
         elif include_empty:
             result["localizationDisplayNames"] = {}

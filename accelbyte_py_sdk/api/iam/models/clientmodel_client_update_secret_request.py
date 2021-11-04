@@ -49,7 +49,7 @@ class ClientmodelClientUpdateSecretRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "new_secret") and self.new_secret:
+        if hasattr(self, "new_secret"):
             result["NewSecret"] = str(self.new_secret)
         elif include_empty:
             result["NewSecret"] = str()

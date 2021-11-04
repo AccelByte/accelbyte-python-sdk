@@ -49,7 +49,7 @@ class ModelUserDeletionStatusResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "deletion_status") and self.deletion_status:
+        if hasattr(self, "deletion_status"):
             result["deletionStatus"] = bool(self.deletion_status)
         elif include_empty:
             result["deletionStatus"] = bool()

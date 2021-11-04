@@ -72,19 +72,19 @@ class ModelsMatchResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "game_mode") and self.game_mode:
+        if hasattr(self, "game_mode"):
             result["game_mode"] = str(self.game_mode)
         elif include_empty:
             result["game_mode"] = str()
-        if hasattr(self, "matching_allies") and self.matching_allies:
+        if hasattr(self, "matching_allies"):
             result["matching_allies"] = [i0.to_dict(include_empty=include_empty) for i0 in self.matching_allies]
         elif include_empty:
             result["matching_allies"] = []
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "session_id") and self.session_id:
+        if hasattr(self, "session_id"):
             result["session_id"] = str(self.session_id)
         elif include_empty:
             result["session_id"] = str()

@@ -119,47 +119,47 @@ class PaymentNotificationInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "id_") and self.id_:
+        if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = str()
-        if hasattr(self, "payment_order_no") and self.payment_order_no:
+        if hasattr(self, "payment_order_no"):
             result["paymentOrderNo"] = str(self.payment_order_no)
         elif include_empty:
             result["paymentOrderNo"] = str()
-        if hasattr(self, "external_id") and self.external_id:
+        if hasattr(self, "external_id"):
             result["externalId"] = str(self.external_id)
         elif include_empty:
             result["externalId"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "notification_type") and self.notification_type:
+        if hasattr(self, "notification_type"):
             result["notificationType"] = str(self.notification_type)
         elif include_empty:
             result["notificationType"] = str()
-        if hasattr(self, "notification") and self.notification:
+        if hasattr(self, "notification"):
             result["notification"] = {str(k0): v0 for k0, v0 in self.notification.items()}
         elif include_empty:
             result["notification"] = {}
-        if hasattr(self, "status") and self.status:
+        if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
-        if hasattr(self, "notification_source") and self.notification_source:
+        if hasattr(self, "notification_source"):
             result["notificationSource"] = str(self.notification_source)
         elif include_empty:
             result["notificationSource"] = str()
-        if hasattr(self, "status_reason") and self.status_reason:
+        if hasattr(self, "status_reason"):
             result["statusReason"] = str(self.status_reason)
         elif include_empty:
             result["statusReason"] = str()
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()

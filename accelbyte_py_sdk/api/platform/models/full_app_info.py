@@ -144,59 +144,59 @@ class FullAppInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "item_id") and self.item_id:
+        if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "carousel") and self.carousel:
+        if hasattr(self, "carousel"):
             result["carousel"] = [i0.to_dict(include_empty=include_empty) for i0 in self.carousel]
         elif include_empty:
             result["carousel"] = []
-        if hasattr(self, "developer") and self.developer:
+        if hasattr(self, "developer"):
             result["developer"] = str(self.developer)
         elif include_empty:
             result["developer"] = str()
-        if hasattr(self, "publisher") and self.publisher:
+        if hasattr(self, "publisher"):
             result["publisher"] = str(self.publisher)
         elif include_empty:
             result["publisher"] = str()
-        if hasattr(self, "website_url") and self.website_url:
+        if hasattr(self, "website_url"):
             result["websiteUrl"] = str(self.website_url)
         elif include_empty:
             result["websiteUrl"] = str()
-        if hasattr(self, "forum_url") and self.forum_url:
+        if hasattr(self, "forum_url"):
             result["forumUrl"] = str(self.forum_url)
         elif include_empty:
             result["forumUrl"] = str()
-        if hasattr(self, "platforms") and self.platforms:
+        if hasattr(self, "platforms"):
             result["platforms"] = [str(i0) for i0 in self.platforms]
         elif include_empty:
             result["platforms"] = []
-        if hasattr(self, "platform_requirements") and self.platform_requirements:
+        if hasattr(self, "platform_requirements"):
             result["platformRequirements"] = {str(k0): [i1.to_dict(include_empty=include_empty) for i1 in v0] for k0, v0 in self.platform_requirements.items()}
         elif include_empty:
             result["platformRequirements"] = {}
-        if hasattr(self, "localizations") and self.localizations:
+        if hasattr(self, "localizations"):
             result["localizations"] = {str(k0): v0.to_dict(include_empty=include_empty) for k0, v0 in self.localizations.items()}
         elif include_empty:
             result["localizations"] = {}
-        if hasattr(self, "primary_genre") and self.primary_genre:
+        if hasattr(self, "primary_genre"):
             result["primaryGenre"] = str(self.primary_genre)
         elif include_empty:
             result["primaryGenre"] = str()
-        if hasattr(self, "genres") and self.genres:
+        if hasattr(self, "genres"):
             result["genres"] = [str(i0) for i0 in self.genres]
         elif include_empty:
             result["genres"] = []
-        if hasattr(self, "players") and self.players:
+        if hasattr(self, "players"):
             result["players"] = [str(i0) for i0 in self.players]
         elif include_empty:
             result["players"] = []
-        if hasattr(self, "release_date") and self.release_date:
+        if hasattr(self, "release_date"):
             result["releaseDate"] = str(self.release_date)
         elif include_empty:
             result["releaseDate"] = str()

@@ -91,31 +91,31 @@ class ModelsPartyData(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "custom_attribute") and self.custom_attribute:
+        if hasattr(self, "custom_attribute"):
             result["custom_attribute"] = {str(k0): v0 for k0, v0 in self.custom_attribute.items()}
         elif include_empty:
             result["custom_attribute"] = {}
-        if hasattr(self, "invitees") and self.invitees:
+        if hasattr(self, "invitees"):
             result["invitees"] = [str(i0) for i0 in self.invitees]
         elif include_empty:
             result["invitees"] = []
-        if hasattr(self, "leader") and self.leader:
+        if hasattr(self, "leader"):
             result["leader"] = str(self.leader)
         elif include_empty:
             result["leader"] = str()
-        if hasattr(self, "members") and self.members:
+        if hasattr(self, "members"):
             result["members"] = [str(i0) for i0 in self.members]
         elif include_empty:
             result["members"] = []
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "party_id") and self.party_id:
+        if hasattr(self, "party_id"):
             result["partyId"] = str(self.party_id)
         elif include_empty:
             result["partyId"] = str()
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updatedAt"] = int(self.updated_at)
         elif include_empty:
             result["updatedAt"] = int()

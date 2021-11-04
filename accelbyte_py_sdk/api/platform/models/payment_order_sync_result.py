@@ -58,11 +58,11 @@ class PaymentOrderSyncResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "payment_orders") and self.payment_orders:
+        if hasattr(self, "payment_orders"):
             result["paymentOrders"] = [i0.to_dict(include_empty=include_empty) for i0 in self.payment_orders]
         elif include_empty:
             result["paymentOrders"] = []
-        if hasattr(self, "next_evaluated_key") and self.next_evaluated_key:
+        if hasattr(self, "next_evaluated_key"):
             result["nextEvaluatedKey"] = str(self.next_evaluated_key)
         elif include_empty:
             result["nextEvaluatedKey"] = str()

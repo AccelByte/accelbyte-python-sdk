@@ -84,27 +84,27 @@ class EntitlementUpdate(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "null_field_list") and self.null_field_list:
+        if hasattr(self, "null_field_list"):
             result["nullFieldList"] = [str(i0) for i0 in self.null_field_list]
         elif include_empty:
             result["nullFieldList"] = []
-        if hasattr(self, "status") and self.status:
+        if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
-        if hasattr(self, "use_count") and self.use_count:
+        if hasattr(self, "use_count"):
             result["useCount"] = int(self.use_count)
         elif include_empty:
             result["useCount"] = int()
-        if hasattr(self, "quantity") and self.quantity:
+        if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
             result["quantity"] = int()
-        if hasattr(self, "start_date") and self.start_date:
+        if hasattr(self, "start_date"):
             result["startDate"] = str(self.start_date)
         elif include_empty:
             result["startDate"] = str()
-        if hasattr(self, "end_date") and self.end_date:
+        if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
             result["endDate"] = str()

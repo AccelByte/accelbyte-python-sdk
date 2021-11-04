@@ -56,11 +56,11 @@ class NamespacePublisherInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "publisher") and self.publisher:
+        if hasattr(self, "publisher"):
             result["publisher"] = bool(self.publisher)
         elif include_empty:
             result["publisher"] = bool()
-        if hasattr(self, "publisher_namespace") and self.publisher_namespace:
+        if hasattr(self, "publisher_namespace"):
             result["publisherNamespace"] = str(self.publisher_namespace)
         elif include_empty:
             result["publisherNamespace"] = str()

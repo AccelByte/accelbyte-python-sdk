@@ -70,19 +70,19 @@ class GameProfilePublicInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "profile_id") and self.profile_id:
+        if hasattr(self, "profile_id"):
             result["profileId"] = str(self.profile_id)
         elif include_empty:
             result["profileId"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "profile_name") and self.profile_name:
+        if hasattr(self, "profile_name"):
             result["profileName"] = str(self.profile_name)
         elif include_empty:
             result["profileName"] = str()
-        if hasattr(self, "avatar_url") and self.avatar_url:
+        if hasattr(self, "avatar_url"):
             result["avatarUrl"] = str(self.avatar_url)
         elif include_empty:
             result["avatarUrl"] = str()

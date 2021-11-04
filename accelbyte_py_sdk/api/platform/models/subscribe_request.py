@@ -84,27 +84,27 @@ class SubscribeRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "item_id") and self.item_id:
+        if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
-        if hasattr(self, "currency_code") and self.currency_code:
+        if hasattr(self, "currency_code"):
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
             result["currencyCode"] = str()
-        if hasattr(self, "source") and self.source:
+        if hasattr(self, "source"):
             result["source"] = str(self.source)
         elif include_empty:
             result["source"] = str()
-        if hasattr(self, "region") and self.region:
+        if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = str()
-        if hasattr(self, "language") and self.language:
+        if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = str()
-        if hasattr(self, "return_url") and self.return_url:
+        if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
             result["returnUrl"] = str()

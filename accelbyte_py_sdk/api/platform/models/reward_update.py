@@ -86,27 +86,27 @@ class RewardUpdate(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "reward_code") and self.reward_code:
+        if hasattr(self, "reward_code"):
             result["rewardCode"] = str(self.reward_code)
         elif include_empty:
             result["rewardCode"] = str()
-        if hasattr(self, "description") and self.description:
+        if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = str()
-        if hasattr(self, "event_topic") and self.event_topic:
+        if hasattr(self, "event_topic"):
             result["eventTopic"] = str(self.event_topic)
         elif include_empty:
             result["eventTopic"] = str()
-        if hasattr(self, "reward_conditions") and self.reward_conditions:
+        if hasattr(self, "reward_conditions"):
             result["rewardConditions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.reward_conditions]
         elif include_empty:
             result["rewardConditions"] = []
-        if hasattr(self, "max_awarded") and self.max_awarded:
+        if hasattr(self, "max_awarded"):
             result["maxAwarded"] = int(self.max_awarded)
         elif include_empty:
             result["maxAwarded"] = int()
-        if hasattr(self, "max_awarded_per_user") and self.max_awarded_per_user:
+        if hasattr(self, "max_awarded_per_user"):
             result["maxAwardedPerUser"] = int(self.max_awarded_per_user)
         elif include_empty:
             result["maxAwardedPerUser"] = int()

@@ -65,15 +65,15 @@ class RestErrorResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "error_code") and self.error_code:
+        if hasattr(self, "error_code"):
             result["errorCode"] = int(self.error_code)
         elif include_empty:
             result["errorCode"] = int()
-        if hasattr(self, "error_message") and self.error_message:
+        if hasattr(self, "error_message"):
             result["errorMessage"] = str(self.error_message)
         elif include_empty:
             result["errorMessage"] = str()
-        if hasattr(self, "message_variables") and self.message_variables:
+        if hasattr(self, "message_variables"):
             result["messageVariables"] = self.message_variables.to_dict(include_empty=include_empty)
         elif include_empty:
             result["messageVariables"] = AccountcommonConflictedUserPlatformAccounts()

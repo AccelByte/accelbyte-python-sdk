@@ -105,39 +105,39 @@ class Requirement(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "label") and self.label:
+        if hasattr(self, "label"):
             result["label"] = str(self.label)
         elif include_empty:
             result["label"] = str()
-        if hasattr(self, "os_version") and self.os_version:
+        if hasattr(self, "os_version"):
             result["osVersion"] = str(self.os_version)
         elif include_empty:
             result["osVersion"] = str()
-        if hasattr(self, "processor") and self.processor:
+        if hasattr(self, "processor"):
             result["processor"] = str(self.processor)
         elif include_empty:
             result["processor"] = str()
-        if hasattr(self, "ram") and self.ram:
+        if hasattr(self, "ram"):
             result["ram"] = str(self.ram)
         elif include_empty:
             result["ram"] = str()
-        if hasattr(self, "graphics") and self.graphics:
+        if hasattr(self, "graphics"):
             result["graphics"] = str(self.graphics)
         elif include_empty:
             result["graphics"] = str()
-        if hasattr(self, "direct_x_version") and self.direct_x_version:
+        if hasattr(self, "direct_x_version"):
             result["directXVersion"] = str(self.direct_x_version)
         elif include_empty:
             result["directXVersion"] = str()
-        if hasattr(self, "disk_space") and self.disk_space:
+        if hasattr(self, "disk_space"):
             result["diskSpace"] = str(self.disk_space)
         elif include_empty:
             result["diskSpace"] = str()
-        if hasattr(self, "sound_card") and self.sound_card:
+        if hasattr(self, "sound_card"):
             result["soundCard"] = str(self.sound_card)
         elif include_empty:
             result["soundCard"] = str()
-        if hasattr(self, "additionals") and self.additionals:
+        if hasattr(self, "additionals"):
             result["additionals"] = str(self.additionals)
         elif include_empty:
             result["additionals"] = str()

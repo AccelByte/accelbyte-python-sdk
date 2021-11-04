@@ -98,35 +98,35 @@ class ModelsUpdateDSMConfigRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "claim_timeout") and self.claim_timeout:
+        if hasattr(self, "claim_timeout"):
             result["claim_timeout"] = int(self.claim_timeout)
         elif include_empty:
             result["claim_timeout"] = int()
-        if hasattr(self, "creation_timeout") and self.creation_timeout:
+        if hasattr(self, "creation_timeout"):
             result["creation_timeout"] = int(self.creation_timeout)
         elif include_empty:
             result["creation_timeout"] = int()
-        if hasattr(self, "default_version") and self.default_version:
+        if hasattr(self, "default_version"):
             result["default_version"] = str(self.default_version)
         elif include_empty:
             result["default_version"] = str()
-        if hasattr(self, "port") and self.port:
+        if hasattr(self, "port"):
             result["port"] = int(self.port)
         elif include_empty:
             result["port"] = int()
-        if hasattr(self, "protocol") and self.protocol:
+        if hasattr(self, "protocol"):
             result["protocol"] = str(self.protocol)
         elif include_empty:
             result["protocol"] = str()
-        if hasattr(self, "providers") and self.providers:
+        if hasattr(self, "providers"):
             result["providers"] = [str(i0) for i0 in self.providers]
         elif include_empty:
             result["providers"] = []
-        if hasattr(self, "session_timeout") and self.session_timeout:
+        if hasattr(self, "session_timeout"):
             result["session_timeout"] = int(self.session_timeout)
         elif include_empty:
             result["session_timeout"] = int()
-        if hasattr(self, "unreachable_timeout") and self.unreachable_timeout:
+        if hasattr(self, "unreachable_timeout"):
             result["unreachable_timeout"] = int(self.unreachable_timeout)
         elif include_empty:
             result["unreachable_timeout"] = int()

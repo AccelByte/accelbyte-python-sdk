@@ -49,7 +49,7 @@ class PaymentRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "amount") and self.amount:
+        if hasattr(self, "amount"):
             result["amount"] = int(self.amount)
         elif include_empty:
             result["amount"] = int()

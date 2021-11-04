@@ -49,7 +49,7 @@ class PlaystationIAPConfigRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "environment") and self.environment:
+        if hasattr(self, "environment"):
             result["environment"] = str(self.environment)
         elif include_empty:
             result["environment"] = str()

@@ -91,31 +91,31 @@ class ModelUserLoginHistoryResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "application_name") and self.application_name:
+        if hasattr(self, "application_name"):
             result["ApplicationName"] = str(self.application_name)
         elif include_empty:
             result["ApplicationName"] = str()
-        if hasattr(self, "city") and self.city:
+        if hasattr(self, "city"):
             result["City"] = str(self.city)
         elif include_empty:
             result["City"] = str()
-        if hasattr(self, "country") and self.country:
+        if hasattr(self, "country"):
             result["Country"] = str(self.country)
         elif include_empty:
             result["Country"] = str()
-        if hasattr(self, "device_id") and self.device_id:
+        if hasattr(self, "device_id"):
             result["DeviceId"] = str(self.device_id)
         elif include_empty:
             result["DeviceId"] = str()
-        if hasattr(self, "state") and self.state:
+        if hasattr(self, "state"):
             result["State"] = str(self.state)
         elif include_empty:
             result["State"] = str()
-        if hasattr(self, "timestamp") and self.timestamp:
+        if hasattr(self, "timestamp"):
             result["Timestamp"] = int(self.timestamp)
         elif include_empty:
             result["Timestamp"] = int()
-        if hasattr(self, "device_name") and self.device_name:
+        if hasattr(self, "device_name"):
             result["deviceName"] = str(self.device_name)
         elif include_empty:
             result["deviceName"] = str()

@@ -56,11 +56,11 @@ class TicketSaleIncrementResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "success") and self.success:
+        if hasattr(self, "success"):
             result["success"] = bool(self.success)
         elif include_empty:
             result["success"] = bool()
-        if hasattr(self, "max_sale_count") and self.max_sale_count:
+        if hasattr(self, "max_sale_count"):
             result["maxSaleCount"] = int(self.max_sale_count)
         elif include_empty:
             result["maxSaleCount"] = int()

@@ -63,15 +63,15 @@ class RecurringChargeResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "triggered") and self.triggered:
+        if hasattr(self, "triggered"):
             result["triggered"] = bool(self.triggered)
         elif include_empty:
             result["triggered"] = bool()
-        if hasattr(self, "code") and self.code:
+        if hasattr(self, "code"):
             result["code"] = str(self.code)
         elif include_empty:
             result["code"] = str()
-        if hasattr(self, "detail") and self.detail:
+        if hasattr(self, "detail"):
             result["detail"] = str(self.detail)
         elif include_empty:
             result["detail"] = str()

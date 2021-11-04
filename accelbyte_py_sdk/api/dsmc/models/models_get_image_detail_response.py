@@ -51,7 +51,7 @@ class ModelsGetImageDetailResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "data") and self.data:
+        if hasattr(self, "data"):
             result["data"] = self.data.to_dict(include_empty=include_empty)
         elif include_empty:
             result["data"] = ModelsImageRecord()

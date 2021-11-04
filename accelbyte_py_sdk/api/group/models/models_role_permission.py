@@ -56,11 +56,11 @@ class ModelsRolePermission(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "action") and self.action:
+        if hasattr(self, "action"):
             result["action"] = int(self.action)
         elif include_empty:
             result["action"] = int()
-        if hasattr(self, "resource_name") and self.resource_name:
+        if hasattr(self, "resource_name"):
             result["resourceName"] = str(self.resource_name)
         elif include_empty:
             result["resourceName"] = str()

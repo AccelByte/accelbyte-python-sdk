@@ -56,11 +56,11 @@ class PaymentOrderPaidResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "success") and self.success:
+        if hasattr(self, "success"):
             result["success"] = bool(self.success)
         elif include_empty:
             result["success"] = bool()
-        if hasattr(self, "charging") and self.charging:
+        if hasattr(self, "charging"):
             result["charging"] = bool(self.charging)
         elif include_empty:
             result["charging"] = bool()

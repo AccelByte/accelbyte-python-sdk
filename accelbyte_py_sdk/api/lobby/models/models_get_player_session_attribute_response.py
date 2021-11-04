@@ -56,11 +56,11 @@ class ModelsGetPlayerSessionAttributeResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "key") and self.key:
+        if hasattr(self, "key"):
             result["key"] = str(self.key)
         elif include_empty:
             result["key"] = str()
-        if hasattr(self, "value") and self.value:
+        if hasattr(self, "value"):
             result["value"] = str(self.value)
         elif include_empty:
             result["value"] = str()

@@ -58,11 +58,11 @@ class ModelTemplateResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "localizations") and self.localizations:
+        if hasattr(self, "localizations"):
             result["localizations"] = [i0.to_dict(include_empty=include_empty) for i0 in self.localizations]
         elif include_empty:
             result["localizations"] = []
-        if hasattr(self, "template_slug") and self.template_slug:
+        if hasattr(self, "template_slug"):
             result["templateSlug"] = str(self.template_slug)
         elif include_empty:
             result["templateSlug"] = str()

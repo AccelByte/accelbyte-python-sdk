@@ -63,15 +63,15 @@ class ModelsPodConfig(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "cpu_limit") and self.cpu_limit:
+        if hasattr(self, "cpu_limit"):
             result["cpu_limit"] = int(self.cpu_limit)
         elif include_empty:
             result["cpu_limit"] = int()
-        if hasattr(self, "mem_limit") and self.mem_limit:
+        if hasattr(self, "mem_limit"):
             result["mem_limit"] = int(self.mem_limit)
         elif include_empty:
             result["mem_limit"] = int()
-        if hasattr(self, "params") and self.params:
+        if hasattr(self, "params"):
             result["params"] = str(self.params)
         elif include_empty:
             result["params"] = str()

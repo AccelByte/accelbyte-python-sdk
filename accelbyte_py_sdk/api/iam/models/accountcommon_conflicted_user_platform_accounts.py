@@ -58,11 +58,11 @@ class AccountcommonConflictedUserPlatformAccounts(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "platform_user_id") and self.platform_user_id:
+        if hasattr(self, "platform_user_id"):
             result["platformUserID"] = str(self.platform_user_id)
         elif include_empty:
             result["platformUserID"] = str()
-        if hasattr(self, "publisher_accounts") and self.publisher_accounts:
+        if hasattr(self, "publisher_accounts"):
             result["publisherAccounts"] = [i0.to_dict(include_empty=include_empty) for i0 in self.publisher_accounts]
         elif include_empty:
             result["publisherAccounts"] = []

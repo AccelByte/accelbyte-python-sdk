@@ -59,11 +59,11 @@ class ModelLoginHistoriesResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "data") and self.data:
+        if hasattr(self, "data"):
             result["Data"] = [i0.to_dict(include_empty=include_empty) for i0 in self.data]
         elif include_empty:
             result["Data"] = []
-        if hasattr(self, "paging") and self.paging:
+        if hasattr(self, "paging"):
             result["Paging"] = self.paging.to_dict(include_empty=include_empty)
         elif include_empty:
             result["Paging"] = AccountcommonPagination()

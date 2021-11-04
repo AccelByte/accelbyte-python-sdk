@@ -51,7 +51,7 @@ class ModelsAdminAddProfanityFiltersRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "filters") and self.filters:
+        if hasattr(self, "filters"):
             result["filters"] = [i0.to_dict(include_empty=include_empty) for i0 in self.filters]
         elif include_empty:
             result["filters"] = []

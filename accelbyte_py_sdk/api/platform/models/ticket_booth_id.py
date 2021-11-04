@@ -56,11 +56,11 @@ class TicketBoothID(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "id_") and self.id_:
+        if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = str()
-        if hasattr(self, "type_") and self.type_:
+        if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = str()

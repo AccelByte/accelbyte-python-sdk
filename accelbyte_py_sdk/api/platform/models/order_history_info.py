@@ -98,35 +98,35 @@ class OrderHistoryInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "order_no") and self.order_no:
+        if hasattr(self, "order_no"):
             result["orderNo"] = str(self.order_no)
         elif include_empty:
             result["orderNo"] = str()
-        if hasattr(self, "operator") and self.operator:
+        if hasattr(self, "operator"):
             result["operator"] = str(self.operator)
         elif include_empty:
             result["operator"] = str()
-        if hasattr(self, "action") and self.action:
+        if hasattr(self, "action"):
             result["action"] = str(self.action)
         elif include_empty:
             result["action"] = str()
-        if hasattr(self, "reason") and self.reason:
+        if hasattr(self, "reason"):
             result["reason"] = str(self.reason)
         elif include_empty:
             result["reason"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()

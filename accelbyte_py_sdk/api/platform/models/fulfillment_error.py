@@ -63,15 +63,15 @@ class FulfillmentError(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "http_status") and self.http_status:
+        if hasattr(self, "http_status"):
             result["httpStatus"] = int(self.http_status)
         elif include_empty:
             result["httpStatus"] = int()
-        if hasattr(self, "code") and self.code:
+        if hasattr(self, "code"):
             result["code"] = int(self.code)
         elif include_empty:
             result["code"] = int()
-        if hasattr(self, "message") and self.message:
+        if hasattr(self, "message"):
             result["message"] = str(self.message)
         elif include_empty:
             result["message"] = str()

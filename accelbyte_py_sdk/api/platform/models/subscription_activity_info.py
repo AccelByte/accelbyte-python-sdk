@@ -147,63 +147,63 @@ class SubscriptionActivityInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "subscription_id") and self.subscription_id:
+        if hasattr(self, "subscription_id"):
             result["subscriptionId"] = str(self.subscription_id)
         elif include_empty:
             result["subscriptionId"] = str()
-        if hasattr(self, "operator") and self.operator:
+        if hasattr(self, "operator"):
             result["operator"] = str(self.operator)
         elif include_empty:
             result["operator"] = str()
-        if hasattr(self, "action") and self.action:
+        if hasattr(self, "action"):
             result["action"] = str(self.action)
         elif include_empty:
             result["action"] = str()
-        if hasattr(self, "subscribed_by") and self.subscribed_by:
+        if hasattr(self, "subscribed_by"):
             result["subscribedBy"] = str(self.subscribed_by)
         elif include_empty:
             result["subscribedBy"] = str()
-        if hasattr(self, "current_cycle") and self.current_cycle:
+        if hasattr(self, "current_cycle"):
             result["currentCycle"] = int(self.current_cycle)
         elif include_empty:
             result["currentCycle"] = int()
-        if hasattr(self, "charged_cycles") and self.charged_cycles:
+        if hasattr(self, "charged_cycles"):
             result["chargedCycles"] = int(self.charged_cycles)
         elif include_empty:
             result["chargedCycles"] = int()
-        if hasattr(self, "trialed_cycles") and self.trialed_cycles:
+        if hasattr(self, "trialed_cycles"):
             result["trialedCycles"] = int(self.trialed_cycles)
         elif include_empty:
             result["trialedCycles"] = int()
-        if hasattr(self, "in_fixed_free_days") and self.in_fixed_free_days:
+        if hasattr(self, "in_fixed_free_days"):
             result["inFixedFreeDays"] = bool(self.in_fixed_free_days)
         elif include_empty:
             result["inFixedFreeDays"] = bool()
-        if hasattr(self, "in_fixed_cycle_trial") and self.in_fixed_cycle_trial:
+        if hasattr(self, "in_fixed_cycle_trial"):
             result["inFixedCycleTrial"] = bool(self.in_fixed_cycle_trial)
         elif include_empty:
             result["inFixedCycleTrial"] = bool()
-        if hasattr(self, "reason") and self.reason:
+        if hasattr(self, "reason"):
             result["reason"] = str(self.reason)
         elif include_empty:
             result["reason"] = str()
-        if hasattr(self, "grant_days") and self.grant_days:
+        if hasattr(self, "grant_days"):
             result["grantDays"] = int(self.grant_days)
         elif include_empty:
             result["grantDays"] = int()
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()

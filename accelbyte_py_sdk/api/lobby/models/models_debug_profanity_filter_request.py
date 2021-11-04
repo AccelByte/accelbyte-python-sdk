@@ -49,7 +49,7 @@ class ModelsDebugProfanityFilterRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "text") and self.text:
+        if hasattr(self, "text"):
             result["text"] = str(self.text)
         elif include_empty:
             result["text"] = str()

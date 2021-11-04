@@ -63,15 +63,15 @@ class ModelsUpdateGroupConfigurationRequestV1(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "description") and self.description:
+        if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = str()
-        if hasattr(self, "group_max_member") and self.group_max_member:
+        if hasattr(self, "group_max_member"):
             result["groupMaxMember"] = int(self.group_max_member)
         elif include_empty:
             result["groupMaxMember"] = int()
-        if hasattr(self, "name") and self.name:
+        if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = str()

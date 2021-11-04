@@ -49,7 +49,7 @@ class ModelsListBlockedPlayerRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "list_blocked_user_id") and self.list_blocked_user_id:
+        if hasattr(self, "list_blocked_user_id"):
             result["listBlockedUserId"] = [str(i0) for i0 in self.list_blocked_user_id]
         elif include_empty:
             result["listBlockedUserId"] = []

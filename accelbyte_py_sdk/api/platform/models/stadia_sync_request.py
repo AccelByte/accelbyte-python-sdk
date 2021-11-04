@@ -70,19 +70,19 @@ class StadiaSyncRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "stadia_player_id") and self.stadia_player_id:
+        if hasattr(self, "stadia_player_id"):
             result["stadiaPlayerId"] = str(self.stadia_player_id)
         elif include_empty:
             result["stadiaPlayerId"] = str()
-        if hasattr(self, "app_id") and self.app_id:
+        if hasattr(self, "app_id"):
             result["appId"] = str(self.app_id)
         elif include_empty:
             result["appId"] = str()
-        if hasattr(self, "region") and self.region:
+        if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = str()
-        if hasattr(self, "language") and self.language:
+        if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = str()

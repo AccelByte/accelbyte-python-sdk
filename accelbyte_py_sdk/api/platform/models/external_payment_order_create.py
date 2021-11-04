@@ -189,87 +189,87 @@ class ExternalPaymentOrderCreate(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "ext_order_no") and self.ext_order_no:
+        if hasattr(self, "ext_order_no"):
             result["extOrderNo"] = str(self.ext_order_no)
         elif include_empty:
             result["extOrderNo"] = str()
-        if hasattr(self, "sku") and self.sku:
+        if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
             result["sku"] = str()
-        if hasattr(self, "ext_user_id") and self.ext_user_id:
+        if hasattr(self, "ext_user_id"):
             result["extUserId"] = str(self.ext_user_id)
         elif include_empty:
             result["extUserId"] = str()
-        if hasattr(self, "price") and self.price:
+        if hasattr(self, "price"):
             result["price"] = int(self.price)
         elif include_empty:
             result["price"] = int()
-        if hasattr(self, "title") and self.title:
+        if hasattr(self, "title"):
             result["title"] = str(self.title)
         elif include_empty:
             result["title"] = str()
-        if hasattr(self, "description") and self.description:
+        if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = str()
-        if hasattr(self, "item_type") and self.item_type:
+        if hasattr(self, "item_type"):
             result["itemType"] = str(self.item_type)
         elif include_empty:
             result["itemType"] = str()
-        if hasattr(self, "currency_code") and self.currency_code:
+        if hasattr(self, "currency_code"):
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
             result["currencyCode"] = str()
-        if hasattr(self, "currency_namespace") and self.currency_namespace:
+        if hasattr(self, "currency_namespace"):
             result["currencyNamespace"] = str(self.currency_namespace)
         elif include_empty:
             result["currencyNamespace"] = str()
-        if hasattr(self, "region") and self.region:
+        if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = str()
-        if hasattr(self, "language") and self.language:
+        if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = str()
-        if hasattr(self, "sandbox") and self.sandbox:
+        if hasattr(self, "sandbox"):
             result["sandbox"] = bool(self.sandbox)
         elif include_empty:
             result["sandbox"] = bool()
-        if hasattr(self, "return_url") and self.return_url:
+        if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
             result["returnUrl"] = str()
-        if hasattr(self, "notify_url") and self.notify_url:
+        if hasattr(self, "notify_url"):
             result["notifyUrl"] = str(self.notify_url)
         elif include_empty:
             result["notifyUrl"] = str()
-        if hasattr(self, "custom_parameters") and self.custom_parameters:
+        if hasattr(self, "custom_parameters"):
             result["customParameters"] = {str(k0): v0 for k0, v0 in self.custom_parameters.items()}
         elif include_empty:
             result["customParameters"] = {}
-        if hasattr(self, "subscription_id") and self.subscription_id:
+        if hasattr(self, "subscription_id"):
             result["subscriptionId"] = str(self.subscription_id)
         elif include_empty:
             result["subscriptionId"] = str()
-        if hasattr(self, "recurring_payment_order_no") and self.recurring_payment_order_no:
+        if hasattr(self, "recurring_payment_order_no"):
             result["recurringPaymentOrderNo"] = str(self.recurring_payment_order_no)
         elif include_empty:
             result["recurringPaymentOrderNo"] = str()
-        if hasattr(self, "omit_notification") and self.omit_notification:
+        if hasattr(self, "omit_notification"):
             result["omitNotification"] = bool(self.omit_notification)
         elif include_empty:
             result["omitNotification"] = bool()
-        if hasattr(self, "metadata") and self.metadata:
+        if hasattr(self, "metadata"):
             result["metadata"] = {str(k0): str(v0) for k0, v0 in self.metadata.items()}
         elif include_empty:
             result["metadata"] = {}
-        if hasattr(self, "target_namespace") and self.target_namespace:
+        if hasattr(self, "target_namespace"):
             result["targetNamespace"] = str(self.target_namespace)
         elif include_empty:
             result["targetNamespace"] = str()
-        if hasattr(self, "target_user_id") and self.target_user_id:
+        if hasattr(self, "target_user_id"):
             result["targetUserId"] = str(self.target_user_id)
         elif include_empty:
             result["targetUserId"] = str()

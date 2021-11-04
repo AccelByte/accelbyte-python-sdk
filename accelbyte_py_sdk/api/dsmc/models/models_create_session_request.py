@@ -107,39 +107,39 @@ class ModelsCreateSessionRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "client_version") and self.client_version:
+        if hasattr(self, "client_version"):
             result["client_version"] = str(self.client_version)
         elif include_empty:
             result["client_version"] = str()
-        if hasattr(self, "configuration") and self.configuration:
+        if hasattr(self, "configuration"):
             result["configuration"] = str(self.configuration)
         elif include_empty:
             result["configuration"] = str()
-        if hasattr(self, "deployment") and self.deployment:
+        if hasattr(self, "deployment"):
             result["deployment"] = str(self.deployment)
         elif include_empty:
             result["deployment"] = str()
-        if hasattr(self, "game_mode") and self.game_mode:
+        if hasattr(self, "game_mode"):
             result["game_mode"] = str(self.game_mode)
         elif include_empty:
             result["game_mode"] = str()
-        if hasattr(self, "matching_allies") and self.matching_allies:
+        if hasattr(self, "matching_allies"):
             result["matching_allies"] = [i0.to_dict(include_empty=include_empty) for i0 in self.matching_allies]
         elif include_empty:
             result["matching_allies"] = []
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "pod_name") and self.pod_name:
+        if hasattr(self, "pod_name"):
             result["pod_name"] = str(self.pod_name)
         elif include_empty:
             result["pod_name"] = str()
-        if hasattr(self, "region") and self.region:
+        if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = str()
-        if hasattr(self, "session_id") and self.session_id:
+        if hasattr(self, "session_id"):
             result["session_id"] = str(self.session_id)
         elif include_empty:
             result["session_id"] = str()

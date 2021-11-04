@@ -119,47 +119,47 @@ class AdyenConfig(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "api_key") and self.api_key:
+        if hasattr(self, "api_key"):
             result["apiKey"] = str(self.api_key)
         elif include_empty:
             result["apiKey"] = str()
-        if hasattr(self, "merchant_account") and self.merchant_account:
+        if hasattr(self, "merchant_account"):
             result["merchantAccount"] = str(self.merchant_account)
         elif include_empty:
             result["merchantAccount"] = str()
-        if hasattr(self, "notification_hmac_key") and self.notification_hmac_key:
+        if hasattr(self, "notification_hmac_key"):
             result["notificationHmacKey"] = str(self.notification_hmac_key)
         elif include_empty:
             result["notificationHmacKey"] = str()
-        if hasattr(self, "notification_username") and self.notification_username:
+        if hasattr(self, "notification_username"):
             result["notificationUsername"] = str(self.notification_username)
         elif include_empty:
             result["notificationUsername"] = str()
-        if hasattr(self, "notification_password") and self.notification_password:
+        if hasattr(self, "notification_password"):
             result["notificationPassword"] = str(self.notification_password)
         elif include_empty:
             result["notificationPassword"] = str()
-        if hasattr(self, "return_url") and self.return_url:
+        if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
             result["returnUrl"] = str()
-        if hasattr(self, "live_endpoint_url_prefix") and self.live_endpoint_url_prefix:
+        if hasattr(self, "live_endpoint_url_prefix"):
             result["liveEndpointUrlPrefix"] = str(self.live_endpoint_url_prefix)
         elif include_empty:
             result["liveEndpointUrlPrefix"] = str()
-        if hasattr(self, "authorise_as_capture") and self.authorise_as_capture:
+        if hasattr(self, "authorise_as_capture"):
             result["authoriseAsCapture"] = bool(self.authorise_as_capture)
         elif include_empty:
             result["authoriseAsCapture"] = bool()
-        if hasattr(self, "allowed_payment_methods") and self.allowed_payment_methods:
+        if hasattr(self, "allowed_payment_methods"):
             result["allowedPaymentMethods"] = [str(i0) for i0 in self.allowed_payment_methods]
         elif include_empty:
             result["allowedPaymentMethods"] = []
-        if hasattr(self, "blocked_payment_methods") and self.blocked_payment_methods:
+        if hasattr(self, "blocked_payment_methods"):
             result["blockedPaymentMethods"] = [str(i0) for i0 in self.blocked_payment_methods]
         elif include_empty:
             result["blockedPaymentMethods"] = []
-        if hasattr(self, "settings") and self.settings:
+        if hasattr(self, "settings"):
             result["settings"] = str(self.settings)
         elif include_empty:
             result["settings"] = str()

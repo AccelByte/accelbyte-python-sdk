@@ -84,27 +84,27 @@ class ModelGetStoredNotificationResp(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "from_") and self.from_:
+        if hasattr(self, "from_"):
             result["from"] = str(self.from_)
         elif include_empty:
             result["from"] = str()
-        if hasattr(self, "id_") and self.id_:
+        if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = str()
-        if hasattr(self, "payload") and self.payload:
+        if hasattr(self, "payload"):
             result["payload"] = str(self.payload)
         elif include_empty:
             result["payload"] = str()
-        if hasattr(self, "sent_at") and self.sent_at:
+        if hasattr(self, "sent_at"):
             result["sentAt"] = int(self.sent_at)
         elif include_empty:
             result["sentAt"] = int()
-        if hasattr(self, "to") and self.to:
+        if hasattr(self, "to"):
             result["to"] = str(self.to)
         elif include_empty:
             result["to"] = str()
-        if hasattr(self, "topic_name") and self.topic_name:
+        if hasattr(self, "topic_name"):
             result["topicName"] = str(self.topic_name)
         elif include_empty:
             result["topicName"] = str()

@@ -84,27 +84,27 @@ class AppleIAPReceipt(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "product_id") and self.product_id:
+        if hasattr(self, "product_id"):
             result["productId"] = str(self.product_id)
         elif include_empty:
             result["productId"] = str()
-        if hasattr(self, "transaction_id") and self.transaction_id:
+        if hasattr(self, "transaction_id"):
             result["transactionId"] = str(self.transaction_id)
         elif include_empty:
             result["transactionId"] = str()
-        if hasattr(self, "receipt_data") and self.receipt_data:
+        if hasattr(self, "receipt_data"):
             result["receiptData"] = str(self.receipt_data)
         elif include_empty:
             result["receiptData"] = str()
-        if hasattr(self, "exclude_old_transactions") and self.exclude_old_transactions:
+        if hasattr(self, "exclude_old_transactions"):
             result["excludeOldTransactions"] = bool(self.exclude_old_transactions)
         elif include_empty:
             result["excludeOldTransactions"] = bool()
-        if hasattr(self, "region") and self.region:
+        if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = str()
-        if hasattr(self, "language") and self.language:
+        if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = str()

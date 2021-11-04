@@ -56,11 +56,11 @@ class ModelsAdminVerifyMessageProfanityRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "message") and self.message:
+        if hasattr(self, "message"):
             result["message"] = str(self.message)
         elif include_empty:
             result["message"] = str()
-        if hasattr(self, "profanity_level") and self.profanity_level:
+        if hasattr(self, "profanity_level"):
             result["profanityLevel"] = str(self.profanity_level)
         elif include_empty:
             result["profanityLevel"] = str()

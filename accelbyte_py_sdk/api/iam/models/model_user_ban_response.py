@@ -121,47 +121,47 @@ class ModelUserBanResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "ban") and self.ban:
+        if hasattr(self, "ban"):
             result["Ban"] = str(self.ban)
         elif include_empty:
             result["Ban"] = str()
-        if hasattr(self, "ban_id") and self.ban_id:
+        if hasattr(self, "ban_id"):
             result["BanId"] = str(self.ban_id)
         elif include_empty:
             result["BanId"] = str()
-        if hasattr(self, "banned_by") and self.banned_by:
+        if hasattr(self, "banned_by"):
             result["BannedBy"] = self.banned_by.to_dict(include_empty=include_empty)
         elif include_empty:
             result["BannedBy"] = BannedBy()
-        if hasattr(self, "comment") and self.comment:
+        if hasattr(self, "comment"):
             result["Comment"] = str(self.comment)
         elif include_empty:
             result["Comment"] = str()
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["CreatedAt"] = str(self.created_at)
         elif include_empty:
             result["CreatedAt"] = str()
-        if hasattr(self, "disabled_date") and self.disabled_date:
+        if hasattr(self, "disabled_date"):
             result["DisabledDate"] = str(self.disabled_date)
         elif include_empty:
             result["DisabledDate"] = str()
-        if hasattr(self, "enabled") and self.enabled:
+        if hasattr(self, "enabled"):
             result["Enabled"] = bool(self.enabled)
         elif include_empty:
             result["Enabled"] = bool()
-        if hasattr(self, "end_date") and self.end_date:
+        if hasattr(self, "end_date"):
             result["EndDate"] = str(self.end_date)
         elif include_empty:
             result["EndDate"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["Namespace"] = str(self.namespace)
         elif include_empty:
             result["Namespace"] = str()
-        if hasattr(self, "reason") and self.reason:
+        if hasattr(self, "reason"):
             result["Reason"] = str(self.reason)
         elif include_empty:
             result["Reason"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["UserId"] = str(self.user_id)
         elif include_empty:
             result["UserId"] = str()

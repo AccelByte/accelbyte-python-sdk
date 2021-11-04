@@ -56,11 +56,11 @@ class ModelsAddPlayerRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "as_spectator") and self.as_spectator:
+        if hasattr(self, "as_spectator"):
             result["as_spectator"] = bool(self.as_spectator)
         elif include_empty:
             result["as_spectator"] = bool()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["user_id"] = str(self.user_id)
         elif include_empty:
             result["user_id"] = str()

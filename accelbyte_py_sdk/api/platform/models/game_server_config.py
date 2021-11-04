@@ -63,15 +63,15 @@ class GameServerConfig(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "private_key") and self.private_key:
+        if hasattr(self, "private_key"):
             result["privateKey"] = str(self.private_key)
         elif include_empty:
             result["privateKey"] = str()
-        if hasattr(self, "notify_url") and self.notify_url:
+        if hasattr(self, "notify_url"):
             result["notifyUrl"] = str(self.notify_url)
         elif include_empty:
             result["notifyUrl"] = str()
-        if hasattr(self, "dry_run") and self.dry_run:
+        if hasattr(self, "dry_run"):
             result["dryRun"] = bool(self.dry_run)
         elif include_empty:
             result["dryRun"] = bool()

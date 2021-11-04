@@ -79,23 +79,23 @@ class AccountcommonUserSearchByPlatformIDResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "display_name") and self.display_name:
+        if hasattr(self, "display_name"):
             result["DisplayName"] = str(self.display_name)
         elif include_empty:
             result["DisplayName"] = str()
-        if hasattr(self, "email_address") and self.email_address:
+        if hasattr(self, "email_address"):
             result["EmailAddress"] = str(self.email_address)
         elif include_empty:
             result["EmailAddress"] = str()
-        if hasattr(self, "linked_platforms") and self.linked_platforms:
+        if hasattr(self, "linked_platforms"):
             result["LinkedPlatforms"] = [i0.to_dict(include_empty=include_empty) for i0 in self.linked_platforms]
         elif include_empty:
             result["LinkedPlatforms"] = []
-        if hasattr(self, "phone_number") and self.phone_number:
+        if hasattr(self, "phone_number"):
             result["PhoneNumber"] = str(self.phone_number)
         elif include_empty:
             result["PhoneNumber"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["UserId"] = str(self.user_id)
         elif include_empty:
             result["UserId"] = str()

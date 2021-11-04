@@ -63,15 +63,15 @@ class ModelResetPasswordRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "code") and self.code:
+        if hasattr(self, "code"):
             result["Code"] = str(self.code)
         elif include_empty:
             result["Code"] = str()
-        if hasattr(self, "login_id") and self.login_id:
+        if hasattr(self, "login_id"):
             result["LoginID"] = str(self.login_id)
         elif include_empty:
             result["LoginID"] = str()
-        if hasattr(self, "new_password") and self.new_password:
+        if hasattr(self, "new_password"):
             result["NewPassword"] = str(self.new_password)
         elif include_empty:
             result["NewPassword"] = str()

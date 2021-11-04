@@ -119,47 +119,47 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "acsurl") and self.acsurl:
+        if hasattr(self, "acsurl"):
             result["ACSURL"] = str(self.acsurl)
         elif include_empty:
             result["ACSURL"] = str()
-        if hasattr(self, "aws_cognito_region") and self.aws_cognito_region:
+        if hasattr(self, "aws_cognito_region"):
             result["AWSCognitoRegion"] = str(self.aws_cognito_region)
         elif include_empty:
             result["AWSCognitoRegion"] = str()
-        if hasattr(self, "aws_cognito_user_pool") and self.aws_cognito_user_pool:
+        if hasattr(self, "aws_cognito_user_pool"):
             result["AWSCognitoUserPool"] = str(self.aws_cognito_user_pool)
         elif include_empty:
             result["AWSCognitoUserPool"] = str()
-        if hasattr(self, "app_id") and self.app_id:
+        if hasattr(self, "app_id"):
             result["AppId"] = str(self.app_id)
         elif include_empty:
             result["AppId"] = str()
-        if hasattr(self, "client_id") and self.client_id:
+        if hasattr(self, "client_id"):
             result["ClientId"] = str(self.client_id)
         elif include_empty:
             result["ClientId"] = str()
-        if hasattr(self, "environment") and self.environment:
+        if hasattr(self, "environment"):
             result["Environment"] = str(self.environment)
         elif include_empty:
             result["Environment"] = str()
-        if hasattr(self, "federation_metadata_url") and self.federation_metadata_url:
+        if hasattr(self, "federation_metadata_url"):
             result["FederationMetadataURL"] = str(self.federation_metadata_url)
         elif include_empty:
             result["FederationMetadataURL"] = str()
-        if hasattr(self, "is_active") and self.is_active:
+        if hasattr(self, "is_active"):
             result["IsActive"] = bool(self.is_active)
         elif include_empty:
             result["IsActive"] = bool()
-        if hasattr(self, "organization_id") and self.organization_id:
+        if hasattr(self, "organization_id"):
             result["OrganizationId"] = str(self.organization_id)
         elif include_empty:
             result["OrganizationId"] = str()
-        if hasattr(self, "redirect_uri") and self.redirect_uri:
+        if hasattr(self, "redirect_uri"):
             result["RedirectUri"] = str(self.redirect_uri)
         elif include_empty:
             result["RedirectUri"] = str()
-        if hasattr(self, "secret") and self.secret:
+        if hasattr(self, "secret"):
             result["Secret"] = str(self.secret)
         elif include_empty:
             result["Secret"] = str()

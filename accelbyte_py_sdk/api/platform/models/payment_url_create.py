@@ -77,23 +77,23 @@ class PaymentUrlCreate(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "payment_order_no") and self.payment_order_no:
+        if hasattr(self, "payment_order_no"):
             result["paymentOrderNo"] = str(self.payment_order_no)
         elif include_empty:
             result["paymentOrderNo"] = str()
-        if hasattr(self, "payment_provider") and self.payment_provider:
+        if hasattr(self, "payment_provider"):
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
             result["paymentProvider"] = str()
-        if hasattr(self, "zip_code") and self.zip_code:
+        if hasattr(self, "zip_code"):
             result["zipCode"] = str(self.zip_code)
         elif include_empty:
             result["zipCode"] = str()
-        if hasattr(self, "return_url") and self.return_url:
+        if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
             result["returnUrl"] = str()
-        if hasattr(self, "ui") and self.ui:
+        if hasattr(self, "ui"):
             result["ui"] = str(self.ui)
         elif include_empty:
             result["ui"] = str()

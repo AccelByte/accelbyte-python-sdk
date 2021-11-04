@@ -70,19 +70,19 @@ class GoogleIAPConfigInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "application_name") and self.application_name:
+        if hasattr(self, "application_name"):
             result["applicationName"] = str(self.application_name)
         elif include_empty:
             result["applicationName"] = str()
-        if hasattr(self, "service_account_id") and self.service_account_id:
+        if hasattr(self, "service_account_id"):
             result["serviceAccountId"] = str(self.service_account_id)
         elif include_empty:
             result["serviceAccountId"] = str()
-        if hasattr(self, "p12_file_name") and self.p12_file_name:
+        if hasattr(self, "p12_file_name"):
             result["p12FileName"] = str(self.p12_file_name)
         elif include_empty:
             result["p12FileName"] = str()

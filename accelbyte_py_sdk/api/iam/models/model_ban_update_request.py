@@ -56,11 +56,11 @@ class ModelBanUpdateRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "enabled") and self.enabled:
+        if hasattr(self, "enabled"):
             result["enabled"] = bool(self.enabled)
         elif include_empty:
             result["enabled"] = bool()
-        if hasattr(self, "skip_notif") and self.skip_notif:
+        if hasattr(self, "skip_notif"):
             result["skipNotif"] = bool(self.skip_notif)
         elif include_empty:
             result["skipNotif"] = bool()

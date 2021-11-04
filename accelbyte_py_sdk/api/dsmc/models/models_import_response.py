@@ -56,11 +56,11 @@ class ModelsImportResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "affected") and self.affected:
+        if hasattr(self, "affected"):
             result["affected"] = [str(i0) for i0 in self.affected]
         elif include_empty:
             result["affected"] = []
-        if hasattr(self, "failed") and self.failed:
+        if hasattr(self, "failed"):
             result["failed"] = [str(i0) for i0 in self.failed]
         elif include_empty:
             result["failed"] = []

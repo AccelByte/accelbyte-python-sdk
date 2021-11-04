@@ -56,11 +56,11 @@ class ModelAgeRestrictionResponseV3(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "age_restriction") and self.age_restriction:
+        if hasattr(self, "age_restriction"):
             result["ageRestriction"] = int(self.age_restriction)
         elif include_empty:
             result["ageRestriction"] = int()
-        if hasattr(self, "enable") and self.enable:
+        if hasattr(self, "enable"):
             result["enable"] = bool(self.enable)
         elif include_empty:
             result["enable"] = bool()

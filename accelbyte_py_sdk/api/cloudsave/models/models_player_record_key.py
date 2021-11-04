@@ -56,11 +56,11 @@ class ModelsPlayerRecordKey(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "key") and self.key:
+        if hasattr(self, "key"):
             result["key"] = str(self.key)
         elif include_empty:
             result["key"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["user_id"] = str(self.user_id)
         elif include_empty:
             result["user_id"] = str()

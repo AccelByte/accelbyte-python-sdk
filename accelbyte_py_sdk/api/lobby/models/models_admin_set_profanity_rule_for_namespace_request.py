@@ -49,7 +49,7 @@ class ModelsAdminSetProfanityRuleForNamespaceRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "rule") and self.rule:
+        if hasattr(self, "rule"):
             result["rule"] = str(self.rule)
         elif include_empty:
             result["rule"] = str()

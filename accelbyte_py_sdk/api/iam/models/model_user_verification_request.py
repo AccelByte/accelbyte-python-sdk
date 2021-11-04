@@ -63,15 +63,15 @@ class ModelUserVerificationRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "code") and self.code:
+        if hasattr(self, "code"):
             result["Code"] = str(self.code)
         elif include_empty:
             result["Code"] = str()
-        if hasattr(self, "contact_type") and self.contact_type:
+        if hasattr(self, "contact_type"):
             result["ContactType"] = str(self.contact_type)
         elif include_empty:
             result["ContactType"] = str()
-        if hasattr(self, "language_tag") and self.language_tag:
+        if hasattr(self, "language_tag"):
             result["LanguageTag"] = str(self.language_tag)
         elif include_empty:
             result["LanguageTag"] = str()

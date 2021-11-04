@@ -56,11 +56,11 @@ class ModelsConcurrentRecordRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()
-        if hasattr(self, "value") and self.value:
+        if hasattr(self, "value"):
             result["value"] = {str(k0): v0 for k0, v0 in self.value.items()}
         elif include_empty:
             result["value"] = {}

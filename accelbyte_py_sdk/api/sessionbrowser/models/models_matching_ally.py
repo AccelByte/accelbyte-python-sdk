@@ -51,7 +51,7 @@ class ModelsMatchingAlly(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "matching_parties") and self.matching_parties:
+        if hasattr(self, "matching_parties"):
             result["matching_parties"] = [i0.to_dict(include_empty=include_empty) for i0 in self.matching_parties]
         elif include_empty:
             result["matching_parties"] = []

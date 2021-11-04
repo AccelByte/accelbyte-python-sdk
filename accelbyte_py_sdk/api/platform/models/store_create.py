@@ -84,27 +84,27 @@ class StoreCreate(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "title") and self.title:
+        if hasattr(self, "title"):
             result["title"] = str(self.title)
         elif include_empty:
             result["title"] = str()
-        if hasattr(self, "description") and self.description:
+        if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = str()
-        if hasattr(self, "supported_languages") and self.supported_languages:
+        if hasattr(self, "supported_languages"):
             result["supportedLanguages"] = [str(i0) for i0 in self.supported_languages]
         elif include_empty:
             result["supportedLanguages"] = []
-        if hasattr(self, "supported_regions") and self.supported_regions:
+        if hasattr(self, "supported_regions"):
             result["supportedRegions"] = [str(i0) for i0 in self.supported_regions]
         elif include_empty:
             result["supportedRegions"] = []
-        if hasattr(self, "default_region") and self.default_region:
+        if hasattr(self, "default_region"):
             result["defaultRegion"] = str(self.default_region)
         elif include_empty:
             result["defaultRegion"] = str()
-        if hasattr(self, "default_language") and self.default_language:
+        if hasattr(self, "default_language"):
             result["defaultLanguage"] = str(self.default_language)
         elif include_empty:
             result["defaultLanguage"] = str()

@@ -51,7 +51,7 @@ class AccountcommonBanReasonsV3(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "reasons") and self.reasons:
+        if hasattr(self, "reasons"):
             result["reasons"] = [i0.to_dict(include_empty=include_empty) for i0 in self.reasons]
         elif include_empty:
             result["reasons"] = []

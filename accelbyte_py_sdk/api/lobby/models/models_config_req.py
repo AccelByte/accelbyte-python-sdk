@@ -112,15 +112,15 @@ class ModelsConfigReq(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "auto_kick_on_disconnect") and self.auto_kick_on_disconnect:
+        if hasattr(self, "auto_kick_on_disconnect"):
             result["autoKickOnDisconnect"] = bool(self.auto_kick_on_disconnect)
         elif include_empty:
             result["autoKickOnDisconnect"] = bool()
-        if hasattr(self, "chat_rate_limit_burst") and self.chat_rate_limit_burst:
+        if hasattr(self, "chat_rate_limit_burst"):
             result["chatRateLimitBurst"] = int(self.chat_rate_limit_burst)
         elif include_empty:
             result["chatRateLimitBurst"] = int()
-        if hasattr(self, "chat_rate_limit_duration") and self.chat_rate_limit_duration:
+        if hasattr(self, "chat_rate_limit_duration"):
             result["chatRateLimitDuration"] = int(self.chat_rate_limit_duration)
         elif include_empty:
             result["chatRateLimitDuration"] = int()
@@ -128,27 +128,27 @@ class ModelsConfigReq(Model):
             result["enableChat"] = bool(self.enable_chat)
         elif include_empty:
             result["enableChat"] = bool()
-        if hasattr(self, "entitlement_check") and self.entitlement_check:
+        if hasattr(self, "entitlement_check"):
             result["entitlementCheck"] = bool(self.entitlement_check)
         elif include_empty:
             result["entitlementCheck"] = bool()
-        if hasattr(self, "entitlement_item_id") and self.entitlement_item_id:
+        if hasattr(self, "entitlement_item_id"):
             result["entitlementItemID"] = str(self.entitlement_item_id)
         elif include_empty:
             result["entitlementItemID"] = str()
-        if hasattr(self, "general_rate_limit_burst") and self.general_rate_limit_burst:
+        if hasattr(self, "general_rate_limit_burst"):
             result["generalRateLimitBurst"] = int(self.general_rate_limit_burst)
         elif include_empty:
             result["generalRateLimitBurst"] = int()
-        if hasattr(self, "general_rate_limit_duration") and self.general_rate_limit_duration:
+        if hasattr(self, "general_rate_limit_duration"):
             result["generalRateLimitDuration"] = int(self.general_rate_limit_duration)
         elif include_empty:
             result["generalRateLimitDuration"] = int()
-        if hasattr(self, "max_party_member") and self.max_party_member:
+        if hasattr(self, "max_party_member"):
             result["maxPartyMember"] = int(self.max_party_member)
         elif include_empty:
             result["maxPartyMember"] = int()
-        if hasattr(self, "profanity_filter") and self.profanity_filter:
+        if hasattr(self, "profanity_filter"):
             result["profanityFilter"] = bool(self.profanity_filter)
         elif include_empty:
             result["profanityFilter"] = bool()

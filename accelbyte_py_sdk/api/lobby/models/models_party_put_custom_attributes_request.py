@@ -56,11 +56,11 @@ class ModelsPartyPUTCustomAttributesRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "custom_attribute") and self.custom_attribute:
+        if hasattr(self, "custom_attribute"):
             result["custom_attribute"] = {str(k0): v0 for k0, v0 in self.custom_attribute.items()}
         elif include_empty:
             result["custom_attribute"] = {}
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updatedAt"] = int(self.updated_at)
         elif include_empty:
             result["updatedAt"] = int()

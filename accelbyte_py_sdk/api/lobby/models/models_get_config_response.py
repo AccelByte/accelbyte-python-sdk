@@ -56,11 +56,11 @@ class ModelsGetConfigResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "api_key") and self.api_key:
+        if hasattr(self, "api_key"):
             result["apiKey"] = str(self.api_key)
         elif include_empty:
             result["apiKey"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()

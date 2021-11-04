@@ -49,7 +49,7 @@ class ModelsDefaultProvider(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "provider_name") and self.provider_name:
+        if hasattr(self, "provider_name"):
             result["provider_name"] = str(self.provider_name)
         elif include_empty:
             result["provider_name"] = str()

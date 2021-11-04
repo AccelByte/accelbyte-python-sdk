@@ -77,23 +77,23 @@ class ModelAssignedUserV4Response(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "assigned_namespaces") and self.assigned_namespaces:
+        if hasattr(self, "assigned_namespaces"):
             result["assignedNamespaces"] = [str(i0) for i0 in self.assigned_namespaces]
         elif include_empty:
             result["assignedNamespaces"] = []
-        if hasattr(self, "display_name") and self.display_name:
+        if hasattr(self, "display_name"):
             result["displayName"] = str(self.display_name)
         elif include_empty:
             result["displayName"] = str()
-        if hasattr(self, "email") and self.email:
+        if hasattr(self, "email"):
             result["email"] = str(self.email)
         elif include_empty:
             result["email"] = str()
-        if hasattr(self, "role_id") and self.role_id:
+        if hasattr(self, "role_id"):
             result["roleId"] = str(self.role_id)
         elif include_empty:
             result["roleId"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()

@@ -56,11 +56,11 @@ class ModelsUpdatePortRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "name") and self.name:
+        if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = str()
-        if hasattr(self, "port") and self.port:
+        if hasattr(self, "port"):
             result["port"] = int(self.port)
         elif include_empty:
             result["port"] = int()

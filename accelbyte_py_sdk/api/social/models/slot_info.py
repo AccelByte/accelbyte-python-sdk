@@ -140,59 +140,59 @@ class SlotInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "slot_id") and self.slot_id:
+        if hasattr(self, "slot_id"):
             result["slotId"] = str(self.slot_id)
         elif include_empty:
             result["slotId"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "label") and self.label:
+        if hasattr(self, "label"):
             result["label"] = str(self.label)
         elif include_empty:
             result["label"] = str()
-        if hasattr(self, "original_name") and self.original_name:
+        if hasattr(self, "original_name"):
             result["originalName"] = str(self.original_name)
         elif include_empty:
             result["originalName"] = str()
-        if hasattr(self, "stored_name") and self.stored_name:
+        if hasattr(self, "stored_name"):
             result["storedName"] = str(self.stored_name)
         elif include_empty:
             result["storedName"] = str()
-        if hasattr(self, "mime_type") and self.mime_type:
+        if hasattr(self, "mime_type"):
             result["mimeType"] = str(self.mime_type)
         elif include_empty:
             result["mimeType"] = str()
-        if hasattr(self, "size") and self.size:
+        if hasattr(self, "size"):
             result["size"] = int(self.size)
         elif include_empty:
             result["size"] = int()
-        if hasattr(self, "date_created") and self.date_created:
+        if hasattr(self, "date_created"):
             result["dateCreated"] = str(self.date_created)
         elif include_empty:
             result["dateCreated"] = str()
-        if hasattr(self, "date_modified") and self.date_modified:
+        if hasattr(self, "date_modified"):
             result["dateModified"] = str(self.date_modified)
         elif include_empty:
             result["dateModified"] = str()
-        if hasattr(self, "date_accessed") and self.date_accessed:
+        if hasattr(self, "date_accessed"):
             result["dateAccessed"] = str(self.date_accessed)
         elif include_empty:
             result["dateAccessed"] = str()
-        if hasattr(self, "checksum") and self.checksum:
+        if hasattr(self, "checksum"):
             result["checksum"] = str(self.checksum)
         elif include_empty:
             result["checksum"] = str()
-        if hasattr(self, "tags") and self.tags:
+        if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
             result["tags"] = []
-        if hasattr(self, "custom_attribute") and self.custom_attribute:
+        if hasattr(self, "custom_attribute"):
             result["customAttribute"] = str(self.custom_attribute)
         elif include_empty:
             result["customAttribute"] = str()

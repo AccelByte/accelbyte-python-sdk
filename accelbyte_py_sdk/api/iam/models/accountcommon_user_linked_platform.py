@@ -105,39 +105,39 @@ class AccountcommonUserLinkedPlatform(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "display_name") and self.display_name:
+        if hasattr(self, "display_name"):
             result["DisplayName"] = str(self.display_name)
         elif include_empty:
             result["DisplayName"] = str()
-        if hasattr(self, "email_address") and self.email_address:
+        if hasattr(self, "email_address"):
             result["EmailAddress"] = str(self.email_address)
         elif include_empty:
             result["EmailAddress"] = str()
-        if hasattr(self, "linked_at") and self.linked_at:
+        if hasattr(self, "linked_at"):
             result["LinkedAt"] = str(self.linked_at)
         elif include_empty:
             result["LinkedAt"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["Namespace"] = str(self.namespace)
         elif include_empty:
             result["Namespace"] = str()
-        if hasattr(self, "origin_namespace") and self.origin_namespace:
+        if hasattr(self, "origin_namespace"):
             result["OriginNamespace"] = str(self.origin_namespace)
         elif include_empty:
             result["OriginNamespace"] = str()
-        if hasattr(self, "platform_id") and self.platform_id:
+        if hasattr(self, "platform_id"):
             result["PlatformId"] = str(self.platform_id)
         elif include_empty:
             result["PlatformId"] = str()
-        if hasattr(self, "platform_user_id") and self.platform_user_id:
+        if hasattr(self, "platform_user_id"):
             result["PlatformUserId"] = str(self.platform_user_id)
         elif include_empty:
             result["PlatformUserId"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["UserId"] = str(self.user_id)
         elif include_empty:
             result["UserId"] = str()
-        if hasattr(self, "xuid") and self.xuid:
+        if hasattr(self, "xuid"):
             result["XUID"] = str(self.xuid)
         elif include_empty:
             result["XUID"] = str()

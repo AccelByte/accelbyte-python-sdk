@@ -86,27 +86,27 @@ class ClientmodelClientCreateRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "client_id") and self.client_id:
+        if hasattr(self, "client_id"):
             result["ClientId"] = str(self.client_id)
         elif include_empty:
             result["ClientId"] = str()
-        if hasattr(self, "client_name") and self.client_name:
+        if hasattr(self, "client_name"):
             result["ClientName"] = str(self.client_name)
         elif include_empty:
             result["ClientName"] = str()
-        if hasattr(self, "client_permissions") and self.client_permissions:
+        if hasattr(self, "client_permissions"):
             result["ClientPermissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.client_permissions]
         elif include_empty:
             result["ClientPermissions"] = []
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["Namespace"] = str(self.namespace)
         elif include_empty:
             result["Namespace"] = str()
-        if hasattr(self, "redirect_uri") and self.redirect_uri:
+        if hasattr(self, "redirect_uri"):
             result["RedirectUri"] = str(self.redirect_uri)
         elif include_empty:
             result["RedirectUri"] = str()
-        if hasattr(self, "secret") and self.secret:
+        if hasattr(self, "secret"):
             result["Secret"] = str(self.secret)
         elif include_empty:
             result["Secret"] = str()

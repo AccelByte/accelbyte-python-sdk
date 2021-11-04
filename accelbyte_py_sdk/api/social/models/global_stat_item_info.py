@@ -91,31 +91,31 @@ class GlobalStatItemInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "stat_code") and self.stat_code:
+        if hasattr(self, "stat_code"):
             result["statCode"] = str(self.stat_code)
         elif include_empty:
             result["statCode"] = str()
-        if hasattr(self, "stat_name") and self.stat_name:
+        if hasattr(self, "stat_name"):
             result["statName"] = str(self.stat_name)
         elif include_empty:
             result["statName"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "value") and self.value:
+        if hasattr(self, "value"):
             result["value"] = float(self.value)
         elif include_empty:
             result["value"] = float()
-        if hasattr(self, "tags") and self.tags:
+        if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
             result["tags"] = []
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()

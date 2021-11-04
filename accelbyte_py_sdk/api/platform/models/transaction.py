@@ -178,79 +178,79 @@ class Transaction(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "tx_id") and self.tx_id:
+        if hasattr(self, "tx_id"):
             result["txId"] = str(self.tx_id)
         elif include_empty:
             result["txId"] = str()
-        if hasattr(self, "amount") and self.amount:
+        if hasattr(self, "amount"):
             result["amount"] = int(self.amount)
         elif include_empty:
             result["amount"] = int()
-        if hasattr(self, "tax") and self.tax:
+        if hasattr(self, "tax"):
             result["tax"] = int(self.tax)
         elif include_empty:
             result["tax"] = int()
-        if hasattr(self, "vat") and self.vat:
+        if hasattr(self, "vat"):
             result["vat"] = int(self.vat)
         elif include_empty:
             result["vat"] = int()
-        if hasattr(self, "sales_tax") and self.sales_tax:
+        if hasattr(self, "sales_tax"):
             result["salesTax"] = int(self.sales_tax)
         elif include_empty:
             result["salesTax"] = int()
-        if hasattr(self, "payment_provider_fee") and self.payment_provider_fee:
+        if hasattr(self, "payment_provider_fee"):
             result["paymentProviderFee"] = int(self.payment_provider_fee)
         elif include_empty:
             result["paymentProviderFee"] = int()
-        if hasattr(self, "payment_method_fee") and self.payment_method_fee:
+        if hasattr(self, "payment_method_fee"):
             result["paymentMethodFee"] = int(self.payment_method_fee)
         elif include_empty:
             result["paymentMethodFee"] = int()
-        if hasattr(self, "currency") and self.currency:
+        if hasattr(self, "currency"):
             result["currency"] = self.currency.to_dict(include_empty=include_empty)
         elif include_empty:
             result["currency"] = CurrencySummary()
-        if hasattr(self, "type_") and self.type_:
+        if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = str()
-        if hasattr(self, "status") and self.status:
+        if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
-        if hasattr(self, "provider") and self.provider:
+        if hasattr(self, "provider"):
             result["provider"] = str(self.provider)
         elif include_empty:
             result["provider"] = str()
-        if hasattr(self, "payment_method") and self.payment_method:
+        if hasattr(self, "payment_method"):
             result["paymentMethod"] = str(self.payment_method)
         elif include_empty:
             result["paymentMethod"] = str()
-        if hasattr(self, "merchant_id") and self.merchant_id:
+        if hasattr(self, "merchant_id"):
             result["merchantId"] = str(self.merchant_id)
         elif include_empty:
             result["merchantId"] = str()
-        if hasattr(self, "ext_tx_id") and self.ext_tx_id:
+        if hasattr(self, "ext_tx_id"):
             result["extTxId"] = str(self.ext_tx_id)
         elif include_empty:
             result["extTxId"] = str()
-        if hasattr(self, "ext_status_code") and self.ext_status_code:
+        if hasattr(self, "ext_status_code"):
             result["extStatusCode"] = str(self.ext_status_code)
         elif include_empty:
             result["extStatusCode"] = str()
-        if hasattr(self, "ext_message") and self.ext_message:
+        if hasattr(self, "ext_message"):
             result["extMessage"] = str(self.ext_message)
         elif include_empty:
             result["extMessage"] = str()
-        if hasattr(self, "tx_end_time") and self.tx_end_time:
+        if hasattr(self, "tx_end_time"):
             result["txEndTime"] = str(self.tx_end_time)
         elif include_empty:
             result["txEndTime"] = str()
-        if hasattr(self, "additional_data") and self.additional_data:
+        if hasattr(self, "additional_data"):
             result["additionalData"] = self.additional_data.to_dict(include_empty=include_empty)
         elif include_empty:
             result["additionalData"] = AdditionalData()
-        if hasattr(self, "notified") and self.notified:
+        if hasattr(self, "notified"):
             result["notified"] = bool(self.notified)
         elif include_empty:
             result["notified"] = bool()

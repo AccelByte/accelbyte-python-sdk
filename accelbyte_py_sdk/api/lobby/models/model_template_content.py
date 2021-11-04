@@ -56,11 +56,11 @@ class ModelTemplateContent(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "draft") and self.draft:
+        if hasattr(self, "draft"):
             result["draft"] = str(self.draft)
         elif include_empty:
             result["draft"] = str()
-        if hasattr(self, "published") and self.published:
+        if hasattr(self, "published"):
             result["published"] = str(self.published)
         elif include_empty:
             result["published"] = str()

@@ -98,35 +98,35 @@ class CurrencyInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "currency_code") and self.currency_code:
+        if hasattr(self, "currency_code"):
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
             result["currencyCode"] = str()
-        if hasattr(self, "localization_descriptions") and self.localization_descriptions:
+        if hasattr(self, "localization_descriptions"):
             result["localizationDescriptions"] = {str(k0): str(v0) for k0, v0 in self.localization_descriptions.items()}
         elif include_empty:
             result["localizationDescriptions"] = {}
-        if hasattr(self, "currency_symbol") and self.currency_symbol:
+        if hasattr(self, "currency_symbol"):
             result["currencySymbol"] = str(self.currency_symbol)
         elif include_empty:
             result["currencySymbol"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "currency_type") and self.currency_type:
+        if hasattr(self, "currency_type"):
             result["currencyType"] = str(self.currency_type)
         elif include_empty:
             result["currencyType"] = str()
-        if hasattr(self, "decimals") and self.decimals:
+        if hasattr(self, "decimals"):
             result["decimals"] = int(self.decimals)
         elif include_empty:
             result["decimals"] = int()
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()

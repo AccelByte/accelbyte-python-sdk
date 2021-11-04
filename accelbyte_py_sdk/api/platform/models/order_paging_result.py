@@ -66,15 +66,15 @@ class OrderPagingResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "data") and self.data:
+        if hasattr(self, "data"):
             result["data"] = [i0.to_dict(include_empty=include_empty) for i0 in self.data]
         elif include_empty:
             result["data"] = []
-        if hasattr(self, "paging") and self.paging:
+        if hasattr(self, "paging"):
             result["paging"] = self.paging.to_dict(include_empty=include_empty)
         elif include_empty:
             result["paging"] = Paging()
-        if hasattr(self, "total") and self.total:
+        if hasattr(self, "total"):
             result["total"] = int(self.total)
         elif include_empty:
             result["total"] = int()

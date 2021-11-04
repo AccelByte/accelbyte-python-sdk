@@ -49,7 +49,7 @@ class ModelUpdateTemplateRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "template_content") and self.template_content:
+        if hasattr(self, "template_content"):
             result["templateContent"] = str(self.template_content)
         elif include_empty:
             result["templateContent"] = str()

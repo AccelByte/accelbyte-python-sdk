@@ -49,7 +49,7 @@ class TicketAcquireResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "values") and self.values:
+        if hasattr(self, "values"):
             result["values"] = [str(i0) for i0 in self.values]
         elif include_empty:
             result["values"] = []

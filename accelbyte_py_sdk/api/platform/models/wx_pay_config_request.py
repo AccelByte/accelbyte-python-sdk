@@ -70,19 +70,19 @@ class WxPayConfigRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "app_id") and self.app_id:
+        if hasattr(self, "app_id"):
             result["appId"] = str(self.app_id)
         elif include_empty:
             result["appId"] = str()
-        if hasattr(self, "mchid") and self.mchid:
+        if hasattr(self, "mchid"):
             result["mchid"] = str(self.mchid)
         elif include_empty:
             result["mchid"] = str()
-        if hasattr(self, "key") and self.key:
+        if hasattr(self, "key"):
             result["key"] = str(self.key)
         elif include_empty:
             result["key"] = str()
-        if hasattr(self, "return_url") and self.return_url:
+        if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
             result["returnUrl"] = str()

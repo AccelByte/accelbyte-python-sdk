@@ -59,11 +59,11 @@ class ModelsActiveMatchmakingGameResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "pagination") and self.pagination:
+        if hasattr(self, "pagination"):
             result["pagination"] = self.pagination.to_dict(include_empty=include_empty)
         elif include_empty:
             result["pagination"] = ModelsPagingCursor()
-        if hasattr(self, "sessions") and self.sessions:
+        if hasattr(self, "sessions"):
             result["sessions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.sessions]
         elif include_empty:
             result["sessions"] = []

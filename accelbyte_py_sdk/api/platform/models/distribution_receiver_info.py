@@ -70,19 +70,19 @@ class DistributionReceiverInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "ext_user_id") and self.ext_user_id:
+        if hasattr(self, "ext_user_id"):
             result["extUserId"] = str(self.ext_user_id)
         elif include_empty:
             result["extUserId"] = str()
-        if hasattr(self, "attributes") and self.attributes:
+        if hasattr(self, "attributes"):
             result["attributes"] = {str(k0): str(v0) for k0, v0 in self.attributes.items()}
         elif include_empty:
             result["attributes"] = {}

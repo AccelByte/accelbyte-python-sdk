@@ -70,19 +70,19 @@ class BulkStatItemUpdate(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "stat_code") and self.stat_code:
+        if hasattr(self, "stat_code"):
             result["statCode"] = str(self.stat_code)
         elif include_empty:
             result["statCode"] = str()
-        if hasattr(self, "update_strategy") and self.update_strategy:
+        if hasattr(self, "update_strategy"):
             result["updateStrategy"] = str(self.update_strategy)
         elif include_empty:
             result["updateStrategy"] = str()
-        if hasattr(self, "value") and self.value:
+        if hasattr(self, "value"):
             result["value"] = float(self.value)
         elif include_empty:
             result["value"] = float()
-        if hasattr(self, "additional_data") and self.additional_data:
+        if hasattr(self, "additional_data"):
             result["additionalData"] = {str(k0): v0 for k0, v0 in self.additional_data.items()}
         elif include_empty:
             result["additionalData"] = {}

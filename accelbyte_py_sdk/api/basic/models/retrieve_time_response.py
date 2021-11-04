@@ -49,7 +49,7 @@ class RetrieveTimeResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "current_time") and self.current_time:
+        if hasattr(self, "current_time"):
             result["currentTime"] = str(self.current_time)
         elif include_empty:
             result["currentTime"] = str()

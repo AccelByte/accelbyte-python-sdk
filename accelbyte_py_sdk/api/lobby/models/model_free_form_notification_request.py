@@ -56,11 +56,11 @@ class ModelFreeFormNotificationRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "message") and self.message:
+        if hasattr(self, "message"):
             result["message"] = str(self.message)
         elif include_empty:
             result["message"] = str()
-        if hasattr(self, "topic") and self.topic:
+        if hasattr(self, "topic"):
             result["topic"] = str(self.topic)
         elif include_empty:
             result["topic"] = str()

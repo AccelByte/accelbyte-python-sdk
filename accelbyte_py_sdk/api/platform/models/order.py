@@ -353,179 +353,179 @@ class Order(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "rvn") and self.rvn:
+        if hasattr(self, "rvn"):
             result["rvn"] = int(self.rvn)
         elif include_empty:
             result["rvn"] = int()
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()
-        if hasattr(self, "order_no") and self.order_no:
+        if hasattr(self, "order_no"):
             result["orderNo"] = str(self.order_no)
         elif include_empty:
             result["orderNo"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "payment_order_no") and self.payment_order_no:
+        if hasattr(self, "payment_order_no"):
             result["paymentOrderNo"] = str(self.payment_order_no)
         elif include_empty:
             result["paymentOrderNo"] = str()
-        if hasattr(self, "status") and self.status:
+        if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
-        if hasattr(self, "sandbox") and self.sandbox:
+        if hasattr(self, "sandbox"):
             result["sandbox"] = bool(self.sandbox)
         elif include_empty:
             result["sandbox"] = bool()
-        if hasattr(self, "item_id") and self.item_id:
+        if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
-        if hasattr(self, "quantity") and self.quantity:
+        if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
             result["quantity"] = int()
-        if hasattr(self, "price") and self.price:
+        if hasattr(self, "price"):
             result["price"] = int(self.price)
         elif include_empty:
             result["price"] = int()
-        if hasattr(self, "discounted_price") and self.discounted_price:
+        if hasattr(self, "discounted_price"):
             result["discountedPrice"] = int(self.discounted_price)
         elif include_empty:
             result["discountedPrice"] = int()
-        if hasattr(self, "payment_provider") and self.payment_provider:
+        if hasattr(self, "payment_provider"):
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
             result["paymentProvider"] = str()
-        if hasattr(self, "payment_method") and self.payment_method:
+        if hasattr(self, "payment_method"):
             result["paymentMethod"] = str(self.payment_method)
         elif include_empty:
             result["paymentMethod"] = str()
-        if hasattr(self, "tax") and self.tax:
+        if hasattr(self, "tax"):
             result["tax"] = int(self.tax)
         elif include_empty:
             result["tax"] = int()
-        if hasattr(self, "vat") and self.vat:
+        if hasattr(self, "vat"):
             result["vat"] = int(self.vat)
         elif include_empty:
             result["vat"] = int()
-        if hasattr(self, "sales_tax") and self.sales_tax:
+        if hasattr(self, "sales_tax"):
             result["salesTax"] = int(self.sales_tax)
         elif include_empty:
             result["salesTax"] = int()
-        if hasattr(self, "payment_provider_fee") and self.payment_provider_fee:
+        if hasattr(self, "payment_provider_fee"):
             result["paymentProviderFee"] = int(self.payment_provider_fee)
         elif include_empty:
             result["paymentProviderFee"] = int()
-        if hasattr(self, "payment_method_fee") and self.payment_method_fee:
+        if hasattr(self, "payment_method_fee"):
             result["paymentMethodFee"] = int(self.payment_method_fee)
         elif include_empty:
             result["paymentMethodFee"] = int()
-        if hasattr(self, "currency") and self.currency:
+        if hasattr(self, "currency"):
             result["currency"] = self.currency.to_dict(include_empty=include_empty)
         elif include_empty:
             result["currency"] = CurrencySummary()
-        if hasattr(self, "payment_station_url") and self.payment_station_url:
+        if hasattr(self, "payment_station_url"):
             result["paymentStationUrl"] = str(self.payment_station_url)
         elif include_empty:
             result["paymentStationUrl"] = str()
-        if hasattr(self, "status_reason") and self.status_reason:
+        if hasattr(self, "status_reason"):
             result["statusReason"] = str(self.status_reason)
         elif include_empty:
             result["statusReason"] = str()
-        if hasattr(self, "created_time") and self.created_time:
+        if hasattr(self, "created_time"):
             result["createdTime"] = str(self.created_time)
         elif include_empty:
             result["createdTime"] = str()
-        if hasattr(self, "charged_time") and self.charged_time:
+        if hasattr(self, "charged_time"):
             result["chargedTime"] = str(self.charged_time)
         elif include_empty:
             result["chargedTime"] = str()
-        if hasattr(self, "fulfilled_time") and self.fulfilled_time:
+        if hasattr(self, "fulfilled_time"):
             result["fulfilledTime"] = str(self.fulfilled_time)
         elif include_empty:
             result["fulfilledTime"] = str()
-        if hasattr(self, "refunded_time") and self.refunded_time:
+        if hasattr(self, "refunded_time"):
             result["refundedTime"] = str(self.refunded_time)
         elif include_empty:
             result["refundedTime"] = str()
-        if hasattr(self, "chargeback_time") and self.chargeback_time:
+        if hasattr(self, "chargeback_time"):
             result["chargebackTime"] = str(self.chargeback_time)
         elif include_empty:
             result["chargebackTime"] = str()
-        if hasattr(self, "chargeback_reversed_time") and self.chargeback_reversed_time:
+        if hasattr(self, "chargeback_reversed_time"):
             result["chargebackReversedTime"] = str(self.chargeback_reversed_time)
         elif include_empty:
             result["chargebackReversedTime"] = str()
-        if hasattr(self, "return_url") and self.return_url:
+        if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
             result["returnUrl"] = str()
-        if hasattr(self, "ext") and self.ext:
+        if hasattr(self, "ext"):
             result["ext"] = {str(k0): v0 for k0, v0 in self.ext.items()}
         elif include_empty:
             result["ext"] = {}
-        if hasattr(self, "item_snapshot") and self.item_snapshot:
+        if hasattr(self, "item_snapshot"):
             result["itemSnapshot"] = self.item_snapshot.to_dict(include_empty=include_empty)
         elif include_empty:
             result["itemSnapshot"] = ItemSnapshot()
-        if hasattr(self, "region") and self.region:
+        if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = str()
-        if hasattr(self, "language") and self.language:
+        if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = str()
-        if hasattr(self, "count_namespace") and self.count_namespace:
+        if hasattr(self, "count_namespace"):
             result["countNamespace"] = str(self.count_namespace)
         elif include_empty:
             result["countNamespace"] = str()
-        if hasattr(self, "count_item_id") and self.count_item_id:
+        if hasattr(self, "count_item_id"):
             result["countItemId"] = str(self.count_item_id)
         elif include_empty:
             result["countItemId"] = str()
-        if hasattr(self, "count_user_id") and self.count_user_id:
+        if hasattr(self, "count_user_id"):
             result["countUserId"] = str(self.count_user_id)
         elif include_empty:
             result["countUserId"] = str()
-        if hasattr(self, "expire_time") and self.expire_time:
+        if hasattr(self, "expire_time"):
             result["expireTime"] = str(self.expire_time)
         elif include_empty:
             result["expireTime"] = str()
-        if hasattr(self, "payment_remain_seconds") and self.payment_remain_seconds:
+        if hasattr(self, "payment_remain_seconds"):
             result["paymentRemainSeconds"] = int(self.payment_remain_seconds)
         elif include_empty:
             result["paymentRemainSeconds"] = int()
-        if hasattr(self, "charged") and self.charged:
+        if hasattr(self, "charged"):
             result["charged"] = bool(self.charged)
         elif include_empty:
             result["charged"] = bool()
-        if hasattr(self, "free") and self.free:
+        if hasattr(self, "free"):
             result["free"] = bool(self.free)
         elif include_empty:
             result["free"] = bool()
-        if hasattr(self, "total_tax") and self.total_tax:
+        if hasattr(self, "total_tax"):
             result["totalTax"] = int(self.total_tax)
         elif include_empty:
             result["totalTax"] = int()
-        if hasattr(self, "total_price") and self.total_price:
+        if hasattr(self, "total_price"):
             result["totalPrice"] = int(self.total_price)
         elif include_empty:
             result["totalPrice"] = int()
-        if hasattr(self, "subtotal_price") and self.subtotal_price:
+        if hasattr(self, "subtotal_price"):
             result["subtotalPrice"] = int(self.subtotal_price)
         elif include_empty:
             result["subtotalPrice"] = int()

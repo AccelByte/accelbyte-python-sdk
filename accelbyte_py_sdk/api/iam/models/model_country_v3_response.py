@@ -70,19 +70,19 @@ class ModelCountryV3Response(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "age_restriction") and self.age_restriction:
+        if hasattr(self, "age_restriction"):
             result["ageRestriction"] = int(self.age_restriction)
         elif include_empty:
             result["ageRestriction"] = int()
-        if hasattr(self, "country_code") and self.country_code:
+        if hasattr(self, "country_code"):
             result["countryCode"] = str(self.country_code)
         elif include_empty:
             result["countryCode"] = str()
-        if hasattr(self, "country_name") and self.country_name:
+        if hasattr(self, "country_name"):
             result["countryName"] = str(self.country_name)
         elif include_empty:
             result["countryName"] = str()
-        if hasattr(self, "enable") and self.enable:
+        if hasattr(self, "enable"):
             result["enable"] = bool(self.enable)
         elif include_empty:
             result["enable"] = bool()

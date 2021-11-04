@@ -59,11 +59,11 @@ class ModelsListPodConfigResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "paging") and self.paging:
+        if hasattr(self, "paging"):
             result["paging"] = self.paging.to_dict(include_empty=include_empty)
         elif include_empty:
             result["paging"] = ModelsPagingCursor()
-        if hasattr(self, "pod_configs") and self.pod_configs:
+        if hasattr(self, "pod_configs"):
             result["pod_configs"] = [i0.to_dict(include_empty=include_empty) for i0 in self.pod_configs]
         elif include_empty:
             result["pod_configs"] = []

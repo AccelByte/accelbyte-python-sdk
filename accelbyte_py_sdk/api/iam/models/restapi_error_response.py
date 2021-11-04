@@ -56,11 +56,11 @@ class RestapiErrorResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "code") and self.code:
+        if hasattr(self, "code"):
             result["Code"] = int(self.code)
         elif include_empty:
             result["Code"] = int()
-        if hasattr(self, "message") and self.message:
+        if hasattr(self, "message"):
             result["Message"] = str(self.message)
         elif include_empty:
             result["Message"] = str()

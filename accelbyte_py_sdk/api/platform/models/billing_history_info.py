@@ -213,99 +213,99 @@ class BillingHistoryInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "recurring_order_no") and self.recurring_order_no:
+        if hasattr(self, "recurring_order_no"):
             result["recurringOrderNo"] = str(self.recurring_order_no)
         elif include_empty:
             result["recurringOrderNo"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "subscription_id") and self.subscription_id:
+        if hasattr(self, "subscription_id"):
             result["subscriptionId"] = str(self.subscription_id)
         elif include_empty:
             result["subscriptionId"] = str()
-        if hasattr(self, "item_id") and self.item_id:
+        if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
-        if hasattr(self, "sku") and self.sku:
+        if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
             result["sku"] = str()
-        if hasattr(self, "title") and self.title:
+        if hasattr(self, "title"):
             result["title"] = str(self.title)
         elif include_empty:
             result["title"] = str()
-        if hasattr(self, "description") and self.description:
+        if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = str()
-        if hasattr(self, "amount") and self.amount:
+        if hasattr(self, "amount"):
             result["amount"] = int(self.amount)
         elif include_empty:
             result["amount"] = int()
-        if hasattr(self, "total_tax") and self.total_tax:
+        if hasattr(self, "total_tax"):
             result["totalTax"] = int(self.total_tax)
         elif include_empty:
             result["totalTax"] = int()
-        if hasattr(self, "total_price") and self.total_price:
+        if hasattr(self, "total_price"):
             result["totalPrice"] = int(self.total_price)
         elif include_empty:
             result["totalPrice"] = int()
-        if hasattr(self, "subtotal_price") and self.subtotal_price:
+        if hasattr(self, "subtotal_price"):
             result["subtotalPrice"] = int(self.subtotal_price)
         elif include_empty:
             result["subtotalPrice"] = int()
-        if hasattr(self, "sandbox") and self.sandbox:
+        if hasattr(self, "sandbox"):
             result["sandbox"] = bool(self.sandbox)
         elif include_empty:
             result["sandbox"] = bool()
-        if hasattr(self, "currency") and self.currency:
+        if hasattr(self, "currency"):
             result["currency"] = self.currency.to_dict(include_empty=include_empty)
         elif include_empty:
             result["currency"] = CurrencySummary()
-        if hasattr(self, "payment_order_no") and self.payment_order_no:
+        if hasattr(self, "payment_order_no"):
             result["paymentOrderNo"] = str(self.payment_order_no)
         elif include_empty:
             result["paymentOrderNo"] = str()
-        if hasattr(self, "billing_account") and self.billing_account:
+        if hasattr(self, "billing_account"):
             result["billingAccount"] = self.billing_account.to_dict(include_empty=include_empty)
         elif include_empty:
             result["billingAccount"] = BillingAccount()
-        if hasattr(self, "status") and self.status:
+        if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
-        if hasattr(self, "status_reason") and self.status_reason:
+        if hasattr(self, "status_reason"):
             result["statusReason"] = str(self.status_reason)
         elif include_empty:
             result["statusReason"] = str()
-        if hasattr(self, "tx_end_time") and self.tx_end_time:
+        if hasattr(self, "tx_end_time"):
             result["txEndTime"] = str(self.tx_end_time)
         elif include_empty:
             result["txEndTime"] = str()
-        if hasattr(self, "ext_tx_id") and self.ext_tx_id:
+        if hasattr(self, "ext_tx_id"):
             result["extTxId"] = str(self.ext_tx_id)
         elif include_empty:
             result["extTxId"] = str()
-        if hasattr(self, "change_billing_account") and self.change_billing_account:
+        if hasattr(self, "change_billing_account"):
             result["changeBillingAccount"] = bool(self.change_billing_account)
         elif include_empty:
             result["changeBillingAccount"] = bool()
-        if hasattr(self, "retry_attempted") and self.retry_attempted:
+        if hasattr(self, "retry_attempted"):
             result["retryAttempted"] = int(self.retry_attempted)
         elif include_empty:
             result["retryAttempted"] = int()
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()

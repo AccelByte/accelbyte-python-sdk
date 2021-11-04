@@ -56,11 +56,11 @@ class AccountcommonClientPermission(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "action") and self.action:
+        if hasattr(self, "action"):
             result["Action"] = int(self.action)
         elif include_empty:
             result["Action"] = int()
-        if hasattr(self, "resource") and self.resource:
+        if hasattr(self, "resource"):
             result["Resource"] = str(self.resource)
         elif include_empty:
             result["Resource"] = str()

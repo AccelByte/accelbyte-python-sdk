@@ -56,11 +56,11 @@ class PlayStationIAPConfigInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "environment") and self.environment:
+        if hasattr(self, "environment"):
             result["environment"] = str(self.environment)
         elif include_empty:
             result["environment"] = str()

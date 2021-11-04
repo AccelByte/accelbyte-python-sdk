@@ -79,23 +79,23 @@ class ModelRoleResponseV3(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "admin_role") and self.admin_role:
+        if hasattr(self, "admin_role"):
             result["adminRole"] = bool(self.admin_role)
         elif include_empty:
             result["adminRole"] = bool()
-        if hasattr(self, "is_wildcard") and self.is_wildcard:
+        if hasattr(self, "is_wildcard"):
             result["isWildcard"] = bool(self.is_wildcard)
         elif include_empty:
             result["isWildcard"] = bool()
-        if hasattr(self, "permissions") and self.permissions:
+        if hasattr(self, "permissions"):
             result["permissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.permissions]
         elif include_empty:
             result["permissions"] = []
-        if hasattr(self, "role_id") and self.role_id:
+        if hasattr(self, "role_id"):
             result["roleId"] = str(self.role_id)
         elif include_empty:
             result["roleId"] = str()
-        if hasattr(self, "role_name") and self.role_name:
+        if hasattr(self, "role_name"):
             result["roleName"] = str(self.role_name)
         elif include_empty:
             result["roleName"] = str()

@@ -91,31 +91,31 @@ class GameProfileHeader(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "profile_id") and self.profile_id:
+        if hasattr(self, "profile_id"):
             result["profileId"] = str(self.profile_id)
         elif include_empty:
             result["profileId"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "profile_name") and self.profile_name:
+        if hasattr(self, "profile_name"):
             result["profileName"] = str(self.profile_name)
         elif include_empty:
             result["profileName"] = str()
-        if hasattr(self, "avatar_url") and self.avatar_url:
+        if hasattr(self, "avatar_url"):
             result["avatarUrl"] = str(self.avatar_url)
         elif include_empty:
             result["avatarUrl"] = str()
-        if hasattr(self, "label") and self.label:
+        if hasattr(self, "label"):
             result["label"] = str(self.label)
         elif include_empty:
             result["label"] = str()
-        if hasattr(self, "tags") and self.tags:
+        if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
             result["tags"] = []

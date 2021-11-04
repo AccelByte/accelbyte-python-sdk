@@ -63,15 +63,15 @@ class ValidationError(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "loc") and self.loc:
+        if hasattr(self, "loc"):
             result["loc"] = [str(i0) for i0 in self.loc]
         elif include_empty:
             result["loc"] = []
-        if hasattr(self, "msg") and self.msg:
+        if hasattr(self, "msg"):
             result["msg"] = str(self.msg)
         elif include_empty:
             result["msg"] = str()
-        if hasattr(self, "type_") and self.type_:
+        if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = str()

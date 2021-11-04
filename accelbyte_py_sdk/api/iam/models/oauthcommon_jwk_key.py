@@ -84,27 +84,27 @@ class OauthcommonJWKKey(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "alg") and self.alg:
+        if hasattr(self, "alg"):
             result["alg"] = str(self.alg)
         elif include_empty:
             result["alg"] = str()
-        if hasattr(self, "e") and self.e:
+        if hasattr(self, "e"):
             result["e"] = str(self.e)
         elif include_empty:
             result["e"] = str()
-        if hasattr(self, "kid") and self.kid:
+        if hasattr(self, "kid"):
             result["kid"] = str(self.kid)
         elif include_empty:
             result["kid"] = str()
-        if hasattr(self, "kty") and self.kty:
+        if hasattr(self, "kty"):
             result["kty"] = str(self.kty)
         elif include_empty:
             result["kty"] = str()
-        if hasattr(self, "n") and self.n:
+        if hasattr(self, "n"):
             result["n"] = str(self.n)
         elif include_empty:
             result["n"] = str()
-        if hasattr(self, "use") and self.use:
+        if hasattr(self, "use"):
             result["use"] = str(self.use)
         elif include_empty:
             result["use"] = str()

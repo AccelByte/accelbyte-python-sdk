@@ -70,19 +70,19 @@ class ErrorEntity(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "error_code") and self.error_code:
+        if hasattr(self, "error_code"):
             result["errorCode"] = int(self.error_code)
         elif include_empty:
             result["errorCode"] = int()
-        if hasattr(self, "error_message") and self.error_message:
+        if hasattr(self, "error_message"):
             result["errorMessage"] = str(self.error_message)
         elif include_empty:
             result["errorMessage"] = str()
-        if hasattr(self, "message_variables") and self.message_variables:
+        if hasattr(self, "message_variables"):
             result["messageVariables"] = {str(k0): str(v0) for k0, v0 in self.message_variables.items()}
         elif include_empty:
             result["messageVariables"] = {}
-        if hasattr(self, "dev_stack_trace") and self.dev_stack_trace:
+        if hasattr(self, "dev_stack_trace"):
             result["devStackTrace"] = str(self.dev_stack_trace)
         elif include_empty:
             result["devStackTrace"] = str()

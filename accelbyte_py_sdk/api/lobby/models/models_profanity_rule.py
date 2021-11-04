@@ -56,11 +56,11 @@ class ModelsProfanityRule(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["Namespace"] = str(self.namespace)
         elif include_empty:
             result["Namespace"] = str()
-        if hasattr(self, "rule") and self.rule:
+        if hasattr(self, "rule"):
             result["Rule"] = str(self.rule)
         elif include_empty:
             result["Rule"] = str()

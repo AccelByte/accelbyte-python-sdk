@@ -98,35 +98,35 @@ class HierarchicalCategoryInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "parent_category_path") and self.parent_category_path:
+        if hasattr(self, "parent_category_path"):
             result["parentCategoryPath"] = str(self.parent_category_path)
         elif include_empty:
             result["parentCategoryPath"] = str()
-        if hasattr(self, "category_path") and self.category_path:
+        if hasattr(self, "category_path"):
             result["categoryPath"] = str(self.category_path)
         elif include_empty:
             result["categoryPath"] = str()
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()
-        if hasattr(self, "display_name") and self.display_name:
+        if hasattr(self, "display_name"):
             result["displayName"] = str(self.display_name)
         elif include_empty:
             result["displayName"] = str()
-        if hasattr(self, "child_categories") and self.child_categories:
+        if hasattr(self, "child_categories"):
             result["childCategories"] = [i0.to_dict(include_empty=include_empty) for i0 in self.child_categories]
         elif include_empty:
             result["childCategories"] = []
-        if hasattr(self, "root") and self.root:
+        if hasattr(self, "root"):
             result["root"] = bool(self.root)
         elif include_empty:
             result["root"] = bool()

@@ -49,7 +49,7 @@ class ModelsCountSessionResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "count") and self.count:
+        if hasattr(self, "count"):
             result["count"] = int(self.count)
         elif include_empty:
             result["count"] = int()

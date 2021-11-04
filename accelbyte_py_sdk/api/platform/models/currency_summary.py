@@ -77,23 +77,23 @@ class CurrencySummary(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "currency_code") and self.currency_code:
+        if hasattr(self, "currency_code"):
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
             result["currencyCode"] = str()
-        if hasattr(self, "currency_symbol") and self.currency_symbol:
+        if hasattr(self, "currency_symbol"):
             result["currencySymbol"] = str(self.currency_symbol)
         elif include_empty:
             result["currencySymbol"] = str()
-        if hasattr(self, "currency_type") and self.currency_type:
+        if hasattr(self, "currency_type"):
             result["currencyType"] = str(self.currency_type)
         elif include_empty:
             result["currencyType"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "decimals") and self.decimals:
+        if hasattr(self, "decimals"):
             result["decimals"] = int(self.decimals)
         elif include_empty:
             result["decimals"] = int()

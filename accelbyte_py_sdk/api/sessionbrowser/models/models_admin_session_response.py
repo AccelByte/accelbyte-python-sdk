@@ -144,59 +144,59 @@ class ModelsAdminSessionResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "all_players") and self.all_players:
+        if hasattr(self, "all_players"):
             result["all_players"] = [str(i0) for i0 in self.all_players]
         elif include_empty:
             result["all_players"] = []
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["created_at"] = str(self.created_at)
         elif include_empty:
             result["created_at"] = str()
-        if hasattr(self, "game_session_setting") and self.game_session_setting:
+        if hasattr(self, "game_session_setting"):
             result["game_session_setting"] = self.game_session_setting.to_dict(include_empty=include_empty)
         elif include_empty:
             result["game_session_setting"] = ModelsGameSessionSetting()
-        if hasattr(self, "game_version") and self.game_version:
+        if hasattr(self, "game_version"):
             result["game_version"] = str(self.game_version)
         elif include_empty:
             result["game_version"] = str()
-        if hasattr(self, "joinable") and self.joinable:
+        if hasattr(self, "joinable"):
             result["joinable"] = bool(self.joinable)
         elif include_empty:
             result["joinable"] = bool()
-        if hasattr(self, "match") and self.match:
+        if hasattr(self, "match"):
             result["match"] = self.match.to_dict(include_empty=include_empty)
         elif include_empty:
             result["match"] = ModelsMatchMaking()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "players") and self.players:
+        if hasattr(self, "players"):
             result["players"] = [str(i0) for i0 in self.players]
         elif include_empty:
             result["players"] = []
-        if hasattr(self, "server") and self.server:
+        if hasattr(self, "server"):
             result["server"] = self.server.to_dict(include_empty=include_empty)
         elif include_empty:
             result["server"] = ModelsServer()
-        if hasattr(self, "session_id") and self.session_id:
+        if hasattr(self, "session_id"):
             result["session_id"] = str(self.session_id)
         elif include_empty:
             result["session_id"] = str()
-        if hasattr(self, "session_type") and self.session_type:
+        if hasattr(self, "session_type"):
             result["session_type"] = str(self.session_type)
         elif include_empty:
             result["session_type"] = str()
-        if hasattr(self, "spectators") and self.spectators:
+        if hasattr(self, "spectators"):
             result["spectators"] = [str(i0) for i0 in self.spectators]
         elif include_empty:
             result["spectators"] = []
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["user_id"] = str(self.user_id)
         elif include_empty:
             result["user_id"] = str()
-        if hasattr(self, "username") and self.username:
+        if hasattr(self, "username"):
             result["username"] = str(self.username)
         elif include_empty:
             result["username"] = str()

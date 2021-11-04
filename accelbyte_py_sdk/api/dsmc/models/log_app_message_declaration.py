@@ -84,27 +84,27 @@ class LogAppMessageDeclaration(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "attributes") and self.attributes:
+        if hasattr(self, "attributes"):
             result["Attributes"] = [str(i0) for i0 in self.attributes]
         elif include_empty:
             result["Attributes"] = []
-        if hasattr(self, "code") and self.code:
+        if hasattr(self, "code"):
             result["Code"] = str(self.code)
         elif include_empty:
             result["Code"] = str()
-        if hasattr(self, "code_name") and self.code_name:
+        if hasattr(self, "code_name"):
             result["CodeName"] = str(self.code_name)
         elif include_empty:
             result["CodeName"] = str()
-        if hasattr(self, "section") and self.section:
+        if hasattr(self, "section"):
             result["Section"] = str(self.section)
         elif include_empty:
             result["Section"] = str()
-        if hasattr(self, "service") and self.service:
+        if hasattr(self, "service"):
             result["Service"] = str(self.service)
         elif include_empty:
             result["Service"] = str()
-        if hasattr(self, "text") and self.text:
+        if hasattr(self, "text"):
             result["Text"] = str(self.text)
         elif include_empty:
             result["Text"] = str()

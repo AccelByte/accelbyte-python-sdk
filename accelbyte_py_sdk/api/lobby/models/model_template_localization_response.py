@@ -79,23 +79,23 @@ class ModelTemplateLocalizationResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "first") and self.first:
+        if hasattr(self, "first"):
             result["first"] = str(self.first)
         elif include_empty:
             result["first"] = str()
-        if hasattr(self, "last") and self.last:
+        if hasattr(self, "last"):
             result["last"] = str(self.last)
         elif include_empty:
             result["last"] = str()
-        if hasattr(self, "next_") and self.next_:
+        if hasattr(self, "next_"):
             result["next"] = str(self.next_)
         elif include_empty:
             result["next"] = str()
-        if hasattr(self, "previous") and self.previous:
+        if hasattr(self, "previous"):
             result["previous"] = str(self.previous)
         elif include_empty:
             result["previous"] = str()
-        if hasattr(self, "template_localization") and self.template_localization:
+        if hasattr(self, "template_localization"):
             result["templateLocalization"] = [i0.to_dict(include_empty=include_empty) for i0 in self.template_localization]
         elif include_empty:
             result["templateLocalization"] = []

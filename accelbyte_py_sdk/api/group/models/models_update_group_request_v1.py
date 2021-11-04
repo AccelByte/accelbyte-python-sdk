@@ -86,27 +86,27 @@ class ModelsUpdateGroupRequestV1(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "custom_attributes") and self.custom_attributes:
+        if hasattr(self, "custom_attributes"):
             result["customAttributes"] = self.custom_attributes.to_dict(include_empty=include_empty)
         elif include_empty:
             result["customAttributes"] = ModelsUpdateGroupRequestV1CustomAttributes()
-        if hasattr(self, "group_description") and self.group_description:
+        if hasattr(self, "group_description"):
             result["groupDescription"] = str(self.group_description)
         elif include_empty:
             result["groupDescription"] = str()
-        if hasattr(self, "group_icon") and self.group_icon:
+        if hasattr(self, "group_icon"):
             result["groupIcon"] = str(self.group_icon)
         elif include_empty:
             result["groupIcon"] = str()
-        if hasattr(self, "group_name") and self.group_name:
+        if hasattr(self, "group_name"):
             result["groupName"] = str(self.group_name)
         elif include_empty:
             result["groupName"] = str()
-        if hasattr(self, "group_region") and self.group_region:
+        if hasattr(self, "group_region"):
             result["groupRegion"] = str(self.group_region)
         elif include_empty:
             result["groupRegion"] = str()
-        if hasattr(self, "group_type") and self.group_type:
+        if hasattr(self, "group_type"):
             result["groupType"] = str(self.group_type)
         elif include_empty:
             result["groupType"] = str()

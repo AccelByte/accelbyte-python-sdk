@@ -119,47 +119,47 @@ class WalletTransactionInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "wallet_id") and self.wallet_id:
+        if hasattr(self, "wallet_id"):
             result["walletId"] = str(self.wallet_id)
         elif include_empty:
             result["walletId"] = str()
-        if hasattr(self, "amount") and self.amount:
+        if hasattr(self, "amount"):
             result["amount"] = int(self.amount)
         elif include_empty:
             result["amount"] = int()
-        if hasattr(self, "reason") and self.reason:
+        if hasattr(self, "reason"):
             result["reason"] = str(self.reason)
         elif include_empty:
             result["reason"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "operator") and self.operator:
+        if hasattr(self, "operator"):
             result["operator"] = str(self.operator)
         elif include_empty:
             result["operator"] = str()
-        if hasattr(self, "wallet_action") and self.wallet_action:
+        if hasattr(self, "wallet_action"):
             result["walletAction"] = str(self.wallet_action)
         elif include_empty:
             result["walletAction"] = str()
-        if hasattr(self, "currency_code") and self.currency_code:
+        if hasattr(self, "currency_code"):
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
             result["currencyCode"] = str()
-        if hasattr(self, "balance_source") and self.balance_source:
+        if hasattr(self, "balance_source"):
             result["balanceSource"] = str(self.balance_source)
         elif include_empty:
             result["balanceSource"] = str()
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()

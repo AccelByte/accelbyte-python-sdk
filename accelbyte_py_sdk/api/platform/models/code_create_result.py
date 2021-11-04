@@ -49,7 +49,7 @@ class CodeCreateResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "num_created") and self.num_created:
+        if hasattr(self, "num_created"):
             result["numCreated"] = int(self.num_created)
         elif include_empty:
             result["numCreated"] = int()

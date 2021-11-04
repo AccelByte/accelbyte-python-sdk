@@ -63,15 +63,15 @@ class ModelsAdminGetProfanityListsListResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "is_enabled") and self.is_enabled:
+        if hasattr(self, "is_enabled"):
             result["isEnabled"] = bool(self.is_enabled)
         elif include_empty:
             result["isEnabled"] = bool()
-        if hasattr(self, "is_mandatory") and self.is_mandatory:
+        if hasattr(self, "is_mandatory"):
             result["isMandatory"] = bool(self.is_mandatory)
         elif include_empty:
             result["isMandatory"] = bool()
-        if hasattr(self, "name") and self.name:
+        if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = str()

@@ -91,31 +91,31 @@ class ModelsPlayerRecord(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["created_at"] = str(self.created_at)
         elif include_empty:
             result["created_at"] = str()
-        if hasattr(self, "is_public") and self.is_public:
+        if hasattr(self, "is_public"):
             result["is_public"] = bool(self.is_public)
         elif include_empty:
             result["is_public"] = bool()
-        if hasattr(self, "key") and self.key:
+        if hasattr(self, "key"):
             result["key"] = str(self.key)
         elif include_empty:
             result["key"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updated_at"] = str(self.updated_at)
         elif include_empty:
             result["updated_at"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["user_id"] = str(self.user_id)
         elif include_empty:
             result["user_id"] = str()
-        if hasattr(self, "value") and self.value:
+        if hasattr(self, "value"):
             result["value"] = {str(k0): v0 for k0, v0 in self.value.items()}
         elif include_empty:
             result["value"] = {}

@@ -98,35 +98,35 @@ class GameProfileRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "profile_name") and self.profile_name:
+        if hasattr(self, "profile_name"):
             result["profileName"] = str(self.profile_name)
         elif include_empty:
             result["profileName"] = str()
-        if hasattr(self, "avatar_url") and self.avatar_url:
+        if hasattr(self, "avatar_url"):
             result["avatarUrl"] = str(self.avatar_url)
         elif include_empty:
             result["avatarUrl"] = str()
-        if hasattr(self, "label") and self.label:
+        if hasattr(self, "label"):
             result["label"] = str(self.label)
         elif include_empty:
             result["label"] = str()
-        if hasattr(self, "tags") and self.tags:
+        if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
             result["tags"] = []
-        if hasattr(self, "statistics") and self.statistics:
+        if hasattr(self, "statistics"):
             result["statistics"] = [str(i0) for i0 in self.statistics]
         elif include_empty:
             result["statistics"] = []
-        if hasattr(self, "achievements") and self.achievements:
+        if hasattr(self, "achievements"):
             result["achievements"] = [str(i0) for i0 in self.achievements]
         elif include_empty:
             result["achievements"] = []
-        if hasattr(self, "inventories") and self.inventories:
+        if hasattr(self, "inventories"):
             result["inventories"] = [str(i0) for i0 in self.inventories]
         elif include_empty:
             result["inventories"] = []
-        if hasattr(self, "attributes") and self.attributes:
+        if hasattr(self, "attributes"):
             result["attributes"] = {str(k0): str(v0) for k0, v0 in self.attributes.items()}
         elif include_empty:
             result["attributes"] = {}

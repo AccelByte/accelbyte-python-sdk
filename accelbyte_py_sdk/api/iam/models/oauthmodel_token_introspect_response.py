@@ -91,31 +91,31 @@ class OauthmodelTokenIntrospectResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "active") and self.active:
+        if hasattr(self, "active"):
             result["active"] = bool(self.active)
         elif include_empty:
             result["active"] = bool()
-        if hasattr(self, "aud") and self.aud:
+        if hasattr(self, "aud"):
             result["aud"] = str(self.aud)
         elif include_empty:
             result["aud"] = str()
-        if hasattr(self, "client_id") and self.client_id:
+        if hasattr(self, "client_id"):
             result["client_id"] = str(self.client_id)
         elif include_empty:
             result["client_id"] = str()
-        if hasattr(self, "exp") and self.exp:
+        if hasattr(self, "exp"):
             result["exp"] = int(self.exp)
         elif include_empty:
             result["exp"] = int()
-        if hasattr(self, "iat") and self.iat:
+        if hasattr(self, "iat"):
             result["iat"] = int(self.iat)
         elif include_empty:
             result["iat"] = int()
-        if hasattr(self, "scope") and self.scope:
+        if hasattr(self, "scope"):
             result["scope"] = str(self.scope)
         elif include_empty:
             result["scope"] = str()
-        if hasattr(self, "sub") and self.sub:
+        if hasattr(self, "sub"):
             result["sub"] = str(self.sub)
         elif include_empty:
             result["sub"] = str()

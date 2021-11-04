@@ -79,23 +79,23 @@ class ModelsCreateSessionRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "game_session_setting") and self.game_session_setting:
+        if hasattr(self, "game_session_setting"):
             result["game_session_setting"] = self.game_session_setting.to_dict(include_empty=include_empty)
         elif include_empty:
             result["game_session_setting"] = ModelsGameSessionSetting()
-        if hasattr(self, "game_version") and self.game_version:
+        if hasattr(self, "game_version"):
             result["game_version"] = str(self.game_version)
         elif include_empty:
             result["game_version"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "session_type") and self.session_type:
+        if hasattr(self, "session_type"):
             result["session_type"] = str(self.session_type)
         elif include_empty:
             result["session_type"] = str()
-        if hasattr(self, "username") and self.username:
+        if hasattr(self, "username"):
             result["username"] = str(self.username)
         elif include_empty:
             result["username"] = str()

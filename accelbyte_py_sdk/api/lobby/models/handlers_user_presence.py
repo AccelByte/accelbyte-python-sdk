@@ -77,23 +77,23 @@ class HandlersUserPresence(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "activity") and self.activity:
+        if hasattr(self, "activity"):
             result["activity"] = str(self.activity)
         elif include_empty:
             result["activity"] = str()
-        if hasattr(self, "availability") and self.availability:
+        if hasattr(self, "availability"):
             result["availability"] = str(self.availability)
         elif include_empty:
             result["availability"] = str()
-        if hasattr(self, "last_seen_at") and self.last_seen_at:
+        if hasattr(self, "last_seen_at"):
             result["lastSeenAt"] = str(self.last_seen_at)
         elif include_empty:
             result["lastSeenAt"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userID"] = str(self.user_id)
         elif include_empty:
             result["userID"] = str()

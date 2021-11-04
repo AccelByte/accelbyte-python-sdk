@@ -59,11 +59,11 @@ class OauthapiRevocationList(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "revoked_tokens") and self.revoked_tokens:
+        if hasattr(self, "revoked_tokens"):
             result["revoked_tokens"] = self.revoked_tokens.to_dict(include_empty=include_empty)
         elif include_empty:
             result["revoked_tokens"] = BloomFilterJSON()
-        if hasattr(self, "revoked_users") and self.revoked_users:
+        if hasattr(self, "revoked_users"):
             result["revoked_users"] = [i0.to_dict(include_empty=include_empty) for i0 in self.revoked_users]
         elif include_empty:
             result["revoked_users"] = []

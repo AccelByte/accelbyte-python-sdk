@@ -49,7 +49,7 @@ class SteamIAPConfigRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "publisher_authentication_key") and self.publisher_authentication_key:
+        if hasattr(self, "publisher_authentication_key"):
             result["publisherAuthenticationKey"] = str(self.publisher_authentication_key)
         elif include_empty:
             result["publisherAuthenticationKey"] = str()

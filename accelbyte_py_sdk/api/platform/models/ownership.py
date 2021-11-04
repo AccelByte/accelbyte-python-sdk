@@ -49,7 +49,7 @@ class Ownership(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "owned") and self.owned:
+        if hasattr(self, "owned"):
             result["owned"] = bool(self.owned)
         elif include_empty:
             result["owned"] = bool()

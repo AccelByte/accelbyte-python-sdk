@@ -49,7 +49,7 @@ class ModelBulkAddFriendsRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "friend_ids") and self.friend_ids:
+        if hasattr(self, "friend_ids"):
             result["friendIds"] = [str(i0) for i0 in self.friend_ids]
         elif include_empty:
             result["friendIds"] = []

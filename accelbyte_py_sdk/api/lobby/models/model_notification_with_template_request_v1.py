@@ -70,19 +70,19 @@ class ModelNotificationWithTemplateRequestV1(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "template_context") and self.template_context:
+        if hasattr(self, "template_context"):
             result["templateContext"] = {str(k0): str(v0) for k0, v0 in self.template_context.items()}
         elif include_empty:
             result["templateContext"] = {}
-        if hasattr(self, "template_language") and self.template_language:
+        if hasattr(self, "template_language"):
             result["templateLanguage"] = str(self.template_language)
         elif include_empty:
             result["templateLanguage"] = str()
-        if hasattr(self, "template_slug") and self.template_slug:
+        if hasattr(self, "template_slug"):
             result["templateSlug"] = str(self.template_slug)
         elif include_empty:
             result["templateSlug"] = str()
-        if hasattr(self, "topic_name") and self.topic_name:
+        if hasattr(self, "topic_name"):
             result["topicName"] = str(self.topic_name)
         elif include_empty:
             result["topicName"] = str()

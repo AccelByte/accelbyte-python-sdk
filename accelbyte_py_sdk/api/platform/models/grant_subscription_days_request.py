@@ -56,11 +56,11 @@ class GrantSubscriptionDaysRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "grant_days") and self.grant_days:
+        if hasattr(self, "grant_days"):
             result["grantDays"] = int(self.grant_days)
         elif include_empty:
             result["grantDays"] = int()
-        if hasattr(self, "reason") and self.reason:
+        if hasattr(self, "reason"):
             result["reason"] = str(self.reason)
         elif include_empty:
             result["reason"] = str()

@@ -72,19 +72,19 @@ class AccountcommonBanV3(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "ban") and self.ban:
+        if hasattr(self, "ban"):
             result["ban"] = str(self.ban)
         elif include_empty:
             result["ban"] = str()
-        if hasattr(self, "description") and self.description:
+        if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = str()
-        if hasattr(self, "descriptions") and self.descriptions:
+        if hasattr(self, "descriptions"):
             result["descriptions"] = self.descriptions.to_dict(include_empty=include_empty)
         elif include_empty:
             result["descriptions"] = AccountcommonDescription()
-        if hasattr(self, "type_") and self.type_:
+        if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = str()

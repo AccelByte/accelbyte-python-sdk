@@ -105,39 +105,39 @@ class AccountcommonUserLinkedPlatformV3(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "account_group") and self.account_group:
+        if hasattr(self, "account_group"):
             result["accountGroup"] = str(self.account_group)
         elif include_empty:
             result["accountGroup"] = str()
-        if hasattr(self, "display_name") and self.display_name:
+        if hasattr(self, "display_name"):
             result["displayName"] = str(self.display_name)
         elif include_empty:
             result["displayName"] = str()
-        if hasattr(self, "email_address") and self.email_address:
+        if hasattr(self, "email_address"):
             result["emailAddress"] = str(self.email_address)
         elif include_empty:
             result["emailAddress"] = str()
-        if hasattr(self, "linked_at") and self.linked_at:
+        if hasattr(self, "linked_at"):
             result["linkedAt"] = str(self.linked_at)
         elif include_empty:
             result["linkedAt"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "origin_namespace") and self.origin_namespace:
+        if hasattr(self, "origin_namespace"):
             result["originNamespace"] = str(self.origin_namespace)
         elif include_empty:
             result["originNamespace"] = str()
-        if hasattr(self, "platform_id") and self.platform_id:
+        if hasattr(self, "platform_id"):
             result["platformId"] = str(self.platform_id)
         elif include_empty:
             result["platformId"] = str()
-        if hasattr(self, "platform_user_id") and self.platform_user_id:
+        if hasattr(self, "platform_user_id"):
             result["platformUserId"] = str(self.platform_user_id)
         elif include_empty:
             result["platformUserId"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()

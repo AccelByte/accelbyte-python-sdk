@@ -56,11 +56,11 @@ class ModelsShutdownServerRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "kill_me") and self.kill_me:
+        if hasattr(self, "kill_me"):
             result["kill_me"] = bool(self.kill_me)
         elif include_empty:
             result["kill_me"] = bool()
-        if hasattr(self, "pod_name") and self.pod_name:
+        if hasattr(self, "pod_name"):
             result["pod_name"] = str(self.pod_name)
         elif include_empty:
             result["pod_name"] = str()

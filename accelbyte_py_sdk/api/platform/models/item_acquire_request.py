@@ -56,11 +56,11 @@ class ItemAcquireRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "order_no") and self.order_no:
+        if hasattr(self, "order_no"):
             result["orderNo"] = str(self.order_no)
         elif include_empty:
             result["orderNo"] = str()
-        if hasattr(self, "count") and self.count:
+        if hasattr(self, "count"):
             result["count"] = int(self.count)
         elif include_empty:
             result["count"] = int()

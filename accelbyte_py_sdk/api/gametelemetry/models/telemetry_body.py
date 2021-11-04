@@ -77,23 +77,23 @@ class TelemetryBody(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "event_id") and self.event_id:
+        if hasattr(self, "event_id"):
             result["EventId"] = str(self.event_id)
         elif include_empty:
             result["EventId"] = str()
-        if hasattr(self, "event_name") and self.event_name:
+        if hasattr(self, "event_name"):
             result["EventName"] = str(self.event_name)
         elif include_empty:
             result["EventName"] = str()
-        if hasattr(self, "event_namespace") and self.event_namespace:
+        if hasattr(self, "event_namespace"):
             result["EventNamespace"] = str(self.event_namespace)
         elif include_empty:
             result["EventNamespace"] = str()
-        if hasattr(self, "event_timestamp") and self.event_timestamp:
+        if hasattr(self, "event_timestamp"):
             result["EventTimestamp"] = str(self.event_timestamp)
         elif include_empty:
             result["EventTimestamp"] = str()
-        if hasattr(self, "payload") and self.payload:
+        if hasattr(self, "payload"):
             result["Payload"] = {str(k0): v0 for k0, v0 in self.payload.items()}
         elif include_empty:
             result["Payload"] = {}

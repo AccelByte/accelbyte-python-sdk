@@ -77,23 +77,23 @@ class AccountUserPermissionsResponseV4(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "action") and self.action:
+        if hasattr(self, "action"):
             result["action"] = int(self.action)
         elif include_empty:
             result["action"] = int()
-        if hasattr(self, "resource") and self.resource:
+        if hasattr(self, "resource"):
             result["resource"] = str(self.resource)
         elif include_empty:
             result["resource"] = str()
-        if hasattr(self, "sched_action") and self.sched_action:
+        if hasattr(self, "sched_action"):
             result["schedAction"] = int(self.sched_action)
         elif include_empty:
             result["schedAction"] = int()
-        if hasattr(self, "sched_cron") and self.sched_cron:
+        if hasattr(self, "sched_cron"):
             result["schedCron"] = str(self.sched_cron)
         elif include_empty:
             result["schedCron"] = str()
-        if hasattr(self, "sched_range") and self.sched_range:
+        if hasattr(self, "sched_range"):
             result["schedRange"] = [str(i0) for i0 in self.sched_range]
         elif include_empty:
             result["schedRange"] = []

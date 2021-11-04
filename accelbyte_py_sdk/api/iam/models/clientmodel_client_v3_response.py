@@ -121,47 +121,47 @@ class ClientmodelClientV3Response(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "audiences") and self.audiences:
+        if hasattr(self, "audiences"):
             result["audiences"] = [str(i0) for i0 in self.audiences]
         elif include_empty:
             result["audiences"] = []
-        if hasattr(self, "base_uri") and self.base_uri:
+        if hasattr(self, "base_uri"):
             result["baseUri"] = str(self.base_uri)
         elif include_empty:
             result["baseUri"] = str()
-        if hasattr(self, "client_id") and self.client_id:
+        if hasattr(self, "client_id"):
             result["clientId"] = str(self.client_id)
         elif include_empty:
             result["clientId"] = str()
-        if hasattr(self, "client_name") and self.client_name:
+        if hasattr(self, "client_name"):
             result["clientName"] = str(self.client_name)
         elif include_empty:
             result["clientName"] = str()
-        if hasattr(self, "client_permissions") and self.client_permissions:
+        if hasattr(self, "client_permissions"):
             result["clientPermissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.client_permissions]
         elif include_empty:
             result["clientPermissions"] = []
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "modified_at") and self.modified_at:
+        if hasattr(self, "modified_at"):
             result["modifiedAt"] = str(self.modified_at)
         elif include_empty:
             result["modifiedAt"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "oauth_client_type") and self.oauth_client_type:
+        if hasattr(self, "oauth_client_type"):
             result["oauthClientType"] = str(self.oauth_client_type)
         elif include_empty:
             result["oauthClientType"] = str()
-        if hasattr(self, "redirect_uri") and self.redirect_uri:
+        if hasattr(self, "redirect_uri"):
             result["redirectUri"] = str(self.redirect_uri)
         elif include_empty:
             result["redirectUri"] = str()
-        if hasattr(self, "scopes") and self.scopes:
+        if hasattr(self, "scopes"):
             result["scopes"] = [str(i0) for i0 in self.scopes]
         elif include_empty:
             result["scopes"] = []

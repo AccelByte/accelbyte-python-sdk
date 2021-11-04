@@ -49,7 +49,7 @@ class ModelsUpdateGroupCustomAttributesRequestV1(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "custom_attributes") and self.custom_attributes:
+        if hasattr(self, "custom_attributes"):
             result["customAttributes"] = {str(k0): v0 for k0, v0 in self.custom_attributes.items()}
         elif include_empty:
             result["customAttributes"] = {}

@@ -84,27 +84,27 @@ class Slide(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "type_") and self.type_:
+        if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = str()
-        if hasattr(self, "video_source") and self.video_source:
+        if hasattr(self, "video_source"):
             result["videoSource"] = str(self.video_source)
         elif include_empty:
             result["videoSource"] = str()
-        if hasattr(self, "url") and self.url:
+        if hasattr(self, "url"):
             result["url"] = str(self.url)
         elif include_empty:
             result["url"] = str()
-        if hasattr(self, "alt") and self.alt:
+        if hasattr(self, "alt"):
             result["alt"] = str(self.alt)
         elif include_empty:
             result["alt"] = str()
-        if hasattr(self, "thumbnail_url") and self.thumbnail_url:
+        if hasattr(self, "thumbnail_url"):
             result["thumbnailUrl"] = str(self.thumbnail_url)
         elif include_empty:
             result["thumbnailUrl"] = str()
-        if hasattr(self, "preview_url") and self.preview_url:
+        if hasattr(self, "preview_url"):
             result["previewUrl"] = str(self.preview_url)
         elif include_empty:
             result["previewUrl"] = str()

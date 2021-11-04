@@ -86,27 +86,27 @@ class ClientmodelClientUpdateV3Request(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "audiences") and self.audiences:
+        if hasattr(self, "audiences"):
             result["audiences"] = [str(i0) for i0 in self.audiences]
         elif include_empty:
             result["audiences"] = []
-        if hasattr(self, "base_uri") and self.base_uri:
+        if hasattr(self, "base_uri"):
             result["baseUri"] = str(self.base_uri)
         elif include_empty:
             result["baseUri"] = str()
-        if hasattr(self, "client_name") and self.client_name:
+        if hasattr(self, "client_name"):
             result["clientName"] = str(self.client_name)
         elif include_empty:
             result["clientName"] = str()
-        if hasattr(self, "client_permissions") and self.client_permissions:
+        if hasattr(self, "client_permissions"):
             result["clientPermissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.client_permissions]
         elif include_empty:
             result["clientPermissions"] = []
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "redirect_uri") and self.redirect_uri:
+        if hasattr(self, "redirect_uri"):
             result["redirectUri"] = str(self.redirect_uri)
         elif include_empty:
             result["redirectUri"] = str()

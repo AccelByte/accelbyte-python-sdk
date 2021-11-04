@@ -105,39 +105,39 @@ class ModelsUpdateDeploymentOverrideRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "buffer_count") and self.buffer_count:
+        if hasattr(self, "buffer_count"):
             result["buffer_count"] = int(self.buffer_count)
         elif include_empty:
             result["buffer_count"] = int()
-        if hasattr(self, "buffer_percent") and self.buffer_percent:
+        if hasattr(self, "buffer_percent"):
             result["buffer_percent"] = int(self.buffer_percent)
         elif include_empty:
             result["buffer_percent"] = int()
-        if hasattr(self, "configuration") and self.configuration:
+        if hasattr(self, "configuration"):
             result["configuration"] = str(self.configuration)
         elif include_empty:
             result["configuration"] = str()
-        if hasattr(self, "enable_region_overrides") and self.enable_region_overrides:
+        if hasattr(self, "enable_region_overrides"):
             result["enable_region_overrides"] = bool(self.enable_region_overrides)
         elif include_empty:
             result["enable_region_overrides"] = bool()
-        if hasattr(self, "game_version") and self.game_version:
+        if hasattr(self, "game_version"):
             result["game_version"] = str(self.game_version)
         elif include_empty:
             result["game_version"] = str()
-        if hasattr(self, "max_count") and self.max_count:
+        if hasattr(self, "max_count"):
             result["max_count"] = int(self.max_count)
         elif include_empty:
             result["max_count"] = int()
-        if hasattr(self, "min_count") and self.min_count:
+        if hasattr(self, "min_count"):
             result["min_count"] = int(self.min_count)
         elif include_empty:
             result["min_count"] = int()
-        if hasattr(self, "regions") and self.regions:
+        if hasattr(self, "regions"):
             result["regions"] = [str(i0) for i0 in self.regions]
         elif include_empty:
             result["regions"] = []
-        if hasattr(self, "use_buffer_percent") and self.use_buffer_percent:
+        if hasattr(self, "use_buffer_percent"):
             result["use_buffer_percent"] = bool(self.use_buffer_percent)
         elif include_empty:
             result["use_buffer_percent"] = bool()

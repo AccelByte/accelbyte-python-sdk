@@ -58,11 +58,11 @@ class ModelGetFriendsResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "friend_i_ds") and self.friend_i_ds:
+        if hasattr(self, "friend_i_ds"):
             result["friendIDs"] = [str(i0) for i0 in self.friend_i_ds]
         elif include_empty:
             result["friendIDs"] = []
-        if hasattr(self, "paging") and self.paging:
+        if hasattr(self, "paging"):
             result["paging"] = self.paging.to_dict(include_empty=include_empty)
         elif include_empty:
             result["paging"] = ModelPagination()

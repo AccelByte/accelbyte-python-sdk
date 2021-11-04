@@ -70,19 +70,19 @@ class ModelsDetailedCountServerResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "busy_count") and self.busy_count:
+        if hasattr(self, "busy_count"):
             result["busy_count"] = int(self.busy_count)
         elif include_empty:
             result["busy_count"] = int()
-        if hasattr(self, "creating_count") and self.creating_count:
+        if hasattr(self, "creating_count"):
             result["creating_count"] = int(self.creating_count)
         elif include_empty:
             result["creating_count"] = int()
-        if hasattr(self, "ready_count") and self.ready_count:
+        if hasattr(self, "ready_count"):
             result["ready_count"] = int(self.ready_count)
         elif include_empty:
             result["ready_count"] = int()
-        if hasattr(self, "unreachable_count") and self.unreachable_count:
+        if hasattr(self, "unreachable_count"):
             result["unreachable_count"] = int(self.unreachable_count)
         elif include_empty:
             result["unreachable_count"] = int()

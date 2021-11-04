@@ -179,79 +179,79 @@ class ModelPublicUserResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "auth_type") and self.auth_type:
+        if hasattr(self, "auth_type"):
             result["AuthType"] = str(self.auth_type)
         elif include_empty:
             result["AuthType"] = str()
-        if hasattr(self, "bans") and self.bans:
+        if hasattr(self, "bans"):
             result["Bans"] = [i0.to_dict(include_empty=include_empty) for i0 in self.bans]
         elif include_empty:
             result["Bans"] = []
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["CreatedAt"] = str(self.created_at)
         elif include_empty:
             result["CreatedAt"] = str()
-        if hasattr(self, "deletion_status") and self.deletion_status:
+        if hasattr(self, "deletion_status"):
             result["DeletionStatus"] = bool(self.deletion_status)
         elif include_empty:
             result["DeletionStatus"] = bool()
-        if hasattr(self, "display_name") and self.display_name:
+        if hasattr(self, "display_name"):
             result["DisplayName"] = str(self.display_name)
         elif include_empty:
             result["DisplayName"] = str()
-        if hasattr(self, "email_verified") and self.email_verified:
+        if hasattr(self, "email_verified"):
             result["EmailVerified"] = bool(self.email_verified)
         elif include_empty:
             result["EmailVerified"] = bool()
-        if hasattr(self, "enabled") and self.enabled:
+        if hasattr(self, "enabled"):
             result["Enabled"] = bool(self.enabled)
         elif include_empty:
             result["Enabled"] = bool()
-        if hasattr(self, "last_enabled_changed_time") and self.last_enabled_changed_time:
+        if hasattr(self, "last_enabled_changed_time"):
             result["LastEnabledChangedTime"] = str(self.last_enabled_changed_time)
         elif include_empty:
             result["LastEnabledChangedTime"] = str()
-        if hasattr(self, "login_id") and self.login_id:
+        if hasattr(self, "login_id"):
             result["LoginId"] = str(self.login_id)
         elif include_empty:
             result["LoginId"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["Namespace"] = str(self.namespace)
         elif include_empty:
             result["Namespace"] = str()
-        if hasattr(self, "namespace_roles") and self.namespace_roles:
+        if hasattr(self, "namespace_roles"):
             result["NamespaceRoles"] = [i0.to_dict(include_empty=include_empty) for i0 in self.namespace_roles]
         elif include_empty:
             result["NamespaceRoles"] = []
-        if hasattr(self, "permissions") and self.permissions:
+        if hasattr(self, "permissions"):
             result["Permissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.permissions]
         elif include_empty:
             result["Permissions"] = []
-        if hasattr(self, "phone_verified") and self.phone_verified:
+        if hasattr(self, "phone_verified"):
             result["PhoneVerified"] = bool(self.phone_verified)
         elif include_empty:
             result["PhoneVerified"] = bool()
-        if hasattr(self, "platform_id") and self.platform_id:
+        if hasattr(self, "platform_id"):
             result["PlatformId"] = str(self.platform_id)
         elif include_empty:
             result["PlatformId"] = str()
-        if hasattr(self, "platform_user_id") and self.platform_user_id:
+        if hasattr(self, "platform_user_id"):
             result["PlatformUserId"] = str(self.platform_user_id)
         elif include_empty:
             result["PlatformUserId"] = str()
-        if hasattr(self, "roles") and self.roles:
+        if hasattr(self, "roles"):
             result["Roles"] = [str(i0) for i0 in self.roles]
         elif include_empty:
             result["Roles"] = []
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["UserId"] = str(self.user_id)
         elif include_empty:
             result["UserId"] = str()
-        if hasattr(self, "username") and self.username:
+        if hasattr(self, "username"):
             result["Username"] = str(self.username)
         elif include_empty:
             result["Username"] = str()
-        if hasattr(self, "xuid") and self.xuid:
+        if hasattr(self, "xuid"):
             result["XUID"] = str(self.xuid)
         elif include_empty:
             result["XUID"] = str()

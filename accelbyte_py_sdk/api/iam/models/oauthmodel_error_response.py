@@ -63,15 +63,15 @@ class OauthmodelErrorResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "error") and self.error:
+        if hasattr(self, "error"):
             result["error"] = str(self.error)
         elif include_empty:
             result["error"] = str()
-        if hasattr(self, "error_description") and self.error_description:
+        if hasattr(self, "error_description"):
             result["error_description"] = str(self.error_description)
         elif include_empty:
             result["error_description"] = str()
-        if hasattr(self, "error_uri") and self.error_uri:
+        if hasattr(self, "error_uri"):
             result["error_uri"] = str(self.error_uri)
         elif include_empty:
             result["error_uri"] = str()

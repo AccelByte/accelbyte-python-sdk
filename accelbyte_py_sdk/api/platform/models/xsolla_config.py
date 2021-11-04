@@ -77,23 +77,23 @@ class XsollaConfig(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "merchant_id") and self.merchant_id:
+        if hasattr(self, "merchant_id"):
             result["merchantId"] = int(self.merchant_id)
         elif include_empty:
             result["merchantId"] = int()
-        if hasattr(self, "project_id") and self.project_id:
+        if hasattr(self, "project_id"):
             result["projectId"] = int(self.project_id)
         elif include_empty:
             result["projectId"] = int()
-        if hasattr(self, "project_secret_key") and self.project_secret_key:
+        if hasattr(self, "project_secret_key"):
             result["projectSecretKey"] = str(self.project_secret_key)
         elif include_empty:
             result["projectSecretKey"] = str()
-        if hasattr(self, "api_key") and self.api_key:
+        if hasattr(self, "api_key"):
             result["apiKey"] = str(self.api_key)
         elif include_empty:
             result["apiKey"] = str()
-        if hasattr(self, "flow_completion_url") and self.flow_completion_url:
+        if hasattr(self, "flow_completion_url"):
             result["flowCompletionUrl"] = str(self.flow_completion_url)
         elif include_empty:
             result["flowCompletionUrl"] = str()

@@ -49,7 +49,7 @@ class ModelsAddPlayerResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "status") and self.status:
+        if hasattr(self, "status"):
             result["status"] = bool(self.status)
         elif include_empty:
             result["status"] = bool()

@@ -81,23 +81,23 @@ class FulfillmentResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "entitlement_summaries") and self.entitlement_summaries:
+        if hasattr(self, "entitlement_summaries"):
             result["entitlementSummaries"] = [i0.to_dict(include_empty=include_empty) for i0 in self.entitlement_summaries]
         elif include_empty:
             result["entitlementSummaries"] = []
-        if hasattr(self, "credit_summaries") and self.credit_summaries:
+        if hasattr(self, "credit_summaries"):
             result["creditSummaries"] = [i0.to_dict(include_empty=include_empty) for i0 in self.credit_summaries]
         elif include_empty:
             result["creditSummaries"] = []
-        if hasattr(self, "subscription_summaries") and self.subscription_summaries:
+        if hasattr(self, "subscription_summaries"):
             result["subscriptionSummaries"] = [i0.to_dict(include_empty=include_empty) for i0 in self.subscription_summaries]
         elif include_empty:
             result["subscriptionSummaries"] = []

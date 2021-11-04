@@ -51,7 +51,7 @@ class ModelsUpdateMemberRolePermissionsRequestV1(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "member_role_permissions") and self.member_role_permissions:
+        if hasattr(self, "member_role_permissions"):
             result["memberRolePermissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.member_role_permissions]
         elif include_empty:
             result["memberRolePermissions"] = []

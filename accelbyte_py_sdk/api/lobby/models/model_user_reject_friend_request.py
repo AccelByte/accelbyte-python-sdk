@@ -49,7 +49,7 @@ class ModelUserRejectFriendRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "friend_id") and self.friend_id:
+        if hasattr(self, "friend_id"):
             result["friendId"] = str(self.friend_id)
         elif include_empty:
             result["friendId"] = str()

@@ -70,19 +70,19 @@ class NotificationProcessResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "status") and self.status:
+        if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
-        if hasattr(self, "code") and self.code:
+        if hasattr(self, "code"):
             result["code"] = str(self.code)
         elif include_empty:
             result["code"] = str()
-        if hasattr(self, "custom_param") and self.custom_param:
+        if hasattr(self, "custom_param"):
             result["customParam"] = {str(k0): v0 for k0, v0 in self.custom_param.items()}
         elif include_empty:
             result["customParam"] = {}
-        if hasattr(self, "severity") and self.severity:
+        if hasattr(self, "severity"):
             result["severity"] = int(self.severity)
         elif include_empty:
             result["severity"] = int()

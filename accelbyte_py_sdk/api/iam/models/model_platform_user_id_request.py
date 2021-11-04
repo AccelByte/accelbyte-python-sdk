@@ -49,7 +49,7 @@ class ModelPlatformUserIDRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "platform_user_ids") and self.platform_user_ids:
+        if hasattr(self, "platform_user_ids"):
             result["platformUserIds"] = [str(i0) for i0 in self.platform_user_ids]
         elif include_empty:
             result["platformUserIds"] = []

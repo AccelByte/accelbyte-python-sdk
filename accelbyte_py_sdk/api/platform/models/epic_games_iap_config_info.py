@@ -56,11 +56,11 @@ class EpicGamesIAPConfigInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "sandbox_id") and self.sandbox_id:
+        if hasattr(self, "sandbox_id"):
             result["sandboxId"] = str(self.sandbox_id)
         elif include_empty:
             result["sandboxId"] = str()

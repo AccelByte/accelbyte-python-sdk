@@ -63,15 +63,15 @@ class ModelCreateTemplateRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "template_content") and self.template_content:
+        if hasattr(self, "template_content"):
             result["templateContent"] = str(self.template_content)
         elif include_empty:
             result["templateContent"] = str()
-        if hasattr(self, "template_language") and self.template_language:
+        if hasattr(self, "template_language"):
             result["templateLanguage"] = str(self.template_language)
         elif include_empty:
             result["templateLanguage"] = str()
-        if hasattr(self, "template_slug") and self.template_slug:
+        if hasattr(self, "template_slug"):
             result["templateSlug"] = str(self.template_slug)
         elif include_empty:
             result["templateSlug"] = str()

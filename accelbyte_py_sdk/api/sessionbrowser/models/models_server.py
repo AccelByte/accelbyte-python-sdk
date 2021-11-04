@@ -198,91 +198,91 @@ class ModelsServer(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "allocation_id") and self.allocation_id:
+        if hasattr(self, "allocation_id"):
             result["allocation_id"] = str(self.allocation_id)
         elif include_empty:
             result["allocation_id"] = str()
-        if hasattr(self, "alternate_ips") and self.alternate_ips:
+        if hasattr(self, "alternate_ips"):
             result["alternate_ips"] = [str(i0) for i0 in self.alternate_ips]
         elif include_empty:
             result["alternate_ips"] = []
-        if hasattr(self, "cpu_limit") and self.cpu_limit:
+        if hasattr(self, "cpu_limit"):
             result["cpu_limit"] = int(self.cpu_limit)
         elif include_empty:
             result["cpu_limit"] = int()
-        if hasattr(self, "cpu_request") and self.cpu_request:
+        if hasattr(self, "cpu_request"):
             result["cpu_request"] = str(self.cpu_request)
         elif include_empty:
             result["cpu_request"] = str()
-        if hasattr(self, "deployment") and self.deployment:
+        if hasattr(self, "deployment"):
             result["deployment"] = str(self.deployment)
         elif include_empty:
             result["deployment"] = str()
-        if hasattr(self, "game_version") and self.game_version:
+        if hasattr(self, "game_version"):
             result["game_version"] = str(self.game_version)
         elif include_empty:
             result["game_version"] = str()
-        if hasattr(self, "image_version") and self.image_version:
+        if hasattr(self, "image_version"):
             result["image_version"] = str(self.image_version)
         elif include_empty:
             result["image_version"] = str()
-        if hasattr(self, "ip") and self.ip:
+        if hasattr(self, "ip"):
             result["ip"] = str(self.ip)
         elif include_empty:
             result["ip"] = str()
-        if hasattr(self, "is_override_game_version") and self.is_override_game_version:
+        if hasattr(self, "is_override_game_version"):
             result["is_override_game_version"] = bool(self.is_override_game_version)
         elif include_empty:
             result["is_override_game_version"] = bool()
-        if hasattr(self, "last_update") and self.last_update:
+        if hasattr(self, "last_update"):
             result["last_update"] = str(self.last_update)
         elif include_empty:
             result["last_update"] = str()
-        if hasattr(self, "mem_limit") and self.mem_limit:
+        if hasattr(self, "mem_limit"):
             result["mem_limit"] = int(self.mem_limit)
         elif include_empty:
             result["mem_limit"] = int()
-        if hasattr(self, "mem_request") and self.mem_request:
+        if hasattr(self, "mem_request"):
             result["mem_request"] = str(self.mem_request)
         elif include_empty:
             result["mem_request"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "params") and self.params:
+        if hasattr(self, "params"):
             result["params"] = str(self.params)
         elif include_empty:
             result["params"] = str()
-        if hasattr(self, "pod_name") and self.pod_name:
+        if hasattr(self, "pod_name"):
             result["pod_name"] = str(self.pod_name)
         elif include_empty:
             result["pod_name"] = str()
-        if hasattr(self, "port") and self.port:
+        if hasattr(self, "port"):
             result["port"] = int(self.port)
         elif include_empty:
             result["port"] = int()
-        if hasattr(self, "ports") and self.ports:
+        if hasattr(self, "ports"):
             result["ports"] = {str(k0): int(v0) for k0, v0 in self.ports.items()}
         elif include_empty:
             result["ports"] = {}
-        if hasattr(self, "provider") and self.provider:
+        if hasattr(self, "provider"):
             result["provider"] = str(self.provider)
         elif include_empty:
             result["provider"] = str()
-        if hasattr(self, "region") and self.region:
+        if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = str()
-        if hasattr(self, "session_id") and self.session_id:
+        if hasattr(self, "session_id"):
             result["session_id"] = str(self.session_id)
         elif include_empty:
             result["session_id"] = str()
-        if hasattr(self, "status") and self.status:
+        if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
-        if hasattr(self, "status_history") and self.status_history:
+        if hasattr(self, "status_history"):
             result["status_history"] = [i0.to_dict(include_empty=include_empty) for i0 in self.status_history]
         elif include_empty:
             result["status_history"] = []

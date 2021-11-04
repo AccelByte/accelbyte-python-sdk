@@ -56,11 +56,11 @@ class ModelEmailUpdateRequestV4(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "code") and self.code:
+        if hasattr(self, "code"):
             result["code"] = str(self.code)
         elif include_empty:
             result["code"] = str()
-        if hasattr(self, "email_address") and self.email_address:
+        if hasattr(self, "email_address"):
             result["emailAddress"] = str(self.email_address)
         elif include_empty:
             result["emailAddress"] = str()

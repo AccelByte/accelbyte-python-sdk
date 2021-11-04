@@ -56,11 +56,11 @@ class ClientmodelClientUpdateRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "client_name") and self.client_name:
+        if hasattr(self, "client_name"):
             result["ClientName"] = str(self.client_name)
         elif include_empty:
             result["ClientName"] = str()
-        if hasattr(self, "redirect_uri") and self.redirect_uri:
+        if hasattr(self, "redirect_uri"):
             result["RedirectUri"] = str(self.redirect_uri)
         elif include_empty:
             result["RedirectUri"] = str()

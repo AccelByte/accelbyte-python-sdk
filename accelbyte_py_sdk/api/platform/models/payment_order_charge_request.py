@@ -63,15 +63,15 @@ class PaymentOrderChargeRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "payment_provider") and self.payment_provider:
+        if hasattr(self, "payment_provider"):
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
             result["paymentProvider"] = str()
-        if hasattr(self, "payment_method") and self.payment_method:
+        if hasattr(self, "payment_method"):
             result["paymentMethod"] = str(self.payment_method)
         elif include_empty:
             result["paymentMethod"] = str()
-        if hasattr(self, "ext_tx_id") and self.ext_tx_id:
+        if hasattr(self, "ext_tx_id"):
             result["extTxId"] = str(self.ext_tx_id)
         elif include_empty:
             result["extTxId"] = str()

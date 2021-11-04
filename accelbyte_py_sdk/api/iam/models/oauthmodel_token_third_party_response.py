@@ -56,11 +56,11 @@ class OauthmodelTokenThirdPartyResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "platform_token") and self.platform_token:
+        if hasattr(self, "platform_token"):
             result["platform_token"] = str(self.platform_token)
         elif include_empty:
             result["platform_token"] = str()
-        if hasattr(self, "sand_box_id") and self.sand_box_id:
+        if hasattr(self, "sand_box_id"):
             result["sand_box_id"] = str(self.sand_box_id)
         elif include_empty:
             result["sand_box_id"] = str()

@@ -49,7 +49,7 @@ class AdditionalData(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "card_summary") and self.card_summary:
+        if hasattr(self, "card_summary"):
             result["cardSummary"] = str(self.card_summary)
         elif include_empty:
             result["cardSummary"] = str()

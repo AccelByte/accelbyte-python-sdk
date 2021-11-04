@@ -63,15 +63,15 @@ class ModelsRuleInformation(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "rule_attribute") and self.rule_attribute:
+        if hasattr(self, "rule_attribute"):
             result["ruleAttribute"] = str(self.rule_attribute)
         elif include_empty:
             result["ruleAttribute"] = str()
-        if hasattr(self, "rule_criteria") and self.rule_criteria:
+        if hasattr(self, "rule_criteria"):
             result["ruleCriteria"] = str(self.rule_criteria)
         elif include_empty:
             result["ruleCriteria"] = str()
-        if hasattr(self, "rule_value") and self.rule_value:
+        if hasattr(self, "rule_value"):
             result["ruleValue"] = float(self.rule_value)
         elif include_empty:
             result["ruleValue"] = float()

@@ -56,11 +56,11 @@ class CancelRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "immediate") and self.immediate:
+        if hasattr(self, "immediate"):
             result["immediate"] = bool(self.immediate)
         elif include_empty:
             result["immediate"] = bool()
-        if hasattr(self, "reason") and self.reason:
+        if hasattr(self, "reason"):
             result["reason"] = str(self.reason)
         elif include_empty:
             result["reason"] = str()

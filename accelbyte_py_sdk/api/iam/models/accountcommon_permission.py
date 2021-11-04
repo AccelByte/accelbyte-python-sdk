@@ -77,23 +77,23 @@ class AccountcommonPermission(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "action") and self.action:
+        if hasattr(self, "action"):
             result["Action"] = int(self.action)
         elif include_empty:
             result["Action"] = int()
-        if hasattr(self, "resource") and self.resource:
+        if hasattr(self, "resource"):
             result["Resource"] = str(self.resource)
         elif include_empty:
             result["Resource"] = str()
-        if hasattr(self, "sched_action") and self.sched_action:
+        if hasattr(self, "sched_action"):
             result["SchedAction"] = int(self.sched_action)
         elif include_empty:
             result["SchedAction"] = int()
-        if hasattr(self, "sched_cron") and self.sched_cron:
+        if hasattr(self, "sched_cron"):
             result["SchedCron"] = str(self.sched_cron)
         elif include_empty:
             result["SchedCron"] = str()
-        if hasattr(self, "sched_range") and self.sched_range:
+        if hasattr(self, "sched_range"):
             result["SchedRange"] = [str(i0) for i0 in self.sched_range]
         elif include_empty:
             result["SchedRange"] = []

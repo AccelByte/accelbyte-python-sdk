@@ -77,23 +77,23 @@ class FieldValidationError(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "error_code") and self.error_code:
+        if hasattr(self, "error_code"):
             result["errorCode"] = str(self.error_code)
         elif include_empty:
             result["errorCode"] = str()
-        if hasattr(self, "error_field") and self.error_field:
+        if hasattr(self, "error_field"):
             result["errorField"] = str(self.error_field)
         elif include_empty:
             result["errorField"] = str()
-        if hasattr(self, "error_value") and self.error_value:
+        if hasattr(self, "error_value"):
             result["errorValue"] = str(self.error_value)
         elif include_empty:
             result["errorValue"] = str()
-        if hasattr(self, "error_message") and self.error_message:
+        if hasattr(self, "error_message"):
             result["errorMessage"] = str(self.error_message)
         elif include_empty:
             result["errorMessage"] = str()
-        if hasattr(self, "message_variables") and self.message_variables:
+        if hasattr(self, "message_variables"):
             result["messageVariables"] = {str(k0): str(v0) for k0, v0 in self.message_variables.items()}
         elif include_empty:
             result["messageVariables"] = {}

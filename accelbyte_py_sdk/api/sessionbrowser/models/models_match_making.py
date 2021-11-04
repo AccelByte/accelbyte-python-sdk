@@ -156,67 +156,67 @@ class ModelsMatchMaking(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "channel") and self.channel:
+        if hasattr(self, "channel"):
             result["channel"] = str(self.channel)
         elif include_empty:
             result["channel"] = str()
-        if hasattr(self, "client_version") and self.client_version:
+        if hasattr(self, "client_version"):
             result["client_version"] = str(self.client_version)
         elif include_empty:
             result["client_version"] = str()
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["created_at"] = str(self.created_at)
         elif include_empty:
             result["created_at"] = str()
-        if hasattr(self, "deployment") and self.deployment:
+        if hasattr(self, "deployment"):
             result["deployment"] = str(self.deployment)
         elif include_empty:
             result["deployment"] = str()
-        if hasattr(self, "event") and self.event:
+        if hasattr(self, "event"):
             result["event"] = str(self.event)
         elif include_empty:
             result["event"] = str()
-        if hasattr(self, "game_mode") and self.game_mode:
+        if hasattr(self, "game_mode"):
             result["game_mode"] = str(self.game_mode)
         elif include_empty:
             result["game_mode"] = str()
-        if hasattr(self, "joinable") and self.joinable:
+        if hasattr(self, "joinable"):
             result["joinable"] = bool(self.joinable)
         elif include_empty:
             result["joinable"] = bool()
-        if hasattr(self, "match_id") and self.match_id:
+        if hasattr(self, "match_id"):
             result["match_id"] = str(self.match_id)
         elif include_empty:
             result["match_id"] = str()
-        if hasattr(self, "matching_allies") and self.matching_allies:
+        if hasattr(self, "matching_allies"):
             result["matching_allies"] = [i0.to_dict(include_empty=include_empty) for i0 in self.matching_allies]
         elif include_empty:
             result["matching_allies"] = []
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "party_attributes") and self.party_attributes:
+        if hasattr(self, "party_attributes"):
             result["party_attributes"] = {str(k0): v0 for k0, v0 in self.party_attributes.items()}
         elif include_empty:
             result["party_attributes"] = {}
-        if hasattr(self, "party_id") and self.party_id:
+        if hasattr(self, "party_id"):
             result["party_id"] = str(self.party_id)
         elif include_empty:
             result["party_id"] = str()
-        if hasattr(self, "queued_at") and self.queued_at:
+        if hasattr(self, "queued_at"):
             result["queued_at"] = int(self.queued_at)
         elif include_empty:
             result["queued_at"] = int()
-        if hasattr(self, "region") and self.region:
+        if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = str()
-        if hasattr(self, "server_name") and self.server_name:
+        if hasattr(self, "server_name"):
             result["server_name"] = str(self.server_name)
         elif include_empty:
             result["server_name"] = str()
-        if hasattr(self, "status") and self.status:
+        if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()

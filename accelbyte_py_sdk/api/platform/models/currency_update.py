@@ -49,7 +49,7 @@ class CurrencyUpdate(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "localization_descriptions") and self.localization_descriptions:
+        if hasattr(self, "localization_descriptions"):
             result["localizationDescriptions"] = {str(k0): str(v0) for k0, v0 in self.localization_descriptions.items()}
         elif include_empty:
             result["localizationDescriptions"] = {}

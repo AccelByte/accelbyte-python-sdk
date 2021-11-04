@@ -84,27 +84,27 @@ class StoreBackupInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "id_") and self.id_:
+        if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = str()
-        if hasattr(self, "auto_backup") and self.auto_backup:
+        if hasattr(self, "auto_backup"):
             result["autoBackup"] = bool(self.auto_backup)
         elif include_empty:
             result["autoBackup"] = bool()
-        if hasattr(self, "name") and self.name:
+        if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = str()
-        if hasattr(self, "store_id") and self.store_id:
+        if hasattr(self, "store_id"):
             result["storeId"] = str(self.store_id)
         elif include_empty:
             result["storeId"] = str()
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()

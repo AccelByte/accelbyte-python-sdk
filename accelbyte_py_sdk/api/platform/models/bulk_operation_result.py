@@ -49,7 +49,7 @@ class BulkOperationResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "affected") and self.affected:
+        if hasattr(self, "affected"):
             result["affected"] = int(self.affected)
         elif include_empty:
             result["affected"] = int()

@@ -65,15 +65,15 @@ class ModelsMatchingParty(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "party_attributes") and self.party_attributes:
+        if hasattr(self, "party_attributes"):
             result["party_attributes"] = {str(k0): v0 for k0, v0 in self.party_attributes.items()}
         elif include_empty:
             result["party_attributes"] = {}
-        if hasattr(self, "party_id") and self.party_id:
+        if hasattr(self, "party_id"):
             result["party_id"] = str(self.party_id)
         elif include_empty:
             result["party_id"] = str()
-        if hasattr(self, "party_members") and self.party_members:
+        if hasattr(self, "party_members"):
             result["party_members"] = [i0.to_dict(include_empty=include_empty) for i0 in self.party_members]
         elif include_empty:
             result["party_members"] = []

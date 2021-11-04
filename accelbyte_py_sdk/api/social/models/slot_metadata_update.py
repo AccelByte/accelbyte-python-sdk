@@ -63,15 +63,15 @@ class SlotMetadataUpdate(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "label") and self.label:
+        if hasattr(self, "label"):
             result["label"] = str(self.label)
         elif include_empty:
             result["label"] = str()
-        if hasattr(self, "tags") and self.tags:
+        if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
             result["tags"] = []
-        if hasattr(self, "custom_attribute") and self.custom_attribute:
+        if hasattr(self, "custom_attribute"):
             result["customAttribute"] = str(self.custom_attribute)
         elif include_empty:
             result["customAttribute"] = str()

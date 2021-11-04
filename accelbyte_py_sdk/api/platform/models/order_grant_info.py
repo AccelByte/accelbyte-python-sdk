@@ -59,11 +59,11 @@ class OrderGrantInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "entitlements") and self.entitlements:
+        if hasattr(self, "entitlements"):
             result["entitlements"] = [i0.to_dict(include_empty=include_empty) for i0 in self.entitlements]
         elif include_empty:
             result["entitlements"] = []
-        if hasattr(self, "credits") and self.credits:
+        if hasattr(self, "credits"):
             result["credits"] = [i0.to_dict(include_empty=include_empty) for i0 in self.credits]
         elif include_empty:
             result["credits"] = []

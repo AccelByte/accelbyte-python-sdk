@@ -91,31 +91,31 @@ class FulfillmentItem(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "store_id") and self.store_id:
+        if hasattr(self, "store_id"):
             result["storeId"] = str(self.store_id)
         elif include_empty:
             result["storeId"] = str()
-        if hasattr(self, "item_id") and self.item_id:
+        if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
-        if hasattr(self, "item_sku") and self.item_sku:
+        if hasattr(self, "item_sku"):
             result["itemSku"] = str(self.item_sku)
         elif include_empty:
             result["itemSku"] = str()
-        if hasattr(self, "item_type") and self.item_type:
+        if hasattr(self, "item_type"):
             result["itemType"] = str(self.item_type)
         elif include_empty:
             result["itemType"] = str()
-        if hasattr(self, "item_name") and self.item_name:
+        if hasattr(self, "item_name"):
             result["itemName"] = str(self.item_name)
         elif include_empty:
             result["itemName"] = str()
-        if hasattr(self, "quantity") and self.quantity:
+        if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
             result["quantity"] = int()
-        if hasattr(self, "extra_subscription_days") and self.extra_subscription_days:
+        if hasattr(self, "extra_subscription_days"):
             result["extraSubscriptionDays"] = int(self.extra_subscription_days)
         elif include_empty:
             result["extraSubscriptionDays"] = int()

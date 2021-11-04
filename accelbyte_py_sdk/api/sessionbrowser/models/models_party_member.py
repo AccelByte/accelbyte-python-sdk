@@ -56,11 +56,11 @@ class ModelsPartyMember(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "extra_attributes") and self.extra_attributes:
+        if hasattr(self, "extra_attributes"):
             result["extra_attributes"] = {str(k0): v0 for k0, v0 in self.extra_attributes.items()}
         elif include_empty:
             result["extra_attributes"] = {}
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["user_id"] = str(self.user_id)
         elif include_empty:
             result["user_id"] = str()

@@ -105,39 +105,39 @@ class SubscriptionSummary(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "id_") and self.id_:
+        if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "item_id") and self.item_id:
+        if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
-        if hasattr(self, "sku") and self.sku:
+        if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
             result["sku"] = str()
-        if hasattr(self, "status") and self.status:
+        if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
-        if hasattr(self, "current_period_start") and self.current_period_start:
+        if hasattr(self, "current_period_start"):
             result["currentPeriodStart"] = str(self.current_period_start)
         elif include_empty:
             result["currentPeriodStart"] = str()
-        if hasattr(self, "current_period_end") and self.current_period_end:
+        if hasattr(self, "current_period_end"):
             result["currentPeriodEnd"] = str(self.current_period_end)
         elif include_empty:
             result["currentPeriodEnd"] = str()
-        if hasattr(self, "subscribed_by") and self.subscribed_by:
+        if hasattr(self, "subscribed_by"):
             result["subscribedBy"] = str(self.subscribed_by)
         elif include_empty:
             result["subscribedBy"] = str()

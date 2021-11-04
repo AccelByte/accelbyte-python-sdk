@@ -84,27 +84,27 @@ class PaymentOrderNotifySimulation(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "payment_provider") and self.payment_provider:
+        if hasattr(self, "payment_provider"):
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
             result["paymentProvider"] = str()
-        if hasattr(self, "notify_type") and self.notify_type:
+        if hasattr(self, "notify_type"):
             result["notifyType"] = str(self.notify_type)
         elif include_empty:
             result["notifyType"] = str()
-        if hasattr(self, "currency_code") and self.currency_code:
+        if hasattr(self, "currency_code"):
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
             result["currencyCode"] = str()
-        if hasattr(self, "amount") and self.amount:
+        if hasattr(self, "amount"):
             result["amount"] = int(self.amount)
         elif include_empty:
             result["amount"] = int()
-        if hasattr(self, "vat") and self.vat:
+        if hasattr(self, "vat"):
             result["vat"] = int(self.vat)
         elif include_empty:
             result["vat"] = int()
-        if hasattr(self, "sales_tax") and self.sales_tax:
+        if hasattr(self, "sales_tax"):
             result["salesTax"] = int(self.sales_tax)
         elif include_empty:
             result["salesTax"] = int()

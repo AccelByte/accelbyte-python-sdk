@@ -157,67 +157,67 @@ class IAPOrderInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "iap_order_no") and self.iap_order_no:
+        if hasattr(self, "iap_order_no"):
             result["iapOrderNo"] = str(self.iap_order_no)
         elif include_empty:
             result["iapOrderNo"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "product_id") and self.product_id:
+        if hasattr(self, "product_id"):
             result["productId"] = str(self.product_id)
         elif include_empty:
             result["productId"] = str()
-        if hasattr(self, "receipt_data") and self.receipt_data:
+        if hasattr(self, "receipt_data"):
             result["receiptData"] = str(self.receipt_data)
         elif include_empty:
             result["receiptData"] = str()
-        if hasattr(self, "transaction_id") and self.transaction_id:
+        if hasattr(self, "transaction_id"):
             result["transactionId"] = str(self.transaction_id)
         elif include_empty:
             result["transactionId"] = str()
-        if hasattr(self, "status") and self.status:
+        if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
-        if hasattr(self, "status_reason") and self.status_reason:
+        if hasattr(self, "status_reason"):
             result["statusReason"] = str(self.status_reason)
         elif include_empty:
             result["statusReason"] = str()
-        if hasattr(self, "region") and self.region:
+        if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = str()
-        if hasattr(self, "language") and self.language:
+        if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = str()
-        if hasattr(self, "quantity") and self.quantity:
+        if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
             result["quantity"] = int()
-        if hasattr(self, "sandbox") and self.sandbox:
+        if hasattr(self, "sandbox"):
             result["sandbox"] = bool(self.sandbox)
         elif include_empty:
             result["sandbox"] = bool()
-        if hasattr(self, "type_") and self.type_:
+        if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = str()
-        if hasattr(self, "fulfilled_time") and self.fulfilled_time:
+        if hasattr(self, "fulfilled_time"):
             result["fulfilledTime"] = str(self.fulfilled_time)
         elif include_empty:
             result["fulfilledTime"] = str()
-        if hasattr(self, "entitlements") and self.entitlements:
+        if hasattr(self, "entitlements"):
             result["entitlements"] = [i0.to_dict(include_empty=include_empty) for i0 in self.entitlements]
         elif include_empty:
             result["entitlements"] = []
-        if hasattr(self, "credits") and self.credits:
+        if hasattr(self, "credits"):
             result["credits"] = [i0.to_dict(include_empty=include_empty) for i0 in self.credits]
         elif include_empty:
             result["credits"] = []

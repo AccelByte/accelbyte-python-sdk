@@ -56,11 +56,11 @@ class ModelsGetImageLimitResponseData(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "image_count") and self.image_count:
+        if hasattr(self, "image_count"):
             result["image_count"] = int(self.image_count)
         elif include_empty:
             result["image_count"] = int()
-        if hasattr(self, "image_limit") and self.image_limit:
+        if hasattr(self, "image_limit"):
             result["image_limit"] = int(self.image_limit)
         elif include_empty:
             result["image_limit"] = int()

@@ -56,11 +56,11 @@ class GoogleIAPConfigRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "application_name") and self.application_name:
+        if hasattr(self, "application_name"):
             result["applicationName"] = str(self.application_name)
         elif include_empty:
             result["applicationName"] = str()
-        if hasattr(self, "service_account_id") and self.service_account_id:
+        if hasattr(self, "service_account_id"):
             result["serviceAccountId"] = str(self.service_account_id)
         elif include_empty:
             result["serviceAccountId"] = str()

@@ -79,23 +79,23 @@ class ModelsSession(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "server") and self.server:
+        if hasattr(self, "server"):
             result["Server"] = self.server.to_dict(include_empty=include_empty)
         elif include_empty:
             result["Server"] = ModelsServer()
-        if hasattr(self, "id_") and self.id_:
+        if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "provider") and self.provider:
+        if hasattr(self, "provider"):
             result["provider"] = str(self.provider)
         elif include_empty:
             result["provider"] = str()
-        if hasattr(self, "region") and self.region:
+        if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = str()

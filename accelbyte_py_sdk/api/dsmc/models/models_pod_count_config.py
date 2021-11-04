@@ -77,23 +77,23 @@ class ModelsPodCountConfig(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "buffer_count") and self.buffer_count:
+        if hasattr(self, "buffer_count"):
             result["buffer_count"] = int(self.buffer_count)
         elif include_empty:
             result["buffer_count"] = int()
-        if hasattr(self, "buffer_percent") and self.buffer_percent:
+        if hasattr(self, "buffer_percent"):
             result["buffer_percent"] = int(self.buffer_percent)
         elif include_empty:
             result["buffer_percent"] = int()
-        if hasattr(self, "max_count") and self.max_count:
+        if hasattr(self, "max_count"):
             result["max_count"] = int(self.max_count)
         elif include_empty:
             result["max_count"] = int()
-        if hasattr(self, "min_count") and self.min_count:
+        if hasattr(self, "min_count"):
             result["min_count"] = int(self.min_count)
         elif include_empty:
             result["min_count"] = int()
-        if hasattr(self, "use_buffer_percent") and self.use_buffer_percent:
+        if hasattr(self, "use_buffer_percent"):
             result["use_buffer_percent"] = bool(self.use_buffer_percent)
         elif include_empty:
             result["use_buffer_percent"] = bool()

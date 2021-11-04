@@ -51,7 +51,7 @@ class AccountcommonUserPlatforms(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "user_id_platforms") and self.user_id_platforms:
+        if hasattr(self, "user_id_platforms"):
             result["userIdPlatforms"] = [i0.to_dict(include_empty=include_empty) for i0 in self.user_id_platforms]
         elif include_empty:
             result["userIdPlatforms"] = []

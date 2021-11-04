@@ -70,19 +70,19 @@ class AccountcommonPagination(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "first") and self.first:
+        if hasattr(self, "first"):
             result["First"] = str(self.first)
         elif include_empty:
             result["First"] = str()
-        if hasattr(self, "last") and self.last:
+        if hasattr(self, "last"):
             result["Last"] = str(self.last)
         elif include_empty:
             result["Last"] = str()
-        if hasattr(self, "next_") and self.next_:
+        if hasattr(self, "next_"):
             result["Next"] = str(self.next_)
         elif include_empty:
             result["Next"] = str()
-        if hasattr(self, "previous") and self.previous:
+        if hasattr(self, "previous"):
             result["Previous"] = str(self.previous)
         elif include_empty:
             result["Previous"] = str()

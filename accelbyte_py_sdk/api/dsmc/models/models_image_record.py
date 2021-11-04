@@ -105,39 +105,39 @@ class ModelsImageRecord(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "artifact_path") and self.artifact_path:
+        if hasattr(self, "artifact_path"):
             result["artifactPath"] = str(self.artifact_path)
         elif include_empty:
             result["artifactPath"] = str()
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "docker_path") and self.docker_path:
+        if hasattr(self, "docker_path"):
             result["dockerPath"] = str(self.docker_path)
         elif include_empty:
             result["dockerPath"] = str()
-        if hasattr(self, "image") and self.image:
+        if hasattr(self, "image"):
             result["image"] = str(self.image)
         elif include_empty:
             result["image"] = str()
-        if hasattr(self, "modified_by") and self.modified_by:
+        if hasattr(self, "modified_by"):
             result["modifiedBy"] = str(self.modified_by)
         elif include_empty:
             result["modifiedBy"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "persistent") and self.persistent:
+        if hasattr(self, "persistent"):
             result["persistent"] = bool(self.persistent)
         elif include_empty:
             result["persistent"] = bool()
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()
-        if hasattr(self, "version") and self.version:
+        if hasattr(self, "version"):
             result["version"] = str(self.version)
         elif include_empty:
             result["version"] = str()

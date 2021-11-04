@@ -49,7 +49,7 @@ class BulkStatItemReset(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "stat_code") and self.stat_code:
+        if hasattr(self, "stat_code"):
             result["statCode"] = str(self.stat_code)
         elif include_empty:
             result["statCode"] = str()

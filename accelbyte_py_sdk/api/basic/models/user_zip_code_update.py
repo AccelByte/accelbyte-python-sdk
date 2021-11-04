@@ -49,7 +49,7 @@ class UserZipCodeUpdate(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "zip_code") and self.zip_code:
+        if hasattr(self, "zip_code"):
             result["zipCode"] = str(self.zip_code)
         elif include_empty:
             result["zipCode"] = str()

@@ -51,7 +51,7 @@ class ModelPublicUsersResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "users") and self.users:
+        if hasattr(self, "users"):
             result["Users"] = [i0.to_dict(include_empty=include_empty) for i0 in self.users]
         elif include_empty:
             result["Users"] = []

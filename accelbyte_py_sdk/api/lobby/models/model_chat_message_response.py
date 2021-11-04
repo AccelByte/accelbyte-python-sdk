@@ -77,23 +77,23 @@ class ModelChatMessageResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "from_") and self.from_:
+        if hasattr(self, "from_"):
             result["from"] = str(self.from_)
         elif include_empty:
             result["from"] = str()
-        if hasattr(self, "id_") and self.id_:
+        if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = str()
-        if hasattr(self, "payload") and self.payload:
+        if hasattr(self, "payload"):
             result["payload"] = str(self.payload)
         elif include_empty:
             result["payload"] = str()
-        if hasattr(self, "received_at") and self.received_at:
+        if hasattr(self, "received_at"):
             result["receivedAt"] = int(self.received_at)
         elif include_empty:
             result["receivedAt"] = int()
-        if hasattr(self, "to") and self.to:
+        if hasattr(self, "to"):
             result["to"] = str(self.to)
         elif include_empty:
             result["to"] = str()

@@ -163,67 +163,67 @@ class PaymentMerchantConfigInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "id_") and self.id_:
+        if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = str()
-        if hasattr(self, "ali_pay_config") and self.ali_pay_config:
+        if hasattr(self, "ali_pay_config"):
             result["aliPayConfig"] = self.ali_pay_config.to_dict(include_empty=include_empty)
         elif include_empty:
             result["aliPayConfig"] = AliPayConfig()
-        if hasattr(self, "ali_pay_sandbox_config") and self.ali_pay_sandbox_config:
+        if hasattr(self, "ali_pay_sandbox_config"):
             result["aliPaySandboxConfig"] = self.ali_pay_sandbox_config.to_dict(include_empty=include_empty)
         elif include_empty:
             result["aliPaySandboxConfig"] = AliPayConfig()
-        if hasattr(self, "wx_pay_config") and self.wx_pay_config:
+        if hasattr(self, "wx_pay_config"):
             result["wxPayConfig"] = self.wx_pay_config.to_dict(include_empty=include_empty)
         elif include_empty:
             result["wxPayConfig"] = WxPayConfigInfo()
-        if hasattr(self, "xsolla_config") and self.xsolla_config:
+        if hasattr(self, "xsolla_config"):
             result["xsollaConfig"] = self.xsolla_config.to_dict(include_empty=include_empty)
         elif include_empty:
             result["xsollaConfig"] = XsollaConfig()
-        if hasattr(self, "xsolla_paywall_config") and self.xsolla_paywall_config:
+        if hasattr(self, "xsolla_paywall_config"):
             result["xsollaPaywallConfig"] = self.xsolla_paywall_config.to_dict(include_empty=include_empty)
         elif include_empty:
             result["xsollaPaywallConfig"] = XsollaPaywallConfig()
-        if hasattr(self, "adyen_config") and self.adyen_config:
+        if hasattr(self, "adyen_config"):
             result["adyenConfig"] = self.adyen_config.to_dict(include_empty=include_empty)
         elif include_empty:
             result["adyenConfig"] = AdyenConfig()
-        if hasattr(self, "adyen_sandbox_config") and self.adyen_sandbox_config:
+        if hasattr(self, "adyen_sandbox_config"):
             result["adyenSandboxConfig"] = self.adyen_sandbox_config.to_dict(include_empty=include_empty)
         elif include_empty:
             result["adyenSandboxConfig"] = AdyenConfig()
-        if hasattr(self, "pay_pal_config") and self.pay_pal_config:
+        if hasattr(self, "pay_pal_config"):
             result["payPalConfig"] = self.pay_pal_config.to_dict(include_empty=include_empty)
         elif include_empty:
             result["payPalConfig"] = PayPalConfig()
-        if hasattr(self, "pay_pal_sandbox_config") and self.pay_pal_sandbox_config:
+        if hasattr(self, "pay_pal_sandbox_config"):
             result["payPalSandboxConfig"] = self.pay_pal_sandbox_config.to_dict(include_empty=include_empty)
         elif include_empty:
             result["payPalSandboxConfig"] = PayPalConfig()
-        if hasattr(self, "stripe_config") and self.stripe_config:
+        if hasattr(self, "stripe_config"):
             result["stripeConfig"] = self.stripe_config.to_dict(include_empty=include_empty)
         elif include_empty:
             result["stripeConfig"] = StripeConfig()
-        if hasattr(self, "stripe_sandbox_config") and self.stripe_sandbox_config:
+        if hasattr(self, "stripe_sandbox_config"):
             result["stripeSandboxConfig"] = self.stripe_sandbox_config.to_dict(include_empty=include_empty)
         elif include_empty:
             result["stripeSandboxConfig"] = StripeConfig()
-        if hasattr(self, "checkout_config") and self.checkout_config:
+        if hasattr(self, "checkout_config"):
             result["checkoutConfig"] = self.checkout_config.to_dict(include_empty=include_empty)
         elif include_empty:
             result["checkoutConfig"] = CheckoutConfig()
-        if hasattr(self, "checkout_sandbox_config") and self.checkout_sandbox_config:
+        if hasattr(self, "checkout_sandbox_config"):
             result["checkoutSandboxConfig"] = self.checkout_sandbox_config.to_dict(include_empty=include_empty)
         elif include_empty:
             result["checkoutSandboxConfig"] = CheckoutConfig()
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()

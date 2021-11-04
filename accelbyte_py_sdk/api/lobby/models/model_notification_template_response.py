@@ -58,11 +58,11 @@ class ModelNotificationTemplateResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "template_localizations") and self.template_localizations:
+        if hasattr(self, "template_localizations"):
             result["templateLocalizations"] = [i0.to_dict(include_empty=include_empty) for i0 in self.template_localizations]
         elif include_empty:
             result["templateLocalizations"] = []
-        if hasattr(self, "template_slug") and self.template_slug:
+        if hasattr(self, "template_slug"):
             result["templateSlug"] = str(self.template_slug)
         elif include_empty:
             result["templateSlug"] = str()

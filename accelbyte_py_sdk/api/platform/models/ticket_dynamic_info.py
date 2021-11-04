@@ -49,7 +49,7 @@ class TicketDynamicInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "available_sale_count") and self.available_sale_count:
+        if hasattr(self, "available_sale_count"):
             result["availableSaleCount"] = int(self.available_sale_count)
         elif include_empty:
             result["availableSaleCount"] = int()

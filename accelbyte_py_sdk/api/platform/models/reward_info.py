@@ -114,43 +114,43 @@ class RewardInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "reward_id") and self.reward_id:
+        if hasattr(self, "reward_id"):
             result["rewardId"] = str(self.reward_id)
         elif include_empty:
             result["rewardId"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "reward_code") and self.reward_code:
+        if hasattr(self, "reward_code"):
             result["rewardCode"] = str(self.reward_code)
         elif include_empty:
             result["rewardCode"] = str()
-        if hasattr(self, "description") and self.description:
+        if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = str()
-        if hasattr(self, "event_topic") and self.event_topic:
+        if hasattr(self, "event_topic"):
             result["eventTopic"] = str(self.event_topic)
         elif include_empty:
             result["eventTopic"] = str()
-        if hasattr(self, "reward_conditions") and self.reward_conditions:
+        if hasattr(self, "reward_conditions"):
             result["rewardConditions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.reward_conditions]
         elif include_empty:
             result["rewardConditions"] = []
-        if hasattr(self, "max_awarded") and self.max_awarded:
+        if hasattr(self, "max_awarded"):
             result["maxAwarded"] = int(self.max_awarded)
         elif include_empty:
             result["maxAwarded"] = int()
-        if hasattr(self, "max_awarded_per_user") and self.max_awarded_per_user:
+        if hasattr(self, "max_awarded_per_user"):
             result["maxAwardedPerUser"] = int(self.max_awarded_per_user)
         elif include_empty:
             result["maxAwardedPerUser"] = int()
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()

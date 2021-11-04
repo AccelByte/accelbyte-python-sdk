@@ -56,11 +56,11 @@ class ModelsKickGroupMemberResponseV1(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "group_id") and self.group_id:
+        if hasattr(self, "group_id"):
             result["groupId"] = str(self.group_id)
         elif include_empty:
             result["groupId"] = str()
-        if hasattr(self, "kicked_user_id") and self.kicked_user_id:
+        if hasattr(self, "kicked_user_id"):
             result["kickedUserId"] = str(self.kicked_user_id)
         elif include_empty:
             result["kickedUserId"] = str()

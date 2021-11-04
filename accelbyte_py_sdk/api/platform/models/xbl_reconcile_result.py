@@ -77,23 +77,23 @@ class XblReconcileResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "transaction_id") and self.transaction_id:
+        if hasattr(self, "transaction_id"):
             result["transactionId"] = str(self.transaction_id)
         elif include_empty:
             result["transactionId"] = str()
-        if hasattr(self, "xbox_product_id") and self.xbox_product_id:
+        if hasattr(self, "xbox_product_id"):
             result["xboxProductId"] = str(self.xbox_product_id)
         elif include_empty:
             result["xboxProductId"] = str()
-        if hasattr(self, "item_id") and self.item_id:
+        if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
-        if hasattr(self, "sku") and self.sku:
+        if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
             result["sku"] = str()
-        if hasattr(self, "iap_order_status") and self.iap_order_status:
+        if hasattr(self, "iap_order_status"):
             result["iapOrderStatus"] = str(self.iap_order_status)
         elif include_empty:
             result["iapOrderStatus"] = str()

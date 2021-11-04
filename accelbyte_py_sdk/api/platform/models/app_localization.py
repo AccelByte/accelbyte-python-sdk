@@ -56,11 +56,11 @@ class AppLocalization(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "slogan") and self.slogan:
+        if hasattr(self, "slogan"):
             result["slogan"] = str(self.slogan)
         elif include_empty:
             result["slogan"] = str()
-        if hasattr(self, "announcement") and self.announcement:
+        if hasattr(self, "announcement"):
             result["announcement"] = str(self.announcement)
         elif include_empty:
             result["announcement"] = str()

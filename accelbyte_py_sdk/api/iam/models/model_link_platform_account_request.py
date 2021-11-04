@@ -56,11 +56,11 @@ class ModelLinkPlatformAccountRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "platform_id") and self.platform_id:
+        if hasattr(self, "platform_id"):
             result["platformId"] = str(self.platform_id)
         elif include_empty:
             result["platformId"] = str()
-        if hasattr(self, "platform_user_id") and self.platform_user_id:
+        if hasattr(self, "platform_user_id"):
             result["platformUserId"] = str(self.platform_user_id)
         elif include_empty:
             result["platformUserId"] = str()

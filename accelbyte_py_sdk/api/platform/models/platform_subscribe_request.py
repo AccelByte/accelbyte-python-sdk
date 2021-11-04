@@ -84,27 +84,27 @@ class PlatformSubscribeRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "item_id") and self.item_id:
+        if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
-        if hasattr(self, "grant_days") and self.grant_days:
+        if hasattr(self, "grant_days"):
             result["grantDays"] = int(self.grant_days)
         elif include_empty:
             result["grantDays"] = int()
-        if hasattr(self, "source") and self.source:
+        if hasattr(self, "source"):
             result["source"] = str(self.source)
         elif include_empty:
             result["source"] = str()
-        if hasattr(self, "reason") and self.reason:
+        if hasattr(self, "reason"):
             result["reason"] = str(self.reason)
         elif include_empty:
             result["reason"] = str()
-        if hasattr(self, "region") and self.region:
+        if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = str()
-        if hasattr(self, "language") and self.language:
+        if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = str()

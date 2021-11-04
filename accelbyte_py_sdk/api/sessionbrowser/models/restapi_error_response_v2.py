@@ -77,23 +77,23 @@ class RestapiErrorResponseV2(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "attributes") and self.attributes:
+        if hasattr(self, "attributes"):
             result["attributes"] = {str(k0): str(v0) for k0, v0 in self.attributes.items()}
         elif include_empty:
             result["attributes"] = {}
-        if hasattr(self, "error_code") and self.error_code:
+        if hasattr(self, "error_code"):
             result["errorCode"] = int(self.error_code)
         elif include_empty:
             result["errorCode"] = int()
-        if hasattr(self, "error_message") and self.error_message:
+        if hasattr(self, "error_message"):
             result["errorMessage"] = str(self.error_message)
         elif include_empty:
             result["errorMessage"] = str()
-        if hasattr(self, "message") and self.message:
+        if hasattr(self, "message"):
             result["message"] = str(self.message)
         elif include_empty:
             result["message"] = str()
-        if hasattr(self, "name") and self.name:
+        if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = str()

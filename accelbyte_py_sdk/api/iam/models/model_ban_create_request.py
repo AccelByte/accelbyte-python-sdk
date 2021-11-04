@@ -77,23 +77,23 @@ class ModelBanCreateRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "ban") and self.ban:
+        if hasattr(self, "ban"):
             result["ban"] = str(self.ban)
         elif include_empty:
             result["ban"] = str()
-        if hasattr(self, "comment") and self.comment:
+        if hasattr(self, "comment"):
             result["comment"] = str(self.comment)
         elif include_empty:
             result["comment"] = str()
-        if hasattr(self, "end_date") and self.end_date:
+        if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
             result["endDate"] = str()
-        if hasattr(self, "reason") and self.reason:
+        if hasattr(self, "reason"):
             result["reason"] = str(self.reason)
         elif include_empty:
             result["reason"] = str()
-        if hasattr(self, "skip_notif") and self.skip_notif:
+        if hasattr(self, "skip_notif"):
             result["skipNotif"] = bool(self.skip_notif)
         elif include_empty:
             result["skipNotif"] = bool()

@@ -63,15 +63,15 @@ class ModelSendVerificationCodeRequestV3(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "context") and self.context:
+        if hasattr(self, "context"):
             result["context"] = str(self.context)
         elif include_empty:
             result["context"] = str()
-        if hasattr(self, "email_address") and self.email_address:
+        if hasattr(self, "email_address"):
             result["emailAddress"] = str(self.email_address)
         elif include_empty:
             result["emailAddress"] = str()
-        if hasattr(self, "language_tag") and self.language_tag:
+        if hasattr(self, "language_tag"):
             result["languageTag"] = str(self.language_tag)
         elif include_empty:
             result["languageTag"] = str()

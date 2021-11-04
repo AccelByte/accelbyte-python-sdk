@@ -91,31 +91,31 @@ class ModelUserCreateResponseV3(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "auth_type") and self.auth_type:
+        if hasattr(self, "auth_type"):
             result["authType"] = str(self.auth_type)
         elif include_empty:
             result["authType"] = str()
-        if hasattr(self, "country") and self.country:
+        if hasattr(self, "country"):
             result["country"] = str(self.country)
         elif include_empty:
             result["country"] = str()
-        if hasattr(self, "date_of_birth") and self.date_of_birth:
+        if hasattr(self, "date_of_birth"):
             result["dateOfBirth"] = str(self.date_of_birth)
         elif include_empty:
             result["dateOfBirth"] = str()
-        if hasattr(self, "display_name") and self.display_name:
+        if hasattr(self, "display_name"):
             result["displayName"] = str(self.display_name)
         elif include_empty:
             result["displayName"] = str()
-        if hasattr(self, "email_address") and self.email_address:
+        if hasattr(self, "email_address"):
             result["emailAddress"] = str(self.email_address)
         elif include_empty:
             result["emailAddress"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()

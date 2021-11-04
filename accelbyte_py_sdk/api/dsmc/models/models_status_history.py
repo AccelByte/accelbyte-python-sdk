@@ -56,11 +56,11 @@ class ModelsStatusHistory(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "status") and self.status:
+        if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
-        if hasattr(self, "time_stamp") and self.time_stamp:
+        if hasattr(self, "time_stamp"):
             result["time_stamp"] = str(self.time_stamp)
         elif include_empty:
             result["time_stamp"] = str()

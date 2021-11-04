@@ -49,7 +49,7 @@ class StatItemInc(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "inc") and self.inc:
+        if hasattr(self, "inc"):
             result["inc"] = float(self.inc)
         elif include_empty:
             result["inc"] = float()

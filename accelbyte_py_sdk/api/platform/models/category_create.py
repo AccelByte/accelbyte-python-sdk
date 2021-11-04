@@ -56,11 +56,11 @@ class CategoryCreate(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "category_path") and self.category_path:
+        if hasattr(self, "category_path"):
             result["categoryPath"] = str(self.category_path)
         elif include_empty:
             result["categoryPath"] = str()
-        if hasattr(self, "localization_display_names") and self.localization_display_names:
+        if hasattr(self, "localization_display_names"):
             result["localizationDisplayNames"] = {str(k0): str(v0) for k0, v0 in self.localization_display_names.items()}
         elif include_empty:
             result["localizationDisplayNames"] = {}

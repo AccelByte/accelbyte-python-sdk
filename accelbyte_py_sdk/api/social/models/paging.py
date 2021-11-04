@@ -56,11 +56,11 @@ class Paging(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "previous") and self.previous:
+        if hasattr(self, "previous"):
             result["previous"] = str(self.previous)
         elif include_empty:
             result["previous"] = str()
-        if hasattr(self, "next_") and self.next_:
+        if hasattr(self, "next_"):
             result["next"] = str(self.next_)
         elif include_empty:
             result["next"] = str()

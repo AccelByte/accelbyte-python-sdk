@@ -63,15 +63,15 @@ class AccountUserActiveBanResponseV4(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "ban") and self.ban:
+        if hasattr(self, "ban"):
             result["ban"] = str(self.ban)
         elif include_empty:
             result["ban"] = str()
-        if hasattr(self, "ban_id") and self.ban_id:
+        if hasattr(self, "ban_id"):
             result["banId"] = str(self.ban_id)
         elif include_empty:
             result["banId"] = str()
-        if hasattr(self, "end_date") and self.end_date:
+        if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
             result["endDate"] = str()

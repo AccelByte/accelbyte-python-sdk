@@ -56,11 +56,11 @@ class TestResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "success") and self.success:
+        if hasattr(self, "success"):
             result["success"] = bool(self.success)
         elif include_empty:
             result["success"] = bool()
-        if hasattr(self, "msg") and self.msg:
+        if hasattr(self, "msg"):
             result["msg"] = str(self.msg)
         elif include_empty:
             result["msg"] = str()

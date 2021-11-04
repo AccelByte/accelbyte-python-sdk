@@ -63,15 +63,15 @@ class AppleIAPConfigInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "bundle_id") and self.bundle_id:
+        if hasattr(self, "bundle_id"):
             result["bundleId"] = str(self.bundle_id)
         elif include_empty:
             result["bundleId"] = str()
-        if hasattr(self, "password") and self.password:
+        if hasattr(self, "password"):
             result["password"] = str(self.password)
         elif include_empty:
             result["password"] = str()

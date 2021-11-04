@@ -65,15 +65,15 @@ class ModelsCreateMemberRoleResponseV1(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "member_role_id") and self.member_role_id:
+        if hasattr(self, "member_role_id"):
             result["memberRoleId"] = str(self.member_role_id)
         elif include_empty:
             result["memberRoleId"] = str()
-        if hasattr(self, "member_role_name") and self.member_role_name:
+        if hasattr(self, "member_role_name"):
             result["memberRoleName"] = str(self.member_role_name)
         elif include_empty:
             result["memberRoleName"] = str()
-        if hasattr(self, "member_role_permissions") and self.member_role_permissions:
+        if hasattr(self, "member_role_permissions"):
             result["memberRolePermissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.member_role_permissions]
         elif include_empty:
             result["memberRolePermissions"] = []

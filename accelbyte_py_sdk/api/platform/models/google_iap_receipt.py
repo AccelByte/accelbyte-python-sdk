@@ -91,31 +91,31 @@ class GoogleIAPReceipt(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "order_id") and self.order_id:
+        if hasattr(self, "order_id"):
             result["orderId"] = str(self.order_id)
         elif include_empty:
             result["orderId"] = str()
-        if hasattr(self, "package_name") and self.package_name:
+        if hasattr(self, "package_name"):
             result["packageName"] = str(self.package_name)
         elif include_empty:
             result["packageName"] = str()
-        if hasattr(self, "product_id") and self.product_id:
+        if hasattr(self, "product_id"):
             result["productId"] = str(self.product_id)
         elif include_empty:
             result["productId"] = str()
-        if hasattr(self, "purchase_time") and self.purchase_time:
+        if hasattr(self, "purchase_time"):
             result["purchaseTime"] = int(self.purchase_time)
         elif include_empty:
             result["purchaseTime"] = int()
-        if hasattr(self, "purchase_token") and self.purchase_token:
+        if hasattr(self, "purchase_token"):
             result["purchaseToken"] = str(self.purchase_token)
         elif include_empty:
             result["purchaseToken"] = str()
-        if hasattr(self, "region") and self.region:
+        if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = str()
-        if hasattr(self, "language") and self.language:
+        if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = str()

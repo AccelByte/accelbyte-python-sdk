@@ -70,19 +70,19 @@ class Recurring(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "cycle") and self.cycle:
+        if hasattr(self, "cycle"):
             result["cycle"] = str(self.cycle)
         elif include_empty:
             result["cycle"] = str()
-        if hasattr(self, "fixed_free_days") and self.fixed_free_days:
+        if hasattr(self, "fixed_free_days"):
             result["fixedFreeDays"] = int(self.fixed_free_days)
         elif include_empty:
             result["fixedFreeDays"] = int()
-        if hasattr(self, "fixed_trial_cycles") and self.fixed_trial_cycles:
+        if hasattr(self, "fixed_trial_cycles"):
             result["fixedTrialCycles"] = int(self.fixed_trial_cycles)
         elif include_empty:
             result["fixedTrialCycles"] = int()
-        if hasattr(self, "grace_days") and self.grace_days:
+        if hasattr(self, "grace_days"):
             result["graceDays"] = int(self.grace_days)
         elif include_empty:
             result["graceDays"] = int()

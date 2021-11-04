@@ -59,11 +59,11 @@ class ModelsGroupRule(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "group_custom_rule") and self.group_custom_rule:
+        if hasattr(self, "group_custom_rule"):
             result["groupCustomRule"] = self.group_custom_rule.to_dict(include_empty=include_empty)
         elif include_empty:
             result["groupCustomRule"] = ModelsGroupRuleGroupCustomRule()
-        if hasattr(self, "group_predefined_rules") and self.group_predefined_rules:
+        if hasattr(self, "group_predefined_rules"):
             result["groupPredefinedRules"] = [i0.to_dict(include_empty=include_empty) for i0 in self.group_predefined_rules]
         elif include_empty:
             result["groupPredefinedRules"] = []

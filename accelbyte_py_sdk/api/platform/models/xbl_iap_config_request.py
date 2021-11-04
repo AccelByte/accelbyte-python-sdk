@@ -49,7 +49,7 @@ class XblIAPConfigRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "relying_party_cert") and self.relying_party_cert:
+        if hasattr(self, "relying_party_cert"):
             result["relyingPartyCert"] = str(self.relying_party_cert)
         elif include_empty:
             result["relyingPartyCert"] = str()

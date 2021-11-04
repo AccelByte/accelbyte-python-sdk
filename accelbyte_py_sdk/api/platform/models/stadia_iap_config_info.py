@@ -56,11 +56,11 @@ class StadiaIAPConfigInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "json_file") and self.json_file:
+        if hasattr(self, "json_file"):
             result["jsonFile"] = str(self.json_file)
         elif include_empty:
             result["jsonFile"] = str()

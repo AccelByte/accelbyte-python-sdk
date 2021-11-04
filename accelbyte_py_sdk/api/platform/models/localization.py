@@ -70,19 +70,19 @@ class Localization(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "title") and self.title:
+        if hasattr(self, "title"):
             result["title"] = str(self.title)
         elif include_empty:
             result["title"] = str()
-        if hasattr(self, "description") and self.description:
+        if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = str()
-        if hasattr(self, "long_description") and self.long_description:
+        if hasattr(self, "long_description"):
             result["longDescription"] = str(self.long_description)
         elif include_empty:
             result["longDescription"] = str()
-        if hasattr(self, "local_ext") and self.local_ext:
+        if hasattr(self, "local_ext"):
             result["localExt"] = {str(k0): v0 for k0, v0 in self.local_ext.items()}
         elif include_empty:
             result["localExt"] = {}

@@ -58,11 +58,11 @@ class ModelsRule(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "allowed_action") and self.allowed_action:
+        if hasattr(self, "allowed_action"):
             result["allowedAction"] = str(self.allowed_action)
         elif include_empty:
             result["allowedAction"] = str()
-        if hasattr(self, "rule_detail") and self.rule_detail:
+        if hasattr(self, "rule_detail"):
             result["ruleDetail"] = [i0.to_dict(include_empty=include_empty) for i0 in self.rule_detail]
         elif include_empty:
             result["ruleDetail"] = []

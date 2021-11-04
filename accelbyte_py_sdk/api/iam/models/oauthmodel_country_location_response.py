@@ -70,19 +70,19 @@ class OauthmodelCountryLocationResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "city") and self.city:
+        if hasattr(self, "city"):
             result["city"] = str(self.city)
         elif include_empty:
             result["city"] = str()
-        if hasattr(self, "country_code") and self.country_code:
+        if hasattr(self, "country_code"):
             result["countryCode"] = str(self.country_code)
         elif include_empty:
             result["countryCode"] = str()
-        if hasattr(self, "country_name") and self.country_name:
+        if hasattr(self, "country_name"):
             result["countryName"] = str(self.country_name)
         elif include_empty:
             result["countryName"] = str()
-        if hasattr(self, "state") and self.state:
+        if hasattr(self, "state"):
             result["state"] = str(self.state)
         elif include_empty:
             result["state"] = str()

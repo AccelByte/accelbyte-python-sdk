@@ -72,19 +72,19 @@ class ModelLocalization(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "last_draft_at") and self.last_draft_at:
+        if hasattr(self, "last_draft_at"):
             result["lastDraftAt"] = str(self.last_draft_at)
         elif include_empty:
             result["lastDraftAt"] = str()
-        if hasattr(self, "last_published_at") and self.last_published_at:
+        if hasattr(self, "last_published_at"):
             result["lastPublishedAt"] = str(self.last_published_at)
         elif include_empty:
             result["lastPublishedAt"] = str()
-        if hasattr(self, "template_content") and self.template_content:
+        if hasattr(self, "template_content"):
             result["templateContent"] = self.template_content.to_dict(include_empty=include_empty)
         elif include_empty:
             result["templateContent"] = ModelTemplateContent()
-        if hasattr(self, "template_language") and self.template_language:
+        if hasattr(self, "template_language"):
             result["templateLanguage"] = str(self.template_language)
         elif include_empty:
             result["templateLanguage"] = str()

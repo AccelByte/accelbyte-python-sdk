@@ -112,43 +112,43 @@ class FulfillmentRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "store_id") and self.store_id:
+        if hasattr(self, "store_id"):
             result["storeId"] = str(self.store_id)
         elif include_empty:
             result["storeId"] = str()
-        if hasattr(self, "item_id") and self.item_id:
+        if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
-        if hasattr(self, "item_sku") and self.item_sku:
+        if hasattr(self, "item_sku"):
             result["itemSku"] = str(self.item_sku)
         elif include_empty:
             result["itemSku"] = str()
-        if hasattr(self, "quantity") and self.quantity:
+        if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
             result["quantity"] = int()
-        if hasattr(self, "order_no") and self.order_no:
+        if hasattr(self, "order_no"):
             result["orderNo"] = str(self.order_no)
         elif include_empty:
             result["orderNo"] = str()
-        if hasattr(self, "source") and self.source:
+        if hasattr(self, "source"):
             result["source"] = str(self.source)
         elif include_empty:
             result["source"] = str()
-        if hasattr(self, "start_date") and self.start_date:
+        if hasattr(self, "start_date"):
             result["startDate"] = str(self.start_date)
         elif include_empty:
             result["startDate"] = str()
-        if hasattr(self, "end_date") and self.end_date:
+        if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
             result["endDate"] = str()
-        if hasattr(self, "region") and self.region:
+        if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = str()
-        if hasattr(self, "language") and self.language:
+        if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = str()

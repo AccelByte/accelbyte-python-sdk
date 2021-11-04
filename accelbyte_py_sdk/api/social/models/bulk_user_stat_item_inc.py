@@ -63,15 +63,15 @@ class BulkUserStatItemInc(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "stat_code") and self.stat_code:
+        if hasattr(self, "stat_code"):
             result["statCode"] = str(self.stat_code)
         elif include_empty:
             result["statCode"] = str()
-        if hasattr(self, "inc") and self.inc:
+        if hasattr(self, "inc"):
             result["inc"] = float(self.inc)
         elif include_empty:
             result["inc"] = float()

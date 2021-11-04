@@ -56,11 +56,11 @@ class AccountcommonNamespaceRole(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "role_id") and self.role_id:
+        if hasattr(self, "role_id"):
             result["roleId"] = str(self.role_id)
         elif include_empty:
             result["roleId"] = str()

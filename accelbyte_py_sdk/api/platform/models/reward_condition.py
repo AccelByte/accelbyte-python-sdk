@@ -72,19 +72,19 @@ class RewardCondition(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "condition_name") and self.condition_name:
+        if hasattr(self, "condition_name"):
             result["conditionName"] = str(self.condition_name)
         elif include_empty:
             result["conditionName"] = str()
-        if hasattr(self, "condition") and self.condition:
+        if hasattr(self, "condition"):
             result["condition"] = str(self.condition)
         elif include_empty:
             result["condition"] = str()
-        if hasattr(self, "event_name") and self.event_name:
+        if hasattr(self, "event_name"):
             result["eventName"] = str(self.event_name)
         elif include_empty:
             result["eventName"] = str()
-        if hasattr(self, "reward_items") and self.reward_items:
+        if hasattr(self, "reward_items"):
             result["rewardItems"] = [i0.to_dict(include_empty=include_empty) for i0 in self.reward_items]
         elif include_empty:
             result["rewardItems"] = []

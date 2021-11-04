@@ -49,7 +49,7 @@ class ModelListEmailAddressRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "list_email_address_request") and self.list_email_address_request:
+        if hasattr(self, "list_email_address_request"):
             result["listEmailAddressRequest"] = [str(i0) for i0 in self.list_email_address_request]
         elif include_empty:
             result["listEmailAddressRequest"] = []

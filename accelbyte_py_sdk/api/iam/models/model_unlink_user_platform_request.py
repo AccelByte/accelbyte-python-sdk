@@ -49,7 +49,7 @@ class ModelUnlinkUserPlatformRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "platform_namespace") and self.platform_namespace:
+        if hasattr(self, "platform_namespace"):
             result["platformNamespace"] = str(self.platform_namespace)
         elif include_empty:
             result["platformNamespace"] = str()

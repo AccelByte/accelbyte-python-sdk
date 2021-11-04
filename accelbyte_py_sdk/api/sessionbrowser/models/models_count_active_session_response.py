@@ -63,15 +63,15 @@ class ModelsCountActiveSessionResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "custom_game") and self.custom_game:
+        if hasattr(self, "custom_game"):
             result["custom_game"] = int(self.custom_game)
         elif include_empty:
             result["custom_game"] = int()
-        if hasattr(self, "matchmaking_game") and self.matchmaking_game:
+        if hasattr(self, "matchmaking_game"):
             result["matchmaking_game"] = int(self.matchmaking_game)
         elif include_empty:
             result["matchmaking_game"] = int()
-        if hasattr(self, "total") and self.total:
+        if hasattr(self, "total"):
             result["total"] = int(self.total)
         elif include_empty:
             result["total"] = int()

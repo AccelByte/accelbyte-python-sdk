@@ -49,7 +49,7 @@ class ModelsServerLogs(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "logs") and self.logs:
+        if hasattr(self, "logs"):
             result["logs"] = str(self.logs)
         elif include_empty:
             result["logs"] = str()

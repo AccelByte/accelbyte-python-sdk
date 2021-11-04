@@ -70,19 +70,19 @@ class ModelCountry(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "age_restriction") and self.age_restriction:
+        if hasattr(self, "age_restriction"):
             result["AgeRestriction"] = int(self.age_restriction)
         elif include_empty:
             result["AgeRestriction"] = int()
-        if hasattr(self, "country_code") and self.country_code:
+        if hasattr(self, "country_code"):
             result["CountryCode"] = str(self.country_code)
         elif include_empty:
             result["CountryCode"] = str()
-        if hasattr(self, "country_name") and self.country_name:
+        if hasattr(self, "country_name"):
             result["CountryName"] = str(self.country_name)
         elif include_empty:
             result["CountryName"] = str()
-        if hasattr(self, "enable") and self.enable:
+        if hasattr(self, "enable"):
             result["Enable"] = bool(self.enable)
         elif include_empty:
             result["Enable"] = bool()

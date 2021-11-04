@@ -93,31 +93,31 @@ class ModelsCreateGroupConfigurationRequestV1(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "configuration_code") and self.configuration_code:
+        if hasattr(self, "configuration_code"):
             result["configurationCode"] = str(self.configuration_code)
         elif include_empty:
             result["configurationCode"] = str()
-        if hasattr(self, "description") and self.description:
+        if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = str()
-        if hasattr(self, "global_rules") and self.global_rules:
+        if hasattr(self, "global_rules"):
             result["globalRules"] = [i0.to_dict(include_empty=include_empty) for i0 in self.global_rules]
         elif include_empty:
             result["globalRules"] = []
-        if hasattr(self, "group_admin_role_id") and self.group_admin_role_id:
+        if hasattr(self, "group_admin_role_id"):
             result["groupAdminRoleId"] = str(self.group_admin_role_id)
         elif include_empty:
             result["groupAdminRoleId"] = str()
-        if hasattr(self, "group_max_member") and self.group_max_member:
+        if hasattr(self, "group_max_member"):
             result["groupMaxMember"] = int(self.group_max_member)
         elif include_empty:
             result["groupMaxMember"] = int()
-        if hasattr(self, "group_member_role_id") and self.group_member_role_id:
+        if hasattr(self, "group_member_role_id"):
             result["groupMemberRoleId"] = str(self.group_member_role_id)
         elif include_empty:
             result["groupMemberRoleId"] = str()
-        if hasattr(self, "name") and self.name:
+        if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = str()

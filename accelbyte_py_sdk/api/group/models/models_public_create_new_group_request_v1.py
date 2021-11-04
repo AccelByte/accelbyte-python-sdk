@@ -107,39 +107,39 @@ class ModelsPublicCreateNewGroupRequestV1(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "configuration_code") and self.configuration_code:
+        if hasattr(self, "configuration_code"):
             result["configurationCode"] = str(self.configuration_code)
         elif include_empty:
             result["configurationCode"] = str()
-        if hasattr(self, "custom_attributes") and self.custom_attributes:
+        if hasattr(self, "custom_attributes"):
             result["customAttributes"] = {str(k0): v0 for k0, v0 in self.custom_attributes.items()}
         elif include_empty:
             result["customAttributes"] = {}
-        if hasattr(self, "group_description") and self.group_description:
+        if hasattr(self, "group_description"):
             result["groupDescription"] = str(self.group_description)
         elif include_empty:
             result["groupDescription"] = str()
-        if hasattr(self, "group_icon") and self.group_icon:
+        if hasattr(self, "group_icon"):
             result["groupIcon"] = str(self.group_icon)
         elif include_empty:
             result["groupIcon"] = str()
-        if hasattr(self, "group_max_member") and self.group_max_member:
+        if hasattr(self, "group_max_member"):
             result["groupMaxMember"] = int(self.group_max_member)
         elif include_empty:
             result["groupMaxMember"] = int()
-        if hasattr(self, "group_name") and self.group_name:
+        if hasattr(self, "group_name"):
             result["groupName"] = str(self.group_name)
         elif include_empty:
             result["groupName"] = str()
-        if hasattr(self, "group_region") and self.group_region:
+        if hasattr(self, "group_region"):
             result["groupRegion"] = str(self.group_region)
         elif include_empty:
             result["groupRegion"] = str()
-        if hasattr(self, "group_rules") and self.group_rules:
+        if hasattr(self, "group_rules"):
             result["groupRules"] = self.group_rules.to_dict(include_empty=include_empty)
         elif include_empty:
             result["groupRules"] = ModelsGroupRule()
-        if hasattr(self, "group_type") and self.group_type:
+        if hasattr(self, "group_type"):
             result["groupType"] = str(self.group_type)
         elif include_empty:
             result["groupType"] = str()

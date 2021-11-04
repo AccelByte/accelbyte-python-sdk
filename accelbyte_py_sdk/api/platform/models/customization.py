@@ -49,7 +49,7 @@ class Customization(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "settings") and self.settings:
+        if hasattr(self, "settings"):
             result["settings"] = str(self.settings)
         elif include_empty:
             result["settings"] = str()

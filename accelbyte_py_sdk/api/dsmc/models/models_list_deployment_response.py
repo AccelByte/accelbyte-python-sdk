@@ -59,11 +59,11 @@ class ModelsListDeploymentResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "deployments") and self.deployments:
+        if hasattr(self, "deployments"):
             result["deployments"] = [i0.to_dict(include_empty=include_empty) for i0 in self.deployments]
         elif include_empty:
             result["deployments"] = []
-        if hasattr(self, "paging") and self.paging:
+        if hasattr(self, "paging"):
             result["paging"] = self.paging.to_dict(include_empty=include_empty)
         elif include_empty:
             result["paging"] = ModelsPagingCursor()

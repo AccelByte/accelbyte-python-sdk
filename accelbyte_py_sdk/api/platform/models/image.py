@@ -84,27 +84,27 @@ class Image(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "as_") and self.as_:
+        if hasattr(self, "as_"):
             result["as"] = str(self.as_)
         elif include_empty:
             result["as"] = str()
-        if hasattr(self, "caption") and self.caption:
+        if hasattr(self, "caption"):
             result["caption"] = str(self.caption)
         elif include_empty:
             result["caption"] = str()
-        if hasattr(self, "height") and self.height:
+        if hasattr(self, "height"):
             result["height"] = int(self.height)
         elif include_empty:
             result["height"] = int()
-        if hasattr(self, "width") and self.width:
+        if hasattr(self, "width"):
             result["width"] = int(self.width)
         elif include_empty:
             result["width"] = int()
-        if hasattr(self, "image_url") and self.image_url:
+        if hasattr(self, "image_url"):
             result["imageUrl"] = str(self.image_url)
         elif include_empty:
             result["imageUrl"] = str()
-        if hasattr(self, "small_image_url") and self.small_image_url:
+        if hasattr(self, "small_image_url"):
             result["smallImageUrl"] = str(self.small_image_url)
         elif include_empty:
             result["smallImageUrl"] = str()

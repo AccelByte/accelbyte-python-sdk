@@ -70,19 +70,19 @@ class PayPalConfig(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "client_id") and self.client_id:
+        if hasattr(self, "client_id"):
             result["clientID"] = str(self.client_id)
         elif include_empty:
             result["clientID"] = str()
-        if hasattr(self, "client_secret") and self.client_secret:
+        if hasattr(self, "client_secret"):
             result["clientSecret"] = str(self.client_secret)
         elif include_empty:
             result["clientSecret"] = str()
-        if hasattr(self, "web_hook_id") and self.web_hook_id:
+        if hasattr(self, "web_hook_id"):
             result["webHookId"] = str(self.web_hook_id)
         elif include_empty:
             result["webHookId"] = str()
-        if hasattr(self, "return_url") and self.return_url:
+        if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
             result["returnUrl"] = str()

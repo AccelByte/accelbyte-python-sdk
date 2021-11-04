@@ -63,15 +63,15 @@ class BulkStatItemOperationResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "success") and self.success:
+        if hasattr(self, "success"):
             result["success"] = bool(self.success)
         elif include_empty:
             result["success"] = bool()
-        if hasattr(self, "stat_code") and self.stat_code:
+        if hasattr(self, "stat_code"):
             result["statCode"] = str(self.stat_code)
         elif include_empty:
             result["statCode"] = str()
-        if hasattr(self, "details") and self.details:
+        if hasattr(self, "details"):
             result["details"] = {str(k0): v0 for k0, v0 in self.details.items()}
         elif include_empty:
             result["details"] = {}

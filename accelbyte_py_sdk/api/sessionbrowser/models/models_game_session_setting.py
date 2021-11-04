@@ -112,43 +112,43 @@ class ModelsGameSessionSetting(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "allow_join_in_progress") and self.allow_join_in_progress:
+        if hasattr(self, "allow_join_in_progress"):
             result["allow_join_in_progress"] = bool(self.allow_join_in_progress)
         elif include_empty:
             result["allow_join_in_progress"] = bool()
-        if hasattr(self, "current_internal_player") and self.current_internal_player:
+        if hasattr(self, "current_internal_player"):
             result["current_internal_player"] = int(self.current_internal_player)
         elif include_empty:
             result["current_internal_player"] = int()
-        if hasattr(self, "current_player") and self.current_player:
+        if hasattr(self, "current_player"):
             result["current_player"] = int(self.current_player)
         elif include_empty:
             result["current_player"] = int()
-        if hasattr(self, "map_name") and self.map_name:
+        if hasattr(self, "map_name"):
             result["map_name"] = str(self.map_name)
         elif include_empty:
             result["map_name"] = str()
-        if hasattr(self, "max_internal_player") and self.max_internal_player:
+        if hasattr(self, "max_internal_player"):
             result["max_internal_player"] = int(self.max_internal_player)
         elif include_empty:
             result["max_internal_player"] = int()
-        if hasattr(self, "max_player") and self.max_player:
+        if hasattr(self, "max_player"):
             result["max_player"] = int(self.max_player)
         elif include_empty:
             result["max_player"] = int()
-        if hasattr(self, "mode") and self.mode:
+        if hasattr(self, "mode"):
             result["mode"] = str(self.mode)
         elif include_empty:
             result["mode"] = str()
-        if hasattr(self, "num_bot") and self.num_bot:
+        if hasattr(self, "num_bot"):
             result["num_bot"] = int(self.num_bot)
         elif include_empty:
             result["num_bot"] = int()
-        if hasattr(self, "password") and self.password:
+        if hasattr(self, "password"):
             result["password"] = str(self.password)
         elif include_empty:
             result["password"] = str()
-        if hasattr(self, "settings") and self.settings:
+        if hasattr(self, "settings"):
             result["settings"] = {str(k0): v0 for k0, v0 in self.settings.items()}
         elif include_empty:
             result["settings"] = {}

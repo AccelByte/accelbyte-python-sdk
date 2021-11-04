@@ -112,43 +112,43 @@ class UserProfileUpdate(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "first_name") and self.first_name:
+        if hasattr(self, "first_name"):
             result["firstName"] = str(self.first_name)
         elif include_empty:
             result["firstName"] = str()
-        if hasattr(self, "last_name") and self.last_name:
+        if hasattr(self, "last_name"):
             result["lastName"] = str(self.last_name)
         elif include_empty:
             result["lastName"] = str()
-        if hasattr(self, "avatar_small_url") and self.avatar_small_url:
+        if hasattr(self, "avatar_small_url"):
             result["avatarSmallUrl"] = str(self.avatar_small_url)
         elif include_empty:
             result["avatarSmallUrl"] = str()
-        if hasattr(self, "avatar_url") and self.avatar_url:
+        if hasattr(self, "avatar_url"):
             result["avatarUrl"] = str(self.avatar_url)
         elif include_empty:
             result["avatarUrl"] = str()
-        if hasattr(self, "avatar_large_url") and self.avatar_large_url:
+        if hasattr(self, "avatar_large_url"):
             result["avatarLargeUrl"] = str(self.avatar_large_url)
         elif include_empty:
             result["avatarLargeUrl"] = str()
-        if hasattr(self, "language") and self.language:
+        if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = str()
-        if hasattr(self, "time_zone") and self.time_zone:
+        if hasattr(self, "time_zone"):
             result["timeZone"] = str(self.time_zone)
         elif include_empty:
             result["timeZone"] = str()
-        if hasattr(self, "date_of_birth") and self.date_of_birth:
+        if hasattr(self, "date_of_birth"):
             result["dateOfBirth"] = str(self.date_of_birth)
         elif include_empty:
             result["dateOfBirth"] = str()
-        if hasattr(self, "custom_attributes") and self.custom_attributes:
+        if hasattr(self, "custom_attributes"):
             result["customAttributes"] = {str(k0): v0 for k0, v0 in self.custom_attributes.items()}
         elif include_empty:
             result["customAttributes"] = {}
-        if hasattr(self, "zip_code") and self.zip_code:
+        if hasattr(self, "zip_code"):
             result["zipCode"] = str(self.zip_code)
         elif include_empty:
             result["zipCode"] = str()

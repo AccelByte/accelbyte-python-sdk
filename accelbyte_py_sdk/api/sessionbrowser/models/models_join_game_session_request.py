@@ -49,7 +49,7 @@ class ModelsJoinGameSessionRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "password") and self.password:
+        if hasattr(self, "password"):
             result["password"] = str(self.password)
         elif include_empty:
             result["password"] = str()

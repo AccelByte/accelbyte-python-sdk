@@ -56,11 +56,11 @@ class AccountcommonBanReason(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "description") and self.description:
+        if hasattr(self, "description"):
             result["Description"] = str(self.description)
         elif include_empty:
             result["Description"] = str()
-        if hasattr(self, "reason") and self.reason:
+        if hasattr(self, "reason"):
             result["Reason"] = str(self.reason)
         elif include_empty:
             result["Reason"] = str()

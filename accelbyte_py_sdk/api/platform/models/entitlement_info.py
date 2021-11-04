@@ -233,111 +233,111 @@ class EntitlementInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "id_") and self.id_:
+        if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "clazz") and self.clazz:
+        if hasattr(self, "clazz"):
             result["clazz"] = str(self.clazz)
         elif include_empty:
             result["clazz"] = str()
-        if hasattr(self, "type_") and self.type_:
+        if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = str()
-        if hasattr(self, "status") and self.status:
+        if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
-        if hasattr(self, "app_id") and self.app_id:
+        if hasattr(self, "app_id"):
             result["appId"] = str(self.app_id)
         elif include_empty:
             result["appId"] = str()
-        if hasattr(self, "app_type") and self.app_type:
+        if hasattr(self, "app_type"):
             result["appType"] = str(self.app_type)
         elif include_empty:
             result["appType"] = str()
-        if hasattr(self, "sku") and self.sku:
+        if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
             result["sku"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "store_id") and self.store_id:
+        if hasattr(self, "store_id"):
             result["storeId"] = str(self.store_id)
         elif include_empty:
             result["storeId"] = str()
-        if hasattr(self, "item_id") and self.item_id:
+        if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
-        if hasattr(self, "granted_code") and self.granted_code:
+        if hasattr(self, "granted_code"):
             result["grantedCode"] = str(self.granted_code)
         elif include_empty:
             result["grantedCode"] = str()
-        if hasattr(self, "item_namespace") and self.item_namespace:
+        if hasattr(self, "item_namespace"):
             result["itemNamespace"] = str(self.item_namespace)
         elif include_empty:
             result["itemNamespace"] = str()
-        if hasattr(self, "name") and self.name:
+        if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = str()
-        if hasattr(self, "features") and self.features:
+        if hasattr(self, "features"):
             result["features"] = [str(i0) for i0 in self.features]
         elif include_empty:
             result["features"] = []
-        if hasattr(self, "use_count") and self.use_count:
+        if hasattr(self, "use_count"):
             result["useCount"] = int(self.use_count)
         elif include_empty:
             result["useCount"] = int()
-        if hasattr(self, "quantity") and self.quantity:
+        if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
             result["quantity"] = int()
-        if hasattr(self, "source") and self.source:
+        if hasattr(self, "source"):
             result["source"] = str(self.source)
         elif include_empty:
             result["source"] = str()
-        if hasattr(self, "distributed_quantity") and self.distributed_quantity:
+        if hasattr(self, "distributed_quantity"):
             result["distributedQuantity"] = int(self.distributed_quantity)
         elif include_empty:
             result["distributedQuantity"] = int()
-        if hasattr(self, "target_namespace") and self.target_namespace:
+        if hasattr(self, "target_namespace"):
             result["targetNamespace"] = str(self.target_namespace)
         elif include_empty:
             result["targetNamespace"] = str()
-        if hasattr(self, "item_snapshot") and self.item_snapshot:
+        if hasattr(self, "item_snapshot"):
             result["itemSnapshot"] = self.item_snapshot.to_dict(include_empty=include_empty)
         elif include_empty:
             result["itemSnapshot"] = ItemSnapshot()
-        if hasattr(self, "start_date") and self.start_date:
+        if hasattr(self, "start_date"):
             result["startDate"] = str(self.start_date)
         elif include_empty:
             result["startDate"] = str()
-        if hasattr(self, "end_date") and self.end_date:
+        if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
             result["endDate"] = str()
-        if hasattr(self, "stackable") and self.stackable:
+        if hasattr(self, "stackable"):
             result["stackable"] = bool(self.stackable)
         elif include_empty:
             result["stackable"] = bool()
-        if hasattr(self, "granted_at") and self.granted_at:
+        if hasattr(self, "granted_at"):
             result["grantedAt"] = str(self.granted_at)
         elif include_empty:
             result["grantedAt"] = str()
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()

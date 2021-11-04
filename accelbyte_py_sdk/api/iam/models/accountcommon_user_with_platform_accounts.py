@@ -65,15 +65,15 @@ class AccountcommonUserWithPlatformAccounts(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "linked_platforms") and self.linked_platforms:
+        if hasattr(self, "linked_platforms"):
             result["linkedPlatforms"] = [i0.to_dict(include_empty=include_empty) for i0 in self.linked_platforms]
         elif include_empty:
             result["linkedPlatforms"] = []
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()

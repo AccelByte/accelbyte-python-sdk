@@ -65,15 +65,15 @@ class BillingAccount(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "payment_provider") and self.payment_provider:
+        if hasattr(self, "payment_provider"):
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
             result["paymentProvider"] = str()
-        if hasattr(self, "payment_method") and self.payment_method:
+        if hasattr(self, "payment_method"):
             result["paymentMethod"] = str(self.payment_method)
         elif include_empty:
             result["paymentMethod"] = str()
-        if hasattr(self, "additional_data") and self.additional_data:
+        if hasattr(self, "additional_data"):
             result["additionalData"] = self.additional_data.to_dict(include_empty=include_empty)
         elif include_empty:
             result["additionalData"] = AdditionalData()

@@ -70,19 +70,19 @@ class StatImportInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "new_configs") and self.new_configs:
+        if hasattr(self, "new_configs"):
             result["newConfigs"] = [str(i0) for i0 in self.new_configs]
         elif include_empty:
             result["newConfigs"] = []
-        if hasattr(self, "replaced_configs") and self.replaced_configs:
+        if hasattr(self, "replaced_configs"):
             result["replacedConfigs"] = [str(i0) for i0 in self.replaced_configs]
         elif include_empty:
             result["replacedConfigs"] = []
-        if hasattr(self, "ignored_configs") and self.ignored_configs:
+        if hasattr(self, "ignored_configs"):
             result["ignoredConfigs"] = [str(i0) for i0 in self.ignored_configs]
         elif include_empty:
             result["ignoredConfigs"] = []
-        if hasattr(self, "failed_configs") and self.failed_configs:
+        if hasattr(self, "failed_configs"):
             result["failedConfigs"] = [str(i0) for i0 in self.failed_configs]
         elif include_empty:
             result["failedConfigs"] = []

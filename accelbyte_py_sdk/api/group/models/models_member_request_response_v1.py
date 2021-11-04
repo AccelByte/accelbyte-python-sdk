@@ -63,15 +63,15 @@ class ModelsMemberRequestResponseV1(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "group_id") and self.group_id:
+        if hasattr(self, "group_id"):
             result["groupId"] = str(self.group_id)
         elif include_empty:
             result["groupId"] = str()
-        if hasattr(self, "request_type") and self.request_type:
+        if hasattr(self, "request_type"):
             result["requestType"] = str(self.request_type)
         elif include_empty:
             result["requestType"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()

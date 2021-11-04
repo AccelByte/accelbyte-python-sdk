@@ -58,11 +58,11 @@ class UserGameProfiles(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "game_profiles") and self.game_profiles:
+        if hasattr(self, "game_profiles"):
             result["gameProfiles"] = [i0.to_dict(include_empty=include_empty) for i0 in self.game_profiles]
         elif include_empty:
             result["gameProfiles"] = []

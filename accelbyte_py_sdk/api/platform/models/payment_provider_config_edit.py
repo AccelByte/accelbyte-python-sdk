@@ -98,35 +98,35 @@ class PaymentProviderConfigEdit(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "region") and self.region:
+        if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = str()
-        if hasattr(self, "aggregate") and self.aggregate:
+        if hasattr(self, "aggregate"):
             result["aggregate"] = str(self.aggregate)
         elif include_empty:
             result["aggregate"] = str()
-        if hasattr(self, "specials") and self.specials:
+        if hasattr(self, "specials"):
             result["specials"] = [str(i0) for i0 in self.specials]
         elif include_empty:
             result["specials"] = []
-        if hasattr(self, "tax_jar_enabled") and self.tax_jar_enabled:
+        if hasattr(self, "tax_jar_enabled"):
             result["taxJarEnabled"] = bool(self.tax_jar_enabled)
         elif include_empty:
             result["taxJarEnabled"] = bool()
-        if hasattr(self, "tax_jar_api_token") and self.tax_jar_api_token:
+        if hasattr(self, "tax_jar_api_token"):
             result["taxJarApiToken"] = str(self.tax_jar_api_token)
         elif include_empty:
             result["taxJarApiToken"] = str()
-        if hasattr(self, "sandbox_tax_jar_api_token") and self.sandbox_tax_jar_api_token:
+        if hasattr(self, "sandbox_tax_jar_api_token"):
             result["sandboxTaxJarApiToken"] = str(self.sandbox_tax_jar_api_token)
         elif include_empty:
             result["sandboxTaxJarApiToken"] = str()
-        if hasattr(self, "use_global_tax_jar_api_token") and self.use_global_tax_jar_api_token:
+        if hasattr(self, "use_global_tax_jar_api_token"):
             result["useGlobalTaxJarApiToken"] = bool(self.use_global_tax_jar_api_token)
         elif include_empty:
             result["useGlobalTaxJarApiToken"] = bool()

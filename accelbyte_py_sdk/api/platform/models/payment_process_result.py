@@ -70,19 +70,19 @@ class PaymentProcessResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "success") and self.success:
+        if hasattr(self, "success"):
             result["success"] = bool(self.success)
         elif include_empty:
             result["success"] = bool()
-        if hasattr(self, "pending") and self.pending:
+        if hasattr(self, "pending"):
             result["pending"] = bool(self.pending)
         elif include_empty:
             result["pending"] = bool()
-        if hasattr(self, "redirect_url") and self.redirect_url:
+        if hasattr(self, "redirect_url"):
             result["redirectUrl"] = str(self.redirect_url)
         elif include_empty:
             result["redirectUrl"] = str()
-        if hasattr(self, "reason") and self.reason:
+        if hasattr(self, "reason"):
             result["reason"] = str(self.reason)
         elif include_empty:
             result["reason"] = str()

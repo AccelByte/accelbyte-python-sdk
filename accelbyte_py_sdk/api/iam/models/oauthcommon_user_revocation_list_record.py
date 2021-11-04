@@ -56,11 +56,11 @@ class OauthcommonUserRevocationListRecord(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "id_") and self.id_:
+        if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = str()
-        if hasattr(self, "revoked_at") and self.revoked_at:
+        if hasattr(self, "revoked_at"):
             result["revoked_at"] = str(self.revoked_at)
         elif include_empty:
             result["revoked_at"] = str()

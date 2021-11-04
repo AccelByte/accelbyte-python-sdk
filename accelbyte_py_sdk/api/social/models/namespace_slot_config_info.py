@@ -63,15 +63,15 @@ class NamespaceSlotConfigInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "max_slots") and self.max_slots:
+        if hasattr(self, "max_slots"):
             result["maxSlots"] = int(self.max_slots)
         elif include_empty:
             result["maxSlots"] = int()
-        if hasattr(self, "max_slot_size") and self.max_slot_size:
+        if hasattr(self, "max_slot_size"):
             result["maxSlotSize"] = int(self.max_slot_size)
         elif include_empty:
             result["maxSlotSize"] = int()

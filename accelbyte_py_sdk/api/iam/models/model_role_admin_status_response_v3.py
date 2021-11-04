@@ -49,7 +49,7 @@ class ModelRoleAdminStatusResponseV3(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "admin_role") and self.admin_role:
+        if hasattr(self, "admin_role"):
             result["adminRole"] = bool(self.admin_role)
         elif include_empty:
             result["adminRole"] = bool()

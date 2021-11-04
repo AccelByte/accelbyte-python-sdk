@@ -51,7 +51,7 @@ class RedeemResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "items") and self.items:
+        if hasattr(self, "items"):
             result["items"] = [i0.to_dict(include_empty=include_empty) for i0 in self.items]
         elif include_empty:
             result["items"] = []

@@ -70,19 +70,19 @@ class ModelsRegisterLocalServerRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "custom_attribute") and self.custom_attribute:
+        if hasattr(self, "custom_attribute"):
             result["custom_attribute"] = str(self.custom_attribute)
         elif include_empty:
             result["custom_attribute"] = str()
-        if hasattr(self, "ip") and self.ip:
+        if hasattr(self, "ip"):
             result["ip"] = str(self.ip)
         elif include_empty:
             result["ip"] = str()
-        if hasattr(self, "name") and self.name:
+        if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = str()
-        if hasattr(self, "port") and self.port:
+        if hasattr(self, "port"):
             result["port"] = int(self.port)
         elif include_empty:
             result["port"] = int()

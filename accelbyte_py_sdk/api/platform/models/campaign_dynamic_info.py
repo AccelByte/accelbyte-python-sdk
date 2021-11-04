@@ -77,23 +77,23 @@ class CampaignDynamicInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "available_sale_count") and self.available_sale_count:
+        if hasattr(self, "available_sale_count"):
             result["availableSaleCount"] = int(self.available_sale_count)
         elif include_empty:
             result["availableSaleCount"] = int()
-        if hasattr(self, "quantity") and self.quantity:
+        if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
             result["quantity"] = int()
-        if hasattr(self, "sale_count") and self.sale_count:
+        if hasattr(self, "sale_count"):
             result["saleCount"] = int(self.sale_count)
         elif include_empty:
             result["saleCount"] = int()
-        if hasattr(self, "last_batch_no") and self.last_batch_no:
+        if hasattr(self, "last_batch_no"):
             result["lastBatchNo"] = int(self.last_batch_no)
         elif include_empty:
             result["lastBatchNo"] = int()
-        if hasattr(self, "remainder") and self.remainder:
+        if hasattr(self, "remainder"):
             result["remainder"] = int(self.remainder)
         elif include_empty:
             result["remainder"] = int()

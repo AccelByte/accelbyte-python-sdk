@@ -63,15 +63,15 @@ class InGameItemSync(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "target_namespace") and self.target_namespace:
+        if hasattr(self, "target_namespace"):
             result["targetNamespace"] = str(self.target_namespace)
         elif include_empty:
             result["targetNamespace"] = str()
-        if hasattr(self, "target_item_id") and self.target_item_id:
+        if hasattr(self, "target_item_id"):
             result["targetItemId"] = str(self.target_item_id)
         elif include_empty:
             result["targetItemId"] = str()
-        if hasattr(self, "category_path") and self.category_path:
+        if hasattr(self, "category_path"):
             result["categoryPath"] = str(self.category_path)
         elif include_empty:
             result["categoryPath"] = str()

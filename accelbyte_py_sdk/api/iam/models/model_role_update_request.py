@@ -49,7 +49,7 @@ class ModelRoleUpdateRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "role_name") and self.role_name:
+        if hasattr(self, "role_name"):
             result["RoleName"] = str(self.role_name)
         elif include_empty:
             result["RoleName"] = str()

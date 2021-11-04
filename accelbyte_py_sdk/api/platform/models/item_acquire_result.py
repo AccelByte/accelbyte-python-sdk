@@ -56,11 +56,11 @@ class ItemAcquireResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "success") and self.success:
+        if hasattr(self, "success"):
             result["success"] = bool(self.success)
         elif include_empty:
             result["success"] = bool()
-        if hasattr(self, "max_count") and self.max_count:
+        if hasattr(self, "max_count"):
             result["maxCount"] = int(self.max_count)
         elif include_empty:
             result["maxCount"] = int()

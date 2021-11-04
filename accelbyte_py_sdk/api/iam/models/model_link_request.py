@@ -107,39 +107,39 @@ class ModelLinkRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "client_id") and self.client_id:
+        if hasattr(self, "client_id"):
             result["client_id"] = str(self.client_id)
         elif include_empty:
             result["client_id"] = str()
-        if hasattr(self, "error") and self.error:
+        if hasattr(self, "error"):
             result["error"] = self.error.to_dict(include_empty=include_empty)
         elif include_empty:
             result["error"] = RestErrorResponse()
-        if hasattr(self, "expiration") and self.expiration:
+        if hasattr(self, "expiration"):
             result["expiration"] = int(self.expiration)
         elif include_empty:
             result["expiration"] = int()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "operation_name") and self.operation_name:
+        if hasattr(self, "operation_name"):
             result["operation_name"] = str(self.operation_name)
         elif include_empty:
             result["operation_name"] = str()
-        if hasattr(self, "payload") and self.payload:
+        if hasattr(self, "payload"):
             result["payload"] = {str(k0): v0 for k0, v0 in self.payload.items()}
         elif include_empty:
             result["payload"] = {}
-        if hasattr(self, "redirect_uri") and self.redirect_uri:
+        if hasattr(self, "redirect_uri"):
             result["redirect_uri"] = str(self.redirect_uri)
         elif include_empty:
             result["redirect_uri"] = str()
-        if hasattr(self, "request_id") and self.request_id:
+        if hasattr(self, "request_id"):
             result["request_id"] = str(self.request_id)
         elif include_empty:
             result["request_id"] = str()
-        if hasattr(self, "status") and self.status:
+        if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()

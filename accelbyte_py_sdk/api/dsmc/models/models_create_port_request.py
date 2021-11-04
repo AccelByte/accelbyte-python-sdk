@@ -49,7 +49,7 @@ class ModelsCreatePortRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "port") and self.port:
+        if hasattr(self, "port"):
             result["port"] = int(self.port)
         elif include_empty:
             result["port"] = int()

@@ -151,63 +151,63 @@ class OauthmodelTokenResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "access_token") and self.access_token:
+        if hasattr(self, "access_token"):
             result["access_token"] = str(self.access_token)
         elif include_empty:
             result["access_token"] = str()
-        if hasattr(self, "bans") and self.bans:
+        if hasattr(self, "bans"):
             result["bans"] = [i0.to_dict(include_empty=include_empty) for i0 in self.bans]
         elif include_empty:
             result["bans"] = []
-        if hasattr(self, "display_name") and self.display_name:
+        if hasattr(self, "display_name"):
             result["display_name"] = str(self.display_name)
         elif include_empty:
             result["display_name"] = str()
-        if hasattr(self, "expires_in") and self.expires_in:
+        if hasattr(self, "expires_in"):
             result["expires_in"] = int(self.expires_in)
         elif include_empty:
             result["expires_in"] = int()
-        if hasattr(self, "is_comply") and self.is_comply:
+        if hasattr(self, "is_comply"):
             result["is_comply"] = bool(self.is_comply)
         elif include_empty:
             result["is_comply"] = bool()
-        if hasattr(self, "jflgs") and self.jflgs:
+        if hasattr(self, "jflgs"):
             result["jflgs"] = int(self.jflgs)
         elif include_empty:
             result["jflgs"] = int()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "namespace_roles") and self.namespace_roles:
+        if hasattr(self, "namespace_roles"):
             result["namespace_roles"] = [i0.to_dict(include_empty=include_empty) for i0 in self.namespace_roles]
         elif include_empty:
             result["namespace_roles"] = []
-        if hasattr(self, "permissions") and self.permissions:
+        if hasattr(self, "permissions"):
             result["permissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.permissions]
         elif include_empty:
             result["permissions"] = []
-        if hasattr(self, "platform_id") and self.platform_id:
+        if hasattr(self, "platform_id"):
             result["platform_id"] = str(self.platform_id)
         elif include_empty:
             result["platform_id"] = str()
-        if hasattr(self, "platform_user_id") and self.platform_user_id:
+        if hasattr(self, "platform_user_id"):
             result["platform_user_id"] = str(self.platform_user_id)
         elif include_empty:
             result["platform_user_id"] = str()
-        if hasattr(self, "refresh_token") and self.refresh_token:
+        if hasattr(self, "refresh_token"):
             result["refresh_token"] = str(self.refresh_token)
         elif include_empty:
             result["refresh_token"] = str()
-        if hasattr(self, "roles") and self.roles:
+        if hasattr(self, "roles"):
             result["roles"] = [str(i0) for i0 in self.roles]
         elif include_empty:
             result["roles"] = []
-        if hasattr(self, "token_type") and self.token_type:
+        if hasattr(self, "token_type"):
             result["token_type"] = str(self.token_type)
         elif include_empty:
             result["token_type"] = str()
-        if hasattr(self, "user_id") and self.user_id:
+        if hasattr(self, "user_id"):
             result["user_id"] = str(self.user_id)
         elif include_empty:
             result["user_id"] = str()

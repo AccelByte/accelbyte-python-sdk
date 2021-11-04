@@ -70,19 +70,19 @@ class FileUploadUrlInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "url") and self.url:
+        if hasattr(self, "url"):
             result["url"] = str(self.url)
         elif include_empty:
             result["url"] = str()
-        if hasattr(self, "access_url") and self.access_url:
+        if hasattr(self, "access_url"):
             result["accessUrl"] = str(self.access_url)
         elif include_empty:
             result["accessUrl"] = str()
-        if hasattr(self, "method") and self.method:
+        if hasattr(self, "method"):
             result["method"] = str(self.method)
         elif include_empty:
             result["method"] = str()
-        if hasattr(self, "content_type") and self.content_type:
+        if hasattr(self, "content_type"):
             result["contentType"] = str(self.content_type)
         elif include_empty:
             result["contentType"] = str()

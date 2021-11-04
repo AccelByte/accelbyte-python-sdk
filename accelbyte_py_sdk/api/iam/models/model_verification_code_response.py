@@ -70,19 +70,19 @@ class ModelVerificationCodeResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "account_registration") and self.account_registration:
+        if hasattr(self, "account_registration"):
             result["accountRegistration"] = str(self.account_registration)
         elif include_empty:
             result["accountRegistration"] = str()
-        if hasattr(self, "account_upgrade") and self.account_upgrade:
+        if hasattr(self, "account_upgrade"):
             result["accountUpgrade"] = str(self.account_upgrade)
         elif include_empty:
             result["accountUpgrade"] = str()
-        if hasattr(self, "password_reset") and self.password_reset:
+        if hasattr(self, "password_reset"):
             result["passwordReset"] = str(self.password_reset)
         elif include_empty:
             result["passwordReset"] = str()
-        if hasattr(self, "update_email") and self.update_email:
+        if hasattr(self, "update_email"):
             result["updateEmail"] = str(self.update_email)
         elif include_empty:
             result["updateEmail"] = str()

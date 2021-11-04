@@ -164,71 +164,71 @@ class ModelsDeploymentWithOverride(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "allow_version_override") and self.allow_version_override:
+        if hasattr(self, "allow_version_override"):
             result["allow_version_override"] = bool(self.allow_version_override)
         elif include_empty:
             result["allow_version_override"] = bool()
-        if hasattr(self, "buffer_count") and self.buffer_count:
+        if hasattr(self, "buffer_count"):
             result["buffer_count"] = int(self.buffer_count)
         elif include_empty:
             result["buffer_count"] = int()
-        if hasattr(self, "buffer_percent") and self.buffer_percent:
+        if hasattr(self, "buffer_percent"):
             result["buffer_percent"] = int(self.buffer_percent)
         elif include_empty:
             result["buffer_percent"] = int()
-        if hasattr(self, "configuration") and self.configuration:
+        if hasattr(self, "configuration"):
             result["configuration"] = str(self.configuration)
         elif include_empty:
             result["configuration"] = str()
-        if hasattr(self, "created_at") and self.created_at:
+        if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "enable_region_overrides") and self.enable_region_overrides:
+        if hasattr(self, "enable_region_overrides"):
             result["enable_region_overrides"] = bool(self.enable_region_overrides)
         elif include_empty:
             result["enable_region_overrides"] = bool()
-        if hasattr(self, "game_version") and self.game_version:
+        if hasattr(self, "game_version"):
             result["game_version"] = str(self.game_version)
         elif include_empty:
             result["game_version"] = str()
-        if hasattr(self, "max_count") and self.max_count:
+        if hasattr(self, "max_count"):
             result["max_count"] = int(self.max_count)
         elif include_empty:
             result["max_count"] = int()
-        if hasattr(self, "min_count") and self.min_count:
+        if hasattr(self, "min_count"):
             result["min_count"] = int(self.min_count)
         elif include_empty:
             result["min_count"] = int()
-        if hasattr(self, "modified_by") and self.modified_by:
+        if hasattr(self, "modified_by"):
             result["modifiedBy"] = str(self.modified_by)
         elif include_empty:
             result["modifiedBy"] = str()
-        if hasattr(self, "name") and self.name:
+        if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = str()
-        if hasattr(self, "namespace") and self.namespace:
+        if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "overrides") and self.overrides:
+        if hasattr(self, "overrides"):
             result["overrides"] = {str(k0): v0.to_dict(include_empty=include_empty) for k0, v0 in self.overrides.items()}
         elif include_empty:
             result["overrides"] = {}
-        if hasattr(self, "region_overrides") and self.region_overrides:
+        if hasattr(self, "region_overrides"):
             result["region_overrides"] = {str(k0): v0.to_dict(include_empty=include_empty) for k0, v0 in self.region_overrides.items()}
         elif include_empty:
             result["region_overrides"] = {}
-        if hasattr(self, "regions") and self.regions:
+        if hasattr(self, "regions"):
             result["regions"] = [str(i0) for i0 in self.regions]
         elif include_empty:
             result["regions"] = []
-        if hasattr(self, "updated_at") and self.updated_at:
+        if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()
-        if hasattr(self, "use_buffer_percent") and self.use_buffer_percent:
+        if hasattr(self, "use_buffer_percent"):
             result["use_buffer_percent"] = bool(self.use_buffer_percent)
         elif include_empty:
             result["use_buffer_percent"] = bool()
