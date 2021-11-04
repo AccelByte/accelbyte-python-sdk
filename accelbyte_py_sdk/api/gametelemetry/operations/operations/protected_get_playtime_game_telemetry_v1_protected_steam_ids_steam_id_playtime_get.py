@@ -105,7 +105,7 @@ class ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet(Ope
         # path params
         url = self.url
         for k, v in self.get_path_params().items():
-            url = url.replace(f"{{{k}}}", v)
+            url = url.replace(f"{{{k}}}", str(v))
         result += url
 
         return result
