@@ -143,7 +143,7 @@ class RequestsHttpClient(HttpClient):
                 return None, HttpResponse.create_unhandled_error()
         elif "Content-Type" in raw_response.headers:
             content_type = raw_response.headers["Content-Type"]
-            if content_type == "application/json":
+            if is_json_mime_type(content_type):
                 try:
                     content = raw_response.json()
                 except ValueError:
@@ -166,3 +166,12 @@ class RequestsHttpClient(HttpClient):
             headers={k: v for k, v in prepared_request.headers.items()},
             data=prepared_request.body
         )
+
+
+def is_json_mime_type(mime_type: str) -> bool:
+    split = mime_type.split("/")
+    if len(split) != 2:
+        _LOGGER.warning(f"Invalid MIME Type: {mime_type}")
+        return False
+    main, sub = split
+    return main == "application" and (sub == "json" or sub.endswith("+json"))
