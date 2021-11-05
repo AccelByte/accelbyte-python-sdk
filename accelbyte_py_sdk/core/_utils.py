@@ -106,7 +106,8 @@ def infer_headers_from_operation(operation, existing: Union[None, dict] = None) 
             accept = operation.produces[0]
         else:
             accept = "application/json"
-        result["Accept"] = accept
+        if accept:
+            result["Accept"] = accept
 
     if "Content-Type" not in result:
         if operation.consumes is not None and len(operation.consumes) > 0:
@@ -114,6 +115,7 @@ def infer_headers_from_operation(operation, existing: Union[None, dict] = None) 
         else:
             params = operation.get_all_params()
             content_type = infer_content_type_from_params(params)
-        result["Content-Type"] = content_type
+        if content_type:
+            result["Content-Type"] = content_type
 
     return result
