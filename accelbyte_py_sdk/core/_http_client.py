@@ -1,7 +1,7 @@
 import json
 import logging
 from abc import ABC, abstractmethod
-from typing import Any, Tuple, Union
+from typing import Any, Optional, Tuple, Union
 
 import requests
 
@@ -88,8 +88,13 @@ class RequestsHttpClient(HttpClient):
         body_params = operation.get_body_params()
         form_data_params = operation.get_form_data_params()
 
+        content_type = headers.get("Content-Type")
+
         if body_params:
-            files, data, json_ = None, json.dumps(body_params), None
+            if is_json_mime_type(content_type):
+                files, data, json_ = None, None, body_params
+            else:
+                files, data, json_ = None, json.dumps(body_params), None
         else:
             files, data, json_ = None, form_data_params, None
 
@@ -168,7 +173,9 @@ class RequestsHttpClient(HttpClient):
         )
 
 
-def is_json_mime_type(mime_type: str) -> bool:
+def is_json_mime_type(mime_type: Optional[str]) -> bool:
+    if mime_type is None:
+        return False
     split = mime_type.split("/")
     if len(split) != 2:
         _LOGGER.warning(f"Invalid MIME Type: {mime_type}")
