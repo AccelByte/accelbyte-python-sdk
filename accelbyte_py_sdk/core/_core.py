@@ -345,6 +345,7 @@ def run_request(
     headers = headers if headers is not None else operation.get_headers()
 
     add_authorization = True
+    auto_add_bearer_auth = True
 
     if "Authorization" in headers:
         add_authorization = False
@@ -364,6 +365,10 @@ def run_request(
             if error:
                 return None, error
             headers.add_bearer_authorization(access_token)
+        elif auto_add_bearer_auth:
+            access_token, _ = get_access_token()
+            if access_token:
+                headers.add_bearer_authorization(access_token)
 
     if additional_headers:
         for k, v in additional_headers.items():
