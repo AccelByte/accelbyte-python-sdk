@@ -1,0 +1,69 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Title Matchmaking App (Python)
+
+  SAM Template for the Title Matchmaking App (Python)
+
+# Globals
+#   More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 120
+
+Resources:
+  # Function Resource
+  #   More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+  CreateTitleMatchmakingFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: title_matchmaking/
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      Architectures:
+        - x86_64
+      MemorySize: 512
+      Timeout: 120
+      # Specifies the events that trigger this function.
+      # Events consist of a type and a set of properties that depend on the type.
+      #   Required: Yes
+      #   More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+      Events:
+        CreateTitleMatchmaking:
+          Type: Api
+          Properties:
+            Path: /
+            Method: post
+      # The Amazon Resource Name (ARN) of the function's execution role.
+      #   Required: Yes
+      Role: ''
+      # For network connectivity to AWS resources in a VPC, specify a list of security groups and subnets in the VPC.
+      #   Required: Yes
+      #   More info about VpcConfig https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-vpcconfig.html
+      VpcConfig:
+        SecurityGroupIds:
+          - ''
+        SubnetIds:
+          - ''
+      # The configuration for the runtime environment.
+      #   Required: Yes
+      Environment:
+        Variables:
+          GAME_BASE_URL: ''
+          GAME_CLIENT_ID: ''
+          GAME_CLIENT_SECRET: ''
+          GAME_NAMESPACE: ''
+          GAME_MODE: ''
+          IAM_BASE_URL: ''
+          IAM_CLIENT_ID: ''
+          IAM_CLIENT_SECRET: ''
+          DSMC_DEPLOYMENT: ''
+          SESSION_BROWSER_GAME_VERSION: ''
+          SESSION_BROWSER_MAP_NAME: ''
+          SESSION_BROWSER_MODE: ''
+          SESSION_BROWSER_PASSWORD: ''
+          SESSION_BROWSER_TYPE: ''
+          SESSION_BROWSER_USERNAME: ''
+          # Use 'host.docker.internal' when running locally
+          REDIS_HOST: ''
+          REDIS_PORT: ''
