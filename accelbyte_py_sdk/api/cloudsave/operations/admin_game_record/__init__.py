@@ -1,7 +1,7 @@
 # pylint: disable=line-too-long
 
-from .list_game_records_handler_v1 import ListGameRecordsHandlerV1
-from .admin_get_game_record_handler_v1 import AdminGetGameRecordHandlerV1
-from .admin_put_game_record_handler_v1 import AdminPutGameRecordHandlerV1
-from .admin_post_game_record_handler_v1 import AdminPostGameRecordHandlerV1
 from .admin_delete_game_record_handler_v1 import AdminDeleteGameRecordHandlerV1
+from .admin_get_game_record_handler_v1 import AdminGetGameRecordHandlerV1
+from .admin_post_game_record_handler_v1 import AdminPostGameRecordHandlerV1
+from .admin_put_game_record_handler_v1 import AdminPutGameRecordHandlerV1
+from .list_game_records_handler_v1 import ListGameRecordsHandlerV1

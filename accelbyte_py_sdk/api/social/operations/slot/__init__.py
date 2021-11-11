@@ -2,9 +2,9 @@
 
 from .get_slot_data import GetSlotData
 from .get_user_namespace_slots import GetUserNamespaceSlots
-from .public_get_slot_data import PublicGetSlotData
-from .public_update_user_namespace_slot import PublicUpdateUserNamespaceSlot
-from .public_delete_user_namespace_slot import PublicDeleteUserNamespaceSlot
-from .public_get_user_namespace_slots import PublicGetUserNamespaceSlots
 from .public_create_user_namespace_slot import PublicCreateUserNamespaceSlot
+from .public_delete_user_namespace_slot import PublicDeleteUserNamespaceSlot
+from .public_get_slot_data import PublicGetSlotData
+from .public_get_user_namespace_slots import PublicGetUserNamespaceSlots
+from .public_update_user_namespace_slot import PublicUpdateUserNamespaceSlot
 from .public_update_user_namespace_slot_metadata import PublicUpdateUserNamespaceSlotMetadata
