@@ -31,29 +31,29 @@ from ....api.sessionbrowser.models import ResponseError
 
 @click.command()
 @click.argument("session_type", type=str)
-@click.option("--user_id", "user_id", type=str)
 @click.option("--game_mode", "game_mode", type=str)
 @click.option("--game_version", "game_version", type=str)
 @click.option("--joinable", "joinable", type=str)
-@click.option("--match_id", "match_id", type=str)
-@click.option("--match_exist", "match_exist", type=str)
-@click.option("--server_status", "server_status", type=str)
-@click.option("--offset", "offset", type=str)
 @click.option("--limit", "limit", type=str)
+@click.option("--match_exist", "match_exist", type=str)
+@click.option("--match_id", "match_id", type=str)
+@click.option("--offset", "offset", type=str)
+@click.option("--server_status", "server_status", type=str)
+@click.option("--user_id", "user_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def query_session(
         session_type: str,
-        user_id: Optional[str] = None,
         game_mode: Optional[str] = None,
         game_version: Optional[str] = None,
         joinable: Optional[str] = None,
-        match_id: Optional[str] = None,
-        match_exist: Optional[str] = None,
-        server_status: Optional[str] = None,
-        offset: Optional[str] = None,
         limit: Optional[str] = None,
+        match_exist: Optional[str] = None,
+        match_id: Optional[str] = None,
+        offset: Optional[str] = None,
+        server_status: Optional[str] = None,
+        user_id: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -64,15 +64,15 @@ def query_session(
     login_as_internal(login_as)
     _, error = query_session_internal(
         session_type=session_type,
-        user_id=user_id,
         game_mode=game_mode,
         game_version=game_version,
         joinable=joinable,
-        match_id=match_id,
-        match_exist=match_exist,
-        server_status=server_status,
-        offset=offset,
         limit=limit,
+        match_exist=match_exist,
+        match_id=match_id,
+        offset=offset,
+        server_status=server_status,
+        user_id=user_id,
         namespace=namespace,
     )
     if error:

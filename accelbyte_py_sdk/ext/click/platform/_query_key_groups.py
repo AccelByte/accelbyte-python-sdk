@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -29,18 +29,18 @@ from ....api.platform.models import KeyGroupPagingSlicedResult
 
 
 @click.command()
-@click.option("--name", "name", type=str)
-@click.option("--tag", "tag", type=str)
-@click.option("--offset", "offset", type=int)
 @click.option("--limit", "limit", type=int)
+@click.option("--name", "name", type=str)
+@click.option("--offset", "offset", type=int)
+@click.option("--tag", "tag", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def query_key_groups(
-        name: Optional[str] = None,
-        tag: Optional[str] = None,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        name: Optional[str] = None,
+        offset: Optional[int] = None,
+        tag: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -50,10 +50,10 @@ def query_key_groups(
         return
     login_as_internal(login_as)
     _, error = query_key_groups_internal(
-        name=name,
-        tag=tag,
-        offset=offset,
         limit=limit,
+        name=name,
+        offset=offset,
+        tag=tag,
         namespace=namespace,
     )
     if error:

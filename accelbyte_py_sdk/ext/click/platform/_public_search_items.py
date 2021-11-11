@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,22 +30,22 @@ from ....api.platform.models import ItemPagingSlicedResult
 
 
 @click.command()
-@click.argument("language", type=str)
 @click.argument("keyword", type=str)
-@click.option("--store_id", "store_id", type=str)
-@click.option("--region", "region", type=str)
-@click.option("--offset", "offset", type=int)
+@click.argument("language", type=str)
 @click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
+@click.option("--region", "region", type=str)
+@click.option("--store_id", "store_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def public_search_items(
-        language: str,
         keyword: str,
-        store_id: Optional[str] = None,
-        region: Optional[str] = None,
-        offset: Optional[int] = None,
+        language: str,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
+        region: Optional[str] = None,
+        store_id: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -55,12 +55,12 @@ def public_search_items(
         return
     login_as_internal(login_as)
     _, error = public_search_items_internal(
-        language=language,
         keyword=keyword,
-        store_id=store_id,
-        region=region,
-        offset=offset,
+        language=language,
         limit=limit,
+        offset=offset,
+        region=region,
+        store_id=store_id,
         namespace=namespace,
     )
     if error:

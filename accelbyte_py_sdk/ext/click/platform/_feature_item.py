@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,15 +30,15 @@ from ....api.platform.models import FullItemInfo
 
 
 @click.command()
-@click.argument("item_id", type=str)
 @click.argument("feature", type=str)
+@click.argument("item_id", type=str)
 @click.argument("store_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def feature_item(
-        item_id: str,
         feature: str,
+        item_id: str,
         store_id: str,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
@@ -49,8 +49,8 @@ def feature_item(
         return
     login_as_internal(login_as)
     _, error = feature_item_internal(
-        item_id=item_id,
         feature=feature,
+        item_id=item_id,
         store_id=store_id,
         namespace=namespace,
     )

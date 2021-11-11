@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,16 +30,16 @@ from ....api.iam.models import ModelUpdatePermissionScheduleRequest
 
 @click.command()
 @click.argument("body", type=str)
-@click.argument("role_id", type=str)
-@click.argument("resource", type=str)
 @click.argument("action", type=int)
+@click.argument("resource", type=str)
+@click.argument("role_id", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def add_role_permission(
         body: str,
-        role_id: str,
-        resource: str,
         action: int,
+        resource: str,
+        role_id: str,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
@@ -54,9 +54,9 @@ def add_role_permission(
         raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = add_role_permission_internal(
         body=body,
-        role_id=role_id,
-        resource=resource,
         action=action,
+        resource=resource,
+        role_id=role_id,
     )
     if error:
         raise Exception(f"AddRolePermission failed: {str(error)}")

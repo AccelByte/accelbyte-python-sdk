@@ -31,15 +31,15 @@ from ....api.lobby.models import RestapiErrorResponseV1
 
 @click.command()
 @click.argument("body", type=str)
-@click.argument("template_slug", type=str)
 @click.argument("template_language", type=str)
+@click.argument("template_slug", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def update_template_localization_v1_admin(
         body: str,
-        template_slug: str,
         template_language: str,
+        template_slug: str,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -55,8 +55,8 @@ def update_template_localization_v1_admin(
         raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = update_template_localization_v1_admin_internal(
         body=body,
-        template_slug=template_slug,
         template_language=template_language,
+        template_slug=template_slug,
         namespace=namespace,
     )
     if error:

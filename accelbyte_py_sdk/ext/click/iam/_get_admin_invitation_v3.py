@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -25,7 +25,7 @@ import click
 
 from .._utils import login_as as login_as_internal
 from ....api.iam import get_admin_invitation_v3 as get_admin_invitation_v3_internal
-from ....api.iam.models import ModelAdminInvitationV3
+from ....api.iam.models import ModelUserInvitationV3
 from ....api.iam.models import RestErrorResponse
 
 

@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,9 +32,9 @@ from ....api.iam.models import OauthmodelTokenResponseV3
 @click.command()
 @click.argument("grant_type", type=str)
 @click.option("--device_id", "device_id", type=str)
+@click.option("--client_id", "client_id", type=str)
 @click.option("--code", "code", type=str)
 @click.option("--code_verifier", "code_verifier", type=str)
-@click.option("--client_id", "client_id", type=str)
 @click.option("--redirect_uri", "redirect_uri", type=str)
 @click.option("--refresh_token", "refresh_token", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
@@ -42,9 +42,9 @@ from ....api.iam.models import OauthmodelTokenResponseV3
 def token_grant_v3(
         grant_type: str,
         device_id: Optional[str] = None,
+        client_id: Optional[str] = None,
         code: Optional[str] = None,
         code_verifier: Optional[str] = None,
-        client_id: Optional[str] = None,
         redirect_uri: Optional[str] = None,
         refresh_token: Optional[str] = None,
         login_as: Optional[str] = None,
@@ -57,9 +57,9 @@ def token_grant_v3(
     _, error = token_grant_v3_internal(
         grant_type=grant_type,
         device_id=device_id,
+        client_id=client_id,
         code=code,
         code_verifier=code_verifier,
-        client_id=client_id,
         redirect_uri=redirect_uri,
         refresh_token=refresh_token,
     )

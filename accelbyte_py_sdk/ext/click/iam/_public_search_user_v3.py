@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,14 +30,14 @@ from ....api.iam.models import RestErrorResponse
 
 
 @click.command()
-@click.option("--query", "query", type=str)
 @click.option("--by", "by", type=str)
+@click.option("--query", "query", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def public_search_user_v3(
-        query: Optional[str] = None,
         by: Optional[str] = None,
+        query: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -47,8 +47,8 @@ def public_search_user_v3(
         return
     login_as_internal(login_as)
     _, error = public_search_user_v3_internal(
-        query=query,
         by=by,
+        query=query,
         namespace=namespace,
     )
     if error:

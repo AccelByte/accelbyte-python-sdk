@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -28,15 +28,15 @@ from ....api.iam import delete_client_permission as delete_client_permission_int
 
 
 @click.command()
+@click.argument("action", type=int)
 @click.argument("client_id", type=str)
 @click.argument("resource", type=str)
-@click.argument("action", type=int)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def delete_client_permission(
+        action: int,
         client_id: str,
         resource: str,
-        action: int,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
@@ -45,9 +45,9 @@ def delete_client_permission(
         return
     login_as_internal(login_as)
     _, error = delete_client_permission_internal(
+        action=action,
         client_id=client_id,
         resource=resource,
-        action=action,
     )
     if error:
         raise Exception(f"DeleteClientPermission failed: {str(error)}")

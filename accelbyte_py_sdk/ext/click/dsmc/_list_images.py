@@ -1,4 +1,4 @@
-# justice-dsm-controller-service (2.6.0)
+# justice-dsm-controller-service (2.8.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,16 +30,20 @@ from ....api.dsmc.models import ResponseError
 
 
 @click.command()
-@click.option("--q", "q", type=str)
-@click.option("--offset", "offset", type=int)
 @click.option("--count", "count", type=int)
+@click.option("--offset", "offset", type=int)
+@click.option("--q", "q", type=str)
+@click.option("--sort_by", "sort_by", type=str)
+@click.option("--sort_direction", "sort_direction", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def list_images(
-        q: Optional[str] = None,
-        offset: Optional[int] = None,
         count: Optional[int] = None,
+        offset: Optional[int] = None,
+        q: Optional[str] = None,
+        sort_by: Optional[str] = None,
+        sort_direction: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -49,9 +53,11 @@ def list_images(
         return
     login_as_internal(login_as)
     _, error = list_images_internal(
-        q=q,
-        offset=offset,
         count=count,
+        offset=offset,
+        q=q,
+        sort_by=sort_by,
+        sort_direction=sort_direction,
         namespace=namespace,
     )
     if error:

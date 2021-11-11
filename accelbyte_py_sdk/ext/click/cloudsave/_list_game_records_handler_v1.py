@@ -1,4 +1,4 @@
-# justice-cloudsave-service (1.8.0)
+# justice-cloudsave-service (1.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,14 +30,14 @@ from ....api.cloudsave.models import ModelsResponseError
 
 
 @click.command()
-@click.argument("offset", type=int)
 @click.argument("limit", type=int)
+@click.argument("offset", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def list_game_records_handler_v1(
-        offset: int,
         limit: int,
+        offset: int,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -47,8 +47,8 @@ def list_game_records_handler_v1(
         return
     login_as_internal(login_as)
     _, error = list_game_records_handler_v1_internal(
-        offset=offset,
         limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     if error:

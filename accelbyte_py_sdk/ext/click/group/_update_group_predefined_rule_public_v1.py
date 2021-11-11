@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,15 +32,15 @@ from ....api.group.models import ResponseErrorResponse
 
 @click.command()
 @click.argument("body", type=str)
-@click.argument("group_id", type=str)
 @click.argument("allowed_action", type=str)
+@click.argument("group_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def update_group_predefined_rule_public_v1(
         body: str,
-        group_id: str,
         allowed_action: str,
+        group_id: str,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -56,8 +56,8 @@ def update_group_predefined_rule_public_v1(
         raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = update_group_predefined_rule_public_v1_internal(
         body=body,
-        group_id=group_id,
         allowed_action=allowed_action,
+        group_id=group_id,
         namespace=namespace,
     )
     if error:

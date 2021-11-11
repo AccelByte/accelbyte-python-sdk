@@ -1,4 +1,4 @@
-# justice-cloudsave-service (1.8.0)
+# justice-cloudsave-service (1.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,16 +30,16 @@ from ....api.cloudsave.models import ModelsResponseError
 
 
 @click.command()
-@click.option("--query", "query", type=str)
-@click.option("--offset", "offset", type=int)
 @click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
+@click.option("--query", "query", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def list_player_record_handler_v1(
-        query: Optional[str] = None,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
+        query: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -49,9 +49,9 @@ def list_player_record_handler_v1(
         return
     login_as_internal(login_as)
     _, error = list_player_record_handler_v1_internal(
-        query=query,
-        offset=offset,
         limit=limit,
+        offset=offset,
+        query=query,
         namespace=namespace,
     )
     if error:

@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -28,24 +28,24 @@ from ....api.iam import authorize_v3 as authorize_v3_internal
 
 
 @click.command()
-@click.argument("response_type", type=str)
 @click.argument("client_id", type=str)
-@click.option("--redirect_uri", "redirect_uri", type=str)
-@click.option("--state", "state", type=str)
-@click.option("--scope", "scope", type=str)
+@click.argument("response_type", type=str)
 @click.option("--code_challenge", "code_challenge", type=str)
 @click.option("--code_challenge_method", "code_challenge_method", type=str)
+@click.option("--redirect_uri", "redirect_uri", type=str)
+@click.option("--scope", "scope", type=str)
+@click.option("--state", "state", type=str)
 @click.option("--target_auth_page", "target_auth_page", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def authorize_v3(
-        response_type: str,
         client_id: str,
-        redirect_uri: Optional[str] = None,
-        state: Optional[str] = None,
-        scope: Optional[str] = None,
+        response_type: str,
         code_challenge: Optional[str] = None,
         code_challenge_method: Optional[str] = None,
+        redirect_uri: Optional[str] = None,
+        scope: Optional[str] = None,
+        state: Optional[str] = None,
         target_auth_page: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -55,13 +55,13 @@ def authorize_v3(
         return
     login_as_internal(login_as)
     _, error = authorize_v3_internal(
-        response_type=response_type,
         client_id=client_id,
-        redirect_uri=redirect_uri,
-        state=state,
-        scope=scope,
+        response_type=response_type,
         code_challenge=code_challenge,
         code_challenge_method=code_challenge_method,
+        redirect_uri=redirect_uri,
+        scope=scope,
+        state=state,
         target_auth_page=target_auth_page,
     )
     if error:

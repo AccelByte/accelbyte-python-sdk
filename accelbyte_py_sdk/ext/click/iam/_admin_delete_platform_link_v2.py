@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -28,15 +28,15 @@ from ....api.iam import admin_delete_platform_link_v2 as admin_delete_platform_l
 
 
 @click.command()
-@click.argument("user_id", type=str)
 @click.argument("platform_id", type=str)
+@click.argument("user_id", type=str)
 @click.option("--platform_namespace", "platform_namespace", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def admin_delete_platform_link_v2(
-        user_id: str,
         platform_id: str,
+        user_id: str,
         platform_namespace: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
@@ -47,8 +47,8 @@ def admin_delete_platform_link_v2(
         return
     login_as_internal(login_as)
     _, error = admin_delete_platform_link_v2_internal(
-        user_id=user_id,
         platform_id=platform_id,
+        user_id=user_id,
         platform_namespace=platform_namespace,
         namespace=namespace,
     )

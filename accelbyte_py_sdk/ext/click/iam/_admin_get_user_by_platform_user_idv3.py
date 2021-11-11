@@ -1,4 +1,4 @@
-# justice-lobby-server (1.33.0)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -24,30 +24,33 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.lobby import get_notifications as get_notifications_internal
-from ....api.lobby.models import ModelNotificationResponse
-from ....api.lobby.models import RestapiErrorResponseBody
+from ....api.iam import admin_get_user_by_platform_user_idv3 as admin_get_user_by_platform_user_idv3_internal
+from ....api.iam.models import ModelUserResponseV3
+from ....api.iam.models import RestErrorResponse
 
 
 @click.command()
-@click.argument("user_id", type=str)
+@click.argument("platform_id", type=str)
+@click.argument("platform_user_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
-def get_notifications(
-        user_id: str,
+def admin_get_user_by_platform_user_idv3(
+        platform_id: str,
+        platform_user_id: str,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(get_notifications_internal.__doc__)
+        click.echo(admin_get_user_by_platform_user_idv3_internal.__doc__)
         return
     login_as_internal(login_as)
-    _, error = get_notifications_internal(
-        user_id=user_id,
+    _, error = admin_get_user_by_platform_user_idv3_internal(
+        platform_id=platform_id,
+        platform_user_id=platform_user_id,
         namespace=namespace,
     )
     if error:
-        raise Exception(f"getNotifications failed: {str(error)}")
-    click.echo("getNotifications success")
+        raise Exception(f"AdminGetUserByPlatformUserIDV3 failed: {str(error)}")
+    click.echo("AdminGetUserByPlatformUserIDV3 success")

@@ -1,4 +1,4 @@
-# justice-lobby-server (1.33.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -24,27 +24,36 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.lobby import get_user_friends as get_user_friends_internal
-from ....api.lobby.models import ModelGetUserFriendsResponse
-from ....api.lobby.models import RestapiErrorResponseV1
+from ....api.basic import ban_users as ban_users_internal
+from ....api.basic.models import ErrorEntity
+from ....api.basic.models import UserBanRequest
+from ....api.basic.models import ValidationErrorEntity
 
 
 @click.command()
+@click.option("--body", "body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
-def get_user_friends(
+def ban_users(
+        body: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(get_user_friends_internal.__doc__)
+        click.echo(ban_users_internal.__doc__)
         return
     login_as_internal(login_as)
-    _, error = get_user_friends_internal(
+    try:
+        body_json = json.loads(body)
+        body = UserBanRequest.create_from_dict(body_json)
+    except ValueError as e:
+        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    _, error = ban_users_internal(
+        body=body,
         namespace=namespace,
     )
     if error:
-        raise Exception(f"getUserFriends failed: {str(error)}")
-    click.echo("getUserFriends success")
+        raise Exception(f"banUsers failed: {str(error)}")
+    click.echo("banUsers success")

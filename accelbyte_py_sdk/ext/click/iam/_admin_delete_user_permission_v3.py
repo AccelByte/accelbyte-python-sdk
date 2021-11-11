@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -28,16 +28,16 @@ from ....api.iam import admin_delete_user_permission_v3 as admin_delete_user_per
 
 
 @click.command()
-@click.argument("user_id", type=str)
-@click.argument("resource", type=str)
 @click.argument("action", type=int)
+@click.argument("resource", type=str)
+@click.argument("user_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def admin_delete_user_permission_v3(
-        user_id: str,
-        resource: str,
         action: int,
+        resource: str,
+        user_id: str,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -47,9 +47,9 @@ def admin_delete_user_permission_v3(
         return
     login_as_internal(login_as)
     _, error = admin_delete_user_permission_v3_internal(
-        user_id=user_id,
-        resource=resource,
         action=action,
+        resource=resource,
+        user_id=user_id,
         namespace=namespace,
     )
     if error:

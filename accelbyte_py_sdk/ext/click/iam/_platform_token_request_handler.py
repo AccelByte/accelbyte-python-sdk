@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,15 +31,15 @@ from ....api.iam.models import OauthmodelTokenResponse
 
 @click.command()
 @click.argument("platform_id", type=str)
-@click.option("--platform_token", "platform_token", type=str)
 @click.option("--device_id", "device_id", type=str)
+@click.option("--platform_token", "platform_token", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def platform_token_request_handler(
         platform_id: str,
-        platform_token: Optional[str] = None,
         device_id: Optional[str] = None,
+        platform_token: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -50,8 +50,8 @@ def platform_token_request_handler(
     login_as_internal(login_as)
     _, error = platform_token_request_handler_internal(
         platform_id=platform_id,
-        platform_token=platform_token,
         device_id=device_id,
+        platform_token=platform_token,
         namespace=namespace,
     )
     if error:

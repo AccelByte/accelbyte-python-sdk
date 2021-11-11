@@ -1,4 +1,4 @@
-# justice-dsm-controller-service (2.6.0)
+# justice-dsm-controller-service (2.8.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,14 +30,14 @@ from ....api.dsmc.models import ResponseError
 
 
 @click.command()
-@click.option("--offset", "offset", type=int)
 @click.option("--count", "count", type=int)
+@click.option("--offset", "offset", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def get_all_pod_config(
-        offset: Optional[int] = None,
         count: Optional[int] = None,
+        offset: Optional[int] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -47,8 +47,8 @@ def get_all_pod_config(
         return
     login_as_internal(login_as)
     _, error = get_all_pod_config_internal(
-        offset=offset,
         count=count,
+        offset=offset,
         namespace=namespace,
     )
     if error:

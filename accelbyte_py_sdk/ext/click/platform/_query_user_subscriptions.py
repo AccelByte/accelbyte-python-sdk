@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,25 +30,25 @@ from ....api.platform.models import SubscriptionPagingSlicedResult
 
 @click.command()
 @click.argument("user_id", type=str)
+@click.option("--charge_status", "charge_status", type=str)
 @click.option("--item_id", "item_id", type=str)
+@click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
 @click.option("--sku", "sku", type=str)
 @click.option("--status", "status", type=str)
-@click.option("--charge_status", "charge_status", type=str)
 @click.option("--subscribed_by", "subscribed_by", type=str)
-@click.option("--offset", "offset", type=int)
-@click.option("--limit", "limit", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def query_user_subscriptions(
         user_id: str,
+        charge_status: Optional[str] = None,
         item_id: Optional[str] = None,
+        limit: Optional[int] = None,
+        offset: Optional[int] = None,
         sku: Optional[str] = None,
         status: Optional[str] = None,
-        charge_status: Optional[str] = None,
         subscribed_by: Optional[str] = None,
-        offset: Optional[int] = None,
-        limit: Optional[int] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -59,13 +59,13 @@ def query_user_subscriptions(
     login_as_internal(login_as)
     _, error = query_user_subscriptions_internal(
         user_id=user_id,
+        charge_status=charge_status,
         item_id=item_id,
+        limit=limit,
+        offset=offset,
         sku=sku,
         status=status,
-        charge_status=charge_status,
         subscribed_by=subscribed_by,
-        offset=offset,
-        limit=limit,
         namespace=namespace,
     )
     if error:

@@ -1,4 +1,4 @@
-# justice-social-service (1.18.1)
+# justice-social-service (1.21.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -29,14 +29,14 @@ from ....api.social.models import ErrorEntity
 
 
 @click.command()
-@click.argument("user_id", type=str)
 @click.argument("stat_code", type=str)
+@click.argument("user_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def create_user_stat_item(
-        user_id: str,
         stat_code: str,
+        user_id: str,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -46,8 +46,8 @@ def create_user_stat_item(
         return
     login_as_internal(login_as)
     _, error = create_user_stat_item_internal(
-        user_id=user_id,
         stat_code=stat_code,
+        user_id=user_id,
         namespace=namespace,
     )
     if error:

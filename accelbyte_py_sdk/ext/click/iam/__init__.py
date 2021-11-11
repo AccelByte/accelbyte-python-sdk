@@ -129,6 +129,7 @@ from ._retrieve_sso_login_platform_credential import retrieve_sso_login_platform
 from ._add_sso_login_platform_credential import add_sso_login_platform_credential
 from ._delete_sso_login_platform_credential_v3 import delete_sso_login_platform_credential_v3
 from ._update_sso_platform_credential import update_sso_platform_credential
+from ._admin_get_user_by_platform_user_idv3 import admin_get_user_by_platform_user_idv3
 from ._get_admin_users_by_role_id_v3 import get_admin_users_by_role_id_v3
 from ._admin_get_user_by_email_address_v3 import admin_get_user_by_email_address_v3
 from ._admin_invite_user_v3 import admin_invite_user_v3
@@ -388,6 +389,7 @@ commands = [
     add_sso_login_platform_credential,
     delete_sso_login_platform_credential_v3,
     update_sso_platform_credential,
+    admin_get_user_by_platform_user_idv3,
     get_admin_users_by_role_id_v3,
     admin_get_user_by_email_address_v3,
     admin_invite_user_v3,

@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,19 +30,19 @@ from ....api.platform.models import ErrorEntity
 
 
 @click.command()
-@click.argument("user_id", type=str)
 @click.argument("entitlement_id", type=str)
-@click.argument("target_namespace", type=str)
+@click.argument("user_id", type=str)
 @click.argument("ext_user_id", type=str)
+@click.argument("target_namespace", type=str)
 @click.option("--quantity", "quantity", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def public_distribute_user_distribution(
-        user_id: str,
         entitlement_id: str,
-        target_namespace: str,
+        user_id: str,
         ext_user_id: str,
+        target_namespace: str,
         quantity: Optional[int] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
@@ -53,10 +53,10 @@ def public_distribute_user_distribution(
         return
     login_as_internal(login_as)
     _, error = public_distribute_user_distribution_internal(
-        user_id=user_id,
         entitlement_id=entitlement_id,
-        target_namespace=target_namespace,
+        user_id=user_id,
         ext_user_id=ext_user_id,
+        target_namespace=target_namespace,
         quantity=quantity,
         namespace=namespace,
     )

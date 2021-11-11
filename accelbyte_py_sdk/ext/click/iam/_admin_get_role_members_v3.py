@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,16 +31,16 @@ from ....api.iam.models import RestErrorResponse
 
 @click.command()
 @click.argument("role_id", type=str)
-@click.option("--limit", "limit", type=int)
 @click.option("--after", "after", type=str)
 @click.option("--before", "before", type=str)
+@click.option("--limit", "limit", type=int)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def admin_get_role_members_v3(
         role_id: str,
-        limit: Optional[int] = None,
         after: Optional[str] = None,
         before: Optional[str] = None,
+        limit: Optional[int] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
@@ -50,9 +50,9 @@ def admin_get_role_members_v3(
     login_as_internal(login_as)
     _, error = admin_get_role_members_v3_internal(
         role_id=role_id,
-        limit=limit,
         after=after,
         before=before,
+        limit=limit,
     )
     if error:
         raise Exception(f"AdminGetRoleMembersV3 failed: {str(error)}")

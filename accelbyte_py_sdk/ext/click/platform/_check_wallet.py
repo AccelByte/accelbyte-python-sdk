@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,14 +30,14 @@ from ....api.platform.models import ValidationErrorEntity
 
 
 @click.command()
-@click.argument("user_id", type=str)
 @click.argument("currency_code", type=str)
+@click.argument("user_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def check_wallet(
-        user_id: str,
         currency_code: str,
+        user_id: str,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -47,8 +47,8 @@ def check_wallet(
         return
     login_as_internal(login_as)
     _, error = check_wallet_internal(
-        user_id=user_id,
         currency_code=currency_code,
+        user_id=user_id,
         namespace=namespace,
     )
     if error:

@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -29,14 +29,14 @@ from ....api.platform.models import BasicItem
 
 
 @click.command()
-@click.option("--features", "features", type=str)
 @click.option("--active_only", "active_only", type=bool)
+@click.option("--features", "features", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def list_basic_items_by_features(
-        features: Optional[str] = None,
         active_only: Optional[bool] = None,
+        features: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -51,8 +51,8 @@ def list_basic_items_by_features(
     except ValueError as e:
         raise Exception(f"Invalid JSON for 'features'. {str(e)}") from e
     _, error = list_basic_items_by_features_internal(
-        features=features,
         active_only=active_only,
+        features=features,
         namespace=namespace,
     )
     if error:

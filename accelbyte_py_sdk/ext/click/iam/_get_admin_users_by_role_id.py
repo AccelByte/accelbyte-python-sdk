@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,18 +30,18 @@ from ....api.iam.models import RestErrorResponse
 
 
 @click.command()
-@click.option("--role_id", "role_id", type=str)
-@click.option("--limit", "limit", type=int)
 @click.option("--after", "after", type=int)
 @click.option("--before", "before", type=int)
+@click.option("--limit", "limit", type=int)
+@click.option("--role_id", "role_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def get_admin_users_by_role_id(
-        role_id: Optional[str] = None,
-        limit: Optional[int] = None,
         after: Optional[int] = None,
         before: Optional[int] = None,
+        limit: Optional[int] = None,
+        role_id: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -51,10 +51,10 @@ def get_admin_users_by_role_id(
         return
     login_as_internal(login_as)
     _, error = get_admin_users_by_role_id_internal(
-        role_id=role_id,
-        limit=limit,
         after=after,
         before=before,
+        limit=limit,
+        role_id=role_id,
         namespace=namespace,
     )
     if error:

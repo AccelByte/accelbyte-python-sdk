@@ -1,4 +1,4 @@
-# justice-dsm-controller-service (2.6.0)
+# justice-dsm-controller-service (2.8.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,16 +33,16 @@ from ....api.dsmc.models import ResponseError
 @click.command()
 @click.argument("body", type=str)
 @click.argument("deployment", type=str)
-@click.argument("version", type=str)
 @click.argument("region", type=str)
+@click.argument("version", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def create_override_region_override(
         body: str,
         deployment: str,
-        version: str,
         region: str,
+        version: str,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -59,8 +59,8 @@ def create_override_region_override(
     _, error = create_override_region_override_internal(
         body=body,
         deployment=deployment,
-        version=version,
         region=region,
+        version=version,
         namespace=namespace,
     )
     if error:

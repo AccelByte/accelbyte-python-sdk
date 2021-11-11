@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,25 +30,25 @@ from ....api.platform.models import IAPOrderPagingSlicedResult
 
 @click.command()
 @click.argument("user_id", type=str)
-@click.option("--type", "type_", type=str)
-@click.option("--product_id", "product_id", type=str)
-@click.option("--status", "status", type=str)
-@click.option("--start_time", "start_time", type=str)
 @click.option("--end_time", "end_time", type=str)
-@click.option("--offset", "offset", type=int)
 @click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
+@click.option("--product_id", "product_id", type=str)
+@click.option("--start_time", "start_time", type=str)
+@click.option("--status", "status", type=str)
+@click.option("--type", "type_", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def query_user_iap_orders(
         user_id: str,
-        type_: Optional[str] = None,
-        product_id: Optional[str] = None,
-        status: Optional[str] = None,
-        start_time: Optional[str] = None,
         end_time: Optional[str] = None,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
+        product_id: Optional[str] = None,
+        start_time: Optional[str] = None,
+        status: Optional[str] = None,
+        type_: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -59,13 +59,13 @@ def query_user_iap_orders(
     login_as_internal(login_as)
     _, error = query_user_iap_orders_internal(
         user_id=user_id,
-        type_=type_,
-        product_id=product_id,
-        status=status,
-        start_time=start_time,
         end_time=end_time,
-        offset=offset,
         limit=limit,
+        offset=offset,
+        product_id=product_id,
+        start_time=start_time,
+        status=status,
+        type_=type_,
         namespace=namespace,
     )
     if error:

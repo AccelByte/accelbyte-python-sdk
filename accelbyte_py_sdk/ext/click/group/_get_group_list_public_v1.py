@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,18 +30,18 @@ from ....api.group.models import ResponseErrorResponse
 
 
 @click.command()
-@click.option("--limit", "limit", type=int)
-@click.option("--offset", "offset", type=int)
 @click.option("--group_name", "group_name", type=str)
 @click.option("--group_region", "group_region", type=str)
+@click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def get_group_list_public_v1(
-        limit: Optional[int] = None,
-        offset: Optional[int] = None,
         group_name: Optional[str] = None,
         group_region: Optional[str] = None,
+        limit: Optional[int] = None,
+        offset: Optional[int] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -51,10 +51,10 @@ def get_group_list_public_v1(
         return
     login_as_internal(login_as)
     _, error = get_group_list_public_v1_internal(
-        limit=limit,
-        offset=offset,
         group_name=group_name,
         group_region=group_region,
+        limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     if error:

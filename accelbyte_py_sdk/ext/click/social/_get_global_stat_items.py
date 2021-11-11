@@ -1,4 +1,4 @@
-# justice-social-service (1.18.1)
+# justice-social-service (1.21.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -29,14 +29,14 @@ from ....api.social.models import GlobalStatItemPagingSlicedResult
 
 
 @click.command()
-@click.option("--offset", "offset", type=int)
 @click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def get_global_stat_items(
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -46,8 +46,8 @@ def get_global_stat_items(
         return
     login_as_internal(login_as)
     _, error = get_global_stat_items_internal(
-        offset=offset,
         limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     if error:

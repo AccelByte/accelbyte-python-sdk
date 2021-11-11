@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -25,7 +25,7 @@ import click
 
 from .._utils import login_as as login_as_internal
 from ....api.platform import public_get_user_entitlement_ownership_by_sku as public_get_user_entitlement_ownership_by_sku_internal
-from ....api.platform.models import Ownership
+from ....api.platform.models import TimedOwnership
 
 
 @click.command()

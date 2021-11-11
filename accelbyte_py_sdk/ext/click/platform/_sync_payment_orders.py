@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -29,14 +29,14 @@ from ....api.platform.models import PaymentOrderSyncResult
 
 
 @click.command()
-@click.argument("start", type=str)
 @click.argument("end", type=str)
+@click.argument("start", type=str)
 @click.option("--next_evaluated_key", "next_evaluated_key", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def sync_payment_orders(
-        start: str,
         end: str,
+        start: str,
         next_evaluated_key: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -46,8 +46,8 @@ def sync_payment_orders(
         return
     login_as_internal(login_as)
     _, error = sync_payment_orders_internal(
-        start=start,
         end=end,
+        start=start,
         next_evaluated_key=next_evaluated_key,
     )
     if error:

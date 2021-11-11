@@ -1,4 +1,4 @@
-# justice-lobby-server (1.33.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -24,33 +24,39 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.lobby import admin_get_parties_data_v1 as admin_get_parties_data_v1_internal
-from ....api.lobby.models import ModelsPartyData
-from ....api.lobby.models import RestapiErrorResponseBody
+from ....api.platform import get_user_entitlement_by_item_id as get_user_entitlement_by_item_id_internal
+from ....api.platform.models import EntitlementInfo
+from ....api.platform.models import ErrorEntity
 
 
 @click.command()
-@click.option("--limit", "limit", type=str)
-@click.option("--offset", "offset", type=str)
+@click.argument("user_id", type=str)
+@click.argument("item_id", type=str)
+@click.option("--active_only", "active_only", type=bool)
+@click.option("--entitlement_clazz", "entitlement_clazz", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
-def admin_get_parties_data_v1(
-        limit: Optional[str] = None,
-        offset: Optional[str] = None,
+def get_user_entitlement_by_item_id(
+        user_id: str,
+        item_id: str,
+        active_only: Optional[bool] = None,
+        entitlement_clazz: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(admin_get_parties_data_v1_internal.__doc__)
+        click.echo(get_user_entitlement_by_item_id_internal.__doc__)
         return
     login_as_internal(login_as)
-    _, error = admin_get_parties_data_v1_internal(
-        limit=limit,
-        offset=offset,
+    _, error = get_user_entitlement_by_item_id_internal(
+        user_id=user_id,
+        item_id=item_id,
+        active_only=active_only,
+        entitlement_clazz=entitlement_clazz,
         namespace=namespace,
     )
     if error:
-        raise Exception(f"adminGetPartiesDataV1 failed: {str(error)}")
-    click.echo("adminGetPartiesDataV1 success")
+        raise Exception(f"getUserEntitlementByItemId failed: {str(error)}")
+    click.echo("getUserEntitlementByItemId success")

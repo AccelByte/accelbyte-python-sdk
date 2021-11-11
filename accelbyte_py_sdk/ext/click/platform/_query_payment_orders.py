@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -29,20 +29,20 @@ from ....api.platform.models import PaymentOrderPagingSlicedResult
 
 
 @click.command()
-@click.option("--status", "status", type=str)
 @click.option("--channel", "channel", type=str)
 @click.option("--ext_tx_id", "ext_tx_id", type=str)
-@click.option("--offset", "offset", type=int)
 @click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
+@click.option("--status", "status", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def query_payment_orders(
-        status: Optional[str] = None,
         channel: Optional[str] = None,
         ext_tx_id: Optional[str] = None,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
+        status: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -52,11 +52,11 @@ def query_payment_orders(
         return
     login_as_internal(login_as)
     _, error = query_payment_orders_internal(
-        status=status,
         channel=channel,
         ext_tx_id=ext_tx_id,
-        offset=offset,
         limit=limit,
+        offset=offset,
+        status=status,
         namespace=namespace,
     )
     if error:

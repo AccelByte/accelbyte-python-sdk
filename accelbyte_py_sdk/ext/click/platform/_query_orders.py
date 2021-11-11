@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,25 +30,25 @@ from ....api.platform.models import ValidationErrorEntity
 
 
 @click.command()
-@click.option("--status", "status", type=str)
-@click.option("--order_nos", "order_nos", type=str)
-@click.option("--start_time", "start_time", type=str)
 @click.option("--end_time", "end_time", type=str)
-@click.option("--offset", "offset", type=int)
 @click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
+@click.option("--order_nos", "order_nos", type=str)
 @click.option("--sort_by", "sort_by", type=str)
+@click.option("--start_time", "start_time", type=str)
+@click.option("--status", "status", type=str)
 @click.option("--with_total", "with_total", type=bool)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def query_orders(
-        status: Optional[str] = None,
-        order_nos: Optional[str] = None,
-        start_time: Optional[str] = None,
         end_time: Optional[str] = None,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
+        order_nos: Optional[str] = None,
         sort_by: Optional[str] = None,
+        start_time: Optional[str] = None,
+        status: Optional[str] = None,
         with_total: Optional[bool] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
@@ -64,13 +64,13 @@ def query_orders(
     except ValueError as e:
         raise Exception(f"Invalid JSON for 'orderNos'. {str(e)}") from e
     _, error = query_orders_internal(
-        status=status,
-        order_nos=order_nos,
-        start_time=start_time,
         end_time=end_time,
-        offset=offset,
         limit=limit,
+        offset=offset,
+        order_nos=order_nos,
         sort_by=sort_by,
+        start_time=start_time,
+        status=status,
         with_total=with_total,
         namespace=namespace,
     )

@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,22 +30,26 @@ from ....api.iam.models import RestErrorResponse
 
 
 @click.command()
-@click.option("--query", "query", type=str)
+@click.option("--by", "by", type=str)
+@click.option("--end_date", "end_date", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=str)
+@click.option("--platform_by", "platform_by", type=str)
+@click.option("--platform_id", "platform_id", type=str)
+@click.option("--query", "query", type=str)
 @click.option("--start_date", "start_date", type=str)
-@click.option("--end_date", "end_date", type=str)
-@click.option("--by", "by", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def admin_search_user_v3(
-        query: Optional[str] = None,
+        by: Optional[str] = None,
+        end_date: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[str] = None,
+        platform_by: Optional[str] = None,
+        platform_id: Optional[str] = None,
+        query: Optional[str] = None,
         start_date: Optional[str] = None,
-        end_date: Optional[str] = None,
-        by: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -55,12 +59,14 @@ def admin_search_user_v3(
         return
     login_as_internal(login_as)
     _, error = admin_search_user_v3_internal(
-        query=query,
+        by=by,
+        end_date=end_date,
         limit=limit,
         offset=offset,
+        platform_by=platform_by,
+        platform_id=platform_id,
+        query=query,
         start_date=start_date,
-        end_date=end_date,
-        by=by,
         namespace=namespace,
     )
     if error:

@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,15 +30,15 @@ from ....api.platform.models import TaxResult
 
 
 @click.command()
-@click.argument("payment_provider", type=str)
 @click.argument("payment_order_no", type=str)
+@click.argument("payment_provider", type=str)
 @click.option("--zip_code", "zip_code", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def get_payment_tax_value(
-        payment_provider: str,
         payment_order_no: str,
+        payment_provider: str,
         zip_code: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
@@ -49,8 +49,8 @@ def get_payment_tax_value(
         return
     login_as_internal(login_as)
     _, error = get_payment_tax_value_internal(
-        payment_provider=payment_provider,
         payment_order_no=payment_order_no,
+        payment_provider=payment_provider,
         zip_code=zip_code,
         namespace=namespace,
     )

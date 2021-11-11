@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,18 +32,18 @@ from ....api.iam.models import RestErrorResponse
 @click.command()
 @click.argument("user_id", type=str)
 @click.option("--active_only", "active_only", type=bool)
-@click.option("--limit", "limit", type=int)
-@click.option("--before", "before", type=str)
 @click.option("--after", "after", type=str)
+@click.option("--before", "before", type=str)
+@click.option("--limit", "limit", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def admin_get_user_ban_v3(
         user_id: str,
         active_only: Optional[bool] = None,
-        limit: Optional[int] = None,
-        before: Optional[str] = None,
         after: Optional[str] = None,
+        before: Optional[str] = None,
+        limit: Optional[int] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -55,9 +55,9 @@ def admin_get_user_ban_v3(
     _, error = admin_get_user_ban_v3_internal(
         user_id=user_id,
         active_only=active_only,
-        limit=limit,
-        before=before,
         after=after,
+        before=before,
+        limit=limit,
         namespace=namespace,
     )
     if error:

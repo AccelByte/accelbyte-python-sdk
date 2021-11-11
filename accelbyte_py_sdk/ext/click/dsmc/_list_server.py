@@ -1,4 +1,4 @@
-# justice-dsm-controller-service (2.6.0)
+# justice-dsm-controller-service (2.8.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,16 +30,16 @@ from ....api.dsmc.models import ResponseError
 
 
 @click.command()
-@click.option("--region", "region", type=str)
-@click.option("--offset", "offset", type=int)
 @click.option("--count", "count", type=int)
+@click.option("--offset", "offset", type=int)
+@click.option("--region", "region", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def list_server(
-        region: Optional[str] = None,
-        offset: Optional[int] = None,
         count: Optional[int] = None,
+        offset: Optional[int] = None,
+        region: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -49,9 +49,9 @@ def list_server(
         return
     login_as_internal(login_as)
     _, error = list_server_internal(
-        region=region,
-        offset=offset,
         count=count,
+        offset=offset,
+        region=region,
         namespace=namespace,
     )
     if error:

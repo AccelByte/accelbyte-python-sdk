@@ -1,4 +1,4 @@
-# justice-social-service (1.18.1)
+# justice-social-service (1.21.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,10 +30,10 @@ from ....api.social.models import SlotInfo
 
 
 @click.command()
-@click.argument("user_id", type=str)
 @click.argument("slot_id", type=str)
-@click.option("--custom_attribute", "custom_attribute", type=str)
+@click.argument("user_id", type=str)
 @click.option("--checksum", "checksum", type=str)
+@click.option("--custom_attribute", "custom_attribute", type=str)
 @click.option("--file", "file", type=str)
 @click.option("--label", "label", type=str)
 @click.option("--tags", "tags", type=str)
@@ -41,10 +41,10 @@ from ....api.social.models import SlotInfo
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def public_update_user_namespace_slot(
-        user_id: str,
         slot_id: str,
-        custom_attribute: Optional[str] = None,
+        user_id: str,
         checksum: Optional[str] = None,
+        custom_attribute: Optional[str] = None,
         file: Optional[str] = None,
         label: Optional[str] = None,
         tags: Optional[str] = None,
@@ -62,10 +62,10 @@ def public_update_user_namespace_slot(
     except ValueError as e:
         raise Exception(f"Invalid JSON for 'tags'. {str(e)}") from e
     _, error = public_update_user_namespace_slot_internal(
-        user_id=user_id,
         slot_id=slot_id,
-        custom_attribute=custom_attribute,
+        user_id=user_id,
         checksum=checksum,
+        custom_attribute=custom_attribute,
         file=file,
         label=label,
         tags=tags,

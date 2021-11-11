@@ -58,6 +58,7 @@ from ._claim_server import claim_server
 from ._get_session import get_session
 from ._get_default_provider import get_default_provider
 from ._list_providers import list_providers
+from ._list_providers_by_region import list_providers_by_region
 from ._public_get_messages import public_get_messages
 
 
@@ -122,5 +123,6 @@ commands = [
     get_session,
     get_default_provider,
     list_providers,
+    list_providers_by_region,
     public_get_messages,
 ]

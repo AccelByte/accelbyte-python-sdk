@@ -1,5 +1,5 @@
 from ._personal_chat_history import personal_chat_history
-from ._get_user_friends import get_user_friends
+from ._get_user_friends_updated import get_user_friends_updated
 from ._get_user_incoming_friends import get_user_incoming_friends
 from ._get_user_outgoing_friends import get_user_outgoing_friends
 from ._user_request_friend import user_request_friend
@@ -16,6 +16,8 @@ from ._admin_update_config_v1 import admin_update_config_v1
 from ._get_list_of_friends import get_list_of_friends
 from ._send_multiple_users_freeform_notification_v1_admin import send_multiple_users_freeform_notification_v1_admin
 from ._send_users_freeform_notification_v1_admin import send_users_freeform_notification_v1_admin
+from ._send_party_freeform_notification_v1_admin import send_party_freeform_notification_v1_admin
+from ._send_party_templated_notification_v1_admin import send_party_templated_notification_v1_admin
 from ._get_all_notification_templates_v1_admin import get_all_notification_templates_v1_admin
 from ._create_notification_template_v1_admin import create_notification_template_v1_admin
 from ._send_users_templated_notification_v1_admin import send_users_templated_notification_v1_admin
@@ -32,7 +34,6 @@ from ._update_notification_topic_v1_admin import update_notification_topic_v1_ad
 from ._delete_notification_topic_v1_admin import delete_notification_topic_v1_admin
 from ._send_specific_user_freeform_notification_v1_admin import send_specific_user_freeform_notification_v1_admin
 from ._send_specific_user_templated_notification_v1_admin import send_specific_user_templated_notification_v1_admin
-from ._admin_get_parties_data_v1 import admin_get_parties_data_v1
 from ._admin_get_party_data_v1 import admin_get_party_data_v1
 from ._admin_update_party_attributes_v1 import admin_update_party_attributes_v1
 from ._admin_get_user_party_v1 import admin_get_user_party_v1
@@ -61,7 +62,6 @@ from ._admin_create_third_party_config import admin_create_third_party_config
 from ._admin_delete_third_party_config import admin_delete_third_party_config
 from ._public_get_messages import public_get_messages
 from ._get_personal_chat_history_v1_public import get_personal_chat_history_v1_public
-from ._get_all_stored_notifications_v1 import get_all_stored_notifications_v1
 from ._public_get_party_data_v1 import public_get_party_data_v1
 from ._public_update_party_attributes_v1 import public_update_party_attributes_v1
 from ._public_get_player_blocked_players_v1 import public_get_player_blocked_players_v1
@@ -82,14 +82,13 @@ from ._create_topic import create_topic
 from ._get_topic_by_topic_name import get_topic_by_topic_name
 from ._update_topic_by_topic_name import update_topic_by_topic_name
 from ._delete_topic_by_topic_name import delete_topic_by_topic_name
-from ._get_notifications import get_notifications
 from ._free_form_notification_by_user_id import free_form_notification_by_user_id
 from ._notification_with_template_by_user_id import notification_with_template_by_user_id
 
 
 commands = [
     personal_chat_history,
-    get_user_friends,
+    get_user_friends_updated,
     get_user_incoming_friends,
     get_user_outgoing_friends,
     user_request_friend,
@@ -106,6 +105,8 @@ commands = [
     get_list_of_friends,
     send_multiple_users_freeform_notification_v1_admin,
     send_users_freeform_notification_v1_admin,
+    send_party_freeform_notification_v1_admin,
+    send_party_templated_notification_v1_admin,
     get_all_notification_templates_v1_admin,
     create_notification_template_v1_admin,
     send_users_templated_notification_v1_admin,
@@ -122,7 +123,6 @@ commands = [
     delete_notification_topic_v1_admin,
     send_specific_user_freeform_notification_v1_admin,
     send_specific_user_templated_notification_v1_admin,
-    admin_get_parties_data_v1,
     admin_get_party_data_v1,
     admin_update_party_attributes_v1,
     admin_get_user_party_v1,
@@ -151,7 +151,6 @@ commands = [
     admin_delete_third_party_config,
     public_get_messages,
     get_personal_chat_history_v1_public,
-    get_all_stored_notifications_v1,
     public_get_party_data_v1,
     public_update_party_attributes_v1,
     public_get_player_blocked_players_v1,
@@ -172,7 +171,6 @@ commands = [
     get_topic_by_topic_name,
     update_topic_by_topic_name,
     delete_topic_by_topic_name,
-    get_notifications,
     free_form_notification_by_user_id,
     notification_with_template_by_user_id,
 ]

@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,20 +31,20 @@ from ....api.platform.models import ValidationErrorEntity
 
 
 @click.command()
-@click.option("--store_id", "store_id", type=str)
 @click.option("--active_only", "active_only", type=bool)
-@click.option("--offset", "offset", type=int)
 @click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
 @click.option("--sort_by", "sort_by", type=str)
+@click.option("--store_id", "store_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def query_uncategorized_items(
-        store_id: Optional[str] = None,
         active_only: Optional[bool] = None,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
         sort_by: Optional[str] = None,
+        store_id: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -54,11 +54,11 @@ def query_uncategorized_items(
         return
     login_as_internal(login_as)
     _, error = query_uncategorized_items_internal(
-        store_id=store_id,
         active_only=active_only,
-        offset=offset,
         limit=limit,
+        offset=offset,
         sort_by=sort_by,
+        store_id=store_id,
         namespace=namespace,
     )
     if error:

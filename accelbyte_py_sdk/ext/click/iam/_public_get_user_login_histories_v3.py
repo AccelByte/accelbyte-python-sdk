@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,16 +30,16 @@ from ....api.iam.models import ModelLoginHistoriesResponse
 
 @click.command()
 @click.argument("user_id", type=str)
-@click.option("--before", "before", type=float)
 @click.option("--after", "after", type=float)
+@click.option("--before", "before", type=float)
 @click.option("--limit", "limit", type=float)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def public_get_user_login_histories_v3(
         user_id: str,
-        before: Optional[float] = None,
         after: Optional[float] = None,
+        before: Optional[float] = None,
         limit: Optional[float] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
@@ -51,8 +51,8 @@ def public_get_user_login_histories_v3(
     login_as_internal(login_as)
     _, error = public_get_user_login_histories_v3_internal(
         user_id=user_id,
-        before=before,
         after=after,
+        before=before,
         limit=limit,
         namespace=namespace,
     )

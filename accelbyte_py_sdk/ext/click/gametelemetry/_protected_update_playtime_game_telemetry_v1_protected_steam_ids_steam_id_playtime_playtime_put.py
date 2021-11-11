@@ -29,13 +29,13 @@ from ....api.gametelemetry.models import HTTPValidationError
 
 
 @click.command()
-@click.argument("steam_id", type=str)
 @click.argument("playtime", type=str)
+@click.argument("steam_id", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_playtime_put(
-        steam_id: str,
         playtime: str,
+        steam_id: str,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
@@ -44,8 +44,8 @@ def protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_pla
         return
     login_as_internal(login_as)
     _, error = protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_playtime_put_internal(
-        steam_id=steam_id,
         playtime=playtime,
+        steam_id=steam_id,
     )
     if error:
         raise Exception(f"protected_update_playtime_game_telemetry_v1_protected_steamIds__steamId__playtime__playtime__put failed: {str(error)}")

@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -29,14 +29,14 @@ from ....api.iam.models import ModelGetUserMapping
 
 
 @click.command()
-@click.argument("user_id", type=str)
 @click.argument("target_namespace", type=str)
+@click.argument("user_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def get_user_mapping(
-        user_id: str,
         target_namespace: str,
+        user_id: str,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -46,8 +46,8 @@ def get_user_mapping(
         return
     login_as_internal(login_as)
     _, error = get_user_mapping_internal(
-        user_id=user_id,
         target_namespace=target_namespace,
+        user_id=user_id,
         namespace=namespace,
     )
     if error:

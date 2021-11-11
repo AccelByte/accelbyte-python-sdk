@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -29,20 +29,20 @@ from ....api.platform.models import BillingHistoryPagingSlicedResult
 
 
 @click.command()
-@click.argument("user_id", type=str)
 @click.argument("subscription_id", type=str)
+@click.argument("user_id", type=str)
 @click.option("--exclude_free", "exclude_free", type=bool)
-@click.option("--offset", "offset", type=int)
 @click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def public_get_user_subscription_billing_histories(
-        user_id: str,
         subscription_id: str,
+        user_id: str,
         exclude_free: Optional[bool] = None,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -52,11 +52,11 @@ def public_get_user_subscription_billing_histories(
         return
     login_as_internal(login_as)
     _, error = public_get_user_subscription_billing_histories_internal(
-        user_id=user_id,
         subscription_id=subscription_id,
+        user_id=user_id,
         exclude_free=exclude_free,
-        offset=offset,
         limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     if error:

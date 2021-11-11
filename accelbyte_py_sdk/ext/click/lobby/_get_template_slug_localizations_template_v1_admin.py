@@ -31,17 +31,17 @@ from ....api.lobby.models import RestapiErrorResponseV1
 
 @click.command()
 @click.argument("template_slug", type=str)
-@click.option("--limit", "limit", type=int)
-@click.option("--before", "before", type=str)
 @click.option("--after", "after", type=str)
+@click.option("--before", "before", type=str)
+@click.option("--limit", "limit", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def get_template_slug_localizations_template_v1_admin(
         template_slug: str,
-        limit: Optional[int] = None,
-        before: Optional[str] = None,
         after: Optional[str] = None,
+        before: Optional[str] = None,
+        limit: Optional[int] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -52,9 +52,9 @@ def get_template_slug_localizations_template_v1_admin(
     login_as_internal(login_as)
     _, error = get_template_slug_localizations_template_v1_admin_internal(
         template_slug=template_slug,
-        limit=limit,
-        before=before,
         after=after,
+        before=before,
+        limit=limit,
         namespace=namespace,
     )
     if error:

@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -29,16 +29,16 @@ from ....api.platform.models import PaymentProviderConfigPagingSlicedResult
 
 
 @click.command()
-@click.option("--region", "region", type=str)
-@click.option("--offset", "offset", type=int)
 @click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
+@click.option("--region", "region", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def query_payment_provider_config(
-        region: Optional[str] = None,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
+        region: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -48,9 +48,9 @@ def query_payment_provider_config(
         return
     login_as_internal(login_as)
     _, error = query_payment_provider_config_internal(
-        region=region,
-        offset=offset,
         limit=limit,
+        offset=offset,
+        region=region,
         namespace=namespace,
     )
     if error:

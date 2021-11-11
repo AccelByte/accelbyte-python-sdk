@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -28,21 +28,21 @@ from ....api.iam import user_authentication_v3 as user_authentication_v3_interna
 
 
 @click.command()
-@click.argument("user_name", type=str)
 @click.argument("password", type=str)
 @click.argument("request_id", type=str)
-@click.option("--redirect_uri", "redirect_uri", type=str)
+@click.argument("user_name", type=str)
 @click.option("--client_id", "client_id", type=str)
 @click.option("--extend_exp", "extend_exp", type=bool)
+@click.option("--redirect_uri", "redirect_uri", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def user_authentication_v3(
-        user_name: str,
         password: str,
         request_id: str,
-        redirect_uri: Optional[str] = None,
+        user_name: str,
         client_id: Optional[str] = None,
         extend_exp: Optional[bool] = None,
+        redirect_uri: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
@@ -51,12 +51,12 @@ def user_authentication_v3(
         return
     login_as_internal(login_as)
     _, error = user_authentication_v3_internal(
-        user_name=user_name,
         password=password,
         request_id=request_id,
-        redirect_uri=redirect_uri,
+        user_name=user_name,
         client_id=client_id,
         extend_exp=extend_exp,
+        redirect_uri=redirect_uri,
     )
     if error:
         raise Exception(f"UserAuthenticationV3 failed: {str(error)}")

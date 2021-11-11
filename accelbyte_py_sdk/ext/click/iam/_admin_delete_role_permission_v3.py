@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -29,15 +29,15 @@ from ....api.iam.models import RestapiErrorResponse
 
 
 @click.command()
-@click.argument("role_id", type=str)
-@click.argument("resource", type=str)
 @click.argument("action", type=int)
+@click.argument("resource", type=str)
+@click.argument("role_id", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def admin_delete_role_permission_v3(
-        role_id: str,
-        resource: str,
         action: int,
+        resource: str,
+        role_id: str,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
@@ -46,9 +46,9 @@ def admin_delete_role_permission_v3(
         return
     login_as_internal(login_as)
     _, error = admin_delete_role_permission_v3_internal(
-        role_id=role_id,
-        resource=resource,
         action=action,
+        resource=resource,
+        role_id=role_id,
     )
     if error:
         raise Exception(f"AdminDeleteRolePermissionV3 failed: {str(error)}")

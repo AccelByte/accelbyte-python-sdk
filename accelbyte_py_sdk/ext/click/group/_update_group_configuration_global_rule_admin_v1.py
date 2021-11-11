@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,15 +32,15 @@ from ....api.group.models import ResponseErrorResponse
 
 @click.command()
 @click.argument("body", type=str)
-@click.argument("configuration_code", type=str)
 @click.argument("allowed_action", type=str)
+@click.argument("configuration_code", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def update_group_configuration_global_rule_admin_v1(
         body: str,
-        configuration_code: str,
         allowed_action: str,
+        configuration_code: str,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -56,8 +56,8 @@ def update_group_configuration_global_rule_admin_v1(
         raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = update_group_configuration_global_rule_admin_v1_internal(
         body=body,
-        configuration_code=configuration_code,
         allowed_action=allowed_action,
+        configuration_code=configuration_code,
         namespace=namespace,
     )
     if error:

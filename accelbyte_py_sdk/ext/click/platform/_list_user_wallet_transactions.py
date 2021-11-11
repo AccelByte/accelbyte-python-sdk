@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,16 +32,16 @@ from ....api.platform.models import WalletTransactionPagingSlicedResult
 @click.command()
 @click.argument("user_id", type=str)
 @click.argument("wallet_id", type=str)
-@click.option("--offset", "offset", type=int)
 @click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def list_user_wallet_transactions(
         user_id: str,
         wallet_id: str,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -53,8 +53,8 @@ def list_user_wallet_transactions(
     _, error = list_user_wallet_transactions_internal(
         user_id=user_id,
         wallet_id=wallet_id,
-        offset=offset,
         limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     if error:

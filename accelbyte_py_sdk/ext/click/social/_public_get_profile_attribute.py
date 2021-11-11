@@ -1,4 +1,4 @@
-# justice-social-service (1.18.1)
+# justice-social-service (1.21.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,16 +30,16 @@ from ....api.social.models import ErrorEntity
 
 
 @click.command()
-@click.argument("user_id", type=str)
-@click.argument("profile_id", type=str)
 @click.argument("attribute_name", type=str)
+@click.argument("profile_id", type=str)
+@click.argument("user_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def public_get_profile_attribute(
-        user_id: str,
-        profile_id: str,
         attribute_name: str,
+        profile_id: str,
+        user_id: str,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -49,9 +49,9 @@ def public_get_profile_attribute(
         return
     login_as_internal(login_as)
     _, error = public_get_profile_attribute_internal(
-        user_id=user_id,
-        profile_id=profile_id,
         attribute_name=attribute_name,
+        profile_id=profile_id,
+        user_id=user_id,
         namespace=namespace,
     )
     if error:

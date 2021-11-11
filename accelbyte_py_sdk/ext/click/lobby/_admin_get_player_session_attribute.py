@@ -30,14 +30,14 @@ from ....api.lobby.models import RestapiErrorResponseBody
 
 
 @click.command()
-@click.argument("user_id", type=str)
 @click.argument("attribute", type=str)
+@click.argument("user_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def admin_get_player_session_attribute(
-        user_id: str,
         attribute: str,
+        user_id: str,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -47,8 +47,8 @@ def admin_get_player_session_attribute(
         return
     login_as_internal(login_as)
     _, error = admin_get_player_session_attribute_internal(
-        user_id=user_id,
         attribute=attribute,
+        user_id=user_id,
         namespace=namespace,
     )
     if error:

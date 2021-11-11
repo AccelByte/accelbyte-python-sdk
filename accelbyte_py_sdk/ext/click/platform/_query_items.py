@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,38 +31,38 @@ from ....api.platform.models import ValidationErrorEntity
 
 
 @click.command()
-@click.option("--store_id", "store_id", type=str)
-@click.option("--category_path", "category_path", type=str)
-@click.option("--item_type", "item_type", type=str)
-@click.option("--app_type", "app_type", type=str)
-@click.option("--base_app_id", "base_app_id", type=str)
-@click.option("--tags", "tags", type=str)
-@click.option("--features", "features", type=str)
 @click.option("--active_only", "active_only", type=bool)
-@click.option("--region", "region", type=str)
+@click.option("--app_type", "app_type", type=str)
 @click.option("--available_date", "available_date", type=str)
-@click.option("--target_namespace", "target_namespace", type=str)
-@click.option("--offset", "offset", type=int)
+@click.option("--base_app_id", "base_app_id", type=str)
+@click.option("--category_path", "category_path", type=str)
+@click.option("--features", "features", type=str)
+@click.option("--item_type", "item_type", type=str)
 @click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
+@click.option("--region", "region", type=str)
 @click.option("--sort_by", "sort_by", type=str)
+@click.option("--store_id", "store_id", type=str)
+@click.option("--tags", "tags", type=str)
+@click.option("--target_namespace", "target_namespace", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def query_items(
-        store_id: Optional[str] = None,
-        category_path: Optional[str] = None,
-        item_type: Optional[str] = None,
-        app_type: Optional[str] = None,
-        base_app_id: Optional[str] = None,
-        tags: Optional[str] = None,
-        features: Optional[str] = None,
         active_only: Optional[bool] = None,
-        region: Optional[str] = None,
+        app_type: Optional[str] = None,
         available_date: Optional[str] = None,
-        target_namespace: Optional[str] = None,
-        offset: Optional[int] = None,
+        base_app_id: Optional[str] = None,
+        category_path: Optional[str] = None,
+        features: Optional[str] = None,
+        item_type: Optional[str] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
+        region: Optional[str] = None,
         sort_by: Optional[str] = None,
+        store_id: Optional[str] = None,
+        tags: Optional[str] = None,
+        target_namespace: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -72,20 +72,20 @@ def query_items(
         return
     login_as_internal(login_as)
     _, error = query_items_internal(
-        store_id=store_id,
-        category_path=category_path,
-        item_type=item_type,
-        app_type=app_type,
-        base_app_id=base_app_id,
-        tags=tags,
-        features=features,
         active_only=active_only,
-        region=region,
+        app_type=app_type,
         available_date=available_date,
-        target_namespace=target_namespace,
-        offset=offset,
+        base_app_id=base_app_id,
+        category_path=category_path,
+        features=features,
+        item_type=item_type,
         limit=limit,
+        offset=offset,
+        region=region,
         sort_by=sort_by,
+        store_id=store_id,
+        tags=tags,
+        target_namespace=target_namespace,
         namespace=namespace,
     )
     if error:

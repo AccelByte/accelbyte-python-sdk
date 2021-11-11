@@ -1,4 +1,4 @@
-# justice-social-service (1.18.1)
+# justice-social-service (1.21.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,8 +30,8 @@ from ....api.social.models import ErrorEntity
 
 @click.command()
 @click.argument("user_id", type=str)
-@click.option("--custom_attribute", "custom_attribute", type=str)
 @click.option("--checksum", "checksum", type=str)
+@click.option("--custom_attribute", "custom_attribute", type=str)
 @click.option("--file", "file", type=str)
 @click.option("--label", "label", type=str)
 @click.option("--tags", "tags", type=str)
@@ -40,8 +40,8 @@ from ....api.social.models import ErrorEntity
 @click.option("--doc", type=bool)
 def public_create_user_namespace_slot(
         user_id: str,
-        custom_attribute: Optional[str] = None,
         checksum: Optional[str] = None,
+        custom_attribute: Optional[str] = None,
         file: Optional[str] = None,
         label: Optional[str] = None,
         tags: Optional[str] = None,
@@ -60,8 +60,8 @@ def public_create_user_namespace_slot(
         raise Exception(f"Invalid JSON for 'tags'. {str(e)}") from e
     _, error = public_create_user_namespace_slot_internal(
         user_id=user_id,
-        custom_attribute=custom_attribute,
         checksum=checksum,
+        custom_attribute=custom_attribute,
         file=file,
         label=label,
         tags=tags,

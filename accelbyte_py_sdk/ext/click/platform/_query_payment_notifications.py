@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -29,28 +29,28 @@ from ....api.platform.models import PaymentNotificationPagingSlicedResult
 
 
 @click.command()
-@click.option("--payment_order_no", "payment_order_no", type=str)
-@click.option("--external_id", "external_id", type=str)
-@click.option("--status", "status", type=str)
-@click.option("--notification_type", "notification_type", type=str)
-@click.option("--notification_source", "notification_source", type=str)
-@click.option("--start_date", "start_date", type=str)
 @click.option("--end_date", "end_date", type=str)
-@click.option("--offset", "offset", type=int)
+@click.option("--external_id", "external_id", type=str)
 @click.option("--limit", "limit", type=int)
+@click.option("--notification_source", "notification_source", type=str)
+@click.option("--notification_type", "notification_type", type=str)
+@click.option("--offset", "offset", type=int)
+@click.option("--payment_order_no", "payment_order_no", type=str)
+@click.option("--start_date", "start_date", type=str)
+@click.option("--status", "status", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def query_payment_notifications(
-        payment_order_no: Optional[str] = None,
-        external_id: Optional[str] = None,
-        status: Optional[str] = None,
-        notification_type: Optional[str] = None,
-        notification_source: Optional[str] = None,
-        start_date: Optional[str] = None,
         end_date: Optional[str] = None,
-        offset: Optional[int] = None,
+        external_id: Optional[str] = None,
         limit: Optional[int] = None,
+        notification_source: Optional[str] = None,
+        notification_type: Optional[str] = None,
+        offset: Optional[int] = None,
+        payment_order_no: Optional[str] = None,
+        start_date: Optional[str] = None,
+        status: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -60,15 +60,15 @@ def query_payment_notifications(
         return
     login_as_internal(login_as)
     _, error = query_payment_notifications_internal(
-        payment_order_no=payment_order_no,
-        external_id=external_id,
-        status=status,
-        notification_type=notification_type,
-        notification_source=notification_source,
-        start_date=start_date,
         end_date=end_date,
-        offset=offset,
+        external_id=external_id,
         limit=limit,
+        notification_source=notification_source,
+        notification_type=notification_type,
+        offset=offset,
+        payment_order_no=payment_order_no,
+        start_date=start_date,
+        status=status,
         namespace=namespace,
     )
     if error:

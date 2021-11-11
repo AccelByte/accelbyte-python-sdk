@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,19 +30,19 @@ from ....api.platform.models import SubscriptionActivityPagingSlicedResult
 
 @click.command()
 @click.argument("user_id", type=str)
-@click.option("--subscription_id", "subscription_id", type=str)
 @click.option("--exclude_system", "exclude_system", type=bool)
-@click.option("--offset", "offset", type=int)
 @click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
+@click.option("--subscription_id", "subscription_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def get_user_subscription_activities(
         user_id: str,
-        subscription_id: Optional[str] = None,
         exclude_system: Optional[bool] = None,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
+        subscription_id: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -53,10 +53,10 @@ def get_user_subscription_activities(
     login_as_internal(login_as)
     _, error = get_user_subscription_activities_internal(
         user_id=user_id,
-        subscription_id=subscription_id,
         exclude_system=exclude_system,
-        offset=offset,
         limit=limit,
+        offset=offset,
+        subscription_id=subscription_id,
         namespace=namespace,
     )
     if error:

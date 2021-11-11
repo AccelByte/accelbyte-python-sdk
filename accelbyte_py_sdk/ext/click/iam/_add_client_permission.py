@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -28,15 +28,15 @@ from ....api.iam import add_client_permission as add_client_permission_internal
 
 
 @click.command()
+@click.argument("action", type=int)
 @click.argument("client_id", type=str)
 @click.argument("resource", type=str)
-@click.argument("action", type=int)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def add_client_permission(
+        action: int,
         client_id: str,
         resource: str,
-        action: int,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
@@ -45,9 +45,9 @@ def add_client_permission(
         return
     login_as_internal(login_as)
     _, error = add_client_permission_internal(
+        action=action,
         client_id=client_id,
         resource=resource,
-        action=action,
     )
     if error:
         raise Exception(f"AddClientPermission failed: {str(error)}")

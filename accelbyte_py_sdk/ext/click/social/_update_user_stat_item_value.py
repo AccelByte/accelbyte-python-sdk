@@ -1,4 +1,4 @@
-# justice-social-service (1.18.1)
+# justice-social-service (1.21.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,16 +32,16 @@ from ....api.social.models import ValidationErrorEntity
 
 
 @click.command()
-@click.argument("user_id", type=str)
 @click.argument("stat_code", type=str)
+@click.argument("user_id", type=str)
 @click.option("--body", "body", type=str)
 @click.option("--additional_key", "additional_key", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def update_user_stat_item_value(
-        user_id: str,
         stat_code: str,
+        user_id: str,
         body: Optional[str] = None,
         additional_key: Optional[str] = None,
         namespace: Optional[str] = None,
@@ -58,8 +58,8 @@ def update_user_stat_item_value(
     except ValueError as e:
         raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = update_user_stat_item_value_internal(
-        user_id=user_id,
         stat_code=stat_code,
+        user_id=user_id,
         body=body,
         additional_key=additional_key,
         namespace=namespace,

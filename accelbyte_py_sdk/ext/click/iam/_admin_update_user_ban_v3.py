@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,15 +32,15 @@ from ....api.iam.models import RestErrorResponse
 
 @click.command()
 @click.argument("body", type=str)
-@click.argument("user_id", type=str)
 @click.argument("ban_id", type=str)
+@click.argument("user_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def admin_update_user_ban_v3(
         body: str,
-        user_id: str,
         ban_id: str,
+        user_id: str,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -56,8 +56,8 @@ def admin_update_user_ban_v3(
         raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = admin_update_user_ban_v3_internal(
         body=body,
-        user_id=user_id,
         ban_id=ban_id,
+        user_id=user_id,
         namespace=namespace,
     )
     if error:

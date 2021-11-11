@@ -1,4 +1,4 @@
-# justice-lobby-server (1.33.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -24,27 +24,39 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.lobby import get_all_stored_notifications_v1 as get_all_stored_notifications_v1_internal
-from ....api.lobby.models import ModelGetStoredNotificationResp
-from ....api.lobby.models import RestapiErrorResponseV1
+from ....api.platform import redeem_code as redeem_code_internal
+from ....api.platform.models import ErrorEntity
+from ....api.platform.models import FulfillCodeRequest
+from ....api.platform.models import FulfillmentResult
 
 
 @click.command()
+@click.argument("user_id", type=str)
+@click.option("--body", "body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
-def get_all_stored_notifications_v1(
+def redeem_code(
+        user_id: str,
+        body: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(get_all_stored_notifications_v1_internal.__doc__)
+        click.echo(redeem_code_internal.__doc__)
         return
     login_as_internal(login_as)
-    _, error = get_all_stored_notifications_v1_internal(
+    try:
+        body_json = json.loads(body)
+        body = FulfillCodeRequest.create_from_dict(body_json)
+    except ValueError as e:
+        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    _, error = redeem_code_internal(
+        user_id=user_id,
+        body=body,
         namespace=namespace,
     )
     if error:
-        raise Exception(f"getAllStoredNotificationsV1 failed: {str(error)}")
-    click.echo("getAllStoredNotificationsV1 success")
+        raise Exception(f"redeemCode failed: {str(error)}")
+    click.echo("redeemCode success")
