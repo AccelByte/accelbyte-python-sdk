@@ -57,7 +57,7 @@ class GetSlotData(Operation):
         slot_id: (slotId) REQUIRED str in path
 
     Responses:
-        200: OK - (Successful operation)
+        200: OK - Any (Slot data)
 
         404: Not Found - ErrorEntity (12141: Slot [{slotId}] not found in namespace [{namespace}])
     """
@@ -199,15 +199,15 @@ class GetSlotData(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ErrorEntity]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, Any], Union[None, ErrorEntity]]:
         """Parse the given response.
 
-        200: OK - (Successful operation)
+        200: OK - Any (Slot data)
 
         404: Not Found - ErrorEntity (12141: Slot [{slotId}] not found in namespace [{namespace}])
         """
         if code == 200:
-            return HttpResponse.create(code, "OK"), None
+            return Any(content), None
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)

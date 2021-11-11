@@ -91,7 +91,9 @@ class PublicNormalizePaymentReturnUrl(Operation):
         payer_id: (PayerID) OPTIONAL str in query
 
     Responses:
-        default: (successful operation)
+        307: Temporary Redirect - (successful operation)
+
+        204: No Content - (no content)
     """
 
     # region fields
@@ -237,6 +239,14 @@ class PublicNormalizePaymentReturnUrl(Operation):
             return False
         return True
 
+    # noinspection PyMethodMayBeStatic
+    def has_redirects(self) -> bool:
+        """Returns True if this operation has redirects, otherwise False.
+
+        307: Temporary Redirect - (successful operation)
+        """
+        return True
+
     # endregion is/has methods
 
     # region with_x methods
@@ -369,10 +379,14 @@ class PublicNormalizePaymentReturnUrl(Operation):
     def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        default: (successful operation)
+        307: Temporary Redirect - (successful operation)
+
+        204: No Content - (no content)
         """
-        if code == 200:
-            return HttpResponse.create(code, "OK"), None
+        if code == 307:
+            return HttpResponse.create_redirect(code, content), None
+        if code == 204:
+            return HttpResponse.create(code, "No Content"), None
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
             return None, undocumented_response

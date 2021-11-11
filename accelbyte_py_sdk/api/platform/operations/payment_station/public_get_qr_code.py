@@ -52,7 +52,7 @@ class PublicGetQRCode(Operation):
         code: (code) REQUIRED str in query
 
     Responses:
-        200: OK - (Successful operation)
+        200: OK - Any (successful operation)
     """
 
     # region fields
@@ -186,13 +186,13 @@ class PublicGetQRCode(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, Any], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - (Successful operation)
+        200: OK - Any (successful operation)
         """
         if code == 200:
-            return HttpResponse.create(code, "OK"), None
+            return Any(content), None
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
             return None, undocumented_response

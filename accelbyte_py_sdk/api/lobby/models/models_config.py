@@ -34,6 +34,8 @@ class ModelsConfig(Model):
 
         chat_rate_limit_duration: (chatRateLimitDuration) OPTIONAL int
 
+        concurrent_users_limit: (concurrentUsersLimit) OPTIONAL int
+
         enable_chat: (enableChat) OPTIONAL bool
 
         entitlement_check: (entitlementCheck) OPTIONAL bool
@@ -56,6 +58,7 @@ class ModelsConfig(Model):
     auto_kick_on_disconnect: bool                                                                  # OPTIONAL
     chat_rate_limit_burst: int                                                                     # OPTIONAL
     chat_rate_limit_duration: int                                                                  # OPTIONAL
+    concurrent_users_limit: int                                                                    # OPTIONAL
     enable_chat: bool                                                                              # OPTIONAL
     entitlement_check: bool                                                                        # OPTIONAL
     entitlement_item_id: str                                                                       # OPTIONAL
@@ -79,6 +82,10 @@ class ModelsConfig(Model):
 
     def with_chat_rate_limit_duration(self, value: int) -> ModelsConfig:
         self.chat_rate_limit_duration = value
+        return self
+
+    def with_concurrent_users_limit(self, value: int) -> ModelsConfig:
+        self.concurrent_users_limit = value
         return self
 
     def with_enable_chat(self, value: bool) -> ModelsConfig:
@@ -131,7 +138,11 @@ class ModelsConfig(Model):
             result["chatRateLimitDuration"] = int(self.chat_rate_limit_duration)
         elif include_empty:
             result["chatRateLimitDuration"] = int()
-        if hasattr(self, "enable_chat") and self.enable_chat:
+        if hasattr(self, "concurrent_users_limit"):
+            result["concurrentUsersLimit"] = int(self.concurrent_users_limit)
+        elif include_empty:
+            result["concurrentUsersLimit"] = int()
+        if hasattr(self, "enable_chat"):
             result["enableChat"] = bool(self.enable_chat)
         elif include_empty:
             result["enableChat"] = bool()
@@ -175,6 +186,7 @@ class ModelsConfig(Model):
         auto_kick_on_disconnect: Optional[bool] = None,
         chat_rate_limit_burst: Optional[int] = None,
         chat_rate_limit_duration: Optional[int] = None,
+        concurrent_users_limit: Optional[int] = None,
         enable_chat: Optional[bool] = None,
         entitlement_check: Optional[bool] = None,
         entitlement_item_id: Optional[str] = None,
@@ -191,6 +203,8 @@ class ModelsConfig(Model):
             instance.chat_rate_limit_burst = chat_rate_limit_burst
         if chat_rate_limit_duration is not None:
             instance.chat_rate_limit_duration = chat_rate_limit_duration
+        if concurrent_users_limit is not None:
+            instance.concurrent_users_limit = concurrent_users_limit
         if enable_chat is not None:
             instance.enable_chat = enable_chat
         if entitlement_check is not None:
@@ -226,6 +240,10 @@ class ModelsConfig(Model):
             instance.chat_rate_limit_duration = int(dict_["chatRateLimitDuration"])
         elif include_empty:
             instance.chat_rate_limit_duration = int()
+        if "concurrentUsersLimit" in dict_ and dict_["concurrentUsersLimit"] is not None:
+            instance.concurrent_users_limit = int(dict_["concurrentUsersLimit"])
+        elif include_empty:
+            instance.concurrent_users_limit = int()
         if "enableChat" in dict_ and dict_["enableChat"] is not None:
             instance.enable_chat = bool(dict_["enableChat"])
         elif include_empty:
@@ -266,6 +284,7 @@ class ModelsConfig(Model):
             "autoKickOnDisconnect": "auto_kick_on_disconnect",
             "chatRateLimitBurst": "chat_rate_limit_burst",
             "chatRateLimitDuration": "chat_rate_limit_duration",
+            "concurrentUsersLimit": "concurrent_users_limit",
             "enableChat": "enable_chat",
             "entitlementCheck": "entitlement_check",
             "entitlementItemID": "entitlement_item_id",
