@@ -117,23 +117,23 @@ class PaymentOrderNotifySimulation(Model):
     @classmethod
     def create(
         cls,
-        payment_provider: str,
-        notify_type: str,
         currency_code: str,
+        notify_type: str,
+        payment_provider: str,
         amount: Optional[int] = None,
-        vat: Optional[int] = None,
         sales_tax: Optional[int] = None,
+        vat: Optional[int] = None,
     ) -> PaymentOrderNotifySimulation:
         instance = cls()
-        instance.payment_provider = payment_provider
-        instance.notify_type = notify_type
         instance.currency_code = currency_code
+        instance.notify_type = notify_type
+        instance.payment_provider = payment_provider
         if amount is not None:
             instance.amount = amount
-        if vat is not None:
-            instance.vat = vat
         if sales_tax is not None:
             instance.sales_tax = sales_tax
+        if vat is not None:
+            instance.vat = vat
         return instance
 
     @classmethod

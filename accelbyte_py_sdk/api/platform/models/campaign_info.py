@@ -251,49 +251,49 @@ class CampaignInfo(Model):
     @classmethod
     def create(
         cls,
-        id_: str,
-        type_: str,
-        namespace: str,
-        name: str,
-        status: str,
-        max_redeem_count_per_code: int,
-        max_redeem_count_per_code_per_user: int,
-        max_redeem_count_per_campaign_per_user: int,
-        max_sale_count: int,
-        redeem_type: str,
         booth_name: str,
         created_at: str,
+        id_: str,
+        max_redeem_count_per_campaign_per_user: int,
+        max_redeem_count_per_code: int,
+        max_redeem_count_per_code_per_user: int,
+        max_sale_count: int,
+        name: str,
+        namespace: str,
+        redeem_type: str,
+        status: str,
+        type_: str,
         updated_at: str,
         description: Optional[str] = None,
-        tags: Optional[List[str]] = None,
-        redeem_start: Optional[str] = None,
-        redeem_end: Optional[str] = None,
         items: Optional[List[RedeemableItem]] = None,
+        redeem_end: Optional[str] = None,
+        redeem_start: Optional[str] = None,
+        tags: Optional[List[str]] = None,
     ) -> CampaignInfo:
         instance = cls()
-        instance.id_ = id_
-        instance.type_ = type_
-        instance.namespace = namespace
-        instance.name = name
-        instance.status = status
-        instance.max_redeem_count_per_code = max_redeem_count_per_code
-        instance.max_redeem_count_per_code_per_user = max_redeem_count_per_code_per_user
-        instance.max_redeem_count_per_campaign_per_user = max_redeem_count_per_campaign_per_user
-        instance.max_sale_count = max_sale_count
-        instance.redeem_type = redeem_type
         instance.booth_name = booth_name
         instance.created_at = created_at
+        instance.id_ = id_
+        instance.max_redeem_count_per_campaign_per_user = max_redeem_count_per_campaign_per_user
+        instance.max_redeem_count_per_code = max_redeem_count_per_code
+        instance.max_redeem_count_per_code_per_user = max_redeem_count_per_code_per_user
+        instance.max_sale_count = max_sale_count
+        instance.name = name
+        instance.namespace = namespace
+        instance.redeem_type = redeem_type
+        instance.status = status
+        instance.type_ = type_
         instance.updated_at = updated_at
         if description is not None:
             instance.description = description
-        if tags is not None:
-            instance.tags = tags
-        if redeem_start is not None:
-            instance.redeem_start = redeem_start
-        if redeem_end is not None:
-            instance.redeem_end = redeem_end
         if items is not None:
             instance.items = items
+        if redeem_end is not None:
+            instance.redeem_end = redeem_end
+        if redeem_start is not None:
+            instance.redeem_start = redeem_start
+        if tags is not None:
+            instance.tags = tags
         return instance
 
     @classmethod

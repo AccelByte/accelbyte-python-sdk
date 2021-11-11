@@ -518,122 +518,122 @@ class PopulatedItemInfo(Model):
     @classmethod
     def create(
         cls,
-        title: str,
-        item_id: str,
-        namespace: str,
-        name: str,
-        entitlement_type: str,
         category_path: str,
-        status: str,
-        item_type: str,
-        region: str,
-        language: str,
         created_at: str,
+        entitlement_type: str,
+        item_id: str,
+        item_type: str,
+        language: str,
+        name: str,
+        namespace: str,
+        region: str,
+        status: str,
+        title: str,
         updated_at: str,
-        description: Optional[str] = None,
-        long_description: Optional[str] = None,
         app_id: Optional[str] = None,
         app_type: Optional[str] = None,
-        season_type: Optional[str] = None,
         base_app_id: Optional[str] = None,
-        sku: Optional[str] = None,
-        use_count: Optional[int] = None,
-        stackable: Optional[bool] = None,
-        listable: Optional[bool] = None,
-        purchasable: Optional[bool] = None,
-        target_namespace: Optional[str] = None,
-        target_currency_code: Optional[str] = None,
-        target_item_id: Optional[str] = None,
-        images: Optional[List[Image]] = None,
-        thumbnail_url: Optional[str] = None,
-        region_data: Optional[List[RegionDataItem]] = None,
-        recurring: Optional[Recurring] = None,
-        item_ids: Optional[List[str]] = None,
-        bound_item_ids: Optional[List[str]] = None,
-        tags: Optional[List[str]] = None,
-        features: Optional[List[str]] = None,
-        max_count_per_user: Optional[int] = None,
-        max_count: Optional[int] = None,
-        clazz: Optional[str] = None,
         booth_name: Optional[str] = None,
+        bound_item_ids: Optional[List[str]] = None,
+        clazz: Optional[str] = None,
+        description: Optional[str] = None,
         display_order: Optional[int] = None,
         ext: Optional[Dict[str, Any]] = None,
+        features: Optional[List[str]] = None,
+        images: Optional[List[Image]] = None,
+        item_ids: Optional[List[str]] = None,
         items: Optional[List[ItemInfo]] = None,
+        listable: Optional[bool] = None,
         local_ext: Optional[Dict[str, Any]] = None,
+        long_description: Optional[str] = None,
+        max_count: Optional[int] = None,
+        max_count_per_user: Optional[int] = None,
+        purchasable: Optional[bool] = None,
+        recurring: Optional[Recurring] = None,
+        region_data: Optional[List[RegionDataItem]] = None,
+        season_type: Optional[str] = None,
+        sku: Optional[str] = None,
+        stackable: Optional[bool] = None,
+        tags: Optional[List[str]] = None,
+        target_currency_code: Optional[str] = None,
+        target_item_id: Optional[str] = None,
+        target_namespace: Optional[str] = None,
+        thumbnail_url: Optional[str] = None,
+        use_count: Optional[int] = None,
     ) -> PopulatedItemInfo:
         instance = cls()
-        instance.title = title
-        instance.item_id = item_id
-        instance.namespace = namespace
-        instance.name = name
-        instance.entitlement_type = entitlement_type
         instance.category_path = category_path
-        instance.status = status
-        instance.item_type = item_type
-        instance.region = region
-        instance.language = language
         instance.created_at = created_at
+        instance.entitlement_type = entitlement_type
+        instance.item_id = item_id
+        instance.item_type = item_type
+        instance.language = language
+        instance.name = name
+        instance.namespace = namespace
+        instance.region = region
+        instance.status = status
+        instance.title = title
         instance.updated_at = updated_at
-        if description is not None:
-            instance.description = description
-        if long_description is not None:
-            instance.long_description = long_description
         if app_id is not None:
             instance.app_id = app_id
         if app_type is not None:
             instance.app_type = app_type
-        if season_type is not None:
-            instance.season_type = season_type
         if base_app_id is not None:
             instance.base_app_id = base_app_id
-        if sku is not None:
-            instance.sku = sku
-        if use_count is not None:
-            instance.use_count = use_count
-        if stackable is not None:
-            instance.stackable = stackable
-        if listable is not None:
-            instance.listable = listable
-        if purchasable is not None:
-            instance.purchasable = purchasable
-        if target_namespace is not None:
-            instance.target_namespace = target_namespace
-        if target_currency_code is not None:
-            instance.target_currency_code = target_currency_code
-        if target_item_id is not None:
-            instance.target_item_id = target_item_id
-        if images is not None:
-            instance.images = images
-        if thumbnail_url is not None:
-            instance.thumbnail_url = thumbnail_url
-        if region_data is not None:
-            instance.region_data = region_data
-        if recurring is not None:
-            instance.recurring = recurring
-        if item_ids is not None:
-            instance.item_ids = item_ids
-        if bound_item_ids is not None:
-            instance.bound_item_ids = bound_item_ids
-        if tags is not None:
-            instance.tags = tags
-        if features is not None:
-            instance.features = features
-        if max_count_per_user is not None:
-            instance.max_count_per_user = max_count_per_user
-        if max_count is not None:
-            instance.max_count = max_count
-        if clazz is not None:
-            instance.clazz = clazz
         if booth_name is not None:
             instance.booth_name = booth_name
+        if bound_item_ids is not None:
+            instance.bound_item_ids = bound_item_ids
+        if clazz is not None:
+            instance.clazz = clazz
+        if description is not None:
+            instance.description = description
         if display_order is not None:
             instance.display_order = display_order
         if ext is not None:
             instance.ext = ext
+        if features is not None:
+            instance.features = features
+        if images is not None:
+            instance.images = images
+        if item_ids is not None:
+            instance.item_ids = item_ids
         if items is not None:
             instance.items = items
+        if listable is not None:
+            instance.listable = listable
         if local_ext is not None:
             instance.local_ext = local_ext
+        if long_description is not None:
+            instance.long_description = long_description
+        if max_count is not None:
+            instance.max_count = max_count
+        if max_count_per_user is not None:
+            instance.max_count_per_user = max_count_per_user
+        if purchasable is not None:
+            instance.purchasable = purchasable
+        if recurring is not None:
+            instance.recurring = recurring
+        if region_data is not None:
+            instance.region_data = region_data
+        if season_type is not None:
+            instance.season_type = season_type
+        if sku is not None:
+            instance.sku = sku
+        if stackable is not None:
+            instance.stackable = stackable
+        if tags is not None:
+            instance.tags = tags
+        if target_currency_code is not None:
+            instance.target_currency_code = target_currency_code
+        if target_item_id is not None:
+            instance.target_item_id = target_item_id
+        if target_namespace is not None:
+            instance.target_namespace = target_namespace
+        if thumbnail_url is not None:
+            instance.thumbnail_url = thumbnail_url
+        if use_count is not None:
+            instance.use_count = use_count
         return instance
 
     @classmethod

@@ -118,24 +118,24 @@ class StoreUpdate(Model):
     def create(
         cls,
         title: str,
+        default_language: Optional[str] = None,
+        default_region: Optional[str] = None,
         description: Optional[str] = None,
         supported_languages: Optional[List[str]] = None,
         supported_regions: Optional[List[str]] = None,
-        default_region: Optional[str] = None,
-        default_language: Optional[str] = None,
     ) -> StoreUpdate:
         instance = cls()
         instance.title = title
+        if default_language is not None:
+            instance.default_language = default_language
+        if default_region is not None:
+            instance.default_region = default_region
         if description is not None:
             instance.description = description
         if supported_languages is not None:
             instance.supported_languages = supported_languages
         if supported_regions is not None:
             instance.supported_regions = supported_regions
-        if default_region is not None:
-            instance.default_region = default_region
-        if default_language is not None:
-            instance.default_language = default_language
         return instance
 
     @classmethod

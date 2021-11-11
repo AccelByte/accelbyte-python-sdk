@@ -161,38 +161,38 @@ class UserProfilePrivateCreate(Model):
     @classmethod
     def create(
         cls,
-        first_name: Optional[str] = None,
-        last_name: Optional[str] = None,
-        language: Optional[str] = None,
-        date_of_birth: Optional[str] = None,
+        avatar_large_url: Optional[str] = None,
         avatar_small_url: Optional[str] = None,
         avatar_url: Optional[str] = None,
-        avatar_large_url: Optional[str] = None,
         custom_attributes: Optional[Dict[str, Any]] = None,
-        time_zone: Optional[str] = None,
+        date_of_birth: Optional[str] = None,
+        first_name: Optional[str] = None,
+        language: Optional[str] = None,
+        last_name: Optional[str] = None,
         private_custom_attributes: Optional[Dict[str, Any]] = None,
+        time_zone: Optional[str] = None,
     ) -> UserProfilePrivateCreate:
         instance = cls()
-        if first_name is not None:
-            instance.first_name = first_name
-        if last_name is not None:
-            instance.last_name = last_name
-        if language is not None:
-            instance.language = language
-        if date_of_birth is not None:
-            instance.date_of_birth = date_of_birth
+        if avatar_large_url is not None:
+            instance.avatar_large_url = avatar_large_url
         if avatar_small_url is not None:
             instance.avatar_small_url = avatar_small_url
         if avatar_url is not None:
             instance.avatar_url = avatar_url
-        if avatar_large_url is not None:
-            instance.avatar_large_url = avatar_large_url
         if custom_attributes is not None:
             instance.custom_attributes = custom_attributes
-        if time_zone is not None:
-            instance.time_zone = time_zone
+        if date_of_birth is not None:
+            instance.date_of_birth = date_of_birth
+        if first_name is not None:
+            instance.first_name = first_name
+        if language is not None:
+            instance.language = language
+        if last_name is not None:
+            instance.last_name = last_name
         if private_custom_attributes is not None:
             instance.private_custom_attributes = private_custom_attributes
+        if time_zone is not None:
+            instance.time_zone = time_zone
         return instance
 
     @classmethod

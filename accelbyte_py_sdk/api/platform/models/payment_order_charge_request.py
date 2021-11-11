@@ -85,15 +85,15 @@ class PaymentOrderChargeRequest(Model):
     def create(
         cls,
         payment_provider: str,
-        payment_method: Optional[str] = None,
         ext_tx_id: Optional[str] = None,
+        payment_method: Optional[str] = None,
     ) -> PaymentOrderChargeRequest:
         instance = cls()
         instance.payment_provider = payment_provider
-        if payment_method is not None:
-            instance.payment_method = payment_method
         if ext_tx_id is not None:
             instance.ext_tx_id = ext_tx_id
+        if payment_method is not None:
+            instance.payment_method = payment_method
         return instance
 
     @classmethod

@@ -122,10 +122,10 @@ def add_role_members(body: ModelRoleMembersRequest, role_id: str, x_additional_h
 
 
 @same_doc_as(AddRolePermission)
-def add_role_permission(body: ModelUpdatePermissionScheduleRequest, action: int, resource: str, role_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
+def add_role_permission(action: int, body: ModelUpdatePermissionScheduleRequest, resource: str, role_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
     request = AddRolePermission.create(
-        body=body,
         action=action,
+        body=body,
         resource=resource,
         role_id=role_id,
     )

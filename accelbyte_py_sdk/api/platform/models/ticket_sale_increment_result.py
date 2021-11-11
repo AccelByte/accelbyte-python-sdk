@@ -73,12 +73,12 @@ class TicketSaleIncrementResult(Model):
     @classmethod
     def create(
         cls,
-        success: bool,
         max_sale_count: int,
+        success: bool,
     ) -> TicketSaleIncrementResult:
         instance = cls()
-        instance.success = success
         instance.max_sale_count = max_sale_count
+        instance.success = success
         return instance
 
     @classmethod

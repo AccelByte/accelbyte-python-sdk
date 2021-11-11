@@ -282,65 +282,65 @@ class ExternalPaymentOrderCreate(Model):
     @classmethod
     def create(
         cls,
+        description: str,
         ext_order_no: str,
         price: int,
-        title: str,
-        description: str,
         target_namespace: str,
         target_user_id: str,
-        sku: Optional[str] = None,
-        ext_user_id: Optional[str] = None,
-        item_type: Optional[str] = None,
+        title: str,
         currency_code: Optional[str] = None,
         currency_namespace: Optional[str] = None,
-        region: Optional[str] = None,
-        language: Optional[str] = None,
-        sandbox: Optional[bool] = None,
-        return_url: Optional[str] = None,
-        notify_url: Optional[str] = None,
         custom_parameters: Optional[Dict[str, Any]] = None,
-        subscription_id: Optional[str] = None,
-        recurring_payment_order_no: Optional[str] = None,
-        omit_notification: Optional[bool] = None,
+        ext_user_id: Optional[str] = None,
+        item_type: Optional[str] = None,
+        language: Optional[str] = None,
         metadata: Optional[Dict[str, str]] = None,
+        notify_url: Optional[str] = None,
+        omit_notification: Optional[bool] = None,
+        recurring_payment_order_no: Optional[str] = None,
+        region: Optional[str] = None,
+        return_url: Optional[str] = None,
+        sandbox: Optional[bool] = None,
+        sku: Optional[str] = None,
+        subscription_id: Optional[str] = None,
     ) -> ExternalPaymentOrderCreate:
         instance = cls()
+        instance.description = description
         instance.ext_order_no = ext_order_no
         instance.price = price
-        instance.title = title
-        instance.description = description
         instance.target_namespace = target_namespace
         instance.target_user_id = target_user_id
-        if sku is not None:
-            instance.sku = sku
-        if ext_user_id is not None:
-            instance.ext_user_id = ext_user_id
-        if item_type is not None:
-            instance.item_type = item_type
+        instance.title = title
         if currency_code is not None:
             instance.currency_code = currency_code
         if currency_namespace is not None:
             instance.currency_namespace = currency_namespace
-        if region is not None:
-            instance.region = region
-        if language is not None:
-            instance.language = language
-        if sandbox is not None:
-            instance.sandbox = sandbox
-        if return_url is not None:
-            instance.return_url = return_url
-        if notify_url is not None:
-            instance.notify_url = notify_url
         if custom_parameters is not None:
             instance.custom_parameters = custom_parameters
-        if subscription_id is not None:
-            instance.subscription_id = subscription_id
-        if recurring_payment_order_no is not None:
-            instance.recurring_payment_order_no = recurring_payment_order_no
-        if omit_notification is not None:
-            instance.omit_notification = omit_notification
+        if ext_user_id is not None:
+            instance.ext_user_id = ext_user_id
+        if item_type is not None:
+            instance.item_type = item_type
+        if language is not None:
+            instance.language = language
         if metadata is not None:
             instance.metadata = metadata
+        if notify_url is not None:
+            instance.notify_url = notify_url
+        if omit_notification is not None:
+            instance.omit_notification = omit_notification
+        if recurring_payment_order_no is not None:
+            instance.recurring_payment_order_no = recurring_payment_order_no
+        if region is not None:
+            instance.region = region
+        if return_url is not None:
+            instance.return_url = return_url
+        if sandbox is not None:
+            instance.sandbox = sandbox
+        if sku is not None:
+            instance.sku = sku
+        if subscription_id is not None:
+            instance.subscription_id = subscription_id
         return instance
 
     @classmethod

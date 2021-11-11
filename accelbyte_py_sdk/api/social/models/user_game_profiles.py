@@ -75,14 +75,14 @@ class UserGameProfiles(Model):
     @classmethod
     def create(
         cls,
-        user_id: Optional[str] = None,
         game_profiles: Optional[List[GameProfilePublicInfo]] = None,
+        user_id: Optional[str] = None,
     ) -> UserGameProfiles:
         instance = cls()
-        if user_id is not None:
-            instance.user_id = user_id
         if game_profiles is not None:
             instance.game_profiles = game_profiles
+        if user_id is not None:
+            instance.user_id = user_id
         return instance
 
     @classmethod

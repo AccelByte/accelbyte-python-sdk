@@ -139,23 +139,23 @@ class OrderHistoryInfo(Model):
     @classmethod
     def create(
         cls,
-        order_no: str,
-        operator: str,
         action: str,
-        namespace: str,
-        user_id: str,
         created_at: str,
+        namespace: str,
+        operator: str,
+        order_no: str,
         updated_at: str,
+        user_id: str,
         reason: Optional[str] = None,
     ) -> OrderHistoryInfo:
         instance = cls()
-        instance.order_no = order_no
-        instance.operator = operator
         instance.action = action
-        instance.namespace = namespace
-        instance.user_id = user_id
         instance.created_at = created_at
+        instance.namespace = namespace
+        instance.operator = operator
+        instance.order_no = order_no
         instance.updated_at = updated_at
+        instance.user_id = user_id
         if reason is not None:
             instance.reason = reason
         return instance

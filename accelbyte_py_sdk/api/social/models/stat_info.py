@@ -205,38 +205,38 @@ class StatInfo(Model):
     @classmethod
     def create(
         cls,
-        stat_code: str,
-        namespace: str,
-        status: str,
-        name: str,
+        created_at: str,
         default_value: float,
         increment_only: bool,
+        name: str,
+        namespace: str,
         set_as_global: bool,
         set_by: str,
-        created_at: str,
+        stat_code: str,
+        status: str,
         updated_at: str,
         description: Optional[str] = None,
-        minimum: Optional[float] = None,
         maximum: Optional[float] = None,
+        minimum: Optional[float] = None,
         tags: Optional[List[str]] = None,
     ) -> StatInfo:
         instance = cls()
-        instance.stat_code = stat_code
-        instance.namespace = namespace
-        instance.status = status
-        instance.name = name
+        instance.created_at = created_at
         instance.default_value = default_value
         instance.increment_only = increment_only
+        instance.name = name
+        instance.namespace = namespace
         instance.set_as_global = set_as_global
         instance.set_by = set_by
-        instance.created_at = created_at
+        instance.stat_code = stat_code
+        instance.status = status
         instance.updated_at = updated_at
         if description is not None:
             instance.description = description
-        if minimum is not None:
-            instance.minimum = minimum
         if maximum is not None:
             instance.maximum = maximum
+        if minimum is not None:
+            instance.minimum = minimum
         if tags is not None:
             instance.tags = tags
         return instance

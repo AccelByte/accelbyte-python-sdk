@@ -604,158 +604,158 @@ class PaymentOrder(Model):
     @classmethod
     def create(
         cls,
-        rvn: Optional[int] = None,
+        authorised_time: Optional[str] = None,
+        channel: Optional[str] = None,
+        chargeback_reversed_time: Optional[str] = None,
+        chargeback_time: Optional[str] = None,
+        charged_time: Optional[str] = None,
+        charging: Optional[bool] = None,
         created_at: Optional[str] = None,
-        updated_at: Optional[str] = None,
-        payment_order_no: Optional[str] = None,
-        namespace: Optional[str] = None,
-        user_id: Optional[str] = None,
-        status: Optional[str] = None,
-        sandbox: Optional[bool] = None,
-        ext_order_no: Optional[str] = None,
-        title: Optional[str] = None,
+        created_time: Optional[str] = None,
+        currency: Optional[CurrencySummary] = None,
+        custom_parameters: Optional[Dict[str, Any]] = None,
         description: Optional[str] = None,
-        item_type: Optional[str] = None,
-        price: Optional[int] = None,
-        sku: Optional[str] = None,
+        ext_order_no: Optional[str] = None,
         ext_user_id: Optional[str] = None,
+        item_type: Optional[str] = None,
+        language: Optional[str] = None,
+        metadata: Optional[Dict[str, str]] = None,
+        namespace: Optional[str] = None,
+        notify_url: Optional[str] = None,
+        omit_notification: Optional[bool] = None,
+        payment_method: Optional[str] = None,
+        payment_method_fee: Optional[int] = None,
+        payment_order_no: Optional[str] = None,
+        payment_provider: Optional[str] = None,
+        payment_provider_fee: Optional[int] = None,
+        payment_station_url: Optional[str] = None,
+        price: Optional[int] = None,
+        recurring_payment_order_no: Optional[str] = None,
+        refunded_time: Optional[str] = None,
+        region: Optional[str] = None,
+        return_url: Optional[str] = None,
+        rvn: Optional[int] = None,
+        sales_tax: Optional[int] = None,
+        sandbox: Optional[bool] = None,
+        sku: Optional[str] = None,
+        state: Optional[str] = None,
+        status: Optional[str] = None,
+        status_reason: Optional[str] = None,
+        subscription_id: Optional[str] = None,
+        subtotal_price: Optional[int] = None,
         target_namespace: Optional[str] = None,
         target_user_id: Optional[str] = None,
-        payment_provider: Optional[str] = None,
-        payment_method: Optional[str] = None,
-        region: Optional[str] = None,
-        language: Optional[str] = None,
-        zip_code: Optional[str] = None,
-        state: Optional[str] = None,
         tax: Optional[int] = None,
-        vat: Optional[int] = None,
-        sales_tax: Optional[int] = None,
-        payment_provider_fee: Optional[int] = None,
-        payment_method_fee: Optional[int] = None,
-        currency: Optional[CurrencySummary] = None,
-        payment_station_url: Optional[str] = None,
-        transactions: Optional[List[Transaction]] = None,
-        status_reason: Optional[str] = None,
-        created_time: Optional[str] = None,
-        charged_time: Optional[str] = None,
-        authorised_time: Optional[str] = None,
-        refunded_time: Optional[str] = None,
-        chargeback_time: Optional[str] = None,
-        chargeback_reversed_time: Optional[str] = None,
-        return_url: Optional[str] = None,
-        channel: Optional[str] = None,
-        notify_url: Optional[str] = None,
-        custom_parameters: Optional[Dict[str, Any]] = None,
-        charging: Optional[bool] = None,
-        subscription_id: Optional[str] = None,
-        recurring_payment_order_no: Optional[str] = None,
-        omit_notification: Optional[bool] = None,
-        metadata: Optional[Dict[str, str]] = None,
-        total_tax: Optional[int] = None,
+        title: Optional[str] = None,
         total_price: Optional[int] = None,
-        subtotal_price: Optional[int] = None,
+        total_tax: Optional[int] = None,
+        transactions: Optional[List[Transaction]] = None,
+        updated_at: Optional[str] = None,
+        user_id: Optional[str] = None,
+        vat: Optional[int] = None,
+        zip_code: Optional[str] = None,
     ) -> PaymentOrder:
         instance = cls()
-        if rvn is not None:
-            instance.rvn = rvn
+        if authorised_time is not None:
+            instance.authorised_time = authorised_time
+        if channel is not None:
+            instance.channel = channel
+        if chargeback_reversed_time is not None:
+            instance.chargeback_reversed_time = chargeback_reversed_time
+        if chargeback_time is not None:
+            instance.chargeback_time = chargeback_time
+        if charged_time is not None:
+            instance.charged_time = charged_time
+        if charging is not None:
+            instance.charging = charging
         if created_at is not None:
             instance.created_at = created_at
-        if updated_at is not None:
-            instance.updated_at = updated_at
-        if payment_order_no is not None:
-            instance.payment_order_no = payment_order_no
-        if namespace is not None:
-            instance.namespace = namespace
-        if user_id is not None:
-            instance.user_id = user_id
-        if status is not None:
-            instance.status = status
-        if sandbox is not None:
-            instance.sandbox = sandbox
-        if ext_order_no is not None:
-            instance.ext_order_no = ext_order_no
-        if title is not None:
-            instance.title = title
+        if created_time is not None:
+            instance.created_time = created_time
+        if currency is not None:
+            instance.currency = currency
+        if custom_parameters is not None:
+            instance.custom_parameters = custom_parameters
         if description is not None:
             instance.description = description
-        if item_type is not None:
-            instance.item_type = item_type
-        if price is not None:
-            instance.price = price
-        if sku is not None:
-            instance.sku = sku
+        if ext_order_no is not None:
+            instance.ext_order_no = ext_order_no
         if ext_user_id is not None:
             instance.ext_user_id = ext_user_id
+        if item_type is not None:
+            instance.item_type = item_type
+        if language is not None:
+            instance.language = language
+        if metadata is not None:
+            instance.metadata = metadata
+        if namespace is not None:
+            instance.namespace = namespace
+        if notify_url is not None:
+            instance.notify_url = notify_url
+        if omit_notification is not None:
+            instance.omit_notification = omit_notification
+        if payment_method is not None:
+            instance.payment_method = payment_method
+        if payment_method_fee is not None:
+            instance.payment_method_fee = payment_method_fee
+        if payment_order_no is not None:
+            instance.payment_order_no = payment_order_no
+        if payment_provider is not None:
+            instance.payment_provider = payment_provider
+        if payment_provider_fee is not None:
+            instance.payment_provider_fee = payment_provider_fee
+        if payment_station_url is not None:
+            instance.payment_station_url = payment_station_url
+        if price is not None:
+            instance.price = price
+        if recurring_payment_order_no is not None:
+            instance.recurring_payment_order_no = recurring_payment_order_no
+        if refunded_time is not None:
+            instance.refunded_time = refunded_time
+        if region is not None:
+            instance.region = region
+        if return_url is not None:
+            instance.return_url = return_url
+        if rvn is not None:
+            instance.rvn = rvn
+        if sales_tax is not None:
+            instance.sales_tax = sales_tax
+        if sandbox is not None:
+            instance.sandbox = sandbox
+        if sku is not None:
+            instance.sku = sku
+        if state is not None:
+            instance.state = state
+        if status is not None:
+            instance.status = status
+        if status_reason is not None:
+            instance.status_reason = status_reason
+        if subscription_id is not None:
+            instance.subscription_id = subscription_id
+        if subtotal_price is not None:
+            instance.subtotal_price = subtotal_price
         if target_namespace is not None:
             instance.target_namespace = target_namespace
         if target_user_id is not None:
             instance.target_user_id = target_user_id
-        if payment_provider is not None:
-            instance.payment_provider = payment_provider
-        if payment_method is not None:
-            instance.payment_method = payment_method
-        if region is not None:
-            instance.region = region
-        if language is not None:
-            instance.language = language
-        if zip_code is not None:
-            instance.zip_code = zip_code
-        if state is not None:
-            instance.state = state
         if tax is not None:
             instance.tax = tax
-        if vat is not None:
-            instance.vat = vat
-        if sales_tax is not None:
-            instance.sales_tax = sales_tax
-        if payment_provider_fee is not None:
-            instance.payment_provider_fee = payment_provider_fee
-        if payment_method_fee is not None:
-            instance.payment_method_fee = payment_method_fee
-        if currency is not None:
-            instance.currency = currency
-        if payment_station_url is not None:
-            instance.payment_station_url = payment_station_url
-        if transactions is not None:
-            instance.transactions = transactions
-        if status_reason is not None:
-            instance.status_reason = status_reason
-        if created_time is not None:
-            instance.created_time = created_time
-        if charged_time is not None:
-            instance.charged_time = charged_time
-        if authorised_time is not None:
-            instance.authorised_time = authorised_time
-        if refunded_time is not None:
-            instance.refunded_time = refunded_time
-        if chargeback_time is not None:
-            instance.chargeback_time = chargeback_time
-        if chargeback_reversed_time is not None:
-            instance.chargeback_reversed_time = chargeback_reversed_time
-        if return_url is not None:
-            instance.return_url = return_url
-        if channel is not None:
-            instance.channel = channel
-        if notify_url is not None:
-            instance.notify_url = notify_url
-        if custom_parameters is not None:
-            instance.custom_parameters = custom_parameters
-        if charging is not None:
-            instance.charging = charging
-        if subscription_id is not None:
-            instance.subscription_id = subscription_id
-        if recurring_payment_order_no is not None:
-            instance.recurring_payment_order_no = recurring_payment_order_no
-        if omit_notification is not None:
-            instance.omit_notification = omit_notification
-        if metadata is not None:
-            instance.metadata = metadata
-        if total_tax is not None:
-            instance.total_tax = total_tax
+        if title is not None:
+            instance.title = title
         if total_price is not None:
             instance.total_price = total_price
-        if subtotal_price is not None:
-            instance.subtotal_price = subtotal_price
+        if total_tax is not None:
+            instance.total_tax = total_tax
+        if transactions is not None:
+            instance.transactions = transactions
+        if updated_at is not None:
+            instance.updated_at = updated_at
+        if user_id is not None:
+            instance.user_id = user_id
+        if vat is not None:
+            instance.vat = vat
+        if zip_code is not None:
+            instance.zip_code = zip_code
         return instance
 
     @classmethod

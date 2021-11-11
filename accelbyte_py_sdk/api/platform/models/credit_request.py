@@ -85,15 +85,15 @@ class CreditRequest(Model):
     def create(
         cls,
         amount: int,
-        source: Optional[str] = None,
         reason: Optional[str] = None,
+        source: Optional[str] = None,
     ) -> CreditRequest:
         instance = cls()
         instance.amount = amount
-        if source is not None:
-            instance.source = source
         if reason is not None:
             instance.reason = reason
+        if source is not None:
+            instance.source = source
         return instance
 
     @classmethod

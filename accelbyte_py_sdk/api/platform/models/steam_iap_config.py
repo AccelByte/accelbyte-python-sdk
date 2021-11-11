@@ -106,23 +106,23 @@ class SteamIAPConfig(Model):
     @classmethod
     def create(
         cls,
-        rvn: Optional[int] = None,
         created_at: Optional[str] = None,
-        updated_at: Optional[str] = None,
         namespace: Optional[str] = None,
         publisher_authentication_key: Optional[str] = None,
+        rvn: Optional[int] = None,
+        updated_at: Optional[str] = None,
     ) -> SteamIAPConfig:
         instance = cls()
-        if rvn is not None:
-            instance.rvn = rvn
         if created_at is not None:
             instance.created_at = created_at
-        if updated_at is not None:
-            instance.updated_at = updated_at
         if namespace is not None:
             instance.namespace = namespace
         if publisher_authentication_key is not None:
             instance.publisher_authentication_key = publisher_authentication_key
+        if rvn is not None:
+            instance.rvn = rvn
+        if updated_at is not None:
+            instance.updated_at = updated_at
         return instance
 
     @classmethod

@@ -95,20 +95,20 @@ class UserSlotConfigInfo(Model):
     @classmethod
     def create(
         cls,
-        user_id: Optional[str] = None,
-        namespace: Optional[str] = None,
-        max_slots: Optional[int] = None,
         max_slot_size: Optional[int] = None,
+        max_slots: Optional[int] = None,
+        namespace: Optional[str] = None,
+        user_id: Optional[str] = None,
     ) -> UserSlotConfigInfo:
         instance = cls()
-        if user_id is not None:
-            instance.user_id = user_id
-        if namespace is not None:
-            instance.namespace = namespace
-        if max_slots is not None:
-            instance.max_slots = max_slots
         if max_slot_size is not None:
             instance.max_slot_size = max_slot_size
+        if max_slots is not None:
+            instance.max_slots = max_slots
+        if namespace is not None:
+            instance.namespace = namespace
+        if user_id is not None:
+            instance.user_id = user_id
         return instance
 
     @classmethod

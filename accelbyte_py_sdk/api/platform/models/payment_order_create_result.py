@@ -128,25 +128,25 @@ class PaymentOrderCreateResult(Model):
     @classmethod
     def create(
         cls,
-        payment_order_no: str,
-        namespace: str,
-        status: str,
         created_time: str,
+        namespace: str,
+        payment_order_no: str,
+        status: str,
+        payment_station_url: Optional[str] = None,
         target_namespace: Optional[str] = None,
         target_user_id: Optional[str] = None,
-        payment_station_url: Optional[str] = None,
     ) -> PaymentOrderCreateResult:
         instance = cls()
-        instance.payment_order_no = payment_order_no
-        instance.namespace = namespace
-        instance.status = status
         instance.created_time = created_time
+        instance.namespace = namespace
+        instance.payment_order_no = payment_order_no
+        instance.status = status
+        if payment_station_url is not None:
+            instance.payment_station_url = payment_station_url
         if target_namespace is not None:
             instance.target_namespace = target_namespace
         if target_user_id is not None:
             instance.target_user_id = target_user_id
-        if payment_station_url is not None:
-            instance.payment_station_url = payment_station_url
         return instance
 
     @classmethod

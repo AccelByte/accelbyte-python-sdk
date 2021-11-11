@@ -205,50 +205,50 @@ class SlotInfo(Model):
     @classmethod
     def create(
         cls,
-        slot_id: Optional[str] = None,
-        user_id: Optional[str] = None,
-        namespace: Optional[str] = None,
-        label: Optional[str] = None,
-        original_name: Optional[str] = None,
-        stored_name: Optional[str] = None,
-        mime_type: Optional[str] = None,
-        size: Optional[int] = None,
+        checksum: Optional[str] = None,
+        custom_attribute: Optional[str] = None,
+        date_accessed: Optional[str] = None,
         date_created: Optional[str] = None,
         date_modified: Optional[str] = None,
-        date_accessed: Optional[str] = None,
-        checksum: Optional[str] = None,
+        label: Optional[str] = None,
+        mime_type: Optional[str] = None,
+        namespace: Optional[str] = None,
+        original_name: Optional[str] = None,
+        size: Optional[int] = None,
+        slot_id: Optional[str] = None,
+        stored_name: Optional[str] = None,
         tags: Optional[List[str]] = None,
-        custom_attribute: Optional[str] = None,
+        user_id: Optional[str] = None,
     ) -> SlotInfo:
         instance = cls()
-        if slot_id is not None:
-            instance.slot_id = slot_id
-        if user_id is not None:
-            instance.user_id = user_id
-        if namespace is not None:
-            instance.namespace = namespace
-        if label is not None:
-            instance.label = label
-        if original_name is not None:
-            instance.original_name = original_name
-        if stored_name is not None:
-            instance.stored_name = stored_name
-        if mime_type is not None:
-            instance.mime_type = mime_type
-        if size is not None:
-            instance.size = size
+        if checksum is not None:
+            instance.checksum = checksum
+        if custom_attribute is not None:
+            instance.custom_attribute = custom_attribute
+        if date_accessed is not None:
+            instance.date_accessed = date_accessed
         if date_created is not None:
             instance.date_created = date_created
         if date_modified is not None:
             instance.date_modified = date_modified
-        if date_accessed is not None:
-            instance.date_accessed = date_accessed
-        if checksum is not None:
-            instance.checksum = checksum
+        if label is not None:
+            instance.label = label
+        if mime_type is not None:
+            instance.mime_type = mime_type
+        if namespace is not None:
+            instance.namespace = namespace
+        if original_name is not None:
+            instance.original_name = original_name
+        if size is not None:
+            instance.size = size
+        if slot_id is not None:
+            instance.slot_id = slot_id
+        if stored_name is not None:
+            instance.stored_name = stored_name
         if tags is not None:
             instance.tags = tags
-        if custom_attribute is not None:
-            instance.custom_attribute = custom_attribute
+        if user_id is not None:
+            instance.user_id = user_id
         return instance
 
     @classmethod

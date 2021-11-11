@@ -75,14 +75,14 @@ class UpdateCountryGroupRequest(Model):
     @classmethod
     def create(
         cls,
-        country_group_name: Optional[str] = None,
         countries: Optional[List[CountryObject]] = None,
+        country_group_name: Optional[str] = None,
     ) -> UpdateCountryGroupRequest:
         instance = cls()
-        if country_group_name is not None:
-            instance.country_group_name = country_group_name
         if countries is not None:
             instance.countries = countries
+        if country_group_name is not None:
+            instance.country_group_name = country_group_name
         return instance
 
     @classmethod

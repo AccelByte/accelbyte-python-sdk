@@ -117,26 +117,26 @@ class EntitlementUpdate(Model):
     @classmethod
     def create(
         cls,
+        end_date: Optional[str] = None,
         null_field_list: Optional[List[str]] = None,
-        status: Optional[str] = None,
-        use_count: Optional[int] = None,
         quantity: Optional[int] = None,
         start_date: Optional[str] = None,
-        end_date: Optional[str] = None,
+        status: Optional[str] = None,
+        use_count: Optional[int] = None,
     ) -> EntitlementUpdate:
         instance = cls()
+        if end_date is not None:
+            instance.end_date = end_date
         if null_field_list is not None:
             instance.null_field_list = null_field_list
-        if status is not None:
-            instance.status = status
-        if use_count is not None:
-            instance.use_count = use_count
         if quantity is not None:
             instance.quantity = quantity
         if start_date is not None:
             instance.start_date = start_date
-        if end_date is not None:
-            instance.end_date = end_date
+        if status is not None:
+            instance.status = status
+        if use_count is not None:
+            instance.use_count = use_count
         return instance
 
     @classmethod

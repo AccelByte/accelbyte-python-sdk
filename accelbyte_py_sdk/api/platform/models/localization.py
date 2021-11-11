@@ -97,17 +97,17 @@ class Localization(Model):
         cls,
         title: str,
         description: Optional[str] = None,
-        long_description: Optional[str] = None,
         local_ext: Optional[Dict[str, Any]] = None,
+        long_description: Optional[str] = None,
     ) -> Localization:
         instance = cls()
         instance.title = title
         if description is not None:
             instance.description = description
-        if long_description is not None:
-            instance.long_description = long_description
         if local_ext is not None:
             instance.local_ext = local_ext
+        if long_description is not None:
+            instance.long_description = long_description
         return instance
 
     @classmethod

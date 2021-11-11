@@ -95,16 +95,16 @@ class StatImportInfo(Model):
     @classmethod
     def create(
         cls,
+        failed_configs: List[str],
+        ignored_configs: List[str],
         new_configs: List[str],
         replaced_configs: List[str],
-        ignored_configs: List[str],
-        failed_configs: List[str],
     ) -> StatImportInfo:
         instance = cls()
+        instance.failed_configs = failed_configs
+        instance.ignored_configs = ignored_configs
         instance.new_configs = new_configs
         instance.replaced_configs = replaced_configs
-        instance.ignored_configs = ignored_configs
-        instance.failed_configs = failed_configs
         return instance
 
     @classmethod

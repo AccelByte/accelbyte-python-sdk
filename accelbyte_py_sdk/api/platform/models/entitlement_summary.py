@@ -216,46 +216,46 @@ class EntitlementSummary(Model):
     @classmethod
     def create(
         cls,
+        clazz: str,
+        created_at: str,
         id_: str,
         namespace: str,
-        user_id: str,
-        clazz: str,
         type_: str,
-        created_at: str,
         updated_at: str,
-        stackable: Optional[bool] = None,
-        stacked_use_count: Optional[int] = None,
-        stacked_quantity: Optional[int] = None,
-        store_id: Optional[str] = None,
-        item_id: Optional[str] = None,
-        granted_code: Optional[str] = None,
-        start_date: Optional[str] = None,
+        user_id: str,
         end_date: Optional[str] = None,
+        granted_code: Optional[str] = None,
+        item_id: Optional[str] = None,
+        stackable: Optional[bool] = None,
+        stacked_quantity: Optional[int] = None,
+        stacked_use_count: Optional[int] = None,
+        start_date: Optional[str] = None,
+        store_id: Optional[str] = None,
     ) -> EntitlementSummary:
         instance = cls()
+        instance.clazz = clazz
+        instance.created_at = created_at
         instance.id_ = id_
         instance.namespace = namespace
-        instance.user_id = user_id
-        instance.clazz = clazz
         instance.type_ = type_
-        instance.created_at = created_at
         instance.updated_at = updated_at
-        if stackable is not None:
-            instance.stackable = stackable
-        if stacked_use_count is not None:
-            instance.stacked_use_count = stacked_use_count
-        if stacked_quantity is not None:
-            instance.stacked_quantity = stacked_quantity
-        if store_id is not None:
-            instance.store_id = store_id
-        if item_id is not None:
-            instance.item_id = item_id
-        if granted_code is not None:
-            instance.granted_code = granted_code
-        if start_date is not None:
-            instance.start_date = start_date
+        instance.user_id = user_id
         if end_date is not None:
             instance.end_date = end_date
+        if granted_code is not None:
+            instance.granted_code = granted_code
+        if item_id is not None:
+            instance.item_id = item_id
+        if stackable is not None:
+            instance.stackable = stackable
+        if stacked_quantity is not None:
+            instance.stacked_quantity = stacked_quantity
+        if stacked_use_count is not None:
+            instance.stacked_use_count = stacked_use_count
+        if start_date is not None:
+            instance.start_date = start_date
+        if store_id is not None:
+            instance.store_id = store_id
         return instance
 
     @classmethod

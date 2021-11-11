@@ -96,18 +96,18 @@ class XblIAPConfigInfo(Model):
     def create(
         cls,
         namespace: str,
-        relying_party_cert: Optional[str] = None,
         business_partner_cert_file_name: Optional[str] = None,
         password: Optional[str] = None,
+        relying_party_cert: Optional[str] = None,
     ) -> XblIAPConfigInfo:
         instance = cls()
         instance.namespace = namespace
-        if relying_party_cert is not None:
-            instance.relying_party_cert = relying_party_cert
         if business_partner_cert_file_name is not None:
             instance.business_partner_cert_file_name = business_partner_cert_file_name
         if password is not None:
             instance.password = password
+        if relying_party_cert is not None:
+            instance.relying_party_cert = relying_party_cert
         return instance
 
     @classmethod

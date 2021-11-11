@@ -117,13 +117,13 @@ def revoke_user_v3(user_id: str, namespace: Optional[str] = None, x_additional_h
 
 
 @same_doc_as(TokenGrantV3)
-def token_grant_v3(grant_type: str, device_id: Optional[str] = None, client_id: Optional[str] = None, code: Optional[str] = None, code_verifier: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def token_grant_v3(grant_type: str, client_id: Optional[str] = None, code: Optional[str] = None, code_verifier: Optional[str] = None, device_id: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = TokenGrantV3.create(
         grant_type=grant_type,
-        device_id=device_id,
         client_id=client_id,
         code=code,
         code_verifier=code_verifier,
+        device_id=device_id,
         redirect_uri=redirect_uri,
         refresh_token=refresh_token,
     )

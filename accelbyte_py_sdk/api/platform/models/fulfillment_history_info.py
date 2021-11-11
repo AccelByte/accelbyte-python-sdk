@@ -199,41 +199,41 @@ class FulfillmentHistoryInfo(Model):
     @classmethod
     def create(
         cls,
+        created_at: str,
         id_: str,
         namespace: str,
-        user_id: str,
         status: str,
-        created_at: str,
         updated_at: str,
-        order_no: Optional[str] = None,
+        user_id: str,
         code: Optional[str] = None,
-        fulfill_items: Optional[List[FulfillmentItem]] = None,
-        granted_item_ids: Optional[List[str]] = None,
-        entitlement_summaries: Optional[List[EntitlementSummary]] = None,
         credit_summaries: Optional[List[CreditSummary]] = None,
+        entitlement_summaries: Optional[List[EntitlementSummary]] = None,
+        fulfill_items: Optional[List[FulfillmentItem]] = None,
         fulfillment_error: Optional[FulfillmentError] = None,
+        granted_item_ids: Optional[List[str]] = None,
+        order_no: Optional[str] = None,
     ) -> FulfillmentHistoryInfo:
         instance = cls()
+        instance.created_at = created_at
         instance.id_ = id_
         instance.namespace = namespace
-        instance.user_id = user_id
         instance.status = status
-        instance.created_at = created_at
         instance.updated_at = updated_at
-        if order_no is not None:
-            instance.order_no = order_no
+        instance.user_id = user_id
         if code is not None:
             instance.code = code
-        if fulfill_items is not None:
-            instance.fulfill_items = fulfill_items
-        if granted_item_ids is not None:
-            instance.granted_item_ids = granted_item_ids
-        if entitlement_summaries is not None:
-            instance.entitlement_summaries = entitlement_summaries
         if credit_summaries is not None:
             instance.credit_summaries = credit_summaries
+        if entitlement_summaries is not None:
+            instance.entitlement_summaries = entitlement_summaries
+        if fulfill_items is not None:
+            instance.fulfill_items = fulfill_items
         if fulfillment_error is not None:
             instance.fulfillment_error = fulfillment_error
+        if granted_item_ids is not None:
+            instance.granted_item_ids = granted_item_ids
+        if order_no is not None:
+            instance.order_no = order_no
         return instance
 
     @classmethod

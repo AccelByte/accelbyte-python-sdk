@@ -139,32 +139,32 @@ class GameProfileRequest(Model):
     @classmethod
     def create(
         cls,
-        profile_name: Optional[str] = None,
-        avatar_url: Optional[str] = None,
-        label: Optional[str] = None,
-        tags: Optional[List[str]] = None,
-        statistics: Optional[List[str]] = None,
         achievements: Optional[List[str]] = None,
-        inventories: Optional[List[str]] = None,
         attributes: Optional[Dict[str, str]] = None,
+        avatar_url: Optional[str] = None,
+        inventories: Optional[List[str]] = None,
+        label: Optional[str] = None,
+        profile_name: Optional[str] = None,
+        statistics: Optional[List[str]] = None,
+        tags: Optional[List[str]] = None,
     ) -> GameProfileRequest:
         instance = cls()
-        if profile_name is not None:
-            instance.profile_name = profile_name
-        if avatar_url is not None:
-            instance.avatar_url = avatar_url
-        if label is not None:
-            instance.label = label
-        if tags is not None:
-            instance.tags = tags
-        if statistics is not None:
-            instance.statistics = statistics
         if achievements is not None:
             instance.achievements = achievements
-        if inventories is not None:
-            instance.inventories = inventories
         if attributes is not None:
             instance.attributes = attributes
+        if avatar_url is not None:
+            instance.avatar_url = avatar_url
+        if inventories is not None:
+            instance.inventories = inventories
+        if label is not None:
+            instance.label = label
+        if profile_name is not None:
+            instance.profile_name = profile_name
+        if statistics is not None:
+            instance.statistics = statistics
+        if tags is not None:
+            instance.tags = tags
         return instance
 
     @classmethod

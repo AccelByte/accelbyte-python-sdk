@@ -73,12 +73,12 @@ class ItemAcquireResult(Model):
     @classmethod
     def create(
         cls,
-        success: bool,
         max_count: int,
+        success: bool,
     ) -> ItemAcquireResult:
         instance = cls()
-        instance.success = success
         instance.max_count = max_count
+        instance.success = success
         return instance
 
     @classmethod

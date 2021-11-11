@@ -117,24 +117,24 @@ class PlatformSubscribeRequest(Model):
     @classmethod
     def create(
         cls,
-        item_id: str,
         grant_days: int,
-        source: Optional[str] = None,
+        item_id: str,
+        language: Optional[str] = None,
         reason: Optional[str] = None,
         region: Optional[str] = None,
-        language: Optional[str] = None,
+        source: Optional[str] = None,
     ) -> PlatformSubscribeRequest:
         instance = cls()
-        instance.item_id = item_id
         instance.grant_days = grant_days
-        if source is not None:
-            instance.source = source
+        instance.item_id = item_id
+        if language is not None:
+            instance.language = language
         if reason is not None:
             instance.reason = reason
         if region is not None:
             instance.region = region
-        if language is not None:
-            instance.language = language
+        if source is not None:
+            instance.source = source
         return instance
 
     @classmethod

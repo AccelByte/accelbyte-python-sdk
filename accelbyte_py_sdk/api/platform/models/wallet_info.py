@@ -150,26 +150,26 @@ class WalletInfo(Model):
     @classmethod
     def create(
         cls,
-        id_: str,
-        namespace: str,
-        user_id: str,
-        currency_code: str,
-        currency_symbol: str,
         balance: int,
         created_at: str,
-        updated_at: str,
+        currency_code: str,
+        currency_symbol: str,
+        id_: str,
+        namespace: str,
         status: str,
+        updated_at: str,
+        user_id: str,
     ) -> WalletInfo:
         instance = cls()
-        instance.id_ = id_
-        instance.namespace = namespace
-        instance.user_id = user_id
-        instance.currency_code = currency_code
-        instance.currency_symbol = currency_symbol
         instance.balance = balance
         instance.created_at = created_at
-        instance.updated_at = updated_at
+        instance.currency_code = currency_code
+        instance.currency_symbol = currency_symbol
+        instance.id_ = id_
+        instance.namespace = namespace
         instance.status = status
+        instance.updated_at = updated_at
+        instance.user_id = user_id
         return instance
 
     @classmethod

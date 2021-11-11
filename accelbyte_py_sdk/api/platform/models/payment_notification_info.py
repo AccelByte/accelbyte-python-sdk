@@ -172,27 +172,27 @@ class PaymentNotificationInfo(Model):
     @classmethod
     def create(
         cls,
-        id_: str,
-        payment_order_no: str,
-        namespace: str,
-        notification_type: str,
-        notification: Dict[str, Any],
-        status: str,
-        notification_source: str,
         created_at: str,
+        id_: str,
+        namespace: str,
+        notification: Dict[str, Any],
+        notification_source: str,
+        notification_type: str,
+        payment_order_no: str,
+        status: str,
         updated_at: str,
         external_id: Optional[str] = None,
         status_reason: Optional[str] = None,
     ) -> PaymentNotificationInfo:
         instance = cls()
-        instance.id_ = id_
-        instance.payment_order_no = payment_order_no
-        instance.namespace = namespace
-        instance.notification_type = notification_type
-        instance.notification = notification
-        instance.status = status
-        instance.notification_source = notification_source
         instance.created_at = created_at
+        instance.id_ = id_
+        instance.namespace = namespace
+        instance.notification = notification
+        instance.notification_source = notification_source
+        instance.notification_type = notification_type
+        instance.payment_order_no = payment_order_no
+        instance.status = status
         instance.updated_at = updated_at
         if external_id is not None:
             instance.external_id = external_id

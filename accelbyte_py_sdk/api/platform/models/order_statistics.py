@@ -73,12 +73,12 @@ class OrderStatistics(Model):
     @classmethod
     def create(
         cls,
-        total: int,
         status_count: Dict[str, int],
+        total: int,
     ) -> OrderStatistics:
         instance = cls()
-        instance.total = total
         instance.status_count = status_count
+        instance.total = total
         return instance
 
     @classmethod

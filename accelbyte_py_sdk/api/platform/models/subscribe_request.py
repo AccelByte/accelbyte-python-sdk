@@ -117,24 +117,24 @@ class SubscribeRequest(Model):
     @classmethod
     def create(
         cls,
-        item_id: str,
         currency_code: str,
-        source: Optional[str] = None,
-        region: Optional[str] = None,
+        item_id: str,
         language: Optional[str] = None,
+        region: Optional[str] = None,
         return_url: Optional[str] = None,
+        source: Optional[str] = None,
     ) -> SubscribeRequest:
         instance = cls()
-        instance.item_id = item_id
         instance.currency_code = currency_code
-        if source is not None:
-            instance.source = source
-        if region is not None:
-            instance.region = region
+        instance.item_id = item_id
         if language is not None:
             instance.language = language
+        if region is not None:
+            instance.region = region
         if return_url is not None:
             instance.return_url = return_url
+        if source is not None:
+            instance.source = source
         return instance
 
     @classmethod

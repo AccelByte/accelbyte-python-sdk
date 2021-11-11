@@ -205,50 +205,50 @@ class UserProfilePrivateInfo(Model):
     @classmethod
     def create(
         cls,
-        user_id: Optional[str] = None,
-        namespace: Optional[str] = None,
-        first_name: Optional[str] = None,
-        last_name: Optional[str] = None,
+        avatar_large_url: Optional[str] = None,
         avatar_small_url: Optional[str] = None,
         avatar_url: Optional[str] = None,
-        avatar_large_url: Optional[str] = None,
-        status: Optional[str] = None,
-        language: Optional[str] = None,
-        time_zone: Optional[str] = None,
-        date_of_birth: Optional[str] = None,
         custom_attributes: Optional[Dict[str, Any]] = None,
-        zip_code: Optional[str] = None,
+        date_of_birth: Optional[str] = None,
+        first_name: Optional[str] = None,
+        language: Optional[str] = None,
+        last_name: Optional[str] = None,
+        namespace: Optional[str] = None,
         private_custom_attributes: Optional[Dict[str, Any]] = None,
+        status: Optional[str] = None,
+        time_zone: Optional[str] = None,
+        user_id: Optional[str] = None,
+        zip_code: Optional[str] = None,
     ) -> UserProfilePrivateInfo:
         instance = cls()
-        if user_id is not None:
-            instance.user_id = user_id
-        if namespace is not None:
-            instance.namespace = namespace
-        if first_name is not None:
-            instance.first_name = first_name
-        if last_name is not None:
-            instance.last_name = last_name
+        if avatar_large_url is not None:
+            instance.avatar_large_url = avatar_large_url
         if avatar_small_url is not None:
             instance.avatar_small_url = avatar_small_url
         if avatar_url is not None:
             instance.avatar_url = avatar_url
-        if avatar_large_url is not None:
-            instance.avatar_large_url = avatar_large_url
-        if status is not None:
-            instance.status = status
-        if language is not None:
-            instance.language = language
-        if time_zone is not None:
-            instance.time_zone = time_zone
-        if date_of_birth is not None:
-            instance.date_of_birth = date_of_birth
         if custom_attributes is not None:
             instance.custom_attributes = custom_attributes
-        if zip_code is not None:
-            instance.zip_code = zip_code
+        if date_of_birth is not None:
+            instance.date_of_birth = date_of_birth
+        if first_name is not None:
+            instance.first_name = first_name
+        if language is not None:
+            instance.language = language
+        if last_name is not None:
+            instance.last_name = last_name
+        if namespace is not None:
+            instance.namespace = namespace
         if private_custom_attributes is not None:
             instance.private_custom_attributes = private_custom_attributes
+        if status is not None:
+            instance.status = status
+        if time_zone is not None:
+            instance.time_zone = time_zone
+        if user_id is not None:
+            instance.user_id = user_id
+        if zip_code is not None:
+            instance.zip_code = zip_code
         return instance
 
     @classmethod

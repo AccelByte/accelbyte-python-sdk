@@ -132,14 +132,14 @@ def update_group_configuration_admin_v1(body: ModelsUpdateGroupConfigurationRequ
 
 
 @same_doc_as(UpdateGroupConfigurationGlobalRuleAdminV1)
-def update_group_configuration_global_rule_admin_v1(body: ModelsUpdateGroupConfigurationGlobalRulesRequestV1, allowed_action: str, configuration_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def update_group_configuration_global_rule_admin_v1(allowed_action: str, body: ModelsUpdateGroupConfigurationGlobalRulesRequestV1, configuration_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = UpdateGroupConfigurationGlobalRuleAdminV1.create(
-        body=body,
         allowed_action=allowed_action,
+        body=body,
         configuration_code=configuration_code,
         namespace=namespace,
     )

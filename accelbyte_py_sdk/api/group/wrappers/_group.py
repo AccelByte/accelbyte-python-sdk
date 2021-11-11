@@ -184,14 +184,14 @@ def update_group_custom_rule_public_v1(body: ModelsUpdateGroupCustomRuleRequestV
 
 
 @same_doc_as(UpdateGroupPredefinedRulePublicV1)
-def update_group_predefined_rule_public_v1(body: ModelsUpdateGroupPredefinedRuleRequestV1, allowed_action: str, group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def update_group_predefined_rule_public_v1(allowed_action: str, body: ModelsUpdateGroupPredefinedRuleRequestV1, group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = UpdateGroupPredefinedRulePublicV1.create(
-        body=body,
         allowed_action=allowed_action,
+        body=body,
         group_id=group_id,
         namespace=namespace,
     )

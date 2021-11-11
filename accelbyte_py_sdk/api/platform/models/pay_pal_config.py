@@ -97,18 +97,18 @@ class PayPalConfig(Model):
         cls,
         client_id: Optional[str] = None,
         client_secret: Optional[str] = None,
-        web_hook_id: Optional[str] = None,
         return_url: Optional[str] = None,
+        web_hook_id: Optional[str] = None,
     ) -> PayPalConfig:
         instance = cls()
         if client_id is not None:
             instance.client_id = client_id
         if client_secret is not None:
             instance.client_secret = client_secret
-        if web_hook_id is not None:
-            instance.web_hook_id = web_hook_id
         if return_url is not None:
             instance.return_url = return_url
+        if web_hook_id is not None:
+            instance.web_hook_id = web_hook_id
         return instance
 
     @classmethod

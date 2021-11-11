@@ -187,41 +187,41 @@ class CampaignUpdate(Model):
         cls,
         name: str,
         description: Optional[str] = None,
-        status: Optional[str] = None,
-        tags: Optional[List[str]] = None,
+        items: Optional[List[RedeemableItem]] = None,
+        max_redeem_count_per_campaign_per_user: Optional[int] = None,
         max_redeem_count_per_code: Optional[int] = None,
         max_redeem_count_per_code_per_user: Optional[int] = None,
-        max_redeem_count_per_campaign_per_user: Optional[int] = None,
         max_sale_count: Optional[int] = None,
-        redeem_start: Optional[str] = None,
         redeem_end: Optional[str] = None,
+        redeem_start: Optional[str] = None,
         redeem_type: Optional[str] = None,
-        items: Optional[List[RedeemableItem]] = None,
+        status: Optional[str] = None,
+        tags: Optional[List[str]] = None,
     ) -> CampaignUpdate:
         instance = cls()
         instance.name = name
         if description is not None:
             instance.description = description
-        if status is not None:
-            instance.status = status
-        if tags is not None:
-            instance.tags = tags
+        if items is not None:
+            instance.items = items
+        if max_redeem_count_per_campaign_per_user is not None:
+            instance.max_redeem_count_per_campaign_per_user = max_redeem_count_per_campaign_per_user
         if max_redeem_count_per_code is not None:
             instance.max_redeem_count_per_code = max_redeem_count_per_code
         if max_redeem_count_per_code_per_user is not None:
             instance.max_redeem_count_per_code_per_user = max_redeem_count_per_code_per_user
-        if max_redeem_count_per_campaign_per_user is not None:
-            instance.max_redeem_count_per_campaign_per_user = max_redeem_count_per_campaign_per_user
         if max_sale_count is not None:
             instance.max_sale_count = max_sale_count
-        if redeem_start is not None:
-            instance.redeem_start = redeem_start
         if redeem_end is not None:
             instance.redeem_end = redeem_end
+        if redeem_start is not None:
+            instance.redeem_start = redeem_start
         if redeem_type is not None:
             instance.redeem_type = redeem_type
-        if items is not None:
-            instance.items = items
+        if status is not None:
+            instance.status = status
+        if tags is not None:
+            instance.tags = tags
         return instance
 
     @classmethod

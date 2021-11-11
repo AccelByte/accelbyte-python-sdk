@@ -108,19 +108,19 @@ class PaymentUrlCreate(Model):
         cls,
         payment_order_no: str,
         payment_provider: str,
-        zip_code: Optional[str] = None,
         return_url: Optional[str] = None,
         ui: Optional[str] = None,
+        zip_code: Optional[str] = None,
     ) -> PaymentUrlCreate:
         instance = cls()
         instance.payment_order_no = payment_order_no
         instance.payment_provider = payment_provider
-        if zip_code is not None:
-            instance.zip_code = zip_code
         if return_url is not None:
             instance.return_url = return_url
         if ui is not None:
             instance.ui = ui
+        if zip_code is not None:
+            instance.zip_code = zip_code
         return instance
 
     @classmethod

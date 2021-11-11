@@ -172,32 +172,32 @@ class WalletTransactionInfo(Model):
     @classmethod
     def create(
         cls,
-        wallet_id: str,
         amount: int,
-        namespace: str,
-        user_id: str,
-        operator: str,
-        wallet_action: str,
-        currency_code: str,
         created_at: str,
+        currency_code: str,
+        namespace: str,
+        operator: str,
         updated_at: str,
-        reason: Optional[str] = None,
+        user_id: str,
+        wallet_action: str,
+        wallet_id: str,
         balance_source: Optional[str] = None,
+        reason: Optional[str] = None,
     ) -> WalletTransactionInfo:
         instance = cls()
-        instance.wallet_id = wallet_id
         instance.amount = amount
-        instance.namespace = namespace
-        instance.user_id = user_id
-        instance.operator = operator
-        instance.wallet_action = wallet_action
-        instance.currency_code = currency_code
         instance.created_at = created_at
+        instance.currency_code = currency_code
+        instance.namespace = namespace
+        instance.operator = operator
         instance.updated_at = updated_at
-        if reason is not None:
-            instance.reason = reason
+        instance.user_id = user_id
+        instance.wallet_action = wallet_action
+        instance.wallet_id = wallet_id
         if balance_source is not None:
             instance.balance_source = balance_source
+        if reason is not None:
+            instance.reason = reason
         return instance
 
     @classmethod

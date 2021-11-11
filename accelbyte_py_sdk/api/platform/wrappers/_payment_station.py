@@ -169,7 +169,7 @@ def public_get_unpaid_payment_order(payment_order_no: str, namespace: Optional[s
 
 
 @same_doc_as(PublicNormalizePaymentReturnUrl)
-def public_normalize_payment_return_url(order_no: str, payment_order_no: str, payment_provider: str, return_url: str, payer_id: Optional[str] = None, foreinginvoice: Optional[str] = None, invoice_id: Optional[str] = None, payload: Optional[str] = None, result_code: Optional[str] = None, status: Optional[str] = None, token: Optional[str] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_normalize_payment_return_url(order_no: str, payment_order_no: str, payment_provider: str, return_url: str, foreinginvoice: Optional[str] = None, invoice_id: Optional[str] = None, payer_id: Optional[str] = None, payload: Optional[str] = None, result_code: Optional[str] = None, status: Optional[str] = None, token: Optional[str] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -179,9 +179,9 @@ def public_normalize_payment_return_url(order_no: str, payment_order_no: str, pa
         payment_order_no=payment_order_no,
         payment_provider=payment_provider,
         return_url=return_url,
-        payer_id=payer_id,
         foreinginvoice=foreinginvoice,
         invoice_id=invoice_id,
+        payer_id=payer_id,
         payload=payload,
         result_code=result_code,
         status=status,

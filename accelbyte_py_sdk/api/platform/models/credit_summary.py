@@ -95,16 +95,16 @@ class CreditSummary(Model):
     @classmethod
     def create(
         cls,
-        wallet_id: str,
+        amount: int,
         namespace: str,
         user_id: str,
-        amount: int,
+        wallet_id: str,
     ) -> CreditSummary:
         instance = cls()
-        instance.wallet_id = wallet_id
+        instance.amount = amount
         instance.namespace = namespace
         instance.user_id = user_id
-        instance.amount = amount
+        instance.wallet_id = wallet_id
         return instance
 
     @classmethod

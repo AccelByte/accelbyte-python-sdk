@@ -95,20 +95,20 @@ class XsollaPaywallConfigRequest(Model):
     @classmethod
     def create(
         cls,
-        theme: Optional[str] = None,
-        size: Optional[str] = None,
         device: Optional[str] = None,
         show_close_button: Optional[bool] = None,
+        size: Optional[str] = None,
+        theme: Optional[str] = None,
     ) -> XsollaPaywallConfigRequest:
         instance = cls()
-        if theme is not None:
-            instance.theme = theme
-        if size is not None:
-            instance.size = size
         if device is not None:
             instance.device = device
         if show_close_button is not None:
             instance.show_close_button = show_close_button
+        if size is not None:
+            instance.size = size
+        if theme is not None:
+            instance.theme = theme
         return instance
 
     @classmethod

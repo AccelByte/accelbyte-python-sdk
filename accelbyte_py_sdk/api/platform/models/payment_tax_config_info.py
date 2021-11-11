@@ -95,18 +95,18 @@ class PaymentTaxConfigInfo(Model):
     @classmethod
     def create(
         cls,
-        tax_jar_enabled: Optional[bool] = None,
-        tax_jar_api_token: Optional[str] = None,
         sandbox_tax_jar_api_token: Optional[str] = None,
+        tax_jar_api_token: Optional[str] = None,
+        tax_jar_enabled: Optional[bool] = None,
         tax_jar_product_codes_mapping: Optional[Dict[str, str]] = None,
     ) -> PaymentTaxConfigInfo:
         instance = cls()
-        if tax_jar_enabled is not None:
-            instance.tax_jar_enabled = tax_jar_enabled
-        if tax_jar_api_token is not None:
-            instance.tax_jar_api_token = tax_jar_api_token
         if sandbox_tax_jar_api_token is not None:
             instance.sandbox_tax_jar_api_token = sandbox_tax_jar_api_token
+        if tax_jar_api_token is not None:
+            instance.tax_jar_api_token = tax_jar_api_token
+        if tax_jar_enabled is not None:
+            instance.tax_jar_enabled = tax_jar_enabled
         if tax_jar_product_codes_mapping is not None:
             instance.tax_jar_product_codes_mapping = tax_jar_product_codes_mapping
         return instance

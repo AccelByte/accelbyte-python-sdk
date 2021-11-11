@@ -117,18 +117,18 @@ class BasicCategoryInfo(Model):
     @classmethod
     def create(
         cls,
-        namespace: str,
-        parent_category_path: str,
         category_path: str,
         created_at: str,
+        namespace: str,
+        parent_category_path: str,
         updated_at: str,
         root: Optional[bool] = None,
     ) -> BasicCategoryInfo:
         instance = cls()
-        instance.namespace = namespace
-        instance.parent_category_path = parent_category_path
         instance.category_path = category_path
         instance.created_at = created_at
+        instance.namespace = namespace
+        instance.parent_category_path = parent_category_path
         instance.updated_at = updated_at
         if root is not None:
             instance.root = root

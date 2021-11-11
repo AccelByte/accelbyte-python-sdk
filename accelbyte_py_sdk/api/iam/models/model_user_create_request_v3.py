@@ -147,8 +147,8 @@ class ModelUserCreateRequestV3(Model):
         display_name: str,
         email_address: str,
         password: str,
-        password_md5_sum: Optional[str] = None,
         accepted_policies: Optional[List[LegalAcceptedPoliciesRequest]] = None,
+        password_md5_sum: Optional[str] = None,
     ) -> ModelUserCreateRequestV3:
         instance = cls()
         instance.auth_type = auth_type
@@ -157,10 +157,10 @@ class ModelUserCreateRequestV3(Model):
         instance.display_name = display_name
         instance.email_address = email_address
         instance.password = password
-        if password_md5_sum is not None:
-            instance.password_md5_sum = password_md5_sum
         if accepted_policies is not None:
             instance.accepted_policies = accepted_policies
+        if password_md5_sum is not None:
+            instance.password_md5_sum = password_md5_sum
         return instance
 
     @classmethod

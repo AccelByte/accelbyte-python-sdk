@@ -96,19 +96,19 @@ class TaxResult(Model):
     def create(
         cls,
         enable_tax: Optional[bool] = None,
-        tax: Optional[int] = None,
         formatted_tax: Optional[str] = None,
         state: Optional[str] = None,
+        tax: Optional[int] = None,
     ) -> TaxResult:
         instance = cls()
         if enable_tax is not None:
             instance.enable_tax = enable_tax
-        if tax is not None:
-            instance.tax = tax
         if formatted_tax is not None:
             instance.formatted_tax = formatted_tax
         if state is not None:
             instance.state = state
+        if tax is not None:
+            instance.tax = tax
         return instance
 
     @classmethod

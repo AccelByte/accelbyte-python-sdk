@@ -73,14 +73,14 @@ class AppLocalization(Model):
     @classmethod
     def create(
         cls,
-        slogan: Optional[str] = None,
         announcement: Optional[str] = None,
+        slogan: Optional[str] = None,
     ) -> AppLocalization:
         instance = cls()
-        if slogan is not None:
-            instance.slogan = slogan
         if announcement is not None:
             instance.announcement = announcement
+        if slogan is not None:
+            instance.slogan = slogan
         return instance
 
     @classmethod

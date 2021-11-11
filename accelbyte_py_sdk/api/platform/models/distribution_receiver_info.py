@@ -95,15 +95,15 @@ class DistributionReceiverInfo(Model):
     @classmethod
     def create(
         cls,
-        user_id: str,
-        namespace: str,
         ext_user_id: str,
+        namespace: str,
+        user_id: str,
         attributes: Optional[Dict[str, str]] = None,
     ) -> DistributionReceiverInfo:
         instance = cls()
-        instance.user_id = user_id
-        instance.namespace = namespace
         instance.ext_user_id = ext_user_id
+        instance.namespace = namespace
+        instance.user_id = user_id
         if attributes is not None:
             instance.attributes = attributes
         return instance

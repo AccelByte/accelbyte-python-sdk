@@ -133,8 +133,8 @@ class GoogleIAPReceipt(Model):
         product_id: str,
         purchase_time: int,
         purchase_token: str,
-        region: Optional[str] = None,
         language: Optional[str] = None,
+        region: Optional[str] = None,
     ) -> GoogleIAPReceipt:
         instance = cls()
         instance.order_id = order_id
@@ -142,10 +142,10 @@ class GoogleIAPReceipt(Model):
         instance.product_id = product_id
         instance.purchase_time = purchase_time
         instance.purchase_token = purchase_token
-        if region is not None:
-            instance.region = region
         if language is not None:
             instance.language = language
+        if region is not None:
+            instance.region = region
         return instance
 
     @classmethod

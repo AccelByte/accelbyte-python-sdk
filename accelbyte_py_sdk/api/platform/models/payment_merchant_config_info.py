@@ -236,41 +236,39 @@ class PaymentMerchantConfigInfo(Model):
     @classmethod
     def create(
         cls,
-        id_: str,
         created_at: str,
+        id_: str,
         updated_at: str,
-        ali_pay_config: Optional[AliPayConfig] = None,
-        ali_pay_sandbox_config: Optional[AliPayConfig] = None,
-        wx_pay_config: Optional[WxPayConfigInfo] = None,
-        xsolla_config: Optional[XsollaConfig] = None,
-        xsolla_paywall_config: Optional[XsollaPaywallConfig] = None,
         adyen_config: Optional[AdyenConfig] = None,
         adyen_sandbox_config: Optional[AdyenConfig] = None,
+        ali_pay_config: Optional[AliPayConfig] = None,
+        ali_pay_sandbox_config: Optional[AliPayConfig] = None,
+        checkout_config: Optional[CheckoutConfig] = None,
+        checkout_sandbox_config: Optional[CheckoutConfig] = None,
         pay_pal_config: Optional[PayPalConfig] = None,
         pay_pal_sandbox_config: Optional[PayPalConfig] = None,
         stripe_config: Optional[StripeConfig] = None,
         stripe_sandbox_config: Optional[StripeConfig] = None,
-        checkout_config: Optional[CheckoutConfig] = None,
-        checkout_sandbox_config: Optional[CheckoutConfig] = None,
+        wx_pay_config: Optional[WxPayConfigInfo] = None,
+        xsolla_config: Optional[XsollaConfig] = None,
+        xsolla_paywall_config: Optional[XsollaPaywallConfig] = None,
     ) -> PaymentMerchantConfigInfo:
         instance = cls()
-        instance.id_ = id_
         instance.created_at = created_at
+        instance.id_ = id_
         instance.updated_at = updated_at
-        if ali_pay_config is not None:
-            instance.ali_pay_config = ali_pay_config
-        if ali_pay_sandbox_config is not None:
-            instance.ali_pay_sandbox_config = ali_pay_sandbox_config
-        if wx_pay_config is not None:
-            instance.wx_pay_config = wx_pay_config
-        if xsolla_config is not None:
-            instance.xsolla_config = xsolla_config
-        if xsolla_paywall_config is not None:
-            instance.xsolla_paywall_config = xsolla_paywall_config
         if adyen_config is not None:
             instance.adyen_config = adyen_config
         if adyen_sandbox_config is not None:
             instance.adyen_sandbox_config = adyen_sandbox_config
+        if ali_pay_config is not None:
+            instance.ali_pay_config = ali_pay_config
+        if ali_pay_sandbox_config is not None:
+            instance.ali_pay_sandbox_config = ali_pay_sandbox_config
+        if checkout_config is not None:
+            instance.checkout_config = checkout_config
+        if checkout_sandbox_config is not None:
+            instance.checkout_sandbox_config = checkout_sandbox_config
         if pay_pal_config is not None:
             instance.pay_pal_config = pay_pal_config
         if pay_pal_sandbox_config is not None:
@@ -279,10 +277,12 @@ class PaymentMerchantConfigInfo(Model):
             instance.stripe_config = stripe_config
         if stripe_sandbox_config is not None:
             instance.stripe_sandbox_config = stripe_sandbox_config
-        if checkout_config is not None:
-            instance.checkout_config = checkout_config
-        if checkout_sandbox_config is not None:
-            instance.checkout_sandbox_config = checkout_sandbox_config
+        if wx_pay_config is not None:
+            instance.wx_pay_config = wx_pay_config
+        if xsolla_config is not None:
+            instance.xsolla_config = xsolla_config
+        if xsolla_paywall_config is not None:
+            instance.xsolla_paywall_config = xsolla_paywall_config
         return instance
 
     @classmethod

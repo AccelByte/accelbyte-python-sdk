@@ -132,18 +132,18 @@ class ModelUserLoginHistoryResponse(Model):
         city: str,
         country: str,
         device_id: str,
+        device_name: str,
         state: str,
         timestamp: int,
-        device_name: str,
     ) -> ModelUserLoginHistoryResponse:
         instance = cls()
         instance.application_name = application_name
         instance.city = city
         instance.country = country
         instance.device_id = device_id
+        instance.device_name = device_name
         instance.state = state
         instance.timestamp = timestamp
-        instance.device_name = device_name
         return instance
 
     @classmethod

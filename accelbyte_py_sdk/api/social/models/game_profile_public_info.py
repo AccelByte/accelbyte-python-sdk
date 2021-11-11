@@ -95,20 +95,20 @@ class GameProfilePublicInfo(Model):
     @classmethod
     def create(
         cls,
-        profile_id: Optional[str] = None,
-        namespace: Optional[str] = None,
-        profile_name: Optional[str] = None,
         avatar_url: Optional[str] = None,
+        namespace: Optional[str] = None,
+        profile_id: Optional[str] = None,
+        profile_name: Optional[str] = None,
     ) -> GameProfilePublicInfo:
         instance = cls()
-        if profile_id is not None:
-            instance.profile_id = profile_id
-        if namespace is not None:
-            instance.namespace = namespace
-        if profile_name is not None:
-            instance.profile_name = profile_name
         if avatar_url is not None:
             instance.avatar_url = avatar_url
+        if namespace is not None:
+            instance.namespace = namespace
+        if profile_id is not None:
+            instance.profile_id = profile_id
+        if profile_name is not None:
+            instance.profile_name = profile_name
         return instance
 
     @classmethod

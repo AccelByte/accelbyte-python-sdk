@@ -163,30 +163,30 @@ class PaymentProviderConfigInfo(Model):
         cls,
         id_: str,
         namespace: str,
-        region: str,
         payment_merchant_config_id: str,
+        region: str,
         aggregate: Optional[str] = None,
-        specials: Optional[List[str]] = None,
-        tax_jar_enabled: Optional[bool] = None,
-        tax_jar_api_token: Optional[str] = None,
         sandbox_tax_jar_api_token: Optional[str] = None,
+        specials: Optional[List[str]] = None,
+        tax_jar_api_token: Optional[str] = None,
+        tax_jar_enabled: Optional[bool] = None,
         use_global_tax_jar_api_token: Optional[bool] = None,
     ) -> PaymentProviderConfigInfo:
         instance = cls()
         instance.id_ = id_
         instance.namespace = namespace
-        instance.region = region
         instance.payment_merchant_config_id = payment_merchant_config_id
+        instance.region = region
         if aggregate is not None:
             instance.aggregate = aggregate
-        if specials is not None:
-            instance.specials = specials
-        if tax_jar_enabled is not None:
-            instance.tax_jar_enabled = tax_jar_enabled
-        if tax_jar_api_token is not None:
-            instance.tax_jar_api_token = tax_jar_api_token
         if sandbox_tax_jar_api_token is not None:
             instance.sandbox_tax_jar_api_token = sandbox_tax_jar_api_token
+        if specials is not None:
+            instance.specials = specials
+        if tax_jar_api_token is not None:
+            instance.tax_jar_api_token = tax_jar_api_token
+        if tax_jar_enabled is not None:
+            instance.tax_jar_enabled = tax_jar_enabled
         if use_global_tax_jar_api_token is not None:
             instance.use_global_tax_jar_api_token = use_global_tax_jar_api_token
         return instance

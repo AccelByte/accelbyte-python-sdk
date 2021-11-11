@@ -163,33 +163,33 @@ class RewardInfo(Model):
     @classmethod
     def create(
         cls,
-        reward_id: str,
-        namespace: str,
         event_topic: str,
-        reward_code: Optional[str] = None,
+        namespace: str,
+        reward_id: str,
+        created_at: Optional[str] = None,
         description: Optional[str] = None,
-        reward_conditions: Optional[List[RewardCondition]] = None,
         max_awarded: Optional[int] = None,
         max_awarded_per_user: Optional[int] = None,
-        created_at: Optional[str] = None,
+        reward_code: Optional[str] = None,
+        reward_conditions: Optional[List[RewardCondition]] = None,
         updated_at: Optional[str] = None,
     ) -> RewardInfo:
         instance = cls()
-        instance.reward_id = reward_id
-        instance.namespace = namespace
         instance.event_topic = event_topic
-        if reward_code is not None:
-            instance.reward_code = reward_code
+        instance.namespace = namespace
+        instance.reward_id = reward_id
+        if created_at is not None:
+            instance.created_at = created_at
         if description is not None:
             instance.description = description
-        if reward_conditions is not None:
-            instance.reward_conditions = reward_conditions
         if max_awarded is not None:
             instance.max_awarded = max_awarded
         if max_awarded_per_user is not None:
             instance.max_awarded_per_user = max_awarded_per_user
-        if created_at is not None:
-            instance.created_at = created_at
+        if reward_code is not None:
+            instance.reward_code = reward_code
+        if reward_conditions is not None:
+            instance.reward_conditions = reward_conditions
         if updated_at is not None:
             instance.updated_at = updated_at
         return instance

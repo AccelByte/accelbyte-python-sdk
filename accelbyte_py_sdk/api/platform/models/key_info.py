@@ -161,26 +161,26 @@ class KeyInfo(Model):
     @classmethod
     def create(
         cls,
-        id_: str,
-        namespace: str,
-        key_group_id: str,
-        value: str,
-        status: str,
-        key_file: str,
         created_at: str,
+        id_: str,
+        key_file: str,
+        key_group_id: str,
+        namespace: str,
+        status: str,
         updated_at: str,
+        value: str,
         acquire_order_no: Optional[str] = None,
         acquire_user_id: Optional[str] = None,
     ) -> KeyInfo:
         instance = cls()
-        instance.id_ = id_
-        instance.namespace = namespace
-        instance.key_group_id = key_group_id
-        instance.value = value
-        instance.status = status
-        instance.key_file = key_file
         instance.created_at = created_at
+        instance.id_ = id_
+        instance.key_file = key_file
+        instance.key_group_id = key_group_id
+        instance.namespace = namespace
+        instance.status = status
         instance.updated_at = updated_at
+        instance.value = value
         if acquire_order_no is not None:
             instance.acquire_order_no = acquire_order_no
         if acquire_user_id is not None:

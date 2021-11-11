@@ -73,14 +73,14 @@ class Paging(Model):
     @classmethod
     def create(
         cls,
-        previous: Optional[str] = None,
         next_: Optional[str] = None,
+        previous: Optional[str] = None,
     ) -> Paging:
         instance = cls()
-        if previous is not None:
-            instance.previous = previous
         if next_ is not None:
             instance.next_ = next_
+        if previous is not None:
+            instance.previous = previous
         return instance
 
     @classmethod

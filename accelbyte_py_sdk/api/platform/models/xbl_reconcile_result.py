@@ -106,23 +106,23 @@ class XblReconcileResult(Model):
     @classmethod
     def create(
         cls,
-        transaction_id: Optional[str] = None,
-        xbox_product_id: Optional[str] = None,
+        iap_order_status: Optional[str] = None,
         item_id: Optional[str] = None,
         sku: Optional[str] = None,
-        iap_order_status: Optional[str] = None,
+        transaction_id: Optional[str] = None,
+        xbox_product_id: Optional[str] = None,
     ) -> XblReconcileResult:
         instance = cls()
-        if transaction_id is not None:
-            instance.transaction_id = transaction_id
-        if xbox_product_id is not None:
-            instance.xbox_product_id = xbox_product_id
+        if iap_order_status is not None:
+            instance.iap_order_status = iap_order_status
         if item_id is not None:
             instance.item_id = item_id
         if sku is not None:
             instance.sku = sku
-        if iap_order_status is not None:
-            instance.iap_order_status = iap_order_status
+        if transaction_id is not None:
+            instance.transaction_id = transaction_id
+        if xbox_product_id is not None:
+            instance.xbox_product_id = xbox_product_id
         return instance
 
     @classmethod

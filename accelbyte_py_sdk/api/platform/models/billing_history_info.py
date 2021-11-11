@@ -318,67 +318,67 @@ class BillingHistoryInfo(Model):
     @classmethod
     def create(
         cls,
-        recurring_order_no: str,
-        namespace: str,
-        user_id: str,
-        subscription_id: str,
-        item_id: str,
-        title: str,
         amount: int,
-        sandbox: bool,
-        currency: CurrencySummary,
-        payment_order_no: str,
-        status: str,
         created_at: str,
+        currency: CurrencySummary,
+        item_id: str,
+        namespace: str,
+        payment_order_no: str,
+        recurring_order_no: str,
+        sandbox: bool,
+        status: str,
+        subscription_id: str,
+        title: str,
         updated_at: str,
-        sku: Optional[str] = None,
-        description: Optional[str] = None,
-        total_tax: Optional[int] = None,
-        total_price: Optional[int] = None,
-        subtotal_price: Optional[int] = None,
+        user_id: str,
         billing_account: Optional[BillingAccount] = None,
-        status_reason: Optional[str] = None,
-        tx_end_time: Optional[str] = None,
-        ext_tx_id: Optional[str] = None,
         change_billing_account: Optional[bool] = None,
+        description: Optional[str] = None,
+        ext_tx_id: Optional[str] = None,
         retry_attempted: Optional[int] = None,
+        sku: Optional[str] = None,
+        status_reason: Optional[str] = None,
+        subtotal_price: Optional[int] = None,
+        total_price: Optional[int] = None,
+        total_tax: Optional[int] = None,
+        tx_end_time: Optional[str] = None,
     ) -> BillingHistoryInfo:
         instance = cls()
-        instance.recurring_order_no = recurring_order_no
-        instance.namespace = namespace
-        instance.user_id = user_id
-        instance.subscription_id = subscription_id
-        instance.item_id = item_id
-        instance.title = title
         instance.amount = amount
-        instance.sandbox = sandbox
-        instance.currency = currency
-        instance.payment_order_no = payment_order_no
-        instance.status = status
         instance.created_at = created_at
+        instance.currency = currency
+        instance.item_id = item_id
+        instance.namespace = namespace
+        instance.payment_order_no = payment_order_no
+        instance.recurring_order_no = recurring_order_no
+        instance.sandbox = sandbox
+        instance.status = status
+        instance.subscription_id = subscription_id
+        instance.title = title
         instance.updated_at = updated_at
-        if sku is not None:
-            instance.sku = sku
-        if description is not None:
-            instance.description = description
-        if total_tax is not None:
-            instance.total_tax = total_tax
-        if total_price is not None:
-            instance.total_price = total_price
-        if subtotal_price is not None:
-            instance.subtotal_price = subtotal_price
+        instance.user_id = user_id
         if billing_account is not None:
             instance.billing_account = billing_account
-        if status_reason is not None:
-            instance.status_reason = status_reason
-        if tx_end_time is not None:
-            instance.tx_end_time = tx_end_time
-        if ext_tx_id is not None:
-            instance.ext_tx_id = ext_tx_id
         if change_billing_account is not None:
             instance.change_billing_account = change_billing_account
+        if description is not None:
+            instance.description = description
+        if ext_tx_id is not None:
+            instance.ext_tx_id = ext_tx_id
         if retry_attempted is not None:
             instance.retry_attempted = retry_attempted
+        if sku is not None:
+            instance.sku = sku
+        if status_reason is not None:
+            instance.status_reason = status_reason
+        if subtotal_price is not None:
+            instance.subtotal_price = subtotal_price
+        if total_price is not None:
+            instance.total_price = total_price
+        if total_tax is not None:
+            instance.total_tax = total_tax
+        if tx_end_time is not None:
+            instance.tx_end_time = tx_end_time
         return instance
 
     @classmethod

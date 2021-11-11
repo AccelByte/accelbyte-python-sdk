@@ -183,40 +183,40 @@ class RegionDataItem(Model):
     @classmethod
     def create(
         cls,
-        price: int,
         currency_code: str,
-        currency_type: str,
         currency_namespace: str,
-        discount_percentage: Optional[int] = None,
+        currency_type: str,
+        price: int,
         discount_amount: Optional[int] = None,
-        discounted_price: Optional[int] = None,
-        trial_price: Optional[int] = None,
-        purchase_at: Optional[str] = None,
-        expire_at: Optional[str] = None,
-        discount_purchase_at: Optional[str] = None,
         discount_expire_at: Optional[str] = None,
+        discount_percentage: Optional[int] = None,
+        discount_purchase_at: Optional[str] = None,
+        discounted_price: Optional[int] = None,
+        expire_at: Optional[str] = None,
+        purchase_at: Optional[str] = None,
+        trial_price: Optional[int] = None,
     ) -> RegionDataItem:
         instance = cls()
-        instance.price = price
         instance.currency_code = currency_code
-        instance.currency_type = currency_type
         instance.currency_namespace = currency_namespace
-        if discount_percentage is not None:
-            instance.discount_percentage = discount_percentage
+        instance.currency_type = currency_type
+        instance.price = price
         if discount_amount is not None:
             instance.discount_amount = discount_amount
-        if discounted_price is not None:
-            instance.discounted_price = discounted_price
-        if trial_price is not None:
-            instance.trial_price = trial_price
-        if purchase_at is not None:
-            instance.purchase_at = purchase_at
-        if expire_at is not None:
-            instance.expire_at = expire_at
-        if discount_purchase_at is not None:
-            instance.discount_purchase_at = discount_purchase_at
         if discount_expire_at is not None:
             instance.discount_expire_at = discount_expire_at
+        if discount_percentage is not None:
+            instance.discount_percentage = discount_percentage
+        if discount_purchase_at is not None:
+            instance.discount_purchase_at = discount_purchase_at
+        if discounted_price is not None:
+            instance.discounted_price = discounted_price
+        if expire_at is not None:
+            instance.expire_at = expire_at
+        if purchase_at is not None:
+            instance.purchase_at = purchase_at
+        if trial_price is not None:
+            instance.trial_price = trial_price
         return instance
 
     @classmethod

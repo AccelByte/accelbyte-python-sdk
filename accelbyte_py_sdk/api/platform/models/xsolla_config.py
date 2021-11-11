@@ -106,23 +106,23 @@ class XsollaConfig(Model):
     @classmethod
     def create(
         cls,
+        api_key: Optional[str] = None,
+        flow_completion_url: Optional[str] = None,
         merchant_id: Optional[int] = None,
         project_id: Optional[int] = None,
         project_secret_key: Optional[str] = None,
-        api_key: Optional[str] = None,
-        flow_completion_url: Optional[str] = None,
     ) -> XsollaConfig:
         instance = cls()
+        if api_key is not None:
+            instance.api_key = api_key
+        if flow_completion_url is not None:
+            instance.flow_completion_url = flow_completion_url
         if merchant_id is not None:
             instance.merchant_id = merchant_id
         if project_id is not None:
             instance.project_id = project_id
         if project_secret_key is not None:
             instance.project_secret_key = project_secret_key
-        if api_key is not None:
-            instance.api_key = api_key
-        if flow_completion_url is not None:
-            instance.flow_completion_url = flow_completion_url
         return instance
 
     @classmethod

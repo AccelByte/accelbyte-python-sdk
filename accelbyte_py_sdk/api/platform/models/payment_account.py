@@ -85,13 +85,13 @@ class PaymentAccount(Model):
     def create(
         cls,
         id_: str,
-        type_: str,
         name: str,
+        type_: str,
     ) -> PaymentAccount:
         instance = cls()
         instance.id_ = id_
-        instance.type_ = type_
         instance.name = name
+        instance.type_ = type_
         return instance
 
     @classmethod

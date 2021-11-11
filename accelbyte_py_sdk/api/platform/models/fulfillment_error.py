@@ -84,15 +84,15 @@ class FulfillmentError(Model):
     @classmethod
     def create(
         cls,
-        http_status: Optional[int] = None,
         code: Optional[int] = None,
+        http_status: Optional[int] = None,
         message: Optional[str] = None,
     ) -> FulfillmentError:
         instance = cls()
-        if http_status is not None:
-            instance.http_status = http_status
         if code is not None:
             instance.code = code
+        if http_status is not None:
+            instance.http_status = http_status
         if message is not None:
             instance.message = message
         return instance

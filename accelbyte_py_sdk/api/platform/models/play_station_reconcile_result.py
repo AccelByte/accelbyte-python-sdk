@@ -106,23 +106,23 @@ class PlayStationReconcileResult(Model):
     @classmethod
     def create(
         cls,
-        transaction_id: Optional[str] = None,
-        psn_item_id: Optional[str] = None,
         item_id: Optional[str] = None,
+        psn_item_id: Optional[str] = None,
         sku: Optional[str] = None,
         status: Optional[str] = None,
+        transaction_id: Optional[str] = None,
     ) -> PlayStationReconcileResult:
         instance = cls()
-        if transaction_id is not None:
-            instance.transaction_id = transaction_id
-        if psn_item_id is not None:
-            instance.psn_item_id = psn_item_id
         if item_id is not None:
             instance.item_id = item_id
+        if psn_item_id is not None:
+            instance.psn_item_id = psn_item_id
         if sku is not None:
             instance.sku = sku
         if status is not None:
             instance.status = status
+        if transaction_id is not None:
+            instance.transaction_id = transaction_id
         return instance
 
     @classmethod

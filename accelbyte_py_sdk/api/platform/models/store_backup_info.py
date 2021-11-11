@@ -117,19 +117,19 @@ class StoreBackupInfo(Model):
     @classmethod
     def create(
         cls,
-        id_: str,
         auto_backup: bool,
+        created_at: str,
+        id_: str,
         name: str,
         store_id: str,
-        created_at: str,
         updated_at: str,
     ) -> StoreBackupInfo:
         instance = cls()
-        instance.id_ = id_
         instance.auto_backup = auto_backup
+        instance.created_at = created_at
+        instance.id_ = id_
         instance.name = name
         instance.store_id = store_id
-        instance.created_at = created_at
         instance.updated_at = updated_at
         return instance
 

@@ -117,26 +117,26 @@ class UserProfilePublicInfo(Model):
     @classmethod
     def create(
         cls,
-        user_id: Optional[str] = None,
-        namespace: Optional[str] = None,
-        time_zone: Optional[str] = None,
+        avatar_large_url: Optional[str] = None,
         avatar_small_url: Optional[str] = None,
         avatar_url: Optional[str] = None,
-        avatar_large_url: Optional[str] = None,
+        namespace: Optional[str] = None,
+        time_zone: Optional[str] = None,
+        user_id: Optional[str] = None,
     ) -> UserProfilePublicInfo:
         instance = cls()
-        if user_id is not None:
-            instance.user_id = user_id
-        if namespace is not None:
-            instance.namespace = namespace
-        if time_zone is not None:
-            instance.time_zone = time_zone
+        if avatar_large_url is not None:
+            instance.avatar_large_url = avatar_large_url
         if avatar_small_url is not None:
             instance.avatar_small_url = avatar_small_url
         if avatar_url is not None:
             instance.avatar_url = avatar_url
-        if avatar_large_url is not None:
-            instance.avatar_large_url = avatar_large_url
+        if namespace is not None:
+            instance.namespace = namespace
+        if time_zone is not None:
+            instance.time_zone = time_zone
+        if user_id is not None:
+            instance.user_id = user_id
         return instance
 
     @classmethod

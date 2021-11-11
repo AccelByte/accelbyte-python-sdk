@@ -129,27 +129,27 @@ class FulfillmentItem(Model):
     def create(
         cls,
         quantity: int,
-        store_id: Optional[str] = None,
+        extra_subscription_days: Optional[int] = None,
         item_id: Optional[str] = None,
+        item_name: Optional[str] = None,
         item_sku: Optional[str] = None,
         item_type: Optional[str] = None,
-        item_name: Optional[str] = None,
-        extra_subscription_days: Optional[int] = None,
+        store_id: Optional[str] = None,
     ) -> FulfillmentItem:
         instance = cls()
         instance.quantity = quantity
-        if store_id is not None:
-            instance.store_id = store_id
+        if extra_subscription_days is not None:
+            instance.extra_subscription_days = extra_subscription_days
         if item_id is not None:
             instance.item_id = item_id
+        if item_name is not None:
+            instance.item_name = item_name
         if item_sku is not None:
             instance.item_sku = item_sku
         if item_type is not None:
             instance.item_type = item_type
-        if item_name is not None:
-            instance.item_name = item_name
-        if extra_subscription_days is not None:
-            instance.extra_subscription_days = extra_subscription_days
+        if store_id is not None:
+            instance.store_id = store_id
         return instance
 
     @classmethod

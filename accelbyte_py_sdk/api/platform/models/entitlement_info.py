@@ -350,76 +350,76 @@ class EntitlementInfo(Model):
     @classmethod
     def create(
         cls,
-        id_: str,
-        namespace: str,
         clazz: str,
-        type_: str,
-        status: str,
-        user_id: str,
+        created_at: str,
+        granted_at: str,
+        id_: str,
         item_id: str,
         item_namespace: str,
         name: str,
+        namespace: str,
         source: str,
-        granted_at: str,
-        created_at: str,
+        status: str,
+        type_: str,
         updated_at: str,
+        user_id: str,
         app_id: Optional[str] = None,
         app_type: Optional[str] = None,
-        sku: Optional[str] = None,
-        store_id: Optional[str] = None,
-        granted_code: Optional[str] = None,
-        features: Optional[List[str]] = None,
-        use_count: Optional[int] = None,
-        quantity: Optional[int] = None,
         distributed_quantity: Optional[int] = None,
-        target_namespace: Optional[str] = None,
-        item_snapshot: Optional[ItemSnapshot] = None,
-        start_date: Optional[str] = None,
         end_date: Optional[str] = None,
+        features: Optional[List[str]] = None,
+        granted_code: Optional[str] = None,
+        item_snapshot: Optional[ItemSnapshot] = None,
+        quantity: Optional[int] = None,
+        sku: Optional[str] = None,
         stackable: Optional[bool] = None,
+        start_date: Optional[str] = None,
+        store_id: Optional[str] = None,
+        target_namespace: Optional[str] = None,
+        use_count: Optional[int] = None,
     ) -> EntitlementInfo:
         instance = cls()
-        instance.id_ = id_
-        instance.namespace = namespace
         instance.clazz = clazz
-        instance.type_ = type_
-        instance.status = status
-        instance.user_id = user_id
+        instance.created_at = created_at
+        instance.granted_at = granted_at
+        instance.id_ = id_
         instance.item_id = item_id
         instance.item_namespace = item_namespace
         instance.name = name
+        instance.namespace = namespace
         instance.source = source
-        instance.granted_at = granted_at
-        instance.created_at = created_at
+        instance.status = status
+        instance.type_ = type_
         instance.updated_at = updated_at
+        instance.user_id = user_id
         if app_id is not None:
             instance.app_id = app_id
         if app_type is not None:
             instance.app_type = app_type
-        if sku is not None:
-            instance.sku = sku
-        if store_id is not None:
-            instance.store_id = store_id
-        if granted_code is not None:
-            instance.granted_code = granted_code
-        if features is not None:
-            instance.features = features
-        if use_count is not None:
-            instance.use_count = use_count
-        if quantity is not None:
-            instance.quantity = quantity
         if distributed_quantity is not None:
             instance.distributed_quantity = distributed_quantity
-        if target_namespace is not None:
-            instance.target_namespace = target_namespace
-        if item_snapshot is not None:
-            instance.item_snapshot = item_snapshot
-        if start_date is not None:
-            instance.start_date = start_date
         if end_date is not None:
             instance.end_date = end_date
+        if features is not None:
+            instance.features = features
+        if granted_code is not None:
+            instance.granted_code = granted_code
+        if item_snapshot is not None:
+            instance.item_snapshot = item_snapshot
+        if quantity is not None:
+            instance.quantity = quantity
+        if sku is not None:
+            instance.sku = sku
         if stackable is not None:
             instance.stackable = stackable
+        if start_date is not None:
+            instance.start_date = start_date
+        if store_id is not None:
+            instance.store_id = store_id
+        if target_namespace is not None:
+            instance.target_namespace = target_namespace
+        if use_count is not None:
+            instance.use_count = use_count
         return instance
 
     @classmethod

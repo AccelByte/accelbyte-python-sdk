@@ -118,22 +118,22 @@ class AppleIAPReceipt(Model):
     def create(
         cls,
         product_id: str,
-        transaction_id: str,
         receipt_data: str,
+        transaction_id: str,
         exclude_old_transactions: Optional[bool] = None,
-        region: Optional[str] = None,
         language: Optional[str] = None,
+        region: Optional[str] = None,
     ) -> AppleIAPReceipt:
         instance = cls()
         instance.product_id = product_id
-        instance.transaction_id = transaction_id
         instance.receipt_data = receipt_data
+        instance.transaction_id = transaction_id
         if exclude_old_transactions is not None:
             instance.exclude_old_transactions = exclude_old_transactions
-        if region is not None:
-            instance.region = region
         if language is not None:
             instance.language = language
+        if region is not None:
+            instance.region = region
         return instance
 
     @classmethod

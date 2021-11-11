@@ -108,18 +108,18 @@ class ModelsSession(Model):
     @classmethod
     def create(
         cls,
-        server: ModelsServer,
         id_: str,
         namespace: str,
         provider: str,
         region: str,
+        server: ModelsServer,
     ) -> ModelsSession:
         instance = cls()
-        instance.server = server
         instance.id_ = id_
         instance.namespace = namespace
         instance.provider = provider
         instance.region = region
+        instance.server = server
         return instance
 
     @classmethod

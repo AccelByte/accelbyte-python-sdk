@@ -128,25 +128,25 @@ class PaymentOrderRefundResult(Model):
     @classmethod
     def create(
         cls,
-        payment_order_no: str,
-        namespace: str,
-        status: str,
         created_time: str,
+        namespace: str,
+        payment_order_no: str,
+        status: str,
+        refunded_time: Optional[str] = None,
         target_namespace: Optional[str] = None,
         target_user_id: Optional[str] = None,
-        refunded_time: Optional[str] = None,
     ) -> PaymentOrderRefundResult:
         instance = cls()
-        instance.payment_order_no = payment_order_no
-        instance.namespace = namespace
-        instance.status = status
         instance.created_time = created_time
+        instance.namespace = namespace
+        instance.payment_order_no = payment_order_no
+        instance.status = status
+        if refunded_time is not None:
+            instance.refunded_time = refunded_time
         if target_namespace is not None:
             instance.target_namespace = target_namespace
         if target_user_id is not None:
             instance.target_user_id = target_user_id
-        if refunded_time is not None:
-            instance.refunded_time = refunded_time
         return instance
 
     @classmethod

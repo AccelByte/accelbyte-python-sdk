@@ -139,23 +139,23 @@ class UserStatItemInfo(Model):
     @classmethod
     def create(
         cls,
+        created_at: str,
+        namespace: str,
         stat_code: str,
         stat_name: str,
-        namespace: str,
-        value: float,
-        created_at: str,
         updated_at: str,
         user_id: str,
+        value: float,
         tags: Optional[List[str]] = None,
     ) -> UserStatItemInfo:
         instance = cls()
+        instance.created_at = created_at
+        instance.namespace = namespace
         instance.stat_code = stat_code
         instance.stat_name = stat_name
-        instance.namespace = namespace
-        instance.value = value
-        instance.created_at = created_at
         instance.updated_at = updated_at
         instance.user_id = user_id
+        instance.value = value
         if tags is not None:
             instance.tags = tags
         return instance

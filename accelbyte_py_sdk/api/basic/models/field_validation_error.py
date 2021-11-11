@@ -108,8 +108,8 @@ class FieldValidationError(Model):
         cls,
         error_code: Optional[str] = None,
         error_field: Optional[str] = None,
-        error_value: Optional[str] = None,
         error_message: Optional[str] = None,
+        error_value: Optional[str] = None,
         message_variables: Optional[Dict[str, str]] = None,
     ) -> FieldValidationError:
         instance = cls()
@@ -117,10 +117,10 @@ class FieldValidationError(Model):
             instance.error_code = error_code
         if error_field is not None:
             instance.error_field = error_field
-        if error_value is not None:
-            instance.error_value = error_value
         if error_message is not None:
             instance.error_message = error_message
+        if error_value is not None:
+            instance.error_value = error_value
         if message_variables is not None:
             instance.message_variables = message_variables
         return instance

@@ -109,15 +109,15 @@ class CurrencySummary(Model):
         currency_code: str,
         currency_symbol: str,
         currency_type: str,
-        namespace: str,
         decimals: int,
+        namespace: str,
     ) -> CurrencySummary:
         instance = cls()
         instance.currency_code = currency_code
         instance.currency_symbol = currency_symbol
         instance.currency_type = currency_type
-        instance.namespace = namespace
         instance.decimals = decimals
+        instance.namespace = namespace
         return instance
 
     @classmethod

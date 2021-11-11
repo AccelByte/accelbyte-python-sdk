@@ -86,17 +86,17 @@ class BillingAccount(Model):
     @classmethod
     def create(
         cls,
-        payment_provider: Optional[str] = None,
-        payment_method: Optional[str] = None,
         additional_data: Optional[AdditionalData] = None,
+        payment_method: Optional[str] = None,
+        payment_provider: Optional[str] = None,
     ) -> BillingAccount:
         instance = cls()
-        if payment_provider is not None:
-            instance.payment_provider = payment_provider
-        if payment_method is not None:
-            instance.payment_method = payment_method
         if additional_data is not None:
             instance.additional_data = additional_data
+        if payment_method is not None:
+            instance.payment_method = payment_method
+        if payment_provider is not None:
+            instance.payment_provider = payment_provider
         return instance
 
     @classmethod

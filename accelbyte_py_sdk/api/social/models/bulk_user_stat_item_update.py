@@ -117,22 +117,22 @@ class BulkUserStatItemUpdate(Model):
     @classmethod
     def create(
         cls,
-        user_id: str,
         stat_code: str,
         update_strategy: str,
+        user_id: str,
         value: float,
-        additional_key: Optional[str] = None,
         additional_data: Optional[Dict[str, Any]] = None,
+        additional_key: Optional[str] = None,
     ) -> BulkUserStatItemUpdate:
         instance = cls()
-        instance.user_id = user_id
         instance.stat_code = stat_code
         instance.update_strategy = update_strategy
+        instance.user_id = user_id
         instance.value = value
-        if additional_key is not None:
-            instance.additional_key = additional_key
         if additional_data is not None:
             instance.additional_data = additional_data
+        if additional_key is not None:
+            instance.additional_key = additional_key
         return instance
 
     @classmethod

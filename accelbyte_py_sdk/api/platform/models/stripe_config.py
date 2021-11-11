@@ -95,20 +95,20 @@ class StripeConfig(Model):
     @classmethod
     def create(
         cls,
+        allowed_payment_method_types: Optional[List[str]] = None,
         publishable_key: Optional[str] = None,
         secret_key: Optional[str] = None,
         webhook_secret: Optional[str] = None,
-        allowed_payment_method_types: Optional[List[str]] = None,
     ) -> StripeConfig:
         instance = cls()
+        if allowed_payment_method_types is not None:
+            instance.allowed_payment_method_types = allowed_payment_method_types
         if publishable_key is not None:
             instance.publishable_key = publishable_key
         if secret_key is not None:
             instance.secret_key = secret_key
         if webhook_secret is not None:
             instance.webhook_secret = webhook_secret
-        if allowed_payment_method_types is not None:
-            instance.allowed_payment_method_types = allowed_payment_method_types
         return instance
 
     @classmethod

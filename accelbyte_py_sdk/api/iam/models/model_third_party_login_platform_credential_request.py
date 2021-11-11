@@ -173,9 +173,9 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     def create(
         cls,
         acsurl: str,
+        app_id: str,
         aws_cognito_region: str,
         aws_cognito_user_pool: str,
-        app_id: str,
         client_id: str,
         environment: str,
         federation_metadata_url: str,
@@ -186,9 +186,9 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     ) -> ModelThirdPartyLoginPlatformCredentialRequest:
         instance = cls()
         instance.acsurl = acsurl
+        instance.app_id = app_id
         instance.aws_cognito_region = aws_cognito_region
         instance.aws_cognito_user_pool = aws_cognito_user_pool
-        instance.app_id = app_id
         instance.client_id = client_id
         instance.environment = environment
         instance.federation_metadata_url = federation_metadata_url

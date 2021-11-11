@@ -84,17 +84,17 @@ class GameServerConfig(Model):
     @classmethod
     def create(
         cls,
-        private_key: Optional[str] = None,
-        notify_url: Optional[str] = None,
         dry_run: Optional[bool] = None,
+        notify_url: Optional[str] = None,
+        private_key: Optional[str] = None,
     ) -> GameServerConfig:
         instance = cls()
-        if private_key is not None:
-            instance.private_key = private_key
-        if notify_url is not None:
-            instance.notify_url = notify_url
         if dry_run is not None:
             instance.dry_run = dry_run
+        if notify_url is not None:
+            instance.notify_url = notify_url
+        if private_key is not None:
+            instance.private_key = private_key
         return instance
 
     @classmethod

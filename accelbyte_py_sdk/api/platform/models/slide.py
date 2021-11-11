@@ -117,26 +117,26 @@ class Slide(Model):
     @classmethod
     def create(
         cls,
-        type_: Optional[str] = None,
-        video_source: Optional[str] = None,
-        url: Optional[str] = None,
         alt: Optional[str] = None,
-        thumbnail_url: Optional[str] = None,
         preview_url: Optional[str] = None,
+        thumbnail_url: Optional[str] = None,
+        type_: Optional[str] = None,
+        url: Optional[str] = None,
+        video_source: Optional[str] = None,
     ) -> Slide:
         instance = cls()
-        if type_ is not None:
-            instance.type_ = type_
-        if video_source is not None:
-            instance.video_source = video_source
-        if url is not None:
-            instance.url = url
         if alt is not None:
             instance.alt = alt
-        if thumbnail_url is not None:
-            instance.thumbnail_url = thumbnail_url
         if preview_url is not None:
             instance.preview_url = preview_url
+        if thumbnail_url is not None:
+            instance.thumbnail_url = thumbnail_url
+        if type_ is not None:
+            instance.type_ = type_
+        if url is not None:
+            instance.url = url
+        if video_source is not None:
+            instance.video_source = video_source
         return instance
 
     @classmethod

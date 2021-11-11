@@ -150,27 +150,27 @@ class PaymentOrderDetails(Model):
     @classmethod
     def create(
         cls,
-        title: str,
-        price: str,
+        charging: bool,
         currency_code: str,
         currency_symbol: str,
+        price: str,
         sandbox: bool,
-        charging: bool,
-        display_name: Optional[str] = None,
+        title: str,
         description: Optional[str] = None,
+        display_name: Optional[str] = None,
         region: Optional[str] = None,
     ) -> PaymentOrderDetails:
         instance = cls()
-        instance.title = title
-        instance.price = price
+        instance.charging = charging
         instance.currency_code = currency_code
         instance.currency_symbol = currency_symbol
+        instance.price = price
         instance.sandbox = sandbox
-        instance.charging = charging
-        if display_name is not None:
-            instance.display_name = display_name
+        instance.title = title
         if description is not None:
             instance.description = description
+        if display_name is not None:
+            instance.display_name = display_name
         if region is not None:
             instance.region = region
         return instance

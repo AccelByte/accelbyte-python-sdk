@@ -172,39 +172,39 @@ class AdyenConfig(Model):
     @classmethod
     def create(
         cls,
+        allowed_payment_methods: Optional[List[str]] = None,
         api_key: Optional[str] = None,
+        authorise_as_capture: Optional[bool] = None,
+        blocked_payment_methods: Optional[List[str]] = None,
+        live_endpoint_url_prefix: Optional[str] = None,
         merchant_account: Optional[str] = None,
         notification_hmac_key: Optional[str] = None,
-        notification_username: Optional[str] = None,
         notification_password: Optional[str] = None,
+        notification_username: Optional[str] = None,
         return_url: Optional[str] = None,
-        live_endpoint_url_prefix: Optional[str] = None,
-        authorise_as_capture: Optional[bool] = None,
-        allowed_payment_methods: Optional[List[str]] = None,
-        blocked_payment_methods: Optional[List[str]] = None,
         settings: Optional[str] = None,
     ) -> AdyenConfig:
         instance = cls()
+        if allowed_payment_methods is not None:
+            instance.allowed_payment_methods = allowed_payment_methods
         if api_key is not None:
             instance.api_key = api_key
+        if authorise_as_capture is not None:
+            instance.authorise_as_capture = authorise_as_capture
+        if blocked_payment_methods is not None:
+            instance.blocked_payment_methods = blocked_payment_methods
+        if live_endpoint_url_prefix is not None:
+            instance.live_endpoint_url_prefix = live_endpoint_url_prefix
         if merchant_account is not None:
             instance.merchant_account = merchant_account
         if notification_hmac_key is not None:
             instance.notification_hmac_key = notification_hmac_key
-        if notification_username is not None:
-            instance.notification_username = notification_username
         if notification_password is not None:
             instance.notification_password = notification_password
+        if notification_username is not None:
+            instance.notification_username = notification_username
         if return_url is not None:
             instance.return_url = return_url
-        if live_endpoint_url_prefix is not None:
-            instance.live_endpoint_url_prefix = live_endpoint_url_prefix
-        if authorise_as_capture is not None:
-            instance.authorise_as_capture = authorise_as_capture
-        if allowed_payment_methods is not None:
-            instance.allowed_payment_methods = allowed_payment_methods
-        if blocked_payment_methods is not None:
-            instance.blocked_payment_methods = blocked_payment_methods
         if settings is not None:
             instance.settings = settings
         return instance

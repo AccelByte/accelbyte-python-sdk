@@ -85,15 +85,15 @@ class FulfillCodeRequest(Model):
     def create(
         cls,
         code: str,
-        region: Optional[str] = None,
         language: Optional[str] = None,
+        region: Optional[str] = None,
     ) -> FulfillCodeRequest:
         instance = cls()
         instance.code = code
-        if region is not None:
-            instance.region = region
         if language is not None:
             instance.language = language
+        if region is not None:
+            instance.region = region
         return instance
 
     @classmethod

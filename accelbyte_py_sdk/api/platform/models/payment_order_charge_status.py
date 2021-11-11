@@ -73,14 +73,14 @@ class PaymentOrderChargeStatus(Model):
     @classmethod
     def create(
         cls,
-        status: Optional[str] = None,
         charging: Optional[bool] = None,
+        status: Optional[str] = None,
     ) -> PaymentOrderChargeStatus:
         instance = cls()
-        if status is not None:
-            instance.status = status
         if charging is not None:
             instance.charging = charging
+        if status is not None:
+            instance.status = status
         return instance
 
     @classmethod

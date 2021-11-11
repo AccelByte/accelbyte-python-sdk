@@ -106,15 +106,13 @@ class EpicGamesReconcileResult(Model):
     @classmethod
     def create(
         cls,
-        transaction_id: Optional[str] = None,
         epic_games_item_id: Optional[str] = None,
         item_id: Optional[str] = None,
         sku: Optional[str] = None,
         status: Optional[str] = None,
+        transaction_id: Optional[str] = None,
     ) -> EpicGamesReconcileResult:
         instance = cls()
-        if transaction_id is not None:
-            instance.transaction_id = transaction_id
         if epic_games_item_id is not None:
             instance.epic_games_item_id = epic_games_item_id
         if item_id is not None:
@@ -123,6 +121,8 @@ class EpicGamesReconcileResult(Model):
             instance.sku = sku
         if status is not None:
             instance.status = status
+        if transaction_id is not None:
+            instance.transaction_id = transaction_id
         return instance
 
     @classmethod

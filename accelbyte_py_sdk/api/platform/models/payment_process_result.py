@@ -95,18 +95,18 @@ class PaymentProcessResult(Model):
     @classmethod
     def create(
         cls,
-        success: bool,
         pending: bool,
-        redirect_url: Optional[str] = None,
+        success: bool,
         reason: Optional[str] = None,
+        redirect_url: Optional[str] = None,
     ) -> PaymentProcessResult:
         instance = cls()
-        instance.success = success
         instance.pending = pending
-        if redirect_url is not None:
-            instance.redirect_url = redirect_url
+        instance.success = success
         if reason is not None:
             instance.reason = reason
+        if redirect_url is not None:
+            instance.redirect_url = redirect_url
         return instance
 
     @classmethod

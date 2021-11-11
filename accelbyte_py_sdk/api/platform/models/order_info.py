@@ -461,105 +461,105 @@ class OrderInfo(Model):
     @classmethod
     def create(
         cls,
-        order_no: str,
-        namespace: str,
-        user_id: str,
-        item_id: str,
-        sandbox: bool,
-        quantity: int,
-        price: int,
-        discounted_price: int,
-        currency: CurrencySummary,
-        status: str,
-        expire_time: str,
-        payment_remain_seconds: int,
         created_at: str,
+        currency: CurrencySummary,
+        discounted_price: int,
+        expire_time: str,
+        item_id: str,
+        namespace: str,
+        order_no: str,
+        payment_remain_seconds: int,
+        price: int,
+        quantity: int,
+        sandbox: bool,
+        status: str,
         updated_at: str,
+        user_id: str,
+        chargeback_reversed_time: Optional[str] = None,
+        chargeback_time: Optional[str] = None,
+        charged_time: Optional[str] = None,
+        created_time: Optional[str] = None,
+        ext: Optional[Dict[str, Any]] = None,
+        fulfilled_time: Optional[str] = None,
+        item_snapshot: Optional[ItemSnapshot] = None,
+        language: Optional[str] = None,
+        payment_method: Optional[str] = None,
+        payment_method_fee: Optional[int] = None,
         payment_order_no: Optional[str] = None,
         payment_provider: Optional[str] = None,
-        payment_method: Optional[str] = None,
-        tax: Optional[int] = None,
-        vat: Optional[int] = None,
-        sales_tax: Optional[int] = None,
         payment_provider_fee: Optional[int] = None,
-        payment_method_fee: Optional[int] = None,
         payment_station_url: Optional[str] = None,
-        item_snapshot: Optional[ItemSnapshot] = None,
-        region: Optional[str] = None,
-        language: Optional[str] = None,
-        status_reason: Optional[str] = None,
-        created_time: Optional[str] = None,
-        charged_time: Optional[str] = None,
-        fulfilled_time: Optional[str] = None,
         refunded_time: Optional[str] = None,
-        chargeback_time: Optional[str] = None,
-        chargeback_reversed_time: Optional[str] = None,
-        ext: Optional[Dict[str, Any]] = None,
-        total_tax: Optional[int] = None,
-        total_price: Optional[int] = None,
+        region: Optional[str] = None,
+        sales_tax: Optional[int] = None,
+        status_reason: Optional[str] = None,
         subtotal_price: Optional[int] = None,
+        tax: Optional[int] = None,
+        total_price: Optional[int] = None,
+        total_tax: Optional[int] = None,
+        vat: Optional[int] = None,
     ) -> OrderInfo:
         instance = cls()
-        instance.order_no = order_no
-        instance.namespace = namespace
-        instance.user_id = user_id
-        instance.item_id = item_id
-        instance.sandbox = sandbox
-        instance.quantity = quantity
-        instance.price = price
-        instance.discounted_price = discounted_price
-        instance.currency = currency
-        instance.status = status
-        instance.expire_time = expire_time
-        instance.payment_remain_seconds = payment_remain_seconds
         instance.created_at = created_at
+        instance.currency = currency
+        instance.discounted_price = discounted_price
+        instance.expire_time = expire_time
+        instance.item_id = item_id
+        instance.namespace = namespace
+        instance.order_no = order_no
+        instance.payment_remain_seconds = payment_remain_seconds
+        instance.price = price
+        instance.quantity = quantity
+        instance.sandbox = sandbox
+        instance.status = status
         instance.updated_at = updated_at
+        instance.user_id = user_id
+        if chargeback_reversed_time is not None:
+            instance.chargeback_reversed_time = chargeback_reversed_time
+        if chargeback_time is not None:
+            instance.chargeback_time = chargeback_time
+        if charged_time is not None:
+            instance.charged_time = charged_time
+        if created_time is not None:
+            instance.created_time = created_time
+        if ext is not None:
+            instance.ext = ext
+        if fulfilled_time is not None:
+            instance.fulfilled_time = fulfilled_time
+        if item_snapshot is not None:
+            instance.item_snapshot = item_snapshot
+        if language is not None:
+            instance.language = language
+        if payment_method is not None:
+            instance.payment_method = payment_method
+        if payment_method_fee is not None:
+            instance.payment_method_fee = payment_method_fee
         if payment_order_no is not None:
             instance.payment_order_no = payment_order_no
         if payment_provider is not None:
             instance.payment_provider = payment_provider
-        if payment_method is not None:
-            instance.payment_method = payment_method
-        if tax is not None:
-            instance.tax = tax
-        if vat is not None:
-            instance.vat = vat
-        if sales_tax is not None:
-            instance.sales_tax = sales_tax
         if payment_provider_fee is not None:
             instance.payment_provider_fee = payment_provider_fee
-        if payment_method_fee is not None:
-            instance.payment_method_fee = payment_method_fee
         if payment_station_url is not None:
             instance.payment_station_url = payment_station_url
-        if item_snapshot is not None:
-            instance.item_snapshot = item_snapshot
-        if region is not None:
-            instance.region = region
-        if language is not None:
-            instance.language = language
-        if status_reason is not None:
-            instance.status_reason = status_reason
-        if created_time is not None:
-            instance.created_time = created_time
-        if charged_time is not None:
-            instance.charged_time = charged_time
-        if fulfilled_time is not None:
-            instance.fulfilled_time = fulfilled_time
         if refunded_time is not None:
             instance.refunded_time = refunded_time
-        if chargeback_time is not None:
-            instance.chargeback_time = chargeback_time
-        if chargeback_reversed_time is not None:
-            instance.chargeback_reversed_time = chargeback_reversed_time
-        if ext is not None:
-            instance.ext = ext
-        if total_tax is not None:
-            instance.total_tax = total_tax
-        if total_price is not None:
-            instance.total_price = total_price
+        if region is not None:
+            instance.region = region
+        if sales_tax is not None:
+            instance.sales_tax = sales_tax
+        if status_reason is not None:
+            instance.status_reason = status_reason
         if subtotal_price is not None:
             instance.subtotal_price = subtotal_price
+        if tax is not None:
+            instance.tax = tax
+        if total_price is not None:
+            instance.total_price = total_price
+        if total_tax is not None:
+            instance.total_tax = total_tax
+        if vat is not None:
+            instance.vat = vat
         return instance
 
     @classmethod

@@ -530,125 +530,125 @@ class SubscriptionInfo(Model):
     @classmethod
     def create(
         cls,
+        charge_status: str,
+        created_at: str,
         id_: str,
-        namespace: str,
-        user_id: str,
+        in_fixed_cycle_trial: bool,
+        in_fixed_free_days: bool,
         item_id: str,
+        namespace: str,
+        payment_flow_required: bool,
         recurring: Recurring,
         status: str,
-        charge_status: str,
-        in_fixed_free_days: bool,
-        in_fixed_cycle_trial: bool,
-        payment_flow_required: bool,
-        created_at: str,
         updated_at: str,
-        sku: Optional[str] = None,
-        title: Optional[str] = None,
-        description: Optional[str] = None,
-        currency: Optional[CurrencySummary] = None,
-        price: Optional[int] = None,
-        trial_price: Optional[int] = None,
-        next_billing_date: Optional[str] = None,
-        entitlements: Optional[List[EntitlementSummary]] = None,
-        item_snapshot: Optional[ItemSnapshot] = None,
-        current_period_start: Optional[str] = None,
-        current_period_end: Optional[str] = None,
-        start: Optional[str] = None,
-        end: Optional[str] = None,
-        current_cycle: Optional[int] = None,
-        charged_cycles: Optional[int] = None,
-        trialed_cycles: Optional[int] = None,
-        first_subscribe: Optional[bool] = None,
-        paid: Optional[bool] = None,
-        payment_station_url: Optional[str] = None,
-        source: Optional[str] = None,
-        subscribed_by: Optional[str] = None,
-        subscribed_at: Optional[str] = None,
-        unsubscribed_at: Optional[str] = None,
-        unsubscribe_reason: Optional[str] = None,
-        payment_order_no: Optional[str] = None,
+        user_id: str,
         billing_account: Optional[BillingAccount] = None,
-        return_url: Optional[str] = None,
-        region: Optional[str] = None,
+        charged_cycles: Optional[int] = None,
+        currency: Optional[CurrencySummary] = None,
+        current_cycle: Optional[int] = None,
+        current_period_end: Optional[str] = None,
+        current_period_start: Optional[str] = None,
+        description: Optional[str] = None,
+        end: Optional[str] = None,
+        entitlements: Optional[List[EntitlementSummary]] = None,
+        first_subscribe: Optional[bool] = None,
+        item_snapshot: Optional[ItemSnapshot] = None,
         language: Optional[str] = None,
-        sandbox: Optional[bool] = None,
+        next_billing_date: Optional[str] = None,
+        paid: Optional[bool] = None,
+        payment_order_no: Optional[str] = None,
+        payment_station_url: Optional[str] = None,
+        price: Optional[int] = None,
+        region: Optional[str] = None,
         retry_attempted: Optional[int] = None,
+        return_url: Optional[str] = None,
+        sandbox: Optional[bool] = None,
+        sku: Optional[str] = None,
+        source: Optional[str] = None,
+        start: Optional[str] = None,
+        subscribed_at: Optional[str] = None,
+        subscribed_by: Optional[str] = None,
+        title: Optional[str] = None,
+        trial_price: Optional[int] = None,
+        trialed_cycles: Optional[int] = None,
+        unsubscribe_reason: Optional[str] = None,
+        unsubscribed_at: Optional[str] = None,
     ) -> SubscriptionInfo:
         instance = cls()
+        instance.charge_status = charge_status
+        instance.created_at = created_at
         instance.id_ = id_
-        instance.namespace = namespace
-        instance.user_id = user_id
+        instance.in_fixed_cycle_trial = in_fixed_cycle_trial
+        instance.in_fixed_free_days = in_fixed_free_days
         instance.item_id = item_id
+        instance.namespace = namespace
+        instance.payment_flow_required = payment_flow_required
         instance.recurring = recurring
         instance.status = status
-        instance.charge_status = charge_status
-        instance.in_fixed_free_days = in_fixed_free_days
-        instance.in_fixed_cycle_trial = in_fixed_cycle_trial
-        instance.payment_flow_required = payment_flow_required
-        instance.created_at = created_at
         instance.updated_at = updated_at
-        if sku is not None:
-            instance.sku = sku
-        if title is not None:
-            instance.title = title
-        if description is not None:
-            instance.description = description
-        if currency is not None:
-            instance.currency = currency
-        if price is not None:
-            instance.price = price
-        if trial_price is not None:
-            instance.trial_price = trial_price
-        if next_billing_date is not None:
-            instance.next_billing_date = next_billing_date
-        if entitlements is not None:
-            instance.entitlements = entitlements
-        if item_snapshot is not None:
-            instance.item_snapshot = item_snapshot
-        if current_period_start is not None:
-            instance.current_period_start = current_period_start
-        if current_period_end is not None:
-            instance.current_period_end = current_period_end
-        if start is not None:
-            instance.start = start
-        if end is not None:
-            instance.end = end
-        if current_cycle is not None:
-            instance.current_cycle = current_cycle
-        if charged_cycles is not None:
-            instance.charged_cycles = charged_cycles
-        if trialed_cycles is not None:
-            instance.trialed_cycles = trialed_cycles
-        if first_subscribe is not None:
-            instance.first_subscribe = first_subscribe
-        if paid is not None:
-            instance.paid = paid
-        if payment_station_url is not None:
-            instance.payment_station_url = payment_station_url
-        if source is not None:
-            instance.source = source
-        if subscribed_by is not None:
-            instance.subscribed_by = subscribed_by
-        if subscribed_at is not None:
-            instance.subscribed_at = subscribed_at
-        if unsubscribed_at is not None:
-            instance.unsubscribed_at = unsubscribed_at
-        if unsubscribe_reason is not None:
-            instance.unsubscribe_reason = unsubscribe_reason
-        if payment_order_no is not None:
-            instance.payment_order_no = payment_order_no
+        instance.user_id = user_id
         if billing_account is not None:
             instance.billing_account = billing_account
-        if return_url is not None:
-            instance.return_url = return_url
-        if region is not None:
-            instance.region = region
+        if charged_cycles is not None:
+            instance.charged_cycles = charged_cycles
+        if currency is not None:
+            instance.currency = currency
+        if current_cycle is not None:
+            instance.current_cycle = current_cycle
+        if current_period_end is not None:
+            instance.current_period_end = current_period_end
+        if current_period_start is not None:
+            instance.current_period_start = current_period_start
+        if description is not None:
+            instance.description = description
+        if end is not None:
+            instance.end = end
+        if entitlements is not None:
+            instance.entitlements = entitlements
+        if first_subscribe is not None:
+            instance.first_subscribe = first_subscribe
+        if item_snapshot is not None:
+            instance.item_snapshot = item_snapshot
         if language is not None:
             instance.language = language
-        if sandbox is not None:
-            instance.sandbox = sandbox
+        if next_billing_date is not None:
+            instance.next_billing_date = next_billing_date
+        if paid is not None:
+            instance.paid = paid
+        if payment_order_no is not None:
+            instance.payment_order_no = payment_order_no
+        if payment_station_url is not None:
+            instance.payment_station_url = payment_station_url
+        if price is not None:
+            instance.price = price
+        if region is not None:
+            instance.region = region
         if retry_attempted is not None:
             instance.retry_attempted = retry_attempted
+        if return_url is not None:
+            instance.return_url = return_url
+        if sandbox is not None:
+            instance.sandbox = sandbox
+        if sku is not None:
+            instance.sku = sku
+        if source is not None:
+            instance.source = source
+        if start is not None:
+            instance.start = start
+        if subscribed_at is not None:
+            instance.subscribed_at = subscribed_at
+        if subscribed_by is not None:
+            instance.subscribed_by = subscribed_by
+        if title is not None:
+            instance.title = title
+        if trial_price is not None:
+            instance.trial_price = trial_price
+        if trialed_cycles is not None:
+            instance.trialed_cycles = trialed_cycles
+        if unsubscribe_reason is not None:
+            instance.unsubscribe_reason = unsubscribe_reason
+        if unsubscribed_at is not None:
+            instance.unsubscribed_at = unsubscribed_at
         return instance
 
     @classmethod

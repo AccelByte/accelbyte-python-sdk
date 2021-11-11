@@ -71,14 +71,14 @@ def cancel_subscription(subscription_id: str, user_id: str, body: Optional[Cance
 
 
 @same_doc_as(CheckUserSubscriptionSubscribableByItemId)
-def check_user_subscription_subscribable_by_item_id(user_id: str, item_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def check_user_subscription_subscribable_by_item_id(item_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = CheckUserSubscriptionSubscribableByItemId.create(
-        user_id=user_id,
         item_id=item_id,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -220,14 +220,14 @@ def public_change_subscription_billing_account(subscription_id: str, user_id: st
 
 
 @same_doc_as(PublicCheckUserSubscriptionSubscribableByItemId)
-def public_check_user_subscription_subscribable_by_item_id(user_id: str, item_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_check_user_subscription_subscribable_by_item_id(item_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicCheckUserSubscriptionSubscribableByItemId.create(
-        user_id=user_id,
         item_id=item_id,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

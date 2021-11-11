@@ -73,14 +73,14 @@ class SlotConfigUpdate(Model):
     @classmethod
     def create(
         cls,
-        max_slots: Optional[int] = None,
         max_slot_size: Optional[int] = None,
+        max_slots: Optional[int] = None,
     ) -> SlotConfigUpdate:
         instance = cls()
-        if max_slots is not None:
-            instance.max_slots = max_slots
         if max_slot_size is not None:
             instance.max_slot_size = max_slot_size
+        if max_slots is not None:
+            instance.max_slots = max_slots
         return instance
 
     @classmethod

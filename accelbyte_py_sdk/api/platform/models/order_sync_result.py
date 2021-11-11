@@ -75,14 +75,14 @@ class OrderSyncResult(Model):
     @classmethod
     def create(
         cls,
-        orders: Optional[List[Order]] = None,
         next_evaluated_key: Optional[str] = None,
+        orders: Optional[List[Order]] = None,
     ) -> OrderSyncResult:
         instance = cls()
-        if orders is not None:
-            instance.orders = orders
         if next_evaluated_key is not None:
             instance.next_evaluated_key = next_evaluated_key
+        if orders is not None:
+            instance.orders = orders
         return instance
 
     @classmethod

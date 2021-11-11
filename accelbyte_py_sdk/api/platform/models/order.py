@@ -538,140 +538,140 @@ class Order(Model):
     @classmethod
     def create(
         cls,
-        rvn: Optional[int] = None,
-        created_at: Optional[str] = None,
-        updated_at: Optional[str] = None,
-        order_no: Optional[str] = None,
-        namespace: Optional[str] = None,
-        user_id: Optional[str] = None,
-        payment_order_no: Optional[str] = None,
-        status: Optional[str] = None,
-        sandbox: Optional[bool] = None,
-        item_id: Optional[str] = None,
-        quantity: Optional[int] = None,
-        price: Optional[int] = None,
-        discounted_price: Optional[int] = None,
-        payment_provider: Optional[str] = None,
-        payment_method: Optional[str] = None,
-        tax: Optional[int] = None,
-        vat: Optional[int] = None,
-        sales_tax: Optional[int] = None,
-        payment_provider_fee: Optional[int] = None,
-        payment_method_fee: Optional[int] = None,
-        currency: Optional[CurrencySummary] = None,
-        payment_station_url: Optional[str] = None,
-        status_reason: Optional[str] = None,
-        created_time: Optional[str] = None,
-        charged_time: Optional[str] = None,
-        fulfilled_time: Optional[str] = None,
-        refunded_time: Optional[str] = None,
-        chargeback_time: Optional[str] = None,
         chargeback_reversed_time: Optional[str] = None,
-        return_url: Optional[str] = None,
-        ext: Optional[Dict[str, Any]] = None,
-        item_snapshot: Optional[ItemSnapshot] = None,
-        region: Optional[str] = None,
-        language: Optional[str] = None,
-        count_namespace: Optional[str] = None,
-        count_item_id: Optional[str] = None,
-        count_user_id: Optional[str] = None,
-        expire_time: Optional[str] = None,
-        payment_remain_seconds: Optional[int] = None,
+        chargeback_time: Optional[str] = None,
         charged: Optional[bool] = None,
+        charged_time: Optional[str] = None,
+        count_item_id: Optional[str] = None,
+        count_namespace: Optional[str] = None,
+        count_user_id: Optional[str] = None,
+        created_at: Optional[str] = None,
+        created_time: Optional[str] = None,
+        currency: Optional[CurrencySummary] = None,
+        discounted_price: Optional[int] = None,
+        expire_time: Optional[str] = None,
+        ext: Optional[Dict[str, Any]] = None,
         free: Optional[bool] = None,
-        total_tax: Optional[int] = None,
-        total_price: Optional[int] = None,
+        fulfilled_time: Optional[str] = None,
+        item_id: Optional[str] = None,
+        item_snapshot: Optional[ItemSnapshot] = None,
+        language: Optional[str] = None,
+        namespace: Optional[str] = None,
+        order_no: Optional[str] = None,
+        payment_method: Optional[str] = None,
+        payment_method_fee: Optional[int] = None,
+        payment_order_no: Optional[str] = None,
+        payment_provider: Optional[str] = None,
+        payment_provider_fee: Optional[int] = None,
+        payment_remain_seconds: Optional[int] = None,
+        payment_station_url: Optional[str] = None,
+        price: Optional[int] = None,
+        quantity: Optional[int] = None,
+        refunded_time: Optional[str] = None,
+        region: Optional[str] = None,
+        return_url: Optional[str] = None,
+        rvn: Optional[int] = None,
+        sales_tax: Optional[int] = None,
+        sandbox: Optional[bool] = None,
+        status: Optional[str] = None,
+        status_reason: Optional[str] = None,
         subtotal_price: Optional[int] = None,
+        tax: Optional[int] = None,
+        total_price: Optional[int] = None,
+        total_tax: Optional[int] = None,
+        updated_at: Optional[str] = None,
+        user_id: Optional[str] = None,
+        vat: Optional[int] = None,
     ) -> Order:
         instance = cls()
-        if rvn is not None:
-            instance.rvn = rvn
-        if created_at is not None:
-            instance.created_at = created_at
-        if updated_at is not None:
-            instance.updated_at = updated_at
-        if order_no is not None:
-            instance.order_no = order_no
-        if namespace is not None:
-            instance.namespace = namespace
-        if user_id is not None:
-            instance.user_id = user_id
-        if payment_order_no is not None:
-            instance.payment_order_no = payment_order_no
-        if status is not None:
-            instance.status = status
-        if sandbox is not None:
-            instance.sandbox = sandbox
-        if item_id is not None:
-            instance.item_id = item_id
-        if quantity is not None:
-            instance.quantity = quantity
-        if price is not None:
-            instance.price = price
-        if discounted_price is not None:
-            instance.discounted_price = discounted_price
-        if payment_provider is not None:
-            instance.payment_provider = payment_provider
-        if payment_method is not None:
-            instance.payment_method = payment_method
-        if tax is not None:
-            instance.tax = tax
-        if vat is not None:
-            instance.vat = vat
-        if sales_tax is not None:
-            instance.sales_tax = sales_tax
-        if payment_provider_fee is not None:
-            instance.payment_provider_fee = payment_provider_fee
-        if payment_method_fee is not None:
-            instance.payment_method_fee = payment_method_fee
-        if currency is not None:
-            instance.currency = currency
-        if payment_station_url is not None:
-            instance.payment_station_url = payment_station_url
-        if status_reason is not None:
-            instance.status_reason = status_reason
-        if created_time is not None:
-            instance.created_time = created_time
-        if charged_time is not None:
-            instance.charged_time = charged_time
-        if fulfilled_time is not None:
-            instance.fulfilled_time = fulfilled_time
-        if refunded_time is not None:
-            instance.refunded_time = refunded_time
-        if chargeback_time is not None:
-            instance.chargeback_time = chargeback_time
         if chargeback_reversed_time is not None:
             instance.chargeback_reversed_time = chargeback_reversed_time
-        if return_url is not None:
-            instance.return_url = return_url
-        if ext is not None:
-            instance.ext = ext
-        if item_snapshot is not None:
-            instance.item_snapshot = item_snapshot
-        if region is not None:
-            instance.region = region
-        if language is not None:
-            instance.language = language
-        if count_namespace is not None:
-            instance.count_namespace = count_namespace
-        if count_item_id is not None:
-            instance.count_item_id = count_item_id
-        if count_user_id is not None:
-            instance.count_user_id = count_user_id
-        if expire_time is not None:
-            instance.expire_time = expire_time
-        if payment_remain_seconds is not None:
-            instance.payment_remain_seconds = payment_remain_seconds
+        if chargeback_time is not None:
+            instance.chargeback_time = chargeback_time
         if charged is not None:
             instance.charged = charged
+        if charged_time is not None:
+            instance.charged_time = charged_time
+        if count_item_id is not None:
+            instance.count_item_id = count_item_id
+        if count_namespace is not None:
+            instance.count_namespace = count_namespace
+        if count_user_id is not None:
+            instance.count_user_id = count_user_id
+        if created_at is not None:
+            instance.created_at = created_at
+        if created_time is not None:
+            instance.created_time = created_time
+        if currency is not None:
+            instance.currency = currency
+        if discounted_price is not None:
+            instance.discounted_price = discounted_price
+        if expire_time is not None:
+            instance.expire_time = expire_time
+        if ext is not None:
+            instance.ext = ext
         if free is not None:
             instance.free = free
-        if total_tax is not None:
-            instance.total_tax = total_tax
-        if total_price is not None:
-            instance.total_price = total_price
+        if fulfilled_time is not None:
+            instance.fulfilled_time = fulfilled_time
+        if item_id is not None:
+            instance.item_id = item_id
+        if item_snapshot is not None:
+            instance.item_snapshot = item_snapshot
+        if language is not None:
+            instance.language = language
+        if namespace is not None:
+            instance.namespace = namespace
+        if order_no is not None:
+            instance.order_no = order_no
+        if payment_method is not None:
+            instance.payment_method = payment_method
+        if payment_method_fee is not None:
+            instance.payment_method_fee = payment_method_fee
+        if payment_order_no is not None:
+            instance.payment_order_no = payment_order_no
+        if payment_provider is not None:
+            instance.payment_provider = payment_provider
+        if payment_provider_fee is not None:
+            instance.payment_provider_fee = payment_provider_fee
+        if payment_remain_seconds is not None:
+            instance.payment_remain_seconds = payment_remain_seconds
+        if payment_station_url is not None:
+            instance.payment_station_url = payment_station_url
+        if price is not None:
+            instance.price = price
+        if quantity is not None:
+            instance.quantity = quantity
+        if refunded_time is not None:
+            instance.refunded_time = refunded_time
+        if region is not None:
+            instance.region = region
+        if return_url is not None:
+            instance.return_url = return_url
+        if rvn is not None:
+            instance.rvn = rvn
+        if sales_tax is not None:
+            instance.sales_tax = sales_tax
+        if sandbox is not None:
+            instance.sandbox = sandbox
+        if status is not None:
+            instance.status = status
+        if status_reason is not None:
+            instance.status_reason = status_reason
         if subtotal_price is not None:
             instance.subtotal_price = subtotal_price
+        if tax is not None:
+            instance.tax = tax
+        if total_price is not None:
+            instance.total_price = total_price
+        if total_tax is not None:
+            instance.total_tax = total_tax
+        if updated_at is not None:
+            instance.updated_at = updated_at
+        if user_id is not None:
+            instance.user_id = user_id
+        if vat is not None:
+            instance.vat = vat
         return instance
 
     @classmethod

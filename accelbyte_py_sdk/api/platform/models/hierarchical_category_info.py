@@ -139,23 +139,23 @@ class HierarchicalCategoryInfo(Model):
     @classmethod
     def create(
         cls,
+        category_path: str,
+        child_categories: List[HierarchicalCategoryInfo],
+        created_at: str,
+        display_name: str,
         namespace: str,
         parent_category_path: str,
-        category_path: str,
-        created_at: str,
         updated_at: str,
-        display_name: str,
-        child_categories: List[HierarchicalCategoryInfo],
         root: Optional[bool] = None,
     ) -> HierarchicalCategoryInfo:
         instance = cls()
+        instance.category_path = category_path
+        instance.child_categories = child_categories
+        instance.created_at = created_at
+        instance.display_name = display_name
         instance.namespace = namespace
         instance.parent_category_path = parent_category_path
-        instance.category_path = category_path
-        instance.created_at = created_at
         instance.updated_at = updated_at
-        instance.display_name = display_name
-        instance.child_categories = child_categories
         if root is not None:
             instance.root = root
         return instance

@@ -118,17 +118,17 @@ class Image(Model):
     def create(
         cls,
         height: int,
-        width: int,
         image_url: str,
         small_image_url: str,
+        width: int,
         as_: Optional[str] = None,
         caption: Optional[str] = None,
     ) -> Image:
         instance = cls()
         instance.height = height
-        instance.width = width
         instance.image_url = image_url
         instance.small_image_url = small_image_url
+        instance.width = width
         if as_ is not None:
             instance.as_ = as_
         if caption is not None:

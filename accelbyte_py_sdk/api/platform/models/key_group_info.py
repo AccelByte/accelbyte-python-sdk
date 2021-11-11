@@ -150,23 +150,23 @@ class KeyGroupInfo(Model):
     @classmethod
     def create(
         cls,
-        id_: str,
-        namespace: str,
-        name: str,
-        status: str,
         booth_name: str,
         created_at: str,
+        id_: str,
+        name: str,
+        namespace: str,
+        status: str,
         updated_at: str,
         description: Optional[str] = None,
         tags: Optional[List[str]] = None,
     ) -> KeyGroupInfo:
         instance = cls()
-        instance.id_ = id_
-        instance.namespace = namespace
-        instance.name = name
-        instance.status = status
         instance.booth_name = booth_name
         instance.created_at = created_at
+        instance.id_ = id_
+        instance.name = name
+        instance.namespace = namespace
+        instance.status = status
         instance.updated_at = updated_at
         if description is not None:
             instance.description = description

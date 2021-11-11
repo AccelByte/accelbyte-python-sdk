@@ -97,16 +97,16 @@ class ErrorEntity(Model):
         cls,
         error_code: int,
         error_message: str,
-        message_variables: Optional[Dict[str, str]] = None,
         dev_stack_trace: Optional[str] = None,
+        message_variables: Optional[Dict[str, str]] = None,
     ) -> ErrorEntity:
         instance = cls()
         instance.error_code = error_code
         instance.error_message = error_message
-        if message_variables is not None:
-            instance.message_variables = message_variables
         if dev_stack_trace is not None:
             instance.dev_stack_trace = dev_stack_trace
+        if message_variables is not None:
+            instance.message_variables = message_variables
         return instance
 
     @classmethod

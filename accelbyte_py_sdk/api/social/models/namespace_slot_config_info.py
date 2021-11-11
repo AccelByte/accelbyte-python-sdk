@@ -84,17 +84,17 @@ class NamespaceSlotConfigInfo(Model):
     @classmethod
     def create(
         cls,
-        namespace: Optional[str] = None,
-        max_slots: Optional[int] = None,
         max_slot_size: Optional[int] = None,
+        max_slots: Optional[int] = None,
+        namespace: Optional[str] = None,
     ) -> NamespaceSlotConfigInfo:
         instance = cls()
-        if namespace is not None:
-            instance.namespace = namespace
-        if max_slots is not None:
-            instance.max_slots = max_slots
         if max_slot_size is not None:
             instance.max_slot_size = max_slot_size
+        if max_slots is not None:
+            instance.max_slots = max_slots
+        if namespace is not None:
+            instance.namespace = namespace
         return instance
 
     @classmethod

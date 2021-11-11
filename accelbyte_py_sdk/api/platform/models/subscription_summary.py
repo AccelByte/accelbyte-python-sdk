@@ -151,27 +151,27 @@ class SubscriptionSummary(Model):
     def create(
         cls,
         id_: str,
-        namespace: str,
-        user_id: str,
         item_id: str,
+        namespace: str,
         status: str,
-        sku: Optional[str] = None,
-        current_period_start: Optional[str] = None,
+        user_id: str,
         current_period_end: Optional[str] = None,
+        current_period_start: Optional[str] = None,
+        sku: Optional[str] = None,
         subscribed_by: Optional[str] = None,
     ) -> SubscriptionSummary:
         instance = cls()
         instance.id_ = id_
-        instance.namespace = namespace
-        instance.user_id = user_id
         instance.item_id = item_id
+        instance.namespace = namespace
         instance.status = status
-        if sku is not None:
-            instance.sku = sku
-        if current_period_start is not None:
-            instance.current_period_start = current_period_start
+        instance.user_id = user_id
         if current_period_end is not None:
             instance.current_period_end = current_period_end
+        if current_period_start is not None:
+            instance.current_period_start = current_period_start
+        if sku is not None:
+            instance.sku = sku
         if subscribed_by is not None:
             instance.subscribed_by = subscribed_by
         return instance

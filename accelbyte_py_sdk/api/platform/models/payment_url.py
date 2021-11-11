@@ -96,14 +96,14 @@ class PaymentUrl(Model):
     def create(
         cls,
         payment_provider: str,
-        payment_url: str,
         payment_type: str,
+        payment_url: str,
         return_url: Optional[str] = None,
     ) -> PaymentUrl:
         instance = cls()
         instance.payment_provider = payment_provider
-        instance.payment_url = payment_url
         instance.payment_type = payment_type
+        instance.payment_url = payment_url
         if return_url is not None:
             instance.return_url = return_url
         return instance

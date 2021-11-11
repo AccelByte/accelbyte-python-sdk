@@ -483,114 +483,114 @@ class TradeNotification(Model):
     @classmethod
     def create(
         cls,
-        namespace: str,
+        currency: CurrencySummary,
+        ext_order_no: str,
         issued_at: str,
-        type_: str,
+        namespace: str,
         nonce_str: str,
         payment_order_no: str,
-        ext_order_no: str,
-        sandbox: bool,
-        price: int,
         payment_provider: str,
-        currency: CurrencySummary,
+        price: int,
+        sandbox: bool,
         status: str,
-        user_id: Optional[str] = None,
+        type_: str,
+        additional_data: Optional[AdditionalData] = None,
+        authorised_time: Optional[str] = None,
+        chargeback_reversed_time: Optional[str] = None,
+        chargeback_time: Optional[str] = None,
+        charged_time: Optional[str] = None,
+        created_time: Optional[str] = None,
+        custom_parameters: Optional[Dict[str, Any]] = None,
+        ext_tx_id: Optional[str] = None,
+        ext_user_id: Optional[str] = None,
+        metadata: Optional[Dict[str, str]] = None,
+        payment_method: Optional[str] = None,
+        payment_method_fee: Optional[int] = None,
+        payment_provider_fee: Optional[int] = None,
+        payment_station_url: Optional[str] = None,
+        refunded_time: Optional[str] = None,
+        sales_tax: Optional[int] = None,
+        sku: Optional[str] = None,
+        status_reason: Optional[str] = None,
+        subscription_id: Optional[str] = None,
+        subtotal_price: Optional[int] = None,
         target_namespace: Optional[str] = None,
         target_user_id: Optional[str] = None,
-        sku: Optional[str] = None,
-        ext_user_id: Optional[str] = None,
-        payment_method: Optional[str] = None,
         tax: Optional[int] = None,
-        vat: Optional[int] = None,
-        sales_tax: Optional[int] = None,
-        payment_provider_fee: Optional[int] = None,
-        payment_method_fee: Optional[int] = None,
-        payment_station_url: Optional[str] = None,
-        status_reason: Optional[str] = None,
-        authorised_time: Optional[str] = None,
-        created_time: Optional[str] = None,
-        charged_time: Optional[str] = None,
-        refunded_time: Optional[str] = None,
-        chargeback_time: Optional[str] = None,
-        chargeback_reversed_time: Optional[str] = None,
-        custom_parameters: Optional[Dict[str, Any]] = None,
-        metadata: Optional[Dict[str, str]] = None,
-        subscription_id: Optional[str] = None,
-        total_tax: Optional[int] = None,
         total_price: Optional[int] = None,
-        subtotal_price: Optional[int] = None,
-        ext_tx_id: Optional[str] = None,
+        total_tax: Optional[int] = None,
         tx_end_time: Optional[str] = None,
-        additional_data: Optional[AdditionalData] = None,
+        user_id: Optional[str] = None,
+        vat: Optional[int] = None,
     ) -> TradeNotification:
         instance = cls()
-        instance.namespace = namespace
+        instance.currency = currency
+        instance.ext_order_no = ext_order_no
         instance.issued_at = issued_at
-        instance.type_ = type_
+        instance.namespace = namespace
         instance.nonce_str = nonce_str
         instance.payment_order_no = payment_order_no
-        instance.ext_order_no = ext_order_no
-        instance.sandbox = sandbox
-        instance.price = price
         instance.payment_provider = payment_provider
-        instance.currency = currency
+        instance.price = price
+        instance.sandbox = sandbox
         instance.status = status
-        if user_id is not None:
-            instance.user_id = user_id
+        instance.type_ = type_
+        if additional_data is not None:
+            instance.additional_data = additional_data
+        if authorised_time is not None:
+            instance.authorised_time = authorised_time
+        if chargeback_reversed_time is not None:
+            instance.chargeback_reversed_time = chargeback_reversed_time
+        if chargeback_time is not None:
+            instance.chargeback_time = chargeback_time
+        if charged_time is not None:
+            instance.charged_time = charged_time
+        if created_time is not None:
+            instance.created_time = created_time
+        if custom_parameters is not None:
+            instance.custom_parameters = custom_parameters
+        if ext_tx_id is not None:
+            instance.ext_tx_id = ext_tx_id
+        if ext_user_id is not None:
+            instance.ext_user_id = ext_user_id
+        if metadata is not None:
+            instance.metadata = metadata
+        if payment_method is not None:
+            instance.payment_method = payment_method
+        if payment_method_fee is not None:
+            instance.payment_method_fee = payment_method_fee
+        if payment_provider_fee is not None:
+            instance.payment_provider_fee = payment_provider_fee
+        if payment_station_url is not None:
+            instance.payment_station_url = payment_station_url
+        if refunded_time is not None:
+            instance.refunded_time = refunded_time
+        if sales_tax is not None:
+            instance.sales_tax = sales_tax
+        if sku is not None:
+            instance.sku = sku
+        if status_reason is not None:
+            instance.status_reason = status_reason
+        if subscription_id is not None:
+            instance.subscription_id = subscription_id
+        if subtotal_price is not None:
+            instance.subtotal_price = subtotal_price
         if target_namespace is not None:
             instance.target_namespace = target_namespace
         if target_user_id is not None:
             instance.target_user_id = target_user_id
-        if sku is not None:
-            instance.sku = sku
-        if ext_user_id is not None:
-            instance.ext_user_id = ext_user_id
-        if payment_method is not None:
-            instance.payment_method = payment_method
         if tax is not None:
             instance.tax = tax
-        if vat is not None:
-            instance.vat = vat
-        if sales_tax is not None:
-            instance.sales_tax = sales_tax
-        if payment_provider_fee is not None:
-            instance.payment_provider_fee = payment_provider_fee
-        if payment_method_fee is not None:
-            instance.payment_method_fee = payment_method_fee
-        if payment_station_url is not None:
-            instance.payment_station_url = payment_station_url
-        if status_reason is not None:
-            instance.status_reason = status_reason
-        if authorised_time is not None:
-            instance.authorised_time = authorised_time
-        if created_time is not None:
-            instance.created_time = created_time
-        if charged_time is not None:
-            instance.charged_time = charged_time
-        if refunded_time is not None:
-            instance.refunded_time = refunded_time
-        if chargeback_time is not None:
-            instance.chargeback_time = chargeback_time
-        if chargeback_reversed_time is not None:
-            instance.chargeback_reversed_time = chargeback_reversed_time
-        if custom_parameters is not None:
-            instance.custom_parameters = custom_parameters
-        if metadata is not None:
-            instance.metadata = metadata
-        if subscription_id is not None:
-            instance.subscription_id = subscription_id
-        if total_tax is not None:
-            instance.total_tax = total_tax
         if total_price is not None:
             instance.total_price = total_price
-        if subtotal_price is not None:
-            instance.subtotal_price = subtotal_price
-        if ext_tx_id is not None:
-            instance.ext_tx_id = ext_tx_id
+        if total_tax is not None:
+            instance.total_tax = total_tax
         if tx_end_time is not None:
             instance.tx_end_time = tx_end_time
-        if additional_data is not None:
-            instance.additional_data = additional_data
+        if user_id is not None:
+            instance.user_id = user_id
+        if vat is not None:
+            instance.vat = vat
         return instance
 
     @classmethod

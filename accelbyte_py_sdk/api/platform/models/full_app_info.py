@@ -213,16 +213,16 @@ class FullAppInfo(Model):
         namespace: str,
         carousel: Optional[List[Slide]] = None,
         developer: Optional[str] = None,
-        publisher: Optional[str] = None,
-        website_url: Optional[str] = None,
         forum_url: Optional[str] = None,
-        platforms: Optional[List[str]] = None,
-        platform_requirements: Optional[Dict[str, List[Requirement]]] = None,
-        localizations: Optional[Dict[str, AppLocalization]] = None,
-        primary_genre: Optional[str] = None,
         genres: Optional[List[str]] = None,
+        localizations: Optional[Dict[str, AppLocalization]] = None,
+        platform_requirements: Optional[Dict[str, List[Requirement]]] = None,
+        platforms: Optional[List[str]] = None,
         players: Optional[List[str]] = None,
+        primary_genre: Optional[str] = None,
+        publisher: Optional[str] = None,
         release_date: Optional[str] = None,
+        website_url: Optional[str] = None,
     ) -> FullAppInfo:
         instance = cls()
         instance.item_id = item_id
@@ -231,26 +231,26 @@ class FullAppInfo(Model):
             instance.carousel = carousel
         if developer is not None:
             instance.developer = developer
-        if publisher is not None:
-            instance.publisher = publisher
-        if website_url is not None:
-            instance.website_url = website_url
         if forum_url is not None:
             instance.forum_url = forum_url
-        if platforms is not None:
-            instance.platforms = platforms
-        if platform_requirements is not None:
-            instance.platform_requirements = platform_requirements
-        if localizations is not None:
-            instance.localizations = localizations
-        if primary_genre is not None:
-            instance.primary_genre = primary_genre
         if genres is not None:
             instance.genres = genres
+        if localizations is not None:
+            instance.localizations = localizations
+        if platform_requirements is not None:
+            instance.platform_requirements = platform_requirements
+        if platforms is not None:
+            instance.platforms = platforms
         if players is not None:
             instance.players = players
+        if primary_genre is not None:
+            instance.primary_genre = primary_genre
+        if publisher is not None:
+            instance.publisher = publisher
         if release_date is not None:
             instance.release_date = release_date
+        if website_url is not None:
+            instance.website_url = website_url
         return instance
 
     @classmethod

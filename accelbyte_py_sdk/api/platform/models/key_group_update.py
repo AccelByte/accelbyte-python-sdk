@@ -97,17 +97,17 @@ class KeyGroupUpdate(Model):
         cls,
         name: str,
         description: Optional[str] = None,
-        tags: Optional[List[str]] = None,
         status: Optional[str] = None,
+        tags: Optional[List[str]] = None,
     ) -> KeyGroupUpdate:
         instance = cls()
         instance.name = name
         if description is not None:
             instance.description = description
-        if tags is not None:
-            instance.tags = tags
         if status is not None:
             instance.status = status
+        if tags is not None:
+            instance.tags = tags
         return instance
 
     @classmethod

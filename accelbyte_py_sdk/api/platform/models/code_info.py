@@ -273,53 +273,53 @@ class CodeInfo(Model):
     @classmethod
     def create(
         cls,
-        id_: str,
-        type_: str,
-        namespace: str,
+        batch_no: int,
         campaign_id: str,
-        value: str,
+        created_at: str,
+        id_: str,
+        max_redeem_count_per_campaign_per_user: int,
         max_redeem_count_per_code: int,
         max_redeem_count_per_code_per_user: int,
-        max_redeem_count_per_campaign_per_user: int,
-        remainder: int,
-        redeemed_count: int,
-        status: str,
+        namespace: str,
         redeem_type: str,
-        batch_no: int,
-        created_at: str,
+        redeemed_count: int,
+        remainder: int,
+        status: str,
+        type_: str,
         updated_at: str,
-        redeem_start: Optional[str] = None,
-        redeem_end: Optional[str] = None,
-        items: Optional[List[RedeemableItem]] = None,
+        value: str,
         acquire_order_no: Optional[str] = None,
         acquire_user_id: Optional[str] = None,
+        items: Optional[List[RedeemableItem]] = None,
+        redeem_end: Optional[str] = None,
+        redeem_start: Optional[str] = None,
     ) -> CodeInfo:
         instance = cls()
-        instance.id_ = id_
-        instance.type_ = type_
-        instance.namespace = namespace
+        instance.batch_no = batch_no
         instance.campaign_id = campaign_id
-        instance.value = value
+        instance.created_at = created_at
+        instance.id_ = id_
+        instance.max_redeem_count_per_campaign_per_user = max_redeem_count_per_campaign_per_user
         instance.max_redeem_count_per_code = max_redeem_count_per_code
         instance.max_redeem_count_per_code_per_user = max_redeem_count_per_code_per_user
-        instance.max_redeem_count_per_campaign_per_user = max_redeem_count_per_campaign_per_user
-        instance.remainder = remainder
-        instance.redeemed_count = redeemed_count
-        instance.status = status
+        instance.namespace = namespace
         instance.redeem_type = redeem_type
-        instance.batch_no = batch_no
-        instance.created_at = created_at
+        instance.redeemed_count = redeemed_count
+        instance.remainder = remainder
+        instance.status = status
+        instance.type_ = type_
         instance.updated_at = updated_at
-        if redeem_start is not None:
-            instance.redeem_start = redeem_start
-        if redeem_end is not None:
-            instance.redeem_end = redeem_end
-        if items is not None:
-            instance.items = items
+        instance.value = value
         if acquire_order_no is not None:
             instance.acquire_order_no = acquire_order_no
         if acquire_user_id is not None:
             instance.acquire_user_id = acquire_user_id
+        if items is not None:
+            instance.items = items
+        if redeem_end is not None:
+            instance.redeem_end = redeem_end
+        if redeem_start is not None:
+            instance.redeem_start = redeem_start
         return instance
 
     @classmethod

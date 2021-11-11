@@ -95,20 +95,20 @@ class FileUploadUrlInfo(Model):
     @classmethod
     def create(
         cls,
-        url: Optional[str] = None,
         access_url: Optional[str] = None,
-        method: Optional[str] = None,
         content_type: Optional[str] = None,
+        method: Optional[str] = None,
+        url: Optional[str] = None,
     ) -> FileUploadUrlInfo:
         instance = cls()
-        if url is not None:
-            instance.url = url
         if access_url is not None:
             instance.access_url = access_url
-        if method is not None:
-            instance.method = method
         if content_type is not None:
             instance.content_type = content_type
+        if method is not None:
+            instance.method = method
+        if url is not None:
+            instance.url = url
         return instance
 
     @classmethod

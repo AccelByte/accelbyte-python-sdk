@@ -76,14 +76,14 @@ class OrderGrantInfo(Model):
     @classmethod
     def create(
         cls,
-        entitlements: Optional[List[EntitlementSummary]] = None,
         credits: Optional[List[CreditSummary]] = None,
+        entitlements: Optional[List[EntitlementSummary]] = None,
     ) -> OrderGrantInfo:
         instance = cls()
-        if entitlements is not None:
-            instance.entitlements = entitlements
         if credits is not None:
             instance.credits = credits
+        if entitlements is not None:
+            instance.entitlements = entitlements
         return instance
 
     @classmethod

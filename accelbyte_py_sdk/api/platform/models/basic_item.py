@@ -227,48 +227,48 @@ class BasicItem(Model):
     @classmethod
     def create(
         cls,
-        item_id: str,
-        namespace: str,
-        name: str,
-        entitlement_type: str,
-        status: str,
-        item_type: str,
         created_at: str,
+        entitlement_type: str,
+        item_id: str,
+        item_type: str,
+        name: str,
+        namespace: str,
+        status: str,
         updated_at: str,
         app_id: Optional[str] = None,
         app_type: Optional[str] = None,
-        season_type: Optional[str] = None,
         base_app_id: Optional[str] = None,
-        sku: Optional[str] = None,
-        use_count: Optional[int] = None,
-        tags: Optional[List[str]] = None,
         features: Optional[List[str]] = None,
+        season_type: Optional[str] = None,
+        sku: Optional[str] = None,
+        tags: Optional[List[str]] = None,
+        use_count: Optional[int] = None,
     ) -> BasicItem:
         instance = cls()
-        instance.item_id = item_id
-        instance.namespace = namespace
-        instance.name = name
-        instance.entitlement_type = entitlement_type
-        instance.status = status
-        instance.item_type = item_type
         instance.created_at = created_at
+        instance.entitlement_type = entitlement_type
+        instance.item_id = item_id
+        instance.item_type = item_type
+        instance.name = name
+        instance.namespace = namespace
+        instance.status = status
         instance.updated_at = updated_at
         if app_id is not None:
             instance.app_id = app_id
         if app_type is not None:
             instance.app_type = app_type
-        if season_type is not None:
-            instance.season_type = season_type
         if base_app_id is not None:
             instance.base_app_id = base_app_id
-        if sku is not None:
-            instance.sku = sku
-        if use_count is not None:
-            instance.use_count = use_count
-        if tags is not None:
-            instance.tags = tags
         if features is not None:
             instance.features = features
+        if season_type is not None:
+            instance.season_type = season_type
+        if sku is not None:
+            instance.sku = sku
+        if tags is not None:
+            instance.tags = tags
+        if use_count is not None:
+            instance.use_count = use_count
         return instance
 
     @classmethod

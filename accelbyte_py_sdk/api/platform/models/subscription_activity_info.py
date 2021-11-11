@@ -216,43 +216,43 @@ class SubscriptionActivityInfo(Model):
     @classmethod
     def create(
         cls,
-        namespace: str,
-        user_id: str,
-        subscription_id: str,
-        operator: str,
         action: str,
-        subscribed_by: str,
-        current_cycle: int,
         charged_cycles: int,
         created_at: str,
+        current_cycle: int,
+        namespace: str,
+        operator: str,
+        subscribed_by: str,
+        subscription_id: str,
         updated_at: str,
-        trialed_cycles: Optional[int] = None,
-        in_fixed_free_days: Optional[bool] = None,
-        in_fixed_cycle_trial: Optional[bool] = None,
-        reason: Optional[str] = None,
+        user_id: str,
         grant_days: Optional[int] = None,
+        in_fixed_cycle_trial: Optional[bool] = None,
+        in_fixed_free_days: Optional[bool] = None,
+        reason: Optional[str] = None,
+        trialed_cycles: Optional[int] = None,
     ) -> SubscriptionActivityInfo:
         instance = cls()
-        instance.namespace = namespace
-        instance.user_id = user_id
-        instance.subscription_id = subscription_id
-        instance.operator = operator
         instance.action = action
-        instance.subscribed_by = subscribed_by
-        instance.current_cycle = current_cycle
         instance.charged_cycles = charged_cycles
         instance.created_at = created_at
+        instance.current_cycle = current_cycle
+        instance.namespace = namespace
+        instance.operator = operator
+        instance.subscribed_by = subscribed_by
+        instance.subscription_id = subscription_id
         instance.updated_at = updated_at
-        if trialed_cycles is not None:
-            instance.trialed_cycles = trialed_cycles
-        if in_fixed_free_days is not None:
-            instance.in_fixed_free_days = in_fixed_free_days
-        if in_fixed_cycle_trial is not None:
-            instance.in_fixed_cycle_trial = in_fixed_cycle_trial
-        if reason is not None:
-            instance.reason = reason
+        instance.user_id = user_id
         if grant_days is not None:
             instance.grant_days = grant_days
+        if in_fixed_cycle_trial is not None:
+            instance.in_fixed_cycle_trial = in_fixed_cycle_trial
+        if in_fixed_free_days is not None:
+            instance.in_fixed_free_days = in_fixed_free_days
+        if reason is not None:
+            instance.reason = reason
+        if trialed_cycles is not None:
+            instance.trialed_cycles = trialed_cycles
         return instance
 
     @classmethod

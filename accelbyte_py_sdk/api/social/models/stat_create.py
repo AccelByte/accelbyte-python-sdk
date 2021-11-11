@@ -161,30 +161,30 @@ class StatCreate(Model):
     @classmethod
     def create(
         cls,
-        stat_code: str,
-        name: str,
         default_value: float,
+        name: str,
         set_by: str,
+        stat_code: str,
         description: Optional[str] = None,
-        minimum: Optional[float] = None,
-        maximum: Optional[float] = None,
         increment_only: Optional[bool] = None,
+        maximum: Optional[float] = None,
+        minimum: Optional[float] = None,
         set_as_global: Optional[bool] = None,
         tags: Optional[List[str]] = None,
     ) -> StatCreate:
         instance = cls()
-        instance.stat_code = stat_code
-        instance.name = name
         instance.default_value = default_value
+        instance.name = name
         instance.set_by = set_by
+        instance.stat_code = stat_code
         if description is not None:
             instance.description = description
-        if minimum is not None:
-            instance.minimum = minimum
-        if maximum is not None:
-            instance.maximum = maximum
         if increment_only is not None:
             instance.increment_only = increment_only
+        if maximum is not None:
+            instance.maximum = maximum
+        if minimum is not None:
+            instance.minimum = minimum
         if set_as_global is not None:
             instance.set_as_global = set_as_global
         if tags is not None:

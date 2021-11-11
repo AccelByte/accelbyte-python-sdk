@@ -112,17 +112,17 @@ class FulfillmentResult(Model):
         cls,
         namespace: str,
         user_id: str,
-        entitlement_summaries: Optional[List[EntitlementSummary]] = None,
         credit_summaries: Optional[List[CreditSummary]] = None,
+        entitlement_summaries: Optional[List[EntitlementSummary]] = None,
         subscription_summaries: Optional[List[SubscriptionSummary]] = None,
     ) -> FulfillmentResult:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
-        if entitlement_summaries is not None:
-            instance.entitlement_summaries = entitlement_summaries
         if credit_summaries is not None:
             instance.credit_summaries = credit_summaries
+        if entitlement_summaries is not None:
+            instance.entitlement_summaries = entitlement_summaries
         if subscription_summaries is not None:
             instance.subscription_summaries = subscription_summaries
         return instance

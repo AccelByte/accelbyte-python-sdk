@@ -107,17 +107,17 @@ class CampaignDynamicInfo(Model):
     def create(
         cls,
         available_sale_count: int,
-        quantity: int,
-        sale_count: int,
         last_batch_no: int,
+        quantity: int,
         remainder: int,
+        sale_count: int,
     ) -> CampaignDynamicInfo:
         instance = cls()
         instance.available_sale_count = available_sale_count
-        instance.quantity = quantity
-        instance.sale_count = sale_count
         instance.last_batch_no = last_batch_no
+        instance.quantity = quantity
         instance.remainder = remainder
+        instance.sale_count = sale_count
         return instance
 
     @classmethod

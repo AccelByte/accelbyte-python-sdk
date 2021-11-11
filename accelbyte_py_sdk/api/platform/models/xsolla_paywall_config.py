@@ -95,16 +95,16 @@ class XsollaPaywallConfig(Model):
     @classmethod
     def create(
         cls,
-        theme: str,
-        size: str,
         device: str,
         show_close_button: bool,
+        size: str,
+        theme: str,
     ) -> XsollaPaywallConfig:
         instance = cls()
-        instance.theme = theme
-        instance.size = size
         instance.device = device
         instance.show_close_button = show_close_button
+        instance.size = size
+        instance.theme = theme
         return instance
 
     @classmethod

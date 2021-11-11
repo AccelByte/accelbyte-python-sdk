@@ -95,18 +95,18 @@ class SteamSyncRequest(Model):
     @classmethod
     def create(
         cls,
-        steam_id: str,
         app_id: str,
-        region: Optional[str] = None,
+        steam_id: str,
         language: Optional[str] = None,
+        region: Optional[str] = None,
     ) -> SteamSyncRequest:
         instance = cls()
-        instance.steam_id = steam_id
         instance.app_id = app_id
-        if region is not None:
-            instance.region = region
+        instance.steam_id = steam_id
         if language is not None:
             instance.language = language
+        if region is not None:
+            instance.region = region
         return instance
 
     @classmethod

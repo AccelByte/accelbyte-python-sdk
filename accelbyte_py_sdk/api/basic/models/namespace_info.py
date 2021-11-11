@@ -106,21 +106,21 @@ class NamespaceInfo(Model):
     @classmethod
     def create(
         cls,
-        namespace: Optional[str] = None,
-        display_name: Optional[str] = None,
-        status: Optional[str] = None,
         created_at: Optional[str] = None,
+        display_name: Optional[str] = None,
+        namespace: Optional[str] = None,
+        status: Optional[str] = None,
         updated_at: Optional[str] = None,
     ) -> NamespaceInfo:
         instance = cls()
-        if namespace is not None:
-            instance.namespace = namespace
-        if display_name is not None:
-            instance.display_name = display_name
-        if status is not None:
-            instance.status = status
         if created_at is not None:
             instance.created_at = created_at
+        if display_name is not None:
+            instance.display_name = display_name
+        if namespace is not None:
+            instance.namespace = namespace
+        if status is not None:
+            instance.status = status
         if updated_at is not None:
             instance.updated_at = updated_at
         return instance

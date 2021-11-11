@@ -106,16 +106,16 @@ class ItemDynamicDataInfo(Model):
     @classmethod
     def create(
         cls,
+        available_count: int,
         item_id: str,
         namespace: str,
-        available_count: int,
         user_available_count: int,
         user_purchase_limit: int,
     ) -> ItemDynamicDataInfo:
         instance = cls()
+        instance.available_count = available_count
         instance.item_id = item_id
         instance.namespace = namespace
-        instance.available_count = available_count
         instance.user_available_count = user_available_count
         instance.user_purchase_limit = user_purchase_limit
         return instance

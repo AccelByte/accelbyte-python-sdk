@@ -183,29 +183,29 @@ class StoreInfo(Model):
     @classmethod
     def create(
         cls,
-        store_id: str,
+        created_at: str,
+        default_language: str,
+        default_region: str,
         namespace: str,
-        title: str,
         published: bool,
+        store_id: str,
         supported_languages: List[str],
         supported_regions: List[str],
-        default_region: str,
-        default_language: str,
-        created_at: str,
+        title: str,
         updated_at: str,
         description: Optional[str] = None,
         published_time: Optional[str] = None,
     ) -> StoreInfo:
         instance = cls()
-        instance.store_id = store_id
+        instance.created_at = created_at
+        instance.default_language = default_language
+        instance.default_region = default_region
         instance.namespace = namespace
-        instance.title = title
         instance.published = published
+        instance.store_id = store_id
         instance.supported_languages = supported_languages
         instance.supported_regions = supported_regions
-        instance.default_region = default_region
-        instance.default_language = default_language
-        instance.created_at = created_at
+        instance.title = title
         instance.updated_at = updated_at
         if description is not None:
             instance.description = description

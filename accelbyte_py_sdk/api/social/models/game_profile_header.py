@@ -128,29 +128,29 @@ class GameProfileHeader(Model):
     @classmethod
     def create(
         cls,
-        profile_id: Optional[str] = None,
-        user_id: Optional[str] = None,
-        namespace: Optional[str] = None,
-        profile_name: Optional[str] = None,
         avatar_url: Optional[str] = None,
         label: Optional[str] = None,
+        namespace: Optional[str] = None,
+        profile_id: Optional[str] = None,
+        profile_name: Optional[str] = None,
         tags: Optional[List[str]] = None,
+        user_id: Optional[str] = None,
     ) -> GameProfileHeader:
         instance = cls()
-        if profile_id is not None:
-            instance.profile_id = profile_id
-        if user_id is not None:
-            instance.user_id = user_id
-        if namespace is not None:
-            instance.namespace = namespace
-        if profile_name is not None:
-            instance.profile_name = profile_name
         if avatar_url is not None:
             instance.avatar_url = avatar_url
         if label is not None:
             instance.label = label
+        if namespace is not None:
+            instance.namespace = namespace
+        if profile_id is not None:
+            instance.profile_id = profile_id
+        if profile_name is not None:
+            instance.profile_name = profile_name
         if tags is not None:
             instance.tags = tags
+        if user_id is not None:
+            instance.user_id = user_id
         return instance
 
     @classmethod

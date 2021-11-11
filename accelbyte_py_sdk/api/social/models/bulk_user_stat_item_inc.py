@@ -84,13 +84,13 @@ class BulkUserStatItemInc(Model):
     @classmethod
     def create(
         cls,
-        user_id: str,
         stat_code: str,
+        user_id: str,
         inc: Optional[float] = None,
     ) -> BulkUserStatItemInc:
         instance = cls()
-        instance.user_id = user_id
         instance.stat_code = stat_code
+        instance.user_id = user_id
         if inc is not None:
             instance.inc = inc
         return instance

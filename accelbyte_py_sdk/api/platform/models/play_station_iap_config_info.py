@@ -73,12 +73,12 @@ class PlayStationIAPConfigInfo(Model):
     @classmethod
     def create(
         cls,
-        namespace: str,
         environment: str,
+        namespace: str,
     ) -> PlayStationIAPConfigInfo:
         instance = cls()
-        instance.namespace = namespace
         instance.environment = environment
+        instance.namespace = namespace
         return instance
 
     @classmethod

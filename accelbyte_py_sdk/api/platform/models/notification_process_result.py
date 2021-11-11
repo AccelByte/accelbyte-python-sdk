@@ -95,20 +95,20 @@ class NotificationProcessResult(Model):
     @classmethod
     def create(
         cls,
-        status: Optional[str] = None,
         code: Optional[str] = None,
         custom_param: Optional[Dict[str, Any]] = None,
         severity: Optional[int] = None,
+        status: Optional[str] = None,
     ) -> NotificationProcessResult:
         instance = cls()
-        if status is not None:
-            instance.status = status
         if code is not None:
             instance.code = code
         if custom_param is not None:
             instance.custom_param = custom_param
         if severity is not None:
             instance.severity = severity
+        if status is not None:
+            instance.status = status
         return instance
 
     @classmethod

@@ -84,13 +84,13 @@ class AppleIAPConfigInfo(Model):
     @classmethod
     def create(
         cls,
-        namespace: str,
         bundle_id: str,
+        namespace: str,
         password: Optional[str] = None,
     ) -> AppleIAPConfigInfo:
         instance = cls()
-        instance.namespace = namespace
         instance.bundle_id = bundle_id
+        instance.namespace = namespace
         if password is not None:
             instance.password = password
         return instance

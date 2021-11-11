@@ -97,17 +97,17 @@ class GoogleIAPConfigInfo(Model):
         cls,
         namespace: str,
         application_name: Optional[str] = None,
-        service_account_id: Optional[str] = None,
         p12_file_name: Optional[str] = None,
+        service_account_id: Optional[str] = None,
     ) -> GoogleIAPConfigInfo:
         instance = cls()
         instance.namespace = namespace
         if application_name is not None:
             instance.application_name = application_name
-        if service_account_id is not None:
-            instance.service_account_id = service_account_id
         if p12_file_name is not None:
             instance.p12_file_name = p12_file_name
+        if service_account_id is not None:
+            instance.service_account_id = service_account_id
         return instance
 
     @classmethod

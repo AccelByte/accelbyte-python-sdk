@@ -55,14 +55,14 @@ from ..operations.order import UpdateUserOrderStatus
 
 
 @same_doc_as(CountOfPurchasedItem)
-def count_of_purchased_item(user_id: str, item_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def count_of_purchased_item(item_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = CountOfPurchasedItem.create(
-        user_id=user_id,
         item_id=item_id,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

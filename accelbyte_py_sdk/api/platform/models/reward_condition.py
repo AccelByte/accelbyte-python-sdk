@@ -97,16 +97,16 @@ class RewardCondition(Model):
     @classmethod
     def create(
         cls,
-        condition_name: Optional[str] = None,
         condition: Optional[str] = None,
+        condition_name: Optional[str] = None,
         event_name: Optional[str] = None,
         reward_items: Optional[List[RewardItem]] = None,
     ) -> RewardCondition:
         instance = cls()
-        if condition_name is not None:
-            instance.condition_name = condition_name
         if condition is not None:
             instance.condition = condition
+        if condition_name is not None:
+            instance.condition_name = condition_name
         if event_name is not None:
             instance.event_name = event_name
         if reward_items is not None:

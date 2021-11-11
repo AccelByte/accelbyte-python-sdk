@@ -95,18 +95,18 @@ class MockIAPReceipt(Model):
     @classmethod
     def create(
         cls,
-        type_: str,
         product_id: str,
-        region: Optional[str] = None,
+        type_: str,
         language: Optional[str] = None,
+        region: Optional[str] = None,
     ) -> MockIAPReceipt:
         instance = cls()
-        instance.type_ = type_
         instance.product_id = product_id
-        if region is not None:
-            instance.region = region
+        instance.type_ = type_
         if language is not None:
             instance.language = language
+        if region is not None:
+            instance.region = region
         return instance
 
     @classmethod

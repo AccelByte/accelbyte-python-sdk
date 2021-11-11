@@ -243,55 +243,55 @@ class AppInfo(Model):
         cls,
         item_id: str,
         namespace: str,
-        slogan: Optional[str] = None,
         announcement: Optional[str] = None,
         carousel: Optional[List[Slide]] = None,
         developer: Optional[str] = None,
-        publisher: Optional[str] = None,
-        website_url: Optional[str] = None,
         forum_url: Optional[str] = None,
-        platforms: Optional[List[str]] = None,
-        platform_requirements: Optional[Dict[str, List[Requirement]]] = None,
-        primary_genre: Optional[str] = None,
         genres: Optional[List[str]] = None,
-        players: Optional[List[str]] = None,
-        release_date: Optional[str] = None,
-        region: Optional[str] = None,
         language: Optional[str] = None,
+        platform_requirements: Optional[Dict[str, List[Requirement]]] = None,
+        platforms: Optional[List[str]] = None,
+        players: Optional[List[str]] = None,
+        primary_genre: Optional[str] = None,
+        publisher: Optional[str] = None,
+        region: Optional[str] = None,
+        release_date: Optional[str] = None,
+        slogan: Optional[str] = None,
+        website_url: Optional[str] = None,
     ) -> AppInfo:
         instance = cls()
         instance.item_id = item_id
         instance.namespace = namespace
-        if slogan is not None:
-            instance.slogan = slogan
         if announcement is not None:
             instance.announcement = announcement
         if carousel is not None:
             instance.carousel = carousel
         if developer is not None:
             instance.developer = developer
-        if publisher is not None:
-            instance.publisher = publisher
-        if website_url is not None:
-            instance.website_url = website_url
         if forum_url is not None:
             instance.forum_url = forum_url
-        if platforms is not None:
-            instance.platforms = platforms
-        if platform_requirements is not None:
-            instance.platform_requirements = platform_requirements
-        if primary_genre is not None:
-            instance.primary_genre = primary_genre
         if genres is not None:
             instance.genres = genres
-        if players is not None:
-            instance.players = players
-        if release_date is not None:
-            instance.release_date = release_date
-        if region is not None:
-            instance.region = region
         if language is not None:
             instance.language = language
+        if platform_requirements is not None:
+            instance.platform_requirements = platform_requirements
+        if platforms is not None:
+            instance.platforms = platforms
+        if players is not None:
+            instance.players = players
+        if primary_genre is not None:
+            instance.primary_genre = primary_genre
+        if publisher is not None:
+            instance.publisher = publisher
+        if region is not None:
+            instance.region = region
+        if release_date is not None:
+            instance.release_date = release_date
+        if slogan is not None:
+            instance.slogan = slogan
+        if website_url is not None:
+            instance.website_url = website_url
         return instance
 
     @classmethod

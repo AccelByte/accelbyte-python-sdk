@@ -75,14 +75,14 @@ class PaymentOrderSyncResult(Model):
     @classmethod
     def create(
         cls,
-        payment_orders: Optional[List[PaymentOrder]] = None,
         next_evaluated_key: Optional[str] = None,
+        payment_orders: Optional[List[PaymentOrder]] = None,
     ) -> PaymentOrderSyncResult:
         instance = cls()
-        if payment_orders is not None:
-            instance.payment_orders = payment_orders
         if next_evaluated_key is not None:
             instance.next_evaluated_key = next_evaluated_key
+        if payment_orders is not None:
+            instance.payment_orders = payment_orders
         return instance
 
     @classmethod

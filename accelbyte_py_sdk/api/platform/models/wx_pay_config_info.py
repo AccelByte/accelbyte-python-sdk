@@ -107,20 +107,20 @@ class WxPayConfigInfo(Model):
     def create(
         cls,
         app_id: Optional[str] = None,
-        mchid: Optional[str] = None,
-        key: Optional[str] = None,
         cert_path: Optional[str] = None,
+        key: Optional[str] = None,
+        mchid: Optional[str] = None,
         return_url: Optional[str] = None,
     ) -> WxPayConfigInfo:
         instance = cls()
         if app_id is not None:
             instance.app_id = app_id
-        if mchid is not None:
-            instance.mchid = mchid
-        if key is not None:
-            instance.key = key
         if cert_path is not None:
             instance.cert_path = cert_path
+        if key is not None:
+            instance.key = key
+        if mchid is not None:
+            instance.mchid = mchid
         if return_url is not None:
             instance.return_url = return_url
         return instance

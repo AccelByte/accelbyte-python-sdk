@@ -122,11 +122,11 @@ def revoke_user(user_id: str, namespace: Optional[str] = None, x_additional_head
 
 
 @same_doc_as(TokenGrant)
-def token_grant(grant_type: str, device_id: Optional[str] = None, code: Optional[str] = None, extend_exp: Optional[bool] = None, namespace: Optional[str] = None, password: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, username: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def token_grant(grant_type: str, code: Optional[str] = None, device_id: Optional[str] = None, extend_exp: Optional[bool] = None, namespace: Optional[str] = None, password: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, username: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = TokenGrant.create(
         grant_type=grant_type,
-        device_id=device_id,
         code=code,
+        device_id=device_id,
         extend_exp=extend_exp,
         namespace=namespace,
         password=password,

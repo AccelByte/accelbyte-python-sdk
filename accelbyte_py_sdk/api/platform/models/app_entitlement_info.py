@@ -185,40 +185,40 @@ class AppEntitlementInfo(Model):
     @classmethod
     def create(
         cls,
-        namespace: str,
-        user_id: str,
         granted_at: str,
+        namespace: str,
         status: str,
+        user_id: str,
         app_id: Optional[str] = None,
         app_type: Optional[str] = None,
-        sku: Optional[str] = None,
-        store_id: Optional[str] = None,
-        item_id: Optional[str] = None,
-        start_date: Optional[str] = None,
         end_date: Optional[str] = None,
+        item_id: Optional[str] = None,
         item_snapshot: Optional[ItemSnapshot] = None,
+        sku: Optional[str] = None,
+        start_date: Optional[str] = None,
+        store_id: Optional[str] = None,
     ) -> AppEntitlementInfo:
         instance = cls()
-        instance.namespace = namespace
-        instance.user_id = user_id
         instance.granted_at = granted_at
+        instance.namespace = namespace
         instance.status = status
+        instance.user_id = user_id
         if app_id is not None:
             instance.app_id = app_id
         if app_type is not None:
             instance.app_type = app_type
-        if sku is not None:
-            instance.sku = sku
-        if store_id is not None:
-            instance.store_id = store_id
-        if item_id is not None:
-            instance.item_id = item_id
-        if start_date is not None:
-            instance.start_date = start_date
         if end_date is not None:
             instance.end_date = end_date
+        if item_id is not None:
+            instance.item_id = item_id
         if item_snapshot is not None:
             instance.item_snapshot = item_snapshot
+        if sku is not None:
+            instance.sku = sku
+        if start_date is not None:
+            instance.start_date = start_date
+        if store_id is not None:
+            instance.store_id = store_id
         return instance
 
     @classmethod

@@ -395,93 +395,93 @@ class ItemSnapshot(Model):
     @classmethod
     def create(
         cls,
-        item_id: str,
-        namespace: str,
-        name: str,
         entitlement_type: str,
+        item_id: str,
         item_type: str,
-        title: str,
-        region: str,
         language: str,
+        name: str,
+        namespace: str,
+        region: str,
+        title: str,
         app_id: Optional[str] = None,
         app_type: Optional[str] = None,
-        season_type: Optional[str] = None,
         base_app_id: Optional[str] = None,
-        sku: Optional[str] = None,
-        listable: Optional[bool] = None,
-        purchasable: Optional[bool] = None,
-        use_count: Optional[int] = None,
-        stackable: Optional[bool] = None,
-        thumbnail_url: Optional[str] = None,
-        target_namespace: Optional[str] = None,
-        target_currency_code: Optional[str] = None,
-        target_item_id: Optional[str] = None,
-        description: Optional[str] = None,
-        region_data_item: Optional[RegionDataItem] = None,
-        recurring: Optional[Recurring] = None,
-        item_ids: Optional[List[str]] = None,
-        features: Optional[List[str]] = None,
-        max_count_per_user: Optional[int] = None,
-        max_count: Optional[int] = None,
         booth_name: Optional[str] = None,
         created_at: Optional[str] = None,
+        description: Optional[str] = None,
+        features: Optional[List[str]] = None,
+        item_ids: Optional[List[str]] = None,
+        listable: Optional[bool] = None,
+        max_count: Optional[int] = None,
+        max_count_per_user: Optional[int] = None,
+        purchasable: Optional[bool] = None,
+        recurring: Optional[Recurring] = None,
+        region_data_item: Optional[RegionDataItem] = None,
+        season_type: Optional[str] = None,
+        sku: Optional[str] = None,
+        stackable: Optional[bool] = None,
+        target_currency_code: Optional[str] = None,
+        target_item_id: Optional[str] = None,
+        target_namespace: Optional[str] = None,
+        thumbnail_url: Optional[str] = None,
         updated_at: Optional[str] = None,
+        use_count: Optional[int] = None,
     ) -> ItemSnapshot:
         instance = cls()
-        instance.item_id = item_id
-        instance.namespace = namespace
-        instance.name = name
         instance.entitlement_type = entitlement_type
+        instance.item_id = item_id
         instance.item_type = item_type
-        instance.title = title
-        instance.region = region
         instance.language = language
+        instance.name = name
+        instance.namespace = namespace
+        instance.region = region
+        instance.title = title
         if app_id is not None:
             instance.app_id = app_id
         if app_type is not None:
             instance.app_type = app_type
-        if season_type is not None:
-            instance.season_type = season_type
         if base_app_id is not None:
             instance.base_app_id = base_app_id
-        if sku is not None:
-            instance.sku = sku
-        if listable is not None:
-            instance.listable = listable
-        if purchasable is not None:
-            instance.purchasable = purchasable
-        if use_count is not None:
-            instance.use_count = use_count
-        if stackable is not None:
-            instance.stackable = stackable
-        if thumbnail_url is not None:
-            instance.thumbnail_url = thumbnail_url
-        if target_namespace is not None:
-            instance.target_namespace = target_namespace
-        if target_currency_code is not None:
-            instance.target_currency_code = target_currency_code
-        if target_item_id is not None:
-            instance.target_item_id = target_item_id
-        if description is not None:
-            instance.description = description
-        if region_data_item is not None:
-            instance.region_data_item = region_data_item
-        if recurring is not None:
-            instance.recurring = recurring
-        if item_ids is not None:
-            instance.item_ids = item_ids
-        if features is not None:
-            instance.features = features
-        if max_count_per_user is not None:
-            instance.max_count_per_user = max_count_per_user
-        if max_count is not None:
-            instance.max_count = max_count
         if booth_name is not None:
             instance.booth_name = booth_name
         if created_at is not None:
             instance.created_at = created_at
+        if description is not None:
+            instance.description = description
+        if features is not None:
+            instance.features = features
+        if item_ids is not None:
+            instance.item_ids = item_ids
+        if listable is not None:
+            instance.listable = listable
+        if max_count is not None:
+            instance.max_count = max_count
+        if max_count_per_user is not None:
+            instance.max_count_per_user = max_count_per_user
+        if purchasable is not None:
+            instance.purchasable = purchasable
+        if recurring is not None:
+            instance.recurring = recurring
+        if region_data_item is not None:
+            instance.region_data_item = region_data_item
+        if season_type is not None:
+            instance.season_type = season_type
+        if sku is not None:
+            instance.sku = sku
+        if stackable is not None:
+            instance.stackable = stackable
+        if target_currency_code is not None:
+            instance.target_currency_code = target_currency_code
+        if target_item_id is not None:
+            instance.target_item_id = target_item_id
+        if target_namespace is not None:
+            instance.target_namespace = target_namespace
+        if thumbnail_url is not None:
+            instance.thumbnail_url = thumbnail_url
         if updated_at is not None:
             instance.updated_at = updated_at
+        if use_count is not None:
+            instance.use_count = use_count
         return instance
 
     @classmethod

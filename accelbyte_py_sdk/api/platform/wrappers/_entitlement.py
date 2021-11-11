@@ -168,14 +168,14 @@ def exists_any_user_active_entitlement(user_id: str, app_ids: Optional[List[str]
 
 
 @same_doc_as(ExistsAnyUserActiveEntitlementByItemIds)
-def exists_any_user_active_entitlement_by_item_ids(user_id: str, item_ids: List[str], namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def exists_any_user_active_entitlement_by_item_ids(item_ids: List[str], user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = ExistsAnyUserActiveEntitlementByItemIds.create(
-        user_id=user_id,
         item_ids=item_ids,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -195,14 +195,14 @@ def get_entitlement(entitlement_id: str, namespace: Optional[str] = None, x_addi
 
 
 @same_doc_as(GetUserAppEntitlementByAppId)
-def get_user_app_entitlement_by_app_id(user_id: str, app_id: str, active_only: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_user_app_entitlement_by_app_id(app_id: str, user_id: str, active_only: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetUserAppEntitlementByAppId.create(
-        user_id=user_id,
         app_id=app_id,
+        user_id=user_id,
         active_only=active_only,
         namespace=namespace,
     )
@@ -210,14 +210,14 @@ def get_user_app_entitlement_by_app_id(user_id: str, app_id: str, active_only: O
 
 
 @same_doc_as(GetUserAppEntitlementOwnershipByAppId)
-def get_user_app_entitlement_ownership_by_app_id(user_id: str, app_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_user_app_entitlement_ownership_by_app_id(app_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetUserAppEntitlementOwnershipByAppId.create(
-        user_id=user_id,
         app_id=app_id,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -251,14 +251,14 @@ def get_user_entitlement(entitlement_id: str, user_id: str, namespace: Optional[
 
 
 @same_doc_as(GetUserEntitlementBySku)
-def get_user_entitlement_by_sku(user_id: str, sku: str, active_only: Optional[bool] = None, entitlement_clazz: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_user_entitlement_by_sku(sku: str, user_id: str, active_only: Optional[bool] = None, entitlement_clazz: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetUserEntitlementBySku.create(
-        user_id=user_id,
         sku=sku,
+        user_id=user_id,
         active_only=active_only,
         entitlement_clazz=entitlement_clazz,
         namespace=namespace,
@@ -281,14 +281,14 @@ def get_user_entitlement_histories(entitlement_id: str, user_id: str, namespace:
 
 
 @same_doc_as(GetUserEntitlementOwnershipBySku)
-def get_user_entitlement_ownership_by_sku(user_id: str, sku: str, entitlement_clazz: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_user_entitlement_ownership_by_sku(sku: str, user_id: str, entitlement_clazz: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetUserEntitlementOwnershipBySku.create(
-        user_id=user_id,
         sku=sku,
+        user_id=user_id,
         entitlement_clazz=entitlement_clazz,
         namespace=namespace,
     )
@@ -354,16 +354,16 @@ def public_delete_user_distribution_receiver(ext_user_id: str, user_id: str, nam
 
 
 @same_doc_as(PublicDistributeUserDistribution)
-def public_distribute_user_distribution(entitlement_id: str, user_id: str, ext_user_id: str, target_namespace: str, quantity: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_distribute_user_distribution(entitlement_id: str, ext_user_id: str, target_namespace: str, user_id: str, quantity: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicDistributeUserDistribution.create(
         entitlement_id=entitlement_id,
-        user_id=user_id,
         ext_user_id=ext_user_id,
         target_namespace=target_namespace,
+        user_id=user_id,
         quantity=quantity,
         namespace=namespace,
     )
@@ -444,42 +444,42 @@ def public_get_my_entitlement_ownership_by_sku(sku: str, entitlement_clazz: Opti
 
 
 @same_doc_as(PublicGetUserAppEntitlementByAppId)
-def public_get_user_app_entitlement_by_app_id(user_id: str, app_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_get_user_app_entitlement_by_app_id(app_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicGetUserAppEntitlementByAppId.create(
-        user_id=user_id,
         app_id=app_id,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetUserAppEntitlementOwnershipByAppId)
-def public_get_user_app_entitlement_ownership_by_app_id(user_id: str, app_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_get_user_app_entitlement_ownership_by_app_id(app_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicGetUserAppEntitlementOwnershipByAppId.create(
-        user_id=user_id,
         app_id=app_id,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetUserDistributionReceivers)
-def public_get_user_distribution_receivers(user_id: str, target_namespace: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_get_user_distribution_receivers(target_namespace: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicGetUserDistributionReceivers.create(
-        user_id=user_id,
         target_namespace=target_namespace,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -500,14 +500,14 @@ def public_get_user_entitlement(entitlement_id: str, user_id: str, namespace: Op
 
 
 @same_doc_as(PublicGetUserEntitlementBySku)
-def public_get_user_entitlement_by_sku(user_id: str, sku: str, entitlement_clazz: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_get_user_entitlement_by_sku(sku: str, user_id: str, entitlement_clazz: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicGetUserEntitlementBySku.create(
-        user_id=user_id,
         sku=sku,
+        user_id=user_id,
         entitlement_clazz=entitlement_clazz,
         namespace=namespace,
     )
@@ -515,14 +515,14 @@ def public_get_user_entitlement_by_sku(user_id: str, sku: str, entitlement_clazz
 
 
 @same_doc_as(PublicGetUserEntitlementOwnershipBySku)
-def public_get_user_entitlement_ownership_by_sku(user_id: str, sku: str, entitlement_clazz: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_get_user_entitlement_ownership_by_sku(sku: str, user_id: str, entitlement_clazz: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicGetUserEntitlementOwnershipBySku.create(
-        user_id=user_id,
         sku=sku,
+        user_id=user_id,
         entitlement_clazz=entitlement_clazz,
         namespace=namespace,
     )
@@ -549,14 +549,14 @@ def public_query_user_entitlements(user_id: str, app_type: Optional[str] = None,
 
 
 @same_doc_as(PublicQueryUserEntitlementsByAppType)
-def public_query_user_entitlements_by_app_type(user_id: str, app_type: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_query_user_entitlements_by_app_type(app_type: str, user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicQueryUserEntitlementsByAppType.create(
-        user_id=user_id,
         app_type=app_type,
+        user_id=user_id,
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -620,14 +620,14 @@ def query_user_entitlements(user_id: str, active_only: Optional[bool] = None, ap
 
 
 @same_doc_as(QueryUserEntitlementsByAppType)
-def query_user_entitlements_by_app_type(user_id: str, app_type: str, active_only: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_user_entitlements_by_app_type(app_type: str, user_id: str, active_only: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = QueryUserEntitlementsByAppType.create(
-        user_id=user_id,
         app_type=app_type,
+        user_id=user_id,
         active_only=active_only,
         limit=limit,
         offset=offset,
@@ -651,14 +651,14 @@ def revoke_user_entitlement(entitlement_id: str, user_id: str, namespace: Option
 
 
 @same_doc_as(RevokeUserEntitlements)
-def revoke_user_entitlements(user_id: str, entitlement_ids: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def revoke_user_entitlements(entitlement_ids: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = RevokeUserEntitlements.create(
-        user_id=user_id,
         entitlement_ids=entitlement_ids,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

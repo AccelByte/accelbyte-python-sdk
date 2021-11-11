@@ -232,49 +232,49 @@ class IAPOrderInfo(Model):
         cls,
         iap_order_no: str,
         namespace: str,
-        user_id: str,
         status: str,
         type_: str,
-        product_id: Optional[str] = None,
-        receipt_data: Optional[str] = None,
-        transaction_id: Optional[str] = None,
-        status_reason: Optional[str] = None,
-        region: Optional[str] = None,
-        language: Optional[str] = None,
-        quantity: Optional[int] = None,
-        sandbox: Optional[bool] = None,
-        fulfilled_time: Optional[str] = None,
-        entitlements: Optional[List[EntitlementSummary]] = None,
+        user_id: str,
         credits: Optional[List[CreditSummary]] = None,
+        entitlements: Optional[List[EntitlementSummary]] = None,
+        fulfilled_time: Optional[str] = None,
+        language: Optional[str] = None,
+        product_id: Optional[str] = None,
+        quantity: Optional[int] = None,
+        receipt_data: Optional[str] = None,
+        region: Optional[str] = None,
+        sandbox: Optional[bool] = None,
+        status_reason: Optional[str] = None,
+        transaction_id: Optional[str] = None,
     ) -> IAPOrderInfo:
         instance = cls()
         instance.iap_order_no = iap_order_no
         instance.namespace = namespace
-        instance.user_id = user_id
         instance.status = status
         instance.type_ = type_
-        if product_id is not None:
-            instance.product_id = product_id
-        if receipt_data is not None:
-            instance.receipt_data = receipt_data
-        if transaction_id is not None:
-            instance.transaction_id = transaction_id
-        if status_reason is not None:
-            instance.status_reason = status_reason
-        if region is not None:
-            instance.region = region
-        if language is not None:
-            instance.language = language
-        if quantity is not None:
-            instance.quantity = quantity
-        if sandbox is not None:
-            instance.sandbox = sandbox
-        if fulfilled_time is not None:
-            instance.fulfilled_time = fulfilled_time
-        if entitlements is not None:
-            instance.entitlements = entitlements
+        instance.user_id = user_id
         if credits is not None:
             instance.credits = credits
+        if entitlements is not None:
+            instance.entitlements = entitlements
+        if fulfilled_time is not None:
+            instance.fulfilled_time = fulfilled_time
+        if language is not None:
+            instance.language = language
+        if product_id is not None:
+            instance.product_id = product_id
+        if quantity is not None:
+            instance.quantity = quantity
+        if receipt_data is not None:
+            instance.receipt_data = receipt_data
+        if region is not None:
+            instance.region = region
+        if sandbox is not None:
+            instance.sandbox = sandbox
+        if status_reason is not None:
+            instance.status_reason = status_reason
+        if transaction_id is not None:
+            instance.transaction_id = transaction_id
         return instance
 
     @classmethod

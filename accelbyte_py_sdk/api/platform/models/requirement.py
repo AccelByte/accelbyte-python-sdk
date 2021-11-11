@@ -151,33 +151,33 @@ class Requirement(Model):
     def create(
         cls,
         label: str,
+        additionals: Optional[str] = None,
+        direct_x_version: Optional[str] = None,
+        disk_space: Optional[str] = None,
+        graphics: Optional[str] = None,
         os_version: Optional[str] = None,
         processor: Optional[str] = None,
         ram: Optional[str] = None,
-        graphics: Optional[str] = None,
-        direct_x_version: Optional[str] = None,
-        disk_space: Optional[str] = None,
         sound_card: Optional[str] = None,
-        additionals: Optional[str] = None,
     ) -> Requirement:
         instance = cls()
         instance.label = label
+        if additionals is not None:
+            instance.additionals = additionals
+        if direct_x_version is not None:
+            instance.direct_x_version = direct_x_version
+        if disk_space is not None:
+            instance.disk_space = disk_space
+        if graphics is not None:
+            instance.graphics = graphics
         if os_version is not None:
             instance.os_version = os_version
         if processor is not None:
             instance.processor = processor
         if ram is not None:
             instance.ram = ram
-        if graphics is not None:
-            instance.graphics = graphics
-        if direct_x_version is not None:
-            instance.direct_x_version = direct_x_version
-        if disk_space is not None:
-            instance.disk_space = disk_space
         if sound_card is not None:
             instance.sound_card = sound_card
-        if additionals is not None:
-            instance.additionals = additionals
         return instance
 
     @classmethod

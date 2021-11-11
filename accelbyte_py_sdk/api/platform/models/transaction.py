@@ -263,65 +263,65 @@ class Transaction(Model):
     @classmethod
     def create(
         cls,
-        tx_id: Optional[str] = None,
-        amount: Optional[int] = None,
-        tax: Optional[int] = None,
-        vat: Optional[int] = None,
-        sales_tax: Optional[int] = None,
-        payment_provider_fee: Optional[int] = None,
-        payment_method_fee: Optional[int] = None,
-        currency: Optional[CurrencySummary] = None,
-        type_: Optional[str] = None,
-        status: Optional[str] = None,
-        provider: Optional[str] = None,
-        payment_method: Optional[str] = None,
-        merchant_id: Optional[str] = None,
-        ext_tx_id: Optional[str] = None,
-        ext_status_code: Optional[str] = None,
-        ext_message: Optional[str] = None,
-        tx_end_time: Optional[str] = None,
         additional_data: Optional[AdditionalData] = None,
+        amount: Optional[int] = None,
+        currency: Optional[CurrencySummary] = None,
+        ext_message: Optional[str] = None,
+        ext_status_code: Optional[str] = None,
+        ext_tx_id: Optional[str] = None,
+        merchant_id: Optional[str] = None,
         notified: Optional[bool] = None,
+        payment_method: Optional[str] = None,
+        payment_method_fee: Optional[int] = None,
+        payment_provider_fee: Optional[int] = None,
+        provider: Optional[str] = None,
+        sales_tax: Optional[int] = None,
+        status: Optional[str] = None,
+        tax: Optional[int] = None,
+        tx_end_time: Optional[str] = None,
+        tx_id: Optional[str] = None,
+        type_: Optional[str] = None,
+        vat: Optional[int] = None,
     ) -> Transaction:
         instance = cls()
-        if tx_id is not None:
-            instance.tx_id = tx_id
-        if amount is not None:
-            instance.amount = amount
-        if tax is not None:
-            instance.tax = tax
-        if vat is not None:
-            instance.vat = vat
-        if sales_tax is not None:
-            instance.sales_tax = sales_tax
-        if payment_provider_fee is not None:
-            instance.payment_provider_fee = payment_provider_fee
-        if payment_method_fee is not None:
-            instance.payment_method_fee = payment_method_fee
-        if currency is not None:
-            instance.currency = currency
-        if type_ is not None:
-            instance.type_ = type_
-        if status is not None:
-            instance.status = status
-        if provider is not None:
-            instance.provider = provider
-        if payment_method is not None:
-            instance.payment_method = payment_method
-        if merchant_id is not None:
-            instance.merchant_id = merchant_id
-        if ext_tx_id is not None:
-            instance.ext_tx_id = ext_tx_id
-        if ext_status_code is not None:
-            instance.ext_status_code = ext_status_code
-        if ext_message is not None:
-            instance.ext_message = ext_message
-        if tx_end_time is not None:
-            instance.tx_end_time = tx_end_time
         if additional_data is not None:
             instance.additional_data = additional_data
+        if amount is not None:
+            instance.amount = amount
+        if currency is not None:
+            instance.currency = currency
+        if ext_message is not None:
+            instance.ext_message = ext_message
+        if ext_status_code is not None:
+            instance.ext_status_code = ext_status_code
+        if ext_tx_id is not None:
+            instance.ext_tx_id = ext_tx_id
+        if merchant_id is not None:
+            instance.merchant_id = merchant_id
         if notified is not None:
             instance.notified = notified
+        if payment_method is not None:
+            instance.payment_method = payment_method
+        if payment_method_fee is not None:
+            instance.payment_method_fee = payment_method_fee
+        if payment_provider_fee is not None:
+            instance.payment_provider_fee = payment_provider_fee
+        if provider is not None:
+            instance.provider = provider
+        if sales_tax is not None:
+            instance.sales_tax = sales_tax
+        if status is not None:
+            instance.status = status
+        if tax is not None:
+            instance.tax = tax
+        if tx_end_time is not None:
+            instance.tx_end_time = tx_end_time
+        if tx_id is not None:
+            instance.tx_id = tx_id
+        if type_ is not None:
+            instance.type_ = type_
+        if vat is not None:
+            instance.vat = vat
         return instance
 
     @classmethod

@@ -73,12 +73,12 @@ class PaymentOrderPaidResult(Model):
     @classmethod
     def create(
         cls,
-        success: bool,
         charging: bool,
+        success: bool,
     ) -> PaymentOrderPaidResult:
         instance = cls()
-        instance.success = success
         instance.charging = charging
+        instance.success = success
         return instance
 
     @classmethod

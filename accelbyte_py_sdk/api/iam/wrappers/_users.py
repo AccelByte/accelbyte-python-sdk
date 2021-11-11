@@ -231,14 +231,14 @@ from ..operations.users import UserVerification
 
 
 @same_doc_as(AddUserPermission)
-def add_user_permission(body: ModelUpdatePermissionScheduleRequest, action: int, resource: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def add_user_permission(action: int, body: ModelUpdatePermissionScheduleRequest, resource: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = AddUserPermission.create(
-        body=body,
         action=action,
+        body=body,
         resource=resource,
         user_id=user_id,
         namespace=namespace,
@@ -668,14 +668,14 @@ def admin_list_users_v3(limit: Optional[int] = None, offset: Optional[int] = Non
 
 
 @same_doc_as(AdminPlatformLinkV3)
-def admin_platform_link_v3(ticket: str, platform_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_platform_link_v3(platform_id: str, ticket: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = AdminPlatformLinkV3.create(
-        ticket=ticket,
         platform_id=platform_id,
+        ticket=ticket,
         user_id=user_id,
         namespace=namespace,
     )
@@ -833,14 +833,14 @@ def admin_update_country_age_restriction_v3(body: ModelCountryAgeRestrictionV3Re
 
 
 @same_doc_as(AdminUpdateUserBanV3)
-def admin_update_user_ban_v3(body: ModelBanUpdateRequest, ban_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_update_user_ban_v3(ban_id: str, body: ModelBanUpdateRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = AdminUpdateUserBanV3.create(
-        body=body,
         ban_id=ban_id,
+        body=body,
         user_id=user_id,
         namespace=namespace,
     )
@@ -1389,14 +1389,14 @@ def list_cross_namespace_account_link(linking_token: str, user_id: str, platform
 
 
 @same_doc_as(PlatformLink)
-def platform_link(ticket: str, platform_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def platform_link(platform_id: str, ticket: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PlatformLink.create(
-        ticket=ticket,
         platform_id=platform_id,
+        ticket=ticket,
         user_id=user_id,
         namespace=namespace,
     )
@@ -1649,14 +1649,14 @@ def public_list_user_id_by_platform_user_i_ds_v3(body: ModelPlatformUserIDReques
 
 
 @same_doc_as(PublicPlatformLinkV2)
-def public_platform_link_v2(ticket: str, platform_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_platform_link_v2(platform_id: str, ticket: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicPlatformLinkV2.create(
-        ticket=ticket,
         platform_id=platform_id,
+        ticket=ticket,
         user_id=user_id,
         namespace=namespace,
     )
@@ -1664,14 +1664,14 @@ def public_platform_link_v2(ticket: str, platform_id: str, user_id: str, namespa
 
 
 @same_doc_as(PublicPlatformLinkV3)
-def public_platform_link_v3(ticket: str, platform_id: str, redirect_uri: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_platform_link_v3(platform_id: str, ticket: str, redirect_uri: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicPlatformLinkV3.create(
-        ticket=ticket,
         platform_id=platform_id,
+        ticket=ticket,
         redirect_uri=redirect_uri,
         namespace=namespace,
     )

@@ -128,21 +128,21 @@ class FullCategoryInfo(Model):
     @classmethod
     def create(
         cls,
-        namespace: str,
-        parent_category_path: str,
         category_path: str,
         created_at: str,
-        updated_at: str,
         localization_display_names: Dict[str, str],
+        namespace: str,
+        parent_category_path: str,
+        updated_at: str,
         root: Optional[bool] = None,
     ) -> FullCategoryInfo:
         instance = cls()
-        instance.namespace = namespace
-        instance.parent_category_path = parent_category_path
         instance.category_path = category_path
         instance.created_at = created_at
-        instance.updated_at = updated_at
         instance.localization_display_names = localization_display_names
+        instance.namespace = namespace
+        instance.parent_category_path = parent_category_path
+        instance.updated_at = updated_at
         if root is not None:
             instance.root = root
         return instance

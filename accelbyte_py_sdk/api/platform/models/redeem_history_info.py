@@ -150,24 +150,24 @@ class RedeemHistoryInfo(Model):
     @classmethod
     def create(
         cls,
-        id_: str,
-        namespace: str,
-        user_id: str,
         campaign_id: str,
         code: str,
         created_at: str,
+        id_: str,
+        namespace: str,
         updated_at: str,
+        user_id: str,
         order_no: Optional[str] = None,
         redeemed_at: Optional[str] = None,
     ) -> RedeemHistoryInfo:
         instance = cls()
-        instance.id_ = id_
-        instance.namespace = namespace
-        instance.user_id = user_id
         instance.campaign_id = campaign_id
         instance.code = code
         instance.created_at = created_at
+        instance.id_ = id_
+        instance.namespace = namespace
         instance.updated_at = updated_at
+        instance.user_id = user_id
         if order_no is not None:
             instance.order_no = order_no
         if redeemed_at is not None:

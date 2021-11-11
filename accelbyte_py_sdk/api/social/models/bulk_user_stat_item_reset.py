@@ -73,12 +73,12 @@ class BulkUserStatItemReset(Model):
     @classmethod
     def create(
         cls,
-        user_id: str,
         stat_code: str,
+        user_id: str,
     ) -> BulkUserStatItemReset:
         instance = cls()
-        instance.user_id = user_id
         instance.stat_code = stat_code
+        instance.user_id = user_id
         return instance
 
     @classmethod

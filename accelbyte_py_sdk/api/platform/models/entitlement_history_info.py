@@ -150,28 +150,28 @@ class EntitlementHistoryInfo(Model):
     @classmethod
     def create(
         cls,
+        action: str,
+        created_at: str,
         entitlement_id: str,
         namespace: str,
-        action: str,
         operator: str,
-        user_id: str,
-        created_at: str,
         updated_at: str,
-        use_count: Optional[int] = None,
+        user_id: str,
         quantity: Optional[int] = None,
+        use_count: Optional[int] = None,
     ) -> EntitlementHistoryInfo:
         instance = cls()
+        instance.action = action
+        instance.created_at = created_at
         instance.entitlement_id = entitlement_id
         instance.namespace = namespace
-        instance.action = action
         instance.operator = operator
-        instance.user_id = user_id
-        instance.created_at = created_at
         instance.updated_at = updated_at
-        if use_count is not None:
-            instance.use_count = use_count
+        instance.user_id = user_id
         if quantity is not None:
             instance.quantity = quantity
+        if use_count is not None:
+            instance.use_count = use_count
         return instance
 
     @classmethod

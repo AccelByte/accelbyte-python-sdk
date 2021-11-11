@@ -84,15 +84,15 @@ class StatUpdate(Model):
     @classmethod
     def create(
         cls,
-        name: Optional[str] = None,
         description: Optional[str] = None,
+        name: Optional[str] = None,
         tags: Optional[List[str]] = None,
     ) -> StatUpdate:
         instance = cls()
-        if name is not None:
-            instance.name = name
         if description is not None:
             instance.description = description
+        if name is not None:
+            instance.name = name
         if tags is not None:
             instance.tags = tags
         return instance

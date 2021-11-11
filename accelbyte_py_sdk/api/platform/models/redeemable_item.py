@@ -97,16 +97,16 @@ class RedeemableItem(Model):
         cls,
         item_id: str,
         item_name: str,
-        quantity: Optional[int] = None,
         extra_subscription_days: Optional[int] = None,
+        quantity: Optional[int] = None,
     ) -> RedeemableItem:
         instance = cls()
         instance.item_id = item_id
         instance.item_name = item_name
-        if quantity is not None:
-            instance.quantity = quantity
         if extra_subscription_days is not None:
             instance.extra_subscription_days = extra_subscription_days
+        if quantity is not None:
+            instance.quantity = quantity
         return instance
 
     @classmethod

@@ -107,21 +107,21 @@ class CurrencyCreate(Model):
     def create(
         cls,
         currency_code: str,
-        localization_descriptions: Optional[Dict[str, str]] = None,
         currency_symbol: Optional[str] = None,
         currency_type: Optional[str] = None,
         decimals: Optional[int] = None,
+        localization_descriptions: Optional[Dict[str, str]] = None,
     ) -> CurrencyCreate:
         instance = cls()
         instance.currency_code = currency_code
-        if localization_descriptions is not None:
-            instance.localization_descriptions = localization_descriptions
         if currency_symbol is not None:
             instance.currency_symbol = currency_symbol
         if currency_type is not None:
             instance.currency_type = currency_type
         if decimals is not None:
             instance.decimals = decimals
+        if localization_descriptions is not None:
+            instance.localization_descriptions = localization_descriptions
         return instance
 
     @classmethod

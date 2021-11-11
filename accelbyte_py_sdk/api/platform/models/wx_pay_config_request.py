@@ -96,17 +96,17 @@ class WxPayConfigRequest(Model):
     def create(
         cls,
         app_id: Optional[str] = None,
-        mchid: Optional[str] = None,
         key: Optional[str] = None,
+        mchid: Optional[str] = None,
         return_url: Optional[str] = None,
     ) -> WxPayConfigRequest:
         instance = cls()
         if app_id is not None:
             instance.app_id = app_id
-        if mchid is not None:
-            instance.mchid = mchid
         if key is not None:
             instance.key = key
+        if mchid is not None:
+            instance.mchid = mchid
         if return_url is not None:
             instance.return_url = return_url
         return instance

@@ -139,22 +139,22 @@ class CurrencyInfo(Model):
     @classmethod
     def create(
         cls,
+        created_at: str,
         currency_code: str,
         currency_symbol: str,
-        namespace: str,
         currency_type: str,
         decimals: int,
-        created_at: str,
+        namespace: str,
         updated_at: str,
         localization_descriptions: Optional[Dict[str, str]] = None,
     ) -> CurrencyInfo:
         instance = cls()
+        instance.created_at = created_at
         instance.currency_code = currency_code
         instance.currency_symbol = currency_symbol
-        instance.namespace = namespace
         instance.currency_type = currency_type
         instance.decimals = decimals
-        instance.created_at = created_at
+        instance.namespace = namespace
         instance.updated_at = updated_at
         if localization_descriptions is not None:
             instance.localization_descriptions = localization_descriptions

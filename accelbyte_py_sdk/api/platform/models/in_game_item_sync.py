@@ -84,14 +84,14 @@ class InGameItemSync(Model):
     @classmethod
     def create(
         cls,
-        target_namespace: str,
-        target_item_id: str,
         category_path: str,
+        target_item_id: str,
+        target_namespace: str,
     ) -> InGameItemSync:
         instance = cls()
-        instance.target_namespace = target_namespace
-        instance.target_item_id = target_item_id
         instance.category_path = category_path
+        instance.target_item_id = target_item_id
+        instance.target_namespace = target_namespace
         return instance
 
     @classmethod

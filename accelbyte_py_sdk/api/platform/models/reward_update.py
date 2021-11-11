@@ -119,24 +119,24 @@ class RewardUpdate(Model):
     @classmethod
     def create(
         cls,
-        reward_code: str,
         event_topic: str,
+        reward_code: str,
         description: Optional[str] = None,
-        reward_conditions: Optional[List[RewardCondition]] = None,
         max_awarded: Optional[int] = None,
         max_awarded_per_user: Optional[int] = None,
+        reward_conditions: Optional[List[RewardCondition]] = None,
     ) -> RewardUpdate:
         instance = cls()
-        instance.reward_code = reward_code
         instance.event_topic = event_topic
+        instance.reward_code = reward_code
         if description is not None:
             instance.description = description
-        if reward_conditions is not None:
-            instance.reward_conditions = reward_conditions
         if max_awarded is not None:
             instance.max_awarded = max_awarded
         if max_awarded_per_user is not None:
             instance.max_awarded_per_user = max_awarded_per_user
+        if reward_conditions is not None:
+            instance.reward_conditions = reward_conditions
         return instance
 
     @classmethod

@@ -95,18 +95,18 @@ class StadiaSyncRequest(Model):
     @classmethod
     def create(
         cls,
-        stadia_player_id: str,
         app_id: str,
-        region: Optional[str] = None,
+        stadia_player_id: str,
         language: Optional[str] = None,
+        region: Optional[str] = None,
     ) -> StadiaSyncRequest:
         instance = cls()
-        instance.stadia_player_id = stadia_player_id
         instance.app_id = app_id
-        if region is not None:
-            instance.region = region
+        instance.stadia_player_id = stadia_player_id
         if language is not None:
             instance.language = language
+        if region is not None:
+            instance.region = region
         return instance
 
     @classmethod

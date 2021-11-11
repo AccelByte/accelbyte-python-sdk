@@ -162,36 +162,36 @@ class FulfillmentRequest(Model):
     def create(
         cls,
         quantity: int,
-        store_id: Optional[str] = None,
+        end_date: Optional[str] = None,
         item_id: Optional[str] = None,
         item_sku: Optional[str] = None,
+        language: Optional[str] = None,
         order_no: Optional[str] = None,
+        region: Optional[str] = None,
         source: Optional[str] = None,
         start_date: Optional[str] = None,
-        end_date: Optional[str] = None,
-        region: Optional[str] = None,
-        language: Optional[str] = None,
+        store_id: Optional[str] = None,
     ) -> FulfillmentRequest:
         instance = cls()
         instance.quantity = quantity
-        if store_id is not None:
-            instance.store_id = store_id
+        if end_date is not None:
+            instance.end_date = end_date
         if item_id is not None:
             instance.item_id = item_id
         if item_sku is not None:
             instance.item_sku = item_sku
+        if language is not None:
+            instance.language = language
         if order_no is not None:
             instance.order_no = order_no
+        if region is not None:
+            instance.region = region
         if source is not None:
             instance.source = source
         if start_date is not None:
             instance.start_date = start_date
-        if end_date is not None:
-            instance.end_date = end_date
-        if region is not None:
-            instance.region = region
-        if language is not None:
-            instance.language = language
+        if store_id is not None:
+            instance.store_id = store_id
         return instance
 
     @classmethod

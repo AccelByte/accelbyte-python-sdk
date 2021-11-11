@@ -84,17 +84,17 @@ class BulkStatItemOperationResult(Model):
     @classmethod
     def create(
         cls,
-        success: Optional[bool] = None,
-        stat_code: Optional[str] = None,
         details: Optional[Dict[str, Any]] = None,
+        stat_code: Optional[str] = None,
+        success: Optional[bool] = None,
     ) -> BulkStatItemOperationResult:
         instance = cls()
-        if success is not None:
-            instance.success = success
-        if stat_code is not None:
-            instance.stat_code = stat_code
         if details is not None:
             instance.details = details
+        if stat_code is not None:
+            instance.stat_code = stat_code
+        if success is not None:
+            instance.success = success
         return instance
 
     @classmethod

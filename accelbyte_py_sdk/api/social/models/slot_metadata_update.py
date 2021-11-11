@@ -84,17 +84,17 @@ class SlotMetadataUpdate(Model):
     @classmethod
     def create(
         cls,
+        custom_attribute: Optional[str] = None,
         label: Optional[str] = None,
         tags: Optional[List[str]] = None,
-        custom_attribute: Optional[str] = None,
     ) -> SlotMetadataUpdate:
         instance = cls()
+        if custom_attribute is not None:
+            instance.custom_attribute = custom_attribute
         if label is not None:
             instance.label = label
         if tags is not None:
             instance.tags = tags
-        if custom_attribute is not None:
-            instance.custom_attribute = custom_attribute
         return instance
 
     @classmethod

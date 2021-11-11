@@ -73,12 +73,12 @@ class ItemAcquireRequest(Model):
     @classmethod
     def create(
         cls,
-        order_no: str,
         count: int,
+        order_no: str,
     ) -> ItemAcquireRequest:
         instance = cls()
-        instance.order_no = order_no
         instance.count = count
+        instance.order_no = order_no
         return instance
 
     @classmethod

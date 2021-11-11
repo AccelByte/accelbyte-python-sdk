@@ -150,30 +150,30 @@ class OrderCreate(Model):
     @classmethod
     def create(
         cls,
-        item_id: str,
-        quantity: int,
-        price: int,
-        discounted_price: int,
         currency_code: str,
-        region: Optional[str] = None,
-        language: Optional[str] = None,
-        return_url: Optional[str] = None,
+        discounted_price: int,
+        item_id: str,
+        price: int,
+        quantity: int,
         ext: Optional[Dict[str, Any]] = None,
+        language: Optional[str] = None,
+        region: Optional[str] = None,
+        return_url: Optional[str] = None,
     ) -> OrderCreate:
         instance = cls()
-        instance.item_id = item_id
-        instance.quantity = quantity
-        instance.price = price
-        instance.discounted_price = discounted_price
         instance.currency_code = currency_code
-        if region is not None:
-            instance.region = region
-        if language is not None:
-            instance.language = language
-        if return_url is not None:
-            instance.return_url = return_url
+        instance.discounted_price = discounted_price
+        instance.item_id = item_id
+        instance.price = price
+        instance.quantity = quantity
         if ext is not None:
             instance.ext = ext
+        if language is not None:
+            instance.language = language
+        if region is not None:
+            instance.region = region
+        if return_url is not None:
+            instance.return_url = return_url
         return instance
 
     @classmethod

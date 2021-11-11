@@ -85,13 +85,13 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequest(Model):
     def create(
         cls,
         code: str,
-        password: str,
         login_id: str,
+        password: str,
     ) -> ModelUpgradeHeadlessAccountWithVerificationCodeRequest:
         instance = cls()
         instance.code = code
-        instance.password = password
         instance.login_id = login_id
+        instance.password = password
         return instance
 
     @classmethod
