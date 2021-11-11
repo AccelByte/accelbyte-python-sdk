@@ -50,9 +50,9 @@ class PublicGetItemDynamicData(Operation):
 
         security: bearer
 
-        namespace: (namespace) REQUIRED str in path
-
         item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
     Responses:
         200: OK - ItemDynamicDataInfo (successful operation)
@@ -69,8 +69,8 @@ class PublicGetItemDynamicData(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
     item_id: str                                                                                   # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -118,8 +118,8 @@ class PublicGetItemDynamicData(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "namespace",
             "item_id",
+            "namespace",
         ]
 
     # endregion get methods
@@ -133,10 +133,10 @@ class PublicGetItemDynamicData(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "item_id"):
             result["itemId"] = self.item_id
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     # endregion get_x_params methods
@@ -144,9 +144,9 @@ class PublicGetItemDynamicData(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "item_id") or self.item_id is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         return True
 
@@ -154,12 +154,12 @@ class PublicGetItemDynamicData(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> PublicGetItemDynamicData:
-        self.namespace = value
-        return self
-
     def with_item_id(self, value: str) -> PublicGetItemDynamicData:
         self.item_id = value
+        return self
+
+    def with_namespace(self, value: str) -> PublicGetItemDynamicData:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -168,14 +168,14 @@ class PublicGetItemDynamicData(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "item_id") and self.item_id:
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         return result
 
     # endregion to methods
@@ -206,32 +206,32 @@ class PublicGetItemDynamicData(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
         item_id: str,
+        namespace: str,
     ) -> PublicGetItemDynamicData:
         instance = cls()
-        instance.namespace = namespace
         instance.item_id = item_id
+        instance.namespace = namespace
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PublicGetItemDynamicData:
         instance = cls()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
             instance.item_id = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
             "itemId": "item_id",
+            "namespace": "namespace",
         }
 
     # endregion static methods

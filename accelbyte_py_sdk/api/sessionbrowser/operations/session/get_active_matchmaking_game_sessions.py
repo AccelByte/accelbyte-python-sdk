@@ -50,11 +50,11 @@ class GetActiveMatchmakingGameSessions(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        session_id: (session_id) OPTIONAL str in query
-
         match_id: (match_id) OPTIONAL str in query
 
         server_region: (server_region) OPTIONAL str in query
+
+        session_id: (session_id) OPTIONAL str in query
 
     Responses:
         200: OK - ModelsActiveMatchmakingGameResponse (matchmaking game session list)
@@ -74,9 +74,9 @@ class GetActiveMatchmakingGameSessions(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    session_id: str                                                                                # OPTIONAL in [query]
     match_id: str                                                                                  # OPTIONAL in [query]
     server_region: str                                                                             # OPTIONAL in [query]
+    session_id: str                                                                                # OPTIONAL in [query]
 
     # endregion fields
 
@@ -148,12 +148,12 @@ class GetActiveMatchmakingGameSessions(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "session_id"):
-            result["session_id"] = self.session_id
         if hasattr(self, "match_id"):
             result["match_id"] = self.match_id
         if hasattr(self, "server_region"):
             result["server_region"] = self.server_region
+        if hasattr(self, "session_id"):
+            result["session_id"] = self.session_id
         return result
 
     # endregion get_x_params methods
@@ -173,16 +173,16 @@ class GetActiveMatchmakingGameSessions(Operation):
         self.namespace = value
         return self
 
-    def with_session_id(self, value: str) -> GetActiveMatchmakingGameSessions:
-        self.session_id = value
-        return self
-
     def with_match_id(self, value: str) -> GetActiveMatchmakingGameSessions:
         self.match_id = value
         return self
 
     def with_server_region(self, value: str) -> GetActiveMatchmakingGameSessions:
         self.server_region = value
+        return self
+
+    def with_session_id(self, value: str) -> GetActiveMatchmakingGameSessions:
+        self.session_id = value
         return self
 
     # endregion with_x methods
@@ -195,10 +195,6 @@ class GetActiveMatchmakingGameSessions(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "session_id") and self.session_id:
-            result["session_id"] = str(self.session_id)
-        elif include_empty:
-            result["session_id"] = str()
         if hasattr(self, "match_id") and self.match_id:
             result["match_id"] = str(self.match_id)
         elif include_empty:
@@ -207,6 +203,10 @@ class GetActiveMatchmakingGameSessions(Operation):
             result["server_region"] = str(self.server_region)
         elif include_empty:
             result["server_region"] = str()
+        if hasattr(self, "session_id") and self.session_id:
+            result["session_id"] = str(self.session_id)
+        elif include_empty:
+            result["session_id"] = str()
         return result
 
     # endregion to methods
@@ -242,18 +242,18 @@ class GetActiveMatchmakingGameSessions(Operation):
     def create(
         cls,
         namespace: str,
-        session_id: Optional[str] = None,
         match_id: Optional[str] = None,
         server_region: Optional[str] = None,
+        session_id: Optional[str] = None,
     ) -> GetActiveMatchmakingGameSessions:
         instance = cls()
         instance.namespace = namespace
-        if session_id is not None:
-            instance.session_id = session_id
         if match_id is not None:
             instance.match_id = match_id
         if server_region is not None:
             instance.server_region = server_region
+        if session_id is not None:
+            instance.session_id = session_id
         return instance
 
     @classmethod
@@ -263,10 +263,6 @@ class GetActiveMatchmakingGameSessions(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "session_id" in dict_ and dict_["session_id"] is not None:
-            instance.session_id = str(dict_["session_id"])
-        elif include_empty:
-            instance.session_id = str()
         if "match_id" in dict_ and dict_["match_id"] is not None:
             instance.match_id = str(dict_["match_id"])
         elif include_empty:
@@ -275,15 +271,19 @@ class GetActiveMatchmakingGameSessions(Operation):
             instance.server_region = str(dict_["server_region"])
         elif include_empty:
             instance.server_region = str()
+        if "session_id" in dict_ and dict_["session_id"] is not None:
+            instance.session_id = str(dict_["session_id"])
+        elif include_empty:
+            instance.session_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "session_id": "session_id",
             "match_id": "match_id",
             "server_region": "server_region",
+            "session_id": "session_id",
         }
 
     # endregion static methods

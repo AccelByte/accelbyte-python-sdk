@@ -48,9 +48,9 @@ class AdminDeleteProfanityList(Operation):
 
         security: bearer
 
-        namespace: (namespace) REQUIRED str in path
-
         list_: (list) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
     Responses:
         200: OK - (OK)
@@ -75,8 +75,8 @@ class AdminDeleteProfanityList(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
     list_: str                                                                                     # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -124,8 +124,8 @@ class AdminDeleteProfanityList(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "namespace",
             "list_",
+            "namespace",
         ]
 
     # endregion get methods
@@ -139,10 +139,10 @@ class AdminDeleteProfanityList(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "list_"):
             result["list"] = self.list_
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     # endregion get_x_params methods
@@ -150,9 +150,9 @@ class AdminDeleteProfanityList(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "list_") or self.list_ is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         return True
 
@@ -160,12 +160,12 @@ class AdminDeleteProfanityList(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> AdminDeleteProfanityList:
-        self.namespace = value
-        return self
-
     def with_list_(self, value: str) -> AdminDeleteProfanityList:
         self.list_ = value
+        return self
+
+    def with_namespace(self, value: str) -> AdminDeleteProfanityList:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -174,14 +174,14 @@ class AdminDeleteProfanityList(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "list_") and self.list_:
             result["list"] = str(self.list_)
         elif include_empty:
             result["list"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         return result
 
     # endregion to methods
@@ -228,32 +228,32 @@ class AdminDeleteProfanityList(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
         list_: str,
+        namespace: str,
     ) -> AdminDeleteProfanityList:
         instance = cls()
-        instance.namespace = namespace
         instance.list_ = list_
+        instance.namespace = namespace
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AdminDeleteProfanityList:
         instance = cls()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "list" in dict_ and dict_["list"] is not None:
             instance.list_ = str(dict_["list"])
         elif include_empty:
             instance.list_ = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
             "list": "list_",
+            "namespace": "namespace",
         }
 
     # endregion static methods

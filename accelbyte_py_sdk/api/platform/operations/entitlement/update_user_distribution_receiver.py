@@ -52,11 +52,11 @@ class UpdateUserDistributionReceiver(Operation):
 
         body: (body) OPTIONAL DistributionReceiverCreate in body
 
+        ext_user_id: (extUserId) REQUIRED str in path
+
         namespace: (namespace) REQUIRED str in path
 
         user_id: (userId) REQUIRED str in path
-
-        ext_user_id: (extUserId) REQUIRED str in path
 
     Responses:
         204: No Content - (create distribution receiver successfully)
@@ -72,9 +72,9 @@ class UpdateUserDistributionReceiver(Operation):
     _location_query: str = None
 
     body: DistributionReceiverCreate                                                               # OPTIONAL in [body]
+    ext_user_id: str                                                                               # REQUIRED in [path]
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
-    ext_user_id: str                                                                               # REQUIRED in [path]
 
     # endregion fields
 
@@ -122,9 +122,9 @@ class UpdateUserDistributionReceiver(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
+            "ext_user_id",
             "namespace",
             "user_id",
-            "ext_user_id",
         ]
 
     # endregion get methods
@@ -142,12 +142,12 @@ class UpdateUserDistributionReceiver(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
+        if hasattr(self, "ext_user_id"):
+            result["extUserId"] = self.ext_user_id
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
         if hasattr(self, "user_id"):
             result["userId"] = self.user_id
-        if hasattr(self, "ext_user_id"):
-            result["extUserId"] = self.ext_user_id
         return result
 
     # endregion get_x_params methods
@@ -155,11 +155,11 @@ class UpdateUserDistributionReceiver(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
+        if not hasattr(self, "ext_user_id") or self.ext_user_id is None:
+            return False
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        if not hasattr(self, "ext_user_id") or self.ext_user_id is None:
             return False
         return True
 
@@ -171,16 +171,16 @@ class UpdateUserDistributionReceiver(Operation):
         self.body = value
         return self
 
+    def with_ext_user_id(self, value: str) -> UpdateUserDistributionReceiver:
+        self.ext_user_id = value
+        return self
+
     def with_namespace(self, value: str) -> UpdateUserDistributionReceiver:
         self.namespace = value
         return self
 
     def with_user_id(self, value: str) -> UpdateUserDistributionReceiver:
         self.user_id = value
-        return self
-
-    def with_ext_user_id(self, value: str) -> UpdateUserDistributionReceiver:
-        self.ext_user_id = value
         return self
 
     # endregion with_x methods
@@ -193,6 +193,10 @@ class UpdateUserDistributionReceiver(Operation):
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
             result["body"] = DistributionReceiverCreate()
+        if hasattr(self, "ext_user_id") and self.ext_user_id:
+            result["extUserId"] = str(self.ext_user_id)
+        elif include_empty:
+            result["extUserId"] = str()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -201,10 +205,6 @@ class UpdateUserDistributionReceiver(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "ext_user_id") and self.ext_user_id:
-            result["extUserId"] = str(self.ext_user_id)
-        elif include_empty:
-            result["extUserId"] = str()
         return result
 
     # endregion to methods
@@ -231,15 +231,15 @@ class UpdateUserDistributionReceiver(Operation):
     @classmethod
     def create(
         cls,
+        ext_user_id: str,
         namespace: str,
         user_id: str,
-        ext_user_id: str,
         body: Optional[DistributionReceiverCreate] = None,
     ) -> UpdateUserDistributionReceiver:
         instance = cls()
+        instance.ext_user_id = ext_user_id
         instance.namespace = namespace
         instance.user_id = user_id
-        instance.ext_user_id = ext_user_id
         if body is not None:
             instance.body = body
         return instance
@@ -251,6 +251,10 @@ class UpdateUserDistributionReceiver(Operation):
             instance.body = DistributionReceiverCreate.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
             instance.body = DistributionReceiverCreate()
+        if "extUserId" in dict_ and dict_["extUserId"] is not None:
+            instance.ext_user_id = str(dict_["extUserId"])
+        elif include_empty:
+            instance.ext_user_id = str()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -259,19 +263,15 @@ class UpdateUserDistributionReceiver(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
-        if "extUserId" in dict_ and dict_["extUserId"] is not None:
-            instance.ext_user_id = str(dict_["extUserId"])
-        elif include_empty:
-            instance.ext_user_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
+            "extUserId": "ext_user_id",
             "namespace": "namespace",
             "userId": "user_id",
-            "extUserId": "ext_user_id",
         }
 
     # endregion static methods

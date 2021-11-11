@@ -25,10 +25,10 @@ from ..operations.order_dedicated import SyncOrders
 
 
 @same_doc_as(SyncOrders)
-def sync_orders(start: str, end: str, next_evaluated_key: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def sync_orders(end: str, start: str, next_evaluated_key: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = SyncOrders.create(
-        start=start,
         end=end,
+        start=start,
         next_evaluated_key=next_evaluated_key,
     )
     return run_request(request, additional_headers=x_additional_headers)

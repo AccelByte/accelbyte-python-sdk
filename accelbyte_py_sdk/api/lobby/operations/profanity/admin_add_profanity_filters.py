@@ -51,9 +51,9 @@ class AdminAddProfanityFilters(Operation):
 
         body: (body) REQUIRED ModelsAdminAddProfanityFiltersRequest in body
 
-        namespace: (namespace) REQUIRED str in path
-
         list_: (list) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
     Responses:
         200: OK - (OK)
@@ -79,8 +79,8 @@ class AdminAddProfanityFilters(Operation):
     _location_query: str = None
 
     body: ModelsAdminAddProfanityFiltersRequest                                                    # REQUIRED in [body]
-    namespace: str                                                                                 # REQUIRED in [path]
     list_: str                                                                                     # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -129,8 +129,8 @@ class AdminAddProfanityFilters(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "body",
-            "namespace",
             "list_",
+            "namespace",
         ]
 
     # endregion get methods
@@ -148,10 +148,10 @@ class AdminAddProfanityFilters(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "list_"):
             result["list"] = self.list_
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     # endregion get_x_params methods
@@ -161,9 +161,9 @@ class AdminAddProfanityFilters(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "body") or self.body is None:
             return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "list_") or self.list_ is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         return True
 
@@ -175,12 +175,12 @@ class AdminAddProfanityFilters(Operation):
         self.body = value
         return self
 
-    def with_namespace(self, value: str) -> AdminAddProfanityFilters:
-        self.namespace = value
-        return self
-
     def with_list_(self, value: str) -> AdminAddProfanityFilters:
         self.list_ = value
+        return self
+
+    def with_namespace(self, value: str) -> AdminAddProfanityFilters:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -193,14 +193,14 @@ class AdminAddProfanityFilters(Operation):
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
             result["body"] = ModelsAdminAddProfanityFiltersRequest()
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "list_") and self.list_:
             result["list"] = str(self.list_)
         elif include_empty:
             result["list"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         return result
 
     # endregion to methods
@@ -248,13 +248,13 @@ class AdminAddProfanityFilters(Operation):
     def create(
         cls,
         body: ModelsAdminAddProfanityFiltersRequest,
-        namespace: str,
         list_: str,
+        namespace: str,
     ) -> AdminAddProfanityFilters:
         instance = cls()
         instance.body = body
-        instance.namespace = namespace
         instance.list_ = list_
+        instance.namespace = namespace
         return instance
 
     @classmethod
@@ -264,22 +264,22 @@ class AdminAddProfanityFilters(Operation):
             instance.body = ModelsAdminAddProfanityFiltersRequest.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
             instance.body = ModelsAdminAddProfanityFiltersRequest()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "list" in dict_ and dict_["list"] is not None:
             instance.list_ = str(dict_["list"])
         elif include_empty:
             instance.list_ = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
-            "namespace": "namespace",
             "list": "list_",
+            "namespace": "namespace",
         }
 
     # endregion static methods

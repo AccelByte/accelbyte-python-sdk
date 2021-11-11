@@ -28,28 +28,28 @@ class CreditSummary(Model):
     """Credit summary (CreditSummary)
 
     Properties:
-        wallet_id: (walletId) REQUIRED str
+        amount: (amount) REQUIRED int
 
         namespace: (namespace) REQUIRED str
 
         user_id: (userId) REQUIRED str
 
-        amount: (amount) REQUIRED int
+        wallet_id: (walletId) REQUIRED str
     """
 
     # region fields
 
-    wallet_id: str                                                                                 # REQUIRED
+    amount: int                                                                                    # REQUIRED
     namespace: str                                                                                 # REQUIRED
     user_id: str                                                                                   # REQUIRED
-    amount: int                                                                                    # REQUIRED
+    wallet_id: str                                                                                 # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_wallet_id(self, value: str) -> CreditSummary:
-        self.wallet_id = value
+    def with_amount(self, value: int) -> CreditSummary:
+        self.amount = value
         return self
 
     def with_namespace(self, value: str) -> CreditSummary:
@@ -60,8 +60,8 @@ class CreditSummary(Model):
         self.user_id = value
         return self
 
-    def with_amount(self, value: int) -> CreditSummary:
-        self.amount = value
+    def with_wallet_id(self, value: str) -> CreditSummary:
+        self.wallet_id = value
         return self
 
     # endregion with_x methods
@@ -70,10 +70,10 @@ class CreditSummary(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "wallet_id"):
-            result["walletId"] = str(self.wallet_id)
+        if hasattr(self, "amount"):
+            result["amount"] = int(self.amount)
         elif include_empty:
-            result["walletId"] = str()
+            result["amount"] = int()
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -82,10 +82,10 @@ class CreditSummary(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "amount"):
-            result["amount"] = int(self.amount)
+        if hasattr(self, "wallet_id"):
+            result["walletId"] = str(self.wallet_id)
         elif include_empty:
-            result["amount"] = int()
+            result["walletId"] = str()
         return result
 
     # endregion to methods
@@ -112,10 +112,10 @@ class CreditSummary(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "walletId" in dict_ and dict_["walletId"] is not None:
-            instance.wallet_id = str(dict_["walletId"])
+        if "amount" in dict_ and dict_["amount"] is not None:
+            instance.amount = int(dict_["amount"])
         elif include_empty:
-            instance.wallet_id = str()
+            instance.amount = int()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -124,19 +124,19 @@ class CreditSummary(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
-        if "amount" in dict_ and dict_["amount"] is not None:
-            instance.amount = int(dict_["amount"])
+        if "walletId" in dict_ and dict_["walletId"] is not None:
+            instance.wallet_id = str(dict_["walletId"])
         elif include_empty:
-            instance.amount = int()
+            instance.wallet_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "walletId": "wallet_id",
+            "amount": "amount",
             "namespace": "namespace",
             "userId": "user_id",
-            "amount": "amount",
+            "walletId": "wallet_id",
         }
 
     # endregion static methods

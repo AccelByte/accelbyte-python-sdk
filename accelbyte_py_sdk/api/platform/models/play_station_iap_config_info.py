@@ -28,26 +28,26 @@ class PlayStationIAPConfigInfo(Model):
     """Play station IAP config info (PlayStationIAPConfigInfo)
 
     Properties:
-        namespace: (namespace) REQUIRED str
-
         environment: (environment) REQUIRED str
+
+        namespace: (namespace) REQUIRED str
     """
 
     # region fields
 
-    namespace: str                                                                                 # REQUIRED
     environment: str                                                                               # REQUIRED
+    namespace: str                                                                                 # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> PlayStationIAPConfigInfo:
-        self.namespace = value
-        return self
-
     def with_environment(self, value: str) -> PlayStationIAPConfigInfo:
         self.environment = value
+        return self
+
+    def with_namespace(self, value: str) -> PlayStationIAPConfigInfo:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -56,14 +56,14 @@ class PlayStationIAPConfigInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "environment"):
             result["environment"] = str(self.environment)
         elif include_empty:
             result["environment"] = str()
+        if hasattr(self, "namespace"):
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         return result
 
     # endregion to methods
@@ -86,21 +86,21 @@ class PlayStationIAPConfigInfo(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "environment" in dict_ and dict_["environment"] is not None:
             instance.environment = str(dict_["environment"])
         elif include_empty:
             instance.environment = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
             "environment": "environment",
+            "namespace": "namespace",
         }
 
     # endregion static methods

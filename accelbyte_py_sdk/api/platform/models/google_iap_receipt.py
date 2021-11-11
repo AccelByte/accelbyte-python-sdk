@@ -38,9 +38,9 @@ class GoogleIAPReceipt(Model):
 
         purchase_token: (purchaseToken) REQUIRED str
 
-        region: (region) OPTIONAL str
-
         language: (language) OPTIONAL str
+
+        region: (region) OPTIONAL str
     """
 
     # region fields
@@ -50,8 +50,8 @@ class GoogleIAPReceipt(Model):
     product_id: str                                                                                # REQUIRED
     purchase_time: int                                                                             # REQUIRED
     purchase_token: str                                                                            # REQUIRED
-    region: str                                                                                    # OPTIONAL
     language: str                                                                                  # OPTIONAL
+    region: str                                                                                    # OPTIONAL
 
     # endregion fields
 
@@ -77,12 +77,12 @@ class GoogleIAPReceipt(Model):
         self.purchase_token = value
         return self
 
-    def with_region(self, value: str) -> GoogleIAPReceipt:
-        self.region = value
-        return self
-
     def with_language(self, value: str) -> GoogleIAPReceipt:
         self.language = value
+        return self
+
+    def with_region(self, value: str) -> GoogleIAPReceipt:
+        self.region = value
         return self
 
     # endregion with_x methods
@@ -111,14 +111,14 @@ class GoogleIAPReceipt(Model):
             result["purchaseToken"] = str(self.purchase_token)
         elif include_empty:
             result["purchaseToken"] = str()
-        if hasattr(self, "region"):
-            result["region"] = str(self.region)
-        elif include_empty:
-            result["region"] = str()
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = str()
+        if hasattr(self, "region"):
+            result["region"] = str(self.region)
+        elif include_empty:
+            result["region"] = str()
         return result
 
     # endregion to methods
@@ -173,14 +173,14 @@ class GoogleIAPReceipt(Model):
             instance.purchase_token = str(dict_["purchaseToken"])
         elif include_empty:
             instance.purchase_token = str()
-        if "region" in dict_ and dict_["region"] is not None:
-            instance.region = str(dict_["region"])
-        elif include_empty:
-            instance.region = str()
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
             instance.language = str()
+        if "region" in dict_ and dict_["region"] is not None:
+            instance.region = str(dict_["region"])
+        elif include_empty:
+            instance.region = str()
         return instance
 
     @staticmethod
@@ -191,8 +191,8 @@ class GoogleIAPReceipt(Model):
             "productId": "product_id",
             "purchaseTime": "purchase_time",
             "purchaseToken": "purchase_token",
-            "region": "region",
             "language": "language",
+            "region": "region",
         }
 
     # endregion static methods

@@ -54,11 +54,11 @@ class PayWithUserWallet(Operation):
 
         body: (body) OPTIONAL PaymentRequest in body
 
+        currency_code: (currencyCode) REQUIRED str in path
+
         namespace: (namespace) REQUIRED str in path
 
         user_id: (userId) REQUIRED str in path
-
-        currency_code: (currencyCode) REQUIRED str in path
 
     Responses:
         200: OK - WalletInfo (successful operation)
@@ -80,9 +80,9 @@ class PayWithUserWallet(Operation):
     _location_query: str = None
 
     body: PaymentRequest                                                                           # OPTIONAL in [body]
+    currency_code: str                                                                             # REQUIRED in [path]
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
-    currency_code: str                                                                             # REQUIRED in [path]
 
     # endregion fields
 
@@ -130,9 +130,9 @@ class PayWithUserWallet(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
+            "currency_code",
             "namespace",
             "user_id",
-            "currency_code",
         ]
 
     # endregion get methods
@@ -150,12 +150,12 @@ class PayWithUserWallet(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
+        if hasattr(self, "currency_code"):
+            result["currencyCode"] = self.currency_code
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
         if hasattr(self, "user_id"):
             result["userId"] = self.user_id
-        if hasattr(self, "currency_code"):
-            result["currencyCode"] = self.currency_code
         return result
 
     # endregion get_x_params methods
@@ -163,11 +163,11 @@ class PayWithUserWallet(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
+        if not hasattr(self, "currency_code") or self.currency_code is None:
+            return False
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        if not hasattr(self, "currency_code") or self.currency_code is None:
             return False
         return True
 
@@ -179,16 +179,16 @@ class PayWithUserWallet(Operation):
         self.body = value
         return self
 
+    def with_currency_code(self, value: str) -> PayWithUserWallet:
+        self.currency_code = value
+        return self
+
     def with_namespace(self, value: str) -> PayWithUserWallet:
         self.namespace = value
         return self
 
     def with_user_id(self, value: str) -> PayWithUserWallet:
         self.user_id = value
-        return self
-
-    def with_currency_code(self, value: str) -> PayWithUserWallet:
-        self.currency_code = value
         return self
 
     # endregion with_x methods
@@ -201,6 +201,10 @@ class PayWithUserWallet(Operation):
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
             result["body"] = PaymentRequest()
+        if hasattr(self, "currency_code") and self.currency_code:
+            result["currencyCode"] = str(self.currency_code)
+        elif include_empty:
+            result["currencyCode"] = str()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -209,10 +213,6 @@ class PayWithUserWallet(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "currency_code") and self.currency_code:
-            result["currencyCode"] = str(self.currency_code)
-        elif include_empty:
-            result["currencyCode"] = str()
         return result
 
     # endregion to methods
@@ -251,15 +251,15 @@ class PayWithUserWallet(Operation):
     @classmethod
     def create(
         cls,
+        currency_code: str,
         namespace: str,
         user_id: str,
-        currency_code: str,
         body: Optional[PaymentRequest] = None,
     ) -> PayWithUserWallet:
         instance = cls()
+        instance.currency_code = currency_code
         instance.namespace = namespace
         instance.user_id = user_id
-        instance.currency_code = currency_code
         if body is not None:
             instance.body = body
         return instance
@@ -271,6 +271,10 @@ class PayWithUserWallet(Operation):
             instance.body = PaymentRequest.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
             instance.body = PaymentRequest()
+        if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
+            instance.currency_code = str(dict_["currencyCode"])
+        elif include_empty:
+            instance.currency_code = str()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -279,19 +283,15 @@ class PayWithUserWallet(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
-        if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
-            instance.currency_code = str(dict_["currencyCode"])
-        elif include_empty:
-            instance.currency_code = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
+            "currencyCode": "currency_code",
             "namespace": "namespace",
             "userId": "user_id",
-            "currencyCode": "currency_code",
         }
 
     # endregion static methods

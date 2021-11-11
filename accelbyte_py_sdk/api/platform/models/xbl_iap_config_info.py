@@ -30,19 +30,19 @@ class XblIAPConfigInfo(Model):
     Properties:
         namespace: (namespace) REQUIRED str
 
-        relying_party_cert: (relyingPartyCert) OPTIONAL str
-
         business_partner_cert_file_name: (businessPartnerCertFileName) OPTIONAL str
 
         password: (password) OPTIONAL str
+
+        relying_party_cert: (relyingPartyCert) OPTIONAL str
     """
 
     # region fields
 
     namespace: str                                                                                 # REQUIRED
-    relying_party_cert: str                                                                        # OPTIONAL
     business_partner_cert_file_name: str                                                           # OPTIONAL
     password: str                                                                                  # OPTIONAL
+    relying_party_cert: str                                                                        # OPTIONAL
 
     # endregion fields
 
@@ -52,16 +52,16 @@ class XblIAPConfigInfo(Model):
         self.namespace = value
         return self
 
-    def with_relying_party_cert(self, value: str) -> XblIAPConfigInfo:
-        self.relying_party_cert = value
-        return self
-
     def with_business_partner_cert_file_name(self, value: str) -> XblIAPConfigInfo:
         self.business_partner_cert_file_name = value
         return self
 
     def with_password(self, value: str) -> XblIAPConfigInfo:
         self.password = value
+        return self
+
+    def with_relying_party_cert(self, value: str) -> XblIAPConfigInfo:
+        self.relying_party_cert = value
         return self
 
     # endregion with_x methods
@@ -74,10 +74,6 @@ class XblIAPConfigInfo(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "relying_party_cert"):
-            result["relyingPartyCert"] = str(self.relying_party_cert)
-        elif include_empty:
-            result["relyingPartyCert"] = str()
         if hasattr(self, "business_partner_cert_file_name"):
             result["businessPartnerCertFileName"] = str(self.business_partner_cert_file_name)
         elif include_empty:
@@ -86,6 +82,10 @@ class XblIAPConfigInfo(Model):
             result["password"] = str(self.password)
         elif include_empty:
             result["password"] = str()
+        if hasattr(self, "relying_party_cert"):
+            result["relyingPartyCert"] = str(self.relying_party_cert)
+        elif include_empty:
+            result["relyingPartyCert"] = str()
         return result
 
     # endregion to methods
@@ -119,10 +119,6 @@ class XblIAPConfigInfo(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "relyingPartyCert" in dict_ and dict_["relyingPartyCert"] is not None:
-            instance.relying_party_cert = str(dict_["relyingPartyCert"])
-        elif include_empty:
-            instance.relying_party_cert = str()
         if "businessPartnerCertFileName" in dict_ and dict_["businessPartnerCertFileName"] is not None:
             instance.business_partner_cert_file_name = str(dict_["businessPartnerCertFileName"])
         elif include_empty:
@@ -131,15 +127,19 @@ class XblIAPConfigInfo(Model):
             instance.password = str(dict_["password"])
         elif include_empty:
             instance.password = str()
+        if "relyingPartyCert" in dict_ and dict_["relyingPartyCert"] is not None:
+            instance.relying_party_cert = str(dict_["relyingPartyCert"])
+        elif include_empty:
+            instance.relying_party_cert = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "relyingPartyCert": "relying_party_cert",
             "businessPartnerCertFileName": "business_partner_cert_file_name",
             "password": "password",
+            "relyingPartyCert": "relying_party_cert",
         }
 
     # endregion static methods

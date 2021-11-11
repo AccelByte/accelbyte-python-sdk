@@ -28,8 +28,8 @@ class PartyRejectNotif(WebSocketMessage):
 
     # region fields
 
-    party_id: str
     leader_id: str
+    party_id: str
     user_id: str
 
     # endregion fields
@@ -40,10 +40,10 @@ class PartyRejectNotif(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {PartyRejectNotif.get_type()}"]
-        if hasattr(self, "party_id") and self.party_id:
-            wsm.append(f"partyId: {self.party_id}")
         if hasattr(self, "leader_id") and self.leader_id:
             wsm.append(f"leaderId: {self.leader_id}")
+        if hasattr(self, "party_id") and self.party_id:
+            wsm.append(f"partyId: {self.party_id}")
         if hasattr(self, "user_id") and self.user_id:
             wsm.append(f"userId: {self.user_id}")
         return "\n".join(wsm)
@@ -65,11 +65,11 @@ class PartyRejectNotif(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if (not is_strict and name.casefold() == "partyId".casefold()) or (name == "partyId"):
-                instance.party_id = value
-                continue
             if (not is_strict and name.casefold() == "leaderId".casefold()) or (name == "leaderId"):
                 instance.leader_id = value
+                continue
+            if (not is_strict and name.casefold() == "partyId".casefold()) or (name == "partyId"):
+                instance.party_id = value
                 continue
             if (not is_strict and name.casefold() == "userId".casefold()) or (name == "userId"):
                 instance.user_id = value
@@ -85,8 +85,8 @@ class PartyRejectNotif(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "partyId": "party_id",
             "leaderId": "leader_id",
+            "partyId": "party_id",
             "userId": "user_id",
         }
 

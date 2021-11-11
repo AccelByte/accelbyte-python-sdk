@@ -50,11 +50,11 @@ class GetTopicByNamespace(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        limit: (limit) OPTIONAL int in query
+        after: (after) OPTIONAL str in query
 
         before: (before) OPTIONAL str in query
 
-        after: (after) OPTIONAL str in query
+        limit: (limit) OPTIONAL int in query
 
     Responses:
         200: OK - ModelTopicByNamespacesResponse (OK)
@@ -78,9 +78,9 @@ class GetTopicByNamespace(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    limit: int                                                                                     # OPTIONAL in [query]
-    before: str                                                                                    # OPTIONAL in [query]
     after: str                                                                                     # OPTIONAL in [query]
+    before: str                                                                                    # OPTIONAL in [query]
+    limit: int                                                                                     # OPTIONAL in [query]
 
     # endregion fields
 
@@ -152,12 +152,12 @@ class GetTopicByNamespace(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "limit"):
-            result["limit"] = self.limit
-        if hasattr(self, "before"):
-            result["before"] = self.before
         if hasattr(self, "after"):
             result["after"] = self.after
+        if hasattr(self, "before"):
+            result["before"] = self.before
+        if hasattr(self, "limit"):
+            result["limit"] = self.limit
         return result
 
     # endregion get_x_params methods
@@ -177,16 +177,16 @@ class GetTopicByNamespace(Operation):
         self.namespace = value
         return self
 
-    def with_limit(self, value: int) -> GetTopicByNamespace:
-        self.limit = value
+    def with_after(self, value: str) -> GetTopicByNamespace:
+        self.after = value
         return self
 
     def with_before(self, value: str) -> GetTopicByNamespace:
         self.before = value
         return self
 
-    def with_after(self, value: str) -> GetTopicByNamespace:
-        self.after = value
+    def with_limit(self, value: int) -> GetTopicByNamespace:
+        self.limit = value
         return self
 
     # endregion with_x methods
@@ -199,18 +199,18 @@ class GetTopicByNamespace(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "limit") and self.limit:
-            result["limit"] = int(self.limit)
-        elif include_empty:
-            result["limit"] = int()
-        if hasattr(self, "before") and self.before:
-            result["before"] = str(self.before)
-        elif include_empty:
-            result["before"] = str()
         if hasattr(self, "after") and self.after:
             result["after"] = str(self.after)
         elif include_empty:
             result["after"] = str()
+        if hasattr(self, "before") and self.before:
+            result["before"] = str(self.before)
+        elif include_empty:
+            result["before"] = str()
+        if hasattr(self, "limit") and self.limit:
+            result["limit"] = int(self.limit)
+        elif include_empty:
+            result["limit"] = int()
         return result
 
     # endregion to methods
@@ -254,18 +254,18 @@ class GetTopicByNamespace(Operation):
     def create(
         cls,
         namespace: str,
-        limit: Optional[int] = None,
-        before: Optional[str] = None,
         after: Optional[str] = None,
+        before: Optional[str] = None,
+        limit: Optional[int] = None,
     ) -> GetTopicByNamespace:
         instance = cls()
         instance.namespace = namespace
-        if limit is not None:
-            instance.limit = limit
-        if before is not None:
-            instance.before = before
         if after is not None:
             instance.after = after
+        if before is not None:
+            instance.before = before
+        if limit is not None:
+            instance.limit = limit
         return instance
 
     @classmethod
@@ -275,27 +275,27 @@ class GetTopicByNamespace(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "limit" in dict_ and dict_["limit"] is not None:
-            instance.limit = int(dict_["limit"])
-        elif include_empty:
-            instance.limit = int()
-        if "before" in dict_ and dict_["before"] is not None:
-            instance.before = str(dict_["before"])
-        elif include_empty:
-            instance.before = str()
         if "after" in dict_ and dict_["after"] is not None:
             instance.after = str(dict_["after"])
         elif include_empty:
             instance.after = str()
+        if "before" in dict_ and dict_["before"] is not None:
+            instance.before = str(dict_["before"])
+        elif include_empty:
+            instance.before = str()
+        if "limit" in dict_ and dict_["limit"] is not None:
+            instance.limit = int(dict_["limit"])
+        elif include_empty:
+            instance.limit = int()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "limit": "limit",
-            "before": "before",
             "after": "after",
+            "before": "before",
+            "limit": "limit",
         }
 
     # endregion static methods

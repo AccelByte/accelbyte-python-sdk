@@ -28,96 +28,96 @@ class RegionDataItem(Model):
     """Region data (RegionDataItem)
 
     Properties:
-        price: (price) REQUIRED int
-
-        discount_percentage: (discountPercentage) OPTIONAL int
-
-        discount_amount: (discountAmount) OPTIONAL int
-
-        discounted_price: (discountedPrice) OPTIONAL int
-
         currency_code: (currencyCode) REQUIRED str
-
-        currency_type: (currencyType) REQUIRED str
 
         currency_namespace: (currencyNamespace) REQUIRED str
 
-        trial_price: (trialPrice) OPTIONAL int
+        currency_type: (currencyType) REQUIRED str
 
-        purchase_at: (purchaseAt) OPTIONAL str
+        price: (price) REQUIRED int
 
-        expire_at: (expireAt) OPTIONAL str
+        discount_amount: (discountAmount) OPTIONAL int
+
+        discount_expire_at: (discountExpireAt) OPTIONAL str
+
+        discount_percentage: (discountPercentage) OPTIONAL int
 
         discount_purchase_at: (discountPurchaseAt) OPTIONAL str
 
-        discount_expire_at: (discountExpireAt) OPTIONAL str
+        discounted_price: (discountedPrice) OPTIONAL int
+
+        expire_at: (expireAt) OPTIONAL str
+
+        purchase_at: (purchaseAt) OPTIONAL str
+
+        trial_price: (trialPrice) OPTIONAL int
     """
 
     # region fields
 
-    price: int                                                                                     # REQUIRED
-    discount_percentage: int                                                                       # OPTIONAL
-    discount_amount: int                                                                           # OPTIONAL
-    discounted_price: int                                                                          # OPTIONAL
     currency_code: str                                                                             # REQUIRED
-    currency_type: str                                                                             # REQUIRED
     currency_namespace: str                                                                        # REQUIRED
-    trial_price: int                                                                               # OPTIONAL
-    purchase_at: str                                                                               # OPTIONAL
-    expire_at: str                                                                                 # OPTIONAL
-    discount_purchase_at: str                                                                      # OPTIONAL
+    currency_type: str                                                                             # REQUIRED
+    price: int                                                                                     # REQUIRED
+    discount_amount: int                                                                           # OPTIONAL
     discount_expire_at: str                                                                        # OPTIONAL
+    discount_percentage: int                                                                       # OPTIONAL
+    discount_purchase_at: str                                                                      # OPTIONAL
+    discounted_price: int                                                                          # OPTIONAL
+    expire_at: str                                                                                 # OPTIONAL
+    purchase_at: str                                                                               # OPTIONAL
+    trial_price: int                                                                               # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_price(self, value: int) -> RegionDataItem:
-        self.price = value
-        return self
-
-    def with_discount_percentage(self, value: int) -> RegionDataItem:
-        self.discount_percentage = value
-        return self
-
-    def with_discount_amount(self, value: int) -> RegionDataItem:
-        self.discount_amount = value
-        return self
-
-    def with_discounted_price(self, value: int) -> RegionDataItem:
-        self.discounted_price = value
-        return self
-
     def with_currency_code(self, value: str) -> RegionDataItem:
         self.currency_code = value
-        return self
-
-    def with_currency_type(self, value: str) -> RegionDataItem:
-        self.currency_type = value
         return self
 
     def with_currency_namespace(self, value: str) -> RegionDataItem:
         self.currency_namespace = value
         return self
 
-    def with_trial_price(self, value: int) -> RegionDataItem:
-        self.trial_price = value
+    def with_currency_type(self, value: str) -> RegionDataItem:
+        self.currency_type = value
         return self
 
-    def with_purchase_at(self, value: str) -> RegionDataItem:
-        self.purchase_at = value
+    def with_price(self, value: int) -> RegionDataItem:
+        self.price = value
         return self
 
-    def with_expire_at(self, value: str) -> RegionDataItem:
-        self.expire_at = value
+    def with_discount_amount(self, value: int) -> RegionDataItem:
+        self.discount_amount = value
+        return self
+
+    def with_discount_expire_at(self, value: str) -> RegionDataItem:
+        self.discount_expire_at = value
+        return self
+
+    def with_discount_percentage(self, value: int) -> RegionDataItem:
+        self.discount_percentage = value
         return self
 
     def with_discount_purchase_at(self, value: str) -> RegionDataItem:
         self.discount_purchase_at = value
         return self
 
-    def with_discount_expire_at(self, value: str) -> RegionDataItem:
-        self.discount_expire_at = value
+    def with_discounted_price(self, value: int) -> RegionDataItem:
+        self.discounted_price = value
+        return self
+
+    def with_expire_at(self, value: str) -> RegionDataItem:
+        self.expire_at = value
+        return self
+
+    def with_purchase_at(self, value: str) -> RegionDataItem:
+        self.purchase_at = value
+        return self
+
+    def with_trial_price(self, value: int) -> RegionDataItem:
+        self.trial_price = value
         return self
 
     # endregion with_x methods
@@ -126,54 +126,54 @@ class RegionDataItem(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "price"):
-            result["price"] = int(self.price)
-        elif include_empty:
-            result["price"] = int()
-        if hasattr(self, "discount_percentage"):
-            result["discountPercentage"] = int(self.discount_percentage)
-        elif include_empty:
-            result["discountPercentage"] = int()
-        if hasattr(self, "discount_amount"):
-            result["discountAmount"] = int(self.discount_amount)
-        elif include_empty:
-            result["discountAmount"] = int()
-        if hasattr(self, "discounted_price"):
-            result["discountedPrice"] = int(self.discounted_price)
-        elif include_empty:
-            result["discountedPrice"] = int()
         if hasattr(self, "currency_code"):
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
             result["currencyCode"] = str()
-        if hasattr(self, "currency_type"):
-            result["currencyType"] = str(self.currency_type)
-        elif include_empty:
-            result["currencyType"] = str()
         if hasattr(self, "currency_namespace"):
             result["currencyNamespace"] = str(self.currency_namespace)
         elif include_empty:
             result["currencyNamespace"] = str()
-        if hasattr(self, "trial_price"):
-            result["trialPrice"] = int(self.trial_price)
+        if hasattr(self, "currency_type"):
+            result["currencyType"] = str(self.currency_type)
         elif include_empty:
-            result["trialPrice"] = int()
-        if hasattr(self, "purchase_at"):
-            result["purchaseAt"] = str(self.purchase_at)
+            result["currencyType"] = str()
+        if hasattr(self, "price"):
+            result["price"] = int(self.price)
         elif include_empty:
-            result["purchaseAt"] = str()
-        if hasattr(self, "expire_at"):
-            result["expireAt"] = str(self.expire_at)
+            result["price"] = int()
+        if hasattr(self, "discount_amount"):
+            result["discountAmount"] = int(self.discount_amount)
         elif include_empty:
-            result["expireAt"] = str()
-        if hasattr(self, "discount_purchase_at"):
-            result["discountPurchaseAt"] = str(self.discount_purchase_at)
-        elif include_empty:
-            result["discountPurchaseAt"] = str()
+            result["discountAmount"] = int()
         if hasattr(self, "discount_expire_at"):
             result["discountExpireAt"] = str(self.discount_expire_at)
         elif include_empty:
             result["discountExpireAt"] = str()
+        if hasattr(self, "discount_percentage"):
+            result["discountPercentage"] = int(self.discount_percentage)
+        elif include_empty:
+            result["discountPercentage"] = int()
+        if hasattr(self, "discount_purchase_at"):
+            result["discountPurchaseAt"] = str(self.discount_purchase_at)
+        elif include_empty:
+            result["discountPurchaseAt"] = str()
+        if hasattr(self, "discounted_price"):
+            result["discountedPrice"] = int(self.discounted_price)
+        elif include_empty:
+            result["discountedPrice"] = int()
+        if hasattr(self, "expire_at"):
+            result["expireAt"] = str(self.expire_at)
+        elif include_empty:
+            result["expireAt"] = str()
+        if hasattr(self, "purchase_at"):
+            result["purchaseAt"] = str(self.purchase_at)
+        elif include_empty:
+            result["purchaseAt"] = str()
+        if hasattr(self, "trial_price"):
+            result["trialPrice"] = int(self.trial_price)
+        elif include_empty:
+            result["trialPrice"] = int()
         return result
 
     # endregion to methods
@@ -224,71 +224,71 @@ class RegionDataItem(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "price" in dict_ and dict_["price"] is not None:
-            instance.price = int(dict_["price"])
-        elif include_empty:
-            instance.price = int()
-        if "discountPercentage" in dict_ and dict_["discountPercentage"] is not None:
-            instance.discount_percentage = int(dict_["discountPercentage"])
-        elif include_empty:
-            instance.discount_percentage = int()
-        if "discountAmount" in dict_ and dict_["discountAmount"] is not None:
-            instance.discount_amount = int(dict_["discountAmount"])
-        elif include_empty:
-            instance.discount_amount = int()
-        if "discountedPrice" in dict_ and dict_["discountedPrice"] is not None:
-            instance.discounted_price = int(dict_["discountedPrice"])
-        elif include_empty:
-            instance.discounted_price = int()
         if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
             instance.currency_code = str(dict_["currencyCode"])
         elif include_empty:
             instance.currency_code = str()
-        if "currencyType" in dict_ and dict_["currencyType"] is not None:
-            instance.currency_type = str(dict_["currencyType"])
-        elif include_empty:
-            instance.currency_type = str()
         if "currencyNamespace" in dict_ and dict_["currencyNamespace"] is not None:
             instance.currency_namespace = str(dict_["currencyNamespace"])
         elif include_empty:
             instance.currency_namespace = str()
-        if "trialPrice" in dict_ and dict_["trialPrice"] is not None:
-            instance.trial_price = int(dict_["trialPrice"])
+        if "currencyType" in dict_ and dict_["currencyType"] is not None:
+            instance.currency_type = str(dict_["currencyType"])
         elif include_empty:
-            instance.trial_price = int()
-        if "purchaseAt" in dict_ and dict_["purchaseAt"] is not None:
-            instance.purchase_at = str(dict_["purchaseAt"])
+            instance.currency_type = str()
+        if "price" in dict_ and dict_["price"] is not None:
+            instance.price = int(dict_["price"])
         elif include_empty:
-            instance.purchase_at = str()
-        if "expireAt" in dict_ and dict_["expireAt"] is not None:
-            instance.expire_at = str(dict_["expireAt"])
+            instance.price = int()
+        if "discountAmount" in dict_ and dict_["discountAmount"] is not None:
+            instance.discount_amount = int(dict_["discountAmount"])
         elif include_empty:
-            instance.expire_at = str()
-        if "discountPurchaseAt" in dict_ and dict_["discountPurchaseAt"] is not None:
-            instance.discount_purchase_at = str(dict_["discountPurchaseAt"])
-        elif include_empty:
-            instance.discount_purchase_at = str()
+            instance.discount_amount = int()
         if "discountExpireAt" in dict_ and dict_["discountExpireAt"] is not None:
             instance.discount_expire_at = str(dict_["discountExpireAt"])
         elif include_empty:
             instance.discount_expire_at = str()
+        if "discountPercentage" in dict_ and dict_["discountPercentage"] is not None:
+            instance.discount_percentage = int(dict_["discountPercentage"])
+        elif include_empty:
+            instance.discount_percentage = int()
+        if "discountPurchaseAt" in dict_ and dict_["discountPurchaseAt"] is not None:
+            instance.discount_purchase_at = str(dict_["discountPurchaseAt"])
+        elif include_empty:
+            instance.discount_purchase_at = str()
+        if "discountedPrice" in dict_ and dict_["discountedPrice"] is not None:
+            instance.discounted_price = int(dict_["discountedPrice"])
+        elif include_empty:
+            instance.discounted_price = int()
+        if "expireAt" in dict_ and dict_["expireAt"] is not None:
+            instance.expire_at = str(dict_["expireAt"])
+        elif include_empty:
+            instance.expire_at = str()
+        if "purchaseAt" in dict_ and dict_["purchaseAt"] is not None:
+            instance.purchase_at = str(dict_["purchaseAt"])
+        elif include_empty:
+            instance.purchase_at = str()
+        if "trialPrice" in dict_ and dict_["trialPrice"] is not None:
+            instance.trial_price = int(dict_["trialPrice"])
+        elif include_empty:
+            instance.trial_price = int()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "price": "price",
-            "discountPercentage": "discount_percentage",
-            "discountAmount": "discount_amount",
-            "discountedPrice": "discounted_price",
             "currencyCode": "currency_code",
-            "currencyType": "currency_type",
             "currencyNamespace": "currency_namespace",
-            "trialPrice": "trial_price",
-            "purchaseAt": "purchase_at",
-            "expireAt": "expire_at",
-            "discountPurchaseAt": "discount_purchase_at",
+            "currencyType": "currency_type",
+            "price": "price",
+            "discountAmount": "discount_amount",
             "discountExpireAt": "discount_expire_at",
+            "discountPercentage": "discount_percentage",
+            "discountPurchaseAt": "discount_purchase_at",
+            "discountedPrice": "discounted_price",
+            "expireAt": "expire_at",
+            "purchaseAt": "purchase_at",
+            "trialPrice": "trial_price",
         }
 
     # endregion static methods

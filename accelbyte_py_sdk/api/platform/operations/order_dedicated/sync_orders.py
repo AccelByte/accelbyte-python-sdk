@@ -52,11 +52,11 @@ class SyncOrders(Operation):
 
         security: bearer
 
-        start: (start) REQUIRED str in query
+        next_evaluated_key: (nextEvaluatedKey) OPTIONAL str in query
 
         end: (end) REQUIRED str in query
 
-        next_evaluated_key: (nextEvaluatedKey) OPTIONAL str in query
+        start: (start) REQUIRED str in query
 
     Responses:
         200: OK - OrderSyncResult (successful operation)
@@ -71,9 +71,9 @@ class SyncOrders(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    start: str                                                                                     # REQUIRED in [query]
-    end: str                                                                                       # REQUIRED in [query]
     next_evaluated_key: str                                                                        # OPTIONAL in [query]
+    end: str                                                                                       # REQUIRED in [query]
+    start: str                                                                                     # REQUIRED in [query]
 
     # endregion fields
 
@@ -120,8 +120,8 @@ class SyncOrders(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "start",
             "end",
+            "start",
         ]
 
     # endregion get methods
@@ -135,12 +135,12 @@ class SyncOrders(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "start"):
-            result["start"] = self.start
-        if hasattr(self, "end"):
-            result["end"] = self.end
         if hasattr(self, "next_evaluated_key"):
             result["nextEvaluatedKey"] = self.next_evaluated_key
+        if hasattr(self, "end"):
+            result["end"] = self.end
+        if hasattr(self, "start"):
+            result["start"] = self.start
         return result
 
     # endregion get_x_params methods
@@ -148,9 +148,9 @@ class SyncOrders(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "start") or self.start is None:
-            return False
         if not hasattr(self, "end") or self.end is None:
+            return False
+        if not hasattr(self, "start") or self.start is None:
             return False
         return True
 
@@ -158,16 +158,16 @@ class SyncOrders(Operation):
 
     # region with_x methods
 
-    def with_start(self, value: str) -> SyncOrders:
-        self.start = value
+    def with_next_evaluated_key(self, value: str) -> SyncOrders:
+        self.next_evaluated_key = value
         return self
 
     def with_end(self, value: str) -> SyncOrders:
         self.end = value
         return self
 
-    def with_next_evaluated_key(self, value: str) -> SyncOrders:
-        self.next_evaluated_key = value
+    def with_start(self, value: str) -> SyncOrders:
+        self.start = value
         return self
 
     # endregion with_x methods
@@ -176,18 +176,18 @@ class SyncOrders(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "start") and self.start:
-            result["start"] = str(self.start)
-        elif include_empty:
-            result["start"] = str()
-        if hasattr(self, "end") and self.end:
-            result["end"] = str(self.end)
-        elif include_empty:
-            result["end"] = str()
         if hasattr(self, "next_evaluated_key") and self.next_evaluated_key:
             result["nextEvaluatedKey"] = str(self.next_evaluated_key)
         elif include_empty:
             result["nextEvaluatedKey"] = str()
+        if hasattr(self, "end") and self.end:
+            result["end"] = str(self.end)
+        elif include_empty:
+            result["end"] = str()
+        if hasattr(self, "start") and self.start:
+            result["start"] = str(self.start)
+        elif include_empty:
+            result["start"] = str()
         return result
 
     # endregion to methods
@@ -214,13 +214,13 @@ class SyncOrders(Operation):
     @classmethod
     def create(
         cls,
-        start: str,
         end: str,
+        start: str,
         next_evaluated_key: Optional[str] = None,
     ) -> SyncOrders:
         instance = cls()
-        instance.start = start
         instance.end = end
+        instance.start = start
         if next_evaluated_key is not None:
             instance.next_evaluated_key = next_evaluated_key
         return instance
@@ -228,26 +228,26 @@ class SyncOrders(Operation):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> SyncOrders:
         instance = cls()
-        if "start" in dict_ and dict_["start"] is not None:
-            instance.start = str(dict_["start"])
-        elif include_empty:
-            instance.start = str()
-        if "end" in dict_ and dict_["end"] is not None:
-            instance.end = str(dict_["end"])
-        elif include_empty:
-            instance.end = str()
         if "nextEvaluatedKey" in dict_ and dict_["nextEvaluatedKey"] is not None:
             instance.next_evaluated_key = str(dict_["nextEvaluatedKey"])
         elif include_empty:
             instance.next_evaluated_key = str()
+        if "end" in dict_ and dict_["end"] is not None:
+            instance.end = str(dict_["end"])
+        elif include_empty:
+            instance.end = str()
+        if "start" in dict_ and dict_["start"] is not None:
+            instance.start = str(dict_["start"])
+        elif include_empty:
+            instance.start = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "start": "start",
-            "end": "end",
             "nextEvaluatedKey": "next_evaluated_key",
+            "end": "end",
+            "start": "start",
         }
 
     # endregion static methods

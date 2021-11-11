@@ -50,9 +50,9 @@ class AdminImportProfanityFiltersFromFile(Operation):
 
         body: (body) REQUIRED List[int] in body
 
-        namespace: (namespace) REQUIRED str in path
-
         list_: (list) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
     Responses:
         200: OK - (OK)
@@ -78,8 +78,8 @@ class AdminImportProfanityFiltersFromFile(Operation):
     _location_query: str = None
 
     body: List[int]                                                                                # REQUIRED in [body]
-    namespace: str                                                                                 # REQUIRED in [path]
     list_: str                                                                                     # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -128,8 +128,8 @@ class AdminImportProfanityFiltersFromFile(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "body",
-            "namespace",
             "list_",
+            "namespace",
         ]
 
     # endregion get methods
@@ -147,10 +147,10 @@ class AdminImportProfanityFiltersFromFile(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "list_"):
             result["list"] = self.list_
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     # endregion get_x_params methods
@@ -160,9 +160,9 @@ class AdminImportProfanityFiltersFromFile(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "body") or self.body is None:
             return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "list_") or self.list_ is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         return True
 
@@ -174,12 +174,12 @@ class AdminImportProfanityFiltersFromFile(Operation):
         self.body = value
         return self
 
-    def with_namespace(self, value: str) -> AdminImportProfanityFiltersFromFile:
-        self.namespace = value
-        return self
-
     def with_list_(self, value: str) -> AdminImportProfanityFiltersFromFile:
         self.list_ = value
+        return self
+
+    def with_namespace(self, value: str) -> AdminImportProfanityFiltersFromFile:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -192,14 +192,14 @@ class AdminImportProfanityFiltersFromFile(Operation):
             result["body"] = [int(i0) for i0 in self.body]
         elif include_empty:
             result["body"] = []
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "list_") and self.list_:
             result["list"] = str(self.list_)
         elif include_empty:
             result["list"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         return result
 
     # endregion to methods
@@ -247,13 +247,13 @@ class AdminImportProfanityFiltersFromFile(Operation):
     def create(
         cls,
         body: List[int],
-        namespace: str,
         list_: str,
+        namespace: str,
     ) -> AdminImportProfanityFiltersFromFile:
         instance = cls()
         instance.body = body
-        instance.namespace = namespace
         instance.list_ = list_
+        instance.namespace = namespace
         return instance
 
     @classmethod
@@ -263,22 +263,22 @@ class AdminImportProfanityFiltersFromFile(Operation):
             instance.body = [int(i0) for i0 in dict_["body"]]
         elif include_empty:
             instance.body = []
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "list" in dict_ and dict_["list"] is not None:
             instance.list_ = str(dict_["list"])
         elif include_empty:
             instance.list_ = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
-            "namespace": "namespace",
             "list": "list_",
+            "namespace": "namespace",
         }
 
     # endregion static methods

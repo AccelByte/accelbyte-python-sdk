@@ -56,9 +56,9 @@ class QueryRewards1(Operation):
 
         event_topic: (eventTopic) OPTIONAL str in query
 
-        offset: (offset) OPTIONAL int in query
-
         limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
 
         sort_by: (sortBy) OPTIONAL str in query
 
@@ -79,8 +79,8 @@ class QueryRewards1(Operation):
 
     namespace: str                                                                                 # REQUIRED in [path]
     event_topic: str                                                                               # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
     sort_by: str                                                                                   # OPTIONAL in [query]
 
     # endregion fields
@@ -155,10 +155,10 @@ class QueryRewards1(Operation):
         result = {}
         if hasattr(self, "event_topic"):
             result["eventTopic"] = self.event_topic
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         if hasattr(self, "sort_by"):
             result["sortBy"] = self.sort_by
         return result
@@ -184,12 +184,12 @@ class QueryRewards1(Operation):
         self.event_topic = value
         return self
 
-    def with_offset(self, value: int) -> QueryRewards1:
-        self.offset = value
-        return self
-
     def with_limit(self, value: int) -> QueryRewards1:
         self.limit = value
+        return self
+
+    def with_offset(self, value: int) -> QueryRewards1:
+        self.offset = value
         return self
 
     def with_sort_by(self, value: str) -> QueryRewards1:
@@ -210,14 +210,14 @@ class QueryRewards1(Operation):
             result["eventTopic"] = str(self.event_topic)
         elif include_empty:
             result["eventTopic"] = str()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
         if hasattr(self, "sort_by") and self.sort_by:
             result["sortBy"] = str(self.sort_by)
         elif include_empty:
@@ -254,18 +254,18 @@ class QueryRewards1(Operation):
         cls,
         namespace: str,
         event_topic: Optional[str] = None,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
         sort_by: Optional[str] = None,
     ) -> QueryRewards1:
         instance = cls()
         instance.namespace = namespace
         if event_topic is not None:
             instance.event_topic = event_topic
-        if offset is not None:
-            instance.offset = offset
         if limit is not None:
             instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
         if sort_by is not None:
             instance.sort_by = sort_by
         return instance
@@ -281,14 +281,14 @@ class QueryRewards1(Operation):
             instance.event_topic = str(dict_["eventTopic"])
         elif include_empty:
             instance.event_topic = str()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
         if "sortBy" in dict_ and dict_["sortBy"] is not None:
             instance.sort_by = str(dict_["sortBy"])
         elif include_empty:
@@ -300,8 +300,8 @@ class QueryRewards1(Operation):
         return {
             "namespace": "namespace",
             "eventTopic": "event_topic",
-            "offset": "offset",
             "limit": "limit",
+            "offset": "offset",
             "sortBy": "sort_by",
         }
 

@@ -54,9 +54,9 @@ class UpdateTemplateLocalizationV1Admin(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        template_slug: (templateSlug) REQUIRED str in path
-
         template_language: (templateLanguage) REQUIRED str in path
+
+        template_slug: (templateSlug) REQUIRED str in path
 
     Responses:
         204: No Content - (No Content)
@@ -83,8 +83,8 @@ class UpdateTemplateLocalizationV1Admin(Operation):
 
     body: ModelUpdateTemplateRequest                                                               # REQUIRED in [body]
     namespace: str                                                                                 # REQUIRED in [path]
-    template_slug: str                                                                             # REQUIRED in [path]
     template_language: str                                                                         # REQUIRED in [path]
+    template_slug: str                                                                             # REQUIRED in [path]
 
     # endregion fields
 
@@ -134,8 +134,8 @@ class UpdateTemplateLocalizationV1Admin(Operation):
         return [
             "body",
             "namespace",
-            "template_slug",
             "template_language",
+            "template_slug",
         ]
 
     # endregion get methods
@@ -155,10 +155,10 @@ class UpdateTemplateLocalizationV1Admin(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "template_slug"):
-            result["templateSlug"] = self.template_slug
         if hasattr(self, "template_language"):
             result["templateLanguage"] = self.template_language
+        if hasattr(self, "template_slug"):
+            result["templateSlug"] = self.template_slug
         return result
 
     # endregion get_x_params methods
@@ -170,9 +170,9 @@ class UpdateTemplateLocalizationV1Admin(Operation):
             return False
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
-        if not hasattr(self, "template_slug") or self.template_slug is None:
-            return False
         if not hasattr(self, "template_language") or self.template_language is None:
+            return False
+        if not hasattr(self, "template_slug") or self.template_slug is None:
             return False
         return True
 
@@ -188,12 +188,12 @@ class UpdateTemplateLocalizationV1Admin(Operation):
         self.namespace = value
         return self
 
-    def with_template_slug(self, value: str) -> UpdateTemplateLocalizationV1Admin:
-        self.template_slug = value
-        return self
-
     def with_template_language(self, value: str) -> UpdateTemplateLocalizationV1Admin:
         self.template_language = value
+        return self
+
+    def with_template_slug(self, value: str) -> UpdateTemplateLocalizationV1Admin:
+        self.template_slug = value
         return self
 
     # endregion with_x methods
@@ -210,14 +210,14 @@ class UpdateTemplateLocalizationV1Admin(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "template_slug") and self.template_slug:
-            result["templateSlug"] = str(self.template_slug)
-        elif include_empty:
-            result["templateSlug"] = str()
         if hasattr(self, "template_language") and self.template_language:
             result["templateLanguage"] = str(self.template_language)
         elif include_empty:
             result["templateLanguage"] = str()
+        if hasattr(self, "template_slug") and self.template_slug:
+            result["templateSlug"] = str(self.template_slug)
+        elif include_empty:
+            result["templateSlug"] = str()
         return result
 
     # endregion to methods
@@ -266,14 +266,14 @@ class UpdateTemplateLocalizationV1Admin(Operation):
         cls,
         body: ModelUpdateTemplateRequest,
         namespace: str,
-        template_slug: str,
         template_language: str,
+        template_slug: str,
     ) -> UpdateTemplateLocalizationV1Admin:
         instance = cls()
         instance.body = body
         instance.namespace = namespace
-        instance.template_slug = template_slug
         instance.template_language = template_language
+        instance.template_slug = template_slug
         return instance
 
     @classmethod
@@ -287,14 +287,14 @@ class UpdateTemplateLocalizationV1Admin(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "templateSlug" in dict_ and dict_["templateSlug"] is not None:
-            instance.template_slug = str(dict_["templateSlug"])
-        elif include_empty:
-            instance.template_slug = str()
         if "templateLanguage" in dict_ and dict_["templateLanguage"] is not None:
             instance.template_language = str(dict_["templateLanguage"])
         elif include_empty:
             instance.template_language = str()
+        if "templateSlug" in dict_ and dict_["templateSlug"] is not None:
+            instance.template_slug = str(dict_["templateSlug"])
+        elif include_empty:
+            instance.template_slug = str()
         return instance
 
     @staticmethod
@@ -302,8 +302,8 @@ class UpdateTemplateLocalizationV1Admin(Operation):
         return {
             "body": "body",
             "namespace": "namespace",
-            "templateSlug": "template_slug",
             "templateLanguage": "template_language",
+            "templateSlug": "template_slug",
         }
 
     # endregion static methods

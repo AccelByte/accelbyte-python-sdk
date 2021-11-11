@@ -51,9 +51,9 @@ class AdminDeleteUserRoleV3(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
-
         role_id: (roleId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
 
     Responses:
         204: No Content - (Operation succeeded)
@@ -77,8 +77,8 @@ class AdminDeleteUserRoleV3(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    user_id: str                                                                                   # REQUIRED in [path]
     role_id: str                                                                                   # REQUIRED in [path]
+    user_id: str                                                                                   # REQUIRED in [path]
 
     # endregion fields
 
@@ -127,8 +127,8 @@ class AdminDeleteUserRoleV3(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "namespace",
-            "user_id",
             "role_id",
+            "user_id",
         ]
 
     # endregion get methods
@@ -144,10 +144,10 @@ class AdminDeleteUserRoleV3(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
         if hasattr(self, "role_id"):
             result["roleId"] = self.role_id
+        if hasattr(self, "user_id"):
+            result["userId"] = self.user_id
         return result
 
     # endregion get_x_params methods
@@ -157,9 +157,9 @@ class AdminDeleteUserRoleV3(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
         if not hasattr(self, "role_id") or self.role_id is None:
+            return False
+        if not hasattr(self, "user_id") or self.user_id is None:
             return False
         return True
 
@@ -171,12 +171,12 @@ class AdminDeleteUserRoleV3(Operation):
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> AdminDeleteUserRoleV3:
-        self.user_id = value
-        return self
-
     def with_role_id(self, value: str) -> AdminDeleteUserRoleV3:
         self.role_id = value
+        return self
+
+    def with_user_id(self, value: str) -> AdminDeleteUserRoleV3:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -189,14 +189,14 @@ class AdminDeleteUserRoleV3(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
         if hasattr(self, "role_id") and self.role_id:
             result["roleId"] = str(self.role_id)
         elif include_empty:
             result["roleId"] = str()
+        if hasattr(self, "user_id") and self.user_id:
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         return result
 
     # endregion to methods
@@ -240,13 +240,13 @@ class AdminDeleteUserRoleV3(Operation):
     def create(
         cls,
         namespace: str,
-        user_id: str,
         role_id: str,
+        user_id: str,
     ) -> AdminDeleteUserRoleV3:
         instance = cls()
         instance.namespace = namespace
-        instance.user_id = user_id
         instance.role_id = role_id
+        instance.user_id = user_id
         return instance
 
     @classmethod
@@ -256,22 +256,22 @@ class AdminDeleteUserRoleV3(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
         if "roleId" in dict_ and dict_["roleId"] is not None:
             instance.role_id = str(dict_["roleId"])
         elif include_empty:
             instance.role_id = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "userId": "user_id",
             "roleId": "role_id",
+            "userId": "user_id",
         }
 
     # endregion static methods

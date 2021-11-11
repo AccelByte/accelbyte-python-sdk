@@ -37,14 +37,14 @@ from ..operations.ticket import IncreaseTicketSale
 
 
 @same_doc_as(AcquireUserTicket)
-def acquire_user_ticket(user_id: str, booth_name: str, body: Optional[TicketAcquireRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def acquire_user_ticket(booth_name: str, user_id: str, body: Optional[TicketAcquireRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = AcquireUserTicket.create(
-        user_id=user_id,
         booth_name=booth_name,
+        user_id=user_id,
         body=body,
         namespace=namespace,
     )

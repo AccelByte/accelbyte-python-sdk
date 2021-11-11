@@ -28,26 +28,26 @@ class AppLocalization(Model):
     """App localization (AppLocalization)
 
     Properties:
-        slogan: (slogan) OPTIONAL str
-
         announcement: (announcement) OPTIONAL str
+
+        slogan: (slogan) OPTIONAL str
     """
 
     # region fields
 
-    slogan: str                                                                                    # OPTIONAL
     announcement: str                                                                              # OPTIONAL
+    slogan: str                                                                                    # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_slogan(self, value: str) -> AppLocalization:
-        self.slogan = value
-        return self
-
     def with_announcement(self, value: str) -> AppLocalization:
         self.announcement = value
+        return self
+
+    def with_slogan(self, value: str) -> AppLocalization:
+        self.slogan = value
         return self
 
     # endregion with_x methods
@@ -56,14 +56,14 @@ class AppLocalization(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "slogan"):
-            result["slogan"] = str(self.slogan)
-        elif include_empty:
-            result["slogan"] = str()
         if hasattr(self, "announcement"):
             result["announcement"] = str(self.announcement)
         elif include_empty:
             result["announcement"] = str()
+        if hasattr(self, "slogan"):
+            result["slogan"] = str(self.slogan)
+        elif include_empty:
+            result["slogan"] = str()
         return result
 
     # endregion to methods
@@ -88,21 +88,21 @@ class AppLocalization(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "slogan" in dict_ and dict_["slogan"] is not None:
-            instance.slogan = str(dict_["slogan"])
-        elif include_empty:
-            instance.slogan = str()
         if "announcement" in dict_ and dict_["announcement"] is not None:
             instance.announcement = str(dict_["announcement"])
         elif include_empty:
             instance.announcement = str()
+        if "slogan" in dict_ and dict_["slogan"] is not None:
+            instance.slogan = str(dict_["slogan"])
+        elif include_empty:
+            instance.slogan = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "slogan": "slogan",
             "announcement": "announcement",
+            "slogan": "slogan",
         }
 
     # endregion static methods

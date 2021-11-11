@@ -28,8 +28,8 @@ class ListIncomingFriendsResponse(WebSocketMessage):
 
     # region fields
 
-    id_: str
     code: str
+    id_: str
     user_ids: List[str]
 
     # endregion fields
@@ -40,10 +40,10 @@ class ListIncomingFriendsResponse(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {ListIncomingFriendsResponse.get_type()}"]
-        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
-        wsm.append(f"id: {id_}")
         if hasattr(self, "code") and self.code:
             wsm.append(f"code: {self.code}")
+        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
+        wsm.append(f"id: {id_}")
         if hasattr(self, "user_ids") and self.user_ids:
             wsm.append(f"userIds: [" + ','.join([str(i) for i in self.user_ids]) + "]")
         return "\n".join(wsm)
@@ -86,8 +86,8 @@ class ListIncomingFriendsResponse(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
             "code": "code",
+            "id": "id_",
             "userIds": "user_ids",
         }
 

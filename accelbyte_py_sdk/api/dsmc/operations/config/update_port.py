@@ -52,9 +52,9 @@ class UpdatePort(Operation):
 
         body: (body) REQUIRED ModelsUpdatePortRequest in body
 
-        namespace: (namespace) REQUIRED str in path
-
         name: (name) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
     Responses:
         200: OK - ModelsDSMConfigRecord (pod config updated)
@@ -78,8 +78,8 @@ class UpdatePort(Operation):
     _location_query: str = None
 
     body: ModelsUpdatePortRequest                                                                  # REQUIRED in [body]
-    namespace: str                                                                                 # REQUIRED in [path]
     name: str                                                                                      # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -128,8 +128,8 @@ class UpdatePort(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "body",
-            "namespace",
             "name",
+            "namespace",
         ]
 
     # endregion get methods
@@ -147,10 +147,10 @@ class UpdatePort(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "name"):
             result["name"] = self.name
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     # endregion get_x_params methods
@@ -160,9 +160,9 @@ class UpdatePort(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "body") or self.body is None:
             return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "name") or self.name is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         return True
 
@@ -174,12 +174,12 @@ class UpdatePort(Operation):
         self.body = value
         return self
 
-    def with_namespace(self, value: str) -> UpdatePort:
-        self.namespace = value
-        return self
-
     def with_name(self, value: str) -> UpdatePort:
         self.name = value
+        return self
+
+    def with_namespace(self, value: str) -> UpdatePort:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -192,14 +192,14 @@ class UpdatePort(Operation):
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
             result["body"] = ModelsUpdatePortRequest()
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "name") and self.name:
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         return result
 
     # endregion to methods
@@ -243,13 +243,13 @@ class UpdatePort(Operation):
     def create(
         cls,
         body: ModelsUpdatePortRequest,
-        namespace: str,
         name: str,
+        namespace: str,
     ) -> UpdatePort:
         instance = cls()
         instance.body = body
-        instance.namespace = namespace
         instance.name = name
+        instance.namespace = namespace
         return instance
 
     @classmethod
@@ -259,22 +259,22 @@ class UpdatePort(Operation):
             instance.body = ModelsUpdatePortRequest.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
             instance.body = ModelsUpdatePortRequest()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
-            "namespace": "namespace",
             "name": "name",
+            "namespace": "namespace",
         }
 
     # endregion static methods

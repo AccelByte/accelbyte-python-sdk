@@ -56,9 +56,9 @@ class CreateCodes(Operation):
 
         body: (body) OPTIONAL CodeCreate in body
 
-        namespace: (namespace) REQUIRED str in path
-
         campaign_id: (campaignId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
     Responses:
         201: Created - CodeCreateResult (successful operation)
@@ -78,8 +78,8 @@ class CreateCodes(Operation):
     _location_query: str = None
 
     body: CodeCreate                                                                               # OPTIONAL in [body]
-    namespace: str                                                                                 # REQUIRED in [path]
     campaign_id: str                                                                               # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -127,8 +127,8 @@ class CreateCodes(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "namespace",
             "campaign_id",
+            "namespace",
         ]
 
     # endregion get methods
@@ -146,10 +146,10 @@ class CreateCodes(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "campaign_id"):
             result["campaignId"] = self.campaign_id
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     # endregion get_x_params methods
@@ -157,9 +157,9 @@ class CreateCodes(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "campaign_id") or self.campaign_id is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         return True
 
@@ -171,12 +171,12 @@ class CreateCodes(Operation):
         self.body = value
         return self
 
-    def with_namespace(self, value: str) -> CreateCodes:
-        self.namespace = value
-        return self
-
     def with_campaign_id(self, value: str) -> CreateCodes:
         self.campaign_id = value
+        return self
+
+    def with_namespace(self, value: str) -> CreateCodes:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -189,14 +189,14 @@ class CreateCodes(Operation):
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
             result["body"] = CodeCreate()
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "campaign_id") and self.campaign_id:
             result["campaignId"] = str(self.campaign_id)
         elif include_empty:
             result["campaignId"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         return result
 
     # endregion to methods
@@ -231,13 +231,13 @@ class CreateCodes(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
         campaign_id: str,
+        namespace: str,
         body: Optional[CodeCreate] = None,
     ) -> CreateCodes:
         instance = cls()
-        instance.namespace = namespace
         instance.campaign_id = campaign_id
+        instance.namespace = namespace
         if body is not None:
             instance.body = body
         return instance
@@ -249,22 +249,22 @@ class CreateCodes(Operation):
             instance.body = CodeCreate.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
             instance.body = CodeCreate()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "campaignId" in dict_ and dict_["campaignId"] is not None:
             instance.campaign_id = str(dict_["campaignId"])
         elif include_empty:
             instance.campaign_id = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
-            "namespace": "namespace",
             "campaignId": "campaign_id",
+            "namespace": "namespace",
         }
 
     # endregion static methods

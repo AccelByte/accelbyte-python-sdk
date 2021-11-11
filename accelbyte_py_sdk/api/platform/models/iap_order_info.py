@@ -35,53 +35,53 @@ class IAPOrderInfo(Model):
 
         namespace: (namespace) REQUIRED str
 
-        user_id: (userId) REQUIRED str
-
-        product_id: (productId) OPTIONAL str
-
-        receipt_data: (receiptData) OPTIONAL str
-
-        transaction_id: (transactionId) OPTIONAL str
-
         status: (status) REQUIRED str
-
-        status_reason: (statusReason) OPTIONAL str
-
-        region: (region) OPTIONAL str
-
-        language: (language) OPTIONAL str
-
-        quantity: (quantity) OPTIONAL int
-
-        sandbox: (sandbox) OPTIONAL bool
 
         type_: (type) REQUIRED str
 
-        fulfilled_time: (fulfilledTime) OPTIONAL str
+        user_id: (userId) REQUIRED str
+
+        credits: (credits) OPTIONAL List[CreditSummary]
 
         entitlements: (entitlements) OPTIONAL List[EntitlementSummary]
 
-        credits: (credits) OPTIONAL List[CreditSummary]
+        fulfilled_time: (fulfilledTime) OPTIONAL str
+
+        language: (language) OPTIONAL str
+
+        product_id: (productId) OPTIONAL str
+
+        quantity: (quantity) OPTIONAL int
+
+        receipt_data: (receiptData) OPTIONAL str
+
+        region: (region) OPTIONAL str
+
+        sandbox: (sandbox) OPTIONAL bool
+
+        status_reason: (statusReason) OPTIONAL str
+
+        transaction_id: (transactionId) OPTIONAL str
     """
 
     # region fields
 
     iap_order_no: str                                                                              # REQUIRED
     namespace: str                                                                                 # REQUIRED
-    user_id: str                                                                                   # REQUIRED
-    product_id: str                                                                                # OPTIONAL
-    receipt_data: str                                                                              # OPTIONAL
-    transaction_id: str                                                                            # OPTIONAL
     status: str                                                                                    # REQUIRED
-    status_reason: str                                                                             # OPTIONAL
-    region: str                                                                                    # OPTIONAL
-    language: str                                                                                  # OPTIONAL
-    quantity: int                                                                                  # OPTIONAL
-    sandbox: bool                                                                                  # OPTIONAL
     type_: str                                                                                     # REQUIRED
-    fulfilled_time: str                                                                            # OPTIONAL
-    entitlements: List[EntitlementSummary]                                                         # OPTIONAL
+    user_id: str                                                                                   # REQUIRED
     credits: List[CreditSummary]                                                                   # OPTIONAL
+    entitlements: List[EntitlementSummary]                                                         # OPTIONAL
+    fulfilled_time: str                                                                            # OPTIONAL
+    language: str                                                                                  # OPTIONAL
+    product_id: str                                                                                # OPTIONAL
+    quantity: int                                                                                  # OPTIONAL
+    receipt_data: str                                                                              # OPTIONAL
+    region: str                                                                                    # OPTIONAL
+    sandbox: bool                                                                                  # OPTIONAL
+    status_reason: str                                                                             # OPTIONAL
+    transaction_id: str                                                                            # OPTIONAL
 
     # endregion fields
 
@@ -95,60 +95,60 @@ class IAPOrderInfo(Model):
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> IAPOrderInfo:
-        self.user_id = value
-        return self
-
-    def with_product_id(self, value: str) -> IAPOrderInfo:
-        self.product_id = value
-        return self
-
-    def with_receipt_data(self, value: str) -> IAPOrderInfo:
-        self.receipt_data = value
-        return self
-
-    def with_transaction_id(self, value: str) -> IAPOrderInfo:
-        self.transaction_id = value
-        return self
-
     def with_status(self, value: str) -> IAPOrderInfo:
         self.status = value
-        return self
-
-    def with_status_reason(self, value: str) -> IAPOrderInfo:
-        self.status_reason = value
-        return self
-
-    def with_region(self, value: str) -> IAPOrderInfo:
-        self.region = value
-        return self
-
-    def with_language(self, value: str) -> IAPOrderInfo:
-        self.language = value
-        return self
-
-    def with_quantity(self, value: int) -> IAPOrderInfo:
-        self.quantity = value
-        return self
-
-    def with_sandbox(self, value: bool) -> IAPOrderInfo:
-        self.sandbox = value
         return self
 
     def with_type(self, value: str) -> IAPOrderInfo:
         self.type_ = value
         return self
 
-    def with_fulfilled_time(self, value: str) -> IAPOrderInfo:
-        self.fulfilled_time = value
+    def with_user_id(self, value: str) -> IAPOrderInfo:
+        self.user_id = value
+        return self
+
+    def with_credits(self, value: List[CreditSummary]) -> IAPOrderInfo:
+        self.credits = value
         return self
 
     def with_entitlements(self, value: List[EntitlementSummary]) -> IAPOrderInfo:
         self.entitlements = value
         return self
 
-    def with_credits(self, value: List[CreditSummary]) -> IAPOrderInfo:
-        self.credits = value
+    def with_fulfilled_time(self, value: str) -> IAPOrderInfo:
+        self.fulfilled_time = value
+        return self
+
+    def with_language(self, value: str) -> IAPOrderInfo:
+        self.language = value
+        return self
+
+    def with_product_id(self, value: str) -> IAPOrderInfo:
+        self.product_id = value
+        return self
+
+    def with_quantity(self, value: int) -> IAPOrderInfo:
+        self.quantity = value
+        return self
+
+    def with_receipt_data(self, value: str) -> IAPOrderInfo:
+        self.receipt_data = value
+        return self
+
+    def with_region(self, value: str) -> IAPOrderInfo:
+        self.region = value
+        return self
+
+    def with_sandbox(self, value: bool) -> IAPOrderInfo:
+        self.sandbox = value
+        return self
+
+    def with_status_reason(self, value: str) -> IAPOrderInfo:
+        self.status_reason = value
+        return self
+
+    def with_transaction_id(self, value: str) -> IAPOrderInfo:
+        self.transaction_id = value
         return self
 
     # endregion with_x methods
@@ -165,62 +165,62 @@ class IAPOrderInfo(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id"):
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
-        if hasattr(self, "product_id"):
-            result["productId"] = str(self.product_id)
-        elif include_empty:
-            result["productId"] = str()
-        if hasattr(self, "receipt_data"):
-            result["receiptData"] = str(self.receipt_data)
-        elif include_empty:
-            result["receiptData"] = str()
-        if hasattr(self, "transaction_id"):
-            result["transactionId"] = str(self.transaction_id)
-        elif include_empty:
-            result["transactionId"] = str()
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
-        if hasattr(self, "status_reason"):
-            result["statusReason"] = str(self.status_reason)
-        elif include_empty:
-            result["statusReason"] = str()
-        if hasattr(self, "region"):
-            result["region"] = str(self.region)
-        elif include_empty:
-            result["region"] = str()
-        if hasattr(self, "language"):
-            result["language"] = str(self.language)
-        elif include_empty:
-            result["language"] = str()
-        if hasattr(self, "quantity"):
-            result["quantity"] = int(self.quantity)
-        elif include_empty:
-            result["quantity"] = int()
-        if hasattr(self, "sandbox"):
-            result["sandbox"] = bool(self.sandbox)
-        elif include_empty:
-            result["sandbox"] = bool()
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = str()
-        if hasattr(self, "fulfilled_time"):
-            result["fulfilledTime"] = str(self.fulfilled_time)
+        if hasattr(self, "user_id"):
+            result["userId"] = str(self.user_id)
         elif include_empty:
-            result["fulfilledTime"] = str()
-        if hasattr(self, "entitlements"):
-            result["entitlements"] = [i0.to_dict(include_empty=include_empty) for i0 in self.entitlements]
-        elif include_empty:
-            result["entitlements"] = []
+            result["userId"] = str()
         if hasattr(self, "credits"):
             result["credits"] = [i0.to_dict(include_empty=include_empty) for i0 in self.credits]
         elif include_empty:
             result["credits"] = []
+        if hasattr(self, "entitlements"):
+            result["entitlements"] = [i0.to_dict(include_empty=include_empty) for i0 in self.entitlements]
+        elif include_empty:
+            result["entitlements"] = []
+        if hasattr(self, "fulfilled_time"):
+            result["fulfilledTime"] = str(self.fulfilled_time)
+        elif include_empty:
+            result["fulfilledTime"] = str()
+        if hasattr(self, "language"):
+            result["language"] = str(self.language)
+        elif include_empty:
+            result["language"] = str()
+        if hasattr(self, "product_id"):
+            result["productId"] = str(self.product_id)
+        elif include_empty:
+            result["productId"] = str()
+        if hasattr(self, "quantity"):
+            result["quantity"] = int(self.quantity)
+        elif include_empty:
+            result["quantity"] = int()
+        if hasattr(self, "receipt_data"):
+            result["receiptData"] = str(self.receipt_data)
+        elif include_empty:
+            result["receiptData"] = str()
+        if hasattr(self, "region"):
+            result["region"] = str(self.region)
+        elif include_empty:
+            result["region"] = str()
+        if hasattr(self, "sandbox"):
+            result["sandbox"] = bool(self.sandbox)
+        elif include_empty:
+            result["sandbox"] = bool()
+        if hasattr(self, "status_reason"):
+            result["statusReason"] = str(self.status_reason)
+        elif include_empty:
+            result["statusReason"] = str()
+        if hasattr(self, "transaction_id"):
+            result["transactionId"] = str(self.transaction_id)
+        elif include_empty:
+            result["transactionId"] = str()
         return result
 
     # endregion to methods
@@ -290,62 +290,62 @@ class IAPOrderInfo(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
-        if "productId" in dict_ and dict_["productId"] is not None:
-            instance.product_id = str(dict_["productId"])
-        elif include_empty:
-            instance.product_id = str()
-        if "receiptData" in dict_ and dict_["receiptData"] is not None:
-            instance.receipt_data = str(dict_["receiptData"])
-        elif include_empty:
-            instance.receipt_data = str()
-        if "transactionId" in dict_ and dict_["transactionId"] is not None:
-            instance.transaction_id = str(dict_["transactionId"])
-        elif include_empty:
-            instance.transaction_id = str()
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = str()
-        if "statusReason" in dict_ and dict_["statusReason"] is not None:
-            instance.status_reason = str(dict_["statusReason"])
-        elif include_empty:
-            instance.status_reason = str()
-        if "region" in dict_ and dict_["region"] is not None:
-            instance.region = str(dict_["region"])
-        elif include_empty:
-            instance.region = str()
-        if "language" in dict_ and dict_["language"] is not None:
-            instance.language = str(dict_["language"])
-        elif include_empty:
-            instance.language = str()
-        if "quantity" in dict_ and dict_["quantity"] is not None:
-            instance.quantity = int(dict_["quantity"])
-        elif include_empty:
-            instance.quantity = int()
-        if "sandbox" in dict_ and dict_["sandbox"] is not None:
-            instance.sandbox = bool(dict_["sandbox"])
-        elif include_empty:
-            instance.sandbox = bool()
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
             instance.type_ = str()
-        if "fulfilledTime" in dict_ and dict_["fulfilledTime"] is not None:
-            instance.fulfilled_time = str(dict_["fulfilledTime"])
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.fulfilled_time = str()
-        if "entitlements" in dict_ and dict_["entitlements"] is not None:
-            instance.entitlements = [EntitlementSummary.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["entitlements"]]
-        elif include_empty:
-            instance.entitlements = []
+            instance.user_id = str()
         if "credits" in dict_ and dict_["credits"] is not None:
             instance.credits = [CreditSummary.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["credits"]]
         elif include_empty:
             instance.credits = []
+        if "entitlements" in dict_ and dict_["entitlements"] is not None:
+            instance.entitlements = [EntitlementSummary.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["entitlements"]]
+        elif include_empty:
+            instance.entitlements = []
+        if "fulfilledTime" in dict_ and dict_["fulfilledTime"] is not None:
+            instance.fulfilled_time = str(dict_["fulfilledTime"])
+        elif include_empty:
+            instance.fulfilled_time = str()
+        if "language" in dict_ and dict_["language"] is not None:
+            instance.language = str(dict_["language"])
+        elif include_empty:
+            instance.language = str()
+        if "productId" in dict_ and dict_["productId"] is not None:
+            instance.product_id = str(dict_["productId"])
+        elif include_empty:
+            instance.product_id = str()
+        if "quantity" in dict_ and dict_["quantity"] is not None:
+            instance.quantity = int(dict_["quantity"])
+        elif include_empty:
+            instance.quantity = int()
+        if "receiptData" in dict_ and dict_["receiptData"] is not None:
+            instance.receipt_data = str(dict_["receiptData"])
+        elif include_empty:
+            instance.receipt_data = str()
+        if "region" in dict_ and dict_["region"] is not None:
+            instance.region = str(dict_["region"])
+        elif include_empty:
+            instance.region = str()
+        if "sandbox" in dict_ and dict_["sandbox"] is not None:
+            instance.sandbox = bool(dict_["sandbox"])
+        elif include_empty:
+            instance.sandbox = bool()
+        if "statusReason" in dict_ and dict_["statusReason"] is not None:
+            instance.status_reason = str(dict_["statusReason"])
+        elif include_empty:
+            instance.status_reason = str()
+        if "transactionId" in dict_ and dict_["transactionId"] is not None:
+            instance.transaction_id = str(dict_["transactionId"])
+        elif include_empty:
+            instance.transaction_id = str()
         return instance
 
     @staticmethod
@@ -353,20 +353,20 @@ class IAPOrderInfo(Model):
         return {
             "iapOrderNo": "iap_order_no",
             "namespace": "namespace",
-            "userId": "user_id",
-            "productId": "product_id",
-            "receiptData": "receipt_data",
-            "transactionId": "transaction_id",
             "status": "status",
-            "statusReason": "status_reason",
-            "region": "region",
-            "language": "language",
-            "quantity": "quantity",
-            "sandbox": "sandbox",
             "type": "type_",
-            "fulfilledTime": "fulfilled_time",
-            "entitlements": "entitlements",
+            "userId": "user_id",
             "credits": "credits",
+            "entitlements": "entitlements",
+            "fulfilledTime": "fulfilled_time",
+            "language": "language",
+            "productId": "product_id",
+            "quantity": "quantity",
+            "receiptData": "receipt_data",
+            "region": "region",
+            "sandbox": "sandbox",
+            "statusReason": "status_reason",
+            "transactionId": "transaction_id",
         }
 
     # endregion static methods

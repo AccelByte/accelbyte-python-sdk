@@ -28,35 +28,31 @@ class XblReconcileResult(Model):
     """Xbl reconcile result (XblReconcileResult)
 
     Properties:
-        transaction_id: (transactionId) OPTIONAL str
-
-        xbox_product_id: (xboxProductId) OPTIONAL str
+        iap_order_status: (iapOrderStatus) OPTIONAL str
 
         item_id: (itemId) OPTIONAL str
 
         sku: (sku) OPTIONAL str
 
-        iap_order_status: (iapOrderStatus) OPTIONAL str
+        transaction_id: (transactionId) OPTIONAL str
+
+        xbox_product_id: (xboxProductId) OPTIONAL str
     """
 
     # region fields
 
-    transaction_id: str                                                                            # OPTIONAL
-    xbox_product_id: str                                                                           # OPTIONAL
+    iap_order_status: str                                                                          # OPTIONAL
     item_id: str                                                                                   # OPTIONAL
     sku: str                                                                                       # OPTIONAL
-    iap_order_status: str                                                                          # OPTIONAL
+    transaction_id: str                                                                            # OPTIONAL
+    xbox_product_id: str                                                                           # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_transaction_id(self, value: str) -> XblReconcileResult:
-        self.transaction_id = value
-        return self
-
-    def with_xbox_product_id(self, value: str) -> XblReconcileResult:
-        self.xbox_product_id = value
+    def with_iap_order_status(self, value: str) -> XblReconcileResult:
+        self.iap_order_status = value
         return self
 
     def with_item_id(self, value: str) -> XblReconcileResult:
@@ -67,8 +63,12 @@ class XblReconcileResult(Model):
         self.sku = value
         return self
 
-    def with_iap_order_status(self, value: str) -> XblReconcileResult:
-        self.iap_order_status = value
+    def with_transaction_id(self, value: str) -> XblReconcileResult:
+        self.transaction_id = value
+        return self
+
+    def with_xbox_product_id(self, value: str) -> XblReconcileResult:
+        self.xbox_product_id = value
         return self
 
     # endregion with_x methods
@@ -77,14 +77,10 @@ class XblReconcileResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "transaction_id"):
-            result["transactionId"] = str(self.transaction_id)
+        if hasattr(self, "iap_order_status"):
+            result["iapOrderStatus"] = str(self.iap_order_status)
         elif include_empty:
-            result["transactionId"] = str()
-        if hasattr(self, "xbox_product_id"):
-            result["xboxProductId"] = str(self.xbox_product_id)
-        elif include_empty:
-            result["xboxProductId"] = str()
+            result["iapOrderStatus"] = str()
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
@@ -93,10 +89,14 @@ class XblReconcileResult(Model):
             result["sku"] = str(self.sku)
         elif include_empty:
             result["sku"] = str()
-        if hasattr(self, "iap_order_status"):
-            result["iapOrderStatus"] = str(self.iap_order_status)
+        if hasattr(self, "transaction_id"):
+            result["transactionId"] = str(self.transaction_id)
         elif include_empty:
-            result["iapOrderStatus"] = str()
+            result["transactionId"] = str()
+        if hasattr(self, "xbox_product_id"):
+            result["xboxProductId"] = str(self.xbox_product_id)
+        elif include_empty:
+            result["xboxProductId"] = str()
         return result
 
     # endregion to methods
@@ -130,14 +130,10 @@ class XblReconcileResult(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "transactionId" in dict_ and dict_["transactionId"] is not None:
-            instance.transaction_id = str(dict_["transactionId"])
+        if "iapOrderStatus" in dict_ and dict_["iapOrderStatus"] is not None:
+            instance.iap_order_status = str(dict_["iapOrderStatus"])
         elif include_empty:
-            instance.transaction_id = str()
-        if "xboxProductId" in dict_ and dict_["xboxProductId"] is not None:
-            instance.xbox_product_id = str(dict_["xboxProductId"])
-        elif include_empty:
-            instance.xbox_product_id = str()
+            instance.iap_order_status = str()
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
@@ -146,20 +142,24 @@ class XblReconcileResult(Model):
             instance.sku = str(dict_["sku"])
         elif include_empty:
             instance.sku = str()
-        if "iapOrderStatus" in dict_ and dict_["iapOrderStatus"] is not None:
-            instance.iap_order_status = str(dict_["iapOrderStatus"])
+        if "transactionId" in dict_ and dict_["transactionId"] is not None:
+            instance.transaction_id = str(dict_["transactionId"])
         elif include_empty:
-            instance.iap_order_status = str()
+            instance.transaction_id = str()
+        if "xboxProductId" in dict_ and dict_["xboxProductId"] is not None:
+            instance.xbox_product_id = str(dict_["xboxProductId"])
+        elif include_empty:
+            instance.xbox_product_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "transactionId": "transaction_id",
-            "xboxProductId": "xbox_product_id",
+            "iapOrderStatus": "iap_order_status",
             "itemId": "item_id",
             "sku": "sku",
-            "iapOrderStatus": "iap_order_status",
+            "transactionId": "transaction_id",
+            "xboxProductId": "xbox_product_id",
         }
 
     # endregion static methods

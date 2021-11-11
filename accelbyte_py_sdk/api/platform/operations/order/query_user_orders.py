@@ -54,13 +54,13 @@ class QueryUserOrders(Operation):
 
         user_id: (userId) REQUIRED str in path
 
-        status: (status) OPTIONAL str in query
-
         item_id: (itemId) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
-        limit: (limit) OPTIONAL int in query
+        status: (status) OPTIONAL str in query
 
     Responses:
         200: OK - OrderPagingSlicedResult (successful operation)
@@ -77,10 +77,10 @@ class QueryUserOrders(Operation):
 
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
-    status: str                                                                                    # OPTIONAL in [query]
     item_id: str                                                                                   # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
+    status: str                                                                                    # OPTIONAL in [query]
 
     # endregion fields
 
@@ -155,14 +155,14 @@ class QueryUserOrders(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "status"):
-            result["status"] = self.status
         if hasattr(self, "item_id"):
             result["itemId"] = self.item_id
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
+        if hasattr(self, "status"):
+            result["status"] = self.status
         return result
 
     # endregion get_x_params methods
@@ -188,20 +188,20 @@ class QueryUserOrders(Operation):
         self.user_id = value
         return self
 
-    def with_status(self, value: str) -> QueryUserOrders:
-        self.status = value
-        return self
-
     def with_item_id(self, value: str) -> QueryUserOrders:
         self.item_id = value
+        return self
+
+    def with_limit(self, value: int) -> QueryUserOrders:
+        self.limit = value
         return self
 
     def with_offset(self, value: int) -> QueryUserOrders:
         self.offset = value
         return self
 
-    def with_limit(self, value: int) -> QueryUserOrders:
-        self.limit = value
+    def with_status(self, value: str) -> QueryUserOrders:
+        self.status = value
         return self
 
     # endregion with_x methods
@@ -218,22 +218,22 @@ class QueryUserOrders(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "status") and self.status:
-            result["status"] = str(self.status)
-        elif include_empty:
-            result["status"] = str()
         if hasattr(self, "item_id") and self.item_id:
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
+        if hasattr(self, "status") and self.status:
+            result["status"] = str(self.status)
+        elif include_empty:
+            result["status"] = str()
         return result
 
     # endregion to methods
@@ -262,22 +262,22 @@ class QueryUserOrders(Operation):
         cls,
         namespace: str,
         user_id: str,
-        status: Optional[str] = None,
         item_id: Optional[str] = None,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
+        status: Optional[str] = None,
     ) -> QueryUserOrders:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
-        if status is not None:
-            instance.status = status
         if item_id is not None:
             instance.item_id = item_id
-        if offset is not None:
-            instance.offset = offset
         if limit is not None:
             instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
+        if status is not None:
+            instance.status = status
         return instance
 
     @classmethod
@@ -291,22 +291,22 @@ class QueryUserOrders(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
-        if "status" in dict_ and dict_["status"] is not None:
-            instance.status = str(dict_["status"])
-        elif include_empty:
-            instance.status = str()
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
             instance.item_id = str()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
+        if "status" in dict_ and dict_["status"] is not None:
+            instance.status = str(dict_["status"])
+        elif include_empty:
+            instance.status = str()
         return instance
 
     @staticmethod
@@ -314,10 +314,10 @@ class QueryUserOrders(Operation):
         return {
             "namespace": "namespace",
             "userId": "user_id",
-            "status": "status",
             "itemId": "item_id",
-            "offset": "offset",
             "limit": "limit",
+            "offset": "offset",
+            "status": "status",
         }
 
     # endregion static methods

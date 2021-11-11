@@ -32,17 +32,17 @@ class PayPalConfig(Model):
 
         client_secret: (clientSecret) OPTIONAL str
 
-        web_hook_id: (webHookId) OPTIONAL str
-
         return_url: (returnUrl) OPTIONAL str
+
+        web_hook_id: (webHookId) OPTIONAL str
     """
 
     # region fields
 
     client_id: str                                                                                 # OPTIONAL
     client_secret: str                                                                             # OPTIONAL
-    web_hook_id: str                                                                               # OPTIONAL
     return_url: str                                                                                # OPTIONAL
+    web_hook_id: str                                                                               # OPTIONAL
 
     # endregion fields
 
@@ -56,12 +56,12 @@ class PayPalConfig(Model):
         self.client_secret = value
         return self
 
-    def with_web_hook_id(self, value: str) -> PayPalConfig:
-        self.web_hook_id = value
-        return self
-
     def with_return_url(self, value: str) -> PayPalConfig:
         self.return_url = value
+        return self
+
+    def with_web_hook_id(self, value: str) -> PayPalConfig:
+        self.web_hook_id = value
         return self
 
     # endregion with_x methods
@@ -78,14 +78,14 @@ class PayPalConfig(Model):
             result["clientSecret"] = str(self.client_secret)
         elif include_empty:
             result["clientSecret"] = str()
-        if hasattr(self, "web_hook_id"):
-            result["webHookId"] = str(self.web_hook_id)
-        elif include_empty:
-            result["webHookId"] = str()
         if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
             result["returnUrl"] = str()
+        if hasattr(self, "web_hook_id"):
+            result["webHookId"] = str(self.web_hook_id)
+        elif include_empty:
+            result["webHookId"] = str()
         return result
 
     # endregion to methods
@@ -124,14 +124,14 @@ class PayPalConfig(Model):
             instance.client_secret = str(dict_["clientSecret"])
         elif include_empty:
             instance.client_secret = str()
-        if "webHookId" in dict_ and dict_["webHookId"] is not None:
-            instance.web_hook_id = str(dict_["webHookId"])
-        elif include_empty:
-            instance.web_hook_id = str()
         if "returnUrl" in dict_ and dict_["returnUrl"] is not None:
             instance.return_url = str(dict_["returnUrl"])
         elif include_empty:
             instance.return_url = str()
+        if "webHookId" in dict_ and dict_["webHookId"] is not None:
+            instance.web_hook_id = str(dict_["webHookId"])
+        elif include_empty:
+            instance.web_hook_id = str()
         return instance
 
     @staticmethod
@@ -139,8 +139,8 @@ class PayPalConfig(Model):
         return {
             "clientID": "client_id",
             "clientSecret": "client_secret",
-            "webHookId": "web_hook_id",
             "returnUrl": "return_url",
+            "webHookId": "web_hook_id",
         }
 
     # endregion static methods

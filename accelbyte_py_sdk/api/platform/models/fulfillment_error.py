@@ -28,29 +28,29 @@ class FulfillmentError(Model):
     """Fulfillment error (FulfillmentError)
 
     Properties:
-        http_status: (httpStatus) OPTIONAL int
-
         code: (code) OPTIONAL int
+
+        http_status: (httpStatus) OPTIONAL int
 
         message: (message) OPTIONAL str
     """
 
     # region fields
 
-    http_status: int                                                                               # OPTIONAL
     code: int                                                                                      # OPTIONAL
+    http_status: int                                                                               # OPTIONAL
     message: str                                                                                   # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_http_status(self, value: int) -> FulfillmentError:
-        self.http_status = value
-        return self
-
     def with_code(self, value: int) -> FulfillmentError:
         self.code = value
+        return self
+
+    def with_http_status(self, value: int) -> FulfillmentError:
+        self.http_status = value
         return self
 
     def with_message(self, value: str) -> FulfillmentError:
@@ -63,14 +63,14 @@ class FulfillmentError(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "http_status"):
-            result["httpStatus"] = int(self.http_status)
-        elif include_empty:
-            result["httpStatus"] = int()
         if hasattr(self, "code"):
             result["code"] = int(self.code)
         elif include_empty:
             result["code"] = int()
+        if hasattr(self, "http_status"):
+            result["httpStatus"] = int(self.http_status)
+        elif include_empty:
+            result["httpStatus"] = int()
         if hasattr(self, "message"):
             result["message"] = str(self.message)
         elif include_empty:
@@ -102,14 +102,14 @@ class FulfillmentError(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "httpStatus" in dict_ and dict_["httpStatus"] is not None:
-            instance.http_status = int(dict_["httpStatus"])
-        elif include_empty:
-            instance.http_status = int()
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = int(dict_["code"])
         elif include_empty:
             instance.code = int()
+        if "httpStatus" in dict_ and dict_["httpStatus"] is not None:
+            instance.http_status = int(dict_["httpStatus"])
+        elif include_empty:
+            instance.http_status = int()
         if "message" in dict_ and dict_["message"] is not None:
             instance.message = str(dict_["message"])
         elif include_empty:
@@ -119,8 +119,8 @@ class FulfillmentError(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "httpStatus": "http_status",
             "code": "code",
+            "httpStatus": "http_status",
             "message": "message",
         }
 

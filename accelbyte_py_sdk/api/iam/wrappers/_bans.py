@@ -35,7 +35,7 @@ from ..operations.bans import GetListBanReason
 
 
 @same_doc_as(AdminGetBannedUsersV3)
-def admin_get_banned_users_v3(active_only: Optional[bool] = None, ban_type: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_get_banned_users_v3(active_only: Optional[bool] = None, ban_type: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -43,8 +43,8 @@ def admin_get_banned_users_v3(active_only: Optional[bool] = None, ban_type: Opti
     request = AdminGetBannedUsersV3.create(
         active_only=active_only,
         ban_type=ban_type,
-        offset=offset,
         limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

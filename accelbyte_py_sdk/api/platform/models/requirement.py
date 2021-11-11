@@ -30,34 +30,34 @@ class Requirement(Model):
     Properties:
         label: (label) REQUIRED str
 
+        additionals: (additionals) OPTIONAL str
+
+        direct_x_version: (directXVersion) OPTIONAL str
+
+        disk_space: (diskSpace) OPTIONAL str
+
+        graphics: (graphics) OPTIONAL str
+
         os_version: (osVersion) OPTIONAL str
 
         processor: (processor) OPTIONAL str
 
         ram: (ram) OPTIONAL str
 
-        graphics: (graphics) OPTIONAL str
-
-        direct_x_version: (directXVersion) OPTIONAL str
-
-        disk_space: (diskSpace) OPTIONAL str
-
         sound_card: (soundCard) OPTIONAL str
-
-        additionals: (additionals) OPTIONAL str
     """
 
     # region fields
 
     label: str                                                                                     # REQUIRED
+    additionals: str                                                                               # OPTIONAL
+    direct_x_version: str                                                                          # OPTIONAL
+    disk_space: str                                                                                # OPTIONAL
+    graphics: str                                                                                  # OPTIONAL
     os_version: str                                                                                # OPTIONAL
     processor: str                                                                                 # OPTIONAL
     ram: str                                                                                       # OPTIONAL
-    graphics: str                                                                                  # OPTIONAL
-    direct_x_version: str                                                                          # OPTIONAL
-    disk_space: str                                                                                # OPTIONAL
     sound_card: str                                                                                # OPTIONAL
-    additionals: str                                                                               # OPTIONAL
 
     # endregion fields
 
@@ -65,6 +65,22 @@ class Requirement(Model):
 
     def with_label(self, value: str) -> Requirement:
         self.label = value
+        return self
+
+    def with_additionals(self, value: str) -> Requirement:
+        self.additionals = value
+        return self
+
+    def with_direct_x_version(self, value: str) -> Requirement:
+        self.direct_x_version = value
+        return self
+
+    def with_disk_space(self, value: str) -> Requirement:
+        self.disk_space = value
+        return self
+
+    def with_graphics(self, value: str) -> Requirement:
+        self.graphics = value
         return self
 
     def with_os_version(self, value: str) -> Requirement:
@@ -79,24 +95,8 @@ class Requirement(Model):
         self.ram = value
         return self
 
-    def with_graphics(self, value: str) -> Requirement:
-        self.graphics = value
-        return self
-
-    def with_direct_x_version(self, value: str) -> Requirement:
-        self.direct_x_version = value
-        return self
-
-    def with_disk_space(self, value: str) -> Requirement:
-        self.disk_space = value
-        return self
-
     def with_sound_card(self, value: str) -> Requirement:
         self.sound_card = value
-        return self
-
-    def with_additionals(self, value: str) -> Requirement:
-        self.additionals = value
         return self
 
     # endregion with_x methods
@@ -109,6 +109,22 @@ class Requirement(Model):
             result["label"] = str(self.label)
         elif include_empty:
             result["label"] = str()
+        if hasattr(self, "additionals"):
+            result["additionals"] = str(self.additionals)
+        elif include_empty:
+            result["additionals"] = str()
+        if hasattr(self, "direct_x_version"):
+            result["directXVersion"] = str(self.direct_x_version)
+        elif include_empty:
+            result["directXVersion"] = str()
+        if hasattr(self, "disk_space"):
+            result["diskSpace"] = str(self.disk_space)
+        elif include_empty:
+            result["diskSpace"] = str()
+        if hasattr(self, "graphics"):
+            result["graphics"] = str(self.graphics)
+        elif include_empty:
+            result["graphics"] = str()
         if hasattr(self, "os_version"):
             result["osVersion"] = str(self.os_version)
         elif include_empty:
@@ -121,26 +137,10 @@ class Requirement(Model):
             result["ram"] = str(self.ram)
         elif include_empty:
             result["ram"] = str()
-        if hasattr(self, "graphics"):
-            result["graphics"] = str(self.graphics)
-        elif include_empty:
-            result["graphics"] = str()
-        if hasattr(self, "direct_x_version"):
-            result["directXVersion"] = str(self.direct_x_version)
-        elif include_empty:
-            result["directXVersion"] = str()
-        if hasattr(self, "disk_space"):
-            result["diskSpace"] = str(self.disk_space)
-        elif include_empty:
-            result["diskSpace"] = str()
         if hasattr(self, "sound_card"):
             result["soundCard"] = str(self.sound_card)
         elif include_empty:
             result["soundCard"] = str()
-        if hasattr(self, "additionals"):
-            result["additionals"] = str(self.additionals)
-        elif include_empty:
-            result["additionals"] = str()
         return result
 
     # endregion to methods
@@ -189,6 +189,22 @@ class Requirement(Model):
             instance.label = str(dict_["label"])
         elif include_empty:
             instance.label = str()
+        if "additionals" in dict_ and dict_["additionals"] is not None:
+            instance.additionals = str(dict_["additionals"])
+        elif include_empty:
+            instance.additionals = str()
+        if "directXVersion" in dict_ and dict_["directXVersion"] is not None:
+            instance.direct_x_version = str(dict_["directXVersion"])
+        elif include_empty:
+            instance.direct_x_version = str()
+        if "diskSpace" in dict_ and dict_["diskSpace"] is not None:
+            instance.disk_space = str(dict_["diskSpace"])
+        elif include_empty:
+            instance.disk_space = str()
+        if "graphics" in dict_ and dict_["graphics"] is not None:
+            instance.graphics = str(dict_["graphics"])
+        elif include_empty:
+            instance.graphics = str()
         if "osVersion" in dict_ and dict_["osVersion"] is not None:
             instance.os_version = str(dict_["osVersion"])
         elif include_empty:
@@ -201,40 +217,24 @@ class Requirement(Model):
             instance.ram = str(dict_["ram"])
         elif include_empty:
             instance.ram = str()
-        if "graphics" in dict_ and dict_["graphics"] is not None:
-            instance.graphics = str(dict_["graphics"])
-        elif include_empty:
-            instance.graphics = str()
-        if "directXVersion" in dict_ and dict_["directXVersion"] is not None:
-            instance.direct_x_version = str(dict_["directXVersion"])
-        elif include_empty:
-            instance.direct_x_version = str()
-        if "diskSpace" in dict_ and dict_["diskSpace"] is not None:
-            instance.disk_space = str(dict_["diskSpace"])
-        elif include_empty:
-            instance.disk_space = str()
         if "soundCard" in dict_ and dict_["soundCard"] is not None:
             instance.sound_card = str(dict_["soundCard"])
         elif include_empty:
             instance.sound_card = str()
-        if "additionals" in dict_ and dict_["additionals"] is not None:
-            instance.additionals = str(dict_["additionals"])
-        elif include_empty:
-            instance.additionals = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "label": "label",
+            "additionals": "additionals",
+            "directXVersion": "direct_x_version",
+            "diskSpace": "disk_space",
+            "graphics": "graphics",
             "osVersion": "os_version",
             "processor": "processor",
             "ram": "ram",
-            "graphics": "graphics",
-            "directXVersion": "direct_x_version",
-            "diskSpace": "disk_space",
             "soundCard": "sound_card",
-            "additionals": "additionals",
         }
 
     # endregion static methods

@@ -51,17 +51,17 @@ class PublicUpdateUserNamespaceSlot(Operation):
 
         security: bearer
 
-        custom_attribute: (customAttribute) OPTIONAL str in form_data
-
         checksum: (checksum) OPTIONAL str in form_data
+
+        custom_attribute: (customAttribute) OPTIONAL str in form_data
 
         file: (file) OPTIONAL Any in form_data
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
-
         slot_id: (slotId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
 
         label: (label) OPTIONAL str in query
 
@@ -84,12 +84,12 @@ class PublicUpdateUserNamespaceSlot(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    custom_attribute: str                                                                          # OPTIONAL in [form_data]
     checksum: str                                                                                  # OPTIONAL in [form_data]
+    custom_attribute: str                                                                          # OPTIONAL in [form_data]
     file: Any                                                                                      # OPTIONAL in [form_data]
     namespace: str                                                                                 # REQUIRED in [path]
-    user_id: str                                                                                   # REQUIRED in [path]
     slot_id: str                                                                                   # REQUIRED in [path]
+    user_id: str                                                                                   # REQUIRED in [path]
     label: str                                                                                     # OPTIONAL in [query]
     tags: List[str]                                                                                # OPTIONAL in [query]
 
@@ -143,8 +143,8 @@ class PublicUpdateUserNamespaceSlot(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "namespace",
-            "user_id",
             "slot_id",
+            "user_id",
         ]
 
     # endregion get methods
@@ -160,10 +160,10 @@ class PublicUpdateUserNamespaceSlot(Operation):
 
     def get_form_data_params(self) -> dict:
         result = {}
-        if hasattr(self, "custom_attribute"):
-            result["customAttribute"] = self.custom_attribute
         if hasattr(self, "checksum"):
             result["checksum"] = self.checksum
+        if hasattr(self, "custom_attribute"):
+            result["customAttribute"] = self.custom_attribute
         if hasattr(self, "file"):
             result["file"] = self.file
         return result
@@ -172,10 +172,10 @@ class PublicUpdateUserNamespaceSlot(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
         if hasattr(self, "slot_id"):
             result["slotId"] = self.slot_id
+        if hasattr(self, "user_id"):
+            result["userId"] = self.user_id
         return result
 
     def get_query_params(self) -> dict:
@@ -193,9 +193,9 @@ class PublicUpdateUserNamespaceSlot(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
         if not hasattr(self, "slot_id") or self.slot_id is None:
+            return False
+        if not hasattr(self, "user_id") or self.user_id is None:
             return False
         return True
 
@@ -203,12 +203,12 @@ class PublicUpdateUserNamespaceSlot(Operation):
 
     # region with_x methods
 
-    def with_custom_attribute(self, value: str) -> PublicUpdateUserNamespaceSlot:
-        self.custom_attribute = value
-        return self
-
     def with_checksum(self, value: str) -> PublicUpdateUserNamespaceSlot:
         self.checksum = value
+        return self
+
+    def with_custom_attribute(self, value: str) -> PublicUpdateUserNamespaceSlot:
+        self.custom_attribute = value
         return self
 
     def with_file(self, value: Any) -> PublicUpdateUserNamespaceSlot:
@@ -219,12 +219,12 @@ class PublicUpdateUserNamespaceSlot(Operation):
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> PublicUpdateUserNamespaceSlot:
-        self.user_id = value
-        return self
-
     def with_slot_id(self, value: str) -> PublicUpdateUserNamespaceSlot:
         self.slot_id = value
+        return self
+
+    def with_user_id(self, value: str) -> PublicUpdateUserNamespaceSlot:
+        self.user_id = value
         return self
 
     def with_label(self, value: str) -> PublicUpdateUserNamespaceSlot:
@@ -241,14 +241,14 @@ class PublicUpdateUserNamespaceSlot(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "custom_attribute") and self.custom_attribute:
-            result["customAttribute"] = str(self.custom_attribute)
-        elif include_empty:
-            result["customAttribute"] = str()
         if hasattr(self, "checksum") and self.checksum:
             result["checksum"] = str(self.checksum)
         elif include_empty:
             result["checksum"] = str()
+        if hasattr(self, "custom_attribute") and self.custom_attribute:
+            result["customAttribute"] = str(self.custom_attribute)
+        elif include_empty:
+            result["customAttribute"] = str()
         if hasattr(self, "file") and self.file:
             result["file"] = Any(self.file)
         elif include_empty:
@@ -257,14 +257,14 @@ class PublicUpdateUserNamespaceSlot(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
         if hasattr(self, "slot_id") and self.slot_id:
             result["slotId"] = str(self.slot_id)
         elif include_empty:
             result["slotId"] = str()
+        if hasattr(self, "user_id") and self.user_id:
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         if hasattr(self, "label") and self.label:
             result["label"] = str(self.label)
         elif include_empty:
@@ -308,22 +308,22 @@ class PublicUpdateUserNamespaceSlot(Operation):
     def create(
         cls,
         namespace: str,
-        user_id: str,
         slot_id: str,
-        custom_attribute: Optional[str] = None,
+        user_id: str,
         checksum: Optional[str] = None,
+        custom_attribute: Optional[str] = None,
         file: Optional[Any] = None,
         label: Optional[str] = None,
         tags: Optional[List[str]] = None,
     ) -> PublicUpdateUserNamespaceSlot:
         instance = cls()
         instance.namespace = namespace
-        instance.user_id = user_id
         instance.slot_id = slot_id
-        if custom_attribute is not None:
-            instance.custom_attribute = custom_attribute
+        instance.user_id = user_id
         if checksum is not None:
             instance.checksum = checksum
+        if custom_attribute is not None:
+            instance.custom_attribute = custom_attribute
         if file is not None:
             instance.file = file
         if label is not None:
@@ -335,14 +335,14 @@ class PublicUpdateUserNamespaceSlot(Operation):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PublicUpdateUserNamespaceSlot:
         instance = cls()
-        if "customAttribute" in dict_ and dict_["customAttribute"] is not None:
-            instance.custom_attribute = str(dict_["customAttribute"])
-        elif include_empty:
-            instance.custom_attribute = str()
         if "checksum" in dict_ and dict_["checksum"] is not None:
             instance.checksum = str(dict_["checksum"])
         elif include_empty:
             instance.checksum = str()
+        if "customAttribute" in dict_ and dict_["customAttribute"] is not None:
+            instance.custom_attribute = str(dict_["customAttribute"])
+        elif include_empty:
+            instance.custom_attribute = str()
         if "file" in dict_ and dict_["file"] is not None:
             instance.file = Any(dict_["file"])
         elif include_empty:
@@ -351,14 +351,14 @@ class PublicUpdateUserNamespaceSlot(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
         if "slotId" in dict_ and dict_["slotId"] is not None:
             instance.slot_id = str(dict_["slotId"])
         elif include_empty:
             instance.slot_id = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         if "label" in dict_ and dict_["label"] is not None:
             instance.label = str(dict_["label"])
         elif include_empty:
@@ -372,12 +372,12 @@ class PublicUpdateUserNamespaceSlot(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "customAttribute": "custom_attribute",
             "checksum": "checksum",
+            "customAttribute": "custom_attribute",
             "file": "file",
             "namespace": "namespace",
-            "userId": "user_id",
             "slotId": "slot_id",
+            "userId": "user_id",
             "label": "label",
             "tags": "tags",
         }

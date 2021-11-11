@@ -49,9 +49,9 @@ class DeleteRootRegionOverride(Operation):
 
         security: bearer
 
-        namespace: (namespace) REQUIRED str in path
-
         deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
         region: (region) REQUIRED str in path
 
@@ -76,8 +76,8 @@ class DeleteRootRegionOverride(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
     deployment: str                                                                                # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
     region: str                                                                                    # REQUIRED in [path]
 
     # endregion fields
@@ -126,8 +126,8 @@ class DeleteRootRegionOverride(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "namespace",
             "deployment",
+            "namespace",
             "region",
         ]
 
@@ -142,10 +142,10 @@ class DeleteRootRegionOverride(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "deployment"):
             result["deployment"] = self.deployment
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         if hasattr(self, "region"):
             result["region"] = self.region
         return result
@@ -155,9 +155,9 @@ class DeleteRootRegionOverride(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "deployment") or self.deployment is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         if not hasattr(self, "region") or self.region is None:
             return False
@@ -167,12 +167,12 @@ class DeleteRootRegionOverride(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> DeleteRootRegionOverride:
-        self.namespace = value
-        return self
-
     def with_deployment(self, value: str) -> DeleteRootRegionOverride:
         self.deployment = value
+        return self
+
+    def with_namespace(self, value: str) -> DeleteRootRegionOverride:
+        self.namespace = value
         return self
 
     def with_region(self, value: str) -> DeleteRootRegionOverride:
@@ -185,14 +185,14 @@ class DeleteRootRegionOverride(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "deployment") and self.deployment:
             result["deployment"] = str(self.deployment)
         elif include_empty:
             result["deployment"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         if hasattr(self, "region") and self.region:
             result["region"] = str(self.region)
         elif include_empty:
@@ -239,27 +239,27 @@ class DeleteRootRegionOverride(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
         deployment: str,
+        namespace: str,
         region: str,
     ) -> DeleteRootRegionOverride:
         instance = cls()
-        instance.namespace = namespace
         instance.deployment = deployment
+        instance.namespace = namespace
         instance.region = region
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> DeleteRootRegionOverride:
         instance = cls()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "deployment" in dict_ and dict_["deployment"] is not None:
             instance.deployment = str(dict_["deployment"])
         elif include_empty:
             instance.deployment = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
@@ -269,8 +269,8 @@ class DeleteRootRegionOverride(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
             "deployment": "deployment",
+            "namespace": "namespace",
             "region": "region",
         }
 

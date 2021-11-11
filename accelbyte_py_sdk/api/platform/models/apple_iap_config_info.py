@@ -28,29 +28,29 @@ class AppleIAPConfigInfo(Model):
     """Apple IAP config info (AppleIAPConfigInfo)
 
     Properties:
-        namespace: (namespace) REQUIRED str
-
         bundle_id: (bundleId) REQUIRED str
+
+        namespace: (namespace) REQUIRED str
 
         password: (password) OPTIONAL str
     """
 
     # region fields
 
-    namespace: str                                                                                 # REQUIRED
     bundle_id: str                                                                                 # REQUIRED
+    namespace: str                                                                                 # REQUIRED
     password: str                                                                                  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> AppleIAPConfigInfo:
-        self.namespace = value
-        return self
-
     def with_bundle_id(self, value: str) -> AppleIAPConfigInfo:
         self.bundle_id = value
+        return self
+
+    def with_namespace(self, value: str) -> AppleIAPConfigInfo:
+        self.namespace = value
         return self
 
     def with_password(self, value: str) -> AppleIAPConfigInfo:
@@ -63,14 +63,14 @@ class AppleIAPConfigInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "bundle_id"):
             result["bundleId"] = str(self.bundle_id)
         elif include_empty:
             result["bundleId"] = str()
+        if hasattr(self, "namespace"):
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         if hasattr(self, "password"):
             result["password"] = str(self.password)
         elif include_empty:
@@ -100,14 +100,14 @@ class AppleIAPConfigInfo(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "bundleId" in dict_ and dict_["bundleId"] is not None:
             instance.bundle_id = str(dict_["bundleId"])
         elif include_empty:
             instance.bundle_id = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         if "password" in dict_ and dict_["password"] is not None:
             instance.password = str(dict_["password"])
         elif include_empty:
@@ -117,8 +117,8 @@ class AppleIAPConfigInfo(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
             "bundleId": "bundle_id",
+            "namespace": "namespace",
             "password": "password",
         }
 

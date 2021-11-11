@@ -49,13 +49,13 @@ class AdminGetRolesV3(Operation):
 
         security: bearer
 
-        is_wildcard: (isWildcard) OPTIONAL bool in query
-
-        limit: (limit) OPTIONAL int in query
-
         after: (after) OPTIONAL str in query
 
         before: (before) OPTIONAL str in query
+
+        is_wildcard: (isWildcard) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
 
     Responses:
         200: OK - ModelRoleResponseWithManagersAndPaginationV3 (OK)
@@ -76,10 +76,10 @@ class AdminGetRolesV3(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    is_wildcard: bool                                                                              # OPTIONAL in [query]
-    limit: int                                                                                     # OPTIONAL in [query]
     after: str                                                                                     # OPTIONAL in [query]
     before: str                                                                                    # OPTIONAL in [query]
+    is_wildcard: bool                                                                              # OPTIONAL in [query]
+    limit: int                                                                                     # OPTIONAL in [query]
 
     # endregion fields
 
@@ -139,14 +139,14 @@ class AdminGetRolesV3(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "is_wildcard"):
-            result["isWildcard"] = self.is_wildcard
-        if hasattr(self, "limit"):
-            result["limit"] = self.limit
         if hasattr(self, "after"):
             result["after"] = self.after
         if hasattr(self, "before"):
             result["before"] = self.before
+        if hasattr(self, "is_wildcard"):
+            result["isWildcard"] = self.is_wildcard
+        if hasattr(self, "limit"):
+            result["limit"] = self.limit
         return result
 
     # endregion get_x_params methods
@@ -160,14 +160,6 @@ class AdminGetRolesV3(Operation):
 
     # region with_x methods
 
-    def with_is_wildcard(self, value: bool) -> AdminGetRolesV3:
-        self.is_wildcard = value
-        return self
-
-    def with_limit(self, value: int) -> AdminGetRolesV3:
-        self.limit = value
-        return self
-
     def with_after(self, value: str) -> AdminGetRolesV3:
         self.after = value
         return self
@@ -176,20 +168,20 @@ class AdminGetRolesV3(Operation):
         self.before = value
         return self
 
+    def with_is_wildcard(self, value: bool) -> AdminGetRolesV3:
+        self.is_wildcard = value
+        return self
+
+    def with_limit(self, value: int) -> AdminGetRolesV3:
+        self.limit = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "is_wildcard") and self.is_wildcard:
-            result["isWildcard"] = bool(self.is_wildcard)
-        elif include_empty:
-            result["isWildcard"] = bool()
-        if hasattr(self, "limit") and self.limit:
-            result["limit"] = int(self.limit)
-        elif include_empty:
-            result["limit"] = int()
         if hasattr(self, "after") and self.after:
             result["after"] = str(self.after)
         elif include_empty:
@@ -198,6 +190,14 @@ class AdminGetRolesV3(Operation):
             result["before"] = str(self.before)
         elif include_empty:
             result["before"] = str()
+        if hasattr(self, "is_wildcard") and self.is_wildcard:
+            result["isWildcard"] = bool(self.is_wildcard)
+        elif include_empty:
+            result["isWildcard"] = bool()
+        if hasattr(self, "limit") and self.limit:
+            result["limit"] = int(self.limit)
+        elif include_empty:
+            result["limit"] = int()
         return result
 
     # endregion to methods
@@ -236,33 +236,25 @@ class AdminGetRolesV3(Operation):
     @classmethod
     def create(
         cls,
-        is_wildcard: Optional[bool] = None,
-        limit: Optional[int] = None,
         after: Optional[str] = None,
         before: Optional[str] = None,
+        is_wildcard: Optional[bool] = None,
+        limit: Optional[int] = None,
     ) -> AdminGetRolesV3:
         instance = cls()
-        if is_wildcard is not None:
-            instance.is_wildcard = is_wildcard
-        if limit is not None:
-            instance.limit = limit
         if after is not None:
             instance.after = after
         if before is not None:
             instance.before = before
+        if is_wildcard is not None:
+            instance.is_wildcard = is_wildcard
+        if limit is not None:
+            instance.limit = limit
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AdminGetRolesV3:
         instance = cls()
-        if "isWildcard" in dict_ and dict_["isWildcard"] is not None:
-            instance.is_wildcard = bool(dict_["isWildcard"])
-        elif include_empty:
-            instance.is_wildcard = bool()
-        if "limit" in dict_ and dict_["limit"] is not None:
-            instance.limit = int(dict_["limit"])
-        elif include_empty:
-            instance.limit = int()
         if "after" in dict_ and dict_["after"] is not None:
             instance.after = str(dict_["after"])
         elif include_empty:
@@ -271,15 +263,23 @@ class AdminGetRolesV3(Operation):
             instance.before = str(dict_["before"])
         elif include_empty:
             instance.before = str()
+        if "isWildcard" in dict_ and dict_["isWildcard"] is not None:
+            instance.is_wildcard = bool(dict_["isWildcard"])
+        elif include_empty:
+            instance.is_wildcard = bool()
+        if "limit" in dict_ and dict_["limit"] is not None:
+            instance.limit = int(dict_["limit"])
+        elif include_empty:
+            instance.limit = int()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "isWildcard": "is_wildcard",
-            "limit": "limit",
             "after": "after",
             "before": "before",
+            "isWildcard": "is_wildcard",
+            "limit": "limit",
         }
 
     # endregion static methods

@@ -28,8 +28,8 @@ class ChannelChatNotif(WebSocketMessage):
 
     # region fields
 
-    from_: str
     channel_slug: str
+    from_: str
     payload: str
     sent_at: str
 
@@ -41,10 +41,10 @@ class ChannelChatNotif(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {ChannelChatNotif.get_type()}"]
-        if hasattr(self, "from_") and self.from_:
-            wsm.append(f"from: {self.from_}")
         if hasattr(self, "channel_slug") and self.channel_slug:
             wsm.append(f"channelSlug: {self.channel_slug}")
+        if hasattr(self, "from_") and self.from_:
+            wsm.append(f"from: {self.from_}")
         if hasattr(self, "payload") and self.payload:
             wsm.append(f"payload: {self.payload}")
         if hasattr(self, "sent_at") and self.sent_at:
@@ -68,11 +68,11 @@ class ChannelChatNotif(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if (not is_strict and name.casefold() == "from".casefold()) or (name == "from"):
-                instance.from_ = value
-                continue
             if (not is_strict and name.casefold() == "channelSlug".casefold()) or (name == "channelSlug"):
                 instance.channel_slug = value
+                continue
+            if (not is_strict and name.casefold() == "from".casefold()) or (name == "from"):
+                instance.from_ = value
                 continue
             if (not is_strict and name.casefold() == "payload".casefold()) or (name == "payload"):
                 instance.payload = value
@@ -91,8 +91,8 @@ class ChannelChatNotif(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "from": "from_",
             "channelSlug": "channel_slug",
+            "from": "from_",
             "payload": "payload",
             "sentAt": "sent_at",
         }

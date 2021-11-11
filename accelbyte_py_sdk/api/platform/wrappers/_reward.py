@@ -130,15 +130,15 @@ def import_rewards(replace_existing: bool, file: Optional[Any] = None, namespace
 
 
 @same_doc_as(QueryRewards)
-def query_rewards(event_topic: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, sort_by: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_rewards(event_topic: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = QueryRewards.create(
         event_topic=event_topic,
-        offset=offset,
         limit=limit,
+        offset=offset,
         sort_by=sort_by,
         namespace=namespace,
     )
@@ -146,15 +146,15 @@ def query_rewards(event_topic: Optional[str] = None, offset: Optional[int] = Non
 
 
 @same_doc_as(QueryRewards1)
-def query_rewards_1(event_topic: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, sort_by: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_rewards_1(event_topic: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = QueryRewards1.create(
         event_topic=event_topic,
-        offset=offset,
         limit=limit,
+        offset=offset,
         sort_by=sort_by,
         namespace=namespace,
     )

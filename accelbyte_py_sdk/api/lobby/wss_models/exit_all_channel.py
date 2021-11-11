@@ -28,8 +28,8 @@ class ExitAllChannel(WebSocketMessage):
 
     # region fields
 
-    user_id: str
     namespace: str
+    user_id: str
 
     # endregion fields
 
@@ -39,10 +39,10 @@ class ExitAllChannel(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {ExitAllChannel.get_type()}"]
-        if hasattr(self, "user_id") and self.user_id:
-            wsm.append(f"userId: {self.user_id}")
         if hasattr(self, "namespace") and self.namespace:
             wsm.append(f"namespace: {self.namespace}")
+        if hasattr(self, "user_id") and self.user_id:
+            wsm.append(f"userId: {self.user_id}")
         return "\n".join(wsm)
 
     # endregion methods
@@ -62,11 +62,11 @@ class ExitAllChannel(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if (not is_strict and name.casefold() == "userId".casefold()) or (name == "userId"):
-                instance.user_id = value
-                continue
             if (not is_strict and name.casefold() == "namespace".casefold()) or (name == "namespace"):
                 instance.namespace = value
+                continue
+            if (not is_strict and name.casefold() == "userId".casefold()) or (name == "userId"):
+                instance.user_id = value
                 continue
             if is_strict:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldTypeNotSupported)
@@ -79,8 +79,8 @@ class ExitAllChannel(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "userId": "user_id",
             "namespace": "namespace",
+            "userId": "user_id",
         }
 
     # endregion static methods

@@ -32,9 +32,9 @@ class FieldValidationError(Model):
 
         error_field: (errorField) OPTIONAL str
 
-        error_value: (errorValue) OPTIONAL str
-
         error_message: (errorMessage) OPTIONAL str
+
+        error_value: (errorValue) OPTIONAL str
 
         message_variables: (messageVariables) OPTIONAL Dict[str, str]
     """
@@ -43,8 +43,8 @@ class FieldValidationError(Model):
 
     error_code: str                                                                                # OPTIONAL
     error_field: str                                                                               # OPTIONAL
-    error_value: str                                                                               # OPTIONAL
     error_message: str                                                                             # OPTIONAL
+    error_value: str                                                                               # OPTIONAL
     message_variables: Dict[str, str]                                                              # OPTIONAL
 
     # endregion fields
@@ -59,12 +59,12 @@ class FieldValidationError(Model):
         self.error_field = value
         return self
 
-    def with_error_value(self, value: str) -> FieldValidationError:
-        self.error_value = value
-        return self
-
     def with_error_message(self, value: str) -> FieldValidationError:
         self.error_message = value
+        return self
+
+    def with_error_value(self, value: str) -> FieldValidationError:
+        self.error_value = value
         return self
 
     def with_message_variables(self, value: Dict[str, str]) -> FieldValidationError:
@@ -85,14 +85,14 @@ class FieldValidationError(Model):
             result["errorField"] = str(self.error_field)
         elif include_empty:
             result["errorField"] = str()
-        if hasattr(self, "error_value"):
-            result["errorValue"] = str(self.error_value)
-        elif include_empty:
-            result["errorValue"] = str()
         if hasattr(self, "error_message"):
             result["errorMessage"] = str(self.error_message)
         elif include_empty:
             result["errorMessage"] = str()
+        if hasattr(self, "error_value"):
+            result["errorValue"] = str(self.error_value)
+        elif include_empty:
+            result["errorValue"] = str()
         if hasattr(self, "message_variables"):
             result["messageVariables"] = {str(k0): str(v0) for k0, v0 in self.message_variables.items()}
         elif include_empty:
@@ -138,14 +138,14 @@ class FieldValidationError(Model):
             instance.error_field = str(dict_["errorField"])
         elif include_empty:
             instance.error_field = str()
-        if "errorValue" in dict_ and dict_["errorValue"] is not None:
-            instance.error_value = str(dict_["errorValue"])
-        elif include_empty:
-            instance.error_value = str()
         if "errorMessage" in dict_ and dict_["errorMessage"] is not None:
             instance.error_message = str(dict_["errorMessage"])
         elif include_empty:
             instance.error_message = str()
+        if "errorValue" in dict_ and dict_["errorValue"] is not None:
+            instance.error_value = str(dict_["errorValue"])
+        elif include_empty:
+            instance.error_value = str()
         if "messageVariables" in dict_ and dict_["messageVariables"] is not None:
             instance.message_variables = {str(k0): str(v0) for k0, v0 in dict_["messageVariables"].items()}
         elif include_empty:
@@ -157,8 +157,8 @@ class FieldValidationError(Model):
         return {
             "errorCode": "error_code",
             "errorField": "error_field",
-            "errorValue": "error_value",
             "errorMessage": "error_message",
+            "errorValue": "error_value",
             "messageVariables": "message_variables",
         }
 

@@ -60,10 +60,10 @@ def refund_payment_order_by_dedicated(payment_order_no: str, body: Optional[Paym
 
 
 @same_doc_as(SyncPaymentOrders)
-def sync_payment_orders(start: str, end: str, next_evaluated_key: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def sync_payment_orders(end: str, start: str, next_evaluated_key: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = SyncPaymentOrders.create(
-        start=start,
         end=end,
+        start=start,
         next_evaluated_key=next_evaluated_key,
     )
     return run_request(request, additional_headers=x_additional_headers)

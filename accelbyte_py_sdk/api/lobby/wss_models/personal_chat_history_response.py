@@ -28,10 +28,10 @@ class PersonalChatHistoryResponse(WebSocketMessage):
 
     # region fields
 
-    id_: str
+    chat: str
     code: str
     friend_id: str
-    chat: str
+    id_: str
 
     # endregion fields
 
@@ -41,14 +41,14 @@ class PersonalChatHistoryResponse(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {PersonalChatHistoryResponse.get_type()}"]
-        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
-        wsm.append(f"id: {id_}")
+        if hasattr(self, "chat") and self.chat:
+            wsm.append(f"chat: {self.chat}")
         if hasattr(self, "code") and self.code:
             wsm.append(f"code: {self.code}")
         if hasattr(self, "friend_id") and self.friend_id:
             wsm.append(f"friendId: {self.friend_id}")
-        if hasattr(self, "chat") and self.chat:
-            wsm.append(f"chat: {self.chat}")
+        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
+        wsm.append(f"id: {id_}")
         return "\n".join(wsm)
 
     # endregion methods
@@ -72,14 +72,14 @@ class PersonalChatHistoryResponse(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
+            if (not is_strict and name.casefold() == "chat".casefold()) or (name == "chat"):
+                instance.chat = value
+                continue
             if (not is_strict and name.casefold() == "code".casefold()) or (name == "code"):
                 instance.code = value
                 continue
             if (not is_strict and name.casefold() == "friendId".casefold()) or (name == "friendId"):
                 instance.friend_id = value
-                continue
-            if (not is_strict and name.casefold() == "chat".casefold()) or (name == "chat"):
-                instance.chat = value
                 continue
             if is_strict:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldTypeNotSupported)
@@ -92,10 +92,10 @@ class PersonalChatHistoryResponse(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
+            "chat": "chat",
             "code": "code",
             "friendId": "friend_id",
-            "chat": "chat",
+            "id": "id_",
         }
 
     # endregion static methods

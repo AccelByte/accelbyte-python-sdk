@@ -55,9 +55,9 @@ class CreateUserFromInvitationV3(Operation):
 
         body: (body) REQUIRED ModelUserCreateFromInvitationRequestV3 in body
 
-        namespace: (namespace) REQUIRED str in path
-
         invitation_id: (invitationId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
     Responses:
         201: Created - ModelUserCreateResponseV3 (Created)
@@ -79,8 +79,8 @@ class CreateUserFromInvitationV3(Operation):
     _location_query: str = None
 
     body: ModelUserCreateFromInvitationRequestV3                                                   # REQUIRED in [body]
-    namespace: str                                                                                 # REQUIRED in [path]
     invitation_id: str                                                                             # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -129,8 +129,8 @@ class CreateUserFromInvitationV3(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "body",
-            "namespace",
             "invitation_id",
+            "namespace",
         ]
 
     # endregion get methods
@@ -148,10 +148,10 @@ class CreateUserFromInvitationV3(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "invitation_id"):
             result["invitationId"] = self.invitation_id
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     # endregion get_x_params methods
@@ -161,9 +161,9 @@ class CreateUserFromInvitationV3(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "body") or self.body is None:
             return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "invitation_id") or self.invitation_id is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         return True
 
@@ -175,12 +175,12 @@ class CreateUserFromInvitationV3(Operation):
         self.body = value
         return self
 
-    def with_namespace(self, value: str) -> CreateUserFromInvitationV3:
-        self.namespace = value
-        return self
-
     def with_invitation_id(self, value: str) -> CreateUserFromInvitationV3:
         self.invitation_id = value
+        return self
+
+    def with_namespace(self, value: str) -> CreateUserFromInvitationV3:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -193,14 +193,14 @@ class CreateUserFromInvitationV3(Operation):
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
             result["body"] = ModelUserCreateFromInvitationRequestV3()
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "invitation_id") and self.invitation_id:
             result["invitationId"] = str(self.invitation_id)
         elif include_empty:
             result["invitationId"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         return result
 
     # endregion to methods
@@ -240,13 +240,13 @@ class CreateUserFromInvitationV3(Operation):
     def create(
         cls,
         body: ModelUserCreateFromInvitationRequestV3,
-        namespace: str,
         invitation_id: str,
+        namespace: str,
     ) -> CreateUserFromInvitationV3:
         instance = cls()
         instance.body = body
-        instance.namespace = namespace
         instance.invitation_id = invitation_id
+        instance.namespace = namespace
         return instance
 
     @classmethod
@@ -256,22 +256,22 @@ class CreateUserFromInvitationV3(Operation):
             instance.body = ModelUserCreateFromInvitationRequestV3.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
             instance.body = ModelUserCreateFromInvitationRequestV3()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "invitationId" in dict_ and dict_["invitationId"] is not None:
             instance.invitation_id = str(dict_["invitationId"])
         elif include_empty:
             instance.invitation_id = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
-            "namespace": "namespace",
             "invitationId": "invitation_id",
+            "namespace": "namespace",
         }
 
     # endregion static methods

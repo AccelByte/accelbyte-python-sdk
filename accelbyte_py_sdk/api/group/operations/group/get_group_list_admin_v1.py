@@ -53,15 +53,15 @@ class GetGroupListAdminV1(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        limit: (limit) OPTIONAL int in query
-
-        offset: (offset) OPTIONAL int in query
+        configuration_code: (configurationCode) OPTIONAL str in query
 
         group_name: (groupName) OPTIONAL str in query
 
         group_region: (groupRegion) OPTIONAL str in query
 
-        configuration_code: (configurationCode) OPTIONAL str in query
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
 
     Responses:
         200: OK - ModelsGetGroupsListResponseV1 (OK)
@@ -85,11 +85,11 @@ class GetGroupListAdminV1(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    limit: int                                                                                     # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
+    configuration_code: str                                                                        # OPTIONAL in [query]
     group_name: str                                                                                # OPTIONAL in [query]
     group_region: str                                                                              # OPTIONAL in [query]
-    configuration_code: str                                                                        # OPTIONAL in [query]
+    limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
 
     # endregion fields
 
@@ -161,16 +161,16 @@ class GetGroupListAdminV1(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "limit"):
-            result["limit"] = self.limit
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
+        if hasattr(self, "configuration_code"):
+            result["configurationCode"] = self.configuration_code
         if hasattr(self, "group_name"):
             result["groupName"] = self.group_name
         if hasattr(self, "group_region"):
             result["groupRegion"] = self.group_region
-        if hasattr(self, "configuration_code"):
-            result["configurationCode"] = self.configuration_code
+        if hasattr(self, "limit"):
+            result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         return result
 
     # endregion get_x_params methods
@@ -190,12 +190,8 @@ class GetGroupListAdminV1(Operation):
         self.namespace = value
         return self
 
-    def with_limit(self, value: int) -> GetGroupListAdminV1:
-        self.limit = value
-        return self
-
-    def with_offset(self, value: int) -> GetGroupListAdminV1:
-        self.offset = value
+    def with_configuration_code(self, value: str) -> GetGroupListAdminV1:
+        self.configuration_code = value
         return self
 
     def with_group_name(self, value: str) -> GetGroupListAdminV1:
@@ -206,8 +202,12 @@ class GetGroupListAdminV1(Operation):
         self.group_region = value
         return self
 
-    def with_configuration_code(self, value: str) -> GetGroupListAdminV1:
-        self.configuration_code = value
+    def with_limit(self, value: int) -> GetGroupListAdminV1:
+        self.limit = value
+        return self
+
+    def with_offset(self, value: int) -> GetGroupListAdminV1:
+        self.offset = value
         return self
 
     # endregion with_x methods
@@ -220,14 +220,10 @@ class GetGroupListAdminV1(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "limit") and self.limit:
-            result["limit"] = int(self.limit)
+        if hasattr(self, "configuration_code") and self.configuration_code:
+            result["configurationCode"] = str(self.configuration_code)
         elif include_empty:
-            result["limit"] = int()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
+            result["configurationCode"] = str()
         if hasattr(self, "group_name") and self.group_name:
             result["groupName"] = str(self.group_name)
         elif include_empty:
@@ -236,10 +232,14 @@ class GetGroupListAdminV1(Operation):
             result["groupRegion"] = str(self.group_region)
         elif include_empty:
             result["groupRegion"] = str()
-        if hasattr(self, "configuration_code") and self.configuration_code:
-            result["configurationCode"] = str(self.configuration_code)
+        if hasattr(self, "limit") and self.limit:
+            result["limit"] = int(self.limit)
         elif include_empty:
-            result["configurationCode"] = str()
+            result["limit"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
         return result
 
     # endregion to methods
@@ -283,24 +283,24 @@ class GetGroupListAdminV1(Operation):
     def create(
         cls,
         namespace: str,
-        limit: Optional[int] = None,
-        offset: Optional[int] = None,
+        configuration_code: Optional[str] = None,
         group_name: Optional[str] = None,
         group_region: Optional[str] = None,
-        configuration_code: Optional[str] = None,
+        limit: Optional[int] = None,
+        offset: Optional[int] = None,
     ) -> GetGroupListAdminV1:
         instance = cls()
         instance.namespace = namespace
-        if limit is not None:
-            instance.limit = limit
-        if offset is not None:
-            instance.offset = offset
+        if configuration_code is not None:
+            instance.configuration_code = configuration_code
         if group_name is not None:
             instance.group_name = group_name
         if group_region is not None:
             instance.group_region = group_region
-        if configuration_code is not None:
-            instance.configuration_code = configuration_code
+        if limit is not None:
+            instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
         return instance
 
     @classmethod
@@ -310,14 +310,10 @@ class GetGroupListAdminV1(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "limit" in dict_ and dict_["limit"] is not None:
-            instance.limit = int(dict_["limit"])
+        if "configurationCode" in dict_ and dict_["configurationCode"] is not None:
+            instance.configuration_code = str(dict_["configurationCode"])
         elif include_empty:
-            instance.limit = int()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
+            instance.configuration_code = str()
         if "groupName" in dict_ and dict_["groupName"] is not None:
             instance.group_name = str(dict_["groupName"])
         elif include_empty:
@@ -326,21 +322,25 @@ class GetGroupListAdminV1(Operation):
             instance.group_region = str(dict_["groupRegion"])
         elif include_empty:
             instance.group_region = str()
-        if "configurationCode" in dict_ and dict_["configurationCode"] is not None:
-            instance.configuration_code = str(dict_["configurationCode"])
+        if "limit" in dict_ and dict_["limit"] is not None:
+            instance.limit = int(dict_["limit"])
         elif include_empty:
-            instance.configuration_code = str()
+            instance.limit = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "limit": "limit",
-            "offset": "offset",
+            "configurationCode": "configuration_code",
             "groupName": "group_name",
             "groupRegion": "group_region",
-            "configurationCode": "configuration_code",
+            "limit": "limit",
+            "offset": "offset",
         }
 
     # endregion static methods

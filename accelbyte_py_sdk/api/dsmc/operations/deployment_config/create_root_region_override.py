@@ -52,9 +52,9 @@ class CreateRootRegionOverride(Operation):
 
         body: (body) REQUIRED ModelsCreateRegionOverrideRequest in body
 
-        namespace: (namespace) REQUIRED str in path
-
         deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
         region: (region) REQUIRED str in path
 
@@ -82,8 +82,8 @@ class CreateRootRegionOverride(Operation):
     _location_query: str = None
 
     body: ModelsCreateRegionOverrideRequest                                                        # REQUIRED in [body]
-    namespace: str                                                                                 # REQUIRED in [path]
     deployment: str                                                                                # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
     region: str                                                                                    # REQUIRED in [path]
 
     # endregion fields
@@ -133,8 +133,8 @@ class CreateRootRegionOverride(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "body",
-            "namespace",
             "deployment",
+            "namespace",
             "region",
         ]
 
@@ -153,10 +153,10 @@ class CreateRootRegionOverride(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "deployment"):
             result["deployment"] = self.deployment
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         if hasattr(self, "region"):
             result["region"] = self.region
         return result
@@ -168,9 +168,9 @@ class CreateRootRegionOverride(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "body") or self.body is None:
             return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "deployment") or self.deployment is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         if not hasattr(self, "region") or self.region is None:
             return False
@@ -184,12 +184,12 @@ class CreateRootRegionOverride(Operation):
         self.body = value
         return self
 
-    def with_namespace(self, value: str) -> CreateRootRegionOverride:
-        self.namespace = value
-        return self
-
     def with_deployment(self, value: str) -> CreateRootRegionOverride:
         self.deployment = value
+        return self
+
+    def with_namespace(self, value: str) -> CreateRootRegionOverride:
+        self.namespace = value
         return self
 
     def with_region(self, value: str) -> CreateRootRegionOverride:
@@ -206,14 +206,14 @@ class CreateRootRegionOverride(Operation):
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
             result["body"] = ModelsCreateRegionOverrideRequest()
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "deployment") and self.deployment:
             result["deployment"] = str(self.deployment)
         elif include_empty:
             result["deployment"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         if hasattr(self, "region") and self.region:
             result["region"] = str(self.region)
         elif include_empty:
@@ -265,14 +265,14 @@ class CreateRootRegionOverride(Operation):
     def create(
         cls,
         body: ModelsCreateRegionOverrideRequest,
-        namespace: str,
         deployment: str,
+        namespace: str,
         region: str,
     ) -> CreateRootRegionOverride:
         instance = cls()
         instance.body = body
-        instance.namespace = namespace
         instance.deployment = deployment
+        instance.namespace = namespace
         instance.region = region
         return instance
 
@@ -283,14 +283,14 @@ class CreateRootRegionOverride(Operation):
             instance.body = ModelsCreateRegionOverrideRequest.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
             instance.body = ModelsCreateRegionOverrideRequest()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "deployment" in dict_ and dict_["deployment"] is not None:
             instance.deployment = str(dict_["deployment"])
         elif include_empty:
             instance.deployment = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
@@ -301,8 +301,8 @@ class CreateRootRegionOverride(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
-            "namespace": "namespace",
             "deployment": "deployment",
+            "namespace": "namespace",
             "region": "region",
         }
 

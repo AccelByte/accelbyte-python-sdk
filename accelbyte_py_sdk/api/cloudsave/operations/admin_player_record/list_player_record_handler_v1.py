@@ -51,11 +51,11 @@ class ListPlayerRecordHandlerV1(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        query: (query) OPTIONAL str in query
+        limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
-        limit: (limit) OPTIONAL int in query
+        query: (query) OPTIONAL str in query
 
     Responses:
         200: OK - ModelsListPlayerRecordKeys (Successful operation)
@@ -77,9 +77,9 @@ class ListPlayerRecordHandlerV1(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    query: str                                                                                     # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
+    query: str                                                                                     # OPTIONAL in [query]
 
     # endregion fields
 
@@ -151,12 +151,12 @@ class ListPlayerRecordHandlerV1(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "query"):
-            result["query"] = self.query
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
+        if hasattr(self, "query"):
+            result["query"] = self.query
         return result
 
     # endregion get_x_params methods
@@ -176,16 +176,16 @@ class ListPlayerRecordHandlerV1(Operation):
         self.namespace = value
         return self
 
-    def with_query(self, value: str) -> ListPlayerRecordHandlerV1:
-        self.query = value
+    def with_limit(self, value: int) -> ListPlayerRecordHandlerV1:
+        self.limit = value
         return self
 
     def with_offset(self, value: int) -> ListPlayerRecordHandlerV1:
         self.offset = value
         return self
 
-    def with_limit(self, value: int) -> ListPlayerRecordHandlerV1:
-        self.limit = value
+    def with_query(self, value: str) -> ListPlayerRecordHandlerV1:
+        self.query = value
         return self
 
     # endregion with_x methods
@@ -198,18 +198,18 @@ class ListPlayerRecordHandlerV1(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "query") and self.query:
-            result["query"] = str(self.query)
-        elif include_empty:
-            result["query"] = str()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
+        if hasattr(self, "query") and self.query:
+            result["query"] = str(self.query)
+        elif include_empty:
+            result["query"] = str()
         return result
 
     # endregion to methods
@@ -249,18 +249,18 @@ class ListPlayerRecordHandlerV1(Operation):
     def create(
         cls,
         namespace: str,
-        query: Optional[str] = None,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
+        query: Optional[str] = None,
     ) -> ListPlayerRecordHandlerV1:
         instance = cls()
         instance.namespace = namespace
-        if query is not None:
-            instance.query = query
-        if offset is not None:
-            instance.offset = offset
         if limit is not None:
             instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
+        if query is not None:
+            instance.query = query
         return instance
 
     @classmethod
@@ -270,27 +270,27 @@ class ListPlayerRecordHandlerV1(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "query" in dict_ and dict_["query"] is not None:
-            instance.query = str(dict_["query"])
-        elif include_empty:
-            instance.query = str()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
+        if "query" in dict_ and dict_["query"] is not None:
+            instance.query = str(dict_["query"])
+        elif include_empty:
+            instance.query = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "query": "query",
-            "offset": "offset",
             "limit": "limit",
+            "offset": "offset",
+            "query": "query",
         }
 
     # endregion static methods

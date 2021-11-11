@@ -28,11 +28,11 @@ class ItemDynamicDataInfo(Model):
     """Item dynamic data info (ItemDynamicDataInfo)
 
     Properties:
+        available_count: (availableCount) REQUIRED int
+
         item_id: (itemId) REQUIRED str
 
         namespace: (namespace) REQUIRED str
-
-        available_count: (availableCount) REQUIRED int
 
         user_available_count: (userAvailableCount) REQUIRED int
 
@@ -41,9 +41,9 @@ class ItemDynamicDataInfo(Model):
 
     # region fields
 
+    available_count: int                                                                           # REQUIRED
     item_id: str                                                                                   # REQUIRED
     namespace: str                                                                                 # REQUIRED
-    available_count: int                                                                           # REQUIRED
     user_available_count: int                                                                      # REQUIRED
     user_purchase_limit: int                                                                       # REQUIRED
 
@@ -51,16 +51,16 @@ class ItemDynamicDataInfo(Model):
 
     # region with_x methods
 
+    def with_available_count(self, value: int) -> ItemDynamicDataInfo:
+        self.available_count = value
+        return self
+
     def with_item_id(self, value: str) -> ItemDynamicDataInfo:
         self.item_id = value
         return self
 
     def with_namespace(self, value: str) -> ItemDynamicDataInfo:
         self.namespace = value
-        return self
-
-    def with_available_count(self, value: int) -> ItemDynamicDataInfo:
-        self.available_count = value
         return self
 
     def with_user_available_count(self, value: int) -> ItemDynamicDataInfo:
@@ -77,6 +77,10 @@ class ItemDynamicDataInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "available_count"):
+            result["availableCount"] = int(self.available_count)
+        elif include_empty:
+            result["availableCount"] = int()
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
@@ -85,10 +89,6 @@ class ItemDynamicDataInfo(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "available_count"):
-            result["availableCount"] = int(self.available_count)
-        elif include_empty:
-            result["availableCount"] = int()
         if hasattr(self, "user_available_count"):
             result["userAvailableCount"] = int(self.user_available_count)
         elif include_empty:
@@ -125,6 +125,10 @@ class ItemDynamicDataInfo(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "availableCount" in dict_ and dict_["availableCount"] is not None:
+            instance.available_count = int(dict_["availableCount"])
+        elif include_empty:
+            instance.available_count = int()
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
@@ -133,10 +137,6 @@ class ItemDynamicDataInfo(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "availableCount" in dict_ and dict_["availableCount"] is not None:
-            instance.available_count = int(dict_["availableCount"])
-        elif include_empty:
-            instance.available_count = int()
         if "userAvailableCount" in dict_ and dict_["userAvailableCount"] is not None:
             instance.user_available_count = int(dict_["userAvailableCount"])
         elif include_empty:
@@ -150,9 +150,9 @@ class ItemDynamicDataInfo(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "availableCount": "available_count",
             "itemId": "item_id",
             "namespace": "namespace",
-            "availableCount": "available_count",
             "userAvailableCount": "user_available_count",
             "userPurchaseLimit": "user_purchase_limit",
         }

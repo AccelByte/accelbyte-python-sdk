@@ -28,8 +28,8 @@ class UnblockPlayerResponse(WebSocketMessage):
 
     # region fields
 
-    id_: str
     code: str
+    id_: str
     namespace: str
     unblocked_user_id: str
 
@@ -41,10 +41,10 @@ class UnblockPlayerResponse(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {UnblockPlayerResponse.get_type()}"]
-        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
-        wsm.append(f"id: {id_}")
         if hasattr(self, "code") and self.code:
             wsm.append(f"code: {self.code}")
+        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
+        wsm.append(f"id: {id_}")
         if hasattr(self, "namespace") and self.namespace:
             wsm.append(f"namespace: {self.namespace}")
         if hasattr(self, "unblocked_user_id") and self.unblocked_user_id:
@@ -92,8 +92,8 @@ class UnblockPlayerResponse(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
             "code": "code",
+            "id": "id_",
             "namespace": "namespace",
             "unblockedUserId": "unblocked_user_id",
         }

@@ -55,15 +55,15 @@ class QueryUncategorizedItems(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        store_id: (storeId) OPTIONAL str in query
-
         active_only: (activeOnly) OPTIONAL bool in query
-
-        offset: (offset) OPTIONAL int in query
 
         limit: (limit) OPTIONAL int in query
 
+        offset: (offset) OPTIONAL int in query
+
         sort_by: (sortBy) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
 
     Responses:
         200: OK - FullItemPagingSlicedResult (successful operation)
@@ -83,11 +83,11 @@ class QueryUncategorizedItems(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    store_id: str                                                                                  # OPTIONAL in [query]
     active_only: bool                                                                              # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
     sort_by: str                                                                                   # OPTIONAL in [query]
+    store_id: str                                                                                  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -159,16 +159,16 @@ class QueryUncategorizedItems(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "store_id"):
-            result["storeId"] = self.store_id
         if hasattr(self, "active_only"):
             result["activeOnly"] = self.active_only
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         if hasattr(self, "sort_by"):
             result["sortBy"] = self.sort_by
+        if hasattr(self, "store_id"):
+            result["storeId"] = self.store_id
         return result
 
     # endregion get_x_params methods
@@ -188,24 +188,24 @@ class QueryUncategorizedItems(Operation):
         self.namespace = value
         return self
 
-    def with_store_id(self, value: str) -> QueryUncategorizedItems:
-        self.store_id = value
-        return self
-
     def with_active_only(self, value: bool) -> QueryUncategorizedItems:
         self.active_only = value
-        return self
-
-    def with_offset(self, value: int) -> QueryUncategorizedItems:
-        self.offset = value
         return self
 
     def with_limit(self, value: int) -> QueryUncategorizedItems:
         self.limit = value
         return self
 
+    def with_offset(self, value: int) -> QueryUncategorizedItems:
+        self.offset = value
+        return self
+
     def with_sort_by(self, value: str) -> QueryUncategorizedItems:
         self.sort_by = value
+        return self
+
+    def with_store_id(self, value: str) -> QueryUncategorizedItems:
+        self.store_id = value
         return self
 
     # endregion with_x methods
@@ -218,26 +218,26 @@ class QueryUncategorizedItems(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "store_id") and self.store_id:
-            result["storeId"] = str(self.store_id)
-        elif include_empty:
-            result["storeId"] = str()
         if hasattr(self, "active_only") and self.active_only:
             result["activeOnly"] = bool(self.active_only)
         elif include_empty:
             result["activeOnly"] = bool()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
         if hasattr(self, "sort_by") and self.sort_by:
             result["sortBy"] = str(self.sort_by)
         elif include_empty:
             result["sortBy"] = str()
+        if hasattr(self, "store_id") and self.store_id:
+            result["storeId"] = str(self.store_id)
+        elif include_empty:
+            result["storeId"] = str()
         return result
 
     # endregion to methods
@@ -273,24 +273,24 @@ class QueryUncategorizedItems(Operation):
     def create(
         cls,
         namespace: str,
-        store_id: Optional[str] = None,
         active_only: Optional[bool] = None,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
         sort_by: Optional[str] = None,
+        store_id: Optional[str] = None,
     ) -> QueryUncategorizedItems:
         instance = cls()
         instance.namespace = namespace
-        if store_id is not None:
-            instance.store_id = store_id
         if active_only is not None:
             instance.active_only = active_only
-        if offset is not None:
-            instance.offset = offset
         if limit is not None:
             instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
         if sort_by is not None:
             instance.sort_by = sort_by
+        if store_id is not None:
+            instance.store_id = store_id
         return instance
 
     @classmethod
@@ -300,37 +300,37 @@ class QueryUncategorizedItems(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "storeId" in dict_ and dict_["storeId"] is not None:
-            instance.store_id = str(dict_["storeId"])
-        elif include_empty:
-            instance.store_id = str()
         if "activeOnly" in dict_ and dict_["activeOnly"] is not None:
             instance.active_only = bool(dict_["activeOnly"])
         elif include_empty:
             instance.active_only = bool()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
         if "sortBy" in dict_ and dict_["sortBy"] is not None:
             instance.sort_by = str(dict_["sortBy"])
         elif include_empty:
             instance.sort_by = str()
+        if "storeId" in dict_ and dict_["storeId"] is not None:
+            instance.store_id = str(dict_["storeId"])
+        elif include_empty:
+            instance.store_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "storeId": "store_id",
             "activeOnly": "active_only",
-            "offset": "offset",
             "limit": "limit",
+            "offset": "offset",
             "sortBy": "sort_by",
+            "storeId": "store_id",
         }
 
     # endregion static methods

@@ -28,50 +28,34 @@ class GameProfileHeader(Model):
     """Game profile header (GameProfileHeader)
 
     Properties:
-        profile_id: (profileId) OPTIONAL str
-
-        user_id: (userId) OPTIONAL str
-
-        namespace: (namespace) OPTIONAL str
-
-        profile_name: (profileName) OPTIONAL str
-
         avatar_url: (avatarUrl) OPTIONAL str
 
         label: (label) OPTIONAL str
 
+        namespace: (namespace) OPTIONAL str
+
+        profile_id: (profileId) OPTIONAL str
+
+        profile_name: (profileName) OPTIONAL str
+
         tags: (tags) OPTIONAL List[str]
+
+        user_id: (userId) OPTIONAL str
     """
 
     # region fields
 
-    profile_id: str                                                                                # OPTIONAL
-    user_id: str                                                                                   # OPTIONAL
-    namespace: str                                                                                 # OPTIONAL
-    profile_name: str                                                                              # OPTIONAL
     avatar_url: str                                                                                # OPTIONAL
     label: str                                                                                     # OPTIONAL
+    namespace: str                                                                                 # OPTIONAL
+    profile_id: str                                                                                # OPTIONAL
+    profile_name: str                                                                              # OPTIONAL
     tags: List[str]                                                                                # OPTIONAL
+    user_id: str                                                                                   # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
-
-    def with_profile_id(self, value: str) -> GameProfileHeader:
-        self.profile_id = value
-        return self
-
-    def with_user_id(self, value: str) -> GameProfileHeader:
-        self.user_id = value
-        return self
-
-    def with_namespace(self, value: str) -> GameProfileHeader:
-        self.namespace = value
-        return self
-
-    def with_profile_name(self, value: str) -> GameProfileHeader:
-        self.profile_name = value
-        return self
 
     def with_avatar_url(self, value: str) -> GameProfileHeader:
         self.avatar_url = value
@@ -81,8 +65,24 @@ class GameProfileHeader(Model):
         self.label = value
         return self
 
+    def with_namespace(self, value: str) -> GameProfileHeader:
+        self.namespace = value
+        return self
+
+    def with_profile_id(self, value: str) -> GameProfileHeader:
+        self.profile_id = value
+        return self
+
+    def with_profile_name(self, value: str) -> GameProfileHeader:
+        self.profile_name = value
+        return self
+
     def with_tags(self, value: List[str]) -> GameProfileHeader:
         self.tags = value
+        return self
+
+    def with_user_id(self, value: str) -> GameProfileHeader:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -91,22 +91,6 @@ class GameProfileHeader(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "profile_id"):
-            result["profileId"] = str(self.profile_id)
-        elif include_empty:
-            result["profileId"] = str()
-        if hasattr(self, "user_id"):
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
-        if hasattr(self, "namespace"):
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
-        if hasattr(self, "profile_name"):
-            result["profileName"] = str(self.profile_name)
-        elif include_empty:
-            result["profileName"] = str()
         if hasattr(self, "avatar_url"):
             result["avatarUrl"] = str(self.avatar_url)
         elif include_empty:
@@ -115,10 +99,26 @@ class GameProfileHeader(Model):
             result["label"] = str(self.label)
         elif include_empty:
             result["label"] = str()
+        if hasattr(self, "namespace"):
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
+        if hasattr(self, "profile_id"):
+            result["profileId"] = str(self.profile_id)
+        elif include_empty:
+            result["profileId"] = str()
+        if hasattr(self, "profile_name"):
+            result["profileName"] = str(self.profile_name)
+        elif include_empty:
+            result["profileName"] = str()
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
             result["tags"] = []
+        if hasattr(self, "user_id"):
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         return result
 
     # endregion to methods
@@ -158,22 +158,6 @@ class GameProfileHeader(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "profileId" in dict_ and dict_["profileId"] is not None:
-            instance.profile_id = str(dict_["profileId"])
-        elif include_empty:
-            instance.profile_id = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
-        if "profileName" in dict_ and dict_["profileName"] is not None:
-            instance.profile_name = str(dict_["profileName"])
-        elif include_empty:
-            instance.profile_name = str()
         if "avatarUrl" in dict_ and dict_["avatarUrl"] is not None:
             instance.avatar_url = str(dict_["avatarUrl"])
         elif include_empty:
@@ -182,22 +166,38 @@ class GameProfileHeader(Model):
             instance.label = str(dict_["label"])
         elif include_empty:
             instance.label = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
+        if "profileId" in dict_ and dict_["profileId"] is not None:
+            instance.profile_id = str(dict_["profileId"])
+        elif include_empty:
+            instance.profile_id = str()
+        if "profileName" in dict_ and dict_["profileName"] is not None:
+            instance.profile_name = str(dict_["profileName"])
+        elif include_empty:
+            instance.profile_name = str()
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
             instance.tags = []
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "profileId": "profile_id",
-            "userId": "user_id",
-            "namespace": "namespace",
-            "profileName": "profile_name",
             "avatarUrl": "avatar_url",
             "label": "label",
+            "namespace": "namespace",
+            "profileId": "profile_id",
+            "profileName": "profile_name",
             "tags": "tags",
+            "userId": "user_id",
         }
 
     # endregion static methods

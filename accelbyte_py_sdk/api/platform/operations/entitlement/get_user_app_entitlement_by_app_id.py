@@ -55,9 +55,9 @@ class GetUserAppEntitlementByAppId(Operation):
 
         user_id: (userId) REQUIRED str in path
 
-        app_id: (appId) REQUIRED str in query
-
         active_only: (activeOnly) OPTIONAL bool in query
+
+        app_id: (appId) REQUIRED str in query
 
     Responses:
         200: OK - AppEntitlementInfo (successful operation)
@@ -76,8 +76,8 @@ class GetUserAppEntitlementByAppId(Operation):
 
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
-    app_id: str                                                                                    # REQUIRED in [query]
     active_only: bool                                                                              # OPTIONAL in [query]
+    app_id: str                                                                                    # REQUIRED in [query]
 
     # endregion fields
 
@@ -153,10 +153,10 @@ class GetUserAppEntitlementByAppId(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "app_id"):
-            result["appId"] = self.app_id
         if hasattr(self, "active_only"):
             result["activeOnly"] = self.active_only
+        if hasattr(self, "app_id"):
+            result["appId"] = self.app_id
         return result
 
     # endregion get_x_params methods
@@ -184,12 +184,12 @@ class GetUserAppEntitlementByAppId(Operation):
         self.user_id = value
         return self
 
-    def with_app_id(self, value: str) -> GetUserAppEntitlementByAppId:
-        self.app_id = value
-        return self
-
     def with_active_only(self, value: bool) -> GetUserAppEntitlementByAppId:
         self.active_only = value
+        return self
+
+    def with_app_id(self, value: str) -> GetUserAppEntitlementByAppId:
+        self.app_id = value
         return self
 
     # endregion with_x methods
@@ -206,14 +206,14 @@ class GetUserAppEntitlementByAppId(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "app_id") and self.app_id:
-            result["appId"] = str(self.app_id)
-        elif include_empty:
-            result["appId"] = str()
         if hasattr(self, "active_only") and self.active_only:
             result["activeOnly"] = bool(self.active_only)
         elif include_empty:
             result["activeOnly"] = bool()
+        if hasattr(self, "app_id") and self.app_id:
+            result["appId"] = str(self.app_id)
+        elif include_empty:
+            result["appId"] = str()
         return result
 
     # endregion to methods
@@ -268,14 +268,14 @@ class GetUserAppEntitlementByAppId(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
-        if "appId" in dict_ and dict_["appId"] is not None:
-            instance.app_id = str(dict_["appId"])
-        elif include_empty:
-            instance.app_id = str()
         if "activeOnly" in dict_ and dict_["activeOnly"] is not None:
             instance.active_only = bool(dict_["activeOnly"])
         elif include_empty:
             instance.active_only = bool()
+        if "appId" in dict_ and dict_["appId"] is not None:
+            instance.app_id = str(dict_["appId"])
+        elif include_empty:
+            instance.app_id = str()
         return instance
 
     @staticmethod
@@ -283,8 +283,8 @@ class GetUserAppEntitlementByAppId(Operation):
         return {
             "namespace": "namespace",
             "userId": "user_id",
-            "appId": "app_id",
             "activeOnly": "active_only",
+            "appId": "app_id",
         }
 
     # endregion static methods

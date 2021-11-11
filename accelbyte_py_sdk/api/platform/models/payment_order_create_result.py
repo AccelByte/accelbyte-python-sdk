@@ -28,49 +28,45 @@ class PaymentOrderCreateResult(Model):
     """Payment order create result (PaymentOrderCreateResult)
 
     Properties:
-        payment_order_no: (paymentOrderNo) REQUIRED str
+        created_time: (createdTime) REQUIRED str
 
         namespace: (namespace) REQUIRED str
 
-        target_namespace: (targetNamespace) OPTIONAL str
-
-        target_user_id: (targetUserId) OPTIONAL str
+        payment_order_no: (paymentOrderNo) REQUIRED str
 
         status: (status) REQUIRED str
 
         payment_station_url: (paymentStationUrl) OPTIONAL str
 
-        created_time: (createdTime) REQUIRED str
+        target_namespace: (targetNamespace) OPTIONAL str
+
+        target_user_id: (targetUserId) OPTIONAL str
     """
 
     # region fields
 
-    payment_order_no: str                                                                          # REQUIRED
+    created_time: str                                                                              # REQUIRED
     namespace: str                                                                                 # REQUIRED
-    target_namespace: str                                                                          # OPTIONAL
-    target_user_id: str                                                                            # OPTIONAL
+    payment_order_no: str                                                                          # REQUIRED
     status: str                                                                                    # REQUIRED
     payment_station_url: str                                                                       # OPTIONAL
-    created_time: str                                                                              # REQUIRED
+    target_namespace: str                                                                          # OPTIONAL
+    target_user_id: str                                                                            # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_payment_order_no(self, value: str) -> PaymentOrderCreateResult:
-        self.payment_order_no = value
+    def with_created_time(self, value: str) -> PaymentOrderCreateResult:
+        self.created_time = value
         return self
 
     def with_namespace(self, value: str) -> PaymentOrderCreateResult:
         self.namespace = value
         return self
 
-    def with_target_namespace(self, value: str) -> PaymentOrderCreateResult:
-        self.target_namespace = value
-        return self
-
-    def with_target_user_id(self, value: str) -> PaymentOrderCreateResult:
-        self.target_user_id = value
+    def with_payment_order_no(self, value: str) -> PaymentOrderCreateResult:
+        self.payment_order_no = value
         return self
 
     def with_status(self, value: str) -> PaymentOrderCreateResult:
@@ -81,8 +77,12 @@ class PaymentOrderCreateResult(Model):
         self.payment_station_url = value
         return self
 
-    def with_created_time(self, value: str) -> PaymentOrderCreateResult:
-        self.created_time = value
+    def with_target_namespace(self, value: str) -> PaymentOrderCreateResult:
+        self.target_namespace = value
+        return self
+
+    def with_target_user_id(self, value: str) -> PaymentOrderCreateResult:
+        self.target_user_id = value
         return self
 
     # endregion with_x methods
@@ -91,22 +91,18 @@ class PaymentOrderCreateResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "payment_order_no"):
-            result["paymentOrderNo"] = str(self.payment_order_no)
+        if hasattr(self, "created_time"):
+            result["createdTime"] = str(self.created_time)
         elif include_empty:
-            result["paymentOrderNo"] = str()
+            result["createdTime"] = str()
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "target_namespace"):
-            result["targetNamespace"] = str(self.target_namespace)
+        if hasattr(self, "payment_order_no"):
+            result["paymentOrderNo"] = str(self.payment_order_no)
         elif include_empty:
-            result["targetNamespace"] = str()
-        if hasattr(self, "target_user_id"):
-            result["targetUserId"] = str(self.target_user_id)
-        elif include_empty:
-            result["targetUserId"] = str()
+            result["paymentOrderNo"] = str()
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -115,10 +111,14 @@ class PaymentOrderCreateResult(Model):
             result["paymentStationUrl"] = str(self.payment_station_url)
         elif include_empty:
             result["paymentStationUrl"] = str()
-        if hasattr(self, "created_time"):
-            result["createdTime"] = str(self.created_time)
+        if hasattr(self, "target_namespace"):
+            result["targetNamespace"] = str(self.target_namespace)
         elif include_empty:
-            result["createdTime"] = str()
+            result["targetNamespace"] = str()
+        if hasattr(self, "target_user_id"):
+            result["targetUserId"] = str(self.target_user_id)
+        elif include_empty:
+            result["targetUserId"] = str()
         return result
 
     # endregion to methods
@@ -154,22 +154,18 @@ class PaymentOrderCreateResult(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "paymentOrderNo" in dict_ and dict_["paymentOrderNo"] is not None:
-            instance.payment_order_no = str(dict_["paymentOrderNo"])
+        if "createdTime" in dict_ and dict_["createdTime"] is not None:
+            instance.created_time = str(dict_["createdTime"])
         elif include_empty:
-            instance.payment_order_no = str()
+            instance.created_time = str()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "targetNamespace" in dict_ and dict_["targetNamespace"] is not None:
-            instance.target_namespace = str(dict_["targetNamespace"])
+        if "paymentOrderNo" in dict_ and dict_["paymentOrderNo"] is not None:
+            instance.payment_order_no = str(dict_["paymentOrderNo"])
         elif include_empty:
-            instance.target_namespace = str()
-        if "targetUserId" in dict_ and dict_["targetUserId"] is not None:
-            instance.target_user_id = str(dict_["targetUserId"])
-        elif include_empty:
-            instance.target_user_id = str()
+            instance.payment_order_no = str()
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -178,22 +174,26 @@ class PaymentOrderCreateResult(Model):
             instance.payment_station_url = str(dict_["paymentStationUrl"])
         elif include_empty:
             instance.payment_station_url = str()
-        if "createdTime" in dict_ and dict_["createdTime"] is not None:
-            instance.created_time = str(dict_["createdTime"])
+        if "targetNamespace" in dict_ and dict_["targetNamespace"] is not None:
+            instance.target_namespace = str(dict_["targetNamespace"])
         elif include_empty:
-            instance.created_time = str()
+            instance.target_namespace = str()
+        if "targetUserId" in dict_ and dict_["targetUserId"] is not None:
+            instance.target_user_id = str(dict_["targetUserId"])
+        elif include_empty:
+            instance.target_user_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "paymentOrderNo": "payment_order_no",
+            "createdTime": "created_time",
             "namespace": "namespace",
-            "targetNamespace": "target_namespace",
-            "targetUserId": "target_user_id",
+            "paymentOrderNo": "payment_order_no",
             "status": "status",
             "paymentStationUrl": "payment_station_url",
-            "createdTime": "created_time",
+            "targetNamespace": "target_namespace",
+            "targetUserId": "target_user_id",
         }
 
     # endregion static methods

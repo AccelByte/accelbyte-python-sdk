@@ -51,9 +51,9 @@ class PublicDeleteUserNamespaceSlot(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
-
         slot_id: (slotId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
 
     Responses:
         204: No Content - (Successful delete of a slot)
@@ -71,8 +71,8 @@ class PublicDeleteUserNamespaceSlot(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    user_id: str                                                                                   # REQUIRED in [path]
     slot_id: str                                                                                   # REQUIRED in [path]
+    user_id: str                                                                                   # REQUIRED in [path]
 
     # endregion fields
 
@@ -121,8 +121,8 @@ class PublicDeleteUserNamespaceSlot(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "namespace",
-            "user_id",
             "slot_id",
+            "user_id",
         ]
 
     # endregion get methods
@@ -138,10 +138,10 @@ class PublicDeleteUserNamespaceSlot(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
         if hasattr(self, "slot_id"):
             result["slotId"] = self.slot_id
+        if hasattr(self, "user_id"):
+            result["userId"] = self.user_id
         return result
 
     # endregion get_x_params methods
@@ -151,9 +151,9 @@ class PublicDeleteUserNamespaceSlot(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
         if not hasattr(self, "slot_id") or self.slot_id is None:
+            return False
+        if not hasattr(self, "user_id") or self.user_id is None:
             return False
         return True
 
@@ -165,12 +165,12 @@ class PublicDeleteUserNamespaceSlot(Operation):
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> PublicDeleteUserNamespaceSlot:
-        self.user_id = value
-        return self
-
     def with_slot_id(self, value: str) -> PublicDeleteUserNamespaceSlot:
         self.slot_id = value
+        return self
+
+    def with_user_id(self, value: str) -> PublicDeleteUserNamespaceSlot:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -183,14 +183,14 @@ class PublicDeleteUserNamespaceSlot(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
         if hasattr(self, "slot_id") and self.slot_id:
             result["slotId"] = str(self.slot_id)
         elif include_empty:
             result["slotId"] = str()
+        if hasattr(self, "user_id") and self.user_id:
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         return result
 
     # endregion to methods
@@ -222,13 +222,13 @@ class PublicDeleteUserNamespaceSlot(Operation):
     def create(
         cls,
         namespace: str,
-        user_id: str,
         slot_id: str,
+        user_id: str,
     ) -> PublicDeleteUserNamespaceSlot:
         instance = cls()
         instance.namespace = namespace
-        instance.user_id = user_id
         instance.slot_id = slot_id
+        instance.user_id = user_id
         return instance
 
     @classmethod
@@ -238,22 +238,22 @@ class PublicDeleteUserNamespaceSlot(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
         if "slotId" in dict_ and dict_["slotId"] is not None:
             instance.slot_id = str(dict_["slotId"])
         elif include_empty:
             instance.slot_id = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "userId": "user_id",
             "slotId": "slot_id",
+            "userId": "user_id",
         }
 
     # endregion static methods

@@ -48,23 +48,23 @@ class AdminSearchUsersV2(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        platform_id: (platformId) REQUIRED str in query
+        after: (after) OPTIONAL str in query
 
-        role_id: (roleId) OPTIONAL str in query
-
-        login_id: (loginId) OPTIONAL str in query
-
-        user_id: (userId) OPTIONAL str in query
-
-        platform_user_id: (platformUserId) OPTIONAL str in query
+        before: (before) OPTIONAL str in query
 
         display_name: (displayName) OPTIONAL str in query
 
         limit: (limit) OPTIONAL str in query
 
-        before: (before) OPTIONAL str in query
+        login_id: (loginId) OPTIONAL str in query
 
-        after: (after) OPTIONAL str in query
+        platform_user_id: (platformUserId) OPTIONAL str in query
+
+        role_id: (roleId) OPTIONAL str in query
+
+        user_id: (userId) OPTIONAL str in query
+
+        platform_id: (platformId) REQUIRED str in query
 
     Responses:
         200: OK - ModelSearchUsersByPlatformIDResponse (OK)
@@ -86,15 +86,15 @@ class AdminSearchUsersV2(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    platform_id: str                                                                               # REQUIRED in [query]
-    role_id: str                                                                                   # OPTIONAL in [query]
-    login_id: str                                                                                  # OPTIONAL in [query]
-    user_id: str                                                                                   # OPTIONAL in [query]
-    platform_user_id: str                                                                          # OPTIONAL in [query]
+    after: str                                                                                     # OPTIONAL in [query]
+    before: str                                                                                    # OPTIONAL in [query]
     display_name: str                                                                              # OPTIONAL in [query]
     limit: str                                                                                     # OPTIONAL in [query]
-    before: str                                                                                    # OPTIONAL in [query]
-    after: str                                                                                     # OPTIONAL in [query]
+    login_id: str                                                                                  # OPTIONAL in [query]
+    platform_user_id: str                                                                          # OPTIONAL in [query]
+    role_id: str                                                                                   # OPTIONAL in [query]
+    user_id: str                                                                                   # OPTIONAL in [query]
+    platform_id: str                                                                               # REQUIRED in [query]
 
     # endregion fields
 
@@ -167,24 +167,24 @@ class AdminSearchUsersV2(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "platform_id"):
-            result["platformId"] = self.platform_id
-        if hasattr(self, "role_id"):
-            result["roleId"] = self.role_id
-        if hasattr(self, "login_id"):
-            result["loginId"] = self.login_id
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
-        if hasattr(self, "platform_user_id"):
-            result["platformUserId"] = self.platform_user_id
+        if hasattr(self, "after"):
+            result["after"] = self.after
+        if hasattr(self, "before"):
+            result["before"] = self.before
         if hasattr(self, "display_name"):
             result["displayName"] = self.display_name
         if hasattr(self, "limit"):
             result["limit"] = self.limit
-        if hasattr(self, "before"):
-            result["before"] = self.before
-        if hasattr(self, "after"):
-            result["after"] = self.after
+        if hasattr(self, "login_id"):
+            result["loginId"] = self.login_id
+        if hasattr(self, "platform_user_id"):
+            result["platformUserId"] = self.platform_user_id
+        if hasattr(self, "role_id"):
+            result["roleId"] = self.role_id
+        if hasattr(self, "user_id"):
+            result["userId"] = self.user_id
+        if hasattr(self, "platform_id"):
+            result["platformId"] = self.platform_id
         return result
 
     # endregion get_x_params methods
@@ -206,24 +206,12 @@ class AdminSearchUsersV2(Operation):
         self.namespace = value
         return self
 
-    def with_platform_id(self, value: str) -> AdminSearchUsersV2:
-        self.platform_id = value
+    def with_after(self, value: str) -> AdminSearchUsersV2:
+        self.after = value
         return self
 
-    def with_role_id(self, value: str) -> AdminSearchUsersV2:
-        self.role_id = value
-        return self
-
-    def with_login_id(self, value: str) -> AdminSearchUsersV2:
-        self.login_id = value
-        return self
-
-    def with_user_id(self, value: str) -> AdminSearchUsersV2:
-        self.user_id = value
-        return self
-
-    def with_platform_user_id(self, value: str) -> AdminSearchUsersV2:
-        self.platform_user_id = value
+    def with_before(self, value: str) -> AdminSearchUsersV2:
+        self.before = value
         return self
 
     def with_display_name(self, value: str) -> AdminSearchUsersV2:
@@ -234,12 +222,24 @@ class AdminSearchUsersV2(Operation):
         self.limit = value
         return self
 
-    def with_before(self, value: str) -> AdminSearchUsersV2:
-        self.before = value
+    def with_login_id(self, value: str) -> AdminSearchUsersV2:
+        self.login_id = value
         return self
 
-    def with_after(self, value: str) -> AdminSearchUsersV2:
-        self.after = value
+    def with_platform_user_id(self, value: str) -> AdminSearchUsersV2:
+        self.platform_user_id = value
+        return self
+
+    def with_role_id(self, value: str) -> AdminSearchUsersV2:
+        self.role_id = value
+        return self
+
+    def with_user_id(self, value: str) -> AdminSearchUsersV2:
+        self.user_id = value
+        return self
+
+    def with_platform_id(self, value: str) -> AdminSearchUsersV2:
+        self.platform_id = value
         return self
 
     # endregion with_x methods
@@ -252,26 +252,14 @@ class AdminSearchUsersV2(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "platform_id") and self.platform_id:
-            result["platformId"] = str(self.platform_id)
+        if hasattr(self, "after") and self.after:
+            result["after"] = str(self.after)
         elif include_empty:
-            result["platformId"] = str()
-        if hasattr(self, "role_id") and self.role_id:
-            result["roleId"] = str(self.role_id)
+            result["after"] = str()
+        if hasattr(self, "before") and self.before:
+            result["before"] = str(self.before)
         elif include_empty:
-            result["roleId"] = str()
-        if hasattr(self, "login_id") and self.login_id:
-            result["loginId"] = str(self.login_id)
-        elif include_empty:
-            result["loginId"] = str()
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
-        if hasattr(self, "platform_user_id") and self.platform_user_id:
-            result["platformUserId"] = str(self.platform_user_id)
-        elif include_empty:
-            result["platformUserId"] = str()
+            result["before"] = str()
         if hasattr(self, "display_name") and self.display_name:
             result["displayName"] = str(self.display_name)
         elif include_empty:
@@ -280,14 +268,26 @@ class AdminSearchUsersV2(Operation):
             result["limit"] = str(self.limit)
         elif include_empty:
             result["limit"] = str()
-        if hasattr(self, "before") and self.before:
-            result["before"] = str(self.before)
+        if hasattr(self, "login_id") and self.login_id:
+            result["loginId"] = str(self.login_id)
         elif include_empty:
-            result["before"] = str()
-        if hasattr(self, "after") and self.after:
-            result["after"] = str(self.after)
+            result["loginId"] = str()
+        if hasattr(self, "platform_user_id") and self.platform_user_id:
+            result["platformUserId"] = str(self.platform_user_id)
         elif include_empty:
-            result["after"] = str()
+            result["platformUserId"] = str()
+        if hasattr(self, "role_id") and self.role_id:
+            result["roleId"] = str(self.role_id)
+        elif include_empty:
+            result["roleId"] = str()
+        if hasattr(self, "user_id") and self.user_id:
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
+        if hasattr(self, "platform_id") and self.platform_id:
+            result["platformId"] = str(self.platform_id)
+        elif include_empty:
+            result["platformId"] = str()
         return result
 
     # endregion to methods
@@ -328,34 +328,34 @@ class AdminSearchUsersV2(Operation):
         cls,
         namespace: str,
         platform_id: str,
-        role_id: Optional[str] = None,
-        login_id: Optional[str] = None,
-        user_id: Optional[str] = None,
-        platform_user_id: Optional[str] = None,
+        after: Optional[str] = None,
+        before: Optional[str] = None,
         display_name: Optional[str] = None,
         limit: Optional[str] = None,
-        before: Optional[str] = None,
-        after: Optional[str] = None,
+        login_id: Optional[str] = None,
+        platform_user_id: Optional[str] = None,
+        role_id: Optional[str] = None,
+        user_id: Optional[str] = None,
     ) -> AdminSearchUsersV2:
         instance = cls()
         instance.namespace = namespace
         instance.platform_id = platform_id
-        if role_id is not None:
-            instance.role_id = role_id
-        if login_id is not None:
-            instance.login_id = login_id
-        if user_id is not None:
-            instance.user_id = user_id
-        if platform_user_id is not None:
-            instance.platform_user_id = platform_user_id
+        if after is not None:
+            instance.after = after
+        if before is not None:
+            instance.before = before
         if display_name is not None:
             instance.display_name = display_name
         if limit is not None:
             instance.limit = limit
-        if before is not None:
-            instance.before = before
-        if after is not None:
-            instance.after = after
+        if login_id is not None:
+            instance.login_id = login_id
+        if platform_user_id is not None:
+            instance.platform_user_id = platform_user_id
+        if role_id is not None:
+            instance.role_id = role_id
+        if user_id is not None:
+            instance.user_id = user_id
         return instance
 
     @classmethod
@@ -365,26 +365,14 @@ class AdminSearchUsersV2(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "platformId" in dict_ and dict_["platformId"] is not None:
-            instance.platform_id = str(dict_["platformId"])
+        if "after" in dict_ and dict_["after"] is not None:
+            instance.after = str(dict_["after"])
         elif include_empty:
-            instance.platform_id = str()
-        if "roleId" in dict_ and dict_["roleId"] is not None:
-            instance.role_id = str(dict_["roleId"])
+            instance.after = str()
+        if "before" in dict_ and dict_["before"] is not None:
+            instance.before = str(dict_["before"])
         elif include_empty:
-            instance.role_id = str()
-        if "loginId" in dict_ and dict_["loginId"] is not None:
-            instance.login_id = str(dict_["loginId"])
-        elif include_empty:
-            instance.login_id = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
-        if "platformUserId" in dict_ and dict_["platformUserId"] is not None:
-            instance.platform_user_id = str(dict_["platformUserId"])
-        elif include_empty:
-            instance.platform_user_id = str()
+            instance.before = str()
         if "displayName" in dict_ and dict_["displayName"] is not None:
             instance.display_name = str(dict_["displayName"])
         elif include_empty:
@@ -393,29 +381,41 @@ class AdminSearchUsersV2(Operation):
             instance.limit = str(dict_["limit"])
         elif include_empty:
             instance.limit = str()
-        if "before" in dict_ and dict_["before"] is not None:
-            instance.before = str(dict_["before"])
+        if "loginId" in dict_ and dict_["loginId"] is not None:
+            instance.login_id = str(dict_["loginId"])
         elif include_empty:
-            instance.before = str()
-        if "after" in dict_ and dict_["after"] is not None:
-            instance.after = str(dict_["after"])
+            instance.login_id = str()
+        if "platformUserId" in dict_ and dict_["platformUserId"] is not None:
+            instance.platform_user_id = str(dict_["platformUserId"])
         elif include_empty:
-            instance.after = str()
+            instance.platform_user_id = str()
+        if "roleId" in dict_ and dict_["roleId"] is not None:
+            instance.role_id = str(dict_["roleId"])
+        elif include_empty:
+            instance.role_id = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
+        if "platformId" in dict_ and dict_["platformId"] is not None:
+            instance.platform_id = str(dict_["platformId"])
+        elif include_empty:
+            instance.platform_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "platformId": "platform_id",
-            "roleId": "role_id",
-            "loginId": "login_id",
-            "userId": "user_id",
-            "platformUserId": "platform_user_id",
+            "after": "after",
+            "before": "before",
             "displayName": "display_name",
             "limit": "limit",
-            "before": "before",
-            "after": "after",
+            "loginId": "login_id",
+            "platformUserId": "platform_user_id",
+            "roleId": "role_id",
+            "userId": "user_id",
+            "platformId": "platform_id",
         }
 
     # endregion static methods

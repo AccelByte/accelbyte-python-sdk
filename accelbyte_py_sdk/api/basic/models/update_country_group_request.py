@@ -30,26 +30,26 @@ class UpdateCountryGroupRequest(Model):
     """Update country group request (UpdateCountryGroupRequest)
 
     Properties:
-        country_group_name: (countryGroupName) OPTIONAL str
-
         countries: (countries) OPTIONAL List[CountryObject]
+
+        country_group_name: (countryGroupName) OPTIONAL str
     """
 
     # region fields
 
-    country_group_name: str                                                                        # OPTIONAL
     countries: List[CountryObject]                                                                 # OPTIONAL
+    country_group_name: str                                                                        # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_country_group_name(self, value: str) -> UpdateCountryGroupRequest:
-        self.country_group_name = value
-        return self
-
     def with_countries(self, value: List[CountryObject]) -> UpdateCountryGroupRequest:
         self.countries = value
+        return self
+
+    def with_country_group_name(self, value: str) -> UpdateCountryGroupRequest:
+        self.country_group_name = value
         return self
 
     # endregion with_x methods
@@ -58,14 +58,14 @@ class UpdateCountryGroupRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "country_group_name"):
-            result["countryGroupName"] = str(self.country_group_name)
-        elif include_empty:
-            result["countryGroupName"] = str()
         if hasattr(self, "countries"):
             result["countries"] = [i0.to_dict(include_empty=include_empty) for i0 in self.countries]
         elif include_empty:
             result["countries"] = []
+        if hasattr(self, "country_group_name"):
+            result["countryGroupName"] = str(self.country_group_name)
+        elif include_empty:
+            result["countryGroupName"] = str()
         return result
 
     # endregion to methods
@@ -90,21 +90,21 @@ class UpdateCountryGroupRequest(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "countryGroupName" in dict_ and dict_["countryGroupName"] is not None:
-            instance.country_group_name = str(dict_["countryGroupName"])
-        elif include_empty:
-            instance.country_group_name = str()
         if "countries" in dict_ and dict_["countries"] is not None:
             instance.countries = [CountryObject.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["countries"]]
         elif include_empty:
             instance.countries = []
+        if "countryGroupName" in dict_ and dict_["countryGroupName"] is not None:
+            instance.country_group_name = str(dict_["countryGroupName"])
+        elif include_empty:
+            instance.country_group_name = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "countryGroupName": "country_group_name",
             "countries": "countries",
+            "countryGroupName": "country_group_name",
         }
 
     # endregion static methods

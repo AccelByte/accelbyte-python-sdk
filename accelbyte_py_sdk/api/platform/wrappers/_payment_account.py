@@ -26,15 +26,15 @@ from ..operations.payment_account import PublicGetPaymentAccounts
 
 
 @same_doc_as(PublicDeletePaymentAccount)
-def public_delete_payment_account(user_id: str, type_: str, id_: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_delete_payment_account(id_: str, type_: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicDeletePaymentAccount.create(
-        user_id=user_id,
-        type_=type_,
         id_=id_,
+        type_=type_,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

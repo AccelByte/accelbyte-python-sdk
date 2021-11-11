@@ -78,32 +78,32 @@ def get_key_group_dynamic(key_group_id: str, namespace: Optional[str] = None, x_
 
 
 @same_doc_as(ListKeys)
-def list_keys(key_group_id: str, status: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def list_keys(key_group_id: str, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = ListKeys.create(
         key_group_id=key_group_id,
-        status=status,
-        offset=offset,
         limit=limit,
+        offset=offset,
+        status=status,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QueryKeyGroups)
-def query_key_groups(name: Optional[str] = None, tag: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_key_groups(limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, tag: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = QueryKeyGroups.create(
-        name=name,
-        tag=tag,
-        offset=offset,
         limit=limit,
+        name=name,
+        offset=offset,
+        tag=tag,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

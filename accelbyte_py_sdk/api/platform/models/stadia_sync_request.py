@@ -28,40 +28,40 @@ class StadiaSyncRequest(Model):
     """Stadia sync request (StadiaSyncRequest)
 
     Properties:
-        stadia_player_id: (stadiaPlayerId) REQUIRED str
-
         app_id: (appId) REQUIRED str
 
-        region: (region) OPTIONAL str
+        stadia_player_id: (stadiaPlayerId) REQUIRED str
 
         language: (language) OPTIONAL str
+
+        region: (region) OPTIONAL str
     """
 
     # region fields
 
-    stadia_player_id: str                                                                          # REQUIRED
     app_id: str                                                                                    # REQUIRED
-    region: str                                                                                    # OPTIONAL
+    stadia_player_id: str                                                                          # REQUIRED
     language: str                                                                                  # OPTIONAL
+    region: str                                                                                    # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_stadia_player_id(self, value: str) -> StadiaSyncRequest:
-        self.stadia_player_id = value
-        return self
-
     def with_app_id(self, value: str) -> StadiaSyncRequest:
         self.app_id = value
         return self
 
-    def with_region(self, value: str) -> StadiaSyncRequest:
-        self.region = value
+    def with_stadia_player_id(self, value: str) -> StadiaSyncRequest:
+        self.stadia_player_id = value
         return self
 
     def with_language(self, value: str) -> StadiaSyncRequest:
         self.language = value
+        return self
+
+    def with_region(self, value: str) -> StadiaSyncRequest:
+        self.region = value
         return self
 
     # endregion with_x methods
@@ -70,22 +70,22 @@ class StadiaSyncRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "stadia_player_id"):
-            result["stadiaPlayerId"] = str(self.stadia_player_id)
-        elif include_empty:
-            result["stadiaPlayerId"] = str()
         if hasattr(self, "app_id"):
             result["appId"] = str(self.app_id)
         elif include_empty:
             result["appId"] = str()
-        if hasattr(self, "region"):
-            result["region"] = str(self.region)
+        if hasattr(self, "stadia_player_id"):
+            result["stadiaPlayerId"] = str(self.stadia_player_id)
         elif include_empty:
-            result["region"] = str()
+            result["stadiaPlayerId"] = str()
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = str()
+        if hasattr(self, "region"):
+            result["region"] = str(self.region)
+        elif include_empty:
+            result["region"] = str()
         return result
 
     # endregion to methods
@@ -114,31 +114,31 @@ class StadiaSyncRequest(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "stadiaPlayerId" in dict_ and dict_["stadiaPlayerId"] is not None:
-            instance.stadia_player_id = str(dict_["stadiaPlayerId"])
-        elif include_empty:
-            instance.stadia_player_id = str()
         if "appId" in dict_ and dict_["appId"] is not None:
             instance.app_id = str(dict_["appId"])
         elif include_empty:
             instance.app_id = str()
-        if "region" in dict_ and dict_["region"] is not None:
-            instance.region = str(dict_["region"])
+        if "stadiaPlayerId" in dict_ and dict_["stadiaPlayerId"] is not None:
+            instance.stadia_player_id = str(dict_["stadiaPlayerId"])
         elif include_empty:
-            instance.region = str()
+            instance.stadia_player_id = str()
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
             instance.language = str()
+        if "region" in dict_ and dict_["region"] is not None:
+            instance.region = str(dict_["region"])
+        elif include_empty:
+            instance.region = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "stadiaPlayerId": "stadia_player_id",
             "appId": "app_id",
-            "region": "region",
+            "stadiaPlayerId": "stadia_player_id",
             "language": "language",
+            "region": "region",
         }
 
     # endregion static methods

@@ -36,131 +36,131 @@ from ..operations.admin_player_record import ListPlayerRecordHandlerV1
 
 
 @same_doc_as(AdminDeletePlayerPublicRecordHandlerV1)
-def admin_delete_player_public_record_handler_v1(user_id: str, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_delete_player_public_record_handler_v1(key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = AdminDeletePlayerPublicRecordHandlerV1.create(
-        user_id=user_id,
         key=key,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminDeletePlayerRecordHandlerV1)
-def admin_delete_player_record_handler_v1(user_id: str, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_delete_player_record_handler_v1(key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = AdminDeletePlayerRecordHandlerV1.create(
-        user_id=user_id,
         key=key,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetPlayerPublicRecordHandlerV1)
-def admin_get_player_public_record_handler_v1(user_id: str, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_get_player_public_record_handler_v1(key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = AdminGetPlayerPublicRecordHandlerV1.create(
-        user_id=user_id,
         key=key,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetPlayerRecordHandlerV1)
-def admin_get_player_record_handler_v1(user_id: str, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_get_player_record_handler_v1(key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = AdminGetPlayerRecordHandlerV1.create(
-        user_id=user_id,
         key=key,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminPostPlayerPublicRecordHandlerV1)
-def admin_post_player_public_record_handler_v1(body: ModelsPlayerRecordRequest, user_id: str, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_post_player_public_record_handler_v1(body: ModelsPlayerRecordRequest, key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = AdminPostPlayerPublicRecordHandlerV1.create(
         body=body,
-        user_id=user_id,
         key=key,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminPostPlayerRecordHandlerV1)
-def admin_post_player_record_handler_v1(body: ModelsPlayerRecordRequest, user_id: str, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_post_player_record_handler_v1(body: ModelsPlayerRecordRequest, key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = AdminPostPlayerRecordHandlerV1.create(
         body=body,
-        user_id=user_id,
         key=key,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminPutPlayerPublicRecordHandlerV1)
-def admin_put_player_public_record_handler_v1(body: ModelsPlayerRecordRequest, user_id: str, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_put_player_public_record_handler_v1(body: ModelsPlayerRecordRequest, key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = AdminPutPlayerPublicRecordHandlerV1.create(
         body=body,
-        user_id=user_id,
         key=key,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminPutPlayerRecordHandlerV1)
-def admin_put_player_record_handler_v1(body: ModelsPlayerRecordRequest, user_id: str, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_put_player_record_handler_v1(body: ModelsPlayerRecordRequest, key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = AdminPutPlayerRecordHandlerV1.create(
         body=body,
-        user_id=user_id,
         key=key,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ListPlayerRecordHandlerV1)
-def list_player_record_handler_v1(query: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def list_player_record_handler_v1(limit: Optional[int] = None, offset: Optional[int] = None, query: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = ListPlayerRecordHandlerV1.create(
-        query=query,
-        offset=offset,
         limit=limit,
+        offset=offset,
+        query=query,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

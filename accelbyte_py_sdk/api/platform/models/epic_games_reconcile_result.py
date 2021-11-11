@@ -28,8 +28,6 @@ class EpicGamesReconcileResult(Model):
     """Epic games reconcile result (EpicGamesReconcileResult)
 
     Properties:
-        transaction_id: (transactionId) OPTIONAL str
-
         epic_games_item_id: (epicGamesItemId) OPTIONAL str
 
         item_id: (itemId) OPTIONAL str
@@ -37,23 +35,21 @@ class EpicGamesReconcileResult(Model):
         sku: (sku) OPTIONAL str
 
         status: (status) OPTIONAL str
+
+        transaction_id: (transactionId) OPTIONAL str
     """
 
     # region fields
 
-    transaction_id: str                                                                            # OPTIONAL
     epic_games_item_id: str                                                                        # OPTIONAL
     item_id: str                                                                                   # OPTIONAL
     sku: str                                                                                       # OPTIONAL
     status: str                                                                                    # OPTIONAL
+    transaction_id: str                                                                            # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
-
-    def with_transaction_id(self, value: str) -> EpicGamesReconcileResult:
-        self.transaction_id = value
-        return self
 
     def with_epic_games_item_id(self, value: str) -> EpicGamesReconcileResult:
         self.epic_games_item_id = value
@@ -71,16 +67,16 @@ class EpicGamesReconcileResult(Model):
         self.status = value
         return self
 
+    def with_transaction_id(self, value: str) -> EpicGamesReconcileResult:
+        self.transaction_id = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "transaction_id"):
-            result["transactionId"] = str(self.transaction_id)
-        elif include_empty:
-            result["transactionId"] = str()
         if hasattr(self, "epic_games_item_id"):
             result["epicGamesItemId"] = str(self.epic_games_item_id)
         elif include_empty:
@@ -97,6 +93,10 @@ class EpicGamesReconcileResult(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
+        if hasattr(self, "transaction_id"):
+            result["transactionId"] = str(self.transaction_id)
+        elif include_empty:
+            result["transactionId"] = str()
         return result
 
     # endregion to methods
@@ -130,10 +130,6 @@ class EpicGamesReconcileResult(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "transactionId" in dict_ and dict_["transactionId"] is not None:
-            instance.transaction_id = str(dict_["transactionId"])
-        elif include_empty:
-            instance.transaction_id = str()
         if "epicGamesItemId" in dict_ and dict_["epicGamesItemId"] is not None:
             instance.epic_games_item_id = str(dict_["epicGamesItemId"])
         elif include_empty:
@@ -150,16 +146,20 @@ class EpicGamesReconcileResult(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = str()
+        if "transactionId" in dict_ and dict_["transactionId"] is not None:
+            instance.transaction_id = str(dict_["transactionId"])
+        elif include_empty:
+            instance.transaction_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "transactionId": "transaction_id",
             "epicGamesItemId": "epic_games_item_id",
             "itemId": "item_id",
             "sku": "sku",
             "status": "status",
+            "transactionId": "transaction_id",
         }
 
     # endregion static methods

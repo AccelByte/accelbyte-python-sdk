@@ -36,9 +36,9 @@ class FulfillmentResult(Model):
 
         user_id: (userId) REQUIRED str
 
-        entitlement_summaries: (entitlementSummaries) OPTIONAL List[EntitlementSummary]
-
         credit_summaries: (creditSummaries) OPTIONAL List[CreditSummary]
+
+        entitlement_summaries: (entitlementSummaries) OPTIONAL List[EntitlementSummary]
 
         subscription_summaries: (subscriptionSummaries) OPTIONAL List[SubscriptionSummary]
     """
@@ -47,8 +47,8 @@ class FulfillmentResult(Model):
 
     namespace: str                                                                                 # REQUIRED
     user_id: str                                                                                   # REQUIRED
-    entitlement_summaries: List[EntitlementSummary]                                                # OPTIONAL
     credit_summaries: List[CreditSummary]                                                          # OPTIONAL
+    entitlement_summaries: List[EntitlementSummary]                                                # OPTIONAL
     subscription_summaries: List[SubscriptionSummary]                                              # OPTIONAL
 
     # endregion fields
@@ -63,12 +63,12 @@ class FulfillmentResult(Model):
         self.user_id = value
         return self
 
-    def with_entitlement_summaries(self, value: List[EntitlementSummary]) -> FulfillmentResult:
-        self.entitlement_summaries = value
-        return self
-
     def with_credit_summaries(self, value: List[CreditSummary]) -> FulfillmentResult:
         self.credit_summaries = value
+        return self
+
+    def with_entitlement_summaries(self, value: List[EntitlementSummary]) -> FulfillmentResult:
+        self.entitlement_summaries = value
         return self
 
     def with_subscription_summaries(self, value: List[SubscriptionSummary]) -> FulfillmentResult:
@@ -89,14 +89,14 @@ class FulfillmentResult(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "entitlement_summaries"):
-            result["entitlementSummaries"] = [i0.to_dict(include_empty=include_empty) for i0 in self.entitlement_summaries]
-        elif include_empty:
-            result["entitlementSummaries"] = []
         if hasattr(self, "credit_summaries"):
             result["creditSummaries"] = [i0.to_dict(include_empty=include_empty) for i0 in self.credit_summaries]
         elif include_empty:
             result["creditSummaries"] = []
+        if hasattr(self, "entitlement_summaries"):
+            result["entitlementSummaries"] = [i0.to_dict(include_empty=include_empty) for i0 in self.entitlement_summaries]
+        elif include_empty:
+            result["entitlementSummaries"] = []
         if hasattr(self, "subscription_summaries"):
             result["subscriptionSummaries"] = [i0.to_dict(include_empty=include_empty) for i0 in self.subscription_summaries]
         elif include_empty:
@@ -140,14 +140,14 @@ class FulfillmentResult(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
-        if "entitlementSummaries" in dict_ and dict_["entitlementSummaries"] is not None:
-            instance.entitlement_summaries = [EntitlementSummary.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["entitlementSummaries"]]
-        elif include_empty:
-            instance.entitlement_summaries = []
         if "creditSummaries" in dict_ and dict_["creditSummaries"] is not None:
             instance.credit_summaries = [CreditSummary.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["creditSummaries"]]
         elif include_empty:
             instance.credit_summaries = []
+        if "entitlementSummaries" in dict_ and dict_["entitlementSummaries"] is not None:
+            instance.entitlement_summaries = [EntitlementSummary.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["entitlementSummaries"]]
+        elif include_empty:
+            instance.entitlement_summaries = []
         if "subscriptionSummaries" in dict_ and dict_["subscriptionSummaries"] is not None:
             instance.subscription_summaries = [SubscriptionSummary.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["subscriptionSummaries"]]
         elif include_empty:
@@ -159,8 +159,8 @@ class FulfillmentResult(Model):
         return {
             "namespace": "namespace",
             "userId": "user_id",
-            "entitlementSummaries": "entitlement_summaries",
             "creditSummaries": "credit_summaries",
+            "entitlementSummaries": "entitlement_summaries",
             "subscriptionSummaries": "subscription_summaries",
         }
 

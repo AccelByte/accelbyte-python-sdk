@@ -52,9 +52,9 @@ class PublicGetDescendantCategories(Operation):
 
         security: bearer
 
-        namespace: (namespace) REQUIRED str in path
-
         category_path: (categoryPath) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
         language: (language) OPTIONAL str in query
 
@@ -73,8 +73,8 @@ class PublicGetDescendantCategories(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
     category_path: str                                                                             # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
     language: str                                                                                  # OPTIONAL in [query]
     store_id: str                                                                                  # OPTIONAL in [query]
 
@@ -127,8 +127,8 @@ class PublicGetDescendantCategories(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "namespace",
             "category_path",
+            "namespace",
         ]
 
     # endregion get methods
@@ -143,10 +143,10 @@ class PublicGetDescendantCategories(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "category_path"):
             result["categoryPath"] = self.category_path
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     def get_query_params(self) -> dict:
@@ -162,9 +162,9 @@ class PublicGetDescendantCategories(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "category_path") or self.category_path is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         return True
 
@@ -172,12 +172,12 @@ class PublicGetDescendantCategories(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> PublicGetDescendantCategories:
-        self.namespace = value
-        return self
-
     def with_category_path(self, value: str) -> PublicGetDescendantCategories:
         self.category_path = value
+        return self
+
+    def with_namespace(self, value: str) -> PublicGetDescendantCategories:
+        self.namespace = value
         return self
 
     def with_language(self, value: str) -> PublicGetDescendantCategories:
@@ -194,14 +194,14 @@ class PublicGetDescendantCategories(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "category_path") and self.category_path:
             result["categoryPath"] = str(self.category_path)
         elif include_empty:
             result["categoryPath"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         if hasattr(self, "language") and self.language:
             result["language"] = str(self.language)
         elif include_empty:
@@ -236,14 +236,14 @@ class PublicGetDescendantCategories(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
         category_path: str,
+        namespace: str,
         language: Optional[str] = None,
         store_id: Optional[str] = None,
     ) -> PublicGetDescendantCategories:
         instance = cls()
-        instance.namespace = namespace
         instance.category_path = category_path
+        instance.namespace = namespace
         if language is not None:
             instance.language = language
         if store_id is not None:
@@ -253,14 +253,14 @@ class PublicGetDescendantCategories(Operation):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PublicGetDescendantCategories:
         instance = cls()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "categoryPath" in dict_ and dict_["categoryPath"] is not None:
             instance.category_path = str(dict_["categoryPath"])
         elif include_empty:
             instance.category_path = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
@@ -274,8 +274,8 @@ class PublicGetDescendantCategories(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
             "categoryPath": "category_path",
+            "namespace": "namespace",
             "language": "language",
             "storeId": "store_id",
         }

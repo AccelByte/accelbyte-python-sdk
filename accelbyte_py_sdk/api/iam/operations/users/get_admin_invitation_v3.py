@@ -48,9 +48,9 @@ class GetAdminInvitationV3(Operation):
 
         security: bearer
 
-        namespace: (namespace) REQUIRED str in path
-
         invitation_id: (invitationId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
     Responses:
         200: OK - ModelAdminInvitationV3 (OK)
@@ -69,8 +69,8 @@ class GetAdminInvitationV3(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
     invitation_id: str                                                                             # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -118,8 +118,8 @@ class GetAdminInvitationV3(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "namespace",
             "invitation_id",
+            "namespace",
         ]
 
     # endregion get methods
@@ -133,10 +133,10 @@ class GetAdminInvitationV3(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "invitation_id"):
             result["invitationId"] = self.invitation_id
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     # endregion get_x_params methods
@@ -144,9 +144,9 @@ class GetAdminInvitationV3(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "invitation_id") or self.invitation_id is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         return True
 
@@ -154,12 +154,12 @@ class GetAdminInvitationV3(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> GetAdminInvitationV3:
-        self.namespace = value
-        return self
-
     def with_invitation_id(self, value: str) -> GetAdminInvitationV3:
         self.invitation_id = value
+        return self
+
+    def with_namespace(self, value: str) -> GetAdminInvitationV3:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -168,14 +168,14 @@ class GetAdminInvitationV3(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "invitation_id") and self.invitation_id:
             result["invitationId"] = str(self.invitation_id)
         elif include_empty:
             result["invitationId"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         return result
 
     # endregion to methods
@@ -210,32 +210,32 @@ class GetAdminInvitationV3(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
         invitation_id: str,
+        namespace: str,
     ) -> GetAdminInvitationV3:
         instance = cls()
-        instance.namespace = namespace
         instance.invitation_id = invitation_id
+        instance.namespace = namespace
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> GetAdminInvitationV3:
         instance = cls()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "invitationId" in dict_ and dict_["invitationId"] is not None:
             instance.invitation_id = str(dict_["invitationId"])
         elif include_empty:
             instance.invitation_id = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
             "invitationId": "invitation_id",
+            "namespace": "namespace",
         }
 
     # endregion static methods

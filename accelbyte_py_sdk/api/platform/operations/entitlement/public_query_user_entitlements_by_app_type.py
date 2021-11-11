@@ -55,11 +55,11 @@ class PublicQueryUserEntitlementsByAppType(Operation):
 
         user_id: (userId) REQUIRED str in path
 
-        app_type: (appType) REQUIRED str in query
+        limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
-        limit: (limit) OPTIONAL int in query
+        app_type: (appType) REQUIRED str in query
 
     Responses:
         200: OK - AppEntitlementPagingSlicedResult (successful operation)
@@ -76,9 +76,9 @@ class PublicQueryUserEntitlementsByAppType(Operation):
 
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
-    app_type: str                                                                                  # REQUIRED in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
+    app_type: str                                                                                  # REQUIRED in [query]
 
     # endregion fields
 
@@ -154,12 +154,12 @@ class PublicQueryUserEntitlementsByAppType(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "app_type"):
-            result["appType"] = self.app_type
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
+        if hasattr(self, "app_type"):
+            result["appType"] = self.app_type
         return result
 
     # endregion get_x_params methods
@@ -187,16 +187,16 @@ class PublicQueryUserEntitlementsByAppType(Operation):
         self.user_id = value
         return self
 
-    def with_app_type(self, value: str) -> PublicQueryUserEntitlementsByAppType:
-        self.app_type = value
+    def with_limit(self, value: int) -> PublicQueryUserEntitlementsByAppType:
+        self.limit = value
         return self
 
     def with_offset(self, value: int) -> PublicQueryUserEntitlementsByAppType:
         self.offset = value
         return self
 
-    def with_limit(self, value: int) -> PublicQueryUserEntitlementsByAppType:
-        self.limit = value
+    def with_app_type(self, value: str) -> PublicQueryUserEntitlementsByAppType:
+        self.app_type = value
         return self
 
     # endregion with_x methods
@@ -213,18 +213,18 @@ class PublicQueryUserEntitlementsByAppType(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "app_type") and self.app_type:
-            result["appType"] = str(self.app_type)
-        elif include_empty:
-            result["appType"] = str()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
+        if hasattr(self, "app_type") and self.app_type:
+            result["appType"] = str(self.app_type)
+        elif include_empty:
+            result["appType"] = str()
         return result
 
     # endregion to methods
@@ -254,17 +254,17 @@ class PublicQueryUserEntitlementsByAppType(Operation):
         namespace: str,
         user_id: str,
         app_type: str,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
     ) -> PublicQueryUserEntitlementsByAppType:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
         instance.app_type = app_type
-        if offset is not None:
-            instance.offset = offset
         if limit is not None:
             instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
         return instance
 
     @classmethod
@@ -278,18 +278,18 @@ class PublicQueryUserEntitlementsByAppType(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
-        if "appType" in dict_ and dict_["appType"] is not None:
-            instance.app_type = str(dict_["appType"])
-        elif include_empty:
-            instance.app_type = str()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
+        if "appType" in dict_ and dict_["appType"] is not None:
+            instance.app_type = str(dict_["appType"])
+        elif include_empty:
+            instance.app_type = str()
         return instance
 
     @staticmethod
@@ -297,9 +297,9 @@ class PublicQueryUserEntitlementsByAppType(Operation):
         return {
             "namespace": "namespace",
             "userId": "user_id",
-            "appType": "app_type",
-            "offset": "offset",
             "limit": "limit",
+            "offset": "offset",
+            "appType": "app_type",
         }
 
     # endregion static methods

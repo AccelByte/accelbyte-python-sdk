@@ -51,11 +51,11 @@ class ListSession(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        region: (region) OPTIONAL str in query
+        count: (count) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
-        count: (count) OPTIONAL int in query
+        region: (region) OPTIONAL str in query
 
         with_server: (withServer) OPTIONAL bool in query
 
@@ -77,9 +77,9 @@ class ListSession(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    region: str                                                                                    # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
     count: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
+    region: str                                                                                    # OPTIONAL in [query]
     with_server: bool                                                                              # OPTIONAL in [query]
 
     # endregion fields
@@ -152,12 +152,12 @@ class ListSession(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "region"):
-            result["region"] = self.region
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "count"):
             result["count"] = self.count
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
+        if hasattr(self, "region"):
+            result["region"] = self.region
         if hasattr(self, "with_server"):
             result["withServer"] = self.with_server
         return result
@@ -179,16 +179,16 @@ class ListSession(Operation):
         self.namespace = value
         return self
 
-    def with_region(self, value: str) -> ListSession:
-        self.region = value
+    def with_count(self, value: int) -> ListSession:
+        self.count = value
         return self
 
     def with_offset(self, value: int) -> ListSession:
         self.offset = value
         return self
 
-    def with_count(self, value: int) -> ListSession:
-        self.count = value
+    def with_region(self, value: str) -> ListSession:
+        self.region = value
         return self
 
     def with_with_server(self, value: bool) -> ListSession:
@@ -205,18 +205,18 @@ class ListSession(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "region") and self.region:
-            result["region"] = str(self.region)
-        elif include_empty:
-            result["region"] = str()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
         if hasattr(self, "count") and self.count:
             result["count"] = int(self.count)
         elif include_empty:
             result["count"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
+        if hasattr(self, "region") and self.region:
+            result["region"] = str(self.region)
+        elif include_empty:
+            result["region"] = str()
         if hasattr(self, "with_server") and self.with_server:
             result["withServer"] = bool(self.with_server)
         elif include_empty:
@@ -256,19 +256,19 @@ class ListSession(Operation):
     def create(
         cls,
         namespace: str,
-        region: Optional[str] = None,
-        offset: Optional[int] = None,
         count: Optional[int] = None,
+        offset: Optional[int] = None,
+        region: Optional[str] = None,
         with_server: Optional[bool] = None,
     ) -> ListSession:
         instance = cls()
         instance.namespace = namespace
-        if region is not None:
-            instance.region = region
-        if offset is not None:
-            instance.offset = offset
         if count is not None:
             instance.count = count
+        if offset is not None:
+            instance.offset = offset
+        if region is not None:
+            instance.region = region
         if with_server is not None:
             instance.with_server = with_server
         return instance
@@ -280,18 +280,18 @@ class ListSession(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "region" in dict_ and dict_["region"] is not None:
-            instance.region = str(dict_["region"])
-        elif include_empty:
-            instance.region = str()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
         if "count" in dict_ and dict_["count"] is not None:
             instance.count = int(dict_["count"])
         elif include_empty:
             instance.count = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
+        if "region" in dict_ and dict_["region"] is not None:
+            instance.region = str(dict_["region"])
+        elif include_empty:
+            instance.region = str()
         if "withServer" in dict_ and dict_["withServer"] is not None:
             instance.with_server = bool(dict_["withServer"])
         elif include_empty:
@@ -302,9 +302,9 @@ class ListSession(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "region": "region",
-            "offset": "offset",
             "count": "count",
+            "offset": "offset",
+            "region": "region",
             "withServer": "with_server",
         }
 

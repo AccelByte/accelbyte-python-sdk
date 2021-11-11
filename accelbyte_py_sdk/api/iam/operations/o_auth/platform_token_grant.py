@@ -118,11 +118,11 @@ class PlatformTokenGrant(Operation):
 
         device_id: (Device-Id) OPTIONAL str in header
 
-        platform_token: (platform_token) OPTIONAL str in form_data
-
         device_id: (device_id) OPTIONAL str in form_data
 
         namespace: (namespace) OPTIONAL str in form_data
+
+        platform_token: (platform_token) OPTIONAL str in form_data
 
         platform_id: (platformId) REQUIRED str in path
 
@@ -144,8 +144,8 @@ class PlatformTokenGrant(Operation):
     _location_query: str = None
 
     device_id: str                                                                                 # OPTIONAL in [header, form_data]
-    platform_token: str                                                                            # OPTIONAL in [form_data]
     namespace: str                                                                                 # OPTIONAL in [form_data]
+    platform_token: str                                                                            # OPTIONAL in [form_data]
     platform_id: str                                                                               # REQUIRED in [path]
 
     # endregion fields
@@ -216,12 +216,12 @@ class PlatformTokenGrant(Operation):
 
     def get_form_data_params(self) -> dict:
         result = {}
-        if hasattr(self, "platform_token"):
-            result["platform_token"] = self.platform_token
         if hasattr(self, "device_id"):
             result["device_id"] = self.device_id
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
+        if hasattr(self, "platform_token"):
+            result["platform_token"] = self.platform_token
         return result
 
     def get_path_params(self) -> dict:
@@ -247,12 +247,12 @@ class PlatformTokenGrant(Operation):
         self.device_id = value
         return self
 
-    def with_platform_token(self, value: str) -> PlatformTokenGrant:
-        self.platform_token = value
-        return self
-
     def with_namespace(self, value: str) -> PlatformTokenGrant:
         self.namespace = value
+        return self
+
+    def with_platform_token(self, value: str) -> PlatformTokenGrant:
+        self.platform_token = value
         return self
 
     def with_platform_id(self, value: str) -> PlatformTokenGrant:
@@ -269,14 +269,14 @@ class PlatformTokenGrant(Operation):
             result["Device-Id"] = str(self.device_id)
         elif include_empty:
             result["Device-Id"] = str()
-        if hasattr(self, "platform_token") and self.platform_token:
-            result["platform_token"] = str(self.platform_token)
-        elif include_empty:
-            result["platform_token"] = str()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
+        if hasattr(self, "platform_token") and self.platform_token:
+            result["platform_token"] = str(self.platform_token)
+        elif include_empty:
+            result["platform_token"] = str()
         if hasattr(self, "platform_id") and self.platform_id:
             result["platformId"] = str(self.platform_id)
         elif include_empty:
@@ -317,17 +317,17 @@ class PlatformTokenGrant(Operation):
         cls,
         platform_id: str,
         device_id: Optional[str] = None,
-        platform_token: Optional[str] = None,
         namespace: Optional[str] = None,
+        platform_token: Optional[str] = None,
     ) -> PlatformTokenGrant:
         instance = cls()
         instance.platform_id = platform_id
         if device_id is not None:
             instance.device_id = device_id
-        if platform_token is not None:
-            instance.platform_token = platform_token
         if namespace is not None:
             instance.namespace = namespace
+        if platform_token is not None:
+            instance.platform_token = platform_token
         return instance
 
     @classmethod
@@ -337,14 +337,14 @@ class PlatformTokenGrant(Operation):
             instance.device_id = str(dict_["Device-Id"])
         elif include_empty:
             instance.device_id = str()
-        if "platform_token" in dict_ and dict_["platform_token"] is not None:
-            instance.platform_token = str(dict_["platform_token"])
-        elif include_empty:
-            instance.platform_token = str()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
+        if "platform_token" in dict_ and dict_["platform_token"] is not None:
+            instance.platform_token = str(dict_["platform_token"])
+        elif include_empty:
+            instance.platform_token = str()
         if "platformId" in dict_ and dict_["platformId"] is not None:
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
@@ -355,9 +355,9 @@ class PlatformTokenGrant(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "Device-Id": "device_id",
-            "platform_token": "platform_token",
             "device_id": "device_id",
             "namespace": "namespace",
+            "platform_token": "platform_token",
             "platformId": "platform_id",
         }
 

@@ -28,9 +28,9 @@ class BlockPlayerRequest(WebSocketMessage):
 
     # region fields
 
+    block_user_id: str
     id_: str
     namespace: str
-    block_user_id: str
 
     # endregion fields
 
@@ -40,12 +40,12 @@ class BlockPlayerRequest(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {BlockPlayerRequest.get_type()}"]
+        if hasattr(self, "block_user_id") and self.block_user_id:
+            wsm.append(f"blockUserId: {self.block_user_id}")
         id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
         wsm.append(f"id: {id_}")
         if hasattr(self, "namespace") and self.namespace:
             wsm.append(f"namespace: {self.namespace}")
-        if hasattr(self, "block_user_id") and self.block_user_id:
-            wsm.append(f"blockUserId: {self.block_user_id}")
         return "\n".join(wsm)
 
     # endregion methods
@@ -69,11 +69,11 @@ class BlockPlayerRequest(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if (not is_strict and name.casefold() == "namespace".casefold()) or (name == "namespace"):
-                instance.namespace = value
-                continue
             if (not is_strict and name.casefold() == "blockUserId".casefold()) or (name == "blockUserId"):
                 instance.block_user_id = value
+                continue
+            if (not is_strict and name.casefold() == "namespace".casefold()) or (name == "namespace"):
+                instance.namespace = value
                 continue
             if is_strict:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldTypeNotSupported)
@@ -86,9 +86,9 @@ class BlockPlayerRequest(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "blockUserId": "block_user_id",
             "id": "id_",
             "namespace": "namespace",
-            "blockUserId": "block_user_id",
         }
 
     # endregion static methods

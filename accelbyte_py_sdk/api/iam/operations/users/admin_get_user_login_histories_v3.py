@@ -58,9 +58,9 @@ class AdminGetUserLoginHistoriesV3(Operation):
 
         user_id: (userId) REQUIRED str in path
 
-        before: (before) OPTIONAL float in query
-
         after: (after) OPTIONAL float in query
+
+        before: (before) OPTIONAL float in query
 
         limit: (limit) OPTIONAL float in query
 
@@ -85,8 +85,8 @@ class AdminGetUserLoginHistoriesV3(Operation):
 
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
-    before: float                                                                                  # OPTIONAL in [query]
     after: float                                                                                   # OPTIONAL in [query]
+    before: float                                                                                  # OPTIONAL in [query]
     limit: float                                                                                   # OPTIONAL in [query]
 
     # endregion fields
@@ -162,10 +162,10 @@ class AdminGetUserLoginHistoriesV3(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "before"):
-            result["before"] = self.before
         if hasattr(self, "after"):
             result["after"] = self.after
+        if hasattr(self, "before"):
+            result["before"] = self.before
         if hasattr(self, "limit"):
             result["limit"] = self.limit
         return result
@@ -193,12 +193,12 @@ class AdminGetUserLoginHistoriesV3(Operation):
         self.user_id = value
         return self
 
-    def with_before(self, value: float) -> AdminGetUserLoginHistoriesV3:
-        self.before = value
-        return self
-
     def with_after(self, value: float) -> AdminGetUserLoginHistoriesV3:
         self.after = value
+        return self
+
+    def with_before(self, value: float) -> AdminGetUserLoginHistoriesV3:
+        self.before = value
         return self
 
     def with_limit(self, value: float) -> AdminGetUserLoginHistoriesV3:
@@ -219,14 +219,14 @@ class AdminGetUserLoginHistoriesV3(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "before") and self.before:
-            result["before"] = float(self.before)
-        elif include_empty:
-            result["before"] = float()
         if hasattr(self, "after") and self.after:
             result["after"] = float(self.after)
         elif include_empty:
             result["after"] = float()
+        if hasattr(self, "before") and self.before:
+            result["before"] = float(self.before)
+        elif include_empty:
+            result["before"] = float()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = float(self.limit)
         elif include_empty:
@@ -271,17 +271,17 @@ class AdminGetUserLoginHistoriesV3(Operation):
         cls,
         namespace: str,
         user_id: str,
-        before: Optional[float] = None,
         after: Optional[float] = None,
+        before: Optional[float] = None,
         limit: Optional[float] = None,
     ) -> AdminGetUserLoginHistoriesV3:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
-        if before is not None:
-            instance.before = before
         if after is not None:
             instance.after = after
+        if before is not None:
+            instance.before = before
         if limit is not None:
             instance.limit = limit
         return instance
@@ -297,14 +297,14 @@ class AdminGetUserLoginHistoriesV3(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
-        if "before" in dict_ and dict_["before"] is not None:
-            instance.before = float(dict_["before"])
-        elif include_empty:
-            instance.before = float()
         if "after" in dict_ and dict_["after"] is not None:
             instance.after = float(dict_["after"])
         elif include_empty:
             instance.after = float()
+        if "before" in dict_ and dict_["before"] is not None:
+            instance.before = float(dict_["before"])
+        elif include_empty:
+            instance.before = float()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = float(dict_["limit"])
         elif include_empty:
@@ -316,8 +316,8 @@ class AdminGetUserLoginHistoriesV3(Operation):
         return {
             "namespace": "namespace",
             "userId": "user_id",
-            "before": "before",
             "after": "after",
+            "before": "before",
             "limit": "limit",
         }
 

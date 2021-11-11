@@ -69,28 +69,28 @@ def count_of_purchased_item(user_id: str, item_id: str, namespace: Optional[str]
 
 
 @same_doc_as(DownloadUserOrderReceipt)
-def download_user_order_receipt(user_id: str, order_no: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def download_user_order_receipt(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = DownloadUserOrderReceipt.create(
-        user_id=user_id,
         order_no=order_no,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(FulfillUserOrder)
-def fulfill_user_order(user_id: str, order_no: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def fulfill_user_order(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = FulfillUserOrder.create(
-        user_id=user_id,
         order_no=order_no,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -122,56 +122,56 @@ def get_order_statistics(namespace: Optional[str] = None, x_additional_headers: 
 
 
 @same_doc_as(GetUserOrder)
-def get_user_order(user_id: str, order_no: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_user_order(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetUserOrder.create(
-        user_id=user_id,
         order_no=order_no,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserOrderGrant)
-def get_user_order_grant(user_id: str, order_no: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_user_order_grant(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetUserOrderGrant.create(
-        user_id=user_id,
         order_no=order_no,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserOrderHistories)
-def get_user_order_histories(user_id: str, order_no: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_user_order_histories(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetUserOrderHistories.create(
-        user_id=user_id,
         order_no=order_no,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ProcessUserOrderNotification)
-def process_user_order_notification(user_id: str, order_no: str, body: Optional[TradeNotification] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def process_user_order_notification(order_no: str, user_id: str, body: Optional[TradeNotification] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = ProcessUserOrderNotification.create(
-        user_id=user_id,
         order_no=order_no,
+        user_id=user_id,
         body=body,
         namespace=namespace,
     )
@@ -179,14 +179,14 @@ def process_user_order_notification(user_id: str, order_no: str, body: Optional[
 
 
 @same_doc_as(PublicCancelUserOrder)
-def public_cancel_user_order(user_id: str, order_no: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_cancel_user_order(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicCancelUserOrder.create(
-        user_id=user_id,
         order_no=order_no,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -207,49 +207,49 @@ def public_create_user_order(user_id: str, body: Optional[OrderCreate] = None, n
 
 
 @same_doc_as(PublicDownloadUserOrderReceipt)
-def public_download_user_order_receipt(user_id: str, order_no: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_download_user_order_receipt(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicDownloadUserOrderReceipt.create(
-        user_id=user_id,
         order_no=order_no,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetUserOrder)
-def public_get_user_order(user_id: str, order_no: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_get_user_order(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicGetUserOrder.create(
-        user_id=user_id,
         order_no=order_no,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetUserOrderHistories)
-def public_get_user_order_histories(user_id: str, order_no: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_get_user_order_histories(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicGetUserOrderHistories.create(
-        user_id=user_id,
         order_no=order_no,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicQueryUserOrders)
-def public_query_user_orders(user_id: str, item_id: Optional[str] = None, status: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_query_user_orders(user_id: str, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -257,28 +257,28 @@ def public_query_user_orders(user_id: str, item_id: Optional[str] = None, status
     request = PublicQueryUserOrders.create(
         user_id=user_id,
         item_id=item_id,
-        status=status,
-        offset=offset,
         limit=limit,
+        offset=offset,
+        status=status,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QueryOrders)
-def query_orders(status: Optional[str] = None, order_nos: Optional[List[str]] = None, start_time: Optional[str] = None, end_time: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, sort_by: Optional[str] = None, with_total: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_orders(end_time: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, order_nos: Optional[List[str]] = None, sort_by: Optional[str] = None, start_time: Optional[str] = None, status: Optional[str] = None, with_total: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = QueryOrders.create(
-        status=status,
-        order_nos=order_nos,
-        start_time=start_time,
         end_time=end_time,
-        offset=offset,
         limit=limit,
+        offset=offset,
+        order_nos=order_nos,
         sort_by=sort_by,
+        start_time=start_time,
+        status=status,
         with_total=with_total,
         namespace=namespace,
     )
@@ -286,17 +286,17 @@ def query_orders(status: Optional[str] = None, order_nos: Optional[List[str]] = 
 
 
 @same_doc_as(QueryUserOrders)
-def query_user_orders(user_id: str, status: Optional[str] = None, item_id: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_user_orders(user_id: str, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = QueryUserOrders.create(
         user_id=user_id,
-        status=status,
         item_id=item_id,
-        offset=offset,
         limit=limit,
+        offset=offset,
+        status=status,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -317,14 +317,14 @@ def refund_order(order_no: str, body: Optional[OrderRefundCreate] = None, namesp
 
 
 @same_doc_as(UpdateUserOrderStatus)
-def update_user_order_status(user_id: str, order_no: str, body: Optional[OrderUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def update_user_order_status(order_no: str, user_id: str, body: Optional[OrderUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = UpdateUserOrderStatus.create(
-        user_id=user_id,
         order_no=order_no,
+        user_id=user_id,
         body=body,
         namespace=namespace,
     )

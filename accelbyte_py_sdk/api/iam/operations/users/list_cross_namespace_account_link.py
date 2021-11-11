@@ -55,9 +55,9 @@ class ListCrossNamespaceAccountLink(Operation):
 
         security: bearer
 
-        linking_token: (linkingToken) REQUIRED str in form_data
-
         platform_id: (platformId) OPTIONAL str in form_data
+
+        linking_token: (linkingToken) REQUIRED str in form_data
 
         namespace: (namespace) REQUIRED str in path
 
@@ -84,8 +84,8 @@ class ListCrossNamespaceAccountLink(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    linking_token: str                                                                             # REQUIRED in [form_data]
     platform_id: str                                                                               # OPTIONAL in [form_data]
+    linking_token: str                                                                             # REQUIRED in [form_data]
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
 
@@ -152,10 +152,10 @@ class ListCrossNamespaceAccountLink(Operation):
 
     def get_form_data_params(self) -> dict:
         result = {}
-        if hasattr(self, "linking_token"):
-            result["linkingToken"] = self.linking_token
         if hasattr(self, "platform_id"):
             result["platformId"] = self.platform_id
+        if hasattr(self, "linking_token"):
+            result["linkingToken"] = self.linking_token
         return result
 
     def get_path_params(self) -> dict:
@@ -183,12 +183,12 @@ class ListCrossNamespaceAccountLink(Operation):
 
     # region with_x methods
 
-    def with_linking_token(self, value: str) -> ListCrossNamespaceAccountLink:
-        self.linking_token = value
-        return self
-
     def with_platform_id(self, value: str) -> ListCrossNamespaceAccountLink:
         self.platform_id = value
+        return self
+
+    def with_linking_token(self, value: str) -> ListCrossNamespaceAccountLink:
+        self.linking_token = value
         return self
 
     def with_namespace(self, value: str) -> ListCrossNamespaceAccountLink:
@@ -205,14 +205,14 @@ class ListCrossNamespaceAccountLink(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "linking_token") and self.linking_token:
-            result["linkingToken"] = str(self.linking_token)
-        elif include_empty:
-            result["linkingToken"] = str()
         if hasattr(self, "platform_id") and self.platform_id:
             result["platformId"] = str(self.platform_id)
         elif include_empty:
             result["platformId"] = str()
+        if hasattr(self, "linking_token") and self.linking_token:
+            result["linkingToken"] = str(self.linking_token)
+        elif include_empty:
+            result["linkingToken"] = str()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -279,14 +279,14 @@ class ListCrossNamespaceAccountLink(Operation):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ListCrossNamespaceAccountLink:
         instance = cls()
-        if "linkingToken" in dict_ and dict_["linkingToken"] is not None:
-            instance.linking_token = str(dict_["linkingToken"])
-        elif include_empty:
-            instance.linking_token = str()
         if "platformId" in dict_ and dict_["platformId"] is not None:
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
             instance.platform_id = str()
+        if "linkingToken" in dict_ and dict_["linkingToken"] is not None:
+            instance.linking_token = str(dict_["linkingToken"])
+        elif include_empty:
+            instance.linking_token = str()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -300,8 +300,8 @@ class ListCrossNamespaceAccountLink(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "linkingToken": "linking_token",
             "platformId": "platform_id",
+            "linkingToken": "linking_token",
             "namespace": "namespace",
             "userId": "user_id",
         }

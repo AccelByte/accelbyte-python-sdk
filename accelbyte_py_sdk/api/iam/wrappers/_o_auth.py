@@ -64,27 +64,27 @@ def get_revocation_list(x_additional_headers: Optional[Dict[str, str]] = None):
 
 
 @same_doc_as(PlatformTokenGrant)
-def platform_token_grant(platform_id: str, device_id: Optional[str] = None, platform_token: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def platform_token_grant(platform_id: str, device_id: Optional[str] = None, namespace: Optional[str] = None, platform_token: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = PlatformTokenGrant.create(
         platform_id=platform_id,
         device_id=device_id,
-        platform_token=platform_token,
         namespace=namespace,
+        platform_token=platform_token,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @deprecated
 @same_doc_as(PlatformTokenRequestHandler)
-def platform_token_request_handler(platform_id: str, platform_token: Optional[str] = None, device_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def platform_token_request_handler(platform_id: str, device_id: Optional[str] = None, platform_token: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PlatformTokenRequestHandler.create(
         platform_id=platform_id,
-        platform_token=platform_token,
         device_id=device_id,
+        platform_token=platform_token,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -122,17 +122,17 @@ def revoke_user(user_id: str, namespace: Optional[str] = None, x_additional_head
 
 
 @same_doc_as(TokenGrant)
-def token_grant(grant_type: str, device_id: Optional[str] = None, username: Optional[str] = None, password: Optional[str] = None, refresh_token: Optional[str] = None, code: Optional[str] = None, redirect_uri: Optional[str] = None, namespace: Optional[str] = None, extend_exp: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def token_grant(grant_type: str, device_id: Optional[str] = None, code: Optional[str] = None, extend_exp: Optional[bool] = None, namespace: Optional[str] = None, password: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, username: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = TokenGrant.create(
         grant_type=grant_type,
         device_id=device_id,
-        username=username,
-        password=password,
-        refresh_token=refresh_token,
         code=code,
-        redirect_uri=redirect_uri,
-        namespace=namespace,
         extend_exp=extend_exp,
+        namespace=namespace,
+        password=password,
+        redirect_uri=redirect_uri,
+        refresh_token=refresh_token,
+        username=username,
     )
     return run_request(request, additional_headers=x_additional_headers)
 

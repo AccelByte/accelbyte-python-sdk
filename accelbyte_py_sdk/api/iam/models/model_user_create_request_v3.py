@@ -30,10 +30,6 @@ class ModelUserCreateRequestV3(Model):
     """Model user create request V3 (model.UserCreateRequestV3)
 
     Properties:
-        password_md5_sum: (PasswordMD5Sum) OPTIONAL str
-
-        accepted_policies: (acceptedPolicies) OPTIONAL List[LegalAcceptedPoliciesRequest]
-
         auth_type: (authType) REQUIRED str
 
         country: (country) REQUIRED str
@@ -45,30 +41,26 @@ class ModelUserCreateRequestV3(Model):
         email_address: (emailAddress) REQUIRED str
 
         password: (password) REQUIRED str
+
+        accepted_policies: (acceptedPolicies) OPTIONAL List[LegalAcceptedPoliciesRequest]
+
+        password_md5_sum: (PasswordMD5Sum) OPTIONAL str
     """
 
     # region fields
 
-    password_md5_sum: str                                                                          # OPTIONAL
-    accepted_policies: List[LegalAcceptedPoliciesRequest]                                          # OPTIONAL
     auth_type: str                                                                                 # REQUIRED
     country: str                                                                                   # REQUIRED
     date_of_birth: str                                                                             # REQUIRED
     display_name: str                                                                              # REQUIRED
     email_address: str                                                                             # REQUIRED
     password: str                                                                                  # REQUIRED
+    accepted_policies: List[LegalAcceptedPoliciesRequest]                                          # OPTIONAL
+    password_md5_sum: str                                                                          # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
-
-    def with_password_md5_sum(self, value: str) -> ModelUserCreateRequestV3:
-        self.password_md5_sum = value
-        return self
-
-    def with_accepted_policies(self, value: List[LegalAcceptedPoliciesRequest]) -> ModelUserCreateRequestV3:
-        self.accepted_policies = value
-        return self
 
     def with_auth_type(self, value: str) -> ModelUserCreateRequestV3:
         self.auth_type = value
@@ -94,20 +86,20 @@ class ModelUserCreateRequestV3(Model):
         self.password = value
         return self
 
+    def with_accepted_policies(self, value: List[LegalAcceptedPoliciesRequest]) -> ModelUserCreateRequestV3:
+        self.accepted_policies = value
+        return self
+
+    def with_password_md5_sum(self, value: str) -> ModelUserCreateRequestV3:
+        self.password_md5_sum = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "password_md5_sum"):
-            result["PasswordMD5Sum"] = str(self.password_md5_sum)
-        elif include_empty:
-            result["PasswordMD5Sum"] = str()
-        if hasattr(self, "accepted_policies"):
-            result["acceptedPolicies"] = [i0.to_dict(include_empty=include_empty) for i0 in self.accepted_policies]
-        elif include_empty:
-            result["acceptedPolicies"] = []
         if hasattr(self, "auth_type"):
             result["authType"] = str(self.auth_type)
         elif include_empty:
@@ -132,6 +124,14 @@ class ModelUserCreateRequestV3(Model):
             result["password"] = str(self.password)
         elif include_empty:
             result["password"] = str()
+        if hasattr(self, "accepted_policies"):
+            result["acceptedPolicies"] = [i0.to_dict(include_empty=include_empty) for i0 in self.accepted_policies]
+        elif include_empty:
+            result["acceptedPolicies"] = []
+        if hasattr(self, "password_md5_sum"):
+            result["PasswordMD5Sum"] = str(self.password_md5_sum)
+        elif include_empty:
+            result["PasswordMD5Sum"] = str()
         return result
 
     # endregion to methods
@@ -168,14 +168,6 @@ class ModelUserCreateRequestV3(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "PasswordMD5Sum" in dict_ and dict_["PasswordMD5Sum"] is not None:
-            instance.password_md5_sum = str(dict_["PasswordMD5Sum"])
-        elif include_empty:
-            instance.password_md5_sum = str()
-        if "acceptedPolicies" in dict_ and dict_["acceptedPolicies"] is not None:
-            instance.accepted_policies = [LegalAcceptedPoliciesRequest.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["acceptedPolicies"]]
-        elif include_empty:
-            instance.accepted_policies = []
         if "authType" in dict_ and dict_["authType"] is not None:
             instance.auth_type = str(dict_["authType"])
         elif include_empty:
@@ -200,19 +192,27 @@ class ModelUserCreateRequestV3(Model):
             instance.password = str(dict_["password"])
         elif include_empty:
             instance.password = str()
+        if "acceptedPolicies" in dict_ and dict_["acceptedPolicies"] is not None:
+            instance.accepted_policies = [LegalAcceptedPoliciesRequest.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["acceptedPolicies"]]
+        elif include_empty:
+            instance.accepted_policies = []
+        if "PasswordMD5Sum" in dict_ and dict_["PasswordMD5Sum"] is not None:
+            instance.password_md5_sum = str(dict_["PasswordMD5Sum"])
+        elif include_empty:
+            instance.password_md5_sum = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "PasswordMD5Sum": "password_md5_sum",
-            "acceptedPolicies": "accepted_policies",
             "authType": "auth_type",
             "country": "country",
             "dateOfBirth": "date_of_birth",
             "displayName": "display_name",
             "emailAddress": "email_address",
             "password": "password",
+            "acceptedPolicies": "accepted_policies",
+            "PasswordMD5Sum": "password_md5_sum",
         }
 
     # endregion static methods

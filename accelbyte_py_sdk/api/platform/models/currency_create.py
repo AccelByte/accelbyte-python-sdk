@@ -30,22 +30,22 @@ class CurrencyCreate(Model):
     Properties:
         currency_code: (currencyCode) REQUIRED str
 
-        localization_descriptions: (localizationDescriptions) OPTIONAL Dict[str, str]
-
         currency_symbol: (currencySymbol) OPTIONAL str
 
         currency_type: (currencyType) OPTIONAL str
 
         decimals: (decimals) OPTIONAL int
+
+        localization_descriptions: (localizationDescriptions) OPTIONAL Dict[str, str]
     """
 
     # region fields
 
     currency_code: str                                                                             # REQUIRED
-    localization_descriptions: Dict[str, str]                                                      # OPTIONAL
     currency_symbol: str                                                                           # OPTIONAL
     currency_type: str                                                                             # OPTIONAL
     decimals: int                                                                                  # OPTIONAL
+    localization_descriptions: Dict[str, str]                                                      # OPTIONAL
 
     # endregion fields
 
@@ -53,10 +53,6 @@ class CurrencyCreate(Model):
 
     def with_currency_code(self, value: str) -> CurrencyCreate:
         self.currency_code = value
-        return self
-
-    def with_localization_descriptions(self, value: Dict[str, str]) -> CurrencyCreate:
-        self.localization_descriptions = value
         return self
 
     def with_currency_symbol(self, value: str) -> CurrencyCreate:
@@ -71,6 +67,10 @@ class CurrencyCreate(Model):
         self.decimals = value
         return self
 
+    def with_localization_descriptions(self, value: Dict[str, str]) -> CurrencyCreate:
+        self.localization_descriptions = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -81,10 +81,6 @@ class CurrencyCreate(Model):
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
             result["currencyCode"] = str()
-        if hasattr(self, "localization_descriptions"):
-            result["localizationDescriptions"] = {str(k0): str(v0) for k0, v0 in self.localization_descriptions.items()}
-        elif include_empty:
-            result["localizationDescriptions"] = {}
         if hasattr(self, "currency_symbol"):
             result["currencySymbol"] = str(self.currency_symbol)
         elif include_empty:
@@ -97,6 +93,10 @@ class CurrencyCreate(Model):
             result["decimals"] = int(self.decimals)
         elif include_empty:
             result["decimals"] = int()
+        if hasattr(self, "localization_descriptions"):
+            result["localizationDescriptions"] = {str(k0): str(v0) for k0, v0 in self.localization_descriptions.items()}
+        elif include_empty:
+            result["localizationDescriptions"] = {}
         return result
 
     # endregion to methods
@@ -133,10 +133,6 @@ class CurrencyCreate(Model):
             instance.currency_code = str(dict_["currencyCode"])
         elif include_empty:
             instance.currency_code = str()
-        if "localizationDescriptions" in dict_ and dict_["localizationDescriptions"] is not None:
-            instance.localization_descriptions = {str(k0): str(v0) for k0, v0 in dict_["localizationDescriptions"].items()}
-        elif include_empty:
-            instance.localization_descriptions = {}
         if "currencySymbol" in dict_ and dict_["currencySymbol"] is not None:
             instance.currency_symbol = str(dict_["currencySymbol"])
         elif include_empty:
@@ -149,16 +145,20 @@ class CurrencyCreate(Model):
             instance.decimals = int(dict_["decimals"])
         elif include_empty:
             instance.decimals = int()
+        if "localizationDescriptions" in dict_ and dict_["localizationDescriptions"] is not None:
+            instance.localization_descriptions = {str(k0): str(v0) for k0, v0 in dict_["localizationDescriptions"].items()}
+        elif include_empty:
+            instance.localization_descriptions = {}
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "currencyCode": "currency_code",
-            "localizationDescriptions": "localization_descriptions",
             "currencySymbol": "currency_symbol",
             "currencyType": "currency_type",
             "decimals": "decimals",
+            "localizationDescriptions": "localization_descriptions",
         }
 
     # endregion static methods

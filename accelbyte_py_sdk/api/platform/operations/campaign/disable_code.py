@@ -54,9 +54,9 @@ class DisableCode(Operation):
 
         security: bearer
 
-        namespace: (namespace) REQUIRED str in path
-
         code: (code) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
     Responses:
         200: OK - CodeInfo (successful operation)
@@ -73,8 +73,8 @@ class DisableCode(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
     code: str                                                                                      # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -122,8 +122,8 @@ class DisableCode(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "namespace",
             "code",
+            "namespace",
         ]
 
     # endregion get methods
@@ -137,10 +137,10 @@ class DisableCode(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "code"):
             result["code"] = self.code
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     # endregion get_x_params methods
@@ -148,9 +148,9 @@ class DisableCode(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "code") or self.code is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         return True
 
@@ -158,12 +158,12 @@ class DisableCode(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> DisableCode:
-        self.namespace = value
-        return self
-
     def with_code(self, value: str) -> DisableCode:
         self.code = value
+        return self
+
+    def with_namespace(self, value: str) -> DisableCode:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -172,14 +172,14 @@ class DisableCode(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "code") and self.code:
             result["code"] = str(self.code)
         elif include_empty:
             result["code"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         return result
 
     # endregion to methods
@@ -210,32 +210,32 @@ class DisableCode(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
         code: str,
+        namespace: str,
     ) -> DisableCode:
         instance = cls()
-        instance.namespace = namespace
         instance.code = code
+        instance.namespace = namespace
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> DisableCode:
         instance = cls()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = str(dict_["code"])
         elif include_empty:
             instance.code = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
             "code": "code",
+            "namespace": "namespace",
         }
 
     # endregion static methods

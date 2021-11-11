@@ -54,13 +54,13 @@ class PublicQueryUserStatItems(Operation):
 
         user_id: (userId) REQUIRED str in path
 
-        stat_codes: (statCodes) OPTIONAL str in query
-
-        tags: (tags) OPTIONAL str in query
+        limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
-        limit: (limit) OPTIONAL int in query
+        stat_codes: (statCodes) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL str in query
 
     Responses:
         200: OK - UserStatItemPagingSlicedResult (successful operation)
@@ -77,10 +77,10 @@ class PublicQueryUserStatItems(Operation):
 
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
+    limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
     stat_codes: str                                                                                # OPTIONAL in [query]
     tags: str                                                                                      # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
-    limit: int                                                                                     # OPTIONAL in [query]
 
     # endregion fields
 
@@ -155,14 +155,14 @@ class PublicQueryUserStatItems(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "limit"):
+            result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         if hasattr(self, "stat_codes"):
             result["statCodes"] = self.stat_codes
         if hasattr(self, "tags"):
             result["tags"] = self.tags
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
-        if hasattr(self, "limit"):
-            result["limit"] = self.limit
         return result
 
     # endregion get_x_params methods
@@ -188,20 +188,20 @@ class PublicQueryUserStatItems(Operation):
         self.user_id = value
         return self
 
-    def with_stat_codes(self, value: str) -> PublicQueryUserStatItems:
-        self.stat_codes = value
-        return self
-
-    def with_tags(self, value: str) -> PublicQueryUserStatItems:
-        self.tags = value
+    def with_limit(self, value: int) -> PublicQueryUserStatItems:
+        self.limit = value
         return self
 
     def with_offset(self, value: int) -> PublicQueryUserStatItems:
         self.offset = value
         return self
 
-    def with_limit(self, value: int) -> PublicQueryUserStatItems:
-        self.limit = value
+    def with_stat_codes(self, value: str) -> PublicQueryUserStatItems:
+        self.stat_codes = value
+        return self
+
+    def with_tags(self, value: str) -> PublicQueryUserStatItems:
+        self.tags = value
         return self
 
     # endregion with_x methods
@@ -218,6 +218,14 @@ class PublicQueryUserStatItems(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
+        if hasattr(self, "limit") and self.limit:
+            result["limit"] = int(self.limit)
+        elif include_empty:
+            result["limit"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
         if hasattr(self, "stat_codes") and self.stat_codes:
             result["statCodes"] = str(self.stat_codes)
         elif include_empty:
@@ -226,14 +234,6 @@ class PublicQueryUserStatItems(Operation):
             result["tags"] = str(self.tags)
         elif include_empty:
             result["tags"] = str()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
-        if hasattr(self, "limit") and self.limit:
-            result["limit"] = int(self.limit)
-        elif include_empty:
-            result["limit"] = int()
         return result
 
     # endregion to methods
@@ -262,22 +262,22 @@ class PublicQueryUserStatItems(Operation):
         cls,
         namespace: str,
         user_id: str,
+        limit: Optional[int] = None,
+        offset: Optional[int] = None,
         stat_codes: Optional[str] = None,
         tags: Optional[str] = None,
-        offset: Optional[int] = None,
-        limit: Optional[int] = None,
     ) -> PublicQueryUserStatItems:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
+        if limit is not None:
+            instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
         if stat_codes is not None:
             instance.stat_codes = stat_codes
         if tags is not None:
             instance.tags = tags
-        if offset is not None:
-            instance.offset = offset
-        if limit is not None:
-            instance.limit = limit
         return instance
 
     @classmethod
@@ -291,6 +291,14 @@ class PublicQueryUserStatItems(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
+        if "limit" in dict_ and dict_["limit"] is not None:
+            instance.limit = int(dict_["limit"])
+        elif include_empty:
+            instance.limit = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
         if "statCodes" in dict_ and dict_["statCodes"] is not None:
             instance.stat_codes = str(dict_["statCodes"])
         elif include_empty:
@@ -299,14 +307,6 @@ class PublicQueryUserStatItems(Operation):
             instance.tags = str(dict_["tags"])
         elif include_empty:
             instance.tags = str()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
-        if "limit" in dict_ and dict_["limit"] is not None:
-            instance.limit = int(dict_["limit"])
-        elif include_empty:
-            instance.limit = int()
         return instance
 
     @staticmethod
@@ -314,10 +314,10 @@ class PublicQueryUserStatItems(Operation):
         return {
             "namespace": "namespace",
             "userId": "user_id",
+            "limit": "limit",
+            "offset": "offset",
             "statCodes": "stat_codes",
             "tags": "tags",
-            "offset": "offset",
-            "limit": "limit",
         }
 
     # endregion static methods

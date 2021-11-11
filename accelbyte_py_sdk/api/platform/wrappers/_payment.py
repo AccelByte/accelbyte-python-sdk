@@ -110,38 +110,38 @@ def list_ext_order_no_by_ext_tx_id(ext_tx_id: str, namespace: Optional[str] = No
 
 
 @same_doc_as(QueryPaymentNotifications)
-def query_payment_notifications(payment_order_no: Optional[str] = None, external_id: Optional[str] = None, status: Optional[str] = None, notification_type: Optional[str] = None, notification_source: Optional[str] = None, start_date: Optional[str] = None, end_date: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_payment_notifications(end_date: Optional[str] = None, external_id: Optional[str] = None, limit: Optional[int] = None, notification_source: Optional[str] = None, notification_type: Optional[str] = None, offset: Optional[int] = None, payment_order_no: Optional[str] = None, start_date: Optional[str] = None, status: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = QueryPaymentNotifications.create(
-        payment_order_no=payment_order_no,
-        external_id=external_id,
-        status=status,
-        notification_type=notification_type,
-        notification_source=notification_source,
-        start_date=start_date,
         end_date=end_date,
-        offset=offset,
+        external_id=external_id,
         limit=limit,
+        notification_source=notification_source,
+        notification_type=notification_type,
+        offset=offset,
+        payment_order_no=payment_order_no,
+        start_date=start_date,
+        status=status,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QueryPaymentOrders)
-def query_payment_orders(status: Optional[str] = None, channel: Optional[str] = None, ext_tx_id: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_payment_orders(channel: Optional[str] = None, ext_tx_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = QueryPaymentOrders.create(
-        status=status,
         channel=channel,
         ext_tx_id=ext_tx_id,
-        offset=offset,
         limit=limit,
+        offset=offset,
+        status=status,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

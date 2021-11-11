@@ -52,9 +52,9 @@ class PublicExistsAnyMyActiveEntitlement(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        item_ids: (itemIds) OPTIONAL List[str] in query
-
         app_ids: (appIds) OPTIONAL List[str] in query
+
+        item_ids: (itemIds) OPTIONAL List[str] in query
 
         skus: (skus) OPTIONAL List[str] in query
 
@@ -72,8 +72,8 @@ class PublicExistsAnyMyActiveEntitlement(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    item_ids: List[str]                                                                            # OPTIONAL in [query]
     app_ids: List[str]                                                                             # OPTIONAL in [query]
+    item_ids: List[str]                                                                            # OPTIONAL in [query]
     skus: List[str]                                                                                # OPTIONAL in [query]
 
     # endregion fields
@@ -146,10 +146,10 @@ class PublicExistsAnyMyActiveEntitlement(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "item_ids"):
-            result["itemIds"] = self.item_ids
         if hasattr(self, "app_ids"):
             result["appIds"] = self.app_ids
+        if hasattr(self, "item_ids"):
+            result["itemIds"] = self.item_ids
         if hasattr(self, "skus"):
             result["skus"] = self.skus
         return result
@@ -171,12 +171,12 @@ class PublicExistsAnyMyActiveEntitlement(Operation):
         self.namespace = value
         return self
 
-    def with_item_ids(self, value: List[str]) -> PublicExistsAnyMyActiveEntitlement:
-        self.item_ids = value
-        return self
-
     def with_app_ids(self, value: List[str]) -> PublicExistsAnyMyActiveEntitlement:
         self.app_ids = value
+        return self
+
+    def with_item_ids(self, value: List[str]) -> PublicExistsAnyMyActiveEntitlement:
+        self.item_ids = value
         return self
 
     def with_skus(self, value: List[str]) -> PublicExistsAnyMyActiveEntitlement:
@@ -193,14 +193,14 @@ class PublicExistsAnyMyActiveEntitlement(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "item_ids") and self.item_ids:
-            result["itemIds"] = [str(i0) for i0 in self.item_ids]
-        elif include_empty:
-            result["itemIds"] = []
         if hasattr(self, "app_ids") and self.app_ids:
             result["appIds"] = [str(i0) for i0 in self.app_ids]
         elif include_empty:
             result["appIds"] = []
+        if hasattr(self, "item_ids") and self.item_ids:
+            result["itemIds"] = [str(i0) for i0 in self.item_ids]
+        elif include_empty:
+            result["itemIds"] = []
         if hasattr(self, "skus") and self.skus:
             result["skus"] = [str(i0) for i0 in self.skus]
         elif include_empty:
@@ -232,16 +232,16 @@ class PublicExistsAnyMyActiveEntitlement(Operation):
     def create(
         cls,
         namespace: str,
-        item_ids: Optional[List[str]] = None,
         app_ids: Optional[List[str]] = None,
+        item_ids: Optional[List[str]] = None,
         skus: Optional[List[str]] = None,
     ) -> PublicExistsAnyMyActiveEntitlement:
         instance = cls()
         instance.namespace = namespace
-        if item_ids is not None:
-            instance.item_ids = item_ids
         if app_ids is not None:
             instance.app_ids = app_ids
+        if item_ids is not None:
+            instance.item_ids = item_ids
         if skus is not None:
             instance.skus = skus
         return instance
@@ -253,14 +253,14 @@ class PublicExistsAnyMyActiveEntitlement(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "itemIds" in dict_ and dict_["itemIds"] is not None:
-            instance.item_ids = [str(i0) for i0 in dict_["itemIds"]]
-        elif include_empty:
-            instance.item_ids = []
         if "appIds" in dict_ and dict_["appIds"] is not None:
             instance.app_ids = [str(i0) for i0 in dict_["appIds"]]
         elif include_empty:
             instance.app_ids = []
+        if "itemIds" in dict_ and dict_["itemIds"] is not None:
+            instance.item_ids = [str(i0) for i0 in dict_["itemIds"]]
+        elif include_empty:
+            instance.item_ids = []
         if "skus" in dict_ and dict_["skus"] is not None:
             instance.skus = [str(i0) for i0 in dict_["skus"]]
         elif include_empty:
@@ -271,8 +271,8 @@ class PublicExistsAnyMyActiveEntitlement(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "itemIds": "item_ids",
             "appIds": "app_ids",
+            "itemIds": "item_ids",
             "skus": "skus",
         }
 

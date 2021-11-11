@@ -28,13 +28,13 @@ class PartyPromoteLeaderResponse(WebSocketMessage):
 
     # region fields
 
-    id_: str
     code: str
-    party_id: str
+    id_: str
+    invitation_token: str
+    invitees: str
     leader_id: str
     members: str
-    invitees: str
-    invitation_token: str
+    party_id: str
 
     # endregion fields
 
@@ -44,20 +44,20 @@ class PartyPromoteLeaderResponse(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {PartyPromoteLeaderResponse.get_type()}"]
-        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
-        wsm.append(f"id: {id_}")
         if hasattr(self, "code") and self.code:
             wsm.append(f"code: {self.code}")
-        if hasattr(self, "party_id") and self.party_id:
-            wsm.append(f"partyId: {self.party_id}")
+        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
+        wsm.append(f"id: {id_}")
+        if hasattr(self, "invitation_token") and self.invitation_token:
+            wsm.append(f"invitationToken: {self.invitation_token}")
+        if hasattr(self, "invitees") and self.invitees:
+            wsm.append(f"invitees: {self.invitees}")
         if hasattr(self, "leader_id") and self.leader_id:
             wsm.append(f"leaderId: {self.leader_id}")
         if hasattr(self, "members") and self.members:
             wsm.append(f"members: {self.members}")
-        if hasattr(self, "invitees") and self.invitees:
-            wsm.append(f"invitees: {self.invitees}")
-        if hasattr(self, "invitation_token") and self.invitation_token:
-            wsm.append(f"invitationToken: {self.invitation_token}")
+        if hasattr(self, "party_id") and self.party_id:
+            wsm.append(f"partyId: {self.party_id}")
         return "\n".join(wsm)
 
     # endregion methods
@@ -84,8 +84,11 @@ class PartyPromoteLeaderResponse(WebSocketMessage):
             if (not is_strict and name.casefold() == "code".casefold()) or (name == "code"):
                 instance.code = value
                 continue
-            if (not is_strict and name.casefold() == "partyId".casefold()) or (name == "partyId"):
-                instance.party_id = value
+            if (not is_strict and name.casefold() == "invitationToken".casefold()) or (name == "invitationToken"):
+                instance.invitation_token = value
+                continue
+            if (not is_strict and name.casefold() == "invitees".casefold()) or (name == "invitees"):
+                instance.invitees = value
                 continue
             if (not is_strict and name.casefold() == "leaderId".casefold()) or (name == "leaderId"):
                 instance.leader_id = value
@@ -93,11 +96,8 @@ class PartyPromoteLeaderResponse(WebSocketMessage):
             if (not is_strict and name.casefold() == "members".casefold()) or (name == "members"):
                 instance.members = value
                 continue
-            if (not is_strict and name.casefold() == "invitees".casefold()) or (name == "invitees"):
-                instance.invitees = value
-                continue
-            if (not is_strict and name.casefold() == "invitationToken".casefold()) or (name == "invitationToken"):
-                instance.invitation_token = value
+            if (not is_strict and name.casefold() == "partyId".casefold()) or (name == "partyId"):
+                instance.party_id = value
                 continue
             if is_strict:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldTypeNotSupported)
@@ -110,13 +110,13 @@ class PartyPromoteLeaderResponse(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
             "code": "code",
-            "partyId": "party_id",
+            "id": "id_",
+            "invitationToken": "invitation_token",
+            "invitees": "invitees",
             "leaderId": "leader_id",
             "members": "members",
-            "invitees": "invitees",
-            "invitationToken": "invitation_token",
+            "partyId": "party_id",
         }
 
     # endregion static methods

@@ -28,37 +28,53 @@ class HierarchicalCategoryInfo(Model):
     """Hierarchical category info (HierarchicalCategoryInfo)
 
     Properties:
+        category_path: (categoryPath) REQUIRED str
+
+        child_categories: (childCategories) REQUIRED List[HierarchicalCategoryInfo]
+
+        created_at: (createdAt) REQUIRED str
+
+        display_name: (displayName) REQUIRED str
+
         namespace: (namespace) REQUIRED str
 
         parent_category_path: (parentCategoryPath) REQUIRED str
 
-        category_path: (categoryPath) REQUIRED str
-
-        created_at: (createdAt) REQUIRED str
-
         updated_at: (updatedAt) REQUIRED str
-
-        display_name: (displayName) REQUIRED str
-
-        child_categories: (childCategories) REQUIRED List[HierarchicalCategoryInfo]
 
         root: (root) OPTIONAL bool
     """
 
     # region fields
 
+    category_path: str                                                                             # REQUIRED
+    child_categories: List[HierarchicalCategoryInfo]                                               # REQUIRED
+    created_at: str                                                                                # REQUIRED
+    display_name: str                                                                              # REQUIRED
     namespace: str                                                                                 # REQUIRED
     parent_category_path: str                                                                      # REQUIRED
-    category_path: str                                                                             # REQUIRED
-    created_at: str                                                                                # REQUIRED
     updated_at: str                                                                                # REQUIRED
-    display_name: str                                                                              # REQUIRED
-    child_categories: List[HierarchicalCategoryInfo]                                               # REQUIRED
     root: bool                                                                                     # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
+
+    def with_category_path(self, value: str) -> HierarchicalCategoryInfo:
+        self.category_path = value
+        return self
+
+    def with_child_categories(self, value: List[HierarchicalCategoryInfo]) -> HierarchicalCategoryInfo:
+        self.child_categories = value
+        return self
+
+    def with_created_at(self, value: str) -> HierarchicalCategoryInfo:
+        self.created_at = value
+        return self
+
+    def with_display_name(self, value: str) -> HierarchicalCategoryInfo:
+        self.display_name = value
+        return self
 
     def with_namespace(self, value: str) -> HierarchicalCategoryInfo:
         self.namespace = value
@@ -68,24 +84,8 @@ class HierarchicalCategoryInfo(Model):
         self.parent_category_path = value
         return self
 
-    def with_category_path(self, value: str) -> HierarchicalCategoryInfo:
-        self.category_path = value
-        return self
-
-    def with_created_at(self, value: str) -> HierarchicalCategoryInfo:
-        self.created_at = value
-        return self
-
     def with_updated_at(self, value: str) -> HierarchicalCategoryInfo:
         self.updated_at = value
-        return self
-
-    def with_display_name(self, value: str) -> HierarchicalCategoryInfo:
-        self.display_name = value
-        return self
-
-    def with_child_categories(self, value: List[HierarchicalCategoryInfo]) -> HierarchicalCategoryInfo:
-        self.child_categories = value
         return self
 
     def with_root(self, value: bool) -> HierarchicalCategoryInfo:
@@ -98,6 +98,22 @@ class HierarchicalCategoryInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "category_path"):
+            result["categoryPath"] = str(self.category_path)
+        elif include_empty:
+            result["categoryPath"] = str()
+        if hasattr(self, "child_categories"):
+            result["childCategories"] = [i0.to_dict(include_empty=include_empty) for i0 in self.child_categories]
+        elif include_empty:
+            result["childCategories"] = []
+        if hasattr(self, "created_at"):
+            result["createdAt"] = str(self.created_at)
+        elif include_empty:
+            result["createdAt"] = str()
+        if hasattr(self, "display_name"):
+            result["displayName"] = str(self.display_name)
+        elif include_empty:
+            result["displayName"] = str()
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -106,26 +122,10 @@ class HierarchicalCategoryInfo(Model):
             result["parentCategoryPath"] = str(self.parent_category_path)
         elif include_empty:
             result["parentCategoryPath"] = str()
-        if hasattr(self, "category_path"):
-            result["categoryPath"] = str(self.category_path)
-        elif include_empty:
-            result["categoryPath"] = str()
-        if hasattr(self, "created_at"):
-            result["createdAt"] = str(self.created_at)
-        elif include_empty:
-            result["createdAt"] = str()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()
-        if hasattr(self, "display_name"):
-            result["displayName"] = str(self.display_name)
-        elif include_empty:
-            result["displayName"] = str()
-        if hasattr(self, "child_categories"):
-            result["childCategories"] = [i0.to_dict(include_empty=include_empty) for i0 in self.child_categories]
-        elif include_empty:
-            result["childCategories"] = []
         if hasattr(self, "root"):
             result["root"] = bool(self.root)
         elif include_empty:
@@ -165,6 +165,22 @@ class HierarchicalCategoryInfo(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "categoryPath" in dict_ and dict_["categoryPath"] is not None:
+            instance.category_path = str(dict_["categoryPath"])
+        elif include_empty:
+            instance.category_path = str()
+        if "childCategories" in dict_ and dict_["childCategories"] is not None:
+            instance.child_categories = [HierarchicalCategoryInfo.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["childCategories"]]
+        elif include_empty:
+            instance.child_categories = []
+        if "createdAt" in dict_ and dict_["createdAt"] is not None:
+            instance.created_at = str(dict_["createdAt"])
+        elif include_empty:
+            instance.created_at = str()
+        if "displayName" in dict_ and dict_["displayName"] is not None:
+            instance.display_name = str(dict_["displayName"])
+        elif include_empty:
+            instance.display_name = str()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -173,26 +189,10 @@ class HierarchicalCategoryInfo(Model):
             instance.parent_category_path = str(dict_["parentCategoryPath"])
         elif include_empty:
             instance.parent_category_path = str()
-        if "categoryPath" in dict_ and dict_["categoryPath"] is not None:
-            instance.category_path = str(dict_["categoryPath"])
-        elif include_empty:
-            instance.category_path = str()
-        if "createdAt" in dict_ and dict_["createdAt"] is not None:
-            instance.created_at = str(dict_["createdAt"])
-        elif include_empty:
-            instance.created_at = str()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = str()
-        if "displayName" in dict_ and dict_["displayName"] is not None:
-            instance.display_name = str(dict_["displayName"])
-        elif include_empty:
-            instance.display_name = str()
-        if "childCategories" in dict_ and dict_["childCategories"] is not None:
-            instance.child_categories = [HierarchicalCategoryInfo.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["childCategories"]]
-        elif include_empty:
-            instance.child_categories = []
         if "root" in dict_ and dict_["root"] is not None:
             instance.root = bool(dict_["root"])
         elif include_empty:
@@ -202,13 +202,13 @@ class HierarchicalCategoryInfo(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "categoryPath": "category_path",
+            "childCategories": "child_categories",
+            "createdAt": "created_at",
+            "displayName": "display_name",
             "namespace": "namespace",
             "parentCategoryPath": "parent_category_path",
-            "categoryPath": "category_path",
-            "createdAt": "created_at",
             "updatedAt": "updated_at",
-            "displayName": "display_name",
-            "childCategories": "child_categories",
             "root": "root",
         }
 

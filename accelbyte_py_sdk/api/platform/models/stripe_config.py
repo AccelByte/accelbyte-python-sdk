@@ -28,25 +28,29 @@ class StripeConfig(Model):
     """A DTO object for updating stripe config. (StripeConfig)
 
     Properties:
+        allowed_payment_method_types: (allowedPaymentMethodTypes) OPTIONAL List[str]
+
         publishable_key: (publishableKey) OPTIONAL str
 
         secret_key: (secretKey) OPTIONAL str
 
         webhook_secret: (webhookSecret) OPTIONAL str
-
-        allowed_payment_method_types: (allowedPaymentMethodTypes) OPTIONAL List[str]
     """
 
     # region fields
 
+    allowed_payment_method_types: List[str]                                                        # OPTIONAL
     publishable_key: str                                                                           # OPTIONAL
     secret_key: str                                                                                # OPTIONAL
     webhook_secret: str                                                                            # OPTIONAL
-    allowed_payment_method_types: List[str]                                                        # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
+
+    def with_allowed_payment_method_types(self, value: List[str]) -> StripeConfig:
+        self.allowed_payment_method_types = value
+        return self
 
     def with_publishable_key(self, value: str) -> StripeConfig:
         self.publishable_key = value
@@ -60,16 +64,16 @@ class StripeConfig(Model):
         self.webhook_secret = value
         return self
 
-    def with_allowed_payment_method_types(self, value: List[str]) -> StripeConfig:
-        self.allowed_payment_method_types = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "allowed_payment_method_types"):
+            result["allowedPaymentMethodTypes"] = [str(i0) for i0 in self.allowed_payment_method_types]
+        elif include_empty:
+            result["allowedPaymentMethodTypes"] = []
         if hasattr(self, "publishable_key"):
             result["publishableKey"] = str(self.publishable_key)
         elif include_empty:
@@ -82,10 +86,6 @@ class StripeConfig(Model):
             result["webhookSecret"] = str(self.webhook_secret)
         elif include_empty:
             result["webhookSecret"] = str()
-        if hasattr(self, "allowed_payment_method_types"):
-            result["allowedPaymentMethodTypes"] = [str(i0) for i0 in self.allowed_payment_method_types]
-        elif include_empty:
-            result["allowedPaymentMethodTypes"] = []
         return result
 
     # endregion to methods
@@ -116,6 +116,10 @@ class StripeConfig(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "allowedPaymentMethodTypes" in dict_ and dict_["allowedPaymentMethodTypes"] is not None:
+            instance.allowed_payment_method_types = [str(i0) for i0 in dict_["allowedPaymentMethodTypes"]]
+        elif include_empty:
+            instance.allowed_payment_method_types = []
         if "publishableKey" in dict_ and dict_["publishableKey"] is not None:
             instance.publishable_key = str(dict_["publishableKey"])
         elif include_empty:
@@ -128,19 +132,15 @@ class StripeConfig(Model):
             instance.webhook_secret = str(dict_["webhookSecret"])
         elif include_empty:
             instance.webhook_secret = str()
-        if "allowedPaymentMethodTypes" in dict_ and dict_["allowedPaymentMethodTypes"] is not None:
-            instance.allowed_payment_method_types = [str(i0) for i0 in dict_["allowedPaymentMethodTypes"]]
-        elif include_empty:
-            instance.allowed_payment_method_types = []
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "allowedPaymentMethodTypes": "allowed_payment_method_types",
             "publishableKey": "publishable_key",
             "secretKey": "secret_key",
             "webhookSecret": "webhook_secret",
-            "allowedPaymentMethodTypes": "allowed_payment_method_types",
         }
 
     # endregion static methods

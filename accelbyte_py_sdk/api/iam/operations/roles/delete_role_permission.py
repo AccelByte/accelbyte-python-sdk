@@ -48,11 +48,11 @@ class DeleteRolePermission(Operation):
 
         security: bearer
 
-        role_id: (roleId) REQUIRED str in path
+        action: (action) REQUIRED int in path
 
         resource: (resource) REQUIRED str in path
 
-        action: (action) REQUIRED int in path
+        role_id: (roleId) REQUIRED str in path
 
     Responses:
         204: No Content - (Operation succeeded)
@@ -75,9 +75,9 @@ class DeleteRolePermission(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    role_id: str                                                                                   # REQUIRED in [path]
-    resource: str                                                                                  # REQUIRED in [path]
     action: int                                                                                    # REQUIRED in [path]
+    resource: str                                                                                  # REQUIRED in [path]
+    role_id: str                                                                                   # REQUIRED in [path]
 
     # endregion fields
 
@@ -125,9 +125,9 @@ class DeleteRolePermission(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "role_id",
-            "resource",
             "action",
+            "resource",
+            "role_id",
         ]
 
     # endregion get methods
@@ -141,12 +141,12 @@ class DeleteRolePermission(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "role_id"):
-            result["roleId"] = self.role_id
-        if hasattr(self, "resource"):
-            result["resource"] = self.resource
         if hasattr(self, "action"):
             result["action"] = self.action
+        if hasattr(self, "resource"):
+            result["resource"] = self.resource
+        if hasattr(self, "role_id"):
+            result["roleId"] = self.role_id
         return result
 
     # endregion get_x_params methods
@@ -154,11 +154,11 @@ class DeleteRolePermission(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "role_id") or self.role_id is None:
+        if not hasattr(self, "action") or self.action is None:
             return False
         if not hasattr(self, "resource") or self.resource is None:
             return False
-        if not hasattr(self, "action") or self.action is None:
+        if not hasattr(self, "role_id") or self.role_id is None:
             return False
         return True
 
@@ -166,16 +166,16 @@ class DeleteRolePermission(Operation):
 
     # region with_x methods
 
-    def with_role_id(self, value: str) -> DeleteRolePermission:
-        self.role_id = value
+    def with_action(self, value: int) -> DeleteRolePermission:
+        self.action = value
         return self
 
     def with_resource(self, value: str) -> DeleteRolePermission:
         self.resource = value
         return self
 
-    def with_action(self, value: int) -> DeleteRolePermission:
-        self.action = value
+    def with_role_id(self, value: str) -> DeleteRolePermission:
+        self.role_id = value
         return self
 
     # endregion with_x methods
@@ -184,18 +184,18 @@ class DeleteRolePermission(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "role_id") and self.role_id:
-            result["roleId"] = str(self.role_id)
-        elif include_empty:
-            result["roleId"] = str()
-        if hasattr(self, "resource") and self.resource:
-            result["resource"] = str(self.resource)
-        elif include_empty:
-            result["resource"] = str()
         if hasattr(self, "action") and self.action:
             result["action"] = int(self.action)
         elif include_empty:
             result["action"] = int()
+        if hasattr(self, "resource") and self.resource:
+            result["resource"] = str(self.resource)
+        elif include_empty:
+            result["resource"] = str()
+        if hasattr(self, "role_id") and self.role_id:
+            result["roleId"] = str(self.role_id)
+        elif include_empty:
+            result["roleId"] = str()
         return result
 
     # endregion to methods
@@ -238,39 +238,39 @@ class DeleteRolePermission(Operation):
     @classmethod
     def create(
         cls,
-        role_id: str,
-        resource: str,
         action: int,
+        resource: str,
+        role_id: str,
     ) -> DeleteRolePermission:
         instance = cls()
-        instance.role_id = role_id
-        instance.resource = resource
         instance.action = action
+        instance.resource = resource
+        instance.role_id = role_id
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> DeleteRolePermission:
         instance = cls()
-        if "roleId" in dict_ and dict_["roleId"] is not None:
-            instance.role_id = str(dict_["roleId"])
-        elif include_empty:
-            instance.role_id = str()
-        if "resource" in dict_ and dict_["resource"] is not None:
-            instance.resource = str(dict_["resource"])
-        elif include_empty:
-            instance.resource = str()
         if "action" in dict_ and dict_["action"] is not None:
             instance.action = int(dict_["action"])
         elif include_empty:
             instance.action = int()
+        if "resource" in dict_ and dict_["resource"] is not None:
+            instance.resource = str(dict_["resource"])
+        elif include_empty:
+            instance.resource = str()
+        if "roleId" in dict_ and dict_["roleId"] is not None:
+            instance.role_id = str(dict_["roleId"])
+        elif include_empty:
+            instance.role_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "roleId": "role_id",
-            "resource": "resource",
             "action": "action",
+            "resource": "resource",
+            "roleId": "role_id",
         }
 
     # endregion static methods

@@ -28,12 +28,12 @@ class PartyDataUpdateNotif(WebSocketMessage):
 
     # region fields
 
-    party_id: str
-    leader: str
-    namespace: str
-    members: List[str]
-    invitees: List[str]
     custom_attributes: Dict[str, Any]
+    invitees: List[str]
+    leader: str
+    members: List[str]
+    namespace: str
+    party_id: str
     updated_at: int
 
     # endregion fields
@@ -44,18 +44,18 @@ class PartyDataUpdateNotif(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {PartyDataUpdateNotif.get_type()}"]
-        if hasattr(self, "party_id") and self.party_id:
-            wsm.append(f"partyId: {self.party_id}")
-        if hasattr(self, "leader") and self.leader:
-            wsm.append(f"leader: {self.leader}")
-        if hasattr(self, "namespace") and self.namespace:
-            wsm.append(f"namespace: {self.namespace}")
-        if hasattr(self, "members") and self.members:
-            wsm.append(f"members: [" + ','.join([str(i) for i in self.members]) + "]")
-        if hasattr(self, "invitees") and self.invitees:
-            wsm.append(f"invitees: [" + ','.join([str(i) for i in self.invitees]) + "]")
         if hasattr(self, "custom_attributes") and self.custom_attributes:
             wsm.append(f"customAttributes: {json.dumps(self.custom_attributes)}")
+        if hasattr(self, "invitees") and self.invitees:
+            wsm.append(f"invitees: [" + ','.join([str(i) for i in self.invitees]) + "]")
+        if hasattr(self, "leader") and self.leader:
+            wsm.append(f"leader: {self.leader}")
+        if hasattr(self, "members") and self.members:
+            wsm.append(f"members: [" + ','.join([str(i) for i in self.members]) + "]")
+        if hasattr(self, "namespace") and self.namespace:
+            wsm.append(f"namespace: {self.namespace}")
+        if hasattr(self, "party_id") and self.party_id:
+            wsm.append(f"partyId: {self.party_id}")
         if hasattr(self, "updated_at") and self.updated_at:
             wsm.append(f"updatedAt: {self.updated_at}")
         return "\n".join(wsm)
@@ -77,23 +77,23 @@ class PartyDataUpdateNotif(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if (not is_strict and name.casefold() == "partyId".casefold()) or (name == "partyId"):
-                instance.party_id = value
-                continue
-            if (not is_strict and name.casefold() == "leader".casefold()) or (name == "leader"):
-                instance.leader = value
-                continue
-            if (not is_strict and name.casefold() == "namespace".casefold()) or (name == "namespace"):
-                instance.namespace = value
-                continue
-            if (not is_strict and name.casefold() == "members".casefold()) or (name == "members"):
-                instance.members = [str(i) for i in value.removeprefix("[").removesuffix("]").split(",")]
+            if (not is_strict and name.casefold() == "customAttributes".casefold()) or (name == "customAttributes"):
+                instance.custom_attributes = json.loads(value)
                 continue
             if (not is_strict and name.casefold() == "invitees".casefold()) or (name == "invitees"):
                 instance.invitees = [str(i) for i in value.removeprefix("[").removesuffix("]").split(",")]
                 continue
-            if (not is_strict and name.casefold() == "customAttributes".casefold()) or (name == "customAttributes"):
-                instance.custom_attributes = json.loads(value)
+            if (not is_strict and name.casefold() == "leader".casefold()) or (name == "leader"):
+                instance.leader = value
+                continue
+            if (not is_strict and name.casefold() == "members".casefold()) or (name == "members"):
+                instance.members = [str(i) for i in value.removeprefix("[").removesuffix("]").split(",")]
+                continue
+            if (not is_strict and name.casefold() == "namespace".casefold()) or (name == "namespace"):
+                instance.namespace = value
+                continue
+            if (not is_strict and name.casefold() == "partyId".casefold()) or (name == "partyId"):
+                instance.party_id = value
                 continue
             if (not is_strict and name.casefold() == "updatedAt".casefold()) or (name == "updatedAt"):
                 instance.updated_at = value
@@ -109,12 +109,12 @@ class PartyDataUpdateNotif(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "partyId": "party_id",
-            "leader": "leader",
-            "namespace": "namespace",
-            "members": "members",
-            "invitees": "invitees",
             "customAttributes": "custom_attributes",
+            "invitees": "invitees",
+            "leader": "leader",
+            "members": "members",
+            "namespace": "namespace",
+            "partyId": "party_id",
             "updatedAt": "updated_at",
         }
 

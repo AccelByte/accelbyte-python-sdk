@@ -28,42 +28,38 @@ class EntitlementUpdate(Model):
     """A DTO object for updating entitlement API call. Leave the field empty if don't want to update. (EntitlementUpdate)
 
     Properties:
+        end_date: (endDate) OPTIONAL str
+
         null_field_list: (nullFieldList) OPTIONAL List[str]
-
-        status: (status) OPTIONAL str
-
-        use_count: (useCount) OPTIONAL int
 
         quantity: (quantity) OPTIONAL int
 
         start_date: (startDate) OPTIONAL str
 
-        end_date: (endDate) OPTIONAL str
+        status: (status) OPTIONAL str
+
+        use_count: (useCount) OPTIONAL int
     """
 
     # region fields
 
+    end_date: str                                                                                  # OPTIONAL
     null_field_list: List[str]                                                                     # OPTIONAL
-    status: str                                                                                    # OPTIONAL
-    use_count: int                                                                                 # OPTIONAL
     quantity: int                                                                                  # OPTIONAL
     start_date: str                                                                                # OPTIONAL
-    end_date: str                                                                                  # OPTIONAL
+    status: str                                                                                    # OPTIONAL
+    use_count: int                                                                                 # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
+    def with_end_date(self, value: str) -> EntitlementUpdate:
+        self.end_date = value
+        return self
+
     def with_null_field_list(self, value: List[str]) -> EntitlementUpdate:
         self.null_field_list = value
-        return self
-
-    def with_status(self, value: str) -> EntitlementUpdate:
-        self.status = value
-        return self
-
-    def with_use_count(self, value: int) -> EntitlementUpdate:
-        self.use_count = value
         return self
 
     def with_quantity(self, value: int) -> EntitlementUpdate:
@@ -74,8 +70,12 @@ class EntitlementUpdate(Model):
         self.start_date = value
         return self
 
-    def with_end_date(self, value: str) -> EntitlementUpdate:
-        self.end_date = value
+    def with_status(self, value: str) -> EntitlementUpdate:
+        self.status = value
+        return self
+
+    def with_use_count(self, value: int) -> EntitlementUpdate:
+        self.use_count = value
         return self
 
     # endregion with_x methods
@@ -84,18 +84,14 @@ class EntitlementUpdate(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "end_date"):
+            result["endDate"] = str(self.end_date)
+        elif include_empty:
+            result["endDate"] = str()
         if hasattr(self, "null_field_list"):
             result["nullFieldList"] = [str(i0) for i0 in self.null_field_list]
         elif include_empty:
             result["nullFieldList"] = []
-        if hasattr(self, "status"):
-            result["status"] = str(self.status)
-        elif include_empty:
-            result["status"] = str()
-        if hasattr(self, "use_count"):
-            result["useCount"] = int(self.use_count)
-        elif include_empty:
-            result["useCount"] = int()
         if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
@@ -104,10 +100,14 @@ class EntitlementUpdate(Model):
             result["startDate"] = str(self.start_date)
         elif include_empty:
             result["startDate"] = str()
-        if hasattr(self, "end_date"):
-            result["endDate"] = str(self.end_date)
+        if hasattr(self, "status"):
+            result["status"] = str(self.status)
         elif include_empty:
-            result["endDate"] = str()
+            result["status"] = str()
+        if hasattr(self, "use_count"):
+            result["useCount"] = int(self.use_count)
+        elif include_empty:
+            result["useCount"] = int()
         return result
 
     # endregion to methods
@@ -144,18 +144,14 @@ class EntitlementUpdate(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "endDate" in dict_ and dict_["endDate"] is not None:
+            instance.end_date = str(dict_["endDate"])
+        elif include_empty:
+            instance.end_date = str()
         if "nullFieldList" in dict_ and dict_["nullFieldList"] is not None:
             instance.null_field_list = [str(i0) for i0 in dict_["nullFieldList"]]
         elif include_empty:
             instance.null_field_list = []
-        if "status" in dict_ and dict_["status"] is not None:
-            instance.status = str(dict_["status"])
-        elif include_empty:
-            instance.status = str()
-        if "useCount" in dict_ and dict_["useCount"] is not None:
-            instance.use_count = int(dict_["useCount"])
-        elif include_empty:
-            instance.use_count = int()
         if "quantity" in dict_ and dict_["quantity"] is not None:
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
@@ -164,21 +160,25 @@ class EntitlementUpdate(Model):
             instance.start_date = str(dict_["startDate"])
         elif include_empty:
             instance.start_date = str()
-        if "endDate" in dict_ and dict_["endDate"] is not None:
-            instance.end_date = str(dict_["endDate"])
+        if "status" in dict_ and dict_["status"] is not None:
+            instance.status = str(dict_["status"])
         elif include_empty:
-            instance.end_date = str()
+            instance.status = str()
+        if "useCount" in dict_ and dict_["useCount"] is not None:
+            instance.use_count = int(dict_["useCount"])
+        elif include_empty:
+            instance.use_count = int()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "endDate": "end_date",
             "nullFieldList": "null_field_list",
-            "status": "status",
-            "useCount": "use_count",
             "quantity": "quantity",
             "startDate": "start_date",
-            "endDate": "end_date",
+            "status": "status",
+            "useCount": "use_count",
         }
 
     # endregion static methods

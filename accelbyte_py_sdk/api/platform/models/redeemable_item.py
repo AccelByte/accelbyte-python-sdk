@@ -32,17 +32,17 @@ class RedeemableItem(Model):
 
         item_name: (itemName) REQUIRED str
 
-        quantity: (quantity) OPTIONAL int
-
         extra_subscription_days: (extraSubscriptionDays) OPTIONAL int
+
+        quantity: (quantity) OPTIONAL int
     """
 
     # region fields
 
     item_id: str                                                                                   # REQUIRED
     item_name: str                                                                                 # REQUIRED
-    quantity: int                                                                                  # OPTIONAL
     extra_subscription_days: int                                                                   # OPTIONAL
+    quantity: int                                                                                  # OPTIONAL
 
     # endregion fields
 
@@ -56,12 +56,12 @@ class RedeemableItem(Model):
         self.item_name = value
         return self
 
-    def with_quantity(self, value: int) -> RedeemableItem:
-        self.quantity = value
-        return self
-
     def with_extra_subscription_days(self, value: int) -> RedeemableItem:
         self.extra_subscription_days = value
+        return self
+
+    def with_quantity(self, value: int) -> RedeemableItem:
+        self.quantity = value
         return self
 
     # endregion with_x methods
@@ -78,14 +78,14 @@ class RedeemableItem(Model):
             result["itemName"] = str(self.item_name)
         elif include_empty:
             result["itemName"] = str()
-        if hasattr(self, "quantity"):
-            result["quantity"] = int(self.quantity)
-        elif include_empty:
-            result["quantity"] = int()
         if hasattr(self, "extra_subscription_days"):
             result["extraSubscriptionDays"] = int(self.extra_subscription_days)
         elif include_empty:
             result["extraSubscriptionDays"] = int()
+        if hasattr(self, "quantity"):
+            result["quantity"] = int(self.quantity)
+        elif include_empty:
+            result["quantity"] = int()
         return result
 
     # endregion to methods
@@ -122,14 +122,14 @@ class RedeemableItem(Model):
             instance.item_name = str(dict_["itemName"])
         elif include_empty:
             instance.item_name = str()
-        if "quantity" in dict_ and dict_["quantity"] is not None:
-            instance.quantity = int(dict_["quantity"])
-        elif include_empty:
-            instance.quantity = int()
         if "extraSubscriptionDays" in dict_ and dict_["extraSubscriptionDays"] is not None:
             instance.extra_subscription_days = int(dict_["extraSubscriptionDays"])
         elif include_empty:
             instance.extra_subscription_days = int()
+        if "quantity" in dict_ and dict_["quantity"] is not None:
+            instance.quantity = int(dict_["quantity"])
+        elif include_empty:
+            instance.quantity = int()
         return instance
 
     @staticmethod
@@ -137,8 +137,8 @@ class RedeemableItem(Model):
         return {
             "itemId": "item_id",
             "itemName": "item_name",
-            "quantity": "quantity",
             "extraSubscriptionDays": "extra_subscription_days",
+            "quantity": "quantity",
         }
 
     # endregion static methods

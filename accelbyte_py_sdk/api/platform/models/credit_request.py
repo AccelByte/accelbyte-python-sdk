@@ -30,16 +30,16 @@ class CreditRequest(Model):
     Properties:
         amount: (amount) REQUIRED int
 
-        source: (source) OPTIONAL str
-
         reason: (reason) OPTIONAL str
+
+        source: (source) OPTIONAL str
     """
 
     # region fields
 
     amount: int                                                                                    # REQUIRED
-    source: str                                                                                    # OPTIONAL
     reason: str                                                                                    # OPTIONAL
+    source: str                                                                                    # OPTIONAL
 
     # endregion fields
 
@@ -49,12 +49,12 @@ class CreditRequest(Model):
         self.amount = value
         return self
 
-    def with_source(self, value: str) -> CreditRequest:
-        self.source = value
-        return self
-
     def with_reason(self, value: str) -> CreditRequest:
         self.reason = value
+        return self
+
+    def with_source(self, value: str) -> CreditRequest:
+        self.source = value
         return self
 
     # endregion with_x methods
@@ -67,14 +67,14 @@ class CreditRequest(Model):
             result["amount"] = int(self.amount)
         elif include_empty:
             result["amount"] = int()
-        if hasattr(self, "source"):
-            result["source"] = str(self.source)
-        elif include_empty:
-            result["source"] = str()
         if hasattr(self, "reason"):
             result["reason"] = str(self.reason)
         elif include_empty:
             result["reason"] = str()
+        if hasattr(self, "source"):
+            result["source"] = str(self.source)
+        elif include_empty:
+            result["source"] = str()
         return result
 
     # endregion to methods
@@ -105,22 +105,22 @@ class CreditRequest(Model):
             instance.amount = int(dict_["amount"])
         elif include_empty:
             instance.amount = int()
-        if "source" in dict_ and dict_["source"] is not None:
-            instance.source = str(dict_["source"])
-        elif include_empty:
-            instance.source = str()
         if "reason" in dict_ and dict_["reason"] is not None:
             instance.reason = str(dict_["reason"])
         elif include_empty:
             instance.reason = str()
+        if "source" in dict_ and dict_["source"] is not None:
+            instance.source = str(dict_["source"])
+        elif include_empty:
+            instance.source = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "amount": "amount",
-            "source": "source",
             "reason": "reason",
+            "source": "source",
         }
 
     # endregion static methods

@@ -28,26 +28,26 @@ class SlotConfigUpdate(Model):
     """Slot config update (SlotConfigUpdate)
 
     Properties:
-        max_slots: (maxSlots) OPTIONAL int
-
         max_slot_size: (maxSlotSize) OPTIONAL int
+
+        max_slots: (maxSlots) OPTIONAL int
     """
 
     # region fields
 
-    max_slots: int                                                                                 # OPTIONAL
     max_slot_size: int                                                                             # OPTIONAL
+    max_slots: int                                                                                 # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_max_slots(self, value: int) -> SlotConfigUpdate:
-        self.max_slots = value
-        return self
-
     def with_max_slot_size(self, value: int) -> SlotConfigUpdate:
         self.max_slot_size = value
+        return self
+
+    def with_max_slots(self, value: int) -> SlotConfigUpdate:
+        self.max_slots = value
         return self
 
     # endregion with_x methods
@@ -56,14 +56,14 @@ class SlotConfigUpdate(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "max_slots"):
-            result["maxSlots"] = int(self.max_slots)
-        elif include_empty:
-            result["maxSlots"] = int()
         if hasattr(self, "max_slot_size"):
             result["maxSlotSize"] = int(self.max_slot_size)
         elif include_empty:
             result["maxSlotSize"] = int()
+        if hasattr(self, "max_slots"):
+            result["maxSlots"] = int(self.max_slots)
+        elif include_empty:
+            result["maxSlots"] = int()
         return result
 
     # endregion to methods
@@ -88,21 +88,21 @@ class SlotConfigUpdate(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "maxSlots" in dict_ and dict_["maxSlots"] is not None:
-            instance.max_slots = int(dict_["maxSlots"])
-        elif include_empty:
-            instance.max_slots = int()
         if "maxSlotSize" in dict_ and dict_["maxSlotSize"] is not None:
             instance.max_slot_size = int(dict_["maxSlotSize"])
         elif include_empty:
             instance.max_slot_size = int()
+        if "maxSlots" in dict_ and dict_["maxSlots"] is not None:
+            instance.max_slots = int(dict_["maxSlots"])
+        elif include_empty:
+            instance.max_slots = int()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "maxSlots": "max_slots",
             "maxSlotSize": "max_slot_size",
+            "maxSlots": "max_slots",
         }
 
     # endregion static methods

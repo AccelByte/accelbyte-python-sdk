@@ -52,15 +52,15 @@ class QueryPaymentOrders(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        status: (status) OPTIONAL str in query
-
         channel: (channel) OPTIONAL str in query
 
         ext_tx_id: (extTxId) OPTIONAL str in query
 
+        limit: (limit) OPTIONAL int in query
+
         offset: (offset) OPTIONAL int in query
 
-        limit: (limit) OPTIONAL int in query
+        status: (status) OPTIONAL str in query
 
     Responses:
         200: OK - PaymentOrderPagingSlicedResult (successful operation)
@@ -76,11 +76,11 @@ class QueryPaymentOrders(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    status: str                                                                                    # OPTIONAL in [query]
     channel: str                                                                                   # OPTIONAL in [query]
     ext_tx_id: str                                                                                 # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
+    status: str                                                                                    # OPTIONAL in [query]
 
     # endregion fields
 
@@ -152,16 +152,16 @@ class QueryPaymentOrders(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "status"):
-            result["status"] = self.status
         if hasattr(self, "channel"):
             result["channel"] = self.channel
         if hasattr(self, "ext_tx_id"):
             result["extTxId"] = self.ext_tx_id
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
+        if hasattr(self, "status"):
+            result["status"] = self.status
         return result
 
     # endregion get_x_params methods
@@ -181,10 +181,6 @@ class QueryPaymentOrders(Operation):
         self.namespace = value
         return self
 
-    def with_status(self, value: str) -> QueryPaymentOrders:
-        self.status = value
-        return self
-
     def with_channel(self, value: str) -> QueryPaymentOrders:
         self.channel = value
         return self
@@ -193,12 +189,16 @@ class QueryPaymentOrders(Operation):
         self.ext_tx_id = value
         return self
 
+    def with_limit(self, value: int) -> QueryPaymentOrders:
+        self.limit = value
+        return self
+
     def with_offset(self, value: int) -> QueryPaymentOrders:
         self.offset = value
         return self
 
-    def with_limit(self, value: int) -> QueryPaymentOrders:
-        self.limit = value
+    def with_status(self, value: str) -> QueryPaymentOrders:
+        self.status = value
         return self
 
     # endregion with_x methods
@@ -211,10 +211,6 @@ class QueryPaymentOrders(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "status") and self.status:
-            result["status"] = str(self.status)
-        elif include_empty:
-            result["status"] = str()
         if hasattr(self, "channel") and self.channel:
             result["channel"] = str(self.channel)
         elif include_empty:
@@ -223,14 +219,18 @@ class QueryPaymentOrders(Operation):
             result["extTxId"] = str(self.ext_tx_id)
         elif include_empty:
             result["extTxId"] = str()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
+        if hasattr(self, "status") and self.status:
+            result["status"] = str(self.status)
+        elif include_empty:
+            result["status"] = str()
         return result
 
     # endregion to methods
@@ -258,24 +258,24 @@ class QueryPaymentOrders(Operation):
     def create(
         cls,
         namespace: str,
-        status: Optional[str] = None,
         channel: Optional[str] = None,
         ext_tx_id: Optional[str] = None,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
+        status: Optional[str] = None,
     ) -> QueryPaymentOrders:
         instance = cls()
         instance.namespace = namespace
-        if status is not None:
-            instance.status = status
         if channel is not None:
             instance.channel = channel
         if ext_tx_id is not None:
             instance.ext_tx_id = ext_tx_id
-        if offset is not None:
-            instance.offset = offset
         if limit is not None:
             instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
+        if status is not None:
+            instance.status = status
         return instance
 
     @classmethod
@@ -285,10 +285,6 @@ class QueryPaymentOrders(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "status" in dict_ and dict_["status"] is not None:
-            instance.status = str(dict_["status"])
-        elif include_empty:
-            instance.status = str()
         if "channel" in dict_ and dict_["channel"] is not None:
             instance.channel = str(dict_["channel"])
         elif include_empty:
@@ -297,25 +293,29 @@ class QueryPaymentOrders(Operation):
             instance.ext_tx_id = str(dict_["extTxId"])
         elif include_empty:
             instance.ext_tx_id = str()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
+        if "status" in dict_ and dict_["status"] is not None:
+            instance.status = str(dict_["status"])
+        elif include_empty:
+            instance.status = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "status": "status",
             "channel": "channel",
             "extTxId": "ext_tx_id",
-            "offset": "offset",
             "limit": "limit",
+            "offset": "offset",
+            "status": "status",
         }
 
     # endregion static methods

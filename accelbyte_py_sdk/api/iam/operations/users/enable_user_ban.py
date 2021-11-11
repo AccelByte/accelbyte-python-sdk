@@ -46,11 +46,11 @@ class EnableUserBan(Operation):
 
         security: bearer
 
+        ban_id: (banId) REQUIRED str in path
+
         namespace: (namespace) REQUIRED str in path
 
         user_id: (userId) REQUIRED str in path
-
-        ban_id: (banId) REQUIRED str in path
 
     Responses:
         200: OK - ModelUserBanResponse (OK)
@@ -73,9 +73,9 @@ class EnableUserBan(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
+    ban_id: str                                                                                    # REQUIRED in [path]
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
-    ban_id: str                                                                                    # REQUIRED in [path]
 
     # endregion fields
 
@@ -123,9 +123,9 @@ class EnableUserBan(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
+            "ban_id",
             "namespace",
             "user_id",
-            "ban_id",
         ]
 
     # endregion get methods
@@ -139,12 +139,12 @@ class EnableUserBan(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
+        if hasattr(self, "ban_id"):
+            result["banId"] = self.ban_id
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
         if hasattr(self, "user_id"):
             result["userId"] = self.user_id
-        if hasattr(self, "ban_id"):
-            result["banId"] = self.ban_id
         return result
 
     # endregion get_x_params methods
@@ -152,17 +152,21 @@ class EnableUserBan(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
+        if not hasattr(self, "ban_id") or self.ban_id is None:
+            return False
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        if not hasattr(self, "ban_id") or self.ban_id is None:
             return False
         return True
 
     # endregion is/has methods
 
     # region with_x methods
+
+    def with_ban_id(self, value: str) -> EnableUserBan:
+        self.ban_id = value
+        return self
 
     def with_namespace(self, value: str) -> EnableUserBan:
         self.namespace = value
@@ -172,16 +176,16 @@ class EnableUserBan(Operation):
         self.user_id = value
         return self
 
-    def with_ban_id(self, value: str) -> EnableUserBan:
-        self.ban_id = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "ban_id") and self.ban_id:
+            result["banId"] = str(self.ban_id)
+        elif include_empty:
+            result["banId"] = str()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -190,10 +194,6 @@ class EnableUserBan(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "ban_id") and self.ban_id:
-            result["banId"] = str(self.ban_id)
-        elif include_empty:
-            result["banId"] = str()
         return result
 
     # endregion to methods
@@ -236,19 +236,23 @@ class EnableUserBan(Operation):
     @classmethod
     def create(
         cls,
+        ban_id: str,
         namespace: str,
         user_id: str,
-        ban_id: str,
     ) -> EnableUserBan:
         instance = cls()
+        instance.ban_id = ban_id
         instance.namespace = namespace
         instance.user_id = user_id
-        instance.ban_id = ban_id
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> EnableUserBan:
         instance = cls()
+        if "banId" in dict_ and dict_["banId"] is not None:
+            instance.ban_id = str(dict_["banId"])
+        elif include_empty:
+            instance.ban_id = str()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -257,18 +261,14 @@ class EnableUserBan(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
-        if "banId" in dict_ and dict_["banId"] is not None:
-            instance.ban_id = str(dict_["banId"])
-        elif include_empty:
-            instance.ban_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "banId": "ban_id",
             "namespace": "namespace",
             "userId": "user_id",
-            "banId": "ban_id",
         }
 
     # endregion static methods

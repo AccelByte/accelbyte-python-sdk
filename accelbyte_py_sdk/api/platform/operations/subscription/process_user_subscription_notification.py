@@ -55,9 +55,9 @@ class ProcessUserSubscriptionNotification(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
-
         subscription_id: (subscriptionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
 
     Responses:
         204: No Content - (process successfully)
@@ -76,8 +76,8 @@ class ProcessUserSubscriptionNotification(Operation):
 
     body: TradeNotification                                                                        # OPTIONAL in [body]
     namespace: str                                                                                 # REQUIRED in [path]
-    user_id: str                                                                                   # REQUIRED in [path]
     subscription_id: str                                                                           # REQUIRED in [path]
+    user_id: str                                                                                   # REQUIRED in [path]
 
     # endregion fields
 
@@ -126,8 +126,8 @@ class ProcessUserSubscriptionNotification(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "namespace",
-            "user_id",
             "subscription_id",
+            "user_id",
         ]
 
     # endregion get methods
@@ -147,10 +147,10 @@ class ProcessUserSubscriptionNotification(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
         if hasattr(self, "subscription_id"):
             result["subscriptionId"] = self.subscription_id
+        if hasattr(self, "user_id"):
+            result["userId"] = self.user_id
         return result
 
     # endregion get_x_params methods
@@ -160,9 +160,9 @@ class ProcessUserSubscriptionNotification(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
         if not hasattr(self, "subscription_id") or self.subscription_id is None:
+            return False
+        if not hasattr(self, "user_id") or self.user_id is None:
             return False
         return True
 
@@ -178,12 +178,12 @@ class ProcessUserSubscriptionNotification(Operation):
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> ProcessUserSubscriptionNotification:
-        self.user_id = value
-        return self
-
     def with_subscription_id(self, value: str) -> ProcessUserSubscriptionNotification:
         self.subscription_id = value
+        return self
+
+    def with_user_id(self, value: str) -> ProcessUserSubscriptionNotification:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -200,14 +200,14 @@ class ProcessUserSubscriptionNotification(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
         if hasattr(self, "subscription_id") and self.subscription_id:
             result["subscriptionId"] = str(self.subscription_id)
         elif include_empty:
             result["subscriptionId"] = str()
+        if hasattr(self, "user_id") and self.user_id:
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         return result
 
     # endregion to methods
@@ -239,14 +239,14 @@ class ProcessUserSubscriptionNotification(Operation):
     def create(
         cls,
         namespace: str,
-        user_id: str,
         subscription_id: str,
+        user_id: str,
         body: Optional[TradeNotification] = None,
     ) -> ProcessUserSubscriptionNotification:
         instance = cls()
         instance.namespace = namespace
-        instance.user_id = user_id
         instance.subscription_id = subscription_id
+        instance.user_id = user_id
         if body is not None:
             instance.body = body
         return instance
@@ -262,14 +262,14 @@ class ProcessUserSubscriptionNotification(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
         if "subscriptionId" in dict_ and dict_["subscriptionId"] is not None:
             instance.subscription_id = str(dict_["subscriptionId"])
         elif include_empty:
             instance.subscription_id = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         return instance
 
     @staticmethod
@@ -277,8 +277,8 @@ class ProcessUserSubscriptionNotification(Operation):
         return {
             "body": "body",
             "namespace": "namespace",
-            "userId": "user_id",
             "subscriptionId": "subscription_id",
+            "userId": "user_id",
         }
 
     # endregion static methods

@@ -28,29 +28,25 @@ class NotificationProcessResult(Model):
     """Notification process result (NotificationProcessResult)
 
     Properties:
-        status: (status) OPTIONAL str
-
         code: (code) OPTIONAL str
 
         custom_param: (customParam) OPTIONAL Dict[str, Any]
 
         severity: (severity) OPTIONAL int
+
+        status: (status) OPTIONAL str
     """
 
     # region fields
 
-    status: str                                                                                    # OPTIONAL
     code: str                                                                                      # OPTIONAL
     custom_param: Dict[str, Any]                                                                   # OPTIONAL
     severity: int                                                                                  # OPTIONAL
+    status: str                                                                                    # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
-
-    def with_status(self, value: str) -> NotificationProcessResult:
-        self.status = value
-        return self
 
     def with_code(self, value: str) -> NotificationProcessResult:
         self.code = value
@@ -64,16 +60,16 @@ class NotificationProcessResult(Model):
         self.severity = value
         return self
 
+    def with_status(self, value: str) -> NotificationProcessResult:
+        self.status = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "status"):
-            result["status"] = str(self.status)
-        elif include_empty:
-            result["status"] = str()
         if hasattr(self, "code"):
             result["code"] = str(self.code)
         elif include_empty:
@@ -86,6 +82,10 @@ class NotificationProcessResult(Model):
             result["severity"] = int(self.severity)
         elif include_empty:
             result["severity"] = int()
+        if hasattr(self, "status"):
+            result["status"] = str(self.status)
+        elif include_empty:
+            result["status"] = str()
         return result
 
     # endregion to methods
@@ -116,10 +116,6 @@ class NotificationProcessResult(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "status" in dict_ and dict_["status"] is not None:
-            instance.status = str(dict_["status"])
-        elif include_empty:
-            instance.status = str()
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = str(dict_["code"])
         elif include_empty:
@@ -132,15 +128,19 @@ class NotificationProcessResult(Model):
             instance.severity = int(dict_["severity"])
         elif include_empty:
             instance.severity = int()
+        if "status" in dict_ and dict_["status"] is not None:
+            instance.status = str(dict_["status"])
+        elif include_empty:
+            instance.status = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "status": "status",
             "code": "code",
             "customParam": "custom_param",
             "severity": "severity",
+            "status": "status",
         }
 
     # endregion static methods

@@ -50,9 +50,9 @@ class GetActiveCustomGameSessions(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        session_id: (session_id) OPTIONAL str in query
-
         server_region: (server_region) OPTIONAL str in query
+
+        session_id: (session_id) OPTIONAL str in query
 
     Responses:
         200: OK - ModelsActiveCustomGameResponse (custom game session list)
@@ -72,8 +72,8 @@ class GetActiveCustomGameSessions(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    session_id: str                                                                                # OPTIONAL in [query]
     server_region: str                                                                             # OPTIONAL in [query]
+    session_id: str                                                                                # OPTIONAL in [query]
 
     # endregion fields
 
@@ -145,10 +145,10 @@ class GetActiveCustomGameSessions(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "session_id"):
-            result["session_id"] = self.session_id
         if hasattr(self, "server_region"):
             result["server_region"] = self.server_region
+        if hasattr(self, "session_id"):
+            result["session_id"] = self.session_id
         return result
 
     # endregion get_x_params methods
@@ -168,12 +168,12 @@ class GetActiveCustomGameSessions(Operation):
         self.namespace = value
         return self
 
-    def with_session_id(self, value: str) -> GetActiveCustomGameSessions:
-        self.session_id = value
-        return self
-
     def with_server_region(self, value: str) -> GetActiveCustomGameSessions:
         self.server_region = value
+        return self
+
+    def with_session_id(self, value: str) -> GetActiveCustomGameSessions:
+        self.session_id = value
         return self
 
     # endregion with_x methods
@@ -186,14 +186,14 @@ class GetActiveCustomGameSessions(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "session_id") and self.session_id:
-            result["session_id"] = str(self.session_id)
-        elif include_empty:
-            result["session_id"] = str()
         if hasattr(self, "server_region") and self.server_region:
             result["server_region"] = str(self.server_region)
         elif include_empty:
             result["server_region"] = str()
+        if hasattr(self, "session_id") and self.session_id:
+            result["session_id"] = str(self.session_id)
+        elif include_empty:
+            result["session_id"] = str()
         return result
 
     # endregion to methods
@@ -229,15 +229,15 @@ class GetActiveCustomGameSessions(Operation):
     def create(
         cls,
         namespace: str,
-        session_id: Optional[str] = None,
         server_region: Optional[str] = None,
+        session_id: Optional[str] = None,
     ) -> GetActiveCustomGameSessions:
         instance = cls()
         instance.namespace = namespace
-        if session_id is not None:
-            instance.session_id = session_id
         if server_region is not None:
             instance.server_region = server_region
+        if session_id is not None:
+            instance.session_id = session_id
         return instance
 
     @classmethod
@@ -247,22 +247,22 @@ class GetActiveCustomGameSessions(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "session_id" in dict_ and dict_["session_id"] is not None:
-            instance.session_id = str(dict_["session_id"])
-        elif include_empty:
-            instance.session_id = str()
         if "server_region" in dict_ and dict_["server_region"] is not None:
             instance.server_region = str(dict_["server_region"])
         elif include_empty:
             instance.server_region = str()
+        if "session_id" in dict_ and dict_["session_id"] is not None:
+            instance.session_id = str(dict_["session_id"])
+        elif include_empty:
+            instance.session_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "session_id": "session_id",
             "server_region": "server_region",
+            "session_id": "session_id",
         }
 
     # endregion static methods

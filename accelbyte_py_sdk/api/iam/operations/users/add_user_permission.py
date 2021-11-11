@@ -85,13 +85,13 @@ class AddUserPermission(Operation):
 
         body: (body) REQUIRED ModelUpdatePermissionScheduleRequest in body
 
-        namespace: (namespace) REQUIRED str in path
+        action: (action) REQUIRED int in path
 
-        user_id: (userId) REQUIRED str in path
+        namespace: (namespace) REQUIRED str in path
 
         resource: (resource) REQUIRED str in path
 
-        action: (action) REQUIRED int in path
+        user_id: (userId) REQUIRED str in path
 
     Responses:
         204: No Content - (Operation succeeded)
@@ -115,10 +115,10 @@ class AddUserPermission(Operation):
     _location_query: str = None
 
     body: ModelUpdatePermissionScheduleRequest                                                     # REQUIRED in [body]
-    namespace: str                                                                                 # REQUIRED in [path]
-    user_id: str                                                                                   # REQUIRED in [path]
-    resource: str                                                                                  # REQUIRED in [path]
     action: int                                                                                    # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
+    resource: str                                                                                  # REQUIRED in [path]
+    user_id: str                                                                                   # REQUIRED in [path]
 
     # endregion fields
 
@@ -167,10 +167,10 @@ class AddUserPermission(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "body",
-            "namespace",
-            "user_id",
-            "resource",
             "action",
+            "namespace",
+            "resource",
+            "user_id",
         ]
 
     # endregion get methods
@@ -188,14 +188,14 @@ class AddUserPermission(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
-        if hasattr(self, "resource"):
-            result["resource"] = self.resource
         if hasattr(self, "action"):
             result["action"] = self.action
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
+        if hasattr(self, "resource"):
+            result["resource"] = self.resource
+        if hasattr(self, "user_id"):
+            result["userId"] = self.user_id
         return result
 
     # endregion get_x_params methods
@@ -205,13 +205,13 @@ class AddUserPermission(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "body") or self.body is None:
             return False
-        if not hasattr(self, "namespace") or self.namespace is None:
+        if not hasattr(self, "action") or self.action is None:
             return False
-        if not hasattr(self, "user_id") or self.user_id is None:
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         if not hasattr(self, "resource") or self.resource is None:
             return False
-        if not hasattr(self, "action") or self.action is None:
+        if not hasattr(self, "user_id") or self.user_id is None:
             return False
         return True
 
@@ -223,20 +223,20 @@ class AddUserPermission(Operation):
         self.body = value
         return self
 
-    def with_namespace(self, value: str) -> AddUserPermission:
-        self.namespace = value
+    def with_action(self, value: int) -> AddUserPermission:
+        self.action = value
         return self
 
-    def with_user_id(self, value: str) -> AddUserPermission:
-        self.user_id = value
+    def with_namespace(self, value: str) -> AddUserPermission:
+        self.namespace = value
         return self
 
     def with_resource(self, value: str) -> AddUserPermission:
         self.resource = value
         return self
 
-    def with_action(self, value: int) -> AddUserPermission:
-        self.action = value
+    def with_user_id(self, value: str) -> AddUserPermission:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -249,22 +249,22 @@ class AddUserPermission(Operation):
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
             result["body"] = ModelUpdatePermissionScheduleRequest()
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
-        if hasattr(self, "resource") and self.resource:
-            result["resource"] = str(self.resource)
-        elif include_empty:
-            result["resource"] = str()
         if hasattr(self, "action") and self.action:
             result["action"] = int(self.action)
         elif include_empty:
             result["action"] = int()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
+        if hasattr(self, "resource") and self.resource:
+            result["resource"] = str(self.resource)
+        elif include_empty:
+            result["resource"] = str()
+        if hasattr(self, "user_id") and self.user_id:
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         return result
 
     # endregion to methods
@@ -308,17 +308,17 @@ class AddUserPermission(Operation):
     def create(
         cls,
         body: ModelUpdatePermissionScheduleRequest,
-        namespace: str,
-        user_id: str,
-        resource: str,
         action: int,
+        namespace: str,
+        resource: str,
+        user_id: str,
     ) -> AddUserPermission:
         instance = cls()
         instance.body = body
-        instance.namespace = namespace
-        instance.user_id = user_id
-        instance.resource = resource
         instance.action = action
+        instance.namespace = namespace
+        instance.resource = resource
+        instance.user_id = user_id
         return instance
 
     @classmethod
@@ -328,32 +328,32 @@ class AddUserPermission(Operation):
             instance.body = ModelUpdatePermissionScheduleRequest.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
             instance.body = ModelUpdatePermissionScheduleRequest()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
-        if "resource" in dict_ and dict_["resource"] is not None:
-            instance.resource = str(dict_["resource"])
-        elif include_empty:
-            instance.resource = str()
         if "action" in dict_ and dict_["action"] is not None:
             instance.action = int(dict_["action"])
         elif include_empty:
             instance.action = int()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
+        if "resource" in dict_ and dict_["resource"] is not None:
+            instance.resource = str(dict_["resource"])
+        elif include_empty:
+            instance.resource = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
-            "namespace": "namespace",
-            "userId": "user_id",
-            "resource": "resource",
             "action": "action",
+            "namespace": "namespace",
+            "resource": "resource",
+            "userId": "user_id",
         }
 
     # endregion static methods

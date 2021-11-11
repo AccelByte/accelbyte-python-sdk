@@ -28,34 +28,42 @@ class GlobalStatItemInfo(Model):
     """Global stat item info (GlobalStatItemInfo)
 
     Properties:
+        created_at: (createdAt) REQUIRED str
+
+        namespace: (namespace) REQUIRED str
+
         stat_code: (statCode) REQUIRED str
 
         stat_name: (statName) REQUIRED str
 
-        namespace: (namespace) REQUIRED str
+        updated_at: (updatedAt) REQUIRED str
 
         value: (value) REQUIRED float
 
         tags: (tags) OPTIONAL List[str]
-
-        created_at: (createdAt) REQUIRED str
-
-        updated_at: (updatedAt) REQUIRED str
     """
 
     # region fields
 
+    created_at: str                                                                                # REQUIRED
+    namespace: str                                                                                 # REQUIRED
     stat_code: str                                                                                 # REQUIRED
     stat_name: str                                                                                 # REQUIRED
-    namespace: str                                                                                 # REQUIRED
+    updated_at: str                                                                                # REQUIRED
     value: float                                                                                   # REQUIRED
     tags: List[str]                                                                                # OPTIONAL
-    created_at: str                                                                                # REQUIRED
-    updated_at: str                                                                                # REQUIRED
 
     # endregion fields
 
     # region with_x methods
+
+    def with_created_at(self, value: str) -> GlobalStatItemInfo:
+        self.created_at = value
+        return self
+
+    def with_namespace(self, value: str) -> GlobalStatItemInfo:
+        self.namespace = value
+        return self
 
     def with_stat_code(self, value: str) -> GlobalStatItemInfo:
         self.stat_code = value
@@ -65,8 +73,8 @@ class GlobalStatItemInfo(Model):
         self.stat_name = value
         return self
 
-    def with_namespace(self, value: str) -> GlobalStatItemInfo:
-        self.namespace = value
+    def with_updated_at(self, value: str) -> GlobalStatItemInfo:
+        self.updated_at = value
         return self
 
     def with_value(self, value: float) -> GlobalStatItemInfo:
@@ -77,20 +85,20 @@ class GlobalStatItemInfo(Model):
         self.tags = value
         return self
 
-    def with_created_at(self, value: str) -> GlobalStatItemInfo:
-        self.created_at = value
-        return self
-
-    def with_updated_at(self, value: str) -> GlobalStatItemInfo:
-        self.updated_at = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "created_at"):
+            result["createdAt"] = str(self.created_at)
+        elif include_empty:
+            result["createdAt"] = str()
+        if hasattr(self, "namespace"):
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         if hasattr(self, "stat_code"):
             result["statCode"] = str(self.stat_code)
         elif include_empty:
@@ -99,10 +107,10 @@ class GlobalStatItemInfo(Model):
             result["statName"] = str(self.stat_name)
         elif include_empty:
             result["statName"] = str()
-        if hasattr(self, "namespace"):
-            result["namespace"] = str(self.namespace)
+        if hasattr(self, "updated_at"):
+            result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["namespace"] = str()
+            result["updatedAt"] = str()
         if hasattr(self, "value"):
             result["value"] = float(self.value)
         elif include_empty:
@@ -111,14 +119,6 @@ class GlobalStatItemInfo(Model):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
             result["tags"] = []
-        if hasattr(self, "created_at"):
-            result["createdAt"] = str(self.created_at)
-        elif include_empty:
-            result["createdAt"] = str()
-        if hasattr(self, "updated_at"):
-            result["updatedAt"] = str(self.updated_at)
-        elif include_empty:
-            result["updatedAt"] = str()
         return result
 
     # endregion to methods
@@ -152,6 +152,14 @@ class GlobalStatItemInfo(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "createdAt" in dict_ and dict_["createdAt"] is not None:
+            instance.created_at = str(dict_["createdAt"])
+        elif include_empty:
+            instance.created_at = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         if "statCode" in dict_ and dict_["statCode"] is not None:
             instance.stat_code = str(dict_["statCode"])
         elif include_empty:
@@ -160,10 +168,10 @@ class GlobalStatItemInfo(Model):
             instance.stat_name = str(dict_["statName"])
         elif include_empty:
             instance.stat_name = str()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
+        if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
+            instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.namespace = str()
+            instance.updated_at = str()
         if "value" in dict_ and dict_["value"] is not None:
             instance.value = float(dict_["value"])
         elif include_empty:
@@ -172,26 +180,18 @@ class GlobalStatItemInfo(Model):
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
             instance.tags = []
-        if "createdAt" in dict_ and dict_["createdAt"] is not None:
-            instance.created_at = str(dict_["createdAt"])
-        elif include_empty:
-            instance.created_at = str()
-        if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
-            instance.updated_at = str(dict_["updatedAt"])
-        elif include_empty:
-            instance.updated_at = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "createdAt": "created_at",
+            "namespace": "namespace",
             "statCode": "stat_code",
             "statName": "stat_name",
-            "namespace": "namespace",
+            "updatedAt": "updated_at",
             "value": "value",
             "tags": "tags",
-            "createdAt": "created_at",
-            "updatedAt": "updated_at",
         }
 
     # endregion static methods

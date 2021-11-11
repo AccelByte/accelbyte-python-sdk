@@ -57,11 +57,11 @@ class PublicGetUserBanHistoryV3(Operation):
 
         active_only: (activeOnly) OPTIONAL bool in query
 
-        limit: (limit) OPTIONAL int in query
+        after: (after) OPTIONAL str in query
 
         before: (before) OPTIONAL str in query
 
-        after: (after) OPTIONAL str in query
+        limit: (limit) OPTIONAL int in query
 
     Responses:
         200: OK - ModelGetUserBanV3Response (OK)
@@ -89,9 +89,9 @@ class PublicGetUserBanHistoryV3(Operation):
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
     active_only: bool                                                                              # OPTIONAL in [query]
-    limit: int                                                                                     # OPTIONAL in [query]
-    before: str                                                                                    # OPTIONAL in [query]
     after: str                                                                                     # OPTIONAL in [query]
+    before: str                                                                                    # OPTIONAL in [query]
+    limit: int                                                                                     # OPTIONAL in [query]
 
     # endregion fields
 
@@ -168,12 +168,12 @@ class PublicGetUserBanHistoryV3(Operation):
         result = {}
         if hasattr(self, "active_only"):
             result["activeOnly"] = self.active_only
-        if hasattr(self, "limit"):
-            result["limit"] = self.limit
-        if hasattr(self, "before"):
-            result["before"] = self.before
         if hasattr(self, "after"):
             result["after"] = self.after
+        if hasattr(self, "before"):
+            result["before"] = self.before
+        if hasattr(self, "limit"):
+            result["limit"] = self.limit
         return result
 
     # endregion get_x_params methods
@@ -203,16 +203,16 @@ class PublicGetUserBanHistoryV3(Operation):
         self.active_only = value
         return self
 
-    def with_limit(self, value: int) -> PublicGetUserBanHistoryV3:
-        self.limit = value
+    def with_after(self, value: str) -> PublicGetUserBanHistoryV3:
+        self.after = value
         return self
 
     def with_before(self, value: str) -> PublicGetUserBanHistoryV3:
         self.before = value
         return self
 
-    def with_after(self, value: str) -> PublicGetUserBanHistoryV3:
-        self.after = value
+    def with_limit(self, value: int) -> PublicGetUserBanHistoryV3:
+        self.limit = value
         return self
 
     # endregion with_x methods
@@ -233,18 +233,18 @@ class PublicGetUserBanHistoryV3(Operation):
             result["activeOnly"] = bool(self.active_only)
         elif include_empty:
             result["activeOnly"] = bool()
-        if hasattr(self, "limit") and self.limit:
-            result["limit"] = int(self.limit)
-        elif include_empty:
-            result["limit"] = int()
-        if hasattr(self, "before") and self.before:
-            result["before"] = str(self.before)
-        elif include_empty:
-            result["before"] = str()
         if hasattr(self, "after") and self.after:
             result["after"] = str(self.after)
         elif include_empty:
             result["after"] = str()
+        if hasattr(self, "before") and self.before:
+            result["before"] = str(self.before)
+        elif include_empty:
+            result["before"] = str()
+        if hasattr(self, "limit") and self.limit:
+            result["limit"] = int(self.limit)
+        elif include_empty:
+            result["limit"] = int()
         return result
 
     # endregion to methods
@@ -294,21 +294,21 @@ class PublicGetUserBanHistoryV3(Operation):
         namespace: str,
         user_id: str,
         active_only: Optional[bool] = None,
-        limit: Optional[int] = None,
-        before: Optional[str] = None,
         after: Optional[str] = None,
+        before: Optional[str] = None,
+        limit: Optional[int] = None,
     ) -> PublicGetUserBanHistoryV3:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
         if active_only is not None:
             instance.active_only = active_only
-        if limit is not None:
-            instance.limit = limit
-        if before is not None:
-            instance.before = before
         if after is not None:
             instance.after = after
+        if before is not None:
+            instance.before = before
+        if limit is not None:
+            instance.limit = limit
         return instance
 
     @classmethod
@@ -326,18 +326,18 @@ class PublicGetUserBanHistoryV3(Operation):
             instance.active_only = bool(dict_["activeOnly"])
         elif include_empty:
             instance.active_only = bool()
-        if "limit" in dict_ and dict_["limit"] is not None:
-            instance.limit = int(dict_["limit"])
-        elif include_empty:
-            instance.limit = int()
-        if "before" in dict_ and dict_["before"] is not None:
-            instance.before = str(dict_["before"])
-        elif include_empty:
-            instance.before = str()
         if "after" in dict_ and dict_["after"] is not None:
             instance.after = str(dict_["after"])
         elif include_empty:
             instance.after = str()
+        if "before" in dict_ and dict_["before"] is not None:
+            instance.before = str(dict_["before"])
+        elif include_empty:
+            instance.before = str()
+        if "limit" in dict_ and dict_["limit"] is not None:
+            instance.limit = int(dict_["limit"])
+        elif include_empty:
+            instance.limit = int()
         return instance
 
     @staticmethod
@@ -346,9 +346,9 @@ class PublicGetUserBanHistoryV3(Operation):
             "namespace": "namespace",
             "userId": "user_id",
             "activeOnly": "active_only",
-            "limit": "limit",
-            "before": "before",
             "after": "after",
+            "before": "before",
+            "limit": "limit",
         }
 
     # endregion static methods

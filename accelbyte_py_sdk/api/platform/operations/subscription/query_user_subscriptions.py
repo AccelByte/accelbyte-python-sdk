@@ -54,19 +54,19 @@ class QueryUserSubscriptions(Operation):
 
         user_id: (userId) REQUIRED str in path
 
+        charge_status: (chargeStatus) OPTIONAL str in query
+
         item_id: (itemId) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
 
         sku: (sku) OPTIONAL str in query
 
         status: (status) OPTIONAL str in query
 
-        charge_status: (chargeStatus) OPTIONAL str in query
-
         subscribed_by: (subscribedBy) OPTIONAL str in query
-
-        offset: (offset) OPTIONAL int in query
-
-        limit: (limit) OPTIONAL int in query
 
     Responses:
         200: OK - SubscriptionPagingSlicedResult (successful operation)
@@ -83,13 +83,13 @@ class QueryUserSubscriptions(Operation):
 
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
+    charge_status: str                                                                             # OPTIONAL in [query]
     item_id: str                                                                                   # OPTIONAL in [query]
+    limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
     sku: str                                                                                       # OPTIONAL in [query]
     status: str                                                                                    # OPTIONAL in [query]
-    charge_status: str                                                                             # OPTIONAL in [query]
     subscribed_by: str                                                                             # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
-    limit: int                                                                                     # OPTIONAL in [query]
 
     # endregion fields
 
@@ -164,20 +164,20 @@ class QueryUserSubscriptions(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "charge_status"):
+            result["chargeStatus"] = self.charge_status
         if hasattr(self, "item_id"):
             result["itemId"] = self.item_id
+        if hasattr(self, "limit"):
+            result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         if hasattr(self, "sku"):
             result["sku"] = self.sku
         if hasattr(self, "status"):
             result["status"] = self.status
-        if hasattr(self, "charge_status"):
-            result["chargeStatus"] = self.charge_status
         if hasattr(self, "subscribed_by"):
             result["subscribedBy"] = self.subscribed_by
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
-        if hasattr(self, "limit"):
-            result["limit"] = self.limit
         return result
 
     # endregion get_x_params methods
@@ -203,8 +203,20 @@ class QueryUserSubscriptions(Operation):
         self.user_id = value
         return self
 
+    def with_charge_status(self, value: str) -> QueryUserSubscriptions:
+        self.charge_status = value
+        return self
+
     def with_item_id(self, value: str) -> QueryUserSubscriptions:
         self.item_id = value
+        return self
+
+    def with_limit(self, value: int) -> QueryUserSubscriptions:
+        self.limit = value
+        return self
+
+    def with_offset(self, value: int) -> QueryUserSubscriptions:
+        self.offset = value
         return self
 
     def with_sku(self, value: str) -> QueryUserSubscriptions:
@@ -215,20 +227,8 @@ class QueryUserSubscriptions(Operation):
         self.status = value
         return self
 
-    def with_charge_status(self, value: str) -> QueryUserSubscriptions:
-        self.charge_status = value
-        return self
-
     def with_subscribed_by(self, value: str) -> QueryUserSubscriptions:
         self.subscribed_by = value
-        return self
-
-    def with_offset(self, value: int) -> QueryUserSubscriptions:
-        self.offset = value
-        return self
-
-    def with_limit(self, value: int) -> QueryUserSubscriptions:
-        self.limit = value
         return self
 
     # endregion with_x methods
@@ -245,10 +245,22 @@ class QueryUserSubscriptions(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
+        if hasattr(self, "charge_status") and self.charge_status:
+            result["chargeStatus"] = str(self.charge_status)
+        elif include_empty:
+            result["chargeStatus"] = str()
         if hasattr(self, "item_id") and self.item_id:
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
+        if hasattr(self, "limit") and self.limit:
+            result["limit"] = int(self.limit)
+        elif include_empty:
+            result["limit"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
         if hasattr(self, "sku") and self.sku:
             result["sku"] = str(self.sku)
         elif include_empty:
@@ -257,22 +269,10 @@ class QueryUserSubscriptions(Operation):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
-        if hasattr(self, "charge_status") and self.charge_status:
-            result["chargeStatus"] = str(self.charge_status)
-        elif include_empty:
-            result["chargeStatus"] = str()
         if hasattr(self, "subscribed_by") and self.subscribed_by:
             result["subscribedBy"] = str(self.subscribed_by)
         elif include_empty:
             result["subscribedBy"] = str()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
-        if hasattr(self, "limit") and self.limit:
-            result["limit"] = int(self.limit)
-        elif include_empty:
-            result["limit"] = int()
         return result
 
     # endregion to methods
@@ -301,31 +301,31 @@ class QueryUserSubscriptions(Operation):
         cls,
         namespace: str,
         user_id: str,
+        charge_status: Optional[str] = None,
         item_id: Optional[str] = None,
+        limit: Optional[int] = None,
+        offset: Optional[int] = None,
         sku: Optional[str] = None,
         status: Optional[str] = None,
-        charge_status: Optional[str] = None,
         subscribed_by: Optional[str] = None,
-        offset: Optional[int] = None,
-        limit: Optional[int] = None,
     ) -> QueryUserSubscriptions:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
+        if charge_status is not None:
+            instance.charge_status = charge_status
         if item_id is not None:
             instance.item_id = item_id
+        if limit is not None:
+            instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
         if sku is not None:
             instance.sku = sku
         if status is not None:
             instance.status = status
-        if charge_status is not None:
-            instance.charge_status = charge_status
         if subscribed_by is not None:
             instance.subscribed_by = subscribed_by
-        if offset is not None:
-            instance.offset = offset
-        if limit is not None:
-            instance.limit = limit
         return instance
 
     @classmethod
@@ -339,10 +339,22 @@ class QueryUserSubscriptions(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
+        if "chargeStatus" in dict_ and dict_["chargeStatus"] is not None:
+            instance.charge_status = str(dict_["chargeStatus"])
+        elif include_empty:
+            instance.charge_status = str()
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
             instance.item_id = str()
+        if "limit" in dict_ and dict_["limit"] is not None:
+            instance.limit = int(dict_["limit"])
+        elif include_empty:
+            instance.limit = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:
@@ -351,22 +363,10 @@ class QueryUserSubscriptions(Operation):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = str()
-        if "chargeStatus" in dict_ and dict_["chargeStatus"] is not None:
-            instance.charge_status = str(dict_["chargeStatus"])
-        elif include_empty:
-            instance.charge_status = str()
         if "subscribedBy" in dict_ and dict_["subscribedBy"] is not None:
             instance.subscribed_by = str(dict_["subscribedBy"])
         elif include_empty:
             instance.subscribed_by = str()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
-        if "limit" in dict_ and dict_["limit"] is not None:
-            instance.limit = int(dict_["limit"])
-        elif include_empty:
-            instance.limit = int()
         return instance
 
     @staticmethod
@@ -374,13 +374,13 @@ class QueryUserSubscriptions(Operation):
         return {
             "namespace": "namespace",
             "userId": "user_id",
+            "chargeStatus": "charge_status",
             "itemId": "item_id",
+            "limit": "limit",
+            "offset": "offset",
             "sku": "sku",
             "status": "status",
-            "chargeStatus": "charge_status",
             "subscribedBy": "subscribed_by",
-            "offset": "offset",
-            "limit": "limit",
         }
 
     # endregion static methods

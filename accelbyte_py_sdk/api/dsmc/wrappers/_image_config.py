@@ -106,15 +106,15 @@ def import_images(file: Any, x_additional_headers: Optional[Dict[str, str]] = No
 
 
 @same_doc_as(ListImages)
-def list_images(q: Optional[str] = None, offset: Optional[int] = None, count: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def list_images(count: Optional[int] = None, offset: Optional[int] = None, q: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = ListImages.create(
-        q=q,
-        offset=offset,
         count=count,
+        offset=offset,
+        q=q,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

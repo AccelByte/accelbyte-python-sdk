@@ -28,39 +28,31 @@ class SteamIAPConfig(Model):
     """Steam IAP config (SteamIAPConfig)
 
     Properties:
-        rvn: (rvn) OPTIONAL int
-
         created_at: (createdAt) OPTIONAL str
-
-        updated_at: (updatedAt) OPTIONAL str
 
         namespace: (namespace) OPTIONAL str
 
         publisher_authentication_key: (publisherAuthenticationKey) OPTIONAL str
+
+        rvn: (rvn) OPTIONAL int
+
+        updated_at: (updatedAt) OPTIONAL str
     """
 
     # region fields
 
-    rvn: int                                                                                       # OPTIONAL
     created_at: str                                                                                # OPTIONAL
-    updated_at: str                                                                                # OPTIONAL
     namespace: str                                                                                 # OPTIONAL
     publisher_authentication_key: str                                                              # OPTIONAL
+    rvn: int                                                                                       # OPTIONAL
+    updated_at: str                                                                                # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_rvn(self, value: int) -> SteamIAPConfig:
-        self.rvn = value
-        return self
-
     def with_created_at(self, value: str) -> SteamIAPConfig:
         self.created_at = value
-        return self
-
-    def with_updated_at(self, value: str) -> SteamIAPConfig:
-        self.updated_at = value
         return self
 
     def with_namespace(self, value: str) -> SteamIAPConfig:
@@ -71,24 +63,24 @@ class SteamIAPConfig(Model):
         self.publisher_authentication_key = value
         return self
 
+    def with_rvn(self, value: int) -> SteamIAPConfig:
+        self.rvn = value
+        return self
+
+    def with_updated_at(self, value: str) -> SteamIAPConfig:
+        self.updated_at = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "rvn"):
-            result["rvn"] = int(self.rvn)
-        elif include_empty:
-            result["rvn"] = int()
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "updated_at"):
-            result["updatedAt"] = str(self.updated_at)
-        elif include_empty:
-            result["updatedAt"] = str()
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -97,6 +89,14 @@ class SteamIAPConfig(Model):
             result["publisherAuthenticationKey"] = str(self.publisher_authentication_key)
         elif include_empty:
             result["publisherAuthenticationKey"] = str()
+        if hasattr(self, "rvn"):
+            result["rvn"] = int(self.rvn)
+        elif include_empty:
+            result["rvn"] = int()
+        if hasattr(self, "updated_at"):
+            result["updatedAt"] = str(self.updated_at)
+        elif include_empty:
+            result["updatedAt"] = str()
         return result
 
     # endregion to methods
@@ -130,18 +130,10 @@ class SteamIAPConfig(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "rvn" in dict_ and dict_["rvn"] is not None:
-            instance.rvn = int(dict_["rvn"])
-        elif include_empty:
-            instance.rvn = int()
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
             instance.created_at = str()
-        if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
-            instance.updated_at = str(dict_["updatedAt"])
-        elif include_empty:
-            instance.updated_at = str()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -150,16 +142,24 @@ class SteamIAPConfig(Model):
             instance.publisher_authentication_key = str(dict_["publisherAuthenticationKey"])
         elif include_empty:
             instance.publisher_authentication_key = str()
+        if "rvn" in dict_ and dict_["rvn"] is not None:
+            instance.rvn = int(dict_["rvn"])
+        elif include_empty:
+            instance.rvn = int()
+        if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
+            instance.updated_at = str(dict_["updatedAt"])
+        elif include_empty:
+            instance.updated_at = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "rvn": "rvn",
             "createdAt": "created_at",
-            "updatedAt": "updated_at",
             "namespace": "namespace",
             "publisherAuthenticationKey": "publisher_authentication_key",
+            "rvn": "rvn",
+            "updatedAt": "updated_at",
         }
 
     # endregion static methods

@@ -30,26 +30,26 @@ class UserGameProfiles(Model):
     """User game profiles (UserGameProfiles)
 
     Properties:
-        user_id: (userId) OPTIONAL str
-
         game_profiles: (gameProfiles) OPTIONAL List[GameProfilePublicInfo]
+
+        user_id: (userId) OPTIONAL str
     """
 
     # region fields
 
-    user_id: str                                                                                   # OPTIONAL
     game_profiles: List[GameProfilePublicInfo]                                                     # OPTIONAL
+    user_id: str                                                                                   # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_user_id(self, value: str) -> UserGameProfiles:
-        self.user_id = value
-        return self
-
     def with_game_profiles(self, value: List[GameProfilePublicInfo]) -> UserGameProfiles:
         self.game_profiles = value
+        return self
+
+    def with_user_id(self, value: str) -> UserGameProfiles:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -58,14 +58,14 @@ class UserGameProfiles(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "user_id"):
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
         if hasattr(self, "game_profiles"):
             result["gameProfiles"] = [i0.to_dict(include_empty=include_empty) for i0 in self.game_profiles]
         elif include_empty:
             result["gameProfiles"] = []
+        if hasattr(self, "user_id"):
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         return result
 
     # endregion to methods
@@ -90,21 +90,21 @@ class UserGameProfiles(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
         if "gameProfiles" in dict_ and dict_["gameProfiles"] is not None:
             instance.game_profiles = [GameProfilePublicInfo.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["gameProfiles"]]
         elif include_empty:
             instance.game_profiles = []
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "userId": "user_id",
             "gameProfiles": "game_profiles",
+            "userId": "user_id",
         }
 
     # endregion static methods

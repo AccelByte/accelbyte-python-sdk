@@ -28,41 +28,49 @@ class FulfillmentItem(Model):
     """Fulfillment item (FulfillmentItem)
 
     Properties:
-        store_id: (storeId) OPTIONAL str
+        quantity: (quantity) REQUIRED int
+
+        extra_subscription_days: (extraSubscriptionDays) OPTIONAL int
 
         item_id: (itemId) OPTIONAL str
+
+        item_name: (itemName) OPTIONAL str
 
         item_sku: (itemSku) OPTIONAL str
 
         item_type: (itemType) OPTIONAL str
 
-        item_name: (itemName) OPTIONAL str
-
-        quantity: (quantity) REQUIRED int
-
-        extra_subscription_days: (extraSubscriptionDays) OPTIONAL int
+        store_id: (storeId) OPTIONAL str
     """
 
     # region fields
 
-    store_id: str                                                                                  # OPTIONAL
-    item_id: str                                                                                   # OPTIONAL
-    item_sku: str                                                                                  # OPTIONAL
-    item_type: str                                                                                 # OPTIONAL
-    item_name: str                                                                                 # OPTIONAL
     quantity: int                                                                                  # REQUIRED
     extra_subscription_days: int                                                                   # OPTIONAL
+    item_id: str                                                                                   # OPTIONAL
+    item_name: str                                                                                 # OPTIONAL
+    item_sku: str                                                                                  # OPTIONAL
+    item_type: str                                                                                 # OPTIONAL
+    store_id: str                                                                                  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_store_id(self, value: str) -> FulfillmentItem:
-        self.store_id = value
+    def with_quantity(self, value: int) -> FulfillmentItem:
+        self.quantity = value
+        return self
+
+    def with_extra_subscription_days(self, value: int) -> FulfillmentItem:
+        self.extra_subscription_days = value
         return self
 
     def with_item_id(self, value: str) -> FulfillmentItem:
         self.item_id = value
+        return self
+
+    def with_item_name(self, value: str) -> FulfillmentItem:
+        self.item_name = value
         return self
 
     def with_item_sku(self, value: str) -> FulfillmentItem:
@@ -73,16 +81,8 @@ class FulfillmentItem(Model):
         self.item_type = value
         return self
 
-    def with_item_name(self, value: str) -> FulfillmentItem:
-        self.item_name = value
-        return self
-
-    def with_quantity(self, value: int) -> FulfillmentItem:
-        self.quantity = value
-        return self
-
-    def with_extra_subscription_days(self, value: int) -> FulfillmentItem:
-        self.extra_subscription_days = value
+    def with_store_id(self, value: str) -> FulfillmentItem:
+        self.store_id = value
         return self
 
     # endregion with_x methods
@@ -91,26 +91,6 @@ class FulfillmentItem(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "store_id"):
-            result["storeId"] = str(self.store_id)
-        elif include_empty:
-            result["storeId"] = str()
-        if hasattr(self, "item_id"):
-            result["itemId"] = str(self.item_id)
-        elif include_empty:
-            result["itemId"] = str()
-        if hasattr(self, "item_sku"):
-            result["itemSku"] = str(self.item_sku)
-        elif include_empty:
-            result["itemSku"] = str()
-        if hasattr(self, "item_type"):
-            result["itemType"] = str(self.item_type)
-        elif include_empty:
-            result["itemType"] = str()
-        if hasattr(self, "item_name"):
-            result["itemName"] = str(self.item_name)
-        elif include_empty:
-            result["itemName"] = str()
         if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
@@ -119,6 +99,26 @@ class FulfillmentItem(Model):
             result["extraSubscriptionDays"] = int(self.extra_subscription_days)
         elif include_empty:
             result["extraSubscriptionDays"] = int()
+        if hasattr(self, "item_id"):
+            result["itemId"] = str(self.item_id)
+        elif include_empty:
+            result["itemId"] = str()
+        if hasattr(self, "item_name"):
+            result["itemName"] = str(self.item_name)
+        elif include_empty:
+            result["itemName"] = str()
+        if hasattr(self, "item_sku"):
+            result["itemSku"] = str(self.item_sku)
+        elif include_empty:
+            result["itemSku"] = str()
+        if hasattr(self, "item_type"):
+            result["itemType"] = str(self.item_type)
+        elif include_empty:
+            result["itemType"] = str()
+        if hasattr(self, "store_id"):
+            result["storeId"] = str(self.store_id)
+        elif include_empty:
+            result["storeId"] = str()
         return result
 
     # endregion to methods
@@ -157,26 +157,6 @@ class FulfillmentItem(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "storeId" in dict_ and dict_["storeId"] is not None:
-            instance.store_id = str(dict_["storeId"])
-        elif include_empty:
-            instance.store_id = str()
-        if "itemId" in dict_ and dict_["itemId"] is not None:
-            instance.item_id = str(dict_["itemId"])
-        elif include_empty:
-            instance.item_id = str()
-        if "itemSku" in dict_ and dict_["itemSku"] is not None:
-            instance.item_sku = str(dict_["itemSku"])
-        elif include_empty:
-            instance.item_sku = str()
-        if "itemType" in dict_ and dict_["itemType"] is not None:
-            instance.item_type = str(dict_["itemType"])
-        elif include_empty:
-            instance.item_type = str()
-        if "itemName" in dict_ and dict_["itemName"] is not None:
-            instance.item_name = str(dict_["itemName"])
-        elif include_empty:
-            instance.item_name = str()
         if "quantity" in dict_ and dict_["quantity"] is not None:
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
@@ -185,18 +165,38 @@ class FulfillmentItem(Model):
             instance.extra_subscription_days = int(dict_["extraSubscriptionDays"])
         elif include_empty:
             instance.extra_subscription_days = int()
+        if "itemId" in dict_ and dict_["itemId"] is not None:
+            instance.item_id = str(dict_["itemId"])
+        elif include_empty:
+            instance.item_id = str()
+        if "itemName" in dict_ and dict_["itemName"] is not None:
+            instance.item_name = str(dict_["itemName"])
+        elif include_empty:
+            instance.item_name = str()
+        if "itemSku" in dict_ and dict_["itemSku"] is not None:
+            instance.item_sku = str(dict_["itemSku"])
+        elif include_empty:
+            instance.item_sku = str()
+        if "itemType" in dict_ and dict_["itemType"] is not None:
+            instance.item_type = str(dict_["itemType"])
+        elif include_empty:
+            instance.item_type = str()
+        if "storeId" in dict_ and dict_["storeId"] is not None:
+            instance.store_id = str(dict_["storeId"])
+        elif include_empty:
+            instance.store_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "storeId": "store_id",
-            "itemId": "item_id",
-            "itemSku": "item_sku",
-            "itemType": "item_type",
-            "itemName": "item_name",
             "quantity": "quantity",
             "extraSubscriptionDays": "extra_subscription_days",
+            "itemId": "item_id",
+            "itemName": "item_name",
+            "itemSku": "item_sku",
+            "itemType": "item_type",
+            "storeId": "store_id",
         }
 
     # endregion static methods

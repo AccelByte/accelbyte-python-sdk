@@ -40,19 +40,11 @@ class OauthmodelTokenResponse(Model):
 
         expires_in: (expires_in) REQUIRED int
 
-        is_comply: (is_comply) OPTIONAL bool
-
-        jflgs: (jflgs) OPTIONAL int
-
         namespace: (namespace) REQUIRED str
 
         namespace_roles: (namespace_roles) REQUIRED List[AccountcommonNamespaceRole]
 
         permissions: (permissions) REQUIRED List[AccountcommonPermission]
-
-        platform_id: (platform_id) OPTIONAL str
-
-        platform_user_id: (platform_user_id) OPTIONAL str
 
         refresh_token: (refresh_token) REQUIRED str
 
@@ -61,6 +53,14 @@ class OauthmodelTokenResponse(Model):
         token_type: (token_type) REQUIRED str
 
         user_id: (user_id) REQUIRED str
+
+        is_comply: (is_comply) OPTIONAL bool
+
+        jflgs: (jflgs) OPTIONAL int
+
+        platform_id: (platform_id) OPTIONAL str
+
+        platform_user_id: (platform_user_id) OPTIONAL str
     """
 
     # region fields
@@ -69,17 +69,17 @@ class OauthmodelTokenResponse(Model):
     bans: List[AccountcommonJWTBan]                                                                # REQUIRED
     display_name: str                                                                              # REQUIRED
     expires_in: int                                                                                # REQUIRED
-    is_comply: bool                                                                                # OPTIONAL
-    jflgs: int                                                                                     # OPTIONAL
     namespace: str                                                                                 # REQUIRED
     namespace_roles: List[AccountcommonNamespaceRole]                                              # REQUIRED
     permissions: List[AccountcommonPermission]                                                     # REQUIRED
-    platform_id: str                                                                               # OPTIONAL
-    platform_user_id: str                                                                          # OPTIONAL
     refresh_token: str                                                                             # REQUIRED
     roles: List[str]                                                                               # REQUIRED
     token_type: str                                                                                # REQUIRED
     user_id: str                                                                                   # REQUIRED
+    is_comply: bool                                                                                # OPTIONAL
+    jflgs: int                                                                                     # OPTIONAL
+    platform_id: str                                                                               # OPTIONAL
+    platform_user_id: str                                                                          # OPTIONAL
 
     # endregion fields
 
@@ -101,14 +101,6 @@ class OauthmodelTokenResponse(Model):
         self.expires_in = value
         return self
 
-    def with_is_comply(self, value: bool) -> OauthmodelTokenResponse:
-        self.is_comply = value
-        return self
-
-    def with_jflgs(self, value: int) -> OauthmodelTokenResponse:
-        self.jflgs = value
-        return self
-
     def with_namespace(self, value: str) -> OauthmodelTokenResponse:
         self.namespace = value
         return self
@@ -119,14 +111,6 @@ class OauthmodelTokenResponse(Model):
 
     def with_permissions(self, value: List[AccountcommonPermission]) -> OauthmodelTokenResponse:
         self.permissions = value
-        return self
-
-    def with_platform_id(self, value: str) -> OauthmodelTokenResponse:
-        self.platform_id = value
-        return self
-
-    def with_platform_user_id(self, value: str) -> OauthmodelTokenResponse:
-        self.platform_user_id = value
         return self
 
     def with_refresh_token(self, value: str) -> OauthmodelTokenResponse:
@@ -143,6 +127,22 @@ class OauthmodelTokenResponse(Model):
 
     def with_user_id(self, value: str) -> OauthmodelTokenResponse:
         self.user_id = value
+        return self
+
+    def with_is_comply(self, value: bool) -> OauthmodelTokenResponse:
+        self.is_comply = value
+        return self
+
+    def with_jflgs(self, value: int) -> OauthmodelTokenResponse:
+        self.jflgs = value
+        return self
+
+    def with_platform_id(self, value: str) -> OauthmodelTokenResponse:
+        self.platform_id = value
+        return self
+
+    def with_platform_user_id(self, value: str) -> OauthmodelTokenResponse:
+        self.platform_user_id = value
         return self
 
     # endregion with_x methods
@@ -167,14 +167,6 @@ class OauthmodelTokenResponse(Model):
             result["expires_in"] = int(self.expires_in)
         elif include_empty:
             result["expires_in"] = int()
-        if hasattr(self, "is_comply"):
-            result["is_comply"] = bool(self.is_comply)
-        elif include_empty:
-            result["is_comply"] = bool()
-        if hasattr(self, "jflgs"):
-            result["jflgs"] = int(self.jflgs)
-        elif include_empty:
-            result["jflgs"] = int()
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -187,14 +179,6 @@ class OauthmodelTokenResponse(Model):
             result["permissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.permissions]
         elif include_empty:
             result["permissions"] = []
-        if hasattr(self, "platform_id"):
-            result["platform_id"] = str(self.platform_id)
-        elif include_empty:
-            result["platform_id"] = str()
-        if hasattr(self, "platform_user_id"):
-            result["platform_user_id"] = str(self.platform_user_id)
-        elif include_empty:
-            result["platform_user_id"] = str()
         if hasattr(self, "refresh_token"):
             result["refresh_token"] = str(self.refresh_token)
         elif include_empty:
@@ -211,6 +195,22 @@ class OauthmodelTokenResponse(Model):
             result["user_id"] = str(self.user_id)
         elif include_empty:
             result["user_id"] = str()
+        if hasattr(self, "is_comply"):
+            result["is_comply"] = bool(self.is_comply)
+        elif include_empty:
+            result["is_comply"] = bool()
+        if hasattr(self, "jflgs"):
+            result["jflgs"] = int(self.jflgs)
+        elif include_empty:
+            result["jflgs"] = int()
+        if hasattr(self, "platform_id"):
+            result["platform_id"] = str(self.platform_id)
+        elif include_empty:
+            result["platform_id"] = str()
+        if hasattr(self, "platform_user_id"):
+            result["platform_user_id"] = str(self.platform_user_id)
+        elif include_empty:
+            result["platform_user_id"] = str()
         return result
 
     # endregion to methods
@@ -279,14 +279,6 @@ class OauthmodelTokenResponse(Model):
             instance.expires_in = int(dict_["expires_in"])
         elif include_empty:
             instance.expires_in = int()
-        if "is_comply" in dict_ and dict_["is_comply"] is not None:
-            instance.is_comply = bool(dict_["is_comply"])
-        elif include_empty:
-            instance.is_comply = bool()
-        if "jflgs" in dict_ and dict_["jflgs"] is not None:
-            instance.jflgs = int(dict_["jflgs"])
-        elif include_empty:
-            instance.jflgs = int()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -299,14 +291,6 @@ class OauthmodelTokenResponse(Model):
             instance.permissions = [AccountcommonPermission.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["permissions"]]
         elif include_empty:
             instance.permissions = []
-        if "platform_id" in dict_ and dict_["platform_id"] is not None:
-            instance.platform_id = str(dict_["platform_id"])
-        elif include_empty:
-            instance.platform_id = str()
-        if "platform_user_id" in dict_ and dict_["platform_user_id"] is not None:
-            instance.platform_user_id = str(dict_["platform_user_id"])
-        elif include_empty:
-            instance.platform_user_id = str()
         if "refresh_token" in dict_ and dict_["refresh_token"] is not None:
             instance.refresh_token = str(dict_["refresh_token"])
         elif include_empty:
@@ -323,6 +307,22 @@ class OauthmodelTokenResponse(Model):
             instance.user_id = str(dict_["user_id"])
         elif include_empty:
             instance.user_id = str()
+        if "is_comply" in dict_ and dict_["is_comply"] is not None:
+            instance.is_comply = bool(dict_["is_comply"])
+        elif include_empty:
+            instance.is_comply = bool()
+        if "jflgs" in dict_ and dict_["jflgs"] is not None:
+            instance.jflgs = int(dict_["jflgs"])
+        elif include_empty:
+            instance.jflgs = int()
+        if "platform_id" in dict_ and dict_["platform_id"] is not None:
+            instance.platform_id = str(dict_["platform_id"])
+        elif include_empty:
+            instance.platform_id = str()
+        if "platform_user_id" in dict_ and dict_["platform_user_id"] is not None:
+            instance.platform_user_id = str(dict_["platform_user_id"])
+        elif include_empty:
+            instance.platform_user_id = str()
         return instance
 
     @staticmethod
@@ -332,17 +332,17 @@ class OauthmodelTokenResponse(Model):
             "bans": "bans",
             "display_name": "display_name",
             "expires_in": "expires_in",
-            "is_comply": "is_comply",
-            "jflgs": "jflgs",
             "namespace": "namespace",
             "namespace_roles": "namespace_roles",
             "permissions": "permissions",
-            "platform_id": "platform_id",
-            "platform_user_id": "platform_user_id",
             "refresh_token": "refresh_token",
             "roles": "roles",
             "token_type": "token_type",
             "user_id": "user_id",
+            "is_comply": "is_comply",
+            "jflgs": "jflgs",
+            "platform_id": "platform_id",
+            "platform_user_id": "platform_user_id",
         }
 
     # endregion static methods

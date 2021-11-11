@@ -31,145 +31,145 @@ class Transaction(Model):
     """Transaction (Transaction)
 
     Properties:
-        tx_id: (txId) OPTIONAL str
+        additional_data: (additionalData) OPTIONAL AdditionalData
 
         amount: (amount) OPTIONAL int
 
-        tax: (tax) OPTIONAL int
-
-        vat: (vat) OPTIONAL int
-
-        sales_tax: (salesTax) OPTIONAL int
-
-        payment_provider_fee: (paymentProviderFee) OPTIONAL int
-
-        payment_method_fee: (paymentMethodFee) OPTIONAL int
-
         currency: (currency) OPTIONAL CurrencySummary
-
-        type_: (type) OPTIONAL str
-
-        status: (status) OPTIONAL str
-
-        provider: (provider) OPTIONAL str
-
-        payment_method: (paymentMethod) OPTIONAL str
-
-        merchant_id: (merchantId) OPTIONAL str
-
-        ext_tx_id: (extTxId) OPTIONAL str
-
-        ext_status_code: (extStatusCode) OPTIONAL str
 
         ext_message: (extMessage) OPTIONAL str
 
-        tx_end_time: (txEndTime) OPTIONAL str
+        ext_status_code: (extStatusCode) OPTIONAL str
 
-        additional_data: (additionalData) OPTIONAL AdditionalData
+        ext_tx_id: (extTxId) OPTIONAL str
+
+        merchant_id: (merchantId) OPTIONAL str
 
         notified: (notified) OPTIONAL bool
+
+        payment_method: (paymentMethod) OPTIONAL str
+
+        payment_method_fee: (paymentMethodFee) OPTIONAL int
+
+        payment_provider_fee: (paymentProviderFee) OPTIONAL int
+
+        provider: (provider) OPTIONAL str
+
+        sales_tax: (salesTax) OPTIONAL int
+
+        status: (status) OPTIONAL str
+
+        tax: (tax) OPTIONAL int
+
+        tx_end_time: (txEndTime) OPTIONAL str
+
+        tx_id: (txId) OPTIONAL str
+
+        type_: (type) OPTIONAL str
+
+        vat: (vat) OPTIONAL int
     """
 
     # region fields
 
-    tx_id: str                                                                                     # OPTIONAL
-    amount: int                                                                                    # OPTIONAL
-    tax: int                                                                                       # OPTIONAL
-    vat: int                                                                                       # OPTIONAL
-    sales_tax: int                                                                                 # OPTIONAL
-    payment_provider_fee: int                                                                      # OPTIONAL
-    payment_method_fee: int                                                                        # OPTIONAL
-    currency: CurrencySummary                                                                      # OPTIONAL
-    type_: str                                                                                     # OPTIONAL
-    status: str                                                                                    # OPTIONAL
-    provider: str                                                                                  # OPTIONAL
-    payment_method: str                                                                            # OPTIONAL
-    merchant_id: str                                                                               # OPTIONAL
-    ext_tx_id: str                                                                                 # OPTIONAL
-    ext_status_code: str                                                                           # OPTIONAL
-    ext_message: str                                                                               # OPTIONAL
-    tx_end_time: str                                                                               # OPTIONAL
     additional_data: AdditionalData                                                                # OPTIONAL
+    amount: int                                                                                    # OPTIONAL
+    currency: CurrencySummary                                                                      # OPTIONAL
+    ext_message: str                                                                               # OPTIONAL
+    ext_status_code: str                                                                           # OPTIONAL
+    ext_tx_id: str                                                                                 # OPTIONAL
+    merchant_id: str                                                                               # OPTIONAL
     notified: bool                                                                                 # OPTIONAL
+    payment_method: str                                                                            # OPTIONAL
+    payment_method_fee: int                                                                        # OPTIONAL
+    payment_provider_fee: int                                                                      # OPTIONAL
+    provider: str                                                                                  # OPTIONAL
+    sales_tax: int                                                                                 # OPTIONAL
+    status: str                                                                                    # OPTIONAL
+    tax: int                                                                                       # OPTIONAL
+    tx_end_time: str                                                                               # OPTIONAL
+    tx_id: str                                                                                     # OPTIONAL
+    type_: str                                                                                     # OPTIONAL
+    vat: int                                                                                       # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_tx_id(self, value: str) -> Transaction:
-        self.tx_id = value
+    def with_additional_data(self, value: AdditionalData) -> Transaction:
+        self.additional_data = value
         return self
 
     def with_amount(self, value: int) -> Transaction:
         self.amount = value
         return self
 
-    def with_tax(self, value: int) -> Transaction:
-        self.tax = value
-        return self
-
-    def with_vat(self, value: int) -> Transaction:
-        self.vat = value
-        return self
-
-    def with_sales_tax(self, value: int) -> Transaction:
-        self.sales_tax = value
-        return self
-
-    def with_payment_provider_fee(self, value: int) -> Transaction:
-        self.payment_provider_fee = value
-        return self
-
-    def with_payment_method_fee(self, value: int) -> Transaction:
-        self.payment_method_fee = value
-        return self
-
     def with_currency(self, value: CurrencySummary) -> Transaction:
         self.currency = value
-        return self
-
-    def with_type(self, value: str) -> Transaction:
-        self.type_ = value
-        return self
-
-    def with_status(self, value: str) -> Transaction:
-        self.status = value
-        return self
-
-    def with_provider(self, value: str) -> Transaction:
-        self.provider = value
-        return self
-
-    def with_payment_method(self, value: str) -> Transaction:
-        self.payment_method = value
-        return self
-
-    def with_merchant_id(self, value: str) -> Transaction:
-        self.merchant_id = value
-        return self
-
-    def with_ext_tx_id(self, value: str) -> Transaction:
-        self.ext_tx_id = value
-        return self
-
-    def with_ext_status_code(self, value: str) -> Transaction:
-        self.ext_status_code = value
         return self
 
     def with_ext_message(self, value: str) -> Transaction:
         self.ext_message = value
         return self
 
-    def with_tx_end_time(self, value: str) -> Transaction:
-        self.tx_end_time = value
+    def with_ext_status_code(self, value: str) -> Transaction:
+        self.ext_status_code = value
         return self
 
-    def with_additional_data(self, value: AdditionalData) -> Transaction:
-        self.additional_data = value
+    def with_ext_tx_id(self, value: str) -> Transaction:
+        self.ext_tx_id = value
+        return self
+
+    def with_merchant_id(self, value: str) -> Transaction:
+        self.merchant_id = value
         return self
 
     def with_notified(self, value: bool) -> Transaction:
         self.notified = value
+        return self
+
+    def with_payment_method(self, value: str) -> Transaction:
+        self.payment_method = value
+        return self
+
+    def with_payment_method_fee(self, value: int) -> Transaction:
+        self.payment_method_fee = value
+        return self
+
+    def with_payment_provider_fee(self, value: int) -> Transaction:
+        self.payment_provider_fee = value
+        return self
+
+    def with_provider(self, value: str) -> Transaction:
+        self.provider = value
+        return self
+
+    def with_sales_tax(self, value: int) -> Transaction:
+        self.sales_tax = value
+        return self
+
+    def with_status(self, value: str) -> Transaction:
+        self.status = value
+        return self
+
+    def with_tax(self, value: int) -> Transaction:
+        self.tax = value
+        return self
+
+    def with_tx_end_time(self, value: str) -> Transaction:
+        self.tx_end_time = value
+        return self
+
+    def with_tx_id(self, value: str) -> Transaction:
+        self.tx_id = value
+        return self
+
+    def with_type(self, value: str) -> Transaction:
+        self.type_ = value
+        return self
+
+    def with_vat(self, value: int) -> Transaction:
+        self.vat = value
         return self
 
     # endregion with_x methods
@@ -178,82 +178,82 @@ class Transaction(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "tx_id"):
-            result["txId"] = str(self.tx_id)
-        elif include_empty:
-            result["txId"] = str()
-        if hasattr(self, "amount"):
-            result["amount"] = int(self.amount)
-        elif include_empty:
-            result["amount"] = int()
-        if hasattr(self, "tax"):
-            result["tax"] = int(self.tax)
-        elif include_empty:
-            result["tax"] = int()
-        if hasattr(self, "vat"):
-            result["vat"] = int(self.vat)
-        elif include_empty:
-            result["vat"] = int()
-        if hasattr(self, "sales_tax"):
-            result["salesTax"] = int(self.sales_tax)
-        elif include_empty:
-            result["salesTax"] = int()
-        if hasattr(self, "payment_provider_fee"):
-            result["paymentProviderFee"] = int(self.payment_provider_fee)
-        elif include_empty:
-            result["paymentProviderFee"] = int()
-        if hasattr(self, "payment_method_fee"):
-            result["paymentMethodFee"] = int(self.payment_method_fee)
-        elif include_empty:
-            result["paymentMethodFee"] = int()
-        if hasattr(self, "currency"):
-            result["currency"] = self.currency.to_dict(include_empty=include_empty)
-        elif include_empty:
-            result["currency"] = CurrencySummary()
-        if hasattr(self, "type_"):
-            result["type"] = str(self.type_)
-        elif include_empty:
-            result["type"] = str()
-        if hasattr(self, "status"):
-            result["status"] = str(self.status)
-        elif include_empty:
-            result["status"] = str()
-        if hasattr(self, "provider"):
-            result["provider"] = str(self.provider)
-        elif include_empty:
-            result["provider"] = str()
-        if hasattr(self, "payment_method"):
-            result["paymentMethod"] = str(self.payment_method)
-        elif include_empty:
-            result["paymentMethod"] = str()
-        if hasattr(self, "merchant_id"):
-            result["merchantId"] = str(self.merchant_id)
-        elif include_empty:
-            result["merchantId"] = str()
-        if hasattr(self, "ext_tx_id"):
-            result["extTxId"] = str(self.ext_tx_id)
-        elif include_empty:
-            result["extTxId"] = str()
-        if hasattr(self, "ext_status_code"):
-            result["extStatusCode"] = str(self.ext_status_code)
-        elif include_empty:
-            result["extStatusCode"] = str()
-        if hasattr(self, "ext_message"):
-            result["extMessage"] = str(self.ext_message)
-        elif include_empty:
-            result["extMessage"] = str()
-        if hasattr(self, "tx_end_time"):
-            result["txEndTime"] = str(self.tx_end_time)
-        elif include_empty:
-            result["txEndTime"] = str()
         if hasattr(self, "additional_data"):
             result["additionalData"] = self.additional_data.to_dict(include_empty=include_empty)
         elif include_empty:
             result["additionalData"] = AdditionalData()
+        if hasattr(self, "amount"):
+            result["amount"] = int(self.amount)
+        elif include_empty:
+            result["amount"] = int()
+        if hasattr(self, "currency"):
+            result["currency"] = self.currency.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["currency"] = CurrencySummary()
+        if hasattr(self, "ext_message"):
+            result["extMessage"] = str(self.ext_message)
+        elif include_empty:
+            result["extMessage"] = str()
+        if hasattr(self, "ext_status_code"):
+            result["extStatusCode"] = str(self.ext_status_code)
+        elif include_empty:
+            result["extStatusCode"] = str()
+        if hasattr(self, "ext_tx_id"):
+            result["extTxId"] = str(self.ext_tx_id)
+        elif include_empty:
+            result["extTxId"] = str()
+        if hasattr(self, "merchant_id"):
+            result["merchantId"] = str(self.merchant_id)
+        elif include_empty:
+            result["merchantId"] = str()
         if hasattr(self, "notified"):
             result["notified"] = bool(self.notified)
         elif include_empty:
             result["notified"] = bool()
+        if hasattr(self, "payment_method"):
+            result["paymentMethod"] = str(self.payment_method)
+        elif include_empty:
+            result["paymentMethod"] = str()
+        if hasattr(self, "payment_method_fee"):
+            result["paymentMethodFee"] = int(self.payment_method_fee)
+        elif include_empty:
+            result["paymentMethodFee"] = int()
+        if hasattr(self, "payment_provider_fee"):
+            result["paymentProviderFee"] = int(self.payment_provider_fee)
+        elif include_empty:
+            result["paymentProviderFee"] = int()
+        if hasattr(self, "provider"):
+            result["provider"] = str(self.provider)
+        elif include_empty:
+            result["provider"] = str()
+        if hasattr(self, "sales_tax"):
+            result["salesTax"] = int(self.sales_tax)
+        elif include_empty:
+            result["salesTax"] = int()
+        if hasattr(self, "status"):
+            result["status"] = str(self.status)
+        elif include_empty:
+            result["status"] = str()
+        if hasattr(self, "tax"):
+            result["tax"] = int(self.tax)
+        elif include_empty:
+            result["tax"] = int()
+        if hasattr(self, "tx_end_time"):
+            result["txEndTime"] = str(self.tx_end_time)
+        elif include_empty:
+            result["txEndTime"] = str()
+        if hasattr(self, "tx_id"):
+            result["txId"] = str(self.tx_id)
+        elif include_empty:
+            result["txId"] = str()
+        if hasattr(self, "type_"):
+            result["type"] = str(self.type_)
+        elif include_empty:
+            result["type"] = str()
+        if hasattr(self, "vat"):
+            result["vat"] = int(self.vat)
+        elif include_empty:
+            result["vat"] = int()
         return result
 
     # endregion to methods
@@ -329,106 +329,106 @@ class Transaction(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "txId" in dict_ and dict_["txId"] is not None:
-            instance.tx_id = str(dict_["txId"])
-        elif include_empty:
-            instance.tx_id = str()
-        if "amount" in dict_ and dict_["amount"] is not None:
-            instance.amount = int(dict_["amount"])
-        elif include_empty:
-            instance.amount = int()
-        if "tax" in dict_ and dict_["tax"] is not None:
-            instance.tax = int(dict_["tax"])
-        elif include_empty:
-            instance.tax = int()
-        if "vat" in dict_ and dict_["vat"] is not None:
-            instance.vat = int(dict_["vat"])
-        elif include_empty:
-            instance.vat = int()
-        if "salesTax" in dict_ and dict_["salesTax"] is not None:
-            instance.sales_tax = int(dict_["salesTax"])
-        elif include_empty:
-            instance.sales_tax = int()
-        if "paymentProviderFee" in dict_ and dict_["paymentProviderFee"] is not None:
-            instance.payment_provider_fee = int(dict_["paymentProviderFee"])
-        elif include_empty:
-            instance.payment_provider_fee = int()
-        if "paymentMethodFee" in dict_ and dict_["paymentMethodFee"] is not None:
-            instance.payment_method_fee = int(dict_["paymentMethodFee"])
-        elif include_empty:
-            instance.payment_method_fee = int()
-        if "currency" in dict_ and dict_["currency"] is not None:
-            instance.currency = CurrencySummary.create_from_dict(dict_["currency"], include_empty=include_empty)
-        elif include_empty:
-            instance.currency = CurrencySummary()
-        if "type" in dict_ and dict_["type"] is not None:
-            instance.type_ = str(dict_["type"])
-        elif include_empty:
-            instance.type_ = str()
-        if "status" in dict_ and dict_["status"] is not None:
-            instance.status = str(dict_["status"])
-        elif include_empty:
-            instance.status = str()
-        if "provider" in dict_ and dict_["provider"] is not None:
-            instance.provider = str(dict_["provider"])
-        elif include_empty:
-            instance.provider = str()
-        if "paymentMethod" in dict_ and dict_["paymentMethod"] is not None:
-            instance.payment_method = str(dict_["paymentMethod"])
-        elif include_empty:
-            instance.payment_method = str()
-        if "merchantId" in dict_ and dict_["merchantId"] is not None:
-            instance.merchant_id = str(dict_["merchantId"])
-        elif include_empty:
-            instance.merchant_id = str()
-        if "extTxId" in dict_ and dict_["extTxId"] is not None:
-            instance.ext_tx_id = str(dict_["extTxId"])
-        elif include_empty:
-            instance.ext_tx_id = str()
-        if "extStatusCode" in dict_ and dict_["extStatusCode"] is not None:
-            instance.ext_status_code = str(dict_["extStatusCode"])
-        elif include_empty:
-            instance.ext_status_code = str()
-        if "extMessage" in dict_ and dict_["extMessage"] is not None:
-            instance.ext_message = str(dict_["extMessage"])
-        elif include_empty:
-            instance.ext_message = str()
-        if "txEndTime" in dict_ and dict_["txEndTime"] is not None:
-            instance.tx_end_time = str(dict_["txEndTime"])
-        elif include_empty:
-            instance.tx_end_time = str()
         if "additionalData" in dict_ and dict_["additionalData"] is not None:
             instance.additional_data = AdditionalData.create_from_dict(dict_["additionalData"], include_empty=include_empty)
         elif include_empty:
             instance.additional_data = AdditionalData()
+        if "amount" in dict_ and dict_["amount"] is not None:
+            instance.amount = int(dict_["amount"])
+        elif include_empty:
+            instance.amount = int()
+        if "currency" in dict_ and dict_["currency"] is not None:
+            instance.currency = CurrencySummary.create_from_dict(dict_["currency"], include_empty=include_empty)
+        elif include_empty:
+            instance.currency = CurrencySummary()
+        if "extMessage" in dict_ and dict_["extMessage"] is not None:
+            instance.ext_message = str(dict_["extMessage"])
+        elif include_empty:
+            instance.ext_message = str()
+        if "extStatusCode" in dict_ and dict_["extStatusCode"] is not None:
+            instance.ext_status_code = str(dict_["extStatusCode"])
+        elif include_empty:
+            instance.ext_status_code = str()
+        if "extTxId" in dict_ and dict_["extTxId"] is not None:
+            instance.ext_tx_id = str(dict_["extTxId"])
+        elif include_empty:
+            instance.ext_tx_id = str()
+        if "merchantId" in dict_ and dict_["merchantId"] is not None:
+            instance.merchant_id = str(dict_["merchantId"])
+        elif include_empty:
+            instance.merchant_id = str()
         if "notified" in dict_ and dict_["notified"] is not None:
             instance.notified = bool(dict_["notified"])
         elif include_empty:
             instance.notified = bool()
+        if "paymentMethod" in dict_ and dict_["paymentMethod"] is not None:
+            instance.payment_method = str(dict_["paymentMethod"])
+        elif include_empty:
+            instance.payment_method = str()
+        if "paymentMethodFee" in dict_ and dict_["paymentMethodFee"] is not None:
+            instance.payment_method_fee = int(dict_["paymentMethodFee"])
+        elif include_empty:
+            instance.payment_method_fee = int()
+        if "paymentProviderFee" in dict_ and dict_["paymentProviderFee"] is not None:
+            instance.payment_provider_fee = int(dict_["paymentProviderFee"])
+        elif include_empty:
+            instance.payment_provider_fee = int()
+        if "provider" in dict_ and dict_["provider"] is not None:
+            instance.provider = str(dict_["provider"])
+        elif include_empty:
+            instance.provider = str()
+        if "salesTax" in dict_ and dict_["salesTax"] is not None:
+            instance.sales_tax = int(dict_["salesTax"])
+        elif include_empty:
+            instance.sales_tax = int()
+        if "status" in dict_ and dict_["status"] is not None:
+            instance.status = str(dict_["status"])
+        elif include_empty:
+            instance.status = str()
+        if "tax" in dict_ and dict_["tax"] is not None:
+            instance.tax = int(dict_["tax"])
+        elif include_empty:
+            instance.tax = int()
+        if "txEndTime" in dict_ and dict_["txEndTime"] is not None:
+            instance.tx_end_time = str(dict_["txEndTime"])
+        elif include_empty:
+            instance.tx_end_time = str()
+        if "txId" in dict_ and dict_["txId"] is not None:
+            instance.tx_id = str(dict_["txId"])
+        elif include_empty:
+            instance.tx_id = str()
+        if "type" in dict_ and dict_["type"] is not None:
+            instance.type_ = str(dict_["type"])
+        elif include_empty:
+            instance.type_ = str()
+        if "vat" in dict_ and dict_["vat"] is not None:
+            instance.vat = int(dict_["vat"])
+        elif include_empty:
+            instance.vat = int()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "txId": "tx_id",
-            "amount": "amount",
-            "tax": "tax",
-            "vat": "vat",
-            "salesTax": "sales_tax",
-            "paymentProviderFee": "payment_provider_fee",
-            "paymentMethodFee": "payment_method_fee",
-            "currency": "currency",
-            "type": "type_",
-            "status": "status",
-            "provider": "provider",
-            "paymentMethod": "payment_method",
-            "merchantId": "merchant_id",
-            "extTxId": "ext_tx_id",
-            "extStatusCode": "ext_status_code",
-            "extMessage": "ext_message",
-            "txEndTime": "tx_end_time",
             "additionalData": "additional_data",
+            "amount": "amount",
+            "currency": "currency",
+            "extMessage": "ext_message",
+            "extStatusCode": "ext_status_code",
+            "extTxId": "ext_tx_id",
+            "merchantId": "merchant_id",
             "notified": "notified",
+            "paymentMethod": "payment_method",
+            "paymentMethodFee": "payment_method_fee",
+            "paymentProviderFee": "payment_provider_fee",
+            "provider": "provider",
+            "salesTax": "sales_tax",
+            "status": "status",
+            "tax": "tax",
+            "txEndTime": "tx_end_time",
+            "txId": "tx_id",
+            "type": "type_",
+            "vat": "vat",
         }
 
     # endregion static methods

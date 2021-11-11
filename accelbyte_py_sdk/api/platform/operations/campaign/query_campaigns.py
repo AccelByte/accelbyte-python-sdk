@@ -52,13 +52,13 @@ class QueryCampaigns(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        name: (name) OPTIONAL str in query
+        limit: (limit) OPTIONAL int in query
 
-        tag: (tag) OPTIONAL str in query
+        name: (name) OPTIONAL str in query
 
         offset: (offset) OPTIONAL int in query
 
-        limit: (limit) OPTIONAL int in query
+        tag: (tag) OPTIONAL str in query
 
     Responses:
         200: OK - CampaignPagingSlicedResult (successful operation)
@@ -74,10 +74,10 @@ class QueryCampaigns(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    name: str                                                                                      # OPTIONAL in [query]
-    tag: str                                                                                       # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
+    name: str                                                                                      # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
+    tag: str                                                                                       # OPTIONAL in [query]
 
     # endregion fields
 
@@ -149,14 +149,14 @@ class QueryCampaigns(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "name"):
-            result["name"] = self.name
-        if hasattr(self, "tag"):
-            result["tag"] = self.tag
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "name"):
+            result["name"] = self.name
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
+        if hasattr(self, "tag"):
+            result["tag"] = self.tag
         return result
 
     # endregion get_x_params methods
@@ -176,20 +176,20 @@ class QueryCampaigns(Operation):
         self.namespace = value
         return self
 
-    def with_name(self, value: str) -> QueryCampaigns:
-        self.name = value
+    def with_limit(self, value: int) -> QueryCampaigns:
+        self.limit = value
         return self
 
-    def with_tag(self, value: str) -> QueryCampaigns:
-        self.tag = value
+    def with_name(self, value: str) -> QueryCampaigns:
+        self.name = value
         return self
 
     def with_offset(self, value: int) -> QueryCampaigns:
         self.offset = value
         return self
 
-    def with_limit(self, value: int) -> QueryCampaigns:
-        self.limit = value
+    def with_tag(self, value: str) -> QueryCampaigns:
+        self.tag = value
         return self
 
     # endregion with_x methods
@@ -202,22 +202,22 @@ class QueryCampaigns(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "name") and self.name:
-            result["name"] = str(self.name)
-        elif include_empty:
-            result["name"] = str()
-        if hasattr(self, "tag") and self.tag:
-            result["tag"] = str(self.tag)
-        elif include_empty:
-            result["tag"] = str()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = int()
+        if hasattr(self, "name") and self.name:
+            result["name"] = str(self.name)
+        elif include_empty:
+            result["name"] = str()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
+        if hasattr(self, "tag") and self.tag:
+            result["tag"] = str(self.tag)
+        elif include_empty:
+            result["tag"] = str()
         return result
 
     # endregion to methods
@@ -245,21 +245,21 @@ class QueryCampaigns(Operation):
     def create(
         cls,
         namespace: str,
-        name: Optional[str] = None,
-        tag: Optional[str] = None,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        name: Optional[str] = None,
+        offset: Optional[int] = None,
+        tag: Optional[str] = None,
     ) -> QueryCampaigns:
         instance = cls()
         instance.namespace = namespace
-        if name is not None:
-            instance.name = name
-        if tag is not None:
-            instance.tag = tag
-        if offset is not None:
-            instance.offset = offset
         if limit is not None:
             instance.limit = limit
+        if name is not None:
+            instance.name = name
+        if offset is not None:
+            instance.offset = offset
+        if tag is not None:
+            instance.tag = tag
         return instance
 
     @classmethod
@@ -269,32 +269,32 @@ class QueryCampaigns(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "name" in dict_ and dict_["name"] is not None:
-            instance.name = str(dict_["name"])
-        elif include_empty:
-            instance.name = str()
-        if "tag" in dict_ and dict_["tag"] is not None:
-            instance.tag = str(dict_["tag"])
-        elif include_empty:
-            instance.tag = str()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = int()
+        if "name" in dict_ and dict_["name"] is not None:
+            instance.name = str(dict_["name"])
+        elif include_empty:
+            instance.name = str()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
+        if "tag" in dict_ and dict_["tag"] is not None:
+            instance.tag = str(dict_["tag"])
+        elif include_empty:
+            instance.tag = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "name": "name",
-            "tag": "tag",
-            "offset": "offset",
             "limit": "limit",
+            "name": "name",
+            "offset": "offset",
+            "tag": "tag",
         }
 
     # endregion static methods

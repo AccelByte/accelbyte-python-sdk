@@ -55,13 +55,13 @@ class GetAdminUsersByRoleID(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        role_id: (roleId) OPTIONAL str in query
-
-        limit: (limit) OPTIONAL int in query
-
         after: (after) OPTIONAL int in query
 
         before: (before) OPTIONAL int in query
+
+        limit: (limit) OPTIONAL int in query
+
+        role_id: (roleId) OPTIONAL str in query
 
     Responses:
         200: OK - ModelGetAdminUsersResponse (OK)
@@ -87,10 +87,10 @@ class GetAdminUsersByRoleID(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    role_id: str                                                                                   # OPTIONAL in [query]
-    limit: int                                                                                     # OPTIONAL in [query]
     after: int                                                                                     # OPTIONAL in [query]
     before: int                                                                                    # OPTIONAL in [query]
+    limit: int                                                                                     # OPTIONAL in [query]
+    role_id: str                                                                                   # OPTIONAL in [query]
 
     # endregion fields
 
@@ -162,14 +162,14 @@ class GetAdminUsersByRoleID(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "role_id"):
-            result["roleId"] = self.role_id
-        if hasattr(self, "limit"):
-            result["limit"] = self.limit
         if hasattr(self, "after"):
             result["after"] = self.after
         if hasattr(self, "before"):
             result["before"] = self.before
+        if hasattr(self, "limit"):
+            result["limit"] = self.limit
+        if hasattr(self, "role_id"):
+            result["roleId"] = self.role_id
         return result
 
     # endregion get_x_params methods
@@ -189,20 +189,20 @@ class GetAdminUsersByRoleID(Operation):
         self.namespace = value
         return self
 
-    def with_role_id(self, value: str) -> GetAdminUsersByRoleID:
-        self.role_id = value
-        return self
-
-    def with_limit(self, value: int) -> GetAdminUsersByRoleID:
-        self.limit = value
-        return self
-
     def with_after(self, value: int) -> GetAdminUsersByRoleID:
         self.after = value
         return self
 
     def with_before(self, value: int) -> GetAdminUsersByRoleID:
         self.before = value
+        return self
+
+    def with_limit(self, value: int) -> GetAdminUsersByRoleID:
+        self.limit = value
+        return self
+
+    def with_role_id(self, value: str) -> GetAdminUsersByRoleID:
+        self.role_id = value
         return self
 
     # endregion with_x methods
@@ -215,14 +215,6 @@ class GetAdminUsersByRoleID(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "role_id") and self.role_id:
-            result["roleId"] = str(self.role_id)
-        elif include_empty:
-            result["roleId"] = str()
-        if hasattr(self, "limit") and self.limit:
-            result["limit"] = int(self.limit)
-        elif include_empty:
-            result["limit"] = int()
         if hasattr(self, "after") and self.after:
             result["after"] = int(self.after)
         elif include_empty:
@@ -231,6 +223,14 @@ class GetAdminUsersByRoleID(Operation):
             result["before"] = int(self.before)
         elif include_empty:
             result["before"] = int()
+        if hasattr(self, "limit") and self.limit:
+            result["limit"] = int(self.limit)
+        elif include_empty:
+            result["limit"] = int()
+        if hasattr(self, "role_id") and self.role_id:
+            result["roleId"] = str(self.role_id)
+        elif include_empty:
+            result["roleId"] = str()
         return result
 
     # endregion to methods
@@ -278,21 +278,21 @@ class GetAdminUsersByRoleID(Operation):
     def create(
         cls,
         namespace: str,
-        role_id: Optional[str] = None,
-        limit: Optional[int] = None,
         after: Optional[int] = None,
         before: Optional[int] = None,
+        limit: Optional[int] = None,
+        role_id: Optional[str] = None,
     ) -> GetAdminUsersByRoleID:
         instance = cls()
         instance.namespace = namespace
-        if role_id is not None:
-            instance.role_id = role_id
-        if limit is not None:
-            instance.limit = limit
         if after is not None:
             instance.after = after
         if before is not None:
             instance.before = before
+        if limit is not None:
+            instance.limit = limit
+        if role_id is not None:
+            instance.role_id = role_id
         return instance
 
     @classmethod
@@ -302,14 +302,6 @@ class GetAdminUsersByRoleID(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "roleId" in dict_ and dict_["roleId"] is not None:
-            instance.role_id = str(dict_["roleId"])
-        elif include_empty:
-            instance.role_id = str()
-        if "limit" in dict_ and dict_["limit"] is not None:
-            instance.limit = int(dict_["limit"])
-        elif include_empty:
-            instance.limit = int()
         if "after" in dict_ and dict_["after"] is not None:
             instance.after = int(dict_["after"])
         elif include_empty:
@@ -318,16 +310,24 @@ class GetAdminUsersByRoleID(Operation):
             instance.before = int(dict_["before"])
         elif include_empty:
             instance.before = int()
+        if "limit" in dict_ and dict_["limit"] is not None:
+            instance.limit = int(dict_["limit"])
+        elif include_empty:
+            instance.limit = int()
+        if "roleId" in dict_ and dict_["roleId"] is not None:
+            instance.role_id = str(dict_["roleId"])
+        elif include_empty:
+            instance.role_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "roleId": "role_id",
-            "limit": "limit",
             "after": "after",
             "before": "before",
+            "limit": "limit",
+            "roleId": "role_id",
         }
 
     # endregion static methods

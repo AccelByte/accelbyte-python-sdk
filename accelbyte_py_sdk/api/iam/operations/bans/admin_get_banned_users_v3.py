@@ -55,9 +55,9 @@ class AdminGetBannedUsersV3(Operation):
 
         ban_type: (banType) OPTIONAL str in query
 
-        offset: (offset) OPTIONAL int in query
-
         limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
 
     Responses:
         200: OK - ModelGetUserBanV3Response (OK)
@@ -79,8 +79,8 @@ class AdminGetBannedUsersV3(Operation):
     namespace: str                                                                                 # REQUIRED in [path]
     active_only: bool                                                                              # OPTIONAL in [query]
     ban_type: str                                                                                  # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
 
     # endregion fields
 
@@ -156,10 +156,10 @@ class AdminGetBannedUsersV3(Operation):
             result["activeOnly"] = self.active_only
         if hasattr(self, "ban_type"):
             result["banType"] = self.ban_type
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         return result
 
     # endregion get_x_params methods
@@ -187,12 +187,12 @@ class AdminGetBannedUsersV3(Operation):
         self.ban_type = value
         return self
 
-    def with_offset(self, value: int) -> AdminGetBannedUsersV3:
-        self.offset = value
-        return self
-
     def with_limit(self, value: int) -> AdminGetBannedUsersV3:
         self.limit = value
+        return self
+
+    def with_offset(self, value: int) -> AdminGetBannedUsersV3:
+        self.offset = value
         return self
 
     # endregion with_x methods
@@ -213,14 +213,14 @@ class AdminGetBannedUsersV3(Operation):
             result["banType"] = str(self.ban_type)
         elif include_empty:
             result["banType"] = str()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
         return result
 
     # endregion to methods
@@ -258,8 +258,8 @@ class AdminGetBannedUsersV3(Operation):
         namespace: str,
         active_only: Optional[bool] = None,
         ban_type: Optional[str] = None,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
     ) -> AdminGetBannedUsersV3:
         instance = cls()
         instance.namespace = namespace
@@ -267,10 +267,10 @@ class AdminGetBannedUsersV3(Operation):
             instance.active_only = active_only
         if ban_type is not None:
             instance.ban_type = ban_type
-        if offset is not None:
-            instance.offset = offset
         if limit is not None:
             instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
         return instance
 
     @classmethod
@@ -288,14 +288,14 @@ class AdminGetBannedUsersV3(Operation):
             instance.ban_type = str(dict_["banType"])
         elif include_empty:
             instance.ban_type = str()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
         return instance
 
     @staticmethod
@@ -304,8 +304,8 @@ class AdminGetBannedUsersV3(Operation):
             "namespace": "namespace",
             "activeOnly": "active_only",
             "banType": "ban_type",
-            "offset": "offset",
             "limit": "limit",
+            "offset": "offset",
         }
 
     # endregion static methods

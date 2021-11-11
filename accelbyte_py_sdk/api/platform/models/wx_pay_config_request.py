@@ -30,9 +30,9 @@ class WxPayConfigRequest(Model):
     Properties:
         app_id: (appId) OPTIONAL str
 
-        mchid: (mchid) OPTIONAL str
-
         key: (key) OPTIONAL str
+
+        mchid: (mchid) OPTIONAL str
 
         return_url: (returnUrl) OPTIONAL str
     """
@@ -40,8 +40,8 @@ class WxPayConfigRequest(Model):
     # region fields
 
     app_id: str                                                                                    # OPTIONAL
-    mchid: str                                                                                     # OPTIONAL
     key: str                                                                                       # OPTIONAL
+    mchid: str                                                                                     # OPTIONAL
     return_url: str                                                                                # OPTIONAL
 
     # endregion fields
@@ -52,12 +52,12 @@ class WxPayConfigRequest(Model):
         self.app_id = value
         return self
 
-    def with_mchid(self, value: str) -> WxPayConfigRequest:
-        self.mchid = value
-        return self
-
     def with_key(self, value: str) -> WxPayConfigRequest:
         self.key = value
+        return self
+
+    def with_mchid(self, value: str) -> WxPayConfigRequest:
+        self.mchid = value
         return self
 
     def with_return_url(self, value: str) -> WxPayConfigRequest:
@@ -74,14 +74,14 @@ class WxPayConfigRequest(Model):
             result["appId"] = str(self.app_id)
         elif include_empty:
             result["appId"] = str()
-        if hasattr(self, "mchid"):
-            result["mchid"] = str(self.mchid)
-        elif include_empty:
-            result["mchid"] = str()
         if hasattr(self, "key"):
             result["key"] = str(self.key)
         elif include_empty:
             result["key"] = str()
+        if hasattr(self, "mchid"):
+            result["mchid"] = str(self.mchid)
+        elif include_empty:
+            result["mchid"] = str()
         if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
@@ -120,14 +120,14 @@ class WxPayConfigRequest(Model):
             instance.app_id = str(dict_["appId"])
         elif include_empty:
             instance.app_id = str()
-        if "mchid" in dict_ and dict_["mchid"] is not None:
-            instance.mchid = str(dict_["mchid"])
-        elif include_empty:
-            instance.mchid = str()
         if "key" in dict_ and dict_["key"] is not None:
             instance.key = str(dict_["key"])
         elif include_empty:
             instance.key = str()
+        if "mchid" in dict_ and dict_["mchid"] is not None:
+            instance.mchid = str(dict_["mchid"])
+        elif include_empty:
+            instance.mchid = str()
         if "returnUrl" in dict_ and dict_["returnUrl"] is not None:
             instance.return_url = str(dict_["returnUrl"])
         elif include_empty:
@@ -138,8 +138,8 @@ class WxPayConfigRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "appId": "app_id",
-            "mchid": "mchid",
             "key": "key",
+            "mchid": "mchid",
             "returnUrl": "return_url",
         }
 

@@ -28,29 +28,29 @@ class ModelSendVerificationCodeRequestV3(Model):
     """Model send verification code request V3 (model.SendVerificationCodeRequestV3)
 
     Properties:
-        context: (context) OPTIONAL str
-
         email_address: (emailAddress) REQUIRED str
+
+        context: (context) OPTIONAL str
 
         language_tag: (languageTag) OPTIONAL str
     """
 
     # region fields
 
-    context: str                                                                                   # OPTIONAL
     email_address: str                                                                             # REQUIRED
+    context: str                                                                                   # OPTIONAL
     language_tag: str                                                                              # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_context(self, value: str) -> ModelSendVerificationCodeRequestV3:
-        self.context = value
-        return self
-
     def with_email_address(self, value: str) -> ModelSendVerificationCodeRequestV3:
         self.email_address = value
+        return self
+
+    def with_context(self, value: str) -> ModelSendVerificationCodeRequestV3:
+        self.context = value
         return self
 
     def with_language_tag(self, value: str) -> ModelSendVerificationCodeRequestV3:
@@ -63,14 +63,14 @@ class ModelSendVerificationCodeRequestV3(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "context"):
-            result["context"] = str(self.context)
-        elif include_empty:
-            result["context"] = str()
         if hasattr(self, "email_address"):
             result["emailAddress"] = str(self.email_address)
         elif include_empty:
             result["emailAddress"] = str()
+        if hasattr(self, "context"):
+            result["context"] = str(self.context)
+        elif include_empty:
+            result["context"] = str()
         if hasattr(self, "language_tag"):
             result["languageTag"] = str(self.language_tag)
         elif include_empty:
@@ -101,14 +101,14 @@ class ModelSendVerificationCodeRequestV3(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "context" in dict_ and dict_["context"] is not None:
-            instance.context = str(dict_["context"])
-        elif include_empty:
-            instance.context = str()
         if "emailAddress" in dict_ and dict_["emailAddress"] is not None:
             instance.email_address = str(dict_["emailAddress"])
         elif include_empty:
             instance.email_address = str()
+        if "context" in dict_ and dict_["context"] is not None:
+            instance.context = str(dict_["context"])
+        elif include_empty:
+            instance.context = str()
         if "languageTag" in dict_ and dict_["languageTag"] is not None:
             instance.language_tag = str(dict_["languageTag"])
         elif include_empty:
@@ -118,8 +118,8 @@ class ModelSendVerificationCodeRequestV3(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "context": "context",
             "emailAddress": "email_address",
+            "context": "context",
             "languageTag": "language_tag",
         }
 

@@ -32,17 +32,17 @@ class GoogleIAPConfigInfo(Model):
 
         application_name: (applicationName) OPTIONAL str
 
-        service_account_id: (serviceAccountId) OPTIONAL str
-
         p12_file_name: (p12FileName) OPTIONAL str
+
+        service_account_id: (serviceAccountId) OPTIONAL str
     """
 
     # region fields
 
     namespace: str                                                                                 # REQUIRED
     application_name: str                                                                          # OPTIONAL
-    service_account_id: str                                                                        # OPTIONAL
     p12_file_name: str                                                                             # OPTIONAL
+    service_account_id: str                                                                        # OPTIONAL
 
     # endregion fields
 
@@ -56,12 +56,12 @@ class GoogleIAPConfigInfo(Model):
         self.application_name = value
         return self
 
-    def with_service_account_id(self, value: str) -> GoogleIAPConfigInfo:
-        self.service_account_id = value
-        return self
-
     def with_p12_file_name(self, value: str) -> GoogleIAPConfigInfo:
         self.p12_file_name = value
+        return self
+
+    def with_service_account_id(self, value: str) -> GoogleIAPConfigInfo:
+        self.service_account_id = value
         return self
 
     # endregion with_x methods
@@ -78,14 +78,14 @@ class GoogleIAPConfigInfo(Model):
             result["applicationName"] = str(self.application_name)
         elif include_empty:
             result["applicationName"] = str()
-        if hasattr(self, "service_account_id"):
-            result["serviceAccountId"] = str(self.service_account_id)
-        elif include_empty:
-            result["serviceAccountId"] = str()
         if hasattr(self, "p12_file_name"):
             result["p12FileName"] = str(self.p12_file_name)
         elif include_empty:
             result["p12FileName"] = str()
+        if hasattr(self, "service_account_id"):
+            result["serviceAccountId"] = str(self.service_account_id)
+        elif include_empty:
+            result["serviceAccountId"] = str()
         return result
 
     # endregion to methods
@@ -123,14 +123,14 @@ class GoogleIAPConfigInfo(Model):
             instance.application_name = str(dict_["applicationName"])
         elif include_empty:
             instance.application_name = str()
-        if "serviceAccountId" in dict_ and dict_["serviceAccountId"] is not None:
-            instance.service_account_id = str(dict_["serviceAccountId"])
-        elif include_empty:
-            instance.service_account_id = str()
         if "p12FileName" in dict_ and dict_["p12FileName"] is not None:
             instance.p12_file_name = str(dict_["p12FileName"])
         elif include_empty:
             instance.p12_file_name = str()
+        if "serviceAccountId" in dict_ and dict_["serviceAccountId"] is not None:
+            instance.service_account_id = str(dict_["serviceAccountId"])
+        elif include_empty:
+            instance.service_account_id = str()
         return instance
 
     @staticmethod
@@ -138,8 +138,8 @@ class GoogleIAPConfigInfo(Model):
         return {
             "namespace": "namespace",
             "applicationName": "application_name",
-            "serviceAccountId": "service_account_id",
             "p12FileName": "p12_file_name",
+            "serviceAccountId": "service_account_id",
         }
 
     # endregion static methods

@@ -28,8 +28,8 @@ class CancelMatchmakingRequest(WebSocketMessage):
 
     # region fields
 
-    id_: str
     game_mode: str
+    id_: str
     is_temp_party: bool
 
     # endregion fields
@@ -40,10 +40,10 @@ class CancelMatchmakingRequest(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {CancelMatchmakingRequest.get_type()}"]
-        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
-        wsm.append(f"id: {id_}")
         if hasattr(self, "game_mode") and self.game_mode:
             wsm.append(f"gameMode: {self.game_mode}")
+        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
+        wsm.append(f"id: {id_}")
         if hasattr(self, "is_temp_party") and self.is_temp_party:
             wsm.append(f"isTempParty: {self.is_temp_party}")
         return "\n".join(wsm)
@@ -86,8 +86,8 @@ class CancelMatchmakingRequest(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
             "gameMode": "game_mode",
+            "id": "id_",
             "isTempParty": "is_temp_party",
         }
 

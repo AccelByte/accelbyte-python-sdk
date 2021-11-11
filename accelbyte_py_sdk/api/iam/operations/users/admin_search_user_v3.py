@@ -61,17 +61,17 @@ class AdminSearchUserV3(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        query: (query) OPTIONAL str in query
+        by: (by) OPTIONAL str in query
+
+        end_date: (endDate) OPTIONAL str in query
 
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL str in query
 
+        query: (query) OPTIONAL str in query
+
         start_date: (startDate) OPTIONAL str in query
-
-        end_date: (endDate) OPTIONAL str in query
-
-        by: (by) OPTIONAL str in query
 
     Responses:
         200: OK - ModelSearchUsersResponseWithPaginationV3 (OK)
@@ -95,12 +95,12 @@ class AdminSearchUserV3(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    query: str                                                                                     # OPTIONAL in [query]
+    by: str                                                                                        # OPTIONAL in [query]
+    end_date: str                                                                                  # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
     offset: str                                                                                    # OPTIONAL in [query]
+    query: str                                                                                     # OPTIONAL in [query]
     start_date: str                                                                                # OPTIONAL in [query]
-    end_date: str                                                                                  # OPTIONAL in [query]
-    by: str                                                                                        # OPTIONAL in [query]
 
     # endregion fields
 
@@ -172,18 +172,18 @@ class AdminSearchUserV3(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "query"):
-            result["query"] = self.query
+        if hasattr(self, "by"):
+            result["by"] = self.by
+        if hasattr(self, "end_date"):
+            result["endDate"] = self.end_date
         if hasattr(self, "limit"):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
             result["offset"] = self.offset
+        if hasattr(self, "query"):
+            result["query"] = self.query
         if hasattr(self, "start_date"):
             result["startDate"] = self.start_date
-        if hasattr(self, "end_date"):
-            result["endDate"] = self.end_date
-        if hasattr(self, "by"):
-            result["by"] = self.by
         return result
 
     # endregion get_x_params methods
@@ -203,8 +203,12 @@ class AdminSearchUserV3(Operation):
         self.namespace = value
         return self
 
-    def with_query(self, value: str) -> AdminSearchUserV3:
-        self.query = value
+    def with_by(self, value: str) -> AdminSearchUserV3:
+        self.by = value
+        return self
+
+    def with_end_date(self, value: str) -> AdminSearchUserV3:
+        self.end_date = value
         return self
 
     def with_limit(self, value: int) -> AdminSearchUserV3:
@@ -215,16 +219,12 @@ class AdminSearchUserV3(Operation):
         self.offset = value
         return self
 
+    def with_query(self, value: str) -> AdminSearchUserV3:
+        self.query = value
+        return self
+
     def with_start_date(self, value: str) -> AdminSearchUserV3:
         self.start_date = value
-        return self
-
-    def with_end_date(self, value: str) -> AdminSearchUserV3:
-        self.end_date = value
-        return self
-
-    def with_by(self, value: str) -> AdminSearchUserV3:
-        self.by = value
         return self
 
     # endregion with_x methods
@@ -237,10 +237,14 @@ class AdminSearchUserV3(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "query") and self.query:
-            result["query"] = str(self.query)
+        if hasattr(self, "by") and self.by:
+            result["by"] = str(self.by)
         elif include_empty:
-            result["query"] = str()
+            result["by"] = str()
+        if hasattr(self, "end_date") and self.end_date:
+            result["endDate"] = str(self.end_date)
+        elif include_empty:
+            result["endDate"] = str()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
@@ -249,18 +253,14 @@ class AdminSearchUserV3(Operation):
             result["offset"] = str(self.offset)
         elif include_empty:
             result["offset"] = str()
+        if hasattr(self, "query") and self.query:
+            result["query"] = str(self.query)
+        elif include_empty:
+            result["query"] = str()
         if hasattr(self, "start_date") and self.start_date:
             result["startDate"] = str(self.start_date)
         elif include_empty:
             result["startDate"] = str()
-        if hasattr(self, "end_date") and self.end_date:
-            result["endDate"] = str(self.end_date)
-        elif include_empty:
-            result["endDate"] = str()
-        if hasattr(self, "by") and self.by:
-            result["by"] = str(self.by)
-        elif include_empty:
-            result["by"] = str()
         return result
 
     # endregion to methods
@@ -304,27 +304,27 @@ class AdminSearchUserV3(Operation):
     def create(
         cls,
         namespace: str,
-        query: Optional[str] = None,
+        by: Optional[str] = None,
+        end_date: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[str] = None,
+        query: Optional[str] = None,
         start_date: Optional[str] = None,
-        end_date: Optional[str] = None,
-        by: Optional[str] = None,
     ) -> AdminSearchUserV3:
         instance = cls()
         instance.namespace = namespace
-        if query is not None:
-            instance.query = query
+        if by is not None:
+            instance.by = by
+        if end_date is not None:
+            instance.end_date = end_date
         if limit is not None:
             instance.limit = limit
         if offset is not None:
             instance.offset = offset
+        if query is not None:
+            instance.query = query
         if start_date is not None:
             instance.start_date = start_date
-        if end_date is not None:
-            instance.end_date = end_date
-        if by is not None:
-            instance.by = by
         return instance
 
     @classmethod
@@ -334,10 +334,14 @@ class AdminSearchUserV3(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "query" in dict_ and dict_["query"] is not None:
-            instance.query = str(dict_["query"])
+        if "by" in dict_ and dict_["by"] is not None:
+            instance.by = str(dict_["by"])
         elif include_empty:
-            instance.query = str()
+            instance.by = str()
+        if "endDate" in dict_ and dict_["endDate"] is not None:
+            instance.end_date = str(dict_["endDate"])
+        elif include_empty:
+            instance.end_date = str()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
@@ -346,30 +350,26 @@ class AdminSearchUserV3(Operation):
             instance.offset = str(dict_["offset"])
         elif include_empty:
             instance.offset = str()
+        if "query" in dict_ and dict_["query"] is not None:
+            instance.query = str(dict_["query"])
+        elif include_empty:
+            instance.query = str()
         if "startDate" in dict_ and dict_["startDate"] is not None:
             instance.start_date = str(dict_["startDate"])
         elif include_empty:
             instance.start_date = str()
-        if "endDate" in dict_ and dict_["endDate"] is not None:
-            instance.end_date = str(dict_["endDate"])
-        elif include_empty:
-            instance.end_date = str()
-        if "by" in dict_ and dict_["by"] is not None:
-            instance.by = str(dict_["by"])
-        elif include_empty:
-            instance.by = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "query": "query",
+            "by": "by",
+            "endDate": "end_date",
             "limit": "limit",
             "offset": "offset",
+            "query": "query",
             "startDate": "start_date",
-            "endDate": "end_date",
-            "by": "by",
         }
 
     # endregion static methods

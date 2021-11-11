@@ -53,9 +53,9 @@ class ListBasicItemsByFeatures(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        features: (features) OPTIONAL List[str] in query
-
         active_only: (activeOnly) OPTIONAL bool in query
+
+        features: (features) OPTIONAL List[str] in query
 
     Responses:
         200: OK - List[BasicItem] (successful operation)
@@ -71,8 +71,8 @@ class ListBasicItemsByFeatures(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    features: List[str]                                                                            # OPTIONAL in [query]
     active_only: bool                                                                              # OPTIONAL in [query]
+    features: List[str]                                                                            # OPTIONAL in [query]
 
     # endregion fields
 
@@ -144,10 +144,10 @@ class ListBasicItemsByFeatures(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "features"):
-            result["features"] = self.features
         if hasattr(self, "active_only"):
             result["activeOnly"] = self.active_only
+        if hasattr(self, "features"):
+            result["features"] = self.features
         return result
 
     # endregion get_x_params methods
@@ -167,12 +167,12 @@ class ListBasicItemsByFeatures(Operation):
         self.namespace = value
         return self
 
-    def with_features(self, value: List[str]) -> ListBasicItemsByFeatures:
-        self.features = value
-        return self
-
     def with_active_only(self, value: bool) -> ListBasicItemsByFeatures:
         self.active_only = value
+        return self
+
+    def with_features(self, value: List[str]) -> ListBasicItemsByFeatures:
+        self.features = value
         return self
 
     # endregion with_x methods
@@ -185,14 +185,14 @@ class ListBasicItemsByFeatures(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "features") and self.features:
-            result["features"] = [str(i0) for i0 in self.features]
-        elif include_empty:
-            result["features"] = []
         if hasattr(self, "active_only") and self.active_only:
             result["activeOnly"] = bool(self.active_only)
         elif include_empty:
             result["activeOnly"] = bool()
+        if hasattr(self, "features") and self.features:
+            result["features"] = [str(i0) for i0 in self.features]
+        elif include_empty:
+            result["features"] = []
         return result
 
     # endregion to methods
@@ -220,15 +220,15 @@ class ListBasicItemsByFeatures(Operation):
     def create(
         cls,
         namespace: str,
-        features: Optional[List[str]] = None,
         active_only: Optional[bool] = None,
+        features: Optional[List[str]] = None,
     ) -> ListBasicItemsByFeatures:
         instance = cls()
         instance.namespace = namespace
-        if features is not None:
-            instance.features = features
         if active_only is not None:
             instance.active_only = active_only
+        if features is not None:
+            instance.features = features
         return instance
 
     @classmethod
@@ -238,22 +238,22 @@ class ListBasicItemsByFeatures(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "features" in dict_ and dict_["features"] is not None:
-            instance.features = [str(i0) for i0 in dict_["features"]]
-        elif include_empty:
-            instance.features = []
         if "activeOnly" in dict_ and dict_["activeOnly"] is not None:
             instance.active_only = bool(dict_["activeOnly"])
         elif include_empty:
             instance.active_only = bool()
+        if "features" in dict_ and dict_["features"] is not None:
+            instance.features = [str(i0) for i0 in dict_["features"]]
+        elif include_empty:
+            instance.features = []
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "features": "features",
             "activeOnly": "active_only",
+            "features": "features",
         }
 
     # endregion static methods

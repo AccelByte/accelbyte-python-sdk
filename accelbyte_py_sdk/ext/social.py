@@ -80,9 +80,9 @@ def create_bulk_stat_item_inc_example() -> BulkStatItemInc:
 
 def create_bulk_stat_item_operation_result_example() -> BulkStatItemOperationResult:
     instance = BulkStatItemOperationResult()
-    instance.success = randomize("bool")
-    instance.stat_code = randomize()
     instance.details = {randomize(): randomize()}
+    instance.stat_code = randomize()
+    instance.success = randomize("bool")
     return instance
 
 
@@ -103,27 +103,27 @@ def create_bulk_stat_item_update_example() -> BulkStatItemUpdate:
 
 def create_bulk_user_stat_item_inc_example() -> BulkUserStatItemInc:
     instance = BulkUserStatItemInc()
-    instance.user_id = randomize("uid")
     instance.stat_code = randomize()
+    instance.user_id = randomize("uid")
     instance.inc = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
 def create_bulk_user_stat_item_reset_example() -> BulkUserStatItemReset:
     instance = BulkUserStatItemReset()
-    instance.user_id = randomize("uid")
     instance.stat_code = randomize()
+    instance.user_id = randomize("uid")
     return instance
 
 
 def create_bulk_user_stat_item_update_example() -> BulkUserStatItemUpdate:
     instance = BulkUserStatItemUpdate()
-    instance.user_id = randomize("uid")
-    instance.additional_key = randomize()
     instance.stat_code = randomize()
     instance.update_strategy = randomize()
+    instance.user_id = randomize("uid")
     instance.value = randomize("int", min_val=1, max_val=1000)
     instance.additional_data = {randomize(): randomize()}
+    instance.additional_key = randomize()
     return instance
 
 
@@ -131,8 +131,8 @@ def create_error_entity_example() -> ErrorEntity:
     instance = ErrorEntity()
     instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
-    instance.message_variables = {randomize(): randomize()}
     instance.dev_stack_trace = randomize()
+    instance.message_variables = {randomize(): randomize()}
     return instance
 
 
@@ -140,71 +140,71 @@ def create_field_validation_error_example() -> FieldValidationError:
     instance = FieldValidationError()
     instance.error_code = randomize()
     instance.error_field = randomize()
-    instance.error_value = randomize()
     instance.error_message = randomize()
+    instance.error_value = randomize()
     instance.message_variables = {randomize(): randomize()}
     return instance
 
 
 def create_game_profile_header_example() -> GameProfileHeader:
     instance = GameProfileHeader()
-    instance.profile_id = randomize()
-    instance.user_id = randomize("uid")
-    instance.namespace = randomize("slug")
-    instance.profile_name = randomize()
     instance.avatar_url = randomize("url")
     instance.label = randomize()
+    instance.namespace = randomize("slug")
+    instance.profile_id = randomize()
+    instance.profile_name = randomize()
     instance.tags = [randomize()]
+    instance.user_id = randomize("uid")
     return instance
 
 
 def create_game_profile_info_example() -> GameProfileInfo:
     instance = GameProfileInfo()
-    instance.profile_id = randomize()
-    instance.user_id = randomize("uid")
-    instance.namespace = randomize("slug")
-    instance.profile_name = randomize()
-    instance.avatar_url = randomize("url")
-    instance.label = randomize()
-    instance.tags = [randomize()]
-    instance.statistics = [randomize()]
     instance.achievements = [randomize()]
-    instance.inventories = [randomize()]
     instance.attributes = {randomize(): randomize()}
+    instance.avatar_url = randomize("url")
+    instance.inventories = [randomize()]
+    instance.label = randomize()
+    instance.namespace = randomize("slug")
+    instance.profile_id = randomize()
+    instance.profile_name = randomize()
+    instance.statistics = [randomize()]
+    instance.tags = [randomize()]
+    instance.user_id = randomize("uid")
     return instance
 
 
 def create_game_profile_public_info_example() -> GameProfilePublicInfo:
     instance = GameProfilePublicInfo()
-    instance.profile_id = randomize()
-    instance.namespace = randomize("slug")
-    instance.profile_name = randomize()
     instance.avatar_url = randomize("url")
+    instance.namespace = randomize("slug")
+    instance.profile_id = randomize()
+    instance.profile_name = randomize()
     return instance
 
 
 def create_game_profile_request_example() -> GameProfileRequest:
     instance = GameProfileRequest()
-    instance.profile_name = randomize()
-    instance.avatar_url = randomize("url")
-    instance.label = randomize()
-    instance.tags = [randomize()]
-    instance.statistics = [randomize()]
     instance.achievements = [randomize()]
-    instance.inventories = [randomize()]
     instance.attributes = {randomize(): randomize()}
+    instance.avatar_url = randomize("url")
+    instance.inventories = [randomize()]
+    instance.label = randomize()
+    instance.profile_name = randomize()
+    instance.statistics = [randomize()]
+    instance.tags = [randomize()]
     return instance
 
 
 def create_global_stat_item_info_example() -> GlobalStatItemInfo:
     instance = GlobalStatItemInfo()
+    instance.created_at = randomize("date")
+    instance.namespace = randomize("slug")
     instance.stat_code = randomize()
     instance.stat_name = randomize()
-    instance.namespace = randomize("slug")
+    instance.updated_at = randomize("date")
     instance.value = randomize("int", min_val=1, max_val=1000)
     instance.tags = [randomize()]
-    instance.created_at = randomize("date")
-    instance.updated_at = randomize("date")
     return instance
 
 
@@ -217,93 +217,93 @@ def create_global_stat_item_paging_sliced_result_example() -> GlobalStatItemPagi
 
 def create_namespace_slot_config_info_example() -> NamespaceSlotConfigInfo:
     instance = NamespaceSlotConfigInfo()
-    instance.namespace = randomize("slug")
-    instance.max_slots = randomize("int", min_val=1, max_val=1000)
     instance.max_slot_size = randomize("int", min_val=1, max_val=1000)
+    instance.max_slots = randomize("int", min_val=1, max_val=1000)
+    instance.namespace = randomize("slug")
     return instance
 
 
 def create_paging_example() -> Paging:
     instance = Paging()
-    instance.previous = randomize()
     instance.next_ = randomize()
+    instance.previous = randomize()
     return instance
 
 
 def create_slot_config_update_example() -> SlotConfigUpdate:
     instance = SlotConfigUpdate()
-    instance.max_slots = randomize("int", min_val=1, max_val=1000)
     instance.max_slot_size = randomize("int", min_val=1, max_val=1000)
+    instance.max_slots = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
 def create_slot_info_example() -> SlotInfo:
     instance = SlotInfo()
-    instance.slot_id = randomize()
-    instance.user_id = randomize("uid")
-    instance.namespace = randomize("slug")
-    instance.label = randomize()
-    instance.original_name = randomize()
-    instance.stored_name = randomize()
-    instance.mime_type = randomize()
-    instance.size = randomize("int", min_val=1, max_val=1000)
+    instance.checksum = randomize()
+    instance.custom_attribute = randomize()
+    instance.date_accessed = randomize("date")
     instance.date_created = randomize("date")
     instance.date_modified = randomize("date")
-    instance.date_accessed = randomize("date")
-    instance.checksum = randomize()
+    instance.label = randomize()
+    instance.mime_type = randomize()
+    instance.namespace = randomize("slug")
+    instance.original_name = randomize()
+    instance.size = randomize("int", min_val=1, max_val=1000)
+    instance.slot_id = randomize()
+    instance.stored_name = randomize()
     instance.tags = [randomize()]
-    instance.custom_attribute = randomize()
+    instance.user_id = randomize("uid")
     return instance
 
 
 def create_slot_metadata_update_example() -> SlotMetadataUpdate:
     instance = SlotMetadataUpdate()
+    instance.custom_attribute = randomize()
     instance.label = randomize()
     instance.tags = [randomize()]
-    instance.custom_attribute = randomize()
     return instance
 
 
 def create_stat_create_example() -> StatCreate:
     instance = StatCreate()
-    instance.stat_code = randomize()
-    instance.name = randomize()
-    instance.description = randomize()
-    instance.minimum = randomize("int", min_val=1, max_val=1000)
-    instance.maximum = randomize("int", min_val=1, max_val=1000)
     instance.default_value = randomize("int", min_val=1, max_val=1000)
-    instance.increment_only = randomize("bool")
-    instance.set_as_global = randomize("bool")
+    instance.name = randomize()
     instance.set_by = randomize()
+    instance.stat_code = randomize()
+    instance.description = randomize()
+    instance.increment_only = randomize("bool")
+    instance.maximum = randomize("int", min_val=1, max_val=1000)
+    instance.minimum = randomize("int", min_val=1, max_val=1000)
+    instance.set_as_global = randomize("bool")
     instance.tags = [randomize()]
     return instance
 
 
 def create_stat_import_info_example() -> StatImportInfo:
     instance = StatImportInfo()
+    instance.failed_configs = [randomize()]
+    instance.ignored_configs = [randomize()]
     instance.new_configs = [randomize()]
     instance.replaced_configs = [randomize()]
-    instance.ignored_configs = [randomize()]
-    instance.failed_configs = [randomize()]
     return instance
 
 
 def create_stat_info_example() -> StatInfo:
     instance = StatInfo()
-    instance.stat_code = randomize()
-    instance.namespace = randomize("slug")
-    instance.status = randomize()
-    instance.name = randomize()
-    instance.description = randomize()
-    instance.minimum = randomize("int", min_val=1, max_val=1000)
-    instance.maximum = randomize("int", min_val=1, max_val=1000)
+    instance.created_at = randomize("date")
     instance.default_value = randomize("int", min_val=1, max_val=1000)
     instance.increment_only = randomize("bool")
+    instance.name = randomize()
+    instance.namespace = randomize("slug")
     instance.set_as_global = randomize("bool")
     instance.set_by = randomize()
-    instance.tags = [randomize()]
-    instance.created_at = randomize("date")
+    instance.stat_code = randomize()
+    instance.status = randomize()
     instance.updated_at = randomize("date")
+    instance.description = randomize()
+    instance.maximum = randomize("int", min_val=1, max_val=1000)
+    instance.minimum = randomize("int", min_val=1, max_val=1000)
+    instance.tags = [randomize()]
     return instance
 
 
@@ -342,38 +342,38 @@ def create_stat_reset_info_example() -> StatResetInfo:
 
 def create_stat_update_example() -> StatUpdate:
     instance = StatUpdate()
-    instance.name = randomize()
     instance.description = randomize()
+    instance.name = randomize()
     instance.tags = [randomize()]
     return instance
 
 
 def create_user_game_profiles_example() -> UserGameProfiles:
     instance = UserGameProfiles()
-    instance.user_id = randomize("uid")
     instance.game_profiles = [create_game_profile_public_info_example()]
+    instance.user_id = randomize("uid")
     return instance
 
 
 def create_user_slot_config_info_example() -> UserSlotConfigInfo:
     instance = UserSlotConfigInfo()
-    instance.user_id = randomize("uid")
-    instance.namespace = randomize("slug")
-    instance.max_slots = randomize("int", min_val=1, max_val=1000)
     instance.max_slot_size = randomize("int", min_val=1, max_val=1000)
+    instance.max_slots = randomize("int", min_val=1, max_val=1000)
+    instance.namespace = randomize("slug")
+    instance.user_id = randomize("uid")
     return instance
 
 
 def create_user_stat_item_info_example() -> UserStatItemInfo:
     instance = UserStatItemInfo()
+    instance.created_at = randomize("date")
+    instance.namespace = randomize("slug")
     instance.stat_code = randomize()
     instance.stat_name = randomize()
-    instance.namespace = randomize("slug")
-    instance.value = randomize("int", min_val=1, max_val=1000)
-    instance.tags = [randomize()]
-    instance.created_at = randomize("date")
     instance.updated_at = randomize("date")
     instance.user_id = randomize("uid")
+    instance.value = randomize("int", min_val=1, max_val=1000)
+    instance.tags = [randomize()]
     return instance
 
 

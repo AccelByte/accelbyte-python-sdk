@@ -30,25 +30,25 @@ class AppleIAPReceipt(Model):
     Properties:
         product_id: (productId) REQUIRED str
 
-        transaction_id: (transactionId) REQUIRED str
-
         receipt_data: (receiptData) REQUIRED str
+
+        transaction_id: (transactionId) REQUIRED str
 
         exclude_old_transactions: (excludeOldTransactions) OPTIONAL bool
 
-        region: (region) OPTIONAL str
-
         language: (language) OPTIONAL str
+
+        region: (region) OPTIONAL str
     """
 
     # region fields
 
     product_id: str                                                                                # REQUIRED
-    transaction_id: str                                                                            # REQUIRED
     receipt_data: str                                                                              # REQUIRED
+    transaction_id: str                                                                            # REQUIRED
     exclude_old_transactions: bool                                                                 # OPTIONAL
-    region: str                                                                                    # OPTIONAL
     language: str                                                                                  # OPTIONAL
+    region: str                                                                                    # OPTIONAL
 
     # endregion fields
 
@@ -58,24 +58,24 @@ class AppleIAPReceipt(Model):
         self.product_id = value
         return self
 
-    def with_transaction_id(self, value: str) -> AppleIAPReceipt:
-        self.transaction_id = value
-        return self
-
     def with_receipt_data(self, value: str) -> AppleIAPReceipt:
         self.receipt_data = value
+        return self
+
+    def with_transaction_id(self, value: str) -> AppleIAPReceipt:
+        self.transaction_id = value
         return self
 
     def with_exclude_old_transactions(self, value: bool) -> AppleIAPReceipt:
         self.exclude_old_transactions = value
         return self
 
-    def with_region(self, value: str) -> AppleIAPReceipt:
-        self.region = value
-        return self
-
     def with_language(self, value: str) -> AppleIAPReceipt:
         self.language = value
+        return self
+
+    def with_region(self, value: str) -> AppleIAPReceipt:
+        self.region = value
         return self
 
     # endregion with_x methods
@@ -88,26 +88,26 @@ class AppleIAPReceipt(Model):
             result["productId"] = str(self.product_id)
         elif include_empty:
             result["productId"] = str()
-        if hasattr(self, "transaction_id"):
-            result["transactionId"] = str(self.transaction_id)
-        elif include_empty:
-            result["transactionId"] = str()
         if hasattr(self, "receipt_data"):
             result["receiptData"] = str(self.receipt_data)
         elif include_empty:
             result["receiptData"] = str()
+        if hasattr(self, "transaction_id"):
+            result["transactionId"] = str(self.transaction_id)
+        elif include_empty:
+            result["transactionId"] = str()
         if hasattr(self, "exclude_old_transactions"):
             result["excludeOldTransactions"] = bool(self.exclude_old_transactions)
         elif include_empty:
             result["excludeOldTransactions"] = bool()
-        if hasattr(self, "region"):
-            result["region"] = str(self.region)
-        elif include_empty:
-            result["region"] = str()
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = str()
+        if hasattr(self, "region"):
+            result["region"] = str(self.region)
+        elif include_empty:
+            result["region"] = str()
         return result
 
     # endregion to methods
@@ -145,37 +145,37 @@ class AppleIAPReceipt(Model):
             instance.product_id = str(dict_["productId"])
         elif include_empty:
             instance.product_id = str()
-        if "transactionId" in dict_ and dict_["transactionId"] is not None:
-            instance.transaction_id = str(dict_["transactionId"])
-        elif include_empty:
-            instance.transaction_id = str()
         if "receiptData" in dict_ and dict_["receiptData"] is not None:
             instance.receipt_data = str(dict_["receiptData"])
         elif include_empty:
             instance.receipt_data = str()
+        if "transactionId" in dict_ and dict_["transactionId"] is not None:
+            instance.transaction_id = str(dict_["transactionId"])
+        elif include_empty:
+            instance.transaction_id = str()
         if "excludeOldTransactions" in dict_ and dict_["excludeOldTransactions"] is not None:
             instance.exclude_old_transactions = bool(dict_["excludeOldTransactions"])
         elif include_empty:
             instance.exclude_old_transactions = bool()
-        if "region" in dict_ and dict_["region"] is not None:
-            instance.region = str(dict_["region"])
-        elif include_empty:
-            instance.region = str()
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
             instance.language = str()
+        if "region" in dict_ and dict_["region"] is not None:
+            instance.region = str(dict_["region"])
+        elif include_empty:
+            instance.region = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "productId": "product_id",
-            "transactionId": "transaction_id",
             "receiptData": "receipt_data",
+            "transactionId": "transaction_id",
             "excludeOldTransactions": "exclude_old_transactions",
-            "region": "region",
             "language": "language",
+            "region": "region",
         }
 
     # endregion static methods

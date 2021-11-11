@@ -46,8 +46,6 @@ class ModelUserResponse(Model):
 
         display_name: (DisplayName) REQUIRED str
 
-        email_address: (EmailAddress) OPTIONAL str
-
         email_verified: (EmailVerified) REQUIRED bool
 
         enabled: (Enabled) REQUIRED bool
@@ -62,23 +60,25 @@ class ModelUserResponse(Model):
 
         namespace_roles: (NamespaceRoles) REQUIRED List[AccountcommonNamespaceRole]
 
-        new_email_address: (NewEmailAddress) OPTIONAL str
-
         old_email_address: (OldEmailAddress) REQUIRED str
 
         permissions: (Permissions) REQUIRED List[AccountcommonPermission]
 
-        phone_number: (PhoneNumber) OPTIONAL str
-
         phone_verified: (PhoneVerified) REQUIRED bool
-
-        platform_id: (PlatformId) OPTIONAL str
-
-        platform_user_id: (PlatformUserId) OPTIONAL str
 
         roles: (Roles) REQUIRED List[str]
 
         user_id: (UserId) REQUIRED str
+
+        email_address: (EmailAddress) OPTIONAL str
+
+        new_email_address: (NewEmailAddress) OPTIONAL str
+
+        phone_number: (PhoneNumber) OPTIONAL str
+
+        platform_id: (PlatformId) OPTIONAL str
+
+        platform_user_id: (PlatformUserId) OPTIONAL str
 
         username: (Username) OPTIONAL str
 
@@ -94,7 +94,6 @@ class ModelUserResponse(Model):
     date_of_birth: str                                                                             # REQUIRED
     deletion_status: bool                                                                          # REQUIRED
     display_name: str                                                                              # REQUIRED
-    email_address: str                                                                             # OPTIONAL
     email_verified: bool                                                                           # REQUIRED
     enabled: bool                                                                                  # REQUIRED
     last_date_of_birth_changed_time: str                                                           # REQUIRED
@@ -102,15 +101,16 @@ class ModelUserResponse(Model):
     login_id: str                                                                                  # REQUIRED
     namespace: str                                                                                 # REQUIRED
     namespace_roles: List[AccountcommonNamespaceRole]                                              # REQUIRED
-    new_email_address: str                                                                         # OPTIONAL
     old_email_address: str                                                                         # REQUIRED
     permissions: List[AccountcommonPermission]                                                     # REQUIRED
-    phone_number: str                                                                              # OPTIONAL
     phone_verified: bool                                                                           # REQUIRED
-    platform_id: str                                                                               # OPTIONAL
-    platform_user_id: str                                                                          # OPTIONAL
     roles: List[str]                                                                               # REQUIRED
     user_id: str                                                                                   # REQUIRED
+    email_address: str                                                                             # OPTIONAL
+    new_email_address: str                                                                         # OPTIONAL
+    phone_number: str                                                                              # OPTIONAL
+    platform_id: str                                                                               # OPTIONAL
+    platform_user_id: str                                                                          # OPTIONAL
     username: str                                                                                  # OPTIONAL
     xuid: str                                                                                      # OPTIONAL
 
@@ -146,10 +146,6 @@ class ModelUserResponse(Model):
         self.display_name = value
         return self
 
-    def with_email_address(self, value: str) -> ModelUserResponse:
-        self.email_address = value
-        return self
-
     def with_email_verified(self, value: bool) -> ModelUserResponse:
         self.email_verified = value
         return self
@@ -178,10 +174,6 @@ class ModelUserResponse(Model):
         self.namespace_roles = value
         return self
 
-    def with_new_email_address(self, value: str) -> ModelUserResponse:
-        self.new_email_address = value
-        return self
-
     def with_old_email_address(self, value: str) -> ModelUserResponse:
         self.old_email_address = value
         return self
@@ -190,20 +182,8 @@ class ModelUserResponse(Model):
         self.permissions = value
         return self
 
-    def with_phone_number(self, value: str) -> ModelUserResponse:
-        self.phone_number = value
-        return self
-
     def with_phone_verified(self, value: bool) -> ModelUserResponse:
         self.phone_verified = value
-        return self
-
-    def with_platform_id(self, value: str) -> ModelUserResponse:
-        self.platform_id = value
-        return self
-
-    def with_platform_user_id(self, value: str) -> ModelUserResponse:
-        self.platform_user_id = value
         return self
 
     def with_roles(self, value: List[str]) -> ModelUserResponse:
@@ -212,6 +192,26 @@ class ModelUserResponse(Model):
 
     def with_user_id(self, value: str) -> ModelUserResponse:
         self.user_id = value
+        return self
+
+    def with_email_address(self, value: str) -> ModelUserResponse:
+        self.email_address = value
+        return self
+
+    def with_new_email_address(self, value: str) -> ModelUserResponse:
+        self.new_email_address = value
+        return self
+
+    def with_phone_number(self, value: str) -> ModelUserResponse:
+        self.phone_number = value
+        return self
+
+    def with_platform_id(self, value: str) -> ModelUserResponse:
+        self.platform_id = value
+        return self
+
+    def with_platform_user_id(self, value: str) -> ModelUserResponse:
+        self.platform_user_id = value
         return self
 
     def with_username(self, value: str) -> ModelUserResponse:
@@ -256,10 +256,6 @@ class ModelUserResponse(Model):
             result["DisplayName"] = str(self.display_name)
         elif include_empty:
             result["DisplayName"] = str()
-        if hasattr(self, "email_address"):
-            result["EmailAddress"] = str(self.email_address)
-        elif include_empty:
-            result["EmailAddress"] = str()
         if hasattr(self, "email_verified"):
             result["EmailVerified"] = bool(self.email_verified)
         elif include_empty:
@@ -288,10 +284,6 @@ class ModelUserResponse(Model):
             result["NamespaceRoles"] = [i0.to_dict(include_empty=include_empty) for i0 in self.namespace_roles]
         elif include_empty:
             result["NamespaceRoles"] = []
-        if hasattr(self, "new_email_address"):
-            result["NewEmailAddress"] = str(self.new_email_address)
-        elif include_empty:
-            result["NewEmailAddress"] = str()
         if hasattr(self, "old_email_address"):
             result["OldEmailAddress"] = str(self.old_email_address)
         elif include_empty:
@@ -300,22 +292,10 @@ class ModelUserResponse(Model):
             result["Permissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.permissions]
         elif include_empty:
             result["Permissions"] = []
-        if hasattr(self, "phone_number"):
-            result["PhoneNumber"] = str(self.phone_number)
-        elif include_empty:
-            result["PhoneNumber"] = str()
         if hasattr(self, "phone_verified"):
             result["PhoneVerified"] = bool(self.phone_verified)
         elif include_empty:
             result["PhoneVerified"] = bool()
-        if hasattr(self, "platform_id"):
-            result["PlatformId"] = str(self.platform_id)
-        elif include_empty:
-            result["PlatformId"] = str()
-        if hasattr(self, "platform_user_id"):
-            result["PlatformUserId"] = str(self.platform_user_id)
-        elif include_empty:
-            result["PlatformUserId"] = str()
         if hasattr(self, "roles"):
             result["Roles"] = [str(i0) for i0 in self.roles]
         elif include_empty:
@@ -324,6 +304,26 @@ class ModelUserResponse(Model):
             result["UserId"] = str(self.user_id)
         elif include_empty:
             result["UserId"] = str()
+        if hasattr(self, "email_address"):
+            result["EmailAddress"] = str(self.email_address)
+        elif include_empty:
+            result["EmailAddress"] = str()
+        if hasattr(self, "new_email_address"):
+            result["NewEmailAddress"] = str(self.new_email_address)
+        elif include_empty:
+            result["NewEmailAddress"] = str()
+        if hasattr(self, "phone_number"):
+            result["PhoneNumber"] = str(self.phone_number)
+        elif include_empty:
+            result["PhoneNumber"] = str()
+        if hasattr(self, "platform_id"):
+            result["PlatformId"] = str(self.platform_id)
+        elif include_empty:
+            result["PlatformId"] = str()
+        if hasattr(self, "platform_user_id"):
+            result["PlatformUserId"] = str(self.platform_user_id)
+        elif include_empty:
+            result["PlatformUserId"] = str()
         if hasattr(self, "username"):
             result["Username"] = str(self.username)
         elif include_empty:
@@ -437,10 +437,6 @@ class ModelUserResponse(Model):
             instance.display_name = str(dict_["DisplayName"])
         elif include_empty:
             instance.display_name = str()
-        if "EmailAddress" in dict_ and dict_["EmailAddress"] is not None:
-            instance.email_address = str(dict_["EmailAddress"])
-        elif include_empty:
-            instance.email_address = str()
         if "EmailVerified" in dict_ and dict_["EmailVerified"] is not None:
             instance.email_verified = bool(dict_["EmailVerified"])
         elif include_empty:
@@ -469,10 +465,6 @@ class ModelUserResponse(Model):
             instance.namespace_roles = [AccountcommonNamespaceRole.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["NamespaceRoles"]]
         elif include_empty:
             instance.namespace_roles = []
-        if "NewEmailAddress" in dict_ and dict_["NewEmailAddress"] is not None:
-            instance.new_email_address = str(dict_["NewEmailAddress"])
-        elif include_empty:
-            instance.new_email_address = str()
         if "OldEmailAddress" in dict_ and dict_["OldEmailAddress"] is not None:
             instance.old_email_address = str(dict_["OldEmailAddress"])
         elif include_empty:
@@ -481,22 +473,10 @@ class ModelUserResponse(Model):
             instance.permissions = [AccountcommonPermission.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["Permissions"]]
         elif include_empty:
             instance.permissions = []
-        if "PhoneNumber" in dict_ and dict_["PhoneNumber"] is not None:
-            instance.phone_number = str(dict_["PhoneNumber"])
-        elif include_empty:
-            instance.phone_number = str()
         if "PhoneVerified" in dict_ and dict_["PhoneVerified"] is not None:
             instance.phone_verified = bool(dict_["PhoneVerified"])
         elif include_empty:
             instance.phone_verified = bool()
-        if "PlatformId" in dict_ and dict_["PlatformId"] is not None:
-            instance.platform_id = str(dict_["PlatformId"])
-        elif include_empty:
-            instance.platform_id = str()
-        if "PlatformUserId" in dict_ and dict_["PlatformUserId"] is not None:
-            instance.platform_user_id = str(dict_["PlatformUserId"])
-        elif include_empty:
-            instance.platform_user_id = str()
         if "Roles" in dict_ and dict_["Roles"] is not None:
             instance.roles = [str(i0) for i0 in dict_["Roles"]]
         elif include_empty:
@@ -505,6 +485,26 @@ class ModelUserResponse(Model):
             instance.user_id = str(dict_["UserId"])
         elif include_empty:
             instance.user_id = str()
+        if "EmailAddress" in dict_ and dict_["EmailAddress"] is not None:
+            instance.email_address = str(dict_["EmailAddress"])
+        elif include_empty:
+            instance.email_address = str()
+        if "NewEmailAddress" in dict_ and dict_["NewEmailAddress"] is not None:
+            instance.new_email_address = str(dict_["NewEmailAddress"])
+        elif include_empty:
+            instance.new_email_address = str()
+        if "PhoneNumber" in dict_ and dict_["PhoneNumber"] is not None:
+            instance.phone_number = str(dict_["PhoneNumber"])
+        elif include_empty:
+            instance.phone_number = str()
+        if "PlatformId" in dict_ and dict_["PlatformId"] is not None:
+            instance.platform_id = str(dict_["PlatformId"])
+        elif include_empty:
+            instance.platform_id = str()
+        if "PlatformUserId" in dict_ and dict_["PlatformUserId"] is not None:
+            instance.platform_user_id = str(dict_["PlatformUserId"])
+        elif include_empty:
+            instance.platform_user_id = str()
         if "Username" in dict_ and dict_["Username"] is not None:
             instance.username = str(dict_["Username"])
         elif include_empty:
@@ -525,7 +525,6 @@ class ModelUserResponse(Model):
             "DateOfBirth": "date_of_birth",
             "DeletionStatus": "deletion_status",
             "DisplayName": "display_name",
-            "EmailAddress": "email_address",
             "EmailVerified": "email_verified",
             "Enabled": "enabled",
             "LastDateOfBirthChangedTime": "last_date_of_birth_changed_time",
@@ -533,15 +532,16 @@ class ModelUserResponse(Model):
             "LoginId": "login_id",
             "Namespace": "namespace",
             "NamespaceRoles": "namespace_roles",
-            "NewEmailAddress": "new_email_address",
             "OldEmailAddress": "old_email_address",
             "Permissions": "permissions",
-            "PhoneNumber": "phone_number",
             "PhoneVerified": "phone_verified",
-            "PlatformId": "platform_id",
-            "PlatformUserId": "platform_user_id",
             "Roles": "roles",
             "UserId": "user_id",
+            "EmailAddress": "email_address",
+            "NewEmailAddress": "new_email_address",
+            "PhoneNumber": "phone_number",
+            "PlatformId": "platform_id",
+            "PlatformUserId": "platform_user_id",
             "Username": "username",
             "XUID": "xuid",
         }

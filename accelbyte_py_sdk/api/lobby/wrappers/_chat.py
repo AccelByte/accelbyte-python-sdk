@@ -28,14 +28,14 @@ from ..operations.chat import PersonalChatHistory
 
 
 @same_doc_as(AdminChatHistory)
-def admin_chat_history(user_id: str, friend_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_chat_history(friend_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = AdminChatHistory.create(
-        user_id=user_id,
         friend_id=friend_id,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -55,14 +55,14 @@ def get_personal_chat_history_v1_public(friend_id: str, namespace: Optional[str]
 
 
 @same_doc_as(PersonalChatHistory)
-def personal_chat_history(user_id: str, friend_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def personal_chat_history(friend_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PersonalChatHistory.create(
-        user_id=user_id,
         friend_id=friend_id,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

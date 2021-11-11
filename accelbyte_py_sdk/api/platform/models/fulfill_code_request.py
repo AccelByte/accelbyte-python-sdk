@@ -30,16 +30,16 @@ class FulfillCodeRequest(Model):
     Properties:
         code: (code) REQUIRED str
 
-        region: (region) OPTIONAL str
-
         language: (language) OPTIONAL str
+
+        region: (region) OPTIONAL str
     """
 
     # region fields
 
     code: str                                                                                      # REQUIRED
-    region: str                                                                                    # OPTIONAL
     language: str                                                                                  # OPTIONAL
+    region: str                                                                                    # OPTIONAL
 
     # endregion fields
 
@@ -49,12 +49,12 @@ class FulfillCodeRequest(Model):
         self.code = value
         return self
 
-    def with_region(self, value: str) -> FulfillCodeRequest:
-        self.region = value
-        return self
-
     def with_language(self, value: str) -> FulfillCodeRequest:
         self.language = value
+        return self
+
+    def with_region(self, value: str) -> FulfillCodeRequest:
+        self.region = value
         return self
 
     # endregion with_x methods
@@ -67,14 +67,14 @@ class FulfillCodeRequest(Model):
             result["code"] = str(self.code)
         elif include_empty:
             result["code"] = str()
-        if hasattr(self, "region"):
-            result["region"] = str(self.region)
-        elif include_empty:
-            result["region"] = str()
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = str()
+        if hasattr(self, "region"):
+            result["region"] = str(self.region)
+        elif include_empty:
+            result["region"] = str()
         return result
 
     # endregion to methods
@@ -105,22 +105,22 @@ class FulfillCodeRequest(Model):
             instance.code = str(dict_["code"])
         elif include_empty:
             instance.code = str()
-        if "region" in dict_ and dict_["region"] is not None:
-            instance.region = str(dict_["region"])
-        elif include_empty:
-            instance.region = str()
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
             instance.language = str()
+        if "region" in dict_ and dict_["region"] is not None:
+            instance.region = str(dict_["region"])
+        elif include_empty:
+            instance.region = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "code": "code",
-            "region": "region",
             "language": "language",
+            "region": "region",
         }
 
     # endregion static methods

@@ -50,9 +50,9 @@ class PublicCreateUserNamespaceSlot(Operation):
 
         security: bearer
 
-        custom_attribute: (customAttribute) OPTIONAL str in form_data
-
         checksum: (checksum) OPTIONAL str in form_data
+
+        custom_attribute: (customAttribute) OPTIONAL str in form_data
 
         file: (file) OPTIONAL Any in form_data
 
@@ -81,8 +81,8 @@ class PublicCreateUserNamespaceSlot(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    custom_attribute: str                                                                          # OPTIONAL in [form_data]
     checksum: str                                                                                  # OPTIONAL in [form_data]
+    custom_attribute: str                                                                          # OPTIONAL in [form_data]
     file: Any                                                                                      # OPTIONAL in [form_data]
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
@@ -155,10 +155,10 @@ class PublicCreateUserNamespaceSlot(Operation):
 
     def get_form_data_params(self) -> dict:
         result = {}
-        if hasattr(self, "custom_attribute"):
-            result["customAttribute"] = self.custom_attribute
         if hasattr(self, "checksum"):
             result["checksum"] = self.checksum
+        if hasattr(self, "custom_attribute"):
+            result["customAttribute"] = self.custom_attribute
         if hasattr(self, "file"):
             result["file"] = self.file
         return result
@@ -194,12 +194,12 @@ class PublicCreateUserNamespaceSlot(Operation):
 
     # region with_x methods
 
-    def with_custom_attribute(self, value: str) -> PublicCreateUserNamespaceSlot:
-        self.custom_attribute = value
-        return self
-
     def with_checksum(self, value: str) -> PublicCreateUserNamespaceSlot:
         self.checksum = value
+        return self
+
+    def with_custom_attribute(self, value: str) -> PublicCreateUserNamespaceSlot:
+        self.custom_attribute = value
         return self
 
     def with_file(self, value: Any) -> PublicCreateUserNamespaceSlot:
@@ -228,14 +228,14 @@ class PublicCreateUserNamespaceSlot(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "custom_attribute") and self.custom_attribute:
-            result["customAttribute"] = str(self.custom_attribute)
-        elif include_empty:
-            result["customAttribute"] = str()
         if hasattr(self, "checksum") and self.checksum:
             result["checksum"] = str(self.checksum)
         elif include_empty:
             result["checksum"] = str()
+        if hasattr(self, "custom_attribute") and self.custom_attribute:
+            result["customAttribute"] = str(self.custom_attribute)
+        elif include_empty:
+            result["customAttribute"] = str()
         if hasattr(self, "file") and self.file:
             result["file"] = Any(self.file)
         elif include_empty:
@@ -292,8 +292,8 @@ class PublicCreateUserNamespaceSlot(Operation):
         cls,
         namespace: str,
         user_id: str,
-        custom_attribute: Optional[str] = None,
         checksum: Optional[str] = None,
+        custom_attribute: Optional[str] = None,
         file: Optional[Any] = None,
         label: Optional[str] = None,
         tags: Optional[List[str]] = None,
@@ -301,10 +301,10 @@ class PublicCreateUserNamespaceSlot(Operation):
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
-        if custom_attribute is not None:
-            instance.custom_attribute = custom_attribute
         if checksum is not None:
             instance.checksum = checksum
+        if custom_attribute is not None:
+            instance.custom_attribute = custom_attribute
         if file is not None:
             instance.file = file
         if label is not None:
@@ -316,14 +316,14 @@ class PublicCreateUserNamespaceSlot(Operation):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PublicCreateUserNamespaceSlot:
         instance = cls()
-        if "customAttribute" in dict_ and dict_["customAttribute"] is not None:
-            instance.custom_attribute = str(dict_["customAttribute"])
-        elif include_empty:
-            instance.custom_attribute = str()
         if "checksum" in dict_ and dict_["checksum"] is not None:
             instance.checksum = str(dict_["checksum"])
         elif include_empty:
             instance.checksum = str()
+        if "customAttribute" in dict_ and dict_["customAttribute"] is not None:
+            instance.custom_attribute = str(dict_["customAttribute"])
+        elif include_empty:
+            instance.custom_attribute = str()
         if "file" in dict_ and dict_["file"] is not None:
             instance.file = Any(dict_["file"])
         elif include_empty:
@@ -349,8 +349,8 @@ class PublicCreateUserNamespaceSlot(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "customAttribute": "custom_attribute",
             "checksum": "checksum",
+            "customAttribute": "custom_attribute",
             "file": "file",
             "namespace": "namespace",
             "userId": "user_id",

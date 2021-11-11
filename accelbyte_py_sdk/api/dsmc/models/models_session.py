@@ -30,8 +30,6 @@ class ModelsSession(Model):
     """Models session (models.Session)
 
     Properties:
-        server: (Server) REQUIRED ModelsServer
-
         id_: (id) REQUIRED str
 
         namespace: (namespace) REQUIRED str
@@ -39,23 +37,21 @@ class ModelsSession(Model):
         provider: (provider) REQUIRED str
 
         region: (region) REQUIRED str
+
+        server: (Server) REQUIRED ModelsServer
     """
 
     # region fields
 
-    server: ModelsServer                                                                           # REQUIRED
     id_: str                                                                                       # REQUIRED
     namespace: str                                                                                 # REQUIRED
     provider: str                                                                                  # REQUIRED
     region: str                                                                                    # REQUIRED
+    server: ModelsServer                                                                           # REQUIRED
 
     # endregion fields
 
     # region with_x methods
-
-    def with_server(self, value: ModelsServer) -> ModelsSession:
-        self.server = value
-        return self
 
     def with_id(self, value: str) -> ModelsSession:
         self.id_ = value
@@ -73,16 +69,16 @@ class ModelsSession(Model):
         self.region = value
         return self
 
+    def with_server(self, value: ModelsServer) -> ModelsSession:
+        self.server = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "server"):
-            result["Server"] = self.server.to_dict(include_empty=include_empty)
-        elif include_empty:
-            result["Server"] = ModelsServer()
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
@@ -99,6 +95,10 @@ class ModelsSession(Model):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = str()
+        if hasattr(self, "server"):
+            result["Server"] = self.server.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["Server"] = ModelsServer()
         return result
 
     # endregion to methods
@@ -127,10 +127,6 @@ class ModelsSession(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "Server" in dict_ and dict_["Server"] is not None:
-            instance.server = ModelsServer.create_from_dict(dict_["Server"], include_empty=include_empty)
-        elif include_empty:
-            instance.server = ModelsServer()
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
@@ -147,16 +143,20 @@ class ModelsSession(Model):
             instance.region = str(dict_["region"])
         elif include_empty:
             instance.region = str()
+        if "Server" in dict_ and dict_["Server"] is not None:
+            instance.server = ModelsServer.create_from_dict(dict_["Server"], include_empty=include_empty)
+        elif include_empty:
+            instance.server = ModelsServer()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "Server": "server",
             "id": "id_",
             "namespace": "namespace",
             "provider": "provider",
             "region": "region",
+            "Server": "server",
         }
 
     # endregion static methods

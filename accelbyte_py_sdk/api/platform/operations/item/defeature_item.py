@@ -51,11 +51,11 @@ class DefeatureItem(Operation):
 
         security: bearer
 
-        namespace: (namespace) REQUIRED str in path
+        feature: (feature) REQUIRED str in path
 
         item_id: (itemId) REQUIRED str in path
 
-        feature: (feature) REQUIRED str in path
+        namespace: (namespace) REQUIRED str in path
 
         store_id: (storeId) REQUIRED str in query
 
@@ -76,9 +76,9 @@ class DefeatureItem(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
-    item_id: str                                                                                   # REQUIRED in [path]
     feature: str                                                                                   # REQUIRED in [path]
+    item_id: str                                                                                   # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
     store_id: str                                                                                  # REQUIRED in [query]
 
     # endregion fields
@@ -130,9 +130,9 @@ class DefeatureItem(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "namespace",
-            "item_id",
             "feature",
+            "item_id",
+            "namespace",
             "store_id",
         ]
 
@@ -148,12 +148,12 @@ class DefeatureItem(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
-        if hasattr(self, "item_id"):
-            result["itemId"] = self.item_id
         if hasattr(self, "feature"):
             result["feature"] = self.feature
+        if hasattr(self, "item_id"):
+            result["itemId"] = self.item_id
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     def get_query_params(self) -> dict:
@@ -167,11 +167,11 @@ class DefeatureItem(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "namespace") or self.namespace is None:
+        if not hasattr(self, "feature") or self.feature is None:
             return False
         if not hasattr(self, "item_id") or self.item_id is None:
             return False
-        if not hasattr(self, "feature") or self.feature is None:
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         if not hasattr(self, "store_id") or self.store_id is None:
             return False
@@ -181,16 +181,16 @@ class DefeatureItem(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> DefeatureItem:
-        self.namespace = value
+    def with_feature(self, value: str) -> DefeatureItem:
+        self.feature = value
         return self
 
     def with_item_id(self, value: str) -> DefeatureItem:
         self.item_id = value
         return self
 
-    def with_feature(self, value: str) -> DefeatureItem:
-        self.feature = value
+    def with_namespace(self, value: str) -> DefeatureItem:
+        self.namespace = value
         return self
 
     def with_store_id(self, value: str) -> DefeatureItem:
@@ -203,18 +203,18 @@ class DefeatureItem(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
-        if hasattr(self, "item_id") and self.item_id:
-            result["itemId"] = str(self.item_id)
-        elif include_empty:
-            result["itemId"] = str()
         if hasattr(self, "feature") and self.feature:
             result["feature"] = str(self.feature)
         elif include_empty:
             result["feature"] = str()
+        if hasattr(self, "item_id") and self.item_id:
+            result["itemId"] = str(self.item_id)
+        elif include_empty:
+            result["itemId"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         if hasattr(self, "store_id") and self.store_id:
             result["storeId"] = str(self.store_id)
         elif include_empty:
@@ -253,33 +253,33 @@ class DefeatureItem(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
-        item_id: str,
         feature: str,
+        item_id: str,
+        namespace: str,
         store_id: str,
     ) -> DefeatureItem:
         instance = cls()
-        instance.namespace = namespace
-        instance.item_id = item_id
         instance.feature = feature
+        instance.item_id = item_id
+        instance.namespace = namespace
         instance.store_id = store_id
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> DefeatureItem:
         instance = cls()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
-        if "itemId" in dict_ and dict_["itemId"] is not None:
-            instance.item_id = str(dict_["itemId"])
-        elif include_empty:
-            instance.item_id = str()
         if "feature" in dict_ and dict_["feature"] is not None:
             instance.feature = str(dict_["feature"])
         elif include_empty:
             instance.feature = str()
+        if "itemId" in dict_ and dict_["itemId"] is not None:
+            instance.item_id = str(dict_["itemId"])
+        elif include_empty:
+            instance.item_id = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         if "storeId" in dict_ and dict_["storeId"] is not None:
             instance.store_id = str(dict_["storeId"])
         elif include_empty:
@@ -289,9 +289,9 @@ class DefeatureItem(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
-            "itemId": "item_id",
             "feature": "feature",
+            "itemId": "item_id",
+            "namespace": "namespace",
             "storeId": "store_id",
         }
 

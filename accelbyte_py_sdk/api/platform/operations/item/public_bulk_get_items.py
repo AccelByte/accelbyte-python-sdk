@@ -56,13 +56,13 @@ class PublicBulkGetItems(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        store_id: (storeId) OPTIONAL str in query
-
-        item_ids: (itemIds) REQUIRED str in query
+        language: (language) OPTIONAL str in query
 
         region: (region) OPTIONAL str in query
 
-        language: (language) OPTIONAL str in query
+        store_id: (storeId) OPTIONAL str in query
+
+        item_ids: (itemIds) REQUIRED str in query
 
     Responses:
         200: OK - List[ItemInfo] (successful operation)
@@ -80,10 +80,10 @@ class PublicBulkGetItems(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
+    language: str                                                                                  # OPTIONAL in [query]
+    region: str                                                                                    # OPTIONAL in [query]
     store_id: str                                                                                  # OPTIONAL in [query]
     item_ids: str                                                                                  # REQUIRED in [query]
-    region: str                                                                                    # OPTIONAL in [query]
-    language: str                                                                                  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -156,14 +156,14 @@ class PublicBulkGetItems(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "language"):
+            result["language"] = self.language
+        if hasattr(self, "region"):
+            result["region"] = self.region
         if hasattr(self, "store_id"):
             result["storeId"] = self.store_id
         if hasattr(self, "item_ids"):
             result["itemIds"] = self.item_ids
-        if hasattr(self, "region"):
-            result["region"] = self.region
-        if hasattr(self, "language"):
-            result["language"] = self.language
         return result
 
     # endregion get_x_params methods
@@ -185,20 +185,20 @@ class PublicBulkGetItems(Operation):
         self.namespace = value
         return self
 
-    def with_store_id(self, value: str) -> PublicBulkGetItems:
-        self.store_id = value
-        return self
-
-    def with_item_ids(self, value: str) -> PublicBulkGetItems:
-        self.item_ids = value
+    def with_language(self, value: str) -> PublicBulkGetItems:
+        self.language = value
         return self
 
     def with_region(self, value: str) -> PublicBulkGetItems:
         self.region = value
         return self
 
-    def with_language(self, value: str) -> PublicBulkGetItems:
-        self.language = value
+    def with_store_id(self, value: str) -> PublicBulkGetItems:
+        self.store_id = value
+        return self
+
+    def with_item_ids(self, value: str) -> PublicBulkGetItems:
+        self.item_ids = value
         return self
 
     # endregion with_x methods
@@ -211,6 +211,14 @@ class PublicBulkGetItems(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
+        if hasattr(self, "language") and self.language:
+            result["language"] = str(self.language)
+        elif include_empty:
+            result["language"] = str()
+        if hasattr(self, "region") and self.region:
+            result["region"] = str(self.region)
+        elif include_empty:
+            result["region"] = str()
         if hasattr(self, "store_id") and self.store_id:
             result["storeId"] = str(self.store_id)
         elif include_empty:
@@ -219,14 +227,6 @@ class PublicBulkGetItems(Operation):
             result["itemIds"] = str(self.item_ids)
         elif include_empty:
             result["itemIds"] = str()
-        if hasattr(self, "region") and self.region:
-            result["region"] = str(self.region)
-        elif include_empty:
-            result["region"] = str()
-        if hasattr(self, "language") and self.language:
-            result["language"] = str(self.language)
-        elif include_empty:
-            result["language"] = str()
         return result
 
     # endregion to methods
@@ -259,19 +259,19 @@ class PublicBulkGetItems(Operation):
         cls,
         namespace: str,
         item_ids: str,
-        store_id: Optional[str] = None,
-        region: Optional[str] = None,
         language: Optional[str] = None,
+        region: Optional[str] = None,
+        store_id: Optional[str] = None,
     ) -> PublicBulkGetItems:
         instance = cls()
         instance.namespace = namespace
         instance.item_ids = item_ids
-        if store_id is not None:
-            instance.store_id = store_id
-        if region is not None:
-            instance.region = region
         if language is not None:
             instance.language = language
+        if region is not None:
+            instance.region = region
+        if store_id is not None:
+            instance.store_id = store_id
         return instance
 
     @classmethod
@@ -281,6 +281,14 @@ class PublicBulkGetItems(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
+        if "language" in dict_ and dict_["language"] is not None:
+            instance.language = str(dict_["language"])
+        elif include_empty:
+            instance.language = str()
+        if "region" in dict_ and dict_["region"] is not None:
+            instance.region = str(dict_["region"])
+        elif include_empty:
+            instance.region = str()
         if "storeId" in dict_ and dict_["storeId"] is not None:
             instance.store_id = str(dict_["storeId"])
         elif include_empty:
@@ -289,24 +297,16 @@ class PublicBulkGetItems(Operation):
             instance.item_ids = str(dict_["itemIds"])
         elif include_empty:
             instance.item_ids = str()
-        if "region" in dict_ and dict_["region"] is not None:
-            instance.region = str(dict_["region"])
-        elif include_empty:
-            instance.region = str()
-        if "language" in dict_ and dict_["language"] is not None:
-            instance.language = str(dict_["language"])
-        elif include_empty:
-            instance.language = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "language": "language",
+            "region": "region",
             "storeId": "store_id",
             "itemIds": "item_ids",
-            "region": "region",
-            "language": "language",
         }
 
     # endregion static methods

@@ -28,55 +28,43 @@ class UserProfileCreate(Model):
     """A DTO object for creating user profile API call. (UserProfileCreate)
 
     Properties:
-        first_name: (firstName) OPTIONAL str
-
-        last_name: (lastName) OPTIONAL str
-
-        language: (language) OPTIONAL str
-
-        date_of_birth: (dateOfBirth) OPTIONAL str
+        avatar_large_url: (avatarLargeUrl) OPTIONAL str
 
         avatar_small_url: (avatarSmallUrl) OPTIONAL str
 
         avatar_url: (avatarUrl) OPTIONAL str
 
-        avatar_large_url: (avatarLargeUrl) OPTIONAL str
-
         custom_attributes: (customAttributes) OPTIONAL Dict[str, Any]
+
+        date_of_birth: (dateOfBirth) OPTIONAL str
+
+        first_name: (firstName) OPTIONAL str
+
+        language: (language) OPTIONAL str
+
+        last_name: (lastName) OPTIONAL str
 
         time_zone: (timeZone) OPTIONAL str
     """
 
     # region fields
 
-    first_name: str                                                                                # OPTIONAL
-    last_name: str                                                                                 # OPTIONAL
-    language: str                                                                                  # OPTIONAL
-    date_of_birth: str                                                                             # OPTIONAL
+    avatar_large_url: str                                                                          # OPTIONAL
     avatar_small_url: str                                                                          # OPTIONAL
     avatar_url: str                                                                                # OPTIONAL
-    avatar_large_url: str                                                                          # OPTIONAL
     custom_attributes: Dict[str, Any]                                                              # OPTIONAL
+    date_of_birth: str                                                                             # OPTIONAL
+    first_name: str                                                                                # OPTIONAL
+    language: str                                                                                  # OPTIONAL
+    last_name: str                                                                                 # OPTIONAL
     time_zone: str                                                                                 # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_first_name(self, value: str) -> UserProfileCreate:
-        self.first_name = value
-        return self
-
-    def with_last_name(self, value: str) -> UserProfileCreate:
-        self.last_name = value
-        return self
-
-    def with_language(self, value: str) -> UserProfileCreate:
-        self.language = value
-        return self
-
-    def with_date_of_birth(self, value: str) -> UserProfileCreate:
-        self.date_of_birth = value
+    def with_avatar_large_url(self, value: str) -> UserProfileCreate:
+        self.avatar_large_url = value
         return self
 
     def with_avatar_small_url(self, value: str) -> UserProfileCreate:
@@ -87,12 +75,24 @@ class UserProfileCreate(Model):
         self.avatar_url = value
         return self
 
-    def with_avatar_large_url(self, value: str) -> UserProfileCreate:
-        self.avatar_large_url = value
-        return self
-
     def with_custom_attributes(self, value: Dict[str, Any]) -> UserProfileCreate:
         self.custom_attributes = value
+        return self
+
+    def with_date_of_birth(self, value: str) -> UserProfileCreate:
+        self.date_of_birth = value
+        return self
+
+    def with_first_name(self, value: str) -> UserProfileCreate:
+        self.first_name = value
+        return self
+
+    def with_language(self, value: str) -> UserProfileCreate:
+        self.language = value
+        return self
+
+    def with_last_name(self, value: str) -> UserProfileCreate:
+        self.last_name = value
         return self
 
     def with_time_zone(self, value: str) -> UserProfileCreate:
@@ -105,22 +105,10 @@ class UserProfileCreate(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "first_name"):
-            result["firstName"] = str(self.first_name)
+        if hasattr(self, "avatar_large_url"):
+            result["avatarLargeUrl"] = str(self.avatar_large_url)
         elif include_empty:
-            result["firstName"] = str()
-        if hasattr(self, "last_name"):
-            result["lastName"] = str(self.last_name)
-        elif include_empty:
-            result["lastName"] = str()
-        if hasattr(self, "language"):
-            result["language"] = str(self.language)
-        elif include_empty:
-            result["language"] = str()
-        if hasattr(self, "date_of_birth"):
-            result["dateOfBirth"] = str(self.date_of_birth)
-        elif include_empty:
-            result["dateOfBirth"] = str()
+            result["avatarLargeUrl"] = str()
         if hasattr(self, "avatar_small_url"):
             result["avatarSmallUrl"] = str(self.avatar_small_url)
         elif include_empty:
@@ -129,14 +117,26 @@ class UserProfileCreate(Model):
             result["avatarUrl"] = str(self.avatar_url)
         elif include_empty:
             result["avatarUrl"] = str()
-        if hasattr(self, "avatar_large_url"):
-            result["avatarLargeUrl"] = str(self.avatar_large_url)
-        elif include_empty:
-            result["avatarLargeUrl"] = str()
         if hasattr(self, "custom_attributes"):
             result["customAttributes"] = {str(k0): v0 for k0, v0 in self.custom_attributes.items()}
         elif include_empty:
             result["customAttributes"] = {}
+        if hasattr(self, "date_of_birth"):
+            result["dateOfBirth"] = str(self.date_of_birth)
+        elif include_empty:
+            result["dateOfBirth"] = str()
+        if hasattr(self, "first_name"):
+            result["firstName"] = str(self.first_name)
+        elif include_empty:
+            result["firstName"] = str()
+        if hasattr(self, "language"):
+            result["language"] = str(self.language)
+        elif include_empty:
+            result["language"] = str()
+        if hasattr(self, "last_name"):
+            result["lastName"] = str(self.last_name)
+        elif include_empty:
+            result["lastName"] = str()
         if hasattr(self, "time_zone"):
             result["timeZone"] = str(self.time_zone)
         elif include_empty:
@@ -186,22 +186,10 @@ class UserProfileCreate(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "firstName" in dict_ and dict_["firstName"] is not None:
-            instance.first_name = str(dict_["firstName"])
+        if "avatarLargeUrl" in dict_ and dict_["avatarLargeUrl"] is not None:
+            instance.avatar_large_url = str(dict_["avatarLargeUrl"])
         elif include_empty:
-            instance.first_name = str()
-        if "lastName" in dict_ and dict_["lastName"] is not None:
-            instance.last_name = str(dict_["lastName"])
-        elif include_empty:
-            instance.last_name = str()
-        if "language" in dict_ and dict_["language"] is not None:
-            instance.language = str(dict_["language"])
-        elif include_empty:
-            instance.language = str()
-        if "dateOfBirth" in dict_ and dict_["dateOfBirth"] is not None:
-            instance.date_of_birth = str(dict_["dateOfBirth"])
-        elif include_empty:
-            instance.date_of_birth = str()
+            instance.avatar_large_url = str()
         if "avatarSmallUrl" in dict_ and dict_["avatarSmallUrl"] is not None:
             instance.avatar_small_url = str(dict_["avatarSmallUrl"])
         elif include_empty:
@@ -210,14 +198,26 @@ class UserProfileCreate(Model):
             instance.avatar_url = str(dict_["avatarUrl"])
         elif include_empty:
             instance.avatar_url = str()
-        if "avatarLargeUrl" in dict_ and dict_["avatarLargeUrl"] is not None:
-            instance.avatar_large_url = str(dict_["avatarLargeUrl"])
-        elif include_empty:
-            instance.avatar_large_url = str()
         if "customAttributes" in dict_ and dict_["customAttributes"] is not None:
             instance.custom_attributes = {str(k0): v0 for k0, v0 in dict_["customAttributes"].items()}
         elif include_empty:
             instance.custom_attributes = {}
+        if "dateOfBirth" in dict_ and dict_["dateOfBirth"] is not None:
+            instance.date_of_birth = str(dict_["dateOfBirth"])
+        elif include_empty:
+            instance.date_of_birth = str()
+        if "firstName" in dict_ and dict_["firstName"] is not None:
+            instance.first_name = str(dict_["firstName"])
+        elif include_empty:
+            instance.first_name = str()
+        if "language" in dict_ and dict_["language"] is not None:
+            instance.language = str(dict_["language"])
+        elif include_empty:
+            instance.language = str()
+        if "lastName" in dict_ and dict_["lastName"] is not None:
+            instance.last_name = str(dict_["lastName"])
+        elif include_empty:
+            instance.last_name = str()
         if "timeZone" in dict_ and dict_["timeZone"] is not None:
             instance.time_zone = str(dict_["timeZone"])
         elif include_empty:
@@ -227,14 +227,14 @@ class UserProfileCreate(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "firstName": "first_name",
-            "lastName": "last_name",
-            "language": "language",
-            "dateOfBirth": "date_of_birth",
+            "avatarLargeUrl": "avatar_large_url",
             "avatarSmallUrl": "avatar_small_url",
             "avatarUrl": "avatar_url",
-            "avatarLargeUrl": "avatar_large_url",
             "customAttributes": "custom_attributes",
+            "dateOfBirth": "date_of_birth",
+            "firstName": "first_name",
+            "language": "language",
+            "lastName": "last_name",
             "timeZone": "time_zone",
         }
 

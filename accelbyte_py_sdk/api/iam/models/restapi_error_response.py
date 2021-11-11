@@ -28,26 +28,26 @@ class RestapiErrorResponse(Model):
     """Restapi error response (restapi.ErrorResponse)
 
     Properties:
-        code: (Code) OPTIONAL int
-
         message: (Message) REQUIRED str
+
+        code: (Code) OPTIONAL int
     """
 
     # region fields
 
-    code: int                                                                                      # OPTIONAL
     message: str                                                                                   # REQUIRED
+    code: int                                                                                      # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_code(self, value: int) -> RestapiErrorResponse:
-        self.code = value
-        return self
-
     def with_message(self, value: str) -> RestapiErrorResponse:
         self.message = value
+        return self
+
+    def with_code(self, value: int) -> RestapiErrorResponse:
+        self.code = value
         return self
 
     # endregion with_x methods
@@ -56,14 +56,14 @@ class RestapiErrorResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "code"):
-            result["Code"] = int(self.code)
-        elif include_empty:
-            result["Code"] = int()
         if hasattr(self, "message"):
             result["Message"] = str(self.message)
         elif include_empty:
             result["Message"] = str()
+        if hasattr(self, "code"):
+            result["Code"] = int(self.code)
+        elif include_empty:
+            result["Code"] = int()
         return result
 
     # endregion to methods
@@ -87,21 +87,21 @@ class RestapiErrorResponse(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "Code" in dict_ and dict_["Code"] is not None:
-            instance.code = int(dict_["Code"])
-        elif include_empty:
-            instance.code = int()
         if "Message" in dict_ and dict_["Message"] is not None:
             instance.message = str(dict_["Message"])
         elif include_empty:
             instance.message = str()
+        if "Code" in dict_ and dict_["Code"] is not None:
+            instance.code = int(dict_["Code"])
+        elif include_empty:
+            instance.code = int()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "Code": "code",
             "Message": "message",
+            "Code": "code",
         }
 
     # endregion static methods

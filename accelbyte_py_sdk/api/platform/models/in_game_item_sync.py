@@ -28,33 +28,33 @@ class InGameItemSync(Model):
     """In game item sync (InGameItemSync)
 
     Properties:
-        target_namespace: (targetNamespace) REQUIRED str
+        category_path: (categoryPath) REQUIRED str
 
         target_item_id: (targetItemId) REQUIRED str
 
-        category_path: (categoryPath) REQUIRED str
+        target_namespace: (targetNamespace) REQUIRED str
     """
 
     # region fields
 
-    target_namespace: str                                                                          # REQUIRED
-    target_item_id: str                                                                            # REQUIRED
     category_path: str                                                                             # REQUIRED
+    target_item_id: str                                                                            # REQUIRED
+    target_namespace: str                                                                          # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_target_namespace(self, value: str) -> InGameItemSync:
-        self.target_namespace = value
+    def with_category_path(self, value: str) -> InGameItemSync:
+        self.category_path = value
         return self
 
     def with_target_item_id(self, value: str) -> InGameItemSync:
         self.target_item_id = value
         return self
 
-    def with_category_path(self, value: str) -> InGameItemSync:
-        self.category_path = value
+    def with_target_namespace(self, value: str) -> InGameItemSync:
+        self.target_namespace = value
         return self
 
     # endregion with_x methods
@@ -63,18 +63,18 @@ class InGameItemSync(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "target_namespace"):
-            result["targetNamespace"] = str(self.target_namespace)
-        elif include_empty:
-            result["targetNamespace"] = str()
-        if hasattr(self, "target_item_id"):
-            result["targetItemId"] = str(self.target_item_id)
-        elif include_empty:
-            result["targetItemId"] = str()
         if hasattr(self, "category_path"):
             result["categoryPath"] = str(self.category_path)
         elif include_empty:
             result["categoryPath"] = str()
+        if hasattr(self, "target_item_id"):
+            result["targetItemId"] = str(self.target_item_id)
+        elif include_empty:
+            result["targetItemId"] = str()
+        if hasattr(self, "target_namespace"):
+            result["targetNamespace"] = str(self.target_namespace)
+        elif include_empty:
+            result["targetNamespace"] = str()
         return result
 
     # endregion to methods
@@ -99,26 +99,26 @@ class InGameItemSync(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "targetNamespace" in dict_ and dict_["targetNamespace"] is not None:
-            instance.target_namespace = str(dict_["targetNamespace"])
-        elif include_empty:
-            instance.target_namespace = str()
-        if "targetItemId" in dict_ and dict_["targetItemId"] is not None:
-            instance.target_item_id = str(dict_["targetItemId"])
-        elif include_empty:
-            instance.target_item_id = str()
         if "categoryPath" in dict_ and dict_["categoryPath"] is not None:
             instance.category_path = str(dict_["categoryPath"])
         elif include_empty:
             instance.category_path = str()
+        if "targetItemId" in dict_ and dict_["targetItemId"] is not None:
+            instance.target_item_id = str(dict_["targetItemId"])
+        elif include_empty:
+            instance.target_item_id = str()
+        if "targetNamespace" in dict_ and dict_["targetNamespace"] is not None:
+            instance.target_namespace = str(dict_["targetNamespace"])
+        elif include_empty:
+            instance.target_namespace = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "targetNamespace": "target_namespace",
-            "targetItemId": "target_item_id",
             "categoryPath": "category_path",
+            "targetItemId": "target_item_id",
+            "targetNamespace": "target_namespace",
         }
 
     # endregion static methods

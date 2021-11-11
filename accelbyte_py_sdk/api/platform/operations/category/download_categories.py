@@ -55,9 +55,9 @@ class DownloadCategories(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        store_id: (storeId) OPTIONAL str in query
-
         language: (language) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
 
     Responses:
         200: OK - List[HierarchicalCategoryInfo] (successful operation)
@@ -75,8 +75,8 @@ class DownloadCategories(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    store_id: str                                                                                  # OPTIONAL in [query]
     language: str                                                                                  # OPTIONAL in [query]
+    store_id: str                                                                                  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -148,10 +148,10 @@ class DownloadCategories(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "store_id"):
-            result["storeId"] = self.store_id
         if hasattr(self, "language"):
             result["language"] = self.language
+        if hasattr(self, "store_id"):
+            result["storeId"] = self.store_id
         return result
 
     # endregion get_x_params methods
@@ -171,12 +171,12 @@ class DownloadCategories(Operation):
         self.namespace = value
         return self
 
-    def with_store_id(self, value: str) -> DownloadCategories:
-        self.store_id = value
-        return self
-
     def with_language(self, value: str) -> DownloadCategories:
         self.language = value
+        return self
+
+    def with_store_id(self, value: str) -> DownloadCategories:
+        self.store_id = value
         return self
 
     # endregion with_x methods
@@ -189,14 +189,14 @@ class DownloadCategories(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "store_id") and self.store_id:
-            result["storeId"] = str(self.store_id)
-        elif include_empty:
-            result["storeId"] = str()
         if hasattr(self, "language") and self.language:
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = str()
+        if hasattr(self, "store_id") and self.store_id:
+            result["storeId"] = str(self.store_id)
+        elif include_empty:
+            result["storeId"] = str()
         return result
 
     # endregion to methods
@@ -228,15 +228,15 @@ class DownloadCategories(Operation):
     def create(
         cls,
         namespace: str,
-        store_id: Optional[str] = None,
         language: Optional[str] = None,
+        store_id: Optional[str] = None,
     ) -> DownloadCategories:
         instance = cls()
         instance.namespace = namespace
-        if store_id is not None:
-            instance.store_id = store_id
         if language is not None:
             instance.language = language
+        if store_id is not None:
+            instance.store_id = store_id
         return instance
 
     @classmethod
@@ -246,22 +246,22 @@ class DownloadCategories(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "storeId" in dict_ and dict_["storeId"] is not None:
-            instance.store_id = str(dict_["storeId"])
-        elif include_empty:
-            instance.store_id = str()
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
             instance.language = str()
+        if "storeId" in dict_ and dict_["storeId"] is not None:
+            instance.store_id = str(dict_["storeId"])
+        elif include_empty:
+            instance.store_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "storeId": "store_id",
             "language": "language",
+            "storeId": "store_id",
         }
 
     # endregion static methods

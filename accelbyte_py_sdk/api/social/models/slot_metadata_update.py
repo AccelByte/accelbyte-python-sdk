@@ -28,22 +28,26 @@ class SlotMetadataUpdate(Model):
     """Slot metadata update (SlotMetadataUpdate)
 
     Properties:
+        custom_attribute: (customAttribute) OPTIONAL str
+
         label: (label) OPTIONAL str
 
         tags: (tags) OPTIONAL List[str]
-
-        custom_attribute: (customAttribute) OPTIONAL str
     """
 
     # region fields
 
+    custom_attribute: str                                                                          # OPTIONAL
     label: str                                                                                     # OPTIONAL
     tags: List[str]                                                                                # OPTIONAL
-    custom_attribute: str                                                                          # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
+
+    def with_custom_attribute(self, value: str) -> SlotMetadataUpdate:
+        self.custom_attribute = value
+        return self
 
     def with_label(self, value: str) -> SlotMetadataUpdate:
         self.label = value
@@ -53,16 +57,16 @@ class SlotMetadataUpdate(Model):
         self.tags = value
         return self
 
-    def with_custom_attribute(self, value: str) -> SlotMetadataUpdate:
-        self.custom_attribute = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "custom_attribute"):
+            result["customAttribute"] = str(self.custom_attribute)
+        elif include_empty:
+            result["customAttribute"] = str()
         if hasattr(self, "label"):
             result["label"] = str(self.label)
         elif include_empty:
@@ -71,10 +75,6 @@ class SlotMetadataUpdate(Model):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
             result["tags"] = []
-        if hasattr(self, "custom_attribute"):
-            result["customAttribute"] = str(self.custom_attribute)
-        elif include_empty:
-            result["customAttribute"] = str()
         return result
 
     # endregion to methods
@@ -102,6 +102,10 @@ class SlotMetadataUpdate(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "customAttribute" in dict_ and dict_["customAttribute"] is not None:
+            instance.custom_attribute = str(dict_["customAttribute"])
+        elif include_empty:
+            instance.custom_attribute = str()
         if "label" in dict_ and dict_["label"] is not None:
             instance.label = str(dict_["label"])
         elif include_empty:
@@ -110,18 +114,14 @@ class SlotMetadataUpdate(Model):
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
             instance.tags = []
-        if "customAttribute" in dict_ and dict_["customAttribute"] is not None:
-            instance.custom_attribute = str(dict_["customAttribute"])
-        elif include_empty:
-            instance.custom_attribute = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "customAttribute": "custom_attribute",
             "label": "label",
             "tags": "tags",
-            "customAttribute": "custom_attribute",
         }
 
     # endregion static methods

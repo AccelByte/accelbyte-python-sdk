@@ -28,39 +28,35 @@ class PlayStationReconcileResult(Model):
     """Play station reconcile result (PlayStationReconcileResult)
 
     Properties:
-        transaction_id: (transactionId) OPTIONAL str
+        item_id: (itemId) OPTIONAL str
 
         psn_item_id: (psnItemId) OPTIONAL str
-
-        item_id: (itemId) OPTIONAL str
 
         sku: (sku) OPTIONAL str
 
         status: (status) OPTIONAL str
+
+        transaction_id: (transactionId) OPTIONAL str
     """
 
     # region fields
 
-    transaction_id: str                                                                            # OPTIONAL
-    psn_item_id: str                                                                               # OPTIONAL
     item_id: str                                                                                   # OPTIONAL
+    psn_item_id: str                                                                               # OPTIONAL
     sku: str                                                                                       # OPTIONAL
     status: str                                                                                    # OPTIONAL
+    transaction_id: str                                                                            # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_transaction_id(self, value: str) -> PlayStationReconcileResult:
-        self.transaction_id = value
+    def with_item_id(self, value: str) -> PlayStationReconcileResult:
+        self.item_id = value
         return self
 
     def with_psn_item_id(self, value: str) -> PlayStationReconcileResult:
         self.psn_item_id = value
-        return self
-
-    def with_item_id(self, value: str) -> PlayStationReconcileResult:
-        self.item_id = value
         return self
 
     def with_sku(self, value: str) -> PlayStationReconcileResult:
@@ -71,24 +67,24 @@ class PlayStationReconcileResult(Model):
         self.status = value
         return self
 
+    def with_transaction_id(self, value: str) -> PlayStationReconcileResult:
+        self.transaction_id = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "transaction_id"):
-            result["transactionId"] = str(self.transaction_id)
-        elif include_empty:
-            result["transactionId"] = str()
-        if hasattr(self, "psn_item_id"):
-            result["psnItemId"] = str(self.psn_item_id)
-        elif include_empty:
-            result["psnItemId"] = str()
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
+        if hasattr(self, "psn_item_id"):
+            result["psnItemId"] = str(self.psn_item_id)
+        elif include_empty:
+            result["psnItemId"] = str()
         if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
@@ -97,6 +93,10 @@ class PlayStationReconcileResult(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
+        if hasattr(self, "transaction_id"):
+            result["transactionId"] = str(self.transaction_id)
+        elif include_empty:
+            result["transactionId"] = str()
         return result
 
     # endregion to methods
@@ -130,18 +130,14 @@ class PlayStationReconcileResult(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "transactionId" in dict_ and dict_["transactionId"] is not None:
-            instance.transaction_id = str(dict_["transactionId"])
-        elif include_empty:
-            instance.transaction_id = str()
-        if "psnItemId" in dict_ and dict_["psnItemId"] is not None:
-            instance.psn_item_id = str(dict_["psnItemId"])
-        elif include_empty:
-            instance.psn_item_id = str()
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
             instance.item_id = str()
+        if "psnItemId" in dict_ and dict_["psnItemId"] is not None:
+            instance.psn_item_id = str(dict_["psnItemId"])
+        elif include_empty:
+            instance.psn_item_id = str()
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:
@@ -150,16 +146,20 @@ class PlayStationReconcileResult(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = str()
+        if "transactionId" in dict_ and dict_["transactionId"] is not None:
+            instance.transaction_id = str(dict_["transactionId"])
+        elif include_empty:
+            instance.transaction_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "transactionId": "transaction_id",
-            "psnItemId": "psn_item_id",
             "itemId": "item_id",
+            "psnItemId": "psn_item_id",
             "sku": "sku",
             "status": "status",
+            "transactionId": "transaction_id",
         }
 
     # endregion static methods

@@ -28,9 +28,9 @@ class JoinDefaultChannelResponse(WebSocketMessage):
 
     # region fields
 
-    id_: str
-    code: str
     channel_slug: str
+    code: str
+    id_: str
 
     # endregion fields
 
@@ -40,12 +40,12 @@ class JoinDefaultChannelResponse(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {JoinDefaultChannelResponse.get_type()}"]
-        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
-        wsm.append(f"id: {id_}")
-        if hasattr(self, "code") and self.code:
-            wsm.append(f"code: {self.code}")
         if hasattr(self, "channel_slug") and self.channel_slug:
             wsm.append(f"channelSlug: {self.channel_slug}")
+        if hasattr(self, "code") and self.code:
+            wsm.append(f"code: {self.code}")
+        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
+        wsm.append(f"id: {id_}")
         return "\n".join(wsm)
 
     # endregion methods
@@ -69,11 +69,11 @@ class JoinDefaultChannelResponse(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if (not is_strict and name.casefold() == "code".casefold()) or (name == "code"):
-                instance.code = value
-                continue
             if (not is_strict and name.casefold() == "channelSlug".casefold()) or (name == "channelSlug"):
                 instance.channel_slug = value
+                continue
+            if (not is_strict and name.casefold() == "code".casefold()) or (name == "code"):
+                instance.code = value
                 continue
             if is_strict:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldTypeNotSupported)
@@ -86,9 +86,9 @@ class JoinDefaultChannelResponse(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
-            "code": "code",
             "channelSlug": "channel_slug",
+            "code": "code",
+            "id": "id_",
         }
 
     # endregion static methods

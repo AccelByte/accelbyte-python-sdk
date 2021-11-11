@@ -62,9 +62,9 @@ class RetrieveUserThirdPartyPlatformTokenV3(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
-
         platform_id: (platformId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
 
     Responses:
         200: OK - OauthmodelTokenThirdPartyResponse (Token returned)
@@ -86,8 +86,8 @@ class RetrieveUserThirdPartyPlatformTokenV3(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    user_id: str                                                                                   # REQUIRED in [path]
     platform_id: str                                                                               # REQUIRED in [path]
+    user_id: str                                                                                   # REQUIRED in [path]
 
     # endregion fields
 
@@ -136,8 +136,8 @@ class RetrieveUserThirdPartyPlatformTokenV3(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "namespace",
-            "user_id",
             "platform_id",
+            "user_id",
         ]
 
     # endregion get methods
@@ -153,10 +153,10 @@ class RetrieveUserThirdPartyPlatformTokenV3(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
         if hasattr(self, "platform_id"):
             result["platformId"] = self.platform_id
+        if hasattr(self, "user_id"):
+            result["userId"] = self.user_id
         return result
 
     # endregion get_x_params methods
@@ -166,9 +166,9 @@ class RetrieveUserThirdPartyPlatformTokenV3(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
         if not hasattr(self, "platform_id") or self.platform_id is None:
+            return False
+        if not hasattr(self, "user_id") or self.user_id is None:
             return False
         return True
 
@@ -180,12 +180,12 @@ class RetrieveUserThirdPartyPlatformTokenV3(Operation):
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> RetrieveUserThirdPartyPlatformTokenV3:
-        self.user_id = value
-        return self
-
     def with_platform_id(self, value: str) -> RetrieveUserThirdPartyPlatformTokenV3:
         self.platform_id = value
+        return self
+
+    def with_user_id(self, value: str) -> RetrieveUserThirdPartyPlatformTokenV3:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -198,14 +198,14 @@ class RetrieveUserThirdPartyPlatformTokenV3(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
         if hasattr(self, "platform_id") and self.platform_id:
             result["platformId"] = str(self.platform_id)
         elif include_empty:
             result["platformId"] = str()
+        if hasattr(self, "user_id") and self.user_id:
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         return result
 
     # endregion to methods
@@ -245,13 +245,13 @@ class RetrieveUserThirdPartyPlatformTokenV3(Operation):
     def create(
         cls,
         namespace: str,
-        user_id: str,
         platform_id: str,
+        user_id: str,
     ) -> RetrieveUserThirdPartyPlatformTokenV3:
         instance = cls()
         instance.namespace = namespace
-        instance.user_id = user_id
         instance.platform_id = platform_id
+        instance.user_id = user_id
         return instance
 
     @classmethod
@@ -261,22 +261,22 @@ class RetrieveUserThirdPartyPlatformTokenV3(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
         if "platformId" in dict_ and dict_["platformId"] is not None:
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
             instance.platform_id = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "userId": "user_id",
             "platformId": "platform_id",
+            "userId": "user_id",
         }
 
     # endregion static methods

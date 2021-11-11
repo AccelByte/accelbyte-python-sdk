@@ -28,26 +28,26 @@ class PaymentOrderPaidResult(Model):
     """Payment order paid result (PaymentOrderPaidResult)
 
     Properties:
-        success: (success) REQUIRED bool
-
         charging: (charging) REQUIRED bool
+
+        success: (success) REQUIRED bool
     """
 
     # region fields
 
-    success: bool                                                                                  # REQUIRED
     charging: bool                                                                                 # REQUIRED
+    success: bool                                                                                  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_success(self, value: bool) -> PaymentOrderPaidResult:
-        self.success = value
-        return self
-
     def with_charging(self, value: bool) -> PaymentOrderPaidResult:
         self.charging = value
+        return self
+
+    def with_success(self, value: bool) -> PaymentOrderPaidResult:
+        self.success = value
         return self
 
     # endregion with_x methods
@@ -56,14 +56,14 @@ class PaymentOrderPaidResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "success"):
-            result["success"] = bool(self.success)
-        elif include_empty:
-            result["success"] = bool()
         if hasattr(self, "charging"):
             result["charging"] = bool(self.charging)
         elif include_empty:
             result["charging"] = bool()
+        if hasattr(self, "success"):
+            result["success"] = bool(self.success)
+        elif include_empty:
+            result["success"] = bool()
         return result
 
     # endregion to methods
@@ -86,21 +86,21 @@ class PaymentOrderPaidResult(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "success" in dict_ and dict_["success"] is not None:
-            instance.success = bool(dict_["success"])
-        elif include_empty:
-            instance.success = bool()
         if "charging" in dict_ and dict_["charging"] is not None:
             instance.charging = bool(dict_["charging"])
         elif include_empty:
             instance.charging = bool()
+        if "success" in dict_ and dict_["success"] is not None:
+            instance.success = bool(dict_["success"])
+        elif include_empty:
+            instance.success = bool()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "success": "success",
             "charging": "charging",
+            "success": "success",
         }
 
     # endregion static methods

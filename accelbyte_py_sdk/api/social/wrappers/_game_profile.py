@@ -40,14 +40,14 @@ from ..operations.game_profile import PublicUpdateProfile
 
 
 @same_doc_as(GetProfile)
-def get_profile(user_id: str, profile_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_profile(profile_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetProfile.create(
-        user_id=user_id,
         profile_id=profile_id,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -81,43 +81,43 @@ def public_create_profile(user_id: str, body: Optional[GameProfileRequest] = Non
 
 
 @same_doc_as(PublicDeleteProfile)
-def public_delete_profile(user_id: str, profile_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_delete_profile(profile_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicDeleteProfile.create(
-        user_id=user_id,
         profile_id=profile_id,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetProfile)
-def public_get_profile(user_id: str, profile_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_get_profile(profile_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicGetProfile.create(
-        user_id=user_id,
         profile_id=profile_id,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetProfileAttribute)
-def public_get_profile_attribute(user_id: str, profile_id: str, attribute_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_get_profile_attribute(attribute_name: str, profile_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicGetProfileAttribute.create(
-        user_id=user_id,
-        profile_id=profile_id,
         attribute_name=attribute_name,
+        profile_id=profile_id,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -150,15 +150,15 @@ def public_get_user_profiles(user_id: str, namespace: Optional[str] = None, x_ad
 
 
 @same_doc_as(PublicUpdateAttribute)
-def public_update_attribute(user_id: str, profile_id: str, attribute_name: str, body: Optional[Attribute] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_update_attribute(attribute_name: str, profile_id: str, user_id: str, body: Optional[Attribute] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicUpdateAttribute.create(
-        user_id=user_id,
-        profile_id=profile_id,
         attribute_name=attribute_name,
+        profile_id=profile_id,
+        user_id=user_id,
         body=body,
         namespace=namespace,
     )
@@ -166,14 +166,14 @@ def public_update_attribute(user_id: str, profile_id: str, attribute_name: str, 
 
 
 @same_doc_as(PublicUpdateProfile)
-def public_update_profile(user_id: str, profile_id: str, body: Optional[GameProfileRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_update_profile(profile_id: str, user_id: str, body: Optional[GameProfileRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicUpdateProfile.create(
-        user_id=user_id,
         profile_id=profile_id,
+        user_id=user_id,
         body=body,
         namespace=namespace,
     )

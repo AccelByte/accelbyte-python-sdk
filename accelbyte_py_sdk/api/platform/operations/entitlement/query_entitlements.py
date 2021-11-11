@@ -53,21 +53,21 @@ class QueryEntitlements(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) OPTIONAL str in query
-
-        entitlement_clazz: (entitlementClazz) OPTIONAL str in query
+        active_only: (activeOnly) OPTIONAL bool in query
 
         app_type: (appType) OPTIONAL str in query
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL str in query
 
         entitlement_name: (entitlementName) OPTIONAL str in query
 
         item_id: (itemId) OPTIONAL List[str] in query
 
-        active_only: (activeOnly) OPTIONAL bool in query
+        limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
-        limit: (limit) OPTIONAL int in query
+        user_id: (userId) OPTIONAL str in query
 
     Responses:
         200: OK - EntitlementPagingSlicedResult (successful operation)
@@ -83,14 +83,14 @@ class QueryEntitlements(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    user_id: str                                                                                   # OPTIONAL in [query]
-    entitlement_clazz: str                                                                         # OPTIONAL in [query]
+    active_only: bool                                                                              # OPTIONAL in [query]
     app_type: str                                                                                  # OPTIONAL in [query]
+    entitlement_clazz: str                                                                         # OPTIONAL in [query]
     entitlement_name: str                                                                          # OPTIONAL in [query]
     item_id: List[str]                                                                             # OPTIONAL in [query]
-    active_only: bool                                                                              # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
+    user_id: str                                                                                   # OPTIONAL in [query]
 
     # endregion fields
 
@@ -162,22 +162,22 @@ class QueryEntitlements(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
-        if hasattr(self, "entitlement_clazz"):
-            result["entitlementClazz"] = self.entitlement_clazz
+        if hasattr(self, "active_only"):
+            result["activeOnly"] = self.active_only
         if hasattr(self, "app_type"):
             result["appType"] = self.app_type
+        if hasattr(self, "entitlement_clazz"):
+            result["entitlementClazz"] = self.entitlement_clazz
         if hasattr(self, "entitlement_name"):
             result["entitlementName"] = self.entitlement_name
         if hasattr(self, "item_id"):
             result["itemId"] = self.item_id
-        if hasattr(self, "active_only"):
-            result["activeOnly"] = self.active_only
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
+        if hasattr(self, "user_id"):
+            result["userId"] = self.user_id
         return result
 
     # endregion get_x_params methods
@@ -197,16 +197,16 @@ class QueryEntitlements(Operation):
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> QueryEntitlements:
-        self.user_id = value
-        return self
-
-    def with_entitlement_clazz(self, value: str) -> QueryEntitlements:
-        self.entitlement_clazz = value
+    def with_active_only(self, value: bool) -> QueryEntitlements:
+        self.active_only = value
         return self
 
     def with_app_type(self, value: str) -> QueryEntitlements:
         self.app_type = value
+        return self
+
+    def with_entitlement_clazz(self, value: str) -> QueryEntitlements:
+        self.entitlement_clazz = value
         return self
 
     def with_entitlement_name(self, value: str) -> QueryEntitlements:
@@ -217,16 +217,16 @@ class QueryEntitlements(Operation):
         self.item_id = value
         return self
 
-    def with_active_only(self, value: bool) -> QueryEntitlements:
-        self.active_only = value
+    def with_limit(self, value: int) -> QueryEntitlements:
+        self.limit = value
         return self
 
     def with_offset(self, value: int) -> QueryEntitlements:
         self.offset = value
         return self
 
-    def with_limit(self, value: int) -> QueryEntitlements:
-        self.limit = value
+    def with_user_id(self, value: str) -> QueryEntitlements:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -239,18 +239,18 @@ class QueryEntitlements(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
+        if hasattr(self, "active_only") and self.active_only:
+            result["activeOnly"] = bool(self.active_only)
         elif include_empty:
-            result["userId"] = str()
-        if hasattr(self, "entitlement_clazz") and self.entitlement_clazz:
-            result["entitlementClazz"] = str(self.entitlement_clazz)
-        elif include_empty:
-            result["entitlementClazz"] = str()
+            result["activeOnly"] = bool()
         if hasattr(self, "app_type") and self.app_type:
             result["appType"] = str(self.app_type)
         elif include_empty:
             result["appType"] = str()
+        if hasattr(self, "entitlement_clazz") and self.entitlement_clazz:
+            result["entitlementClazz"] = str(self.entitlement_clazz)
+        elif include_empty:
+            result["entitlementClazz"] = str()
         if hasattr(self, "entitlement_name") and self.entitlement_name:
             result["entitlementName"] = str(self.entitlement_name)
         elif include_empty:
@@ -259,18 +259,18 @@ class QueryEntitlements(Operation):
             result["itemId"] = [str(i0) for i0 in self.item_id]
         elif include_empty:
             result["itemId"] = []
-        if hasattr(self, "active_only") and self.active_only:
-            result["activeOnly"] = bool(self.active_only)
-        elif include_empty:
-            result["activeOnly"] = bool()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
+        if hasattr(self, "user_id") and self.user_id:
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         return result
 
     # endregion to methods
@@ -298,33 +298,33 @@ class QueryEntitlements(Operation):
     def create(
         cls,
         namespace: str,
-        user_id: Optional[str] = None,
-        entitlement_clazz: Optional[str] = None,
+        active_only: Optional[bool] = None,
         app_type: Optional[str] = None,
+        entitlement_clazz: Optional[str] = None,
         entitlement_name: Optional[str] = None,
         item_id: Optional[List[str]] = None,
-        active_only: Optional[bool] = None,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
+        user_id: Optional[str] = None,
     ) -> QueryEntitlements:
         instance = cls()
         instance.namespace = namespace
-        if user_id is not None:
-            instance.user_id = user_id
-        if entitlement_clazz is not None:
-            instance.entitlement_clazz = entitlement_clazz
+        if active_only is not None:
+            instance.active_only = active_only
         if app_type is not None:
             instance.app_type = app_type
+        if entitlement_clazz is not None:
+            instance.entitlement_clazz = entitlement_clazz
         if entitlement_name is not None:
             instance.entitlement_name = entitlement_name
         if item_id is not None:
             instance.item_id = item_id
-        if active_only is not None:
-            instance.active_only = active_only
-        if offset is not None:
-            instance.offset = offset
         if limit is not None:
             instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
+        if user_id is not None:
+            instance.user_id = user_id
         return instance
 
     @classmethod
@@ -334,18 +334,18 @@ class QueryEntitlements(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
+        if "activeOnly" in dict_ and dict_["activeOnly"] is not None:
+            instance.active_only = bool(dict_["activeOnly"])
         elif include_empty:
-            instance.user_id = str()
-        if "entitlementClazz" in dict_ and dict_["entitlementClazz"] is not None:
-            instance.entitlement_clazz = str(dict_["entitlementClazz"])
-        elif include_empty:
-            instance.entitlement_clazz = str()
+            instance.active_only = bool()
         if "appType" in dict_ and dict_["appType"] is not None:
             instance.app_type = str(dict_["appType"])
         elif include_empty:
             instance.app_type = str()
+        if "entitlementClazz" in dict_ and dict_["entitlementClazz"] is not None:
+            instance.entitlement_clazz = str(dict_["entitlementClazz"])
+        elif include_empty:
+            instance.entitlement_clazz = str()
         if "entitlementName" in dict_ and dict_["entitlementName"] is not None:
             instance.entitlement_name = str(dict_["entitlementName"])
         elif include_empty:
@@ -354,32 +354,32 @@ class QueryEntitlements(Operation):
             instance.item_id = [str(i0) for i0 in dict_["itemId"]]
         elif include_empty:
             instance.item_id = []
-        if "activeOnly" in dict_ and dict_["activeOnly"] is not None:
-            instance.active_only = bool(dict_["activeOnly"])
-        elif include_empty:
-            instance.active_only = bool()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "userId": "user_id",
-            "entitlementClazz": "entitlement_clazz",
+            "activeOnly": "active_only",
             "appType": "app_type",
+            "entitlementClazz": "entitlement_clazz",
             "entitlementName": "entitlement_name",
             "itemId": "item_id",
-            "activeOnly": "active_only",
-            "offset": "offset",
             "limit": "limit",
+            "offset": "offset",
+            "userId": "user_id",
         }
 
     # endregion static methods

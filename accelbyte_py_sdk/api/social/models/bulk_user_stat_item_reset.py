@@ -28,26 +28,26 @@ class BulkUserStatItemReset(Model):
     """Bulk user stat item reset (BulkUserStatItemReset)
 
     Properties:
-        user_id: (userId) REQUIRED str
-
         stat_code: (statCode) REQUIRED str
+
+        user_id: (userId) REQUIRED str
     """
 
     # region fields
 
-    user_id: str                                                                                   # REQUIRED
     stat_code: str                                                                                 # REQUIRED
+    user_id: str                                                                                   # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_user_id(self, value: str) -> BulkUserStatItemReset:
-        self.user_id = value
-        return self
-
     def with_stat_code(self, value: str) -> BulkUserStatItemReset:
         self.stat_code = value
+        return self
+
+    def with_user_id(self, value: str) -> BulkUserStatItemReset:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -56,14 +56,14 @@ class BulkUserStatItemReset(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "user_id"):
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
         if hasattr(self, "stat_code"):
             result["statCode"] = str(self.stat_code)
         elif include_empty:
             result["statCode"] = str()
+        if hasattr(self, "user_id"):
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         return result
 
     # endregion to methods
@@ -86,21 +86,21 @@ class BulkUserStatItemReset(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
         if "statCode" in dict_ and dict_["statCode"] is not None:
             instance.stat_code = str(dict_["statCode"])
         elif include_empty:
             instance.stat_code = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "userId": "user_id",
             "statCode": "stat_code",
+            "userId": "user_id",
         }
 
     # endregion static methods

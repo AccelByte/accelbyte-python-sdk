@@ -28,49 +28,65 @@ class AdyenConfig(Model):
     """A DTO object for updating adyen config. (AdyenConfig)
 
     Properties:
+        allowed_payment_methods: (allowedPaymentMethods) OPTIONAL List[str]
+
         api_key: (apiKey) OPTIONAL str
+
+        authorise_as_capture: (authoriseAsCapture) OPTIONAL bool
+
+        blocked_payment_methods: (blockedPaymentMethods) OPTIONAL List[str]
+
+        live_endpoint_url_prefix: (liveEndpointUrlPrefix) OPTIONAL str
 
         merchant_account: (merchantAccount) OPTIONAL str
 
         notification_hmac_key: (notificationHmacKey) OPTIONAL str
 
-        notification_username: (notificationUsername) OPTIONAL str
-
         notification_password: (notificationPassword) OPTIONAL str
 
+        notification_username: (notificationUsername) OPTIONAL str
+
         return_url: (returnUrl) OPTIONAL str
-
-        live_endpoint_url_prefix: (liveEndpointUrlPrefix) OPTIONAL str
-
-        authorise_as_capture: (authoriseAsCapture) OPTIONAL bool
-
-        allowed_payment_methods: (allowedPaymentMethods) OPTIONAL List[str]
-
-        blocked_payment_methods: (blockedPaymentMethods) OPTIONAL List[str]
 
         settings: (settings) OPTIONAL str
     """
 
     # region fields
 
+    allowed_payment_methods: List[str]                                                             # OPTIONAL
     api_key: str                                                                                   # OPTIONAL
+    authorise_as_capture: bool                                                                     # OPTIONAL
+    blocked_payment_methods: List[str]                                                             # OPTIONAL
+    live_endpoint_url_prefix: str                                                                  # OPTIONAL
     merchant_account: str                                                                          # OPTIONAL
     notification_hmac_key: str                                                                     # OPTIONAL
-    notification_username: str                                                                     # OPTIONAL
     notification_password: str                                                                     # OPTIONAL
+    notification_username: str                                                                     # OPTIONAL
     return_url: str                                                                                # OPTIONAL
-    live_endpoint_url_prefix: str                                                                  # OPTIONAL
-    authorise_as_capture: bool                                                                     # OPTIONAL
-    allowed_payment_methods: List[str]                                                             # OPTIONAL
-    blocked_payment_methods: List[str]                                                             # OPTIONAL
     settings: str                                                                                  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
+    def with_allowed_payment_methods(self, value: List[str]) -> AdyenConfig:
+        self.allowed_payment_methods = value
+        return self
+
     def with_api_key(self, value: str) -> AdyenConfig:
         self.api_key = value
+        return self
+
+    def with_authorise_as_capture(self, value: bool) -> AdyenConfig:
+        self.authorise_as_capture = value
+        return self
+
+    def with_blocked_payment_methods(self, value: List[str]) -> AdyenConfig:
+        self.blocked_payment_methods = value
+        return self
+
+    def with_live_endpoint_url_prefix(self, value: str) -> AdyenConfig:
+        self.live_endpoint_url_prefix = value
         return self
 
     def with_merchant_account(self, value: str) -> AdyenConfig:
@@ -81,32 +97,16 @@ class AdyenConfig(Model):
         self.notification_hmac_key = value
         return self
 
-    def with_notification_username(self, value: str) -> AdyenConfig:
-        self.notification_username = value
-        return self
-
     def with_notification_password(self, value: str) -> AdyenConfig:
         self.notification_password = value
         return self
 
+    def with_notification_username(self, value: str) -> AdyenConfig:
+        self.notification_username = value
+        return self
+
     def with_return_url(self, value: str) -> AdyenConfig:
         self.return_url = value
-        return self
-
-    def with_live_endpoint_url_prefix(self, value: str) -> AdyenConfig:
-        self.live_endpoint_url_prefix = value
-        return self
-
-    def with_authorise_as_capture(self, value: bool) -> AdyenConfig:
-        self.authorise_as_capture = value
-        return self
-
-    def with_allowed_payment_methods(self, value: List[str]) -> AdyenConfig:
-        self.allowed_payment_methods = value
-        return self
-
-    def with_blocked_payment_methods(self, value: List[str]) -> AdyenConfig:
-        self.blocked_payment_methods = value
         return self
 
     def with_settings(self, value: str) -> AdyenConfig:
@@ -119,10 +119,26 @@ class AdyenConfig(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "allowed_payment_methods"):
+            result["allowedPaymentMethods"] = [str(i0) for i0 in self.allowed_payment_methods]
+        elif include_empty:
+            result["allowedPaymentMethods"] = []
         if hasattr(self, "api_key"):
             result["apiKey"] = str(self.api_key)
         elif include_empty:
             result["apiKey"] = str()
+        if hasattr(self, "authorise_as_capture"):
+            result["authoriseAsCapture"] = bool(self.authorise_as_capture)
+        elif include_empty:
+            result["authoriseAsCapture"] = bool()
+        if hasattr(self, "blocked_payment_methods"):
+            result["blockedPaymentMethods"] = [str(i0) for i0 in self.blocked_payment_methods]
+        elif include_empty:
+            result["blockedPaymentMethods"] = []
+        if hasattr(self, "live_endpoint_url_prefix"):
+            result["liveEndpointUrlPrefix"] = str(self.live_endpoint_url_prefix)
+        elif include_empty:
+            result["liveEndpointUrlPrefix"] = str()
         if hasattr(self, "merchant_account"):
             result["merchantAccount"] = str(self.merchant_account)
         elif include_empty:
@@ -131,34 +147,18 @@ class AdyenConfig(Model):
             result["notificationHmacKey"] = str(self.notification_hmac_key)
         elif include_empty:
             result["notificationHmacKey"] = str()
-        if hasattr(self, "notification_username"):
-            result["notificationUsername"] = str(self.notification_username)
-        elif include_empty:
-            result["notificationUsername"] = str()
         if hasattr(self, "notification_password"):
             result["notificationPassword"] = str(self.notification_password)
         elif include_empty:
             result["notificationPassword"] = str()
+        if hasattr(self, "notification_username"):
+            result["notificationUsername"] = str(self.notification_username)
+        elif include_empty:
+            result["notificationUsername"] = str()
         if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
             result["returnUrl"] = str()
-        if hasattr(self, "live_endpoint_url_prefix"):
-            result["liveEndpointUrlPrefix"] = str(self.live_endpoint_url_prefix)
-        elif include_empty:
-            result["liveEndpointUrlPrefix"] = str()
-        if hasattr(self, "authorise_as_capture"):
-            result["authoriseAsCapture"] = bool(self.authorise_as_capture)
-        elif include_empty:
-            result["authoriseAsCapture"] = bool()
-        if hasattr(self, "allowed_payment_methods"):
-            result["allowedPaymentMethods"] = [str(i0) for i0 in self.allowed_payment_methods]
-        elif include_empty:
-            result["allowedPaymentMethods"] = []
-        if hasattr(self, "blocked_payment_methods"):
-            result["blockedPaymentMethods"] = [str(i0) for i0 in self.blocked_payment_methods]
-        elif include_empty:
-            result["blockedPaymentMethods"] = []
         if hasattr(self, "settings"):
             result["settings"] = str(self.settings)
         elif include_empty:
@@ -214,10 +214,26 @@ class AdyenConfig(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "allowedPaymentMethods" in dict_ and dict_["allowedPaymentMethods"] is not None:
+            instance.allowed_payment_methods = [str(i0) for i0 in dict_["allowedPaymentMethods"]]
+        elif include_empty:
+            instance.allowed_payment_methods = []
         if "apiKey" in dict_ and dict_["apiKey"] is not None:
             instance.api_key = str(dict_["apiKey"])
         elif include_empty:
             instance.api_key = str()
+        if "authoriseAsCapture" in dict_ and dict_["authoriseAsCapture"] is not None:
+            instance.authorise_as_capture = bool(dict_["authoriseAsCapture"])
+        elif include_empty:
+            instance.authorise_as_capture = bool()
+        if "blockedPaymentMethods" in dict_ and dict_["blockedPaymentMethods"] is not None:
+            instance.blocked_payment_methods = [str(i0) for i0 in dict_["blockedPaymentMethods"]]
+        elif include_empty:
+            instance.blocked_payment_methods = []
+        if "liveEndpointUrlPrefix" in dict_ and dict_["liveEndpointUrlPrefix"] is not None:
+            instance.live_endpoint_url_prefix = str(dict_["liveEndpointUrlPrefix"])
+        elif include_empty:
+            instance.live_endpoint_url_prefix = str()
         if "merchantAccount" in dict_ and dict_["merchantAccount"] is not None:
             instance.merchant_account = str(dict_["merchantAccount"])
         elif include_empty:
@@ -226,34 +242,18 @@ class AdyenConfig(Model):
             instance.notification_hmac_key = str(dict_["notificationHmacKey"])
         elif include_empty:
             instance.notification_hmac_key = str()
-        if "notificationUsername" in dict_ and dict_["notificationUsername"] is not None:
-            instance.notification_username = str(dict_["notificationUsername"])
-        elif include_empty:
-            instance.notification_username = str()
         if "notificationPassword" in dict_ and dict_["notificationPassword"] is not None:
             instance.notification_password = str(dict_["notificationPassword"])
         elif include_empty:
             instance.notification_password = str()
+        if "notificationUsername" in dict_ and dict_["notificationUsername"] is not None:
+            instance.notification_username = str(dict_["notificationUsername"])
+        elif include_empty:
+            instance.notification_username = str()
         if "returnUrl" in dict_ and dict_["returnUrl"] is not None:
             instance.return_url = str(dict_["returnUrl"])
         elif include_empty:
             instance.return_url = str()
-        if "liveEndpointUrlPrefix" in dict_ and dict_["liveEndpointUrlPrefix"] is not None:
-            instance.live_endpoint_url_prefix = str(dict_["liveEndpointUrlPrefix"])
-        elif include_empty:
-            instance.live_endpoint_url_prefix = str()
-        if "authoriseAsCapture" in dict_ and dict_["authoriseAsCapture"] is not None:
-            instance.authorise_as_capture = bool(dict_["authoriseAsCapture"])
-        elif include_empty:
-            instance.authorise_as_capture = bool()
-        if "allowedPaymentMethods" in dict_ and dict_["allowedPaymentMethods"] is not None:
-            instance.allowed_payment_methods = [str(i0) for i0 in dict_["allowedPaymentMethods"]]
-        elif include_empty:
-            instance.allowed_payment_methods = []
-        if "blockedPaymentMethods" in dict_ and dict_["blockedPaymentMethods"] is not None:
-            instance.blocked_payment_methods = [str(i0) for i0 in dict_["blockedPaymentMethods"]]
-        elif include_empty:
-            instance.blocked_payment_methods = []
         if "settings" in dict_ and dict_["settings"] is not None:
             instance.settings = str(dict_["settings"])
         elif include_empty:
@@ -263,16 +263,16 @@ class AdyenConfig(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "allowedPaymentMethods": "allowed_payment_methods",
             "apiKey": "api_key",
+            "authoriseAsCapture": "authorise_as_capture",
+            "blockedPaymentMethods": "blocked_payment_methods",
+            "liveEndpointUrlPrefix": "live_endpoint_url_prefix",
             "merchantAccount": "merchant_account",
             "notificationHmacKey": "notification_hmac_key",
-            "notificationUsername": "notification_username",
             "notificationPassword": "notification_password",
+            "notificationUsername": "notification_username",
             "returnUrl": "return_url",
-            "liveEndpointUrlPrefix": "live_endpoint_url_prefix",
-            "authoriseAsCapture": "authorise_as_capture",
-            "allowedPaymentMethods": "allowed_payment_methods",
-            "blockedPaymentMethods": "blocked_payment_methods",
             "settings": "settings",
         }
 

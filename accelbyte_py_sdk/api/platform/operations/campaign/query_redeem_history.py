@@ -50,17 +50,17 @@ class QueryRedeemHistory(Operation):
 
         security: bearer
 
-        namespace: (namespace) REQUIRED str in path
-
         campaign_id: (campaignId) REQUIRED str in path
 
-        user_id: (userId) OPTIONAL str in query
+        namespace: (namespace) REQUIRED str in path
 
         code: (code) OPTIONAL str in query
 
+        limit: (limit) OPTIONAL int in query
+
         offset: (offset) OPTIONAL int in query
 
-        limit: (limit) OPTIONAL int in query
+        user_id: (userId) OPTIONAL str in query
 
     Responses:
         200: OK - RedeemHistoryPagingSlicedResult (successful operation)
@@ -75,12 +75,12 @@ class QueryRedeemHistory(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
     campaign_id: str                                                                               # REQUIRED in [path]
-    user_id: str                                                                                   # OPTIONAL in [query]
+    namespace: str                                                                                 # REQUIRED in [path]
     code: str                                                                                      # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
+    user_id: str                                                                                   # OPTIONAL in [query]
 
     # endregion fields
 
@@ -131,8 +131,8 @@ class QueryRedeemHistory(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "namespace",
             "campaign_id",
+            "namespace",
         ]
 
     # endregion get methods
@@ -147,22 +147,22 @@ class QueryRedeemHistory(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "campaign_id"):
             result["campaignId"] = self.campaign_id
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
         if hasattr(self, "code"):
             result["code"] = self.code
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
+        if hasattr(self, "user_id"):
+            result["userId"] = self.user_id
         return result
 
     # endregion get_x_params methods
@@ -170,9 +170,9 @@ class QueryRedeemHistory(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "campaign_id") or self.campaign_id is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         return True
 
@@ -180,28 +180,28 @@ class QueryRedeemHistory(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> QueryRedeemHistory:
-        self.namespace = value
-        return self
-
     def with_campaign_id(self, value: str) -> QueryRedeemHistory:
         self.campaign_id = value
         return self
 
-    def with_user_id(self, value: str) -> QueryRedeemHistory:
-        self.user_id = value
+    def with_namespace(self, value: str) -> QueryRedeemHistory:
+        self.namespace = value
         return self
 
     def with_code(self, value: str) -> QueryRedeemHistory:
         self.code = value
         return self
 
+    def with_limit(self, value: int) -> QueryRedeemHistory:
+        self.limit = value
+        return self
+
     def with_offset(self, value: int) -> QueryRedeemHistory:
         self.offset = value
         return self
 
-    def with_limit(self, value: int) -> QueryRedeemHistory:
-        self.limit = value
+    def with_user_id(self, value: str) -> QueryRedeemHistory:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -210,30 +210,30 @@ class QueryRedeemHistory(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "campaign_id") and self.campaign_id:
             result["campaignId"] = str(self.campaign_id)
         elif include_empty:
             result["campaignId"] = str()
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["userId"] = str()
+            result["namespace"] = str()
         if hasattr(self, "code") and self.code:
             result["code"] = str(self.code)
         elif include_empty:
             result["code"] = str()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
+        if hasattr(self, "user_id") and self.user_id:
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         return result
 
     # endregion to methods
@@ -260,64 +260,64 @@ class QueryRedeemHistory(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
         campaign_id: str,
-        user_id: Optional[str] = None,
+        namespace: str,
         code: Optional[str] = None,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
+        user_id: Optional[str] = None,
     ) -> QueryRedeemHistory:
         instance = cls()
-        instance.namespace = namespace
         instance.campaign_id = campaign_id
-        if user_id is not None:
-            instance.user_id = user_id
+        instance.namespace = namespace
         if code is not None:
             instance.code = code
-        if offset is not None:
-            instance.offset = offset
         if limit is not None:
             instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
+        if user_id is not None:
+            instance.user_id = user_id
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> QueryRedeemHistory:
         instance = cls()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "campaignId" in dict_ and dict_["campaignId"] is not None:
             instance.campaign_id = str(dict_["campaignId"])
         elif include_empty:
             instance.campaign_id = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.user_id = str()
+            instance.namespace = str()
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = str(dict_["code"])
         elif include_empty:
             instance.code = str()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
             "campaignId": "campaign_id",
-            "userId": "user_id",
+            "namespace": "namespace",
             "code": "code",
-            "offset": "offset",
             "limit": "limit",
+            "offset": "offset",
+            "userId": "user_id",
         }
 
     # endregion static methods

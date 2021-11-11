@@ -28,29 +28,29 @@ class BulkUserStatItemInc(Model):
     """Bulk user stat item inc (BulkUserStatItemInc)
 
     Properties:
-        user_id: (userId) REQUIRED str
-
         stat_code: (statCode) REQUIRED str
+
+        user_id: (userId) REQUIRED str
 
         inc: (inc) OPTIONAL float
     """
 
     # region fields
 
-    user_id: str                                                                                   # REQUIRED
     stat_code: str                                                                                 # REQUIRED
+    user_id: str                                                                                   # REQUIRED
     inc: float                                                                                     # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_user_id(self, value: str) -> BulkUserStatItemInc:
-        self.user_id = value
-        return self
-
     def with_stat_code(self, value: str) -> BulkUserStatItemInc:
         self.stat_code = value
+        return self
+
+    def with_user_id(self, value: str) -> BulkUserStatItemInc:
+        self.user_id = value
         return self
 
     def with_inc(self, value: float) -> BulkUserStatItemInc:
@@ -63,14 +63,14 @@ class BulkUserStatItemInc(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "user_id"):
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
         if hasattr(self, "stat_code"):
             result["statCode"] = str(self.stat_code)
         elif include_empty:
             result["statCode"] = str()
+        if hasattr(self, "user_id"):
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         if hasattr(self, "inc"):
             result["inc"] = float(self.inc)
         elif include_empty:
@@ -100,14 +100,14 @@ class BulkUserStatItemInc(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
         if "statCode" in dict_ and dict_["statCode"] is not None:
             instance.stat_code = str(dict_["statCode"])
         elif include_empty:
             instance.stat_code = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         if "inc" in dict_ and dict_["inc"] is not None:
             instance.inc = float(dict_["inc"])
         elif include_empty:
@@ -117,8 +117,8 @@ class BulkUserStatItemInc(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "userId": "user_id",
             "statCode": "stat_code",
+            "userId": "user_id",
             "inc": "inc",
         }
 

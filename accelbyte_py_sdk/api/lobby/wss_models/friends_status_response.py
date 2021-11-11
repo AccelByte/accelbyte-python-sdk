@@ -28,11 +28,11 @@ class FriendsStatusResponse(WebSocketMessage):
 
     # region fields
 
-    id_: str
+    activity: List[str]
+    availability: List[int]
     code: str
     friend_ids: List[str]
-    availability: List[int]
-    activity: List[str]
+    id_: str
     last_seen_at: List[str]
 
     # endregion fields
@@ -43,16 +43,16 @@ class FriendsStatusResponse(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {FriendsStatusResponse.get_type()}"]
-        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
-        wsm.append(f"id: {id_}")
+        if hasattr(self, "activity") and self.activity:
+            wsm.append(f"activity: [" + ','.join([str(i) for i in self.activity]) + "]")
+        if hasattr(self, "availability") and self.availability:
+            wsm.append(f"availability: [" + ','.join([str(i) for i in self.availability]) + "]")
         if hasattr(self, "code") and self.code:
             wsm.append(f"code: {self.code}")
         if hasattr(self, "friend_ids") and self.friend_ids:
             wsm.append(f"friendIds: [" + ','.join([str(i) for i in self.friend_ids]) + "]")
-        if hasattr(self, "availability") and self.availability:
-            wsm.append(f"availability: [" + ','.join([str(i) for i in self.availability]) + "]")
-        if hasattr(self, "activity") and self.activity:
-            wsm.append(f"activity: [" + ','.join([str(i) for i in self.activity]) + "]")
+        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
+        wsm.append(f"id: {id_}")
         if hasattr(self, "last_seen_at") and self.last_seen_at:
             wsm.append(f"lastSeenAt: [" + ','.join([str(i) for i in self.last_seen_at]) + "]")
         return "\n".join(wsm)
@@ -78,17 +78,17 @@ class FriendsStatusResponse(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
+            if (not is_strict and name.casefold() == "activity".casefold()) or (name == "activity"):
+                instance.activity = [str(i) for i in value.removeprefix("[").removesuffix("]").split(",")]
+                continue
+            if (not is_strict and name.casefold() == "availability".casefold()) or (name == "availability"):
+                instance.availability = [int(i) for i in value.removeprefix("[").removesuffix("]").split(",")]
+                continue
             if (not is_strict and name.casefold() == "code".casefold()) or (name == "code"):
                 instance.code = value
                 continue
             if (not is_strict and name.casefold() == "friendIds".casefold()) or (name == "friendIds"):
                 instance.friend_ids = [str(i) for i in value.removeprefix("[").removesuffix("]").split(",")]
-                continue
-            if (not is_strict and name.casefold() == "availability".casefold()) or (name == "availability"):
-                instance.availability = [int(i) for i in value.removeprefix("[").removesuffix("]").split(",")]
-                continue
-            if (not is_strict and name.casefold() == "activity".casefold()) or (name == "activity"):
-                instance.activity = [str(i) for i in value.removeprefix("[").removesuffix("]").split(",")]
                 continue
             if (not is_strict and name.casefold() == "lastSeenAt".casefold()) or (name == "lastSeenAt"):
                 instance.last_seen_at = [str(i) for i in value.removeprefix("[").removesuffix("]").split(",")]
@@ -104,11 +104,11 @@ class FriendsStatusResponse(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
+            "activity": "activity",
+            "availability": "availability",
             "code": "code",
             "friendIds": "friend_ids",
-            "availability": "availability",
-            "activity": "activity",
+            "id": "id_",
             "lastSeenAt": "last_seen_at",
         }
 

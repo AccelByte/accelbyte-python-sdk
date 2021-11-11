@@ -55,11 +55,11 @@ class GetUserEntitlementBySku(Operation):
 
         user_id: (userId) REQUIRED str in path
 
-        sku: (sku) REQUIRED str in query
+        active_only: (activeOnly) OPTIONAL bool in query
 
         entitlement_clazz: (entitlementClazz) OPTIONAL str in query
 
-        active_only: (activeOnly) OPTIONAL bool in query
+        sku: (sku) REQUIRED str in query
 
     Responses:
         200: OK - EntitlementInfo (successful operation)
@@ -78,9 +78,9 @@ class GetUserEntitlementBySku(Operation):
 
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
-    sku: str                                                                                       # REQUIRED in [query]
-    entitlement_clazz: str                                                                         # OPTIONAL in [query]
     active_only: bool                                                                              # OPTIONAL in [query]
+    entitlement_clazz: str                                                                         # OPTIONAL in [query]
+    sku: str                                                                                       # REQUIRED in [query]
 
     # endregion fields
 
@@ -156,12 +156,12 @@ class GetUserEntitlementBySku(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "sku"):
-            result["sku"] = self.sku
-        if hasattr(self, "entitlement_clazz"):
-            result["entitlementClazz"] = self.entitlement_clazz
         if hasattr(self, "active_only"):
             result["activeOnly"] = self.active_only
+        if hasattr(self, "entitlement_clazz"):
+            result["entitlementClazz"] = self.entitlement_clazz
+        if hasattr(self, "sku"):
+            result["sku"] = self.sku
         return result
 
     # endregion get_x_params methods
@@ -189,16 +189,16 @@ class GetUserEntitlementBySku(Operation):
         self.user_id = value
         return self
 
-    def with_sku(self, value: str) -> GetUserEntitlementBySku:
-        self.sku = value
+    def with_active_only(self, value: bool) -> GetUserEntitlementBySku:
+        self.active_only = value
         return self
 
     def with_entitlement_clazz(self, value: str) -> GetUserEntitlementBySku:
         self.entitlement_clazz = value
         return self
 
-    def with_active_only(self, value: bool) -> GetUserEntitlementBySku:
-        self.active_only = value
+    def with_sku(self, value: str) -> GetUserEntitlementBySku:
+        self.sku = value
         return self
 
     # endregion with_x methods
@@ -215,18 +215,18 @@ class GetUserEntitlementBySku(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "sku") and self.sku:
-            result["sku"] = str(self.sku)
-        elif include_empty:
-            result["sku"] = str()
-        if hasattr(self, "entitlement_clazz") and self.entitlement_clazz:
-            result["entitlementClazz"] = str(self.entitlement_clazz)
-        elif include_empty:
-            result["entitlementClazz"] = str()
         if hasattr(self, "active_only") and self.active_only:
             result["activeOnly"] = bool(self.active_only)
         elif include_empty:
             result["activeOnly"] = bool()
+        if hasattr(self, "entitlement_clazz") and self.entitlement_clazz:
+            result["entitlementClazz"] = str(self.entitlement_clazz)
+        elif include_empty:
+            result["entitlementClazz"] = str()
+        if hasattr(self, "sku") and self.sku:
+            result["sku"] = str(self.sku)
+        elif include_empty:
+            result["sku"] = str()
         return result
 
     # endregion to methods
@@ -260,17 +260,17 @@ class GetUserEntitlementBySku(Operation):
         namespace: str,
         user_id: str,
         sku: str,
-        entitlement_clazz: Optional[str] = None,
         active_only: Optional[bool] = None,
+        entitlement_clazz: Optional[str] = None,
     ) -> GetUserEntitlementBySku:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
         instance.sku = sku
-        if entitlement_clazz is not None:
-            instance.entitlement_clazz = entitlement_clazz
         if active_only is not None:
             instance.active_only = active_only
+        if entitlement_clazz is not None:
+            instance.entitlement_clazz = entitlement_clazz
         return instance
 
     @classmethod
@@ -284,18 +284,18 @@ class GetUserEntitlementBySku(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
-        if "sku" in dict_ and dict_["sku"] is not None:
-            instance.sku = str(dict_["sku"])
-        elif include_empty:
-            instance.sku = str()
-        if "entitlementClazz" in dict_ and dict_["entitlementClazz"] is not None:
-            instance.entitlement_clazz = str(dict_["entitlementClazz"])
-        elif include_empty:
-            instance.entitlement_clazz = str()
         if "activeOnly" in dict_ and dict_["activeOnly"] is not None:
             instance.active_only = bool(dict_["activeOnly"])
         elif include_empty:
             instance.active_only = bool()
+        if "entitlementClazz" in dict_ and dict_["entitlementClazz"] is not None:
+            instance.entitlement_clazz = str(dict_["entitlementClazz"])
+        elif include_empty:
+            instance.entitlement_clazz = str()
+        if "sku" in dict_ and dict_["sku"] is not None:
+            instance.sku = str(dict_["sku"])
+        elif include_empty:
+            instance.sku = str()
         return instance
 
     @staticmethod
@@ -303,9 +303,9 @@ class GetUserEntitlementBySku(Operation):
         return {
             "namespace": "namespace",
             "userId": "user_id",
-            "sku": "sku",
-            "entitlementClazz": "entitlement_clazz",
             "activeOnly": "active_only",
+            "entitlementClazz": "entitlement_clazz",
+            "sku": "sku",
         }
 
     # endregion static methods

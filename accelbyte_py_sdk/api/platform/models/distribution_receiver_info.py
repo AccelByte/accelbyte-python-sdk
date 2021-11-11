@@ -28,36 +28,36 @@ class DistributionReceiverInfo(Model):
     """Distribution receiver info (DistributionReceiverInfo)
 
     Properties:
-        user_id: (userId) REQUIRED str
+        ext_user_id: (extUserId) REQUIRED str
 
         namespace: (namespace) REQUIRED str
 
-        ext_user_id: (extUserId) REQUIRED str
+        user_id: (userId) REQUIRED str
 
         attributes: (attributes) OPTIONAL Dict[str, str]
     """
 
     # region fields
 
-    user_id: str                                                                                   # REQUIRED
-    namespace: str                                                                                 # REQUIRED
     ext_user_id: str                                                                               # REQUIRED
+    namespace: str                                                                                 # REQUIRED
+    user_id: str                                                                                   # REQUIRED
     attributes: Dict[str, str]                                                                     # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_user_id(self, value: str) -> DistributionReceiverInfo:
-        self.user_id = value
+    def with_ext_user_id(self, value: str) -> DistributionReceiverInfo:
+        self.ext_user_id = value
         return self
 
     def with_namespace(self, value: str) -> DistributionReceiverInfo:
         self.namespace = value
         return self
 
-    def with_ext_user_id(self, value: str) -> DistributionReceiverInfo:
-        self.ext_user_id = value
+    def with_user_id(self, value: str) -> DistributionReceiverInfo:
+        self.user_id = value
         return self
 
     def with_attributes(self, value: Dict[str, str]) -> DistributionReceiverInfo:
@@ -70,18 +70,18 @@ class DistributionReceiverInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "user_id"):
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
-        if hasattr(self, "namespace"):
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "ext_user_id"):
             result["extUserId"] = str(self.ext_user_id)
         elif include_empty:
             result["extUserId"] = str()
+        if hasattr(self, "namespace"):
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
+        if hasattr(self, "user_id"):
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         if hasattr(self, "attributes"):
             result["attributes"] = {str(k0): str(v0) for k0, v0 in self.attributes.items()}
         elif include_empty:
@@ -113,18 +113,18 @@ class DistributionReceiverInfo(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "extUserId" in dict_ and dict_["extUserId"] is not None:
             instance.ext_user_id = str(dict_["extUserId"])
         elif include_empty:
             instance.ext_user_id = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         if "attributes" in dict_ and dict_["attributes"] is not None:
             instance.attributes = {str(k0): str(v0) for k0, v0 in dict_["attributes"].items()}
         elif include_empty:
@@ -134,9 +134,9 @@ class DistributionReceiverInfo(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "userId": "user_id",
-            "namespace": "namespace",
             "extUserId": "ext_user_id",
+            "namespace": "namespace",
+            "userId": "user_id",
             "attributes": "attributes",
         }
 

@@ -56,11 +56,11 @@ class PlatformAuthenticateSAMLV3Handler(Operation):
 
         platform_id: (platformId) REQUIRED str in path
 
-        state: (state) REQUIRED str in query
-
         code: (code) OPTIONAL str in query
 
         error: (error) OPTIONAL str in query
+
+        state: (state) REQUIRED str in query
 
     Responses:
         302: Found - (Found. Redirect to clients redirection URL with either code or error on the query parameter)
@@ -76,9 +76,9 @@ class PlatformAuthenticateSAMLV3Handler(Operation):
     _location_query: str = "PLACEHOLDER"
 
     platform_id: str                                                                               # REQUIRED in [path]
-    state: str                                                                                     # REQUIRED in [query]
     code: str                                                                                      # OPTIONAL in [query]
     error: str                                                                                     # OPTIONAL in [query]
+    state: str                                                                                     # REQUIRED in [query]
 
     # endregion fields
 
@@ -151,12 +151,12 @@ class PlatformAuthenticateSAMLV3Handler(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "state"):
-            result["state"] = self.state
         if hasattr(self, "code"):
             result["code"] = self.code
         if hasattr(self, "error"):
             result["error"] = self.error
+        if hasattr(self, "state"):
+            result["state"] = self.state
         return result
 
     # endregion get_x_params methods
@@ -186,16 +186,16 @@ class PlatformAuthenticateSAMLV3Handler(Operation):
         self.platform_id = value
         return self
 
-    def with_state(self, value: str) -> PlatformAuthenticateSAMLV3Handler:
-        self.state = value
-        return self
-
     def with_code(self, value: str) -> PlatformAuthenticateSAMLV3Handler:
         self.code = value
         return self
 
     def with_error(self, value: str) -> PlatformAuthenticateSAMLV3Handler:
         self.error = value
+        return self
+
+    def with_state(self, value: str) -> PlatformAuthenticateSAMLV3Handler:
+        self.state = value
         return self
 
     # endregion with_x methods
@@ -208,10 +208,6 @@ class PlatformAuthenticateSAMLV3Handler(Operation):
             result["platformId"] = str(self.platform_id)
         elif include_empty:
             result["platformId"] = str()
-        if hasattr(self, "state") and self.state:
-            result["state"] = str(self.state)
-        elif include_empty:
-            result["state"] = str()
         if hasattr(self, "code") and self.code:
             result["code"] = str(self.code)
         elif include_empty:
@@ -220,6 +216,10 @@ class PlatformAuthenticateSAMLV3Handler(Operation):
             result["error"] = str(self.error)
         elif include_empty:
             result["error"] = str()
+        if hasattr(self, "state") and self.state:
+            result["state"] = str(self.state)
+        elif include_empty:
+            result["state"] = str()
         return result
 
     # endregion to methods
@@ -267,10 +267,6 @@ class PlatformAuthenticateSAMLV3Handler(Operation):
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
             instance.platform_id = str()
-        if "state" in dict_ and dict_["state"] is not None:
-            instance.state = str(dict_["state"])
-        elif include_empty:
-            instance.state = str()
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = str(dict_["code"])
         elif include_empty:
@@ -279,15 +275,19 @@ class PlatformAuthenticateSAMLV3Handler(Operation):
             instance.error = str(dict_["error"])
         elif include_empty:
             instance.error = str()
+        if "state" in dict_ and dict_["state"] is not None:
+            instance.state = str(dict_["state"])
+        elif include_empty:
+            instance.state = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "platformId": "platform_id",
-            "state": "state",
             "code": "code",
             "error": "error",
+            "state": "state",
         }
 
     # endregion static methods

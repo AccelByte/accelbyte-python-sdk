@@ -52,11 +52,11 @@ class QueryStats(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        keyword: (keyword) REQUIRED str in query
+        limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
-        limit: (limit) OPTIONAL int in query
+        keyword: (keyword) REQUIRED str in query
 
     Responses:
         200: OK - StatPagingSlicedResult (successful operation)
@@ -72,9 +72,9 @@ class QueryStats(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    keyword: str                                                                                   # REQUIRED in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
+    keyword: str                                                                                   # REQUIRED in [query]
 
     # endregion fields
 
@@ -147,12 +147,12 @@ class QueryStats(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "keyword"):
-            result["keyword"] = self.keyword
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
+        if hasattr(self, "keyword"):
+            result["keyword"] = self.keyword
         return result
 
     # endregion get_x_params methods
@@ -174,16 +174,16 @@ class QueryStats(Operation):
         self.namespace = value
         return self
 
-    def with_keyword(self, value: str) -> QueryStats:
-        self.keyword = value
+    def with_limit(self, value: int) -> QueryStats:
+        self.limit = value
         return self
 
     def with_offset(self, value: int) -> QueryStats:
         self.offset = value
         return self
 
-    def with_limit(self, value: int) -> QueryStats:
-        self.limit = value
+    def with_keyword(self, value: str) -> QueryStats:
+        self.keyword = value
         return self
 
     # endregion with_x methods
@@ -196,18 +196,18 @@ class QueryStats(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "keyword") and self.keyword:
-            result["keyword"] = str(self.keyword)
-        elif include_empty:
-            result["keyword"] = str()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
+        if hasattr(self, "keyword") and self.keyword:
+            result["keyword"] = str(self.keyword)
+        elif include_empty:
+            result["keyword"] = str()
         return result
 
     # endregion to methods
@@ -236,16 +236,16 @@ class QueryStats(Operation):
         cls,
         namespace: str,
         keyword: str,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
     ) -> QueryStats:
         instance = cls()
         instance.namespace = namespace
         instance.keyword = keyword
-        if offset is not None:
-            instance.offset = offset
         if limit is not None:
             instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
         return instance
 
     @classmethod
@@ -255,27 +255,27 @@ class QueryStats(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "keyword" in dict_ and dict_["keyword"] is not None:
-            instance.keyword = str(dict_["keyword"])
-        elif include_empty:
-            instance.keyword = str()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
+        if "keyword" in dict_ and dict_["keyword"] is not None:
+            instance.keyword = str(dict_["keyword"])
+        elif include_empty:
+            instance.keyword = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "keyword": "keyword",
-            "offset": "offset",
             "limit": "limit",
+            "offset": "offset",
+            "keyword": "keyword",
         }
 
     # endregion static methods

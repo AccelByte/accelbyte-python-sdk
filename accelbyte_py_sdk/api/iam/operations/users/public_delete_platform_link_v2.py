@@ -65,9 +65,9 @@ class PublicDeletePlatformLinkV2(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
-
         platform_id: (platformId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
 
     Responses:
         204: No Content - (Operation succeeded)
@@ -94,8 +94,8 @@ class PublicDeletePlatformLinkV2(Operation):
 
     platform_namespace: str                                                                        # OPTIONAL in [form_data]
     namespace: str                                                                                 # REQUIRED in [path]
-    user_id: str                                                                                   # REQUIRED in [path]
     platform_id: str                                                                               # REQUIRED in [path]
+    user_id: str                                                                                   # REQUIRED in [path]
 
     # endregion fields
 
@@ -144,8 +144,8 @@ class PublicDeletePlatformLinkV2(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "namespace",
-            "user_id",
             "platform_id",
+            "user_id",
         ]
 
     # endregion get methods
@@ -168,10 +168,10 @@ class PublicDeletePlatformLinkV2(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
         if hasattr(self, "platform_id"):
             result["platformId"] = self.platform_id
+        if hasattr(self, "user_id"):
+            result["userId"] = self.user_id
         return result
 
     # endregion get_x_params methods
@@ -181,9 +181,9 @@ class PublicDeletePlatformLinkV2(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
         if not hasattr(self, "platform_id") or self.platform_id is None:
+            return False
+        if not hasattr(self, "user_id") or self.user_id is None:
             return False
         return True
 
@@ -199,12 +199,12 @@ class PublicDeletePlatformLinkV2(Operation):
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> PublicDeletePlatformLinkV2:
-        self.user_id = value
-        return self
-
     def with_platform_id(self, value: str) -> PublicDeletePlatformLinkV2:
         self.platform_id = value
+        return self
+
+    def with_user_id(self, value: str) -> PublicDeletePlatformLinkV2:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -221,14 +221,14 @@ class PublicDeletePlatformLinkV2(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
         if hasattr(self, "platform_id") and self.platform_id:
             result["platformId"] = str(self.platform_id)
         elif include_empty:
             result["platformId"] = str()
+        if hasattr(self, "user_id") and self.user_id:
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         return result
 
     # endregion to methods
@@ -276,14 +276,14 @@ class PublicDeletePlatformLinkV2(Operation):
     def create(
         cls,
         namespace: str,
-        user_id: str,
         platform_id: str,
+        user_id: str,
         platform_namespace: Optional[str] = None,
     ) -> PublicDeletePlatformLinkV2:
         instance = cls()
         instance.namespace = namespace
-        instance.user_id = user_id
         instance.platform_id = platform_id
+        instance.user_id = user_id
         if platform_namespace is not None:
             instance.platform_namespace = platform_namespace
         return instance
@@ -299,14 +299,14 @@ class PublicDeletePlatformLinkV2(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
         if "platformId" in dict_ and dict_["platformId"] is not None:
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
             instance.platform_id = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         return instance
 
     @staticmethod
@@ -314,8 +314,8 @@ class PublicDeletePlatformLinkV2(Operation):
         return {
             "platform_namespace": "platform_namespace",
             "namespace": "namespace",
-            "userId": "user_id",
             "platformId": "platform_id",
+            "userId": "user_id",
         }
 
     # endregion static methods

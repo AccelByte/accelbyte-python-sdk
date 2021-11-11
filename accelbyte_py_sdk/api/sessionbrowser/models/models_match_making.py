@@ -42,8 +42,6 @@ class ModelsMatchMaking(Model):
 
         game_mode: (game_mode) REQUIRED str
 
-        joinable: (joinable) OPTIONAL bool
-
         match_id: (match_id) REQUIRED str
 
         matching_allies: (matching_allies) REQUIRED List[ModelsMatchingAlly]
@@ -52,8 +50,6 @@ class ModelsMatchMaking(Model):
 
         party_attributes: (party_attributes) REQUIRED Dict[str, Any]
 
-        party_id: (party_id) OPTIONAL str
-
         queued_at: (queued_at) REQUIRED int
 
         region: (region) REQUIRED str
@@ -61,6 +57,10 @@ class ModelsMatchMaking(Model):
         server_name: (server_name) REQUIRED str
 
         status: (status) REQUIRED str
+
+        joinable: (joinable) OPTIONAL bool
+
+        party_id: (party_id) OPTIONAL str
     """
 
     # region fields
@@ -71,16 +71,16 @@ class ModelsMatchMaking(Model):
     deployment: str                                                                                # REQUIRED
     event: str                                                                                     # REQUIRED
     game_mode: str                                                                                 # REQUIRED
-    joinable: bool                                                                                 # OPTIONAL
     match_id: str                                                                                  # REQUIRED
     matching_allies: List[ModelsMatchingAlly]                                                      # REQUIRED
     namespace: str                                                                                 # REQUIRED
     party_attributes: Dict[str, Any]                                                               # REQUIRED
-    party_id: str                                                                                  # OPTIONAL
     queued_at: int                                                                                 # REQUIRED
     region: str                                                                                    # REQUIRED
     server_name: str                                                                               # REQUIRED
     status: str                                                                                    # REQUIRED
+    joinable: bool                                                                                 # OPTIONAL
+    party_id: str                                                                                  # OPTIONAL
 
     # endregion fields
 
@@ -110,10 +110,6 @@ class ModelsMatchMaking(Model):
         self.game_mode = value
         return self
 
-    def with_joinable(self, value: bool) -> ModelsMatchMaking:
-        self.joinable = value
-        return self
-
     def with_match_id(self, value: str) -> ModelsMatchMaking:
         self.match_id = value
         return self
@@ -130,10 +126,6 @@ class ModelsMatchMaking(Model):
         self.party_attributes = value
         return self
 
-    def with_party_id(self, value: str) -> ModelsMatchMaking:
-        self.party_id = value
-        return self
-
     def with_queued_at(self, value: int) -> ModelsMatchMaking:
         self.queued_at = value
         return self
@@ -148,6 +140,14 @@ class ModelsMatchMaking(Model):
 
     def with_status(self, value: str) -> ModelsMatchMaking:
         self.status = value
+        return self
+
+    def with_joinable(self, value: bool) -> ModelsMatchMaking:
+        self.joinable = value
+        return self
+
+    def with_party_id(self, value: str) -> ModelsMatchMaking:
+        self.party_id = value
         return self
 
     # endregion with_x methods
@@ -180,10 +180,6 @@ class ModelsMatchMaking(Model):
             result["game_mode"] = str(self.game_mode)
         elif include_empty:
             result["game_mode"] = str()
-        if hasattr(self, "joinable"):
-            result["joinable"] = bool(self.joinable)
-        elif include_empty:
-            result["joinable"] = bool()
         if hasattr(self, "match_id"):
             result["match_id"] = str(self.match_id)
         elif include_empty:
@@ -200,10 +196,6 @@ class ModelsMatchMaking(Model):
             result["party_attributes"] = {str(k0): v0 for k0, v0 in self.party_attributes.items()}
         elif include_empty:
             result["party_attributes"] = {}
-        if hasattr(self, "party_id"):
-            result["party_id"] = str(self.party_id)
-        elif include_empty:
-            result["party_id"] = str()
         if hasattr(self, "queued_at"):
             result["queued_at"] = int(self.queued_at)
         elif include_empty:
@@ -220,6 +212,14 @@ class ModelsMatchMaking(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
+        if hasattr(self, "joinable"):
+            result["joinable"] = bool(self.joinable)
+        elif include_empty:
+            result["joinable"] = bool()
+        if hasattr(self, "party_id"):
+            result["party_id"] = str(self.party_id)
+        elif include_empty:
+            result["party_id"] = str()
         return result
 
     # endregion to methods
@@ -296,10 +296,6 @@ class ModelsMatchMaking(Model):
             instance.game_mode = str(dict_["game_mode"])
         elif include_empty:
             instance.game_mode = str()
-        if "joinable" in dict_ and dict_["joinable"] is not None:
-            instance.joinable = bool(dict_["joinable"])
-        elif include_empty:
-            instance.joinable = bool()
         if "match_id" in dict_ and dict_["match_id"] is not None:
             instance.match_id = str(dict_["match_id"])
         elif include_empty:
@@ -316,10 +312,6 @@ class ModelsMatchMaking(Model):
             instance.party_attributes = {str(k0): v0 for k0, v0 in dict_["party_attributes"].items()}
         elif include_empty:
             instance.party_attributes = {}
-        if "party_id" in dict_ and dict_["party_id"] is not None:
-            instance.party_id = str(dict_["party_id"])
-        elif include_empty:
-            instance.party_id = str()
         if "queued_at" in dict_ and dict_["queued_at"] is not None:
             instance.queued_at = int(dict_["queued_at"])
         elif include_empty:
@@ -336,6 +328,14 @@ class ModelsMatchMaking(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = str()
+        if "joinable" in dict_ and dict_["joinable"] is not None:
+            instance.joinable = bool(dict_["joinable"])
+        elif include_empty:
+            instance.joinable = bool()
+        if "party_id" in dict_ and dict_["party_id"] is not None:
+            instance.party_id = str(dict_["party_id"])
+        elif include_empty:
+            instance.party_id = str()
         return instance
 
     @staticmethod
@@ -347,16 +347,16 @@ class ModelsMatchMaking(Model):
             "deployment": "deployment",
             "event": "event",
             "game_mode": "game_mode",
-            "joinable": "joinable",
             "match_id": "match_id",
             "matching_allies": "matching_allies",
             "namespace": "namespace",
             "party_attributes": "party_attributes",
-            "party_id": "party_id",
             "queued_at": "queued_at",
             "region": "region",
             "server_name": "server_name",
             "status": "status",
+            "joinable": "joinable",
+            "party_id": "party_id",
         }
 
     # endregion static methods

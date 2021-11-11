@@ -65,9 +65,9 @@ class UpdateCategory(Operation):
 
         body: (body) OPTIONAL CategoryUpdate in body
 
-        namespace: (namespace) REQUIRED str in path
-
         category_path: (categoryPath) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
         store_id: (storeId) REQUIRED str in query
 
@@ -93,8 +93,8 @@ class UpdateCategory(Operation):
     _location_query: str = None
 
     body: CategoryUpdate                                                                           # OPTIONAL in [body]
-    namespace: str                                                                                 # REQUIRED in [path]
     category_path: str                                                                             # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
     store_id: str                                                                                  # REQUIRED in [query]
 
     # endregion fields
@@ -146,8 +146,8 @@ class UpdateCategory(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "namespace",
             "category_path",
+            "namespace",
             "store_id",
         ]
 
@@ -167,10 +167,10 @@ class UpdateCategory(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "category_path"):
             result["categoryPath"] = self.category_path
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     def get_query_params(self) -> dict:
@@ -184,9 +184,9 @@ class UpdateCategory(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "category_path") or self.category_path is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         if not hasattr(self, "store_id") or self.store_id is None:
             return False
@@ -200,12 +200,12 @@ class UpdateCategory(Operation):
         self.body = value
         return self
 
-    def with_namespace(self, value: str) -> UpdateCategory:
-        self.namespace = value
-        return self
-
     def with_category_path(self, value: str) -> UpdateCategory:
         self.category_path = value
+        return self
+
+    def with_namespace(self, value: str) -> UpdateCategory:
+        self.namespace = value
         return self
 
     def with_store_id(self, value: str) -> UpdateCategory:
@@ -222,14 +222,14 @@ class UpdateCategory(Operation):
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
             result["body"] = CategoryUpdate()
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "category_path") and self.category_path:
             result["categoryPath"] = str(self.category_path)
         elif include_empty:
             result["categoryPath"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         if hasattr(self, "store_id") and self.store_id:
             result["storeId"] = str(self.store_id)
         elif include_empty:
@@ -276,14 +276,14 @@ class UpdateCategory(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
         category_path: str,
+        namespace: str,
         store_id: str,
         body: Optional[CategoryUpdate] = None,
     ) -> UpdateCategory:
         instance = cls()
-        instance.namespace = namespace
         instance.category_path = category_path
+        instance.namespace = namespace
         instance.store_id = store_id
         if body is not None:
             instance.body = body
@@ -296,14 +296,14 @@ class UpdateCategory(Operation):
             instance.body = CategoryUpdate.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
             instance.body = CategoryUpdate()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "categoryPath" in dict_ and dict_["categoryPath"] is not None:
             instance.category_path = str(dict_["categoryPath"])
         elif include_empty:
             instance.category_path = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         if "storeId" in dict_ and dict_["storeId"] is not None:
             instance.store_id = str(dict_["storeId"])
         elif include_empty:
@@ -314,8 +314,8 @@ class UpdateCategory(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
-            "namespace": "namespace",
             "categoryPath": "category_path",
+            "namespace": "namespace",
             "storeId": "store_id",
         }
 

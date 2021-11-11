@@ -28,8 +28,8 @@ class GetSessionAttributeResponse(WebSocketMessage):
 
     # region fields
 
-    id_: str
     code: str
+    id_: str
     value: str
 
     # endregion fields
@@ -40,10 +40,10 @@ class GetSessionAttributeResponse(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {GetSessionAttributeResponse.get_type()}"]
-        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
-        wsm.append(f"id: {id_}")
         if hasattr(self, "code") and self.code:
             wsm.append(f"code: {self.code}")
+        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
+        wsm.append(f"id: {id_}")
         if hasattr(self, "value") and self.value:
             wsm.append(f"value: {self.value}")
         return "\n".join(wsm)
@@ -86,8 +86,8 @@ class GetSessionAttributeResponse(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
             "code": "code",
+            "id": "id_",
             "value": "value",
         }
 

@@ -28,33 +28,25 @@ class XsollaPaywallConfig(Model):
     """Xsolla paywall config (XsollaPaywallConfig)
 
     Properties:
-        theme: (theme) REQUIRED str
-
-        size: (size) REQUIRED str
-
         device: (device) REQUIRED str
 
         show_close_button: (showCloseButton) REQUIRED bool
+
+        size: (size) REQUIRED str
+
+        theme: (theme) REQUIRED str
     """
 
     # region fields
 
-    theme: str                                                                                     # REQUIRED
-    size: str                                                                                      # REQUIRED
     device: str                                                                                    # REQUIRED
     show_close_button: bool                                                                        # REQUIRED
+    size: str                                                                                      # REQUIRED
+    theme: str                                                                                     # REQUIRED
 
     # endregion fields
 
     # region with_x methods
-
-    def with_theme(self, value: str) -> XsollaPaywallConfig:
-        self.theme = value
-        return self
-
-    def with_size(self, value: str) -> XsollaPaywallConfig:
-        self.size = value
-        return self
 
     def with_device(self, value: str) -> XsollaPaywallConfig:
         self.device = value
@@ -64,20 +56,20 @@ class XsollaPaywallConfig(Model):
         self.show_close_button = value
         return self
 
+    def with_size(self, value: str) -> XsollaPaywallConfig:
+        self.size = value
+        return self
+
+    def with_theme(self, value: str) -> XsollaPaywallConfig:
+        self.theme = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "theme"):
-            result["theme"] = str(self.theme)
-        elif include_empty:
-            result["theme"] = str()
-        if hasattr(self, "size"):
-            result["size"] = str(self.size)
-        elif include_empty:
-            result["size"] = str()
         if hasattr(self, "device"):
             result["device"] = str(self.device)
         elif include_empty:
@@ -86,6 +78,14 @@ class XsollaPaywallConfig(Model):
             result["showCloseButton"] = bool(self.show_close_button)
         elif include_empty:
             result["showCloseButton"] = bool()
+        if hasattr(self, "size"):
+            result["size"] = str(self.size)
+        elif include_empty:
+            result["size"] = str()
+        if hasattr(self, "theme"):
+            result["theme"] = str(self.theme)
+        elif include_empty:
+            result["theme"] = str()
         return result
 
     # endregion to methods
@@ -112,14 +112,6 @@ class XsollaPaywallConfig(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "theme" in dict_ and dict_["theme"] is not None:
-            instance.theme = str(dict_["theme"])
-        elif include_empty:
-            instance.theme = str()
-        if "size" in dict_ and dict_["size"] is not None:
-            instance.size = str(dict_["size"])
-        elif include_empty:
-            instance.size = str()
         if "device" in dict_ and dict_["device"] is not None:
             instance.device = str(dict_["device"])
         elif include_empty:
@@ -128,15 +120,23 @@ class XsollaPaywallConfig(Model):
             instance.show_close_button = bool(dict_["showCloseButton"])
         elif include_empty:
             instance.show_close_button = bool()
+        if "size" in dict_ and dict_["size"] is not None:
+            instance.size = str(dict_["size"])
+        elif include_empty:
+            instance.size = str()
+        if "theme" in dict_ and dict_["theme"] is not None:
+            instance.theme = str(dict_["theme"])
+        elif include_empty:
+            instance.theme = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "theme": "theme",
-            "size": "size",
             "device": "device",
             "showCloseButton": "show_close_button",
+            "size": "size",
+            "theme": "theme",
         }
 
     # endregion static methods

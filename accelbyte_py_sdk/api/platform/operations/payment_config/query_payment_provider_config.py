@@ -50,13 +50,13 @@ class QueryPaymentProviderConfig(Operation):
 
         security: bearer
 
-        namespace: (namespace) OPTIONAL str in query
+        limit: (limit) OPTIONAL int in query
 
-        region: (region) OPTIONAL str in query
+        namespace: (namespace) OPTIONAL str in query
 
         offset: (offset) OPTIONAL int in query
 
-        limit: (limit) OPTIONAL int in query
+        region: (region) OPTIONAL str in query
 
     Responses:
         200: OK - PaymentProviderConfigPagingSlicedResult (successful operation)
@@ -71,10 +71,10 @@ class QueryPaymentProviderConfig(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    namespace: str                                                                                 # OPTIONAL in [query]
-    region: str                                                                                    # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
+    namespace: str                                                                                 # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
+    region: str                                                                                    # OPTIONAL in [query]
 
     # endregion fields
 
@@ -134,14 +134,14 @@ class QueryPaymentProviderConfig(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
-        if hasattr(self, "region"):
-            result["region"] = self.region
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
+        if hasattr(self, "region"):
+            result["region"] = self.region
         return result
 
     # endregion get_x_params methods
@@ -155,20 +155,20 @@ class QueryPaymentProviderConfig(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> QueryPaymentProviderConfig:
-        self.namespace = value
+    def with_limit(self, value: int) -> QueryPaymentProviderConfig:
+        self.limit = value
         return self
 
-    def with_region(self, value: str) -> QueryPaymentProviderConfig:
-        self.region = value
+    def with_namespace(self, value: str) -> QueryPaymentProviderConfig:
+        self.namespace = value
         return self
 
     def with_offset(self, value: int) -> QueryPaymentProviderConfig:
         self.offset = value
         return self
 
-    def with_limit(self, value: int) -> QueryPaymentProviderConfig:
-        self.limit = value
+    def with_region(self, value: str) -> QueryPaymentProviderConfig:
+        self.region = value
         return self
 
     # endregion with_x methods
@@ -177,22 +177,22 @@ class QueryPaymentProviderConfig(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
-        if hasattr(self, "region") and self.region:
-            result["region"] = str(self.region)
-        elif include_empty:
-            result["region"] = str()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = int()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
+        if hasattr(self, "region") and self.region:
+            result["region"] = str(self.region)
+        elif include_empty:
+            result["region"] = str()
         return result
 
     # endregion to methods
@@ -219,50 +219,50 @@ class QueryPaymentProviderConfig(Operation):
     @classmethod
     def create(
         cls,
-        namespace: Optional[str] = None,
-        region: Optional[str] = None,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        namespace: Optional[str] = None,
+        offset: Optional[int] = None,
+        region: Optional[str] = None,
     ) -> QueryPaymentProviderConfig:
         instance = cls()
-        if namespace is not None:
-            instance.namespace = namespace
-        if region is not None:
-            instance.region = region
-        if offset is not None:
-            instance.offset = offset
         if limit is not None:
             instance.limit = limit
+        if namespace is not None:
+            instance.namespace = namespace
+        if offset is not None:
+            instance.offset = offset
+        if region is not None:
+            instance.region = region
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> QueryPaymentProviderConfig:
         instance = cls()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
-        if "region" in dict_ and dict_["region"] is not None:
-            instance.region = str(dict_["region"])
-        elif include_empty:
-            instance.region = str()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = int()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
+        if "region" in dict_ and dict_["region"] is not None:
+            instance.region = str(dict_["region"])
+        elif include_empty:
+            instance.region = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
-            "region": "region",
-            "offset": "offset",
             "limit": "limit",
+            "namespace": "namespace",
+            "offset": "offset",
+            "region": "region",
         }
 
     # endregion static methods

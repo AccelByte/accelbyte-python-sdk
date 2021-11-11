@@ -103,17 +103,17 @@ class PublicDistributeUserDistribution(Operation):
 
         security: bearer
 
+        entitlement_id: (entitlementId) REQUIRED str in path
+
         namespace: (namespace) REQUIRED str in path
 
         user_id: (userId) REQUIRED str in path
 
-        entitlement_id: (entitlementId) REQUIRED str in path
-
-        target_namespace: (targetNamespace) REQUIRED str in query
+        quantity: (quantity) OPTIONAL int in query
 
         ext_user_id: (extUserId) REQUIRED str in query
 
-        quantity: (quantity) OPTIONAL int in query
+        target_namespace: (targetNamespace) REQUIRED str in query
 
     Responses:
         200: OK - EntitlementInfo (successful operation)
@@ -132,12 +132,12 @@ class PublicDistributeUserDistribution(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
+    entitlement_id: str                                                                            # REQUIRED in [path]
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
-    entitlement_id: str                                                                            # REQUIRED in [path]
-    target_namespace: str                                                                          # REQUIRED in [query]
-    ext_user_id: str                                                                               # REQUIRED in [query]
     quantity: int                                                                                  # OPTIONAL in [query]
+    ext_user_id: str                                                                               # REQUIRED in [query]
+    target_namespace: str                                                                          # REQUIRED in [query]
 
     # endregion fields
 
@@ -188,11 +188,11 @@ class PublicDistributeUserDistribution(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
+            "entitlement_id",
             "namespace",
             "user_id",
-            "entitlement_id",
-            "target_namespace",
             "ext_user_id",
+            "target_namespace",
         ]
 
     # endregion get methods
@@ -207,22 +207,22 @@ class PublicDistributeUserDistribution(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
+        if hasattr(self, "entitlement_id"):
+            result["entitlementId"] = self.entitlement_id
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
         if hasattr(self, "user_id"):
             result["userId"] = self.user_id
-        if hasattr(self, "entitlement_id"):
-            result["entitlementId"] = self.entitlement_id
         return result
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "target_namespace"):
-            result["targetNamespace"] = self.target_namespace
-        if hasattr(self, "ext_user_id"):
-            result["extUserId"] = self.ext_user_id
         if hasattr(self, "quantity"):
             result["quantity"] = self.quantity
+        if hasattr(self, "ext_user_id"):
+            result["extUserId"] = self.ext_user_id
+        if hasattr(self, "target_namespace"):
+            result["targetNamespace"] = self.target_namespace
         return result
 
     # endregion get_x_params methods
@@ -230,21 +230,25 @@ class PublicDistributeUserDistribution(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
+        if not hasattr(self, "entitlement_id") or self.entitlement_id is None:
+            return False
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
             return False
-        if not hasattr(self, "entitlement_id") or self.entitlement_id is None:
+        if not hasattr(self, "ext_user_id") or self.ext_user_id is None:
             return False
         if not hasattr(self, "target_namespace") or self.target_namespace is None:
-            return False
-        if not hasattr(self, "ext_user_id") or self.ext_user_id is None:
             return False
         return True
 
     # endregion is/has methods
 
     # region with_x methods
+
+    def with_entitlement_id(self, value: str) -> PublicDistributeUserDistribution:
+        self.entitlement_id = value
+        return self
 
     def with_namespace(self, value: str) -> PublicDistributeUserDistribution:
         self.namespace = value
@@ -254,20 +258,16 @@ class PublicDistributeUserDistribution(Operation):
         self.user_id = value
         return self
 
-    def with_entitlement_id(self, value: str) -> PublicDistributeUserDistribution:
-        self.entitlement_id = value
-        return self
-
-    def with_target_namespace(self, value: str) -> PublicDistributeUserDistribution:
-        self.target_namespace = value
+    def with_quantity(self, value: int) -> PublicDistributeUserDistribution:
+        self.quantity = value
         return self
 
     def with_ext_user_id(self, value: str) -> PublicDistributeUserDistribution:
         self.ext_user_id = value
         return self
 
-    def with_quantity(self, value: int) -> PublicDistributeUserDistribution:
-        self.quantity = value
+    def with_target_namespace(self, value: str) -> PublicDistributeUserDistribution:
+        self.target_namespace = value
         return self
 
     # endregion with_x methods
@@ -276,6 +276,10 @@ class PublicDistributeUserDistribution(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "entitlement_id") and self.entitlement_id:
+            result["entitlementId"] = str(self.entitlement_id)
+        elif include_empty:
+            result["entitlementId"] = str()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -284,22 +288,18 @@ class PublicDistributeUserDistribution(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "entitlement_id") and self.entitlement_id:
-            result["entitlementId"] = str(self.entitlement_id)
-        elif include_empty:
-            result["entitlementId"] = str()
-        if hasattr(self, "target_namespace") and self.target_namespace:
-            result["targetNamespace"] = str(self.target_namespace)
-        elif include_empty:
-            result["targetNamespace"] = str()
-        if hasattr(self, "ext_user_id") and self.ext_user_id:
-            result["extUserId"] = str(self.ext_user_id)
-        elif include_empty:
-            result["extUserId"] = str()
         if hasattr(self, "quantity") and self.quantity:
             result["quantity"] = int(self.quantity)
         elif include_empty:
             result["quantity"] = int()
+        if hasattr(self, "ext_user_id") and self.ext_user_id:
+            result["extUserId"] = str(self.ext_user_id)
+        elif include_empty:
+            result["extUserId"] = str()
+        if hasattr(self, "target_namespace") and self.target_namespace:
+            result["targetNamespace"] = str(self.target_namespace)
+        elif include_empty:
+            result["targetNamespace"] = str()
         return result
 
     # endregion to methods
@@ -334,19 +334,19 @@ class PublicDistributeUserDistribution(Operation):
     @classmethod
     def create(
         cls,
+        entitlement_id: str,
         namespace: str,
         user_id: str,
-        entitlement_id: str,
-        target_namespace: str,
         ext_user_id: str,
+        target_namespace: str,
         quantity: Optional[int] = None,
     ) -> PublicDistributeUserDistribution:
         instance = cls()
+        instance.entitlement_id = entitlement_id
         instance.namespace = namespace
         instance.user_id = user_id
-        instance.entitlement_id = entitlement_id
-        instance.target_namespace = target_namespace
         instance.ext_user_id = ext_user_id
+        instance.target_namespace = target_namespace
         if quantity is not None:
             instance.quantity = quantity
         return instance
@@ -354,6 +354,10 @@ class PublicDistributeUserDistribution(Operation):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PublicDistributeUserDistribution:
         instance = cls()
+        if "entitlementId" in dict_ and dict_["entitlementId"] is not None:
+            instance.entitlement_id = str(dict_["entitlementId"])
+        elif include_empty:
+            instance.entitlement_id = str()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -362,33 +366,29 @@ class PublicDistributeUserDistribution(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
-        if "entitlementId" in dict_ and dict_["entitlementId"] is not None:
-            instance.entitlement_id = str(dict_["entitlementId"])
-        elif include_empty:
-            instance.entitlement_id = str()
-        if "targetNamespace" in dict_ and dict_["targetNamespace"] is not None:
-            instance.target_namespace = str(dict_["targetNamespace"])
-        elif include_empty:
-            instance.target_namespace = str()
-        if "extUserId" in dict_ and dict_["extUserId"] is not None:
-            instance.ext_user_id = str(dict_["extUserId"])
-        elif include_empty:
-            instance.ext_user_id = str()
         if "quantity" in dict_ and dict_["quantity"] is not None:
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
             instance.quantity = int()
+        if "extUserId" in dict_ and dict_["extUserId"] is not None:
+            instance.ext_user_id = str(dict_["extUserId"])
+        elif include_empty:
+            instance.ext_user_id = str()
+        if "targetNamespace" in dict_ and dict_["targetNamespace"] is not None:
+            instance.target_namespace = str(dict_["targetNamespace"])
+        elif include_empty:
+            instance.target_namespace = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "entitlementId": "entitlement_id",
             "namespace": "namespace",
             "userId": "user_id",
-            "entitlementId": "entitlement_id",
-            "targetNamespace": "target_namespace",
-            "extUserId": "ext_user_id",
             "quantity": "quantity",
+            "extUserId": "ext_user_id",
+            "targetNamespace": "target_namespace",
         }
 
     # endregion static methods

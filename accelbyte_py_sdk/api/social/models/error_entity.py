@@ -32,17 +32,17 @@ class ErrorEntity(Model):
 
         error_message: (errorMessage) REQUIRED str
 
-        message_variables: (messageVariables) OPTIONAL Dict[str, str]
-
         dev_stack_trace: (devStackTrace) OPTIONAL str
+
+        message_variables: (messageVariables) OPTIONAL Dict[str, str]
     """
 
     # region fields
 
     error_code: int                                                                                # REQUIRED
     error_message: str                                                                             # REQUIRED
-    message_variables: Dict[str, str]                                                              # OPTIONAL
     dev_stack_trace: str                                                                           # OPTIONAL
+    message_variables: Dict[str, str]                                                              # OPTIONAL
 
     # endregion fields
 
@@ -56,12 +56,12 @@ class ErrorEntity(Model):
         self.error_message = value
         return self
 
-    def with_message_variables(self, value: Dict[str, str]) -> ErrorEntity:
-        self.message_variables = value
-        return self
-
     def with_dev_stack_trace(self, value: str) -> ErrorEntity:
         self.dev_stack_trace = value
+        return self
+
+    def with_message_variables(self, value: Dict[str, str]) -> ErrorEntity:
+        self.message_variables = value
         return self
 
     # endregion with_x methods
@@ -78,14 +78,14 @@ class ErrorEntity(Model):
             result["errorMessage"] = str(self.error_message)
         elif include_empty:
             result["errorMessage"] = str()
-        if hasattr(self, "message_variables"):
-            result["messageVariables"] = {str(k0): str(v0) for k0, v0 in self.message_variables.items()}
-        elif include_empty:
-            result["messageVariables"] = {}
         if hasattr(self, "dev_stack_trace"):
             result["devStackTrace"] = str(self.dev_stack_trace)
         elif include_empty:
             result["devStackTrace"] = str()
+        if hasattr(self, "message_variables"):
+            result["messageVariables"] = {str(k0): str(v0) for k0, v0 in self.message_variables.items()}
+        elif include_empty:
+            result["messageVariables"] = {}
         return result
 
     # endregion to methods
@@ -122,14 +122,14 @@ class ErrorEntity(Model):
             instance.error_message = str(dict_["errorMessage"])
         elif include_empty:
             instance.error_message = str()
-        if "messageVariables" in dict_ and dict_["messageVariables"] is not None:
-            instance.message_variables = {str(k0): str(v0) for k0, v0 in dict_["messageVariables"].items()}
-        elif include_empty:
-            instance.message_variables = {}
         if "devStackTrace" in dict_ and dict_["devStackTrace"] is not None:
             instance.dev_stack_trace = str(dict_["devStackTrace"])
         elif include_empty:
             instance.dev_stack_trace = str()
+        if "messageVariables" in dict_ and dict_["messageVariables"] is not None:
+            instance.message_variables = {str(k0): str(v0) for k0, v0 in dict_["messageVariables"].items()}
+        elif include_empty:
+            instance.message_variables = {}
         return instance
 
     @staticmethod
@@ -137,8 +137,8 @@ class ErrorEntity(Model):
         return {
             "errorCode": "error_code",
             "errorMessage": "error_message",
-            "messageVariables": "message_variables",
             "devStackTrace": "dev_stack_trace",
+            "messageVariables": "message_variables",
         }
 
     # endregion static methods

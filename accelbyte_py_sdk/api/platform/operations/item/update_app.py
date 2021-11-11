@@ -103,9 +103,9 @@ class UpdateApp(Operation):
 
         body: (body) OPTIONAL AppUpdate in body
 
-        namespace: (namespace) REQUIRED str in path
-
         item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
         store_id: (storeId) REQUIRED str in query
 
@@ -129,8 +129,8 @@ class UpdateApp(Operation):
     _location_query: str = None
 
     body: AppUpdate                                                                                # OPTIONAL in [body]
-    namespace: str                                                                                 # REQUIRED in [path]
     item_id: str                                                                                   # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
     store_id: str                                                                                  # REQUIRED in [query]
 
     # endregion fields
@@ -182,8 +182,8 @@ class UpdateApp(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "namespace",
             "item_id",
+            "namespace",
             "store_id",
         ]
 
@@ -203,10 +203,10 @@ class UpdateApp(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "item_id"):
             result["itemId"] = self.item_id
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     def get_query_params(self) -> dict:
@@ -220,9 +220,9 @@ class UpdateApp(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "item_id") or self.item_id is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         if not hasattr(self, "store_id") or self.store_id is None:
             return False
@@ -236,12 +236,12 @@ class UpdateApp(Operation):
         self.body = value
         return self
 
-    def with_namespace(self, value: str) -> UpdateApp:
-        self.namespace = value
-        return self
-
     def with_item_id(self, value: str) -> UpdateApp:
         self.item_id = value
+        return self
+
+    def with_namespace(self, value: str) -> UpdateApp:
+        self.namespace = value
         return self
 
     def with_store_id(self, value: str) -> UpdateApp:
@@ -258,14 +258,14 @@ class UpdateApp(Operation):
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
             result["body"] = AppUpdate()
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "item_id") and self.item_id:
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         if hasattr(self, "store_id") and self.store_id:
             result["storeId"] = str(self.store_id)
         elif include_empty:
@@ -308,14 +308,14 @@ class UpdateApp(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
         item_id: str,
+        namespace: str,
         store_id: str,
         body: Optional[AppUpdate] = None,
     ) -> UpdateApp:
         instance = cls()
-        instance.namespace = namespace
         instance.item_id = item_id
+        instance.namespace = namespace
         instance.store_id = store_id
         if body is not None:
             instance.body = body
@@ -328,14 +328,14 @@ class UpdateApp(Operation):
             instance.body = AppUpdate.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
             instance.body = AppUpdate()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
             instance.item_id = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         if "storeId" in dict_ and dict_["storeId"] is not None:
             instance.store_id = str(dict_["storeId"])
         elif include_empty:
@@ -346,8 +346,8 @@ class UpdateApp(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
-            "namespace": "namespace",
             "itemId": "item_id",
+            "namespace": "namespace",
             "storeId": "store_id",
         }
 

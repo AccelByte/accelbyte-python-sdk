@@ -51,11 +51,11 @@ class ListAdminsV3(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        limit: (limit) OPTIONAL int in query
-
         after: (after) OPTIONAL str in query
 
         before: (before) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
 
     Responses:
         200: OK - ModelGetUsersResponseWithPaginationV3 (Operation succeeded)
@@ -77,9 +77,9 @@ class ListAdminsV3(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    limit: int                                                                                     # OPTIONAL in [query]
     after: str                                                                                     # OPTIONAL in [query]
     before: str                                                                                    # OPTIONAL in [query]
+    limit: int                                                                                     # OPTIONAL in [query]
 
     # endregion fields
 
@@ -151,12 +151,12 @@ class ListAdminsV3(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "limit"):
-            result["limit"] = self.limit
         if hasattr(self, "after"):
             result["after"] = self.after
         if hasattr(self, "before"):
             result["before"] = self.before
+        if hasattr(self, "limit"):
+            result["limit"] = self.limit
         return result
 
     # endregion get_x_params methods
@@ -176,16 +176,16 @@ class ListAdminsV3(Operation):
         self.namespace = value
         return self
 
-    def with_limit(self, value: int) -> ListAdminsV3:
-        self.limit = value
-        return self
-
     def with_after(self, value: str) -> ListAdminsV3:
         self.after = value
         return self
 
     def with_before(self, value: str) -> ListAdminsV3:
         self.before = value
+        return self
+
+    def with_limit(self, value: int) -> ListAdminsV3:
+        self.limit = value
         return self
 
     # endregion with_x methods
@@ -198,10 +198,6 @@ class ListAdminsV3(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "limit") and self.limit:
-            result["limit"] = int(self.limit)
-        elif include_empty:
-            result["limit"] = int()
         if hasattr(self, "after") and self.after:
             result["after"] = str(self.after)
         elif include_empty:
@@ -210,6 +206,10 @@ class ListAdminsV3(Operation):
             result["before"] = str(self.before)
         elif include_empty:
             result["before"] = str()
+        if hasattr(self, "limit") and self.limit:
+            result["limit"] = int(self.limit)
+        elif include_empty:
+            result["limit"] = int()
         return result
 
     # endregion to methods
@@ -249,18 +249,18 @@ class ListAdminsV3(Operation):
     def create(
         cls,
         namespace: str,
-        limit: Optional[int] = None,
         after: Optional[str] = None,
         before: Optional[str] = None,
+        limit: Optional[int] = None,
     ) -> ListAdminsV3:
         instance = cls()
         instance.namespace = namespace
-        if limit is not None:
-            instance.limit = limit
         if after is not None:
             instance.after = after
         if before is not None:
             instance.before = before
+        if limit is not None:
+            instance.limit = limit
         return instance
 
     @classmethod
@@ -270,10 +270,6 @@ class ListAdminsV3(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "limit" in dict_ and dict_["limit"] is not None:
-            instance.limit = int(dict_["limit"])
-        elif include_empty:
-            instance.limit = int()
         if "after" in dict_ and dict_["after"] is not None:
             instance.after = str(dict_["after"])
         elif include_empty:
@@ -282,15 +278,19 @@ class ListAdminsV3(Operation):
             instance.before = str(dict_["before"])
         elif include_empty:
             instance.before = str()
+        if "limit" in dict_ and dict_["limit"] is not None:
+            instance.limit = int(dict_["limit"])
+        elif include_empty:
+            instance.limit = int()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "limit": "limit",
             "after": "after",
             "before": "before",
+            "limit": "limit",
         }
 
     # endregion static methods

@@ -28,8 +28,8 @@ class SendChannelChatRequest(WebSocketMessage):
 
     # region fields
 
-    id_: str
     channel_slug: str
+    id_: str
     payload: str
 
     # endregion fields
@@ -40,10 +40,10 @@ class SendChannelChatRequest(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {SendChannelChatRequest.get_type()}"]
-        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
-        wsm.append(f"id: {id_}")
         if hasattr(self, "channel_slug") and self.channel_slug:
             wsm.append(f"channelSlug: {self.channel_slug}")
+        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
+        wsm.append(f"id: {id_}")
         if hasattr(self, "payload") and self.payload:
             wsm.append(f"payload: {self.payload}")
         return "\n".join(wsm)
@@ -86,8 +86,8 @@ class SendChannelChatRequest(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
             "channelSlug": "channel_slug",
+            "id": "id_",
             "payload": "payload",
         }
 

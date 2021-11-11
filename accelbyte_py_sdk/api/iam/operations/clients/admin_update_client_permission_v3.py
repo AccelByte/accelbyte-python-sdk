@@ -51,9 +51,9 @@ class AdminUpdateClientPermissionV3(Operation):
 
         body: (body) REQUIRED AccountcommonClientPermissionsV3 in body
 
-        namespace: (namespace) REQUIRED str in path
-
         client_id: (clientId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
     Responses:
         204: No Content - (Operation succeeded)
@@ -77,8 +77,8 @@ class AdminUpdateClientPermissionV3(Operation):
     _location_query: str = None
 
     body: AccountcommonClientPermissionsV3                                                         # REQUIRED in [body]
-    namespace: str                                                                                 # REQUIRED in [path]
     client_id: str                                                                                 # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -127,8 +127,8 @@ class AdminUpdateClientPermissionV3(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "body",
-            "namespace",
             "client_id",
+            "namespace",
         ]
 
     # endregion get methods
@@ -146,10 +146,10 @@ class AdminUpdateClientPermissionV3(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "client_id"):
             result["clientId"] = self.client_id
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     # endregion get_x_params methods
@@ -159,9 +159,9 @@ class AdminUpdateClientPermissionV3(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "body") or self.body is None:
             return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "client_id") or self.client_id is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         return True
 
@@ -173,12 +173,12 @@ class AdminUpdateClientPermissionV3(Operation):
         self.body = value
         return self
 
-    def with_namespace(self, value: str) -> AdminUpdateClientPermissionV3:
-        self.namespace = value
-        return self
-
     def with_client_id(self, value: str) -> AdminUpdateClientPermissionV3:
         self.client_id = value
+        return self
+
+    def with_namespace(self, value: str) -> AdminUpdateClientPermissionV3:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -191,14 +191,14 @@ class AdminUpdateClientPermissionV3(Operation):
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
             result["body"] = AccountcommonClientPermissionsV3()
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "client_id") and self.client_id:
             result["clientId"] = str(self.client_id)
         elif include_empty:
             result["clientId"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         return result
 
     # endregion to methods
@@ -242,13 +242,13 @@ class AdminUpdateClientPermissionV3(Operation):
     def create(
         cls,
         body: AccountcommonClientPermissionsV3,
-        namespace: str,
         client_id: str,
+        namespace: str,
     ) -> AdminUpdateClientPermissionV3:
         instance = cls()
         instance.body = body
-        instance.namespace = namespace
         instance.client_id = client_id
+        instance.namespace = namespace
         return instance
 
     @classmethod
@@ -258,22 +258,22 @@ class AdminUpdateClientPermissionV3(Operation):
             instance.body = AccountcommonClientPermissionsV3.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
             instance.body = AccountcommonClientPermissionsV3()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "clientId" in dict_ and dict_["clientId"] is not None:
             instance.client_id = str(dict_["clientId"])
         elif include_empty:
             instance.client_id = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
-            "namespace": "namespace",
             "clientId": "client_id",
+            "namespace": "namespace",
         }
 
     # endregion static methods

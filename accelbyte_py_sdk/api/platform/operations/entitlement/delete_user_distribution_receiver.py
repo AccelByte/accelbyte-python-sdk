@@ -49,11 +49,11 @@ class DeleteUserDistributionReceiver(Operation):
 
         security: bearer
 
+        ext_user_id: (extUserId) REQUIRED str in path
+
         namespace: (namespace) REQUIRED str in path
 
         user_id: (userId) REQUIRED str in path
-
-        ext_user_id: (extUserId) REQUIRED str in path
 
     Responses:
         204: No Content - (delete a distribution receiver successfully)
@@ -70,9 +70,9 @@ class DeleteUserDistributionReceiver(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
+    ext_user_id: str                                                                               # REQUIRED in [path]
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
-    ext_user_id: str                                                                               # REQUIRED in [path]
 
     # endregion fields
 
@@ -120,9 +120,9 @@ class DeleteUserDistributionReceiver(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
+            "ext_user_id",
             "namespace",
             "user_id",
-            "ext_user_id",
         ]
 
     # endregion get methods
@@ -136,12 +136,12 @@ class DeleteUserDistributionReceiver(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
+        if hasattr(self, "ext_user_id"):
+            result["extUserId"] = self.ext_user_id
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
         if hasattr(self, "user_id"):
             result["userId"] = self.user_id
-        if hasattr(self, "ext_user_id"):
-            result["extUserId"] = self.ext_user_id
         return result
 
     # endregion get_x_params methods
@@ -149,17 +149,21 @@ class DeleteUserDistributionReceiver(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
+        if not hasattr(self, "ext_user_id") or self.ext_user_id is None:
+            return False
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        if not hasattr(self, "ext_user_id") or self.ext_user_id is None:
             return False
         return True
 
     # endregion is/has methods
 
     # region with_x methods
+
+    def with_ext_user_id(self, value: str) -> DeleteUserDistributionReceiver:
+        self.ext_user_id = value
+        return self
 
     def with_namespace(self, value: str) -> DeleteUserDistributionReceiver:
         self.namespace = value
@@ -169,16 +173,16 @@ class DeleteUserDistributionReceiver(Operation):
         self.user_id = value
         return self
 
-    def with_ext_user_id(self, value: str) -> DeleteUserDistributionReceiver:
-        self.ext_user_id = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "ext_user_id") and self.ext_user_id:
+            result["extUserId"] = str(self.ext_user_id)
+        elif include_empty:
+            result["extUserId"] = str()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -187,10 +191,6 @@ class DeleteUserDistributionReceiver(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "ext_user_id") and self.ext_user_id:
-            result["extUserId"] = str(self.ext_user_id)
-        elif include_empty:
-            result["extUserId"] = str()
         return result
 
     # endregion to methods
@@ -221,19 +221,23 @@ class DeleteUserDistributionReceiver(Operation):
     @classmethod
     def create(
         cls,
+        ext_user_id: str,
         namespace: str,
         user_id: str,
-        ext_user_id: str,
     ) -> DeleteUserDistributionReceiver:
         instance = cls()
+        instance.ext_user_id = ext_user_id
         instance.namespace = namespace
         instance.user_id = user_id
-        instance.ext_user_id = ext_user_id
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> DeleteUserDistributionReceiver:
         instance = cls()
+        if "extUserId" in dict_ and dict_["extUserId"] is not None:
+            instance.ext_user_id = str(dict_["extUserId"])
+        elif include_empty:
+            instance.ext_user_id = str()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -242,18 +246,14 @@ class DeleteUserDistributionReceiver(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
-        if "extUserId" in dict_ and dict_["extUserId"] is not None:
-            instance.ext_user_id = str(dict_["extUserId"])
-        elif include_empty:
-            instance.ext_user_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "extUserId": "ext_user_id",
             "namespace": "namespace",
             "userId": "user_id",
-            "extUserId": "ext_user_id",
         }
 
     # endregion static methods

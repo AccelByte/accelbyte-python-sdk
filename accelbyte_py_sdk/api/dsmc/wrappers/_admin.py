@@ -157,30 +157,30 @@ def list_local_server(namespace: Optional[str] = None, x_additional_headers: Opt
 
 
 @same_doc_as(ListServer)
-def list_server(region: Optional[str] = None, offset: Optional[int] = None, count: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def list_server(count: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = ListServer.create(
-        region=region,
-        offset=offset,
         count=count,
+        offset=offset,
+        region=region,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ListSession)
-def list_session(region: Optional[str] = None, offset: Optional[int] = None, count: Optional[int] = None, with_server: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def list_session(count: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, with_server: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = ListSession.create(
-        region=region,
-        offset=offset,
         count=count,
+        offset=offset,
+        region=region,
         with_server=with_server,
         namespace=namespace,
     )

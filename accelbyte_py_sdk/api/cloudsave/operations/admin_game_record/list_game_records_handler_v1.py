@@ -50,9 +50,9 @@ class ListGameRecordsHandlerV1(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        offset: (offset) REQUIRED int in query
-
         limit: (limit) REQUIRED int in query
+
+        offset: (offset) REQUIRED int in query
 
     Responses:
         200: OK - ModelsListGameRecordKeys (Retrieve list of records key by namespace)
@@ -72,8 +72,8 @@ class ListGameRecordsHandlerV1(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    offset: int                                                                                    # REQUIRED in [query]
     limit: int                                                                                     # REQUIRED in [query]
+    offset: int                                                                                    # REQUIRED in [query]
 
     # endregion fields
 
@@ -125,8 +125,8 @@ class ListGameRecordsHandlerV1(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "namespace",
-            "offset",
             "limit",
+            "offset",
         ]
 
     # endregion get methods
@@ -147,10 +147,10 @@ class ListGameRecordsHandlerV1(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         return result
 
     # endregion get_x_params methods
@@ -160,9 +160,9 @@ class ListGameRecordsHandlerV1(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
-        if not hasattr(self, "offset") or self.offset is None:
-            return False
         if not hasattr(self, "limit") or self.limit is None:
+            return False
+        if not hasattr(self, "offset") or self.offset is None:
             return False
         return True
 
@@ -174,12 +174,12 @@ class ListGameRecordsHandlerV1(Operation):
         self.namespace = value
         return self
 
-    def with_offset(self, value: int) -> ListGameRecordsHandlerV1:
-        self.offset = value
-        return self
-
     def with_limit(self, value: int) -> ListGameRecordsHandlerV1:
         self.limit = value
+        return self
+
+    def with_offset(self, value: int) -> ListGameRecordsHandlerV1:
+        self.offset = value
         return self
 
     # endregion with_x methods
@@ -192,14 +192,14 @@ class ListGameRecordsHandlerV1(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
         return result
 
     # endregion to methods
@@ -235,13 +235,13 @@ class ListGameRecordsHandlerV1(Operation):
     def create(
         cls,
         namespace: str,
-        offset: int,
         limit: int,
+        offset: int,
     ) -> ListGameRecordsHandlerV1:
         instance = cls()
         instance.namespace = namespace
-        instance.offset = offset
         instance.limit = limit
+        instance.offset = offset
         return instance
 
     @classmethod
@@ -251,22 +251,22 @@ class ListGameRecordsHandlerV1(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "offset": "offset",
             "limit": "limit",
+            "offset": "offset",
         }
 
     # endregion static methods

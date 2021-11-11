@@ -28,13 +28,13 @@ class OauthcommonJWKKey(Model):
     """Oauthcommon JWK key (oauthcommon.JWKKey)
 
     Properties:
+        kty: (kty) REQUIRED str
+
         alg: (alg) OPTIONAL str
 
         e: (e) OPTIONAL str
 
         kid: (kid) OPTIONAL str
-
-        kty: (kty) REQUIRED str
 
         n: (n) OPTIONAL str
 
@@ -43,16 +43,20 @@ class OauthcommonJWKKey(Model):
 
     # region fields
 
+    kty: str                                                                                       # REQUIRED
     alg: str                                                                                       # OPTIONAL
     e: str                                                                                         # OPTIONAL
     kid: str                                                                                       # OPTIONAL
-    kty: str                                                                                       # REQUIRED
     n: str                                                                                         # OPTIONAL
     use: str                                                                                       # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
+
+    def with_kty(self, value: str) -> OauthcommonJWKKey:
+        self.kty = value
+        return self
 
     def with_alg(self, value: str) -> OauthcommonJWKKey:
         self.alg = value
@@ -64,10 +68,6 @@ class OauthcommonJWKKey(Model):
 
     def with_kid(self, value: str) -> OauthcommonJWKKey:
         self.kid = value
-        return self
-
-    def with_kty(self, value: str) -> OauthcommonJWKKey:
-        self.kty = value
         return self
 
     def with_n(self, value: str) -> OauthcommonJWKKey:
@@ -84,6 +84,10 @@ class OauthcommonJWKKey(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "kty"):
+            result["kty"] = str(self.kty)
+        elif include_empty:
+            result["kty"] = str()
         if hasattr(self, "alg"):
             result["alg"] = str(self.alg)
         elif include_empty:
@@ -96,10 +100,6 @@ class OauthcommonJWKKey(Model):
             result["kid"] = str(self.kid)
         elif include_empty:
             result["kid"] = str()
-        if hasattr(self, "kty"):
-            result["kty"] = str(self.kty)
-        elif include_empty:
-            result["kty"] = str()
         if hasattr(self, "n"):
             result["n"] = str(self.n)
         elif include_empty:
@@ -143,6 +143,10 @@ class OauthcommonJWKKey(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "kty" in dict_ and dict_["kty"] is not None:
+            instance.kty = str(dict_["kty"])
+        elif include_empty:
+            instance.kty = str()
         if "alg" in dict_ and dict_["alg"] is not None:
             instance.alg = str(dict_["alg"])
         elif include_empty:
@@ -155,10 +159,6 @@ class OauthcommonJWKKey(Model):
             instance.kid = str(dict_["kid"])
         elif include_empty:
             instance.kid = str()
-        if "kty" in dict_ and dict_["kty"] is not None:
-            instance.kty = str(dict_["kty"])
-        elif include_empty:
-            instance.kty = str()
         if "n" in dict_ and dict_["n"] is not None:
             instance.n = str(dict_["n"])
         elif include_empty:
@@ -172,10 +172,10 @@ class OauthcommonJWKKey(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "kty": "kty",
             "alg": "alg",
             "e": "e",
             "kid": "kid",
-            "kty": "kty",
             "n": "n",
             "use": "use",
         }

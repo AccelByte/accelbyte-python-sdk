@@ -28,37 +28,45 @@ class UserStatItemInfo(Model):
     """User stat item info (UserStatItemInfo)
 
     Properties:
+        created_at: (createdAt) REQUIRED str
+
+        namespace: (namespace) REQUIRED str
+
         stat_code: (statCode) REQUIRED str
 
         stat_name: (statName) REQUIRED str
 
-        namespace: (namespace) REQUIRED str
+        updated_at: (updatedAt) REQUIRED str
+
+        user_id: (userId) REQUIRED str
 
         value: (value) REQUIRED float
 
         tags: (tags) OPTIONAL List[str]
-
-        created_at: (createdAt) REQUIRED str
-
-        updated_at: (updatedAt) REQUIRED str
-
-        user_id: (userId) REQUIRED str
     """
 
     # region fields
 
+    created_at: str                                                                                # REQUIRED
+    namespace: str                                                                                 # REQUIRED
     stat_code: str                                                                                 # REQUIRED
     stat_name: str                                                                                 # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    value: float                                                                                   # REQUIRED
-    tags: List[str]                                                                                # OPTIONAL
-    created_at: str                                                                                # REQUIRED
     updated_at: str                                                                                # REQUIRED
     user_id: str                                                                                   # REQUIRED
+    value: float                                                                                   # REQUIRED
+    tags: List[str]                                                                                # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
+
+    def with_created_at(self, value: str) -> UserStatItemInfo:
+        self.created_at = value
+        return self
+
+    def with_namespace(self, value: str) -> UserStatItemInfo:
+        self.namespace = value
+        return self
 
     def with_stat_code(self, value: str) -> UserStatItemInfo:
         self.stat_code = value
@@ -66,22 +74,6 @@ class UserStatItemInfo(Model):
 
     def with_stat_name(self, value: str) -> UserStatItemInfo:
         self.stat_name = value
-        return self
-
-    def with_namespace(self, value: str) -> UserStatItemInfo:
-        self.namespace = value
-        return self
-
-    def with_value(self, value: float) -> UserStatItemInfo:
-        self.value = value
-        return self
-
-    def with_tags(self, value: List[str]) -> UserStatItemInfo:
-        self.tags = value
-        return self
-
-    def with_created_at(self, value: str) -> UserStatItemInfo:
-        self.created_at = value
         return self
 
     def with_updated_at(self, value: str) -> UserStatItemInfo:
@@ -92,12 +84,28 @@ class UserStatItemInfo(Model):
         self.user_id = value
         return self
 
+    def with_value(self, value: float) -> UserStatItemInfo:
+        self.value = value
+        return self
+
+    def with_tags(self, value: List[str]) -> UserStatItemInfo:
+        self.tags = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "created_at"):
+            result["createdAt"] = str(self.created_at)
+        elif include_empty:
+            result["createdAt"] = str()
+        if hasattr(self, "namespace"):
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         if hasattr(self, "stat_code"):
             result["statCode"] = str(self.stat_code)
         elif include_empty:
@@ -106,22 +114,6 @@ class UserStatItemInfo(Model):
             result["statName"] = str(self.stat_name)
         elif include_empty:
             result["statName"] = str()
-        if hasattr(self, "namespace"):
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
-        if hasattr(self, "value"):
-            result["value"] = float(self.value)
-        elif include_empty:
-            result["value"] = float()
-        if hasattr(self, "tags"):
-            result["tags"] = [str(i0) for i0 in self.tags]
-        elif include_empty:
-            result["tags"] = []
-        if hasattr(self, "created_at"):
-            result["createdAt"] = str(self.created_at)
-        elif include_empty:
-            result["createdAt"] = str()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -130,6 +122,14 @@ class UserStatItemInfo(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
+        if hasattr(self, "value"):
+            result["value"] = float(self.value)
+        elif include_empty:
+            result["value"] = float()
+        if hasattr(self, "tags"):
+            result["tags"] = [str(i0) for i0 in self.tags]
+        elif include_empty:
+            result["tags"] = []
         return result
 
     # endregion to methods
@@ -165,6 +165,14 @@ class UserStatItemInfo(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "createdAt" in dict_ and dict_["createdAt"] is not None:
+            instance.created_at = str(dict_["createdAt"])
+        elif include_empty:
+            instance.created_at = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         if "statCode" in dict_ and dict_["statCode"] is not None:
             instance.stat_code = str(dict_["statCode"])
         elif include_empty:
@@ -173,22 +181,6 @@ class UserStatItemInfo(Model):
             instance.stat_name = str(dict_["statName"])
         elif include_empty:
             instance.stat_name = str()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
-        if "value" in dict_ and dict_["value"] is not None:
-            instance.value = float(dict_["value"])
-        elif include_empty:
-            instance.value = float()
-        if "tags" in dict_ and dict_["tags"] is not None:
-            instance.tags = [str(i0) for i0 in dict_["tags"]]
-        elif include_empty:
-            instance.tags = []
-        if "createdAt" in dict_ and dict_["createdAt"] is not None:
-            instance.created_at = str(dict_["createdAt"])
-        elif include_empty:
-            instance.created_at = str()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
@@ -197,19 +189,27 @@ class UserStatItemInfo(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
+        if "value" in dict_ and dict_["value"] is not None:
+            instance.value = float(dict_["value"])
+        elif include_empty:
+            instance.value = float()
+        if "tags" in dict_ and dict_["tags"] is not None:
+            instance.tags = [str(i0) for i0 in dict_["tags"]]
+        elif include_empty:
+            instance.tags = []
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "createdAt": "created_at",
+            "namespace": "namespace",
             "statCode": "stat_code",
             "statName": "stat_name",
-            "namespace": "namespace",
-            "value": "value",
-            "tags": "tags",
-            "createdAt": "created_at",
             "updatedAt": "updated_at",
             "userId": "user_id",
+            "value": "value",
+            "tags": "tags",
         }
 
     # endregion static methods

@@ -52,14 +52,14 @@ def create_group_configuration_admin_v1(body: ModelsCreateGroupConfigurationRequ
 
 
 @same_doc_as(DeleteGroupConfigurationGlobalRuleAdminV1)
-def delete_group_configuration_global_rule_admin_v1(configuration_code: str, allowed_action: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def delete_group_configuration_global_rule_admin_v1(allowed_action: str, configuration_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = DeleteGroupConfigurationGlobalRuleAdminV1.create(
-        configuration_code=configuration_code,
         allowed_action=allowed_action,
+        configuration_code=configuration_code,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -132,15 +132,15 @@ def update_group_configuration_admin_v1(body: ModelsUpdateGroupConfigurationRequ
 
 
 @same_doc_as(UpdateGroupConfigurationGlobalRuleAdminV1)
-def update_group_configuration_global_rule_admin_v1(body: ModelsUpdateGroupConfigurationGlobalRulesRequestV1, configuration_code: str, allowed_action: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def update_group_configuration_global_rule_admin_v1(body: ModelsUpdateGroupConfigurationGlobalRulesRequestV1, allowed_action: str, configuration_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = UpdateGroupConfigurationGlobalRuleAdminV1.create(
         body=body,
-        configuration_code=configuration_code,
         allowed_action=allowed_action,
+        configuration_code=configuration_code,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

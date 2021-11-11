@@ -57,17 +57,17 @@ class PublicSearchItems(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        store_id: (storeId) OPTIONAL str in query
-
-        language: (language) REQUIRED str in query
-
-        keyword: (keyword) REQUIRED str in query
-
-        region: (region) OPTIONAL str in query
+        limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
-        limit: (limit) OPTIONAL int in query
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        keyword: (keyword) REQUIRED str in query
+
+        language: (language) REQUIRED str in query
 
     Responses:
         200: OK - ItemPagingSlicedResult (successful operation)
@@ -85,12 +85,12 @@ class PublicSearchItems(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    store_id: str                                                                                  # OPTIONAL in [query]
-    language: str                                                                                  # REQUIRED in [query]
-    keyword: str                                                                                   # REQUIRED in [query]
-    region: str                                                                                    # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
+    region: str                                                                                    # OPTIONAL in [query]
+    store_id: str                                                                                  # OPTIONAL in [query]
+    keyword: str                                                                                   # REQUIRED in [query]
+    language: str                                                                                  # REQUIRED in [query]
 
     # endregion fields
 
@@ -142,8 +142,8 @@ class PublicSearchItems(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "namespace",
-            "language",
             "keyword",
+            "language",
         ]
 
     # endregion get methods
@@ -164,18 +164,18 @@ class PublicSearchItems(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "store_id"):
-            result["storeId"] = self.store_id
-        if hasattr(self, "language"):
-            result["language"] = self.language
-        if hasattr(self, "keyword"):
-            result["keyword"] = self.keyword
-        if hasattr(self, "region"):
-            result["region"] = self.region
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
+        if hasattr(self, "region"):
+            result["region"] = self.region
+        if hasattr(self, "store_id"):
+            result["storeId"] = self.store_id
+        if hasattr(self, "keyword"):
+            result["keyword"] = self.keyword
+        if hasattr(self, "language"):
+            result["language"] = self.language
         return result
 
     # endregion get_x_params methods
@@ -185,9 +185,9 @@ class PublicSearchItems(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
-        if not hasattr(self, "language") or self.language is None:
-            return False
         if not hasattr(self, "keyword") or self.keyword is None:
+            return False
+        if not hasattr(self, "language") or self.language is None:
             return False
         return True
 
@@ -199,28 +199,28 @@ class PublicSearchItems(Operation):
         self.namespace = value
         return self
 
-    def with_store_id(self, value: str) -> PublicSearchItems:
-        self.store_id = value
-        return self
-
-    def with_language(self, value: str) -> PublicSearchItems:
-        self.language = value
-        return self
-
-    def with_keyword(self, value: str) -> PublicSearchItems:
-        self.keyword = value
-        return self
-
-    def with_region(self, value: str) -> PublicSearchItems:
-        self.region = value
+    def with_limit(self, value: int) -> PublicSearchItems:
+        self.limit = value
         return self
 
     def with_offset(self, value: int) -> PublicSearchItems:
         self.offset = value
         return self
 
-    def with_limit(self, value: int) -> PublicSearchItems:
-        self.limit = value
+    def with_region(self, value: str) -> PublicSearchItems:
+        self.region = value
+        return self
+
+    def with_store_id(self, value: str) -> PublicSearchItems:
+        self.store_id = value
+        return self
+
+    def with_keyword(self, value: str) -> PublicSearchItems:
+        self.keyword = value
+        return self
+
+    def with_language(self, value: str) -> PublicSearchItems:
+        self.language = value
         return self
 
     # endregion with_x methods
@@ -233,30 +233,30 @@ class PublicSearchItems(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "store_id") and self.store_id:
-            result["storeId"] = str(self.store_id)
-        elif include_empty:
-            result["storeId"] = str()
-        if hasattr(self, "language") and self.language:
-            result["language"] = str(self.language)
-        elif include_empty:
-            result["language"] = str()
-        if hasattr(self, "keyword") and self.keyword:
-            result["keyword"] = str(self.keyword)
-        elif include_empty:
-            result["keyword"] = str()
-        if hasattr(self, "region") and self.region:
-            result["region"] = str(self.region)
-        elif include_empty:
-            result["region"] = str()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
+        if hasattr(self, "region") and self.region:
+            result["region"] = str(self.region)
+        elif include_empty:
+            result["region"] = str()
+        if hasattr(self, "store_id") and self.store_id:
+            result["storeId"] = str(self.store_id)
+        elif include_empty:
+            result["storeId"] = str()
+        if hasattr(self, "keyword") and self.keyword:
+            result["keyword"] = str(self.keyword)
+        elif include_empty:
+            result["keyword"] = str()
+        if hasattr(self, "language") and self.language:
+            result["language"] = str(self.language)
+        elif include_empty:
+            result["language"] = str()
         return result
 
     # endregion to methods
@@ -288,25 +288,25 @@ class PublicSearchItems(Operation):
     def create(
         cls,
         namespace: str,
-        language: str,
         keyword: str,
-        store_id: Optional[str] = None,
-        region: Optional[str] = None,
-        offset: Optional[int] = None,
+        language: str,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
+        region: Optional[str] = None,
+        store_id: Optional[str] = None,
     ) -> PublicSearchItems:
         instance = cls()
         instance.namespace = namespace
-        instance.language = language
         instance.keyword = keyword
-        if store_id is not None:
-            instance.store_id = store_id
-        if region is not None:
-            instance.region = region
-        if offset is not None:
-            instance.offset = offset
+        instance.language = language
         if limit is not None:
             instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
+        if region is not None:
+            instance.region = region
+        if store_id is not None:
+            instance.store_id = store_id
         return instance
 
     @classmethod
@@ -316,42 +316,42 @@ class PublicSearchItems(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "storeId" in dict_ and dict_["storeId"] is not None:
-            instance.store_id = str(dict_["storeId"])
-        elif include_empty:
-            instance.store_id = str()
-        if "language" in dict_ and dict_["language"] is not None:
-            instance.language = str(dict_["language"])
-        elif include_empty:
-            instance.language = str()
-        if "keyword" in dict_ and dict_["keyword"] is not None:
-            instance.keyword = str(dict_["keyword"])
-        elif include_empty:
-            instance.keyword = str()
-        if "region" in dict_ and dict_["region"] is not None:
-            instance.region = str(dict_["region"])
-        elif include_empty:
-            instance.region = str()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
+        if "region" in dict_ and dict_["region"] is not None:
+            instance.region = str(dict_["region"])
+        elif include_empty:
+            instance.region = str()
+        if "storeId" in dict_ and dict_["storeId"] is not None:
+            instance.store_id = str(dict_["storeId"])
+        elif include_empty:
+            instance.store_id = str()
+        if "keyword" in dict_ and dict_["keyword"] is not None:
+            instance.keyword = str(dict_["keyword"])
+        elif include_empty:
+            instance.keyword = str()
+        if "language" in dict_ and dict_["language"] is not None:
+            instance.language = str(dict_["language"])
+        elif include_empty:
+            instance.language = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "storeId": "store_id",
-            "language": "language",
-            "keyword": "keyword",
-            "region": "region",
-            "offset": "offset",
             "limit": "limit",
+            "offset": "offset",
+            "region": "region",
+            "storeId": "store_id",
+            "keyword": "keyword",
+            "language": "language",
         }
 
     # endregion static methods

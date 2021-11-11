@@ -30,16 +30,16 @@ class PaymentOrderChargeRequest(Model):
     Properties:
         payment_provider: (paymentProvider) REQUIRED str
 
-        payment_method: (paymentMethod) OPTIONAL str
-
         ext_tx_id: (extTxId) OPTIONAL str
+
+        payment_method: (paymentMethod) OPTIONAL str
     """
 
     # region fields
 
     payment_provider: str                                                                          # REQUIRED
-    payment_method: str                                                                            # OPTIONAL
     ext_tx_id: str                                                                                 # OPTIONAL
+    payment_method: str                                                                            # OPTIONAL
 
     # endregion fields
 
@@ -49,12 +49,12 @@ class PaymentOrderChargeRequest(Model):
         self.payment_provider = value
         return self
 
-    def with_payment_method(self, value: str) -> PaymentOrderChargeRequest:
-        self.payment_method = value
-        return self
-
     def with_ext_tx_id(self, value: str) -> PaymentOrderChargeRequest:
         self.ext_tx_id = value
+        return self
+
+    def with_payment_method(self, value: str) -> PaymentOrderChargeRequest:
+        self.payment_method = value
         return self
 
     # endregion with_x methods
@@ -67,14 +67,14 @@ class PaymentOrderChargeRequest(Model):
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
             result["paymentProvider"] = str()
-        if hasattr(self, "payment_method"):
-            result["paymentMethod"] = str(self.payment_method)
-        elif include_empty:
-            result["paymentMethod"] = str()
         if hasattr(self, "ext_tx_id"):
             result["extTxId"] = str(self.ext_tx_id)
         elif include_empty:
             result["extTxId"] = str()
+        if hasattr(self, "payment_method"):
+            result["paymentMethod"] = str(self.payment_method)
+        elif include_empty:
+            result["paymentMethod"] = str()
         return result
 
     # endregion to methods
@@ -105,22 +105,22 @@ class PaymentOrderChargeRequest(Model):
             instance.payment_provider = str(dict_["paymentProvider"])
         elif include_empty:
             instance.payment_provider = str()
-        if "paymentMethod" in dict_ and dict_["paymentMethod"] is not None:
-            instance.payment_method = str(dict_["paymentMethod"])
-        elif include_empty:
-            instance.payment_method = str()
         if "extTxId" in dict_ and dict_["extTxId"] is not None:
             instance.ext_tx_id = str(dict_["extTxId"])
         elif include_empty:
             instance.ext_tx_id = str()
+        if "paymentMethod" in dict_ and dict_["paymentMethod"] is not None:
+            instance.payment_method = str(dict_["paymentMethod"])
+        elif include_empty:
+            instance.payment_method = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "paymentProvider": "payment_provider",
-            "paymentMethod": "payment_method",
             "extTxId": "ext_tx_id",
+            "paymentMethod": "payment_method",
         }
 
     # endregion static methods

@@ -304,20 +304,20 @@ def public_reconcile_play_station_store(user_id: str, namespace: Optional[str] =
 
 
 @same_doc_as(QueryUserIAPOrders)
-def query_user_iap_orders(user_id: str, type_: Optional[str] = None, product_id: Optional[str] = None, status: Optional[str] = None, start_time: Optional[str] = None, end_time: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_user_iap_orders(user_id: str, end_time: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, product_id: Optional[str] = None, start_time: Optional[str] = None, status: Optional[str] = None, type_: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = QueryUserIAPOrders.create(
         user_id=user_id,
-        type_=type_,
-        product_id=product_id,
-        status=status,
-        start_time=start_time,
         end_time=end_time,
-        offset=offset,
         limit=limit,
+        offset=offset,
+        product_id=product_id,
+        start_time=start_time,
+        status=status,
+        type_=type_,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

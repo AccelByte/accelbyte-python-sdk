@@ -28,51 +28,47 @@ class WalletInfo(Model):
     """Wallet info (WalletInfo)
 
     Properties:
-        id_: (id) REQUIRED str
+        balance: (balance) REQUIRED int
 
-        namespace: (namespace) REQUIRED str
-
-        user_id: (userId) REQUIRED str
+        created_at: (createdAt) REQUIRED str
 
         currency_code: (currencyCode) REQUIRED str
 
         currency_symbol: (currencySymbol) REQUIRED str
 
-        balance: (balance) REQUIRED int
+        id_: (id) REQUIRED str
 
-        created_at: (createdAt) REQUIRED str
+        namespace: (namespace) REQUIRED str
+
+        status: (status) REQUIRED str
 
         updated_at: (updatedAt) REQUIRED str
 
-        status: (status) REQUIRED str
+        user_id: (userId) REQUIRED str
     """
 
     # region fields
 
-    id_: str                                                                                       # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    user_id: str                                                                                   # REQUIRED
-    currency_code: str                                                                             # REQUIRED
-    currency_symbol: str                                                                           # REQUIRED
     balance: int                                                                                   # REQUIRED
     created_at: str                                                                                # REQUIRED
-    updated_at: str                                                                                # REQUIRED
+    currency_code: str                                                                             # REQUIRED
+    currency_symbol: str                                                                           # REQUIRED
+    id_: str                                                                                       # REQUIRED
+    namespace: str                                                                                 # REQUIRED
     status: str                                                                                    # REQUIRED
+    updated_at: str                                                                                # REQUIRED
+    user_id: str                                                                                   # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_id(self, value: str) -> WalletInfo:
-        self.id_ = value
+    def with_balance(self, value: int) -> WalletInfo:
+        self.balance = value
         return self
 
-    def with_namespace(self, value: str) -> WalletInfo:
-        self.namespace = value
-        return self
-
-    def with_user_id(self, value: str) -> WalletInfo:
-        self.user_id = value
+    def with_created_at(self, value: str) -> WalletInfo:
+        self.created_at = value
         return self
 
     def with_currency_code(self, value: str) -> WalletInfo:
@@ -83,20 +79,24 @@ class WalletInfo(Model):
         self.currency_symbol = value
         return self
 
-    def with_balance(self, value: int) -> WalletInfo:
-        self.balance = value
+    def with_id(self, value: str) -> WalletInfo:
+        self.id_ = value
         return self
 
-    def with_created_at(self, value: str) -> WalletInfo:
-        self.created_at = value
+    def with_namespace(self, value: str) -> WalletInfo:
+        self.namespace = value
+        return self
+
+    def with_status(self, value: str) -> WalletInfo:
+        self.status = value
         return self
 
     def with_updated_at(self, value: str) -> WalletInfo:
         self.updated_at = value
         return self
 
-    def with_status(self, value: str) -> WalletInfo:
-        self.status = value
+    def with_user_id(self, value: str) -> WalletInfo:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -105,26 +105,6 @@ class WalletInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "id_"):
-            result["id"] = str(self.id_)
-        elif include_empty:
-            result["id"] = str()
-        if hasattr(self, "namespace"):
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
-        if hasattr(self, "user_id"):
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
-        if hasattr(self, "currency_code"):
-            result["currencyCode"] = str(self.currency_code)
-        elif include_empty:
-            result["currencyCode"] = str()
-        if hasattr(self, "currency_symbol"):
-            result["currencySymbol"] = str(self.currency_symbol)
-        elif include_empty:
-            result["currencySymbol"] = str()
         if hasattr(self, "balance"):
             result["balance"] = int(self.balance)
         elif include_empty:
@@ -133,14 +113,34 @@ class WalletInfo(Model):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "updated_at"):
-            result["updatedAt"] = str(self.updated_at)
+        if hasattr(self, "currency_code"):
+            result["currencyCode"] = str(self.currency_code)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["currencyCode"] = str()
+        if hasattr(self, "currency_symbol"):
+            result["currencySymbol"] = str(self.currency_symbol)
+        elif include_empty:
+            result["currencySymbol"] = str()
+        if hasattr(self, "id_"):
+            result["id"] = str(self.id_)
+        elif include_empty:
+            result["id"] = str()
+        if hasattr(self, "namespace"):
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
+        if hasattr(self, "updated_at"):
+            result["updatedAt"] = str(self.updated_at)
+        elif include_empty:
+            result["updatedAt"] = str()
+        if hasattr(self, "user_id"):
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         return result
 
     # endregion to methods
@@ -177,26 +177,6 @@ class WalletInfo(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "id" in dict_ and dict_["id"] is not None:
-            instance.id_ = str(dict_["id"])
-        elif include_empty:
-            instance.id_ = str()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
-        if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
-            instance.currency_code = str(dict_["currencyCode"])
-        elif include_empty:
-            instance.currency_code = str()
-        if "currencySymbol" in dict_ and dict_["currencySymbol"] is not None:
-            instance.currency_symbol = str(dict_["currencySymbol"])
-        elif include_empty:
-            instance.currency_symbol = str()
         if "balance" in dict_ and dict_["balance"] is not None:
             instance.balance = int(dict_["balance"])
         elif include_empty:
@@ -205,28 +185,48 @@ class WalletInfo(Model):
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
             instance.created_at = str()
-        if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
-            instance.updated_at = str(dict_["updatedAt"])
+        if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
+            instance.currency_code = str(dict_["currencyCode"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.currency_code = str()
+        if "currencySymbol" in dict_ and dict_["currencySymbol"] is not None:
+            instance.currency_symbol = str(dict_["currencySymbol"])
+        elif include_empty:
+            instance.currency_symbol = str()
+        if "id" in dict_ and dict_["id"] is not None:
+            instance.id_ = str(dict_["id"])
+        elif include_empty:
+            instance.id_ = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = str()
+        if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
+            instance.updated_at = str(dict_["updatedAt"])
+        elif include_empty:
+            instance.updated_at = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
-            "namespace": "namespace",
-            "userId": "user_id",
-            "currencyCode": "currency_code",
-            "currencySymbol": "currency_symbol",
             "balance": "balance",
             "createdAt": "created_at",
-            "updatedAt": "updated_at",
+            "currencyCode": "currency_code",
+            "currencySymbol": "currency_symbol",
+            "id": "id_",
+            "namespace": "namespace",
             "status": "status",
+            "updatedAt": "updated_at",
+            "userId": "user_id",
         }
 
     # endregion static methods

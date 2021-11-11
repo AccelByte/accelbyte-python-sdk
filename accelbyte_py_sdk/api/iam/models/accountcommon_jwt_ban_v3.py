@@ -30,22 +30,22 @@ class AccountcommonJWTBanV3(Model):
     Properties:
         ban: (ban) REQUIRED str
 
-        disabled_date: (disabledDate) OPTIONAL str
-
         enabled: (enabled) REQUIRED bool
 
         end_date: (endDate) REQUIRED str
 
         targeted_namespace: (targetedNamespace) REQUIRED str
+
+        disabled_date: (disabledDate) OPTIONAL str
     """
 
     # region fields
 
     ban: str                                                                                       # REQUIRED
-    disabled_date: str                                                                             # OPTIONAL
     enabled: bool                                                                                  # REQUIRED
     end_date: str                                                                                  # REQUIRED
     targeted_namespace: str                                                                        # REQUIRED
+    disabled_date: str                                                                             # OPTIONAL
 
     # endregion fields
 
@@ -53,10 +53,6 @@ class AccountcommonJWTBanV3(Model):
 
     def with_ban(self, value: str) -> AccountcommonJWTBanV3:
         self.ban = value
-        return self
-
-    def with_disabled_date(self, value: str) -> AccountcommonJWTBanV3:
-        self.disabled_date = value
         return self
 
     def with_enabled(self, value: bool) -> AccountcommonJWTBanV3:
@@ -71,6 +67,10 @@ class AccountcommonJWTBanV3(Model):
         self.targeted_namespace = value
         return self
 
+    def with_disabled_date(self, value: str) -> AccountcommonJWTBanV3:
+        self.disabled_date = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -81,10 +81,6 @@ class AccountcommonJWTBanV3(Model):
             result["ban"] = str(self.ban)
         elif include_empty:
             result["ban"] = str()
-        if hasattr(self, "disabled_date"):
-            result["disabledDate"] = str(self.disabled_date)
-        elif include_empty:
-            result["disabledDate"] = str()
         if hasattr(self, "enabled"):
             result["enabled"] = bool(self.enabled)
         elif include_empty:
@@ -97,6 +93,10 @@ class AccountcommonJWTBanV3(Model):
             result["targetedNamespace"] = str(self.targeted_namespace)
         elif include_empty:
             result["targetedNamespace"] = str()
+        if hasattr(self, "disabled_date"):
+            result["disabledDate"] = str(self.disabled_date)
+        elif include_empty:
+            result["disabledDate"] = str()
         return result
 
     # endregion to methods
@@ -130,10 +130,6 @@ class AccountcommonJWTBanV3(Model):
             instance.ban = str(dict_["ban"])
         elif include_empty:
             instance.ban = str()
-        if "disabledDate" in dict_ and dict_["disabledDate"] is not None:
-            instance.disabled_date = str(dict_["disabledDate"])
-        elif include_empty:
-            instance.disabled_date = str()
         if "enabled" in dict_ and dict_["enabled"] is not None:
             instance.enabled = bool(dict_["enabled"])
         elif include_empty:
@@ -146,16 +142,20 @@ class AccountcommonJWTBanV3(Model):
             instance.targeted_namespace = str(dict_["targetedNamespace"])
         elif include_empty:
             instance.targeted_namespace = str()
+        if "disabledDate" in dict_ and dict_["disabledDate"] is not None:
+            instance.disabled_date = str(dict_["disabledDate"])
+        elif include_empty:
+            instance.disabled_date = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "ban": "ban",
-            "disabledDate": "disabled_date",
             "enabled": "enabled",
             "endDate": "end_date",
             "targetedNamespace": "targeted_namespace",
+            "disabledDate": "disabled_date",
         }
 
     # endregion static methods

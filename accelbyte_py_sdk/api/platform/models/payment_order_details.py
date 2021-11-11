@@ -28,55 +28,43 @@ class PaymentOrderDetails(Model):
     """Payment order details (PaymentOrderDetails)
 
     Properties:
-        display_name: (displayName) OPTIONAL str
-
-        title: (title) REQUIRED str
-
-        description: (description) OPTIONAL str
-
-        price: (price) REQUIRED str
+        charging: (charging) REQUIRED bool
 
         currency_code: (currencyCode) REQUIRED str
 
         currency_symbol: (currencySymbol) REQUIRED str
 
+        price: (price) REQUIRED str
+
         sandbox: (sandbox) REQUIRED bool
 
-        region: (region) OPTIONAL str
+        title: (title) REQUIRED str
 
-        charging: (charging) REQUIRED bool
+        description: (description) OPTIONAL str
+
+        display_name: (displayName) OPTIONAL str
+
+        region: (region) OPTIONAL str
     """
 
     # region fields
 
-    display_name: str                                                                              # OPTIONAL
-    title: str                                                                                     # REQUIRED
-    description: str                                                                               # OPTIONAL
-    price: str                                                                                     # REQUIRED
+    charging: bool                                                                                 # REQUIRED
     currency_code: str                                                                             # REQUIRED
     currency_symbol: str                                                                           # REQUIRED
+    price: str                                                                                     # REQUIRED
     sandbox: bool                                                                                  # REQUIRED
+    title: str                                                                                     # REQUIRED
+    description: str                                                                               # OPTIONAL
+    display_name: str                                                                              # OPTIONAL
     region: str                                                                                    # OPTIONAL
-    charging: bool                                                                                 # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_display_name(self, value: str) -> PaymentOrderDetails:
-        self.display_name = value
-        return self
-
-    def with_title(self, value: str) -> PaymentOrderDetails:
-        self.title = value
-        return self
-
-    def with_description(self, value: str) -> PaymentOrderDetails:
-        self.description = value
-        return self
-
-    def with_price(self, value: str) -> PaymentOrderDetails:
-        self.price = value
+    def with_charging(self, value: bool) -> PaymentOrderDetails:
+        self.charging = value
         return self
 
     def with_currency_code(self, value: str) -> PaymentOrderDetails:
@@ -87,16 +75,28 @@ class PaymentOrderDetails(Model):
         self.currency_symbol = value
         return self
 
+    def with_price(self, value: str) -> PaymentOrderDetails:
+        self.price = value
+        return self
+
     def with_sandbox(self, value: bool) -> PaymentOrderDetails:
         self.sandbox = value
         return self
 
-    def with_region(self, value: str) -> PaymentOrderDetails:
-        self.region = value
+    def with_title(self, value: str) -> PaymentOrderDetails:
+        self.title = value
         return self
 
-    def with_charging(self, value: bool) -> PaymentOrderDetails:
-        self.charging = value
+    def with_description(self, value: str) -> PaymentOrderDetails:
+        self.description = value
+        return self
+
+    def with_display_name(self, value: str) -> PaymentOrderDetails:
+        self.display_name = value
+        return self
+
+    def with_region(self, value: str) -> PaymentOrderDetails:
+        self.region = value
         return self
 
     # endregion with_x methods
@@ -105,22 +105,10 @@ class PaymentOrderDetails(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "display_name"):
-            result["displayName"] = str(self.display_name)
+        if hasattr(self, "charging"):
+            result["charging"] = bool(self.charging)
         elif include_empty:
-            result["displayName"] = str()
-        if hasattr(self, "title"):
-            result["title"] = str(self.title)
-        elif include_empty:
-            result["title"] = str()
-        if hasattr(self, "description"):
-            result["description"] = str(self.description)
-        elif include_empty:
-            result["description"] = str()
-        if hasattr(self, "price"):
-            result["price"] = str(self.price)
-        elif include_empty:
-            result["price"] = str()
+            result["charging"] = bool()
         if hasattr(self, "currency_code"):
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
@@ -129,18 +117,30 @@ class PaymentOrderDetails(Model):
             result["currencySymbol"] = str(self.currency_symbol)
         elif include_empty:
             result["currencySymbol"] = str()
+        if hasattr(self, "price"):
+            result["price"] = str(self.price)
+        elif include_empty:
+            result["price"] = str()
         if hasattr(self, "sandbox"):
             result["sandbox"] = bool(self.sandbox)
         elif include_empty:
             result["sandbox"] = bool()
+        if hasattr(self, "title"):
+            result["title"] = str(self.title)
+        elif include_empty:
+            result["title"] = str()
+        if hasattr(self, "description"):
+            result["description"] = str(self.description)
+        elif include_empty:
+            result["description"] = str()
+        if hasattr(self, "display_name"):
+            result["displayName"] = str(self.display_name)
+        elif include_empty:
+            result["displayName"] = str()
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = str()
-        if hasattr(self, "charging"):
-            result["charging"] = bool(self.charging)
-        elif include_empty:
-            result["charging"] = bool()
         return result
 
     # endregion to methods
@@ -180,22 +180,10 @@ class PaymentOrderDetails(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "displayName" in dict_ and dict_["displayName"] is not None:
-            instance.display_name = str(dict_["displayName"])
+        if "charging" in dict_ and dict_["charging"] is not None:
+            instance.charging = bool(dict_["charging"])
         elif include_empty:
-            instance.display_name = str()
-        if "title" in dict_ and dict_["title"] is not None:
-            instance.title = str(dict_["title"])
-        elif include_empty:
-            instance.title = str()
-        if "description" in dict_ and dict_["description"] is not None:
-            instance.description = str(dict_["description"])
-        elif include_empty:
-            instance.description = str()
-        if "price" in dict_ and dict_["price"] is not None:
-            instance.price = str(dict_["price"])
-        elif include_empty:
-            instance.price = str()
+            instance.charging = bool()
         if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
             instance.currency_code = str(dict_["currencyCode"])
         elif include_empty:
@@ -204,32 +192,44 @@ class PaymentOrderDetails(Model):
             instance.currency_symbol = str(dict_["currencySymbol"])
         elif include_empty:
             instance.currency_symbol = str()
+        if "price" in dict_ and dict_["price"] is not None:
+            instance.price = str(dict_["price"])
+        elif include_empty:
+            instance.price = str()
         if "sandbox" in dict_ and dict_["sandbox"] is not None:
             instance.sandbox = bool(dict_["sandbox"])
         elif include_empty:
             instance.sandbox = bool()
+        if "title" in dict_ and dict_["title"] is not None:
+            instance.title = str(dict_["title"])
+        elif include_empty:
+            instance.title = str()
+        if "description" in dict_ and dict_["description"] is not None:
+            instance.description = str(dict_["description"])
+        elif include_empty:
+            instance.description = str()
+        if "displayName" in dict_ and dict_["displayName"] is not None:
+            instance.display_name = str(dict_["displayName"])
+        elif include_empty:
+            instance.display_name = str()
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
             instance.region = str()
-        if "charging" in dict_ and dict_["charging"] is not None:
-            instance.charging = bool(dict_["charging"])
-        elif include_empty:
-            instance.charging = bool()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "displayName": "display_name",
-            "title": "title",
-            "description": "description",
-            "price": "price",
+            "charging": "charging",
             "currencyCode": "currency_code",
             "currencySymbol": "currency_symbol",
+            "price": "price",
             "sandbox": "sandbox",
+            "title": "title",
+            "description": "description",
+            "displayName": "display_name",
             "region": "region",
-            "charging": "charging",
         }
 
     # endregion static methods

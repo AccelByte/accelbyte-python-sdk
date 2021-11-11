@@ -56,9 +56,9 @@ class UpdateGroupCustomRulePublicV1(Operation):
 
         body: (body) REQUIRED ModelsUpdateGroupCustomRuleRequestV1 in body
 
-        namespace: (namespace) REQUIRED str in path
-
         group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
     Responses:
         200: OK - ModelsGroupResponseV1 (OK)
@@ -84,8 +84,8 @@ class UpdateGroupCustomRulePublicV1(Operation):
     _location_query: str = None
 
     body: ModelsUpdateGroupCustomRuleRequestV1                                                     # REQUIRED in [body]
-    namespace: str                                                                                 # REQUIRED in [path]
     group_id: str                                                                                  # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -134,8 +134,8 @@ class UpdateGroupCustomRulePublicV1(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "body",
-            "namespace",
             "group_id",
+            "namespace",
         ]
 
     # endregion get methods
@@ -153,10 +153,10 @@ class UpdateGroupCustomRulePublicV1(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "group_id"):
             result["groupId"] = self.group_id
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     # endregion get_x_params methods
@@ -166,9 +166,9 @@ class UpdateGroupCustomRulePublicV1(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "body") or self.body is None:
             return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "group_id") or self.group_id is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         return True
 
@@ -180,12 +180,12 @@ class UpdateGroupCustomRulePublicV1(Operation):
         self.body = value
         return self
 
-    def with_namespace(self, value: str) -> UpdateGroupCustomRulePublicV1:
-        self.namespace = value
-        return self
-
     def with_group_id(self, value: str) -> UpdateGroupCustomRulePublicV1:
         self.group_id = value
+        return self
+
+    def with_namespace(self, value: str) -> UpdateGroupCustomRulePublicV1:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -198,14 +198,14 @@ class UpdateGroupCustomRulePublicV1(Operation):
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
             result["body"] = ModelsUpdateGroupCustomRuleRequestV1()
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "group_id") and self.group_id:
             result["groupId"] = str(self.group_id)
         elif include_empty:
             result["groupId"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         return result
 
     # endregion to methods
@@ -253,13 +253,13 @@ class UpdateGroupCustomRulePublicV1(Operation):
     def create(
         cls,
         body: ModelsUpdateGroupCustomRuleRequestV1,
-        namespace: str,
         group_id: str,
+        namespace: str,
     ) -> UpdateGroupCustomRulePublicV1:
         instance = cls()
         instance.body = body
-        instance.namespace = namespace
         instance.group_id = group_id
+        instance.namespace = namespace
         return instance
 
     @classmethod
@@ -269,22 +269,22 @@ class UpdateGroupCustomRulePublicV1(Operation):
             instance.body = ModelsUpdateGroupCustomRuleRequestV1.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
             instance.body = ModelsUpdateGroupCustomRuleRequestV1()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "groupId" in dict_ and dict_["groupId"] is not None:
             instance.group_id = str(dict_["groupId"])
         elif include_empty:
             instance.group_id = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
-            "namespace": "namespace",
             "groupId": "group_id",
+            "namespace": "namespace",
         }
 
     # endregion static methods

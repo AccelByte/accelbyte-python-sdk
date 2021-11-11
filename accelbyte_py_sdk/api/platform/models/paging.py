@@ -28,26 +28,26 @@ class Paging(Model):
     """Paging (Paging)
 
     Properties:
-        previous: (previous) OPTIONAL str
-
         next_: (next) OPTIONAL str
+
+        previous: (previous) OPTIONAL str
     """
 
     # region fields
 
-    previous: str                                                                                  # OPTIONAL
     next_: str                                                                                     # OPTIONAL
+    previous: str                                                                                  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_previous(self, value: str) -> Paging:
-        self.previous = value
-        return self
-
     def with_next(self, value: str) -> Paging:
         self.next_ = value
+        return self
+
+    def with_previous(self, value: str) -> Paging:
+        self.previous = value
         return self
 
     # endregion with_x methods
@@ -56,14 +56,14 @@ class Paging(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "previous"):
-            result["previous"] = str(self.previous)
-        elif include_empty:
-            result["previous"] = str()
         if hasattr(self, "next_"):
             result["next"] = str(self.next_)
         elif include_empty:
             result["next"] = str()
+        if hasattr(self, "previous"):
+            result["previous"] = str(self.previous)
+        elif include_empty:
+            result["previous"] = str()
         return result
 
     # endregion to methods
@@ -88,21 +88,21 @@ class Paging(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "previous" in dict_ and dict_["previous"] is not None:
-            instance.previous = str(dict_["previous"])
-        elif include_empty:
-            instance.previous = str()
         if "next" in dict_ and dict_["next"] is not None:
             instance.next_ = str(dict_["next"])
         elif include_empty:
             instance.next_ = str()
+        if "previous" in dict_ and dict_["previous"] is not None:
+            instance.previous = str(dict_["previous"])
+        elif include_empty:
+            instance.previous = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "previous": "previous",
             "next": "next_",
+            "previous": "previous",
         }
 
     # endregion static methods

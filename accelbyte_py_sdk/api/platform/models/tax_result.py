@@ -30,19 +30,19 @@ class TaxResult(Model):
     Properties:
         enable_tax: (enableTax) OPTIONAL bool
 
-        tax: (tax) OPTIONAL int
-
         formatted_tax: (formattedTax) OPTIONAL str
 
         state: (state) OPTIONAL str
+
+        tax: (tax) OPTIONAL int
     """
 
     # region fields
 
     enable_tax: bool                                                                               # OPTIONAL
-    tax: int                                                                                       # OPTIONAL
     formatted_tax: str                                                                             # OPTIONAL
     state: str                                                                                     # OPTIONAL
+    tax: int                                                                                       # OPTIONAL
 
     # endregion fields
 
@@ -52,16 +52,16 @@ class TaxResult(Model):
         self.enable_tax = value
         return self
 
-    def with_tax(self, value: int) -> TaxResult:
-        self.tax = value
-        return self
-
     def with_formatted_tax(self, value: str) -> TaxResult:
         self.formatted_tax = value
         return self
 
     def with_state(self, value: str) -> TaxResult:
         self.state = value
+        return self
+
+    def with_tax(self, value: int) -> TaxResult:
+        self.tax = value
         return self
 
     # endregion with_x methods
@@ -74,10 +74,6 @@ class TaxResult(Model):
             result["enableTax"] = bool(self.enable_tax)
         elif include_empty:
             result["enableTax"] = bool()
-        if hasattr(self, "tax"):
-            result["tax"] = int(self.tax)
-        elif include_empty:
-            result["tax"] = int()
         if hasattr(self, "formatted_tax"):
             result["formattedTax"] = str(self.formatted_tax)
         elif include_empty:
@@ -86,6 +82,10 @@ class TaxResult(Model):
             result["state"] = str(self.state)
         elif include_empty:
             result["state"] = str()
+        if hasattr(self, "tax"):
+            result["tax"] = int(self.tax)
+        elif include_empty:
+            result["tax"] = int()
         return result
 
     # endregion to methods
@@ -120,10 +120,6 @@ class TaxResult(Model):
             instance.enable_tax = bool(dict_["enableTax"])
         elif include_empty:
             instance.enable_tax = bool()
-        if "tax" in dict_ and dict_["tax"] is not None:
-            instance.tax = int(dict_["tax"])
-        elif include_empty:
-            instance.tax = int()
         if "formattedTax" in dict_ and dict_["formattedTax"] is not None:
             instance.formatted_tax = str(dict_["formattedTax"])
         elif include_empty:
@@ -132,15 +128,19 @@ class TaxResult(Model):
             instance.state = str(dict_["state"])
         elif include_empty:
             instance.state = str()
+        if "tax" in dict_ and dict_["tax"] is not None:
+            instance.tax = int(dict_["tax"])
+        elif include_empty:
+            instance.tax = int()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "enableTax": "enable_tax",
-            "tax": "tax",
             "formattedTax": "formatted_tax",
             "state": "state",
+            "tax": "tax",
         }
 
     # endregion static methods

@@ -73,14 +73,14 @@ def get_payment_public_config(payment_provider: str, region: str, sandbox: Optio
 
 
 @same_doc_as(GetPaymentTaxValue)
-def get_payment_tax_value(payment_provider: str, payment_order_no: str, zip_code: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_payment_tax_value(payment_order_no: str, payment_provider: str, zip_code: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetPaymentTaxValue.create(
-        payment_provider=payment_provider,
         payment_order_no=payment_order_no,
+        payment_provider=payment_provider,
         zip_code=zip_code,
         namespace=namespace,
     )
@@ -169,25 +169,25 @@ def public_get_unpaid_payment_order(payment_order_no: str, namespace: Optional[s
 
 
 @same_doc_as(PublicNormalizePaymentReturnUrl)
-def public_normalize_payment_return_url(return_url: str, order_no: str, payment_order_no: str, payment_provider: str, user_id: Optional[str] = None, foreinginvoice: Optional[str] = None, invoice_id: Optional[str] = None, status: Optional[str] = None, result_code: Optional[str] = None, payload: Optional[str] = None, type_: Optional[str] = None, token: Optional[str] = None, payer_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_normalize_payment_return_url(order_no: str, payment_order_no: str, payment_provider: str, return_url: str, payer_id: Optional[str] = None, foreinginvoice: Optional[str] = None, invoice_id: Optional[str] = None, payload: Optional[str] = None, result_code: Optional[str] = None, status: Optional[str] = None, token: Optional[str] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicNormalizePaymentReturnUrl.create(
-        return_url=return_url,
         order_no=order_no,
         payment_order_no=payment_order_no,
         payment_provider=payment_provider,
-        user_id=user_id,
+        return_url=return_url,
+        payer_id=payer_id,
         foreinginvoice=foreinginvoice,
         invoice_id=invoice_id,
-        status=status,
-        result_code=result_code,
         payload=payload,
-        type_=type_,
+        result_code=result_code,
+        status=status,
         token=token,
-        payer_id=payer_id,
+        type_=type_,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

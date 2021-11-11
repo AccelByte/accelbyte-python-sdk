@@ -30,9 +30,9 @@ class RewardCondition(Model):
     """Reward condition (RewardCondition)
 
     Properties:
-        condition_name: (conditionName) OPTIONAL str
-
         condition: (condition) OPTIONAL str
+
+        condition_name: (conditionName) OPTIONAL str
 
         event_name: (eventName) OPTIONAL str
 
@@ -41,8 +41,8 @@ class RewardCondition(Model):
 
     # region fields
 
-    condition_name: str                                                                            # OPTIONAL
     condition: str                                                                                 # OPTIONAL
+    condition_name: str                                                                            # OPTIONAL
     event_name: str                                                                                # OPTIONAL
     reward_items: List[RewardItem]                                                                 # OPTIONAL
 
@@ -50,12 +50,12 @@ class RewardCondition(Model):
 
     # region with_x methods
 
-    def with_condition_name(self, value: str) -> RewardCondition:
-        self.condition_name = value
-        return self
-
     def with_condition(self, value: str) -> RewardCondition:
         self.condition = value
+        return self
+
+    def with_condition_name(self, value: str) -> RewardCondition:
+        self.condition_name = value
         return self
 
     def with_event_name(self, value: str) -> RewardCondition:
@@ -72,14 +72,14 @@ class RewardCondition(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "condition_name"):
-            result["conditionName"] = str(self.condition_name)
-        elif include_empty:
-            result["conditionName"] = str()
         if hasattr(self, "condition"):
             result["condition"] = str(self.condition)
         elif include_empty:
             result["condition"] = str()
+        if hasattr(self, "condition_name"):
+            result["conditionName"] = str(self.condition_name)
+        elif include_empty:
+            result["conditionName"] = str()
         if hasattr(self, "event_name"):
             result["eventName"] = str(self.event_name)
         elif include_empty:
@@ -118,14 +118,14 @@ class RewardCondition(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "conditionName" in dict_ and dict_["conditionName"] is not None:
-            instance.condition_name = str(dict_["conditionName"])
-        elif include_empty:
-            instance.condition_name = str()
         if "condition" in dict_ and dict_["condition"] is not None:
             instance.condition = str(dict_["condition"])
         elif include_empty:
             instance.condition = str()
+        if "conditionName" in dict_ and dict_["conditionName"] is not None:
+            instance.condition_name = str(dict_["conditionName"])
+        elif include_empty:
+            instance.condition_name = str()
         if "eventName" in dict_ and dict_["eventName"] is not None:
             instance.event_name = str(dict_["eventName"])
         elif include_empty:
@@ -139,8 +139,8 @@ class RewardCondition(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "conditionName": "condition_name",
             "condition": "condition",
+            "conditionName": "condition_name",
             "eventName": "event_name",
             "rewardItems": "reward_items",
         }

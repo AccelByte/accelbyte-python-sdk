@@ -70,14 +70,14 @@ def delete_group_admin_v1(group_id: str, namespace: Optional[str] = None, x_addi
 
 
 @same_doc_as(DeleteGroupPredefinedRulePublicV1)
-def delete_group_predefined_rule_public_v1(group_id: str, allowed_action: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def delete_group_predefined_rule_public_v1(allowed_action: str, group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = DeleteGroupPredefinedRulePublicV1.create(
-        group_id=group_id,
         allowed_action=allowed_action,
+        group_id=group_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -97,33 +97,33 @@ def delete_group_public_v1(group_id: str, namespace: Optional[str] = None, x_add
 
 
 @same_doc_as(GetGroupListAdminV1)
-def get_group_list_admin_v1(limit: Optional[int] = None, offset: Optional[int] = None, group_name: Optional[str] = None, group_region: Optional[str] = None, configuration_code: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_group_list_admin_v1(configuration_code: Optional[str] = None, group_name: Optional[str] = None, group_region: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetGroupListAdminV1.create(
-        limit=limit,
-        offset=offset,
+        configuration_code=configuration_code,
         group_name=group_name,
         group_region=group_region,
-        configuration_code=configuration_code,
+        limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetGroupListPublicV1)
-def get_group_list_public_v1(limit: Optional[int] = None, offset: Optional[int] = None, group_name: Optional[str] = None, group_region: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_group_list_public_v1(group_name: Optional[str] = None, group_region: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetGroupListPublicV1.create(
-        limit=limit,
-        offset=offset,
         group_name=group_name,
         group_region=group_region,
+        limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -184,15 +184,15 @@ def update_group_custom_rule_public_v1(body: ModelsUpdateGroupCustomRuleRequestV
 
 
 @same_doc_as(UpdateGroupPredefinedRulePublicV1)
-def update_group_predefined_rule_public_v1(body: ModelsUpdateGroupPredefinedRuleRequestV1, group_id: str, allowed_action: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def update_group_predefined_rule_public_v1(body: ModelsUpdateGroupPredefinedRuleRequestV1, allowed_action: str, group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = UpdateGroupPredefinedRulePublicV1.create(
         body=body,
-        group_id=group_id,
         allowed_action=allowed_action,
+        group_id=group_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

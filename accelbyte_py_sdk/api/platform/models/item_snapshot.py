@@ -31,109 +31,137 @@ class ItemSnapshot(Model):
     """Item snapshot (ItemSnapshot)
 
     Properties:
+        entitlement_type: (entitlementType) REQUIRED str
+
         item_id: (itemId) REQUIRED str
+
+        item_type: (itemType) REQUIRED str
+
+        language: (language) REQUIRED str
+
+        name: (name) REQUIRED str
+
+        namespace: (namespace) REQUIRED str
+
+        region: (region) REQUIRED str
+
+        title: (title) REQUIRED str
 
         app_id: (appId) OPTIONAL str
 
         app_type: (appType) OPTIONAL str
 
-        season_type: (seasonType) OPTIONAL str
-
         base_app_id: (baseAppId) OPTIONAL str
 
-        sku: (sku) OPTIONAL str
+        booth_name: (boothName) OPTIONAL str
 
-        namespace: (namespace) REQUIRED str
+        created_at: (createdAt) OPTIONAL str
 
-        name: (name) REQUIRED str
+        description: (description) OPTIONAL str
+
+        features: (features) OPTIONAL List[str]
+
+        item_ids: (itemIds) OPTIONAL List[str]
 
         listable: (listable) OPTIONAL bool
 
+        max_count: (maxCount) OPTIONAL int
+
+        max_count_per_user: (maxCountPerUser) OPTIONAL int
+
         purchasable: (purchasable) OPTIONAL bool
 
-        entitlement_type: (entitlementType) REQUIRED str
+        recurring: (recurring) OPTIONAL Recurring
 
-        use_count: (useCount) OPTIONAL int
+        region_data_item: (regionDataItem) OPTIONAL RegionDataItem
+
+        season_type: (seasonType) OPTIONAL str
+
+        sku: (sku) OPTIONAL str
 
         stackable: (stackable) OPTIONAL bool
-
-        item_type: (itemType) REQUIRED str
-
-        thumbnail_url: (thumbnailUrl) OPTIONAL str
-
-        target_namespace: (targetNamespace) OPTIONAL str
 
         target_currency_code: (targetCurrencyCode) OPTIONAL str
 
         target_item_id: (targetItemId) OPTIONAL str
 
-        title: (title) REQUIRED str
+        target_namespace: (targetNamespace) OPTIONAL str
 
-        description: (description) OPTIONAL str
-
-        region_data_item: (regionDataItem) OPTIONAL RegionDataItem
-
-        recurring: (recurring) OPTIONAL Recurring
-
-        item_ids: (itemIds) OPTIONAL List[str]
-
-        features: (features) OPTIONAL List[str]
-
-        max_count_per_user: (maxCountPerUser) OPTIONAL int
-
-        max_count: (maxCount) OPTIONAL int
-
-        booth_name: (boothName) OPTIONAL str
-
-        region: (region) REQUIRED str
-
-        language: (language) REQUIRED str
-
-        created_at: (createdAt) OPTIONAL str
+        thumbnail_url: (thumbnailUrl) OPTIONAL str
 
         updated_at: (updatedAt) OPTIONAL str
+
+        use_count: (useCount) OPTIONAL int
     """
 
     # region fields
 
+    entitlement_type: str                                                                          # REQUIRED
     item_id: str                                                                                   # REQUIRED
+    item_type: str                                                                                 # REQUIRED
+    language: str                                                                                  # REQUIRED
+    name: str                                                                                      # REQUIRED
+    namespace: str                                                                                 # REQUIRED
+    region: str                                                                                    # REQUIRED
+    title: str                                                                                     # REQUIRED
     app_id: str                                                                                    # OPTIONAL
     app_type: str                                                                                  # OPTIONAL
-    season_type: str                                                                               # OPTIONAL
     base_app_id: str                                                                               # OPTIONAL
-    sku: str                                                                                       # OPTIONAL
-    namespace: str                                                                                 # REQUIRED
-    name: str                                                                                      # REQUIRED
+    booth_name: str                                                                                # OPTIONAL
+    created_at: str                                                                                # OPTIONAL
+    description: str                                                                               # OPTIONAL
+    features: List[str]                                                                            # OPTIONAL
+    item_ids: List[str]                                                                            # OPTIONAL
     listable: bool                                                                                 # OPTIONAL
+    max_count: int                                                                                 # OPTIONAL
+    max_count_per_user: int                                                                        # OPTIONAL
     purchasable: bool                                                                              # OPTIONAL
-    entitlement_type: str                                                                          # REQUIRED
-    use_count: int                                                                                 # OPTIONAL
+    recurring: Recurring                                                                           # OPTIONAL
+    region_data_item: RegionDataItem                                                               # OPTIONAL
+    season_type: str                                                                               # OPTIONAL
+    sku: str                                                                                       # OPTIONAL
     stackable: bool                                                                                # OPTIONAL
-    item_type: str                                                                                 # REQUIRED
-    thumbnail_url: str                                                                             # OPTIONAL
-    target_namespace: str                                                                          # OPTIONAL
     target_currency_code: str                                                                      # OPTIONAL
     target_item_id: str                                                                            # OPTIONAL
-    title: str                                                                                     # REQUIRED
-    description: str                                                                               # OPTIONAL
-    region_data_item: RegionDataItem                                                               # OPTIONAL
-    recurring: Recurring                                                                           # OPTIONAL
-    item_ids: List[str]                                                                            # OPTIONAL
-    features: List[str]                                                                            # OPTIONAL
-    max_count_per_user: int                                                                        # OPTIONAL
-    max_count: int                                                                                 # OPTIONAL
-    booth_name: str                                                                                # OPTIONAL
-    region: str                                                                                    # REQUIRED
-    language: str                                                                                  # REQUIRED
-    created_at: str                                                                                # OPTIONAL
+    target_namespace: str                                                                          # OPTIONAL
+    thumbnail_url: str                                                                             # OPTIONAL
     updated_at: str                                                                                # OPTIONAL
+    use_count: int                                                                                 # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
+    def with_entitlement_type(self, value: str) -> ItemSnapshot:
+        self.entitlement_type = value
+        return self
+
     def with_item_id(self, value: str) -> ItemSnapshot:
         self.item_id = value
+        return self
+
+    def with_item_type(self, value: str) -> ItemSnapshot:
+        self.item_type = value
+        return self
+
+    def with_language(self, value: str) -> ItemSnapshot:
+        self.language = value
+        return self
+
+    def with_name(self, value: str) -> ItemSnapshot:
+        self.name = value
+        return self
+
+    def with_namespace(self, value: str) -> ItemSnapshot:
+        self.namespace = value
+        return self
+
+    def with_region(self, value: str) -> ItemSnapshot:
+        self.region = value
+        return self
+
+    def with_title(self, value: str) -> ItemSnapshot:
+        self.title = value
         return self
 
     def with_app_id(self, value: str) -> ItemSnapshot:
@@ -144,56 +172,64 @@ class ItemSnapshot(Model):
         self.app_type = value
         return self
 
-    def with_season_type(self, value: str) -> ItemSnapshot:
-        self.season_type = value
-        return self
-
     def with_base_app_id(self, value: str) -> ItemSnapshot:
         self.base_app_id = value
         return self
 
-    def with_sku(self, value: str) -> ItemSnapshot:
-        self.sku = value
+    def with_booth_name(self, value: str) -> ItemSnapshot:
+        self.booth_name = value
         return self
 
-    def with_namespace(self, value: str) -> ItemSnapshot:
-        self.namespace = value
+    def with_created_at(self, value: str) -> ItemSnapshot:
+        self.created_at = value
         return self
 
-    def with_name(self, value: str) -> ItemSnapshot:
-        self.name = value
+    def with_description(self, value: str) -> ItemSnapshot:
+        self.description = value
+        return self
+
+    def with_features(self, value: List[str]) -> ItemSnapshot:
+        self.features = value
+        return self
+
+    def with_item_ids(self, value: List[str]) -> ItemSnapshot:
+        self.item_ids = value
         return self
 
     def with_listable(self, value: bool) -> ItemSnapshot:
         self.listable = value
         return self
 
+    def with_max_count(self, value: int) -> ItemSnapshot:
+        self.max_count = value
+        return self
+
+    def with_max_count_per_user(self, value: int) -> ItemSnapshot:
+        self.max_count_per_user = value
+        return self
+
     def with_purchasable(self, value: bool) -> ItemSnapshot:
         self.purchasable = value
         return self
 
-    def with_entitlement_type(self, value: str) -> ItemSnapshot:
-        self.entitlement_type = value
+    def with_recurring(self, value: Recurring) -> ItemSnapshot:
+        self.recurring = value
         return self
 
-    def with_use_count(self, value: int) -> ItemSnapshot:
-        self.use_count = value
+    def with_region_data_item(self, value: RegionDataItem) -> ItemSnapshot:
+        self.region_data_item = value
+        return self
+
+    def with_season_type(self, value: str) -> ItemSnapshot:
+        self.season_type = value
+        return self
+
+    def with_sku(self, value: str) -> ItemSnapshot:
+        self.sku = value
         return self
 
     def with_stackable(self, value: bool) -> ItemSnapshot:
         self.stackable = value
-        return self
-
-    def with_item_type(self, value: str) -> ItemSnapshot:
-        self.item_type = value
-        return self
-
-    def with_thumbnail_url(self, value: str) -> ItemSnapshot:
-        self.thumbnail_url = value
-        return self
-
-    def with_target_namespace(self, value: str) -> ItemSnapshot:
-        self.target_namespace = value
         return self
 
     def with_target_currency_code(self, value: str) -> ItemSnapshot:
@@ -204,56 +240,20 @@ class ItemSnapshot(Model):
         self.target_item_id = value
         return self
 
-    def with_title(self, value: str) -> ItemSnapshot:
-        self.title = value
+    def with_target_namespace(self, value: str) -> ItemSnapshot:
+        self.target_namespace = value
         return self
 
-    def with_description(self, value: str) -> ItemSnapshot:
-        self.description = value
-        return self
-
-    def with_region_data_item(self, value: RegionDataItem) -> ItemSnapshot:
-        self.region_data_item = value
-        return self
-
-    def with_recurring(self, value: Recurring) -> ItemSnapshot:
-        self.recurring = value
-        return self
-
-    def with_item_ids(self, value: List[str]) -> ItemSnapshot:
-        self.item_ids = value
-        return self
-
-    def with_features(self, value: List[str]) -> ItemSnapshot:
-        self.features = value
-        return self
-
-    def with_max_count_per_user(self, value: int) -> ItemSnapshot:
-        self.max_count_per_user = value
-        return self
-
-    def with_max_count(self, value: int) -> ItemSnapshot:
-        self.max_count = value
-        return self
-
-    def with_booth_name(self, value: str) -> ItemSnapshot:
-        self.booth_name = value
-        return self
-
-    def with_region(self, value: str) -> ItemSnapshot:
-        self.region = value
-        return self
-
-    def with_language(self, value: str) -> ItemSnapshot:
-        self.language = value
-        return self
-
-    def with_created_at(self, value: str) -> ItemSnapshot:
-        self.created_at = value
+    def with_thumbnail_url(self, value: str) -> ItemSnapshot:
+        self.thumbnail_url = value
         return self
 
     def with_updated_at(self, value: str) -> ItemSnapshot:
         self.updated_at = value
+        return self
+
+    def with_use_count(self, value: int) -> ItemSnapshot:
+        self.use_count = value
         return self
 
     # endregion with_x methods
@@ -262,10 +262,38 @@ class ItemSnapshot(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "entitlement_type"):
+            result["entitlementType"] = str(self.entitlement_type)
+        elif include_empty:
+            result["entitlementType"] = str()
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
+        if hasattr(self, "item_type"):
+            result["itemType"] = str(self.item_type)
+        elif include_empty:
+            result["itemType"] = str()
+        if hasattr(self, "language"):
+            result["language"] = str(self.language)
+        elif include_empty:
+            result["language"] = str()
+        if hasattr(self, "name"):
+            result["name"] = str(self.name)
+        elif include_empty:
+            result["name"] = str()
+        if hasattr(self, "namespace"):
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
+        if hasattr(self, "region"):
+            result["region"] = str(self.region)
+        elif include_empty:
+            result["region"] = str()
+        if hasattr(self, "title"):
+            result["title"] = str(self.title)
+        elif include_empty:
+            result["title"] = str()
         if hasattr(self, "app_id"):
             result["appId"] = str(self.app_id)
         elif include_empty:
@@ -274,58 +302,66 @@ class ItemSnapshot(Model):
             result["appType"] = str(self.app_type)
         elif include_empty:
             result["appType"] = str()
-        if hasattr(self, "season_type"):
-            result["seasonType"] = str(self.season_type)
-        elif include_empty:
-            result["seasonType"] = str()
         if hasattr(self, "base_app_id"):
             result["baseAppId"] = str(self.base_app_id)
         elif include_empty:
             result["baseAppId"] = str()
-        if hasattr(self, "sku"):
-            result["sku"] = str(self.sku)
+        if hasattr(self, "booth_name"):
+            result["boothName"] = str(self.booth_name)
         elif include_empty:
-            result["sku"] = str()
-        if hasattr(self, "namespace"):
-            result["namespace"] = str(self.namespace)
+            result["boothName"] = str()
+        if hasattr(self, "created_at"):
+            result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["namespace"] = str()
-        if hasattr(self, "name"):
-            result["name"] = str(self.name)
+            result["createdAt"] = str()
+        if hasattr(self, "description"):
+            result["description"] = str(self.description)
         elif include_empty:
-            result["name"] = str()
+            result["description"] = str()
+        if hasattr(self, "features"):
+            result["features"] = [str(i0) for i0 in self.features]
+        elif include_empty:
+            result["features"] = []
+        if hasattr(self, "item_ids"):
+            result["itemIds"] = [str(i0) for i0 in self.item_ids]
+        elif include_empty:
+            result["itemIds"] = []
         if hasattr(self, "listable"):
             result["listable"] = bool(self.listable)
         elif include_empty:
             result["listable"] = bool()
+        if hasattr(self, "max_count"):
+            result["maxCount"] = int(self.max_count)
+        elif include_empty:
+            result["maxCount"] = int()
+        if hasattr(self, "max_count_per_user"):
+            result["maxCountPerUser"] = int(self.max_count_per_user)
+        elif include_empty:
+            result["maxCountPerUser"] = int()
         if hasattr(self, "purchasable"):
             result["purchasable"] = bool(self.purchasable)
         elif include_empty:
             result["purchasable"] = bool()
-        if hasattr(self, "entitlement_type"):
-            result["entitlementType"] = str(self.entitlement_type)
+        if hasattr(self, "recurring"):
+            result["recurring"] = self.recurring.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["entitlementType"] = str()
-        if hasattr(self, "use_count"):
-            result["useCount"] = int(self.use_count)
+            result["recurring"] = Recurring()
+        if hasattr(self, "region_data_item"):
+            result["regionDataItem"] = self.region_data_item.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["useCount"] = int()
+            result["regionDataItem"] = RegionDataItem()
+        if hasattr(self, "season_type"):
+            result["seasonType"] = str(self.season_type)
+        elif include_empty:
+            result["seasonType"] = str()
+        if hasattr(self, "sku"):
+            result["sku"] = str(self.sku)
+        elif include_empty:
+            result["sku"] = str()
         if hasattr(self, "stackable"):
             result["stackable"] = bool(self.stackable)
         elif include_empty:
             result["stackable"] = bool()
-        if hasattr(self, "item_type"):
-            result["itemType"] = str(self.item_type)
-        elif include_empty:
-            result["itemType"] = str()
-        if hasattr(self, "thumbnail_url"):
-            result["thumbnailUrl"] = str(self.thumbnail_url)
-        elif include_empty:
-            result["thumbnailUrl"] = str()
-        if hasattr(self, "target_namespace"):
-            result["targetNamespace"] = str(self.target_namespace)
-        elif include_empty:
-            result["targetNamespace"] = str()
         if hasattr(self, "target_currency_code"):
             result["targetCurrencyCode"] = str(self.target_currency_code)
         elif include_empty:
@@ -334,58 +370,22 @@ class ItemSnapshot(Model):
             result["targetItemId"] = str(self.target_item_id)
         elif include_empty:
             result["targetItemId"] = str()
-        if hasattr(self, "title"):
-            result["title"] = str(self.title)
+        if hasattr(self, "target_namespace"):
+            result["targetNamespace"] = str(self.target_namespace)
         elif include_empty:
-            result["title"] = str()
-        if hasattr(self, "description"):
-            result["description"] = str(self.description)
+            result["targetNamespace"] = str()
+        if hasattr(self, "thumbnail_url"):
+            result["thumbnailUrl"] = str(self.thumbnail_url)
         elif include_empty:
-            result["description"] = str()
-        if hasattr(self, "region_data_item"):
-            result["regionDataItem"] = self.region_data_item.to_dict(include_empty=include_empty)
-        elif include_empty:
-            result["regionDataItem"] = RegionDataItem()
-        if hasattr(self, "recurring"):
-            result["recurring"] = self.recurring.to_dict(include_empty=include_empty)
-        elif include_empty:
-            result["recurring"] = Recurring()
-        if hasattr(self, "item_ids"):
-            result["itemIds"] = [str(i0) for i0 in self.item_ids]
-        elif include_empty:
-            result["itemIds"] = []
-        if hasattr(self, "features"):
-            result["features"] = [str(i0) for i0 in self.features]
-        elif include_empty:
-            result["features"] = []
-        if hasattr(self, "max_count_per_user"):
-            result["maxCountPerUser"] = int(self.max_count_per_user)
-        elif include_empty:
-            result["maxCountPerUser"] = int()
-        if hasattr(self, "max_count"):
-            result["maxCount"] = int(self.max_count)
-        elif include_empty:
-            result["maxCount"] = int()
-        if hasattr(self, "booth_name"):
-            result["boothName"] = str(self.booth_name)
-        elif include_empty:
-            result["boothName"] = str()
-        if hasattr(self, "region"):
-            result["region"] = str(self.region)
-        elif include_empty:
-            result["region"] = str()
-        if hasattr(self, "language"):
-            result["language"] = str(self.language)
-        elif include_empty:
-            result["language"] = str()
-        if hasattr(self, "created_at"):
-            result["createdAt"] = str(self.created_at)
-        elif include_empty:
-            result["createdAt"] = str()
+            result["thumbnailUrl"] = str()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()
+        if hasattr(self, "use_count"):
+            result["useCount"] = int(self.use_count)
+        elif include_empty:
+            result["useCount"] = int()
         return result
 
     # endregion to methods
@@ -489,10 +489,38 @@ class ItemSnapshot(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "entitlementType" in dict_ and dict_["entitlementType"] is not None:
+            instance.entitlement_type = str(dict_["entitlementType"])
+        elif include_empty:
+            instance.entitlement_type = str()
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
             instance.item_id = str()
+        if "itemType" in dict_ and dict_["itemType"] is not None:
+            instance.item_type = str(dict_["itemType"])
+        elif include_empty:
+            instance.item_type = str()
+        if "language" in dict_ and dict_["language"] is not None:
+            instance.language = str(dict_["language"])
+        elif include_empty:
+            instance.language = str()
+        if "name" in dict_ and dict_["name"] is not None:
+            instance.name = str(dict_["name"])
+        elif include_empty:
+            instance.name = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
+        if "region" in dict_ and dict_["region"] is not None:
+            instance.region = str(dict_["region"])
+        elif include_empty:
+            instance.region = str()
+        if "title" in dict_ and dict_["title"] is not None:
+            instance.title = str(dict_["title"])
+        elif include_empty:
+            instance.title = str()
         if "appId" in dict_ and dict_["appId"] is not None:
             instance.app_id = str(dict_["appId"])
         elif include_empty:
@@ -501,58 +529,66 @@ class ItemSnapshot(Model):
             instance.app_type = str(dict_["appType"])
         elif include_empty:
             instance.app_type = str()
-        if "seasonType" in dict_ and dict_["seasonType"] is not None:
-            instance.season_type = str(dict_["seasonType"])
-        elif include_empty:
-            instance.season_type = str()
         if "baseAppId" in dict_ and dict_["baseAppId"] is not None:
             instance.base_app_id = str(dict_["baseAppId"])
         elif include_empty:
             instance.base_app_id = str()
-        if "sku" in dict_ and dict_["sku"] is not None:
-            instance.sku = str(dict_["sku"])
+        if "boothName" in dict_ and dict_["boothName"] is not None:
+            instance.booth_name = str(dict_["boothName"])
         elif include_empty:
-            instance.sku = str()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
+            instance.booth_name = str()
+        if "createdAt" in dict_ and dict_["createdAt"] is not None:
+            instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.namespace = str()
-        if "name" in dict_ and dict_["name"] is not None:
-            instance.name = str(dict_["name"])
+            instance.created_at = str()
+        if "description" in dict_ and dict_["description"] is not None:
+            instance.description = str(dict_["description"])
         elif include_empty:
-            instance.name = str()
+            instance.description = str()
+        if "features" in dict_ and dict_["features"] is not None:
+            instance.features = [str(i0) for i0 in dict_["features"]]
+        elif include_empty:
+            instance.features = []
+        if "itemIds" in dict_ and dict_["itemIds"] is not None:
+            instance.item_ids = [str(i0) for i0 in dict_["itemIds"]]
+        elif include_empty:
+            instance.item_ids = []
         if "listable" in dict_ and dict_["listable"] is not None:
             instance.listable = bool(dict_["listable"])
         elif include_empty:
             instance.listable = bool()
+        if "maxCount" in dict_ and dict_["maxCount"] is not None:
+            instance.max_count = int(dict_["maxCount"])
+        elif include_empty:
+            instance.max_count = int()
+        if "maxCountPerUser" in dict_ and dict_["maxCountPerUser"] is not None:
+            instance.max_count_per_user = int(dict_["maxCountPerUser"])
+        elif include_empty:
+            instance.max_count_per_user = int()
         if "purchasable" in dict_ and dict_["purchasable"] is not None:
             instance.purchasable = bool(dict_["purchasable"])
         elif include_empty:
             instance.purchasable = bool()
-        if "entitlementType" in dict_ and dict_["entitlementType"] is not None:
-            instance.entitlement_type = str(dict_["entitlementType"])
+        if "recurring" in dict_ and dict_["recurring"] is not None:
+            instance.recurring = Recurring.create_from_dict(dict_["recurring"], include_empty=include_empty)
         elif include_empty:
-            instance.entitlement_type = str()
-        if "useCount" in dict_ and dict_["useCount"] is not None:
-            instance.use_count = int(dict_["useCount"])
+            instance.recurring = Recurring()
+        if "regionDataItem" in dict_ and dict_["regionDataItem"] is not None:
+            instance.region_data_item = RegionDataItem.create_from_dict(dict_["regionDataItem"], include_empty=include_empty)
         elif include_empty:
-            instance.use_count = int()
+            instance.region_data_item = RegionDataItem()
+        if "seasonType" in dict_ and dict_["seasonType"] is not None:
+            instance.season_type = str(dict_["seasonType"])
+        elif include_empty:
+            instance.season_type = str()
+        if "sku" in dict_ and dict_["sku"] is not None:
+            instance.sku = str(dict_["sku"])
+        elif include_empty:
+            instance.sku = str()
         if "stackable" in dict_ and dict_["stackable"] is not None:
             instance.stackable = bool(dict_["stackable"])
         elif include_empty:
             instance.stackable = bool()
-        if "itemType" in dict_ and dict_["itemType"] is not None:
-            instance.item_type = str(dict_["itemType"])
-        elif include_empty:
-            instance.item_type = str()
-        if "thumbnailUrl" in dict_ and dict_["thumbnailUrl"] is not None:
-            instance.thumbnail_url = str(dict_["thumbnailUrl"])
-        elif include_empty:
-            instance.thumbnail_url = str()
-        if "targetNamespace" in dict_ and dict_["targetNamespace"] is not None:
-            instance.target_namespace = str(dict_["targetNamespace"])
-        elif include_empty:
-            instance.target_namespace = str()
         if "targetCurrencyCode" in dict_ and dict_["targetCurrencyCode"] is not None:
             instance.target_currency_code = str(dict_["targetCurrencyCode"])
         elif include_empty:
@@ -561,94 +597,58 @@ class ItemSnapshot(Model):
             instance.target_item_id = str(dict_["targetItemId"])
         elif include_empty:
             instance.target_item_id = str()
-        if "title" in dict_ and dict_["title"] is not None:
-            instance.title = str(dict_["title"])
+        if "targetNamespace" in dict_ and dict_["targetNamespace"] is not None:
+            instance.target_namespace = str(dict_["targetNamespace"])
         elif include_empty:
-            instance.title = str()
-        if "description" in dict_ and dict_["description"] is not None:
-            instance.description = str(dict_["description"])
+            instance.target_namespace = str()
+        if "thumbnailUrl" in dict_ and dict_["thumbnailUrl"] is not None:
+            instance.thumbnail_url = str(dict_["thumbnailUrl"])
         elif include_empty:
-            instance.description = str()
-        if "regionDataItem" in dict_ and dict_["regionDataItem"] is not None:
-            instance.region_data_item = RegionDataItem.create_from_dict(dict_["regionDataItem"], include_empty=include_empty)
-        elif include_empty:
-            instance.region_data_item = RegionDataItem()
-        if "recurring" in dict_ and dict_["recurring"] is not None:
-            instance.recurring = Recurring.create_from_dict(dict_["recurring"], include_empty=include_empty)
-        elif include_empty:
-            instance.recurring = Recurring()
-        if "itemIds" in dict_ and dict_["itemIds"] is not None:
-            instance.item_ids = [str(i0) for i0 in dict_["itemIds"]]
-        elif include_empty:
-            instance.item_ids = []
-        if "features" in dict_ and dict_["features"] is not None:
-            instance.features = [str(i0) for i0 in dict_["features"]]
-        elif include_empty:
-            instance.features = []
-        if "maxCountPerUser" in dict_ and dict_["maxCountPerUser"] is not None:
-            instance.max_count_per_user = int(dict_["maxCountPerUser"])
-        elif include_empty:
-            instance.max_count_per_user = int()
-        if "maxCount" in dict_ and dict_["maxCount"] is not None:
-            instance.max_count = int(dict_["maxCount"])
-        elif include_empty:
-            instance.max_count = int()
-        if "boothName" in dict_ and dict_["boothName"] is not None:
-            instance.booth_name = str(dict_["boothName"])
-        elif include_empty:
-            instance.booth_name = str()
-        if "region" in dict_ and dict_["region"] is not None:
-            instance.region = str(dict_["region"])
-        elif include_empty:
-            instance.region = str()
-        if "language" in dict_ and dict_["language"] is not None:
-            instance.language = str(dict_["language"])
-        elif include_empty:
-            instance.language = str()
-        if "createdAt" in dict_ and dict_["createdAt"] is not None:
-            instance.created_at = str(dict_["createdAt"])
-        elif include_empty:
-            instance.created_at = str()
+            instance.thumbnail_url = str()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = str()
+        if "useCount" in dict_ and dict_["useCount"] is not None:
+            instance.use_count = int(dict_["useCount"])
+        elif include_empty:
+            instance.use_count = int()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "entitlementType": "entitlement_type",
             "itemId": "item_id",
+            "itemType": "item_type",
+            "language": "language",
+            "name": "name",
+            "namespace": "namespace",
+            "region": "region",
+            "title": "title",
             "appId": "app_id",
             "appType": "app_type",
-            "seasonType": "season_type",
             "baseAppId": "base_app_id",
-            "sku": "sku",
-            "namespace": "namespace",
-            "name": "name",
+            "boothName": "booth_name",
+            "createdAt": "created_at",
+            "description": "description",
+            "features": "features",
+            "itemIds": "item_ids",
             "listable": "listable",
+            "maxCount": "max_count",
+            "maxCountPerUser": "max_count_per_user",
             "purchasable": "purchasable",
-            "entitlementType": "entitlement_type",
-            "useCount": "use_count",
+            "recurring": "recurring",
+            "regionDataItem": "region_data_item",
+            "seasonType": "season_type",
+            "sku": "sku",
             "stackable": "stackable",
-            "itemType": "item_type",
-            "thumbnailUrl": "thumbnail_url",
-            "targetNamespace": "target_namespace",
             "targetCurrencyCode": "target_currency_code",
             "targetItemId": "target_item_id",
-            "title": "title",
-            "description": "description",
-            "regionDataItem": "region_data_item",
-            "recurring": "recurring",
-            "itemIds": "item_ids",
-            "features": "features",
-            "maxCountPerUser": "max_count_per_user",
-            "maxCount": "max_count",
-            "boothName": "booth_name",
-            "region": "region",
-            "language": "language",
-            "createdAt": "created_at",
+            "targetNamespace": "target_namespace",
+            "thumbnailUrl": "thumbnail_url",
             "updatedAt": "updated_at",
+            "useCount": "use_count",
         }
 
     # endregion static methods

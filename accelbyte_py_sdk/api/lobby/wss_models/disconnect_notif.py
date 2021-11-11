@@ -28,8 +28,8 @@ class DisconnectNotif(WebSocketMessage):
 
     # region fields
 
-    namespace: str
     connection_id: str
+    namespace: str
 
     # endregion fields
 
@@ -39,10 +39,10 @@ class DisconnectNotif(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {DisconnectNotif.get_type()}"]
-        if hasattr(self, "namespace") and self.namespace:
-            wsm.append(f"namespace: {self.namespace}")
         if hasattr(self, "connection_id") and self.connection_id:
             wsm.append(f"connectionId: {self.connection_id}")
+        if hasattr(self, "namespace") and self.namespace:
+            wsm.append(f"namespace: {self.namespace}")
         return "\n".join(wsm)
 
     # endregion methods
@@ -62,11 +62,11 @@ class DisconnectNotif(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if (not is_strict and name.casefold() == "namespace".casefold()) or (name == "namespace"):
-                instance.namespace = value
-                continue
             if (not is_strict and name.casefold() == "connectionId".casefold()) or (name == "connectionId"):
                 instance.connection_id = value
+                continue
+            if (not is_strict and name.casefold() == "namespace".casefold()) or (name == "namespace"):
+                instance.namespace = value
                 continue
             if is_strict:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldTypeNotSupported)
@@ -79,8 +79,8 @@ class DisconnectNotif(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
             "connectionId": "connection_id",
+            "namespace": "namespace",
         }
 
     # endregion static methods

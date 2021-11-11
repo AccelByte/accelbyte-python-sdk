@@ -202,51 +202,51 @@ def get_code(code: str, redeemable: Optional[bool] = None, namespace: Optional[s
 
 
 @same_doc_as(QueryCampaigns)
-def query_campaigns(name: Optional[str] = None, tag: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_campaigns(limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, tag: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = QueryCampaigns.create(
-        name=name,
-        tag=tag,
-        offset=offset,
         limit=limit,
+        name=name,
+        offset=offset,
+        tag=tag,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QueryCodes)
-def query_codes(campaign_id: str, batch_no: Optional[int] = None, code: Optional[str] = None, active_only: Optional[bool] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_codes(campaign_id: str, active_only: Optional[bool] = None, batch_no: Optional[int] = None, code: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = QueryCodes.create(
         campaign_id=campaign_id,
+        active_only=active_only,
         batch_no=batch_no,
         code=code,
-        active_only=active_only,
-        offset=offset,
         limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QueryRedeemHistory)
-def query_redeem_history(campaign_id: str, user_id: Optional[str] = None, code: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_redeem_history(campaign_id: str, code: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = QueryRedeemHistory.create(
         campaign_id=campaign_id,
-        user_id=user_id,
         code=code,
-        offset=offset,
         limit=limit,
+        offset=offset,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

@@ -58,13 +58,13 @@ class ModelPublicUserResponse(Model):
 
         phone_verified: (PhoneVerified) REQUIRED bool
 
-        platform_id: (PlatformId) OPTIONAL str
-
-        platform_user_id: (PlatformUserId) OPTIONAL str
-
         roles: (Roles) REQUIRED List[str]
 
         user_id: (UserId) REQUIRED str
+
+        platform_id: (PlatformId) OPTIONAL str
+
+        platform_user_id: (PlatformUserId) OPTIONAL str
 
         username: (Username) OPTIONAL str
 
@@ -86,10 +86,10 @@ class ModelPublicUserResponse(Model):
     namespace_roles: List[AccountcommonNamespaceRole]                                              # REQUIRED
     permissions: List[AccountcommonPermission]                                                     # REQUIRED
     phone_verified: bool                                                                           # REQUIRED
-    platform_id: str                                                                               # OPTIONAL
-    platform_user_id: str                                                                          # OPTIONAL
     roles: List[str]                                                                               # REQUIRED
     user_id: str                                                                                   # REQUIRED
+    platform_id: str                                                                               # OPTIONAL
+    platform_user_id: str                                                                          # OPTIONAL
     username: str                                                                                  # OPTIONAL
     xuid: str                                                                                      # OPTIONAL
 
@@ -149,20 +149,20 @@ class ModelPublicUserResponse(Model):
         self.phone_verified = value
         return self
 
-    def with_platform_id(self, value: str) -> ModelPublicUserResponse:
-        self.platform_id = value
-        return self
-
-    def with_platform_user_id(self, value: str) -> ModelPublicUserResponse:
-        self.platform_user_id = value
-        return self
-
     def with_roles(self, value: List[str]) -> ModelPublicUserResponse:
         self.roles = value
         return self
 
     def with_user_id(self, value: str) -> ModelPublicUserResponse:
         self.user_id = value
+        return self
+
+    def with_platform_id(self, value: str) -> ModelPublicUserResponse:
+        self.platform_id = value
+        return self
+
+    def with_platform_user_id(self, value: str) -> ModelPublicUserResponse:
+        self.platform_user_id = value
         return self
 
     def with_username(self, value: str) -> ModelPublicUserResponse:
@@ -231,14 +231,6 @@ class ModelPublicUserResponse(Model):
             result["PhoneVerified"] = bool(self.phone_verified)
         elif include_empty:
             result["PhoneVerified"] = bool()
-        if hasattr(self, "platform_id"):
-            result["PlatformId"] = str(self.platform_id)
-        elif include_empty:
-            result["PlatformId"] = str()
-        if hasattr(self, "platform_user_id"):
-            result["PlatformUserId"] = str(self.platform_user_id)
-        elif include_empty:
-            result["PlatformUserId"] = str()
         if hasattr(self, "roles"):
             result["Roles"] = [str(i0) for i0 in self.roles]
         elif include_empty:
@@ -247,6 +239,14 @@ class ModelPublicUserResponse(Model):
             result["UserId"] = str(self.user_id)
         elif include_empty:
             result["UserId"] = str()
+        if hasattr(self, "platform_id"):
+            result["PlatformId"] = str(self.platform_id)
+        elif include_empty:
+            result["PlatformId"] = str()
+        if hasattr(self, "platform_user_id"):
+            result["PlatformUserId"] = str(self.platform_user_id)
+        elif include_empty:
+            result["PlatformUserId"] = str()
         if hasattr(self, "username"):
             result["Username"] = str(self.username)
         elif include_empty:
@@ -367,14 +367,6 @@ class ModelPublicUserResponse(Model):
             instance.phone_verified = bool(dict_["PhoneVerified"])
         elif include_empty:
             instance.phone_verified = bool()
-        if "PlatformId" in dict_ and dict_["PlatformId"] is not None:
-            instance.platform_id = str(dict_["PlatformId"])
-        elif include_empty:
-            instance.platform_id = str()
-        if "PlatformUserId" in dict_ and dict_["PlatformUserId"] is not None:
-            instance.platform_user_id = str(dict_["PlatformUserId"])
-        elif include_empty:
-            instance.platform_user_id = str()
         if "Roles" in dict_ and dict_["Roles"] is not None:
             instance.roles = [str(i0) for i0 in dict_["Roles"]]
         elif include_empty:
@@ -383,6 +375,14 @@ class ModelPublicUserResponse(Model):
             instance.user_id = str(dict_["UserId"])
         elif include_empty:
             instance.user_id = str()
+        if "PlatformId" in dict_ and dict_["PlatformId"] is not None:
+            instance.platform_id = str(dict_["PlatformId"])
+        elif include_empty:
+            instance.platform_id = str()
+        if "PlatformUserId" in dict_ and dict_["PlatformUserId"] is not None:
+            instance.platform_user_id = str(dict_["PlatformUserId"])
+        elif include_empty:
+            instance.platform_user_id = str()
         if "Username" in dict_ and dict_["Username"] is not None:
             instance.username = str(dict_["Username"])
         elif include_empty:
@@ -409,10 +409,10 @@ class ModelPublicUserResponse(Model):
             "NamespaceRoles": "namespace_roles",
             "Permissions": "permissions",
             "PhoneVerified": "phone_verified",
-            "PlatformId": "platform_id",
-            "PlatformUserId": "platform_user_id",
             "Roles": "roles",
             "UserId": "user_id",
+            "PlatformId": "platform_id",
+            "PlatformUserId": "platform_user_id",
             "Username": "username",
             "XUID": "xuid",
         }

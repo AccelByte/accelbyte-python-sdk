@@ -28,40 +28,40 @@ class SteamSyncRequest(Model):
     """Steam sync request (SteamSyncRequest)
 
     Properties:
-        steam_id: (steamId) REQUIRED str
-
         app_id: (appId) REQUIRED str
 
-        region: (region) OPTIONAL str
+        steam_id: (steamId) REQUIRED str
 
         language: (language) OPTIONAL str
+
+        region: (region) OPTIONAL str
     """
 
     # region fields
 
-    steam_id: str                                                                                  # REQUIRED
     app_id: str                                                                                    # REQUIRED
-    region: str                                                                                    # OPTIONAL
+    steam_id: str                                                                                  # REQUIRED
     language: str                                                                                  # OPTIONAL
+    region: str                                                                                    # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_steam_id(self, value: str) -> SteamSyncRequest:
-        self.steam_id = value
-        return self
-
     def with_app_id(self, value: str) -> SteamSyncRequest:
         self.app_id = value
         return self
 
-    def with_region(self, value: str) -> SteamSyncRequest:
-        self.region = value
+    def with_steam_id(self, value: str) -> SteamSyncRequest:
+        self.steam_id = value
         return self
 
     def with_language(self, value: str) -> SteamSyncRequest:
         self.language = value
+        return self
+
+    def with_region(self, value: str) -> SteamSyncRequest:
+        self.region = value
         return self
 
     # endregion with_x methods
@@ -70,22 +70,22 @@ class SteamSyncRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "steam_id"):
-            result["steamId"] = str(self.steam_id)
-        elif include_empty:
-            result["steamId"] = str()
         if hasattr(self, "app_id"):
             result["appId"] = str(self.app_id)
         elif include_empty:
             result["appId"] = str()
-        if hasattr(self, "region"):
-            result["region"] = str(self.region)
+        if hasattr(self, "steam_id"):
+            result["steamId"] = str(self.steam_id)
         elif include_empty:
-            result["region"] = str()
+            result["steamId"] = str()
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = str()
+        if hasattr(self, "region"):
+            result["region"] = str(self.region)
+        elif include_empty:
+            result["region"] = str()
         return result
 
     # endregion to methods
@@ -114,31 +114,31 @@ class SteamSyncRequest(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "steamId" in dict_ and dict_["steamId"] is not None:
-            instance.steam_id = str(dict_["steamId"])
-        elif include_empty:
-            instance.steam_id = str()
         if "appId" in dict_ and dict_["appId"] is not None:
             instance.app_id = str(dict_["appId"])
         elif include_empty:
             instance.app_id = str()
-        if "region" in dict_ and dict_["region"] is not None:
-            instance.region = str(dict_["region"])
+        if "steamId" in dict_ and dict_["steamId"] is not None:
+            instance.steam_id = str(dict_["steamId"])
         elif include_empty:
-            instance.region = str()
+            instance.steam_id = str()
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
             instance.language = str()
+        if "region" in dict_ and dict_["region"] is not None:
+            instance.region = str(dict_["region"])
+        elif include_empty:
+            instance.region = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "steamId": "steam_id",
             "appId": "app_id",
-            "region": "region",
+            "steamId": "steam_id",
             "language": "language",
+            "region": "region",
         }
 
     # endregion static methods

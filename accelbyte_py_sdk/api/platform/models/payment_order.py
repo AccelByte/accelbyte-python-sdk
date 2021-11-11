@@ -31,222 +31,318 @@ class PaymentOrder(Model):
     """Payment order (PaymentOrder)
 
     Properties:
-        rvn: (rvn) OPTIONAL int
+        authorised_time: (authorisedTime) OPTIONAL str
+
+        channel: (channel) OPTIONAL str
+
+        chargeback_reversed_time: (chargebackReversedTime) OPTIONAL str
+
+        chargeback_time: (chargebackTime) OPTIONAL str
+
+        charged_time: (chargedTime) OPTIONAL str
+
+        charging: (charging) OPTIONAL bool
 
         created_at: (createdAt) OPTIONAL str
 
-        updated_at: (updatedAt) OPTIONAL str
+        created_time: (createdTime) OPTIONAL str
 
-        payment_order_no: (paymentOrderNo) OPTIONAL str
+        currency: (currency) OPTIONAL CurrencySummary
 
-        namespace: (namespace) OPTIONAL str
-
-        user_id: (userId) OPTIONAL str
-
-        status: (status) OPTIONAL str
-
-        sandbox: (sandbox) OPTIONAL bool
-
-        ext_order_no: (extOrderNo) OPTIONAL str
-
-        title: (title) OPTIONAL str
+        custom_parameters: (customParameters) OPTIONAL Dict[str, Any]
 
         description: (description) OPTIONAL str
 
+        ext_order_no: (extOrderNo) OPTIONAL str
+
+        ext_user_id: (extUserId) OPTIONAL str
+
         item_type: (itemType) OPTIONAL str
+
+        language: (language) OPTIONAL str
+
+        metadata: (metadata) OPTIONAL Dict[str, str]
+
+        namespace: (namespace) OPTIONAL str
+
+        notify_url: (notifyUrl) OPTIONAL str
+
+        omit_notification: (omitNotification) OPTIONAL bool
+
+        payment_method: (paymentMethod) OPTIONAL str
+
+        payment_method_fee: (paymentMethodFee) OPTIONAL int
+
+        payment_order_no: (paymentOrderNo) OPTIONAL str
+
+        payment_provider: (paymentProvider) OPTIONAL str
+
+        payment_provider_fee: (paymentProviderFee) OPTIONAL int
+
+        payment_station_url: (paymentStationUrl) OPTIONAL str
 
         price: (price) OPTIONAL int
 
+        recurring_payment_order_no: (recurringPaymentOrderNo) OPTIONAL str
+
+        refunded_time: (refundedTime) OPTIONAL str
+
+        region: (region) OPTIONAL str
+
+        return_url: (returnUrl) OPTIONAL str
+
+        rvn: (rvn) OPTIONAL int
+
+        sales_tax: (salesTax) OPTIONAL int
+
+        sandbox: (sandbox) OPTIONAL bool
+
         sku: (sku) OPTIONAL str
 
-        ext_user_id: (extUserId) OPTIONAL str
+        state: (state) OPTIONAL str
+
+        status: (status) OPTIONAL str
+
+        status_reason: (statusReason) OPTIONAL str
+
+        subscription_id: (subscriptionId) OPTIONAL str
+
+        subtotal_price: (subtotalPrice) OPTIONAL int
 
         target_namespace: (targetNamespace) OPTIONAL str
 
         target_user_id: (targetUserId) OPTIONAL str
 
-        payment_provider: (paymentProvider) OPTIONAL str
-
-        payment_method: (paymentMethod) OPTIONAL str
-
-        region: (region) OPTIONAL str
-
-        language: (language) OPTIONAL str
-
-        zip_code: (zipCode) OPTIONAL str
-
-        state: (state) OPTIONAL str
-
         tax: (tax) OPTIONAL int
 
-        vat: (vat) OPTIONAL int
-
-        sales_tax: (salesTax) OPTIONAL int
-
-        payment_provider_fee: (paymentProviderFee) OPTIONAL int
-
-        payment_method_fee: (paymentMethodFee) OPTIONAL int
-
-        currency: (currency) OPTIONAL CurrencySummary
-
-        payment_station_url: (paymentStationUrl) OPTIONAL str
-
-        transactions: (transactions) OPTIONAL List[Transaction]
-
-        status_reason: (statusReason) OPTIONAL str
-
-        created_time: (createdTime) OPTIONAL str
-
-        charged_time: (chargedTime) OPTIONAL str
-
-        authorised_time: (authorisedTime) OPTIONAL str
-
-        refunded_time: (refundedTime) OPTIONAL str
-
-        chargeback_time: (chargebackTime) OPTIONAL str
-
-        chargeback_reversed_time: (chargebackReversedTime) OPTIONAL str
-
-        return_url: (returnUrl) OPTIONAL str
-
-        channel: (channel) OPTIONAL str
-
-        notify_url: (notifyUrl) OPTIONAL str
-
-        custom_parameters: (customParameters) OPTIONAL Dict[str, Any]
-
-        charging: (charging) OPTIONAL bool
-
-        subscription_id: (subscriptionId) OPTIONAL str
-
-        recurring_payment_order_no: (recurringPaymentOrderNo) OPTIONAL str
-
-        omit_notification: (omitNotification) OPTIONAL bool
-
-        metadata: (metadata) OPTIONAL Dict[str, str]
-
-        total_tax: (totalTax) OPTIONAL int
+        title: (title) OPTIONAL str
 
         total_price: (totalPrice) OPTIONAL int
 
-        subtotal_price: (subtotalPrice) OPTIONAL int
+        total_tax: (totalTax) OPTIONAL int
+
+        transactions: (transactions) OPTIONAL List[Transaction]
+
+        updated_at: (updatedAt) OPTIONAL str
+
+        user_id: (userId) OPTIONAL str
+
+        vat: (vat) OPTIONAL int
+
+        zip_code: (zipCode) OPTIONAL str
     """
 
     # region fields
 
-    rvn: int                                                                                       # OPTIONAL
+    authorised_time: str                                                                           # OPTIONAL
+    channel: str                                                                                   # OPTIONAL
+    chargeback_reversed_time: str                                                                  # OPTIONAL
+    chargeback_time: str                                                                           # OPTIONAL
+    charged_time: str                                                                              # OPTIONAL
+    charging: bool                                                                                 # OPTIONAL
     created_at: str                                                                                # OPTIONAL
-    updated_at: str                                                                                # OPTIONAL
-    payment_order_no: str                                                                          # OPTIONAL
-    namespace: str                                                                                 # OPTIONAL
-    user_id: str                                                                                   # OPTIONAL
-    status: str                                                                                    # OPTIONAL
-    sandbox: bool                                                                                  # OPTIONAL
-    ext_order_no: str                                                                              # OPTIONAL
-    title: str                                                                                     # OPTIONAL
+    created_time: str                                                                              # OPTIONAL
+    currency: CurrencySummary                                                                      # OPTIONAL
+    custom_parameters: Dict[str, Any]                                                              # OPTIONAL
     description: str                                                                               # OPTIONAL
-    item_type: str                                                                                 # OPTIONAL
-    price: int                                                                                     # OPTIONAL
-    sku: str                                                                                       # OPTIONAL
+    ext_order_no: str                                                                              # OPTIONAL
     ext_user_id: str                                                                               # OPTIONAL
+    item_type: str                                                                                 # OPTIONAL
+    language: str                                                                                  # OPTIONAL
+    metadata: Dict[str, str]                                                                       # OPTIONAL
+    namespace: str                                                                                 # OPTIONAL
+    notify_url: str                                                                                # OPTIONAL
+    omit_notification: bool                                                                        # OPTIONAL
+    payment_method: str                                                                            # OPTIONAL
+    payment_method_fee: int                                                                        # OPTIONAL
+    payment_order_no: str                                                                          # OPTIONAL
+    payment_provider: str                                                                          # OPTIONAL
+    payment_provider_fee: int                                                                      # OPTIONAL
+    payment_station_url: str                                                                       # OPTIONAL
+    price: int                                                                                     # OPTIONAL
+    recurring_payment_order_no: str                                                                # OPTIONAL
+    refunded_time: str                                                                             # OPTIONAL
+    region: str                                                                                    # OPTIONAL
+    return_url: str                                                                                # OPTIONAL
+    rvn: int                                                                                       # OPTIONAL
+    sales_tax: int                                                                                 # OPTIONAL
+    sandbox: bool                                                                                  # OPTIONAL
+    sku: str                                                                                       # OPTIONAL
+    state: str                                                                                     # OPTIONAL
+    status: str                                                                                    # OPTIONAL
+    status_reason: str                                                                             # OPTIONAL
+    subscription_id: str                                                                           # OPTIONAL
+    subtotal_price: int                                                                            # OPTIONAL
     target_namespace: str                                                                          # OPTIONAL
     target_user_id: str                                                                            # OPTIONAL
-    payment_provider: str                                                                          # OPTIONAL
-    payment_method: str                                                                            # OPTIONAL
-    region: str                                                                                    # OPTIONAL
-    language: str                                                                                  # OPTIONAL
-    zip_code: str                                                                                  # OPTIONAL
-    state: str                                                                                     # OPTIONAL
     tax: int                                                                                       # OPTIONAL
-    vat: int                                                                                       # OPTIONAL
-    sales_tax: int                                                                                 # OPTIONAL
-    payment_provider_fee: int                                                                      # OPTIONAL
-    payment_method_fee: int                                                                        # OPTIONAL
-    currency: CurrencySummary                                                                      # OPTIONAL
-    payment_station_url: str                                                                       # OPTIONAL
-    transactions: List[Transaction]                                                                # OPTIONAL
-    status_reason: str                                                                             # OPTIONAL
-    created_time: str                                                                              # OPTIONAL
-    charged_time: str                                                                              # OPTIONAL
-    authorised_time: str                                                                           # OPTIONAL
-    refunded_time: str                                                                             # OPTIONAL
-    chargeback_time: str                                                                           # OPTIONAL
-    chargeback_reversed_time: str                                                                  # OPTIONAL
-    return_url: str                                                                                # OPTIONAL
-    channel: str                                                                                   # OPTIONAL
-    notify_url: str                                                                                # OPTIONAL
-    custom_parameters: Dict[str, Any]                                                              # OPTIONAL
-    charging: bool                                                                                 # OPTIONAL
-    subscription_id: str                                                                           # OPTIONAL
-    recurring_payment_order_no: str                                                                # OPTIONAL
-    omit_notification: bool                                                                        # OPTIONAL
-    metadata: Dict[str, str]                                                                       # OPTIONAL
-    total_tax: int                                                                                 # OPTIONAL
+    title: str                                                                                     # OPTIONAL
     total_price: int                                                                               # OPTIONAL
-    subtotal_price: int                                                                            # OPTIONAL
+    total_tax: int                                                                                 # OPTIONAL
+    transactions: List[Transaction]                                                                # OPTIONAL
+    updated_at: str                                                                                # OPTIONAL
+    user_id: str                                                                                   # OPTIONAL
+    vat: int                                                                                       # OPTIONAL
+    zip_code: str                                                                                  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_rvn(self, value: int) -> PaymentOrder:
-        self.rvn = value
+    def with_authorised_time(self, value: str) -> PaymentOrder:
+        self.authorised_time = value
+        return self
+
+    def with_channel(self, value: str) -> PaymentOrder:
+        self.channel = value
+        return self
+
+    def with_chargeback_reversed_time(self, value: str) -> PaymentOrder:
+        self.chargeback_reversed_time = value
+        return self
+
+    def with_chargeback_time(self, value: str) -> PaymentOrder:
+        self.chargeback_time = value
+        return self
+
+    def with_charged_time(self, value: str) -> PaymentOrder:
+        self.charged_time = value
+        return self
+
+    def with_charging(self, value: bool) -> PaymentOrder:
+        self.charging = value
         return self
 
     def with_created_at(self, value: str) -> PaymentOrder:
         self.created_at = value
         return self
 
-    def with_updated_at(self, value: str) -> PaymentOrder:
-        self.updated_at = value
+    def with_created_time(self, value: str) -> PaymentOrder:
+        self.created_time = value
         return self
 
-    def with_payment_order_no(self, value: str) -> PaymentOrder:
-        self.payment_order_no = value
+    def with_currency(self, value: CurrencySummary) -> PaymentOrder:
+        self.currency = value
         return self
 
-    def with_namespace(self, value: str) -> PaymentOrder:
-        self.namespace = value
-        return self
-
-    def with_user_id(self, value: str) -> PaymentOrder:
-        self.user_id = value
-        return self
-
-    def with_status(self, value: str) -> PaymentOrder:
-        self.status = value
-        return self
-
-    def with_sandbox(self, value: bool) -> PaymentOrder:
-        self.sandbox = value
-        return self
-
-    def with_ext_order_no(self, value: str) -> PaymentOrder:
-        self.ext_order_no = value
-        return self
-
-    def with_title(self, value: str) -> PaymentOrder:
-        self.title = value
+    def with_custom_parameters(self, value: Dict[str, Any]) -> PaymentOrder:
+        self.custom_parameters = value
         return self
 
     def with_description(self, value: str) -> PaymentOrder:
         self.description = value
         return self
 
+    def with_ext_order_no(self, value: str) -> PaymentOrder:
+        self.ext_order_no = value
+        return self
+
+    def with_ext_user_id(self, value: str) -> PaymentOrder:
+        self.ext_user_id = value
+        return self
+
     def with_item_type(self, value: str) -> PaymentOrder:
         self.item_type = value
+        return self
+
+    def with_language(self, value: str) -> PaymentOrder:
+        self.language = value
+        return self
+
+    def with_metadata(self, value: Dict[str, str]) -> PaymentOrder:
+        self.metadata = value
+        return self
+
+    def with_namespace(self, value: str) -> PaymentOrder:
+        self.namespace = value
+        return self
+
+    def with_notify_url(self, value: str) -> PaymentOrder:
+        self.notify_url = value
+        return self
+
+    def with_omit_notification(self, value: bool) -> PaymentOrder:
+        self.omit_notification = value
+        return self
+
+    def with_payment_method(self, value: str) -> PaymentOrder:
+        self.payment_method = value
+        return self
+
+    def with_payment_method_fee(self, value: int) -> PaymentOrder:
+        self.payment_method_fee = value
+        return self
+
+    def with_payment_order_no(self, value: str) -> PaymentOrder:
+        self.payment_order_no = value
+        return self
+
+    def with_payment_provider(self, value: str) -> PaymentOrder:
+        self.payment_provider = value
+        return self
+
+    def with_payment_provider_fee(self, value: int) -> PaymentOrder:
+        self.payment_provider_fee = value
+        return self
+
+    def with_payment_station_url(self, value: str) -> PaymentOrder:
+        self.payment_station_url = value
         return self
 
     def with_price(self, value: int) -> PaymentOrder:
         self.price = value
         return self
 
+    def with_recurring_payment_order_no(self, value: str) -> PaymentOrder:
+        self.recurring_payment_order_no = value
+        return self
+
+    def with_refunded_time(self, value: str) -> PaymentOrder:
+        self.refunded_time = value
+        return self
+
+    def with_region(self, value: str) -> PaymentOrder:
+        self.region = value
+        return self
+
+    def with_return_url(self, value: str) -> PaymentOrder:
+        self.return_url = value
+        return self
+
+    def with_rvn(self, value: int) -> PaymentOrder:
+        self.rvn = value
+        return self
+
+    def with_sales_tax(self, value: int) -> PaymentOrder:
+        self.sales_tax = value
+        return self
+
+    def with_sandbox(self, value: bool) -> PaymentOrder:
+        self.sandbox = value
+        return self
+
     def with_sku(self, value: str) -> PaymentOrder:
         self.sku = value
         return self
 
-    def with_ext_user_id(self, value: str) -> PaymentOrder:
-        self.ext_user_id = value
+    def with_state(self, value: str) -> PaymentOrder:
+        self.state = value
+        return self
+
+    def with_status(self, value: str) -> PaymentOrder:
+        self.status = value
+        return self
+
+    def with_status_reason(self, value: str) -> PaymentOrder:
+        self.status_reason = value
+        return self
+
+    def with_subscription_id(self, value: str) -> PaymentOrder:
+        self.subscription_id = value
+        return self
+
+    def with_subtotal_price(self, value: int) -> PaymentOrder:
+        self.subtotal_price = value
         return self
 
     def with_target_namespace(self, value: str) -> PaymentOrder:
@@ -257,136 +353,40 @@ class PaymentOrder(Model):
         self.target_user_id = value
         return self
 
-    def with_payment_provider(self, value: str) -> PaymentOrder:
-        self.payment_provider = value
-        return self
-
-    def with_payment_method(self, value: str) -> PaymentOrder:
-        self.payment_method = value
-        return self
-
-    def with_region(self, value: str) -> PaymentOrder:
-        self.region = value
-        return self
-
-    def with_language(self, value: str) -> PaymentOrder:
-        self.language = value
-        return self
-
-    def with_zip_code(self, value: str) -> PaymentOrder:
-        self.zip_code = value
-        return self
-
-    def with_state(self, value: str) -> PaymentOrder:
-        self.state = value
-        return self
-
     def with_tax(self, value: int) -> PaymentOrder:
         self.tax = value
         return self
 
-    def with_vat(self, value: int) -> PaymentOrder:
-        self.vat = value
-        return self
-
-    def with_sales_tax(self, value: int) -> PaymentOrder:
-        self.sales_tax = value
-        return self
-
-    def with_payment_provider_fee(self, value: int) -> PaymentOrder:
-        self.payment_provider_fee = value
-        return self
-
-    def with_payment_method_fee(self, value: int) -> PaymentOrder:
-        self.payment_method_fee = value
-        return self
-
-    def with_currency(self, value: CurrencySummary) -> PaymentOrder:
-        self.currency = value
-        return self
-
-    def with_payment_station_url(self, value: str) -> PaymentOrder:
-        self.payment_station_url = value
-        return self
-
-    def with_transactions(self, value: List[Transaction]) -> PaymentOrder:
-        self.transactions = value
-        return self
-
-    def with_status_reason(self, value: str) -> PaymentOrder:
-        self.status_reason = value
-        return self
-
-    def with_created_time(self, value: str) -> PaymentOrder:
-        self.created_time = value
-        return self
-
-    def with_charged_time(self, value: str) -> PaymentOrder:
-        self.charged_time = value
-        return self
-
-    def with_authorised_time(self, value: str) -> PaymentOrder:
-        self.authorised_time = value
-        return self
-
-    def with_refunded_time(self, value: str) -> PaymentOrder:
-        self.refunded_time = value
-        return self
-
-    def with_chargeback_time(self, value: str) -> PaymentOrder:
-        self.chargeback_time = value
-        return self
-
-    def with_chargeback_reversed_time(self, value: str) -> PaymentOrder:
-        self.chargeback_reversed_time = value
-        return self
-
-    def with_return_url(self, value: str) -> PaymentOrder:
-        self.return_url = value
-        return self
-
-    def with_channel(self, value: str) -> PaymentOrder:
-        self.channel = value
-        return self
-
-    def with_notify_url(self, value: str) -> PaymentOrder:
-        self.notify_url = value
-        return self
-
-    def with_custom_parameters(self, value: Dict[str, Any]) -> PaymentOrder:
-        self.custom_parameters = value
-        return self
-
-    def with_charging(self, value: bool) -> PaymentOrder:
-        self.charging = value
-        return self
-
-    def with_subscription_id(self, value: str) -> PaymentOrder:
-        self.subscription_id = value
-        return self
-
-    def with_recurring_payment_order_no(self, value: str) -> PaymentOrder:
-        self.recurring_payment_order_no = value
-        return self
-
-    def with_omit_notification(self, value: bool) -> PaymentOrder:
-        self.omit_notification = value
-        return self
-
-    def with_metadata(self, value: Dict[str, str]) -> PaymentOrder:
-        self.metadata = value
-        return self
-
-    def with_total_tax(self, value: int) -> PaymentOrder:
-        self.total_tax = value
+    def with_title(self, value: str) -> PaymentOrder:
+        self.title = value
         return self
 
     def with_total_price(self, value: int) -> PaymentOrder:
         self.total_price = value
         return self
 
-    def with_subtotal_price(self, value: int) -> PaymentOrder:
-        self.subtotal_price = value
+    def with_total_tax(self, value: int) -> PaymentOrder:
+        self.total_tax = value
+        return self
+
+    def with_transactions(self, value: List[Transaction]) -> PaymentOrder:
+        self.transactions = value
+        return self
+
+    def with_updated_at(self, value: str) -> PaymentOrder:
+        self.updated_at = value
+        return self
+
+    def with_user_id(self, value: str) -> PaymentOrder:
+        self.user_id = value
+        return self
+
+    def with_vat(self, value: int) -> PaymentOrder:
+        self.vat = value
+        return self
+
+    def with_zip_code(self, value: str) -> PaymentOrder:
+        self.zip_code = value
         return self
 
     # endregion with_x methods
@@ -395,66 +395,162 @@ class PaymentOrder(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "rvn"):
-            result["rvn"] = int(self.rvn)
+        if hasattr(self, "authorised_time"):
+            result["authorisedTime"] = str(self.authorised_time)
         elif include_empty:
-            result["rvn"] = int()
+            result["authorisedTime"] = str()
+        if hasattr(self, "channel"):
+            result["channel"] = str(self.channel)
+        elif include_empty:
+            result["channel"] = str()
+        if hasattr(self, "chargeback_reversed_time"):
+            result["chargebackReversedTime"] = str(self.chargeback_reversed_time)
+        elif include_empty:
+            result["chargebackReversedTime"] = str()
+        if hasattr(self, "chargeback_time"):
+            result["chargebackTime"] = str(self.chargeback_time)
+        elif include_empty:
+            result["chargebackTime"] = str()
+        if hasattr(self, "charged_time"):
+            result["chargedTime"] = str(self.charged_time)
+        elif include_empty:
+            result["chargedTime"] = str()
+        if hasattr(self, "charging"):
+            result["charging"] = bool(self.charging)
+        elif include_empty:
+            result["charging"] = bool()
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
-        if hasattr(self, "updated_at"):
-            result["updatedAt"] = str(self.updated_at)
+        if hasattr(self, "created_time"):
+            result["createdTime"] = str(self.created_time)
         elif include_empty:
-            result["updatedAt"] = str()
-        if hasattr(self, "payment_order_no"):
-            result["paymentOrderNo"] = str(self.payment_order_no)
+            result["createdTime"] = str()
+        if hasattr(self, "currency"):
+            result["currency"] = self.currency.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["paymentOrderNo"] = str()
-        if hasattr(self, "namespace"):
-            result["namespace"] = str(self.namespace)
+            result["currency"] = CurrencySummary()
+        if hasattr(self, "custom_parameters"):
+            result["customParameters"] = {str(k0): v0 for k0, v0 in self.custom_parameters.items()}
         elif include_empty:
-            result["namespace"] = str()
-        if hasattr(self, "user_id"):
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
-        if hasattr(self, "status"):
-            result["status"] = str(self.status)
-        elif include_empty:
-            result["status"] = str()
-        if hasattr(self, "sandbox"):
-            result["sandbox"] = bool(self.sandbox)
-        elif include_empty:
-            result["sandbox"] = bool()
-        if hasattr(self, "ext_order_no"):
-            result["extOrderNo"] = str(self.ext_order_no)
-        elif include_empty:
-            result["extOrderNo"] = str()
-        if hasattr(self, "title"):
-            result["title"] = str(self.title)
-        elif include_empty:
-            result["title"] = str()
+            result["customParameters"] = {}
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = str()
-        if hasattr(self, "item_type"):
-            result["itemType"] = str(self.item_type)
+        if hasattr(self, "ext_order_no"):
+            result["extOrderNo"] = str(self.ext_order_no)
         elif include_empty:
-            result["itemType"] = str()
-        if hasattr(self, "price"):
-            result["price"] = int(self.price)
-        elif include_empty:
-            result["price"] = int()
-        if hasattr(self, "sku"):
-            result["sku"] = str(self.sku)
-        elif include_empty:
-            result["sku"] = str()
+            result["extOrderNo"] = str()
         if hasattr(self, "ext_user_id"):
             result["extUserId"] = str(self.ext_user_id)
         elif include_empty:
             result["extUserId"] = str()
+        if hasattr(self, "item_type"):
+            result["itemType"] = str(self.item_type)
+        elif include_empty:
+            result["itemType"] = str()
+        if hasattr(self, "language"):
+            result["language"] = str(self.language)
+        elif include_empty:
+            result["language"] = str()
+        if hasattr(self, "metadata"):
+            result["metadata"] = {str(k0): str(v0) for k0, v0 in self.metadata.items()}
+        elif include_empty:
+            result["metadata"] = {}
+        if hasattr(self, "namespace"):
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
+        if hasattr(self, "notify_url"):
+            result["notifyUrl"] = str(self.notify_url)
+        elif include_empty:
+            result["notifyUrl"] = str()
+        if hasattr(self, "omit_notification"):
+            result["omitNotification"] = bool(self.omit_notification)
+        elif include_empty:
+            result["omitNotification"] = bool()
+        if hasattr(self, "payment_method"):
+            result["paymentMethod"] = str(self.payment_method)
+        elif include_empty:
+            result["paymentMethod"] = str()
+        if hasattr(self, "payment_method_fee"):
+            result["paymentMethodFee"] = int(self.payment_method_fee)
+        elif include_empty:
+            result["paymentMethodFee"] = int()
+        if hasattr(self, "payment_order_no"):
+            result["paymentOrderNo"] = str(self.payment_order_no)
+        elif include_empty:
+            result["paymentOrderNo"] = str()
+        if hasattr(self, "payment_provider"):
+            result["paymentProvider"] = str(self.payment_provider)
+        elif include_empty:
+            result["paymentProvider"] = str()
+        if hasattr(self, "payment_provider_fee"):
+            result["paymentProviderFee"] = int(self.payment_provider_fee)
+        elif include_empty:
+            result["paymentProviderFee"] = int()
+        if hasattr(self, "payment_station_url"):
+            result["paymentStationUrl"] = str(self.payment_station_url)
+        elif include_empty:
+            result["paymentStationUrl"] = str()
+        if hasattr(self, "price"):
+            result["price"] = int(self.price)
+        elif include_empty:
+            result["price"] = int()
+        if hasattr(self, "recurring_payment_order_no"):
+            result["recurringPaymentOrderNo"] = str(self.recurring_payment_order_no)
+        elif include_empty:
+            result["recurringPaymentOrderNo"] = str()
+        if hasattr(self, "refunded_time"):
+            result["refundedTime"] = str(self.refunded_time)
+        elif include_empty:
+            result["refundedTime"] = str()
+        if hasattr(self, "region"):
+            result["region"] = str(self.region)
+        elif include_empty:
+            result["region"] = str()
+        if hasattr(self, "return_url"):
+            result["returnUrl"] = str(self.return_url)
+        elif include_empty:
+            result["returnUrl"] = str()
+        if hasattr(self, "rvn"):
+            result["rvn"] = int(self.rvn)
+        elif include_empty:
+            result["rvn"] = int()
+        if hasattr(self, "sales_tax"):
+            result["salesTax"] = int(self.sales_tax)
+        elif include_empty:
+            result["salesTax"] = int()
+        if hasattr(self, "sandbox"):
+            result["sandbox"] = bool(self.sandbox)
+        elif include_empty:
+            result["sandbox"] = bool()
+        if hasattr(self, "sku"):
+            result["sku"] = str(self.sku)
+        elif include_empty:
+            result["sku"] = str()
+        if hasattr(self, "state"):
+            result["state"] = str(self.state)
+        elif include_empty:
+            result["state"] = str()
+        if hasattr(self, "status"):
+            result["status"] = str(self.status)
+        elif include_empty:
+            result["status"] = str()
+        if hasattr(self, "status_reason"):
+            result["statusReason"] = str(self.status_reason)
+        elif include_empty:
+            result["statusReason"] = str()
+        if hasattr(self, "subscription_id"):
+            result["subscriptionId"] = str(self.subscription_id)
+        elif include_empty:
+            result["subscriptionId"] = str()
+        if hasattr(self, "subtotal_price"):
+            result["subtotalPrice"] = int(self.subtotal_price)
+        elif include_empty:
+            result["subtotalPrice"] = int()
         if hasattr(self, "target_namespace"):
             result["targetNamespace"] = str(self.target_namespace)
         elif include_empty:
@@ -463,138 +559,42 @@ class PaymentOrder(Model):
             result["targetUserId"] = str(self.target_user_id)
         elif include_empty:
             result["targetUserId"] = str()
-        if hasattr(self, "payment_provider"):
-            result["paymentProvider"] = str(self.payment_provider)
-        elif include_empty:
-            result["paymentProvider"] = str()
-        if hasattr(self, "payment_method"):
-            result["paymentMethod"] = str(self.payment_method)
-        elif include_empty:
-            result["paymentMethod"] = str()
-        if hasattr(self, "region"):
-            result["region"] = str(self.region)
-        elif include_empty:
-            result["region"] = str()
-        if hasattr(self, "language"):
-            result["language"] = str(self.language)
-        elif include_empty:
-            result["language"] = str()
-        if hasattr(self, "zip_code"):
-            result["zipCode"] = str(self.zip_code)
-        elif include_empty:
-            result["zipCode"] = str()
-        if hasattr(self, "state"):
-            result["state"] = str(self.state)
-        elif include_empty:
-            result["state"] = str()
         if hasattr(self, "tax"):
             result["tax"] = int(self.tax)
         elif include_empty:
             result["tax"] = int()
-        if hasattr(self, "vat"):
-            result["vat"] = int(self.vat)
+        if hasattr(self, "title"):
+            result["title"] = str(self.title)
         elif include_empty:
-            result["vat"] = int()
-        if hasattr(self, "sales_tax"):
-            result["salesTax"] = int(self.sales_tax)
-        elif include_empty:
-            result["salesTax"] = int()
-        if hasattr(self, "payment_provider_fee"):
-            result["paymentProviderFee"] = int(self.payment_provider_fee)
-        elif include_empty:
-            result["paymentProviderFee"] = int()
-        if hasattr(self, "payment_method_fee"):
-            result["paymentMethodFee"] = int(self.payment_method_fee)
-        elif include_empty:
-            result["paymentMethodFee"] = int()
-        if hasattr(self, "currency"):
-            result["currency"] = self.currency.to_dict(include_empty=include_empty)
-        elif include_empty:
-            result["currency"] = CurrencySummary()
-        if hasattr(self, "payment_station_url"):
-            result["paymentStationUrl"] = str(self.payment_station_url)
-        elif include_empty:
-            result["paymentStationUrl"] = str()
-        if hasattr(self, "transactions"):
-            result["transactions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.transactions]
-        elif include_empty:
-            result["transactions"] = []
-        if hasattr(self, "status_reason"):
-            result["statusReason"] = str(self.status_reason)
-        elif include_empty:
-            result["statusReason"] = str()
-        if hasattr(self, "created_time"):
-            result["createdTime"] = str(self.created_time)
-        elif include_empty:
-            result["createdTime"] = str()
-        if hasattr(self, "charged_time"):
-            result["chargedTime"] = str(self.charged_time)
-        elif include_empty:
-            result["chargedTime"] = str()
-        if hasattr(self, "authorised_time"):
-            result["authorisedTime"] = str(self.authorised_time)
-        elif include_empty:
-            result["authorisedTime"] = str()
-        if hasattr(self, "refunded_time"):
-            result["refundedTime"] = str(self.refunded_time)
-        elif include_empty:
-            result["refundedTime"] = str()
-        if hasattr(self, "chargeback_time"):
-            result["chargebackTime"] = str(self.chargeback_time)
-        elif include_empty:
-            result["chargebackTime"] = str()
-        if hasattr(self, "chargeback_reversed_time"):
-            result["chargebackReversedTime"] = str(self.chargeback_reversed_time)
-        elif include_empty:
-            result["chargebackReversedTime"] = str()
-        if hasattr(self, "return_url"):
-            result["returnUrl"] = str(self.return_url)
-        elif include_empty:
-            result["returnUrl"] = str()
-        if hasattr(self, "channel"):
-            result["channel"] = str(self.channel)
-        elif include_empty:
-            result["channel"] = str()
-        if hasattr(self, "notify_url"):
-            result["notifyUrl"] = str(self.notify_url)
-        elif include_empty:
-            result["notifyUrl"] = str()
-        if hasattr(self, "custom_parameters"):
-            result["customParameters"] = {str(k0): v0 for k0, v0 in self.custom_parameters.items()}
-        elif include_empty:
-            result["customParameters"] = {}
-        if hasattr(self, "charging"):
-            result["charging"] = bool(self.charging)
-        elif include_empty:
-            result["charging"] = bool()
-        if hasattr(self, "subscription_id"):
-            result["subscriptionId"] = str(self.subscription_id)
-        elif include_empty:
-            result["subscriptionId"] = str()
-        if hasattr(self, "recurring_payment_order_no"):
-            result["recurringPaymentOrderNo"] = str(self.recurring_payment_order_no)
-        elif include_empty:
-            result["recurringPaymentOrderNo"] = str()
-        if hasattr(self, "omit_notification"):
-            result["omitNotification"] = bool(self.omit_notification)
-        elif include_empty:
-            result["omitNotification"] = bool()
-        if hasattr(self, "metadata"):
-            result["metadata"] = {str(k0): str(v0) for k0, v0 in self.metadata.items()}
-        elif include_empty:
-            result["metadata"] = {}
-        if hasattr(self, "total_tax"):
-            result["totalTax"] = int(self.total_tax)
-        elif include_empty:
-            result["totalTax"] = int()
+            result["title"] = str()
         if hasattr(self, "total_price"):
             result["totalPrice"] = int(self.total_price)
         elif include_empty:
             result["totalPrice"] = int()
-        if hasattr(self, "subtotal_price"):
-            result["subtotalPrice"] = int(self.subtotal_price)
+        if hasattr(self, "total_tax"):
+            result["totalTax"] = int(self.total_tax)
         elif include_empty:
-            result["subtotalPrice"] = int()
+            result["totalTax"] = int()
+        if hasattr(self, "transactions"):
+            result["transactions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.transactions]
+        elif include_empty:
+            result["transactions"] = []
+        if hasattr(self, "updated_at"):
+            result["updatedAt"] = str(self.updated_at)
+        elif include_empty:
+            result["updatedAt"] = str()
+        if hasattr(self, "user_id"):
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
+        if hasattr(self, "vat"):
+            result["vat"] = int(self.vat)
+        elif include_empty:
+            result["vat"] = int()
+        if hasattr(self, "zip_code"):
+            result["zipCode"] = str(self.zip_code)
+        elif include_empty:
+            result["zipCode"] = str()
         return result
 
     # endregion to methods
@@ -763,66 +763,162 @@ class PaymentOrder(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "rvn" in dict_ and dict_["rvn"] is not None:
-            instance.rvn = int(dict_["rvn"])
+        if "authorisedTime" in dict_ and dict_["authorisedTime"] is not None:
+            instance.authorised_time = str(dict_["authorisedTime"])
         elif include_empty:
-            instance.rvn = int()
+            instance.authorised_time = str()
+        if "channel" in dict_ and dict_["channel"] is not None:
+            instance.channel = str(dict_["channel"])
+        elif include_empty:
+            instance.channel = str()
+        if "chargebackReversedTime" in dict_ and dict_["chargebackReversedTime"] is not None:
+            instance.chargeback_reversed_time = str(dict_["chargebackReversedTime"])
+        elif include_empty:
+            instance.chargeback_reversed_time = str()
+        if "chargebackTime" in dict_ and dict_["chargebackTime"] is not None:
+            instance.chargeback_time = str(dict_["chargebackTime"])
+        elif include_empty:
+            instance.chargeback_time = str()
+        if "chargedTime" in dict_ and dict_["chargedTime"] is not None:
+            instance.charged_time = str(dict_["chargedTime"])
+        elif include_empty:
+            instance.charged_time = str()
+        if "charging" in dict_ and dict_["charging"] is not None:
+            instance.charging = bool(dict_["charging"])
+        elif include_empty:
+            instance.charging = bool()
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
             instance.created_at = str()
-        if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
-            instance.updated_at = str(dict_["updatedAt"])
+        if "createdTime" in dict_ and dict_["createdTime"] is not None:
+            instance.created_time = str(dict_["createdTime"])
         elif include_empty:
-            instance.updated_at = str()
-        if "paymentOrderNo" in dict_ and dict_["paymentOrderNo"] is not None:
-            instance.payment_order_no = str(dict_["paymentOrderNo"])
+            instance.created_time = str()
+        if "currency" in dict_ and dict_["currency"] is not None:
+            instance.currency = CurrencySummary.create_from_dict(dict_["currency"], include_empty=include_empty)
         elif include_empty:
-            instance.payment_order_no = str()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
+            instance.currency = CurrencySummary()
+        if "customParameters" in dict_ and dict_["customParameters"] is not None:
+            instance.custom_parameters = {str(k0): v0 for k0, v0 in dict_["customParameters"].items()}
         elif include_empty:
-            instance.namespace = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
-        if "status" in dict_ and dict_["status"] is not None:
-            instance.status = str(dict_["status"])
-        elif include_empty:
-            instance.status = str()
-        if "sandbox" in dict_ and dict_["sandbox"] is not None:
-            instance.sandbox = bool(dict_["sandbox"])
-        elif include_empty:
-            instance.sandbox = bool()
-        if "extOrderNo" in dict_ and dict_["extOrderNo"] is not None:
-            instance.ext_order_no = str(dict_["extOrderNo"])
-        elif include_empty:
-            instance.ext_order_no = str()
-        if "title" in dict_ and dict_["title"] is not None:
-            instance.title = str(dict_["title"])
-        elif include_empty:
-            instance.title = str()
+            instance.custom_parameters = {}
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = str()
-        if "itemType" in dict_ and dict_["itemType"] is not None:
-            instance.item_type = str(dict_["itemType"])
+        if "extOrderNo" in dict_ and dict_["extOrderNo"] is not None:
+            instance.ext_order_no = str(dict_["extOrderNo"])
         elif include_empty:
-            instance.item_type = str()
-        if "price" in dict_ and dict_["price"] is not None:
-            instance.price = int(dict_["price"])
-        elif include_empty:
-            instance.price = int()
-        if "sku" in dict_ and dict_["sku"] is not None:
-            instance.sku = str(dict_["sku"])
-        elif include_empty:
-            instance.sku = str()
+            instance.ext_order_no = str()
         if "extUserId" in dict_ and dict_["extUserId"] is not None:
             instance.ext_user_id = str(dict_["extUserId"])
         elif include_empty:
             instance.ext_user_id = str()
+        if "itemType" in dict_ and dict_["itemType"] is not None:
+            instance.item_type = str(dict_["itemType"])
+        elif include_empty:
+            instance.item_type = str()
+        if "language" in dict_ and dict_["language"] is not None:
+            instance.language = str(dict_["language"])
+        elif include_empty:
+            instance.language = str()
+        if "metadata" in dict_ and dict_["metadata"] is not None:
+            instance.metadata = {str(k0): str(v0) for k0, v0 in dict_["metadata"].items()}
+        elif include_empty:
+            instance.metadata = {}
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
+        if "notifyUrl" in dict_ and dict_["notifyUrl"] is not None:
+            instance.notify_url = str(dict_["notifyUrl"])
+        elif include_empty:
+            instance.notify_url = str()
+        if "omitNotification" in dict_ and dict_["omitNotification"] is not None:
+            instance.omit_notification = bool(dict_["omitNotification"])
+        elif include_empty:
+            instance.omit_notification = bool()
+        if "paymentMethod" in dict_ and dict_["paymentMethod"] is not None:
+            instance.payment_method = str(dict_["paymentMethod"])
+        elif include_empty:
+            instance.payment_method = str()
+        if "paymentMethodFee" in dict_ and dict_["paymentMethodFee"] is not None:
+            instance.payment_method_fee = int(dict_["paymentMethodFee"])
+        elif include_empty:
+            instance.payment_method_fee = int()
+        if "paymentOrderNo" in dict_ and dict_["paymentOrderNo"] is not None:
+            instance.payment_order_no = str(dict_["paymentOrderNo"])
+        elif include_empty:
+            instance.payment_order_no = str()
+        if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
+            instance.payment_provider = str(dict_["paymentProvider"])
+        elif include_empty:
+            instance.payment_provider = str()
+        if "paymentProviderFee" in dict_ and dict_["paymentProviderFee"] is not None:
+            instance.payment_provider_fee = int(dict_["paymentProviderFee"])
+        elif include_empty:
+            instance.payment_provider_fee = int()
+        if "paymentStationUrl" in dict_ and dict_["paymentStationUrl"] is not None:
+            instance.payment_station_url = str(dict_["paymentStationUrl"])
+        elif include_empty:
+            instance.payment_station_url = str()
+        if "price" in dict_ and dict_["price"] is not None:
+            instance.price = int(dict_["price"])
+        elif include_empty:
+            instance.price = int()
+        if "recurringPaymentOrderNo" in dict_ and dict_["recurringPaymentOrderNo"] is not None:
+            instance.recurring_payment_order_no = str(dict_["recurringPaymentOrderNo"])
+        elif include_empty:
+            instance.recurring_payment_order_no = str()
+        if "refundedTime" in dict_ and dict_["refundedTime"] is not None:
+            instance.refunded_time = str(dict_["refundedTime"])
+        elif include_empty:
+            instance.refunded_time = str()
+        if "region" in dict_ and dict_["region"] is not None:
+            instance.region = str(dict_["region"])
+        elif include_empty:
+            instance.region = str()
+        if "returnUrl" in dict_ and dict_["returnUrl"] is not None:
+            instance.return_url = str(dict_["returnUrl"])
+        elif include_empty:
+            instance.return_url = str()
+        if "rvn" in dict_ and dict_["rvn"] is not None:
+            instance.rvn = int(dict_["rvn"])
+        elif include_empty:
+            instance.rvn = int()
+        if "salesTax" in dict_ and dict_["salesTax"] is not None:
+            instance.sales_tax = int(dict_["salesTax"])
+        elif include_empty:
+            instance.sales_tax = int()
+        if "sandbox" in dict_ and dict_["sandbox"] is not None:
+            instance.sandbox = bool(dict_["sandbox"])
+        elif include_empty:
+            instance.sandbox = bool()
+        if "sku" in dict_ and dict_["sku"] is not None:
+            instance.sku = str(dict_["sku"])
+        elif include_empty:
+            instance.sku = str()
+        if "state" in dict_ and dict_["state"] is not None:
+            instance.state = str(dict_["state"])
+        elif include_empty:
+            instance.state = str()
+        if "status" in dict_ and dict_["status"] is not None:
+            instance.status = str(dict_["status"])
+        elif include_empty:
+            instance.status = str()
+        if "statusReason" in dict_ and dict_["statusReason"] is not None:
+            instance.status_reason = str(dict_["statusReason"])
+        elif include_empty:
+            instance.status_reason = str()
+        if "subscriptionId" in dict_ and dict_["subscriptionId"] is not None:
+            instance.subscription_id = str(dict_["subscriptionId"])
+        elif include_empty:
+            instance.subscription_id = str()
+        if "subtotalPrice" in dict_ and dict_["subtotalPrice"] is not None:
+            instance.subtotal_price = int(dict_["subtotalPrice"])
+        elif include_empty:
+            instance.subtotal_price = int()
         if "targetNamespace" in dict_ and dict_["targetNamespace"] is not None:
             instance.target_namespace = str(dict_["targetNamespace"])
         elif include_empty:
@@ -831,193 +927,97 @@ class PaymentOrder(Model):
             instance.target_user_id = str(dict_["targetUserId"])
         elif include_empty:
             instance.target_user_id = str()
-        if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
-            instance.payment_provider = str(dict_["paymentProvider"])
-        elif include_empty:
-            instance.payment_provider = str()
-        if "paymentMethod" in dict_ and dict_["paymentMethod"] is not None:
-            instance.payment_method = str(dict_["paymentMethod"])
-        elif include_empty:
-            instance.payment_method = str()
-        if "region" in dict_ and dict_["region"] is not None:
-            instance.region = str(dict_["region"])
-        elif include_empty:
-            instance.region = str()
-        if "language" in dict_ and dict_["language"] is not None:
-            instance.language = str(dict_["language"])
-        elif include_empty:
-            instance.language = str()
-        if "zipCode" in dict_ and dict_["zipCode"] is not None:
-            instance.zip_code = str(dict_["zipCode"])
-        elif include_empty:
-            instance.zip_code = str()
-        if "state" in dict_ and dict_["state"] is not None:
-            instance.state = str(dict_["state"])
-        elif include_empty:
-            instance.state = str()
         if "tax" in dict_ and dict_["tax"] is not None:
             instance.tax = int(dict_["tax"])
         elif include_empty:
             instance.tax = int()
-        if "vat" in dict_ and dict_["vat"] is not None:
-            instance.vat = int(dict_["vat"])
+        if "title" in dict_ and dict_["title"] is not None:
+            instance.title = str(dict_["title"])
         elif include_empty:
-            instance.vat = int()
-        if "salesTax" in dict_ and dict_["salesTax"] is not None:
-            instance.sales_tax = int(dict_["salesTax"])
-        elif include_empty:
-            instance.sales_tax = int()
-        if "paymentProviderFee" in dict_ and dict_["paymentProviderFee"] is not None:
-            instance.payment_provider_fee = int(dict_["paymentProviderFee"])
-        elif include_empty:
-            instance.payment_provider_fee = int()
-        if "paymentMethodFee" in dict_ and dict_["paymentMethodFee"] is not None:
-            instance.payment_method_fee = int(dict_["paymentMethodFee"])
-        elif include_empty:
-            instance.payment_method_fee = int()
-        if "currency" in dict_ and dict_["currency"] is not None:
-            instance.currency = CurrencySummary.create_from_dict(dict_["currency"], include_empty=include_empty)
-        elif include_empty:
-            instance.currency = CurrencySummary()
-        if "paymentStationUrl" in dict_ and dict_["paymentStationUrl"] is not None:
-            instance.payment_station_url = str(dict_["paymentStationUrl"])
-        elif include_empty:
-            instance.payment_station_url = str()
-        if "transactions" in dict_ and dict_["transactions"] is not None:
-            instance.transactions = [Transaction.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["transactions"]]
-        elif include_empty:
-            instance.transactions = []
-        if "statusReason" in dict_ and dict_["statusReason"] is not None:
-            instance.status_reason = str(dict_["statusReason"])
-        elif include_empty:
-            instance.status_reason = str()
-        if "createdTime" in dict_ and dict_["createdTime"] is not None:
-            instance.created_time = str(dict_["createdTime"])
-        elif include_empty:
-            instance.created_time = str()
-        if "chargedTime" in dict_ and dict_["chargedTime"] is not None:
-            instance.charged_time = str(dict_["chargedTime"])
-        elif include_empty:
-            instance.charged_time = str()
-        if "authorisedTime" in dict_ and dict_["authorisedTime"] is not None:
-            instance.authorised_time = str(dict_["authorisedTime"])
-        elif include_empty:
-            instance.authorised_time = str()
-        if "refundedTime" in dict_ and dict_["refundedTime"] is not None:
-            instance.refunded_time = str(dict_["refundedTime"])
-        elif include_empty:
-            instance.refunded_time = str()
-        if "chargebackTime" in dict_ and dict_["chargebackTime"] is not None:
-            instance.chargeback_time = str(dict_["chargebackTime"])
-        elif include_empty:
-            instance.chargeback_time = str()
-        if "chargebackReversedTime" in dict_ and dict_["chargebackReversedTime"] is not None:
-            instance.chargeback_reversed_time = str(dict_["chargebackReversedTime"])
-        elif include_empty:
-            instance.chargeback_reversed_time = str()
-        if "returnUrl" in dict_ and dict_["returnUrl"] is not None:
-            instance.return_url = str(dict_["returnUrl"])
-        elif include_empty:
-            instance.return_url = str()
-        if "channel" in dict_ and dict_["channel"] is not None:
-            instance.channel = str(dict_["channel"])
-        elif include_empty:
-            instance.channel = str()
-        if "notifyUrl" in dict_ and dict_["notifyUrl"] is not None:
-            instance.notify_url = str(dict_["notifyUrl"])
-        elif include_empty:
-            instance.notify_url = str()
-        if "customParameters" in dict_ and dict_["customParameters"] is not None:
-            instance.custom_parameters = {str(k0): v0 for k0, v0 in dict_["customParameters"].items()}
-        elif include_empty:
-            instance.custom_parameters = {}
-        if "charging" in dict_ and dict_["charging"] is not None:
-            instance.charging = bool(dict_["charging"])
-        elif include_empty:
-            instance.charging = bool()
-        if "subscriptionId" in dict_ and dict_["subscriptionId"] is not None:
-            instance.subscription_id = str(dict_["subscriptionId"])
-        elif include_empty:
-            instance.subscription_id = str()
-        if "recurringPaymentOrderNo" in dict_ and dict_["recurringPaymentOrderNo"] is not None:
-            instance.recurring_payment_order_no = str(dict_["recurringPaymentOrderNo"])
-        elif include_empty:
-            instance.recurring_payment_order_no = str()
-        if "omitNotification" in dict_ and dict_["omitNotification"] is not None:
-            instance.omit_notification = bool(dict_["omitNotification"])
-        elif include_empty:
-            instance.omit_notification = bool()
-        if "metadata" in dict_ and dict_["metadata"] is not None:
-            instance.metadata = {str(k0): str(v0) for k0, v0 in dict_["metadata"].items()}
-        elif include_empty:
-            instance.metadata = {}
-        if "totalTax" in dict_ and dict_["totalTax"] is not None:
-            instance.total_tax = int(dict_["totalTax"])
-        elif include_empty:
-            instance.total_tax = int()
+            instance.title = str()
         if "totalPrice" in dict_ and dict_["totalPrice"] is not None:
             instance.total_price = int(dict_["totalPrice"])
         elif include_empty:
             instance.total_price = int()
-        if "subtotalPrice" in dict_ and dict_["subtotalPrice"] is not None:
-            instance.subtotal_price = int(dict_["subtotalPrice"])
+        if "totalTax" in dict_ and dict_["totalTax"] is not None:
+            instance.total_tax = int(dict_["totalTax"])
         elif include_empty:
-            instance.subtotal_price = int()
+            instance.total_tax = int()
+        if "transactions" in dict_ and dict_["transactions"] is not None:
+            instance.transactions = [Transaction.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["transactions"]]
+        elif include_empty:
+            instance.transactions = []
+        if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
+            instance.updated_at = str(dict_["updatedAt"])
+        elif include_empty:
+            instance.updated_at = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
+        if "vat" in dict_ and dict_["vat"] is not None:
+            instance.vat = int(dict_["vat"])
+        elif include_empty:
+            instance.vat = int()
+        if "zipCode" in dict_ and dict_["zipCode"] is not None:
+            instance.zip_code = str(dict_["zipCode"])
+        elif include_empty:
+            instance.zip_code = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "rvn": "rvn",
+            "authorisedTime": "authorised_time",
+            "channel": "channel",
+            "chargebackReversedTime": "chargeback_reversed_time",
+            "chargebackTime": "chargeback_time",
+            "chargedTime": "charged_time",
+            "charging": "charging",
             "createdAt": "created_at",
-            "updatedAt": "updated_at",
-            "paymentOrderNo": "payment_order_no",
-            "namespace": "namespace",
-            "userId": "user_id",
-            "status": "status",
-            "sandbox": "sandbox",
-            "extOrderNo": "ext_order_no",
-            "title": "title",
+            "createdTime": "created_time",
+            "currency": "currency",
+            "customParameters": "custom_parameters",
             "description": "description",
-            "itemType": "item_type",
-            "price": "price",
-            "sku": "sku",
+            "extOrderNo": "ext_order_no",
             "extUserId": "ext_user_id",
+            "itemType": "item_type",
+            "language": "language",
+            "metadata": "metadata",
+            "namespace": "namespace",
+            "notifyUrl": "notify_url",
+            "omitNotification": "omit_notification",
+            "paymentMethod": "payment_method",
+            "paymentMethodFee": "payment_method_fee",
+            "paymentOrderNo": "payment_order_no",
+            "paymentProvider": "payment_provider",
+            "paymentProviderFee": "payment_provider_fee",
+            "paymentStationUrl": "payment_station_url",
+            "price": "price",
+            "recurringPaymentOrderNo": "recurring_payment_order_no",
+            "refundedTime": "refunded_time",
+            "region": "region",
+            "returnUrl": "return_url",
+            "rvn": "rvn",
+            "salesTax": "sales_tax",
+            "sandbox": "sandbox",
+            "sku": "sku",
+            "state": "state",
+            "status": "status",
+            "statusReason": "status_reason",
+            "subscriptionId": "subscription_id",
+            "subtotalPrice": "subtotal_price",
             "targetNamespace": "target_namespace",
             "targetUserId": "target_user_id",
-            "paymentProvider": "payment_provider",
-            "paymentMethod": "payment_method",
-            "region": "region",
-            "language": "language",
-            "zipCode": "zip_code",
-            "state": "state",
             "tax": "tax",
-            "vat": "vat",
-            "salesTax": "sales_tax",
-            "paymentProviderFee": "payment_provider_fee",
-            "paymentMethodFee": "payment_method_fee",
-            "currency": "currency",
-            "paymentStationUrl": "payment_station_url",
-            "transactions": "transactions",
-            "statusReason": "status_reason",
-            "createdTime": "created_time",
-            "chargedTime": "charged_time",
-            "authorisedTime": "authorised_time",
-            "refundedTime": "refunded_time",
-            "chargebackTime": "chargeback_time",
-            "chargebackReversedTime": "chargeback_reversed_time",
-            "returnUrl": "return_url",
-            "channel": "channel",
-            "notifyUrl": "notify_url",
-            "customParameters": "custom_parameters",
-            "charging": "charging",
-            "subscriptionId": "subscription_id",
-            "recurringPaymentOrderNo": "recurring_payment_order_no",
-            "omitNotification": "omit_notification",
-            "metadata": "metadata",
-            "totalTax": "total_tax",
+            "title": "title",
             "totalPrice": "total_price",
-            "subtotalPrice": "subtotal_price",
+            "totalTax": "total_tax",
+            "transactions": "transactions",
+            "updatedAt": "updated_at",
+            "userId": "user_id",
+            "vat": "vat",
+            "zipCode": "zip_code",
         }
 
     # endregion static methods

@@ -55,9 +55,9 @@ class UpdateMemberRolePermissionAdminV1(Operation):
 
         body: (body) REQUIRED ModelsUpdateMemberRolePermissionsRequestV1 in body
 
-        namespace: (namespace) REQUIRED str in path
-
         member_role_id: (memberRoleId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
     Responses:
         200: OK - ModelsUpdateMemberRoleResponseV1 (OK)
@@ -83,8 +83,8 @@ class UpdateMemberRolePermissionAdminV1(Operation):
     _location_query: str = None
 
     body: ModelsUpdateMemberRolePermissionsRequestV1                                               # REQUIRED in [body]
-    namespace: str                                                                                 # REQUIRED in [path]
     member_role_id: str                                                                            # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -133,8 +133,8 @@ class UpdateMemberRolePermissionAdminV1(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "body",
-            "namespace",
             "member_role_id",
+            "namespace",
         ]
 
     # endregion get methods
@@ -152,10 +152,10 @@ class UpdateMemberRolePermissionAdminV1(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "member_role_id"):
             result["memberRoleId"] = self.member_role_id
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     # endregion get_x_params methods
@@ -165,9 +165,9 @@ class UpdateMemberRolePermissionAdminV1(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "body") or self.body is None:
             return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "member_role_id") or self.member_role_id is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         return True
 
@@ -179,12 +179,12 @@ class UpdateMemberRolePermissionAdminV1(Operation):
         self.body = value
         return self
 
-    def with_namespace(self, value: str) -> UpdateMemberRolePermissionAdminV1:
-        self.namespace = value
-        return self
-
     def with_member_role_id(self, value: str) -> UpdateMemberRolePermissionAdminV1:
         self.member_role_id = value
+        return self
+
+    def with_namespace(self, value: str) -> UpdateMemberRolePermissionAdminV1:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -197,14 +197,14 @@ class UpdateMemberRolePermissionAdminV1(Operation):
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
             result["body"] = ModelsUpdateMemberRolePermissionsRequestV1()
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "member_role_id") and self.member_role_id:
             result["memberRoleId"] = str(self.member_role_id)
         elif include_empty:
             result["memberRoleId"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         return result
 
     # endregion to methods
@@ -252,13 +252,13 @@ class UpdateMemberRolePermissionAdminV1(Operation):
     def create(
         cls,
         body: ModelsUpdateMemberRolePermissionsRequestV1,
-        namespace: str,
         member_role_id: str,
+        namespace: str,
     ) -> UpdateMemberRolePermissionAdminV1:
         instance = cls()
         instance.body = body
-        instance.namespace = namespace
         instance.member_role_id = member_role_id
+        instance.namespace = namespace
         return instance
 
     @classmethod
@@ -268,22 +268,22 @@ class UpdateMemberRolePermissionAdminV1(Operation):
             instance.body = ModelsUpdateMemberRolePermissionsRequestV1.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
             instance.body = ModelsUpdateMemberRolePermissionsRequestV1()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "memberRoleId" in dict_ and dict_["memberRoleId"] is not None:
             instance.member_role_id = str(dict_["memberRoleId"])
         elif include_empty:
             instance.member_role_id = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
-            "namespace": "namespace",
             "memberRoleId": "member_role_id",
+            "namespace": "namespace",
         }
 
     # endregion static methods

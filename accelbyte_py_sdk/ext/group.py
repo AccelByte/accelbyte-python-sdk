@@ -162,8 +162,8 @@ def create_models_get_user_group_information_response_v1_example() -> ModelsGetU
     instance = ModelsGetUserGroupInformationResponseV1()
     instance.group_id = randomize()
     instance.member_role_id = [randomize()]
-    instance.status = randomize()
     instance.user_id = randomize("uid")
+    instance.status = randomize()
     return instance
 
 

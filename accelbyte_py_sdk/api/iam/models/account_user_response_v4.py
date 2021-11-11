@@ -57,23 +57,23 @@ class AccountUserResponseV4(Model):
 
         namespace: (namespace) REQUIRED str
 
-        new_email_address: (newEmailAddress) OPTIONAL str
-
         old_email_address: (oldEmailAddress) REQUIRED str
 
         permissions: (permissions) REQUIRED List[AccountUserPermissionsResponseV4]
 
-        phone_number: (phoneNumber) OPTIONAL str
-
         phone_verified: (phoneVerified) REQUIRED bool
-
-        platform_id: (platformId) OPTIONAL str
-
-        platform_user_id: (platformUserId) OPTIONAL str
 
         roles: (roles) REQUIRED List[str]
 
         user_id: (userId) REQUIRED str
+
+        new_email_address: (newEmailAddress) OPTIONAL str
+
+        phone_number: (phoneNumber) OPTIONAL str
+
+        platform_id: (platformId) OPTIONAL str
+
+        platform_user_id: (platformUserId) OPTIONAL str
 
         username: (username) OPTIONAL str
     """
@@ -93,15 +93,15 @@ class AccountUserResponseV4(Model):
     last_date_of_birth_changed_time: str                                                           # REQUIRED
     last_enabled_changed_time: str                                                                 # REQUIRED
     namespace: str                                                                                 # REQUIRED
-    new_email_address: str                                                                         # OPTIONAL
     old_email_address: str                                                                         # REQUIRED
     permissions: List[AccountUserPermissionsResponseV4]                                            # REQUIRED
-    phone_number: str                                                                              # OPTIONAL
     phone_verified: bool                                                                           # REQUIRED
-    platform_id: str                                                                               # OPTIONAL
-    platform_user_id: str                                                                          # OPTIONAL
     roles: List[str]                                                                               # REQUIRED
     user_id: str                                                                                   # REQUIRED
+    new_email_address: str                                                                         # OPTIONAL
+    phone_number: str                                                                              # OPTIONAL
+    platform_id: str                                                                               # OPTIONAL
+    platform_user_id: str                                                                          # OPTIONAL
     username: str                                                                                  # OPTIONAL
 
     # endregion fields
@@ -160,10 +160,6 @@ class AccountUserResponseV4(Model):
         self.namespace = value
         return self
 
-    def with_new_email_address(self, value: str) -> AccountUserResponseV4:
-        self.new_email_address = value
-        return self
-
     def with_old_email_address(self, value: str) -> AccountUserResponseV4:
         self.old_email_address = value
         return self
@@ -172,20 +168,8 @@ class AccountUserResponseV4(Model):
         self.permissions = value
         return self
 
-    def with_phone_number(self, value: str) -> AccountUserResponseV4:
-        self.phone_number = value
-        return self
-
     def with_phone_verified(self, value: bool) -> AccountUserResponseV4:
         self.phone_verified = value
-        return self
-
-    def with_platform_id(self, value: str) -> AccountUserResponseV4:
-        self.platform_id = value
-        return self
-
-    def with_platform_user_id(self, value: str) -> AccountUserResponseV4:
-        self.platform_user_id = value
         return self
 
     def with_roles(self, value: List[str]) -> AccountUserResponseV4:
@@ -194,6 +178,22 @@ class AccountUserResponseV4(Model):
 
     def with_user_id(self, value: str) -> AccountUserResponseV4:
         self.user_id = value
+        return self
+
+    def with_new_email_address(self, value: str) -> AccountUserResponseV4:
+        self.new_email_address = value
+        return self
+
+    def with_phone_number(self, value: str) -> AccountUserResponseV4:
+        self.phone_number = value
+        return self
+
+    def with_platform_id(self, value: str) -> AccountUserResponseV4:
+        self.platform_id = value
+        return self
+
+    def with_platform_user_id(self, value: str) -> AccountUserResponseV4:
+        self.platform_user_id = value
         return self
 
     def with_username(self, value: str) -> AccountUserResponseV4:
@@ -258,10 +258,6 @@ class AccountUserResponseV4(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "new_email_address"):
-            result["newEmailAddress"] = str(self.new_email_address)
-        elif include_empty:
-            result["newEmailAddress"] = str()
         if hasattr(self, "old_email_address"):
             result["oldEmailAddress"] = str(self.old_email_address)
         elif include_empty:
@@ -270,22 +266,10 @@ class AccountUserResponseV4(Model):
             result["permissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.permissions]
         elif include_empty:
             result["permissions"] = []
-        if hasattr(self, "phone_number"):
-            result["phoneNumber"] = str(self.phone_number)
-        elif include_empty:
-            result["phoneNumber"] = str()
         if hasattr(self, "phone_verified"):
             result["phoneVerified"] = bool(self.phone_verified)
         elif include_empty:
             result["phoneVerified"] = bool()
-        if hasattr(self, "platform_id"):
-            result["platformId"] = str(self.platform_id)
-        elif include_empty:
-            result["platformId"] = str()
-        if hasattr(self, "platform_user_id"):
-            result["platformUserId"] = str(self.platform_user_id)
-        elif include_empty:
-            result["platformUserId"] = str()
         if hasattr(self, "roles"):
             result["roles"] = [str(i0) for i0 in self.roles]
         elif include_empty:
@@ -294,6 +278,22 @@ class AccountUserResponseV4(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
+        if hasattr(self, "new_email_address"):
+            result["newEmailAddress"] = str(self.new_email_address)
+        elif include_empty:
+            result["newEmailAddress"] = str()
+        if hasattr(self, "phone_number"):
+            result["phoneNumber"] = str(self.phone_number)
+        elif include_empty:
+            result["phoneNumber"] = str()
+        if hasattr(self, "platform_id"):
+            result["platformId"] = str(self.platform_id)
+        elif include_empty:
+            result["platformId"] = str()
+        if hasattr(self, "platform_user_id"):
+            result["platformUserId"] = str(self.platform_user_id)
+        elif include_empty:
+            result["platformUserId"] = str()
         if hasattr(self, "username"):
             result["username"] = str(self.username)
         elif include_empty:
@@ -419,10 +419,6 @@ class AccountUserResponseV4(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "newEmailAddress" in dict_ and dict_["newEmailAddress"] is not None:
-            instance.new_email_address = str(dict_["newEmailAddress"])
-        elif include_empty:
-            instance.new_email_address = str()
         if "oldEmailAddress" in dict_ and dict_["oldEmailAddress"] is not None:
             instance.old_email_address = str(dict_["oldEmailAddress"])
         elif include_empty:
@@ -431,22 +427,10 @@ class AccountUserResponseV4(Model):
             instance.permissions = [AccountUserPermissionsResponseV4.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["permissions"]]
         elif include_empty:
             instance.permissions = []
-        if "phoneNumber" in dict_ and dict_["phoneNumber"] is not None:
-            instance.phone_number = str(dict_["phoneNumber"])
-        elif include_empty:
-            instance.phone_number = str()
         if "phoneVerified" in dict_ and dict_["phoneVerified"] is not None:
             instance.phone_verified = bool(dict_["phoneVerified"])
         elif include_empty:
             instance.phone_verified = bool()
-        if "platformId" in dict_ and dict_["platformId"] is not None:
-            instance.platform_id = str(dict_["platformId"])
-        elif include_empty:
-            instance.platform_id = str()
-        if "platformUserId" in dict_ and dict_["platformUserId"] is not None:
-            instance.platform_user_id = str(dict_["platformUserId"])
-        elif include_empty:
-            instance.platform_user_id = str()
         if "roles" in dict_ and dict_["roles"] is not None:
             instance.roles = [str(i0) for i0 in dict_["roles"]]
         elif include_empty:
@@ -455,6 +439,22 @@ class AccountUserResponseV4(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
+        if "newEmailAddress" in dict_ and dict_["newEmailAddress"] is not None:
+            instance.new_email_address = str(dict_["newEmailAddress"])
+        elif include_empty:
+            instance.new_email_address = str()
+        if "phoneNumber" in dict_ and dict_["phoneNumber"] is not None:
+            instance.phone_number = str(dict_["phoneNumber"])
+        elif include_empty:
+            instance.phone_number = str()
+        if "platformId" in dict_ and dict_["platformId"] is not None:
+            instance.platform_id = str(dict_["platformId"])
+        elif include_empty:
+            instance.platform_id = str()
+        if "platformUserId" in dict_ and dict_["platformUserId"] is not None:
+            instance.platform_user_id = str(dict_["platformUserId"])
+        elif include_empty:
+            instance.platform_user_id = str()
         if "username" in dict_ and dict_["username"] is not None:
             instance.username = str(dict_["username"])
         elif include_empty:
@@ -477,15 +477,15 @@ class AccountUserResponseV4(Model):
             "lastDateOfBirthChangedTime": "last_date_of_birth_changed_time",
             "lastEnabledChangedTime": "last_enabled_changed_time",
             "namespace": "namespace",
-            "newEmailAddress": "new_email_address",
             "oldEmailAddress": "old_email_address",
             "permissions": "permissions",
-            "phoneNumber": "phone_number",
             "phoneVerified": "phone_verified",
-            "platformId": "platform_id",
-            "platformUserId": "platform_user_id",
             "roles": "roles",
             "userId": "user_id",
+            "newEmailAddress": "new_email_address",
+            "phoneNumber": "phone_number",
+            "platformId": "platform_id",
+            "platformUserId": "platform_user_id",
             "username": "username",
         }
 

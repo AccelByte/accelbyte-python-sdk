@@ -31,180 +31,180 @@ class BillingHistoryInfo(Model):
     """Billing history info (BillingHistoryInfo)
 
     Properties:
-        recurring_order_no: (recurringOrderNo) REQUIRED str
-
-        namespace: (namespace) REQUIRED str
-
-        user_id: (userId) REQUIRED str
-
-        subscription_id: (subscriptionId) REQUIRED str
-
-        item_id: (itemId) REQUIRED str
-
-        sku: (sku) OPTIONAL str
-
-        title: (title) REQUIRED str
-
-        description: (description) OPTIONAL str
-
         amount: (amount) REQUIRED int
-
-        total_tax: (totalTax) OPTIONAL int
-
-        total_price: (totalPrice) OPTIONAL int
-
-        subtotal_price: (subtotalPrice) OPTIONAL int
-
-        sandbox: (sandbox) REQUIRED bool
-
-        currency: (currency) REQUIRED CurrencySummary
-
-        payment_order_no: (paymentOrderNo) REQUIRED str
-
-        billing_account: (billingAccount) OPTIONAL BillingAccount
-
-        status: (status) REQUIRED str
-
-        status_reason: (statusReason) OPTIONAL str
-
-        tx_end_time: (txEndTime) OPTIONAL str
-
-        ext_tx_id: (extTxId) OPTIONAL str
-
-        change_billing_account: (changeBillingAccount) OPTIONAL bool
-
-        retry_attempted: (retryAttempted) OPTIONAL int
 
         created_at: (createdAt) REQUIRED str
 
+        currency: (currency) REQUIRED CurrencySummary
+
+        item_id: (itemId) REQUIRED str
+
+        namespace: (namespace) REQUIRED str
+
+        payment_order_no: (paymentOrderNo) REQUIRED str
+
+        recurring_order_no: (recurringOrderNo) REQUIRED str
+
+        sandbox: (sandbox) REQUIRED bool
+
+        status: (status) REQUIRED str
+
+        subscription_id: (subscriptionId) REQUIRED str
+
+        title: (title) REQUIRED str
+
         updated_at: (updatedAt) REQUIRED str
+
+        user_id: (userId) REQUIRED str
+
+        billing_account: (billingAccount) OPTIONAL BillingAccount
+
+        change_billing_account: (changeBillingAccount) OPTIONAL bool
+
+        description: (description) OPTIONAL str
+
+        ext_tx_id: (extTxId) OPTIONAL str
+
+        retry_attempted: (retryAttempted) OPTIONAL int
+
+        sku: (sku) OPTIONAL str
+
+        status_reason: (statusReason) OPTIONAL str
+
+        subtotal_price: (subtotalPrice) OPTIONAL int
+
+        total_price: (totalPrice) OPTIONAL int
+
+        total_tax: (totalTax) OPTIONAL int
+
+        tx_end_time: (txEndTime) OPTIONAL str
     """
 
     # region fields
 
-    recurring_order_no: str                                                                        # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    user_id: str                                                                                   # REQUIRED
-    subscription_id: str                                                                           # REQUIRED
-    item_id: str                                                                                   # REQUIRED
-    sku: str                                                                                       # OPTIONAL
-    title: str                                                                                     # REQUIRED
-    description: str                                                                               # OPTIONAL
     amount: int                                                                                    # REQUIRED
-    total_tax: int                                                                                 # OPTIONAL
-    total_price: int                                                                               # OPTIONAL
-    subtotal_price: int                                                                            # OPTIONAL
-    sandbox: bool                                                                                  # REQUIRED
-    currency: CurrencySummary                                                                      # REQUIRED
-    payment_order_no: str                                                                          # REQUIRED
-    billing_account: BillingAccount                                                                # OPTIONAL
-    status: str                                                                                    # REQUIRED
-    status_reason: str                                                                             # OPTIONAL
-    tx_end_time: str                                                                               # OPTIONAL
-    ext_tx_id: str                                                                                 # OPTIONAL
-    change_billing_account: bool                                                                   # OPTIONAL
-    retry_attempted: int                                                                           # OPTIONAL
     created_at: str                                                                                # REQUIRED
+    currency: CurrencySummary                                                                      # REQUIRED
+    item_id: str                                                                                   # REQUIRED
+    namespace: str                                                                                 # REQUIRED
+    payment_order_no: str                                                                          # REQUIRED
+    recurring_order_no: str                                                                        # REQUIRED
+    sandbox: bool                                                                                  # REQUIRED
+    status: str                                                                                    # REQUIRED
+    subscription_id: str                                                                           # REQUIRED
+    title: str                                                                                     # REQUIRED
     updated_at: str                                                                                # REQUIRED
+    user_id: str                                                                                   # REQUIRED
+    billing_account: BillingAccount                                                                # OPTIONAL
+    change_billing_account: bool                                                                   # OPTIONAL
+    description: str                                                                               # OPTIONAL
+    ext_tx_id: str                                                                                 # OPTIONAL
+    retry_attempted: int                                                                           # OPTIONAL
+    sku: str                                                                                       # OPTIONAL
+    status_reason: str                                                                             # OPTIONAL
+    subtotal_price: int                                                                            # OPTIONAL
+    total_price: int                                                                               # OPTIONAL
+    total_tax: int                                                                                 # OPTIONAL
+    tx_end_time: str                                                                               # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_recurring_order_no(self, value: str) -> BillingHistoryInfo:
-        self.recurring_order_no = value
-        return self
-
-    def with_namespace(self, value: str) -> BillingHistoryInfo:
-        self.namespace = value
-        return self
-
-    def with_user_id(self, value: str) -> BillingHistoryInfo:
-        self.user_id = value
-        return self
-
-    def with_subscription_id(self, value: str) -> BillingHistoryInfo:
-        self.subscription_id = value
-        return self
-
-    def with_item_id(self, value: str) -> BillingHistoryInfo:
-        self.item_id = value
-        return self
-
-    def with_sku(self, value: str) -> BillingHistoryInfo:
-        self.sku = value
-        return self
-
-    def with_title(self, value: str) -> BillingHistoryInfo:
-        self.title = value
-        return self
-
-    def with_description(self, value: str) -> BillingHistoryInfo:
-        self.description = value
-        return self
-
     def with_amount(self, value: int) -> BillingHistoryInfo:
         self.amount = value
-        return self
-
-    def with_total_tax(self, value: int) -> BillingHistoryInfo:
-        self.total_tax = value
-        return self
-
-    def with_total_price(self, value: int) -> BillingHistoryInfo:
-        self.total_price = value
-        return self
-
-    def with_subtotal_price(self, value: int) -> BillingHistoryInfo:
-        self.subtotal_price = value
-        return self
-
-    def with_sandbox(self, value: bool) -> BillingHistoryInfo:
-        self.sandbox = value
-        return self
-
-    def with_currency(self, value: CurrencySummary) -> BillingHistoryInfo:
-        self.currency = value
-        return self
-
-    def with_payment_order_no(self, value: str) -> BillingHistoryInfo:
-        self.payment_order_no = value
-        return self
-
-    def with_billing_account(self, value: BillingAccount) -> BillingHistoryInfo:
-        self.billing_account = value
-        return self
-
-    def with_status(self, value: str) -> BillingHistoryInfo:
-        self.status = value
-        return self
-
-    def with_status_reason(self, value: str) -> BillingHistoryInfo:
-        self.status_reason = value
-        return self
-
-    def with_tx_end_time(self, value: str) -> BillingHistoryInfo:
-        self.tx_end_time = value
-        return self
-
-    def with_ext_tx_id(self, value: str) -> BillingHistoryInfo:
-        self.ext_tx_id = value
-        return self
-
-    def with_change_billing_account(self, value: bool) -> BillingHistoryInfo:
-        self.change_billing_account = value
-        return self
-
-    def with_retry_attempted(self, value: int) -> BillingHistoryInfo:
-        self.retry_attempted = value
         return self
 
     def with_created_at(self, value: str) -> BillingHistoryInfo:
         self.created_at = value
         return self
 
+    def with_currency(self, value: CurrencySummary) -> BillingHistoryInfo:
+        self.currency = value
+        return self
+
+    def with_item_id(self, value: str) -> BillingHistoryInfo:
+        self.item_id = value
+        return self
+
+    def with_namespace(self, value: str) -> BillingHistoryInfo:
+        self.namespace = value
+        return self
+
+    def with_payment_order_no(self, value: str) -> BillingHistoryInfo:
+        self.payment_order_no = value
+        return self
+
+    def with_recurring_order_no(self, value: str) -> BillingHistoryInfo:
+        self.recurring_order_no = value
+        return self
+
+    def with_sandbox(self, value: bool) -> BillingHistoryInfo:
+        self.sandbox = value
+        return self
+
+    def with_status(self, value: str) -> BillingHistoryInfo:
+        self.status = value
+        return self
+
+    def with_subscription_id(self, value: str) -> BillingHistoryInfo:
+        self.subscription_id = value
+        return self
+
+    def with_title(self, value: str) -> BillingHistoryInfo:
+        self.title = value
+        return self
+
     def with_updated_at(self, value: str) -> BillingHistoryInfo:
         self.updated_at = value
+        return self
+
+    def with_user_id(self, value: str) -> BillingHistoryInfo:
+        self.user_id = value
+        return self
+
+    def with_billing_account(self, value: BillingAccount) -> BillingHistoryInfo:
+        self.billing_account = value
+        return self
+
+    def with_change_billing_account(self, value: bool) -> BillingHistoryInfo:
+        self.change_billing_account = value
+        return self
+
+    def with_description(self, value: str) -> BillingHistoryInfo:
+        self.description = value
+        return self
+
+    def with_ext_tx_id(self, value: str) -> BillingHistoryInfo:
+        self.ext_tx_id = value
+        return self
+
+    def with_retry_attempted(self, value: int) -> BillingHistoryInfo:
+        self.retry_attempted = value
+        return self
+
+    def with_sku(self, value: str) -> BillingHistoryInfo:
+        self.sku = value
+        return self
+
+    def with_status_reason(self, value: str) -> BillingHistoryInfo:
+        self.status_reason = value
+        return self
+
+    def with_subtotal_price(self, value: int) -> BillingHistoryInfo:
+        self.subtotal_price = value
+        return self
+
+    def with_total_price(self, value: int) -> BillingHistoryInfo:
+        self.total_price = value
+        return self
+
+    def with_total_tax(self, value: int) -> BillingHistoryInfo:
+        self.total_tax = value
+        return self
+
+    def with_tx_end_time(self, value: str) -> BillingHistoryInfo:
+        self.tx_end_time = value
         return self
 
     # endregion with_x methods
@@ -213,102 +213,102 @@ class BillingHistoryInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "recurring_order_no"):
-            result["recurringOrderNo"] = str(self.recurring_order_no)
-        elif include_empty:
-            result["recurringOrderNo"] = str()
-        if hasattr(self, "namespace"):
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
-        if hasattr(self, "user_id"):
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
-        if hasattr(self, "subscription_id"):
-            result["subscriptionId"] = str(self.subscription_id)
-        elif include_empty:
-            result["subscriptionId"] = str()
-        if hasattr(self, "item_id"):
-            result["itemId"] = str(self.item_id)
-        elif include_empty:
-            result["itemId"] = str()
-        if hasattr(self, "sku"):
-            result["sku"] = str(self.sku)
-        elif include_empty:
-            result["sku"] = str()
-        if hasattr(self, "title"):
-            result["title"] = str(self.title)
-        elif include_empty:
-            result["title"] = str()
-        if hasattr(self, "description"):
-            result["description"] = str(self.description)
-        elif include_empty:
-            result["description"] = str()
         if hasattr(self, "amount"):
             result["amount"] = int(self.amount)
         elif include_empty:
             result["amount"] = int()
-        if hasattr(self, "total_tax"):
-            result["totalTax"] = int(self.total_tax)
-        elif include_empty:
-            result["totalTax"] = int()
-        if hasattr(self, "total_price"):
-            result["totalPrice"] = int(self.total_price)
-        elif include_empty:
-            result["totalPrice"] = int()
-        if hasattr(self, "subtotal_price"):
-            result["subtotalPrice"] = int(self.subtotal_price)
-        elif include_empty:
-            result["subtotalPrice"] = int()
-        if hasattr(self, "sandbox"):
-            result["sandbox"] = bool(self.sandbox)
-        elif include_empty:
-            result["sandbox"] = bool()
-        if hasattr(self, "currency"):
-            result["currency"] = self.currency.to_dict(include_empty=include_empty)
-        elif include_empty:
-            result["currency"] = CurrencySummary()
-        if hasattr(self, "payment_order_no"):
-            result["paymentOrderNo"] = str(self.payment_order_no)
-        elif include_empty:
-            result["paymentOrderNo"] = str()
-        if hasattr(self, "billing_account"):
-            result["billingAccount"] = self.billing_account.to_dict(include_empty=include_empty)
-        elif include_empty:
-            result["billingAccount"] = BillingAccount()
-        if hasattr(self, "status"):
-            result["status"] = str(self.status)
-        elif include_empty:
-            result["status"] = str()
-        if hasattr(self, "status_reason"):
-            result["statusReason"] = str(self.status_reason)
-        elif include_empty:
-            result["statusReason"] = str()
-        if hasattr(self, "tx_end_time"):
-            result["txEndTime"] = str(self.tx_end_time)
-        elif include_empty:
-            result["txEndTime"] = str()
-        if hasattr(self, "ext_tx_id"):
-            result["extTxId"] = str(self.ext_tx_id)
-        elif include_empty:
-            result["extTxId"] = str()
-        if hasattr(self, "change_billing_account"):
-            result["changeBillingAccount"] = bool(self.change_billing_account)
-        elif include_empty:
-            result["changeBillingAccount"] = bool()
-        if hasattr(self, "retry_attempted"):
-            result["retryAttempted"] = int(self.retry_attempted)
-        elif include_empty:
-            result["retryAttempted"] = int()
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
+        if hasattr(self, "currency"):
+            result["currency"] = self.currency.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["currency"] = CurrencySummary()
+        if hasattr(self, "item_id"):
+            result["itemId"] = str(self.item_id)
+        elif include_empty:
+            result["itemId"] = str()
+        if hasattr(self, "namespace"):
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
+        if hasattr(self, "payment_order_no"):
+            result["paymentOrderNo"] = str(self.payment_order_no)
+        elif include_empty:
+            result["paymentOrderNo"] = str()
+        if hasattr(self, "recurring_order_no"):
+            result["recurringOrderNo"] = str(self.recurring_order_no)
+        elif include_empty:
+            result["recurringOrderNo"] = str()
+        if hasattr(self, "sandbox"):
+            result["sandbox"] = bool(self.sandbox)
+        elif include_empty:
+            result["sandbox"] = bool()
+        if hasattr(self, "status"):
+            result["status"] = str(self.status)
+        elif include_empty:
+            result["status"] = str()
+        if hasattr(self, "subscription_id"):
+            result["subscriptionId"] = str(self.subscription_id)
+        elif include_empty:
+            result["subscriptionId"] = str()
+        if hasattr(self, "title"):
+            result["title"] = str(self.title)
+        elif include_empty:
+            result["title"] = str()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()
+        if hasattr(self, "user_id"):
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
+        if hasattr(self, "billing_account"):
+            result["billingAccount"] = self.billing_account.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["billingAccount"] = BillingAccount()
+        if hasattr(self, "change_billing_account"):
+            result["changeBillingAccount"] = bool(self.change_billing_account)
+        elif include_empty:
+            result["changeBillingAccount"] = bool()
+        if hasattr(self, "description"):
+            result["description"] = str(self.description)
+        elif include_empty:
+            result["description"] = str()
+        if hasattr(self, "ext_tx_id"):
+            result["extTxId"] = str(self.ext_tx_id)
+        elif include_empty:
+            result["extTxId"] = str()
+        if hasattr(self, "retry_attempted"):
+            result["retryAttempted"] = int(self.retry_attempted)
+        elif include_empty:
+            result["retryAttempted"] = int()
+        if hasattr(self, "sku"):
+            result["sku"] = str(self.sku)
+        elif include_empty:
+            result["sku"] = str()
+        if hasattr(self, "status_reason"):
+            result["statusReason"] = str(self.status_reason)
+        elif include_empty:
+            result["statusReason"] = str()
+        if hasattr(self, "subtotal_price"):
+            result["subtotalPrice"] = int(self.subtotal_price)
+        elif include_empty:
+            result["subtotalPrice"] = int()
+        if hasattr(self, "total_price"):
+            result["totalPrice"] = int(self.total_price)
+        elif include_empty:
+            result["totalPrice"] = int()
+        if hasattr(self, "total_tax"):
+            result["totalTax"] = int(self.total_tax)
+        elif include_empty:
+            result["totalTax"] = int()
+        if hasattr(self, "tx_end_time"):
+            result["txEndTime"] = str(self.tx_end_time)
+        elif include_empty:
+            result["txEndTime"] = str()
         return result
 
     # endregion to methods
@@ -386,131 +386,131 @@ class BillingHistoryInfo(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "recurringOrderNo" in dict_ and dict_["recurringOrderNo"] is not None:
-            instance.recurring_order_no = str(dict_["recurringOrderNo"])
-        elif include_empty:
-            instance.recurring_order_no = str()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
-        if "subscriptionId" in dict_ and dict_["subscriptionId"] is not None:
-            instance.subscription_id = str(dict_["subscriptionId"])
-        elif include_empty:
-            instance.subscription_id = str()
-        if "itemId" in dict_ and dict_["itemId"] is not None:
-            instance.item_id = str(dict_["itemId"])
-        elif include_empty:
-            instance.item_id = str()
-        if "sku" in dict_ and dict_["sku"] is not None:
-            instance.sku = str(dict_["sku"])
-        elif include_empty:
-            instance.sku = str()
-        if "title" in dict_ and dict_["title"] is not None:
-            instance.title = str(dict_["title"])
-        elif include_empty:
-            instance.title = str()
-        if "description" in dict_ and dict_["description"] is not None:
-            instance.description = str(dict_["description"])
-        elif include_empty:
-            instance.description = str()
         if "amount" in dict_ and dict_["amount"] is not None:
             instance.amount = int(dict_["amount"])
         elif include_empty:
             instance.amount = int()
-        if "totalTax" in dict_ and dict_["totalTax"] is not None:
-            instance.total_tax = int(dict_["totalTax"])
-        elif include_empty:
-            instance.total_tax = int()
-        if "totalPrice" in dict_ and dict_["totalPrice"] is not None:
-            instance.total_price = int(dict_["totalPrice"])
-        elif include_empty:
-            instance.total_price = int()
-        if "subtotalPrice" in dict_ and dict_["subtotalPrice"] is not None:
-            instance.subtotal_price = int(dict_["subtotalPrice"])
-        elif include_empty:
-            instance.subtotal_price = int()
-        if "sandbox" in dict_ and dict_["sandbox"] is not None:
-            instance.sandbox = bool(dict_["sandbox"])
-        elif include_empty:
-            instance.sandbox = bool()
-        if "currency" in dict_ and dict_["currency"] is not None:
-            instance.currency = CurrencySummary.create_from_dict(dict_["currency"], include_empty=include_empty)
-        elif include_empty:
-            instance.currency = CurrencySummary()
-        if "paymentOrderNo" in dict_ and dict_["paymentOrderNo"] is not None:
-            instance.payment_order_no = str(dict_["paymentOrderNo"])
-        elif include_empty:
-            instance.payment_order_no = str()
-        if "billingAccount" in dict_ and dict_["billingAccount"] is not None:
-            instance.billing_account = BillingAccount.create_from_dict(dict_["billingAccount"], include_empty=include_empty)
-        elif include_empty:
-            instance.billing_account = BillingAccount()
-        if "status" in dict_ and dict_["status"] is not None:
-            instance.status = str(dict_["status"])
-        elif include_empty:
-            instance.status = str()
-        if "statusReason" in dict_ and dict_["statusReason"] is not None:
-            instance.status_reason = str(dict_["statusReason"])
-        elif include_empty:
-            instance.status_reason = str()
-        if "txEndTime" in dict_ and dict_["txEndTime"] is not None:
-            instance.tx_end_time = str(dict_["txEndTime"])
-        elif include_empty:
-            instance.tx_end_time = str()
-        if "extTxId" in dict_ and dict_["extTxId"] is not None:
-            instance.ext_tx_id = str(dict_["extTxId"])
-        elif include_empty:
-            instance.ext_tx_id = str()
-        if "changeBillingAccount" in dict_ and dict_["changeBillingAccount"] is not None:
-            instance.change_billing_account = bool(dict_["changeBillingAccount"])
-        elif include_empty:
-            instance.change_billing_account = bool()
-        if "retryAttempted" in dict_ and dict_["retryAttempted"] is not None:
-            instance.retry_attempted = int(dict_["retryAttempted"])
-        elif include_empty:
-            instance.retry_attempted = int()
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
             instance.created_at = str()
+        if "currency" in dict_ and dict_["currency"] is not None:
+            instance.currency = CurrencySummary.create_from_dict(dict_["currency"], include_empty=include_empty)
+        elif include_empty:
+            instance.currency = CurrencySummary()
+        if "itemId" in dict_ and dict_["itemId"] is not None:
+            instance.item_id = str(dict_["itemId"])
+        elif include_empty:
+            instance.item_id = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
+        if "paymentOrderNo" in dict_ and dict_["paymentOrderNo"] is not None:
+            instance.payment_order_no = str(dict_["paymentOrderNo"])
+        elif include_empty:
+            instance.payment_order_no = str()
+        if "recurringOrderNo" in dict_ and dict_["recurringOrderNo"] is not None:
+            instance.recurring_order_no = str(dict_["recurringOrderNo"])
+        elif include_empty:
+            instance.recurring_order_no = str()
+        if "sandbox" in dict_ and dict_["sandbox"] is not None:
+            instance.sandbox = bool(dict_["sandbox"])
+        elif include_empty:
+            instance.sandbox = bool()
+        if "status" in dict_ and dict_["status"] is not None:
+            instance.status = str(dict_["status"])
+        elif include_empty:
+            instance.status = str()
+        if "subscriptionId" in dict_ and dict_["subscriptionId"] is not None:
+            instance.subscription_id = str(dict_["subscriptionId"])
+        elif include_empty:
+            instance.subscription_id = str()
+        if "title" in dict_ and dict_["title"] is not None:
+            instance.title = str(dict_["title"])
+        elif include_empty:
+            instance.title = str()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
+        if "billingAccount" in dict_ and dict_["billingAccount"] is not None:
+            instance.billing_account = BillingAccount.create_from_dict(dict_["billingAccount"], include_empty=include_empty)
+        elif include_empty:
+            instance.billing_account = BillingAccount()
+        if "changeBillingAccount" in dict_ and dict_["changeBillingAccount"] is not None:
+            instance.change_billing_account = bool(dict_["changeBillingAccount"])
+        elif include_empty:
+            instance.change_billing_account = bool()
+        if "description" in dict_ and dict_["description"] is not None:
+            instance.description = str(dict_["description"])
+        elif include_empty:
+            instance.description = str()
+        if "extTxId" in dict_ and dict_["extTxId"] is not None:
+            instance.ext_tx_id = str(dict_["extTxId"])
+        elif include_empty:
+            instance.ext_tx_id = str()
+        if "retryAttempted" in dict_ and dict_["retryAttempted"] is not None:
+            instance.retry_attempted = int(dict_["retryAttempted"])
+        elif include_empty:
+            instance.retry_attempted = int()
+        if "sku" in dict_ and dict_["sku"] is not None:
+            instance.sku = str(dict_["sku"])
+        elif include_empty:
+            instance.sku = str()
+        if "statusReason" in dict_ and dict_["statusReason"] is not None:
+            instance.status_reason = str(dict_["statusReason"])
+        elif include_empty:
+            instance.status_reason = str()
+        if "subtotalPrice" in dict_ and dict_["subtotalPrice"] is not None:
+            instance.subtotal_price = int(dict_["subtotalPrice"])
+        elif include_empty:
+            instance.subtotal_price = int()
+        if "totalPrice" in dict_ and dict_["totalPrice"] is not None:
+            instance.total_price = int(dict_["totalPrice"])
+        elif include_empty:
+            instance.total_price = int()
+        if "totalTax" in dict_ and dict_["totalTax"] is not None:
+            instance.total_tax = int(dict_["totalTax"])
+        elif include_empty:
+            instance.total_tax = int()
+        if "txEndTime" in dict_ and dict_["txEndTime"] is not None:
+            instance.tx_end_time = str(dict_["txEndTime"])
+        elif include_empty:
+            instance.tx_end_time = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "recurringOrderNo": "recurring_order_no",
-            "namespace": "namespace",
-            "userId": "user_id",
-            "subscriptionId": "subscription_id",
-            "itemId": "item_id",
-            "sku": "sku",
-            "title": "title",
-            "description": "description",
             "amount": "amount",
-            "totalTax": "total_tax",
-            "totalPrice": "total_price",
-            "subtotalPrice": "subtotal_price",
-            "sandbox": "sandbox",
-            "currency": "currency",
-            "paymentOrderNo": "payment_order_no",
-            "billingAccount": "billing_account",
-            "status": "status",
-            "statusReason": "status_reason",
-            "txEndTime": "tx_end_time",
-            "extTxId": "ext_tx_id",
-            "changeBillingAccount": "change_billing_account",
-            "retryAttempted": "retry_attempted",
             "createdAt": "created_at",
+            "currency": "currency",
+            "itemId": "item_id",
+            "namespace": "namespace",
+            "paymentOrderNo": "payment_order_no",
+            "recurringOrderNo": "recurring_order_no",
+            "sandbox": "sandbox",
+            "status": "status",
+            "subscriptionId": "subscription_id",
+            "title": "title",
             "updatedAt": "updated_at",
+            "userId": "user_id",
+            "billingAccount": "billing_account",
+            "changeBillingAccount": "change_billing_account",
+            "description": "description",
+            "extTxId": "ext_tx_id",
+            "retryAttempted": "retry_attempted",
+            "sku": "sku",
+            "statusReason": "status_reason",
+            "subtotalPrice": "subtotal_price",
+            "totalPrice": "total_price",
+            "totalTax": "total_tax",
+            "txEndTime": "tx_end_time",
         }
 
     # endregion static methods

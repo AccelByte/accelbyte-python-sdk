@@ -30,16 +30,16 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequest(Model):
     Properties:
         code: (Code) REQUIRED str
 
-        password: (Password) REQUIRED str
-
         login_id: (loginId) REQUIRED str
+
+        password: (Password) REQUIRED str
     """
 
     # region fields
 
     code: str                                                                                      # REQUIRED
-    password: str                                                                                  # REQUIRED
     login_id: str                                                                                  # REQUIRED
+    password: str                                                                                  # REQUIRED
 
     # endregion fields
 
@@ -49,12 +49,12 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequest(Model):
         self.code = value
         return self
 
-    def with_password(self, value: str) -> ModelUpgradeHeadlessAccountWithVerificationCodeRequest:
-        self.password = value
-        return self
-
     def with_login_id(self, value: str) -> ModelUpgradeHeadlessAccountWithVerificationCodeRequest:
         self.login_id = value
+        return self
+
+    def with_password(self, value: str) -> ModelUpgradeHeadlessAccountWithVerificationCodeRequest:
+        self.password = value
         return self
 
     # endregion with_x methods
@@ -67,14 +67,14 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequest(Model):
             result["Code"] = str(self.code)
         elif include_empty:
             result["Code"] = str()
-        if hasattr(self, "password"):
-            result["Password"] = str(self.password)
-        elif include_empty:
-            result["Password"] = str()
         if hasattr(self, "login_id"):
             result["loginId"] = str(self.login_id)
         elif include_empty:
             result["loginId"] = str()
+        if hasattr(self, "password"):
+            result["Password"] = str(self.password)
+        elif include_empty:
+            result["Password"] = str()
         return result
 
     # endregion to methods
@@ -103,22 +103,22 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequest(Model):
             instance.code = str(dict_["Code"])
         elif include_empty:
             instance.code = str()
-        if "Password" in dict_ and dict_["Password"] is not None:
-            instance.password = str(dict_["Password"])
-        elif include_empty:
-            instance.password = str()
         if "loginId" in dict_ and dict_["loginId"] is not None:
             instance.login_id = str(dict_["loginId"])
         elif include_empty:
             instance.login_id = str()
+        if "Password" in dict_ and dict_["Password"] is not None:
+            instance.password = str(dict_["Password"])
+        elif include_empty:
+            instance.password = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "Code": "code",
-            "Password": "password",
             "loginId": "login_id",
+            "Password": "password",
         }
 
     # endregion static methods

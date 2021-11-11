@@ -130,11 +130,11 @@ class PlatformTokenGrantV3(Operation):
 
         security: bearer
 
-        platform_token: (platform_token) OPTIONAL str in form_data
-
         client_id: (client_id) OPTIONAL str in form_data
 
         device_id: (device_id) OPTIONAL str in form_data
+
+        platform_token: (platform_token) OPTIONAL str in form_data
 
         platform_id: (platformId) REQUIRED str in path
 
@@ -155,9 +155,9 @@ class PlatformTokenGrantV3(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    platform_token: str                                                                            # OPTIONAL in [form_data]
     client_id: str                                                                                 # OPTIONAL in [form_data]
     device_id: str                                                                                 # OPTIONAL in [form_data]
+    platform_token: str                                                                            # OPTIONAL in [form_data]
     platform_id: str                                                                               # REQUIRED in [path]
 
     # endregion fields
@@ -221,12 +221,12 @@ class PlatformTokenGrantV3(Operation):
 
     def get_form_data_params(self) -> dict:
         result = {}
-        if hasattr(self, "platform_token"):
-            result["platform_token"] = self.platform_token
         if hasattr(self, "client_id"):
             result["client_id"] = self.client_id
         if hasattr(self, "device_id"):
             result["device_id"] = self.device_id
+        if hasattr(self, "platform_token"):
+            result["platform_token"] = self.platform_token
         return result
 
     def get_path_params(self) -> dict:
@@ -248,16 +248,16 @@ class PlatformTokenGrantV3(Operation):
 
     # region with_x methods
 
-    def with_platform_token(self, value: str) -> PlatformTokenGrantV3:
-        self.platform_token = value
-        return self
-
     def with_client_id(self, value: str) -> PlatformTokenGrantV3:
         self.client_id = value
         return self
 
     def with_device_id(self, value: str) -> PlatformTokenGrantV3:
         self.device_id = value
+        return self
+
+    def with_platform_token(self, value: str) -> PlatformTokenGrantV3:
+        self.platform_token = value
         return self
 
     def with_platform_id(self, value: str) -> PlatformTokenGrantV3:
@@ -270,10 +270,6 @@ class PlatformTokenGrantV3(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "platform_token") and self.platform_token:
-            result["platform_token"] = str(self.platform_token)
-        elif include_empty:
-            result["platform_token"] = str()
         if hasattr(self, "client_id") and self.client_id:
             result["client_id"] = str(self.client_id)
         elif include_empty:
@@ -282,6 +278,10 @@ class PlatformTokenGrantV3(Operation):
             result["device_id"] = str(self.device_id)
         elif include_empty:
             result["device_id"] = str()
+        if hasattr(self, "platform_token") and self.platform_token:
+            result["platform_token"] = str(self.platform_token)
+        elif include_empty:
+            result["platform_token"] = str()
         if hasattr(self, "platform_id") and self.platform_id:
             result["platformId"] = str(self.platform_id)
         elif include_empty:
@@ -321,27 +321,23 @@ class PlatformTokenGrantV3(Operation):
     def create(
         cls,
         platform_id: str,
-        platform_token: Optional[str] = None,
         client_id: Optional[str] = None,
         device_id: Optional[str] = None,
+        platform_token: Optional[str] = None,
     ) -> PlatformTokenGrantV3:
         instance = cls()
         instance.platform_id = platform_id
-        if platform_token is not None:
-            instance.platform_token = platform_token
         if client_id is not None:
             instance.client_id = client_id
         if device_id is not None:
             instance.device_id = device_id
+        if platform_token is not None:
+            instance.platform_token = platform_token
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PlatformTokenGrantV3:
         instance = cls()
-        if "platform_token" in dict_ and dict_["platform_token"] is not None:
-            instance.platform_token = str(dict_["platform_token"])
-        elif include_empty:
-            instance.platform_token = str()
         if "client_id" in dict_ and dict_["client_id"] is not None:
             instance.client_id = str(dict_["client_id"])
         elif include_empty:
@@ -350,6 +346,10 @@ class PlatformTokenGrantV3(Operation):
             instance.device_id = str(dict_["device_id"])
         elif include_empty:
             instance.device_id = str()
+        if "platform_token" in dict_ and dict_["platform_token"] is not None:
+            instance.platform_token = str(dict_["platform_token"])
+        elif include_empty:
+            instance.platform_token = str()
         if "platformId" in dict_ and dict_["platformId"] is not None:
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
@@ -359,9 +359,9 @@ class PlatformTokenGrantV3(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "platform_token": "platform_token",
             "client_id": "client_id",
             "device_id": "device_id",
+            "platform_token": "platform_token",
             "platformId": "platform_id",
         }
 

@@ -54,11 +54,11 @@ class GetItemIdBySku(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        active_only: (activeOnly) OPTIONAL bool in query
+
         store_id: (storeId) OPTIONAL str in query
 
         sku: (sku) REQUIRED str in query
-
-        active_only: (activeOnly) OPTIONAL bool in query
 
     Responses:
         200: OK - ItemId (successful operation)
@@ -76,9 +76,9 @@ class GetItemIdBySku(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
+    active_only: bool                                                                              # OPTIONAL in [query]
     store_id: str                                                                                  # OPTIONAL in [query]
     sku: str                                                                                       # REQUIRED in [query]
-    active_only: bool                                                                              # OPTIONAL in [query]
 
     # endregion fields
 
@@ -151,12 +151,12 @@ class GetItemIdBySku(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "active_only"):
+            result["activeOnly"] = self.active_only
         if hasattr(self, "store_id"):
             result["storeId"] = self.store_id
         if hasattr(self, "sku"):
             result["sku"] = self.sku
-        if hasattr(self, "active_only"):
-            result["activeOnly"] = self.active_only
         return result
 
     # endregion get_x_params methods
@@ -178,16 +178,16 @@ class GetItemIdBySku(Operation):
         self.namespace = value
         return self
 
+    def with_active_only(self, value: bool) -> GetItemIdBySku:
+        self.active_only = value
+        return self
+
     def with_store_id(self, value: str) -> GetItemIdBySku:
         self.store_id = value
         return self
 
     def with_sku(self, value: str) -> GetItemIdBySku:
         self.sku = value
-        return self
-
-    def with_active_only(self, value: bool) -> GetItemIdBySku:
-        self.active_only = value
         return self
 
     # endregion with_x methods
@@ -200,6 +200,10 @@ class GetItemIdBySku(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
+        if hasattr(self, "active_only") and self.active_only:
+            result["activeOnly"] = bool(self.active_only)
+        elif include_empty:
+            result["activeOnly"] = bool()
         if hasattr(self, "store_id") and self.store_id:
             result["storeId"] = str(self.store_id)
         elif include_empty:
@@ -208,10 +212,6 @@ class GetItemIdBySku(Operation):
             result["sku"] = str(self.sku)
         elif include_empty:
             result["sku"] = str()
-        if hasattr(self, "active_only") and self.active_only:
-            result["activeOnly"] = bool(self.active_only)
-        elif include_empty:
-            result["activeOnly"] = bool()
         return result
 
     # endregion to methods
@@ -244,16 +244,16 @@ class GetItemIdBySku(Operation):
         cls,
         namespace: str,
         sku: str,
-        store_id: Optional[str] = None,
         active_only: Optional[bool] = None,
+        store_id: Optional[str] = None,
     ) -> GetItemIdBySku:
         instance = cls()
         instance.namespace = namespace
         instance.sku = sku
-        if store_id is not None:
-            instance.store_id = store_id
         if active_only is not None:
             instance.active_only = active_only
+        if store_id is not None:
+            instance.store_id = store_id
         return instance
 
     @classmethod
@@ -263,6 +263,10 @@ class GetItemIdBySku(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
+        if "activeOnly" in dict_ and dict_["activeOnly"] is not None:
+            instance.active_only = bool(dict_["activeOnly"])
+        elif include_empty:
+            instance.active_only = bool()
         if "storeId" in dict_ and dict_["storeId"] is not None:
             instance.store_id = str(dict_["storeId"])
         elif include_empty:
@@ -271,19 +275,15 @@ class GetItemIdBySku(Operation):
             instance.sku = str(dict_["sku"])
         elif include_empty:
             instance.sku = str()
-        if "activeOnly" in dict_ and dict_["activeOnly"] is not None:
-            instance.active_only = bool(dict_["activeOnly"])
-        elif include_empty:
-            instance.active_only = bool()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "activeOnly": "active_only",
             "storeId": "store_id",
             "sku": "sku",
-            "activeOnly": "active_only",
         }
 
     # endregion static methods

@@ -28,33 +28,33 @@ class BulkStatItemOperationResult(Model):
     """Bulk stat item operation result (BulkStatItemOperationResult)
 
     Properties:
-        success: (success) OPTIONAL bool
+        details: (details) OPTIONAL Dict[str, Any]
 
         stat_code: (statCode) OPTIONAL str
 
-        details: (details) OPTIONAL Dict[str, Any]
+        success: (success) OPTIONAL bool
     """
 
     # region fields
 
-    success: bool                                                                                  # OPTIONAL
-    stat_code: str                                                                                 # OPTIONAL
     details: Dict[str, Any]                                                                        # OPTIONAL
+    stat_code: str                                                                                 # OPTIONAL
+    success: bool                                                                                  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_success(self, value: bool) -> BulkStatItemOperationResult:
-        self.success = value
+    def with_details(self, value: Dict[str, Any]) -> BulkStatItemOperationResult:
+        self.details = value
         return self
 
     def with_stat_code(self, value: str) -> BulkStatItemOperationResult:
         self.stat_code = value
         return self
 
-    def with_details(self, value: Dict[str, Any]) -> BulkStatItemOperationResult:
-        self.details = value
+    def with_success(self, value: bool) -> BulkStatItemOperationResult:
+        self.success = value
         return self
 
     # endregion with_x methods
@@ -63,18 +63,18 @@ class BulkStatItemOperationResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "success"):
-            result["success"] = bool(self.success)
-        elif include_empty:
-            result["success"] = bool()
-        if hasattr(self, "stat_code"):
-            result["statCode"] = str(self.stat_code)
-        elif include_empty:
-            result["statCode"] = str()
         if hasattr(self, "details"):
             result["details"] = {str(k0): v0 for k0, v0 in self.details.items()}
         elif include_empty:
             result["details"] = {}
+        if hasattr(self, "stat_code"):
+            result["statCode"] = str(self.stat_code)
+        elif include_empty:
+            result["statCode"] = str()
+        if hasattr(self, "success"):
+            result["success"] = bool(self.success)
+        elif include_empty:
+            result["success"] = bool()
         return result
 
     # endregion to methods
@@ -102,26 +102,26 @@ class BulkStatItemOperationResult(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "success" in dict_ and dict_["success"] is not None:
-            instance.success = bool(dict_["success"])
-        elif include_empty:
-            instance.success = bool()
-        if "statCode" in dict_ and dict_["statCode"] is not None:
-            instance.stat_code = str(dict_["statCode"])
-        elif include_empty:
-            instance.stat_code = str()
         if "details" in dict_ and dict_["details"] is not None:
             instance.details = {str(k0): v0 for k0, v0 in dict_["details"].items()}
         elif include_empty:
             instance.details = {}
+        if "statCode" in dict_ and dict_["statCode"] is not None:
+            instance.stat_code = str(dict_["statCode"])
+        elif include_empty:
+            instance.stat_code = str()
+        if "success" in dict_ and dict_["success"] is not None:
+            instance.success = bool(dict_["success"])
+        elif include_empty:
+            instance.success = bool()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "success": "success",
-            "statCode": "stat_code",
             "details": "details",
+            "statCode": "stat_code",
+            "success": "success",
         }
 
     # endregion static methods

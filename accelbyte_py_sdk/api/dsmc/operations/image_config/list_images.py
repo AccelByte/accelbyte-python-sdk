@@ -50,11 +50,11 @@ class ListImages(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        q: (q) OPTIONAL str in query
+        count: (count) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
-        count: (count) OPTIONAL int in query
+        q: (q) OPTIONAL str in query
 
     Responses:
         200: OK - ModelsListImageResponse (configs listed)
@@ -76,9 +76,9 @@ class ListImages(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    q: str                                                                                         # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
     count: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
+    q: str                                                                                         # OPTIONAL in [query]
 
     # endregion fields
 
@@ -150,12 +150,12 @@ class ListImages(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "q"):
-            result["q"] = self.q
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "count"):
             result["count"] = self.count
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
+        if hasattr(self, "q"):
+            result["q"] = self.q
         return result
 
     # endregion get_x_params methods
@@ -175,16 +175,16 @@ class ListImages(Operation):
         self.namespace = value
         return self
 
-    def with_q(self, value: str) -> ListImages:
-        self.q = value
+    def with_count(self, value: int) -> ListImages:
+        self.count = value
         return self
 
     def with_offset(self, value: int) -> ListImages:
         self.offset = value
         return self
 
-    def with_count(self, value: int) -> ListImages:
-        self.count = value
+    def with_q(self, value: str) -> ListImages:
+        self.q = value
         return self
 
     # endregion with_x methods
@@ -197,18 +197,18 @@ class ListImages(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "q") and self.q:
-            result["q"] = str(self.q)
-        elif include_empty:
-            result["q"] = str()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
         if hasattr(self, "count") and self.count:
             result["count"] = int(self.count)
         elif include_empty:
             result["count"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
+        if hasattr(self, "q") and self.q:
+            result["q"] = str(self.q)
+        elif include_empty:
+            result["q"] = str()
         return result
 
     # endregion to methods
@@ -248,18 +248,18 @@ class ListImages(Operation):
     def create(
         cls,
         namespace: str,
-        q: Optional[str] = None,
-        offset: Optional[int] = None,
         count: Optional[int] = None,
+        offset: Optional[int] = None,
+        q: Optional[str] = None,
     ) -> ListImages:
         instance = cls()
         instance.namespace = namespace
-        if q is not None:
-            instance.q = q
-        if offset is not None:
-            instance.offset = offset
         if count is not None:
             instance.count = count
+        if offset is not None:
+            instance.offset = offset
+        if q is not None:
+            instance.q = q
         return instance
 
     @classmethod
@@ -269,27 +269,27 @@ class ListImages(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "q" in dict_ and dict_["q"] is not None:
-            instance.q = str(dict_["q"])
-        elif include_empty:
-            instance.q = str()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
         if "count" in dict_ and dict_["count"] is not None:
             instance.count = int(dict_["count"])
         elif include_empty:
             instance.count = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
+        if "q" in dict_ and dict_["q"] is not None:
+            instance.q = str(dict_["q"])
+        elif include_empty:
+            instance.q = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "q": "q",
-            "offset": "offset",
             "count": "count",
+            "offset": "offset",
+            "q": "q",
         }
 
     # endregion static methods

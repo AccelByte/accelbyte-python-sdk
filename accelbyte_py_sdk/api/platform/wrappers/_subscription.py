@@ -55,14 +55,14 @@ from ..operations.subscription import RecurringChargeSubscription
 
 
 @same_doc_as(CancelSubscription)
-def cancel_subscription(user_id: str, subscription_id: str, body: Optional[CancelRequest] = None, force: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def cancel_subscription(subscription_id: str, user_id: str, body: Optional[CancelRequest] = None, force: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = CancelSubscription.create(
-        user_id=user_id,
         subscription_id=subscription_id,
+        user_id=user_id,
         body=body,
         force=force,
         namespace=namespace,
@@ -85,76 +85,76 @@ def check_user_subscription_subscribable_by_item_id(user_id: str, item_id: str, 
 
 
 @same_doc_as(DeleteUserSubscription)
-def delete_user_subscription(user_id: str, subscription_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def delete_user_subscription(subscription_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = DeleteUserSubscription.create(
-        user_id=user_id,
         subscription_id=subscription_id,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserSubscription)
-def get_user_subscription(user_id: str, subscription_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_user_subscription(subscription_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetUserSubscription.create(
-        user_id=user_id,
         subscription_id=subscription_id,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserSubscriptionActivities)
-def get_user_subscription_activities(user_id: str, subscription_id: Optional[str] = None, exclude_system: Optional[bool] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_user_subscription_activities(user_id: str, exclude_system: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, subscription_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetUserSubscriptionActivities.create(
         user_id=user_id,
-        subscription_id=subscription_id,
         exclude_system=exclude_system,
-        offset=offset,
         limit=limit,
+        offset=offset,
+        subscription_id=subscription_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserSubscriptionBillingHistories)
-def get_user_subscription_billing_histories(user_id: str, subscription_id: str, exclude_free: Optional[bool] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_user_subscription_billing_histories(subscription_id: str, user_id: str, exclude_free: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetUserSubscriptionBillingHistories.create(
-        user_id=user_id,
         subscription_id=subscription_id,
+        user_id=user_id,
         exclude_free=exclude_free,
-        offset=offset,
         limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GrantDaysToSubscription)
-def grant_days_to_subscription(user_id: str, subscription_id: str, body: Optional[GrantSubscriptionDaysRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def grant_days_to_subscription(subscription_id: str, user_id: str, body: Optional[GrantSubscriptionDaysRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GrantDaysToSubscription.create(
-        user_id=user_id,
         subscription_id=subscription_id,
+        user_id=user_id,
         body=body,
         namespace=namespace,
     )
@@ -176,14 +176,14 @@ def platform_subscribe_subscription(user_id: str, body: Optional[PlatformSubscri
 
 
 @same_doc_as(ProcessUserSubscriptionNotification)
-def process_user_subscription_notification(user_id: str, subscription_id: str, body: Optional[TradeNotification] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def process_user_subscription_notification(subscription_id: str, user_id: str, body: Optional[TradeNotification] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = ProcessUserSubscriptionNotification.create(
-        user_id=user_id,
         subscription_id=subscription_id,
+        user_id=user_id,
         body=body,
         namespace=namespace,
     )
@@ -191,14 +191,14 @@ def process_user_subscription_notification(user_id: str, subscription_id: str, b
 
 
 @same_doc_as(PublicCancelSubscription)
-def public_cancel_subscription(user_id: str, subscription_id: str, body: Optional[CancelRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_cancel_subscription(subscription_id: str, user_id: str, body: Optional[CancelRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicCancelSubscription.create(
-        user_id=user_id,
         subscription_id=subscription_id,
+        user_id=user_id,
         body=body,
         namespace=namespace,
     )
@@ -206,14 +206,14 @@ def public_cancel_subscription(user_id: str, subscription_id: str, body: Optiona
 
 
 @same_doc_as(PublicChangeSubscriptionBillingAccount)
-def public_change_subscription_billing_account(user_id: str, subscription_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_change_subscription_billing_account(subscription_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicChangeSubscriptionBillingAccount.create(
-        user_id=user_id,
         subscription_id=subscription_id,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -234,51 +234,51 @@ def public_check_user_subscription_subscribable_by_item_id(user_id: str, item_id
 
 
 @same_doc_as(PublicGetUserSubscription)
-def public_get_user_subscription(user_id: str, subscription_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_get_user_subscription(subscription_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicGetUserSubscription.create(
-        user_id=user_id,
         subscription_id=subscription_id,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetUserSubscriptionBillingHistories)
-def public_get_user_subscription_billing_histories(user_id: str, subscription_id: str, exclude_free: Optional[bool] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_get_user_subscription_billing_histories(subscription_id: str, user_id: str, exclude_free: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicGetUserSubscriptionBillingHistories.create(
-        user_id=user_id,
         subscription_id=subscription_id,
+        user_id=user_id,
         exclude_free=exclude_free,
-        offset=offset,
         limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicQueryUserSubscriptions)
-def public_query_user_subscriptions(user_id: str, item_id: Optional[str] = None, sku: Optional[str] = None, status: Optional[str] = None, charge_status: Optional[str] = None, subscribed_by: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_query_user_subscriptions(user_id: str, charge_status: Optional[str] = None, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sku: Optional[str] = None, status: Optional[str] = None, subscribed_by: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicQueryUserSubscriptions.create(
         user_id=user_id,
+        charge_status=charge_status,
         item_id=item_id,
+        limit=limit,
+        offset=offset,
         sku=sku,
         status=status,
-        charge_status=charge_status,
         subscribed_by=subscribed_by,
-        offset=offset,
-        limit=limit,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -299,40 +299,40 @@ def public_subscribe_subscription(user_id: str, body: Optional[SubscribeRequest]
 
 
 @same_doc_as(QuerySubscriptions)
-def query_subscriptions(user_id: Optional[str] = None, item_id: Optional[str] = None, sku: Optional[str] = None, status: Optional[str] = None, charge_status: Optional[str] = None, subscribed_by: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_subscriptions(charge_status: Optional[str] = None, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sku: Optional[str] = None, status: Optional[str] = None, subscribed_by: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = QuerySubscriptions.create(
-        user_id=user_id,
+        charge_status=charge_status,
         item_id=item_id,
+        limit=limit,
+        offset=offset,
         sku=sku,
         status=status,
-        charge_status=charge_status,
         subscribed_by=subscribed_by,
-        offset=offset,
-        limit=limit,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QueryUserSubscriptions)
-def query_user_subscriptions(user_id: str, item_id: Optional[str] = None, sku: Optional[str] = None, status: Optional[str] = None, charge_status: Optional[str] = None, subscribed_by: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_user_subscriptions(user_id: str, charge_status: Optional[str] = None, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sku: Optional[str] = None, status: Optional[str] = None, subscribed_by: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = QueryUserSubscriptions.create(
         user_id=user_id,
+        charge_status=charge_status,
         item_id=item_id,
+        limit=limit,
+        offset=offset,
         sku=sku,
         status=status,
-        charge_status=charge_status,
         subscribed_by=subscribed_by,
-        offset=offset,
-        limit=limit,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

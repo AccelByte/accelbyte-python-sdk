@@ -124,21 +124,21 @@ class TokenGrant(Operation):
 
         device_id: (Device-Id) OPTIONAL str in header
 
-        grant_type: (grant_type) REQUIRED str in form_data
-
-        username: (username) OPTIONAL str in form_data
-
-        password: (password) OPTIONAL str in form_data
-
-        refresh_token: (refresh_token) OPTIONAL str in form_data
-
         code: (code) OPTIONAL str in form_data
 
-        redirect_uri: (redirect_uri) OPTIONAL str in form_data
+        extend_exp: (extend_exp) OPTIONAL bool in form_data
 
         namespace: (namespace) OPTIONAL str in form_data
 
-        extend_exp: (extend_exp) OPTIONAL bool in form_data
+        password: (password) OPTIONAL str in form_data
+
+        redirect_uri: (redirect_uri) OPTIONAL str in form_data
+
+        refresh_token: (refresh_token) OPTIONAL str in form_data
+
+        username: (username) OPTIONAL str in form_data
+
+        grant_type: (grant_type) REQUIRED str in form_data
 
     Responses:
         200: OK - OauthmodelTokenResponse (Token returned)
@@ -158,14 +158,14 @@ class TokenGrant(Operation):
     _location_query: str = None
 
     device_id: str                                                                                 # OPTIONAL in [header]
-    grant_type: str                                                                                # REQUIRED in [form_data]
-    username: str                                                                                  # OPTIONAL in [form_data]
-    password: str                                                                                  # OPTIONAL in [form_data]
-    refresh_token: str                                                                             # OPTIONAL in [form_data]
     code: str                                                                                      # OPTIONAL in [form_data]
-    redirect_uri: str                                                                              # OPTIONAL in [form_data]
-    namespace: str                                                                                 # OPTIONAL in [form_data]
     extend_exp: bool                                                                               # OPTIONAL in [form_data]
+    namespace: str                                                                                 # OPTIONAL in [form_data]
+    password: str                                                                                  # OPTIONAL in [form_data]
+    redirect_uri: str                                                                              # OPTIONAL in [form_data]
+    refresh_token: str                                                                             # OPTIONAL in [form_data]
+    username: str                                                                                  # OPTIONAL in [form_data]
+    grant_type: str                                                                                # REQUIRED in [form_data]
 
     # endregion fields
 
@@ -230,22 +230,22 @@ class TokenGrant(Operation):
 
     def get_form_data_params(self) -> dict:
         result = {}
-        if hasattr(self, "grant_type"):
-            result["grant_type"] = self.grant_type
-        if hasattr(self, "username"):
-            result["username"] = self.username
-        if hasattr(self, "password"):
-            result["password"] = self.password
-        if hasattr(self, "refresh_token"):
-            result["refresh_token"] = self.refresh_token
         if hasattr(self, "code"):
             result["code"] = self.code
-        if hasattr(self, "redirect_uri"):
-            result["redirect_uri"] = self.redirect_uri
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "extend_exp"):
             result["extend_exp"] = self.extend_exp
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
+        if hasattr(self, "password"):
+            result["password"] = self.password
+        if hasattr(self, "redirect_uri"):
+            result["redirect_uri"] = self.redirect_uri
+        if hasattr(self, "refresh_token"):
+            result["refresh_token"] = self.refresh_token
+        if hasattr(self, "username"):
+            result["username"] = self.username
+        if hasattr(self, "grant_type"):
+            result["grant_type"] = self.grant_type
         return result
 
     # endregion get_x_params methods
@@ -265,36 +265,36 @@ class TokenGrant(Operation):
         self.device_id = value
         return self
 
-    def with_grant_type(self, value: str) -> TokenGrant:
-        self.grant_type = value
-        return self
-
-    def with_username(self, value: str) -> TokenGrant:
-        self.username = value
-        return self
-
-    def with_password(self, value: str) -> TokenGrant:
-        self.password = value
-        return self
-
-    def with_refresh_token(self, value: str) -> TokenGrant:
-        self.refresh_token = value
-        return self
-
     def with_code(self, value: str) -> TokenGrant:
         self.code = value
         return self
 
-    def with_redirect_uri(self, value: str) -> TokenGrant:
-        self.redirect_uri = value
+    def with_extend_exp(self, value: bool) -> TokenGrant:
+        self.extend_exp = value
         return self
 
     def with_namespace(self, value: str) -> TokenGrant:
         self.namespace = value
         return self
 
-    def with_extend_exp(self, value: bool) -> TokenGrant:
-        self.extend_exp = value
+    def with_password(self, value: str) -> TokenGrant:
+        self.password = value
+        return self
+
+    def with_redirect_uri(self, value: str) -> TokenGrant:
+        self.redirect_uri = value
+        return self
+
+    def with_refresh_token(self, value: str) -> TokenGrant:
+        self.refresh_token = value
+        return self
+
+    def with_username(self, value: str) -> TokenGrant:
+        self.username = value
+        return self
+
+    def with_grant_type(self, value: str) -> TokenGrant:
+        self.grant_type = value
         return self
 
     # endregion with_x methods
@@ -307,38 +307,38 @@ class TokenGrant(Operation):
             result["Device-Id"] = str(self.device_id)
         elif include_empty:
             result["Device-Id"] = str()
-        if hasattr(self, "grant_type") and self.grant_type:
-            result["grant_type"] = str(self.grant_type)
-        elif include_empty:
-            result["grant_type"] = str()
-        if hasattr(self, "username") and self.username:
-            result["username"] = str(self.username)
-        elif include_empty:
-            result["username"] = str()
-        if hasattr(self, "password") and self.password:
-            result["password"] = str(self.password)
-        elif include_empty:
-            result["password"] = str()
-        if hasattr(self, "refresh_token") and self.refresh_token:
-            result["refresh_token"] = str(self.refresh_token)
-        elif include_empty:
-            result["refresh_token"] = str()
         if hasattr(self, "code") and self.code:
             result["code"] = str(self.code)
         elif include_empty:
             result["code"] = str()
-        if hasattr(self, "redirect_uri") and self.redirect_uri:
-            result["redirect_uri"] = str(self.redirect_uri)
-        elif include_empty:
-            result["redirect_uri"] = str()
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "extend_exp") and self.extend_exp:
             result["extend_exp"] = bool(self.extend_exp)
         elif include_empty:
             result["extend_exp"] = bool()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
+        if hasattr(self, "password") and self.password:
+            result["password"] = str(self.password)
+        elif include_empty:
+            result["password"] = str()
+        if hasattr(self, "redirect_uri") and self.redirect_uri:
+            result["redirect_uri"] = str(self.redirect_uri)
+        elif include_empty:
+            result["redirect_uri"] = str()
+        if hasattr(self, "refresh_token") and self.refresh_token:
+            result["refresh_token"] = str(self.refresh_token)
+        elif include_empty:
+            result["refresh_token"] = str()
+        if hasattr(self, "username") and self.username:
+            result["username"] = str(self.username)
+        elif include_empty:
+            result["username"] = str()
+        if hasattr(self, "grant_type") and self.grant_type:
+            result["grant_type"] = str(self.grant_type)
+        elif include_empty:
+            result["grant_type"] = str()
         return result
 
     # endregion to methods
@@ -375,32 +375,32 @@ class TokenGrant(Operation):
         cls,
         grant_type: str,
         device_id: Optional[str] = None,
-        username: Optional[str] = None,
-        password: Optional[str] = None,
-        refresh_token: Optional[str] = None,
         code: Optional[str] = None,
-        redirect_uri: Optional[str] = None,
-        namespace: Optional[str] = None,
         extend_exp: Optional[bool] = None,
+        namespace: Optional[str] = None,
+        password: Optional[str] = None,
+        redirect_uri: Optional[str] = None,
+        refresh_token: Optional[str] = None,
+        username: Optional[str] = None,
     ) -> TokenGrant:
         instance = cls()
         instance.grant_type = grant_type
         if device_id is not None:
             instance.device_id = device_id
-        if username is not None:
-            instance.username = username
-        if password is not None:
-            instance.password = password
-        if refresh_token is not None:
-            instance.refresh_token = refresh_token
         if code is not None:
             instance.code = code
-        if redirect_uri is not None:
-            instance.redirect_uri = redirect_uri
-        if namespace is not None:
-            instance.namespace = namespace
         if extend_exp is not None:
             instance.extend_exp = extend_exp
+        if namespace is not None:
+            instance.namespace = namespace
+        if password is not None:
+            instance.password = password
+        if redirect_uri is not None:
+            instance.redirect_uri = redirect_uri
+        if refresh_token is not None:
+            instance.refresh_token = refresh_token
+        if username is not None:
+            instance.username = username
         return instance
 
     @classmethod
@@ -410,52 +410,52 @@ class TokenGrant(Operation):
             instance.device_id = str(dict_["Device-Id"])
         elif include_empty:
             instance.device_id = str()
-        if "grant_type" in dict_ and dict_["grant_type"] is not None:
-            instance.grant_type = str(dict_["grant_type"])
-        elif include_empty:
-            instance.grant_type = str()
-        if "username" in dict_ and dict_["username"] is not None:
-            instance.username = str(dict_["username"])
-        elif include_empty:
-            instance.username = str()
-        if "password" in dict_ and dict_["password"] is not None:
-            instance.password = str(dict_["password"])
-        elif include_empty:
-            instance.password = str()
-        if "refresh_token" in dict_ and dict_["refresh_token"] is not None:
-            instance.refresh_token = str(dict_["refresh_token"])
-        elif include_empty:
-            instance.refresh_token = str()
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = str(dict_["code"])
         elif include_empty:
             instance.code = str()
-        if "redirect_uri" in dict_ and dict_["redirect_uri"] is not None:
-            instance.redirect_uri = str(dict_["redirect_uri"])
-        elif include_empty:
-            instance.redirect_uri = str()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "extend_exp" in dict_ and dict_["extend_exp"] is not None:
             instance.extend_exp = bool(dict_["extend_exp"])
         elif include_empty:
             instance.extend_exp = bool()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
+        if "password" in dict_ and dict_["password"] is not None:
+            instance.password = str(dict_["password"])
+        elif include_empty:
+            instance.password = str()
+        if "redirect_uri" in dict_ and dict_["redirect_uri"] is not None:
+            instance.redirect_uri = str(dict_["redirect_uri"])
+        elif include_empty:
+            instance.redirect_uri = str()
+        if "refresh_token" in dict_ and dict_["refresh_token"] is not None:
+            instance.refresh_token = str(dict_["refresh_token"])
+        elif include_empty:
+            instance.refresh_token = str()
+        if "username" in dict_ and dict_["username"] is not None:
+            instance.username = str(dict_["username"])
+        elif include_empty:
+            instance.username = str()
+        if "grant_type" in dict_ and dict_["grant_type"] is not None:
+            instance.grant_type = str(dict_["grant_type"])
+        elif include_empty:
+            instance.grant_type = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "Device-Id": "device_id",
-            "grant_type": "grant_type",
-            "username": "username",
-            "password": "password",
-            "refresh_token": "refresh_token",
             "code": "code",
-            "redirect_uri": "redirect_uri",
-            "namespace": "namespace",
             "extend_exp": "extend_exp",
+            "namespace": "namespace",
+            "password": "password",
+            "redirect_uri": "redirect_uri",
+            "refresh_token": "refresh_token",
+            "username": "username",
+            "grant_type": "grant_type",
         }
 
     # endregion static methods

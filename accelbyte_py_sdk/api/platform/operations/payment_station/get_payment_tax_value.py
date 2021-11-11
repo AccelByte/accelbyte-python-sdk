@@ -52,11 +52,11 @@ class GetPaymentTaxValue(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        payment_provider: (paymentProvider) REQUIRED str in query
+        zip_code: (zipCode) OPTIONAL str in query
 
         payment_order_no: (paymentOrderNo) REQUIRED str in query
 
-        zip_code: (zipCode) OPTIONAL str in query
+        payment_provider: (paymentProvider) REQUIRED str in query
 
     Responses:
         200: OK - TaxResult (successful operation)
@@ -76,9 +76,9 @@ class GetPaymentTaxValue(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    payment_provider: str                                                                          # REQUIRED in [query]
-    payment_order_no: str                                                                          # REQUIRED in [query]
     zip_code: str                                                                                  # OPTIONAL in [query]
+    payment_order_no: str                                                                          # REQUIRED in [query]
+    payment_provider: str                                                                          # REQUIRED in [query]
 
     # endregion fields
 
@@ -130,8 +130,8 @@ class GetPaymentTaxValue(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "namespace",
-            "payment_provider",
             "payment_order_no",
+            "payment_provider",
         ]
 
     # endregion get methods
@@ -152,12 +152,12 @@ class GetPaymentTaxValue(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "payment_provider"):
-            result["paymentProvider"] = self.payment_provider
-        if hasattr(self, "payment_order_no"):
-            result["paymentOrderNo"] = self.payment_order_no
         if hasattr(self, "zip_code"):
             result["zipCode"] = self.zip_code
+        if hasattr(self, "payment_order_no"):
+            result["paymentOrderNo"] = self.payment_order_no
+        if hasattr(self, "payment_provider"):
+            result["paymentProvider"] = self.payment_provider
         return result
 
     # endregion get_x_params methods
@@ -167,9 +167,9 @@ class GetPaymentTaxValue(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
-        if not hasattr(self, "payment_provider") or self.payment_provider is None:
-            return False
         if not hasattr(self, "payment_order_no") or self.payment_order_no is None:
+            return False
+        if not hasattr(self, "payment_provider") or self.payment_provider is None:
             return False
         return True
 
@@ -181,16 +181,16 @@ class GetPaymentTaxValue(Operation):
         self.namespace = value
         return self
 
-    def with_payment_provider(self, value: str) -> GetPaymentTaxValue:
-        self.payment_provider = value
+    def with_zip_code(self, value: str) -> GetPaymentTaxValue:
+        self.zip_code = value
         return self
 
     def with_payment_order_no(self, value: str) -> GetPaymentTaxValue:
         self.payment_order_no = value
         return self
 
-    def with_zip_code(self, value: str) -> GetPaymentTaxValue:
-        self.zip_code = value
+    def with_payment_provider(self, value: str) -> GetPaymentTaxValue:
+        self.payment_provider = value
         return self
 
     # endregion with_x methods
@@ -203,18 +203,18 @@ class GetPaymentTaxValue(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "payment_provider") and self.payment_provider:
-            result["paymentProvider"] = str(self.payment_provider)
-        elif include_empty:
-            result["paymentProvider"] = str()
-        if hasattr(self, "payment_order_no") and self.payment_order_no:
-            result["paymentOrderNo"] = str(self.payment_order_no)
-        elif include_empty:
-            result["paymentOrderNo"] = str()
         if hasattr(self, "zip_code") and self.zip_code:
             result["zipCode"] = str(self.zip_code)
         elif include_empty:
             result["zipCode"] = str()
+        if hasattr(self, "payment_order_no") and self.payment_order_no:
+            result["paymentOrderNo"] = str(self.payment_order_no)
+        elif include_empty:
+            result["paymentOrderNo"] = str()
+        if hasattr(self, "payment_provider") and self.payment_provider:
+            result["paymentProvider"] = str(self.payment_provider)
+        elif include_empty:
+            result["paymentProvider"] = str()
         return result
 
     # endregion to methods
@@ -250,14 +250,14 @@ class GetPaymentTaxValue(Operation):
     def create(
         cls,
         namespace: str,
-        payment_provider: str,
         payment_order_no: str,
+        payment_provider: str,
         zip_code: Optional[str] = None,
     ) -> GetPaymentTaxValue:
         instance = cls()
         instance.namespace = namespace
-        instance.payment_provider = payment_provider
         instance.payment_order_no = payment_order_no
+        instance.payment_provider = payment_provider
         if zip_code is not None:
             instance.zip_code = zip_code
         return instance
@@ -269,27 +269,27 @@ class GetPaymentTaxValue(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
-            instance.payment_provider = str(dict_["paymentProvider"])
-        elif include_empty:
-            instance.payment_provider = str()
-        if "paymentOrderNo" in dict_ and dict_["paymentOrderNo"] is not None:
-            instance.payment_order_no = str(dict_["paymentOrderNo"])
-        elif include_empty:
-            instance.payment_order_no = str()
         if "zipCode" in dict_ and dict_["zipCode"] is not None:
             instance.zip_code = str(dict_["zipCode"])
         elif include_empty:
             instance.zip_code = str()
+        if "paymentOrderNo" in dict_ and dict_["paymentOrderNo"] is not None:
+            instance.payment_order_no = str(dict_["paymentOrderNo"])
+        elif include_empty:
+            instance.payment_order_no = str()
+        if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
+            instance.payment_provider = str(dict_["paymentProvider"])
+        elif include_empty:
+            instance.payment_provider = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "paymentProvider": "payment_provider",
-            "paymentOrderNo": "payment_order_no",
             "zipCode": "zip_code",
+            "paymentOrderNo": "payment_order_no",
+            "paymentProvider": "payment_provider",
         }
 
     # endregion static methods

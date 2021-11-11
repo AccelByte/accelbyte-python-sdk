@@ -28,68 +28,68 @@ class GameProfileRequest(Model):
     """Game profile request (GameProfileRequest)
 
     Properties:
-        profile_name: (profileName) OPTIONAL str
+        achievements: (achievements) OPTIONAL List[str]
+
+        attributes: (attributes) OPTIONAL Dict[str, str]
 
         avatar_url: (avatarUrl) OPTIONAL str
 
+        inventories: (inventories) OPTIONAL List[str]
+
         label: (label) OPTIONAL str
 
-        tags: (tags) OPTIONAL List[str]
+        profile_name: (profileName) OPTIONAL str
 
         statistics: (statistics) OPTIONAL List[str]
 
-        achievements: (achievements) OPTIONAL List[str]
-
-        inventories: (inventories) OPTIONAL List[str]
-
-        attributes: (attributes) OPTIONAL Dict[str, str]
+        tags: (tags) OPTIONAL List[str]
     """
 
     # region fields
 
-    profile_name: str                                                                              # OPTIONAL
-    avatar_url: str                                                                                # OPTIONAL
-    label: str                                                                                     # OPTIONAL
-    tags: List[str]                                                                                # OPTIONAL
-    statistics: List[str]                                                                          # OPTIONAL
     achievements: List[str]                                                                        # OPTIONAL
-    inventories: List[str]                                                                         # OPTIONAL
     attributes: Dict[str, str]                                                                     # OPTIONAL
+    avatar_url: str                                                                                # OPTIONAL
+    inventories: List[str]                                                                         # OPTIONAL
+    label: str                                                                                     # OPTIONAL
+    profile_name: str                                                                              # OPTIONAL
+    statistics: List[str]                                                                          # OPTIONAL
+    tags: List[str]                                                                                # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_profile_name(self, value: str) -> GameProfileRequest:
-        self.profile_name = value
+    def with_achievements(self, value: List[str]) -> GameProfileRequest:
+        self.achievements = value
+        return self
+
+    def with_attributes(self, value: Dict[str, str]) -> GameProfileRequest:
+        self.attributes = value
         return self
 
     def with_avatar_url(self, value: str) -> GameProfileRequest:
         self.avatar_url = value
         return self
 
+    def with_inventories(self, value: List[str]) -> GameProfileRequest:
+        self.inventories = value
+        return self
+
     def with_label(self, value: str) -> GameProfileRequest:
         self.label = value
         return self
 
-    def with_tags(self, value: List[str]) -> GameProfileRequest:
-        self.tags = value
+    def with_profile_name(self, value: str) -> GameProfileRequest:
+        self.profile_name = value
         return self
 
     def with_statistics(self, value: List[str]) -> GameProfileRequest:
         self.statistics = value
         return self
 
-    def with_achievements(self, value: List[str]) -> GameProfileRequest:
-        self.achievements = value
-        return self
-
-    def with_inventories(self, value: List[str]) -> GameProfileRequest:
-        self.inventories = value
-        return self
-
-    def with_attributes(self, value: Dict[str, str]) -> GameProfileRequest:
-        self.attributes = value
+    def with_tags(self, value: List[str]) -> GameProfileRequest:
+        self.tags = value
         return self
 
     # endregion with_x methods
@@ -98,38 +98,38 @@ class GameProfileRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "profile_name"):
-            result["profileName"] = str(self.profile_name)
-        elif include_empty:
-            result["profileName"] = str()
-        if hasattr(self, "avatar_url"):
-            result["avatarUrl"] = str(self.avatar_url)
-        elif include_empty:
-            result["avatarUrl"] = str()
-        if hasattr(self, "label"):
-            result["label"] = str(self.label)
-        elif include_empty:
-            result["label"] = str()
-        if hasattr(self, "tags"):
-            result["tags"] = [str(i0) for i0 in self.tags]
-        elif include_empty:
-            result["tags"] = []
-        if hasattr(self, "statistics"):
-            result["statistics"] = [str(i0) for i0 in self.statistics]
-        elif include_empty:
-            result["statistics"] = []
         if hasattr(self, "achievements"):
             result["achievements"] = [str(i0) for i0 in self.achievements]
         elif include_empty:
             result["achievements"] = []
-        if hasattr(self, "inventories"):
-            result["inventories"] = [str(i0) for i0 in self.inventories]
-        elif include_empty:
-            result["inventories"] = []
         if hasattr(self, "attributes"):
             result["attributes"] = {str(k0): str(v0) for k0, v0 in self.attributes.items()}
         elif include_empty:
             result["attributes"] = {}
+        if hasattr(self, "avatar_url"):
+            result["avatarUrl"] = str(self.avatar_url)
+        elif include_empty:
+            result["avatarUrl"] = str()
+        if hasattr(self, "inventories"):
+            result["inventories"] = [str(i0) for i0 in self.inventories]
+        elif include_empty:
+            result["inventories"] = []
+        if hasattr(self, "label"):
+            result["label"] = str(self.label)
+        elif include_empty:
+            result["label"] = str()
+        if hasattr(self, "profile_name"):
+            result["profileName"] = str(self.profile_name)
+        elif include_empty:
+            result["profileName"] = str()
+        if hasattr(self, "statistics"):
+            result["statistics"] = [str(i0) for i0 in self.statistics]
+        elif include_empty:
+            result["statistics"] = []
+        if hasattr(self, "tags"):
+            result["tags"] = [str(i0) for i0 in self.tags]
+        elif include_empty:
+            result["tags"] = []
         return result
 
     # endregion to methods
@@ -172,51 +172,51 @@ class GameProfileRequest(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "profileName" in dict_ and dict_["profileName"] is not None:
-            instance.profile_name = str(dict_["profileName"])
-        elif include_empty:
-            instance.profile_name = str()
-        if "avatarUrl" in dict_ and dict_["avatarUrl"] is not None:
-            instance.avatar_url = str(dict_["avatarUrl"])
-        elif include_empty:
-            instance.avatar_url = str()
-        if "label" in dict_ and dict_["label"] is not None:
-            instance.label = str(dict_["label"])
-        elif include_empty:
-            instance.label = str()
-        if "tags" in dict_ and dict_["tags"] is not None:
-            instance.tags = [str(i0) for i0 in dict_["tags"]]
-        elif include_empty:
-            instance.tags = []
-        if "statistics" in dict_ and dict_["statistics"] is not None:
-            instance.statistics = [str(i0) for i0 in dict_["statistics"]]
-        elif include_empty:
-            instance.statistics = []
         if "achievements" in dict_ and dict_["achievements"] is not None:
             instance.achievements = [str(i0) for i0 in dict_["achievements"]]
         elif include_empty:
             instance.achievements = []
-        if "inventories" in dict_ and dict_["inventories"] is not None:
-            instance.inventories = [str(i0) for i0 in dict_["inventories"]]
-        elif include_empty:
-            instance.inventories = []
         if "attributes" in dict_ and dict_["attributes"] is not None:
             instance.attributes = {str(k0): str(v0) for k0, v0 in dict_["attributes"].items()}
         elif include_empty:
             instance.attributes = {}
+        if "avatarUrl" in dict_ and dict_["avatarUrl"] is not None:
+            instance.avatar_url = str(dict_["avatarUrl"])
+        elif include_empty:
+            instance.avatar_url = str()
+        if "inventories" in dict_ and dict_["inventories"] is not None:
+            instance.inventories = [str(i0) for i0 in dict_["inventories"]]
+        elif include_empty:
+            instance.inventories = []
+        if "label" in dict_ and dict_["label"] is not None:
+            instance.label = str(dict_["label"])
+        elif include_empty:
+            instance.label = str()
+        if "profileName" in dict_ and dict_["profileName"] is not None:
+            instance.profile_name = str(dict_["profileName"])
+        elif include_empty:
+            instance.profile_name = str()
+        if "statistics" in dict_ and dict_["statistics"] is not None:
+            instance.statistics = [str(i0) for i0 in dict_["statistics"]]
+        elif include_empty:
+            instance.statistics = []
+        if "tags" in dict_ and dict_["tags"] is not None:
+            instance.tags = [str(i0) for i0 in dict_["tags"]]
+        elif include_empty:
+            instance.tags = []
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "profileName": "profile_name",
-            "avatarUrl": "avatar_url",
-            "label": "label",
-            "tags": "tags",
-            "statistics": "statistics",
             "achievements": "achievements",
-            "inventories": "inventories",
             "attributes": "attributes",
+            "avatarUrl": "avatar_url",
+            "inventories": "inventories",
+            "label": "label",
+            "profileName": "profile_name",
+            "statistics": "statistics",
+            "tags": "tags",
         }
 
     # endregion static methods

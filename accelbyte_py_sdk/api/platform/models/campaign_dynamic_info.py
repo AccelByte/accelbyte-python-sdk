@@ -30,22 +30,22 @@ class CampaignDynamicInfo(Model):
     Properties:
         available_sale_count: (availableSaleCount) REQUIRED int
 
-        quantity: (quantity) REQUIRED int
-
-        sale_count: (saleCount) REQUIRED int
-
         last_batch_no: (lastBatchNo) REQUIRED int
 
+        quantity: (quantity) REQUIRED int
+
         remainder: (remainder) REQUIRED int
+
+        sale_count: (saleCount) REQUIRED int
     """
 
     # region fields
 
     available_sale_count: int                                                                      # REQUIRED
-    quantity: int                                                                                  # REQUIRED
-    sale_count: int                                                                                # REQUIRED
     last_batch_no: int                                                                             # REQUIRED
+    quantity: int                                                                                  # REQUIRED
     remainder: int                                                                                 # REQUIRED
+    sale_count: int                                                                                # REQUIRED
 
     # endregion fields
 
@@ -55,20 +55,20 @@ class CampaignDynamicInfo(Model):
         self.available_sale_count = value
         return self
 
-    def with_quantity(self, value: int) -> CampaignDynamicInfo:
-        self.quantity = value
-        return self
-
-    def with_sale_count(self, value: int) -> CampaignDynamicInfo:
-        self.sale_count = value
-        return self
-
     def with_last_batch_no(self, value: int) -> CampaignDynamicInfo:
         self.last_batch_no = value
         return self
 
+    def with_quantity(self, value: int) -> CampaignDynamicInfo:
+        self.quantity = value
+        return self
+
     def with_remainder(self, value: int) -> CampaignDynamicInfo:
         self.remainder = value
+        return self
+
+    def with_sale_count(self, value: int) -> CampaignDynamicInfo:
+        self.sale_count = value
         return self
 
     # endregion with_x methods
@@ -81,22 +81,22 @@ class CampaignDynamicInfo(Model):
             result["availableSaleCount"] = int(self.available_sale_count)
         elif include_empty:
             result["availableSaleCount"] = int()
-        if hasattr(self, "quantity"):
-            result["quantity"] = int(self.quantity)
-        elif include_empty:
-            result["quantity"] = int()
-        if hasattr(self, "sale_count"):
-            result["saleCount"] = int(self.sale_count)
-        elif include_empty:
-            result["saleCount"] = int()
         if hasattr(self, "last_batch_no"):
             result["lastBatchNo"] = int(self.last_batch_no)
         elif include_empty:
             result["lastBatchNo"] = int()
+        if hasattr(self, "quantity"):
+            result["quantity"] = int(self.quantity)
+        elif include_empty:
+            result["quantity"] = int()
         if hasattr(self, "remainder"):
             result["remainder"] = int(self.remainder)
         elif include_empty:
             result["remainder"] = int()
+        if hasattr(self, "sale_count"):
+            result["saleCount"] = int(self.sale_count)
+        elif include_empty:
+            result["saleCount"] = int()
         return result
 
     # endregion to methods
@@ -129,32 +129,32 @@ class CampaignDynamicInfo(Model):
             instance.available_sale_count = int(dict_["availableSaleCount"])
         elif include_empty:
             instance.available_sale_count = int()
-        if "quantity" in dict_ and dict_["quantity"] is not None:
-            instance.quantity = int(dict_["quantity"])
-        elif include_empty:
-            instance.quantity = int()
-        if "saleCount" in dict_ and dict_["saleCount"] is not None:
-            instance.sale_count = int(dict_["saleCount"])
-        elif include_empty:
-            instance.sale_count = int()
         if "lastBatchNo" in dict_ and dict_["lastBatchNo"] is not None:
             instance.last_batch_no = int(dict_["lastBatchNo"])
         elif include_empty:
             instance.last_batch_no = int()
+        if "quantity" in dict_ and dict_["quantity"] is not None:
+            instance.quantity = int(dict_["quantity"])
+        elif include_empty:
+            instance.quantity = int()
         if "remainder" in dict_ and dict_["remainder"] is not None:
             instance.remainder = int(dict_["remainder"])
         elif include_empty:
             instance.remainder = int()
+        if "saleCount" in dict_ and dict_["saleCount"] is not None:
+            instance.sale_count = int(dict_["saleCount"])
+        elif include_empty:
+            instance.sale_count = int()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "availableSaleCount": "available_sale_count",
-            "quantity": "quantity",
-            "saleCount": "sale_count",
             "lastBatchNo": "last_batch_no",
+            "quantity": "quantity",
             "remainder": "remainder",
+            "saleCount": "sale_count",
         }
 
     # endregion static methods

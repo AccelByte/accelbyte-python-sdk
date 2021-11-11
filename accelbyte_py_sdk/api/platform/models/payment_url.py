@@ -30,19 +30,19 @@ class PaymentUrl(Model):
     Properties:
         payment_provider: (paymentProvider) REQUIRED str
 
+        payment_type: (paymentType) REQUIRED str
+
         payment_url: (paymentUrl) REQUIRED str
 
         return_url: (returnUrl) OPTIONAL str
-
-        payment_type: (paymentType) REQUIRED str
     """
 
     # region fields
 
     payment_provider: str                                                                          # REQUIRED
+    payment_type: str                                                                              # REQUIRED
     payment_url: str                                                                               # REQUIRED
     return_url: str                                                                                # OPTIONAL
-    payment_type: str                                                                              # REQUIRED
 
     # endregion fields
 
@@ -52,16 +52,16 @@ class PaymentUrl(Model):
         self.payment_provider = value
         return self
 
+    def with_payment_type(self, value: str) -> PaymentUrl:
+        self.payment_type = value
+        return self
+
     def with_payment_url(self, value: str) -> PaymentUrl:
         self.payment_url = value
         return self
 
     def with_return_url(self, value: str) -> PaymentUrl:
         self.return_url = value
-        return self
-
-    def with_payment_type(self, value: str) -> PaymentUrl:
-        self.payment_type = value
         return self
 
     # endregion with_x methods
@@ -74,6 +74,10 @@ class PaymentUrl(Model):
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
             result["paymentProvider"] = str()
+        if hasattr(self, "payment_type"):
+            result["paymentType"] = str(self.payment_type)
+        elif include_empty:
+            result["paymentType"] = str()
         if hasattr(self, "payment_url"):
             result["paymentUrl"] = str(self.payment_url)
         elif include_empty:
@@ -82,10 +86,6 @@ class PaymentUrl(Model):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
             result["returnUrl"] = str()
-        if hasattr(self, "payment_type"):
-            result["paymentType"] = str(self.payment_type)
-        elif include_empty:
-            result["paymentType"] = str()
         return result
 
     # endregion to methods
@@ -117,6 +117,10 @@ class PaymentUrl(Model):
             instance.payment_provider = str(dict_["paymentProvider"])
         elif include_empty:
             instance.payment_provider = str()
+        if "paymentType" in dict_ and dict_["paymentType"] is not None:
+            instance.payment_type = str(dict_["paymentType"])
+        elif include_empty:
+            instance.payment_type = str()
         if "paymentUrl" in dict_ and dict_["paymentUrl"] is not None:
             instance.payment_url = str(dict_["paymentUrl"])
         elif include_empty:
@@ -125,19 +129,15 @@ class PaymentUrl(Model):
             instance.return_url = str(dict_["returnUrl"])
         elif include_empty:
             instance.return_url = str()
-        if "paymentType" in dict_ and dict_["paymentType"] is not None:
-            instance.payment_type = str(dict_["paymentType"])
-        elif include_empty:
-            instance.payment_type = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "paymentProvider": "payment_provider",
+            "paymentType": "payment_type",
             "paymentUrl": "payment_url",
             "returnUrl": "return_url",
-            "paymentType": "payment_type",
         }
 
     # endregion static methods

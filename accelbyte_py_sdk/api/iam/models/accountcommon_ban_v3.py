@@ -32,19 +32,19 @@ class AccountcommonBanV3(Model):
     Properties:
         ban: (ban) REQUIRED str
 
+        type_: (type) REQUIRED str
+
         description: (description) OPTIONAL str
 
         descriptions: (descriptions) OPTIONAL AccountcommonDescription
-
-        type_: (type) REQUIRED str
     """
 
     # region fields
 
     ban: str                                                                                       # REQUIRED
+    type_: str                                                                                     # REQUIRED
     description: str                                                                               # OPTIONAL
     descriptions: AccountcommonDescription                                                         # OPTIONAL
-    type_: str                                                                                     # REQUIRED
 
     # endregion fields
 
@@ -54,16 +54,16 @@ class AccountcommonBanV3(Model):
         self.ban = value
         return self
 
+    def with_type(self, value: str) -> AccountcommonBanV3:
+        self.type_ = value
+        return self
+
     def with_description(self, value: str) -> AccountcommonBanV3:
         self.description = value
         return self
 
     def with_descriptions(self, value: AccountcommonDescription) -> AccountcommonBanV3:
         self.descriptions = value
-        return self
-
-    def with_type(self, value: str) -> AccountcommonBanV3:
-        self.type_ = value
         return self
 
     # endregion with_x methods
@@ -76,6 +76,10 @@ class AccountcommonBanV3(Model):
             result["ban"] = str(self.ban)
         elif include_empty:
             result["ban"] = str()
+        if hasattr(self, "type_"):
+            result["type"] = str(self.type_)
+        elif include_empty:
+            result["type"] = str()
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
@@ -84,10 +88,6 @@ class AccountcommonBanV3(Model):
             result["descriptions"] = self.descriptions.to_dict(include_empty=include_empty)
         elif include_empty:
             result["descriptions"] = AccountcommonDescription()
-        if hasattr(self, "type_"):
-            result["type"] = str(self.type_)
-        elif include_empty:
-            result["type"] = str()
         return result
 
     # endregion to methods
@@ -120,6 +120,10 @@ class AccountcommonBanV3(Model):
             instance.ban = str(dict_["ban"])
         elif include_empty:
             instance.ban = str()
+        if "type" in dict_ and dict_["type"] is not None:
+            instance.type_ = str(dict_["type"])
+        elif include_empty:
+            instance.type_ = str()
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
@@ -128,19 +132,15 @@ class AccountcommonBanV3(Model):
             instance.descriptions = AccountcommonDescription.create_from_dict(dict_["descriptions"], include_empty=include_empty)
         elif include_empty:
             instance.descriptions = AccountcommonDescription()
-        if "type" in dict_ and dict_["type"] is not None:
-            instance.type_ = str(dict_["type"])
-        elif include_empty:
-            instance.type_ = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "ban": "ban",
+            "type": "type_",
             "description": "description",
             "descriptions": "descriptions",
-            "type": "type_",
         }
 
     # endregion static methods

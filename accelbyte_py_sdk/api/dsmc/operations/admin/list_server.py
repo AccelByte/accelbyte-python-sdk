@@ -51,11 +51,11 @@ class ListServer(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        region: (region) OPTIONAL str in query
+        count: (count) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
-        count: (count) OPTIONAL int in query
+        region: (region) OPTIONAL str in query
 
     Responses:
         200: OK - ModelsListServerResponse (servers listed)
@@ -75,9 +75,9 @@ class ListServer(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    region: str                                                                                    # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
     count: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
+    region: str                                                                                    # OPTIONAL in [query]
 
     # endregion fields
 
@@ -149,12 +149,12 @@ class ListServer(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "region"):
-            result["region"] = self.region
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "count"):
             result["count"] = self.count
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
+        if hasattr(self, "region"):
+            result["region"] = self.region
         return result
 
     # endregion get_x_params methods
@@ -174,16 +174,16 @@ class ListServer(Operation):
         self.namespace = value
         return self
 
-    def with_region(self, value: str) -> ListServer:
-        self.region = value
+    def with_count(self, value: int) -> ListServer:
+        self.count = value
         return self
 
     def with_offset(self, value: int) -> ListServer:
         self.offset = value
         return self
 
-    def with_count(self, value: int) -> ListServer:
-        self.count = value
+    def with_region(self, value: str) -> ListServer:
+        self.region = value
         return self
 
     # endregion with_x methods
@@ -196,18 +196,18 @@ class ListServer(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "region") and self.region:
-            result["region"] = str(self.region)
-        elif include_empty:
-            result["region"] = str()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
         if hasattr(self, "count") and self.count:
             result["count"] = int(self.count)
         elif include_empty:
             result["count"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
+        if hasattr(self, "region") and self.region:
+            result["region"] = str(self.region)
+        elif include_empty:
+            result["region"] = str()
         return result
 
     # endregion to methods
@@ -243,18 +243,18 @@ class ListServer(Operation):
     def create(
         cls,
         namespace: str,
-        region: Optional[str] = None,
-        offset: Optional[int] = None,
         count: Optional[int] = None,
+        offset: Optional[int] = None,
+        region: Optional[str] = None,
     ) -> ListServer:
         instance = cls()
         instance.namespace = namespace
-        if region is not None:
-            instance.region = region
-        if offset is not None:
-            instance.offset = offset
         if count is not None:
             instance.count = count
+        if offset is not None:
+            instance.offset = offset
+        if region is not None:
+            instance.region = region
         return instance
 
     @classmethod
@@ -264,27 +264,27 @@ class ListServer(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "region" in dict_ and dict_["region"] is not None:
-            instance.region = str(dict_["region"])
-        elif include_empty:
-            instance.region = str()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
         if "count" in dict_ and dict_["count"] is not None:
             instance.count = int(dict_["count"])
         elif include_empty:
             instance.count = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
+        if "region" in dict_ and dict_["region"] is not None:
+            instance.region = str(dict_["region"])
+        elif include_empty:
+            instance.region = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "region": "region",
-            "offset": "offset",
             "count": "count",
+            "offset": "offset",
+            "region": "region",
         }
 
     # endregion static methods

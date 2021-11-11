@@ -60,14 +60,14 @@ def delete_pod_config(name: str, namespace: Optional[str] = None, x_additional_h
 
 
 @same_doc_as(GetAllPodConfig)
-def get_all_pod_config(offset: Optional[int] = None, count: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_all_pod_config(count: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetAllPodConfig.create(
-        offset=offset,
         count=count,
+        offset=offset,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

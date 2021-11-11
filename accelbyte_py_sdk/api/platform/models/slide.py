@@ -28,54 +28,54 @@ class Slide(Model):
     """Slide (Slide)
 
     Properties:
-        type_: (type) OPTIONAL str
-
-        video_source: (videoSource) OPTIONAL str
-
-        url: (url) OPTIONAL str
-
         alt: (alt) OPTIONAL str
+
+        preview_url: (previewUrl) OPTIONAL str
 
         thumbnail_url: (thumbnailUrl) OPTIONAL str
 
-        preview_url: (previewUrl) OPTIONAL str
+        type_: (type) OPTIONAL str
+
+        url: (url) OPTIONAL str
+
+        video_source: (videoSource) OPTIONAL str
     """
 
     # region fields
 
-    type_: str                                                                                     # OPTIONAL
-    video_source: str                                                                              # OPTIONAL
-    url: str                                                                                       # OPTIONAL
     alt: str                                                                                       # OPTIONAL
-    thumbnail_url: str                                                                             # OPTIONAL
     preview_url: str                                                                               # OPTIONAL
+    thumbnail_url: str                                                                             # OPTIONAL
+    type_: str                                                                                     # OPTIONAL
+    url: str                                                                                       # OPTIONAL
+    video_source: str                                                                              # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_type(self, value: str) -> Slide:
-        self.type_ = value
-        return self
-
-    def with_video_source(self, value: str) -> Slide:
-        self.video_source = value
-        return self
-
-    def with_url(self, value: str) -> Slide:
-        self.url = value
-        return self
-
     def with_alt(self, value: str) -> Slide:
         self.alt = value
+        return self
+
+    def with_preview_url(self, value: str) -> Slide:
+        self.preview_url = value
         return self
 
     def with_thumbnail_url(self, value: str) -> Slide:
         self.thumbnail_url = value
         return self
 
-    def with_preview_url(self, value: str) -> Slide:
-        self.preview_url = value
+    def with_type(self, value: str) -> Slide:
+        self.type_ = value
+        return self
+
+    def with_url(self, value: str) -> Slide:
+        self.url = value
+        return self
+
+    def with_video_source(self, value: str) -> Slide:
+        self.video_source = value
         return self
 
     # endregion with_x methods
@@ -84,30 +84,30 @@ class Slide(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "type_"):
-            result["type"] = str(self.type_)
-        elif include_empty:
-            result["type"] = str()
-        if hasattr(self, "video_source"):
-            result["videoSource"] = str(self.video_source)
-        elif include_empty:
-            result["videoSource"] = str()
-        if hasattr(self, "url"):
-            result["url"] = str(self.url)
-        elif include_empty:
-            result["url"] = str()
         if hasattr(self, "alt"):
             result["alt"] = str(self.alt)
         elif include_empty:
             result["alt"] = str()
-        if hasattr(self, "thumbnail_url"):
-            result["thumbnailUrl"] = str(self.thumbnail_url)
-        elif include_empty:
-            result["thumbnailUrl"] = str()
         if hasattr(self, "preview_url"):
             result["previewUrl"] = str(self.preview_url)
         elif include_empty:
             result["previewUrl"] = str()
+        if hasattr(self, "thumbnail_url"):
+            result["thumbnailUrl"] = str(self.thumbnail_url)
+        elif include_empty:
+            result["thumbnailUrl"] = str()
+        if hasattr(self, "type_"):
+            result["type"] = str(self.type_)
+        elif include_empty:
+            result["type"] = str()
+        if hasattr(self, "url"):
+            result["url"] = str(self.url)
+        elif include_empty:
+            result["url"] = str()
+        if hasattr(self, "video_source"):
+            result["videoSource"] = str(self.video_source)
+        elif include_empty:
+            result["videoSource"] = str()
         return result
 
     # endregion to methods
@@ -144,41 +144,41 @@ class Slide(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "type" in dict_ and dict_["type"] is not None:
-            instance.type_ = str(dict_["type"])
-        elif include_empty:
-            instance.type_ = str()
-        if "videoSource" in dict_ and dict_["videoSource"] is not None:
-            instance.video_source = str(dict_["videoSource"])
-        elif include_empty:
-            instance.video_source = str()
-        if "url" in dict_ and dict_["url"] is not None:
-            instance.url = str(dict_["url"])
-        elif include_empty:
-            instance.url = str()
         if "alt" in dict_ and dict_["alt"] is not None:
             instance.alt = str(dict_["alt"])
         elif include_empty:
             instance.alt = str()
-        if "thumbnailUrl" in dict_ and dict_["thumbnailUrl"] is not None:
-            instance.thumbnail_url = str(dict_["thumbnailUrl"])
-        elif include_empty:
-            instance.thumbnail_url = str()
         if "previewUrl" in dict_ and dict_["previewUrl"] is not None:
             instance.preview_url = str(dict_["previewUrl"])
         elif include_empty:
             instance.preview_url = str()
+        if "thumbnailUrl" in dict_ and dict_["thumbnailUrl"] is not None:
+            instance.thumbnail_url = str(dict_["thumbnailUrl"])
+        elif include_empty:
+            instance.thumbnail_url = str()
+        if "type" in dict_ and dict_["type"] is not None:
+            instance.type_ = str(dict_["type"])
+        elif include_empty:
+            instance.type_ = str()
+        if "url" in dict_ and dict_["url"] is not None:
+            instance.url = str(dict_["url"])
+        elif include_empty:
+            instance.url = str()
+        if "videoSource" in dict_ and dict_["videoSource"] is not None:
+            instance.video_source = str(dict_["videoSource"])
+        elif include_empty:
+            instance.video_source = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "type": "type_",
-            "videoSource": "video_source",
-            "url": "url",
             "alt": "alt",
-            "thumbnailUrl": "thumbnail_url",
             "previewUrl": "preview_url",
+            "thumbnailUrl": "thumbnail_url",
+            "type": "type_",
+            "url": "url",
+            "videoSource": "video_source",
         }
 
     # endregion static methods

@@ -50,25 +50,25 @@ class QuerySession(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        session_type: (session_type) REQUIRED str in query
-
-        user_id: (user_id) OPTIONAL str in query
-
         game_mode: (game_mode) OPTIONAL str in query
 
         game_version: (game_version) OPTIONAL str in query
 
         joinable: (joinable) OPTIONAL str in query
 
-        match_id: (match_id) OPTIONAL str in query
+        limit: (limit) OPTIONAL str in query
 
         match_exist: (match_exist) OPTIONAL str in query
 
-        server_status: (server_status) OPTIONAL str in query
+        match_id: (match_id) OPTIONAL str in query
 
         offset: (offset) OPTIONAL str in query
 
-        limit: (limit) OPTIONAL str in query
+        server_status: (server_status) OPTIONAL str in query
+
+        user_id: (user_id) OPTIONAL str in query
+
+        session_type: (session_type) REQUIRED str in query
 
     Responses:
         200: OK - ModelsSessionQueryResponse (session get)
@@ -88,16 +88,16 @@ class QuerySession(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    session_type: str                                                                              # REQUIRED in [query]
-    user_id: str                                                                                   # OPTIONAL in [query]
     game_mode: str                                                                                 # OPTIONAL in [query]
     game_version: str                                                                              # OPTIONAL in [query]
     joinable: str                                                                                  # OPTIONAL in [query]
-    match_id: str                                                                                  # OPTIONAL in [query]
-    match_exist: str                                                                               # OPTIONAL in [query]
-    server_status: str                                                                             # OPTIONAL in [query]
-    offset: str                                                                                    # OPTIONAL in [query]
     limit: str                                                                                     # OPTIONAL in [query]
+    match_exist: str                                                                               # OPTIONAL in [query]
+    match_id: str                                                                                  # OPTIONAL in [query]
+    offset: str                                                                                    # OPTIONAL in [query]
+    server_status: str                                                                             # OPTIONAL in [query]
+    user_id: str                                                                                   # OPTIONAL in [query]
+    session_type: str                                                                              # REQUIRED in [query]
 
     # endregion fields
 
@@ -170,26 +170,26 @@ class QuerySession(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "session_type"):
-            result["session_type"] = self.session_type
-        if hasattr(self, "user_id"):
-            result["user_id"] = self.user_id
         if hasattr(self, "game_mode"):
             result["game_mode"] = self.game_mode
         if hasattr(self, "game_version"):
             result["game_version"] = self.game_version
         if hasattr(self, "joinable"):
             result["joinable"] = self.joinable
-        if hasattr(self, "match_id"):
-            result["match_id"] = self.match_id
-        if hasattr(self, "match_exist"):
-            result["match_exist"] = self.match_exist
-        if hasattr(self, "server_status"):
-            result["server_status"] = self.server_status
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "match_exist"):
+            result["match_exist"] = self.match_exist
+        if hasattr(self, "match_id"):
+            result["match_id"] = self.match_id
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
+        if hasattr(self, "server_status"):
+            result["server_status"] = self.server_status
+        if hasattr(self, "user_id"):
+            result["user_id"] = self.user_id
+        if hasattr(self, "session_type"):
+            result["session_type"] = self.session_type
         return result
 
     # endregion get_x_params methods
@@ -211,14 +211,6 @@ class QuerySession(Operation):
         self.namespace = value
         return self
 
-    def with_session_type(self, value: str) -> QuerySession:
-        self.session_type = value
-        return self
-
-    def with_user_id(self, value: str) -> QuerySession:
-        self.user_id = value
-        return self
-
     def with_game_mode(self, value: str) -> QuerySession:
         self.game_mode = value
         return self
@@ -231,24 +223,32 @@ class QuerySession(Operation):
         self.joinable = value
         return self
 
-    def with_match_id(self, value: str) -> QuerySession:
-        self.match_id = value
+    def with_limit(self, value: str) -> QuerySession:
+        self.limit = value
         return self
 
     def with_match_exist(self, value: str) -> QuerySession:
         self.match_exist = value
         return self
 
-    def with_server_status(self, value: str) -> QuerySession:
-        self.server_status = value
+    def with_match_id(self, value: str) -> QuerySession:
+        self.match_id = value
         return self
 
     def with_offset(self, value: str) -> QuerySession:
         self.offset = value
         return self
 
-    def with_limit(self, value: str) -> QuerySession:
-        self.limit = value
+    def with_server_status(self, value: str) -> QuerySession:
+        self.server_status = value
+        return self
+
+    def with_user_id(self, value: str) -> QuerySession:
+        self.user_id = value
+        return self
+
+    def with_session_type(self, value: str) -> QuerySession:
+        self.session_type = value
         return self
 
     # endregion with_x methods
@@ -261,14 +261,6 @@ class QuerySession(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "session_type") and self.session_type:
-            result["session_type"] = str(self.session_type)
-        elif include_empty:
-            result["session_type"] = str()
-        if hasattr(self, "user_id") and self.user_id:
-            result["user_id"] = str(self.user_id)
-        elif include_empty:
-            result["user_id"] = str()
         if hasattr(self, "game_mode") and self.game_mode:
             result["game_mode"] = str(self.game_mode)
         elif include_empty:
@@ -281,26 +273,34 @@ class QuerySession(Operation):
             result["joinable"] = str(self.joinable)
         elif include_empty:
             result["joinable"] = str()
-        if hasattr(self, "match_id") and self.match_id:
-            result["match_id"] = str(self.match_id)
-        elif include_empty:
-            result["match_id"] = str()
-        if hasattr(self, "match_exist") and self.match_exist:
-            result["match_exist"] = str(self.match_exist)
-        elif include_empty:
-            result["match_exist"] = str()
-        if hasattr(self, "server_status") and self.server_status:
-            result["server_status"] = str(self.server_status)
-        elif include_empty:
-            result["server_status"] = str()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = str(self.offset)
-        elif include_empty:
-            result["offset"] = str()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = str(self.limit)
         elif include_empty:
             result["limit"] = str()
+        if hasattr(self, "match_exist") and self.match_exist:
+            result["match_exist"] = str(self.match_exist)
+        elif include_empty:
+            result["match_exist"] = str()
+        if hasattr(self, "match_id") and self.match_id:
+            result["match_id"] = str(self.match_id)
+        elif include_empty:
+            result["match_id"] = str()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = str(self.offset)
+        elif include_empty:
+            result["offset"] = str()
+        if hasattr(self, "server_status") and self.server_status:
+            result["server_status"] = str(self.server_status)
+        elif include_empty:
+            result["server_status"] = str()
+        if hasattr(self, "user_id") and self.user_id:
+            result["user_id"] = str(self.user_id)
+        elif include_empty:
+            result["user_id"] = str()
+        if hasattr(self, "session_type") and self.session_type:
+            result["session_type"] = str(self.session_type)
+        elif include_empty:
+            result["session_type"] = str()
         return result
 
     # endregion to methods
@@ -337,37 +337,37 @@ class QuerySession(Operation):
         cls,
         namespace: str,
         session_type: str,
-        user_id: Optional[str] = None,
         game_mode: Optional[str] = None,
         game_version: Optional[str] = None,
         joinable: Optional[str] = None,
-        match_id: Optional[str] = None,
-        match_exist: Optional[str] = None,
-        server_status: Optional[str] = None,
-        offset: Optional[str] = None,
         limit: Optional[str] = None,
+        match_exist: Optional[str] = None,
+        match_id: Optional[str] = None,
+        offset: Optional[str] = None,
+        server_status: Optional[str] = None,
+        user_id: Optional[str] = None,
     ) -> QuerySession:
         instance = cls()
         instance.namespace = namespace
         instance.session_type = session_type
-        if user_id is not None:
-            instance.user_id = user_id
         if game_mode is not None:
             instance.game_mode = game_mode
         if game_version is not None:
             instance.game_version = game_version
         if joinable is not None:
             instance.joinable = joinable
-        if match_id is not None:
-            instance.match_id = match_id
-        if match_exist is not None:
-            instance.match_exist = match_exist
-        if server_status is not None:
-            instance.server_status = server_status
-        if offset is not None:
-            instance.offset = offset
         if limit is not None:
             instance.limit = limit
+        if match_exist is not None:
+            instance.match_exist = match_exist
+        if match_id is not None:
+            instance.match_id = match_id
+        if offset is not None:
+            instance.offset = offset
+        if server_status is not None:
+            instance.server_status = server_status
+        if user_id is not None:
+            instance.user_id = user_id
         return instance
 
     @classmethod
@@ -377,14 +377,6 @@ class QuerySession(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "session_type" in dict_ and dict_["session_type"] is not None:
-            instance.session_type = str(dict_["session_type"])
-        elif include_empty:
-            instance.session_type = str()
-        if "user_id" in dict_ and dict_["user_id"] is not None:
-            instance.user_id = str(dict_["user_id"])
-        elif include_empty:
-            instance.user_id = str()
         if "game_mode" in dict_ and dict_["game_mode"] is not None:
             instance.game_mode = str(dict_["game_mode"])
         elif include_empty:
@@ -397,42 +389,50 @@ class QuerySession(Operation):
             instance.joinable = str(dict_["joinable"])
         elif include_empty:
             instance.joinable = str()
-        if "match_id" in dict_ and dict_["match_id"] is not None:
-            instance.match_id = str(dict_["match_id"])
-        elif include_empty:
-            instance.match_id = str()
-        if "match_exist" in dict_ and dict_["match_exist"] is not None:
-            instance.match_exist = str(dict_["match_exist"])
-        elif include_empty:
-            instance.match_exist = str()
-        if "server_status" in dict_ and dict_["server_status"] is not None:
-            instance.server_status = str(dict_["server_status"])
-        elif include_empty:
-            instance.server_status = str()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = str(dict_["offset"])
-        elif include_empty:
-            instance.offset = str()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = str(dict_["limit"])
         elif include_empty:
             instance.limit = str()
+        if "match_exist" in dict_ and dict_["match_exist"] is not None:
+            instance.match_exist = str(dict_["match_exist"])
+        elif include_empty:
+            instance.match_exist = str()
+        if "match_id" in dict_ and dict_["match_id"] is not None:
+            instance.match_id = str(dict_["match_id"])
+        elif include_empty:
+            instance.match_id = str()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = str(dict_["offset"])
+        elif include_empty:
+            instance.offset = str()
+        if "server_status" in dict_ and dict_["server_status"] is not None:
+            instance.server_status = str(dict_["server_status"])
+        elif include_empty:
+            instance.server_status = str()
+        if "user_id" in dict_ and dict_["user_id"] is not None:
+            instance.user_id = str(dict_["user_id"])
+        elif include_empty:
+            instance.user_id = str()
+        if "session_type" in dict_ and dict_["session_type"] is not None:
+            instance.session_type = str(dict_["session_type"])
+        elif include_empty:
+            instance.session_type = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "session_type": "session_type",
-            "user_id": "user_id",
             "game_mode": "game_mode",
             "game_version": "game_version",
             "joinable": "joinable",
-            "match_id": "match_id",
-            "match_exist": "match_exist",
-            "server_status": "server_status",
-            "offset": "offset",
             "limit": "limit",
+            "match_exist": "match_exist",
+            "match_id": "match_id",
+            "offset": "offset",
+            "server_status": "server_status",
+            "user_id": "user_id",
+            "session_type": "session_type",
         }
 
     # endregion static methods

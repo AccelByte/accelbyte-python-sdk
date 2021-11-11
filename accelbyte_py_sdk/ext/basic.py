@@ -51,25 +51,25 @@ from ..api.basic.models import ValidationErrorEntity
 
 def create_add_country_group_request_example() -> AddCountryGroupRequest:
     instance = AddCountryGroupRequest()
+    instance.countries = [create_country_object_example()]
     instance.country_group_code = randomize()
     instance.country_group_name = randomize()
-    instance.countries = [create_country_object_example()]
     return instance
 
 
 def create_add_country_group_response_example() -> AddCountryGroupResponse:
     instance = AddCountryGroupResponse()
+    instance.countries = [create_country_object_example()]
     instance.country_group_code = randomize()
     instance.country_group_name = randomize()
-    instance.countries = [create_country_object_example()]
     return instance
 
 
 def create_country_group_object_example() -> CountryGroupObject:
     instance = CountryGroupObject()
+    instance.countries = [create_country_object_example()]
     instance.country_group_code = randomize()
     instance.country_group_name = randomize()
-    instance.countries = [create_country_object_example()]
     return instance
 
 
@@ -84,8 +84,8 @@ def create_error_entity_example() -> ErrorEntity:
     instance = ErrorEntity()
     instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
-    instance.message_variables = {randomize(): randomize()}
     instance.dev_stack_trace = randomize()
+    instance.message_variables = {randomize(): randomize()}
     return instance
 
 
@@ -93,18 +93,18 @@ def create_field_validation_error_example() -> FieldValidationError:
     instance = FieldValidationError()
     instance.error_code = randomize()
     instance.error_field = randomize()
-    instance.error_value = randomize()
     instance.error_message = randomize()
+    instance.error_value = randomize()
     instance.message_variables = {randomize(): randomize()}
     return instance
 
 
 def create_file_upload_url_info_example() -> FileUploadUrlInfo:
     instance = FileUploadUrlInfo()
-    instance.url = randomize("url")
     instance.access_url = randomize("url")
-    instance.method = randomize()
     instance.content_type = randomize()
+    instance.method = randomize()
+    instance.url = randomize("url")
     return instance
 
 
@@ -117,10 +117,10 @@ def create_namespace_create_example() -> NamespaceCreate:
 
 def create_namespace_info_example() -> NamespaceInfo:
     instance = NamespaceInfo()
-    instance.namespace = randomize("slug")
-    instance.display_name = randomize("slug")
-    instance.status = randomize()
     instance.created_at = randomize("date")
+    instance.display_name = randomize("slug")
+    instance.namespace = randomize("slug")
+    instance.status = randomize()
     instance.updated_at = randomize("date")
     return instance
 
@@ -146,9 +146,9 @@ def create_namespace_update_example() -> NamespaceUpdate:
 
 def create_retrieve_country_group_response_example() -> RetrieveCountryGroupResponse:
     instance = RetrieveCountryGroupResponse()
+    instance.countries = [create_country_object_example()]
     instance.country_group_code = randomize()
     instance.country_group_name = randomize()
-    instance.countries = [create_country_object_example()]
     return instance
 
 
@@ -160,117 +160,117 @@ def create_retrieve_time_response_example() -> RetrieveTimeResponse:
 
 def create_update_country_group_request_example() -> UpdateCountryGroupRequest:
     instance = UpdateCountryGroupRequest()
-    instance.country_group_name = randomize()
     instance.countries = [create_country_object_example()]
+    instance.country_group_name = randomize()
     return instance
 
 
 def create_user_profile_admin_example() -> UserProfileAdmin:
     instance = UserProfileAdmin()
-    instance.first_name = randomize("first_name")
-    instance.last_name = randomize("last_name")
+    instance.avatar_large_url = randomize("url")
     instance.avatar_small_url = randomize("url")
     instance.avatar_url = randomize("url")
-    instance.avatar_large_url = randomize("url")
-    instance.language = randomize()
-    instance.time_zone = randomize()
-    instance.date_of_birth = randomize("adult_birthdate")
     instance.custom_attributes = {randomize(): randomize()}
-    instance.zip_code = randomize("zip_code")
+    instance.date_of_birth = randomize("adult_birthdate")
+    instance.first_name = randomize("first_name")
+    instance.language = randomize()
+    instance.last_name = randomize("last_name")
     instance.status = randomize()
+    instance.time_zone = randomize()
+    instance.zip_code = randomize("zip_code")
     return instance
 
 
 def create_user_profile_create_example() -> UserProfileCreate:
     instance = UserProfileCreate()
-    instance.first_name = randomize("first_name")
-    instance.last_name = randomize("last_name")
-    instance.language = randomize()
-    instance.date_of_birth = randomize("adult_birthdate")
+    instance.avatar_large_url = randomize("url")
     instance.avatar_small_url = randomize("url")
     instance.avatar_url = randomize("url")
-    instance.avatar_large_url = randomize("url")
     instance.custom_attributes = {randomize(): randomize()}
+    instance.date_of_birth = randomize("adult_birthdate")
+    instance.first_name = randomize("first_name")
+    instance.language = randomize()
+    instance.last_name = randomize("last_name")
     instance.time_zone = randomize()
     return instance
 
 
 def create_user_profile_info_example() -> UserProfileInfo:
     instance = UserProfileInfo()
-    instance.user_id = randomize("uid")
-    instance.namespace = randomize("slug")
-    instance.first_name = randomize("first_name")
-    instance.last_name = randomize("last_name")
+    instance.avatar_large_url = randomize("url")
     instance.avatar_small_url = randomize("url")
     instance.avatar_url = randomize("url")
-    instance.avatar_large_url = randomize("url")
-    instance.status = randomize()
-    instance.language = randomize()
-    instance.time_zone = randomize()
-    instance.date_of_birth = randomize("adult_birthdate")
     instance.custom_attributes = {randomize(): randomize()}
+    instance.date_of_birth = randomize("adult_birthdate")
+    instance.first_name = randomize("first_name")
+    instance.language = randomize()
+    instance.last_name = randomize("last_name")
+    instance.namespace = randomize("slug")
+    instance.status = randomize()
+    instance.time_zone = randomize()
+    instance.user_id = randomize("uid")
     instance.zip_code = randomize("zip_code")
     return instance
 
 
 def create_user_profile_private_create_example() -> UserProfilePrivateCreate:
     instance = UserProfilePrivateCreate()
-    instance.first_name = randomize("first_name")
-    instance.last_name = randomize("last_name")
-    instance.language = randomize()
-    instance.date_of_birth = randomize("adult_birthdate")
+    instance.avatar_large_url = randomize("url")
     instance.avatar_small_url = randomize("url")
     instance.avatar_url = randomize("url")
-    instance.avatar_large_url = randomize("url")
     instance.custom_attributes = {randomize(): randomize()}
-    instance.time_zone = randomize()
+    instance.date_of_birth = randomize("adult_birthdate")
+    instance.first_name = randomize("first_name")
+    instance.language = randomize()
+    instance.last_name = randomize("last_name")
     instance.private_custom_attributes = {randomize(): randomize()}
+    instance.time_zone = randomize()
     return instance
 
 
 def create_user_profile_private_info_example() -> UserProfilePrivateInfo:
     instance = UserProfilePrivateInfo()
-    instance.user_id = randomize("uid")
-    instance.namespace = randomize("slug")
-    instance.first_name = randomize("first_name")
-    instance.last_name = randomize("last_name")
+    instance.avatar_large_url = randomize("url")
     instance.avatar_small_url = randomize("url")
     instance.avatar_url = randomize("url")
-    instance.avatar_large_url = randomize("url")
-    instance.status = randomize()
-    instance.language = randomize()
-    instance.time_zone = randomize()
-    instance.date_of_birth = randomize("adult_birthdate")
     instance.custom_attributes = {randomize(): randomize()}
-    instance.zip_code = randomize("zip_code")
+    instance.date_of_birth = randomize("adult_birthdate")
+    instance.first_name = randomize("first_name")
+    instance.language = randomize()
+    instance.last_name = randomize("last_name")
+    instance.namespace = randomize("slug")
     instance.private_custom_attributes = {randomize(): randomize()}
+    instance.status = randomize()
+    instance.time_zone = randomize()
+    instance.user_id = randomize("uid")
+    instance.zip_code = randomize("zip_code")
     return instance
 
 
 def create_user_profile_private_update_example() -> UserProfilePrivateUpdate:
     instance = UserProfilePrivateUpdate()
-    instance.first_name = randomize("first_name")
-    instance.last_name = randomize("last_name")
+    instance.avatar_large_url = randomize("url")
     instance.avatar_small_url = randomize("url")
     instance.avatar_url = randomize("url")
-    instance.avatar_large_url = randomize("url")
-    instance.language = randomize()
-    instance.time_zone = randomize()
-    instance.date_of_birth = randomize("adult_birthdate")
     instance.custom_attributes = {randomize(): randomize()}
-    instance.zip_code = randomize("zip_code")
+    instance.date_of_birth = randomize("adult_birthdate")
+    instance.first_name = randomize("first_name")
+    instance.language = randomize()
+    instance.last_name = randomize("last_name")
     instance.private_custom_attributes = {randomize(): randomize()}
+    instance.time_zone = randomize()
+    instance.zip_code = randomize("zip_code")
     return instance
 
 
 def create_user_profile_public_info_example() -> UserProfilePublicInfo:
     instance = UserProfilePublicInfo()
-    instance.user_id = randomize("uid")
-    instance.namespace = randomize("slug")
-    instance.time_zone = randomize()
+    instance.avatar_large_url = randomize("url")
     instance.avatar_small_url = randomize("url")
     instance.avatar_url = randomize("url")
-    instance.avatar_large_url = randomize("url")
+    instance.namespace = randomize("slug")
+    instance.time_zone = randomize()
+    instance.user_id = randomize("uid")
     return instance
 
 
@@ -282,15 +282,15 @@ def create_user_profile_status_update_example() -> UserProfileStatusUpdate:
 
 def create_user_profile_update_example() -> UserProfileUpdate:
     instance = UserProfileUpdate()
-    instance.first_name = randomize("first_name")
-    instance.last_name = randomize("last_name")
+    instance.avatar_large_url = randomize("url")
     instance.avatar_small_url = randomize("url")
     instance.avatar_url = randomize("url")
-    instance.avatar_large_url = randomize("url")
-    instance.language = randomize()
-    instance.time_zone = randomize()
-    instance.date_of_birth = randomize("adult_birthdate")
     instance.custom_attributes = {randomize(): randomize()}
+    instance.date_of_birth = randomize("adult_birthdate")
+    instance.first_name = randomize("first_name")
+    instance.language = randomize()
+    instance.last_name = randomize("last_name")
+    instance.time_zone = randomize()
     instance.zip_code = randomize("zip_code")
     return instance
 

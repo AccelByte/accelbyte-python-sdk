@@ -122,12 +122,12 @@ def add_role_members(body: ModelRoleMembersRequest, role_id: str, x_additional_h
 
 
 @same_doc_as(AddRolePermission)
-def add_role_permission(body: ModelUpdatePermissionScheduleRequest, role_id: str, resource: str, action: int, x_additional_headers: Optional[Dict[str, str]] = None):
+def add_role_permission(body: ModelUpdatePermissionScheduleRequest, action: int, resource: str, role_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
     request = AddRolePermission.create(
         body=body,
-        role_id=role_id,
-        resource=resource,
         action=action,
+        resource=resource,
+        role_id=role_id,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
@@ -194,11 +194,11 @@ def admin_create_role_v4(body: ModelRoleV4Request, x_additional_headers: Optiona
 
 
 @same_doc_as(AdminDeleteRolePermissionV3)
-def admin_delete_role_permission_v3(role_id: str, resource: str, action: int, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_delete_role_permission_v3(action: int, resource: str, role_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
     request = AdminDeleteRolePermissionV3.create(
-        role_id=role_id,
-        resource=resource,
         action=action,
+        resource=resource,
+        role_id=role_id,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
@@ -246,23 +246,23 @@ def admin_get_role_admin_status_v3(role_id: str, x_additional_headers: Optional[
 
 
 @same_doc_as(AdminGetRoleManagersV3)
-def admin_get_role_managers_v3(role_id: str, limit: Optional[int] = None, after: Optional[str] = None, before: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_get_role_managers_v3(role_id: str, after: Optional[str] = None, before: Optional[str] = None, limit: Optional[int] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = AdminGetRoleManagersV3.create(
         role_id=role_id,
-        limit=limit,
         after=after,
         before=before,
+        limit=limit,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetRoleMembersV3)
-def admin_get_role_members_v3(role_id: str, limit: Optional[int] = None, after: Optional[str] = None, before: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_get_role_members_v3(role_id: str, after: Optional[str] = None, before: Optional[str] = None, limit: Optional[int] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = AdminGetRoleMembersV3.create(
         role_id=role_id,
-        limit=limit,
         after=after,
         before=before,
+        limit=limit,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
@@ -284,35 +284,35 @@ def admin_get_role_v4(role_id: str, x_additional_headers: Optional[Dict[str, str
 
 
 @same_doc_as(AdminGetRolesV3)
-def admin_get_roles_v3(is_wildcard: Optional[bool] = None, limit: Optional[int] = None, after: Optional[str] = None, before: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_get_roles_v3(after: Optional[str] = None, before: Optional[str] = None, is_wildcard: Optional[bool] = None, limit: Optional[int] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = AdminGetRolesV3.create(
-        is_wildcard=is_wildcard,
-        limit=limit,
         after=after,
         before=before,
+        is_wildcard=is_wildcard,
+        limit=limit,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetRolesV4)
-def admin_get_roles_v4(is_wildcard: Optional[bool] = None, admin_role: Optional[bool] = None, limit: Optional[int] = None, after: Optional[str] = None, before: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_get_roles_v4(admin_role: Optional[bool] = None, after: Optional[str] = None, before: Optional[str] = None, is_wildcard: Optional[bool] = None, limit: Optional[int] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = AdminGetRolesV4.create(
-        is_wildcard=is_wildcard,
         admin_role=admin_role,
-        limit=limit,
         after=after,
         before=before,
+        is_wildcard=is_wildcard,
+        limit=limit,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminListAssignedUsersV4)
-def admin_list_assigned_users_v4(role_id: str, limit: Optional[int] = None, after: Optional[str] = None, before: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_list_assigned_users_v4(role_id: str, after: Optional[str] = None, before: Optional[str] = None, limit: Optional[int] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = AdminListAssignedUsersV4.create(
         role_id=role_id,
-        limit=limit,
         after=after,
         before=before,
+        limit=limit,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
@@ -413,11 +413,11 @@ def delete_role(role_id: str, x_additional_headers: Optional[Dict[str, str]] = N
 
 
 @same_doc_as(DeleteRolePermission)
-def delete_role_permission(role_id: str, resource: str, action: int, x_additional_headers: Optional[Dict[str, str]] = None):
+def delete_role_permission(action: int, resource: str, role_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
     request = DeleteRolePermission.create(
-        role_id=role_id,
-        resource=resource,
         action=action,
+        resource=resource,
+        role_id=role_id,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
@@ -471,12 +471,12 @@ def public_get_role_v3(role_id: str, x_additional_headers: Optional[Dict[str, st
 
 
 @same_doc_as(PublicGetRolesV3)
-def public_get_roles_v3(limit: Optional[int] = None, after: Optional[str] = None, before: Optional[str] = None, is_wildcard: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_get_roles_v3(after: Optional[str] = None, before: Optional[str] = None, is_wildcard: Optional[bool] = None, limit: Optional[int] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = PublicGetRolesV3.create(
-        limit=limit,
         after=after,
         before=before,
         is_wildcard=is_wildcard,
+        limit=limit,
     )
     return run_request(request, additional_headers=x_additional_headers)
 

@@ -50,9 +50,9 @@ class GetAllPodConfig(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        offset: (offset) OPTIONAL int in query
-
         count: (count) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
 
     Responses:
         200: OK - ModelsListPodConfigResponse (ok)
@@ -74,8 +74,8 @@ class GetAllPodConfig(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    offset: int                                                                                    # OPTIONAL in [query]
     count: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
 
     # endregion fields
 
@@ -147,10 +147,10 @@ class GetAllPodConfig(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "count"):
             result["count"] = self.count
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         return result
 
     # endregion get_x_params methods
@@ -170,12 +170,12 @@ class GetAllPodConfig(Operation):
         self.namespace = value
         return self
 
-    def with_offset(self, value: int) -> GetAllPodConfig:
-        self.offset = value
-        return self
-
     def with_count(self, value: int) -> GetAllPodConfig:
         self.count = value
+        return self
+
+    def with_offset(self, value: int) -> GetAllPodConfig:
+        self.offset = value
         return self
 
     # endregion with_x methods
@@ -188,14 +188,14 @@ class GetAllPodConfig(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
         if hasattr(self, "count") and self.count:
             result["count"] = int(self.count)
         elif include_empty:
             result["count"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
         return result
 
     # endregion to methods
@@ -235,15 +235,15 @@ class GetAllPodConfig(Operation):
     def create(
         cls,
         namespace: str,
-        offset: Optional[int] = None,
         count: Optional[int] = None,
+        offset: Optional[int] = None,
     ) -> GetAllPodConfig:
         instance = cls()
         instance.namespace = namespace
-        if offset is not None:
-            instance.offset = offset
         if count is not None:
             instance.count = count
+        if offset is not None:
+            instance.offset = offset
         return instance
 
     @classmethod
@@ -253,22 +253,22 @@ class GetAllPodConfig(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
         if "count" in dict_ and dict_["count"] is not None:
             instance.count = int(dict_["count"])
         elif include_empty:
             instance.count = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "offset": "offset",
             "count": "count",
+            "offset": "offset",
         }
 
     # endregion static methods

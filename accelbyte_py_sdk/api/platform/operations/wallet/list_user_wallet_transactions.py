@@ -57,9 +57,9 @@ class ListUserWalletTransactions(Operation):
 
         wallet_id: (walletId) REQUIRED str in path
 
-        offset: (offset) OPTIONAL int in query
-
         limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
 
     Responses:
         200: OK - WalletTransactionPagingSlicedResult (successful operation)
@@ -79,8 +79,8 @@ class ListUserWalletTransactions(Operation):
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
     wallet_id: str                                                                                 # REQUIRED in [path]
-    offset: int                                                                                    # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
 
     # endregion fields
 
@@ -158,10 +158,10 @@ class ListUserWalletTransactions(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         return result
 
     # endregion get_x_params methods
@@ -193,12 +193,12 @@ class ListUserWalletTransactions(Operation):
         self.wallet_id = value
         return self
 
-    def with_offset(self, value: int) -> ListUserWalletTransactions:
-        self.offset = value
-        return self
-
     def with_limit(self, value: int) -> ListUserWalletTransactions:
         self.limit = value
+        return self
+
+    def with_offset(self, value: int) -> ListUserWalletTransactions:
+        self.offset = value
         return self
 
     # endregion with_x methods
@@ -219,14 +219,14 @@ class ListUserWalletTransactions(Operation):
             result["walletId"] = str(self.wallet_id)
         elif include_empty:
             result["walletId"] = str()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
         return result
 
     # endregion to methods
@@ -260,17 +260,17 @@ class ListUserWalletTransactions(Operation):
         namespace: str,
         user_id: str,
         wallet_id: str,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
     ) -> ListUserWalletTransactions:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
         instance.wallet_id = wallet_id
-        if offset is not None:
-            instance.offset = offset
         if limit is not None:
             instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
         return instance
 
     @classmethod
@@ -288,14 +288,14 @@ class ListUserWalletTransactions(Operation):
             instance.wallet_id = str(dict_["walletId"])
         elif include_empty:
             instance.wallet_id = str()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
         return instance
 
     @staticmethod
@@ -304,8 +304,8 @@ class ListUserWalletTransactions(Operation):
             "namespace": "namespace",
             "userId": "user_id",
             "walletId": "wallet_id",
-            "offset": "offset",
             "limit": "limit",
+            "offset": "offset",
         }
 
     # endregion static methods

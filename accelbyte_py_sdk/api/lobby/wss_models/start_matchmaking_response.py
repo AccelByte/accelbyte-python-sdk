@@ -28,8 +28,8 @@ class StartMatchmakingResponse(WebSocketMessage):
 
     # region fields
 
-    id_: str
     code: str
+    id_: str
 
     # endregion fields
 
@@ -39,10 +39,10 @@ class StartMatchmakingResponse(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {StartMatchmakingResponse.get_type()}"]
-        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
-        wsm.append(f"id: {id_}")
         if hasattr(self, "code") and self.code:
             wsm.append(f"code: {self.code}")
+        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
+        wsm.append(f"id: {id_}")
         return "\n".join(wsm)
 
     # endregion methods
@@ -80,8 +80,8 @@ class StartMatchmakingResponse(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
             "code": "code",
+            "id": "id_",
         }
 
     # endregion static methods

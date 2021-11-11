@@ -28,26 +28,26 @@ class TicketSaleIncrementResult(Model):
     """Ticket sale increment result (TicketSaleIncrementResult)
 
     Properties:
-        success: (success) REQUIRED bool
-
         max_sale_count: (maxSaleCount) REQUIRED int
+
+        success: (success) REQUIRED bool
     """
 
     # region fields
 
-    success: bool                                                                                  # REQUIRED
     max_sale_count: int                                                                            # REQUIRED
+    success: bool                                                                                  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_success(self, value: bool) -> TicketSaleIncrementResult:
-        self.success = value
-        return self
-
     def with_max_sale_count(self, value: int) -> TicketSaleIncrementResult:
         self.max_sale_count = value
+        return self
+
+    def with_success(self, value: bool) -> TicketSaleIncrementResult:
+        self.success = value
         return self
 
     # endregion with_x methods
@@ -56,14 +56,14 @@ class TicketSaleIncrementResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "success"):
-            result["success"] = bool(self.success)
-        elif include_empty:
-            result["success"] = bool()
         if hasattr(self, "max_sale_count"):
             result["maxSaleCount"] = int(self.max_sale_count)
         elif include_empty:
             result["maxSaleCount"] = int()
+        if hasattr(self, "success"):
+            result["success"] = bool(self.success)
+        elif include_empty:
+            result["success"] = bool()
         return result
 
     # endregion to methods
@@ -86,21 +86,21 @@ class TicketSaleIncrementResult(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "success" in dict_ and dict_["success"] is not None:
-            instance.success = bool(dict_["success"])
-        elif include_empty:
-            instance.success = bool()
         if "maxSaleCount" in dict_ and dict_["maxSaleCount"] is not None:
             instance.max_sale_count = int(dict_["maxSaleCount"])
         elif include_empty:
             instance.max_sale_count = int()
+        if "success" in dict_ and dict_["success"] is not None:
+            instance.success = bool(dict_["success"])
+        elif include_empty:
+            instance.success = bool()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "success": "success",
             "maxSaleCount": "max_sale_count",
+            "success": "success",
         }
 
     # endregion static methods

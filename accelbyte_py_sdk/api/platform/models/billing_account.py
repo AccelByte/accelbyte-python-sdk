@@ -30,33 +30,33 @@ class BillingAccount(Model):
     """Billing account (BillingAccount)
 
     Properties:
-        payment_provider: (paymentProvider) OPTIONAL str
+        additional_data: (additionalData) OPTIONAL AdditionalData
 
         payment_method: (paymentMethod) OPTIONAL str
 
-        additional_data: (additionalData) OPTIONAL AdditionalData
+        payment_provider: (paymentProvider) OPTIONAL str
     """
 
     # region fields
 
-    payment_provider: str                                                                          # OPTIONAL
-    payment_method: str                                                                            # OPTIONAL
     additional_data: AdditionalData                                                                # OPTIONAL
+    payment_method: str                                                                            # OPTIONAL
+    payment_provider: str                                                                          # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_payment_provider(self, value: str) -> BillingAccount:
-        self.payment_provider = value
+    def with_additional_data(self, value: AdditionalData) -> BillingAccount:
+        self.additional_data = value
         return self
 
     def with_payment_method(self, value: str) -> BillingAccount:
         self.payment_method = value
         return self
 
-    def with_additional_data(self, value: AdditionalData) -> BillingAccount:
-        self.additional_data = value
+    def with_payment_provider(self, value: str) -> BillingAccount:
+        self.payment_provider = value
         return self
 
     # endregion with_x methods
@@ -65,18 +65,18 @@ class BillingAccount(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "payment_provider"):
-            result["paymentProvider"] = str(self.payment_provider)
-        elif include_empty:
-            result["paymentProvider"] = str()
-        if hasattr(self, "payment_method"):
-            result["paymentMethod"] = str(self.payment_method)
-        elif include_empty:
-            result["paymentMethod"] = str()
         if hasattr(self, "additional_data"):
             result["additionalData"] = self.additional_data.to_dict(include_empty=include_empty)
         elif include_empty:
             result["additionalData"] = AdditionalData()
+        if hasattr(self, "payment_method"):
+            result["paymentMethod"] = str(self.payment_method)
+        elif include_empty:
+            result["paymentMethod"] = str()
+        if hasattr(self, "payment_provider"):
+            result["paymentProvider"] = str(self.payment_provider)
+        elif include_empty:
+            result["paymentProvider"] = str()
         return result
 
     # endregion to methods
@@ -104,26 +104,26 @@ class BillingAccount(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
-            instance.payment_provider = str(dict_["paymentProvider"])
-        elif include_empty:
-            instance.payment_provider = str()
-        if "paymentMethod" in dict_ and dict_["paymentMethod"] is not None:
-            instance.payment_method = str(dict_["paymentMethod"])
-        elif include_empty:
-            instance.payment_method = str()
         if "additionalData" in dict_ and dict_["additionalData"] is not None:
             instance.additional_data = AdditionalData.create_from_dict(dict_["additionalData"], include_empty=include_empty)
         elif include_empty:
             instance.additional_data = AdditionalData()
+        if "paymentMethod" in dict_ and dict_["paymentMethod"] is not None:
+            instance.payment_method = str(dict_["paymentMethod"])
+        elif include_empty:
+            instance.payment_method = str()
+        if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
+            instance.payment_provider = str(dict_["paymentProvider"])
+        elif include_empty:
+            instance.payment_provider = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "paymentProvider": "payment_provider",
-            "paymentMethod": "payment_method",
             "additionalData": "additional_data",
+            "paymentMethod": "payment_method",
+            "paymentProvider": "payment_provider",
         }
 
     # endregion static methods

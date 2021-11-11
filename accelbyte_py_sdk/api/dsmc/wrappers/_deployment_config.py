@@ -75,7 +75,7 @@ def create_deployment_override(body: ModelsCreateDeploymentOverrideRequest, depl
 
 
 @same_doc_as(CreateOverrideRegionOverride)
-def create_override_region_override(body: ModelsCreateRegionOverrideRequest, deployment: str, version: str, region: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def create_override_region_override(body: ModelsCreateRegionOverrideRequest, deployment: str, region: str, version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -83,8 +83,8 @@ def create_override_region_override(body: ModelsCreateRegionOverrideRequest, dep
     request = CreateOverrideRegionOverride.create(
         body=body,
         deployment=deployment,
-        version=version,
         region=region,
+        version=version,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -133,15 +133,15 @@ def delete_deployment_override(deployment: str, version: str, namespace: Optiona
 
 
 @same_doc_as(DeleteOverrideRegionOverride)
-def delete_override_region_override(deployment: str, version: str, region: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def delete_override_region_override(deployment: str, region: str, version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = DeleteOverrideRegionOverride.create(
         deployment=deployment,
-        version=version,
         region=region,
+        version=version,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -162,14 +162,14 @@ def delete_root_region_override(deployment: str, region: str, namespace: Optiona
 
 
 @same_doc_as(GetAllDeployment)
-def get_all_deployment(offset: Optional[int] = None, count: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_all_deployment(count: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetAllDeployment.create(
-        offset=offset,
         count=count,
+        offset=offset,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -218,7 +218,7 @@ def update_deployment_override(body: ModelsUpdateDeploymentOverrideRequest, depl
 
 
 @same_doc_as(UpdateOverrideRegionOverride)
-def update_override_region_override(body: ModelsUpdateRegionOverrideRequest, deployment: str, version: str, region: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def update_override_region_override(body: ModelsUpdateRegionOverrideRequest, deployment: str, region: str, version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -226,8 +226,8 @@ def update_override_region_override(body: ModelsUpdateRegionOverrideRequest, dep
     request = UpdateOverrideRegionOverride.create(
         body=body,
         deployment=deployment,
-        version=version,
         region=region,
+        version=version,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

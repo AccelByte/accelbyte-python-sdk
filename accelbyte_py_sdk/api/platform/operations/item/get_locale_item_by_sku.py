@@ -55,17 +55,17 @@ class GetLocaleItemBySku(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        sku: (sku) REQUIRED str in query
-
-        store_id: (storeId) OPTIONAL str in query
-
-        region: (region) OPTIONAL str in query
+        active_only: (activeOnly) OPTIONAL bool in query
 
         language: (language) OPTIONAL str in query
 
-        active_only: (activeOnly) OPTIONAL bool in query
-
         populate_bundle: (populateBundle) OPTIONAL bool in query
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        sku: (sku) REQUIRED str in query
 
     Responses:
         200: OK - PopulatedItemInfo (successful operation)
@@ -83,12 +83,12 @@ class GetLocaleItemBySku(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    sku: str                                                                                       # REQUIRED in [query]
-    store_id: str                                                                                  # OPTIONAL in [query]
-    region: str                                                                                    # OPTIONAL in [query]
-    language: str                                                                                  # OPTIONAL in [query]
     active_only: bool                                                                              # OPTIONAL in [query]
+    language: str                                                                                  # OPTIONAL in [query]
     populate_bundle: bool                                                                          # OPTIONAL in [query]
+    region: str                                                                                    # OPTIONAL in [query]
+    store_id: str                                                                                  # OPTIONAL in [query]
+    sku: str                                                                                       # REQUIRED in [query]
 
     # endregion fields
 
@@ -161,18 +161,18 @@ class GetLocaleItemBySku(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "sku"):
-            result["sku"] = self.sku
-        if hasattr(self, "store_id"):
-            result["storeId"] = self.store_id
-        if hasattr(self, "region"):
-            result["region"] = self.region
-        if hasattr(self, "language"):
-            result["language"] = self.language
         if hasattr(self, "active_only"):
             result["activeOnly"] = self.active_only
+        if hasattr(self, "language"):
+            result["language"] = self.language
         if hasattr(self, "populate_bundle"):
             result["populateBundle"] = self.populate_bundle
+        if hasattr(self, "region"):
+            result["region"] = self.region
+        if hasattr(self, "store_id"):
+            result["storeId"] = self.store_id
+        if hasattr(self, "sku"):
+            result["sku"] = self.sku
         return result
 
     # endregion get_x_params methods
@@ -194,28 +194,28 @@ class GetLocaleItemBySku(Operation):
         self.namespace = value
         return self
 
-    def with_sku(self, value: str) -> GetLocaleItemBySku:
-        self.sku = value
-        return self
-
-    def with_store_id(self, value: str) -> GetLocaleItemBySku:
-        self.store_id = value
-        return self
-
-    def with_region(self, value: str) -> GetLocaleItemBySku:
-        self.region = value
+    def with_active_only(self, value: bool) -> GetLocaleItemBySku:
+        self.active_only = value
         return self
 
     def with_language(self, value: str) -> GetLocaleItemBySku:
         self.language = value
         return self
 
-    def with_active_only(self, value: bool) -> GetLocaleItemBySku:
-        self.active_only = value
-        return self
-
     def with_populate_bundle(self, value: bool) -> GetLocaleItemBySku:
         self.populate_bundle = value
+        return self
+
+    def with_region(self, value: str) -> GetLocaleItemBySku:
+        self.region = value
+        return self
+
+    def with_store_id(self, value: str) -> GetLocaleItemBySku:
+        self.store_id = value
+        return self
+
+    def with_sku(self, value: str) -> GetLocaleItemBySku:
+        self.sku = value
         return self
 
     # endregion with_x methods
@@ -228,30 +228,30 @@ class GetLocaleItemBySku(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "sku") and self.sku:
-            result["sku"] = str(self.sku)
-        elif include_empty:
-            result["sku"] = str()
-        if hasattr(self, "store_id") and self.store_id:
-            result["storeId"] = str(self.store_id)
-        elif include_empty:
-            result["storeId"] = str()
-        if hasattr(self, "region") and self.region:
-            result["region"] = str(self.region)
-        elif include_empty:
-            result["region"] = str()
-        if hasattr(self, "language") and self.language:
-            result["language"] = str(self.language)
-        elif include_empty:
-            result["language"] = str()
         if hasattr(self, "active_only") and self.active_only:
             result["activeOnly"] = bool(self.active_only)
         elif include_empty:
             result["activeOnly"] = bool()
+        if hasattr(self, "language") and self.language:
+            result["language"] = str(self.language)
+        elif include_empty:
+            result["language"] = str()
         if hasattr(self, "populate_bundle") and self.populate_bundle:
             result["populateBundle"] = bool(self.populate_bundle)
         elif include_empty:
             result["populateBundle"] = bool()
+        if hasattr(self, "region") and self.region:
+            result["region"] = str(self.region)
+        elif include_empty:
+            result["region"] = str()
+        if hasattr(self, "store_id") and self.store_id:
+            result["storeId"] = str(self.store_id)
+        elif include_empty:
+            result["storeId"] = str()
+        if hasattr(self, "sku") and self.sku:
+            result["sku"] = str(self.sku)
+        elif include_empty:
+            result["sku"] = str()
         return result
 
     # endregion to methods
@@ -284,25 +284,25 @@ class GetLocaleItemBySku(Operation):
         cls,
         namespace: str,
         sku: str,
-        store_id: Optional[str] = None,
-        region: Optional[str] = None,
-        language: Optional[str] = None,
         active_only: Optional[bool] = None,
+        language: Optional[str] = None,
         populate_bundle: Optional[bool] = None,
+        region: Optional[str] = None,
+        store_id: Optional[str] = None,
     ) -> GetLocaleItemBySku:
         instance = cls()
         instance.namespace = namespace
         instance.sku = sku
-        if store_id is not None:
-            instance.store_id = store_id
-        if region is not None:
-            instance.region = region
-        if language is not None:
-            instance.language = language
         if active_only is not None:
             instance.active_only = active_only
+        if language is not None:
+            instance.language = language
         if populate_bundle is not None:
             instance.populate_bundle = populate_bundle
+        if region is not None:
+            instance.region = region
+        if store_id is not None:
+            instance.store_id = store_id
         return instance
 
     @classmethod
@@ -312,42 +312,42 @@ class GetLocaleItemBySku(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "sku" in dict_ and dict_["sku"] is not None:
-            instance.sku = str(dict_["sku"])
-        elif include_empty:
-            instance.sku = str()
-        if "storeId" in dict_ and dict_["storeId"] is not None:
-            instance.store_id = str(dict_["storeId"])
-        elif include_empty:
-            instance.store_id = str()
-        if "region" in dict_ and dict_["region"] is not None:
-            instance.region = str(dict_["region"])
-        elif include_empty:
-            instance.region = str()
-        if "language" in dict_ and dict_["language"] is not None:
-            instance.language = str(dict_["language"])
-        elif include_empty:
-            instance.language = str()
         if "activeOnly" in dict_ and dict_["activeOnly"] is not None:
             instance.active_only = bool(dict_["activeOnly"])
         elif include_empty:
             instance.active_only = bool()
+        if "language" in dict_ and dict_["language"] is not None:
+            instance.language = str(dict_["language"])
+        elif include_empty:
+            instance.language = str()
         if "populateBundle" in dict_ and dict_["populateBundle"] is not None:
             instance.populate_bundle = bool(dict_["populateBundle"])
         elif include_empty:
             instance.populate_bundle = bool()
+        if "region" in dict_ and dict_["region"] is not None:
+            instance.region = str(dict_["region"])
+        elif include_empty:
+            instance.region = str()
+        if "storeId" in dict_ and dict_["storeId"] is not None:
+            instance.store_id = str(dict_["storeId"])
+        elif include_empty:
+            instance.store_id = str()
+        if "sku" in dict_ and dict_["sku"] is not None:
+            instance.sku = str(dict_["sku"])
+        elif include_empty:
+            instance.sku = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "sku": "sku",
-            "storeId": "store_id",
-            "region": "region",
-            "language": "language",
             "activeOnly": "active_only",
+            "language": "language",
             "populateBundle": "populate_bundle",
+            "region": "region",
+            "storeId": "store_id",
+            "sku": "sku",
         }
 
     # endregion static methods

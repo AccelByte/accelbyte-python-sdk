@@ -57,9 +57,9 @@ class UpdateUserOrderStatus(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
-
         order_no: (orderNo) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
 
     Responses:
         200: OK - OrderInfo (successful operation)
@@ -82,8 +82,8 @@ class UpdateUserOrderStatus(Operation):
 
     body: OrderUpdate                                                                              # OPTIONAL in [body]
     namespace: str                                                                                 # REQUIRED in [path]
-    user_id: str                                                                                   # REQUIRED in [path]
     order_no: str                                                                                  # REQUIRED in [path]
+    user_id: str                                                                                   # REQUIRED in [path]
 
     # endregion fields
 
@@ -132,8 +132,8 @@ class UpdateUserOrderStatus(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "namespace",
-            "user_id",
             "order_no",
+            "user_id",
         ]
 
     # endregion get methods
@@ -153,10 +153,10 @@ class UpdateUserOrderStatus(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
         if hasattr(self, "order_no"):
             result["orderNo"] = self.order_no
+        if hasattr(self, "user_id"):
+            result["userId"] = self.user_id
         return result
 
     # endregion get_x_params methods
@@ -166,9 +166,9 @@ class UpdateUserOrderStatus(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
         if not hasattr(self, "order_no") or self.order_no is None:
+            return False
+        if not hasattr(self, "user_id") or self.user_id is None:
             return False
         return True
 
@@ -184,12 +184,12 @@ class UpdateUserOrderStatus(Operation):
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> UpdateUserOrderStatus:
-        self.user_id = value
-        return self
-
     def with_order_no(self, value: str) -> UpdateUserOrderStatus:
         self.order_no = value
+        return self
+
+    def with_user_id(self, value: str) -> UpdateUserOrderStatus:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -206,14 +206,14 @@ class UpdateUserOrderStatus(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
         if hasattr(self, "order_no") and self.order_no:
             result["orderNo"] = str(self.order_no)
         elif include_empty:
             result["orderNo"] = str()
+        if hasattr(self, "user_id") and self.user_id:
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         return result
 
     # endregion to methods
@@ -253,14 +253,14 @@ class UpdateUserOrderStatus(Operation):
     def create(
         cls,
         namespace: str,
-        user_id: str,
         order_no: str,
+        user_id: str,
         body: Optional[OrderUpdate] = None,
     ) -> UpdateUserOrderStatus:
         instance = cls()
         instance.namespace = namespace
-        instance.user_id = user_id
         instance.order_no = order_no
+        instance.user_id = user_id
         if body is not None:
             instance.body = body
         return instance
@@ -276,14 +276,14 @@ class UpdateUserOrderStatus(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
         if "orderNo" in dict_ and dict_["orderNo"] is not None:
             instance.order_no = str(dict_["orderNo"])
         elif include_empty:
             instance.order_no = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         return instance
 
     @staticmethod
@@ -291,8 +291,8 @@ class UpdateUserOrderStatus(Operation):
         return {
             "body": "body",
             "namespace": "namespace",
-            "userId": "user_id",
             "orderNo": "order_no",
+            "userId": "user_id",
         }
 
     # endregion static methods

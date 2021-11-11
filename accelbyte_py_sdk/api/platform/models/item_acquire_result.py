@@ -28,26 +28,26 @@ class ItemAcquireResult(Model):
     """Item acquire result (ItemAcquireResult)
 
     Properties:
-        success: (success) REQUIRED bool
-
         max_count: (maxCount) REQUIRED int
+
+        success: (success) REQUIRED bool
     """
 
     # region fields
 
-    success: bool                                                                                  # REQUIRED
     max_count: int                                                                                 # REQUIRED
+    success: bool                                                                                  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_success(self, value: bool) -> ItemAcquireResult:
-        self.success = value
-        return self
-
     def with_max_count(self, value: int) -> ItemAcquireResult:
         self.max_count = value
+        return self
+
+    def with_success(self, value: bool) -> ItemAcquireResult:
+        self.success = value
         return self
 
     # endregion with_x methods
@@ -56,14 +56,14 @@ class ItemAcquireResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "success"):
-            result["success"] = bool(self.success)
-        elif include_empty:
-            result["success"] = bool()
         if hasattr(self, "max_count"):
             result["maxCount"] = int(self.max_count)
         elif include_empty:
             result["maxCount"] = int()
+        if hasattr(self, "success"):
+            result["success"] = bool(self.success)
+        elif include_empty:
+            result["success"] = bool()
         return result
 
     # endregion to methods
@@ -86,21 +86,21 @@ class ItemAcquireResult(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "success" in dict_ and dict_["success"] is not None:
-            instance.success = bool(dict_["success"])
-        elif include_empty:
-            instance.success = bool()
         if "maxCount" in dict_ and dict_["maxCount"] is not None:
             instance.max_count = int(dict_["maxCount"])
         elif include_empty:
             instance.max_count = int()
+        if "success" in dict_ and dict_["success"] is not None:
+            instance.success = bool(dict_["success"])
+        elif include_empty:
+            instance.success = bool()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "success": "success",
             "maxCount": "max_count",
+            "success": "success",
         }
 
     # endregion static methods

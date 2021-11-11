@@ -31,153 +31,145 @@ class TradeNotification(Model):
     """Trade notification (TradeNotification)
 
     Properties:
-        namespace: (namespace) REQUIRED str
+        currency: (currency) REQUIRED CurrencySummary
 
-        user_id: (userId) OPTIONAL str
+        ext_order_no: (extOrderNo) REQUIRED str
 
         issued_at: (issuedAt) REQUIRED str
 
-        type_: (type) REQUIRED str
-
-        target_namespace: (targetNamespace) OPTIONAL str
-
-        target_user_id: (targetUserId) OPTIONAL str
+        namespace: (namespace) REQUIRED str
 
         nonce_str: (nonceStr) REQUIRED str
 
         payment_order_no: (paymentOrderNo) REQUIRED str
 
-        ext_order_no: (extOrderNo) REQUIRED str
-
-        sku: (sku) OPTIONAL str
-
-        ext_user_id: (extUserId) OPTIONAL str
-
-        sandbox: (sandbox) REQUIRED bool
+        payment_provider: (paymentProvider) REQUIRED str
 
         price: (price) REQUIRED int
 
-        payment_provider: (paymentProvider) REQUIRED str
-
-        payment_method: (paymentMethod) OPTIONAL str
-
-        tax: (tax) OPTIONAL int
-
-        vat: (vat) OPTIONAL int
-
-        sales_tax: (salesTax) OPTIONAL int
-
-        payment_provider_fee: (paymentProviderFee) OPTIONAL int
-
-        payment_method_fee: (paymentMethodFee) OPTIONAL int
-
-        currency: (currency) REQUIRED CurrencySummary
-
-        payment_station_url: (paymentStationUrl) OPTIONAL str
+        sandbox: (sandbox) REQUIRED bool
 
         status: (status) REQUIRED str
 
-        status_reason: (statusReason) OPTIONAL str
+        type_: (type) REQUIRED str
+
+        additional_data: (additionalData) OPTIONAL AdditionalData
 
         authorised_time: (authorisedTime) OPTIONAL str
 
-        created_time: (createdTime) OPTIONAL str
-
-        charged_time: (chargedTime) OPTIONAL str
-
-        refunded_time: (refundedTime) OPTIONAL str
+        chargeback_reversed_time: (chargebackReversedTime) OPTIONAL str
 
         chargeback_time: (chargebackTime) OPTIONAL str
 
-        chargeback_reversed_time: (chargebackReversedTime) OPTIONAL str
+        charged_time: (chargedTime) OPTIONAL str
+
+        created_time: (createdTime) OPTIONAL str
 
         custom_parameters: (customParameters) OPTIONAL Dict[str, Any]
 
+        ext_tx_id: (extTxId) OPTIONAL str
+
+        ext_user_id: (extUserId) OPTIONAL str
+
         metadata: (metadata) OPTIONAL Dict[str, str]
+
+        payment_method: (paymentMethod) OPTIONAL str
+
+        payment_method_fee: (paymentMethodFee) OPTIONAL int
+
+        payment_provider_fee: (paymentProviderFee) OPTIONAL int
+
+        payment_station_url: (paymentStationUrl) OPTIONAL str
+
+        refunded_time: (refundedTime) OPTIONAL str
+
+        sales_tax: (salesTax) OPTIONAL int
+
+        sku: (sku) OPTIONAL str
+
+        status_reason: (statusReason) OPTIONAL str
 
         subscription_id: (subscriptionId) OPTIONAL str
 
-        total_tax: (totalTax) OPTIONAL int
+        subtotal_price: (subtotalPrice) OPTIONAL int
+
+        target_namespace: (targetNamespace) OPTIONAL str
+
+        target_user_id: (targetUserId) OPTIONAL str
+
+        tax: (tax) OPTIONAL int
 
         total_price: (totalPrice) OPTIONAL int
 
-        subtotal_price: (subtotalPrice) OPTIONAL int
-
-        ext_tx_id: (extTxId) OPTIONAL str
+        total_tax: (totalTax) OPTIONAL int
 
         tx_end_time: (txEndTime) OPTIONAL str
 
-        additional_data: (additionalData) OPTIONAL AdditionalData
+        user_id: (userId) OPTIONAL str
+
+        vat: (vat) OPTIONAL int
     """
 
     # region fields
 
-    namespace: str                                                                                 # REQUIRED
-    user_id: str                                                                                   # OPTIONAL
+    currency: CurrencySummary                                                                      # REQUIRED
+    ext_order_no: str                                                                              # REQUIRED
     issued_at: str                                                                                 # REQUIRED
-    type_: str                                                                                     # REQUIRED
-    target_namespace: str                                                                          # OPTIONAL
-    target_user_id: str                                                                            # OPTIONAL
+    namespace: str                                                                                 # REQUIRED
     nonce_str: str                                                                                 # REQUIRED
     payment_order_no: str                                                                          # REQUIRED
-    ext_order_no: str                                                                              # REQUIRED
-    sku: str                                                                                       # OPTIONAL
-    ext_user_id: str                                                                               # OPTIONAL
-    sandbox: bool                                                                                  # REQUIRED
-    price: int                                                                                     # REQUIRED
     payment_provider: str                                                                          # REQUIRED
-    payment_method: str                                                                            # OPTIONAL
-    tax: int                                                                                       # OPTIONAL
-    vat: int                                                                                       # OPTIONAL
-    sales_tax: int                                                                                 # OPTIONAL
-    payment_provider_fee: int                                                                      # OPTIONAL
-    payment_method_fee: int                                                                        # OPTIONAL
-    currency: CurrencySummary                                                                      # REQUIRED
-    payment_station_url: str                                                                       # OPTIONAL
+    price: int                                                                                     # REQUIRED
+    sandbox: bool                                                                                  # REQUIRED
     status: str                                                                                    # REQUIRED
-    status_reason: str                                                                             # OPTIONAL
-    authorised_time: str                                                                           # OPTIONAL
-    created_time: str                                                                              # OPTIONAL
-    charged_time: str                                                                              # OPTIONAL
-    refunded_time: str                                                                             # OPTIONAL
-    chargeback_time: str                                                                           # OPTIONAL
-    chargeback_reversed_time: str                                                                  # OPTIONAL
-    custom_parameters: Dict[str, Any]                                                              # OPTIONAL
-    metadata: Dict[str, str]                                                                       # OPTIONAL
-    subscription_id: str                                                                           # OPTIONAL
-    total_tax: int                                                                                 # OPTIONAL
-    total_price: int                                                                               # OPTIONAL
-    subtotal_price: int                                                                            # OPTIONAL
-    ext_tx_id: str                                                                                 # OPTIONAL
-    tx_end_time: str                                                                               # OPTIONAL
+    type_: str                                                                                     # REQUIRED
     additional_data: AdditionalData                                                                # OPTIONAL
+    authorised_time: str                                                                           # OPTIONAL
+    chargeback_reversed_time: str                                                                  # OPTIONAL
+    chargeback_time: str                                                                           # OPTIONAL
+    charged_time: str                                                                              # OPTIONAL
+    created_time: str                                                                              # OPTIONAL
+    custom_parameters: Dict[str, Any]                                                              # OPTIONAL
+    ext_tx_id: str                                                                                 # OPTIONAL
+    ext_user_id: str                                                                               # OPTIONAL
+    metadata: Dict[str, str]                                                                       # OPTIONAL
+    payment_method: str                                                                            # OPTIONAL
+    payment_method_fee: int                                                                        # OPTIONAL
+    payment_provider_fee: int                                                                      # OPTIONAL
+    payment_station_url: str                                                                       # OPTIONAL
+    refunded_time: str                                                                             # OPTIONAL
+    sales_tax: int                                                                                 # OPTIONAL
+    sku: str                                                                                       # OPTIONAL
+    status_reason: str                                                                             # OPTIONAL
+    subscription_id: str                                                                           # OPTIONAL
+    subtotal_price: int                                                                            # OPTIONAL
+    target_namespace: str                                                                          # OPTIONAL
+    target_user_id: str                                                                            # OPTIONAL
+    tax: int                                                                                       # OPTIONAL
+    total_price: int                                                                               # OPTIONAL
+    total_tax: int                                                                                 # OPTIONAL
+    tx_end_time: str                                                                               # OPTIONAL
+    user_id: str                                                                                   # OPTIONAL
+    vat: int                                                                                       # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> TradeNotification:
-        self.namespace = value
+    def with_currency(self, value: CurrencySummary) -> TradeNotification:
+        self.currency = value
         return self
 
-    def with_user_id(self, value: str) -> TradeNotification:
-        self.user_id = value
+    def with_ext_order_no(self, value: str) -> TradeNotification:
+        self.ext_order_no = value
         return self
 
     def with_issued_at(self, value: str) -> TradeNotification:
         self.issued_at = value
         return self
 
-    def with_type(self, value: str) -> TradeNotification:
-        self.type_ = value
-        return self
-
-    def with_target_namespace(self, value: str) -> TradeNotification:
-        self.target_namespace = value
-        return self
-
-    def with_target_user_id(self, value: str) -> TradeNotification:
-        self.target_user_id = value
+    def with_namespace(self, value: str) -> TradeNotification:
+        self.namespace = value
         return self
 
     def with_nonce_str(self, value: str) -> TradeNotification:
@@ -188,128 +180,136 @@ class TradeNotification(Model):
         self.payment_order_no = value
         return self
 
-    def with_ext_order_no(self, value: str) -> TradeNotification:
-        self.ext_order_no = value
-        return self
-
-    def with_sku(self, value: str) -> TradeNotification:
-        self.sku = value
-        return self
-
-    def with_ext_user_id(self, value: str) -> TradeNotification:
-        self.ext_user_id = value
-        return self
-
-    def with_sandbox(self, value: bool) -> TradeNotification:
-        self.sandbox = value
+    def with_payment_provider(self, value: str) -> TradeNotification:
+        self.payment_provider = value
         return self
 
     def with_price(self, value: int) -> TradeNotification:
         self.price = value
         return self
 
-    def with_payment_provider(self, value: str) -> TradeNotification:
-        self.payment_provider = value
-        return self
-
-    def with_payment_method(self, value: str) -> TradeNotification:
-        self.payment_method = value
-        return self
-
-    def with_tax(self, value: int) -> TradeNotification:
-        self.tax = value
-        return self
-
-    def with_vat(self, value: int) -> TradeNotification:
-        self.vat = value
-        return self
-
-    def with_sales_tax(self, value: int) -> TradeNotification:
-        self.sales_tax = value
-        return self
-
-    def with_payment_provider_fee(self, value: int) -> TradeNotification:
-        self.payment_provider_fee = value
-        return self
-
-    def with_payment_method_fee(self, value: int) -> TradeNotification:
-        self.payment_method_fee = value
-        return self
-
-    def with_currency(self, value: CurrencySummary) -> TradeNotification:
-        self.currency = value
-        return self
-
-    def with_payment_station_url(self, value: str) -> TradeNotification:
-        self.payment_station_url = value
+    def with_sandbox(self, value: bool) -> TradeNotification:
+        self.sandbox = value
         return self
 
     def with_status(self, value: str) -> TradeNotification:
         self.status = value
         return self
 
-    def with_status_reason(self, value: str) -> TradeNotification:
-        self.status_reason = value
+    def with_type(self, value: str) -> TradeNotification:
+        self.type_ = value
+        return self
+
+    def with_additional_data(self, value: AdditionalData) -> TradeNotification:
+        self.additional_data = value
         return self
 
     def with_authorised_time(self, value: str) -> TradeNotification:
         self.authorised_time = value
         return self
 
-    def with_created_time(self, value: str) -> TradeNotification:
-        self.created_time = value
-        return self
-
-    def with_charged_time(self, value: str) -> TradeNotification:
-        self.charged_time = value
-        return self
-
-    def with_refunded_time(self, value: str) -> TradeNotification:
-        self.refunded_time = value
+    def with_chargeback_reversed_time(self, value: str) -> TradeNotification:
+        self.chargeback_reversed_time = value
         return self
 
     def with_chargeback_time(self, value: str) -> TradeNotification:
         self.chargeback_time = value
         return self
 
-    def with_chargeback_reversed_time(self, value: str) -> TradeNotification:
-        self.chargeback_reversed_time = value
+    def with_charged_time(self, value: str) -> TradeNotification:
+        self.charged_time = value
+        return self
+
+    def with_created_time(self, value: str) -> TradeNotification:
+        self.created_time = value
         return self
 
     def with_custom_parameters(self, value: Dict[str, Any]) -> TradeNotification:
         self.custom_parameters = value
         return self
 
+    def with_ext_tx_id(self, value: str) -> TradeNotification:
+        self.ext_tx_id = value
+        return self
+
+    def with_ext_user_id(self, value: str) -> TradeNotification:
+        self.ext_user_id = value
+        return self
+
     def with_metadata(self, value: Dict[str, str]) -> TradeNotification:
         self.metadata = value
+        return self
+
+    def with_payment_method(self, value: str) -> TradeNotification:
+        self.payment_method = value
+        return self
+
+    def with_payment_method_fee(self, value: int) -> TradeNotification:
+        self.payment_method_fee = value
+        return self
+
+    def with_payment_provider_fee(self, value: int) -> TradeNotification:
+        self.payment_provider_fee = value
+        return self
+
+    def with_payment_station_url(self, value: str) -> TradeNotification:
+        self.payment_station_url = value
+        return self
+
+    def with_refunded_time(self, value: str) -> TradeNotification:
+        self.refunded_time = value
+        return self
+
+    def with_sales_tax(self, value: int) -> TradeNotification:
+        self.sales_tax = value
+        return self
+
+    def with_sku(self, value: str) -> TradeNotification:
+        self.sku = value
+        return self
+
+    def with_status_reason(self, value: str) -> TradeNotification:
+        self.status_reason = value
         return self
 
     def with_subscription_id(self, value: str) -> TradeNotification:
         self.subscription_id = value
         return self
 
-    def with_total_tax(self, value: int) -> TradeNotification:
-        self.total_tax = value
+    def with_subtotal_price(self, value: int) -> TradeNotification:
+        self.subtotal_price = value
+        return self
+
+    def with_target_namespace(self, value: str) -> TradeNotification:
+        self.target_namespace = value
+        return self
+
+    def with_target_user_id(self, value: str) -> TradeNotification:
+        self.target_user_id = value
+        return self
+
+    def with_tax(self, value: int) -> TradeNotification:
+        self.tax = value
         return self
 
     def with_total_price(self, value: int) -> TradeNotification:
         self.total_price = value
         return self
 
-    def with_subtotal_price(self, value: int) -> TradeNotification:
-        self.subtotal_price = value
-        return self
-
-    def with_ext_tx_id(self, value: str) -> TradeNotification:
-        self.ext_tx_id = value
+    def with_total_tax(self, value: int) -> TradeNotification:
+        self.total_tax = value
         return self
 
     def with_tx_end_time(self, value: str) -> TradeNotification:
         self.tx_end_time = value
         return self
 
-    def with_additional_data(self, value: AdditionalData) -> TradeNotification:
-        self.additional_data = value
+    def with_user_id(self, value: str) -> TradeNotification:
+        self.user_id = value
+        return self
+
+    def with_vat(self, value: int) -> TradeNotification:
+        self.vat = value
         return self
 
     # endregion with_x methods
@@ -318,30 +318,22 @@ class TradeNotification(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = str(self.namespace)
+        if hasattr(self, "currency"):
+            result["currency"] = self.currency.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["namespace"] = str()
-        if hasattr(self, "user_id"):
-            result["userId"] = str(self.user_id)
+            result["currency"] = CurrencySummary()
+        if hasattr(self, "ext_order_no"):
+            result["extOrderNo"] = str(self.ext_order_no)
         elif include_empty:
-            result["userId"] = str()
+            result["extOrderNo"] = str()
         if hasattr(self, "issued_at"):
             result["issuedAt"] = str(self.issued_at)
         elif include_empty:
             result["issuedAt"] = str()
-        if hasattr(self, "type_"):
-            result["type"] = str(self.type_)
+        if hasattr(self, "namespace"):
+            result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["type"] = str()
-        if hasattr(self, "target_namespace"):
-            result["targetNamespace"] = str(self.target_namespace)
-        elif include_empty:
-            result["targetNamespace"] = str()
-        if hasattr(self, "target_user_id"):
-            result["targetUserId"] = str(self.target_user_id)
-        elif include_empty:
-            result["targetUserId"] = str()
+            result["namespace"] = str()
         if hasattr(self, "nonce_str"):
             result["nonceStr"] = str(self.nonce_str)
         elif include_empty:
@@ -350,130 +342,138 @@ class TradeNotification(Model):
             result["paymentOrderNo"] = str(self.payment_order_no)
         elif include_empty:
             result["paymentOrderNo"] = str()
-        if hasattr(self, "ext_order_no"):
-            result["extOrderNo"] = str(self.ext_order_no)
-        elif include_empty:
-            result["extOrderNo"] = str()
-        if hasattr(self, "sku"):
-            result["sku"] = str(self.sku)
-        elif include_empty:
-            result["sku"] = str()
-        if hasattr(self, "ext_user_id"):
-            result["extUserId"] = str(self.ext_user_id)
-        elif include_empty:
-            result["extUserId"] = str()
-        if hasattr(self, "sandbox"):
-            result["sandbox"] = bool(self.sandbox)
-        elif include_empty:
-            result["sandbox"] = bool()
-        if hasattr(self, "price"):
-            result["price"] = int(self.price)
-        elif include_empty:
-            result["price"] = int()
         if hasattr(self, "payment_provider"):
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
             result["paymentProvider"] = str()
-        if hasattr(self, "payment_method"):
-            result["paymentMethod"] = str(self.payment_method)
+        if hasattr(self, "price"):
+            result["price"] = int(self.price)
         elif include_empty:
-            result["paymentMethod"] = str()
-        if hasattr(self, "tax"):
-            result["tax"] = int(self.tax)
+            result["price"] = int()
+        if hasattr(self, "sandbox"):
+            result["sandbox"] = bool(self.sandbox)
         elif include_empty:
-            result["tax"] = int()
-        if hasattr(self, "vat"):
-            result["vat"] = int(self.vat)
-        elif include_empty:
-            result["vat"] = int()
-        if hasattr(self, "sales_tax"):
-            result["salesTax"] = int(self.sales_tax)
-        elif include_empty:
-            result["salesTax"] = int()
-        if hasattr(self, "payment_provider_fee"):
-            result["paymentProviderFee"] = int(self.payment_provider_fee)
-        elif include_empty:
-            result["paymentProviderFee"] = int()
-        if hasattr(self, "payment_method_fee"):
-            result["paymentMethodFee"] = int(self.payment_method_fee)
-        elif include_empty:
-            result["paymentMethodFee"] = int()
-        if hasattr(self, "currency"):
-            result["currency"] = self.currency.to_dict(include_empty=include_empty)
-        elif include_empty:
-            result["currency"] = CurrencySummary()
-        if hasattr(self, "payment_station_url"):
-            result["paymentStationUrl"] = str(self.payment_station_url)
-        elif include_empty:
-            result["paymentStationUrl"] = str()
+            result["sandbox"] = bool()
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
-        if hasattr(self, "status_reason"):
-            result["statusReason"] = str(self.status_reason)
+        if hasattr(self, "type_"):
+            result["type"] = str(self.type_)
         elif include_empty:
-            result["statusReason"] = str()
-        if hasattr(self, "authorised_time"):
-            result["authorisedTime"] = str(self.authorised_time)
-        elif include_empty:
-            result["authorisedTime"] = str()
-        if hasattr(self, "created_time"):
-            result["createdTime"] = str(self.created_time)
-        elif include_empty:
-            result["createdTime"] = str()
-        if hasattr(self, "charged_time"):
-            result["chargedTime"] = str(self.charged_time)
-        elif include_empty:
-            result["chargedTime"] = str()
-        if hasattr(self, "refunded_time"):
-            result["refundedTime"] = str(self.refunded_time)
-        elif include_empty:
-            result["refundedTime"] = str()
-        if hasattr(self, "chargeback_time"):
-            result["chargebackTime"] = str(self.chargeback_time)
-        elif include_empty:
-            result["chargebackTime"] = str()
-        if hasattr(self, "chargeback_reversed_time"):
-            result["chargebackReversedTime"] = str(self.chargeback_reversed_time)
-        elif include_empty:
-            result["chargebackReversedTime"] = str()
-        if hasattr(self, "custom_parameters"):
-            result["customParameters"] = {str(k0): v0 for k0, v0 in self.custom_parameters.items()}
-        elif include_empty:
-            result["customParameters"] = {}
-        if hasattr(self, "metadata"):
-            result["metadata"] = {str(k0): str(v0) for k0, v0 in self.metadata.items()}
-        elif include_empty:
-            result["metadata"] = {}
-        if hasattr(self, "subscription_id"):
-            result["subscriptionId"] = str(self.subscription_id)
-        elif include_empty:
-            result["subscriptionId"] = str()
-        if hasattr(self, "total_tax"):
-            result["totalTax"] = int(self.total_tax)
-        elif include_empty:
-            result["totalTax"] = int()
-        if hasattr(self, "total_price"):
-            result["totalPrice"] = int(self.total_price)
-        elif include_empty:
-            result["totalPrice"] = int()
-        if hasattr(self, "subtotal_price"):
-            result["subtotalPrice"] = int(self.subtotal_price)
-        elif include_empty:
-            result["subtotalPrice"] = int()
-        if hasattr(self, "ext_tx_id"):
-            result["extTxId"] = str(self.ext_tx_id)
-        elif include_empty:
-            result["extTxId"] = str()
-        if hasattr(self, "tx_end_time"):
-            result["txEndTime"] = str(self.tx_end_time)
-        elif include_empty:
-            result["txEndTime"] = str()
+            result["type"] = str()
         if hasattr(self, "additional_data"):
             result["additionalData"] = self.additional_data.to_dict(include_empty=include_empty)
         elif include_empty:
             result["additionalData"] = AdditionalData()
+        if hasattr(self, "authorised_time"):
+            result["authorisedTime"] = str(self.authorised_time)
+        elif include_empty:
+            result["authorisedTime"] = str()
+        if hasattr(self, "chargeback_reversed_time"):
+            result["chargebackReversedTime"] = str(self.chargeback_reversed_time)
+        elif include_empty:
+            result["chargebackReversedTime"] = str()
+        if hasattr(self, "chargeback_time"):
+            result["chargebackTime"] = str(self.chargeback_time)
+        elif include_empty:
+            result["chargebackTime"] = str()
+        if hasattr(self, "charged_time"):
+            result["chargedTime"] = str(self.charged_time)
+        elif include_empty:
+            result["chargedTime"] = str()
+        if hasattr(self, "created_time"):
+            result["createdTime"] = str(self.created_time)
+        elif include_empty:
+            result["createdTime"] = str()
+        if hasattr(self, "custom_parameters"):
+            result["customParameters"] = {str(k0): v0 for k0, v0 in self.custom_parameters.items()}
+        elif include_empty:
+            result["customParameters"] = {}
+        if hasattr(self, "ext_tx_id"):
+            result["extTxId"] = str(self.ext_tx_id)
+        elif include_empty:
+            result["extTxId"] = str()
+        if hasattr(self, "ext_user_id"):
+            result["extUserId"] = str(self.ext_user_id)
+        elif include_empty:
+            result["extUserId"] = str()
+        if hasattr(self, "metadata"):
+            result["metadata"] = {str(k0): str(v0) for k0, v0 in self.metadata.items()}
+        elif include_empty:
+            result["metadata"] = {}
+        if hasattr(self, "payment_method"):
+            result["paymentMethod"] = str(self.payment_method)
+        elif include_empty:
+            result["paymentMethod"] = str()
+        if hasattr(self, "payment_method_fee"):
+            result["paymentMethodFee"] = int(self.payment_method_fee)
+        elif include_empty:
+            result["paymentMethodFee"] = int()
+        if hasattr(self, "payment_provider_fee"):
+            result["paymentProviderFee"] = int(self.payment_provider_fee)
+        elif include_empty:
+            result["paymentProviderFee"] = int()
+        if hasattr(self, "payment_station_url"):
+            result["paymentStationUrl"] = str(self.payment_station_url)
+        elif include_empty:
+            result["paymentStationUrl"] = str()
+        if hasattr(self, "refunded_time"):
+            result["refundedTime"] = str(self.refunded_time)
+        elif include_empty:
+            result["refundedTime"] = str()
+        if hasattr(self, "sales_tax"):
+            result["salesTax"] = int(self.sales_tax)
+        elif include_empty:
+            result["salesTax"] = int()
+        if hasattr(self, "sku"):
+            result["sku"] = str(self.sku)
+        elif include_empty:
+            result["sku"] = str()
+        if hasattr(self, "status_reason"):
+            result["statusReason"] = str(self.status_reason)
+        elif include_empty:
+            result["statusReason"] = str()
+        if hasattr(self, "subscription_id"):
+            result["subscriptionId"] = str(self.subscription_id)
+        elif include_empty:
+            result["subscriptionId"] = str()
+        if hasattr(self, "subtotal_price"):
+            result["subtotalPrice"] = int(self.subtotal_price)
+        elif include_empty:
+            result["subtotalPrice"] = int()
+        if hasattr(self, "target_namespace"):
+            result["targetNamespace"] = str(self.target_namespace)
+        elif include_empty:
+            result["targetNamespace"] = str()
+        if hasattr(self, "target_user_id"):
+            result["targetUserId"] = str(self.target_user_id)
+        elif include_empty:
+            result["targetUserId"] = str()
+        if hasattr(self, "tax"):
+            result["tax"] = int(self.tax)
+        elif include_empty:
+            result["tax"] = int()
+        if hasattr(self, "total_price"):
+            result["totalPrice"] = int(self.total_price)
+        elif include_empty:
+            result["totalPrice"] = int()
+        if hasattr(self, "total_tax"):
+            result["totalTax"] = int(self.total_tax)
+        elif include_empty:
+            result["totalTax"] = int()
+        if hasattr(self, "tx_end_time"):
+            result["txEndTime"] = str(self.tx_end_time)
+        elif include_empty:
+            result["txEndTime"] = str()
+        if hasattr(self, "user_id"):
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
+        if hasattr(self, "vat"):
+            result["vat"] = int(self.vat)
+        elif include_empty:
+            result["vat"] = int()
         return result
 
     # endregion to methods
@@ -598,30 +598,22 @@ class TradeNotification(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
+        if "currency" in dict_ and dict_["currency"] is not None:
+            instance.currency = CurrencySummary.create_from_dict(dict_["currency"], include_empty=include_empty)
         elif include_empty:
-            instance.namespace = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
+            instance.currency = CurrencySummary()
+        if "extOrderNo" in dict_ and dict_["extOrderNo"] is not None:
+            instance.ext_order_no = str(dict_["extOrderNo"])
         elif include_empty:
-            instance.user_id = str()
+            instance.ext_order_no = str()
         if "issuedAt" in dict_ and dict_["issuedAt"] is not None:
             instance.issued_at = str(dict_["issuedAt"])
         elif include_empty:
             instance.issued_at = str()
-        if "type" in dict_ and dict_["type"] is not None:
-            instance.type_ = str(dict_["type"])
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.type_ = str()
-        if "targetNamespace" in dict_ and dict_["targetNamespace"] is not None:
-            instance.target_namespace = str(dict_["targetNamespace"])
-        elif include_empty:
-            instance.target_namespace = str()
-        if "targetUserId" in dict_ and dict_["targetUserId"] is not None:
-            instance.target_user_id = str(dict_["targetUserId"])
-        elif include_empty:
-            instance.target_user_id = str()
+            instance.namespace = str()
         if "nonceStr" in dict_ and dict_["nonceStr"] is not None:
             instance.nonce_str = str(dict_["nonceStr"])
         elif include_empty:
@@ -630,174 +622,182 @@ class TradeNotification(Model):
             instance.payment_order_no = str(dict_["paymentOrderNo"])
         elif include_empty:
             instance.payment_order_no = str()
-        if "extOrderNo" in dict_ and dict_["extOrderNo"] is not None:
-            instance.ext_order_no = str(dict_["extOrderNo"])
-        elif include_empty:
-            instance.ext_order_no = str()
-        if "sku" in dict_ and dict_["sku"] is not None:
-            instance.sku = str(dict_["sku"])
-        elif include_empty:
-            instance.sku = str()
-        if "extUserId" in dict_ and dict_["extUserId"] is not None:
-            instance.ext_user_id = str(dict_["extUserId"])
-        elif include_empty:
-            instance.ext_user_id = str()
-        if "sandbox" in dict_ and dict_["sandbox"] is not None:
-            instance.sandbox = bool(dict_["sandbox"])
-        elif include_empty:
-            instance.sandbox = bool()
-        if "price" in dict_ and dict_["price"] is not None:
-            instance.price = int(dict_["price"])
-        elif include_empty:
-            instance.price = int()
         if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
             instance.payment_provider = str(dict_["paymentProvider"])
         elif include_empty:
             instance.payment_provider = str()
-        if "paymentMethod" in dict_ and dict_["paymentMethod"] is not None:
-            instance.payment_method = str(dict_["paymentMethod"])
+        if "price" in dict_ and dict_["price"] is not None:
+            instance.price = int(dict_["price"])
         elif include_empty:
-            instance.payment_method = str()
-        if "tax" in dict_ and dict_["tax"] is not None:
-            instance.tax = int(dict_["tax"])
+            instance.price = int()
+        if "sandbox" in dict_ and dict_["sandbox"] is not None:
+            instance.sandbox = bool(dict_["sandbox"])
         elif include_empty:
-            instance.tax = int()
-        if "vat" in dict_ and dict_["vat"] is not None:
-            instance.vat = int(dict_["vat"])
-        elif include_empty:
-            instance.vat = int()
-        if "salesTax" in dict_ and dict_["salesTax"] is not None:
-            instance.sales_tax = int(dict_["salesTax"])
-        elif include_empty:
-            instance.sales_tax = int()
-        if "paymentProviderFee" in dict_ and dict_["paymentProviderFee"] is not None:
-            instance.payment_provider_fee = int(dict_["paymentProviderFee"])
-        elif include_empty:
-            instance.payment_provider_fee = int()
-        if "paymentMethodFee" in dict_ and dict_["paymentMethodFee"] is not None:
-            instance.payment_method_fee = int(dict_["paymentMethodFee"])
-        elif include_empty:
-            instance.payment_method_fee = int()
-        if "currency" in dict_ and dict_["currency"] is not None:
-            instance.currency = CurrencySummary.create_from_dict(dict_["currency"], include_empty=include_empty)
-        elif include_empty:
-            instance.currency = CurrencySummary()
-        if "paymentStationUrl" in dict_ and dict_["paymentStationUrl"] is not None:
-            instance.payment_station_url = str(dict_["paymentStationUrl"])
-        elif include_empty:
-            instance.payment_station_url = str()
+            instance.sandbox = bool()
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = str()
-        if "statusReason" in dict_ and dict_["statusReason"] is not None:
-            instance.status_reason = str(dict_["statusReason"])
+        if "type" in dict_ and dict_["type"] is not None:
+            instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.status_reason = str()
-        if "authorisedTime" in dict_ and dict_["authorisedTime"] is not None:
-            instance.authorised_time = str(dict_["authorisedTime"])
-        elif include_empty:
-            instance.authorised_time = str()
-        if "createdTime" in dict_ and dict_["createdTime"] is not None:
-            instance.created_time = str(dict_["createdTime"])
-        elif include_empty:
-            instance.created_time = str()
-        if "chargedTime" in dict_ and dict_["chargedTime"] is not None:
-            instance.charged_time = str(dict_["chargedTime"])
-        elif include_empty:
-            instance.charged_time = str()
-        if "refundedTime" in dict_ and dict_["refundedTime"] is not None:
-            instance.refunded_time = str(dict_["refundedTime"])
-        elif include_empty:
-            instance.refunded_time = str()
-        if "chargebackTime" in dict_ and dict_["chargebackTime"] is not None:
-            instance.chargeback_time = str(dict_["chargebackTime"])
-        elif include_empty:
-            instance.chargeback_time = str()
-        if "chargebackReversedTime" in dict_ and dict_["chargebackReversedTime"] is not None:
-            instance.chargeback_reversed_time = str(dict_["chargebackReversedTime"])
-        elif include_empty:
-            instance.chargeback_reversed_time = str()
-        if "customParameters" in dict_ and dict_["customParameters"] is not None:
-            instance.custom_parameters = {str(k0): v0 for k0, v0 in dict_["customParameters"].items()}
-        elif include_empty:
-            instance.custom_parameters = {}
-        if "metadata" in dict_ and dict_["metadata"] is not None:
-            instance.metadata = {str(k0): str(v0) for k0, v0 in dict_["metadata"].items()}
-        elif include_empty:
-            instance.metadata = {}
-        if "subscriptionId" in dict_ and dict_["subscriptionId"] is not None:
-            instance.subscription_id = str(dict_["subscriptionId"])
-        elif include_empty:
-            instance.subscription_id = str()
-        if "totalTax" in dict_ and dict_["totalTax"] is not None:
-            instance.total_tax = int(dict_["totalTax"])
-        elif include_empty:
-            instance.total_tax = int()
-        if "totalPrice" in dict_ and dict_["totalPrice"] is not None:
-            instance.total_price = int(dict_["totalPrice"])
-        elif include_empty:
-            instance.total_price = int()
-        if "subtotalPrice" in dict_ and dict_["subtotalPrice"] is not None:
-            instance.subtotal_price = int(dict_["subtotalPrice"])
-        elif include_empty:
-            instance.subtotal_price = int()
-        if "extTxId" in dict_ and dict_["extTxId"] is not None:
-            instance.ext_tx_id = str(dict_["extTxId"])
-        elif include_empty:
-            instance.ext_tx_id = str()
-        if "txEndTime" in dict_ and dict_["txEndTime"] is not None:
-            instance.tx_end_time = str(dict_["txEndTime"])
-        elif include_empty:
-            instance.tx_end_time = str()
+            instance.type_ = str()
         if "additionalData" in dict_ and dict_["additionalData"] is not None:
             instance.additional_data = AdditionalData.create_from_dict(dict_["additionalData"], include_empty=include_empty)
         elif include_empty:
             instance.additional_data = AdditionalData()
+        if "authorisedTime" in dict_ and dict_["authorisedTime"] is not None:
+            instance.authorised_time = str(dict_["authorisedTime"])
+        elif include_empty:
+            instance.authorised_time = str()
+        if "chargebackReversedTime" in dict_ and dict_["chargebackReversedTime"] is not None:
+            instance.chargeback_reversed_time = str(dict_["chargebackReversedTime"])
+        elif include_empty:
+            instance.chargeback_reversed_time = str()
+        if "chargebackTime" in dict_ and dict_["chargebackTime"] is not None:
+            instance.chargeback_time = str(dict_["chargebackTime"])
+        elif include_empty:
+            instance.chargeback_time = str()
+        if "chargedTime" in dict_ and dict_["chargedTime"] is not None:
+            instance.charged_time = str(dict_["chargedTime"])
+        elif include_empty:
+            instance.charged_time = str()
+        if "createdTime" in dict_ and dict_["createdTime"] is not None:
+            instance.created_time = str(dict_["createdTime"])
+        elif include_empty:
+            instance.created_time = str()
+        if "customParameters" in dict_ and dict_["customParameters"] is not None:
+            instance.custom_parameters = {str(k0): v0 for k0, v0 in dict_["customParameters"].items()}
+        elif include_empty:
+            instance.custom_parameters = {}
+        if "extTxId" in dict_ and dict_["extTxId"] is not None:
+            instance.ext_tx_id = str(dict_["extTxId"])
+        elif include_empty:
+            instance.ext_tx_id = str()
+        if "extUserId" in dict_ and dict_["extUserId"] is not None:
+            instance.ext_user_id = str(dict_["extUserId"])
+        elif include_empty:
+            instance.ext_user_id = str()
+        if "metadata" in dict_ and dict_["metadata"] is not None:
+            instance.metadata = {str(k0): str(v0) for k0, v0 in dict_["metadata"].items()}
+        elif include_empty:
+            instance.metadata = {}
+        if "paymentMethod" in dict_ and dict_["paymentMethod"] is not None:
+            instance.payment_method = str(dict_["paymentMethod"])
+        elif include_empty:
+            instance.payment_method = str()
+        if "paymentMethodFee" in dict_ and dict_["paymentMethodFee"] is not None:
+            instance.payment_method_fee = int(dict_["paymentMethodFee"])
+        elif include_empty:
+            instance.payment_method_fee = int()
+        if "paymentProviderFee" in dict_ and dict_["paymentProviderFee"] is not None:
+            instance.payment_provider_fee = int(dict_["paymentProviderFee"])
+        elif include_empty:
+            instance.payment_provider_fee = int()
+        if "paymentStationUrl" in dict_ and dict_["paymentStationUrl"] is not None:
+            instance.payment_station_url = str(dict_["paymentStationUrl"])
+        elif include_empty:
+            instance.payment_station_url = str()
+        if "refundedTime" in dict_ and dict_["refundedTime"] is not None:
+            instance.refunded_time = str(dict_["refundedTime"])
+        elif include_empty:
+            instance.refunded_time = str()
+        if "salesTax" in dict_ and dict_["salesTax"] is not None:
+            instance.sales_tax = int(dict_["salesTax"])
+        elif include_empty:
+            instance.sales_tax = int()
+        if "sku" in dict_ and dict_["sku"] is not None:
+            instance.sku = str(dict_["sku"])
+        elif include_empty:
+            instance.sku = str()
+        if "statusReason" in dict_ and dict_["statusReason"] is not None:
+            instance.status_reason = str(dict_["statusReason"])
+        elif include_empty:
+            instance.status_reason = str()
+        if "subscriptionId" in dict_ and dict_["subscriptionId"] is not None:
+            instance.subscription_id = str(dict_["subscriptionId"])
+        elif include_empty:
+            instance.subscription_id = str()
+        if "subtotalPrice" in dict_ and dict_["subtotalPrice"] is not None:
+            instance.subtotal_price = int(dict_["subtotalPrice"])
+        elif include_empty:
+            instance.subtotal_price = int()
+        if "targetNamespace" in dict_ and dict_["targetNamespace"] is not None:
+            instance.target_namespace = str(dict_["targetNamespace"])
+        elif include_empty:
+            instance.target_namespace = str()
+        if "targetUserId" in dict_ and dict_["targetUserId"] is not None:
+            instance.target_user_id = str(dict_["targetUserId"])
+        elif include_empty:
+            instance.target_user_id = str()
+        if "tax" in dict_ and dict_["tax"] is not None:
+            instance.tax = int(dict_["tax"])
+        elif include_empty:
+            instance.tax = int()
+        if "totalPrice" in dict_ and dict_["totalPrice"] is not None:
+            instance.total_price = int(dict_["totalPrice"])
+        elif include_empty:
+            instance.total_price = int()
+        if "totalTax" in dict_ and dict_["totalTax"] is not None:
+            instance.total_tax = int(dict_["totalTax"])
+        elif include_empty:
+            instance.total_tax = int()
+        if "txEndTime" in dict_ and dict_["txEndTime"] is not None:
+            instance.tx_end_time = str(dict_["txEndTime"])
+        elif include_empty:
+            instance.tx_end_time = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
+        if "vat" in dict_ and dict_["vat"] is not None:
+            instance.vat = int(dict_["vat"])
+        elif include_empty:
+            instance.vat = int()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
-            "userId": "user_id",
+            "currency": "currency",
+            "extOrderNo": "ext_order_no",
             "issuedAt": "issued_at",
-            "type": "type_",
-            "targetNamespace": "target_namespace",
-            "targetUserId": "target_user_id",
+            "namespace": "namespace",
             "nonceStr": "nonce_str",
             "paymentOrderNo": "payment_order_no",
-            "extOrderNo": "ext_order_no",
-            "sku": "sku",
-            "extUserId": "ext_user_id",
-            "sandbox": "sandbox",
-            "price": "price",
             "paymentProvider": "payment_provider",
-            "paymentMethod": "payment_method",
-            "tax": "tax",
-            "vat": "vat",
-            "salesTax": "sales_tax",
-            "paymentProviderFee": "payment_provider_fee",
-            "paymentMethodFee": "payment_method_fee",
-            "currency": "currency",
-            "paymentStationUrl": "payment_station_url",
+            "price": "price",
+            "sandbox": "sandbox",
             "status": "status",
-            "statusReason": "status_reason",
-            "authorisedTime": "authorised_time",
-            "createdTime": "created_time",
-            "chargedTime": "charged_time",
-            "refundedTime": "refunded_time",
-            "chargebackTime": "chargeback_time",
-            "chargebackReversedTime": "chargeback_reversed_time",
-            "customParameters": "custom_parameters",
-            "metadata": "metadata",
-            "subscriptionId": "subscription_id",
-            "totalTax": "total_tax",
-            "totalPrice": "total_price",
-            "subtotalPrice": "subtotal_price",
-            "extTxId": "ext_tx_id",
-            "txEndTime": "tx_end_time",
+            "type": "type_",
             "additionalData": "additional_data",
+            "authorisedTime": "authorised_time",
+            "chargebackReversedTime": "chargeback_reversed_time",
+            "chargebackTime": "chargeback_time",
+            "chargedTime": "charged_time",
+            "createdTime": "created_time",
+            "customParameters": "custom_parameters",
+            "extTxId": "ext_tx_id",
+            "extUserId": "ext_user_id",
+            "metadata": "metadata",
+            "paymentMethod": "payment_method",
+            "paymentMethodFee": "payment_method_fee",
+            "paymentProviderFee": "payment_provider_fee",
+            "paymentStationUrl": "payment_station_url",
+            "refundedTime": "refunded_time",
+            "salesTax": "sales_tax",
+            "sku": "sku",
+            "statusReason": "status_reason",
+            "subscriptionId": "subscription_id",
+            "subtotalPrice": "subtotal_price",
+            "targetNamespace": "target_namespace",
+            "targetUserId": "target_user_id",
+            "tax": "tax",
+            "totalPrice": "total_price",
+            "totalTax": "total_tax",
+            "txEndTime": "tx_end_time",
+            "userId": "user_id",
+            "vat": "vat",
         }
 
     # endregion static methods

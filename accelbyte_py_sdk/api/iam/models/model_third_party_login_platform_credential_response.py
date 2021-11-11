@@ -30,11 +30,11 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
     Properties:
         acsurl: (ACSURL) REQUIRED str
 
+        app_id: (AppId) REQUIRED str
+
         aws_cognito_region: (AWSCognitoRegion) REQUIRED str
 
         aws_cognito_user_pool: (AWSCognitoUserPool) REQUIRED str
-
-        app_id: (AppId) REQUIRED str
 
         client_id: (ClientId) REQUIRED str
 
@@ -58,9 +58,9 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
     # region fields
 
     acsurl: str                                                                                    # REQUIRED
+    app_id: str                                                                                    # REQUIRED
     aws_cognito_region: str                                                                        # REQUIRED
     aws_cognito_user_pool: str                                                                     # REQUIRED
-    app_id: str                                                                                    # REQUIRED
     client_id: str                                                                                 # REQUIRED
     environment: str                                                                               # REQUIRED
     federation_metadata_url: str                                                                   # REQUIRED
@@ -79,16 +79,16 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         self.acsurl = value
         return self
 
+    def with_app_id(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
+        self.app_id = value
+        return self
+
     def with_aws_cognito_region(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.aws_cognito_region = value
         return self
 
     def with_aws_cognito_user_pool(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.aws_cognito_user_pool = value
-        return self
-
-    def with_app_id(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
-        self.app_id = value
         return self
 
     def with_client_id(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
@@ -137,6 +137,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             result["ACSURL"] = str(self.acsurl)
         elif include_empty:
             result["ACSURL"] = str()
+        if hasattr(self, "app_id"):
+            result["AppId"] = str(self.app_id)
+        elif include_empty:
+            result["AppId"] = str()
         if hasattr(self, "aws_cognito_region"):
             result["AWSCognitoRegion"] = str(self.aws_cognito_region)
         elif include_empty:
@@ -145,10 +149,6 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             result["AWSCognitoUserPool"] = str(self.aws_cognito_user_pool)
         elif include_empty:
             result["AWSCognitoUserPool"] = str()
-        if hasattr(self, "app_id"):
-            result["AppId"] = str(self.app_id)
-        elif include_empty:
-            result["AppId"] = str()
         if hasattr(self, "client_id"):
             result["ClientId"] = str(self.client_id)
         elif include_empty:
@@ -233,6 +233,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             instance.acsurl = str(dict_["ACSURL"])
         elif include_empty:
             instance.acsurl = str()
+        if "AppId" in dict_ and dict_["AppId"] is not None:
+            instance.app_id = str(dict_["AppId"])
+        elif include_empty:
+            instance.app_id = str()
         if "AWSCognitoRegion" in dict_ and dict_["AWSCognitoRegion"] is not None:
             instance.aws_cognito_region = str(dict_["AWSCognitoRegion"])
         elif include_empty:
@@ -241,10 +245,6 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             instance.aws_cognito_user_pool = str(dict_["AWSCognitoUserPool"])
         elif include_empty:
             instance.aws_cognito_user_pool = str()
-        if "AppId" in dict_ and dict_["AppId"] is not None:
-            instance.app_id = str(dict_["AppId"])
-        elif include_empty:
-            instance.app_id = str()
         if "ClientId" in dict_ and dict_["ClientId"] is not None:
             instance.client_id = str(dict_["ClientId"])
         elif include_empty:
@@ -287,9 +287,9 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "ACSURL": "acsurl",
+            "AppId": "app_id",
             "AWSCognitoRegion": "aws_cognito_region",
             "AWSCognitoUserPool": "aws_cognito_user_pool",
-            "AppId": "app_id",
             "ClientId": "client_id",
             "Environment": "environment",
             "FederationMetadataURL": "federation_metadata_url",

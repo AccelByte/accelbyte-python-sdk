@@ -119,29 +119,29 @@ def delete_session_local_ds(session_id: str, namespace: Optional[str] = None, x_
 
 
 @same_doc_as(GetActiveCustomGameSessions)
-def get_active_custom_game_sessions(session_id: Optional[str] = None, server_region: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_active_custom_game_sessions(server_region: Optional[str] = None, session_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetActiveCustomGameSessions.create(
-        session_id=session_id,
         server_region=server_region,
+        session_id=session_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetActiveMatchmakingGameSessions)
-def get_active_matchmaking_game_sessions(session_id: Optional[str] = None, match_id: Optional[str] = None, server_region: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_active_matchmaking_game_sessions(match_id: Optional[str] = None, server_region: Optional[str] = None, session_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetActiveMatchmakingGameSessions.create(
-        session_id=session_id,
         match_id=match_id,
         server_region=server_region,
+        session_id=session_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -214,22 +214,22 @@ def join_session(body: ModelsJoinGameSessionRequest, session_id: str, namespace:
 
 
 @same_doc_as(QuerySession)
-def query_session(session_type: str, user_id: Optional[str] = None, game_mode: Optional[str] = None, game_version: Optional[str] = None, joinable: Optional[str] = None, match_id: Optional[str] = None, match_exist: Optional[str] = None, server_status: Optional[str] = None, offset: Optional[str] = None, limit: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_session(session_type: str, game_mode: Optional[str] = None, game_version: Optional[str] = None, joinable: Optional[str] = None, limit: Optional[str] = None, match_exist: Optional[str] = None, match_id: Optional[str] = None, offset: Optional[str] = None, server_status: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = QuerySession.create(
         session_type=session_type,
-        user_id=user_id,
         game_mode=game_mode,
         game_version=game_version,
         joinable=joinable,
-        match_id=match_id,
-        match_exist=match_exist,
-        server_status=server_status,
-        offset=offset,
         limit=limit,
+        match_exist=match_exist,
+        match_id=match_id,
+        offset=offset,
+        server_status=server_status,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

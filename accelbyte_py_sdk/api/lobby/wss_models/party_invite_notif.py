@@ -28,8 +28,8 @@ class PartyInviteNotif(WebSocketMessage):
 
     # region fields
 
-    inviter_id: str
     invitee_id: str
+    inviter_id: str
 
     # endregion fields
 
@@ -39,10 +39,10 @@ class PartyInviteNotif(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {PartyInviteNotif.get_type()}"]
-        if hasattr(self, "inviter_id") and self.inviter_id:
-            wsm.append(f"inviterId: {self.inviter_id}")
         if hasattr(self, "invitee_id") and self.invitee_id:
             wsm.append(f"inviteeId: {self.invitee_id}")
+        if hasattr(self, "inviter_id") and self.inviter_id:
+            wsm.append(f"inviterId: {self.inviter_id}")
         return "\n".join(wsm)
 
     # endregion methods
@@ -62,11 +62,11 @@ class PartyInviteNotif(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if (not is_strict and name.casefold() == "inviterId".casefold()) or (name == "inviterId"):
-                instance.inviter_id = value
-                continue
             if (not is_strict and name.casefold() == "inviteeId".casefold()) or (name == "inviteeId"):
                 instance.invitee_id = value
+                continue
+            if (not is_strict and name.casefold() == "inviterId".casefold()) or (name == "inviterId"):
+                instance.inviter_id = value
                 continue
             if is_strict:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldTypeNotSupported)
@@ -79,8 +79,8 @@ class PartyInviteNotif(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "inviterId": "inviter_id",
             "inviteeId": "invitee_id",
+            "inviterId": "inviter_id",
         }
 
     # endregion static methods

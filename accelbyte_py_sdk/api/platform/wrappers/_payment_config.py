@@ -134,12 +134,12 @@ def get_special_payment_providers(x_additional_headers: Optional[Dict[str, str]]
 
 
 @same_doc_as(QueryPaymentProviderConfig)
-def query_payment_provider_config(namespace: Optional[str] = None, region: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_payment_provider_config(limit: Optional[int] = None, namespace: Optional[str] = None, offset: Optional[int] = None, region: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = QueryPaymentProviderConfig.create(
-        namespace=namespace,
-        region=region,
-        offset=offset,
         limit=limit,
+        namespace=namespace,
+        offset=offset,
+        region=region,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
@@ -267,45 +267,45 @@ def test_xsolla_config_by_id(id_: str, x_additional_headers: Optional[Dict[str, 
 
 
 @same_doc_as(UpdateAdyenConfig)
-def update_adyen_config(id_: str, body: Optional[AdyenConfig] = None, validate: Optional[bool] = None, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def update_adyen_config(id_: str, body: Optional[AdyenConfig] = None, sandbox: Optional[bool] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = UpdateAdyenConfig.create(
         id_=id_,
         body=body,
-        validate=validate,
         sandbox=sandbox,
+        validate=validate,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateAliPayConfig)
-def update_ali_pay_config(id_: str, body: Optional[AliPayConfig] = None, validate: Optional[bool] = None, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def update_ali_pay_config(id_: str, body: Optional[AliPayConfig] = None, sandbox: Optional[bool] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = UpdateAliPayConfig.create(
         id_=id_,
         body=body,
-        validate=validate,
         sandbox=sandbox,
+        validate=validate,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateCheckoutConfig)
-def update_checkout_config(id_: str, body: Optional[CheckoutConfig] = None, validate: Optional[bool] = None, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def update_checkout_config(id_: str, body: Optional[CheckoutConfig] = None, sandbox: Optional[bool] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = UpdateCheckoutConfig.create(
         id_=id_,
         body=body,
-        validate=validate,
         sandbox=sandbox,
+        validate=validate,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdatePayPalConfig)
-def update_pay_pal_config(id_: str, body: Optional[PayPalConfig] = None, validate: Optional[bool] = None, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def update_pay_pal_config(id_: str, body: Optional[PayPalConfig] = None, sandbox: Optional[bool] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = UpdatePayPalConfig.create(
         id_=id_,
         body=body,
-        validate=validate,
         sandbox=sandbox,
+        validate=validate,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
@@ -328,12 +328,12 @@ def update_payment_tax_config(body: Optional[PaymentTaxConfigEdit] = None, x_add
 
 
 @same_doc_as(UpdateStripeConfig)
-def update_stripe_config(id_: str, body: Optional[StripeConfig] = None, validate: Optional[bool] = None, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def update_stripe_config(id_: str, body: Optional[StripeConfig] = None, sandbox: Optional[bool] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = UpdateStripeConfig.create(
         id_=id_,
         body=body,
-        validate=validate,
         sandbox=sandbox,
+        validate=validate,
     )
     return run_request(request, additional_headers=x_additional_headers)
 

@@ -28,8 +28,8 @@ class PartyRejectResponse(WebSocketMessage):
 
     # region fields
 
-    id_: str
     code: str
+    id_: str
     party_id: str
 
     # endregion fields
@@ -40,10 +40,10 @@ class PartyRejectResponse(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {PartyRejectResponse.get_type()}"]
-        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
-        wsm.append(f"id: {id_}")
         if hasattr(self, "code") and self.code:
             wsm.append(f"code: {self.code}")
+        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
+        wsm.append(f"id: {id_}")
         if hasattr(self, "party_id") and self.party_id:
             wsm.append(f"partyId: {self.party_id}")
         return "\n".join(wsm)
@@ -86,8 +86,8 @@ class PartyRejectResponse(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
             "code": "code",
+            "id": "id_",
             "partyId": "party_id",
         }
 

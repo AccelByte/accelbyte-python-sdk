@@ -28,38 +28,42 @@ class StoreBackupInfo(Model):
     """Store backup info (StoreBackupInfo)
 
     Properties:
-        id_: (id) REQUIRED str
-
         auto_backup: (autoBackup) REQUIRED bool
+
+        created_at: (createdAt) REQUIRED str
+
+        id_: (id) REQUIRED str
 
         name: (name) REQUIRED str
 
         store_id: (storeId) REQUIRED str
-
-        created_at: (createdAt) REQUIRED str
 
         updated_at: (updatedAt) REQUIRED str
     """
 
     # region fields
 
-    id_: str                                                                                       # REQUIRED
     auto_backup: bool                                                                              # REQUIRED
+    created_at: str                                                                                # REQUIRED
+    id_: str                                                                                       # REQUIRED
     name: str                                                                                      # REQUIRED
     store_id: str                                                                                  # REQUIRED
-    created_at: str                                                                                # REQUIRED
     updated_at: str                                                                                # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_id(self, value: str) -> StoreBackupInfo:
-        self.id_ = value
-        return self
-
     def with_auto_backup(self, value: bool) -> StoreBackupInfo:
         self.auto_backup = value
+        return self
+
+    def with_created_at(self, value: str) -> StoreBackupInfo:
+        self.created_at = value
+        return self
+
+    def with_id(self, value: str) -> StoreBackupInfo:
+        self.id_ = value
         return self
 
     def with_name(self, value: str) -> StoreBackupInfo:
@@ -68,10 +72,6 @@ class StoreBackupInfo(Model):
 
     def with_store_id(self, value: str) -> StoreBackupInfo:
         self.store_id = value
-        return self
-
-    def with_created_at(self, value: str) -> StoreBackupInfo:
-        self.created_at = value
         return self
 
     def with_updated_at(self, value: str) -> StoreBackupInfo:
@@ -84,14 +84,18 @@ class StoreBackupInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "id_"):
-            result["id"] = str(self.id_)
-        elif include_empty:
-            result["id"] = str()
         if hasattr(self, "auto_backup"):
             result["autoBackup"] = bool(self.auto_backup)
         elif include_empty:
             result["autoBackup"] = bool()
+        if hasattr(self, "created_at"):
+            result["createdAt"] = str(self.created_at)
+        elif include_empty:
+            result["createdAt"] = str()
+        if hasattr(self, "id_"):
+            result["id"] = str(self.id_)
+        elif include_empty:
+            result["id"] = str()
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
@@ -100,10 +104,6 @@ class StoreBackupInfo(Model):
             result["storeId"] = str(self.store_id)
         elif include_empty:
             result["storeId"] = str()
-        if hasattr(self, "created_at"):
-            result["createdAt"] = str(self.created_at)
-        elif include_empty:
-            result["createdAt"] = str()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -138,14 +138,18 @@ class StoreBackupInfo(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "id" in dict_ and dict_["id"] is not None:
-            instance.id_ = str(dict_["id"])
-        elif include_empty:
-            instance.id_ = str()
         if "autoBackup" in dict_ and dict_["autoBackup"] is not None:
             instance.auto_backup = bool(dict_["autoBackup"])
         elif include_empty:
             instance.auto_backup = bool()
+        if "createdAt" in dict_ and dict_["createdAt"] is not None:
+            instance.created_at = str(dict_["createdAt"])
+        elif include_empty:
+            instance.created_at = str()
+        if "id" in dict_ and dict_["id"] is not None:
+            instance.id_ = str(dict_["id"])
+        elif include_empty:
+            instance.id_ = str()
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
@@ -154,10 +158,6 @@ class StoreBackupInfo(Model):
             instance.store_id = str(dict_["storeId"])
         elif include_empty:
             instance.store_id = str()
-        if "createdAt" in dict_ and dict_["createdAt"] is not None:
-            instance.created_at = str(dict_["createdAt"])
-        elif include_empty:
-            instance.created_at = str()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
@@ -167,11 +167,11 @@ class StoreBackupInfo(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
             "autoBackup": "auto_backup",
+            "createdAt": "created_at",
+            "id": "id_",
             "name": "name",
             "storeId": "store_id",
-            "createdAt": "created_at",
             "updatedAt": "updated_at",
         }
 

@@ -57,11 +57,11 @@ from ..operations.clients import UpdateClientSecret
 
 
 @same_doc_as(AddClientPermission)
-def add_client_permission(client_id: str, resource: str, action: int, x_additional_headers: Optional[Dict[str, str]] = None):
+def add_client_permission(action: int, client_id: str, resource: str, x_additional_headers: Optional[Dict[str, str]] = None):
     request = AddClientPermission.create(
+        action=action,
         client_id=client_id,
         resource=resource,
-        action=action,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
@@ -94,15 +94,15 @@ def admin_create_client_v3(body: ClientmodelClientCreationV3Request, namespace: 
 
 
 @same_doc_as(AdminDeleteClientPermissionV3)
-def admin_delete_client_permission_v3(client_id: str, resource: str, action: int, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_delete_client_permission_v3(action: int, client_id: str, resource: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = AdminDeleteClientPermissionV3.create(
+        action=action,
         client_id=client_id,
         resource=resource,
-        action=action,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -122,15 +122,15 @@ def admin_delete_client_v3(client_id: str, namespace: Optional[str] = None, x_ad
 
 
 @same_doc_as(AdminGetClientsByNamespaceV3)
-def admin_get_clients_by_namespace_v3(limit: Optional[int] = None, after: Optional[str] = None, before: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_get_clients_by_namespace_v3(after: Optional[str] = None, before: Optional[str] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = AdminGetClientsByNamespaceV3.create(
-        limit=limit,
         after=after,
         before=before,
+        limit=limit,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -222,11 +222,11 @@ def delete_client_by_namespace(client_id: str, namespace: Optional[str] = None, 
 
 
 @same_doc_as(DeleteClientPermission)
-def delete_client_permission(client_id: str, resource: str, action: int, x_additional_headers: Optional[Dict[str, str]] = None):
+def delete_client_permission(action: int, client_id: str, resource: str, x_additional_headers: Optional[Dict[str, str]] = None):
     request = DeleteClientPermission.create(
+        action=action,
         client_id=client_id,
         resource=resource,
-        action=action,
     )
     return run_request(request, additional_headers=x_additional_headers)
 

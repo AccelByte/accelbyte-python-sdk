@@ -48,13 +48,13 @@ class PublicDeletePaymentAccount(Operation):
 
         security: bearer
 
-        namespace: (namespace) REQUIRED str in path
+        id_: (id) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
+        namespace: (namespace) REQUIRED str in path
 
         type_: (type) REQUIRED str in path
 
-        id_: (id) REQUIRED str in path
+        user_id: (userId) REQUIRED str in path
 
     Responses:
         204: No Content - (delete a payment account successfully)
@@ -69,10 +69,10 @@ class PublicDeletePaymentAccount(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
-    user_id: str                                                                                   # REQUIRED in [path]
-    type_: str                                                                                     # REQUIRED in [path]
     id_: str                                                                                       # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
+    type_: str                                                                                     # REQUIRED in [path]
+    user_id: str                                                                                   # REQUIRED in [path]
 
     # endregion fields
 
@@ -120,10 +120,10 @@ class PublicDeletePaymentAccount(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "namespace",
-            "user_id",
-            "type_",
             "id_",
+            "namespace",
+            "type_",
+            "user_id",
         ]
 
     # endregion get methods
@@ -137,14 +137,14 @@ class PublicDeletePaymentAccount(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
-        if hasattr(self, "type_"):
-            result["type"] = self.type_
         if hasattr(self, "id_"):
             result["id"] = self.id_
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
+        if hasattr(self, "type_"):
+            result["type"] = self.type_
+        if hasattr(self, "user_id"):
+            result["userId"] = self.user_id
         return result
 
     # endregion get_x_params methods
@@ -152,13 +152,13 @@ class PublicDeletePaymentAccount(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "namespace") or self.namespace is None:
+        if not hasattr(self, "id_") or self.id_ is None:
             return False
-        if not hasattr(self, "user_id") or self.user_id is None:
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         if not hasattr(self, "type_") or self.type_ is None:
             return False
-        if not hasattr(self, "id_") or self.id_ is None:
+        if not hasattr(self, "user_id") or self.user_id is None:
             return False
         return True
 
@@ -166,20 +166,20 @@ class PublicDeletePaymentAccount(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> PublicDeletePaymentAccount:
-        self.namespace = value
+    def with_id_(self, value: str) -> PublicDeletePaymentAccount:
+        self.id_ = value
         return self
 
-    def with_user_id(self, value: str) -> PublicDeletePaymentAccount:
-        self.user_id = value
+    def with_namespace(self, value: str) -> PublicDeletePaymentAccount:
+        self.namespace = value
         return self
 
     def with_type_(self, value: str) -> PublicDeletePaymentAccount:
         self.type_ = value
         return self
 
-    def with_id_(self, value: str) -> PublicDeletePaymentAccount:
-        self.id_ = value
+    def with_user_id(self, value: str) -> PublicDeletePaymentAccount:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -188,22 +188,22 @@ class PublicDeletePaymentAccount(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
-        if hasattr(self, "type_") and self.type_:
-            result["type"] = str(self.type_)
-        elif include_empty:
-            result["type"] = str()
         if hasattr(self, "id_") and self.id_:
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
+        if hasattr(self, "type_") and self.type_:
+            result["type"] = str(self.type_)
+        elif include_empty:
+            result["type"] = str()
+        if hasattr(self, "user_id") and self.user_id:
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         return result
 
     # endregion to methods
@@ -230,46 +230,46 @@ class PublicDeletePaymentAccount(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
-        user_id: str,
-        type_: str,
         id_: str,
+        namespace: str,
+        type_: str,
+        user_id: str,
     ) -> PublicDeletePaymentAccount:
         instance = cls()
-        instance.namespace = namespace
-        instance.user_id = user_id
-        instance.type_ = type_
         instance.id_ = id_
+        instance.namespace = namespace
+        instance.type_ = type_
+        instance.user_id = user_id
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PublicDeletePaymentAccount:
         instance = cls()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
-        if "type" in dict_ and dict_["type"] is not None:
-            instance.type_ = str(dict_["type"])
-        elif include_empty:
-            instance.type_ = str()
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
             instance.id_ = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
+        if "type" in dict_ and dict_["type"] is not None:
+            instance.type_ = str(dict_["type"])
+        elif include_empty:
+            instance.type_ = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
-            "userId": "user_id",
-            "type": "type_",
             "id": "id_",
+            "namespace": "namespace",
+            "type": "type_",
+            "userId": "user_id",
         }
 
     # endregion static methods

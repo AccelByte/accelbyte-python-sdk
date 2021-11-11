@@ -56,9 +56,9 @@ class PublicSearchUserV3(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        query: (query) OPTIONAL str in query
-
         by: (by) OPTIONAL str in query
+
+        query: (query) OPTIONAL str in query
 
     Responses:
         200: OK - ModelPublicUserInformationResponseV3 (OK)
@@ -82,8 +82,8 @@ class PublicSearchUserV3(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    query: str                                                                                     # OPTIONAL in [query]
     by: str                                                                                        # OPTIONAL in [query]
+    query: str                                                                                     # OPTIONAL in [query]
 
     # endregion fields
 
@@ -155,10 +155,10 @@ class PublicSearchUserV3(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "query"):
-            result["query"] = self.query
         if hasattr(self, "by"):
             result["by"] = self.by
+        if hasattr(self, "query"):
+            result["query"] = self.query
         return result
 
     # endregion get_x_params methods
@@ -178,12 +178,12 @@ class PublicSearchUserV3(Operation):
         self.namespace = value
         return self
 
-    def with_query(self, value: str) -> PublicSearchUserV3:
-        self.query = value
-        return self
-
     def with_by(self, value: str) -> PublicSearchUserV3:
         self.by = value
+        return self
+
+    def with_query(self, value: str) -> PublicSearchUserV3:
+        self.query = value
         return self
 
     # endregion with_x methods
@@ -196,14 +196,14 @@ class PublicSearchUserV3(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "query") and self.query:
-            result["query"] = str(self.query)
-        elif include_empty:
-            result["query"] = str()
         if hasattr(self, "by") and self.by:
             result["by"] = str(self.by)
         elif include_empty:
             result["by"] = str()
+        if hasattr(self, "query") and self.query:
+            result["query"] = str(self.query)
+        elif include_empty:
+            result["query"] = str()
         return result
 
     # endregion to methods
@@ -247,15 +247,15 @@ class PublicSearchUserV3(Operation):
     def create(
         cls,
         namespace: str,
-        query: Optional[str] = None,
         by: Optional[str] = None,
+        query: Optional[str] = None,
     ) -> PublicSearchUserV3:
         instance = cls()
         instance.namespace = namespace
-        if query is not None:
-            instance.query = query
         if by is not None:
             instance.by = by
+        if query is not None:
+            instance.query = query
         return instance
 
     @classmethod
@@ -265,22 +265,22 @@ class PublicSearchUserV3(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "query" in dict_ and dict_["query"] is not None:
-            instance.query = str(dict_["query"])
-        elif include_empty:
-            instance.query = str()
         if "by" in dict_ and dict_["by"] is not None:
             instance.by = str(dict_["by"])
         elif include_empty:
             instance.by = str()
+        if "query" in dict_ and dict_["query"] is not None:
+            instance.query = str(dict_["query"])
+        elif include_empty:
+            instance.query = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "query": "query",
             "by": "by",
+            "query": "query",
         }
 
     # endregion static methods

@@ -28,41 +28,53 @@ class PaymentOrderRefundResult(Model):
     """Payment order refund result (PaymentOrderRefundResult)
 
     Properties:
-        payment_order_no: (paymentOrderNo) REQUIRED str
+        created_time: (createdTime) REQUIRED str
 
         namespace: (namespace) REQUIRED str
+
+        payment_order_no: (paymentOrderNo) REQUIRED str
+
+        status: (status) REQUIRED str
+
+        refunded_time: (refundedTime) OPTIONAL str
 
         target_namespace: (targetNamespace) OPTIONAL str
 
         target_user_id: (targetUserId) OPTIONAL str
-
-        status: (status) REQUIRED str
-
-        created_time: (createdTime) REQUIRED str
-
-        refunded_time: (refundedTime) OPTIONAL str
     """
 
     # region fields
 
-    payment_order_no: str                                                                          # REQUIRED
+    created_time: str                                                                              # REQUIRED
     namespace: str                                                                                 # REQUIRED
+    payment_order_no: str                                                                          # REQUIRED
+    status: str                                                                                    # REQUIRED
+    refunded_time: str                                                                             # OPTIONAL
     target_namespace: str                                                                          # OPTIONAL
     target_user_id: str                                                                            # OPTIONAL
-    status: str                                                                                    # REQUIRED
-    created_time: str                                                                              # REQUIRED
-    refunded_time: str                                                                             # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_payment_order_no(self, value: str) -> PaymentOrderRefundResult:
-        self.payment_order_no = value
+    def with_created_time(self, value: str) -> PaymentOrderRefundResult:
+        self.created_time = value
         return self
 
     def with_namespace(self, value: str) -> PaymentOrderRefundResult:
         self.namespace = value
+        return self
+
+    def with_payment_order_no(self, value: str) -> PaymentOrderRefundResult:
+        self.payment_order_no = value
+        return self
+
+    def with_status(self, value: str) -> PaymentOrderRefundResult:
+        self.status = value
+        return self
+
+    def with_refunded_time(self, value: str) -> PaymentOrderRefundResult:
+        self.refunded_time = value
         return self
 
     def with_target_namespace(self, value: str) -> PaymentOrderRefundResult:
@@ -73,32 +85,32 @@ class PaymentOrderRefundResult(Model):
         self.target_user_id = value
         return self
 
-    def with_status(self, value: str) -> PaymentOrderRefundResult:
-        self.status = value
-        return self
-
-    def with_created_time(self, value: str) -> PaymentOrderRefundResult:
-        self.created_time = value
-        return self
-
-    def with_refunded_time(self, value: str) -> PaymentOrderRefundResult:
-        self.refunded_time = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "payment_order_no"):
-            result["paymentOrderNo"] = str(self.payment_order_no)
+        if hasattr(self, "created_time"):
+            result["createdTime"] = str(self.created_time)
         elif include_empty:
-            result["paymentOrderNo"] = str()
+            result["createdTime"] = str()
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
+        if hasattr(self, "payment_order_no"):
+            result["paymentOrderNo"] = str(self.payment_order_no)
+        elif include_empty:
+            result["paymentOrderNo"] = str()
+        if hasattr(self, "status"):
+            result["status"] = str(self.status)
+        elif include_empty:
+            result["status"] = str()
+        if hasattr(self, "refunded_time"):
+            result["refundedTime"] = str(self.refunded_time)
+        elif include_empty:
+            result["refundedTime"] = str()
         if hasattr(self, "target_namespace"):
             result["targetNamespace"] = str(self.target_namespace)
         elif include_empty:
@@ -107,18 +119,6 @@ class PaymentOrderRefundResult(Model):
             result["targetUserId"] = str(self.target_user_id)
         elif include_empty:
             result["targetUserId"] = str()
-        if hasattr(self, "status"):
-            result["status"] = str(self.status)
-        elif include_empty:
-            result["status"] = str()
-        if hasattr(self, "created_time"):
-            result["createdTime"] = str(self.created_time)
-        elif include_empty:
-            result["createdTime"] = str()
-        if hasattr(self, "refunded_time"):
-            result["refundedTime"] = str(self.refunded_time)
-        elif include_empty:
-            result["refundedTime"] = str()
         return result
 
     # endregion to methods
@@ -154,14 +154,26 @@ class PaymentOrderRefundResult(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "paymentOrderNo" in dict_ and dict_["paymentOrderNo"] is not None:
-            instance.payment_order_no = str(dict_["paymentOrderNo"])
+        if "createdTime" in dict_ and dict_["createdTime"] is not None:
+            instance.created_time = str(dict_["createdTime"])
         elif include_empty:
-            instance.payment_order_no = str()
+            instance.created_time = str()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
+        if "paymentOrderNo" in dict_ and dict_["paymentOrderNo"] is not None:
+            instance.payment_order_no = str(dict_["paymentOrderNo"])
+        elif include_empty:
+            instance.payment_order_no = str()
+        if "status" in dict_ and dict_["status"] is not None:
+            instance.status = str(dict_["status"])
+        elif include_empty:
+            instance.status = str()
+        if "refundedTime" in dict_ and dict_["refundedTime"] is not None:
+            instance.refunded_time = str(dict_["refundedTime"])
+        elif include_empty:
+            instance.refunded_time = str()
         if "targetNamespace" in dict_ and dict_["targetNamespace"] is not None:
             instance.target_namespace = str(dict_["targetNamespace"])
         elif include_empty:
@@ -170,30 +182,18 @@ class PaymentOrderRefundResult(Model):
             instance.target_user_id = str(dict_["targetUserId"])
         elif include_empty:
             instance.target_user_id = str()
-        if "status" in dict_ and dict_["status"] is not None:
-            instance.status = str(dict_["status"])
-        elif include_empty:
-            instance.status = str()
-        if "createdTime" in dict_ and dict_["createdTime"] is not None:
-            instance.created_time = str(dict_["createdTime"])
-        elif include_empty:
-            instance.created_time = str()
-        if "refundedTime" in dict_ and dict_["refundedTime"] is not None:
-            instance.refunded_time = str(dict_["refundedTime"])
-        elif include_empty:
-            instance.refunded_time = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "paymentOrderNo": "payment_order_no",
+            "createdTime": "created_time",
             "namespace": "namespace",
+            "paymentOrderNo": "payment_order_no",
+            "status": "status",
+            "refundedTime": "refunded_time",
             "targetNamespace": "target_namespace",
             "targetUserId": "target_user_id",
-            "status": "status",
-            "createdTime": "created_time",
-            "refundedTime": "refunded_time",
         }
 
     # endregion static methods

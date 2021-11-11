@@ -54,11 +54,11 @@ class AdminPostPlayerRecordHandlerV1(Operation):
 
         body: (body) REQUIRED ModelsPlayerRecordRequest in body
 
+        key: (key) REQUIRED str in path
+
         namespace: (namespace) REQUIRED str in path
 
         user_id: (userId) REQUIRED str in path
-
-        key: (key) REQUIRED str in path
 
     Responses:
         201: Created - (Record in user-level saved)
@@ -78,9 +78,9 @@ class AdminPostPlayerRecordHandlerV1(Operation):
     _location_query: str = None
 
     body: ModelsPlayerRecordRequest                                                                # REQUIRED in [body]
+    key: str                                                                                       # REQUIRED in [path]
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
-    key: str                                                                                       # REQUIRED in [path]
 
     # endregion fields
 
@@ -129,9 +129,9 @@ class AdminPostPlayerRecordHandlerV1(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "body",
+            "key",
             "namespace",
             "user_id",
-            "key",
         ]
 
     # endregion get methods
@@ -149,12 +149,12 @@ class AdminPostPlayerRecordHandlerV1(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
+        if hasattr(self, "key"):
+            result["key"] = self.key
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
         if hasattr(self, "user_id"):
             result["userId"] = self.user_id
-        if hasattr(self, "key"):
-            result["key"] = self.key
         return result
 
     # endregion get_x_params methods
@@ -164,11 +164,11 @@ class AdminPostPlayerRecordHandlerV1(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "body") or self.body is None:
             return False
+        if not hasattr(self, "key") or self.key is None:
+            return False
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        if not hasattr(self, "key") or self.key is None:
             return False
         return True
 
@@ -180,16 +180,16 @@ class AdminPostPlayerRecordHandlerV1(Operation):
         self.body = value
         return self
 
+    def with_key(self, value: str) -> AdminPostPlayerRecordHandlerV1:
+        self.key = value
+        return self
+
     def with_namespace(self, value: str) -> AdminPostPlayerRecordHandlerV1:
         self.namespace = value
         return self
 
     def with_user_id(self, value: str) -> AdminPostPlayerRecordHandlerV1:
         self.user_id = value
-        return self
-
-    def with_key(self, value: str) -> AdminPostPlayerRecordHandlerV1:
-        self.key = value
         return self
 
     # endregion with_x methods
@@ -202,6 +202,10 @@ class AdminPostPlayerRecordHandlerV1(Operation):
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
             result["body"] = ModelsPlayerRecordRequest()
+        if hasattr(self, "key") and self.key:
+            result["key"] = str(self.key)
+        elif include_empty:
+            result["key"] = str()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -210,10 +214,6 @@ class AdminPostPlayerRecordHandlerV1(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "key") and self.key:
-            result["key"] = str(self.key)
-        elif include_empty:
-            result["key"] = str()
         return result
 
     # endregion to methods
@@ -249,15 +249,15 @@ class AdminPostPlayerRecordHandlerV1(Operation):
     def create(
         cls,
         body: ModelsPlayerRecordRequest,
+        key: str,
         namespace: str,
         user_id: str,
-        key: str,
     ) -> AdminPostPlayerRecordHandlerV1:
         instance = cls()
         instance.body = body
+        instance.key = key
         instance.namespace = namespace
         instance.user_id = user_id
-        instance.key = key
         return instance
 
     @classmethod
@@ -267,6 +267,10 @@ class AdminPostPlayerRecordHandlerV1(Operation):
             instance.body = ModelsPlayerRecordRequest.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
             instance.body = ModelsPlayerRecordRequest()
+        if "key" in dict_ and dict_["key"] is not None:
+            instance.key = str(dict_["key"])
+        elif include_empty:
+            instance.key = str()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -275,19 +279,15 @@ class AdminPostPlayerRecordHandlerV1(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
-        if "key" in dict_ and dict_["key"] is not None:
-            instance.key = str(dict_["key"])
-        elif include_empty:
-            instance.key = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
+            "key": "key",
             "namespace": "namespace",
             "userId": "user_id",
-            "key": "key",
         }
 
     # endregion static methods

@@ -28,40 +28,40 @@ class PaymentProcessResult(Model):
     """Payment process result (PaymentProcessResult)
 
     Properties:
-        success: (success) REQUIRED bool
-
         pending: (pending) REQUIRED bool
 
-        redirect_url: (redirectUrl) OPTIONAL str
+        success: (success) REQUIRED bool
 
         reason: (reason) OPTIONAL str
+
+        redirect_url: (redirectUrl) OPTIONAL str
     """
 
     # region fields
 
-    success: bool                                                                                  # REQUIRED
     pending: bool                                                                                  # REQUIRED
-    redirect_url: str                                                                              # OPTIONAL
+    success: bool                                                                                  # REQUIRED
     reason: str                                                                                    # OPTIONAL
+    redirect_url: str                                                                              # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_success(self, value: bool) -> PaymentProcessResult:
-        self.success = value
-        return self
-
     def with_pending(self, value: bool) -> PaymentProcessResult:
         self.pending = value
         return self
 
-    def with_redirect_url(self, value: str) -> PaymentProcessResult:
-        self.redirect_url = value
+    def with_success(self, value: bool) -> PaymentProcessResult:
+        self.success = value
         return self
 
     def with_reason(self, value: str) -> PaymentProcessResult:
         self.reason = value
+        return self
+
+    def with_redirect_url(self, value: str) -> PaymentProcessResult:
+        self.redirect_url = value
         return self
 
     # endregion with_x methods
@@ -70,22 +70,22 @@ class PaymentProcessResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "success"):
-            result["success"] = bool(self.success)
-        elif include_empty:
-            result["success"] = bool()
         if hasattr(self, "pending"):
             result["pending"] = bool(self.pending)
         elif include_empty:
             result["pending"] = bool()
-        if hasattr(self, "redirect_url"):
-            result["redirectUrl"] = str(self.redirect_url)
+        if hasattr(self, "success"):
+            result["success"] = bool(self.success)
         elif include_empty:
-            result["redirectUrl"] = str()
+            result["success"] = bool()
         if hasattr(self, "reason"):
             result["reason"] = str(self.reason)
         elif include_empty:
             result["reason"] = str()
+        if hasattr(self, "redirect_url"):
+            result["redirectUrl"] = str(self.redirect_url)
+        elif include_empty:
+            result["redirectUrl"] = str()
         return result
 
     # endregion to methods
@@ -114,31 +114,31 @@ class PaymentProcessResult(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "success" in dict_ and dict_["success"] is not None:
-            instance.success = bool(dict_["success"])
-        elif include_empty:
-            instance.success = bool()
         if "pending" in dict_ and dict_["pending"] is not None:
             instance.pending = bool(dict_["pending"])
         elif include_empty:
             instance.pending = bool()
-        if "redirectUrl" in dict_ and dict_["redirectUrl"] is not None:
-            instance.redirect_url = str(dict_["redirectUrl"])
+        if "success" in dict_ and dict_["success"] is not None:
+            instance.success = bool(dict_["success"])
         elif include_empty:
-            instance.redirect_url = str()
+            instance.success = bool()
         if "reason" in dict_ and dict_["reason"] is not None:
             instance.reason = str(dict_["reason"])
         elif include_empty:
             instance.reason = str()
+        if "redirectUrl" in dict_ and dict_["redirectUrl"] is not None:
+            instance.redirect_url = str(dict_["redirectUrl"])
+        elif include_empty:
+            instance.redirect_url = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "success": "success",
             "pending": "pending",
-            "redirectUrl": "redirect_url",
+            "success": "success",
             "reason": "reason",
+            "redirectUrl": "redirect_url",
         }
 
     # endregion static methods

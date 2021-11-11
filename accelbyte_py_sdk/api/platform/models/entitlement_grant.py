@@ -28,54 +28,46 @@ class EntitlementGrant(Model):
     """A DTO object for granting entitlement API call. (EntitlementGrant)
 
     Properties:
-        store_id: (storeId) OPTIONAL str
-
         item_id: (itemId) REQUIRED str
-
-        granted_code: (grantedCode) OPTIONAL str
 
         item_namespace: (itemNamespace) REQUIRED str
 
         quantity: (quantity) REQUIRED int
 
+        end_date: (endDate) OPTIONAL str
+
+        granted_code: (grantedCode) OPTIONAL str
+
+        language: (language) OPTIONAL str
+
+        region: (region) OPTIONAL str
+
         source: (source) OPTIONAL str
 
         start_date: (startDate) OPTIONAL str
 
-        end_date: (endDate) OPTIONAL str
-
-        region: (region) OPTIONAL str
-
-        language: (language) OPTIONAL str
+        store_id: (storeId) OPTIONAL str
     """
 
     # region fields
 
-    store_id: str                                                                                  # OPTIONAL
     item_id: str                                                                                   # REQUIRED
-    granted_code: str                                                                              # OPTIONAL
     item_namespace: str                                                                            # REQUIRED
     quantity: int                                                                                  # REQUIRED
+    end_date: str                                                                                  # OPTIONAL
+    granted_code: str                                                                              # OPTIONAL
+    language: str                                                                                  # OPTIONAL
+    region: str                                                                                    # OPTIONAL
     source: str                                                                                    # OPTIONAL
     start_date: str                                                                                # OPTIONAL
-    end_date: str                                                                                  # OPTIONAL
-    region: str                                                                                    # OPTIONAL
-    language: str                                                                                  # OPTIONAL
+    store_id: str                                                                                  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_store_id(self, value: str) -> EntitlementGrant:
-        self.store_id = value
-        return self
-
     def with_item_id(self, value: str) -> EntitlementGrant:
         self.item_id = value
-        return self
-
-    def with_granted_code(self, value: str) -> EntitlementGrant:
-        self.granted_code = value
         return self
 
     def with_item_namespace(self, value: str) -> EntitlementGrant:
@@ -86,6 +78,22 @@ class EntitlementGrant(Model):
         self.quantity = value
         return self
 
+    def with_end_date(self, value: str) -> EntitlementGrant:
+        self.end_date = value
+        return self
+
+    def with_granted_code(self, value: str) -> EntitlementGrant:
+        self.granted_code = value
+        return self
+
+    def with_language(self, value: str) -> EntitlementGrant:
+        self.language = value
+        return self
+
+    def with_region(self, value: str) -> EntitlementGrant:
+        self.region = value
+        return self
+
     def with_source(self, value: str) -> EntitlementGrant:
         self.source = value
         return self
@@ -94,16 +102,8 @@ class EntitlementGrant(Model):
         self.start_date = value
         return self
 
-    def with_end_date(self, value: str) -> EntitlementGrant:
-        self.end_date = value
-        return self
-
-    def with_region(self, value: str) -> EntitlementGrant:
-        self.region = value
-        return self
-
-    def with_language(self, value: str) -> EntitlementGrant:
-        self.language = value
+    def with_store_id(self, value: str) -> EntitlementGrant:
+        self.store_id = value
         return self
 
     # endregion with_x methods
@@ -112,18 +112,10 @@ class EntitlementGrant(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "store_id"):
-            result["storeId"] = str(self.store_id)
-        elif include_empty:
-            result["storeId"] = str()
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
-        if hasattr(self, "granted_code"):
-            result["grantedCode"] = str(self.granted_code)
-        elif include_empty:
-            result["grantedCode"] = str()
         if hasattr(self, "item_namespace"):
             result["itemNamespace"] = str(self.item_namespace)
         elif include_empty:
@@ -132,6 +124,22 @@ class EntitlementGrant(Model):
             result["quantity"] = int(self.quantity)
         elif include_empty:
             result["quantity"] = int()
+        if hasattr(self, "end_date"):
+            result["endDate"] = str(self.end_date)
+        elif include_empty:
+            result["endDate"] = str()
+        if hasattr(self, "granted_code"):
+            result["grantedCode"] = str(self.granted_code)
+        elif include_empty:
+            result["grantedCode"] = str()
+        if hasattr(self, "language"):
+            result["language"] = str(self.language)
+        elif include_empty:
+            result["language"] = str()
+        if hasattr(self, "region"):
+            result["region"] = str(self.region)
+        elif include_empty:
+            result["region"] = str()
         if hasattr(self, "source"):
             result["source"] = str(self.source)
         elif include_empty:
@@ -140,18 +148,10 @@ class EntitlementGrant(Model):
             result["startDate"] = str(self.start_date)
         elif include_empty:
             result["startDate"] = str()
-        if hasattr(self, "end_date"):
-            result["endDate"] = str(self.end_date)
+        if hasattr(self, "store_id"):
+            result["storeId"] = str(self.store_id)
         elif include_empty:
-            result["endDate"] = str()
-        if hasattr(self, "region"):
-            result["region"] = str(self.region)
-        elif include_empty:
-            result["region"] = str()
-        if hasattr(self, "language"):
-            result["language"] = str(self.language)
-        elif include_empty:
-            result["language"] = str()
+            result["storeId"] = str()
         return result
 
     # endregion to methods
@@ -197,18 +197,10 @@ class EntitlementGrant(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "storeId" in dict_ and dict_["storeId"] is not None:
-            instance.store_id = str(dict_["storeId"])
-        elif include_empty:
-            instance.store_id = str()
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
             instance.item_id = str()
-        if "grantedCode" in dict_ and dict_["grantedCode"] is not None:
-            instance.granted_code = str(dict_["grantedCode"])
-        elif include_empty:
-            instance.granted_code = str()
         if "itemNamespace" in dict_ and dict_["itemNamespace"] is not None:
             instance.item_namespace = str(dict_["itemNamespace"])
         elif include_empty:
@@ -217,6 +209,22 @@ class EntitlementGrant(Model):
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
             instance.quantity = int()
+        if "endDate" in dict_ and dict_["endDate"] is not None:
+            instance.end_date = str(dict_["endDate"])
+        elif include_empty:
+            instance.end_date = str()
+        if "grantedCode" in dict_ and dict_["grantedCode"] is not None:
+            instance.granted_code = str(dict_["grantedCode"])
+        elif include_empty:
+            instance.granted_code = str()
+        if "language" in dict_ and dict_["language"] is not None:
+            instance.language = str(dict_["language"])
+        elif include_empty:
+            instance.language = str()
+        if "region" in dict_ and dict_["region"] is not None:
+            instance.region = str(dict_["region"])
+        elif include_empty:
+            instance.region = str()
         if "source" in dict_ and dict_["source"] is not None:
             instance.source = str(dict_["source"])
         elif include_empty:
@@ -225,33 +233,25 @@ class EntitlementGrant(Model):
             instance.start_date = str(dict_["startDate"])
         elif include_empty:
             instance.start_date = str()
-        if "endDate" in dict_ and dict_["endDate"] is not None:
-            instance.end_date = str(dict_["endDate"])
+        if "storeId" in dict_ and dict_["storeId"] is not None:
+            instance.store_id = str(dict_["storeId"])
         elif include_empty:
-            instance.end_date = str()
-        if "region" in dict_ and dict_["region"] is not None:
-            instance.region = str(dict_["region"])
-        elif include_empty:
-            instance.region = str()
-        if "language" in dict_ and dict_["language"] is not None:
-            instance.language = str(dict_["language"])
-        elif include_empty:
-            instance.language = str()
+            instance.store_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "storeId": "store_id",
             "itemId": "item_id",
-            "grantedCode": "granted_code",
             "itemNamespace": "item_namespace",
             "quantity": "quantity",
+            "endDate": "end_date",
+            "grantedCode": "granted_code",
+            "language": "language",
+            "region": "region",
             "source": "source",
             "startDate": "start_date",
-            "endDate": "end_date",
-            "region": "region",
-            "language": "language",
+            "storeId": "store_id",
         }
 
     # endregion static methods

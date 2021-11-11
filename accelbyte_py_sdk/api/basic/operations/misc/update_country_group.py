@@ -61,9 +61,9 @@ class UpdateCountryGroup(Operation):
 
         body: (body) OPTIONAL UpdateCountryGroupRequest in body
 
-        namespace: (namespace) REQUIRED str in path
-
         country_group_code: (countryGroupCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
     Responses:
         200: OK - CountryGroupObject (successful operation)
@@ -87,8 +87,8 @@ class UpdateCountryGroup(Operation):
     _location_query: str = None
 
     body: UpdateCountryGroupRequest                                                                # OPTIONAL in [body]
-    namespace: str                                                                                 # REQUIRED in [path]
     country_group_code: str                                                                        # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -136,8 +136,8 @@ class UpdateCountryGroup(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "namespace",
             "country_group_code",
+            "namespace",
         ]
 
     # endregion get methods
@@ -155,10 +155,10 @@ class UpdateCountryGroup(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "country_group_code"):
             result["countryGroupCode"] = self.country_group_code
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     # endregion get_x_params methods
@@ -166,9 +166,9 @@ class UpdateCountryGroup(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "country_group_code") or self.country_group_code is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         return True
 
@@ -180,12 +180,12 @@ class UpdateCountryGroup(Operation):
         self.body = value
         return self
 
-    def with_namespace(self, value: str) -> UpdateCountryGroup:
-        self.namespace = value
-        return self
-
     def with_country_group_code(self, value: str) -> UpdateCountryGroup:
         self.country_group_code = value
+        return self
+
+    def with_namespace(self, value: str) -> UpdateCountryGroup:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -198,14 +198,14 @@ class UpdateCountryGroup(Operation):
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
             result["body"] = UpdateCountryGroupRequest()
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "country_group_code") and self.country_group_code:
             result["countryGroupCode"] = str(self.country_group_code)
         elif include_empty:
             result["countryGroupCode"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         return result
 
     # endregion to methods
@@ -248,13 +248,13 @@ class UpdateCountryGroup(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
         country_group_code: str,
+        namespace: str,
         body: Optional[UpdateCountryGroupRequest] = None,
     ) -> UpdateCountryGroup:
         instance = cls()
-        instance.namespace = namespace
         instance.country_group_code = country_group_code
+        instance.namespace = namespace
         if body is not None:
             instance.body = body
         return instance
@@ -266,22 +266,22 @@ class UpdateCountryGroup(Operation):
             instance.body = UpdateCountryGroupRequest.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
             instance.body = UpdateCountryGroupRequest()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "countryGroupCode" in dict_ and dict_["countryGroupCode"] is not None:
             instance.country_group_code = str(dict_["countryGroupCode"])
         elif include_empty:
             instance.country_group_code = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
-            "namespace": "namespace",
             "countryGroupCode": "country_group_code",
+            "namespace": "namespace",
         }
 
     # endregion static methods

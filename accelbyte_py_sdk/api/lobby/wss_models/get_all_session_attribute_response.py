@@ -28,9 +28,9 @@ class GetAllSessionAttributeResponse(WebSocketMessage):
 
     # region fields
 
-    id_: str
-    code: str
     attributes: Dict[str, str]
+    code: str
+    id_: str
 
     # endregion fields
 
@@ -40,12 +40,12 @@ class GetAllSessionAttributeResponse(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {GetAllSessionAttributeResponse.get_type()}"]
-        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
-        wsm.append(f"id: {id_}")
-        if hasattr(self, "code") and self.code:
-            wsm.append(f"code: {self.code}")
         if hasattr(self, "attributes") and self.attributes:
             wsm.append(f"attributes: {json.dumps(self.attributes)}")
+        if hasattr(self, "code") and self.code:
+            wsm.append(f"code: {self.code}")
+        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
+        wsm.append(f"id: {id_}")
         return "\n".join(wsm)
 
     # endregion methods
@@ -69,11 +69,11 @@ class GetAllSessionAttributeResponse(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if (not is_strict and name.casefold() == "code".casefold()) or (name == "code"):
-                instance.code = value
-                continue
             if (not is_strict and name.casefold() == "attributes".casefold()) or (name == "attributes"):
                 instance.attributes = json.loads(value)
+                continue
+            if (not is_strict and name.casefold() == "code".casefold()) or (name == "code"):
+                instance.code = value
                 continue
             if is_strict:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldTypeNotSupported)
@@ -86,9 +86,9 @@ class GetAllSessionAttributeResponse(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
-            "code": "code",
             "attributes": "attributes",
+            "code": "code",
+            "id": "id_",
         }
 
     # endregion static methods

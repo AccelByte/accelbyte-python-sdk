@@ -52,15 +52,15 @@ class PublicGetUserSubscriptionBillingHistories(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
-
         subscription_id: (subscriptionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
 
         exclude_free: (excludeFree) OPTIONAL bool in query
 
-        offset: (offset) OPTIONAL int in query
-
         limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
 
     Responses:
         200: OK - BillingHistoryPagingSlicedResult (successful operation)
@@ -76,11 +76,11 @@ class PublicGetUserSubscriptionBillingHistories(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    user_id: str                                                                                   # REQUIRED in [path]
     subscription_id: str                                                                           # REQUIRED in [path]
+    user_id: str                                                                                   # REQUIRED in [path]
     exclude_free: bool                                                                             # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
 
     # endregion fields
 
@@ -132,8 +132,8 @@ class PublicGetUserSubscriptionBillingHistories(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "namespace",
-            "user_id",
             "subscription_id",
+            "user_id",
         ]
 
     # endregion get methods
@@ -150,20 +150,20 @@ class PublicGetUserSubscriptionBillingHistories(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
         if hasattr(self, "subscription_id"):
             result["subscriptionId"] = self.subscription_id
+        if hasattr(self, "user_id"):
+            result["userId"] = self.user_id
         return result
 
     def get_query_params(self) -> dict:
         result = {}
         if hasattr(self, "exclude_free"):
             result["excludeFree"] = self.exclude_free
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         return result
 
     # endregion get_x_params methods
@@ -173,9 +173,9 @@ class PublicGetUserSubscriptionBillingHistories(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
         if not hasattr(self, "subscription_id") or self.subscription_id is None:
+            return False
+        if not hasattr(self, "user_id") or self.user_id is None:
             return False
         return True
 
@@ -187,24 +187,24 @@ class PublicGetUserSubscriptionBillingHistories(Operation):
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> PublicGetUserSubscriptionBillingHistories:
-        self.user_id = value
-        return self
-
     def with_subscription_id(self, value: str) -> PublicGetUserSubscriptionBillingHistories:
         self.subscription_id = value
+        return self
+
+    def with_user_id(self, value: str) -> PublicGetUserSubscriptionBillingHistories:
+        self.user_id = value
         return self
 
     def with_exclude_free(self, value: bool) -> PublicGetUserSubscriptionBillingHistories:
         self.exclude_free = value
         return self
 
-    def with_offset(self, value: int) -> PublicGetUserSubscriptionBillingHistories:
-        self.offset = value
-        return self
-
     def with_limit(self, value: int) -> PublicGetUserSubscriptionBillingHistories:
         self.limit = value
+        return self
+
+    def with_offset(self, value: int) -> PublicGetUserSubscriptionBillingHistories:
+        self.offset = value
         return self
 
     # endregion with_x methods
@@ -217,26 +217,26 @@ class PublicGetUserSubscriptionBillingHistories(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
         if hasattr(self, "subscription_id") and self.subscription_id:
             result["subscriptionId"] = str(self.subscription_id)
         elif include_empty:
             result["subscriptionId"] = str()
+        if hasattr(self, "user_id") and self.user_id:
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         if hasattr(self, "exclude_free") and self.exclude_free:
             result["excludeFree"] = bool(self.exclude_free)
         elif include_empty:
             result["excludeFree"] = bool()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
         return result
 
     # endregion to methods
@@ -264,22 +264,22 @@ class PublicGetUserSubscriptionBillingHistories(Operation):
     def create(
         cls,
         namespace: str,
-        user_id: str,
         subscription_id: str,
+        user_id: str,
         exclude_free: Optional[bool] = None,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
     ) -> PublicGetUserSubscriptionBillingHistories:
         instance = cls()
         instance.namespace = namespace
-        instance.user_id = user_id
         instance.subscription_id = subscription_id
+        instance.user_id = user_id
         if exclude_free is not None:
             instance.exclude_free = exclude_free
-        if offset is not None:
-            instance.offset = offset
         if limit is not None:
             instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
         return instance
 
     @classmethod
@@ -289,37 +289,37 @@ class PublicGetUserSubscriptionBillingHistories(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
         if "subscriptionId" in dict_ and dict_["subscriptionId"] is not None:
             instance.subscription_id = str(dict_["subscriptionId"])
         elif include_empty:
             instance.subscription_id = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         if "excludeFree" in dict_ and dict_["excludeFree"] is not None:
             instance.exclude_free = bool(dict_["excludeFree"])
         elif include_empty:
             instance.exclude_free = bool()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "userId": "user_id",
             "subscriptionId": "subscription_id",
+            "userId": "user_id",
             "excludeFree": "exclude_free",
-            "offset": "offset",
             "limit": "limit",
+            "offset": "offset",
         }
 
     # endregion static methods

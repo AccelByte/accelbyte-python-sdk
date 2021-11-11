@@ -50,11 +50,11 @@ class AdminGetPlayerSessionAttribute(Operation):
 
         security: bearer
 
+        attribute: (attribute) REQUIRED str in path
+
         namespace: (namespace) REQUIRED str in path
 
         user_id: (userId) REQUIRED str in path
-
-        attribute: (attribute) REQUIRED str in path
 
     Responses:
         200: OK - ModelsGetPlayerSessionAttributeResponse (OK)
@@ -79,9 +79,9 @@ class AdminGetPlayerSessionAttribute(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
+    attribute: str                                                                                 # REQUIRED in [path]
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
-    attribute: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -129,9 +129,9 @@ class AdminGetPlayerSessionAttribute(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
+            "attribute",
             "namespace",
             "user_id",
-            "attribute",
         ]
 
     # endregion get methods
@@ -145,12 +145,12 @@ class AdminGetPlayerSessionAttribute(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
+        if hasattr(self, "attribute"):
+            result["attribute"] = self.attribute
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
         if hasattr(self, "user_id"):
             result["userId"] = self.user_id
-        if hasattr(self, "attribute"):
-            result["attribute"] = self.attribute
         return result
 
     # endregion get_x_params methods
@@ -158,17 +158,21 @@ class AdminGetPlayerSessionAttribute(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
+        if not hasattr(self, "attribute") or self.attribute is None:
+            return False
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        if not hasattr(self, "attribute") or self.attribute is None:
             return False
         return True
 
     # endregion is/has methods
 
     # region with_x methods
+
+    def with_attribute(self, value: str) -> AdminGetPlayerSessionAttribute:
+        self.attribute = value
+        return self
 
     def with_namespace(self, value: str) -> AdminGetPlayerSessionAttribute:
         self.namespace = value
@@ -178,16 +182,16 @@ class AdminGetPlayerSessionAttribute(Operation):
         self.user_id = value
         return self
 
-    def with_attribute(self, value: str) -> AdminGetPlayerSessionAttribute:
-        self.attribute = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "attribute") and self.attribute:
+            result["attribute"] = str(self.attribute)
+        elif include_empty:
+            result["attribute"] = str()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -196,10 +200,6 @@ class AdminGetPlayerSessionAttribute(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "attribute") and self.attribute:
-            result["attribute"] = str(self.attribute)
-        elif include_empty:
-            result["attribute"] = str()
         return result
 
     # endregion to methods
@@ -246,19 +246,23 @@ class AdminGetPlayerSessionAttribute(Operation):
     @classmethod
     def create(
         cls,
+        attribute: str,
         namespace: str,
         user_id: str,
-        attribute: str,
     ) -> AdminGetPlayerSessionAttribute:
         instance = cls()
+        instance.attribute = attribute
         instance.namespace = namespace
         instance.user_id = user_id
-        instance.attribute = attribute
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AdminGetPlayerSessionAttribute:
         instance = cls()
+        if "attribute" in dict_ and dict_["attribute"] is not None:
+            instance.attribute = str(dict_["attribute"])
+        elif include_empty:
+            instance.attribute = str()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -267,18 +271,14 @@ class AdminGetPlayerSessionAttribute(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
-        if "attribute" in dict_ and dict_["attribute"] is not None:
-            instance.attribute = str(dict_["attribute"])
-        elif include_empty:
-            instance.attribute = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "attribute": "attribute",
             "namespace": "namespace",
             "userId": "user_id",
-            "attribute": "attribute",
         }
 
     # endregion static methods

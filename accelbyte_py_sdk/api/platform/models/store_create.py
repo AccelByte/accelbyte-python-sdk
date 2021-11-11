@@ -30,25 +30,25 @@ class StoreCreate(Model):
     Properties:
         title: (title) REQUIRED str
 
+        default_language: (defaultLanguage) OPTIONAL str
+
+        default_region: (defaultRegion) OPTIONAL str
+
         description: (description) OPTIONAL str
 
         supported_languages: (supportedLanguages) OPTIONAL List[str]
 
         supported_regions: (supportedRegions) OPTIONAL List[str]
-
-        default_region: (defaultRegion) OPTIONAL str
-
-        default_language: (defaultLanguage) OPTIONAL str
     """
 
     # region fields
 
     title: str                                                                                     # REQUIRED
+    default_language: str                                                                          # OPTIONAL
+    default_region: str                                                                            # OPTIONAL
     description: str                                                                               # OPTIONAL
     supported_languages: List[str]                                                                 # OPTIONAL
     supported_regions: List[str]                                                                   # OPTIONAL
-    default_region: str                                                                            # OPTIONAL
-    default_language: str                                                                          # OPTIONAL
 
     # endregion fields
 
@@ -56,6 +56,14 @@ class StoreCreate(Model):
 
     def with_title(self, value: str) -> StoreCreate:
         self.title = value
+        return self
+
+    def with_default_language(self, value: str) -> StoreCreate:
+        self.default_language = value
+        return self
+
+    def with_default_region(self, value: str) -> StoreCreate:
+        self.default_region = value
         return self
 
     def with_description(self, value: str) -> StoreCreate:
@@ -70,14 +78,6 @@ class StoreCreate(Model):
         self.supported_regions = value
         return self
 
-    def with_default_region(self, value: str) -> StoreCreate:
-        self.default_region = value
-        return self
-
-    def with_default_language(self, value: str) -> StoreCreate:
-        self.default_language = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
@@ -88,6 +88,14 @@ class StoreCreate(Model):
             result["title"] = str(self.title)
         elif include_empty:
             result["title"] = str()
+        if hasattr(self, "default_language"):
+            result["defaultLanguage"] = str(self.default_language)
+        elif include_empty:
+            result["defaultLanguage"] = str()
+        if hasattr(self, "default_region"):
+            result["defaultRegion"] = str(self.default_region)
+        elif include_empty:
+            result["defaultRegion"] = str()
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
@@ -100,14 +108,6 @@ class StoreCreate(Model):
             result["supportedRegions"] = [str(i0) for i0 in self.supported_regions]
         elif include_empty:
             result["supportedRegions"] = []
-        if hasattr(self, "default_region"):
-            result["defaultRegion"] = str(self.default_region)
-        elif include_empty:
-            result["defaultRegion"] = str()
-        if hasattr(self, "default_language"):
-            result["defaultLanguage"] = str(self.default_language)
-        elif include_empty:
-            result["defaultLanguage"] = str()
         return result
 
     # endregion to methods
@@ -147,6 +147,14 @@ class StoreCreate(Model):
             instance.title = str(dict_["title"])
         elif include_empty:
             instance.title = str()
+        if "defaultLanguage" in dict_ and dict_["defaultLanguage"] is not None:
+            instance.default_language = str(dict_["defaultLanguage"])
+        elif include_empty:
+            instance.default_language = str()
+        if "defaultRegion" in dict_ and dict_["defaultRegion"] is not None:
+            instance.default_region = str(dict_["defaultRegion"])
+        elif include_empty:
+            instance.default_region = str()
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
@@ -159,25 +167,17 @@ class StoreCreate(Model):
             instance.supported_regions = [str(i0) for i0 in dict_["supportedRegions"]]
         elif include_empty:
             instance.supported_regions = []
-        if "defaultRegion" in dict_ and dict_["defaultRegion"] is not None:
-            instance.default_region = str(dict_["defaultRegion"])
-        elif include_empty:
-            instance.default_region = str()
-        if "defaultLanguage" in dict_ and dict_["defaultLanguage"] is not None:
-            instance.default_language = str(dict_["defaultLanguage"])
-        elif include_empty:
-            instance.default_language = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "title": "title",
+            "defaultLanguage": "default_language",
+            "defaultRegion": "default_region",
             "description": "description",
             "supportedLanguages": "supported_languages",
             "supportedRegions": "supported_regions",
-            "defaultRegion": "default_region",
-            "defaultLanguage": "default_language",
         }
 
     # endregion static methods

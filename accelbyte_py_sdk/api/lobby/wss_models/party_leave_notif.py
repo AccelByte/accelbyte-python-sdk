@@ -28,8 +28,8 @@ class PartyLeaveNotif(WebSocketMessage):
 
     # region fields
 
-    user_id: str
     leader_id: str
+    user_id: str
 
     # endregion fields
 
@@ -39,10 +39,10 @@ class PartyLeaveNotif(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {PartyLeaveNotif.get_type()}"]
-        if hasattr(self, "user_id") and self.user_id:
-            wsm.append(f"userId: {self.user_id}")
         if hasattr(self, "leader_id") and self.leader_id:
             wsm.append(f"leaderId: {self.leader_id}")
+        if hasattr(self, "user_id") and self.user_id:
+            wsm.append(f"userId: {self.user_id}")
         return "\n".join(wsm)
 
     # endregion methods
@@ -62,11 +62,11 @@ class PartyLeaveNotif(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if (not is_strict and name.casefold() == "userId".casefold()) or (name == "userId"):
-                instance.user_id = value
-                continue
             if (not is_strict and name.casefold() == "leaderId".casefold()) or (name == "leaderId"):
                 instance.leader_id = value
+                continue
+            if (not is_strict and name.casefold() == "userId".casefold()) or (name == "userId"):
+                instance.user_id = value
                 continue
             if is_strict:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldTypeNotSupported)
@@ -79,8 +79,8 @@ class PartyLeaveNotif(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "userId": "user_id",
             "leaderId": "leader_id",
+            "userId": "user_id",
         }
 
     # endregion static methods

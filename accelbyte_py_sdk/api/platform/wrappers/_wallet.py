@@ -44,28 +44,28 @@ from ..operations.wallet import QueryWallets
 
 
 @same_doc_as(CheckWallet)
-def check_wallet(user_id: str, currency_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def check_wallet(currency_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = CheckWallet.create(
-        user_id=user_id,
         currency_code=currency_code,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(CreditUserWallet)
-def credit_user_wallet(user_id: str, currency_code: str, body: Optional[CreditRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def credit_user_wallet(currency_code: str, user_id: str, body: Optional[CreditRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = CreditUserWallet.create(
-        user_id=user_id,
         currency_code=currency_code,
+        user_id=user_id,
         body=body,
         namespace=namespace,
     )
@@ -143,7 +143,7 @@ def get_wallet(wallet_id: str, namespace: Optional[str] = None, x_additional_hea
 
 
 @same_doc_as(ListUserWalletTransactions)
-def list_user_wallet_transactions(user_id: str, wallet_id: str, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def list_user_wallet_transactions(user_id: str, wallet_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -151,22 +151,22 @@ def list_user_wallet_transactions(user_id: str, wallet_id: str, offset: Optional
     request = ListUserWalletTransactions.create(
         user_id=user_id,
         wallet_id=wallet_id,
-        offset=offset,
         limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PayWithUserWallet)
-def pay_with_user_wallet(user_id: str, currency_code: str, body: Optional[PaymentRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def pay_with_user_wallet(currency_code: str, user_id: str, body: Optional[PaymentRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PayWithUserWallet.create(
-        user_id=user_id,
         currency_code=currency_code,
+        user_id=user_id,
         body=body,
         namespace=namespace,
     )
@@ -187,46 +187,46 @@ def public_get_my_wallet(currency_code: str, namespace: Optional[str] = None, x_
 
 
 @same_doc_as(PublicGetWallet)
-def public_get_wallet(user_id: str, currency_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_get_wallet(currency_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicGetWallet.create(
-        user_id=user_id,
         currency_code=currency_code,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicListUserWalletTransactions)
-def public_list_user_wallet_transactions(user_id: str, currency_code: str, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_list_user_wallet_transactions(currency_code: str, user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicListUserWalletTransactions.create(
-        user_id=user_id,
         currency_code=currency_code,
-        offset=offset,
+        user_id=user_id,
         limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QueryWallets)
-def query_wallets(user_id: Optional[str] = None, currency_code: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_wallets(currency_code: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = QueryWallets.create(
-        user_id=user_id,
         currency_code=currency_code,
-        offset=offset,
         limit=limit,
+        offset=offset,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

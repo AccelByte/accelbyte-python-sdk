@@ -28,26 +28,22 @@ class ModelSendVerificationCodeRequest(Model):
     """Model send verification code request (model.SendVerificationCodeRequest)
 
     Properties:
-        context: (Context) OPTIONAL str
-
         language_tag: (LanguageTag) REQUIRED str
 
         login_id: (LoginID) REQUIRED str
+
+        context: (Context) OPTIONAL str
     """
 
     # region fields
 
-    context: str                                                                                   # OPTIONAL
     language_tag: str                                                                              # REQUIRED
     login_id: str                                                                                  # REQUIRED
+    context: str                                                                                   # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
-
-    def with_context(self, value: str) -> ModelSendVerificationCodeRequest:
-        self.context = value
-        return self
 
     def with_language_tag(self, value: str) -> ModelSendVerificationCodeRequest:
         self.language_tag = value
@@ -57,16 +53,16 @@ class ModelSendVerificationCodeRequest(Model):
         self.login_id = value
         return self
 
+    def with_context(self, value: str) -> ModelSendVerificationCodeRequest:
+        self.context = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "context"):
-            result["Context"] = str(self.context)
-        elif include_empty:
-            result["Context"] = str()
         if hasattr(self, "language_tag"):
             result["LanguageTag"] = str(self.language_tag)
         elif include_empty:
@@ -75,6 +71,10 @@ class ModelSendVerificationCodeRequest(Model):
             result["LoginID"] = str(self.login_id)
         elif include_empty:
             result["LoginID"] = str()
+        if hasattr(self, "context"):
+            result["Context"] = str(self.context)
+        elif include_empty:
+            result["Context"] = str()
         return result
 
     # endregion to methods
@@ -100,10 +100,6 @@ class ModelSendVerificationCodeRequest(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "Context" in dict_ and dict_["Context"] is not None:
-            instance.context = str(dict_["Context"])
-        elif include_empty:
-            instance.context = str()
         if "LanguageTag" in dict_ and dict_["LanguageTag"] is not None:
             instance.language_tag = str(dict_["LanguageTag"])
         elif include_empty:
@@ -112,14 +108,18 @@ class ModelSendVerificationCodeRequest(Model):
             instance.login_id = str(dict_["LoginID"])
         elif include_empty:
             instance.login_id = str()
+        if "Context" in dict_ and dict_["Context"] is not None:
+            instance.context = str(dict_["Context"])
+        elif include_empty:
+            instance.context = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "Context": "context",
             "LanguageTag": "language_tag",
             "LoginID": "login_id",
+            "Context": "context",
         }
 
     # endregion static methods

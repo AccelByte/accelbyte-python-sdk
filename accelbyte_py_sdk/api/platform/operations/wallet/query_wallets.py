@@ -52,13 +52,13 @@ class QueryWallets(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) OPTIONAL str in query
-
         currency_code: (currencyCode) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
-        limit: (limit) OPTIONAL int in query
+        user_id: (userId) OPTIONAL str in query
 
     Responses:
         200: OK - WalletPagingSlicedResult (successful operation)
@@ -74,10 +74,10 @@ class QueryWallets(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    user_id: str                                                                                   # OPTIONAL in [query]
     currency_code: str                                                                             # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
+    user_id: str                                                                                   # OPTIONAL in [query]
 
     # endregion fields
 
@@ -149,14 +149,14 @@ class QueryWallets(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
         if hasattr(self, "currency_code"):
             result["currencyCode"] = self.currency_code
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
+        if hasattr(self, "user_id"):
+            result["userId"] = self.user_id
         return result
 
     # endregion get_x_params methods
@@ -176,20 +176,20 @@ class QueryWallets(Operation):
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> QueryWallets:
-        self.user_id = value
-        return self
-
     def with_currency_code(self, value: str) -> QueryWallets:
         self.currency_code = value
+        return self
+
+    def with_limit(self, value: int) -> QueryWallets:
+        self.limit = value
         return self
 
     def with_offset(self, value: int) -> QueryWallets:
         self.offset = value
         return self
 
-    def with_limit(self, value: int) -> QueryWallets:
-        self.limit = value
+    def with_user_id(self, value: str) -> QueryWallets:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -202,22 +202,22 @@ class QueryWallets(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
         if hasattr(self, "currency_code") and self.currency_code:
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
             result["currencyCode"] = str()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
+        if hasattr(self, "user_id") and self.user_id:
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         return result
 
     # endregion to methods
@@ -245,21 +245,21 @@ class QueryWallets(Operation):
     def create(
         cls,
         namespace: str,
-        user_id: Optional[str] = None,
         currency_code: Optional[str] = None,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
+        user_id: Optional[str] = None,
     ) -> QueryWallets:
         instance = cls()
         instance.namespace = namespace
-        if user_id is not None:
-            instance.user_id = user_id
         if currency_code is not None:
             instance.currency_code = currency_code
-        if offset is not None:
-            instance.offset = offset
         if limit is not None:
             instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
+        if user_id is not None:
+            instance.user_id = user_id
         return instance
 
     @classmethod
@@ -269,32 +269,32 @@ class QueryWallets(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
         if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
             instance.currency_code = str(dict_["currencyCode"])
         elif include_empty:
             instance.currency_code = str()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "userId": "user_id",
             "currencyCode": "currency_code",
-            "offset": "offset",
             "limit": "limit",
+            "offset": "offset",
+            "userId": "user_id",
         }
 
     # endregion static methods

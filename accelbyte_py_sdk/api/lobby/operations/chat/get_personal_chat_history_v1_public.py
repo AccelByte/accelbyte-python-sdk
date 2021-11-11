@@ -50,9 +50,9 @@ class GetPersonalChatHistoryV1Public(Operation):
 
         security: bearer
 
-        namespace: (namespace) REQUIRED str in path
-
         friend_id: (friendId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
     Responses:
         200: OK - List[ModelChatMessageResponse] (OK)
@@ -77,8 +77,8 @@ class GetPersonalChatHistoryV1Public(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
     friend_id: str                                                                                 # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -126,8 +126,8 @@ class GetPersonalChatHistoryV1Public(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "namespace",
             "friend_id",
+            "namespace",
         ]
 
     # endregion get methods
@@ -141,10 +141,10 @@ class GetPersonalChatHistoryV1Public(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "friend_id"):
             result["friendId"] = self.friend_id
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     # endregion get_x_params methods
@@ -152,9 +152,9 @@ class GetPersonalChatHistoryV1Public(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "friend_id") or self.friend_id is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         return True
 
@@ -162,12 +162,12 @@ class GetPersonalChatHistoryV1Public(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> GetPersonalChatHistoryV1Public:
-        self.namespace = value
-        return self
-
     def with_friend_id(self, value: str) -> GetPersonalChatHistoryV1Public:
         self.friend_id = value
+        return self
+
+    def with_namespace(self, value: str) -> GetPersonalChatHistoryV1Public:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -176,14 +176,14 @@ class GetPersonalChatHistoryV1Public(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "friend_id") and self.friend_id:
             result["friendId"] = str(self.friend_id)
         elif include_empty:
             result["friendId"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         return result
 
     # endregion to methods
@@ -230,32 +230,32 @@ class GetPersonalChatHistoryV1Public(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
         friend_id: str,
+        namespace: str,
     ) -> GetPersonalChatHistoryV1Public:
         instance = cls()
-        instance.namespace = namespace
         instance.friend_id = friend_id
+        instance.namespace = namespace
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> GetPersonalChatHistoryV1Public:
         instance = cls()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "friendId" in dict_ and dict_["friendId"] is not None:
             instance.friend_id = str(dict_["friendId"])
         elif include_empty:
             instance.friend_id = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
             "friendId": "friend_id",
+            "namespace": "namespace",
         }
 
     # endregion static methods

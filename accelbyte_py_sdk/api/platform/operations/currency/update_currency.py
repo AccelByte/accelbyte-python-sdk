@@ -55,9 +55,9 @@ class UpdateCurrency(Operation):
 
         body: (body) OPTIONAL CurrencyUpdate in body
 
-        namespace: (namespace) REQUIRED str in path
-
         currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
     Responses:
         200: OK - CurrencyInfo (successful operation)
@@ -77,8 +77,8 @@ class UpdateCurrency(Operation):
     _location_query: str = None
 
     body: CurrencyUpdate                                                                           # OPTIONAL in [body]
-    namespace: str                                                                                 # REQUIRED in [path]
     currency_code: str                                                                             # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -126,8 +126,8 @@ class UpdateCurrency(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "namespace",
             "currency_code",
+            "namespace",
         ]
 
     # endregion get methods
@@ -145,10 +145,10 @@ class UpdateCurrency(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "currency_code"):
             result["currencyCode"] = self.currency_code
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     # endregion get_x_params methods
@@ -156,9 +156,9 @@ class UpdateCurrency(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "currency_code") or self.currency_code is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         return True
 
@@ -170,12 +170,12 @@ class UpdateCurrency(Operation):
         self.body = value
         return self
 
-    def with_namespace(self, value: str) -> UpdateCurrency:
-        self.namespace = value
-        return self
-
     def with_currency_code(self, value: str) -> UpdateCurrency:
         self.currency_code = value
+        return self
+
+    def with_namespace(self, value: str) -> UpdateCurrency:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -188,14 +188,14 @@ class UpdateCurrency(Operation):
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
             result["body"] = CurrencyUpdate()
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "currency_code") and self.currency_code:
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
             result["currencyCode"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         return result
 
     # endregion to methods
@@ -230,13 +230,13 @@ class UpdateCurrency(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
         currency_code: str,
+        namespace: str,
         body: Optional[CurrencyUpdate] = None,
     ) -> UpdateCurrency:
         instance = cls()
-        instance.namespace = namespace
         instance.currency_code = currency_code
+        instance.namespace = namespace
         if body is not None:
             instance.body = body
         return instance
@@ -248,22 +248,22 @@ class UpdateCurrency(Operation):
             instance.body = CurrencyUpdate.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
             instance.body = CurrencyUpdate()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
             instance.currency_code = str(dict_["currencyCode"])
         elif include_empty:
             instance.currency_code = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
-            "namespace": "namespace",
             "currencyCode": "currency_code",
+            "namespace": "namespace",
         }
 
     # endregion static methods

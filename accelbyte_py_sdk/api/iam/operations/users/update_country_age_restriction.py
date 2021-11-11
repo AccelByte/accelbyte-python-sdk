@@ -49,9 +49,9 @@ class UpdateCountryAgeRestriction(Operation):
 
         body: (body) REQUIRED ModelCountryAgeRestrictionRequest in body
 
-        namespace: (namespace) REQUIRED str in path
-
         country_code: (countryCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
     Responses:
         200: OK - ModelCountry (OK)
@@ -75,8 +75,8 @@ class UpdateCountryAgeRestriction(Operation):
     _location_query: str = None
 
     body: ModelCountryAgeRestrictionRequest                                                        # REQUIRED in [body]
-    namespace: str                                                                                 # REQUIRED in [path]
     country_code: str                                                                              # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -125,8 +125,8 @@ class UpdateCountryAgeRestriction(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "body",
-            "namespace",
             "country_code",
+            "namespace",
         ]
 
     # endregion get methods
@@ -144,10 +144,10 @@ class UpdateCountryAgeRestriction(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "country_code"):
             result["countryCode"] = self.country_code
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     # endregion get_x_params methods
@@ -157,9 +157,9 @@ class UpdateCountryAgeRestriction(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "body") or self.body is None:
             return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "country_code") or self.country_code is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         return True
 
@@ -171,12 +171,12 @@ class UpdateCountryAgeRestriction(Operation):
         self.body = value
         return self
 
-    def with_namespace(self, value: str) -> UpdateCountryAgeRestriction:
-        self.namespace = value
-        return self
-
     def with_country_code(self, value: str) -> UpdateCountryAgeRestriction:
         self.country_code = value
+        return self
+
+    def with_namespace(self, value: str) -> UpdateCountryAgeRestriction:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -189,14 +189,14 @@ class UpdateCountryAgeRestriction(Operation):
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
             result["body"] = ModelCountryAgeRestrictionRequest()
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "country_code") and self.country_code:
             result["countryCode"] = str(self.country_code)
         elif include_empty:
             result["countryCode"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         return result
 
     # endregion to methods
@@ -240,13 +240,13 @@ class UpdateCountryAgeRestriction(Operation):
     def create(
         cls,
         body: ModelCountryAgeRestrictionRequest,
-        namespace: str,
         country_code: str,
+        namespace: str,
     ) -> UpdateCountryAgeRestriction:
         instance = cls()
         instance.body = body
-        instance.namespace = namespace
         instance.country_code = country_code
+        instance.namespace = namespace
         return instance
 
     @classmethod
@@ -256,22 +256,22 @@ class UpdateCountryAgeRestriction(Operation):
             instance.body = ModelCountryAgeRestrictionRequest.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
             instance.body = ModelCountryAgeRestrictionRequest()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "countryCode" in dict_ and dict_["countryCode"] is not None:
             instance.country_code = str(dict_["countryCode"])
         elif include_empty:
             instance.country_code = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
-            "namespace": "namespace",
             "countryCode": "country_code",
+            "namespace": "namespace",
         }
 
     # endregion static methods

@@ -28,26 +28,26 @@ class PaymentOrderChargeStatus(Model):
     """Payment order charge status (PaymentOrderChargeStatus)
 
     Properties:
-        status: (status) OPTIONAL str
-
         charging: (charging) OPTIONAL bool
+
+        status: (status) OPTIONAL str
     """
 
     # region fields
 
-    status: str                                                                                    # OPTIONAL
     charging: bool                                                                                 # OPTIONAL
+    status: str                                                                                    # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_status(self, value: str) -> PaymentOrderChargeStatus:
-        self.status = value
-        return self
-
     def with_charging(self, value: bool) -> PaymentOrderChargeStatus:
         self.charging = value
+        return self
+
+    def with_status(self, value: str) -> PaymentOrderChargeStatus:
+        self.status = value
         return self
 
     # endregion with_x methods
@@ -56,14 +56,14 @@ class PaymentOrderChargeStatus(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "status"):
-            result["status"] = str(self.status)
-        elif include_empty:
-            result["status"] = str()
         if hasattr(self, "charging"):
             result["charging"] = bool(self.charging)
         elif include_empty:
             result["charging"] = bool()
+        if hasattr(self, "status"):
+            result["status"] = str(self.status)
+        elif include_empty:
+            result["status"] = str()
         return result
 
     # endregion to methods
@@ -88,21 +88,21 @@ class PaymentOrderChargeStatus(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "status" in dict_ and dict_["status"] is not None:
-            instance.status = str(dict_["status"])
-        elif include_empty:
-            instance.status = str()
         if "charging" in dict_ and dict_["charging"] is not None:
             instance.charging = bool(dict_["charging"])
         elif include_empty:
             instance.charging = bool()
+        if "status" in dict_ and dict_["status"] is not None:
+            instance.status = str(dict_["status"])
+        elif include_empty:
+            instance.status = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "status": "status",
             "charging": "charging",
+            "status": "status",
         }
 
     # endregion static methods

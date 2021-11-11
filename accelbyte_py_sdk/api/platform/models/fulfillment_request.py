@@ -28,46 +28,50 @@ class FulfillmentRequest(Model):
     """A DTO object for fulfillment request API call. (FulfillmentRequest)
 
     Properties:
-        store_id: (storeId) OPTIONAL str
+        quantity: (quantity) REQUIRED int
+
+        end_date: (endDate) OPTIONAL str
 
         item_id: (itemId) OPTIONAL str
 
         item_sku: (itemSku) OPTIONAL str
 
-        quantity: (quantity) REQUIRED int
+        language: (language) OPTIONAL str
 
         order_no: (orderNo) OPTIONAL str
+
+        region: (region) OPTIONAL str
 
         source: (source) OPTIONAL str
 
         start_date: (startDate) OPTIONAL str
 
-        end_date: (endDate) OPTIONAL str
-
-        region: (region) OPTIONAL str
-
-        language: (language) OPTIONAL str
+        store_id: (storeId) OPTIONAL str
     """
 
     # region fields
 
-    store_id: str                                                                                  # OPTIONAL
+    quantity: int                                                                                  # REQUIRED
+    end_date: str                                                                                  # OPTIONAL
     item_id: str                                                                                   # OPTIONAL
     item_sku: str                                                                                  # OPTIONAL
-    quantity: int                                                                                  # REQUIRED
+    language: str                                                                                  # OPTIONAL
     order_no: str                                                                                  # OPTIONAL
+    region: str                                                                                    # OPTIONAL
     source: str                                                                                    # OPTIONAL
     start_date: str                                                                                # OPTIONAL
-    end_date: str                                                                                  # OPTIONAL
-    region: str                                                                                    # OPTIONAL
-    language: str                                                                                  # OPTIONAL
+    store_id: str                                                                                  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_store_id(self, value: str) -> FulfillmentRequest:
-        self.store_id = value
+    def with_quantity(self, value: int) -> FulfillmentRequest:
+        self.quantity = value
+        return self
+
+    def with_end_date(self, value: str) -> FulfillmentRequest:
+        self.end_date = value
         return self
 
     def with_item_id(self, value: str) -> FulfillmentRequest:
@@ -78,12 +82,16 @@ class FulfillmentRequest(Model):
         self.item_sku = value
         return self
 
-    def with_quantity(self, value: int) -> FulfillmentRequest:
-        self.quantity = value
+    def with_language(self, value: str) -> FulfillmentRequest:
+        self.language = value
         return self
 
     def with_order_no(self, value: str) -> FulfillmentRequest:
         self.order_no = value
+        return self
+
+    def with_region(self, value: str) -> FulfillmentRequest:
+        self.region = value
         return self
 
     def with_source(self, value: str) -> FulfillmentRequest:
@@ -94,16 +102,8 @@ class FulfillmentRequest(Model):
         self.start_date = value
         return self
 
-    def with_end_date(self, value: str) -> FulfillmentRequest:
-        self.end_date = value
-        return self
-
-    def with_region(self, value: str) -> FulfillmentRequest:
-        self.region = value
-        return self
-
-    def with_language(self, value: str) -> FulfillmentRequest:
-        self.language = value
+    def with_store_id(self, value: str) -> FulfillmentRequest:
+        self.store_id = value
         return self
 
     # endregion with_x methods
@@ -112,10 +112,14 @@ class FulfillmentRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "store_id"):
-            result["storeId"] = str(self.store_id)
+        if hasattr(self, "quantity"):
+            result["quantity"] = int(self.quantity)
         elif include_empty:
-            result["storeId"] = str()
+            result["quantity"] = int()
+        if hasattr(self, "end_date"):
+            result["endDate"] = str(self.end_date)
+        elif include_empty:
+            result["endDate"] = str()
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
@@ -124,14 +128,18 @@ class FulfillmentRequest(Model):
             result["itemSku"] = str(self.item_sku)
         elif include_empty:
             result["itemSku"] = str()
-        if hasattr(self, "quantity"):
-            result["quantity"] = int(self.quantity)
+        if hasattr(self, "language"):
+            result["language"] = str(self.language)
         elif include_empty:
-            result["quantity"] = int()
+            result["language"] = str()
         if hasattr(self, "order_no"):
             result["orderNo"] = str(self.order_no)
         elif include_empty:
             result["orderNo"] = str()
+        if hasattr(self, "region"):
+            result["region"] = str(self.region)
+        elif include_empty:
+            result["region"] = str()
         if hasattr(self, "source"):
             result["source"] = str(self.source)
         elif include_empty:
@@ -140,18 +148,10 @@ class FulfillmentRequest(Model):
             result["startDate"] = str(self.start_date)
         elif include_empty:
             result["startDate"] = str()
-        if hasattr(self, "end_date"):
-            result["endDate"] = str(self.end_date)
+        if hasattr(self, "store_id"):
+            result["storeId"] = str(self.store_id)
         elif include_empty:
-            result["endDate"] = str()
-        if hasattr(self, "region"):
-            result["region"] = str(self.region)
-        elif include_empty:
-            result["region"] = str()
-        if hasattr(self, "language"):
-            result["language"] = str(self.language)
-        elif include_empty:
-            result["language"] = str()
+            result["storeId"] = str()
         return result
 
     # endregion to methods
@@ -199,10 +199,14 @@ class FulfillmentRequest(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "storeId" in dict_ and dict_["storeId"] is not None:
-            instance.store_id = str(dict_["storeId"])
+        if "quantity" in dict_ and dict_["quantity"] is not None:
+            instance.quantity = int(dict_["quantity"])
         elif include_empty:
-            instance.store_id = str()
+            instance.quantity = int()
+        if "endDate" in dict_ and dict_["endDate"] is not None:
+            instance.end_date = str(dict_["endDate"])
+        elif include_empty:
+            instance.end_date = str()
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
@@ -211,14 +215,18 @@ class FulfillmentRequest(Model):
             instance.item_sku = str(dict_["itemSku"])
         elif include_empty:
             instance.item_sku = str()
-        if "quantity" in dict_ and dict_["quantity"] is not None:
-            instance.quantity = int(dict_["quantity"])
+        if "language" in dict_ and dict_["language"] is not None:
+            instance.language = str(dict_["language"])
         elif include_empty:
-            instance.quantity = int()
+            instance.language = str()
         if "orderNo" in dict_ and dict_["orderNo"] is not None:
             instance.order_no = str(dict_["orderNo"])
         elif include_empty:
             instance.order_no = str()
+        if "region" in dict_ and dict_["region"] is not None:
+            instance.region = str(dict_["region"])
+        elif include_empty:
+            instance.region = str()
         if "source" in dict_ and dict_["source"] is not None:
             instance.source = str(dict_["source"])
         elif include_empty:
@@ -227,33 +235,25 @@ class FulfillmentRequest(Model):
             instance.start_date = str(dict_["startDate"])
         elif include_empty:
             instance.start_date = str()
-        if "endDate" in dict_ and dict_["endDate"] is not None:
-            instance.end_date = str(dict_["endDate"])
+        if "storeId" in dict_ and dict_["storeId"] is not None:
+            instance.store_id = str(dict_["storeId"])
         elif include_empty:
-            instance.end_date = str()
-        if "region" in dict_ and dict_["region"] is not None:
-            instance.region = str(dict_["region"])
-        elif include_empty:
-            instance.region = str()
-        if "language" in dict_ and dict_["language"] is not None:
-            instance.language = str(dict_["language"])
-        elif include_empty:
-            instance.language = str()
+            instance.store_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "storeId": "store_id",
+            "quantity": "quantity",
+            "endDate": "end_date",
             "itemId": "item_id",
             "itemSku": "item_sku",
-            "quantity": "quantity",
+            "language": "language",
             "orderNo": "order_no",
+            "region": "region",
             "source": "source",
             "startDate": "start_date",
-            "endDate": "end_date",
-            "region": "region",
-            "language": "language",
+            "storeId": "store_id",
         }
 
     # endregion static methods

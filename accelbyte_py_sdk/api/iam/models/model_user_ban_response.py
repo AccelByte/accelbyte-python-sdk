@@ -40,8 +40,6 @@ class ModelUserBanResponse(Model):
 
         created_at: (CreatedAt) REQUIRED str
 
-        disabled_date: (DisabledDate) OPTIONAL str
-
         enabled: (Enabled) REQUIRED bool
 
         end_date: (EndDate) REQUIRED str
@@ -51,6 +49,8 @@ class ModelUserBanResponse(Model):
         reason: (Reason) REQUIRED str
 
         user_id: (UserId) REQUIRED str
+
+        disabled_date: (DisabledDate) OPTIONAL str
     """
 
     # region fields
@@ -60,12 +60,12 @@ class ModelUserBanResponse(Model):
     banned_by: BannedBy                                                                            # REQUIRED
     comment: str                                                                                   # REQUIRED
     created_at: str                                                                                # REQUIRED
-    disabled_date: str                                                                             # OPTIONAL
     enabled: bool                                                                                  # REQUIRED
     end_date: str                                                                                  # REQUIRED
     namespace: str                                                                                 # REQUIRED
     reason: str                                                                                    # REQUIRED
     user_id: str                                                                                   # REQUIRED
+    disabled_date: str                                                                             # OPTIONAL
 
     # endregion fields
 
@@ -91,10 +91,6 @@ class ModelUserBanResponse(Model):
         self.created_at = value
         return self
 
-    def with_disabled_date(self, value: str) -> ModelUserBanResponse:
-        self.disabled_date = value
-        return self
-
     def with_enabled(self, value: bool) -> ModelUserBanResponse:
         self.enabled = value
         return self
@@ -113,6 +109,10 @@ class ModelUserBanResponse(Model):
 
     def with_user_id(self, value: str) -> ModelUserBanResponse:
         self.user_id = value
+        return self
+
+    def with_disabled_date(self, value: str) -> ModelUserBanResponse:
+        self.disabled_date = value
         return self
 
     # endregion with_x methods
@@ -141,10 +141,6 @@ class ModelUserBanResponse(Model):
             result["CreatedAt"] = str(self.created_at)
         elif include_empty:
             result["CreatedAt"] = str()
-        if hasattr(self, "disabled_date"):
-            result["DisabledDate"] = str(self.disabled_date)
-        elif include_empty:
-            result["DisabledDate"] = str()
         if hasattr(self, "enabled"):
             result["Enabled"] = bool(self.enabled)
         elif include_empty:
@@ -165,6 +161,10 @@ class ModelUserBanResponse(Model):
             result["UserId"] = str(self.user_id)
         elif include_empty:
             result["UserId"] = str()
+        if hasattr(self, "disabled_date"):
+            result["DisabledDate"] = str(self.disabled_date)
+        elif include_empty:
+            result["DisabledDate"] = str()
         return result
 
     # endregion to methods
@@ -226,10 +226,6 @@ class ModelUserBanResponse(Model):
             instance.created_at = str(dict_["CreatedAt"])
         elif include_empty:
             instance.created_at = str()
-        if "DisabledDate" in dict_ and dict_["DisabledDate"] is not None:
-            instance.disabled_date = str(dict_["DisabledDate"])
-        elif include_empty:
-            instance.disabled_date = str()
         if "Enabled" in dict_ and dict_["Enabled"] is not None:
             instance.enabled = bool(dict_["Enabled"])
         elif include_empty:
@@ -250,6 +246,10 @@ class ModelUserBanResponse(Model):
             instance.user_id = str(dict_["UserId"])
         elif include_empty:
             instance.user_id = str()
+        if "DisabledDate" in dict_ and dict_["DisabledDate"] is not None:
+            instance.disabled_date = str(dict_["DisabledDate"])
+        elif include_empty:
+            instance.disabled_date = str()
         return instance
 
     @staticmethod
@@ -260,12 +260,12 @@ class ModelUserBanResponse(Model):
             "BannedBy": "banned_by",
             "Comment": "comment",
             "CreatedAt": "created_at",
-            "DisabledDate": "disabled_date",
             "Enabled": "enabled",
             "EndDate": "end_date",
             "Namespace": "namespace",
             "Reason": "reason",
             "UserId": "user_id",
+            "DisabledDate": "disabled_date",
         }
 
     # endregion static methods

@@ -54,17 +54,17 @@ class PublicGetItem(Operation):
 
         security: bearer
 
-        namespace: (namespace) REQUIRED str in path
-
         item_id: (itemId) REQUIRED str in path
 
-        store_id: (storeId) OPTIONAL str in query
-
-        region: (region) OPTIONAL str in query
+        namespace: (namespace) REQUIRED str in path
 
         language: (language) OPTIONAL str in query
 
         populate_bundle: (populateBundle) OPTIONAL bool in query
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
 
     Responses:
         200: OK - PopulatedItemInfo (successful operation)
@@ -81,12 +81,12 @@ class PublicGetItem(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
     item_id: str                                                                                   # REQUIRED in [path]
-    store_id: str                                                                                  # OPTIONAL in [query]
-    region: str                                                                                    # OPTIONAL in [query]
+    namespace: str                                                                                 # REQUIRED in [path]
     language: str                                                                                  # OPTIONAL in [query]
     populate_bundle: bool                                                                          # OPTIONAL in [query]
+    region: str                                                                                    # OPTIONAL in [query]
+    store_id: str                                                                                  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -137,8 +137,8 @@ class PublicGetItem(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "namespace",
             "item_id",
+            "namespace",
         ]
 
     # endregion get methods
@@ -153,22 +153,22 @@ class PublicGetItem(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "item_id"):
             result["itemId"] = self.item_id
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "store_id"):
-            result["storeId"] = self.store_id
-        if hasattr(self, "region"):
-            result["region"] = self.region
         if hasattr(self, "language"):
             result["language"] = self.language
         if hasattr(self, "populate_bundle"):
             result["populateBundle"] = self.populate_bundle
+        if hasattr(self, "region"):
+            result["region"] = self.region
+        if hasattr(self, "store_id"):
+            result["storeId"] = self.store_id
         return result
 
     # endregion get_x_params methods
@@ -176,9 +176,9 @@ class PublicGetItem(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "item_id") or self.item_id is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         return True
 
@@ -186,20 +186,12 @@ class PublicGetItem(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> PublicGetItem:
-        self.namespace = value
-        return self
-
     def with_item_id(self, value: str) -> PublicGetItem:
         self.item_id = value
         return self
 
-    def with_store_id(self, value: str) -> PublicGetItem:
-        self.store_id = value
-        return self
-
-    def with_region(self, value: str) -> PublicGetItem:
-        self.region = value
+    def with_namespace(self, value: str) -> PublicGetItem:
+        self.namespace = value
         return self
 
     def with_language(self, value: str) -> PublicGetItem:
@@ -210,28 +202,28 @@ class PublicGetItem(Operation):
         self.populate_bundle = value
         return self
 
+    def with_region(self, value: str) -> PublicGetItem:
+        self.region = value
+        return self
+
+    def with_store_id(self, value: str) -> PublicGetItem:
+        self.store_id = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "item_id") and self.item_id:
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
-        if hasattr(self, "store_id") and self.store_id:
-            result["storeId"] = str(self.store_id)
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["storeId"] = str()
-        if hasattr(self, "region") and self.region:
-            result["region"] = str(self.region)
-        elif include_empty:
-            result["region"] = str()
+            result["namespace"] = str()
         if hasattr(self, "language") and self.language:
             result["language"] = str(self.language)
         elif include_empty:
@@ -240,6 +232,14 @@ class PublicGetItem(Operation):
             result["populateBundle"] = bool(self.populate_bundle)
         elif include_empty:
             result["populateBundle"] = bool()
+        if hasattr(self, "region") and self.region:
+            result["region"] = str(self.region)
+        elif include_empty:
+            result["region"] = str()
+        if hasattr(self, "store_id") and self.store_id:
+            result["storeId"] = str(self.store_id)
+        elif include_empty:
+            result["storeId"] = str()
         return result
 
     # endregion to methods
@@ -270,45 +270,37 @@ class PublicGetItem(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
         item_id: str,
-        store_id: Optional[str] = None,
-        region: Optional[str] = None,
+        namespace: str,
         language: Optional[str] = None,
         populate_bundle: Optional[bool] = None,
+        region: Optional[str] = None,
+        store_id: Optional[str] = None,
     ) -> PublicGetItem:
         instance = cls()
-        instance.namespace = namespace
         instance.item_id = item_id
-        if store_id is not None:
-            instance.store_id = store_id
-        if region is not None:
-            instance.region = region
+        instance.namespace = namespace
         if language is not None:
             instance.language = language
         if populate_bundle is not None:
             instance.populate_bundle = populate_bundle
+        if region is not None:
+            instance.region = region
+        if store_id is not None:
+            instance.store_id = store_id
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PublicGetItem:
         instance = cls()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
             instance.item_id = str()
-        if "storeId" in dict_ and dict_["storeId"] is not None:
-            instance.store_id = str(dict_["storeId"])
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.store_id = str()
-        if "region" in dict_ and dict_["region"] is not None:
-            instance.region = str(dict_["region"])
-        elif include_empty:
-            instance.region = str()
+            instance.namespace = str()
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
@@ -317,17 +309,25 @@ class PublicGetItem(Operation):
             instance.populate_bundle = bool(dict_["populateBundle"])
         elif include_empty:
             instance.populate_bundle = bool()
+        if "region" in dict_ and dict_["region"] is not None:
+            instance.region = str(dict_["region"])
+        elif include_empty:
+            instance.region = str()
+        if "storeId" in dict_ and dict_["storeId"] is not None:
+            instance.store_id = str(dict_["storeId"])
+        elif include_empty:
+            instance.store_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
             "itemId": "item_id",
-            "storeId": "store_id",
-            "region": "region",
+            "namespace": "namespace",
             "language": "language",
             "populateBundle": "populate_bundle",
+            "region": "region",
+            "storeId": "store_id",
         }
 
     # endregion static methods

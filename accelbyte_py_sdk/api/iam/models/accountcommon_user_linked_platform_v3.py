@@ -30,34 +30,34 @@ class AccountcommonUserLinkedPlatformV3(Model):
     Properties:
         account_group: (accountGroup) REQUIRED str
 
-        display_name: (displayName) OPTIONAL str
-
-        email_address: (emailAddress) OPTIONAL str
-
         linked_at: (linkedAt) REQUIRED str
 
         namespace: (namespace) REQUIRED str
 
         origin_namespace: (originNamespace) REQUIRED str
 
+        user_id: (userId) REQUIRED str
+
+        display_name: (displayName) OPTIONAL str
+
+        email_address: (emailAddress) OPTIONAL str
+
         platform_id: (platformId) OPTIONAL str
 
         platform_user_id: (platformUserId) OPTIONAL str
-
-        user_id: (userId) REQUIRED str
     """
 
     # region fields
 
     account_group: str                                                                             # REQUIRED
-    display_name: str                                                                              # OPTIONAL
-    email_address: str                                                                             # OPTIONAL
     linked_at: str                                                                                 # REQUIRED
     namespace: str                                                                                 # REQUIRED
     origin_namespace: str                                                                          # REQUIRED
+    user_id: str                                                                                   # REQUIRED
+    display_name: str                                                                              # OPTIONAL
+    email_address: str                                                                             # OPTIONAL
     platform_id: str                                                                               # OPTIONAL
     platform_user_id: str                                                                          # OPTIONAL
-    user_id: str                                                                                   # REQUIRED
 
     # endregion fields
 
@@ -65,14 +65,6 @@ class AccountcommonUserLinkedPlatformV3(Model):
 
     def with_account_group(self, value: str) -> AccountcommonUserLinkedPlatformV3:
         self.account_group = value
-        return self
-
-    def with_display_name(self, value: str) -> AccountcommonUserLinkedPlatformV3:
-        self.display_name = value
-        return self
-
-    def with_email_address(self, value: str) -> AccountcommonUserLinkedPlatformV3:
-        self.email_address = value
         return self
 
     def with_linked_at(self, value: str) -> AccountcommonUserLinkedPlatformV3:
@@ -87,16 +79,24 @@ class AccountcommonUserLinkedPlatformV3(Model):
         self.origin_namespace = value
         return self
 
+    def with_user_id(self, value: str) -> AccountcommonUserLinkedPlatformV3:
+        self.user_id = value
+        return self
+
+    def with_display_name(self, value: str) -> AccountcommonUserLinkedPlatformV3:
+        self.display_name = value
+        return self
+
+    def with_email_address(self, value: str) -> AccountcommonUserLinkedPlatformV3:
+        self.email_address = value
+        return self
+
     def with_platform_id(self, value: str) -> AccountcommonUserLinkedPlatformV3:
         self.platform_id = value
         return self
 
     def with_platform_user_id(self, value: str) -> AccountcommonUserLinkedPlatformV3:
         self.platform_user_id = value
-        return self
-
-    def with_user_id(self, value: str) -> AccountcommonUserLinkedPlatformV3:
-        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -109,14 +109,6 @@ class AccountcommonUserLinkedPlatformV3(Model):
             result["accountGroup"] = str(self.account_group)
         elif include_empty:
             result["accountGroup"] = str()
-        if hasattr(self, "display_name"):
-            result["displayName"] = str(self.display_name)
-        elif include_empty:
-            result["displayName"] = str()
-        if hasattr(self, "email_address"):
-            result["emailAddress"] = str(self.email_address)
-        elif include_empty:
-            result["emailAddress"] = str()
         if hasattr(self, "linked_at"):
             result["linkedAt"] = str(self.linked_at)
         elif include_empty:
@@ -129,6 +121,18 @@ class AccountcommonUserLinkedPlatformV3(Model):
             result["originNamespace"] = str(self.origin_namespace)
         elif include_empty:
             result["originNamespace"] = str()
+        if hasattr(self, "user_id"):
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
+        if hasattr(self, "display_name"):
+            result["displayName"] = str(self.display_name)
+        elif include_empty:
+            result["displayName"] = str()
+        if hasattr(self, "email_address"):
+            result["emailAddress"] = str(self.email_address)
+        elif include_empty:
+            result["emailAddress"] = str()
         if hasattr(self, "platform_id"):
             result["platformId"] = str(self.platform_id)
         elif include_empty:
@@ -137,10 +141,6 @@ class AccountcommonUserLinkedPlatformV3(Model):
             result["platformUserId"] = str(self.platform_user_id)
         elif include_empty:
             result["platformUserId"] = str()
-        if hasattr(self, "user_id"):
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
         return result
 
     # endregion to methods
@@ -185,14 +185,6 @@ class AccountcommonUserLinkedPlatformV3(Model):
             instance.account_group = str(dict_["accountGroup"])
         elif include_empty:
             instance.account_group = str()
-        if "displayName" in dict_ and dict_["displayName"] is not None:
-            instance.display_name = str(dict_["displayName"])
-        elif include_empty:
-            instance.display_name = str()
-        if "emailAddress" in dict_ and dict_["emailAddress"] is not None:
-            instance.email_address = str(dict_["emailAddress"])
-        elif include_empty:
-            instance.email_address = str()
         if "linkedAt" in dict_ and dict_["linkedAt"] is not None:
             instance.linked_at = str(dict_["linkedAt"])
         elif include_empty:
@@ -205,6 +197,18 @@ class AccountcommonUserLinkedPlatformV3(Model):
             instance.origin_namespace = str(dict_["originNamespace"])
         elif include_empty:
             instance.origin_namespace = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
+        if "displayName" in dict_ and dict_["displayName"] is not None:
+            instance.display_name = str(dict_["displayName"])
+        elif include_empty:
+            instance.display_name = str()
+        if "emailAddress" in dict_ and dict_["emailAddress"] is not None:
+            instance.email_address = str(dict_["emailAddress"])
+        elif include_empty:
+            instance.email_address = str()
         if "platformId" in dict_ and dict_["platformId"] is not None:
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
@@ -213,24 +217,20 @@ class AccountcommonUserLinkedPlatformV3(Model):
             instance.platform_user_id = str(dict_["platformUserId"])
         elif include_empty:
             instance.platform_user_id = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "accountGroup": "account_group",
-            "displayName": "display_name",
-            "emailAddress": "email_address",
             "linkedAt": "linked_at",
             "namespace": "namespace",
             "originNamespace": "origin_namespace",
+            "userId": "user_id",
+            "displayName": "display_name",
+            "emailAddress": "email_address",
             "platformId": "platform_id",
             "platformUserId": "platform_user_id",
-            "userId": "user_id",
         }
 
     # endregion static methods

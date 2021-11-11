@@ -34,14 +34,14 @@ from ..operations.slot import PublicUpdateUserNamespaceSlotMetadata
 
 
 @same_doc_as(GetSlotData)
-def get_slot_data(user_id: str, slot_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_slot_data(slot_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetSlotData.create(
-        user_id=user_id,
         slot_id=slot_id,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -61,15 +61,15 @@ def get_user_namespace_slots(user_id: str, namespace: Optional[str] = None, x_ad
 
 
 @same_doc_as(PublicCreateUserNamespaceSlot)
-def public_create_user_namespace_slot(user_id: str, custom_attribute: Optional[str] = None, checksum: Optional[str] = None, file: Optional[Any] = None, label: Optional[str] = None, tags: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_create_user_namespace_slot(user_id: str, checksum: Optional[str] = None, custom_attribute: Optional[str] = None, file: Optional[Any] = None, label: Optional[str] = None, tags: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicCreateUserNamespaceSlot.create(
         user_id=user_id,
-        custom_attribute=custom_attribute,
         checksum=checksum,
+        custom_attribute=custom_attribute,
         file=file,
         label=label,
         tags=tags,
@@ -79,28 +79,28 @@ def public_create_user_namespace_slot(user_id: str, custom_attribute: Optional[s
 
 
 @same_doc_as(PublicDeleteUserNamespaceSlot)
-def public_delete_user_namespace_slot(user_id: str, slot_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_delete_user_namespace_slot(slot_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicDeleteUserNamespaceSlot.create(
-        user_id=user_id,
         slot_id=slot_id,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetSlotData)
-def public_get_slot_data(user_id: str, slot_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_get_slot_data(slot_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicGetSlotData.create(
-        user_id=user_id,
         slot_id=slot_id,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -120,16 +120,16 @@ def public_get_user_namespace_slots(user_id: str, namespace: Optional[str] = Non
 
 
 @same_doc_as(PublicUpdateUserNamespaceSlot)
-def public_update_user_namespace_slot(user_id: str, slot_id: str, custom_attribute: Optional[str] = None, checksum: Optional[str] = None, file: Optional[Any] = None, label: Optional[str] = None, tags: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_update_user_namespace_slot(slot_id: str, user_id: str, checksum: Optional[str] = None, custom_attribute: Optional[str] = None, file: Optional[Any] = None, label: Optional[str] = None, tags: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicUpdateUserNamespaceSlot.create(
-        user_id=user_id,
         slot_id=slot_id,
-        custom_attribute=custom_attribute,
+        user_id=user_id,
         checksum=checksum,
+        custom_attribute=custom_attribute,
         file=file,
         label=label,
         tags=tags,
@@ -139,14 +139,14 @@ def public_update_user_namespace_slot(user_id: str, slot_id: str, custom_attribu
 
 
 @same_doc_as(PublicUpdateUserNamespaceSlotMetadata)
-def public_update_user_namespace_slot_metadata(user_id: str, slot_id: str, body: Optional[SlotMetadataUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_update_user_namespace_slot_metadata(slot_id: str, user_id: str, body: Optional[SlotMetadataUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicUpdateUserNamespaceSlotMetadata.create(
-        user_id=user_id,
         slot_id=slot_id,
+        user_id=user_id,
         body=body,
         namespace=namespace,
     )

@@ -59,16 +59,16 @@ def public_redeem_code(user_id: str, body: Optional[FulfillCodeRequest] = None, 
 
 
 @same_doc_as(QueryFulfillmentHistories)
-def query_fulfillment_histories(status: Optional[str] = None, user_id: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_fulfillment_histories(limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = QueryFulfillmentHistories.create(
+        limit=limit,
+        offset=offset,
         status=status,
         user_id=user_id,
-        offset=offset,
-        limit=limit,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

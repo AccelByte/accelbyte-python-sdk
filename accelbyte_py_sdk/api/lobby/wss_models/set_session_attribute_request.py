@@ -29,8 +29,8 @@ class SetSessionAttributeRequest(WebSocketMessage):
     # region fields
 
     id_: str
-    namespace: str
     key: str
+    namespace: str
     value: str
 
     # endregion fields
@@ -43,10 +43,10 @@ class SetSessionAttributeRequest(WebSocketMessage):
         wsm = [f"type: {SetSessionAttributeRequest.get_type()}"]
         id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
         wsm.append(f"id: {id_}")
-        if hasattr(self, "namespace") and self.namespace:
-            wsm.append(f"namespace: {self.namespace}")
         if hasattr(self, "key") and self.key:
             wsm.append(f"key: {self.key}")
+        if hasattr(self, "namespace") and self.namespace:
+            wsm.append(f"namespace: {self.namespace}")
         if hasattr(self, "value") and self.value:
             wsm.append(f"value: {self.value}")
         return "\n".join(wsm)
@@ -72,11 +72,11 @@ class SetSessionAttributeRequest(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if (not is_strict and name.casefold() == "namespace".casefold()) or (name == "namespace"):
-                instance.namespace = value
-                continue
             if (not is_strict and name.casefold() == "key".casefold()) or (name == "key"):
                 instance.key = value
+                continue
+            if (not is_strict and name.casefold() == "namespace".casefold()) or (name == "namespace"):
+                instance.namespace = value
                 continue
             if (not is_strict and name.casefold() == "value".casefold()) or (name == "value"):
                 instance.value = value
@@ -93,8 +93,8 @@ class SetSessionAttributeRequest(WebSocketMessage):
     def get_field_info() -> Dict[str, str]:
         return {
             "id": "id_",
-            "namespace": "namespace",
             "key": "key",
+            "namespace": "namespace",
             "value": "value",
         }
 

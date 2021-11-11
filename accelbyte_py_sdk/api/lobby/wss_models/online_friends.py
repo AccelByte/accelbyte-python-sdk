@@ -28,8 +28,8 @@ class OnlineFriends(WebSocketMessage):
 
     # region fields
 
-    id_: str
     code: str
+    id_: str
     online_friend_ids: List[str]
 
     # endregion fields
@@ -40,10 +40,10 @@ class OnlineFriends(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {OnlineFriends.get_type()}"]
-        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
-        wsm.append(f"id: {id_}")
         if hasattr(self, "code") and self.code:
             wsm.append(f"code: {self.code}")
+        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
+        wsm.append(f"id: {id_}")
         if hasattr(self, "online_friend_ids") and self.online_friend_ids:
             wsm.append(f"onlineFriendIds: [" + ','.join([str(i) for i in self.online_friend_ids]) + "]")
         return "\n".join(wsm)
@@ -86,8 +86,8 @@ class OnlineFriends(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
             "code": "code",
+            "id": "id_",
             "onlineFriendIds": "online_friend_ids",
         }
 

@@ -65,9 +65,9 @@ class GetUserJusticePlatformAccount(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
-
         target_namespace: (targetNamespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
 
     Responses:
         200: OK - ModelGetUserJusticePlatformAccountResponse (OK)
@@ -89,8 +89,8 @@ class GetUserJusticePlatformAccount(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    user_id: str                                                                                   # REQUIRED in [path]
     target_namespace: str                                                                          # REQUIRED in [path]
+    user_id: str                                                                                   # REQUIRED in [path]
 
     # endregion fields
 
@@ -139,8 +139,8 @@ class GetUserJusticePlatformAccount(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "namespace",
-            "user_id",
             "target_namespace",
+            "user_id",
         ]
 
     # endregion get methods
@@ -156,10 +156,10 @@ class GetUserJusticePlatformAccount(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
         if hasattr(self, "target_namespace"):
             result["targetNamespace"] = self.target_namespace
+        if hasattr(self, "user_id"):
+            result["userId"] = self.user_id
         return result
 
     # endregion get_x_params methods
@@ -169,9 +169,9 @@ class GetUserJusticePlatformAccount(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
         if not hasattr(self, "target_namespace") or self.target_namespace is None:
+            return False
+        if not hasattr(self, "user_id") or self.user_id is None:
             return False
         return True
 
@@ -183,12 +183,12 @@ class GetUserJusticePlatformAccount(Operation):
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> GetUserJusticePlatformAccount:
-        self.user_id = value
-        return self
-
     def with_target_namespace(self, value: str) -> GetUserJusticePlatformAccount:
         self.target_namespace = value
+        return self
+
+    def with_user_id(self, value: str) -> GetUserJusticePlatformAccount:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -201,14 +201,14 @@ class GetUserJusticePlatformAccount(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
         if hasattr(self, "target_namespace") and self.target_namespace:
             result["targetNamespace"] = str(self.target_namespace)
         elif include_empty:
             result["targetNamespace"] = str()
+        if hasattr(self, "user_id") and self.user_id:
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         return result
 
     # endregion to methods
@@ -248,13 +248,13 @@ class GetUserJusticePlatformAccount(Operation):
     def create(
         cls,
         namespace: str,
-        user_id: str,
         target_namespace: str,
+        user_id: str,
     ) -> GetUserJusticePlatformAccount:
         instance = cls()
         instance.namespace = namespace
-        instance.user_id = user_id
         instance.target_namespace = target_namespace
+        instance.user_id = user_id
         return instance
 
     @classmethod
@@ -264,22 +264,22 @@ class GetUserJusticePlatformAccount(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
         if "targetNamespace" in dict_ and dict_["targetNamespace"] is not None:
             instance.target_namespace = str(dict_["targetNamespace"])
         elif include_empty:
             instance.target_namespace = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "userId": "user_id",
             "targetNamespace": "target_namespace",
+            "userId": "user_id",
         }
 
     # endregion static methods

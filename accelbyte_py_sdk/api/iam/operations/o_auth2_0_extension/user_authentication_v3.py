@@ -53,17 +53,17 @@ class UserAuthenticationV3(Operation):
 
         location query: code
 
-        user_name: (user_name) REQUIRED str in form_data
+        client_id: (client_id) OPTIONAL str in form_data
+
+        extend_exp: (extend_exp) OPTIONAL bool in form_data
+
+        redirect_uri: (redirect_uri) OPTIONAL str in form_data
 
         password: (password) REQUIRED str in form_data
 
         request_id: (request_id) REQUIRED str in form_data
 
-        redirect_uri: (redirect_uri) OPTIONAL str in form_data
-
-        client_id: (client_id) OPTIONAL str in form_data
-
-        extend_exp: (extend_exp) OPTIONAL bool in form_data
+        user_name: (user_name) REQUIRED str in form_data
 
     Responses:
         302: Found - (Found. Redirect successful requests to consent page with "list of consent" in query params.)
@@ -78,12 +78,12 @@ class UserAuthenticationV3(Operation):
     _security: Optional[str] = None
     _location_query: str = "code"
 
-    user_name: str                                                                                 # REQUIRED in [form_data]
-    password: str                                                                                  # REQUIRED in [form_data]
-    request_id: str                                                                                # REQUIRED in [form_data]
-    redirect_uri: str                                                                              # OPTIONAL in [form_data]
     client_id: str                                                                                 # OPTIONAL in [form_data]
     extend_exp: bool                                                                               # OPTIONAL in [form_data]
+    redirect_uri: str                                                                              # OPTIONAL in [form_data]
+    password: str                                                                                  # REQUIRED in [form_data]
+    request_id: str                                                                                # REQUIRED in [form_data]
+    user_name: str                                                                                 # REQUIRED in [form_data]
 
     # endregion fields
 
@@ -127,9 +127,9 @@ class UserAuthenticationV3(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "user_name",
             "password",
             "request_id",
+            "user_name",
         ]
 
     # endregion get methods
@@ -143,18 +143,18 @@ class UserAuthenticationV3(Operation):
 
     def get_form_data_params(self) -> dict:
         result = {}
-        if hasattr(self, "user_name"):
-            result["user_name"] = self.user_name
-        if hasattr(self, "password"):
-            result["password"] = self.password
-        if hasattr(self, "request_id"):
-            result["request_id"] = self.request_id
-        if hasattr(self, "redirect_uri"):
-            result["redirect_uri"] = self.redirect_uri
         if hasattr(self, "client_id"):
             result["client_id"] = self.client_id
         if hasattr(self, "extend_exp"):
             result["extend_exp"] = self.extend_exp
+        if hasattr(self, "redirect_uri"):
+            result["redirect_uri"] = self.redirect_uri
+        if hasattr(self, "password"):
+            result["password"] = self.password
+        if hasattr(self, "request_id"):
+            result["request_id"] = self.request_id
+        if hasattr(self, "user_name"):
+            result["user_name"] = self.user_name
         return result
 
     # endregion get_x_params methods
@@ -162,11 +162,11 @@ class UserAuthenticationV3(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "user_name") or self.user_name is None:
-            return False
         if not hasattr(self, "password") or self.password is None:
             return False
         if not hasattr(self, "request_id") or self.request_id is None:
+            return False
+        if not hasattr(self, "user_name") or self.user_name is None:
             return False
         return True
 
@@ -182,8 +182,16 @@ class UserAuthenticationV3(Operation):
 
     # region with_x methods
 
-    def with_user_name(self, value: str) -> UserAuthenticationV3:
-        self.user_name = value
+    def with_client_id(self, value: str) -> UserAuthenticationV3:
+        self.client_id = value
+        return self
+
+    def with_extend_exp(self, value: bool) -> UserAuthenticationV3:
+        self.extend_exp = value
+        return self
+
+    def with_redirect_uri(self, value: str) -> UserAuthenticationV3:
+        self.redirect_uri = value
         return self
 
     def with_password(self, value: str) -> UserAuthenticationV3:
@@ -194,16 +202,8 @@ class UserAuthenticationV3(Operation):
         self.request_id = value
         return self
 
-    def with_redirect_uri(self, value: str) -> UserAuthenticationV3:
-        self.redirect_uri = value
-        return self
-
-    def with_client_id(self, value: str) -> UserAuthenticationV3:
-        self.client_id = value
-        return self
-
-    def with_extend_exp(self, value: bool) -> UserAuthenticationV3:
-        self.extend_exp = value
+    def with_user_name(self, value: str) -> UserAuthenticationV3:
+        self.user_name = value
         return self
 
     # endregion with_x methods
@@ -212,22 +212,6 @@ class UserAuthenticationV3(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "user_name") and self.user_name:
-            result["user_name"] = str(self.user_name)
-        elif include_empty:
-            result["user_name"] = str()
-        if hasattr(self, "password") and self.password:
-            result["password"] = str(self.password)
-        elif include_empty:
-            result["password"] = str()
-        if hasattr(self, "request_id") and self.request_id:
-            result["request_id"] = str(self.request_id)
-        elif include_empty:
-            result["request_id"] = str()
-        if hasattr(self, "redirect_uri") and self.redirect_uri:
-            result["redirect_uri"] = str(self.redirect_uri)
-        elif include_empty:
-            result["redirect_uri"] = str()
         if hasattr(self, "client_id") and self.client_id:
             result["client_id"] = str(self.client_id)
         elif include_empty:
@@ -236,6 +220,22 @@ class UserAuthenticationV3(Operation):
             result["extend_exp"] = bool(self.extend_exp)
         elif include_empty:
             result["extend_exp"] = bool()
+        if hasattr(self, "redirect_uri") and self.redirect_uri:
+            result["redirect_uri"] = str(self.redirect_uri)
+        elif include_empty:
+            result["redirect_uri"] = str()
+        if hasattr(self, "password") and self.password:
+            result["password"] = str(self.password)
+        elif include_empty:
+            result["password"] = str()
+        if hasattr(self, "request_id") and self.request_id:
+            result["request_id"] = str(self.request_id)
+        elif include_empty:
+            result["request_id"] = str()
+        if hasattr(self, "user_name") and self.user_name:
+            result["user_name"] = str(self.user_name)
+        elif include_empty:
+            result["user_name"] = str()
         return result
 
     # endregion to methods
@@ -262,44 +262,28 @@ class UserAuthenticationV3(Operation):
     @classmethod
     def create(
         cls,
-        user_name: str,
         password: str,
         request_id: str,
-        redirect_uri: Optional[str] = None,
+        user_name: str,
         client_id: Optional[str] = None,
         extend_exp: Optional[bool] = None,
+        redirect_uri: Optional[str] = None,
     ) -> UserAuthenticationV3:
         instance = cls()
-        instance.user_name = user_name
         instance.password = password
         instance.request_id = request_id
-        if redirect_uri is not None:
-            instance.redirect_uri = redirect_uri
+        instance.user_name = user_name
         if client_id is not None:
             instance.client_id = client_id
         if extend_exp is not None:
             instance.extend_exp = extend_exp
+        if redirect_uri is not None:
+            instance.redirect_uri = redirect_uri
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> UserAuthenticationV3:
         instance = cls()
-        if "user_name" in dict_ and dict_["user_name"] is not None:
-            instance.user_name = str(dict_["user_name"])
-        elif include_empty:
-            instance.user_name = str()
-        if "password" in dict_ and dict_["password"] is not None:
-            instance.password = str(dict_["password"])
-        elif include_empty:
-            instance.password = str()
-        if "request_id" in dict_ and dict_["request_id"] is not None:
-            instance.request_id = str(dict_["request_id"])
-        elif include_empty:
-            instance.request_id = str()
-        if "redirect_uri" in dict_ and dict_["redirect_uri"] is not None:
-            instance.redirect_uri = str(dict_["redirect_uri"])
-        elif include_empty:
-            instance.redirect_uri = str()
         if "client_id" in dict_ and dict_["client_id"] is not None:
             instance.client_id = str(dict_["client_id"])
         elif include_empty:
@@ -308,17 +292,33 @@ class UserAuthenticationV3(Operation):
             instance.extend_exp = bool(dict_["extend_exp"])
         elif include_empty:
             instance.extend_exp = bool()
+        if "redirect_uri" in dict_ and dict_["redirect_uri"] is not None:
+            instance.redirect_uri = str(dict_["redirect_uri"])
+        elif include_empty:
+            instance.redirect_uri = str()
+        if "password" in dict_ and dict_["password"] is not None:
+            instance.password = str(dict_["password"])
+        elif include_empty:
+            instance.password = str()
+        if "request_id" in dict_ and dict_["request_id"] is not None:
+            instance.request_id = str(dict_["request_id"])
+        elif include_empty:
+            instance.request_id = str()
+        if "user_name" in dict_ and dict_["user_name"] is not None:
+            instance.user_name = str(dict_["user_name"])
+        elif include_empty:
+            instance.user_name = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "user_name": "user_name",
-            "password": "password",
-            "request_id": "request_id",
-            "redirect_uri": "redirect_uri",
             "client_id": "client_id",
             "extend_exp": "extend_exp",
+            "redirect_uri": "redirect_uri",
+            "password": "password",
+            "request_id": "request_id",
+            "user_name": "user_name",
         }
 
     # endregion static methods

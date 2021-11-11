@@ -29,8 +29,8 @@ class PartyRejectRequest(WebSocketMessage):
     # region fields
 
     id_: str
-    party_id: str
     invitation_token: str
+    party_id: str
 
     # endregion fields
 
@@ -42,10 +42,10 @@ class PartyRejectRequest(WebSocketMessage):
         wsm = [f"type: {PartyRejectRequest.get_type()}"]
         id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
         wsm.append(f"id: {id_}")
-        if hasattr(self, "party_id") and self.party_id:
-            wsm.append(f"partyId: {self.party_id}")
         if hasattr(self, "invitation_token") and self.invitation_token:
             wsm.append(f"invitationToken: {self.invitation_token}")
+        if hasattr(self, "party_id") and self.party_id:
+            wsm.append(f"partyId: {self.party_id}")
         return "\n".join(wsm)
 
     # endregion methods
@@ -69,11 +69,11 @@ class PartyRejectRequest(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if (not is_strict and name.casefold() == "partyId".casefold()) or (name == "partyId"):
-                instance.party_id = value
-                continue
             if (not is_strict and name.casefold() == "invitationToken".casefold()) or (name == "invitationToken"):
                 instance.invitation_token = value
+                continue
+            if (not is_strict and name.casefold() == "partyId".casefold()) or (name == "partyId"):
+                instance.party_id = value
                 continue
             if is_strict:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldTypeNotSupported)
@@ -87,8 +87,8 @@ class PartyRejectRequest(WebSocketMessage):
     def get_field_info() -> Dict[str, str]:
         return {
             "id": "id_",
-            "partyId": "party_id",
             "invitationToken": "invitation_token",
+            "partyId": "party_id",
         }
 
     # endregion static methods

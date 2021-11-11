@@ -52,9 +52,9 @@ class GetCode(Operation):
 
         security: bearer
 
-        namespace: (namespace) REQUIRED str in path
-
         code: (code) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
         redeemable: (redeemable) OPTIONAL bool in query
 
@@ -75,8 +75,8 @@ class GetCode(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
     code: str                                                                                      # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
     redeemable: bool                                                                               # OPTIONAL in [query]
 
     # endregion fields
@@ -128,8 +128,8 @@ class GetCode(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "namespace",
             "code",
+            "namespace",
         ]
 
     # endregion get methods
@@ -144,10 +144,10 @@ class GetCode(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "code"):
             result["code"] = self.code
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     def get_query_params(self) -> dict:
@@ -161,9 +161,9 @@ class GetCode(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "code") or self.code is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         return True
 
@@ -171,12 +171,12 @@ class GetCode(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> GetCode:
-        self.namespace = value
-        return self
-
     def with_code(self, value: str) -> GetCode:
         self.code = value
+        return self
+
+    def with_namespace(self, value: str) -> GetCode:
+        self.namespace = value
         return self
 
     def with_redeemable(self, value: bool) -> GetCode:
@@ -189,14 +189,14 @@ class GetCode(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "code") and self.code:
             result["code"] = str(self.code)
         elif include_empty:
             result["code"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         if hasattr(self, "redeemable") and self.redeemable:
             result["redeemable"] = bool(self.redeemable)
         elif include_empty:
@@ -235,13 +235,13 @@ class GetCode(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
         code: str,
+        namespace: str,
         redeemable: Optional[bool] = None,
     ) -> GetCode:
         instance = cls()
-        instance.namespace = namespace
         instance.code = code
+        instance.namespace = namespace
         if redeemable is not None:
             instance.redeemable = redeemable
         return instance
@@ -249,14 +249,14 @@ class GetCode(Operation):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> GetCode:
         instance = cls()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = str(dict_["code"])
         elif include_empty:
             instance.code = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         if "redeemable" in dict_ and dict_["redeemable"] is not None:
             instance.redeemable = bool(dict_["redeemable"])
         elif include_empty:
@@ -266,8 +266,8 @@ class GetCode(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
             "code": "code",
+            "namespace": "namespace",
             "redeemable": "redeemable",
         }
 

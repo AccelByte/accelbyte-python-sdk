@@ -55,9 +55,9 @@ class PublicGetMyEntitlementOwnershipBySku(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        sku: (sku) REQUIRED str in query
-
         entitlement_clazz: (entitlementClazz) OPTIONAL str in query
+
+        sku: (sku) REQUIRED str in query
 
     Responses:
         200: OK - Ownership (successful operation)
@@ -73,8 +73,8 @@ class PublicGetMyEntitlementOwnershipBySku(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    sku: str                                                                                       # REQUIRED in [query]
     entitlement_clazz: str                                                                         # OPTIONAL in [query]
+    sku: str                                                                                       # REQUIRED in [query]
 
     # endregion fields
 
@@ -147,10 +147,10 @@ class PublicGetMyEntitlementOwnershipBySku(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "sku"):
-            result["sku"] = self.sku
         if hasattr(self, "entitlement_clazz"):
             result["entitlementClazz"] = self.entitlement_clazz
+        if hasattr(self, "sku"):
+            result["sku"] = self.sku
         return result
 
     # endregion get_x_params methods
@@ -172,12 +172,12 @@ class PublicGetMyEntitlementOwnershipBySku(Operation):
         self.namespace = value
         return self
 
-    def with_sku(self, value: str) -> PublicGetMyEntitlementOwnershipBySku:
-        self.sku = value
-        return self
-
     def with_entitlement_clazz(self, value: str) -> PublicGetMyEntitlementOwnershipBySku:
         self.entitlement_clazz = value
+        return self
+
+    def with_sku(self, value: str) -> PublicGetMyEntitlementOwnershipBySku:
+        self.sku = value
         return self
 
     # endregion with_x methods
@@ -190,14 +190,14 @@ class PublicGetMyEntitlementOwnershipBySku(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "sku") and self.sku:
-            result["sku"] = str(self.sku)
-        elif include_empty:
-            result["sku"] = str()
         if hasattr(self, "entitlement_clazz") and self.entitlement_clazz:
             result["entitlementClazz"] = str(self.entitlement_clazz)
         elif include_empty:
             result["entitlementClazz"] = str()
+        if hasattr(self, "sku") and self.sku:
+            result["sku"] = str(self.sku)
+        elif include_empty:
+            result["sku"] = str()
         return result
 
     # endregion to methods
@@ -242,22 +242,22 @@ class PublicGetMyEntitlementOwnershipBySku(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "sku" in dict_ and dict_["sku"] is not None:
-            instance.sku = str(dict_["sku"])
-        elif include_empty:
-            instance.sku = str()
         if "entitlementClazz" in dict_ and dict_["entitlementClazz"] is not None:
             instance.entitlement_clazz = str(dict_["entitlementClazz"])
         elif include_empty:
             instance.entitlement_clazz = str()
+        if "sku" in dict_ and dict_["sku"] is not None:
+            instance.sku = str(dict_["sku"])
+        elif include_empty:
+            instance.sku = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "sku": "sku",
             "entitlementClazz": "entitlement_clazz",
+            "sku": "sku",
         }
 
     # endregion static methods

@@ -28,8 +28,8 @@ class GetFriendshipStatusRequest(WebSocketMessage):
 
     # region fields
 
-    id_: str
     friend_id: str
+    id_: str
 
     # endregion fields
 
@@ -39,10 +39,10 @@ class GetFriendshipStatusRequest(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {GetFriendshipStatusRequest.get_type()}"]
-        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
-        wsm.append(f"id: {id_}")
         if hasattr(self, "friend_id") and self.friend_id:
             wsm.append(f"friendId: {self.friend_id}")
+        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
+        wsm.append(f"id: {id_}")
         return "\n".join(wsm)
 
     # endregion methods
@@ -80,8 +80,8 @@ class GetFriendshipStatusRequest(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
             "friendId": "friend_id",
+            "id": "id_",
         }
 
     # endregion static methods

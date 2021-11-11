@@ -33,52 +33,56 @@ class FulfillmentHistoryInfo(Model):
     """Fulfillment history info (FulfillmentHistoryInfo)
 
     Properties:
+        created_at: (createdAt) REQUIRED str
+
         id_: (id) REQUIRED str
 
         namespace: (namespace) REQUIRED str
 
-        user_id: (userId) REQUIRED str
+        status: (status) REQUIRED str
 
-        order_no: (orderNo) OPTIONAL str
+        updated_at: (updatedAt) REQUIRED str
+
+        user_id: (userId) REQUIRED str
 
         code: (code) OPTIONAL str
 
-        fulfill_items: (fulfillItems) OPTIONAL List[FulfillmentItem]
-
-        granted_item_ids: (grantedItemIds) OPTIONAL List[str]
+        credit_summaries: (creditSummaries) OPTIONAL List[CreditSummary]
 
         entitlement_summaries: (entitlementSummaries) OPTIONAL List[EntitlementSummary]
 
-        credit_summaries: (creditSummaries) OPTIONAL List[CreditSummary]
-
-        status: (status) REQUIRED str
+        fulfill_items: (fulfillItems) OPTIONAL List[FulfillmentItem]
 
         fulfillment_error: (fulfillmentError) OPTIONAL FulfillmentError
 
-        created_at: (createdAt) REQUIRED str
+        granted_item_ids: (grantedItemIds) OPTIONAL List[str]
 
-        updated_at: (updatedAt) REQUIRED str
+        order_no: (orderNo) OPTIONAL str
     """
 
     # region fields
 
+    created_at: str                                                                                # REQUIRED
     id_: str                                                                                       # REQUIRED
     namespace: str                                                                                 # REQUIRED
-    user_id: str                                                                                   # REQUIRED
-    order_no: str                                                                                  # OPTIONAL
-    code: str                                                                                      # OPTIONAL
-    fulfill_items: List[FulfillmentItem]                                                           # OPTIONAL
-    granted_item_ids: List[str]                                                                    # OPTIONAL
-    entitlement_summaries: List[EntitlementSummary]                                                # OPTIONAL
-    credit_summaries: List[CreditSummary]                                                          # OPTIONAL
     status: str                                                                                    # REQUIRED
-    fulfillment_error: FulfillmentError                                                            # OPTIONAL
-    created_at: str                                                                                # REQUIRED
     updated_at: str                                                                                # REQUIRED
+    user_id: str                                                                                   # REQUIRED
+    code: str                                                                                      # OPTIONAL
+    credit_summaries: List[CreditSummary]                                                          # OPTIONAL
+    entitlement_summaries: List[EntitlementSummary]                                                # OPTIONAL
+    fulfill_items: List[FulfillmentItem]                                                           # OPTIONAL
+    fulfillment_error: FulfillmentError                                                            # OPTIONAL
+    granted_item_ids: List[str]                                                                    # OPTIONAL
+    order_no: str                                                                                  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
+
+    def with_created_at(self, value: str) -> FulfillmentHistoryInfo:
+        self.created_at = value
+        return self
 
     def with_id(self, value: str) -> FulfillmentHistoryInfo:
         self.id_ = value
@@ -88,48 +92,44 @@ class FulfillmentHistoryInfo(Model):
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> FulfillmentHistoryInfo:
-        self.user_id = value
+    def with_status(self, value: str) -> FulfillmentHistoryInfo:
+        self.status = value
         return self
 
-    def with_order_no(self, value: str) -> FulfillmentHistoryInfo:
-        self.order_no = value
+    def with_updated_at(self, value: str) -> FulfillmentHistoryInfo:
+        self.updated_at = value
+        return self
+
+    def with_user_id(self, value: str) -> FulfillmentHistoryInfo:
+        self.user_id = value
         return self
 
     def with_code(self, value: str) -> FulfillmentHistoryInfo:
         self.code = value
         return self
 
-    def with_fulfill_items(self, value: List[FulfillmentItem]) -> FulfillmentHistoryInfo:
-        self.fulfill_items = value
-        return self
-
-    def with_granted_item_ids(self, value: List[str]) -> FulfillmentHistoryInfo:
-        self.granted_item_ids = value
+    def with_credit_summaries(self, value: List[CreditSummary]) -> FulfillmentHistoryInfo:
+        self.credit_summaries = value
         return self
 
     def with_entitlement_summaries(self, value: List[EntitlementSummary]) -> FulfillmentHistoryInfo:
         self.entitlement_summaries = value
         return self
 
-    def with_credit_summaries(self, value: List[CreditSummary]) -> FulfillmentHistoryInfo:
-        self.credit_summaries = value
-        return self
-
-    def with_status(self, value: str) -> FulfillmentHistoryInfo:
-        self.status = value
+    def with_fulfill_items(self, value: List[FulfillmentItem]) -> FulfillmentHistoryInfo:
+        self.fulfill_items = value
         return self
 
     def with_fulfillment_error(self, value: FulfillmentError) -> FulfillmentHistoryInfo:
         self.fulfillment_error = value
         return self
 
-    def with_created_at(self, value: str) -> FulfillmentHistoryInfo:
-        self.created_at = value
+    def with_granted_item_ids(self, value: List[str]) -> FulfillmentHistoryInfo:
+        self.granted_item_ids = value
         return self
 
-    def with_updated_at(self, value: str) -> FulfillmentHistoryInfo:
-        self.updated_at = value
+    def with_order_no(self, value: str) -> FulfillmentHistoryInfo:
+        self.order_no = value
         return self
 
     # endregion with_x methods
@@ -138,6 +138,10 @@ class FulfillmentHistoryInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "created_at"):
+            result["createdAt"] = str(self.created_at)
+        elif include_empty:
+            result["createdAt"] = str()
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
@@ -146,50 +150,46 @@ class FulfillmentHistoryInfo(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id"):
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
-        if hasattr(self, "order_no"):
-            result["orderNo"] = str(self.order_no)
-        elif include_empty:
-            result["orderNo"] = str()
-        if hasattr(self, "code"):
-            result["code"] = str(self.code)
-        elif include_empty:
-            result["code"] = str()
-        if hasattr(self, "fulfill_items"):
-            result["fulfillItems"] = [i0.to_dict(include_empty=include_empty) for i0 in self.fulfill_items]
-        elif include_empty:
-            result["fulfillItems"] = []
-        if hasattr(self, "granted_item_ids"):
-            result["grantedItemIds"] = [str(i0) for i0 in self.granted_item_ids]
-        elif include_empty:
-            result["grantedItemIds"] = []
-        if hasattr(self, "entitlement_summaries"):
-            result["entitlementSummaries"] = [i0.to_dict(include_empty=include_empty) for i0 in self.entitlement_summaries]
-        elif include_empty:
-            result["entitlementSummaries"] = []
-        if hasattr(self, "credit_summaries"):
-            result["creditSummaries"] = [i0.to_dict(include_empty=include_empty) for i0 in self.credit_summaries]
-        elif include_empty:
-            result["creditSummaries"] = []
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
-        if hasattr(self, "fulfillment_error"):
-            result["fulfillmentError"] = self.fulfillment_error.to_dict(include_empty=include_empty)
-        elif include_empty:
-            result["fulfillmentError"] = FulfillmentError()
-        if hasattr(self, "created_at"):
-            result["createdAt"] = str(self.created_at)
-        elif include_empty:
-            result["createdAt"] = str()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()
+        if hasattr(self, "user_id"):
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
+        if hasattr(self, "code"):
+            result["code"] = str(self.code)
+        elif include_empty:
+            result["code"] = str()
+        if hasattr(self, "credit_summaries"):
+            result["creditSummaries"] = [i0.to_dict(include_empty=include_empty) for i0 in self.credit_summaries]
+        elif include_empty:
+            result["creditSummaries"] = []
+        if hasattr(self, "entitlement_summaries"):
+            result["entitlementSummaries"] = [i0.to_dict(include_empty=include_empty) for i0 in self.entitlement_summaries]
+        elif include_empty:
+            result["entitlementSummaries"] = []
+        if hasattr(self, "fulfill_items"):
+            result["fulfillItems"] = [i0.to_dict(include_empty=include_empty) for i0 in self.fulfill_items]
+        elif include_empty:
+            result["fulfillItems"] = []
+        if hasattr(self, "fulfillment_error"):
+            result["fulfillmentError"] = self.fulfillment_error.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["fulfillmentError"] = FulfillmentError()
+        if hasattr(self, "granted_item_ids"):
+            result["grantedItemIds"] = [str(i0) for i0 in self.granted_item_ids]
+        elif include_empty:
+            result["grantedItemIds"] = []
+        if hasattr(self, "order_no"):
+            result["orderNo"] = str(self.order_no)
+        elif include_empty:
+            result["orderNo"] = str()
         return result
 
     # endregion to methods
@@ -241,6 +241,10 @@ class FulfillmentHistoryInfo(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "createdAt" in dict_ and dict_["createdAt"] is not None:
+            instance.created_at = str(dict_["createdAt"])
+        elif include_empty:
+            instance.created_at = str()
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
@@ -249,68 +253,64 @@ class FulfillmentHistoryInfo(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
-        if "orderNo" in dict_ and dict_["orderNo"] is not None:
-            instance.order_no = str(dict_["orderNo"])
-        elif include_empty:
-            instance.order_no = str()
-        if "code" in dict_ and dict_["code"] is not None:
-            instance.code = str(dict_["code"])
-        elif include_empty:
-            instance.code = str()
-        if "fulfillItems" in dict_ and dict_["fulfillItems"] is not None:
-            instance.fulfill_items = [FulfillmentItem.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["fulfillItems"]]
-        elif include_empty:
-            instance.fulfill_items = []
-        if "grantedItemIds" in dict_ and dict_["grantedItemIds"] is not None:
-            instance.granted_item_ids = [str(i0) for i0 in dict_["grantedItemIds"]]
-        elif include_empty:
-            instance.granted_item_ids = []
-        if "entitlementSummaries" in dict_ and dict_["entitlementSummaries"] is not None:
-            instance.entitlement_summaries = [EntitlementSummary.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["entitlementSummaries"]]
-        elif include_empty:
-            instance.entitlement_summaries = []
-        if "creditSummaries" in dict_ and dict_["creditSummaries"] is not None:
-            instance.credit_summaries = [CreditSummary.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["creditSummaries"]]
-        elif include_empty:
-            instance.credit_summaries = []
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = str()
-        if "fulfillmentError" in dict_ and dict_["fulfillmentError"] is not None:
-            instance.fulfillment_error = FulfillmentError.create_from_dict(dict_["fulfillmentError"], include_empty=include_empty)
-        elif include_empty:
-            instance.fulfillment_error = FulfillmentError()
-        if "createdAt" in dict_ and dict_["createdAt"] is not None:
-            instance.created_at = str(dict_["createdAt"])
-        elif include_empty:
-            instance.created_at = str()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
+        if "code" in dict_ and dict_["code"] is not None:
+            instance.code = str(dict_["code"])
+        elif include_empty:
+            instance.code = str()
+        if "creditSummaries" in dict_ and dict_["creditSummaries"] is not None:
+            instance.credit_summaries = [CreditSummary.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["creditSummaries"]]
+        elif include_empty:
+            instance.credit_summaries = []
+        if "entitlementSummaries" in dict_ and dict_["entitlementSummaries"] is not None:
+            instance.entitlement_summaries = [EntitlementSummary.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["entitlementSummaries"]]
+        elif include_empty:
+            instance.entitlement_summaries = []
+        if "fulfillItems" in dict_ and dict_["fulfillItems"] is not None:
+            instance.fulfill_items = [FulfillmentItem.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["fulfillItems"]]
+        elif include_empty:
+            instance.fulfill_items = []
+        if "fulfillmentError" in dict_ and dict_["fulfillmentError"] is not None:
+            instance.fulfillment_error = FulfillmentError.create_from_dict(dict_["fulfillmentError"], include_empty=include_empty)
+        elif include_empty:
+            instance.fulfillment_error = FulfillmentError()
+        if "grantedItemIds" in dict_ and dict_["grantedItemIds"] is not None:
+            instance.granted_item_ids = [str(i0) for i0 in dict_["grantedItemIds"]]
+        elif include_empty:
+            instance.granted_item_ids = []
+        if "orderNo" in dict_ and dict_["orderNo"] is not None:
+            instance.order_no = str(dict_["orderNo"])
+        elif include_empty:
+            instance.order_no = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "createdAt": "created_at",
             "id": "id_",
             "namespace": "namespace",
-            "userId": "user_id",
-            "orderNo": "order_no",
-            "code": "code",
-            "fulfillItems": "fulfill_items",
-            "grantedItemIds": "granted_item_ids",
-            "entitlementSummaries": "entitlement_summaries",
-            "creditSummaries": "credit_summaries",
             "status": "status",
-            "fulfillmentError": "fulfillment_error",
-            "createdAt": "created_at",
             "updatedAt": "updated_at",
+            "userId": "user_id",
+            "code": "code",
+            "creditSummaries": "credit_summaries",
+            "entitlementSummaries": "entitlement_summaries",
+            "fulfillItems": "fulfill_items",
+            "fulfillmentError": "fulfillment_error",
+            "grantedItemIds": "granted_item_ids",
+            "orderNo": "order_no",
         }
 
     # endregion static methods

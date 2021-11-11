@@ -29,8 +29,8 @@ class PartyGetInvitedNotif(WebSocketMessage):
     # region fields
 
     from_: str
-    party_id: str
     invitation_token: str
+    party_id: str
 
     # endregion fields
 
@@ -42,10 +42,10 @@ class PartyGetInvitedNotif(WebSocketMessage):
         wsm = [f"type: {PartyGetInvitedNotif.get_type()}"]
         if hasattr(self, "from_") and self.from_:
             wsm.append(f"from: {self.from_}")
-        if hasattr(self, "party_id") and self.party_id:
-            wsm.append(f"partyId: {self.party_id}")
         if hasattr(self, "invitation_token") and self.invitation_token:
             wsm.append(f"invitationToken: {self.invitation_token}")
+        if hasattr(self, "party_id") and self.party_id:
+            wsm.append(f"partyId: {self.party_id}")
         return "\n".join(wsm)
 
     # endregion methods
@@ -68,11 +68,11 @@ class PartyGetInvitedNotif(WebSocketMessage):
             if (not is_strict and name.casefold() == "from".casefold()) or (name == "from"):
                 instance.from_ = value
                 continue
-            if (not is_strict and name.casefold() == "partyId".casefold()) or (name == "partyId"):
-                instance.party_id = value
-                continue
             if (not is_strict and name.casefold() == "invitationToken".casefold()) or (name == "invitationToken"):
                 instance.invitation_token = value
+                continue
+            if (not is_strict and name.casefold() == "partyId".casefold()) or (name == "partyId"):
+                instance.party_id = value
                 continue
             if is_strict:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldTypeNotSupported)
@@ -86,8 +86,8 @@ class PartyGetInvitedNotif(WebSocketMessage):
     def get_field_info() -> Dict[str, str]:
         return {
             "from": "from_",
-            "partyId": "party_id",
             "invitationToken": "invitation_token",
+            "partyId": "party_id",
         }
 
     # endregion static methods

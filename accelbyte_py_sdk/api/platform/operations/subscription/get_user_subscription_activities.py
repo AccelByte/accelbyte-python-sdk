@@ -54,13 +54,13 @@ class GetUserSubscriptionActivities(Operation):
 
         user_id: (userId) REQUIRED str in path
 
-        subscription_id: (subscriptionId) OPTIONAL str in query
-
         exclude_system: (excludeSystem) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
-        limit: (limit) OPTIONAL int in query
+        subscription_id: (subscriptionId) OPTIONAL str in query
 
     Responses:
         200: OK - SubscriptionActivityPagingSlicedResult (successful operation)
@@ -77,10 +77,10 @@ class GetUserSubscriptionActivities(Operation):
 
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
-    subscription_id: str                                                                           # OPTIONAL in [query]
     exclude_system: bool                                                                           # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
+    subscription_id: str                                                                           # OPTIONAL in [query]
 
     # endregion fields
 
@@ -155,14 +155,14 @@ class GetUserSubscriptionActivities(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "subscription_id"):
-            result["subscriptionId"] = self.subscription_id
         if hasattr(self, "exclude_system"):
             result["excludeSystem"] = self.exclude_system
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
+        if hasattr(self, "subscription_id"):
+            result["subscriptionId"] = self.subscription_id
         return result
 
     # endregion get_x_params methods
@@ -188,20 +188,20 @@ class GetUserSubscriptionActivities(Operation):
         self.user_id = value
         return self
 
-    def with_subscription_id(self, value: str) -> GetUserSubscriptionActivities:
-        self.subscription_id = value
-        return self
-
     def with_exclude_system(self, value: bool) -> GetUserSubscriptionActivities:
         self.exclude_system = value
+        return self
+
+    def with_limit(self, value: int) -> GetUserSubscriptionActivities:
+        self.limit = value
         return self
 
     def with_offset(self, value: int) -> GetUserSubscriptionActivities:
         self.offset = value
         return self
 
-    def with_limit(self, value: int) -> GetUserSubscriptionActivities:
-        self.limit = value
+    def with_subscription_id(self, value: str) -> GetUserSubscriptionActivities:
+        self.subscription_id = value
         return self
 
     # endregion with_x methods
@@ -218,22 +218,22 @@ class GetUserSubscriptionActivities(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "subscription_id") and self.subscription_id:
-            result["subscriptionId"] = str(self.subscription_id)
-        elif include_empty:
-            result["subscriptionId"] = str()
         if hasattr(self, "exclude_system") and self.exclude_system:
             result["excludeSystem"] = bool(self.exclude_system)
         elif include_empty:
             result["excludeSystem"] = bool()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
+        if hasattr(self, "subscription_id") and self.subscription_id:
+            result["subscriptionId"] = str(self.subscription_id)
+        elif include_empty:
+            result["subscriptionId"] = str()
         return result
 
     # endregion to methods
@@ -262,22 +262,22 @@ class GetUserSubscriptionActivities(Operation):
         cls,
         namespace: str,
         user_id: str,
-        subscription_id: Optional[str] = None,
         exclude_system: Optional[bool] = None,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
+        subscription_id: Optional[str] = None,
     ) -> GetUserSubscriptionActivities:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
-        if subscription_id is not None:
-            instance.subscription_id = subscription_id
         if exclude_system is not None:
             instance.exclude_system = exclude_system
-        if offset is not None:
-            instance.offset = offset
         if limit is not None:
             instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
+        if subscription_id is not None:
+            instance.subscription_id = subscription_id
         return instance
 
     @classmethod
@@ -291,22 +291,22 @@ class GetUserSubscriptionActivities(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
-        if "subscriptionId" in dict_ and dict_["subscriptionId"] is not None:
-            instance.subscription_id = str(dict_["subscriptionId"])
-        elif include_empty:
-            instance.subscription_id = str()
         if "excludeSystem" in dict_ and dict_["excludeSystem"] is not None:
             instance.exclude_system = bool(dict_["excludeSystem"])
         elif include_empty:
             instance.exclude_system = bool()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
+        if "subscriptionId" in dict_ and dict_["subscriptionId"] is not None:
+            instance.subscription_id = str(dict_["subscriptionId"])
+        elif include_empty:
+            instance.subscription_id = str()
         return instance
 
     @staticmethod
@@ -314,10 +314,10 @@ class GetUserSubscriptionActivities(Operation):
         return {
             "namespace": "namespace",
             "userId": "user_id",
-            "subscriptionId": "subscription_id",
             "excludeSystem": "exclude_system",
-            "offset": "offset",
             "limit": "limit",
+            "offset": "offset",
+            "subscriptionId": "subscription_id",
         }
 
     # endregion static methods

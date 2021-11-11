@@ -28,117 +28,117 @@ class SubscriptionActivityInfo(Model):
     """Subscription activity info (SubscriptionActivityInfo)
 
     Properties:
-        namespace: (namespace) REQUIRED str
-
-        user_id: (userId) REQUIRED str
-
-        subscription_id: (subscriptionId) REQUIRED str
-
-        operator: (operator) REQUIRED str
-
         action: (action) REQUIRED str
-
-        subscribed_by: (subscribedBy) REQUIRED str
-
-        current_cycle: (currentCycle) REQUIRED int
 
         charged_cycles: (chargedCycles) REQUIRED int
 
-        trialed_cycles: (trialedCycles) OPTIONAL int
+        created_at: (createdAt) REQUIRED str
 
-        in_fixed_free_days: (inFixedFreeDays) OPTIONAL bool
+        current_cycle: (currentCycle) REQUIRED int
 
-        in_fixed_cycle_trial: (inFixedCycleTrial) OPTIONAL bool
+        namespace: (namespace) REQUIRED str
 
-        reason: (reason) OPTIONAL str
+        operator: (operator) REQUIRED str
+
+        subscribed_by: (subscribedBy) REQUIRED str
+
+        subscription_id: (subscriptionId) REQUIRED str
+
+        updated_at: (updatedAt) REQUIRED str
+
+        user_id: (userId) REQUIRED str
 
         grant_days: (grantDays) OPTIONAL int
 
-        created_at: (createdAt) REQUIRED str
+        in_fixed_cycle_trial: (inFixedCycleTrial) OPTIONAL bool
 
-        updated_at: (updatedAt) REQUIRED str
+        in_fixed_free_days: (inFixedFreeDays) OPTIONAL bool
+
+        reason: (reason) OPTIONAL str
+
+        trialed_cycles: (trialedCycles) OPTIONAL int
     """
 
     # region fields
 
-    namespace: str                                                                                 # REQUIRED
-    user_id: str                                                                                   # REQUIRED
-    subscription_id: str                                                                           # REQUIRED
-    operator: str                                                                                  # REQUIRED
     action: str                                                                                    # REQUIRED
-    subscribed_by: str                                                                             # REQUIRED
-    current_cycle: int                                                                             # REQUIRED
     charged_cycles: int                                                                            # REQUIRED
-    trialed_cycles: int                                                                            # OPTIONAL
-    in_fixed_free_days: bool                                                                       # OPTIONAL
-    in_fixed_cycle_trial: bool                                                                     # OPTIONAL
-    reason: str                                                                                    # OPTIONAL
-    grant_days: int                                                                                # OPTIONAL
     created_at: str                                                                                # REQUIRED
+    current_cycle: int                                                                             # REQUIRED
+    namespace: str                                                                                 # REQUIRED
+    operator: str                                                                                  # REQUIRED
+    subscribed_by: str                                                                             # REQUIRED
+    subscription_id: str                                                                           # REQUIRED
     updated_at: str                                                                                # REQUIRED
+    user_id: str                                                                                   # REQUIRED
+    grant_days: int                                                                                # OPTIONAL
+    in_fixed_cycle_trial: bool                                                                     # OPTIONAL
+    in_fixed_free_days: bool                                                                       # OPTIONAL
+    reason: str                                                                                    # OPTIONAL
+    trialed_cycles: int                                                                            # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> SubscriptionActivityInfo:
-        self.namespace = value
-        return self
-
-    def with_user_id(self, value: str) -> SubscriptionActivityInfo:
-        self.user_id = value
-        return self
-
-    def with_subscription_id(self, value: str) -> SubscriptionActivityInfo:
-        self.subscription_id = value
-        return self
-
-    def with_operator(self, value: str) -> SubscriptionActivityInfo:
-        self.operator = value
-        return self
-
     def with_action(self, value: str) -> SubscriptionActivityInfo:
         self.action = value
-        return self
-
-    def with_subscribed_by(self, value: str) -> SubscriptionActivityInfo:
-        self.subscribed_by = value
-        return self
-
-    def with_current_cycle(self, value: int) -> SubscriptionActivityInfo:
-        self.current_cycle = value
         return self
 
     def with_charged_cycles(self, value: int) -> SubscriptionActivityInfo:
         self.charged_cycles = value
         return self
 
-    def with_trialed_cycles(self, value: int) -> SubscriptionActivityInfo:
-        self.trialed_cycles = value
+    def with_created_at(self, value: str) -> SubscriptionActivityInfo:
+        self.created_at = value
         return self
 
-    def with_in_fixed_free_days(self, value: bool) -> SubscriptionActivityInfo:
-        self.in_fixed_free_days = value
+    def with_current_cycle(self, value: int) -> SubscriptionActivityInfo:
+        self.current_cycle = value
         return self
 
-    def with_in_fixed_cycle_trial(self, value: bool) -> SubscriptionActivityInfo:
-        self.in_fixed_cycle_trial = value
+    def with_namespace(self, value: str) -> SubscriptionActivityInfo:
+        self.namespace = value
         return self
 
-    def with_reason(self, value: str) -> SubscriptionActivityInfo:
-        self.reason = value
+    def with_operator(self, value: str) -> SubscriptionActivityInfo:
+        self.operator = value
+        return self
+
+    def with_subscribed_by(self, value: str) -> SubscriptionActivityInfo:
+        self.subscribed_by = value
+        return self
+
+    def with_subscription_id(self, value: str) -> SubscriptionActivityInfo:
+        self.subscription_id = value
+        return self
+
+    def with_updated_at(self, value: str) -> SubscriptionActivityInfo:
+        self.updated_at = value
+        return self
+
+    def with_user_id(self, value: str) -> SubscriptionActivityInfo:
+        self.user_id = value
         return self
 
     def with_grant_days(self, value: int) -> SubscriptionActivityInfo:
         self.grant_days = value
         return self
 
-    def with_created_at(self, value: str) -> SubscriptionActivityInfo:
-        self.created_at = value
+    def with_in_fixed_cycle_trial(self, value: bool) -> SubscriptionActivityInfo:
+        self.in_fixed_cycle_trial = value
         return self
 
-    def with_updated_at(self, value: str) -> SubscriptionActivityInfo:
-        self.updated_at = value
+    def with_in_fixed_free_days(self, value: bool) -> SubscriptionActivityInfo:
+        self.in_fixed_free_days = value
+        return self
+
+    def with_reason(self, value: str) -> SubscriptionActivityInfo:
+        self.reason = value
+        return self
+
+    def with_trialed_cycles(self, value: int) -> SubscriptionActivityInfo:
+        self.trialed_cycles = value
         return self
 
     # endregion with_x methods
@@ -147,66 +147,66 @@ class SubscriptionActivityInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
-        if hasattr(self, "user_id"):
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
-        if hasattr(self, "subscription_id"):
-            result["subscriptionId"] = str(self.subscription_id)
-        elif include_empty:
-            result["subscriptionId"] = str()
-        if hasattr(self, "operator"):
-            result["operator"] = str(self.operator)
-        elif include_empty:
-            result["operator"] = str()
         if hasattr(self, "action"):
             result["action"] = str(self.action)
         elif include_empty:
             result["action"] = str()
-        if hasattr(self, "subscribed_by"):
-            result["subscribedBy"] = str(self.subscribed_by)
-        elif include_empty:
-            result["subscribedBy"] = str()
-        if hasattr(self, "current_cycle"):
-            result["currentCycle"] = int(self.current_cycle)
-        elif include_empty:
-            result["currentCycle"] = int()
         if hasattr(self, "charged_cycles"):
             result["chargedCycles"] = int(self.charged_cycles)
         elif include_empty:
             result["chargedCycles"] = int()
-        if hasattr(self, "trialed_cycles"):
-            result["trialedCycles"] = int(self.trialed_cycles)
-        elif include_empty:
-            result["trialedCycles"] = int()
-        if hasattr(self, "in_fixed_free_days"):
-            result["inFixedFreeDays"] = bool(self.in_fixed_free_days)
-        elif include_empty:
-            result["inFixedFreeDays"] = bool()
-        if hasattr(self, "in_fixed_cycle_trial"):
-            result["inFixedCycleTrial"] = bool(self.in_fixed_cycle_trial)
-        elif include_empty:
-            result["inFixedCycleTrial"] = bool()
-        if hasattr(self, "reason"):
-            result["reason"] = str(self.reason)
-        elif include_empty:
-            result["reason"] = str()
-        if hasattr(self, "grant_days"):
-            result["grantDays"] = int(self.grant_days)
-        elif include_empty:
-            result["grantDays"] = int()
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
+        if hasattr(self, "current_cycle"):
+            result["currentCycle"] = int(self.current_cycle)
+        elif include_empty:
+            result["currentCycle"] = int()
+        if hasattr(self, "namespace"):
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
+        if hasattr(self, "operator"):
+            result["operator"] = str(self.operator)
+        elif include_empty:
+            result["operator"] = str()
+        if hasattr(self, "subscribed_by"):
+            result["subscribedBy"] = str(self.subscribed_by)
+        elif include_empty:
+            result["subscribedBy"] = str()
+        if hasattr(self, "subscription_id"):
+            result["subscriptionId"] = str(self.subscription_id)
+        elif include_empty:
+            result["subscriptionId"] = str()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()
+        if hasattr(self, "user_id"):
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
+        if hasattr(self, "grant_days"):
+            result["grantDays"] = int(self.grant_days)
+        elif include_empty:
+            result["grantDays"] = int()
+        if hasattr(self, "in_fixed_cycle_trial"):
+            result["inFixedCycleTrial"] = bool(self.in_fixed_cycle_trial)
+        elif include_empty:
+            result["inFixedCycleTrial"] = bool()
+        if hasattr(self, "in_fixed_free_days"):
+            result["inFixedFreeDays"] = bool(self.in_fixed_free_days)
+        elif include_empty:
+            result["inFixedFreeDays"] = bool()
+        if hasattr(self, "reason"):
+            result["reason"] = str(self.reason)
+        elif include_empty:
+            result["reason"] = str()
+        if hasattr(self, "trialed_cycles"):
+            result["trialedCycles"] = int(self.trialed_cycles)
+        elif include_empty:
+            result["trialedCycles"] = int()
         return result
 
     # endregion to methods
@@ -260,86 +260,86 @@ class SubscriptionActivityInfo(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
-        if "subscriptionId" in dict_ and dict_["subscriptionId"] is not None:
-            instance.subscription_id = str(dict_["subscriptionId"])
-        elif include_empty:
-            instance.subscription_id = str()
-        if "operator" in dict_ and dict_["operator"] is not None:
-            instance.operator = str(dict_["operator"])
-        elif include_empty:
-            instance.operator = str()
         if "action" in dict_ and dict_["action"] is not None:
             instance.action = str(dict_["action"])
         elif include_empty:
             instance.action = str()
-        if "subscribedBy" in dict_ and dict_["subscribedBy"] is not None:
-            instance.subscribed_by = str(dict_["subscribedBy"])
-        elif include_empty:
-            instance.subscribed_by = str()
-        if "currentCycle" in dict_ and dict_["currentCycle"] is not None:
-            instance.current_cycle = int(dict_["currentCycle"])
-        elif include_empty:
-            instance.current_cycle = int()
         if "chargedCycles" in dict_ and dict_["chargedCycles"] is not None:
             instance.charged_cycles = int(dict_["chargedCycles"])
         elif include_empty:
             instance.charged_cycles = int()
-        if "trialedCycles" in dict_ and dict_["trialedCycles"] is not None:
-            instance.trialed_cycles = int(dict_["trialedCycles"])
-        elif include_empty:
-            instance.trialed_cycles = int()
-        if "inFixedFreeDays" in dict_ and dict_["inFixedFreeDays"] is not None:
-            instance.in_fixed_free_days = bool(dict_["inFixedFreeDays"])
-        elif include_empty:
-            instance.in_fixed_free_days = bool()
-        if "inFixedCycleTrial" in dict_ and dict_["inFixedCycleTrial"] is not None:
-            instance.in_fixed_cycle_trial = bool(dict_["inFixedCycleTrial"])
-        elif include_empty:
-            instance.in_fixed_cycle_trial = bool()
-        if "reason" in dict_ and dict_["reason"] is not None:
-            instance.reason = str(dict_["reason"])
-        elif include_empty:
-            instance.reason = str()
-        if "grantDays" in dict_ and dict_["grantDays"] is not None:
-            instance.grant_days = int(dict_["grantDays"])
-        elif include_empty:
-            instance.grant_days = int()
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
             instance.created_at = str()
+        if "currentCycle" in dict_ and dict_["currentCycle"] is not None:
+            instance.current_cycle = int(dict_["currentCycle"])
+        elif include_empty:
+            instance.current_cycle = int()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
+        if "operator" in dict_ and dict_["operator"] is not None:
+            instance.operator = str(dict_["operator"])
+        elif include_empty:
+            instance.operator = str()
+        if "subscribedBy" in dict_ and dict_["subscribedBy"] is not None:
+            instance.subscribed_by = str(dict_["subscribedBy"])
+        elif include_empty:
+            instance.subscribed_by = str()
+        if "subscriptionId" in dict_ and dict_["subscriptionId"] is not None:
+            instance.subscription_id = str(dict_["subscriptionId"])
+        elif include_empty:
+            instance.subscription_id = str()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
+        if "grantDays" in dict_ and dict_["grantDays"] is not None:
+            instance.grant_days = int(dict_["grantDays"])
+        elif include_empty:
+            instance.grant_days = int()
+        if "inFixedCycleTrial" in dict_ and dict_["inFixedCycleTrial"] is not None:
+            instance.in_fixed_cycle_trial = bool(dict_["inFixedCycleTrial"])
+        elif include_empty:
+            instance.in_fixed_cycle_trial = bool()
+        if "inFixedFreeDays" in dict_ and dict_["inFixedFreeDays"] is not None:
+            instance.in_fixed_free_days = bool(dict_["inFixedFreeDays"])
+        elif include_empty:
+            instance.in_fixed_free_days = bool()
+        if "reason" in dict_ and dict_["reason"] is not None:
+            instance.reason = str(dict_["reason"])
+        elif include_empty:
+            instance.reason = str()
+        if "trialedCycles" in dict_ and dict_["trialedCycles"] is not None:
+            instance.trialed_cycles = int(dict_["trialedCycles"])
+        elif include_empty:
+            instance.trialed_cycles = int()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
-            "userId": "user_id",
-            "subscriptionId": "subscription_id",
-            "operator": "operator",
             "action": "action",
-            "subscribedBy": "subscribed_by",
-            "currentCycle": "current_cycle",
             "chargedCycles": "charged_cycles",
-            "trialedCycles": "trialed_cycles",
-            "inFixedFreeDays": "in_fixed_free_days",
-            "inFixedCycleTrial": "in_fixed_cycle_trial",
-            "reason": "reason",
-            "grantDays": "grant_days",
             "createdAt": "created_at",
+            "currentCycle": "current_cycle",
+            "namespace": "namespace",
+            "operator": "operator",
+            "subscribedBy": "subscribed_by",
+            "subscriptionId": "subscription_id",
             "updatedAt": "updated_at",
+            "userId": "user_id",
+            "grantDays": "grant_days",
+            "inFixedCycleTrial": "in_fixed_cycle_trial",
+            "inFixedFreeDays": "in_fixed_free_days",
+            "reason": "reason",
+            "trialedCycles": "trialed_cycles",
         }
 
     # endregion static methods

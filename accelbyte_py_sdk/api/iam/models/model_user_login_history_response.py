@@ -36,11 +36,11 @@ class ModelUserLoginHistoryResponse(Model):
 
         device_id: (DeviceId) REQUIRED str
 
+        device_name: (deviceName) REQUIRED str
+
         state: (State) REQUIRED str
 
         timestamp: (Timestamp) REQUIRED int
-
-        device_name: (deviceName) REQUIRED str
     """
 
     # region fields
@@ -49,9 +49,9 @@ class ModelUserLoginHistoryResponse(Model):
     city: str                                                                                      # REQUIRED
     country: str                                                                                   # REQUIRED
     device_id: str                                                                                 # REQUIRED
+    device_name: str                                                                               # REQUIRED
     state: str                                                                                     # REQUIRED
     timestamp: int                                                                                 # REQUIRED
-    device_name: str                                                                               # REQUIRED
 
     # endregion fields
 
@@ -73,16 +73,16 @@ class ModelUserLoginHistoryResponse(Model):
         self.device_id = value
         return self
 
+    def with_device_name(self, value: str) -> ModelUserLoginHistoryResponse:
+        self.device_name = value
+        return self
+
     def with_state(self, value: str) -> ModelUserLoginHistoryResponse:
         self.state = value
         return self
 
     def with_timestamp(self, value: int) -> ModelUserLoginHistoryResponse:
         self.timestamp = value
-        return self
-
-    def with_device_name(self, value: str) -> ModelUserLoginHistoryResponse:
-        self.device_name = value
         return self
 
     # endregion with_x methods
@@ -107,6 +107,10 @@ class ModelUserLoginHistoryResponse(Model):
             result["DeviceId"] = str(self.device_id)
         elif include_empty:
             result["DeviceId"] = str()
+        if hasattr(self, "device_name"):
+            result["deviceName"] = str(self.device_name)
+        elif include_empty:
+            result["deviceName"] = str()
         if hasattr(self, "state"):
             result["State"] = str(self.state)
         elif include_empty:
@@ -115,10 +119,6 @@ class ModelUserLoginHistoryResponse(Model):
             result["Timestamp"] = int(self.timestamp)
         elif include_empty:
             result["Timestamp"] = int()
-        if hasattr(self, "device_name"):
-            result["deviceName"] = str(self.device_name)
-        elif include_empty:
-            result["deviceName"] = str()
         return result
 
     # endregion to methods
@@ -167,6 +167,10 @@ class ModelUserLoginHistoryResponse(Model):
             instance.device_id = str(dict_["DeviceId"])
         elif include_empty:
             instance.device_id = str()
+        if "deviceName" in dict_ and dict_["deviceName"] is not None:
+            instance.device_name = str(dict_["deviceName"])
+        elif include_empty:
+            instance.device_name = str()
         if "State" in dict_ and dict_["State"] is not None:
             instance.state = str(dict_["State"])
         elif include_empty:
@@ -175,10 +179,6 @@ class ModelUserLoginHistoryResponse(Model):
             instance.timestamp = int(dict_["Timestamp"])
         elif include_empty:
             instance.timestamp = int()
-        if "deviceName" in dict_ and dict_["deviceName"] is not None:
-            instance.device_name = str(dict_["deviceName"])
-        elif include_empty:
-            instance.device_name = str()
         return instance
 
     @staticmethod
@@ -188,9 +188,9 @@ class ModelUserLoginHistoryResponse(Model):
             "City": "city",
             "Country": "country",
             "DeviceId": "device_id",
+            "deviceName": "device_name",
             "State": "state",
             "Timestamp": "timestamp",
-            "deviceName": "device_name",
         }
 
     # endregion static methods

@@ -28,36 +28,36 @@ class PaymentTaxConfigInfo(Model):
     """Payment tax config info (PaymentTaxConfigInfo)
 
     Properties:
-        tax_jar_enabled: (taxJarEnabled) OPTIONAL bool
+        sandbox_tax_jar_api_token: (sandboxTaxJarApiToken) OPTIONAL str
 
         tax_jar_api_token: (taxJarApiToken) OPTIONAL str
 
-        sandbox_tax_jar_api_token: (sandboxTaxJarApiToken) OPTIONAL str
+        tax_jar_enabled: (taxJarEnabled) OPTIONAL bool
 
         tax_jar_product_codes_mapping: (taxJarProductCodesMapping) OPTIONAL Dict[str, str]
     """
 
     # region fields
 
-    tax_jar_enabled: bool                                                                          # OPTIONAL
-    tax_jar_api_token: str                                                                         # OPTIONAL
     sandbox_tax_jar_api_token: str                                                                 # OPTIONAL
+    tax_jar_api_token: str                                                                         # OPTIONAL
+    tax_jar_enabled: bool                                                                          # OPTIONAL
     tax_jar_product_codes_mapping: Dict[str, str]                                                  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_tax_jar_enabled(self, value: bool) -> PaymentTaxConfigInfo:
-        self.tax_jar_enabled = value
+    def with_sandbox_tax_jar_api_token(self, value: str) -> PaymentTaxConfigInfo:
+        self.sandbox_tax_jar_api_token = value
         return self
 
     def with_tax_jar_api_token(self, value: str) -> PaymentTaxConfigInfo:
         self.tax_jar_api_token = value
         return self
 
-    def with_sandbox_tax_jar_api_token(self, value: str) -> PaymentTaxConfigInfo:
-        self.sandbox_tax_jar_api_token = value
+    def with_tax_jar_enabled(self, value: bool) -> PaymentTaxConfigInfo:
+        self.tax_jar_enabled = value
         return self
 
     def with_tax_jar_product_codes_mapping(self, value: Dict[str, str]) -> PaymentTaxConfigInfo:
@@ -70,18 +70,18 @@ class PaymentTaxConfigInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "tax_jar_enabled"):
-            result["taxJarEnabled"] = bool(self.tax_jar_enabled)
-        elif include_empty:
-            result["taxJarEnabled"] = bool()
-        if hasattr(self, "tax_jar_api_token"):
-            result["taxJarApiToken"] = str(self.tax_jar_api_token)
-        elif include_empty:
-            result["taxJarApiToken"] = str()
         if hasattr(self, "sandbox_tax_jar_api_token"):
             result["sandboxTaxJarApiToken"] = str(self.sandbox_tax_jar_api_token)
         elif include_empty:
             result["sandboxTaxJarApiToken"] = str()
+        if hasattr(self, "tax_jar_api_token"):
+            result["taxJarApiToken"] = str(self.tax_jar_api_token)
+        elif include_empty:
+            result["taxJarApiToken"] = str()
+        if hasattr(self, "tax_jar_enabled"):
+            result["taxJarEnabled"] = bool(self.tax_jar_enabled)
+        elif include_empty:
+            result["taxJarEnabled"] = bool()
         if hasattr(self, "tax_jar_product_codes_mapping"):
             result["taxJarProductCodesMapping"] = {str(k0): str(v0) for k0, v0 in self.tax_jar_product_codes_mapping.items()}
         elif include_empty:
@@ -116,18 +116,18 @@ class PaymentTaxConfigInfo(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "taxJarEnabled" in dict_ and dict_["taxJarEnabled"] is not None:
-            instance.tax_jar_enabled = bool(dict_["taxJarEnabled"])
-        elif include_empty:
-            instance.tax_jar_enabled = bool()
-        if "taxJarApiToken" in dict_ and dict_["taxJarApiToken"] is not None:
-            instance.tax_jar_api_token = str(dict_["taxJarApiToken"])
-        elif include_empty:
-            instance.tax_jar_api_token = str()
         if "sandboxTaxJarApiToken" in dict_ and dict_["sandboxTaxJarApiToken"] is not None:
             instance.sandbox_tax_jar_api_token = str(dict_["sandboxTaxJarApiToken"])
         elif include_empty:
             instance.sandbox_tax_jar_api_token = str()
+        if "taxJarApiToken" in dict_ and dict_["taxJarApiToken"] is not None:
+            instance.tax_jar_api_token = str(dict_["taxJarApiToken"])
+        elif include_empty:
+            instance.tax_jar_api_token = str()
+        if "taxJarEnabled" in dict_ and dict_["taxJarEnabled"] is not None:
+            instance.tax_jar_enabled = bool(dict_["taxJarEnabled"])
+        elif include_empty:
+            instance.tax_jar_enabled = bool()
         if "taxJarProductCodesMapping" in dict_ and dict_["taxJarProductCodesMapping"] is not None:
             instance.tax_jar_product_codes_mapping = {str(k0): str(v0) for k0, v0 in dict_["taxJarProductCodesMapping"].items()}
         elif include_empty:
@@ -137,9 +137,9 @@ class PaymentTaxConfigInfo(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "taxJarEnabled": "tax_jar_enabled",
-            "taxJarApiToken": "tax_jar_api_token",
             "sandboxTaxJarApiToken": "sandbox_tax_jar_api_token",
+            "taxJarApiToken": "tax_jar_api_token",
+            "taxJarEnabled": "tax_jar_enabled",
             "taxJarProductCodesMapping": "tax_jar_product_codes_mapping",
         }
 

@@ -86,14 +86,14 @@ def admin_put_game_record_handler_v1(body: ModelsGameRecordRequest, key: str, na
 
 
 @same_doc_as(ListGameRecordsHandlerV1)
-def list_game_records_handler_v1(offset: int, limit: int, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def list_game_records_handler_v1(limit: int, offset: int, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = ListGameRecordsHandlerV1.create(
-        offset=offset,
         limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

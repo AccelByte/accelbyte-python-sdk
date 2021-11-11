@@ -34,9 +34,9 @@ class CurrencySummary(Model):
 
         currency_type: (currencyType) REQUIRED str
 
-        namespace: (namespace) REQUIRED str
-
         decimals: (decimals) REQUIRED int
+
+        namespace: (namespace) REQUIRED str
     """
 
     # region fields
@@ -44,8 +44,8 @@ class CurrencySummary(Model):
     currency_code: str                                                                             # REQUIRED
     currency_symbol: str                                                                           # REQUIRED
     currency_type: str                                                                             # REQUIRED
-    namespace: str                                                                                 # REQUIRED
     decimals: int                                                                                  # REQUIRED
+    namespace: str                                                                                 # REQUIRED
 
     # endregion fields
 
@@ -63,12 +63,12 @@ class CurrencySummary(Model):
         self.currency_type = value
         return self
 
-    def with_namespace(self, value: str) -> CurrencySummary:
-        self.namespace = value
-        return self
-
     def with_decimals(self, value: int) -> CurrencySummary:
         self.decimals = value
+        return self
+
+    def with_namespace(self, value: str) -> CurrencySummary:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -89,14 +89,14 @@ class CurrencySummary(Model):
             result["currencyType"] = str(self.currency_type)
         elif include_empty:
             result["currencyType"] = str()
-        if hasattr(self, "namespace"):
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "decimals"):
             result["decimals"] = int(self.decimals)
         elif include_empty:
             result["decimals"] = int()
+        if hasattr(self, "namespace"):
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         return result
 
     # endregion to methods
@@ -137,14 +137,14 @@ class CurrencySummary(Model):
             instance.currency_type = str(dict_["currencyType"])
         elif include_empty:
             instance.currency_type = str()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "decimals" in dict_ and dict_["decimals"] is not None:
             instance.decimals = int(dict_["decimals"])
         elif include_empty:
             instance.decimals = int()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         return instance
 
     @staticmethod
@@ -153,8 +153,8 @@ class CurrencySummary(Model):
             "currencyCode": "currency_code",
             "currencySymbol": "currency_symbol",
             "currencyType": "currency_type",
-            "namespace": "namespace",
             "decimals": "decimals",
+            "namespace": "namespace",
         }
 
     # endregion static methods

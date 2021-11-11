@@ -62,9 +62,9 @@ class CancelSubscription(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
-
         subscription_id: (subscriptionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
 
         force: (force) OPTIONAL bool in query
 
@@ -87,8 +87,8 @@ class CancelSubscription(Operation):
 
     body: CancelRequest                                                                            # OPTIONAL in [body]
     namespace: str                                                                                 # REQUIRED in [path]
-    user_id: str                                                                                   # REQUIRED in [path]
     subscription_id: str                                                                           # REQUIRED in [path]
+    user_id: str                                                                                   # REQUIRED in [path]
     force: bool                                                                                    # OPTIONAL in [query]
 
     # endregion fields
@@ -141,8 +141,8 @@ class CancelSubscription(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "namespace",
-            "user_id",
             "subscription_id",
+            "user_id",
         ]
 
     # endregion get methods
@@ -163,10 +163,10 @@ class CancelSubscription(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
         if hasattr(self, "subscription_id"):
             result["subscriptionId"] = self.subscription_id
+        if hasattr(self, "user_id"):
+            result["userId"] = self.user_id
         return result
 
     def get_query_params(self) -> dict:
@@ -182,9 +182,9 @@ class CancelSubscription(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
         if not hasattr(self, "subscription_id") or self.subscription_id is None:
+            return False
+        if not hasattr(self, "user_id") or self.user_id is None:
             return False
         return True
 
@@ -200,12 +200,12 @@ class CancelSubscription(Operation):
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> CancelSubscription:
-        self.user_id = value
-        return self
-
     def with_subscription_id(self, value: str) -> CancelSubscription:
         self.subscription_id = value
+        return self
+
+    def with_user_id(self, value: str) -> CancelSubscription:
+        self.user_id = value
         return self
 
     def with_force(self, value: bool) -> CancelSubscription:
@@ -226,14 +226,14 @@ class CancelSubscription(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
         if hasattr(self, "subscription_id") and self.subscription_id:
             result["subscriptionId"] = str(self.subscription_id)
         elif include_empty:
             result["subscriptionId"] = str()
+        if hasattr(self, "user_id") and self.user_id:
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         if hasattr(self, "force") and self.force:
             result["force"] = bool(self.force)
         elif include_empty:
@@ -273,15 +273,15 @@ class CancelSubscription(Operation):
     def create(
         cls,
         namespace: str,
-        user_id: str,
         subscription_id: str,
+        user_id: str,
         body: Optional[CancelRequest] = None,
         force: Optional[bool] = None,
     ) -> CancelSubscription:
         instance = cls()
         instance.namespace = namespace
-        instance.user_id = user_id
         instance.subscription_id = subscription_id
+        instance.user_id = user_id
         if body is not None:
             instance.body = body
         if force is not None:
@@ -299,14 +299,14 @@ class CancelSubscription(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
         if "subscriptionId" in dict_ and dict_["subscriptionId"] is not None:
             instance.subscription_id = str(dict_["subscriptionId"])
         elif include_empty:
             instance.subscription_id = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         if "force" in dict_ and dict_["force"] is not None:
             instance.force = bool(dict_["force"])
         elif include_empty:
@@ -318,8 +318,8 @@ class CancelSubscription(Operation):
         return {
             "body": "body",
             "namespace": "namespace",
-            "userId": "user_id",
             "subscriptionId": "subscription_id",
+            "userId": "user_id",
             "force": "force",
         }
 

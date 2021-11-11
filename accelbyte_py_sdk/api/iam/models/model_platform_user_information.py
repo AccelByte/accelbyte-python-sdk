@@ -30,8 +30,6 @@ class ModelPlatformUserInformation(Model):
     Properties:
         display_name: (DisplayName) REQUIRED str
 
-        email_address: (EmailAddress) OPTIONAL str
-
         linked_at: (LinkedAt) REQUIRED str
 
         namespace: (Namespace) REQUIRED str
@@ -40,17 +38,19 @@ class ModelPlatformUserInformation(Model):
 
         platform_user_id: (PlatformUserID) REQUIRED str
 
+        email_address: (EmailAddress) OPTIONAL str
+
         xuid: (XUID) OPTIONAL str
     """
 
     # region fields
 
     display_name: str                                                                              # REQUIRED
-    email_address: str                                                                             # OPTIONAL
     linked_at: str                                                                                 # REQUIRED
     namespace: str                                                                                 # REQUIRED
     platform_id: str                                                                               # REQUIRED
     platform_user_id: str                                                                          # REQUIRED
+    email_address: str                                                                             # OPTIONAL
     xuid: str                                                                                      # OPTIONAL
 
     # endregion fields
@@ -59,10 +59,6 @@ class ModelPlatformUserInformation(Model):
 
     def with_display_name(self, value: str) -> ModelPlatformUserInformation:
         self.display_name = value
-        return self
-
-    def with_email_address(self, value: str) -> ModelPlatformUserInformation:
-        self.email_address = value
         return self
 
     def with_linked_at(self, value: str) -> ModelPlatformUserInformation:
@@ -81,6 +77,10 @@ class ModelPlatformUserInformation(Model):
         self.platform_user_id = value
         return self
 
+    def with_email_address(self, value: str) -> ModelPlatformUserInformation:
+        self.email_address = value
+        return self
+
     def with_xuid(self, value: str) -> ModelPlatformUserInformation:
         self.xuid = value
         return self
@@ -95,10 +95,6 @@ class ModelPlatformUserInformation(Model):
             result["DisplayName"] = str(self.display_name)
         elif include_empty:
             result["DisplayName"] = str()
-        if hasattr(self, "email_address"):
-            result["EmailAddress"] = str(self.email_address)
-        elif include_empty:
-            result["EmailAddress"] = str()
         if hasattr(self, "linked_at"):
             result["LinkedAt"] = str(self.linked_at)
         elif include_empty:
@@ -115,6 +111,10 @@ class ModelPlatformUserInformation(Model):
             result["PlatformUserID"] = str(self.platform_user_id)
         elif include_empty:
             result["PlatformUserID"] = str()
+        if hasattr(self, "email_address"):
+            result["EmailAddress"] = str(self.email_address)
+        elif include_empty:
+            result["EmailAddress"] = str()
         if hasattr(self, "xuid"):
             result["XUID"] = str(self.xuid)
         elif include_empty:
@@ -157,10 +157,6 @@ class ModelPlatformUserInformation(Model):
             instance.display_name = str(dict_["DisplayName"])
         elif include_empty:
             instance.display_name = str()
-        if "EmailAddress" in dict_ and dict_["EmailAddress"] is not None:
-            instance.email_address = str(dict_["EmailAddress"])
-        elif include_empty:
-            instance.email_address = str()
         if "LinkedAt" in dict_ and dict_["LinkedAt"] is not None:
             instance.linked_at = str(dict_["LinkedAt"])
         elif include_empty:
@@ -177,6 +173,10 @@ class ModelPlatformUserInformation(Model):
             instance.platform_user_id = str(dict_["PlatformUserID"])
         elif include_empty:
             instance.platform_user_id = str()
+        if "EmailAddress" in dict_ and dict_["EmailAddress"] is not None:
+            instance.email_address = str(dict_["EmailAddress"])
+        elif include_empty:
+            instance.email_address = str()
         if "XUID" in dict_ and dict_["XUID"] is not None:
             instance.xuid = str(dict_["XUID"])
         elif include_empty:
@@ -187,11 +187,11 @@ class ModelPlatformUserInformation(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "DisplayName": "display_name",
-            "EmailAddress": "email_address",
             "LinkedAt": "linked_at",
             "Namespace": "namespace",
             "PlatformID": "platform_id",
             "PlatformUserID": "platform_user_id",
+            "EmailAddress": "email_address",
             "XUID": "xuid",
         }
 

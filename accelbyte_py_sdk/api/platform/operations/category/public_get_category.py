@@ -53,13 +53,13 @@ class PublicGetCategory(Operation):
 
         security: bearer
 
-        namespace: (namespace) REQUIRED str in path
-
         category_path: (categoryPath) REQUIRED str in path
 
-        store_id: (storeId) OPTIONAL str in query
+        namespace: (namespace) REQUIRED str in path
 
         language: (language) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
 
     Responses:
         200: OK - CategoryInfo (successful operation)
@@ -76,10 +76,10 @@ class PublicGetCategory(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
     category_path: str                                                                             # REQUIRED in [path]
-    store_id: str                                                                                  # OPTIONAL in [query]
+    namespace: str                                                                                 # REQUIRED in [path]
     language: str                                                                                  # OPTIONAL in [query]
+    store_id: str                                                                                  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -130,8 +130,8 @@ class PublicGetCategory(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "namespace",
             "category_path",
+            "namespace",
         ]
 
     # endregion get methods
@@ -146,18 +146,18 @@ class PublicGetCategory(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "category_path"):
             result["categoryPath"] = self.category_path
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "store_id"):
-            result["storeId"] = self.store_id
         if hasattr(self, "language"):
             result["language"] = self.language
+        if hasattr(self, "store_id"):
+            result["storeId"] = self.store_id
         return result
 
     # endregion get_x_params methods
@@ -165,9 +165,9 @@ class PublicGetCategory(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "category_path") or self.category_path is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         return True
 
@@ -175,20 +175,20 @@ class PublicGetCategory(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> PublicGetCategory:
-        self.namespace = value
-        return self
-
     def with_category_path(self, value: str) -> PublicGetCategory:
         self.category_path = value
         return self
 
-    def with_store_id(self, value: str) -> PublicGetCategory:
-        self.store_id = value
+    def with_namespace(self, value: str) -> PublicGetCategory:
+        self.namespace = value
         return self
 
     def with_language(self, value: str) -> PublicGetCategory:
         self.language = value
+        return self
+
+    def with_store_id(self, value: str) -> PublicGetCategory:
+        self.store_id = value
         return self
 
     # endregion with_x methods
@@ -197,22 +197,22 @@ class PublicGetCategory(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "category_path") and self.category_path:
             result["categoryPath"] = str(self.category_path)
         elif include_empty:
             result["categoryPath"] = str()
-        if hasattr(self, "store_id") and self.store_id:
-            result["storeId"] = str(self.store_id)
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["storeId"] = str()
+            result["namespace"] = str()
         if hasattr(self, "language") and self.language:
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = str()
+        if hasattr(self, "store_id") and self.store_id:
+            result["storeId"] = str(self.store_id)
+        elif include_empty:
+            result["storeId"] = str()
         return result
 
     # endregion to methods
@@ -243,48 +243,48 @@ class PublicGetCategory(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
         category_path: str,
-        store_id: Optional[str] = None,
+        namespace: str,
         language: Optional[str] = None,
+        store_id: Optional[str] = None,
     ) -> PublicGetCategory:
         instance = cls()
-        instance.namespace = namespace
         instance.category_path = category_path
-        if store_id is not None:
-            instance.store_id = store_id
+        instance.namespace = namespace
         if language is not None:
             instance.language = language
+        if store_id is not None:
+            instance.store_id = store_id
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PublicGetCategory:
         instance = cls()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "categoryPath" in dict_ and dict_["categoryPath"] is not None:
             instance.category_path = str(dict_["categoryPath"])
         elif include_empty:
             instance.category_path = str()
-        if "storeId" in dict_ and dict_["storeId"] is not None:
-            instance.store_id = str(dict_["storeId"])
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.store_id = str()
+            instance.namespace = str()
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
             instance.language = str()
+        if "storeId" in dict_ and dict_["storeId"] is not None:
+            instance.store_id = str(dict_["storeId"])
+        elif include_empty:
+            instance.store_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
             "categoryPath": "category_path",
-            "storeId": "store_id",
+            "namespace": "namespace",
             "language": "language",
+            "storeId": "store_id",
         }
 
     # endregion static methods

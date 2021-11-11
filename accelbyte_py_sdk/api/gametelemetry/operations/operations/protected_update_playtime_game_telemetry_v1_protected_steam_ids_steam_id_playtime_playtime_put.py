@@ -47,9 +47,9 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
 
         security: bearer
 
-        steam_id: (steamId) REQUIRED str in path
-
         playtime: (playtime) REQUIRED str in path
+
+        steam_id: (steamId) REQUIRED str in path
 
     Responses:
         200: OK - (Successful Response)
@@ -66,8 +66,8 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    steam_id: str                                                                                  # REQUIRED in [path]
     playtime: str                                                                                  # REQUIRED in [path]
+    steam_id: str                                                                                  # REQUIRED in [path]
 
     # endregion fields
 
@@ -115,8 +115,8 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "steam_id",
             "playtime",
+            "steam_id",
         ]
 
     # endregion get methods
@@ -130,10 +130,10 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "steam_id"):
-            result["steamId"] = self.steam_id
         if hasattr(self, "playtime"):
             result["playtime"] = self.playtime
+        if hasattr(self, "steam_id"):
+            result["steamId"] = self.steam_id
         return result
 
     # endregion get_x_params methods
@@ -141,9 +141,9 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "steam_id") or self.steam_id is None:
-            return False
         if not hasattr(self, "playtime") or self.playtime is None:
+            return False
+        if not hasattr(self, "steam_id") or self.steam_id is None:
             return False
         return True
 
@@ -151,12 +151,12 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
 
     # region with_x methods
 
-    def with_steam_id(self, value: str) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
-        self.steam_id = value
-        return self
-
     def with_playtime(self, value: str) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
         self.playtime = value
+        return self
+
+    def with_steam_id(self, value: str) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
+        self.steam_id = value
         return self
 
     # endregion with_x methods
@@ -165,14 +165,14 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "steam_id") and self.steam_id:
-            result["steamId"] = str(self.steam_id)
-        elif include_empty:
-            result["steamId"] = str()
         if hasattr(self, "playtime") and self.playtime:
             result["playtime"] = str(self.playtime)
         elif include_empty:
             result["playtime"] = str()
+        if hasattr(self, "steam_id") and self.steam_id:
+            result["steamId"] = str(self.steam_id)
+        elif include_empty:
+            result["steamId"] = str()
         return result
 
     # endregion to methods
@@ -203,32 +203,32 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
     @classmethod
     def create(
         cls,
-        steam_id: str,
         playtime: str,
+        steam_id: str,
     ) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
         instance = cls()
-        instance.steam_id = steam_id
         instance.playtime = playtime
+        instance.steam_id = steam_id
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
         instance = cls()
-        if "steamId" in dict_ and dict_["steamId"] is not None:
-            instance.steam_id = str(dict_["steamId"])
-        elif include_empty:
-            instance.steam_id = str()
         if "playtime" in dict_ and dict_["playtime"] is not None:
             instance.playtime = str(dict_["playtime"])
         elif include_empty:
             instance.playtime = str()
+        if "steamId" in dict_ and dict_["steamId"] is not None:
+            instance.steam_id = str(dict_["steamId"])
+        elif include_empty:
+            instance.steam_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "steamId": "steam_id",
             "playtime": "playtime",
+            "steamId": "steam_id",
         }
 
     # endregion static methods

@@ -34,41 +34,41 @@ class CampaignUpdate(Model):
 
         description: (description) OPTIONAL str
 
-        status: (status) OPTIONAL str
+        items: (items) OPTIONAL List[RedeemableItem]
 
-        tags: (tags) OPTIONAL List[str]
+        max_redeem_count_per_campaign_per_user: (maxRedeemCountPerCampaignPerUser) OPTIONAL int
 
         max_redeem_count_per_code: (maxRedeemCountPerCode) OPTIONAL int
 
         max_redeem_count_per_code_per_user: (maxRedeemCountPerCodePerUser) OPTIONAL int
 
-        max_redeem_count_per_campaign_per_user: (maxRedeemCountPerCampaignPerUser) OPTIONAL int
-
         max_sale_count: (maxSaleCount) OPTIONAL int
-
-        redeem_start: (redeemStart) OPTIONAL str
 
         redeem_end: (redeemEnd) OPTIONAL str
 
+        redeem_start: (redeemStart) OPTIONAL str
+
         redeem_type: (redeemType) OPTIONAL str
 
-        items: (items) OPTIONAL List[RedeemableItem]
+        status: (status) OPTIONAL str
+
+        tags: (tags) OPTIONAL List[str]
     """
 
     # region fields
 
     name: str                                                                                      # REQUIRED
     description: str                                                                               # OPTIONAL
-    status: str                                                                                    # OPTIONAL
-    tags: List[str]                                                                                # OPTIONAL
+    items: List[RedeemableItem]                                                                    # OPTIONAL
+    max_redeem_count_per_campaign_per_user: int                                                    # OPTIONAL
     max_redeem_count_per_code: int                                                                 # OPTIONAL
     max_redeem_count_per_code_per_user: int                                                        # OPTIONAL
-    max_redeem_count_per_campaign_per_user: int                                                    # OPTIONAL
     max_sale_count: int                                                                            # OPTIONAL
-    redeem_start: str                                                                              # OPTIONAL
     redeem_end: str                                                                                # OPTIONAL
+    redeem_start: str                                                                              # OPTIONAL
     redeem_type: str                                                                               # OPTIONAL
-    items: List[RedeemableItem]                                                                    # OPTIONAL
+    status: str                                                                                    # OPTIONAL
+    tags: List[str]                                                                                # OPTIONAL
 
     # endregion fields
 
@@ -82,12 +82,12 @@ class CampaignUpdate(Model):
         self.description = value
         return self
 
-    def with_status(self, value: str) -> CampaignUpdate:
-        self.status = value
+    def with_items(self, value: List[RedeemableItem]) -> CampaignUpdate:
+        self.items = value
         return self
 
-    def with_tags(self, value: List[str]) -> CampaignUpdate:
-        self.tags = value
+    def with_max_redeem_count_per_campaign_per_user(self, value: int) -> CampaignUpdate:
+        self.max_redeem_count_per_campaign_per_user = value
         return self
 
     def with_max_redeem_count_per_code(self, value: int) -> CampaignUpdate:
@@ -98,28 +98,28 @@ class CampaignUpdate(Model):
         self.max_redeem_count_per_code_per_user = value
         return self
 
-    def with_max_redeem_count_per_campaign_per_user(self, value: int) -> CampaignUpdate:
-        self.max_redeem_count_per_campaign_per_user = value
-        return self
-
     def with_max_sale_count(self, value: int) -> CampaignUpdate:
         self.max_sale_count = value
-        return self
-
-    def with_redeem_start(self, value: str) -> CampaignUpdate:
-        self.redeem_start = value
         return self
 
     def with_redeem_end(self, value: str) -> CampaignUpdate:
         self.redeem_end = value
         return self
 
+    def with_redeem_start(self, value: str) -> CampaignUpdate:
+        self.redeem_start = value
+        return self
+
     def with_redeem_type(self, value: str) -> CampaignUpdate:
         self.redeem_type = value
         return self
 
-    def with_items(self, value: List[RedeemableItem]) -> CampaignUpdate:
-        self.items = value
+    def with_status(self, value: str) -> CampaignUpdate:
+        self.status = value
+        return self
+
+    def with_tags(self, value: List[str]) -> CampaignUpdate:
+        self.tags = value
         return self
 
     # endregion with_x methods
@@ -136,14 +136,14 @@ class CampaignUpdate(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = str()
-        if hasattr(self, "status"):
-            result["status"] = str(self.status)
+        if hasattr(self, "items"):
+            result["items"] = [i0.to_dict(include_empty=include_empty) for i0 in self.items]
         elif include_empty:
-            result["status"] = str()
-        if hasattr(self, "tags"):
-            result["tags"] = [str(i0) for i0 in self.tags]
+            result["items"] = []
+        if hasattr(self, "max_redeem_count_per_campaign_per_user"):
+            result["maxRedeemCountPerCampaignPerUser"] = int(self.max_redeem_count_per_campaign_per_user)
         elif include_empty:
-            result["tags"] = []
+            result["maxRedeemCountPerCampaignPerUser"] = int()
         if hasattr(self, "max_redeem_count_per_code"):
             result["maxRedeemCountPerCode"] = int(self.max_redeem_count_per_code)
         elif include_empty:
@@ -152,30 +152,30 @@ class CampaignUpdate(Model):
             result["maxRedeemCountPerCodePerUser"] = int(self.max_redeem_count_per_code_per_user)
         elif include_empty:
             result["maxRedeemCountPerCodePerUser"] = int()
-        if hasattr(self, "max_redeem_count_per_campaign_per_user"):
-            result["maxRedeemCountPerCampaignPerUser"] = int(self.max_redeem_count_per_campaign_per_user)
-        elif include_empty:
-            result["maxRedeemCountPerCampaignPerUser"] = int()
         if hasattr(self, "max_sale_count"):
             result["maxSaleCount"] = int(self.max_sale_count)
         elif include_empty:
             result["maxSaleCount"] = int()
-        if hasattr(self, "redeem_start"):
-            result["redeemStart"] = str(self.redeem_start)
-        elif include_empty:
-            result["redeemStart"] = str()
         if hasattr(self, "redeem_end"):
             result["redeemEnd"] = str(self.redeem_end)
         elif include_empty:
             result["redeemEnd"] = str()
+        if hasattr(self, "redeem_start"):
+            result["redeemStart"] = str(self.redeem_start)
+        elif include_empty:
+            result["redeemStart"] = str()
         if hasattr(self, "redeem_type"):
             result["redeemType"] = str(self.redeem_type)
         elif include_empty:
             result["redeemType"] = str()
-        if hasattr(self, "items"):
-            result["items"] = [i0.to_dict(include_empty=include_empty) for i0 in self.items]
+        if hasattr(self, "status"):
+            result["status"] = str(self.status)
         elif include_empty:
-            result["items"] = []
+            result["status"] = str()
+        if hasattr(self, "tags"):
+            result["tags"] = [str(i0) for i0 in self.tags]
+        elif include_empty:
+            result["tags"] = []
         return result
 
     # endregion to methods
@@ -237,14 +237,14 @@ class CampaignUpdate(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = str()
-        if "status" in dict_ and dict_["status"] is not None:
-            instance.status = str(dict_["status"])
+        if "items" in dict_ and dict_["items"] is not None:
+            instance.items = [RedeemableItem.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["items"]]
         elif include_empty:
-            instance.status = str()
-        if "tags" in dict_ and dict_["tags"] is not None:
-            instance.tags = [str(i0) for i0 in dict_["tags"]]
+            instance.items = []
+        if "maxRedeemCountPerCampaignPerUser" in dict_ and dict_["maxRedeemCountPerCampaignPerUser"] is not None:
+            instance.max_redeem_count_per_campaign_per_user = int(dict_["maxRedeemCountPerCampaignPerUser"])
         elif include_empty:
-            instance.tags = []
+            instance.max_redeem_count_per_campaign_per_user = int()
         if "maxRedeemCountPerCode" in dict_ and dict_["maxRedeemCountPerCode"] is not None:
             instance.max_redeem_count_per_code = int(dict_["maxRedeemCountPerCode"])
         elif include_empty:
@@ -253,30 +253,30 @@ class CampaignUpdate(Model):
             instance.max_redeem_count_per_code_per_user = int(dict_["maxRedeemCountPerCodePerUser"])
         elif include_empty:
             instance.max_redeem_count_per_code_per_user = int()
-        if "maxRedeemCountPerCampaignPerUser" in dict_ and dict_["maxRedeemCountPerCampaignPerUser"] is not None:
-            instance.max_redeem_count_per_campaign_per_user = int(dict_["maxRedeemCountPerCampaignPerUser"])
-        elif include_empty:
-            instance.max_redeem_count_per_campaign_per_user = int()
         if "maxSaleCount" in dict_ and dict_["maxSaleCount"] is not None:
             instance.max_sale_count = int(dict_["maxSaleCount"])
         elif include_empty:
             instance.max_sale_count = int()
-        if "redeemStart" in dict_ and dict_["redeemStart"] is not None:
-            instance.redeem_start = str(dict_["redeemStart"])
-        elif include_empty:
-            instance.redeem_start = str()
         if "redeemEnd" in dict_ and dict_["redeemEnd"] is not None:
             instance.redeem_end = str(dict_["redeemEnd"])
         elif include_empty:
             instance.redeem_end = str()
+        if "redeemStart" in dict_ and dict_["redeemStart"] is not None:
+            instance.redeem_start = str(dict_["redeemStart"])
+        elif include_empty:
+            instance.redeem_start = str()
         if "redeemType" in dict_ and dict_["redeemType"] is not None:
             instance.redeem_type = str(dict_["redeemType"])
         elif include_empty:
             instance.redeem_type = str()
-        if "items" in dict_ and dict_["items"] is not None:
-            instance.items = [RedeemableItem.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["items"]]
+        if "status" in dict_ and dict_["status"] is not None:
+            instance.status = str(dict_["status"])
         elif include_empty:
-            instance.items = []
+            instance.status = str()
+        if "tags" in dict_ and dict_["tags"] is not None:
+            instance.tags = [str(i0) for i0 in dict_["tags"]]
+        elif include_empty:
+            instance.tags = []
         return instance
 
     @staticmethod
@@ -284,16 +284,16 @@ class CampaignUpdate(Model):
         return {
             "name": "name",
             "description": "description",
-            "status": "status",
-            "tags": "tags",
+            "items": "items",
+            "maxRedeemCountPerCampaignPerUser": "max_redeem_count_per_campaign_per_user",
             "maxRedeemCountPerCode": "max_redeem_count_per_code",
             "maxRedeemCountPerCodePerUser": "max_redeem_count_per_code_per_user",
-            "maxRedeemCountPerCampaignPerUser": "max_redeem_count_per_campaign_per_user",
             "maxSaleCount": "max_sale_count",
-            "redeemStart": "redeem_start",
             "redeemEnd": "redeem_end",
+            "redeemStart": "redeem_start",
             "redeemType": "redeem_type",
-            "items": "items",
+            "status": "status",
+            "tags": "tags",
         }
 
     # endregion static methods

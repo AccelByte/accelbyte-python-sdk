@@ -52,9 +52,9 @@ class CreateDeploymentOverride(Operation):
 
         body: (body) REQUIRED ModelsCreateDeploymentOverrideRequest in body
 
-        namespace: (namespace) REQUIRED str in path
-
         deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
         version: (version) REQUIRED str in path
 
@@ -82,8 +82,8 @@ class CreateDeploymentOverride(Operation):
     _location_query: str = None
 
     body: ModelsCreateDeploymentOverrideRequest                                                    # REQUIRED in [body]
-    namespace: str                                                                                 # REQUIRED in [path]
     deployment: str                                                                                # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
     version: str                                                                                   # REQUIRED in [path]
 
     # endregion fields
@@ -133,8 +133,8 @@ class CreateDeploymentOverride(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "body",
-            "namespace",
             "deployment",
+            "namespace",
             "version",
         ]
 
@@ -153,10 +153,10 @@ class CreateDeploymentOverride(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "deployment"):
             result["deployment"] = self.deployment
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         if hasattr(self, "version"):
             result["version"] = self.version
         return result
@@ -168,9 +168,9 @@ class CreateDeploymentOverride(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "body") or self.body is None:
             return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "deployment") or self.deployment is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         if not hasattr(self, "version") or self.version is None:
             return False
@@ -184,12 +184,12 @@ class CreateDeploymentOverride(Operation):
         self.body = value
         return self
 
-    def with_namespace(self, value: str) -> CreateDeploymentOverride:
-        self.namespace = value
-        return self
-
     def with_deployment(self, value: str) -> CreateDeploymentOverride:
         self.deployment = value
+        return self
+
+    def with_namespace(self, value: str) -> CreateDeploymentOverride:
+        self.namespace = value
         return self
 
     def with_version(self, value: str) -> CreateDeploymentOverride:
@@ -206,14 +206,14 @@ class CreateDeploymentOverride(Operation):
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
             result["body"] = ModelsCreateDeploymentOverrideRequest()
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "deployment") and self.deployment:
             result["deployment"] = str(self.deployment)
         elif include_empty:
             result["deployment"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         if hasattr(self, "version") and self.version:
             result["version"] = str(self.version)
         elif include_empty:
@@ -265,14 +265,14 @@ class CreateDeploymentOverride(Operation):
     def create(
         cls,
         body: ModelsCreateDeploymentOverrideRequest,
-        namespace: str,
         deployment: str,
+        namespace: str,
         version: str,
     ) -> CreateDeploymentOverride:
         instance = cls()
         instance.body = body
-        instance.namespace = namespace
         instance.deployment = deployment
+        instance.namespace = namespace
         instance.version = version
         return instance
 
@@ -283,14 +283,14 @@ class CreateDeploymentOverride(Operation):
             instance.body = ModelsCreateDeploymentOverrideRequest.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
             instance.body = ModelsCreateDeploymentOverrideRequest()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "deployment" in dict_ and dict_["deployment"] is not None:
             instance.deployment = str(dict_["deployment"])
         elif include_empty:
             instance.deployment = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         if "version" in dict_ and dict_["version"] is not None:
             instance.version = str(dict_["version"])
         elif include_empty:
@@ -301,8 +301,8 @@ class CreateDeploymentOverride(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
-            "namespace": "namespace",
             "deployment": "deployment",
+            "namespace": "namespace",
             "version": "version",
         }
 

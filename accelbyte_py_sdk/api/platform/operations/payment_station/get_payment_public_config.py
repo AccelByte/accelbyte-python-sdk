@@ -50,11 +50,11 @@ class GetPaymentPublicConfig(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        sandbox: (sandbox) OPTIONAL bool in query
+
         payment_provider: (paymentProvider) REQUIRED str in query
 
         region: (region) REQUIRED str in query
-
-        sandbox: (sandbox) OPTIONAL bool in query
 
     Responses:
         200: OK - Dict[str, Any] (successful operation)
@@ -70,9 +70,9 @@ class GetPaymentPublicConfig(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
+    sandbox: bool                                                                                  # OPTIONAL in [query]
     payment_provider: str                                                                          # REQUIRED in [query]
     region: str                                                                                    # REQUIRED in [query]
-    sandbox: bool                                                                                  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -146,12 +146,12 @@ class GetPaymentPublicConfig(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "sandbox"):
+            result["sandbox"] = self.sandbox
         if hasattr(self, "payment_provider"):
             result["paymentProvider"] = self.payment_provider
         if hasattr(self, "region"):
             result["region"] = self.region
-        if hasattr(self, "sandbox"):
-            result["sandbox"] = self.sandbox
         return result
 
     # endregion get_x_params methods
@@ -175,16 +175,16 @@ class GetPaymentPublicConfig(Operation):
         self.namespace = value
         return self
 
+    def with_sandbox(self, value: bool) -> GetPaymentPublicConfig:
+        self.sandbox = value
+        return self
+
     def with_payment_provider(self, value: str) -> GetPaymentPublicConfig:
         self.payment_provider = value
         return self
 
     def with_region(self, value: str) -> GetPaymentPublicConfig:
         self.region = value
-        return self
-
-    def with_sandbox(self, value: bool) -> GetPaymentPublicConfig:
-        self.sandbox = value
         return self
 
     # endregion with_x methods
@@ -197,6 +197,10 @@ class GetPaymentPublicConfig(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
+        if hasattr(self, "sandbox") and self.sandbox:
+            result["sandbox"] = bool(self.sandbox)
+        elif include_empty:
+            result["sandbox"] = bool()
         if hasattr(self, "payment_provider") and self.payment_provider:
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
@@ -205,10 +209,6 @@ class GetPaymentPublicConfig(Operation):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = str()
-        if hasattr(self, "sandbox") and self.sandbox:
-            result["sandbox"] = bool(self.sandbox)
-        elif include_empty:
-            result["sandbox"] = bool()
         return result
 
     # endregion to methods
@@ -255,6 +255,10 @@ class GetPaymentPublicConfig(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
+        if "sandbox" in dict_ and dict_["sandbox"] is not None:
+            instance.sandbox = bool(dict_["sandbox"])
+        elif include_empty:
+            instance.sandbox = bool()
         if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
             instance.payment_provider = str(dict_["paymentProvider"])
         elif include_empty:
@@ -263,19 +267,15 @@ class GetPaymentPublicConfig(Operation):
             instance.region = str(dict_["region"])
         elif include_empty:
             instance.region = str()
-        if "sandbox" in dict_ and dict_["sandbox"] is not None:
-            instance.sandbox = bool(dict_["sandbox"])
-        elif include_empty:
-            instance.sandbox = bool()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "sandbox": "sandbox",
             "paymentProvider": "payment_provider",
             "region": "region",
-            "sandbox": "sandbox",
         }
 
     # endregion static methods

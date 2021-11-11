@@ -54,9 +54,9 @@ class ExistsAnyUserActiveEntitlement(Operation):
 
         user_id: (userId) REQUIRED str in path
 
-        item_ids: (itemIds) OPTIONAL List[str] in query
-
         app_ids: (appIds) OPTIONAL List[str] in query
+
+        item_ids: (itemIds) OPTIONAL List[str] in query
 
         skus: (skus) OPTIONAL List[str] in query
 
@@ -75,8 +75,8 @@ class ExistsAnyUserActiveEntitlement(Operation):
 
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
-    item_ids: List[str]                                                                            # OPTIONAL in [query]
     app_ids: List[str]                                                                             # OPTIONAL in [query]
+    item_ids: List[str]                                                                            # OPTIONAL in [query]
     skus: List[str]                                                                                # OPTIONAL in [query]
 
     # endregion fields
@@ -152,10 +152,10 @@ class ExistsAnyUserActiveEntitlement(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "item_ids"):
-            result["itemIds"] = self.item_ids
         if hasattr(self, "app_ids"):
             result["appIds"] = self.app_ids
+        if hasattr(self, "item_ids"):
+            result["itemIds"] = self.item_ids
         if hasattr(self, "skus"):
             result["skus"] = self.skus
         return result
@@ -183,12 +183,12 @@ class ExistsAnyUserActiveEntitlement(Operation):
         self.user_id = value
         return self
 
-    def with_item_ids(self, value: List[str]) -> ExistsAnyUserActiveEntitlement:
-        self.item_ids = value
-        return self
-
     def with_app_ids(self, value: List[str]) -> ExistsAnyUserActiveEntitlement:
         self.app_ids = value
+        return self
+
+    def with_item_ids(self, value: List[str]) -> ExistsAnyUserActiveEntitlement:
+        self.item_ids = value
         return self
 
     def with_skus(self, value: List[str]) -> ExistsAnyUserActiveEntitlement:
@@ -209,14 +209,14 @@ class ExistsAnyUserActiveEntitlement(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "item_ids") and self.item_ids:
-            result["itemIds"] = [str(i0) for i0 in self.item_ids]
-        elif include_empty:
-            result["itemIds"] = []
         if hasattr(self, "app_ids") and self.app_ids:
             result["appIds"] = [str(i0) for i0 in self.app_ids]
         elif include_empty:
             result["appIds"] = []
+        if hasattr(self, "item_ids") and self.item_ids:
+            result["itemIds"] = [str(i0) for i0 in self.item_ids]
+        elif include_empty:
+            result["itemIds"] = []
         if hasattr(self, "skus") and self.skus:
             result["skus"] = [str(i0) for i0 in self.skus]
         elif include_empty:
@@ -249,17 +249,17 @@ class ExistsAnyUserActiveEntitlement(Operation):
         cls,
         namespace: str,
         user_id: str,
-        item_ids: Optional[List[str]] = None,
         app_ids: Optional[List[str]] = None,
+        item_ids: Optional[List[str]] = None,
         skus: Optional[List[str]] = None,
     ) -> ExistsAnyUserActiveEntitlement:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
-        if item_ids is not None:
-            instance.item_ids = item_ids
         if app_ids is not None:
             instance.app_ids = app_ids
+        if item_ids is not None:
+            instance.item_ids = item_ids
         if skus is not None:
             instance.skus = skus
         return instance
@@ -275,14 +275,14 @@ class ExistsAnyUserActiveEntitlement(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
-        if "itemIds" in dict_ and dict_["itemIds"] is not None:
-            instance.item_ids = [str(i0) for i0 in dict_["itemIds"]]
-        elif include_empty:
-            instance.item_ids = []
         if "appIds" in dict_ and dict_["appIds"] is not None:
             instance.app_ids = [str(i0) for i0 in dict_["appIds"]]
         elif include_empty:
             instance.app_ids = []
+        if "itemIds" in dict_ and dict_["itemIds"] is not None:
+            instance.item_ids = [str(i0) for i0 in dict_["itemIds"]]
+        elif include_empty:
+            instance.item_ids = []
         if "skus" in dict_ and dict_["skus"] is not None:
             instance.skus = [str(i0) for i0 in dict_["skus"]]
         elif include_empty:
@@ -294,8 +294,8 @@ class ExistsAnyUserActiveEntitlement(Operation):
         return {
             "namespace": "namespace",
             "userId": "user_id",
-            "itemIds": "item_ids",
             "appIds": "app_ids",
+            "itemIds": "item_ids",
             "skus": "skus",
         }
 

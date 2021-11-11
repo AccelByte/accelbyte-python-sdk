@@ -65,9 +65,9 @@ class PlatformTokenRequestHandler(Operation):
 
         security: bearer
 
-        platform_token: (platform_token) OPTIONAL str in form_data
-
         device_id: (device_id) OPTIONAL str in form_data
+
+        platform_token: (platform_token) OPTIONAL str in form_data
 
         namespace: (namespace) REQUIRED str in path
 
@@ -90,8 +90,8 @@ class PlatformTokenRequestHandler(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    platform_token: str                                                                            # OPTIONAL in [form_data]
     device_id: str                                                                                 # OPTIONAL in [form_data]
+    platform_token: str                                                                            # OPTIONAL in [form_data]
     namespace: str                                                                                 # REQUIRED in [path]
     platform_id: str                                                                               # REQUIRED in [path]
 
@@ -157,10 +157,10 @@ class PlatformTokenRequestHandler(Operation):
 
     def get_form_data_params(self) -> dict:
         result = {}
-        if hasattr(self, "platform_token"):
-            result["platform_token"] = self.platform_token
         if hasattr(self, "device_id"):
             result["device_id"] = self.device_id
+        if hasattr(self, "platform_token"):
+            result["platform_token"] = self.platform_token
         return result
 
     def get_path_params(self) -> dict:
@@ -186,12 +186,12 @@ class PlatformTokenRequestHandler(Operation):
 
     # region with_x methods
 
-    def with_platform_token(self, value: str) -> PlatformTokenRequestHandler:
-        self.platform_token = value
-        return self
-
     def with_device_id(self, value: str) -> PlatformTokenRequestHandler:
         self.device_id = value
+        return self
+
+    def with_platform_token(self, value: str) -> PlatformTokenRequestHandler:
+        self.platform_token = value
         return self
 
     def with_namespace(self, value: str) -> PlatformTokenRequestHandler:
@@ -208,14 +208,14 @@ class PlatformTokenRequestHandler(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "platform_token") and self.platform_token:
-            result["platform_token"] = str(self.platform_token)
-        elif include_empty:
-            result["platform_token"] = str()
         if hasattr(self, "device_id") and self.device_id:
             result["device_id"] = str(self.device_id)
         elif include_empty:
             result["device_id"] = str()
+        if hasattr(self, "platform_token") and self.platform_token:
+            result["platform_token"] = str(self.platform_token)
+        elif include_empty:
+            result["platform_token"] = str()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -260,29 +260,29 @@ class PlatformTokenRequestHandler(Operation):
         cls,
         namespace: str,
         platform_id: str,
-        platform_token: Optional[str] = None,
         device_id: Optional[str] = None,
+        platform_token: Optional[str] = None,
     ) -> PlatformTokenRequestHandler:
         instance = cls()
         instance.namespace = namespace
         instance.platform_id = platform_id
-        if platform_token is not None:
-            instance.platform_token = platform_token
         if device_id is not None:
             instance.device_id = device_id
+        if platform_token is not None:
+            instance.platform_token = platform_token
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PlatformTokenRequestHandler:
         instance = cls()
-        if "platform_token" in dict_ and dict_["platform_token"] is not None:
-            instance.platform_token = str(dict_["platform_token"])
-        elif include_empty:
-            instance.platform_token = str()
         if "device_id" in dict_ and dict_["device_id"] is not None:
             instance.device_id = str(dict_["device_id"])
         elif include_empty:
             instance.device_id = str()
+        if "platform_token" in dict_ and dict_["platform_token"] is not None:
+            instance.platform_token = str(dict_["platform_token"])
+        elif include_empty:
+            instance.platform_token = str()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -296,8 +296,8 @@ class PlatformTokenRequestHandler(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "platform_token": "platform_token",
             "device_id": "device_id",
+            "platform_token": "platform_token",
             "namespace": "namespace",
             "platformId": "platform_id",
         }

@@ -28,9 +28,9 @@ class SetUserStatusRequest(WebSocketMessage):
 
     # region fields
 
-    id_: str
-    availability: int
     activity: str
+    availability: int
+    id_: str
 
     # endregion fields
 
@@ -40,12 +40,12 @@ class SetUserStatusRequest(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {SetUserStatusRequest.get_type()}"]
-        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
-        wsm.append(f"id: {id_}")
-        if hasattr(self, "availability") and self.availability:
-            wsm.append(f"availability: {self.availability}")
         if hasattr(self, "activity") and self.activity:
             wsm.append(f"activity: {self.activity}")
+        if hasattr(self, "availability") and self.availability:
+            wsm.append(f"availability: {self.availability}")
+        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
+        wsm.append(f"id: {id_}")
         return "\n".join(wsm)
 
     # endregion methods
@@ -69,11 +69,11 @@ class SetUserStatusRequest(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if (not is_strict and name.casefold() == "availability".casefold()) or (name == "availability"):
-                instance.availability = value
-                continue
             if (not is_strict and name.casefold() == "activity".casefold()) or (name == "activity"):
                 instance.activity = value
+                continue
+            if (not is_strict and name.casefold() == "availability".casefold()) or (name == "availability"):
+                instance.availability = value
                 continue
             if is_strict:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldTypeNotSupported)
@@ -86,9 +86,9 @@ class SetUserStatusRequest(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
-            "availability": "availability",
             "activity": "activity",
+            "availability": "availability",
+            "id": "id_",
         }
 
     # endregion static methods

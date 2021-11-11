@@ -50,13 +50,13 @@ class PublicGetRolesV3(Operation):
 
         security: bearer
 
-        limit: (limit) OPTIONAL int in query
-
         after: (after) OPTIONAL str in query
 
         before: (before) OPTIONAL str in query
 
         is_wildcard: (isWildcard) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
 
     Responses:
         200: OK - ModelRoleNamesResponseV3 (OK)
@@ -73,10 +73,10 @@ class PublicGetRolesV3(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    limit: int                                                                                     # OPTIONAL in [query]
     after: str                                                                                     # OPTIONAL in [query]
     before: str                                                                                    # OPTIONAL in [query]
     is_wildcard: bool                                                                              # OPTIONAL in [query]
+    limit: int                                                                                     # OPTIONAL in [query]
 
     # endregion fields
 
@@ -136,14 +136,14 @@ class PublicGetRolesV3(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "limit"):
-            result["limit"] = self.limit
         if hasattr(self, "after"):
             result["after"] = self.after
         if hasattr(self, "before"):
             result["before"] = self.before
         if hasattr(self, "is_wildcard"):
             result["isWildcard"] = self.is_wildcard
+        if hasattr(self, "limit"):
+            result["limit"] = self.limit
         return result
 
     # endregion get_x_params methods
@@ -157,10 +157,6 @@ class PublicGetRolesV3(Operation):
 
     # region with_x methods
 
-    def with_limit(self, value: int) -> PublicGetRolesV3:
-        self.limit = value
-        return self
-
     def with_after(self, value: str) -> PublicGetRolesV3:
         self.after = value
         return self
@@ -173,16 +169,16 @@ class PublicGetRolesV3(Operation):
         self.is_wildcard = value
         return self
 
+    def with_limit(self, value: int) -> PublicGetRolesV3:
+        self.limit = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "limit") and self.limit:
-            result["limit"] = int(self.limit)
-        elif include_empty:
-            result["limit"] = int()
         if hasattr(self, "after") and self.after:
             result["after"] = str(self.after)
         elif include_empty:
@@ -195,6 +191,10 @@ class PublicGetRolesV3(Operation):
             result["isWildcard"] = bool(self.is_wildcard)
         elif include_empty:
             result["isWildcard"] = bool()
+        if hasattr(self, "limit") and self.limit:
+            result["limit"] = int(self.limit)
+        elif include_empty:
+            result["limit"] = int()
         return result
 
     # endregion to methods
@@ -225,29 +225,25 @@ class PublicGetRolesV3(Operation):
     @classmethod
     def create(
         cls,
-        limit: Optional[int] = None,
         after: Optional[str] = None,
         before: Optional[str] = None,
         is_wildcard: Optional[bool] = None,
+        limit: Optional[int] = None,
     ) -> PublicGetRolesV3:
         instance = cls()
-        if limit is not None:
-            instance.limit = limit
         if after is not None:
             instance.after = after
         if before is not None:
             instance.before = before
         if is_wildcard is not None:
             instance.is_wildcard = is_wildcard
+        if limit is not None:
+            instance.limit = limit
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PublicGetRolesV3:
         instance = cls()
-        if "limit" in dict_ and dict_["limit"] is not None:
-            instance.limit = int(dict_["limit"])
-        elif include_empty:
-            instance.limit = int()
         if "after" in dict_ and dict_["after"] is not None:
             instance.after = str(dict_["after"])
         elif include_empty:
@@ -260,15 +256,19 @@ class PublicGetRolesV3(Operation):
             instance.is_wildcard = bool(dict_["isWildcard"])
         elif include_empty:
             instance.is_wildcard = bool()
+        if "limit" in dict_ and dict_["limit"] is not None:
+            instance.limit = int(dict_["limit"])
+        elif include_empty:
+            instance.limit = int()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "limit": "limit",
             "after": "after",
             "before": "before",
             "isWildcard": "is_wildcard",
+            "limit": "limit",
         }
 
     # endregion static methods

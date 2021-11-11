@@ -53,9 +53,9 @@ class GetProfile(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
-
         profile_id: (profileId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
 
     Responses:
         200: OK - GameProfileInfo (successful operation)
@@ -73,8 +73,8 @@ class GetProfile(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    user_id: str                                                                                   # REQUIRED in [path]
     profile_id: str                                                                                # REQUIRED in [path]
+    user_id: str                                                                                   # REQUIRED in [path]
 
     # endregion fields
 
@@ -123,8 +123,8 @@ class GetProfile(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "namespace",
-            "user_id",
             "profile_id",
+            "user_id",
         ]
 
     # endregion get methods
@@ -140,10 +140,10 @@ class GetProfile(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
         if hasattr(self, "profile_id"):
             result["profileId"] = self.profile_id
+        if hasattr(self, "user_id"):
+            result["userId"] = self.user_id
         return result
 
     # endregion get_x_params methods
@@ -153,9 +153,9 @@ class GetProfile(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
         if not hasattr(self, "profile_id") or self.profile_id is None:
+            return False
+        if not hasattr(self, "user_id") or self.user_id is None:
             return False
         return True
 
@@ -167,12 +167,12 @@ class GetProfile(Operation):
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> GetProfile:
-        self.user_id = value
-        return self
-
     def with_profile_id(self, value: str) -> GetProfile:
         self.profile_id = value
+        return self
+
+    def with_user_id(self, value: str) -> GetProfile:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -185,14 +185,14 @@ class GetProfile(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
         if hasattr(self, "profile_id") and self.profile_id:
             result["profileId"] = str(self.profile_id)
         elif include_empty:
             result["profileId"] = str()
+        if hasattr(self, "user_id") and self.user_id:
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         return result
 
     # endregion to methods
@@ -224,13 +224,13 @@ class GetProfile(Operation):
     def create(
         cls,
         namespace: str,
-        user_id: str,
         profile_id: str,
+        user_id: str,
     ) -> GetProfile:
         instance = cls()
         instance.namespace = namespace
-        instance.user_id = user_id
         instance.profile_id = profile_id
+        instance.user_id = user_id
         return instance
 
     @classmethod
@@ -240,22 +240,22 @@ class GetProfile(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
         if "profileId" in dict_ and dict_["profileId"] is not None:
             instance.profile_id = str(dict_["profileId"])
         elif include_empty:
             instance.profile_id = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "userId": "user_id",
             "profileId": "profile_id",
+            "userId": "user_id",
         }
 
     # endregion static methods

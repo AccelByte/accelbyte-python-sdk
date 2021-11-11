@@ -30,52 +30,64 @@ class AppEntitlementInfo(Model):
     """App entitlement info (AppEntitlementInfo)
 
     Properties:
+        granted_at: (grantedAt) REQUIRED str
+
         namespace: (namespace) REQUIRED str
+
+        status: (status) REQUIRED str
+
+        user_id: (userId) REQUIRED str
 
         app_id: (appId) OPTIONAL str
 
         app_type: (appType) OPTIONAL str
 
-        sku: (sku) OPTIONAL str
-
-        user_id: (userId) REQUIRED str
-
-        store_id: (storeId) OPTIONAL str
+        end_date: (endDate) OPTIONAL str
 
         item_id: (itemId) OPTIONAL str
 
+        item_snapshot: (itemSnapshot) OPTIONAL ItemSnapshot
+
+        sku: (sku) OPTIONAL str
+
         start_date: (startDate) OPTIONAL str
 
-        end_date: (endDate) OPTIONAL str
-
-        granted_at: (grantedAt) REQUIRED str
-
-        status: (status) REQUIRED str
-
-        item_snapshot: (itemSnapshot) OPTIONAL ItemSnapshot
+        store_id: (storeId) OPTIONAL str
     """
 
     # region fields
 
+    granted_at: str                                                                                # REQUIRED
     namespace: str                                                                                 # REQUIRED
+    status: str                                                                                    # REQUIRED
+    user_id: str                                                                                   # REQUIRED
     app_id: str                                                                                    # OPTIONAL
     app_type: str                                                                                  # OPTIONAL
-    sku: str                                                                                       # OPTIONAL
-    user_id: str                                                                                   # REQUIRED
-    store_id: str                                                                                  # OPTIONAL
-    item_id: str                                                                                   # OPTIONAL
-    start_date: str                                                                                # OPTIONAL
     end_date: str                                                                                  # OPTIONAL
-    granted_at: str                                                                                # REQUIRED
-    status: str                                                                                    # REQUIRED
+    item_id: str                                                                                   # OPTIONAL
     item_snapshot: ItemSnapshot                                                                    # OPTIONAL
+    sku: str                                                                                       # OPTIONAL
+    start_date: str                                                                                # OPTIONAL
+    store_id: str                                                                                  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
+    def with_granted_at(self, value: str) -> AppEntitlementInfo:
+        self.granted_at = value
+        return self
+
     def with_namespace(self, value: str) -> AppEntitlementInfo:
         self.namespace = value
+        return self
+
+    def with_status(self, value: str) -> AppEntitlementInfo:
+        self.status = value
+        return self
+
+    def with_user_id(self, value: str) -> AppEntitlementInfo:
+        self.user_id = value
         return self
 
     def with_app_id(self, value: str) -> AppEntitlementInfo:
@@ -86,40 +98,28 @@ class AppEntitlementInfo(Model):
         self.app_type = value
         return self
 
-    def with_sku(self, value: str) -> AppEntitlementInfo:
-        self.sku = value
-        return self
-
-    def with_user_id(self, value: str) -> AppEntitlementInfo:
-        self.user_id = value
-        return self
-
-    def with_store_id(self, value: str) -> AppEntitlementInfo:
-        self.store_id = value
+    def with_end_date(self, value: str) -> AppEntitlementInfo:
+        self.end_date = value
         return self
 
     def with_item_id(self, value: str) -> AppEntitlementInfo:
         self.item_id = value
         return self
 
+    def with_item_snapshot(self, value: ItemSnapshot) -> AppEntitlementInfo:
+        self.item_snapshot = value
+        return self
+
+    def with_sku(self, value: str) -> AppEntitlementInfo:
+        self.sku = value
+        return self
+
     def with_start_date(self, value: str) -> AppEntitlementInfo:
         self.start_date = value
         return self
 
-    def with_end_date(self, value: str) -> AppEntitlementInfo:
-        self.end_date = value
-        return self
-
-    def with_granted_at(self, value: str) -> AppEntitlementInfo:
-        self.granted_at = value
-        return self
-
-    def with_status(self, value: str) -> AppEntitlementInfo:
-        self.status = value
-        return self
-
-    def with_item_snapshot(self, value: ItemSnapshot) -> AppEntitlementInfo:
-        self.item_snapshot = value
+    def with_store_id(self, value: str) -> AppEntitlementInfo:
+        self.store_id = value
         return self
 
     # endregion with_x methods
@@ -128,10 +128,22 @@ class AppEntitlementInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "granted_at"):
+            result["grantedAt"] = str(self.granted_at)
+        elif include_empty:
+            result["grantedAt"] = str()
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
+        if hasattr(self, "status"):
+            result["status"] = str(self.status)
+        elif include_empty:
+            result["status"] = str()
+        if hasattr(self, "user_id"):
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         if hasattr(self, "app_id"):
             result["appId"] = str(self.app_id)
         elif include_empty:
@@ -140,42 +152,30 @@ class AppEntitlementInfo(Model):
             result["appType"] = str(self.app_type)
         elif include_empty:
             result["appType"] = str()
-        if hasattr(self, "sku"):
-            result["sku"] = str(self.sku)
-        elif include_empty:
-            result["sku"] = str()
-        if hasattr(self, "user_id"):
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
-        if hasattr(self, "store_id"):
-            result["storeId"] = str(self.store_id)
-        elif include_empty:
-            result["storeId"] = str()
-        if hasattr(self, "item_id"):
-            result["itemId"] = str(self.item_id)
-        elif include_empty:
-            result["itemId"] = str()
-        if hasattr(self, "start_date"):
-            result["startDate"] = str(self.start_date)
-        elif include_empty:
-            result["startDate"] = str()
         if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
             result["endDate"] = str()
-        if hasattr(self, "granted_at"):
-            result["grantedAt"] = str(self.granted_at)
+        if hasattr(self, "item_id"):
+            result["itemId"] = str(self.item_id)
         elif include_empty:
-            result["grantedAt"] = str()
-        if hasattr(self, "status"):
-            result["status"] = str(self.status)
-        elif include_empty:
-            result["status"] = str()
+            result["itemId"] = str()
         if hasattr(self, "item_snapshot"):
             result["itemSnapshot"] = self.item_snapshot.to_dict(include_empty=include_empty)
         elif include_empty:
             result["itemSnapshot"] = ItemSnapshot()
+        if hasattr(self, "sku"):
+            result["sku"] = str(self.sku)
+        elif include_empty:
+            result["sku"] = str()
+        if hasattr(self, "start_date"):
+            result["startDate"] = str(self.start_date)
+        elif include_empty:
+            result["startDate"] = str()
+        if hasattr(self, "store_id"):
+            result["storeId"] = str(self.store_id)
+        elif include_empty:
+            result["storeId"] = str()
         return result
 
     # endregion to methods
@@ -226,10 +226,22 @@ class AppEntitlementInfo(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "grantedAt" in dict_ and dict_["grantedAt"] is not None:
+            instance.granted_at = str(dict_["grantedAt"])
+        elif include_empty:
+            instance.granted_at = str()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
+        if "status" in dict_ and dict_["status"] is not None:
+            instance.status = str(dict_["status"])
+        elif include_empty:
+            instance.status = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         if "appId" in dict_ and dict_["appId"] is not None:
             instance.app_id = str(dict_["appId"])
         elif include_empty:
@@ -238,59 +250,47 @@ class AppEntitlementInfo(Model):
             instance.app_type = str(dict_["appType"])
         elif include_empty:
             instance.app_type = str()
-        if "sku" in dict_ and dict_["sku"] is not None:
-            instance.sku = str(dict_["sku"])
-        elif include_empty:
-            instance.sku = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
-        if "storeId" in dict_ and dict_["storeId"] is not None:
-            instance.store_id = str(dict_["storeId"])
-        elif include_empty:
-            instance.store_id = str()
-        if "itemId" in dict_ and dict_["itemId"] is not None:
-            instance.item_id = str(dict_["itemId"])
-        elif include_empty:
-            instance.item_id = str()
-        if "startDate" in dict_ and dict_["startDate"] is not None:
-            instance.start_date = str(dict_["startDate"])
-        elif include_empty:
-            instance.start_date = str()
         if "endDate" in dict_ and dict_["endDate"] is not None:
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
             instance.end_date = str()
-        if "grantedAt" in dict_ and dict_["grantedAt"] is not None:
-            instance.granted_at = str(dict_["grantedAt"])
+        if "itemId" in dict_ and dict_["itemId"] is not None:
+            instance.item_id = str(dict_["itemId"])
         elif include_empty:
-            instance.granted_at = str()
-        if "status" in dict_ and dict_["status"] is not None:
-            instance.status = str(dict_["status"])
-        elif include_empty:
-            instance.status = str()
+            instance.item_id = str()
         if "itemSnapshot" in dict_ and dict_["itemSnapshot"] is not None:
             instance.item_snapshot = ItemSnapshot.create_from_dict(dict_["itemSnapshot"], include_empty=include_empty)
         elif include_empty:
             instance.item_snapshot = ItemSnapshot()
+        if "sku" in dict_ and dict_["sku"] is not None:
+            instance.sku = str(dict_["sku"])
+        elif include_empty:
+            instance.sku = str()
+        if "startDate" in dict_ and dict_["startDate"] is not None:
+            instance.start_date = str(dict_["startDate"])
+        elif include_empty:
+            instance.start_date = str()
+        if "storeId" in dict_ and dict_["storeId"] is not None:
+            instance.store_id = str(dict_["storeId"])
+        elif include_empty:
+            instance.store_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "grantedAt": "granted_at",
             "namespace": "namespace",
+            "status": "status",
+            "userId": "user_id",
             "appId": "app_id",
             "appType": "app_type",
-            "sku": "sku",
-            "userId": "user_id",
-            "storeId": "store_id",
-            "itemId": "item_id",
-            "startDate": "start_date",
             "endDate": "end_date",
-            "grantedAt": "granted_at",
-            "status": "status",
+            "itemId": "item_id",
             "itemSnapshot": "item_snapshot",
+            "sku": "sku",
+            "startDate": "start_date",
+            "storeId": "store_id",
         }
 
     # endregion static methods

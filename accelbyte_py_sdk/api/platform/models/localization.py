@@ -32,17 +32,17 @@ class Localization(Model):
 
         description: (description) OPTIONAL str
 
-        long_description: (longDescription) OPTIONAL str
-
         local_ext: (localExt) OPTIONAL Dict[str, Any]
+
+        long_description: (longDescription) OPTIONAL str
     """
 
     # region fields
 
     title: str                                                                                     # REQUIRED
     description: str                                                                               # OPTIONAL
-    long_description: str                                                                          # OPTIONAL
     local_ext: Dict[str, Any]                                                                      # OPTIONAL
+    long_description: str                                                                          # OPTIONAL
 
     # endregion fields
 
@@ -56,12 +56,12 @@ class Localization(Model):
         self.description = value
         return self
 
-    def with_long_description(self, value: str) -> Localization:
-        self.long_description = value
-        return self
-
     def with_local_ext(self, value: Dict[str, Any]) -> Localization:
         self.local_ext = value
+        return self
+
+    def with_long_description(self, value: str) -> Localization:
+        self.long_description = value
         return self
 
     # endregion with_x methods
@@ -78,14 +78,14 @@ class Localization(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = str()
-        if hasattr(self, "long_description"):
-            result["longDescription"] = str(self.long_description)
-        elif include_empty:
-            result["longDescription"] = str()
         if hasattr(self, "local_ext"):
             result["localExt"] = {str(k0): v0 for k0, v0 in self.local_ext.items()}
         elif include_empty:
             result["localExt"] = {}
+        if hasattr(self, "long_description"):
+            result["longDescription"] = str(self.long_description)
+        elif include_empty:
+            result["longDescription"] = str()
         return result
 
     # endregion to methods
@@ -123,14 +123,14 @@ class Localization(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = str()
-        if "longDescription" in dict_ and dict_["longDescription"] is not None:
-            instance.long_description = str(dict_["longDescription"])
-        elif include_empty:
-            instance.long_description = str()
         if "localExt" in dict_ and dict_["localExt"] is not None:
             instance.local_ext = {str(k0): v0 for k0, v0 in dict_["localExt"].items()}
         elif include_empty:
             instance.local_ext = {}
+        if "longDescription" in dict_ and dict_["longDescription"] is not None:
+            instance.long_description = str(dict_["longDescription"])
+        elif include_empty:
+            instance.long_description = str()
         return instance
 
     @staticmethod
@@ -138,8 +138,8 @@ class Localization(Model):
         return {
             "title": "title",
             "description": "description",
-            "longDescription": "long_description",
             "localExt": "local_ext",
+            "longDescription": "long_description",
         }
 
     # endregion static methods

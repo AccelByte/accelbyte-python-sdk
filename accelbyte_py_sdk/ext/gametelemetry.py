@@ -33,11 +33,11 @@ def create_http_validation_error_example() -> HTTPValidationError:
 
 def create_telemetry_body_example() -> TelemetryBody:
     instance = TelemetryBody()
-    instance.event_id = randomize()
     instance.event_name = randomize()
     instance.event_namespace = randomize("slug")
-    instance.event_timestamp = randomize("date")
     instance.payload = {randomize(): randomize()}
+    instance.event_id = randomize()
+    instance.event_timestamp = randomize("date")
     return instance
 
 

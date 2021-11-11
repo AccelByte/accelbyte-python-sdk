@@ -52,15 +52,15 @@ def auth_code_request_v3(platform_id: str, request_id: str, client_id: Optional[
 
 
 @same_doc_as(AuthorizeV3)
-def authorize_v3(response_type: str, client_id: str, redirect_uri: Optional[str] = None, state: Optional[str] = None, scope: Optional[str] = None, code_challenge: Optional[str] = None, code_challenge_method: Optional[str] = None, target_auth_page: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def authorize_v3(client_id: str, response_type: str, code_challenge: Optional[str] = None, code_challenge_method: Optional[str] = None, redirect_uri: Optional[str] = None, scope: Optional[str] = None, state: Optional[str] = None, target_auth_page: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = AuthorizeV3.create(
-        response_type=response_type,
         client_id=client_id,
-        redirect_uri=redirect_uri,
-        state=state,
-        scope=scope,
+        response_type=response_type,
         code_challenge=code_challenge,
         code_challenge_method=code_challenge_method,
+        redirect_uri=redirect_uri,
+        scope=scope,
+        state=state,
         target_auth_page=target_auth_page,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -79,25 +79,25 @@ def get_revocation_list_v3(x_additional_headers: Optional[Dict[str, str]] = None
 
 
 @same_doc_as(PlatformTokenGrantV3)
-def platform_token_grant_v3(platform_id: str, platform_token: Optional[str] = None, client_id: Optional[str] = None, device_id: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def platform_token_grant_v3(platform_id: str, client_id: Optional[str] = None, device_id: Optional[str] = None, platform_token: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = PlatformTokenGrantV3.create(
         platform_id=platform_id,
-        platform_token=platform_token,
         client_id=client_id,
         device_id=device_id,
+        platform_token=platform_token,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(RetrieveUserThirdPartyPlatformTokenV3)
-def retrieve_user_third_party_platform_token_v3(user_id: str, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def retrieve_user_third_party_platform_token_v3(platform_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = RetrieveUserThirdPartyPlatformTokenV3.create(
-        user_id=user_id,
         platform_id=platform_id,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -117,13 +117,13 @@ def revoke_user_v3(user_id: str, namespace: Optional[str] = None, x_additional_h
 
 
 @same_doc_as(TokenGrantV3)
-def token_grant_v3(grant_type: str, device_id: Optional[str] = None, code: Optional[str] = None, code_verifier: Optional[str] = None, client_id: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def token_grant_v3(grant_type: str, device_id: Optional[str] = None, client_id: Optional[str] = None, code: Optional[str] = None, code_verifier: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = TokenGrantV3.create(
         grant_type=grant_type,
         device_id=device_id,
+        client_id=client_id,
         code=code,
         code_verifier=code_verifier,
-        client_id=client_id,
         redirect_uri=redirect_uri,
         refresh_token=refresh_token,
     )

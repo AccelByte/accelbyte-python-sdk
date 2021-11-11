@@ -55,13 +55,13 @@ class PublicGetItemByAppId(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        store_id: (storeId) OPTIONAL str in query
-
-        app_id: (appId) REQUIRED str in query
-
         language: (language) OPTIONAL str in query
 
         region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        app_id: (appId) REQUIRED str in query
 
     Responses:
         200: OK - ItemInfo (successful operation)
@@ -79,10 +79,10 @@ class PublicGetItemByAppId(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    store_id: str                                                                                  # OPTIONAL in [query]
-    app_id: str                                                                                    # REQUIRED in [query]
     language: str                                                                                  # OPTIONAL in [query]
     region: str                                                                                    # OPTIONAL in [query]
+    store_id: str                                                                                  # OPTIONAL in [query]
+    app_id: str                                                                                    # REQUIRED in [query]
 
     # endregion fields
 
@@ -155,14 +155,14 @@ class PublicGetItemByAppId(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "store_id"):
-            result["storeId"] = self.store_id
-        if hasattr(self, "app_id"):
-            result["appId"] = self.app_id
         if hasattr(self, "language"):
             result["language"] = self.language
         if hasattr(self, "region"):
             result["region"] = self.region
+        if hasattr(self, "store_id"):
+            result["storeId"] = self.store_id
+        if hasattr(self, "app_id"):
+            result["appId"] = self.app_id
         return result
 
     # endregion get_x_params methods
@@ -184,20 +184,20 @@ class PublicGetItemByAppId(Operation):
         self.namespace = value
         return self
 
-    def with_store_id(self, value: str) -> PublicGetItemByAppId:
-        self.store_id = value
-        return self
-
-    def with_app_id(self, value: str) -> PublicGetItemByAppId:
-        self.app_id = value
-        return self
-
     def with_language(self, value: str) -> PublicGetItemByAppId:
         self.language = value
         return self
 
     def with_region(self, value: str) -> PublicGetItemByAppId:
         self.region = value
+        return self
+
+    def with_store_id(self, value: str) -> PublicGetItemByAppId:
+        self.store_id = value
+        return self
+
+    def with_app_id(self, value: str) -> PublicGetItemByAppId:
+        self.app_id = value
         return self
 
     # endregion with_x methods
@@ -210,14 +210,6 @@ class PublicGetItemByAppId(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "store_id") and self.store_id:
-            result["storeId"] = str(self.store_id)
-        elif include_empty:
-            result["storeId"] = str()
-        if hasattr(self, "app_id") and self.app_id:
-            result["appId"] = str(self.app_id)
-        elif include_empty:
-            result["appId"] = str()
         if hasattr(self, "language") and self.language:
             result["language"] = str(self.language)
         elif include_empty:
@@ -226,6 +218,14 @@ class PublicGetItemByAppId(Operation):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = str()
+        if hasattr(self, "store_id") and self.store_id:
+            result["storeId"] = str(self.store_id)
+        elif include_empty:
+            result["storeId"] = str()
+        if hasattr(self, "app_id") and self.app_id:
+            result["appId"] = str(self.app_id)
+        elif include_empty:
+            result["appId"] = str()
         return result
 
     # endregion to methods
@@ -258,19 +258,19 @@ class PublicGetItemByAppId(Operation):
         cls,
         namespace: str,
         app_id: str,
-        store_id: Optional[str] = None,
         language: Optional[str] = None,
         region: Optional[str] = None,
+        store_id: Optional[str] = None,
     ) -> PublicGetItemByAppId:
         instance = cls()
         instance.namespace = namespace
         instance.app_id = app_id
-        if store_id is not None:
-            instance.store_id = store_id
         if language is not None:
             instance.language = language
         if region is not None:
             instance.region = region
+        if store_id is not None:
+            instance.store_id = store_id
         return instance
 
     @classmethod
@@ -280,14 +280,6 @@ class PublicGetItemByAppId(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "storeId" in dict_ and dict_["storeId"] is not None:
-            instance.store_id = str(dict_["storeId"])
-        elif include_empty:
-            instance.store_id = str()
-        if "appId" in dict_ and dict_["appId"] is not None:
-            instance.app_id = str(dict_["appId"])
-        elif include_empty:
-            instance.app_id = str()
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
@@ -296,16 +288,24 @@ class PublicGetItemByAppId(Operation):
             instance.region = str(dict_["region"])
         elif include_empty:
             instance.region = str()
+        if "storeId" in dict_ and dict_["storeId"] is not None:
+            instance.store_id = str(dict_["storeId"])
+        elif include_empty:
+            instance.store_id = str()
+        if "appId" in dict_ and dict_["appId"] is not None:
+            instance.app_id = str(dict_["appId"])
+        elif include_empty:
+            instance.app_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "storeId": "store_id",
-            "appId": "app_id",
             "language": "language",
             "region": "region",
+            "storeId": "store_id",
+            "appId": "app_id",
         }
 
     # endregion static methods

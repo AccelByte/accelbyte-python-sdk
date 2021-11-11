@@ -28,52 +28,48 @@ class CurrencyInfo(Model):
     """Currency info (CurrencyInfo)
 
     Properties:
+        created_at: (createdAt) REQUIRED str
+
         currency_code: (currencyCode) REQUIRED str
 
-        localization_descriptions: (localizationDescriptions) OPTIONAL Dict[str, str]
-
         currency_symbol: (currencySymbol) REQUIRED str
-
-        namespace: (namespace) REQUIRED str
 
         currency_type: (currencyType) REQUIRED str
 
         decimals: (decimals) REQUIRED int
 
-        created_at: (createdAt) REQUIRED str
+        namespace: (namespace) REQUIRED str
 
         updated_at: (updatedAt) REQUIRED str
+
+        localization_descriptions: (localizationDescriptions) OPTIONAL Dict[str, str]
     """
 
     # region fields
 
+    created_at: str                                                                                # REQUIRED
     currency_code: str                                                                             # REQUIRED
-    localization_descriptions: Dict[str, str]                                                      # OPTIONAL
     currency_symbol: str                                                                           # REQUIRED
-    namespace: str                                                                                 # REQUIRED
     currency_type: str                                                                             # REQUIRED
     decimals: int                                                                                  # REQUIRED
-    created_at: str                                                                                # REQUIRED
+    namespace: str                                                                                 # REQUIRED
     updated_at: str                                                                                # REQUIRED
+    localization_descriptions: Dict[str, str]                                                      # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
+    def with_created_at(self, value: str) -> CurrencyInfo:
+        self.created_at = value
+        return self
+
     def with_currency_code(self, value: str) -> CurrencyInfo:
         self.currency_code = value
         return self
 
-    def with_localization_descriptions(self, value: Dict[str, str]) -> CurrencyInfo:
-        self.localization_descriptions = value
-        return self
-
     def with_currency_symbol(self, value: str) -> CurrencyInfo:
         self.currency_symbol = value
-        return self
-
-    def with_namespace(self, value: str) -> CurrencyInfo:
-        self.namespace = value
         return self
 
     def with_currency_type(self, value: str) -> CurrencyInfo:
@@ -84,12 +80,16 @@ class CurrencyInfo(Model):
         self.decimals = value
         return self
 
-    def with_created_at(self, value: str) -> CurrencyInfo:
-        self.created_at = value
+    def with_namespace(self, value: str) -> CurrencyInfo:
+        self.namespace = value
         return self
 
     def with_updated_at(self, value: str) -> CurrencyInfo:
         self.updated_at = value
+        return self
+
+    def with_localization_descriptions(self, value: Dict[str, str]) -> CurrencyInfo:
+        self.localization_descriptions = value
         return self
 
     # endregion with_x methods
@@ -98,22 +98,18 @@ class CurrencyInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "created_at"):
+            result["createdAt"] = str(self.created_at)
+        elif include_empty:
+            result["createdAt"] = str()
         if hasattr(self, "currency_code"):
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
             result["currencyCode"] = str()
-        if hasattr(self, "localization_descriptions"):
-            result["localizationDescriptions"] = {str(k0): str(v0) for k0, v0 in self.localization_descriptions.items()}
-        elif include_empty:
-            result["localizationDescriptions"] = {}
         if hasattr(self, "currency_symbol"):
             result["currencySymbol"] = str(self.currency_symbol)
         elif include_empty:
             result["currencySymbol"] = str()
-        if hasattr(self, "namespace"):
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "currency_type"):
             result["currencyType"] = str(self.currency_type)
         elif include_empty:
@@ -122,14 +118,18 @@ class CurrencyInfo(Model):
             result["decimals"] = int(self.decimals)
         elif include_empty:
             result["decimals"] = int()
-        if hasattr(self, "created_at"):
-            result["createdAt"] = str(self.created_at)
+        if hasattr(self, "namespace"):
+            result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["createdAt"] = str()
+            result["namespace"] = str()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()
+        if hasattr(self, "localization_descriptions"):
+            result["localizationDescriptions"] = {str(k0): str(v0) for k0, v0 in self.localization_descriptions.items()}
+        elif include_empty:
+            result["localizationDescriptions"] = {}
         return result
 
     # endregion to methods
@@ -165,22 +165,18 @@ class CurrencyInfo(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "createdAt" in dict_ and dict_["createdAt"] is not None:
+            instance.created_at = str(dict_["createdAt"])
+        elif include_empty:
+            instance.created_at = str()
         if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
             instance.currency_code = str(dict_["currencyCode"])
         elif include_empty:
             instance.currency_code = str()
-        if "localizationDescriptions" in dict_ and dict_["localizationDescriptions"] is not None:
-            instance.localization_descriptions = {str(k0): str(v0) for k0, v0 in dict_["localizationDescriptions"].items()}
-        elif include_empty:
-            instance.localization_descriptions = {}
         if "currencySymbol" in dict_ and dict_["currencySymbol"] is not None:
             instance.currency_symbol = str(dict_["currencySymbol"])
         elif include_empty:
             instance.currency_symbol = str()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "currencyType" in dict_ and dict_["currencyType"] is not None:
             instance.currency_type = str(dict_["currencyType"])
         elif include_empty:
@@ -189,27 +185,31 @@ class CurrencyInfo(Model):
             instance.decimals = int(dict_["decimals"])
         elif include_empty:
             instance.decimals = int()
-        if "createdAt" in dict_ and dict_["createdAt"] is not None:
-            instance.created_at = str(dict_["createdAt"])
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.created_at = str()
+            instance.namespace = str()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = str()
+        if "localizationDescriptions" in dict_ and dict_["localizationDescriptions"] is not None:
+            instance.localization_descriptions = {str(k0): str(v0) for k0, v0 in dict_["localizationDescriptions"].items()}
+        elif include_empty:
+            instance.localization_descriptions = {}
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "createdAt": "created_at",
             "currencyCode": "currency_code",
-            "localizationDescriptions": "localization_descriptions",
             "currencySymbol": "currency_symbol",
-            "namespace": "namespace",
             "currencyType": "currency_type",
             "decimals": "decimals",
-            "createdAt": "created_at",
+            "namespace": "namespace",
             "updatedAt": "updated_at",
+            "localizationDescriptions": "localization_descriptions",
         }
 
     # endregion static methods

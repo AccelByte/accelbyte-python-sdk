@@ -49,9 +49,9 @@ class UsersPresenceHandlerV1(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        user_ids: (userIds) REQUIRED str in query
-
         count_only: (countOnly) OPTIONAL bool in query
+
+        user_ids: (userIds) REQUIRED str in query
 
     Responses:
         200: OK - HandlersGetUsersPresenceResponse (OK)
@@ -73,8 +73,8 @@ class UsersPresenceHandlerV1(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    user_ids: str                                                                                  # REQUIRED in [query]
     count_only: bool                                                                               # OPTIONAL in [query]
+    user_ids: str                                                                                  # REQUIRED in [query]
 
     # endregion fields
 
@@ -147,10 +147,10 @@ class UsersPresenceHandlerV1(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "user_ids"):
-            result["userIds"] = self.user_ids
         if hasattr(self, "count_only"):
             result["countOnly"] = self.count_only
+        if hasattr(self, "user_ids"):
+            result["userIds"] = self.user_ids
         return result
 
     # endregion get_x_params methods
@@ -172,12 +172,12 @@ class UsersPresenceHandlerV1(Operation):
         self.namespace = value
         return self
 
-    def with_user_ids(self, value: str) -> UsersPresenceHandlerV1:
-        self.user_ids = value
-        return self
-
     def with_count_only(self, value: bool) -> UsersPresenceHandlerV1:
         self.count_only = value
+        return self
+
+    def with_user_ids(self, value: str) -> UsersPresenceHandlerV1:
+        self.user_ids = value
         return self
 
     # endregion with_x methods
@@ -190,14 +190,14 @@ class UsersPresenceHandlerV1(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_ids") and self.user_ids:
-            result["userIds"] = str(self.user_ids)
-        elif include_empty:
-            result["userIds"] = str()
         if hasattr(self, "count_only") and self.count_only:
             result["countOnly"] = bool(self.count_only)
         elif include_empty:
             result["countOnly"] = bool()
+        if hasattr(self, "user_ids") and self.user_ids:
+            result["userIds"] = str(self.user_ids)
+        elif include_empty:
+            result["userIds"] = str()
         return result
 
     # endregion to methods
@@ -254,22 +254,22 @@ class UsersPresenceHandlerV1(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "userIds" in dict_ and dict_["userIds"] is not None:
-            instance.user_ids = str(dict_["userIds"])
-        elif include_empty:
-            instance.user_ids = str()
         if "countOnly" in dict_ and dict_["countOnly"] is not None:
             instance.count_only = bool(dict_["countOnly"])
         elif include_empty:
             instance.count_only = bool()
+        if "userIds" in dict_ and dict_["userIds"] is not None:
+            instance.user_ids = str(dict_["userIds"])
+        elif include_empty:
+            instance.user_ids = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "userIds": "user_ids",
             "countOnly": "count_only",
+            "userIds": "user_ids",
         }
 
     # endregion static methods

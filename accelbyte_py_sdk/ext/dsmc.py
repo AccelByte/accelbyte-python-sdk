@@ -561,11 +561,11 @@ def create_models_server_session_response_example() -> ModelsServerSessionRespon
 
 def create_models_session_example() -> ModelsSession:
     instance = ModelsSession()
-    instance.server = create_models_server_example()
     instance.id_ = randomize()
     instance.namespace = randomize("slug")
     instance.provider = randomize()
     instance.region = randomize()
+    instance.server = create_models_server_example()
     return instance
 
 

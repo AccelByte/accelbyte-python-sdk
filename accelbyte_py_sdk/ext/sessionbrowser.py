@@ -176,16 +176,16 @@ def create_models_match_making_example() -> ModelsMatchMaking:
     instance.deployment = randomize()
     instance.event = randomize()
     instance.game_mode = randomize()
-    instance.joinable = randomize("bool")
     instance.match_id = randomize()
     instance.matching_allies = [create_models_matching_ally_example()]
     instance.namespace = randomize("slug")
     instance.party_attributes = {randomize(): randomize()}
-    instance.party_id = randomize("uid")
     instance.queued_at = randomize("int", min_val=1, max_val=1000)
     instance.region = randomize()
     instance.server_name = randomize()
     instance.status = randomize()
+    instance.joinable = randomize("bool")
+    instance.party_id = randomize("uid")
     return instance
 
 

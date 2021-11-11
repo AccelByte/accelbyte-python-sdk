@@ -30,141 +30,113 @@ class EntitlementInfo(Model):
     """Entitlement info (EntitlementInfo)
 
     Properties:
-        id_: (id) REQUIRED str
-
-        namespace: (namespace) REQUIRED str
-
         clazz: (clazz) REQUIRED str
 
-        type_: (type) REQUIRED str
+        created_at: (createdAt) REQUIRED str
 
-        status: (status) REQUIRED str
+        granted_at: (grantedAt) REQUIRED str
 
-        app_id: (appId) OPTIONAL str
-
-        app_type: (appType) OPTIONAL str
-
-        sku: (sku) OPTIONAL str
-
-        user_id: (userId) REQUIRED str
-
-        store_id: (storeId) OPTIONAL str
+        id_: (id) REQUIRED str
 
         item_id: (itemId) REQUIRED str
-
-        granted_code: (grantedCode) OPTIONAL str
 
         item_namespace: (itemNamespace) REQUIRED str
 
         name: (name) REQUIRED str
 
-        features: (features) OPTIONAL List[str]
-
-        use_count: (useCount) OPTIONAL int
-
-        quantity: (quantity) OPTIONAL int
+        namespace: (namespace) REQUIRED str
 
         source: (source) REQUIRED str
 
+        status: (status) REQUIRED str
+
+        type_: (type) REQUIRED str
+
+        updated_at: (updatedAt) REQUIRED str
+
+        user_id: (userId) REQUIRED str
+
+        app_id: (appId) OPTIONAL str
+
+        app_type: (appType) OPTIONAL str
+
         distributed_quantity: (distributedQuantity) OPTIONAL int
-
-        target_namespace: (targetNamespace) OPTIONAL str
-
-        item_snapshot: (itemSnapshot) OPTIONAL ItemSnapshot
-
-        start_date: (startDate) OPTIONAL str
 
         end_date: (endDate) OPTIONAL str
 
+        features: (features) OPTIONAL List[str]
+
+        granted_code: (grantedCode) OPTIONAL str
+
+        item_snapshot: (itemSnapshot) OPTIONAL ItemSnapshot
+
+        quantity: (quantity) OPTIONAL int
+
+        sku: (sku) OPTIONAL str
+
         stackable: (stackable) OPTIONAL bool
 
-        granted_at: (grantedAt) REQUIRED str
+        start_date: (startDate) OPTIONAL str
 
-        created_at: (createdAt) REQUIRED str
+        store_id: (storeId) OPTIONAL str
 
-        updated_at: (updatedAt) REQUIRED str
+        target_namespace: (targetNamespace) OPTIONAL str
+
+        use_count: (useCount) OPTIONAL int
     """
 
     # region fields
 
-    id_: str                                                                                       # REQUIRED
-    namespace: str                                                                                 # REQUIRED
     clazz: str                                                                                     # REQUIRED
-    type_: str                                                                                     # REQUIRED
-    status: str                                                                                    # REQUIRED
-    app_id: str                                                                                    # OPTIONAL
-    app_type: str                                                                                  # OPTIONAL
-    sku: str                                                                                       # OPTIONAL
-    user_id: str                                                                                   # REQUIRED
-    store_id: str                                                                                  # OPTIONAL
+    created_at: str                                                                                # REQUIRED
+    granted_at: str                                                                                # REQUIRED
+    id_: str                                                                                       # REQUIRED
     item_id: str                                                                                   # REQUIRED
-    granted_code: str                                                                              # OPTIONAL
     item_namespace: str                                                                            # REQUIRED
     name: str                                                                                      # REQUIRED
-    features: List[str]                                                                            # OPTIONAL
-    use_count: int                                                                                 # OPTIONAL
-    quantity: int                                                                                  # OPTIONAL
+    namespace: str                                                                                 # REQUIRED
     source: str                                                                                    # REQUIRED
-    distributed_quantity: int                                                                      # OPTIONAL
-    target_namespace: str                                                                          # OPTIONAL
-    item_snapshot: ItemSnapshot                                                                    # OPTIONAL
-    start_date: str                                                                                # OPTIONAL
-    end_date: str                                                                                  # OPTIONAL
-    stackable: bool                                                                                # OPTIONAL
-    granted_at: str                                                                                # REQUIRED
-    created_at: str                                                                                # REQUIRED
+    status: str                                                                                    # REQUIRED
+    type_: str                                                                                     # REQUIRED
     updated_at: str                                                                                # REQUIRED
+    user_id: str                                                                                   # REQUIRED
+    app_id: str                                                                                    # OPTIONAL
+    app_type: str                                                                                  # OPTIONAL
+    distributed_quantity: int                                                                      # OPTIONAL
+    end_date: str                                                                                  # OPTIONAL
+    features: List[str]                                                                            # OPTIONAL
+    granted_code: str                                                                              # OPTIONAL
+    item_snapshot: ItemSnapshot                                                                    # OPTIONAL
+    quantity: int                                                                                  # OPTIONAL
+    sku: str                                                                                       # OPTIONAL
+    stackable: bool                                                                                # OPTIONAL
+    start_date: str                                                                                # OPTIONAL
+    store_id: str                                                                                  # OPTIONAL
+    target_namespace: str                                                                          # OPTIONAL
+    use_count: int                                                                                 # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_id(self, value: str) -> EntitlementInfo:
-        self.id_ = value
-        return self
-
-    def with_namespace(self, value: str) -> EntitlementInfo:
-        self.namespace = value
-        return self
-
     def with_clazz(self, value: str) -> EntitlementInfo:
         self.clazz = value
         return self
 
-    def with_type(self, value: str) -> EntitlementInfo:
-        self.type_ = value
+    def with_created_at(self, value: str) -> EntitlementInfo:
+        self.created_at = value
         return self
 
-    def with_status(self, value: str) -> EntitlementInfo:
-        self.status = value
+    def with_granted_at(self, value: str) -> EntitlementInfo:
+        self.granted_at = value
         return self
 
-    def with_app_id(self, value: str) -> EntitlementInfo:
-        self.app_id = value
-        return self
-
-    def with_app_type(self, value: str) -> EntitlementInfo:
-        self.app_type = value
-        return self
-
-    def with_sku(self, value: str) -> EntitlementInfo:
-        self.sku = value
-        return self
-
-    def with_user_id(self, value: str) -> EntitlementInfo:
-        self.user_id = value
-        return self
-
-    def with_store_id(self, value: str) -> EntitlementInfo:
-        self.store_id = value
+    def with_id(self, value: str) -> EntitlementInfo:
+        self.id_ = value
         return self
 
     def with_item_id(self, value: str) -> EntitlementInfo:
         self.item_id = value
-        return self
-
-    def with_granted_code(self, value: str) -> EntitlementInfo:
-        self.granted_code = value
         return self
 
     def with_item_namespace(self, value: str) -> EntitlementInfo:
@@ -175,56 +147,84 @@ class EntitlementInfo(Model):
         self.name = value
         return self
 
-    def with_features(self, value: List[str]) -> EntitlementInfo:
-        self.features = value
-        return self
-
-    def with_use_count(self, value: int) -> EntitlementInfo:
-        self.use_count = value
-        return self
-
-    def with_quantity(self, value: int) -> EntitlementInfo:
-        self.quantity = value
+    def with_namespace(self, value: str) -> EntitlementInfo:
+        self.namespace = value
         return self
 
     def with_source(self, value: str) -> EntitlementInfo:
         self.source = value
         return self
 
+    def with_status(self, value: str) -> EntitlementInfo:
+        self.status = value
+        return self
+
+    def with_type(self, value: str) -> EntitlementInfo:
+        self.type_ = value
+        return self
+
+    def with_updated_at(self, value: str) -> EntitlementInfo:
+        self.updated_at = value
+        return self
+
+    def with_user_id(self, value: str) -> EntitlementInfo:
+        self.user_id = value
+        return self
+
+    def with_app_id(self, value: str) -> EntitlementInfo:
+        self.app_id = value
+        return self
+
+    def with_app_type(self, value: str) -> EntitlementInfo:
+        self.app_type = value
+        return self
+
     def with_distributed_quantity(self, value: int) -> EntitlementInfo:
         self.distributed_quantity = value
-        return self
-
-    def with_target_namespace(self, value: str) -> EntitlementInfo:
-        self.target_namespace = value
-        return self
-
-    def with_item_snapshot(self, value: ItemSnapshot) -> EntitlementInfo:
-        self.item_snapshot = value
-        return self
-
-    def with_start_date(self, value: str) -> EntitlementInfo:
-        self.start_date = value
         return self
 
     def with_end_date(self, value: str) -> EntitlementInfo:
         self.end_date = value
         return self
 
+    def with_features(self, value: List[str]) -> EntitlementInfo:
+        self.features = value
+        return self
+
+    def with_granted_code(self, value: str) -> EntitlementInfo:
+        self.granted_code = value
+        return self
+
+    def with_item_snapshot(self, value: ItemSnapshot) -> EntitlementInfo:
+        self.item_snapshot = value
+        return self
+
+    def with_quantity(self, value: int) -> EntitlementInfo:
+        self.quantity = value
+        return self
+
+    def with_sku(self, value: str) -> EntitlementInfo:
+        self.sku = value
+        return self
+
     def with_stackable(self, value: bool) -> EntitlementInfo:
         self.stackable = value
         return self
 
-    def with_granted_at(self, value: str) -> EntitlementInfo:
-        self.granted_at = value
+    def with_start_date(self, value: str) -> EntitlementInfo:
+        self.start_date = value
         return self
 
-    def with_created_at(self, value: str) -> EntitlementInfo:
-        self.created_at = value
+    def with_store_id(self, value: str) -> EntitlementInfo:
+        self.store_id = value
         return self
 
-    def with_updated_at(self, value: str) -> EntitlementInfo:
-        self.updated_at = value
+    def with_target_namespace(self, value: str) -> EntitlementInfo:
+        self.target_namespace = value
+        return self
+
+    def with_use_count(self, value: int) -> EntitlementInfo:
+        self.use_count = value
         return self
 
     # endregion with_x methods
@@ -233,54 +233,26 @@ class EntitlementInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "id_"):
-            result["id"] = str(self.id_)
-        elif include_empty:
-            result["id"] = str()
-        if hasattr(self, "namespace"):
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "clazz"):
             result["clazz"] = str(self.clazz)
         elif include_empty:
             result["clazz"] = str()
-        if hasattr(self, "type_"):
-            result["type"] = str(self.type_)
+        if hasattr(self, "created_at"):
+            result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["type"] = str()
-        if hasattr(self, "status"):
-            result["status"] = str(self.status)
+            result["createdAt"] = str()
+        if hasattr(self, "granted_at"):
+            result["grantedAt"] = str(self.granted_at)
         elif include_empty:
-            result["status"] = str()
-        if hasattr(self, "app_id"):
-            result["appId"] = str(self.app_id)
+            result["grantedAt"] = str()
+        if hasattr(self, "id_"):
+            result["id"] = str(self.id_)
         elif include_empty:
-            result["appId"] = str()
-        if hasattr(self, "app_type"):
-            result["appType"] = str(self.app_type)
-        elif include_empty:
-            result["appType"] = str()
-        if hasattr(self, "sku"):
-            result["sku"] = str(self.sku)
-        elif include_empty:
-            result["sku"] = str()
-        if hasattr(self, "user_id"):
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
-        if hasattr(self, "store_id"):
-            result["storeId"] = str(self.store_id)
-        elif include_empty:
-            result["storeId"] = str()
+            result["id"] = str()
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
-        if hasattr(self, "granted_code"):
-            result["grantedCode"] = str(self.granted_code)
-        elif include_empty:
-            result["grantedCode"] = str()
         if hasattr(self, "item_namespace"):
             result["itemNamespace"] = str(self.item_namespace)
         elif include_empty:
@@ -289,58 +261,86 @@ class EntitlementInfo(Model):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = str()
-        if hasattr(self, "features"):
-            result["features"] = [str(i0) for i0 in self.features]
+        if hasattr(self, "namespace"):
+            result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["features"] = []
-        if hasattr(self, "use_count"):
-            result["useCount"] = int(self.use_count)
-        elif include_empty:
-            result["useCount"] = int()
-        if hasattr(self, "quantity"):
-            result["quantity"] = int(self.quantity)
-        elif include_empty:
-            result["quantity"] = int()
+            result["namespace"] = str()
         if hasattr(self, "source"):
             result["source"] = str(self.source)
         elif include_empty:
             result["source"] = str()
-        if hasattr(self, "distributed_quantity"):
-            result["distributedQuantity"] = int(self.distributed_quantity)
+        if hasattr(self, "status"):
+            result["status"] = str(self.status)
         elif include_empty:
-            result["distributedQuantity"] = int()
-        if hasattr(self, "target_namespace"):
-            result["targetNamespace"] = str(self.target_namespace)
+            result["status"] = str()
+        if hasattr(self, "type_"):
+            result["type"] = str(self.type_)
         elif include_empty:
-            result["targetNamespace"] = str()
-        if hasattr(self, "item_snapshot"):
-            result["itemSnapshot"] = self.item_snapshot.to_dict(include_empty=include_empty)
-        elif include_empty:
-            result["itemSnapshot"] = ItemSnapshot()
-        if hasattr(self, "start_date"):
-            result["startDate"] = str(self.start_date)
-        elif include_empty:
-            result["startDate"] = str()
-        if hasattr(self, "end_date"):
-            result["endDate"] = str(self.end_date)
-        elif include_empty:
-            result["endDate"] = str()
-        if hasattr(self, "stackable"):
-            result["stackable"] = bool(self.stackable)
-        elif include_empty:
-            result["stackable"] = bool()
-        if hasattr(self, "granted_at"):
-            result["grantedAt"] = str(self.granted_at)
-        elif include_empty:
-            result["grantedAt"] = str()
-        if hasattr(self, "created_at"):
-            result["createdAt"] = str(self.created_at)
-        elif include_empty:
-            result["createdAt"] = str()
+            result["type"] = str()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()
+        if hasattr(self, "user_id"):
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
+        if hasattr(self, "app_id"):
+            result["appId"] = str(self.app_id)
+        elif include_empty:
+            result["appId"] = str()
+        if hasattr(self, "app_type"):
+            result["appType"] = str(self.app_type)
+        elif include_empty:
+            result["appType"] = str()
+        if hasattr(self, "distributed_quantity"):
+            result["distributedQuantity"] = int(self.distributed_quantity)
+        elif include_empty:
+            result["distributedQuantity"] = int()
+        if hasattr(self, "end_date"):
+            result["endDate"] = str(self.end_date)
+        elif include_empty:
+            result["endDate"] = str()
+        if hasattr(self, "features"):
+            result["features"] = [str(i0) for i0 in self.features]
+        elif include_empty:
+            result["features"] = []
+        if hasattr(self, "granted_code"):
+            result["grantedCode"] = str(self.granted_code)
+        elif include_empty:
+            result["grantedCode"] = str()
+        if hasattr(self, "item_snapshot"):
+            result["itemSnapshot"] = self.item_snapshot.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["itemSnapshot"] = ItemSnapshot()
+        if hasattr(self, "quantity"):
+            result["quantity"] = int(self.quantity)
+        elif include_empty:
+            result["quantity"] = int()
+        if hasattr(self, "sku"):
+            result["sku"] = str(self.sku)
+        elif include_empty:
+            result["sku"] = str()
+        if hasattr(self, "stackable"):
+            result["stackable"] = bool(self.stackable)
+        elif include_empty:
+            result["stackable"] = bool()
+        if hasattr(self, "start_date"):
+            result["startDate"] = str(self.start_date)
+        elif include_empty:
+            result["startDate"] = str()
+        if hasattr(self, "store_id"):
+            result["storeId"] = str(self.store_id)
+        elif include_empty:
+            result["storeId"] = str()
+        if hasattr(self, "target_namespace"):
+            result["targetNamespace"] = str(self.target_namespace)
+        elif include_empty:
+            result["targetNamespace"] = str()
+        if hasattr(self, "use_count"):
+            result["useCount"] = int(self.use_count)
+        elif include_empty:
+            result["useCount"] = int()
         return result
 
     # endregion to methods
@@ -427,54 +427,26 @@ class EntitlementInfo(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "id" in dict_ and dict_["id"] is not None:
-            instance.id_ = str(dict_["id"])
-        elif include_empty:
-            instance.id_ = str()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "clazz" in dict_ and dict_["clazz"] is not None:
             instance.clazz = str(dict_["clazz"])
         elif include_empty:
             instance.clazz = str()
-        if "type" in dict_ and dict_["type"] is not None:
-            instance.type_ = str(dict_["type"])
+        if "createdAt" in dict_ and dict_["createdAt"] is not None:
+            instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.type_ = str()
-        if "status" in dict_ and dict_["status"] is not None:
-            instance.status = str(dict_["status"])
+            instance.created_at = str()
+        if "grantedAt" in dict_ and dict_["grantedAt"] is not None:
+            instance.granted_at = str(dict_["grantedAt"])
         elif include_empty:
-            instance.status = str()
-        if "appId" in dict_ and dict_["appId"] is not None:
-            instance.app_id = str(dict_["appId"])
+            instance.granted_at = str()
+        if "id" in dict_ and dict_["id"] is not None:
+            instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.app_id = str()
-        if "appType" in dict_ and dict_["appType"] is not None:
-            instance.app_type = str(dict_["appType"])
-        elif include_empty:
-            instance.app_type = str()
-        if "sku" in dict_ and dict_["sku"] is not None:
-            instance.sku = str(dict_["sku"])
-        elif include_empty:
-            instance.sku = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
-        if "storeId" in dict_ and dict_["storeId"] is not None:
-            instance.store_id = str(dict_["storeId"])
-        elif include_empty:
-            instance.store_id = str()
+            instance.id_ = str()
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
             instance.item_id = str()
-        if "grantedCode" in dict_ and dict_["grantedCode"] is not None:
-            instance.granted_code = str(dict_["grantedCode"])
-        elif include_empty:
-            instance.granted_code = str()
         if "itemNamespace" in dict_ and dict_["itemNamespace"] is not None:
             instance.item_namespace = str(dict_["itemNamespace"])
         elif include_empty:
@@ -483,90 +455,118 @@ class EntitlementInfo(Model):
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = str()
-        if "features" in dict_ and dict_["features"] is not None:
-            instance.features = [str(i0) for i0 in dict_["features"]]
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.features = []
-        if "useCount" in dict_ and dict_["useCount"] is not None:
-            instance.use_count = int(dict_["useCount"])
-        elif include_empty:
-            instance.use_count = int()
-        if "quantity" in dict_ and dict_["quantity"] is not None:
-            instance.quantity = int(dict_["quantity"])
-        elif include_empty:
-            instance.quantity = int()
+            instance.namespace = str()
         if "source" in dict_ and dict_["source"] is not None:
             instance.source = str(dict_["source"])
         elif include_empty:
             instance.source = str()
-        if "distributedQuantity" in dict_ and dict_["distributedQuantity"] is not None:
-            instance.distributed_quantity = int(dict_["distributedQuantity"])
+        if "status" in dict_ and dict_["status"] is not None:
+            instance.status = str(dict_["status"])
         elif include_empty:
-            instance.distributed_quantity = int()
-        if "targetNamespace" in dict_ and dict_["targetNamespace"] is not None:
-            instance.target_namespace = str(dict_["targetNamespace"])
+            instance.status = str()
+        if "type" in dict_ and dict_["type"] is not None:
+            instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.target_namespace = str()
-        if "itemSnapshot" in dict_ and dict_["itemSnapshot"] is not None:
-            instance.item_snapshot = ItemSnapshot.create_from_dict(dict_["itemSnapshot"], include_empty=include_empty)
-        elif include_empty:
-            instance.item_snapshot = ItemSnapshot()
-        if "startDate" in dict_ and dict_["startDate"] is not None:
-            instance.start_date = str(dict_["startDate"])
-        elif include_empty:
-            instance.start_date = str()
-        if "endDate" in dict_ and dict_["endDate"] is not None:
-            instance.end_date = str(dict_["endDate"])
-        elif include_empty:
-            instance.end_date = str()
-        if "stackable" in dict_ and dict_["stackable"] is not None:
-            instance.stackable = bool(dict_["stackable"])
-        elif include_empty:
-            instance.stackable = bool()
-        if "grantedAt" in dict_ and dict_["grantedAt"] is not None:
-            instance.granted_at = str(dict_["grantedAt"])
-        elif include_empty:
-            instance.granted_at = str()
-        if "createdAt" in dict_ and dict_["createdAt"] is not None:
-            instance.created_at = str(dict_["createdAt"])
-        elif include_empty:
-            instance.created_at = str()
+            instance.type_ = str()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
+        if "appId" in dict_ and dict_["appId"] is not None:
+            instance.app_id = str(dict_["appId"])
+        elif include_empty:
+            instance.app_id = str()
+        if "appType" in dict_ and dict_["appType"] is not None:
+            instance.app_type = str(dict_["appType"])
+        elif include_empty:
+            instance.app_type = str()
+        if "distributedQuantity" in dict_ and dict_["distributedQuantity"] is not None:
+            instance.distributed_quantity = int(dict_["distributedQuantity"])
+        elif include_empty:
+            instance.distributed_quantity = int()
+        if "endDate" in dict_ and dict_["endDate"] is not None:
+            instance.end_date = str(dict_["endDate"])
+        elif include_empty:
+            instance.end_date = str()
+        if "features" in dict_ and dict_["features"] is not None:
+            instance.features = [str(i0) for i0 in dict_["features"]]
+        elif include_empty:
+            instance.features = []
+        if "grantedCode" in dict_ and dict_["grantedCode"] is not None:
+            instance.granted_code = str(dict_["grantedCode"])
+        elif include_empty:
+            instance.granted_code = str()
+        if "itemSnapshot" in dict_ and dict_["itemSnapshot"] is not None:
+            instance.item_snapshot = ItemSnapshot.create_from_dict(dict_["itemSnapshot"], include_empty=include_empty)
+        elif include_empty:
+            instance.item_snapshot = ItemSnapshot()
+        if "quantity" in dict_ and dict_["quantity"] is not None:
+            instance.quantity = int(dict_["quantity"])
+        elif include_empty:
+            instance.quantity = int()
+        if "sku" in dict_ and dict_["sku"] is not None:
+            instance.sku = str(dict_["sku"])
+        elif include_empty:
+            instance.sku = str()
+        if "stackable" in dict_ and dict_["stackable"] is not None:
+            instance.stackable = bool(dict_["stackable"])
+        elif include_empty:
+            instance.stackable = bool()
+        if "startDate" in dict_ and dict_["startDate"] is not None:
+            instance.start_date = str(dict_["startDate"])
+        elif include_empty:
+            instance.start_date = str()
+        if "storeId" in dict_ and dict_["storeId"] is not None:
+            instance.store_id = str(dict_["storeId"])
+        elif include_empty:
+            instance.store_id = str()
+        if "targetNamespace" in dict_ and dict_["targetNamespace"] is not None:
+            instance.target_namespace = str(dict_["targetNamespace"])
+        elif include_empty:
+            instance.target_namespace = str()
+        if "useCount" in dict_ and dict_["useCount"] is not None:
+            instance.use_count = int(dict_["useCount"])
+        elif include_empty:
+            instance.use_count = int()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
-            "namespace": "namespace",
             "clazz": "clazz",
-            "type": "type_",
-            "status": "status",
-            "appId": "app_id",
-            "appType": "app_type",
-            "sku": "sku",
-            "userId": "user_id",
-            "storeId": "store_id",
+            "createdAt": "created_at",
+            "grantedAt": "granted_at",
+            "id": "id_",
             "itemId": "item_id",
-            "grantedCode": "granted_code",
             "itemNamespace": "item_namespace",
             "name": "name",
-            "features": "features",
-            "useCount": "use_count",
-            "quantity": "quantity",
+            "namespace": "namespace",
             "source": "source",
-            "distributedQuantity": "distributed_quantity",
-            "targetNamespace": "target_namespace",
-            "itemSnapshot": "item_snapshot",
-            "startDate": "start_date",
-            "endDate": "end_date",
-            "stackable": "stackable",
-            "grantedAt": "granted_at",
-            "createdAt": "created_at",
+            "status": "status",
+            "type": "type_",
             "updatedAt": "updated_at",
+            "userId": "user_id",
+            "appId": "app_id",
+            "appType": "app_type",
+            "distributedQuantity": "distributed_quantity",
+            "endDate": "end_date",
+            "features": "features",
+            "grantedCode": "granted_code",
+            "itemSnapshot": "item_snapshot",
+            "quantity": "quantity",
+            "sku": "sku",
+            "stackable": "stackable",
+            "startDate": "start_date",
+            "storeId": "store_id",
+            "targetNamespace": "target_namespace",
+            "useCount": "use_count",
         }
 
     # endregion static methods

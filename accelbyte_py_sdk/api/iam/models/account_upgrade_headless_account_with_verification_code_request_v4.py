@@ -30,28 +30,28 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
     Properties:
         code: (code) REQUIRED str
 
-        country: (country) OPTIONAL str
-
-        date_of_birth: (dateOfBirth) OPTIONAL str
-
-        display_name: (displayName) OPTIONAL str
-
         email_address: (emailAddress) REQUIRED str
 
         password: (password) REQUIRED str
 
         username: (username) REQUIRED str
+
+        country: (country) OPTIONAL str
+
+        date_of_birth: (dateOfBirth) OPTIONAL str
+
+        display_name: (displayName) OPTIONAL str
     """
 
     # region fields
 
     code: str                                                                                      # REQUIRED
-    country: str                                                                                   # OPTIONAL
-    date_of_birth: str                                                                             # OPTIONAL
-    display_name: str                                                                              # OPTIONAL
     email_address: str                                                                             # REQUIRED
     password: str                                                                                  # REQUIRED
     username: str                                                                                  # REQUIRED
+    country: str                                                                                   # OPTIONAL
+    date_of_birth: str                                                                             # OPTIONAL
+    display_name: str                                                                              # OPTIONAL
 
     # endregion fields
 
@@ -59,18 +59,6 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
 
     def with_code(self, value: str) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
         self.code = value
-        return self
-
-    def with_country(self, value: str) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
-        self.country = value
-        return self
-
-    def with_date_of_birth(self, value: str) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
-        self.date_of_birth = value
-        return self
-
-    def with_display_name(self, value: str) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
-        self.display_name = value
         return self
 
     def with_email_address(self, value: str) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
@@ -85,6 +73,18 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
         self.username = value
         return self
 
+    def with_country(self, value: str) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
+        self.country = value
+        return self
+
+    def with_date_of_birth(self, value: str) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
+        self.date_of_birth = value
+        return self
+
+    def with_display_name(self, value: str) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
+        self.display_name = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -95,18 +95,6 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
             result["code"] = str(self.code)
         elif include_empty:
             result["code"] = str()
-        if hasattr(self, "country"):
-            result["country"] = str(self.country)
-        elif include_empty:
-            result["country"] = str()
-        if hasattr(self, "date_of_birth"):
-            result["dateOfBirth"] = str(self.date_of_birth)
-        elif include_empty:
-            result["dateOfBirth"] = str()
-        if hasattr(self, "display_name"):
-            result["displayName"] = str(self.display_name)
-        elif include_empty:
-            result["displayName"] = str()
         if hasattr(self, "email_address"):
             result["emailAddress"] = str(self.email_address)
         elif include_empty:
@@ -119,6 +107,18 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
             result["username"] = str(self.username)
         elif include_empty:
             result["username"] = str()
+        if hasattr(self, "country"):
+            result["country"] = str(self.country)
+        elif include_empty:
+            result["country"] = str()
+        if hasattr(self, "date_of_birth"):
+            result["dateOfBirth"] = str(self.date_of_birth)
+        elif include_empty:
+            result["dateOfBirth"] = str()
+        if hasattr(self, "display_name"):
+            result["displayName"] = str(self.display_name)
+        elif include_empty:
+            result["displayName"] = str()
         return result
 
     # endregion to methods
@@ -158,18 +158,6 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
             instance.code = str(dict_["code"])
         elif include_empty:
             instance.code = str()
-        if "country" in dict_ and dict_["country"] is not None:
-            instance.country = str(dict_["country"])
-        elif include_empty:
-            instance.country = str()
-        if "dateOfBirth" in dict_ and dict_["dateOfBirth"] is not None:
-            instance.date_of_birth = str(dict_["dateOfBirth"])
-        elif include_empty:
-            instance.date_of_birth = str()
-        if "displayName" in dict_ and dict_["displayName"] is not None:
-            instance.display_name = str(dict_["displayName"])
-        elif include_empty:
-            instance.display_name = str()
         if "emailAddress" in dict_ and dict_["emailAddress"] is not None:
             instance.email_address = str(dict_["emailAddress"])
         elif include_empty:
@@ -182,18 +170,30 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
             instance.username = str(dict_["username"])
         elif include_empty:
             instance.username = str()
+        if "country" in dict_ and dict_["country"] is not None:
+            instance.country = str(dict_["country"])
+        elif include_empty:
+            instance.country = str()
+        if "dateOfBirth" in dict_ and dict_["dateOfBirth"] is not None:
+            instance.date_of_birth = str(dict_["dateOfBirth"])
+        elif include_empty:
+            instance.date_of_birth = str()
+        if "displayName" in dict_ and dict_["displayName"] is not None:
+            instance.display_name = str(dict_["displayName"])
+        elif include_empty:
+            instance.display_name = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "code": "code",
-            "country": "country",
-            "dateOfBirth": "date_of_birth",
-            "displayName": "display_name",
             "emailAddress": "email_address",
             "password": "password",
             "username": "username",
+            "country": "country",
+            "dateOfBirth": "date_of_birth",
+            "displayName": "display_name",
         }
 
     # endregion static methods

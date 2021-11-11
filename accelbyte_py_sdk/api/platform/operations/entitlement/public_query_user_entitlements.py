@@ -55,17 +55,17 @@ class PublicQueryUserEntitlements(Operation):
 
         user_id: (userId) REQUIRED str in path
 
-        entitlement_clazz: (entitlementClazz) OPTIONAL str in query
-
         app_type: (appType) OPTIONAL str in query
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL str in query
 
         entitlement_name: (entitlementName) OPTIONAL str in query
 
         item_id: (itemId) OPTIONAL List[str] in query
 
-        offset: (offset) OPTIONAL int in query
-
         limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
 
     Responses:
         200: OK - EntitlementPagingSlicedResult (successful operation)
@@ -82,12 +82,12 @@ class PublicQueryUserEntitlements(Operation):
 
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
-    entitlement_clazz: str                                                                         # OPTIONAL in [query]
     app_type: str                                                                                  # OPTIONAL in [query]
+    entitlement_clazz: str                                                                         # OPTIONAL in [query]
     entitlement_name: str                                                                          # OPTIONAL in [query]
     item_id: List[str]                                                                             # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
 
     # endregion fields
 
@@ -162,18 +162,18 @@ class PublicQueryUserEntitlements(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "entitlement_clazz"):
-            result["entitlementClazz"] = self.entitlement_clazz
         if hasattr(self, "app_type"):
             result["appType"] = self.app_type
+        if hasattr(self, "entitlement_clazz"):
+            result["entitlementClazz"] = self.entitlement_clazz
         if hasattr(self, "entitlement_name"):
             result["entitlementName"] = self.entitlement_name
         if hasattr(self, "item_id"):
             result["itemId"] = self.item_id
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         return result
 
     # endregion get_x_params methods
@@ -199,12 +199,12 @@ class PublicQueryUserEntitlements(Operation):
         self.user_id = value
         return self
 
-    def with_entitlement_clazz(self, value: str) -> PublicQueryUserEntitlements:
-        self.entitlement_clazz = value
-        return self
-
     def with_app_type(self, value: str) -> PublicQueryUserEntitlements:
         self.app_type = value
+        return self
+
+    def with_entitlement_clazz(self, value: str) -> PublicQueryUserEntitlements:
+        self.entitlement_clazz = value
         return self
 
     def with_entitlement_name(self, value: str) -> PublicQueryUserEntitlements:
@@ -215,12 +215,12 @@ class PublicQueryUserEntitlements(Operation):
         self.item_id = value
         return self
 
-    def with_offset(self, value: int) -> PublicQueryUserEntitlements:
-        self.offset = value
-        return self
-
     def with_limit(self, value: int) -> PublicQueryUserEntitlements:
         self.limit = value
+        return self
+
+    def with_offset(self, value: int) -> PublicQueryUserEntitlements:
+        self.offset = value
         return self
 
     # endregion with_x methods
@@ -237,14 +237,14 @@ class PublicQueryUserEntitlements(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "entitlement_clazz") and self.entitlement_clazz:
-            result["entitlementClazz"] = str(self.entitlement_clazz)
-        elif include_empty:
-            result["entitlementClazz"] = str()
         if hasattr(self, "app_type") and self.app_type:
             result["appType"] = str(self.app_type)
         elif include_empty:
             result["appType"] = str()
+        if hasattr(self, "entitlement_clazz") and self.entitlement_clazz:
+            result["entitlementClazz"] = str(self.entitlement_clazz)
+        elif include_empty:
+            result["entitlementClazz"] = str()
         if hasattr(self, "entitlement_name") and self.entitlement_name:
             result["entitlementName"] = str(self.entitlement_name)
         elif include_empty:
@@ -253,14 +253,14 @@ class PublicQueryUserEntitlements(Operation):
             result["itemId"] = [str(i0) for i0 in self.item_id]
         elif include_empty:
             result["itemId"] = []
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
         return result
 
     # endregion to methods
@@ -289,28 +289,28 @@ class PublicQueryUserEntitlements(Operation):
         cls,
         namespace: str,
         user_id: str,
-        entitlement_clazz: Optional[str] = None,
         app_type: Optional[str] = None,
+        entitlement_clazz: Optional[str] = None,
         entitlement_name: Optional[str] = None,
         item_id: Optional[List[str]] = None,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
     ) -> PublicQueryUserEntitlements:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
-        if entitlement_clazz is not None:
-            instance.entitlement_clazz = entitlement_clazz
         if app_type is not None:
             instance.app_type = app_type
+        if entitlement_clazz is not None:
+            instance.entitlement_clazz = entitlement_clazz
         if entitlement_name is not None:
             instance.entitlement_name = entitlement_name
         if item_id is not None:
             instance.item_id = item_id
-        if offset is not None:
-            instance.offset = offset
         if limit is not None:
             instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
         return instance
 
     @classmethod
@@ -324,14 +324,14 @@ class PublicQueryUserEntitlements(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
-        if "entitlementClazz" in dict_ and dict_["entitlementClazz"] is not None:
-            instance.entitlement_clazz = str(dict_["entitlementClazz"])
-        elif include_empty:
-            instance.entitlement_clazz = str()
         if "appType" in dict_ and dict_["appType"] is not None:
             instance.app_type = str(dict_["appType"])
         elif include_empty:
             instance.app_type = str()
+        if "entitlementClazz" in dict_ and dict_["entitlementClazz"] is not None:
+            instance.entitlement_clazz = str(dict_["entitlementClazz"])
+        elif include_empty:
+            instance.entitlement_clazz = str()
         if "entitlementName" in dict_ and dict_["entitlementName"] is not None:
             instance.entitlement_name = str(dict_["entitlementName"])
         elif include_empty:
@@ -340,14 +340,14 @@ class PublicQueryUserEntitlements(Operation):
             instance.item_id = [str(i0) for i0 in dict_["itemId"]]
         elif include_empty:
             instance.item_id = []
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
         return instance
 
     @staticmethod
@@ -355,12 +355,12 @@ class PublicQueryUserEntitlements(Operation):
         return {
             "namespace": "namespace",
             "userId": "user_id",
-            "entitlementClazz": "entitlement_clazz",
             "appType": "app_type",
+            "entitlementClazz": "entitlement_clazz",
             "entitlementName": "entitlement_name",
             "itemId": "item_id",
-            "offset": "offset",
             "limit": "limit",
+            "offset": "offset",
         }
 
     # endregion static methods

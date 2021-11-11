@@ -56,9 +56,9 @@ class UpdateCheckoutConfig(Operation):
 
         id_: (id) REQUIRED str in path
 
-        validate: (validate) OPTIONAL bool in query
-
         sandbox: (sandbox) OPTIONAL bool in query
+
+        validate: (validate) OPTIONAL bool in query
 
     Responses:
         200: OK - PaymentMerchantConfigInfo (successful operation)
@@ -77,8 +77,8 @@ class UpdateCheckoutConfig(Operation):
 
     body: CheckoutConfig                                                                           # OPTIONAL in [body]
     id_: str                                                                                       # REQUIRED in [path]
-    validate: bool                                                                                 # OPTIONAL in [query]
     sandbox: bool                                                                                  # OPTIONAL in [query]
+    validate: bool                                                                                 # OPTIONAL in [query]
 
     # endregion fields
 
@@ -154,10 +154,10 @@ class UpdateCheckoutConfig(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "validate"):
-            result["validate"] = self.validate
         if hasattr(self, "sandbox"):
             result["sandbox"] = self.sandbox
+        if hasattr(self, "validate"):
+            result["validate"] = self.validate
         return result
 
     # endregion get_x_params methods
@@ -181,12 +181,12 @@ class UpdateCheckoutConfig(Operation):
         self.id_ = value
         return self
 
-    def with_validate(self, value: bool) -> UpdateCheckoutConfig:
-        self.validate = value
-        return self
-
     def with_sandbox(self, value: bool) -> UpdateCheckoutConfig:
         self.sandbox = value
+        return self
+
+    def with_validate(self, value: bool) -> UpdateCheckoutConfig:
+        self.validate = value
         return self
 
     # endregion with_x methods
@@ -203,14 +203,14 @@ class UpdateCheckoutConfig(Operation):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = str()
-        if hasattr(self, "validate") and self.validate:
-            result["validate"] = bool(self.validate)
-        elif include_empty:
-            result["validate"] = bool()
         if hasattr(self, "sandbox") and self.sandbox:
             result["sandbox"] = bool(self.sandbox)
         elif include_empty:
             result["sandbox"] = bool()
+        if hasattr(self, "validate") and self.validate:
+            result["validate"] = bool(self.validate)
+        elif include_empty:
+            result["validate"] = bool()
         return result
 
     # endregion to methods
@@ -243,17 +243,17 @@ class UpdateCheckoutConfig(Operation):
         cls,
         id_: str,
         body: Optional[CheckoutConfig] = None,
-        validate: Optional[bool] = None,
         sandbox: Optional[bool] = None,
+        validate: Optional[bool] = None,
     ) -> UpdateCheckoutConfig:
         instance = cls()
         instance.id_ = id_
         if body is not None:
             instance.body = body
-        if validate is not None:
-            instance.validate = validate
         if sandbox is not None:
             instance.sandbox = sandbox
+        if validate is not None:
+            instance.validate = validate
         return instance
 
     @classmethod
@@ -267,14 +267,14 @@ class UpdateCheckoutConfig(Operation):
             instance.id_ = str(dict_["id"])
         elif include_empty:
             instance.id_ = str()
-        if "validate" in dict_ and dict_["validate"] is not None:
-            instance.validate = bool(dict_["validate"])
-        elif include_empty:
-            instance.validate = bool()
         if "sandbox" in dict_ and dict_["sandbox"] is not None:
             instance.sandbox = bool(dict_["sandbox"])
         elif include_empty:
             instance.sandbox = bool()
+        if "validate" in dict_ and dict_["validate"] is not None:
+            instance.validate = bool(dict_["validate"])
+        elif include_empty:
+            instance.validate = bool()
         return instance
 
     @staticmethod
@@ -282,8 +282,8 @@ class UpdateCheckoutConfig(Operation):
         return {
             "body": "body",
             "id": "id_",
-            "validate": "validate",
             "sandbox": "sandbox",
+            "validate": "validate",
         }
 
     # endregion static methods

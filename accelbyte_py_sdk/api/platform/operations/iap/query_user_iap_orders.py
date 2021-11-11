@@ -54,19 +54,19 @@ class QueryUserIAPOrders(Operation):
 
         user_id: (userId) REQUIRED str in path
 
-        type_: (type) OPTIONAL str in query
-
-        product_id: (productId) OPTIONAL str in query
-
-        status: (status) OPTIONAL str in query
-
-        start_time: (startTime) OPTIONAL str in query
-
         end_time: (endTime) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
-        limit: (limit) OPTIONAL int in query
+        product_id: (productId) OPTIONAL str in query
+
+        start_time: (startTime) OPTIONAL str in query
+
+        status: (status) OPTIONAL str in query
+
+        type_: (type) OPTIONAL str in query
 
     Responses:
         200: OK - IAPOrderPagingSlicedResult (successful operation)
@@ -83,13 +83,13 @@ class QueryUserIAPOrders(Operation):
 
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
-    type_: str                                                                                     # OPTIONAL in [query]
-    product_id: str                                                                                # OPTIONAL in [query]
-    status: str                                                                                    # OPTIONAL in [query]
-    start_time: str                                                                                # OPTIONAL in [query]
     end_time: str                                                                                  # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
+    product_id: str                                                                                # OPTIONAL in [query]
+    start_time: str                                                                                # OPTIONAL in [query]
+    status: str                                                                                    # OPTIONAL in [query]
+    type_: str                                                                                     # OPTIONAL in [query]
 
     # endregion fields
 
@@ -164,20 +164,20 @@ class QueryUserIAPOrders(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "type_"):
-            result["type"] = self.type_
-        if hasattr(self, "product_id"):
-            result["productId"] = self.product_id
-        if hasattr(self, "status"):
-            result["status"] = self.status
-        if hasattr(self, "start_time"):
-            result["startTime"] = self.start_time
         if hasattr(self, "end_time"):
             result["endTime"] = self.end_time
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
+        if hasattr(self, "product_id"):
+            result["productId"] = self.product_id
+        if hasattr(self, "start_time"):
+            result["startTime"] = self.start_time
+        if hasattr(self, "status"):
+            result["status"] = self.status
+        if hasattr(self, "type_"):
+            result["type"] = self.type_
         return result
 
     # endregion get_x_params methods
@@ -203,32 +203,32 @@ class QueryUserIAPOrders(Operation):
         self.user_id = value
         return self
 
-    def with_type_(self, value: str) -> QueryUserIAPOrders:
-        self.type_ = value
-        return self
-
-    def with_product_id(self, value: str) -> QueryUserIAPOrders:
-        self.product_id = value
-        return self
-
-    def with_status(self, value: str) -> QueryUserIAPOrders:
-        self.status = value
-        return self
-
-    def with_start_time(self, value: str) -> QueryUserIAPOrders:
-        self.start_time = value
-        return self
-
     def with_end_time(self, value: str) -> QueryUserIAPOrders:
         self.end_time = value
+        return self
+
+    def with_limit(self, value: int) -> QueryUserIAPOrders:
+        self.limit = value
         return self
 
     def with_offset(self, value: int) -> QueryUserIAPOrders:
         self.offset = value
         return self
 
-    def with_limit(self, value: int) -> QueryUserIAPOrders:
-        self.limit = value
+    def with_product_id(self, value: str) -> QueryUserIAPOrders:
+        self.product_id = value
+        return self
+
+    def with_start_time(self, value: str) -> QueryUserIAPOrders:
+        self.start_time = value
+        return self
+
+    def with_status(self, value: str) -> QueryUserIAPOrders:
+        self.status = value
+        return self
+
+    def with_type_(self, value: str) -> QueryUserIAPOrders:
+        self.type_ = value
         return self
 
     # endregion with_x methods
@@ -245,34 +245,34 @@ class QueryUserIAPOrders(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "type_") and self.type_:
-            result["type"] = str(self.type_)
-        elif include_empty:
-            result["type"] = str()
-        if hasattr(self, "product_id") and self.product_id:
-            result["productId"] = str(self.product_id)
-        elif include_empty:
-            result["productId"] = str()
-        if hasattr(self, "status") and self.status:
-            result["status"] = str(self.status)
-        elif include_empty:
-            result["status"] = str()
-        if hasattr(self, "start_time") and self.start_time:
-            result["startTime"] = str(self.start_time)
-        elif include_empty:
-            result["startTime"] = str()
         if hasattr(self, "end_time") and self.end_time:
             result["endTime"] = str(self.end_time)
         elif include_empty:
             result["endTime"] = str()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
+        if hasattr(self, "product_id") and self.product_id:
+            result["productId"] = str(self.product_id)
+        elif include_empty:
+            result["productId"] = str()
+        if hasattr(self, "start_time") and self.start_time:
+            result["startTime"] = str(self.start_time)
+        elif include_empty:
+            result["startTime"] = str()
+        if hasattr(self, "status") and self.status:
+            result["status"] = str(self.status)
+        elif include_empty:
+            result["status"] = str()
+        if hasattr(self, "type_") and self.type_:
+            result["type"] = str(self.type_)
+        elif include_empty:
+            result["type"] = str()
         return result
 
     # endregion to methods
@@ -301,31 +301,31 @@ class QueryUserIAPOrders(Operation):
         cls,
         namespace: str,
         user_id: str,
-        type_: Optional[str] = None,
-        product_id: Optional[str] = None,
-        status: Optional[str] = None,
-        start_time: Optional[str] = None,
         end_time: Optional[str] = None,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
+        product_id: Optional[str] = None,
+        start_time: Optional[str] = None,
+        status: Optional[str] = None,
+        type_: Optional[str] = None,
     ) -> QueryUserIAPOrders:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
-        if type_ is not None:
-            instance.type_ = type_
-        if product_id is not None:
-            instance.product_id = product_id
-        if status is not None:
-            instance.status = status
-        if start_time is not None:
-            instance.start_time = start_time
         if end_time is not None:
             instance.end_time = end_time
-        if offset is not None:
-            instance.offset = offset
         if limit is not None:
             instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
+        if product_id is not None:
+            instance.product_id = product_id
+        if start_time is not None:
+            instance.start_time = start_time
+        if status is not None:
+            instance.status = status
+        if type_ is not None:
+            instance.type_ = type_
         return instance
 
     @classmethod
@@ -339,34 +339,34 @@ class QueryUserIAPOrders(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
-        if "type" in dict_ and dict_["type"] is not None:
-            instance.type_ = str(dict_["type"])
-        elif include_empty:
-            instance.type_ = str()
-        if "productId" in dict_ and dict_["productId"] is not None:
-            instance.product_id = str(dict_["productId"])
-        elif include_empty:
-            instance.product_id = str()
-        if "status" in dict_ and dict_["status"] is not None:
-            instance.status = str(dict_["status"])
-        elif include_empty:
-            instance.status = str()
-        if "startTime" in dict_ and dict_["startTime"] is not None:
-            instance.start_time = str(dict_["startTime"])
-        elif include_empty:
-            instance.start_time = str()
         if "endTime" in dict_ and dict_["endTime"] is not None:
             instance.end_time = str(dict_["endTime"])
         elif include_empty:
             instance.end_time = str()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
+        if "productId" in dict_ and dict_["productId"] is not None:
+            instance.product_id = str(dict_["productId"])
+        elif include_empty:
+            instance.product_id = str()
+        if "startTime" in dict_ and dict_["startTime"] is not None:
+            instance.start_time = str(dict_["startTime"])
+        elif include_empty:
+            instance.start_time = str()
+        if "status" in dict_ and dict_["status"] is not None:
+            instance.status = str(dict_["status"])
+        elif include_empty:
+            instance.status = str()
+        if "type" in dict_ and dict_["type"] is not None:
+            instance.type_ = str(dict_["type"])
+        elif include_empty:
+            instance.type_ = str()
         return instance
 
     @staticmethod
@@ -374,13 +374,13 @@ class QueryUserIAPOrders(Operation):
         return {
             "namespace": "namespace",
             "userId": "user_id",
-            "type": "type_",
-            "productId": "product_id",
-            "status": "status",
-            "startTime": "start_time",
             "endTime": "end_time",
-            "offset": "offset",
             "limit": "limit",
+            "offset": "offset",
+            "productId": "product_id",
+            "startTime": "start_time",
+            "status": "status",
+            "type": "type_",
         }
 
     # endregion static methods

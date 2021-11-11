@@ -32,17 +32,17 @@ class KeyGroupUpdate(Model):
 
         description: (description) OPTIONAL str
 
-        tags: (tags) OPTIONAL List[str]
-
         status: (status) OPTIONAL str
+
+        tags: (tags) OPTIONAL List[str]
     """
 
     # region fields
 
     name: str                                                                                      # REQUIRED
     description: str                                                                               # OPTIONAL
-    tags: List[str]                                                                                # OPTIONAL
     status: str                                                                                    # OPTIONAL
+    tags: List[str]                                                                                # OPTIONAL
 
     # endregion fields
 
@@ -56,12 +56,12 @@ class KeyGroupUpdate(Model):
         self.description = value
         return self
 
-    def with_tags(self, value: List[str]) -> KeyGroupUpdate:
-        self.tags = value
-        return self
-
     def with_status(self, value: str) -> KeyGroupUpdate:
         self.status = value
+        return self
+
+    def with_tags(self, value: List[str]) -> KeyGroupUpdate:
+        self.tags = value
         return self
 
     # endregion with_x methods
@@ -78,14 +78,14 @@ class KeyGroupUpdate(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = str()
-        if hasattr(self, "tags"):
-            result["tags"] = [str(i0) for i0 in self.tags]
-        elif include_empty:
-            result["tags"] = []
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
+        if hasattr(self, "tags"):
+            result["tags"] = [str(i0) for i0 in self.tags]
+        elif include_empty:
+            result["tags"] = []
         return result
 
     # endregion to methods
@@ -123,14 +123,14 @@ class KeyGroupUpdate(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = str()
-        if "tags" in dict_ and dict_["tags"] is not None:
-            instance.tags = [str(i0) for i0 in dict_["tags"]]
-        elif include_empty:
-            instance.tags = []
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = str()
+        if "tags" in dict_ and dict_["tags"] is not None:
+            instance.tags = [str(i0) for i0 in dict_["tags"]]
+        elif include_empty:
+            instance.tags = []
         return instance
 
     @staticmethod
@@ -138,8 +138,8 @@ class KeyGroupUpdate(Model):
         return {
             "name": "name",
             "description": "description",
-            "tags": "tags",
             "status": "status",
+            "tags": "tags",
         }
 
     # endregion static methods

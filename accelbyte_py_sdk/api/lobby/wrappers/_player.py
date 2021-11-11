@@ -91,14 +91,14 @@ def admin_get_player_blocked_players_v1(user_id: str, namespace: Optional[str] =
 
 
 @same_doc_as(AdminGetPlayerSessionAttribute)
-def admin_get_player_session_attribute(user_id: str, attribute: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_get_player_session_attribute(attribute: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = AdminGetPlayerSessionAttribute.create(
-        user_id=user_id,
         attribute=attribute,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

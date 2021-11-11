@@ -32,10 +32,6 @@ class ModelLinkRequest(Model):
     Properties:
         client_id: (client_id) REQUIRED str
 
-        error: (error) OPTIONAL RestErrorResponse
-
-        expiration: (expiration) OPTIONAL int
-
         namespace: (namespace) REQUIRED str
 
         operation_name: (operation_name) REQUIRED str
@@ -47,19 +43,23 @@ class ModelLinkRequest(Model):
         request_id: (request_id) REQUIRED str
 
         status: (status) REQUIRED str
+
+        error: (error) OPTIONAL RestErrorResponse
+
+        expiration: (expiration) OPTIONAL int
     """
 
     # region fields
 
     client_id: str                                                                                 # REQUIRED
-    error: RestErrorResponse                                                                       # OPTIONAL
-    expiration: int                                                                                # OPTIONAL
     namespace: str                                                                                 # REQUIRED
     operation_name: str                                                                            # REQUIRED
     payload: Dict[str, Any]                                                                        # REQUIRED
     redirect_uri: str                                                                              # REQUIRED
     request_id: str                                                                                # REQUIRED
     status: str                                                                                    # REQUIRED
+    error: RestErrorResponse                                                                       # OPTIONAL
+    expiration: int                                                                                # OPTIONAL
 
     # endregion fields
 
@@ -67,14 +67,6 @@ class ModelLinkRequest(Model):
 
     def with_client_id(self, value: str) -> ModelLinkRequest:
         self.client_id = value
-        return self
-
-    def with_error(self, value: RestErrorResponse) -> ModelLinkRequest:
-        self.error = value
-        return self
-
-    def with_expiration(self, value: int) -> ModelLinkRequest:
-        self.expiration = value
         return self
 
     def with_namespace(self, value: str) -> ModelLinkRequest:
@@ -101,6 +93,14 @@ class ModelLinkRequest(Model):
         self.status = value
         return self
 
+    def with_error(self, value: RestErrorResponse) -> ModelLinkRequest:
+        self.error = value
+        return self
+
+    def with_expiration(self, value: int) -> ModelLinkRequest:
+        self.expiration = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -111,14 +111,6 @@ class ModelLinkRequest(Model):
             result["client_id"] = str(self.client_id)
         elif include_empty:
             result["client_id"] = str()
-        if hasattr(self, "error"):
-            result["error"] = self.error.to_dict(include_empty=include_empty)
-        elif include_empty:
-            result["error"] = RestErrorResponse()
-        if hasattr(self, "expiration"):
-            result["expiration"] = int(self.expiration)
-        elif include_empty:
-            result["expiration"] = int()
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -143,6 +135,14 @@ class ModelLinkRequest(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
+        if hasattr(self, "error"):
+            result["error"] = self.error.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["error"] = RestErrorResponse()
+        if hasattr(self, "expiration"):
+            result["expiration"] = int(self.expiration)
+        elif include_empty:
+            result["expiration"] = int()
         return result
 
     # endregion to methods
@@ -185,14 +185,6 @@ class ModelLinkRequest(Model):
             instance.client_id = str(dict_["client_id"])
         elif include_empty:
             instance.client_id = str()
-        if "error" in dict_ and dict_["error"] is not None:
-            instance.error = RestErrorResponse.create_from_dict(dict_["error"], include_empty=include_empty)
-        elif include_empty:
-            instance.error = RestErrorResponse()
-        if "expiration" in dict_ and dict_["expiration"] is not None:
-            instance.expiration = int(dict_["expiration"])
-        elif include_empty:
-            instance.expiration = int()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -217,20 +209,28 @@ class ModelLinkRequest(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = str()
+        if "error" in dict_ and dict_["error"] is not None:
+            instance.error = RestErrorResponse.create_from_dict(dict_["error"], include_empty=include_empty)
+        elif include_empty:
+            instance.error = RestErrorResponse()
+        if "expiration" in dict_ and dict_["expiration"] is not None:
+            instance.expiration = int(dict_["expiration"])
+        elif include_empty:
+            instance.expiration = int()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "client_id": "client_id",
-            "error": "error",
-            "expiration": "expiration",
             "namespace": "namespace",
             "operation_name": "operation_name",
             "payload": "payload",
             "redirect_uri": "redirect_uri",
             "request_id": "request_id",
             "status": "status",
+            "error": "error",
+            "expiration": "expiration",
         }
 
     # endregion static methods

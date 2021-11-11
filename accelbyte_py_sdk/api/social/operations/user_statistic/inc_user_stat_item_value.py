@@ -56,9 +56,9 @@ class IncUserStatItemValue(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
-
         stat_code: (statCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
 
     Responses:
         200: OK - StatItemIncResult (successful operation)
@@ -81,8 +81,8 @@ class IncUserStatItemValue(Operation):
 
     body: StatItemInc                                                                              # OPTIONAL in [body]
     namespace: str                                                                                 # REQUIRED in [path]
-    user_id: str                                                                                   # REQUIRED in [path]
     stat_code: str                                                                                 # REQUIRED in [path]
+    user_id: str                                                                                   # REQUIRED in [path]
 
     # endregion fields
 
@@ -131,8 +131,8 @@ class IncUserStatItemValue(Operation):
     def get_all_required_fields(self) -> List[str]:
         return [
             "namespace",
-            "user_id",
             "stat_code",
+            "user_id",
         ]
 
     # endregion get methods
@@ -152,10 +152,10 @@ class IncUserStatItemValue(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
         if hasattr(self, "stat_code"):
             result["statCode"] = self.stat_code
+        if hasattr(self, "user_id"):
+            result["userId"] = self.user_id
         return result
 
     # endregion get_x_params methods
@@ -165,9 +165,9 @@ class IncUserStatItemValue(Operation):
     def is_valid(self) -> bool:
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
         if not hasattr(self, "stat_code") or self.stat_code is None:
+            return False
+        if not hasattr(self, "user_id") or self.user_id is None:
             return False
         return True
 
@@ -183,12 +183,12 @@ class IncUserStatItemValue(Operation):
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> IncUserStatItemValue:
-        self.user_id = value
-        return self
-
     def with_stat_code(self, value: str) -> IncUserStatItemValue:
         self.stat_code = value
+        return self
+
+    def with_user_id(self, value: str) -> IncUserStatItemValue:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -205,14 +205,14 @@ class IncUserStatItemValue(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = str()
         if hasattr(self, "stat_code") and self.stat_code:
             result["statCode"] = str(self.stat_code)
         elif include_empty:
             result["statCode"] = str()
+        if hasattr(self, "user_id") and self.user_id:
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         return result
 
     # endregion to methods
@@ -252,14 +252,14 @@ class IncUserStatItemValue(Operation):
     def create(
         cls,
         namespace: str,
-        user_id: str,
         stat_code: str,
+        user_id: str,
         body: Optional[StatItemInc] = None,
     ) -> IncUserStatItemValue:
         instance = cls()
         instance.namespace = namespace
-        instance.user_id = user_id
         instance.stat_code = stat_code
+        instance.user_id = user_id
         if body is not None:
             instance.body = body
         return instance
@@ -275,14 +275,14 @@ class IncUserStatItemValue(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = str()
         if "statCode" in dict_ and dict_["statCode"] is not None:
             instance.stat_code = str(dict_["statCode"])
         elif include_empty:
             instance.stat_code = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         return instance
 
     @staticmethod
@@ -290,8 +290,8 @@ class IncUserStatItemValue(Operation):
         return {
             "body": "body",
             "namespace": "namespace",
-            "userId": "user_id",
             "statCode": "stat_code",
+            "userId": "user_id",
         }
 
     # endregion static methods

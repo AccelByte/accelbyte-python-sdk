@@ -52,9 +52,9 @@ class GetEntitlement(Operation):
 
         security: bearer
 
-        namespace: (namespace) REQUIRED str in path
-
         entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
     Responses:
         200: OK - EntitlementInfo (successful operation)
@@ -71,8 +71,8 @@ class GetEntitlement(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
     entitlement_id: str                                                                            # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -120,8 +120,8 @@ class GetEntitlement(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "namespace",
             "entitlement_id",
+            "namespace",
         ]
 
     # endregion get methods
@@ -135,10 +135,10 @@ class GetEntitlement(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "entitlement_id"):
             result["entitlementId"] = self.entitlement_id
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     # endregion get_x_params methods
@@ -146,9 +146,9 @@ class GetEntitlement(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "entitlement_id") or self.entitlement_id is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         return True
 
@@ -156,12 +156,12 @@ class GetEntitlement(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> GetEntitlement:
-        self.namespace = value
-        return self
-
     def with_entitlement_id(self, value: str) -> GetEntitlement:
         self.entitlement_id = value
+        return self
+
+    def with_namespace(self, value: str) -> GetEntitlement:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -170,14 +170,14 @@ class GetEntitlement(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "entitlement_id") and self.entitlement_id:
             result["entitlementId"] = str(self.entitlement_id)
         elif include_empty:
             result["entitlementId"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         return result
 
     # endregion to methods
@@ -208,32 +208,32 @@ class GetEntitlement(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
         entitlement_id: str,
+        namespace: str,
     ) -> GetEntitlement:
         instance = cls()
-        instance.namespace = namespace
         instance.entitlement_id = entitlement_id
+        instance.namespace = namespace
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> GetEntitlement:
         instance = cls()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "entitlementId" in dict_ and dict_["entitlementId"] is not None:
             instance.entitlement_id = str(dict_["entitlementId"])
         elif include_empty:
             instance.entitlement_id = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
             "entitlementId": "entitlement_id",
+            "namespace": "namespace",
         }
 
     # endregion static methods

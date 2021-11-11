@@ -28,42 +28,42 @@ class PlatformSubscribeRequest(Model):
     """Platform subscribe request (PlatformSubscribeRequest)
 
     Properties:
-        item_id: (itemId) REQUIRED str
-
         grant_days: (grantDays) REQUIRED int
 
-        source: (source) OPTIONAL str
+        item_id: (itemId) REQUIRED str
+
+        language: (language) OPTIONAL str
 
         reason: (reason) OPTIONAL str
 
         region: (region) OPTIONAL str
 
-        language: (language) OPTIONAL str
+        source: (source) OPTIONAL str
     """
 
     # region fields
 
-    item_id: str                                                                                   # REQUIRED
     grant_days: int                                                                                # REQUIRED
-    source: str                                                                                    # OPTIONAL
+    item_id: str                                                                                   # REQUIRED
+    language: str                                                                                  # OPTIONAL
     reason: str                                                                                    # OPTIONAL
     region: str                                                                                    # OPTIONAL
-    language: str                                                                                  # OPTIONAL
+    source: str                                                                                    # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_item_id(self, value: str) -> PlatformSubscribeRequest:
-        self.item_id = value
-        return self
-
     def with_grant_days(self, value: int) -> PlatformSubscribeRequest:
         self.grant_days = value
         return self
 
-    def with_source(self, value: str) -> PlatformSubscribeRequest:
-        self.source = value
+    def with_item_id(self, value: str) -> PlatformSubscribeRequest:
+        self.item_id = value
+        return self
+
+    def with_language(self, value: str) -> PlatformSubscribeRequest:
+        self.language = value
         return self
 
     def with_reason(self, value: str) -> PlatformSubscribeRequest:
@@ -74,8 +74,8 @@ class PlatformSubscribeRequest(Model):
         self.region = value
         return self
 
-    def with_language(self, value: str) -> PlatformSubscribeRequest:
-        self.language = value
+    def with_source(self, value: str) -> PlatformSubscribeRequest:
+        self.source = value
         return self
 
     # endregion with_x methods
@@ -84,18 +84,18 @@ class PlatformSubscribeRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "item_id"):
-            result["itemId"] = str(self.item_id)
-        elif include_empty:
-            result["itemId"] = str()
         if hasattr(self, "grant_days"):
             result["grantDays"] = int(self.grant_days)
         elif include_empty:
             result["grantDays"] = int()
-        if hasattr(self, "source"):
-            result["source"] = str(self.source)
+        if hasattr(self, "item_id"):
+            result["itemId"] = str(self.item_id)
         elif include_empty:
-            result["source"] = str()
+            result["itemId"] = str()
+        if hasattr(self, "language"):
+            result["language"] = str(self.language)
+        elif include_empty:
+            result["language"] = str()
         if hasattr(self, "reason"):
             result["reason"] = str(self.reason)
         elif include_empty:
@@ -104,10 +104,10 @@ class PlatformSubscribeRequest(Model):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = str()
-        if hasattr(self, "language"):
-            result["language"] = str(self.language)
+        if hasattr(self, "source"):
+            result["source"] = str(self.source)
         elif include_empty:
-            result["language"] = str()
+            result["source"] = str()
         return result
 
     # endregion to methods
@@ -142,18 +142,18 @@ class PlatformSubscribeRequest(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "itemId" in dict_ and dict_["itemId"] is not None:
-            instance.item_id = str(dict_["itemId"])
-        elif include_empty:
-            instance.item_id = str()
         if "grantDays" in dict_ and dict_["grantDays"] is not None:
             instance.grant_days = int(dict_["grantDays"])
         elif include_empty:
             instance.grant_days = int()
-        if "source" in dict_ and dict_["source"] is not None:
-            instance.source = str(dict_["source"])
+        if "itemId" in dict_ and dict_["itemId"] is not None:
+            instance.item_id = str(dict_["itemId"])
         elif include_empty:
-            instance.source = str()
+            instance.item_id = str()
+        if "language" in dict_ and dict_["language"] is not None:
+            instance.language = str(dict_["language"])
+        elif include_empty:
+            instance.language = str()
         if "reason" in dict_ and dict_["reason"] is not None:
             instance.reason = str(dict_["reason"])
         elif include_empty:
@@ -162,21 +162,21 @@ class PlatformSubscribeRequest(Model):
             instance.region = str(dict_["region"])
         elif include_empty:
             instance.region = str()
-        if "language" in dict_ and dict_["language"] is not None:
-            instance.language = str(dict_["language"])
+        if "source" in dict_ and dict_["source"] is not None:
+            instance.source = str(dict_["source"])
         elif include_empty:
-            instance.language = str()
+            instance.source = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "itemId": "item_id",
             "grantDays": "grant_days",
-            "source": "source",
+            "itemId": "item_id",
+            "language": "language",
             "reason": "reason",
             "region": "region",
-            "language": "language",
+            "source": "source",
         }
 
     # endregion static methods

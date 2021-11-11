@@ -32,17 +32,17 @@ class ModelsGetUserGroupInformationResponseV1(Model):
 
         member_role_id: (memberRoleId) REQUIRED List[str]
 
-        status: (status) OPTIONAL str
-
         user_id: (userId) REQUIRED str
+
+        status: (status) OPTIONAL str
     """
 
     # region fields
 
     group_id: str                                                                                  # REQUIRED
     member_role_id: List[str]                                                                      # REQUIRED
-    status: str                                                                                    # OPTIONAL
     user_id: str                                                                                   # REQUIRED
+    status: str                                                                                    # OPTIONAL
 
     # endregion fields
 
@@ -56,12 +56,12 @@ class ModelsGetUserGroupInformationResponseV1(Model):
         self.member_role_id = value
         return self
 
-    def with_status(self, value: str) -> ModelsGetUserGroupInformationResponseV1:
-        self.status = value
-        return self
-
     def with_user_id(self, value: str) -> ModelsGetUserGroupInformationResponseV1:
         self.user_id = value
+        return self
+
+    def with_status(self, value: str) -> ModelsGetUserGroupInformationResponseV1:
+        self.status = value
         return self
 
     # endregion with_x methods
@@ -78,14 +78,14 @@ class ModelsGetUserGroupInformationResponseV1(Model):
             result["memberRoleId"] = [str(i0) for i0 in self.member_role_id]
         elif include_empty:
             result["memberRoleId"] = []
-        if hasattr(self, "status"):
-            result["status"] = str(self.status)
-        elif include_empty:
-            result["status"] = str()
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
+        if hasattr(self, "status"):
+            result["status"] = str(self.status)
+        elif include_empty:
+            result["status"] = str()
         return result
 
     # endregion to methods
@@ -121,14 +121,14 @@ class ModelsGetUserGroupInformationResponseV1(Model):
             instance.member_role_id = [str(i0) for i0 in dict_["memberRoleId"]]
         elif include_empty:
             instance.member_role_id = []
-        if "status" in dict_ and dict_["status"] is not None:
-            instance.status = str(dict_["status"])
-        elif include_empty:
-            instance.status = str()
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
+        if "status" in dict_ and dict_["status"] is not None:
+            instance.status = str(dict_["status"])
+        elif include_empty:
+            instance.status = str()
         return instance
 
     @staticmethod
@@ -136,8 +136,8 @@ class ModelsGetUserGroupInformationResponseV1(Model):
         return {
             "groupId": "group_id",
             "memberRoleId": "member_role_id",
-            "status": "status",
             "userId": "user_id",
+            "status": "status",
         }
 
     # endregion static methods

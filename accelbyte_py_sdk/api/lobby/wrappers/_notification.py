@@ -162,28 +162,28 @@ def delete_notification_topic_v1_admin(topic_name: str, namespace: Optional[str]
 
 
 @same_doc_as(DeleteTemplateLocalization)
-def delete_template_localization(template_slug: str, template_language: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def delete_template_localization(template_language: str, template_slug: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = DeleteTemplateLocalization.create(
-        template_slug=template_slug,
         template_language=template_language,
+        template_slug=template_slug,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteTemplateLocalizationV1Admin)
-def delete_template_localization_v1_admin(template_slug: str, template_language: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def delete_template_localization_v1_admin(template_language: str, template_slug: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = DeleteTemplateLocalizationV1Admin.create(
-        template_slug=template_slug,
         template_language=template_language,
+        template_slug=template_slug,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -256,15 +256,15 @@ def get_all_notification_templates_v1_admin(namespace: Optional[str] = None, x_a
 
 
 @same_doc_as(GetAllNotificationTopicsV1Admin)
-def get_all_notification_topics_v1_admin(limit: Optional[int] = None, before: Optional[str] = None, after: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_all_notification_topics_v1_admin(after: Optional[str] = None, before: Optional[str] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetAllNotificationTopicsV1Admin.create(
-        limit=limit,
-        before=before,
         after=after,
+        before=before,
+        limit=limit,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -295,14 +295,14 @@ def get_game_template(namespace: Optional[str] = None, x_additional_headers: Opt
 
 
 @same_doc_as(GetLocalizationTemplate)
-def get_localization_template(template_slug: str, template_language: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_localization_template(template_language: str, template_slug: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetLocalizationTemplate.create(
-        template_slug=template_slug,
         template_language=template_language,
+        template_slug=template_slug,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -335,61 +335,61 @@ def get_notifications(user_id: str, namespace: Optional[str] = None, x_additiona
 
 
 @same_doc_as(GetSingleTemplateLocalizationV1Admin)
-def get_single_template_localization_v1_admin(template_slug: str, template_language: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_single_template_localization_v1_admin(template_language: str, template_slug: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetSingleTemplateLocalizationV1Admin.create(
-        template_slug=template_slug,
         template_language=template_language,
+        template_slug=template_slug,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetSlugTemplate)
-def get_slug_template(template_slug: str, limit: Optional[int] = None, before: Optional[str] = None, after: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_slug_template(template_slug: str, after: Optional[str] = None, before: Optional[str] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetSlugTemplate.create(
         template_slug=template_slug,
-        limit=limit,
-        before=before,
         after=after,
+        before=before,
+        limit=limit,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetTemplateSlugLocalizationsTemplateV1Admin)
-def get_template_slug_localizations_template_v1_admin(template_slug: str, limit: Optional[int] = None, before: Optional[str] = None, after: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_template_slug_localizations_template_v1_admin(template_slug: str, after: Optional[str] = None, before: Optional[str] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetTemplateSlugLocalizationsTemplateV1Admin.create(
         template_slug=template_slug,
-        limit=limit,
-        before=before,
         after=after,
+        before=before,
+        limit=limit,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetTopicByNamespace)
-def get_topic_by_namespace(limit: Optional[int] = None, before: Optional[str] = None, after: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_topic_by_namespace(after: Optional[str] = None, before: Optional[str] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetTopicByNamespace.create(
-        limit=limit,
-        before=before,
         after=after,
+        before=before,
+        limit=limit,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -437,28 +437,28 @@ def notification_with_template_by_user_id(body: ModelNotificationWithTemplateReq
 
 
 @same_doc_as(PublishTemplate)
-def publish_template(template_slug: str, template_language: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def publish_template(template_language: str, template_slug: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublishTemplate.create(
-        template_slug=template_slug,
         template_language=template_language,
+        template_slug=template_slug,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublishTemplateLocalizationV1Admin)
-def publish_template_localization_v1_admin(template_slug: str, template_language: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def publish_template_localization_v1_admin(template_language: str, template_slug: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublishTemplateLocalizationV1Admin.create(
-        template_slug=template_slug,
         template_language=template_language,
+        template_slug=template_slug,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -535,15 +535,15 @@ def send_users_templated_notification_v1_admin(body: ModelNotificationWithTempla
 
 
 @same_doc_as(UpdateLocalizationTemplate)
-def update_localization_template(body: ModelUpdateTemplateRequest, template_slug: str, template_language: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def update_localization_template(body: ModelUpdateTemplateRequest, template_language: str, template_slug: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = UpdateLocalizationTemplate.create(
         body=body,
-        template_slug=template_slug,
         template_language=template_language,
+        template_slug=template_slug,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -564,15 +564,15 @@ def update_notification_topic_v1_admin(body: ModelUpdateTopicRequest, topic_name
 
 
 @same_doc_as(UpdateTemplateLocalizationV1Admin)
-def update_template_localization_v1_admin(body: ModelUpdateTemplateRequest, template_slug: str, template_language: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def update_template_localization_v1_admin(body: ModelUpdateTemplateRequest, template_language: str, template_slug: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = UpdateTemplateLocalizationV1Admin.create(
         body=body,
-        template_slug=template_slug,
         template_language=template_language,
+        template_slug=template_slug,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

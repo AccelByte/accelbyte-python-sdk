@@ -44,9 +44,9 @@ def protected_save_events_game_telemetry_v1_protected_events_post(body: List[Tel
 
 
 @same_doc_as(ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut)
-def protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_playtime_put(steam_id: str, playtime: str, x_additional_headers: Optional[Dict[str, str]] = None):
+def protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_playtime_put(playtime: str, steam_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
     request = ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut.create(
-        steam_id=steam_id,
         playtime=playtime,
+        steam_id=steam_id,
     )
     return run_request(request, additional_headers=x_additional_headers)

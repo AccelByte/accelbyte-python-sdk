@@ -69,9 +69,9 @@ class PublicPlatformLinkV3(Operation):
 
         security: bearer
 
-        ticket: (ticket) REQUIRED str in form_data
-
         redirect_uri: (redirectUri) OPTIONAL str in form_data
+
+        ticket: (ticket) REQUIRED str in form_data
 
         namespace: (namespace) REQUIRED str in path
 
@@ -100,8 +100,8 @@ class PublicPlatformLinkV3(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    ticket: str                                                                                    # REQUIRED in [form_data]
     redirect_uri: str                                                                              # OPTIONAL in [form_data]
+    ticket: str                                                                                    # REQUIRED in [form_data]
     namespace: str                                                                                 # REQUIRED in [path]
     platform_id: str                                                                               # REQUIRED in [path]
 
@@ -168,10 +168,10 @@ class PublicPlatformLinkV3(Operation):
 
     def get_form_data_params(self) -> dict:
         result = {}
-        if hasattr(self, "ticket"):
-            result["ticket"] = self.ticket
         if hasattr(self, "redirect_uri"):
             result["redirectUri"] = self.redirect_uri
+        if hasattr(self, "ticket"):
+            result["ticket"] = self.ticket
         return result
 
     def get_path_params(self) -> dict:
@@ -199,12 +199,12 @@ class PublicPlatformLinkV3(Operation):
 
     # region with_x methods
 
-    def with_ticket(self, value: str) -> PublicPlatformLinkV3:
-        self.ticket = value
-        return self
-
     def with_redirect_uri(self, value: str) -> PublicPlatformLinkV3:
         self.redirect_uri = value
+        return self
+
+    def with_ticket(self, value: str) -> PublicPlatformLinkV3:
+        self.ticket = value
         return self
 
     def with_namespace(self, value: str) -> PublicPlatformLinkV3:
@@ -221,14 +221,14 @@ class PublicPlatformLinkV3(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "ticket") and self.ticket:
-            result["ticket"] = str(self.ticket)
-        elif include_empty:
-            result["ticket"] = str()
         if hasattr(self, "redirect_uri") and self.redirect_uri:
             result["redirectUri"] = str(self.redirect_uri)
         elif include_empty:
             result["redirectUri"] = str()
+        if hasattr(self, "ticket") and self.ticket:
+            result["ticket"] = str(self.ticket)
+        elif include_empty:
+            result["ticket"] = str()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -299,14 +299,14 @@ class PublicPlatformLinkV3(Operation):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PublicPlatformLinkV3:
         instance = cls()
-        if "ticket" in dict_ and dict_["ticket"] is not None:
-            instance.ticket = str(dict_["ticket"])
-        elif include_empty:
-            instance.ticket = str()
         if "redirectUri" in dict_ and dict_["redirectUri"] is not None:
             instance.redirect_uri = str(dict_["redirectUri"])
         elif include_empty:
             instance.redirect_uri = str()
+        if "ticket" in dict_ and dict_["ticket"] is not None:
+            instance.ticket = str(dict_["ticket"])
+        elif include_empty:
+            instance.ticket = str()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -320,8 +320,8 @@ class PublicPlatformLinkV3(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "ticket": "ticket",
             "redirectUri": "redirect_uri",
+            "ticket": "ticket",
             "namespace": "namespace",
             "platformId": "platform_id",
         }

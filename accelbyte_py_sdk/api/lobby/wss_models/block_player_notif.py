@@ -28,8 +28,8 @@ class BlockPlayerNotif(WebSocketMessage):
 
     # region fields
 
-    user_id: str
     blocked_user_id: str
+    user_id: str
 
     # endregion fields
 
@@ -39,10 +39,10 @@ class BlockPlayerNotif(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {BlockPlayerNotif.get_type()}"]
-        if hasattr(self, "user_id") and self.user_id:
-            wsm.append(f"userId: {self.user_id}")
         if hasattr(self, "blocked_user_id") and self.blocked_user_id:
             wsm.append(f"blockedUserId: {self.blocked_user_id}")
+        if hasattr(self, "user_id") and self.user_id:
+            wsm.append(f"userId: {self.user_id}")
         return "\n".join(wsm)
 
     # endregion methods
@@ -62,11 +62,11 @@ class BlockPlayerNotif(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if (not is_strict and name.casefold() == "userId".casefold()) or (name == "userId"):
-                instance.user_id = value
-                continue
             if (not is_strict and name.casefold() == "blockedUserId".casefold()) or (name == "blockedUserId"):
                 instance.blocked_user_id = value
+                continue
+            if (not is_strict and name.casefold() == "userId".casefold()) or (name == "userId"):
+                instance.user_id = value
                 continue
             if is_strict:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldTypeNotSupported)
@@ -79,8 +79,8 @@ class BlockPlayerNotif(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "userId": "user_id",
             "blockedUserId": "blocked_user_id",
+            "userId": "user_id",
         }
 
     # endregion static methods

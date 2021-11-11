@@ -28,42 +28,34 @@ class UserProfilePublicInfo(Model):
     """User profile public info (UserProfilePublicInfo)
 
     Properties:
-        user_id: (userId) OPTIONAL str
-
-        namespace: (namespace) OPTIONAL str
-
-        time_zone: (timeZone) OPTIONAL str
+        avatar_large_url: (avatarLargeUrl) OPTIONAL str
 
         avatar_small_url: (avatarSmallUrl) OPTIONAL str
 
         avatar_url: (avatarUrl) OPTIONAL str
 
-        avatar_large_url: (avatarLargeUrl) OPTIONAL str
+        namespace: (namespace) OPTIONAL str
+
+        time_zone: (timeZone) OPTIONAL str
+
+        user_id: (userId) OPTIONAL str
     """
 
     # region fields
 
-    user_id: str                                                                                   # OPTIONAL
-    namespace: str                                                                                 # OPTIONAL
-    time_zone: str                                                                                 # OPTIONAL
+    avatar_large_url: str                                                                          # OPTIONAL
     avatar_small_url: str                                                                          # OPTIONAL
     avatar_url: str                                                                                # OPTIONAL
-    avatar_large_url: str                                                                          # OPTIONAL
+    namespace: str                                                                                 # OPTIONAL
+    time_zone: str                                                                                 # OPTIONAL
+    user_id: str                                                                                   # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_user_id(self, value: str) -> UserProfilePublicInfo:
-        self.user_id = value
-        return self
-
-    def with_namespace(self, value: str) -> UserProfilePublicInfo:
-        self.namespace = value
-        return self
-
-    def with_time_zone(self, value: str) -> UserProfilePublicInfo:
-        self.time_zone = value
+    def with_avatar_large_url(self, value: str) -> UserProfilePublicInfo:
+        self.avatar_large_url = value
         return self
 
     def with_avatar_small_url(self, value: str) -> UserProfilePublicInfo:
@@ -74,8 +66,16 @@ class UserProfilePublicInfo(Model):
         self.avatar_url = value
         return self
 
-    def with_avatar_large_url(self, value: str) -> UserProfilePublicInfo:
-        self.avatar_large_url = value
+    def with_namespace(self, value: str) -> UserProfilePublicInfo:
+        self.namespace = value
+        return self
+
+    def with_time_zone(self, value: str) -> UserProfilePublicInfo:
+        self.time_zone = value
+        return self
+
+    def with_user_id(self, value: str) -> UserProfilePublicInfo:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -84,18 +84,10 @@ class UserProfilePublicInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "user_id"):
-            result["userId"] = str(self.user_id)
+        if hasattr(self, "avatar_large_url"):
+            result["avatarLargeUrl"] = str(self.avatar_large_url)
         elif include_empty:
-            result["userId"] = str()
-        if hasattr(self, "namespace"):
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
-        if hasattr(self, "time_zone"):
-            result["timeZone"] = str(self.time_zone)
-        elif include_empty:
-            result["timeZone"] = str()
+            result["avatarLargeUrl"] = str()
         if hasattr(self, "avatar_small_url"):
             result["avatarSmallUrl"] = str(self.avatar_small_url)
         elif include_empty:
@@ -104,10 +96,18 @@ class UserProfilePublicInfo(Model):
             result["avatarUrl"] = str(self.avatar_url)
         elif include_empty:
             result["avatarUrl"] = str()
-        if hasattr(self, "avatar_large_url"):
-            result["avatarLargeUrl"] = str(self.avatar_large_url)
+        if hasattr(self, "namespace"):
+            result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["avatarLargeUrl"] = str()
+            result["namespace"] = str()
+        if hasattr(self, "time_zone"):
+            result["timeZone"] = str(self.time_zone)
+        elif include_empty:
+            result["timeZone"] = str()
+        if hasattr(self, "user_id"):
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         return result
 
     # endregion to methods
@@ -144,18 +144,10 @@ class UserProfilePublicInfo(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
+        if "avatarLargeUrl" in dict_ and dict_["avatarLargeUrl"] is not None:
+            instance.avatar_large_url = str(dict_["avatarLargeUrl"])
         elif include_empty:
-            instance.user_id = str()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
-        if "timeZone" in dict_ and dict_["timeZone"] is not None:
-            instance.time_zone = str(dict_["timeZone"])
-        elif include_empty:
-            instance.time_zone = str()
+            instance.avatar_large_url = str()
         if "avatarSmallUrl" in dict_ and dict_["avatarSmallUrl"] is not None:
             instance.avatar_small_url = str(dict_["avatarSmallUrl"])
         elif include_empty:
@@ -164,21 +156,29 @@ class UserProfilePublicInfo(Model):
             instance.avatar_url = str(dict_["avatarUrl"])
         elif include_empty:
             instance.avatar_url = str()
-        if "avatarLargeUrl" in dict_ and dict_["avatarLargeUrl"] is not None:
-            instance.avatar_large_url = str(dict_["avatarLargeUrl"])
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.avatar_large_url = str()
+            instance.namespace = str()
+        if "timeZone" in dict_ and dict_["timeZone"] is not None:
+            instance.time_zone = str(dict_["timeZone"])
+        elif include_empty:
+            instance.time_zone = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "userId": "user_id",
-            "namespace": "namespace",
-            "timeZone": "time_zone",
+            "avatarLargeUrl": "avatar_large_url",
             "avatarSmallUrl": "avatar_small_url",
             "avatarUrl": "avatar_url",
-            "avatarLargeUrl": "avatar_large_url",
+            "namespace": "namespace",
+            "timeZone": "time_zone",
+            "userId": "user_id",
         }
 
     # endregion static methods

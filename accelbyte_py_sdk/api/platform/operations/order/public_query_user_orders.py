@@ -56,11 +56,11 @@ class PublicQueryUserOrders(Operation):
 
         item_id: (itemId) OPTIONAL str in query
 
-        status: (status) OPTIONAL str in query
+        limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
-        limit: (limit) OPTIONAL int in query
+        status: (status) OPTIONAL str in query
 
     Responses:
         200: OK - OrderPagingSlicedResult (successful operation)
@@ -78,9 +78,9 @@ class PublicQueryUserOrders(Operation):
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
     item_id: str                                                                                   # OPTIONAL in [query]
-    status: str                                                                                    # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
+    status: str                                                                                    # OPTIONAL in [query]
 
     # endregion fields
 
@@ -157,12 +157,12 @@ class PublicQueryUserOrders(Operation):
         result = {}
         if hasattr(self, "item_id"):
             result["itemId"] = self.item_id
-        if hasattr(self, "status"):
-            result["status"] = self.status
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
+        if hasattr(self, "status"):
+            result["status"] = self.status
         return result
 
     # endregion get_x_params methods
@@ -192,16 +192,16 @@ class PublicQueryUserOrders(Operation):
         self.item_id = value
         return self
 
-    def with_status(self, value: str) -> PublicQueryUserOrders:
-        self.status = value
+    def with_limit(self, value: int) -> PublicQueryUserOrders:
+        self.limit = value
         return self
 
     def with_offset(self, value: int) -> PublicQueryUserOrders:
         self.offset = value
         return self
 
-    def with_limit(self, value: int) -> PublicQueryUserOrders:
-        self.limit = value
+    def with_status(self, value: str) -> PublicQueryUserOrders:
+        self.status = value
         return self
 
     # endregion with_x methods
@@ -222,18 +222,18 @@ class PublicQueryUserOrders(Operation):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = str()
-        if hasattr(self, "status") and self.status:
-            result["status"] = str(self.status)
-        elif include_empty:
-            result["status"] = str()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = int()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = int()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = int()
+        if hasattr(self, "status") and self.status:
+            result["status"] = str(self.status)
+        elif include_empty:
+            result["status"] = str()
         return result
 
     # endregion to methods
@@ -263,21 +263,21 @@ class PublicQueryUserOrders(Operation):
         namespace: str,
         user_id: str,
         item_id: Optional[str] = None,
-        status: Optional[str] = None,
-        offset: Optional[int] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
+        status: Optional[str] = None,
     ) -> PublicQueryUserOrders:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
         if item_id is not None:
             instance.item_id = item_id
-        if status is not None:
-            instance.status = status
-        if offset is not None:
-            instance.offset = offset
         if limit is not None:
             instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
+        if status is not None:
+            instance.status = status
         return instance
 
     @classmethod
@@ -295,18 +295,18 @@ class PublicQueryUserOrders(Operation):
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
             instance.item_id = str()
-        if "status" in dict_ and dict_["status"] is not None:
-            instance.status = str(dict_["status"])
-        elif include_empty:
-            instance.status = str()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = int()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = int()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = int()
+        if "status" in dict_ and dict_["status"] is not None:
+            instance.status = str(dict_["status"])
+        elif include_empty:
+            instance.status = str()
         return instance
 
     @staticmethod
@@ -315,9 +315,9 @@ class PublicQueryUserOrders(Operation):
             "namespace": "namespace",
             "userId": "user_id",
             "itemId": "item_id",
-            "status": "status",
-            "offset": "offset",
             "limit": "limit",
+            "offset": "offset",
+            "status": "status",
         }
 
     # endregion static methods

@@ -28,28 +28,36 @@ class XsollaConfig(Model):
     """A DTO object for updating xsolla config. (XsollaConfig)
 
     Properties:
+        api_key: (apiKey) OPTIONAL str
+
+        flow_completion_url: (flowCompletionUrl) OPTIONAL str
+
         merchant_id: (merchantId) OPTIONAL int
 
         project_id: (projectId) OPTIONAL int
 
         project_secret_key: (projectSecretKey) OPTIONAL str
-
-        api_key: (apiKey) OPTIONAL str
-
-        flow_completion_url: (flowCompletionUrl) OPTIONAL str
     """
 
     # region fields
 
+    api_key: str                                                                                   # OPTIONAL
+    flow_completion_url: str                                                                       # OPTIONAL
     merchant_id: int                                                                               # OPTIONAL
     project_id: int                                                                                # OPTIONAL
     project_secret_key: str                                                                        # OPTIONAL
-    api_key: str                                                                                   # OPTIONAL
-    flow_completion_url: str                                                                       # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
+
+    def with_api_key(self, value: str) -> XsollaConfig:
+        self.api_key = value
+        return self
+
+    def with_flow_completion_url(self, value: str) -> XsollaConfig:
+        self.flow_completion_url = value
+        return self
 
     def with_merchant_id(self, value: int) -> XsollaConfig:
         self.merchant_id = value
@@ -63,20 +71,20 @@ class XsollaConfig(Model):
         self.project_secret_key = value
         return self
 
-    def with_api_key(self, value: str) -> XsollaConfig:
-        self.api_key = value
-        return self
-
-    def with_flow_completion_url(self, value: str) -> XsollaConfig:
-        self.flow_completion_url = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "api_key"):
+            result["apiKey"] = str(self.api_key)
+        elif include_empty:
+            result["apiKey"] = str()
+        if hasattr(self, "flow_completion_url"):
+            result["flowCompletionUrl"] = str(self.flow_completion_url)
+        elif include_empty:
+            result["flowCompletionUrl"] = str()
         if hasattr(self, "merchant_id"):
             result["merchantId"] = int(self.merchant_id)
         elif include_empty:
@@ -89,14 +97,6 @@ class XsollaConfig(Model):
             result["projectSecretKey"] = str(self.project_secret_key)
         elif include_empty:
             result["projectSecretKey"] = str()
-        if hasattr(self, "api_key"):
-            result["apiKey"] = str(self.api_key)
-        elif include_empty:
-            result["apiKey"] = str()
-        if hasattr(self, "flow_completion_url"):
-            result["flowCompletionUrl"] = str(self.flow_completion_url)
-        elif include_empty:
-            result["flowCompletionUrl"] = str()
         return result
 
     # endregion to methods
@@ -130,6 +130,14 @@ class XsollaConfig(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "apiKey" in dict_ and dict_["apiKey"] is not None:
+            instance.api_key = str(dict_["apiKey"])
+        elif include_empty:
+            instance.api_key = str()
+        if "flowCompletionUrl" in dict_ and dict_["flowCompletionUrl"] is not None:
+            instance.flow_completion_url = str(dict_["flowCompletionUrl"])
+        elif include_empty:
+            instance.flow_completion_url = str()
         if "merchantId" in dict_ and dict_["merchantId"] is not None:
             instance.merchant_id = int(dict_["merchantId"])
         elif include_empty:
@@ -142,24 +150,16 @@ class XsollaConfig(Model):
             instance.project_secret_key = str(dict_["projectSecretKey"])
         elif include_empty:
             instance.project_secret_key = str()
-        if "apiKey" in dict_ and dict_["apiKey"] is not None:
-            instance.api_key = str(dict_["apiKey"])
-        elif include_empty:
-            instance.api_key = str()
-        if "flowCompletionUrl" in dict_ and dict_["flowCompletionUrl"] is not None:
-            instance.flow_completion_url = str(dict_["flowCompletionUrl"])
-        elif include_empty:
-            instance.flow_completion_url = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "apiKey": "api_key",
+            "flowCompletionUrl": "flow_completion_url",
             "merchantId": "merchant_id",
             "projectId": "project_id",
             "projectSecretKey": "project_secret_key",
-            "apiKey": "api_key",
-            "flowCompletionUrl": "flow_completion_url",
         }
 
     # endregion static methods

@@ -28,10 +28,10 @@ class BlockPlayerResponse(WebSocketMessage):
 
     # region fields
 
-    id_: str
-    code: str
-    namespace: str
     block_user_id: str
+    code: str
+    id_: str
+    namespace: str
 
     # endregion fields
 
@@ -41,14 +41,14 @@ class BlockPlayerResponse(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {BlockPlayerResponse.get_type()}"]
-        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
-        wsm.append(f"id: {id_}")
-        if hasattr(self, "code") and self.code:
-            wsm.append(f"code: {self.code}")
-        if hasattr(self, "namespace") and self.namespace:
-            wsm.append(f"namespace: {self.namespace}")
         if hasattr(self, "block_user_id") and self.block_user_id:
             wsm.append(f"blockUserId: {self.block_user_id}")
+        if hasattr(self, "code") and self.code:
+            wsm.append(f"code: {self.code}")
+        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
+        wsm.append(f"id: {id_}")
+        if hasattr(self, "namespace") and self.namespace:
+            wsm.append(f"namespace: {self.namespace}")
         return "\n".join(wsm)
 
     # endregion methods
@@ -72,14 +72,14 @@ class BlockPlayerResponse(WebSocketMessage):
             if len(parts) != 2:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
+            if (not is_strict and name.casefold() == "blockUserId".casefold()) or (name == "blockUserId"):
+                instance.block_user_id = value
+                continue
             if (not is_strict and name.casefold() == "code".casefold()) or (name == "code"):
                 instance.code = value
                 continue
             if (not is_strict and name.casefold() == "namespace".casefold()) or (name == "namespace"):
                 instance.namespace = value
-                continue
-            if (not is_strict and name.casefold() == "blockUserId".casefold()) or (name == "blockUserId"):
-                instance.block_user_id = value
                 continue
             if is_strict:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldTypeNotSupported)
@@ -92,10 +92,10 @@ class BlockPlayerResponse(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
-            "code": "code",
-            "namespace": "namespace",
             "blockUserId": "block_user_id",
+            "code": "code",
+            "id": "id_",
+            "namespace": "namespace",
         }
 
     # endregion static methods

@@ -28,29 +28,29 @@ class StatUpdate(Model):
     """Stat update (StatUpdate)
 
     Properties:
-        name: (name) OPTIONAL str
-
         description: (description) OPTIONAL str
+
+        name: (name) OPTIONAL str
 
         tags: (tags) OPTIONAL List[str]
     """
 
     # region fields
 
-    name: str                                                                                      # OPTIONAL
     description: str                                                                               # OPTIONAL
+    name: str                                                                                      # OPTIONAL
     tags: List[str]                                                                                # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_name(self, value: str) -> StatUpdate:
-        self.name = value
-        return self
-
     def with_description(self, value: str) -> StatUpdate:
         self.description = value
+        return self
+
+    def with_name(self, value: str) -> StatUpdate:
+        self.name = value
         return self
 
     def with_tags(self, value: List[str]) -> StatUpdate:
@@ -63,14 +63,14 @@ class StatUpdate(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "name"):
-            result["name"] = str(self.name)
-        elif include_empty:
-            result["name"] = str()
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = str()
+        if hasattr(self, "name"):
+            result["name"] = str(self.name)
+        elif include_empty:
+            result["name"] = str()
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -102,14 +102,14 @@ class StatUpdate(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "name" in dict_ and dict_["name"] is not None:
-            instance.name = str(dict_["name"])
-        elif include_empty:
-            instance.name = str()
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = str()
+        if "name" in dict_ and dict_["name"] is not None:
+            instance.name = str(dict_["name"])
+        elif include_empty:
+            instance.name = str()
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
@@ -119,8 +119,8 @@ class StatUpdate(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "name": "name",
             "description": "description",
+            "name": "name",
             "tags": "tags",
         }
 

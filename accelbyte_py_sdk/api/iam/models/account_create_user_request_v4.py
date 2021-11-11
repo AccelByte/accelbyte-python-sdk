@@ -30,8 +30,6 @@ class AccountCreateUserRequestV4(Model):
     """Account create user request V4 (account.createUserRequestV4)
 
     Properties:
-        accepted_policies: (acceptedPolicies) OPTIONAL List[LegalAcceptedPoliciesRequest]
-
         auth_type: (authType) REQUIRED str
 
         country: (country) REQUIRED str
@@ -47,11 +45,12 @@ class AccountCreateUserRequestV4(Model):
         password_md5_sum: (passwordMD5Sum) REQUIRED str
 
         username: (username) REQUIRED str
+
+        accepted_policies: (acceptedPolicies) OPTIONAL List[LegalAcceptedPoliciesRequest]
     """
 
     # region fields
 
-    accepted_policies: List[LegalAcceptedPoliciesRequest]                                          # OPTIONAL
     auth_type: str                                                                                 # REQUIRED
     country: str                                                                                   # REQUIRED
     date_of_birth: str                                                                             # REQUIRED
@@ -60,14 +59,11 @@ class AccountCreateUserRequestV4(Model):
     password: str                                                                                  # REQUIRED
     password_md5_sum: str                                                                          # REQUIRED
     username: str                                                                                  # REQUIRED
+    accepted_policies: List[LegalAcceptedPoliciesRequest]                                          # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
-
-    def with_accepted_policies(self, value: List[LegalAcceptedPoliciesRequest]) -> AccountCreateUserRequestV4:
-        self.accepted_policies = value
-        return self
 
     def with_auth_type(self, value: str) -> AccountCreateUserRequestV4:
         self.auth_type = value
@@ -101,16 +97,16 @@ class AccountCreateUserRequestV4(Model):
         self.username = value
         return self
 
+    def with_accepted_policies(self, value: List[LegalAcceptedPoliciesRequest]) -> AccountCreateUserRequestV4:
+        self.accepted_policies = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "accepted_policies"):
-            result["acceptedPolicies"] = [i0.to_dict(include_empty=include_empty) for i0 in self.accepted_policies]
-        elif include_empty:
-            result["acceptedPolicies"] = []
         if hasattr(self, "auth_type"):
             result["authType"] = str(self.auth_type)
         elif include_empty:
@@ -143,6 +139,10 @@ class AccountCreateUserRequestV4(Model):
             result["username"] = str(self.username)
         elif include_empty:
             result["username"] = str()
+        if hasattr(self, "accepted_policies"):
+            result["acceptedPolicies"] = [i0.to_dict(include_empty=include_empty) for i0 in self.accepted_policies]
+        elif include_empty:
+            result["acceptedPolicies"] = []
         return result
 
     # endregion to methods
@@ -180,10 +180,6 @@ class AccountCreateUserRequestV4(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "acceptedPolicies" in dict_ and dict_["acceptedPolicies"] is not None:
-            instance.accepted_policies = [LegalAcceptedPoliciesRequest.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["acceptedPolicies"]]
-        elif include_empty:
-            instance.accepted_policies = []
         if "authType" in dict_ and dict_["authType"] is not None:
             instance.auth_type = str(dict_["authType"])
         elif include_empty:
@@ -216,12 +212,15 @@ class AccountCreateUserRequestV4(Model):
             instance.username = str(dict_["username"])
         elif include_empty:
             instance.username = str()
+        if "acceptedPolicies" in dict_ and dict_["acceptedPolicies"] is not None:
+            instance.accepted_policies = [LegalAcceptedPoliciesRequest.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["acceptedPolicies"]]
+        elif include_empty:
+            instance.accepted_policies = []
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "acceptedPolicies": "accepted_policies",
             "authType": "auth_type",
             "country": "country",
             "dateOfBirth": "date_of_birth",
@@ -230,6 +229,7 @@ class AccountCreateUserRequestV4(Model):
             "password": "password",
             "passwordMD5Sum": "password_md5_sum",
             "username": "username",
+            "acceptedPolicies": "accepted_policies",
         }
 
     # endregion static methods

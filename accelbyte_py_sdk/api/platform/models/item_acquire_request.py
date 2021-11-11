@@ -28,26 +28,26 @@ class ItemAcquireRequest(Model):
     """Item acquire request (ItemAcquireRequest)
 
     Properties:
-        order_no: (orderNo) REQUIRED str
-
         count: (count) REQUIRED int
+
+        order_no: (orderNo) REQUIRED str
     """
 
     # region fields
 
-    order_no: str                                                                                  # REQUIRED
     count: int                                                                                     # REQUIRED
+    order_no: str                                                                                  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_order_no(self, value: str) -> ItemAcquireRequest:
-        self.order_no = value
-        return self
-
     def with_count(self, value: int) -> ItemAcquireRequest:
         self.count = value
+        return self
+
+    def with_order_no(self, value: str) -> ItemAcquireRequest:
+        self.order_no = value
         return self
 
     # endregion with_x methods
@@ -56,14 +56,14 @@ class ItemAcquireRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "order_no"):
-            result["orderNo"] = str(self.order_no)
-        elif include_empty:
-            result["orderNo"] = str()
         if hasattr(self, "count"):
             result["count"] = int(self.count)
         elif include_empty:
             result["count"] = int()
+        if hasattr(self, "order_no"):
+            result["orderNo"] = str(self.order_no)
+        elif include_empty:
+            result["orderNo"] = str()
         return result
 
     # endregion to methods
@@ -86,21 +86,21 @@ class ItemAcquireRequest(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "orderNo" in dict_ and dict_["orderNo"] is not None:
-            instance.order_no = str(dict_["orderNo"])
-        elif include_empty:
-            instance.order_no = str()
         if "count" in dict_ and dict_["count"] is not None:
             instance.count = int(dict_["count"])
         elif include_empty:
             instance.count = int()
+        if "orderNo" in dict_ and dict_["orderNo"] is not None:
+            instance.order_no = str(dict_["orderNo"])
+        elif include_empty:
+            instance.order_no = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "orderNo": "order_no",
             "count": "count",
+            "orderNo": "order_no",
         }
 
     # endregion static methods

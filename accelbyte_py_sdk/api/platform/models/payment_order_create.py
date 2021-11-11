@@ -28,81 +28,77 @@ class PaymentOrderCreate(Model):
     """Payment order create (PaymentOrderCreate)
 
     Properties:
+        description: (description) REQUIRED str
+
         ext_order_no: (extOrderNo) REQUIRED str
-
-        sku: (sku) OPTIONAL str
-
-        ext_user_id: (extUserId) OPTIONAL str
 
         price: (price) REQUIRED int
 
         title: (title) REQUIRED str
 
-        description: (description) REQUIRED str
-
-        item_type: (itemType) OPTIONAL str
-
         currency_code: (currencyCode) OPTIONAL str
 
         currency_namespace: (currencyNamespace) OPTIONAL str
 
-        region: (region) OPTIONAL str
+        custom_parameters: (customParameters) OPTIONAL Dict[str, Any]
+
+        ext_user_id: (extUserId) OPTIONAL str
+
+        item_type: (itemType) OPTIONAL str
 
         language: (language) OPTIONAL str
 
-        sandbox: (sandbox) OPTIONAL bool
-
-        return_url: (returnUrl) OPTIONAL str
+        metadata: (metadata) OPTIONAL Dict[str, str]
 
         notify_url: (notifyUrl) OPTIONAL str
 
-        custom_parameters: (customParameters) OPTIONAL Dict[str, Any]
-
-        subscription_id: (subscriptionId) OPTIONAL str
+        omit_notification: (omitNotification) OPTIONAL bool
 
         recurring_payment_order_no: (recurringPaymentOrderNo) OPTIONAL str
 
-        omit_notification: (omitNotification) OPTIONAL bool
+        region: (region) OPTIONAL str
 
-        metadata: (metadata) OPTIONAL Dict[str, str]
+        return_url: (returnUrl) OPTIONAL str
+
+        sandbox: (sandbox) OPTIONAL bool
+
+        sku: (sku) OPTIONAL str
+
+        subscription_id: (subscriptionId) OPTIONAL str
     """
 
     # region fields
 
+    description: str                                                                               # REQUIRED
     ext_order_no: str                                                                              # REQUIRED
-    sku: str                                                                                       # OPTIONAL
-    ext_user_id: str                                                                               # OPTIONAL
     price: int                                                                                     # REQUIRED
     title: str                                                                                     # REQUIRED
-    description: str                                                                               # REQUIRED
-    item_type: str                                                                                 # OPTIONAL
     currency_code: str                                                                             # OPTIONAL
     currency_namespace: str                                                                        # OPTIONAL
-    region: str                                                                                    # OPTIONAL
-    language: str                                                                                  # OPTIONAL
-    sandbox: bool                                                                                  # OPTIONAL
-    return_url: str                                                                                # OPTIONAL
-    notify_url: str                                                                                # OPTIONAL
     custom_parameters: Dict[str, Any]                                                              # OPTIONAL
-    subscription_id: str                                                                           # OPTIONAL
-    recurring_payment_order_no: str                                                                # OPTIONAL
-    omit_notification: bool                                                                        # OPTIONAL
+    ext_user_id: str                                                                               # OPTIONAL
+    item_type: str                                                                                 # OPTIONAL
+    language: str                                                                                  # OPTIONAL
     metadata: Dict[str, str]                                                                       # OPTIONAL
+    notify_url: str                                                                                # OPTIONAL
+    omit_notification: bool                                                                        # OPTIONAL
+    recurring_payment_order_no: str                                                                # OPTIONAL
+    region: str                                                                                    # OPTIONAL
+    return_url: str                                                                                # OPTIONAL
+    sandbox: bool                                                                                  # OPTIONAL
+    sku: str                                                                                       # OPTIONAL
+    subscription_id: str                                                                           # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
+    def with_description(self, value: str) -> PaymentOrderCreate:
+        self.description = value
+        return self
+
     def with_ext_order_no(self, value: str) -> PaymentOrderCreate:
         self.ext_order_no = value
-        return self
-
-    def with_sku(self, value: str) -> PaymentOrderCreate:
-        self.sku = value
-        return self
-
-    def with_ext_user_id(self, value: str) -> PaymentOrderCreate:
-        self.ext_user_id = value
         return self
 
     def with_price(self, value: int) -> PaymentOrderCreate:
@@ -113,14 +109,6 @@ class PaymentOrderCreate(Model):
         self.title = value
         return self
 
-    def with_description(self, value: str) -> PaymentOrderCreate:
-        self.description = value
-        return self
-
-    def with_item_type(self, value: str) -> PaymentOrderCreate:
-        self.item_type = value
-        return self
-
     def with_currency_code(self, value: str) -> PaymentOrderCreate:
         self.currency_code = value
         return self
@@ -129,44 +117,56 @@ class PaymentOrderCreate(Model):
         self.currency_namespace = value
         return self
 
-    def with_region(self, value: str) -> PaymentOrderCreate:
-        self.region = value
+    def with_custom_parameters(self, value: Dict[str, Any]) -> PaymentOrderCreate:
+        self.custom_parameters = value
+        return self
+
+    def with_ext_user_id(self, value: str) -> PaymentOrderCreate:
+        self.ext_user_id = value
+        return self
+
+    def with_item_type(self, value: str) -> PaymentOrderCreate:
+        self.item_type = value
         return self
 
     def with_language(self, value: str) -> PaymentOrderCreate:
         self.language = value
         return self
 
-    def with_sandbox(self, value: bool) -> PaymentOrderCreate:
-        self.sandbox = value
-        return self
-
-    def with_return_url(self, value: str) -> PaymentOrderCreate:
-        self.return_url = value
+    def with_metadata(self, value: Dict[str, str]) -> PaymentOrderCreate:
+        self.metadata = value
         return self
 
     def with_notify_url(self, value: str) -> PaymentOrderCreate:
         self.notify_url = value
         return self
 
-    def with_custom_parameters(self, value: Dict[str, Any]) -> PaymentOrderCreate:
-        self.custom_parameters = value
-        return self
-
-    def with_subscription_id(self, value: str) -> PaymentOrderCreate:
-        self.subscription_id = value
+    def with_omit_notification(self, value: bool) -> PaymentOrderCreate:
+        self.omit_notification = value
         return self
 
     def with_recurring_payment_order_no(self, value: str) -> PaymentOrderCreate:
         self.recurring_payment_order_no = value
         return self
 
-    def with_omit_notification(self, value: bool) -> PaymentOrderCreate:
-        self.omit_notification = value
+    def with_region(self, value: str) -> PaymentOrderCreate:
+        self.region = value
         return self
 
-    def with_metadata(self, value: Dict[str, str]) -> PaymentOrderCreate:
-        self.metadata = value
+    def with_return_url(self, value: str) -> PaymentOrderCreate:
+        self.return_url = value
+        return self
+
+    def with_sandbox(self, value: bool) -> PaymentOrderCreate:
+        self.sandbox = value
+        return self
+
+    def with_sku(self, value: str) -> PaymentOrderCreate:
+        self.sku = value
+        return self
+
+    def with_subscription_id(self, value: str) -> PaymentOrderCreate:
+        self.subscription_id = value
         return self
 
     # endregion with_x methods
@@ -175,18 +175,14 @@ class PaymentOrderCreate(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "description"):
+            result["description"] = str(self.description)
+        elif include_empty:
+            result["description"] = str()
         if hasattr(self, "ext_order_no"):
             result["extOrderNo"] = str(self.ext_order_no)
         elif include_empty:
             result["extOrderNo"] = str()
-        if hasattr(self, "sku"):
-            result["sku"] = str(self.sku)
-        elif include_empty:
-            result["sku"] = str()
-        if hasattr(self, "ext_user_id"):
-            result["extUserId"] = str(self.ext_user_id)
-        elif include_empty:
-            result["extUserId"] = str()
         if hasattr(self, "price"):
             result["price"] = int(self.price)
         elif include_empty:
@@ -195,14 +191,6 @@ class PaymentOrderCreate(Model):
             result["title"] = str(self.title)
         elif include_empty:
             result["title"] = str()
-        if hasattr(self, "description"):
-            result["description"] = str(self.description)
-        elif include_empty:
-            result["description"] = str()
-        if hasattr(self, "item_type"):
-            result["itemType"] = str(self.item_type)
-        elif include_empty:
-            result["itemType"] = str()
         if hasattr(self, "currency_code"):
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
@@ -211,46 +199,58 @@ class PaymentOrderCreate(Model):
             result["currencyNamespace"] = str(self.currency_namespace)
         elif include_empty:
             result["currencyNamespace"] = str()
-        if hasattr(self, "region"):
-            result["region"] = str(self.region)
-        elif include_empty:
-            result["region"] = str()
-        if hasattr(self, "language"):
-            result["language"] = str(self.language)
-        elif include_empty:
-            result["language"] = str()
-        if hasattr(self, "sandbox"):
-            result["sandbox"] = bool(self.sandbox)
-        elif include_empty:
-            result["sandbox"] = bool()
-        if hasattr(self, "return_url"):
-            result["returnUrl"] = str(self.return_url)
-        elif include_empty:
-            result["returnUrl"] = str()
-        if hasattr(self, "notify_url"):
-            result["notifyUrl"] = str(self.notify_url)
-        elif include_empty:
-            result["notifyUrl"] = str()
         if hasattr(self, "custom_parameters"):
             result["customParameters"] = {str(k0): v0 for k0, v0 in self.custom_parameters.items()}
         elif include_empty:
             result["customParameters"] = {}
-        if hasattr(self, "subscription_id"):
-            result["subscriptionId"] = str(self.subscription_id)
+        if hasattr(self, "ext_user_id"):
+            result["extUserId"] = str(self.ext_user_id)
         elif include_empty:
-            result["subscriptionId"] = str()
-        if hasattr(self, "recurring_payment_order_no"):
-            result["recurringPaymentOrderNo"] = str(self.recurring_payment_order_no)
+            result["extUserId"] = str()
+        if hasattr(self, "item_type"):
+            result["itemType"] = str(self.item_type)
         elif include_empty:
-            result["recurringPaymentOrderNo"] = str()
-        if hasattr(self, "omit_notification"):
-            result["omitNotification"] = bool(self.omit_notification)
+            result["itemType"] = str()
+        if hasattr(self, "language"):
+            result["language"] = str(self.language)
         elif include_empty:
-            result["omitNotification"] = bool()
+            result["language"] = str()
         if hasattr(self, "metadata"):
             result["metadata"] = {str(k0): str(v0) for k0, v0 in self.metadata.items()}
         elif include_empty:
             result["metadata"] = {}
+        if hasattr(self, "notify_url"):
+            result["notifyUrl"] = str(self.notify_url)
+        elif include_empty:
+            result["notifyUrl"] = str()
+        if hasattr(self, "omit_notification"):
+            result["omitNotification"] = bool(self.omit_notification)
+        elif include_empty:
+            result["omitNotification"] = bool()
+        if hasattr(self, "recurring_payment_order_no"):
+            result["recurringPaymentOrderNo"] = str(self.recurring_payment_order_no)
+        elif include_empty:
+            result["recurringPaymentOrderNo"] = str()
+        if hasattr(self, "region"):
+            result["region"] = str(self.region)
+        elif include_empty:
+            result["region"] = str()
+        if hasattr(self, "return_url"):
+            result["returnUrl"] = str(self.return_url)
+        elif include_empty:
+            result["returnUrl"] = str()
+        if hasattr(self, "sandbox"):
+            result["sandbox"] = bool(self.sandbox)
+        elif include_empty:
+            result["sandbox"] = bool()
+        if hasattr(self, "sku"):
+            result["sku"] = str(self.sku)
+        elif include_empty:
+            result["sku"] = str()
+        if hasattr(self, "subscription_id"):
+            result["subscriptionId"] = str(self.subscription_id)
+        elif include_empty:
+            result["subscriptionId"] = str()
         return result
 
     # endregion to methods
@@ -322,18 +322,14 @@ class PaymentOrderCreate(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "description" in dict_ and dict_["description"] is not None:
+            instance.description = str(dict_["description"])
+        elif include_empty:
+            instance.description = str()
         if "extOrderNo" in dict_ and dict_["extOrderNo"] is not None:
             instance.ext_order_no = str(dict_["extOrderNo"])
         elif include_empty:
             instance.ext_order_no = str()
-        if "sku" in dict_ and dict_["sku"] is not None:
-            instance.sku = str(dict_["sku"])
-        elif include_empty:
-            instance.sku = str()
-        if "extUserId" in dict_ and dict_["extUserId"] is not None:
-            instance.ext_user_id = str(dict_["extUserId"])
-        elif include_empty:
-            instance.ext_user_id = str()
         if "price" in dict_ and dict_["price"] is not None:
             instance.price = int(dict_["price"])
         elif include_empty:
@@ -342,14 +338,6 @@ class PaymentOrderCreate(Model):
             instance.title = str(dict_["title"])
         elif include_empty:
             instance.title = str()
-        if "description" in dict_ and dict_["description"] is not None:
-            instance.description = str(dict_["description"])
-        elif include_empty:
-            instance.description = str()
-        if "itemType" in dict_ and dict_["itemType"] is not None:
-            instance.item_type = str(dict_["itemType"])
-        elif include_empty:
-            instance.item_type = str()
         if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
             instance.currency_code = str(dict_["currencyCode"])
         elif include_empty:
@@ -358,70 +346,82 @@ class PaymentOrderCreate(Model):
             instance.currency_namespace = str(dict_["currencyNamespace"])
         elif include_empty:
             instance.currency_namespace = str()
-        if "region" in dict_ and dict_["region"] is not None:
-            instance.region = str(dict_["region"])
-        elif include_empty:
-            instance.region = str()
-        if "language" in dict_ and dict_["language"] is not None:
-            instance.language = str(dict_["language"])
-        elif include_empty:
-            instance.language = str()
-        if "sandbox" in dict_ and dict_["sandbox"] is not None:
-            instance.sandbox = bool(dict_["sandbox"])
-        elif include_empty:
-            instance.sandbox = bool()
-        if "returnUrl" in dict_ and dict_["returnUrl"] is not None:
-            instance.return_url = str(dict_["returnUrl"])
-        elif include_empty:
-            instance.return_url = str()
-        if "notifyUrl" in dict_ and dict_["notifyUrl"] is not None:
-            instance.notify_url = str(dict_["notifyUrl"])
-        elif include_empty:
-            instance.notify_url = str()
         if "customParameters" in dict_ and dict_["customParameters"] is not None:
             instance.custom_parameters = {str(k0): v0 for k0, v0 in dict_["customParameters"].items()}
         elif include_empty:
             instance.custom_parameters = {}
-        if "subscriptionId" in dict_ and dict_["subscriptionId"] is not None:
-            instance.subscription_id = str(dict_["subscriptionId"])
+        if "extUserId" in dict_ and dict_["extUserId"] is not None:
+            instance.ext_user_id = str(dict_["extUserId"])
         elif include_empty:
-            instance.subscription_id = str()
-        if "recurringPaymentOrderNo" in dict_ and dict_["recurringPaymentOrderNo"] is not None:
-            instance.recurring_payment_order_no = str(dict_["recurringPaymentOrderNo"])
+            instance.ext_user_id = str()
+        if "itemType" in dict_ and dict_["itemType"] is not None:
+            instance.item_type = str(dict_["itemType"])
         elif include_empty:
-            instance.recurring_payment_order_no = str()
-        if "omitNotification" in dict_ and dict_["omitNotification"] is not None:
-            instance.omit_notification = bool(dict_["omitNotification"])
+            instance.item_type = str()
+        if "language" in dict_ and dict_["language"] is not None:
+            instance.language = str(dict_["language"])
         elif include_empty:
-            instance.omit_notification = bool()
+            instance.language = str()
         if "metadata" in dict_ and dict_["metadata"] is not None:
             instance.metadata = {str(k0): str(v0) for k0, v0 in dict_["metadata"].items()}
         elif include_empty:
             instance.metadata = {}
+        if "notifyUrl" in dict_ and dict_["notifyUrl"] is not None:
+            instance.notify_url = str(dict_["notifyUrl"])
+        elif include_empty:
+            instance.notify_url = str()
+        if "omitNotification" in dict_ and dict_["omitNotification"] is not None:
+            instance.omit_notification = bool(dict_["omitNotification"])
+        elif include_empty:
+            instance.omit_notification = bool()
+        if "recurringPaymentOrderNo" in dict_ and dict_["recurringPaymentOrderNo"] is not None:
+            instance.recurring_payment_order_no = str(dict_["recurringPaymentOrderNo"])
+        elif include_empty:
+            instance.recurring_payment_order_no = str()
+        if "region" in dict_ and dict_["region"] is not None:
+            instance.region = str(dict_["region"])
+        elif include_empty:
+            instance.region = str()
+        if "returnUrl" in dict_ and dict_["returnUrl"] is not None:
+            instance.return_url = str(dict_["returnUrl"])
+        elif include_empty:
+            instance.return_url = str()
+        if "sandbox" in dict_ and dict_["sandbox"] is not None:
+            instance.sandbox = bool(dict_["sandbox"])
+        elif include_empty:
+            instance.sandbox = bool()
+        if "sku" in dict_ and dict_["sku"] is not None:
+            instance.sku = str(dict_["sku"])
+        elif include_empty:
+            instance.sku = str()
+        if "subscriptionId" in dict_ and dict_["subscriptionId"] is not None:
+            instance.subscription_id = str(dict_["subscriptionId"])
+        elif include_empty:
+            instance.subscription_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "description": "description",
             "extOrderNo": "ext_order_no",
-            "sku": "sku",
-            "extUserId": "ext_user_id",
             "price": "price",
             "title": "title",
-            "description": "description",
-            "itemType": "item_type",
             "currencyCode": "currency_code",
             "currencyNamespace": "currency_namespace",
-            "region": "region",
-            "language": "language",
-            "sandbox": "sandbox",
-            "returnUrl": "return_url",
-            "notifyUrl": "notify_url",
             "customParameters": "custom_parameters",
-            "subscriptionId": "subscription_id",
-            "recurringPaymentOrderNo": "recurring_payment_order_no",
-            "omitNotification": "omit_notification",
+            "extUserId": "ext_user_id",
+            "itemType": "item_type",
+            "language": "language",
             "metadata": "metadata",
+            "notifyUrl": "notify_url",
+            "omitNotification": "omit_notification",
+            "recurringPaymentOrderNo": "recurring_payment_order_no",
+            "region": "region",
+            "returnUrl": "return_url",
+            "sandbox": "sandbox",
+            "sku": "sku",
+            "subscriptionId": "subscription_id",
         }
 
     # endregion static methods

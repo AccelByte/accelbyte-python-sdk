@@ -28,9 +28,9 @@ class ListOutgoingFriendsResponse(WebSocketMessage):
 
     # region fields
 
-    id_: str
     code: str
     friend_ids: List[str]
+    id_: str
 
     # endregion fields
 
@@ -40,12 +40,12 @@ class ListOutgoingFriendsResponse(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {ListOutgoingFriendsResponse.get_type()}"]
-        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
-        wsm.append(f"id: {id_}")
         if hasattr(self, "code") and self.code:
             wsm.append(f"code: {self.code}")
         if hasattr(self, "friend_ids") and self.friend_ids:
             wsm.append(f"friendIds: [" + ','.join([str(i) for i in self.friend_ids]) + "]")
+        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
+        wsm.append(f"id: {id_}")
         return "\n".join(wsm)
 
     # endregion methods
@@ -86,9 +86,9 @@ class ListOutgoingFriendsResponse(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
             "code": "code",
             "friendIds": "friend_ids",
+            "id": "id_",
         }
 
     # endregion static methods

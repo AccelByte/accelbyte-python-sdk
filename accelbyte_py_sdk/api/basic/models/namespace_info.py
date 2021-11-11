@@ -28,43 +28,43 @@ class NamespaceInfo(Model):
     """Namespace info (NamespaceInfo)
 
     Properties:
-        namespace: (namespace) OPTIONAL str
+        created_at: (createdAt) OPTIONAL str
 
         display_name: (displayName) OPTIONAL str
 
-        status: (status) OPTIONAL str
+        namespace: (namespace) OPTIONAL str
 
-        created_at: (createdAt) OPTIONAL str
+        status: (status) OPTIONAL str
 
         updated_at: (updatedAt) OPTIONAL str
     """
 
     # region fields
 
-    namespace: str                                                                                 # OPTIONAL
-    display_name: str                                                                              # OPTIONAL
-    status: str                                                                                    # OPTIONAL
     created_at: str                                                                                # OPTIONAL
+    display_name: str                                                                              # OPTIONAL
+    namespace: str                                                                                 # OPTIONAL
+    status: str                                                                                    # OPTIONAL
     updated_at: str                                                                                # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> NamespaceInfo:
-        self.namespace = value
+    def with_created_at(self, value: str) -> NamespaceInfo:
+        self.created_at = value
         return self
 
     def with_display_name(self, value: str) -> NamespaceInfo:
         self.display_name = value
         return self
 
-    def with_status(self, value: str) -> NamespaceInfo:
-        self.status = value
+    def with_namespace(self, value: str) -> NamespaceInfo:
+        self.namespace = value
         return self
 
-    def with_created_at(self, value: str) -> NamespaceInfo:
-        self.created_at = value
+    def with_status(self, value: str) -> NamespaceInfo:
+        self.status = value
         return self
 
     def with_updated_at(self, value: str) -> NamespaceInfo:
@@ -77,22 +77,22 @@ class NamespaceInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
-        if hasattr(self, "display_name"):
-            result["displayName"] = str(self.display_name)
-        elif include_empty:
-            result["displayName"] = str()
-        if hasattr(self, "status"):
-            result["status"] = str(self.status)
-        elif include_empty:
-            result["status"] = str()
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = str()
+        if hasattr(self, "display_name"):
+            result["displayName"] = str(self.display_name)
+        elif include_empty:
+            result["displayName"] = str()
+        if hasattr(self, "namespace"):
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
+        if hasattr(self, "status"):
+            result["status"] = str(self.status)
+        elif include_empty:
+            result["status"] = str()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -130,22 +130,22 @@ class NamespaceInfo(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
-        if "displayName" in dict_ and dict_["displayName"] is not None:
-            instance.display_name = str(dict_["displayName"])
-        elif include_empty:
-            instance.display_name = str()
-        if "status" in dict_ and dict_["status"] is not None:
-            instance.status = str(dict_["status"])
-        elif include_empty:
-            instance.status = str()
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
             instance.created_at = str()
+        if "displayName" in dict_ and dict_["displayName"] is not None:
+            instance.display_name = str(dict_["displayName"])
+        elif include_empty:
+            instance.display_name = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
+        if "status" in dict_ and dict_["status"] is not None:
+            instance.status = str(dict_["status"])
+        elif include_empty:
+            instance.status = str()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
@@ -155,10 +155,10 @@ class NamespaceInfo(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
-            "displayName": "display_name",
-            "status": "status",
             "createdAt": "created_at",
+            "displayName": "display_name",
+            "namespace": "namespace",
+            "status": "status",
             "updatedAt": "updated_at",
         }
 

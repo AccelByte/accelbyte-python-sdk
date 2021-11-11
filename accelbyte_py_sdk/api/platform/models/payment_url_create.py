@@ -32,20 +32,20 @@ class PaymentUrlCreate(Model):
 
         payment_provider: (paymentProvider) REQUIRED str
 
-        zip_code: (zipCode) OPTIONAL str
-
         return_url: (returnUrl) OPTIONAL str
 
         ui: (ui) OPTIONAL str
+
+        zip_code: (zipCode) OPTIONAL str
     """
 
     # region fields
 
     payment_order_no: str                                                                          # REQUIRED
     payment_provider: str                                                                          # REQUIRED
-    zip_code: str                                                                                  # OPTIONAL
     return_url: str                                                                                # OPTIONAL
     ui: str                                                                                        # OPTIONAL
+    zip_code: str                                                                                  # OPTIONAL
 
     # endregion fields
 
@@ -59,16 +59,16 @@ class PaymentUrlCreate(Model):
         self.payment_provider = value
         return self
 
-    def with_zip_code(self, value: str) -> PaymentUrlCreate:
-        self.zip_code = value
-        return self
-
     def with_return_url(self, value: str) -> PaymentUrlCreate:
         self.return_url = value
         return self
 
     def with_ui(self, value: str) -> PaymentUrlCreate:
         self.ui = value
+        return self
+
+    def with_zip_code(self, value: str) -> PaymentUrlCreate:
+        self.zip_code = value
         return self
 
     # endregion with_x methods
@@ -85,10 +85,6 @@ class PaymentUrlCreate(Model):
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
             result["paymentProvider"] = str()
-        if hasattr(self, "zip_code"):
-            result["zipCode"] = str(self.zip_code)
-        elif include_empty:
-            result["zipCode"] = str()
         if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
@@ -97,6 +93,10 @@ class PaymentUrlCreate(Model):
             result["ui"] = str(self.ui)
         elif include_empty:
             result["ui"] = str()
+        if hasattr(self, "zip_code"):
+            result["zipCode"] = str(self.zip_code)
+        elif include_empty:
+            result["zipCode"] = str()
         return result
 
     # endregion to methods
@@ -136,10 +136,6 @@ class PaymentUrlCreate(Model):
             instance.payment_provider = str(dict_["paymentProvider"])
         elif include_empty:
             instance.payment_provider = str()
-        if "zipCode" in dict_ and dict_["zipCode"] is not None:
-            instance.zip_code = str(dict_["zipCode"])
-        elif include_empty:
-            instance.zip_code = str()
         if "returnUrl" in dict_ and dict_["returnUrl"] is not None:
             instance.return_url = str(dict_["returnUrl"])
         elif include_empty:
@@ -148,6 +144,10 @@ class PaymentUrlCreate(Model):
             instance.ui = str(dict_["ui"])
         elif include_empty:
             instance.ui = str()
+        if "zipCode" in dict_ and dict_["zipCode"] is not None:
+            instance.zip_code = str(dict_["zipCode"])
+        elif include_empty:
+            instance.zip_code = str()
         return instance
 
     @staticmethod
@@ -155,9 +155,9 @@ class PaymentUrlCreate(Model):
         return {
             "paymentOrderNo": "payment_order_no",
             "paymentProvider": "payment_provider",
-            "zipCode": "zip_code",
             "returnUrl": "return_url",
             "ui": "ui",
+            "zipCode": "zip_code",
         }
 
     # endregion static methods

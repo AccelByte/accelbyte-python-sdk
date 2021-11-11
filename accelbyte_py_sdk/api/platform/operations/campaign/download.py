@@ -48,9 +48,9 @@ class Download(Operation):
 
         security: bearer
 
-        namespace: (namespace) REQUIRED str in path
-
         campaign_id: (campaignId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
         batch_no: (batchNo) OPTIONAL int in query
 
@@ -67,8 +67,8 @@ class Download(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
     campaign_id: str                                                                               # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
     batch_no: int                                                                                  # OPTIONAL in [query]
 
     # endregion fields
@@ -120,8 +120,8 @@ class Download(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "namespace",
             "campaign_id",
+            "namespace",
         ]
 
     # endregion get methods
@@ -136,10 +136,10 @@ class Download(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "campaign_id"):
             result["campaignId"] = self.campaign_id
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     def get_query_params(self) -> dict:
@@ -153,9 +153,9 @@ class Download(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         if not hasattr(self, "campaign_id") or self.campaign_id is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         return True
 
@@ -163,12 +163,12 @@ class Download(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> Download:
-        self.namespace = value
-        return self
-
     def with_campaign_id(self, value: str) -> Download:
         self.campaign_id = value
+        return self
+
+    def with_namespace(self, value: str) -> Download:
+        self.namespace = value
         return self
 
     def with_batch_no(self, value: int) -> Download:
@@ -181,14 +181,14 @@ class Download(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         if hasattr(self, "campaign_id") and self.campaign_id:
             result["campaignId"] = str(self.campaign_id)
         elif include_empty:
             result["campaignId"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         if hasattr(self, "batch_no") and self.batch_no:
             result["batchNo"] = int(self.batch_no)
         elif include_empty:
@@ -219,13 +219,13 @@ class Download(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
         campaign_id: str,
+        namespace: str,
         batch_no: Optional[int] = None,
     ) -> Download:
         instance = cls()
-        instance.namespace = namespace
         instance.campaign_id = campaign_id
+        instance.namespace = namespace
         if batch_no is not None:
             instance.batch_no = batch_no
         return instance
@@ -233,14 +233,14 @@ class Download(Operation):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> Download:
         instance = cls()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         if "campaignId" in dict_ and dict_["campaignId"] is not None:
             instance.campaign_id = str(dict_["campaignId"])
         elif include_empty:
             instance.campaign_id = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         if "batchNo" in dict_ and dict_["batchNo"] is not None:
             instance.batch_no = int(dict_["batchNo"])
         elif include_empty:
@@ -250,8 +250,8 @@ class Download(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
             "campaignId": "campaign_id",
+            "namespace": "namespace",
             "batchNo": "batch_no",
         }
 

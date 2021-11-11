@@ -44,11 +44,11 @@ class AddClientPermission(Operation):
 
         security: bearer
 
+        action: (action) REQUIRED int in path
+
         client_id: (clientId) REQUIRED str in path
 
         resource: (resource) REQUIRED str in path
-
-        action: (action) REQUIRED int in path
 
     Responses:
         204: No Content - (Operation succeeded)
@@ -71,9 +71,9 @@ class AddClientPermission(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
+    action: int                                                                                    # REQUIRED in [path]
     client_id: str                                                                                 # REQUIRED in [path]
     resource: str                                                                                  # REQUIRED in [path]
-    action: int                                                                                    # REQUIRED in [path]
 
     # endregion fields
 
@@ -121,9 +121,9 @@ class AddClientPermission(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
+            "action",
             "client_id",
             "resource",
-            "action",
         ]
 
     # endregion get methods
@@ -137,12 +137,12 @@ class AddClientPermission(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
+        if hasattr(self, "action"):
+            result["action"] = self.action
         if hasattr(self, "client_id"):
             result["clientId"] = self.client_id
         if hasattr(self, "resource"):
             result["resource"] = self.resource
-        if hasattr(self, "action"):
-            result["action"] = self.action
         return result
 
     # endregion get_x_params methods
@@ -150,17 +150,21 @@ class AddClientPermission(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
+        if not hasattr(self, "action") or self.action is None:
+            return False
         if not hasattr(self, "client_id") or self.client_id is None:
             return False
         if not hasattr(self, "resource") or self.resource is None:
-            return False
-        if not hasattr(self, "action") or self.action is None:
             return False
         return True
 
     # endregion is/has methods
 
     # region with_x methods
+
+    def with_action(self, value: int) -> AddClientPermission:
+        self.action = value
+        return self
 
     def with_client_id(self, value: str) -> AddClientPermission:
         self.client_id = value
@@ -170,16 +174,16 @@ class AddClientPermission(Operation):
         self.resource = value
         return self
 
-    def with_action(self, value: int) -> AddClientPermission:
-        self.action = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "action") and self.action:
+            result["action"] = int(self.action)
+        elif include_empty:
+            result["action"] = int()
         if hasattr(self, "client_id") and self.client_id:
             result["clientId"] = str(self.client_id)
         elif include_empty:
@@ -188,10 +192,6 @@ class AddClientPermission(Operation):
             result["resource"] = str(self.resource)
         elif include_empty:
             result["resource"] = str()
-        if hasattr(self, "action") and self.action:
-            result["action"] = int(self.action)
-        elif include_empty:
-            result["action"] = int()
         return result
 
     # endregion to methods
@@ -234,19 +234,23 @@ class AddClientPermission(Operation):
     @classmethod
     def create(
         cls,
+        action: int,
         client_id: str,
         resource: str,
-        action: int,
     ) -> AddClientPermission:
         instance = cls()
+        instance.action = action
         instance.client_id = client_id
         instance.resource = resource
-        instance.action = action
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AddClientPermission:
         instance = cls()
+        if "action" in dict_ and dict_["action"] is not None:
+            instance.action = int(dict_["action"])
+        elif include_empty:
+            instance.action = int()
         if "clientId" in dict_ and dict_["clientId"] is not None:
             instance.client_id = str(dict_["clientId"])
         elif include_empty:
@@ -255,18 +259,14 @@ class AddClientPermission(Operation):
             instance.resource = str(dict_["resource"])
         elif include_empty:
             instance.resource = str()
-        if "action" in dict_ and dict_["action"] is not None:
-            instance.action = int(dict_["action"])
-        elif include_empty:
-            instance.action = int()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "action": "action",
             "clientId": "client_id",
             "resource": "resource",
-            "action": "action",
         }
 
     # endregion static methods

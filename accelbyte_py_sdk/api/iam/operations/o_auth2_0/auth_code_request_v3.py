@@ -73,11 +73,11 @@ class AuthCodeRequestV3(Operation):
 
         platform_id: (platformId) REQUIRED str in path
 
-        request_id: (request_id) REQUIRED str in query
-
         client_id: (client_id) OPTIONAL str in query
 
         redirect_uri: (redirect_uri) OPTIONAL str in query
+
+        request_id: (request_id) REQUIRED str in query
 
     Responses:
         302: Found - (Found. Redirect to client’s redirect URI with either code or error on the query parameter)
@@ -93,9 +93,9 @@ class AuthCodeRequestV3(Operation):
     _location_query: str = "code"
 
     platform_id: str                                                                               # REQUIRED in [path]
-    request_id: str                                                                                # REQUIRED in [query]
     client_id: str                                                                                 # OPTIONAL in [query]
     redirect_uri: str                                                                              # OPTIONAL in [query]
+    request_id: str                                                                                # REQUIRED in [query]
 
     # endregion fields
 
@@ -168,12 +168,12 @@ class AuthCodeRequestV3(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "request_id"):
-            result["request_id"] = self.request_id
         if hasattr(self, "client_id"):
             result["client_id"] = self.client_id
         if hasattr(self, "redirect_uri"):
             result["redirect_uri"] = self.redirect_uri
+        if hasattr(self, "request_id"):
+            result["request_id"] = self.request_id
         return result
 
     # endregion get_x_params methods
@@ -203,16 +203,16 @@ class AuthCodeRequestV3(Operation):
         self.platform_id = value
         return self
 
-    def with_request_id(self, value: str) -> AuthCodeRequestV3:
-        self.request_id = value
-        return self
-
     def with_client_id(self, value: str) -> AuthCodeRequestV3:
         self.client_id = value
         return self
 
     def with_redirect_uri(self, value: str) -> AuthCodeRequestV3:
         self.redirect_uri = value
+        return self
+
+    def with_request_id(self, value: str) -> AuthCodeRequestV3:
+        self.request_id = value
         return self
 
     # endregion with_x methods
@@ -225,10 +225,6 @@ class AuthCodeRequestV3(Operation):
             result["platformId"] = str(self.platform_id)
         elif include_empty:
             result["platformId"] = str()
-        if hasattr(self, "request_id") and self.request_id:
-            result["request_id"] = str(self.request_id)
-        elif include_empty:
-            result["request_id"] = str()
         if hasattr(self, "client_id") and self.client_id:
             result["client_id"] = str(self.client_id)
         elif include_empty:
@@ -237,6 +233,10 @@ class AuthCodeRequestV3(Operation):
             result["redirect_uri"] = str(self.redirect_uri)
         elif include_empty:
             result["redirect_uri"] = str()
+        if hasattr(self, "request_id") and self.request_id:
+            result["request_id"] = str(self.request_id)
+        elif include_empty:
+            result["request_id"] = str()
         return result
 
     # endregion to methods
@@ -284,10 +284,6 @@ class AuthCodeRequestV3(Operation):
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
             instance.platform_id = str()
-        if "request_id" in dict_ and dict_["request_id"] is not None:
-            instance.request_id = str(dict_["request_id"])
-        elif include_empty:
-            instance.request_id = str()
         if "client_id" in dict_ and dict_["client_id"] is not None:
             instance.client_id = str(dict_["client_id"])
         elif include_empty:
@@ -296,15 +292,19 @@ class AuthCodeRequestV3(Operation):
             instance.redirect_uri = str(dict_["redirect_uri"])
         elif include_empty:
             instance.redirect_uri = str()
+        if "request_id" in dict_ and dict_["request_id"] is not None:
+            instance.request_id = str(dict_["request_id"])
+        elif include_empty:
+            instance.request_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "platformId": "platform_id",
-            "request_id": "request_id",
             "client_id": "client_id",
             "redirect_uri": "redirect_uri",
+            "request_id": "request_id",
         }
 
     # endregion static methods

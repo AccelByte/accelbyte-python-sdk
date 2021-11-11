@@ -28,12 +28,12 @@ class MessageNotif(WebSocketMessage):
 
     # region fields
 
-    id_: str
     from_: str
-    to: str
-    topic: str
+    id_: str
     payload: str
     sent_at: int
+    to: str
+    topic: str
 
     # endregion fields
 
@@ -43,18 +43,18 @@ class MessageNotif(WebSocketMessage):
     def to_wsm(self) -> str:
         # pylint: disable=no-self-use
         wsm = [f"type: {MessageNotif.get_type()}"]
-        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
-        wsm.append(f"id: {id_}")
         if hasattr(self, "from_") and self.from_:
             wsm.append(f"from: {self.from_}")
-        if hasattr(self, "to") and self.to:
-            wsm.append(f"to: {self.to}")
-        if hasattr(self, "topic") and self.topic:
-            wsm.append(f"topic: {self.topic}")
+        id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
+        wsm.append(f"id: {id_}")
         if hasattr(self, "payload") and self.payload:
             wsm.append(f"payload: {self.payload}")
         if hasattr(self, "sent_at") and self.sent_at:
             wsm.append(f"sentAt: {self.sent_at}")
+        if hasattr(self, "to") and self.to:
+            wsm.append(f"to: {self.to}")
+        if hasattr(self, "topic") and self.topic:
+            wsm.append(f"topic: {self.topic}")
         return "\n".join(wsm)
 
     # endregion methods
@@ -81,17 +81,17 @@ class MessageNotif(WebSocketMessage):
             if (not is_strict and name.casefold() == "from".casefold()) or (name == "from"):
                 instance.from_ = value
                 continue
-            if (not is_strict and name.casefold() == "to".casefold()) or (name == "to"):
-                instance.to = value
-                continue
-            if (not is_strict and name.casefold() == "topic".casefold()) or (name == "topic"):
-                instance.topic = value
-                continue
             if (not is_strict and name.casefold() == "payload".casefold()) or (name == "payload"):
                 instance.payload = value
                 continue
             if (not is_strict and name.casefold() == "sentAt".casefold()) or (name == "sentAt"):
                 instance.sent_at = value
+                continue
+            if (not is_strict and name.casefold() == "to".casefold()) or (name == "to"):
+                instance.to = value
+                continue
+            if (not is_strict and name.casefold() == "topic".casefold()) or (name == "topic"):
+                instance.topic = value
                 continue
             if is_strict:
                 raise WebSocketMessageParserException(WebSocketMessageParserError.FieldTypeNotSupported)
@@ -104,12 +104,12 @@ class MessageNotif(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
             "from": "from_",
-            "to": "to",
-            "topic": "topic",
+            "id": "id_",
             "payload": "payload",
             "sentAt": "sent_at",
+            "to": "to",
+            "topic": "topic",
         }
 
     # endregion static methods

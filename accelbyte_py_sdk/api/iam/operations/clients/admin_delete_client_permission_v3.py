@@ -47,13 +47,13 @@ class AdminDeleteClientPermissionV3(Operation):
 
         security: bearer
 
-        namespace: (namespace) REQUIRED str in path
+        action: (action) REQUIRED int in path
 
         client_id: (clientId) REQUIRED str in path
 
-        resource: (resource) REQUIRED str in path
+        namespace: (namespace) REQUIRED str in path
 
-        action: (action) REQUIRED int in path
+        resource: (resource) REQUIRED str in path
 
     Responses:
         204: No Content - (Operation succeeded)
@@ -76,10 +76,10 @@ class AdminDeleteClientPermissionV3(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
-    client_id: str                                                                                 # REQUIRED in [path]
-    resource: str                                                                                  # REQUIRED in [path]
     action: int                                                                                    # REQUIRED in [path]
+    client_id: str                                                                                 # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
+    resource: str                                                                                  # REQUIRED in [path]
 
     # endregion fields
 
@@ -127,10 +127,10 @@ class AdminDeleteClientPermissionV3(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "namespace",
-            "client_id",
-            "resource",
             "action",
+            "client_id",
+            "namespace",
+            "resource",
         ]
 
     # endregion get methods
@@ -144,14 +144,14 @@ class AdminDeleteClientPermissionV3(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
-        if hasattr(self, "client_id"):
-            result["clientId"] = self.client_id
-        if hasattr(self, "resource"):
-            result["resource"] = self.resource
         if hasattr(self, "action"):
             result["action"] = self.action
+        if hasattr(self, "client_id"):
+            result["clientId"] = self.client_id
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
+        if hasattr(self, "resource"):
+            result["resource"] = self.resource
         return result
 
     # endregion get_x_params methods
@@ -159,13 +159,13 @@ class AdminDeleteClientPermissionV3(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "namespace") or self.namespace is None:
+        if not hasattr(self, "action") or self.action is None:
             return False
         if not hasattr(self, "client_id") or self.client_id is None:
             return False
-        if not hasattr(self, "resource") or self.resource is None:
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
-        if not hasattr(self, "action") or self.action is None:
+        if not hasattr(self, "resource") or self.resource is None:
             return False
         return True
 
@@ -173,20 +173,20 @@ class AdminDeleteClientPermissionV3(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> AdminDeleteClientPermissionV3:
-        self.namespace = value
+    def with_action(self, value: int) -> AdminDeleteClientPermissionV3:
+        self.action = value
         return self
 
     def with_client_id(self, value: str) -> AdminDeleteClientPermissionV3:
         self.client_id = value
         return self
 
-    def with_resource(self, value: str) -> AdminDeleteClientPermissionV3:
-        self.resource = value
+    def with_namespace(self, value: str) -> AdminDeleteClientPermissionV3:
+        self.namespace = value
         return self
 
-    def with_action(self, value: int) -> AdminDeleteClientPermissionV3:
-        self.action = value
+    def with_resource(self, value: str) -> AdminDeleteClientPermissionV3:
+        self.resource = value
         return self
 
     # endregion with_x methods
@@ -195,22 +195,22 @@ class AdminDeleteClientPermissionV3(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
-        if hasattr(self, "client_id") and self.client_id:
-            result["clientId"] = str(self.client_id)
-        elif include_empty:
-            result["clientId"] = str()
-        if hasattr(self, "resource") and self.resource:
-            result["resource"] = str(self.resource)
-        elif include_empty:
-            result["resource"] = str()
         if hasattr(self, "action") and self.action:
             result["action"] = int(self.action)
         elif include_empty:
             result["action"] = int()
+        if hasattr(self, "client_id") and self.client_id:
+            result["clientId"] = str(self.client_id)
+        elif include_empty:
+            result["clientId"] = str()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
+        if hasattr(self, "resource") and self.resource:
+            result["resource"] = str(self.resource)
+        elif include_empty:
+            result["resource"] = str()
         return result
 
     # endregion to methods
@@ -253,46 +253,46 @@ class AdminDeleteClientPermissionV3(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
-        client_id: str,
-        resource: str,
         action: int,
+        client_id: str,
+        namespace: str,
+        resource: str,
     ) -> AdminDeleteClientPermissionV3:
         instance = cls()
-        instance.namespace = namespace
-        instance.client_id = client_id
-        instance.resource = resource
         instance.action = action
+        instance.client_id = client_id
+        instance.namespace = namespace
+        instance.resource = resource
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AdminDeleteClientPermissionV3:
         instance = cls()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
-        if "clientId" in dict_ and dict_["clientId"] is not None:
-            instance.client_id = str(dict_["clientId"])
-        elif include_empty:
-            instance.client_id = str()
-        if "resource" in dict_ and dict_["resource"] is not None:
-            instance.resource = str(dict_["resource"])
-        elif include_empty:
-            instance.resource = str()
         if "action" in dict_ and dict_["action"] is not None:
             instance.action = int(dict_["action"])
         elif include_empty:
             instance.action = int()
+        if "clientId" in dict_ and dict_["clientId"] is not None:
+            instance.client_id = str(dict_["clientId"])
+        elif include_empty:
+            instance.client_id = str()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
+        if "resource" in dict_ and dict_["resource"] is not None:
+            instance.resource = str(dict_["resource"])
+        elif include_empty:
+            instance.resource = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
-            "clientId": "client_id",
-            "resource": "resource",
             "action": "action",
+            "clientId": "client_id",
+            "namespace": "namespace",
+            "resource": "resource",
         }
 
     # endregion static methods

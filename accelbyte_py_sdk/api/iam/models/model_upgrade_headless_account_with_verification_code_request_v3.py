@@ -30,25 +30,25 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3(Model):
     Properties:
         code: (code) REQUIRED str
 
+        email_address: (emailAddress) REQUIRED str
+
+        password: (password) REQUIRED str
+
         country: (country) OPTIONAL str
 
         date_of_birth: (dateOfBirth) OPTIONAL str
 
         display_name: (displayName) OPTIONAL str
-
-        email_address: (emailAddress) REQUIRED str
-
-        password: (password) REQUIRED str
     """
 
     # region fields
 
     code: str                                                                                      # REQUIRED
+    email_address: str                                                                             # REQUIRED
+    password: str                                                                                  # REQUIRED
     country: str                                                                                   # OPTIONAL
     date_of_birth: str                                                                             # OPTIONAL
     display_name: str                                                                              # OPTIONAL
-    email_address: str                                                                             # REQUIRED
-    password: str                                                                                  # REQUIRED
 
     # endregion fields
 
@@ -56,6 +56,14 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3(Model):
 
     def with_code(self, value: str) -> ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3:
         self.code = value
+        return self
+
+    def with_email_address(self, value: str) -> ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3:
+        self.email_address = value
+        return self
+
+    def with_password(self, value: str) -> ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3:
+        self.password = value
         return self
 
     def with_country(self, value: str) -> ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3:
@@ -70,14 +78,6 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3(Model):
         self.display_name = value
         return self
 
-    def with_email_address(self, value: str) -> ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3:
-        self.email_address = value
-        return self
-
-    def with_password(self, value: str) -> ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3:
-        self.password = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
@@ -88,6 +88,14 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3(Model):
             result["code"] = str(self.code)
         elif include_empty:
             result["code"] = str()
+        if hasattr(self, "email_address"):
+            result["emailAddress"] = str(self.email_address)
+        elif include_empty:
+            result["emailAddress"] = str()
+        if hasattr(self, "password"):
+            result["password"] = str(self.password)
+        elif include_empty:
+            result["password"] = str()
         if hasattr(self, "country"):
             result["country"] = str(self.country)
         elif include_empty:
@@ -100,14 +108,6 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3(Model):
             result["displayName"] = str(self.display_name)
         elif include_empty:
             result["displayName"] = str()
-        if hasattr(self, "email_address"):
-            result["emailAddress"] = str(self.email_address)
-        elif include_empty:
-            result["emailAddress"] = str()
-        if hasattr(self, "password"):
-            result["password"] = str(self.password)
-        elif include_empty:
-            result["password"] = str()
         return result
 
     # endregion to methods
@@ -145,6 +145,14 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3(Model):
             instance.code = str(dict_["code"])
         elif include_empty:
             instance.code = str()
+        if "emailAddress" in dict_ and dict_["emailAddress"] is not None:
+            instance.email_address = str(dict_["emailAddress"])
+        elif include_empty:
+            instance.email_address = str()
+        if "password" in dict_ and dict_["password"] is not None:
+            instance.password = str(dict_["password"])
+        elif include_empty:
+            instance.password = str()
         if "country" in dict_ and dict_["country"] is not None:
             instance.country = str(dict_["country"])
         elif include_empty:
@@ -157,25 +165,17 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3(Model):
             instance.display_name = str(dict_["displayName"])
         elif include_empty:
             instance.display_name = str()
-        if "emailAddress" in dict_ and dict_["emailAddress"] is not None:
-            instance.email_address = str(dict_["emailAddress"])
-        elif include_empty:
-            instance.email_address = str()
-        if "password" in dict_ and dict_["password"] is not None:
-            instance.password = str(dict_["password"])
-        elif include_empty:
-            instance.password = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "code": "code",
+            "emailAddress": "email_address",
+            "password": "password",
             "country": "country",
             "dateOfBirth": "date_of_birth",
             "displayName": "display_name",
-            "emailAddress": "email_address",
-            "password": "password",
         }
 
     # endregion static methods
