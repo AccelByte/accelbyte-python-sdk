@@ -110,20 +110,6 @@ def create_models_count_session_response_example() -> ModelsCountSessionResponse
     return instance
 
 
-def create_models_create_dsm_config_request_example() -> ModelsCreateDSMConfigRequest:
-    instance = ModelsCreateDSMConfigRequest()
-    instance.claim_timeout = randomize("int", min_val=1, max_val=1000)
-    instance.creation_timeout = randomize("int", min_val=1, max_val=1000)
-    instance.default_version = randomize()
-    instance.port = randomize("int", min_val=1, max_val=1000)
-    instance.ports = {}
-    instance.protocol = randomize()
-    instance.providers = [randomize()]
-    instance.session_timeout = randomize("int", min_val=1, max_val=1000)
-    instance.unreachable_timeout = randomize("int", min_val=1, max_val=1000)
-    return instance
-
-
 def create_models_create_deployment_override_request_example() -> ModelsCreateDeploymentOverrideRequest:
     instance = ModelsCreateDeploymentOverrideRequest()
     instance.buffer_count = randomize("int", min_val=1, max_val=1000)
@@ -153,6 +139,20 @@ def create_models_create_deployment_request_example() -> ModelsCreateDeploymentR
     instance.region_overrides = {}
     instance.regions = [randomize()]
     instance.use_buffer_percent = randomize("bool")
+    return instance
+
+
+def create_models_create_dsm_config_request_example() -> ModelsCreateDSMConfigRequest:
+    instance = ModelsCreateDSMConfigRequest()
+    instance.claim_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.creation_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.default_version = randomize()
+    instance.port = randomize("int", min_val=1, max_val=1000)
+    instance.ports = {}
+    instance.protocol = randomize()
+    instance.providers = [randomize()]
+    instance.session_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.unreachable_timeout = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -202,44 +202,6 @@ def create_models_create_session_request_example() -> ModelsCreateSessionRequest
     instance.pod_name = randomize()
     instance.region = randomize()
     instance.session_id = randomize("uid")
-    return instance
-
-
-def create_models_dsm_config_export_example() -> ModelsDSMConfigExport:
-    instance = ModelsDSMConfigExport()
-    instance.claim_timeout = randomize("int", min_val=1, max_val=1000)
-    instance.created_at = randomize("date")
-    instance.creation_timeout = randomize("int", min_val=1, max_val=1000)
-    instance.default_version = randomize()
-    instance.deployments = [create_models_deployment_with_override_example()]
-    instance.images = [create_models_image_record_example()]
-    instance.namespace = randomize("slug")
-    instance.pod_configs = [create_models_pod_config_record_example()]
-    instance.port = randomize("int", min_val=1, max_val=1000)
-    instance.ports = {}
-    instance.protocol = randomize()
-    instance.providers = [randomize()]
-    instance.session_timeout = randomize("int", min_val=1, max_val=1000)
-    instance.unreachable_timeout = randomize("int", min_val=1, max_val=1000)
-    instance.updated_at = randomize("date")
-    return instance
-
-
-def create_models_dsm_config_record_example() -> ModelsDSMConfigRecord:
-    instance = ModelsDSMConfigRecord()
-    instance.claim_timeout = randomize("int", min_val=1, max_val=1000)
-    instance.created_at = randomize("date")
-    instance.creation_timeout = randomize("int", min_val=1, max_val=1000)
-    instance.default_version = randomize()
-    instance.modified_by = randomize()
-    instance.namespace = randomize("slug")
-    instance.port = randomize("int", min_val=1, max_val=1000)
-    instance.ports = {}
-    instance.protocol = randomize()
-    instance.providers = [randomize()]
-    instance.session_timeout = randomize("int", min_val=1, max_val=1000)
-    instance.unreachable_timeout = randomize("int", min_val=1, max_val=1000)
-    instance.updated_at = randomize("date")
     return instance
 
 
@@ -314,6 +276,44 @@ def create_models_detailed_count_server_response_example() -> ModelsDetailedCoun
     instance.creating_count = randomize("int", min_val=1, max_val=1000)
     instance.ready_count = randomize("int", min_val=1, max_val=1000)
     instance.unreachable_count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_models_dsm_config_export_example() -> ModelsDSMConfigExport:
+    instance = ModelsDSMConfigExport()
+    instance.claim_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.created_at = randomize("date")
+    instance.creation_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.default_version = randomize()
+    instance.deployments = [create_models_deployment_with_override_example()]
+    instance.images = [create_models_image_record_example()]
+    instance.namespace = randomize("slug")
+    instance.pod_configs = [create_models_pod_config_record_example()]
+    instance.port = randomize("int", min_val=1, max_val=1000)
+    instance.ports = {}
+    instance.protocol = randomize()
+    instance.providers = [randomize()]
+    instance.session_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.unreachable_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.updated_at = randomize("date")
+    return instance
+
+
+def create_models_dsm_config_record_example() -> ModelsDSMConfigRecord:
+    instance = ModelsDSMConfigRecord()
+    instance.claim_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.created_at = randomize("date")
+    instance.creation_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.default_version = randomize()
+    instance.modified_by = randomize()
+    instance.namespace = randomize("slug")
+    instance.port = randomize("int", min_val=1, max_val=1000)
+    instance.ports = {}
+    instance.protocol = randomize()
+    instance.providers = [randomize()]
+    instance.session_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.unreachable_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.updated_at = randomize("date")
     return instance
 
 
@@ -589,19 +589,6 @@ def create_models_status_history_example() -> ModelsStatusHistory:
     return instance
 
 
-def create_models_update_dsm_config_request_example() -> ModelsUpdateDSMConfigRequest:
-    instance = ModelsUpdateDSMConfigRequest()
-    instance.claim_timeout = randomize("int", min_val=1, max_val=1000)
-    instance.creation_timeout = randomize("int", min_val=1, max_val=1000)
-    instance.default_version = randomize()
-    instance.port = randomize("int", min_val=1, max_val=1000)
-    instance.protocol = randomize()
-    instance.providers = [randomize()]
-    instance.session_timeout = randomize("int", min_val=1, max_val=1000)
-    instance.unreachable_timeout = randomize("int", min_val=1, max_val=1000)
-    return instance
-
-
 def create_models_update_deployment_override_request_example() -> ModelsUpdateDeploymentOverrideRequest:
     instance = ModelsUpdateDeploymentOverrideRequest()
     instance.buffer_count = randomize("int", min_val=1, max_val=1000)
@@ -628,6 +615,19 @@ def create_models_update_deployment_request_example() -> ModelsUpdateDeploymentR
     instance.min_count = randomize("int", min_val=1, max_val=1000)
     instance.regions = [randomize()]
     instance.use_buffer_percent = randomize("bool")
+    return instance
+
+
+def create_models_update_dsm_config_request_example() -> ModelsUpdateDSMConfigRequest:
+    instance = ModelsUpdateDSMConfigRequest()
+    instance.claim_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.creation_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.default_version = randomize()
+    instance.port = randomize("int", min_val=1, max_val=1000)
+    instance.protocol = randomize()
+    instance.providers = [randomize()]
+    instance.session_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.unreachable_timeout = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

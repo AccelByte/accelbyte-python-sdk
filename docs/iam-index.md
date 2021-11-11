@@ -312,14 +312,13 @@
 ## Models
 | Model | Class |
 |---|---|
-| .BannedBy | [BannedBy](../accelbyte_py_sdk/api/iam/models/banned_by.py) |
-| account.UserActiveBanResponseV4 | [AccountUserActiveBanResponseV4](../accelbyte_py_sdk/api/iam/models/account_user_active_ban_response_v4.py) |
-| account.UserPermissionsResponseV4 | [AccountUserPermissionsResponseV4](../accelbyte_py_sdk/api/iam/models/account_user_permissions_response_v4.py) |
-| account.UserResponseV4 | [AccountUserResponseV4](../accelbyte_py_sdk/api/iam/models/account_user_response_v4.py) |
 | account.createUserRequestV4 | [AccountCreateUserRequestV4](../accelbyte_py_sdk/api/iam/models/account_create_user_request_v4.py) |
 | account.createUserResponseV4 | [AccountCreateUserResponseV4](../accelbyte_py_sdk/api/iam/models/account_create_user_response_v4.py) |
 | account.upgradeHeadlessAccountRequestV4 | [AccountUpgradeHeadlessAccountRequestV4](../accelbyte_py_sdk/api/iam/models/account_upgrade_headless_account_request_v4.py) |
 | account.upgradeHeadlessAccountWithVerificationCodeRequestV4 | [AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4](../accelbyte_py_sdk/api/iam/models/account_upgrade_headless_account_with_verification_code_request_v4.py) |
+| account.UserActiveBanResponseV4 | [AccountUserActiveBanResponseV4](../accelbyte_py_sdk/api/iam/models/account_user_active_ban_response_v4.py) |
+| account.UserPermissionsResponseV4 | [AccountUserPermissionsResponseV4](../accelbyte_py_sdk/api/iam/models/account_user_permissions_response_v4.py) |
+| account.UserResponseV4 | [AccountUserResponseV4](../accelbyte_py_sdk/api/iam/models/account_user_response_v4.py) |
 | accountcommon.Ban | [AccountcommonBan](../accelbyte_py_sdk/api/iam/models/accountcommon_ban.py) |
 | accountcommon.BanReason | [AccountcommonBanReason](../accelbyte_py_sdk/api/iam/models/accountcommon_ban_reason.py) |
 | accountcommon.BanReasonV3 | [AccountcommonBanReasonV3](../accelbyte_py_sdk/api/iam/models/accountcommon_ban_reason_v3.py) |
@@ -362,6 +361,7 @@
 | accountcommon.UserSearchResult | [AccountcommonUserSearchResult](../accelbyte_py_sdk/api/iam/models/accountcommon_user_search_result.py) |
 | accountcommon.UserWithLinkedPlatformAccounts | [AccountcommonUserWithLinkedPlatformAccounts](../accelbyte_py_sdk/api/iam/models/accountcommon_user_with_linked_platform_accounts.py) |
 | accountcommon.UserWithPlatformAccounts | [AccountcommonUserWithPlatformAccounts](../accelbyte_py_sdk/api/iam/models/accountcommon_user_with_platform_accounts.py) |
+| .BannedBy | [BannedBy](../accelbyte_py_sdk/api/iam/models/banned_by.py) |
 | bloom.FilterJSON | [BloomFilterJSON](../accelbyte_py_sdk/api/iam/models/bloom_filter_json.py) |
 | clientmodel.ClientCreateRequest | [ClientmodelClientCreateRequest](../accelbyte_py_sdk/api/iam/models/clientmodel_client_create_request.py) |
 | clientmodel.ClientCreationResponse | [ClientmodelClientCreationResponse](../accelbyte_py_sdk/api/iam/models/clientmodel_client_creation_response.py) |
@@ -443,13 +443,13 @@
 | model.RoleUpdateRequestV3 | [ModelRoleUpdateRequestV3](../accelbyte_py_sdk/api/iam/models/model_role_update_request_v3.py) |
 | model.RoleV4Request | [ModelRoleV4Request](../accelbyte_py_sdk/api/iam/models/model_role_v4_request.py) |
 | model.RoleV4Response | [ModelRoleV4Response](../accelbyte_py_sdk/api/iam/models/model_role_v4_response.py) |
-| model.SSOPlatformCredentialRequest | [ModelSSOPlatformCredentialRequest](../accelbyte_py_sdk/api/iam/models/model_sso_platform_credential_request.py) |
-| model.SSOPlatformCredentialResponse | [ModelSSOPlatformCredentialResponse](../accelbyte_py_sdk/api/iam/models/model_sso_platform_credential_response.py) |
 | model.SearchUsersByPlatformIDResponse | [ModelSearchUsersByPlatformIDResponse](../accelbyte_py_sdk/api/iam/models/model_search_users_by_platform_id_response.py) |
 | model.SearchUsersResponse | [ModelSearchUsersResponse](../accelbyte_py_sdk/api/iam/models/model_search_users_response.py) |
 | model.SearchUsersResponseWithPaginationV3 | [ModelSearchUsersResponseWithPaginationV3](../accelbyte_py_sdk/api/iam/models/model_search_users_response_with_pagination_v3.py) |
 | model.SendVerificationCodeRequest | [ModelSendVerificationCodeRequest](../accelbyte_py_sdk/api/iam/models/model_send_verification_code_request.py) |
 | model.SendVerificationCodeRequestV3 | [ModelSendVerificationCodeRequestV3](../accelbyte_py_sdk/api/iam/models/model_send_verification_code_request_v3.py) |
+| model.SSOPlatformCredentialRequest | [ModelSSOPlatformCredentialRequest](../accelbyte_py_sdk/api/iam/models/model_sso_platform_credential_request.py) |
+| model.SSOPlatformCredentialResponse | [ModelSSOPlatformCredentialResponse](../accelbyte_py_sdk/api/iam/models/model_sso_platform_credential_response.py) |
 | model.ThirdPartyLoginPlatformCredentialRequest | [ModelThirdPartyLoginPlatformCredentialRequest](../accelbyte_py_sdk/api/iam/models/model_third_party_login_platform_credential_request.py) |
 | model.ThirdPartyLoginPlatformCredentialResponse | [ModelThirdPartyLoginPlatformCredentialResponse](../accelbyte_py_sdk/api/iam/models/model_third_party_login_platform_credential_response.py) |
 | model.UnlinkUserPlatformRequest | [ModelUnlinkUserPlatformRequest](../accelbyte_py_sdk/api/iam/models/model_unlink_user_platform_request.py) |

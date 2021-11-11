@@ -207,10 +207,50 @@ from ..api.iam.models import RestErrorResponse
 from ..api.iam.models import RestapiErrorResponse
 
 
-def create_banned_by_example() -> BannedBy:
-    instance = BannedBy()
+def create_account_create_user_request_v4_example() -> AccountCreateUserRequestV4:
+    instance = AccountCreateUserRequestV4()
+    instance.accepted_policies = [create_legal_accepted_policies_request_example()]
+    instance.auth_type = randomize()
+    instance.country = randomize("country")
+    instance.date_of_birth = randomize()
     instance.display_name = randomize("slug")
+    instance.email_address = randomize("email")
+    instance.password = randomize("password")
+    instance.password_md5_sum = randomize()
+    instance.username = randomize("slug")
+    return instance
+
+
+def create_account_create_user_response_v4_example() -> AccountCreateUserResponseV4:
+    instance = AccountCreateUserResponseV4()
+    instance.auth_type = randomize()
+    instance.country = randomize("country")
+    instance.date_of_birth = randomize("adult_birthdate")
+    instance.display_name = randomize("slug")
+    instance.email_address = randomize("email")
+    instance.namespace = randomize("slug")
     instance.user_id = randomize("uid")
+    instance.username = randomize("slug")
+    return instance
+
+
+def create_account_upgrade_headless_account_request_v4_example() -> AccountUpgradeHeadlessAccountRequestV4:
+    instance = AccountUpgradeHeadlessAccountRequestV4()
+    instance.email_address = randomize("email")
+    instance.password = randomize("password")
+    instance.username = randomize("slug")
+    return instance
+
+
+def create_account_upgrade_headless_account_with_verification_code_request_v4_example() -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
+    instance = AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4()
+    instance.code = randomize()
+    instance.country = randomize("country")
+    instance.date_of_birth = randomize()
+    instance.display_name = randomize("slug")
+    instance.email_address = randomize("email")
+    instance.password = randomize("password")
+    instance.username = randomize("slug")
     return instance
 
 
@@ -256,53 +296,6 @@ def create_account_user_response_v4_example() -> AccountUserResponseV4:
     instance.platform_user_id = randomize()
     instance.roles = [randomize()]
     instance.user_id = randomize("uid")
-    instance.username = randomize("slug")
-    return instance
-
-
-def create_account_create_user_request_v4_example() -> AccountCreateUserRequestV4:
-    instance = AccountCreateUserRequestV4()
-    instance.accepted_policies = [create_legal_accepted_policies_request_example()]
-    instance.auth_type = randomize()
-    instance.country = randomize("country")
-    instance.date_of_birth = randomize()
-    instance.display_name = randomize("slug")
-    instance.email_address = randomize("email")
-    instance.password = randomize("password")
-    instance.password_md5_sum = randomize()
-    instance.username = randomize("slug")
-    return instance
-
-
-def create_account_create_user_response_v4_example() -> AccountCreateUserResponseV4:
-    instance = AccountCreateUserResponseV4()
-    instance.auth_type = randomize()
-    instance.country = randomize("country")
-    instance.date_of_birth = randomize("adult_birthdate")
-    instance.display_name = randomize("slug")
-    instance.email_address = randomize("email")
-    instance.namespace = randomize("slug")
-    instance.user_id = randomize("uid")
-    instance.username = randomize("slug")
-    return instance
-
-
-def create_account_upgrade_headless_account_request_v4_example() -> AccountUpgradeHeadlessAccountRequestV4:
-    instance = AccountUpgradeHeadlessAccountRequestV4()
-    instance.email_address = randomize("email")
-    instance.password = randomize("password")
-    instance.username = randomize("slug")
-    return instance
-
-
-def create_account_upgrade_headless_account_with_verification_code_request_v4_example() -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
-    instance = AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4()
-    instance.code = randomize()
-    instance.country = randomize("country")
-    instance.date_of_birth = randomize()
-    instance.display_name = randomize("slug")
-    instance.email_address = randomize("email")
-    instance.password = randomize("password")
     instance.username = randomize("slug")
     return instance
 
@@ -648,6 +641,13 @@ def create_accountcommon_user_with_platform_accounts_example() -> AccountcommonU
     instance = AccountcommonUserWithPlatformAccounts()
     instance.linked_platforms = [create_accountcommon_platform_account_example()]
     instance.namespace = randomize("slug")
+    instance.user_id = randomize("uid")
+    return instance
+
+
+def create_banned_by_example() -> BannedBy:
+    instance = BannedBy()
+    instance.display_name = randomize("slug")
     instance.user_id = randomize("uid")
     return instance
 
@@ -1324,34 +1324,6 @@ def create_model_role_v4_response_example() -> ModelRoleV4Response:
     return instance
 
 
-def create_model_sso_platform_credential_request_example() -> ModelSSOPlatformCredentialRequest:
-    instance = ModelSSOPlatformCredentialRequest()
-    instance.acs_url = randomize("url")
-    instance.api_key = randomize()
-    instance.app_id = randomize("uid")
-    instance.federation_metadata_url = randomize("url")
-    instance.is_active = randomize("bool")
-    instance.redirect_uri = randomize()
-    instance.secret = randomize()
-    instance.sso_url = randomize("url")
-    return instance
-
-
-def create_model_sso_platform_credential_response_example() -> ModelSSOPlatformCredentialResponse:
-    instance = ModelSSOPlatformCredentialResponse()
-    instance.acs_url = randomize("url")
-    instance.app_id = randomize("uid")
-    instance.federation_metadata_url = randomize("url")
-    instance.is_active = randomize("bool")
-    instance.namespace = randomize("slug")
-    instance.platform_id = randomize()
-    instance.redirect_uri = randomize()
-    instance.secret = randomize()
-    instance.sso_url = randomize("url")
-    instance.truncated_api_key = randomize()
-    return instance
-
-
 def create_model_search_users_by_platform_id_response_example() -> ModelSearchUsersByPlatformIDResponse:
     instance = ModelSearchUsersByPlatformIDResponse()
     instance.data = [create_accountcommon_user_search_by_platform_id_result_example()]
@@ -1386,6 +1358,34 @@ def create_model_send_verification_code_request_v3_example() -> ModelSendVerific
     instance.context = randomize()
     instance.email_address = randomize("email")
     instance.language_tag = randomize()
+    return instance
+
+
+def create_model_sso_platform_credential_request_example() -> ModelSSOPlatformCredentialRequest:
+    instance = ModelSSOPlatformCredentialRequest()
+    instance.acs_url = randomize("url")
+    instance.api_key = randomize()
+    instance.app_id = randomize("uid")
+    instance.federation_metadata_url = randomize("url")
+    instance.is_active = randomize("bool")
+    instance.redirect_uri = randomize()
+    instance.secret = randomize()
+    instance.sso_url = randomize("url")
+    return instance
+
+
+def create_model_sso_platform_credential_response_example() -> ModelSSOPlatformCredentialResponse:
+    instance = ModelSSOPlatformCredentialResponse()
+    instance.acs_url = randomize("url")
+    instance.app_id = randomize("uid")
+    instance.federation_metadata_url = randomize("url")
+    instance.is_active = randomize("bool")
+    instance.namespace = randomize("slug")
+    instance.platform_id = randomize()
+    instance.redirect_uri = randomize()
+    instance.secret = randomize()
+    instance.sso_url = randomize("url")
+    instance.truncated_api_key = randomize()
     return instance
 
 
