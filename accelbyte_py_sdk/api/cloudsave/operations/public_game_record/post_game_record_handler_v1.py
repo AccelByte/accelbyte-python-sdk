@@ -1,4 +1,4 @@
-# justice-cloudsave-service (1.8.0)
+# justice-cloudsave-service (1.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,53 +31,17 @@ from ...models import ModelsResponseError
 class PostGameRecordHandlerV1(Operation):
     """Create or append game record (postGameRecordHandlerV1)
 
-    Required Permission | `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]`
-    ---|---
-    Required Scope | `social`
-
+    <table> <tr> <td>Required Permission</td>
+    <td><code>NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]</code></td> </tr>
+    <tr> <td>Required Scope</td> <td><code>social</code></td> </tr> </table> <br/>
     If there's already record, the record will be merged with conditions: - If
     field name is already exist, the value will be replaced - If field name is
     not exists it will append the field and its value Example: Replace value in a
-    specific JSON key
-
-
-
-        // existed record
-        {
-            "foo": "bar"
-        }
-
-        // new update (request body)
-        {
-            "foo": "barUpdated"
-        }
-
-        // result
-        {
-            "foo": "barUpdated"
-        }
-
-
-    Append new json item
-
-
-
-        // existed record
-        {
-            "foo": "bar"
-        }
-
-        // new update (request body)
-        {
-            "foo_new": "bar_new"
-        }
-
-        // result
-        {
-            "foo": "bar",
-            "foo_new": "bar_new"
-        }
-
+    specific JSON key <pre> // existed record { "foo": "bar" } // new update
+    (request body) { "foo": "barUpdated" } // result { "foo": "barUpdated" }
+    </pre> Append new json item <pre> // existed record { "foo": "bar" } // new
+    update (request body) { "foo_new": "bar_new" } // result { "foo": "bar",
+    "foo_new": "bar_new" } </pre>
 
 
     Properties:

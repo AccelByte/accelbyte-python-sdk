@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,10 @@ from ...models import TicketDynamicInfo
 class GetTicketDynamic(Operation):
     """Get ticket dynamic (getTicketDynamic)
 
-    [SERVICE COMMUNICATION ONLY] Get ticket(code/key) dynamic based on booth name.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=2 (READ)
-      *  Returns : ticket dynamic
+    <b>[SERVICE COMMUNICATION ONLY]</b> Get ticket(code/key) dynamic based on
+    booth name.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=2
+    (READ)</li><li><i>Returns</i>: ticket dynamic</li></ul>
 
 
     Properties:

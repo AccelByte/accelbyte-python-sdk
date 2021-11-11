@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -34,10 +34,9 @@ class CreditUserWallet(Operation):
     """Credit a user wallet by currency code (creditUserWallet)
 
     Credit a user wallet by currency code, if wallet not exists, it will create a
-    new wallet.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4 (UPDATE)
+    new wallet.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4
+    (UPDATE)</li></ul>
 
 
     Properties:

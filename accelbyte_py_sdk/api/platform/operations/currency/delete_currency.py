@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,9 @@ from ...models import ErrorEntity
 class DeleteCurrency(Operation):
     """Delete a currency (deleteCurrency)
 
-    Delete a currency by currency code.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=8 (DELETE)
-      *  Returns :
+    Delete a currency by currency code.<br>Other detail info: <ul><li><i>Required
+    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=8
+    (DELETE)</li><li><i>Returns</i>: </li></ul>
 
 
     Properties:

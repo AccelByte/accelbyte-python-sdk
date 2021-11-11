@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,14 +31,12 @@ from ...models import ModelUserCreateResponse
 class CreateUser(Operation):
     """Create User (CreateUser)
 
-    Required permission 'NAMESPACE:{namespace}:USER [CREATE]'.
-
-    Available Authentication Types:
-
-      1. EMAILPASSWD : an authentication type used for new user registration through email.
-      2. PHONEPASSWD : an authentication type used for new user registration through phone number.
-
-    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+    <p>Required permission 'NAMESPACE:{namespace}:USER [CREATE]'.</p> <p>Available
+    Authentication Types:</p> <ol> <li><strong>EMAILPASSWD</strong>: an
+    authentication type used for new user registration through email.</li>
+    <li><strong>PHONEPASSWD</strong>: an authentication type used for new user
+    registration through phone number.</li> </ol> <p>Country use ISO3166-1 alpha-2
+    two letter, e.g. US.</p>
 
 
     Properties:

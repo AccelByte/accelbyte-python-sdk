@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,12 +32,10 @@ from ...models import ResponseErrorResponse
 class UpdateGroupConfigurationGlobalRuleAdminV1(Operation):
     """update existing configuration global rule (updateGroupConfigurationGlobalRuleAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]'
-
-    This endpoint is used to update existing global rule configuration based on
-    the allowed action. It will replace the permission with the request
-
-    Action Code: 73106
+    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION
+    [UPDATE]'</p> <p>This endpoint is used to update existing global rule
+    configuration based on the allowed action. It will replace the permission with
+    the request</p> <p>Action Code: 73106</p>
 
 
     Properties:

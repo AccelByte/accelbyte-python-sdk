@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,12 +31,10 @@ from ...models import PlayStationReconcileResult
 class PublicReconcilePlayStationStore(Operation):
     """Synchronize with entitlements in PSN Store. (publicReconcilePlayStationStore)
 
-    Synchronize with entitlements in PSN Store.
-
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns : result of synchronization
+    Synchronize with entitlements in PSN Store.<p>Other detail info:
+    <ul><li><i>Required permission</i>:
+    resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4
+    (UPDATE)</li><li><i>Returns</i>: result of synchronization</li></ul>
 
 
     Properties:

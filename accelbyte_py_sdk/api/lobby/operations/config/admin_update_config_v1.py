@@ -31,9 +31,9 @@ from ...models import RestapiErrorResponseBody
 class AdminUpdateConfigV1(Operation):
     """admin update namespace config (adminUpdateConfigV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]` with
-    scope `social`
-    update lobby config of a namespace.
+    Required permission : <code>ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG
+    [UPDATE]</code> with scope <code>social</code> <br>update lobby config of a
+    namespace.
 
 
     Properties:

@@ -1,6 +1,6 @@
 """Auto-generated top-level package for the justice-dsm-controller-service."""
 
-__version__ = "2.6.0"
+__version__ = "2.8.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -72,6 +72,7 @@ from .wrappers import update_pod_config
 # public
 from .wrappers import get_default_provider
 from .wrappers import list_providers
+from .wrappers import list_providers_by_region
 
 # server
 from .wrappers import deregister_local_server

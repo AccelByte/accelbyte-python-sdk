@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,8 +30,7 @@ from ...models import RestapiErrorResponse
 class AdminDeleteRoleV3(Operation):
     """Delete Role (AdminDeleteRoleV3)
 
-    Required permission ''ADMIN:ROLE [DELETE]''
-    action code: 10403
+    Required permission ''ADMIN:ROLE [DELETE]'' <br>action code: 10403
 
 
     Properties:

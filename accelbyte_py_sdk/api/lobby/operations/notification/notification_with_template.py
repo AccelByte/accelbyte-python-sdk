@@ -31,15 +31,13 @@ from ...models import RestapiErrorResponseBody
 class NotificationWithTemplate(Operation):
     """send notification to a user with template (notificationWithTemplate)
 
-    Required permission : `NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope
-    `social`
-    Sends notification to all connected users in a namespace with predefined
-    template.
-    In the request body, specify which template slug (template identifier) to use
-    and the template language.
-    NotificationTemplate context is the key-value pair defining the value of each
-    handlebar specified in the template content. Template need to be published
-    before it can be use to send notifications
+    Required permission : <code>NAMESPACE:{namespace}:NOTIFICATION [CREATE]</code>
+    with scope <code>social</code> <br>Sends notification to all connected users
+    in a namespace with predefined template. <br>In the request body, specify
+    which template slug (template identifier) to use and the template language.
+    <br>NotificationTemplate context is the key-value pair defining the value of
+    each handlebar specified in the template content. Template need to be
+    published before it can be use to send notifications
 
 
     Properties:

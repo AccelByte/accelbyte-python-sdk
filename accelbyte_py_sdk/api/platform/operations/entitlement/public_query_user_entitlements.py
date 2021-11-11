@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,12 +30,10 @@ from ...models import EntitlementPagingSlicedResult
 class PublicQueryUserEntitlements(Operation):
     """Query user entitlements (publicQueryUserEntitlements)
 
-    Query user entitlements for a specific user.
-
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
-      *  Returns : entitlement list
+    Query user entitlements for a specific user.<p>Other detail info:
+    <ul><li><i>Required permission</i>:
+    resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2
+    (READ)</li><li><i>Returns</i>: entitlement list</li></ul>
 
 
     Properties:

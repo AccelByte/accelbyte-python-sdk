@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,12 +30,9 @@ from ...models import AppEntitlementPagingSlicedResult
 class PublicQueryUserEntitlementsByAppType(Operation):
     """Query app entitlements by appType (publicQueryUserEntitlementsByAppType)
 
-    Query app entitlements by appType.
-
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
-      *  Returns : app entitlement pagination
+    Query app entitlements by appType.<p>Other detail info: <ul><li><i>Required
+    permission</i>: resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT",
+    action=2 (READ)</li><li><i>Returns</i>: app entitlement pagination</li></ul>
 
 
     Properties:

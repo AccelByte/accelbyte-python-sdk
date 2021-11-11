@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,10 +32,8 @@ from ...models import PaymentToken
 class Pay(Operation):
     """Do payment (pay)
 
-    Do payment(For now, this only support checkout.com).
-    Other detail info:
-
-      * Returns : Payment process result
+    Do payment(For now, this only support checkout.com).<br>Other detail info:
+    <ul><li><i>Returns</i>: Payment process result</li></ul>
 
 
     Properties:

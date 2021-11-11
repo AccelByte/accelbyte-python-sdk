@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,11 +30,9 @@ from ...models import CodeInfoPagingSlicedResult
 class QueryCodes(Operation):
     """Query codes (queryCodes)
 
-    Query campaign codes.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ) (READ)
-      *  Returns : list of codes
+    Query campaign codes.<br>Other detail info: <ul><li><i>Required
+    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2
+    (READ) (READ)</li><li><i>Returns</i>: list of codes</li></ul>
 
 
     Properties:

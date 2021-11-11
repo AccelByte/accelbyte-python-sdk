@@ -34,6 +34,7 @@ from ..models import ErrorEntity
 from ..models import Ownership
 from ..models import OwnershipToken
 from ..models import StackableEntitlementInfo
+from ..models import TimedOwnership
 from ..models import ValidationErrorEntity
 
 from ..operations.entitlement import ConsumeUserEntitlement
@@ -48,8 +49,10 @@ from ..operations.entitlement import GetUserAppEntitlementByAppId
 from ..operations.entitlement import GetUserAppEntitlementOwnershipByAppId
 from ..operations.entitlement import GetUserDistributionReceivers
 from ..operations.entitlement import GetUserEntitlement
+from ..operations.entitlement import GetUserEntitlementByItemId
 from ..operations.entitlement import GetUserEntitlementBySku
 from ..operations.entitlement import GetUserEntitlementHistories
+from ..operations.entitlement import GetUserEntitlementOwnershipByItemId
 from ..operations.entitlement import GetUserEntitlementOwnershipBySku
 from ..operations.entitlement import GrantUserEntitlement
 from ..operations.entitlement import PublicConsumeUserEntitlement
@@ -60,12 +63,15 @@ from ..operations.entitlement import PublicExistsAnyMyActiveEntitlement
 from ..operations.entitlement import PublicExistsAnyUserActiveEntitlement
 from ..operations.entitlement import PublicGetEntitlementOwnershipToken
 from ..operations.entitlement import PublicGetMyAppEntitlementOwnershipByAppId
+from ..operations.entitlement import PublicGetMyEntitlementOwnershipByItemId
 from ..operations.entitlement import PublicGetMyEntitlementOwnershipBySku
 from ..operations.entitlement import PublicGetUserAppEntitlementByAppId
 from ..operations.entitlement import PublicGetUserAppEntitlementOwnershipByAppId
 from ..operations.entitlement import PublicGetUserDistributionReceivers
 from ..operations.entitlement import PublicGetUserEntitlement
+from ..operations.entitlement import PublicGetUserEntitlementByItemId
 from ..operations.entitlement import PublicGetUserEntitlementBySku
+from ..operations.entitlement import PublicGetUserEntitlementOwnershipByItemId
 from ..operations.entitlement import PublicGetUserEntitlementOwnershipBySku
 from ..operations.entitlement import PublicQueryUserEntitlements
 from ..operations.entitlement import PublicQueryUserEntitlementsByAppType
@@ -250,6 +256,22 @@ def get_user_entitlement(entitlement_id: str, user_id: str, namespace: Optional[
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(GetUserEntitlementByItemId)
+def get_user_entitlement_by_item_id(item_id: str, user_id: str, active_only: Optional[bool] = None, entitlement_clazz: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetUserEntitlementByItemId.create(
+        item_id=item_id,
+        user_id=user_id,
+        active_only=active_only,
+        entitlement_clazz=entitlement_clazz,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(GetUserEntitlementBySku)
 def get_user_entitlement_by_sku(sku: str, user_id: str, active_only: Optional[bool] = None, entitlement_clazz: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -275,6 +297,21 @@ def get_user_entitlement_histories(entitlement_id: str, user_id: str, namespace:
     request = GetUserEntitlementHistories.create(
         entitlement_id=entitlement_id,
         user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetUserEntitlementOwnershipByItemId)
+def get_user_entitlement_ownership_by_item_id(item_id: str, user_id: str, entitlement_clazz: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetUserEntitlementOwnershipByItemId.create(
+        item_id=item_id,
+        user_id=user_id,
+        entitlement_clazz=entitlement_clazz,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -429,6 +466,20 @@ def public_get_my_app_entitlement_ownership_by_app_id(app_id: str, namespace: Op
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(PublicGetMyEntitlementOwnershipByItemId)
+def public_get_my_entitlement_ownership_by_item_id(item_id: str, entitlement_clazz: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetMyEntitlementOwnershipByItemId.create(
+        item_id=item_id,
+        entitlement_clazz=entitlement_clazz,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(PublicGetMyEntitlementOwnershipBySku)
 def public_get_my_entitlement_ownership_by_sku(sku: str, entitlement_clazz: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -499,6 +550,21 @@ def public_get_user_entitlement(entitlement_id: str, user_id: str, namespace: Op
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(PublicGetUserEntitlementByItemId)
+def public_get_user_entitlement_by_item_id(item_id: str, user_id: str, entitlement_clazz: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetUserEntitlementByItemId.create(
+        item_id=item_id,
+        user_id=user_id,
+        entitlement_clazz=entitlement_clazz,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(PublicGetUserEntitlementBySku)
 def public_get_user_entitlement_by_sku(sku: str, user_id: str, entitlement_clazz: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -507,6 +573,21 @@ def public_get_user_entitlement_by_sku(sku: str, user_id: str, entitlement_clazz
             return None, error
     request = PublicGetUserEntitlementBySku.create(
         sku=sku,
+        user_id=user_id,
+        entitlement_clazz=entitlement_clazz,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicGetUserEntitlementOwnershipByItemId)
+def public_get_user_entitlement_ownership_by_item_id(item_id: str, user_id: str, entitlement_clazz: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetUserEntitlementOwnershipByItemId.create(
+        item_id=item_id,
         user_id=user_id,
         entitlement_clazz=entitlement_clazz,
         namespace=namespace,

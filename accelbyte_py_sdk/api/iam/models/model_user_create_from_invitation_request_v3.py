@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -23,6 +23,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.legal_accepted_policies_request import LegalAcceptedPoliciesRequest
+
 
 class ModelUserCreateFromInvitationRequestV3(Model):
     """Model user create from invitation request V3 (model.UserCreateFromInvitationRequestV3)
@@ -37,6 +39,8 @@ class ModelUserCreateFromInvitationRequestV3(Model):
         display_name: (displayName) REQUIRED str
 
         password: (password) REQUIRED str
+
+        accepted_policies: (acceptedPolicies) OPTIONAL List[LegalAcceptedPoliciesRequest]
     """
 
     # region fields
@@ -46,6 +50,7 @@ class ModelUserCreateFromInvitationRequestV3(Model):
     date_of_birth: str                                                                             # REQUIRED
     display_name: str                                                                              # REQUIRED
     password: str                                                                                  # REQUIRED
+    accepted_policies: List[LegalAcceptedPoliciesRequest]                                          # OPTIONAL
 
     # endregion fields
 
@@ -69,6 +74,10 @@ class ModelUserCreateFromInvitationRequestV3(Model):
 
     def with_password(self, value: str) -> ModelUserCreateFromInvitationRequestV3:
         self.password = value
+        return self
+
+    def with_accepted_policies(self, value: List[LegalAcceptedPoliciesRequest]) -> ModelUserCreateFromInvitationRequestV3:
+        self.accepted_policies = value
         return self
 
     # endregion with_x methods
@@ -97,6 +106,10 @@ class ModelUserCreateFromInvitationRequestV3(Model):
             result["password"] = str(self.password)
         elif include_empty:
             result["password"] = str()
+        if hasattr(self, "accepted_policies"):
+            result["acceptedPolicies"] = [i0.to_dict(include_empty=include_empty) for i0 in self.accepted_policies]
+        elif include_empty:
+            result["acceptedPolicies"] = []
         return result
 
     # endregion to methods
@@ -111,6 +124,7 @@ class ModelUserCreateFromInvitationRequestV3(Model):
         date_of_birth: str,
         display_name: str,
         password: str,
+        accepted_policies: Optional[List[LegalAcceptedPoliciesRequest]] = None,
     ) -> ModelUserCreateFromInvitationRequestV3:
         instance = cls()
         instance.auth_type = auth_type
@@ -118,6 +132,8 @@ class ModelUserCreateFromInvitationRequestV3(Model):
         instance.date_of_birth = date_of_birth
         instance.display_name = display_name
         instance.password = password
+        if accepted_policies is not None:
+            instance.accepted_policies = accepted_policies
         return instance
 
     @classmethod
@@ -145,6 +161,10 @@ class ModelUserCreateFromInvitationRequestV3(Model):
             instance.password = str(dict_["password"])
         elif include_empty:
             instance.password = str()
+        if "acceptedPolicies" in dict_ and dict_["acceptedPolicies"] is not None:
+            instance.accepted_policies = [LegalAcceptedPoliciesRequest.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["acceptedPolicies"]]
+        elif include_empty:
+            instance.accepted_policies = []
         return instance
 
     @staticmethod
@@ -155,6 +175,7 @@ class ModelUserCreateFromInvitationRequestV3(Model):
             "dateOfBirth": "date_of_birth",
             "displayName": "display_name",
             "password": "password",
+            "acceptedPolicies": "accepted_policies",
         }
 
     # endregion static methods

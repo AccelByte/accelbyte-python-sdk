@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -43,7 +43,6 @@ from ..api.iam.models import AccountcommonClientPermissionsV3
 from ..api.iam.models import AccountcommonConflictedUserPlatformAccounts
 from ..api.iam.models import AccountcommonCountryAgeRestriction
 from ..api.iam.models import AccountcommonDescription
-from ..api.iam.models import AccountcommonJWTBan
 from ..api.iam.models import AccountcommonJWTBanV3
 from ..api.iam.models import AccountcommonListUsersWithPlatformAccountsResponse
 from ..api.iam.models import AccountcommonNamespaceRole
@@ -82,7 +81,6 @@ from ..api.iam.models import ClientmodelClientV3Response
 from ..api.iam.models import ClientmodelClientsV3Response
 from ..api.iam.models import LegalAcceptedPoliciesRequest
 from ..api.iam.models import ModelAddUserRoleV4Request
-from ..api.iam.models import ModelAdminInvitationV3
 from ..api.iam.models import ModelAgeRestrictionRequest
 from ..api.iam.models import ModelAgeRestrictionRequestV3
 from ..api.iam.models import ModelAgeRestrictionResponse
@@ -105,8 +103,8 @@ from ..api.iam.models import ModelGetUserBanV3Response
 from ..api.iam.models import ModelGetUserJusticePlatformAccountResponse
 from ..api.iam.models import ModelGetUserMapping
 from ..api.iam.models import ModelGetUsersResponseWithPaginationV3
-from ..api.iam.models import ModelInviteAdminRequestV3
-from ..api.iam.models import ModelInviteAdminResponseV3
+from ..api.iam.models import ModelInviteUserRequestV3
+from ..api.iam.models import ModelInviteUserResponseV3
 from ..api.iam.models import ModelLinkPlatformAccountRequest
 from ..api.iam.models import ModelLinkRequest
 from ..api.iam.models import ModelListAssignedUsersV4Response
@@ -180,6 +178,7 @@ from ..api.iam.models import ModelUserCreateResponse
 from ..api.iam.models import ModelUserCreateResponseV3
 from ..api.iam.models import ModelUserDeletionStatusResponse
 from ..api.iam.models import ModelUserInformation
+from ..api.iam.models import ModelUserInvitationV3
 from ..api.iam.models import ModelUserLoginHistoryResponse
 from ..api.iam.models import ModelUserPasswordUpdateRequest
 from ..api.iam.models import ModelUserPasswordUpdateV3Request
@@ -407,16 +406,6 @@ def create_accountcommon_description_example() -> AccountcommonDescription:
     instance = AccountcommonDescription()
     instance.en_us = randomize()
     instance.zh_cn = randomize()
-    return instance
-
-
-def create_accountcommon_jwt_ban_example() -> AccountcommonJWTBan:
-    instance = AccountcommonJWTBan()
-    instance.ban = randomize()
-    instance.enabled = randomize("bool")
-    instance.end_date = randomize("date")
-    instance.targeted_namespace = randomize("slug")
-    instance.disabled_date = randomize("date")
     return instance
 
 
@@ -769,15 +758,6 @@ def create_model_add_user_role_v4_request_example() -> ModelAddUserRoleV4Request
     return instance
 
 
-def create_model_admin_invitation_v3_example() -> ModelAdminInvitationV3:
-    instance = ModelAdminInvitationV3()
-    instance.email = randomize("email")
-    instance.expired_at = randomize("date")
-    instance.roles = [create_accountcommon_namespace_role_example()]
-    instance.id_ = randomize()
-    return instance
-
-
 def create_model_age_restriction_request_example() -> ModelAgeRestrictionRequest:
     instance = ModelAgeRestrictionRequest()
     instance.age_restriction = randomize("int", min_val=1, max_val=1000)
@@ -940,16 +920,17 @@ def create_model_get_users_response_with_pagination_v3_example() -> ModelGetUser
     return instance
 
 
-def create_model_invite_admin_request_v3_example() -> ModelInviteAdminRequestV3:
-    instance = ModelInviteAdminRequestV3()
+def create_model_invite_user_request_v3_example() -> ModelInviteUserRequestV3:
+    instance = ModelInviteUserRequestV3()
     instance.email_addresses = [randomize()]
+    instance.is_admin = randomize("bool")
     instance.roles = [randomize()]
     return instance
 
 
-def create_model_invite_admin_response_v3_example() -> ModelInviteAdminResponseV3:
-    instance = ModelInviteAdminResponseV3()
-    instance.data = [create_model_admin_invitation_v3_example()]
+def create_model_invite_user_response_v3_example() -> ModelInviteUserResponseV3:
+    instance = ModelInviteUserResponseV3()
+    instance.data = [create_model_user_invitation_v3_example()]
     return instance
 
 
@@ -1538,6 +1519,7 @@ def create_model_user_create_from_invitation_request_v3_example() -> ModelUserCr
     instance.date_of_birth = randomize()
     instance.display_name = randomize("slug")
     instance.password = randomize("password")
+    instance.accepted_policies = [create_legal_accepted_policies_request_example()]
     return instance
 
 
@@ -1549,6 +1531,7 @@ def create_model_user_create_from_invitation_request_v4_example() -> ModelUserCr
     instance.display_name = randomize("slug")
     instance.password = randomize("password")
     instance.username = randomize("slug")
+    instance.accepted_policies = [create_legal_accepted_policies_request_example()]
     return instance
 
 
@@ -1615,6 +1598,15 @@ def create_model_user_information_example() -> ModelUserInformation:
     instance.phone_number = randomize()
     instance.username = randomize("slug")
     instance.xuid = randomize()
+    return instance
+
+
+def create_model_user_invitation_v3_example() -> ModelUserInvitationV3:
+    instance = ModelUserInvitationV3()
+    instance.email = randomize("email")
+    instance.expired_at = randomize("date")
+    instance.roles = [create_accountcommon_namespace_role_example()]
+    instance.id_ = randomize()
     return instance
 
 
@@ -1710,6 +1702,7 @@ def create_model_user_response_v3_example() -> ModelUserResponseV3:
     instance.user_id = randomize("uid")
     instance.new_email_address = randomize()
     instance.phone_number = randomize()
+    instance.platform_display_name = randomize()
     instance.platform_id = randomize()
     instance.platform_user_id = randomize()
     instance.user_name = randomize("slug")
@@ -1837,7 +1830,7 @@ def create_oauthmodel_token_introspect_response_example() -> OauthmodelTokenIntr
 def create_oauthmodel_token_response_example() -> OauthmodelTokenResponse:
     instance = OauthmodelTokenResponse()
     instance.access_token = randomize()
-    instance.bans = [create_accountcommon_jwt_ban_example()]
+    instance.bans = [create_accountcommon_jwt_ban_v3_example()]
     instance.display_name = randomize("slug")
     instance.expires_in = randomize("int", min_val=1, max_val=1000)
     instance.namespace = randomize("slug")

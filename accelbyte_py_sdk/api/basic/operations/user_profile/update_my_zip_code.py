@@ -1,4 +1,4 @@
-# justice-basic-service (1.23.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,12 +33,10 @@ from ...models import ValidationErrorEntity
 class UpdateMyZipCode(Operation):
     """Update my zip code (updateMyZipCode)
 
-    Update my zip code.
-    Other detail info:
-
-      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11408
-      *  Returns : user zip code
+    Update my zip code.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource=<b>"NAMESPACE:{namespace}:PROFILE"</b>, action=4
+    <b>(UPDATE)</b></li><li><i>Action code</i>: 11408</li><li><i>Returns</i>: user
+    zip code</li></ul>
 
 
     Properties:

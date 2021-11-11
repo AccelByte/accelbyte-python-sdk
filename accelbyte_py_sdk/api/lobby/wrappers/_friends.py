@@ -35,7 +35,7 @@ from ..models import RestapiErrorResponseV1
 
 from ..operations.friends import AddFriendsWithoutConfirmation
 from ..operations.friends import GetListOfFriends
-from ..operations.friends import GetUserFriends
+from ..operations.friends import GetUserFriendsUpdated
 from ..operations.friends import GetUserIncomingFriends
 from ..operations.friends import GetUserOutgoingFriends
 from ..operations.friends import UserAcceptFriendRequest
@@ -75,13 +75,13 @@ def get_list_of_friends(user_id: str, limit: Optional[str] = None, offset: Optio
     return run_request(request, additional_headers=x_additional_headers)
 
 
-@same_doc_as(GetUserFriends)
-def get_user_friends(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+@same_doc_as(GetUserFriendsUpdated)
+def get_user_friends_updated(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = GetUserFriends.create(
+    request = GetUserFriendsUpdated.create(
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

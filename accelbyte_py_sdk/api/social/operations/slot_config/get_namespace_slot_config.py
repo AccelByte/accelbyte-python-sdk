@@ -1,4 +1,4 @@
-# justice-social-service (1.18.1)
+# justice-social-service (1.21.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,10 @@ class GetNamespaceSlotConfig(Operation):
     """Returns a namespace slot configuration (getNamespaceSlotConfig)
 
     Get slot configuration for a given namespace. In case slot configuration is
-    not set, the default will be returned.
-    Other detail info:
-
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:SLOTCONFIG", action=2 (READ)
-      *  Returns : namespace slot config info
+    not set, the default will be returned.<br>Other detail
+    info:<ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:SLOTCONFIG", action=2
+    (READ)</li><li><i>Returns</i>: namespace slot config info</li></ul>
 
 
     Properties:

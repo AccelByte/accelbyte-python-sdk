@@ -30,12 +30,11 @@ from ...models import RestapiErrorResponseV1
 class DeleteNotificationTopicV1Admin(Operation):
     """delete topic information by topic name (deleteNotificationTopicV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]` with
-    scope `social`
-    delete topic information by topic name.
-    topic should be alphabets, no special char except underscore, uppercase and no
-    spacing. for example: TOPIC_TEST. Already existing topic can not be created
-    Action Code: 50217
+    Required permission : <code>ADMIN:NAMESPACE:{namespace}:NOTIFICATION
+    [DELETE]</code> with scope <code>social</code> <br>delete topic information by
+    topic name. <br>topic should be alphabets, no special char except underscore,
+    uppercase and no spacing. for example: TOPIC_TEST. Already existing topic can
+    not be created <br/> Action Code: 50217
 
 
     Properties:

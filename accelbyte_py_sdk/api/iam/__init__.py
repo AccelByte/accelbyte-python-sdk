@@ -1,6 +1,6 @@
 """Auto-generated top-level package for the justice-iam-service."""
 
-__version__ = "4.4.1"
+__version__ = "4.7.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -40,7 +40,6 @@ from .wrappers import update_client_secret
 from .wrappers import authorization
 from .wrappers import get_jwks
 from .wrappers import get_revocation_list
-from .wrappers import platform_token_grant
 from .wrappers import platform_token_request_handler
 from .wrappers import revoke_a_user
 from .wrappers import revoke_token
@@ -164,6 +163,7 @@ from .wrappers import admin_get_my_user_v3
 from .wrappers import admin_get_user_ban_v2
 from .wrappers import admin_get_user_ban_v3
 from .wrappers import admin_get_user_by_email_address_v3
+from .wrappers import admin_get_user_by_platform_user_idv3
 from .wrappers import admin_get_user_by_user_id_v2
 from .wrappers import admin_get_user_by_user_id_v3
 from .wrappers import admin_get_user_deletion_status_v3

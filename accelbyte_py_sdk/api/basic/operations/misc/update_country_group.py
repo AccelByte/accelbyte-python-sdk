@@ -1,4 +1,4 @@
-# justice-basic-service (1.23.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,17 +33,15 @@ from ...models import ValidationErrorEntity
 class UpdateCountryGroup(Operation):
     """Update a country group (updateCountryGroup)
 
-    Update a country groups. The countryGroupCode must be exist beforehand.
-    Valid update behaviour :
-    - To update countryGroupName only, do not include countries key or just
-    specify it with empty array.
-    - To update countries only, do not include countryGroupName key or just
-    specify it with blank value.
-    Other detail info:
-
-      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=4 (UPDATE)
-      *  Action code : 11202
-      *  Returns : updated country group
+    Update a country groups. The countryGroupCode must be exist
+    beforehand.<br>Valid update behaviour :<br/>- To update
+    <i>countryGroupName</i> only, do not include <i>countries</i> key or just
+    specify it with empty array.<br/>- To update <i>countries</i> only, do not
+    include <i>countryGroupName</i> key or just specify it with blank
+    value.<br/>Other detail info: <ul><li><i>Required permission</i>: resource =
+    <b>"ADMIN:NAMESPACE:{namespace}:MISC"</b>, action=4
+    <b>(UPDATE)</b></li><li><i>Action code</i>: 11202</li><li><i>Returns</i>:
+    updated country group</li></ul>
 
 
     Properties:

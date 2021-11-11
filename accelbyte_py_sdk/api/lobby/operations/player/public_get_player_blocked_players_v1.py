@@ -31,10 +31,8 @@ from ...models import RestapiErrorResponseBody
 class PublicGetPlayerBlockedPlayersV1(Operation):
     """get blocked players by user id (publicGetPlayerBlockedPlayersV1)
 
-    Required valid user authorization
-
-    load blocked players in a namespace based on user id
-    Action Code: 50101
+    Required valid user authorization <br/> <br>load blocked players in a
+    namespace based on user id <br/> Action Code: 50101
 
 
     Properties:

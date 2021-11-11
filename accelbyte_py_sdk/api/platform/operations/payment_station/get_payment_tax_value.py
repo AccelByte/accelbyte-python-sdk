@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,10 +31,8 @@ from ...models import TaxResult
 class GetPaymentTaxValue(Operation):
     """get tax result of a payment order (getPaymentTaxValue)
 
-    Check and get a payment order's should pay tax.
-    Other detail info:
-
-      * Returns : tax result
+    Check and get a payment order's should pay tax.<br>Other detail info:
+    <ul><li><i>Returns</i>: tax result</li></ul>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,9 @@ from ...models import ErrorEntity
 class GetCampaign(Operation):
     """Get campaign (getCampaign)
 
-    Get campaign info.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)
-      *  Returns : campaign info
+    Get campaign info.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2
+    (READ)</li><li><i>Returns</i>: campaign info</li></ul>
 
 
     Properties:

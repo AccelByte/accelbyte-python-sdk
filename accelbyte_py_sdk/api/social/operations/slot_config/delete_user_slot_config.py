@@ -1,4 +1,4 @@
-# justice-social-service (1.18.1)
+# justice-social-service (1.21.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -29,10 +29,10 @@ class DeleteUserSlotConfig(Operation):
     """Deletes a user slot configuration (deleteUserSlotConfig)
 
     Deletes a user slot configuration in given namespace, the namespace slot
-    configuration will be returned after delete.
-    Other detail info:
-
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG", action=8 (DELETE)
+    configuration will be returned after delete.<br>Other detail
+    info:<ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG", action=8
+    (DELETE)</li></li>
 
 
     Properties:

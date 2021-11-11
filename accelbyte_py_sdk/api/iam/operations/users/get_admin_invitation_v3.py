@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -24,15 +24,15 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
-from ...models import ModelAdminInvitationV3
+from ...models import ModelUserInvitationV3
 from ...models import RestErrorResponse
 
 
 class GetAdminInvitationV3(Operation):
-    """Get User Admin Invitation (GetAdminInvitationV3)
+    """Get User Invitation (GetAdminInvitationV3)
 
-    Endpoint to validate user admin invitation. When not found, it could also
-    means the invitation has expired.
+    Endpoint to validate user invitation. When not found, it could also means the
+    invitation has expired.
 
 
     Properties:
@@ -53,7 +53,7 @@ class GetAdminInvitationV3(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelAdminInvitationV3 (OK)
+        200: OK - ModelUserInvitationV3 (OK)
 
         404: Not Found - RestErrorResponse (10180: admin invitation not found or expired)
 
@@ -183,17 +183,17 @@ class GetAdminInvitationV3(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelAdminInvitationV3], Union[None, RestErrorResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelUserInvitationV3], Union[None, RestErrorResponse]]:
         """Parse the given response.
 
-        200: OK - ModelAdminInvitationV3 (OK)
+        200: OK - ModelUserInvitationV3 (OK)
 
         404: Not Found - RestErrorResponse (10180: admin invitation not found or expired)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
         """
         if code == 200:
-            return ModelAdminInvitationV3.create_from_dict(content), None
+            return ModelUserInvitationV3.create_from_dict(content), None
         if code == 404:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 500:

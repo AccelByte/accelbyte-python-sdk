@@ -31,9 +31,8 @@ from ...models import RestapiErrorResponseBody
 class AdminSetProfanityRuleForNamespace(Operation):
     """set current profanity rule (adminSetProfanityRuleForNamespace)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [UPDATE]` with
-    scope `social`
-    set current profanity rule
+    Required permission : <code>ADMIN:NAMESPACE:{namespace}:PROFANITY
+    [UPDATE]</code> with scope <code>social</code> <br>set current profanity rule
 
 
     Properties:

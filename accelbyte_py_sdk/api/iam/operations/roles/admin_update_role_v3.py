@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,8 +32,7 @@ from ...models import RestapiErrorResponse
 class AdminUpdateRoleV3(Operation):
     """Update Role (AdminUpdateRoleV3)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'
-    action code: 10402
+    Required permission 'ADMIN:ROLE [UPDATE]' <br>action code: 10402
 
 
     Properties:

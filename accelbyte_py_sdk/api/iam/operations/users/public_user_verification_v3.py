@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,14 +31,9 @@ from ...models import RestErrorResponse
 class PublicUserVerificationV3(Operation):
     """Redeem verification code sent to user (PublicUserVerificationV3)
 
-    Required valid user authorization
-
-    Redeems a verification code sent to a user to verify the user's contact
-    address is correct
-
-    Available ContactType : email
-
-    action code: 10107
+    <p>Required valid user authorization</p> <p>Redeems a verification code sent
+    to a user to verify the user's contact address is correct</p> <p>Available
+    ContactType : <b>email</b></p> <p>action code: 10107</p>
 
 
     Properties:

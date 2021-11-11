@@ -28,6 +28,7 @@ from ..models import FulfillmentResult
 from ..operations.fulfillment import FulfillItem
 from ..operations.fulfillment import PublicRedeemCode
 from ..operations.fulfillment import QueryFulfillmentHistories
+from ..operations.fulfillment import RedeemCode
 
 
 @same_doc_as(FulfillItem)
@@ -69,6 +70,20 @@ def query_fulfillment_histories(limit: Optional[int] = None, offset: Optional[in
         offset=offset,
         status=status,
         user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(RedeemCode)
+def redeem_code(user_id: str, body: Optional[FulfillCodeRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RedeemCode.create(
+        user_id=user_id,
+        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

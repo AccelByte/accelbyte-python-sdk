@@ -31,9 +31,8 @@ from ...models import RestapiErrorResponseV1
 class GetAllNotificationTopicsV1Admin(Operation):
     """get topic by namespace (getAllNotificationTopicsV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with
-    scope `social`
-    get topic by namespace.
+    Required permission : <code>ADMIN:NAMESPACE:{namespace}:NOTIFICATION
+    [READ]</code> with scope <code>social</code> <br>get topic by namespace.<br/>
     Action Code: 50213
 
 

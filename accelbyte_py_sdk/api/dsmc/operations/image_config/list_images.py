@@ -1,4 +1,4 @@
-# justice-dsm-controller-service (2.6.0)
+# justice-dsm-controller-service (2.8.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -56,6 +56,10 @@ class ListImages(Operation):
 
         q: (q) OPTIONAL str in query
 
+        sort_by: (sortBy) OPTIONAL str in query
+
+        sort_direction: (sortDirection) OPTIONAL str in query
+
     Responses:
         200: OK - ModelsListImageResponse (configs listed)
 
@@ -79,6 +83,8 @@ class ListImages(Operation):
     count: int                                                                                     # OPTIONAL in [query]
     offset: int                                                                                    # OPTIONAL in [query]
     q: str                                                                                         # OPTIONAL in [query]
+    sort_by: str                                                                                   # OPTIONAL in [query]
+    sort_direction: str                                                                            # OPTIONAL in [query]
 
     # endregion fields
 
@@ -156,6 +162,10 @@ class ListImages(Operation):
             result["offset"] = self.offset
         if hasattr(self, "q"):
             result["q"] = self.q
+        if hasattr(self, "sort_by"):
+            result["sortBy"] = self.sort_by
+        if hasattr(self, "sort_direction"):
+            result["sortDirection"] = self.sort_direction
         return result
 
     # endregion get_x_params methods
@@ -187,6 +197,14 @@ class ListImages(Operation):
         self.q = value
         return self
 
+    def with_sort_by(self, value: str) -> ListImages:
+        self.sort_by = value
+        return self
+
+    def with_sort_direction(self, value: str) -> ListImages:
+        self.sort_direction = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -209,6 +227,14 @@ class ListImages(Operation):
             result["q"] = str(self.q)
         elif include_empty:
             result["q"] = str()
+        if hasattr(self, "sort_by") and self.sort_by:
+            result["sortBy"] = str(self.sort_by)
+        elif include_empty:
+            result["sortBy"] = str()
+        if hasattr(self, "sort_direction") and self.sort_direction:
+            result["sortDirection"] = str(self.sort_direction)
+        elif include_empty:
+            result["sortDirection"] = str()
         return result
 
     # endregion to methods
@@ -251,6 +277,8 @@ class ListImages(Operation):
         count: Optional[int] = None,
         offset: Optional[int] = None,
         q: Optional[str] = None,
+        sort_by: Optional[str] = None,
+        sort_direction: Optional[str] = None,
     ) -> ListImages:
         instance = cls()
         instance.namespace = namespace
@@ -260,6 +288,10 @@ class ListImages(Operation):
             instance.offset = offset
         if q is not None:
             instance.q = q
+        if sort_by is not None:
+            instance.sort_by = sort_by
+        if sort_direction is not None:
+            instance.sort_direction = sort_direction
         return instance
 
     @classmethod
@@ -281,6 +313,14 @@ class ListImages(Operation):
             instance.q = str(dict_["q"])
         elif include_empty:
             instance.q = str()
+        if "sortBy" in dict_ and dict_["sortBy"] is not None:
+            instance.sort_by = str(dict_["sortBy"])
+        elif include_empty:
+            instance.sort_by = str()
+        if "sortDirection" in dict_ and dict_["sortDirection"] is not None:
+            instance.sort_direction = str(dict_["sortDirection"])
+        elif include_empty:
+            instance.sort_direction = str()
         return instance
 
     @staticmethod
@@ -290,6 +330,8 @@ class ListImages(Operation):
             "count": "count",
             "offset": "offset",
             "q": "q",
+            "sortBy": "sort_by",
+            "sortDirection": "sort_direction",
         }
 
     # endregion static methods

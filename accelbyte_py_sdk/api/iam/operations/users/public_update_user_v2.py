@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,14 +31,10 @@ from ...models import ModelUserUpdateRequest
 class PublicUpdateUserV2(Operation):
     """Update User (PublicUpdateUserV2)
 
-
-
-    This Endpoint support update user based on given data. Single request can
-    update single field or multi fields.
-
-    This endpoint require valid user access token to accessed.
-
-    Supported field {Country, DisplayName, LanguageTag}
+    <br><p>This Endpoint support update user based on given data. <b>Single
+    request can update single field or multi fields.</b></p> This endpoint require
+    valid user access token to accessed. <p>Supported field {Country, DisplayName,
+    LanguageTag}</p>
 
 
     Properties:

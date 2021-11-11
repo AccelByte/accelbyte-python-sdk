@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,11 +33,9 @@ from ...models import ValidationErrorEntity
 class UpdateUserOrderStatus(Operation):
     """Update order status (updateUserOrderStatus)
 
-    Update order status.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
-      *  Returns : updated order
+    Update order status.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4
+    (UPDATE)</li><li><i>Returns</i>: updated order</li></ul>
 
 
     Properties:

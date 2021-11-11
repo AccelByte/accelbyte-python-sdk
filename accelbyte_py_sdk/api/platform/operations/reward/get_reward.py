@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,10 @@ from ...models import RewardInfo
 class GetReward(Operation):
     """Get a reward (getReward)
 
-    This API is used to get reward by reward Id.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
-      *  Returns : reward instance
+    This API is used to get reward by reward Id.<br>Other detail info:
+    <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2
+    (READ)</li><li><i>Returns</i>: reward instance</li></ul>
 
 
     Properties:

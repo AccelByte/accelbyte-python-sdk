@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,8 @@ from ...models import ResponseErrorResponse
 class GetMemberRolesListPublicV1(Operation):
     """get all list of member roles (getMemberRolesListPublicV1)
 
-    Required Member Role Permission: "GROUP:ROLE [READ]"
-
-    This endpoint is used to get list of member roles
-
-    Action Code: 73201
+    <p>Required Member Role Permission: "GROUP:ROLE [READ]"</p> <p>This endpoint
+    is used to get list of member roles</p> <p>Action Code: 73201</p>
 
 
     Properties:

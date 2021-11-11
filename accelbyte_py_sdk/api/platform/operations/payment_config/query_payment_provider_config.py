@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,11 +30,9 @@ from ...models import PaymentProviderConfigPagingSlicedResult
 class QueryPaymentProviderConfig(Operation):
     """Query payment provider config (queryPaymentProviderConfig)
 
-    Query payment provider config.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : payment provider config list
+    Query payment provider config.<br>Other detail info: <ul><li><i>Required
+    permission</i>: resource="ADMIN:PAYMENT:CONFIG", action=2
+    (READ)</li><li><i>Returns</i>: payment provider config list</li></ul>
 
 
     Properties:

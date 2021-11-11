@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,21 +31,14 @@ from ...models import ResponseErrorResponse
 class InitiateGroupConfigurationAdminV1(Operation):
     """initiate configuration (initiateGroupConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [CREATE]'
-
-    This endpoint is used to initiate configuration. This endpoint will
-    automatically create default configuration and member roles with default
-    permission
-
-    Default Permission for admin role will cover these permission:
-
-      * Permission to invite user to group
-      * Permission to accept or reject join request
-      * Permission to kick group member
-
-    Default max member value will be 50 and global rules will be empty
-
-    Action Code: 73104
+    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION
+    [CREATE]'</p> <p>This endpoint is used to initiate configuration. This
+    endpoint will automatically create default configuration and member roles with
+    default permission</p> <p>Default Permission for admin role will cover these
+    permission: </p> <ul> <li>Permission to invite user to group</li>
+    <li>Permission to accept or reject join request</li> <li>Permission to kick
+    group member</li> </ul> <p>Default max member value will be 50 and global
+    rules will be empty</p> <p>Action Code: 73104</p>
 
 
     Properties:

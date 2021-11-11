@@ -1,6 +1,6 @@
 """Auto-generated package that contains utility functions for the justice-platform-service."""
 
-__version__ = "3.34.0"
+__version__ = "3.37.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -65,8 +65,10 @@ from ._entitlement import get_user_app_entitlement_by_app_id
 from ._entitlement import get_user_app_entitlement_ownership_by_app_id
 from ._entitlement import get_user_distribution_receivers
 from ._entitlement import get_user_entitlement
+from ._entitlement import get_user_entitlement_by_item_id
 from ._entitlement import get_user_entitlement_by_sku
 from ._entitlement import get_user_entitlement_histories
+from ._entitlement import get_user_entitlement_ownership_by_item_id
 from ._entitlement import get_user_entitlement_ownership_by_sku
 from ._entitlement import grant_user_entitlement
 from ._entitlement import public_consume_user_entitlement
@@ -77,12 +79,15 @@ from ._entitlement import public_exists_any_my_active_entitlement
 from ._entitlement import public_exists_any_user_active_entitlement
 from ._entitlement import public_get_entitlement_ownership_token
 from ._entitlement import public_get_my_app_entitlement_ownership_by_app_id
+from ._entitlement import public_get_my_entitlement_ownership_by_item_id
 from ._entitlement import public_get_my_entitlement_ownership_by_sku
 from ._entitlement import public_get_user_app_entitlement_by_app_id
 from ._entitlement import public_get_user_app_entitlement_ownership_by_app_id
 from ._entitlement import public_get_user_distribution_receivers
 from ._entitlement import public_get_user_entitlement
+from ._entitlement import public_get_user_entitlement_by_item_id
 from ._entitlement import public_get_user_entitlement_by_sku
+from ._entitlement import public_get_user_entitlement_ownership_by_item_id
 from ._entitlement import public_get_user_entitlement_ownership_by_sku
 from ._entitlement import public_query_user_entitlements
 from ._entitlement import public_query_user_entitlements_by_app_type
@@ -98,6 +103,14 @@ from ._entitlement import update_user_entitlement
 from ._fulfillment import fulfill_item
 from ._fulfillment import public_redeem_code
 from ._fulfillment import query_fulfillment_histories
+from ._fulfillment import redeem_code
+
+from ._fulfillment_script import create_fulfillment_script
+from ._fulfillment_script import delete_fulfillment_script
+from ._fulfillment_script import get_fulfillment_script
+from ._fulfillment_script import list_fulfillment_scripts
+from ._fulfillment_script import test_fulfillment_script_eval
+from ._fulfillment_script import update_fulfillment_script
 
 from ._iap import delete_apple_iap_config
 from ._iap import delete_epic_games_iap_config

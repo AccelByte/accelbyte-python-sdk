@@ -1,4 +1,4 @@
-# justice-social-service (1.18.1)
+# justice-social-service (1.21.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,10 @@ from ...models import GameProfileInfo
 class GetProfile(Operation):
     """Returns profile for a user (getProfile)
 
-    Returns profile for a user.
-    Other detail info:
-
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=2 (READ)
-      *  Returns : game profile info
+    Returns profile for a user.<br>Other detail info:<ul><li><i>Required
+    permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=2
+    (READ)</li><li><i>Returns</i>: game profile info</li></ul>
 
 
     Properties:

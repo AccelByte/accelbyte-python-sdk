@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -28,14 +28,11 @@ from .....core import HttpResponse
 class UserAuthenticationV3(Operation):
     """Authentication API (UserAuthenticationV3)
 
-    This endpoint is being used to authenticate a user account. It validates
+    <p>This endpoint is being used to authenticate a user account. It validates
     user's email / username and password. Deactivated or login-banned users are
     unable to login Redirect URI and Client ID must be specified as a pair and
     only used to redirect to the specified redirect URI in case the requestId is
-    no longer valid.
-
-
-    action code: 10801
+    no longer valid.</p> <br>action code: 10801
 
 
     Properties:

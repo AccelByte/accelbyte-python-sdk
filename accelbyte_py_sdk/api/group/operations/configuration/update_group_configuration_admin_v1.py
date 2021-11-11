@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,13 +32,11 @@ from ...models import ResponseErrorResponse
 class UpdateGroupConfigurationAdminV1(Operation):
     """update existing configuration (updateGroupConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]'
-
-    This endpoint is used to update existing configuration. groupAdminRoleId and
-    groupMemberRoleId won't be able to be updated. User can try to change the
-    member role permission instead for each of those member role
-
-    Action Code: 73102
+    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION
+    [UPDATE]'</p> <p>This endpoint is used to update existing configuration.
+    groupAdminRoleId and groupMemberRoleId won't be able to be updated. User can
+    try to change the member role permission instead for each of those member
+    role</p> <p>Action Code: 73102</p>
 
 
     Properties:

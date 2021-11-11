@@ -19,7 +19,7 @@ from .wrappers import admin_update_config_v1
 # friends
 from .wrappers import add_friends_without_confirmation
 from .wrappers import get_list_of_friends
-from .wrappers import get_user_friends
+from .wrappers import get_user_friends_updated
 from .wrappers import get_user_incoming_friends
 from .wrappers import get_user_outgoing_friends
 from .wrappers import user_accept_friend_request
@@ -44,11 +44,9 @@ from .wrappers import free_form_notification
 from .wrappers import free_form_notification_by_user_id
 from .wrappers import get_all_notification_templates_v1_admin
 from .wrappers import get_all_notification_topics_v1_admin
-from .wrappers import get_all_stored_notifications_v1
 from .wrappers import get_game_template
 from .wrappers import get_localization_template
 from .wrappers import get_notification_topic_v1_admin
-from .wrappers import get_notifications
 from .wrappers import get_single_template_localization_v1_admin
 from .wrappers import get_slug_template
 from .wrappers import get_template_slug_localizations_template_v1_admin
@@ -59,6 +57,8 @@ from .wrappers import notification_with_template_by_user_id
 from .wrappers import publish_template
 from .wrappers import publish_template_localization_v1_admin
 from .wrappers import send_multiple_users_freeform_notification_v1_admin
+from .wrappers import send_party_freeform_notification_v1_admin
+from .wrappers import send_party_templated_notification_v1_admin
 from .wrappers import send_specific_user_freeform_notification_v1_admin
 from .wrappers import send_specific_user_templated_notification_v1_admin
 from .wrappers import send_users_freeform_notification_v1_admin
@@ -69,13 +69,12 @@ from .wrappers import update_template_localization_v1_admin
 from .wrappers import update_topic_by_topic_name
 
 # operations
+from .wrappers import admin_update_party_attributes_v1
 from .wrappers import public_get_messages
 
 # party
-from .wrappers import admin_get_parties_data_v1
 from .wrappers import admin_get_party_data_v1
 from .wrappers import admin_get_user_party_v1
-from .wrappers import admin_update_party_attributes_v1
 from .wrappers import public_get_party_data_v1
 from .wrappers import public_update_party_attributes_v1
 

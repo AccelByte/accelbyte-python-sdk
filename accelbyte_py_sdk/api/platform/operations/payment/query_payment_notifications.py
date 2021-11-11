@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,11 +30,9 @@ from ...models import PaymentNotificationPagingSlicedResult
 class QueryPaymentNotifications(Operation):
     """Query payment notifications (queryPaymentNotifications)
 
-    Query payment notifications.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:NOTIFICATION", action=2 (READ)
-      *  Returns : Payment notifications
+    Query payment notifications.<br>Other detail info: <ul><li><i>Required
+    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:NOTIFICATION",
+    action=2 (READ)</li><li><i>Returns</i>: Payment notifications</li></ul>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,10 @@ from ...models import ErrorEntity
 class GetUserAppEntitlementByAppId(Operation):
     """Get user app entitlement by appId (getUserAppEntitlementByAppId)
 
-    Get user app entitlement by appId.
-
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+    Get user app entitlement by appId.<p>Other detail info: <ul><li><i>Required
+    permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2
+    (READ)</li></ul>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -28,10 +28,9 @@ from .....core import HttpResponse
 class DeletePlaystationIAPConfig(Operation):
     """Delete playstation iap config (deletePlaystationIAPConfig)
 
-    Delete playstation iap config.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)
+    Delete playstation iap config.<br>Other detail info: <ul><li><i>Required
+    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8
+    (DELETE)</li></ul>
 
 
     Properties:

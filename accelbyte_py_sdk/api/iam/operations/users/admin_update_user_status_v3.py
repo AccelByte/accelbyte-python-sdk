@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,19 +32,12 @@ class AdminUpdateUserStatusV3(Operation):
     """Update user status (AdminUpdateUserStatusV3)
 
     Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId}
-    [UPDATE]'
-
-    This endpoint disable or enable user account. Set the enable status on the
-    request body to true to enable user account or set to false to disable it.
-
-    Disable user for Account Disable purpose fill the reason with:
-
-      * AdminDeactivateAccount : if your disable account request comes from admin
-
-    Enable user ignore field 'reason' in the request body.
-
-
-    action code : 10143
+    [UPDATE]' <p>This endpoint disable or enable user account. Set the enable
+    status on the request body to true to enable user account or set to false to
+    disable it. </p> <p>Disable user for <strong>Account Disable </strong> purpose
+    fill the reason with:</p> <ul> <li><strong>AdminDeactivateAccount</strong> :
+    if your disable account request comes from admin</li> </ul> <p>Enable user
+    ignore field 'reason' in the request body. </p> <br>action code : 10143
 
 
     Properties:

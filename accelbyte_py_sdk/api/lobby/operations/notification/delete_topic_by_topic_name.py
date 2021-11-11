@@ -30,11 +30,11 @@ from ...models import RestapiErrorResponseBody
 class DeleteTopicByTopicName(Operation):
     """delete topic information by topic name (deleteTopicByTopicName)
 
-    Required permission : `NAMESPACE:{namespace}:TOPIC [DELETE]` with scope
-    `social`
-    delete topic information by topic name.
-    topic should be alphabets, no special char except underscore, uppercase and no
-    spacing. for example: TOPIC_TEST. Already existing topic can not be created
+    Required permission : <code>NAMESPACE:{namespace}:TOPIC [DELETE]</code> with
+    scope <code>social</code> <br>delete topic information by topic name.
+    <br>topic should be alphabets, no special char except underscore, uppercase
+    and no spacing. for example: TOPIC_TEST. Already existing topic can not be
+    created
 
 
     Properties:

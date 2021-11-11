@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,15 +31,9 @@ from ...models import RestErrorResponse
 class PublicUpdateUserEmailAddressV4(Operation):
     """Update My Email Address (PublicUpdateUserEmailAddressV4)
 
-    The endpoint to update my email address.
-
-    It requires a verification code from
-
-
-
-        /users/me/code/request
-
-    with UpdateEmailAddress context.
+    <p>The endpoint to update my email address. </p> <p>It requires a verification
+    code from <pre>/users/me/code/request</pre> with <b>UpdateEmailAddress</b>
+    context.</p>
 
 
     Properties:

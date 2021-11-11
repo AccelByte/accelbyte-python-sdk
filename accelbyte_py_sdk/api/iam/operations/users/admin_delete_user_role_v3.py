@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,10 +30,9 @@ from ...models import RestErrorResponse
 class AdminDeleteUserRoleV3(Operation):
     """Delete User Role (AdminDeleteUserRoleV3)
 
-    This endpoint removes role from user. Required permission
-    ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]
-
-    action code: 10110
+    <p>This endpoint removes role from user. Required permission
+    ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]</p> <p>action code:
+    10110</p>
 
 
     Properties:

@@ -1,6 +1,6 @@
 """Auto-generated package that contains models used by the justice-iam-service."""
 
-__version__ = "4.4.1"
+__version__ = "4.7.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -29,7 +29,6 @@ from .accountcommon_client_permissions_v3 import AccountcommonClientPermissionsV
 from .accountcommon_conflicted_user_platform_accounts import AccountcommonConflictedUserPlatformAccounts
 from .accountcommon_country_age_restriction import AccountcommonCountryAgeRestriction
 from .accountcommon_description import AccountcommonDescription
-from .accountcommon_jwt_ban import AccountcommonJWTBan
 from .accountcommon_jwt_ban_v3 import AccountcommonJWTBanV3
 from .accountcommon_list_users_with_platform_accounts_response import AccountcommonListUsersWithPlatformAccountsResponse
 from .accountcommon_namespace_role import AccountcommonNamespaceRole
@@ -68,7 +67,6 @@ from .clientmodel_client_v3_response import ClientmodelClientV3Response
 from .clientmodel_clients_v3_response import ClientmodelClientsV3Response
 from .legal_accepted_policies_request import LegalAcceptedPoliciesRequest
 from .model_add_user_role_v4_request import ModelAddUserRoleV4Request
-from .model_admin_invitation_v3 import ModelAdminInvitationV3
 from .model_age_restriction_request import ModelAgeRestrictionRequest
 from .model_age_restriction_request_v3 import ModelAgeRestrictionRequestV3
 from .model_age_restriction_response import ModelAgeRestrictionResponse
@@ -91,8 +89,8 @@ from .model_get_user_ban_v3_response import ModelGetUserBanV3Response
 from .model_get_user_justice_platform_account_response import ModelGetUserJusticePlatformAccountResponse
 from .model_get_user_mapping import ModelGetUserMapping
 from .model_get_users_response_with_pagination_v3 import ModelGetUsersResponseWithPaginationV3
-from .model_invite_admin_request_v3 import ModelInviteAdminRequestV3
-from .model_invite_admin_response_v3 import ModelInviteAdminResponseV3
+from .model_invite_user_request_v3 import ModelInviteUserRequestV3
+from .model_invite_user_response_v3 import ModelInviteUserResponseV3
 from .model_link_platform_account_request import ModelLinkPlatformAccountRequest
 from .model_link_request import ModelLinkRequest
 from .model_list_assigned_users_v4_response import ModelListAssignedUsersV4Response
@@ -166,6 +164,7 @@ from .model_user_create_response import ModelUserCreateResponse
 from .model_user_create_response_v3 import ModelUserCreateResponseV3
 from .model_user_deletion_status_response import ModelUserDeletionStatusResponse
 from .model_user_information import ModelUserInformation
+from .model_user_invitation_v3 import ModelUserInvitationV3
 from .model_user_login_history_response import ModelUserLoginHistoryResponse
 from .model_user_password_update_request import ModelUserPasswordUpdateRequest
 from .model_user_password_update_v3_request import ModelUserPasswordUpdateV3Request

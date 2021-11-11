@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,11 +33,9 @@ from ...models import ValidationErrorEntity
 class CreateCampaign(Operation):
     """Create campaign (createCampaign)
 
-    Create campaign.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=1 (CREATE)
-      *  Returns : created campaign
+    Create campaign.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=1
+    (CREATE)</li><li><i>Returns</i>: created campaign</li></ul>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,11 +30,10 @@ from ...models import BulkOperationResult
 class RevokeUserEntitlements(Operation):
     """Revoke user's entitlements by ids (revokeUserEntitlements)
 
-    Revoke user's entitlements by ids.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
-      *  Returns : revoke entitlements count
+    Revoke user's entitlements by ids.<br>Other detail info: <ul><li><i>Required
+    permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4
+    (UPDATE)</li><li><i>Returns</i>: revoke entitlements count</li></ul>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,10 +31,9 @@ from ...models import RestErrorResponse
 class AdminLinkPlatformAccount(Operation):
     """Link a Platform User Account to User Account (AdminLinkPlatformAccount)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
-    Force linking platform account to user User Account. This endpoint intended
-    for admin to forcefully link account to user.
+    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId}
+    [UPDATE]'</p> Force linking platform account to user User Account. This
+    endpoint intended for admin to forcefully link account to user.
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,7 +30,7 @@ from ...models import RestErrorResponse
 
 
 class CreateUserFromInvitationV3(Operation):
-    """Create User Admin From Invitation (CreateUserFromInvitationV3)
+    """Create User From Invitation (CreateUserFromInvitationV3)
 
     This endpoint create user from saved roles when creating invitation and
     submitted data. User will be able to login after completing submitting the

@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,59 +33,24 @@ from ...models import ValidationErrorEntity
 class UpdateApp(Operation):
     """Update an app (updateApp)
 
-    This API is used to update an app.
-
-    An app update example:
-
-
-
-        {
-          "developer": "accelbyte",
-          "publisher": "accelbyte",
-          "websiteUrl": "http://accelbyte.io",
-          "forumUrl": "http://accelbyte.io",
-          "platforms": ["Windows(allowed values: Windows, MacOS, Linux, IOS, Android)"],
-          "platformRequirements": {
-            "Windows": [
-              {
-                "label":"minimum(can be minimum or recommended)",
-                "osVersion":"os version",
-                "processor":"processor",
-                "ram":"RAM",
-                "graphics":"graphics",
-                "directXVersion":"directXVersion",
-                "diskSpace":"diskSpace",
-                "soundCard":"soundCard",
-                "additionals":"additionals"
-              }
-             ]
-          },
-          "carousel": [
-            {
-              "type":"image(allowed values: image, video)",
-              "videoSource":"generic(allowed values:generic, youtube, viemo)",
-              "url":"url",
-              "alt":"alternative url or text",
-              "thumbnailUrl":"thumbnail url",
-              "previewUrl":"preview url",
-            }
-          ],
-          "localizations": {
-            "en": {
-              "slogan":"slogan",
-              "announcement":"announcement",
-            }
-          },
-          "primaryGenre": "Action",
-          "genres": ["Action", "Adventure"],
-          "players": ["Single"],
-          "releaseDate": "optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        }
-
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
-      *  Returns : updated app data
+    This API is used to update an app.<p>An app update example:<p><pre><code>{
+    "developer": "accelbyte", "publisher": "accelbyte", "websiteUrl":
+    "http://accelbyte.io", "forumUrl": "http://accelbyte.io", "platforms":
+    ["Windows(allowed values: Windows, MacOS, Linux, IOS, Android)"],
+    "platformRequirements": { "Windows": [ { "label":"minimum(can be minimum
+    or recommended)", "osVersion":"os version", "processor":"processor",
+    "ram":"RAM", "graphics":"graphics", "directXVersion":"directXVersion",
+    "diskSpace":"diskSpace", "soundCard":"soundCard", "additionals":"additionals"
+    } ] }, "carousel": [ { "type":"image(allowed values: image, video)",
+    "videoSource":"generic(allowed values:generic, youtube, viemo)", "url":"url",
+    "alt":"alternative url or text", "thumbnailUrl":"thumbnail url",
+    "previewUrl":"preview url", } ], "localizations": { "en": {
+    "slogan":"slogan", "announcement":"announcement", } }, "primaryGenre":
+    "Action", "genres": ["Action", "Adventure"], "players": ["Single"],
+    "releaseDate": "optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" }</code></pre>Other
+    detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4
+    (UPDATE)</li><li><i>Returns</i>: updated app data</li></ul>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,21 +33,12 @@ from ...models import ValidationErrorEntity
 class UpdateCategory(Operation):
     """Update category (updateCategory)
 
-    This API is used to update category.
-
-    The category update data is a category object, example as:
-
-
-
-        {
-            "storeId": "store-id",
-            "localizationDisplayNames": {"en" : "Games"}
-        }
-
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=4 (UPDATE)
-      *  Returns : the updated category data
+    This API is used to update category. <p> The category update data is a
+    category object, example as:<pre><code>{ "storeId": "store-id",
+    "localizationDisplayNames": {"en" : "Games"} }</code></pre>Other detail info:
+    <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=4
+    (UPDATE)</li><li><i>Returns</i>: the updated category data</li></ul>
 
 
     Properties:
@@ -74,11 +65,11 @@ class UpdateCategory(Operation):
     Responses:
         200: OK - FullCategoryInfo (successful operation)
 
-        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+        400: Bad Request - ErrorEntity (30021: Default language [{language}] required)
 
         404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}])
 
-        400: Bad Request - ErrorEntity (30021: Default language [{language}] required)
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -246,21 +237,21 @@ class UpdateCategory(Operation):
 
         200: OK - FullCategoryInfo (successful operation)
 
-        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+        400: Bad Request - ErrorEntity (30021: Default language [{language}] required)
 
         404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}])
 
-        400: Bad Request - ErrorEntity (30021: Default language [{language}] required)
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return FullCategoryInfo.create_from_dict(content), None
-        if code == 409:
+        if code == 400:
             return None, ErrorEntity.create_from_dict(content)
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
-        if code == 400:
+        if code == 409:
             return None, ErrorEntity.create_from_dict(content)
         if code == 422:
             return None, ValidationErrorEntity.create_from_dict(content)

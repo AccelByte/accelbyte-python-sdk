@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -23,6 +23,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.order_summary import OrderSummary
+
 
 class FulfillmentRequest(Model):
     """A DTO object for fulfillment request API call. (FulfillmentRequest)
@@ -37,6 +39,8 @@ class FulfillmentRequest(Model):
         item_sku: (itemSku) OPTIONAL str
 
         language: (language) OPTIONAL str
+
+        order: (order) OPTIONAL OrderSummary
 
         order_no: (orderNo) OPTIONAL str
 
@@ -56,6 +60,7 @@ class FulfillmentRequest(Model):
     item_id: str                                                                                   # OPTIONAL
     item_sku: str                                                                                  # OPTIONAL
     language: str                                                                                  # OPTIONAL
+    order: OrderSummary                                                                            # OPTIONAL
     order_no: str                                                                                  # OPTIONAL
     region: str                                                                                    # OPTIONAL
     source: str                                                                                    # OPTIONAL
@@ -84,6 +89,10 @@ class FulfillmentRequest(Model):
 
     def with_language(self, value: str) -> FulfillmentRequest:
         self.language = value
+        return self
+
+    def with_order(self, value: OrderSummary) -> FulfillmentRequest:
+        self.order = value
         return self
 
     def with_order_no(self, value: str) -> FulfillmentRequest:
@@ -132,6 +141,10 @@ class FulfillmentRequest(Model):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = str()
+        if hasattr(self, "order"):
+            result["order"] = self.order.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["order"] = OrderSummary()
         if hasattr(self, "order_no"):
             result["orderNo"] = str(self.order_no)
         elif include_empty:
@@ -166,6 +179,7 @@ class FulfillmentRequest(Model):
         item_id: Optional[str] = None,
         item_sku: Optional[str] = None,
         language: Optional[str] = None,
+        order: Optional[OrderSummary] = None,
         order_no: Optional[str] = None,
         region: Optional[str] = None,
         source: Optional[str] = None,
@@ -182,6 +196,8 @@ class FulfillmentRequest(Model):
             instance.item_sku = item_sku
         if language is not None:
             instance.language = language
+        if order is not None:
+            instance.order = order
         if order_no is not None:
             instance.order_no = order_no
         if region is not None:
@@ -219,6 +235,10 @@ class FulfillmentRequest(Model):
             instance.language = str(dict_["language"])
         elif include_empty:
             instance.language = str()
+        if "order" in dict_ and dict_["order"] is not None:
+            instance.order = OrderSummary.create_from_dict(dict_["order"], include_empty=include_empty)
+        elif include_empty:
+            instance.order = OrderSummary()
         if "orderNo" in dict_ and dict_["orderNo"] is not None:
             instance.order_no = str(dict_["orderNo"])
         elif include_empty:
@@ -249,6 +269,7 @@ class FulfillmentRequest(Model):
             "itemId": "item_id",
             "itemSku": "item_sku",
             "language": "language",
+            "order": "order",
             "orderNo": "order_no",
             "region": "region",
             "source": "source",

@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,11 +33,10 @@ from ...models import ValidationErrorEntity
 class AcquireUserTicket(Operation):
     """Acquire ticket (acquireUserTicket)
 
-    [SERVICE COMMUNICATION ONLY] Acquire ticket(code/key) based on booth name.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:TICKET", action=1 (CREATE)
-      *  Returns : acquire result
+    <b>[SERVICE COMMUNICATION ONLY]</b> Acquire ticket(code/key) based on booth
+    name.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:TICKET", action=1
+    (CREATE)</li><li><i>Returns</i>: acquire result</li></ul>
 
 
     Properties:
@@ -64,11 +63,11 @@ class AcquireUserTicket(Operation):
     Responses:
         200: OK - TicketAcquireResult (successful operation)
 
-        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
-
         404: Not Found - ErrorEntity (37041: Ticket booth [{boothName}] does not exist in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (37071: Insufficient ticket in booth [{boothName}] in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -226,20 +225,20 @@ class AcquireUserTicket(Operation):
 
         200: OK - TicketAcquireResult (successful operation)
 
-        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
-
         404: Not Found - ErrorEntity (37041: Ticket booth [{boothName}] does not exist in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (37071: Insufficient ticket in booth [{boothName}] in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return TicketAcquireResult.create_from_dict(content), None
-        if code == 422:
-            return None, ValidationErrorEntity.create_from_dict(content)
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 409:
             return None, ErrorEntity.create_from_dict(content)
+        if code == 422:
+            return None, ValidationErrorEntity.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
             return None, undocumented_response

@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,9 +31,8 @@ from ...models import RestErrorResponse
 class AdminGetMyUserV3(Operation):
     """Get My User (AdminGetMyUserV3)
 
-    Require valid user authorization
-    Get my user data
-    action code : 10147
+    <p>Require valid user authorization<br>Get my user data<br>action code : 10147
+    </p>
 
 
     Properties:

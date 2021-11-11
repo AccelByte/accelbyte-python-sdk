@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,22 +33,12 @@ from ...models import ValidationErrorEntity
 class CreateCategory(Operation):
     """Create category (createCategory)
 
-    This API is used to create category.
-
-    A category is a path separated by "/". A category also has localized display
-    names. Example:
-
-
-
-        {
-            "categoryPath": "/games",
-            "localizationDisplayNames": {"en" : "Games"}
-        }
-
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=1 (CREATE)
-      *  Returns : created category data
+    This API is used to create category.<p>A category is a path separated by "/".
+    A category also has localized display names. Example:<p><pre><code>{
+    "categoryPath": "/games", "localizationDisplayNames": {"en" : "Games"}
+    }</code></pre>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=1
+    (CREATE)</li><li><i>Returns</i>: created category data</li></ul>
 
 
     Properties:
@@ -73,11 +63,11 @@ class CreateCategory(Operation):
     Responses:
         201: Created - FullCategoryInfo (successful operation)
 
-        409: Conflict - ErrorEntity (30271: Category [{categoryPath}] already exists in namespace [{namespace}] | 30173: Published store can't modify content)
+        400: Bad Request - ErrorEntity (30021: Default language [{language}] required)
 
         404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
 
-        400: Bad Request - ErrorEntity (30021: Default language [{language}] required)
+        409: Conflict - ErrorEntity (30271: Category [{categoryPath}] already exists in namespace [{namespace}] | 30173: Published store can't modify content)
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -231,21 +221,21 @@ class CreateCategory(Operation):
 
         201: Created - FullCategoryInfo (successful operation)
 
-        409: Conflict - ErrorEntity (30271: Category [{categoryPath}] already exists in namespace [{namespace}] | 30173: Published store can't modify content)
+        400: Bad Request - ErrorEntity (30021: Default language [{language}] required)
 
         404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
 
-        400: Bad Request - ErrorEntity (30021: Default language [{language}] required)
+        409: Conflict - ErrorEntity (30271: Category [{categoryPath}] already exists in namespace [{namespace}] | 30173: Published store can't modify content)
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 201:
             return FullCategoryInfo.create_from_dict(content), None
-        if code == 409:
+        if code == 400:
             return None, ErrorEntity.create_from_dict(content)
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
-        if code == 400:
+        if code == 409:
             return None, ErrorEntity.create_from_dict(content)
         if code == 422:
             return None, ValidationErrorEntity.create_from_dict(content)

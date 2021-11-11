@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,10 +31,8 @@ class GetPaymentCustomization(Operation):
     """Get payment provider customization (getPaymentCustomization)
 
     Get payment provider customization, at current only Adyen provide
-    customization.
-    Other detail info:
-
-      * Returns : customization
+    customization.<br>Other detail info: <ul><li><i>Returns</i>:
+    customization</li></ul>
 
 
     Properties:

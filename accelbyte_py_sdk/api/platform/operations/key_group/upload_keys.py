@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,12 +31,10 @@ from ...models import ErrorEntity
 class UploadKeys(Operation):
     """Upload keys to key group (uploadKeys)
 
-    This API is used to upload keys with csv format to a key group.
-
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=4 (UPDATE)
-      *  Returns : item data
+    This API is used to upload keys with csv format to a key group.<p>Other detail
+    info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=4
+    (UPDATE)</li><li><i>Returns</i>: item data</li></ul>
 
 
     Properties:
@@ -61,9 +59,9 @@ class UploadKeys(Operation):
     Responses:
         200: OK - BulkOperationResult (successful operation)
 
-        404: Not Found - ErrorEntity (37241: Key group [{keyGroupId}] does not exist in namespace [{namespace}])
-
         400: Bad Request - ErrorEntity (37221: Invalid key file)
+
+        404: Not Found - ErrorEntity (37241: Key group [{keyGroupId}] does not exist in namespace [{namespace}])
     """
 
     # region fields
@@ -210,15 +208,15 @@ class UploadKeys(Operation):
 
         200: OK - BulkOperationResult (successful operation)
 
-        404: Not Found - ErrorEntity (37241: Key group [{keyGroupId}] does not exist in namespace [{namespace}])
-
         400: Bad Request - ErrorEntity (37221: Invalid key file)
+
+        404: Not Found - ErrorEntity (37241: Key group [{keyGroupId}] does not exist in namespace [{namespace}])
         """
         if code == 200:
             return BulkOperationResult.create_from_dict(content), None
-        if code == 404:
-            return None, ErrorEntity.create_from_dict(content)
         if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:

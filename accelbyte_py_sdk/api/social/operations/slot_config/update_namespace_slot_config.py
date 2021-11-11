@@ -1,4 +1,4 @@
-# justice-social-service (1.18.1)
+# justice-social-service (1.21.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,10 @@ from ...models import SlotConfigUpdate
 class UpdateNamespaceSlotConfig(Operation):
     """Update a namespace slot configuration (updateNamespaceSlotConfig)
 
-    Update a slot namespace configuration.
-    Other detail info:
-
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:SLOTCONFIG", action=4 (UPDATE)
-      *  Returns : updated namespace slot config
+    Update a slot namespace configuration.<br>Other detail
+    info:<ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:SLOTCONFIG", action=4
+    (UPDATE)</li><li><i>Returns</i>: updated namespace slot config</li></ul>
 
 
     Properties:

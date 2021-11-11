@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,11 +30,11 @@ from ...models import BillingHistoryPagingSlicedResult
 class GetUserSubscriptionBillingHistories(Operation):
     """Get user subscription billing histories (getUserSubscriptionBillingHistories)
 
-    Get user subscription billing histories.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
-      *  Returns : paginated subscription billing history
+    Get user subscription billing histories.<br>Other detail info:
+    <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2
+    (READ)</li><li><i>Returns</i>: paginated subscription billing
+    history</li></ul>
 
 
     Properties:

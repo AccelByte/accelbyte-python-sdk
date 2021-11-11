@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,12 +31,9 @@ from ...models import FullItemInfo
 class GetItem(Operation):
     """Get an item (getItem)
 
-    This API is used to get an item.
-
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
-      *  Returns : item data
+    This API is used to get an item.<p>Other detail info: <ul><li><i>Required
+    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2
+    (READ)</li><li><i>Returns</i>: item data</li></ul>
 
 
     Properties:

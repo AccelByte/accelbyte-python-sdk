@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -23,7 +23,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.accountcommon_jwt_ban import AccountcommonJWTBan
+from ..models.accountcommon_jwt_ban_v3 import AccountcommonJWTBanV3
 from ..models.accountcommon_namespace_role import AccountcommonNamespaceRole
 from ..models.accountcommon_permission import AccountcommonPermission
 
@@ -34,7 +34,7 @@ class OauthmodelTokenResponse(Model):
     Properties:
         access_token: (access_token) REQUIRED str
 
-        bans: (bans) REQUIRED List[AccountcommonJWTBan]
+        bans: (bans) REQUIRED List[AccountcommonJWTBanV3]
 
         display_name: (display_name) REQUIRED str
 
@@ -66,7 +66,7 @@ class OauthmodelTokenResponse(Model):
     # region fields
 
     access_token: str                                                                              # REQUIRED
-    bans: List[AccountcommonJWTBan]                                                                # REQUIRED
+    bans: List[AccountcommonJWTBanV3]                                                              # REQUIRED
     display_name: str                                                                              # REQUIRED
     expires_in: int                                                                                # REQUIRED
     namespace: str                                                                                 # REQUIRED
@@ -89,7 +89,7 @@ class OauthmodelTokenResponse(Model):
         self.access_token = value
         return self
 
-    def with_bans(self, value: List[AccountcommonJWTBan]) -> OauthmodelTokenResponse:
+    def with_bans(self, value: List[AccountcommonJWTBanV3]) -> OauthmodelTokenResponse:
         self.bans = value
         return self
 
@@ -221,7 +221,7 @@ class OauthmodelTokenResponse(Model):
     def create(
         cls,
         access_token: str,
-        bans: List[AccountcommonJWTBan],
+        bans: List[AccountcommonJWTBanV3],
         display_name: str,
         expires_in: int,
         namespace: str,
@@ -268,7 +268,7 @@ class OauthmodelTokenResponse(Model):
         elif include_empty:
             instance.access_token = str()
         if "bans" in dict_ and dict_["bans"] is not None:
-            instance.bans = [AccountcommonJWTBan.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["bans"]]
+            instance.bans = [AccountcommonJWTBanV3.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["bans"]]
         elif include_empty:
             instance.bans = []
         if "display_name" in dict_ and dict_["display_name"] is not None:

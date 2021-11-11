@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,12 +31,9 @@ from ...models import RestErrorResponse
 class AdminGetUserByEmailAddressV3(Operation):
     """Get User By Email Address (AdminGetUserByEmailAddressV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
-
-    This endpoint search user who owns the given email address
-
-
-    action code : 10132
+    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'</p> <p>This
+    endpoint search user who owns the given email address</p> <br>action code :
+    10132
 
 
     Properties:

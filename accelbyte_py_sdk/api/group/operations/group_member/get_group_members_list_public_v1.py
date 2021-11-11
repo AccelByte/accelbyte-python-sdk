@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,8 @@ from ...models import ResponseErrorResponse
 class GetGroupMembersListPublicV1(Operation):
     """Get list of group members (getGroupMembersListPublicV1)
 
-    Required valid user authentication
-
-    This endpoint is used to get list of group members.
-
-    Action Code: 73410
+    <p>Required valid user authentication </p> <p>This endpoint is used to get
+    list of group members.</p> <p>Action Code: 73410</p>
 
 
     Properties:

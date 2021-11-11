@@ -23,26 +23,10 @@ from ..models import ModelsPartyData
 from ..models import ModelsPartyPUTCustomAttributesRequest
 from ..models import RestapiErrorResponseBody
 
-from ..operations.party import AdminGetPartiesDataV1
 from ..operations.party import AdminGetPartyDataV1
 from ..operations.party import AdminGetUserPartyV1
-from ..operations.party import AdminUpdatePartyAttributesV1
 from ..operations.party import PublicGetPartyDataV1
 from ..operations.party import PublicUpdatePartyAttributesV1
-
-
-@same_doc_as(AdminGetPartiesDataV1)
-def admin_get_parties_data_v1(limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = AdminGetPartiesDataV1.create(
-        limit=limit,
-        offset=offset,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetPartyDataV1)
@@ -66,20 +50,6 @@ def admin_get_user_party_v1(user_id: str, namespace: Optional[str] = None, x_add
             return None, error
     request = AdminGetUserPartyV1.create(
         user_id=user_id,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers)
-
-
-@same_doc_as(AdminUpdatePartyAttributesV1)
-def admin_update_party_attributes_v1(body: ModelsPartyPUTCustomAttributesRequest, party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = AdminUpdatePartyAttributesV1.create(
-        body=body,
-        party_id=party_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

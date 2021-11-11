@@ -1,4 +1,4 @@
-# justice-basic-service (1.23.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,10 +30,8 @@ from ...models import ValidationErrorEntity
 class PublicGetTimeZones(Operation):
     """List time zones (publicGetTimeZones)
 
-    List time zones.
-    Other detail info:
-
-      * Returns : time zones
+    List time zones.<br>Other detail info: <ul><li><i>Returns</i>: time
+    zones</li></ul>
 
 
     Properties:

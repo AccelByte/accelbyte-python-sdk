@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,12 +32,10 @@ from ...models import ModelUserPasswordUpdateRequest
 class UpdatePassword(Operation):
     """Update User Password (UpdatePassword)
 
-    ## The endpoint is going to be deprecated. Admin user please use this instead:
-    iam/v2/admin/namespaces/{namespace}/users/{userId}/password
-
-    +
-
-    Required permission 'NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]'
+    <h2>The endpoint is going to be deprecated. Admin user please use this
+    instead: iam/v2/admin/namespaces/{namespace}/users/{userId}/password</h2> +
+    <p>Required permission 'NAMESPACE:{namespace}:PASSWORD:USER:{userId}
+    [UPDATE]'<p>
 
 
     Properties:

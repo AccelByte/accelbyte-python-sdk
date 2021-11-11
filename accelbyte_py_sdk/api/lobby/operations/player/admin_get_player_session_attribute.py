@@ -32,9 +32,9 @@ class AdminGetPlayerSessionAttribute(Operation):
     """admin get player's session attribute (adminGetPlayerSessionAttribute)
 
     Required permission :
-    `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:ATTRIBUTES [READ]` with
-    scope `social`
-    get player's specific session attribute by user id in a namespace.
+    <code>ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:ATTRIBUTES
+    [READ]</code> with scope <code>social</code> <br>get player's specific session
+    attribute by user id in a namespace.
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-cloudsave-service (1.8.0)
+# justice-cloudsave-service (1.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,10 +30,9 @@ from ...models import ModelsResponseError
 class DeleteGameRecordHandlerV1(Operation):
     """Delete game record (deleteGameRecordHandlerV1)
 
-    Required Permission | `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]`
-    ---|---
-    Required Scope | `social`
-
+    <table> <tr> <td>Required Permission</td>
+    <td><code>NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]</code></td> </tr>
+    <tr> <td>Required Scope</td> <td><code>social</code></td> </tr> </table> <br/>
     Delete records by its key
 
 

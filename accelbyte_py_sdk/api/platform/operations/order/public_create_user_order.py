@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -35,13 +35,13 @@ class PublicCreateUserOrder(Operation):
 
     Create an order. The result contains the checkout link and payment token. User
     with permission SANDBOX will create sandbox order that not real paid for
-    xsolla/alipay and not validate price for wxpay.
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=1 (CREATE)
-      *  Optional permission(user with this permission will create sandbox order) : resource="SANDBOX", action=1 (CREATE)
-      * It will be forbidden while the user is banned: ORDER_INITIATE or ORDER_AND_PAYMENT
-      *  Returns : created order
+    xsolla/alipay and not validate price for wxpay.<br>Other detail info:
+    <ul><li><i>Required permission</i>:
+    resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=1
+    (CREATE)</li><li><i>Optional permission(user with this permission will create
+    sandbox order)</i>: resource="SANDBOX", action=1 (CREATE)</li><li>It will be
+    forbidden while the user is banned: ORDER_INITIATE or
+    ORDER_AND_PAYMENT</li><li><i>Returns</i>: created order</li></ul>
 
 
     Properties:

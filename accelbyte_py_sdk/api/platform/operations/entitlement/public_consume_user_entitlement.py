@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,11 +33,9 @@ class PublicConsumeUserEntitlement(Operation):
     """Consume user entitlement (publicConsumeUserEntitlement)
 
     Consume user entitlement. If the entitlement useCount is 0, the status will be
-    CONSUMED.
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
-      *  Returns : consumed entitlement
+    CONSUMED.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4
+    (UPDATE)</li><li><i>Returns</i>: consumed entitlement</li></ul>
 
 
     Properties:

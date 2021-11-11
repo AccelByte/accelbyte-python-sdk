@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,10 +30,9 @@ from ...models import ModelGetUserBanV3Response
 class AdminGetBannedUsersV3(Operation):
     """Get list of user filtered by ban types (AdminGetBannedUsersV3)
 
-    Required permission 'ADMIN:BAN [READ]'
-    Ban type is the code available for ban assignment. It is applicable globally
-    for any namespace.
-    action code : 10201
+    Required permission 'ADMIN:BAN [READ]' <br>Ban type is the code available for
+    ban assignment. It is applicable globally for any namespace. <br>action code :
+    10201
 
 
     Properties:

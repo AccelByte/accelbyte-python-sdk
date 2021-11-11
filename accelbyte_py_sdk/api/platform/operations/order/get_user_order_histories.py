@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,11 +30,9 @@ from ...models import OrderHistoryInfo
 class GetUserOrderHistories(Operation):
     """Get user order histories (getUserOrderHistories)
 
-    Get user order history.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
-      *  Returns : get order history
+    Get user order history.<br>Other detail info: <ul><li><i>Required
+    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER",
+    action=2 (READ)</li><li><i>Returns</i>: get order history</li></ul>
 
 
     Properties:

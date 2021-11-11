@@ -31,10 +31,9 @@ from ...models import RestapiErrorResponseV1
 class GetAllNotificationTemplatesV1Admin(Operation):
     """get all notification template in a namespace (getAllNotificationTemplatesV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with
-    scope `social`
-    Get all templates in a namespace
-    Action Code: 50203
+    Required permission : <code>ADMIN:NAMESPACE:{namespace}:NOTIFICATION
+    [READ]</code> with scope <code>social</code> <br>Get all templates in a
+    namespace<br> Action Code: 50203
 
 
     Properties:

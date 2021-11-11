@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,10 +31,8 @@ from ...models import PaymentOrderDetails
 class PublicGetUnpaidPaymentOrder(Operation):
     """Get payment order info (publicGetUnpaidPaymentOrder)
 
-    Get payment order info.
-    Other detail info:
-
-      * Returns : Payment order details
+    Get payment order info.<br>Other detail info: <ul><li><i>Returns</i>: Payment
+    order details</li></ul>
 
 
     Properties:

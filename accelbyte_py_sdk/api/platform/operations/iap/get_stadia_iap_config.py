@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,11 +30,9 @@ from ...models import StadiaIAPConfigInfo
 class GetStadiaIAPConfig(Operation):
     """Get stadia iap config (getStadiaIAPConfig)
 
-    Get stadia iap config.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
-      *  Returns : stadia iap config
+    Get stadia iap config.<br>Other detail info: <ul><li><i>Required
+    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2
+    (READ)</li><li><i>Returns</i>: stadia iap config</li></ul>
 
 
     Properties:

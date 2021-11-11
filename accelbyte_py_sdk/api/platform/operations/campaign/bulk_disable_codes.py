@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,14 +30,12 @@ from ...models import BulkOperationResult
 class BulkDisableCodes(Operation):
     """Bulk disable codes (bulkDisableCodes)
 
-    Bulk disable codes.
-
-    Bulk disable campaign codes, all matched codes will be disabled except those
-    have already been redeemed.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
-      *  Returns : the number of code actually disabled
+    Bulk disable codes.<p>Bulk disable campaign codes, all matched codes will be
+    disabled except those have already been redeemed.<br>Other detail info:
+    <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4
+    (UPDATE)</li><li><i>Returns</i>: the number of code actually
+    disabled</li></ul>
 
 
     Properties:

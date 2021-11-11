@@ -1,4 +1,4 @@
-# justice-basic-service (1.23.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,12 +32,10 @@ from ...models import ValidationErrorEntity
 class DeleteNamespace(Operation):
     """Delete a namespace (deleteNamespace)
 
-    Delete a namespace.
-    Other detail info:
-
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=8 (DELETE)
-      *  Action code : 11307
-      *  Returns : deleted namespace
+    Delete a namespace.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource=<b>"ADMIN:NAMESPACE:{namespace}:NAMESPACE"</b>, action=8
+    <b>(DELETE)</b></li><li><i>Action code</i>: 11307</li><li><i>Returns</i>:
+    deleted namespace</li></ul>
 
 
     Properties:

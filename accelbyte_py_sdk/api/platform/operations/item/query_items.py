@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,12 +32,10 @@ from ...models import ValidationErrorEntity
 class QueryItems(Operation):
     """Query items by criteria (queryItems)
 
-    This API is used to query items by criteria within a store.
-
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
-      *  Returns : the list of items
+    This API is used to query items by criteria within a store.<p>Other detail
+    info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2
+    (READ)</li><li><i>Returns</i>: the list of items</li></ul>
 
 
     Properties:

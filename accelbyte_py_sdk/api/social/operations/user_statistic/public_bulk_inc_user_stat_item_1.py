@@ -1,4 +1,4 @@
-# justice-social-service (1.18.1)
+# justice-social-service (1.21.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,11 +32,10 @@ from ...models import ValidationErrorEntity
 class PublicBulkIncUserStatItem1(Operation):
     """Public bulk update user's statitems value (publicBulkIncUserStatItem_1)
 
-    Public bulk update user's statitems value.
-    Other detail info:
-
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
-      *  Returns : bulk updated result
+    Public bulk update user's statitems value.<br>Other detail
+    info:<ul><li><i>Required permission</i>:
+    resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4
+    (UPDATE)</li><li><i>Returns</i>: bulk updated result</li></ul>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,23 +32,17 @@ from ...models import ResponseErrorResponse
 class CreateGroupConfigurationAdminV1(Operation):
     """create new configuration (createGroupConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [CREATE]'
-
-    This endpoint is used to create new configuration. Before creating the
-    configuration, make sure that member role for admin and group member are
-    already created before.
-
-    For each of the global rule, it will be the rule detail that consists of these
-    fields:
-
-      * ruleAttribute : attribute of the player that needs to be checked
-      * ruleCriteria : criteria of the value. The value will be in enum of EQUAL, MINIMUM, MAXIMUM
-      * ruleValue : value that needs to be checked
-
-    Allowed Action can only be filled with any available action in the Group
-    Service. For the configuration, the only value is "createGroup"
-
-    Action Code: 73103
+    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION
+    [CREATE]'</p> <p>This endpoint is used to create new configuration. Before
+    creating the configuration, make sure that member role for admin and group
+    member are already created before.</p> <p>For each of the global rule, it will
+    be the rule detail that consists of these fields: </p> <ul>
+    <li><b>ruleAttribute</b>: attribute of the player that needs to be
+    checked</li> <li><b>ruleCriteria</b>: criteria of the value. The value will be
+    in enum of EQUAL, MINIMUM, MAXIMUM</li> <li><b>ruleValue</b>: value that needs
+    to be checked</li> </ul> <p>Allowed Action can only be filled with any
+    available action in the Group Service. For the configuration, the only value
+    is <b>"createGroup"</b></p> <p>Action Code: 73103</p>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,11 +32,9 @@ from ...models import RestErrorResponse
 class AdminBanUserV3(Operation):
     """Ban a single user (AdminBanUserV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]'.
-
-    Bans a user with specific type of ban. Ban types and reason can be queried.
-
-    action code : 10141
+    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId}
+    [CREATE]'.</p> <p>Bans a user with specific type of ban. Ban types and reason
+    can be queried. </p> <p>action code : 10141 </p>
 
 
     Properties:

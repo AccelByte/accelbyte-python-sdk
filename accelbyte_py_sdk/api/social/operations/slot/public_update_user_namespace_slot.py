@@ -1,4 +1,4 @@
-# justice-social-service (1.18.1)
+# justice-social-service (1.21.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,9 @@ from ...models import SlotInfo
 class PublicUpdateUserNamespaceSlot(Operation):
     """Updates a slot (publicUpdateUserNamespaceSlot)
 
-    Updates a slot.
-    Other detail info:
-
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=4 (UPDATE)
-      *  Returns : updated slot
+    Updates a slot.<br>Other detail info:<ul><li><i>Required permission</i>:
+    resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=4
+    (UPDATE)</li><li><i>Returns</i>: updated slot</li></ul>
 
 
     Properties:

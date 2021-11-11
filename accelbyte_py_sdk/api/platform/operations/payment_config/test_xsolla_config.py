@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,23 +31,13 @@ from ...models import XsollaConfig
 class TestXsollaConfig(Operation):
     """Test xsolla configuration (testXsollaConfig)
 
-    Check xsolla configuration, Reference: [Xsolla
-    Document](https://developers.xsolla.com/?#simple-checkout).
-
-    #### Check List:
-
-      * merchantId
-      * projectId
-      * apiKey
-
-    #### Non-check list:
-
-      * projectSecretKey
-
-    Other detail info:
-
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : test result
+    Check xsolla configuration, Reference: <a
+    href="https://developers.xsolla.com/?#simple-checkout">Xsolla
+    Document</a>.<h4>Check List:</h4>
+    <ul><li>merchantId</li><li>projectId</li><li>apiKey</li></ul><h4>Non-check
+    list:</h4><ul><li>projectSecretKey</li></ul>Other detail info:
+    <ul><li><i>Required permission</i>: resource="ADMIN:PAYMENT:CONFIG", action=4
+    (UPDATE)</li><li><i>Returns</i>: test result</li></ul>
 
 
     Properties:

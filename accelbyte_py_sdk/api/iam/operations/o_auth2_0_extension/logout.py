@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -28,7 +28,8 @@ from .....core import HttpResponse
 class Logout(Operation):
     """Logout (Logout)
 
-    This endpoint is used to remove access_token cookie and refresh_token cookie.
+    <p>This endpoint is used to remove <b>access_token</b> cookie and
+    <b>refresh_token</b> cookie.</p>
 
 
     Properties:

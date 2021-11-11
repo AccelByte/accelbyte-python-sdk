@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,12 +32,10 @@ class GetLocaleItemBySku(Operation):
     """Get an item by sku in locale (getLocaleItemBySku)
 
     This API is used to get an item by sku in specific locale. If item not exist
-    in specific region, default region item will return.
-
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
-      *  Returns : item data
+    in specific region, default region item will return.<p>Other detail info:
+    <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2
+    (READ)</li><li><i>Returns</i>: item data</li></ul>
 
 
     Properties:

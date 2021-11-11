@@ -1,4 +1,4 @@
-# justice-social-service (1.18.1)
+# justice-social-service (1.21.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,11 +32,9 @@ from ...models import StatUpdate
 class UpdateStat(Operation):
     """Update stat (updateStat)
 
-    Update stat.
-    Other detail info:
-
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=4 (UPDATE)
-      *  Returns : updated stat
+    Update stat.<br>Other detail info:<ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:STAT", action=4
+    (UPDATE)</li><li><i>Returns</i>: updated stat</li></ul>
 
 
     Properties:

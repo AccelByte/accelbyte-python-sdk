@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -29,10 +29,7 @@ class GetPaymentPublicConfig(Operation):
     """Get payment provider public config (getPaymentPublicConfig)
 
     Get payment provider public config, at current only Strip provide public
-    config.
-    Other detail info:
-
-      * Returns : Public config
+    config.<br>Other detail info: <ul><li><i>Returns</i>: Public config</li></ul>
 
 
     Properties:

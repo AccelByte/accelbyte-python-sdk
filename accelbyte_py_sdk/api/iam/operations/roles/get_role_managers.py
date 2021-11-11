@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,9 +30,8 @@ from ...models import ModelRoleManagersResponse
 class GetRoleManagers(Operation):
     """Get Role Managers (GetRoleManagers)
 
-    Required permission 'ROLE [READ]'
-
-    Role can only be assigned to other users by the role's manager.
+    <p>Required permission 'ROLE [READ]'</p> <p>Role can only be assigned to other
+    users by the role's manager.</p>
 
 
     Properties:

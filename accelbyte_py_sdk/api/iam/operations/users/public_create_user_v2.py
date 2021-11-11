@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,9 @@ from ...models import ModelUserCreateResponse
 class PublicCreateUserV2(Operation):
     """Create User (PublicCreateUserV2)
 
-    Available Authentication Types:
-
-      1. EMAILPASSWD : an authentication type used for new user registration through email.
-
-    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+    <p>Available Authentication Types:</p> <ol> <li><strong>EMAILPASSWD</strong>:
+    an authentication type used for new user registration through email.</li>
+    </ol> <p>Country use ISO3166-1 alpha-2 two letter, e.g. US.</p>
 
 
     Properties:

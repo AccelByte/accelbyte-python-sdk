@@ -42,7 +42,6 @@
 | models.MatchingParty | [ModelsMatchingParty](../accelbyte_py_sdk/api/sessionbrowser/models/models_matching_party.py) |
 | models.PagingCursor | [ModelsPagingCursor](../accelbyte_py_sdk/api/sessionbrowser/models/models_paging_cursor.py) |
 | models.PartyMember | [ModelsPartyMember](../accelbyte_py_sdk/api/sessionbrowser/models/models_party_member.py) |
-| models.PodConfig | [ModelsPodConfig](../accelbyte_py_sdk/api/sessionbrowser/models/models_pod_config.py) |
 | models.RecentPlayerHistory | [ModelsRecentPlayerHistory](../accelbyte_py_sdk/api/sessionbrowser/models/models_recent_player_history.py) |
 | models.RecentPlayerQueryResponse | [ModelsRecentPlayerQueryResponse](../accelbyte_py_sdk/api/sessionbrowser/models/models_recent_player_query_response.py) |
 | models.Server | [ModelsServer](../accelbyte_py_sdk/api/sessionbrowser/models/models_server.py) |

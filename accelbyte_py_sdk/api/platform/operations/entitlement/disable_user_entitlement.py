@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,13 +32,11 @@ class DisableUserEntitlement(Operation):
     """Disable user entitlement (disableUserEntitlement)
 
     Disable user entitlement if entitlement, only active entitlement can be
-    disable, disabled entitlement can't consume/distribute.
-     Like revoke, it will lose the entitlement ownership, except disabled
-    entitlement can enable.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
-      *  Returns : disable entitlement
+    disable, disabled entitlement can't consume/distribute.<br><b>Like revoke, it
+    will lose the entitlement ownership, except disabled entitlement can
+    enable.</b><br>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4
+    (UPDATE)</li><li><i>Returns</i>: disable entitlement</li></ul>
 
 
     Properties:

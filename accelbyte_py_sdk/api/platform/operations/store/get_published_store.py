@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,12 +32,9 @@ class GetPublishedStore(Operation):
     """Get published store (getPublishedStore)
 
     This API is used to get a published store basic info, exclude category and
-    item information.
-
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
-      *  Returns : store data
+    item information.<p>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2
+    (READ)</li><li><i>Returns</i>: store data</li></ul>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,12 +31,9 @@ class PublicCheckUserSubscriptionSubscribableByItemId(Operation):
     """Check user subscription subscribable (publicCheckUserSubscriptionSubscribableByItemId)
 
     Check user subscription subscribable by itemId, ACTIVE USER subscription can't
-    do subscribe again.
-
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
-      *  Returns : subscribable info
+    do subscribe again.<p>Other detail info: <ul><li><i>Required permission</i>:
+    resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2
+    (READ)</li><li><i>Returns</i>: subscribable info</li></ul>
 
 
     Properties:

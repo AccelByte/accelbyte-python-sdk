@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -34,119 +34,52 @@ class CreateItem(Operation):
     """Create an Item (createItem)
 
     This API is used to create an item. APP item only can created in publisher
-    namespace.
-
-    An item create example:
-
-
-
-        {
-           "categoryPath": "/games",
-           "localizations": {
-               "en": {
-                   "title":"required",
-                   "description":"optional",
-                   "longDescription":"optional",
-                   "localExt": {
-                          "properties":[
-                                           {
-                                               "key1":"value1",
-                                               "key2":"value2"
-                                           }
-                          ],
-                          "functions":[
-                                           {
-                                               "key1":"value1",
-                                               "key2":"value2"
-                                           }
-                         ]
-                   }
-                }
-           },
-           "images": [
-             {
-                   "as":"optional, image for",
-                   "caption":"optional",
-                   "height":10,
-                   "width":10,
-                   "imageUrl":"http://img-url-required",
-                   "smallImageUrl":"http://small-img-url-required"
-             }
-           ],
-           "thumbnailUrl": "optional, thumbnail url",
-           "status": "ACTIVE",
-           "listable": true,
-           "purchasable": true,
-           "itemType": "APP(allowed: [APP,COINS,INGAMEITEM,CODE,BUNDLE])",
-           "name": "required, also will be used as entitlement name",
-           "entitlementType": "DURABLE(allowed:[DURABLE,CONSUMABLE], should be CONSUMABLE when item type is COINS)",
-           "useCount": 1(optional, required if the entitlement type is consumable),
-           "stackable": false,
-           "appId": "optional, required if itemType is APP",
-           "appType": "GAME(optional, required if itemType is APP)",
-           "seasonType": "PASS(optional, required if itemType is SEASON)",
-           "baseAppId": "optional, set value of game app id if you want to link to a game",
-           "targetCurrencyCode": "optional, required if itemType is COINS",
-           "targetNamespace": "optional, required when itemType is INGAMEITEM, the targetNamespace will only take effect when the item
-           created belongs to the publisher namespace",
-           "sku": "optional, commonly unique item code",
-           "regionData": {
-               "US(store's default region is required)": [
-                 {
-                    "price":10,
-                    "discountPercentage": 0(integer, optional, range[0,100], discountedPrice = price  * ((100 - discountPercentage) * 0.01),
-                      will use it to calculate discounted price if it is not 0),
-                    "discountAmount":0(integer, optional, range[0,itemPrice], will use it to calculate discounted price if discountPercentage is 0),
-                    "currencyCode":"code(required, example: USD)",
-                    "currencyNamespace":"test-ns-required",
-                    "trialPrice":5(required while fixedTrialCycles set, should >=0 and <= price, will same as price if not present),
-                    "purchaseAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
-                    "expireAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
-                    "discountPurchaseAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
-                    "discountExpireAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-                 }
-               ]
-           },
-           "itemIds": [
-               "itemId"
-           ],
-           "recurring": {
-               "cycle":"MONTHLY(allowed: [WEEKLY,MONTHLY,QUARTERLY,YEARLY])",
-               "fixedFreeDays":0(integer, fixed free days, 0 means not set),
-               "fixedTrialCycles":0(integer, fixed trial cycles, 0 means not set, will not take effect if fixedFreeDays set),
-               "graceDays":7(integer, recurring grace days, retry recurring charge within configured days if charge fail, default 7)
-           },
-           "tags": [
-               "tag"
-           ],
-           "features": [
-               "feature"
-           ],
-           "clazz": "weapon",
-           "boothName": "C_campaign1",
-           "displayOrder": 1000,
-           "ext": {
-               "properties":[
-                   {
-                       "key1":"value1",
-                       "key2":"value2"
-                   }
-               ],
-               "functions":[
-                   {
-                       "key1":"value1",
-                       "key2":"value2"
-                   }
-               ]
-           },
-           "maxCountPerUser": 1(integer, optional, -1 means UNLIMITED),
-           "maxCount": 1(integer, optional, -1 means UNLIMITED, unset when itemType is CODE)
-        }
-
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=1 (CREATE)
-      *  Returns : created item data
+    namespace.<p>An item create example:<p><pre><code>{ "categoryPath": "/games",
+    "localizations": { "en": { "title":"required", "description":"optional",
+    "longDescription":"optional", "localExt": { "properties":[ {
+    "key1":"value1", "key2":"value2" } ], "functions":[ { "key1":"value1",
+    "key2":"value2" } ] } } }, "images": [ { "as":"optional, image
+    for", "caption":"optional", "height":10, "width":10, "imageUrl":"http://img-
+    url-required", "smallImageUrl":"http://small-img-url-required" } ],
+    "thumbnailUrl": "optional, thumbnail url", "status": "ACTIVE", "listable":
+    true, "purchasable": true, "itemType": "APP(allowed:
+    [APP,COINS,INGAMEITEM,CODE,BUNDLE])", "name": "required, also will be used as
+    entitlement name", "entitlementType": "DURABLE(allowed:[DURABLE,CONSUMABLE],
+    should be CONSUMABLE when item type is COINS)", "useCount": 1(optional,
+    required if the entitlement type is consumable), "stackable": false, "appId":
+    "optional, required if itemType is APP", "appType": "GAME(optional, required
+    if itemType is APP)", "seasonType": "PASS(optional, required if itemType is
+    SEASON)", "baseAppId": "optional, set value of game app id if you want to link
+    to a game", "targetCurrencyCode": "optional, required if itemType is COINS",
+    "targetNamespace": "optional, required when itemType is INGAMEITEM, the
+    targetNamespace will only take effect when the item created belongs to the
+    publisher namespace", "sku": "optional, commonly unique item code",
+    "regionData": { "US(store's default region is required)": [ {
+    "price":10, "discountPercentage": 0(integer, optional, range[0,100],
+    discountedPrice = price * ((100 - discountPercentage) * 0.01), will use it
+    to calculate discounted price if it is not 0), "discountAmount":0(integer,
+    optional, range[0,itemPrice], will use it to calculate discounted price if
+    discountPercentage is 0), "currencyCode":"code(required, example: USD)",
+    "currencyNamespace":"test-ns-required", "trialPrice":5(required while
+    fixedTrialCycles set, should >=0 and <= price, will same as price if not
+    present), "purchaseAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+    "expireAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+    "discountPurchaseAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+    "discountExpireAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" } ] },
+    "itemIds": [ "itemId" ], "recurring": { "cycle":"MONTHLY(allowed:
+    [WEEKLY,MONTHLY,QUARTERLY,YEARLY])", "fixedFreeDays":0(integer, fixed free
+    days, 0 means not set), "fixedTrialCycles":0(integer, fixed trial cycles, 0
+    means not set, will not take effect if fixedFreeDays set),
+    "graceDays":7(integer, recurring grace days, retry recurring charge within
+    configured days if charge fail, default 7) }, "tags": [ "tag" ],
+    "features": [ "feature" ], "clazz": "weapon", "boothName": "C_campaign1",
+    "displayOrder": 1000, "ext": { "properties":[ { "key1":"value1",
+    "key2":"value2" } ], "functions":[ { "key1":"value1", "key2":"value2"
+    } ] }, "maxCountPerUser": 1(integer, optional, -1 means UNLIMITED),
+    "maxCount": 1(integer, optional, -1 means UNLIMITED, unset when itemType is
+    CODE) }</code></pre>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=1
+    (CREATE)</li><li><i>Returns</i>: created item data</li></ul>
 
 
     Properties:
@@ -171,9 +104,9 @@ class CreateItem(Operation):
     Responses:
         201: Created - FullItemInfo (successful operation)
 
-        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
-
         400: Bad Request - ErrorEntity (30322: Bundle item [{itemId}] can't be bundled | 30325: Code item [{itemId}] can't be bundled | 30326: Subscription item [{itemId}] can't be bundled | 30328: Season item [{itemId}] can't be bundled | 30021: Default language [{language}] required | 30321: Invalid item discount amount | 30022: Default region [{region}] is required | 30323: Target namespace is required | 30327: Invalid item trial price)
+
+        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (30173: Published store can't modify content | 30373: ItemType [{itemType}] is not allowed in namespace [{namespace}])
 
@@ -329,9 +262,9 @@ class CreateItem(Operation):
 
         201: Created - FullItemInfo (successful operation)
 
-        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
-
         400: Bad Request - ErrorEntity (30322: Bundle item [{itemId}] can't be bundled | 30325: Code item [{itemId}] can't be bundled | 30326: Subscription item [{itemId}] can't be bundled | 30328: Season item [{itemId}] can't be bundled | 30021: Default language [{language}] required | 30321: Invalid item discount amount | 30022: Default region [{region}] is required | 30323: Target namespace is required | 30327: Invalid item trial price)
+
+        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (30173: Published store can't modify content | 30373: ItemType [{itemType}] is not allowed in namespace [{namespace}])
 
@@ -339,9 +272,9 @@ class CreateItem(Operation):
         """
         if code == 201:
             return FullItemInfo.create_from_dict(content), None
-        if code == 404:
-            return None, ErrorEntity.create_from_dict(content)
         if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 409:
             return None, ErrorEntity.create_from_dict(content)

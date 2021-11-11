@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,11 +30,9 @@ from .....core import deprecated
 class EnableUser(Operation):
     """Enable a user (EnableUser)
 
-    ## The endpoint is going to be deprecated. Please use this instead:
-    iam/v2/admin/namespaces/{namespace}/users/{userId}/enable
-
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId}
-    [UPDATE]'
+    <h2>The endpoint is going to be deprecated. Please use this instead:
+    iam/v2/admin/namespaces/{namespace}/users/{userId}/enable</h2> <p>Required
+    permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'<p>
 
 
     Properties:

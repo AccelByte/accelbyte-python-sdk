@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,12 +32,10 @@ class CloneStore(Operation):
     """Clone a store (cloneStore)
 
     This API is used to clone a store. Usually clone a draft store to published
-    store because published store can't directly edit content.
-
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
-      *  Returns : clone store info
+    store because published store can't directly edit content.<p>Other detail
+    info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1
+    (CREATE)</li><li><i>Returns</i>: clone store info</li></ul>
 
 
     Properties:
@@ -62,9 +60,9 @@ class CloneStore(Operation):
     Responses:
         200: OK - StoreInfo (successful operation)
 
-        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
-
         400: Bad Request - ErrorEntity (30122: Store's meta mismatch)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
     """
 
     # region fields
@@ -214,15 +212,15 @@ class CloneStore(Operation):
 
         200: OK - StoreInfo (successful operation)
 
-        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
-
         400: Bad Request - ErrorEntity (30122: Store's meta mismatch)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
         """
         if code == 200:
             return StoreInfo.create_from_dict(content), None
-        if code == 404:
-            return None, ErrorEntity.create_from_dict(content)
         if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:

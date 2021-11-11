@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,13 +31,10 @@ from ...models import ResponseErrorResponse
 class DeleteGroupConfigurationGlobalRuleAdminV1(Operation):
     """delete existing configuration global rule based on allowed action (deleteGroupConfigurationGlobalRuleAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]'
-
-    This endpoint is used to delete existing global rule configuration based on
-    the allowed action. It will not give any error if the allowed action is not
-    existed in the global rule
-
-    Action Code: 73105
+    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION
+    [UPDATE]'</p> <p>This endpoint is used to delete existing global rule
+    configuration based on the allowed action. It will not give any error if the
+    allowed action is not existed in the global rule</p> <p>Action Code: 73105</p>
 
 
     Properties:

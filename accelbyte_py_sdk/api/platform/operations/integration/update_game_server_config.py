@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,11 +30,9 @@ from ...models import GameServerConfig
 class UpdateGameServerConfig(Operation):
     """Update game server configuration (updateGameServerConfig)
 
-    Update game server configuration.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:INTEGRATION", action=4 (UPDATE)
-      *  Returns : Game server config
+    Update game server configuration.<br>Other detail info: <ul><li><i>Required
+    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:INTEGRATION", action=4
+    (UPDATE)</li><li><i>Returns</i>: Game server config</li></ul>
 
 
     Properties:

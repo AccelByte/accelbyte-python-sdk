@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,22 +31,14 @@ from ...models import ResponseErrorResponse
 class AcceptGroupInvitationPublicV1(Operation):
     """Accept Group Invitation (acceptGroupInvitationPublicV1)
 
-    Required valid user authentication
-
-    This endpoint is used to accept group invitation.
-
-    Accept group invitation. If specific user is not invited in the specific group
-    ID, it will show the the error to show if the user is not invited yet.
-
-    This endpoint will also check if the user who access this endpoint is already
-    joined to specific group
-
-    Accessing this endpoint will make all requests (invite / join request) will be
-    deleted for the user who access this endpoint
-
-    Existing members will receive notification of newly accepted member.
-
-    Action Code: 73401
+    <p>Required valid user authentication </p> <p>This endpoint is used to accept
+    group invitation.</p> <p>Accept group invitation. If specific user is not
+    invited in the specific group ID, it will show the the error to show if the
+    user is not invited yet.</p> <p>This endpoint will also check if the user who
+    access this endpoint is already joined to specific group</p> <p>Accessing this
+    endpoint will make all requests (invite / join request) will be deleted for
+    the user who access this endpoint</p> <p>Existing members will receive
+    notification of newly accepted member.</p> <p>Action Code: 73401</p>
 
 
     Properties:

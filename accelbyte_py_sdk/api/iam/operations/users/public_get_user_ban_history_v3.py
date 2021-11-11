@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,12 +30,9 @@ from ...models import ModelGetUserBanV3Response
 class PublicGetUserBanHistoryV3(Operation):
     """Get user's bans (PublicGetUserBanHistoryV3)
 
-    Required valid user authorization.
-
-    Notes:
-
-      * This endpoint retrieve the first page of the data if after and before parameters is empty
-      * The pagination is not working yet
+    Required valid user authorization. <p>Notes:</p> <ul> <li>This endpoint
+    retrieve the first page of the data if after and before parameters is
+    empty</li> <li><strong>The pagination is not working yet</strong></li> </ul>
 
 
     Properties:

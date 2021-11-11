@@ -1,4 +1,4 @@
-# justice-basic-service (1.23.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,12 +32,11 @@ from ...models import ValidationErrorEntity
 class PublicGeneratedUploadUrl(Operation):
     """Generate Upload URL (publicGeneratedUploadUrl)
 
-    Generate an upload URL. It's valid for 10 minutes.
-    Other detail info:
-
-      * Required permission : resource = "NAMESPACE:{namespace}:FILEUPLOAD" , action=1 (CREATE)
-      *  Action code : 11101
-      *  Returns : URL data
+    Generate an upload URL. It's valid for 10 minutes.<br/>Other detail info:
+    <ul><li><i>Required permission</i>: resource =
+    <b>"NAMESPACE:{namespace}:FILEUPLOAD"</b>, action=1
+    <b>(CREATE)</b></li><li><i>Action code</i>: 11101</li><li><i>Returns</i>: URL
+    data</li></ul>
 
 
     Properties:

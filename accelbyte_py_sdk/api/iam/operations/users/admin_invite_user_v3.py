@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -24,20 +24,21 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
-from ...models import ModelInviteAdminRequestV3
-from ...models import ModelInviteAdminResponseV3
+from ...models import ModelInviteUserRequestV3
+from ...models import ModelInviteUserResponseV3
 from ...models import RestErrorResponse
 
 
 class AdminInviteUserV3(Operation):
-    """Invite User Admin (AdminInviteUserV3)
+    """Invite User (AdminInviteUserV3)
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:USER:INVITE [CREATE] Use this
-    endpoint to invite admin user and assign role to them. The role must be scoped
-    to namespace. Substitute the namespace in path parameter to desired role's
-    namespace'. An admin user can only assign role to namespaces that the admin
-    user has the required permission. The invited admin will also assigned with
-    "User" role by default.
+    endpoint to invite admin or non-admin user and assign role to them. The role
+    must be scoped to namespace. Substitute the namespace in path parameter to
+    desired role's namespace'. An admin user can only assign role to namespaces
+    that the admin user has the required permission. Role is optional, if not
+    specified then it will only assign User role The invited admin will also
+    assigned with "User" role by default.
 
 
     Properties:
@@ -53,12 +54,12 @@ class AdminInviteUserV3(Operation):
 
         security: bearer
 
-        body: (body) REQUIRED ModelInviteAdminRequestV3 in body
+        body: (body) REQUIRED ModelInviteUserRequestV3 in body
 
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - ModelInviteAdminResponseV3 (Created)
+        201: Created - ModelInviteUserResponseV3 (Created)
 
         400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
 
@@ -80,7 +81,7 @@ class AdminInviteUserV3(Operation):
     _security: Optional[str] = "bearer"
     _location_query: str = None
 
-    body: ModelInviteAdminRequestV3                                                                # REQUIRED in [body]
+    body: ModelInviteUserRequestV3                                                                 # REQUIRED in [body]
     namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
@@ -167,7 +168,7 @@ class AdminInviteUserV3(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: ModelInviteAdminRequestV3) -> AdminInviteUserV3:
+    def with_body(self, value: ModelInviteUserRequestV3) -> AdminInviteUserV3:
         self.body = value
         return self
 
@@ -184,7 +185,7 @@ class AdminInviteUserV3(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = ModelInviteAdminRequestV3()
+            result["body"] = ModelInviteUserRequestV3()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -196,10 +197,10 @@ class AdminInviteUserV3(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelInviteAdminResponseV3], Union[None, RestErrorResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelInviteUserResponseV3], Union[None, RestErrorResponse]]:
         """Parse the given response.
 
-        201: Created - ModelInviteAdminResponseV3 (Created)
+        201: Created - ModelInviteUserResponseV3 (Created)
 
         400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
 
@@ -212,7 +213,7 @@ class AdminInviteUserV3(Operation):
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
         """
         if code == 201:
-            return ModelInviteAdminResponseV3.create_from_dict(content), None
+            return ModelInviteUserResponseV3.create_from_dict(content), None
         if code == 400:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 404:
@@ -235,7 +236,7 @@ class AdminInviteUserV3(Operation):
     @classmethod
     def create(
         cls,
-        body: ModelInviteAdminRequestV3,
+        body: ModelInviteUserRequestV3,
         namespace: str,
     ) -> AdminInviteUserV3:
         instance = cls()
@@ -247,9 +248,9 @@ class AdminInviteUserV3(Operation):
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AdminInviteUserV3:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ModelInviteAdminRequestV3.create_from_dict(dict_["body"], include_empty=include_empty)
+            instance.body = ModelInviteUserRequestV3.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
-            instance.body = ModelInviteAdminRequestV3()
+            instance.body = ModelInviteUserRequestV3()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:

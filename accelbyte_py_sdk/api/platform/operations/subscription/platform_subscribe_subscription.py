@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -34,11 +34,9 @@ class PlatformSubscribeSubscription(Operation):
     """Free subscribe by platform (platformSubscribeSubscription)
 
     Free subscribe by platform, can used by other justice service to redeem/reward
-    the subscription.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=1 (CREATE)
-      *  Returns : result subscription
+    the subscription.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=1
+    (CREATE)</li><li><i>Returns</i>: result subscription</li></ul>
 
 
     Properties:

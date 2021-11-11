@@ -1,4 +1,4 @@
-# justice-social-service (1.18.1)
+# justice-social-service (1.21.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,11 +30,10 @@ from ...models import SlotInfo
 class PublicGetUserNamespaceSlots(Operation):
     """Returns slots for given user (publicGetUserNamespaceSlots)
 
-    Get list of slots for a given user in namespace.
-    Other detail info:
-
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)
-      *  Returns : list of slots
+    Get list of slots for a given user in namespace.<br>Other detail
+    info:<ul><li><i>Required permission</i>:
+    resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2
+    (READ)</li><li><i>Returns</i>: list of slots</li></ul>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,20 +31,13 @@ from ...models import OauthmodelTokenThirdPartyResponse
 class RetrieveUserThirdPartyPlatformTokenV3(Operation):
     """Retrieve User Third Party Platform Token (RetrieveUserThirdPartyPlatformTokenV3)
 
-    Retrieve User Third Party Platform Token
-
-    This endpoint used for retrieving third party platform token for user that
-    login using third party. Passing platform group name or it's member will
-    return same access token that can be used across the platform members.
-
-    The third party platform and platform group covered for this is:
-
-      * (psn) ps4web
-      * (psn) ps4
-      * (psn) ps5
-      * epicgames
-      * twitch
-      * awscognito
+    Retrieve User Third Party Platform Token<br/> <p> This endpoint used for
+    retrieving third party platform token for user that login using third party.
+    Passing platform group name or it's member will return same access token that
+    can be used across the platform members. </p> <p>The third party platform and
+    platform group covered for this is:</p> <ul> <li>(psn) ps4web</li> <li>(psn)
+    ps4</li> <li>(psn) ps5</li> <li>epicgames</li> <li>twitch</li>
+    <li>awscognito</li> </ul>
 
 
     Properties:

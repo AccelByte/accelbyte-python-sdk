@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,14 +31,13 @@ class AdminGetUserLoginHistoriesV3(Operation):
     """Get User's Login Histories (AdminGetUserLoginHistoriesV3)
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:HISTORY:LOGIN:USER:{userId}
-    [READ]'
-
-    Notes for this endpoint:
-
-      * This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
-      * The maximum value of the limit is 100 and the minimum value of the limit is 1.
-      * This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
-      * This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
+    [READ]'<p>Notes for this endpoint: </p> <ul><li>This endpoint retrieve the
+    first page of the data if `after` and `before` parameters is
+    empty.</li><li>The maximum value of the limit is 100 and the minimum value of
+    the limit is 1.</li><li>This endpoint retrieve the next page of the data if we
+    provide `after` parameters with valid Unix timestamp.</li><li>This endpoint
+    retrieve the previous page of the data if we provide `before` parameter with
+    valid data Unix timestamp.</li><ul>
 
 
     Properties:

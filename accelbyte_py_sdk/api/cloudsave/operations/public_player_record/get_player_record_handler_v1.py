@@ -1,4 +1,4 @@
-# justice-cloudsave-service (1.8.0)
+# justice-cloudsave-service (1.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,12 +31,10 @@ from ...models import ModelsResponseError
 class GetPlayerRecordHandlerV1(Operation):
     """Get player record (getPlayerRecordHandlerV1)
 
-    Required Permission | `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD
-    [READ]`
-    ---|---
-    Required Scope | `social`
-
-    Get player record by its key
+    <table> <tr> <td>Required Permission</td>
+    <td><code>NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD
+    [READ]</code></td> </tr> <tr> <td>Required Scope</td>
+    <td><code>social</code></td> </tr> </table> <br/> Get player record by its key
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -28,10 +28,8 @@ from .....core import HttpResponse
 class PublicGetQRCode(Operation):
     """Get qrcode (publicGetQRCode)
 
-    Get qrcode.
-    Other detail info:
-
-      * Returns : QRCode image stream
+    Get qrcode.<br>Other detail info: <ul><li><i>Returns</i>: QRCode image
+    stream</li></ul>
 
 
     Properties:

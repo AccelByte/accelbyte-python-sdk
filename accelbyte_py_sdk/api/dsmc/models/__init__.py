@@ -1,6 +1,6 @@
 """Auto-generated package that contains models used by the justice-dsm-controller-service."""
 
-__version__ = "2.6.0"
+__version__ = "2.8.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -19,7 +19,6 @@ from .models_create_port_request import ModelsCreatePortRequest
 from .models_create_region_override_request import ModelsCreateRegionOverrideRequest
 from .models_create_session_request import ModelsCreateSessionRequest
 from .models_default_provider import ModelsDefaultProvider
-from .models_deployment_config import ModelsDeploymentConfig
 from .models_deployment_config_override import ModelsDeploymentConfigOverride
 from .models_deployment_with_override import ModelsDeploymentWithOverride
 from .models_deregister_local_server_request import ModelsDeregisterLocalServerRequest
@@ -38,14 +37,9 @@ from .models_list_image_response import ModelsListImageResponse
 from .models_list_pod_config_response import ModelsListPodConfigResponse
 from .models_list_server_response import ModelsListServerResponse
 from .models_list_session_response import ModelsListSessionResponse
-from .models_match_result import ModelsMatchResult
-from .models_override_config import ModelsOverrideConfig
 from .models_paging_cursor import ModelsPagingCursor
-from .models_pod_config import ModelsPodConfig
 from .models_pod_config_record import ModelsPodConfigRecord
-from .models_pod_count_config import ModelsPodCountConfig
 from .models_pod_count_config_override import ModelsPodCountConfigOverride
-from .models_pod_count_config_update import ModelsPodCountConfigUpdate
 from .models_register_local_server_request import ModelsRegisterLocalServerRequest
 from .models_register_server_request import ModelsRegisterServerRequest
 from .models_request_match_member import ModelsRequestMatchMember

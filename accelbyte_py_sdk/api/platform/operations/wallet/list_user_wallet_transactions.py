@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,10 @@ from ...models import WalletTransactionPagingSlicedResult
 class ListUserWalletTransactions(Operation):
     """List user wallet transactions (listUserWalletTransactions)
 
-    List user wallet transactions ordered by create time desc.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
-      *  Returns : wallet transaction info
+    List user wallet transactions ordered by create time desc.<br>Other detail
+    info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2
+    (READ)</li><li><i>Returns</i>: wallet transaction info</li></ul>
 
 
     Properties:

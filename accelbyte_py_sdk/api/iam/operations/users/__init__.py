@@ -24,6 +24,7 @@ from .admin_get_my_user_v3 import AdminGetMyUserV3
 from .admin_get_user_ban_v2 import AdminGetUserBanV2
 from .admin_get_user_ban_v3 import AdminGetUserBanV3
 from .admin_get_user_by_email_address_v3 import AdminGetUserByEmailAddressV3
+from .admin_get_user_by_platform_user_idv3 import AdminGetUserByPlatformUserIDV3
 from .admin_get_user_by_user_id_v2 import AdminGetUserByUserIdV2
 from .admin_get_user_by_user_id_v3 import AdminGetUserByUserIdV3
 from .admin_get_user_deletion_status_v3 import AdminGetUserDeletionStatusV3

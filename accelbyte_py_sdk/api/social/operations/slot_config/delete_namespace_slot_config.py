@@ -1,4 +1,4 @@
-# justice-social-service (1.18.1)
+# justice-social-service (1.21.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -29,10 +29,8 @@ class DeleteNamespaceSlotConfig(Operation):
     """Deletes a namespace slot configuration (deleteNamespaceSlotConfig)
 
     Deletes a namespace slot configuration, the configuration will be default
-    after delete.
-    Other detail info:
-
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:SLOTCONFIG", action=8 (DELETE)
+    after delete.<br>Other detail info:<ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:SLOTCONFIG", action=8 (DELETE)</li></ul>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-iam-service Index (4.4.1)
+# justice-iam-service Index (4.7.0)
 
 
 ## Operations
@@ -43,7 +43,6 @@
 | /iam/oauth/authorize | POST | Authorization | [Authorization](../accelbyte_py_sdk/api/iam/operations/o_auth/authorization.py) | [authorization](../accelbyte_py_sdk/api/iam/wrappers/_o_auth.py) |
 | /iam/oauth/jwks | GET | GetJWKS | [GetJWKS](../accelbyte_py_sdk/api/iam/operations/o_auth/get_jwks.py) | [get_jwks](../accelbyte_py_sdk/api/iam/wrappers/_o_auth.py) |
 | /iam/oauth/revocationlist | GET | GetRevocationList | [GetRevocationList](../accelbyte_py_sdk/api/iam/operations/o_auth/get_revocation_list.py) | [get_revocation_list](../accelbyte_py_sdk/api/iam/wrappers/_o_auth.py) |
-| /iam/oauth/platforms/{platformId}/token | POST | PlatformTokenGrant | [PlatformTokenGrant](../accelbyte_py_sdk/api/iam/operations/o_auth/platform_token_grant.py) | [platform_token_grant](../accelbyte_py_sdk/api/iam/wrappers/_o_auth.py) |
 | /iam/oauth/namespaces/{namespace}/platforms/{platformId}/token | POST | PlatformTokenRequestHandler | [PlatformTokenRequestHandler](../accelbyte_py_sdk/api/iam/operations/o_auth/platform_token_request_handler.py) | [platform_token_request_handler](../accelbyte_py_sdk/api/iam/wrappers/_o_auth.py) |
 | /iam/oauth/revoke/user | POST | RevokeAUser | [RevokeAUser](../accelbyte_py_sdk/api/iam/operations/o_auth/revoke_a_user.py) | [revoke_a_user](../accelbyte_py_sdk/api/iam/wrappers/_o_auth.py) |
 | /iam/oauth/revoke/token | POST | RevokeToken | [RevokeToken](../accelbyte_py_sdk/api/iam/operations/o_auth/revoke_token.py) | [revoke_token](../accelbyte_py_sdk/api/iam/wrappers/_o_auth.py) |
@@ -183,6 +182,7 @@
 | /iam/v2/admin/namespaces/{namespace}/users/{userId}/bans | GET | AdminGetUserBanV2 | [AdminGetUserBanV2](../accelbyte_py_sdk/api/iam/operations/users/admin_get_user_ban_v2.py) | [admin_get_user_ban_v2](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans | GET | AdminGetUserBanV3 | [AdminGetUserBanV3](../accelbyte_py_sdk/api/iam/operations/users/admin_get_user_ban_v3.py) | [admin_get_user_ban_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/admin/namespaces/{namespace}/users | GET | AdminGetUserByEmailAddressV3 | [AdminGetUserByEmailAddressV3](../accelbyte_py_sdk/api/iam/operations/users/admin_get_user_by_email_address_v3.py) | [admin_get_user_by_email_address_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
+| /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId} | GET | AdminGetUserByPlatformUserIDV3 | [AdminGetUserByPlatformUserIDV3](../accelbyte_py_sdk/api/iam/operations/users/admin_get_user_by_platform_user_idv3.py) | [admin_get_user_by_platform_user_idv3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v2/admin/namespaces/{namespace}/users/{userId} | GET | AdminGetUserByUserIdV2 | [AdminGetUserByUserIdV2](../accelbyte_py_sdk/api/iam/operations/users/admin_get_user_by_user_id_v2.py) | [admin_get_user_by_user_id_v2](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/admin/namespaces/{namespace}/users/{userId} | GET | AdminGetUserByUserIdV3 | [AdminGetUserByUserIdV3](../accelbyte_py_sdk/api/iam/operations/users/admin_get_user_by_user_id_v3.py) | [admin_get_user_by_user_id_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/admin/namespaces/{namespace}/users/{userId}/deletion/status | GET | AdminGetUserDeletionStatusV3 | [AdminGetUserDeletionStatusV3](../accelbyte_py_sdk/api/iam/operations/users/admin_get_user_deletion_status_v3.py) | [admin_get_user_deletion_status_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
@@ -335,7 +335,6 @@
 | accountcommon.ConflictedUserPlatformAccounts | [AccountcommonConflictedUserPlatformAccounts](../accelbyte_py_sdk/api/iam/models/accountcommon_conflicted_user_platform_accounts.py) |
 | accountcommon.CountryAgeRestriction | [AccountcommonCountryAgeRestriction](../accelbyte_py_sdk/api/iam/models/accountcommon_country_age_restriction.py) |
 | accountcommon.Description | [AccountcommonDescription](../accelbyte_py_sdk/api/iam/models/accountcommon_description.py) |
-| accountcommon.JWTBan | [AccountcommonJWTBan](../accelbyte_py_sdk/api/iam/models/accountcommon_jwt_ban.py) |
 | accountcommon.JWTBanV3 | [AccountcommonJWTBanV3](../accelbyte_py_sdk/api/iam/models/accountcommon_jwt_ban_v3.py) |
 | accountcommon.ListUsersWithPlatformAccountsResponse | [AccountcommonListUsersWithPlatformAccountsResponse](../accelbyte_py_sdk/api/iam/models/accountcommon_list_users_with_platform_accounts_response.py) |
 | accountcommon.NamespaceRole | [AccountcommonNamespaceRole](../accelbyte_py_sdk/api/iam/models/accountcommon_namespace_role.py) |
@@ -374,7 +373,6 @@
 | clientmodel.ClientsV3Response | [ClientmodelClientsV3Response](../accelbyte_py_sdk/api/iam/models/clientmodel_clients_v3_response.py) |
 | legal.AcceptedPoliciesRequest | [LegalAcceptedPoliciesRequest](../accelbyte_py_sdk/api/iam/models/legal_accepted_policies_request.py) |
 | model.AddUserRoleV4Request | [ModelAddUserRoleV4Request](../accelbyte_py_sdk/api/iam/models/model_add_user_role_v4_request.py) |
-| model.AdminInvitationV3 | [ModelAdminInvitationV3](../accelbyte_py_sdk/api/iam/models/model_admin_invitation_v3.py) |
 | model.AgeRestrictionRequest | [ModelAgeRestrictionRequest](../accelbyte_py_sdk/api/iam/models/model_age_restriction_request.py) |
 | model.AgeRestrictionRequestV3 | [ModelAgeRestrictionRequestV3](../accelbyte_py_sdk/api/iam/models/model_age_restriction_request_v3.py) |
 | model.AgeRestrictionResponse | [ModelAgeRestrictionResponse](../accelbyte_py_sdk/api/iam/models/model_age_restriction_response.py) |
@@ -397,8 +395,8 @@
 | model.GetUserJusticePlatformAccountResponse | [ModelGetUserJusticePlatformAccountResponse](../accelbyte_py_sdk/api/iam/models/model_get_user_justice_platform_account_response.py) |
 | model.GetUserMapping | [ModelGetUserMapping](../accelbyte_py_sdk/api/iam/models/model_get_user_mapping.py) |
 | model.GetUsersResponseWithPaginationV3 | [ModelGetUsersResponseWithPaginationV3](../accelbyte_py_sdk/api/iam/models/model_get_users_response_with_pagination_v3.py) |
-| model.InviteAdminRequestV3 | [ModelInviteAdminRequestV3](../accelbyte_py_sdk/api/iam/models/model_invite_admin_request_v3.py) |
-| model.InviteAdminResponseV3 | [ModelInviteAdminResponseV3](../accelbyte_py_sdk/api/iam/models/model_invite_admin_response_v3.py) |
+| model.InviteUserRequestV3 | [ModelInviteUserRequestV3](../accelbyte_py_sdk/api/iam/models/model_invite_user_request_v3.py) |
+| model.InviteUserResponseV3 | [ModelInviteUserResponseV3](../accelbyte_py_sdk/api/iam/models/model_invite_user_response_v3.py) |
 | model.LinkPlatformAccountRequest | [ModelLinkPlatformAccountRequest](../accelbyte_py_sdk/api/iam/models/model_link_platform_account_request.py) |
 | model.LinkRequest | [ModelLinkRequest](../accelbyte_py_sdk/api/iam/models/model_link_request.py) |
 | model.ListAssignedUsersV4Response | [ModelListAssignedUsersV4Response](../accelbyte_py_sdk/api/iam/models/model_list_assigned_users_v4_response.py) |
@@ -472,6 +470,7 @@
 | model.UserCreateResponseV3 | [ModelUserCreateResponseV3](../accelbyte_py_sdk/api/iam/models/model_user_create_response_v3.py) |
 | model.UserDeletionStatusResponse | [ModelUserDeletionStatusResponse](../accelbyte_py_sdk/api/iam/models/model_user_deletion_status_response.py) |
 | model.UserInformation | [ModelUserInformation](../accelbyte_py_sdk/api/iam/models/model_user_information.py) |
+| model.UserInvitationV3 | [ModelUserInvitationV3](../accelbyte_py_sdk/api/iam/models/model_user_invitation_v3.py) |
 | model.UserLoginHistoryResponse | [ModelUserLoginHistoryResponse](../accelbyte_py_sdk/api/iam/models/model_user_login_history_response.py) |
 | model.UserPasswordUpdateRequest | [ModelUserPasswordUpdateRequest](../accelbyte_py_sdk/api/iam/models/model_user_password_update_request.py) |
 | model.UserPasswordUpdateV3Request | [ModelUserPasswordUpdateV3Request](../accelbyte_py_sdk/api/iam/models/model_user_password_update_v3_request.py) |

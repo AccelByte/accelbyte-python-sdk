@@ -1,4 +1,4 @@
-# justice-basic-service (1.23.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,12 +32,11 @@ from ...models import ValidationErrorEntity
 class PublicGetNamespacePublisher(Operation):
     """Get namespace info related publisher namespace (publicGetNamespacePublisher)
 
-    Get namespace info related publisher namespace.
-    Other detail info:
-
-      * Required permission : resource= "NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
-      *  Action code : 11305
-      *  Returns : Namespace info related publisher namespace
+    Get namespace info related publisher namespace.<br>Other detail info:
+    <ul><li><i>Required permission</i>:
+    resource=<b>"NAMESPACE:{namespace}:NAMESPACE"</b>, action=2
+    <b>(READ)</b></li><li><i>Action code</i>: 11305</li><li><i>Returns</i>:
+    Namespace info related publisher namespace</li></ul>
 
 
     Properties:

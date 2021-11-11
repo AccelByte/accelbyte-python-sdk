@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,9 @@ from ...models import ResponseErrorResponse
 class GetGroupListAdminV1(Operation):
     """get list of groups (getGroupListAdminV1)
 
-    Required Permission: "ADMIN:NAMESPACE:{namespace}:GROUP [READ]"
-
-    Get list of groups. This endpoint will show any types of group
-
-    Action Code: 73301
+    <p>Required Permission: "ADMIN:NAMESPACE:{namespace}:GROUP [READ]" </p> <p>Get
+    list of groups. This endpoint will show any types of group</p> <p>Action Code:
+    73301</p>
 
 
     Properties:

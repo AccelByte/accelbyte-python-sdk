@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,13 +32,12 @@ from ...models import PaymentOrderInfo
 class ChargePaymentOrder(Operation):
     """Charge payment order without payment flow (chargePaymentOrder)
 
-    [TEST FACILITY ONLY] Charge payment order without payment flow for unpaid
-    payment order, usually for test usage to simulate real currency payment
-    process.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=4 (UPDATE)
-      *  Returns : payment order instance
+    <b>[TEST FACILITY ONLY] Forbidden in live environment. </b> Charge payment
+    order without payment flow for unpaid payment order, usually for test usage to
+    simulate real currency payment process.<br>Other detail info:
+    <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=4
+    (UPDATE)</li><li><i>Returns</i>: payment order instance</li></ul>
 
 
     Properties:

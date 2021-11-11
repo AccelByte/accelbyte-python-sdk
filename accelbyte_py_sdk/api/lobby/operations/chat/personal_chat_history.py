@@ -31,9 +31,9 @@ from ...models import RestapiErrorResponseBody
 class PersonalChatHistory(Operation):
     """load personal chat history (personalChatHistory)
 
-    Required permission : `NAMESPACE:{namespace}:USER:{userId}:CHAT [READ]` with
-    scope `social`
-    load personal chat history in a namespace.
+    Required permission : <code>NAMESPACE:{namespace}:USER:{userId}:CHAT
+    [READ]</code> with scope <code>social</code> <br>load personal chat history in
+    a namespace.
 
 
     Properties:

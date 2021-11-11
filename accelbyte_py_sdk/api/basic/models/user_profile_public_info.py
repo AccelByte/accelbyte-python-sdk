@@ -1,4 +1,4 @@
-# justice-basic-service (1.23.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -34,6 +34,8 @@ class UserProfilePublicInfo(Model):
 
         avatar_url: (avatarUrl) OPTIONAL str
 
+        custom_attributes: (customAttributes) OPTIONAL Dict[str, Any]
+
         namespace: (namespace) OPTIONAL str
 
         time_zone: (timeZone) OPTIONAL str
@@ -46,6 +48,7 @@ class UserProfilePublicInfo(Model):
     avatar_large_url: str                                                                          # OPTIONAL
     avatar_small_url: str                                                                          # OPTIONAL
     avatar_url: str                                                                                # OPTIONAL
+    custom_attributes: Dict[str, Any]                                                              # OPTIONAL
     namespace: str                                                                                 # OPTIONAL
     time_zone: str                                                                                 # OPTIONAL
     user_id: str                                                                                   # OPTIONAL
@@ -64,6 +67,10 @@ class UserProfilePublicInfo(Model):
 
     def with_avatar_url(self, value: str) -> UserProfilePublicInfo:
         self.avatar_url = value
+        return self
+
+    def with_custom_attributes(self, value: Dict[str, Any]) -> UserProfilePublicInfo:
+        self.custom_attributes = value
         return self
 
     def with_namespace(self, value: str) -> UserProfilePublicInfo:
@@ -96,6 +103,10 @@ class UserProfilePublicInfo(Model):
             result["avatarUrl"] = str(self.avatar_url)
         elif include_empty:
             result["avatarUrl"] = str()
+        if hasattr(self, "custom_attributes"):
+            result["customAttributes"] = {str(k0): v0 for k0, v0 in self.custom_attributes.items()}
+        elif include_empty:
+            result["customAttributes"] = {}
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -120,6 +131,7 @@ class UserProfilePublicInfo(Model):
         avatar_large_url: Optional[str] = None,
         avatar_small_url: Optional[str] = None,
         avatar_url: Optional[str] = None,
+        custom_attributes: Optional[Dict[str, Any]] = None,
         namespace: Optional[str] = None,
         time_zone: Optional[str] = None,
         user_id: Optional[str] = None,
@@ -131,6 +143,8 @@ class UserProfilePublicInfo(Model):
             instance.avatar_small_url = avatar_small_url
         if avatar_url is not None:
             instance.avatar_url = avatar_url
+        if custom_attributes is not None:
+            instance.custom_attributes = custom_attributes
         if namespace is not None:
             instance.namespace = namespace
         if time_zone is not None:
@@ -156,6 +170,10 @@ class UserProfilePublicInfo(Model):
             instance.avatar_url = str(dict_["avatarUrl"])
         elif include_empty:
             instance.avatar_url = str()
+        if "customAttributes" in dict_ and dict_["customAttributes"] is not None:
+            instance.custom_attributes = {str(k0): v0 for k0, v0 in dict_["customAttributes"].items()}
+        elif include_empty:
+            instance.custom_attributes = {}
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -176,6 +194,7 @@ class UserProfilePublicInfo(Model):
             "avatarLargeUrl": "avatar_large_url",
             "avatarSmallUrl": "avatar_small_url",
             "avatarUrl": "avatar_url",
+            "customAttributes": "custom_attributes",
             "namespace": "namespace",
             "timeZone": "time_zone",
             "userId": "user_id",

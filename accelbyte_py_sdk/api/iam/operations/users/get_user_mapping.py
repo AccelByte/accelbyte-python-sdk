@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,17 +30,13 @@ from ...models import ModelGetUserMapping
 class GetUserMapping(Operation):
     """Get user mapping (GetUserMapping)
 
-    This endpoint requires the client access token as the bearer token. Required
-    permission 'ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]'
-
-    This endpoint will support publisher access to game and game access to
-    publisher
-
-    If targetNamespace filled with publisher namespace then this endpoint will
-    return its game user id and game namespace
-
-    If targetNamespace filled with game namespace then this endpoint will return
-    its publisher user id and publisher namespace
+    <p>This endpoint requires the client access token as the bearer token.
+    Required permission 'ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId}
+    [READ]'</p> <p>This endpoint will support publisher access to game and game
+    access to publisher</p> <p>If targetNamespace filled with publisher namespace
+    then this endpoint will return its game user id and game namespace</p> <p>If
+    targetNamespace filled with game namespace then this endpoint will return its
+    publisher user id and publisher namespace</p>
 
 
     Properties:

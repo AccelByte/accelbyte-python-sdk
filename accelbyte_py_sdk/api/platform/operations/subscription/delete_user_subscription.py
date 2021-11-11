@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -28,10 +28,10 @@ from .....core import HttpResponse
 class DeleteUserSubscription(Operation):
     """Delete user subscription (deleteUserSubscription)
 
-    [TEST FACILITY ONLY] Delete user subscription.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=8 (DELETE)
+    <b>[TEST FACILITY ONLY] Forbidden in live environment. </b> Delete user
+    subscription.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=8
+    (DELETE)</li></ul>
 
 
     Properties:

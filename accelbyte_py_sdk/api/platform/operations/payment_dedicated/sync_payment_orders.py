@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,11 +32,9 @@ class SyncPaymentOrders(Operation):
 
     Sync payment orders. If response contains nextEvaluatedKey, please use it as
     query param in the next call to fetch the next batch, a batch has 1000
-    elements or less.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:PAYMENT", action=2 (READ)
-      *  Returns : sync payment orders
+    elements or less.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:PAYMENT", action=2 (READ)</li><li><i>Returns</i>: sync payment
+    orders</li></ul>
 
 
     Properties:

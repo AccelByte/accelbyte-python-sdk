@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -28,11 +28,9 @@ from .....core import HttpResponse
 class GetAggregatePaymentProviders(Operation):
     """Get aggregate payment providers (getAggregatePaymentProviders)
 
-    Get aggregate payment providers, such as XSOLLA, ADYEN.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : payment provider list
+    Get aggregate payment providers, such as XSOLLA, ADYEN.<br>Other detail info:
+    <ul><li><i>Required permission</i>: resource="ADMIN:PAYMENT:CONFIG", action=2
+    (READ)</li><li><i>Returns</i>: payment provider list</li></ul>
 
 
     Properties:

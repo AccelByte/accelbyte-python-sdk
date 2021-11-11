@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,13 +30,12 @@ from ...models import CategoryInfo
 class PublicGetDescendantCategories(Operation):
     """Get Descendant Categories (publicGetDescendantCategories)
 
-    This API is used to get descendant categories by category path.
-
-    Other detail info:
-
-      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store category)
-      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store category)
-      *  Returns : list of descendant categories data
+    This API is used to get descendant categories by category path.<p>Other detail
+    info: <ul><li><i>Optional permission</i>: resource="PREVIEW", action=1(CREATE)
+    (user with this permission can view draft store category)</li><li><i>Optional
+    permission</i>: resource="SANDBOX", action=1(CREATE) (user with this
+    permission can view draft store category)</li><li><i>Returns</i>: list of
+    descendant categories data</li></ul>
 
 
     Properties:

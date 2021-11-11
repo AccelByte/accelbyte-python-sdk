@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,11 +33,9 @@ from ...models import ValidationErrorEntity
 class CreateReward(Operation):
     """Create a reward (createReward)
 
-    This API is used to create a reward.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=1 (CREATE)
-      *  Returns : created reward data
+    This API is used to create a reward.<br>Other detail info: <ul><li><i>Required
+    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=1
+    (CREATE)</li><li><i>Returns</i>: created reward data</li></ul>
 
 
     Properties:
@@ -60,9 +58,9 @@ class CreateReward(Operation):
     Responses:
         200: OK - RewardInfo (successful operation)
 
-        409: Conflict - ErrorEntity (34071: Reward with code [{rewardCode}] already exists in namespace [{namespace}] | 34072: Duplicate reward condition [{rewardConditionName}] found in reward [{rewardCode}])
-
         404: Not Found - ErrorEntity (34042: Reward item [{itemId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (34071: Reward with code [{rewardCode}] already exists in namespace [{namespace}] | 34072: Duplicate reward condition [{rewardConditionName}] found in reward [{rewardCode}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -194,17 +192,17 @@ class CreateReward(Operation):
 
         200: OK - RewardInfo (successful operation)
 
-        409: Conflict - ErrorEntity (34071: Reward with code [{rewardCode}] already exists in namespace [{namespace}] | 34072: Duplicate reward condition [{rewardConditionName}] found in reward [{rewardCode}])
-
         404: Not Found - ErrorEntity (34042: Reward item [{itemId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (34071: Reward with code [{rewardCode}] already exists in namespace [{namespace}] | 34072: Duplicate reward condition [{rewardConditionName}] found in reward [{rewardCode}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return RewardInfo.create_from_dict(content), None
-        if code == 409:
-            return None, ErrorEntity.create_from_dict(content)
         if code == 404:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 409:
             return None, ErrorEntity.create_from_dict(content)
         if code == 422:
             return None, ValidationErrorEntity.create_from_dict(content)

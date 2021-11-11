@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,10 @@ from ...models import StoreInfo
 class DeleteStore(Operation):
     """Delete a store (deleteStore)
 
-    This API is used to delete a store. Only non published store can be deleted.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8 (DELETE)
-      *  Returns : store
+    This API is used to delete a store. Only non published store can be
+    deleted.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8
+    (DELETE)</li><li><i>Returns</i>: store</li></ul>
 
 
     Properties:

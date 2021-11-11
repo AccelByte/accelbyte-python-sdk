@@ -1,4 +1,4 @@
-# justice-cloudsave-service (1.8.0)
+# justice-cloudsave-service (1.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,53 +31,17 @@ from ...models import ModelsResponseError
 class PostPlayerRecordHandlerV1(Operation):
     """Create or append player record (postPlayerRecordHandlerV1)
 
-    Required Permission | `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD
-    [WRITE]`
-    ---|---
-    Required Scope | `social`
-
-    Create player record if it is not exists otherwise merge with these criteria:
-    - If field name is already exists, replace the value - If field name is not
-    exists, append it Example Replace value:
-
-
-
-            // existed record
-            {
-                "foo": "bar"
-            }
-
-            // new record (request body)
-            {
-                "foo": "bar_updated"
-            }
-
-            // result
-            {
-                "foo": "bar_updated"
-            }
-
-
-    Append value:
-
-
-
-            // existed record
-            {
-                "foo": "bar"
-            }
-
-            // new record (request body)
-            {
-                "foo_new": "bar_new"
-            }
-
-            // result
-            {
-                "foo": "bar",
-                "foo_new": "bar_new"
-            }
-
+    <table> <tr> <td>Required Permission</td>
+    <td><code>NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD
+    [WRITE]</code></td> </tr> <tr> <td>Required Scope</td>
+    <td><code>social</code></td> </tr> </table> <br/> Create player record if it
+    is not exists otherwise merge with these criteria: - If field name is already
+    exists, replace the value - If field name is not exists, append it Example
+    Replace value: <pre> // existed record { "foo": "bar" } // new record (request
+    body) { "foo": "bar_updated" } // result { "foo": "bar_updated" } </pre>
+    Append value: <pre> // existed record { "foo": "bar" } // new record (request
+    body) { "foo_new": "bar_new" } // result { "foo": "bar", "foo_new": "bar_new"
+    } </pre>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-social-service (1.18.1)
+# justice-social-service (1.21.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,10 @@ from ...models import UserGameProfiles
 class PublicGetUserGameProfiles(Operation):
     """Returns all profiles for specified users (publicGetUserGameProfiles)
 
-    Returns all profiles for specified users.
-    Other detail info:
-
-      *  Required permission : resource="NAMESPACE:{namespace}:GAMEPROFILE", action=2 (READ)
-      * Returns : list of profiles
+    Returns all profiles for specified users.<br>Other detail
+    info:<ul><li><i>Required permission</i>:
+    resource="NAMESPACE:{namespace}:GAMEPROFILE", action=2 (READ)
+    <li><i>Returns</i>: list of profiles</ul>
 
 
     Properties:

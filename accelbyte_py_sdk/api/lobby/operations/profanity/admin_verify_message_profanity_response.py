@@ -32,9 +32,9 @@ from ...models import RestapiErrorResponseBody
 class AdminVerifyMessageProfanityResponse(Operation):
     """verify a message directly from the UI or other services (adminVerifyMessageProfanityResponse)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with
-    scope `social`
-    verify a message directly from the UI or other services
+    Required permission : <code>ADMIN:NAMESPACE:{namespace}:PROFANITY
+    [READ]</code> with scope <code>social</code> <br>verify a message directly
+    from the UI or other services
 
 
     Properties:

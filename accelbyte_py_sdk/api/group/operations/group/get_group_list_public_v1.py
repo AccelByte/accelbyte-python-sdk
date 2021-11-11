@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,13 +31,10 @@ from ...models import ResponseErrorResponse
 class GetGroupListPublicV1(Operation):
     """get list of groups (getGroupListPublicV1)
 
-    Required valid user authentication
-
-    Get list of groups. This endpoint will only show OPEN and PUBLIC group type.
-    This endpoint can search based on the group name by filling the "groupName"
-    query parameter
-
-    Action Code: 73303
+    <p>Required valid user authentication </p> <p>Get list of groups. This
+    endpoint will only show OPEN and PUBLIC group type. This endpoint can search
+    based on the group name by filling the "groupName" query parameter</p>
+    <p>Action Code: 73303</p>
 
 
     Properties:

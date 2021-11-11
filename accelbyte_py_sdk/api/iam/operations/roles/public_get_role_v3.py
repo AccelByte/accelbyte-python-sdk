@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,9 +31,8 @@ from ...models import RestErrorResponse
 class PublicGetRoleV3(Operation):
     """Get Public Role (PublicGetRoleV3)
 
-
-    This endpoint is used to get non-admin role based on specify roleId.
-    action code : 10417
+    <br>This endpoint is used to get non-admin role based on specify roleId.
+    <br>action code : 10417
 
 
     Properties:

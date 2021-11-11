@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,19 +30,14 @@ from .....core import deprecated
 class RevokeAUser(Operation):
     """OAuth2 user revocation API (RevokeAUser)
 
-    ## The endpoint is going to be deprecated at 21 August, 2018. Please use this
-    instead: oauth/namespaces/{namespace}/users/{userId}/revoke
-
-    This endpoint revokes a user.
-
-    This endpoint requires all requests to have Authorization header set with
-    Bearer access authentication with valid access token.
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userID}:ADMIN [UPDATE]'
-
-    When other clients know that the userID has been revoked and the token is
-    issued before the revocation, forcing a new token will contain banned
-    permissions.
+    <h2>The endpoint is going to be deprecated at 21 August, 2018. Please use this
+    instead: oauth/namespaces/{namespace}/users/{userId}/revoke</h2> <p>This
+    endpoint revokes a user. </p> <p>This endpoint requires all requests to have
+    Authorization header set with Bearer access authentication with valid access
+    token.</p> <p>Required permission 'NAMESPACE:{namespace}:USER:{userID}:ADMIN
+    [UPDATE]'</p> <p>When other clients know that the userID has been revoked and
+    the token is issued before the revocation, forcing a new token will contain
+    banned permissions. </p>
 
 
     Properties:

@@ -31,11 +31,9 @@ from ...models import RestapiErrorResponseBody
 class FreeFormNotificationByUserID(Operation):
     """send freeform notification to a user (freeFormNotificationByUserID)
 
-    Required permission : `NAMESPACE:{namespace}:USER:{userId}:NOTIFICATION
-    [CREATE]` with scope `social`
-    Sends notification to a user. There are two types of notification: sync and
-    async. Async message will be stored to database if the receiver is offline.
-    This stored message could be retrieved later via websocket command.
+    Required permission : <code>NAMESPACE:{namespace}:USER:{userId}:NOTIFICATION
+    [CREATE]</code> with scope <code>social</code> <br>Sends notification to a
+    user.
 
 
     Properties:
@@ -56,8 +54,6 @@ class FreeFormNotificationByUserID(Operation):
         namespace: (namespace) REQUIRED str in path
 
         user_id: (userId) REQUIRED str in path
-
-        async_: (async) OPTIONAL bool in query
 
     Responses:
         204: No Content - (No Content)
@@ -83,7 +79,6 @@ class FreeFormNotificationByUserID(Operation):
     body: ModelFreeFormNotificationRequest                                                         # REQUIRED in [body]
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
-    async_: bool                                                                                   # OPTIONAL in [query]
 
     # endregion fields
 
@@ -126,9 +121,6 @@ class FreeFormNotificationByUserID(Operation):
             url = url.replace(f"{{{k}}}", str(v))
         result += url
 
-        # query params
-        result += "?" + "&".join([f"{k}={v}" for k, v in self.get_query_params().items()])
-
         return result
 
     # noinspection PyMethodMayBeStatic
@@ -147,7 +139,6 @@ class FreeFormNotificationByUserID(Operation):
         return {
             "body": self.get_body_params(),
             "path": self.get_path_params(),
-            "query": self.get_query_params(),
         }
 
     def get_body_params(self) -> Any:
@@ -159,12 +150,6 @@ class FreeFormNotificationByUserID(Operation):
             result["namespace"] = self.namespace
         if hasattr(self, "user_id"):
             result["userId"] = self.user_id
-        return result
-
-    def get_query_params(self) -> dict:
-        result = {}
-        if hasattr(self, "async_"):
-            result["async"] = self.async_
         return result
 
     # endregion get_x_params methods
@@ -196,10 +181,6 @@ class FreeFormNotificationByUserID(Operation):
         self.user_id = value
         return self
 
-    def with_async_(self, value: bool) -> FreeFormNotificationByUserID:
-        self.async_ = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
@@ -218,10 +199,6 @@ class FreeFormNotificationByUserID(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "async_") and self.async_:
-            result["async"] = bool(self.async_)
-        elif include_empty:
-            result["async"] = bool()
         return result
 
     # endregion to methods
@@ -267,14 +244,11 @@ class FreeFormNotificationByUserID(Operation):
         body: ModelFreeFormNotificationRequest,
         namespace: str,
         user_id: str,
-        async_: Optional[bool] = None,
     ) -> FreeFormNotificationByUserID:
         instance = cls()
         instance.body = body
         instance.namespace = namespace
         instance.user_id = user_id
-        if async_ is not None:
-            instance.async_ = async_
         return instance
 
     @classmethod
@@ -292,10 +266,6 @@ class FreeFormNotificationByUserID(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
-        if "async" in dict_ and dict_["async"] is not None:
-            instance.async_ = bool(dict_["async"])
-        elif include_empty:
-            instance.async_ = bool()
         return instance
 
     @staticmethod
@@ -304,7 +274,6 @@ class FreeFormNotificationByUserID(Operation):
             "body": "body",
             "namespace": "namespace",
             "userId": "user_id",
-            "async": "async_",
         }
 
     # endregion static methods

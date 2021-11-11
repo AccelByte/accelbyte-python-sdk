@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,14 +30,11 @@ from .....core import deprecated
 class RevokeToken(Operation):
     """OAuth2 token revocation API (RevokeToken)
 
-    # Deprecated at August 30, 2019. Please use the /v3/oauth/revoke endpoint
-    instead
-
-    Revokes a token.
-
-    This endpoint requires all requests to have Authorization header set with
-    Basic access authentication constructed from client id and client secret or
-    Bearer access authentication with valid access token.
+    <h1>Deprecated at August 30, 2019. Please use the /v3/oauth/revoke endpoint
+    instead</h1> <p>Revokes a token.</p> <p>This endpoint requires all requests to
+    have Authorization header set with Basic access authentication constructed
+    from client id and client secret or Bearer access authentication with valid
+    access token.</p>
 
 
     Properties:

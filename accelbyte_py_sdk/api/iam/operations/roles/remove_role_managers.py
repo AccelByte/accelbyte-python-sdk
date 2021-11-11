@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,13 +30,12 @@ from ...models import ModelRoleManagersRequest
 class RemoveRoleManagers(Operation):
     """Remove Role Managers (RemoveRoleManagers)
 
-    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
-
-    Required Permission 'ROLE:ADMIN [UPDATE]' is going to be DEPRECATED for
-    security purpose. It is going to be deprecated on 31 JANUARY 2019 , please use
-    permission 'ADMIN:ROLE [UPDATE]' instead.
-
-    Role can only be assigned to other users by the role's manager.
+    <p>Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'</p>
+    <p>Required Permission 'ROLE:ADMIN [UPDATE]' is going to be
+    <strong>DEPRECATED</strong> for security purpose. It is going to be deprecated
+    on <strong>31 JANUARY 2019</strong>, please use permission 'ADMIN:ROLE
+    [UPDATE]' instead.</p> <p>Role can only be assigned to other users by the
+    role's manager.</p>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-dsm-controller-service Index (2.6.0)
+# justice-dsm-controller-service Index (2.8.0)
 
 
 ## Operations
@@ -83,6 +83,7 @@
 |---|---|---|---|---|
 | /dsmcontroller/public/provider/default | GET | GetDefaultProvider | [GetDefaultProvider](../accelbyte_py_sdk/api/dsmc/operations/public/get_default_provider.py) | [get_default_provider](../accelbyte_py_sdk/api/dsmc/wrappers/_public.py) |
 | /dsmcontroller/public/providers | GET | ListProviders | [ListProviders](../accelbyte_py_sdk/api/dsmc/operations/public/list_providers.py) | [list_providers](../accelbyte_py_sdk/api/dsmc/wrappers/_public.py) |
+| /dsmcontroller/public/providers/regions/{region} | GET | ListProvidersByRegion | [ListProvidersByRegion](../accelbyte_py_sdk/api/dsmc/operations/public/list_providers_by_region.py) | [list_providers_by_region](../accelbyte_py_sdk/api/dsmc/wrappers/_public.py) |
 
 ### Server
 | Endpoint | Method | ID | Class | Wrapper |
@@ -117,7 +118,6 @@
 | models.CreateRegionOverrideRequest | [ModelsCreateRegionOverrideRequest](../accelbyte_py_sdk/api/dsmc/models/models_create_region_override_request.py) |
 | models.CreateSessionRequest | [ModelsCreateSessionRequest](../accelbyte_py_sdk/api/dsmc/models/models_create_session_request.py) |
 | models.DefaultProvider | [ModelsDefaultProvider](../accelbyte_py_sdk/api/dsmc/models/models_default_provider.py) |
-| models.DeploymentConfig | [ModelsDeploymentConfig](../accelbyte_py_sdk/api/dsmc/models/models_deployment_config.py) |
 | models.DeploymentConfigOverride | [ModelsDeploymentConfigOverride](../accelbyte_py_sdk/api/dsmc/models/models_deployment_config_override.py) |
 | models.DeploymentWithOverride | [ModelsDeploymentWithOverride](../accelbyte_py_sdk/api/dsmc/models/models_deployment_with_override.py) |
 | models.DeregisterLocalServerRequest | [ModelsDeregisterLocalServerRequest](../accelbyte_py_sdk/api/dsmc/models/models_deregister_local_server_request.py) |
@@ -136,14 +136,9 @@
 | models.ListPodConfigResponse | [ModelsListPodConfigResponse](../accelbyte_py_sdk/api/dsmc/models/models_list_pod_config_response.py) |
 | models.ListServerResponse | [ModelsListServerResponse](../accelbyte_py_sdk/api/dsmc/models/models_list_server_response.py) |
 | models.ListSessionResponse | [ModelsListSessionResponse](../accelbyte_py_sdk/api/dsmc/models/models_list_session_response.py) |
-| models.MatchResult | [ModelsMatchResult](../accelbyte_py_sdk/api/dsmc/models/models_match_result.py) |
-| models.OverrideConfig | [ModelsOverrideConfig](../accelbyte_py_sdk/api/dsmc/models/models_override_config.py) |
 | models.PagingCursor | [ModelsPagingCursor](../accelbyte_py_sdk/api/dsmc/models/models_paging_cursor.py) |
-| models.PodConfig | [ModelsPodConfig](../accelbyte_py_sdk/api/dsmc/models/models_pod_config.py) |
 | models.PodConfigRecord | [ModelsPodConfigRecord](../accelbyte_py_sdk/api/dsmc/models/models_pod_config_record.py) |
-| models.PodCountConfig | [ModelsPodCountConfig](../accelbyte_py_sdk/api/dsmc/models/models_pod_count_config.py) |
 | models.PodCountConfigOverride | [ModelsPodCountConfigOverride](../accelbyte_py_sdk/api/dsmc/models/models_pod_count_config_override.py) |
-| models.PodCountConfigUpdate | [ModelsPodCountConfigUpdate](../accelbyte_py_sdk/api/dsmc/models/models_pod_count_config_update.py) |
 | models.RegisterLocalServerRequest | [ModelsRegisterLocalServerRequest](../accelbyte_py_sdk/api/dsmc/models/models_register_local_server_request.py) |
 | models.RegisterServerRequest | [ModelsRegisterServerRequest](../accelbyte_py_sdk/api/dsmc/models/models_register_server_request.py) |
 | models.RequestMatchMember | [ModelsRequestMatchMember](../accelbyte_py_sdk/api/dsmc/models/models_request_match_member.py) |

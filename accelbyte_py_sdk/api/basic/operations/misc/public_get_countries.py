@@ -1,4 +1,4 @@
-# justice-basic-service (1.23.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,10 +31,8 @@ from ...models import ValidationErrorEntity
 class PublicGetCountries(Operation):
     """List countries (publicGetCountries)
 
-    List countries.
-    Other detail info:
-
-      * Returns : country code list
+    List countries.<br>Other detail info: <ul><li><i>Returns</i>: country code
+    list</li></ul>
 
 
     Properties:

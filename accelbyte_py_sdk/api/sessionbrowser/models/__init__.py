@@ -22,7 +22,6 @@ from .models_matching_ally import ModelsMatchingAlly
 from .models_matching_party import ModelsMatchingParty
 from .models_paging_cursor import ModelsPagingCursor
 from .models_party_member import ModelsPartyMember
-from .models_pod_config import ModelsPodConfig
 from .models_recent_player_history import ModelsRecentPlayerHistory
 from .models_recent_player_query_response import ModelsRecentPlayerQueryResponse
 from .models_server import ModelsServer

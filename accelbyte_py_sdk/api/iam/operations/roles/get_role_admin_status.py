@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,9 +30,8 @@ from ...models import ModelRoleAdminStatusResponse
 class GetRoleAdminStatus(Operation):
     """Get Role Admin Status (GetRoleAdminStatus)
 
-    Required permission 'ROLE [READ]'
-
-    Admin roles has its members listed in the role.
+    <p>Required permission 'ROLE [READ]'</p> <p>Admin roles has its members listed
+    in the role.</p>
 
 
     Properties:

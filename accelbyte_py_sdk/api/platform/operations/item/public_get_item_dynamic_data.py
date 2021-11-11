@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,10 +31,8 @@ from ...models import ItemDynamicDataInfo
 class PublicGetItemDynamicData(Operation):
     """Get item dynamic data (publicGetItemDynamicData)
 
-    Get item dynamic data for a published item.
-    Other detail info:
-
-      * Returns : item dynamic data
+    Get item dynamic data for a published item.<br>Other detail info:
+    <ul><li><i>Returns</i>: item dynamic data</li></ul>
 
 
     Properties:

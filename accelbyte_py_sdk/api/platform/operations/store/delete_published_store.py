@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,13 +32,9 @@ class DeletePublishedStore(Operation):
     """Delete published store (deletePublishedStore)
 
     This API is used to delete published store including category and items before
-    release to public.
-
-     Warning: Please do not use this API once published to public user.
-
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8 (DELETE)
+    release to public.<p><b>Warning: Please do not use this API once published to
+    public user.</b><p>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8 (DELETE)</li></ul>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-social-service (1.18.1)
+# justice-social-service (1.21.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,11 +30,9 @@ from ...models import ErrorEntity
 class PublicCreateUserNamespaceSlot(Operation):
     """Creates a slot (publicCreateUserNamespaceSlot)
 
-    Creates a slot.
-    Other detail info:
-
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=1 (CREATE)
-      *  Returns : created slot info
+    Creates a slot.<br>Other detail info:<ul><li><i>Required permission</i>:
+    resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=1
+    (CREATE)</li><li><i>Returns</i>: created slot info</li></ul>
 
 
     Properties:

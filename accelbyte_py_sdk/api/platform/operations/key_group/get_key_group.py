@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,9 @@ from ...models import KeyGroupInfo
 class GetKeyGroup(Operation):
     """Get key group (getKeyGroup)
 
-    Get key group.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2 (READ)
-      *  Returns : key group info
+    Get key group.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2
+    (READ)</li><li><i>Returns</i>: key group info</li></ul>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-basic-service (1.23.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,12 +31,9 @@ from ...models import ValidationErrorEntity
 class GetTimeZones(Operation):
     """List time zones (getTimeZones)
 
-    List time zones.
-    Other detail info:
-
-      * Required permission : login user
-      *  Action code : 11205
-      *  Returns : time zones
+    List time zones.<br>Other detail info: <ul><li><i>Required permission</i>:
+    login user</li><li><i>Action code</i>: 11205</li><li><i>Returns</i>: time
+    zones</li></ul>
 
 
     Properties:

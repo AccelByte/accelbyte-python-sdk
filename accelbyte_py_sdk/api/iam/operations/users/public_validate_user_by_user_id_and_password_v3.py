@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -29,11 +29,8 @@ class PublicValidateUserByUserIDAndPasswordV3(Operation):
     """Validate user password by user ID and password (PublicValidateUserByUserIDAndPasswordV3)
 
     This endpoint is used to validate the user password. Required valid user
-    authorization and valid user ID.
-
-    Notes:
-
-      * This endpoint validate the user password by specifying the userId and password
+    authorization and valid user ID. <p>Notes:</p> <ul> <li>This endpoint validate
+    the user password by specifying the userId and password</li> </ul>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,8 +30,8 @@ from ...models import RestapiErrorResponse
 class AdminDeleteClientPermissionV3(Operation):
     """Delete Client Permission (AdminDeleteClientPermissionV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT [UPDATE]'
-    action code : 10304
+    Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT [UPDATE]'<br>action
+    code : 10304
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,13 +30,10 @@ class PlatformAuthenticateSAMLV3Handler(Operation):
 
     This endpoint authenticates user platform for SAML protocol. It validates user
     to its respective platforms. Deactivated or login-banned users are unable to
-    login.
-
-    ## Supported platforms:
-
-      * azure
-    Microsoft login page will redirects to this endpoint after login success as
-    previously defined on authentication request SAML
+    login. <br> <h2>Supported platforms:</h2><ul>
+    <li><strong>azure</strong></li>Microsoft login page will redirects to this
+    endpoint after login success as previously defined on authentication request
+    SAML </ul>
 
 
     Properties:

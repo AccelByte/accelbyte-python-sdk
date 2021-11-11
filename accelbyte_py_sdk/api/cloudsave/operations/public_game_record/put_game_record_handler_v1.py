@@ -1,4 +1,4 @@
-# justice-cloudsave-service (1.8.0)
+# justice-cloudsave-service (1.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,31 +31,14 @@ from ...models import ModelsResponseError
 class PutGameRecordHandlerV1(Operation):
     """Create or replace game record (putGameRecordHandlerV1)
 
-    Required Permission | `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]`
-    ---|---
-    Required Scope | `social`
-
+    <table> <tr> <td>Required Permission</td>
+    <td><code>NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]</code></td> </tr>
+    <tr> <td>Required Scope</td> <td><code>social</code></td> </tr> </table> <br/>
     If record already exists, it will be replaced with the one from request body
     (all fields will be deleted). If record is not exists, it will create a new
-    one with value from request body. Example: Replace all records
-
-
-
-            // existed record
-            {
-                "foo": "bar"
-            }
-
-            // new update (request body)
-            {
-                "foo_new": "bar_new"
-            }
-
-            // result
-            {
-                "foo_new": "bar_new"
-            }
-
+    one with value from request body. Example: Replace all records <pre> //
+    existed record { "foo": "bar" } // new update (request body) { "foo_new":
+    "bar_new" } // result { "foo_new": "bar_new" } </pre>
 
 
     Properties:

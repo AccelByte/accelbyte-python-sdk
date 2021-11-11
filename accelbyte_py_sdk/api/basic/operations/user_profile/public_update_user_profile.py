@@ -1,4 +1,4 @@
-# justice-basic-service (1.23.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,14 +33,11 @@ from ...models import ValidationErrorEntity
 class PublicUpdateUserProfile(Operation):
     """Update user profile (publicUpdateUserProfile)
 
-    Update user profile.
-    Other detail info:
-
-      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11402
-      *  Language : allowed format: en, en-US
-      *  Timezone : IANA time zone, e.g. Asia/Shanghai
-      *  Returns : Updated user profile
+    Update user profile.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource=<b>"NAMESPACE:{namespace}:USER:{userId}:PROFILE"</b>, action=4
+    <b>(UPDATE)</b></li><li><i>Action code</i>: 11402</li><li><i>Language</i> :
+    allowed format: en, en-US</li><li><i>Timezone</i> : IANA time zone, e.g.
+    Asia/Shanghai</li><li><i>Returns</i>: Updated user profile</li></ul>
 
 
     Properties:

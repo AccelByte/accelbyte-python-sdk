@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -34,15 +34,11 @@ class SyncInGameItem(Operation):
     """Sync an in game item (syncInGameItem)
 
     This API is used to sync an in game item in game namespace to publisher
-    namespace, at current BUNDLE can't be synced.
-
-    The synced item has an additional field targetItemId besides targetNamespace,
-    mostly this item should not modified manually again.
-
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
-      *  Returns : item data
+    namespace, at current BUNDLE can't be synced.<p>The synced item has an
+    additional field targetItemId besides targetNamespace, mostly this item should
+    not modified manually again. <p>Other detail info: <ul><li><i>Required
+    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4
+    (UPDATE)</li><li><i>Returns</i>: item data</li></ul>
 
 
     Properties:
@@ -67,9 +63,9 @@ class SyncInGameItem(Operation):
     Responses:
         200: OK - FullItemInfo (successful operation)
 
-        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
-
         400: Bad Request - ErrorEntity (30021: Default language [{language}] required | 30022: Default region [{region}] is required | 30324: Invalid namespace [{namespace}])
+
+        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (30173: Published store can't modify content | 30373: ItemType [{itemType}] is not allowed in namespace [{namespace}])
 
@@ -225,9 +221,9 @@ class SyncInGameItem(Operation):
 
         200: OK - FullItemInfo (successful operation)
 
-        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
-
         400: Bad Request - ErrorEntity (30021: Default language [{language}] required | 30022: Default region [{region}] is required | 30324: Invalid namespace [{namespace}])
+
+        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (30173: Published store can't modify content | 30373: ItemType [{itemType}] is not allowed in namespace [{namespace}])
 
@@ -235,9 +231,9 @@ class SyncInGameItem(Operation):
         """
         if code == 200:
             return FullItemInfo.create_from_dict(content), None
-        if code == 404:
-            return None, ErrorEntity.create_from_dict(content)
         if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 409:
             return None, ErrorEntity.create_from_dict(content)

@@ -31,12 +31,9 @@ from ...models import RestapiErrorResponseV1
 class SendMultipleUsersFreeformNotificationV1Admin(Operation):
     """send freeform notification to multiple users (sendMultipleUsersFreeformNotificationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with
-    scope `social`
-    Sends notification to multiple user. There are two types of notification: sync
-    and async. Async message will be stored to database if the receiver is
-    offline. This stored message could be retrieved later via websocket command.
-    Action Code: 50211
+    Required permission : <code>ADMIN:NAMESPACE:{namespace}:NOTIFICATION
+    [CREATE]</code> with scope <code>social</code> <br>Sends notification to
+    multiple user. Action Code: 50211
 
 
     Properties:
@@ -55,8 +52,6 @@ class SendMultipleUsersFreeformNotificationV1Admin(Operation):
         body: (body) REQUIRED ModelBulkUsersFreeFormNotificationRequestV1 in body
 
         namespace: (namespace) REQUIRED str in path
-
-        async_: (async) OPTIONAL bool in query
 
     Responses:
         204: No Content - (No Content)
@@ -79,7 +74,6 @@ class SendMultipleUsersFreeformNotificationV1Admin(Operation):
 
     body: ModelBulkUsersFreeFormNotificationRequestV1                                              # REQUIRED in [body]
     namespace: str                                                                                 # REQUIRED in [path]
-    async_: bool                                                                                   # OPTIONAL in [query]
 
     # endregion fields
 
@@ -122,9 +116,6 @@ class SendMultipleUsersFreeformNotificationV1Admin(Operation):
             url = url.replace(f"{{{k}}}", str(v))
         result += url
 
-        # query params
-        result += "?" + "&".join([f"{k}={v}" for k, v in self.get_query_params().items()])
-
         return result
 
     # noinspection PyMethodMayBeStatic
@@ -142,7 +133,6 @@ class SendMultipleUsersFreeformNotificationV1Admin(Operation):
         return {
             "body": self.get_body_params(),
             "path": self.get_path_params(),
-            "query": self.get_query_params(),
         }
 
     def get_body_params(self) -> Any:
@@ -152,12 +142,6 @@ class SendMultipleUsersFreeformNotificationV1Admin(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        return result
-
-    def get_query_params(self) -> dict:
-        result = {}
-        if hasattr(self, "async_"):
-            result["async"] = self.async_
         return result
 
     # endregion get_x_params methods
@@ -183,10 +167,6 @@ class SendMultipleUsersFreeformNotificationV1Admin(Operation):
         self.namespace = value
         return self
 
-    def with_async_(self, value: bool) -> SendMultipleUsersFreeformNotificationV1Admin:
-        self.async_ = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
@@ -201,10 +181,6 @@ class SendMultipleUsersFreeformNotificationV1Admin(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "async_") and self.async_:
-            result["async"] = bool(self.async_)
-        elif include_empty:
-            result["async"] = bool()
         return result
 
     # endregion to methods
@@ -245,13 +221,10 @@ class SendMultipleUsersFreeformNotificationV1Admin(Operation):
         cls,
         body: ModelBulkUsersFreeFormNotificationRequestV1,
         namespace: str,
-        async_: Optional[bool] = None,
     ) -> SendMultipleUsersFreeformNotificationV1Admin:
         instance = cls()
         instance.body = body
         instance.namespace = namespace
-        if async_ is not None:
-            instance.async_ = async_
         return instance
 
     @classmethod
@@ -265,10 +238,6 @@ class SendMultipleUsersFreeformNotificationV1Admin(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "async" in dict_ and dict_["async"] is not None:
-            instance.async_ = bool(dict_["async"])
-        elif include_empty:
-            instance.async_ = bool()
         return instance
 
     @staticmethod
@@ -276,7 +245,6 @@ class SendMultipleUsersFreeformNotificationV1Admin(Operation):
         return {
             "body": "body",
             "namespace": "namespace",
-            "async": "async_",
         }
 
     # endregion static methods

@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -34,8 +34,7 @@ class PublicUpgradeHeadlessAccountV4(Operation):
 
     Require valid user authorization Upgrade headless account to full account
     without verifying email address. Client does not need to provide verification
-    code which sent to email address.
-    action code : 10124
+    code which sent to email address. <br>action code : 10124 </p>
 
 
     Properties:

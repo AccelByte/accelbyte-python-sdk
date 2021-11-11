@@ -61,6 +61,8 @@ class JoinSession(Operation):
 
         400: Bad Request - RestapiErrorResponseV2 (malformed request)
 
+        403: Forbidden - RestapiErrorResponseV2 (user is banned from joining session)
+
         404: Not Found - RestapiErrorResponseV2 (session not found)
 
         500: Internal Server Error - RestapiErrorResponseV2 (Internal Server Error)
@@ -212,6 +214,8 @@ class JoinSession(Operation):
 
         400: Bad Request - RestapiErrorResponseV2 (malformed request)
 
+        403: Forbidden - RestapiErrorResponseV2 (user is banned from joining session)
+
         404: Not Found - RestapiErrorResponseV2 (session not found)
 
         500: Internal Server Error - RestapiErrorResponseV2 (Internal Server Error)
@@ -219,6 +223,8 @@ class JoinSession(Operation):
         if code == 200:
             return ModelsSessionResponse.create_from_dict(content), None
         if code == 400:
+            return None, RestapiErrorResponseV2.create_from_dict(content)
+        if code == 403:
             return None, RestapiErrorResponseV2.create_from_dict(content)
         if code == 404:
             return None, RestapiErrorResponseV2.create_from_dict(content)

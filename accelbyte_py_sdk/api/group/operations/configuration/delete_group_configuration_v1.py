@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,13 +30,10 @@ from ...models import ResponseErrorResponse
 class DeleteGroupConfigurationV1(Operation):
     """Delete group configuration (deleteGroupConfigurationV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [DELETE]'
-
-    This endpoint is used to delete group configuration. This Configuration is
-    used to be the main rule of the service. Each namespace will have its own
-    configuration
-
-    Action Code: 73101
+    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION
+    [DELETE]'</p> <p>This endpoint is used to delete group configuration. This
+    Configuration is used to be the main rule of the service. Each namespace will
+    have its own configuration</p> <p>Action Code: 73101</p>
 
 
     Properties:

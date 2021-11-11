@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -29,10 +29,10 @@ class AnonymizeSubscription(Operation):
     """anonymize subscription (anonymizeSubscription)
 
     Anonymize subscription. At current it will anonymize subscription, billing
-    history and subscription activity.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
+    history and subscription activity.<br>Other detail info: <ul><li><i>Required
+    permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8
+    (DELETE)</li></ul>
 
 
     Properties:

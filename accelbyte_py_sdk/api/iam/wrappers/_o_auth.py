@@ -28,7 +28,6 @@ from ..models import OauthmodelTokenResponse
 from ..operations.o_auth import Authorization
 from ..operations.o_auth import GetJWKS
 from ..operations.o_auth import GetRevocationList
-from ..operations.o_auth import PlatformTokenGrant
 from ..operations.o_auth import PlatformTokenRequestHandler
 from ..operations.o_auth import RevokeAUser
 from ..operations.o_auth import RevokeToken
@@ -60,17 +59,6 @@ def get_jwks(x_additional_headers: Optional[Dict[str, str]] = None):
 @same_doc_as(GetRevocationList)
 def get_revocation_list(x_additional_headers: Optional[Dict[str, str]] = None):
     request = GetRevocationList.create()
-    return run_request(request, additional_headers=x_additional_headers)
-
-
-@same_doc_as(PlatformTokenGrant)
-def platform_token_grant(platform_id: str, device_id: Optional[str] = None, namespace: Optional[str] = None, platform_token: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    request = PlatformTokenGrant.create(
-        platform_id=platform_id,
-        device_id=device_id,
-        namespace=namespace,
-        platform_token=platform_token,
-    )
     return run_request(request, additional_headers=x_additional_headers)
 
 

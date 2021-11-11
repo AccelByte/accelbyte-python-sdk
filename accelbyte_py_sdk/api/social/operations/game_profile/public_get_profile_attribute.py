@@ -1,4 +1,4 @@
-# justice-social-service (1.18.1)
+# justice-social-service (1.21.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,9 @@ from ...models import ErrorEntity
 class PublicGetProfileAttribute(Operation):
     """Returns game profile attribute (publicGetProfileAttribute)
 
-    Returns game profile attribute.
-    Other detail info:
-
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=2 (READ)
-      *  Returns : attribute info
+    Returns game profile attribute.<br>Other detail info:<ul><li><i>Required
+    permission</i>: resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE",
+    action=2 (READ)</li><li><i>Returns</i>: attribute info</li></ul>
 
 
     Properties:

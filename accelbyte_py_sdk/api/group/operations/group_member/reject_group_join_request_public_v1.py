@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,20 +31,12 @@ from ...models import ResponseErrorResponse
 class RejectGroupJoinRequestPublicV1(Operation):
     """Reject Group Join Request (rejectGroupJoinRequestPublicV1)
 
-    Required valid user authentication
-
-    Required Member Role Permission: "GROUP:JOIN [CREATE]"
-
-    This endpoint is used to reject group join request.
-
-    Reject group join request. If specific user is not asked to join the specific
-    group ID, it will show the the error to show if the user is not asked to join
-    yet.
-
-    This endpoint will also check if the specific user is already joined to
-    specific group
-
-    Action Code: 73408
+    <p>Required valid user authentication </p> <p>Required Member Role Permission:
+    "GROUP:JOIN [CREATE]"</p> <p>This endpoint is used to reject group join
+    request.</p> <p>Reject group join request. If specific user is not asked to
+    join the specific group ID, it will show the the error to show if the user is
+    not asked to join yet.</p> <p>This endpoint will also check if the specific
+    user is already joined to specific group</p> <p>Action Code: 73408</p>
 
 
     Properties:

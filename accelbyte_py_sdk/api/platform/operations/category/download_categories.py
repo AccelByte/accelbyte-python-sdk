@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,13 +31,12 @@ from ...models import HierarchicalCategoryInfo
 class DownloadCategories(Operation):
     """Download store's structured categories (downloadCategories)
 
-    This API is used to download store's structured categories.
-
-    Other detail info:
-
-      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store content)
-      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store content)
-      *  Returns : structured categories
+    This API is used to download store's structured categories.<p>Other detail
+    info: <ul><li><i>Optional permission</i>: resource="PREVIEW", action=1(CREATE)
+    (user with this permission can view draft store content)</li><li><i>Optional
+    permission</i>: resource="SANDBOX", action=1(CREATE) (user with this
+    permission can view draft store content)</li><li><i>Returns</i>: structured
+    categories</li></ul>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,10 @@ from ...models import ErrorEntity
 class EnableUserEntitlement(Operation):
     """Enable user entitlement (enableUserEntitlement)
 
-    Enable user entitlement.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
-      *  Returns : enable entitlement
+    Enable user entitlement.<br>Other detail info: <ul><li><i>Required
+    permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4
+    (UPDATE)</li><li><i>Returns</i>: enable entitlement</li></ul>
 
 
     Properties:
@@ -62,7 +61,7 @@ class EnableUserEntitlement(Operation):
 
         404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31174: Entitlement [{entitlementId}] already consumed | 31175: Entitlement [{entitlementId}] already distributed | 31177: Permanent item already owned | 20006: optimistic lock)
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31174: Entitlement [{entitlementId}] already consumed | 31175: Entitlement [{entitlementId}] already distributed | 31177: Permanent item already owned | 31179: Duplicate entitlement exists | 20006: optimistic lock)
     """
 
     # region fields
@@ -209,7 +208,7 @@ class EnableUserEntitlement(Operation):
 
         404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31174: Entitlement [{entitlementId}] already consumed | 31175: Entitlement [{entitlementId}] already distributed | 31177: Permanent item already owned | 20006: optimistic lock)
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31174: Entitlement [{entitlementId}] already consumed | 31175: Entitlement [{entitlementId}] already distributed | 31177: Permanent item already owned | 31179: Duplicate entitlement exists | 20006: optimistic lock)
         """
         if code == 200:
             return EntitlementInfo.create_from_dict(content), None

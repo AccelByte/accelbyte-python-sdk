@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,10 +33,9 @@ class CreateUserDistributionReceiver(Operation):
 
     Create distribution receiver for a specific user by dedicated server. Once
     user distribution receiver created, user can distribute distribution to
-    receiver.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:DISTRIBUTION", action=1 (CREATE)
+    receiver.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:DISTRIBUTION", action=1
+    (CREATE)</li></ul>
 
 
     Properties:

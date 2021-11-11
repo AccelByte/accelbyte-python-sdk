@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,8 +32,7 @@ class AdminUpdateUserDeletionStatusV3(Operation):
     """Update User Deletion Status (AdminUpdateUserDeletionStatusV3)
 
     Required permissions 'ADMIN:NAMESPACE:{namespace}:DELETIONSTATUS:USER:{userId}
-    [UPDATE]'
-    action code : 10144
+    [UPDATE]' <br>action code : 10144
 
 
     Properties:

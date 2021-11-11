@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,8 +31,7 @@ from ...models import RestErrorResponse
 class PublicUpdatePasswordV3(Operation):
     """Update User Password (PublicUpdatePasswordV3)
 
-    Required valid user authorization.
-    action code: 10107
+    Required valid user authorization. <br> action code: 10107
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,9 +31,9 @@ from ...models import RestErrorResponse
 class GetPublisherUser(Operation):
     """Get Publisher User (GetPublisherUser)
 
-    Required permissions 'NAMESPACE:{namespace}:PUBLISHER:USER:{userId} [GET].
-
-    Restriction: Path Parameter namespace can be provided only with game namespace
+    <p>Required permissions 'NAMESPACE:{namespace}:PUBLISHER:USER:{userId}
+    [GET].</p> <p><strong>Restriction:</strong> Path Parameter
+    <strong>namespace</strong> can be provided only with game namespace</p>
 
 
     Properties:

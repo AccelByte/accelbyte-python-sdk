@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,11 +32,9 @@ from ...models import StripeConfig
 class UpdateStripeConfig(Operation):
     """Update stripe config (updateStripeConfig)
 
-    Update stripe config.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : updated payment merchant config
+    Update stripe config.<br>Other detail info: <ul><li><i>Required
+    permission</i>: resource="ADMIN:PAYMENT:CONFIG", action=4
+    (UPDATE)</li><li><i>Returns</i>: updated payment merchant config</li></ul>
 
 
     Properties:

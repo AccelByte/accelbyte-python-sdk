@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,11 +30,10 @@ from ...models import PurchasedItemCount
 class CountOfPurchasedItem(Operation):
     """Get the count of purchased item (countOfPurchasedItem)
 
-    This API is used to get the count of purchased item which is the order target.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
-      *  Returns : Item purchased count
+    This API is used to get the count of purchased item which is the order
+    target.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2
+    (READ)</li><li><i>Returns</i>: Item purchased count</li></ul>
 
 
     Properties:

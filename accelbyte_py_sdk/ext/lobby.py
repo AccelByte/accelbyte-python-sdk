@@ -34,12 +34,10 @@ from ..api.lobby.models import ModelFreeFormNotificationRequestV1
 from ..api.lobby.models import ModelGetAllNotificationTemplateSlugResp
 from ..api.lobby.models import ModelGetAllNotificationTopicsResponse
 from ..api.lobby.models import ModelGetFriendsResponse
-from ..api.lobby.models import ModelGetStoredNotificationResp
 from ..api.lobby.models import ModelGetUserFriendsResponse
 from ..api.lobby.models import ModelGetUserIncomingFriendsResponse
 from ..api.lobby.models import ModelGetUserOutgoingFriendsResponse
 from ..api.lobby.models import ModelLocalization
-from ..api.lobby.models import ModelNotificationResponse
 from ..api.lobby.models import ModelNotificationTemplateResponse
 from ..api.lobby.models import ModelNotificationTopicResponse
 from ..api.lobby.models import ModelNotificationTopicResponseV1
@@ -207,17 +205,6 @@ def create_model_get_friends_response_example() -> ModelGetFriendsResponse:
     return instance
 
 
-def create_model_get_stored_notification_resp_example() -> ModelGetStoredNotificationResp:
-    instance = ModelGetStoredNotificationResp()
-    instance.from_ = randomize()
-    instance.id_ = randomize()
-    instance.payload = randomize()
-    instance.sent_at = randomize("int", min_val=1, max_val=1000)
-    instance.to = randomize()
-    instance.topic_name = randomize()
-    return instance
-
-
 def create_model_get_user_friends_response_example() -> ModelGetUserFriendsResponse:
     instance = ModelGetUserFriendsResponse()
     instance.friend_i_ds = [randomize()]
@@ -245,17 +232,6 @@ def create_model_localization_example() -> ModelLocalization:
     instance.last_published_at = randomize()
     instance.template_content = create_model_template_content_example()
     instance.template_language = randomize()
-    return instance
-
-
-def create_model_notification_response_example() -> ModelNotificationResponse:
-    instance = ModelNotificationResponse()
-    instance.from_ = randomize()
-    instance.id_ = randomize()
-    instance.payload = randomize()
-    instance.sent_at = randomize("int", min_val=1, max_val=1000)
-    instance.to = randomize()
-    instance.topic = randomize()
     return instance
 
 
@@ -497,6 +473,7 @@ def create_models_blocked_player_data_example() -> ModelsBlockedPlayerData:
 def create_models_config_example() -> ModelsConfig:
     instance = ModelsConfig()
     instance.auto_kick_on_disconnect = randomize("bool")
+    instance.cancel_ticket_on_disconnect = randomize("bool")
     instance.chat_rate_limit_burst = randomize("int", min_val=1, max_val=1000)
     instance.chat_rate_limit_duration = randomize("int", min_val=1, max_val=1000)
     instance.concurrent_users_limit = randomize("int", min_val=1, max_val=1000)
@@ -508,6 +485,7 @@ def create_models_config_example() -> ModelsConfig:
     instance.max_party_member = randomize("int", min_val=1, max_val=1000)
     instance.namespace = randomize("slug")
     instance.profanity_filter = randomize("bool")
+    instance.ready_consent_timeout = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -520,6 +498,7 @@ def create_models_config_list_example() -> ModelsConfigList:
 def create_models_config_req_example() -> ModelsConfigReq:
     instance = ModelsConfigReq()
     instance.auto_kick_on_disconnect = randomize("bool")
+    instance.cancel_ticket_on_disconnect = randomize("bool")
     instance.chat_rate_limit_burst = randomize("int", min_val=1, max_val=1000)
     instance.chat_rate_limit_duration = randomize("int", min_val=1, max_val=1000)
     instance.concurrent_users_limit = randomize("int", min_val=1, max_val=1000)
@@ -530,6 +509,7 @@ def create_models_config_req_example() -> ModelsConfigReq:
     instance.general_rate_limit_duration = randomize("int", min_val=1, max_val=1000)
     instance.max_party_member = randomize("int", min_val=1, max_val=1000)
     instance.profanity_filter = randomize("bool")
+    instance.ready_consent_timeout = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

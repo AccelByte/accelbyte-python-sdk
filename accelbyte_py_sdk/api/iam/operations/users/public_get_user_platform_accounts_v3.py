@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,9 +31,8 @@ from ...models import RestErrorResponse
 class PublicGetUserPlatformAccountsV3(Operation):
     """Get platform accounts linked to the user (PublicGetUserPlatformAccountsV3)
 
-    This endpoint retrieves platform accounts linked to user. Required valid user
-    authorization.
-    action code: 10128
+    <p>This endpoint retrieves platform accounts linked to user. Required valid
+    user authorization. <br>action code: 10128 </p>
 
 
     Properties:

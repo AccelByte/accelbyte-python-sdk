@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,16 +31,11 @@ from ...models import ResponseErrorResponse
 class KickGroupMemberPublicV1(Operation):
     """Kick Group Member (kickGroupMemberPublicV1)
 
-    Required valid user authentication
-
-    Required Member Role Permission: "GROUP:KICK [CREATE]"
-
-    This endpoint is used to kick group member.
-
-    Kick group member. This endpoint will check the member and group information,
-    and also the role permission of the the user who accesses this endpoint
-
-    Action Code: 73409
+    <p>Required valid user authentication </p> <p>Required Member Role Permission:
+    "GROUP:KICK [CREATE]"</p> <p>This endpoint is used to kick group member.</p>
+    <p>Kick group member. This endpoint will check the member and group
+    information, and also the role permission of the the user who accesses this
+    endpoint</p> <p>Action Code: 73409</p>
 
 
     Properties:

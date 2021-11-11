@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -83,6 +83,12 @@ from ..api.platform.models import FulfillmentHistoryPagingSlicedResult
 from ..api.platform.models import FulfillmentItem
 from ..api.platform.models import FulfillmentRequest
 from ..api.platform.models import FulfillmentResult
+from ..api.platform.models import FulfillmentScriptContext
+from ..api.platform.models import FulfillmentScriptCreate
+from ..api.platform.models import FulfillmentScriptEvalTestRequest
+from ..api.platform.models import FulfillmentScriptEvalTestResult
+from ..api.platform.models import FulfillmentScriptInfo
+from ..api.platform.models import FulfillmentScriptUpdate
 from ..api.platform.models import FullAppInfo
 from ..api.platform.models import FullCategoryInfo
 from ..api.platform.models import FullItemInfo
@@ -126,6 +132,7 @@ from ..api.platform.models import OrderPagingResult
 from ..api.platform.models import OrderPagingSlicedResult
 from ..api.platform.models import OrderRefundCreate
 from ..api.platform.models import OrderStatistics
+from ..api.platform.models import OrderSummary
 from ..api.platform.models import OrderSyncResult
 from ..api.platform.models import OrderUpdate
 from ..api.platform.models import Ownership
@@ -210,6 +217,7 @@ from ..api.platform.models import TicketDynamicInfo
 from ..api.platform.models import TicketSaleDecrementRequest
 from ..api.platform.models import TicketSaleIncrementRequest
 from ..api.platform.models import TicketSaleIncrementResult
+from ..api.platform.models import TimedOwnership
 from ..api.platform.models import TradeNotification
 from ..api.platform.models import Transaction
 from ..api.platform.models import ValidationErrorEntity
@@ -924,6 +932,7 @@ def create_fulfillment_request_example() -> FulfillmentRequest:
     instance.item_id = randomize()
     instance.item_sku = randomize()
     instance.language = randomize()
+    instance.order = create_order_summary_example()
     instance.order_no = randomize()
     instance.region = randomize()
     instance.source = randomize()
@@ -939,6 +948,49 @@ def create_fulfillment_result_example() -> FulfillmentResult:
     instance.credit_summaries = [create_credit_summary_example()]
     instance.entitlement_summaries = [create_entitlement_summary_example()]
     instance.subscription_summaries = [create_subscription_summary_example()]
+    return instance
+
+
+def create_fulfillment_script_context_example() -> FulfillmentScriptContext:
+    instance = FulfillmentScriptContext()
+    instance.item = create_item_info_example()
+    instance.namespace = randomize("slug")
+    instance.source = randomize()
+    instance.order = create_order_summary_example()
+    return instance
+
+
+def create_fulfillment_script_create_example() -> FulfillmentScriptCreate:
+    instance = FulfillmentScriptCreate()
+    instance.grant_days = randomize()
+    return instance
+
+
+def create_fulfillment_script_eval_test_request_example() -> FulfillmentScriptEvalTestRequest:
+    instance = FulfillmentScriptEvalTestRequest()
+    instance.context = create_fulfillment_script_context_example()
+    instance.script = randomize()
+    instance.type_ = randomize()
+    return instance
+
+
+def create_fulfillment_script_eval_test_result_example() -> FulfillmentScriptEvalTestResult:
+    instance = FulfillmentScriptEvalTestResult()
+    instance.error_stack_trace = randomize()
+    instance.result = {randomize(): randomize()}
+    return instance
+
+
+def create_fulfillment_script_info_example() -> FulfillmentScriptInfo:
+    instance = FulfillmentScriptInfo()
+    instance.grant_days = randomize()
+    instance.id_ = randomize()
+    return instance
+
+
+def create_fulfillment_script_update_example() -> FulfillmentScriptUpdate:
+    instance = FulfillmentScriptUpdate()
+    instance.grant_days = randomize()
     return instance
 
 
@@ -1565,6 +1617,14 @@ def create_order_statistics_example() -> OrderStatistics:
     instance = OrderStatistics()
     instance.status_count = {}
     instance.total = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_order_summary_example() -> OrderSummary:
+    instance = OrderSummary()
+    instance.currency = create_currency_summary_example()
+    instance.ext = {randomize(): randomize()}
+    instance.free = randomize("bool")
     return instance
 
 
@@ -2546,6 +2606,13 @@ def create_ticket_sale_increment_result_example() -> TicketSaleIncrementResult:
     instance = TicketSaleIncrementResult()
     instance.max_sale_count = randomize("int", min_val=1, max_val=1000)
     instance.success = randomize("bool")
+    return instance
+
+
+def create_timed_ownership_example() -> TimedOwnership:
+    instance = TimedOwnership()
+    instance.owned = randomize("bool")
+    instance.end_date = randomize("date")
     return instance
 
 

@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,11 +30,11 @@ from ...models import AccountcommonBanReasons
 class GetListBanReason(Operation):
     """Get list of ban reasons (GetListBanReason)
 
-    Required permission 'BAN:ADMIN [READ]' or 'ADMIN:BAN [READ]'
-
-    Required Permission 'BAN:ADMIN [READ]' is going to be DEPRECATED for security
-    purpose. It is going to be deprecated on 31 JANUARY 2019 , please use
-    permission 'ADMIN:BAN [READ]' instead.
+    <p>Required permission 'BAN:ADMIN [READ]' or 'ADMIN:BAN [READ]'</p>
+    <p>Required Permission 'BAN:ADMIN [READ]' is going to be
+    <strong>DEPRECATED</strong> for security purpose. It is going to be deprecated
+    on <strong>31 JANUARY 2019</strong>, please use permission 'ADMIN:BAN [READ]'
+    instead.</p>
 
 
     Properties:

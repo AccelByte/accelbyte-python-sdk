@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,12 +30,11 @@ from ...models import OauthapiRevocationList
 class GetRevocationList(Operation):
     """OAuth2 revocation list API (GetRevocationList)
 
-    This endpoint will return a list of revoked users and revoked tokens. List of
-    revoked tokens in bloom filter format. This endpoint requires all requests to
-    have Authorization header set with Basic access authentication constructed
-    from client id and client secret.
-
-    The bloom filter uses MurmurHash3 algorithm for hashing the values
+    <p>This endpoint will return a list of revoked users and revoked tokens. List
+    of revoked tokens in bloom filter format. This endpoint requires all requests
+    to have Authorization header set with Basic access authentication constructed
+    from client id and client secret.</p> <p>The bloom filter uses MurmurHash3
+    algorithm for hashing the values</p>
 
 
     Properties:

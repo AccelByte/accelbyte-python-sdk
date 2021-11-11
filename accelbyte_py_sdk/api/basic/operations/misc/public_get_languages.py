@@ -1,4 +1,4 @@
-# justice-basic-service (1.23.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,10 +30,8 @@ from ...models import ValidationErrorEntity
 class PublicGetLanguages(Operation):
     """List languages. (publicGetLanguages)
 
-    List languages.
-    Other detail info:
-
-      * Returns : language list
+    List languages.<br>Other detail info: <ul><li><i>Returns</i>: language
+    list</li></ul>
 
 
     Properties:

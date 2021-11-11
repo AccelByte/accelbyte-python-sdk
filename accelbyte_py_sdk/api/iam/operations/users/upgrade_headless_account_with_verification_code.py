@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,14 +31,13 @@ from ...models import ModelUserResponse
 class UpgradeHeadlessAccountWithVerificationCode(Operation):
     """Upgrade headless account and automatically verified the email address if it is succeeded (UpgradeHeadlessAccountWithVerificationCode)
 
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
-    The endpoint upgrades a headless account by linking the headless account with
-    the email address and the password. By upgrading the headless account into a
-    full account, the user could use the email address and password for using
-    Justice IAM. The endpoint is a shortcut for upgrading a headless account and
-    verifying the email address in one call. In order to get a verification code
-    for the endpoint, please check the send verification code endpoint.
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]' <p>The
+    endpoint upgrades a headless account by linking the headless account with the
+    email address and the password. By upgrading the headless account into a full
+    account, the user could use the email address and password for using Justice
+    IAM. The endpoint is a shortcut for upgrading a headless account and verifying
+    the email address in one call. In order to get a verification code for the
+    endpoint, please check the send verification code endpoint.</p>
 
 
     Properties:

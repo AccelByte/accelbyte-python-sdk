@@ -23,6 +23,7 @@ from ..models import ModelsDefaultProvider
 
 from ..operations.public import GetDefaultProvider
 from ..operations.public import ListProviders
+from ..operations.public import ListProvidersByRegion
 
 
 @same_doc_as(GetDefaultProvider)
@@ -34,4 +35,12 @@ def get_default_provider(x_additional_headers: Optional[Dict[str, str]] = None):
 @same_doc_as(ListProviders)
 def list_providers(x_additional_headers: Optional[Dict[str, str]] = None):
     request = ListProviders.create()
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(ListProvidersByRegion)
+def list_providers_by_region(region: str, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = ListProvidersByRegion.create(
+        region=region,
+    )
     return run_request(request, additional_headers=x_additional_headers)

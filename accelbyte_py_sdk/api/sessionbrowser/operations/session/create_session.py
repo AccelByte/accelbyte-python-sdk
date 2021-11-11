@@ -60,6 +60,8 @@ class CreateSession(Operation):
 
         400: Bad Request - RestapiErrorResponseV2 (malformed request)
 
+        403: Forbidden - RestapiErrorResponseV2 (user is banned from creating session)
+
         409: Conflict - RestapiErrorResponseV2 (session already exists)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
@@ -197,6 +199,8 @@ class CreateSession(Operation):
 
         400: Bad Request - RestapiErrorResponseV2 (malformed request)
 
+        403: Forbidden - RestapiErrorResponseV2 (user is banned from creating session)
+
         409: Conflict - RestapiErrorResponseV2 (session already exists)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
@@ -204,6 +208,8 @@ class CreateSession(Operation):
         if code == 200:
             return ModelsSessionResponse.create_from_dict(content), None
         if code == 400:
+            return None, RestapiErrorResponseV2.create_from_dict(content)
+        if code == 403:
             return None, RestapiErrorResponseV2.create_from_dict(content)
         if code == 409:
             return None, RestapiErrorResponseV2.create_from_dict(content)

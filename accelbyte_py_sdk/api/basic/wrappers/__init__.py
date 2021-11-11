@@ -1,12 +1,16 @@
 """Auto-generated package that contains utility functions for the justice-basic-service."""
 
-__version__ = "1.23.0"
+__version__ = "1.26.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from ._anonymization import anonymize_user_profile
+
+from ._equ8_config import delete_config
+from ._equ8_config import get_config
+from ._equ8_config import update_config
 
 from ._file_upload import generated_upload_url
 from ._file_upload import generated_user_upload_content_url
@@ -34,6 +38,14 @@ from ._namespace import get_namespaces
 from ._namespace import public_get_namespace_publisher
 from ._namespace import public_get_namespaces
 from ._namespace import update_namespace
+
+from ._user_action import ban_users
+from ._user_action import get_actions
+from ._user_action import get_banned_users
+from ._user_action import get_user_status
+from ._user_action import public_report_user
+from ._user_action import report_user
+from ._user_action import un_ban_users
 
 from ._user_profile import create_my_profile
 from ._user_profile import delete_user_profile

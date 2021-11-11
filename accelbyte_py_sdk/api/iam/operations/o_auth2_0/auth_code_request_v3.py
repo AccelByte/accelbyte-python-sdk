@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -28,31 +28,20 @@ from .....core import HttpResponse
 class AuthCodeRequestV3(Operation):
     """Generate url to request auth code from third party platform. (AuthCodeRequestV3)
 
-    'Generate url to request auth code from third party platform
-
-    ## Supported platforms:
-
-      * steamopenid
-    This endpoint redirects to steam login page, then redirect back to platform
+    'Generate url to request auth code from third party platform <br>
+    <h2>Supported platforms:</h2><ul> <li><strong>steamopenid</strong></li>This
+    endpoint redirects to steam login page, then redirect back to platform
     authenticate endpoint after successfully authenticating user steam.
-
-      * xblweb
-    This endpoint redirects to xbox login page, then redirect back to platform
-    authenticate endpoint after successfully authenticating xbox user.
-
-      * ps4web
-    This endpoint redirects to psn login page, then redirect back to platform
-    authenticate endpoint after successfully authenticating psn user.
-
-      * epicgames
-    This endpoint redirects to Epicgames OAuth login page. then redirect to
-    platform authenticate endpoint after successfully authenticating an Epicgames
-    credential
-
-      * twitch
-    This endpoint redirects to twitch login page, then redirect back to platform
-    authenticate endpoint after successfully authenticating twitch user.
-
+    <li><strong>xblweb</strong></li>This endpoint redirects to xbox login page,
+    then redirect back to platform authenticate endpoint after successfully
+    authenticating xbox user. <li><strong>ps4web</strong></li>This endpoint
+    redirects to psn login page, then redirect back to platform authenticate
+    endpoint after successfully authenticating psn user.
+    <li><strong>epicgames</strong></li>This endpoint redirects to Epicgames OAuth
+    login page. then redirect to platform authenticate endpoint after successfully
+    authenticating an Epicgames credential <li><strong>twitch</strong></li>This
+    endpoint redirects to twitch login page, then redirect back to platform
+    authenticate endpoint after successfully authenticating twitch user. </ul>
     action code : 10702'
 
 

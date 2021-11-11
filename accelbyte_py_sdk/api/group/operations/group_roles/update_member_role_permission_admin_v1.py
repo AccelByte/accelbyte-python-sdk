@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,12 +32,10 @@ from ...models import ResponseErrorResponse
 class UpdateMemberRolePermissionAdminV1(Operation):
     """update member role permission (updateMemberRolePermissionAdminV1)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]
-
-    This endpoint is used to update member role permission. It will replace the
-    existing permission based on the request from this endpoint
-
-    Action Code: 73205
+    <p>Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]</p>
+    <p>This endpoint is used to update member role permission. It will replace the
+    existing permission based on the request from this endpoint</p> <p>Action
+    Code: 73205</p>
 
 
     Properties:

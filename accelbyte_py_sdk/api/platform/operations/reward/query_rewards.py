@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,12 +31,10 @@ from ...models import ValidationErrorEntity
 class QueryRewards(Operation):
     """Query rewards by criteria (queryRewards)
 
-    This API is used to query rewards by criteria.
-
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
-      *  Returns : the list of rewards
+    This API is used to query rewards by criteria.<p>Other detail info:
+    <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2
+    (READ)</li><li><i>Returns</i>: the list of rewards</li></ul>
 
 
     Properties:

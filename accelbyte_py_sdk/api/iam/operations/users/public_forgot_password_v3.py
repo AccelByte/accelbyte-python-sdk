@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,13 +31,11 @@ from ...models import RestErrorResponse
 class PublicForgotPasswordV3(Operation):
     """Request Password Reset Code (PublicForgotPasswordV3)
 
-    Special note for publisher-game scenario: Game Client should provide game
-    namespace path parameter and Publisher Client should provide publisher
-    namespace path parameter.
-
-    The password reset code will be sent to the publisher account's email address.
-
-    action code : 10104
+    <p><strong>Special note for publisher-game scenario:</strong> Game Client
+    should provide game namespace path parameter and Publisher Client should
+    provide publisher namespace path parameter. </p> <p>The password reset code
+    will be sent to the publisher account's email address. </p> <p>action code :
+    10104 </p>
 
 
     Properties:

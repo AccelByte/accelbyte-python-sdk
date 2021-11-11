@@ -1,4 +1,4 @@
-# justice-basic-service (1.23.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,8 @@ from ...models import ValidationErrorEntity
 class PublicGetUserProfilePublicInfoByIds(Operation):
     """Get user profile public info by ids (publicGetUserProfilePublicInfoByIds)
 
-    Get user public profile by ids.
-    Other detail info:
-
-      * Action code : 11405
-      *  Returns : user public profiles
+    Get user public profile by ids.<br>Other detail info: <ul><li><i>Action
+    code</i>: 11405</li><li><i>Returns</i>: user public profiles</li></ul>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,11 +30,9 @@ from ...models import CurrencyInfo
 class ListCurrencies(Operation):
     """List currencies (listCurrencies)
 
-    List currencies of a namespace.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=2 (READ)
-      *  Returns : Currency List
+    List currencies of a namespace.<br>Other detail info: <ul><li><i>Required
+    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=2
+    (READ)</li><li><i>Returns</i>: Currency List</li></ul>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,12 +30,10 @@ from ...models import ErrorEntity
 class DeleteItem(Operation):
     """Delete an item (deleteItem)
 
-    This API is used to delete an item permanently, usually for test purpose. DO
-    NOT delete already published item.
-
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=8 (DELETE)
+    This API is used to delete an item permanently, usually for test purpose.<b>DO
+    NOT delete already published item.</b><p>Other detail info:
+    <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=8 (DELETE)</li></ul>
 
 
     Properties:

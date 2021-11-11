@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,16 +31,11 @@ from ...models import ResponseErrorResponse
 class GetGroupJoinRequestPublicV1(Operation):
     """Get Group Join Request List (getGroupJoinRequestPublicV1)
 
-    Required valid user authentication
-
-    Required Member Role Permission: "GROUP:JOIN [READ]"
-
-    This endpoint is used to Get Group Join Request List
-
-    Get Group Join Request List for specific group. Group members needs to have
-    permission and also belong to the group to access this endpoint
-
-    Action Code: 73501
+    <p>Required valid user authentication </p> <p>Required Member Role Permission:
+    "GROUP:JOIN [READ]"</p> <p>This endpoint is used to Get Group Join Request
+    List</p> <p>Get Group Join Request List for specific group. Group members
+    needs to have permission and also belong to the group to access this
+    endpoint</p> <p>Action Code: 73501</p>
 
 
     Properties:

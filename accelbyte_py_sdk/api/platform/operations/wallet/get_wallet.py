@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,9 @@ from ...models import WalletInfo
 class GetWallet(Operation):
     """Get a wallet by wallet id (getWallet)
 
-    get a wallet by wallet id.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:WALLET", action=2 (READ)
-      *  Returns : wallet info
+    get a wallet by wallet id.<br>Other detail info: <ul><li><i>Required
+    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:WALLET", action=2
+    (READ)</li><li><i>Returns</i>: wallet info</li></ul>
 
 
     Properties:

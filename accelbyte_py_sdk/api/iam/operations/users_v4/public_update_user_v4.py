@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,23 +32,12 @@ from ...models import RestErrorResponse
 class PublicUpdateUserV4(Operation):
     """Update User (PublicUpdateUserV4)
 
-    Requires valid user access token
-
-
-
-    This Endpoint support update user based on given data. Single request can
-    update single field or multi fields.
-
-    Supported field {country, displayName, languageTag, dateOfBirth}
-
-    Country use ISO3166-1 alpha-2 two letter, e.g. US.
-
-    Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
-
-
-    Several case of updating email address
-
-    action code : 10103
+    <p>Requires valid user access token </p> <br><p>This Endpoint support update
+    user based on given data. <b>Single request can update single field or multi
+    fields.</b></p> <p>Supported field {country, displayName, languageTag,
+    dateOfBirth}</p> <p>Country use ISO3166-1 alpha-2 two letter, e.g. US.</p>
+    <p>Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.</p> <br><b>Several case
+    of updating email address</b> <p>action code : 10103 </p>
 
 
     Properties:

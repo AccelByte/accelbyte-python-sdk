@@ -32,9 +32,9 @@ from ...models import RestapiErrorResponseV1
 class AdminUpdateThirdPartyConfig(Operation):
     """Update Third Party Steam Config (adminUpdateThirdPartyConfig)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [UPDATE]`
-    with scope `social`
-    Update third party config in a namespace.
+    Required permission : <code>ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG
+    [UPDATE]</code> with scope <code>social</code> <br>Update third party config
+    in a namespace.
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,14 +31,10 @@ from ...models import RestErrorResponse
 class PublicSearchUserV3(Operation):
     """Search User (PublicSearchUserV3)
 
-    Requires valid user access token
-
-    This endpoint search all users on the specified namespace that match the query
-    on these fields: email address, display name, and username. If the query is
-    not defined, then it searches all users on the specified namespace.
-
-
-    action code : 10132
+    <p>Requires valid user access token</p> <p>This endpoint search all users on
+    the specified namespace that match the query on these fields: display name,
+    and username. The query length should greater than 1，otherwise will not query
+    the database</p> <br>action code : 10132
 
 
     Properties:

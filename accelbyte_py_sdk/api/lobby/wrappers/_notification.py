@@ -27,9 +27,7 @@ from ..models import ModelFreeFormNotificationRequest
 from ..models import ModelFreeFormNotificationRequestV1
 from ..models import ModelGetAllNotificationTemplateSlugResp
 from ..models import ModelGetAllNotificationTopicsResponse
-from ..models import ModelGetStoredNotificationResp
 from ..models import ModelLocalization
-from ..models import ModelNotificationResponse
 from ..models import ModelNotificationTemplateResponse
 from ..models import ModelNotificationTopicResponse
 from ..models import ModelNotificationTopicResponseV1
@@ -58,11 +56,9 @@ from ..operations.notification import FreeFormNotification
 from ..operations.notification import FreeFormNotificationByUserID
 from ..operations.notification import GetAllNotificationTemplatesV1Admin
 from ..operations.notification import GetAllNotificationTopicsV1Admin
-from ..operations.notification import GetAllStoredNotificationsV1
 from ..operations.notification import GetGameTemplate
 from ..operations.notification import GetLocalizationTemplate
 from ..operations.notification import GetNotificationTopicV1Admin
-from ..operations.notification import GetNotifications
 from ..operations.notification import GetSingleTemplateLocalizationV1Admin
 from ..operations.notification import GetSlugTemplate
 from ..operations.notification import GetTemplateSlugLocalizationsTemplateV1Admin
@@ -73,6 +69,8 @@ from ..operations.notification import NotificationWithTemplateByUserID
 from ..operations.notification import PublishTemplate
 from ..operations.notification import PublishTemplateLocalizationV1Admin
 from ..operations.notification import SendMultipleUsersFreeformNotificationV1Admin
+from ..operations.notification import SendPartyFreeformNotificationV1Admin
+from ..operations.notification import SendPartyTemplatedNotificationV1Admin
 from ..operations.notification import SendSpecificUserFreeformNotificationV1Admin
 from ..operations.notification import SendSpecificUserTemplatedNotificationV1Admin
 from ..operations.notification import SendUsersFreeformNotificationV1Admin
@@ -229,7 +227,7 @@ def free_form_notification(body: ModelFreeFormNotificationRequest, namespace: Op
 
 
 @same_doc_as(FreeFormNotificationByUserID)
-def free_form_notification_by_user_id(body: ModelFreeFormNotificationRequest, user_id: str, async_: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def free_form_notification_by_user_id(body: ModelFreeFormNotificationRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -237,7 +235,6 @@ def free_form_notification_by_user_id(body: ModelFreeFormNotificationRequest, us
     request = FreeFormNotificationByUserID.create(
         body=body,
         user_id=user_id,
-        async_=async_,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -265,18 +262,6 @@ def get_all_notification_topics_v1_admin(after: Optional[str] = None, before: Op
         after=after,
         before=before,
         limit=limit,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers)
-
-
-@same_doc_as(GetAllStoredNotificationsV1)
-def get_all_stored_notifications_v1(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = GetAllStoredNotificationsV1.create(
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -316,19 +301,6 @@ def get_notification_topic_v1_admin(topic_name: str, namespace: Optional[str] = 
             return None, error
     request = GetNotificationTopicV1Admin.create(
         topic_name=topic_name,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers)
-
-
-@same_doc_as(GetNotifications)
-def get_notifications(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = GetNotifications.create(
-        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -422,7 +394,7 @@ def notification_with_template(body: ModelNotificationWithTemplateRequest, names
 
 
 @same_doc_as(NotificationWithTemplateByUserID)
-def notification_with_template_by_user_id(body: ModelNotificationWithTemplateRequest, user_id: str, async_: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def notification_with_template_by_user_id(body: ModelNotificationWithTemplateRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -430,7 +402,6 @@ def notification_with_template_by_user_id(body: ModelNotificationWithTemplateReq
     request = NotificationWithTemplateByUserID.create(
         body=body,
         user_id=user_id,
-        async_=async_,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
@@ -465,21 +436,48 @@ def publish_template_localization_v1_admin(template_language: str, template_slug
 
 
 @same_doc_as(SendMultipleUsersFreeformNotificationV1Admin)
-def send_multiple_users_freeform_notification_v1_admin(body: ModelBulkUsersFreeFormNotificationRequestV1, async_: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def send_multiple_users_freeform_notification_v1_admin(body: ModelBulkUsersFreeFormNotificationRequestV1, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = SendMultipleUsersFreeformNotificationV1Admin.create(
         body=body,
-        async_=async_,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(SendPartyFreeformNotificationV1Admin)
+def send_party_freeform_notification_v1_admin(body: ModelFreeFormNotificationRequestV1, party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = SendPartyFreeformNotificationV1Admin.create(
+        body=body,
+        party_id=party_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(SendPartyTemplatedNotificationV1Admin)
+def send_party_templated_notification_v1_admin(body: ModelNotificationWithTemplateRequestV1, party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = SendPartyTemplatedNotificationV1Admin.create(
+        body=body,
+        party_id=party_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(SendSpecificUserFreeformNotificationV1Admin)
-def send_specific_user_freeform_notification_v1_admin(body: ModelFreeFormNotificationRequestV1, user_id: str, async_: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def send_specific_user_freeform_notification_v1_admin(body: ModelFreeFormNotificationRequestV1, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -487,14 +485,13 @@ def send_specific_user_freeform_notification_v1_admin(body: ModelFreeFormNotific
     request = SendSpecificUserFreeformNotificationV1Admin.create(
         body=body,
         user_id=user_id,
-        async_=async_,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(SendSpecificUserTemplatedNotificationV1Admin)
-def send_specific_user_templated_notification_v1_admin(body: ModelNotificationWithTemplateRequestV1, user_id: str, async_: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def send_specific_user_templated_notification_v1_admin(body: ModelNotificationWithTemplateRequestV1, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -502,7 +499,6 @@ def send_specific_user_templated_notification_v1_admin(body: ModelNotificationWi
     request = SendSpecificUserTemplatedNotificationV1Admin.create(
         body=body,
         user_id=user_id,
-        async_=async_,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

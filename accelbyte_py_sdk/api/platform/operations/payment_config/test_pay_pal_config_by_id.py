@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,9 +32,8 @@ class TestPayPalConfigById(Operation):
     """Test PayPal configuration by id (testPayPalConfigById)
 
     Test PayPal configuration in payment merchant config. Other detail info:
-
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : test result
+    <ul><li><i>Required permission</i>: resource="ADMIN:PAYMENT:CONFIG", action=2
+    (READ)</li><li><i>Returns</i>: test result</li></ul>
 
 
     Properties:

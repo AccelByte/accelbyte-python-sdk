@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,12 +32,11 @@ from ...models import PaymentOrderNotifySimulation
 class SimulatePaymentOrderNotification(Operation):
     """Simulate payment notification (simulatePaymentOrderNotification)
 
-    [TEST FACILITY ONLY] Simulate payment notification on sandbox payment order,
-    usually for test usage to simulate real currency payment notification.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=4 (UPDATE)
-      *  Returns : notification process result
+    <b>[TEST FACILITY ONLY] Forbidden in live environment. </b> Simulate payment
+    notification on sandbox payment order, usually for test usage to simulate real
+    currency payment notification.<br>Other detail info: <ul><li><i>Required
+    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=4
+    (UPDATE)</li><li><i>Returns</i>: notification process result</li></ul>
 
 
     Properties:

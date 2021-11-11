@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,16 +31,11 @@ from ...models import RestErrorResponse
 class AdminGetUserPlatformAccountsV3(Operation):
     """Get platform accounts linked to the user (AdminGetUserPlatformAccountsV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]'.
-
-    ## Justice Platform Account
-
-    The permission ’ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId}’ [READ] is
-    required in order to read the UserID who linked with the user.
-
-
-    Gets platform accounts that are already linked with user account
-    action code : 10128
+    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]'.</p>
+    <h2>Justice Platform Account</h2> <p>The permission
+    ’ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId}’ [READ] is required in
+    order to read the UserID who linked with the user.</p> <br>Gets platform
+    accounts that are already linked with user account <br>action code : 10128
 
 
     Properties:

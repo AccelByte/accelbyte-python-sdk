@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,13 +33,13 @@ from ...models import ValidationErrorEntity
 class CreateUserPaymentOrder(Operation):
     """Create payment order (createUserPaymentOrder)
 
-    [SERVICE COMMUNICATION ONLY] This API is used to create payment order from
-    justice service. The result contains the payment station url.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT", action=1 (CREATE)
-      * It will be forbidden while the user is banned: PAYMENT_INITIATE or ORDER_AND_PAYMENT
-      *  Returns : created order
+    <b>[SERVICE COMMUNICATION ONLY]</b> This API is used to create payment order
+    from justice service. The result contains the payment station url.<br>Other
+    detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT", action=1
+    (CREATE)</li><li>It will be forbidden while the user is banned:
+    PAYMENT_INITIATE or ORDER_AND_PAYMENT</li><li><i>Returns</i>: created
+    order</li></ul>
 
 
     Properties:

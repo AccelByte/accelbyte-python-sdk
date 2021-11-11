@@ -1,4 +1,4 @@
-# justice-basic-service (1.23.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,13 +31,12 @@ from ...models import ValidationErrorEntity
 class UpdatePrivateCustomAttributesPartially(Operation):
     """Update partially private custom attributes tied to the user id (updatePrivateCustomAttributesPartially)
 
-    Update partially private custom attributes tied to the user id.
-    Other detail info:
-
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11402
-      *  Request body : allowed format: JSON object
-      *  Returns : Updated custom attributes
+    Update partially private custom attributes tied to the user id.<br>Other
+    detail info: <ul><li><i>Required permission</i>:
+    resource=<b>"ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE"</b>, action=4
+    <b>(UPDATE)</b></li><li><i>Action code</i>: 11402</li><li><i>Request body</i>:
+    allowed format: JSON object</li><li><i>Returns</i>: Updated custom
+    attributes</li></ul>
 
 
     Properties:

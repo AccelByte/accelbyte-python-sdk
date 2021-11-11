@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,11 +32,9 @@ from ...models import FulfillmentResult
 class PublicRedeemCode(Operation):
     """Redeem campaign code (publicRedeemCode)
 
-    Redeem campaign code.
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=1 (CREATED)
-      *  Returns : fulfillment result
+    Redeem campaign code.<br>Other detail info: <ul><li><i>Required
+    permission</i>: resource="NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT",
+    action=1 (CREATED)</li><li><i>Returns</i>: fulfillment result</li></ul>
 
 
     Properties:

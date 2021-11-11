@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -34,11 +34,9 @@ class CreateCodes(Operation):
     """Create campaign codes (createCodes)
 
     This API is used to create campaign codes, it will increase the batch No.
-    based on last creation.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=1 (CREATE)
-      *  Returns : number of codes created
+    based on last creation.<br>Other detail info: <ul><li><i>Required
+    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=1
+    (CREATE)<li><i>Returns</i>: number of codes created</li></ul>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -28,10 +28,10 @@ from .....core import HttpResponse
 class AnonymizeCampaign(Operation):
     """Anonymize campaign (anonymizeCampaign)
 
-    Anonymize campaign. At current it will only anonymize redeem history.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
+    Anonymize campaign. At current it will only anonymize redeem history.<br>Other
+    detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8
+    (DELETE)</li></ul>
 
 
     Properties:

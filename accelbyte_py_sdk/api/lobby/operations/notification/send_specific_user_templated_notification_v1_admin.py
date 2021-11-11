@@ -31,17 +31,13 @@ from ...models import RestapiErrorResponseV1
 class SendSpecificUserTemplatedNotificationV1Admin(Operation):
     """send templated notification to specific user (sendSpecificUserTemplatedNotificationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with
-    scope `social`
-    Sends templated notification to a user. There are two types of notification:
-    sync and async. Async message will be stored to database if the receiver is
-    offline. This stored message could be retrieved later via websocket command.
-    In the request body, specify which template slug (template identifier) to use
-    and the template language.
-    NotificationTemplate context is the key-value pair defining the value of each
-    handlebar specified in the template content. Template need to be published
-    before it can be use to send notifications
-    Action Code: 50212
+    Required permission : <code>ADMIN:NAMESPACE:{namespace}:NOTIFICATION
+    [CREATE]</code> with scope <code>social</code> <br>Sends templated
+    notification to a user. <br>In the request body, specify which template slug
+    (template identifier) to use and the template language.
+    <br>NotificationTemplate context is the key-value pair defining the value of
+    each handlebar specified in the template content. Template need to be
+    published before it can be use to send notifications<br> Action Code: 50212
 
 
     Properties:
@@ -62,8 +58,6 @@ class SendSpecificUserTemplatedNotificationV1Admin(Operation):
         namespace: (namespace) REQUIRED str in path
 
         user_id: (userId) REQUIRED str in path
-
-        async_: (async) OPTIONAL bool in query
 
     Responses:
         204: No Content - (No Content)
@@ -89,7 +83,6 @@ class SendSpecificUserTemplatedNotificationV1Admin(Operation):
     body: ModelNotificationWithTemplateRequestV1                                                   # REQUIRED in [body]
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
-    async_: bool                                                                                   # OPTIONAL in [query]
 
     # endregion fields
 
@@ -132,9 +125,6 @@ class SendSpecificUserTemplatedNotificationV1Admin(Operation):
             url = url.replace(f"{{{k}}}", str(v))
         result += url
 
-        # query params
-        result += "?" + "&".join([f"{k}={v}" for k, v in self.get_query_params().items()])
-
         return result
 
     # noinspection PyMethodMayBeStatic
@@ -153,7 +143,6 @@ class SendSpecificUserTemplatedNotificationV1Admin(Operation):
         return {
             "body": self.get_body_params(),
             "path": self.get_path_params(),
-            "query": self.get_query_params(),
         }
 
     def get_body_params(self) -> Any:
@@ -165,12 +154,6 @@ class SendSpecificUserTemplatedNotificationV1Admin(Operation):
             result["namespace"] = self.namespace
         if hasattr(self, "user_id"):
             result["userId"] = self.user_id
-        return result
-
-    def get_query_params(self) -> dict:
-        result = {}
-        if hasattr(self, "async_"):
-            result["async"] = self.async_
         return result
 
     # endregion get_x_params methods
@@ -202,10 +185,6 @@ class SendSpecificUserTemplatedNotificationV1Admin(Operation):
         self.user_id = value
         return self
 
-    def with_async_(self, value: bool) -> SendSpecificUserTemplatedNotificationV1Admin:
-        self.async_ = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
@@ -224,10 +203,6 @@ class SendSpecificUserTemplatedNotificationV1Admin(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "async_") and self.async_:
-            result["async"] = bool(self.async_)
-        elif include_empty:
-            result["async"] = bool()
         return result
 
     # endregion to methods
@@ -273,14 +248,11 @@ class SendSpecificUserTemplatedNotificationV1Admin(Operation):
         body: ModelNotificationWithTemplateRequestV1,
         namespace: str,
         user_id: str,
-        async_: Optional[bool] = None,
     ) -> SendSpecificUserTemplatedNotificationV1Admin:
         instance = cls()
         instance.body = body
         instance.namespace = namespace
         instance.user_id = user_id
-        if async_ is not None:
-            instance.async_ = async_
         return instance
 
     @classmethod
@@ -298,10 +270,6 @@ class SendSpecificUserTemplatedNotificationV1Admin(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
-        if "async" in dict_ and dict_["async"] is not None:
-            instance.async_ = bool(dict_["async"])
-        elif include_empty:
-            instance.async_ = bool()
         return instance
 
     @staticmethod
@@ -310,7 +278,6 @@ class SendSpecificUserTemplatedNotificationV1Admin(Operation):
             "body": "body",
             "namespace": "namespace",
             "userId": "user_id",
-            "async": "async_",
         }
 
     # endregion static methods

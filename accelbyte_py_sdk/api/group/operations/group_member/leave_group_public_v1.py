@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,14 +31,10 @@ from ...models import ResponseErrorResponse
 class LeaveGroupPublicV1(Operation):
     """Leave group (leaveGroupPublicV1)
 
-    Required valid user authentication
-
-    This endpoint is used to leave from group.
-
-    leave from group. Admin is not allowed to leave the group. This endpoint will
-    also give response if the user is not belong to any group.
-
-    Action Code: 73404
+    <p>Required valid user authentication </p> <p>This endpoint is used to leave
+    from group.</p> <p>leave from group. Admin is not allowed to leave the group.
+    This endpoint will also give response if the user is not belong to any
+    group.</p> <p>Action Code: 73404</p>
 
 
     Properties:

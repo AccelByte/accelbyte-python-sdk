@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,7 +31,7 @@ from ...models import RestErrorResponse
 class PublicGetUserByUserIdV3(Operation):
     """Get User By User ID (PublicGetUserByUserIdV3)
 
-    This endpoint retrieve user attributes. action code: 10129
+    <p>This endpoint retrieve user attributes. action code: 10129</p>
 
 
     Properties:

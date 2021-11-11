@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,12 +30,9 @@ from ...models import StadiaSyncRequest
 class SyncStadiaEntitlement(Operation):
     """Sync stadia inventory. (syncStadiaEntitlement)
 
-    Sync stadia entitlements.
-
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns :
+    Sync stadia entitlements.<p>Other detail info: <ul><li><i>Required
+    permission</i>: resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4
+    (UPDATE)</li><li><i>Returns</i>: </li></ul>
 
 
     Properties:

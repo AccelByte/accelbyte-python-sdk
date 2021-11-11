@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,10 @@ from ...models import ErrorEntity
 class GetCurrencyConfig(Operation):
     """Get currency config (getCurrencyConfig)
 
-    [SERVICE COMMUNICATION ONLY] Get currency config by code.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=2 (READ)
-      *  Returns : simplified Currency
+    <b>[SERVICE COMMUNICATION ONLY]</b> Get currency config by code.<br>Other
+    detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=2
+    (READ)</li><li><i>Returns</i>: simplified Currency</li></ul>
 
 
     Properties:

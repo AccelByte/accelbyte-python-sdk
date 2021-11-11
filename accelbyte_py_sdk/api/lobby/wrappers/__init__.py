@@ -16,7 +16,7 @@ from ._config import admin_update_config_v1
 
 from ._friends import add_friends_without_confirmation
 from ._friends import get_list_of_friends
-from ._friends import get_user_friends
+from ._friends import get_user_friends_updated
 from ._friends import get_user_incoming_friends
 from ._friends import get_user_outgoing_friends
 from ._friends import user_accept_friend_request
@@ -40,11 +40,9 @@ from ._notification import free_form_notification
 from ._notification import free_form_notification_by_user_id
 from ._notification import get_all_notification_templates_v1_admin
 from ._notification import get_all_notification_topics_v1_admin
-from ._notification import get_all_stored_notifications_v1
 from ._notification import get_game_template
 from ._notification import get_localization_template
 from ._notification import get_notification_topic_v1_admin
-from ._notification import get_notifications
 from ._notification import get_single_template_localization_v1_admin
 from ._notification import get_slug_template
 from ._notification import get_template_slug_localizations_template_v1_admin
@@ -55,6 +53,8 @@ from ._notification import notification_with_template_by_user_id
 from ._notification import publish_template
 from ._notification import publish_template_localization_v1_admin
 from ._notification import send_multiple_users_freeform_notification_v1_admin
+from ._notification import send_party_freeform_notification_v1_admin
+from ._notification import send_party_templated_notification_v1_admin
 from ._notification import send_specific_user_freeform_notification_v1_admin
 from ._notification import send_specific_user_templated_notification_v1_admin
 from ._notification import send_users_freeform_notification_v1_admin
@@ -64,12 +64,11 @@ from ._notification import update_notification_topic_v1_admin
 from ._notification import update_template_localization_v1_admin
 from ._notification import update_topic_by_topic_name
 
+from ._operations import admin_update_party_attributes_v1
 from ._operations import public_get_messages
 
-from ._party import admin_get_parties_data_v1
 from ._party import admin_get_party_data_v1
 from ._party import admin_get_user_party_v1
-from ._party import admin_update_party_attributes_v1
 from ._party import public_get_party_data_v1
 from ._party import public_update_party_attributes_v1
 

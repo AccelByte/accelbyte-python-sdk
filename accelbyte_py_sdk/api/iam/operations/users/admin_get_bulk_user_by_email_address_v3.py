@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,12 +32,9 @@ from ...models import RestErrorResponse
 class AdminGetBulkUserByEmailAddressV3(Operation):
     """Get Bulk User By Email Address (AdminGetBulkUserByEmailAddressV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
-
-    This endpoint search user by the list of email addresses
-
-
-    action code : 10132
+    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'</p> <p>This
+    endpoint search user by the list of email addresses</p> <br>action code :
+    10132
 
 
     Properties:

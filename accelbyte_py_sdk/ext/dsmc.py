@@ -1,4 +1,4 @@
-# justice-dsm-controller-service (2.6.0)
+# justice-dsm-controller-service (2.8.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -35,7 +35,6 @@ from ..api.dsmc.models import ModelsCreateSessionRequest
 from ..api.dsmc.models import ModelsDSMConfigExport
 from ..api.dsmc.models import ModelsDSMConfigRecord
 from ..api.dsmc.models import ModelsDefaultProvider
-from ..api.dsmc.models import ModelsDeploymentConfig
 from ..api.dsmc.models import ModelsDeploymentConfigOverride
 from ..api.dsmc.models import ModelsDeploymentWithOverride
 from ..api.dsmc.models import ModelsDeregisterLocalServerRequest
@@ -52,14 +51,9 @@ from ..api.dsmc.models import ModelsListImageResponse
 from ..api.dsmc.models import ModelsListPodConfigResponse
 from ..api.dsmc.models import ModelsListServerResponse
 from ..api.dsmc.models import ModelsListSessionResponse
-from ..api.dsmc.models import ModelsMatchResult
-from ..api.dsmc.models import ModelsOverrideConfig
 from ..api.dsmc.models import ModelsPagingCursor
-from ..api.dsmc.models import ModelsPodConfig
 from ..api.dsmc.models import ModelsPodConfigRecord
-from ..api.dsmc.models import ModelsPodCountConfig
 from ..api.dsmc.models import ModelsPodCountConfigOverride
-from ..api.dsmc.models import ModelsPodCountConfigUpdate
 from ..api.dsmc.models import ModelsRegisterLocalServerRequest
 from ..api.dsmc.models import ModelsRegisterServerRequest
 from ..api.dsmc.models import ModelsRequestMatchMember
@@ -208,21 +202,6 @@ def create_models_create_session_request_example() -> ModelsCreateSessionRequest
 def create_models_default_provider_example() -> ModelsDefaultProvider:
     instance = ModelsDefaultProvider()
     instance.provider_name = randomize()
-    return instance
-
-
-def create_models_deployment_config_example() -> ModelsDeploymentConfig:
-    instance = ModelsDeploymentConfig()
-    instance.buffer_count = randomize("int", min_val=1, max_val=1000)
-    instance.buffer_percent = randomize("int", min_val=1, max_val=1000)
-    instance.configuration = randomize()
-    instance.enable_region_overrides = randomize("bool")
-    instance.game_version = randomize("version")
-    instance.max_count = randomize("int", min_val=1, max_val=1000)
-    instance.min_count = randomize("int", min_val=1, max_val=1000)
-    instance.region_overrides = {}
-    instance.regions = [randomize()]
-    instance.use_buffer_percent = randomize("bool")
     return instance
 
 
@@ -408,34 +387,10 @@ def create_models_list_session_response_example() -> ModelsListSessionResponse:
     return instance
 
 
-def create_models_match_result_example() -> ModelsMatchResult:
-    instance = ModelsMatchResult()
-    instance.game_mode = randomize()
-    instance.matching_allies = [create_models_request_matching_ally_example()]
-    instance.namespace = randomize("slug")
-    instance.session_id = randomize("uid")
-    return instance
-
-
-def create_models_override_config_example() -> ModelsOverrideConfig:
-    instance = ModelsOverrideConfig()
-    instance.allow_version_override = randomize("bool")
-    instance.overrides = {}
-    return instance
-
-
 def create_models_paging_cursor_example() -> ModelsPagingCursor:
     instance = ModelsPagingCursor()
     instance.next_ = randomize()
     instance.previous = randomize()
-    return instance
-
-
-def create_models_pod_config_example() -> ModelsPodConfig:
-    instance = ModelsPodConfig()
-    instance.cpu_limit = randomize("int", min_val=1, max_val=1000)
-    instance.mem_limit = randomize("int", min_val=1, max_val=1000)
-    instance.params = randomize()
     return instance
 
 
@@ -452,16 +407,6 @@ def create_models_pod_config_record_example() -> ModelsPodConfigRecord:
     return instance
 
 
-def create_models_pod_count_config_example() -> ModelsPodCountConfig:
-    instance = ModelsPodCountConfig()
-    instance.buffer_count = randomize("int", min_val=1, max_val=1000)
-    instance.buffer_percent = randomize("int", min_val=1, max_val=1000)
-    instance.max_count = randomize("int", min_val=1, max_val=1000)
-    instance.min_count = randomize("int", min_val=1, max_val=1000)
-    instance.use_buffer_percent = randomize("bool")
-    return instance
-
-
 def create_models_pod_count_config_override_example() -> ModelsPodCountConfigOverride:
     instance = ModelsPodCountConfigOverride()
     instance.buffer_count = randomize("int", min_val=1, max_val=1000)
@@ -469,16 +414,6 @@ def create_models_pod_count_config_override_example() -> ModelsPodCountConfigOve
     instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.min_count = randomize("int", min_val=1, max_val=1000)
     instance.name = randomize()
-    instance.use_buffer_percent = randomize("bool")
-    return instance
-
-
-def create_models_pod_count_config_update_example() -> ModelsPodCountConfigUpdate:
-    instance = ModelsPodCountConfigUpdate()
-    instance.buffer_count = randomize("int", min_val=1, max_val=1000)
-    instance.buffer_percent = randomize("int", min_val=1, max_val=1000)
-    instance.max_count = randomize("int", min_val=1, max_val=1000)
-    instance.min_count = randomize("int", min_val=1, max_val=1000)
     instance.use_buffer_percent = randomize("bool")
     return instance
 

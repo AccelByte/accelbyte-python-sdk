@@ -26,7 +26,6 @@ from ..models import AccountcommonPermissions
 from ..models import AccountcommonUserLinkedPlatform
 from ..models import AccountcommonUserLinkedPlatformsResponseV3
 from ..models import AccountcommonUserPlatforms
-from ..models import ModelAdminInvitationV3
 from ..models import ModelAgeRestrictionRequest
 from ..models import ModelAgeRestrictionRequestV3
 from ..models import ModelAgeRestrictionResponse
@@ -46,8 +45,8 @@ from ..models import ModelGetUserBanV3Response
 from ..models import ModelGetUserJusticePlatformAccountResponse
 from ..models import ModelGetUserMapping
 from ..models import ModelGetUsersResponseWithPaginationV3
-from ..models import ModelInviteAdminRequestV3
-from ..models import ModelInviteAdminResponseV3
+from ..models import ModelInviteUserRequestV3
+from ..models import ModelInviteUserResponseV3
 from ..models import ModelLinkPlatformAccountRequest
 from ..models import ModelLinkRequest
 from ..models import ModelListEmailAddressRequest
@@ -84,6 +83,7 @@ from ..models import ModelUserCreateResponse
 from ..models import ModelUserCreateResponseV3
 from ..models import ModelUserDeletionStatusResponse
 from ..models import ModelUserInformation
+from ..models import ModelUserInvitationV3
 from ..models import ModelUserPasswordUpdateRequest
 from ..models import ModelUserPasswordUpdateV3Request
 from ..models import ModelUserResponse
@@ -121,6 +121,7 @@ from ..operations.users import AdminGetMyUserV3
 from ..operations.users import AdminGetUserBanV2
 from ..operations.users import AdminGetUserBanV3
 from ..operations.users import AdminGetUserByEmailAddressV3
+from ..operations.users import AdminGetUserByPlatformUserIDV3
 from ..operations.users import AdminGetUserByUserIdV2
 from ..operations.users import AdminGetUserByUserIdV3
 from ..operations.users import AdminGetUserDeletionStatusV3
@@ -555,6 +556,20 @@ def admin_get_user_by_email_address_v3(email_address: Optional[str] = None, name
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(AdminGetUserByPlatformUserIDV3)
+def admin_get_user_by_platform_user_idv3(platform_id: str, platform_user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetUserByPlatformUserIDV3.create(
+        platform_id=platform_id,
+        platform_user_id=platform_user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(AdminGetUserByUserIdV2)
 def admin_get_user_by_user_id_v2(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -627,7 +642,7 @@ def admin_get_user_platform_accounts_v3(user_id: str, after: Optional[str] = Non
 
 
 @same_doc_as(AdminInviteUserV3)
-def admin_invite_user_v3(body: ModelInviteAdminRequestV3, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_invite_user_v3(body: ModelInviteUserRequestV3, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -740,7 +755,7 @@ def admin_save_user_role_v3(body: List[ModelNamespaceRoleRequest], user_id: str,
 
 
 @same_doc_as(AdminSearchUserV3)
-def admin_search_user_v3(by: Optional[str] = None, end_date: Optional[str] = None, limit: Optional[int] = None, offset: Optional[str] = None, query: Optional[str] = None, start_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_search_user_v3(by: Optional[str] = None, end_date: Optional[str] = None, limit: Optional[int] = None, offset: Optional[str] = None, platform_by: Optional[str] = None, platform_id: Optional[str] = None, query: Optional[str] = None, start_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -750,6 +765,8 @@ def admin_search_user_v3(by: Optional[str] = None, end_date: Optional[str] = Non
         end_date=end_date,
         limit=limit,
         offset=offset,
+        platform_by=platform_by,
+        platform_id=platform_id,
         query=query,
         start_date=start_date,
         namespace=namespace,

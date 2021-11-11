@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,13 +31,10 @@ from ...models import OauthmodelTokenIntrospectResponse
 class TokenIntrospectionV3(Operation):
     """OAuth2 token introspection API (TokenIntrospectionV3)
 
-    This endpoint returns information about an access token intended to be used by
-    resource servers or other internal servers.
-
-    This endpoint requires authorized requests header with valid basic or bearer
-    token.
-
-    action code : 10705
+    <p>This endpoint returns information about an access token intended to be used
+    by resource servers or other internal servers.</p> <p>This endpoint requires
+    authorized requests header with valid basic or bearer token.</p> <p>action
+    code : 10705</p>
 
 
     Properties:

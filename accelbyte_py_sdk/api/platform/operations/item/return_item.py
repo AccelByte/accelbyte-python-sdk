@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,12 +32,11 @@ from ...models import ValidationErrorEntity
 class ReturnItem(Operation):
     """Return item (returnItem)
 
-    [SERVICE COMMUNICATION ONLY] This api is used for returning a published item
-    while the item is maxCount limited, it will increase the sale available count
-    if orderNo already acquired.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+    <b>[SERVICE COMMUNICATION ONLY]</b> This api is used for returning a published
+    item while the item is maxCount limited, it will increase the sale available
+    count if orderNo already acquired.<br>Other detail info: <ul><li><i>Required
+    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4
+    (UPDATE)</li></ul>
 
 
     Properties:
@@ -62,9 +61,9 @@ class ReturnItem(Operation):
     Responses:
         204: No Content - (Return item successfully)
 
-        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
-
         404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -208,16 +207,16 @@ class ReturnItem(Operation):
 
         204: No Content - (Return item successfully)
 
-        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
-
         404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 204:
             return HttpResponse.create(code, "No Content"), None
-        if code == 422:
-            return None, ValidationErrorEntity.create_from_dict(content)
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
+        if code == 422:
+            return None, ValidationErrorEntity.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
             return None, undocumented_response

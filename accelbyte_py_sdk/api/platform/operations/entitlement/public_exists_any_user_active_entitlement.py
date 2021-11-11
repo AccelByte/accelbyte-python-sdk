@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,11 +30,10 @@ from ...models import Ownership
 class PublicExistsAnyUserActiveEntitlement(Operation):
     """Exists any user active entitlement (publicExistsAnyUserActiveEntitlement)
 
-    Exists any user active entitlement of specified itemIds, skus and appIds
-
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+    Exists any user active entitlement of specified itemIds, skus and
+    appIds<p>Other detail info: <ul><li><i>Required permission</i>:
+    resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2
+    (READ)</li></ul>
 
 
     Properties:

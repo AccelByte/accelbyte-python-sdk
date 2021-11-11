@@ -1,4 +1,4 @@
-# justice-basic-service (1.23.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,12 +31,9 @@ from ...models import NamespaceInfo
 class PublicGetNamespaces(Operation):
     """Get all namespaces (publicGetNamespaces)
 
-    Get all namespaces.
-    Other detail info:
-
-      * Required permission : login user
-      *  Action code : 11303
-      *  Returns : list of namespaces
+    Get all namespaces.<br>Other detail info: <ul><li><i>Required permission</i>:
+    login user</li><li><i>Action code</i>: 11303</li><li><i>Returns</i>: list of
+    namespaces</li></ul>
 
 
     Properties:

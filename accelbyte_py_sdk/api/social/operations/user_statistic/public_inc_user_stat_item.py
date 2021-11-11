@@ -1,4 +1,4 @@
-# justice-social-service (1.18.1)
+# justice-social-service (1.21.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,11 +32,9 @@ from ...models import StatItemIncResult
 class PublicIncUserStatItem(Operation):
     """Public update user's statitem value (publicIncUserStatItem)
 
-    Public update user's statitem value.
-    Other detail info:
-
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
-      *  Returns : updated user's statItem
+    Public update user's statitem value.<br>Other detail info:<ul><li><i>Required
+    permission</i>: resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM",
+    action=4 (UPDATE)</li><li><i>Returns</i>: updated user's statItem</li></ul>
 
 
     Properties:

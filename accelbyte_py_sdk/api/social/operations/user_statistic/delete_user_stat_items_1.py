@@ -1,4 +1,4 @@
-# justice-social-service (1.18.1)
+# justice-social-service (1.21.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,11 +30,10 @@ from ...models import ErrorEntity
 class DeleteUserStatItems1(Operation):
     """Delete User's statItems (deleteUserStatItems_1)
 
-    Delete user's statItems given stat code.
-    Other detail info:
-
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=8 (DELETE)
-      *  Returns : no content
+    Delete user's statItems given stat code.<br>Other detail
+    info:<ul><li><i>Required permission</i>:
+    resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=8
+    (DELETE)</li><li><i>Returns</i>: no content</li></li>
 
 
     Properties:

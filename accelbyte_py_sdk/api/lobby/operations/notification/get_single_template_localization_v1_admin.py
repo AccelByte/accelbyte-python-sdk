@@ -31,10 +31,9 @@ from ...models import RestapiErrorResponseV1
 class GetSingleTemplateLocalizationV1Admin(Operation):
     """get a template localization (getSingleTemplateLocalizationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with
-    scope `social`
-    Get a template localization
-    Action Code: 50207
+    Required permission : <code>ADMIN:NAMESPACE:{namespace}:NOTIFICATION
+    [READ]</code> with scope <code>social</code> <br>Get a template
+    localization<br/> Action Code: 50207
 
 
     Properties:

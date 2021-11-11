@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,12 +30,10 @@ from ...models import ModelUserVerificationRequest
 class UserVerification(Operation):
     """Redeem verification code sent to user (UserVerification)
 
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
+    <p>Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'</p>
     Redeems a verification code sent to a user to verify the user's contact
-    address is correct
-
-    Available ContactType : email or phone
+    address is correct <p>Available ContactType : <b>email<b/> or <b>phone<b/>
+    </p>
 
 
     Properties:

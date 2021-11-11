@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,17 +31,10 @@ from ...models import RestErrorResponse
 class AdminUpdateUserEmailAddressV4(Operation):
     """Update a User Email Address (AdminUpdateUserEmailAddressV4)
 
-    Required permission
-
-
-
-        'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
-
-
-    This is the endpoint for an admin to update a user email address. This
-    endpoint need a valid user token from an admin to verify its identity (email)
-    before updating a user.
+    <p>Required permission <pre>'ADMIN:NAMESPACE:{namespace}:USER:{userId}
+    [UPDATE]'</pre></p> <br><p>This is the endpoint for an admin to update a user
+    email address. This endpoint need a valid user token from an admin to verify
+    its identity (email) before updating a user.</p>
 
 
     Properties:

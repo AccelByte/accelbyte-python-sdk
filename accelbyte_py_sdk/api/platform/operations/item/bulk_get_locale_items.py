@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,12 +32,10 @@ class BulkGetLocaleItems(Operation):
     """Bulk get locale items (bulkGetLocaleItems)
 
     This API is used to bulk get locale items. If item not exist in specific
-    region, default region item will return.
-
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
-      *  Returns : the list of items info
+    region, default region item will return.<p>Other detail info:
+    <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2
+    (READ)</li><li><i>Returns</i>: the list of items info</li></ul>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,12 +32,11 @@ from ...models import ItemAcquireResult
 class AcquireItem(Operation):
     """Acquire item (acquireItem)
 
-    [SERVICE COMMUNICATION ONLY] This api is used for acquiring a published item
-    while the item is maxCount limited, it will decrease the sale available count.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
-      *  Returns : acquire result
+    <b>[SERVICE COMMUNICATION ONLY]</b> This api is used for acquiring a published
+    item while the item is maxCount limited, it will decrease the sale available
+    count.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4
+    (UPDATE)</li><li><i>Returns</i>: acquire result</li></ul>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-basic-service (1.23.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,12 +32,10 @@ from ...models import ValidationErrorEntity
 class GetUserProfileInfo(Operation):
     """Get user profile (getUserProfileInfo)
 
-    Get user profile.
-    Other detail info:
-
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)
-      *  Returns : user profile
-      *  Action code : 11403
+    Get user profile.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource=<b>"ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE"</b>, action=2
+    <b>(READ)</b></li><li><i>Returns</i>: user profile</li><li><i>Action code</i>:
+    11403</li></ul>
 
 
     Properties:

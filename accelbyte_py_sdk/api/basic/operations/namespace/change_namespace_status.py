@@ -1,4 +1,4 @@
-# justice-basic-service (1.23.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,12 +33,10 @@ from ...models import ValidationErrorEntity
 class ChangeNamespaceStatus(Operation):
     """Change namespace status (changeNamespaceStatus)
 
-    Change a namespace status.
-    Other detail info:
-
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=4 (UPDATE)
-      * Action code : 11306
-      *  Returns : updated namespace
+    Change a namespace status.<br>Other detail info: <ul><li><i>Required
+    permission</i>: resource=<b>"ADMIN:NAMESPACE:{namespace}:NAMESPACE"</b>,
+    action=4 <b>(UPDATE)</b></li><li>Action code<i></i>:
+    11306</li><li><i>Returns</i>: updated namespace</li></ul>
 
 
     Properties:

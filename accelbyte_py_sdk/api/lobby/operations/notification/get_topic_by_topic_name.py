@@ -31,8 +31,8 @@ from ...models import RestapiErrorResponseBody
 class GetTopicByTopicName(Operation):
     """get topic information by topic name (getTopicByTopicName)
 
-    Required permission : `NAMESPACE:{namespace}:TOPIC [READ]` with scope `social`
-    get topic information by topic name.
+    Required permission : <code>NAMESPACE:{namespace}:TOPIC [READ]</code> with
+    scope <code>social</code> <br>get topic information by topic name.
 
 
     Properties:

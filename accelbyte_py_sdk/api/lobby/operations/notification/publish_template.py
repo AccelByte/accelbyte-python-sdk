@@ -30,9 +30,9 @@ from ...models import RestapiErrorResponseBody
 class PublishTemplate(Operation):
     """publish draft template (publishTemplate)
 
-    Required permission : `NAMESPACE:{namespace}:TEMPLATE [CREATE]` with scope
-    `social`
-    Publish notification template draft. Empty draft can not be published.
+    Required permission : <code>NAMESPACE:{namespace}:TEMPLATE [CREATE]</code>
+    with scope <code>social</code> <br>Publish notification template draft. Empty
+    draft can not be published.
 
 
     Properties:

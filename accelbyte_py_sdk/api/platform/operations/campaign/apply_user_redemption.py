@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,13 +33,11 @@ from ...models import ValidationErrorEntity
 class ApplyUserRedemption(Operation):
     """Redeem code (applyUserRedemption)
 
-    [SERVICE COMMUNICATION ONLY] Redeem code. If the campaign which the code
-    belongs to is INACTIVE, the code couldn't be redeemed even if its status is
-    ACTIVE.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:REDEMPTION", action=1 (CREATE)
-      *  Returns : Redeem result
+    <b>[SERVICE COMMUNICATION ONLY]</b> Redeem code. If the campaign which the
+    code belongs to is INACTIVE, the code couldn't be redeemed even if its status
+    is ACTIVE.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:REDEMPTION", action=1
+    (CREATE)</li><li><i>Returns</i>: Redeem result</li></ul>
 
 
     Properties:
@@ -64,11 +62,11 @@ class ApplyUserRedemption(Operation):
     Responses:
         200: OK - RedeemResult (successful operation)
 
-        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
-
         404: Not Found - ErrorEntity (37142: Code [{code}] does not exist in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37175: Exceeded max redeem count per code per user [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -212,20 +210,20 @@ class ApplyUserRedemption(Operation):
 
         200: OK - RedeemResult (successful operation)
 
-        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
-
         404: Not Found - ErrorEntity (37142: Code [{code}] does not exist in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37175: Exceeded max redeem count per code per user [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return RedeemResult.create_from_dict(content), None
-        if code == 422:
-            return None, ValidationErrorEntity.create_from_dict(content)
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 409:
             return None, ErrorEntity.create_from_dict(content)
+        if code == 422:
+            return None, ValidationErrorEntity.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
             return None, undocumented_response

@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,18 +31,14 @@ from ...models import ModelRoleCreateRequest
 class CreateRole(Operation):
     """Create Role (CreateRole)
 
-    Required permission 'ROLE:ADMIN [CREATE]' or 'ADMIN:ROLE [CREATE]'
-
-    Required Permission 'ROLE:ADMIN [CREATE]' is going to be DEPRECATED for
-    security purpose. It is going to be deprecated on 31 JANUARY 2019 , please use
-    permission 'ADMIN:ROLE [CREATE]' instead.
-
-    Role can only be assigned to other users by the role's manager.
-
-    If role is an administrator role (i.e. AdminRole == true), it will list out
-    the role's members.
-
-    Administrator role can be created only when at least 1 manager is specified.
+    <p>Required permission 'ROLE:ADMIN [CREATE]' or 'ADMIN:ROLE [CREATE]' </p>
+    <p>Required Permission 'ROLE:ADMIN [CREATE]' is going to be
+    <strong>DEPRECATED</strong> for security purpose. It is going to be deprecated
+    on <strong>31 JANUARY 2019</strong>, please use permission 'ADMIN:ROLE
+    [CREATE]' instead.</p> <p>Role can only be assigned to other users by the
+    role's manager.</p> <p>If role is an administrator role (i.e. AdminRole ==
+    true), it will list out the role's members.</p> <p>Administrator role can be
+    created only when at least 1 manager is specified.</p>
 
 
     Properties:

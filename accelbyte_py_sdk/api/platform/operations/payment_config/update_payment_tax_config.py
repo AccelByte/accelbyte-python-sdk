@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,24 +33,15 @@ from ...models import ValidationErrorEntity
 class UpdatePaymentTaxConfig(Operation):
     """Update payment global tax config (updatePaymentTaxConfig)
 
-    Update payment tax config.
-
-
-
-         Request Body Parameters:
-
-
-         Parameter| Type| Required| Description
-        ---|---|---|---
-        taxJarEnabled| Boolean| false
-        taxJarApiToken| String| false| required, when taxJarEnabled is true and there is no existing token
-        sandboxTaxJarApiToken| String| false| optional
-        taxJarProductCodesMapping| Map| No| key is item type(APP|COINS|INGAMEITEM|BUNDLE|CODE|SUBSCRIPTION) and value is product tax code: https://developers.taxjar.com/api/reference/?ruby#get-list-tax-categories
-
-    Other detail info:
-
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : payment global tax config
+    Update payment tax config.<br><pre><p><strong>Request Body
+    Parameters:</strong></p><pre><table><tr><td>Parameter</td><td>Type</td><td>Required</td><td>Description</td></tr><tr><td>taxJarEnabled</td><td>Boolean</td><td>false</td></tr><tr><td>taxJarApiToken</td><td>String</td><td>false</td><td>required,
+    when taxJarEnabled is true and there is no existing
+    token</td></tr><tr><td>sandboxTaxJarApiToken</td><td>String</td><td>false</td><td>optional</td></tr><tr><td>taxJarProductCodesMapping</td><td>Map</td><td>No</td><td>key
+    is item type(APP|COINS|INGAMEITEM|BUNDLE|CODE|SUBSCRIPTION) and value is
+    product tax code: https://developers.taxjar.com/api/reference/?ruby#get-list-
+    tax-categories</td></tr></table></pre></ol>Other detail info:
+    <ul><li><i>Required permission</i>: resource="ADMIN:PAYMENT:CONFIG", action=4
+    (UPDATE)</li><li><i>Returns</i>: payment global tax config</li></ul>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,11 +30,9 @@ from ...models import GoogleIAPConfigInfo
 class GetGoogleIAPConfig(Operation):
     """Get google iap config (getGoogleIAPConfig)
 
-    Get google iap config.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
-      *  Returns : google iap config
+    Get google iap config.<br>Other detail info: <ul><li><i>Required
+    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2
+    (READ)</li><li><i>Returns</i>: google iap config</li></ul>
 
 
     Properties:

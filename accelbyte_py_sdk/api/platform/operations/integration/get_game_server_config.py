@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,9 @@ from ...models import GameServerConfig
 class GetGameServerConfig(Operation):
     """Get game server configuration (getGameServerConfig)
 
-    Get game server configuration.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:INTEGRATION", action=2 (READ)
-      *  Returns : Game server config
+    Get game server configuration.<br>Other detail info: <ul><li><i>Required
+    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:INTEGRATION", action=2
+    (READ)</li><li><i>Returns</i>: Game server config</li></ul>
 
 
     Properties:

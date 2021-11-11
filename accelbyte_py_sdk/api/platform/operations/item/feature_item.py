@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,9 @@ from ...models import FullItemInfo
 class FeatureItem(Operation):
     """Feature an item (featureItem)
 
-    Add a feature to an item.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
-      *  Returns : updated item
+    Add a feature to an item.<br>Other detail info: <ul><li><i>Required
+    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4
+    (UPDATE)</li><li><i>Returns</i>: updated item</li></ul>
 
 
     Properties:

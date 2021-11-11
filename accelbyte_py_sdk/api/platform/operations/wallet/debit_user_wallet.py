@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,10 +33,9 @@ from ...models import WalletInfo
 class DebitUserWallet(Operation):
     """Debit a user wallet (debitUserWallet)
 
-    Debit a user wallet.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4 (UPDATE)
+    Debit a user wallet.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4
+    (UPDATE)</li></ul>
 
 
     Properties:
@@ -63,9 +62,9 @@ class DebitUserWallet(Operation):
     Responses:
         200: OK - WalletInfo (successful operation)
 
-        404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
-
         400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
+
+        404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
 
         409: Conflict - ErrorEntity (20006: optimistic lock)
 
@@ -227,9 +226,9 @@ class DebitUserWallet(Operation):
 
         200: OK - WalletInfo (successful operation)
 
-        404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
-
         400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
+
+        404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
 
         409: Conflict - ErrorEntity (20006: optimistic lock)
 
@@ -237,9 +236,9 @@ class DebitUserWallet(Operation):
         """
         if code == 200:
             return WalletInfo.create_from_dict(content), None
-        if code == 404:
-            return None, ErrorEntity.create_from_dict(content)
         if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 409:
             return None, ErrorEntity.create_from_dict(content)

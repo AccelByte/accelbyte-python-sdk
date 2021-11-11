@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,8 @@ from ...models import RestErrorResponse
 class AdminGetRoleMembersV3(Operation):
     """Get Role Members (AdminGetRoleMembersV3)
 
-    Required permission 'ADMIN:ROLE [READ]'
-
-    Admin roles has its members listed in the role.
-
-    action code: 10416
+    <p>Required permission 'ADMIN:ROLE [READ]'</p> <p>Admin roles has its members
+    listed in the role.</p> <p>action code: 10416</p>
 
 
     Properties:

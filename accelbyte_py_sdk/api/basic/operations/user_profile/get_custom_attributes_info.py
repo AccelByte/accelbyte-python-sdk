@@ -1,4 +1,4 @@
-# justice-basic-service (1.23.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,12 +30,11 @@ from ...models import ErrorEntity
 class GetCustomAttributesInfo(Operation):
     """Get user custom attributes (getCustomAttributesInfo)
 
-    Get user custom attributes.
-    Other detail info:
-
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)
-      *  Returns : custom attributes
-      *  Action code : 11403
+    Get user custom attributes.<br>Other detail info: <ul><li><i>Required
+    permission</i>:
+    resource=<b>"ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE"</b>, action=2
+    <b>(READ)</b></li><li><i>Returns</i>: custom attributes</li><li><i>Action
+    code</i>: 11403</li></ul>
 
 
     Properties:

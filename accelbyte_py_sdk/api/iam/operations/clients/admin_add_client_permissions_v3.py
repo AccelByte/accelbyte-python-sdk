@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,9 +31,8 @@ from ...models import RestapiErrorResponse
 class AdminAddClientPermissionsV3(Operation):
     """Add Client Permissions (AdminAddClientPermissionsV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT' [UPDATE]'
-
-    action code: 10303
+    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT' [UPDATE]'</p>
+    <p>action code: 10303</p>
 
 
     Properties:

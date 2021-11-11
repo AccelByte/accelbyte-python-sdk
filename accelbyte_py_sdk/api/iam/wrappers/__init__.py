@@ -1,6 +1,6 @@
 """Auto-generated package that contains utility functions for the justice-iam-service."""
 
-__version__ = "4.4.1"
+__version__ = "4.7.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -37,7 +37,6 @@ from ._clients import update_client_secret
 from ._o_auth import authorization
 from ._o_auth import get_jwks
 from ._o_auth import get_revocation_list
-from ._o_auth import platform_token_grant
 from ._o_auth import platform_token_request_handler
 from ._o_auth import revoke_a_user
 from ._o_auth import revoke_token
@@ -153,6 +152,7 @@ from ._users import admin_get_my_user_v3
 from ._users import admin_get_user_ban_v2
 from ._users import admin_get_user_ban_v3
 from ._users import admin_get_user_by_email_address_v3
+from ._users import admin_get_user_by_platform_user_idv3
 from ._users import admin_get_user_by_user_id_v2
 from ._users import admin_get_user_by_user_id_v3
 from ._users import admin_get_user_deletion_status_v3

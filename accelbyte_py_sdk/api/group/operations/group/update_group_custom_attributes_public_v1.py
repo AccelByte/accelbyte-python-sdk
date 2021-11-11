@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,16 +32,12 @@ from ...models import ResponseErrorResponse
 class UpdateGroupCustomAttributesPublicV1(Operation):
     """Update group custom attributes (updateGroupCustomAttributesPublicV1)
 
-    Requires valid user authentication
-
-    Required Member Role Permission: "GROUP [UPDATE]"
-
-    This endpoint replaces current group custom attributes entirely. This endpoint
-    will check the group ID of the user based on the access token and compare it
-    with the group ID in path parameter. It will also check the member role of the
-    user based on the access token
-
-    Action Code: 73311
+    <p>Requires valid user authentication </p> <p>Required Member Role Permission:
+    "GROUP [UPDATE]"</p> <p>This endpoint replaces current group custom attributes
+    entirely. This endpoint will check the group ID of the user based on the
+    access token and compare it with the group ID in path parameter. It will also
+    check the member role of the user based on the access token</p> <p>Action
+    Code: 73311</p>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-basic-service (1.23.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,12 +32,10 @@ from ...models import ValidationErrorEntity
 class GetNamespace(Operation):
     """Get a namespace (getNamespace)
 
-    Get a namespace.
-    Other detail info:
-
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
-      *  Action code : 11304
-      *  Returns : namespace
+    Get a namespace.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource=<b>"ADMIN:NAMESPACE:{namespace}:NAMESPACE"</b>, action=2
+    <b>(READ)</b></li><li><i>Action code</i>: 11304</li><li><i>Returns</i>:
+    namespace</li></ul>
 
 
     Properties:

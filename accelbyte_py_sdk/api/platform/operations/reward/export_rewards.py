@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -29,11 +29,8 @@ class ExportRewards(Operation):
     """Export all reward configurations (exportRewards)
 
     Export reward configurations for a given namespace into file. At current, only
-    JSON file is supported.
-
-    Other detail info:
-
-      *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
+    JSON file is supported.<p>Other detail info:<ul><li><i>*Required permission*:
+    resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)</li></ul>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,12 +31,10 @@ from ...models import StoreBackupInfo
 class GetPublishedStoreBackup(Operation):
     """Get a published store's backup (getPublishedStoreBackup)
 
-    This API is used to get a store's backup.
-
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
-      *  Returns : store backup info
+    This API is used to get a store's backup. <p>Other detail info:
+    <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2
+    (READ)</li><li><i>Returns</i>: store backup info</li></ul>
 
 
     Properties:

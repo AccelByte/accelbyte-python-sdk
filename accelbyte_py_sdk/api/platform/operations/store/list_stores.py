@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,12 +30,10 @@ from ...models import StoreInfo
 class ListStores(Operation):
     """List stores (listStores)
 
-    This API is used to list stores in a namespace.
-
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
-      *  Returns : the list of stores
+    This API is used to list stores in a namespace.<p>Other detail info:
+    <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2
+    (READ)</li><li><i>Returns</i>: the list of stores</li></ul>
 
 
     Properties:

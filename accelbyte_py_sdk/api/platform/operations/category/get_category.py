@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,12 +31,10 @@ from ...models import FullCategoryInfo
 class GetCategory(Operation):
     """Get category (getCategory)
 
-    This API is used to get category by category path.
-
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
-      *  Returns : category data
+    This API is used to get category by category path.<p>Other detail info:
+    <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2
+    (READ)</li><li><i>Returns</i>: category data</li></ul>
 
 
     Properties:

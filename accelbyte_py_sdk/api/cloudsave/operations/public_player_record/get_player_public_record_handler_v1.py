@@ -1,4 +1,4 @@
-# justice-cloudsave-service (1.8.0)
+# justice-cloudsave-service (1.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,13 +31,12 @@ from ...models import ModelsResponseError
 class GetPlayerPublicRecordHandlerV1(Operation):
     """Get other player's public record (getPlayerPublicRecordHandlerV1)
 
-    Required Permission |
-    `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]`
-    ---|---
-    Required Scope | `social`
-
-    Get other player's record that is public. Only record with `isPublic=true`
-    that can be retrieved using this endpoint.
+    <table> <tr> <td>Required Permission</td>
+    <td><code>NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD
+    [READ]</code></td> </tr> <tr> <td>Required Scope</td>
+    <td><code>social</code></td> </tr> </table> <br/> Get other player's record
+    that is public. Only record with <code>isPublic=true</code> that can be
+    retrieved using this endpoint.
 
 
     Properties:

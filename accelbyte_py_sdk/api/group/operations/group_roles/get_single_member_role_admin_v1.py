@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,9 @@ from ...models import ResponseErrorResponse
 class GetSingleMemberRoleAdminV1(Operation):
     """get member role (getSingleMemberRoleAdminV1)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [READ]
-
-    This endpoint is used to get member role based on the role ID
-
-    Action Code: 73203
+    <p>Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [READ]</p>
+    <p>This endpoint is used to get member role based on the role ID</p> <p>Action
+    Code: 73203</p>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,12 +30,9 @@ from ...models import OauthmodelErrorResponse
 class TokenRevocationV3(Operation):
     """OAuth2 token revocation API (TokenRevocationV3)
 
-    This endpoint revokes a token.
-
-    This endpoint requires authorized requests header with valid access token.
-
-
-    action code: 10706
+    <p>This endpoint revokes a token.</p> <p>This endpoint requires authorized
+    requests header with Basic Authentication from client that establish the
+    token.</p><br>action code: 10706
 
 
     Properties:

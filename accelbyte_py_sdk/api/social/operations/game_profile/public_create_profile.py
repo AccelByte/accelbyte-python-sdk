@@ -1,4 +1,4 @@
-# justice-social-service (1.18.1)
+# justice-social-service (1.21.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,15 +31,9 @@ from ...models import ValidationErrorEntity
 class PublicCreateProfile(Operation):
     """Create a new profile for user (publicCreateProfile)
 
-    Create new profile for user.
-    Other detail info:
-
-      *  Required permission
-    : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=1
-    (CREATE)
-
-      *  Returns
-    : created game profile
+    Create new profile for user.<br>Other detail info:<ul><li><i>Required
+    permission</li>: resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE",
+    action=1 (CREATE)</li><li><i>Returns</li>: created game profile</li></ul>
 
 
     Properties:

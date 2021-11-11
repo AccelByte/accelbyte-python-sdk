@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,14 +31,10 @@ from ...models import ResponseErrorResponse
 class GetGroupInvitationRequestPublicV1(Operation):
     """Get Group Invitation Request List (getGroupInvitationRequestPublicV1)
 
-    Required valid user authentication
-
-    This endpoint is used to Get Group Invitation Request List
-
-    Get Group Invitation Request List for specific group. It will check any group
-    invitation for this user
-
-    Action Code: 73502
+    <p>Required valid user authentication </p> <p>This endpoint is used to Get
+    Group Invitation Request List</p> <p>Get Group Invitation Request List for
+    specific group. It will check any group invitation for this user</p> <p>Action
+    Code: 73502</p>
 
 
     Properties:

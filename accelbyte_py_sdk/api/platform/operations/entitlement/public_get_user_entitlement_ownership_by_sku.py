@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -24,17 +24,16 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
-from ...models import Ownership
+from ...models import TimedOwnership
 
 
 class PublicGetUserEntitlementOwnershipBySku(Operation):
     """Get user entitlement ownership by sku (publicGetUserEntitlementOwnershipBySku)
 
-    Get user entitlement ownership by sku.
-
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+    Get user entitlement ownership by sku.<p>Other detail info:
+    <ul><li><i>Required permission</i>:
+    resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2
+    (READ)</li></ul>
 
 
     Properties:
@@ -59,7 +58,7 @@ class PublicGetUserEntitlementOwnershipBySku(Operation):
         sku: (sku) REQUIRED str in query
 
     Responses:
-        200: OK - Ownership (successful operation)
+        200: OK - TimedOwnership (successful operation)
     """
 
     # region fields
@@ -218,13 +217,13 @@ class PublicGetUserEntitlementOwnershipBySku(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, Ownership], Union[None, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, TimedOwnership], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - Ownership (successful operation)
+        200: OK - TimedOwnership (successful operation)
         """
         if code == 200:
-            return Ownership.create_from_dict(content), None
+            return TimedOwnership.create_from_dict(content), None
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
             return None, undocumented_response

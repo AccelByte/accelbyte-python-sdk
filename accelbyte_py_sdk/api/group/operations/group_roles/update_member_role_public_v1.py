@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,11 +32,8 @@ from ...models import ResponseErrorResponse
 class UpdateMemberRolePublicV1(Operation):
     """Assign role to group member (updateMemberRolePublicV1)
 
-    Required Member Role Permission: "GROUP:ROLE [UPDATE]
-
-    This endpoint is used to assign role to group member
-
-    Action Code: 73204
+    Required Member Role Permission: "GROUP:ROLE [UPDATE]</p> <p>This endpoint is
+    used to assign role to group member</p> <p>Action Code: 73204</p>
 
 
     Properties:

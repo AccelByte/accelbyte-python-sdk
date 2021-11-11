@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,11 +30,9 @@ from ...models import OrderPagingSlicedResult
 class PublicQueryUserOrders(Operation):
     """Query user orders (publicQueryUserOrders)
 
-    Query user orders.
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
-      *  Returns : get order
+    Query user orders.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2
+    (READ)</li><li><i>Returns</i>: get order</li></ul>
 
 
     Properties:

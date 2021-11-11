@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,11 +30,9 @@ from ...models import ErrorEntity
 class DeletePaymentProviderConfig(Operation):
     """Delete payment provider config (deletePaymentProviderConfig)
 
-    Delete payment provider config.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=8 (DELETE)
-      *  Returns : payment provider config
+    Delete payment provider config.<br>Other detail info: <ul><li><i>Required
+    permission</i>: resource="ADMIN:PAYMENT:CONFIG", action=8
+    (DELETE)</li><li><i>Returns</i>: payment provider config</li></ul>
 
 
     Properties:

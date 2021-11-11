@@ -1,4 +1,4 @@
-# justice-basic-service (1.23.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,12 +31,9 @@ from ...models import ValidationErrorEntity
 class GetLanguages(Operation):
     """List languages. (getLanguages)
 
-    List languages.
-    Other detail info:
-
-      * Required permission : login user
-      *  Action code : 11206
-      *  Returns : language list
+    List languages.<br>Other detail info: <ul><li><i>Required permission</i>:
+    login user</li><li><i>Action code</i>: 11206</li><li><i>Returns</i>: language
+    list</li></ul>
 
 
     Properties:

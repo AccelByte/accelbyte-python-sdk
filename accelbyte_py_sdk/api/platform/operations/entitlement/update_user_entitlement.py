@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -35,11 +35,9 @@ class UpdateUserEntitlement(Operation):
 
     Update user entitlement. If update CONSUMABLE entitlement useCount to 0, the
     status will be CONSUMED, if update quantity of DISTRIBUTION, the status will
-    be DISTRIBUTED.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
-      *  Returns : updated entitlement
+    be DISTRIBUTED.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4
+    (UPDATE)</li><li><i>Returns</i>: updated entitlement</li></ul>
 
 
     Properties:
@@ -66,11 +64,11 @@ class UpdateUserEntitlement(Operation):
     Responses:
         200: OK - EntitlementInfo (successful operation)
 
-        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
-
         404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 20006: optimistic lock)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -228,20 +226,20 @@ class UpdateUserEntitlement(Operation):
 
         200: OK - EntitlementInfo (successful operation)
 
-        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
-
         404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 20006: optimistic lock)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return EntitlementInfo.create_from_dict(content), None
-        if code == 422:
-            return None, ValidationErrorEntity.create_from_dict(content)
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 409:
             return None, ErrorEntity.create_from_dict(content)
+        if code == 422:
+            return None, ValidationErrorEntity.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
             return None, undocumented_response

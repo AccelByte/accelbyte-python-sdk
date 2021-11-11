@@ -2,7 +2,7 @@
 
 from .add_friends_without_confirmation import AddFriendsWithoutConfirmation
 from .get_list_of_friends import GetListOfFriends
-from .get_user_friends import GetUserFriends
+from .get_user_friends_updated import GetUserFriendsUpdated
 from .get_user_incoming_friends import GetUserIncomingFriends
 from .get_user_outgoing_friends import GetUserOutgoingFriends
 from .user_accept_friend_request import UserAcceptFriendRequest

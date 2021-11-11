@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,12 +31,11 @@ from ...models import TestResult
 class TestAliPayConfig(Operation):
     """Test Alipay configuration (testAliPayConfig)
 
-    Test AliPay configuration.Reference: [Alipay
-    Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
-    Other detail info:
-
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : test result
+    Test AliPay configuration.Reference: <a
+    href="https://docs.open.alipay.com/270/alipay.trade.page.pay">Alipay
+    Document</a>.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)</li><li><i>Returns</i>:
+    test result</li></ul>
 
 
     Properties:

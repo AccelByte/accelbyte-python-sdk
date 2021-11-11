@@ -1,4 +1,4 @@
-# justice-basic-service (1.23.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,14 +33,11 @@ from ...models import ValidationErrorEntity
 class PublicCreateUserProfile(Operation):
     """Create user profile (publicCreateUserProfile)
 
-    Create user profile.
-    Other detail info:
-
-      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=1 (CREATE)
-      *  Action code : 11401
-      *  Language : allowed format: en, en-US
-      *  Timezone : IANA time zone, e.g. Asia/Shanghai
-      *  Returns : Created user profile
+    Create user profile.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource=<b>"NAMESPACE:{namespace}:USER:{userId}:PROFILE"</b>, action=1
+    <b>(CREATE)</b></li><li><i>Action code</i>: 11401</li><li><i>Language</i> :
+    allowed format: en, en-US</li><li><i>Timezone</i> : IANA time zone, e.g.
+    Asia/Shanghai</li><li><i>Returns</i>: Created user profile</li></ul>
 
 
     Properties:

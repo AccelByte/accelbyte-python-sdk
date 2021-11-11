@@ -1,4 +1,4 @@
-# justice-basic-service Index (1.23.0)
+# justice-basic-service Index (1.26.0)
 
 
 ## Operations
@@ -7,6 +7,13 @@
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /basic/v1/admin/namespaces/{namespace}/users/{userId}/anonymization/profiles | DELETE | anonymizeUserProfile | [AnonymizeUserProfile](../accelbyte_py_sdk/api/basic/operations/anonymization/anonymize_user_profile.py) | [anonymize_user_profile](../accelbyte_py_sdk/api/basic/wrappers/_anonymization.py) |
+
+### EQU8Config
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
+| /basic/v1/admin/namespaces/{namespace}/equ8/config | DELETE | deleteConfig | [DeleteConfig](../accelbyte_py_sdk/api/basic/operations/equ8_config/delete_config.py) | [delete_config](../accelbyte_py_sdk/api/basic/wrappers/_equ8_config.py) |
+| /basic/v1/admin/namespaces/{namespace}/equ8/config | GET | getConfig | [GetConfig](../accelbyte_py_sdk/api/basic/operations/equ8_config/get_config.py) | [get_config](../accelbyte_py_sdk/api/basic/wrappers/_equ8_config.py) |
+| /basic/v1/admin/namespaces/{namespace}/equ8/config | PATCH | updateConfig | [UpdateConfig](../accelbyte_py_sdk/api/basic/operations/equ8_config/update_config.py) | [update_config](../accelbyte_py_sdk/api/basic/wrappers/_equ8_config.py) |
 
 ### FileUpload
 | Endpoint | Method | ID | Class | Wrapper |
@@ -44,6 +51,17 @@
 | /basic/v1/public/namespaces | GET | publicGetNamespaces | [PublicGetNamespaces](../accelbyte_py_sdk/api/basic/operations/namespace/public_get_namespaces.py) | [public_get_namespaces](../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) |
 | /basic/v1/admin/namespaces/{namespace}/basic | PATCH | updateNamespace | [UpdateNamespace](../accelbyte_py_sdk/api/basic/operations/namespace/update_namespace.py) | [update_namespace](../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) |
 
+### UserAction
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
+| /basic/v1/admin/namespaces/{namespace}/actions/ban | POST | banUsers | [BanUsers](../accelbyte_py_sdk/api/basic/operations/user_action/ban_users.py) | [ban_users](../accelbyte_py_sdk/api/basic/wrappers/_user_action.py) |
+| /basic/v1/admin/namespaces/{namespace}/actions | GET | getActions | [GetActions](../accelbyte_py_sdk/api/basic/operations/user_action/get_actions.py) | [get_actions](../accelbyte_py_sdk/api/basic/wrappers/_user_action.py) |
+| /basic/v1/admin/namespaces/{namespace}/actions/banned | GET | getBannedUsers | [GetBannedUsers](../accelbyte_py_sdk/api/basic/operations/user_action/get_banned_users.py) | [get_banned_users](../accelbyte_py_sdk/api/basic/wrappers/_user_action.py) |
+| /basic/v1/admin/namespaces/{namespace}/actions/status | GET | getUserStatus | [GetUserStatus](../accelbyte_py_sdk/api/basic/operations/user_action/get_user_status.py) | [get_user_status](../accelbyte_py_sdk/api/basic/wrappers/_user_action.py) |
+| /basic/v1/public/namespaces/{namespace}/users/{userId}/actions/report | POST | publicReportUser | [PublicReportUser](../accelbyte_py_sdk/api/basic/operations/user_action/public_report_user.py) | [public_report_user](../accelbyte_py_sdk/api/basic/wrappers/_user_action.py) |
+| /basic/v1/admin/namespaces/{namespace}/actions/report | POST | reportUser | [ReportUser](../accelbyte_py_sdk/api/basic/operations/user_action/report_user.py) | [report_user](../accelbyte_py_sdk/api/basic/wrappers/_user_action.py) |
+| /basic/v1/admin/namespaces/{namespace}/actions/unban | POST | unBanUsers | [UnBanUsers](../accelbyte_py_sdk/api/basic/operations/user_action/un_ban_users.py) | [un_ban_users](../accelbyte_py_sdk/api/basic/wrappers/_user_action.py) |
+
 ### UserProfile
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
@@ -73,10 +91,16 @@
 ## Models
 | Model | Class |
 |---|---|
+| A DTO for unban user API call. | [ADTOForUnbanUserAPICall](../accelbyte_py_sdk/api/basic/models/a_dto_for_unban_user_api_call.py) |
+| A DTO for update equ8 config API call. | [ADTOForUpdateEqu8ConfigAPICall](../accelbyte_py_sdk/api/basic/models/a_dto_for_update_equ8_config_api_call.py) |
+| A DTO object for equ8 user ban status | [ADTOObjectForEqu8UserBanStatus](../accelbyte_py_sdk/api/basic/models/a_dto_object_for_equ8_user_ban_status.py) |
+| A DTO object for equ8 user status | [ADTOObjectForEqu8UserStatus](../accelbyte_py_sdk/api/basic/models/a_dto_object_for_equ8_user_status.py) |
+| Action | [Action](../accelbyte_py_sdk/api/basic/models/action.py) |
 | AddCountryGroupRequest | [AddCountryGroupRequest](../accelbyte_py_sdk/api/basic/models/add_country_group_request.py) |
 | AddCountryGroupResponse | [AddCountryGroupResponse](../accelbyte_py_sdk/api/basic/models/add_country_group_response.py) |
 | CountryGroupObject | [CountryGroupObject](../accelbyte_py_sdk/api/basic/models/country_group_object.py) |
 | CountryObject | [CountryObject](../accelbyte_py_sdk/api/basic/models/country_object.py) |
+| Equ8Config | [Equ8Config](../accelbyte_py_sdk/api/basic/models/equ8_config.py) |
 | ErrorEntity | [ErrorEntity](../accelbyte_py_sdk/api/basic/models/error_entity.py) |
 | FieldValidationError | [FieldValidationError](../accelbyte_py_sdk/api/basic/models/field_validation_error.py) |
 | FileUploadUrlInfo | [FileUploadUrlInfo](../accelbyte_py_sdk/api/basic/models/file_upload_url_info.py) |
@@ -88,6 +112,7 @@
 | RetrieveCountryGroupResponse | [RetrieveCountryGroupResponse](../accelbyte_py_sdk/api/basic/models/retrieve_country_group_response.py) |
 | RetrieveTimeResponse | [RetrieveTimeResponse](../accelbyte_py_sdk/api/basic/models/retrieve_time_response.py) |
 | UpdateCountryGroupRequest | [UpdateCountryGroupRequest](../accelbyte_py_sdk/api/basic/models/update_country_group_request.py) |
+| UserBanRequest | [UserBanRequest](../accelbyte_py_sdk/api/basic/models/user_ban_request.py) |
 | UserProfileAdmin | [UserProfileAdmin](../accelbyte_py_sdk/api/basic/models/user_profile_admin.py) |
 | UserProfileCreate | [UserProfileCreate](../accelbyte_py_sdk/api/basic/models/user_profile_create.py) |
 | UserProfileInfo | [UserProfileInfo](../accelbyte_py_sdk/api/basic/models/user_profile_info.py) |
@@ -97,6 +122,7 @@
 | UserProfilePublicInfo | [UserProfilePublicInfo](../accelbyte_py_sdk/api/basic/models/user_profile_public_info.py) |
 | UserProfileStatusUpdate | [UserProfileStatusUpdate](../accelbyte_py_sdk/api/basic/models/user_profile_status_update.py) |
 | UserProfileUpdate | [UserProfileUpdate](../accelbyte_py_sdk/api/basic/models/user_profile_update.py) |
+| UserReportRequest | [UserReportRequest](../accelbyte_py_sdk/api/basic/models/user_report_request.py) |
 | UserZipCode | [UserZipCode](../accelbyte_py_sdk/api/basic/models/user_zip_code.py) |
 | UserZipCodeUpdate | [UserZipCodeUpdate](../accelbyte_py_sdk/api/basic/models/user_zip_code_update.py) |
 | ValidationErrorEntity | [ValidationErrorEntity](../accelbyte_py_sdk/api/basic/models/validation_error_entity.py) |

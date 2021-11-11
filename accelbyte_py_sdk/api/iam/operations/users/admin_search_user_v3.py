@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,19 +31,23 @@ from ...models import RestErrorResponse
 class AdminSearchUserV3(Operation):
     """Search User (AdminSearchUserV3)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER [READ]
-
-    Endpoint behavior :
-
-      * by default this endpoint searches all users on the specified namespace
-      * if query parameter is defined, endpoint will search users whose email address, display name, or username partially match with the query
-      * if startDate and endDate parameters is defined, endpoint will search users which created on the certain date range
-      * if query, startDate and endDate parameters are defined, endpoint will search users whose email address and display name match and created on the certain date range
-      * if startDate parameter is defined, endpoint will search users that created start from the defined date
-      * if endDate parameter is defined, endpoint will search users that created until the defined date
-
-
-    action code : 10133
+    <p>Required permission ADMIN:NAMESPACE:{namespace}:USER [READ]</p> <p>Endpoint
+    behavior : <ul><li>by default this endpoint searches all users on the
+    specified namespace</li> <li>if query parameter is defined, endpoint will
+    search users whose email address, display name, username, or third party
+    partially match with the query</li> <li>if startDate and endDate parameters is
+    defined, endpoint will search users which created on the certain date
+    range</li> <li>if query, startDate and endDate parameters are defined,
+    endpoint will search users whose email address and display name match and
+    created on the certain date range</li> <li>if startDate parameter is defined,
+    endpoint will search users that created start from the defined date</li>
+    <li>if endDate parameter is defined, endpoint will search users that created
+    until the defined date</li> <li>if platformId parameter is defined and by
+    parameter is using thirdparty, endpoint will search users based on the
+    platformId they have linked to </li> <li>if platformBy parameter is defined
+    and by parameter is using thirdparty, endpoint will search users based on the
+    platformUserId or platformDisplayName they have linked to, example value:
+    platformUserId or platformDisplayName</li> </ul></p> <br>action code : 10133
 
 
     Properties:
@@ -68,6 +72,10 @@ class AdminSearchUserV3(Operation):
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL str in query
+
+        platform_by: (platformBy) OPTIONAL str in query
+
+        platform_id: (platformId) OPTIONAL str in query
 
         query: (query) OPTIONAL str in query
 
@@ -99,6 +107,8 @@ class AdminSearchUserV3(Operation):
     end_date: str                                                                                  # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
     offset: str                                                                                    # OPTIONAL in [query]
+    platform_by: str                                                                               # OPTIONAL in [query]
+    platform_id: str                                                                               # OPTIONAL in [query]
     query: str                                                                                     # OPTIONAL in [query]
     start_date: str                                                                                # OPTIONAL in [query]
 
@@ -180,6 +190,10 @@ class AdminSearchUserV3(Operation):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
             result["offset"] = self.offset
+        if hasattr(self, "platform_by"):
+            result["platformBy"] = self.platform_by
+        if hasattr(self, "platform_id"):
+            result["platformId"] = self.platform_id
         if hasattr(self, "query"):
             result["query"] = self.query
         if hasattr(self, "start_date"):
@@ -219,6 +233,14 @@ class AdminSearchUserV3(Operation):
         self.offset = value
         return self
 
+    def with_platform_by(self, value: str) -> AdminSearchUserV3:
+        self.platform_by = value
+        return self
+
+    def with_platform_id(self, value: str) -> AdminSearchUserV3:
+        self.platform_id = value
+        return self
+
     def with_query(self, value: str) -> AdminSearchUserV3:
         self.query = value
         return self
@@ -253,6 +275,14 @@ class AdminSearchUserV3(Operation):
             result["offset"] = str(self.offset)
         elif include_empty:
             result["offset"] = str()
+        if hasattr(self, "platform_by") and self.platform_by:
+            result["platformBy"] = str(self.platform_by)
+        elif include_empty:
+            result["platformBy"] = str()
+        if hasattr(self, "platform_id") and self.platform_id:
+            result["platformId"] = str(self.platform_id)
+        elif include_empty:
+            result["platformId"] = str()
         if hasattr(self, "query") and self.query:
             result["query"] = str(self.query)
         elif include_empty:
@@ -308,6 +338,8 @@ class AdminSearchUserV3(Operation):
         end_date: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[str] = None,
+        platform_by: Optional[str] = None,
+        platform_id: Optional[str] = None,
         query: Optional[str] = None,
         start_date: Optional[str] = None,
     ) -> AdminSearchUserV3:
@@ -321,6 +353,10 @@ class AdminSearchUserV3(Operation):
             instance.limit = limit
         if offset is not None:
             instance.offset = offset
+        if platform_by is not None:
+            instance.platform_by = platform_by
+        if platform_id is not None:
+            instance.platform_id = platform_id
         if query is not None:
             instance.query = query
         if start_date is not None:
@@ -350,6 +386,14 @@ class AdminSearchUserV3(Operation):
             instance.offset = str(dict_["offset"])
         elif include_empty:
             instance.offset = str()
+        if "platformBy" in dict_ and dict_["platformBy"] is not None:
+            instance.platform_by = str(dict_["platformBy"])
+        elif include_empty:
+            instance.platform_by = str()
+        if "platformId" in dict_ and dict_["platformId"] is not None:
+            instance.platform_id = str(dict_["platformId"])
+        elif include_empty:
+            instance.platform_id = str()
         if "query" in dict_ and dict_["query"] is not None:
             instance.query = str(dict_["query"])
         elif include_empty:
@@ -368,6 +412,8 @@ class AdminSearchUserV3(Operation):
             "endDate": "end_date",
             "limit": "limit",
             "offset": "offset",
+            "platformBy": "platform_by",
+            "platformId": "platform_id",
             "query": "query",
             "startDate": "start_date",
         }

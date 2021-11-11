@@ -30,9 +30,9 @@ from ...models import RestapiErrorResponseV1
 class AdminDeleteThirdPartyConfig(Operation):
     """Delete Third Party Steam Config (adminDeleteThirdPartyConfig)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [DELETE]`
-    with scope `social`
-    delete third party config in a namespace.
+    Required permission : <code>ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG
+    [DELETE]</code> with scope <code>social</code> <br>delete third party config
+    in a namespace.
 
 
     Properties:

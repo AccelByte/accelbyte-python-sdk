@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,60 +30,22 @@ from ...models import OwnershipToken
 class PublicGetEntitlementOwnershipToken(Operation):
     """Gets an entitlement ownership token (publicGetEntitlementOwnershipToken)
 
-    Gets an entitlement ownership token of specified itemIds, skus and appIds
-
-    The decoded ownership token header like below:
-
-
-
-        {
-          "kid": "9fd4cd5f991cebe3323605cd12d3b8bfdfc73fa4",
-          "typ": "JWT",
-          "alg": "RS256"
-        }
-
-
-    That you can get the jwks by api /platform/jwks, if the configured private key
-    is same as IAM,
-
-    you can also get jwks from IAM endpoint.
-
-    The decoded ownership token payload like below:
-
-
-
-        {
-         "namespace": "accelbyte",
-         "entitlements": [
-          {
-            "itemId": "4c1296291f604c199f7bb7f0ee02e5f8",
-            "appType": null,
-            "appId": null,
-            "namespace": "accelbyte",
-            "itemNamespace": "accelbyte",
-            "sku": "prime-plus"
-          },
-          {
-            "itemId": "e8f4974cf45c4e1f8d4f0c6990c518bd",
-            "appType": "GAME",
-            "appId": "omeganebula",
-            "namespace": "accelbyte",
-            "itemNamespace": "accelbyte",
-            "sku": "APPG005ON"
-          }
-         ],
-        "sub": "66459eb6a4e44e6fb0040bd20c1079a5",
-        "exp": 1619624360,
-        "iat": 1619624060
-        }
-
-
-    if there's no active entitlement for the specific params, the entitlements
-    section will be omitted.
-
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
+    Gets an entitlement ownership token of specified itemIds, skus and
+    appIds<p>The decoded ownership token header like below:<p><pre><code>{ "kid":
+    "9fd4cd5f991cebe3323605cd12d3b8bfdfc73fa4", "typ": "JWT", "alg": "RS256" }
+    </code></pre>That you can get the jwks by api <baseUrl>/platform/jwks, if the
+    configured private key is same as IAM, <p>you can also get jwks from IAM
+    endpoint. <p>The decoded ownership token payload like below:<p><pre><code>{
+    "namespace": "accelbyte", "entitlements": [ { "itemId":
+    "4c1296291f604c199f7bb7f0ee02e5f8", "appType": null, "appId": null,
+    "namespace": "accelbyte", "itemNamespace": "accelbyte", "sku": "prime-plus" },
+    { "itemId": "e8f4974cf45c4e1f8d4f0c6990c518bd", "appType": "GAME", "appId":
+    "omeganebula", "namespace": "accelbyte", "itemNamespace": "accelbyte", "sku":
+    "APPG005ON" } ], "sub": "66459eb6a4e44e6fb0040bd20c1079a5", "exp": 1619624360,
+    "iat": 1619624060 } </code></pre><b>if there's no active entitlement for the
+    specific params, the entitlements section will be omitted</b>.<p>Other detail
+    info: <ul><li><i>Required permission</i>:
+    resource="NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)</li></ul>
 
 
     Properties:

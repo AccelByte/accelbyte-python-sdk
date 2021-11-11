@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,11 +30,10 @@ from ...models import KeyPagingSliceResult
 class ListKeys(Operation):
     """List keys of a key group (listKeys)
 
-    This API is used to list keys of a key group.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2 (READ)
-      *  Returns : keys
+    This API is used to list keys of a key group.<br>Other detail info:
+    <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2
+    (READ)</li><li><i>Returns</i>: keys</li></ul>
 
 
     Properties:

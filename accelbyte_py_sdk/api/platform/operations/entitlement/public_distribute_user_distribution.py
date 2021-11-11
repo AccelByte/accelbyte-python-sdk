@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,62 +32,38 @@ class PublicDistributeUserDistribution(Operation):
     """Distribute my distribution (publicDistributeUserDistribution)
 
     Distribute my distribution with my user credentials. After successfully
-    distributed, a notification will be send to configured web hook
-
-     Notification Body:
-
-
-
-         Parameter| Type| Description
-        ---|---|---
-        payload| String| Business object in compact json string
-        sign| String| Sha1 hex signature for payload and private key
-
-         Notification Body Example:
-
-
-        {
-               "payload":"{
-                   "namespace": "publisherNamespace",
-                   "targetNamespace": "game1",
-                   "targetUserId": "94451623768940d58416ca33ca767ec3",
-                   "issuedAt": "2018-07-26T07:11:16.547Z",
-                   "type": "distribution",
-                   "extUserId": "1234abcd",
-                   "sku": "1234asdf",
-                   "quantity": 1,
-                   "nonceStr": "34c1dcf3eb58455eb161465bbfc0b590"
-               }",
-               "sign":"e31fb92516cc9faaf50ad70343e1293acec6f3d5"
-        }
-
-    `
-
-    `
-
-     Payload Parameters:
-
-
-
-         Parameter| Type| Description
-        ---|---|---
-        namespace| String| The publisher namespace
-        targetNamespace| String| The target game namespace
-        targetUserId| String| The user id in target game namespace
-        issuedAt| String| Issue time
-        type| String| Notification type, it is a fixed value 'distribution'
-        extUserId| String| Unique identity, e.g. character id
-        sku| String| Item unique identity
-        quantity| Integer| quantity
-        nonceStr| String| Random string, max length is 32, can be timestamp or uuid
-
-    #### Encryption Rule:
-
-    Concat payload json string and private key and then do sha1Hex.
-
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:DISTRIBUTION", action=4 (UPDATE)
+    distributed, a notification will be send to configured web
+    hook<br><p><strong>Notification
+    Body:</strong></p><pre><table><tr><td>Parameter</td><td>Type</td><td>Description</td></tr><tr><td>payload</td><td>String</td><td>Business
+    object in compact json string
+    </td></tr><tr><td>sign</td><td>String</td><td>Sha1 hex signature for payload
+    and private key</td></tr></table><p><strong>Notification Body
+    Example:</strong></p><pre><code style='overflow: auto'>{ "payload":"{
+    "namespace": "publisherNamespace", "targetNamespace": "game1",
+    "targetUserId": "94451623768940d58416ca33ca767ec3", "issuedAt":
+    "2018-07-26T07:11:16.547Z", "type": "distribution", "extUserId":
+    "1234abcd", "sku": "1234asdf", "quantity": 1, "nonceStr":
+    "34c1dcf3eb58455eb161465bbfc0b590" }",
+    "sign":"e31fb92516cc9faaf50ad70343e1293acec6f3d5"
+    }</pre></code></pre></code><p><strong>Payload
+    Parameters:</strong></p><pre><table><tr><td>Parameter</td><td>Type</td><td>Description</td></tr><tr><td>namespace</td><td>String</td><td>The
+    publisher
+    namespace</td></tr><tr><td>targetNamespace</td><td>String</td><td>The target
+    game namespace</td></tr><tr><td>targetUserId</td><td>String</td><td>The user
+    id in target game
+    namespace</td></tr><tr><td>issuedAt</td><td>String</td><td>Issue
+    time</td></tr><tr><td>type</td><td>String</td><td>Notification type, it is a
+    fixed value
+    'distribution'</td></tr><tr><td>extUserId</td><td>String</td><td>Unique
+    identity, e.g. character id</td></tr><tr><td>sku</td><td>String</td><td>Item
+    unique
+    identity</td></tr><tr><td>quantity</td><td>Integer</td><td>quantity</td></tr><tr><td>nonceStr</td><td>String</td><td>Random
+    string, max length is 32, can be timestamp or
+    uuid</td></tr></table></pre><h4>Encryption Rule:</h4><p>Concat payload json
+    string and private key and then do sha1Hex.</p>Other detail info:
+    <ul><li><i>Required permission</i>:
+    resource="NAMESPACE:{namespace}:USER:{userId}:DISTRIBUTION", action=4
+    (UPDATE)</li></ul>
 
 
     Properties:

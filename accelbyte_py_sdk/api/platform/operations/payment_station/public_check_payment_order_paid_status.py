@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,10 +31,8 @@ from ...models import PaymentOrderPaidResult
 class PublicCheckPaymentOrderPaidStatus(Operation):
     """Check payment order paid status (publicCheckPaymentOrderPaidStatus)
 
-    Check payment order paid status.
-    Other detail info:
-
-      * Returns : Payment order paid result
+    Check payment order paid status.<br>Other detail info: <ul><li><i>Returns</i>:
+    Payment order paid result</li></ul>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-social-service (1.18.1)
+# justice-social-service (1.21.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,11 +33,10 @@ from ...models import ValidationErrorEntity
 class PublicUpdateProfile(Operation):
     """Updates user game profile (publicUpdateProfile)
 
-    Updates user game profile, returns updated profile.
-    Other detail info:
-
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=4 (UPDATE)
-      *  Returns : updated game profile
+    Updates user game profile, returns updated profile.<br>Other detail
+    info:<ul><li><i>Required permission</i>:
+    resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=4
+    (UPDATE)</li><li><i>Returns</i>: updated game profile</li></ul>
 
 
     Properties:

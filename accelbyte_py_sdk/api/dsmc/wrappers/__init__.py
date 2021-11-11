@@ -1,6 +1,6 @@
 """Auto-generated package that contains utility functions for the justice-dsm-controller-service."""
 
-__version__ = "2.6.0"
+__version__ = "2.8.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -65,6 +65,7 @@ from ._pod_config import update_pod_config
 
 from ._public import get_default_provider
 from ._public import list_providers
+from ._public import list_providers_by_region
 
 from ._server import deregister_local_server
 from ._server import get_server_session

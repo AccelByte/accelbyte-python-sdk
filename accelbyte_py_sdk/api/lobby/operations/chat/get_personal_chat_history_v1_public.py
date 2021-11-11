@@ -31,10 +31,8 @@ from ...models import RestapiErrorResponseBody
 class GetPersonalChatHistoryV1Public(Operation):
     """load personal chat history (getPersonalChatHistoryV1Public)
 
-    Required valid user authorization
-
-    load personal chat history in a namespace based on Friend User ID
-    Action Code: 50101
+    Required valid user authorization <br/> <br>load personal chat history in a
+    namespace based on Friend User ID <br/> Action Code: 50101
 
 
     Properties:

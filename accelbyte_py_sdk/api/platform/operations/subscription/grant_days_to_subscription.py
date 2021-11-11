@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,14 +33,12 @@ class GrantDaysToSubscription(Operation):
     """Grant days to a subscription (grantDaysToSubscription)
 
     Grant days to a subscription, if grantDays is positive, it will add free days
-    and push the next billing date by the amount of day.
-    if the grantDays is negative or zero, it only apply to active/cancelled
-    subscription, remove days will decrease current period end, and move the next
-    billing date closer.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
-      *  Returns : updated subscription
+    and push the next billing date by the amount of day.<br>if the grantDays is
+    negative or zero, it only apply to active/cancelled subscription, remove days
+    will decrease current period end, and move the next billing date
+    closer.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4
+    (UPDATE)</li><li><i>Returns</i>: updated subscription</li></ul>
 
 
     Properties:

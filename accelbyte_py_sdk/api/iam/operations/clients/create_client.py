@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,10 +33,9 @@ from ...models import ClientmodelClientCreationResponse
 class CreateClient(Operation):
     """Create Client (CreateClient)
 
-    ## The endpoint is going to be deprecated at 16 August, 2018. Please use this
-    instead: namespaces/{namespace}/clients
-
-    Required permission 'CLIENT:ADMIN [CREATE]'
+    <h2>The endpoint is going to be deprecated at <strong>16 August,
+    2018</strong>. Please use this instead: namespaces/{namespace}/clients</h2>
+    <p>Required permission 'CLIENT:ADMIN [CREATE]'</p>
 
 
     Properties:

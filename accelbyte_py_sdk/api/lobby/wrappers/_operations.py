@@ -20,9 +20,26 @@ from ....core import run_request
 from ....core import same_doc_as
 
 from ..models import LogAppMessageDeclaration
+from ..models import ModelsPartyData
+from ..models import ModelsPartyPUTCustomAttributesRequest
 from ..models import RestapiErrorResponseBody
 
+from ..operations.operations import AdminUpdatePartyAttributesV1
 from ..operations.operations import PublicGetMessages
+
+
+@same_doc_as(AdminUpdatePartyAttributesV1)
+def admin_update_party_attributes_v1(body: ModelsPartyPUTCustomAttributesRequest, party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminUpdatePartyAttributesV1.create(
+        body=body,
+        party_id=party_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetMessages)

@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,10 +32,8 @@ from ...models import PaymentUrlCreate
 class PublicGetPaymentUrl(Operation):
     """Get payment url (publicGetPaymentUrl)
 
-    Get payment url.
-    Other detail info:
-
-      * Returns : Get payment link
+    Get payment url.<br>Other detail info: <ul><li><i>Returns</i>: Get payment
+    link</li></ul>
 
 
     Properties:

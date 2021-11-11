@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,13 +32,11 @@ class PublicGetApp(Operation):
     """Get an app in locale (publicGetApp)
 
     This API is used to get an app in locale. If app not exist in specific region,
-    default region app will return.
-
-    Other detail info:
-
-      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store app)
-      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store app)
-      *  Returns : app data
+    default region app will return.<p>Other detail info: <ul><li><i>Optional
+    permission</i>: resource="PREVIEW", action=1(CREATE) (user with this
+    permission can view draft store app)</li><li><i>Optional permission</i>:
+    resource="SANDBOX", action=1(CREATE) (user with this permission can view draft
+    store app)</li><li><i>Returns</i>: app data</li></ul>
 
 
     Properties:

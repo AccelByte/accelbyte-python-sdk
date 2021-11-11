@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,12 +31,11 @@ from ...models import WxPayConfigRequest
 class TestWxPayConfig(Operation):
     """Test wxPay configuration (testWxPayConfig)
 
-    Test WxPay configuration. Reference: [WxPay
-    Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
-    Other detail info:
-
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : test WxPay config
+    Test WxPay configuration. Reference: <a
+    href="https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1">WxPay
+    Document</a>.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)</li><li><i>Returns</i>:
+    test WxPay config</li></ul>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,8 @@ from ...models import ResponseErrorResponse
 class CancelGroupJoinRequestV1(Operation):
     """Cancel request to join group (CancelGroupJoinRequestV1)
 
-    Requires valid user authentication
-
-    This endpoint allows user to cancel request to join specific group.
-
-    Action Code: 73411
+    <p>Requires valid user authentication</p> <p>This endpoint allows user to
+    cancel request to join specific group.</p> <p>Action Code: 73411</p>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-social-service (1.18.1)
+# justice-social-service (1.21.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,11 +32,9 @@ from ...models import ValidationErrorEntity
 class PublicBulkCreateUserStatItems(Operation):
     """Bulk create user's statItems (publicBulkCreateUserStatItems)
 
-    Bulk create statItems.
-    Other detail info:
-
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
-      *  Returns : bulk created result
+    Bulk create statItems.<br>Other detail info:<ul><li><i>Required
+    permission</i>: resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM",
+    action=1 (CREATE)</li><li><i>Returns</i>: bulk created result</li></ul>
 
 
     Properties:

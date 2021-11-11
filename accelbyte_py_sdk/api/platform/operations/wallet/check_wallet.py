@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,10 +31,10 @@ from ...models import ValidationErrorEntity
 class CheckWallet(Operation):
     """Check wallet (checkWallet)
 
-    [SERVICE COMMUNICATION ONLY] Check wallet whether it's inactive.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
+    <b>[SERVICE COMMUNICATION ONLY]</b> Check wallet whether it's
+    inactive.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2
+    (READ)</li></ul>
 
 
     Properties:

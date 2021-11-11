@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,13 +31,12 @@ from ...models import ItemInfo
 class PublicGetItemByAppId(Operation):
     """Get item by appId (publicGetItemByAppId)
 
-    This API is used to get item by appId.
-
-    Other detail info:
-
-      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store item)
-      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store item)
-      *  Returns : the item with that appId
+    This API is used to get item by appId.<p>Other detail info:
+    <ul><li><i>Optional permission</i>: resource="PREVIEW", action=1(CREATE) (user
+    with this permission can view draft store item)</li><li><i>Optional
+    permission</i>: resource="SANDBOX", action=1(CREATE) (user with this
+    permission can view draft store item)</li><li><i>Returns</i>: the item with
+    that appId</li></ul>
 
 
     Properties:

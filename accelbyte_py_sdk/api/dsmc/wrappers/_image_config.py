@@ -106,7 +106,7 @@ def import_images(file: Any, x_additional_headers: Optional[Dict[str, str]] = No
 
 
 @same_doc_as(ListImages)
-def list_images(count: Optional[int] = None, offset: Optional[int] = None, q: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def list_images(count: Optional[int] = None, offset: Optional[int] = None, q: Optional[str] = None, sort_by: Optional[str] = None, sort_direction: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -115,6 +115,8 @@ def list_images(count: Optional[int] = None, offset: Optional[int] = None, q: Op
         count=count,
         offset=offset,
         q=q,
+        sort_by=sort_by,
+        sort_direction=sort_direction,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)

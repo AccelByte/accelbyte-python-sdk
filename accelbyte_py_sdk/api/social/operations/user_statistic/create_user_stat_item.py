@@ -1,4 +1,4 @@
-# justice-social-service (1.18.1)
+# justice-social-service (1.21.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,11 +30,9 @@ from ...models import ErrorEntity
 class CreateUserStatItem(Operation):
     """Create user's statItem (createUserStatItem)
 
-    Create statItem for a user.
-    Other detail info:
-
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
-      *  Returns : created user's statItem
+    Create statItem for a user.<br>Other detail info:<ul><li><i>Required
+    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM",
+    action=1 (CREATE)</li><li><i>Returns</i>: created user's statItem</li></ul>
 
 
     Properties:

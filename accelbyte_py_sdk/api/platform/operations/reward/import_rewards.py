@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,11 +31,8 @@ class ImportRewards(Operation):
     """Import reward configurations (importRewards)
 
     Import reward configurations for a given namespace from file. At current, only
-    JSON file is supported.
-
-    Other detail info:
-
-      *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=1 (CREATE)
+    JSON file is supported.<p>Other detail info:<ul><li><i>*Required permission*:
+    resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=1 (CREATE)</li></ul>
 
 
     Properties:

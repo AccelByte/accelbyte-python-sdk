@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,12 +33,10 @@ from ...models import ValidationErrorEntity
 class CreateStore(Operation):
     """Create a store (createStore)
 
-    This API is used to create a non published store in a namespace.
-
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
-      *  Returns : created store data
+    This API is used to create a non published store in a namespace.<p>Other
+    detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1
+    (CREATE)</li><li><i>Returns</i>: created store data</li></ul>
 
 
     Properties:
@@ -61,9 +59,9 @@ class CreateStore(Operation):
     Responses:
         201: Created - StoreInfo (successful operation)
 
-        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
-
         409: Conflict - ErrorEntity (30174: Draft store already exists in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -193,16 +191,16 @@ class CreateStore(Operation):
 
         201: Created - StoreInfo (successful operation)
 
-        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
-
         409: Conflict - ErrorEntity (30174: Draft store already exists in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 201:
             return StoreInfo.create_from_dict(content), None
-        if code == 422:
-            return None, ValidationErrorEntity.create_from_dict(content)
         if code == 409:
             return None, ErrorEntity.create_from_dict(content)
+        if code == 422:
+            return None, ValidationErrorEntity.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
             return None, undocumented_response

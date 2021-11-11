@@ -1,4 +1,4 @@
-# justice-basic-service (1.23.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,10 +32,9 @@ class DeleteCountryGroup(Operation):
     """Delete a country group (deleteCountryGroup)
 
     Delete a country groups by its country group code. This endpoint usually used
-    for testing purpose to cleanup test data.
-    Other detail info:
-
-      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=8 (DELETE)
+    for testing purpose to cleanup test data.<br>Other detail info:
+    <ul><li><i>Required permission</i>: resource =
+    <b>"ADMIN:NAMESPACE:{namespace}:MISC"</b>, action=8 <b>(DELETE)</b></li></ul>
 
 
     Properties:

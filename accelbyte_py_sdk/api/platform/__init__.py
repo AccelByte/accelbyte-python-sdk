@@ -1,6 +1,6 @@
 """Auto-generated top-level package for the justice-platform-service."""
 
-__version__ = "3.34.0"
+__version__ = "3.37.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -70,8 +70,10 @@ from .wrappers import get_user_app_entitlement_by_app_id
 from .wrappers import get_user_app_entitlement_ownership_by_app_id
 from .wrappers import get_user_distribution_receivers
 from .wrappers import get_user_entitlement
+from .wrappers import get_user_entitlement_by_item_id
 from .wrappers import get_user_entitlement_by_sku
 from .wrappers import get_user_entitlement_histories
+from .wrappers import get_user_entitlement_ownership_by_item_id
 from .wrappers import get_user_entitlement_ownership_by_sku
 from .wrappers import grant_user_entitlement
 from .wrappers import public_consume_user_entitlement
@@ -82,12 +84,15 @@ from .wrappers import public_exists_any_my_active_entitlement
 from .wrappers import public_exists_any_user_active_entitlement
 from .wrappers import public_get_entitlement_ownership_token
 from .wrappers import public_get_my_app_entitlement_ownership_by_app_id
+from .wrappers import public_get_my_entitlement_ownership_by_item_id
 from .wrappers import public_get_my_entitlement_ownership_by_sku
 from .wrappers import public_get_user_app_entitlement_by_app_id
 from .wrappers import public_get_user_app_entitlement_ownership_by_app_id
 from .wrappers import public_get_user_distribution_receivers
 from .wrappers import public_get_user_entitlement
+from .wrappers import public_get_user_entitlement_by_item_id
 from .wrappers import public_get_user_entitlement_by_sku
+from .wrappers import public_get_user_entitlement_ownership_by_item_id
 from .wrappers import public_get_user_entitlement_ownership_by_sku
 from .wrappers import public_query_user_entitlements
 from .wrappers import public_query_user_entitlements_by_app_type
@@ -104,6 +109,15 @@ from .wrappers import update_user_entitlement
 from .wrappers import fulfill_item
 from .wrappers import public_redeem_code
 from .wrappers import query_fulfillment_histories
+from .wrappers import redeem_code
+
+# fulfillment_script
+from .wrappers import create_fulfillment_script
+from .wrappers import delete_fulfillment_script
+from .wrappers import get_fulfillment_script
+from .wrappers import list_fulfillment_scripts
+from .wrappers import test_fulfillment_script_eval
+from .wrappers import update_fulfillment_script
 
 # iap
 from .wrappers import delete_apple_iap_config

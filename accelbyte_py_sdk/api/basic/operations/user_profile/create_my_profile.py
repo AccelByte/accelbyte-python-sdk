@@ -1,4 +1,4 @@
-# justice-basic-service (1.23.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,19 +33,16 @@ from ...models import ValidationErrorEntity
 class CreateMyProfile(Operation):
     """Create my profile (createMyProfile)
 
-    Create my profile.
-     Client with user token can create user profile in target namespace
-    Other detail info:
-
-      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=1 (CREATE)
-      *  Action code : 11401
-      *  Returns : Created user profile
-      *  Path's namespace :
-        * can be filled with publisher namespace in order to create publisher user profile
-        * can be filled with game namespace in order to create game user profile
-      *  Language : allowed format: en, en-US
-      *  Country : ISO3166-1 alpha-2 two letter, e.g. US
-      * Timezone : IANA time zone, e.g. Asia/Shanghai
+    Create my profile.<br><b>Client with user token can create user profile in
+    target namespace</b><br>Other detail info: <ul><li><i>Required permission</i>:
+    resource=<b>"NAMESPACE:{namespace}:PROFILE"</b>, action=1
+    <b>(CREATE)</b></li><li><i>Action code</i>: 11401</li><li><i>Returns</i>:
+    Created user profile</li><li><i>Path's namespace</i> : <ul><li>can be filled
+    with <b>publisher namespace</b> in order to create <b>publisher user
+    profile</b></li><li>can be filled with <b>game namespace</b> in order to
+    create <b>game user profile</b></li></ul></li><li><i>Language</i> : allowed
+    format: en, en-US</li><li><i>Country</i> : ISO3166-1 alpha-2 two letter, e.g.
+    US </li><li><i>Timezone</i> : IANA time zone, e.g. Asia/Shanghai</li></ul>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,12 +30,10 @@ from ...models import ResponseErrorResponse
 class DeleteGroupAdminV1(Operation):
     """Delete existing group (deleteGroupAdminV1)
 
-    Required Permission: "ADMIN:NAMESPACE:{namespace}:GROUP:{groupId} [DELETE]"
-
-    Delete existing group. It will check whether the groupID is exist before doing
-    the process to delete the group.
-
-    Action Code: 73302
+    <p>Required Permission: "ADMIN:NAMESPACE:{namespace}:GROUP:{groupId}
+    [DELETE]"</p> <p>Delete existing group. It will check whether the groupID is
+    exist before doing the process to delete the group.</p> <p>Action Code:
+    73302</p>
 
 
     Properties:

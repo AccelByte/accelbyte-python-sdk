@@ -1,6 +1,6 @@
 """Auto-generated top-level package for the justice-basic-service."""
 
-__version__ = "1.23.0"
+__version__ = "1.26.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -8,6 +8,11 @@ __email__ = "dev@accelbyte.net"
 
 # anonymization
 from .wrappers import anonymize_user_profile
+
+# equ8_config
+from .wrappers import delete_config
+from .wrappers import get_config
+from .wrappers import update_config
 
 # file_upload
 from .wrappers import generated_upload_url
@@ -38,6 +43,15 @@ from .wrappers import get_namespaces
 from .wrappers import public_get_namespace_publisher
 from .wrappers import public_get_namespaces
 from .wrappers import update_namespace
+
+# user_action
+from .wrappers import ban_users
+from .wrappers import get_actions
+from .wrappers import get_banned_users
+from .wrappers import get_user_status
+from .wrappers import public_report_user
+from .wrappers import report_user
+from .wrappers import un_ban_users
 
 # user_profile
 from .wrappers import create_my_profile

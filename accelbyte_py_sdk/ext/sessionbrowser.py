@@ -36,7 +36,6 @@ from ..api.sessionbrowser.models import ModelsMatchingAlly
 from ..api.sessionbrowser.models import ModelsMatchingParty
 from ..api.sessionbrowser.models import ModelsPagingCursor
 from ..api.sessionbrowser.models import ModelsPartyMember
-from ..api.sessionbrowser.models import ModelsPodConfig
 from ..api.sessionbrowser.models import ModelsRecentPlayerHistory
 from ..api.sessionbrowser.models import ModelsRecentPlayerQueryResponse
 from ..api.sessionbrowser.models import ModelsServer
@@ -214,16 +213,6 @@ def create_models_party_member_example() -> ModelsPartyMember:
     instance = ModelsPartyMember()
     instance.extra_attributes = {randomize(): randomize()}
     instance.user_id = randomize("uid")
-    return instance
-
-
-def create_models_pod_config_example() -> ModelsPodConfig:
-    instance = ModelsPodConfig()
-    instance.cpu_limit = randomize("int", min_val=1, max_val=1000)
-    instance.cpu_request = randomize()
-    instance.mem_limit = randomize("int", min_val=1, max_val=1000)
-    instance.mem_request = randomize()
-    instance.params = randomize()
     return instance
 
 

@@ -30,6 +30,8 @@ class ModelsConfigReq(Model):
     Properties:
         auto_kick_on_disconnect: (autoKickOnDisconnect) OPTIONAL bool
 
+        cancel_ticket_on_disconnect: (cancelTicketOnDisconnect) OPTIONAL bool
+
         chat_rate_limit_burst: (chatRateLimitBurst) OPTIONAL int
 
         chat_rate_limit_duration: (chatRateLimitDuration) OPTIONAL int
@@ -49,11 +51,14 @@ class ModelsConfigReq(Model):
         max_party_member: (maxPartyMember) OPTIONAL int
 
         profanity_filter: (profanityFilter) OPTIONAL bool
+
+        ready_consent_timeout: (readyConsentTimeout) OPTIONAL int
     """
 
     # region fields
 
     auto_kick_on_disconnect: bool                                                                  # OPTIONAL
+    cancel_ticket_on_disconnect: bool                                                              # OPTIONAL
     chat_rate_limit_burst: int                                                                     # OPTIONAL
     chat_rate_limit_duration: int                                                                  # OPTIONAL
     concurrent_users_limit: int                                                                    # OPTIONAL
@@ -64,6 +69,7 @@ class ModelsConfigReq(Model):
     general_rate_limit_duration: int                                                               # OPTIONAL
     max_party_member: int                                                                          # OPTIONAL
     profanity_filter: bool                                                                         # OPTIONAL
+    ready_consent_timeout: int                                                                     # OPTIONAL
 
     # endregion fields
 
@@ -71,6 +77,10 @@ class ModelsConfigReq(Model):
 
     def with_auto_kick_on_disconnect(self, value: bool) -> ModelsConfigReq:
         self.auto_kick_on_disconnect = value
+        return self
+
+    def with_cancel_ticket_on_disconnect(self, value: bool) -> ModelsConfigReq:
+        self.cancel_ticket_on_disconnect = value
         return self
 
     def with_chat_rate_limit_burst(self, value: int) -> ModelsConfigReq:
@@ -113,6 +123,10 @@ class ModelsConfigReq(Model):
         self.profanity_filter = value
         return self
 
+    def with_ready_consent_timeout(self, value: int) -> ModelsConfigReq:
+        self.ready_consent_timeout = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -123,6 +137,10 @@ class ModelsConfigReq(Model):
             result["autoKickOnDisconnect"] = bool(self.auto_kick_on_disconnect)
         elif include_empty:
             result["autoKickOnDisconnect"] = bool()
+        if hasattr(self, "cancel_ticket_on_disconnect"):
+            result["cancelTicketOnDisconnect"] = bool(self.cancel_ticket_on_disconnect)
+        elif include_empty:
+            result["cancelTicketOnDisconnect"] = bool()
         if hasattr(self, "chat_rate_limit_burst"):
             result["chatRateLimitBurst"] = int(self.chat_rate_limit_burst)
         elif include_empty:
@@ -163,6 +181,10 @@ class ModelsConfigReq(Model):
             result["profanityFilter"] = bool(self.profanity_filter)
         elif include_empty:
             result["profanityFilter"] = bool()
+        if hasattr(self, "ready_consent_timeout"):
+            result["readyConsentTimeout"] = int(self.ready_consent_timeout)
+        elif include_empty:
+            result["readyConsentTimeout"] = int()
         return result
 
     # endregion to methods
@@ -173,6 +195,7 @@ class ModelsConfigReq(Model):
     def create(
         cls,
         auto_kick_on_disconnect: Optional[bool] = None,
+        cancel_ticket_on_disconnect: Optional[bool] = None,
         chat_rate_limit_burst: Optional[int] = None,
         chat_rate_limit_duration: Optional[int] = None,
         concurrent_users_limit: Optional[int] = None,
@@ -183,10 +206,13 @@ class ModelsConfigReq(Model):
         general_rate_limit_duration: Optional[int] = None,
         max_party_member: Optional[int] = None,
         profanity_filter: Optional[bool] = None,
+        ready_consent_timeout: Optional[int] = None,
     ) -> ModelsConfigReq:
         instance = cls()
         if auto_kick_on_disconnect is not None:
             instance.auto_kick_on_disconnect = auto_kick_on_disconnect
+        if cancel_ticket_on_disconnect is not None:
+            instance.cancel_ticket_on_disconnect = cancel_ticket_on_disconnect
         if chat_rate_limit_burst is not None:
             instance.chat_rate_limit_burst = chat_rate_limit_burst
         if chat_rate_limit_duration is not None:
@@ -207,6 +233,8 @@ class ModelsConfigReq(Model):
             instance.max_party_member = max_party_member
         if profanity_filter is not None:
             instance.profanity_filter = profanity_filter
+        if ready_consent_timeout is not None:
+            instance.ready_consent_timeout = ready_consent_timeout
         return instance
 
     @classmethod
@@ -218,6 +246,10 @@ class ModelsConfigReq(Model):
             instance.auto_kick_on_disconnect = bool(dict_["autoKickOnDisconnect"])
         elif include_empty:
             instance.auto_kick_on_disconnect = bool()
+        if "cancelTicketOnDisconnect" in dict_ and dict_["cancelTicketOnDisconnect"] is not None:
+            instance.cancel_ticket_on_disconnect = bool(dict_["cancelTicketOnDisconnect"])
+        elif include_empty:
+            instance.cancel_ticket_on_disconnect = bool()
         if "chatRateLimitBurst" in dict_ and dict_["chatRateLimitBurst"] is not None:
             instance.chat_rate_limit_burst = int(dict_["chatRateLimitBurst"])
         elif include_empty:
@@ -258,12 +290,17 @@ class ModelsConfigReq(Model):
             instance.profanity_filter = bool(dict_["profanityFilter"])
         elif include_empty:
             instance.profanity_filter = bool()
+        if "readyConsentTimeout" in dict_ and dict_["readyConsentTimeout"] is not None:
+            instance.ready_consent_timeout = int(dict_["readyConsentTimeout"])
+        elif include_empty:
+            instance.ready_consent_timeout = int()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "autoKickOnDisconnect": "auto_kick_on_disconnect",
+            "cancelTicketOnDisconnect": "cancel_ticket_on_disconnect",
             "chatRateLimitBurst": "chat_rate_limit_burst",
             "chatRateLimitDuration": "chat_rate_limit_duration",
             "concurrentUsersLimit": "concurrent_users_limit",
@@ -274,6 +311,7 @@ class ModelsConfigReq(Model):
             "generalRateLimitDuration": "general_rate_limit_duration",
             "maxPartyMember": "max_party_member",
             "profanityFilter": "profanity_filter",
+            "readyConsentTimeout": "ready_consent_timeout",
         }
 
     # endregion static methods

@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,12 +31,10 @@ class AdminDisableUserV2(Operation):
     """Disable a user (AdminDisableUserV2)
 
     Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId}
-    [UPDATE]'
-
-    For Deletion Account purpose fill the reason with:
-
-      * DeactivateAccount : if your deletion request comes from user
-      * AdminDeactivateAccount : if your deletion request comes from admin
+    [UPDATE]' <p>For <strong>Deletion Account</strong> purpose fill the reason
+    with:</p> <ul> <li><strong>DeactivateAccount</strong> : if your deletion
+    request comes from user</li> <li><strong>AdminDeactivateAccount</strong> : if
+    your deletion request comes from admin</li> </ul>
 
 
     Properties:

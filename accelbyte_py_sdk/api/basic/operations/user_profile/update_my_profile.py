@@ -1,4 +1,4 @@
-# justice-basic-service (1.23.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,21 +33,19 @@ from ...models import ValidationErrorEntity
 class UpdateMyProfile(Operation):
     """Update my profile (updateMyProfile)
 
-    Update my profile.
-    Updates user profile in the target namespace (namespace in the path). If
-    token's namespace doesn't match the target namespace, the service
-    automatically maps the token's user ID into the user ID in the target
-    namespace. The endpoint returns the updated user profile on a successful call.
-    Other detail info:
-
-      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11402
-      *  Returns : user profile
-      *  Path's namespace :
-        * can be filled with publisher namespace in order to update publisher user profile
-        * can be filled with game namespace in order to update game user profile
-      *  Language : allowed format: en, en-US
-      *  Timezone : IANA time zone, e.g. Asia/Shanghai
+    Update my profile.<br>Updates user profile in the target namespace (namespace
+    in the path). If token's namespace doesn't match the target namespace, the
+    service automatically maps the token's user ID into the user ID in the target
+    namespace. The endpoint returns the updated user profile on a successful
+    call.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource=<b>"NAMESPACE:{namespace}:PROFILE"</b>, action=4
+    <b>(UPDATE)</b></li><li><i>Action code</i>: 11402</li><li><i>Returns</i>: user
+    profile</li><li><i>Path's namespace</i> : <ul><li>can be filled with
+    <b>publisher namespace</b> in order to update <b>publisher user
+    profile</b></li><li>can be filled with <b>game namespace</b> in order to
+    update <b>game user profile</b></li></ul></li><li><i>Language</i> : allowed
+    format: en, en-US</li><li><i>Timezone</i> : IANA time zone, e.g.
+    Asia/Shanghai</li></ul>
 
 
     Properties:

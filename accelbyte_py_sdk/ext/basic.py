@@ -1,4 +1,4 @@
-# justice-basic-service (1.23.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -20,10 +20,16 @@
 
 from .utils import randomize
 
+from ..api.basic.models import ADTOForUnbanUserAPICall
+from ..api.basic.models import ADTOForUpdateEqu8ConfigAPICall
+from ..api.basic.models import ADTOObjectForEqu8UserBanStatus
+from ..api.basic.models import ADTOObjectForEqu8UserStatus
+from ..api.basic.models import Action
 from ..api.basic.models import AddCountryGroupRequest
 from ..api.basic.models import AddCountryGroupResponse
 from ..api.basic.models import CountryGroupObject
 from ..api.basic.models import CountryObject
+from ..api.basic.models import Equ8Config
 from ..api.basic.models import ErrorEntity
 from ..api.basic.models import FieldValidationError
 from ..api.basic.models import FileUploadUrlInfo
@@ -35,6 +41,7 @@ from ..api.basic.models import NamespaceUpdate
 from ..api.basic.models import RetrieveCountryGroupResponse
 from ..api.basic.models import RetrieveTimeResponse
 from ..api.basic.models import UpdateCountryGroupRequest
+from ..api.basic.models import UserBanRequest
 from ..api.basic.models import UserProfileAdmin
 from ..api.basic.models import UserProfileCreate
 from ..api.basic.models import UserProfileInfo
@@ -44,9 +51,52 @@ from ..api.basic.models import UserProfilePrivateUpdate
 from ..api.basic.models import UserProfilePublicInfo
 from ..api.basic.models import UserProfileStatusUpdate
 from ..api.basic.models import UserProfileUpdate
+from ..api.basic.models import UserReportRequest
 from ..api.basic.models import UserZipCode
 from ..api.basic.models import UserZipCodeUpdate
 from ..api.basic.models import ValidationErrorEntity
+
+
+def create_a_dto_for_unban_user_api_call_example() -> ADTOForUnbanUserAPICall:
+    instance = ADTOForUnbanUserAPICall()
+    instance.user_ids = [randomize()]
+    instance.comment = randomize()
+    return instance
+
+
+def create_a_dto_for_update_equ8_config_api_call_example() -> ADTOForUpdateEqu8ConfigAPICall:
+    instance = ADTOForUpdateEqu8ConfigAPICall()
+    instance.api_key = randomize()
+    return instance
+
+
+def create_a_dto_object_for_equ8_user_ban_status_example() -> ADTOObjectForEqu8UserBanStatus:
+    instance = ADTOObjectForEqu8UserBanStatus()
+    instance.expires = randomize("date")
+    instance.user_id = randomize("uid")
+    return instance
+
+
+def create_a_dto_object_for_equ8_user_status_example() -> ADTOObjectForEqu8UserStatus:
+    instance = ADTOObjectForEqu8UserStatus()
+    instance.action_comment = randomize()
+    instance.action_id = randomize("int", min_val=1, max_val=1000)
+    instance.expires = randomize("date")
+    instance.user_id = randomize("uid")
+    instance.when = randomize("date")
+    return instance
+
+
+def create_action_example() -> Action:
+    instance = Action()
+    instance.color = randomize()
+    instance.description = randomize()
+    instance.duration = randomize("int", min_val=1, max_val=1000)
+    instance.icon = randomize()
+    instance.id_ = randomize("int", min_val=1, max_val=1000)
+    instance.name = randomize()
+    instance.priority = randomize("int", min_val=1, max_val=1000)
+    return instance
 
 
 def create_add_country_group_request_example() -> AddCountryGroupRequest:
@@ -77,6 +127,13 @@ def create_country_object_example() -> CountryObject:
     instance = CountryObject()
     instance.code = randomize()
     instance.name = randomize()
+    return instance
+
+
+def create_equ8_config_example() -> Equ8Config:
+    instance = Equ8Config()
+    instance.api_key = randomize()
+    instance.namespace = randomize("slug")
     return instance
 
 
@@ -162,6 +219,14 @@ def create_update_country_group_request_example() -> UpdateCountryGroupRequest:
     instance = UpdateCountryGroupRequest()
     instance.countries = [create_country_object_example()]
     instance.country_group_name = randomize()
+    return instance
+
+
+def create_user_ban_request_example() -> UserBanRequest:
+    instance = UserBanRequest()
+    instance.action_id = randomize("int", min_val=1, max_val=1000)
+    instance.user_ids = [randomize()]
+    instance.comment = randomize()
     return instance
 
 
@@ -268,6 +333,7 @@ def create_user_profile_public_info_example() -> UserProfilePublicInfo:
     instance.avatar_large_url = randomize("url")
     instance.avatar_small_url = randomize("url")
     instance.avatar_url = randomize("url")
+    instance.custom_attributes = {randomize(): randomize()}
     instance.namespace = randomize("slug")
     instance.time_zone = randomize()
     instance.user_id = randomize("uid")
@@ -292,6 +358,16 @@ def create_user_profile_update_example() -> UserProfileUpdate:
     instance.last_name = randomize("last_name")
     instance.time_zone = randomize()
     instance.zip_code = randomize("zip_code")
+    return instance
+
+
+def create_user_report_request_example() -> UserReportRequest:
+    instance = UserReportRequest()
+    instance.category = randomize()
+    instance.user_id = randomize("uid")
+    instance.description = randomize()
+    instance.game_session_id = randomize()
+    instance.subcategory = randomize()
     return instance
 
 

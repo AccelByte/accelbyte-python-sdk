@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,8 +32,9 @@ class PublicGetUserByPlatformUserIDV3(Operation):
     """Get User By Platform User ID (PublicGetUserByPlatformUserIDV3)
 
     Get User By Platform User ID This endpoint return user information by given
-    platform ID and platform user ID nintendo platform user ID : NSA ID need to be
-    appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+    platform ID and platform user ID <strong>nintendo platform user ID</strong>:
+    NSA ID need to be appended with Environment ID using colon as separator. e.g
+    kmzwa8awaa:dd1
 
 
     Properties:

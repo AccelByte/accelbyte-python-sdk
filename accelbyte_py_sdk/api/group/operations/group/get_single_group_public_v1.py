@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,12 +31,9 @@ from ...models import ResponseErrorResponse
 class GetSingleGroupPublicV1(Operation):
     """get single group (getSingleGroupPublicV1)
 
-    Required valid user authentication
-
-    Get single group information. This endpoint will show the group information by
-    the groupId
-
-    Action Code: 73306
+    <p>Required valid user authentication </p> <p>Get single group information.
+    This endpoint will show the group information by the groupId</p> <p>Action
+    Code: 73306</p>
 
 
     Properties:

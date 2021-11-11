@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,20 +31,12 @@ from ...models import ResponseErrorResponse
 class GetUserGroupInformationPublicV1(Operation):
     """Get User Group Information (getUserGroupInformationPublicV1)
 
-    Required valid user authentication
-
-    This endpoint is used to get user group information.
-
-    Get user group information. If user is not belong to any group, it will return
-    warning to give information about it
-
-    Group Member Status:
-
-      * JOIN : status of user requested to join group
-      * INVITE: status of user invited to a group
-      * JOINED: status of user already joined to a group
-
-    Action Code: 73405
+    <p>Required valid user authentication </p> <p>This endpoint is used to get
+    user group information.</p> <p>Get user group information. If user is not
+    belong to any group, it will return warning to give information about it</p>
+    <p>Group Member Status:</p> <ul> <li>JOIN : status of user requested to join
+    group </li> <li>INVITE: status of user invited to a group </li> <li>JOINED:
+    status of user already joined to a group</li> </ul> <p>Action Code: 73405</p>
 
 
     Properties:

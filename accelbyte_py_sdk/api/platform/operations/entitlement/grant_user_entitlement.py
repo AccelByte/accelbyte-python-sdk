@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,11 +33,10 @@ from ...models import ValidationErrorEntity
 class GrantUserEntitlement(Operation):
     """Grant user entitlement (grantUserEntitlement)
 
-    Grant user entitlement.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=1 (CREATE)
-      *  Returns : granted entitlement
+    Grant user entitlement.<br>Other detail info: <ul><li><i>Required
+    permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=1
+    (CREATE)</li><li><i>Returns</i>: granted entitlement</li></ul>
 
 
     Properties:
@@ -62,9 +61,9 @@ class GrantUserEntitlement(Operation):
     Responses:
         201: Created - List[StackableEntitlementInfo] (successful operation)
 
-        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
-
         404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -208,16 +207,16 @@ class GrantUserEntitlement(Operation):
 
         201: Created - List[StackableEntitlementInfo] (successful operation)
 
-        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
-
         404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 201:
             return [StackableEntitlementInfo.create_from_dict(i) for i in content], None
-        if code == 422:
-            return None, ValidationErrorEntity.create_from_dict(content)
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
+        if code == 422:
+            return None, ValidationErrorEntity.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
             return None, undocumented_response

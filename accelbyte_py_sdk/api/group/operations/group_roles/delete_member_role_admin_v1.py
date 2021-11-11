@@ -1,4 +1,4 @@
-# justice-group-service (2.8.0)
+# justice-group-service (2.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,12 +30,10 @@ from ...models import ResponseErrorResponse
 class DeleteMemberRoleAdminV1(Operation):
     """delete member role (deleteMemberRoleAdminV1)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [DELETE]
-
-    This endpoint is used to delete member role. Any member role can't be deleted
-    if the specific role is applied to the configuration (admin and member role)
-
-    Action Code: 73207
+    <p>Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [DELETE]</p>
+    <p>This endpoint is used to delete member role. Any member role can't be
+    deleted if the specific role is applied to the configuration (admin and member
+    role)</p> <p>Action Code: 73207</p>
 
 
     Properties:

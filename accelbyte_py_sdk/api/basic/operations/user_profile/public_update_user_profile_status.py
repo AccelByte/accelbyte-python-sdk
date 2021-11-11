@@ -1,4 +1,4 @@
-# justice-basic-service (1.23.0)
+# justice-basic-service (1.26.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,12 +33,10 @@ from ...models import ValidationErrorEntity
 class PublicUpdateUserProfileStatus(Operation):
     """Update user profile status (publicUpdateUserProfileStatus)
 
-    Update user profile status.
-    Other detail info:
-
-      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11406
-      *  Returns : user profile
+    Update user profile status.<br>Other detail info: <ul><li><i>Required
+    permission</i>: resource=<b>"NAMESPACE:{namespace}:USER:{userId}:PROFILE"</b>,
+    action=4 <b>(UPDATE)</b></li><li><i>Action code</i>:
+    11406</li><li><i>Returns</i>: user profile</li></ul>
 
 
     Properties:

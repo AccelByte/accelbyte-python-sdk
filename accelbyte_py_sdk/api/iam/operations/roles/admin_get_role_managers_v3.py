@@ -1,4 +1,4 @@
-# justice-iam-service (4.4.1)
+# justice-iam-service (4.7.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,12 +31,8 @@ from ...models import RestErrorResponse
 class AdminGetRoleManagersV3(Operation):
     """Get Role Managers (AdminGetRoleManagersV3)
 
-    Required permission 'ADMIN:ROLE [READ]'
-
-    Role can only be assigned to other users by the role's manager.
-
-
-    action code: 10415
+    <p>Required permission 'ADMIN:ROLE [READ]'</p> <p>Role can only be assigned to
+    other users by the role's manager.</p><br/> action code: 10415
 
 
     Properties:

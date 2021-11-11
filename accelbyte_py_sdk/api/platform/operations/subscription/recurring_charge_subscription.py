@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,13 +30,12 @@ from ...models import RecurringChargeResult
 class RecurringChargeSubscription(Operation):
     """Recurring charge subscription (recurringChargeSubscription)
 
-    [TEST FACILITY ONLY] Recurring charge subscription, it will trigger recurring
-    charge if the USER subscription status is ACTIVE, nextBillingDate is before
-    now and no fail recurring charge within X(default 12) hours.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION", action=4 (UPDATE)
-      *  Returns : recurring charge result
+    <b>[TEST FACILITY ONLY] Forbidden in live environment. </b> Recurring charge
+    subscription, it will trigger recurring charge if the USER subscription status
+    is ACTIVE, nextBillingDate is before now and no fail recurring charge within
+    X(default 12) hours.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION", action=4
+    (UPDATE)</li><li><i>Returns</i>: recurring charge result</li></ul>
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-platform-service (3.34.0)
+# justice-platform-service (3.37.1)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,11 +30,10 @@ from ...models import XblIAPConfigInfo
 class UpdateXblBPCertFile(Operation):
     """Upload xbl business partner cert file (updateXblBPCertFile)
 
-    Upload xbl business partner cert file.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated xbl iap config
+    Upload xbl business partner cert file.<br>Other detail info:
+    <ul><li><i>Required permission</i>:
+    resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4
+    (UPDATE)</li><li><i>Returns</i>: updated xbl iap config</li></ul>
 
 
     Properties:
