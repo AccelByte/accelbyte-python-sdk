@@ -12,6 +12,7 @@ from ._token_repository import MyTokenRepository
 from ._header import Header
 from ._http_client import HttpClient
 from ._http_client import HttpRawResponse
+from ._http_client import HttpxHttpClient
 from ._http_client import RequestsHttpClient
 from ._http_response import HttpResponse
 from ._model import Model
@@ -57,3 +58,4 @@ from ._core import set_token
 from ._core import get_http_client
 from ._core import set_http_client
 from ._core import run_request
+from ._core import run_request_async

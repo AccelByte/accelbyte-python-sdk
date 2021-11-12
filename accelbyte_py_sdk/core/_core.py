@@ -1,5 +1,5 @@
 import logging
-from typing import Any, Dict, Tuple, Union
+from typing import Any, Dict, Optional, Tuple, Union
 
 from ._config_repository import ConfigRepository
 from ._config_repository import DictConfigRepository
@@ -14,6 +14,7 @@ from ._token_repository import MyTokenRepository
 
 from ._http_client import HttpClient
 from ._http_client import RequestsHttpClient
+from ._http_client import HttpxHttpClient
 
 from ._header import Header
 from ._http_response import HttpResponse
@@ -42,6 +43,7 @@ _TOKEN_REPOSITORY_IMPL = [
 
 _HTTP_CLIENT_IMPL = [
     RequestsHttpClient,
+    HttpxHttpClient,
 ]
 
 
@@ -342,39 +344,9 @@ def run_request(
         if not error:
             base_url = config_base_url
 
-    headers = headers if headers is not None else operation.get_headers()
-
-    add_authorization = True
-    auto_add_bearer_auth = True
-
-    if "Authorization" in headers:
-        add_authorization = False
-    elif additional_headers and "Authorization" in additional_headers:
-        add_authorization = False
-
-    if add_authorization:
-        if hasattr(operation, "authorization_override") and operation.authorization_override:
-            headers.add_authorization(operation.authorization_override)
-        elif operation.security == "basic":
-            client_auth, error = get_client_auth()
-            if error:
-                return None, error
-            headers.add_basic_authorization2(client_auth)
-        elif operation.security == "bearer":
-            access_token, error = get_access_token()
-            if error:
-                return None, error
-            headers.add_bearer_authorization(access_token)
-        elif auto_add_bearer_auth:
-            access_token, _ = get_access_token()
-            if access_token:
-                headers.add_bearer_authorization(access_token)
-
-    if additional_headers:
-        for k, v in additional_headers.items():
-            if not additional_headers_override and k in headers:
-                continue
-            headers[k] = v
+    headers, error = get_final_headers(operation, headers, additional_headers, additional_headers_override)
+    if error:
+        return None, error
 
     if operation.has_redirects() and "allow_redirects" not in kwargs:
         kwargs["allow_redirects"] = False
@@ -411,5 +383,106 @@ def run_request(
         return success, None
 
     return success, None
+
+
+async def run_request_async(
+        operation: Operation,
+        base_url: Union[None, str] = None,
+        headers: Union[None, Header] = None,
+        additional_headers: Union[None, Dict[str, str]] = None,
+        additional_headers_override: bool = True,
+        **kwargs) -> Tuple[Any, Any]:
+    http_client = _HTTP_CLIENT
+
+    if not http_client:
+        return None, HttpResponse.create_error(400, "Can't find HTTP client.")
+
+    if base_url is None:
+        config_base_url, error = get_base_url()
+        if not error:
+            base_url = config_base_url
+
+    headers, error = get_final_headers(operation, headers, additional_headers, additional_headers_override)
+    if error:
+        return None, error
+
+    if operation.has_redirects() and "allow_redirects" not in kwargs:
+        kwargs["allow_redirects"] = False
+
+    request, error = http_client.create_request(operation, base_url, headers, **kwargs)
+    if error:
+        return None, error
+
+    raw_response, error = await http_client.send_request_async(request, **kwargs)
+    if error:
+        return None, error
+
+    response, error = http_client.handle_response(raw_response, **kwargs)
+    if error:
+        return None, error
+
+    success, failure = operation.parse_response(*response)
+
+    if failure:
+        return None, failure
+
+    if operation.has_redirects() and operation.location_query:
+        query, error = get_query_from_http_redirect_response(success, operation.location_query)
+        if error:
+            return None, error
+        else:
+            return query, None
+
+    # TODO(elmer): still not a fan of this bit
+    is_valid_token, error = _try_set_token(success)
+    if is_valid_token:
+        if error:
+            return None, error
+        return success, None
+
+    return success, None
+
+
+def get_final_headers(
+        operation: Operation,
+        headers: Union[None, Header] = None,
+        additional_headers: Union[None, Dict[str, str]] = None,
+        additional_headers_override: bool = True,
+        add_authorization: bool = True,
+        auto_add_bearer_auth: bool = True,
+) -> Tuple[Optional[Header], Optional[HttpResponse]]:
+    headers = headers if headers is not None else operation.get_headers()
+
+    if "Authorization" in headers:
+        add_authorization = False
+    elif additional_headers and "Authorization" in additional_headers:
+        add_authorization = False
+
+    if add_authorization:
+        if hasattr(operation, "authorization_override") and operation.authorization_override:
+            headers.add_authorization(operation.authorization_override)
+        elif operation.security == "basic":
+            client_auth, error = get_client_auth()
+            if error:
+                return None, error
+            headers.add_basic_authorization2(client_auth)
+        elif operation.security == "bearer":
+            access_token, error = get_access_token()
+            if error:
+                return None, error
+            headers.add_bearer_authorization(access_token)
+        elif auto_add_bearer_auth:
+            access_token, _ = get_access_token()
+            if access_token:
+                headers.add_bearer_authorization(access_token)
+
+    if additional_headers:
+        for k, v in additional_headers.items():
+            if not additional_headers_override and k in headers:
+                continue
+            headers[k] = v
+
+    return headers, None
+
 
 # endregion HttpClient
