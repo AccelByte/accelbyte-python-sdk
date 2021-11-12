@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import OrderSyncResult
@@ -32,3 +33,13 @@ def sync_orders(end: str, start: str, next_evaluated_key: Optional[str] = None, 
         next_evaluated_key=next_evaluated_key,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(SyncOrders)
+async def sync_orders_async(end: str, start: str, next_evaluated_key: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = SyncOrders.create(
+        end=end,
+        start=start,
+        next_evaluated_key=next_evaluated_key,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 
@@ -32,3 +33,14 @@ def platform_authenticate_samlv3_handler(platform_id: str, state: str, code: Opt
         error=error,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PlatformAuthenticateSAMLV3Handler)
+async def platform_authenticate_samlv3_handler_async(platform_id: str, state: str, code: Optional[str] = None, error: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = PlatformAuthenticateSAMLV3Handler.create(
+        platform_id=platform_id,
+        state=state,
+        code=code,
+        error=error,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

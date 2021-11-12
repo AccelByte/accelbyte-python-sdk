@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import deprecated
 from ....core import same_doc_as
 
@@ -66,6 +67,16 @@ def add_client_permission(action: int, client_id: str, resource: str, x_addition
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(AddClientPermission)
+async def add_client_permission_async(action: int, client_id: str, resource: str, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AddClientPermission.create(
+        action=action,
+        client_id=client_id,
+        resource=resource,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(AdminAddClientPermissionsV3)
 def admin_add_client_permissions_v3(body: AccountcommonClientPermissionsV3, client_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -80,6 +91,20 @@ def admin_add_client_permissions_v3(body: AccountcommonClientPermissionsV3, clie
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(AdminAddClientPermissionsV3)
+async def admin_add_client_permissions_v3_async(body: AccountcommonClientPermissionsV3, client_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminAddClientPermissionsV3.create(
+        body=body,
+        client_id=client_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(AdminCreateClientV3)
 def admin_create_client_v3(body: ClientmodelClientCreationV3Request, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -91,6 +116,19 @@ def admin_create_client_v3(body: ClientmodelClientCreationV3Request, namespace: 
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminCreateClientV3)
+async def admin_create_client_v3_async(body: ClientmodelClientCreationV3Request, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminCreateClientV3.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminDeleteClientPermissionV3)
@@ -108,6 +146,21 @@ def admin_delete_client_permission_v3(action: int, client_id: str, resource: str
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(AdminDeleteClientPermissionV3)
+async def admin_delete_client_permission_v3_async(action: int, client_id: str, resource: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminDeleteClientPermissionV3.create(
+        action=action,
+        client_id=client_id,
+        resource=resource,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(AdminDeleteClientV3)
 def admin_delete_client_v3(client_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -119,6 +172,19 @@ def admin_delete_client_v3(client_id: str, namespace: Optional[str] = None, x_ad
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminDeleteClientV3)
+async def admin_delete_client_v3_async(client_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminDeleteClientV3.create(
+        client_id=client_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetClientsByNamespaceV3)
@@ -136,6 +202,21 @@ def admin_get_clients_by_namespace_v3(after: Optional[str] = None, before: Optio
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(AdminGetClientsByNamespaceV3)
+async def admin_get_clients_by_namespace_v3_async(after: Optional[str] = None, before: Optional[str] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetClientsByNamespaceV3.create(
+        after=after,
+        before=before,
+        limit=limit,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(AdminGetClientsbyNamespacebyIDV3)
 def admin_get_clientsby_namespaceby_idv3(client_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -147,6 +228,19 @@ def admin_get_clientsby_namespaceby_idv3(client_id: str, namespace: Optional[str
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminGetClientsbyNamespacebyIDV3)
+async def admin_get_clientsby_namespaceby_idv3_async(client_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetClientsbyNamespacebyIDV3.create(
+        client_id=client_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminUpdateClientPermissionV3)
@@ -163,6 +257,20 @@ def admin_update_client_permission_v3(body: AccountcommonClientPermissionsV3, cl
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(AdminUpdateClientPermissionV3)
+async def admin_update_client_permission_v3_async(body: AccountcommonClientPermissionsV3, client_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminUpdateClientPermissionV3.create(
+        body=body,
+        client_id=client_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(AdminUpdateClientV3)
 def admin_update_client_v3(body: ClientmodelClientUpdateV3Request, client_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -177,6 +285,20 @@ def admin_update_client_v3(body: ClientmodelClientUpdateV3Request, client_id: st
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(AdminUpdateClientV3)
+async def admin_update_client_v3_async(body: ClientmodelClientUpdateV3Request, client_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminUpdateClientV3.create(
+        body=body,
+        client_id=client_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @deprecated
 @same_doc_as(CreateClient)
 def create_client(body: ClientmodelClientCreateRequest, x_additional_headers: Optional[Dict[str, str]] = None):
@@ -184,6 +306,15 @@ def create_client(body: ClientmodelClientCreateRequest, x_additional_headers: Op
         body=body,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@deprecated
+@same_doc_as(CreateClient)
+async def create_client_async(body: ClientmodelClientCreateRequest, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = CreateClient.create(
+        body=body,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(CreateClientByNamespace)
@@ -199,6 +330,19 @@ def create_client_by_namespace(body: ClientmodelClientCreateRequest, namespace: 
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(CreateClientByNamespace)
+async def create_client_by_namespace_async(body: ClientmodelClientCreateRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CreateClientByNamespace.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @deprecated
 @same_doc_as(DeleteClient)
 def delete_client(client_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
@@ -206,6 +350,15 @@ def delete_client(client_id: str, x_additional_headers: Optional[Dict[str, str]]
         client_id=client_id,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@deprecated
+@same_doc_as(DeleteClient)
+async def delete_client_async(client_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = DeleteClient.create(
+        client_id=client_id,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteClientByNamespace)
@@ -221,6 +374,19 @@ def delete_client_by_namespace(client_id: str, namespace: Optional[str] = None, 
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(DeleteClientByNamespace)
+async def delete_client_by_namespace_async(client_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteClientByNamespace.create(
+        client_id=client_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(DeleteClientPermission)
 def delete_client_permission(action: int, client_id: str, resource: str, x_additional_headers: Optional[Dict[str, str]] = None):
     request = DeleteClientPermission.create(
@@ -231,6 +397,16 @@ def delete_client_permission(action: int, client_id: str, resource: str, x_addit
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(DeleteClientPermission)
+async def delete_client_permission_async(action: int, client_id: str, resource: str, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = DeleteClientPermission.create(
+        action=action,
+        client_id=client_id,
+        resource=resource,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(GetClient)
 def get_client(client_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
     request = GetClient.create(
@@ -239,11 +415,26 @@ def get_client(client_id: str, x_additional_headers: Optional[Dict[str, str]] = 
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(GetClient)
+async def get_client_async(client_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = GetClient.create(
+        client_id=client_id,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @deprecated
 @same_doc_as(GetClients)
 def get_clients(x_additional_headers: Optional[Dict[str, str]] = None):
     request = GetClients.create()
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@deprecated
+@same_doc_as(GetClients)
+async def get_clients_async(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = GetClients.create()
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetClientsbyNamespace)
@@ -258,6 +449,18 @@ def get_clientsby_namespace(namespace: Optional[str] = None, x_additional_header
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(GetClientsbyNamespace)
+async def get_clientsby_namespace_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetClientsbyNamespace.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(UpdateClient)
 def update_client(body: ClientmodelClientUpdateRequest, client_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
     request = UpdateClient.create(
@@ -265,6 +468,15 @@ def update_client(body: ClientmodelClientUpdateRequest, client_id: str, x_additi
         client_id=client_id,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdateClient)
+async def update_client_async(body: ClientmodelClientUpdateRequest, client_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = UpdateClient.create(
+        body=body,
+        client_id=client_id,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateClientPermission)
@@ -276,6 +488,15 @@ def update_client_permission(body: AccountcommonClientPermissions, client_id: st
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(UpdateClientPermission)
+async def update_client_permission_async(body: AccountcommonClientPermissions, client_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = UpdateClientPermission.create(
+        body=body,
+        client_id=client_id,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(UpdateClientSecret)
 def update_client_secret(body: ClientmodelClientUpdateSecretRequest, client_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
     request = UpdateClientSecret.create(
@@ -283,3 +504,12 @@ def update_client_secret(body: ClientmodelClientUpdateSecretRequest, client_id: 
         client_id=client_id,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdateClientSecret)
+async def update_client_secret_async(body: ClientmodelClientUpdateSecretRequest, client_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = UpdateClientSecret.create(
+        body=body,
+        client_id=client_id,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

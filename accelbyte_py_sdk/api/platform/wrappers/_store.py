@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ErrorEntity
@@ -55,6 +56,20 @@ def clone_store(store_id: str, target_store_id: Optional[str] = None, namespace:
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(CloneStore)
+async def clone_store_async(store_id: str, target_store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CloneStore.create(
+        store_id=store_id,
+        target_store_id=target_store_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(CreateStore)
 def create_store(body: Optional[StoreCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -68,6 +83,19 @@ def create_store(body: Optional[StoreCreate] = None, namespace: Optional[str] = 
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(CreateStore)
+async def create_store_async(body: Optional[StoreCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CreateStore.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(DeletePublishedStore)
 def delete_published_store(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -78,6 +106,18 @@ def delete_published_store(namespace: Optional[str] = None, x_additional_headers
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(DeletePublishedStore)
+async def delete_published_store_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeletePublishedStore.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteStore)
@@ -93,6 +133,19 @@ def delete_store(store_id: str, namespace: Optional[str] = None, x_additional_he
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(DeleteStore)
+async def delete_store_async(store_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteStore.create(
+        store_id=store_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(ExportStore)
 def export_store(store_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -104,6 +157,19 @@ def export_store(store_id: str, namespace: Optional[str] = None, x_additional_he
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(ExportStore)
+async def export_store_async(store_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ExportStore.create(
+        store_id=store_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetPublishedStore)
@@ -118,6 +184,18 @@ def get_published_store(namespace: Optional[str] = None, x_additional_headers: O
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(GetPublishedStore)
+async def get_published_store_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetPublishedStore.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(GetPublishedStoreBackup)
 def get_published_store_backup(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -128,6 +206,18 @@ def get_published_store_backup(namespace: Optional[str] = None, x_additional_hea
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetPublishedStoreBackup)
+async def get_published_store_backup_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetPublishedStoreBackup.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetStore)
@@ -141,6 +231,19 @@ def get_store(store_id: str, namespace: Optional[str] = None, x_additional_heade
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetStore)
+async def get_store_async(store_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetStore.create(
+        store_id=store_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ImportStore)
@@ -157,6 +260,20 @@ def import_store(file: Optional[Any] = None, store_id: Optional[str] = None, nam
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(ImportStore)
+async def import_store_async(file: Optional[Any] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ImportStore.create(
+        file=file,
+        store_id=store_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(ListStores)
 def list_stores(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -167,6 +284,18 @@ def list_stores(namespace: Optional[str] = None, x_additional_headers: Optional[
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(ListStores)
+async def list_stores_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ListStores.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicListStores)
@@ -181,6 +310,18 @@ def public_list_stores(namespace: Optional[str] = None, x_additional_headers: Op
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(PublicListStores)
+async def public_list_stores_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicListStores.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(RollbackPublishedStore)
 def rollback_published_store(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -191,6 +332,18 @@ def rollback_published_store(namespace: Optional[str] = None, x_additional_heade
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(RollbackPublishedStore)
+async def rollback_published_store_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RollbackPublishedStore.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateStore)
@@ -205,3 +358,17 @@ def update_store(store_id: str, body: Optional[StoreUpdate] = None, namespace: O
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdateStore)
+async def update_store_async(store_id: str, body: Optional[StoreUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateStore.create(
+        store_id=store_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ErrorEntity
@@ -45,6 +46,20 @@ def fulfill_item(user_id: str, body: Optional[FulfillmentRequest] = None, namesp
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(FulfillItem)
+async def fulfill_item_async(user_id: str, body: Optional[FulfillmentRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = FulfillItem.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(PublicRedeemCode)
 def public_redeem_code(user_id: str, body: Optional[FulfillCodeRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -57,6 +72,20 @@ def public_redeem_code(user_id: str, body: Optional[FulfillCodeRequest] = None, 
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicRedeemCode)
+async def public_redeem_code_async(user_id: str, body: Optional[FulfillCodeRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicRedeemCode.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QueryFulfillmentHistories)
@@ -75,6 +104,22 @@ def query_fulfillment_histories(limit: Optional[int] = None, offset: Optional[in
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(QueryFulfillmentHistories)
+async def query_fulfillment_histories_async(limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = QueryFulfillmentHistories.create(
+        limit=limit,
+        offset=offset,
+        status=status,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(RedeemCode)
 def redeem_code(user_id: str, body: Optional[FulfillCodeRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -87,3 +132,17 @@ def redeem_code(user_id: str, body: Optional[FulfillCodeRequest] = None, namespa
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(RedeemCode)
+async def redeem_code_async(user_id: str, body: Optional[FulfillCodeRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RedeemCode.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

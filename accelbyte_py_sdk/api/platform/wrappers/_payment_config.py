@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import AdyenConfig
@@ -81,6 +82,14 @@ def create_payment_provider_config(body: Optional[PaymentProviderConfigEdit] = N
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(CreatePaymentProviderConfig)
+async def create_payment_provider_config_async(body: Optional[PaymentProviderConfigEdit] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = CreatePaymentProviderConfig.create(
+        body=body,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(DebugMatchedPaymentMerchantConfig)
 def debug_matched_payment_merchant_config(namespace: Optional[str] = None, region: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = DebugMatchedPaymentMerchantConfig.create(
@@ -88,6 +97,15 @@ def debug_matched_payment_merchant_config(namespace: Optional[str] = None, regio
         region=region,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(DebugMatchedPaymentMerchantConfig)
+async def debug_matched_payment_merchant_config_async(namespace: Optional[str] = None, region: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = DebugMatchedPaymentMerchantConfig.create(
+        namespace=namespace,
+        region=region,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DebugMatchedPaymentProviderConfig)
@@ -99,6 +117,15 @@ def debug_matched_payment_provider_config(namespace: Optional[str] = None, regio
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(DebugMatchedPaymentProviderConfig)
+async def debug_matched_payment_provider_config_async(namespace: Optional[str] = None, region: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = DebugMatchedPaymentProviderConfig.create(
+        namespace=namespace,
+        region=region,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(DeletePaymentProviderConfig)
 def delete_payment_provider_config(id_: str, x_additional_headers: Optional[Dict[str, str]] = None):
     request = DeletePaymentProviderConfig.create(
@@ -107,10 +134,24 @@ def delete_payment_provider_config(id_: str, x_additional_headers: Optional[Dict
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(DeletePaymentProviderConfig)
+async def delete_payment_provider_config_async(id_: str, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = DeletePaymentProviderConfig.create(
+        id_=id_,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(GetAggregatePaymentProviders)
 def get_aggregate_payment_providers(x_additional_headers: Optional[Dict[str, str]] = None):
     request = GetAggregatePaymentProviders.create()
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetAggregatePaymentProviders)
+async def get_aggregate_payment_providers_async(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = GetAggregatePaymentProviders.create()
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetPaymentMerchantConfig)
@@ -121,16 +162,36 @@ def get_payment_merchant_config(id_: str, x_additional_headers: Optional[Dict[st
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(GetPaymentMerchantConfig)
+async def get_payment_merchant_config_async(id_: str, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = GetPaymentMerchantConfig.create(
+        id_=id_,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(GetPaymentTaxConfig)
 def get_payment_tax_config(x_additional_headers: Optional[Dict[str, str]] = None):
     request = GetPaymentTaxConfig.create()
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(GetPaymentTaxConfig)
+async def get_payment_tax_config_async(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = GetPaymentTaxConfig.create()
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(GetSpecialPaymentProviders)
 def get_special_payment_providers(x_additional_headers: Optional[Dict[str, str]] = None):
     request = GetSpecialPaymentProviders.create()
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetSpecialPaymentProviders)
+async def get_special_payment_providers_async(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = GetSpecialPaymentProviders.create()
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QueryPaymentProviderConfig)
@@ -144,6 +205,17 @@ def query_payment_provider_config(limit: Optional[int] = None, namespace: Option
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(QueryPaymentProviderConfig)
+async def query_payment_provider_config_async(limit: Optional[int] = None, namespace: Optional[str] = None, offset: Optional[int] = None, region: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = QueryPaymentProviderConfig.create(
+        limit=limit,
+        namespace=namespace,
+        offset=offset,
+        region=region,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(TestAdyenConfig)
 def test_adyen_config(body: Optional[AdyenConfig] = None, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = TestAdyenConfig.create(
@@ -151,6 +223,15 @@ def test_adyen_config(body: Optional[AdyenConfig] = None, sandbox: Optional[bool
         sandbox=sandbox,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(TestAdyenConfig)
+async def test_adyen_config_async(body: Optional[AdyenConfig] = None, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = TestAdyenConfig.create(
+        body=body,
+        sandbox=sandbox,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(TestAdyenConfigById)
@@ -162,6 +243,15 @@ def test_adyen_config_by_id(id_: str, sandbox: Optional[bool] = None, x_addition
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(TestAdyenConfigById)
+async def test_adyen_config_by_id_async(id_: str, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = TestAdyenConfigById.create(
+        id_=id_,
+        sandbox=sandbox,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(TestAliPayConfig)
 def test_ali_pay_config(body: Optional[AliPayConfig] = None, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = TestAliPayConfig.create(
@@ -169,6 +259,15 @@ def test_ali_pay_config(body: Optional[AliPayConfig] = None, sandbox: Optional[b
         sandbox=sandbox,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(TestAliPayConfig)
+async def test_ali_pay_config_async(body: Optional[AliPayConfig] = None, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = TestAliPayConfig.create(
+        body=body,
+        sandbox=sandbox,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(TestAliPayConfigById)
@@ -180,6 +279,15 @@ def test_ali_pay_config_by_id(id_: str, sandbox: Optional[bool] = None, x_additi
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(TestAliPayConfigById)
+async def test_ali_pay_config_by_id_async(id_: str, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = TestAliPayConfigById.create(
+        id_=id_,
+        sandbox=sandbox,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(TestCheckoutConfig)
 def test_checkout_config(body: Optional[CheckoutConfig] = None, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = TestCheckoutConfig.create(
@@ -187,6 +295,15 @@ def test_checkout_config(body: Optional[CheckoutConfig] = None, sandbox: Optiona
         sandbox=sandbox,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(TestCheckoutConfig)
+async def test_checkout_config_async(body: Optional[CheckoutConfig] = None, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = TestCheckoutConfig.create(
+        body=body,
+        sandbox=sandbox,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(TestCheckoutConfigById)
@@ -198,6 +315,15 @@ def test_checkout_config_by_id(id_: str, sandbox: Optional[bool] = None, x_addit
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(TestCheckoutConfigById)
+async def test_checkout_config_by_id_async(id_: str, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = TestCheckoutConfigById.create(
+        id_=id_,
+        sandbox=sandbox,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(TestPayPalConfig)
 def test_pay_pal_config(body: Optional[PayPalConfig] = None, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = TestPayPalConfig.create(
@@ -205,6 +331,15 @@ def test_pay_pal_config(body: Optional[PayPalConfig] = None, sandbox: Optional[b
         sandbox=sandbox,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(TestPayPalConfig)
+async def test_pay_pal_config_async(body: Optional[PayPalConfig] = None, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = TestPayPalConfig.create(
+        body=body,
+        sandbox=sandbox,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(TestPayPalConfigById)
@@ -216,6 +351,15 @@ def test_pay_pal_config_by_id(id_: str, sandbox: Optional[bool] = None, x_additi
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(TestPayPalConfigById)
+async def test_pay_pal_config_by_id_async(id_: str, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = TestPayPalConfigById.create(
+        id_=id_,
+        sandbox=sandbox,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(TestStripeConfig)
 def test_stripe_config(body: Optional[StripeConfig] = None, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = TestStripeConfig.create(
@@ -223,6 +367,15 @@ def test_stripe_config(body: Optional[StripeConfig] = None, sandbox: Optional[bo
         sandbox=sandbox,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(TestStripeConfig)
+async def test_stripe_config_async(body: Optional[StripeConfig] = None, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = TestStripeConfig.create(
+        body=body,
+        sandbox=sandbox,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(TestStripeConfigById)
@@ -234,12 +387,29 @@ def test_stripe_config_by_id(id_: str, sandbox: Optional[bool] = None, x_additio
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(TestStripeConfigById)
+async def test_stripe_config_by_id_async(id_: str, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = TestStripeConfigById.create(
+        id_=id_,
+        sandbox=sandbox,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(TestWxPayConfig)
 def test_wx_pay_config(body: Optional[WxPayConfigRequest] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = TestWxPayConfig.create(
         body=body,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(TestWxPayConfig)
+async def test_wx_pay_config_async(body: Optional[WxPayConfigRequest] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = TestWxPayConfig.create(
+        body=body,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(TestWxPayConfigById)
@@ -250,6 +420,14 @@ def test_wx_pay_config_by_id(id_: str, x_additional_headers: Optional[Dict[str, 
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(TestWxPayConfigById)
+async def test_wx_pay_config_by_id_async(id_: str, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = TestWxPayConfigById.create(
+        id_=id_,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(TestXsollaConfig)
 def test_xsolla_config(body: Optional[XsollaConfig] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = TestXsollaConfig.create(
@@ -258,12 +436,28 @@ def test_xsolla_config(body: Optional[XsollaConfig] = None, x_additional_headers
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(TestXsollaConfig)
+async def test_xsolla_config_async(body: Optional[XsollaConfig] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = TestXsollaConfig.create(
+        body=body,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(TestXsollaConfigById)
 def test_xsolla_config_by_id(id_: str, x_additional_headers: Optional[Dict[str, str]] = None):
     request = TestXsollaConfigById.create(
         id_=id_,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(TestXsollaConfigById)
+async def test_xsolla_config_by_id_async(id_: str, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = TestXsollaConfigById.create(
+        id_=id_,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateAdyenConfig)
@@ -277,6 +471,17 @@ def update_adyen_config(id_: str, body: Optional[AdyenConfig] = None, sandbox: O
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(UpdateAdyenConfig)
+async def update_adyen_config_async(id_: str, body: Optional[AdyenConfig] = None, sandbox: Optional[bool] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = UpdateAdyenConfig.create(
+        id_=id_,
+        body=body,
+        sandbox=sandbox,
+        validate=validate,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(UpdateAliPayConfig)
 def update_ali_pay_config(id_: str, body: Optional[AliPayConfig] = None, sandbox: Optional[bool] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = UpdateAliPayConfig.create(
@@ -286,6 +491,17 @@ def update_ali_pay_config(id_: str, body: Optional[AliPayConfig] = None, sandbox
         validate=validate,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdateAliPayConfig)
+async def update_ali_pay_config_async(id_: str, body: Optional[AliPayConfig] = None, sandbox: Optional[bool] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = UpdateAliPayConfig.create(
+        id_=id_,
+        body=body,
+        sandbox=sandbox,
+        validate=validate,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateCheckoutConfig)
@@ -299,6 +515,17 @@ def update_checkout_config(id_: str, body: Optional[CheckoutConfig] = None, sand
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(UpdateCheckoutConfig)
+async def update_checkout_config_async(id_: str, body: Optional[CheckoutConfig] = None, sandbox: Optional[bool] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = UpdateCheckoutConfig.create(
+        id_=id_,
+        body=body,
+        sandbox=sandbox,
+        validate=validate,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(UpdatePayPalConfig)
 def update_pay_pal_config(id_: str, body: Optional[PayPalConfig] = None, sandbox: Optional[bool] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = UpdatePayPalConfig.create(
@@ -310,6 +537,17 @@ def update_pay_pal_config(id_: str, body: Optional[PayPalConfig] = None, sandbox
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(UpdatePayPalConfig)
+async def update_pay_pal_config_async(id_: str, body: Optional[PayPalConfig] = None, sandbox: Optional[bool] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = UpdatePayPalConfig.create(
+        id_=id_,
+        body=body,
+        sandbox=sandbox,
+        validate=validate,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(UpdatePaymentProviderConfig)
 def update_payment_provider_config(id_: str, body: Optional[PaymentProviderConfigEdit] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = UpdatePaymentProviderConfig.create(
@@ -319,12 +557,29 @@ def update_payment_provider_config(id_: str, body: Optional[PaymentProviderConfi
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(UpdatePaymentProviderConfig)
+async def update_payment_provider_config_async(id_: str, body: Optional[PaymentProviderConfigEdit] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = UpdatePaymentProviderConfig.create(
+        id_=id_,
+        body=body,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(UpdatePaymentTaxConfig)
 def update_payment_tax_config(body: Optional[PaymentTaxConfigEdit] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = UpdatePaymentTaxConfig.create(
         body=body,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdatePaymentTaxConfig)
+async def update_payment_tax_config_async(body: Optional[PaymentTaxConfigEdit] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = UpdatePaymentTaxConfig.create(
+        body=body,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateStripeConfig)
@@ -338,6 +593,17 @@ def update_stripe_config(id_: str, body: Optional[StripeConfig] = None, sandbox:
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(UpdateStripeConfig)
+async def update_stripe_config_async(id_: str, body: Optional[StripeConfig] = None, sandbox: Optional[bool] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = UpdateStripeConfig.create(
+        id_=id_,
+        body=body,
+        sandbox=sandbox,
+        validate=validate,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(UpdateWxPayConfig)
 def update_wx_pay_config(id_: str, body: Optional[WxPayConfigRequest] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = UpdateWxPayConfig.create(
@@ -348,6 +614,16 @@ def update_wx_pay_config(id_: str, body: Optional[WxPayConfigRequest] = None, va
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(UpdateWxPayConfig)
+async def update_wx_pay_config_async(id_: str, body: Optional[WxPayConfigRequest] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = UpdateWxPayConfig.create(
+        id_=id_,
+        body=body,
+        validate=validate,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(UpdateWxPayConfigCert)
 def update_wx_pay_config_cert(id_: str, file: Optional[Any] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = UpdateWxPayConfigCert.create(
@@ -355,6 +631,15 @@ def update_wx_pay_config_cert(id_: str, file: Optional[Any] = None, x_additional
         file=file,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdateWxPayConfigCert)
+async def update_wx_pay_config_cert_async(id_: str, file: Optional[Any] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = UpdateWxPayConfigCert.create(
+        id_=id_,
+        file=file,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateXsollaConfig)
@@ -367,6 +652,16 @@ def update_xsolla_config(id_: str, body: Optional[XsollaConfig] = None, validate
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(UpdateXsollaConfig)
+async def update_xsolla_config_async(id_: str, body: Optional[XsollaConfig] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = UpdateXsollaConfig.create(
+        id_=id_,
+        body=body,
+        validate=validate,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(UpdateXsollaUIConfig)
 def update_xsolla_ui_config(id_: str, body: Optional[XsollaPaywallConfigRequest] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = UpdateXsollaUIConfig.create(
@@ -374,3 +669,12 @@ def update_xsolla_ui_config(id_: str, body: Optional[XsollaPaywallConfigRequest]
         body=body,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdateXsollaUIConfig)
+async def update_xsolla_ui_config_async(id_: str, body: Optional[XsollaPaywallConfigRequest] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = UpdateXsollaUIConfig.create(
+        id_=id_,
+        body=body,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

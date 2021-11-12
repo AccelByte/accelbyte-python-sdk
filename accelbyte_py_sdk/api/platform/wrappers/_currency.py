@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import CurrencyConfig
@@ -49,6 +50,19 @@ def create_currency(body: Optional[CurrencyCreate] = None, namespace: Optional[s
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(CreateCurrency)
+async def create_currency_async(body: Optional[CurrencyCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CreateCurrency.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(DeleteCurrency)
 def delete_currency(currency_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -60,6 +74,19 @@ def delete_currency(currency_code: str, namespace: Optional[str] = None, x_addit
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(DeleteCurrency)
+async def delete_currency_async(currency_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteCurrency.create(
+        currency_code=currency_code,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetCurrencyConfig)
@@ -75,6 +102,19 @@ def get_currency_config(currency_code: str, namespace: Optional[str] = None, x_a
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(GetCurrencyConfig)
+async def get_currency_config_async(currency_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetCurrencyConfig.create(
+        currency_code=currency_code,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(GetCurrencySummary)
 def get_currency_summary(currency_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -86,6 +126,19 @@ def get_currency_summary(currency_code: str, namespace: Optional[str] = None, x_
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetCurrencySummary)
+async def get_currency_summary_async(currency_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetCurrencySummary.create(
+        currency_code=currency_code,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ListCurrencies)
@@ -100,6 +153,18 @@ def list_currencies(namespace: Optional[str] = None, x_additional_headers: Optio
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(ListCurrencies)
+async def list_currencies_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ListCurrencies.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(PublicListCurrencies)
 def public_list_currencies(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -110,6 +175,18 @@ def public_list_currencies(namespace: Optional[str] = None, x_additional_headers
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicListCurrencies)
+async def public_list_currencies_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicListCurrencies.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateCurrency)
@@ -124,3 +201,17 @@ def update_currency(currency_code: str, body: Optional[CurrencyUpdate] = None, n
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdateCurrency)
+async def update_currency_async(currency_code: str, body: Optional[CurrencyUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateCurrency.create(
+        currency_code=currency_code,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

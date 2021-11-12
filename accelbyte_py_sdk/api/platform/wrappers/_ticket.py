@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ErrorEntity
@@ -51,6 +52,21 @@ def acquire_user_ticket(booth_name: str, user_id: str, body: Optional[TicketAcqu
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(AcquireUserTicket)
+async def acquire_user_ticket_async(booth_name: str, user_id: str, body: Optional[TicketAcquireRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AcquireUserTicket.create(
+        booth_name=booth_name,
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(DecreaseTicketSale)
 def decrease_ticket_sale(booth_name: str, body: Optional[TicketSaleDecrementRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -63,6 +79,20 @@ def decrease_ticket_sale(booth_name: str, body: Optional[TicketSaleDecrementRequ
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(DecreaseTicketSale)
+async def decrease_ticket_sale_async(booth_name: str, body: Optional[TicketSaleDecrementRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DecreaseTicketSale.create(
+        booth_name=booth_name,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetTicketBoothID)
@@ -78,6 +108,19 @@ def get_ticket_booth_id(booth_name: str, namespace: Optional[str] = None, x_addi
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(GetTicketBoothID)
+async def get_ticket_booth_id_async(booth_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetTicketBoothID.create(
+        booth_name=booth_name,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(GetTicketDynamic)
 def get_ticket_dynamic(booth_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -89,6 +132,19 @@ def get_ticket_dynamic(booth_name: str, namespace: Optional[str] = None, x_addit
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetTicketDynamic)
+async def get_ticket_dynamic_async(booth_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetTicketDynamic.create(
+        booth_name=booth_name,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(IncreaseTicketSale)
@@ -103,3 +159,17 @@ def increase_ticket_sale(booth_name: str, body: Optional[TicketSaleIncrementRequ
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(IncreaseTicketSale)
+async def increase_ticket_sale_async(booth_name: str, body: Optional[TicketSaleIncrementRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = IncreaseTicketSale.create(
+        booth_name=booth_name,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

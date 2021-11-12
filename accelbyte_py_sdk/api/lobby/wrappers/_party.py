@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ModelsPartyData
@@ -42,6 +43,19 @@ def admin_get_party_data_v1(party_id: str, namespace: Optional[str] = None, x_ad
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(AdminGetPartyDataV1)
+async def admin_get_party_data_v1_async(party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetPartyDataV1.create(
+        party_id=party_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(AdminGetUserPartyV1)
 def admin_get_user_party_v1(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -53,6 +67,19 @@ def admin_get_user_party_v1(user_id: str, namespace: Optional[str] = None, x_add
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminGetUserPartyV1)
+async def admin_get_user_party_v1_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetUserPartyV1.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetPartyDataV1)
@@ -68,6 +95,19 @@ def public_get_party_data_v1(party_id: str, namespace: Optional[str] = None, x_a
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(PublicGetPartyDataV1)
+async def public_get_party_data_v1_async(party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetPartyDataV1.create(
+        party_id=party_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(PublicUpdatePartyAttributesV1)
 def public_update_party_attributes_v1(body: ModelsPartyPUTCustomAttributesRequest, party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -80,3 +120,17 @@ def public_update_party_attributes_v1(body: ModelsPartyPUTCustomAttributesReques
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicUpdatePartyAttributesV1)
+async def public_update_party_attributes_v1_async(body: ModelsPartyPUTCustomAttributesRequest, party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicUpdatePartyAttributesV1.create(
+        body=body,
+        party_id=party_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

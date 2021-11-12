@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ModelsCountServerResponse
@@ -53,6 +54,18 @@ def count_server(namespace: Optional[str] = None, x_additional_headers: Optional
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(CountServer)
+async def count_server_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CountServer.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(CountServerDetailed)
 def count_server_detailed(region: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -64,6 +77,19 @@ def count_server_detailed(region: Optional[str] = None, namespace: Optional[str]
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(CountServerDetailed)
+async def count_server_detailed_async(region: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CountServerDetailed.create(
+        region=region,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(CountSession)
@@ -79,6 +105,19 @@ def count_session(region: Optional[str] = None, namespace: Optional[str] = None,
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(CountSession)
+async def count_session_async(region: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CountSession.create(
+        region=region,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(DeleteLocalServer)
 def delete_local_server(name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -90,6 +129,19 @@ def delete_local_server(name: str, namespace: Optional[str] = None, x_additional
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(DeleteLocalServer)
+async def delete_local_server_async(name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteLocalServer.create(
+        name=name,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteServer)
@@ -105,6 +157,19 @@ def delete_server(pod_name: str, namespace: Optional[str] = None, x_additional_h
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(DeleteServer)
+async def delete_server_async(pod_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteServer.create(
+        pod_name=pod_name,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(DeleteSession)
 def delete_session(session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -116,6 +181,19 @@ def delete_session(session_id: str, namespace: Optional[str] = None, x_additiona
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(DeleteSession)
+async def delete_session_async(session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteSession.create(
+        session_id=session_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetServer)
@@ -131,6 +209,19 @@ def get_server(pod_name: str, namespace: Optional[str] = None, x_additional_head
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(GetServer)
+async def get_server_async(pod_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetServer.create(
+        pod_name=pod_name,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(GetServerLogs)
 def get_server_logs(pod_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -144,6 +235,19 @@ def get_server_logs(pod_name: str, namespace: Optional[str] = None, x_additional
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(GetServerLogs)
+async def get_server_logs_async(pod_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetServerLogs.create(
+        pod_name=pod_name,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(ListLocalServer)
 def list_local_server(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -154,6 +258,18 @@ def list_local_server(namespace: Optional[str] = None, x_additional_headers: Opt
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(ListLocalServer)
+async def list_local_server_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ListLocalServer.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ListServer)
@@ -171,6 +287,21 @@ def list_server(count: Optional[int] = None, offset: Optional[int] = None, regio
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(ListServer)
+async def list_server_async(count: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ListServer.create(
+        count=count,
+        offset=offset,
+        region=region,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(ListSession)
 def list_session(count: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, with_server: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -185,3 +316,19 @@ def list_session(count: Optional[int] = None, offset: Optional[int] = None, regi
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(ListSession)
+async def list_session_async(count: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, with_server: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ListSession.create(
+        count=count,
+        offset=offset,
+        region=region,
+        with_server=with_server,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

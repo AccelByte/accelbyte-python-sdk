@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ErrorEntity
@@ -43,6 +44,20 @@ def generated_upload_url(file_type: str, folder: str, namespace: Optional[str] =
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(GeneratedUploadUrl)
+async def generated_upload_url_async(file_type: str, folder: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GeneratedUploadUrl.create(
+        file_type=file_type,
+        folder=folder,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(GeneratedUserUploadContentUrl)
 def generated_user_upload_content_url(file_type: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -55,6 +70,20 @@ def generated_user_upload_content_url(file_type: str, user_id: str, namespace: O
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GeneratedUserUploadContentUrl)
+async def generated_user_upload_content_url_async(file_type: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GeneratedUserUploadContentUrl.create(
+        file_type=file_type,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGeneratedUploadUrl)
@@ -71,6 +100,20 @@ def public_generated_upload_url(file_type: str, folder: str, namespace: Optional
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(PublicGeneratedUploadUrl)
+async def public_generated_upload_url_async(file_type: str, folder: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGeneratedUploadUrl.create(
+        file_type=file_type,
+        folder=folder,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(PublicGeneratedUserUploadContentUrl)
 def public_generated_user_upload_content_url(file_type: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -83,3 +126,17 @@ def public_generated_user_upload_content_url(file_type: str, user_id: str, names
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicGeneratedUserUploadContentUrl)
+async def public_generated_user_upload_content_url_async(file_type: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGeneratedUserUploadContentUrl.create(
+        file_type=file_type,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

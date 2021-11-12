@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import RestErrorResponse
@@ -34,9 +35,26 @@ def login_sso_client(platform_id: str, payload: Optional[str] = None, x_addition
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(LoginSSOClient)
+async def login_sso_client_async(platform_id: str, payload: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = LoginSSOClient.create(
+        platform_id=platform_id,
+        payload=payload,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(LogoutSSOClient)
 def logout_sso_client(platform_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
     request = LogoutSSOClient.create(
         platform_id=platform_id,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(LogoutSSOClient)
+async def logout_sso_client_async(platform_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = LogoutSSOClient.create(
+        platform_id=platform_id,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

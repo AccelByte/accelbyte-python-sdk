@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import PaymentAccount
@@ -40,6 +41,21 @@ def public_delete_payment_account(id_: str, type_: str, user_id: str, namespace:
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(PublicDeletePaymentAccount)
+async def public_delete_payment_account_async(id_: str, type_: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicDeletePaymentAccount.create(
+        id_=id_,
+        type_=type_,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(PublicGetPaymentAccounts)
 def public_get_payment_accounts(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -51,3 +67,16 @@ def public_get_payment_accounts(user_id: str, namespace: Optional[str] = None, x
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicGetPaymentAccounts)
+async def public_get_payment_accounts_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetPaymentAccounts.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

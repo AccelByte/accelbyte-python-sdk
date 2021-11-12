@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import HandlersGetUsersPresenceResponse
@@ -37,3 +38,17 @@ def users_presence_handler_v1(user_ids: str, count_only: Optional[bool] = None, 
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UsersPresenceHandlerV1)
+async def users_presence_handler_v1_async(user_ids: str, count_only: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UsersPresenceHandlerV1.create(
+        user_ids=user_ids,
+        count_only=count_only,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

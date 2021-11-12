@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ModelsGameRecord
@@ -42,6 +43,19 @@ def delete_game_record_handler_v1(key: str, namespace: Optional[str] = None, x_a
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(DeleteGameRecordHandlerV1)
+async def delete_game_record_handler_v1_async(key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteGameRecordHandlerV1.create(
+        key=key,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(GetGameRecordHandlerV1)
 def get_game_record_handler_v1(key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -53,6 +67,19 @@ def get_game_record_handler_v1(key: str, namespace: Optional[str] = None, x_addi
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetGameRecordHandlerV1)
+async def get_game_record_handler_v1_async(key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetGameRecordHandlerV1.create(
+        key=key,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PostGameRecordHandlerV1)
@@ -69,6 +96,20 @@ def post_game_record_handler_v1(body: ModelsGameRecordRequest, key: str, namespa
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(PostGameRecordHandlerV1)
+async def post_game_record_handler_v1_async(body: ModelsGameRecordRequest, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PostGameRecordHandlerV1.create(
+        body=body,
+        key=key,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(PutGameRecordHandlerV1)
 def put_game_record_handler_v1(body: ModelsGameRecordRequest, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -81,3 +122,17 @@ def put_game_record_handler_v1(body: ModelsGameRecordRequest, key: str, namespac
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PutGameRecordHandlerV1)
+async def put_game_record_handler_v1_async(body: ModelsGameRecordRequest, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PutGameRecordHandlerV1.create(
+        body=body,
+        key=key,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

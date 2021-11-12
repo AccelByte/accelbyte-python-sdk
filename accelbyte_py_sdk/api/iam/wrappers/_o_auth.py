@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import deprecated
 from ....core import same_doc_as
 
@@ -50,16 +51,42 @@ def authorization(client_id: str, redirect_uri: str, response_type: str, login: 
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(Authorization)
+async def authorization_async(client_id: str, redirect_uri: str, response_type: str, login: Optional[str] = None, password: Optional[str] = None, scope: Optional[str] = None, state: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = Authorization.create(
+        client_id=client_id,
+        redirect_uri=redirect_uri,
+        response_type=response_type,
+        login=login,
+        password=password,
+        scope=scope,
+        state=state,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(GetJWKS)
 def get_jwks(x_additional_headers: Optional[Dict[str, str]] = None):
     request = GetJWKS.create()
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(GetJWKS)
+async def get_jwks_async(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = GetJWKS.create()
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(GetRevocationList)
 def get_revocation_list(x_additional_headers: Optional[Dict[str, str]] = None):
     request = GetRevocationList.create()
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetRevocationList)
+async def get_revocation_list_async(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = GetRevocationList.create()
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @deprecated
@@ -79,6 +106,22 @@ def platform_token_request_handler(platform_id: str, device_id: Optional[str] = 
 
 
 @deprecated
+@same_doc_as(PlatformTokenRequestHandler)
+async def platform_token_request_handler_async(platform_id: str, device_id: Optional[str] = None, platform_token: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PlatformTokenRequestHandler.create(
+        platform_id=platform_id,
+        device_id=device_id,
+        platform_token=platform_token,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@deprecated
 @same_doc_as(RevokeAUser)
 def revoke_a_user(user_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
     request = RevokeAUser.create(
@@ -88,12 +131,30 @@ def revoke_a_user(user_id: str, x_additional_headers: Optional[Dict[str, str]] =
 
 
 @deprecated
+@same_doc_as(RevokeAUser)
+async def revoke_a_user_async(user_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = RevokeAUser.create(
+        user_id=user_id,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@deprecated
 @same_doc_as(RevokeToken)
 def revoke_token(token: str, x_additional_headers: Optional[Dict[str, str]] = None):
     request = RevokeToken.create(
         token=token,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@deprecated
+@same_doc_as(RevokeToken)
+async def revoke_token_async(token: str, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = RevokeToken.create(
+        token=token,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(RevokeUser)
@@ -107,6 +168,19 @@ def revoke_user(user_id: str, namespace: Optional[str] = None, x_additional_head
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(RevokeUser)
+async def revoke_user_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RevokeUser.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(TokenGrant)
@@ -125,9 +199,33 @@ def token_grant(grant_type: str, code: Optional[str] = None, device_id: Optional
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(TokenGrant)
+async def token_grant_async(grant_type: str, code: Optional[str] = None, device_id: Optional[str] = None, extend_exp: Optional[bool] = None, namespace: Optional[str] = None, password: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, username: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = TokenGrant.create(
+        grant_type=grant_type,
+        code=code,
+        device_id=device_id,
+        extend_exp=extend_exp,
+        namespace=namespace,
+        password=password,
+        redirect_uri=redirect_uri,
+        refresh_token=refresh_token,
+        username=username,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(VerifyToken)
 def verify_token(token: str, x_additional_headers: Optional[Dict[str, str]] = None):
     request = VerifyToken.create(
         token=token,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(VerifyToken)
+async def verify_token_async(token: str, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = VerifyToken.create(
+        token=token,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

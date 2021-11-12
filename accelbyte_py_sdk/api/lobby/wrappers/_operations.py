@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import LogAppMessageDeclaration
@@ -42,7 +43,27 @@ def admin_update_party_attributes_v1(body: ModelsPartyPUTCustomAttributesRequest
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(AdminUpdatePartyAttributesV1)
+async def admin_update_party_attributes_v1_async(body: ModelsPartyPUTCustomAttributesRequest, party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminUpdatePartyAttributesV1.create(
+        body=body,
+        party_id=party_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(PublicGetMessages)
 def public_get_messages(x_additional_headers: Optional[Dict[str, str]] = None):
     request = PublicGetMessages.create()
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicGetMessages)
+async def public_get_messages_async(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = PublicGetMessages.create()
+    return await run_request_async(request, additional_headers=x_additional_headers)

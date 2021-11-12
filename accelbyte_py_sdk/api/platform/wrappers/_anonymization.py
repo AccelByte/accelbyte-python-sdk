@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 
@@ -43,6 +44,19 @@ def anonymize_campaign(user_id: str, namespace: Optional[str] = None, x_addition
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(AnonymizeCampaign)
+async def anonymize_campaign_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AnonymizeCampaign.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(AnonymizeEntitlement)
 def anonymize_entitlement(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -54,6 +68,19 @@ def anonymize_entitlement(user_id: str, namespace: Optional[str] = None, x_addit
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AnonymizeEntitlement)
+async def anonymize_entitlement_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AnonymizeEntitlement.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AnonymizeFulfillment)
@@ -69,6 +96,19 @@ def anonymize_fulfillment(user_id: str, namespace: Optional[str] = None, x_addit
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(AnonymizeFulfillment)
+async def anonymize_fulfillment_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AnonymizeFulfillment.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(AnonymizeIntegration)
 def anonymize_integration(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -80,6 +120,19 @@ def anonymize_integration(user_id: str, namespace: Optional[str] = None, x_addit
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AnonymizeIntegration)
+async def anonymize_integration_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AnonymizeIntegration.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AnonymizeOrder)
@@ -95,6 +148,19 @@ def anonymize_order(user_id: str, namespace: Optional[str] = None, x_additional_
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(AnonymizeOrder)
+async def anonymize_order_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AnonymizeOrder.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(AnonymizePayment)
 def anonymize_payment(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -106,6 +172,19 @@ def anonymize_payment(user_id: str, namespace: Optional[str] = None, x_additiona
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AnonymizePayment)
+async def anonymize_payment_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AnonymizePayment.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AnonymizeSubscription)
@@ -121,6 +200,19 @@ def anonymize_subscription(user_id: str, namespace: Optional[str] = None, x_addi
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(AnonymizeSubscription)
+async def anonymize_subscription_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AnonymizeSubscription.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(AnonymizeWallet)
 def anonymize_wallet(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -132,3 +224,16 @@ def anonymize_wallet(user_id: str, namespace: Optional[str] = None, x_additional
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AnonymizeWallet)
+async def anonymize_wallet_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AnonymizeWallet.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

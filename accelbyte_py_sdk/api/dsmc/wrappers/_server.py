@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ModelsDeregisterLocalServerRequest
@@ -47,6 +48,19 @@ def deregister_local_server(body: ModelsDeregisterLocalServerRequest, namespace:
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(DeregisterLocalServer)
+async def deregister_local_server_async(body: ModelsDeregisterLocalServerRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeregisterLocalServer.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(GetServerSession)
 def get_server_session(pod_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -58,6 +72,19 @@ def get_server_session(pod_name: str, namespace: Optional[str] = None, x_additio
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetServerSession)
+async def get_server_session_async(pod_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetServerSession.create(
+        pod_name=pod_name,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(RegisterLocalServer)
@@ -73,6 +100,19 @@ def register_local_server(body: ModelsRegisterLocalServerRequest, namespace: Opt
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(RegisterLocalServer)
+async def register_local_server_async(body: ModelsRegisterLocalServerRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RegisterLocalServer.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(RegisterServer)
 def register_server(body: ModelsRegisterServerRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -86,6 +126,19 @@ def register_server(body: ModelsRegisterServerRequest, namespace: Optional[str] 
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(RegisterServer)
+async def register_server_async(body: ModelsRegisterServerRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RegisterServer.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(ShutdownServer)
 def shutdown_server(body: ModelsShutdownServerRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -97,3 +150,16 @@ def shutdown_server(body: ModelsShutdownServerRequest, namespace: Optional[str] 
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(ShutdownServer)
+async def shutdown_server_async(body: ModelsShutdownServerRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ShutdownServer.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

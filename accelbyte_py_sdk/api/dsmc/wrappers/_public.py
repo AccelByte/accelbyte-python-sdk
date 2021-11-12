@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ModelsDefaultProvider
@@ -32,10 +33,22 @@ def get_default_provider(x_additional_headers: Optional[Dict[str, str]] = None):
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(GetDefaultProvider)
+async def get_default_provider_async(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = GetDefaultProvider.create()
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(ListProviders)
 def list_providers(x_additional_headers: Optional[Dict[str, str]] = None):
     request = ListProviders.create()
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(ListProviders)
+async def list_providers_async(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = ListProviders.create()
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ListProvidersByRegion)
@@ -44,3 +57,11 @@ def list_providers_by_region(region: str, x_additional_headers: Optional[Dict[st
         region=region,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(ListProvidersByRegion)
+async def list_providers_by_region_async(region: str, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = ListProvidersByRegion.create(
+        region=region,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

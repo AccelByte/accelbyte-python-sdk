@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ModelPublicThirdPartyPlatformInfo
@@ -47,6 +48,20 @@ def add_third_party_login_platform_credential_v3(body: ModelThirdPartyLoginPlatf
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(AddThirdPartyLoginPlatformCredentialV3)
+async def add_third_party_login_platform_credential_v3_async(body: ModelThirdPartyLoginPlatformCredentialRequest, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AddThirdPartyLoginPlatformCredentialV3.create(
+        body=body,
+        platform_id=platform_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(DeleteThirdPartyLoginPlatformCredentialV3)
 def delete_third_party_login_platform_credential_v3(platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -58,6 +73,19 @@ def delete_third_party_login_platform_credential_v3(platform_id: str, namespace:
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(DeleteThirdPartyLoginPlatformCredentialV3)
+async def delete_third_party_login_platform_credential_v3_async(platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteThirdPartyLoginPlatformCredentialV3.create(
+        platform_id=platform_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3)
@@ -72,6 +100,18 @@ def retrieve_all_active_third_party_login_platform_credential_public_v3(namespac
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3)
+async def retrieve_all_active_third_party_login_platform_credential_public_v3_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(RetrieveAllActiveThirdPartyLoginPlatformCredentialV3)
 def retrieve_all_active_third_party_login_platform_credential_v3(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -84,6 +124,18 @@ def retrieve_all_active_third_party_login_platform_credential_v3(namespace: Opti
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(RetrieveAllActiveThirdPartyLoginPlatformCredentialV3)
+async def retrieve_all_active_third_party_login_platform_credential_v3_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RetrieveAllActiveThirdPartyLoginPlatformCredentialV3.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(RetrieveAllThirdPartyLoginPlatformCredentialV3)
 def retrieve_all_third_party_login_platform_credential_v3(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -94,6 +146,18 @@ def retrieve_all_third_party_login_platform_credential_v3(namespace: Optional[st
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(RetrieveAllThirdPartyLoginPlatformCredentialV3)
+async def retrieve_all_third_party_login_platform_credential_v3_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RetrieveAllThirdPartyLoginPlatformCredentialV3.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(RetrieveThirdPartyLoginPlatformCredentialV3)
@@ -109,6 +173,19 @@ def retrieve_third_party_login_platform_credential_v3(platform_id: str, namespac
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(RetrieveThirdPartyLoginPlatformCredentialV3)
+async def retrieve_third_party_login_platform_credential_v3_async(platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RetrieveThirdPartyLoginPlatformCredentialV3.create(
+        platform_id=platform_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(UpdateThirdPartyLoginPlatformCredentialV3)
 def update_third_party_login_platform_credential_v3(body: ModelThirdPartyLoginPlatformCredentialRequest, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -121,3 +198,17 @@ def update_third_party_login_platform_credential_v3(body: ModelThirdPartyLoginPl
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdateThirdPartyLoginPlatformCredentialV3)
+async def update_third_party_login_platform_credential_v3_async(body: ModelThirdPartyLoginPlatformCredentialRequest, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateThirdPartyLoginPlatformCredentialV3.create(
+        body=body,
+        platform_id=platform_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

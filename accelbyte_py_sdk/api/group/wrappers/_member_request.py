@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ModelsGetMemberRequestsListResponseV1
@@ -40,6 +41,20 @@ def get_group_invitation_request_public_v1(limit: Optional[int] = None, offset: 
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(GetGroupInvitationRequestPublicV1)
+async def get_group_invitation_request_public_v1_async(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetGroupInvitationRequestPublicV1.create(
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(GetGroupJoinRequestPublicV1)
 def get_group_join_request_public_v1(group_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -53,3 +68,18 @@ def get_group_join_request_public_v1(group_id: str, limit: Optional[int] = None,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetGroupJoinRequestPublicV1)
+async def get_group_join_request_public_v1_async(group_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetGroupJoinRequestPublicV1.create(
+        group_id=group_id,
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

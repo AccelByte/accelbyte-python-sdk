@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import LogAppMessageDeclaration
@@ -29,3 +30,9 @@ from ..operations.operations import PublicGetMessages
 def public_get_messages(x_additional_headers: Optional[Dict[str, str]] = None):
     request = PublicGetMessages.create()
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicGetMessages)
+async def public_get_messages_async(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = PublicGetMessages.create()
+    return await run_request_async(request, additional_headers=x_additional_headers)

@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ModelsCreateImageRequest
@@ -46,6 +47,14 @@ def create_image(body: ModelsCreateImageRequest, x_additional_headers: Optional[
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(CreateImage)
+async def create_image_async(body: ModelsCreateImageRequest, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = CreateImage.create(
+        body=body,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(DeleteImage)
 def delete_image(image_uri: str, version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -60,6 +69,20 @@ def delete_image(image_uri: str, version: str, namespace: Optional[str] = None, 
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(DeleteImage)
+async def delete_image_async(image_uri: str, version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteImage.create(
+        image_uri=image_uri,
+        version=version,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(ExportImages)
 def export_images(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -70,6 +93,18 @@ def export_images(namespace: Optional[str] = None, x_additional_headers: Optiona
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(ExportImages)
+async def export_images_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ExportImages.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetImageDetail)
@@ -85,6 +120,19 @@ def get_image_detail(version: str, namespace: Optional[str] = None, x_additional
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(GetImageDetail)
+async def get_image_detail_async(version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetImageDetail.create(
+        version=version,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(GetImageLimit)
 def get_image_limit(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -97,12 +145,32 @@ def get_image_limit(namespace: Optional[str] = None, x_additional_headers: Optio
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(GetImageLimit)
+async def get_image_limit_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetImageLimit.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(ImportImages)
 def import_images(file: Any, x_additional_headers: Optional[Dict[str, str]] = None):
     request = ImportImages.create(
         file=file,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(ImportImages)
+async def import_images_async(file: Any, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = ImportImages.create(
+        file=file,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ListImages)
@@ -122,9 +190,34 @@ def list_images(count: Optional[int] = None, offset: Optional[int] = None, q: Op
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(ListImages)
+async def list_images_async(count: Optional[int] = None, offset: Optional[int] = None, q: Optional[str] = None, sort_by: Optional[str] = None, sort_direction: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ListImages.create(
+        count=count,
+        offset=offset,
+        q=q,
+        sort_by=sort_by,
+        sort_direction=sort_direction,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(UpdateImage)
 def update_image(body: ModelsImageRecordUpdate, x_additional_headers: Optional[Dict[str, str]] = None):
     request = UpdateImage.create(
         body=body,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdateImage)
+async def update_image_async(body: ModelsImageRecordUpdate, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = UpdateImage.create(
+        body=body,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

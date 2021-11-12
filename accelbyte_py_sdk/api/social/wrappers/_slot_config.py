@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import NamespaceSlotConfigInfo
@@ -43,6 +44,18 @@ def delete_namespace_slot_config(namespace: Optional[str] = None, x_additional_h
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(DeleteNamespaceSlotConfig)
+async def delete_namespace_slot_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteNamespaceSlotConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(DeleteUserSlotConfig)
 def delete_user_slot_config(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -56,6 +69,19 @@ def delete_user_slot_config(user_id: str, namespace: Optional[str] = None, x_add
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(DeleteUserSlotConfig)
+async def delete_user_slot_config_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteUserSlotConfig.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(GetNamespaceSlotConfig)
 def get_namespace_slot_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -66,6 +92,18 @@ def get_namespace_slot_config(namespace: Optional[str] = None, x_additional_head
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetNamespaceSlotConfig)
+async def get_namespace_slot_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetNamespaceSlotConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserSlotConfig)
@@ -81,6 +119,19 @@ def get_user_slot_config(user_id: str, namespace: Optional[str] = None, x_additi
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(GetUserSlotConfig)
+async def get_user_slot_config_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetUserSlotConfig.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(UpdateNamespaceSlotConfig)
 def update_namespace_slot_config(body: Optional[SlotConfigUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -92,6 +143,19 @@ def update_namespace_slot_config(body: Optional[SlotConfigUpdate] = None, namesp
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdateNamespaceSlotConfig)
+async def update_namespace_slot_config_async(body: Optional[SlotConfigUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateNamespaceSlotConfig.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateUserSlotConfig)
@@ -106,3 +170,17 @@ def update_user_slot_config(user_id: str, body: Optional[SlotConfigUpdate] = Non
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdateUserSlotConfig)
+async def update_user_slot_config_async(user_id: str, body: Optional[SlotConfigUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateUserSlotConfig.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

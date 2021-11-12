@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import AppleIAPConfigInfo
@@ -92,6 +93,18 @@ def delete_apple_iap_config(namespace: Optional[str] = None, x_additional_header
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(DeleteAppleIAPConfig)
+async def delete_apple_iap_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteAppleIAPConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(DeleteEpicGamesIAPConfig)
 def delete_epic_games_iap_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -102,6 +115,18 @@ def delete_epic_games_iap_config(namespace: Optional[str] = None, x_additional_h
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(DeleteEpicGamesIAPConfig)
+async def delete_epic_games_iap_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteEpicGamesIAPConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteGoogleIAPConfig)
@@ -116,6 +141,18 @@ def delete_google_iap_config(namespace: Optional[str] = None, x_additional_heade
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(DeleteGoogleIAPConfig)
+async def delete_google_iap_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteGoogleIAPConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(DeletePlaystationIAPConfig)
 def delete_playstation_iap_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -126,6 +163,18 @@ def delete_playstation_iap_config(namespace: Optional[str] = None, x_additional_
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(DeletePlaystationIAPConfig)
+async def delete_playstation_iap_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeletePlaystationIAPConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteStadiaIAPConfig)
@@ -140,6 +189,18 @@ def delete_stadia_iap_config(namespace: Optional[str] = None, x_additional_heade
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(DeleteStadiaIAPConfig)
+async def delete_stadia_iap_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteStadiaIAPConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(DeleteSteamIAPConfig)
 def delete_steam_iap_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -150,6 +211,18 @@ def delete_steam_iap_config(namespace: Optional[str] = None, x_additional_header
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(DeleteSteamIAPConfig)
+async def delete_steam_iap_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteSteamIAPConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteXblAPConfig)
@@ -164,6 +237,18 @@ def delete_xbl_ap_config(namespace: Optional[str] = None, x_additional_headers: 
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(DeleteXblAPConfig)
+async def delete_xbl_ap_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteXblAPConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(GetAppleIAPConfig)
 def get_apple_iap_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -174,6 +259,18 @@ def get_apple_iap_config(namespace: Optional[str] = None, x_additional_headers: 
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetAppleIAPConfig)
+async def get_apple_iap_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetAppleIAPConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetEpicGamesIAPConfig)
@@ -188,6 +285,18 @@ def get_epic_games_iap_config(namespace: Optional[str] = None, x_additional_head
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(GetEpicGamesIAPConfig)
+async def get_epic_games_iap_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetEpicGamesIAPConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(GetGoogleIAPConfig)
 def get_google_iap_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -198,6 +307,18 @@ def get_google_iap_config(namespace: Optional[str] = None, x_additional_headers:
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetGoogleIAPConfig)
+async def get_google_iap_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetGoogleIAPConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetPlayStationIAPConfig)
@@ -212,6 +333,18 @@ def get_play_station_iap_config(namespace: Optional[str] = None, x_additional_he
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(GetPlayStationIAPConfig)
+async def get_play_station_iap_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetPlayStationIAPConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(GetStadiaIAPConfig)
 def get_stadia_iap_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -222,6 +355,18 @@ def get_stadia_iap_config(namespace: Optional[str] = None, x_additional_headers:
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetStadiaIAPConfig)
+async def get_stadia_iap_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetStadiaIAPConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetSteamIAPConfig)
@@ -236,6 +381,18 @@ def get_steam_iap_config(namespace: Optional[str] = None, x_additional_headers: 
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(GetSteamIAPConfig)
+async def get_steam_iap_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetSteamIAPConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(GetXblIAPConfig)
 def get_xbl_iap_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -246,6 +403,18 @@ def get_xbl_iap_config(namespace: Optional[str] = None, x_additional_headers: Op
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetXblIAPConfig)
+async def get_xbl_iap_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetXblIAPConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(MockFulfillIAPItem)
@@ -262,6 +431,20 @@ def mock_fulfill_iap_item(user_id: str, body: Optional[MockIAPReceipt] = None, n
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(MockFulfillIAPItem)
+async def mock_fulfill_iap_item_async(user_id: str, body: Optional[MockIAPReceipt] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = MockFulfillIAPItem.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(PublicFulfillAppleIAPItem)
 def public_fulfill_apple_iap_item(user_id: str, body: Optional[AppleIAPReceipt] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -274,6 +457,20 @@ def public_fulfill_apple_iap_item(user_id: str, body: Optional[AppleIAPReceipt] 
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicFulfillAppleIAPItem)
+async def public_fulfill_apple_iap_item_async(user_id: str, body: Optional[AppleIAPReceipt] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicFulfillAppleIAPItem.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicFulfillGoogleIAPItem)
@@ -290,6 +487,20 @@ def public_fulfill_google_iap_item(user_id: str, body: Optional[GoogleIAPReceipt
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(PublicFulfillGoogleIAPItem)
+async def public_fulfill_google_iap_item_async(user_id: str, body: Optional[GoogleIAPReceipt] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicFulfillGoogleIAPItem.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(PublicReconcilePlayStationStore)
 def public_reconcile_play_station_store(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -301,6 +512,19 @@ def public_reconcile_play_station_store(user_id: str, namespace: Optional[str] =
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicReconcilePlayStationStore)
+async def public_reconcile_play_station_store_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicReconcilePlayStationStore.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(QueryUserIAPOrders)
@@ -323,6 +547,26 @@ def query_user_iap_orders(user_id: str, end_time: Optional[str] = None, limit: O
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(QueryUserIAPOrders)
+async def query_user_iap_orders_async(user_id: str, end_time: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, product_id: Optional[str] = None, start_time: Optional[str] = None, status: Optional[str] = None, type_: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = QueryUserIAPOrders.create(
+        user_id=user_id,
+        end_time=end_time,
+        limit=limit,
+        offset=offset,
+        product_id=product_id,
+        start_time=start_time,
+        status=status,
+        type_=type_,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(SyncEpicGamesInventory)
 def sync_epic_games_inventory(user_id: str, body: Optional[EpicGamesReconcileRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -335,6 +579,20 @@ def sync_epic_games_inventory(user_id: str, body: Optional[EpicGamesReconcileReq
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(SyncEpicGamesInventory)
+async def sync_epic_games_inventory_async(user_id: str, body: Optional[EpicGamesReconcileRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = SyncEpicGamesInventory.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(SyncStadiaEntitlement)
@@ -351,6 +609,20 @@ def sync_stadia_entitlement(user_id: str, body: Optional[StadiaSyncRequest] = No
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(SyncStadiaEntitlement)
+async def sync_stadia_entitlement_async(user_id: str, body: Optional[StadiaSyncRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = SyncStadiaEntitlement.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(SyncSteamInventory)
 def sync_steam_inventory(user_id: str, body: Optional[SteamSyncRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -363,6 +635,20 @@ def sync_steam_inventory(user_id: str, body: Optional[SteamSyncRequest] = None, 
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(SyncSteamInventory)
+async def sync_steam_inventory_async(user_id: str, body: Optional[SteamSyncRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = SyncSteamInventory.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(SyncXboxInventory)
@@ -379,6 +665,20 @@ def sync_xbox_inventory(user_id: str, body: Optional[XblReconcileRequest] = None
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(SyncXboxInventory)
+async def sync_xbox_inventory_async(user_id: str, body: Optional[XblReconcileRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = SyncXboxInventory.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(UpdateAppleIAPConfig)
 def update_apple_iap_config(body: Optional[AppleIAPConfigRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -390,6 +690,19 @@ def update_apple_iap_config(body: Optional[AppleIAPConfigRequest] = None, namesp
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdateAppleIAPConfig)
+async def update_apple_iap_config_async(body: Optional[AppleIAPConfigRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateAppleIAPConfig.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateEpicGamesIAPConfig)
@@ -405,6 +718,19 @@ def update_epic_games_iap_config(body: Optional[EpicGamesIAPConfigRequest] = Non
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(UpdateEpicGamesIAPConfig)
+async def update_epic_games_iap_config_async(body: Optional[EpicGamesIAPConfigRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateEpicGamesIAPConfig.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(UpdateGoogleIAPConfig)
 def update_google_iap_config(body: Optional[GoogleIAPConfigRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -416,6 +742,19 @@ def update_google_iap_config(body: Optional[GoogleIAPConfigRequest] = None, name
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdateGoogleIAPConfig)
+async def update_google_iap_config_async(body: Optional[GoogleIAPConfigRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateGoogleIAPConfig.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateGoogleP12File)
@@ -431,6 +770,19 @@ def update_google_p12_file(file: Optional[Any] = None, namespace: Optional[str] 
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(UpdateGoogleP12File)
+async def update_google_p12_file_async(file: Optional[Any] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateGoogleP12File.create(
+        file=file,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(UpdatePlaystationIAPConfig)
 def update_playstation_iap_config(body: Optional[PlaystationIAPConfigRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -442,6 +794,19 @@ def update_playstation_iap_config(body: Optional[PlaystationIAPConfigRequest] = 
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdatePlaystationIAPConfig)
+async def update_playstation_iap_config_async(body: Optional[PlaystationIAPConfigRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdatePlaystationIAPConfig.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateStadiaJsonConfigFile)
@@ -457,6 +822,19 @@ def update_stadia_json_config_file(file: Optional[Any] = None, namespace: Option
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(UpdateStadiaJsonConfigFile)
+async def update_stadia_json_config_file_async(file: Optional[Any] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateStadiaJsonConfigFile.create(
+        file=file,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(UpdateSteamIAPConfig)
 def update_steam_iap_config(body: Optional[SteamIAPConfigRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -468,6 +846,19 @@ def update_steam_iap_config(body: Optional[SteamIAPConfigRequest] = None, namesp
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdateSteamIAPConfig)
+async def update_steam_iap_config_async(body: Optional[SteamIAPConfigRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateSteamIAPConfig.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateXblBPCertFile)
@@ -484,6 +875,20 @@ def update_xbl_bp_cert_file(file: Optional[Any] = None, password: Optional[str] 
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(UpdateXblBPCertFile)
+async def update_xbl_bp_cert_file_async(file: Optional[Any] = None, password: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateXblBPCertFile.create(
+        file=file,
+        password=password,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(UpdateXblIAPConfig)
 def update_xbl_iap_config(body: Optional[XblIAPConfigRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -495,3 +900,16 @@ def update_xbl_iap_config(body: Optional[XblIAPConfigRequest] = None, namespace:
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdateXblIAPConfig)
+async def update_xbl_iap_config_async(body: Optional[XblIAPConfigRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateXblIAPConfig.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

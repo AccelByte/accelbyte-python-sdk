@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ErrorEntity
@@ -51,12 +52,33 @@ def change_namespace_status(body: Optional[NamespaceStatusUpdate] = None, namesp
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(ChangeNamespaceStatus)
+async def change_namespace_status_async(body: Optional[NamespaceStatusUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ChangeNamespaceStatus.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(CreateNamespace)
 def create_namespace(body: Optional[NamespaceCreate] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = CreateNamespace.create(
         body=body,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(CreateNamespace)
+async def create_namespace_async(body: Optional[NamespaceCreate] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = CreateNamespace.create(
+        body=body,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeleteNamespace)
@@ -69,6 +91,18 @@ def delete_namespace(namespace: Optional[str] = None, x_additional_headers: Opti
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(DeleteNamespace)
+async def delete_namespace_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteNamespace.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetNamespace)
@@ -84,6 +118,19 @@ def get_namespace(active_only: Optional[bool] = None, namespace: Optional[str] =
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(GetNamespace)
+async def get_namespace_async(active_only: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetNamespace.create(
+        active_only=active_only,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(GetNamespacePublisher)
 def get_namespace_publisher(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -96,12 +143,32 @@ def get_namespace_publisher(namespace: Optional[str] = None, x_additional_header
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(GetNamespacePublisher)
+async def get_namespace_publisher_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetNamespacePublisher.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(GetNamespaces)
 def get_namespaces(active_only: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = GetNamespaces.create(
         active_only=active_only,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetNamespaces)
+async def get_namespaces_async(active_only: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = GetNamespaces.create(
+        active_only=active_only,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicGetNamespacePublisher)
@@ -116,12 +183,32 @@ def public_get_namespace_publisher(namespace: Optional[str] = None, x_additional
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(PublicGetNamespacePublisher)
+async def public_get_namespace_publisher_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetNamespacePublisher.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(PublicGetNamespaces)
 def public_get_namespaces(active_only: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = PublicGetNamespaces.create(
         active_only=active_only,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicGetNamespaces)
+async def public_get_namespaces_async(active_only: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = PublicGetNamespaces.create(
+        active_only=active_only,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdateNamespace)
@@ -135,3 +222,16 @@ def update_namespace(body: Optional[NamespaceUpdate] = None, namespace: Optional
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdateNamespace)
+async def update_namespace_async(body: Optional[NamespaceUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateNamespace.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

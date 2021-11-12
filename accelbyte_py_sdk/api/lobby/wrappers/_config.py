@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ModelsConfigList
@@ -34,6 +35,12 @@ def admin_get_all_config_v1(x_additional_headers: Optional[Dict[str, str]] = Non
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(AdminGetAllConfigV1)
+async def admin_get_all_config_v1_async(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AdminGetAllConfigV1.create()
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(AdminGetConfigV1)
 def admin_get_config_v1(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -44,6 +51,18 @@ def admin_get_config_v1(namespace: Optional[str] = None, x_additional_headers: O
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminGetConfigV1)
+async def admin_get_config_v1_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetConfigV1.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminUpdateConfigV1)
@@ -57,3 +76,16 @@ def admin_update_config_v1(body: ModelsConfigReq, namespace: Optional[str] = Non
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminUpdateConfigV1)
+async def admin_update_config_v1_async(body: ModelsConfigReq, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminUpdateConfigV1.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

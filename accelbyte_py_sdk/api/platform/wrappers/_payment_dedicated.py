@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ErrorEntity
@@ -45,6 +46,19 @@ def create_payment_order_by_dedicated(body: Optional[ExternalPaymentOrderCreate]
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(CreatePaymentOrderByDedicated)
+async def create_payment_order_by_dedicated_async(body: Optional[ExternalPaymentOrderCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CreatePaymentOrderByDedicated.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(RefundPaymentOrderByDedicated)
 def refund_payment_order_by_dedicated(payment_order_no: str, body: Optional[PaymentOrderRefund] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -59,6 +73,20 @@ def refund_payment_order_by_dedicated(payment_order_no: str, body: Optional[Paym
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(RefundPaymentOrderByDedicated)
+async def refund_payment_order_by_dedicated_async(payment_order_no: str, body: Optional[PaymentOrderRefund] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RefundPaymentOrderByDedicated.create(
+        payment_order_no=payment_order_no,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(SyncPaymentOrders)
 def sync_payment_orders(end: str, start: str, next_evaluated_key: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = SyncPaymentOrders.create(
@@ -67,3 +95,13 @@ def sync_payment_orders(end: str, start: str, next_evaluated_key: Optional[str] 
         next_evaluated_key=next_evaluated_key,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(SyncPaymentOrders)
+async def sync_payment_orders_async(end: str, start: str, next_evaluated_key: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = SyncPaymentOrders.create(
+        end=end,
+        start=start,
+        next_evaluated_key=next_evaluated_key,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

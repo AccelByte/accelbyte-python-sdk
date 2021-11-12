@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ErrorEntity
@@ -43,12 +44,29 @@ def create_fulfillment_script(id_: str, body: Optional[FulfillmentScriptCreate] 
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(CreateFulfillmentScript)
+async def create_fulfillment_script_async(id_: str, body: Optional[FulfillmentScriptCreate] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = CreateFulfillmentScript.create(
+        id_=id_,
+        body=body,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(DeleteFulfillmentScript)
 def delete_fulfillment_script(id_: str, x_additional_headers: Optional[Dict[str, str]] = None):
     request = DeleteFulfillmentScript.create(
         id_=id_,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(DeleteFulfillmentScript)
+async def delete_fulfillment_script_async(id_: str, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = DeleteFulfillmentScript.create(
+        id_=id_,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetFulfillmentScript)
@@ -59,10 +77,24 @@ def get_fulfillment_script(id_: str, x_additional_headers: Optional[Dict[str, st
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(GetFulfillmentScript)
+async def get_fulfillment_script_async(id_: str, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = GetFulfillmentScript.create(
+        id_=id_,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(ListFulfillmentScripts)
 def list_fulfillment_scripts(x_additional_headers: Optional[Dict[str, str]] = None):
     request = ListFulfillmentScripts.create()
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(ListFulfillmentScripts)
+async def list_fulfillment_scripts_async(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = ListFulfillmentScripts.create()
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(TestFulfillmentScriptEval)
@@ -73,6 +105,14 @@ def test_fulfillment_script_eval(body: Optional[FulfillmentScriptEvalTestRequest
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(TestFulfillmentScriptEval)
+async def test_fulfillment_script_eval_async(body: Optional[FulfillmentScriptEvalTestRequest] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = TestFulfillmentScriptEval.create(
+        body=body,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(UpdateFulfillmentScript)
 def update_fulfillment_script(id_: str, body: Optional[FulfillmentScriptUpdate] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = UpdateFulfillmentScript.create(
@@ -80,3 +120,12 @@ def update_fulfillment_script(id_: str, body: Optional[FulfillmentScriptUpdate] 
         body=body,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdateFulfillmentScript)
+async def update_fulfillment_script_async(id_: str, body: Optional[FulfillmentScriptUpdate] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = UpdateFulfillmentScript.create(
+        id_=id_,
+        body=body,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)

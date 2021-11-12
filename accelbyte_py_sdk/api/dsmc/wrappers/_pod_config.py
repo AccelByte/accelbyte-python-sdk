@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
+from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ModelsCreatePodConfigRequest
@@ -46,6 +47,20 @@ def create_pod_config(body: ModelsCreatePodConfigRequest, name: str, namespace: 
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(CreatePodConfig)
+async def create_pod_config_async(body: ModelsCreatePodConfigRequest, name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CreatePodConfig.create(
+        body=body,
+        name=name,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(DeletePodConfig)
 def delete_pod_config(name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -57,6 +72,19 @@ def delete_pod_config(name: str, namespace: Optional[str] = None, x_additional_h
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(DeletePodConfig)
+async def delete_pod_config_async(name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeletePodConfig.create(
+        name=name,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetAllPodConfig)
@@ -73,6 +101,20 @@ def get_all_pod_config(count: Optional[int] = None, offset: Optional[int] = None
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(GetAllPodConfig)
+async def get_all_pod_config_async(count: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetAllPodConfig.create(
+        count=count,
+        offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(GetPodConfig)
 def get_pod_config(name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -84,6 +126,19 @@ def get_pod_config(name: str, namespace: Optional[str] = None, x_additional_head
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetPodConfig)
+async def get_pod_config_async(name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetPodConfig.create(
+        name=name,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(UpdatePodConfig)
@@ -98,3 +153,17 @@ def update_pod_config(body: ModelsUpdatePodConfigRequest, name: str, namespace: 
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdatePodConfig)
+async def update_pod_config_async(body: ModelsUpdatePodConfigRequest, name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdatePodConfig.create(
+        body=body,
+        name=name,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
