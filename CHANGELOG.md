@@ -26,6 +26,8 @@
     - *new* JsonConfigRepository
     - *changed* JsonFileConfigRepository, accepts a `Path` object or a string file path.
 - Add new `accelbyte_py_sdk.initialize(options)` options arguments (config_params, token_params, http_params).
+- Add `HttpxHttpClient` class.
+- Add `async` version of wrappers.
 - Catch http connection errors.
 - Catch empty responses.
 - Catch `application/problem+json` MIME type.
@@ -39,15 +41,16 @@
 - Refactor package setup file.
 - Regenerate services:
     - iam
-    - basic
-    - cloudsave
-    - dsmc (previously dsm_controller)
+    - basic 1.23.0 to 1.26.0
+    - cloudsave 1.8.0 to 1.9.0
+    - dsmc (previously dsm_controller) 2.6.0 to 2.8.0
     - gametelemetry (previously amalgam_game_telemetry)
-    - group
+    - group 2.8.0 to 2.9.0
     - lobby
-    - platform
+    - platform 3.34.0 to 3.37.1
     - sessionbrowser (previously session_browser)
-    - social
+    - social 1.18.1 to 1.21.0
+
 
 ## v0.2.1
 
