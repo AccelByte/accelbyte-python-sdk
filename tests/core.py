@@ -207,6 +207,18 @@ class CoreTestCase(TestCase):
     def test_get_http_client_throws_value_error_when_none(self):
         self.assertRaises(ValueError, get_http_client)
 
+    def test_get_client_auth_allows_empty_secret(self):
+        config = MyConfigRepository(
+            base_url="http://0.0.0.0:8080",
+            client_id="admin",
+            client_secret=""
+        )
+        options = {"config": config}
+        accelbyte_py_sdk.initialize(options=options)
+        self.assertEqual((("admin", ""), None), get_client_auth())
+        self.assertEqual(("admin", None), get_client_id())
+        self.assertEqual(("", None), get_client_secret())
+
     def test_remove_token(self):
         token = MyTokenRepository(token={"access_token": "spam&eggs"})
         options = {"token": token}
