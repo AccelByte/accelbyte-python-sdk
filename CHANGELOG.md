@@ -50,6 +50,16 @@
     - platform 3.34.0 to 3.37.1
     - sessionbrowser (previously session_browser)
     - social 1.18.1 to 1.21.0
+- Add new services
+    - achievement 2.6.0
+    - dslogmanager 1.3.0
+    - eventlog 1.18.3
+    - gdpr 1.11.1
+    - leaderboard 2.11.0
+    - legal 1.14.8
+    - matchmaking 2.10.0
+    - qosm 0.0.0
+    - ugc 1.9.0
 
 
 ## v0.2.1
