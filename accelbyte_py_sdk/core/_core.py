@@ -201,8 +201,9 @@ def get_client_auth() -> Tuple[Union[None, Tuple[str, str]], Union[None, HttpRes
         return None, HttpResponse.create_error(400, "Can't find config repository.")
     client_id = config_repo.get_client_id()
     client_secret = config_repo.get_client_secret()
-    if not client_id or not client_secret:
+    if not client_id:
         return None, HttpResponse.create_error(400, "Client not registered.")
+    client_secret = client_secret or ""
     return (client_id, client_secret), None
 
 
@@ -220,9 +221,7 @@ def get_client_secret() -> Tuple[Union[None, str], Union[None, HttpResponse]]:
     config_repo = _CONFIG_REPOSITORY
     if not config_repo:
         return None, HttpResponse.create_error(400, "Can't find config repository.")
-    client_secret = config_repo.get_client_secret()
-    if not client_secret:
-        return None, HttpResponse.create_error(400, "Client not registered.")
+    client_secret = config_repo.get_client_secret() or ""
     return client_secret, None
 
 
