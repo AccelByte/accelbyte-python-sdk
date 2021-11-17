@@ -148,10 +148,16 @@ class RequestsHttpClient(HttpClient):
             if is_json_mime_type(content_type):
                 try:
                     content = raw_response.json()
+                    if content is None:
+                        _LOGGER.warning(f"Expecting 'application/json' content received null.")
+                        content = ""
                 except ValueError:
                     content = ""
             elif content_type.startswith("text/"):
                 content = raw_response.text
+                if content is None:
+                    _LOGGER.warning(f"Expecting 'text/*' content received null.")
+                    content = ""
             else:
                 return None, HttpResponse.create_unhandled_error()
         else:
@@ -267,10 +273,16 @@ class HttpxHttpClient(HttpClient):
             if is_json_mime_type(content_type):
                 try:
                     content = raw_response.json()
+                    if content is None:
+                        _LOGGER.warning(f"Expecting 'application/json' content received null.")
+                        content = ""
                 except ValueError:
                     content = ""
             elif content_type.startswith("text/"):
                 content = raw_response.text
+                if content is None:
+                    _LOGGER.warning(f"Expecting 'text/*' content received null.")
+                    content = ""
             else:
                 return None, HttpResponse.create_unhandled_error()
         else:
