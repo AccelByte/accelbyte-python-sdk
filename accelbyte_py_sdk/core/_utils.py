@@ -60,6 +60,14 @@ def generate_websocket_message_id() -> str:
     return uuid_str
 
 
+def get_env_config() -> Tuple[str, str, str, str]:
+    return os.environ.get("AB_BASE_URL", ""), os.environ.get("AB_CLIENT_ID", ""), os.environ.get("AB_CLIENT_SECRET", ""), os.environ.get("AB_NAMESPACE", "")
+
+
+def get_env_user_credentials() -> Tuple[str, str]:
+    return os.environ.get("AB_USERNAME", ""), os.environ.get("AB_PASSWORD", "")
+
+
 def get_query_from_http_redirect_response(
         http_response: HttpResponse,
         query_key: str
@@ -95,6 +103,18 @@ def infer_content_type_from_params(params: dict, default: Union[None, str] = Non
         return "application/x-www-form-urlencoded"
 
     return content_type_default
+
+
+def set_env_config(base_url: str, client_id: str, client_secret: str, namespace: str) -> None:
+    os.environ["AB_BASE_URL"] = base_url
+    os.environ["AB_CLIENT_ID"] = client_id
+    os.environ["AB_CLIENT_SECRET"] = client_secret
+    os.environ["AB_NAMESPACE"] = namespace
+
+
+def set_env_user_credentials(username: str, password: str) -> None:
+    os.environ["AB_USERNAME"] = username
+    os.environ["AB_PASSWORD"] = password
 
 
 # TODO(elmer): set flag to allow overwrites?
