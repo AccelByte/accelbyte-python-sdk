@@ -63,7 +63,7 @@ def login_user(
         return None, error
 
     if scope is None:
-        scope = "account social"
+        scope = "commerce account social publishing analytics"
     elif isinstance(scope, List):
         scope = " ".join(scope)
 
@@ -115,7 +115,7 @@ async def login_user_async(
         return None, error
 
     if scope is None:
-        scope = "account social"
+        scope = "commerce account social publishing analytics"
     elif isinstance(scope, List):
         scope = " ".join(scope)
 
