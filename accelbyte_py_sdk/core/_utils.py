@@ -1,5 +1,6 @@
 import base64
 import hashlib
+import logging
 import os
 
 from base64 import b64encode
@@ -8,6 +9,11 @@ from typing import Any, Dict, Tuple, Union
 from uuid import uuid4
 
 from ._http_response import HttpResponse
+
+
+def add_stream_handler_to_logger(additional_scope: Union[None, str] = None) -> None:
+    logger = get_logger(additional_scope)
+    logger.addHandler(logging.StreamHandler())
 
 
 def create_basic_authentication(username: str, password: str) -> str:
@@ -68,6 +74,14 @@ def get_env_user_credentials() -> Tuple[str, str]:
     return os.environ.get("AB_USERNAME", ""), os.environ.get("AB_PASSWORD", "")
 
 
+def get_logger(additional_scope: Union[None, str] = None) -> logging.Logger:
+    additional_scope = additional_scope or ""
+    base_logger_name = "accelbyte_py_sdk"
+    logger_name = ".".join([base_logger_name, additional_scope])
+    logger = logging.getLogger(logger_name)
+    return logger
+
+
 def get_query_from_http_redirect_response(
         http_response: HttpResponse,
         query_key: str
@@ -115,6 +129,11 @@ def set_env_config(base_url: str, client_id: str, client_secret: str, namespace:
 def set_env_user_credentials(username: str, password: str) -> None:
     os.environ["AB_USERNAME"] = username
     os.environ["AB_PASSWORD"] = password
+
+
+def set_logger_level(level: Union[int, str], additional_scope: Union[None, str] = None) -> None:
+    logger = get_logger(additional_scope)
+    logger.setLevel(level)
 
 
 # TODO(elmer): set flag to allow overwrites?
