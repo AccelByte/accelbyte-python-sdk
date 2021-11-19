@@ -427,6 +427,8 @@ accelbyte_py_sdk.core.set_logger_level(logging.INFO, "ws")
 accelbyte_py_sdk.core.add_stream_handler_to_logger()
 ```
 
+---
+
 ## In-depth Topics
 
 ### Generated code
@@ -435,102 +437,95 @@ accelbyte_py_sdk.core.add_stream_handler_to_logger()
 
 Each definition in `#/definitions/` is turned into a Model.
 
-
 Example:
 
 ```yaml
----
-UserProfileInfo:
-  type: object
-  properties:
-    userId:
-      type: string
-    namespace:
-      type: string
-    firstName:
-      type: string
-    lastName:
-      type: string
-    avatarSmallUrl:
-      type: string
-    avatarUrl:
-      type: string
-    avatarLargeUrl:
-      type: string
-    status:
-      type: string
-      enum:
-      - ACTIVE
-      - INACTIVE
-    language:
-      type: string
-    timeZone:
-      type: string
-    dateOfBirth:
-      type: string
-      format: date
-    customAttributes:
+# UserProfileInfo
+properties:
+  avatarLargeUrl:
+    type: string
+  avatarSmallUrl:
+    type: string
+  avatarUrl:
+    type: string
+  customAttributes:
+    additionalProperties:
       type: object
-      additionalProperties:
-        type: object
-    zipCode:
-      type: string
+    type: object
+  dateOfBirth:
+    format: date
+    type: string
+  firstName:
+    type: string
+  language:
+    type: string
+  lastName:
+    type: string
+  namespace:
+    type: string
+  status:
+    enum:
+    - ACTIVE
+    - INACTIVE
+    type: string
+  timeZone:
+    type: string
+  userId:
+    type: string
+  zipCode:
+    type: string
+type: object
+
 ```
 
 ```python
 # accelbyte_py_sdk/api/basic/models/user_profile_info.py
 
-from __future__ import annotations
-from typing import Any, Dict, List, Optional, Tuple, Union
-
-from ....core import Model
-
-
 class UserProfileInfo(Model):
-    """User profile info
+    """User profile info (UserProfileInfo)
 
     Properties:
-        user_id: (userId) OPTIONAL str
-
-        namespace: (namespace) OPTIONAL str
-
-        first_name: (firstName) OPTIONAL str
-
-        last_name: (lastName) OPTIONAL str
+        avatar_large_url: (avatarLargeUrl) OPTIONAL str
 
         avatar_small_url: (avatarSmallUrl) OPTIONAL str
 
         avatar_url: (avatarUrl) OPTIONAL str
 
-        avatar_large_url: (avatarLargeUrl) OPTIONAL str
-
-        status: (status) OPTIONAL str
-
-        language: (language) OPTIONAL str
-
-        time_zone: (timeZone) OPTIONAL str
+        custom_attributes: (customAttributes) OPTIONAL Dict[str, Any]
 
         date_of_birth: (dateOfBirth) OPTIONAL str
 
-        custom_attributes: (customAttributes) OPTIONAL Dict[str, Any]
+        first_name: (firstName) OPTIONAL str
+
+        language: (language) OPTIONAL str
+
+        last_name: (lastName) OPTIONAL str
+
+        namespace: (namespace) OPTIONAL str
+
+        status: (status) OPTIONAL str
+
+        time_zone: (timeZone) OPTIONAL str
+
+        user_id: (userId) OPTIONAL str
 
         zip_code: (zipCode) OPTIONAL str
     """
 
     # region fields
 
-    user_id: str                                                                                   # OPTIONAL
-    namespace: str                                                                                 # OPTIONAL
-    first_name: str                                                                                # OPTIONAL
-    last_name: str                                                                                 # OPTIONAL
+    avatar_large_url: str                                                                          # OPTIONAL
     avatar_small_url: str                                                                          # OPTIONAL
     avatar_url: str                                                                                # OPTIONAL
-    avatar_large_url: str                                                                          # OPTIONAL
-    status: str                                                                                    # OPTIONAL
-    language: str                                                                                  # OPTIONAL
-    time_zone: str                                                                                 # OPTIONAL
-    date_of_birth: str                                                                             # OPTIONAL
     custom_attributes: Dict[str, Any]                                                              # OPTIONAL
+    date_of_birth: str                                                                             # OPTIONAL
+    first_name: str                                                                                # OPTIONAL
+    language: str                                                                                  # OPTIONAL
+    last_name: str                                                                                 # OPTIONAL
+    namespace: str                                                                                 # OPTIONAL
+    status: str                                                                                    # OPTIONAL
+    time_zone: str                                                                                 # OPTIONAL
+    user_id: str                                                                                   # OPTIONAL
     zip_code: str                                                                                  # OPTIONAL
 
     # endregion fields
@@ -541,95 +536,155 @@ there are also a number of utility functions generated with each model that shou
 ```python
 # accelbyte_py_sdk/api/basic/models/user_profile_info.py
 
-def with_user_id(self, value: str) -> UserProfileInfo:
-    self.user_id = value
-    return self
+    ...
 
-# other with_x() methods too
+    def with_user_id(self, value: str) -> UserProfileInfo:
+        self.user_id = value
+        return self
 
-def to_dict(self, include_empty: bool = False) -> dict:
-    return  # ...
+    # other with_x() methods too
 
-@classmethod
-def create(
-    cls,
-    # ...,
-) -> UserProfileInfo:
-    return  # ...
+    def to_dict(self, include_empty: bool = False) -> dict:
+        result: dict = {}
+        ...
+        return result
 
-@classmethod
-def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> UserProfileInfo:
-    return  # ...
+    @classmethod
+    def create(
+        cls,
+        avatar_large_url: Optional[str] = None,
+        avatar_small_url: Optional[str] = None,
+        avatar_url: Optional[str] = None,
+        custom_attributes: Optional[Dict[str, Any]] = None,
+        date_of_birth: Optional[str] = None,
+        first_name: Optional[str] = None,
+        language: Optional[str] = None,
+        last_name: Optional[str] = None,
+        namespace: Optional[str] = None,
+        status: Optional[str] = None,
+        time_zone: Optional[str] = None,
+        user_id: Optional[str] = None,
+        zip_code: Optional[str] = None,
+    ) -> UserProfileInfo:
+        instance = cls()
+        ...
+        return instance
 
-@staticmethod
-def get_field_info() -> Dict[str, str]:
-    return  # ...
+    @classmethod
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> UserProfileInfo:
+        instance = cls()
+        ...
+        return instance
+
+    @staticmethod
+    def get_field_info() -> Dict[str, str]:
+        return {
+            "avatarLargeUrl": "avatar_large_url",
+            "avatarSmallUrl": "avatar_small_url",
+            "avatarUrl": "avatar_url",
+            "customAttributes": "custom_attributes",
+            "dateOfBirth": "date_of_birth",
+            "firstName": "first_name",
+            "language": "language",
+            "lastName": "last_name",
+            "namespace": "namespace",
+            "status": "status",
+            "timeZone": "time_zone",
+            "userId": "user_id",
+            "zipCode": "zip_code",
+        }
+
+    ...
 ```
 
 #### Operations
 
 Each path item in `#/paths` is turned into an Operation.
 
-
 Example:
 
 ```yaml
----
-"/v1/public/namespaces/{namespace}/users/{userId}/profiles":
-  get:
-    tags:
-    - UserProfile
-    summary: Get user profile
-    description: 'Get user profile.<br>Other detail info: <ul><li><i>Required permission</i>:
-      resource=<b>"NAMESPACE:{namespace}:USER:{userId}:PROFILE"</b>, action=2 <b>(READ)</b></li><li><i>Action
-      code</i>: 11403</li><li><i>Returns</i>: user profile</li></ul>'
-    operationId: publicGetUserProfileInfo
-    produces:
-    - application/json
-    parameters:
-    - name: namespace
-      in: path
-      description: namespace, only accept alphabet and numeric
-      required: true
-      type: string
-    - name: userId
-      in: path
-      description: user's id, should follow UUID version 4 without hyphen
-      required: true
-      type: string
-    responses:
-      '200':
-        description: Successful operation
-        schema:
-          "$ref": "#/definitions/UserProfileInfo"
-      '400':
-        description: "<table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>20002</td><td>validation
-          error</td></tr></table>"
-        schema:
-          "$ref": "#/definitions/ValidationErrorEntity"
-      '401':
-        description: "<table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>20001</td><td>unauthorized</td></tr></table>"
-        schema:
-          "$ref": "#/definitions/ErrorEntity"
-      '403':
-        description: "<table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>20013</td><td>insufficient
-          permission</td></tr></table>"
-        schema:
-          "$ref": "#/definitions/ErrorEntity"
-      '404':
-        description: "<table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>11440</td><td>user
-          profile not found</td></tr></table>"
-        schema:
-          "$ref": "#/definitions/ErrorEntity"
-    security:
-    - authorization: []
-    x-authorization:
-      resource: NAMESPACE:{namespace}:USER:{userId}:PROFILE
-      action: '2'
+# GET /v1/public/namespaces/{namespace}/users/{userId}/profiles
+description: 'Get user profile.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Required
+  permission&lt;/i&gt;: resource=&lt;b&gt;&#34;NAMESPACE:{namespace}:USER:{userId}:PROFILE&#34;&lt;/b&gt;,
+  action=2 &lt;b&gt;(READ)&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;Action code&lt;/i&gt;:
+  11403&lt;/li&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: user profile&lt;/li&gt;&lt;/ul&gt;'
+operationId: publicGetUserProfileInfo
+parameters:
+- description: namespace, only accept alphabet and numeric
+  in: path
+  name: namespace
+  required: true
+  type: string
+- description: user's id, should follow UUID version 4 without hyphen
+  in: path
+  name: userId
+  required: true
+  type: string
+produces:
+- application/json
+responses:
+  '200':
+    description: Successful operation
+    schema:
+      $ref: '#/definitions/UserProfileInfo'
+  '400':
+    description: <table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>20002</td><td>validation
+      error</td></tr></table>
+    schema:
+      $ref: '#/definitions/ValidationErrorEntity'
+  '401':
+    description: <table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>20001</td><td>unauthorized</td></tr></table>
+    schema:
+      $ref: '#/definitions/ErrorEntity'
+  '403':
+    description: <table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>20013</td><td>insufficient
+      permission</td></tr></table>
+    schema:
+      $ref: '#/definitions/ErrorEntity'
+  '404':
+    description: '<table><tr><td>errorCode</td><td>errorMessage</td></tr><tr><td>11440</td><td>Unable
+      to {action}: User profile not found in namespace [{namespace}]</td></tr></table>'
+    schema:
+      $ref: '#/definitions/ErrorEntity'
+security:
+- authorization: []
+- HasPermission:
+  - NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
+  authorization: []
+summary: Get user profile
+tags:
+- UserProfile
+x-authorization:
+  action: '2'
+  resource: NAMESPACE:{namespace}:USER:{userId}:PROFILE
+
 ```
+
+same with the models there are also a number of utility functions generated with each operation that should help in the ease of use.
 
 ```python
 # accelbyte_py_sdk/api/basic/operations/user_profile/get_user_profile_info.py
+
+# justice-basic-service (1.26.0)
+
+# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# This is licensed software from AccelByte Inc, for limitations
+# and restrictions contact your company contract manager.
+
+# pylint: disable=duplicate-code
+# pylint: disable=line-too-long
+# pylint: disable=missing-function-docstring
+# pylint: disable=missing-module-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-branches
+# pylint: disable=too-many-instance-attributes
+# pylint: disable=too-many-lines
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-public-methods
+# pylint: disable=too-many-return-statements
+# pylint: disable=too-many-statements
+# pylint: disable=unused-import
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -645,12 +700,18 @@ from ...models import ValidationErrorEntity
 class GetUserProfileInfo(Operation):
     """Get user profile (getUserProfileInfo)
 
+    Get user profile.<br>Other detail info: <ul><li><i>Required permission</i>:
+    resource=<b>"ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE"</b>, action=2
+    <b>(READ)</b></li><li><i>Returns</i>: user profile</li><li><i>Action code</i>:
+    11403</li></ul>
+
+
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles
 
         method: GET
 
-        tags: UserProfile
+        tags: ["UserProfile"]
 
         consumes: []
 
@@ -665,13 +726,13 @@ class GetUserProfileInfo(Operation):
     Responses:
         200: OK - UserProfilePrivateInfo (successful operation)
 
-        400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
 
-        401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (errorCode: 11440 | errorMessage: user profile not found)
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
     """
 
     # region fields
@@ -715,97 +776,153 @@ class GetUserProfileInfo(Operation):
         return self._location_query
 
     # endregion properties
-```
 
-same with the models there are also a number of utility functions generated with each operation that should help in the ease of use.
+    # region get methods
 
-```python
-# accelbyte_py_sdk/api/basic/operations/user_profile/get_user_profile_info.py
+    def get_full_url(self, base_url: Union[None, str] = None) -> str:
+        result = base_url if base_url is not None else ""
 
-def get_full_url(self, base_url: Union[None, str] = None) -> str:
-    result = base_url if base_url is not None else ""
+        # path params
+        url = self.url
+        for k, v in self.get_path_params().items():
+            url = url.replace(f"{{{k}}}", str(v))
+        result += url
 
-    # path params
-    url = self.url
-    for k, v in self.get_path_params().items():
-        url = url.replace(f"{{{k}}}", v)
-    result += url
+        return result
 
-    return result
+    # noinspection PyMethodMayBeStatic
+    def get_all_required_fields(self) -> List[str]:
+        return [
+            "namespace",
+            "user_id",
+        ]
 
-# noinspection PyMethodMayBeStatic
-def get_all_required_fields(self) -> List[str]:
-    return [
-        "namespace",
-        "user_id",
-    ]
+    # endregion get methods
 
-def get_all_params(self) -> dict:
-    return  # ...
+    # region get_x_params methods
 
-def get_path_params(self) -> dict:
-    return  # ...
+    def get_all_params(self) -> dict:
+        return {
+            "path": self.get_path_params(),
+        }
 
-# there would also be: get_body_params(), get_form_data_params(), get_header_params, get_query_params() too if the operation has those.
+    def get_path_params(self) -> dict:
+        result = {}
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
+        if hasattr(self, "user_id"):
+            result["userId"] = self.user_id
+        return result
 
-def is_valid(self) -> bool:
-    if not hasattr(self, "namespace") or self.namespace is None:
-        return False
-    if not hasattr(self, "user_id") or self.user_id is None:
-        return False
-    return True
+    # endregion get_x_params methods
 
-def with_namespace(self, value: str) -> GetUserProfileInfo:
-    self.namespace = value
-    return self
+    # region is/has methods
 
-# other with_x() methods too
+    def is_valid(self) -> bool:
+        if not hasattr(self, "namespace") or self.namespace is None:
+            return False
+        if not hasattr(self, "user_id") or self.user_id is None:
+            return False
+        return True
 
-def to_dict(self, include_empty: bool = False) -> dict:
-    return  # ...
+    # endregion is/has methods
 
-# noinspection PyMethodMayBeStatic
-def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, UserProfilePrivateInfo], Union[None, ErrorEntity, ValidationErrorEntity]]:
-    """Parse the given response.
+    # region with_x methods
 
-    200: OK - UserProfilePrivateInfo (successful operation)
+    def with_namespace(self, value: str) -> GetUserProfileInfo:
+        self.namespace = value
+        return self
 
-    400: Bad Request - ValidationErrorEntity (errorCode: 20002 | errorMessage: validation error)
+    def with_user_id(self, value: str) -> GetUserProfileInfo:
+        self.user_id = value
+        return self
 
-    401: Unauthorized - ErrorEntity (errorCode: 20001 | errorMessage: unauthorized)
+    # endregion with_x methods
 
-    403: Forbidden - ErrorEntity (errorCode: 20013 | errorMessage: insufficient permission)
+    # region to methods
 
-    404: Not Found - ErrorEntity (errorCode: 11440 | errorMessage: user profile not found)
-    """
-    if code == 200:
-        return UserProfilePrivateInfo.create_from_dict(content), None
-    if code == 400:
-        return None, ValidationErrorEntity.create_from_dict(content)
-    if code == 401:
-        return None, ErrorEntity.create_from_dict(content)
-    if code == 403:
-        return None, ErrorEntity.create_from_dict(content)
-    if code == 404:
-        return None, ErrorEntity.create_from_dict(content)
-    return None, HttpResponse.create_unhandled_error()
+    def to_dict(self, include_empty: bool = False) -> dict:
+        result: dict = {}
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
+        if hasattr(self, "user_id") and self.user_id:
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
+        return result
 
-# the return value of parse_response follows the format Tuple[Union[None, all successful return codes], Union[None, all failure return codes]]
+    # endregion to methods
 
-@classmethod
-def create(
-    cls,
-    # ...,
-) -> UserProfileInfo:
-    return  # ...
+    # region response methods
 
-@classmethod
-def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> UserProfileInfo:
-    return  # ...
+    # noinspection PyMethodMayBeStatic
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, UserProfilePrivateInfo], Union[None, ErrorEntity, ValidationErrorEntity]]:
+        """Parse the given response.
 
-@staticmethod
-def get_field_info() -> Dict[str, str]:
-    return  # ...
+        200: OK - UserProfilePrivateInfo (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+        """
+        if code == 200:
+            return UserProfilePrivateInfo.create_from_dict(content), None
+        if code == 400:
+            return None, ValidationErrorEntity.create_from_dict(content)
+        if code == 401:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 403:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 404:
+            return None, ErrorEntity.create_from_dict(content)
+        was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
+        if was_handled:
+            return None, undocumented_response
+        return None, HttpResponse.create_unhandled_error()
+
+    # endregion response methods
+
+    # region static methods
+
+    @classmethod
+    def create(
+        cls,
+        namespace: str,
+        user_id: str,
+    ) -> GetUserProfileInfo:
+        instance = cls()
+        instance.namespace = namespace
+        instance.user_id = user_id
+        return instance
+
+    @classmethod
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> GetUserProfileInfo:
+        instance = cls()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
+        return instance
+
+    @staticmethod
+    def get_field_info() -> Dict[str, str]:
+        return {
+            "namespace": "namespace",
+            "userId": "user_id",
+        }
+
+    # endregion static methods
+
 ```
 
 #### Creating
@@ -852,7 +969,7 @@ To improve ergonomics the code generator also generates wrappers around the oper
 The purpose of these wrappers is to automatically fill up parameters that the SDK already knows.
 (e.g. namespace, client_id, access_token, etc.)
 
-They are located at `accelbyte_py_sdk.api.<service-name>.wrappers` but can be accessed like so:
+They are located at `accelbyte_py_sdk.api.<service-name>.wrappers` but can be accessed like so: `from accelbyte_py_sdk.api.<service-name> import <wrapper-name>`
 
 ```python
 import accelbyte_py_sdk
@@ -871,7 +988,7 @@ The wrapper function `token_grant_v3` is a wrapper for the `TokenGrantV3` operat
 It automatically passes in the information needed like the Basic Auth Headers.
 The values are gotten from the current `ConfigRepository`.
 
-continuing from the previous examples, would be:
+continuing from the previous examples (GetUserProfileInfo), its wrapper would be:
 
 ```python
 # accelbyte_py_sdk/api/basic/wrappers/_user_profile.py
