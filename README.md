@@ -217,7 +217,8 @@ $ python -m accelbyte_py_sdk COMMAND --help
 ```
 
 ```sh
-python3 -m accelbyte_py_sdk iam-get-bans-type --help
+$ python3 -m accelbyte_py_sdk iam-get-bans-type success --help
+
 Usage: python -m accelbyte_py_sdk iam-get-bans-type [OPTIONS]
 
 Options:
@@ -249,87 +250,60 @@ export AB_PASSWORD="your-password"
 ### Examples
 
 ```sh
-Usage: python -m accelbyte_py_sdk iam-get-ban-types [OPTIONS]
+Usage: python -m accelbyte_py_sdk iam-get-bans-type [OPTIONS]
 
 Options:
-  --doc BOOLEAN
   --login_as [client|user]
   --help                    Show this message and exit.
 
-$ python -m accelbyte_py_sdk iam-get-ban-types --login_as user
+$ python -m accelbyte_py_sdk iam-get-bans-type --login_as user
 
-Get ban types success.
-Ban Types: CHAT_SEND, CHAT_ALL, VOICE_SEND, VOICE_ALL, COMMUNITY, TRADE_INITIATE, TRADE_ALL, ORDER_AND_PAYMENT, MARKETPLACE_LIST, MARKETPLACE_ALL, LOGIN, STATISTICS, MATCHMAKING, UGC_CREATE_UPDATE
+GetBansType success success
 ```
 
 ```sh
-Usage: python -m accelbyte_py_sdk iam-register-user [OPTIONS] DISPLAY_NAME EMAIL_ADDRESS
-                                                    DATE_OF_BIRTH COUNTRY PASSWORD
+Usage: python -m accelbyte_py_sdk iam-public-create-user-v3 [OPTIONS] DISPLAY_NAME EMAIL_ADDRESS
+                                                            DATE_OF_BIRTH COUNTRY PASSWORD
 
 Options:
   --namespace TEXT
   --role_id TEXT
-  --doc BOOLEAN
   --login_as [client|user]
   --help            Show this message and exit.
 
-$ python -m accelbyte_py_sdk iam-register-user eagerhamster6800 vi7xUuNc4j@fakemail.com 2000-09-23 US "****" --login_as client
+$ python -m accelbyte_py_sdk iam-public-create-user-v3 eagerhamster6800 vi7xUuNc4j@fakemail.com 2000-09-23 US "****" --login_as client
 
-User registration success.
-authType: EMAILPASSWD
-country: US
-dateOfBirth: '2000-09-23T00:00:00Z'
-displayName: eagerhamster6800
-emailAddress: vi7xuunc4j@fakemail.com
-namespace: ****
-userId: ****
+PublicCreateUserV3 success
 ```
 
 ```sh
-Usage: python -m accelbyte_py_sdk iam-get-my-admin-user [OPTIONS]
+Usage: python -m accelbyte_py_sdk iam-admin-get-my-user-v3 [OPTIONS]
 
 Options:
-  --doc BOOLEAN
   --login_as [client|user]
   --help         Show this message and exit.
 
-$ python -m accelbyte_py_sdk iam-get-my-admin-user --login_as user
+$ python -m accelbyte_py_sdk iam-admin-get-my-user-v3 --login_as user
 
-Get my admin user success.
-...
-userId: ****
-userName: ****
+AdminGetMyUserV3 success
 ```
 
 ```sh
-Usage: python -m accelbyte_py_sdk iam-update-client [OPTIONS] CLIENT_ID
-                                                    CLIENT_UPDATE_REQUEST
+Usage: python -m accelbyte_py_sdk iam-admin-update-client-v3 [OPTIONS] CLIENT_ID
+                                                             CLIENT_UPDATE_REQUEST
 
 Options:
   --namespace TEXT
-  --doc BOOLEAN
   --login_as [client|user]
   --help            Show this message and exit.
 
-$ python -m accelbyte_py_sdk iam-update-client **** {"clientName": "****"} --login_as user
+$ python -m accelbyte_py_sdk iam-admin-update-client-v3 **** {"clientName": "****"} --login_as user
 
-Update client success.
-clientId: ****
-clientName: ****
-clientPermissions:
-- action: 2
-  resource: CLIENT
-createdAt: '2020-09-23T00:00:00.000000Z'
-modifiedAt: '2021-09-23T00:00:30.000000Z'
-namespace: ****
-oauthClientType: Confidential
-redirectUri: http://127.0.0.1
-scopes:
-- account
+AdminUpdateClientV3 success
 ```
 
 ```sh
-Usage: python -m accelbyte_py_sdk iam-update-user [OPTIONS] USER_ID
+Usage: python -m accelbyte_py_sdk iam-admin-update-user-v3 [OPTIONS] USER_ID
 
 Options:
   --country TEXT
@@ -338,16 +312,12 @@ Options:
   --language_tag TEXT
   --user_name TEXT
   --namespace TEXT
-  --doc BOOLEAN
   --login_as [client|user]
   --help                Show this message and exit.
 
-$ python -m accelbyte_py_sdk iam-update-user **** --date_of_birth 2000-09-23 --login_as user
+$ python -m accelbyte_py_sdk iam-admin-update-user-v3 **** --date_of_birth 2000-09-23 --login_as user
 
-Update user success.
-...
-dateOfBirth: '2000-09-23T00:00:00Z'
-lastDateOfBirthChangedTime: '2021-09-23T07:00:00.000000Z'
+AdminUpdateUserV3 success
 ```
 
 ## Misc
