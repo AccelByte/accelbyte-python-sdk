@@ -203,6 +203,8 @@ class HttpxHttpClient(HttpClient):
             limits=limits,
             trust_env=True,
         )
+        self.client = httpx.Client(transport=self.transport)
+        self.client_async = httpx.AsyncClient(transport=self.transport_async)
 
     # noinspection PyMethodMayBeStatic
     def is_async_compatible(self) -> bool:
@@ -235,8 +237,7 @@ class HttpxHttpClient(HttpClient):
             **kwargs
     ) -> Tuple[Any, Union[None, HttpResponse]]:
         _LOGGER.debug(HttpxHttpClient.convert_to_curl(request))
-        with httpx.Client(transport=self.transport) as client:
-            return client.send(request), None
+        return self.client.send(request), None
 
     async def send_request_async(
             self,
@@ -244,8 +245,7 @@ class HttpxHttpClient(HttpClient):
             **kwargs
     ) -> Tuple[Any, Union[None, HttpResponse]]:
         _LOGGER.debug(HttpxHttpClient.convert_to_curl(request))
-        async with httpx.AsyncClient(transport=self.transport_async) as client:
-            return await client.send(request), None
+        return await self.client_async.send(request), None
 
     def handle_response(
             self,
