@@ -106,6 +106,7 @@ In this example we will create a new user using the `POST` endpoint `/iam/v3/pub
 import json
 
 import accelbyte_py_sdk
+from accelbyte_py_sdk.services.auth import login_client
 
 # Import the wrapper 'public_create_user_v3'
 # to know which wrapper to use open the docs/<service-name>-index.md and
@@ -119,7 +120,7 @@ from accelbyte_py_sdk.api.iam.models import ModelUserCreateRequestV3
 from accelbyte_py_sdk.api.iam.models import ModelUserCreateResponseV3
 
 
-if __name__ == "__main__":
+def main():
     # 1 Initialize the SDK
     accelbyte_py_sdk.initialize()
 
@@ -160,11 +161,137 @@ if __name__ == "__main__":
     #   "namespace": "******",
     #   "userId": "********************************"
     # }
+
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 :bulb: All wrapper functions follow the return value format of `result, error`.
 
 :bulb: You could also write your own wrapper functions by using the models and operations in `accelbyte_py_sdk.api.<service-name>` and `accelbyte_py_sdk.api.<service-name>.models` respectively.
+
+## Using the API with `async`
+
+All wrapper functions have an asynchronous counterpart that ends with `_async`.
+
+### Example A (`aync`)
+
+To convert `Example A` asynchronously the following steps are needed.
+
+1. Import the asyncio package.
+
+    ```python
+    import asyncio
+    ```
+
+2. Convert the main method into `async`.
+
+    ```python
+    # def main():
+    async def main():
+    ```
+
+3. Change how the `main` function is invoked.
+
+    ```python
+    if __name__ == "__main__":
+        # main()
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(main())
+    ```
+
+4. Use `HttpxHttpClient`.
+
+    ```python
+    # accelbyte_py_sdk.initialize()
+    accelbyte_py_sdk.initialize(options={"http": "HttpxHttpClient"})
+    ```
+
+5. Use the `async` version of the wrapper by appending `_async`.
+
+    ```python
+    # from accelbyte_py_sdk.api.iam import public_create_user_v3
+    from accelbyte_py_sdk.api.iam import public_create_user_v3_async
+    ```
+
+6. Use the `async` wrapper with the `await` keyword.
+
+    ```python
+    # result, error = public_create_user_v3(
+    result, error = await public_create_user_v3_async(
+    ```
+
+Here is the full code:
+
+```python
+import asyncio
+import json
+
+import accelbyte_py_sdk
+from accelbyte_py_sdk.services.auth import login_client
+
+# Import the wrapper 'public_create_user_v3_async'
+# to know which wrapper to use open the docs/<service-name>-index.md and
+# use the search function to find the wrapper name
+from accelbyte_py_sdk.api.iam import public_create_user_v3_async
+
+# This POST endpoint also requires a body of 'ModelUserCreateRequestV3'
+# so you will need to import that too, import it using this scheme:
+#  from accelbyte_py_sdk.api.<service-name>.models import <model-name>
+from accelbyte_py_sdk.api.iam.models import ModelUserCreateRequestV3
+from accelbyte_py_sdk.api.iam.models import ModelUserCreateResponseV3
+
+
+async def main():
+    # 1 Initialize the SDK
+    accelbyte_py_sdk.initialize(options={"http": "HttpxHttpClient"})
+
+    # 2 Login as a client (uses $AB_CLIENT_ID and $AB_CLIENT_SECRET)
+    _, error = login_client()
+
+    # 3 Create a user using the POST endpoint: /iam/v3/public/namespaces/{namespace}/users
+    #   * this endpoint requires:
+    #     - a 'body' (ModelUserCreateRequestV3)
+    #     - a 'namespace' (string)
+    #       'namespace' here is unique because it can be omitted, omitting it will result in
+    #       the SDK to automatically fill it out with the value of '$AB_NAMESPACE'
+    #   * more details on this endpoint can be found in:
+    #     accelbyte_py_sdk/api/iam/operations/users/public_create_user_v3.py
+    result, error = await public_create_user_v3_async(
+        body=ModelUserCreateRequestV3.create(
+            auth_type="EMAILPASSWD",
+            country="US",
+            date_of_birth="2001-01-01",
+            display_name="************",
+            email_address="******@fakemail.com",
+            password="******************",
+        )
+    )
+
+    # 4 Check for errors
+    if error:
+      exit(1)
+
+    # 5 Do something with the result
+    print(json.dumps(result.to_dict(), indent=2))
+    # {
+    #   "authType": "EMAILPASSWD",
+    #   "country": "US",
+    #   "dateOfBirth": "2001-01-01T00:00:00Z",
+    #   "displayName": "************",
+    #   "emailAddress": "******@fakemail.com",
+    #   "namespace": "******",
+    #   "userId": "********************************"
+    # }
+
+
+if __name__ == "__main__":
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(main())
+
+```
 
 ## CLI
 
