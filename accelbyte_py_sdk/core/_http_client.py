@@ -1,7 +1,8 @@
 import json
 import logging
 from abc import ABC, abstractmethod
-from typing import Any, Optional, Tuple, Union
+from pathlib import Path
+from typing import Any, IO, Optional, Tuple, Union
 
 import httpx
 import requests
@@ -330,10 +331,30 @@ def convert_operation(
             files, data, json_ = None, None, body_params
         else:
             files, data, json_ = None, json.dumps(body_params), None
-    else:
+    elif form_data_params:
+        preprocess_form_data_params(form_data_params)
         files, data, json_ = None, form_data_params, None
+    else:
+        raise ValueError
 
     return operation.method, operation.get_full_url(base_url=base_url), headers, files, data, json_
+
+
+def convert_any_to_file_tuple(name: str, file: Any) -> Tuple[str, bytes]:
+    if isinstance(file, bytes):
+        return name, file
+
+    if isinstance(file, IO):
+        return name, file.read()
+
+    if isinstance(file, str):
+        file = Path(file)
+    if isinstance(file, Path):
+        if not file.exists():
+            raise FileNotFoundError
+        return file.name, file.read_bytes()
+
+    raise ValueError
 
 
 def is_json_mime_type(mime_type: Optional[str]) -> bool:
@@ -345,3 +366,9 @@ def is_json_mime_type(mime_type: Optional[str]) -> bool:
         return False
     main, sub = split
     return main == "application" and (sub == "json" or sub.endswith("+json"))
+
+
+def preprocess_form_data_params(form_data_params: dict) -> None:
+    for form_data_key in form_data_params.keys():
+        if form_data_key.casefold() == "file":
+            form_data_params[form_data_key] = convert_any_to_file_tuple(form_data_key, form_data_params[form_data_key])
