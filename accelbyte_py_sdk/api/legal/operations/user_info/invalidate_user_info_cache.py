@@ -96,14 +96,10 @@ class InvalidateUserInfoCache(Operation):
     # region get methods
 
     def get_full_url(self, base_url: Union[None, str] = None) -> str:
-        result = base_url if base_url is not None else ""
-
-        result += self.url
-
-        # query params
-        result += "?" + "&".join([f"{k}={v}" for k, v in self.get_query_params().items()])
-
-        return result
+        return self.create_full_url(
+            url=self.url,
+            base_url=base_url,
+        )
 
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
