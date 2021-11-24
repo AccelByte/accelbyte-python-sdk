@@ -111,6 +111,7 @@ class RetrievePolicyVersions(Operation):
         return self.create_full_url(
             url=self.url,
             base_url=base_url,
+            query_params=self.get_query_params(),
         )
 
     # noinspection PyMethodMayBeStatic

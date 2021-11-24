@@ -115,7 +115,6 @@ class UpdateSession(Operation):
             url=self.url,
             base_url=base_url,
             path_params=self.get_path_params(),
-            query_params=self.get_query_params(),
         )
 
     # noinspection PyMethodMayBeStatic
