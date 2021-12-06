@@ -367,7 +367,7 @@ $ python -m accelbyte_py_sdk COMMAND --help
 ```
 
 ```sh
-$ python3 -m accelbyte_py_sdk iam-get-bans-type success --help
+$ python3 -m accelbyte_py_sdk iam-get-bans-type --help
 
 Usage: python -m accelbyte_py_sdk iam-get-bans-type [OPTIONS]
 
@@ -900,15 +900,11 @@ class GetUserProfileInfo(Operation):
     # region get methods
 
     def get_full_url(self, base_url: Union[None, str] = None) -> str:
-        result = base_url if base_url is not None else ""
-
-        # path params
-        url = self.url
-        for k, v in self.get_path_params().items():
-            url = url.replace(f"{{{k}}}", str(v))
-        result += url
-
-        return result
+        return self.create_full_url(
+            url=self.url,
+            base_url=base_url,
+            path_params=self.get_path_params(),
+        )
 
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:

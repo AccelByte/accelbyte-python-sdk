@@ -1,14 +1,37 @@
 # AccelByte Python SDK
 
-## Installation
+## Setup
 
 ```sh
 pip install requests httpx websockets pyyaml click
 ```
 
 ```sh
-pip install git+https://github.com/AccelByte/accelbyte-python-sdk.git@main#egg=accelbyte_py_sdk
+pip install git+https://github.com/AccelByte/accelbyte-python-sdk.git@{VERSION}#egg=accelbyte_py_sdk
 ```
+
+Replace `{VERSION}` with a specific release version tag. When starting a new project, 
+using the latest release version is recommended.
+
+**Special note only for Windows environment**
+
+If you encounter error `path too long` when attempting to install the SDK. The steps to solve this are:
+
+1. [Enable long paths in registry](https://docs.python.org/3/using/windows.html#removing-the-max-path-limitation)
+
+2. Enable long paths in git 
+
+   ```
+   git config --global core.longpaths true
+   ```
+
+3. Restart the powershell window you use to take effect
+
+4. Try installing SDK again
+
+   ```
+   pip install git+https://github.com/AccelByte/accelbyte-python-sdk.git@{VERSION}#egg=accelbyte_py_sdk
+   ```
 
 ## Initializing
 
@@ -24,7 +47,7 @@ if __name__ == "__main__":
     #   which in turn uses '$AB_BASE_URL', '$AB_CLIENT_ID', '$AB_CLIENT_SECRET', '$AB_NAMESPACE'
 ```
 
-you could also pass in options like so:
+You could also pass in options like so:
 
 ```python
 import accelbyte_py_sdk
@@ -76,7 +99,7 @@ if __name__ == "__main__":
 
 ```
 
-here `login_user(username, password)` and `logout()` are wrapper functions.
+Here `login_user(username, password)` and `logout()` are wrapper functions.
 
 ```python
 import accelbyte_py_sdk
