@@ -28,15 +28,40 @@
 - Add new `accelbyte_py_sdk.initialize(options)` options arguments (config_params, token_params, http_params).
 - Add `HttpxHttpClient` class.
 - Add `async` version of wrappers.
+- Add QoL Methods:
+    - get_env_config
+        - maps to AB_BASE_URL, AB_CLIENT_ID, AB_CLIENT_SECRET, AB_NAMESPACE
+    - get_env_user_credentials
+        - maps to AB_USERNAME, AB_PASSWORD
+    - set_env_config
+        - maps to AB_BASE_URL, AB_CLIENT_ID, AB_CLIENT_SECRET, AB_NAMESPACE
+    - set_env_user_credentials
+        - maps to AB_USERNAME, AB_PASSWORD
+- Add new services
+    - achievement 2.6.0
+    - dslogmanager 1.3.0
+    - eventlog 1.18.3
+    - gdpr 1.11.1
+    - leaderboard 2.11.0
+    - legal 1.14.8
+    - matchmaking 2.10.0
+    - qosm 0.0.0
+    - ugc 1.9.0
+- Add logging related utility QoL functions
 - Catch http connection errors.
 - Catch empty responses.
 - Catch `application/problem+json` MIME type.
+- Catch null responses gracefully.
 - Change behaviour for checking response for access token.
 - Change to automatically add Bearer Auth.
 - Ignore empty `produces` and `consumes`.
 - Fix responses with `access_token` not getting returned.
 - Fix `accelbyte_py_sdk.initialize(options)` parsing issues.
 - Fix path params not converted into string automatically.
+- Fix empty Basic Auth password being rejected.
+- Fix default scopes.
+- Fix HttpxHttpClient not caching internal client.
+- Moved full url composing logic into the Operation base class.
 - Remove field implicit boolean check when converting to dictionary `to_dict()`.
 - Refactor package setup file.
 - Regenerate services:
@@ -50,16 +75,7 @@
     - platform 3.34.0 to 3.37.1
     - sessionbrowser (previously session_browser)
     - social 1.18.1 to 1.21.0
-- Add new services
-    - achievement 2.6.0
-    - dslogmanager 1.3.0
-    - eventlog 1.18.3
-    - gdpr 1.11.1
-    - leaderboard 2.11.0
-    - legal 1.14.8
-    - matchmaking 2.10.0
-    - qosm 0.0.0
-    - ugc 1.9.0
+- Update demo scripts
 
 
 ## v0.2.1
