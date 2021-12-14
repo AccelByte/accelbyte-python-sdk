@@ -3,7 +3,7 @@
   "info": {
     "description": "Justice Matchmaking Service",
     "title": "Justice Matchmaking Service",
-    "version": "2.10.0"
+    "version": "2.12.0"
   },
   "schemes": [
     "https"
@@ -2556,6 +2556,10 @@
     },
     "models.MatchingParty": {
       "properties": {
+        "first_ticket_created_at": {
+          "format": "int64",
+          "type": "integer"
+        },
         "party_attributes": {
           "type": "object"
         },
@@ -2571,6 +2575,7 @@
         }
       },
       "required": [
+        "first_ticket_created_at",
         "party_attributes",
         "party_id",
         "party_members"
@@ -2831,6 +2836,12 @@
         "alliance": {
           "$ref": "#/definitions/models.AllianceRuleV1"
         },
+        "alliance_flexing_rule": {
+          "items": {
+            "$ref": "#/definitions/models.AllianceFlexingRule"
+          },
+          "type": "array"
+        },
         "flexingRules": {
           "items": {
             "$ref": "#/definitions/models.FlexingRule"
@@ -2855,6 +2866,7 @@
       },
       "required": [
         "alliance",
+        "alliance_flexing_rule",
         "flexingRules",
         "match_options",
         "matchingRules",
@@ -3001,6 +3013,12 @@
         "alliance": {
           "$ref": "#/definitions/models.UpdateAllianceRule"
         },
+        "alliance_flexing_rule": {
+          "items": {
+            "$ref": "#/definitions/models.AllianceFlexingRule"
+          },
+          "type": "array"
+        },
         "flexingRules": {
           "items": {
             "$ref": "#/definitions/models.FlexingRule"
@@ -3021,7 +3039,8 @@
         }
       },
       "required": [
-        "alliance"
+        "alliance",
+        "alliance_flexing_rule"
       ]
     },
     "models.UpdateRuleset.sub_game_modes": {

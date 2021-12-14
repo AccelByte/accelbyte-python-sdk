@@ -3,7 +3,7 @@
   "info": {
     "description": "Justice Event Log Service",
     "title": "justice-event-log-service",
-    "version": "1.18.3"
+    "version": ""
   },
   "schemes": [
     "https"

@@ -8,7 +8,7 @@
     },
     "description": "Justice UGC Service",
     "title": "justice-ugc-service",
-    "version": "1.9.0"
+    "version": "1.10.0"
   },
   "schemes": [
     "https"
@@ -428,7 +428,7 @@
         "consumes": [
           "application/json"
         ],
-        "description": "Required permission \u0026lt;b\u0026gt;ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]\u0026lt;/b\u0026gt;.\\n \n\t\t\t\t\t\tAll request body are required except preview and tags.\n\t\t\t\t\t\t",
+        "description": "Required permission \u0026lt;b\u0026gt;ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]\u0026lt;/b\u0026gt;.\\n \n\t\t\t\tAll request body are required except preview, tags, and contentType.\n\t\t\t\tcontentType values is used to enforce the Content-Type header needed by the client when uploading the content using the S3 presigned URL.\n\t\t\t\tIf not specified, it will use fileExtension value.\n\t\t\t\t\t\t",
         "operationId": "AdminUploadContentS3",
         "parameters": [
           {
@@ -502,7 +502,7 @@
         "consumes": [
           "application/json"
         ],
-        "description": "Required permission \u0026lt;b\u0026gt;ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]\u0026lt;/b\u0026gt;.\\n \n\t\t\t\t\t\tAll request body are required except payload, preview, and tags.",
+        "description": "Required permission \u0026lt;b\u0026gt;ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]\u0026lt;/b\u0026gt;.\\n \n\t\t\t\t\tAll request body are required except payload, preview, tags, and contentType.\n\t\t\t\t\tcontentType values is used to enforce the Content-Type header needed by the client to upload the content using the S3 presigned URL.\n\t\t\t\t\tIf not specified, it will use fileExtension value.",
         "operationId": "SingleAdminUpdateContentS3",
         "parameters": [
           {
@@ -1211,7 +1211,7 @@
         "consumes": [
           "application/json"
         ],
-        "description": "Required permission \u0026lt;b\u0026gt;ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]\u0026lt;/b\u0026gt;.\\n \n\t\t\t\tAll request body are required.\n\t\t\t\t",
+        "description": "Required permission \u0026lt;b\u0026gt;ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]\u0026lt;/b\u0026gt;.\\n \n\t\t\t\tAll request body are required except for contentType field. \n\t\t\t\tcontentType values is used to enforce the Content-Type header needed by the client to upload the content using the presigned URL.\n\t\t\t\tIf not specified, it will use fileExtension value.\n\t\t\t\tSupported file extensions: pjp, jpg, jpeg, jfif, bmp, png. \\n\n\t\t\t\tMaximum description length: 1024.\n\t\t\t\t",
         "operationId": "AdminUploadContentScreenshot",
         "parameters": [
           {
@@ -1259,6 +1259,12 @@
               "$ref": "#/definitions/response.Error"
             }
           },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "schema": {
@@ -1283,7 +1289,7 @@
         "consumes": [
           "application/json"
         ],
-        "description": "Required permission \u0026lt;b\u0026gt;ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]\u0026lt;/b\u0026gt;.\\n \n\t\t\t\t\tAll request body are required.\n\t\t\t\t\t",
+        "description": "Required permission \u0026lt;b\u0026gt;ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]\u0026lt;/b\u0026gt;.\\n \n\t\t\t\t\tMaximum description length: 1024.\n\t\t\t\t\t",
         "operationId": "AdminUpdateScreenshots",
         "parameters": [
           {
@@ -2740,7 +2746,7 @@
         "consumes": [
           "application/json"
         ],
-        "description": "Required permission \u0026lt;b\u0026gt;ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]\u0026lt;/b\u0026gt;.\\n \n\t\t\t\t\t\tAll request body are required except payload, preview, and tags.",
+        "description": "Required permission \u0026lt;b\u0026gt;ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]\u0026lt;/b\u0026gt;.\\n \n\t\t\t\tAll request body are required except payload, preview, tags, and contentType.\n\t\t\t\tcontentType values is used to enforce the Content-Type header needed by the client to upload the content using the S3 presigned URL.\n\t\t\t\tIf not specified, it will use fileExtension value.",
         "operationId": "AdminUpdateContentS3",
         "parameters": [
           {
@@ -5146,7 +5152,7 @@
           "application/json",
           "application/octet-stream"
         ],
-        "description": "Required permission \u0026lt;b\u0026gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]\u0026lt;/b\u0026gt;.\\n \n\t\t\t\tAll request body are required except payload, preview, and tags.",
+        "description": "Required permission \u0026lt;b\u0026gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]\u0026lt;/b\u0026gt;.\\n \n\t\t\t\tAll request body are required except payload, preview, tags, and contentType.\n\t\t\t\tcontentType values is used to enforce the Content-Type header needed by the client to upload the content using the S3 presigned URL.\n\t\t\t\tIf not specified, it will use fileExtension value.",
         "operationId": "CreateContentS3",
         "parameters": [
           {
@@ -5228,7 +5234,7 @@
           "application/json",
           "application/octet-stream"
         ],
-        "description": "Required permission \u0026lt;b\u0026gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]\u0026lt;/b\u0026gt;.\\n \n\t\t\t\t\tAll request body are required except payload, preview, and tags.",
+        "description": "Required permission \u0026lt;b\u0026gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]\u0026lt;/b\u0026gt;.\\n \n\t\t\t\tAll request body are required except payload, preview, tags, and contentType.\n\t\t\t\tcontentType values is used to enforce the Content-Type header needed by the client to upload the content using the S3 presigned URL.\n\t\t\t\tIf not specified, it will use fileExtension value.",
         "operationId": "UpdateContentS3",
         "parameters": [
           {
@@ -5638,7 +5644,7 @@
           "application/json",
           "application/octet-stream"
         ],
-        "description": "Required permission \u0026lt;b\u0026gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]\u0026lt;/b\u0026gt;.\\n \n\t\t\t\tAll request body are required.\n\t\t\t\t",
+        "description": "Required permission \u0026lt;b\u0026gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]\u0026lt;/b\u0026gt;.\\n \n\t\t\t\tAll request body are required except for contentType field. \n\t\t\t\tcontentType values is used to enforce the Content-Type header needed by the client to upload the content using the presigned URL.\n\t\t\t\tIf not specified, it will use fileExtension value.\n\t\t\t\tSupported file extensions: pjp, jpg, jpeg, jfif, bmp, png. \\n\n\t\t\t\tMaximum description length: 1024.\n\t\t\t\t",
         "operationId": "UploadContentScreenshot",
         "parameters": [
           {
@@ -5718,7 +5724,7 @@
           "application/json",
           "application/octet-stream"
         ],
-        "description": "Required permission \u0026lt;b\u0026gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]\u0026lt;/b\u0026gt;.\\n \n\t\t\t\t\tAll request body are required.\n\t\t\t\t\t",
+        "description": "Required permission \u0026lt;b\u0026gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]\u0026lt;/b\u0026gt;.\\n \n\t\t\t\t\tMaximum description length: 1024.\n\t\t\t\t\t",
         "operationId": "UpdateScreenshots",
         "parameters": [
           {
@@ -6765,6 +6771,9 @@
     },
     "models.CreateContentRequestS3": {
       "properties": {
+        "contentType": {
+          "type": "string"
+        },
         "fileExtension": {
           "type": "string"
         },
@@ -6788,6 +6797,7 @@
         }
       },
       "required": [
+        "contentType",
         "fileExtension",
         "name",
         "preview",
@@ -6799,6 +6809,9 @@
     "models.CreateContentResponse": {
       "properties": {
         "channelId": {
+          "type": "string"
+        },
+        "contentType": {
           "type": "string"
         },
         "createdTime": {
@@ -7220,6 +7233,9 @@
     },
     "models.ScreenshotResponse": {
       "properties": {
+        "contentType": {
+          "type": "string"
+        },
         "description": {
           "type": "string"
         },
@@ -7296,14 +7312,26 @@
     },
     "models.createScreenshotRequestItem": {
       "properties": {
+        "contentType": {
+          "type": "string"
+        },
         "description": {
           "type": "string"
         },
         "fileExtension": {
+          "enum": [
+            "pjp",
+            "jpg",
+            "jpeg",
+            "jfif",
+            "bmp",
+            "png"
+          ],
           "type": "string"
         }
       },
       "required": [
+        "contentType",
         "description",
         "fileExtension"
       ]

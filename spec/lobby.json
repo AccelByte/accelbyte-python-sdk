@@ -3,7 +3,7 @@
   "info": {
     "description": "Justice Lobby Server",
     "title": "justice-lobby-server",
-    "version": "1.33.0"
+    "version": "staging"
   },
   "schemes": [
     "https"
@@ -14,6 +14,7 @@
       "flow": "accessCode",
       "scopes": {
         "ADMIN:NAMESPACE:*:LOBBY:CONFIG [READ]": "ADMIN:NAMESPACE:*:LOBBY:CONFIG [READ]",
+        "ADMIN:NAMESPACE:{namespace}:LOBBY:CCU [READ]": "ADMIN:NAMESPACE:{namespace}:LOBBY:CCU [READ]",
         "ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]": "ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]",
         "ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]": "ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]",
         "ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]": "ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]",
@@ -168,6 +169,18 @@
             "in": "path",
             "name": "namespace",
             "required": true,
+            "type": "string"
+          },
+          {
+            "description": "maximum number of data",
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "description": "numbers of row to skip within the result",
+            "in": "query",
+            "name": "offset",
             "type": "string"
           }
         ],
@@ -1189,6 +1202,127 @@
           }
         ],
         "summary": "admin update namespace config",
+        "tags": [
+          "config"
+        ]
+      }
+    },
+    "/lobby/v1/admin/config/namespaces/{namespace}/export": {
+      "get": {
+        "description": "\n\t\t\t\tRequired permission ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]\n\n\t\t\t\tRequired Scope: social\n\n\t\t\t\tExport lobby configuration to a json file. The file can then be imported from the /import endpoint. \n\t\t\t",
+        "operationId": "ExportConfig",
+        "parameters": [
+          {
+            "description": "namespace",
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/models.ConfigExport"
+              },
+              "type": "array"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          }
+        },
+        "security": [
+          {
+            "HasPermission": [
+              "ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]"
+            ],
+            "HasScope": [
+              "social"
+            ],
+            "authorization": []
+          }
+        ],
+        "summary": "Export lobby config to a json file.",
+        "tags": [
+          "config"
+        ]
+      }
+    },
+    "/lobby/v1/admin/config/namespaces/{namespace}/import": {
+      "post": {
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "description": "\n\t\t\t\tRequired permission ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]\n\n\t\t\t\tRequired Scope: social\n\n\t\t\t\tImport config configuration from file. The existing configuration will be replaced.\n\t\t\t\tThe json file to import can be obtained from the /export endpoint. \n\t\t\t",
+        "operationId": "ImportConfig",
+        "parameters": [
+          {
+            "description": "namespace",
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/models.ImportConfigResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          }
+        },
+        "security": [
+          {
+            "HasPermission": [
+              "ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]"
+            ],
+            "HasScope": [
+              "social"
+            ],
+            "authorization": []
+          }
+        ],
+        "summary": "Import lobby config from a json file.",
         "tags": [
           "config"
         ]
@@ -3102,6 +3236,80 @@
         "summary": "admin get user party data",
         "tags": [
           "party"
+        ]
+      }
+    },
+    "/lobby/v1/admin/player/namespaces/{namespace}/ccu": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Required permission : \u0026lt;code\u0026gt;ADMIN:NAMESPACE:{namespace}:LOBBY:CCU [READ]\u0026lt;/code\u0026gt; with scope \u0026lt;code\u0026gt;social\u0026lt;/code\u0026gt;\n\t\t\t\u0026lt;br\u0026gt;Get the number of players connected to the Lobby in the given namespace.",
+        "operationId": "adminGetLobbyCCU",
+        "parameters": [
+          {
+            "description": "namespace",
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/models.GetLobbyCcuResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/restapi.ErrorResponseBody"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/restapi.ErrorResponseBody"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/restapi.ErrorResponseBody"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/restapi.ErrorResponseBody"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/restapi.ErrorResponseBody"
+            }
+          }
+        },
+        "security": [
+          {
+            "HasPermission": [
+              "ADMIN:NAMESPACE:{namespace}:LOBBY:CCU [READ]"
+            ],
+            "HasScope": [
+              "social"
+            ],
+            "authorization": []
+          }
+        ],
+        "summary": "admin get number of players currently connected to the lobby.",
+        "tags": [
+          "player"
         ]
       }
     },
@@ -7656,6 +7864,10 @@
         "autoKickOnDisconnect": {
           "type": "boolean"
         },
+        "autoKickOnDisconnectDelay": {
+          "format": "integer",
+          "type": "integer"
+        },
         "cancelTicketOnDisconnect": {
           "type": "boolean"
         },
@@ -7704,6 +7916,80 @@
         }
       }
     },
+    "models.ConfigExport": {
+      "properties": {
+        "autoKickOnDisconnect": {
+          "type": "boolean"
+        },
+        "autoKickOnDisconnectDelay": {
+          "format": "integer",
+          "type": "integer"
+        },
+        "cancelTicketOnDisconnect": {
+          "type": "boolean"
+        },
+        "chatRateLimitBurst": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "chatRateLimitDuration": {
+          "format": "integer",
+          "type": "integer"
+        },
+        "concurrentUsersLimit": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "enableChat": {
+          "type": "boolean"
+        },
+        "entitlementCheck": {
+          "type": "boolean"
+        },
+        "entitlementItemID": {
+          "type": "string"
+        },
+        "generalRateLimitBurst": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "generalRateLimitDuration": {
+          "format": "integer",
+          "type": "integer"
+        },
+        "maxPartyMember": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "profanityFilter": {
+          "type": "boolean"
+        },
+        "readyConsentTimeout": {
+          "format": "integer",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "autoKickOnDisconnect",
+        "autoKickOnDisconnectDelay",
+        "cancelTicketOnDisconnect",
+        "chatRateLimitBurst",
+        "chatRateLimitDuration",
+        "concurrentUsersLimit",
+        "enableChat",
+        "entitlementCheck",
+        "entitlementItemID",
+        "generalRateLimitBurst",
+        "generalRateLimitDuration",
+        "maxPartyMember",
+        "namespace",
+        "profanityFilter",
+        "readyConsentTimeout"
+      ]
+    },
     "models.ConfigList": {
       "properties": {
         "configs": {
@@ -7721,6 +8007,10 @@
       "properties": {
         "autoKickOnDisconnect": {
           "type": "boolean"
+        },
+        "autoKickOnDisconnectDelay": {
+          "format": "integer",
+          "type": "integer"
         },
         "cancelTicketOnDisconnect": {
           "type": "boolean"
@@ -7854,6 +8144,17 @@
         "namespace"
       ]
     },
+    "models.GetLobbyCcuResponse": {
+      "properties": {
+        "countCurrentUsers": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "countCurrentUsers"
+      ]
+    },
     "models.GetPlayerSessionAttributeResponse": {
       "properties": {
         "key": {
@@ -7866,6 +8167,40 @@
       "required": [
         "key",
         "value"
+      ]
+    },
+    "models.ImportConfigResponse": {
+      "properties": {
+        "failedConfigs": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "ignoredConfigs": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "newConfigs": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "replacedConfigs": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "failedConfigs",
+        "ignoredConfigs",
+        "newConfigs",
+        "replacedConfigs"
       ]
     },
     "models.ListBlockedPlayerRequest": {
@@ -8008,6 +8343,21 @@
       "required": [
         "apiKey",
         "namespace"
+      ]
+    },
+    "response.Error": {
+      "properties": {
+        "errorCode": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "errorMessage": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "errorCode",
+        "errorMessage"
       ]
     },
     "restapi.ErrorResponseBody": {

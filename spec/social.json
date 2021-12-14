@@ -8,7 +8,7 @@
     },
     "description": "Justice Social Service",
     "title": "justice-social-service",
-    "version": "1.21.0"
+    "version": "1.22.0"
   },
   "schemes": [
     "https"
@@ -592,7 +592,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Slot data",
+            "description": "Successful operation",
             "schema": {
               "format": "binary",
               "type": "string"
@@ -1418,7 +1418,7 @@
         ],
         "responses": {
           "200": {
-            "description": "suscessfull operation",
+            "description": "Successful operation",
             "schema": {
               "format": "binary",
               "type": "string"

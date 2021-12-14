@@ -3,7 +3,7 @@
   "info": {
     "description": "Justice DSM Controller Service",
     "title": "justice-dsm-controller-service",
-    "version": "2.8.0"
+    "version": "2.10.0"
   },
   "schemes": [
     "https"
@@ -21,6 +21,7 @@
         "ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]": "ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]",
         "ADMIN:NAMESPACE:{namespace}:DSM:SESSION [DELETE]": "ADMIN:NAMESPACE:{namespace}:DSM:SESSION [DELETE]",
         "ADMIN:NAMESPACE:{namespace}:DSM:SESSION [READ]": "ADMIN:NAMESPACE:{namespace}:DSM:SESSION [READ]",
+        "NAMESPACE:{namespace}:DSM:CONFIG [READ]": "NAMESPACE:{namespace}:DSM:CONFIG [READ]",
         "NAMESPACE:{namespace}:DSM:SERVER [UPDATE]": "NAMESPACE:{namespace}:DSM:SERVER [UPDATE]",
         "NAMESPACE:{namespace}:DSM:SESSION [CREATE]": "NAMESPACE:{namespace}:DSM:SESSION [CREATE]",
         "NAMESPACE:{namespace}:DSM:SESSION [READ]": "NAMESPACE:{namespace}:DSM:SESSION [READ]",
@@ -583,6 +584,12 @@
           },
           "401": {
             "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
+          "409": {
+            "description": "Conflict",
             "schema": {
               "$ref": "#/definitions/response.Error"
             }
@@ -3747,6 +3754,75 @@
         "summary": "import config for a namespace",
         "tags": [
           "Config"
+        ]
+      }
+    },
+    "/dsmcontroller/namespaces/{namespace}/images/versions/{version}": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Required permission: NAMESPACE:{namespace}:DSM:CONFIG [READ]\n\nRequired scope: social\n\nThis endpoint get specific version of dedicated servers images.",
+        "operationId": "ImageDetailClient",
+        "parameters": [
+          {
+            "description": "namespace of the game",
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "version of the image",
+            "in": "path",
+            "name": "version",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "schema": {
+              "$ref": "#/definitions/models.GetImageDetailResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
+          "404": {
+            "description": "image version not found",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          }
+        },
+        "security": [
+          {
+            "HasPermission": [
+              "NAMESPACE:{namespace}:DSM:CONFIG [READ]"
+            ],
+            "HasScope": [
+              "social"
+            ],
+            "authorization": []
+          }
+        ],
+        "summary": "DS Image Detail Client",
+        "tags": [
+          "Image Config"
         ]
       }
     },

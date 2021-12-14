@@ -8,7 +8,7 @@
     },
     "description": "Justice Basic Service",
     "title": "justice-basic-service",
-    "version": "1.26.0"
+    "version": "1.28.0"
   },
   "schemes": [
     "https"
@@ -31,10 +31,10 @@
       "name": "Namespace"
     },
     {
-      "name": "Anonymization"
+      "name": "UserProfile"
     },
     {
-      "name": "UserProfile"
+      "name": "Anonymization"
     }
   ],
   "securityDefinitions": {
@@ -55,6 +55,7 @@
         "ADMIN:NAMESPACE:{namespace}:NAMESPACE [DELETE]": "ADMIN:NAMESPACE:{namespace}:NAMESPACE [DELETE]",
         "ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]": "ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]",
         "ADMIN:NAMESPACE:{namespace}:NAMESPACE [UPDATE]": "ADMIN:NAMESPACE:{namespace}:NAMESPACE [UPDATE]",
+        "ADMIN:NAMESPACE:{namespace}:PROFILE []": "ADMIN:NAMESPACE:{namespace}:PROFILE []",
         "ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]": "ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]",
         "ADMIN:NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD [CREATE]": "ADMIN:NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD [CREATE]",
         "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [DELETE]": "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [DELETE]",
@@ -1054,7 +1055,7 @@
             "type": "string"
           },
           {
-            "description": "one of the these types: jpeg, jpg, png, bmp, gif, mp3, bin",
+            "description": "one of the these types: jpeg, jpg, png, bmp, gif, mp3, bin, webp",
             "in": "query",
             "name": "fileType",
             "required": true,
@@ -1589,6 +1590,67 @@
         }
       }
     },
+    "/v1/admin/namespaces/{namespace}/profiles/public": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Admin get user public profile by ids.\u0026lt;br\u0026gt;Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Required permission\u0026lt;/i\u0026gt;: resource=\u0026lt;b\u0026gt;\u0026#34;ADMIN:NAMESPACE:{namespace}:PROFILE\u0026#34;\u0026lt;/b\u0026gt;, action=2 \u0026lt;b\u0026gt;(GET)\u0026lt;/b\u0026gt;\u0026lt;/li\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Action code\u0026lt;/i\u0026gt;: 11405\u0026lt;/li\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: user public profiles\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
+        "operationId": "adminGetUserProfilePublicInfoByIds",
+        "parameters": [
+          {
+            "description": "namespace, only accept alphabet and numeric",
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/UserProfileBulkRequest"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/UserProfilePublicInfo"
+              },
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20002\u003c/td\u003e\u003ctd\u003evalidation error\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorEntity"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          },
+          {
+            "HasPermission": [
+              "ADMIN:NAMESPACE:{namespace}:PROFILE []"
+            ],
+            "authorization": []
+          }
+        ],
+        "summary": "Admin get user profile public info by ids",
+        "tags": [
+          "UserProfile"
+        ]
+      }
+    },
     "/v1/admin/namespaces/{namespace}/publisher": {
       "get": {
         "consumes": [
@@ -1837,7 +1899,7 @@
             "type": "string"
           },
           {
-            "description": "one of the these types: jpeg, jpg, png, bmp, gif, mp3, bin",
+            "description": "one of the these types: jpeg, jpg, png, bmp, gif, mp3, bin, webp",
             "in": "query",
             "name": "fileType",
             "required": true,
@@ -2649,7 +2711,7 @@
             "type": "string"
           },
           {
-            "description": "one of the these types: jpeg, jpg, png, bmp, gif, mp3, bin",
+            "description": "one of the these types: jpeg, jpg, png, bmp, gif, mp3, bin, webp",
             "in": "query",
             "name": "fileType",
             "required": true,
@@ -3416,7 +3478,7 @@
             "type": "string"
           },
           {
-            "description": "one of the these types: jpeg, jpg, png, bmp, gif, mp3, bin",
+            "description": "one of the these types: jpeg, jpg, png, bmp, gif, mp3, bin, webp",
             "in": "query",
             "name": "fileType",
             "required": true,
@@ -4480,6 +4542,18 @@
         "zipCode": {
           "description": "zip code",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "UserProfileBulkRequest": {
+      "properties": {
+        "userIds": {
+          "description": "User IDs, list of User ID with limit max to 20 User ID",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         }
       },
       "type": "object"
