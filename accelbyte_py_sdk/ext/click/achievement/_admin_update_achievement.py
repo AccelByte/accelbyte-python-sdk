@@ -1,4 +1,4 @@
-# justice-achievement-service (2.6.0)
+# justice-achievement-service ()
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations

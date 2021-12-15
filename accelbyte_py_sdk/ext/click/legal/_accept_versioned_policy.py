@@ -1,4 +1,4 @@
-# justice-legal-service (1.14.0)
+# justice-legal-service (1.15.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations

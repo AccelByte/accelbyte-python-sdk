@@ -1,4 +1,4 @@
-# Justice Matchmaking Service (2.10.0)
+# Justice Matchmaking Service (2.12.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations

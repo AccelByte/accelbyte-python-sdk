@@ -154,6 +154,7 @@ from ._admin_add_user_permissions_v3 import admin_add_user_permissions_v3
 from ._admin_delete_user_permission_bulk_v3 import admin_delete_user_permission_bulk_v3
 from ._admin_delete_user_permission_v3 import admin_delete_user_permission_v3
 from ._admin_get_user_platform_accounts_v3 import admin_get_user_platform_accounts_v3
+from ._admin_get_list_justice_platform_accounts import admin_get_list_justice_platform_accounts
 from ._admin_create_justice_user import admin_create_justice_user
 from ._admin_link_platform_account import admin_link_platform_account
 from ._admin_platform_unlink_v3 import admin_platform_unlink_v3
@@ -186,6 +187,7 @@ from ._admin_get_my_user_v3 import admin_get_my_user_v3
 from ._user_authentication_v3 import user_authentication_v3
 from ._get_country_location_v3 import get_country_location_v3
 from ._logout import logout
+from ._admin_retrieve_user_third_party_platform_token_v3 import admin_retrieve_user_third_party_platform_token_v3
 from ._revoke_user_v3 import revoke_user_v3
 from ._authorize_v3 import authorize_v3
 from ._token_introspection_v3 import token_introspection_v3
@@ -203,11 +205,12 @@ from ._public_get_user_by_platform_user_idv3 import public_get_user_by_platform_
 from ._public_get_async_status import public_get_async_status
 from ._public_search_user_v3 import public_search_user_v3
 from ._public_create_user_v3 import public_create_user_v3
+from ._public_bulk_get_users import public_bulk_get_users
 from ._public_forgot_password_v3 import public_forgot_password_v3
 from ._get_admin_invitation_v3 import get_admin_invitation_v3
 from ._create_user_from_invitation_v3 import create_user_from_invitation_v3
-from ._public_update_user_v3 import public_update_user_v3
 from ._update_user_v3 import update_user_v3
+from ._public_update_user_v3 import public_update_user_v3
 from ._public_send_verification_code_v3 import public_send_verification_code_v3
 from ._public_user_verification_v3 import public_user_verification_v3
 from ._public_upgrade_headless_account_v3 import public_upgrade_headless_account_v3
@@ -249,6 +252,7 @@ from ._admin_list_assigned_users_v4 import admin_list_assigned_users_v4
 from ._admin_assign_user_to_role_v4 import admin_assign_user_to_role_v4
 from ._admin_revoke_user_from_role_v4 import admin_revoke_user_from_role_v4
 from ._admin_update_my_user_v4 import admin_update_my_user_v4
+from ._public_create_test_user_v4 import public_create_test_user_v4
 from ._public_create_user_v4 import public_create_user_v4
 from ._create_user_from_invitation_v4 import create_user_from_invitation_v4
 from ._public_update_user_v4 import public_update_user_v4
@@ -414,6 +418,7 @@ commands = [
     admin_delete_user_permission_bulk_v3,
     admin_delete_user_permission_v3,
     admin_get_user_platform_accounts_v3,
+    admin_get_list_justice_platform_accounts,
     admin_create_justice_user,
     admin_link_platform_account,
     admin_platform_unlink_v3,
@@ -446,6 +451,7 @@ commands = [
     user_authentication_v3,
     get_country_location_v3,
     logout,
+    admin_retrieve_user_third_party_platform_token_v3,
     revoke_user_v3,
     authorize_v3,
     token_introspection_v3,
@@ -463,11 +469,12 @@ commands = [
     public_get_async_status,
     public_search_user_v3,
     public_create_user_v3,
+    public_bulk_get_users,
     public_forgot_password_v3,
     get_admin_invitation_v3,
     create_user_from_invitation_v3,
-    public_update_user_v3,
     update_user_v3,
+    public_update_user_v3,
     public_send_verification_code_v3,
     public_user_verification_v3,
     public_upgrade_headless_account_v3,
@@ -509,6 +516,7 @@ commands = [
     admin_assign_user_to_role_v4,
     admin_revoke_user_from_role_v4,
     admin_update_my_user_v4,
+    public_create_test_user_v4,
     public_create_user_v4,
     create_user_from_invitation_v4,
     public_update_user_v4,

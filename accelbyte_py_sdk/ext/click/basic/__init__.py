@@ -20,6 +20,7 @@ from ._update_country_group import update_country_group
 from ._delete_country_group import delete_country_group
 from ._get_languages import get_languages
 from ._get_time_zones import get_time_zones
+from ._admin_get_user_profile_public_info_by_ids import admin_get_user_profile_public_info_by_ids
 from ._get_namespace_publisher import get_namespace_publisher
 from ._change_namespace_status import change_namespace_status
 from ._anonymize_user_profile import anonymize_user_profile
@@ -79,6 +80,7 @@ commands = [
     delete_country_group,
     get_languages,
     get_time_zones,
+    admin_get_user_profile_public_info_by_ids,
     get_namespace_publisher,
     change_namespace_status,
     anonymize_user_profile,

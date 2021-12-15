@@ -111,6 +111,7 @@ from ._import_rewards import import_rewards
 from ._get_reward import get_reward
 from ._update_reward import update_reward
 from ._delete_reward import delete_reward
+from ._check_event_condition import check_event_condition
 from ._list_stores import list_stores
 from ._create_store import create_store
 from ._import_store import import_store
@@ -424,6 +425,7 @@ commands = [
     get_reward,
     update_reward,
     delete_reward,
+    check_event_condition,
     list_stores,
     create_store,
     import_store,

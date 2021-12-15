@@ -13,6 +13,8 @@ from ._admin_chat_history import admin_chat_history
 from ._admin_get_all_config_v1 import admin_get_all_config_v1
 from ._admin_get_config_v1 import admin_get_config_v1
 from ._admin_update_config_v1 import admin_update_config_v1
+from ._export_config import export_config
+from ._import_config import import_config
 from ._get_list_of_friends import get_list_of_friends
 from ._send_multiple_users_freeform_notification_v1_admin import send_multiple_users_freeform_notification_v1_admin
 from ._send_users_freeform_notification_v1_admin import send_users_freeform_notification_v1_admin
@@ -37,6 +39,7 @@ from ._send_specific_user_templated_notification_v1_admin import send_specific_u
 from ._admin_get_party_data_v1 import admin_get_party_data_v1
 from ._admin_update_party_attributes_v1 import admin_update_party_attributes_v1
 from ._admin_get_user_party_v1 import admin_get_user_party_v1
+from ._admin_get_lobby_ccu import admin_get_lobby_ccu
 from ._admin_get_all_player_session_attribute import admin_get_all_player_session_attribute
 from ._admin_set_player_session_attribute import admin_set_player_session_attribute
 from ._admin_get_player_session_attribute import admin_get_player_session_attribute
@@ -102,6 +105,8 @@ commands = [
     admin_get_all_config_v1,
     admin_get_config_v1,
     admin_update_config_v1,
+    export_config,
+    import_config,
     get_list_of_friends,
     send_multiple_users_freeform_notification_v1_admin,
     send_users_freeform_notification_v1_admin,
@@ -126,6 +131,7 @@ commands = [
     admin_get_party_data_v1,
     admin_update_party_attributes_v1,
     admin_get_user_party_v1,
+    admin_get_lobby_ccu,
     admin_get_all_player_session_attribute,
     admin_set_player_session_attribute,
     admin_get_player_session_attribute,

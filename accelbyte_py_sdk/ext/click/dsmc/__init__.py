@@ -48,6 +48,7 @@ from ._count_session import count_session
 from ._delete_session import delete_session
 from ._export_config_v1 import export_config_v1
 from ._import_config_v1 import import_config_v1
+from ._image_detail_client import image_detail_client
 from ._deregister_local_server import deregister_local_server
 from ._register_local_server import register_local_server
 from ._register_server import register_server
@@ -113,6 +114,7 @@ commands = [
     delete_session,
     export_config_v1,
     import_config_v1,
+    image_detail_client,
     deregister_local_server,
     register_local_server,
     register_server,

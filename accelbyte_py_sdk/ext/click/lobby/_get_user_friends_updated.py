@@ -1,4 +1,4 @@
-# justice-lobby-server (1.33.0)
+# justice-lobby-server (staging)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,10 +30,14 @@ from ....api.lobby.models import RestapiErrorResponseV1
 
 
 @click.command()
+@click.option("--limit", "limit", type=str)
+@click.option("--offset", "offset", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def get_user_friends_updated(
+        limit: Optional[str] = None,
+        offset: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -43,6 +47,8 @@ def get_user_friends_updated(
         return
     login_as_internal(login_as)
     _, error = get_user_friends_updated_internal(
+        limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     if error:
