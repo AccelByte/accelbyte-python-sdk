@@ -22,6 +22,7 @@ from ....core import same_doc_as
 
 from ..models import ErrorEntity
 from ..models import UserProfileAdmin
+from ..models import UserProfileBulkRequest
 from ..models import UserProfileCreate
 from ..models import UserProfileInfo
 from ..models import UserProfilePrivateCreate
@@ -34,6 +35,7 @@ from ..models import UserZipCode
 from ..models import UserZipCodeUpdate
 from ..models import ValidationErrorEntity
 
+from ..operations.user_profile import AdminGetUserProfilePublicInfoByIds
 from ..operations.user_profile import CreateMyProfile
 from ..operations.user_profile import DeleteUserProfile
 from ..operations.user_profile import GetCustomAttributesInfo
@@ -55,6 +57,32 @@ from ..operations.user_profile import UpdateMyZipCode
 from ..operations.user_profile import UpdatePrivateCustomAttributesPartially
 from ..operations.user_profile import UpdateUserProfile
 from ..operations.user_profile import UpdateUserProfileStatus
+
+
+@same_doc_as(AdminGetUserProfilePublicInfoByIds)
+def admin_get_user_profile_public_info_by_ids(body: Optional[UserProfileBulkRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetUserProfilePublicInfoByIds.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminGetUserProfilePublicInfoByIds)
+async def admin_get_user_profile_public_info_by_ids_async(body: Optional[UserProfileBulkRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetUserProfilePublicInfoByIds.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(CreateMyProfile)

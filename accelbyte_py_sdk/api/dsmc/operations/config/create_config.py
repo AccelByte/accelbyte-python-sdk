@@ -1,4 +1,4 @@
-# justice-dsm-controller-service (2.8.0)
+# justice-dsm-controller-service (2.10.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -72,6 +72,8 @@ class CreateConfig(Operation):
         400: Bad Request - ResponseError (malformed request)
 
         401: Unauthorized - ResponseError (Unauthorized)
+
+        409: Conflict - ResponseError (Conflict)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
@@ -206,6 +208,8 @@ class CreateConfig(Operation):
 
         401: Unauthorized - ResponseError (Unauthorized)
 
+        409: Conflict - ResponseError (Conflict)
+
         500: Internal Server Error - ResponseError (Internal Server Error)
         """
         if code == 201:
@@ -213,6 +217,8 @@ class CreateConfig(Operation):
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 401:
+            return None, ResponseError.create_from_dict(content)
+        if code == 409:
             return None, ResponseError.create_from_dict(content)
         if code == 500:
             return None, ResponseError.create_from_dict(content)

@@ -1,4 +1,4 @@
-# justice-platform-service (3.37.1)
+# justice-platform-service (3.39.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -31,6 +31,8 @@ class IAPOrderInfo(Model):
     """IAP order info (IAPOrderInfo)
 
     Properties:
+        created_at: (createdAt) REQUIRED str
+
         iap_order_no: (iapOrderNo) REQUIRED str
 
         namespace: (namespace) REQUIRED str
@@ -38,6 +40,8 @@ class IAPOrderInfo(Model):
         status: (status) REQUIRED str
 
         type_: (type) REQUIRED str
+
+        updated_at: (updatedAt) REQUIRED str
 
         user_id: (userId) REQUIRED str
 
@@ -57,6 +61,8 @@ class IAPOrderInfo(Model):
 
         region: (region) OPTIONAL str
 
+        retry_count: (retryCount) OPTIONAL int
+
         sandbox: (sandbox) OPTIONAL bool
 
         status_reason: (statusReason) OPTIONAL str
@@ -66,10 +72,12 @@ class IAPOrderInfo(Model):
 
     # region fields
 
+    created_at: str                                                                                # REQUIRED
     iap_order_no: str                                                                              # REQUIRED
     namespace: str                                                                                 # REQUIRED
     status: str                                                                                    # REQUIRED
     type_: str                                                                                     # REQUIRED
+    updated_at: str                                                                                # REQUIRED
     user_id: str                                                                                   # REQUIRED
     credits: List[CreditSummary]                                                                   # OPTIONAL
     entitlements: List[EntitlementSummary]                                                         # OPTIONAL
@@ -79,6 +87,7 @@ class IAPOrderInfo(Model):
     quantity: int                                                                                  # OPTIONAL
     receipt_data: str                                                                              # OPTIONAL
     region: str                                                                                    # OPTIONAL
+    retry_count: int                                                                               # OPTIONAL
     sandbox: bool                                                                                  # OPTIONAL
     status_reason: str                                                                             # OPTIONAL
     transaction_id: str                                                                            # OPTIONAL
@@ -86,6 +95,10 @@ class IAPOrderInfo(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_created_at(self, value: str) -> IAPOrderInfo:
+        self.created_at = value
+        return self
 
     def with_iap_order_no(self, value: str) -> IAPOrderInfo:
         self.iap_order_no = value
@@ -101,6 +114,10 @@ class IAPOrderInfo(Model):
 
     def with_type(self, value: str) -> IAPOrderInfo:
         self.type_ = value
+        return self
+
+    def with_updated_at(self, value: str) -> IAPOrderInfo:
+        self.updated_at = value
         return self
 
     def with_user_id(self, value: str) -> IAPOrderInfo:
@@ -139,6 +156,10 @@ class IAPOrderInfo(Model):
         self.region = value
         return self
 
+    def with_retry_count(self, value: int) -> IAPOrderInfo:
+        self.retry_count = value
+        return self
+
     def with_sandbox(self, value: bool) -> IAPOrderInfo:
         self.sandbox = value
         return self
@@ -157,6 +178,10 @@ class IAPOrderInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "created_at"):
+            result["createdAt"] = str(self.created_at)
+        elif include_empty:
+            result["createdAt"] = str()
         if hasattr(self, "iap_order_no"):
             result["iapOrderNo"] = str(self.iap_order_no)
         elif include_empty:
@@ -173,6 +198,10 @@ class IAPOrderInfo(Model):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = str()
+        if hasattr(self, "updated_at"):
+            result["updatedAt"] = str(self.updated_at)
+        elif include_empty:
+            result["updatedAt"] = str()
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
@@ -209,6 +238,10 @@ class IAPOrderInfo(Model):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = str()
+        if hasattr(self, "retry_count"):
+            result["retryCount"] = int(self.retry_count)
+        elif include_empty:
+            result["retryCount"] = int()
         if hasattr(self, "sandbox"):
             result["sandbox"] = bool(self.sandbox)
         elif include_empty:
@@ -230,10 +263,12 @@ class IAPOrderInfo(Model):
     @classmethod
     def create(
         cls,
+        created_at: str,
         iap_order_no: str,
         namespace: str,
         status: str,
         type_: str,
+        updated_at: str,
         user_id: str,
         credits: Optional[List[CreditSummary]] = None,
         entitlements: Optional[List[EntitlementSummary]] = None,
@@ -243,15 +278,18 @@ class IAPOrderInfo(Model):
         quantity: Optional[int] = None,
         receipt_data: Optional[str] = None,
         region: Optional[str] = None,
+        retry_count: Optional[int] = None,
         sandbox: Optional[bool] = None,
         status_reason: Optional[str] = None,
         transaction_id: Optional[str] = None,
     ) -> IAPOrderInfo:
         instance = cls()
+        instance.created_at = created_at
         instance.iap_order_no = iap_order_no
         instance.namespace = namespace
         instance.status = status
         instance.type_ = type_
+        instance.updated_at = updated_at
         instance.user_id = user_id
         if credits is not None:
             instance.credits = credits
@@ -269,6 +307,8 @@ class IAPOrderInfo(Model):
             instance.receipt_data = receipt_data
         if region is not None:
             instance.region = region
+        if retry_count is not None:
+            instance.retry_count = retry_count
         if sandbox is not None:
             instance.sandbox = sandbox
         if status_reason is not None:
@@ -282,6 +322,10 @@ class IAPOrderInfo(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "createdAt" in dict_ and dict_["createdAt"] is not None:
+            instance.created_at = str(dict_["createdAt"])
+        elif include_empty:
+            instance.created_at = str()
         if "iapOrderNo" in dict_ and dict_["iapOrderNo"] is not None:
             instance.iap_order_no = str(dict_["iapOrderNo"])
         elif include_empty:
@@ -298,6 +342,10 @@ class IAPOrderInfo(Model):
             instance.type_ = str(dict_["type"])
         elif include_empty:
             instance.type_ = str()
+        if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
+            instance.updated_at = str(dict_["updatedAt"])
+        elif include_empty:
+            instance.updated_at = str()
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
@@ -334,6 +382,10 @@ class IAPOrderInfo(Model):
             instance.region = str(dict_["region"])
         elif include_empty:
             instance.region = str()
+        if "retryCount" in dict_ and dict_["retryCount"] is not None:
+            instance.retry_count = int(dict_["retryCount"])
+        elif include_empty:
+            instance.retry_count = int()
         if "sandbox" in dict_ and dict_["sandbox"] is not None:
             instance.sandbox = bool(dict_["sandbox"])
         elif include_empty:
@@ -351,10 +403,12 @@ class IAPOrderInfo(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "createdAt": "created_at",
             "iapOrderNo": "iap_order_no",
             "namespace": "namespace",
             "status": "status",
             "type": "type_",
+            "updatedAt": "updated_at",
             "userId": "user_id",
             "credits": "credits",
             "entitlements": "entitlements",
@@ -364,6 +418,7 @@ class IAPOrderInfo(Model):
             "quantity": "quantity",
             "receiptData": "receipt_data",
             "region": "region",
+            "retryCount": "retry_count",
             "sandbox": "sandbox",
             "statusReason": "status_reason",
             "transactionId": "transaction_id",

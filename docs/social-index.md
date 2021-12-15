@@ -1,4 +1,4 @@
-# justice-social-service Index (1.21.0)
+# justice-social-service Index (1.22.0)
 
 
 ## Operations

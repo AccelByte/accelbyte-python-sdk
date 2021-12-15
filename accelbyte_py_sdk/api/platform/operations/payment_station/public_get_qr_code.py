@@ -1,4 +1,4 @@
-# justice-platform-service (3.37.1)
+# justice-platform-service (3.39.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -50,7 +50,7 @@ class PublicGetQRCode(Operation):
         code: (code) REQUIRED str in query
 
     Responses:
-        200: OK - Any (successful operation)
+        200: OK - Any (Successful operation)
     """
 
     # region fields
@@ -181,7 +181,7 @@ class PublicGetQRCode(Operation):
     def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, Any], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - Any (successful operation)
+        200: OK - Any (Successful operation)
         """
         if code == 200:
             return Any(content), None

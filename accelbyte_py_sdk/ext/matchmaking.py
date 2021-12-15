@@ -1,4 +1,4 @@
-# Justice Matchmaking Service (2.10.0)
+# Justice Matchmaking Service (2.12.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -245,6 +245,7 @@ def create_models_matching_ally_example() -> ModelsMatchingAlly:
 
 def create_models_matching_party_example() -> ModelsMatchingParty:
     instance = ModelsMatchingParty()
+    instance.first_ticket_created_at = randomize("int", min_val=1, max_val=1000)
     instance.party_attributes = {randomize(): randomize()}
     instance.party_id = randomize("uid")
     instance.party_members = [create_models_party_member_example()]
@@ -337,6 +338,7 @@ def create_models_rule_set_example() -> ModelsRuleSet:
 def create_models_rule_set_v1_example() -> ModelsRuleSetV1:
     instance = ModelsRuleSetV1()
     instance.alliance = create_models_alliance_rule_v1_example()
+    instance.alliance_flexing_rule = [create_models_alliance_flexing_rule_example()]
     instance.flexing_rules = [create_models_flexing_rule_example()]
     instance.match_options = create_models_match_option_rule_example()
     instance.matching_rules = [create_models_matching_rule_example()]
@@ -394,6 +396,7 @@ def create_models_update_player_playtime_weight_response_example() -> ModelsUpda
 def create_models_update_ruleset_example() -> ModelsUpdateRuleset:
     instance = ModelsUpdateRuleset()
     instance.alliance = create_models_update_alliance_rule_example()
+    instance.alliance_flexing_rule = [create_models_alliance_flexing_rule_example()]
     instance.flexing_rules = [create_models_flexing_rule_example()]
     instance.match_options = create_models_match_option_rule_example()
     instance.matching_rules = [create_models_matching_rule_example()]

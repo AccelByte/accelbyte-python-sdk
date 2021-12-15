@@ -1,4 +1,4 @@
-# justice-ugc-service (1.9.0)
+# justice-ugc-service (1.10.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,7 +33,7 @@ class AdminUpdateScreenshots(Operation):
     """Update screenshot of content (AdminUpdateScreenshots)
 
     Required permission <b>ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT
-    [UPDATE]</b>.n All request body are required.
+    [UPDATE]</b>.n Maximum description length: 1024.
 
 
     Properties:

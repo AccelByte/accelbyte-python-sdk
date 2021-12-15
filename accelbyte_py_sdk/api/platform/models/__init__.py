@@ -1,6 +1,6 @@
 """Auto-generated package that contains models used by the justice-platform-service."""
 
-__version__ = "3.37.1"
+__version__ = "3.39.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -37,6 +37,7 @@ from .code_create import CodeCreate
 from .code_create_result import CodeCreateResult
 from .code_info import CodeInfo
 from .code_info_paging_sliced_result import CodeInfoPagingSlicedResult
+from .condition_match_result import ConditionMatchResult
 from .credit_request import CreditRequest
 from .credit_summary import CreditSummary
 from .currency_config import CurrencyConfig
@@ -60,6 +61,7 @@ from .epic_games_iap_config_request import EpicGamesIAPConfigRequest
 from .epic_games_reconcile_request import EpicGamesReconcileRequest
 from .epic_games_reconcile_result import EpicGamesReconcileResult
 from .error_entity import ErrorEntity
+from .event_payload import EventPayload
 from .external_payment_order_create import ExternalPaymentOrderCreate
 from .field_validation_error import FieldValidationError
 from .fulfill_code_request import FulfillCodeRequest

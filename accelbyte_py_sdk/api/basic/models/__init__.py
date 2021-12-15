@@ -1,6 +1,6 @@
 """Auto-generated package that contains models used by the justice-basic-service."""
 
-__version__ = "1.26.0"
+__version__ = "1.28.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -29,6 +29,7 @@ from .retrieve_time_response import RetrieveTimeResponse
 from .update_country_group_request import UpdateCountryGroupRequest
 from .user_ban_request import UserBanRequest
 from .user_profile_admin import UserProfileAdmin
+from .user_profile_bulk_request import UserProfileBulkRequest
 from .user_profile_create import UserProfileCreate
 from .user_profile_info import UserProfileInfo
 from .user_profile_private_create import UserProfilePrivateCreate

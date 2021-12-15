@@ -1,4 +1,4 @@
-# justice-lobby-server (1.33.0)
+# justice-lobby-server (staging)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -46,6 +46,10 @@ class GetUserFriendsUpdated(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        limit: (limit) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL str in query
+
     Responses:
         200: OK - List[ModelGetUserFriendsResponse] (OK)
 
@@ -70,6 +74,8 @@ class GetUserFriendsUpdated(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
+    limit: str                                                                                     # OPTIONAL in [query]
+    offset: str                                                                                    # OPTIONAL in [query]
 
     # endregion fields
 
@@ -108,6 +114,7 @@ class GetUserFriendsUpdated(Operation):
             url=self.url,
             base_url=base_url,
             path_params=self.get_path_params(),
+            query_params=self.get_query_params(),
         )
 
     # noinspection PyMethodMayBeStatic
@@ -123,12 +130,21 @@ class GetUserFriendsUpdated(Operation):
     def get_all_params(self) -> dict:
         return {
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_path_params(self) -> dict:
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "limit"):
+            result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         return result
 
     # endregion get_x_params methods
@@ -148,6 +164,14 @@ class GetUserFriendsUpdated(Operation):
         self.namespace = value
         return self
 
+    def with_limit(self, value: str) -> GetUserFriendsUpdated:
+        self.limit = value
+        return self
+
+    def with_offset(self, value: str) -> GetUserFriendsUpdated:
+        self.offset = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -158,6 +182,14 @@ class GetUserFriendsUpdated(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
+        if hasattr(self, "limit") and self.limit:
+            result["limit"] = str(self.limit)
+        elif include_empty:
+            result["limit"] = str()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = str(self.offset)
+        elif include_empty:
+            result["offset"] = str()
         return result
 
     # endregion to methods
@@ -205,9 +237,15 @@ class GetUserFriendsUpdated(Operation):
     def create(
         cls,
         namespace: str,
+        limit: Optional[str] = None,
+        offset: Optional[str] = None,
     ) -> GetUserFriendsUpdated:
         instance = cls()
         instance.namespace = namespace
+        if limit is not None:
+            instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
         return instance
 
     @classmethod
@@ -217,12 +255,22 @@ class GetUserFriendsUpdated(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
+        if "limit" in dict_ and dict_["limit"] is not None:
+            instance.limit = str(dict_["limit"])
+        elif include_empty:
+            instance.limit = str()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = str(dict_["offset"])
+        elif include_empty:
+            instance.offset = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "limit": "limit",
+            "offset": "offset",
         }
 
     # endregion static methods

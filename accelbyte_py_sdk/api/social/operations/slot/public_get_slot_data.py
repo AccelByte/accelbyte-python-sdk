@@ -1,4 +1,4 @@
-# justice-social-service (1.21.0)
+# justice-social-service (1.22.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -55,7 +55,7 @@ class PublicGetSlotData(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - Any (suscessfull operation)
+        200: OK - Any (Successful operation)
 
         404: Not Found - ErrorEntity (12141: Slot [{slotId}] not found in namespace [{namespace}])
     """
@@ -196,7 +196,7 @@ class PublicGetSlotData(Operation):
     def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, Any], Union[None, ErrorEntity]]:
         """Parse the given response.
 
-        200: OK - Any (suscessfull operation)
+        200: OK - Any (Successful operation)
 
         404: Not Found - ErrorEntity (12141: Slot [{slotId}] not found in namespace [{namespace}])
         """

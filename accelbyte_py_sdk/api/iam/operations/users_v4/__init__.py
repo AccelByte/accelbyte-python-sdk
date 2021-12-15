@@ -8,6 +8,7 @@ from .admin_update_user_email_address_v4 import AdminUpdateUserEmailAddressV4
 from .admin_update_user_role_v4 import AdminUpdateUserRoleV4
 from .admin_update_user_v4 import AdminUpdateUserV4
 from .create_user_from_invitation_v4 import CreateUserFromInvitationV4
+from .public_create_test_user_v4 import PublicCreateTestUserV4
 from .public_create_user_v4 import PublicCreateUserV4
 from .public_update_user_email_address_v4 import PublicUpdateUserEmailAddressV4
 from .public_update_user_v4 import PublicUpdateUserV4

@@ -1,4 +1,4 @@
-# justice-basic-service (1.26.0)
+# justice-basic-service (1.28.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -43,6 +43,7 @@ from ..api.basic.models import RetrieveTimeResponse
 from ..api.basic.models import UpdateCountryGroupRequest
 from ..api.basic.models import UserBanRequest
 from ..api.basic.models import UserProfileAdmin
+from ..api.basic.models import UserProfileBulkRequest
 from ..api.basic.models import UserProfileCreate
 from ..api.basic.models import UserProfileInfo
 from ..api.basic.models import UserProfilePrivateCreate
@@ -243,6 +244,12 @@ def create_user_profile_admin_example() -> UserProfileAdmin:
     instance.status = randomize()
     instance.time_zone = randomize()
     instance.zip_code = randomize("zip_code")
+    return instance
+
+
+def create_user_profile_bulk_request_example() -> UserProfileBulkRequest:
+    instance = UserProfileBulkRequest()
+    instance.user_ids = [randomize()]
     return instance
 
 

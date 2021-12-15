@@ -1,4 +1,4 @@
-# justice-achievement-service Index (2.6.0)
+# justice-achievement-service Index
 
 
 ## Operations

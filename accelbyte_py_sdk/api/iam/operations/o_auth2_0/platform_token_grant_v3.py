@@ -1,4 +1,4 @@
-# justice-iam-service (4.7.0)
+# justice-iam-service (4.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -55,8 +55,10 @@ class PlatformTokenGrantV3(Operation):
     authorization code returned by Discord OAuth</li>
     <li><strong>android</strong>: The device_id is the Android’s device ID</li>
     <li><strong>ios</strong>: The device_id is the iOS’s device ID.</li>
-    <li><strong>device</strong>: Every device that does’nt run Android and iOS is
-    categorized as a device. The device_id is the device’s ID.</li>
+    <li><strong>apple</strong>: The platform_token’s value is the authorization
+    code returned by Apple OAuth.(We will use this code to generate APP
+    token)</li> <li><strong>device</strong>: Every device that does’nt run Android
+    and iOS is categorized as a device. The device_id is the device’s ID.</li>
     <li><strong>justice</strong>: The platform_token’s value is the designated
     user’s access token.</li> <li><strong>epicgames</strong>: The platform_token’s
     value is an access-token obtained from Epicgames EOS Account Service.</li>

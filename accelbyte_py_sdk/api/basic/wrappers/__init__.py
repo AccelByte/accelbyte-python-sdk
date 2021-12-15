@@ -1,6 +1,6 @@
 """Auto-generated package that contains utility functions for the justice-basic-service."""
 
-__version__ = "1.26.0"
+__version__ = "1.28.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -82,6 +82,8 @@ from ._user_action import report_user_async
 from ._user_action import un_ban_users
 from ._user_action import un_ban_users_async
 
+from ._user_profile import admin_get_user_profile_public_info_by_ids
+from ._user_profile import admin_get_user_profile_public_info_by_ids_async
 from ._user_profile import create_my_profile
 from ._user_profile import create_my_profile_async
 from ._user_profile import delete_user_profile

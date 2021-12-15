@@ -1,4 +1,4 @@
-# justice-ugc-service (1.9.0)
+# justice-ugc-service (1.10.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -37,6 +37,8 @@ class ModelsScreenshotResponse(Model):
         source: (source) REQUIRED str
 
         url: (url) REQUIRED str
+
+        content_type: (contentType) OPTIONAL str
     """
 
     # region fields
@@ -46,6 +48,7 @@ class ModelsScreenshotResponse(Model):
     screenshot_id: str                                                                             # REQUIRED
     source: str                                                                                    # REQUIRED
     url: str                                                                                       # REQUIRED
+    content_type: str                                                                              # OPTIONAL
 
     # endregion fields
 
@@ -69,6 +72,10 @@ class ModelsScreenshotResponse(Model):
 
     def with_url(self, value: str) -> ModelsScreenshotResponse:
         self.url = value
+        return self
+
+    def with_content_type(self, value: str) -> ModelsScreenshotResponse:
+        self.content_type = value
         return self
 
     # endregion with_x methods
@@ -97,6 +104,10 @@ class ModelsScreenshotResponse(Model):
             result["url"] = str(self.url)
         elif include_empty:
             result["url"] = str()
+        if hasattr(self, "content_type"):
+            result["contentType"] = str(self.content_type)
+        elif include_empty:
+            result["contentType"] = str()
         return result
 
     # endregion to methods
@@ -111,6 +122,7 @@ class ModelsScreenshotResponse(Model):
         screenshot_id: str,
         source: str,
         url: str,
+        content_type: Optional[str] = None,
     ) -> ModelsScreenshotResponse:
         instance = cls()
         instance.description = description
@@ -118,6 +130,8 @@ class ModelsScreenshotResponse(Model):
         instance.screenshot_id = screenshot_id
         instance.source = source
         instance.url = url
+        if content_type is not None:
+            instance.content_type = content_type
         return instance
 
     @classmethod
@@ -145,6 +159,10 @@ class ModelsScreenshotResponse(Model):
             instance.url = str(dict_["url"])
         elif include_empty:
             instance.url = str()
+        if "contentType" in dict_ and dict_["contentType"] is not None:
+            instance.content_type = str(dict_["contentType"])
+        elif include_empty:
+            instance.content_type = str()
         return instance
 
     @staticmethod
@@ -155,6 +173,7 @@ class ModelsScreenshotResponse(Model):
             "screenshotId": "screenshot_id",
             "source": "source",
             "url": "url",
+            "contentType": "content_type",
         }
 
     # endregion static methods

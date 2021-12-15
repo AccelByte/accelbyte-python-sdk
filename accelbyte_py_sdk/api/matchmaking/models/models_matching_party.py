@@ -1,4 +1,4 @@
-# Justice Matchmaking Service (2.10.0)
+# Justice Matchmaking Service (2.12.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,6 +30,8 @@ class ModelsMatchingParty(Model):
     """Models matching party (models.MatchingParty)
 
     Properties:
+        first_ticket_created_at: (first_ticket_created_at) REQUIRED int
+
         party_attributes: (party_attributes) REQUIRED Dict[str, Any]
 
         party_id: (party_id) REQUIRED str
@@ -39,6 +41,7 @@ class ModelsMatchingParty(Model):
 
     # region fields
 
+    first_ticket_created_at: int                                                                   # REQUIRED
     party_attributes: Dict[str, Any]                                                               # REQUIRED
     party_id: str                                                                                  # REQUIRED
     party_members: List[ModelsPartyMember]                                                         # REQUIRED
@@ -46,6 +49,10 @@ class ModelsMatchingParty(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_first_ticket_created_at(self, value: int) -> ModelsMatchingParty:
+        self.first_ticket_created_at = value
+        return self
 
     def with_party_attributes(self, value: Dict[str, Any]) -> ModelsMatchingParty:
         self.party_attributes = value
@@ -65,6 +72,10 @@ class ModelsMatchingParty(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "first_ticket_created_at"):
+            result["first_ticket_created_at"] = int(self.first_ticket_created_at)
+        elif include_empty:
+            result["first_ticket_created_at"] = int()
         if hasattr(self, "party_attributes"):
             result["party_attributes"] = {str(k0): v0 for k0, v0 in self.party_attributes.items()}
         elif include_empty:
@@ -86,11 +97,13 @@ class ModelsMatchingParty(Model):
     @classmethod
     def create(
         cls,
+        first_ticket_created_at: int,
         party_attributes: Dict[str, Any],
         party_id: str,
         party_members: List[ModelsPartyMember],
     ) -> ModelsMatchingParty:
         instance = cls()
+        instance.first_ticket_created_at = first_ticket_created_at
         instance.party_attributes = party_attributes
         instance.party_id = party_id
         instance.party_members = party_members
@@ -101,6 +114,10 @@ class ModelsMatchingParty(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "first_ticket_created_at" in dict_ and dict_["first_ticket_created_at"] is not None:
+            instance.first_ticket_created_at = int(dict_["first_ticket_created_at"])
+        elif include_empty:
+            instance.first_ticket_created_at = int()
         if "party_attributes" in dict_ and dict_["party_attributes"] is not None:
             instance.party_attributes = {str(k0): v0 for k0, v0 in dict_["party_attributes"].items()}
         elif include_empty:
@@ -118,6 +135,7 @@ class ModelsMatchingParty(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "first_ticket_created_at": "first_ticket_created_at",
             "party_attributes": "party_attributes",
             "party_id": "party_id",
             "party_members": "party_members",

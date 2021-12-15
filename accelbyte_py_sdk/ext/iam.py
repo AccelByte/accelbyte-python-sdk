@@ -1,4 +1,4 @@
-# justice-iam-service (4.7.0)
+# justice-iam-service (4.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -20,6 +20,7 @@
 
 from .utils import randomize
 
+from ..api.iam.models import AccountCreateTestUserRequestV4
 from ..api.iam.models import AccountCreateUserRequestV4
 from ..api.iam.models import AccountCreateUserResponseV4
 from ..api.iam.models import AccountUpgradeHeadlessAccountRequestV4
@@ -97,6 +98,8 @@ from ..api.iam.models import ModelCreateJusticeUserResponse
 from ..api.iam.models import ModelDisableUserRequest
 from ..api.iam.models import ModelEmailUpdateRequestV4
 from ..api.iam.models import ModelForgotPasswordRequestV3
+from ..api.iam.models import ModelGameUserBaseInfo
+from ..api.iam.models import ModelGameUserIDsRequest
 from ..api.iam.models import ModelGetAdminUsersResponse
 from ..api.iam.models import ModelGetPublisherUserResponse
 from ..api.iam.models import ModelGetUserBanV3Response
@@ -108,6 +111,7 @@ from ..api.iam.models import ModelInviteUserResponseV3
 from ..api.iam.models import ModelLinkPlatformAccountRequest
 from ..api.iam.models import ModelLinkRequest
 from ..api.iam.models import ModelListAssignedUsersV4Response
+from ..api.iam.models import ModelListBulkUserGameResponse
 from ..api.iam.models import ModelListEmailAddressRequest
 from ..api.iam.models import ModelListRoleV4Response
 from ..api.iam.models import ModelListUserResponseV3
@@ -204,6 +208,21 @@ from ..api.iam.models import OauthmodelTokenResponseV3
 from ..api.iam.models import OauthmodelTokenThirdPartyResponse
 from ..api.iam.models import RestErrorResponse
 from ..api.iam.models import RestapiErrorResponse
+
+
+def create_account_create_test_user_request_v4_example() -> AccountCreateTestUserRequestV4:
+    instance = AccountCreateTestUserRequestV4()
+    instance.auth_type = randomize()
+    instance.country = randomize("country")
+    instance.date_of_birth = randomize()
+    instance.display_name = randomize("slug")
+    instance.email_address = randomize("email")
+    instance.password = randomize("password")
+    instance.password_md5_sum = randomize()
+    instance.username = randomize("slug")
+    instance.verified = randomize("bool")
+    instance.accepted_policies = [create_legal_accepted_policies_request_example()]
+    return instance
 
 
 def create_account_create_user_request_v4_example() -> AccountCreateUserRequestV4:
@@ -878,6 +897,20 @@ def create_model_forgot_password_request_v3_example() -> ModelForgotPasswordRequ
     return instance
 
 
+def create_model_game_user_base_info_example() -> ModelGameUserBaseInfo:
+    instance = ModelGameUserBaseInfo()
+    instance.avatar_url = randomize("url")
+    instance.display_name = randomize("slug")
+    instance.user_id = randomize("uid")
+    return instance
+
+
+def create_model_game_user_i_ds_request_example() -> ModelGameUserIDsRequest:
+    instance = ModelGameUserIDsRequest()
+    instance.user_ids = [randomize()]
+    return instance
+
+
 def create_model_get_admin_users_response_example() -> ModelGetAdminUsersResponse:
     instance = ModelGetAdminUsersResponse()
     instance.data = [create_model_user_response_example()]
@@ -959,6 +992,12 @@ def create_model_list_assigned_users_v4_response_example() -> ModelListAssignedU
     instance = ModelListAssignedUsersV4Response()
     instance.data = [create_model_assigned_user_v4_response_example()]
     instance.paging = create_accountcommon_pagination_v3_example()
+    return instance
+
+
+def create_model_list_bulk_user_game_response_example() -> ModelListBulkUserGameResponse:
+    instance = ModelListBulkUserGameResponse()
+    instance.data = [create_model_game_user_base_info_example()]
     return instance
 
 
@@ -1380,9 +1419,11 @@ def create_model_third_party_login_platform_credential_request_example() -> Mode
     instance.environment = randomize()
     instance.federation_metadata_url = randomize("url")
     instance.is_active = randomize("bool")
+    instance.key_id = randomize()
     instance.organization_id = randomize()
     instance.redirect_uri = randomize()
     instance.secret = randomize()
+    instance.team_id = randomize()
     return instance
 
 
@@ -1396,11 +1437,13 @@ def create_model_third_party_login_platform_credential_response_example() -> Mod
     instance.environment = randomize()
     instance.federation_metadata_url = randomize("url")
     instance.is_active = randomize("bool")
+    instance.key_id = randomize()
     instance.namespace = randomize("slug")
     instance.organization_id = randomize()
     instance.platform_id = randomize()
     instance.redirect_uri = randomize()
     instance.secret = randomize()
+    instance.team_id = randomize()
     return instance
 
 
@@ -1702,6 +1745,7 @@ def create_model_user_response_v3_example() -> ModelUserResponseV3:
     instance.user_id = randomize("uid")
     instance.new_email_address = randomize()
     instance.phone_number = randomize()
+    instance.platform_avatar_url = randomize("url")
     instance.platform_display_name = randomize()
     instance.platform_id = randomize()
     instance.platform_user_id = randomize()

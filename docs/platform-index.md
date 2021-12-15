@@ -1,4 +1,4 @@
-# justice-platform-service Index (3.37.1)
+# justice-platform-service Index (3.39.0)
 
 
 ## Operations
@@ -328,6 +328,7 @@
 ### Reward
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
+| /platform/admin/namespaces/{namespace}/rewards/{rewardId}/match | PUT | checkEventCondition | [CheckEventCondition](../accelbyte_py_sdk/api/platform/operations/reward/check_event_condition.py) | [check_event_condition](../accelbyte_py_sdk/api/platform/wrappers/_reward.py) |
 | /platform/admin/namespaces/{namespace}/rewards | POST | createReward | [CreateReward](../accelbyte_py_sdk/api/platform/operations/reward/create_reward.py) | [create_reward](../accelbyte_py_sdk/api/platform/wrappers/_reward.py) |
 | /platform/admin/namespaces/{namespace}/rewards/{rewardId} | DELETE | deleteReward | [DeleteReward](../accelbyte_py_sdk/api/platform/operations/reward/delete_reward.py) | [delete_reward](../accelbyte_py_sdk/api/platform/wrappers/_reward.py) |
 | /platform/admin/namespaces/{namespace}/rewards/export | GET | exportRewards | [ExportRewards](../accelbyte_py_sdk/api/platform/operations/reward/export_rewards.py) | [export_rewards](../accelbyte_py_sdk/api/platform/wrappers/_reward.py) |
@@ -440,6 +441,7 @@
 | CodeCreateResult | [CodeCreateResult](../accelbyte_py_sdk/api/platform/models/code_create_result.py) |
 | CodeInfo | [CodeInfo](../accelbyte_py_sdk/api/platform/models/code_info.py) |
 | CodeInfoPagingSlicedResult | [CodeInfoPagingSlicedResult](../accelbyte_py_sdk/api/platform/models/code_info_paging_sliced_result.py) |
+| ConditionMatchResult | [ConditionMatchResult](../accelbyte_py_sdk/api/platform/models/condition_match_result.py) |
 | CreditRequest | [CreditRequest](../accelbyte_py_sdk/api/platform/models/credit_request.py) |
 | CreditSummary | [CreditSummary](../accelbyte_py_sdk/api/platform/models/credit_summary.py) |
 | CurrencyConfig | [CurrencyConfig](../accelbyte_py_sdk/api/platform/models/currency_config.py) |
@@ -463,6 +465,7 @@
 | EpicGamesReconcileRequest | [EpicGamesReconcileRequest](../accelbyte_py_sdk/api/platform/models/epic_games_reconcile_request.py) |
 | EpicGamesReconcileResult | [EpicGamesReconcileResult](../accelbyte_py_sdk/api/platform/models/epic_games_reconcile_result.py) |
 | ErrorEntity | [ErrorEntity](../accelbyte_py_sdk/api/platform/models/error_entity.py) |
+| EventPayload | [EventPayload](../accelbyte_py_sdk/api/platform/models/event_payload.py) |
 | ExternalPaymentOrderCreate | [ExternalPaymentOrderCreate](../accelbyte_py_sdk/api/platform/models/external_payment_order_create.py) |
 | FieldValidationError | [FieldValidationError](../accelbyte_py_sdk/api/platform/models/field_validation_error.py) |
 | FulfillCodeRequest | [FulfillCodeRequest](../accelbyte_py_sdk/api/platform/models/fulfill_code_request.py) |

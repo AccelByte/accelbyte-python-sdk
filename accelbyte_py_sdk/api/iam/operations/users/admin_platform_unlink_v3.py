@@ -1,4 +1,4 @@
-# justice-iam-service (4.7.0)
+# justice-iam-service (4.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -36,13 +36,16 @@ class AdminPlatformUnlinkV3(Operation):
     <li><strong>steamopenid</strong></li> <li><strong>facebook</strong></li>
     <li><strong>google</strong></li> <li><strong>oculus</strong></li>
     <li><strong>twitch</strong></li> <li><strong>android</strong></li>
-    <li><strong>ios</strong></li> <li><strong>device</strong></li>
-    <li><strong>discord</strong></li> </ul> <p>Unlink user's account from a
-    specific platform. 'justice' platform might have multiple accounts from
-    different namespaces linked. <br><i>platformNamespace</i> need to be specified
-    when the platform ID is 'justice'. <br> <br>Unlink user's account from justice
-    platform will enable password token grant and password update. <br> <br>If you
-    want to unlink user's account in a game namespace, you have to specify
+    <li><strong>ios</strong></li> <li><strong>apple</strong></li>
+    <li><strong>device</strong></li> <li><strong>discord</strong></li>
+    <li><strong>awscognito</strong></li> <li><strong>epicgames</strong></li>
+    <li><strong>nintendo</strong></li> <li><strong>stadia</strong></li> </ul>
+    <p>Unlink user's account from a specific platform. 'justice' platform might
+    have multiple accounts from different namespaces linked.
+    <br><i>platformNamespace</i> need to be specified when the platform ID is
+    'justice'. <br> <br>Unlink user's account from justice platform will enable
+    password token grant and password update. <br> <br>If you want to unlink
+    user's account in a game namespace, you have to specify
     <i>platformNamespace</i> to that game namespace. <br> <br>action code : 10121
     </p>
 

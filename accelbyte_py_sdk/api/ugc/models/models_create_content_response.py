@@ -1,4 +1,4 @@
-# justice-ugc-service (1.9.0)
+# justice-ugc-service (1.10.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -60,6 +60,8 @@ class ModelsCreateContentResponse(Model):
 
         user_id: (userId) REQUIRED str
 
+        content_type: (contentType) OPTIONAL str
+
         payload_url: (payloadURL) OPTIONAL List[ModelsPayloadURL]
     """
 
@@ -80,6 +82,7 @@ class ModelsCreateContentResponse(Model):
     tags: List[str]                                                                                # REQUIRED
     type_: str                                                                                     # REQUIRED
     user_id: str                                                                                   # REQUIRED
+    content_type: str                                                                              # OPTIONAL
     payload_url: List[ModelsPayloadURL]                                                            # OPTIONAL
 
     # endregion fields
@@ -144,6 +147,10 @@ class ModelsCreateContentResponse(Model):
 
     def with_user_id(self, value: str) -> ModelsCreateContentResponse:
         self.user_id = value
+        return self
+
+    def with_content_type(self, value: str) -> ModelsCreateContentResponse:
+        self.content_type = value
         return self
 
     def with_payload_url(self, value: List[ModelsPayloadURL]) -> ModelsCreateContentResponse:
@@ -216,6 +223,10 @@ class ModelsCreateContentResponse(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
+        if hasattr(self, "content_type"):
+            result["contentType"] = str(self.content_type)
+        elif include_empty:
+            result["contentType"] = str()
         if hasattr(self, "payload_url"):
             result["payloadURL"] = [i0.to_dict(include_empty=include_empty) for i0 in self.payload_url]
         elif include_empty:
@@ -244,6 +255,7 @@ class ModelsCreateContentResponse(Model):
         tags: List[str],
         type_: str,
         user_id: str,
+        content_type: Optional[str] = None,
         payload_url: Optional[List[ModelsPayloadURL]] = None,
     ) -> ModelsCreateContentResponse:
         instance = cls()
@@ -262,6 +274,8 @@ class ModelsCreateContentResponse(Model):
         instance.tags = tags
         instance.type_ = type_
         instance.user_id = user_id
+        if content_type is not None:
+            instance.content_type = content_type
         if payload_url is not None:
             instance.payload_url = payload_url
         return instance
@@ -331,6 +345,10 @@ class ModelsCreateContentResponse(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
+        if "contentType" in dict_ and dict_["contentType"] is not None:
+            instance.content_type = str(dict_["contentType"])
+        elif include_empty:
+            instance.content_type = str()
         if "payloadURL" in dict_ and dict_["payloadURL"] is not None:
             instance.payload_url = [ModelsPayloadURL.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["payloadURL"]]
         elif include_empty:
@@ -355,6 +373,7 @@ class ModelsCreateContentResponse(Model):
             "tags": "tags",
             "type": "type_",
             "userId": "user_id",
+            "contentType": "content_type",
             "payloadURL": "payload_url",
         }
 

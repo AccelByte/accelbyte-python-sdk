@@ -1,6 +1,6 @@
 """Auto-generated top-level package for the justice-basic-service."""
 
-__version__ = "1.26.0"
+__version__ = "1.28.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -89,6 +89,8 @@ from .wrappers import un_ban_users
 from .wrappers import un_ban_users_async
 
 # user_profile
+from .wrappers import admin_get_user_profile_public_info_by_ids
+from .wrappers import admin_get_user_profile_public_info_by_ids_async
 from .wrappers import create_my_profile
 from .wrappers import create_my_profile_async
 from .wrappers import delete_user_profile

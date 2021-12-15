@@ -23,6 +23,7 @@ from ....core import same_doc_as
 from ..models import ModelsGetAllPlayerBlockedByUsersResponse
 from ..models import ModelsGetAllPlayerBlockedUsersResponse
 from ..models import ModelsGetAllPlayerSessionAttributeResponse
+from ..models import ModelsGetLobbyCcuResponse
 from ..models import ModelsGetPlayerSessionAttributeResponse
 from ..models import ModelsListBlockedPlayerRequest
 from ..models import ModelsSetPlayerSessionAttributeRequest
@@ -30,6 +31,7 @@ from ..models import RestapiErrorResponseBody
 
 from ..operations.player import AdminBulkBlockPlayersV1
 from ..operations.player import AdminGetAllPlayerSessionAttribute
+from ..operations.player import AdminGetLobbyCCU
 from ..operations.player import AdminGetPlayerBlockedByPlayersV1
 from ..operations.player import AdminGetPlayerBlockedPlayersV1
 from ..operations.player import AdminGetPlayerSessionAttribute
@@ -87,6 +89,30 @@ async def admin_get_all_player_session_attribute_async(user_id: str, namespace: 
             return None, error
     request = AdminGetAllPlayerSessionAttribute.create(
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminGetLobbyCCU)
+def admin_get_lobby_ccu(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetLobbyCCU.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminGetLobbyCCU)
+async def admin_get_lobby_ccu_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetLobbyCCU.create(
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)

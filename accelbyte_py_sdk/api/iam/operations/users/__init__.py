@@ -20,6 +20,7 @@ from .admin_get_age_restriction_status_v2 import AdminGetAgeRestrictionStatusV2
 from .admin_get_age_restriction_status_v3 import AdminGetAgeRestrictionStatusV3
 from .admin_get_bulk_user_by_email_address_v3 import AdminGetBulkUserByEmailAddressV3
 from .admin_get_list_country_age_restriction_v3 import AdminGetListCountryAgeRestrictionV3
+from .admin_get_list_justice_platform_accounts import AdminGetListJusticePlatformAccounts
 from .admin_get_my_user_v3 import AdminGetMyUserV3
 from .admin_get_user_ban_v2 import AdminGetUserBanV2
 from .admin_get_user_ban_v3 import AdminGetUserBanV3
@@ -86,6 +87,7 @@ from .list_admins_v3 import ListAdminsV3
 from .list_cross_namespace_account_link import ListCrossNamespaceAccountLink
 from .platform_link import PlatformLink
 from .platform_unlink import PlatformUnlink
+from .public_bulk_get_users import PublicBulkGetUsers
 from .public_create_justice_user import PublicCreateJusticeUser
 from .public_create_user_v2 import PublicCreateUserV2
 from .public_create_user_v3 import PublicCreateUserV3

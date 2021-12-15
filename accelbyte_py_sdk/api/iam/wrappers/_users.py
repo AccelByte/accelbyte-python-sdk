@@ -40,6 +40,7 @@ from ..models import ModelCountryV3Response
 from ..models import ModelCreateJusticeUserResponse
 from ..models import ModelDisableUserRequest
 from ..models import ModelForgotPasswordRequestV3
+from ..models import ModelGameUserIDsRequest
 from ..models import ModelGetAdminUsersResponse
 from ..models import ModelGetPublisherUserResponse
 from ..models import ModelGetUserBanV3Response
@@ -50,6 +51,7 @@ from ..models import ModelInviteUserRequestV3
 from ..models import ModelInviteUserResponseV3
 from ..models import ModelLinkPlatformAccountRequest
 from ..models import ModelLinkRequest
+from ..models import ModelListBulkUserGameResponse
 from ..models import ModelListEmailAddressRequest
 from ..models import ModelListUserResponseV3
 from ..models import ModelLoginHistoriesResponse
@@ -118,6 +120,7 @@ from ..operations.users import AdminGetAgeRestrictionStatusV2
 from ..operations.users import AdminGetAgeRestrictionStatusV3
 from ..operations.users import AdminGetBulkUserByEmailAddressV3
 from ..operations.users import AdminGetListCountryAgeRestrictionV3
+from ..operations.users import AdminGetListJusticePlatformAccounts
 from ..operations.users import AdminGetMyUserV3
 from ..operations.users import AdminGetUserBanV2
 from ..operations.users import AdminGetUserBanV3
@@ -184,6 +187,7 @@ from ..operations.users import ListAdminsV3
 from ..operations.users import ListCrossNamespaceAccountLink
 from ..operations.users import PlatformLink
 from ..operations.users import PlatformUnlink
+from ..operations.users import PublicBulkGetUsers
 from ..operations.users import PublicCreateJusticeUser
 from ..operations.users import PublicCreateUserV2
 from ..operations.users import PublicCreateUserV3
@@ -777,6 +781,32 @@ async def admin_get_list_country_age_restriction_v3_async(namespace: Optional[st
         if error:
             return None, error
     request = AdminGetListCountryAgeRestrictionV3.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminGetListJusticePlatformAccounts)
+def admin_get_list_justice_platform_accounts(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetListJusticePlatformAccounts.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminGetListJusticePlatformAccounts)
+async def admin_get_list_justice_platform_accounts_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetListJusticePlatformAccounts.create(
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)
@@ -2635,6 +2665,32 @@ async def platform_unlink_async(platform_id: str, user_id: str, platform_namespa
         platform_id=platform_id,
         user_id=user_id,
         platform_namespace=platform_namespace,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicBulkGetUsers)
+def public_bulk_get_users(body: ModelGameUserIDsRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicBulkGetUsers.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicBulkGetUsers)
+async def public_bulk_get_users_async(body: ModelGameUserIDsRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicBulkGetUsers.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)

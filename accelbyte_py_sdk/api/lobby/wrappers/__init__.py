@@ -1,6 +1,6 @@
 """Auto-generated package that contains utility functions for the justice-lobby-server."""
 
-__version__ = "1.33.0"
+__version__ = "staging"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -19,6 +19,10 @@ from ._config import admin_get_config_v1
 from ._config import admin_get_config_v1_async
 from ._config import admin_update_config_v1
 from ._config import admin_update_config_v1_async
+from ._config import export_config
+from ._config import export_config_async
+from ._config import import_config
+from ._config import import_config_async
 
 from ._friends import add_friends_without_confirmation
 from ._friends import add_friends_without_confirmation_async
@@ -136,6 +140,8 @@ from ._player import admin_bulk_block_players_v1
 from ._player import admin_bulk_block_players_v1_async
 from ._player import admin_get_all_player_session_attribute
 from ._player import admin_get_all_player_session_attribute_async
+from ._player import admin_get_lobby_ccu
+from ._player import admin_get_lobby_ccu_async
 from ._player import admin_get_player_blocked_by_players_v1
 from ._player import admin_get_player_blocked_by_players_v1_async
 from ._player import admin_get_player_blocked_players_v1

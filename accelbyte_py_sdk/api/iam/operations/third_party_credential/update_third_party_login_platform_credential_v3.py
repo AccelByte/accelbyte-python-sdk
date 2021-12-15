@@ -1,4 +1,4 @@
-# justice-iam-service (4.7.0)
+# justice-iam-service (4.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,8 +32,10 @@ from ...models import RestErrorResponse
 class UpdateThirdPartyLoginPlatformCredentialV3(Operation):
     """Update Third Party Platform Credential (UpdateThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Delete 3rd Platform Credential. It needs
-    ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [UPDATE] resource
+    <p>This is the API to Add 3rd Platform Credential.</p> <p>It needs
+    ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE]
+    resource.</p> <p>The secret for <strong>apple</strong> is base64 encoded
+    private key.</p>
 
 
     Properties:

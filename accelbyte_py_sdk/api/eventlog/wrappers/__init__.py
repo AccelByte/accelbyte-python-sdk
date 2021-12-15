@@ -1,6 +1,6 @@
 """Auto-generated package that contains utility functions for the justice-event-log-service."""
 
-__version__ = "1.18.3"
+__version__ = ""
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

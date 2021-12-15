@@ -1,4 +1,4 @@
-# Justice Matchmaking Service (2.10.0)
+# Justice Matchmaking Service (2.12.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -23,6 +23,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.models_alliance_flexing_rule import ModelsAllianceFlexingRule
 from ..models.models_flexing_rule import ModelsFlexingRule
 from ..models.models_match_option_rule import ModelsMatchOptionRule
 from ..models.models_matching_rule import ModelsMatchingRule
@@ -36,6 +37,8 @@ class ModelsUpdateRuleset(Model):
     Properties:
         alliance: (alliance) REQUIRED ModelsUpdateAllianceRule
 
+        alliance_flexing_rule: (alliance_flexing_rule) REQUIRED List[ModelsAllianceFlexingRule]
+
         flexing_rules: (flexingRules) OPTIONAL List[ModelsFlexingRule]
 
         match_options: (match_options) OPTIONAL ModelsMatchOptionRule
@@ -48,6 +51,7 @@ class ModelsUpdateRuleset(Model):
     # region fields
 
     alliance: ModelsUpdateAllianceRule                                                             # REQUIRED
+    alliance_flexing_rule: List[ModelsAllianceFlexingRule]                                         # REQUIRED
     flexing_rules: List[ModelsFlexingRule]                                                         # OPTIONAL
     match_options: ModelsMatchOptionRule                                                           # OPTIONAL
     matching_rules: List[ModelsMatchingRule]                                                       # OPTIONAL
@@ -59,6 +63,10 @@ class ModelsUpdateRuleset(Model):
 
     def with_alliance(self, value: ModelsUpdateAllianceRule) -> ModelsUpdateRuleset:
         self.alliance = value
+        return self
+
+    def with_alliance_flexing_rule(self, value: List[ModelsAllianceFlexingRule]) -> ModelsUpdateRuleset:
+        self.alliance_flexing_rule = value
         return self
 
     def with_flexing_rules(self, value: List[ModelsFlexingRule]) -> ModelsUpdateRuleset:
@@ -87,6 +95,10 @@ class ModelsUpdateRuleset(Model):
             result["alliance"] = self.alliance.to_dict(include_empty=include_empty)
         elif include_empty:
             result["alliance"] = ModelsUpdateAllianceRule()
+        if hasattr(self, "alliance_flexing_rule"):
+            result["alliance_flexing_rule"] = [i0.to_dict(include_empty=include_empty) for i0 in self.alliance_flexing_rule]
+        elif include_empty:
+            result["alliance_flexing_rule"] = []
         if hasattr(self, "flexing_rules"):
             result["flexingRules"] = [i0.to_dict(include_empty=include_empty) for i0 in self.flexing_rules]
         elif include_empty:
@@ -113,6 +125,7 @@ class ModelsUpdateRuleset(Model):
     def create(
         cls,
         alliance: ModelsUpdateAllianceRule,
+        alliance_flexing_rule: List[ModelsAllianceFlexingRule],
         flexing_rules: Optional[List[ModelsFlexingRule]] = None,
         match_options: Optional[ModelsMatchOptionRule] = None,
         matching_rules: Optional[List[ModelsMatchingRule]] = None,
@@ -120,6 +133,7 @@ class ModelsUpdateRuleset(Model):
     ) -> ModelsUpdateRuleset:
         instance = cls()
         instance.alliance = alliance
+        instance.alliance_flexing_rule = alliance_flexing_rule
         if flexing_rules is not None:
             instance.flexing_rules = flexing_rules
         if match_options is not None:
@@ -139,6 +153,10 @@ class ModelsUpdateRuleset(Model):
             instance.alliance = ModelsUpdateAllianceRule.create_from_dict(dict_["alliance"], include_empty=include_empty)
         elif include_empty:
             instance.alliance = ModelsUpdateAllianceRule()
+        if "alliance_flexing_rule" in dict_ and dict_["alliance_flexing_rule"] is not None:
+            instance.alliance_flexing_rule = [ModelsAllianceFlexingRule.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["alliance_flexing_rule"]]
+        elif include_empty:
+            instance.alliance_flexing_rule = []
         if "flexingRules" in dict_ and dict_["flexingRules"] is not None:
             instance.flexing_rules = [ModelsFlexingRule.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["flexingRules"]]
         elif include_empty:
@@ -161,6 +179,7 @@ class ModelsUpdateRuleset(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "alliance": "alliance",
+            "alliance_flexing_rule": "alliance_flexing_rule",
             "flexingRules": "flexing_rules",
             "match_options": "match_options",
             "matchingRules": "matching_rules",

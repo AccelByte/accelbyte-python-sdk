@@ -1,6 +1,6 @@
 """Auto-generated package that contains utility functions for the justice-dsm-controller-service."""
 
-__version__ = "2.8.0"
+__version__ = "2.10.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -93,6 +93,8 @@ from ._image_config import get_image_detail
 from ._image_config import get_image_detail_async
 from ._image_config import get_image_limit
 from ._image_config import get_image_limit_async
+from ._image_config import image_detail_client
+from ._image_config import image_detail_client_async
 from ._image_config import import_images
 from ._image_config import import_images_async
 from ._image_config import list_images

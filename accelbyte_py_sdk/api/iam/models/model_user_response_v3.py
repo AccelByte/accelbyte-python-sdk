@@ -1,4 +1,4 @@
-# justice-iam-service (4.7.0)
+# justice-iam-service (4.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -74,6 +74,8 @@ class ModelUserResponseV3(Model):
 
         phone_number: (phoneNumber) OPTIONAL str
 
+        platform_avatar_url: (platformAvatarUrl) OPTIONAL str
+
         platform_display_name: (platformDisplayName) OPTIONAL str
 
         platform_id: (platformId) OPTIONAL str
@@ -106,6 +108,7 @@ class ModelUserResponseV3(Model):
     user_id: str                                                                                   # REQUIRED
     new_email_address: str                                                                         # OPTIONAL
     phone_number: str                                                                              # OPTIONAL
+    platform_avatar_url: str                                                                       # OPTIONAL
     platform_display_name: str                                                                     # OPTIONAL
     platform_id: str                                                                               # OPTIONAL
     platform_user_id: str                                                                          # OPTIONAL
@@ -197,6 +200,10 @@ class ModelUserResponseV3(Model):
 
     def with_phone_number(self, value: str) -> ModelUserResponseV3:
         self.phone_number = value
+        return self
+
+    def with_platform_avatar_url(self, value: str) -> ModelUserResponseV3:
+        self.platform_avatar_url = value
         return self
 
     def with_platform_display_name(self, value: str) -> ModelUserResponseV3:
@@ -305,6 +312,10 @@ class ModelUserResponseV3(Model):
             result["phoneNumber"] = str(self.phone_number)
         elif include_empty:
             result["phoneNumber"] = str()
+        if hasattr(self, "platform_avatar_url"):
+            result["platformAvatarUrl"] = str(self.platform_avatar_url)
+        elif include_empty:
+            result["platformAvatarUrl"] = str()
         if hasattr(self, "platform_display_name"):
             result["platformDisplayName"] = str(self.platform_display_name)
         elif include_empty:
@@ -351,6 +362,7 @@ class ModelUserResponseV3(Model):
         user_id: str,
         new_email_address: Optional[str] = None,
         phone_number: Optional[str] = None,
+        platform_avatar_url: Optional[str] = None,
         platform_display_name: Optional[str] = None,
         platform_id: Optional[str] = None,
         platform_user_id: Optional[str] = None,
@@ -380,6 +392,8 @@ class ModelUserResponseV3(Model):
             instance.new_email_address = new_email_address
         if phone_number is not None:
             instance.phone_number = phone_number
+        if platform_avatar_url is not None:
+            instance.platform_avatar_url = platform_avatar_url
         if platform_display_name is not None:
             instance.platform_display_name = platform_display_name
         if platform_id is not None:
@@ -479,6 +493,10 @@ class ModelUserResponseV3(Model):
             instance.phone_number = str(dict_["phoneNumber"])
         elif include_empty:
             instance.phone_number = str()
+        if "platformAvatarUrl" in dict_ and dict_["platformAvatarUrl"] is not None:
+            instance.platform_avatar_url = str(dict_["platformAvatarUrl"])
+        elif include_empty:
+            instance.platform_avatar_url = str()
         if "platformDisplayName" in dict_ and dict_["platformDisplayName"] is not None:
             instance.platform_display_name = str(dict_["platformDisplayName"])
         elif include_empty:
@@ -521,6 +539,7 @@ class ModelUserResponseV3(Model):
             "userId": "user_id",
             "newEmailAddress": "new_email_address",
             "phoneNumber": "phone_number",
+            "platformAvatarUrl": "platform_avatar_url",
             "platformDisplayName": "platform_display_name",
             "platformId": "platform_id",
             "platformUserId": "platform_user_id",

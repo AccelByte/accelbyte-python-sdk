@@ -1,4 +1,4 @@
-# justice-platform-service (3.37.1)
+# justice-platform-service (3.39.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,6 +32,8 @@ class FulfillmentRequest(Model):
     Properties:
         quantity: (quantity) REQUIRED int
 
+        duration: (duration) OPTIONAL int
+
         end_date: (endDate) OPTIONAL str
 
         item_id: (itemId) OPTIONAL str
@@ -56,6 +58,7 @@ class FulfillmentRequest(Model):
     # region fields
 
     quantity: int                                                                                  # REQUIRED
+    duration: int                                                                                  # OPTIONAL
     end_date: str                                                                                  # OPTIONAL
     item_id: str                                                                                   # OPTIONAL
     item_sku: str                                                                                  # OPTIONAL
@@ -73,6 +76,10 @@ class FulfillmentRequest(Model):
 
     def with_quantity(self, value: int) -> FulfillmentRequest:
         self.quantity = value
+        return self
+
+    def with_duration(self, value: int) -> FulfillmentRequest:
+        self.duration = value
         return self
 
     def with_end_date(self, value: str) -> FulfillmentRequest:
@@ -125,6 +132,10 @@ class FulfillmentRequest(Model):
             result["quantity"] = int(self.quantity)
         elif include_empty:
             result["quantity"] = int()
+        if hasattr(self, "duration"):
+            result["duration"] = int(self.duration)
+        elif include_empty:
+            result["duration"] = int()
         if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
@@ -175,6 +186,7 @@ class FulfillmentRequest(Model):
     def create(
         cls,
         quantity: int,
+        duration: Optional[int] = None,
         end_date: Optional[str] = None,
         item_id: Optional[str] = None,
         item_sku: Optional[str] = None,
@@ -188,6 +200,8 @@ class FulfillmentRequest(Model):
     ) -> FulfillmentRequest:
         instance = cls()
         instance.quantity = quantity
+        if duration is not None:
+            instance.duration = duration
         if end_date is not None:
             instance.end_date = end_date
         if item_id is not None:
@@ -219,6 +233,10 @@ class FulfillmentRequest(Model):
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
             instance.quantity = int()
+        if "duration" in dict_ and dict_["duration"] is not None:
+            instance.duration = int(dict_["duration"])
+        elif include_empty:
+            instance.duration = int()
         if "endDate" in dict_ and dict_["endDate"] is not None:
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
@@ -265,6 +283,7 @@ class FulfillmentRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "quantity": "quantity",
+            "duration": "duration",
             "endDate": "end_date",
             "itemId": "item_id",
             "itemSku": "item_sku",

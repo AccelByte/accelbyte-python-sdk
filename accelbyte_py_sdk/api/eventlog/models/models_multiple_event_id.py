@@ -1,4 +1,4 @@
-# justice-event-log-service (1.18.3)
+# justice-event-log-service ()
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations

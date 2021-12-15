@@ -2,6 +2,7 @@
 
 from .admin_bulk_block_players_v1 import AdminBulkBlockPlayersV1
 from .admin_get_all_player_session_attribute import AdminGetAllPlayerSessionAttribute
+from .admin_get_lobby_ccu import AdminGetLobbyCCU
 from .admin_get_player_blocked_by_players_v1 import AdminGetPlayerBlockedByPlayersV1
 from .admin_get_player_blocked_players_v1 import AdminGetPlayerBlockedPlayersV1
 from .admin_get_player_session_attribute import AdminGetPlayerSessionAttribute

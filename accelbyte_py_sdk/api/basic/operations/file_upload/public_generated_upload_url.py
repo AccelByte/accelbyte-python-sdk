@@ -1,4 +1,4 @@
-# justice-basic-service (1.26.0)
+# justice-basic-service (1.28.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations

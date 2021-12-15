@@ -1,5 +1,6 @@
 # pylint: disable=line-too-long
 
+from .admin_retrieve_user_third_party_platform_token_v3 import AdminRetrieveUserThirdPartyPlatformTokenV3
 from .auth_code_request_v3 import AuthCodeRequestV3
 from .authorize_v3 import AuthorizeV3
 from .get_jwksv3 import GetJWKSV3

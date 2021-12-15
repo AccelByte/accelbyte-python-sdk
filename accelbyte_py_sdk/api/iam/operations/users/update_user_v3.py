@@ -1,4 +1,4 @@
-# justice-iam-service (4.7.0)
+# justice-iam-service (4.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -44,14 +44,18 @@ class UpdateUserV3(Operation):
     filled with new email address. </li> <li>User want to update email address of
     which have been verified and updated before, { oldEmailAddress, emailAddress}
     response field will be filled with verified email before. newEmailAddress
-    response field will be filled with newest email address. </li> <p>action code
+    response field will be filled with newest email address. </li>
+    <br><b>Important notes:</b> <br><p>This endpoint provides support for client
+    that doesn't have PATCH support, i.e. UE4 before v4.23 released. <br>If the
+    client support PATCH method, use [PATCH]
+    /iam/v3/public/namespaces/{namespace}/users/me instead</p><br> <p>action code
     : 10103 </p>
 
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me
 
-        method: PATCH
+        method: PUT
 
         tags: ["Users"]
 
@@ -80,7 +84,7 @@ class UpdateUserV3(Operation):
     # region fields
 
     _url: str = "/iam/v3/public/namespaces/{namespace}/users/me"
-    _method: str = "PATCH"
+    _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _security: Optional[str] = "bearer"

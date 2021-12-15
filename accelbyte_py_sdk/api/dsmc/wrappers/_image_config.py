@@ -34,6 +34,7 @@ from ..operations.image_config import DeleteImage
 from ..operations.image_config import ExportImages
 from ..operations.image_config import GetImageDetail
 from ..operations.image_config import GetImageLimit
+from ..operations.image_config import ImageDetailClient
 from ..operations.image_config import ImportImages
 from ..operations.image_config import ListImages
 from ..operations.image_config import UpdateImage
@@ -152,6 +153,32 @@ async def get_image_limit_async(namespace: Optional[str] = None, x_additional_he
         if error:
             return None, error
     request = GetImageLimit.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(ImageDetailClient)
+def image_detail_client(version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ImageDetailClient.create(
+        version=version,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(ImageDetailClient)
+async def image_detail_client_async(version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ImageDetailClient.create(
+        version=version,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)

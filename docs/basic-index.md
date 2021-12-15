@@ -1,4 +1,4 @@
-# justice-basic-service Index (1.26.0)
+# justice-basic-service Index (1.28.0)
 
 
 ## Operations
@@ -65,6 +65,7 @@
 ### UserProfile
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
+| /basic/v1/admin/namespaces/{namespace}/profiles/public | POST | adminGetUserProfilePublicInfoByIds | [AdminGetUserProfilePublicInfoByIds](../accelbyte_py_sdk/api/basic/operations/user_profile/admin_get_user_profile_public_info_by_ids.py) | [admin_get_user_profile_public_info_by_ids](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
 | /basic/v1/public/namespaces/{namespace}/users/me/profiles | POST | createMyProfile | [CreateMyProfile](../accelbyte_py_sdk/api/basic/operations/user_profile/create_my_profile.py) | [create_my_profile](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
 | /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles | DELETE | deleteUserProfile | [DeleteUserProfile](../accelbyte_py_sdk/api/basic/operations/user_profile/delete_user_profile.py) | [delete_user_profile](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
 | /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/customAttributes | GET | getCustomAttributesInfo | [GetCustomAttributesInfo](../accelbyte_py_sdk/api/basic/operations/user_profile/get_custom_attributes_info.py) | [get_custom_attributes_info](../accelbyte_py_sdk/api/basic/wrappers/_user_profile.py) |
@@ -114,6 +115,7 @@
 | UpdateCountryGroupRequest | [UpdateCountryGroupRequest](../accelbyte_py_sdk/api/basic/models/update_country_group_request.py) |
 | UserBanRequest | [UserBanRequest](../accelbyte_py_sdk/api/basic/models/user_ban_request.py) |
 | UserProfileAdmin | [UserProfileAdmin](../accelbyte_py_sdk/api/basic/models/user_profile_admin.py) |
+| UserProfileBulkRequest | [UserProfileBulkRequest](../accelbyte_py_sdk/api/basic/models/user_profile_bulk_request.py) |
 | UserProfileCreate | [UserProfileCreate](../accelbyte_py_sdk/api/basic/models/user_profile_create.py) |
 | UserProfileInfo | [UserProfileInfo](../accelbyte_py_sdk/api/basic/models/user_profile_info.py) |
 | UserProfilePrivateCreate | [UserProfilePrivateCreate](../accelbyte_py_sdk/api/basic/models/user_profile_private_create.py) |

@@ -1,4 +1,4 @@
-# justice-lobby-server (1.33.0)
+# justice-lobby-server (staging)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations

@@ -1,4 +1,4 @@
-# justice-ugc-service (1.9.0)
+# justice-ugc-service (1.10.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -28,6 +28,8 @@ class ModelsCreateScreenshotRequestItem(Model):
     """Models create screenshot request item (models.createScreenshotRequestItem)
 
     Properties:
+        content_type: (contentType) REQUIRED str
+
         description: (description) REQUIRED str
 
         file_extension: (fileExtension) REQUIRED str
@@ -35,12 +37,17 @@ class ModelsCreateScreenshotRequestItem(Model):
 
     # region fields
 
+    content_type: str                                                                              # REQUIRED
     description: str                                                                               # REQUIRED
     file_extension: str                                                                            # REQUIRED
 
     # endregion fields
 
     # region with_x methods
+
+    def with_content_type(self, value: str) -> ModelsCreateScreenshotRequestItem:
+        self.content_type = value
+        return self
 
     def with_description(self, value: str) -> ModelsCreateScreenshotRequestItem:
         self.description = value
@@ -56,6 +63,10 @@ class ModelsCreateScreenshotRequestItem(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "content_type"):
+            result["contentType"] = str(self.content_type)
+        elif include_empty:
+            result["contentType"] = str()
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
@@ -73,10 +84,12 @@ class ModelsCreateScreenshotRequestItem(Model):
     @classmethod
     def create(
         cls,
+        content_type: str,
         description: str,
         file_extension: str,
     ) -> ModelsCreateScreenshotRequestItem:
         instance = cls()
+        instance.content_type = content_type
         instance.description = description
         instance.file_extension = file_extension
         return instance
@@ -86,6 +99,10 @@ class ModelsCreateScreenshotRequestItem(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "contentType" in dict_ and dict_["contentType"] is not None:
+            instance.content_type = str(dict_["contentType"])
+        elif include_empty:
+            instance.content_type = str()
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
@@ -99,6 +116,7 @@ class ModelsCreateScreenshotRequestItem(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "contentType": "content_type",
             "description": "description",
             "fileExtension": "file_extension",
         }

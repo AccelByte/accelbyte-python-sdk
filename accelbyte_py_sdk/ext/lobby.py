@@ -1,4 +1,4 @@
-# justice-lobby-server (1.33.0)
+# justice-lobby-server (staging)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -71,6 +71,7 @@ from ..api.lobby.models import ModelsAdminVerifyMessageProfanityResponse
 from ..api.lobby.models import ModelsBlockedByPlayerData
 from ..api.lobby.models import ModelsBlockedPlayerData
 from ..api.lobby.models import ModelsConfig
+from ..api.lobby.models import ModelsConfigExport
 from ..api.lobby.models import ModelsConfigList
 from ..api.lobby.models import ModelsConfigReq
 from ..api.lobby.models import ModelsCreateConfigRequest
@@ -80,7 +81,9 @@ from ..api.lobby.models import ModelsGetAllPlayerBlockedByUsersResponse
 from ..api.lobby.models import ModelsGetAllPlayerBlockedUsersResponse
 from ..api.lobby.models import ModelsGetAllPlayerSessionAttributeResponse
 from ..api.lobby.models import ModelsGetConfigResponse
+from ..api.lobby.models import ModelsGetLobbyCcuResponse
 from ..api.lobby.models import ModelsGetPlayerSessionAttributeResponse
+from ..api.lobby.models import ModelsImportConfigResponse
 from ..api.lobby.models import ModelsListBlockedPlayerRequest
 from ..api.lobby.models import ModelsPartyData
 from ..api.lobby.models import ModelsPartyPUTCustomAttributesRequest
@@ -89,6 +92,7 @@ from ..api.lobby.models import ModelsProfanityRule
 from ..api.lobby.models import ModelsSetPlayerSessionAttributeRequest
 from ..api.lobby.models import ModelsUpdateConfigRequest
 from ..api.lobby.models import ModelsUpdateConfigResponse
+from ..api.lobby.models import ResponseError
 from ..api.lobby.models import RestapiErrorResponseBody
 from ..api.lobby.models import RestapiErrorResponseV1
 
@@ -473,6 +477,27 @@ def create_models_blocked_player_data_example() -> ModelsBlockedPlayerData:
 def create_models_config_example() -> ModelsConfig:
     instance = ModelsConfig()
     instance.auto_kick_on_disconnect = randomize("bool")
+    instance.auto_kick_on_disconnect_delay = randomize("int", min_val=1, max_val=1000)
+    instance.cancel_ticket_on_disconnect = randomize("bool")
+    instance.chat_rate_limit_burst = randomize("int", min_val=1, max_val=1000)
+    instance.chat_rate_limit_duration = randomize("int", min_val=1, max_val=1000)
+    instance.concurrent_users_limit = randomize("int", min_val=1, max_val=1000)
+    instance.enable_chat = randomize("bool")
+    instance.entitlement_check = randomize("bool")
+    instance.entitlement_item_id = randomize()
+    instance.general_rate_limit_burst = randomize("int", min_val=1, max_val=1000)
+    instance.general_rate_limit_duration = randomize("int", min_val=1, max_val=1000)
+    instance.max_party_member = randomize("int", min_val=1, max_val=1000)
+    instance.namespace = randomize("slug")
+    instance.profanity_filter = randomize("bool")
+    instance.ready_consent_timeout = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_models_config_export_example() -> ModelsConfigExport:
+    instance = ModelsConfigExport()
+    instance.auto_kick_on_disconnect = randomize("bool")
+    instance.auto_kick_on_disconnect_delay = randomize("int", min_val=1, max_val=1000)
     instance.cancel_ticket_on_disconnect = randomize("bool")
     instance.chat_rate_limit_burst = randomize("int", min_val=1, max_val=1000)
     instance.chat_rate_limit_duration = randomize("int", min_val=1, max_val=1000)
@@ -498,6 +523,7 @@ def create_models_config_list_example() -> ModelsConfigList:
 def create_models_config_req_example() -> ModelsConfigReq:
     instance = ModelsConfigReq()
     instance.auto_kick_on_disconnect = randomize("bool")
+    instance.auto_kick_on_disconnect_delay = randomize("int", min_val=1, max_val=1000)
     instance.cancel_ticket_on_disconnect = randomize("bool")
     instance.chat_rate_limit_burst = randomize("int", min_val=1, max_val=1000)
     instance.chat_rate_limit_duration = randomize("int", min_val=1, max_val=1000)
@@ -557,10 +583,25 @@ def create_models_get_config_response_example() -> ModelsGetConfigResponse:
     return instance
 
 
+def create_models_get_lobby_ccu_response_example() -> ModelsGetLobbyCcuResponse:
+    instance = ModelsGetLobbyCcuResponse()
+    instance.count_current_users = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
 def create_models_get_player_session_attribute_response_example() -> ModelsGetPlayerSessionAttributeResponse:
     instance = ModelsGetPlayerSessionAttributeResponse()
     instance.key = randomize()
     instance.value = randomize()
+    return instance
+
+
+def create_models_import_config_response_example() -> ModelsImportConfigResponse:
+    instance = ModelsImportConfigResponse()
+    instance.failed_configs = [randomize()]
+    instance.ignored_configs = [randomize()]
+    instance.new_configs = [randomize()]
+    instance.replaced_configs = [randomize()]
     return instance
 
 
@@ -621,6 +662,13 @@ def create_models_update_config_response_example() -> ModelsUpdateConfigResponse
     instance = ModelsUpdateConfigResponse()
     instance.api_key = randomize()
     instance.namespace = randomize("slug")
+    return instance
+
+
+def create_response_error_example() -> ResponseError:
+    instance = ResponseError()
+    instance.error_code = randomize("int", min_val=1, max_val=1000)
+    instance.error_message = randomize()
     return instance
 
 

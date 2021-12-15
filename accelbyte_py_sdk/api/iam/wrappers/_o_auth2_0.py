@@ -29,6 +29,7 @@ from ..models import OauthmodelTokenResponseV3
 from ..models import OauthmodelTokenThirdPartyResponse
 from ..models import RestErrorResponse
 
+from ..operations.o_auth2_0 import AdminRetrieveUserThirdPartyPlatformTokenV3
 from ..operations.o_auth2_0 import AuthCodeRequestV3
 from ..operations.o_auth2_0 import AuthorizeV3
 from ..operations.o_auth2_0 import GetJWKSV3
@@ -39,6 +40,34 @@ from ..operations.o_auth2_0 import RevokeUserV3
 from ..operations.o_auth2_0 import TokenGrantV3
 from ..operations.o_auth2_0 import TokenIntrospectionV3
 from ..operations.o_auth2_0 import TokenRevocationV3
+
+
+@same_doc_as(AdminRetrieveUserThirdPartyPlatformTokenV3)
+def admin_retrieve_user_third_party_platform_token_v3(platform_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminRetrieveUserThirdPartyPlatformTokenV3.create(
+        platform_id=platform_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminRetrieveUserThirdPartyPlatformTokenV3)
+async def admin_retrieve_user_third_party_platform_token_v3_async(platform_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminRetrieveUserThirdPartyPlatformTokenV3.create(
+        platform_id=platform_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AuthCodeRequestV3)

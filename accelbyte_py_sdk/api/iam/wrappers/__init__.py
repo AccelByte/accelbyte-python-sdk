@@ -1,6 +1,6 @@
 """Auto-generated package that contains utility functions for the justice-iam-service."""
 
-__version__ = "4.7.0"
+__version__ = "4.9.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -79,6 +79,8 @@ from ._o_auth import token_grant_async
 from ._o_auth import verify_token
 from ._o_auth import verify_token_async
 
+from ._o_auth2_0 import admin_retrieve_user_third_party_platform_token_v3
+from ._o_auth2_0 import admin_retrieve_user_third_party_platform_token_v3_async
 from ._o_auth2_0 import auth_code_request_v3
 from ._o_auth2_0 import auth_code_request_v3_async
 from ._o_auth2_0 import authorize_v3
@@ -280,6 +282,8 @@ from ._users import admin_get_bulk_user_by_email_address_v3
 from ._users import admin_get_bulk_user_by_email_address_v3_async
 from ._users import admin_get_list_country_age_restriction_v3
 from ._users import admin_get_list_country_age_restriction_v3_async
+from ._users import admin_get_list_justice_platform_accounts
+from ._users import admin_get_list_justice_platform_accounts_async
 from ._users import admin_get_my_user_v3
 from ._users import admin_get_my_user_v3_async
 from ._users import admin_get_user_ban_v2
@@ -412,6 +416,8 @@ from ._users import platform_link
 from ._users import platform_link_async
 from ._users import platform_unlink
 from ._users import platform_unlink_async
+from ._users import public_bulk_get_users
+from ._users import public_bulk_get_users_async
 from ._users import public_create_justice_user
 from ._users import public_create_justice_user_async
 from ._users import public_create_user_v2
@@ -521,6 +527,8 @@ from ._users_v4 import admin_update_user_v4
 from ._users_v4 import admin_update_user_v4_async
 from ._users_v4 import create_user_from_invitation_v4
 from ._users_v4 import create_user_from_invitation_v4_async
+from ._users_v4 import public_create_test_user_v4
+from ._users_v4 import public_create_test_user_v4_async
 from ._users_v4 import public_create_user_v4
 from ._users_v4 import public_create_user_v4_async
 from ._users_v4 import public_update_user_email_address_v4

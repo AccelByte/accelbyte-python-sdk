@@ -1,4 +1,4 @@
-# justice-iam-service (4.7.0)
+# justice-iam-service (4.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -45,14 +45,22 @@ class PublicPlatformLinkV3(Operation):
     (:).</li> <li><strong>twitch</strong>: The ticket’s value is the authorization
     code returned by Twitch OAuth.</li> <li><strong>android</strong>: The ticket's
     value is the Android’s device ID</li> <li><strong>ios</strong>: The ticket's
-    value is the iOS’s device ID.</li> <li><strong>device</strong>: Every device
-    that doesn't run Android and iOS is categorized as a device platform. The
-    ticket's value is the device’s ID.</li> <li><strong>discord</strong>: The
-    ticket’s value is the authorization code returned by Discord OAuth.</li>
-    <li><strong>ps4web</strong>: The ticket’s value is the authorization code
-    returned by PSN OAuth.</li> <li><strong>xblweb</strong>: The ticket’s value is
-    the authorization code returned by XBox Live OAuth.</li> </ul> <br>action code
-    : 10144
+    value is the iOS’s device ID.</li> <li><strong>apple</strong>: The ticket’s
+    value is the authorization code returned by Apple OAuth.</li>
+    <li><strong>device</strong>: Every device that doesn't run Android and iOS is
+    categorized as a device platform. The ticket's value is the device’s ID.</li>
+    <li><strong>discord</strong>: The ticket’s value is the authorization code
+    returned by Discord OAuth.</li> <li><strong>ps4web</strong>: The ticket’s
+    value is the authorization code returned by PSN OAuth.</li>
+    <li><strong>xblweb</strong>: The ticket’s value is the authorization code
+    returned by XBox Live OAuth.</li> <li><strong>awscognito</strong>: The
+    ticket’s value is the aws cognito access token (JWT).</li>
+    <li><strong>epicgames</strong>: The ticket’s value is an access-token obtained
+    from Epicgames EOS Account Service.</li> <li><strong>nintendo</strong>: The
+    ticket’s value is the authorization code(id_token) returned by Nintendo
+    OAuth.</li> <li><strong>stadia</strong>: The ticket’s value is a JWT Token,
+    which can be obtained after calling the Stadia SDK's function.</li> </ul>
+    <br>action code : 10144
 
 
     Properties:

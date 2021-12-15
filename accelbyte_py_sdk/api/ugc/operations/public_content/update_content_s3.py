@@ -1,4 +1,4 @@
-# justice-ugc-service (1.9.0)
+# justice-ugc-service (1.10.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,8 +33,10 @@ class UpdateContentS3(Operation):
     """Update content to S3 bucket (UpdateContentS3)
 
     Required permission <b>NAMESPACE:{namespace}:USER:{userId}:CONTENT
-    [UPDATE]</b>.n All request body are required except payload, preview, and
-    tags.
+    [UPDATE]</b>.n All request body are required except payload, preview, tags,
+    and contentType. contentType values is used to enforce the Content-Type header
+    needed by the client to upload the content using the S3 presigned URL. If not
+    specified, it will use fileExtension value.
 
 
     Properties:

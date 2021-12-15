@@ -20,6 +20,7 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import AccountCreateTestUserRequestV4
 from ..models import AccountCreateUserRequestV4
 from ..models import AccountCreateUserResponseV4
 from ..models import AccountUpgradeHeadlessAccountRequestV4
@@ -42,6 +43,7 @@ from ..operations.users_v4 import AdminUpdateUserEmailAddressV4
 from ..operations.users_v4 import AdminUpdateUserRoleV4
 from ..operations.users_v4 import AdminUpdateUserV4
 from ..operations.users_v4 import CreateUserFromInvitationV4
+from ..operations.users_v4 import PublicCreateTestUserV4
 from ..operations.users_v4 import PublicCreateUserV4
 from ..operations.users_v4 import PublicUpdateUserEmailAddressV4
 from ..operations.users_v4 import PublicUpdateUserV4
@@ -254,6 +256,32 @@ async def create_user_from_invitation_v4_async(body: ModelUserCreateFromInvitati
     request = CreateUserFromInvitationV4.create(
         body=body,
         invitation_id=invitation_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicCreateTestUserV4)
+def public_create_test_user_v4(body: AccountCreateTestUserRequestV4, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicCreateTestUserV4.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicCreateTestUserV4)
+async def public_create_test_user_v4_async(body: AccountCreateTestUserRequestV4, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicCreateTestUserV4.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)

@@ -1,4 +1,4 @@
-# justice-platform-service (3.37.1)
+# justice-platform-service (3.39.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -28,6 +28,8 @@ class RewardItem(Model):
     """Reward item (RewardItem)
 
     Properties:
+        duration: (duration) OPTIONAL int
+
         item_id: (itemId) OPTIONAL str
 
         quantity: (quantity) OPTIONAL int
@@ -35,12 +37,17 @@ class RewardItem(Model):
 
     # region fields
 
+    duration: int                                                                                  # OPTIONAL
     item_id: str                                                                                   # OPTIONAL
     quantity: int                                                                                  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
+
+    def with_duration(self, value: int) -> RewardItem:
+        self.duration = value
+        return self
 
     def with_item_id(self, value: str) -> RewardItem:
         self.item_id = value
@@ -56,6 +63,10 @@ class RewardItem(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "duration"):
+            result["duration"] = int(self.duration)
+        elif include_empty:
+            result["duration"] = int()
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
@@ -73,10 +84,13 @@ class RewardItem(Model):
     @classmethod
     def create(
         cls,
+        duration: Optional[int] = None,
         item_id: Optional[str] = None,
         quantity: Optional[int] = None,
     ) -> RewardItem:
         instance = cls()
+        if duration is not None:
+            instance.duration = duration
         if item_id is not None:
             instance.item_id = item_id
         if quantity is not None:
@@ -88,6 +102,10 @@ class RewardItem(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "duration" in dict_ and dict_["duration"] is not None:
+            instance.duration = int(dict_["duration"])
+        elif include_empty:
+            instance.duration = int()
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
@@ -101,6 +119,7 @@ class RewardItem(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "duration": "duration",
             "itemId": "item_id",
             "quantity": "quantity",
         }

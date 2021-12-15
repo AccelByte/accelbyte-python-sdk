@@ -1,4 +1,4 @@
-# justice-iam-service Index (4.7.0)
+# justice-iam-service Index (4.9.0)
 
 
 ## Operations
@@ -53,6 +53,7 @@
 ### OAuth2.0
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
+| /iam/v3/oauth/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/platformToken | GET | AdminRetrieveUserThirdPartyPlatformTokenV3 | [AdminRetrieveUserThirdPartyPlatformTokenV3](../accelbyte_py_sdk/api/iam/operations/o_auth2_0/admin_retrieve_user_third_party_platform_token_v3.py) | [admin_retrieve_user_third_party_platform_token_v3](../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0.py) |
 | /iam/v3/oauth/platforms/{platformId}/authorize | GET | AuthCodeRequestV3 | [AuthCodeRequestV3](../accelbyte_py_sdk/api/iam/operations/o_auth2_0/auth_code_request_v3.py) | [auth_code_request_v3](../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0.py) |
 | /iam/v3/oauth/authorize | GET | AuthorizeV3 | [AuthorizeV3](../accelbyte_py_sdk/api/iam/operations/o_auth2_0/authorize_v3.py) | [authorize_v3](../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0.py) |
 | /iam/v3/oauth/jwks | GET | GetJWKSV3 | [GetJWKSV3](../accelbyte_py_sdk/api/iam/operations/o_auth2_0/get_jwksv3.py) | [get_jwksv3](../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0.py) |
@@ -178,6 +179,7 @@
 | /iam/v3/admin/namespaces/{namespace}/agerestrictions | GET | AdminGetAgeRestrictionStatusV3 | [AdminGetAgeRestrictionStatusV3](../accelbyte_py_sdk/api/iam/operations/users/admin_get_age_restriction_status_v3.py) | [admin_get_age_restriction_status_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/admin/namespaces/{namespace}/users/search/bulk | POST | AdminGetBulkUserByEmailAddressV3 | [AdminGetBulkUserByEmailAddressV3](../accelbyte_py_sdk/api/iam/operations/users/admin_get_bulk_user_by_email_address_v3.py) | [admin_get_bulk_user_by_email_address_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries | GET | AdminGetListCountryAgeRestrictionV3 | [AdminGetListCountryAgeRestrictionV3](../accelbyte_py_sdk/api/iam/operations/users/admin_get_list_country_age_restriction_v3.py) | [admin_get_list_country_age_restriction_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
+| /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice | GET | AdminGetListJusticePlatformAccounts | [AdminGetListJusticePlatformAccounts](../accelbyte_py_sdk/api/iam/operations/users/admin_get_list_justice_platform_accounts.py) | [admin_get_list_justice_platform_accounts](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/admin/users/me | GET | AdminGetMyUserV3 | [AdminGetMyUserV3](../accelbyte_py_sdk/api/iam/operations/users/admin_get_my_user_v3.py) | [admin_get_my_user_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v2/admin/namespaces/{namespace}/users/{userId}/bans | GET | AdminGetUserBanV2 | [AdminGetUserBanV2](../accelbyte_py_sdk/api/iam/operations/users/admin_get_user_ban_v2.py) | [admin_get_user_ban_v2](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans | GET | AdminGetUserBanV3 | [AdminGetUserBanV3](../accelbyte_py_sdk/api/iam/operations/users/admin_get_user_ban_v3.py) | [admin_get_user_ban_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
@@ -244,6 +246,7 @@
 | /iam/namespaces/{namespace}/users/{userId}/crosslink | POST | ListCrossNamespaceAccountLink | [ListCrossNamespaceAccountLink](../accelbyte_py_sdk/api/iam/operations/users/list_cross_namespace_account_link.py) | [list_cross_namespace_account_link](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link | POST | PlatformLink | [PlatformLink](../accelbyte_py_sdk/api/iam/operations/users/platform_link.py) | [platform_link](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/namespaces/{namespace}/users/{userId}/platforms/{platformId}/unlink | POST | PlatformUnlink | [PlatformUnlink](../accelbyte_py_sdk/api/iam/operations/users/platform_unlink.py) | [platform_unlink](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
+| /iam/v3/public/namespaces/{namespace}/users/bulk/basic | POST | PublicBulkGetUsers | [PublicBulkGetUsers](../accelbyte_py_sdk/api/iam/operations/users/public_bulk_get_users.py) | [public_bulk_get_users](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/public/namespaces/{namespace}/users/me/platforms/justice/{targetNamespace} | POST | PublicCreateJusticeUser | [PublicCreateJusticeUser](../accelbyte_py_sdk/api/iam/operations/users/public_create_justice_user.py) | [public_create_justice_user](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v2/public/namespaces/{namespace}/users | POST | PublicCreateUserV2 | [PublicCreateUserV2](../accelbyte_py_sdk/api/iam/operations/users/public_create_user_v2.py) | [public_create_user_v2](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/public/namespaces/{namespace}/users | POST | PublicCreateUserV3 | [PublicCreateUserV3](../accelbyte_py_sdk/api/iam/operations/users/public_create_user_v3.py) | [public_create_user_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
@@ -270,7 +273,7 @@
 | /iam/v2/public/namespaces/{namespace}/users/{userId}/password | PUT | PublicUpdatePasswordV2 | [PublicUpdatePasswordV2](../accelbyte_py_sdk/api/iam/operations/users/public_update_password_v2.py) | [public_update_password_v2](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/public/namespaces/{namespace}/users/me/password | PUT | PublicUpdatePasswordV3 | [PublicUpdatePasswordV3](../accelbyte_py_sdk/api/iam/operations/users/public_update_password_v3.py) | [public_update_password_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v2/public/namespaces/{namespace}/users/{userId} | PATCH | PublicUpdateUserV2 | [PublicUpdateUserV2](../accelbyte_py_sdk/api/iam/operations/users/public_update_user_v2.py) | [public_update_user_v2](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
-| /iam/v3/public/namespaces/{namespace}/users/me | PUT | PublicUpdateUserV3 | [PublicUpdateUserV3](../accelbyte_py_sdk/api/iam/operations/users/public_update_user_v3.py) | [public_update_user_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
+| /iam/v3/public/namespaces/{namespace}/users/me | PATCH | PublicUpdateUserV3 | [PublicUpdateUserV3](../accelbyte_py_sdk/api/iam/operations/users/public_update_user_v3.py) | [public_update_user_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/public/namespaces/{namespace}/users/me/headless/code/verify | POST | PublicUpgradeHeadlessAccountV3 | [PublicUpgradeHeadlessAccountV3](../accelbyte_py_sdk/api/iam/operations/users/public_upgrade_headless_account_v3.py) | [public_upgrade_headless_account_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/public/namespaces/{namespace}/users/me/code/verify | POST | PublicUserVerificationV3 | [PublicUserVerificationV3](../accelbyte_py_sdk/api/iam/operations/users/public_user_verification_v3.py) | [public_user_verification_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/public/namespaces/{namespace}/users/{userId}/validate | POST | PublicValidateUserByUserIDAndPasswordV3 | [PublicValidateUserByUserIDAndPasswordV3](../accelbyte_py_sdk/api/iam/operations/users/public_validate_user_by_user_id_and_password_v3.py) | [public_validate_user_by_user_id_and_password_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
@@ -286,7 +289,7 @@
 | /iam/v2/admin/namespaces/{namespace}/countries/{countryCode} | PATCH | UpdateCountryAgeRestriction | [UpdateCountryAgeRestriction](../accelbyte_py_sdk/api/iam/operations/users/update_country_age_restriction.py) | [update_country_age_restriction](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/namespaces/{namespace}/users/{userId}/password | PUT | UpdatePassword | [UpdatePassword](../accelbyte_py_sdk/api/iam/operations/users/update_password.py) | [update_password](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/namespaces/{namespace}/users/{userId} | PUT | UpdateUser | [UpdateUser](../accelbyte_py_sdk/api/iam/operations/users/update_user.py) | [update_user](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
-| /iam/v3/public/namespaces/{namespace}/users/me | PATCH | UpdateUserV3 | [UpdateUserV3](../accelbyte_py_sdk/api/iam/operations/users/update_user_v3.py) | [update_user_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
+| /iam/v3/public/namespaces/{namespace}/users/me | PUT | UpdateUserV3 | [UpdateUserV3](../accelbyte_py_sdk/api/iam/operations/users/update_user_v3.py) | [update_user_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/namespaces/{namespace}/users/{userId}/upgradeHeadlessAccount | POST | upgradeHeadlessAccount | [UpgradeHeadlessAccount](../accelbyte_py_sdk/api/iam/operations/users/upgrade_headless_account.py) | [upgrade_headless_account](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/namespaces/{namespace}/users/{userId}/upgradeHeadlessAccountWithVerificationCode | POST | UpgradeHeadlessAccountWithVerificationCode | [UpgradeHeadlessAccountWithVerificationCode](../accelbyte_py_sdk/api/iam/operations/users/upgrade_headless_account_with_verification_code.py) | [upgrade_headless_account_with_verification_code](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/namespaces/{namespace}/users/{userId}/verification | POST | UserVerification | [UserVerification](../accelbyte_py_sdk/api/iam/operations/users/user_verification.py) | [user_verification](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
@@ -302,6 +305,7 @@
 | /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles | PUT | AdminUpdateUserRoleV4 | [AdminUpdateUserRoleV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_update_user_role_v4.py) | [admin_update_user_role_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
 | /iam/v4/admin/namespaces/{namespace}/users/{userId} | PUT | AdminUpdateUserV4 | [AdminUpdateUserV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_update_user_v4.py) | [admin_update_user_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
 | /iam/v4/public/namespaces/{namespace}/users/invite/{invitationId} | POST | CreateUserFromInvitationV4 | [CreateUserFromInvitationV4](../accelbyte_py_sdk/api/iam/operations/users_v4/create_user_from_invitation_v4.py) | [create_user_from_invitation_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
+| /iam/v4/public/namespaces/{namespace}/test_users | POST | PublicCreateTestUserV4 | [PublicCreateTestUserV4](../accelbyte_py_sdk/api/iam/operations/users_v4/public_create_test_user_v4.py) | [public_create_test_user_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
 | /iam/v4/public/namespaces/{namespace}/users | POST | PublicCreateUserV4 | [PublicCreateUserV4](../accelbyte_py_sdk/api/iam/operations/users_v4/public_create_user_v4.py) | [public_create_user_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
 | /iam/v4/public/namespaces/{namespace}/users/me/email | PUT | PublicUpdateUserEmailAddressV4 | [PublicUpdateUserEmailAddressV4](../accelbyte_py_sdk/api/iam/operations/users_v4/public_update_user_email_address_v4.py) | [public_update_user_email_address_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
 | /iam/v4/public/namespaces/{namespace}/users/me | PATCH | PublicUpdateUserV4 | [PublicUpdateUserV4](../accelbyte_py_sdk/api/iam/operations/users_v4/public_update_user_v4.py) | [public_update_user_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
@@ -312,6 +316,7 @@
 ## Models
 | Model | Class |
 |---|---|
+| account.createTestUserRequestV4 | [AccountCreateTestUserRequestV4](../accelbyte_py_sdk/api/iam/models/account_create_test_user_request_v4.py) |
 | account.createUserRequestV4 | [AccountCreateUserRequestV4](../accelbyte_py_sdk/api/iam/models/account_create_user_request_v4.py) |
 | account.createUserResponseV4 | [AccountCreateUserResponseV4](../accelbyte_py_sdk/api/iam/models/account_create_user_response_v4.py) |
 | account.upgradeHeadlessAccountRequestV4 | [AccountUpgradeHeadlessAccountRequestV4](../accelbyte_py_sdk/api/iam/models/account_upgrade_headless_account_request_v4.py) |
@@ -389,6 +394,8 @@
 | model.DisableUserRequest | [ModelDisableUserRequest](../accelbyte_py_sdk/api/iam/models/model_disable_user_request.py) |
 | model.EmailUpdateRequestV4 | [ModelEmailUpdateRequestV4](../accelbyte_py_sdk/api/iam/models/model_email_update_request_v4.py) |
 | model.ForgotPasswordRequestV3 | [ModelForgotPasswordRequestV3](../accelbyte_py_sdk/api/iam/models/model_forgot_password_request_v3.py) |
+| model.GameUserBaseInfo | [ModelGameUserBaseInfo](../accelbyte_py_sdk/api/iam/models/model_game_user_base_info.py) |
+| model.GameUserIDsRequest | [ModelGameUserIDsRequest](../accelbyte_py_sdk/api/iam/models/model_game_user_i_ds_request.py) |
 | model.GetAdminUsersResponse | [ModelGetAdminUsersResponse](../accelbyte_py_sdk/api/iam/models/model_get_admin_users_response.py) |
 | model.GetPublisherUserResponse | [ModelGetPublisherUserResponse](../accelbyte_py_sdk/api/iam/models/model_get_publisher_user_response.py) |
 | model.GetUserBanV3Response | [ModelGetUserBanV3Response](../accelbyte_py_sdk/api/iam/models/model_get_user_ban_v3_response.py) |
@@ -400,6 +407,7 @@
 | model.LinkPlatformAccountRequest | [ModelLinkPlatformAccountRequest](../accelbyte_py_sdk/api/iam/models/model_link_platform_account_request.py) |
 | model.LinkRequest | [ModelLinkRequest](../accelbyte_py_sdk/api/iam/models/model_link_request.py) |
 | model.ListAssignedUsersV4Response | [ModelListAssignedUsersV4Response](../accelbyte_py_sdk/api/iam/models/model_list_assigned_users_v4_response.py) |
+| model.ListBulkUserGameResponse | [ModelListBulkUserGameResponse](../accelbyte_py_sdk/api/iam/models/model_list_bulk_user_game_response.py) |
 | model.ListEmailAddressRequest | [ModelListEmailAddressRequest](../accelbyte_py_sdk/api/iam/models/model_list_email_address_request.py) |
 | model.ListRoleV4Response | [ModelListRoleV4Response](../accelbyte_py_sdk/api/iam/models/model_list_role_v4_response.py) |
 | model.ListUserResponseV3 | [ModelListUserResponseV3](../accelbyte_py_sdk/api/iam/models/model_list_user_response_v3.py) |

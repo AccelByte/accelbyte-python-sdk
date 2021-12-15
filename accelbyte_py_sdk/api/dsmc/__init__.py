@@ -1,6 +1,6 @@
 """Auto-generated top-level package for the justice-dsm-controller-service."""
 
-__version__ = "2.8.0"
+__version__ = "2.10.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -97,6 +97,8 @@ from .wrappers import get_image_detail
 from .wrappers import get_image_detail_async
 from .wrappers import get_image_limit
 from .wrappers import get_image_limit_async
+from .wrappers import image_detail_client
+from .wrappers import image_detail_client_async
 from .wrappers import import_images
 from .wrappers import import_images_async
 from .wrappers import list_images

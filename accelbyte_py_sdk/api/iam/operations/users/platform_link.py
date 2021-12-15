@@ -1,4 +1,4 @@
-# justice-iam-service (4.7.0)
+# justice-iam-service (4.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -43,10 +43,12 @@ class PlatformLink(Operation):
     (:).</li> <li><strong>twitch</strong>: The ticket’s value is the authorization
     code returned by Twitch OAuth.</li> <li><strong>android</strong>: The ticket's
     value is the Android’s device ID</li> <li><strong>ios</strong>: The ticket's
-    value is the iOS’s device ID.</li> <li><strong>device</strong>: Every device
-    that does’nt run Android and iOS is categorized as a device platform. The
-    ticket's value is the device’s ID.</li> <li><strong>discord</strong>: The
-    ticket’s value is the authorization code returned by Discord OAuth.</li> </ul>
+    value is the iOS’s device ID.</li> <li><strong>apple</strong>: The ticket’s
+    value is the authorization code returned by Apple OAuth.</li>
+    <li><strong>device</strong>: Every device that does’nt run Android and iOS is
+    categorized as a device platform. The ticket's value is the device’s ID.</li>
+    <li><strong>discord</strong>: The ticket’s value is the authorization code
+    returned by Discord OAuth.</li> </ul>
 
 
     Properties:

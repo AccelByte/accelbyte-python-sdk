@@ -1,6 +1,6 @@
 """Auto-generated package that contains models used by the justice-dsm-controller-service."""
 
-__version__ = "2.8.0"
+__version__ = "2.10.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

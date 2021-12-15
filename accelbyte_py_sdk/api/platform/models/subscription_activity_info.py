@@ -1,4 +1,4 @@
-# justice-platform-service (3.37.1)
+# justice-platform-service (3.39.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations

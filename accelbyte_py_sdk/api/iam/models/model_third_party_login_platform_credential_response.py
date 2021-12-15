@@ -1,4 +1,4 @@
-# justice-iam-service (4.7.0)
+# justice-iam-service (4.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -44,6 +44,8 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
 
         is_active: (IsActive) REQUIRED bool
 
+        key_id: (KeyID) REQUIRED str
+
         namespace: (Namespace) REQUIRED str
 
         organization_id: (OrganizationId) REQUIRED str
@@ -53,6 +55,8 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         redirect_uri: (RedirectUri) REQUIRED str
 
         secret: (Secret) REQUIRED str
+
+        team_id: (TeamID) REQUIRED str
     """
 
     # region fields
@@ -65,11 +69,13 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
     environment: str                                                                               # REQUIRED
     federation_metadata_url: str                                                                   # REQUIRED
     is_active: bool                                                                                # REQUIRED
+    key_id: str                                                                                    # REQUIRED
     namespace: str                                                                                 # REQUIRED
     organization_id: str                                                                           # REQUIRED
     platform_id: str                                                                               # REQUIRED
     redirect_uri: str                                                                              # REQUIRED
     secret: str                                                                                    # REQUIRED
+    team_id: str                                                                                   # REQUIRED
 
     # endregion fields
 
@@ -107,6 +113,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         self.is_active = value
         return self
 
+    def with_key_id(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
+        self.key_id = value
+        return self
+
     def with_namespace(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.namespace = value
         return self
@@ -125,6 +135,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
 
     def with_secret(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.secret = value
+        return self
+
+    def with_team_id(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
+        self.team_id = value
         return self
 
     # endregion with_x methods
@@ -165,6 +179,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             result["IsActive"] = bool(self.is_active)
         elif include_empty:
             result["IsActive"] = bool()
+        if hasattr(self, "key_id"):
+            result["KeyID"] = str(self.key_id)
+        elif include_empty:
+            result["KeyID"] = str()
         if hasattr(self, "namespace"):
             result["Namespace"] = str(self.namespace)
         elif include_empty:
@@ -185,6 +203,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             result["Secret"] = str(self.secret)
         elif include_empty:
             result["Secret"] = str()
+        if hasattr(self, "team_id"):
+            result["TeamID"] = str(self.team_id)
+        elif include_empty:
+            result["TeamID"] = str()
         return result
 
     # endregion to methods
@@ -202,11 +224,13 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         environment: str,
         federation_metadata_url: str,
         is_active: bool,
+        key_id: str,
         namespace: str,
         organization_id: str,
         platform_id: str,
         redirect_uri: str,
         secret: str,
+        team_id: str,
     ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         instance = cls()
         instance.acsurl = acsurl
@@ -217,11 +241,13 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         instance.environment = environment
         instance.federation_metadata_url = federation_metadata_url
         instance.is_active = is_active
+        instance.key_id = key_id
         instance.namespace = namespace
         instance.organization_id = organization_id
         instance.platform_id = platform_id
         instance.redirect_uri = redirect_uri
         instance.secret = secret
+        instance.team_id = team_id
         return instance
 
     @classmethod
@@ -261,6 +287,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             instance.is_active = bool(dict_["IsActive"])
         elif include_empty:
             instance.is_active = bool()
+        if "KeyID" in dict_ and dict_["KeyID"] is not None:
+            instance.key_id = str(dict_["KeyID"])
+        elif include_empty:
+            instance.key_id = str()
         if "Namespace" in dict_ and dict_["Namespace"] is not None:
             instance.namespace = str(dict_["Namespace"])
         elif include_empty:
@@ -281,6 +311,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             instance.secret = str(dict_["Secret"])
         elif include_empty:
             instance.secret = str()
+        if "TeamID" in dict_ and dict_["TeamID"] is not None:
+            instance.team_id = str(dict_["TeamID"])
+        elif include_empty:
+            instance.team_id = str()
         return instance
 
     @staticmethod
@@ -294,11 +328,13 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             "Environment": "environment",
             "FederationMetadataURL": "federation_metadata_url",
             "IsActive": "is_active",
+            "KeyID": "key_id",
             "Namespace": "namespace",
             "OrganizationId": "organization_id",
             "PlatformId": "platform_id",
             "RedirectUri": "redirect_uri",
             "Secret": "secret",
+            "TeamID": "team_id",
         }
 
     # endregion static methods

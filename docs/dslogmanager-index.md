@@ -1,4 +1,4 @@
-# justice-ds-log-manager-service Index (1.3.0)
+# justice-ds-log-manager-service Index (1.4.0)
 
 
 ## Operations

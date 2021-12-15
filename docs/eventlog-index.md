@@ -1,4 +1,4 @@
-# justice-event-log-service Index (1.18.3)
+# justice-event-log-service Index
 
 
 ## Operations

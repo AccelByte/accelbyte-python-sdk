@@ -1,6 +1,6 @@
 """Auto-generated top-level package for the justice-iam-service."""
 
-__version__ = "4.7.0"
+__version__ = "4.9.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -83,6 +83,8 @@ from .wrappers import verify_token
 from .wrappers import verify_token_async
 
 # o_auth2_0
+from .wrappers import admin_retrieve_user_third_party_platform_token_v3
+from .wrappers import admin_retrieve_user_third_party_platform_token_v3_async
 from .wrappers import auth_code_request_v3
 from .wrappers import auth_code_request_v3_async
 from .wrappers import authorize_v3
@@ -291,6 +293,8 @@ from .wrappers import admin_get_bulk_user_by_email_address_v3
 from .wrappers import admin_get_bulk_user_by_email_address_v3_async
 from .wrappers import admin_get_list_country_age_restriction_v3
 from .wrappers import admin_get_list_country_age_restriction_v3_async
+from .wrappers import admin_get_list_justice_platform_accounts
+from .wrappers import admin_get_list_justice_platform_accounts_async
 from .wrappers import admin_get_my_user_v3
 from .wrappers import admin_get_my_user_v3_async
 from .wrappers import admin_get_user_ban_v2
@@ -423,6 +427,8 @@ from .wrappers import platform_link
 from .wrappers import platform_link_async
 from .wrappers import platform_unlink
 from .wrappers import platform_unlink_async
+from .wrappers import public_bulk_get_users
+from .wrappers import public_bulk_get_users_async
 from .wrappers import public_create_justice_user
 from .wrappers import public_create_justice_user_async
 from .wrappers import public_create_user_v2
@@ -533,6 +539,8 @@ from .wrappers import admin_update_user_v4
 from .wrappers import admin_update_user_v4_async
 from .wrappers import create_user_from_invitation_v4
 from .wrappers import create_user_from_invitation_v4_async
+from .wrappers import public_create_test_user_v4
+from .wrappers import public_create_test_user_v4_async
 from .wrappers import public_create_user_v4
 from .wrappers import public_create_user_v4_async
 from .wrappers import public_update_user_email_address_v4

@@ -1,11 +1,12 @@
 """Auto-generated package that contains models used by the justice-iam-service."""
 
-__version__ = "4.7.0"
+__version__ = "4.9.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .account_create_test_user_request_v4 import AccountCreateTestUserRequestV4
 from .account_create_user_request_v4 import AccountCreateUserRequestV4
 from .account_create_user_response_v4 import AccountCreateUserResponseV4
 from .account_upgrade_headless_account_request_v4 import AccountUpgradeHeadlessAccountRequestV4
@@ -83,6 +84,8 @@ from .model_create_justice_user_response import ModelCreateJusticeUserResponse
 from .model_disable_user_request import ModelDisableUserRequest
 from .model_email_update_request_v4 import ModelEmailUpdateRequestV4
 from .model_forgot_password_request_v3 import ModelForgotPasswordRequestV3
+from .model_game_user_base_info import ModelGameUserBaseInfo
+from .model_game_user_i_ds_request import ModelGameUserIDsRequest
 from .model_get_admin_users_response import ModelGetAdminUsersResponse
 from .model_get_publisher_user_response import ModelGetPublisherUserResponse
 from .model_get_user_ban_v3_response import ModelGetUserBanV3Response
@@ -94,6 +97,7 @@ from .model_invite_user_response_v3 import ModelInviteUserResponseV3
 from .model_link_platform_account_request import ModelLinkPlatformAccountRequest
 from .model_link_request import ModelLinkRequest
 from .model_list_assigned_users_v4_response import ModelListAssignedUsersV4Response
+from .model_list_bulk_user_game_response import ModelListBulkUserGameResponse
 from .model_list_email_address_request import ModelListEmailAddressRequest
 from .model_list_role_v4_response import ModelListRoleV4Response
 from .model_list_user_response_v3 import ModelListUserResponseV3

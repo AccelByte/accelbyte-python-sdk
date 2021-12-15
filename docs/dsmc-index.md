@@ -1,4 +1,4 @@
-# justice-dsm-controller-service Index (2.8.0)
+# justice-dsm-controller-service Index (2.10.0)
 
 
 ## Operations
@@ -60,6 +60,7 @@
 | /dsmcontroller/admin/namespaces/{namespace}/images/export | GET | ExportImages | [ExportImages](../accelbyte_py_sdk/api/dsmc/operations/image_config/export_images.py) | [export_images](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/images/versions/{version} | GET | GetImageDetail | [GetImageDetail](../accelbyte_py_sdk/api/dsmc/operations/image_config/get_image_detail.py) | [get_image_detail](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/images/limit | GET | GetImageLimit | [GetImageLimit](../accelbyte_py_sdk/api/dsmc/operations/image_config/get_image_limit.py) | [get_image_limit](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) |
+| /dsmcontroller/namespaces/{namespace}/images/versions/{version} | GET | ImageDetailClient | [ImageDetailClient](../accelbyte_py_sdk/api/dsmc/operations/image_config/image_detail_client.py) | [image_detail_client](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) |
 | /dsmcontroller/admin/images/import | POST | ImportImages | [ImportImages](../accelbyte_py_sdk/api/dsmc/operations/image_config/import_images.py) | [import_images](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/images | GET | ListImages | [ListImages](../accelbyte_py_sdk/api/dsmc/operations/image_config/list_images.py) | [list_images](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) |
 | /dsmcontroller/admin/images | PUT | UpdateImage | [UpdateImage](../accelbyte_py_sdk/api/dsmc/operations/image_config/update_image.py) | [update_image](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) |

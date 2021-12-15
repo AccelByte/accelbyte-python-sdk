@@ -1,6 +1,6 @@
 """Auto-generated package that contains utility functions for the justice-platform-service."""
 
-__version__ = "3.37.1"
+__version__ = "3.39.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -524,6 +524,8 @@ from ._payment_station import public_get_unpaid_payment_order_async
 from ._payment_station import public_normalize_payment_return_url
 from ._payment_station import public_normalize_payment_return_url_async
 
+from ._reward import check_event_condition
+from ._reward import check_event_condition_async
 from ._reward import create_reward
 from ._reward import create_reward_async
 from ._reward import delete_reward

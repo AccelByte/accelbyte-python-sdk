@@ -1,6 +1,6 @@
 """Auto-generated package that contains models used by the justice-achievement-service."""
 
-__version__ = "2.6.0"
+__version__ = ""
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

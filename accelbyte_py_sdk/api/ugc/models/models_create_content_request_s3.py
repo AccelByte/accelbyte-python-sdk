@@ -1,4 +1,4 @@
-# justice-ugc-service (1.9.0)
+# justice-ugc-service (1.10.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -28,6 +28,8 @@ class ModelsCreateContentRequestS3(Model):
     """Models create content request S3 (models.CreateContentRequestS3)
 
     Properties:
+        content_type: (contentType) REQUIRED str
+
         file_extension: (fileExtension) REQUIRED str
 
         name: (name) REQUIRED str
@@ -43,6 +45,7 @@ class ModelsCreateContentRequestS3(Model):
 
     # region fields
 
+    content_type: str                                                                              # REQUIRED
     file_extension: str                                                                            # REQUIRED
     name: str                                                                                      # REQUIRED
     preview: str                                                                                   # REQUIRED
@@ -53,6 +56,10 @@ class ModelsCreateContentRequestS3(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_content_type(self, value: str) -> ModelsCreateContentRequestS3:
+        self.content_type = value
+        return self
 
     def with_file_extension(self, value: str) -> ModelsCreateContentRequestS3:
         self.file_extension = value
@@ -84,6 +91,10 @@ class ModelsCreateContentRequestS3(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "content_type"):
+            result["contentType"] = str(self.content_type)
+        elif include_empty:
+            result["contentType"] = str()
         if hasattr(self, "file_extension"):
             result["fileExtension"] = str(self.file_extension)
         elif include_empty:
@@ -117,6 +128,7 @@ class ModelsCreateContentRequestS3(Model):
     @classmethod
     def create(
         cls,
+        content_type: str,
         file_extension: str,
         name: str,
         preview: str,
@@ -125,6 +137,7 @@ class ModelsCreateContentRequestS3(Model):
         type_: str,
     ) -> ModelsCreateContentRequestS3:
         instance = cls()
+        instance.content_type = content_type
         instance.file_extension = file_extension
         instance.name = name
         instance.preview = preview
@@ -138,6 +151,10 @@ class ModelsCreateContentRequestS3(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "contentType" in dict_ and dict_["contentType"] is not None:
+            instance.content_type = str(dict_["contentType"])
+        elif include_empty:
+            instance.content_type = str()
         if "fileExtension" in dict_ and dict_["fileExtension"] is not None:
             instance.file_extension = str(dict_["fileExtension"])
         elif include_empty:
@@ -167,6 +184,7 @@ class ModelsCreateContentRequestS3(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "contentType": "content_type",
             "fileExtension": "file_extension",
             "name": "name",
             "preview": "preview",

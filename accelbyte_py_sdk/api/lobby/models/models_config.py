@@ -1,4 +1,4 @@
-# justice-lobby-server (1.33.0)
+# justice-lobby-server (staging)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -30,6 +30,8 @@ class ModelsConfig(Model):
     Properties:
         auto_kick_on_disconnect: (autoKickOnDisconnect) OPTIONAL bool
 
+        auto_kick_on_disconnect_delay: (autoKickOnDisconnectDelay) OPTIONAL int
+
         cancel_ticket_on_disconnect: (cancelTicketOnDisconnect) OPTIONAL bool
 
         chat_rate_limit_burst: (chatRateLimitBurst) OPTIONAL int
@@ -60,6 +62,7 @@ class ModelsConfig(Model):
     # region fields
 
     auto_kick_on_disconnect: bool                                                                  # OPTIONAL
+    auto_kick_on_disconnect_delay: int                                                             # OPTIONAL
     cancel_ticket_on_disconnect: bool                                                              # OPTIONAL
     chat_rate_limit_burst: int                                                                     # OPTIONAL
     chat_rate_limit_duration: int                                                                  # OPTIONAL
@@ -80,6 +83,10 @@ class ModelsConfig(Model):
 
     def with_auto_kick_on_disconnect(self, value: bool) -> ModelsConfig:
         self.auto_kick_on_disconnect = value
+        return self
+
+    def with_auto_kick_on_disconnect_delay(self, value: int) -> ModelsConfig:
+        self.auto_kick_on_disconnect_delay = value
         return self
 
     def with_cancel_ticket_on_disconnect(self, value: bool) -> ModelsConfig:
@@ -144,6 +151,10 @@ class ModelsConfig(Model):
             result["autoKickOnDisconnect"] = bool(self.auto_kick_on_disconnect)
         elif include_empty:
             result["autoKickOnDisconnect"] = bool()
+        if hasattr(self, "auto_kick_on_disconnect_delay"):
+            result["autoKickOnDisconnectDelay"] = int(self.auto_kick_on_disconnect_delay)
+        elif include_empty:
+            result["autoKickOnDisconnectDelay"] = int()
         if hasattr(self, "cancel_ticket_on_disconnect"):
             result["cancelTicketOnDisconnect"] = bool(self.cancel_ticket_on_disconnect)
         elif include_empty:
@@ -206,6 +217,7 @@ class ModelsConfig(Model):
     def create(
         cls,
         auto_kick_on_disconnect: Optional[bool] = None,
+        auto_kick_on_disconnect_delay: Optional[int] = None,
         cancel_ticket_on_disconnect: Optional[bool] = None,
         chat_rate_limit_burst: Optional[int] = None,
         chat_rate_limit_duration: Optional[int] = None,
@@ -223,6 +235,8 @@ class ModelsConfig(Model):
         instance = cls()
         if auto_kick_on_disconnect is not None:
             instance.auto_kick_on_disconnect = auto_kick_on_disconnect
+        if auto_kick_on_disconnect_delay is not None:
+            instance.auto_kick_on_disconnect_delay = auto_kick_on_disconnect_delay
         if cancel_ticket_on_disconnect is not None:
             instance.cancel_ticket_on_disconnect = cancel_ticket_on_disconnect
         if chat_rate_limit_burst is not None:
@@ -260,6 +274,10 @@ class ModelsConfig(Model):
             instance.auto_kick_on_disconnect = bool(dict_["autoKickOnDisconnect"])
         elif include_empty:
             instance.auto_kick_on_disconnect = bool()
+        if "autoKickOnDisconnectDelay" in dict_ and dict_["autoKickOnDisconnectDelay"] is not None:
+            instance.auto_kick_on_disconnect_delay = int(dict_["autoKickOnDisconnectDelay"])
+        elif include_empty:
+            instance.auto_kick_on_disconnect_delay = int()
         if "cancelTicketOnDisconnect" in dict_ and dict_["cancelTicketOnDisconnect"] is not None:
             instance.cancel_ticket_on_disconnect = bool(dict_["cancelTicketOnDisconnect"])
         elif include_empty:
@@ -318,6 +336,7 @@ class ModelsConfig(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "autoKickOnDisconnect": "auto_kick_on_disconnect",
+            "autoKickOnDisconnectDelay": "auto_kick_on_disconnect_delay",
             "cancelTicketOnDisconnect": "cancel_ticket_on_disconnect",
             "chatRateLimitBurst": "chat_rate_limit_burst",
             "chatRateLimitDuration": "chat_rate_limit_duration",

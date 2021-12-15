@@ -1,4 +1,4 @@
-# justice-lobby-server Index (1.33.0)
+# justice-lobby-server Index (staging)
 
 
 ## Operations
@@ -16,6 +16,8 @@
 | /lobby/v1/admin/config | GET | adminGetAllConfigV1 | [AdminGetAllConfigV1](../accelbyte_py_sdk/api/lobby/operations/config/admin_get_all_config_v1.py) | [admin_get_all_config_v1](../accelbyte_py_sdk/api/lobby/wrappers/_config.py) |
 | /lobby/v1/admin/config/namespaces/{namespace} | GET | adminGetConfigV1 | [AdminGetConfigV1](../accelbyte_py_sdk/api/lobby/operations/config/admin_get_config_v1.py) | [admin_get_config_v1](../accelbyte_py_sdk/api/lobby/wrappers/_config.py) |
 | /lobby/v1/admin/config/namespaces/{namespace} | PUT | adminUpdateConfigV1 | [AdminUpdateConfigV1](../accelbyte_py_sdk/api/lobby/operations/config/admin_update_config_v1.py) | [admin_update_config_v1](../accelbyte_py_sdk/api/lobby/wrappers/_config.py) |
+| /lobby/v1/admin/config/namespaces/{namespace}/export | GET | ExportConfig | [ExportConfig](../accelbyte_py_sdk/api/lobby/operations/config/export_config.py) | [export_config](../accelbyte_py_sdk/api/lobby/wrappers/_config.py) |
+| /lobby/v1/admin/config/namespaces/{namespace}/import | POST | ImportConfig | [ImportConfig](../accelbyte_py_sdk/api/lobby/operations/config/import_config.py) | [import_config](../accelbyte_py_sdk/api/lobby/wrappers/_config.py) |
 
 ### friends
 | Endpoint | Method | ID | Class | Wrapper |
@@ -92,6 +94,7 @@
 |---|---|---|---|---|
 | /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/bulk/block | POST | adminBulkBlockPlayersV1 | [AdminBulkBlockPlayersV1](../accelbyte_py_sdk/api/lobby/operations/player/admin_bulk_block_players_v1.py) | [admin_bulk_block_players_v1](../accelbyte_py_sdk/api/lobby/wrappers/_player.py) |
 | /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/attributes | GET | adminGetAllPlayerSessionAttribute | [AdminGetAllPlayerSessionAttribute](../accelbyte_py_sdk/api/lobby/operations/player/admin_get_all_player_session_attribute.py) | [admin_get_all_player_session_attribute](../accelbyte_py_sdk/api/lobby/wrappers/_player.py) |
+| /lobby/v1/admin/player/namespaces/{namespace}/ccu | GET | adminGetLobbyCCU | [AdminGetLobbyCCU](../accelbyte_py_sdk/api/lobby/operations/player/admin_get_lobby_ccu.py) | [admin_get_lobby_ccu](../accelbyte_py_sdk/api/lobby/wrappers/_player.py) |
 | /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/blocked-by | GET | adminGetPlayerBlockedByPlayersV1 | [AdminGetPlayerBlockedByPlayersV1](../accelbyte_py_sdk/api/lobby/operations/player/admin_get_player_blocked_by_players_v1.py) | [admin_get_player_blocked_by_players_v1](../accelbyte_py_sdk/api/lobby/wrappers/_player.py) |
 | /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/blocked | GET | adminGetPlayerBlockedPlayersV1 | [AdminGetPlayerBlockedPlayersV1](../accelbyte_py_sdk/api/lobby/operations/player/admin_get_player_blocked_players_v1.py) | [admin_get_player_blocked_players_v1](../accelbyte_py_sdk/api/lobby/wrappers/_player.py) |
 | /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/attributes/{attribute} | GET | adminGetPlayerSessionAttribute | [AdminGetPlayerSessionAttribute](../accelbyte_py_sdk/api/lobby/operations/player/admin_get_player_session_attribute.py) | [admin_get_player_session_attribute](../accelbyte_py_sdk/api/lobby/wrappers/_player.py) |
@@ -184,6 +187,7 @@
 | models.BlockedByPlayerData | [ModelsBlockedByPlayerData](../accelbyte_py_sdk/api/lobby/models/models_blocked_by_player_data.py) |
 | models.BlockedPlayerData | [ModelsBlockedPlayerData](../accelbyte_py_sdk/api/lobby/models/models_blocked_player_data.py) |
 | models.Config | [ModelsConfig](../accelbyte_py_sdk/api/lobby/models/models_config.py) |
+| models.ConfigExport | [ModelsConfigExport](../accelbyte_py_sdk/api/lobby/models/models_config_export.py) |
 | models.ConfigList | [ModelsConfigList](../accelbyte_py_sdk/api/lobby/models/models_config_list.py) |
 | models.ConfigReq | [ModelsConfigReq](../accelbyte_py_sdk/api/lobby/models/models_config_req.py) |
 | models.CreateConfigRequest | [ModelsCreateConfigRequest](../accelbyte_py_sdk/api/lobby/models/models_create_config_request.py) |
@@ -193,7 +197,9 @@
 | models.GetAllPlayerBlockedUsersResponse | [ModelsGetAllPlayerBlockedUsersResponse](../accelbyte_py_sdk/api/lobby/models/models_get_all_player_blocked_users_response.py) |
 | models.GetAllPlayerSessionAttributeResponse | [ModelsGetAllPlayerSessionAttributeResponse](../accelbyte_py_sdk/api/lobby/models/models_get_all_player_session_attribute_response.py) |
 | models.GetConfigResponse | [ModelsGetConfigResponse](../accelbyte_py_sdk/api/lobby/models/models_get_config_response.py) |
+| models.GetLobbyCcuResponse | [ModelsGetLobbyCcuResponse](../accelbyte_py_sdk/api/lobby/models/models_get_lobby_ccu_response.py) |
 | models.GetPlayerSessionAttributeResponse | [ModelsGetPlayerSessionAttributeResponse](../accelbyte_py_sdk/api/lobby/models/models_get_player_session_attribute_response.py) |
+| models.ImportConfigResponse | [ModelsImportConfigResponse](../accelbyte_py_sdk/api/lobby/models/models_import_config_response.py) |
 | models.ListBlockedPlayerRequest | [ModelsListBlockedPlayerRequest](../accelbyte_py_sdk/api/lobby/models/models_list_blocked_player_request.py) |
 | models.PartyData | [ModelsPartyData](../accelbyte_py_sdk/api/lobby/models/models_party_data.py) |
 | models.PartyPUTCustomAttributesRequest | [ModelsPartyPUTCustomAttributesRequest](../accelbyte_py_sdk/api/lobby/models/models_party_put_custom_attributes_request.py) |
@@ -202,5 +208,6 @@
 | models.SetPlayerSessionAttributeRequest | [ModelsSetPlayerSessionAttributeRequest](../accelbyte_py_sdk/api/lobby/models/models_set_player_session_attribute_request.py) |
 | models.UpdateConfigRequest | [ModelsUpdateConfigRequest](../accelbyte_py_sdk/api/lobby/models/models_update_config_request.py) |
 | models.UpdateConfigResponse | [ModelsUpdateConfigResponse](../accelbyte_py_sdk/api/lobby/models/models_update_config_response.py) |
+| response.Error | [ResponseError](../accelbyte_py_sdk/api/lobby/models/response_error.py) |
 | restapi.ErrorResponseBody | [RestapiErrorResponseBody](../accelbyte_py_sdk/api/lobby/models/restapi_error_response_body.py) |
 | restapi.ErrorResponseV1 | [RestapiErrorResponseV1](../accelbyte_py_sdk/api/lobby/models/restapi_error_response_v1.py) |

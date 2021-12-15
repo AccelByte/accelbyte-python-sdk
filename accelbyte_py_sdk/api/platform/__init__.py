@@ -1,6 +1,6 @@
 """Auto-generated top-level package for the justice-platform-service."""
 
-__version__ = "3.37.1"
+__version__ = "3.39.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -543,6 +543,8 @@ from .wrappers import public_normalize_payment_return_url
 from .wrappers import public_normalize_payment_return_url_async
 
 # reward
+from .wrappers import check_event_condition
+from .wrappers import check_event_condition_async
 from .wrappers import create_reward
 from .wrappers import create_reward_async
 from .wrappers import delete_reward

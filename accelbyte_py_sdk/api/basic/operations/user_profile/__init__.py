@@ -1,5 +1,6 @@
 # pylint: disable=line-too-long
 
+from .admin_get_user_profile_public_info_by_ids import AdminGetUserProfilePublicInfoByIds
 from .create_my_profile import CreateMyProfile
 from .delete_user_profile import DeleteUserProfile
 from .get_custom_attributes_info import GetCustomAttributesInfo

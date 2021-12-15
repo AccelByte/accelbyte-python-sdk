@@ -1,4 +1,4 @@
-# justice-iam-service (4.7.0)
+# justice-iam-service (4.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -44,11 +44,15 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
 
         is_active: (IsActive) REQUIRED bool
 
+        key_id: (KeyID) REQUIRED str
+
         organization_id: (OrganizationId) REQUIRED str
 
         redirect_uri: (RedirectUri) REQUIRED str
 
         secret: (Secret) REQUIRED str
+
+        team_id: (TeamID) REQUIRED str
     """
 
     # region fields
@@ -61,9 +65,11 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     environment: str                                                                               # REQUIRED
     federation_metadata_url: str                                                                   # REQUIRED
     is_active: bool                                                                                # REQUIRED
+    key_id: str                                                                                    # REQUIRED
     organization_id: str                                                                           # REQUIRED
     redirect_uri: str                                                                              # REQUIRED
     secret: str                                                                                    # REQUIRED
+    team_id: str                                                                                   # REQUIRED
 
     # endregion fields
 
@@ -101,6 +107,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         self.is_active = value
         return self
 
+    def with_key_id(self, value: str) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.key_id = value
+        return self
+
     def with_organization_id(self, value: str) -> ModelThirdPartyLoginPlatformCredentialRequest:
         self.organization_id = value
         return self
@@ -111,6 +121,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
 
     def with_secret(self, value: str) -> ModelThirdPartyLoginPlatformCredentialRequest:
         self.secret = value
+        return self
+
+    def with_team_id(self, value: str) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.team_id = value
         return self
 
     # endregion with_x methods
@@ -151,6 +165,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             result["IsActive"] = bool(self.is_active)
         elif include_empty:
             result["IsActive"] = bool()
+        if hasattr(self, "key_id"):
+            result["KeyID"] = str(self.key_id)
+        elif include_empty:
+            result["KeyID"] = str()
         if hasattr(self, "organization_id"):
             result["OrganizationId"] = str(self.organization_id)
         elif include_empty:
@@ -163,6 +181,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             result["Secret"] = str(self.secret)
         elif include_empty:
             result["Secret"] = str()
+        if hasattr(self, "team_id"):
+            result["TeamID"] = str(self.team_id)
+        elif include_empty:
+            result["TeamID"] = str()
         return result
 
     # endregion to methods
@@ -180,9 +202,11 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         environment: str,
         federation_metadata_url: str,
         is_active: bool,
+        key_id: str,
         organization_id: str,
         redirect_uri: str,
         secret: str,
+        team_id: str,
     ) -> ModelThirdPartyLoginPlatformCredentialRequest:
         instance = cls()
         instance.acsurl = acsurl
@@ -193,9 +217,11 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         instance.environment = environment
         instance.federation_metadata_url = federation_metadata_url
         instance.is_active = is_active
+        instance.key_id = key_id
         instance.organization_id = organization_id
         instance.redirect_uri = redirect_uri
         instance.secret = secret
+        instance.team_id = team_id
         return instance
 
     @classmethod
@@ -235,6 +261,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             instance.is_active = bool(dict_["IsActive"])
         elif include_empty:
             instance.is_active = bool()
+        if "KeyID" in dict_ and dict_["KeyID"] is not None:
+            instance.key_id = str(dict_["KeyID"])
+        elif include_empty:
+            instance.key_id = str()
         if "OrganizationId" in dict_ and dict_["OrganizationId"] is not None:
             instance.organization_id = str(dict_["OrganizationId"])
         elif include_empty:
@@ -247,6 +277,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             instance.secret = str(dict_["Secret"])
         elif include_empty:
             instance.secret = str()
+        if "TeamID" in dict_ and dict_["TeamID"] is not None:
+            instance.team_id = str(dict_["TeamID"])
+        elif include_empty:
+            instance.team_id = str()
         return instance
 
     @staticmethod
@@ -260,9 +294,11 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "Environment": "environment",
             "FederationMetadataURL": "federation_metadata_url",
             "IsActive": "is_active",
+            "KeyID": "key_id",
             "OrganizationId": "organization_id",
             "RedirectUri": "redirect_uri",
             "Secret": "secret",
+            "TeamID": "team_id",
         }
 
     # endregion static methods

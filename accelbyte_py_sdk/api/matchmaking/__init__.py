@@ -1,6 +1,6 @@
 """Auto-generated top-level package for the Justice Matchmaking Service."""
 
-__version__ = "2.10.0"
+__version__ = "2.12.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

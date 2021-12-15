@@ -1,5 +1,6 @@
 # pylint: disable=line-too-long
 
+from .check_event_condition import CheckEventCondition
 from .create_reward import CreateReward
 from .delete_reward import DeleteReward
 from .export_rewards import ExportRewards

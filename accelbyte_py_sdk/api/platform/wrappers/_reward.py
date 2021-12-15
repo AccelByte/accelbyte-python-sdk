@@ -20,13 +20,16 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import ConditionMatchResult
 from ..models import ErrorEntity
+from ..models import EventPayload
 from ..models import RewardCreate
 from ..models import RewardInfo
 from ..models import RewardPagingSlicedResult
 from ..models import RewardUpdate
 from ..models import ValidationErrorEntity
 
+from ..operations.reward import CheckEventCondition
 from ..operations.reward import CreateReward
 from ..operations.reward import DeleteReward
 from ..operations.reward import ExportRewards
@@ -37,6 +40,34 @@ from ..operations.reward import ImportRewards
 from ..operations.reward import QueryRewards
 from ..operations.reward import QueryRewards1
 from ..operations.reward import UpdateReward
+
+
+@same_doc_as(CheckEventCondition)
+def check_event_condition(reward_id: str, body: Optional[EventPayload] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CheckEventCondition.create(
+        reward_id=reward_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(CheckEventCondition)
+async def check_event_condition_async(reward_id: str, body: Optional[EventPayload] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CheckEventCondition.create(
+        reward_id=reward_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(CreateReward)

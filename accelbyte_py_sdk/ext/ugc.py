@@ -1,4 +1,4 @@
-# justice-ugc-service (1.9.0)
+# justice-ugc-service (1.10.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -134,6 +134,7 @@ def create_models_create_content_request_example() -> ModelsCreateContentRequest
 
 def create_models_create_content_request_s3_example() -> ModelsCreateContentRequestS3:
     instance = ModelsCreateContentRequestS3()
+    instance.content_type = randomize()
     instance.file_extension = randomize()
     instance.name = randomize()
     instance.preview = randomize()
@@ -160,6 +161,7 @@ def create_models_create_content_response_example() -> ModelsCreateContentRespon
     instance.tags = [randomize()]
     instance.type_ = randomize()
     instance.user_id = randomize("uid")
+    instance.content_type = randomize()
     instance.payload_url = randomize("url")
     return instance
 
@@ -190,6 +192,7 @@ def create_models_create_screenshot_request_example() -> ModelsCreateScreenshotR
 
 def create_models_create_screenshot_request_item_example() -> ModelsCreateScreenshotRequestItem:
     instance = ModelsCreateScreenshotRequestItem()
+    instance.content_type = randomize()
     instance.description = randomize()
     instance.file_extension = randomize()
     return instance
@@ -329,6 +332,7 @@ def create_models_screenshot_response_example() -> ModelsScreenshotResponse:
     instance.screenshot_id = randomize()
     instance.source = randomize()
     instance.url = randomize("url")
+    instance.content_type = randomize()
     return instance
 
 

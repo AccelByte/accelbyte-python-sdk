@@ -1,4 +1,4 @@
-# justice-ugc-service (1.9.0)
+# justice-ugc-service (1.10.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,7 +33,11 @@ class AdminUploadContentScreenshot(Operation):
     """Upload screenshots for content (AdminUploadContentScreenshot)
 
     Required permission <b>ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT
-    [CREATE]</b>.n All request body are required.
+    [CREATE]</b>.n All request body are required except for contentType field.
+    contentType values is used to enforce the Content-Type header needed by the
+    client to upload the content using the presigned URL. If not specified, it
+    will use fileExtension value. Supported file extensions: pjp, jpg, jpeg, jfif,
+    bmp, png. n Maximum description length: 1024.
 
 
     Properties:
@@ -61,6 +65,8 @@ class AdminUploadContentScreenshot(Operation):
         400: Bad Request - ResponseError (Bad Request)
 
         401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
@@ -209,6 +215,8 @@ class AdminUploadContentScreenshot(Operation):
 
         401: Unauthorized - ResponseError (Unauthorized)
 
+        404: Not Found - ResponseError (Not Found)
+
         500: Internal Server Error - ResponseError (Internal Server Error)
         """
         if code == 201:
@@ -216,6 +224,8 @@ class AdminUploadContentScreenshot(Operation):
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 401:
+            return None, ResponseError.create_from_dict(content)
+        if code == 404:
             return None, ResponseError.create_from_dict(content)
         if code == 500:
             return None, ResponseError.create_from_dict(content)

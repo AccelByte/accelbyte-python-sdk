@@ -1,4 +1,4 @@
-# justice-iam-service (4.7.0)
+# justice-iam-service (4.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -47,7 +47,8 @@ class AdminSearchUserV3(Operation):
     platformId they have linked to </li> <li>if platformBy parameter is defined
     and by parameter is using thirdparty, endpoint will search users based on the
     platformUserId or platformDisplayName they have linked to, example value:
-    platformUserId or platformDisplayName</li> </ul></p> <br>action code : 10133
+    platformUserId or platformDisplayName</li> <li>if limit is not defined, The
+    default limit is 100</li> </ul></p> <br>action code : 10133
 
 
     Properties:

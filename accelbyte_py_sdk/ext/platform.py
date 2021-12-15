@@ -1,4 +1,4 @@
-# justice-platform-service (3.37.1)
+# justice-platform-service (3.39.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -51,6 +51,7 @@ from ..api.platform.models import CodeCreate
 from ..api.platform.models import CodeCreateResult
 from ..api.platform.models import CodeInfo
 from ..api.platform.models import CodeInfoPagingSlicedResult
+from ..api.platform.models import ConditionMatchResult
 from ..api.platform.models import CreditRequest
 from ..api.platform.models import CreditSummary
 from ..api.platform.models import CurrencyConfig
@@ -74,6 +75,7 @@ from ..api.platform.models import EpicGamesIAPConfigRequest
 from ..api.platform.models import EpicGamesReconcileRequest
 from ..api.platform.models import EpicGamesReconcileResult
 from ..api.platform.models import ErrorEntity
+from ..api.platform.models import EventPayload
 from ..api.platform.models import ExternalPaymentOrderCreate
 from ..api.platform.models import FieldValidationError
 from ..api.platform.models import FulfillCodeRequest
@@ -603,6 +605,14 @@ def create_code_info_paging_sliced_result_example() -> CodeInfoPagingSlicedResul
     return instance
 
 
+def create_condition_match_result_example() -> ConditionMatchResult:
+    instance = ConditionMatchResult()
+    instance.matched = randomize("bool")
+    instance.matched_conditions = [{randomize(): randomize()}]
+    instance.not_match_reason = randomize()
+    return instance
+
+
 def create_credit_request_example() -> CreditRequest:
     instance = CreditRequest()
     instance.amount = randomize("int", min_val=1, max_val=1000)
@@ -836,6 +846,12 @@ def create_error_entity_example() -> ErrorEntity:
     return instance
 
 
+def create_event_payload_example() -> EventPayload:
+    instance = EventPayload()
+    instance.payload = {randomize(): randomize()}
+    return instance
+
+
 def create_external_payment_order_create_example() -> ExternalPaymentOrderCreate:
     instance = ExternalPaymentOrderCreate()
     instance.description = randomize()
@@ -928,6 +944,7 @@ def create_fulfillment_item_example() -> FulfillmentItem:
 def create_fulfillment_request_example() -> FulfillmentRequest:
     instance = FulfillmentRequest()
     instance.quantity = randomize("int", min_val=1, max_val=1000)
+    instance.duration = randomize("int", min_val=1, max_val=1000)
     instance.end_date = randomize("date")
     instance.item_id = randomize()
     instance.item_sku = randomize()
@@ -1131,10 +1148,12 @@ def create_hierarchical_category_info_example() -> HierarchicalCategoryInfo:
 
 def create_iap_order_info_example() -> IAPOrderInfo:
     instance = IAPOrderInfo()
+    instance.created_at = randomize("date")
     instance.iap_order_no = randomize()
     instance.namespace = randomize("slug")
     instance.status = randomize()
     instance.type_ = randomize()
+    instance.updated_at = randomize("date")
     instance.user_id = randomize("uid")
     instance.credits = [create_credit_summary_example()]
     instance.entitlements = [create_entitlement_summary_example()]
@@ -1144,6 +1163,7 @@ def create_iap_order_info_example() -> IAPOrderInfo:
     instance.quantity = randomize("int", min_val=1, max_val=1000)
     instance.receipt_data = randomize()
     instance.region = randomize()
+    instance.retry_count = randomize("int", min_val=1, max_val=1000)
     instance.sandbox = randomize("bool")
     instance.status_reason = randomize()
     instance.transaction_id = randomize("uid")
@@ -2259,6 +2279,7 @@ def create_reward_info_example() -> RewardInfo:
 
 def create_reward_item_example() -> RewardItem:
     instance = RewardItem()
+    instance.duration = randomize("int", min_val=1, max_val=1000)
     instance.item_id = randomize()
     instance.quantity = randomize("int", min_val=1, max_val=1000)
     return instance

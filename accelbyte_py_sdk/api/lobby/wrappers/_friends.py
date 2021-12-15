@@ -106,24 +106,28 @@ async def get_list_of_friends_async(user_id: str, limit: Optional[str] = None, o
 
 
 @same_doc_as(GetUserFriendsUpdated)
-def get_user_friends_updated(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_user_friends_updated(limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetUserFriendsUpdated.create(
+        limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(GetUserFriendsUpdated)
-async def get_user_friends_updated_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_user_friends_updated_async(limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetUserFriendsUpdated.create(
+        limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)

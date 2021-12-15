@@ -1,4 +1,4 @@
-# justice-iam-service (4.7.0)
+# justice-iam-service (4.9.0)
 
 # Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -34,7 +34,7 @@ class PublicSearchUserV3(Operation):
     <p>Requires valid user access token</p> <p>This endpoint search all users on
     the specified namespace that match the query on these fields: display name,
     and username. The query length should greater than 1，otherwise will not query
-    the database</p> <br>action code : 10132
+    the database. The default limit value is 100</p> <br>action code : 10132
 
 
     Properties:
