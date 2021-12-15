@@ -6,18 +6,18 @@ __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
-from ._pass import create_pass
-from ._pass import create_pass_async
-from ._pass import delete_pass
-from ._pass import delete_pass_async
-from ._pass import get_pass
-from ._pass import get_pass_async
-from ._pass import grant_user_pass
-from ._pass import grant_user_pass_async
-from ._pass import query_passes
-from ._pass import query_passes_async
-from ._pass import update_pass
-from ._pass import update_pass_async
+from ._pass_ import create_pass
+from ._pass_ import create_pass_async
+from ._pass_ import delete_pass
+from ._pass_ import delete_pass_async
+from ._pass_ import get_pass
+from ._pass_ import get_pass_async
+from ._pass_ import grant_user_pass
+from ._pass_ import grant_user_pass_async
+from ._pass_ import query_passes
+from ._pass_ import query_passes_async
+from ._pass_ import update_pass
+from ._pass_ import update_pass_async
 
 from ._reward import create_reward
 from ._reward import create_reward_async

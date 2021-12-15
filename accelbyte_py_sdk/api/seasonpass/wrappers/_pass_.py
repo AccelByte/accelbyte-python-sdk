@@ -28,12 +28,12 @@ from ..models import UserPassGrant
 from ..models import UserSeasonSummary
 from ..models import ValidationErrorEntity
 
-from ..operations.pass import CreatePass
-from ..operations.pass import DeletePass
-from ..operations.pass import GetPass
-from ..operations.pass import GrantUserPass
-from ..operations.pass import QueryPasses
-from ..operations.pass import UpdatePass
+from ..operations.pass_ import CreatePass
+from ..operations.pass_ import DeletePass
+from ..operations.pass_ import GetPass
+from ..operations.pass_ import GrantUserPass
+from ..operations.pass_ import QueryPasses
+from ..operations.pass_ import UpdatePass
 
 
 @same_doc_as(CreatePass)

@@ -6,12 +6,12 @@
 ### Pass
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
-| /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/passes | POST | createPass | [CreatePass](../accelbyte_py_sdk/api/seasonpass/operations/pass/create_pass.py) | [create_pass](../accelbyte_py_sdk/api/seasonpass/wrappers/_pass.py) |
-| /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/passes/{code} | DELETE | deletePass | [DeletePass](../accelbyte_py_sdk/api/seasonpass/operations/pass/delete_pass.py) | [delete_pass](../accelbyte_py_sdk/api/seasonpass/wrappers/_pass.py) |
-| /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/passes/{code} | GET | getPass | [GetPass](../accelbyte_py_sdk/api/seasonpass/operations/pass/get_pass.py) | [get_pass](../accelbyte_py_sdk/api/seasonpass/wrappers/_pass.py) |
-| /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/passes | POST | grantUserPass | [GrantUserPass](../accelbyte_py_sdk/api/seasonpass/operations/pass/grant_user_pass.py) | [grant_user_pass](../accelbyte_py_sdk/api/seasonpass/wrappers/_pass.py) |
-| /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/passes | GET | queryPasses | [QueryPasses](../accelbyte_py_sdk/api/seasonpass/operations/pass/query_passes.py) | [query_passes](../accelbyte_py_sdk/api/seasonpass/wrappers/_pass.py) |
-| /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/passes/{code} | PATCH | updatePass | [UpdatePass](../accelbyte_py_sdk/api/seasonpass/operations/pass/update_pass.py) | [update_pass](../accelbyte_py_sdk/api/seasonpass/wrappers/_pass.py) |
+| /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/passes | POST | createPass | [CreatePass](../accelbyte_py_sdk/api/seasonpass/operations/pass_/create_pass.py) | [create_pass](../accelbyte_py_sdk/api/seasonpass/wrappers/_pass_.py) |
+| /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/passes/{code} | DELETE | deletePass | [DeletePass](../accelbyte_py_sdk/api/seasonpass/operations/pass_/delete_pass.py) | [delete_pass](../accelbyte_py_sdk/api/seasonpass/wrappers/_pass_.py) |
+| /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/passes/{code} | GET | getPass | [GetPass](../accelbyte_py_sdk/api/seasonpass/operations/pass_/get_pass.py) | [get_pass](../accelbyte_py_sdk/api/seasonpass/wrappers/_pass_.py) |
+| /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/passes | POST | grantUserPass | [GrantUserPass](../accelbyte_py_sdk/api/seasonpass/operations/pass_/grant_user_pass.py) | [grant_user_pass](../accelbyte_py_sdk/api/seasonpass/wrappers/_pass_.py) |
+| /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/passes | GET | queryPasses | [QueryPasses](../accelbyte_py_sdk/api/seasonpass/operations/pass_/query_passes.py) | [query_passes](../accelbyte_py_sdk/api/seasonpass/wrappers/_pass_.py) |
+| /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/passes/{code} | PATCH | updatePass | [UpdatePass](../accelbyte_py_sdk/api/seasonpass/operations/pass_/update_pass.py) | [update_pass](../accelbyte_py_sdk/api/seasonpass/wrappers/_pass_.py) |
 
 ### Reward
 | Endpoint | Method | ID | Class | Wrapper |
