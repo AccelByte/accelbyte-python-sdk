@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.legal import anonymize_user_agreement as anonymize_user_agreement_internal
-from ....api.legal.models import ErrorEntity
+from accelbyte_py_sdk.api.legal import anonymize_user_agreement as anonymize_user_agreement_internal
+from accelbyte_py_sdk.api.legal.models import ErrorEntity
 
 
 @click.command()

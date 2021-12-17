@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import delete_sso_login_platform_credential_v3 as delete_sso_login_platform_credential_v3_internal
-from ....api.iam.models import RestErrorResponse
+from accelbyte_py_sdk.api.iam import delete_sso_login_platform_credential_v3 as delete_sso_login_platform_credential_v3_internal
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

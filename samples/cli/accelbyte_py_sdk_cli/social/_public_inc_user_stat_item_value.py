@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.social import public_inc_user_stat_item_value as public_inc_user_stat_item_value_internal
-from ....api.social.models import ErrorEntity
-from ....api.social.models import StatItemInc
-from ....api.social.models import StatItemIncResult
+from accelbyte_py_sdk.api.social import public_inc_user_stat_item_value as public_inc_user_stat_item_value_internal
+from accelbyte_py_sdk.api.social.models import ErrorEntity
+from accelbyte_py_sdk.api.social.models import StatItemInc
+from accelbyte_py_sdk.api.social.models import StatItemIncResult
 
 
 @click.command()

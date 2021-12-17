@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.ugc import admin_search_content as admin_search_content_internal
-from ....api.ugc.models import ModelsPaginatedContentDownloadResponse
-from ....api.ugc.models import ResponseError
+from accelbyte_py_sdk.api.ugc import admin_search_content as admin_search_content_internal
+from accelbyte_py_sdk.api.ugc.models import ModelsPaginatedContentDownloadResponse
+from accelbyte_py_sdk.api.ugc.models import ResponseError
 
 
 @click.command()

@@ -24,11 +24,11 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import update_app as update_app_internal
-from ....api.platform.models import AppUpdate
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import FullAppInfo
-from ....api.platform.models import ValidationErrorEntity
+from accelbyte_py_sdk.api.platform import update_app as update_app_internal
+from accelbyte_py_sdk.api.platform.models import AppUpdate
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import FullAppInfo
+from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 
 
 @click.command()

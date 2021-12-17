@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import process_user_order_notification as process_user_order_notification_internal
-from ....api.platform.models import TradeNotification
+from accelbyte_py_sdk.api.platform import process_user_order_notification as process_user_order_notification_internal
+from accelbyte_py_sdk.api.platform.models import TradeNotification
 
 
 @click.command()

@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.seasonpass import public_bulk_claim_user_rewards as public_bulk_claim_user_rewards_internal
-from ....api.seasonpass.models import ClaimableRewards
-from ....api.seasonpass.models import ErrorEntity
+from accelbyte_py_sdk.api.seasonpass import public_bulk_claim_user_rewards as public_bulk_claim_user_rewards_internal
+from accelbyte_py_sdk.api.seasonpass.models import ClaimableRewards
+from accelbyte_py_sdk.api.seasonpass.models import ErrorEntity
 
 
 @click.command()

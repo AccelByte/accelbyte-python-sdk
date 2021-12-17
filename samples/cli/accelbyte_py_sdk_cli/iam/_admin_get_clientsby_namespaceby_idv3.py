@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import admin_get_clientsby_namespaceby_idv3 as admin_get_clientsby_namespaceby_idv3_internal
-from ....api.iam.models import ClientmodelClientV3Response
-from ....api.iam.models import RestErrorResponse
+from accelbyte_py_sdk.api.iam import admin_get_clientsby_namespaceby_idv3 as admin_get_clientsby_namespaceby_idv3_internal
+from accelbyte_py_sdk.api.iam.models import ClientmodelClientV3Response
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

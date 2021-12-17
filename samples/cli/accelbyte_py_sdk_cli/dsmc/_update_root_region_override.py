@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.dsmc import update_root_region_override as update_root_region_override_internal
-from ....api.dsmc.models import ModelsDeploymentWithOverride
-from ....api.dsmc.models import ModelsUpdateRegionOverrideRequest
-from ....api.dsmc.models import ResponseError
+from accelbyte_py_sdk.api.dsmc import update_root_region_override as update_root_region_override_internal
+from accelbyte_py_sdk.api.dsmc.models import ModelsDeploymentWithOverride
+from accelbyte_py_sdk.api.dsmc.models import ModelsUpdateRegionOverrideRequest
+from accelbyte_py_sdk.api.dsmc.models import ResponseError
 
 
 @click.command()

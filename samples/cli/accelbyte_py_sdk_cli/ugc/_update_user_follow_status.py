@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.ugc import update_user_follow_status as update_user_follow_status_internal
-from ....api.ugc.models import ModelsUserFollowRequest
-from ....api.ugc.models import ModelsUserFollowResponse
-from ....api.ugc.models import ResponseError
+from accelbyte_py_sdk.api.ugc import update_user_follow_status as update_user_follow_status_internal
+from accelbyte_py_sdk.api.ugc.models import ModelsUserFollowRequest
+from accelbyte_py_sdk.api.ugc.models import ModelsUserFollowResponse
+from accelbyte_py_sdk.api.ugc.models import ResponseError
 
 
 @click.command()

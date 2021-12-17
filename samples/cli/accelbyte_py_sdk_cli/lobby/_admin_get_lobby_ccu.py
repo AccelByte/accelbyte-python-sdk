@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.lobby import admin_get_lobby_ccu as admin_get_lobby_ccu_internal
-from ....api.lobby.models import ModelsGetLobbyCcuResponse
-from ....api.lobby.models import RestapiErrorResponseBody
+from accelbyte_py_sdk.api.lobby import admin_get_lobby_ccu as admin_get_lobby_ccu_internal
+from accelbyte_py_sdk.api.lobby.models import ModelsGetLobbyCcuResponse
+from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
 
 
 @click.command()

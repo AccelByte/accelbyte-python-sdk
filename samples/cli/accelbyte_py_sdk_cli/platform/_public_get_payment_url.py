@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import public_get_payment_url as public_get_payment_url_internal
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import PaymentUrl
-from ....api.platform.models import PaymentUrlCreate
+from accelbyte_py_sdk.api.platform import public_get_payment_url as public_get_payment_url_internal
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import PaymentUrl
+from accelbyte_py_sdk.api.platform.models import PaymentUrlCreate
 
 
 @click.command()

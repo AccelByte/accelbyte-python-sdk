@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.lobby import admin_debug_profanity_filters as admin_debug_profanity_filters_internal
-from ....api.lobby.models import ModelsDebugProfanityFilterRequest
-from ....api.lobby.models import ModelsProfanityFilter
-from ....api.lobby.models import RestapiErrorResponseBody
+from accelbyte_py_sdk.api.lobby import admin_debug_profanity_filters as admin_debug_profanity_filters_internal
+from accelbyte_py_sdk.api.lobby.models import ModelsDebugProfanityFilterRequest
+from accelbyte_py_sdk.api.lobby.models import ModelsProfanityFilter
+from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
 
 
 @click.command()

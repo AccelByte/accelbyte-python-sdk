@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import test_stripe_config as test_stripe_config_internal
-from ....api.platform.models import StripeConfig
-from ....api.platform.models import TestResult
+from accelbyte_py_sdk.api.platform import test_stripe_config as test_stripe_config_internal
+from accelbyte_py_sdk.api.platform.models import StripeConfig
+from accelbyte_py_sdk.api.platform.models import TestResult
 
 
 @click.command()

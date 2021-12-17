@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import list_admins_v3 as list_admins_v3_internal
-from ....api.iam.models import ModelGetUsersResponseWithPaginationV3
-from ....api.iam.models import RestErrorResponse
+from accelbyte_py_sdk.api.iam import list_admins_v3 as list_admins_v3_internal
+from accelbyte_py_sdk.api.iam.models import ModelGetUsersResponseWithPaginationV3
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

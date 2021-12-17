@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import update_xbl_iap_config as update_xbl_iap_config_internal
-from ....api.platform.models import XblIAPConfigInfo
-from ....api.platform.models import XblIAPConfigRequest
+from accelbyte_py_sdk.api.platform import update_xbl_iap_config as update_xbl_iap_config_internal
+from accelbyte_py_sdk.api.platform.models import XblIAPConfigInfo
+from accelbyte_py_sdk.api.platform.models import XblIAPConfigRequest
 
 
 @click.command()

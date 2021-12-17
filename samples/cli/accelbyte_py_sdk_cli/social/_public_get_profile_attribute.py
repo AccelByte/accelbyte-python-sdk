@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.social import public_get_profile_attribute as public_get_profile_attribute_internal
-from ....api.social.models import Attribute
-from ....api.social.models import ErrorEntity
+from accelbyte_py_sdk.api.social import public_get_profile_attribute as public_get_profile_attribute_internal
+from accelbyte_py_sdk.api.social.models import Attribute
+from accelbyte_py_sdk.api.social.models import ErrorEntity
 
 
 @click.command()

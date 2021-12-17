@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.dsmc import create_deployment as create_deployment_internal
-from ....api.dsmc.models import ModelsCreateDeploymentRequest
-from ....api.dsmc.models import ModelsDeploymentWithOverride
-from ....api.dsmc.models import ResponseError
+from accelbyte_py_sdk.api.dsmc import create_deployment as create_deployment_internal
+from accelbyte_py_sdk.api.dsmc.models import ModelsCreateDeploymentRequest
+from accelbyte_py_sdk.api.dsmc.models import ModelsDeploymentWithOverride
+from accelbyte_py_sdk.api.dsmc.models import ResponseError
 
 
 @click.command()

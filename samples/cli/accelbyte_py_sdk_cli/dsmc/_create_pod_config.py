@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.dsmc import create_pod_config as create_pod_config_internal
-from ....api.dsmc.models import ModelsCreatePodConfigRequest
-from ....api.dsmc.models import ModelsPodConfigRecord
-from ....api.dsmc.models import ResponseError
+from accelbyte_py_sdk.api.dsmc import create_pod_config as create_pod_config_internal
+from accelbyte_py_sdk.api.dsmc.models import ModelsCreatePodConfigRequest
+from accelbyte_py_sdk.api.dsmc.models import ModelsPodConfigRecord
+from accelbyte_py_sdk.api.dsmc.models import ResponseError
 
 
 @click.command()

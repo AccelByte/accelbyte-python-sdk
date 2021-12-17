@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import ban_user as ban_user_internal
-from ....api.iam.models import ModelBanCreateRequest
-from ....api.iam.models import ModelUserBanResponse
+from accelbyte_py_sdk.api.iam import ban_user as ban_user_internal
+from accelbyte_py_sdk.api.iam.models import ModelBanCreateRequest
+from accelbyte_py_sdk.api.iam.models import ModelUserBanResponse
 
 
 @click.command()

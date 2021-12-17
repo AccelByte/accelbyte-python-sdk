@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.lobby import import_config as import_config_internal
-from ....api.lobby.models import ModelsImportConfigResponse
-from ....api.lobby.models import ResponseError
+from accelbyte_py_sdk.api.lobby import import_config as import_config_internal
+from accelbyte_py_sdk.api.lobby.models import ModelsImportConfigResponse
+from accelbyte_py_sdk.api.lobby.models import ResponseError
 
 
 @click.command()

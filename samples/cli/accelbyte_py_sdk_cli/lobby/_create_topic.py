@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.lobby import create_topic as create_topic_internal
-from ....api.lobby.models import ModelCreateTopicRequest
-from ....api.lobby.models import RestapiErrorResponseBody
+from accelbyte_py_sdk.api.lobby import create_topic as create_topic_internal
+from accelbyte_py_sdk.api.lobby.models import ModelCreateTopicRequest
+from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
 
 
 @click.command()

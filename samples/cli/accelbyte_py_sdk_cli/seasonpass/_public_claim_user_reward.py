@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.seasonpass import public_claim_user_reward as public_claim_user_reward_internal
-from ....api.seasonpass.models import ClaimableRewards
-from ....api.seasonpass.models import ErrorEntity
-from ....api.seasonpass.models import UserRewardClaim
+from accelbyte_py_sdk.api.seasonpass import public_claim_user_reward as public_claim_user_reward_internal
+from accelbyte_py_sdk.api.seasonpass.models import ClaimableRewards
+from accelbyte_py_sdk.api.seasonpass.models import ErrorEntity
+from accelbyte_py_sdk.api.seasonpass.models import UserRewardClaim
 
 
 @click.command()

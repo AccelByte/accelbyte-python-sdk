@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.matchmaking import update_matchmaking_channel as update_matchmaking_channel_internal
-from ....api.matchmaking.models import ModelsUpdateChannelRequest
-from ....api.matchmaking.models import ResponseError
-from ....api.matchmaking.models import ResponseErrorV1
+from accelbyte_py_sdk.api.matchmaking import update_matchmaking_channel as update_matchmaking_channel_internal
+from accelbyte_py_sdk.api.matchmaking.models import ModelsUpdateChannelRequest
+from accelbyte_py_sdk.api.matchmaking.models import ResponseError
+from accelbyte_py_sdk.api.matchmaking.models import ResponseErrorV1
 
 
 @click.command()

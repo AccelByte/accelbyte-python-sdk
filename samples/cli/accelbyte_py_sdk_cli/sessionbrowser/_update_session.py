@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.sessionbrowser import update_session as update_session_internal
-from ....api.sessionbrowser.models import ModelsSessionResponse
-from ....api.sessionbrowser.models import ModelsUpdateSessionRequest
-from ....api.sessionbrowser.models import RestapiErrorResponseV2
+from accelbyte_py_sdk.api.sessionbrowser import update_session as update_session_internal
+from accelbyte_py_sdk.api.sessionbrowser.models import ModelsSessionResponse
+from accelbyte_py_sdk.api.sessionbrowser.models import ModelsUpdateSessionRequest
+from accelbyte_py_sdk.api.sessionbrowser.models import RestapiErrorResponseV2
 
 
 @click.command()

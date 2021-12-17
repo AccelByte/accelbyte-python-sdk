@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.qosm import heartbeat as heartbeat_internal
-from ....api.qosm.models import ModelsHeartbeatRequest
-from ....api.qosm.models import ResponseError
+from accelbyte_py_sdk.api.qosm import heartbeat as heartbeat_internal
+from accelbyte_py_sdk.api.qosm.models import ModelsHeartbeatRequest
+from accelbyte_py_sdk.api.qosm.models import ResponseError
 
 
 @click.command()

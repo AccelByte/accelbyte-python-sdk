@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import admin_get_age_restriction_status_v2 as admin_get_age_restriction_status_v2_internal
-from ....api.iam.models import ModelAgeRestrictionResponse
+from accelbyte_py_sdk.api.iam import admin_get_age_restriction_status_v2 as admin_get_age_restriction_status_v2_internal
+from accelbyte_py_sdk.api.iam.models import ModelAgeRestrictionResponse
 
 
 @click.command()

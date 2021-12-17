@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import get_user_order_grant as get_user_order_grant_internal
-from ....api.platform.models import OrderGrantInfo
+from accelbyte_py_sdk.api.platform import get_user_order_grant as get_user_order_grant_internal
+from accelbyte_py_sdk.api.platform.models import OrderGrantInfo
 
 
 @click.command()

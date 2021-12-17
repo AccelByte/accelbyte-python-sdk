@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import save_user_permission as save_user_permission_internal
-from ....api.iam.models import AccountcommonPermissions
+from accelbyte_py_sdk.api.iam import save_user_permission as save_user_permission_internal
+from accelbyte_py_sdk.api.iam.models import AccountcommonPermissions
 
 
 @click.command()

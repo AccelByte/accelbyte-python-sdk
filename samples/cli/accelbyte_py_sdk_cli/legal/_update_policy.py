@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.legal import update_policy as update_policy_internal
-from ....api.legal.models import UpdatePolicyRequest
+from accelbyte_py_sdk.api.legal import update_policy as update_policy_internal
+from accelbyte_py_sdk.api.legal.models import UpdatePolicyRequest
 
 
 @click.command()

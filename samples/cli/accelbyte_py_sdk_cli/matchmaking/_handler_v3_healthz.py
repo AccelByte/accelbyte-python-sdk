@@ -24,7 +24,7 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.matchmaking import handler_v3_healthz as handler_v3_healthz_internal
+from accelbyte_py_sdk.api.matchmaking import handler_v3_healthz as handler_v3_healthz_internal
 
 
 @click.command()

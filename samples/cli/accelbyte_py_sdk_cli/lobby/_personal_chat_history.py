@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.lobby import personal_chat_history as personal_chat_history_internal
-from ....api.lobby.models import ModelChatMessageResponse
-from ....api.lobby.models import RestapiErrorResponseBody
+from accelbyte_py_sdk.api.lobby import personal_chat_history as personal_chat_history_internal
+from accelbyte_py_sdk.api.lobby.models import ModelChatMessageResponse
+from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
 
 
 @click.command()

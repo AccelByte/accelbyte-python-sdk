@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.eventlog import query_event_stream_handler as query_event_stream_handler_internal
-from ....api.eventlog.models import ModelsEventResponseV2
-from ....api.eventlog.models import ModelsGenericQueryPayload
+from accelbyte_py_sdk.api.eventlog import query_event_stream_handler as query_event_stream_handler_internal
+from accelbyte_py_sdk.api.eventlog.models import ModelsEventResponseV2
+from accelbyte_py_sdk.api.eventlog.models import ModelsGenericQueryPayload
 
 
 @click.command()

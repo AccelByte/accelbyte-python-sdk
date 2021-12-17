@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import charge_payment_order as charge_payment_order_internal
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import PaymentOrderChargeRequest
-from ....api.platform.models import PaymentOrderInfo
+from accelbyte_py_sdk.api.platform import charge_payment_order as charge_payment_order_internal
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import PaymentOrderChargeRequest
+from accelbyte_py_sdk.api.platform.models import PaymentOrderInfo
 
 
 @click.command()

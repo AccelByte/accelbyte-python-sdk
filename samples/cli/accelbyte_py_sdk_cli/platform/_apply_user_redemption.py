@@ -24,11 +24,11 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import apply_user_redemption as apply_user_redemption_internal
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import RedeemRequest
-from ....api.platform.models import RedeemResult
-from ....api.platform.models import ValidationErrorEntity
+from accelbyte_py_sdk.api.platform import apply_user_redemption as apply_user_redemption_internal
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import RedeemRequest
+from accelbyte_py_sdk.api.platform.models import RedeemResult
+from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 
 
 @click.command()

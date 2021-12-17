@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import send_verification_code as send_verification_code_internal
-from ....api.iam.models import ModelSendVerificationCodeRequest
+from accelbyte_py_sdk.api.iam import send_verification_code as send_verification_code_internal
+from accelbyte_py_sdk.api.iam.models import ModelSendVerificationCodeRequest
 
 
 @click.command()

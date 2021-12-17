@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import test_checkout_config as test_checkout_config_internal
-from ....api.platform.models import CheckoutConfig
-from ....api.platform.models import TestResult
+from accelbyte_py_sdk.api.platform import test_checkout_config as test_checkout_config_internal
+from accelbyte_py_sdk.api.platform.models import CheckoutConfig
+from accelbyte_py_sdk.api.platform.models import TestResult
 
 
 @click.command()

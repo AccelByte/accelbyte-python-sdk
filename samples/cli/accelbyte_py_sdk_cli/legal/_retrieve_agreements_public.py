@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.legal import retrieve_agreements_public as retrieve_agreements_public_internal
-from ....api.legal.models import RetrieveAcceptedAgreementResponse
+from accelbyte_py_sdk.api.legal import retrieve_agreements_public as retrieve_agreements_public_internal
+from accelbyte_py_sdk.api.legal.models import RetrieveAcceptedAgreementResponse
 
 
 @click.command()

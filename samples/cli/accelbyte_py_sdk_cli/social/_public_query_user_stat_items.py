@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.social import public_query_user_stat_items as public_query_user_stat_items_internal
-from ....api.social.models import UserStatItemPagingSlicedResult
+from accelbyte_py_sdk.api.social import public_query_user_stat_items as public_query_user_stat_items_internal
+from accelbyte_py_sdk.api.social.models import UserStatItemPagingSlicedResult
 
 
 @click.command()

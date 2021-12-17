@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import get_user_app_entitlement_by_app_id as get_user_app_entitlement_by_app_id_internal
-from ....api.platform.models import AppEntitlementInfo
-from ....api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform import get_user_app_entitlement_by_app_id as get_user_app_entitlement_by_app_id_internal
+from accelbyte_py_sdk.api.platform.models import AppEntitlementInfo
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
 
 
 @click.command()

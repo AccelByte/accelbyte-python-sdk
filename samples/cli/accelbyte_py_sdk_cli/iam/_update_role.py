@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import update_role as update_role_internal
-from ....api.iam.models import ModelRoleResponse
-from ....api.iam.models import ModelRoleUpdateRequest
+from accelbyte_py_sdk.api.iam import update_role as update_role_internal
+from accelbyte_py_sdk.api.iam.models import ModelRoleResponse
+from accelbyte_py_sdk.api.iam.models import ModelRoleUpdateRequest
 
 
 @click.command()

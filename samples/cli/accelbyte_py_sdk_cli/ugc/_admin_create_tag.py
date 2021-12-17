@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.ugc import admin_create_tag as admin_create_tag_internal
-from ....api.ugc.models import ModelsCreateTagRequest
-from ....api.ugc.models import ModelsCreateTagResponse
-from ....api.ugc.models import ResponseError
+from accelbyte_py_sdk.api.ugc import admin_create_tag as admin_create_tag_internal
+from accelbyte_py_sdk.api.ugc.models import ModelsCreateTagRequest
+from accelbyte_py_sdk.api.ugc.models import ModelsCreateTagResponse
+from accelbyte_py_sdk.api.ugc.models import ResponseError
 
 
 @click.command()

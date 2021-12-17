@@ -24,11 +24,11 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.matchmaking import update_play_time_weight as update_play_time_weight_internal
-from ....api.matchmaking.models import ModelsUpdatePlayTimeWeightRequest
-from ....api.matchmaking.models import ModelsUpdatePlayerPlaytimeWeightResponse
-from ....api.matchmaking.models import ResponseError
-from ....api.matchmaking.models import ResponseErrorV1
+from accelbyte_py_sdk.api.matchmaking import update_play_time_weight as update_play_time_weight_internal
+from accelbyte_py_sdk.api.matchmaking.models import ModelsUpdatePlayTimeWeightRequest
+from accelbyte_py_sdk.api.matchmaking.models import ModelsUpdatePlayerPlaytimeWeightResponse
+from accelbyte_py_sdk.api.matchmaking.models import ResponseError
+from accelbyte_py_sdk.api.matchmaking.models import ResponseErrorV1
 
 
 @click.command()

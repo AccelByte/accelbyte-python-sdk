@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.sessionbrowser import get_active_matchmaking_game_sessions as get_active_matchmaking_game_sessions_internal
-from ....api.sessionbrowser.models import ModelsActiveMatchmakingGameResponse
-from ....api.sessionbrowser.models import RestapiErrorResponseV2
+from accelbyte_py_sdk.api.sessionbrowser import get_active_matchmaking_game_sessions as get_active_matchmaking_game_sessions_internal
+from accelbyte_py_sdk.api.sessionbrowser.models import ModelsActiveMatchmakingGameResponse
+from accelbyte_py_sdk.api.sessionbrowser.models import RestapiErrorResponseV2
 
 
 @click.command()

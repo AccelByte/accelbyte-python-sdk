@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.seasonpass import public_get_current_season as public_get_current_season_internal
-from ....api.seasonpass.models import ErrorEntity
-from ....api.seasonpass.models import LocalizedSeasonInfo
+from accelbyte_py_sdk.api.seasonpass import public_get_current_season as public_get_current_season_internal
+from accelbyte_py_sdk.api.seasonpass.models import ErrorEntity
+from accelbyte_py_sdk.api.seasonpass.models import LocalizedSeasonInfo
 
 
 @click.command()

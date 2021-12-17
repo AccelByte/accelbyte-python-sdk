@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import get_order_statistics as get_order_statistics_internal
-from ....api.platform.models import OrderStatistics
+from accelbyte_py_sdk.api.platform import get_order_statistics as get_order_statistics_internal
+from accelbyte_py_sdk.api.platform.models import OrderStatistics
 
 
 @click.command()

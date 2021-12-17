@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.basic import get_my_zip_code as get_my_zip_code_internal
-from ....api.basic.models import ErrorEntity
-from ....api.basic.models import UserZipCode
+from accelbyte_py_sdk.api.basic import get_my_zip_code as get_my_zip_code_internal
+from accelbyte_py_sdk.api.basic.models import ErrorEntity
+from accelbyte_py_sdk.api.basic.models import UserZipCode
 
 
 @click.command()

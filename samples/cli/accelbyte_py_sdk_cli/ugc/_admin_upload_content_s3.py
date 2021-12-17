@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.ugc import admin_upload_content_s3 as admin_upload_content_s3_internal
-from ....api.ugc.models import ModelsCreateContentRequestS3
-from ....api.ugc.models import ModelsCreateContentResponse
-from ....api.ugc.models import ResponseError
+from accelbyte_py_sdk.api.ugc import admin_upload_content_s3 as admin_upload_content_s3_internal
+from accelbyte_py_sdk.api.ugc.models import ModelsCreateContentRequestS3
+from accelbyte_py_sdk.api.ugc.models import ModelsCreateContentResponse
+from accelbyte_py_sdk.api.ugc.models import ResponseError
 
 
 @click.command()

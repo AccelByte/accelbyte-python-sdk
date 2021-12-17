@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.cloudsave import put_player_public_record_concurrent_handler_v1 as put_player_public_record_concurrent_handler_v1_internal
-from ....api.cloudsave.models import ModelsConcurrentRecordRequest
-from ....api.cloudsave.models import ModelsResponseError
+from accelbyte_py_sdk.api.cloudsave import put_player_public_record_concurrent_handler_v1 as put_player_public_record_concurrent_handler_v1_internal
+from accelbyte_py_sdk.api.cloudsave.models import ModelsConcurrentRecordRequest
+from accelbyte_py_sdk.api.cloudsave.models import ModelsResponseError
 
 
 @click.command()

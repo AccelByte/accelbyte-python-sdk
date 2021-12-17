@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import list_basic_items_by_features as list_basic_items_by_features_internal
-from ....api.platform.models import BasicItem
+from accelbyte_py_sdk.api.platform import list_basic_items_by_features as list_basic_items_by_features_internal
+from accelbyte_py_sdk.api.platform.models import BasicItem
 
 
 @click.command()

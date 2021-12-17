@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.lobby import admin_set_profanity_rule_for_namespace as admin_set_profanity_rule_for_namespace_internal
-from ....api.lobby.models import ModelsAdminSetProfanityRuleForNamespaceRequest
-from ....api.lobby.models import RestapiErrorResponseBody
+from accelbyte_py_sdk.api.lobby import admin_set_profanity_rule_for_namespace as admin_set_profanity_rule_for_namespace_internal
+from accelbyte_py_sdk.api.lobby.models import ModelsAdminSetProfanityRuleForNamespaceRequest
+from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
 
 
 @click.command()

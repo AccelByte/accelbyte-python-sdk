@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import get_jwks as get_jwks_internal
-from ....api.iam.models import OauthcommonJWKSet
+from accelbyte_py_sdk.api.iam import get_jwks as get_jwks_internal
+from accelbyte_py_sdk.api.iam.models import OauthcommonJWKSet
 
 
 @click.command()

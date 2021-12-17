@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import query_entitlements as query_entitlements_internal
-from ....api.platform.models import EntitlementPagingSlicedResult
+from accelbyte_py_sdk.api.platform import query_entitlements as query_entitlements_internal
+from accelbyte_py_sdk.api.platform.models import EntitlementPagingSlicedResult
 
 
 @click.command()

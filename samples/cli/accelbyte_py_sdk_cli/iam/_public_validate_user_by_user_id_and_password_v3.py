@@ -24,7 +24,7 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import public_validate_user_by_user_id_and_password_v3 as public_validate_user_by_user_id_and_password_v3_internal
+from accelbyte_py_sdk.api.iam import public_validate_user_by_user_id_and_password_v3 as public_validate_user_by_user_id_and_password_v3_internal
 
 
 @click.command()

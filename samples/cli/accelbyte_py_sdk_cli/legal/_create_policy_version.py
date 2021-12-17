@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.legal import create_policy_version as create_policy_version_internal
-from ....api.legal.models import CreatePolicyVersionRequest
-from ....api.legal.models import CreatePolicyVersionResponse
-from ....api.legal.models import ErrorEntity
+from accelbyte_py_sdk.api.legal import create_policy_version as create_policy_version_internal
+from accelbyte_py_sdk.api.legal.models import CreatePolicyVersionRequest
+from accelbyte_py_sdk.api.legal.models import CreatePolicyVersionResponse
+from accelbyte_py_sdk.api.legal.models import ErrorEntity
 
 
 @click.command()

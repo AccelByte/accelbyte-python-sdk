@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import get_client as get_client_internal
-from ....api.iam.models import ClientmodelClientResponse
+from accelbyte_py_sdk.api.iam import get_client as get_client_internal
+from accelbyte_py_sdk.api.iam.models import ClientmodelClientResponse
 
 
 @click.command()

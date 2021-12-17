@@ -24,11 +24,11 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import update_category as update_category_internal
-from ....api.platform.models import CategoryUpdate
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import FullCategoryInfo
-from ....api.platform.models import ValidationErrorEntity
+from accelbyte_py_sdk.api.platform import update_category as update_category_internal
+from accelbyte_py_sdk.api.platform.models import CategoryUpdate
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import FullCategoryInfo
+from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 
 
 @click.command()

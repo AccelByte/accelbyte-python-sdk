@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.gdpr import public_get_user_account_deletion_status as public_get_user_account_deletion_status_internal
-from ....api.gdpr.models import ModelsDeletionStatus
-from ....api.gdpr.models import ResponseError
+from accelbyte_py_sdk.api.gdpr import public_get_user_account_deletion_status as public_get_user_account_deletion_status_internal
+from accelbyte_py_sdk.api.gdpr.models import ModelsDeletionStatus
+from accelbyte_py_sdk.api.gdpr.models import ResponseError
 
 
 @click.command()

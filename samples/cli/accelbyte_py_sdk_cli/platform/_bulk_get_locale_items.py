@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import bulk_get_locale_items as bulk_get_locale_items_internal
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import ItemInfo
+from accelbyte_py_sdk.api.platform import bulk_get_locale_items as bulk_get_locale_items_internal
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import ItemInfo
 
 
 @click.command()

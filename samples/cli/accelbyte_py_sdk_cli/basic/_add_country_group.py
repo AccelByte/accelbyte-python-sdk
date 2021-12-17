@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.basic import add_country_group as add_country_group_internal
-from ....api.basic.models import AddCountryGroupRequest
-from ....api.basic.models import AddCountryGroupResponse
-from ....api.basic.models import ErrorEntity
+from accelbyte_py_sdk.api.basic import add_country_group as add_country_group_internal
+from accelbyte_py_sdk.api.basic.models import AddCountryGroupRequest
+from accelbyte_py_sdk.api.basic.models import AddCountryGroupResponse
+from accelbyte_py_sdk.api.basic.models import ErrorEntity
 
 
 @click.command()

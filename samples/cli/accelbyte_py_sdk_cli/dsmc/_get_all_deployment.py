@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.dsmc import get_all_deployment as get_all_deployment_internal
-from ....api.dsmc.models import ModelsListDeploymentResponse
-from ....api.dsmc.models import ResponseError
+from accelbyte_py_sdk.api.dsmc import get_all_deployment as get_all_deployment_internal
+from accelbyte_py_sdk.api.dsmc.models import ModelsListDeploymentResponse
+from accelbyte_py_sdk.api.dsmc.models import ResponseError
 
 
 @click.command()

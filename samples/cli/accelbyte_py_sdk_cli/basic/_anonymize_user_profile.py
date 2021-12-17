@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.basic import anonymize_user_profile as anonymize_user_profile_internal
-from ....api.basic.models import ErrorEntity
-from ....api.basic.models import ValidationErrorEntity
+from accelbyte_py_sdk.api.basic import anonymize_user_profile as anonymize_user_profile_internal
+from accelbyte_py_sdk.api.basic.models import ErrorEntity
+from accelbyte_py_sdk.api.basic.models import ValidationErrorEntity
 
 
 @click.command()

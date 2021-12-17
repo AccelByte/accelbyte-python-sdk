@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.seasonpass import exists_any_pass_by_pass_codes as exists_any_pass_by_pass_codes_internal
-from ....api.seasonpass.models import ErrorEntity
-from ....api.seasonpass.models import Ownership
+from accelbyte_py_sdk.api.seasonpass import exists_any_pass_by_pass_codes as exists_any_pass_by_pass_codes_internal
+from accelbyte_py_sdk.api.seasonpass.models import ErrorEntity
+from accelbyte_py_sdk.api.seasonpass.models import Ownership
 
 
 @click.command()

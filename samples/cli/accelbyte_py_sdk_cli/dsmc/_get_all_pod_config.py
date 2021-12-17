@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.dsmc import get_all_pod_config as get_all_pod_config_internal
-from ....api.dsmc.models import ModelsListPodConfigResponse
-from ....api.dsmc.models import ResponseError
+from accelbyte_py_sdk.api.dsmc import get_all_pod_config as get_all_pod_config_internal
+from accelbyte_py_sdk.api.dsmc.models import ModelsListPodConfigResponse
+from accelbyte_py_sdk.api.dsmc.models import ResponseError
 
 
 @click.command()

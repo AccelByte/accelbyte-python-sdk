@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import public_list_user_wallet_transactions as public_list_user_wallet_transactions_internal
-from ....api.platform.models import WalletTransactionPagingSlicedResult
+from accelbyte_py_sdk.api.platform import public_list_user_wallet_transactions as public_list_user_wallet_transactions_internal
+from accelbyte_py_sdk.api.platform.models import WalletTransactionPagingSlicedResult
 
 
 @click.command()

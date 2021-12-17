@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.qosm import list_server as list_server_internal
-from ....api.qosm.models import ModelsListServerResponse
-from ....api.qosm.models import ResponseError
+from accelbyte_py_sdk.api.qosm import list_server as list_server_internal
+from accelbyte_py_sdk.api.qosm.models import ModelsListServerResponse
+from accelbyte_py_sdk.api.qosm.models import ResponseError
 
 
 @click.command()

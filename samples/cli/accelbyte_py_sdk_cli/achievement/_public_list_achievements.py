@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.achievement import public_list_achievements as public_list_achievements_internal
-from ....api.achievement.models import ModelsPublicAchievementsResponse
-from ....api.achievement.models import ResponseError
+from accelbyte_py_sdk.api.achievement import public_list_achievements as public_list_achievements_internal
+from accelbyte_py_sdk.api.achievement.models import ModelsPublicAchievementsResponse
+from accelbyte_py_sdk.api.achievement.models import ResponseError
 
 
 @click.command()

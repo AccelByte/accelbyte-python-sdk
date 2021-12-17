@@ -24,7 +24,7 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import public_delete_payment_account as public_delete_payment_account_internal
+from accelbyte_py_sdk.api.platform import public_delete_payment_account as public_delete_payment_account_internal
 
 
 @click.command()

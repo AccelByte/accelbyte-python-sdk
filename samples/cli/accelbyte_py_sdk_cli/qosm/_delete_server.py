@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.qosm import delete_server as delete_server_internal
-from ....api.qosm.models import ResponseError
+from accelbyte_py_sdk.api.qosm import delete_server as delete_server_internal
+from accelbyte_py_sdk.api.qosm.models import ResponseError
 
 
 @click.command()

@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import public_get_user_by_user_idv2 as public_get_user_by_user_idv2_internal
-from ....api.iam.models import ModelUserResponse
+from accelbyte_py_sdk.api.iam import public_get_user_by_user_idv2 as public_get_user_by_user_idv2_internal
+from accelbyte_py_sdk.api.iam.models import ModelUserResponse
 
 
 @click.command()

@@ -24,11 +24,11 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import grant_user_entitlement as grant_user_entitlement_internal
-from ....api.platform.models import EntitlementGrant
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import StackableEntitlementInfo
-from ....api.platform.models import ValidationErrorEntity
+from accelbyte_py_sdk.api.platform import grant_user_entitlement as grant_user_entitlement_internal
+from accelbyte_py_sdk.api.platform.models import EntitlementGrant
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import StackableEntitlementInfo
+from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 
 
 @click.command()

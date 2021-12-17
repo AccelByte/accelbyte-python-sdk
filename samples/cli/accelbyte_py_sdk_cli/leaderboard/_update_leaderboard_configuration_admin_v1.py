@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.leaderboard import update_leaderboard_configuration_admin_v1 as update_leaderboard_configuration_admin_v1_internal
-from ....api.leaderboard.models import ModelsGetLeaderboardConfigResp
-from ....api.leaderboard.models import ModelsUpdateLeaderboardConfigReq
-from ....api.leaderboard.models import ResponseErrorResponse
+from accelbyte_py_sdk.api.leaderboard import update_leaderboard_configuration_admin_v1 as update_leaderboard_configuration_admin_v1_internal
+from accelbyte_py_sdk.api.leaderboard.models import ModelsGetLeaderboardConfigResp
+from accelbyte_py_sdk.api.leaderboard.models import ModelsUpdateLeaderboardConfigReq
+from accelbyte_py_sdk.api.leaderboard.models import ResponseErrorResponse
 
 
 @click.command()

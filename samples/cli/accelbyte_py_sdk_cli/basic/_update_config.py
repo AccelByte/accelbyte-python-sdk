@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.basic import update_config as update_config_internal
-from ....api.basic.models import ADTOForUpdateEqu8ConfigAPICall
-from ....api.basic.models import Equ8Config
-from ....api.basic.models import ErrorEntity
+from accelbyte_py_sdk.api.basic import update_config as update_config_internal
+from accelbyte_py_sdk.api.basic.models import ADTOForUpdateEqu8ConfigAPICall
+from accelbyte_py_sdk.api.basic.models import Equ8Config
+from accelbyte_py_sdk.api.basic.models import ErrorEntity
 
 
 @click.command()

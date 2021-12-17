@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import admin_remove_user_role_v4 as admin_remove_user_role_v4_internal
-from ....api.iam.models import ModelRemoveUserRoleV4Request
-from ....api.iam.models import RestErrorResponse
+from accelbyte_py_sdk.api.iam import admin_remove_user_role_v4 as admin_remove_user_role_v4_internal
+from accelbyte_py_sdk.api.iam.models import ModelRemoveUserRoleV4Request
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

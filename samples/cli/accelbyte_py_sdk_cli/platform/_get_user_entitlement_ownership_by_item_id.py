@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import get_user_entitlement_ownership_by_item_id as get_user_entitlement_ownership_by_item_id_internal
-from ....api.platform.models import TimedOwnership
+from accelbyte_py_sdk.api.platform import get_user_entitlement_ownership_by_item_id as get_user_entitlement_ownership_by_item_id_internal
+from accelbyte_py_sdk.api.platform.models import TimedOwnership
 
 
 @click.command()

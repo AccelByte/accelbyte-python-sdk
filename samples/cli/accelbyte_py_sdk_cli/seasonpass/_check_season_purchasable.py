@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.seasonpass import check_season_purchasable as check_season_purchasable_internal
-from ....api.seasonpass.models import ErrorEntity
-from ....api.seasonpass.models import UserPurchasable
+from accelbyte_py_sdk.api.seasonpass import check_season_purchasable as check_season_purchasable_internal
+from accelbyte_py_sdk.api.seasonpass.models import ErrorEntity
+from accelbyte_py_sdk.api.seasonpass.models import UserPurchasable
 
 
 @click.command()

@@ -24,11 +24,11 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import update_user_order_status as update_user_order_status_internal
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import OrderInfo
-from ....api.platform.models import OrderUpdate
-from ....api.platform.models import ValidationErrorEntity
+from accelbyte_py_sdk.api.platform import update_user_order_status as update_user_order_status_internal
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import OrderInfo
+from accelbyte_py_sdk.api.platform.models import OrderUpdate
+from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 
 
 @click.command()

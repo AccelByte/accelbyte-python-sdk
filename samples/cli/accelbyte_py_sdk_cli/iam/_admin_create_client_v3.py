@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import admin_create_client_v3 as admin_create_client_v3_internal
-from ....api.iam.models import ClientmodelClientCreationV3Request
-from ....api.iam.models import ClientmodelClientV3Response
-from ....api.iam.models import RestErrorResponse
+from accelbyte_py_sdk.api.iam import admin_create_client_v3 as admin_create_client_v3_internal
+from accelbyte_py_sdk.api.iam.models import ClientmodelClientCreationV3Request
+from accelbyte_py_sdk.api.iam.models import ClientmodelClientV3Response
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

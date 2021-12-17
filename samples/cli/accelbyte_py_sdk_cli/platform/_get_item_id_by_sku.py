@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import get_item_id_by_sku as get_item_id_by_sku_internal
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import ItemId
+from accelbyte_py_sdk.api.platform import get_item_id_by_sku as get_item_id_by_sku_internal
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import ItemId
 
 
 @click.command()

@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import retrieve_all_active_third_party_login_platform_credential_public_v3 as retrieve_all_active_third_party_login_platform_credential_public_v3_internal
-from ....api.iam.models import ModelPublicThirdPartyPlatformInfo
-from ....api.iam.models import RestErrorResponse
+from accelbyte_py_sdk.api.iam import retrieve_all_active_third_party_login_platform_credential_public_v3 as retrieve_all_active_third_party_login_platform_credential_public_v3_internal
+from accelbyte_py_sdk.api.iam.models import ModelPublicThirdPartyPlatformInfo
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

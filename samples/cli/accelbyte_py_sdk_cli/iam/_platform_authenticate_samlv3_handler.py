@@ -24,7 +24,7 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import platform_authenticate_samlv3_handler as platform_authenticate_samlv3_handler_internal
+from accelbyte_py_sdk.api.iam import platform_authenticate_samlv3_handler as platform_authenticate_samlv3_handler_internal
 
 
 @click.command()

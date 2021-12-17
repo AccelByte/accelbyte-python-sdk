@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.leaderboard import create_leaderboard_configuration_public_v1 as create_leaderboard_configuration_public_v1_internal
-from ....api.leaderboard.models import ModelsLeaderboardConfigReq
-from ....api.leaderboard.models import ResponseErrorResponse
+from accelbyte_py_sdk.api.leaderboard import create_leaderboard_configuration_public_v1 as create_leaderboard_configuration_public_v1_internal
+from accelbyte_py_sdk.api.leaderboard.models import ModelsLeaderboardConfigReq
+from accelbyte_py_sdk.api.leaderboard.models import ResponseErrorResponse
 
 
 @click.command()

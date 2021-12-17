@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.seasonpass import grant_user_tier as grant_user_tier_internal
-from ....api.seasonpass.models import ErrorEntity
-from ....api.seasonpass.models import UserSeasonSummary
-from ....api.seasonpass.models import UserTierGrant
+from accelbyte_py_sdk.api.seasonpass import grant_user_tier as grant_user_tier_internal
+from accelbyte_py_sdk.api.seasonpass.models import ErrorEntity
+from accelbyte_py_sdk.api.seasonpass.models import UserSeasonSummary
+from accelbyte_py_sdk.api.seasonpass.models import UserTierGrant
 
 
 @click.command()

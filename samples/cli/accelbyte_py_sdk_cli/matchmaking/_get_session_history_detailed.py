@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.matchmaking import get_session_history_detailed as get_session_history_detailed_internal
-from ....api.matchmaking.models import ResponseError
-from ....api.matchmaking.models import ResponseErrorV1
-from ....api.matchmaking.models import ServiceGetSessionHistoryDetailedResponseItem
+from accelbyte_py_sdk.api.matchmaking import get_session_history_detailed as get_session_history_detailed_internal
+from accelbyte_py_sdk.api.matchmaking.models import ResponseError
+from accelbyte_py_sdk.api.matchmaking.models import ResponseErrorV1
+from accelbyte_py_sdk.api.matchmaking.models import ServiceGetSessionHistoryDetailedResponseItem
 
 
 @click.command()

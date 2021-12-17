@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import update_country_age_restriction as update_country_age_restriction_internal
-from ....api.iam.models import ModelCountry
-from ....api.iam.models import ModelCountryAgeRestrictionRequest
+from accelbyte_py_sdk.api.iam import update_country_age_restriction as update_country_age_restriction_internal
+from accelbyte_py_sdk.api.iam.models import ModelCountry
+from accelbyte_py_sdk.api.iam.models import ModelCountryAgeRestrictionRequest
 
 
 @click.command()

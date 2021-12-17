@@ -24,11 +24,11 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.legal import create_policy as create_policy_internal
-from ....api.legal.models import CreateBasePolicyRequest
-from ....api.legal.models import CreateBasePolicyResponse
-from ....api.legal.models import ErrorEntity
-from ....api.legal.models import ValidationErrorEntity
+from accelbyte_py_sdk.api.legal import create_policy as create_policy_internal
+from accelbyte_py_sdk.api.legal.models import CreateBasePolicyRequest
+from accelbyte_py_sdk.api.legal.models import CreateBasePolicyResponse
+from accelbyte_py_sdk.api.legal.models import ErrorEntity
+from accelbyte_py_sdk.api.legal.models import ValidationErrorEntity
 
 
 @click.command()

@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.eventlog import last_user_activity_time_handler as last_user_activity_time_handler_internal
-from ....api.eventlog.models import ModelsUserLastActivity
+from accelbyte_py_sdk.api.eventlog import last_user_activity_time_handler as last_user_activity_time_handler_internal
+from accelbyte_py_sdk.api.eventlog.models import ModelsUserLastActivity
 
 
 @click.command()

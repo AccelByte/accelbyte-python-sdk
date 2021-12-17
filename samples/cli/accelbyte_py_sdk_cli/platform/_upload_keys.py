@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import upload_keys as upload_keys_internal
-from ....api.platform.models import BulkOperationResult
-from ....api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform import upload_keys as upload_keys_internal
+from accelbyte_py_sdk.api.platform.models import BulkOperationResult
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
 
 
 @click.command()

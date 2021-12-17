@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.social import delete_user_stat_items_2 as delete_user_stat_items_2_internal
-from ....api.social.models import ErrorEntity
+from accelbyte_py_sdk.api.social import delete_user_stat_items_2 as delete_user_stat_items_2_internal
+from accelbyte_py_sdk.api.social.models import ErrorEntity
 
 
 @click.command()

@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.ugc import admin_create_type as admin_create_type_internal
-from ....api.ugc.models import ModelsCreateTypeRequest
-from ....api.ugc.models import ModelsCreateTypeResponse
-from ....api.ugc.models import ResponseError
+from accelbyte_py_sdk.api.ugc import admin_create_type as admin_create_type_internal
+from accelbyte_py_sdk.api.ugc.models import ModelsCreateTypeRequest
+from accelbyte_py_sdk.api.ugc.models import ModelsCreateTypeResponse
+from accelbyte_py_sdk.api.ugc.models import ResponseError
 
 
 @click.command()

@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import get_bans_type as get_bans_type_internal
-from ....api.iam.models import AccountcommonBans
+from accelbyte_py_sdk.api.iam import get_bans_type as get_bans_type_internal
+from accelbyte_py_sdk.api.iam.models import AccountcommonBans
 
 
 @click.command()

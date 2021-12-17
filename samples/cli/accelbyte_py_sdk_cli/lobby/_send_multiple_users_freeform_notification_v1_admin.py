@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.lobby import send_multiple_users_freeform_notification_v1_admin as send_multiple_users_freeform_notification_v1_admin_internal
-from ....api.lobby.models import ModelBulkUsersFreeFormNotificationRequestV1
-from ....api.lobby.models import RestapiErrorResponseV1
+from accelbyte_py_sdk.api.lobby import send_multiple_users_freeform_notification_v1_admin as send_multiple_users_freeform_notification_v1_admin_internal
+from accelbyte_py_sdk.api.lobby.models import ModelBulkUsersFreeFormNotificationRequestV1
+from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseV1
 
 
 @click.command()

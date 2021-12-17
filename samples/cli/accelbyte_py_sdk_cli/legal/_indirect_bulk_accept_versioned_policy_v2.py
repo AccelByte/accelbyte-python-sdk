@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.legal import indirect_bulk_accept_versioned_policy_v2 as indirect_bulk_accept_versioned_policy_v2_internal
-from ....api.legal.models import AcceptAgreementRequest
-from ....api.legal.models import AcceptAgreementResponse
+from accelbyte_py_sdk.api.legal import indirect_bulk_accept_versioned_policy_v2 as indirect_bulk_accept_versioned_policy_v2_internal
+from accelbyte_py_sdk.api.legal.models import AcceptAgreementRequest
+from accelbyte_py_sdk.api.legal.models import AcceptAgreementResponse
 
 
 @click.command()

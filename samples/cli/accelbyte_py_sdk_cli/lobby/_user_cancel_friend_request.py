@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.lobby import user_cancel_friend_request as user_cancel_friend_request_internal
-from ....api.lobby.models import ModelUserCancelFriendRequest
-from ....api.lobby.models import RestapiErrorResponseV1
+from accelbyte_py_sdk.api.lobby import user_cancel_friend_request as user_cancel_friend_request_internal
+from accelbyte_py_sdk.api.lobby.models import ModelUserCancelFriendRequest
+from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseV1
 
 
 @click.command()

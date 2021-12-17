@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.cloudsave import get_player_public_record_handler_v1 as get_player_public_record_handler_v1_internal
-from ....api.cloudsave.models import ModelsPlayerRecord
-from ....api.cloudsave.models import ModelsResponseError
+from accelbyte_py_sdk.api.cloudsave import get_player_public_record_handler_v1 as get_player_public_record_handler_v1_internal
+from accelbyte_py_sdk.api.cloudsave.models import ModelsPlayerRecord
+from accelbyte_py_sdk.api.cloudsave.models import ModelsResponseError
 
 
 @click.command()

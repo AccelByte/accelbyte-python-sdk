@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.leaderboard import set_user_leaderboard_visibility_status_v2 as set_user_leaderboard_visibility_status_v2_internal
-from ....api.leaderboard.models import ModelsGetUserVisibilityResponse
-from ....api.leaderboard.models import ModelsSetUserVisibilityRequest
-from ....api.leaderboard.models import ResponseErrorResponse
+from accelbyte_py_sdk.api.leaderboard import set_user_leaderboard_visibility_status_v2 as set_user_leaderboard_visibility_status_v2_internal
+from accelbyte_py_sdk.api.leaderboard.models import ModelsGetUserVisibilityResponse
+from accelbyte_py_sdk.api.leaderboard.models import ModelsSetUserVisibilityRequest
+from accelbyte_py_sdk.api.leaderboard.models import ResponseErrorResponse
 
 
 @click.command()

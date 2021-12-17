@@ -24,11 +24,11 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import create_payment_order_by_dedicated as create_payment_order_by_dedicated_internal
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import ExternalPaymentOrderCreate
-from ....api.platform.models import PaymentOrderCreateResult
-from ....api.platform.models import ValidationErrorEntity
+from accelbyte_py_sdk.api.platform import create_payment_order_by_dedicated as create_payment_order_by_dedicated_internal
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import ExternalPaymentOrderCreate
+from accelbyte_py_sdk.api.platform.models import PaymentOrderCreateResult
+from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 
 
 @click.command()

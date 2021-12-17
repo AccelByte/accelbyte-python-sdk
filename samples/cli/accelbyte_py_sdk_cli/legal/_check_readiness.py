@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.legal import check_readiness as check_readiness_internal
-from ....api.legal.models import LegalReadinessStatusResponse
+from accelbyte_py_sdk.api.legal import check_readiness as check_readiness_internal
+from accelbyte_py_sdk.api.legal.models import LegalReadinessStatusResponse
 
 
 @click.command()

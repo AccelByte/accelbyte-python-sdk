@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.legal import retrieve_eligibilities_public_indirect as retrieve_eligibilities_public_indirect_internal
-from ....api.legal.models import RetrieveUserEligibilitiesIndirectResponse
+from accelbyte_py_sdk.api.legal import retrieve_eligibilities_public_indirect as retrieve_eligibilities_public_indirect_internal
+from accelbyte_py_sdk.api.legal.models import RetrieveUserEligibilitiesIndirectResponse
 
 
 @click.command()

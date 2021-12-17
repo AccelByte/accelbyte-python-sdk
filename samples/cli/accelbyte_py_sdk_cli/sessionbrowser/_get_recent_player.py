@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.sessionbrowser import get_recent_player as get_recent_player_internal
-from ....api.sessionbrowser.models import ModelsRecentPlayerQueryResponse
-from ....api.sessionbrowser.models import ResponseError
+from accelbyte_py_sdk.api.sessionbrowser import get_recent_player as get_recent_player_internal
+from accelbyte_py_sdk.api.sessionbrowser.models import ModelsRecentPlayerQueryResponse
+from accelbyte_py_sdk.api.sessionbrowser.models import ResponseError
 
 
 @click.command()

@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.matchmaking import public_get_single_matchmaking_channel as public_get_single_matchmaking_channel_internal
-from ....api.matchmaking.models import ModelsChannelV1
-from ....api.matchmaking.models import ResponseErrorV1
+from accelbyte_py_sdk.api.matchmaking import public_get_single_matchmaking_channel as public_get_single_matchmaking_channel_internal
+from accelbyte_py_sdk.api.matchmaking.models import ModelsChannelV1
+from accelbyte_py_sdk.api.matchmaking.models import ResponseErrorV1
 
 
 @click.command()

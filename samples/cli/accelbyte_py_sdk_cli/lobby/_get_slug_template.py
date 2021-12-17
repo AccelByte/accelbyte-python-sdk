@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.lobby import get_slug_template as get_slug_template_internal
-from ....api.lobby.models import ModelTemplateLocalizationResponse
-from ....api.lobby.models import RestapiErrorResponseBody
+from accelbyte_py_sdk.api.lobby import get_slug_template as get_slug_template_internal
+from accelbyte_py_sdk.api.lobby.models import ModelTemplateLocalizationResponse
+from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
 
 
 @click.command()

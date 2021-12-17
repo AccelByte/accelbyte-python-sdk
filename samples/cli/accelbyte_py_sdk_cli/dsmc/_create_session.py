@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.dsmc import create_session as create_session_internal
-from ....api.dsmc.models import ModelsCreateSessionRequest
-from ....api.dsmc.models import ModelsSessionResponse
-from ....api.dsmc.models import ResponseError
+from accelbyte_py_sdk.api.dsmc import create_session as create_session_internal
+from accelbyte_py_sdk.api.dsmc.models import ModelsCreateSessionRequest
+from accelbyte_py_sdk.api.dsmc.models import ModelsSessionResponse
+from accelbyte_py_sdk.api.dsmc.models import ResponseError
 
 
 @click.command()

@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import get_currency_summary as get_currency_summary_internal
-from ....api.platform.models import CurrencySummary
-from ....api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform import get_currency_summary as get_currency_summary_internal
+from accelbyte_py_sdk.api.platform.models import CurrencySummary
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
 
 
 @click.command()

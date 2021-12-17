@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.lobby import admin_create_profanity_list as admin_create_profanity_list_internal
-from ....api.lobby.models import ModelsAdminCreateProfanityListRequest
-from ....api.lobby.models import RestapiErrorResponseBody
+from accelbyte_py_sdk.api.lobby import admin_create_profanity_list as admin_create_profanity_list_internal
+from accelbyte_py_sdk.api.lobby.models import ModelsAdminCreateProfanityListRequest
+from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
 
 
 @click.command()

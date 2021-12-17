@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.dslogmanager import check_server_logs as check_server_logs_internal
-from ....api.dslogmanager.models import ModelsLogFileStatus
-from ....api.dslogmanager.models import ResponseError
+from accelbyte_py_sdk.api.dslogmanager import check_server_logs as check_server_logs_internal
+from accelbyte_py_sdk.api.dslogmanager.models import ModelsLogFileStatus
+from accelbyte_py_sdk.api.dslogmanager.models import ResponseError
 
 
 @click.command()

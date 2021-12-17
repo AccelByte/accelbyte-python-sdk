@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import update_wx_pay_config_cert as update_wx_pay_config_cert_internal
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import PaymentMerchantConfigInfo
+from accelbyte_py_sdk.api.platform import update_wx_pay_config_cert as update_wx_pay_config_cert_internal
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import PaymentMerchantConfigInfo
 
 
 @click.command()

@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import test_fulfillment_script_eval as test_fulfillment_script_eval_internal
-from ....api.platform.models import FulfillmentScriptEvalTestRequest
-from ....api.platform.models import FulfillmentScriptEvalTestResult
+from accelbyte_py_sdk.api.platform import test_fulfillment_script_eval as test_fulfillment_script_eval_internal
+from accelbyte_py_sdk.api.platform.models import FulfillmentScriptEvalTestRequest
+from accelbyte_py_sdk.api.platform.models import FulfillmentScriptEvalTestResult
 
 
 @click.command()

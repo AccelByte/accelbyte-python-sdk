@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import public_query_user_subscriptions as public_query_user_subscriptions_internal
-from ....api.platform.models import SubscriptionPagingSlicedResult
+from accelbyte_py_sdk.api.platform import public_query_user_subscriptions as public_query_user_subscriptions_internal
+from accelbyte_py_sdk.api.platform.models import SubscriptionPagingSlicedResult
 
 
 @click.command()

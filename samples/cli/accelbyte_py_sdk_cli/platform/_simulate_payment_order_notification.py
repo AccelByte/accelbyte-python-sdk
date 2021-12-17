@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import simulate_payment_order_notification as simulate_payment_order_notification_internal
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import NotificationProcessResult
-from ....api.platform.models import PaymentOrderNotifySimulation
+from accelbyte_py_sdk.api.platform import simulate_payment_order_notification as simulate_payment_order_notification_internal
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import NotificationProcessResult
+from accelbyte_py_sdk.api.platform.models import PaymentOrderNotifySimulation
 
 
 @click.command()

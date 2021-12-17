@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.dsmc import count_session as count_session_internal
-from ....api.dsmc.models import ModelsCountSessionResponse
-from ....api.dsmc.models import ResponseError
+from accelbyte_py_sdk.api.dsmc import count_session as count_session_internal
+from accelbyte_py_sdk.api.dsmc.models import ModelsCountSessionResponse
+from accelbyte_py_sdk.api.dsmc.models import ResponseError
 
 
 @click.command()

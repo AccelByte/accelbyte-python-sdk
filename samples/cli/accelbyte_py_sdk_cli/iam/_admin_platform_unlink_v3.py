@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import admin_platform_unlink_v3 as admin_platform_unlink_v3_internal
-from ....api.iam.models import ModelUnlinkUserPlatformRequest
-from ....api.iam.models import RestapiErrorResponse
+from accelbyte_py_sdk.api.iam import admin_platform_unlink_v3 as admin_platform_unlink_v3_internal
+from accelbyte_py_sdk.api.iam.models import ModelUnlinkUserPlatformRequest
+from accelbyte_py_sdk.api.iam.models import RestapiErrorResponse
 
 
 @click.command()

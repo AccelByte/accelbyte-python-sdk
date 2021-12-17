@@ -24,7 +24,7 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.matchmaking import get_healthcheck_info as get_healthcheck_info_internal
+from accelbyte_py_sdk.api.matchmaking import get_healthcheck_info as get_healthcheck_info_internal
 
 
 @click.command()

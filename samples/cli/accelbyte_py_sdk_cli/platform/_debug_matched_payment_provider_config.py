@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import debug_matched_payment_provider_config as debug_matched_payment_provider_config_internal
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import PaymentProviderConfigInfo
+from accelbyte_py_sdk.api.platform import debug_matched_payment_provider_config as debug_matched_payment_provider_config_internal
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import PaymentProviderConfigInfo
 
 
 @click.command()

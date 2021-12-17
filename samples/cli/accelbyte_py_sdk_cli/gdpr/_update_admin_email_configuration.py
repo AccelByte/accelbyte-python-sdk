@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.gdpr import update_admin_email_configuration as update_admin_email_configuration_internal
-from ....api.gdpr.models import ResponseError
+from accelbyte_py_sdk.api.gdpr import update_admin_email_configuration as update_admin_email_configuration_internal
+from accelbyte_py_sdk.api.gdpr.models import ResponseError
 
 
 @click.command()

@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.lobby import get_topic_by_topic_name as get_topic_by_topic_name_internal
-from ....api.lobby.models import ModelNotificationTopicResponse
-from ....api.lobby.models import RestapiErrorResponseBody
+from accelbyte_py_sdk.api.lobby import get_topic_by_topic_name as get_topic_by_topic_name_internal
+from accelbyte_py_sdk.api.lobby.models import ModelNotificationTopicResponse
+from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
 
 
 @click.command()

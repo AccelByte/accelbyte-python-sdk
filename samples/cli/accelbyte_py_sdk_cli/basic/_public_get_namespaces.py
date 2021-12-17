@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.basic import public_get_namespaces as public_get_namespaces_internal
-from ....api.basic.models import ErrorEntity
-from ....api.basic.models import NamespaceInfo
+from accelbyte_py_sdk.api.basic import public_get_namespaces as public_get_namespaces_internal
+from accelbyte_py_sdk.api.basic.models import ErrorEntity
+from accelbyte_py_sdk.api.basic.models import NamespaceInfo
 
 
 @click.command()

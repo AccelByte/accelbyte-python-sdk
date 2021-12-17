@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import public_reconcile_play_station_store as public_reconcile_play_station_store_internal
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import PlayStationReconcileResult
+from accelbyte_py_sdk.api.platform import public_reconcile_play_station_store as public_reconcile_play_station_store_internal
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import PlayStationReconcileResult
 
 
 @click.command()

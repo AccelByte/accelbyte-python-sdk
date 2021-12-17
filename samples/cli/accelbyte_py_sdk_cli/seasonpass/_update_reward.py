@@ -24,11 +24,11 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.seasonpass import update_reward as update_reward_internal
-from ....api.seasonpass.models import ErrorEntity
-from ....api.seasonpass.models import RewardInfo
-from ....api.seasonpass.models import RewardUpdate
-from ....api.seasonpass.models import ValidationErrorEntity
+from accelbyte_py_sdk.api.seasonpass import update_reward as update_reward_internal
+from accelbyte_py_sdk.api.seasonpass.models import ErrorEntity
+from accelbyte_py_sdk.api.seasonpass.models import RewardInfo
+from accelbyte_py_sdk.api.seasonpass.models import RewardUpdate
+from accelbyte_py_sdk.api.seasonpass.models import ValidationErrorEntity
 
 
 @click.command()

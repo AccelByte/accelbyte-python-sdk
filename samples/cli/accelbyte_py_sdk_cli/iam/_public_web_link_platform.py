@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import public_web_link_platform as public_web_link_platform_internal
-from ....api.iam.models import ModelWebLinkingResponse
-from ....api.iam.models import RestErrorResponse
+from accelbyte_py_sdk.api.iam import public_web_link_platform as public_web_link_platform_internal
+from accelbyte_py_sdk.api.iam.models import ModelWebLinkingResponse
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import sync_payment_orders as sync_payment_orders_internal
-from ....api.platform.models import PaymentOrderSyncResult
+from accelbyte_py_sdk.api.platform import sync_payment_orders as sync_payment_orders_internal
+from accelbyte_py_sdk.api.platform.models import PaymentOrderSyncResult
 
 
 @click.command()

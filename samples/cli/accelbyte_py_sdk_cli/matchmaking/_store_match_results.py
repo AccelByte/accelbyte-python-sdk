@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.matchmaking import store_match_results as store_match_results_internal
-from ....api.matchmaking.models import ModelsMatchResultRequest
-from ....api.matchmaking.models import ModelsMatchResultResponse
-from ....api.matchmaking.models import ResponseError
+from accelbyte_py_sdk.api.matchmaking import store_match_results as store_match_results_internal
+from accelbyte_py_sdk.api.matchmaking.models import ModelsMatchResultRequest
+from accelbyte_py_sdk.api.matchmaking.models import ModelsMatchResultResponse
+from accelbyte_py_sdk.api.matchmaking.models import ResponseError
 
 
 @click.command()

@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import update_fulfillment_script as update_fulfillment_script_internal
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import FulfillmentScriptInfo
-from ....api.platform.models import FulfillmentScriptUpdate
+from accelbyte_py_sdk.api.platform import update_fulfillment_script as update_fulfillment_script_internal
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import FulfillmentScriptInfo
+from accelbyte_py_sdk.api.platform.models import FulfillmentScriptUpdate
 
 
 @click.command()

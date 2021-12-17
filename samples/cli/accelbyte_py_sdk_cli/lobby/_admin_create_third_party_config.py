@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.lobby import admin_create_third_party_config as admin_create_third_party_config_internal
-from ....api.lobby.models import ModelsCreateConfigRequest
-from ....api.lobby.models import ModelsCreateConfigResponse
-from ....api.lobby.models import RestapiErrorResponseV1
+from accelbyte_py_sdk.api.lobby import admin_create_third_party_config as admin_create_third_party_config_internal
+from accelbyte_py_sdk.api.lobby.models import ModelsCreateConfigRequest
+from accelbyte_py_sdk.api.lobby.models import ModelsCreateConfigResponse
+from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseV1
 
 
 @click.command()

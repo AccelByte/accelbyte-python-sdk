@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.dsmc import claim_server as claim_server_internal
-from ....api.dsmc.models import ModelsClaimSessionRequest
-from ....api.dsmc.models import ResponseError
+from accelbyte_py_sdk.api.dsmc import claim_server as claim_server_internal
+from accelbyte_py_sdk.api.dsmc.models import ModelsClaimSessionRequest
+from accelbyte_py_sdk.api.dsmc.models import ResponseError
 
 
 @click.command()

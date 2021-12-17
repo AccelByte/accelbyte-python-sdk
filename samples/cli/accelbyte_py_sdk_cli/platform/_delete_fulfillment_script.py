@@ -24,7 +24,7 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import delete_fulfillment_script as delete_fulfillment_script_internal
+from accelbyte_py_sdk.api.platform import delete_fulfillment_script as delete_fulfillment_script_internal
 
 
 @click.command()

@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import update_apple_iap_config as update_apple_iap_config_internal
-from ....api.platform.models import AppleIAPConfigInfo
-from ....api.platform.models import AppleIAPConfigRequest
+from accelbyte_py_sdk.api.platform import update_apple_iap_config as update_apple_iap_config_internal
+from accelbyte_py_sdk.api.platform.models import AppleIAPConfigInfo
+from accelbyte_py_sdk.api.platform.models import AppleIAPConfigRequest
 
 
 @click.command()

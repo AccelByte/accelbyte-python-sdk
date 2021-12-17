@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.social import public_get_user_profiles as public_get_user_profiles_internal
-from ....api.social.models import GameProfileHeader
+from accelbyte_py_sdk.api.social import public_get_user_profiles as public_get_user_profiles_internal
+from accelbyte_py_sdk.api.social.models import GameProfileHeader
 
 
 @click.command()

@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.group import create_group_configuration_admin_v1 as create_group_configuration_admin_v1_internal
-from ....api.group.models import ModelsCreateGroupConfigurationRequestV1
-from ....api.group.models import ModelsCreateGroupConfigurationResponseV1
-from ....api.group.models import ResponseErrorResponse
+from accelbyte_py_sdk.api.group import create_group_configuration_admin_v1 as create_group_configuration_admin_v1_internal
+from accelbyte_py_sdk.api.group.models import ModelsCreateGroupConfigurationRequestV1
+from accelbyte_py_sdk.api.group.models import ModelsCreateGroupConfigurationResponseV1
+from accelbyte_py_sdk.api.group.models import ResponseErrorResponse
 
 
 @click.command()

@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.qosm import set_server_alias as set_server_alias_internal
-from ....api.qosm.models import ModelsSetAliasRequest
-from ....api.qosm.models import ResponseError
+from accelbyte_py_sdk.api.qosm import set_server_alias as set_server_alias_internal
+from accelbyte_py_sdk.api.qosm.models import ModelsSetAliasRequest
+from accelbyte_py_sdk.api.qosm.models import ResponseError
 
 
 @click.command()

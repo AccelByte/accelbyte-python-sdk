@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.gametelemetry import protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_playtime_put as protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_playtime_put_internal
-from ....api.gametelemetry.models import HTTPValidationError
+from accelbyte_py_sdk.api.gametelemetry import protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_playtime_put as protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_playtime_put_internal
+from accelbyte_py_sdk.api.gametelemetry.models import HTTPValidationError
 
 
 @click.command()

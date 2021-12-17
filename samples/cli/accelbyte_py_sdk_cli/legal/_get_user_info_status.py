@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.legal import get_user_info_status as get_user_info_status_internal
-from ....api.legal.models import RetrieveUserInfoCacheStatusResponse
+from accelbyte_py_sdk.api.legal import get_user_info_status as get_user_info_status_internal
+from accelbyte_py_sdk.api.legal.models import RetrieveUserInfoCacheStatusResponse
 
 
 @click.command()

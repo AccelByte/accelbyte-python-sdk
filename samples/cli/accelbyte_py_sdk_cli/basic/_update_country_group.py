@@ -24,11 +24,11 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.basic import update_country_group as update_country_group_internal
-from ....api.basic.models import CountryGroupObject
-from ....api.basic.models import ErrorEntity
-from ....api.basic.models import UpdateCountryGroupRequest
-from ....api.basic.models import ValidationErrorEntity
+from accelbyte_py_sdk.api.basic import update_country_group as update_country_group_internal
+from accelbyte_py_sdk.api.basic.models import CountryGroupObject
+from accelbyte_py_sdk.api.basic.models import ErrorEntity
+from accelbyte_py_sdk.api.basic.models import UpdateCountryGroupRequest
+from accelbyte_py_sdk.api.basic.models import ValidationErrorEntity
 
 
 @click.command()

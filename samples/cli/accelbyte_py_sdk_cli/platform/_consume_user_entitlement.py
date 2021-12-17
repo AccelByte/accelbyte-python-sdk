@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import consume_user_entitlement as consume_user_entitlement_internal
-from ....api.platform.models import EntitlementDecrement
-from ....api.platform.models import EntitlementInfo
-from ....api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform import consume_user_entitlement as consume_user_entitlement_internal
+from accelbyte_py_sdk.api.platform.models import EntitlementDecrement
+from accelbyte_py_sdk.api.platform.models import EntitlementInfo
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
 
 
 @click.command()

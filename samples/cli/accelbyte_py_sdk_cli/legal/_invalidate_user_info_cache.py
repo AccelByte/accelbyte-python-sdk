@@ -24,7 +24,7 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.legal import invalidate_user_info_cache as invalidate_user_info_cache_internal
+from accelbyte_py_sdk.api.legal import invalidate_user_info_cache as invalidate_user_info_cache_internal
 
 
 @click.command()

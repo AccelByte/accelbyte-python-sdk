@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import admin_update_age_restriction_config_v3 as admin_update_age_restriction_config_v3_internal
-from ....api.iam.models import ModelAgeRestrictionRequestV3
-from ....api.iam.models import ModelAgeRestrictionResponseV3
-from ....api.iam.models import RestErrorResponse
+from accelbyte_py_sdk.api.iam import admin_update_age_restriction_config_v3 as admin_update_age_restriction_config_v3_internal
+from accelbyte_py_sdk.api.iam.models import ModelAgeRestrictionRequestV3
+from accelbyte_py_sdk.api.iam.models import ModelAgeRestrictionResponseV3
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

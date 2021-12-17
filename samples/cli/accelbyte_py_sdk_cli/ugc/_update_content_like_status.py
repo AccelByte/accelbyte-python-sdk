@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.ugc import update_content_like_status as update_content_like_status_internal
-from ....api.ugc.models import ModelsContentLikeRequest
-from ....api.ugc.models import ModelsContentLikeResponse
-from ....api.ugc.models import ResponseError
+from accelbyte_py_sdk.api.ugc import update_content_like_status as update_content_like_status_internal
+from accelbyte_py_sdk.api.ugc.models import ModelsContentLikeRequest
+from accelbyte_py_sdk.api.ugc.models import ModelsContentLikeResponse
+from accelbyte_py_sdk.api.ugc.models import ResponseError
 
 
 @click.command()

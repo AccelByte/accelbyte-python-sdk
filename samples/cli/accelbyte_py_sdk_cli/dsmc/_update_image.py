@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.dsmc import update_image as update_image_internal
-from ....api.dsmc.models import ModelsImageRecordUpdate
-from ....api.dsmc.models import ResponseError
+from accelbyte_py_sdk.api.dsmc import update_image as update_image_internal
+from accelbyte_py_sdk.api.dsmc.models import ModelsImageRecordUpdate
+from accelbyte_py_sdk.api.dsmc.models import ResponseError
 
 
 @click.command()

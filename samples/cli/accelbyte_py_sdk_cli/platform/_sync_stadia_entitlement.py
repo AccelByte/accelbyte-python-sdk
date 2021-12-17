@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import sync_stadia_entitlement as sync_stadia_entitlement_internal
-from ....api.platform.models import StadiaSyncRequest
+from accelbyte_py_sdk.api.platform import sync_stadia_entitlement as sync_stadia_entitlement_internal
+from accelbyte_py_sdk.api.platform.models import StadiaSyncRequest
 
 
 @click.command()

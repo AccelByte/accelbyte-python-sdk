@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.gdpr import admin_generate_personal_data_url as admin_generate_personal_data_url_internal
-from ....api.gdpr.models import ModelsUserDataURL
-from ....api.gdpr.models import ResponseError
+from accelbyte_py_sdk.api.gdpr import admin_generate_personal_data_url as admin_generate_personal_data_url_internal
+from accelbyte_py_sdk.api.gdpr.models import ModelsUserDataURL
+from accelbyte_py_sdk.api.gdpr.models import ResponseError
 
 
 @click.command()

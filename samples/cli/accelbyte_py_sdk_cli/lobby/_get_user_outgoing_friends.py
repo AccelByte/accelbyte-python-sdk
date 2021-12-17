@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.lobby import get_user_outgoing_friends as get_user_outgoing_friends_internal
-from ....api.lobby.models import ModelGetUserOutgoingFriendsResponse
-from ....api.lobby.models import RestapiErrorResponseV1
+from accelbyte_py_sdk.api.lobby import get_user_outgoing_friends as get_user_outgoing_friends_internal
+from accelbyte_py_sdk.api.lobby.models import ModelGetUserOutgoingFriendsResponse
+from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseV1
 
 
 @click.command()

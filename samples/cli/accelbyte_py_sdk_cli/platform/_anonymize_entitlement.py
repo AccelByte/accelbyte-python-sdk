@@ -24,7 +24,7 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import anonymize_entitlement as anonymize_entitlement_internal
+from accelbyte_py_sdk.api.platform import anonymize_entitlement as anonymize_entitlement_internal
 
 
 @click.command()

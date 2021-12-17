@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.seasonpass import query_tiers as query_tiers_internal
-from ....api.seasonpass.models import ErrorEntity
-from ....api.seasonpass.models import TierPagingSlicedResult
+from accelbyte_py_sdk.api.seasonpass import query_tiers as query_tiers_internal
+from accelbyte_py_sdk.api.seasonpass.models import ErrorEntity
+from accelbyte_py_sdk.api.seasonpass.models import TierPagingSlicedResult
 
 
 @click.command()

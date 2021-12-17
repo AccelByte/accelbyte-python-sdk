@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import delete_user_distribution_receiver as delete_user_distribution_receiver_internal
-from ....api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform import delete_user_distribution_receiver as delete_user_distribution_receiver_internal
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
 
 
 @click.command()

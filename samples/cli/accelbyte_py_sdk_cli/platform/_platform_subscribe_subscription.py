@@ -24,11 +24,11 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import platform_subscribe_subscription as platform_subscribe_subscription_internal
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import PlatformSubscribeRequest
-from ....api.platform.models import SubscriptionInfo
-from ....api.platform.models import ValidationErrorEntity
+from accelbyte_py_sdk.api.platform import platform_subscribe_subscription as platform_subscribe_subscription_internal
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import PlatformSubscribeRequest
+from accelbyte_py_sdk.api.platform.models import SubscriptionInfo
+from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 
 
 @click.command()

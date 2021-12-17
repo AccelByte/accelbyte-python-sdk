@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import public_check_payment_order_paid_status as public_check_payment_order_paid_status_internal
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import PaymentOrderPaidResult
+from accelbyte_py_sdk.api.platform import public_check_payment_order_paid_status as public_check_payment_order_paid_status_internal
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import PaymentOrderPaidResult
 
 
 @click.command()

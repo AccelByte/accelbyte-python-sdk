@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import upgrade_headless_account as upgrade_headless_account_internal
-from ....api.iam.models import ModelUpgradeHeadlessAccountRequest
-from ....api.iam.models import ModelUserResponse
+from accelbyte_py_sdk.api.iam import upgrade_headless_account as upgrade_headless_account_internal
+from accelbyte_py_sdk.api.iam.models import ModelUpgradeHeadlessAccountRequest
+from accelbyte_py_sdk.api.iam.models import ModelUserResponse
 
 
 @click.command()

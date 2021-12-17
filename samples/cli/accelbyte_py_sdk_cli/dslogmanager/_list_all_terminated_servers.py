@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.dslogmanager import list_all_terminated_servers as list_all_terminated_servers_internal
-from ....api.dslogmanager.models import ModelsListTerminatedServersResponse
-from ....api.dslogmanager.models import ResponseError
+from accelbyte_py_sdk.api.dslogmanager import list_all_terminated_servers as list_all_terminated_servers_internal
+from accelbyte_py_sdk.api.dslogmanager.models import ModelsListTerminatedServersResponse
+from accelbyte_py_sdk.api.dslogmanager.models import ResponseError
 
 
 @click.command()

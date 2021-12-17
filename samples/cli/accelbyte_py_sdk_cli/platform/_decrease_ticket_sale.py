@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import decrease_ticket_sale as decrease_ticket_sale_internal
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import TicketSaleDecrementRequest
-from ....api.platform.models import ValidationErrorEntity
+from accelbyte_py_sdk.api.platform import decrease_ticket_sale as decrease_ticket_sale_internal
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import TicketSaleDecrementRequest
+from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 
 
 @click.command()

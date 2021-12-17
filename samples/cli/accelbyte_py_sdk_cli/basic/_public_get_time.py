@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.basic import public_get_time as public_get_time_internal
-from ....api.basic.models import RetrieveTimeResponse
+from accelbyte_py_sdk.api.basic import public_get_time as public_get_time_internal
+from accelbyte_py_sdk.api.basic.models import RetrieveTimeResponse
 
 
 @click.command()

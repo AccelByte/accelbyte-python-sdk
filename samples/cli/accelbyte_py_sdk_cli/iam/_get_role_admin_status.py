@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import get_role_admin_status as get_role_admin_status_internal
-from ....api.iam.models import ModelRoleAdminStatusResponse
+from accelbyte_py_sdk.api.iam import get_role_admin_status as get_role_admin_status_internal
+from accelbyte_py_sdk.api.iam.models import ModelRoleAdminStatusResponse
 
 
 @click.command()

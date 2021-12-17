@@ -1,9 +1,9 @@
 import os
 from typing import Optional
 
-from ...services.auth import login_client
-from ...services.auth import login_user
-from ...services.auth import logout as logout_internal
+from accelbyte_py_sdk.services.auth import login_client
+from accelbyte_py_sdk.services.auth import login_user
+from accelbyte_py_sdk.services.auth import logout as logout_internal
 
 
 def login_as(type_: str, username: Optional[str] = None, password: Optional[str] = None):

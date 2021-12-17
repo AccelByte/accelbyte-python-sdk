@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import create_user as create_user_internal
-from ....api.iam.models import ModelUserCreateRequest
-from ....api.iam.models import ModelUserCreateResponse
+from accelbyte_py_sdk.api.iam import create_user as create_user_internal
+from accelbyte_py_sdk.api.iam.models import ModelUserCreateRequest
+from accelbyte_py_sdk.api.iam.models import ModelUserCreateResponse
 
 
 @click.command()

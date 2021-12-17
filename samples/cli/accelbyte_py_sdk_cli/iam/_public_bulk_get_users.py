@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import public_bulk_get_users as public_bulk_get_users_internal
-from ....api.iam.models import ModelGameUserIDsRequest
-from ....api.iam.models import ModelListBulkUserGameResponse
-from ....api.iam.models import RestErrorResponse
+from accelbyte_py_sdk.api.iam import public_bulk_get_users as public_bulk_get_users_internal
+from accelbyte_py_sdk.api.iam.models import ModelGameUserIDsRequest
+from accelbyte_py_sdk.api.iam.models import ModelListBulkUserGameResponse
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

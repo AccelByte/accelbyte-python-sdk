@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.ugc import download_content_by_share_code as download_content_by_share_code_internal
-from ....api.ugc.models import ModelsContentDownloadResponse
-from ....api.ugc.models import ResponseError
+from accelbyte_py_sdk.api.ugc import download_content_by_share_code as download_content_by_share_code_internal
+from accelbyte_py_sdk.api.ugc.models import ModelsContentDownloadResponse
+from accelbyte_py_sdk.api.ugc.models import ResponseError
 
 
 @click.command()

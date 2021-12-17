@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.lobby import notification_with_template_by_user_id as notification_with_template_by_user_id_internal
-from ....api.lobby.models import ModelNotificationWithTemplateRequest
-from ....api.lobby.models import RestapiErrorResponseBody
+from accelbyte_py_sdk.api.lobby import notification_with_template_by_user_id as notification_with_template_by_user_id_internal
+from accelbyte_py_sdk.api.lobby.models import ModelNotificationWithTemplateRequest
+from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
 
 
 @click.command()

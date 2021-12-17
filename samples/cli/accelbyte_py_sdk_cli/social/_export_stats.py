@@ -24,7 +24,7 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.social import export_stats as export_stats_internal
+from accelbyte_py_sdk.api.social import export_stats as export_stats_internal
 
 
 @click.command()

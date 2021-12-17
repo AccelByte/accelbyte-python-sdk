@@ -24,11 +24,11 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import create_codes as create_codes_internal
-from ....api.platform.models import CodeCreate
-from ....api.platform.models import CodeCreateResult
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import ValidationErrorEntity
+from accelbyte_py_sdk.api.platform import create_codes as create_codes_internal
+from accelbyte_py_sdk.api.platform.models import CodeCreate
+from accelbyte_py_sdk.api.platform.models import CodeCreateResult
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 
 
 @click.command()

@@ -24,7 +24,7 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.social import delete_user_slot_config as delete_user_slot_config_internal
+from accelbyte_py_sdk.api.social import delete_user_slot_config as delete_user_slot_config_internal
 
 
 @click.command()

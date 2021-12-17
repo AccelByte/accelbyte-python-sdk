@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import sync_epic_games_inventory as sync_epic_games_inventory_internal
-from ....api.platform.models import EpicGamesReconcileRequest
-from ....api.platform.models import EpicGamesReconcileResult
+from accelbyte_py_sdk.api.platform import sync_epic_games_inventory as sync_epic_games_inventory_internal
+from accelbyte_py_sdk.api.platform.models import EpicGamesReconcileRequest
+from accelbyte_py_sdk.api.platform.models import EpicGamesReconcileResult
 
 
 @click.command()

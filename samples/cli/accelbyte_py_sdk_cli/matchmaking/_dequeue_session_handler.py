@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.matchmaking import dequeue_session_handler as dequeue_session_handler_internal
-from ....api.matchmaking.models import ModelsDequeueRequest
-from ....api.matchmaking.models import ResponseError
+from accelbyte_py_sdk.api.matchmaking import dequeue_session_handler as dequeue_session_handler_internal
+from accelbyte_py_sdk.api.matchmaking.models import ModelsDequeueRequest
+from accelbyte_py_sdk.api.matchmaking.models import ResponseError
 
 
 @click.command()

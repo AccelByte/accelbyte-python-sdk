@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.ugc import admin_upload_content_screenshot as admin_upload_content_screenshot_internal
-from ....api.ugc.models import ModelsCreateScreenshotRequest
-from ....api.ugc.models import ModelsCreateScreenshotResponse
-from ....api.ugc.models import ResponseError
+from accelbyte_py_sdk.api.ugc import admin_upload_content_screenshot as admin_upload_content_screenshot_internal
+from accelbyte_py_sdk.api.ugc.models import ModelsCreateScreenshotRequest
+from accelbyte_py_sdk.api.ugc.models import ModelsCreateScreenshotResponse
+from accelbyte_py_sdk.api.ugc.models import ResponseError
 
 
 @click.command()

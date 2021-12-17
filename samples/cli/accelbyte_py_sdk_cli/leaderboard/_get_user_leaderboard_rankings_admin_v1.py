@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.leaderboard import get_user_leaderboard_rankings_admin_v1 as get_user_leaderboard_rankings_admin_v1_internal
-from ....api.leaderboard.models import ModelsGetAllUserLeaderboardsResp
-from ....api.leaderboard.models import ResponseErrorResponse
+from accelbyte_py_sdk.api.leaderboard import get_user_leaderboard_rankings_admin_v1 as get_user_leaderboard_rankings_admin_v1_internal
+from accelbyte_py_sdk.api.leaderboard.models import ModelsGetAllUserLeaderboardsResp
+from accelbyte_py_sdk.api.leaderboard.models import ResponseErrorResponse
 
 
 @click.command()

@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.basic import public_report_user as public_report_user_internal
-from ....api.basic.models import ErrorEntity
-from ....api.basic.models import UserReportRequest
-from ....api.basic.models import ValidationErrorEntity
+from accelbyte_py_sdk.api.basic import public_report_user as public_report_user_internal
+from accelbyte_py_sdk.api.basic.models import ErrorEntity
+from accelbyte_py_sdk.api.basic.models import UserReportRequest
+from accelbyte_py_sdk.api.basic.models import ValidationErrorEntity
 
 
 @click.command()

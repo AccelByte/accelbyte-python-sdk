@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.social import get_namespace_slot_config as get_namespace_slot_config_internal
-from ....api.social.models import NamespaceSlotConfigInfo
+from accelbyte_py_sdk.api.social import get_namespace_slot_config as get_namespace_slot_config_internal
+from accelbyte_py_sdk.api.social.models import NamespaceSlotConfigInfo
 
 
 @click.command()

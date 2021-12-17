@@ -24,7 +24,7 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import get_special_payment_providers as get_special_payment_providers_internal
+from accelbyte_py_sdk.api.platform import get_special_payment_providers as get_special_payment_providers_internal
 
 
 @click.command()

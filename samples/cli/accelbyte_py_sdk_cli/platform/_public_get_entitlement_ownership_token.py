@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import public_get_entitlement_ownership_token as public_get_entitlement_ownership_token_internal
-from ....api.platform.models import OwnershipToken
+from accelbyte_py_sdk.api.platform import public_get_entitlement_ownership_token as public_get_entitlement_ownership_token_internal
+from accelbyte_py_sdk.api.platform.models import OwnershipToken
 
 
 @click.command()

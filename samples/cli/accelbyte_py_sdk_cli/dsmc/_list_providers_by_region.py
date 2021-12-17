@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.dsmc import list_providers_by_region as list_providers_by_region_internal
-from ....api.dsmc.models import ModelsDefaultProvider
+from accelbyte_py_sdk.api.dsmc import list_providers_by_region as list_providers_by_region_internal
+from accelbyte_py_sdk.api.dsmc.models import ModelsDefaultProvider
 
 
 @click.command()

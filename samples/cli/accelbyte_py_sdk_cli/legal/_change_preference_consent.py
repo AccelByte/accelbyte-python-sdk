@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.legal import change_preference_consent as change_preference_consent_internal
-from ....api.legal.models import AcceptAgreementRequest
-from ....api.legal.models import ErrorEntity
+from accelbyte_py_sdk.api.legal import change_preference_consent as change_preference_consent_internal
+from accelbyte_py_sdk.api.legal.models import AcceptAgreementRequest
+from accelbyte_py_sdk.api.legal.models import ErrorEntity
 
 
 @click.command()

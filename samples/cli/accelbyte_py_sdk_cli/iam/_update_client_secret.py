@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import update_client_secret as update_client_secret_internal
-from ....api.iam.models import ClientmodelClientUpdateSecretRequest
+from accelbyte_py_sdk.api.iam import update_client_secret as update_client_secret_internal
+from accelbyte_py_sdk.api.iam.models import ClientmodelClientUpdateSecretRequest
 
 
 @click.command()

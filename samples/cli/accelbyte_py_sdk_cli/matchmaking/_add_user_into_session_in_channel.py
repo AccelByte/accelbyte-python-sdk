@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.matchmaking import add_user_into_session_in_channel as add_user_into_session_in_channel_internal
-from ....api.matchmaking.models import ModelsMatchAddUserIntoSessionRequest
-from ....api.matchmaking.models import ResponseError
-from ....api.matchmaking.models import ResponseErrorV1
+from accelbyte_py_sdk.api.matchmaking import add_user_into_session_in_channel as add_user_into_session_in_channel_internal
+from accelbyte_py_sdk.api.matchmaking.models import ModelsMatchAddUserIntoSessionRequest
+from accelbyte_py_sdk.api.matchmaking.models import ResponseError
+from accelbyte_py_sdk.api.matchmaking.models import ResponseErrorV1
 
 
 @click.command()

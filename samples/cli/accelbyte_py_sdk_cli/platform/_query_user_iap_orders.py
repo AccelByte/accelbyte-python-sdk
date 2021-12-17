@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import query_user_iap_orders as query_user_iap_orders_internal
-from ....api.platform.models import IAPOrderPagingSlicedResult
+from accelbyte_py_sdk.api.platform import query_user_iap_orders as query_user_iap_orders_internal
+from accelbyte_py_sdk.api.platform.models import IAPOrderPagingSlicedResult
 
 
 @click.command()

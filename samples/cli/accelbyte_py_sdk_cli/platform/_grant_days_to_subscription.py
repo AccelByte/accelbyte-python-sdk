@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import grant_days_to_subscription as grant_days_to_subscription_internal
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import GrantSubscriptionDaysRequest
-from ....api.platform.models import SubscriptionInfo
+from accelbyte_py_sdk.api.platform import grant_days_to_subscription as grant_days_to_subscription_internal
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import GrantSubscriptionDaysRequest
+from accelbyte_py_sdk.api.platform.models import SubscriptionInfo
 
 
 @click.command()

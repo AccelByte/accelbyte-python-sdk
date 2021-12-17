@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import update_playstation_iap_config as update_playstation_iap_config_internal
-from ....api.platform.models import PlayStationIAPConfigInfo
-from ....api.platform.models import PlaystationIAPConfigRequest
+from accelbyte_py_sdk.api.platform import update_playstation_iap_config as update_playstation_iap_config_internal
+from accelbyte_py_sdk.api.platform.models import PlayStationIAPConfigInfo
+from accelbyte_py_sdk.api.platform.models import PlaystationIAPConfigRequest
 
 
 @click.command()

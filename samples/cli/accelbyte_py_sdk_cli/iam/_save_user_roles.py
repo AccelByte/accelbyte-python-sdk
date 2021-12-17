@@ -24,7 +24,7 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import save_user_roles as save_user_roles_internal
+from accelbyte_py_sdk.api.iam import save_user_roles as save_user_roles_internal
 
 
 @click.command()

@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import get_reward_by_code as get_reward_by_code_internal
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import RewardInfo
+from accelbyte_py_sdk.api.platform import get_reward_by_code as get_reward_by_code_internal
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import RewardInfo
 
 
 @click.command()

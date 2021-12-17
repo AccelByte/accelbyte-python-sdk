@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.lobby import admin_get_all_config_v1 as admin_get_all_config_v1_internal
-from ....api.lobby.models import ModelsConfigList
-from ....api.lobby.models import RestapiErrorResponseBody
+from accelbyte_py_sdk.api.lobby import admin_get_all_config_v1 as admin_get_all_config_v1_internal
+from accelbyte_py_sdk.api.lobby.models import ModelsConfigList
+from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
 
 
 @click.command()

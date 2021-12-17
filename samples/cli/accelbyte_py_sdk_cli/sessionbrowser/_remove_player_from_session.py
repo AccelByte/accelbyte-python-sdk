@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.sessionbrowser import remove_player_from_session as remove_player_from_session_internal
-from ....api.sessionbrowser.models import ModelsAddPlayerResponse
-from ....api.sessionbrowser.models import RestapiErrorResponseV2
+from accelbyte_py_sdk.api.sessionbrowser import remove_player_from_session as remove_player_from_session_internal
+from accelbyte_py_sdk.api.sessionbrowser.models import ModelsAddPlayerResponse
+from accelbyte_py_sdk.api.sessionbrowser.models import RestapiErrorResponseV2
 
 
 @click.command()

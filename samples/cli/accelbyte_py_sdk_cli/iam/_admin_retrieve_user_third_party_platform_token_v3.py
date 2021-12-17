@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import admin_retrieve_user_third_party_platform_token_v3 as admin_retrieve_user_third_party_platform_token_v3_internal
-from ....api.iam.models import OauthmodelErrorResponse
-from ....api.iam.models import OauthmodelTokenThirdPartyResponse
+from accelbyte_py_sdk.api.iam import admin_retrieve_user_third_party_platform_token_v3 as admin_retrieve_user_third_party_platform_token_v3_internal
+from accelbyte_py_sdk.api.iam.models import OauthmodelErrorResponse
+from accelbyte_py_sdk.api.iam.models import OauthmodelTokenThirdPartyResponse
 
 
 @click.command()

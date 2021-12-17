@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.basic import get_actions as get_actions_internal
-from ....api.basic.models import Action
-from ....api.basic.models import ErrorEntity
+from accelbyte_py_sdk.api.basic import get_actions as get_actions_internal
+from accelbyte_py_sdk.api.basic.models import Action
+from accelbyte_py_sdk.api.basic.models import ErrorEntity
 
 
 @click.command()

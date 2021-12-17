@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import cancel_subscription as cancel_subscription_internal
-from ....api.platform.models import CancelRequest
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import SubscriptionInfo
+from accelbyte_py_sdk.api.platform import cancel_subscription as cancel_subscription_internal
+from accelbyte_py_sdk.api.platform.models import CancelRequest
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import SubscriptionInfo
 
 
 @click.command()

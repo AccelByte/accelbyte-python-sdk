@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import feature_item as feature_item_internal
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import FullItemInfo
+from accelbyte_py_sdk.api.platform import feature_item as feature_item_internal
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import FullItemInfo
 
 
 @click.command()

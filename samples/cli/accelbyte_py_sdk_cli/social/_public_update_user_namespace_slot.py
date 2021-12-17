@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.social import public_update_user_namespace_slot as public_update_user_namespace_slot_internal
-from ....api.social.models import ErrorEntity
-from ....api.social.models import SlotInfo
+from accelbyte_py_sdk.api.social import public_update_user_namespace_slot as public_update_user_namespace_slot_internal
+from accelbyte_py_sdk.api.social.models import ErrorEntity
+from accelbyte_py_sdk.api.social.models import SlotInfo
 
 
 @click.command()

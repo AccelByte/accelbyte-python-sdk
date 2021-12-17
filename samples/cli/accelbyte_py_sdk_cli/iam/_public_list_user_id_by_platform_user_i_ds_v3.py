@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import public_list_user_id_by_platform_user_i_ds_v3 as public_list_user_id_by_platform_user_i_ds_v3_internal
-from ....api.iam.models import AccountcommonUserPlatforms
-from ....api.iam.models import ModelPlatformUserIDRequest
-from ....api.iam.models import RestErrorResponse
+from accelbyte_py_sdk.api.iam import public_list_user_id_by_platform_user_i_ds_v3 as public_list_user_id_by_platform_user_i_ds_v3_internal
+from accelbyte_py_sdk.api.iam.models import AccountcommonUserPlatforms
+from accelbyte_py_sdk.api.iam.models import ModelPlatformUserIDRequest
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.legal import retrieve_latest_policies_by_namespace_and_country_public as retrieve_latest_policies_by_namespace_and_country_public_internal
-from ....api.legal.models import RetrievePolicyPublicResponse
+from accelbyte_py_sdk.api.legal import retrieve_latest_policies_by_namespace_and_country_public as retrieve_latest_policies_by_namespace_and_country_public_internal
+from accelbyte_py_sdk.api.legal.models import RetrievePolicyPublicResponse
 
 
 @click.command()

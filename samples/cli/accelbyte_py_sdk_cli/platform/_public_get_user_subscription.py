@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import public_get_user_subscription as public_get_user_subscription_internal
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import SubscriptionInfo
+from accelbyte_py_sdk.api.platform import public_get_user_subscription as public_get_user_subscription_internal
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import SubscriptionInfo
 
 
 @click.command()

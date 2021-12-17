@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.lobby import admin_bulk_block_players_v1 as admin_bulk_block_players_v1_internal
-from ....api.lobby.models import ModelsListBlockedPlayerRequest
-from ....api.lobby.models import RestapiErrorResponseBody
+from accelbyte_py_sdk.api.lobby import admin_bulk_block_players_v1 as admin_bulk_block_players_v1_internal
+from accelbyte_py_sdk.api.lobby.models import ModelsListBlockedPlayerRequest
+from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
 
 
 @click.command()

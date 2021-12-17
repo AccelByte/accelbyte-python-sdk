@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import admin_add_client_permissions_v3 as admin_add_client_permissions_v3_internal
-from ....api.iam.models import AccountcommonClientPermissionsV3
-from ....api.iam.models import RestapiErrorResponse
+from accelbyte_py_sdk.api.iam import admin_add_client_permissions_v3 as admin_add_client_permissions_v3_internal
+from accelbyte_py_sdk.api.iam.models import AccountcommonClientPermissionsV3
+from accelbyte_py_sdk.api.iam.models import RestapiErrorResponse
 
 
 @click.command()

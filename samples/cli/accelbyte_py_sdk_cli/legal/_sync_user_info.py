@@ -24,7 +24,7 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.legal import sync_user_info as sync_user_info_internal
+from accelbyte_py_sdk.api.legal import sync_user_info as sync_user_info_internal
 
 
 @click.command()

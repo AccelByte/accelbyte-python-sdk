@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.seasonpass import delete_season as delete_season_internal
-from ....api.seasonpass.models import ErrorEntity
+from accelbyte_py_sdk.api.seasonpass import delete_season as delete_season_internal
+from accelbyte_py_sdk.api.seasonpass.models import ErrorEntity
 
 
 @click.command()

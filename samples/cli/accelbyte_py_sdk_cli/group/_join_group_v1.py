@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.group import join_group_v1 as join_group_v1_internal
-from ....api.group.models import ModelsJoinGroupResponseV1
-from ....api.group.models import ResponseErrorResponse
+from accelbyte_py_sdk.api.group import join_group_v1 as join_group_v1_internal
+from accelbyte_py_sdk.api.group.models import ModelsJoinGroupResponseV1
+from accelbyte_py_sdk.api.group.models import ResponseErrorResponse
 
 
 @click.command()

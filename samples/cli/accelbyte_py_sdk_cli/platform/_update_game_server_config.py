@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import update_game_server_config as update_game_server_config_internal
-from ....api.platform.models import GameServerConfig
+from accelbyte_py_sdk.api.platform import update_game_server_config as update_game_server_config_internal
+from accelbyte_py_sdk.api.platform.models import GameServerConfig
 
 
 @click.command()

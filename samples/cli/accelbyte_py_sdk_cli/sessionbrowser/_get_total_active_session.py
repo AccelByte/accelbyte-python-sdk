@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.sessionbrowser import get_total_active_session as get_total_active_session_internal
-from ....api.sessionbrowser.models import ModelsCountActiveSessionResponse
-from ....api.sessionbrowser.models import RestapiErrorResponseV2
+from accelbyte_py_sdk.api.sessionbrowser import get_total_active_session as get_total_active_session_internal
+from accelbyte_py_sdk.api.sessionbrowser.models import ModelsCountActiveSessionResponse
+from accelbyte_py_sdk.api.sessionbrowser.models import RestapiErrorResponseV2
 
 
 @click.command()

@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import get_admin_users_by_role_id as get_admin_users_by_role_id_internal
-from ....api.iam.models import ModelGetAdminUsersResponse
-from ....api.iam.models import RestErrorResponse
+from accelbyte_py_sdk.api.iam import get_admin_users_by_role_id as get_admin_users_by_role_id_internal
+from accelbyte_py_sdk.api.iam.models import ModelGetAdminUsersResponse
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

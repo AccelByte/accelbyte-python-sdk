@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.lobby import users_presence_handler_v1 as users_presence_handler_v1_internal
-from ....api.lobby.models import HandlersGetUsersPresenceResponse
-from ....api.lobby.models import RestapiErrorResponseBody
+from accelbyte_py_sdk.api.lobby import users_presence_handler_v1 as users_presence_handler_v1_internal
+from accelbyte_py_sdk.api.lobby.models import HandlersGetUsersPresenceResponse
+from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
 
 
 @click.command()

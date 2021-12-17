@@ -24,7 +24,7 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import list_cross_namespace_account_link as list_cross_namespace_account_link_internal
+from accelbyte_py_sdk.api.iam import list_cross_namespace_account_link as list_cross_namespace_account_link_internal
 
 
 @click.command()

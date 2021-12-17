@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.iam import token_revocation_v3 as token_revocation_v3_internal
-from ....api.iam.models import OauthmodelErrorResponse
+from accelbyte_py_sdk.api.iam import token_revocation_v3 as token_revocation_v3_internal
+from accelbyte_py_sdk.api.iam.models import OauthmodelErrorResponse
 
 
 @click.command()

@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import count_of_purchased_item as count_of_purchased_item_internal
-from ....api.platform.models import PurchasedItemCount
+from accelbyte_py_sdk.api.platform import count_of_purchased_item as count_of_purchased_item_internal
+from accelbyte_py_sdk.api.platform.models import PurchasedItemCount
 
 
 @click.command()

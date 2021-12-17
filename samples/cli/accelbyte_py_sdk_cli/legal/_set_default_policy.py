@@ -24,7 +24,7 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.legal import set_default_policy as set_default_policy_internal
+from accelbyte_py_sdk.api.legal import set_default_policy as set_default_policy_internal
 
 
 @click.command()

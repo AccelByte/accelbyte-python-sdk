@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.sessionbrowser import query_session as query_session_internal
-from ....api.sessionbrowser.models import ModelsSessionQueryResponse
-from ....api.sessionbrowser.models import ResponseError
+from accelbyte_py_sdk.api.sessionbrowser import query_session as query_session_internal
+from accelbyte_py_sdk.api.sessionbrowser.models import ModelsSessionQueryResponse
+from accelbyte_py_sdk.api.sessionbrowser.models import ResponseError
 
 
 @click.command()

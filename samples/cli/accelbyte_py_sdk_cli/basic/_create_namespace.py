@@ -24,11 +24,11 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.basic import create_namespace as create_namespace_internal
-from ....api.basic.models import ErrorEntity
-from ....api.basic.models import NamespaceCreate
-from ....api.basic.models import NamespaceInfo
-from ....api.basic.models import ValidationErrorEntity
+from accelbyte_py_sdk.api.basic import create_namespace as create_namespace_internal
+from accelbyte_py_sdk.api.basic.models import ErrorEntity
+from accelbyte_py_sdk.api.basic.models import NamespaceCreate
+from accelbyte_py_sdk.api.basic.models import NamespaceInfo
+from accelbyte_py_sdk.api.basic.models import ValidationErrorEntity
 
 
 @click.command()

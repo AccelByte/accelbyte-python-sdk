@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.ugc import single_admin_get_all_groups as single_admin_get_all_groups_internal
-from ....api.ugc.models import ModelsPaginatedGroupResponse
-from ....api.ugc.models import ResponseError
+from accelbyte_py_sdk.api.ugc import single_admin_get_all_groups as single_admin_get_all_groups_internal
+from accelbyte_py_sdk.api.ugc.models import ModelsPaginatedGroupResponse
+from accelbyte_py_sdk.api.ugc.models import ResponseError
 
 
 @click.command()

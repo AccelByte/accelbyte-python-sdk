@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.dsmc import update_port as update_port_internal
-from ....api.dsmc.models import ModelsDSMConfigRecord
-from ....api.dsmc.models import ModelsUpdatePortRequest
-from ....api.dsmc.models import ResponseError
+from accelbyte_py_sdk.api.dsmc import update_port as update_port_internal
+from accelbyte_py_sdk.api.dsmc.models import ModelsDSMConfigRecord
+from accelbyte_py_sdk.api.dsmc.models import ModelsUpdatePortRequest
+from accelbyte_py_sdk.api.dsmc.models import ResponseError
 
 
 @click.command()

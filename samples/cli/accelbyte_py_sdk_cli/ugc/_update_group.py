@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.ugc import update_group as update_group_internal
-from ....api.ugc.models import ModelsCreateGroupRequest
-from ....api.ugc.models import ModelsCreateGroupResponse
-from ....api.ugc.models import ResponseError
+from accelbyte_py_sdk.api.ugc import update_group as update_group_internal
+from accelbyte_py_sdk.api.ugc.models import ModelsCreateGroupRequest
+from accelbyte_py_sdk.api.ugc.models import ModelsCreateGroupResponse
+from accelbyte_py_sdk.api.ugc.models import ResponseError
 
 
 @click.command()

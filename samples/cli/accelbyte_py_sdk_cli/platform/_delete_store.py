@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import delete_store as delete_store_internal
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import StoreInfo
+from accelbyte_py_sdk.api.platform import delete_store as delete_store_internal
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import StoreInfo
 
 
 @click.command()

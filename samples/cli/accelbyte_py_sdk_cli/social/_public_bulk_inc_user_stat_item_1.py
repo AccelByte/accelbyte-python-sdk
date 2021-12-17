@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.social import public_bulk_inc_user_stat_item_1 as public_bulk_inc_user_stat_item_1_internal
-from ....api.social.models import BulkStatItemInc
-from ....api.social.models import BulkStatItemOperationResult
-from ....api.social.models import ValidationErrorEntity
+from accelbyte_py_sdk.api.social import public_bulk_inc_user_stat_item_1 as public_bulk_inc_user_stat_item_1_internal
+from accelbyte_py_sdk.api.social.models import BulkStatItemInc
+from accelbyte_py_sdk.api.social.models import BulkStatItemOperationResult
+from accelbyte_py_sdk.api.social.models import ValidationErrorEntity
 
 
 @click.command()

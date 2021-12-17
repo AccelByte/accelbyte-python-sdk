@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import query_rewards as query_rewards_internal
-from ....api.platform.models import RewardPagingSlicedResult
-from ....api.platform.models import ValidationErrorEntity
+from accelbyte_py_sdk.api.platform import query_rewards as query_rewards_internal
+from accelbyte_py_sdk.api.platform.models import RewardPagingSlicedResult
+from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 
 
 @click.command()

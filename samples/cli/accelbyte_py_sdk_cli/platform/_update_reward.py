@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import update_reward as update_reward_internal
-from ....api.platform.models import ErrorEntity
-from ....api.platform.models import RewardInfo
-from ....api.platform.models import RewardUpdate
+from accelbyte_py_sdk.api.platform import update_reward as update_reward_internal
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import RewardInfo
+from accelbyte_py_sdk.api.platform.models import RewardUpdate
 
 
 @click.command()

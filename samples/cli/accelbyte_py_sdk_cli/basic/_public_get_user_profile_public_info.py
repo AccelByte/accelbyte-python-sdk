@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.basic import public_get_user_profile_public_info as public_get_user_profile_public_info_internal
-from ....api.basic.models import ErrorEntity
-from ....api.basic.models import UserProfilePublicInfo
-from ....api.basic.models import ValidationErrorEntity
+from accelbyte_py_sdk.api.basic import public_get_user_profile_public_info as public_get_user_profile_public_info_internal
+from accelbyte_py_sdk.api.basic.models import ErrorEntity
+from accelbyte_py_sdk.api.basic.models import UserProfilePublicInfo
+from accelbyte_py_sdk.api.basic.models import ValidationErrorEntity
 
 
 @click.command()

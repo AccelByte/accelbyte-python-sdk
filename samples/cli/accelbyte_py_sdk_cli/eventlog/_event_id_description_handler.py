@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.eventlog import event_id_description_handler as event_id_description_handler_internal
-from ....api.eventlog.models import ModelsMultipleEventID
+from accelbyte_py_sdk.api.eventlog import event_id_description_handler as event_id_description_handler_internal
+from accelbyte_py_sdk.api.eventlog.models import ModelsMultipleEventID
 
 
 @click.command()

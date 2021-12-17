@@ -24,10 +24,10 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.legal import request_presigned_url as request_presigned_url_internal
-from ....api.legal.models import ErrorEntity
-from ....api.legal.models import UploadLocalizedPolicyVersionAttachmentResponse
-from ....api.legal.models import UploadPolicyVersionAttachmentRequest
+from accelbyte_py_sdk.api.legal import request_presigned_url as request_presigned_url_internal
+from accelbyte_py_sdk.api.legal.models import ErrorEntity
+from accelbyte_py_sdk.api.legal.models import UploadLocalizedPolicyVersionAttachmentResponse
+from accelbyte_py_sdk.api.legal.models import UploadPolicyVersionAttachmentRequest
 
 
 @click.command()

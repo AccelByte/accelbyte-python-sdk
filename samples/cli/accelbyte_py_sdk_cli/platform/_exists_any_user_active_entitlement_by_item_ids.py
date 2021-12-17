@@ -24,8 +24,8 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import exists_any_user_active_entitlement_by_item_ids as exists_any_user_active_entitlement_by_item_ids_internal
-from ....api.platform.models import Ownership
+from accelbyte_py_sdk.api.platform import exists_any_user_active_entitlement_by_item_ids as exists_any_user_active_entitlement_by_item_ids_internal
+from accelbyte_py_sdk.api.platform.models import Ownership
 
 
 @click.command()

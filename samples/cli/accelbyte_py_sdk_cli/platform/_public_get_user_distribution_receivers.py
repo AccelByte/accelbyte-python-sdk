@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.platform import public_get_user_distribution_receivers as public_get_user_distribution_receivers_internal
-from ....api.platform.models import DistributionReceiverInfo
-from ....api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform import public_get_user_distribution_receivers as public_get_user_distribution_receivers_internal
+from accelbyte_py_sdk.api.platform.models import DistributionReceiverInfo
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
 
 
 @click.command()

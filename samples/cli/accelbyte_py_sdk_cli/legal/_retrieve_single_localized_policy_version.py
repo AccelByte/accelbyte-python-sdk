@@ -24,9 +24,9 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from ....api.legal import retrieve_single_localized_policy_version as retrieve_single_localized_policy_version_internal
-from ....api.legal.models import ErrorEntity
-from ....api.legal.models import UpdateLocalizedPolicyVersionResponse
+from accelbyte_py_sdk.api.legal import retrieve_single_localized_policy_version as retrieve_single_localized_policy_version_internal
+from accelbyte_py_sdk.api.legal.models import ErrorEntity
+from accelbyte_py_sdk.api.legal.models import UpdateLocalizedPolicyVersionResponse
 
 
 @click.command()
