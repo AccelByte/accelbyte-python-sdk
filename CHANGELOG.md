@@ -1,5 +1,27 @@
 # Changelog
 
+## v0.4.0
+
+- Add new WebsocketClient implementation.
+- Add examples on how to use the Lobby Service's WSS.
+- Add example on how to create a Matchmaking Service using AWS SAM CLI.
+- Updated APIs:
+    - achievement
+    - basic
+    - cloudsave
+    - dslogmanager
+    - dsmc
+    - eventlog
+    - iam
+    - legal
+    - lobby
+    - matchmaking
+    - platform
+    - seasonpass (new)
+    - social
+    - ugc
+- Moved CLI under samples.
+
 ## v0.3.0
 
 - Add utility function for generating websocket message identifiers.
