@@ -74,7 +74,7 @@ pipeline {
             }
           }
           environment {
-            PYTHONPATH = '/tmp/install:.justice-codegen-sdk/tools/codegen'
+            PYTHONPATH = '/tmp/install:.justice-codegen-sdk/codegen'
           }
           steps {
             sh "pip install -t /tmp/install -r requirements.txt"
