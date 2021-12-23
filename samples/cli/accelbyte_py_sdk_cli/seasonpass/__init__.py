@@ -1,3 +1,11 @@
+# justice-seasonpass-service (1.5.0)
+
+# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# This is licensed software from AccelByte Inc, for limitations
+# and restrictions contact your company contract manager.
+
+# template_file: python-cli-init.j2
+
 from ._get_pass import get_pass
 from ._delete_pass import delete_pass
 from ._update_pass import update_pass

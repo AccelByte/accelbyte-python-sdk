@@ -1,3 +1,11 @@
+# justice-social-service (1.22.0)
+
+# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# This is licensed software from AccelByte Inc, for limitations
+# and restrictions contact your company contract manager.
+
+# template_file: python-cli-init.j2
+
 from ._get_namespace_slot_config import get_namespace_slot_config
 from ._update_namespace_slot_config import update_namespace_slot_config
 from ._delete_namespace_slot_config import delete_namespace_slot_config

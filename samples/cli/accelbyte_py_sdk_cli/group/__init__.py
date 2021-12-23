@@ -1,3 +1,11 @@
+# justice-group-service (2.9.0)
+
+# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# This is licensed software from AccelByte Inc, for limitations
+# and restrictions contact your company contract manager.
+
+# template_file: python-cli-init.j2
+
 from ._list_group_configuration_admin_v1 import list_group_configuration_admin_v1
 from ._create_group_configuration_admin_v1 import create_group_configuration_admin_v1
 from ._initiate_group_configuration_admin_v1 import initiate_group_configuration_admin_v1

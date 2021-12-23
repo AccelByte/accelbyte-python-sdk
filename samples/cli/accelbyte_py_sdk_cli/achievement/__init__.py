@@ -1,3 +1,11 @@
+# justice-achievement-service ()
+
+# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# This is licensed software from AccelByte Inc, for limitations
+# and restrictions contact your company contract manager.
+
+# template_file: python-cli-init.j2
+
 from ._admin_list_achievements import admin_list_achievements
 from ._admin_create_new_achievement import admin_create_new_achievement
 from ._export_achievements import export_achievements

@@ -1,3 +1,11 @@
+# justice-gdpr-service (1.11.1)
+
+# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# This is licensed software from AccelByte Inc, for limitations
+# and restrictions contact your company contract manager.
+
+# template_file: python-cli-init.j2
+
 from ._admin_get_list_deletion_data_request import admin_get_list_deletion_data_request
 from ._get_admin_email_configuration import get_admin_email_configuration
 from ._update_admin_email_configuration import update_admin_email_configuration

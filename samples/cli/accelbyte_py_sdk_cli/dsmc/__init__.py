@@ -1,3 +1,11 @@
+# justice-dsm-controller-service (2.10.0)
+
+# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# This is licensed software from AccelByte Inc, for limitations
+# and restrictions contact your company contract manager.
+
+# template_file: python-cli-init.j2
+
 from ._list_config import list_config
 from ._save_config import save_config
 from ._update_image import update_image

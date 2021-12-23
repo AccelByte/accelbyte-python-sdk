@@ -1,3 +1,11 @@
+# justice-session-browser-service ()
+
+# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# This is licensed software from AccelByte Inc, for limitations
+# and restrictions contact your company contract manager.
+
+# template_file: python-cli-init.j2
+
 from ._get_total_active_session import get_total_active_session
 from ._get_active_custom_game_sessions import get_active_custom_game_sessions
 from ._get_active_matchmaking_game_sessions import get_active_matchmaking_game_sessions

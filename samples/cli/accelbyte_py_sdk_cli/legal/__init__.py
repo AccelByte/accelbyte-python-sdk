@@ -1,3 +1,11 @@
+# justice-legal-service (1.15.0)
+
+# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# This is licensed software from AccelByte Inc, for limitations
+# and restrictions contact your company contract manager.
+
+# template_file: python-cli-init.j2
+
 from ._retrieve_accepted_agreements import retrieve_accepted_agreements
 from ._retrieve_all_users_by_policy_version import retrieve_all_users_by_policy_version
 from ._retrieve_all_legal_policies import retrieve_all_legal_policies

@@ -1,3 +1,11 @@
+# justice-event-log-service ()
+
+# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# This is licensed software from AccelByte Inc, for limitations
+# and restrictions contact your company contract manager.
+
+# template_file: python-cli-init.j2
+
 from ._agent_type_description_handler import agent_type_description_handler
 from ._specific_agent_type_description_handler import specific_agent_type_description_handler
 from ._event_id_description_handler import event_id_description_handler
