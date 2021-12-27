@@ -1,3 +1,5 @@
+# template file: justice_py_sdk_codegen/__main__.py
+
 # pylint: disable=line-too-long
 
 from .create_notification_template_v1_admin import CreateNotificationTemplateV1Admin

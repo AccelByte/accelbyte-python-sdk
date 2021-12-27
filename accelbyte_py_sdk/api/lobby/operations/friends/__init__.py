@@ -1,3 +1,5 @@
+# template file: justice_py_sdk_codegen/__main__.py
+
 # pylint: disable=line-too-long
 
 from .add_friends_without_confirmation import AddFriendsWithoutConfirmation

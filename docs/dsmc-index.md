@@ -1,3 +1,5 @@
+[//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
+
 # justice-dsm-controller-service Index (2.10.0)
 
 

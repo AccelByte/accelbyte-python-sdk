@@ -1,3 +1,5 @@
+# template file: justice_py_sdk_codegen/__main__.py
+
 # pylint: disable=line-too-long
 
 from .protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get import ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet

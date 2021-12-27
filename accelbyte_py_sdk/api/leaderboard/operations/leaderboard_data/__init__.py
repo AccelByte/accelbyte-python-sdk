@@ -1,3 +1,5 @@
+# template file: justice_py_sdk_codegen/__main__.py
+
 # pylint: disable=line-too-long
 
 from .admin_get_archived_leaderboard_ranking_data_v1_handler import AdminGetArchivedLeaderboardRankingDataV1Handler

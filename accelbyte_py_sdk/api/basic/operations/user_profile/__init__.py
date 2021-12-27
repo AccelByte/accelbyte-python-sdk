@@ -1,3 +1,5 @@
+# template file: justice_py_sdk_codegen/__main__.py
+
 # pylint: disable=line-too-long
 
 from .admin_get_user_profile_public_info_by_ids import AdminGetUserProfilePublicInfoByIds

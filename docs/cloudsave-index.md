@@ -1,3 +1,5 @@
+[//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
+
 # justice-cloudsave-service Index (1.9.1)
 
 

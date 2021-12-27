@@ -4,6 +4,8 @@ __version__ = "0.0.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
+# template file: justice_py_sdk_codegen/__main__.py
+
 # pylint: disable=line-too-long
 
 from ._operations import protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get

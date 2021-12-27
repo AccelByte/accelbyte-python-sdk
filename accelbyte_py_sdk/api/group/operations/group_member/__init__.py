@@ -1,3 +1,5 @@
+# template file: justice_py_sdk_codegen/__main__.py
+
 # pylint: disable=line-too-long
 
 from .accept_group_invitation_public_v1 import AcceptGroupInvitationPublicV1

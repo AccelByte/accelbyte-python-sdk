@@ -4,6 +4,8 @@ __version__ = "1.4.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
+# template file: justice_py_sdk_codegen/__main__.py
+
 # pylint: disable=line-too-long
 
 from ._all_terminated_servers import list_all_terminated_servers

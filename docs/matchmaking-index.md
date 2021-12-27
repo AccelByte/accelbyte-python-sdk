@@ -1,3 +1,5 @@
+[//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
+
 # Justice Matchmaking Service Index (2.12.0)
 
 

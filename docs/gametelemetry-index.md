@@ -1,3 +1,5 @@
+[//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
+
 # Analytics Game Telemetry Index (0.0.1)
 
 

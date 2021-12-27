@@ -4,6 +4,8 @@ __version__ = "1.9.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
+# template file: justice_py_sdk_codegen/__main__.py
+
 # pylint: disable=line-too-long
 
 from ._admin_game_record import admin_delete_game_record_handler_v1

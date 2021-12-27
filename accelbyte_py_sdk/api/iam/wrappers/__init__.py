@@ -4,6 +4,8 @@ __version__ = "4.9.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
+# template file: justice_py_sdk_codegen/__main__.py
+
 # pylint: disable=line-too-long
 
 from ._bans import admin_get_banned_users_v3

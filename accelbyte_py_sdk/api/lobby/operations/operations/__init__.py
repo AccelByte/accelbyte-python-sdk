@@ -1,3 +1,5 @@
+# template file: justice_py_sdk_codegen/__main__.py
+
 # pylint: disable=line-too-long
 
 from .admin_update_party_attributes_v1 import AdminUpdatePartyAttributesV1

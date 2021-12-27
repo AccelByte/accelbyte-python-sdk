@@ -1,3 +1,5 @@
+# template file: justice_py_sdk_codegen/__main__.py
+
 # pylint: disable=line-too-long
 
 from .add_third_party_login_platform_credential_v3 import AddThirdPartyLoginPlatformCredentialV3

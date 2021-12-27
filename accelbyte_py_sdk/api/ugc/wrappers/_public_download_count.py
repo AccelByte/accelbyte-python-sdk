@@ -1,3 +1,5 @@
+# template file: justice_py_sdk_codegen/__main__.py
+
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
 # pylint: disable=missing-function-docstring
