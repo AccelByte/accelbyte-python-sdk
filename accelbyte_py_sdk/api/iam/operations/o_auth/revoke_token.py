@@ -48,7 +48,7 @@ class RevokeToken(Operation):
 
         produces: ["application/json"]
 
-        security: bearer
+        security_type: bearer
 
         token: (token) REQUIRED str in form_data
 
@@ -66,7 +66,7 @@ class RevokeToken(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]
-    _security: Optional[str] = "bearer"
+    _security_type: Optional[str] = "bearer"
     _location_query: str = None
 
     token: str                                                                                     # REQUIRED in [form_data]
@@ -92,8 +92,8 @@ class RevokeToken(Operation):
         return self._produces
 
     @property
-    def security(self) -> Optional[str]:
-        return self._security
+    def security_type(self) -> Optional[str]:
+        return self._security_type
 
     @property
     def location_query(self) -> str:

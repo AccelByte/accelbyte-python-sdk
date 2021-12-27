@@ -47,7 +47,7 @@ class UpdateXblBPCertFile(Operation):
 
         produces: ["application/json"]
 
-        security: bearer
+        security_type: bearer
 
         file: (file) OPTIONAL Any in form_data
 
@@ -65,7 +65,7 @@ class UpdateXblBPCertFile(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["multipart/form-data"]
     _produces: List[str] = ["application/json"]
-    _security: Optional[str] = "bearer"
+    _security_type: Optional[str] = "bearer"
     _location_query: str = None
 
     file: Any                                                                                      # OPTIONAL in [form_data]
@@ -93,8 +93,8 @@ class UpdateXblBPCertFile(Operation):
         return self._produces
 
     @property
-    def security(self) -> Optional[str]:
-        return self._security
+    def security_type(self) -> Optional[str]:
+        return self._security_type
 
     @property
     def location_query(self) -> str:

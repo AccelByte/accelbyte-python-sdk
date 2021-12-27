@@ -45,7 +45,7 @@ class PublicGetMessages(Operation):
 
         produces: ["application/json"]
 
-        security: bearer
+        security_type: bearer
 
     Responses:
         200: OK - List[LogAppMessageDeclaration]
@@ -59,7 +59,7 @@ class PublicGetMessages(Operation):
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _security: Optional[str] = "bearer"
+    _security_type: Optional[str] = "bearer"
     _location_query: str = None
 
     # endregion fields
@@ -83,8 +83,8 @@ class PublicGetMessages(Operation):
         return self._produces
 
     @property
-    def security(self) -> Optional[str]:
-        return self._security
+    def security_type(self) -> Optional[str]:
+        return self._security_type
 
     @property
     def location_query(self) -> str:

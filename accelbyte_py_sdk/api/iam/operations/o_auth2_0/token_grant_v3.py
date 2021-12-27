@@ -85,7 +85,7 @@ class TokenGrantV3(Operation):
 
         produces: ["application/json"]
 
-        security: basic
+        security_type: bearer
 
         device_id: (device_id) OPTIONAL str in header
 
@@ -117,7 +117,7 @@ class TokenGrantV3(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]
-    _security: Optional[str] = "basic"
+    _security_type: Optional[str] = "bearer"
     _location_query: str = None
 
     device_id: str                                                                                 # OPTIONAL in [header]
@@ -149,8 +149,8 @@ class TokenGrantV3(Operation):
         return self._produces
 
     @property
-    def security(self) -> Optional[str]:
-        return self._security
+    def security_type(self) -> Optional[str]:
+        return self._security_type
 
     @property
     def location_query(self) -> str:

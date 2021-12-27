@@ -51,7 +51,7 @@ class UpdateUserEntitlement(Operation):
 
         produces: ["application/json"]
 
-        security: bearer
+        security_type: bearer
 
         body: (body) OPTIONAL EntitlementUpdate in body
 
@@ -77,7 +77,7 @@ class UpdateUserEntitlement(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _security: Optional[str] = "bearer"
+    _security_type: Optional[str] = "bearer"
     _location_query: str = None
 
     body: EntitlementUpdate                                                                        # OPTIONAL in [body]
@@ -106,8 +106,8 @@ class UpdateUserEntitlement(Operation):
         return self._produces
 
     @property
-    def security(self) -> Optional[str]:
-        return self._security
+    def security_type(self) -> Optional[str]:
+        return self._security_type
 
     @property
     def location_query(self) -> str:

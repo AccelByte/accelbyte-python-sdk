@@ -52,7 +52,7 @@ class AdminDeletePlatformLinkV2(Operation):
 
         produces: ["application/json"]
 
-        security: bearer
+        security_type: bearer
 
         platform_namespace: (platform_namespace) OPTIONAL str in form_data
 
@@ -82,7 +82,7 @@ class AdminDeletePlatformLinkV2(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = ["application/x-www-form-urlencoded", "text/plain"]
     _produces: List[str] = ["application/json"]
-    _security: Optional[str] = "bearer"
+    _security_type: Optional[str] = "bearer"
     _location_query: str = None
 
     platform_namespace: str                                                                        # OPTIONAL in [form_data]
@@ -111,8 +111,8 @@ class AdminDeletePlatformLinkV2(Operation):
         return self._produces
 
     @property
-    def security(self) -> Optional[str]:
-        return self._security
+    def security_type(self) -> Optional[str]:
+        return self._security_type
 
     @property
     def location_query(self) -> str:

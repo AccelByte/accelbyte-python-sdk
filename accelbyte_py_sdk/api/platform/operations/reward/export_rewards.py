@@ -44,7 +44,7 @@ class ExportRewards(Operation):
 
         produces: ["application/json"]
 
-        security: bearer
+        security_type: bearer
 
         namespace: (namespace) REQUIRED str in path
 
@@ -58,7 +58,7 @@ class ExportRewards(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security: Optional[str] = "bearer"
+    _security_type: Optional[str] = "bearer"
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
@@ -84,8 +84,8 @@ class ExportRewards(Operation):
         return self._produces
 
     @property
-    def security(self) -> Optional[str]:
-        return self._security
+    def security_type(self) -> Optional[str]:
+        return self._security_type
 
     @property
     def location_query(self) -> str:

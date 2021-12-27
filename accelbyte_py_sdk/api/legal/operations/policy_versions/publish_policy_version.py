@@ -46,7 +46,7 @@ class PublishPolicyVersion(Operation):
 
         produces: ["application/json"]
 
-        security: bearer
+        security_type: bearer
 
         policy_version_id: (policyVersionId) REQUIRED str in path
 
@@ -64,7 +64,7 @@ class PublishPolicyVersion(Operation):
     _method: str = "PATCH"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security: Optional[str] = "bearer"
+    _security_type: Optional[str] = "bearer"
     _location_query: str = None
 
     policy_version_id: str                                                                         # REQUIRED in [path]
@@ -91,8 +91,8 @@ class PublishPolicyVersion(Operation):
         return self._produces
 
     @property
-    def security(self) -> Optional[str]:
-        return self._security
+    def security_type(self) -> Optional[str]:
+        return self._security_type
 
     @property
     def location_query(self) -> str:

@@ -45,7 +45,7 @@ class PublicDeletePaymentAccount(Operation):
 
         produces: ["application/json"]
 
-        security: bearer
+        security_type: bearer
 
         id_: (id) REQUIRED str in path
 
@@ -65,7 +65,7 @@ class PublicDeletePaymentAccount(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _security: Optional[str] = "bearer"
+    _security_type: Optional[str] = "bearer"
     _location_query: str = None
 
     id_: str                                                                                       # REQUIRED in [path]
@@ -94,8 +94,8 @@ class PublicDeletePaymentAccount(Operation):
         return self._produces
 
     @property
-    def security(self) -> Optional[str]:
-        return self._security
+    def security_type(self) -> Optional[str]:
+        return self._security_type
 
     @property
     def location_query(self) -> str:

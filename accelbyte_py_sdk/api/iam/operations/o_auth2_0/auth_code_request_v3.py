@@ -56,7 +56,7 @@ class AuthCodeRequestV3(Operation):
 
         produces: ["application/json"]
 
-        security: bearer
+        security_type: bearer
 
         location query: code
 
@@ -78,7 +78,7 @@ class AuthCodeRequestV3(Operation):
     _method: str = "GET"
     _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]
-    _security: Optional[str] = "bearer"
+    _security_type: Optional[str] = "bearer"
     _location_query: str = "code"
 
     platform_id: str                                                                               # REQUIRED in [path]
@@ -107,8 +107,8 @@ class AuthCodeRequestV3(Operation):
         return self._produces
 
     @property
-    def security(self) -> Optional[str]:
-        return self._security
+    def security_type(self) -> Optional[str]:
+        return self._security_type
 
     @property
     def location_query(self) -> str:

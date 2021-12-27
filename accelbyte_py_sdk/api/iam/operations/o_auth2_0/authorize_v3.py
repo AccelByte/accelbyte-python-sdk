@@ -67,7 +67,7 @@ class AuthorizeV3(Operation):
 
         produces: ["application/json"]
 
-        security: None
+        security_type: bearer
 
         location query: request_id
 
@@ -97,7 +97,7 @@ class AuthorizeV3(Operation):
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _security: Optional[str] = None
+    _security_type: Optional[str] = "bearer"
     _location_query: str = "request_id"
 
     code_challenge: str                                                                            # OPTIONAL in [query]
@@ -130,8 +130,8 @@ class AuthorizeV3(Operation):
         return self._produces
 
     @property
-    def security(self) -> Optional[str]:
-        return self._security
+    def security_type(self) -> Optional[str]:
+        return self._security_type
 
     @property
     def location_query(self) -> str:

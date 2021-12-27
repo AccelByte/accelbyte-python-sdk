@@ -47,7 +47,7 @@ class DeleteGroupAdminV1(Operation):
 
         produces: ["application/json"]
 
-        security: bearer
+        security_type: bearer
 
         group_id: (groupId) REQUIRED str in path
 
@@ -73,7 +73,7 @@ class DeleteGroupAdminV1(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security: Optional[str] = "bearer"
+    _security_type: Optional[str] = "bearer"
     _location_query: str = None
 
     group_id: str                                                                                  # REQUIRED in [path]
@@ -100,8 +100,8 @@ class DeleteGroupAdminV1(Operation):
         return self._produces
 
     @property
-    def security(self) -> Optional[str]:
-        return self._security
+    def security_type(self) -> Optional[str]:
+        return self._security_type
 
     @property
     def location_query(self) -> str:
