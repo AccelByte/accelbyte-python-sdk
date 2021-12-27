@@ -1,3 +1,5 @@
+../..   # accelbyte-py-sdk
+
 anyio==3.3.4
 certifi==2021.10.8
 charset-normalizer==2.0.7
@@ -12,4 +14,3 @@ rfc3986==1.5.0
 sniffio==1.2.0
 urllib3==1.26.7
 websockets==10.0
-../..   # accelbyte-py-sdk
