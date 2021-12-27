@@ -49,7 +49,7 @@ class Operation:
     method: str = ""
     consumes: List[str] = []
     produces: List[str] = []
-    security: Optional[str] = None
+    security_type: Optional[str] = None
     location_query: Optional[str] = None
     authorization_override: Optional[str] = None
 

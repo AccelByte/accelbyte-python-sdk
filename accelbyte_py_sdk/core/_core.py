@@ -460,12 +460,12 @@ def get_final_headers(
     if add_authorization:
         if hasattr(operation, "authorization_override") and operation.authorization_override:
             headers.add_authorization(operation.authorization_override)
-        elif operation.security == "basic":
+        elif operation.security_type == "basic":
             client_auth, error = get_client_auth()
             if error:
                 return None, error
             headers.add_basic_authorization2(client_auth)
-        elif operation.security == "bearer":
+        elif operation.security_type == "bearer":
             access_token, error = get_access_token()
             if error:
                 return None, error
