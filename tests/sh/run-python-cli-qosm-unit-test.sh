@@ -99,3 +99,5 @@ update_status $? 'Heartbeat'
 delete_file $TEMP_FILE
 
 delete_file 'tmp.dat'
+
+exit $FAILED_COUNT

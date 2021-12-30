@@ -92,3 +92,5 @@ update_status $? 'ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamId
 delete_file $TEMP_FILE
 
 delete_file 'tmp.dat'
+
+exit $FAILED_COUNT

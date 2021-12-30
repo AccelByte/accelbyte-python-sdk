@@ -349,3 +349,5 @@ update_status $? 'GetAllTimeLeaderboardRankingPublicV2'
 delete_file $TEMP_FILE
 
 delete_file 'tmp.dat'
+
+exit $FAILED_COUNT

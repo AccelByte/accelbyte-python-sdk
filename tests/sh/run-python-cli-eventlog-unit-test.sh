@@ -183,3 +183,5 @@ update_status $? 'GetUserEventsV2Public'
 delete_file $TEMP_FILE
 
 delete_file 'tmp.dat'
+
+exit $FAILED_COUNT

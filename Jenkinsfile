@@ -8,8 +8,10 @@ library(
   )
 )
 
-bitbucketHttpsCredentials = "Bitbucket_Build_AccelByte"
-bitbucketSshCredentials = "build_account_bitbucket_key"
+bitbucketCredentialsHttps = "Bitbucket_Build_AccelByte"
+bitbucketCredentialsSsh = "build_account_bitbucket_key"
+
+codegenSdkMockServerCommit = "16188ff"
 
 bitbucketPayload = null
 bitbucketCommitHref = null
@@ -29,11 +31,7 @@ pipeline {
             }
           }
           if (bitbucketCommitHref) {
-            bitbucket.setBuildStatus(bitbucketHttpsCredentials, bitbucketCommitHref, "INPROGRESS", env.JOB_NAME, "${env.JOB_NAME}-${env.BUILD_NUMBER}", "Jenkins", "${env.BUILD_URL}console")
-          }
-          sshagent(credentials: [bitbucketSshCredentials]) {
-            sh "rm -rf .justice-codegen-sdk"
-            sh "git clone --depth=1 git@bitbucket.org:accelbyte/justice-codegen-sdk.git .justice-codegen-sdk"
+            bitbucket.setBuildStatus(bitbucketCredentialsHttps, bitbucketCommitHref, "INPROGRESS", env.JOB_NAME, "${env.JOB_NAME}-${env.BUILD_NUMBER}", "Jenkins", "${env.BUILD_URL}console")
           }
         }
       }
@@ -64,42 +62,28 @@ pipeline {
         }
       }
     }
-    stage('Test') {
-      stages {
-        stage('Unit Tests') {
-          agent {
-            docker {
-              image 'python:3.9-alpine'
-              reuseNode true
-            }
-          }
-          environment {
-            PYTHONPATH = '/tmp/install:.justice-codegen-sdk/codegen'
-          }
-          steps {
-            sh "pip install -t /tmp/install -r requirements.txt"
-            sh "pip install -t /tmp/install connexion[swagger-ui] bs4"
-            sh "python -m justice_sdk_mock_server -s spec &"
-            sh """for i in `seq 1 10`; do python -c "import sys;import socket;sys.exit(socket.socket(socket.AF_INET,socket.SOCK_STREAM).connect_ex(('localhost',8080)))" && exit 0 || sleep 10; done; exit 1"""
-            sh "dos2unix tests/*.unit-test.sh"
-            sh "find tests -type f -iname '*.unit-test.sh' | xargs -I{} sh -c 'sh {} || exit 255'"
-          }
-        }
-      }
-    }
+    //stage('Test') {
+    //  stages {
+    //    stage('Unit Tests') {
+    //      steps {
+    //        sh "make test SDK_MOCK_SERVER_PATH=.justice-codegen-sdk-mock-server"
+    //      }
+    //    }
+    //  }
+    //}
   }
   post {
     success {
       script {
         if (bitbucketCommitHref) {
-          bitbucket.setBuildStatus(bitbucketHttpsCredentials, bitbucketCommitHref, "SUCCESSFUL", env.JOB_NAME, "${env.JOB_NAME}-${env.BUILD_NUMBER}", "Jenkins", "${env.BUILD_URL}console")
+          bitbucket.setBuildStatus(bitbucketCredentialsHttps, bitbucketCommitHref, "SUCCESSFUL", env.JOB_NAME, "${env.JOB_NAME}-${env.BUILD_NUMBER}", "Jenkins", "${env.BUILD_URL}console")
         }
       }
     }
     failure {
       script {
         if (bitbucketCommitHref) {
-          bitbucket.setBuildStatus(bitbucketHttpsCredentials, bitbucketCommitHref, "FAILED", env.JOB_NAME, "${env.JOB_NAME}-${env.BUILD_NUMBER}", "Jenkins", "${env.BUILD_URL}console")
+          bitbucket.setBuildStatus(bitbucketCredentialsHttps, bitbucketCommitHref, "FAILED", env.JOB_NAME, "${env.JOB_NAME}-${env.BUILD_NUMBER}", "Jenkins", "${env.BUILD_URL}console")
         }
       }
     }
