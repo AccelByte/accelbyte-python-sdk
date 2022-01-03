@@ -3,6 +3,7 @@
 # pylint: disable=line-too-long
 
 from .admin_add_user_role_v4 import AdminAddUserRoleV4
+from .admin_invite_user_v4 import AdminInviteUserV4
 from .admin_list_user_roles_v4 import AdminListUserRolesV4
 from .admin_remove_user_role_v4 import AdminRemoveUserRoleV4
 from .admin_update_my_user_v4 import AdminUpdateMyUserV4

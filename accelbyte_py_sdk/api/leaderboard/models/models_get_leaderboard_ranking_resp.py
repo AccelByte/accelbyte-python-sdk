@@ -1,8 +1,8 @@
-# justice-leaderboard-service (2.11.0)
+# justice-leaderboard-service (2.11.1)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 

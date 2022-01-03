@@ -25,8 +25,6 @@ from ....core import same_doc_as
 from ..models import AppEntitlementInfo
 from ..models import AppEntitlementPagingSlicedResult
 from ..models import BulkOperationResult
-from ..models import DistributionReceiverCreate
-from ..models import DistributionReceiverInfo
 from ..models import EntitlementDecrement
 from ..models import EntitlementGrant
 from ..models import EntitlementHistoryInfo
@@ -41,8 +39,6 @@ from ..models import TimedOwnership
 from ..models import ValidationErrorEntity
 
 from ..operations.entitlement import ConsumeUserEntitlement
-from ..operations.entitlement import CreateUserDistributionReceiver
-from ..operations.entitlement import DeleteUserDistributionReceiver
 from ..operations.entitlement import DisableUserEntitlement
 from ..operations.entitlement import EnableUserEntitlement
 from ..operations.entitlement import ExistsAnyUserActiveEntitlement
@@ -50,7 +46,6 @@ from ..operations.entitlement import ExistsAnyUserActiveEntitlementByItemIds
 from ..operations.entitlement import GetEntitlement
 from ..operations.entitlement import GetUserAppEntitlementByAppId
 from ..operations.entitlement import GetUserAppEntitlementOwnershipByAppId
-from ..operations.entitlement import GetUserDistributionReceivers
 from ..operations.entitlement import GetUserEntitlement
 from ..operations.entitlement import GetUserEntitlementByItemId
 from ..operations.entitlement import GetUserEntitlementBySku
@@ -59,9 +54,6 @@ from ..operations.entitlement import GetUserEntitlementOwnershipByItemId
 from ..operations.entitlement import GetUserEntitlementOwnershipBySku
 from ..operations.entitlement import GrantUserEntitlement
 from ..operations.entitlement import PublicConsumeUserEntitlement
-from ..operations.entitlement import PublicCreateUserDistributionReceiver
-from ..operations.entitlement import PublicDeleteUserDistributionReceiver
-from ..operations.entitlement import PublicDistributeUserDistribution
 from ..operations.entitlement import PublicExistsAnyMyActiveEntitlement
 from ..operations.entitlement import PublicExistsAnyUserActiveEntitlement
 from ..operations.entitlement import PublicGetEntitlementOwnershipToken
@@ -70,7 +62,6 @@ from ..operations.entitlement import PublicGetMyEntitlementOwnershipByItemId
 from ..operations.entitlement import PublicGetMyEntitlementOwnershipBySku
 from ..operations.entitlement import PublicGetUserAppEntitlementByAppId
 from ..operations.entitlement import PublicGetUserAppEntitlementOwnershipByAppId
-from ..operations.entitlement import PublicGetUserDistributionReceivers
 from ..operations.entitlement import PublicGetUserEntitlement
 from ..operations.entitlement import PublicGetUserEntitlementByItemId
 from ..operations.entitlement import PublicGetUserEntitlementBySku
@@ -78,13 +69,11 @@ from ..operations.entitlement import PublicGetUserEntitlementOwnershipByItemId
 from ..operations.entitlement import PublicGetUserEntitlementOwnershipBySku
 from ..operations.entitlement import PublicQueryUserEntitlements
 from ..operations.entitlement import PublicQueryUserEntitlementsByAppType
-from ..operations.entitlement import PublicUpdateUserDistributionReceiver
 from ..operations.entitlement import QueryEntitlements
 from ..operations.entitlement import QueryUserEntitlements
 from ..operations.entitlement import QueryUserEntitlementsByAppType
 from ..operations.entitlement import RevokeUserEntitlement
 from ..operations.entitlement import RevokeUserEntitlements
-from ..operations.entitlement import UpdateUserDistributionReceiver
 from ..operations.entitlement import UpdateUserEntitlement
 
 
@@ -113,64 +102,6 @@ async def consume_user_entitlement_async(entitlement_id: str, user_id: str, body
         entitlement_id=entitlement_id,
         user_id=user_id,
         body=body,
-        namespace=namespace,
-    )
-    return await run_request_async(request, additional_headers=x_additional_headers)
-
-
-@same_doc_as(CreateUserDistributionReceiver)
-def create_user_distribution_receiver(ext_user_id: str, user_id: str, body: Optional[DistributionReceiverCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = CreateUserDistributionReceiver.create(
-        ext_user_id=ext_user_id,
-        user_id=user_id,
-        body=body,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers)
-
-
-@same_doc_as(CreateUserDistributionReceiver)
-async def create_user_distribution_receiver_async(ext_user_id: str, user_id: str, body: Optional[DistributionReceiverCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = CreateUserDistributionReceiver.create(
-        ext_user_id=ext_user_id,
-        user_id=user_id,
-        body=body,
-        namespace=namespace,
-    )
-    return await run_request_async(request, additional_headers=x_additional_headers)
-
-
-@same_doc_as(DeleteUserDistributionReceiver)
-def delete_user_distribution_receiver(ext_user_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = DeleteUserDistributionReceiver.create(
-        ext_user_id=ext_user_id,
-        user_id=user_id,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers)
-
-
-@same_doc_as(DeleteUserDistributionReceiver)
-async def delete_user_distribution_receiver_async(ext_user_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = DeleteUserDistributionReceiver.create(
-        ext_user_id=ext_user_id,
-        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)
@@ -370,32 +301,6 @@ async def get_user_app_entitlement_ownership_by_app_id_async(app_id: str, user_i
             return None, error
     request = GetUserAppEntitlementOwnershipByAppId.create(
         app_id=app_id,
-        user_id=user_id,
-        namespace=namespace,
-    )
-    return await run_request_async(request, additional_headers=x_additional_headers)
-
-
-@same_doc_as(GetUserDistributionReceivers)
-def get_user_distribution_receivers(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = GetUserDistributionReceivers.create(
-        user_id=user_id,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers)
-
-
-@same_doc_as(GetUserDistributionReceivers)
-async def get_user_distribution_receivers_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = GetUserDistributionReceivers.create(
         user_id=user_id,
         namespace=namespace,
     )
@@ -640,98 +545,6 @@ async def public_consume_user_entitlement_async(entitlement_id: str, user_id: st
     return await run_request_async(request, additional_headers=x_additional_headers)
 
 
-@same_doc_as(PublicCreateUserDistributionReceiver)
-def public_create_user_distribution_receiver(ext_user_id: str, user_id: str, body: Optional[DistributionReceiverCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = PublicCreateUserDistributionReceiver.create(
-        ext_user_id=ext_user_id,
-        user_id=user_id,
-        body=body,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers)
-
-
-@same_doc_as(PublicCreateUserDistributionReceiver)
-async def public_create_user_distribution_receiver_async(ext_user_id: str, user_id: str, body: Optional[DistributionReceiverCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = PublicCreateUserDistributionReceiver.create(
-        ext_user_id=ext_user_id,
-        user_id=user_id,
-        body=body,
-        namespace=namespace,
-    )
-    return await run_request_async(request, additional_headers=x_additional_headers)
-
-
-@same_doc_as(PublicDeleteUserDistributionReceiver)
-def public_delete_user_distribution_receiver(ext_user_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = PublicDeleteUserDistributionReceiver.create(
-        ext_user_id=ext_user_id,
-        user_id=user_id,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers)
-
-
-@same_doc_as(PublicDeleteUserDistributionReceiver)
-async def public_delete_user_distribution_receiver_async(ext_user_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = PublicDeleteUserDistributionReceiver.create(
-        ext_user_id=ext_user_id,
-        user_id=user_id,
-        namespace=namespace,
-    )
-    return await run_request_async(request, additional_headers=x_additional_headers)
-
-
-@same_doc_as(PublicDistributeUserDistribution)
-def public_distribute_user_distribution(entitlement_id: str, ext_user_id: str, target_namespace: str, user_id: str, quantity: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = PublicDistributeUserDistribution.create(
-        entitlement_id=entitlement_id,
-        ext_user_id=ext_user_id,
-        target_namespace=target_namespace,
-        user_id=user_id,
-        quantity=quantity,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers)
-
-
-@same_doc_as(PublicDistributeUserDistribution)
-async def public_distribute_user_distribution_async(entitlement_id: str, ext_user_id: str, target_namespace: str, user_id: str, quantity: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = PublicDistributeUserDistribution.create(
-        entitlement_id=entitlement_id,
-        ext_user_id=ext_user_id,
-        target_namespace=target_namespace,
-        user_id=user_id,
-        quantity=quantity,
-        namespace=namespace,
-    )
-    return await run_request_async(request, additional_headers=x_additional_headers)
-
-
 @same_doc_as(PublicExistsAnyMyActiveEntitlement)
 def public_exists_any_my_active_entitlement(app_ids: Optional[List[str]] = None, item_ids: Optional[List[str]] = None, skus: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -962,34 +775,6 @@ async def public_get_user_app_entitlement_ownership_by_app_id_async(app_id: str,
     return await run_request_async(request, additional_headers=x_additional_headers)
 
 
-@same_doc_as(PublicGetUserDistributionReceivers)
-def public_get_user_distribution_receivers(target_namespace: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = PublicGetUserDistributionReceivers.create(
-        target_namespace=target_namespace,
-        user_id=user_id,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers)
-
-
-@same_doc_as(PublicGetUserDistributionReceivers)
-async def public_get_user_distribution_receivers_async(target_namespace: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = PublicGetUserDistributionReceivers.create(
-        target_namespace=target_namespace,
-        user_id=user_id,
-        namespace=namespace,
-    )
-    return await run_request_async(request, additional_headers=x_additional_headers)
-
-
 @same_doc_as(PublicGetUserEntitlement)
 def public_get_user_entitlement(entitlement_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -1208,36 +993,6 @@ async def public_query_user_entitlements_by_app_type_async(app_type: str, user_i
     return await run_request_async(request, additional_headers=x_additional_headers)
 
 
-@same_doc_as(PublicUpdateUserDistributionReceiver)
-def public_update_user_distribution_receiver(ext_user_id: str, user_id: str, body: Optional[DistributionReceiverCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = PublicUpdateUserDistributionReceiver.create(
-        ext_user_id=ext_user_id,
-        user_id=user_id,
-        body=body,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers)
-
-
-@same_doc_as(PublicUpdateUserDistributionReceiver)
-async def public_update_user_distribution_receiver_async(ext_user_id: str, user_id: str, body: Optional[DistributionReceiverCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = PublicUpdateUserDistributionReceiver.create(
-        ext_user_id=ext_user_id,
-        user_id=user_id,
-        body=body,
-        namespace=namespace,
-    )
-    return await run_request_async(request, additional_headers=x_additional_headers)
-
-
 @same_doc_as(QueryEntitlements)
 def query_entitlements(active_only: Optional[bool] = None, app_type: Optional[str] = None, entitlement_clazz: Optional[str] = None, entitlement_name: Optional[str] = None, item_id: Optional[List[str]] = None, limit: Optional[int] = None, offset: Optional[int] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -1403,36 +1158,6 @@ async def revoke_user_entitlements_async(entitlement_ids: str, user_id: str, nam
     request = RevokeUserEntitlements.create(
         entitlement_ids=entitlement_ids,
         user_id=user_id,
-        namespace=namespace,
-    )
-    return await run_request_async(request, additional_headers=x_additional_headers)
-
-
-@same_doc_as(UpdateUserDistributionReceiver)
-def update_user_distribution_receiver(ext_user_id: str, user_id: str, body: Optional[DistributionReceiverCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = UpdateUserDistributionReceiver.create(
-        ext_user_id=ext_user_id,
-        user_id=user_id,
-        body=body,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers)
-
-
-@same_doc_as(UpdateUserDistributionReceiver)
-async def update_user_distribution_receiver_async(ext_user_id: str, user_id: str, body: Optional[DistributionReceiverCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = UpdateUserDistributionReceiver.create(
-        ext_user_id=ext_user_id,
-        user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)

@@ -1,6 +1,6 @@
 """Auto-generated top-level package for the justice-cloudsave-service."""
 
-__version__ = "1.9.1"
+__version__ = "1.9.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -37,6 +37,8 @@ from .wrappers import admin_put_player_public_record_handler_v1
 from .wrappers import admin_put_player_public_record_handler_v1_async
 from .wrappers import admin_put_player_record_handler_v1
 from .wrappers import admin_put_player_record_handler_v1_async
+from .wrappers import admin_retrieve_player_records
+from .wrappers import admin_retrieve_player_records_async
 from .wrappers import list_player_record_handler_v1
 from .wrappers import list_player_record_handler_v1_async
 

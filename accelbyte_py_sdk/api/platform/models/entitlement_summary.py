@@ -1,8 +1,8 @@
-# justice-platform-service (3.39.0)
+# justice-platform-service (3.40.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -52,8 +52,6 @@ class EntitlementSummary(Model):
 
         stackable: (stackable) OPTIONAL bool
 
-        stacked_quantity: (stackedQuantity) OPTIONAL int
-
         stacked_use_count: (stackedUseCount) OPTIONAL int
 
         start_date: (startDate) OPTIONAL str
@@ -74,7 +72,6 @@ class EntitlementSummary(Model):
     granted_code: str                                                                              # OPTIONAL
     item_id: str                                                                                   # OPTIONAL
     stackable: bool                                                                                # OPTIONAL
-    stacked_quantity: int                                                                          # OPTIONAL
     stacked_use_count: int                                                                         # OPTIONAL
     start_date: str                                                                                # OPTIONAL
     store_id: str                                                                                  # OPTIONAL
@@ -125,10 +122,6 @@ class EntitlementSummary(Model):
 
     def with_stackable(self, value: bool) -> EntitlementSummary:
         self.stackable = value
-        return self
-
-    def with_stacked_quantity(self, value: int) -> EntitlementSummary:
-        self.stacked_quantity = value
         return self
 
     def with_stacked_use_count(self, value: int) -> EntitlementSummary:
@@ -193,10 +186,6 @@ class EntitlementSummary(Model):
             result["stackable"] = bool(self.stackable)
         elif include_empty:
             result["stackable"] = bool()
-        if hasattr(self, "stacked_quantity"):
-            result["stackedQuantity"] = int(self.stacked_quantity)
-        elif include_empty:
-            result["stackedQuantity"] = int()
         if hasattr(self, "stacked_use_count"):
             result["stackedUseCount"] = int(self.stacked_use_count)
         elif include_empty:
@@ -229,7 +218,6 @@ class EntitlementSummary(Model):
         granted_code: Optional[str] = None,
         item_id: Optional[str] = None,
         stackable: Optional[bool] = None,
-        stacked_quantity: Optional[int] = None,
         stacked_use_count: Optional[int] = None,
         start_date: Optional[str] = None,
         store_id: Optional[str] = None,
@@ -250,8 +238,6 @@ class EntitlementSummary(Model):
             instance.item_id = item_id
         if stackable is not None:
             instance.stackable = stackable
-        if stacked_quantity is not None:
-            instance.stacked_quantity = stacked_quantity
         if stacked_use_count is not None:
             instance.stacked_use_count = stacked_use_count
         if start_date is not None:
@@ -309,10 +295,6 @@ class EntitlementSummary(Model):
             instance.stackable = bool(dict_["stackable"])
         elif include_empty:
             instance.stackable = bool()
-        if "stackedQuantity" in dict_ and dict_["stackedQuantity"] is not None:
-            instance.stacked_quantity = int(dict_["stackedQuantity"])
-        elif include_empty:
-            instance.stacked_quantity = int()
         if "stackedUseCount" in dict_ and dict_["stackedUseCount"] is not None:
             instance.stacked_use_count = int(dict_["stackedUseCount"])
         elif include_empty:
@@ -341,7 +323,6 @@ class EntitlementSummary(Model):
             "grantedCode": "granted_code",
             "itemId": "item_id",
             "stackable": "stackable",
-            "stackedQuantity": "stacked_quantity",
             "stackedUseCount": "stacked_use_count",
             "startDate": "start_date",
             "storeId": "store_id",

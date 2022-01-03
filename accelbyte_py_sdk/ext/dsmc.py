@@ -1,8 +1,8 @@
-# justice-dsm-controller-service (2.10.0)
+# justice-dsm-controller-service (2.11.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -468,6 +468,7 @@ def create_models_server_example() -> ModelsServer:
     instance.image_version = randomize()
     instance.ip = randomize()
     instance.is_override_game_version = randomize("bool")
+    instance.job_id = randomize()
     instance.last_update = randomize("date")
     instance.mem_limit = randomize("int", min_val=1, max_val=1000)
     instance.namespace = randomize("slug")

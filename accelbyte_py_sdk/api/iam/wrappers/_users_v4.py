@@ -30,6 +30,8 @@ from ..models import AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4
 from ..models import AccountUserResponseV4
 from ..models import ModelAddUserRoleV4Request
 from ..models import ModelEmailUpdateRequestV4
+from ..models import ModelInviteUserRequestV4
+from ..models import ModelInviteUserResponseV3
 from ..models import ModelListUserRolesV4Response
 from ..models import ModelRemoveUserRoleV4Request
 from ..models import ModelUserCreateFromInvitationRequestV4
@@ -38,6 +40,7 @@ from ..models import ModelUserUpdateRequestV3
 from ..models import RestErrorResponse
 
 from ..operations.users_v4 import AdminAddUserRoleV4
+from ..operations.users_v4 import AdminInviteUserV4
 from ..operations.users_v4 import AdminListUserRolesV4
 from ..operations.users_v4 import AdminRemoveUserRoleV4
 from ..operations.users_v4 import AdminUpdateMyUserV4
@@ -77,6 +80,22 @@ async def admin_add_user_role_v4_async(body: ModelAddUserRoleV4Request, user_id:
         body=body,
         user_id=user_id,
         namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminInviteUserV4)
+def admin_invite_user_v4(body: ModelInviteUserRequestV4, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AdminInviteUserV4.create(
+        body=body,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminInviteUserV4)
+async def admin_invite_user_v4_async(body: ModelInviteUserRequestV4, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AdminInviteUserV4.create(
+        body=body,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)
 

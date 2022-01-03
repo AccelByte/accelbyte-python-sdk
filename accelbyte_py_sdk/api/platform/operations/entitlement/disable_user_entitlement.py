@@ -1,8 +1,8 @@
-# justice-platform-service (3.39.0)
+# justice-platform-service (3.40.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -34,8 +34,8 @@ class DisableUserEntitlement(Operation):
     """Disable user entitlement (disableUserEntitlement)
 
     Disable user entitlement if entitlement, only active entitlement can be
-    disable, disabled entitlement can't consume/distribute.<br><b>Like revoke, it
-    will lose the entitlement ownership, except disabled entitlement can
+    disable, disabled entitlement can't consume.<br><b>Like revoke, it will lose
+    the entitlement ownership, except disabled entitlement can
     enable.</b><br>Other detail info: <ul><li><i>Required permission</i>:
     resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4
     (UPDATE)</li><li><i>Returns</i>: disable entitlement</li></ul>

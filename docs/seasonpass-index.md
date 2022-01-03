@@ -1,6 +1,6 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-seasonpass-service Index (1.5.0)
+# justice-seasonpass-service Index (1.6.0)
 
 
 ## Operations

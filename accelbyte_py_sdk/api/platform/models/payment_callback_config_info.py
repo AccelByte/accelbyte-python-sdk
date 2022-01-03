@@ -1,8 +1,8 @@
-# justice-platform-service (3.39.0)
+# justice-platform-service (3.40.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -26,10 +26,12 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 
-class GameServerConfig(Model):
-    """A DTO object for ECommerce related game server config. (GameServerConfig)
+class PaymentCallbackConfigInfo(Model):
+    """Payment callback config info (PaymentCallbackConfigInfo)
 
     Properties:
+        namespace: (namespace) REQUIRED str
+
         dry_run: (dryRun) OPTIONAL bool
 
         notify_url: (notifyUrl) OPTIONAL str
@@ -39,6 +41,7 @@ class GameServerConfig(Model):
 
     # region fields
 
+    namespace: str                                                                                 # REQUIRED
     dry_run: bool                                                                                  # OPTIONAL
     notify_url: str                                                                                # OPTIONAL
     private_key: str                                                                               # OPTIONAL
@@ -47,15 +50,19 @@ class GameServerConfig(Model):
 
     # region with_x methods
 
-    def with_dry_run(self, value: bool) -> GameServerConfig:
+    def with_namespace(self, value: str) -> PaymentCallbackConfigInfo:
+        self.namespace = value
+        return self
+
+    def with_dry_run(self, value: bool) -> PaymentCallbackConfigInfo:
         self.dry_run = value
         return self
 
-    def with_notify_url(self, value: str) -> GameServerConfig:
+    def with_notify_url(self, value: str) -> PaymentCallbackConfigInfo:
         self.notify_url = value
         return self
 
-    def with_private_key(self, value: str) -> GameServerConfig:
+    def with_private_key(self, value: str) -> PaymentCallbackConfigInfo:
         self.private_key = value
         return self
 
@@ -65,6 +72,10 @@ class GameServerConfig(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "namespace"):
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         if hasattr(self, "dry_run"):
             result["dryRun"] = bool(self.dry_run)
         elif include_empty:
@@ -86,11 +97,13 @@ class GameServerConfig(Model):
     @classmethod
     def create(
         cls,
+        namespace: str,
         dry_run: Optional[bool] = None,
         notify_url: Optional[str] = None,
         private_key: Optional[str] = None,
-    ) -> GameServerConfig:
+    ) -> PaymentCallbackConfigInfo:
         instance = cls()
+        instance.namespace = namespace
         if dry_run is not None:
             instance.dry_run = dry_run
         if notify_url is not None:
@@ -100,10 +113,14 @@ class GameServerConfig(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> GameServerConfig:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PaymentCallbackConfigInfo:
         instance = cls()
         if not dict_:
             return instance
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         if "dryRun" in dict_ and dict_["dryRun"] is not None:
             instance.dry_run = bool(dict_["dryRun"])
         elif include_empty:
@@ -121,6 +138,7 @@ class GameServerConfig(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "namespace": "namespace",
             "dryRun": "dry_run",
             "notifyUrl": "notify_url",
             "privateKey": "private_key",

@@ -20,6 +20,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import ModelsListPlayerRecordKeys
@@ -35,6 +36,7 @@ from ..operations.admin_player_record import AdminPostPlayerPublicRecordHandlerV
 from ..operations.admin_player_record import AdminPostPlayerRecordHandlerV1
 from ..operations.admin_player_record import AdminPutPlayerPublicRecordHandlerV1
 from ..operations.admin_player_record import AdminPutPlayerRecordHandlerV1
+from ..operations.admin_player_record import AdminRetrievePlayerRecords
 from ..operations.admin_player_record import ListPlayerRecordHandlerV1
 
 
@@ -270,6 +272,37 @@ async def admin_put_player_record_handler_v1_async(body: ModelsPlayerRecordReque
     return await run_request_async(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(AdminRetrievePlayerRecords)
+def admin_retrieve_player_records(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminRetrievePlayerRecords.create(
+        user_id=user_id,
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminRetrievePlayerRecords)
+async def admin_retrieve_player_records_async(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminRetrievePlayerRecords.create(
+        user_id=user_id,
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@deprecated
 @same_doc_as(ListPlayerRecordHandlerV1)
 def list_player_record_handler_v1(limit: Optional[int] = None, offset: Optional[int] = None, query: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -285,6 +318,7 @@ def list_player_record_handler_v1(limit: Optional[int] = None, offset: Optional[
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@deprecated
 @same_doc_as(ListPlayerRecordHandlerV1)
 async def list_player_record_handler_v1_async(limit: Optional[int] = None, offset: Optional[int] = None, query: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:

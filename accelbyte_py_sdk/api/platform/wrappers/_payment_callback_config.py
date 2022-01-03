@@ -23,56 +23,57 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ErrorEntity
-from ..models import GameServerConfig
+from ..models import PaymentCallbackConfigInfo
+from ..models import PaymentCallbackConfigUpdate
 
-from ..operations.integration import GetGameServerConfig
-from ..operations.integration import UpdateGameServerConfig
+from ..operations.payment_callback_config import GetPaymentCallbackConfig
+from ..operations.payment_callback_config import UpdatePaymentCallbackConfig
 
 
-@same_doc_as(GetGameServerConfig)
-def get_game_server_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+@same_doc_as(GetPaymentCallbackConfig)
+def get_payment_callback_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = GetGameServerConfig.create(
+    request = GetPaymentCallbackConfig.create(
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
-@same_doc_as(GetGameServerConfig)
-async def get_game_server_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+@same_doc_as(GetPaymentCallbackConfig)
+async def get_payment_callback_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = GetGameServerConfig.create(
+    request = GetPaymentCallbackConfig.create(
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)
 
 
-@same_doc_as(UpdateGameServerConfig)
-def update_game_server_config(body: Optional[GameServerConfig] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+@same_doc_as(UpdatePaymentCallbackConfig)
+def update_payment_callback_config(body: Optional[PaymentCallbackConfigUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = UpdateGameServerConfig.create(
+    request = UpdatePaymentCallbackConfig.create(
         body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
-@same_doc_as(UpdateGameServerConfig)
-async def update_game_server_config_async(body: Optional[GameServerConfig] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+@same_doc_as(UpdatePaymentCallbackConfig)
+async def update_payment_callback_config_async(body: Optional[PaymentCallbackConfigUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = UpdateGameServerConfig.create(
+    request = UpdatePaymentCallbackConfig.create(
         body=body,
         namespace=namespace,
     )

@@ -2,4 +2,5 @@
 
 # pylint: disable=line-too-long
 
+from .batch_download_server_logs import BatchDownloadServerLogs
 from .list_all_terminated_servers import ListAllTerminatedServers

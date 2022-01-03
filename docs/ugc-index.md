@@ -1,11 +1,11 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-ugc-service Index (1.10.0)
+# justice-ugc-service Index (1.10.1)
 
 
 ## Operations
 
-### [Admin] Channel
+### Admin Channel
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /ugc/v1/admin/namespaces/{namespace}/channels | POST | AdminCreateChannel | [AdminCreateChannel](../accelbyte_py_sdk/api/ugc/operations/admin_channel/admin_create_channel.py) | [admin_create_channel](../accelbyte_py_sdk/api/ugc/wrappers/_admin_channel.py) |
@@ -16,7 +16,7 @@
 | /ugc/v1/admin/namespaces/{namespace}/channels | GET | SingleAdminGetChannel | [SingleAdminGetChannel](../accelbyte_py_sdk/api/ugc/operations/admin_channel/single_admin_get_channel.py) | [single_admin_get_channel](../accelbyte_py_sdk/api/ugc/wrappers/_admin_channel.py) |
 | /ugc/v1/admin/namespaces/{namespace}/channels/{channelId} | PUT | SingleAdminUpdateChannel | [SingleAdminUpdateChannel](../accelbyte_py_sdk/api/ugc/operations/admin_channel/single_admin_update_channel.py) | [single_admin_update_channel](../accelbyte_py_sdk/api/ugc/wrappers/_admin_channel.py) |
 
-### [Admin] Content
+### Admin Content
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /ugc/v1/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId} | DELETE | AdminDeleteContent | [AdminDeleteContent](../accelbyte_py_sdk/api/ugc/operations/admin_content/admin_delete_content.py) | [admin_delete_content](../accelbyte_py_sdk/api/ugc/wrappers/_admin_content.py) |
@@ -38,7 +38,7 @@
 | /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents/{contentId} | PUT | SingleAdminUpdateContentDirect | [SingleAdminUpdateContentDirect](../accelbyte_py_sdk/api/ugc/operations/admin_content/single_admin_update_content_direct.py) | [single_admin_update_content_direct](../accelbyte_py_sdk/api/ugc/wrappers/_admin_content.py) |
 | /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents/s3/{contentId} | PUT | SingleAdminUpdateContentS3 | [SingleAdminUpdateContentS3](../accelbyte_py_sdk/api/ugc/operations/admin_content/single_admin_update_content_s3.py) | [single_admin_update_content_s3](../accelbyte_py_sdk/api/ugc/wrappers/_admin_content.py) |
 
-### [Admin] Group
+### Admin Group
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /ugc/v1/admin/namespaces/{namespace}/groups | POST | AdminCreateGroup | [AdminCreateGroup](../accelbyte_py_sdk/api/ugc/operations/admin_group/admin_create_group.py) | [admin_create_group](../accelbyte_py_sdk/api/ugc/wrappers/_admin_group.py) |
@@ -53,7 +53,7 @@
 | /ugc/v1/admin/namespaces/{namespace}/groups/{groupId}/contents | GET | SingleAdminGetGroupContents | [SingleAdminGetGroupContents](../accelbyte_py_sdk/api/ugc/operations/admin_group/single_admin_get_group_contents.py) | [single_admin_get_group_contents](../accelbyte_py_sdk/api/ugc/wrappers/_admin_group.py) |
 | /ugc/v1/admin/namespaces/{namespace}/groups/{groupId} | PUT | SingleAdminUpdateGroup | [SingleAdminUpdateGroup](../accelbyte_py_sdk/api/ugc/operations/admin_group/single_admin_update_group.py) | [single_admin_update_group](../accelbyte_py_sdk/api/ugc/wrappers/_admin_group.py) |
 
-### [Admin] Tag
+### Admin Tag
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /ugc/v1/admin/namespaces/{namespace}/tags | POST | AdminCreateTag | [AdminCreateTag](../accelbyte_py_sdk/api/ugc/operations/admin_tag/admin_create_tag.py) | [admin_create_tag](../accelbyte_py_sdk/api/ugc/wrappers/_admin_tag.py) |
@@ -61,7 +61,7 @@
 | /ugc/v1/admin/namespaces/{namespace}/tags | GET | AdminGetTag | [AdminGetTag](../accelbyte_py_sdk/api/ugc/operations/admin_tag/admin_get_tag.py) | [admin_get_tag](../accelbyte_py_sdk/api/ugc/wrappers/_admin_tag.py) |
 | /ugc/v1/admin/namespaces/{namespace}/tags/{tagId} | PUT | AdminUpdateTag | [AdminUpdateTag](../accelbyte_py_sdk/api/ugc/operations/admin_tag/admin_update_tag.py) | [admin_update_tag](../accelbyte_py_sdk/api/ugc/wrappers/_admin_tag.py) |
 
-### [Admin] Type
+### Admin Type
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /ugc/v1/admin/namespaces/{namespace}/types | POST | AdminCreateType | [AdminCreateType](../accelbyte_py_sdk/api/ugc/operations/admin_type/admin_create_type.py) | [admin_create_type](../accelbyte_py_sdk/api/ugc/wrappers/_admin_type.py) |
@@ -81,7 +81,7 @@
 | /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups | DELETE | DeleteAllUserGroup | [DeleteAllUserGroup](../accelbyte_py_sdk/api/ugc/operations/anonymization/delete_all_user_group.py) | [delete_all_user_group](../accelbyte_py_sdk/api/ugc/wrappers/_anonymization.py) |
 | /ugc/v1/public/namespaces/{namespace}/users/{userId}/states | DELETE | DeleteAllUserStates | [DeleteAllUserStates](../accelbyte_py_sdk/api/ugc/operations/anonymization/delete_all_user_states.py) | [delete_all_user_states](../accelbyte_py_sdk/api/ugc/wrappers/_anonymization.py) |
 
-### [Public] Channel
+### Public Channel
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels | POST | CreateChannel | [CreateChannel](../accelbyte_py_sdk/api/ugc/operations/public_channel/create_channel.py) | [create_channel](../accelbyte_py_sdk/api/ugc/wrappers/_public_channel.py) |
@@ -89,7 +89,7 @@
 | /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels | GET | GetChannels | [GetChannels](../accelbyte_py_sdk/api/ugc/operations/public_channel/get_channels.py) | [get_channels](../accelbyte_py_sdk/api/ugc/wrappers/_public_channel.py) |
 | /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId} | PUT | UpdateChannel | [UpdateChannel](../accelbyte_py_sdk/api/ugc/operations/public_channel/update_channel.py) | [update_channel](../accelbyte_py_sdk/api/ugc/wrappers/_public_channel.py) |
 
-### [Public] Content
+### Public Content
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents | POST | CreateContentDirect | [CreateContentDirect](../accelbyte_py_sdk/api/ugc/operations/public_content/create_content_direct.py) | [create_content_direct](../accelbyte_py_sdk/api/ugc/wrappers/_public_content.py) |
@@ -107,19 +107,19 @@
 | /ugc/v1/public/namespaces/{namespace}/users/{userId}/contents/{contentId}/screenshots | PUT | UpdateScreenshots | [UpdateScreenshots](../accelbyte_py_sdk/api/ugc/operations/public_content/update_screenshots.py) | [update_screenshots](../accelbyte_py_sdk/api/ugc/wrappers/_public_content.py) |
 | /ugc/v1/public/namespaces/{namespace}/users/{userId}/contents/{contentId}/screenshots | POST | UploadContentScreenshot | [UploadContentScreenshot](../accelbyte_py_sdk/api/ugc/operations/public_content/upload_content_screenshot.py) | [upload_content_screenshot](../accelbyte_py_sdk/api/ugc/wrappers/_public_content.py) |
 
-### [Public] Download Count
+### Public Download Count
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /ugc/v1/public/namespaces/{namespace}/contents/{contentId}/downloadcount | POST | AddDownloadCount | [AddDownloadCount](../accelbyte_py_sdk/api/ugc/operations/public_download_count/add_download_count.py) | [add_download_count](../accelbyte_py_sdk/api/ugc/wrappers/_public_download_count.py) |
 
-### [Public] Follow
+### Public Follow
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /ugc/v1/public/namespaces/{namespace}/contents/followed | GET | GetFollowedContent | [GetFollowedContent](../accelbyte_py_sdk/api/ugc/operations/public_follow/get_followed_content.py) | [get_followed_content](../accelbyte_py_sdk/api/ugc/wrappers/_public_follow.py) |
 | /ugc/v1/public/namespaces/{namespace}/users/followed | GET | GetFollowedUsers | [GetFollowedUsers](../accelbyte_py_sdk/api/ugc/operations/public_follow/get_followed_users.py) | [get_followed_users](../accelbyte_py_sdk/api/ugc/wrappers/_public_follow.py) |
 | /ugc/v1/public/namespaces/{namespace}/users/{userId}/follow | PUT | UpdateUserFollowStatus | [UpdateUserFollowStatus](../accelbyte_py_sdk/api/ugc/operations/public_follow/update_user_follow_status.py) | [update_user_follow_status](../accelbyte_py_sdk/api/ugc/wrappers/_public_follow.py) |
 
-### [Public] Group
+### Public Group
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups | POST | CreateGroup | [CreateGroup](../accelbyte_py_sdk/api/ugc/operations/public_group/create_group.py) | [create_group](../accelbyte_py_sdk/api/ugc/wrappers/_public_group.py) |
@@ -129,18 +129,18 @@
 | /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups | GET | GetGroups | [GetGroups](../accelbyte_py_sdk/api/ugc/operations/public_group/get_groups.py) | [get_groups](../accelbyte_py_sdk/api/ugc/wrappers/_public_group.py) |
 | /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId} | PUT | UpdateGroup | [UpdateGroup](../accelbyte_py_sdk/api/ugc/operations/public_group/update_group.py) | [update_group](../accelbyte_py_sdk/api/ugc/wrappers/_public_group.py) |
 
-### [Public] Like
+### Public Like
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /ugc/v1/public/namespaces/{namespace}/contents/liked | GET | GetLikedContent | [GetLikedContent](../accelbyte_py_sdk/api/ugc/operations/public_like/get_liked_content.py) | [get_liked_content](../accelbyte_py_sdk/api/ugc/wrappers/_public_like.py) |
 | /ugc/v1/public/namespaces/{namespace}/contents/{contentId}/like | PUT | UpdateContentLikeStatus | [UpdateContentLikeStatus](../accelbyte_py_sdk/api/ugc/operations/public_like/update_content_like_status.py) | [update_content_like_status](../accelbyte_py_sdk/api/ugc/wrappers/_public_like.py) |
 
-### [Public] Tag
+### Public Tag
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /ugc/v1/public/namespaces/{namespace}/tags | GET | GetTag | [GetTag](../accelbyte_py_sdk/api/ugc/operations/public_tag/get_tag.py) | [get_tag](../accelbyte_py_sdk/api/ugc/wrappers/_public_tag.py) |
 
-### [Public] Type
+### Public Type
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /ugc/v1/public/namespaces/{namespace}/types | GET | GetType | [GetType](../accelbyte_py_sdk/api/ugc/operations/public_type/get_type.py) | [get_type](../accelbyte_py_sdk/api/ugc/wrappers/_public_type.py) |

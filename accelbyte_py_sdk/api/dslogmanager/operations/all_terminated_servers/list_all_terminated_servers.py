@@ -1,8 +1,8 @@
-# justice-ds-log-manager-service (1.4.0)
+# justice-ds-log-manager-service (1.4.1)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -52,23 +52,29 @@ class ListAllTerminatedServers(Operation):
 
         deployment: (deployment) OPTIONAL str in query
 
+        end_date: (end_date) OPTIONAL str in query
+
         game_mode: (game_mode) OPTIONAL str in query
 
         limit: (limit) OPTIONAL int in query
 
         namespace: (namespace) OPTIONAL str in query
 
-        offset: (offset) OPTIONAL int in query
+        next_: (next) OPTIONAL str in query
 
         party_id: (party_id) OPTIONAL str in query
 
         pod_name: (pod_name) OPTIONAL str in query
+
+        previous: (previous) OPTIONAL str in query
 
         provider: (provider) OPTIONAL str in query
 
         region: (region) OPTIONAL str in query
 
         session_id: (session_id) OPTIONAL str in query
+
+        start_date: (start_date) OPTIONAL str in query
 
         user_id: (user_id) OPTIONAL str in query
 
@@ -92,15 +98,18 @@ class ListAllTerminatedServers(Operation):
     _location_query: str = None
 
     deployment: str                                                                                # OPTIONAL in [query]
+    end_date: str                                                                                  # OPTIONAL in [query]
     game_mode: str                                                                                 # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
     namespace: str                                                                                 # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
+    next_: str                                                                                     # OPTIONAL in [query]
     party_id: str                                                                                  # OPTIONAL in [query]
     pod_name: str                                                                                  # OPTIONAL in [query]
+    previous: str                                                                                  # OPTIONAL in [query]
     provider: str                                                                                  # OPTIONAL in [query]
     region: str                                                                                    # OPTIONAL in [query]
     session_id: str                                                                                # OPTIONAL in [query]
+    start_date: str                                                                                # OPTIONAL in [query]
     user_id: str                                                                                   # OPTIONAL in [query]
 
     # endregion fields
@@ -160,24 +169,30 @@ class ListAllTerminatedServers(Operation):
         result = {}
         if hasattr(self, "deployment"):
             result["deployment"] = self.deployment
+        if hasattr(self, "end_date"):
+            result["end_date"] = self.end_date
         if hasattr(self, "game_mode"):
             result["game_mode"] = self.game_mode
         if hasattr(self, "limit"):
             result["limit"] = self.limit
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
+        if hasattr(self, "next_"):
+            result["next"] = self.next_
         if hasattr(self, "party_id"):
             result["party_id"] = self.party_id
         if hasattr(self, "pod_name"):
             result["pod_name"] = self.pod_name
+        if hasattr(self, "previous"):
+            result["previous"] = self.previous
         if hasattr(self, "provider"):
             result["provider"] = self.provider
         if hasattr(self, "region"):
             result["region"] = self.region
         if hasattr(self, "session_id"):
             result["session_id"] = self.session_id
+        if hasattr(self, "start_date"):
+            result["start_date"] = self.start_date
         if hasattr(self, "user_id"):
             result["user_id"] = self.user_id
         return result
@@ -197,6 +212,10 @@ class ListAllTerminatedServers(Operation):
         self.deployment = value
         return self
 
+    def with_end_date(self, value: str) -> ListAllTerminatedServers:
+        self.end_date = value
+        return self
+
     def with_game_mode(self, value: str) -> ListAllTerminatedServers:
         self.game_mode = value
         return self
@@ -209,8 +228,8 @@ class ListAllTerminatedServers(Operation):
         self.namespace = value
         return self
 
-    def with_offset(self, value: int) -> ListAllTerminatedServers:
-        self.offset = value
+    def with_next_(self, value: str) -> ListAllTerminatedServers:
+        self.next_ = value
         return self
 
     def with_party_id(self, value: str) -> ListAllTerminatedServers:
@@ -219,6 +238,10 @@ class ListAllTerminatedServers(Operation):
 
     def with_pod_name(self, value: str) -> ListAllTerminatedServers:
         self.pod_name = value
+        return self
+
+    def with_previous(self, value: str) -> ListAllTerminatedServers:
+        self.previous = value
         return self
 
     def with_provider(self, value: str) -> ListAllTerminatedServers:
@@ -231,6 +254,10 @@ class ListAllTerminatedServers(Operation):
 
     def with_session_id(self, value: str) -> ListAllTerminatedServers:
         self.session_id = value
+        return self
+
+    def with_start_date(self, value: str) -> ListAllTerminatedServers:
+        self.start_date = value
         return self
 
     def with_user_id(self, value: str) -> ListAllTerminatedServers:
@@ -247,6 +274,10 @@ class ListAllTerminatedServers(Operation):
             result["deployment"] = str(self.deployment)
         elif include_empty:
             result["deployment"] = str()
+        if hasattr(self, "end_date") and self.end_date:
+            result["end_date"] = str(self.end_date)
+        elif include_empty:
+            result["end_date"] = str()
         if hasattr(self, "game_mode") and self.game_mode:
             result["game_mode"] = str(self.game_mode)
         elif include_empty:
@@ -259,10 +290,10 @@ class ListAllTerminatedServers(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
+        if hasattr(self, "next_") and self.next_:
+            result["next"] = str(self.next_)
         elif include_empty:
-            result["offset"] = int()
+            result["next"] = str()
         if hasattr(self, "party_id") and self.party_id:
             result["party_id"] = str(self.party_id)
         elif include_empty:
@@ -271,6 +302,10 @@ class ListAllTerminatedServers(Operation):
             result["pod_name"] = str(self.pod_name)
         elif include_empty:
             result["pod_name"] = str()
+        if hasattr(self, "previous") and self.previous:
+            result["previous"] = str(self.previous)
+        elif include_empty:
+            result["previous"] = str()
         if hasattr(self, "provider") and self.provider:
             result["provider"] = str(self.provider)
         elif include_empty:
@@ -283,6 +318,10 @@ class ListAllTerminatedServers(Operation):
             result["session_id"] = str(self.session_id)
         elif include_empty:
             result["session_id"] = str()
+        if hasattr(self, "start_date") and self.start_date:
+            result["start_date"] = str(self.start_date)
+        elif include_empty:
+            result["start_date"] = str()
         if hasattr(self, "user_id") and self.user_id:
             result["user_id"] = str(self.user_id)
         elif include_empty:
@@ -326,38 +365,47 @@ class ListAllTerminatedServers(Operation):
     def create(
         cls,
         deployment: Optional[str] = None,
+        end_date: Optional[str] = None,
         game_mode: Optional[str] = None,
         limit: Optional[int] = None,
         namespace: Optional[str] = None,
-        offset: Optional[int] = None,
+        next_: Optional[str] = None,
         party_id: Optional[str] = None,
         pod_name: Optional[str] = None,
+        previous: Optional[str] = None,
         provider: Optional[str] = None,
         region: Optional[str] = None,
         session_id: Optional[str] = None,
+        start_date: Optional[str] = None,
         user_id: Optional[str] = None,
     ) -> ListAllTerminatedServers:
         instance = cls()
         if deployment is not None:
             instance.deployment = deployment
+        if end_date is not None:
+            instance.end_date = end_date
         if game_mode is not None:
             instance.game_mode = game_mode
         if limit is not None:
             instance.limit = limit
         if namespace is not None:
             instance.namespace = namespace
-        if offset is not None:
-            instance.offset = offset
+        if next_ is not None:
+            instance.next_ = next_
         if party_id is not None:
             instance.party_id = party_id
         if pod_name is not None:
             instance.pod_name = pod_name
+        if previous is not None:
+            instance.previous = previous
         if provider is not None:
             instance.provider = provider
         if region is not None:
             instance.region = region
         if session_id is not None:
             instance.session_id = session_id
+        if start_date is not None:
+            instance.start_date = start_date
         if user_id is not None:
             instance.user_id = user_id
         return instance
@@ -369,6 +417,10 @@ class ListAllTerminatedServers(Operation):
             instance.deployment = str(dict_["deployment"])
         elif include_empty:
             instance.deployment = str()
+        if "end_date" in dict_ and dict_["end_date"] is not None:
+            instance.end_date = str(dict_["end_date"])
+        elif include_empty:
+            instance.end_date = str()
         if "game_mode" in dict_ and dict_["game_mode"] is not None:
             instance.game_mode = str(dict_["game_mode"])
         elif include_empty:
@@ -381,10 +433,10 @@ class ListAllTerminatedServers(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
+        if "next" in dict_ and dict_["next"] is not None:
+            instance.next_ = str(dict_["next"])
         elif include_empty:
-            instance.offset = int()
+            instance.next_ = str()
         if "party_id" in dict_ and dict_["party_id"] is not None:
             instance.party_id = str(dict_["party_id"])
         elif include_empty:
@@ -393,6 +445,10 @@ class ListAllTerminatedServers(Operation):
             instance.pod_name = str(dict_["pod_name"])
         elif include_empty:
             instance.pod_name = str()
+        if "previous" in dict_ and dict_["previous"] is not None:
+            instance.previous = str(dict_["previous"])
+        elif include_empty:
+            instance.previous = str()
         if "provider" in dict_ and dict_["provider"] is not None:
             instance.provider = str(dict_["provider"])
         elif include_empty:
@@ -405,6 +461,10 @@ class ListAllTerminatedServers(Operation):
             instance.session_id = str(dict_["session_id"])
         elif include_empty:
             instance.session_id = str()
+        if "start_date" in dict_ and dict_["start_date"] is not None:
+            instance.start_date = str(dict_["start_date"])
+        elif include_empty:
+            instance.start_date = str()
         if "user_id" in dict_ and dict_["user_id"] is not None:
             instance.user_id = str(dict_["user_id"])
         elif include_empty:
@@ -415,15 +475,18 @@ class ListAllTerminatedServers(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "deployment": "deployment",
+            "end_date": "end_date",
             "game_mode": "game_mode",
             "limit": "limit",
             "namespace": "namespace",
-            "offset": "offset",
+            "next": "next_",
             "party_id": "party_id",
             "pod_name": "pod_name",
+            "previous": "previous",
             "provider": "provider",
             "region": "region",
             "session_id": "session_id",
+            "start_date": "start_date",
             "user_id": "user_id",
         }
 

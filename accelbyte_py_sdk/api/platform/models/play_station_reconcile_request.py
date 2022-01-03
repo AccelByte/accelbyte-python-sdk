@@ -1,8 +1,8 @@
-# justice-platform-service (3.39.0)
+# justice-platform-service (3.40.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -26,23 +26,23 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 
-class DistributionReceiverCreate(Model):
-    """A DTO object for creating distribution receiver. (DistributionReceiverCreate)
+class PlayStationReconcileRequest(Model):
+    """Play station reconcile request (PlayStationReconcileRequest)
 
     Properties:
-        attributes: (attributes) OPTIONAL Dict[str, str]
+        service_label: (serviceLabel) OPTIONAL int
     """
 
     # region fields
 
-    attributes: Dict[str, str]                                                                     # OPTIONAL
+    service_label: int                                                                             # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_attributes(self, value: Dict[str, str]) -> DistributionReceiverCreate:
-        self.attributes = value
+    def with_service_label(self, value: int) -> PlayStationReconcileRequest:
+        self.service_label = value
         return self
 
     # endregion with_x methods
@@ -51,10 +51,10 @@ class DistributionReceiverCreate(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "attributes"):
-            result["attributes"] = {str(k0): str(v0) for k0, v0 in self.attributes.items()}
+        if hasattr(self, "service_label"):
+            result["serviceLabel"] = int(self.service_label)
         elif include_empty:
-            result["attributes"] = {}
+            result["serviceLabel"] = int()
         return result
 
     # endregion to methods
@@ -64,28 +64,28 @@ class DistributionReceiverCreate(Model):
     @classmethod
     def create(
         cls,
-        attributes: Optional[Dict[str, str]] = None,
-    ) -> DistributionReceiverCreate:
+        service_label: Optional[int] = None,
+    ) -> PlayStationReconcileRequest:
         instance = cls()
-        if attributes is not None:
-            instance.attributes = attributes
+        if service_label is not None:
+            instance.service_label = service_label
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> DistributionReceiverCreate:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PlayStationReconcileRequest:
         instance = cls()
         if not dict_:
             return instance
-        if "attributes" in dict_ and dict_["attributes"] is not None:
-            instance.attributes = {str(k0): str(v0) for k0, v0 in dict_["attributes"].items()}
+        if "serviceLabel" in dict_ and dict_["serviceLabel"] is not None:
+            instance.service_label = int(dict_["serviceLabel"])
         elif include_empty:
-            instance.attributes = {}
+            instance.service_label = int()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "attributes": "attributes",
+            "serviceLabel": "service_label",
         }
 
     # endregion static methods

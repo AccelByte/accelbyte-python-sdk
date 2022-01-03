@@ -1,6 +1,6 @@
 """Auto-generated package that contains utility functions for the justice-iam-service."""
 
-__version__ = "4.9.0"
+__version__ = "4.10.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -515,6 +515,8 @@ from ._users import user_verification_async
 
 from ._users_v4 import admin_add_user_role_v4
 from ._users_v4 import admin_add_user_role_v4_async
+from ._users_v4 import admin_invite_user_v4
+from ._users_v4 import admin_invite_user_v4_async
 from ._users_v4 import admin_list_user_roles_v4
 from ._users_v4 import admin_list_user_roles_v4_async
 from ._users_v4 import admin_remove_user_role_v4

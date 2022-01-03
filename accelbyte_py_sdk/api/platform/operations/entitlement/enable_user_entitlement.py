@@ -1,8 +1,8 @@
-# justice-platform-service (3.39.0)
+# justice-platform-service (3.40.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -63,7 +63,7 @@ class EnableUserEntitlement(Operation):
 
         404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31174: Entitlement [{entitlementId}] already consumed | 31175: Entitlement [{entitlementId}] already distributed | 31177: Permanent item already owned | 31179: Duplicate entitlement exists | 20006: optimistic lock)
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31174: Entitlement [{entitlementId}] already consumed | 31177: Permanent item already owned | 31179: Duplicate entitlement exists | 20006: optimistic lock)
     """
 
     # region fields
@@ -206,7 +206,7 @@ class EnableUserEntitlement(Operation):
 
         404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31174: Entitlement [{entitlementId}] already consumed | 31175: Entitlement [{entitlementId}] already distributed | 31177: Permanent item already owned | 31179: Duplicate entitlement exists | 20006: optimistic lock)
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31174: Entitlement [{entitlementId}] already consumed | 31177: Permanent item already owned | 31179: Duplicate entitlement exists | 20006: optimistic lock)
         """
         if code == 200:
             return EntitlementInfo.create_from_dict(content), None

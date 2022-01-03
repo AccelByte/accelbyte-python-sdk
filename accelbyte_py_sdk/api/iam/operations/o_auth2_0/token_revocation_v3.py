@@ -1,8 +1,8 @@
-# justice-iam-service (4.9.0)
+# justice-iam-service (4.10.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -48,7 +48,7 @@ class TokenRevocationV3(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        security_type: basic
 
         token: (token) REQUIRED str in form_data
 
@@ -66,7 +66,7 @@ class TokenRevocationV3(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _security_type: Optional[str] = "basic"
     _location_query: str = None
 
     token: str                                                                                     # REQUIRED in [form_data]

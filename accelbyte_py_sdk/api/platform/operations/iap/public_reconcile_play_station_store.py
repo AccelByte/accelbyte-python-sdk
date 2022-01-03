@@ -1,8 +1,8 @@
-# justice-platform-service (3.39.0)
+# justice-platform-service (3.40.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -27,6 +27,7 @@ from .....core import Operation
 from .....core import HttpResponse
 
 from ...models import ErrorEntity
+from ...models import PlayStationReconcileRequest
 from ...models import PlayStationReconcileResult
 
 
@@ -52,6 +53,8 @@ class PublicReconcilePlayStationStore(Operation):
 
         security_type: bearer
 
+        body: (body) OPTIONAL PlayStationReconcileRequest in body
+
         namespace: (namespace) REQUIRED str in path
 
         user_id: (userId) REQUIRED str in path
@@ -71,6 +74,7 @@ class PublicReconcilePlayStationStore(Operation):
     _security_type: Optional[str] = "bearer"
     _location_query: str = None
 
+    body: PlayStationReconcileRequest                                                              # OPTIONAL in [body]
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
 
@@ -126,8 +130,12 @@ class PublicReconcilePlayStationStore(Operation):
 
     def get_all_params(self) -> dict:
         return {
+            "body": self.get_body_params(),
             "path": self.get_path_params(),
         }
+
+    def get_body_params(self) -> Any:
+        return self.body.to_dict()
 
     def get_path_params(self) -> dict:
         result = {}
@@ -152,6 +160,10 @@ class PublicReconcilePlayStationStore(Operation):
 
     # region with_x methods
 
+    def with_body(self, value: PlayStationReconcileRequest) -> PublicReconcilePlayStationStore:
+        self.body = value
+        return self
+
     def with_namespace(self, value: str) -> PublicReconcilePlayStationStore:
         self.namespace = value
         return self
@@ -166,6 +178,10 @@ class PublicReconcilePlayStationStore(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "body") and self.body:
+            result["body"] = self.body.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["body"] = PlayStationReconcileRequest()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -206,15 +222,22 @@ class PublicReconcilePlayStationStore(Operation):
         cls,
         namespace: str,
         user_id: str,
+        body: Optional[PlayStationReconcileRequest] = None,
     ) -> PublicReconcilePlayStationStore:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
+        if body is not None:
+            instance.body = body
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PublicReconcilePlayStationStore:
         instance = cls()
+        if "body" in dict_ and dict_["body"] is not None:
+            instance.body = PlayStationReconcileRequest.create_from_dict(dict_["body"], include_empty=include_empty)
+        elif include_empty:
+            instance.body = PlayStationReconcileRequest()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -228,6 +251,7 @@ class PublicReconcilePlayStationStore(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "body": "body",
             "namespace": "namespace",
             "userId": "user_id",
         }

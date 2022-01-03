@@ -1,8 +1,8 @@
-# justice-ugc-service (1.10.0)
+# justice-ugc-service (1.10.1)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -40,7 +40,7 @@ class DeleteGroup(Operation):
 
         method: DELETE
 
-        tags: ["[Public] Group"]
+        tags: ["Public Group"]
 
         consumes: ["application/json", "application/octet-stream"]
 

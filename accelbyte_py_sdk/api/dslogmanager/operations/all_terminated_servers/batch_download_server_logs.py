@@ -1,8 +1,8 @@
-# justice-ds-log-manager-service (1.4.0)
+# justice-ds-log-manager-service (1.4.1)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -26,54 +26,50 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
-from ...models import ModelsLogFileStatus
+from ...models import ModelsBatchDownloadLogsRequest
 from ...models import ResponseError
 
 
-class CheckServerLogs(Operation):
-    """Check dedicated server log files existence (checkServerLogs)
+class BatchDownloadServerLogs(Operation):
+    """Batch Download dedicated server log files (batchDownloadServerLogs)
 
     Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ] Required
-    scope: social This endpoint will check log file existence before download
-    file.
+    scope: social This endpoint will download dedicated server's log file (.zip).
 
 
     Properties:
-        url: /dslogmanager/namespaces/{namespace}/servers/{podName}/logs/exists
+        url: /dslogmanager/servers/logs/download
 
-        method: GET
+        method: POST
 
-        tags: ["Download Server Logs"]
+        tags: ["All Terminated Servers"]
 
         consumes: ["application/json"]
 
-        produces: ["application/json", "text/x-log"]
+        produces: ["application/json"]
 
         security_type: bearer
 
-        namespace: (namespace) REQUIRED str in path
-
-        pod_name: (podName) REQUIRED str in path
+        body: (body) REQUIRED ModelsBatchDownloadLogsRequest in body
 
     Responses:
-        200: OK - ModelsLogFileStatus (Log exists.)
+        200: OK - (server logs downloaded.)
 
-        404: Not Found - ResponseError (Not Found)
+        400: Bad Request - ResponseError (Bad Request)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
 
     # region fields
 
-    _url: str = "/dslogmanager/namespaces/{namespace}/servers/{podName}/logs/exists"
-    _method: str = "GET"
+    _url: str = "/dslogmanager/servers/logs/download"
+    _method: str = "POST"
     _consumes: List[str] = ["application/json"]
-    _produces: List[str] = ["application/json", "text/x-log"]
+    _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
-    pod_name: str                                                                                  # REQUIRED in [path]
+    body: ModelsBatchDownloadLogsRequest                                                           # REQUIRED in [body]
 
     # endregion fields
 
@@ -111,14 +107,12 @@ class CheckServerLogs(Operation):
         return self.create_full_url(
             url=self.url,
             base_url=base_url,
-            path_params=self.get_path_params(),
         )
 
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "namespace",
-            "pod_name",
+            "body",
         ]
 
     # endregion get methods
@@ -127,25 +121,18 @@ class CheckServerLogs(Operation):
 
     def get_all_params(self) -> dict:
         return {
-            "path": self.get_path_params(),
+            "body": self.get_body_params(),
         }
 
-    def get_path_params(self) -> dict:
-        result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
-        if hasattr(self, "pod_name"):
-            result["podName"] = self.pod_name
-        return result
+    def get_body_params(self) -> Any:
+        return self.body.to_dict()
 
     # endregion get_x_params methods
 
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "pod_name") or self.pod_name is None:
+        if not hasattr(self, "body") or self.body is None:
             return False
         return True
 
@@ -153,12 +140,8 @@ class CheckServerLogs(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> CheckServerLogs:
-        self.namespace = value
-        return self
-
-    def with_pod_name(self, value: str) -> CheckServerLogs:
-        self.pod_name = value
+    def with_body(self, value: ModelsBatchDownloadLogsRequest) -> BatchDownloadServerLogs:
+        self.body = value
         return self
 
     # endregion with_x methods
@@ -167,14 +150,10 @@ class CheckServerLogs(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
+        if hasattr(self, "body") and self.body:
+            result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["namespace"] = str()
-        if hasattr(self, "pod_name") and self.pod_name:
-            result["podName"] = str(self.pod_name)
-        elif include_empty:
-            result["podName"] = str()
+            result["body"] = ModelsBatchDownloadLogsRequest()
         return result
 
     # endregion to methods
@@ -182,18 +161,18 @@ class CheckServerLogs(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsLogFileStatus], Union[None, ResponseError]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ResponseError]]:
         """Parse the given response.
 
-        200: OK - ModelsLogFileStatus (Log exists.)
+        200: OK - (server logs downloaded.)
 
-        404: Not Found - ResponseError (Not Found)
+        400: Bad Request - ResponseError (Bad Request)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
         """
         if code == 200:
-            return ModelsLogFileStatus.create_from_dict(content), None
-        if code == 404:
+            return HttpResponse.create(code, "OK"), None
+        if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 500:
             return None, ResponseError.create_from_dict(content)
@@ -209,32 +188,25 @@ class CheckServerLogs(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
-        pod_name: str,
-    ) -> CheckServerLogs:
+        body: ModelsBatchDownloadLogsRequest,
+    ) -> BatchDownloadServerLogs:
         instance = cls()
-        instance.namespace = namespace
-        instance.pod_name = pod_name
+        instance.body = body
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> CheckServerLogs:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> BatchDownloadServerLogs:
         instance = cls()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
+        if "body" in dict_ and dict_["body"] is not None:
+            instance.body = ModelsBatchDownloadLogsRequest.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
-            instance.namespace = str()
-        if "podName" in dict_ and dict_["podName"] is not None:
-            instance.pod_name = str(dict_["podName"])
-        elif include_empty:
-            instance.pod_name = str()
+            instance.body = ModelsBatchDownloadLogsRequest()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
-            "podName": "pod_name",
+            "body": "body",
         }
 
     # endregion static methods

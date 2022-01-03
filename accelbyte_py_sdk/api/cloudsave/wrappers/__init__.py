@@ -1,6 +1,6 @@
 """Auto-generated package that contains utility functions for the justice-cloudsave-service."""
 
-__version__ = "1.9.1"
+__version__ = "1.9.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -35,6 +35,8 @@ from ._admin_player_record import admin_put_player_public_record_handler_v1
 from ._admin_player_record import admin_put_player_public_record_handler_v1_async
 from ._admin_player_record import admin_put_player_record_handler_v1
 from ._admin_player_record import admin_put_player_record_handler_v1_async
+from ._admin_player_record import admin_retrieve_player_records
+from ._admin_player_record import admin_retrieve_player_records_async
 from ._admin_player_record import list_player_record_handler_v1
 from ._admin_player_record import list_player_record_handler_v1_async
 

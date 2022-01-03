@@ -1,8 +1,8 @@
-# justice-platform-service (3.39.0)
+# justice-ds-log-manager-service (1.4.1)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -26,55 +26,54 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
-from ...models import ErrorEntity
+from ...models import ModelsLogFileStatus
+from ...models import ResponseError
 
 
-class PublicDeleteUserDistributionReceiver(Operation):
-    """Delete a user distribution receiver (publicDeleteUserDistributionReceiver)
+class CheckServerLogs(Operation):
+    """Check dedicated server log files existence (checkServerLogs)
 
-    Delete a distribution receiver for a specific user.<br>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="NAMESPACE:{namespace}:USER:{userId}:DISTRIBUTION", action=8
-    (DELETE)</li></ul>
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ] Required
+    scope: social This endpoint will check log file existence before download
+    file.
 
 
     Properties:
-        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/receivers/{extUserId}
+        url: /dslogmanager/namespaces/{namespace}/servers/{podName}/logs/exists
 
-        method: DELETE
+        method: GET
 
-        tags: ["Entitlement"]
+        tags: ["Terminated Servers"]
 
         consumes: ["application/json"]
 
-        produces: ["application/json"]
+        produces: ["application/json", "text/x-log"]
 
         security_type: bearer
 
-        ext_user_id: (extUserId) REQUIRED str in path
-
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
+        pod_name: (podName) REQUIRED str in path
 
     Responses:
-        204: No Content - (delete a distribution receiver successfully)
+        200: OK - ModelsLogFileStatus (Log exists.)
 
-        404: Not Found - ErrorEntity (31241: Distribution receiver of user [{userId}] and extUserId [{extUserId}] does not exist in namespace [{namespace}])
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
     """
 
     # region fields
 
-    _url: str = "/platform/public/namespaces/{namespace}/users/{userId}/entitlements/receivers/{extUserId}"
-    _method: str = "DELETE"
+    _url: str = "/dslogmanager/namespaces/{namespace}/servers/{podName}/logs/exists"
+    _method: str = "GET"
     _consumes: List[str] = ["application/json"]
-    _produces: List[str] = ["application/json"]
+    _produces: List[str] = ["application/json", "text/x-log"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None
 
-    ext_user_id: str                                                                               # REQUIRED in [path]
     namespace: str                                                                                 # REQUIRED in [path]
-    user_id: str                                                                                   # REQUIRED in [path]
+    pod_name: str                                                                                  # REQUIRED in [path]
 
     # endregion fields
 
@@ -118,9 +117,8 @@ class PublicDeleteUserDistributionReceiver(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "ext_user_id",
             "namespace",
-            "user_id",
+            "pod_name",
         ]
 
     # endregion get methods
@@ -134,12 +132,10 @@ class PublicDeleteUserDistributionReceiver(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "ext_user_id"):
-            result["extUserId"] = self.ext_user_id
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
+        if hasattr(self, "pod_name"):
+            result["podName"] = self.pod_name
         return result
 
     # endregion get_x_params methods
@@ -147,11 +143,9 @@ class PublicDeleteUserDistributionReceiver(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "ext_user_id") or self.ext_user_id is None:
-            return False
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
-        if not hasattr(self, "user_id") or self.user_id is None:
+        if not hasattr(self, "pod_name") or self.pod_name is None:
             return False
         return True
 
@@ -159,16 +153,12 @@ class PublicDeleteUserDistributionReceiver(Operation):
 
     # region with_x methods
 
-    def with_ext_user_id(self, value: str) -> PublicDeleteUserDistributionReceiver:
-        self.ext_user_id = value
-        return self
-
-    def with_namespace(self, value: str) -> PublicDeleteUserDistributionReceiver:
+    def with_namespace(self, value: str) -> CheckServerLogs:
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> PublicDeleteUserDistributionReceiver:
-        self.user_id = value
+    def with_pod_name(self, value: str) -> CheckServerLogs:
+        self.pod_name = value
         return self
 
     # endregion with_x methods
@@ -177,18 +167,14 @@ class PublicDeleteUserDistributionReceiver(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "ext_user_id") and self.ext_user_id:
-            result["extUserId"] = str(self.ext_user_id)
-        elif include_empty:
-            result["extUserId"] = str()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
+        if hasattr(self, "pod_name") and self.pod_name:
+            result["podName"] = str(self.pod_name)
         elif include_empty:
-            result["userId"] = str()
+            result["podName"] = str()
         return result
 
     # endregion to methods
@@ -196,17 +182,21 @@ class PublicDeleteUserDistributionReceiver(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ErrorEntity]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsLogFileStatus], Union[None, ResponseError]]:
         """Parse the given response.
 
-        204: No Content - (delete a distribution receiver successfully)
+        200: OK - ModelsLogFileStatus (Log exists.)
 
-        404: Not Found - ErrorEntity (31241: Distribution receiver of user [{userId}] and extUserId [{extUserId}] does not exist in namespace [{namespace}])
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
         """
-        if code == 204:
-            return HttpResponse.create(code, "No Content"), None
+        if code == 200:
+            return ModelsLogFileStatus.create_from_dict(content), None
         if code == 404:
-            return None, ErrorEntity.create_from_dict(content)
+            return None, ResponseError.create_from_dict(content)
+        if code == 500:
+            return None, ResponseError.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
             return None, undocumented_response
@@ -219,39 +209,32 @@ class PublicDeleteUserDistributionReceiver(Operation):
     @classmethod
     def create(
         cls,
-        ext_user_id: str,
         namespace: str,
-        user_id: str,
-    ) -> PublicDeleteUserDistributionReceiver:
+        pod_name: str,
+    ) -> CheckServerLogs:
         instance = cls()
-        instance.ext_user_id = ext_user_id
         instance.namespace = namespace
-        instance.user_id = user_id
+        instance.pod_name = pod_name
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PublicDeleteUserDistributionReceiver:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> CheckServerLogs:
         instance = cls()
-        if "extUserId" in dict_ and dict_["extUserId"] is not None:
-            instance.ext_user_id = str(dict_["extUserId"])
-        elif include_empty:
-            instance.ext_user_id = str()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
+        if "podName" in dict_ and dict_["podName"] is not None:
+            instance.pod_name = str(dict_["podName"])
         elif include_empty:
-            instance.user_id = str()
+            instance.pod_name = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "extUserId": "ext_user_id",
             "namespace": "namespace",
-            "userId": "user_id",
+            "podName": "pod_name",
         }
 
     # endregion static methods

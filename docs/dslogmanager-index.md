@@ -1,6 +1,6 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-ds-log-manager-service Index (1.4.0)
+# justice-ds-log-manager-service Index (1.4.1)
 
 
 ## Operations
@@ -8,13 +8,8 @@
 ### All Terminated Servers
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
+| /dslogmanager/servers/logs/download | POST | batchDownloadServerLogs | [BatchDownloadServerLogs](../accelbyte_py_sdk/api/dslogmanager/operations/all_terminated_servers/batch_download_server_logs.py) | [batch_download_server_logs](../accelbyte_py_sdk/api/dslogmanager/wrappers/_all_terminated_servers.py) |
 | /dslogmanager/servers/search | GET | listAllTerminatedServers | [ListAllTerminatedServers](../accelbyte_py_sdk/api/dslogmanager/operations/all_terminated_servers/list_all_terminated_servers.py) | [list_all_terminated_servers](../accelbyte_py_sdk/api/dslogmanager/wrappers/_all_terminated_servers.py) |
-
-### Download Server Logs
-| Endpoint | Method | ID | Class | Wrapper |
-|---|---|---|---|---|
-| /dslogmanager/namespaces/{namespace}/servers/{podName}/logs/exists | GET | checkServerLogs | [CheckServerLogs](../accelbyte_py_sdk/api/dslogmanager/operations/download_server_logs/check_server_logs.py) | [check_server_logs](../accelbyte_py_sdk/api/dslogmanager/wrappers/_download_server_logs.py) |
-| /dslogmanager/namespaces/{namespace}/servers/{podName}/logs/download | GET | downloadServerLogs | [DownloadServerLogs](../accelbyte_py_sdk/api/dslogmanager/operations/download_server_logs/download_server_logs.py) | [download_server_logs](../accelbyte_py_sdk/api/dslogmanager/wrappers/_download_server_logs.py) |
 
 ### Operations
 | Endpoint | Method | ID | Class | Wrapper |
@@ -24,6 +19,8 @@
 ### Terminated Servers
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
+| /dslogmanager/namespaces/{namespace}/servers/{podName}/logs/exists | GET | checkServerLogs | [CheckServerLogs](../accelbyte_py_sdk/api/dslogmanager/operations/terminated_servers/check_server_logs.py) | [check_server_logs](../accelbyte_py_sdk/api/dslogmanager/wrappers/_terminated_servers.py) |
+| /dslogmanager/namespaces/{namespace}/servers/{podName}/logs/download | GET | downloadServerLogs | [DownloadServerLogs](../accelbyte_py_sdk/api/dslogmanager/operations/terminated_servers/download_server_logs.py) | [download_server_logs](../accelbyte_py_sdk/api/dslogmanager/wrappers/_terminated_servers.py) |
 | /dslogmanager/namespaces/{namespace}/servers/search | GET | listTerminatedServers | [ListTerminatedServers](../accelbyte_py_sdk/api/dslogmanager/operations/terminated_servers/list_terminated_servers.py) | [list_terminated_servers](../accelbyte_py_sdk/api/dslogmanager/wrappers/_terminated_servers.py) |
 
 
@@ -31,6 +28,8 @@
 | Model | Class |
 |---|---|
 | log.AppMessageDeclaration | [LogAppMessageDeclaration](../accelbyte_py_sdk/api/dslogmanager/models/log_app_message_declaration.py) |
+| models.BatchDownloadLogsRequest | [ModelsBatchDownloadLogsRequest](../accelbyte_py_sdk/api/dslogmanager/models/models_batch_download_logs_request.py) |
+| models.DownloadLogsRequest | [ModelsDownloadLogsRequest](../accelbyte_py_sdk/api/dslogmanager/models/models_download_logs_request.py) |
 | models.ListTerminatedServersResponse | [ModelsListTerminatedServersResponse](../accelbyte_py_sdk/api/dslogmanager/models/models_list_terminated_servers_response.py) |
 | models.LogFileStatus | [ModelsLogFileStatus](../accelbyte_py_sdk/api/dslogmanager/models/models_log_file_status.py) |
 | models.MatchResult | [ModelsMatchResult](../accelbyte_py_sdk/api/dslogmanager/models/models_match_result.py) |

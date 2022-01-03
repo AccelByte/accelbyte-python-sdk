@@ -1,8 +1,8 @@
-# justice-platform-service (3.39.0)
+# justice-platform-service (3.40.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -44,8 +44,6 @@ class EntitlementHistoryInfo(Model):
 
         user_id: (userId) REQUIRED str
 
-        quantity: (quantity) OPTIONAL int
-
         use_count: (useCount) OPTIONAL int
     """
 
@@ -58,7 +56,6 @@ class EntitlementHistoryInfo(Model):
     operator: str                                                                                  # REQUIRED
     updated_at: str                                                                                # REQUIRED
     user_id: str                                                                                   # REQUIRED
-    quantity: int                                                                                  # OPTIONAL
     use_count: int                                                                                 # OPTIONAL
 
     # endregion fields
@@ -91,10 +88,6 @@ class EntitlementHistoryInfo(Model):
 
     def with_user_id(self, value: str) -> EntitlementHistoryInfo:
         self.user_id = value
-        return self
-
-    def with_quantity(self, value: int) -> EntitlementHistoryInfo:
-        self.quantity = value
         return self
 
     def with_use_count(self, value: int) -> EntitlementHistoryInfo:
@@ -135,10 +128,6 @@ class EntitlementHistoryInfo(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
-        if hasattr(self, "quantity"):
-            result["quantity"] = int(self.quantity)
-        elif include_empty:
-            result["quantity"] = int()
         if hasattr(self, "use_count"):
             result["useCount"] = int(self.use_count)
         elif include_empty:
@@ -159,7 +148,6 @@ class EntitlementHistoryInfo(Model):
         operator: str,
         updated_at: str,
         user_id: str,
-        quantity: Optional[int] = None,
         use_count: Optional[int] = None,
     ) -> EntitlementHistoryInfo:
         instance = cls()
@@ -170,8 +158,6 @@ class EntitlementHistoryInfo(Model):
         instance.operator = operator
         instance.updated_at = updated_at
         instance.user_id = user_id
-        if quantity is not None:
-            instance.quantity = quantity
         if use_count is not None:
             instance.use_count = use_count
         return instance
@@ -209,10 +195,6 @@ class EntitlementHistoryInfo(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
-        if "quantity" in dict_ and dict_["quantity"] is not None:
-            instance.quantity = int(dict_["quantity"])
-        elif include_empty:
-            instance.quantity = int()
         if "useCount" in dict_ and dict_["useCount"] is not None:
             instance.use_count = int(dict_["useCount"])
         elif include_empty:
@@ -229,7 +211,6 @@ class EntitlementHistoryInfo(Model):
             "operator": "operator",
             "updatedAt": "updated_at",
             "userId": "user_id",
-            "quantity": "quantity",
             "useCount": "use_count",
         }
 

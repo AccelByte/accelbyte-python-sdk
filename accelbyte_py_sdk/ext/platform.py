@@ -1,8 +1,8 @@
-# justice-platform-service (3.39.0)
+# justice-platform-service (3.40.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -63,8 +63,6 @@ from ..api.platform.models import CurrencySummary
 from ..api.platform.models import CurrencyUpdate
 from ..api.platform.models import Customization
 from ..api.platform.models import DebitRequest
-from ..api.platform.models import DistributionReceiverCreate
-from ..api.platform.models import DistributionReceiverInfo
 from ..api.platform.models import EntitlementDecrement
 from ..api.platform.models import EntitlementGrant
 from ..api.platform.models import EntitlementHistoryInfo
@@ -97,7 +95,6 @@ from ..api.platform.models import FullAppInfo
 from ..api.platform.models import FullCategoryInfo
 from ..api.platform.models import FullItemInfo
 from ..api.platform.models import FullItemPagingSlicedResult
-from ..api.platform.models import GameServerConfig
 from ..api.platform.models import GoogleIAPConfigInfo
 from ..api.platform.models import GoogleIAPConfigRequest
 from ..api.platform.models import GoogleIAPReceipt
@@ -144,6 +141,8 @@ from ..api.platform.models import OwnershipToken
 from ..api.platform.models import Paging
 from ..api.platform.models import PayPalConfig
 from ..api.platform.models import PaymentAccount
+from ..api.platform.models import PaymentCallbackConfigInfo
+from ..api.platform.models import PaymentCallbackConfigUpdate
 from ..api.platform.models import PaymentMerchantConfigInfo
 from ..api.platform.models import PaymentMethod
 from ..api.platform.models import PaymentNotificationInfo
@@ -173,6 +172,7 @@ from ..api.platform.models import PaymentUrl
 from ..api.platform.models import PaymentUrlCreate
 from ..api.platform.models import PlatformSubscribeRequest
 from ..api.platform.models import PlayStationIAPConfigInfo
+from ..api.platform.models import PlayStationReconcileRequest
 from ..api.platform.models import PlayStationReconcileResult
 from ..api.platform.models import PlaystationIAPConfigRequest
 from ..api.platform.models import PopulatedItemInfo
@@ -690,21 +690,6 @@ def create_debit_request_example() -> DebitRequest:
     return instance
 
 
-def create_distribution_receiver_create_example() -> DistributionReceiverCreate:
-    instance = DistributionReceiverCreate()
-    instance.attributes = {randomize(): randomize()}
-    return instance
-
-
-def create_distribution_receiver_info_example() -> DistributionReceiverInfo:
-    instance = DistributionReceiverInfo()
-    instance.ext_user_id = randomize()
-    instance.namespace = randomize("slug")
-    instance.user_id = randomize("uid")
-    instance.attributes = {randomize(): randomize()}
-    return instance
-
-
 def create_entitlement_decrement_example() -> EntitlementDecrement:
     instance = EntitlementDecrement()
     instance.use_count = randomize("int", min_val=1, max_val=1000)
@@ -735,7 +720,6 @@ def create_entitlement_history_info_example() -> EntitlementHistoryInfo:
     instance.operator = randomize()
     instance.updated_at = randomize("date")
     instance.user_id = randomize("uid")
-    instance.quantity = randomize("int", min_val=1, max_val=1000)
     instance.use_count = randomize("int", min_val=1, max_val=1000)
     return instance
 
@@ -757,17 +741,14 @@ def create_entitlement_info_example() -> EntitlementInfo:
     instance.user_id = randomize("uid")
     instance.app_id = randomize("uid")
     instance.app_type = randomize()
-    instance.distributed_quantity = randomize("int", min_val=1, max_val=1000)
     instance.end_date = randomize("date")
     instance.features = [randomize()]
     instance.granted_code = randomize()
     instance.item_snapshot = create_item_snapshot_example()
-    instance.quantity = randomize("int", min_val=1, max_val=1000)
     instance.sku = randomize("slug")
     instance.stackable = randomize("bool")
     instance.start_date = randomize("date")
     instance.store_id = randomize()
-    instance.target_namespace = randomize("slug")
     instance.use_count = randomize("int", min_val=1, max_val=1000)
     return instance
 
@@ -792,7 +773,6 @@ def create_entitlement_summary_example() -> EntitlementSummary:
     instance.granted_code = randomize()
     instance.item_id = randomize()
     instance.stackable = randomize("bool")
-    instance.stacked_quantity = randomize("int", min_val=1, max_val=1000)
     instance.stacked_use_count = randomize("int", min_val=1, max_val=1000)
     instance.start_date = randomize("date")
     instance.store_id = randomize()
@@ -803,7 +783,6 @@ def create_entitlement_update_example() -> EntitlementUpdate:
     instance = EntitlementUpdate()
     instance.end_date = randomize("date")
     instance.null_field_list = [randomize()]
-    instance.quantity = randomize("int", min_val=1, max_val=1000)
     instance.start_date = randomize("date")
     instance.status = randomize()
     instance.use_count = randomize("int", min_val=1, max_val=1000)
@@ -1089,14 +1068,6 @@ def create_full_item_paging_sliced_result_example() -> FullItemPagingSlicedResul
     instance = FullItemPagingSlicedResult()
     instance.data = [create_full_item_info_example()]
     instance.paging = create_paging_example()
-    return instance
-
-
-def create_game_server_config_example() -> GameServerConfig:
-    instance = GameServerConfig()
-    instance.dry_run = randomize("bool")
-    instance.notify_url = randomize("url")
-    instance.private_key = randomize()
     return instance
 
 
@@ -1700,6 +1671,23 @@ def create_payment_account_example() -> PaymentAccount:
     return instance
 
 
+def create_payment_callback_config_info_example() -> PaymentCallbackConfigInfo:
+    instance = PaymentCallbackConfigInfo()
+    instance.namespace = randomize("slug")
+    instance.dry_run = randomize("bool")
+    instance.notify_url = randomize("url")
+    instance.private_key = randomize()
+    return instance
+
+
+def create_payment_callback_config_update_example() -> PaymentCallbackConfigUpdate:
+    instance = PaymentCallbackConfigUpdate()
+    instance.dry_run = randomize("bool")
+    instance.notify_url = randomize("url")
+    instance.private_key = randomize()
+    return instance
+
+
 def create_payment_merchant_config_info_example() -> PaymentMerchantConfigInfo:
     instance = PaymentMerchantConfigInfo()
     instance.created_at = randomize("date")
@@ -2084,6 +2072,12 @@ def create_play_station_iap_config_info_example() -> PlayStationIAPConfigInfo:
     return instance
 
 
+def create_play_station_reconcile_request_example() -> PlayStationReconcileRequest:
+    instance = PlayStationReconcileRequest()
+    instance.service_label = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
 def create_play_station_reconcile_result_example() -> PlayStationReconcileResult:
     instance = PlayStationReconcileResult()
     instance.item_id = randomize()
@@ -2333,19 +2327,15 @@ def create_stackable_entitlement_info_example() -> StackableEntitlementInfo:
     instance.user_id = randomize("uid")
     instance.app_id = randomize("uid")
     instance.app_type = randomize()
-    instance.distributed_quantity = randomize("int", min_val=1, max_val=1000)
     instance.end_date = randomize("date")
     instance.features = [randomize()]
     instance.granted_code = randomize()
     instance.item_snapshot = create_item_snapshot_example()
-    instance.quantity = randomize("int", min_val=1, max_val=1000)
     instance.sku = randomize("slug")
     instance.stackable = randomize("bool")
-    instance.stacked_quantity = randomize("int", min_val=1, max_val=1000)
     instance.stacked_use_count = randomize("int", min_val=1, max_val=1000)
     instance.start_date = randomize("date")
     instance.store_id = randomize()
-    instance.target_namespace = randomize("slug")
     instance.use_count = randomize("int", min_val=1, max_val=1000)
     return instance
 

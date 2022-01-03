@@ -1,6 +1,6 @@
 """Auto-generated top-level package for the justice-platform-service."""
 
-__version__ = "3.39.0"
+__version__ = "3.40.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -105,10 +105,6 @@ from .wrappers import update_currency_async
 # entitlement
 from .wrappers import consume_user_entitlement
 from .wrappers import consume_user_entitlement_async
-from .wrappers import create_user_distribution_receiver
-from .wrappers import create_user_distribution_receiver_async
-from .wrappers import delete_user_distribution_receiver
-from .wrappers import delete_user_distribution_receiver_async
 from .wrappers import disable_user_entitlement
 from .wrappers import disable_user_entitlement_async
 from .wrappers import enable_user_entitlement
@@ -123,8 +119,6 @@ from .wrappers import get_user_app_entitlement_by_app_id
 from .wrappers import get_user_app_entitlement_by_app_id_async
 from .wrappers import get_user_app_entitlement_ownership_by_app_id
 from .wrappers import get_user_app_entitlement_ownership_by_app_id_async
-from .wrappers import get_user_distribution_receivers
-from .wrappers import get_user_distribution_receivers_async
 from .wrappers import get_user_entitlement
 from .wrappers import get_user_entitlement_async
 from .wrappers import get_user_entitlement_by_item_id
@@ -141,12 +135,6 @@ from .wrappers import grant_user_entitlement
 from .wrappers import grant_user_entitlement_async
 from .wrappers import public_consume_user_entitlement
 from .wrappers import public_consume_user_entitlement_async
-from .wrappers import public_create_user_distribution_receiver
-from .wrappers import public_create_user_distribution_receiver_async
-from .wrappers import public_delete_user_distribution_receiver
-from .wrappers import public_delete_user_distribution_receiver_async
-from .wrappers import public_distribute_user_distribution
-from .wrappers import public_distribute_user_distribution_async
 from .wrappers import public_exists_any_my_active_entitlement
 from .wrappers import public_exists_any_my_active_entitlement_async
 from .wrappers import public_exists_any_user_active_entitlement
@@ -163,8 +151,6 @@ from .wrappers import public_get_user_app_entitlement_by_app_id
 from .wrappers import public_get_user_app_entitlement_by_app_id_async
 from .wrappers import public_get_user_app_entitlement_ownership_by_app_id
 from .wrappers import public_get_user_app_entitlement_ownership_by_app_id_async
-from .wrappers import public_get_user_distribution_receivers
-from .wrappers import public_get_user_distribution_receivers_async
 from .wrappers import public_get_user_entitlement
 from .wrappers import public_get_user_entitlement_async
 from .wrappers import public_get_user_entitlement_by_item_id
@@ -179,8 +165,6 @@ from .wrappers import public_query_user_entitlements
 from .wrappers import public_query_user_entitlements_async
 from .wrappers import public_query_user_entitlements_by_app_type
 from .wrappers import public_query_user_entitlements_by_app_type_async
-from .wrappers import public_update_user_distribution_receiver
-from .wrappers import public_update_user_distribution_receiver_async
 from .wrappers import query_entitlements
 from .wrappers import query_entitlements_async
 from .wrappers import query_user_entitlements
@@ -191,8 +175,6 @@ from .wrappers import revoke_user_entitlement
 from .wrappers import revoke_user_entitlement_async
 from .wrappers import revoke_user_entitlements
 from .wrappers import revoke_user_entitlements_async
-from .wrappers import update_user_distribution_receiver
-from .wrappers import update_user_distribution_receiver_async
 from .wrappers import update_user_entitlement
 from .wrappers import update_user_entitlement_async
 
@@ -285,12 +267,6 @@ from .wrappers import update_xbl_bp_cert_file
 from .wrappers import update_xbl_bp_cert_file_async
 from .wrappers import update_xbl_iap_config
 from .wrappers import update_xbl_iap_config_async
-
-# integration
-from .wrappers import get_game_server_config
-from .wrappers import get_game_server_config_async
-from .wrappers import update_game_server_config
-from .wrappers import update_game_server_config_async
 
 # item
 from .wrappers import acquire_item
@@ -443,6 +419,12 @@ from .wrappers import public_delete_payment_account
 from .wrappers import public_delete_payment_account_async
 from .wrappers import public_get_payment_accounts
 from .wrappers import public_get_payment_accounts_async
+
+# payment_callback_config
+from .wrappers import get_payment_callback_config
+from .wrappers import get_payment_callback_config_async
+from .wrappers import update_payment_callback_config
+from .wrappers import update_payment_callback_config_async
 
 # payment_config
 from .wrappers import create_payment_provider_config

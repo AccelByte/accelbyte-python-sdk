@@ -1,8 +1,8 @@
-# justice-ds-log-manager-service (1.4.0)
+# justice-ds-log-manager-service (1.4.1)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -23,6 +23,8 @@
 from .utils import randomize
 
 from ..api.dslogmanager.models import LogAppMessageDeclaration
+from ..api.dslogmanager.models import ModelsBatchDownloadLogsRequest
+from ..api.dslogmanager.models import ModelsDownloadLogsRequest
 from ..api.dslogmanager.models import ModelsListTerminatedServersResponse
 from ..api.dslogmanager.models import ModelsLogFileStatus
 from ..api.dslogmanager.models import ModelsMatchResult
@@ -44,6 +46,20 @@ def create_log_app_message_declaration_example() -> LogAppMessageDeclaration:
     instance.section = randomize()
     instance.service = randomize()
     instance.text = randomize()
+    return instance
+
+
+def create_models_batch_download_logs_request_example() -> ModelsBatchDownloadLogsRequest:
+    instance = ModelsBatchDownloadLogsRequest()
+    instance.downloads = [create_models_download_logs_request_example()]
+    return instance
+
+
+def create_models_download_logs_request_example() -> ModelsDownloadLogsRequest:
+    instance = ModelsDownloadLogsRequest()
+    instance.alloc_id = randomize()
+    instance.namespace = randomize("slug")
+    instance.pod_name = randomize()
     return instance
 
 

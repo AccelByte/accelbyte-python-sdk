@@ -1,6 +1,6 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-cloudsave-service Index (1.9.1)
+# justice-cloudsave-service Index (1.9.2)
 
 
 ## Operations
@@ -25,6 +25,7 @@
 | /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key} | POST | adminPostPlayerRecordHandlerV1 | [AdminPostPlayerRecordHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/admin_player_record/admin_post_player_record_handler_v1.py) | [admin_post_player_record_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_player_record.py) |
 | /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}/public | PUT | adminPutPlayerPublicRecordHandlerV1 | [AdminPutPlayerPublicRecordHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/admin_player_record/admin_put_player_public_record_handler_v1.py) | [admin_put_player_public_record_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_player_record.py) |
 | /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key} | PUT | adminPutPlayerRecordHandlerV1 | [AdminPutPlayerRecordHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/admin_player_record/admin_put_player_record_handler_v1.py) | [admin_put_player_record_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_player_record.py) |
+| /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records | GET | AdminRetrievePlayerRecords | [AdminRetrievePlayerRecords](../accelbyte_py_sdk/api/cloudsave/operations/admin_player_record/admin_retrieve_player_records.py) | [admin_retrieve_player_records](../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_player_record.py) |
 | /cloudsave/v1/admin/namespaces/{namespace}/users/records | GET | listPlayerRecordHandlerV1 | [ListPlayerRecordHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/admin_player_record/list_player_record_handler_v1.py) | [list_player_record_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_player_record.py) |
 
 ### ConcurrentRecord

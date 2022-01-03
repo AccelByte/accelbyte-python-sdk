@@ -1,8 +1,8 @@
-# justice-iam-service (4.9.0)
+# justice-iam-service (4.10.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -34,7 +34,7 @@ class GetPublisherUser(Operation):
     """Get Publisher User (GetPublisherUser)
 
     <p>Required permissions 'NAMESPACE:{namespace}:PUBLISHER:USER:{userId}
-    [GET].</p> <p><strong>Restriction:</strong> Path Parameter
+    [READ].</p> <p><strong>Restriction:</strong> Path Parameter
     <strong>namespace</strong> can be provided only with game namespace</p>
 
 

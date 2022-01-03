@@ -1,6 +1,6 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-platform-service Index (3.39.0)
+# justice-platform-service Index (3.40.0)
 
 
 ## Operations
@@ -68,8 +68,6 @@
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/decrement | PUT | consumeUserEntitlement | [ConsumeUserEntitlement](../accelbyte_py_sdk/api/platform/operations/entitlement/consume_user_entitlement.py) | [consume_user_entitlement](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
-| /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/receivers/{extUserId} | POST | createUserDistributionReceiver | [CreateUserDistributionReceiver](../accelbyte_py_sdk/api/platform/operations/entitlement/create_user_distribution_receiver.py) | [create_user_distribution_receiver](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
-| /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/receivers/{extUserId} | DELETE | deleteUserDistributionReceiver | [DeleteUserDistributionReceiver](../accelbyte_py_sdk/api/platform/operations/entitlement/delete_user_distribution_receiver.py) | [delete_user_distribution_receiver](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/disable | PUT | disableUserEntitlement | [DisableUserEntitlement](../accelbyte_py_sdk/api/platform/operations/entitlement/disable_user_entitlement.py) | [disable_user_entitlement](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/enable | PUT | enableUserEntitlement | [EnableUserEntitlement](../accelbyte_py_sdk/api/platform/operations/entitlement/enable_user_entitlement.py) | [enable_user_entitlement](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/ownership/any | GET | existsAnyUserActiveEntitlement | [ExistsAnyUserActiveEntitlement](../accelbyte_py_sdk/api/platform/operations/entitlement/exists_any_user_active_entitlement.py) | [exists_any_user_active_entitlement](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
@@ -77,7 +75,6 @@
 | /platform/admin/namespaces/{namespace}/entitlements/{entitlementId} | GET | getEntitlement | [GetEntitlement](../accelbyte_py_sdk/api/platform/operations/entitlement/get_entitlement.py) | [get_entitlement](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/byAppId | GET | getUserAppEntitlementByAppId | [GetUserAppEntitlementByAppId](../accelbyte_py_sdk/api/platform/operations/entitlement/get_user_app_entitlement_by_app_id.py) | [get_user_app_entitlement_by_app_id](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/ownership/byAppId | GET | getUserAppEntitlementOwnershipByAppId | [GetUserAppEntitlementOwnershipByAppId](../accelbyte_py_sdk/api/platform/operations/entitlement/get_user_app_entitlement_ownership_by_app_id.py) | [get_user_app_entitlement_ownership_by_app_id](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
-| /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/receivers | GET | getUserDistributionReceivers | [GetUserDistributionReceivers](../accelbyte_py_sdk/api/platform/operations/entitlement/get_user_distribution_receivers.py) | [get_user_distribution_receivers](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId} | GET | getUserEntitlement | [GetUserEntitlement](../accelbyte_py_sdk/api/platform/operations/entitlement/get_user_entitlement.py) | [get_user_entitlement](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/byItemId | GET | getUserEntitlementByItemId | [GetUserEntitlementByItemId](../accelbyte_py_sdk/api/platform/operations/entitlement/get_user_entitlement_by_item_id.py) | [get_user_entitlement_by_item_id](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/bySku | GET | getUserEntitlementBySku | [GetUserEntitlementBySku](../accelbyte_py_sdk/api/platform/operations/entitlement/get_user_entitlement_by_sku.py) | [get_user_entitlement_by_sku](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
@@ -86,9 +83,6 @@
 | /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/ownership/bySku | GET | getUserEntitlementOwnershipBySku | [GetUserEntitlementOwnershipBySku](../accelbyte_py_sdk/api/platform/operations/entitlement/get_user_entitlement_ownership_by_sku.py) | [get_user_entitlement_ownership_by_sku](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/entitlements | POST | grantUserEntitlement | [GrantUserEntitlement](../accelbyte_py_sdk/api/platform/operations/entitlement/grant_user_entitlement.py) | [grant_user_entitlement](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/decrement | PUT | publicConsumeUserEntitlement | [PublicConsumeUserEntitlement](../accelbyte_py_sdk/api/platform/operations/entitlement/public_consume_user_entitlement.py) | [public_consume_user_entitlement](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
-| /platform/public/namespaces/{namespace}/users/{userId}/entitlements/receivers/{extUserId} | POST | publicCreateUserDistributionReceiver | [PublicCreateUserDistributionReceiver](../accelbyte_py_sdk/api/platform/operations/entitlement/public_create_user_distribution_receiver.py) | [public_create_user_distribution_receiver](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
-| /platform/public/namespaces/{namespace}/users/{userId}/entitlements/receivers/{extUserId} | DELETE | publicDeleteUserDistributionReceiver | [PublicDeleteUserDistributionReceiver](../accelbyte_py_sdk/api/platform/operations/entitlement/public_delete_user_distribution_receiver.py) | [public_delete_user_distribution_receiver](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
-| /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/distribute | PUT | publicDistributeUserDistribution | [PublicDistributeUserDistribution](../accelbyte_py_sdk/api/platform/operations/entitlement/public_distribute_user_distribution.py) | [public_distribute_user_distribution](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/public/namespaces/{namespace}/users/me/entitlements/ownership/any | GET | publicExistsAnyMyActiveEntitlement | [PublicExistsAnyMyActiveEntitlement](../accelbyte_py_sdk/api/platform/operations/entitlement/public_exists_any_my_active_entitlement.py) | [public_exists_any_my_active_entitlement](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/entitlements/ownership/any | GET | publicExistsAnyUserActiveEntitlement | [PublicExistsAnyUserActiveEntitlement](../accelbyte_py_sdk/api/platform/operations/entitlement/public_exists_any_user_active_entitlement.py) | [public_exists_any_user_active_entitlement](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/public/namespaces/{namespace}/users/me/entitlements/ownershipToken | GET | publicGetEntitlementOwnershipToken | [PublicGetEntitlementOwnershipToken](../accelbyte_py_sdk/api/platform/operations/entitlement/public_get_entitlement_ownership_token.py) | [public_get_entitlement_ownership_token](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
@@ -97,7 +91,6 @@
 | /platform/public/namespaces/{namespace}/users/me/entitlements/ownership/bySku | GET | publicGetMyEntitlementOwnershipBySku | [PublicGetMyEntitlementOwnershipBySku](../accelbyte_py_sdk/api/platform/operations/entitlement/public_get_my_entitlement_ownership_by_sku.py) | [public_get_my_entitlement_ownership_by_sku](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/entitlements/byAppId | GET | publicGetUserAppEntitlementByAppId | [PublicGetUserAppEntitlementByAppId](../accelbyte_py_sdk/api/platform/operations/entitlement/public_get_user_app_entitlement_by_app_id.py) | [public_get_user_app_entitlement_by_app_id](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/entitlements/ownership/byAppId | GET | publicGetUserAppEntitlementOwnershipByAppId | [PublicGetUserAppEntitlementOwnershipByAppId](../accelbyte_py_sdk/api/platform/operations/entitlement/public_get_user_app_entitlement_ownership_by_app_id.py) | [public_get_user_app_entitlement_ownership_by_app_id](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
-| /platform/public/namespaces/{namespace}/users/{userId}/entitlements/receivers | GET | publicGetUserDistributionReceivers | [PublicGetUserDistributionReceivers](../accelbyte_py_sdk/api/platform/operations/entitlement/public_get_user_distribution_receivers.py) | [public_get_user_distribution_receivers](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId} | GET | publicGetUserEntitlement | [PublicGetUserEntitlement](../accelbyte_py_sdk/api/platform/operations/entitlement/public_get_user_entitlement.py) | [public_get_user_entitlement](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/entitlements/byItemId | GET | publicGetUserEntitlementByItemId | [PublicGetUserEntitlementByItemId](../accelbyte_py_sdk/api/platform/operations/entitlement/public_get_user_entitlement_by_item_id.py) | [public_get_user_entitlement_by_item_id](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/entitlements/bySku | GET | publicGetUserEntitlementBySku | [PublicGetUserEntitlementBySku](../accelbyte_py_sdk/api/platform/operations/entitlement/public_get_user_entitlement_by_sku.py) | [public_get_user_entitlement_by_sku](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
@@ -105,13 +98,11 @@
 | /platform/public/namespaces/{namespace}/users/{userId}/entitlements/ownership/bySku | GET | publicGetUserEntitlementOwnershipBySku | [PublicGetUserEntitlementOwnershipBySku](../accelbyte_py_sdk/api/platform/operations/entitlement/public_get_user_entitlement_ownership_by_sku.py) | [public_get_user_entitlement_ownership_by_sku](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/entitlements | GET | publicQueryUserEntitlements | [PublicQueryUserEntitlements](../accelbyte_py_sdk/api/platform/operations/entitlement/public_query_user_entitlements.py) | [public_query_user_entitlements](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/entitlements/byAppType | GET | publicQueryUserEntitlementsByAppType | [PublicQueryUserEntitlementsByAppType](../accelbyte_py_sdk/api/platform/operations/entitlement/public_query_user_entitlements_by_app_type.py) | [public_query_user_entitlements_by_app_type](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
-| /platform/public/namespaces/{namespace}/users/{userId}/entitlements/receivers/{extUserId} | PUT | publicUpdateUserDistributionReceiver | [PublicUpdateUserDistributionReceiver](../accelbyte_py_sdk/api/platform/operations/entitlement/public_update_user_distribution_receiver.py) | [public_update_user_distribution_receiver](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/admin/namespaces/{namespace}/entitlements | GET | queryEntitlements | [QueryEntitlements](../accelbyte_py_sdk/api/platform/operations/entitlement/query_entitlements.py) | [query_entitlements](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/entitlements | GET | queryUserEntitlements | [QueryUserEntitlements](../accelbyte_py_sdk/api/platform/operations/entitlement/query_user_entitlements.py) | [query_user_entitlements](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/byAppType | GET | queryUserEntitlementsByAppType | [QueryUserEntitlementsByAppType](../accelbyte_py_sdk/api/platform/operations/entitlement/query_user_entitlements_by_app_type.py) | [query_user_entitlements_by_app_type](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/revoke | PUT | revokeUserEntitlement | [RevokeUserEntitlement](../accelbyte_py_sdk/api/platform/operations/entitlement/revoke_user_entitlement.py) | [revoke_user_entitlement](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/revoke/byIds | PUT | revokeUserEntitlements | [RevokeUserEntitlements](../accelbyte_py_sdk/api/platform/operations/entitlement/revoke_user_entitlements.py) | [revoke_user_entitlements](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
-| /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/receivers/{extUserId} | PUT | updateUserDistributionReceiver | [UpdateUserDistributionReceiver](../accelbyte_py_sdk/api/platform/operations/entitlement/update_user_distribution_receiver.py) | [update_user_distribution_receiver](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId} | PUT | updateUserEntitlement | [UpdateUserEntitlement](../accelbyte_py_sdk/api/platform/operations/entitlement/update_user_entitlement.py) | [update_user_entitlement](../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) |
 
 ### Fulfillment
@@ -167,12 +158,6 @@
 | /platform/admin/namespaces/{namespace}/iap/config/steam | PUT | updateSteamIAPConfig | [UpdateSteamIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/update_steam_iap_config.py) | [update_steam_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/xbl/cert | PUT | updateXblBPCertFile | [UpdateXblBPCertFile](../accelbyte_py_sdk/api/platform/operations/iap/update_xbl_bp_cert_file.py) | [update_xbl_bp_cert_file](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/xbl | PUT | updateXblIAPConfig | [UpdateXblIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/update_xbl_iap_config.py) | [update_xbl_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
-
-### Integration
-| Endpoint | Method | ID | Class | Wrapper |
-|---|---|---|---|---|
-| /platform/admin/namespaces/{namespace}/integrations/gameserverconfig | GET | getGameServerConfig | [GetGameServerConfig](../accelbyte_py_sdk/api/platform/operations/integration/get_game_server_config.py) | [get_game_server_config](../accelbyte_py_sdk/api/platform/wrappers/_integration.py) |
-| /platform/admin/namespaces/{namespace}/integrations/gameserverconfig | PUT | updateGameServerConfig | [UpdateGameServerConfig](../accelbyte_py_sdk/api/platform/operations/integration/update_game_server_config.py) | [update_game_server_config](../accelbyte_py_sdk/api/platform/wrappers/_integration.py) |
 
 ### Item
 | Endpoint | Method | ID | Class | Wrapper |
@@ -267,6 +252,12 @@
 |---|---|---|---|---|
 | /platform/public/namespaces/{namespace}/users/{userId}/payment/accounts/{type}/{id} | DELETE | publicDeletePaymentAccount | [PublicDeletePaymentAccount](../accelbyte_py_sdk/api/platform/operations/payment_account/public_delete_payment_account.py) | [public_delete_payment_account](../accelbyte_py_sdk/api/platform/wrappers/_payment_account.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/payment/accounts | GET | publicGetPaymentAccounts | [PublicGetPaymentAccounts](../accelbyte_py_sdk/api/platform/operations/payment_account/public_get_payment_accounts.py) | [public_get_payment_accounts](../accelbyte_py_sdk/api/platform/wrappers/_payment_account.py) |
+
+### PaymentCallbackConfig
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
+| /platform/admin/namespaces/{namespace}/payment/config/callback | GET | getPaymentCallbackConfig | [GetPaymentCallbackConfig](../accelbyte_py_sdk/api/platform/operations/payment_callback_config/get_payment_callback_config.py) | [get_payment_callback_config](../accelbyte_py_sdk/api/platform/wrappers/_payment_callback_config.py) |
+| /platform/admin/namespaces/{namespace}/payment/config/callback | PUT | updatePaymentCallbackConfig | [UpdatePaymentCallbackConfig](../accelbyte_py_sdk/api/platform/operations/payment_callback_config/update_payment_callback_config.py) | [update_payment_callback_config](../accelbyte_py_sdk/api/platform/wrappers/_payment_callback_config.py) |
 
 ### PaymentConfig
 | Endpoint | Method | ID | Class | Wrapper |
@@ -453,8 +444,6 @@
 | CurrencyUpdate | [CurrencyUpdate](../accelbyte_py_sdk/api/platform/models/currency_update.py) |
 | Customization | [Customization](../accelbyte_py_sdk/api/platform/models/customization.py) |
 | DebitRequest | [DebitRequest](../accelbyte_py_sdk/api/platform/models/debit_request.py) |
-| DistributionReceiverCreate | [DistributionReceiverCreate](../accelbyte_py_sdk/api/platform/models/distribution_receiver_create.py) |
-| DistributionReceiverInfo | [DistributionReceiverInfo](../accelbyte_py_sdk/api/platform/models/distribution_receiver_info.py) |
 | EntitlementDecrement | [EntitlementDecrement](../accelbyte_py_sdk/api/platform/models/entitlement_decrement.py) |
 | EntitlementGrant | [EntitlementGrant](../accelbyte_py_sdk/api/platform/models/entitlement_grant.py) |
 | EntitlementHistoryInfo | [EntitlementHistoryInfo](../accelbyte_py_sdk/api/platform/models/entitlement_history_info.py) |
@@ -487,7 +476,6 @@
 | FullCategoryInfo | [FullCategoryInfo](../accelbyte_py_sdk/api/platform/models/full_category_info.py) |
 | FullItemInfo | [FullItemInfo](../accelbyte_py_sdk/api/platform/models/full_item_info.py) |
 | FullItemPagingSlicedResult | [FullItemPagingSlicedResult](../accelbyte_py_sdk/api/platform/models/full_item_paging_sliced_result.py) |
-| GameServerConfig | [GameServerConfig](../accelbyte_py_sdk/api/platform/models/game_server_config.py) |
 | GoogleIAPConfigInfo | [GoogleIAPConfigInfo](../accelbyte_py_sdk/api/platform/models/google_iap_config_info.py) |
 | GoogleIAPConfigRequest | [GoogleIAPConfigRequest](../accelbyte_py_sdk/api/platform/models/google_iap_config_request.py) |
 | GoogleIAPReceipt | [GoogleIAPReceipt](../accelbyte_py_sdk/api/platform/models/google_iap_receipt.py) |
@@ -534,6 +522,8 @@
 | Paging | [Paging](../accelbyte_py_sdk/api/platform/models/paging.py) |
 | PayPalConfig | [PayPalConfig](../accelbyte_py_sdk/api/platform/models/pay_pal_config.py) |
 | PaymentAccount | [PaymentAccount](../accelbyte_py_sdk/api/platform/models/payment_account.py) |
+| PaymentCallbackConfigInfo | [PaymentCallbackConfigInfo](../accelbyte_py_sdk/api/platform/models/payment_callback_config_info.py) |
+| PaymentCallbackConfigUpdate | [PaymentCallbackConfigUpdate](../accelbyte_py_sdk/api/platform/models/payment_callback_config_update.py) |
 | PaymentMerchantConfigInfo | [PaymentMerchantConfigInfo](../accelbyte_py_sdk/api/platform/models/payment_merchant_config_info.py) |
 | PaymentMethod | [PaymentMethod](../accelbyte_py_sdk/api/platform/models/payment_method.py) |
 | PaymentNotificationInfo | [PaymentNotificationInfo](../accelbyte_py_sdk/api/platform/models/payment_notification_info.py) |
@@ -563,6 +553,7 @@
 | PaymentUrlCreate | [PaymentUrlCreate](../accelbyte_py_sdk/api/platform/models/payment_url_create.py) |
 | PlatformSubscribeRequest | [PlatformSubscribeRequest](../accelbyte_py_sdk/api/platform/models/platform_subscribe_request.py) |
 | PlayStationIAPConfigInfo | [PlayStationIAPConfigInfo](../accelbyte_py_sdk/api/platform/models/play_station_iap_config_info.py) |
+| PlayStationReconcileRequest | [PlayStationReconcileRequest](../accelbyte_py_sdk/api/platform/models/play_station_reconcile_request.py) |
 | PlayStationReconcileResult | [PlayStationReconcileResult](../accelbyte_py_sdk/api/platform/models/play_station_reconcile_result.py) |
 | PlaystationIAPConfigRequest | [PlaystationIAPConfigRequest](../accelbyte_py_sdk/api/platform/models/playstation_iap_config_request.py) |
 | PopulatedItemInfo | [PopulatedItemInfo](../accelbyte_py_sdk/api/platform/models/populated_item_info.py) |

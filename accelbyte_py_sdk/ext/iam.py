@@ -1,8 +1,8 @@
-# justice-iam-service (4.9.0)
+# justice-iam-service (4.10.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -109,6 +109,7 @@ from ..api.iam.models import ModelGetUserJusticePlatformAccountResponse
 from ..api.iam.models import ModelGetUserMapping
 from ..api.iam.models import ModelGetUsersResponseWithPaginationV3
 from ..api.iam.models import ModelInviteUserRequestV3
+from ..api.iam.models import ModelInviteUserRequestV4
 from ..api.iam.models import ModelInviteUserResponseV3
 from ..api.iam.models import ModelLinkPlatformAccountRequest
 from ..api.iam.models import ModelLinkRequest
@@ -960,6 +961,15 @@ def create_model_invite_user_request_v3_example() -> ModelInviteUserRequestV3:
     instance.email_addresses = [randomize()]
     instance.is_admin = randomize("bool")
     instance.roles = [randomize()]
+    return instance
+
+
+def create_model_invite_user_request_v4_example() -> ModelInviteUserRequestV4:
+    instance = ModelInviteUserRequestV4()
+    instance.assigned_namespaces = [randomize()]
+    instance.email_addresses = [randomize()]
+    instance.is_admin = randomize("bool")
+    instance.role_id = randomize("uid")
     return instance
 
 

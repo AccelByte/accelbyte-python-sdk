@@ -10,7 +10,7 @@
 |---|---|---|---|---|
 | /lobby/v1/admin/chat/namespaces/{namespace}/users/{userId}/friends/{friendId} | GET | adminChatHistory | [AdminChatHistory](../accelbyte_py_sdk/api/lobby/operations/chat/admin_chat_history.py) | [admin_chat_history](../accelbyte_py_sdk/api/lobby/wrappers/_chat.py) |
 | /lobby/v1/public/chat/namespaces/{namespace}/users/me/friends/{friendId} | GET | getPersonalChatHistoryV1Public | [GetPersonalChatHistoryV1Public](../accelbyte_py_sdk/api/lobby/operations/chat/get_personal_chat_history_v1_public.py) | [get_personal_chat_history_v1_public](../accelbyte_py_sdk/api/lobby/wrappers/_chat.py) |
-| /chat/namespaces/{namespace}/users/{userId}/friend/{friendId} | GET | personalChatHistory | [PersonalChatHistory](../accelbyte_py_sdk/api/lobby/operations/chat/personal_chat_history.py) | [personal_chat_history](../accelbyte_py_sdk/api/lobby/wrappers/_chat.py) |
+| /lobby/chat/namespaces/{namespace}/users/{userId}/friend/{friendId} | GET | personalChatHistory | [PersonalChatHistory](../accelbyte_py_sdk/api/lobby/operations/chat/personal_chat_history.py) | [personal_chat_history](../accelbyte_py_sdk/api/lobby/wrappers/_chat.py) |
 
 ### config
 | Endpoint | Method | ID | Class | Wrapper |

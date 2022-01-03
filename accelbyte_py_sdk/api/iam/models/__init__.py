@@ -1,6 +1,6 @@
 """Auto-generated package that contains models used by the justice-iam-service."""
 
-__version__ = "4.9.0"
+__version__ = "4.10.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -95,6 +95,7 @@ from .model_get_user_justice_platform_account_response import ModelGetUserJustic
 from .model_get_user_mapping import ModelGetUserMapping
 from .model_get_users_response_with_pagination_v3 import ModelGetUsersResponseWithPaginationV3
 from .model_invite_user_request_v3 import ModelInviteUserRequestV3
+from .model_invite_user_request_v4 import ModelInviteUserRequestV4
 from .model_invite_user_response_v3 import ModelInviteUserResponseV3
 from .model_link_platform_account_request import ModelLinkPlatformAccountRequest
 from .model_link_request import ModelLinkRequest

@@ -2,7 +2,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -39,7 +39,7 @@ class UpdateGroupPredefinedRulePublicV1(Operation):
     the group ID of the user based on the access token and compare it with the
     group ID in path parameter. It will also check the member role of the user
     based on the access token</p> <p>If the rule action is not defined in the
-    group, it wil be added immediately to the predefined group rule</p> <p>Action
+    group, it will be added immediately to the predefined group rule</p> <p>Action
     Code: 73310</p>
 
 

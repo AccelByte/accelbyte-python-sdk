@@ -1,8 +1,8 @@
-# justice-platform-service (3.39.0)
+# justice-iam-service (4.10.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -26,49 +26,62 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
-from ...models import GameServerConfig
+from ...models import ModelInviteUserRequestV4
+from ...models import ModelInviteUserResponseV3
+from ...models import RestErrorResponse
 
 
-class UpdateGameServerConfig(Operation):
-    """Update game server configuration (updateGameServerConfig)
+class AdminInviteUserV4(Operation):
+    """Admin invite User v4 (AdminInviteUserV4)
 
-    Update game server configuration.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:INTEGRATION", action=4
-    (UPDATE)</li><li><i>Returns</i>: Game server config</li></ul>
+    Required permission 'ADMIN:USER:INVITE [CREATE] Use this endpoint to invite
+    admin or non-admin user and assign role to them. The role must be scoped to
+    namespace. An admin user can only assign role with namespaces that the admin
+    user has required permission which is same as the required permission of
+    endpoint: [AdminAddUserRoleV4]. Role is optional, if not specified then it
+    will only assign User role The invited admin will also assigned with "User"
+    role by default.
 
 
     Properties:
-        url: /platform/admin/namespaces/{namespace}/integrations/gameserverconfig
+        url: /iam/v4/admin/users/users/invite
 
-        method: PUT
+        method: POST
 
-        tags: ["Integration"]
+        tags: ["Users V4"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
         security_type: bearer
 
-        body: (body) OPTIONAL GameServerConfig in body
-
-        namespace: (namespace) REQUIRED str in path
+        body: (body) REQUIRED ModelInviteUserRequestV4 in body
 
     Responses:
-        200: OK - GameServerConfig (successful operation)
+        201: Created - ModelInviteUserResponseV3 (Created)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        404: Not Found - RestErrorResponse (10154: country not found)
+
+        409: Conflict - RestErrorResponse (10133: email already used)
+
+        422: Unprocessable Entity - RestErrorResponse (20002: validation error)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
 
-    _url: str = "/platform/admin/namespaces/{namespace}/integrations/gameserverconfig"
-    _method: str = "PUT"
-    _consumes: List[str] = ["application/json"]
+    _url: str = "/iam/v4/admin/users/users/invite"
+    _method: str = "POST"
+    _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None
 
-    body: GameServerConfig                                                                         # OPTIONAL in [body]
-    namespace: str                                                                                 # REQUIRED in [path]
+    body: ModelInviteUserRequestV4                                                                 # REQUIRED in [body]
 
     # endregion fields
 
@@ -106,13 +119,12 @@ class UpdateGameServerConfig(Operation):
         return self.create_full_url(
             url=self.url,
             base_url=base_url,
-            path_params=self.get_path_params(),
         )
 
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "namespace",
+            "body",
         ]
 
     # endregion get methods
@@ -122,24 +134,17 @@ class UpdateGameServerConfig(Operation):
     def get_all_params(self) -> dict:
         return {
             "body": self.get_body_params(),
-            "path": self.get_path_params(),
         }
 
     def get_body_params(self) -> Any:
         return self.body.to_dict()
-
-    def get_path_params(self) -> dict:
-        result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
-        return result
 
     # endregion get_x_params methods
 
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "namespace") or self.namespace is None:
+        if not hasattr(self, "body") or self.body is None:
             return False
         return True
 
@@ -147,12 +152,8 @@ class UpdateGameServerConfig(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: GameServerConfig) -> UpdateGameServerConfig:
+    def with_body(self, value: ModelInviteUserRequestV4) -> AdminInviteUserV4:
         self.body = value
-        return self
-
-    def with_namespace(self, value: str) -> UpdateGameServerConfig:
-        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -164,11 +165,7 @@ class UpdateGameServerConfig(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = GameServerConfig()
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
+            result["body"] = ModelInviteUserRequestV4()
         return result
 
     # endregion to methods
@@ -176,13 +173,33 @@ class UpdateGameServerConfig(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, GameServerConfig], Union[None, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelInviteUserResponseV3], Union[None, RestErrorResponse]]:
         """Parse the given response.
 
-        200: OK - GameServerConfig (successful operation)
+        201: Created - ModelInviteUserResponseV3 (Created)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        404: Not Found - RestErrorResponse (10154: country not found)
+
+        409: Conflict - RestErrorResponse (10133: email already used)
+
+        422: Unprocessable Entity - RestErrorResponse (20002: validation error)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
         """
-        if code == 200:
-            return GameServerConfig.create_from_dict(content), None
+        if code == 201:
+            return ModelInviteUserResponseV3.create_from_dict(content), None
+        if code == 400:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 404:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 409:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 422:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 500:
+            return None, RestErrorResponse.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
             return None, undocumented_response
@@ -195,33 +212,25 @@ class UpdateGameServerConfig(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
-        body: Optional[GameServerConfig] = None,
-    ) -> UpdateGameServerConfig:
+        body: ModelInviteUserRequestV4,
+    ) -> AdminInviteUserV4:
         instance = cls()
-        instance.namespace = namespace
-        if body is not None:
-            instance.body = body
+        instance.body = body
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> UpdateGameServerConfig:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AdminInviteUserV4:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = GameServerConfig.create_from_dict(dict_["body"], include_empty=include_empty)
+            instance.body = ModelInviteUserRequestV4.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
-            instance.body = GameServerConfig()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
+            instance.body = ModelInviteUserRequestV4()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
-            "namespace": "namespace",
         }
 
     # endregion static methods

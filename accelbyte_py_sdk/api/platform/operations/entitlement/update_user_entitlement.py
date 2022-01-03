@@ -1,8 +1,8 @@
-# justice-platform-service (3.39.0)
+# justice-platform-service (3.40.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -36,8 +36,8 @@ class UpdateUserEntitlement(Operation):
     """Update user entitlement (updateUserEntitlement)
 
     Update user entitlement. If update CONSUMABLE entitlement useCount to 0, the
-    status will be CONSUMED, if update quantity of DISTRIBUTION, the status will
-    be DISTRIBUTED.<br>Other detail info: <ul><li><i>Required permission</i>:
+    status will be CONSUMED.<br>Other detail info: <ul><li><i>Required
+    permission</i>:
     resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4
     (UPDATE)</li><li><i>Returns</i>: updated entitlement</li></ul>
 

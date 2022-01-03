@@ -1,8 +1,8 @@
-# justice-platform-service (3.39.0)
+# justice-platform-service (3.40.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -62,8 +62,6 @@ class EntitlementInfo(Model):
 
         app_type: (appType) OPTIONAL str
 
-        distributed_quantity: (distributedQuantity) OPTIONAL int
-
         end_date: (endDate) OPTIONAL str
 
         features: (features) OPTIONAL List[str]
@@ -72,8 +70,6 @@ class EntitlementInfo(Model):
 
         item_snapshot: (itemSnapshot) OPTIONAL ItemSnapshot
 
-        quantity: (quantity) OPTIONAL int
-
         sku: (sku) OPTIONAL str
 
         stackable: (stackable) OPTIONAL bool
@@ -81,8 +77,6 @@ class EntitlementInfo(Model):
         start_date: (startDate) OPTIONAL str
 
         store_id: (storeId) OPTIONAL str
-
-        target_namespace: (targetNamespace) OPTIONAL str
 
         use_count: (useCount) OPTIONAL int
     """
@@ -104,17 +98,14 @@ class EntitlementInfo(Model):
     user_id: str                                                                                   # REQUIRED
     app_id: str                                                                                    # OPTIONAL
     app_type: str                                                                                  # OPTIONAL
-    distributed_quantity: int                                                                      # OPTIONAL
     end_date: str                                                                                  # OPTIONAL
     features: List[str]                                                                            # OPTIONAL
     granted_code: str                                                                              # OPTIONAL
     item_snapshot: ItemSnapshot                                                                    # OPTIONAL
-    quantity: int                                                                                  # OPTIONAL
     sku: str                                                                                       # OPTIONAL
     stackable: bool                                                                                # OPTIONAL
     start_date: str                                                                                # OPTIONAL
     store_id: str                                                                                  # OPTIONAL
-    target_namespace: str                                                                          # OPTIONAL
     use_count: int                                                                                 # OPTIONAL
 
     # endregion fields
@@ -181,10 +172,6 @@ class EntitlementInfo(Model):
         self.app_type = value
         return self
 
-    def with_distributed_quantity(self, value: int) -> EntitlementInfo:
-        self.distributed_quantity = value
-        return self
-
     def with_end_date(self, value: str) -> EntitlementInfo:
         self.end_date = value
         return self
@@ -201,10 +188,6 @@ class EntitlementInfo(Model):
         self.item_snapshot = value
         return self
 
-    def with_quantity(self, value: int) -> EntitlementInfo:
-        self.quantity = value
-        return self
-
     def with_sku(self, value: str) -> EntitlementInfo:
         self.sku = value
         return self
@@ -219,10 +202,6 @@ class EntitlementInfo(Model):
 
     def with_store_id(self, value: str) -> EntitlementInfo:
         self.store_id = value
-        return self
-
-    def with_target_namespace(self, value: str) -> EntitlementInfo:
-        self.target_namespace = value
         return self
 
     def with_use_count(self, value: int) -> EntitlementInfo:
@@ -295,10 +274,6 @@ class EntitlementInfo(Model):
             result["appType"] = str(self.app_type)
         elif include_empty:
             result["appType"] = str()
-        if hasattr(self, "distributed_quantity"):
-            result["distributedQuantity"] = int(self.distributed_quantity)
-        elif include_empty:
-            result["distributedQuantity"] = int()
         if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
@@ -315,10 +290,6 @@ class EntitlementInfo(Model):
             result["itemSnapshot"] = self.item_snapshot.to_dict(include_empty=include_empty)
         elif include_empty:
             result["itemSnapshot"] = ItemSnapshot()
-        if hasattr(self, "quantity"):
-            result["quantity"] = int(self.quantity)
-        elif include_empty:
-            result["quantity"] = int()
         if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
@@ -335,10 +306,6 @@ class EntitlementInfo(Model):
             result["storeId"] = str(self.store_id)
         elif include_empty:
             result["storeId"] = str()
-        if hasattr(self, "target_namespace"):
-            result["targetNamespace"] = str(self.target_namespace)
-        elif include_empty:
-            result["targetNamespace"] = str()
         if hasattr(self, "use_count"):
             result["useCount"] = int(self.use_count)
         elif include_empty:
@@ -367,17 +334,14 @@ class EntitlementInfo(Model):
         user_id: str,
         app_id: Optional[str] = None,
         app_type: Optional[str] = None,
-        distributed_quantity: Optional[int] = None,
         end_date: Optional[str] = None,
         features: Optional[List[str]] = None,
         granted_code: Optional[str] = None,
         item_snapshot: Optional[ItemSnapshot] = None,
-        quantity: Optional[int] = None,
         sku: Optional[str] = None,
         stackable: Optional[bool] = None,
         start_date: Optional[str] = None,
         store_id: Optional[str] = None,
-        target_namespace: Optional[str] = None,
         use_count: Optional[int] = None,
     ) -> EntitlementInfo:
         instance = cls()
@@ -398,8 +362,6 @@ class EntitlementInfo(Model):
             instance.app_id = app_id
         if app_type is not None:
             instance.app_type = app_type
-        if distributed_quantity is not None:
-            instance.distributed_quantity = distributed_quantity
         if end_date is not None:
             instance.end_date = end_date
         if features is not None:
@@ -408,8 +370,6 @@ class EntitlementInfo(Model):
             instance.granted_code = granted_code
         if item_snapshot is not None:
             instance.item_snapshot = item_snapshot
-        if quantity is not None:
-            instance.quantity = quantity
         if sku is not None:
             instance.sku = sku
         if stackable is not None:
@@ -418,8 +378,6 @@ class EntitlementInfo(Model):
             instance.start_date = start_date
         if store_id is not None:
             instance.store_id = store_id
-        if target_namespace is not None:
-            instance.target_namespace = target_namespace
         if use_count is not None:
             instance.use_count = use_count
         return instance
@@ -489,10 +447,6 @@ class EntitlementInfo(Model):
             instance.app_type = str(dict_["appType"])
         elif include_empty:
             instance.app_type = str()
-        if "distributedQuantity" in dict_ and dict_["distributedQuantity"] is not None:
-            instance.distributed_quantity = int(dict_["distributedQuantity"])
-        elif include_empty:
-            instance.distributed_quantity = int()
         if "endDate" in dict_ and dict_["endDate"] is not None:
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
@@ -509,10 +463,6 @@ class EntitlementInfo(Model):
             instance.item_snapshot = ItemSnapshot.create_from_dict(dict_["itemSnapshot"], include_empty=include_empty)
         elif include_empty:
             instance.item_snapshot = ItemSnapshot()
-        if "quantity" in dict_ and dict_["quantity"] is not None:
-            instance.quantity = int(dict_["quantity"])
-        elif include_empty:
-            instance.quantity = int()
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:
@@ -529,10 +479,6 @@ class EntitlementInfo(Model):
             instance.store_id = str(dict_["storeId"])
         elif include_empty:
             instance.store_id = str()
-        if "targetNamespace" in dict_ and dict_["targetNamespace"] is not None:
-            instance.target_namespace = str(dict_["targetNamespace"])
-        elif include_empty:
-            instance.target_namespace = str()
         if "useCount" in dict_ and dict_["useCount"] is not None:
             instance.use_count = int(dict_["useCount"])
         elif include_empty:
@@ -557,17 +503,14 @@ class EntitlementInfo(Model):
             "userId": "user_id",
             "appId": "app_id",
             "appType": "app_type",
-            "distributedQuantity": "distributed_quantity",
             "endDate": "end_date",
             "features": "features",
             "grantedCode": "granted_code",
             "itemSnapshot": "item_snapshot",
-            "quantity": "quantity",
             "sku": "sku",
             "stackable": "stackable",
             "startDate": "start_date",
             "storeId": "store_id",
-            "targetNamespace": "target_namespace",
             "useCount": "use_count",
         }
 

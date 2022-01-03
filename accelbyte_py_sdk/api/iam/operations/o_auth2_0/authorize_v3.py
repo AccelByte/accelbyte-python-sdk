@@ -1,8 +1,8 @@
-# justice-iam-service (4.9.0)
+# justice-iam-service (4.10.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -69,7 +69,7 @@ class AuthorizeV3(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        security_type: None
 
         location query: request_id
 
@@ -99,7 +99,7 @@ class AuthorizeV3(Operation):
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _security_type: Optional[str] = None
     _location_query: str = "request_id"
 
     code_challenge: str                                                                            # OPTIONAL in [query]

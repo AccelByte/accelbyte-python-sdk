@@ -22,43 +22,67 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import ModelsBatchDownloadLogsRequest
 from ..models import ModelsListTerminatedServersResponse
 from ..models import ResponseError
 
+from ..operations.all_terminated_servers import BatchDownloadServerLogs
 from ..operations.all_terminated_servers import ListAllTerminatedServers
 
 
+@same_doc_as(BatchDownloadServerLogs)
+def batch_download_server_logs(body: ModelsBatchDownloadLogsRequest, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = BatchDownloadServerLogs.create(
+        body=body,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(BatchDownloadServerLogs)
+async def batch_download_server_logs_async(body: ModelsBatchDownloadLogsRequest, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = BatchDownloadServerLogs.create(
+        body=body,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(ListAllTerminatedServers)
-def list_all_terminated_servers(deployment: Optional[str] = None, game_mode: Optional[str] = None, limit: Optional[int] = None, namespace: Optional[str] = None, offset: Optional[int] = None, party_id: Optional[str] = None, pod_name: Optional[str] = None, provider: Optional[str] = None, region: Optional[str] = None, session_id: Optional[str] = None, user_id: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def list_all_terminated_servers(deployment: Optional[str] = None, end_date: Optional[str] = None, game_mode: Optional[str] = None, limit: Optional[int] = None, namespace: Optional[str] = None, next_: Optional[str] = None, party_id: Optional[str] = None, pod_name: Optional[str] = None, previous: Optional[str] = None, provider: Optional[str] = None, region: Optional[str] = None, session_id: Optional[str] = None, start_date: Optional[str] = None, user_id: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = ListAllTerminatedServers.create(
         deployment=deployment,
+        end_date=end_date,
         game_mode=game_mode,
         limit=limit,
         namespace=namespace,
-        offset=offset,
+        next_=next_,
         party_id=party_id,
         pod_name=pod_name,
+        previous=previous,
         provider=provider,
         region=region,
         session_id=session_id,
+        start_date=start_date,
         user_id=user_id,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ListAllTerminatedServers)
-async def list_all_terminated_servers_async(deployment: Optional[str] = None, game_mode: Optional[str] = None, limit: Optional[int] = None, namespace: Optional[str] = None, offset: Optional[int] = None, party_id: Optional[str] = None, pod_name: Optional[str] = None, provider: Optional[str] = None, region: Optional[str] = None, session_id: Optional[str] = None, user_id: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def list_all_terminated_servers_async(deployment: Optional[str] = None, end_date: Optional[str] = None, game_mode: Optional[str] = None, limit: Optional[int] = None, namespace: Optional[str] = None, next_: Optional[str] = None, party_id: Optional[str] = None, pod_name: Optional[str] = None, previous: Optional[str] = None, provider: Optional[str] = None, region: Optional[str] = None, session_id: Optional[str] = None, start_date: Optional[str] = None, user_id: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = ListAllTerminatedServers.create(
         deployment=deployment,
+        end_date=end_date,
         game_mode=game_mode,
         limit=limit,
         namespace=namespace,
-        offset=offset,
+        next_=next_,
         party_id=party_id,
         pod_name=pod_name,
+        previous=previous,
         provider=provider,
         region=region,
         session_id=session_id,
+        start_date=start_date,
         user_id=user_id,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)

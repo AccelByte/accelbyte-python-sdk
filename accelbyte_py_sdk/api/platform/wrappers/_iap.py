@@ -36,6 +36,7 @@ from ..models import GoogleIAPReceipt
 from ..models import IAPOrderPagingSlicedResult
 from ..models import MockIAPReceipt
 from ..models import PlayStationIAPConfigInfo
+from ..models import PlayStationReconcileRequest
 from ..models import PlayStationReconcileResult
 from ..models import PlaystationIAPConfigRequest
 from ..models import StadiaIAPConfigInfo
@@ -504,26 +505,28 @@ async def public_fulfill_google_iap_item_async(user_id: str, body: Optional[Goog
 
 
 @same_doc_as(PublicReconcilePlayStationStore)
-def public_reconcile_play_station_store(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_reconcile_play_station_store(user_id: str, body: Optional[PlayStationReconcileRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicReconcilePlayStationStore.create(
         user_id=user_id,
+        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicReconcilePlayStationStore)
-async def public_reconcile_play_station_store_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def public_reconcile_play_station_store_async(user_id: str, body: Optional[PlayStationReconcileRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicReconcilePlayStationStore.create(
         user_id=user_id,
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)

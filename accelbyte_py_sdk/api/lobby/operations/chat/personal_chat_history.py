@@ -2,7 +2,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -39,7 +39,7 @@ class PersonalChatHistory(Operation):
 
 
     Properties:
-        url: /chat/namespaces/{namespace}/users/{userId}/friend/{friendId}
+        url: /lobby/chat/namespaces/{namespace}/users/{userId}/friend/{friendId}
 
         method: GET
 
@@ -73,7 +73,7 @@ class PersonalChatHistory(Operation):
 
     # region fields
 
-    _url: str = "/chat/namespaces/{namespace}/users/{userId}/friend/{friendId}"
+    _url: str = "/lobby/chat/namespaces/{namespace}/users/{userId}/friend/{friendId}"
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]

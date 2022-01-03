@@ -23,27 +23,85 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ModelsListTerminatedServersResponse
+from ..models import ModelsLogFileStatus
 from ..models import ResponseError
 
+from ..operations.terminated_servers import CheckServerLogs
+from ..operations.terminated_servers import DownloadServerLogs
 from ..operations.terminated_servers import ListTerminatedServers
 
 
+@same_doc_as(CheckServerLogs)
+def check_server_logs(pod_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CheckServerLogs.create(
+        pod_name=pod_name,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(CheckServerLogs)
+async def check_server_logs_async(pod_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CheckServerLogs.create(
+        pod_name=pod_name,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(DownloadServerLogs)
+def download_server_logs(pod_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DownloadServerLogs.create(
+        pod_name=pod_name,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(DownloadServerLogs)
+async def download_server_logs_async(pod_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DownloadServerLogs.create(
+        pod_name=pod_name,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(ListTerminatedServers)
-def list_terminated_servers(deployment: Optional[str] = None, game_mode: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, party_id: Optional[str] = None, pod_name: Optional[str] = None, provider: Optional[str] = None, region: Optional[str] = None, session_id: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def list_terminated_servers(deployment: Optional[str] = None, end_date: Optional[str] = None, game_mode: Optional[str] = None, limit: Optional[int] = None, next_: Optional[str] = None, party_id: Optional[str] = None, pod_name: Optional[str] = None, previous: Optional[str] = None, provider: Optional[str] = None, region: Optional[str] = None, session_id: Optional[str] = None, start_date: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = ListTerminatedServers.create(
         deployment=deployment,
+        end_date=end_date,
         game_mode=game_mode,
         limit=limit,
-        offset=offset,
+        next_=next_,
         party_id=party_id,
         pod_name=pod_name,
+        previous=previous,
         provider=provider,
         region=region,
         session_id=session_id,
+        start_date=start_date,
         user_id=user_id,
         namespace=namespace,
     )
@@ -51,21 +109,24 @@ def list_terminated_servers(deployment: Optional[str] = None, game_mode: Optiona
 
 
 @same_doc_as(ListTerminatedServers)
-async def list_terminated_servers_async(deployment: Optional[str] = None, game_mode: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, party_id: Optional[str] = None, pod_name: Optional[str] = None, provider: Optional[str] = None, region: Optional[str] = None, session_id: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def list_terminated_servers_async(deployment: Optional[str] = None, end_date: Optional[str] = None, game_mode: Optional[str] = None, limit: Optional[int] = None, next_: Optional[str] = None, party_id: Optional[str] = None, pod_name: Optional[str] = None, previous: Optional[str] = None, provider: Optional[str] = None, region: Optional[str] = None, session_id: Optional[str] = None, start_date: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = ListTerminatedServers.create(
         deployment=deployment,
+        end_date=end_date,
         game_mode=game_mode,
         limit=limit,
-        offset=offset,
+        next_=next_,
         party_id=party_id,
         pod_name=pod_name,
+        previous=previous,
         provider=provider,
         region=region,
         session_id=session_id,
+        start_date=start_date,
         user_id=user_id,
         namespace=namespace,
     )

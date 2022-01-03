@@ -1,6 +1,6 @@
 """Auto-generated package that contains utility functions for the justice-legal-service."""
 
-__version__ = "1.15.0"
+__version__ = "1.15.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

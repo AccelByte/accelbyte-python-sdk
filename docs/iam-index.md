@@ -1,6 +1,6 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-iam-service Index (4.9.0)
+# justice-iam-service Index (4.10.0)
 
 
 ## Operations
@@ -300,6 +300,7 @@
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles | POST | AdminAddUserRoleV4 | [AdminAddUserRoleV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_add_user_role_v4.py) | [admin_add_user_role_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
+| /iam/v4/admin/users/users/invite | POST | AdminInviteUserV4 | [AdminInviteUserV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_invite_user_v4.py) | [admin_invite_user_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
 | /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles | GET | AdminListUserRolesV4 | [AdminListUserRolesV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_list_user_roles_v4.py) | [admin_list_user_roles_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
 | /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles | DELETE | AdminRemoveUserRoleV4 | [AdminRemoveUserRoleV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_remove_user_role_v4.py) | [admin_remove_user_role_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
 | /iam/v4/admin/users/me | PATCH | AdminUpdateMyUserV4 | [AdminUpdateMyUserV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_update_my_user_v4.py) | [admin_update_my_user_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
@@ -405,6 +406,7 @@
 | model.GetUserMapping | [ModelGetUserMapping](../accelbyte_py_sdk/api/iam/models/model_get_user_mapping.py) |
 | model.GetUsersResponseWithPaginationV3 | [ModelGetUsersResponseWithPaginationV3](../accelbyte_py_sdk/api/iam/models/model_get_users_response_with_pagination_v3.py) |
 | model.InviteUserRequestV3 | [ModelInviteUserRequestV3](../accelbyte_py_sdk/api/iam/models/model_invite_user_request_v3.py) |
+| model.InviteUserRequestV4 | [ModelInviteUserRequestV4](../accelbyte_py_sdk/api/iam/models/model_invite_user_request_v4.py) |
 | model.InviteUserResponseV3 | [ModelInviteUserResponseV3](../accelbyte_py_sdk/api/iam/models/model_invite_user_response_v3.py) |
 | model.LinkPlatformAccountRequest | [ModelLinkPlatformAccountRequest](../accelbyte_py_sdk/api/iam/models/model_link_platform_account_request.py) |
 | model.LinkRequest | [ModelLinkRequest](../accelbyte_py_sdk/api/iam/models/model_link_request.py) |

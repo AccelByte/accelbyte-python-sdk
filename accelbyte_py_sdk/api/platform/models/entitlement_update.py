@@ -1,8 +1,8 @@
-# justice-platform-service (3.39.0)
+# justice-platform-service (3.40.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -34,8 +34,6 @@ class EntitlementUpdate(Model):
 
         null_field_list: (nullFieldList) OPTIONAL List[str]
 
-        quantity: (quantity) OPTIONAL int
-
         start_date: (startDate) OPTIONAL str
 
         status: (status) OPTIONAL str
@@ -47,7 +45,6 @@ class EntitlementUpdate(Model):
 
     end_date: str                                                                                  # OPTIONAL
     null_field_list: List[str]                                                                     # OPTIONAL
-    quantity: int                                                                                  # OPTIONAL
     start_date: str                                                                                # OPTIONAL
     status: str                                                                                    # OPTIONAL
     use_count: int                                                                                 # OPTIONAL
@@ -62,10 +59,6 @@ class EntitlementUpdate(Model):
 
     def with_null_field_list(self, value: List[str]) -> EntitlementUpdate:
         self.null_field_list = value
-        return self
-
-    def with_quantity(self, value: int) -> EntitlementUpdate:
-        self.quantity = value
         return self
 
     def with_start_date(self, value: str) -> EntitlementUpdate:
@@ -94,10 +87,6 @@ class EntitlementUpdate(Model):
             result["nullFieldList"] = [str(i0) for i0 in self.null_field_list]
         elif include_empty:
             result["nullFieldList"] = []
-        if hasattr(self, "quantity"):
-            result["quantity"] = int(self.quantity)
-        elif include_empty:
-            result["quantity"] = int()
         if hasattr(self, "start_date"):
             result["startDate"] = str(self.start_date)
         elif include_empty:
@@ -121,7 +110,6 @@ class EntitlementUpdate(Model):
         cls,
         end_date: Optional[str] = None,
         null_field_list: Optional[List[str]] = None,
-        quantity: Optional[int] = None,
         start_date: Optional[str] = None,
         status: Optional[str] = None,
         use_count: Optional[int] = None,
@@ -131,8 +119,6 @@ class EntitlementUpdate(Model):
             instance.end_date = end_date
         if null_field_list is not None:
             instance.null_field_list = null_field_list
-        if quantity is not None:
-            instance.quantity = quantity
         if start_date is not None:
             instance.start_date = start_date
         if status is not None:
@@ -154,10 +140,6 @@ class EntitlementUpdate(Model):
             instance.null_field_list = [str(i0) for i0 in dict_["nullFieldList"]]
         elif include_empty:
             instance.null_field_list = []
-        if "quantity" in dict_ and dict_["quantity"] is not None:
-            instance.quantity = int(dict_["quantity"])
-        elif include_empty:
-            instance.quantity = int()
         if "startDate" in dict_ and dict_["startDate"] is not None:
             instance.start_date = str(dict_["startDate"])
         elif include_empty:
@@ -177,7 +159,6 @@ class EntitlementUpdate(Model):
         return {
             "endDate": "end_date",
             "nullFieldList": "null_field_list",
-            "quantity": "quantity",
             "startDate": "start_date",
             "status": "status",
             "useCount": "use_count",

@@ -1,6 +1,6 @@
 """Auto-generated package that contains utility functions for the justice-platform-service."""
 
-__version__ = "3.39.0"
+__version__ = "3.40.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -100,10 +100,6 @@ from ._currency import update_currency_async
 
 from ._entitlement import consume_user_entitlement
 from ._entitlement import consume_user_entitlement_async
-from ._entitlement import create_user_distribution_receiver
-from ._entitlement import create_user_distribution_receiver_async
-from ._entitlement import delete_user_distribution_receiver
-from ._entitlement import delete_user_distribution_receiver_async
 from ._entitlement import disable_user_entitlement
 from ._entitlement import disable_user_entitlement_async
 from ._entitlement import enable_user_entitlement
@@ -118,8 +114,6 @@ from ._entitlement import get_user_app_entitlement_by_app_id
 from ._entitlement import get_user_app_entitlement_by_app_id_async
 from ._entitlement import get_user_app_entitlement_ownership_by_app_id
 from ._entitlement import get_user_app_entitlement_ownership_by_app_id_async
-from ._entitlement import get_user_distribution_receivers
-from ._entitlement import get_user_distribution_receivers_async
 from ._entitlement import get_user_entitlement
 from ._entitlement import get_user_entitlement_async
 from ._entitlement import get_user_entitlement_by_item_id
@@ -136,12 +130,6 @@ from ._entitlement import grant_user_entitlement
 from ._entitlement import grant_user_entitlement_async
 from ._entitlement import public_consume_user_entitlement
 from ._entitlement import public_consume_user_entitlement_async
-from ._entitlement import public_create_user_distribution_receiver
-from ._entitlement import public_create_user_distribution_receiver_async
-from ._entitlement import public_delete_user_distribution_receiver
-from ._entitlement import public_delete_user_distribution_receiver_async
-from ._entitlement import public_distribute_user_distribution
-from ._entitlement import public_distribute_user_distribution_async
 from ._entitlement import public_exists_any_my_active_entitlement
 from ._entitlement import public_exists_any_my_active_entitlement_async
 from ._entitlement import public_exists_any_user_active_entitlement
@@ -158,8 +146,6 @@ from ._entitlement import public_get_user_app_entitlement_by_app_id
 from ._entitlement import public_get_user_app_entitlement_by_app_id_async
 from ._entitlement import public_get_user_app_entitlement_ownership_by_app_id
 from ._entitlement import public_get_user_app_entitlement_ownership_by_app_id_async
-from ._entitlement import public_get_user_distribution_receivers
-from ._entitlement import public_get_user_distribution_receivers_async
 from ._entitlement import public_get_user_entitlement
 from ._entitlement import public_get_user_entitlement_async
 from ._entitlement import public_get_user_entitlement_by_item_id
@@ -174,8 +160,6 @@ from ._entitlement import public_query_user_entitlements
 from ._entitlement import public_query_user_entitlements_async
 from ._entitlement import public_query_user_entitlements_by_app_type
 from ._entitlement import public_query_user_entitlements_by_app_type_async
-from ._entitlement import public_update_user_distribution_receiver
-from ._entitlement import public_update_user_distribution_receiver_async
 from ._entitlement import query_entitlements
 from ._entitlement import query_entitlements_async
 from ._entitlement import query_user_entitlements
@@ -186,8 +170,6 @@ from ._entitlement import revoke_user_entitlement
 from ._entitlement import revoke_user_entitlement_async
 from ._entitlement import revoke_user_entitlements
 from ._entitlement import revoke_user_entitlements_async
-from ._entitlement import update_user_distribution_receiver
-from ._entitlement import update_user_distribution_receiver_async
 from ._entitlement import update_user_entitlement
 from ._entitlement import update_user_entitlement_async
 
@@ -277,11 +259,6 @@ from ._iap import update_xbl_bp_cert_file
 from ._iap import update_xbl_bp_cert_file_async
 from ._iap import update_xbl_iap_config
 from ._iap import update_xbl_iap_config_async
-
-from ._integration import get_game_server_config
-from ._integration import get_game_server_config_async
-from ._integration import update_game_server_config
-from ._integration import update_game_server_config_async
 
 from ._item import acquire_item
 from ._item import acquire_item_async
@@ -428,6 +405,11 @@ from ._payment_account import public_delete_payment_account
 from ._payment_account import public_delete_payment_account_async
 from ._payment_account import public_get_payment_accounts
 from ._payment_account import public_get_payment_accounts_async
+
+from ._payment_callback_config import get_payment_callback_config
+from ._payment_callback_config import get_payment_callback_config_async
+from ._payment_callback_config import update_payment_callback_config
+from ._payment_callback_config import update_payment_callback_config_async
 
 from ._payment_config import create_payment_provider_config
 from ._payment_config import create_payment_provider_config_async

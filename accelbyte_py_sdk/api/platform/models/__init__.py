@@ -1,6 +1,6 @@
 """Auto-generated package that contains models used by the justice-platform-service."""
 
-__version__ = "3.39.0"
+__version__ = "3.40.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -49,8 +49,6 @@ from .currency_summary import CurrencySummary
 from .currency_update import CurrencyUpdate
 from .customization import Customization
 from .debit_request import DebitRequest
-from .distribution_receiver_create import DistributionReceiverCreate
-from .distribution_receiver_info import DistributionReceiverInfo
 from .entitlement_decrement import EntitlementDecrement
 from .entitlement_grant import EntitlementGrant
 from .entitlement_history_info import EntitlementHistoryInfo
@@ -83,7 +81,6 @@ from .full_app_info import FullAppInfo
 from .full_category_info import FullCategoryInfo
 from .full_item_info import FullItemInfo
 from .full_item_paging_sliced_result import FullItemPagingSlicedResult
-from .game_server_config import GameServerConfig
 from .google_iap_config_info import GoogleIAPConfigInfo
 from .google_iap_config_request import GoogleIAPConfigRequest
 from .google_iap_receipt import GoogleIAPReceipt
@@ -130,6 +127,8 @@ from .ownership_token import OwnershipToken
 from .paging import Paging
 from .pay_pal_config import PayPalConfig
 from .payment_account import PaymentAccount
+from .payment_callback_config_info import PaymentCallbackConfigInfo
+from .payment_callback_config_update import PaymentCallbackConfigUpdate
 from .payment_merchant_config_info import PaymentMerchantConfigInfo
 from .payment_method import PaymentMethod
 from .payment_notification_info import PaymentNotificationInfo
@@ -159,6 +158,7 @@ from .payment_url import PaymentUrl
 from .payment_url_create import PaymentUrlCreate
 from .platform_subscribe_request import PlatformSubscribeRequest
 from .play_station_iap_config_info import PlayStationIAPConfigInfo
+from .play_station_reconcile_request import PlayStationReconcileRequest
 from .play_station_reconcile_result import PlayStationReconcileResult
 from .playstation_iap_config_request import PlaystationIAPConfigRequest
 from .populated_item_info import PopulatedItemInfo
