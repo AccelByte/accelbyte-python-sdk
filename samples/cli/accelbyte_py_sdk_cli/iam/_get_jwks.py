@@ -1,6 +1,6 @@
-# justice-iam-service (4.9.0)
+# justice-iam-service (4.10.0)
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 

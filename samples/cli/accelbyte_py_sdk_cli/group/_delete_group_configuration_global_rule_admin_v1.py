@@ -1,6 +1,6 @@
 # justice-group-service (2.9.0)
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 

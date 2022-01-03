@@ -1,6 +1,6 @@
-# justice-ds-log-manager-service (1.4.0)
+# justice-ds-log-manager-service (1.4.1)
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -33,28 +33,34 @@ from accelbyte_py_sdk.api.dslogmanager.models import ResponseError
 
 @click.command()
 @click.option("--deployment", "deployment", type=str)
+@click.option("--end_date", "end_date", type=str)
 @click.option("--game_mode", "game_mode", type=str)
 @click.option("--limit", "limit", type=int)
-@click.option("--offset", "offset", type=int)
+@click.option("--next", "next_", type=str)
 @click.option("--party_id", "party_id", type=str)
 @click.option("--pod_name", "pod_name", type=str)
+@click.option("--previous", "previous", type=str)
 @click.option("--provider", "provider", type=str)
 @click.option("--region", "region", type=str)
 @click.option("--session_id", "session_id", type=str)
+@click.option("--start_date", "start_date", type=str)
 @click.option("--user_id", "user_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def list_all_terminated_servers(
         deployment: Optional[str] = None,
+        end_date: Optional[str] = None,
         game_mode: Optional[str] = None,
         limit: Optional[int] = None,
-        offset: Optional[int] = None,
+        next_: Optional[str] = None,
         party_id: Optional[str] = None,
         pod_name: Optional[str] = None,
+        previous: Optional[str] = None,
         provider: Optional[str] = None,
         region: Optional[str] = None,
         session_id: Optional[str] = None,
+        start_date: Optional[str] = None,
         user_id: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
@@ -66,14 +72,17 @@ def list_all_terminated_servers(
     login_as_internal(login_as)
     _, error = list_all_terminated_servers_internal(
         deployment=deployment,
+        end_date=end_date,
         game_mode=game_mode,
         limit=limit,
-        offset=offset,
+        next_=next_,
         party_id=party_id,
         pod_name=pod_name,
+        previous=previous,
         provider=provider,
         region=region,
         session_id=session_id,
+        start_date=start_date,
         user_id=user_id,
         namespace=namespace,
     )

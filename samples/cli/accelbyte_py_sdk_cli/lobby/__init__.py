@@ -1,12 +1,11 @@
 # justice-lobby-server (staging)
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
 # template_file: python-cli-init.j2
 
-from ._personal_chat_history import personal_chat_history
 from ._get_user_friends_updated import get_user_friends_updated
 from ._get_user_incoming_friends import get_user_incoming_friends
 from ._get_user_outgoing_friends import get_user_outgoing_friends
@@ -17,6 +16,7 @@ from ._user_reject_friend_request import user_reject_friend_request
 from ._user_get_friendship_status import user_get_friendship_status
 from ._user_unfriend_request import user_unfriend_request
 from ._add_friends_without_confirmation import add_friends_without_confirmation
+from ._personal_chat_history import personal_chat_history
 from ._admin_chat_history import admin_chat_history
 from ._admin_get_all_config_v1 import admin_get_all_config_v1
 from ._admin_get_config_v1 import admin_get_config_v1
@@ -98,7 +98,6 @@ from ._notification_with_template_by_user_id import notification_with_template_b
 
 
 commands = [
-    personal_chat_history,
     get_user_friends_updated,
     get_user_incoming_friends,
     get_user_outgoing_friends,
@@ -109,6 +108,7 @@ commands = [
     user_get_friendship_status,
     user_unfriend_request,
     add_friends_without_confirmation,
+    personal_chat_history,
     admin_chat_history,
     admin_get_all_config_v1,
     admin_get_config_v1,

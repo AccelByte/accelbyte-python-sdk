@@ -1,6 +1,6 @@
-# justice-cloudsave-service (1.9.1)
+# justice-cloudsave-service (1.9.2)
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -12,6 +12,7 @@ from ._admin_put_game_record_handler_v1 import admin_put_game_record_handler_v1
 from ._admin_post_game_record_handler_v1 import admin_post_game_record_handler_v1
 from ._admin_delete_game_record_handler_v1 import admin_delete_game_record_handler_v1
 from ._list_player_record_handler_v1 import list_player_record_handler_v1
+from ._admin_retrieve_player_records import admin_retrieve_player_records
 from ._admin_get_player_record_handler_v1 import admin_get_player_record_handler_v1
 from ._admin_put_player_record_handler_v1 import admin_put_player_record_handler_v1
 from ._admin_post_player_record_handler_v1 import admin_post_player_record_handler_v1
@@ -43,6 +44,7 @@ commands = [
     admin_post_game_record_handler_v1,
     admin_delete_game_record_handler_v1,
     list_player_record_handler_v1,
+    admin_retrieve_player_records,
     admin_get_player_record_handler_v1,
     admin_put_player_record_handler_v1,
     admin_post_player_record_handler_v1,

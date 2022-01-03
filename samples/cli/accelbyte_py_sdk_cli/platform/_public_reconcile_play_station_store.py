@@ -1,6 +1,6 @@
-# justice-platform-service (3.39.0)
+# justice-platform-service (3.40.0)
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -28,16 +28,19 @@ import click
 from .._utils import login_as as login_as_internal
 from accelbyte_py_sdk.api.platform import public_reconcile_play_station_store as public_reconcile_play_station_store_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import PlayStationReconcileRequest
 from accelbyte_py_sdk.api.platform.models import PlayStationReconcileResult
 
 
 @click.command()
 @click.argument("user_id", type=str)
+@click.option("--body", "body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def public_reconcile_play_station_store(
         user_id: str,
+        body: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -46,8 +49,14 @@ def public_reconcile_play_station_store(
         click.echo(public_reconcile_play_station_store_internal.__doc__)
         return
     login_as_internal(login_as)
+    try:
+        body_json = json.loads(body)
+        body = PlayStationReconcileRequest.create_from_dict(body_json)
+    except ValueError as e:
+        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = public_reconcile_play_station_store_internal(
         user_id=user_id,
+        body=body,
         namespace=namespace,
     )
     if error:

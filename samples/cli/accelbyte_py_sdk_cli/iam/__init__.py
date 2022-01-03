@@ -1,6 +1,6 @@
-# justice-iam-service (4.9.0)
+# justice-iam-service (4.10.0)
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -260,6 +260,7 @@ from ._admin_list_assigned_users_v4 import admin_list_assigned_users_v4
 from ._admin_assign_user_to_role_v4 import admin_assign_user_to_role_v4
 from ._admin_revoke_user_from_role_v4 import admin_revoke_user_from_role_v4
 from ._admin_update_my_user_v4 import admin_update_my_user_v4
+from ._admin_invite_user_v4 import admin_invite_user_v4
 from ._public_create_test_user_v4 import public_create_test_user_v4
 from ._public_create_user_v4 import public_create_user_v4
 from ._create_user_from_invitation_v4 import create_user_from_invitation_v4
@@ -524,6 +525,7 @@ commands = [
     admin_assign_user_to_role_v4,
     admin_revoke_user_from_role_v4,
     admin_update_my_user_v4,
+    admin_invite_user_v4,
     public_create_test_user_v4,
     public_create_user_v4,
     create_user_from_invitation_v4,

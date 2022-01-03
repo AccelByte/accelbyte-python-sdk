@@ -1,6 +1,6 @@
-# justice-platform-service (3.39.0)
+# justice-platform-service (3.40.0)
 
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -66,8 +66,6 @@ from ._get_xbl_iap_config import get_xbl_iap_config
 from ._update_xbl_iap_config import update_xbl_iap_config
 from ._delete_xbl_ap_config import delete_xbl_ap_config
 from ._update_xbl_bp_cert_file import update_xbl_bp_cert_file
-from ._get_game_server_config import get_game_server_config
-from ._update_game_server_config import update_game_server_config
 from ._sync_in_game_item import sync_in_game_item
 from ._create_item import create_item
 from ._get_item_by_app_id import get_item_by_app_id
@@ -103,6 +101,8 @@ from ._query_orders import query_orders
 from ._get_order_statistics import get_order_statistics
 from ._get_order import get_order
 from ._refund_order import refund_order
+from ._get_payment_callback_config import get_payment_callback_config
+from ._update_payment_callback_config import update_payment_callback_config
 from ._query_payment_notifications import query_payment_notifications
 from ._query_payment_orders import query_payment_orders
 from ._create_payment_order_by_dedicated import create_payment_order_by_dedicated
@@ -157,10 +157,6 @@ from ._exists_any_user_active_entitlement_by_item_ids import exists_any_user_act
 from ._get_user_app_entitlement_ownership_by_app_id import get_user_app_entitlement_ownership_by_app_id
 from ._get_user_entitlement_ownership_by_item_id import get_user_entitlement_ownership_by_item_id
 from ._get_user_entitlement_ownership_by_sku import get_user_entitlement_ownership_by_sku
-from ._get_user_distribution_receivers import get_user_distribution_receivers
-from ._update_user_distribution_receiver import update_user_distribution_receiver
-from ._create_user_distribution_receiver import create_user_distribution_receiver
-from ._delete_user_distribution_receiver import delete_user_distribution_receiver
 from ._revoke_user_entitlements import revoke_user_entitlements
 from ._get_user_entitlement import get_user_entitlement
 from ._update_user_entitlement import update_user_entitlement
@@ -285,13 +281,8 @@ from ._public_exists_any_user_active_entitlement import public_exists_any_user_a
 from ._public_get_user_app_entitlement_ownership_by_app_id import public_get_user_app_entitlement_ownership_by_app_id
 from ._public_get_user_entitlement_ownership_by_item_id import public_get_user_entitlement_ownership_by_item_id
 from ._public_get_user_entitlement_ownership_by_sku import public_get_user_entitlement_ownership_by_sku
-from ._public_get_user_distribution_receivers import public_get_user_distribution_receivers
-from ._public_update_user_distribution_receiver import public_update_user_distribution_receiver
-from ._public_create_user_distribution_receiver import public_create_user_distribution_receiver
-from ._public_delete_user_distribution_receiver import public_delete_user_distribution_receiver
 from ._public_get_user_entitlement import public_get_user_entitlement
 from ._public_consume_user_entitlement import public_consume_user_entitlement
-from ._public_distribute_user_distribution import public_distribute_user_distribution
 from ._public_redeem_code import public_redeem_code
 from ._public_fulfill_apple_iap_item import public_fulfill_apple_iap_item
 from ._sync_epic_games_inventory import sync_epic_games_inventory
@@ -380,8 +371,6 @@ commands = [
     update_xbl_iap_config,
     delete_xbl_ap_config,
     update_xbl_bp_cert_file,
-    get_game_server_config,
-    update_game_server_config,
     sync_in_game_item,
     create_item,
     get_item_by_app_id,
@@ -417,6 +406,8 @@ commands = [
     get_order_statistics,
     get_order,
     refund_order,
+    get_payment_callback_config,
+    update_payment_callback_config,
     query_payment_notifications,
     query_payment_orders,
     create_payment_order_by_dedicated,
@@ -471,10 +462,6 @@ commands = [
     get_user_app_entitlement_ownership_by_app_id,
     get_user_entitlement_ownership_by_item_id,
     get_user_entitlement_ownership_by_sku,
-    get_user_distribution_receivers,
-    update_user_distribution_receiver,
-    create_user_distribution_receiver,
-    delete_user_distribution_receiver,
     revoke_user_entitlements,
     get_user_entitlement,
     update_user_entitlement,
@@ -599,13 +586,8 @@ commands = [
     public_get_user_app_entitlement_ownership_by_app_id,
     public_get_user_entitlement_ownership_by_item_id,
     public_get_user_entitlement_ownership_by_sku,
-    public_get_user_distribution_receivers,
-    public_update_user_distribution_receiver,
-    public_create_user_distribution_receiver,
-    public_delete_user_distribution_receiver,
     public_get_user_entitlement,
     public_consume_user_entitlement,
-    public_distribute_user_distribution,
     public_redeem_code,
     public_fulfill_apple_iap_item,
     sync_epic_games_inventory,
