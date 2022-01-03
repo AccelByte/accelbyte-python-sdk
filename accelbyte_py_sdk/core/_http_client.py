@@ -333,28 +333,41 @@ def convert_operation(
             files, data, json_ = None, json.dumps(body_params), None
     elif form_data_params:
         preprocess_form_data_params(form_data_params)
-        files, data, json_ = None, form_data_params, None
+        files = {}
+        data = {}
+        json_ = None
+        for k, v in form_data_params.items():
+            if is_file(k):
+                files[k] = v
+            else:
+                data[k] = v
     else:
         raise ValueError
+
+    # NOTE(elmer): Remove 'Content-Type' when 'files' is truthy.
+    # See: https://stackoverflow.com/questions/12385179/how-to-send-a-multipart-form-data-with-requests-in-python#comment90642370_12385661
+    if files and "Content-Type" in headers:
+        headers.pop("Content-Type")
 
     return operation.method, operation.get_full_url(base_url=base_url), headers, files, data, json_
 
 
-def convert_any_to_file_tuple(name: str, file: Any) -> Tuple[str, bytes]:
-    if isinstance(file, bytes):
-        return name, file
-
+def convert_any_to_file_tuple(name: str, file: Any) -> Tuple[str, IO]:
     if isinstance(file, IO):
-        return name, file.read()
+        return name, file
 
     if isinstance(file, str):
         file = Path(file)
     if isinstance(file, Path):
         if not file.exists():
             raise FileNotFoundError
-        return file.name, file.read_bytes()
+        return file.name, file.open()
 
     raise ValueError
+
+
+def is_file(key: str) -> bool:
+    return key.casefold() == "file"
 
 
 def is_json_mime_type(mime_type: Optional[str]) -> bool:
@@ -370,5 +383,5 @@ def is_json_mime_type(mime_type: Optional[str]) -> bool:
 
 def preprocess_form_data_params(form_data_params: dict) -> None:
     for form_data_key in form_data_params.keys():
-        if form_data_key.casefold() == "file":
+        if is_file(form_data_key):
             form_data_params[form_data_key] = convert_any_to_file_tuple(form_data_key, form_data_params[form_data_key])
