@@ -60,91 +60,91 @@ update_status() {
 echo 'TAP version 13'
 echo "1..$OPERATIONS_COUNT"
 
-#- 1 PersonalChatHistory
-$PYTHON -m $MODULE 'lobby-personal-chat-history' \
-    'FtBxyZcD' \
-    'XBpGlsQu' \
-    --login_as client \
-    >$TEMP_FILE 2>&1
-update_status $? 'PersonalChatHistory'
-delete_file $TEMP_FILE
-
-#- 2 GetUserFriendsUpdated
+#- 1 GetUserFriendsUpdated
 $PYTHON -m $MODULE 'lobby-get-user-friends-updated' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserFriendsUpdated'
 delete_file $TEMP_FILE
 
-#- 3 GetUserIncomingFriends
+#- 2 GetUserIncomingFriends
 $PYTHON -m $MODULE 'lobby-get-user-incoming-friends' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserIncomingFriends'
 delete_file $TEMP_FILE
 
-#- 4 GetUserOutgoingFriends
+#- 3 GetUserOutgoingFriends
 $PYTHON -m $MODULE 'lobby-get-user-outgoing-friends' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserOutgoingFriends'
 delete_file $TEMP_FILE
 
-#- 5 UserRequestFriend
+#- 4 UserRequestFriend
 $PYTHON -m $MODULE 'lobby-user-request-friend' \
-    '{"friendId": "Ju8vMf0I"}' \
+    '{"friendId": "FtBxyZcD"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UserRequestFriend'
 delete_file $TEMP_FILE
 
-#- 6 UserAcceptFriendRequest
+#- 5 UserAcceptFriendRequest
 $PYTHON -m $MODULE 'lobby-user-accept-friend-request' \
-    '{"friendId": "sJkTrd8I"}' \
+    '{"friendId": "XBpGlsQu"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UserAcceptFriendRequest'
 delete_file $TEMP_FILE
 
-#- 7 UserCancelFriendRequest
+#- 6 UserCancelFriendRequest
 $PYTHON -m $MODULE 'lobby-user-cancel-friend-request' \
-    '{"friendId": "DcV2zXnT"}' \
+    '{"friendId": "Ju8vMf0I"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UserCancelFriendRequest'
 delete_file $TEMP_FILE
 
-#- 8 UserRejectFriendRequest
+#- 7 UserRejectFriendRequest
 $PYTHON -m $MODULE 'lobby-user-reject-friend-request' \
-    '{"friendId": "KjXY1bPq"}' \
+    '{"friendId": "sJkTrd8I"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UserRejectFriendRequest'
 delete_file $TEMP_FILE
 
-#- 9 UserGetFriendshipStatus
+#- 8 UserGetFriendshipStatus
 $PYTHON -m $MODULE 'lobby-user-get-friendship-status' \
-    'amiBxx9C' \
+    'DcV2zXnT' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UserGetFriendshipStatus'
 delete_file $TEMP_FILE
 
-#- 10 UserUnfriendRequest
+#- 9 UserUnfriendRequest
 $PYTHON -m $MODULE 'lobby-user-unfriend-request' \
-    '{"friendId": "s18EY84e"}' \
+    '{"friendId": "KjXY1bPq"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UserUnfriendRequest'
 delete_file $TEMP_FILE
 
-#- 11 AddFriendsWithoutConfirmation
+#- 10 AddFriendsWithoutConfirmation
 $PYTHON -m $MODULE 'lobby-add-friends-without-confirmation' \
-    '{"friendIds": ["kItqRzHU"]}' \
-    '1oh570KQ' \
+    '{"friendIds": ["amiBxx9C"]}' \
+    's18EY84e' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'AddFriendsWithoutConfirmation'
+delete_file $TEMP_FILE
+
+#- 11 PersonalChatHistory
+$PYTHON -m $MODULE 'lobby-personal-chat-history' \
+    'kItqRzHU' \
+    '1oh570KQ' \
+    --login_as client \
+    >$TEMP_FILE 2>&1
+update_status $? 'PersonalChatHistory'
 delete_file $TEMP_FILE
 
 #- 12 AdminChatHistory

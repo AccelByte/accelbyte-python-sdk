@@ -12,7 +12,7 @@ MODULE='accelbyte_py_sdk_cli'
 MODULE_PATH='../samples/cli'
 TEMP_FILE='file.tmp'
 
-OPERATIONS_COUNT=5
+OPERATIONS_COUNT=6
 
 FINISHED_COUNT=0
 SUCCESS_COUNT=0
@@ -83,14 +83,22 @@ $PYTHON -m $MODULE 'dslogmanager-check-server-logs' \
 update_status $? 'CheckServerLogs'
 delete_file $TEMP_FILE
 
-#- 4 ListAllTerminatedServers
+#- 4 BatchDownloadServerLogs
+$PYTHON -m $MODULE 'dslogmanager-batch-download-server-logs' \
+    '{"Downloads": [{"alloc_id": "Ju8vMf0I", "namespace": "sJkTrd8I", "pod_name": "DcV2zXnT"}]}' \
+    --login_as client \
+    >$TEMP_FILE 2>&1
+update_status $? 'BatchDownloadServerLogs'
+delete_file $TEMP_FILE
+
+#- 5 ListAllTerminatedServers
 $PYTHON -m $MODULE 'dslogmanager-list-all-terminated-servers' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'ListAllTerminatedServers'
 delete_file $TEMP_FILE
 
-#- 5 PublicGetMessages
+#- 6 PublicGetMessages
 $PYTHON -m $MODULE 'dslogmanager-public-get-messages' \
     --login_as client \
     >$TEMP_FILE 2>&1

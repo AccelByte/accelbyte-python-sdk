@@ -12,7 +12,7 @@ MODULE='accelbyte_py_sdk_cli'
 MODULE_PATH='../samples/cli'
 TEMP_FILE='file.tmp'
 
-OPERATIONS_COUNT=261
+OPERATIONS_COUNT=262
 
 FINISHED_COUNT=0
 SUCCESS_COUNT=0
@@ -2123,58 +2123,66 @@ $PYTHON -m $MODULE 'iam-admin-update-my-user-v4' \
 update_status $? 'AdminUpdateMyUserV4'
 delete_file $TEMP_FILE
 
-#- 255 PublicCreateTestUserV4
+#- 255 AdminInviteUserV4
+$PYTHON -m $MODULE 'iam-admin-invite-user-v4' \
+    '{"assignedNamespaces": ["kljQuD5m"], "emailAddresses": ["nJONqHGq"], "isAdmin": false, "roleId": "B7mF2lMF"}' \
+    --login_as client \
+    >$TEMP_FILE 2>&1
+update_status $? 'AdminInviteUserV4'
+delete_file $TEMP_FILE
+
+#- 256 PublicCreateTestUserV4
 $PYTHON -m $MODULE 'iam-public-create-test-user-v4' \
-    '{"acceptedPolicies": [{"isAccepted": false, "localizedPolicyVersionId": "ljQuD5mn", "policyId": "JONqHGq8", "policyVersionId": "mB7mF2lM"}], "authType": "FcaghFXJ", "country": "IJflRHFc", "dateOfBirth": "sIqCy4xD", "displayName": "ifSSQ5On", "emailAddress": "2ccEcl3x", "password": "eiO4bwF5", "passwordMD5Sum": "JOjGoGxK", "username": "M3qMce5t", "verified": false}' \
+    '{"acceptedPolicies": [{"isAccepted": false, "localizedPolicyVersionId": "aghFXJIJ", "policyId": "flRHFcsI", "policyVersionId": "qCy4xDif"}], "authType": "SSQ5On2c", "country": "cEcl3xei", "dateOfBirth": "O4bwF5JO", "displayName": "jGoGxKM3", "emailAddress": "qMce5tfL", "password": "cpjFZMKC", "passwordMD5Sum": "bp0pEbLC", "username": "LFpHxMYF", "verified": true}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicCreateTestUserV4'
 delete_file $TEMP_FILE
 
-#- 256 PublicCreateUserV4
+#- 257 PublicCreateUserV4
 $PYTHON -m $MODULE 'iam-public-create-user-v4' \
-    '{"acceptedPolicies": [{"isAccepted": false, "localizedPolicyVersionId": "pjFZMKCb", "policyId": "p0pEbLCL", "policyVersionId": "FpHxMYF8"}], "authType": "36075xEp", "country": "zdnYtpja", "dateOfBirth": "5ig2isQZ", "displayName": "ga6Vy76i", "emailAddress": "zPiQRjYa", "password": "8fv5fIt2", "passwordMD5Sum": "2tIZhjhg", "username": "kigW22zX"}' \
+    '{"acceptedPolicies": [{"isAccepted": true, "localizedPolicyVersionId": "pzdnYtpj", "policyId": "a5ig2isQ", "policyVersionId": "Zga6Vy76"}], "authType": "izPiQRjY", "country": "a8fv5fIt", "dateOfBirth": "22tIZhjh", "displayName": "gkigW22z", "emailAddress": "XMWXfbcM", "password": "0GIALIbF", "passwordMD5Sum": "CQgBcLNT", "username": "6iOQVYx5"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicCreateUserV4'
 delete_file $TEMP_FILE
 
-#- 257 CreateUserFromInvitationV4
+#- 258 CreateUserFromInvitationV4
 $PYTHON -m $MODULE 'iam-create-user-from-invitation-v4' \
-    '{"acceptedPolicies": [{"isAccepted": false, "localizedPolicyVersionId": "bcM0GIAL", "policyId": "IbFCQgBc", "policyVersionId": "LNT6iOQV"}], "authType": "Yx5rW2gM", "country": "sI1aYBit", "dateOfBirth": "Sn3UDeKj", "displayName": "97I4WYXL", "password": "qjN7ktOB", "username": "TraBxWRT"}' \
-    'VuYEqGlK' \
+    '{"acceptedPolicies": [{"isAccepted": true, "localizedPolicyVersionId": "W2gMsI1a", "policyId": "YBitSn3U", "policyVersionId": "DeKj97I4"}], "authType": "WYXLqjN7", "country": "ktOBTraB", "dateOfBirth": "xWRTVuYE", "displayName": "qGlKDwTK", "password": "XBrXiQcd", "username": "9IW8kiCK"}' \
+    'eQJWZBvc' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateUserFromInvitationV4'
 delete_file $TEMP_FILE
 
-#- 258 PublicUpdateUserV4
+#- 259 PublicUpdateUserV4
 $PYTHON -m $MODULE 'iam-public-update-user-v4' \
-    '{"country": "DwTKXBrX", "dateOfBirth": "iQcd9IW8", "displayName": "kiCKeQJW", "languageTag": "ZBvcq1ET", "userName": "vWBxYZJh"}' \
+    '{"country": "q1ETvWBx", "dateOfBirth": "YZJh7B8g", "displayName": "bnSu9M2O", "languageTag": "xD2udaeY", "userName": "pCXYSMiy"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicUpdateUserV4'
 delete_file $TEMP_FILE
 
-#- 259 PublicUpdateUserEmailAddressV4
+#- 260 PublicUpdateUserEmailAddressV4
 $PYTHON -m $MODULE 'iam-public-update-user-email-address-v4' \
-    '{"code": "7B8gbnSu", "emailAddress": "9M2OxD2u"}' \
+    '{"code": "87CTqEQB", "emailAddress": "g36my3sY"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicUpdateUserEmailAddressV4'
 delete_file $TEMP_FILE
 
-#- 260 PublicUpgradeHeadlessAccountWithVerificationCodeV4
+#- 261 PublicUpgradeHeadlessAccountWithVerificationCodeV4
 $PYTHON -m $MODULE 'iam-public-upgrade-headless-account-with-verification-code-v4' \
-    '{"code": "daeYpCXY", "country": "SMiy87CT", "dateOfBirth": "qEQBg36m", "displayName": "y3sY2clr", "emailAddress": "Dcain0cO", "password": "VF1zHwDT", "username": "I0sJ1Q0k"}' \
+    '{"code": "2clrDcai", "country": "n0cOVF1z", "dateOfBirth": "HwDTI0sJ", "displayName": "1Q0kphMT", "emailAddress": "ggSP2SLc", "password": "uAP7vU97", "username": "1Czw2nbg"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicUpgradeHeadlessAccountWithVerificationCodeV4'
 delete_file $TEMP_FILE
 
-#- 261 PublicUpgradeHeadlessAccountV4
+#- 262 PublicUpgradeHeadlessAccountV4
 $PYTHON -m $MODULE 'iam-public-upgrade-headless-account-v4' \
-    '{"emailAddress": "phMTggSP", "password": "2SLcuAP7", "username": "vU971Czw"}' \
+    '{"emailAddress": "8C7Mvywh", "password": "u6MjOjuG", "username": "zo1Fz4tU"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicUpgradeHeadlessAccountV4'

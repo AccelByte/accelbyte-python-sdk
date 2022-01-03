@@ -12,7 +12,7 @@ MODULE='accelbyte_py_sdk_cli'
 MODULE_PATH='../samples/cli'
 TEMP_FILE='file.tmp'
 
-OPERATIONS_COUNT=311
+OPERATIONS_COUNT=302
 
 FINISHED_COUNT=0
 SUCCESS_COUNT=0
@@ -509,21 +509,7 @@ $PYTHON -m $MODULE 'platform-update-xbl-bp-cert-file' \
 update_status $? 'UpdateXblBPCertFile'
 delete_file $TEMP_FILE
 
-#- 61 GetGameServerConfig
-$PYTHON -m $MODULE 'platform-get-game-server-config' \
-    --login_as client \
-    >$TEMP_FILE 2>&1
-update_status $? 'GetGameServerConfig'
-delete_file $TEMP_FILE
-
-#- 62 UpdateGameServerConfig
-$PYTHON -m $MODULE 'platform-update-game-server-config' \
-    --login_as client \
-    >$TEMP_FILE 2>&1
-update_status $? 'UpdateGameServerConfig'
-delete_file $TEMP_FILE
-
-#- 63 SyncInGameItem
+#- 61 SyncInGameItem
 $PYTHON -m $MODULE 'platform-sync-in-game-item' \
     'MfjiX7jp' \
     --login_as client \
@@ -531,7 +517,7 @@ $PYTHON -m $MODULE 'platform-sync-in-game-item' \
 update_status $? 'SyncInGameItem'
 delete_file $TEMP_FILE
 
-#- 64 CreateItem
+#- 62 CreateItem
 $PYTHON -m $MODULE 'platform-create-item' \
     'kVZk3IaQ' \
     --login_as client \
@@ -539,7 +525,7 @@ $PYTHON -m $MODULE 'platform-create-item' \
 update_status $? 'CreateItem'
 delete_file $TEMP_FILE
 
-#- 65 GetItemByAppId
+#- 63 GetItemByAppId
 $PYTHON -m $MODULE 'platform-get-item-by-app-id' \
     'YEmqGodO' \
     --login_as client \
@@ -547,21 +533,21 @@ $PYTHON -m $MODULE 'platform-get-item-by-app-id' \
 update_status $? 'GetItemByAppId'
 delete_file $TEMP_FILE
 
-#- 66 QueryItems
+#- 64 QueryItems
 $PYTHON -m $MODULE 'platform-query-items' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'QueryItems'
 delete_file $TEMP_FILE
 
-#- 67 ListBasicItemsByFeatures
+#- 65 ListBasicItemsByFeatures
 $PYTHON -m $MODULE 'platform-list-basic-items-by-features' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'ListBasicItemsByFeatures'
 delete_file $TEMP_FILE
 
-#- 68 GetItemBySku
+#- 66 GetItemBySku
 $PYTHON -m $MODULE 'platform-get-item-by-sku' \
     'EGt9gPOj' \
     --login_as client \
@@ -569,7 +555,7 @@ $PYTHON -m $MODULE 'platform-get-item-by-sku' \
 update_status $? 'GetItemBySku'
 delete_file $TEMP_FILE
 
-#- 69 GetLocaleItemBySku
+#- 67 GetLocaleItemBySku
 $PYTHON -m $MODULE 'platform-get-locale-item-by-sku' \
     '0c6i0Jkv' \
     --login_as client \
@@ -577,7 +563,7 @@ $PYTHON -m $MODULE 'platform-get-locale-item-by-sku' \
 update_status $? 'GetLocaleItemBySku'
 delete_file $TEMP_FILE
 
-#- 70 GetItemIdBySku
+#- 68 GetItemIdBySku
 $PYTHON -m $MODULE 'platform-get-item-id-by-sku' \
     'Ias73ucY' \
     --login_as client \
@@ -585,7 +571,7 @@ $PYTHON -m $MODULE 'platform-get-item-id-by-sku' \
 update_status $? 'GetItemIdBySku'
 delete_file $TEMP_FILE
 
-#- 71 BulkGetLocaleItems
+#- 69 BulkGetLocaleItems
 $PYTHON -m $MODULE 'platform-bulk-get-locale-items' \
     'nFAJ3DK5' \
     --login_as client \
@@ -593,7 +579,7 @@ $PYTHON -m $MODULE 'platform-bulk-get-locale-items' \
 update_status $? 'BulkGetLocaleItems'
 delete_file $TEMP_FILE
 
-#- 72 SearchItems
+#- 70 SearchItems
 $PYTHON -m $MODULE 'platform-search-items' \
     'T4Eogg0Y' \
     '39UoYlpv' \
@@ -602,14 +588,14 @@ $PYTHON -m $MODULE 'platform-search-items' \
 update_status $? 'SearchItems'
 delete_file $TEMP_FILE
 
-#- 73 QueryUncategorizedItems
+#- 71 QueryUncategorizedItems
 $PYTHON -m $MODULE 'platform-query-uncategorized-items' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'QueryUncategorizedItems'
 delete_file $TEMP_FILE
 
-#- 74 GetItem
+#- 72 GetItem
 $PYTHON -m $MODULE 'platform-get-item' \
     '5bVAgtsD' \
     --login_as client \
@@ -617,7 +603,7 @@ $PYTHON -m $MODULE 'platform-get-item' \
 update_status $? 'GetItem'
 delete_file $TEMP_FILE
 
-#- 75 UpdateItem
+#- 73 UpdateItem
 $PYTHON -m $MODULE 'platform-update-item' \
     'hUTDUscb' \
     'QDjbTQuP' \
@@ -626,7 +612,7 @@ $PYTHON -m $MODULE 'platform-update-item' \
 update_status $? 'UpdateItem'
 delete_file $TEMP_FILE
 
-#- 76 DeleteItem
+#- 74 DeleteItem
 $PYTHON -m $MODULE 'platform-delete-item' \
     'Mz2PTRlk' \
     --login_as client \
@@ -634,7 +620,7 @@ $PYTHON -m $MODULE 'platform-delete-item' \
 update_status $? 'DeleteItem'
 delete_file $TEMP_FILE
 
-#- 77 AcquireItem
+#- 75 AcquireItem
 $PYTHON -m $MODULE 'platform-acquire-item' \
     'yU89ZPOw' \
     --login_as client \
@@ -642,7 +628,7 @@ $PYTHON -m $MODULE 'platform-acquire-item' \
 update_status $? 'AcquireItem'
 delete_file $TEMP_FILE
 
-#- 78 GetApp
+#- 76 GetApp
 $PYTHON -m $MODULE 'platform-get-app' \
     '6zPFJ42c' \
     --login_as client \
@@ -650,7 +636,7 @@ $PYTHON -m $MODULE 'platform-get-app' \
 update_status $? 'GetApp'
 delete_file $TEMP_FILE
 
-#- 79 UpdateApp
+#- 77 UpdateApp
 $PYTHON -m $MODULE 'platform-update-app' \
     'wmzBBSMN' \
     'coAAOjKN' \
@@ -659,7 +645,7 @@ $PYTHON -m $MODULE 'platform-update-app' \
 update_status $? 'UpdateApp'
 delete_file $TEMP_FILE
 
-#- 80 DisableItem
+#- 78 DisableItem
 $PYTHON -m $MODULE 'platform-disable-item' \
     'jfcYHm09' \
     '3aYgBU1s' \
@@ -668,7 +654,7 @@ $PYTHON -m $MODULE 'platform-disable-item' \
 update_status $? 'DisableItem'
 delete_file $TEMP_FILE
 
-#- 81 GetItemDynamicData
+#- 79 GetItemDynamicData
 $PYTHON -m $MODULE 'platform-get-item-dynamic-data' \
     'qjyK0XH4' \
     --login_as client \
@@ -676,7 +662,7 @@ $PYTHON -m $MODULE 'platform-get-item-dynamic-data' \
 update_status $? 'GetItemDynamicData'
 delete_file $TEMP_FILE
 
-#- 82 EnableItem
+#- 80 EnableItem
 $PYTHON -m $MODULE 'platform-enable-item' \
     '5PaRSOFQ' \
     'Btu23REZ' \
@@ -685,7 +671,7 @@ $PYTHON -m $MODULE 'platform-enable-item' \
 update_status $? 'EnableItem'
 delete_file $TEMP_FILE
 
-#- 83 FeatureItem
+#- 81 FeatureItem
 $PYTHON -m $MODULE 'platform-feature-item' \
     '8hRVX7LG' \
     'OvDdYiQS' \
@@ -695,7 +681,7 @@ $PYTHON -m $MODULE 'platform-feature-item' \
 update_status $? 'FeatureItem'
 delete_file $TEMP_FILE
 
-#- 84 DefeatureItem
+#- 82 DefeatureItem
 $PYTHON -m $MODULE 'platform-defeature-item' \
     '1pjG9gpx' \
     'L6ycTQdv' \
@@ -705,7 +691,7 @@ $PYTHON -m $MODULE 'platform-defeature-item' \
 update_status $? 'DefeatureItem'
 delete_file $TEMP_FILE
 
-#- 85 GetLocaleItem
+#- 83 GetLocaleItem
 $PYTHON -m $MODULE 'platform-get-locale-item' \
     'WEXL6LFE' \
     --login_as client \
@@ -713,7 +699,7 @@ $PYTHON -m $MODULE 'platform-get-locale-item' \
 update_status $? 'GetLocaleItem'
 delete_file $TEMP_FILE
 
-#- 86 ReturnItem
+#- 84 ReturnItem
 $PYTHON -m $MODULE 'platform-return-item' \
     '1YHo9m12' \
     --login_as client \
@@ -721,21 +707,21 @@ $PYTHON -m $MODULE 'platform-return-item' \
 update_status $? 'ReturnItem'
 delete_file $TEMP_FILE
 
-#- 87 QueryKeyGroups
+#- 85 QueryKeyGroups
 $PYTHON -m $MODULE 'platform-query-key-groups' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'QueryKeyGroups'
 delete_file $TEMP_FILE
 
-#- 88 CreateKeyGroup
+#- 86 CreateKeyGroup
 $PYTHON -m $MODULE 'platform-create-key-group' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateKeyGroup'
 delete_file $TEMP_FILE
 
-#- 89 GetKeyGroup
+#- 87 GetKeyGroup
 $PYTHON -m $MODULE 'platform-get-key-group' \
     '6ZWc8hHt' \
     --login_as client \
@@ -743,7 +729,7 @@ $PYTHON -m $MODULE 'platform-get-key-group' \
 update_status $? 'GetKeyGroup'
 delete_file $TEMP_FILE
 
-#- 90 UpdateKeyGroup
+#- 88 UpdateKeyGroup
 $PYTHON -m $MODULE 'platform-update-key-group' \
     'WvbNYqgU' \
     --login_as client \
@@ -751,7 +737,7 @@ $PYTHON -m $MODULE 'platform-update-key-group' \
 update_status $? 'UpdateKeyGroup'
 delete_file $TEMP_FILE
 
-#- 91 GetKeyGroupDynamic
+#- 89 GetKeyGroupDynamic
 $PYTHON -m $MODULE 'platform-get-key-group-dynamic' \
     'qslArFPi' \
     --login_as client \
@@ -759,7 +745,7 @@ $PYTHON -m $MODULE 'platform-get-key-group-dynamic' \
 update_status $? 'GetKeyGroupDynamic'
 delete_file $TEMP_FILE
 
-#- 92 ListKeys
+#- 90 ListKeys
 $PYTHON -m $MODULE 'platform-list-keys' \
     'HUIvaCv8' \
     --login_as client \
@@ -767,7 +753,7 @@ $PYTHON -m $MODULE 'platform-list-keys' \
 update_status $? 'ListKeys'
 delete_file $TEMP_FILE
 
-#- 93 UploadKeys
+#- 91 UploadKeys
 $PYTHON -m $MODULE 'platform-upload-keys' \
     'kU9dBBpd' \
     --login_as client \
@@ -775,21 +761,21 @@ $PYTHON -m $MODULE 'platform-upload-keys' \
 update_status $? 'UploadKeys'
 delete_file $TEMP_FILE
 
-#- 94 QueryOrders
+#- 92 QueryOrders
 $PYTHON -m $MODULE 'platform-query-orders' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'QueryOrders'
 delete_file $TEMP_FILE
 
-#- 95 GetOrderStatistics
+#- 93 GetOrderStatistics
 $PYTHON -m $MODULE 'platform-get-order-statistics' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetOrderStatistics'
 delete_file $TEMP_FILE
 
-#- 96 GetOrder
+#- 94 GetOrder
 $PYTHON -m $MODULE 'platform-get-order' \
     'sJLhsVyE' \
     --login_as client \
@@ -797,12 +783,26 @@ $PYTHON -m $MODULE 'platform-get-order' \
 update_status $? 'GetOrder'
 delete_file $TEMP_FILE
 
-#- 97 RefundOrder
+#- 95 RefundOrder
 $PYTHON -m $MODULE 'platform-refund-order' \
     'xrkxoot0' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'RefundOrder'
+delete_file $TEMP_FILE
+
+#- 96 GetPaymentCallbackConfig
+$PYTHON -m $MODULE 'platform-get-payment-callback-config' \
+    --login_as client \
+    >$TEMP_FILE 2>&1
+update_status $? 'GetPaymentCallbackConfig'
+delete_file $TEMP_FILE
+
+#- 97 UpdatePaymentCallbackConfig
+$PYTHON -m $MODULE 'platform-update-payment-callback-config' \
+    --login_as client \
+    >$TEMP_FILE 2>&1
+update_status $? 'UpdatePaymentCallbackConfig'
 delete_file $TEMP_FILE
 
 #- 98 QueryPaymentNotifications
@@ -1231,1330 +1231,1248 @@ $PYTHON -m $MODULE 'platform-get-user-entitlement-ownership-by-sku' \
 update_status $? 'GetUserEntitlementOwnershipBySku'
 delete_file $TEMP_FILE
 
-#- 152 GetUserDistributionReceivers
-$PYTHON -m $MODULE 'platform-get-user-distribution-receivers' \
-    'VBmft3Ud' \
-    --login_as client \
-    >$TEMP_FILE 2>&1
-update_status $? 'GetUserDistributionReceivers'
-delete_file $TEMP_FILE
-
-#- 153 UpdateUserDistributionReceiver
-$PYTHON -m $MODULE 'platform-update-user-distribution-receiver' \
-    'g7p9PGmY' \
-    '2H5kX4Ms' \
-    --login_as client \
-    >$TEMP_FILE 2>&1
-update_status $? 'UpdateUserDistributionReceiver'
-delete_file $TEMP_FILE
-
-#- 154 CreateUserDistributionReceiver
-$PYTHON -m $MODULE 'platform-create-user-distribution-receiver' \
-    'isSX28nA' \
-    'RxWRpv5o' \
-    --login_as client \
-    >$TEMP_FILE 2>&1
-update_status $? 'CreateUserDistributionReceiver'
-delete_file $TEMP_FILE
-
-#- 155 DeleteUserDistributionReceiver
-$PYTHON -m $MODULE 'platform-delete-user-distribution-receiver' \
-    'u5xtvd28' \
-    'OUfCt8UJ' \
-    --login_as client \
-    >$TEMP_FILE 2>&1
-update_status $? 'DeleteUserDistributionReceiver'
-delete_file $TEMP_FILE
-
-#- 156 RevokeUserEntitlements
+#- 152 RevokeUserEntitlements
 $PYTHON -m $MODULE 'platform-revoke-user-entitlements' \
-    'C5flNyj6' \
-    'HsTtX8P3' \
+    'VBmft3Ud' \
+    'g7p9PGmY' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'RevokeUserEntitlements'
 delete_file $TEMP_FILE
 
-#- 157 GetUserEntitlement
+#- 153 GetUserEntitlement
 $PYTHON -m $MODULE 'platform-get-user-entitlement' \
-    'llnaaS9l' \
-    'qyygPcfk' \
+    '2H5kX4Ms' \
+    'isSX28nA' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserEntitlement'
 delete_file $TEMP_FILE
 
-#- 158 UpdateUserEntitlement
+#- 154 UpdateUserEntitlement
 $PYTHON -m $MODULE 'platform-update-user-entitlement' \
-    'JIxfQZza' \
-    '8kNVbDxV' \
+    'RxWRpv5o' \
+    'u5xtvd28' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateUserEntitlement'
 delete_file $TEMP_FILE
 
-#- 159 ConsumeUserEntitlement
+#- 155 ConsumeUserEntitlement
 $PYTHON -m $MODULE 'platform-consume-user-entitlement' \
-    'Mq7HJk0F' \
-    '89xAc3YV' \
+    'OUfCt8UJ' \
+    'C5flNyj6' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'ConsumeUserEntitlement'
 delete_file $TEMP_FILE
 
-#- 160 DisableUserEntitlement
+#- 156 DisableUserEntitlement
 $PYTHON -m $MODULE 'platform-disable-user-entitlement' \
-    'faENtrl0' \
-    'pTKZTXqz' \
+    'HsTtX8P3' \
+    'llnaaS9l' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'DisableUserEntitlement'
 delete_file $TEMP_FILE
 
-#- 161 EnableUserEntitlement
+#- 157 EnableUserEntitlement
 $PYTHON -m $MODULE 'platform-enable-user-entitlement' \
-    'HuBMYQSA' \
-    '2jz1ZOpd' \
+    'qyygPcfk' \
+    'JIxfQZza' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'EnableUserEntitlement'
 delete_file $TEMP_FILE
 
-#- 162 GetUserEntitlementHistories
+#- 158 GetUserEntitlementHistories
 $PYTHON -m $MODULE 'platform-get-user-entitlement-histories' \
-    'OjSyMddB' \
-    '41JuMf7R' \
+    '8kNVbDxV' \
+    'Mq7HJk0F' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserEntitlementHistories'
 delete_file $TEMP_FILE
 
-#- 163 RevokeUserEntitlement
+#- 159 RevokeUserEntitlement
 $PYTHON -m $MODULE 'platform-revoke-user-entitlement' \
-    'UyBHRj8I' \
-    'iRimRllH' \
+    '89xAc3YV' \
+    'faENtrl0' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'RevokeUserEntitlement'
 delete_file $TEMP_FILE
 
-#- 164 FulfillItem
+#- 160 FulfillItem
 $PYTHON -m $MODULE 'platform-fulfill-item' \
-    'T6Dc40vF' \
+    'pTKZTXqz' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'FulfillItem'
 delete_file $TEMP_FILE
 
-#- 165 RedeemCode
+#- 161 RedeemCode
 $PYTHON -m $MODULE 'platform-redeem-code' \
-    'FA6gpU7E' \
+    'HuBMYQSA' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'RedeemCode'
 delete_file $TEMP_FILE
 
-#- 166 QueryUserIAPOrders
+#- 162 QueryUserIAPOrders
 $PYTHON -m $MODULE 'platform-query-user-iap-orders' \
-    'W3x1dCpm' \
+    '2jz1ZOpd' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'QueryUserIAPOrders'
 delete_file $TEMP_FILE
 
-#- 167 MockFulfillIAPItem
+#- 163 MockFulfillIAPItem
 $PYTHON -m $MODULE 'platform-mock-fulfill-iap-item' \
-    '55gOeqQI' \
+    'OjSyMddB' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'MockFulfillIAPItem'
 delete_file $TEMP_FILE
 
-#- 168 QueryUserOrders
+#- 164 QueryUserOrders
 $PYTHON -m $MODULE 'platform-query-user-orders' \
-    'qcJVKmBM' \
+    '41JuMf7R' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'QueryUserOrders'
 delete_file $TEMP_FILE
 
-#- 169 CountOfPurchasedItem
+#- 165 CountOfPurchasedItem
 $PYTHON -m $MODULE 'platform-count-of-purchased-item' \
-    '1J1IbuTr' \
-    'rkbmuT1w' \
+    'UyBHRj8I' \
+    'iRimRllH' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'CountOfPurchasedItem'
 delete_file $TEMP_FILE
 
-#- 170 GetUserOrder
+#- 166 GetUserOrder
 $PYTHON -m $MODULE 'platform-get-user-order' \
-    'hOqmEnDX' \
-    'IWrBPlSa' \
+    'T6Dc40vF' \
+    'FA6gpU7E' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserOrder'
 delete_file $TEMP_FILE
 
-#- 171 UpdateUserOrderStatus
+#- 167 UpdateUserOrderStatus
 $PYTHON -m $MODULE 'platform-update-user-order-status' \
-    'y46mv71B' \
-    'AZAOjtFJ' \
+    'W3x1dCpm' \
+    '55gOeqQI' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateUserOrderStatus'
 delete_file $TEMP_FILE
 
-#- 172 FulfillUserOrder
+#- 168 FulfillUserOrder
 $PYTHON -m $MODULE 'platform-fulfill-user-order' \
-    '2vmTj7tT' \
-    '7TZHWDdC' \
+    'qcJVKmBM' \
+    '1J1IbuTr' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'FulfillUserOrder'
 delete_file $TEMP_FILE
 
-#- 173 GetUserOrderGrant
+#- 169 GetUserOrderGrant
 $PYTHON -m $MODULE 'platform-get-user-order-grant' \
-    'kIsZoArW' \
-    'wPHcyFAd' \
+    'rkbmuT1w' \
+    'hOqmEnDX' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserOrderGrant'
 delete_file $TEMP_FILE
 
-#- 174 GetUserOrderHistories
+#- 170 GetUserOrderHistories
 $PYTHON -m $MODULE 'platform-get-user-order-histories' \
-    'AtYciLIg' \
-    'RwFRr0gw' \
+    'IWrBPlSa' \
+    'y46mv71B' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserOrderHistories'
 delete_file $TEMP_FILE
 
-#- 175 ProcessUserOrderNotification
+#- 171 ProcessUserOrderNotification
 $PYTHON -m $MODULE 'platform-process-user-order-notification' \
-    'B9tz3vp9' \
-    '9XVlV8rK' \
+    'AZAOjtFJ' \
+    '2vmTj7tT' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'ProcessUserOrderNotification'
 delete_file $TEMP_FILE
 
-#- 176 DownloadUserOrderReceipt
+#- 172 DownloadUserOrderReceipt
 $PYTHON -m $MODULE 'platform-download-user-order-receipt' \
-    '3tE6n0sm' \
-    'ip1tw3L7' \
+    '7TZHWDdC' \
+    'kIsZoArW' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'DownloadUserOrderReceipt'
 delete_file $TEMP_FILE
 
-#- 177 CreateUserPaymentOrder
+#- 173 CreateUserPaymentOrder
 $PYTHON -m $MODULE 'platform-create-user-payment-order' \
-    'cUd9pqtv' \
+    'wPHcyFAd' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateUserPaymentOrder'
 delete_file $TEMP_FILE
 
-#- 178 RefundUserPaymentOrder
+#- 174 RefundUserPaymentOrder
 $PYTHON -m $MODULE 'platform-refund-user-payment-order' \
-    '6JfPZwcC' \
-    'VOXcVa80' \
+    'AtYciLIg' \
+    'RwFRr0gw' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'RefundUserPaymentOrder'
 delete_file $TEMP_FILE
 
-#- 179 ApplyUserRedemption
+#- 175 ApplyUserRedemption
 $PYTHON -m $MODULE 'platform-apply-user-redemption' \
-    'TmCwtD2l' \
+    'B9tz3vp9' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'ApplyUserRedemption'
 delete_file $TEMP_FILE
 
-#- 180 QueryUserSubscriptions
+#- 176 QueryUserSubscriptions
 $PYTHON -m $MODULE 'platform-query-user-subscriptions' \
-    'AH01o6Nd' \
+    '9XVlV8rK' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'QueryUserSubscriptions'
 delete_file $TEMP_FILE
 
-#- 181 GetUserSubscriptionActivities
+#- 177 GetUserSubscriptionActivities
 $PYTHON -m $MODULE 'platform-get-user-subscription-activities' \
-    'cBIgzrDy' \
+    '3tE6n0sm' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserSubscriptionActivities'
 delete_file $TEMP_FILE
 
-#- 182 PlatformSubscribeSubscription
+#- 178 PlatformSubscribeSubscription
 $PYTHON -m $MODULE 'platform-platform-subscribe-subscription' \
-    'WpFBYGmm' \
+    'ip1tw3L7' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PlatformSubscribeSubscription'
 delete_file $TEMP_FILE
 
-#- 183 CheckUserSubscriptionSubscribableByItemId
+#- 179 CheckUserSubscriptionSubscribableByItemId
 $PYTHON -m $MODULE 'platform-check-user-subscription-subscribable-by-item-id' \
-    'BawMyoKy' \
-    'NpdAasm8' \
+    'cUd9pqtv' \
+    '6JfPZwcC' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'CheckUserSubscriptionSubscribableByItemId'
 delete_file $TEMP_FILE
 
-#- 184 GetUserSubscription
+#- 180 GetUserSubscription
 $PYTHON -m $MODULE 'platform-get-user-subscription' \
-    'xwUfzOlQ' \
-    'iZY4NbOQ' \
+    'VOXcVa80' \
+    'TmCwtD2l' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserSubscription'
 delete_file $TEMP_FILE
 
-#- 185 DeleteUserSubscription
+#- 181 DeleteUserSubscription
 $PYTHON -m $MODULE 'platform-delete-user-subscription' \
-    'XJ7uOTzN' \
-    'Mvuq2tNl' \
+    'AH01o6Nd' \
+    'cBIgzrDy' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteUserSubscription'
 delete_file $TEMP_FILE
 
-#- 186 CancelSubscription
+#- 182 CancelSubscription
 $PYTHON -m $MODULE 'platform-cancel-subscription' \
-    '4CX4IjiK' \
-    '4DEUJRVK' \
+    'WpFBYGmm' \
+    'BawMyoKy' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'CancelSubscription'
 delete_file $TEMP_FILE
 
-#- 187 GrantDaysToSubscription
+#- 183 GrantDaysToSubscription
 $PYTHON -m $MODULE 'platform-grant-days-to-subscription' \
-    '3l9Eb0R1' \
-    'XRb0RH8v' \
+    'NpdAasm8' \
+    'xwUfzOlQ' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GrantDaysToSubscription'
 delete_file $TEMP_FILE
 
-#- 188 GetUserSubscriptionBillingHistories
+#- 184 GetUserSubscriptionBillingHistories
 $PYTHON -m $MODULE 'platform-get-user-subscription-billing-histories' \
-    'S1smeOln' \
-    'grdTXCza' \
+    'iZY4NbOQ' \
+    'XJ7uOTzN' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserSubscriptionBillingHistories'
 delete_file $TEMP_FILE
 
-#- 189 ProcessUserSubscriptionNotification
+#- 185 ProcessUserSubscriptionNotification
 $PYTHON -m $MODULE 'platform-process-user-subscription-notification' \
-    'PBtkZMio' \
-    '4wcyhloV' \
+    'Mvuq2tNl' \
+    '4CX4IjiK' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'ProcessUserSubscriptionNotification'
 delete_file $TEMP_FILE
 
-#- 190 AcquireUserTicket
+#- 186 AcquireUserTicket
 $PYTHON -m $MODULE 'platform-acquire-user-ticket' \
-    'S3rYp8Qt' \
-    'cEmCEVc7' \
+    '4DEUJRVK' \
+    '3l9Eb0R1' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'AcquireUserTicket'
 delete_file $TEMP_FILE
 
-#- 191 CheckWallet
+#- 187 CheckWallet
 $PYTHON -m $MODULE 'platform-check-wallet' \
-    '5UfeypWj' \
-    'DNhzCL5s' \
+    'XRb0RH8v' \
+    'S1smeOln' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'CheckWallet'
 delete_file $TEMP_FILE
 
-#- 192 CreditUserWallet
+#- 188 CreditUserWallet
 $PYTHON -m $MODULE 'platform-credit-user-wallet' \
-    'WS2qwO76' \
-    '3iEklkzL' \
+    'grdTXCza' \
+    'PBtkZMio' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'CreditUserWallet'
 delete_file $TEMP_FILE
 
-#- 193 PayWithUserWallet
+#- 189 PayWithUserWallet
 $PYTHON -m $MODULE 'platform-pay-with-user-wallet' \
-    'm88LpLuY' \
-    'RO3C55yH' \
+    '4wcyhloV' \
+    'S3rYp8Qt' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PayWithUserWallet'
 delete_file $TEMP_FILE
 
-#- 194 GetUserWallet
+#- 190 GetUserWallet
 $PYTHON -m $MODULE 'platform-get-user-wallet' \
-    'pwK2Jaqe' \
-    'nDGn7a2N' \
+    'cEmCEVc7' \
+    '5UfeypWj' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserWallet'
 delete_file $TEMP_FILE
 
-#- 195 DebitUserWallet
+#- 191 DebitUserWallet
 $PYTHON -m $MODULE 'platform-debit-user-wallet' \
-    'UplWiLjq' \
-    '06n6a0rW' \
+    'DNhzCL5s' \
+    'WS2qwO76' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'DebitUserWallet'
 delete_file $TEMP_FILE
 
-#- 196 DisableUserWallet
+#- 192 DisableUserWallet
 $PYTHON -m $MODULE 'platform-disable-user-wallet' \
-    '8EfkpaXt' \
-    'wYZJaQ4W' \
+    '3iEklkzL' \
+    'm88LpLuY' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'DisableUserWallet'
 delete_file $TEMP_FILE
 
-#- 197 EnableUserWallet
+#- 193 EnableUserWallet
 $PYTHON -m $MODULE 'platform-enable-user-wallet' \
-    'bwNmsFYe' \
-    'tjEurH8e' \
+    'RO3C55yH' \
+    'pwK2Jaqe' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'EnableUserWallet'
 delete_file $TEMP_FILE
 
-#- 198 ListUserWalletTransactions
+#- 194 ListUserWalletTransactions
 $PYTHON -m $MODULE 'platform-list-user-wallet-transactions' \
-    'loJzNKtR' \
-    'UaTz1ETd' \
+    'nDGn7a2N' \
+    'UplWiLjq' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'ListUserWalletTransactions'
 delete_file $TEMP_FILE
 
-#- 199 QueryWallets
+#- 195 QueryWallets
 $PYTHON -m $MODULE 'platform-query-wallets' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'QueryWallets'
 delete_file $TEMP_FILE
 
-#- 200 GetWallet
+#- 196 GetWallet
 $PYTHON -m $MODULE 'platform-get-wallet' \
-    'smwzjkkn' \
+    '06n6a0rW' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetWallet'
 delete_file $TEMP_FILE
 
-#- 201 SyncOrders
+#- 197 SyncOrders
 $PYTHON -m $MODULE 'platform-sync-orders' \
-    '9oiQl05g' \
-    '7cO3ZMb6' \
+    '8EfkpaXt' \
+    'wYZJaQ4W' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'SyncOrders'
 delete_file $TEMP_FILE
 
-#- 202 TestAdyenConfig
+#- 198 TestAdyenConfig
 $PYTHON -m $MODULE 'platform-test-adyen-config' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestAdyenConfig'
 delete_file $TEMP_FILE
 
-#- 203 TestAliPayConfig
+#- 199 TestAliPayConfig
 $PYTHON -m $MODULE 'platform-test-ali-pay-config' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestAliPayConfig'
 delete_file $TEMP_FILE
 
-#- 204 TestCheckoutConfig
+#- 200 TestCheckoutConfig
 $PYTHON -m $MODULE 'platform-test-checkout-config' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestCheckoutConfig'
 delete_file $TEMP_FILE
 
-#- 205 DebugMatchedPaymentMerchantConfig
+#- 201 DebugMatchedPaymentMerchantConfig
 $PYTHON -m $MODULE 'platform-debug-matched-payment-merchant-config' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'DebugMatchedPaymentMerchantConfig'
 delete_file $TEMP_FILE
 
-#- 206 TestPayPalConfig
+#- 202 TestPayPalConfig
 $PYTHON -m $MODULE 'platform-test-pay-pal-config' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestPayPalConfig'
 delete_file $TEMP_FILE
 
-#- 207 TestStripeConfig
+#- 203 TestStripeConfig
 $PYTHON -m $MODULE 'platform-test-stripe-config' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestStripeConfig'
 delete_file $TEMP_FILE
 
-#- 208 TestWxPayConfig
+#- 204 TestWxPayConfig
 $PYTHON -m $MODULE 'platform-test-wx-pay-config' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestWxPayConfig'
 delete_file $TEMP_FILE
 
-#- 209 TestXsollaConfig
+#- 205 TestXsollaConfig
 $PYTHON -m $MODULE 'platform-test-xsolla-config' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestXsollaConfig'
 delete_file $TEMP_FILE
 
-#- 210 GetPaymentMerchantConfig
+#- 206 GetPaymentMerchantConfig
 $PYTHON -m $MODULE 'platform-get-payment-merchant-config' \
-    'Ojlo6DMN' \
+    'bwNmsFYe' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetPaymentMerchantConfig'
 delete_file $TEMP_FILE
 
-#- 211 UpdateAdyenConfig
+#- 207 UpdateAdyenConfig
 $PYTHON -m $MODULE 'platform-update-adyen-config' \
-    'pP2qMrTQ' \
+    'tjEurH8e' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateAdyenConfig'
 delete_file $TEMP_FILE
 
-#- 212 TestAdyenConfigById
+#- 208 TestAdyenConfigById
 $PYTHON -m $MODULE 'platform-test-adyen-config-by-id' \
-    '1UpjfU6w' \
+    'loJzNKtR' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestAdyenConfigById'
 delete_file $TEMP_FILE
 
-#- 213 UpdateAliPayConfig
+#- 209 UpdateAliPayConfig
 $PYTHON -m $MODULE 'platform-update-ali-pay-config' \
-    'Jhy1jOVk' \
+    'UaTz1ETd' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateAliPayConfig'
 delete_file $TEMP_FILE
 
-#- 214 TestAliPayConfigById
+#- 210 TestAliPayConfigById
 $PYTHON -m $MODULE 'platform-test-ali-pay-config-by-id' \
-    'kUlS7952' \
+    'smwzjkkn' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestAliPayConfigById'
 delete_file $TEMP_FILE
 
-#- 215 UpdateCheckoutConfig
+#- 211 UpdateCheckoutConfig
 $PYTHON -m $MODULE 'platform-update-checkout-config' \
-    '7EZ25Ia8' \
+    '9oiQl05g' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateCheckoutConfig'
 delete_file $TEMP_FILE
 
-#- 216 TestCheckoutConfigById
+#- 212 TestCheckoutConfigById
 $PYTHON -m $MODULE 'platform-test-checkout-config-by-id' \
-    'uCeZFlLt' \
+    '7cO3ZMb6' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestCheckoutConfigById'
 delete_file $TEMP_FILE
 
-#- 217 UpdatePayPalConfig
+#- 213 UpdatePayPalConfig
 $PYTHON -m $MODULE 'platform-update-pay-pal-config' \
-    'EVpDAEbA' \
+    'Ojlo6DMN' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdatePayPalConfig'
 delete_file $TEMP_FILE
 
-#- 218 TestPayPalConfigById
+#- 214 TestPayPalConfigById
 $PYTHON -m $MODULE 'platform-test-pay-pal-config-by-id' \
-    '82jy74lq' \
+    'pP2qMrTQ' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestPayPalConfigById'
 delete_file $TEMP_FILE
 
-#- 219 UpdateStripeConfig
+#- 215 UpdateStripeConfig
 $PYTHON -m $MODULE 'platform-update-stripe-config' \
-    '0pDE5xRw' \
+    '1UpjfU6w' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateStripeConfig'
 delete_file $TEMP_FILE
 
-#- 220 TestStripeConfigById
+#- 216 TestStripeConfigById
 $PYTHON -m $MODULE 'platform-test-stripe-config-by-id' \
-    'h5b45ebp' \
+    'Jhy1jOVk' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestStripeConfigById'
 delete_file $TEMP_FILE
 
-#- 221 UpdateWxPayConfig
+#- 217 UpdateWxPayConfig
 $PYTHON -m $MODULE 'platform-update-wx-pay-config' \
-    'cM7ScSs3' \
+    'kUlS7952' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateWxPayConfig'
 delete_file $TEMP_FILE
 
-#- 222 UpdateWxPayConfigCert
+#- 218 UpdateWxPayConfigCert
 $PYTHON -m $MODULE 'platform-update-wx-pay-config-cert' \
-    'UOpAwIp9' \
+    '7EZ25Ia8' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateWxPayConfigCert'
 delete_file $TEMP_FILE
 
-#- 223 TestWxPayConfigById
+#- 219 TestWxPayConfigById
 $PYTHON -m $MODULE 'platform-test-wx-pay-config-by-id' \
-    'rRtn1PcC' \
+    'uCeZFlLt' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestWxPayConfigById'
 delete_file $TEMP_FILE
 
-#- 224 UpdateXsollaConfig
+#- 220 UpdateXsollaConfig
 $PYTHON -m $MODULE 'platform-update-xsolla-config' \
-    'xdbumeYg' \
+    'EVpDAEbA' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateXsollaConfig'
 delete_file $TEMP_FILE
 
-#- 225 TestXsollaConfigById
+#- 221 TestXsollaConfigById
 $PYTHON -m $MODULE 'platform-test-xsolla-config-by-id' \
-    'OdEBWRQi' \
+    '82jy74lq' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestXsollaConfigById'
 delete_file $TEMP_FILE
 
-#- 226 UpdateXsollaUIConfig
+#- 222 UpdateXsollaUIConfig
 $PYTHON -m $MODULE 'platform-update-xsolla-ui-config' \
-    'W3KFfU8i' \
+    '0pDE5xRw' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateXsollaUIConfig'
 delete_file $TEMP_FILE
 
-#- 227 QueryPaymentProviderConfig
+#- 223 QueryPaymentProviderConfig
 $PYTHON -m $MODULE 'platform-query-payment-provider-config' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'QueryPaymentProviderConfig'
 delete_file $TEMP_FILE
 
-#- 228 CreatePaymentProviderConfig
+#- 224 CreatePaymentProviderConfig
 $PYTHON -m $MODULE 'platform-create-payment-provider-config' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'CreatePaymentProviderConfig'
 delete_file $TEMP_FILE
 
-#- 229 GetAggregatePaymentProviders
+#- 225 GetAggregatePaymentProviders
 $PYTHON -m $MODULE 'platform-get-aggregate-payment-providers' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetAggregatePaymentProviders'
 delete_file $TEMP_FILE
 
-#- 230 DebugMatchedPaymentProviderConfig
+#- 226 DebugMatchedPaymentProviderConfig
 $PYTHON -m $MODULE 'platform-debug-matched-payment-provider-config' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'DebugMatchedPaymentProviderConfig'
 delete_file $TEMP_FILE
 
-#- 231 GetSpecialPaymentProviders
+#- 227 GetSpecialPaymentProviders
 $PYTHON -m $MODULE 'platform-get-special-payment-providers' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetSpecialPaymentProviders'
 delete_file $TEMP_FILE
 
-#- 232 UpdatePaymentProviderConfig
+#- 228 UpdatePaymentProviderConfig
 $PYTHON -m $MODULE 'platform-update-payment-provider-config' \
-    'cH4081gR' \
+    'h5b45ebp' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdatePaymentProviderConfig'
 delete_file $TEMP_FILE
 
-#- 233 DeletePaymentProviderConfig
+#- 229 DeletePaymentProviderConfig
 $PYTHON -m $MODULE 'platform-delete-payment-provider-config' \
-    'B1GyLfLg' \
+    'cM7ScSs3' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'DeletePaymentProviderConfig'
 delete_file $TEMP_FILE
 
-#- 234 GetPaymentTaxConfig
+#- 230 GetPaymentTaxConfig
 $PYTHON -m $MODULE 'platform-get-payment-tax-config' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetPaymentTaxConfig'
 delete_file $TEMP_FILE
 
-#- 235 UpdatePaymentTaxConfig
+#- 231 UpdatePaymentTaxConfig
 $PYTHON -m $MODULE 'platform-update-payment-tax-config' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdatePaymentTaxConfig'
 delete_file $TEMP_FILE
 
-#- 236 SyncPaymentOrders
+#- 232 SyncPaymentOrders
 $PYTHON -m $MODULE 'platform-sync-payment-orders' \
-    '4RYuEbgU' \
-    'DEcJyIvs' \
+    'UOpAwIp9' \
+    'rRtn1PcC' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'SyncPaymentOrders'
 delete_file $TEMP_FILE
 
-#- 237 PublicGetRootCategories
+#- 233 PublicGetRootCategories
 $PYTHON -m $MODULE 'platform-public-get-root-categories' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetRootCategories'
 delete_file $TEMP_FILE
 
-#- 238 DownloadCategories
+#- 234 DownloadCategories
 $PYTHON -m $MODULE 'platform-download-categories' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'DownloadCategories'
 delete_file $TEMP_FILE
 
-#- 239 PublicGetCategory
+#- 235 PublicGetCategory
 $PYTHON -m $MODULE 'platform-public-get-category' \
-    'PwOr0BmV' \
+    'xdbumeYg' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetCategory'
 delete_file $TEMP_FILE
 
-#- 240 PublicGetChildCategories
+#- 236 PublicGetChildCategories
 $PYTHON -m $MODULE 'platform-public-get-child-categories' \
-    '5iFvfwFj' \
+    'OdEBWRQi' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetChildCategories'
 delete_file $TEMP_FILE
 
-#- 241 PublicGetDescendantCategories
+#- 237 PublicGetDescendantCategories
 $PYTHON -m $MODULE 'platform-public-get-descendant-categories' \
-    'TSmIEqoL' \
+    'W3KFfU8i' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetDescendantCategories'
 delete_file $TEMP_FILE
 
-#- 242 PublicListCurrencies
+#- 238 PublicListCurrencies
 $PYTHON -m $MODULE 'platform-public-list-currencies' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicListCurrencies'
 delete_file $TEMP_FILE
 
-#- 243 PublicGetItemByAppId
+#- 239 PublicGetItemByAppId
 $PYTHON -m $MODULE 'platform-public-get-item-by-app-id' \
-    'yLeUGmom' \
+    'cH4081gR' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetItemByAppId'
 delete_file $TEMP_FILE
 
-#- 244 PublicQueryItems
+#- 240 PublicQueryItems
 $PYTHON -m $MODULE 'platform-public-query-items' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicQueryItems'
 delete_file $TEMP_FILE
 
-#- 245 PublicGetItemBySku
+#- 241 PublicGetItemBySku
 $PYTHON -m $MODULE 'platform-public-get-item-by-sku' \
-    'GX9sXTZ0' \
+    'B1GyLfLg' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetItemBySku'
 delete_file $TEMP_FILE
 
-#- 246 PublicBulkGetItems
+#- 242 PublicBulkGetItems
 $PYTHON -m $MODULE 'platform-public-bulk-get-items' \
-    'v8pqLfc5' \
+    '4RYuEbgU' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicBulkGetItems'
 delete_file $TEMP_FILE
 
-#- 247 PublicSearchItems
+#- 243 PublicSearchItems
 $PYTHON -m $MODULE 'platform-public-search-items' \
-    'SwGnReUU' \
-    'LDX4QUIb' \
+    'DEcJyIvs' \
+    'PwOr0BmV' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicSearchItems'
 delete_file $TEMP_FILE
 
-#- 248 PublicGetApp
+#- 244 PublicGetApp
 $PYTHON -m $MODULE 'platform-public-get-app' \
-    'b5nh68Zn' \
+    '5iFvfwFj' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetApp'
 delete_file $TEMP_FILE
 
-#- 249 PublicGetItemDynamicData
+#- 245 PublicGetItemDynamicData
 $PYTHON -m $MODULE 'platform-public-get-item-dynamic-data' \
-    'yUtRvW9h' \
+    'TSmIEqoL' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetItemDynamicData'
 delete_file $TEMP_FILE
 
-#- 250 PublicGetItem
+#- 246 PublicGetItem
 $PYTHON -m $MODULE 'platform-public-get-item' \
-    'NBSFTtFr' \
+    'yLeUGmom' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetItem'
 delete_file $TEMP_FILE
 
-#- 251 GetPaymentCustomization
+#- 247 GetPaymentCustomization
 $PYTHON -m $MODULE 'platform-get-payment-customization' \
-    'PAYPAL' \
-    'jkFrFVA8' \
+    'STRIPE' \
+    'XTZ0v8pq' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetPaymentCustomization'
 delete_file $TEMP_FILE
 
-#- 252 PublicGetPaymentUrl
+#- 248 PublicGetPaymentUrl
 $PYTHON -m $MODULE 'platform-public-get-payment-url' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetPaymentUrl'
 delete_file $TEMP_FILE
 
-#- 253 PublicGetPaymentMethods
+#- 249 PublicGetPaymentMethods
 $PYTHON -m $MODULE 'platform-public-get-payment-methods' \
-    't0xF34Xp' \
+    'Lfc5SwGn' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetPaymentMethods'
 delete_file $TEMP_FILE
 
-#- 254 PublicGetUnpaidPaymentOrder
+#- 250 PublicGetUnpaidPaymentOrder
 $PYTHON -m $MODULE 'platform-public-get-unpaid-payment-order' \
-    't6ZlTTic' \
+    'ReUULDX4' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUnpaidPaymentOrder'
 delete_file $TEMP_FILE
 
-#- 255 Pay
+#- 251 Pay
 $PYTHON -m $MODULE 'platform-pay' \
-    '0kr2a0nI' \
+    'QUIbb5nh' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'Pay'
 delete_file $TEMP_FILE
 
-#- 256 PublicCheckPaymentOrderPaidStatus
+#- 252 PublicCheckPaymentOrderPaidStatus
 $PYTHON -m $MODULE 'platform-public-check-payment-order-paid-status' \
-    '2oo7UHCJ' \
+    '68ZnyUtR' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicCheckPaymentOrderPaidStatus'
 delete_file $TEMP_FILE
 
-#- 257 GetPaymentPublicConfig
+#- 253 GetPaymentPublicConfig
 $PYTHON -m $MODULE 'platform-get-payment-public-config' \
-    'STRIPE' \
-    'p0aCvIq3' \
+    'WALLET' \
+    'W9hNBSFT' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetPaymentPublicConfig'
 delete_file $TEMP_FILE
 
-#- 258 PublicGetQRCode
+#- 254 PublicGetQRCode
 $PYTHON -m $MODULE 'platform-public-get-qr-code' \
-    'aHVYIlew' \
+    'tFrOmjkF' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetQRCode'
 delete_file $TEMP_FILE
 
-#- 259 PublicNormalizePaymentReturnUrl
+#- 255 PublicNormalizePaymentReturnUrl
 $PYTHON -m $MODULE 'platform-public-normalize-payment-return-url' \
-    'LRuHY83b' \
-    'Gj0HTeeW' \
+    'rFVA8t0x' \
+    'F34Xpt6Z' \
     'CHECKOUT' \
-    'IcRidqct' \
+    'TTic0kr2' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicNormalizePaymentReturnUrl'
 delete_file $TEMP_FILE
 
-#- 260 GetPaymentTaxValue
+#- 256 GetPaymentTaxValue
 $PYTHON -m $MODULE 'platform-get-payment-tax-value' \
-    'DpygY0ax' \
+    'a0nI2oo7' \
     'XSOLLA' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetPaymentTaxValue'
 delete_file $TEMP_FILE
 
-#- 261 GetRewardByCode
+#- 257 GetRewardByCode
 $PYTHON -m $MODULE 'platform-get-reward-by-code' \
-    'D4MMO9Tw' \
+    'JK5sp0aC' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetRewardByCode'
 delete_file $TEMP_FILE
 
-#- 262 QueryRewards1
+#- 258 QueryRewards1
 $PYTHON -m $MODULE 'platform-query-rewards-1' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'QueryRewards1'
 delete_file $TEMP_FILE
 
-#- 263 GetReward1
+#- 259 GetReward1
 $PYTHON -m $MODULE 'platform-get-reward-1' \
-    '2JH0qhWI' \
+    'vIq3aHVY' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetReward1'
 delete_file $TEMP_FILE
 
-#- 264 PublicListStores
+#- 260 PublicListStores
 $PYTHON -m $MODULE 'platform-public-list-stores' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicListStores'
 delete_file $TEMP_FILE
 
-#- 265 PublicExistsAnyMyActiveEntitlement
+#- 261 PublicExistsAnyMyActiveEntitlement
 $PYTHON -m $MODULE 'platform-public-exists-any-my-active-entitlement' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicExistsAnyMyActiveEntitlement'
 delete_file $TEMP_FILE
 
-#- 266 PublicGetMyAppEntitlementOwnershipByAppId
+#- 262 PublicGetMyAppEntitlementOwnershipByAppId
 $PYTHON -m $MODULE 'platform-public-get-my-app-entitlement-ownership-by-app-id' \
-    'wHWTgzJF' \
+    'IlewLRuH' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetMyAppEntitlementOwnershipByAppId'
 delete_file $TEMP_FILE
 
-#- 267 PublicGetMyEntitlementOwnershipByItemId
+#- 263 PublicGetMyEntitlementOwnershipByItemId
 $PYTHON -m $MODULE 'platform-public-get-my-entitlement-ownership-by-item-id' \
-    'RYw6t1IK' \
+    'Y83bGj0H' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetMyEntitlementOwnershipByItemId'
 delete_file $TEMP_FILE
 
-#- 268 PublicGetMyEntitlementOwnershipBySku
+#- 264 PublicGetMyEntitlementOwnershipBySku
 $PYTHON -m $MODULE 'platform-public-get-my-entitlement-ownership-by-sku' \
-    'ZLO6V4Od' \
+    'TeeWXlIc' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetMyEntitlementOwnershipBySku'
 delete_file $TEMP_FILE
 
-#- 269 PublicGetEntitlementOwnershipToken
+#- 265 PublicGetEntitlementOwnershipToken
 $PYTHON -m $MODULE 'platform-public-get-entitlement-ownership-token' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetEntitlementOwnershipToken'
 delete_file $TEMP_FILE
 
-#- 270 PublicGetMyWallet
+#- 266 PublicGetMyWallet
 $PYTHON -m $MODULE 'platform-public-get-my-wallet' \
-    'e46QmCid' \
+    'RidqctDp' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetMyWallet'
 delete_file $TEMP_FILE
 
-#- 271 PublicQueryUserEntitlements
+#- 267 PublicQueryUserEntitlements
 $PYTHON -m $MODULE 'platform-public-query-user-entitlements' \
-    'gdpP7RTC' \
+    'ygY0ax47' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicQueryUserEntitlements'
 delete_file $TEMP_FILE
 
-#- 272 PublicGetUserAppEntitlementByAppId
+#- 268 PublicGetUserAppEntitlementByAppId
 $PYTHON -m $MODULE 'platform-public-get-user-app-entitlement-by-app-id' \
-    '587lmUmB' \
-    'ziPZBnpO' \
+    '6ED4MMO9' \
+    'Tw2JH0qh' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserAppEntitlementByAppId'
 delete_file $TEMP_FILE
 
-#- 273 PublicQueryUserEntitlementsByAppType
+#- 269 PublicQueryUserEntitlementsByAppType
 $PYTHON -m $MODULE 'platform-public-query-user-entitlements-by-app-type' \
-    'fkllxfq0' \
-    'GAME' \
+    'WIwHWTgz' \
+    'SOFTWARE' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicQueryUserEntitlementsByAppType'
 delete_file $TEMP_FILE
 
-#- 274 PublicGetUserEntitlementByItemId
+#- 270 PublicGetUserEntitlementByItemId
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement-by-item-id' \
-    'rSjw5Hog' \
-    '0blM1d5M' \
+    'RYw6t1IK' \
+    'ZLO6V4Od' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserEntitlementByItemId'
 delete_file $TEMP_FILE
 
-#- 275 PublicGetUserEntitlementBySku
+#- 271 PublicGetUserEntitlementBySku
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement-by-sku' \
-    'StYGczLI' \
-    'NlEC0OEs' \
+    'e46QmCid' \
+    'gdpP7RTC' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserEntitlementBySku'
 delete_file $TEMP_FILE
 
-#- 276 PublicExistsAnyUserActiveEntitlement
+#- 272 PublicExistsAnyUserActiveEntitlement
 $PYTHON -m $MODULE 'platform-public-exists-any-user-active-entitlement' \
-    'E3yzIsUP' \
+    '587lmUmB' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicExistsAnyUserActiveEntitlement'
 delete_file $TEMP_FILE
 
-#- 277 PublicGetUserAppEntitlementOwnershipByAppId
+#- 273 PublicGetUserAppEntitlementOwnershipByAppId
 $PYTHON -m $MODULE 'platform-public-get-user-app-entitlement-ownership-by-app-id' \
-    '0NjluOrG' \
-    'ZTzsLW7F' \
+    'ziPZBnpO' \
+    'fkllxfq0' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserAppEntitlementOwnershipByAppId'
 delete_file $TEMP_FILE
 
-#- 278 PublicGetUserEntitlementOwnershipByItemId
+#- 274 PublicGetUserEntitlementOwnershipByItemId
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement-ownership-by-item-id' \
-    'jfs9nIkc' \
-    'Z38fUEan' \
+    'NsrSjw5H' \
+    'og0blM1d' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserEntitlementOwnershipByItemId'
 delete_file $TEMP_FILE
 
-#- 279 PublicGetUserEntitlementOwnershipBySku
+#- 275 PublicGetUserEntitlementOwnershipBySku
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement-ownership-by-sku' \
-    'jKHbXfk1' \
-    'zxdzxg0U' \
+    '5MStYGcz' \
+    'LINlEC0O' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserEntitlementOwnershipBySku'
 delete_file $TEMP_FILE
 
-#- 280 PublicGetUserDistributionReceivers
-$PYTHON -m $MODULE 'platform-public-get-user-distribution-receivers' \
-    'XcRyHi3u' \
-    '8BzVWu1t' \
-    --login_as client \
-    >$TEMP_FILE 2>&1
-update_status $? 'PublicGetUserDistributionReceivers'
-delete_file $TEMP_FILE
-
-#- 281 PublicUpdateUserDistributionReceiver
-$PYTHON -m $MODULE 'platform-public-update-user-distribution-receiver' \
-    'OmhUtCgc' \
-    'pvGrEbcZ' \
-    --login_as client \
-    >$TEMP_FILE 2>&1
-update_status $? 'PublicUpdateUserDistributionReceiver'
-delete_file $TEMP_FILE
-
-#- 282 PublicCreateUserDistributionReceiver
-$PYTHON -m $MODULE 'platform-public-create-user-distribution-receiver' \
-    'UDExH1ta' \
-    'yOGXIHzM' \
-    --login_as client \
-    >$TEMP_FILE 2>&1
-update_status $? 'PublicCreateUserDistributionReceiver'
-delete_file $TEMP_FILE
-
-#- 283 PublicDeleteUserDistributionReceiver
-$PYTHON -m $MODULE 'platform-public-delete-user-distribution-receiver' \
-    'RjMCtOJs' \
-    'Eijlrbpy' \
-    --login_as client \
-    >$TEMP_FILE 2>&1
-update_status $? 'PublicDeleteUserDistributionReceiver'
-delete_file $TEMP_FILE
-
-#- 284 PublicGetUserEntitlement
+#- 276 PublicGetUserEntitlement
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement' \
-    'yEcQxVgJ' \
-    'IjMZqcWf' \
+    'EsE3yzIs' \
+    'UP0NjluO' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserEntitlement'
 delete_file $TEMP_FILE
 
-#- 285 PublicConsumeUserEntitlement
+#- 277 PublicConsumeUserEntitlement
 $PYTHON -m $MODULE 'platform-public-consume-user-entitlement' \
-    'Ml6dqrpD' \
-    '4tnc3ZRB' \
+    'rGZTzsLW' \
+    '7Fjfs9nI' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicConsumeUserEntitlement'
 delete_file $TEMP_FILE
 
-#- 286 PublicDistributeUserDistribution
-$PYTHON -m $MODULE 'platform-public-distribute-user-distribution' \
-    '3IkdtPfA' \
-    'JEomwenJ' \
-    'vQ8grtQS' \
-    'v6EcALcM' \
-    --login_as client \
-    >$TEMP_FILE 2>&1
-update_status $? 'PublicDistributeUserDistribution'
-delete_file $TEMP_FILE
-
-#- 287 PublicRedeemCode
+#- 278 PublicRedeemCode
 $PYTHON -m $MODULE 'platform-public-redeem-code' \
-    'IPms5bT5' \
+    'kcZ38fUE' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicRedeemCode'
 delete_file $TEMP_FILE
 
-#- 288 PublicFulfillAppleIAPItem
+#- 279 PublicFulfillAppleIAPItem
 $PYTHON -m $MODULE 'platform-public-fulfill-apple-iap-item' \
-    '1M4yko8S' \
+    'anjKHbXf' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicFulfillAppleIAPItem'
 delete_file $TEMP_FILE
 
-#- 289 SyncEpicGamesInventory
+#- 280 SyncEpicGamesInventory
 $PYTHON -m $MODULE 'platform-sync-epic-games-inventory' \
-    '0EnGLvGv' \
+    'k1zxdzxg' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'SyncEpicGamesInventory'
 delete_file $TEMP_FILE
 
-#- 290 PublicFulfillGoogleIAPItem
+#- 281 PublicFulfillGoogleIAPItem
 $PYTHON -m $MODULE 'platform-public-fulfill-google-iap-item' \
-    'fuSyCTyj' \
+    '0UXcRyHi' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicFulfillGoogleIAPItem'
 delete_file $TEMP_FILE
 
-#- 291 PublicReconcilePlayStationStore
+#- 282 PublicReconcilePlayStationStore
 $PYTHON -m $MODULE 'platform-public-reconcile-play-station-store' \
-    'j4mCaiuM' \
+    '3u8BzVWu' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicReconcilePlayStationStore'
 delete_file $TEMP_FILE
 
-#- 292 SyncStadiaEntitlement
+#- 283 SyncStadiaEntitlement
 $PYTHON -m $MODULE 'platform-sync-stadia-entitlement' \
-    'GKOF5GJJ' \
+    '1tOmhUtC' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'SyncStadiaEntitlement'
 delete_file $TEMP_FILE
 
-#- 293 SyncSteamInventory
+#- 284 SyncSteamInventory
 $PYTHON -m $MODULE 'platform-sync-steam-inventory' \
-    'ooSXUl3Y' \
+    'gcpvGrEb' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'SyncSteamInventory'
 delete_file $TEMP_FILE
 
-#- 294 SyncXboxInventory
+#- 285 SyncXboxInventory
 $PYTHON -m $MODULE 'platform-sync-xbox-inventory' \
-    'U35QHGpB' \
+    'cZUDExH1' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'SyncXboxInventory'
 delete_file $TEMP_FILE
 
-#- 295 PublicQueryUserOrders
+#- 286 PublicQueryUserOrders
 $PYTHON -m $MODULE 'platform-public-query-user-orders' \
-    'ABnOlxDz' \
+    'tayOGXIH' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicQueryUserOrders'
 delete_file $TEMP_FILE
 
-#- 296 PublicCreateUserOrder
+#- 287 PublicCreateUserOrder
 $PYTHON -m $MODULE 'platform-public-create-user-order' \
-    'nICQVyqB' \
+    'zMRjMCtO' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicCreateUserOrder'
 delete_file $TEMP_FILE
 
-#- 297 PublicGetUserOrder
+#- 288 PublicGetUserOrder
 $PYTHON -m $MODULE 'platform-public-get-user-order' \
-    'g34WTtDk' \
-    'n0rtn6t0' \
+    'JsEijlrb' \
+    'pyyEcQxV' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserOrder'
 delete_file $TEMP_FILE
 
-#- 298 PublicCancelUserOrder
+#- 289 PublicCancelUserOrder
 $PYTHON -m $MODULE 'platform-public-cancel-user-order' \
-    'Yx4z12Ea' \
-    'Q1rUQYCN' \
+    'gJIjMZqc' \
+    'WfMl6dqr' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicCancelUserOrder'
 delete_file $TEMP_FILE
 
-#- 299 PublicGetUserOrderHistories
+#- 290 PublicGetUserOrderHistories
 $PYTHON -m $MODULE 'platform-public-get-user-order-histories' \
-    'TiDX4jE3' \
-    'M2IsTHu8' \
+    'pD4tnc3Z' \
+    'RB3IkdtP' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserOrderHistories'
 delete_file $TEMP_FILE
 
-#- 300 PublicDownloadUserOrderReceipt
+#- 291 PublicDownloadUserOrderReceipt
 $PYTHON -m $MODULE 'platform-public-download-user-order-receipt' \
-    'QwNyOlXf' \
-    'IWd0mcq5' \
+    'fAJEomwe' \
+    'nJvQ8grt' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicDownloadUserOrderReceipt'
 delete_file $TEMP_FILE
 
-#- 301 PublicGetPaymentAccounts
+#- 292 PublicGetPaymentAccounts
 $PYTHON -m $MODULE 'platform-public-get-payment-accounts' \
-    'T4SUc7cW' \
+    'QSv6EcAL' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetPaymentAccounts'
 delete_file $TEMP_FILE
 
-#- 302 PublicDeletePaymentAccount
+#- 293 PublicDeletePaymentAccount
 $PYTHON -m $MODULE 'platform-public-delete-payment-account' \
-    'fCKK6Dij' \
-    'card' \
-    'FcenEMyS' \
+    'cMIPms5b' \
+    'paypal' \
+    'ko8S0EnG' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicDeletePaymentAccount'
 delete_file $TEMP_FILE
 
-#- 303 PublicQueryUserSubscriptions
+#- 294 PublicQueryUserSubscriptions
 $PYTHON -m $MODULE 'platform-public-query-user-subscriptions' \
-    'PfhxBenD' \
+    'LvGvfuSy' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicQueryUserSubscriptions'
 delete_file $TEMP_FILE
 
-#- 304 PublicSubscribeSubscription
+#- 295 PublicSubscribeSubscription
 $PYTHON -m $MODULE 'platform-public-subscribe-subscription' \
-    'iTiAqFYm' \
+    'CTyjj4mC' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicSubscribeSubscription'
 delete_file $TEMP_FILE
 
-#- 305 PublicCheckUserSubscriptionSubscribableByItemId
+#- 296 PublicCheckUserSubscriptionSubscribableByItemId
 $PYTHON -m $MODULE 'platform-public-check-user-subscription-subscribable-by-item-id' \
-    'FKjaELmm' \
-    'll6oexId' \
+    'aiuMGKOF' \
+    '5GJJooSX' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicCheckUserSubscriptionSubscribableByItemId'
 delete_file $TEMP_FILE
 
-#- 306 PublicGetUserSubscription
+#- 297 PublicGetUserSubscription
 $PYTHON -m $MODULE 'platform-public-get-user-subscription' \
-    '1OKGUN2U' \
-    'znd7uVa7' \
+    'Ul3YU35Q' \
+    'HGpBABnO' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserSubscription'
 delete_file $TEMP_FILE
 
-#- 307 PublicChangeSubscriptionBillingAccount
+#- 298 PublicChangeSubscriptionBillingAccount
 $PYTHON -m $MODULE 'platform-public-change-subscription-billing-account' \
-    't14yvSYS' \
-    'V52bHifC' \
+    'lxDznICQ' \
+    'VyqBg34W' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicChangeSubscriptionBillingAccount'
 delete_file $TEMP_FILE
 
-#- 308 PublicCancelSubscription
+#- 299 PublicCancelSubscription
 $PYTHON -m $MODULE 'platform-public-cancel-subscription' \
-    'If4tsuu6' \
-    'Pkam6tFS' \
+    'TtDkn0rt' \
+    'n6t0Yx4z' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicCancelSubscription'
 delete_file $TEMP_FILE
 
-#- 309 PublicGetUserSubscriptionBillingHistories
+#- 300 PublicGetUserSubscriptionBillingHistories
 $PYTHON -m $MODULE 'platform-public-get-user-subscription-billing-histories' \
-    'YFt4ZxA2' \
-    'PzZFRkBN' \
+    '12EaQ1rU' \
+    'QYCNTiDX' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserSubscriptionBillingHistories'
 delete_file $TEMP_FILE
 
-#- 310 PublicGetWallet
+#- 301 PublicGetWallet
 $PYTHON -m $MODULE 'platform-public-get-wallet' \
-    'lg6hn5qu' \
-    'sKyZAuV6' \
+    '4jE3M2Is' \
+    'THu8QwNy' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetWallet'
 delete_file $TEMP_FILE
 
-#- 311 PublicListUserWalletTransactions
+#- 302 PublicListUserWalletTransactions
 $PYTHON -m $MODULE 'platform-public-list-user-wallet-transactions' \
-    'uUvqM0lV' \
-    '6UZMlEbx' \
+    'OlXfIWd0' \
+    'mcq5T4SU' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicListUserWalletTransactions'
