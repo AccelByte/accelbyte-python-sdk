@@ -1,5 +1,44 @@
 # Changelog
 
+## v0.5.0
+- Updated APIs:
+    - basic
+        - version bump
+    - cloudsave
+        - version bump
+        - add, deprecate endpoints
+    - dslogmanager
+        - version bump
+        - add, update endpoints
+    - dsmc
+        - version bump
+        - update endpoints
+    - gdpr
+        - version bump
+    - group
+        - update endpoints
+    - iam
+        - version bump
+        - add, update endpoints
+    - leaderboard
+        - version bump
+    - legal
+        - version bump
+    - lobby
+        - update endpoints
+    - matchmaking
+        - version bump
+    - platform
+        - version bump
+        - add, remove, update endpoints
+    - seasonpass
+        - version bump
+    - social
+        - version bump
+    - ugc
+        - version bump
+        - special characters in tags were removed
+
 ## v0.4.0
 
 - Add new WebsocketClient implementation.
