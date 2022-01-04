@@ -127,6 +127,8 @@ class TestCheckoutConfig(Operation):
         }
 
     def get_body_params(self) -> Any:
+        if not hasattr(self, "body") or self.body is None:
+            return None
         return self.body.to_dict()
 
     def get_query_params(self) -> dict:
@@ -184,6 +186,8 @@ class TestCheckoutConfig(Operation):
             return TestResult.create_from_dict(content), None
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
+            if undocumented_response.is_no_content():
+                return None, None
             return None, undocumented_response
         return None, HttpResponse.create_unhandled_error()
 

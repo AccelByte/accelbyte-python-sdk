@@ -145,6 +145,8 @@ class GetSpecialPaymentProviders(Operation):
             return [str(i) for i in content], None
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
+            if undocumented_response.is_no_content():
+                return None, None
             return None, undocumented_response
         return None, HttpResponse.create_unhandled_error()
 

@@ -198,6 +198,8 @@ class AdminGetSession(Operation):
             return None, RestapiErrorResponseV2.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
+            if undocumented_response.is_no_content():
+                return None, None
             return None, undocumented_response
         return None, HttpResponse.create_unhandled_error()
 
