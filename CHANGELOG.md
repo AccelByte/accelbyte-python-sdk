@@ -1,6 +1,8 @@
 # Changelog
 
 ## v0.5.0
+
+- Fix file uploads
 - Updated APIs:
     - basic
         - version bump
