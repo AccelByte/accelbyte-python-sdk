@@ -48,11 +48,12 @@ def put_game_record_concurrent_handler_v1(
         click.echo(put_game_record_concurrent_handler_v1_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        body_json = json.loads(body)
-        body = ModelsConcurrentRecordRequest.create_from_dict(body_json)
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = ModelsConcurrentRecordRequest.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = put_game_record_concurrent_handler_v1_internal(
         body=body,
         key=key,

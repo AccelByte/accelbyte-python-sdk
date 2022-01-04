@@ -48,11 +48,12 @@ def update_my_zip_code(
         click.echo(update_my_zip_code_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        user_zip_code_update_json = json.loads(user_zip_code_update)
-        user_zip_code_update = UserZipCodeUpdate.create_from_dict(user_zip_code_update_json)
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'userZipCodeUpdate'. {str(e)}") from e
+    if user_zip_code_update is not None:
+        try:
+            user_zip_code_update_json = json.loads(user_zip_code_update)
+            user_zip_code_update = UserZipCodeUpdate.create_from_dict(user_zip_code_update_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'userZipCodeUpdate'. {str(e)}") from e
     _, error = update_my_zip_code_internal(
         user_zip_code_update=user_zip_code_update,
         namespace=namespace,

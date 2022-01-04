@@ -49,11 +49,12 @@ def acquire_item(
         click.echo(acquire_item_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        body_json = json.loads(body)
-        body = ItemAcquireRequest.create_from_dict(body_json)
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = ItemAcquireRequest.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = acquire_item_internal(
         item_id=item_id,
         body=body,

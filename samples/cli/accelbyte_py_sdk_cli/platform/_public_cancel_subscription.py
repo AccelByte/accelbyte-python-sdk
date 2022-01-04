@@ -51,11 +51,12 @@ def public_cancel_subscription(
         click.echo(public_cancel_subscription_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        body_json = json.loads(body)
-        body = CancelRequest.create_from_dict(body_json)
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = CancelRequest.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = public_cancel_subscription_internal(
         subscription_id=subscription_id,
         user_id=user_id,

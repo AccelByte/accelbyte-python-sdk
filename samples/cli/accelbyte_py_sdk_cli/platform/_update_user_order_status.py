@@ -52,11 +52,12 @@ def update_user_order_status(
         click.echo(update_user_order_status_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        body_json = json.loads(body)
-        body = OrderUpdate.create_from_dict(body_json)
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = OrderUpdate.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = update_user_order_status_internal(
         order_no=order_no,
         user_id=user_id,

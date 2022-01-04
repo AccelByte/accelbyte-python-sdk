@@ -50,11 +50,12 @@ def query_seasons(
         click.echo(query_seasons_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        status_json = json.loads(status)
-        status = [str(i0) for i0 in status_json]
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'status'. {str(e)}") from e
+    if status is not None:
+        try:
+            status_json = json.loads(status)
+            status = [str(i0) for i0 in status_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'status'. {str(e)}") from e
     _, error = query_seasons_internal(
         limit=limit,
         offset=offset,

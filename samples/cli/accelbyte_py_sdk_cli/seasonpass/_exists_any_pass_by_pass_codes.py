@@ -48,11 +48,12 @@ def exists_any_pass_by_pass_codes(
         click.echo(exists_any_pass_by_pass_codes_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        pass_codes_json = json.loads(pass_codes)
-        pass_codes = [str(i0) for i0 in pass_codes_json]
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'passCodes'. {str(e)}") from e
+    if pass_codes is not None:
+        try:
+            pass_codes_json = json.loads(pass_codes)
+            pass_codes = [str(i0) for i0 in pass_codes_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'passCodes'. {str(e)}") from e
     _, error = exists_any_pass_by_pass_codes_internal(
         user_id=user_id,
         pass_codes=pass_codes,

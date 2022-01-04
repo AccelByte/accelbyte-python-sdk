@@ -48,11 +48,12 @@ def admin_remove_user_role_v4(
         click.echo(admin_remove_user_role_v4_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        body_json = json.loads(body)
-        body = ModelRemoveUserRoleV4Request.create_from_dict(body_json)
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = ModelRemoveUserRoleV4Request.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = admin_remove_user_role_v4_internal(
         body=body,
         user_id=user_id,

@@ -51,11 +51,12 @@ def bulk_update_user_stat_item(
         click.echo(bulk_update_user_stat_item_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        body_json = json.loads(body)
-        body = [BulkStatItemUpdate.create_from_dict(i0) for i0 in body_json]
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = [BulkStatItemUpdate.create_from_dict(i0) for i0 in body_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = bulk_update_user_stat_item_internal(
         user_id=user_id,
         body=body,

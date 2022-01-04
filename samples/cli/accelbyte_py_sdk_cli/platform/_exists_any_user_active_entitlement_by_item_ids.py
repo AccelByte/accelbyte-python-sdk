@@ -47,11 +47,12 @@ def exists_any_user_active_entitlement_by_item_ids(
         click.echo(exists_any_user_active_entitlement_by_item_ids_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        item_ids_json = json.loads(item_ids)
-        item_ids = [str(i0) for i0 in item_ids_json]
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'itemIds'. {str(e)}") from e
+    if item_ids is not None:
+        try:
+            item_ids_json = json.loads(item_ids)
+            item_ids = [str(i0) for i0 in item_ids_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'itemIds'. {str(e)}") from e
     _, error = exists_any_user_active_entitlement_by_item_ids_internal(
         user_id=user_id,
         item_ids=item_ids,

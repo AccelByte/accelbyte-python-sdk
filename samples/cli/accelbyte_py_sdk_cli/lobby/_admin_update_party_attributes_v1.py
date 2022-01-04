@@ -49,11 +49,12 @@ def admin_update_party_attributes_v1(
         click.echo(admin_update_party_attributes_v1_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        body_json = json.loads(body)
-        body = ModelsPartyPUTCustomAttributesRequest.create_from_dict(body_json)
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = ModelsPartyPUTCustomAttributesRequest.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = admin_update_party_attributes_v1_internal(
         body=body,
         party_id=party_id,

@@ -49,11 +49,12 @@ def add_sso_login_platform_credential(
         click.echo(add_sso_login_platform_credential_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        body_json = json.loads(body)
-        body = ModelSSOPlatformCredentialRequest.create_from_dict(body_json)
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = ModelSSOPlatformCredentialRequest.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = add_sso_login_platform_credential_internal(
         body=body,
         platform_id=platform_id,

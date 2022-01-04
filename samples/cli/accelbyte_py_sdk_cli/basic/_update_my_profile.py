@@ -48,11 +48,12 @@ def update_my_profile(
         click.echo(update_my_profile_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        body_json = json.loads(body)
-        body = UserProfilePrivateUpdate.create_from_dict(body_json)
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = UserProfilePrivateUpdate.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = update_my_profile_internal(
         body=body,
         namespace=namespace,

@@ -49,11 +49,12 @@ def update_matchmaking_channel(
         click.echo(update_matchmaking_channel_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        body_json = json.loads(body)
-        body = ModelsUpdateChannelRequest.create_from_dict(body_json)
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = ModelsUpdateChannelRequest.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = update_matchmaking_channel_internal(
         body=body,
         channel_name=channel_name,

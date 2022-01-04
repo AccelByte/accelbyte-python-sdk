@@ -49,11 +49,12 @@ def public_bulk_inc_user_stat_item_1(
         click.echo(public_bulk_inc_user_stat_item_1_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        body_json = json.loads(body)
-        body = [BulkStatItemInc.create_from_dict(i0) for i0 in body_json]
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = [BulkStatItemInc.create_from_dict(i0) for i0 in body_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = public_bulk_inc_user_stat_item_1_internal(
         user_id=user_id,
         body=body,

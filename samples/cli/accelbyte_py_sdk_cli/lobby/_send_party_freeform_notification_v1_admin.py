@@ -48,11 +48,12 @@ def send_party_freeform_notification_v1_admin(
         click.echo(send_party_freeform_notification_v1_admin_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        body_json = json.loads(body)
-        body = ModelFreeFormNotificationRequestV1.create_from_dict(body_json)
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = ModelFreeFormNotificationRequestV1.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = send_party_freeform_notification_v1_admin_internal(
         body=body,
         party_id=party_id,

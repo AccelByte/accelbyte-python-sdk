@@ -47,11 +47,12 @@ def delete_user_rankings_admin_v1(
         click.echo(delete_user_rankings_admin_v1_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        leaderboard_code_json = json.loads(leaderboard_code)
-        leaderboard_code = [str(i0) for i0 in leaderboard_code_json]
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'leaderboardCode'. {str(e)}") from e
+    if leaderboard_code is not None:
+        try:
+            leaderboard_code_json = json.loads(leaderboard_code)
+            leaderboard_code = [str(i0) for i0 in leaderboard_code_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'leaderboardCode'. {str(e)}") from e
     _, error = delete_user_rankings_admin_v1_internal(
         user_id=user_id,
         leaderboard_code=leaderboard_code,

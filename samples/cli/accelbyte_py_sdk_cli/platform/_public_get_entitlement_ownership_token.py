@@ -49,21 +49,24 @@ def public_get_entitlement_ownership_token(
         click.echo(public_get_entitlement_ownership_token_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        app_ids_json = json.loads(app_ids)
-        app_ids = [str(i0) for i0 in app_ids_json]
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'appIds'. {str(e)}") from e
-    try:
-        item_ids_json = json.loads(item_ids)
-        item_ids = [str(i0) for i0 in item_ids_json]
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'itemIds'. {str(e)}") from e
-    try:
-        skus_json = json.loads(skus)
-        skus = [str(i0) for i0 in skus_json]
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'skus'. {str(e)}") from e
+    if app_ids is not None:
+        try:
+            app_ids_json = json.loads(app_ids)
+            app_ids = [str(i0) for i0 in app_ids_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'appIds'. {str(e)}") from e
+    if item_ids is not None:
+        try:
+            item_ids_json = json.loads(item_ids)
+            item_ids = [str(i0) for i0 in item_ids_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'itemIds'. {str(e)}") from e
+    if skus is not None:
+        try:
+            skus_json = json.loads(skus)
+            skus = [str(i0) for i0 in skus_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'skus'. {str(e)}") from e
     _, error = public_get_entitlement_ownership_token_internal(
         app_ids=app_ids,
         item_ids=item_ids,

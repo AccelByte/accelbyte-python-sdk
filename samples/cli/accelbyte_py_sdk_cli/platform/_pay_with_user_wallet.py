@@ -52,11 +52,12 @@ def pay_with_user_wallet(
         click.echo(pay_with_user_wallet_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        body_json = json.loads(body)
-        body = PaymentRequest.create_from_dict(body_json)
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = PaymentRequest.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = pay_with_user_wallet_internal(
         currency_code=currency_code,
         user_id=user_id,

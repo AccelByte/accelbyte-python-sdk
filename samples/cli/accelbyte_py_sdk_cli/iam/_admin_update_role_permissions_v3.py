@@ -46,11 +46,12 @@ def admin_update_role_permissions_v3(
         click.echo(admin_update_role_permissions_v3_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        body_json = json.loads(body)
-        body = AccountcommonPermissionsV3.create_from_dict(body_json)
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = AccountcommonPermissionsV3.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = admin_update_role_permissions_v3_internal(
         body=body,
         role_id=role_id,

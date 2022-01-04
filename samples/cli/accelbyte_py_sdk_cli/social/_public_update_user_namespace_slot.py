@@ -58,11 +58,12 @@ def public_update_user_namespace_slot(
         click.echo(public_update_user_namespace_slot_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        tags_json = json.loads(tags)
-        tags = [str(i0) for i0 in tags_json]
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'tags'. {str(e)}") from e
+    if tags is not None:
+        try:
+            tags_json = json.loads(tags)
+            tags = [str(i0) for i0 in tags_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'tags'. {str(e)}") from e
     _, error = public_update_user_namespace_slot_internal(
         slot_id=slot_id,
         user_id=user_id,

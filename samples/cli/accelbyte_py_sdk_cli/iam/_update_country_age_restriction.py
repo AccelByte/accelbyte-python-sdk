@@ -48,11 +48,12 @@ def update_country_age_restriction(
         click.echo(update_country_age_restriction_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        body_json = json.loads(body)
-        body = ModelCountryAgeRestrictionRequest.create_from_dict(body_json)
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = ModelCountryAgeRestrictionRequest.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = update_country_age_restriction_internal(
         body=body,
         country_code=country_code,

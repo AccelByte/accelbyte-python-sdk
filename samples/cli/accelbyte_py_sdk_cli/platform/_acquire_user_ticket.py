@@ -52,11 +52,12 @@ def acquire_user_ticket(
         click.echo(acquire_user_ticket_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        body_json = json.loads(body)
-        body = TicketAcquireRequest.create_from_dict(body_json)
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = TicketAcquireRequest.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = acquire_user_ticket_internal(
         booth_name=booth_name,
         user_id=user_id,

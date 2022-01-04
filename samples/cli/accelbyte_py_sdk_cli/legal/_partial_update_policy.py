@@ -47,11 +47,12 @@ def partial_update_policy(
         click.echo(partial_update_policy_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        body_json = json.loads(body)
-        body = UpdateBasePolicyRequest.create_from_dict(body_json)
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = UpdateBasePolicyRequest.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = partial_update_policy_internal(
         base_policy_id=base_policy_id,
         body=body,

@@ -60,11 +60,12 @@ def query_orders(
         click.echo(query_orders_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        order_nos_json = json.loads(order_nos)
-        order_nos = [str(i0) for i0 in order_nos_json]
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'orderNos'. {str(e)}") from e
+    if order_nos is not None:
+        try:
+            order_nos_json = json.loads(order_nos)
+            order_nos = [str(i0) for i0 in order_nos_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'orderNos'. {str(e)}") from e
     _, error = query_orders_internal(
         end_time=end_time,
         limit=limit,

@@ -45,11 +45,12 @@ def delete_admin_email_configuration(
         click.echo(delete_admin_email_configuration_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        emails_json = json.loads(emails)
-        emails = [str(i0) for i0 in emails_json]
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'emails'. {str(e)}") from e
+    if emails is not None:
+        try:
+            emails_json = json.loads(emails)
+            emails = [str(i0) for i0 in emails_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'emails'. {str(e)}") from e
     _, error = delete_admin_email_configuration_internal(
         emails=emails,
         namespace=namespace,

@@ -59,11 +59,12 @@ def query_user_entitlements(
         click.echo(query_user_entitlements_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        item_id_json = json.loads(item_id)
-        item_id = [str(i0) for i0 in item_id_json]
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'itemId'. {str(e)}") from e
+    if item_id is not None:
+        try:
+            item_id_json = json.loads(item_id)
+            item_id = [str(i0) for i0 in item_id_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'itemId'. {str(e)}") from e
     _, error = query_user_entitlements_internal(
         user_id=user_id,
         active_only=active_only,

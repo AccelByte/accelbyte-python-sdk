@@ -46,11 +46,12 @@ def public_get_user_game_profiles(
         click.echo(public_get_user_game_profiles_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        user_ids_json = json.loads(user_ids)
-        user_ids = [str(i0) for i0 in user_ids_json]
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'userIds'. {str(e)}") from e
+    if user_ids is not None:
+        try:
+            user_ids_json = json.loads(user_ids)
+            user_ids = [str(i0) for i0 in user_ids_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'userIds'. {str(e)}") from e
     _, error = public_get_user_game_profiles_internal(
         user_ids=user_ids,
         namespace=namespace,

@@ -53,11 +53,12 @@ def reset_user_stat_item_value(
         click.echo(reset_user_stat_item_value_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        body_json = json.loads(body)
-        body = StatResetInfo.create_from_dict(body_json)
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = StatResetInfo.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = reset_user_stat_item_value_internal(
         stat_code=stat_code,
         user_id=user_id,

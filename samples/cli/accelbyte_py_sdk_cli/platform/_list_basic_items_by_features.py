@@ -47,11 +47,12 @@ def list_basic_items_by_features(
         click.echo(list_basic_items_by_features_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        features_json = json.loads(features)
-        features = [str(i0) for i0 in features_json]
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'features'. {str(e)}") from e
+    if features is not None:
+        try:
+            features_json = json.loads(features)
+            features = [str(i0) for i0 in features_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'features'. {str(e)}") from e
     _, error = list_basic_items_by_features_internal(
         active_only=active_only,
         features=features,

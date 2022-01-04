@@ -52,11 +52,12 @@ def indirect_bulk_accept_versioned_policy_v2(
         click.echo(indirect_bulk_accept_versioned_policy_v2_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        body_json = json.loads(body)
-        body = [AcceptAgreementRequest.create_from_dict(i0) for i0 in body_json]
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = [AcceptAgreementRequest.create_from_dict(i0) for i0 in body_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = indirect_bulk_accept_versioned_policy_v2_internal(
         client_id=client_id,
         country_code=country_code,

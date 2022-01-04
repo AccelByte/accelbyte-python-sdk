@@ -49,11 +49,12 @@ def public_list_user_id_by_platform_user_i_ds_v3(
         click.echo(public_list_user_id_by_platform_user_i_ds_v3_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        body_json = json.loads(body)
-        body = ModelPlatformUserIDRequest.create_from_dict(body_json)
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = ModelPlatformUserIDRequest.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = public_list_user_id_by_platform_user_i_ds_v3_internal(
         body=body,
         platform_id=platform_id,

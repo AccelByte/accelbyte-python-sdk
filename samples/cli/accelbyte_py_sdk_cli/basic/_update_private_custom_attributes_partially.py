@@ -48,11 +48,12 @@ def update_private_custom_attributes_partially(
         click.echo(update_private_custom_attributes_partially_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        body_json = json.loads(body)
-        raise NotImplementedError
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = {k: v for k, v in body_json.items()}
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = update_private_custom_attributes_partially_internal(
         user_id=user_id,
         body=body,

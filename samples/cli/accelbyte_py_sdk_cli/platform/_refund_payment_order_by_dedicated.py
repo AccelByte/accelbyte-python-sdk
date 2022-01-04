@@ -50,11 +50,12 @@ def refund_payment_order_by_dedicated(
         click.echo(refund_payment_order_by_dedicated_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        body_json = json.loads(body)
-        body = PaymentOrderRefund.create_from_dict(body_json)
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = PaymentOrderRefund.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = refund_payment_order_by_dedicated_internal(
         payment_order_no=payment_order_no,
         body=body,

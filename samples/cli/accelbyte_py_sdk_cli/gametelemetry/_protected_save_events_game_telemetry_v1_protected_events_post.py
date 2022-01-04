@@ -44,11 +44,12 @@ def protected_save_events_game_telemetry_v1_protected_events_post(
         click.echo(protected_save_events_game_telemetry_v1_protected_events_post_internal.__doc__)
         return
     login_as_internal(login_as)
-    try:
-        body_json = json.loads(body)
-        body = [TelemetryBody.create_from_dict(i0) for i0 in body_json]
-    except ValueError as e:
-        raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = [TelemetryBody.create_from_dict(i0) for i0 in body_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = protected_save_events_game_telemetry_v1_protected_events_post_internal(
         body=body,
     )
