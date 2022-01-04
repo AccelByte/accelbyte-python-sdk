@@ -378,7 +378,7 @@ delete_file $TEMP_FILE
 
 #- 40 AdminUpdatePartyAttributesV1
 $PYTHON -m $MODULE 'lobby-admin-update-party-attributes-v1' \
-    '{"custom_attribute": {"7WOfercZ": null}, "updatedAt": 7}' \
+    '{"custom_attribute": {"7WOfercZ": {}}, "updatedAt": 7}' \
     'pMci37Ds' \
     --login_as client \
     >$TEMP_FILE 2>&1
@@ -613,7 +613,7 @@ delete_file $TEMP_FILE
 
 #- 69 PublicUpdatePartyAttributesV1
 $PYTHON -m $MODULE 'lobby-public-update-party-attributes-v1' \
-    '{"custom_attribute": {"vkfwaSbn": null}, "updatedAt": 37}' \
+    '{"custom_attribute": {"vkfwaSbn": {}}, "updatedAt": 37}' \
     'uLCgToxu' \
     --login_as client \
     >$TEMP_FILE 2>&1

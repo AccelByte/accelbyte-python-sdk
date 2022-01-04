@@ -192,7 +192,7 @@ delete_file $TEMP_FILE
 
 #- 16 PutGameRecordConcurrentHandlerV1
 $PYTHON -m $MODULE 'cloudsave-put-game-record-concurrent-handler-v1' \
-    '{"updatedAt": "giVpP8Cm", "value": {"3yvASUox": null}}' \
+    '{"updatedAt": "giVpP8Cm", "value": {"3yvASUox": {}}}' \
     'dxxFqmAG' \
     --login_as client \
     >$TEMP_FILE 2>&1
@@ -243,7 +243,7 @@ delete_file $TEMP_FILE
 
 #- 22 PutPlayerPublicRecordConcurrentHandlerV1
 $PYTHON -m $MODULE 'cloudsave-put-player-public-record-concurrent-handler-v1' \
-    '{"updatedAt": "jiX7jpkV", "value": {"Zk3IaQYE": null}}' \
+    '{"updatedAt": "jiX7jpkV", "value": {"Zk3IaQYE": {}}}' \
     'mqGodOEG' \
     't9gPOj0c' \
     --login_as client \

@@ -215,7 +215,7 @@ delete_file $TEMP_FILE
 
 #- 20 CreateNewGroupPublicV1
 $PYTHON -m $MODULE 'group-create-new-group-public-v1' \
-    '{"configurationCode": "YEmqGodO", "customAttributes": {"EGt9gPOj": null}, "groupDescription": "0c6i0Jkv", "groupIcon": "Ias73ucY", "groupMaxMember": 27, "groupName": "FAJ3DK5T", "groupRegion": "4Eogg0Y3", "groupRules": {"groupCustomRule": {}, "groupPredefinedRules": [{"allowedAction": "9UoYlpv5", "ruleDetail": [{"ruleAttribute": "bVAgtsDh", "ruleCriteria": "UTDUscbQ", "ruleValue": 0.4674496065247328}]}]}, "groupType": "bTQuPMz2"}' \
+    '{"configurationCode": "YEmqGodO", "customAttributes": {"EGt9gPOj": {}}, "groupDescription": "0c6i0Jkv", "groupIcon": "Ias73ucY", "groupMaxMember": 27, "groupName": "FAJ3DK5T", "groupRegion": "4Eogg0Y3", "groupRules": {"groupCustomRule": {}, "groupPredefinedRules": [{"allowedAction": "9UoYlpv5", "ruleDetail": [{"ruleAttribute": "bVAgtsDh", "ruleCriteria": "UTDUscbQ", "ruleValue": 0.4674496065247328}]}]}, "groupType": "bTQuPMz2"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateNewGroupPublicV1'
@@ -257,7 +257,7 @@ delete_file $TEMP_FILE
 
 #- 25 UpdateGroupCustomAttributesPublicV1
 $PYTHON -m $MODULE 'group-update-group-custom-attributes-public-v1' \
-    '{"customAttributes": {"cTQdvln2": null}}' \
+    '{"customAttributes": {"cTQdvln2": {}}}' \
     'LAuSQWEX' \
     --login_as client \
     >$TEMP_FILE 2>&1

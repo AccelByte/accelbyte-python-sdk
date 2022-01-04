@@ -513,7 +513,7 @@ delete_file $TEMP_FILE
 
 #- 57 CreateSession
 $PYTHON -m $MODULE 'dsmc-create-session' \
-    '{"client_version": "Dt8QUZDp", "configuration": "xlHasinG", "deployment": "cjrkmRMt", "game_mode": "tgjDSaIV", "matching_allies": [{"matching_parties": [{"party_attributes": {"Bmft3Udg": null}, "party_id": "7p9PGmY2", "party_members": [{"user_id": "H5kX4Msi"}]}]}], "namespace": "sSX28nAR", "pod_name": "xWRpv5ou", "region": "5xtvd28O", "session_id": "UfCt8UJC"}' \
+    '{"client_version": "Dt8QUZDp", "configuration": "xlHasinG", "deployment": "cjrkmRMt", "game_mode": "tgjDSaIV", "matching_allies": [{"matching_parties": [{"party_attributes": {"Bmft3Udg": {}}, "party_id": "7p9PGmY2", "party_members": [{"user_id": "H5kX4Msi"}]}]}], "namespace": "sSX28nAR", "pod_name": "xWRpv5ou", "region": "5xtvd28O", "session_id": "UfCt8UJC"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateSession'
