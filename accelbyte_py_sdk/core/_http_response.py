@@ -28,6 +28,9 @@ class HttpResponse(Model):
     def is_error(self) -> bool:
         return self.content_type == "error"
 
+    def is_no_content(self) -> bool:
+        return self.content_type == "no_content"
+
     def get_query_params(self) -> dict:
         if self.content_type == "location":
             return urllib.parse.parse_qs(urllib.parse.urlparse(self.content).query)
@@ -77,9 +80,13 @@ class HttpResponse(Model):
     def try_create_undocumented_response(cls, code: int, content: Any):
         if code not in HTTP_STATUS_CODES:
             return False, None
+        content_type = "error"
+        if code == 204:
+            content_type = "no_content"
+            content = None
         instance = cls()
         instance.code = code
-        instance.content_type = "error"
+        instance.content_type = content_type
         instance.content = content
         return True, instance
 
