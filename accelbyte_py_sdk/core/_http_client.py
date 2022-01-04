@@ -96,7 +96,6 @@ class RequestsHttpClient(HttpClient):
             **kwargs
     ) -> Tuple[Any, Union[None, HttpResponse]]:
         method, url, headers, files, data, json_ = convert_operation(operation, base_url, headers)
-
         prepared_request = requests.Request(
             method=method,
             url=url,
@@ -342,7 +341,9 @@ def convert_operation(
             else:
                 data[k] = v
     else:
-        raise ValueError
+        files = {}
+        data = {}
+        json_ = {}
 
     # NOTE(elmer): Remove 'Content-Type' when 'files' is truthy.
     # See: https://stackoverflow.com/questions/12385179/how-to-send-a-multipart-form-data-with-requests-in-python#comment90642370_12385661
