@@ -17,6 +17,7 @@ from .lobby import commands as lobby_commands
 from .matchmaking import commands as matchmaking_commands
 from .platform import commands as platform_commands
 from .qosm import commands as qosm_commands
+from .seasonpass import commands as seasonpass_commands
 from .sessionbrowser import commands as sessionbrowser_commands
 from .social import commands as social_commands
 from .ugc import commands as ugc_commands
@@ -48,6 +49,7 @@ add_commands(entry_point, lobby_commands, prefix="lobby")
 add_commands(entry_point, matchmaking_commands, prefix="matchmaking")
 add_commands(entry_point, platform_commands, prefix="platform")
 add_commands(entry_point, qosm_commands, prefix="qosm")
+add_commands(entry_point, seasonpass_commands, prefix="seasonpass")
 add_commands(entry_point, sessionbrowser_commands, prefix="sessionbrowser")
 add_commands(entry_point, social_commands, prefix="social")
 add_commands(entry_point, ugc_commands, prefix="ugc")
