@@ -31,6 +31,10 @@ get_random_int() { echo $(( $1 + ( RANDOM % (($2 - $1)) ) )); }
 get_random_bool() { ( (( (RANDOM % 2) == 1)) && echo "true" ) || ( echo "false" ) }
 get_random_element() { declare -a a=("$@"); r=$((RANDOM % ${#a[@]})); echo ${a[$r]}; }
 
+create_file() {
+    touch $1
+}
+
 delete_file() {
     [ ! -e $1 ] || rm $1
 }
@@ -56,6 +60,8 @@ update_status() {
         done < $TEMP_FILE
     fi
 }
+
+create_file 'tmp.dat'
 
 echo 'TAP version 13'
 echo "1..$OPERATIONS_COUNT"
@@ -745,3 +751,5 @@ $PYTHON -m $MODULE 'ugc-delete-all-user-states' \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteAllUserStates'
 delete_file $TEMP_FILE
+
+delete_file 'tmp.dat'
