@@ -159,7 +159,7 @@ class RequestsHttpClient(HttpClient):
                     _LOGGER.warning(f"Expecting 'text/*' content received null.")
                     content = ""
             else:
-                return None, HttpResponse.create_unhandled_error()
+                content = raw_response.raw.data
         else:
             content_type = None
             content = None
