@@ -293,7 +293,7 @@ def _is_valid_token(token: Any) -> bool:
     access_token_key = "access_token"
     if hasattr(token, access_token_key):  # in attr
         return True
-    if hasattr(token, "__iter__") and access_token_key in token:  # in dict
+    if isinstance(token, dict) and access_token_key in token:  # in dict
         return True
     return False
 
