@@ -222,7 +222,7 @@ class DeleteUserStatItems2(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ErrorEntity]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, ErrorEntity]]:
         """Parse the given response.
 
         204: No Content - (delete successfully)
@@ -234,7 +234,7 @@ class DeleteUserStatItems2(Operation):
         404: Not Found - ErrorEntity (12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
         """
         if code == 204:
-            return HttpResponse.create(code, "No Content"), None
+            return None, None
         if code == 401:
             return None, ErrorEntity.create_from_dict(content)
         if code == 403:

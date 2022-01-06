@@ -176,13 +176,13 @@ class AnonymizePayment(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, HttpResponse]]:
         """Parse the given response.
 
         204: No Content - (Anonymize successfully)
         """
         if code == 204:
-            return HttpResponse.create(code, "No Content"), None
+            return None, None
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
             if undocumented_response.is_no_content():

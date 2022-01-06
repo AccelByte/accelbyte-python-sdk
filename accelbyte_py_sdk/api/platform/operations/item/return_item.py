@@ -202,7 +202,7 @@ class ReturnItem(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ErrorEntity, ValidationErrorEntity]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, ErrorEntity, ValidationErrorEntity]]:
         """Parse the given response.
 
         204: No Content - (Return item successfully)
@@ -212,7 +212,7 @@ class ReturnItem(Operation):
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 204:
-            return HttpResponse.create(code, "No Content"), None
+            return None, None
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 422:

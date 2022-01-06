@@ -195,7 +195,7 @@ class PublicDeleteProfile(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ErrorEntity]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, ErrorEntity]]:
         """Parse the given response.
 
         204: No Content - (Game profile has been deleted)
@@ -203,7 +203,7 @@ class PublicDeleteProfile(Operation):
         404: Not Found - ErrorEntity (12041: Game profile with id [{profileId}] is not found)
         """
         if code == 204:
-            return HttpResponse.create(code, "No Content"), None
+            return None, None
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)

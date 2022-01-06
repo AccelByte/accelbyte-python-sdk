@@ -185,7 +185,7 @@ class AnonymizeUserProfile(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ErrorEntity, ValidationErrorEntity]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, ErrorEntity, ValidationErrorEntity]]:
         """Parse the given response.
 
         204: No Content - (Anonymized profile successfully)
@@ -197,7 +197,7 @@ class AnonymizeUserProfile(Operation):
         403: Forbidden - ErrorEntity (20013: insufficient permission)
         """
         if code == 204:
-            return HttpResponse.create(code, "No Content"), None
+            return None, None
         if code == 400:
             return None, ValidationErrorEntity.create_from_dict(content)
         if code == 401:

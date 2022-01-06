@@ -204,7 +204,7 @@ class CheckSeasonPurchasable(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ErrorEntity]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, ErrorEntity]]:
         """Parse the given response.
 
         204: No Content - (OK)
@@ -216,7 +216,7 @@ class CheckSeasonPurchasable(Operation):
         409: Conflict - ErrorEntity (49183: Pass item does not match published season pass | 49184: Tier item does not match published season tier | 49185: Season has not started | 49186: Pass already owned | 49187: Exceed max tier count)
         """
         if code == 204:
-            return HttpResponse.create(code, "No Content"), None
+            return None, None
         if code == 400:
             return None, ErrorEntity.create_from_dict(content)
         if code == 404:

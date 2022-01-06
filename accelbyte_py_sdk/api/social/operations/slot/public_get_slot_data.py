@@ -203,7 +203,7 @@ class PublicGetSlotData(Operation):
         404: Not Found - ErrorEntity (12141: Slot [{slotId}] not found in namespace [{namespace}])
         """
         if code == 200:
-            return Any(content), None
+            return content, None
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)

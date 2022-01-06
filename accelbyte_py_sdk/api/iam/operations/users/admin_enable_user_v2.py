@@ -182,7 +182,7 @@ class AdminEnableUserV2(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, HttpResponse]]:
         """Parse the given response.
 
         204: No Content - (Operation succeeded)
@@ -196,7 +196,7 @@ class AdminEnableUserV2(Operation):
         500: Internal Server Error - (20000: internal server error)
         """
         if code == 204:
-            return HttpResponse.create(code, "No Content"), None
+            return None, None
         if code == 401:
             return None, HttpResponse.create(code, "Unauthorized")
         if code == 403:

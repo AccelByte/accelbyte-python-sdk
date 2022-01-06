@@ -205,7 +205,7 @@ class AdminUpdateClientPermissionV3(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, RestapiErrorResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, RestapiErrorResponse]]:
         """Parse the given response.
 
         204: No Content - (Operation succeeded)
@@ -219,7 +219,7 @@ class AdminUpdateClientPermissionV3(Operation):
         404: Not Found - RestapiErrorResponse (10365: client not found)
         """
         if code == 204:
-            return HttpResponse.create(code, "No Content"), None
+            return None, None
         if code == 400:
             return None, RestapiErrorResponse.create_from_dict(content)
         if code == 401:

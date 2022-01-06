@@ -169,7 +169,7 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HTTPValidationError]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, HTTPValidationError]]:
         """Parse the given response.
 
         204: No Content - (Successful Response)
@@ -177,7 +177,7 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
         422: Unprocessable Entity - HTTPValidationError (Validation Error)
         """
         if code == 204:
-            return HttpResponse.create(code, "No Content"), None
+            return None, None
         if code == 422:
             return None, HTTPValidationError.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)

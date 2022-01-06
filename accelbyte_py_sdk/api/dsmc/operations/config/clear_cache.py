@@ -164,7 +164,7 @@ class ClearCache(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ResponseError]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, ResponseError]]:
         """Parse the given response.
 
         204: No Content - (ok)
@@ -174,7 +174,7 @@ class ClearCache(Operation):
         500: Internal Server Error - ResponseError (Internal Server Error)
         """
         if code == 204:
-            return HttpResponse.create(code, "No Content"), None
+            return None, None
         if code == 401:
             return None, ResponseError.create_from_dict(content)
         if code == 500:

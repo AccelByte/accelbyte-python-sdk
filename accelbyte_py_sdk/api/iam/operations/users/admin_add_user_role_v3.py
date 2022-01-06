@@ -203,7 +203,7 @@ class AdminAddUserRoleV3(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, RestErrorResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, RestErrorResponse]]:
         """Parse the given response.
 
         204: No Content - (No Content)
@@ -219,7 +219,7 @@ class AdminAddUserRoleV3(Operation):
         409: Conflict - RestErrorResponse (10160: user already has the role | 10161: user already the role member)
         """
         if code == 204:
-            return HttpResponse.create(code, "No Content"), None
+            return None, None
         if code == 400:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 401:

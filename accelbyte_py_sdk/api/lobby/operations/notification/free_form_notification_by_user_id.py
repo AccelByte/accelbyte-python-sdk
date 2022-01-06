@@ -206,7 +206,7 @@ class FreeFormNotificationByUserID(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, RestapiErrorResponseBody]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, RestapiErrorResponseBody]]:
         """Parse the given response.
 
         204: No Content - (No Content)
@@ -220,7 +220,7 @@ class FreeFormNotificationByUserID(Operation):
         404: Not Found - RestapiErrorResponseBody (Not Found)
         """
         if code == 204:
-            return HttpResponse.create(code, "No Content"), None
+            return None, None
         if code == 400:
             return None, RestapiErrorResponseBody.create_from_dict(content)
         if code == 401:

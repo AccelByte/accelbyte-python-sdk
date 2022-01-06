@@ -378,7 +378,7 @@ class PublicNormalizePaymentReturnUrl(Operation):
         307: Temporary Redirect - (successful operation)
         """
         if code == 204:
-            return HttpResponse.create(code, "No Content"), None
+            return None, None
         if code == 307:
             return HttpResponse.create_redirect(code, content), None
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)

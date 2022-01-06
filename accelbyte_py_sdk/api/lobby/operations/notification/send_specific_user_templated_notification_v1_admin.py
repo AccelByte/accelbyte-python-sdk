@@ -210,7 +210,7 @@ class SendSpecificUserTemplatedNotificationV1Admin(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, RestapiErrorResponseV1]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, RestapiErrorResponseV1]]:
         """Parse the given response.
 
         204: No Content - (No Content)
@@ -224,7 +224,7 @@ class SendSpecificUserTemplatedNotificationV1Admin(Operation):
         404: Not Found - RestapiErrorResponseV1 (Not Found)
         """
         if code == 204:
-            return HttpResponse.create(code, "No Content"), None
+            return None, None
         if code == 400:
             return None, RestapiErrorResponseV1.create_from_dict(content)
         if code == 401:

@@ -200,7 +200,7 @@ class PublicCancelUserPersonalDataRequest(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsListPersonalDataResponse], Union[None, ResponseError]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, ResponseError]]:
         """Parse the given response.
 
         204: No Content - ModelsListPersonalDataResponse (No Content)
@@ -214,7 +214,7 @@ class PublicCancelUserPersonalDataRequest(Operation):
         500: Internal Server Error - ResponseError (Internal Server Error)
         """
         if code == 204:
-            return ModelsListPersonalDataResponse.create_from_dict(content), None
+            return None, None
         if code == 401:
             return None, ResponseError.create_from_dict(content)
         if code == 404:

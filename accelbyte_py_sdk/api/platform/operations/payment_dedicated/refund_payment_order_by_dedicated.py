@@ -289,7 +289,7 @@ class RefundPaymentOrderByDedicated(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse, PaymentOrderRefundResult], Union[None, ErrorEntity, ValidationErrorEntity]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, PaymentOrderRefundResult], Union[None, ErrorEntity, ValidationErrorEntity]]:
         """Parse the given response.
 
         200: OK - PaymentOrderRefundResult (successful operation)
@@ -305,7 +305,7 @@ class RefundPaymentOrderByDedicated(Operation):
         if code == 200:
             return PaymentOrderRefundResult.create_from_dict(content), None
         if code == 204:
-            return HttpResponse.create(code, "No Content"), None
+            return None, None
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 409:

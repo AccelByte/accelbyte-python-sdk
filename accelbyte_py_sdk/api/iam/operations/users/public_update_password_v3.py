@@ -186,7 +186,7 @@ class PublicUpdatePasswordV3(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, RestErrorResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, RestErrorResponse]]:
         """Parse the given response.
 
         204: No Content - (Operation succeeded)
@@ -198,7 +198,7 @@ class PublicUpdatePasswordV3(Operation):
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
         """
         if code == 204:
-            return HttpResponse.create(code, "No Content"), None
+            return None, None
         if code == 400:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 401:

@@ -190,7 +190,7 @@ class PublicUserVerificationV3(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, RestErrorResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, RestErrorResponse]]:
         """Parse the given response.
 
         204: No Content - (Operation succeeded)
@@ -204,7 +204,7 @@ class PublicUserVerificationV3(Operation):
         409: Conflict - RestErrorResponse (10141: email verified)
         """
         if code == 204:
-            return HttpResponse.create(code, "No Content"), None
+            return None, None
         if code == 400:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 401:

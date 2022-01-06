@@ -189,7 +189,7 @@ class DeleteGroupPublicV1(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ResponseErrorResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, ResponseErrorResponse]]:
         """Parse the given response.
 
         204: No Content - (No Content)
@@ -205,7 +205,7 @@ class DeleteGroupPublicV1(Operation):
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
         """
         if code == 204:
-            return HttpResponse.create(code, "No Content"), None
+            return None, None
         if code == 400:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 401:

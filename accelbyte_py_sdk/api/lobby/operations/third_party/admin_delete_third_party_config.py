@@ -169,7 +169,7 @@ class AdminDeleteThirdPartyConfig(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, str], Union[None, RestapiErrorResponseV1]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, RestapiErrorResponseV1]]:
         """Parse the given response.
 
         204: No Content - str (No Content)
@@ -183,7 +183,7 @@ class AdminDeleteThirdPartyConfig(Operation):
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
         """
         if code == 204:
-            return str(content), None
+            return None, None
         if code == 400:
             return None, RestapiErrorResponseV1.create_from_dict(content)
         if code == 401:

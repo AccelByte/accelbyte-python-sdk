@@ -214,7 +214,7 @@ class ProcessUserOrderNotification(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, HttpResponse]]:
         """Parse the given response.
 
         204: No Content - (process successfully)
@@ -222,7 +222,7 @@ class ProcessUserOrderNotification(Operation):
         400: Bad Request - (process failed)
         """
         if code == 204:
-            return HttpResponse.create(code, "No Content"), None
+            return None, None
         if code == 400:
             return None, HttpResponse.create(code, "Bad Request")
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)

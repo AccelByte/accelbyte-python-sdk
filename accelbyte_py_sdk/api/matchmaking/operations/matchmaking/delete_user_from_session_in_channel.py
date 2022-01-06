@@ -241,7 +241,7 @@ class DeleteUserFromSessionInChannel(Operation):
         if code == 200:
             return HttpResponse.create(code, "OK"), None
         if code == 204:
-            return HttpResponse.create(code, "No Content"), None
+            return None, None
         if code == 400:
             return None, ResponseErrorV1.create_from_dict(content)
         if code == 401:

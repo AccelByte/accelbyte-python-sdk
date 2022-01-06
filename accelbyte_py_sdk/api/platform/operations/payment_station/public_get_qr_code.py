@@ -186,7 +186,7 @@ class PublicGetQRCode(Operation):
         200: OK - Any (Successful operation)
         """
         if code == 200:
-            return Any(content), None
+            return content, None
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
             if undocumented_response.is_no_content():

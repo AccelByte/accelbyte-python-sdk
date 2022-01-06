@@ -197,7 +197,7 @@ class DeleteClientPermission(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, HttpResponse]]:
         """Parse the given response.
 
         204: No Content - (Operation succeeded)
@@ -211,7 +211,7 @@ class DeleteClientPermission(Operation):
         404: Not Found - (Data not found)
         """
         if code == 204:
-            return HttpResponse.create(code, "No Content"), None
+            return None, None
         if code == 400:
             return None, HttpResponse.create(code, "Bad Request")
         if code == 401:
