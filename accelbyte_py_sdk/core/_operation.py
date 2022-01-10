@@ -65,7 +65,7 @@ class Operation:
     # noinspection PyMethodMayBeStatic
     def get_body_params(self) -> Any:
         # pylint: disable=no-self-use
-        return {}
+        return None
 
     # noinspection PyMethodMayBeStatic
     def get_header_params(self) -> dict:

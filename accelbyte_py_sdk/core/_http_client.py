@@ -131,7 +131,10 @@ class RequestsHttpClient(HttpClient):
         if 400 <= status_code <= 599:
             _LOGGER.error(f"[{status_code}] {raw_response.text}")
 
-        if raw_response.is_redirect:
+        if status_code == 201:
+            content_type = "location"
+            content = raw_response.headers.get("location", "")
+        elif raw_response.is_redirect:
             content_type = "location"
             content = raw_response.headers["location"]
         elif raw_response.history:
@@ -325,7 +328,7 @@ def convert_operation(
 
     content_type = headers.get("Content-Type")
 
-    if body_params:
+    if body_params is not None:
         if is_json_mime_type(content_type):
             files, data, json_ = None, None, body_params
         else:
@@ -340,10 +343,14 @@ def convert_operation(
                 files[k] = v
             else:
                 data[k] = v
+        if not files:
+            files = None
+        if not data:
+            data = None
     else:
-        files = {}
-        data = {}
-        json_ = {}
+        files = None
+        data = None
+        json_ = None
 
     # NOTE(elmer): Remove 'Content-Type' when 'files' is truthy.
     # See: https://stackoverflow.com/questions/12385179/how-to-send-a-multipart-form-data-with-requests-in-python#comment90642370_12385661
