@@ -666,7 +666,7 @@ delete_file $TEMP_FILE
 $PYTHON -m $MODULE 'platform-update-app' \
     'XtwYZJaQ' \
     '4WbwNmsF' \
-    --body '{"carousel": [{"alt": "YetjEurH", "previewUrl": "8eloJzNK", "thumbnailUrl": "tRUaTz1E", "type": "image", "url": "smwzjkkn", "videoSource": "generic"}], "developer": "iQl05g7c", "forumUrl": "O3ZMb6Oj", "genres": ["lo6DMNpP"], "localizations": {"2qMrTQ1U": {"announcement": "pjfU6wJh", "slogan": "y1jOVkkU"}}, "platformRequirements": {"lS79527E": [{"additionals": "Z25Ia8uC", "directXVersion": "eZFlLtEV", "diskSpace": "pDAEbA82", "graphics": "jy74lq0p", "label": "DE5xRwh5", "osVersion": "b45ebpcM", "processor": "7ScSs3UO", "ram": "pAwIp9rR", "soundCard": "tn1PcCxd"}]}, "platforms": ["bumeYgOd"], "players": ["EBWRQiW3"], "primaryGenre": "Sports", "publisher": "FfU8icH4", "releaseDate": "1997-02-16T00:00:00Z", "websiteUrl": "RB1GyLfL"}' \
+    --body '{"carousel": [{"alt": "YetjEurH", "previewUrl": "8eloJzNK", "thumbnailUrl": "tRUaTz1E", "type": "image", "url": "smwzjkkn", "videoSource": "generic"}], "developer": "iQl05g7c", "forumUrl": "O3ZMb6Oj", "genres": ["Casual"], "localizations": {"o6DMNpP2": {"announcement": "qMrTQ1Up", "slogan": "jfU6wJhy"}}, "platformRequirements": {"1jOVkkUl": [{"additionals": "S79527EZ", "directXVersion": "25Ia8uCe", "diskSpace": "ZFlLtEVp", "graphics": "DAEbA82j", "label": "y74lq0pD", "osVersion": "E5xRwh5b", "processor": "45ebpcM7", "ram": "ScSs3UOp", "soundCard": "AwIp9rRt"}]}, "platforms": ["MacOS"], "players": ["LocalCoop"], "primaryGenre": "Action", "publisher": "CxdbumeY", "releaseDate": "1974-11-20T00:00:00Z", "websiteUrl": "dEBWRQiW"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateApp'
@@ -674,8 +674,8 @@ delete_file $TEMP_FILE
 
 #- 78 DisableItem
 $PYTHON -m $MODULE 'platform-disable-item' \
-    'g4RYuEbg' \
-    'UDEcJyIv' \
+    '3KFfU8ic' \
+    'H4081gRB' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'DisableItem'
@@ -683,7 +683,7 @@ delete_file $TEMP_FILE
 
 #- 79 GetItemDynamicData
 $PYTHON -m $MODULE 'platform-get-item-dynamic-data' \
-    'sPwOr0Bm' \
+    '1GyLfLg4' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetItemDynamicData'
@@ -691,8 +691,8 @@ delete_file $TEMP_FILE
 
 #- 80 EnableItem
 $PYTHON -m $MODULE 'platform-enable-item' \
-    'V5iFvfwF' \
-    'jTSmIEqo' \
+    'RYuEbgUD' \
+    'EcJyIvsP' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'EnableItem'
@@ -700,9 +700,9 @@ delete_file $TEMP_FILE
 
 #- 81 FeatureItem
 $PYTHON -m $MODULE 'platform-feature-item' \
-    'LyLeUGmo' \
-    'mGX9sXTZ' \
-    '0v8pqLfc' \
+    'wOr0BmV5' \
+    'iFvfwFjT' \
+    'SmIEqoLy' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'FeatureItem'
@@ -710,9 +710,9 @@ delete_file $TEMP_FILE
 
 #- 82 DefeatureItem
 $PYTHON -m $MODULE 'platform-defeature-item' \
-    '5SwGnReU' \
-    'ULDX4QUI' \
-    'bb5nh68Z' \
+    'LeUGmomG' \
+    'X9sXTZ0v' \
+    '8pqLfc5S' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'DefeatureItem'
@@ -720,7 +720,7 @@ delete_file $TEMP_FILE
 
 #- 83 GetLocaleItem
 $PYTHON -m $MODULE 'platform-get-locale-item' \
-    'nyUtRvW9' \
+    'wGnReUUL' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetLocaleItem'
@@ -728,8 +728,8 @@ delete_file $TEMP_FILE
 
 #- 84 ReturnItem
 $PYTHON -m $MODULE 'platform-return-item' \
-    'hNBSFTtF' \
-    --body '{"orderNo": "rOmjkFrF"}' \
+    'DX4QUIbb' \
+    --body '{"orderNo": "5nh68Zny"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'ReturnItem'
@@ -744,7 +744,7 @@ delete_file $TEMP_FILE
 
 #- 86 CreateKeyGroup
 $PYTHON -m $MODULE 'platform-create-key-group' \
-    --body '{"description": "VA8t0xF3", "name": "4Xpt6ZlT", "status": "ACTIVE", "tags": ["c0kr2a0n"]}' \
+    --body '{"description": "UtRvW9hN", "name": "BSFTtFrO", "status": "ACTIVE", "tags": ["jkFrFVA8"]}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateKeyGroup'
@@ -752,7 +752,7 @@ delete_file $TEMP_FILE
 
 #- 87 GetKeyGroup
 $PYTHON -m $MODULE 'platform-get-key-group' \
-    'I2oo7UHC' \
+    't0xF34Xp' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetKeyGroup'
@@ -760,8 +760,8 @@ delete_file $TEMP_FILE
 
 #- 88 UpdateKeyGroup
 $PYTHON -m $MODULE 'platform-update-key-group' \
-    'JK5sp0aC' \
-    --body '{"description": "vIq3aHVY", "name": "IlewLRuH", "status": "ACTIVE", "tags": ["Gj0HTeeW"]}' \
+    't6ZlTTic' \
+    --body '{"description": "0kr2a0nI", "name": "2oo7UHCJ", "status": "INACTIVE", "tags": ["p0aCvIq3"]}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateKeyGroup'
@@ -769,7 +769,7 @@ delete_file $TEMP_FILE
 
 #- 89 GetKeyGroupDynamic
 $PYTHON -m $MODULE 'platform-get-key-group-dynamic' \
-    'XlIcRidq' \
+    'aHVYIlew' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetKeyGroupDynamic'
@@ -777,7 +777,7 @@ delete_file $TEMP_FILE
 
 #- 90 ListKeys
 $PYTHON -m $MODULE 'platform-list-keys' \
-    'ctDpygY0' \
+    'LRuHY83b' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'ListKeys'
@@ -785,7 +785,7 @@ delete_file $TEMP_FILE
 
 #- 91 UploadKeys
 $PYTHON -m $MODULE 'platform-upload-keys' \
-    'ax476ED4' \
+    'Gj0HTeeW' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UploadKeys'
@@ -807,7 +807,7 @@ delete_file $TEMP_FILE
 
 #- 94 GetOrder
 $PYTHON -m $MODULE 'platform-get-order' \
-    'MMO9Tw2J' \
+    'XlIcRidq' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetOrder'
@@ -815,8 +815,8 @@ delete_file $TEMP_FILE
 
 #- 95 RefundOrder
 $PYTHON -m $MODULE 'platform-refund-order' \
-    'H0qhWIwH' \
-    --body '{"description": "WTgzJFRY"}' \
+    'ctDpygY0' \
+    --body '{"description": "ax476ED4"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'RefundOrder'
@@ -831,7 +831,7 @@ delete_file $TEMP_FILE
 
 #- 97 UpdatePaymentCallbackConfig
 $PYTHON -m $MODULE 'platform-update-payment-callback-config' \
-    --body '{"dryRun": true, "notifyUrl": "6t1IKZLO", "privateKey": "6V4Ode46"}' \
+    --body '{"dryRun": true, "notifyUrl": "2JH0qhWI", "privateKey": "wHWTgzJF"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdatePaymentCallbackConfig'
@@ -853,7 +853,7 @@ delete_file $TEMP_FILE
 
 #- 100 CreatePaymentOrderByDedicated
 $PYTHON -m $MODULE 'platform-create-payment-order-by-dedicated' \
-    --body '{"currencyCode": "QmCidgdp", "currencyNamespace": "P7RTC587", "customParameters": {"lmUmBziP": {}}, "description": "ZBnpOfkl", "extOrderNo": "lxfq0Nsr", "extUserId": "Sjw5Hog0", "itemType": "APP", "language": "lM1d5MSt", "metadata": {"YGczLINl": "EC0OEsE3"}, "notifyUrl": "yzIsUP0N", "omitNotification": false, "price": 23, "recurringPaymentOrderNo": "uOrGZTzs", "region": "LW7Fjfs9", "returnUrl": "nIkcZ38f", "sandbox": true, "sku": "anjKHbXf", "subscriptionId": "k1zxdzxg", "targetNamespace": "0UXcRyHi", "targetUserId": "3u8BzVWu", "title": "1tOmhUtC"}' \
+    --body '{"currencyCode": "RYw6t1IK", "currencyNamespace": "ZLO6V4Od", "customParameters": {"e46QmCid": {}}, "description": "gdpP7RTC", "extOrderNo": "587lmUmB", "extUserId": "ziPZBnpO", "itemType": "COINS", "language": "kllxfq0N", "metadata": {"srSjw5Ho": "g0blM1d5"}, "notifyUrl": "MStYGczL", "omitNotification": false, "price": 60, "recurringPaymentOrderNo": "C0OEsE3y", "region": "zIsUP0Nj", "returnUrl": "luOrGZTz", "sandbox": true, "sku": "LW7Fjfs9", "subscriptionId": "nIkcZ38f", "targetNamespace": "UEanjKHb", "targetUserId": "Xfk1zxdz", "title": "xg0UXcRy"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'CreatePaymentOrderByDedicated'
@@ -861,7 +861,7 @@ delete_file $TEMP_FILE
 
 #- 101 ListExtOrderNoByExtTxId
 $PYTHON -m $MODULE 'platform-list-ext-order-no-by-ext-tx-id' \
-    'gcpvGrEb' \
+    'Hi3u8BzV' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'ListExtOrderNoByExtTxId'
@@ -869,7 +869,7 @@ delete_file $TEMP_FILE
 
 #- 102 GetPaymentOrder
 $PYTHON -m $MODULE 'platform-get-payment-order' \
-    'cZUDExH1' \
+    'Wu1tOmhU' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetPaymentOrder'
@@ -877,8 +877,8 @@ delete_file $TEMP_FILE
 
 #- 103 ChargePaymentOrder
 $PYTHON -m $MODULE 'platform-charge-payment-order' \
-    'tayOGXIH' \
-    --body '{"extTxId": "zMRjMCtO", "paymentMethod": "JsEijlrb", "paymentProvider": "STRIPE"}' \
+    'tCgcpvGr' \
+    --body '{"extTxId": "EbcZUDEx", "paymentMethod": "H1tayOGX", "paymentProvider": "WXPAY"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'ChargePaymentOrder'
@@ -886,8 +886,8 @@ delete_file $TEMP_FILE
 
 #- 104 RefundPaymentOrderByDedicated
 $PYTHON -m $MODULE 'platform-refund-payment-order-by-dedicated' \
-    'yyEcQxVg' \
-    --body '{"description": "JIjMZqcW"}' \
+    'MRjMCtOJ' \
+    --body '{"description": "sEijlrbp"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'RefundPaymentOrderByDedicated'
@@ -895,8 +895,8 @@ delete_file $TEMP_FILE
 
 #- 105 SimulatePaymentOrderNotification
 $PYTHON -m $MODULE 'platform-simulate-payment-order-notification' \
-    'fMl6dqrp' \
-    --body '{"amount": 59, "currencyCode": "4tnc3ZRB", "notifyType": "CHARGE", "paymentProvider": "WALLET", "salesTax": 39, "vat": 82}' \
+    'yyEcQxVg' \
+    --body '{"amount": 71, "currencyCode": "IjMZqcWf", "notifyType": "CHARGE", "paymentProvider": "WALLET", "salesTax": 32, "vat": 34}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'SimulatePaymentOrderNotification'
@@ -904,7 +904,7 @@ delete_file $TEMP_FILE
 
 #- 106 GetPaymentOrderChargeStatus
 $PYTHON -m $MODULE 'platform-get-payment-order-charge-status' \
-    'fAJEomwe' \
+    'pD4tnc3Z' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetPaymentOrderChargeStatus'
@@ -912,7 +912,7 @@ delete_file $TEMP_FILE
 
 #- 107 CreateReward
 $PYTHON -m $MODULE 'platform-create-reward' \
-    --body '{"description": "nJvQ8grt", "eventTopic": "QSv6EcAL", "maxAwarded": 5, "maxAwardedPerUser": 76, "rewardCode": "IPms5bT5", "rewardConditions": [{"condition": "1M4yko8S", "conditionName": "0EnGLvGv", "eventName": "fuSyCTyj", "rewardItems": [{"duration": 19, "itemId": "4mCaiuMG", "quantity": 73}]}]}' \
+    --body '{"description": "RB3IkdtP", "eventTopic": "fAJEomwe", "maxAwarded": 26, "maxAwardedPerUser": 70, "rewardCode": "vQ8grtQS", "rewardConditions": [{"condition": "v6EcALcM", "conditionName": "IPms5bT5", "eventName": "1M4yko8S", "rewardItems": [{"duration": 60, "itemId": "nGLvGvfu", "quantity": 89}]}]}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateReward'
@@ -942,7 +942,7 @@ delete_file $TEMP_FILE
 
 #- 111 GetReward
 $PYTHON -m $MODULE 'platform-get-reward' \
-    '5GJJooSX' \
+    'CTyjj4mC' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetReward'
@@ -950,8 +950,8 @@ delete_file $TEMP_FILE
 
 #- 112 UpdateReward
 $PYTHON -m $MODULE 'platform-update-reward' \
-    'Ul3YU35Q' \
-    --body '{"description": "HGpBABnO", "eventTopic": "lxDznICQ", "maxAwarded": 95, "maxAwardedPerUser": 48, "rewardCode": "qBg34WTt", "rewardConditions": [{"condition": "Dkn0rtn6", "conditionName": "t0Yx4z12", "eventName": "EaQ1rUQY", "rewardItems": [{"duration": 56, "itemId": "NTiDX4jE", "quantity": 76}]}]}' \
+    'aiuMGKOF' \
+    --body '{"description": "5GJJooSX", "eventTopic": "Ul3YU35Q", "maxAwarded": 67, "maxAwardedPerUser": 64, "rewardCode": "pBABnOlx", "rewardConditions": [{"condition": "DznICQVy", "conditionName": "qBg34WTt", "eventName": "Dkn0rtn6", "rewardItems": [{"duration": 39, "itemId": "0Yx4z12E", "quantity": 1}]}]}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateReward'
@@ -959,7 +959,7 @@ delete_file $TEMP_FILE
 
 #- 113 DeleteReward
 $PYTHON -m $MODULE 'platform-delete-reward' \
-    '2IsTHu8Q' \
+    'Q1rUQYCN' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteReward'
@@ -967,8 +967,8 @@ delete_file $TEMP_FILE
 
 #- 114 CheckEventCondition
 $PYTHON -m $MODULE 'platform-check-event-condition' \
-    'wNyOlXfI' \
-    --body '{"payload": {"Wd0mcq5T": {}}}' \
+    'TiDX4jE3' \
+    --body '{"payload": {"M2IsTHu8": {}}}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'CheckEventCondition'
@@ -983,7 +983,7 @@ delete_file $TEMP_FILE
 
 #- 116 CreateStore
 $PYTHON -m $MODULE 'platform-create-store' \
-    --body '{"defaultLanguage": "4SUc7cWf", "defaultRegion": "CKK6Dij1", "description": "gFcenEMy", "supportedLanguages": ["SPfhxBen"], "supportedRegions": ["DiTiAqFY"], "title": "mFKjaELm"}' \
+    --body '{"defaultLanguage": "QwNyOlXf", "defaultRegion": "IWd0mcq5", "description": "T4SUc7cW", "supportedLanguages": ["fCKK6Dij"], "supportedRegions": ["1gFcenEM"], "title": "ySPfhxBe"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateStore'
@@ -1026,7 +1026,7 @@ delete_file $TEMP_FILE
 
 #- 122 GetStore
 $PYTHON -m $MODULE 'platform-get-store' \
-    'mll6oexI' \
+    'nDiTiAqF' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetStore'
@@ -1034,8 +1034,8 @@ delete_file $TEMP_FILE
 
 #- 123 UpdateStore
 $PYTHON -m $MODULE 'platform-update-store' \
-    'd1OKGUN2' \
-    --body '{"defaultLanguage": "Uznd7uVa", "defaultRegion": "7t14yvSY", "description": "SV52bHif", "supportedLanguages": ["CIf4tsuu"], "supportedRegions": ["6Pkam6tF"], "title": "SYFt4ZxA"}' \
+    'YmFKjaEL' \
+    --body '{"defaultLanguage": "mmll6oex", "defaultRegion": "Id1OKGUN", "description": "2Uznd7uV", "supportedLanguages": ["a7t14yvS"], "supportedRegions": ["YSV52bHi"], "title": "fCIf4tsu"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateStore'
@@ -1043,7 +1043,7 @@ delete_file $TEMP_FILE
 
 #- 124 DeleteStore
 $PYTHON -m $MODULE 'platform-delete-store' \
-    '2PzZFRkB' \
+    'u6Pkam6t' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteStore'
@@ -1051,7 +1051,7 @@ delete_file $TEMP_FILE
 
 #- 125 CloneStore
 $PYTHON -m $MODULE 'platform-clone-store' \
-    'Nlg6hn5q' \
+    'FSYFt4Zx' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'CloneStore'
@@ -1059,7 +1059,7 @@ delete_file $TEMP_FILE
 
 #- 126 ExportStore
 $PYTHON -m $MODULE 'platform-export-store' \
-    'usKyZAuV' \
+    'A2PzZFRk' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'ExportStore'
@@ -1074,7 +1074,7 @@ delete_file $TEMP_FILE
 
 #- 128 RecurringChargeSubscription
 $PYTHON -m $MODULE 'platform-recurring-charge-subscription' \
-    '6uUvqM0l' \
+    'BNlg6hn5' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'RecurringChargeSubscription'
@@ -1082,7 +1082,7 @@ delete_file $TEMP_FILE
 
 #- 129 GetTicketDynamic
 $PYTHON -m $MODULE 'platform-get-ticket-dynamic' \
-    'V6UZMlEb' \
+    'qusKyZAu' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetTicketDynamic'
@@ -1090,8 +1090,8 @@ delete_file $TEMP_FILE
 
 #- 130 DecreaseTicketSale
 $PYTHON -m $MODULE 'platform-decrease-ticket-sale' \
-    'xHNgJRiQ' \
-    --body '{"orderNo": "ExaunjdA"}' \
+    'V6uUvqM0' \
+    --body '{"orderNo": "lV6UZMlE"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'DecreaseTicketSale'
@@ -1099,7 +1099,7 @@ delete_file $TEMP_FILE
 
 #- 131 GetTicketBoothID
 $PYTHON -m $MODULE 'platform-get-ticket-booth-id' \
-    'qnHUz44t' \
+    'bxHNgJRi' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetTicketBoothID'
@@ -1107,8 +1107,8 @@ delete_file $TEMP_FILE
 
 #- 132 IncreaseTicketSale
 $PYTHON -m $MODULE 'platform-increase-ticket-sale' \
-    'x4O6hamP' \
-    --body '{"count": 45, "orderNo": "Noi071ez"}' \
+    'QExaunjd' \
+    --body '{"count": 52, "orderNo": "qnHUz44t"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'IncreaseTicketSale'
@@ -1116,7 +1116,7 @@ delete_file $TEMP_FILE
 
 #- 133 AnonymizeCampaign
 $PYTHON -m $MODULE 'platform-anonymize-campaign' \
-    'DK56JFIG' \
+    'x4O6hamP' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'AnonymizeCampaign'
@@ -1124,7 +1124,7 @@ delete_file $TEMP_FILE
 
 #- 134 AnonymizeEntitlement
 $PYTHON -m $MODULE 'platform-anonymize-entitlement' \
-    'e1IMUCLc' \
+    'wNoi071e' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'AnonymizeEntitlement'
@@ -1132,7 +1132,7 @@ delete_file $TEMP_FILE
 
 #- 135 AnonymizeFulfillment
 $PYTHON -m $MODULE 'platform-anonymize-fulfillment' \
-    'N0DsaD5F' \
+    'zDK56JFI' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'AnonymizeFulfillment'
@@ -1140,7 +1140,7 @@ delete_file $TEMP_FILE
 
 #- 136 AnonymizeIntegration
 $PYTHON -m $MODULE 'platform-anonymize-integration' \
-    'yBsFe9OY' \
+    'Ge1IMUCL' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'AnonymizeIntegration'
@@ -1148,7 +1148,7 @@ delete_file $TEMP_FILE
 
 #- 137 AnonymizeOrder
 $PYTHON -m $MODULE 'platform-anonymize-order' \
-    'EJVsYffm' \
+    'cN0DsaD5' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'AnonymizeOrder'
@@ -1156,7 +1156,7 @@ delete_file $TEMP_FILE
 
 #- 138 AnonymizePayment
 $PYTHON -m $MODULE 'platform-anonymize-payment' \
-    'hyx6J25P' \
+    'FyBsFe9O' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'AnonymizePayment'
@@ -1164,7 +1164,7 @@ delete_file $TEMP_FILE
 
 #- 139 AnonymizeSubscription
 $PYTHON -m $MODULE 'platform-anonymize-subscription' \
-    'rM4S3cB8' \
+    'YEJVsYff' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'AnonymizeSubscription'
@@ -1172,7 +1172,7 @@ delete_file $TEMP_FILE
 
 #- 140 AnonymizeWallet
 $PYTHON -m $MODULE 'platform-anonymize-wallet' \
-    'm17hEeLL' \
+    'mhyx6J25' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'AnonymizeWallet'
@@ -1180,7 +1180,7 @@ delete_file $TEMP_FILE
 
 #- 141 QueryUserEntitlements
 $PYTHON -m $MODULE 'platform-query-user-entitlements' \
-    'goaYth6z' \
+    'PrM4S3cB' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'QueryUserEntitlements'
@@ -1188,8 +1188,8 @@ delete_file $TEMP_FILE
 
 #- 142 GrantUserEntitlement
 $PYTHON -m $MODULE 'platform-grant-user-entitlement' \
-    'cf8eA45O' \
-    --body '[{"endDate": "1990-06-16T00:00:00Z", "grantedCode": "ObWejo9L", "itemId": "fGeegJMa", "itemNamespace": "BGR6D1Zo", "language": "ZEZQkJ8D", "quantity": 88, "region": "qFnhdKvj", "source": "GIFT", "startDate": "1985-09-05T00:00:00Z", "storeId": "bSFlEWoM"}]' \
+    '8m17hEeL' \
+    --body '[{"endDate": "1989-02-15T00:00:00Z", "grantedCode": "oaYth6zc", "itemId": "f8eA45OM", "itemNamespace": "vObWejo9", "language": "LfGeegJM", "quantity": 0, "region": "BGR6D1Zo", "source": "GIFT", "startDate": "1996-12-02T00:00:00Z", "storeId": "kJ8DSqFn"}]' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GrantUserEntitlement'
@@ -1197,8 +1197,8 @@ delete_file $TEMP_FILE
 
 #- 143 GetUserAppEntitlementByAppId
 $PYTHON -m $MODULE 'platform-get-user-app-entitlement-by-app-id' \
-    'PdgK5zn6' \
-    '2mhnFSpC' \
+    'hdKvjFCF' \
+    'bSFlEWoM' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserAppEntitlementByAppId'
@@ -1206,8 +1206,8 @@ delete_file $TEMP_FILE
 
 #- 144 QueryUserEntitlementsByAppType
 $PYTHON -m $MODULE 'platform-query-user-entitlements-by-app-type' \
-    'TlDNBOcy' \
-    'DEMO' \
+    'PdgK5zn6' \
+    'DLC' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'QueryUserEntitlementsByAppType'
@@ -1215,8 +1215,8 @@ delete_file $TEMP_FILE
 
 #- 145 GetUserEntitlementByItemId
 $PYTHON -m $MODULE 'platform-get-user-entitlement-by-item-id' \
-    'vv2LAgfB' \
-    'GVzanbKY' \
+    'hnFSpCTl' \
+    'DNBOcygv' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserEntitlementByItemId'
@@ -1224,8 +1224,8 @@ delete_file $TEMP_FILE
 
 #- 146 GetUserEntitlementBySku
 $PYTHON -m $MODULE 'platform-get-user-entitlement-by-sku' \
-    'sB0gqJ8V' \
-    'hYSikJl2' \
+    'v2LAgfBG' \
+    'VzanbKYs' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserEntitlementBySku'
@@ -1233,7 +1233,7 @@ delete_file $TEMP_FILE
 
 #- 147 ExistsAnyUserActiveEntitlement
 $PYTHON -m $MODULE 'platform-exists-any-user-active-entitlement' \
-    'p9rBx8N5' \
+    'B0gqJ8Vh' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'ExistsAnyUserActiveEntitlement'
@@ -1241,8 +1241,8 @@ delete_file $TEMP_FILE
 
 #- 148 ExistsAnyUserActiveEntitlementByItemIds
 $PYTHON -m $MODULE 'platform-exists-any-user-active-entitlement-by-item-ids' \
-    'egapqxDy' \
-    '["4cLfNjzz"]' \
+    'YSikJl2p' \
+    '["9rBx8N5e"]' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'ExistsAnyUserActiveEntitlementByItemIds'
@@ -1250,8 +1250,8 @@ delete_file $TEMP_FILE
 
 #- 149 GetUserAppEntitlementOwnershipByAppId
 $PYTHON -m $MODULE 'platform-get-user-app-entitlement-ownership-by-app-id' \
-    'EZYA8jIk' \
-    'MJb7cZ2b' \
+    'gapqxDy4' \
+    'cLfNjzzE' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserAppEntitlementOwnershipByAppId'
@@ -1259,8 +1259,8 @@ delete_file $TEMP_FILE
 
 #- 150 GetUserEntitlementOwnershipByItemId
 $PYTHON -m $MODULE 'platform-get-user-entitlement-ownership-by-item-id' \
-    'PsaLLpEB' \
-    'VEMk5AsK' \
+    'ZYA8jIkM' \
+    'Jb7cZ2bP' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserEntitlementOwnershipByItemId'
@@ -1268,8 +1268,8 @@ delete_file $TEMP_FILE
 
 #- 151 GetUserEntitlementOwnershipBySku
 $PYTHON -m $MODULE 'platform-get-user-entitlement-ownership-by-sku' \
-    'aF2P44lX' \
-    'kI3zdiRi' \
+    'saLLpEBV' \
+    'EMk5AsKa' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserEntitlementOwnershipBySku'
@@ -1277,8 +1277,8 @@ delete_file $TEMP_FILE
 
 #- 152 RevokeUserEntitlements
 $PYTHON -m $MODULE 'platform-revoke-user-entitlements' \
-    'C5IbPit7' \
-    '1JWlYCoi' \
+    'F2P44lXk' \
+    'I3zdiRiC' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'RevokeUserEntitlements'
@@ -1286,8 +1286,8 @@ delete_file $TEMP_FILE
 
 #- 153 GetUserEntitlement
 $PYTHON -m $MODULE 'platform-get-user-entitlement' \
-    '4nDfPu5V' \
-    '6QSYxEVO' \
+    '5IbPit71' \
+    'JWlYCoi4' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserEntitlement'
@@ -1295,9 +1295,9 @@ delete_file $TEMP_FILE
 
 #- 154 UpdateUserEntitlement
 $PYTHON -m $MODULE 'platform-update-user-entitlement' \
-    'ryVuZYmg' \
-    'UeEPB5AG' \
-    --body '{"endDate": "1991-02-16T00:00:00Z", "nullFieldList": ["vk0Zthaj"], "startDate": "1997-08-25T00:00:00Z", "status": "REVOKED", "useCount": 52}' \
+    'nDfPu5V6' \
+    'QSYxEVOr' \
+    --body '{"endDate": "1983-06-09T00:00:00Z", "nullFieldList": ["ZYmgUeEP"], "startDate": "1984-07-27T00:00:00Z", "status": "ACTIVE", "useCount": 42}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateUserEntitlement'
@@ -1305,9 +1305,9 @@ delete_file $TEMP_FILE
 
 #- 155 ConsumeUserEntitlement
 $PYTHON -m $MODULE 'platform-consume-user-entitlement' \
-    '4azRz0d5' \
-    '6smobor4' \
-    --body '{"useCount": 30}' \
+    'k0Zthaj0' \
+    'EBA4azRz' \
+    --body '{"useCount": 7}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'ConsumeUserEntitlement'
@@ -1315,8 +1315,8 @@ delete_file $TEMP_FILE
 
 #- 156 DisableUserEntitlement
 $PYTHON -m $MODULE 'platform-disable-user-entitlement' \
-    '1PlgQB9E' \
-    'cNGOeBRY' \
+    '56smobor' \
+    '4p1PlgQB' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'DisableUserEntitlement'
@@ -1324,8 +1324,8 @@ delete_file $TEMP_FILE
 
 #- 157 EnableUserEntitlement
 $PYTHON -m $MODULE 'platform-enable-user-entitlement' \
-    '6G5ae07d' \
-    'eDLaZ8JC' \
+    '9EcNGOeB' \
+    'RY6G5ae0' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'EnableUserEntitlement'
@@ -1333,8 +1333,8 @@ delete_file $TEMP_FILE
 
 #- 158 GetUserEntitlementHistories
 $PYTHON -m $MODULE 'platform-get-user-entitlement-histories' \
-    'vbeTfW0h' \
-    'gzrabLJx' \
+    '7deDLaZ8' \
+    'JCvbeTfW' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserEntitlementHistories'
@@ -1342,8 +1342,8 @@ delete_file $TEMP_FILE
 
 #- 159 RevokeUserEntitlement
 $PYTHON -m $MODULE 'platform-revoke-user-entitlement' \
-    'EwJrEBmQ' \
-    '64haNOzl' \
+    '0hgzrabL' \
+    'JxEwJrEB' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'RevokeUserEntitlement'
@@ -1351,8 +1351,8 @@ delete_file $TEMP_FILE
 
 #- 160 FulfillItem
 $PYTHON -m $MODULE 'platform-fulfill-item' \
-    'Gu68UYyu' \
-    --body '{"duration": 30, "endDate": "1975-01-31T00:00:00Z", "itemId": "DetnoT0r", "itemSku": "fWtVPwQf", "language": "q6V92gbf", "order": {"currency": {"currencyCode": "PouNdmP7", "currencySymbol": "fckVnuDG", "currencyType": "VIRTUAL", "decimals": 100, "namespace": "Ib1p5tcR"}, "ext": {"5z8ZJLjS": {}}, "free": false}, "orderNo": "aR3X4tZm", "quantity": 44, "region": "r0QmOnsE", "source": "IAP", "startDate": "1999-01-29T00:00:00Z", "storeId": "Xp0xQkZ2"}' \
+    'mQ64haNO' \
+    --body '{"duration": 51, "endDate": "1976-09-13T00:00:00Z", "itemId": "u68UYyup", "itemSku": "jdDetnoT", "language": "0rfWtVPw", "order": {"currency": {"currencyCode": "Qfq6V92g", "currencySymbol": "bfPouNdm", "currencyType": "REAL", "decimals": 5, "namespace": "kVnuDGvY"}, "ext": {"Ib1p5tcR": {}}, "free": true}, "orderNo": "8ZJLjSHc", "quantity": 0, "region": "R3X4tZmw", "source": "REFERRAL_BONUS", "startDate": "1997-12-03T00:00:00Z", "storeId": "mOnsEg49"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'FulfillItem'
@@ -1360,8 +1360,8 @@ delete_file $TEMP_FILE
 
 #- 161 RedeemCode
 $PYTHON -m $MODULE 'platform-redeem-code' \
-    'JjuwWWy0' \
-    --body '{"code": "tU11PCeS", "language": "rvejUKwV", "region": "fF37Vr7m"}' \
+    'eXp0xQkZ' \
+    --body '{"code": "2JjuwWWy", "language": "0tU11PCe", "region": "SrvejUKw"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'RedeemCode'
@@ -1369,7 +1369,7 @@ delete_file $TEMP_FILE
 
 #- 162 QueryUserIAPOrders
 $PYTHON -m $MODULE 'platform-query-user-iap-orders' \
-    'kDzFBI1V' \
+    'VfF37Vr7' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'QueryUserIAPOrders'
@@ -1377,8 +1377,8 @@ delete_file $TEMP_FILE
 
 #- 163 MockFulfillIAPItem
 $PYTHON -m $MODULE 'platform-mock-fulfill-iap-item' \
-    'whkVSKDl' \
-    --body '{"language": "NFOUHBJs", "productId": "vTsqk9hg", "region": "4hj6nUde", "type": "APPLE"}' \
+    'mkDzFBI1' \
+    --body '{"language": "VwhkVSKD", "productId": "lNFOUHBJ", "region": "svTsqk9h", "type": "APPLE"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'MockFulfillIAPItem'
@@ -1386,7 +1386,7 @@ delete_file $TEMP_FILE
 
 #- 164 QueryUserOrders
 $PYTHON -m $MODULE 'platform-query-user-orders' \
-    'W6UskbPk' \
+    '4hj6nUde' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'QueryUserOrders'
@@ -1394,8 +1394,8 @@ delete_file $TEMP_FILE
 
 #- 165 CountOfPurchasedItem
 $PYTHON -m $MODULE 'platform-count-of-purchased-item' \
-    'kZAk01f1' \
-    'KxCtWADU' \
+    'bW6UskbP' \
+    'kkZAk01f' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'CountOfPurchasedItem'
@@ -1403,8 +1403,8 @@ delete_file $TEMP_FILE
 
 #- 166 GetUserOrder
 $PYTHON -m $MODULE 'platform-get-user-order' \
-    '2guN6U9w' \
-    '13W1K9TZ' \
+    '1KxCtWAD' \
+    'U2guN6U9' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserOrder'
@@ -1412,9 +1412,9 @@ delete_file $TEMP_FILE
 
 #- 167 UpdateUserOrderStatus
 $PYTHON -m $MODULE 'platform-update-user-order-status' \
-    'Q4qRLEi5' \
-    'wowE36rf' \
-    --body '{"status": "CHARGEBACK_REVERSED", "statusReason": "M0CCs35T"}' \
+    'w13W1K9T' \
+    'ZQ4qRLEi' \
+    --body '{"status": "FULFILL_FAILED", "statusReason": "owE36rfm"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateUserOrderStatus'
@@ -1422,8 +1422,8 @@ delete_file $TEMP_FILE
 
 #- 168 FulfillUserOrder
 $PYTHON -m $MODULE 'platform-fulfill-user-order' \
+    'M0CCs35T' \
     'PUPLmsY8' \
-    'WgwSx1DI' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'FulfillUserOrder'
@@ -1431,8 +1431,8 @@ delete_file $TEMP_FILE
 
 #- 169 GetUserOrderGrant
 $PYTHON -m $MODULE 'platform-get-user-order-grant' \
+    'WgwSx1DI' \
     '5GH9bv9Z' \
-    'To2HpA6p' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserOrderGrant'
@@ -1440,8 +1440,8 @@ delete_file $TEMP_FILE
 
 #- 170 GetUserOrderHistories
 $PYTHON -m $MODULE 'platform-get-user-order-histories' \
+    'To2HpA6p' \
     'zjHpZO0E' \
-    '9iLgRPJK' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserOrderHistories'
@@ -1449,9 +1449,9 @@ delete_file $TEMP_FILE
 
 #- 171 ProcessUserOrderNotification
 $PYTHON -m $MODULE 'platform-process-user-order-notification' \
+    '9iLgRPJK' \
     '3nBae3GO' \
-    'gbQrqra0' \
-    --body '{"additionalData": {"cardSummary": "PtkfvOpY"}, "authorisedTime": "1998-05-12T00:00:00Z", "chargebackReversedTime": "1971-04-09T00:00:00Z", "chargebackTime": "1978-04-02T00:00:00Z", "chargedTime": "1977-08-11T00:00:00Z", "createdTime": "1977-07-07T00:00:00Z", "currency": {"currencyCode": "mBkfMtC6", "currencySymbol": "6hFq0kPO", "currencyType": "REAL", "decimals": 80, "namespace": "Rm2XjlNE"}, "customParameters": {"E5ecPzAm": {}}, "extOrderNo": "i0ySJHfP", "extTxId": "loP1XkYK", "extUserId": "4MgIsDSF", "issuedAt": "1990-11-28T00:00:00Z", "metadata": {"yMhyw1OL": "ZPVwwxH4"}, "namespace": "BIDJuDoS", "nonceStr": "hMMftll8", "paymentMethod": "N0VvChHz", "paymentMethodFee": 40, "paymentOrderNo": "rmt7QWvE", "paymentProvider": "CHECKOUT", "paymentProviderFee": 92, "paymentStationUrl": "z8BRuYWD", "price": 90, "refundedTime": "1980-10-26T00:00:00Z", "salesTax": 77, "sandbox": false, "sku": "Cbb9S5Q1", "status": "CHARGEBACK_REVERSED", "statusReason": "VHGT88pr", "subscriptionId": "REBgYOWd", "subtotalPrice": 66, "targetNamespace": "J9Jumoht", "targetUserId": "U13gf7TR", "tax": 16, "totalPrice": 12, "totalTax": 79, "txEndTime": "1996-03-13T00:00:00Z", "type": "5w5y3HmK", "userId": "8QVOa62e", "vat": 85}' \
+    --body '{"additionalData": {"cardSummary": "gbQrqra0"}, "authorisedTime": "1991-06-05T00:00:00Z", "chargebackReversedTime": "1976-02-14T00:00:00Z", "chargebackTime": "1981-11-17T00:00:00Z", "chargedTime": "1978-05-17T00:00:00Z", "createdTime": "1971-04-09T00:00:00Z", "currency": {"currencyCode": "p5lnBn6x", "currencySymbol": "mBkfMtC6", "currencyType": "REAL", "decimals": 62, "namespace": "q0kPOkOR"}, "customParameters": {"m2XjlNEE": {}}, "extOrderNo": "5ecPzAmi", "extTxId": "0ySJHfPl", "extUserId": "oP1XkYK4", "issuedAt": "1990-02-18T00:00:00Z", "metadata": {"IsDSFMPy": "Mhyw1OLZ"}, "namespace": "PVwwxH4B", "nonceStr": "IDJuDoSh", "paymentMethod": "MMftll8N", "paymentMethodFee": 95, "paymentOrderNo": "vChHz9ur", "paymentProvider": "STRIPE", "paymentProviderFee": 39, "paymentStationUrl": "7QWvE8s6", "price": 92, "refundedTime": "1983-08-05T00:00:00Z", "salesTax": 87, "sandbox": true, "sku": "YWDTtL6M", "status": "REFUND_FAILED", "statusReason": "TRkCbb9S", "subscriptionId": "5Q1IVHGT", "subtotalPrice": 30, "targetNamespace": "rREBgYOW", "targetUserId": "dHJ9Jumo", "tax": 15, "totalPrice": 39, "totalTax": 92, "txEndTime": "1997-02-15T00:00:00Z", "type": "f7TRigNZ", "userId": "j5w5y3Hm", "vat": 73}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'ProcessUserOrderNotification'
@@ -1459,8 +1459,8 @@ delete_file $TEMP_FILE
 
 #- 172 DownloadUserOrderReceipt
 $PYTHON -m $MODULE 'platform-download-user-order-receipt' \
-    'ZtbLLcF6' \
-    '71WLtv38' \
+    '8QVOa62e' \
+    'QZtbLLcF' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'DownloadUserOrderReceipt'
@@ -1468,8 +1468,8 @@ delete_file $TEMP_FILE
 
 #- 173 CreateUserPaymentOrder
 $PYTHON -m $MODULE 'platform-create-user-payment-order' \
-    'HecczopF' \
-    --body '{"currencyCode": "meRwpcJB", "currencyNamespace": "Zyi3mLC4", "customParameters": {"KzekiSze": {}}, "description": "yolnOQt0", "extOrderNo": "joVHgCyt", "extUserId": "C6lRG98Y", "itemType": "SUBSCRIPTION", "language": "nHbRdoTK", "metadata": {"KeuSjfZe": "9i1osghF"}, "notifyUrl": "1hzi1Nl4", "omitNotification": true, "price": 48, "recurringPaymentOrderNo": "J5ibzSHZ", "region": "eCLIvWPV", "returnUrl": "RsdEqA61", "sandbox": true, "sku": "TrMgsycT", "subscriptionId": "gmPzc20E", "title": "uO5dMqGD"}' \
+    '671WLtv3' \
+    --body '{"currencyCode": "8Hecczop", "currencyNamespace": "FmeRwpcJ", "customParameters": {"BZyi3mLC": {}}, "description": "4KzekiSz", "extOrderNo": "eyolnOQt", "extUserId": "0joVHgCy", "itemType": "CODE", "language": "C6lRG98Y", "metadata": {"xnHbRdoT": "KKeuSjfZ"}, "notifyUrl": "e9i1osgh", "omitNotification": true, "price": 15, "recurringPaymentOrderNo": "zi1Nl47s", "region": "yJ5ibzSH", "returnUrl": "ZeCLIvWP", "sandbox": true, "sku": "dEqA61yT", "subscriptionId": "rMgsycTg", "title": "mPzc20Eu"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateUserPaymentOrder'
@@ -1477,9 +1477,9 @@ delete_file $TEMP_FILE
 
 #- 174 RefundUserPaymentOrder
 $PYTHON -m $MODULE 'platform-refund-user-payment-order' \
-    'lSZPY07r' \
-    'EVSjzHjL' \
-    --body '{"description": "6ZbXjG6D"}' \
+    'O5dMqGDl' \
+    'SZPY07rE' \
+    --body '{"description": "VSjzHjL6"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'RefundUserPaymentOrder'
@@ -1487,8 +1487,8 @@ delete_file $TEMP_FILE
 
 #- 175 ApplyUserRedemption
 $PYTHON -m $MODULE 'platform-apply-user-redemption' \
-    'Smpp3op8' \
-    --body '{"code": "htaRLxtW", "orderNo": "4PvFkEST"}' \
+    'ZbXjG6DS' \
+    --body '{"code": "mpp3op8h", "orderNo": "taRLxtW4"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'ApplyUserRedemption'
@@ -1496,7 +1496,7 @@ delete_file $TEMP_FILE
 
 #- 176 QueryUserSubscriptions
 $PYTHON -m $MODULE 'platform-query-user-subscriptions' \
-    'ULat5F1L' \
+    'PvFkESTU' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'QueryUserSubscriptions'
@@ -1504,7 +1504,7 @@ delete_file $TEMP_FILE
 
 #- 177 GetUserSubscriptionActivities
 $PYTHON -m $MODULE 'platform-get-user-subscription-activities' \
-    'e7cR7q6P' \
+    'Lat5F1Le' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserSubscriptionActivities'
@@ -1512,8 +1512,8 @@ delete_file $TEMP_FILE
 
 #- 178 PlatformSubscribeSubscription
 $PYTHON -m $MODULE 'platform-platform-subscribe-subscription' \
-    'WhZmmKz4' \
-    --body '{"grantDays": 17, "itemId": "1Tp78Fip", "language": "JHahViJv", "reason": "LYW0kdml", "region": "k2luqSOO", "source": "A2VOZBoN"}' \
+    '7cR7q6PW' \
+    --body '{"grantDays": 14, "itemId": "ZmmKz41i", "language": "1Tp78Fip", "reason": "JHahViJv", "region": "LYW0kdml", "source": "k2luqSOO"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PlatformSubscribeSubscription'
@@ -1521,8 +1521,8 @@ delete_file $TEMP_FILE
 
 #- 179 CheckUserSubscriptionSubscribableByItemId
 $PYTHON -m $MODULE 'platform-check-user-subscription-subscribable-by-item-id' \
+    'A2VOZBoN' \
     'bB98PuSG' \
-    'ykqFzPwS' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'CheckUserSubscriptionSubscribableByItemId'
@@ -1530,8 +1530,8 @@ delete_file $TEMP_FILE
 
 #- 180 GetUserSubscription
 $PYTHON -m $MODULE 'platform-get-user-subscription' \
+    'ykqFzPwS' \
     'MXT53bBu' \
-    'L38beOYD' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserSubscription'
@@ -1539,8 +1539,8 @@ delete_file $TEMP_FILE
 
 #- 181 DeleteUserSubscription
 $PYTHON -m $MODULE 'platform-delete-user-subscription' \
+    'L38beOYD' \
     'VuHZQ9LY' \
-    't6w23Wf8' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteUserSubscription'
@@ -1548,9 +1548,9 @@ delete_file $TEMP_FILE
 
 #- 182 CancelSubscription
 $PYTHON -m $MODULE 'platform-cancel-subscription' \
+    't6w23Wf8' \
     'iEQo72sH' \
-    '0aRdcDlD' \
-    --body '{"immediate": true, "reason": "GcsfIuI4"}' \
+    --body '{"immediate": false, "reason": "RdcDlDyG"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'CancelSubscription'
@@ -1558,9 +1558,9 @@ delete_file $TEMP_FILE
 
 #- 183 GrantDaysToSubscription
 $PYTHON -m $MODULE 'platform-grant-days-to-subscription' \
-    'Dv5lEJpK' \
-    '1AyRlzsr' \
-    --body '{"grantDays": 87, "reason": "XEFZivQO"}' \
+    'csfIuI4D' \
+    'v5lEJpK1' \
+    --body '{"grantDays": 53, "reason": "yRlzsrRX"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GrantDaysToSubscription'
@@ -1568,8 +1568,8 @@ delete_file $TEMP_FILE
 
 #- 184 GetUserSubscriptionBillingHistories
 $PYTHON -m $MODULE 'platform-get-user-subscription-billing-histories' \
-    'HG6wVicN' \
-    'ratsvvHL' \
+    'EFZivQOH' \
+    'G6wVicNr' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserSubscriptionBillingHistories'
@@ -1577,9 +1577,9 @@ delete_file $TEMP_FILE
 
 #- 185 ProcessUserSubscriptionNotification
 $PYTHON -m $MODULE 'platform-process-user-subscription-notification' \
-    'mIohfNIS' \
-    'LXMDWDdm' \
-    --body '{"additionalData": {"cardSummary": "5FE4lliQ"}, "authorisedTime": "1990-04-16T00:00:00Z", "chargebackReversedTime": "1981-06-03T00:00:00Z", "chargebackTime": "1988-01-09T00:00:00Z", "chargedTime": "1978-08-28T00:00:00Z", "createdTime": "1978-04-11T00:00:00Z", "currency": {"currencyCode": "UNHFtdml", "currencySymbol": "2xNviWac", "currencyType": "REAL", "decimals": 63, "namespace": "m7Z548uu"}, "customParameters": {"KgoCBqS5": {}}, "extOrderNo": "uIdCbwCe", "extTxId": "eq9ouEdD", "extUserId": "tjOgsypL", "issuedAt": "1976-04-06T00:00:00Z", "metadata": {"2ZYew5H7": "Zm0gnYyj"}, "namespace": "6MXf9G1n", "nonceStr": "tyebvoeH", "paymentMethod": "enAALKt7", "paymentMethodFee": 60, "paymentOrderNo": "fxIH446o", "paymentProvider": "STRIPE", "paymentProviderFee": 83, "paymentStationUrl": "2S74unXw", "price": 13, "refundedTime": "1997-10-04T00:00:00Z", "salesTax": 73, "sandbox": true, "sku": "VWW1rjK1", "status": "AUTHORISED", "statusReason": "pwkAvcsY", "subscriptionId": "vbgfBVPp", "subtotalPrice": 91, "targetNamespace": "a8Yuq7TK", "targetUserId": "iNXmz7eM", "tax": 35, "totalPrice": 76, "totalTax": 59, "txEndTime": "1999-12-25T00:00:00Z", "type": "baUxTCTn", "userId": "g0xjtdBr", "vat": 18}' \
+    'atsvvHLm' \
+    'IohfNISL' \
+    --body '{"additionalData": {"cardSummary": "XMDWDdm5"}, "authorisedTime": "1986-08-31T00:00:00Z", "chargebackReversedTime": "1999-03-27T00:00:00Z", "chargebackTime": "1976-03-07T00:00:00Z", "chargedTime": "1992-11-02T00:00:00Z", "createdTime": "1977-06-16T00:00:00Z", "currency": {"currencyCode": "tJbpEo4m", "currencySymbol": "UNHFtdml", "currencyType": "VIRTUAL", "decimals": 79, "namespace": "viWacJc3"}, "customParameters": {"Fm7Z548u": {}}, "extOrderNo": "uKgoCBqS", "extTxId": "5uIdCbwC", "extUserId": "eeq9ouEd", "issuedAt": "1985-06-03T00:00:00Z", "metadata": {"jOgsypLk": "m2ZYew5H"}, "namespace": "7Zm0gnYy", "nonceStr": "j6MXf9G1", "paymentMethod": "ntyebvoe", "paymentMethodFee": 67, "paymentOrderNo": "enAALKt7", "paymentProvider": "PAYPAL", "paymentProviderFee": 11, "paymentStationUrl": "xIH446oU", "price": 26, "refundedTime": "1991-12-21T00:00:00Z", "salesTax": 40, "sandbox": false, "sku": "Xwg0JKqV", "status": "DELETED", "statusReason": "W1rjK1ep", "subscriptionId": "wkAvcsYv", "subtotalPrice": 2, "targetNamespace": "gfBVPpTa", "targetUserId": "8Yuq7TKi", "tax": 78, "totalPrice": 99, "totalTax": 24, "txEndTime": "1983-02-02T00:00:00Z", "type": "MrMD5Tba", "userId": "UxTCTng0", "vat": 46}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'ProcessUserSubscriptionNotification'
@@ -1587,9 +1587,9 @@ delete_file $TEMP_FILE
 
 #- 186 AcquireUserTicket
 $PYTHON -m $MODULE 'platform-acquire-user-ticket' \
-    's3Kiykt2' \
-    'Ck2gOlSa' \
-    --body '{"count": 38, "orderNo": "ECZ2UgwQ"}' \
+    'jtdBrjs3' \
+    'Kiykt2Ck' \
+    --body '{"count": 12, "orderNo": "OlSatECZ"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'AcquireUserTicket'
@@ -1597,8 +1597,8 @@ delete_file $TEMP_FILE
 
 #- 187 CheckWallet
 $PYTHON -m $MODULE 'platform-check-wallet' \
-    'LqDqYSxT' \
-    'PuVlBqir' \
+    '2UgwQLqD' \
+    'qYSxTPuV' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'CheckWallet'
@@ -1606,9 +1606,9 @@ delete_file $TEMP_FILE
 
 #- 188 CreditUserWallet
 $PYTHON -m $MODULE 'platform-credit-user-wallet' \
-    'dp3yxnsE' \
-    'Tl1SvhQu' \
-    --body '{"amount": 7, "reason": "sjIhXdxi", "source": "ACHIEVEMENT"}' \
+    'lBqirdp3' \
+    'yxnsETl1' \
+    --body '{"amount": 88, "reason": "vhQudsjI", "source": "IAP"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'CreditUserWallet'
@@ -1616,9 +1616,9 @@ delete_file $TEMP_FILE
 
 #- 189 PayWithUserWallet
 $PYTHON -m $MODULE 'platform-pay-with-user-wallet' \
-    'WpnnxgX7' \
-    'BCPMqzQI' \
-    --body '{"amount": 46}' \
+    'XdxiSoWp' \
+    'nnxgX7BC' \
+    --body '{"amount": 83}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PayWithUserWallet'
@@ -1626,8 +1626,8 @@ delete_file $TEMP_FILE
 
 #- 190 GetUserWallet
 $PYTHON -m $MODULE 'platform-get-user-wallet' \
-    'ibhpNYsH' \
-    'tdB3Ikju' \
+    'MqzQIxib' \
+    'hpNYsHtd' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserWallet'
@@ -1635,9 +1635,9 @@ delete_file $TEMP_FILE
 
 #- 191 DebitUserWallet
 $PYTHON -m $MODULE 'platform-debit-user-wallet' \
-    'aZqhJilr' \
-    'ZkSSKgP5' \
-    --body '{"amount": 34, "reason": "xCR77G9d"}' \
+    'B3IkjuaZ' \
+    'qhJilrZk' \
+    --body '{"amount": 88, "reason": "SKgP5rxC"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'DebitUserWallet'
@@ -1645,8 +1645,8 @@ delete_file $TEMP_FILE
 
 #- 192 DisableUserWallet
 $PYTHON -m $MODULE 'platform-disable-user-wallet' \
-    '5CA1GORS' \
-    'bL9n0dbW' \
+    'R77G9d5C' \
+    'A1GORSbL' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'DisableUserWallet'
@@ -1654,8 +1654,8 @@ delete_file $TEMP_FILE
 
 #- 193 EnableUserWallet
 $PYTHON -m $MODULE 'platform-enable-user-wallet' \
-    'DEupmdLQ' \
-    'zPnNfBAc' \
+    '9n0dbWDE' \
+    'upmdLQzP' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'EnableUserWallet'
@@ -1663,8 +1663,8 @@ delete_file $TEMP_FILE
 
 #- 194 ListUserWalletTransactions
 $PYTHON -m $MODULE 'platform-list-user-wallet-transactions' \
-    'WArbkCfd' \
-    'HIZb03ot' \
+    'nNfBAcWA' \
+    'rbkCfdHI' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'ListUserWalletTransactions'
@@ -1679,7 +1679,7 @@ delete_file $TEMP_FILE
 
 #- 196 GetWallet
 $PYTHON -m $MODULE 'platform-get-wallet' \
-    'qmBuS9V2' \
+    'Zb03otqm' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetWallet'
@@ -1687,8 +1687,8 @@ delete_file $TEMP_FILE
 
 #- 197 SyncOrders
 $PYTHON -m $MODULE 'platform-sync-orders' \
-    'pCZ23UHm' \
-    'k0lpJ4JL' \
+    'BuS9V2pC' \
+    'Z23UHmk0' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'SyncOrders'
@@ -1696,7 +1696,7 @@ delete_file $TEMP_FILE
 
 #- 198 TestAdyenConfig
 $PYTHON -m $MODULE 'platform-test-adyen-config' \
-    --body '{"allowedPaymentMethods": ["l01qi7L2"], "apiKey": "oDUoVRUb", "authoriseAsCapture": false, "blockedPaymentMethods": ["22P4Sp09"], "liveEndpointUrlPrefix": "cKmjRUbZ", "merchantAccount": "VBVS7OK2", "notificationHmacKey": "ZrdcsckM", "notificationPassword": "ekROWZ2K", "notificationUsername": "UTqkK2eF", "returnUrl": "aGLoSmEE", "settings": "PbLywJsy"}' \
+    --body '{"allowedPaymentMethods": ["lpJ4JLl0"], "apiKey": "1qi7L2oD", "authoriseAsCapture": false, "blockedPaymentMethods": ["VRUb39j2"], "liveEndpointUrlPrefix": "2P4Sp09c", "merchantAccount": "KmjRUbZV", "notificationHmacKey": "BVS7OK2Z", "notificationPassword": "rdcsckMe", "notificationUsername": "kROWZ2KU", "returnUrl": "TqkK2eFa", "settings": "GLoSmEEP"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestAdyenConfig'
@@ -1704,7 +1704,7 @@ delete_file $TEMP_FILE
 
 #- 199 TestAliPayConfig
 $PYTHON -m $MODULE 'platform-test-ali-pay-config' \
-    --body '{"appId": "Uie6fZgL", "privateKey": "llUPsO8l", "publicKey": "g46Si700", "returnUrl": "6vL2w4aa"}' \
+    --body '{"appId": "bLywJsyU", "privateKey": "ie6fZgLl", "publicKey": "lUPsO8lg", "returnUrl": "46Si7006"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestAliPayConfig'
@@ -1712,7 +1712,7 @@ delete_file $TEMP_FILE
 
 #- 200 TestCheckoutConfig
 $PYTHON -m $MODULE 'platform-test-checkout-config' \
-    --body '{"publicKey": "jDAOx0iJ", "secretKey": "jYleaktq"}' \
+    --body '{"publicKey": "vL2w4aaj", "secretKey": "DAOx0iJj"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestCheckoutConfig'
@@ -1727,7 +1727,7 @@ delete_file $TEMP_FILE
 
 #- 202 TestPayPalConfig
 $PYTHON -m $MODULE 'platform-test-pay-pal-config' \
-    --body '{"clientID": "v2WkljQu", "clientSecret": "D5mnJONq", "returnUrl": "HGq8mB7m", "webHookId": "F2lMFcag"}' \
+    --body '{"clientID": "Yleaktqv", "clientSecret": "2WkljQuD", "returnUrl": "5mnJONqH", "webHookId": "Gq8mB7mF"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestPayPalConfig'
@@ -1735,7 +1735,7 @@ delete_file $TEMP_FILE
 
 #- 203 TestStripeConfig
 $PYTHON -m $MODULE 'platform-test-stripe-config' \
-    --body '{"allowedPaymentMethodTypes": ["hFXJIJfl"], "publishableKey": "RHFcsIqC", "secretKey": "y4xDifSS", "webhookSecret": "Q5On2ccE"}' \
+    --body '{"allowedPaymentMethodTypes": ["2lMFcagh"], "publishableKey": "FXJIJflR", "secretKey": "HFcsIqCy", "webhookSecret": "4xDifSSQ"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestStripeConfig'
@@ -1743,7 +1743,7 @@ delete_file $TEMP_FILE
 
 #- 204 TestWxPayConfig
 $PYTHON -m $MODULE 'platform-test-wx-pay-config' \
-    --body '{"appId": "cl3xeiO4", "key": "bwF5JOjG", "mchid": "oGxKM3qM", "returnUrl": "ce5tfLcp"}' \
+    --body '{"appId": "5On2ccEc", "key": "l3xeiO4b", "mchid": "wF5JOjGo", "returnUrl": "GxKM3qMc"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestWxPayConfig'
@@ -1751,7 +1751,7 @@ delete_file $TEMP_FILE
 
 #- 205 TestXsollaConfig
 $PYTHON -m $MODULE 'platform-test-xsolla-config' \
-    --body '{"apiKey": "jFZMKCbp", "flowCompletionUrl": "0pEbLCLF", "merchantId": 30, "projectId": 67, "projectSecretKey": "xMYF8360"}' \
+    --body '{"apiKey": "e5tfLcpj", "flowCompletionUrl": "FZMKCbp0", "merchantId": 30, "projectId": 61, "projectSecretKey": "bLCLFpHx"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestXsollaConfig'
@@ -1759,7 +1759,7 @@ delete_file $TEMP_FILE
 
 #- 206 GetPaymentMerchantConfig
 $PYTHON -m $MODULE 'platform-get-payment-merchant-config' \
-    '75xEpzdn' \
+    'MYF83607' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetPaymentMerchantConfig'
@@ -1767,8 +1767,8 @@ delete_file $TEMP_FILE
 
 #- 207 UpdateAdyenConfig
 $PYTHON -m $MODULE 'platform-update-adyen-config' \
-    'Ytpja5ig' \
-    --body '{"allowedPaymentMethods": ["2isQZga6"], "apiKey": "Vy76izPi", "authoriseAsCapture": false, "blockedPaymentMethods": ["Ya8fv5fI"], "liveEndpointUrlPrefix": "t22tIZhj", "merchantAccount": "hgkigW22", "notificationHmacKey": "zXMWXfbc", "notificationPassword": "M0GIALIb", "notificationUsername": "FCQgBcLN", "returnUrl": "T6iOQVYx", "settings": "5rW2gMsI"}' \
+    '5xEpzdnY' \
+    --body '{"allowedPaymentMethods": ["tpja5ig2"], "apiKey": "isQZga6V", "authoriseAsCapture": true, "blockedPaymentMethods": ["76izPiQR"], "liveEndpointUrlPrefix": "jYa8fv5f", "merchantAccount": "It22tIZh", "notificationHmacKey": "jhgkigW2", "notificationPassword": "2zXMWXfb", "notificationUsername": "cM0GIALI", "returnUrl": "bFCQgBcL", "settings": "NT6iOQVY"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateAdyenConfig'
@@ -1776,7 +1776,7 @@ delete_file $TEMP_FILE
 
 #- 208 TestAdyenConfigById
 $PYTHON -m $MODULE 'platform-test-adyen-config-by-id' \
-    '1aYBitSn' \
+    'x5rW2gMs' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestAdyenConfigById'
@@ -1784,8 +1784,8 @@ delete_file $TEMP_FILE
 
 #- 209 UpdateAliPayConfig
 $PYTHON -m $MODULE 'platform-update-ali-pay-config' \
-    '3UDeKj97' \
-    --body '{"appId": "I4WYXLqj", "privateKey": "N7ktOBTr", "publicKey": "aBxWRTVu", "returnUrl": "YEqGlKDw"}' \
+    'I1aYBitS' \
+    --body '{"appId": "n3UDeKj9", "privateKey": "7I4WYXLq", "publicKey": "jN7ktOBT", "returnUrl": "raBxWRTV"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateAliPayConfig'
@@ -1793,7 +1793,7 @@ delete_file $TEMP_FILE
 
 #- 210 TestAliPayConfigById
 $PYTHON -m $MODULE 'platform-test-ali-pay-config-by-id' \
-    'TKXBrXiQ' \
+    'uYEqGlKD' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestAliPayConfigById'
@@ -1801,8 +1801,8 @@ delete_file $TEMP_FILE
 
 #- 211 UpdateCheckoutConfig
 $PYTHON -m $MODULE 'platform-update-checkout-config' \
-    'cd9IW8ki' \
-    --body '{"publicKey": "CKeQJWZB", "secretKey": "vcq1ETvW"}' \
+    'wTKXBrXi' \
+    --body '{"publicKey": "Qcd9IW8k", "secretKey": "iCKeQJWZ"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateCheckoutConfig'
@@ -1810,7 +1810,7 @@ delete_file $TEMP_FILE
 
 #- 212 TestCheckoutConfigById
 $PYTHON -m $MODULE 'platform-test-checkout-config-by-id' \
-    'BxYZJh7B' \
+    'Bvcq1ETv' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestCheckoutConfigById'
@@ -1818,8 +1818,8 @@ delete_file $TEMP_FILE
 
 #- 213 UpdatePayPalConfig
 $PYTHON -m $MODULE 'platform-update-pay-pal-config' \
-    '8gbnSu9M' \
-    --body '{"clientID": "2OxD2uda", "clientSecret": "eYpCXYSM", "returnUrl": "iy87CTqE", "webHookId": "QBg36my3"}' \
+    'WBxYZJh7' \
+    --body '{"clientID": "B8gbnSu9", "clientSecret": "M2OxD2ud", "returnUrl": "aeYpCXYS", "webHookId": "Miy87CTq"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdatePayPalConfig'
@@ -1827,7 +1827,7 @@ delete_file $TEMP_FILE
 
 #- 214 TestPayPalConfigById
 $PYTHON -m $MODULE 'platform-test-pay-pal-config-by-id' \
-    'sY2clrDc' \
+    'EQBg36my' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestPayPalConfigById'
@@ -1835,8 +1835,8 @@ delete_file $TEMP_FILE
 
 #- 215 UpdateStripeConfig
 $PYTHON -m $MODULE 'platform-update-stripe-config' \
-    'ain0cOVF' \
-    --body '{"allowedPaymentMethodTypes": ["1zHwDTI0"], "publishableKey": "sJ1Q0kph", "secretKey": "MTggSP2S", "webhookSecret": "LcuAP7vU"}' \
+    '3sY2clrD' \
+    --body '{"allowedPaymentMethodTypes": ["cain0cOV"], "publishableKey": "F1zHwDTI", "secretKey": "0sJ1Q0kp", "webhookSecret": "hMTggSP2"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateStripeConfig'
@@ -1844,7 +1844,7 @@ delete_file $TEMP_FILE
 
 #- 216 TestStripeConfigById
 $PYTHON -m $MODULE 'platform-test-stripe-config-by-id' \
-    '971Czw2n' \
+    'SLcuAP7v' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestStripeConfigById'
@@ -1852,8 +1852,8 @@ delete_file $TEMP_FILE
 
 #- 217 UpdateWxPayConfig
 $PYTHON -m $MODULE 'platform-update-wx-pay-config' \
-    'bg8C7Mvy' \
-    --body '{"appId": "whu6MjOj", "key": "uGzo1Fz4", "mchid": "tU0aSn98", "returnUrl": "N8qOUA0z"}' \
+    'U971Czw2' \
+    --body '{"appId": "nbg8C7Mv", "key": "ywhu6MjO", "mchid": "juGzo1Fz", "returnUrl": "4tU0aSn9"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateWxPayConfig'
@@ -1861,7 +1861,7 @@ delete_file $TEMP_FILE
 
 #- 218 UpdateWxPayConfigCert
 $PYTHON -m $MODULE 'platform-update-wx-pay-config-cert' \
-    '92RaDe8n' \
+    '8N8qOUA0' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateWxPayConfigCert'
@@ -1869,7 +1869,7 @@ delete_file $TEMP_FILE
 
 #- 219 TestWxPayConfigById
 $PYTHON -m $MODULE 'platform-test-wx-pay-config-by-id' \
-    'gT8LRQkM' \
+    'z92RaDe8' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestWxPayConfigById'
@@ -1877,8 +1877,8 @@ delete_file $TEMP_FILE
 
 #- 220 UpdateXsollaConfig
 $PYTHON -m $MODULE 'platform-update-xsolla-config' \
-    'nG1LZyF2' \
-    --body '{"apiKey": "mdYY6ZMf", "flowCompletionUrl": "uTYTKsue", "merchantId": 32, "projectId": 54, "projectSecretKey": "EBNAV5BT"}' \
+    'ngT8LRQk' \
+    --body '{"apiKey": "MnG1LZyF", "flowCompletionUrl": "2mdYY6ZM", "merchantId": 11, "projectId": 41, "projectSecretKey": "TYTKsue4"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateXsollaConfig'
@@ -1886,7 +1886,7 @@ delete_file $TEMP_FILE
 
 #- 221 TestXsollaConfigById
 $PYTHON -m $MODULE 'platform-test-xsolla-config-by-id' \
-    'e6ec1zA9' \
+    '8qBEBNAV' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'TestXsollaConfigById'
@@ -1894,8 +1894,8 @@ delete_file $TEMP_FILE
 
 #- 222 UpdateXsollaUIConfig
 $PYTHON -m $MODULE 'platform-update-xsolla-ui-config' \
-    '2URCLSGP' \
-    --body '{"device": "DESKTOP", "showCloseButton": true, "size": "MEDIUM", "theme": "DEFAULT"}' \
+    '5BTe6ec1' \
+    --body '{"device": "MOBILE", "showCloseButton": true, "size": "LARGE", "theme": "DEFAULT_DARK"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateXsollaUIConfig'
@@ -1910,7 +1910,7 @@ delete_file $TEMP_FILE
 
 #- 224 CreatePaymentProviderConfig
 $PYTHON -m $MODULE 'platform-create-payment-provider-config' \
-    --body '{"aggregate": "ADYEN", "namespace": "r6QA7Ppe", "region": "pc92HA94", "sandboxTaxJarApiToken": "eACdeyfU", "specials": ["pgiPpf8n"], "taxJarApiToken": "xKJ3dnmt", "taxJarEnabled": true, "useGlobalTaxJarApiToken": false}' \
+    --body '{"aggregate": "ADYEN", "namespace": "LSGPmRBZ", "region": "WunHW7MY", "sandboxTaxJarApiToken": "vr6QA7Pp", "specials": ["XSOLLA"], "taxJarApiToken": "pc92HA94", "taxJarEnabled": false, "useGlobalTaxJarApiToken": true}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'CreatePaymentProviderConfig'
@@ -1939,8 +1939,8 @@ delete_file $TEMP_FILE
 
 #- 228 UpdatePaymentProviderConfig
 $PYTHON -m $MODULE 'platform-update-payment-provider-config' \
-    '64Y4gPEK' \
-    --body '{"aggregate": "XSOLLA", "namespace": "hu9a6f3x", "region": "JNtUlKLl", "sandboxTaxJarApiToken": "IIAeHbm5", "specials": ["M6LsY1VM"], "taxJarApiToken": "uIEcRls6", "taxJarEnabled": true, "useGlobalTaxJarApiToken": false}' \
+    'CdeyfUpg' \
+    --body '{"aggregate": "XSOLLA", "namespace": "Ppf8nxKJ", "region": "3dnmtPwa", "sandboxTaxJarApiToken": "64Y4gPEK", "specials": ["XSOLLA"], "taxJarApiToken": "hu9a6f3x", "taxJarEnabled": true, "useGlobalTaxJarApiToken": false}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdatePaymentProviderConfig'
@@ -1948,7 +1948,7 @@ delete_file $TEMP_FILE
 
 #- 229 DeletePaymentProviderConfig
 $PYTHON -m $MODULE 'platform-delete-payment-provider-config' \
-    'pyyMz6zf' \
+    'KLlIIAeH' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'DeletePaymentProviderConfig'
@@ -1963,7 +1963,7 @@ delete_file $TEMP_FILE
 
 #- 231 UpdatePaymentTaxConfig
 $PYTHON -m $MODULE 'platform-update-payment-tax-config' \
-    --body '{"sandboxTaxJarApiToken": "R1pvTYYt", "taxJarApiToken": "DOiEi4Ru", "taxJarEnabled": true, "taxJarProductCodesMapping": {"cHCSGhpO": "ZQFlwOiu"}}' \
+    --body '{"sandboxTaxJarApiToken": "bm5M6LsY", "taxJarApiToken": "1VMuIEcR", "taxJarEnabled": false, "taxJarProductCodesMapping": {"s68M3MPM": "RPBepyyM"}}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdatePaymentTaxConfig'
@@ -1971,8 +1971,8 @@ delete_file $TEMP_FILE
 
 #- 232 SyncPaymentOrders
 $PYTHON -m $MODULE 'platform-sync-payment-orders' \
-    'KGDFgK49' \
-    'YuKnXks0' \
+    'z6zfR1pv' \
+    'TYYtDOiE' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'SyncPaymentOrders'
@@ -1994,7 +1994,7 @@ delete_file $TEMP_FILE
 
 #- 235 PublicGetCategory
 $PYTHON -m $MODULE 'platform-public-get-category' \
-    'm8ANrcRa' \
+    'i4RuEcHC' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetCategory'
@@ -2002,7 +2002,7 @@ delete_file $TEMP_FILE
 
 #- 236 PublicGetChildCategories
 $PYTHON -m $MODULE 'platform-public-get-child-categories' \
-    'l7ta3foj' \
+    'SGhpOZQF' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetChildCategories'
@@ -2010,7 +2010,7 @@ delete_file $TEMP_FILE
 
 #- 237 PublicGetDescendantCategories
 $PYTHON -m $MODULE 'platform-public-get-descendant-categories' \
-    'A3h4MMW3' \
+    'lwOiuKGD' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetDescendantCategories'
@@ -2025,7 +2025,7 @@ delete_file $TEMP_FILE
 
 #- 239 PublicGetItemByAppId
 $PYTHON -m $MODULE 'platform-public-get-item-by-app-id' \
-    'AJ5zlsFB' \
+    'FgK49YuK' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetItemByAppId'
@@ -2040,7 +2040,7 @@ delete_file $TEMP_FILE
 
 #- 241 PublicGetItemBySku
 $PYTHON -m $MODULE 'platform-public-get-item-by-sku' \
-    'wjvLYvmg' \
+    'nXks0m8A' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetItemBySku'
@@ -2048,7 +2048,7 @@ delete_file $TEMP_FILE
 
 #- 242 PublicBulkGetItems
 $PYTHON -m $MODULE 'platform-public-bulk-get-items' \
-    '6avudQFF' \
+    'NrcRal7t' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicBulkGetItems'
@@ -2056,8 +2056,8 @@ delete_file $TEMP_FILE
 
 #- 243 PublicSearchItems
 $PYTHON -m $MODULE 'platform-public-search-items' \
-    '1CPNY9u2' \
-    'dVYdglOO' \
+    'a3fojA3h' \
+    '4MMW3AJ5' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicSearchItems'
@@ -2065,7 +2065,7 @@ delete_file $TEMP_FILE
 
 #- 244 PublicGetApp
 $PYTHON -m $MODULE 'platform-public-get-app' \
-    'oCeK0kPK' \
+    'zlsFBwjv' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetApp'
@@ -2073,7 +2073,7 @@ delete_file $TEMP_FILE
 
 #- 245 PublicGetItemDynamicData
 $PYTHON -m $MODULE 'platform-public-get-item-dynamic-data' \
-    'mBqVux3l' \
+    'LYvmg6av' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetItemDynamicData'
@@ -2081,7 +2081,7 @@ delete_file $TEMP_FILE
 
 #- 246 PublicGetItem
 $PYTHON -m $MODULE 'platform-public-get-item' \
-    'XcD8aert' \
+    'udQFF1CP' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetItem'
@@ -2089,8 +2089,8 @@ delete_file $TEMP_FILE
 
 #- 247 GetPaymentCustomization
 $PYTHON -m $MODULE 'platform-get-payment-customization' \
-    'WXPAY' \
-    'VCqs8XT8' \
+    'WALLET' \
+    '2dVYdglO' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetPaymentCustomization'
@@ -2098,7 +2098,7 @@ delete_file $TEMP_FILE
 
 #- 248 PublicGetPaymentUrl
 $PYTHON -m $MODULE 'platform-public-get-payment-url' \
-    --body '{"paymentOrderNo": "xy3nJ06K", "paymentProvider": "ADYEN", "returnUrl": "seA0ARj9", "ui": "ricfayvn", "zipCode": "hi8MDdY4"}' \
+    --body '{"paymentOrderNo": "OoCeK0kP", "paymentProvider": "STRIPE", "returnUrl": "BqVux3lX", "ui": "cD8aertA", "zipCode": "VCqs8XT8"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetPaymentUrl'
@@ -2106,7 +2106,7 @@ delete_file $TEMP_FILE
 
 #- 249 PublicGetPaymentMethods
 $PYTHON -m $MODULE 'platform-public-get-payment-methods' \
-    'WLHoaUkY' \
+    'xy3nJ06K' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetPaymentMethods'
@@ -2114,7 +2114,7 @@ delete_file $TEMP_FILE
 
 #- 250 PublicGetUnpaidPaymentOrder
 $PYTHON -m $MODULE 'platform-public-get-unpaid-payment-order' \
-    'nQp5egdm' \
+    'kseA0ARj' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUnpaidPaymentOrder'
@@ -2122,8 +2122,8 @@ delete_file $TEMP_FILE
 
 #- 251 Pay
 $PYTHON -m $MODULE 'platform-pay' \
-    'VE8ImivN' \
-    --body '{"token": "tQxqWRKH"}' \
+    '9ricfayv' \
+    --body '{"token": "nhi8MDdY"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'Pay'
@@ -2131,7 +2131,7 @@ delete_file $TEMP_FILE
 
 #- 252 PublicCheckPaymentOrderPaidStatus
 $PYTHON -m $MODULE 'platform-public-check-payment-order-paid-status' \
-    'ohODoWOr' \
+    '4WLHoaUk' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicCheckPaymentOrderPaidStatus'
@@ -2139,8 +2139,8 @@ delete_file $TEMP_FILE
 
 #- 253 GetPaymentPublicConfig
 $PYTHON -m $MODULE 'platform-get-payment-public-config' \
-    'CHECKOUT' \
-    'jBUas9jj' \
+    'PAYPAL' \
+    'Qp5egdmV' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetPaymentPublicConfig'
@@ -2148,7 +2148,7 @@ delete_file $TEMP_FILE
 
 #- 254 PublicGetQRCode
 $PYTHON -m $MODULE 'platform-public-get-qr-code' \
-    'z2FrgiaG' \
+    'E8ImivNt' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetQRCode'
@@ -2156,10 +2156,10 @@ delete_file $TEMP_FILE
 
 #- 255 PublicNormalizePaymentReturnUrl
 $PYTHON -m $MODULE 'platform-public-normalize-payment-return-url' \
-    'rcB7dIOV' \
-    'KIPSJJHo' \
-    'STRIPE' \
-    'KH8ou9Sd' \
+    'QxqWRKHo' \
+    'hODoWOr9' \
+    'CHECKOUT' \
+    'jBUas9jj' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicNormalizePaymentReturnUrl'
@@ -2167,8 +2167,8 @@ delete_file $TEMP_FILE
 
 #- 256 GetPaymentTaxValue
 $PYTHON -m $MODULE 'platform-get-payment-tax-value' \
-    'bxSXcrEF' \
-    'XSOLLA' \
+    'z2FrgiaG' \
+    'STRIPE' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetPaymentTaxValue'
@@ -2176,7 +2176,7 @@ delete_file $TEMP_FILE
 
 #- 257 GetRewardByCode
 $PYTHON -m $MODULE 'platform-get-reward-by-code' \
-    'wqeGNLdI' \
+    'cB7dIOVK' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetRewardByCode'
@@ -2191,7 +2191,7 @@ delete_file $TEMP_FILE
 
 #- 259 GetReward1
 $PYTHON -m $MODULE 'platform-get-reward-1' \
-    'BRdliFQV' \
+    'IPSJJHo5' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetReward1'
@@ -2213,7 +2213,7 @@ delete_file $TEMP_FILE
 
 #- 262 PublicGetMyAppEntitlementOwnershipByAppId
 $PYTHON -m $MODULE 'platform-public-get-my-app-entitlement-ownership-by-app-id' \
-    'MKEzVUWl' \
+    'W8tKH8ou' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetMyAppEntitlementOwnershipByAppId'
@@ -2221,7 +2221,7 @@ delete_file $TEMP_FILE
 
 #- 263 PublicGetMyEntitlementOwnershipByItemId
 $PYTHON -m $MODULE 'platform-public-get-my-entitlement-ownership-by-item-id' \
-    'UWDs2x1E' \
+    '9SdbxSXc' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetMyEntitlementOwnershipByItemId'
@@ -2229,7 +2229,7 @@ delete_file $TEMP_FILE
 
 #- 264 PublicGetMyEntitlementOwnershipBySku
 $PYTHON -m $MODULE 'platform-public-get-my-entitlement-ownership-by-sku' \
-    'QU0oepEv' \
+    'rEFCwqeG' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetMyEntitlementOwnershipBySku'
@@ -2244,7 +2244,7 @@ delete_file $TEMP_FILE
 
 #- 266 PublicGetMyWallet
 $PYTHON -m $MODULE 'platform-public-get-my-wallet' \
-    'cjaSgEh6' \
+    'NLdIBRdl' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetMyWallet'
@@ -2252,7 +2252,7 @@ delete_file $TEMP_FILE
 
 #- 267 PublicQueryUserEntitlements
 $PYTHON -m $MODULE 'platform-public-query-user-entitlements' \
-    'jJnFxinI' \
+    'iFQVMKEz' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicQueryUserEntitlements'
@@ -2260,8 +2260,8 @@ delete_file $TEMP_FILE
 
 #- 268 PublicGetUserAppEntitlementByAppId
 $PYTHON -m $MODULE 'platform-public-get-user-app-entitlement-by-app-id' \
-    'HJ1o7aq5' \
-    'Zznd5eac' \
+    'VUWlUWDs' \
+    '2x1EQU0o' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserAppEntitlementByAppId'
@@ -2269,8 +2269,8 @@ delete_file $TEMP_FILE
 
 #- 269 PublicQueryUserEntitlementsByAppType
 $PYTHON -m $MODULE 'platform-public-query-user-entitlements-by-app-type' \
-    'obTsuRlh' \
-    'GAME' \
+    'epEvcjaS' \
+    'DEMO' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicQueryUserEntitlementsByAppType'
@@ -2278,8 +2278,8 @@ delete_file $TEMP_FILE
 
 #- 270 PublicGetUserEntitlementByItemId
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement-by-item-id' \
-    'eQVFID3o' \
-    '8hJWVjKI' \
+    'Eh6jJnFx' \
+    'inIHJ1o7' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserEntitlementByItemId'
@@ -2287,8 +2287,8 @@ delete_file $TEMP_FILE
 
 #- 271 PublicGetUserEntitlementBySku
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement-by-sku' \
-    'OAw70DvA' \
-    'HhSGWUvz' \
+    'aq5Zznd5' \
+    'eacobTsu' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserEntitlementBySku'
@@ -2296,7 +2296,7 @@ delete_file $TEMP_FILE
 
 #- 272 PublicExistsAnyUserActiveEntitlement
 $PYTHON -m $MODULE 'platform-public-exists-any-user-active-entitlement' \
-    'q1Za3IBC' \
+    'RlhreQVF' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicExistsAnyUserActiveEntitlement'
@@ -2304,8 +2304,8 @@ delete_file $TEMP_FILE
 
 #- 273 PublicGetUserAppEntitlementOwnershipByAppId
 $PYTHON -m $MODULE 'platform-public-get-user-app-entitlement-ownership-by-app-id' \
-    '4vQFsUJP' \
-    'fiaJp1rt' \
+    'ID3o8hJW' \
+    'VjKIOAw7' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserAppEntitlementOwnershipByAppId'
@@ -2313,8 +2313,8 @@ delete_file $TEMP_FILE
 
 #- 274 PublicGetUserEntitlementOwnershipByItemId
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement-ownership-by-item-id' \
-    '7OBgBCe6' \
-    'N0eI65Mn' \
+    '0DvAHhSG' \
+    'WUvzq1Za' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserEntitlementOwnershipByItemId'
@@ -2322,8 +2322,8 @@ delete_file $TEMP_FILE
 
 #- 275 PublicGetUserEntitlementOwnershipBySku
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement-ownership-by-sku' \
-    '5tngEYXg' \
-    'PVT5CqXD' \
+    '3IBC4vQF' \
+    'sUJPfiaJ' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserEntitlementOwnershipBySku'
@@ -2331,8 +2331,8 @@ delete_file $TEMP_FILE
 
 #- 276 PublicGetUserEntitlement
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement' \
-    'ZBVMJyJe' \
-    'KFO92YDt' \
+    'p1rt7OBg' \
+    'BCe6N0eI' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserEntitlement'
@@ -2340,9 +2340,9 @@ delete_file $TEMP_FILE
 
 #- 277 PublicConsumeUserEntitlement
 $PYTHON -m $MODULE 'platform-public-consume-user-entitlement' \
-    'aZvJoKS0' \
-    'OxyipZuO' \
-    --body '{"useCount": 79}' \
+    '65Mn5tng' \
+    'EYXgPVT5' \
+    --body '{"useCount": 56}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicConsumeUserEntitlement'
@@ -2350,8 +2350,8 @@ delete_file $TEMP_FILE
 
 #- 278 PublicRedeemCode
 $PYTHON -m $MODULE 'platform-public-redeem-code' \
-    '9S2YCgHa' \
-    --body '{"code": "6XBcvGRY", "language": "k5rUtWHC", "region": "nhmzzppV"}' \
+    'qXDZBVMJ' \
+    --body '{"code": "yJeKFO92", "language": "YDtaZvJo", "region": "KS0Oxyip"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicRedeemCode'
@@ -2359,8 +2359,8 @@ delete_file $TEMP_FILE
 
 #- 279 PublicFulfillAppleIAPItem
 $PYTHON -m $MODULE 'platform-public-fulfill-apple-iap-item' \
-    '7tKNKYUQ' \
-    --body '{"excludeOldTransactions": true, "language": "XymWcNlH", "productId": "aFxYaGHU", "receiptData": "pmBFyOrF", "region": "KtxGNAi0", "transactionId": "fq4xChPL"}' \
+    'ZuO4N9S2' \
+    --body '{"excludeOldTransactions": true, "language": "gHa6XBcv", "productId": "GRYk5rUt", "receiptData": "WHCnhmzz", "region": "ppV7tKNK", "transactionId": "YUQVBXym"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicFulfillAppleIAPItem'
@@ -2368,8 +2368,8 @@ delete_file $TEMP_FILE
 
 #- 280 SyncEpicGamesInventory
 $PYTHON -m $MODULE 'platform-sync-epic-games-inventory' \
-    'd2lOopc7' \
-    --body '{"epicGamesJwtToken": "XoVpdd6r"}' \
+    'WcNlHaFx' \
+    --body '{"epicGamesJwtToken": "YaGHUpmB"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'SyncEpicGamesInventory'
@@ -2377,8 +2377,8 @@ delete_file $TEMP_FILE
 
 #- 281 PublicFulfillGoogleIAPItem
 $PYTHON -m $MODULE 'platform-public-fulfill-google-iap-item' \
-    'CpyMrnH9' \
-    --body '{"language": "YHXh7KnC", "orderId": "VOKY2zsB", "packageName": "RGtd8QY2", "productId": "OLbijrvf", "purchaseTime": 34, "purchaseToken": "8hknjWUW", "region": "dMUXHvw4"}' \
+    'FyOrFKtx' \
+    --body '{"language": "GNAi0fq4", "orderId": "xChPLd2l", "packageName": "Oopc7XoV", "productId": "pdd6rCpy", "purchaseTime": 77, "purchaseToken": "rnH9YHXh", "region": "7KnCVOKY"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicFulfillGoogleIAPItem'
@@ -2386,8 +2386,8 @@ delete_file $TEMP_FILE
 
 #- 282 PublicReconcilePlayStationStore
 $PYTHON -m $MODULE 'platform-public-reconcile-play-station-store' \
-    'pNlGLjdB' \
-    --body '{"serviceLabel": 47}' \
+    '2zsBRGtd' \
+    --body '{"serviceLabel": 84}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicReconcilePlayStationStore'
@@ -2395,8 +2395,8 @@ delete_file $TEMP_FILE
 
 #- 283 SyncStadiaEntitlement
 $PYTHON -m $MODULE 'platform-sync-stadia-entitlement' \
-    'LM079pDA' \
-    --body '{"appId": "bTgmsEYE", "language": "q2GkYK1v", "region": "Ym9flXQ7", "stadiaPlayerId": "CQoemnQG"}' \
+    'Y2OLbijr' \
+    --body '{"appId": "vfr8hknj", "language": "WUWdMUXH", "region": "vw4pNlGL", "stadiaPlayerId": "jdBxLM07"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'SyncStadiaEntitlement'
@@ -2404,8 +2404,8 @@ delete_file $TEMP_FILE
 
 #- 284 SyncSteamInventory
 $PYTHON -m $MODULE 'platform-sync-steam-inventory' \
-    '0dH0NVM9' \
-    --body '{"appId": "VEHTPqDh", "language": "kcu5vnz6", "region": "GiNMboBJ", "steamId": "Hml0LJmp"}' \
+    '9pDAbTgm' \
+    --body '{"appId": "sEYEq2Gk", "language": "YK1vYm9f", "region": "lXQ7CQoe", "steamId": "mnQG0dH0"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'SyncSteamInventory'
@@ -2413,8 +2413,8 @@ delete_file $TEMP_FILE
 
 #- 285 SyncXboxInventory
 $PYTHON -m $MODULE 'platform-sync-xbox-inventory' \
-    'Pi4mqhru' \
-    --body '{"xstsToken": "iCZLGGP5"}' \
+    'NVM9VEHT' \
+    --body '{"xstsToken": "PqDhkcu5"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'SyncXboxInventory'
@@ -2422,7 +2422,7 @@ delete_file $TEMP_FILE
 
 #- 286 PublicQueryUserOrders
 $PYTHON -m $MODULE 'platform-public-query-user-orders' \
-    'UXkHNTMa' \
+    'vnz6GiNM' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicQueryUserOrders'
@@ -2430,8 +2430,8 @@ delete_file $TEMP_FILE
 
 #- 287 PublicCreateUserOrder
 $PYTHON -m $MODULE 'platform-public-create-user-order' \
-    'pp5Sbons' \
-    --body '{"currencyCode": "UJKADr60", "discountedPrice": 61, "ext": {"kdFrpLsG": {}}, "itemId": "t9yTXWUS", "language": "CQcMsHN7", "price": 35, "quantity": 9, "region": "I22ks7I1", "returnUrl": "2tAZc8sx"}' \
+    'boBJHml0' \
+    --body '{"currencyCode": "LJmpPi4m", "discountedPrice": 32, "ext": {"hruiCZLG": {}}, "itemId": "GP5UXkHN", "language": "TMapp5Sb", "price": 29, "quantity": 26, "region": "sUJKADr6", "returnUrl": "0EkdFrpL"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicCreateUserOrder'
@@ -2439,8 +2439,8 @@ delete_file $TEMP_FILE
 
 #- 288 PublicGetUserOrder
 $PYTHON -m $MODULE 'platform-public-get-user-order' \
-    'xLx9XQeq' \
-    'NWLm8cNJ' \
+    'sGt9yTXW' \
+    'USCQcMsH' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserOrder'
@@ -2448,8 +2448,8 @@ delete_file $TEMP_FILE
 
 #- 289 PublicCancelUserOrder
 $PYTHON -m $MODULE 'platform-public-cancel-user-order' \
-    'bYH5J4Wi' \
-    'JLv9NvHw' \
+    'N7reI22k' \
+    's7I12tAZ' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicCancelUserOrder'
@@ -2457,8 +2457,8 @@ delete_file $TEMP_FILE
 
 #- 290 PublicGetUserOrderHistories
 $PYTHON -m $MODULE 'platform-public-get-user-order-histories' \
-    'tw2Mjcy9' \
-    'ZL6Zs5Bu' \
+    'c8sxxLx9' \
+    'XQeqNWLm' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserOrderHistories'
@@ -2466,8 +2466,8 @@ delete_file $TEMP_FILE
 
 #- 291 PublicDownloadUserOrderReceipt
 $PYTHON -m $MODULE 'platform-public-download-user-order-receipt' \
-    '2XYopLWZ' \
-    'eUKJJNft' \
+    '8cNJbYH5' \
+    'J4WiJLv9' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicDownloadUserOrderReceipt'
@@ -2475,7 +2475,7 @@ delete_file $TEMP_FILE
 
 #- 292 PublicGetPaymentAccounts
 $PYTHON -m $MODULE 'platform-public-get-payment-accounts' \
-    'RpGgk1is' \
+    'NvHwtw2M' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetPaymentAccounts'
@@ -2483,9 +2483,9 @@ delete_file $TEMP_FILE
 
 #- 293 PublicDeletePaymentAccount
 $PYTHON -m $MODULE 'platform-public-delete-payment-account' \
-    'eREzzRG6' \
+    'jcy9ZL6Z' \
     'paypal' \
-    '9wmuHddy' \
+    '5Bu2XYop' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicDeletePaymentAccount'
@@ -2493,7 +2493,7 @@ delete_file $TEMP_FILE
 
 #- 294 PublicQueryUserSubscriptions
 $PYTHON -m $MODULE 'platform-public-query-user-subscriptions' \
-    'OdibI1LV' \
+    'LWZeUKJJ' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicQueryUserSubscriptions'
@@ -2501,8 +2501,8 @@ delete_file $TEMP_FILE
 
 #- 295 PublicSubscribeSubscription
 $PYTHON -m $MODULE 'platform-public-subscribe-subscription' \
-    'yqbdY8DG' \
-    --body '{"currencyCode": "ZKAuoIKz", "itemId": "3Pp3zLWU", "language": "xMzMtSmM", "region": "mZP8nG0F", "returnUrl": "oQP8q7aS", "source": "sb85gAh9"}' \
+    'NftRpGgk' \
+    --body '{"currencyCode": "1iseREzz", "itemId": "RG6z9wmu", "language": "HddyOdib", "region": "I1LVyqbd", "returnUrl": "Y8DGZKAu", "source": "oIKz3Pp3"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicSubscribeSubscription'
@@ -2510,8 +2510,8 @@ delete_file $TEMP_FILE
 
 #- 296 PublicCheckUserSubscriptionSubscribableByItemId
 $PYTHON -m $MODULE 'platform-public-check-user-subscription-subscribable-by-item-id' \
-    'RD3ZzN6N' \
-    '1iJ8ltt9' \
+    'zLWUxMzM' \
+    'tSmMmZP8' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicCheckUserSubscriptionSubscribableByItemId'
@@ -2519,8 +2519,8 @@ delete_file $TEMP_FILE
 
 #- 297 PublicGetUserSubscription
 $PYTHON -m $MODULE 'platform-public-get-user-subscription' \
-    'IRqCflgl' \
-    'n6r5f0s5' \
+    'nG0FoQP8' \
+    'q7aSsb85' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserSubscription'
@@ -2528,8 +2528,8 @@ delete_file $TEMP_FILE
 
 #- 298 PublicChangeSubscriptionBillingAccount
 $PYTHON -m $MODULE 'platform-public-change-subscription-billing-account' \
-    'H6lCf3QH' \
-    'a11hLLCg' \
+    'gAh9RD3Z' \
+    'zN6N1iJ8' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicChangeSubscriptionBillingAccount'
@@ -2537,9 +2537,9 @@ delete_file $TEMP_FILE
 
 #- 299 PublicCancelSubscription
 $PYTHON -m $MODULE 'platform-public-cancel-subscription' \
-    'w5av4LEx' \
-    'dabD8g2c' \
-    --body '{"immediate": true, "reason": "HfMRupDA"}' \
+    'ltt9IRqC' \
+    'flgln6r5' \
+    --body '{"immediate": false, "reason": "0s5H6lCf"}' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicCancelSubscription'
@@ -2547,8 +2547,8 @@ delete_file $TEMP_FILE
 
 #- 300 PublicGetUserSubscriptionBillingHistories
 $PYTHON -m $MODULE 'platform-public-get-user-subscription-billing-histories' \
-    '5xbjs3XR' \
-    'dHUJ0GCm' \
+    '3QHa11hL' \
+    'LCgw5av4' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserSubscriptionBillingHistories'
@@ -2556,8 +2556,8 @@ delete_file $TEMP_FILE
 
 #- 301 PublicGetWallet
 $PYTHON -m $MODULE 'platform-public-get-wallet' \
-    'flIXkgJ6' \
-    'zkTwoakq' \
+    'LExdabD8' \
+    'g2cvHfMR' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetWallet'
@@ -2565,8 +2565,8 @@ delete_file $TEMP_FILE
 
 #- 302 PublicListUserWalletTransactions
 $PYTHON -m $MODULE 'platform-public-list-user-wallet-transactions' \
-    '7sEejFZ1' \
-    'NtONXb9w' \
+    'upDA5xbj' \
+    's3XRdHUJ' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicListUserWalletTransactions'
