@@ -210,7 +210,7 @@ class PostGameRecordHandlerV1(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ModelsResponseError]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, Optional[str]], Union[None, ModelsResponseError]]:
         """Parse the given response.
 
         201: Created - (Record saved)

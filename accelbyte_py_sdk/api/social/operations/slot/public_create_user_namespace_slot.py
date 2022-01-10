@@ -257,7 +257,7 @@ class PublicCreateUserNamespaceSlot(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ErrorEntity]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, Optional[str]], Union[None, ErrorEntity]]:
         """Parse the given response.
 
         201: Created - (Successful create of a slot)

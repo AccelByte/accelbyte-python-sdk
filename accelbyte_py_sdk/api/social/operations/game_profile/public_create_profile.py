@@ -197,7 +197,7 @@ class PublicCreateProfile(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ValidationErrorEntity]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, Optional[str]], Union[None, ValidationErrorEntity]]:
         """Parse the given response.
 
         201: Created - (Profile has been created)

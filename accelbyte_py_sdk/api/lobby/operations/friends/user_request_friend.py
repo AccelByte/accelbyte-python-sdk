@@ -189,7 +189,7 @@ class UserRequestFriend(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, RestapiErrorResponseV1]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, Optional[str]], Union[None, RestapiErrorResponseV1]]:
         """Parse the given response.
 
         201: Created - (Created)

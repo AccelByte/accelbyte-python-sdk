@@ -194,7 +194,7 @@ class CreateArchivedLeaderboardRankingDataV1Handler(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ResponseErrorResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, Optional[str]], Union[None, ResponseErrorResponse]]:
         """Parse the given response.
 
         201: Created - (Created)

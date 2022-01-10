@@ -159,7 +159,7 @@ class AcceptVersionedPolicy(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, Optional[str]], Union[None, HttpResponse]]:
         """Parse the given response.
 
         201: Created - (successful operation)

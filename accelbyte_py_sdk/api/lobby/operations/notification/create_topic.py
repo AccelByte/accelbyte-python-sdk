@@ -191,7 +191,7 @@ class CreateTopic(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, RestapiErrorResponseBody]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, Optional[str]], Union[None, RestapiErrorResponseBody]]:
         """Parse the given response.
 
         201: Created - (Created)
