@@ -32,15 +32,6 @@ class ModelsUpdateRulesetSubGameModes(Model):
     Properties:
     """
 
-    # region fields
-
-
-    # endregion fields
-
-    # region with_x methods
-
-    # endregion with_x methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:

@@ -21,31 +21,49 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import copy
+from collections.abc import MutableMapping
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
 
-class ModelsPlayerRecordRequest(Model):
+class ModelsPlayerRecordRequest(Model, MutableMapping):
     """Models player record request (models.PlayerRecordRequest)
 
     Properties:
     """
 
-    # region fields
+    # region mutable mapping
 
+    def __init__(self):
+        self.store = dict()
 
-    # endregion fields
+    def __getitem__(self, key):
+        return self.store[self._keytransform(key)]
 
-    # region with_x methods
+    def __setitem__(self, key, value):
+        self.store[self._keytransform(key)] = value
 
-    # endregion with_x methods
+    def __delitem__(self, key):
+        del self.store[self._keytransform(key)]
+
+    def __iter__(self):
+        return iter(self.store)
+
+    def __len__(self):
+        return len(self.store)
+
+    # noinspection PyMethodMayBeStatic
+    def _keytransform(self, key):
+        return key
+
+    # endregion mutable mapping
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        result: dict = {}
-        return result
+        return copy.deepcopy(self.store)
 
     # endregion to methods
 
@@ -54,8 +72,11 @@ class ModelsPlayerRecordRequest(Model):
     @classmethod
     def create(
         cls,
+        dict_: Optional[dict] = None,
     ) -> ModelsPlayerRecordRequest:
         instance = cls()
+        if dict_ is not None:
+            instance.store = copy.deepcopy(dict_)
         return instance
 
     @classmethod
@@ -63,6 +84,7 @@ class ModelsPlayerRecordRequest(Model):
         instance = cls()
         if not dict_:
             return instance
+        instance.store = copy.deepcopy(dict_)
         return instance
 
     @staticmethod
