@@ -102,7 +102,7 @@ class AnonymizeSubscription(Operation):
 
     # region get methods
 
-    def get_full_url(self, base_url: Union[None, str] = None) -> str:
+    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
         return self.create_full_url(
             url=self.url,
             base_url=base_url,

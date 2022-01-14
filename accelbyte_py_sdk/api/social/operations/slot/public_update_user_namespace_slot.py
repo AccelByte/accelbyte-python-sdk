@@ -125,12 +125,13 @@ class PublicUpdateUserNamespaceSlot(Operation):
 
     # region get methods
 
-    def get_full_url(self, base_url: Union[None, str] = None) -> str:
+    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
         return self.create_full_url(
             url=self.url,
             base_url=base_url,
             path_params=self.get_path_params(),
             query_params=self.get_query_params(),
+            collection_format_map=collection_format_map or self.get_collection_format_map(),
         )
 
     # noinspection PyMethodMayBeStatic
@@ -376,6 +377,12 @@ class PublicUpdateUserNamespaceSlot(Operation):
             "userId": "user_id",
             "label": "label",
             "tags": "tags",
+        }
+
+    @staticmethod
+    def get_collection_format_map() -> Dict[str, Union[None, str]]:
+        return {
+            "tags": "multi",                                                                       # in query
         }
 
     # endregion static methods
