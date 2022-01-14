@@ -11,7 +11,7 @@ except ImportError:
 
 import accelbyte_py_sdk
 from accelbyte_py_sdk.core import get_access_token, get_base_url
-from accelbyte_py_sdk.core import Websockets2WSClient
+from accelbyte_py_sdk.core import WebsocketsWSClient
 from accelbyte_py_sdk.services.auth import login
 from accelbyte_py_sdk.api.lobby.wss_models import *
 
@@ -38,10 +38,8 @@ async def main() -> None:
     if error:
         exit(1)
 
-    scheme, uri = base_url.split("://")
-
-    client = Websockets2WSClient(
-        uri=f"wss://{uri}/lobby",
+    client = WebsocketsWSClient(
+        uri=base_url,
         access_token=access_token,
     )
     client.listeners.append(listener)
