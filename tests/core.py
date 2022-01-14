@@ -297,3 +297,39 @@ class CoreTestCase(TestCase):
         header.add_bearer_authorization("spam&eggs")
         self.assertTrue("Authorization" in header)
         self.assertEqual("Bearer spam&eggs", header["Authorization"])
+
+    def test_url_creation_with_path_params(self):
+        full_url = Operation.create_full_url(
+            url="/test/namespaces/{namespace}/items/{item}",
+            base_url="http://0.0.0.0:8080",
+            path_params={
+                "namespace": "foo",
+                "item": "bar"
+            }
+        )
+        self.assertEqual("http://0.0.0.0:8080/test/namespaces/foo/items/bar", full_url)
+
+    def test_url_creation_with_query_params(self):
+        full_url = Operation.create_full_url(
+            url="/test",
+            base_url="http://0.0.0.0:8080",
+            query_params={
+                "status": "active",
+                "query": ["a", "b"]
+            }
+        )
+        self.assertEqual("http://0.0.0.0:8080/test?status=active&query=a,b", full_url)
+
+    def test_url_creation_with_query_params_with_collection_format_map(self):
+        full_url = Operation.create_full_url(
+            url="/test",
+            base_url="http://0.0.0.0:8080",
+            query_params={
+                "status": "active",
+                "query": ["a", "b"]
+            },
+            collection_format_map={
+                "query": "multi"
+            }
+        )
+        self.assertEqual("http://0.0.0.0:8080/test?status=active&query=a&query=b", full_url)
