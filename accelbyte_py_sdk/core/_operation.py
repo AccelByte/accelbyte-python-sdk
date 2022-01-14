@@ -11,8 +11,11 @@ class Operation:
             url: str,
             base_url: Union[None, str] = None,
             path_params: Union[None, dict] = None,
-            query_params: Union[None, dict] = None
+            query_params: Union[None, dict] = None,
+            collection_format_map: Optional[Dict[str, Optional[str]]] = None
     ) -> str:
+        collection_format_map = collection_format_map or {}
+
         # base url
         if base_url:
             if base_url.endswith("/"):
@@ -30,9 +33,24 @@ class Operation:
 
         # query params
         if query_params:
+            default_query_delimiter = ","
+            query_delimiters_map = {"csv": ",", "ssv": " ", "tsv": "\t", "pipes": "|"}
             flattened_query_params = []
             for k, v in query_params.items():
-                flattened_query_params.append(f"{k}={v}")
+                if isinstance(v, list):
+                    if len(v) == 0:
+                        continue
+                    collection_format = collection_format_map.get(k, None)
+                    if collection_format == "multi":
+                        flattened_query_value = str(v[0])
+                        if len(v) > 1:
+                            flattened_query_value += "&" + "&".join([f"{k}={str(w)}" for w in v[1:]])
+                    else:
+                        delimiter = query_delimiters_map.get(collection_format, default_query_delimiter)
+                        flattened_query_value = delimiter.join([str(w) for w in v])
+                else:
+                    flattened_query_value = str(v)
+                flattened_query_params.append(f"{k}={flattened_query_value}")
             result += "?" + "&".join(flattened_query_params)
 
         return result
@@ -53,7 +71,11 @@ class Operation:
     location_query: Optional[str] = None
     authorization_override: Optional[str] = None
 
-    def get_full_url(self, base_url: Union[None, str] = None) -> str:
+    def get_full_url(
+            self,
+            base_url: Union[None, str] = None,
+            collection_format_map: Optional[Dict[str, Optional[str]]] = None
+    ) -> str:
         raise NotImplementedError
 
     def get_all_params(self) -> dict:
@@ -100,5 +122,9 @@ class Operation:
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         raise NotImplementedError
+
+    @staticmethod
+    def get_collection_format_map() -> Dict[str, Union[None, str]]:
+        return {}
 
     # endregion overrideable members
