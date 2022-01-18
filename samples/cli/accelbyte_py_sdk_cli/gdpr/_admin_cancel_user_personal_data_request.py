@@ -1,4 +1,4 @@
-# justice-gdpr-service (1.11.2)
+# justice-gdpr-service (1.11.3)
 
 # Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations

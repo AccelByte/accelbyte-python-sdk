@@ -1,4 +1,4 @@
-# justice-seasonpass-service (1.6.0)
+# justice-seasonpass-service (1.7.0)
 
 # Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations

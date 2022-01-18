@@ -1,4 +1,4 @@
-# justice-social-service (1.22.1)
+# justice-social-service (1.23.0)
 
 # Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations

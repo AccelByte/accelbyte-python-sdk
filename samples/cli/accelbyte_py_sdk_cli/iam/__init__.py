@@ -1,4 +1,4 @@
-# justice-iam-service (4.10.0)
+# justice-iam-service (5.0.0)
 
 # Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -111,6 +111,9 @@ from ._public_platform_link_v2 import public_platform_link_v2
 from ._public_delete_platform_link_v2 import public_delete_platform_link_v2
 from ._admin_get_bans_type_v3 import admin_get_bans_type_v3
 from ._admin_get_list_ban_reason_v3 import admin_get_list_ban_reason_v3
+from ._admin_get_input_validations import admin_get_input_validations
+from ._admin_update_input_validations import admin_update_input_validations
+from ._admin_reset_input_validations import admin_reset_input_validations
 from ._list_admins_v3 import list_admins_v3
 from ._admin_get_age_restriction_status_v3 import admin_get_age_restriction_status_v3
 from ._admin_update_age_restriction_config_v3 import admin_update_age_restriction_config_v3
@@ -140,6 +143,7 @@ from ._update_sso_platform_credential import update_sso_platform_credential
 from ._admin_get_user_by_platform_user_idv3 import admin_get_user_by_platform_user_idv3
 from ._get_admin_users_by_role_id_v3 import get_admin_users_by_role_id_v3
 from ._admin_get_user_by_email_address_v3 import admin_get_user_by_email_address_v3
+from ._admin_list_user_id_by_user_i_ds_v3 import admin_list_user_id_by_user_i_ds_v3
 from ._admin_invite_user_v3 import admin_invite_user_v3
 from ._admin_list_users_v3 import admin_list_users_v3
 from ._admin_search_user_v3 import admin_search_user_v3
@@ -207,12 +211,14 @@ from ._get_revocation_list_v3 import get_revocation_list_v3
 from ._token_revocation_v3 import token_revocation_v3
 from ._token_grant_v3 import token_grant_v3
 from ._platform_authentication_v3 import platform_authentication_v3
+from ._public_get_input_validations import public_get_input_validations
 from ._retrieve_all_active_third_party_login_platform_credential_public_v3 import retrieve_all_active_third_party_login_platform_credential_public_v3
 from ._public_list_user_id_by_platform_user_i_ds_v3 import public_list_user_id_by_platform_user_i_ds_v3
 from ._public_get_user_by_platform_user_idv3 import public_get_user_by_platform_user_idv3
 from ._public_get_async_status import public_get_async_status
 from ._public_search_user_v3 import public_search_user_v3
 from ._public_create_user_v3 import public_create_user_v3
+from ._check_user_availability import check_user_availability
 from ._public_bulk_get_users import public_bulk_get_users
 from ._public_forgot_password_v3 import public_forgot_password_v3
 from ._get_admin_invitation_v3 import get_admin_invitation_v3
@@ -376,6 +382,9 @@ commands = [
     public_delete_platform_link_v2,
     admin_get_bans_type_v3,
     admin_get_list_ban_reason_v3,
+    admin_get_input_validations,
+    admin_update_input_validations,
+    admin_reset_input_validations,
     list_admins_v3,
     admin_get_age_restriction_status_v3,
     admin_update_age_restriction_config_v3,
@@ -405,6 +414,7 @@ commands = [
     admin_get_user_by_platform_user_idv3,
     get_admin_users_by_role_id_v3,
     admin_get_user_by_email_address_v3,
+    admin_list_user_id_by_user_i_ds_v3,
     admin_invite_user_v3,
     admin_list_users_v3,
     admin_search_user_v3,
@@ -472,12 +482,14 @@ commands = [
     token_revocation_v3,
     token_grant_v3,
     platform_authentication_v3,
+    public_get_input_validations,
     retrieve_all_active_third_party_login_platform_credential_public_v3,
     public_list_user_id_by_platform_user_i_ds_v3,
     public_get_user_by_platform_user_idv3,
     public_get_async_status,
     public_search_user_v3,
     public_create_user_v3,
+    check_user_availability,
     public_bulk_get_users,
     public_forgot_password_v3,
     get_admin_invitation_v3,

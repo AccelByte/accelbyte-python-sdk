@@ -1,4 +1,4 @@
-# justice-leaderboard-service (2.11.1)
+# justice-leaderboard-service (2.11.2)
 
 # Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations

@@ -1,4 +1,4 @@
-# justice-legal-service (1.15.1)
+# justice-legal-service (1.16.0)
 
 # Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,12 +33,20 @@ from accelbyte_py_sdk.api.legal.models import AcceptAgreementResponse
 
 @click.command()
 @click.argument("user_id", type=str)
+@click.argument("client_id", type=str)
+@click.argument("country_code", type=str)
 @click.option("--body", "body", type=str)
+@click.option("--publisher_user_id", "publisher_user_id", type=str)
+@click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def indirect_bulk_accept_versioned_policy(
         user_id: str,
+        client_id: str,
+        country_code: str,
         body: Optional[str] = None,
+        publisher_user_id: Optional[str] = None,
+        namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
@@ -54,7 +62,11 @@ def indirect_bulk_accept_versioned_policy(
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = indirect_bulk_accept_versioned_policy_internal(
         user_id=user_id,
+        client_id=client_id,
+        country_code=country_code,
         body=body,
+        publisher_user_id=publisher_user_id,
+        namespace=namespace,
     )
     if error:
         raise Exception(f"indirectBulkAcceptVersionedPolicy failed: {str(error)}")

@@ -1,4 +1,4 @@
-# justice-ds-log-manager-service (1.4.1)
+# justice-ds-log-manager-service (2.0.0)
 
 # Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations

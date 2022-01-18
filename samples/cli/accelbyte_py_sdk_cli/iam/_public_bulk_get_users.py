@@ -1,4 +1,4 @@
-# justice-iam-service (4.10.0)
+# justice-iam-service (5.0.0)
 
 # Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -27,8 +27,8 @@ import click
 
 from .._utils import login_as as login_as_internal
 from accelbyte_py_sdk.api.iam import public_bulk_get_users as public_bulk_get_users_internal
-from accelbyte_py_sdk.api.iam.models import ModelGameUserIDsRequest
-from accelbyte_py_sdk.api.iam.models import ModelListBulkUserGameResponse
+from accelbyte_py_sdk.api.iam.models import ModelListBulkUserResponse
+from accelbyte_py_sdk.api.iam.models import ModelUserIDsRequest
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
@@ -50,7 +50,7 @@ def public_bulk_get_users(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = ModelGameUserIDsRequest.create_from_dict(body_json)
+            body = ModelUserIDsRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = public_bulk_get_users_internal(

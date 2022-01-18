@@ -1,4 +1,4 @@
-# justice-iam-service (4.10.0)
+# justice-iam-service (5.0.0)
 
 # Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -33,18 +33,16 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 @click.command()
 @click.option("--admin_role", "admin_role", type=bool)
-@click.option("--after", "after", type=str)
-@click.option("--before", "before", type=str)
 @click.option("--is_wildcard", "is_wildcard", type=bool)
 @click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def admin_get_roles_v4(
         admin_role: Optional[bool] = None,
-        after: Optional[str] = None,
-        before: Optional[str] = None,
         is_wildcard: Optional[bool] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
@@ -54,10 +52,9 @@ def admin_get_roles_v4(
     login_as_internal(login_as)
     _, error = admin_get_roles_v4_internal(
         admin_role=admin_role,
-        after=after,
-        before=before,
         is_wildcard=is_wildcard,
         limit=limit,
+        offset=offset,
     )
     if error:
         raise Exception(f"AdminGetRolesV4 failed: {str(error)}")

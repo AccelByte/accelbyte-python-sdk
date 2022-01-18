@@ -1,4 +1,4 @@
-# justice-dsm-controller-service (2.11.0)
+# justice-dsm-controller-service (2.13.1)
 
 # Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations

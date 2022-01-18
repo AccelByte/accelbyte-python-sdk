@@ -1,4 +1,4 @@
-# justice-legal-service (1.15.1)
+# justice-legal-service (1.16.0)
 
 # Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -19,6 +19,8 @@ from ._retrieve_single_localized_policy_version import retrieve_single_localized
 from ._update_localized_policy_version import update_localized_policy_version
 from ._request_presigned_url import request_presigned_url
 from ._set_default_policy import set_default_policy
+from ._indirect_bulk_accept_versioned_policy import indirect_bulk_accept_versioned_policy
+from ._admin_retrieve_eligibilities import admin_retrieve_eligibilities
 from ._retrieve_policies import retrieve_policies
 from ._update_policy_version import update_policy_version
 from ._publish_policy_version import publish_policy_version
@@ -36,7 +38,7 @@ from ._accept_versioned_policy import accept_versioned_policy
 from ._retrieve_agreements_public import retrieve_agreements_public
 from ._bulk_accept_versioned_policy import bulk_accept_versioned_policy
 from ._indirect_bulk_accept_versioned_policy_v2 import indirect_bulk_accept_versioned_policy_v2
-from ._indirect_bulk_accept_versioned_policy import indirect_bulk_accept_versioned_policy
+from ._indirect_bulk_accept_versioned_policy_1 import indirect_bulk_accept_versioned_policy_1
 from ._retrieve_eligibilities_public import retrieve_eligibilities_public
 from ._retrieve_eligibilities_public_indirect import retrieve_eligibilities_public_indirect
 from ._retrieve_single_localized_policy_version_1 import retrieve_single_localized_policy_version_1
@@ -61,6 +63,8 @@ commands = [
     update_localized_policy_version,
     request_presigned_url,
     set_default_policy,
+    indirect_bulk_accept_versioned_policy,
+    admin_retrieve_eligibilities,
     retrieve_policies,
     update_policy_version,
     publish_policy_version,
@@ -78,7 +82,7 @@ commands = [
     retrieve_agreements_public,
     bulk_accept_versioned_policy,
     indirect_bulk_accept_versioned_policy_v2,
-    indirect_bulk_accept_versioned_policy,
+    indirect_bulk_accept_versioned_policy_1,
     retrieve_eligibilities_public,
     retrieve_eligibilities_public_indirect,
     retrieve_single_localized_policy_version_1,

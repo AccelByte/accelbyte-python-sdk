@@ -1,4 +1,4 @@
-# justice-platform-service (3.40.0)
+# justice-platform-service (4.1.1)
 
 # Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -40,6 +40,12 @@ from ._update_currency import update_currency
 from ._delete_currency import delete_currency
 from ._get_currency_config import get_currency_config
 from ._get_currency_summary import get_currency_summary
+from ._get_dlc_item_config import get_dlc_item_config
+from ._update_dlc_item_config import update_dlc_item_config
+from ._delete_dlc_item_config import delete_dlc_item_config
+from ._get_platform_dlc_config import get_platform_dlc_config
+from ._update_platform_dlc_config import update_platform_dlc_config
+from ._delete_platform_dlc_config import delete_platform_dlc_config
 from ._query_entitlements import query_entitlements
 from ._get_entitlement import get_entitlement
 from ._query_fulfillment_histories import query_fulfillment_histories
@@ -53,6 +59,9 @@ from ._get_google_iap_config import get_google_iap_config
 from ._update_google_iap_config import update_google_iap_config
 from ._delete_google_iap_config import delete_google_iap_config
 from ._update_google_p12_file import update_google_p12_file
+from ._get_iap_item_config import get_iap_item_config
+from ._update_iap_item_config import update_iap_item_config
+from ._delete_iap_item_config import delete_iap_item_config
 from ._get_play_station_iap_config import get_play_station_iap_config
 from ._update_playstation_iap_config import update_playstation_iap_config
 from ._delete_playstation_iap_config import delete_playstation_iap_config
@@ -167,7 +176,9 @@ from ._get_user_entitlement_histories import get_user_entitlement_histories
 from ._revoke_user_entitlement import revoke_user_entitlement
 from ._fulfill_item import fulfill_item
 from ._redeem_code import redeem_code
+from ._fulfill_rewards import fulfill_rewards
 from ._query_user_iap_orders import query_user_iap_orders
+from ._query_all_user_iap_orders import query_all_user_iap_orders
 from ._mock_fulfill_iap_item import mock_fulfill_iap_item
 from ._query_user_orders import query_user_orders
 from ._count_of_purchased_item import count_of_purchased_item
@@ -272,6 +283,9 @@ from ._public_get_my_entitlement_ownership_by_item_id import public_get_my_entit
 from ._public_get_my_entitlement_ownership_by_sku import public_get_my_entitlement_ownership_by_sku
 from ._public_get_entitlement_ownership_token import public_get_entitlement_ownership_token
 from ._public_get_my_wallet import public_get_my_wallet
+from ._public_sync_psn_dlc_inventory import public_sync_psn_dlc_inventory
+from ._sync_steam_dlc import sync_steam_dlc
+from ._sync_xbox_dlc import sync_xbox_dlc
 from ._public_query_user_entitlements import public_query_user_entitlements
 from ._public_get_user_app_entitlement_by_app_id import public_get_user_app_entitlement_by_app_id
 from ._public_query_user_entitlements_by_app_type import public_query_user_entitlements_by_app_type
@@ -345,6 +359,12 @@ commands = [
     delete_currency,
     get_currency_config,
     get_currency_summary,
+    get_dlc_item_config,
+    update_dlc_item_config,
+    delete_dlc_item_config,
+    get_platform_dlc_config,
+    update_platform_dlc_config,
+    delete_platform_dlc_config,
     query_entitlements,
     get_entitlement,
     query_fulfillment_histories,
@@ -358,6 +378,9 @@ commands = [
     update_google_iap_config,
     delete_google_iap_config,
     update_google_p12_file,
+    get_iap_item_config,
+    update_iap_item_config,
+    delete_iap_item_config,
     get_play_station_iap_config,
     update_playstation_iap_config,
     delete_playstation_iap_config,
@@ -472,7 +495,9 @@ commands = [
     revoke_user_entitlement,
     fulfill_item,
     redeem_code,
+    fulfill_rewards,
     query_user_iap_orders,
+    query_all_user_iap_orders,
     mock_fulfill_iap_item,
     query_user_orders,
     count_of_purchased_item,
@@ -577,6 +602,9 @@ commands = [
     public_get_my_entitlement_ownership_by_sku,
     public_get_entitlement_ownership_token,
     public_get_my_wallet,
+    public_sync_psn_dlc_inventory,
+    sync_steam_dlc,
+    sync_xbox_dlc,
     public_query_user_entitlements,
     public_get_user_app_entitlement_by_app_id,
     public_query_user_entitlements_by_app_type,

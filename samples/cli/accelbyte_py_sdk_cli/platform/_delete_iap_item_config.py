@@ -1,4 +1,4 @@
-# justice-group-service (2.9.0)
+# justice-platform-service (4.1.1)
 
 # Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -26,40 +26,25 @@ from typing import Optional
 import click
 
 from .._utils import login_as as login_as_internal
-from accelbyte_py_sdk.api.group import update_single_group_public_v1 as update_single_group_public_v1_internal
-from accelbyte_py_sdk.api.group.models import ModelsGroupResponseV1
-from accelbyte_py_sdk.api.group.models import ModelsUpdateGroupRequestV1
-from accelbyte_py_sdk.api.group.models import ResponseErrorResponse
+from accelbyte_py_sdk.api.platform import delete_iap_item_config as delete_iap_item_config_internal
 
 
 @click.command()
-@click.argument("body", type=str)
-@click.argument("group_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
-def update_single_group_public_v1(
-        body: str,
-        group_id: str,
+def delete_iap_item_config(
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(update_single_group_public_v1_internal.__doc__)
+        click.echo(delete_iap_item_config_internal.__doc__)
         return
     login_as_internal(login_as)
-    if body is not None:
-        try:
-            body_json = json.loads(body)
-            body = ModelsUpdateGroupRequestV1.create_from_dict(body_json)
-        except ValueError as e:
-            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = update_single_group_public_v1_internal(
-        body=body,
-        group_id=group_id,
+    _, error = delete_iap_item_config_internal(
         namespace=namespace,
     )
     if error:
-        raise Exception(f"updateSingleGroupPublicV1 failed: {str(error)}")
-    click.echo("updateSingleGroupPublicV1 success")
+        raise Exception(f"deleteIAPItemConfig failed: {str(error)}")
+    click.echo("deleteIAPItemConfig success")

@@ -1,4 +1,4 @@
-# justice-iam-service (4.10.0)
+# justice-iam-service (5.0.0)
 
 # Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,16 +32,14 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()
-@click.option("--after", "after", type=str)
-@click.option("--before", "before", type=str)
 @click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--doc", type=bool)
 def admin_get_clients_by_namespace_v3(
-        after: Optional[str] = None,
-        before: Optional[str] = None,
         limit: Optional[int] = None,
+        offset: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -51,9 +49,8 @@ def admin_get_clients_by_namespace_v3(
         return
     login_as_internal(login_as)
     _, error = admin_get_clients_by_namespace_v3_internal(
-        after=after,
-        before=before,
         limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     if error:

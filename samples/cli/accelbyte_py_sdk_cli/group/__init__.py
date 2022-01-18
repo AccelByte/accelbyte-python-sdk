@@ -1,4 +1,4 @@
-# justice-group-service (2.9.0)
+# justice-group-service (2.10.0)
 
 # Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -29,7 +29,7 @@ from ._create_new_group_public_v1 import create_new_group_public_v1
 from ._get_single_group_public_v1 import get_single_group_public_v1
 from ._update_single_group_v1 import update_single_group_v1
 from ._delete_group_public_v1 import delete_group_public_v1
-from ._update_single_group_public_v1 import update_single_group_public_v1
+from ._update_patch_single_group_public_v1 import update_patch_single_group_public_v1
 from ._update_group_custom_attributes_public_v1 import update_group_custom_attributes_public_v1
 from ._accept_group_invitation_public_v1 import accept_group_invitation_public_v1
 from ._reject_group_invitation_public_v1 import reject_group_invitation_public_v1
@@ -76,7 +76,7 @@ commands = [
     get_single_group_public_v1,
     update_single_group_v1,
     delete_group_public_v1,
-    update_single_group_public_v1,
+    update_patch_single_group_public_v1,
     update_group_custom_attributes_public_v1,
     accept_group_invitation_public_v1,
     reject_group_invitation_public_v1,
