@@ -33,6 +33,8 @@ from ..models import ErrorEntity
 from ..models import GoogleIAPConfigInfo
 from ..models import GoogleIAPConfigRequest
 from ..models import GoogleIAPReceipt
+from ..models import IAPItemConfigInfo
+from ..models import IAPItemConfigUpdate
 from ..models import IAPOrderPagingSlicedResult
 from ..models import MockIAPReceipt
 from ..models import PlayStationIAPConfigInfo
@@ -45,6 +47,7 @@ from ..models import SteamIAPConfig
 from ..models import SteamIAPConfigInfo
 from ..models import SteamIAPConfigRequest
 from ..models import SteamSyncRequest
+from ..models import ValidationErrorEntity
 from ..models import XblIAPConfigInfo
 from ..models import XblIAPConfigRequest
 from ..models import XblReconcileRequest
@@ -53,6 +56,7 @@ from ..models import XblReconcileResult
 from ..operations.iap import DeleteAppleIAPConfig
 from ..operations.iap import DeleteEpicGamesIAPConfig
 from ..operations.iap import DeleteGoogleIAPConfig
+from ..operations.iap import DeleteIAPItemConfig
 from ..operations.iap import DeletePlaystationIAPConfig
 from ..operations.iap import DeleteStadiaIAPConfig
 from ..operations.iap import DeleteSteamIAPConfig
@@ -60,6 +64,7 @@ from ..operations.iap import DeleteXblAPConfig
 from ..operations.iap import GetAppleIAPConfig
 from ..operations.iap import GetEpicGamesIAPConfig
 from ..operations.iap import GetGoogleIAPConfig
+from ..operations.iap import GetIAPItemConfig
 from ..operations.iap import GetPlayStationIAPConfig
 from ..operations.iap import GetStadiaIAPConfig
 from ..operations.iap import GetSteamIAPConfig
@@ -68,6 +73,7 @@ from ..operations.iap import MockFulfillIAPItem
 from ..operations.iap import PublicFulfillAppleIAPItem
 from ..operations.iap import PublicFulfillGoogleIAPItem
 from ..operations.iap import PublicReconcilePlayStationStore
+from ..operations.iap import QueryAllUserIAPOrders
 from ..operations.iap import QueryUserIAPOrders
 from ..operations.iap import SyncEpicGamesInventory
 from ..operations.iap import SyncStadiaEntitlement
@@ -77,6 +83,7 @@ from ..operations.iap import UpdateAppleIAPConfig
 from ..operations.iap import UpdateEpicGamesIAPConfig
 from ..operations.iap import UpdateGoogleIAPConfig
 from ..operations.iap import UpdateGoogleP12File
+from ..operations.iap import UpdateIAPItemConfig
 from ..operations.iap import UpdatePlaystationIAPConfig
 from ..operations.iap import UpdateStadiaJsonConfigFile
 from ..operations.iap import UpdateSteamIAPConfig
@@ -151,6 +158,30 @@ async def delete_google_iap_config_async(namespace: Optional[str] = None, x_addi
         if error:
             return None, error
     request = DeleteGoogleIAPConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(DeleteIAPItemConfig)
+def delete_iap_item_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteIAPItemConfig.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(DeleteIAPItemConfig)
+async def delete_iap_item_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteIAPItemConfig.create(
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)
@@ -319,6 +350,30 @@ async def get_google_iap_config_async(namespace: Optional[str] = None, x_additio
         if error:
             return None, error
     request = GetGoogleIAPConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetIAPItemConfig)
+def get_iap_item_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetIAPItemConfig.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetIAPItemConfig)
+async def get_iap_item_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetIAPItemConfig.create(
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)
@@ -527,6 +582,32 @@ async def public_reconcile_play_station_store_async(user_id: str, body: Optional
     request = PublicReconcilePlayStationStore.create(
         user_id=user_id,
         body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(QueryAllUserIAPOrders)
+def query_all_user_iap_orders(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = QueryAllUserIAPOrders.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(QueryAllUserIAPOrders)
+async def query_all_user_iap_orders_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = QueryAllUserIAPOrders.create(
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)
@@ -783,6 +864,32 @@ async def update_google_p12_file_async(file: Optional[Any] = None, namespace: Op
             return None, error
     request = UpdateGoogleP12File.create(
         file=file,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdateIAPItemConfig)
+def update_iap_item_config(body: Optional[IAPItemConfigUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateIAPItemConfig.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdateIAPItemConfig)
+async def update_iap_item_config_async(body: Optional[IAPItemConfigUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateIAPItemConfig.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)

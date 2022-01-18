@@ -1,6 +1,6 @@
 """Auto-generated package that contains models used by the justice-iam-service."""
 
-__version__ = "4.10.0"
+__version__ = "5.0.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -32,6 +32,7 @@ from .accountcommon_client_permissions_v3 import AccountcommonClientPermissionsV
 from .accountcommon_conflicted_user_platform_accounts import AccountcommonConflictedUserPlatformAccounts
 from .accountcommon_country_age_restriction import AccountcommonCountryAgeRestriction
 from .accountcommon_description import AccountcommonDescription
+from .accountcommon_input_validation_description import AccountcommonInputValidationDescription
 from .accountcommon_jwt_ban_v3 import AccountcommonJWTBanV3
 from .accountcommon_list_users_with_platform_accounts_response import AccountcommonListUsersWithPlatformAccountsResponse
 from .accountcommon_namespace_role import AccountcommonNamespaceRole
@@ -86,23 +87,27 @@ from .model_create_justice_user_response import ModelCreateJusticeUserResponse
 from .model_disable_user_request import ModelDisableUserRequest
 from .model_email_update_request_v4 import ModelEmailUpdateRequestV4
 from .model_forgot_password_request_v3 import ModelForgotPasswordRequestV3
-from .model_game_user_base_info import ModelGameUserBaseInfo
-from .model_game_user_i_ds_request import ModelGameUserIDsRequest
 from .model_get_admin_users_response import ModelGetAdminUsersResponse
 from .model_get_publisher_user_response import ModelGetPublisherUserResponse
 from .model_get_user_ban_v3_response import ModelGetUserBanV3Response
 from .model_get_user_justice_platform_account_response import ModelGetUserJusticePlatformAccountResponse
 from .model_get_user_mapping import ModelGetUserMapping
 from .model_get_users_response_with_pagination_v3 import ModelGetUsersResponseWithPaginationV3
+from .model_input_validation_data import ModelInputValidationData
+from .model_input_validation_data_public import ModelInputValidationDataPublic
+from .model_input_validation_update_payload import ModelInputValidationUpdatePayload
+from .model_input_validations_public_response import ModelInputValidationsPublicResponse
+from .model_input_validations_response import ModelInputValidationsResponse
 from .model_invite_user_request_v3 import ModelInviteUserRequestV3
 from .model_invite_user_request_v4 import ModelInviteUserRequestV4
 from .model_invite_user_response_v3 import ModelInviteUserResponseV3
 from .model_link_platform_account_request import ModelLinkPlatformAccountRequest
 from .model_link_request import ModelLinkRequest
 from .model_list_assigned_users_v4_response import ModelListAssignedUsersV4Response
-from .model_list_bulk_user_game_response import ModelListBulkUserGameResponse
+from .model_list_bulk_user_response import ModelListBulkUserResponse
 from .model_list_email_address_request import ModelListEmailAddressRequest
 from .model_list_role_v4_response import ModelListRoleV4Response
+from .model_list_user_information_result import ModelListUserInformationResult
 from .model_list_user_response_v3 import ModelListUserResponseV3
 from .model_list_user_roles_v4_response import ModelListUserRolesV4Response
 from .model_login_histories_response import ModelLoginHistoriesResponse
@@ -163,6 +168,7 @@ from .model_user_active_ban_response import ModelUserActiveBanResponse
 from .model_user_active_ban_response_v3 import ModelUserActiveBanResponseV3
 from .model_user_ban_response import ModelUserBanResponse
 from .model_user_ban_response_v3 import ModelUserBanResponseV3
+from .model_user_base_info import ModelUserBaseInfo
 from .model_user_create_from_invitation_request_v3 import ModelUserCreateFromInvitationRequestV3
 from .model_user_create_from_invitation_request_v4 import ModelUserCreateFromInvitationRequestV4
 from .model_user_create_request import ModelUserCreateRequest
@@ -170,6 +176,8 @@ from .model_user_create_request_v3 import ModelUserCreateRequestV3
 from .model_user_create_response import ModelUserCreateResponse
 from .model_user_create_response_v3 import ModelUserCreateResponseV3
 from .model_user_deletion_status_response import ModelUserDeletionStatusResponse
+from .model_user_i_ds_request import ModelUserIDsRequest
+from .model_user_info_response import ModelUserInfoResponse
 from .model_user_information import ModelUserInformation
 from .model_user_invitation_v3 import ModelUserInvitationV3
 from .model_user_login_history_response import ModelUserLoginHistoryResponse
@@ -183,6 +191,8 @@ from .model_user_update_request import ModelUserUpdateRequest
 from .model_user_update_request_v3 import ModelUserUpdateRequestV3
 from .model_user_verification_request import ModelUserVerificationRequest
 from .model_user_verification_request_v3 import ModelUserVerificationRequestV3
+from .model_validation_detail import ModelValidationDetail
+from .model_validation_detail_public import ModelValidationDetailPublic
 from .model_verification_code_response import ModelVerificationCodeResponse
 from .model_web_linking_response import ModelWebLinkingResponse
 from .oauthapi_revocation_list import OauthapiRevocationList
@@ -197,3 +207,5 @@ from .oauthmodel_token_response_v3 import OauthmodelTokenResponseV3
 from .oauthmodel_token_third_party_response import OauthmodelTokenThirdPartyResponse
 from .rest_error_response import RestErrorResponse
 from .restapi_error_response import RestapiErrorResponse
+from .validation import Validation
+from .validation_description import ValidationDescription

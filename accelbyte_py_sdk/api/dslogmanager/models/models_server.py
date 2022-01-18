@@ -1,4 +1,4 @@
-# justice-ds-log-manager-service (1.4.1)
+# justice-ds-log-manager-service (2.0.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 

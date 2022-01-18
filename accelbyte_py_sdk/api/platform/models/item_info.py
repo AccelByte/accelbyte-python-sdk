@@ -1,4 +1,4 @@
-# justice-platform-service (3.40.0)
+# justice-platform-service (4.1.1)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -82,6 +82,8 @@ class ItemInfo(Model):
 
         item_ids: (itemIds) OPTIONAL List[str]
 
+        item_qty: (itemQty) OPTIONAL Dict[str, int]
+
         listable: (listable) OPTIONAL bool
 
         local_ext: (localExt) OPTIONAL Dict[str, Any]
@@ -143,6 +145,7 @@ class ItemInfo(Model):
     features: List[str]                                                                            # OPTIONAL
     images: List[Image]                                                                            # OPTIONAL
     item_ids: List[str]                                                                            # OPTIONAL
+    item_qty: Dict[str, int]                                                                       # OPTIONAL
     listable: bool                                                                                 # OPTIONAL
     local_ext: Dict[str, Any]                                                                      # OPTIONAL
     long_description: str                                                                          # OPTIONAL
@@ -259,6 +262,10 @@ class ItemInfo(Model):
 
     def with_item_ids(self, value: List[str]) -> ItemInfo:
         self.item_ids = value
+        return self
+
+    def with_item_qty(self, value: Dict[str, int]) -> ItemInfo:
+        self.item_qty = value
         return self
 
     def with_listable(self, value: bool) -> ItemInfo:
@@ -431,6 +438,10 @@ class ItemInfo(Model):
             result["itemIds"] = [str(i0) for i0 in self.item_ids]
         elif include_empty:
             result["itemIds"] = []
+        if hasattr(self, "item_qty"):
+            result["itemQty"] = {str(k0): int(v0) for k0, v0 in self.item_qty.items()}
+        elif include_empty:
+            result["itemQty"] = {}
         if hasattr(self, "listable"):
             result["listable"] = bool(self.listable)
         elif include_empty:
@@ -532,6 +543,7 @@ class ItemInfo(Model):
         features: Optional[List[str]] = None,
         images: Optional[List[Image]] = None,
         item_ids: Optional[List[str]] = None,
+        item_qty: Optional[Dict[str, int]] = None,
         listable: Optional[bool] = None,
         local_ext: Optional[Dict[str, Any]] = None,
         long_description: Optional[str] = None,
@@ -587,6 +599,8 @@ class ItemInfo(Model):
             instance.images = images
         if item_ids is not None:
             instance.item_ids = item_ids
+        if item_qty is not None:
+            instance.item_qty = item_qty
         if listable is not None:
             instance.listable = listable
         if local_ext is not None:
@@ -724,6 +738,10 @@ class ItemInfo(Model):
             instance.item_ids = [str(i0) for i0 in dict_["itemIds"]]
         elif include_empty:
             instance.item_ids = []
+        if "itemQty" in dict_ and dict_["itemQty"] is not None:
+            instance.item_qty = {str(k0): int(v0) for k0, v0 in dict_["itemQty"].items()}
+        elif include_empty:
+            instance.item_qty = {}
         if "listable" in dict_ and dict_["listable"] is not None:
             instance.listable = bool(dict_["listable"])
         elif include_empty:
@@ -821,6 +839,7 @@ class ItemInfo(Model):
             "features": "features",
             "images": "images",
             "itemIds": "item_ids",
+            "itemQty": "item_qty",
             "listable": "listable",
             "localExt": "local_ext",
             "longDescription": "long_description",

@@ -1,6 +1,6 @@
 """Auto-generated package that contains models used by the justice-platform-service."""
 
-__version__ = "3.40.0"
+__version__ = "4.1.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -25,6 +25,7 @@ from .billing_account import BillingAccount
 from .billing_history_info import BillingHistoryInfo
 from .billing_history_paging_sliced_result import BillingHistoryPagingSlicedResult
 from .bulk_operation_result import BulkOperationResult
+from .bundled_item_info import BundledItemInfo
 from .campaign_create import CampaignCreate
 from .campaign_dynamic_info import CampaignDynamicInfo
 from .campaign_info import CampaignInfo
@@ -49,6 +50,9 @@ from .currency_summary import CurrencySummary
 from .currency_update import CurrencyUpdate
 from .customization import Customization
 from .debit_request import DebitRequest
+from .dlc_item import DLCItem
+from .dlc_item_config_info import DLCItemConfigInfo
+from .dlc_item_config_update import DLCItemConfigUpdate
 from .entitlement_decrement import EntitlementDecrement
 from .entitlement_grant import EntitlementGrant
 from .entitlement_history_info import EntitlementHistoryInfo
@@ -86,6 +90,9 @@ from .google_iap_config_request import GoogleIAPConfigRequest
 from .google_iap_receipt import GoogleIAPReceipt
 from .grant_subscription_days_request import GrantSubscriptionDaysRequest
 from .hierarchical_category_info import HierarchicalCategoryInfo
+from .iap_item_config_info import IAPItemConfigInfo
+from .iap_item_config_update import IAPItemConfigUpdate
+from .iap_item_entry import IAPItemEntry
 from .iap_order_info import IAPOrderInfo
 from .iap_order_paging_sliced_result import IAPOrderPagingSlicedResult
 from .image import Image
@@ -156,7 +163,14 @@ from .payment_tax_config_info import PaymentTaxConfigInfo
 from .payment_token import PaymentToken
 from .payment_url import PaymentUrl
 from .payment_url_create import PaymentUrlCreate
+from .platform_dlc_config_info import PlatformDLCConfigInfo
+from .platform_dlc_config_update import PlatformDLCConfigUpdate
+from .platform_dlc_entry import PlatformDlcEntry
+from .platform_reward import PlatformReward
+from .platform_reward_currency import PlatformRewardCurrency
+from .platform_reward_item import PlatformRewardItem
 from .platform_subscribe_request import PlatformSubscribeRequest
+from .play_station_dlc_sync_request import PlayStationDLCSyncRequest
 from .play_station_iap_config_info import PlayStationIAPConfigInfo
 from .play_station_reconcile_request import PlayStationReconcileRequest
 from .play_station_reconcile_result import PlayStationReconcileResult
@@ -178,10 +192,12 @@ from .reward_info import RewardInfo
 from .reward_item import RewardItem
 from .reward_paging_sliced_result import RewardPagingSlicedResult
 from .reward_update import RewardUpdate
+from .rewards_request import RewardsRequest
 from .slide import Slide
 from .stackable_entitlement_info import StackableEntitlementInfo
 from .stadia_iap_config_info import StadiaIAPConfigInfo
 from .stadia_sync_request import StadiaSyncRequest
+from .steam_dlc_sync_request import SteamDLCSyncRequest
 from .steam_iap_config import SteamIAPConfig
 from .steam_iap_config_info import SteamIAPConfigInfo
 from .steam_iap_config_request import SteamIAPConfigRequest
@@ -217,6 +233,7 @@ from .wallet_transaction_info import WalletTransactionInfo
 from .wallet_transaction_paging_sliced_result import WalletTransactionPagingSlicedResult
 from .wx_pay_config_info import WxPayConfigInfo
 from .wx_pay_config_request import WxPayConfigRequest
+from .xbl_dlc_sync_request import XblDLCSyncRequest
 from .xbl_iap_config_info import XblIAPConfigInfo
 from .xbl_iap_config_request import XblIAPConfigRequest
 from .xbl_reconcile_request import XblReconcileRequest

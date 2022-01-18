@@ -1,6 +1,6 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-group-service Index (2.9.0)
+# justice-group-service Index (2.10.0)
 
 
 ## Operations
@@ -31,7 +31,7 @@
 | /group/v1/public/namespaces/{namespace}/groups/{groupId}/attributes/custom | PUT | updateGroupCustomAttributesPublicV1 | [UpdateGroupCustomAttributesPublicV1](../accelbyte_py_sdk/api/group/operations/group/update_group_custom_attributes_public_v1.py) | [update_group_custom_attributes_public_v1](../accelbyte_py_sdk/api/group/wrappers/_group.py) |
 | /group/v1/public/namespaces/{namespace}/groups/{groupId}/rules/custom | PUT | updateGroupCustomRulePublicV1 | [UpdateGroupCustomRulePublicV1](../accelbyte_py_sdk/api/group/operations/group/update_group_custom_rule_public_v1.py) | [update_group_custom_rule_public_v1](../accelbyte_py_sdk/api/group/wrappers/_group.py) |
 | /group/v1/public/namespaces/{namespace}/groups/{groupId}/rules/defined/{allowedAction} | PUT | updateGroupPredefinedRulePublicV1 | [UpdateGroupPredefinedRulePublicV1](../accelbyte_py_sdk/api/group/operations/group/update_group_predefined_rule_public_v1.py) | [update_group_predefined_rule_public_v1](../accelbyte_py_sdk/api/group/wrappers/_group.py) |
-| /group/v1/public/namespaces/{namespace}/groups/{groupId} | PATCH | updateSingleGroupPublicV1 | [UpdateSingleGroupPublicV1](../accelbyte_py_sdk/api/group/operations/group/update_single_group_public_v1.py) | [update_single_group_public_v1](../accelbyte_py_sdk/api/group/wrappers/_group.py) |
+| /group/v1/public/namespaces/{namespace}/groups/{groupId} | PATCH | updatePatchSingleGroupPublicV1 | [UpdatePatchSingleGroupPublicV1](../accelbyte_py_sdk/api/group/operations/group/update_patch_single_group_public_v1.py) | [update_patch_single_group_public_v1](../accelbyte_py_sdk/api/group/wrappers/_group.py) |
 | /group/v1/public/namespaces/{namespace}/groups/{groupId} | PUT | updateSingleGroupV1 | [UpdateSingleGroupV1](../accelbyte_py_sdk/api/group/operations/group/update_single_group_v1.py) | [update_single_group_v1](../accelbyte_py_sdk/api/group/wrappers/_group.py) |
 
 ### Group Member
@@ -106,7 +106,6 @@
 | models.UpdateGroupConfigurationResponseV1 | [ModelsUpdateGroupConfigurationResponseV1](../accelbyte_py_sdk/api/group/models/models_update_group_configuration_response_v1.py) |
 | models.UpdateGroupCustomAttributesRequestV1 | [ModelsUpdateGroupCustomAttributesRequestV1](../accelbyte_py_sdk/api/group/models/models_update_group_custom_attributes_request_v1.py) |
 | models.UpdateGroupCustomRuleRequestV1 | [ModelsUpdateGroupCustomRuleRequestV1](../accelbyte_py_sdk/api/group/models/models_update_group_custom_rule_request_v1.py) |
-| models.UpdateGroupCustomRuleRequestV1.groupCustomRule | [ModelsUpdateGroupCustomRuleRequestV1GroupCustomRule](../accelbyte_py_sdk/api/group/models/models_update_group_custom_rule_request_v1_group_custom_rule.py) |
 | models.UpdateGroupPredefinedRuleRequestV1 | [ModelsUpdateGroupPredefinedRuleRequestV1](../accelbyte_py_sdk/api/group/models/models_update_group_predefined_rule_request_v1.py) |
 | models.UpdateGroupRequestV1 | [ModelsUpdateGroupRequestV1](../accelbyte_py_sdk/api/group/models/models_update_group_request_v1.py) |
 | models.UpdateGroupRequestV1.customAttributes | [ModelsUpdateGroupRequestV1CustomAttributes](../accelbyte_py_sdk/api/group/models/models_update_group_request_v1_custom_attributes.py) |

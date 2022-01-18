@@ -1,4 +1,4 @@
-# justice-platform-service (3.40.0)
+# justice-platform-service (4.1.1)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -61,6 +61,8 @@ class ItemUpdate(Model):
 
         item_ids: (itemIds) OPTIONAL List[str]
 
+        item_qty: (itemQty) OPTIONAL Dict[str, int]
+
         listable: (listable) OPTIONAL bool
 
         localizations: (localizations) OPTIONAL Dict[str, Localization]
@@ -111,6 +113,7 @@ class ItemUpdate(Model):
     features: List[str]                                                                            # OPTIONAL
     images: List[Image]                                                                            # OPTIONAL
     item_ids: List[str]                                                                            # OPTIONAL
+    item_qty: Dict[str, int]                                                                       # OPTIONAL
     listable: bool                                                                                 # OPTIONAL
     localizations: Dict[str, Localization]                                                         # OPTIONAL
     max_count: int                                                                                 # OPTIONAL
@@ -183,6 +186,10 @@ class ItemUpdate(Model):
 
     def with_item_ids(self, value: List[str]) -> ItemUpdate:
         self.item_ids = value
+        return self
+
+    def with_item_qty(self, value: Dict[str, int]) -> ItemUpdate:
+        self.item_qty = value
         return self
 
     def with_listable(self, value: bool) -> ItemUpdate:
@@ -311,6 +318,10 @@ class ItemUpdate(Model):
             result["itemIds"] = [str(i0) for i0 in self.item_ids]
         elif include_empty:
             result["itemIds"] = []
+        if hasattr(self, "item_qty"):
+            result["itemQty"] = {str(k0): int(v0) for k0, v0 in self.item_qty.items()}
+        elif include_empty:
+            result["itemQty"] = {}
         if hasattr(self, "listable"):
             result["listable"] = bool(self.listable)
         elif include_empty:
@@ -401,6 +412,7 @@ class ItemUpdate(Model):
         features: Optional[List[str]] = None,
         images: Optional[List[Image]] = None,
         item_ids: Optional[List[str]] = None,
+        item_qty: Optional[Dict[str, int]] = None,
         listable: Optional[bool] = None,
         localizations: Optional[Dict[str, Localization]] = None,
         max_count: Optional[int] = None,
@@ -444,6 +456,8 @@ class ItemUpdate(Model):
             instance.images = images
         if item_ids is not None:
             instance.item_ids = item_ids
+        if item_qty is not None:
+            instance.item_qty = item_qty
         if listable is not None:
             instance.listable = listable
         if localizations is not None:
@@ -537,6 +551,10 @@ class ItemUpdate(Model):
             instance.item_ids = [str(i0) for i0 in dict_["itemIds"]]
         elif include_empty:
             instance.item_ids = []
+        if "itemQty" in dict_ and dict_["itemQty"] is not None:
+            instance.item_qty = {str(k0): int(v0) for k0, v0 in dict_["itemQty"].items()}
+        elif include_empty:
+            instance.item_qty = {}
         if "listable" in dict_ and dict_["listable"] is not None:
             instance.listable = bool(dict_["listable"])
         elif include_empty:
@@ -623,6 +641,7 @@ class ItemUpdate(Model):
             "features": "features",
             "images": "images",
             "itemIds": "item_ids",
+            "itemQty": "item_qty",
             "listable": "listable",
             "localizations": "localizations",
             "maxCount": "max_count",

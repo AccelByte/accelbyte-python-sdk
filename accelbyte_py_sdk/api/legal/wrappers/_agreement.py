@@ -31,7 +31,7 @@ from ..models import RetrieveAcceptedAgreementResponse
 from ..operations.agreement import AcceptVersionedPolicy
 from ..operations.agreement import BulkAcceptVersionedPolicy
 from ..operations.agreement import ChangePreferenceConsent
-from ..operations.agreement import IndirectBulkAcceptVersionedPolicy
+from ..operations.agreement import IndirectBulkAcceptVersionedPolicy1
 from ..operations.agreement import IndirectBulkAcceptVersionedPolicyV2
 from ..operations.agreement import RetrieveAcceptedAgreements
 from ..operations.agreement import RetrieveAgreementsPublic
@@ -86,18 +86,18 @@ async def change_preference_consent_async(body: Optional[List[AcceptAgreementReq
     return await run_request_async(request, additional_headers=x_additional_headers)
 
 
-@same_doc_as(IndirectBulkAcceptVersionedPolicy)
-def indirect_bulk_accept_versioned_policy(user_id: str, body: Optional[List[AcceptAgreementRequest]] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    request = IndirectBulkAcceptVersionedPolicy.create(
+@same_doc_as(IndirectBulkAcceptVersionedPolicy1)
+def indirect_bulk_accept_versioned_policy_1(user_id: str, body: Optional[List[AcceptAgreementRequest]] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = IndirectBulkAcceptVersionedPolicy1.create(
         user_id=user_id,
         body=body,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
-@same_doc_as(IndirectBulkAcceptVersionedPolicy)
-async def indirect_bulk_accept_versioned_policy_async(user_id: str, body: Optional[List[AcceptAgreementRequest]] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    request = IndirectBulkAcceptVersionedPolicy.create(
+@same_doc_as(IndirectBulkAcceptVersionedPolicy1)
+async def indirect_bulk_accept_versioned_policy_1_async(user_id: str, body: Optional[List[AcceptAgreementRequest]] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = IndirectBulkAcceptVersionedPolicy1.create(
         user_id=user_id,
         body=body,
     )

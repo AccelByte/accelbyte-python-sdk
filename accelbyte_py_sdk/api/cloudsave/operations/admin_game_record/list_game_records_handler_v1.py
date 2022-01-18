@@ -1,4 +1,4 @@
-# justice-cloudsave-service (1.9.2)
+# justice-cloudsave-service (2.1.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -52,6 +52,8 @@ class ListGameRecordsHandlerV1(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        query: (query) OPTIONAL str in query
+
         limit: (limit) REQUIRED int in query
 
         offset: (offset) REQUIRED int in query
@@ -74,6 +76,7 @@ class ListGameRecordsHandlerV1(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
+    query: str                                                                                     # OPTIONAL in [query]
     limit: int                                                                                     # REQUIRED in [query]
     offset: int                                                                                    # REQUIRED in [query]
 
@@ -143,6 +146,8 @@ class ListGameRecordsHandlerV1(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "query"):
+            result["query"] = self.query
         if hasattr(self, "limit"):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
@@ -170,6 +175,10 @@ class ListGameRecordsHandlerV1(Operation):
         self.namespace = value
         return self
 
+    def with_query(self, value: str) -> ListGameRecordsHandlerV1:
+        self.query = value
+        return self
+
     def with_limit(self, value: int) -> ListGameRecordsHandlerV1:
         self.limit = value
         return self
@@ -188,6 +197,10 @@ class ListGameRecordsHandlerV1(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
+        if hasattr(self, "query") and self.query:
+            result["query"] = str(self.query)
+        elif include_empty:
+            result["query"] = str()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
@@ -235,11 +248,14 @@ class ListGameRecordsHandlerV1(Operation):
         namespace: str,
         limit: int,
         offset: int,
+        query: Optional[str] = None,
     ) -> ListGameRecordsHandlerV1:
         instance = cls()
         instance.namespace = namespace
         instance.limit = limit
         instance.offset = offset
+        if query is not None:
+            instance.query = query
         return instance
 
     @classmethod
@@ -249,6 +265,10 @@ class ListGameRecordsHandlerV1(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
+        if "query" in dict_ and dict_["query"] is not None:
+            instance.query = str(dict_["query"])
+        elif include_empty:
+            instance.query = str()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
@@ -263,6 +283,7 @@ class ListGameRecordsHandlerV1(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "query": "query",
             "limit": "limit",
             "offset": "offset",
         }

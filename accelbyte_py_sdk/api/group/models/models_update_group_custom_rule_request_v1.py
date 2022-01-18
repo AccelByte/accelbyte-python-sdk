@@ -1,4 +1,4 @@
-# justice-group-service (2.9.0)
+# justice-group-service (2.10.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -25,25 +25,23 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.models_update_group_custom_rule_request_v1_group_custom_rule import ModelsUpdateGroupCustomRuleRequestV1GroupCustomRule
-
 
 class ModelsUpdateGroupCustomRuleRequestV1(Model):
     """Models update group custom rule request V1 (models.UpdateGroupCustomRuleRequestV1)
 
     Properties:
-        group_custom_rule: (groupCustomRule) REQUIRED ModelsUpdateGroupCustomRuleRequestV1GroupCustomRule
+        group_custom_rule: (groupCustomRule) REQUIRED Dict[str, Any]
     """
 
     # region fields
 
-    group_custom_rule: ModelsUpdateGroupCustomRuleRequestV1GroupCustomRule                         # REQUIRED
+    group_custom_rule: Dict[str, Any]                                                              # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_group_custom_rule(self, value: ModelsUpdateGroupCustomRuleRequestV1GroupCustomRule) -> ModelsUpdateGroupCustomRuleRequestV1:
+    def with_group_custom_rule(self, value: Dict[str, Any]) -> ModelsUpdateGroupCustomRuleRequestV1:
         self.group_custom_rule = value
         return self
 
@@ -54,9 +52,9 @@ class ModelsUpdateGroupCustomRuleRequestV1(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "group_custom_rule"):
-            result["groupCustomRule"] = self.group_custom_rule.to_dict(include_empty=include_empty)
+            result["groupCustomRule"] = {str(k0): v0 for k0, v0 in self.group_custom_rule.items()}
         elif include_empty:
-            result["groupCustomRule"] = ModelsUpdateGroupCustomRuleRequestV1GroupCustomRule()
+            result["groupCustomRule"] = {}
         return result
 
     # endregion to methods
@@ -66,7 +64,7 @@ class ModelsUpdateGroupCustomRuleRequestV1(Model):
     @classmethod
     def create(
         cls,
-        group_custom_rule: ModelsUpdateGroupCustomRuleRequestV1GroupCustomRule,
+        group_custom_rule: Dict[str, Any],
     ) -> ModelsUpdateGroupCustomRuleRequestV1:
         instance = cls()
         instance.group_custom_rule = group_custom_rule
@@ -78,9 +76,9 @@ class ModelsUpdateGroupCustomRuleRequestV1(Model):
         if not dict_:
             return instance
         if "groupCustomRule" in dict_ and dict_["groupCustomRule"] is not None:
-            instance.group_custom_rule = ModelsUpdateGroupCustomRuleRequestV1GroupCustomRule.create_from_dict(dict_["groupCustomRule"], include_empty=include_empty)
+            instance.group_custom_rule = {str(k0): v0 for k0, v0 in dict_["groupCustomRule"].items()}
         elif include_empty:
-            instance.group_custom_rule = ModelsUpdateGroupCustomRuleRequestV1GroupCustomRule()
+            instance.group_custom_rule = {}
         return instance
 
     @staticmethod

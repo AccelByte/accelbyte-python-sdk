@@ -1,4 +1,4 @@
-# justice-iam-service (4.10.0)
+# justice-iam-service (5.0.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -26,17 +26,18 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
-from ...models import ModelGameUserIDsRequest
-from ...models import ModelListBulkUserGameResponse
+from ...models import ModelListBulkUserResponse
+from ...models import ModelUserIDsRequest
 from ...models import RestErrorResponse
 
 
 class PublicBulkGetUsers(Operation):
-    """Bulk get game users' basic info by user Id (PublicBulkGetUsers)
+    """Bulk get users' basic info by user Id (PublicBulkGetUsers)
 
-    Required valid user authorization. <p>Notes:</p> <ul> <li>This endpoint bulk
-    get game users' basic info by userId, max allowed 20 at a time</li>
-    <li><strong>Result will include displayName(if it exists)</strong></li> </ul>
+    <p>Notes:</p> <ul> <li>This endpoint bulk get users' basic info by userId, max
+    allowed 20 at a time</li> <li>If namespace is game, will search by game user
+    Id, other wise will search by publisher namespace</li> <li><strong>Result will
+    include displayName(if it exists)</strong></li> </ul>
 
 
     Properties:
@@ -52,16 +53,14 @@ class PublicBulkGetUsers(Operation):
 
         security_type: bearer
 
-        body: (body) REQUIRED ModelGameUserIDsRequest in body
+        body: (body) REQUIRED ModelUserIDsRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelListBulkUserGameResponse (OK)
+        200: OK - ModelListBulkUserResponse (OK)
 
         400: Bad Request - RestErrorResponse (20002: validation error | 10185: publisher namespace not allowed)
-
-        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -75,7 +74,7 @@ class PublicBulkGetUsers(Operation):
     _security_type: Optional[str] = "bearer"
     _location_query: str = None
 
-    body: ModelGameUserIDsRequest                                                                  # REQUIRED in [body]
+    body: ModelUserIDsRequest                                                                      # REQUIRED in [body]
     namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
@@ -160,7 +159,7 @@ class PublicBulkGetUsers(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: ModelGameUserIDsRequest) -> PublicBulkGetUsers:
+    def with_body(self, value: ModelUserIDsRequest) -> PublicBulkGetUsers:
         self.body = value
         return self
 
@@ -177,7 +176,7 @@ class PublicBulkGetUsers(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = ModelGameUserIDsRequest()
+            result["body"] = ModelUserIDsRequest()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -189,22 +188,18 @@ class PublicBulkGetUsers(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelListBulkUserGameResponse], Union[None, RestErrorResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelListBulkUserResponse], Union[None, RestErrorResponse]]:
         """Parse the given response.
 
-        200: OK - ModelListBulkUserGameResponse (OK)
+        200: OK - ModelListBulkUserResponse (OK)
 
         400: Bad Request - RestErrorResponse (20002: validation error | 10185: publisher namespace not allowed)
-
-        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
         """
         if code == 200:
-            return ModelListBulkUserGameResponse.create_from_dict(content), None
+            return ModelListBulkUserResponse.create_from_dict(content), None
         if code == 400:
-            return None, RestErrorResponse.create_from_dict(content)
-        if code == 401:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 500:
             return None, RestErrorResponse.create_from_dict(content)
@@ -222,7 +217,7 @@ class PublicBulkGetUsers(Operation):
     @classmethod
     def create(
         cls,
-        body: ModelGameUserIDsRequest,
+        body: ModelUserIDsRequest,
         namespace: str,
     ) -> PublicBulkGetUsers:
         instance = cls()
@@ -234,9 +229,9 @@ class PublicBulkGetUsers(Operation):
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PublicBulkGetUsers:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ModelGameUserIDsRequest.create_from_dict(dict_["body"], include_empty=include_empty)
+            instance.body = ModelUserIDsRequest.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
-            instance.body = ModelGameUserIDsRequest()
+            instance.body = ModelUserIDsRequest()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:

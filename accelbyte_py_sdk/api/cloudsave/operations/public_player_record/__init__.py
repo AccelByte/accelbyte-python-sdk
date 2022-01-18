@@ -2,6 +2,7 @@
 
 # pylint: disable=line-too-long
 
+from .bulk_get_player_public_record_handler_v1 import BulkGetPlayerPublicRecordHandlerV1
 from .delete_player_record_handler_v1 import DeletePlayerRecordHandlerV1
 from .get_player_public_record_handler_v1 import GetPlayerPublicRecordHandlerV1
 from .get_player_record_handler_v1 import GetPlayerRecordHandlerV1

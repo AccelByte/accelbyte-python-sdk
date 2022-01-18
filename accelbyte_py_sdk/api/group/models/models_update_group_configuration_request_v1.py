@@ -1,4 +1,4 @@
-# justice-group-service (2.9.0)
+# justice-group-service (2.10.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 

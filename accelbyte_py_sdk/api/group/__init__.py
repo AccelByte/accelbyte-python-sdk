@@ -1,6 +1,6 @@
 """Auto-generated top-level package for the justice-group-service."""
 
-__version__ = "2.9.0"
+__version__ = "2.10.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -49,8 +49,8 @@ from .wrappers import update_group_custom_rule_public_v1
 from .wrappers import update_group_custom_rule_public_v1_async
 from .wrappers import update_group_predefined_rule_public_v1
 from .wrappers import update_group_predefined_rule_public_v1_async
-from .wrappers import update_single_group_public_v1
-from .wrappers import update_single_group_public_v1_async
+from .wrappers import update_patch_single_group_public_v1
+from .wrappers import update_patch_single_group_public_v1_async
 from .wrappers import update_single_group_v1
 from .wrappers import update_single_group_v1_async
 

@@ -1,4 +1,4 @@
-# justice-group-service (2.9.0)
+# justice-group-service (2.10.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -55,7 +55,6 @@ from ..api.group.models import ModelsUpdateGroupConfigurationRequestV1
 from ..api.group.models import ModelsUpdateGroupConfigurationResponseV1
 from ..api.group.models import ModelsUpdateGroupCustomAttributesRequestV1
 from ..api.group.models import ModelsUpdateGroupCustomRuleRequestV1
-from ..api.group.models import ModelsUpdateGroupCustomRuleRequestV1GroupCustomRule
 from ..api.group.models import ModelsUpdateGroupPredefinedRuleRequestV1
 from ..api.group.models import ModelsUpdateGroupRequestV1
 from ..api.group.models import ModelsUpdateGroupRequestV1CustomAttributes
@@ -333,12 +332,7 @@ def create_models_update_group_custom_attributes_request_v1_example() -> ModelsU
 
 def create_models_update_group_custom_rule_request_v1_example() -> ModelsUpdateGroupCustomRuleRequestV1:
     instance = ModelsUpdateGroupCustomRuleRequestV1()
-    instance.group_custom_rule = create_models_update_group_custom_rule_request_v1_group_custom_rule_example()
-    return instance
-
-
-def create_models_update_group_custom_rule_request_v1_group_custom_rule_example() -> ModelsUpdateGroupCustomRuleRequestV1GroupCustomRule:
-    instance = ModelsUpdateGroupCustomRuleRequestV1GroupCustomRule()
+    instance.group_custom_rule = {randomize(): randomize()}
     return instance
 
 

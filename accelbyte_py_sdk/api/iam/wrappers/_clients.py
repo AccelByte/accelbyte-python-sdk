@@ -190,30 +190,28 @@ async def admin_delete_client_v3_async(client_id: str, namespace: Optional[str] 
 
 
 @same_doc_as(AdminGetClientsByNamespaceV3)
-def admin_get_clients_by_namespace_v3(after: Optional[str] = None, before: Optional[str] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_get_clients_by_namespace_v3(limit: Optional[int] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = AdminGetClientsByNamespaceV3.create(
-        after=after,
-        before=before,
         limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetClientsByNamespaceV3)
-async def admin_get_clients_by_namespace_v3_async(after: Optional[str] = None, before: Optional[str] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_get_clients_by_namespace_v3_async(limit: Optional[int] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = AdminGetClientsByNamespaceV3.create(
-        after=after,
-        before=before,
         limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)

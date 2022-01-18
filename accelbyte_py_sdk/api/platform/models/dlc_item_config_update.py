@@ -1,4 +1,4 @@
-# justice-group-service (2.9.0)
+# justice-platform-service (4.1.1)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -21,49 +21,43 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
-import copy
-from collections.abc import MutableMapping
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.dlc_item import DLCItem
 
-class ModelsUpdateGroupCustomRuleRequestV1GroupCustomRule(Model, MutableMapping):
-    """Models update group custom rule request V1 group custom rule (models.UpdateGroupCustomRuleRequestV1.groupCustomRule)
+
+class DLCItemConfigUpdate(Model):
+    """DLC item config update (DLCItemConfigUpdate)
 
     Properties:
+        data: (data) OPTIONAL List[DLCItem]
     """
 
-    # region mutable mapping
+    # region fields
 
-    def __init__(self):
-        self.store = dict()
+    data: List[DLCItem]                                                                            # OPTIONAL
 
-    def __getitem__(self, key):
-        return self.store[self._keytransform(key)]
+    # endregion fields
 
-    def __setitem__(self, key, value):
-        self.store[self._keytransform(key)] = value
+    # region with_x methods
 
-    def __delitem__(self, key):
-        del self.store[self._keytransform(key)]
+    def with_data(self, value: List[DLCItem]) -> DLCItemConfigUpdate:
+        self.data = value
+        return self
 
-    def __iter__(self):
-        return iter(self.store)
-
-    def __len__(self):
-        return len(self.store)
-
-    # noinspection PyMethodMayBeStatic
-    def _keytransform(self, key):
-        return key
-
-    # endregion mutable mapping
+    # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
-        return copy.deepcopy(self.store)
+        result: dict = {}
+        if hasattr(self, "data"):
+            result["data"] = [i0.to_dict(include_empty=include_empty) for i0 in self.data]
+        elif include_empty:
+            result["data"] = []
+        return result
 
     # endregion to methods
 
@@ -72,24 +66,28 @@ class ModelsUpdateGroupCustomRuleRequestV1GroupCustomRule(Model, MutableMapping)
     @classmethod
     def create(
         cls,
-        dict_: Optional[dict] = None,
-    ) -> ModelsUpdateGroupCustomRuleRequestV1GroupCustomRule:
+        data: Optional[List[DLCItem]] = None,
+    ) -> DLCItemConfigUpdate:
         instance = cls()
-        if dict_ is not None:
-            instance.store = copy.deepcopy(dict_)
+        if data is not None:
+            instance.data = data
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsUpdateGroupCustomRuleRequestV1GroupCustomRule:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> DLCItemConfigUpdate:
         instance = cls()
         if not dict_:
             return instance
-        instance.store = copy.deepcopy(dict_)
+        if "data" in dict_ and dict_["data"] is not None:
+            instance.data = [DLCItem.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["data"]]
+        elif include_empty:
+            instance.data = []
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "data": "data",
         }
 
     # endregion static methods

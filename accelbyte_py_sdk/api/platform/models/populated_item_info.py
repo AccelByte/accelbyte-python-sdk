@@ -1,4 +1,4 @@
-# justice-platform-service (3.40.0)
+# justice-platform-service (4.1.1)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -25,8 +25,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.bundled_item_info import BundledItemInfo
 from ..models.image import Image
-from ..models.item_info import ItemInfo
 from ..models.recurring import Recurring
 from ..models.region_data_item import RegionDataItem
 
@@ -83,7 +83,9 @@ class PopulatedItemInfo(Model):
 
         item_ids: (itemIds) OPTIONAL List[str]
 
-        items: (items) OPTIONAL List[ItemInfo]
+        item_qty: (itemQty) OPTIONAL Dict[str, int]
+
+        items: (items) OPTIONAL List[BundledItemInfo]
 
         listable: (listable) OPTIONAL bool
 
@@ -146,7 +148,8 @@ class PopulatedItemInfo(Model):
     features: List[str]                                                                            # OPTIONAL
     images: List[Image]                                                                            # OPTIONAL
     item_ids: List[str]                                                                            # OPTIONAL
-    items: List[ItemInfo]                                                                          # OPTIONAL
+    item_qty: Dict[str, int]                                                                       # OPTIONAL
+    items: List[BundledItemInfo]                                                                   # OPTIONAL
     listable: bool                                                                                 # OPTIONAL
     local_ext: Dict[str, Any]                                                                      # OPTIONAL
     long_description: str                                                                          # OPTIONAL
@@ -265,7 +268,11 @@ class PopulatedItemInfo(Model):
         self.item_ids = value
         return self
 
-    def with_items(self, value: List[ItemInfo]) -> PopulatedItemInfo:
+    def with_item_qty(self, value: Dict[str, int]) -> PopulatedItemInfo:
+        self.item_qty = value
+        return self
+
+    def with_items(self, value: List[BundledItemInfo]) -> PopulatedItemInfo:
         self.items = value
         return self
 
@@ -439,6 +446,10 @@ class PopulatedItemInfo(Model):
             result["itemIds"] = [str(i0) for i0 in self.item_ids]
         elif include_empty:
             result["itemIds"] = []
+        if hasattr(self, "item_qty"):
+            result["itemQty"] = {str(k0): int(v0) for k0, v0 in self.item_qty.items()}
+        elif include_empty:
+            result["itemQty"] = {}
         if hasattr(self, "items"):
             result["items"] = [i0.to_dict(include_empty=include_empty) for i0 in self.items]
         elif include_empty:
@@ -544,7 +555,8 @@ class PopulatedItemInfo(Model):
         features: Optional[List[str]] = None,
         images: Optional[List[Image]] = None,
         item_ids: Optional[List[str]] = None,
-        items: Optional[List[ItemInfo]] = None,
+        item_qty: Optional[Dict[str, int]] = None,
+        items: Optional[List[BundledItemInfo]] = None,
         listable: Optional[bool] = None,
         local_ext: Optional[Dict[str, Any]] = None,
         long_description: Optional[str] = None,
@@ -600,6 +612,8 @@ class PopulatedItemInfo(Model):
             instance.images = images
         if item_ids is not None:
             instance.item_ids = item_ids
+        if item_qty is not None:
+            instance.item_qty = item_qty
         if items is not None:
             instance.items = items
         if listable is not None:
@@ -739,8 +753,12 @@ class PopulatedItemInfo(Model):
             instance.item_ids = [str(i0) for i0 in dict_["itemIds"]]
         elif include_empty:
             instance.item_ids = []
+        if "itemQty" in dict_ and dict_["itemQty"] is not None:
+            instance.item_qty = {str(k0): int(v0) for k0, v0 in dict_["itemQty"].items()}
+        elif include_empty:
+            instance.item_qty = {}
         if "items" in dict_ and dict_["items"] is not None:
-            instance.items = [ItemInfo.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["items"]]
+            instance.items = [BundledItemInfo.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["items"]]
         elif include_empty:
             instance.items = []
         if "listable" in dict_ and dict_["listable"] is not None:
@@ -840,6 +858,7 @@ class PopulatedItemInfo(Model):
             "features": "features",
             "images": "images",
             "itemIds": "item_ids",
+            "itemQty": "item_qty",
             "items": "items",
             "listable": "listable",
             "localExt": "local_ext",

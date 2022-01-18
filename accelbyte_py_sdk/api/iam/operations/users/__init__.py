@@ -35,6 +35,7 @@ from .admin_get_user_login_histories_v3 import AdminGetUserLoginHistoriesV3
 from .admin_get_user_platform_accounts_v3 import AdminGetUserPlatformAccountsV3
 from .admin_invite_user_v3 import AdminInviteUserV3
 from .admin_link_platform_account import AdminLinkPlatformAccount
+from .admin_list_user_id_by_user_i_ds_v3 import AdminListUserIDByUserIDsV3
 from .admin_list_users_v3 import AdminListUsersV3
 from .admin_platform_link_v3 import AdminPlatformLinkV3
 from .admin_platform_unlink_v3 import AdminPlatformUnlinkV3
@@ -57,6 +58,7 @@ from .admin_upgrade_headless_account_v3 import AdminUpgradeHeadlessAccountV3
 from .admin_verify_account_v3 import AdminVerifyAccountV3
 from .admin_verify_user_without_verification_code_v3 import AdminVerifyUserWithoutVerificationCodeV3
 from .ban_user import BanUser
+from .check_user_availability import CheckUserAvailability
 from .create_user import CreateUser
 from .create_user_from_invitation_v3 import CreateUserFromInvitationV3
 from .delete_user import DeleteUser

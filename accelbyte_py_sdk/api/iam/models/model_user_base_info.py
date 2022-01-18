@@ -1,4 +1,4 @@
-# justice-iam-service (4.10.0)
+# justice-iam-service (5.0.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -26,8 +26,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 
-class ModelGameUserBaseInfo(Model):
-    """Model game user base info (model.GameUserBaseInfo)
+class ModelUserBaseInfo(Model):
+    """Model user base info (model.UserBaseInfo)
 
     Properties:
         avatar_url: (avatarUrl) REQUIRED str
@@ -47,15 +47,15 @@ class ModelGameUserBaseInfo(Model):
 
     # region with_x methods
 
-    def with_avatar_url(self, value: str) -> ModelGameUserBaseInfo:
+    def with_avatar_url(self, value: str) -> ModelUserBaseInfo:
         self.avatar_url = value
         return self
 
-    def with_display_name(self, value: str) -> ModelGameUserBaseInfo:
+    def with_display_name(self, value: str) -> ModelUserBaseInfo:
         self.display_name = value
         return self
 
-    def with_user_id(self, value: str) -> ModelGameUserBaseInfo:
+    def with_user_id(self, value: str) -> ModelUserBaseInfo:
         self.user_id = value
         return self
 
@@ -89,7 +89,7 @@ class ModelGameUserBaseInfo(Model):
         avatar_url: str,
         display_name: str,
         user_id: str,
-    ) -> ModelGameUserBaseInfo:
+    ) -> ModelUserBaseInfo:
         instance = cls()
         instance.avatar_url = avatar_url
         instance.display_name = display_name
@@ -97,7 +97,7 @@ class ModelGameUserBaseInfo(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelGameUserBaseInfo:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelUserBaseInfo:
         instance = cls()
         if not dict_:
             return instance

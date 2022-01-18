@@ -1,4 +1,4 @@
-# justice-seasonpass-service (1.6.0)
+# justice-seasonpass-service (1.7.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 

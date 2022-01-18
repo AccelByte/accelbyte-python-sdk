@@ -1,4 +1,4 @@
-# justice-legal-service (1.15.1)
+# justice-legal-service (1.16.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,12 +32,12 @@ from ...models import RetrieveUserEligibilitiesIndirectResponse
 class RetrieveEligibilitiesPublicIndirect(Operation):
     """Check User Legal Eligibility (retrieveEligibilitiesPublicIndirect)
 
-    Retrieve the active policies and its conformance status by user. This endpoint
-    used by Authentication Service during user login.<br>This process supports
-    cross-namespace checking, that means if the active policy already accepted by
-    the same user in other namespace, then it will be considered as
-    eligible.<br/><br/>Other detail info: <ul><li><i>Required permission</i>:
-    login user</li></ul>
+    Retrieve the active policies and its conformance status by userThis process
+    only supports cross-namespace checking between game namespace and publisher
+    namespace , that means if the active policy already accepted by the same user
+    in publisher namespace, then it will also be considered as eligible in non-
+    publisher namespace.<br/><br/>Other detail info: <ul><li><i>Required
+    permission</i>: login user</li></ul>
 
 
     Properties:

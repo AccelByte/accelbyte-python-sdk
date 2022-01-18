@@ -1,4 +1,4 @@
-# justice-gdpr-service (1.11.2)
+# justice-gdpr-service (1.11.3)
 
 # template file: justice_py_sdk_codegen/__main__.py
 

@@ -1,4 +1,4 @@
-# justice-platform-service (3.40.0)
+# justice-platform-service (4.1.1)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -39,6 +39,7 @@ from ..api.platform.models import BillingAccount
 from ..api.platform.models import BillingHistoryInfo
 from ..api.platform.models import BillingHistoryPagingSlicedResult
 from ..api.platform.models import BulkOperationResult
+from ..api.platform.models import BundledItemInfo
 from ..api.platform.models import CampaignCreate
 from ..api.platform.models import CampaignDynamicInfo
 from ..api.platform.models import CampaignInfo
@@ -62,6 +63,9 @@ from ..api.platform.models import CurrencyInfo
 from ..api.platform.models import CurrencySummary
 from ..api.platform.models import CurrencyUpdate
 from ..api.platform.models import Customization
+from ..api.platform.models import DLCItem
+from ..api.platform.models import DLCItemConfigInfo
+from ..api.platform.models import DLCItemConfigUpdate
 from ..api.platform.models import DebitRequest
 from ..api.platform.models import EntitlementDecrement
 from ..api.platform.models import EntitlementGrant
@@ -100,6 +104,9 @@ from ..api.platform.models import GoogleIAPConfigRequest
 from ..api.platform.models import GoogleIAPReceipt
 from ..api.platform.models import GrantSubscriptionDaysRequest
 from ..api.platform.models import HierarchicalCategoryInfo
+from ..api.platform.models import IAPItemConfigInfo
+from ..api.platform.models import IAPItemConfigUpdate
+from ..api.platform.models import IAPItemEntry
 from ..api.platform.models import IAPOrderInfo
 from ..api.platform.models import IAPOrderPagingSlicedResult
 from ..api.platform.models import Image
@@ -170,7 +177,14 @@ from ..api.platform.models import PaymentTaxConfigInfo
 from ..api.platform.models import PaymentToken
 from ..api.platform.models import PaymentUrl
 from ..api.platform.models import PaymentUrlCreate
+from ..api.platform.models import PlatformDLCConfigInfo
+from ..api.platform.models import PlatformDLCConfigUpdate
+from ..api.platform.models import PlatformDlcEntry
+from ..api.platform.models import PlatformReward
+from ..api.platform.models import PlatformRewardCurrency
+from ..api.platform.models import PlatformRewardItem
 from ..api.platform.models import PlatformSubscribeRequest
+from ..api.platform.models import PlayStationDLCSyncRequest
 from ..api.platform.models import PlayStationIAPConfigInfo
 from ..api.platform.models import PlayStationReconcileRequest
 from ..api.platform.models import PlayStationReconcileResult
@@ -192,10 +206,12 @@ from ..api.platform.models import RewardInfo
 from ..api.platform.models import RewardItem
 from ..api.platform.models import RewardPagingSlicedResult
 from ..api.platform.models import RewardUpdate
+from ..api.platform.models import RewardsRequest
 from ..api.platform.models import Slide
 from ..api.platform.models import StackableEntitlementInfo
 from ..api.platform.models import StadiaIAPConfigInfo
 from ..api.platform.models import StadiaSyncRequest
+from ..api.platform.models import SteamDLCSyncRequest
 from ..api.platform.models import SteamIAPConfig
 from ..api.platform.models import SteamIAPConfigInfo
 from ..api.platform.models import SteamIAPConfigRequest
@@ -231,6 +247,7 @@ from ..api.platform.models import WalletTransactionInfo
 from ..api.platform.models import WalletTransactionPagingSlicedResult
 from ..api.platform.models import WxPayConfigInfo
 from ..api.platform.models import WxPayConfigRequest
+from ..api.platform.models import XblDLCSyncRequest
 from ..api.platform.models import XblIAPConfigInfo
 from ..api.platform.models import XblIAPConfigRequest
 from ..api.platform.models import XblReconcileRequest
@@ -446,6 +463,54 @@ def create_billing_history_paging_sliced_result_example() -> BillingHistoryPagin
 def create_bulk_operation_result_example() -> BulkOperationResult:
     instance = BulkOperationResult()
     instance.affected = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_bundled_item_info_example() -> BundledItemInfo:
+    instance = BundledItemInfo()
+    instance.category_path = randomize()
+    instance.created_at = randomize("date")
+    instance.entitlement_type = randomize()
+    instance.item_id = randomize()
+    instance.item_type = randomize()
+    instance.language = randomize()
+    instance.name = randomize()
+    instance.namespace = randomize("slug")
+    instance.region = randomize()
+    instance.status = randomize()
+    instance.title = randomize()
+    instance.updated_at = randomize("date")
+    instance.app_id = randomize("uid")
+    instance.app_type = randomize()
+    instance.base_app_id = randomize()
+    instance.booth_name = randomize()
+    instance.bound_item_ids = [randomize()]
+    instance.bundled_qty = randomize("int", min_val=1, max_val=1000)
+    instance.clazz = randomize()
+    instance.description = randomize()
+    instance.display_order = randomize("int", min_val=1, max_val=1000)
+    instance.ext = {randomize(): randomize()}
+    instance.features = [randomize()]
+    instance.images = [create_image_example()]
+    instance.item_ids = [randomize()]
+    instance.item_qty = {}
+    instance.listable = randomize("bool")
+    instance.local_ext = {randomize(): randomize()}
+    instance.long_description = randomize()
+    instance.max_count = randomize("int", min_val=1, max_val=1000)
+    instance.max_count_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.purchasable = randomize("bool")
+    instance.recurring = create_recurring_example()
+    instance.region_data = [create_region_data_item_example()]
+    instance.season_type = randomize()
+    instance.sku = randomize("slug")
+    instance.stackable = randomize("bool")
+    instance.tags = [randomize()]
+    instance.target_currency_code = randomize()
+    instance.target_item_id = randomize()
+    instance.target_namespace = randomize("slug")
+    instance.thumbnail_url = randomize("url")
+    instance.use_count = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -687,6 +752,25 @@ def create_debit_request_example() -> DebitRequest:
     instance = DebitRequest()
     instance.amount = randomize("int", min_val=1, max_val=1000)
     instance.reason = randomize()
+    return instance
+
+
+def create_dlc_item_example() -> DLCItem:
+    instance = DLCItem()
+    instance.id_ = randomize()
+    instance.rewards = [create_platform_reward_example()]
+    return instance
+
+
+def create_dlc_item_config_info_example() -> DLCItemConfigInfo:
+    instance = DLCItemConfigInfo()
+    instance.data = [create_dlc_item_example()]
+    return instance
+
+
+def create_dlc_item_config_update_example() -> DLCItemConfigUpdate:
+    instance = DLCItemConfigUpdate()
+    instance.data = [create_dlc_item_example()]
     return instance
 
 
@@ -1047,6 +1131,7 @@ def create_full_item_info_example() -> FullItemInfo:
     instance.features = [randomize()]
     instance.images = [create_image_example()]
     instance.item_ids = [randomize()]
+    instance.item_qty = {}
     instance.listable = randomize("bool")
     instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.max_count_per_user = randomize("int", min_val=1, max_val=1000)
@@ -1119,6 +1204,25 @@ def create_hierarchical_category_info_example() -> HierarchicalCategoryInfo:
     return instance
 
 
+def create_iap_item_config_info_example() -> IAPItemConfigInfo:
+    instance = IAPItemConfigInfo()
+    instance.data = [create_iap_item_entry_example()]
+    return instance
+
+
+def create_iap_item_config_update_example() -> IAPItemConfigUpdate:
+    instance = IAPItemConfigUpdate()
+    instance.data = [create_iap_item_entry_example()]
+    return instance
+
+
+def create_iap_item_entry_example() -> IAPItemEntry:
+    instance = IAPItemEntry()
+    instance.item_identity = randomize()
+    instance.platform_product_id_map = {randomize(): randomize()}
+    return instance
+
+
 def create_iap_order_info_example() -> IAPOrderInfo:
     instance = IAPOrderInfo()
     instance.created_at = randomize("date")
@@ -1129,9 +1233,11 @@ def create_iap_order_info_example() -> IAPOrderInfo:
     instance.updated_at = randomize("date")
     instance.user_id = randomize("uid")
     instance.credits = [create_credit_summary_example()]
+    instance.currency_code = randomize()
     instance.entitlements = [create_entitlement_summary_example()]
     instance.fulfilled_time = randomize("date")
     instance.language = randomize()
+    instance.price = randomize("int", min_val=1, max_val=1000)
     instance.product_id = randomize("uid")
     instance.quantity = randomize("int", min_val=1, max_val=1000)
     instance.receipt_data = randomize()
@@ -1202,6 +1308,7 @@ def create_item_create_example() -> ItemCreate:
     instance.features = [randomize()]
     instance.images = [create_image_example()]
     instance.item_ids = [randomize()]
+    instance.item_qty = {}
     instance.listable = randomize("bool")
     instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.max_count_per_user = randomize("int", min_val=1, max_val=1000)
@@ -1260,6 +1367,7 @@ def create_item_info_example() -> ItemInfo:
     instance.features = [randomize()]
     instance.images = [create_image_example()]
     instance.item_ids = [randomize()]
+    instance.item_qty = {}
     instance.listable = randomize("bool")
     instance.local_ext = {randomize(): randomize()}
     instance.long_description = randomize()
@@ -1311,6 +1419,7 @@ def create_item_snapshot_example() -> ItemSnapshot:
     instance.description = randomize()
     instance.features = [randomize()]
     instance.item_ids = [randomize()]
+    instance.item_qty = {}
     instance.listable = randomize("bool")
     instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.max_count_per_user = randomize("int", min_val=1, max_val=1000)
@@ -1344,6 +1453,7 @@ def create_item_update_example() -> ItemUpdate:
     instance.features = [randomize()]
     instance.images = [create_image_example()]
     instance.item_ids = [randomize()]
+    instance.item_qty = {}
     instance.listable = randomize("bool")
     instance.localizations = {}
     instance.max_count = randomize("int", min_val=1, max_val=1000)
@@ -2054,6 +2164,49 @@ def create_payment_url_create_example() -> PaymentUrlCreate:
     return instance
 
 
+def create_platform_dlc_config_info_example() -> PlatformDLCConfigInfo:
+    instance = PlatformDLCConfigInfo()
+    instance.data = [create_platform_dlc_entry_example()]
+    return instance
+
+
+def create_platform_dlc_config_update_example() -> PlatformDLCConfigUpdate:
+    instance = PlatformDLCConfigUpdate()
+    instance.data = [create_platform_dlc_entry_example()]
+    return instance
+
+
+def create_platform_dlc_entry_example() -> PlatformDlcEntry:
+    instance = PlatformDlcEntry()
+    instance.platform = randomize()
+    instance.platform_dlc_id_map = {randomize(): randomize()}
+    return instance
+
+
+def create_platform_reward_example() -> PlatformReward:
+    instance = PlatformReward()
+    instance.currency = create_platform_reward_currency_example()
+    instance.item = create_platform_reward_item_example()
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
+    instance.type_ = randomize()
+    return instance
+
+
+def create_platform_reward_currency_example() -> PlatformRewardCurrency:
+    instance = PlatformRewardCurrency()
+    instance.currency_code = randomize()
+    instance.namespace = randomize("slug")
+    return instance
+
+
+def create_platform_reward_item_example() -> PlatformRewardItem:
+    instance = PlatformRewardItem()
+    instance.item_id = randomize()
+    instance.item_sku = randomize()
+    instance.item_type = randomize()
+    return instance
+
+
 def create_platform_subscribe_request_example() -> PlatformSubscribeRequest:
     instance = PlatformSubscribeRequest()
     instance.grant_days = randomize("int", min_val=1, max_val=1000)
@@ -2062,6 +2215,12 @@ def create_platform_subscribe_request_example() -> PlatformSubscribeRequest:
     instance.reason = randomize()
     instance.region = randomize()
     instance.source = randomize()
+    return instance
+
+
+def create_play_station_dlc_sync_request_example() -> PlayStationDLCSyncRequest:
+    instance = PlayStationDLCSyncRequest()
+    instance.service_label = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -2074,6 +2233,9 @@ def create_play_station_iap_config_info_example() -> PlayStationIAPConfigInfo:
 
 def create_play_station_reconcile_request_example() -> PlayStationReconcileRequest:
     instance = PlayStationReconcileRequest()
+    instance.currency_code = randomize()
+    instance.price = randomize("int", min_val=1, max_val=1000)
+    instance.product_id = randomize("uid")
     instance.service_label = randomize("int", min_val=1, max_val=1000)
     return instance
 
@@ -2120,7 +2282,8 @@ def create_populated_item_info_example() -> PopulatedItemInfo:
     instance.features = [randomize()]
     instance.images = [create_image_example()]
     instance.item_ids = [randomize()]
-    instance.items = [create_item_info_example()]
+    instance.item_qty = {}
+    instance.items = [create_bundled_item_info_example()]
     instance.listable = randomize("bool")
     instance.local_ext = {randomize(): randomize()}
     instance.long_description = randomize()
@@ -2299,6 +2462,13 @@ def create_reward_update_example() -> RewardUpdate:
     return instance
 
 
+def create_rewards_request_example() -> RewardsRequest:
+    instance = RewardsRequest()
+    instance.rewards = [create_platform_reward_example()]
+    instance.source = randomize()
+    return instance
+
+
 def create_slide_example() -> Slide:
     instance = Slide()
     instance.alt = randomize()
@@ -2356,6 +2526,13 @@ def create_stadia_sync_request_example() -> StadiaSyncRequest:
     return instance
 
 
+def create_steam_dlc_sync_request_example() -> SteamDLCSyncRequest:
+    instance = SteamDLCSyncRequest()
+    instance.app_id = randomize("uid")
+    instance.steam_id = randomize()
+    return instance
+
+
 def create_steam_iap_config_example() -> SteamIAPConfig:
     instance = SteamIAPConfig()
     instance.created_at = randomize("date")
@@ -2383,7 +2560,10 @@ def create_steam_sync_request_example() -> SteamSyncRequest:
     instance = SteamSyncRequest()
     instance.app_id = randomize("uid")
     instance.steam_id = randomize()
+    instance.currency_code = randomize()
     instance.language = randomize()
+    instance.price = randomize("int", min_val=1, max_val=1000)
+    instance.product_id = randomize("uid")
     instance.region = randomize()
     return instance
 
@@ -2768,6 +2948,12 @@ def create_wx_pay_config_request_example() -> WxPayConfigRequest:
     return instance
 
 
+def create_xbl_dlc_sync_request_example() -> XblDLCSyncRequest:
+    instance = XblDLCSyncRequest()
+    instance.xsts_token = randomize()
+    return instance
+
+
 def create_xbl_iap_config_info_example() -> XblIAPConfigInfo:
     instance = XblIAPConfigInfo()
     instance.namespace = randomize("slug")
@@ -2785,6 +2971,9 @@ def create_xbl_iap_config_request_example() -> XblIAPConfigRequest:
 
 def create_xbl_reconcile_request_example() -> XblReconcileRequest:
     instance = XblReconcileRequest()
+    instance.currency_code = randomize()
+    instance.price = randomize("int", min_val=1, max_val=1000)
+    instance.product_id = randomize("uid")
     instance.xsts_token = randomize()
     return instance
 

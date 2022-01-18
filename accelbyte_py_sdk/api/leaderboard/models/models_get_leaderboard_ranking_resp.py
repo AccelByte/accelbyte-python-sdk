@@ -1,4 +1,4 @@
-# justice-leaderboard-service (2.11.1)
+# justice-leaderboard-service (2.11.2)
 
 # template file: justice_py_sdk_codegen/__main__.py
 

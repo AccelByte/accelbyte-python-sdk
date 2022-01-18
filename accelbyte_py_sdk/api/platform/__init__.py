@@ -1,6 +1,6 @@
 """Auto-generated top-level package for the justice-platform-service."""
 
-__version__ = "3.40.0"
+__version__ = "4.1.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -102,6 +102,26 @@ from .wrappers import public_list_currencies_async
 from .wrappers import update_currency
 from .wrappers import update_currency_async
 
+# dlc
+from .wrappers import delete_dlc_item_config
+from .wrappers import delete_dlc_item_config_async
+from .wrappers import delete_platform_dlc_config
+from .wrappers import delete_platform_dlc_config_async
+from .wrappers import get_dlc_item_config
+from .wrappers import get_dlc_item_config_async
+from .wrappers import get_platform_dlc_config
+from .wrappers import get_platform_dlc_config_async
+from .wrappers import public_sync_psn_dlc_inventory
+from .wrappers import public_sync_psn_dlc_inventory_async
+from .wrappers import sync_steam_dlc
+from .wrappers import sync_steam_dlc_async
+from .wrappers import sync_xbox_dlc
+from .wrappers import sync_xbox_dlc_async
+from .wrappers import update_dlc_item_config
+from .wrappers import update_dlc_item_config_async
+from .wrappers import update_platform_dlc_config
+from .wrappers import update_platform_dlc_config_async
+
 # entitlement
 from .wrappers import consume_user_entitlement
 from .wrappers import consume_user_entitlement_async
@@ -181,6 +201,8 @@ from .wrappers import update_user_entitlement_async
 # fulfillment
 from .wrappers import fulfill_item
 from .wrappers import fulfill_item_async
+from .wrappers import fulfill_rewards
+from .wrappers import fulfill_rewards_async
 from .wrappers import public_redeem_code
 from .wrappers import public_redeem_code_async
 from .wrappers import query_fulfillment_histories
@@ -209,6 +231,8 @@ from .wrappers import delete_epic_games_iap_config
 from .wrappers import delete_epic_games_iap_config_async
 from .wrappers import delete_google_iap_config
 from .wrappers import delete_google_iap_config_async
+from .wrappers import delete_iap_item_config
+from .wrappers import delete_iap_item_config_async
 from .wrappers import delete_playstation_iap_config
 from .wrappers import delete_playstation_iap_config_async
 from .wrappers import delete_stadia_iap_config
@@ -223,6 +247,8 @@ from .wrappers import get_epic_games_iap_config
 from .wrappers import get_epic_games_iap_config_async
 from .wrappers import get_google_iap_config
 from .wrappers import get_google_iap_config_async
+from .wrappers import get_iap_item_config
+from .wrappers import get_iap_item_config_async
 from .wrappers import get_play_station_iap_config
 from .wrappers import get_play_station_iap_config_async
 from .wrappers import get_stadia_iap_config
@@ -239,6 +265,8 @@ from .wrappers import public_fulfill_google_iap_item
 from .wrappers import public_fulfill_google_iap_item_async
 from .wrappers import public_reconcile_play_station_store
 from .wrappers import public_reconcile_play_station_store_async
+from .wrappers import query_all_user_iap_orders
+from .wrappers import query_all_user_iap_orders_async
 from .wrappers import query_user_iap_orders
 from .wrappers import query_user_iap_orders_async
 from .wrappers import sync_epic_games_inventory
@@ -257,6 +285,8 @@ from .wrappers import update_google_iap_config
 from .wrappers import update_google_iap_config_async
 from .wrappers import update_google_p12_file
 from .wrappers import update_google_p12_file_async
+from .wrappers import update_iap_item_config
+from .wrappers import update_iap_item_config_async
 from .wrappers import update_playstation_iap_config
 from .wrappers import update_playstation_iap_config_async
 from .wrappers import update_stadia_json_config_file

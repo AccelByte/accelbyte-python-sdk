@@ -1,4 +1,4 @@
-# justice-platform-service (3.40.0)
+# justice-platform-service (4.1.1)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -65,6 +65,8 @@ class ItemSnapshot(Model):
 
         item_ids: (itemIds) OPTIONAL List[str]
 
+        item_qty: (itemQty) OPTIONAL Dict[str, int]
+
         listable: (listable) OPTIONAL bool
 
         max_count: (maxCount) OPTIONAL int
@@ -114,6 +116,7 @@ class ItemSnapshot(Model):
     description: str                                                                               # OPTIONAL
     features: List[str]                                                                            # OPTIONAL
     item_ids: List[str]                                                                            # OPTIONAL
+    item_qty: Dict[str, int]                                                                       # OPTIONAL
     listable: bool                                                                                 # OPTIONAL
     max_count: int                                                                                 # OPTIONAL
     max_count_per_user: int                                                                        # OPTIONAL
@@ -196,6 +199,10 @@ class ItemSnapshot(Model):
 
     def with_item_ids(self, value: List[str]) -> ItemSnapshot:
         self.item_ids = value
+        return self
+
+    def with_item_qty(self, value: Dict[str, int]) -> ItemSnapshot:
+        self.item_qty = value
         return self
 
     def with_listable(self, value: bool) -> ItemSnapshot:
@@ -328,6 +335,10 @@ class ItemSnapshot(Model):
             result["itemIds"] = [str(i0) for i0 in self.item_ids]
         elif include_empty:
             result["itemIds"] = []
+        if hasattr(self, "item_qty"):
+            result["itemQty"] = {str(k0): int(v0) for k0, v0 in self.item_qty.items()}
+        elif include_empty:
+            result["itemQty"] = {}
         if hasattr(self, "listable"):
             result["listable"] = bool(self.listable)
         elif include_empty:
@@ -413,6 +424,7 @@ class ItemSnapshot(Model):
         description: Optional[str] = None,
         features: Optional[List[str]] = None,
         item_ids: Optional[List[str]] = None,
+        item_qty: Optional[Dict[str, int]] = None,
         listable: Optional[bool] = None,
         max_count: Optional[int] = None,
         max_count_per_user: Optional[int] = None,
@@ -454,6 +466,8 @@ class ItemSnapshot(Model):
             instance.features = features
         if item_ids is not None:
             instance.item_ids = item_ids
+        if item_qty is not None:
+            instance.item_qty = item_qty
         if listable is not None:
             instance.listable = listable
         if max_count is not None:
@@ -555,6 +569,10 @@ class ItemSnapshot(Model):
             instance.item_ids = [str(i0) for i0 in dict_["itemIds"]]
         elif include_empty:
             instance.item_ids = []
+        if "itemQty" in dict_ and dict_["itemQty"] is not None:
+            instance.item_qty = {str(k0): int(v0) for k0, v0 in dict_["itemQty"].items()}
+        elif include_empty:
+            instance.item_qty = {}
         if "listable" in dict_ and dict_["listable"] is not None:
             instance.listable = bool(dict_["listable"])
         elif include_empty:
@@ -636,6 +654,7 @@ class ItemSnapshot(Model):
             "description": "description",
             "features": "features",
             "itemIds": "item_ids",
+            "itemQty": "item_qty",
             "listable": "listable",
             "maxCount": "max_count",
             "maxCountPerUser": "max_count_per_user",

@@ -1,4 +1,4 @@
-# justice-iam-service (4.10.0)
+# justice-iam-service (5.0.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -47,6 +47,11 @@ class PlatformAuthenticationV3(Operation):
     page will redirects to this endpoint after login success or an error occurred.
     If error, it redirects to the login page.
     <li><strong>twitch</strong></li>Twitch login page will redirects to this
+    endpoint after login success as previously defined on authorize request
+    parameter <code>redirect_uri</code> <li><strong>facebook</strong></li>Facebook
+    login page will redirects to this endpoint after login success as previously
+    defined on authorize request parameter <code>redirect_uri</code>
+    <li><strong>google</strong></li>Google login page will redirects to this
     endpoint after login success as previously defined on authorize request
     parameter <code>redirect_uri</code> </ul> action code : 10709
 

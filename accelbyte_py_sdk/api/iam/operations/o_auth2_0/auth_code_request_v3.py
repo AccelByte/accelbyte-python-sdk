@@ -1,4 +1,4 @@
-# justice-iam-service (4.10.0)
+# justice-iam-service (5.0.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -30,10 +30,10 @@ from .....core import HttpResponse
 class AuthCodeRequestV3(Operation):
     """Generate url to request auth code from third party platform. (AuthCodeRequestV3)
 
-    'Generate url to request auth code from third party platform <br>
-    <h2>Supported platforms:</h2><ul> <li><strong>steamopenid</strong></li>This
-    endpoint redirects to steam login page, then redirect back to platform
-    authenticate endpoint after successfully authenticating user steam.
+    Generate url to request auth code from third party platform <br> <h2>Supported
+    platforms:</h2><ul> <li><strong>steamopenid</strong></li>This endpoint
+    redirects to steam login page, then redirect back to platform authenticate
+    endpoint after successfully authenticating user steam.
     <li><strong>xblweb</strong></li>This endpoint redirects to xbox login page,
     then redirect back to platform authenticate endpoint after successfully
     authenticating xbox user. <li><strong>ps4web</strong></li>This endpoint
@@ -43,8 +43,15 @@ class AuthCodeRequestV3(Operation):
     login page. then redirect to platform authenticate endpoint after successfully
     authenticating an Epicgames credential <li><strong>twitch</strong></li>This
     endpoint redirects to twitch login page, then redirect back to platform
-    authenticate endpoint after successfully authenticating twitch user. </ul>
-    action code : 10702'
+    authenticate endpoint after successfully authenticating twitch user.
+    <li><strong>azure</strong></li>This endpoint redirects to azure login page,
+    then redirect back to platform authenticate(saml) endpoint after successfully
+    authenticating azure user. <li><strong>facebook</strong></li>This endpoint
+    redirects to facebook login page, then redirect back to platform authenticate
+    endpoint after successfully authenticating facebook user.
+    <li><strong>google</strong></li>This endpoint redirects to google login page,
+    then redirect back to platform authenticate endpoint after successfully
+    authenticating google user. </ul> action code : 10702'
 
 
     Properties:

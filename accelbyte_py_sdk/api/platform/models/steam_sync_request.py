@@ -1,4 +1,4 @@
-# justice-platform-service (3.40.0)
+# justice-platform-service (4.1.1)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,7 +34,13 @@ class SteamSyncRequest(Model):
 
         steam_id: (steamId) REQUIRED str
 
+        currency_code: (currencyCode) OPTIONAL str
+
         language: (language) OPTIONAL str
+
+        price: (price) OPTIONAL float
+
+        product_id: (productId) OPTIONAL str
 
         region: (region) OPTIONAL str
     """
@@ -43,7 +49,10 @@ class SteamSyncRequest(Model):
 
     app_id: str                                                                                    # REQUIRED
     steam_id: str                                                                                  # REQUIRED
+    currency_code: str                                                                             # OPTIONAL
     language: str                                                                                  # OPTIONAL
+    price: float                                                                                   # OPTIONAL
+    product_id: str                                                                                # OPTIONAL
     region: str                                                                                    # OPTIONAL
 
     # endregion fields
@@ -58,8 +67,20 @@ class SteamSyncRequest(Model):
         self.steam_id = value
         return self
 
+    def with_currency_code(self, value: str) -> SteamSyncRequest:
+        self.currency_code = value
+        return self
+
     def with_language(self, value: str) -> SteamSyncRequest:
         self.language = value
+        return self
+
+    def with_price(self, value: float) -> SteamSyncRequest:
+        self.price = value
+        return self
+
+    def with_product_id(self, value: str) -> SteamSyncRequest:
+        self.product_id = value
         return self
 
     def with_region(self, value: str) -> SteamSyncRequest:
@@ -80,10 +101,22 @@ class SteamSyncRequest(Model):
             result["steamId"] = str(self.steam_id)
         elif include_empty:
             result["steamId"] = str()
+        if hasattr(self, "currency_code"):
+            result["currencyCode"] = str(self.currency_code)
+        elif include_empty:
+            result["currencyCode"] = str()
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = str()
+        if hasattr(self, "price"):
+            result["price"] = float(self.price)
+        elif include_empty:
+            result["price"] = float()
+        if hasattr(self, "product_id"):
+            result["productId"] = str(self.product_id)
+        elif include_empty:
+            result["productId"] = str()
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
@@ -99,14 +132,23 @@ class SteamSyncRequest(Model):
         cls,
         app_id: str,
         steam_id: str,
+        currency_code: Optional[str] = None,
         language: Optional[str] = None,
+        price: Optional[float] = None,
+        product_id: Optional[str] = None,
         region: Optional[str] = None,
     ) -> SteamSyncRequest:
         instance = cls()
         instance.app_id = app_id
         instance.steam_id = steam_id
+        if currency_code is not None:
+            instance.currency_code = currency_code
         if language is not None:
             instance.language = language
+        if price is not None:
+            instance.price = price
+        if product_id is not None:
+            instance.product_id = product_id
         if region is not None:
             instance.region = region
         return instance
@@ -124,10 +166,22 @@ class SteamSyncRequest(Model):
             instance.steam_id = str(dict_["steamId"])
         elif include_empty:
             instance.steam_id = str()
+        if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
+            instance.currency_code = str(dict_["currencyCode"])
+        elif include_empty:
+            instance.currency_code = str()
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
             instance.language = str()
+        if "price" in dict_ and dict_["price"] is not None:
+            instance.price = float(dict_["price"])
+        elif include_empty:
+            instance.price = float()
+        if "productId" in dict_ and dict_["productId"] is not None:
+            instance.product_id = str(dict_["productId"])
+        elif include_empty:
+            instance.product_id = str()
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
@@ -139,7 +193,10 @@ class SteamSyncRequest(Model):
         return {
             "appId": "app_id",
             "steamId": "steam_id",
+            "currencyCode": "currency_code",
             "language": "language",
+            "price": "price",
+            "productId": "product_id",
             "region": "region",
         }
 

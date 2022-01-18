@@ -1,4 +1,4 @@
-# justice-iam-service (4.10.0)
+# justice-cloudsave-service (2.1.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -25,26 +25,24 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.model_game_user_base_info import ModelGameUserBaseInfo
 
-
-class ModelListBulkUserGameResponse(Model):
-    """Model list bulk user game response (model.ListBulkUserGameResponse)
+class ModelsBulkUserIDsRequest(Model):
+    """Models bulk user I ds request (models.BulkUserIDsRequest)
 
     Properties:
-        data: (data) REQUIRED List[ModelGameUserBaseInfo]
+        user_ids: (userIds) REQUIRED List[str]
     """
 
     # region fields
 
-    data: List[ModelGameUserBaseInfo]                                                              # REQUIRED
+    user_ids: List[str]                                                                            # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_data(self, value: List[ModelGameUserBaseInfo]) -> ModelListBulkUserGameResponse:
-        self.data = value
+    def with_user_ids(self, value: List[str]) -> ModelsBulkUserIDsRequest:
+        self.user_ids = value
         return self
 
     # endregion with_x methods
@@ -53,10 +51,10 @@ class ModelListBulkUserGameResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "data"):
-            result["data"] = [i0.to_dict(include_empty=include_empty) for i0 in self.data]
+        if hasattr(self, "user_ids"):
+            result["userIds"] = [str(i0) for i0 in self.user_ids]
         elif include_empty:
-            result["data"] = []
+            result["userIds"] = []
         return result
 
     # endregion to methods
@@ -66,27 +64,27 @@ class ModelListBulkUserGameResponse(Model):
     @classmethod
     def create(
         cls,
-        data: List[ModelGameUserBaseInfo],
-    ) -> ModelListBulkUserGameResponse:
+        user_ids: List[str],
+    ) -> ModelsBulkUserIDsRequest:
         instance = cls()
-        instance.data = data
+        instance.user_ids = user_ids
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelListBulkUserGameResponse:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsBulkUserIDsRequest:
         instance = cls()
         if not dict_:
             return instance
-        if "data" in dict_ and dict_["data"] is not None:
-            instance.data = [ModelGameUserBaseInfo.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["data"]]
+        if "userIds" in dict_ and dict_["userIds"] is not None:
+            instance.user_ids = [str(i0) for i0 in dict_["userIds"]]
         elif include_empty:
-            instance.data = []
+            instance.user_ids = []
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "data": "data",
+            "userIds": "user_ids",
         }
 
     # endregion static methods

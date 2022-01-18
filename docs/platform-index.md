@@ -1,6 +1,6 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-platform-service Index (3.40.0)
+# justice-platform-service Index (4.1.1)
 
 
 ## Operations
@@ -64,6 +64,19 @@
 | /platform/public/namespaces/{namespace}/currencies | GET | publicListCurrencies | [PublicListCurrencies](../accelbyte_py_sdk/api/platform/operations/currency/public_list_currencies.py) | [public_list_currencies](../accelbyte_py_sdk/api/platform/wrappers/_currency.py) |
 | /platform/admin/namespaces/{namespace}/currencies/{currencyCode} | PUT | updateCurrency | [UpdateCurrency](../accelbyte_py_sdk/api/platform/operations/currency/update_currency.py) | [update_currency](../accelbyte_py_sdk/api/platform/wrappers/_currency.py) |
 
+### DLC
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
+| /platform/admin/namespaces/{namespace}/dlc/config/item | DELETE | deleteDLCItemConfig | [DeleteDLCItemConfig](../accelbyte_py_sdk/api/platform/operations/dlc/delete_dlc_item_config.py) | [delete_dlc_item_config](../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) |
+| /platform/admin/namespaces/{namespace}/dlc/config/platformMap | DELETE | deletePlatformDLCConfig | [DeletePlatformDLCConfig](../accelbyte_py_sdk/api/platform/operations/dlc/delete_platform_dlc_config.py) | [delete_platform_dlc_config](../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) |
+| /platform/admin/namespaces/{namespace}/dlc/config/item | GET | getDLCItemConfig | [GetDLCItemConfig](../accelbyte_py_sdk/api/platform/operations/dlc/get_dlc_item_config.py) | [get_dlc_item_config](../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) |
+| /platform/admin/namespaces/{namespace}/dlc/config/platformMap | GET | getPlatformDLCConfig | [GetPlatformDLCConfig](../accelbyte_py_sdk/api/platform/operations/dlc/get_platform_dlc_config.py) | [get_platform_dlc_config](../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) |
+| /platform/public/namespaces/{namespace}/users/{userId}/dlc/psn/sync | PUT | publicSyncPsnDlcInventory | [PublicSyncPsnDlcInventory](../accelbyte_py_sdk/api/platform/operations/dlc/public_sync_psn_dlc_inventory.py) | [public_sync_psn_dlc_inventory](../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) |
+| /platform/public/namespaces/{namespace}/users/{userId}/dlc/steam/sync | PUT | syncSteamDLC | [SyncSteamDLC](../accelbyte_py_sdk/api/platform/operations/dlc/sync_steam_dlc.py) | [sync_steam_dlc](../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) |
+| /platform/public/namespaces/{namespace}/users/{userId}/dlc/xbl/sync | PUT | syncXboxDLC | [SyncXboxDLC](../accelbyte_py_sdk/api/platform/operations/dlc/sync_xbox_dlc.py) | [sync_xbox_dlc](../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) |
+| /platform/admin/namespaces/{namespace}/dlc/config/item | PUT | updateDLCItemConfig | [UpdateDLCItemConfig](../accelbyte_py_sdk/api/platform/operations/dlc/update_dlc_item_config.py) | [update_dlc_item_config](../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) |
+| /platform/admin/namespaces/{namespace}/dlc/config/platformMap | PUT | updatePlatformDLCConfig | [UpdatePlatformDLCConfig](../accelbyte_py_sdk/api/platform/operations/dlc/update_platform_dlc_config.py) | [update_platform_dlc_config](../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) |
+
 ### Entitlement
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
@@ -109,6 +122,7 @@
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /platform/admin/namespaces/{namespace}/users/{userId}/fulfillment | POST | fulfillItem | [FulfillItem](../accelbyte_py_sdk/api/platform/operations/fulfillment/fulfill_item.py) | [fulfill_item](../accelbyte_py_sdk/api/platform/wrappers/_fulfillment.py) |
+| /platform/admin/namespaces/{namespace}/users/{userId}/fulfillment/rewards | POST | fulfillRewards | [FulfillRewards](../accelbyte_py_sdk/api/platform/operations/fulfillment/fulfill_rewards.py) | [fulfill_rewards](../accelbyte_py_sdk/api/platform/wrappers/_fulfillment.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/fulfillment/code | POST | publicRedeemCode | [PublicRedeemCode](../accelbyte_py_sdk/api/platform/operations/fulfillment/public_redeem_code.py) | [public_redeem_code](../accelbyte_py_sdk/api/platform/wrappers/_fulfillment.py) |
 | /platform/admin/namespaces/{namespace}/fulfillment/history | GET | queryFulfillmentHistories | [QueryFulfillmentHistories](../accelbyte_py_sdk/api/platform/operations/fulfillment/query_fulfillment_histories.py) | [query_fulfillment_histories](../accelbyte_py_sdk/api/platform/wrappers/_fulfillment.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/fulfillment/code | POST | redeemCode | [RedeemCode](../accelbyte_py_sdk/api/platform/operations/fulfillment/redeem_code.py) | [redeem_code](../accelbyte_py_sdk/api/platform/wrappers/_fulfillment.py) |
@@ -129,6 +143,7 @@
 | /platform/admin/namespaces/{namespace}/iap/config/apple | DELETE | deleteAppleIAPConfig | [DeleteAppleIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/delete_apple_iap_config.py) | [delete_apple_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/epicgames | DELETE | deleteEpicGamesIAPConfig | [DeleteEpicGamesIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/delete_epic_games_iap_config.py) | [delete_epic_games_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/google | DELETE | deleteGoogleIAPConfig | [DeleteGoogleIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/delete_google_iap_config.py) | [delete_google_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
+| /platform/admin/namespaces/{namespace}/iap/config/item | DELETE | deleteIAPItemConfig | [DeleteIAPItemConfig](../accelbyte_py_sdk/api/platform/operations/iap/delete_iap_item_config.py) | [delete_iap_item_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/playstation | DELETE | deletePlaystationIAPConfig | [DeletePlaystationIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/delete_playstation_iap_config.py) | [delete_playstation_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/stadia | DELETE | deleteStadiaIAPConfig | [DeleteStadiaIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/delete_stadia_iap_config.py) | [delete_stadia_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/steam | DELETE | deleteSteamIAPConfig | [DeleteSteamIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/delete_steam_iap_config.py) | [delete_steam_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
@@ -136,6 +151,7 @@
 | /platform/admin/namespaces/{namespace}/iap/config/apple | GET | getAppleIAPConfig | [GetAppleIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/get_apple_iap_config.py) | [get_apple_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/epicgames | GET | getEpicGamesIAPConfig | [GetEpicGamesIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/get_epic_games_iap_config.py) | [get_epic_games_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/google | GET | getGoogleIAPConfig | [GetGoogleIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/get_google_iap_config.py) | [get_google_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
+| /platform/admin/namespaces/{namespace}/iap/config/item | GET | getIAPItemConfig | [GetIAPItemConfig](../accelbyte_py_sdk/api/platform/operations/iap/get_iap_item_config.py) | [get_iap_item_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/playstation | GET | getPlayStationIAPConfig | [GetPlayStationIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/get_play_station_iap_config.py) | [get_play_station_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/stadia | GET | getStadiaIAPConfig | [GetStadiaIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/get_stadia_iap_config.py) | [get_stadia_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/steam | GET | getSteamIAPConfig | [GetSteamIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/get_steam_iap_config.py) | [get_steam_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
@@ -144,6 +160,7 @@
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/apple/receipt | PUT | publicFulfillAppleIAPItem | [PublicFulfillAppleIAPItem](../accelbyte_py_sdk/api/platform/operations/iap/public_fulfill_apple_iap_item.py) | [public_fulfill_apple_iap_item](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/google/receipt | PUT | publicFulfillGoogleIAPItem | [PublicFulfillGoogleIAPItem](../accelbyte_py_sdk/api/platform/operations/iap/public_fulfill_google_iap_item.py) | [public_fulfill_google_iap_item](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/psn/sync | PUT | publicReconcilePlayStationStore | [PublicReconcilePlayStationStore](../accelbyte_py_sdk/api/platform/operations/iap/public_reconcile_play_station_store.py) | [public_reconcile_play_station_store](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
+| /platform/admin/namespaces/{namespace}/users/{userId}/iap/all | GET | queryAllUserIAPOrders | [QueryAllUserIAPOrders](../accelbyte_py_sdk/api/platform/operations/iap/query_all_user_iap_orders.py) | [query_all_user_iap_orders](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/iap | GET | queryUserIAPOrders | [QueryUserIAPOrders](../accelbyte_py_sdk/api/platform/operations/iap/query_user_iap_orders.py) | [query_user_iap_orders](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/epicgames/sync | PUT | syncEpicGamesInventory | [SyncEpicGamesInventory](../accelbyte_py_sdk/api/platform/operations/iap/sync_epic_games_inventory.py) | [sync_epic_games_inventory](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/stadia/sync | PUT | syncStadiaEntitlement | [SyncStadiaEntitlement](../accelbyte_py_sdk/api/platform/operations/iap/sync_stadia_entitlement.py) | [sync_stadia_entitlement](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
@@ -153,6 +170,7 @@
 | /platform/admin/namespaces/{namespace}/iap/config/epicgames | PUT | updateEpicGamesIAPConfig | [UpdateEpicGamesIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/update_epic_games_iap_config.py) | [update_epic_games_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/google | PUT | updateGoogleIAPConfig | [UpdateGoogleIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/update_google_iap_config.py) | [update_google_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/google/cert | PUT | updateGoogleP12File | [UpdateGoogleP12File](../accelbyte_py_sdk/api/platform/operations/iap/update_google_p12_file.py) | [update_google_p12_file](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
+| /platform/admin/namespaces/{namespace}/iap/config/item | PUT | updateIAPItemConfig | [UpdateIAPItemConfig](../accelbyte_py_sdk/api/platform/operations/iap/update_iap_item_config.py) | [update_iap_item_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/playstation | PUT | updatePlaystationIAPConfig | [UpdatePlaystationIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/update_playstation_iap_config.py) | [update_playstation_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/stadia/cert | PUT | updateStadiaJsonConfigFile | [UpdateStadiaJsonConfigFile](../accelbyte_py_sdk/api/platform/operations/iap/update_stadia_json_config_file.py) | [update_stadia_json_config_file](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/steam | PUT | updateSteamIAPConfig | [UpdateSteamIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/update_steam_iap_config.py) | [update_steam_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
@@ -420,6 +438,7 @@
 | BillingHistoryInfo | [BillingHistoryInfo](../accelbyte_py_sdk/api/platform/models/billing_history_info.py) |
 | BillingHistoryPagingSlicedResult | [BillingHistoryPagingSlicedResult](../accelbyte_py_sdk/api/platform/models/billing_history_paging_sliced_result.py) |
 | BulkOperationResult | [BulkOperationResult](../accelbyte_py_sdk/api/platform/models/bulk_operation_result.py) |
+| BundledItemInfo | [BundledItemInfo](../accelbyte_py_sdk/api/platform/models/bundled_item_info.py) |
 | CampaignCreate | [CampaignCreate](../accelbyte_py_sdk/api/platform/models/campaign_create.py) |
 | CampaignDynamicInfo | [CampaignDynamicInfo](../accelbyte_py_sdk/api/platform/models/campaign_dynamic_info.py) |
 | CampaignInfo | [CampaignInfo](../accelbyte_py_sdk/api/platform/models/campaign_info.py) |
@@ -444,6 +463,9 @@
 | CurrencyUpdate | [CurrencyUpdate](../accelbyte_py_sdk/api/platform/models/currency_update.py) |
 | Customization | [Customization](../accelbyte_py_sdk/api/platform/models/customization.py) |
 | DebitRequest | [DebitRequest](../accelbyte_py_sdk/api/platform/models/debit_request.py) |
+| DLCItem | [DLCItem](../accelbyte_py_sdk/api/platform/models/dlc_item.py) |
+| DLCItemConfigInfo | [DLCItemConfigInfo](../accelbyte_py_sdk/api/platform/models/dlc_item_config_info.py) |
+| DLCItemConfigUpdate | [DLCItemConfigUpdate](../accelbyte_py_sdk/api/platform/models/dlc_item_config_update.py) |
 | EntitlementDecrement | [EntitlementDecrement](../accelbyte_py_sdk/api/platform/models/entitlement_decrement.py) |
 | EntitlementGrant | [EntitlementGrant](../accelbyte_py_sdk/api/platform/models/entitlement_grant.py) |
 | EntitlementHistoryInfo | [EntitlementHistoryInfo](../accelbyte_py_sdk/api/platform/models/entitlement_history_info.py) |
@@ -481,6 +503,9 @@
 | GoogleIAPReceipt | [GoogleIAPReceipt](../accelbyte_py_sdk/api/platform/models/google_iap_receipt.py) |
 | GrantSubscriptionDaysRequest | [GrantSubscriptionDaysRequest](../accelbyte_py_sdk/api/platform/models/grant_subscription_days_request.py) |
 | HierarchicalCategoryInfo | [HierarchicalCategoryInfo](../accelbyte_py_sdk/api/platform/models/hierarchical_category_info.py) |
+| IAPItemConfigInfo | [IAPItemConfigInfo](../accelbyte_py_sdk/api/platform/models/iap_item_config_info.py) |
+| IAPItemConfigUpdate | [IAPItemConfigUpdate](../accelbyte_py_sdk/api/platform/models/iap_item_config_update.py) |
+| IAPItemEntry | [IAPItemEntry](../accelbyte_py_sdk/api/platform/models/iap_item_entry.py) |
 | IAPOrderInfo | [IAPOrderInfo](../accelbyte_py_sdk/api/platform/models/iap_order_info.py) |
 | IAPOrderPagingSlicedResult | [IAPOrderPagingSlicedResult](../accelbyte_py_sdk/api/platform/models/iap_order_paging_sliced_result.py) |
 | Image | [Image](../accelbyte_py_sdk/api/platform/models/image.py) |
@@ -551,7 +576,14 @@
 | PaymentToken | [PaymentToken](../accelbyte_py_sdk/api/platform/models/payment_token.py) |
 | PaymentUrl | [PaymentUrl](../accelbyte_py_sdk/api/platform/models/payment_url.py) |
 | PaymentUrlCreate | [PaymentUrlCreate](../accelbyte_py_sdk/api/platform/models/payment_url_create.py) |
+| PlatformDLCConfigInfo | [PlatformDLCConfigInfo](../accelbyte_py_sdk/api/platform/models/platform_dlc_config_info.py) |
+| PlatformDLCConfigUpdate | [PlatformDLCConfigUpdate](../accelbyte_py_sdk/api/platform/models/platform_dlc_config_update.py) |
+| PlatformDlcEntry | [PlatformDlcEntry](../accelbyte_py_sdk/api/platform/models/platform_dlc_entry.py) |
+| PlatformReward | [PlatformReward](../accelbyte_py_sdk/api/platform/models/platform_reward.py) |
+| PlatformRewardCurrency | [PlatformRewardCurrency](../accelbyte_py_sdk/api/platform/models/platform_reward_currency.py) |
+| PlatformRewardItem | [PlatformRewardItem](../accelbyte_py_sdk/api/platform/models/platform_reward_item.py) |
 | PlatformSubscribeRequest | [PlatformSubscribeRequest](../accelbyte_py_sdk/api/platform/models/platform_subscribe_request.py) |
+| PlayStationDLCSyncRequest | [PlayStationDLCSyncRequest](../accelbyte_py_sdk/api/platform/models/play_station_dlc_sync_request.py) |
 | PlayStationIAPConfigInfo | [PlayStationIAPConfigInfo](../accelbyte_py_sdk/api/platform/models/play_station_iap_config_info.py) |
 | PlayStationReconcileRequest | [PlayStationReconcileRequest](../accelbyte_py_sdk/api/platform/models/play_station_reconcile_request.py) |
 | PlayStationReconcileResult | [PlayStationReconcileResult](../accelbyte_py_sdk/api/platform/models/play_station_reconcile_result.py) |
@@ -573,10 +605,12 @@
 | RewardItem | [RewardItem](../accelbyte_py_sdk/api/platform/models/reward_item.py) |
 | RewardPagingSlicedResult | [RewardPagingSlicedResult](../accelbyte_py_sdk/api/platform/models/reward_paging_sliced_result.py) |
 | RewardUpdate | [RewardUpdate](../accelbyte_py_sdk/api/platform/models/reward_update.py) |
+| RewardsRequest | [RewardsRequest](../accelbyte_py_sdk/api/platform/models/rewards_request.py) |
 | Slide | [Slide](../accelbyte_py_sdk/api/platform/models/slide.py) |
 | StackableEntitlementInfo | [StackableEntitlementInfo](../accelbyte_py_sdk/api/platform/models/stackable_entitlement_info.py) |
 | StadiaIAPConfigInfo | [StadiaIAPConfigInfo](../accelbyte_py_sdk/api/platform/models/stadia_iap_config_info.py) |
 | StadiaSyncRequest | [StadiaSyncRequest](../accelbyte_py_sdk/api/platform/models/stadia_sync_request.py) |
+| SteamDLCSyncRequest | [SteamDLCSyncRequest](../accelbyte_py_sdk/api/platform/models/steam_dlc_sync_request.py) |
 | SteamIAPConfig | [SteamIAPConfig](../accelbyte_py_sdk/api/platform/models/steam_iap_config.py) |
 | SteamIAPConfigInfo | [SteamIAPConfigInfo](../accelbyte_py_sdk/api/platform/models/steam_iap_config_info.py) |
 | SteamIAPConfigRequest | [SteamIAPConfigRequest](../accelbyte_py_sdk/api/platform/models/steam_iap_config_request.py) |
@@ -612,6 +646,7 @@
 | WalletTransactionPagingSlicedResult | [WalletTransactionPagingSlicedResult](../accelbyte_py_sdk/api/platform/models/wallet_transaction_paging_sliced_result.py) |
 | WxPayConfigInfo | [WxPayConfigInfo](../accelbyte_py_sdk/api/platform/models/wx_pay_config_info.py) |
 | WxPayConfigRequest | [WxPayConfigRequest](../accelbyte_py_sdk/api/platform/models/wx_pay_config_request.py) |
+| XblDLCSyncRequest | [XblDLCSyncRequest](../accelbyte_py_sdk/api/platform/models/xbl_dlc_sync_request.py) |
 | XblIAPConfigInfo | [XblIAPConfigInfo](../accelbyte_py_sdk/api/platform/models/xbl_iap_config_info.py) |
 | XblIAPConfigRequest | [XblIAPConfigRequest](../accelbyte_py_sdk/api/platform/models/xbl_iap_config_request.py) |
 | XblReconcileRequest | [XblReconcileRequest](../accelbyte_py_sdk/api/platform/models/xbl_reconcile_request.py) |

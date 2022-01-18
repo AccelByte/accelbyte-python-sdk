@@ -1,4 +1,4 @@
-# justice-iam-service (4.10.0)
+# justice-iam-service (5.0.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -46,6 +46,7 @@ from ..api.iam.models import AccountcommonClientPermissionsV3
 from ..api.iam.models import AccountcommonConflictedUserPlatformAccounts
 from ..api.iam.models import AccountcommonCountryAgeRestriction
 from ..api.iam.models import AccountcommonDescription
+from ..api.iam.models import AccountcommonInputValidationDescription
 from ..api.iam.models import AccountcommonJWTBanV3
 from ..api.iam.models import AccountcommonListUsersWithPlatformAccountsResponse
 from ..api.iam.models import AccountcommonNamespaceRole
@@ -100,23 +101,27 @@ from ..api.iam.models import ModelCreateJusticeUserResponse
 from ..api.iam.models import ModelDisableUserRequest
 from ..api.iam.models import ModelEmailUpdateRequestV4
 from ..api.iam.models import ModelForgotPasswordRequestV3
-from ..api.iam.models import ModelGameUserBaseInfo
-from ..api.iam.models import ModelGameUserIDsRequest
 from ..api.iam.models import ModelGetAdminUsersResponse
 from ..api.iam.models import ModelGetPublisherUserResponse
 from ..api.iam.models import ModelGetUserBanV3Response
 from ..api.iam.models import ModelGetUserJusticePlatformAccountResponse
 from ..api.iam.models import ModelGetUserMapping
 from ..api.iam.models import ModelGetUsersResponseWithPaginationV3
+from ..api.iam.models import ModelInputValidationData
+from ..api.iam.models import ModelInputValidationDataPublic
+from ..api.iam.models import ModelInputValidationUpdatePayload
+from ..api.iam.models import ModelInputValidationsPublicResponse
+from ..api.iam.models import ModelInputValidationsResponse
 from ..api.iam.models import ModelInviteUserRequestV3
 from ..api.iam.models import ModelInviteUserRequestV4
 from ..api.iam.models import ModelInviteUserResponseV3
 from ..api.iam.models import ModelLinkPlatformAccountRequest
 from ..api.iam.models import ModelLinkRequest
 from ..api.iam.models import ModelListAssignedUsersV4Response
-from ..api.iam.models import ModelListBulkUserGameResponse
+from ..api.iam.models import ModelListBulkUserResponse
 from ..api.iam.models import ModelListEmailAddressRequest
 from ..api.iam.models import ModelListRoleV4Response
+from ..api.iam.models import ModelListUserInformationResult
 from ..api.iam.models import ModelListUserResponseV3
 from ..api.iam.models import ModelListUserRolesV4Response
 from ..api.iam.models import ModelLoginHistoriesResponse
@@ -177,6 +182,7 @@ from ..api.iam.models import ModelUserActiveBanResponse
 from ..api.iam.models import ModelUserActiveBanResponseV3
 from ..api.iam.models import ModelUserBanResponse
 from ..api.iam.models import ModelUserBanResponseV3
+from ..api.iam.models import ModelUserBaseInfo
 from ..api.iam.models import ModelUserCreateFromInvitationRequestV3
 from ..api.iam.models import ModelUserCreateFromInvitationRequestV4
 from ..api.iam.models import ModelUserCreateRequest
@@ -184,6 +190,8 @@ from ..api.iam.models import ModelUserCreateRequestV3
 from ..api.iam.models import ModelUserCreateResponse
 from ..api.iam.models import ModelUserCreateResponseV3
 from ..api.iam.models import ModelUserDeletionStatusResponse
+from ..api.iam.models import ModelUserIDsRequest
+from ..api.iam.models import ModelUserInfoResponse
 from ..api.iam.models import ModelUserInformation
 from ..api.iam.models import ModelUserInvitationV3
 from ..api.iam.models import ModelUserLoginHistoryResponse
@@ -197,6 +205,8 @@ from ..api.iam.models import ModelUserUpdateRequest
 from ..api.iam.models import ModelUserUpdateRequestV3
 from ..api.iam.models import ModelUserVerificationRequest
 from ..api.iam.models import ModelUserVerificationRequestV3
+from ..api.iam.models import ModelValidationDetail
+from ..api.iam.models import ModelValidationDetailPublic
 from ..api.iam.models import ModelVerificationCodeResponse
 from ..api.iam.models import ModelWebLinkingResponse
 from ..api.iam.models import OauthapiRevocationList
@@ -211,6 +221,8 @@ from ..api.iam.models import OauthmodelTokenResponseV3
 from ..api.iam.models import OauthmodelTokenThirdPartyResponse
 from ..api.iam.models import RestErrorResponse
 from ..api.iam.models import RestapiErrorResponse
+from ..api.iam.models import Validation
+from ..api.iam.models import ValidationDescription
 
 
 def create_account_create_test_user_request_v4_example() -> AccountCreateTestUserRequestV4:
@@ -428,6 +440,13 @@ def create_accountcommon_description_example() -> AccountcommonDescription:
     instance = AccountcommonDescription()
     instance.en_us = randomize()
     instance.zh_cn = randomize()
+    return instance
+
+
+def create_accountcommon_input_validation_description_example() -> AccountcommonInputValidationDescription:
+    instance = AccountcommonInputValidationDescription()
+    instance.language = randomize()
+    instance.message = [randomize()]
     return instance
 
 
@@ -900,20 +919,6 @@ def create_model_forgot_password_request_v3_example() -> ModelForgotPasswordRequ
     return instance
 
 
-def create_model_game_user_base_info_example() -> ModelGameUserBaseInfo:
-    instance = ModelGameUserBaseInfo()
-    instance.avatar_url = randomize("url")
-    instance.display_name = randomize("slug")
-    instance.user_id = randomize("uid")
-    return instance
-
-
-def create_model_game_user_i_ds_request_example() -> ModelGameUserIDsRequest:
-    instance = ModelGameUserIDsRequest()
-    instance.user_ids = [randomize()]
-    return instance
-
-
 def create_model_get_admin_users_response_example() -> ModelGetAdminUsersResponse:
     instance = ModelGetAdminUsersResponse()
     instance.data = [create_model_user_response_example()]
@@ -953,6 +958,41 @@ def create_model_get_users_response_with_pagination_v3_example() -> ModelGetUser
     instance = ModelGetUsersResponseWithPaginationV3()
     instance.data = [create_model_user_response_v3_example()]
     instance.paging = create_accountcommon_pagination_v3_example()
+    return instance
+
+
+def create_model_input_validation_data_example() -> ModelInputValidationData:
+    instance = ModelInputValidationData()
+    instance.field = randomize()
+    instance.validation = create_model_validation_detail_example()
+    return instance
+
+
+def create_model_input_validation_data_public_example() -> ModelInputValidationDataPublic:
+    instance = ModelInputValidationDataPublic()
+    instance.field = randomize()
+    instance.validation = create_model_validation_detail_public_example()
+    return instance
+
+
+def create_model_input_validation_update_payload_example() -> ModelInputValidationUpdatePayload:
+    instance = ModelInputValidationUpdatePayload()
+    instance.field = randomize()
+    instance.validation = create_validation_example()
+    return instance
+
+
+def create_model_input_validations_public_response_example() -> ModelInputValidationsPublicResponse:
+    instance = ModelInputValidationsPublicResponse()
+    instance.data = [create_model_input_validation_data_public_example()]
+    instance.version = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_model_input_validations_response_example() -> ModelInputValidationsResponse:
+    instance = ModelInputValidationsResponse()
+    instance.data = [create_model_input_validation_data_example()]
+    instance.version = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -1007,9 +1047,9 @@ def create_model_list_assigned_users_v4_response_example() -> ModelListAssignedU
     return instance
 
 
-def create_model_list_bulk_user_game_response_example() -> ModelListBulkUserGameResponse:
-    instance = ModelListBulkUserGameResponse()
-    instance.data = [create_model_game_user_base_info_example()]
+def create_model_list_bulk_user_response_example() -> ModelListBulkUserResponse:
+    instance = ModelListBulkUserResponse()
+    instance.data = [create_model_user_base_info_example()]
     return instance
 
 
@@ -1023,6 +1063,12 @@ def create_model_list_role_v4_response_example() -> ModelListRoleV4Response:
     instance = ModelListRoleV4Response()
     instance.data = [create_model_role_v4_response_example()]
     instance.paging = create_accountcommon_pagination_v3_example()
+    return instance
+
+
+def create_model_list_user_information_result_example() -> ModelListUserInformationResult:
+    instance = ModelListUserInformationResult()
+    instance.data = [create_model_user_info_response_example()]
     return instance
 
 
@@ -1567,6 +1613,14 @@ def create_model_user_ban_response_v3_example() -> ModelUserBanResponseV3:
     return instance
 
 
+def create_model_user_base_info_example() -> ModelUserBaseInfo:
+    instance = ModelUserBaseInfo()
+    instance.avatar_url = randomize("url")
+    instance.display_name = randomize("slug")
+    instance.user_id = randomize("uid")
+    return instance
+
+
 def create_model_user_create_from_invitation_request_v3_example() -> ModelUserCreateFromInvitationRequestV3:
     instance = ModelUserCreateFromInvitationRequestV3()
     instance.auth_type = randomize()
@@ -1641,6 +1695,21 @@ def create_model_user_create_response_v3_example() -> ModelUserCreateResponseV3:
 def create_model_user_deletion_status_response_example() -> ModelUserDeletionStatusResponse:
     instance = ModelUserDeletionStatusResponse()
     instance.deletion_status = randomize("bool")
+    return instance
+
+
+def create_model_user_i_ds_request_example() -> ModelUserIDsRequest:
+    instance = ModelUserIDsRequest()
+    instance.user_ids = [randomize()]
+    return instance
+
+
+def create_model_user_info_response_example() -> ModelUserInfoResponse:
+    instance = ModelUserInfoResponse()
+    instance.display_name = randomize("slug")
+    instance.email_address = randomize("email")
+    instance.namespace = randomize("slug")
+    instance.user_id = randomize("uid")
     return instance
 
 
@@ -1808,6 +1877,46 @@ def create_model_user_verification_request_v3_example() -> ModelUserVerification
     return instance
 
 
+def create_model_validation_detail_example() -> ModelValidationDetail:
+    instance = ModelValidationDetail()
+    instance.allow_digit = randomize("bool")
+    instance.allow_letter = randomize("bool")
+    instance.allow_space = randomize("bool")
+    instance.allow_unicode = randomize("bool")
+    instance.description = [create_accountcommon_input_validation_description_example()]
+    instance.is_custom_regex = randomize("bool")
+    instance.letter_case = randomize()
+    instance.max_length = randomize("int", min_val=1, max_val=1000)
+    instance.max_repeating_alpha_num = randomize("int", min_val=1, max_val=1000)
+    instance.max_repeating_special_character = randomize("int", min_val=1, max_val=1000)
+    instance.min_char_type = randomize("int", min_val=1, max_val=1000)
+    instance.min_length = randomize("int", min_val=1, max_val=1000)
+    instance.regex = randomize()
+    instance.special_character_location = randomize()
+    instance.special_characters = [randomize()]
+    return instance
+
+
+def create_model_validation_detail_public_example() -> ModelValidationDetailPublic:
+    instance = ModelValidationDetailPublic()
+    instance.allow_digit = randomize("bool")
+    instance.allow_letter = randomize("bool")
+    instance.allow_space = randomize("bool")
+    instance.allow_unicode = randomize("bool")
+    instance.description = create_accountcommon_input_validation_description_example()
+    instance.is_custom_regex = randomize("bool")
+    instance.letter_case = randomize()
+    instance.max_length = randomize("int", min_val=1, max_val=1000)
+    instance.max_repeating_alpha_num = randomize("int", min_val=1, max_val=1000)
+    instance.max_repeating_special_character = randomize("int", min_val=1, max_val=1000)
+    instance.min_char_type = randomize("int", min_val=1, max_val=1000)
+    instance.min_length = randomize("int", min_val=1, max_val=1000)
+    instance.regex = randomize()
+    instance.special_character_location = randomize()
+    instance.special_characters = [randomize()]
+    return instance
+
+
 def create_model_verification_code_response_example() -> ModelVerificationCodeResponse:
     instance = ModelVerificationCodeResponse()
     instance.account_registration = randomize()
@@ -1942,4 +2051,31 @@ def create_restapi_error_response_example() -> RestapiErrorResponse:
     instance = RestapiErrorResponse()
     instance.message = randomize()
     instance.code = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_validation_example() -> Validation:
+    instance = Validation()
+    instance.allow_digit = randomize("bool")
+    instance.allow_letter = randomize("bool")
+    instance.allow_space = randomize("bool")
+    instance.allow_unicode = randomize("bool")
+    instance.description = [create_validation_description_example()]
+    instance.is_custom_regex = randomize("bool")
+    instance.letter_case = randomize()
+    instance.max_length = randomize("int", min_val=1, max_val=1000)
+    instance.max_repeating_alpha_num = randomize("int", min_val=1, max_val=1000)
+    instance.max_repeating_special_character = randomize("int", min_val=1, max_val=1000)
+    instance.min_char_type = randomize("int", min_val=1, max_val=1000)
+    instance.min_length = randomize("int", min_val=1, max_val=1000)
+    instance.regex = randomize()
+    instance.special_character_location = randomize()
+    instance.special_characters = [randomize()]
+    return instance
+
+
+def create_validation_description_example() -> ValidationDescription:
+    instance = ValidationDescription()
+    instance.language = randomize()
+    instance.message = [randomize()]
     return instance

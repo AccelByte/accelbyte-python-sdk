@@ -1,6 +1,6 @@
 """Auto-generated package that contains utility functions for the justice-legal-service."""
 
-__version__ = "1.15.1"
+__version__ = "1.16.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -8,14 +8,20 @@ __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from ._admin_user_agreement import indirect_bulk_accept_versioned_policy
+from ._admin_user_agreement import indirect_bulk_accept_versioned_policy_async
+
+from ._admin_user_eligibilities import admin_retrieve_eligibilities
+from ._admin_user_eligibilities import admin_retrieve_eligibilities_async
+
 from ._agreement import accept_versioned_policy
 from ._agreement import accept_versioned_policy_async
 from ._agreement import bulk_accept_versioned_policy
 from ._agreement import bulk_accept_versioned_policy_async
 from ._agreement import change_preference_consent
 from ._agreement import change_preference_consent_async
-from ._agreement import indirect_bulk_accept_versioned_policy
-from ._agreement import indirect_bulk_accept_versioned_policy_async
+from ._agreement import indirect_bulk_accept_versioned_policy_1
+from ._agreement import indirect_bulk_accept_versioned_policy_1_async
 from ._agreement import indirect_bulk_accept_versioned_policy_v2
 from ._agreement import indirect_bulk_accept_versioned_policy_v2_async
 from ._agreement import retrieve_accepted_agreements

@@ -1,6 +1,6 @@
 """Auto-generated top-level package for the justice-ds-log-manager-service."""
 
-__version__ = "1.4.1"
+__version__ = "2.0.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

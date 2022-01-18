@@ -1,4 +1,4 @@
-# justice-platform-service (3.40.0)
+# justice-platform-service (4.1.1)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -62,13 +62,15 @@ class CreateItem(Operation):
     to calculate discounted price if it is not 0), "discountAmount":0(integer,
     optional, range[0,itemPrice], will use it to calculate discounted price if
     discountPercentage is 0), "currencyCode":"code(required, example: USD)",
-    "currencyNamespace":"test-ns-required", "trialPrice":5(required while
-    fixedTrialCycles set, should >=0 and <= price, will same as price if not
-    present), "purchaseAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
-    "expireAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
-    "discountPurchaseAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
-    "discountExpireAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" } ] },
-    "itemIds": [ "itemId" ], "recurring": { "cycle":"MONTHLY(allowed:
+    "currencyNamespace":"test-ns-required(allow publisher namespace if namespace
+    is publisher namespace, allow publisher and game namespace if namespace is not
+    publisher namespace)", "trialPrice":5(required while fixedTrialCycles set,
+    should >=0 and <= price, will same as price if not present),
+    "purchaseAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", "expireAt":"optional
+    yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", "discountPurchaseAt":"optional yyyy-MM-
+    dd'T'HH:mm:ss.SSS'Z'", "discountExpireAt":"optional yyyy-MM-
+    dd'T'HH:mm:ss.SSS'Z'" } ] }, "itemIds": [ "itemId" ], "itemQty": {
+    "itemId":1 }, "recurring": { "cycle":"MONTHLY(allowed:
     [WEEKLY,MONTHLY,QUARTERLY,YEARLY])", "fixedFreeDays":0(integer, fixed free
     days, 0 means not set), "fixedTrialCycles":0(integer, fixed trial cycles, 0
     means not set, will not take effect if fixedFreeDays set),
@@ -106,7 +108,7 @@ class CreateItem(Operation):
     Responses:
         201: Created - FullItemInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (30322: Bundle item [{itemId}] can't be bundled | 30325: Code item [{itemId}] can't be bundled | 30326: Subscription item [{itemId}] can't be bundled | 30328: Season item [{itemId}] can't be bundled | 30021: Default language [{language}] required | 30321: Invalid item discount amount | 30022: Default region [{region}] is required | 30323: Target namespace is required | 30327: Invalid item trial price)
+        400: Bad Request - ErrorEntity (30322: Bundle item [{itemId}] can't be bundled | 30325: Code item [{itemId}] can't be bundled | 30326: Subscription item [{itemId}] can't be bundled | 30329: Invalid bundled item [{itemId}] quantity | 30021: Default language [{language}] required | 30321: Invalid item discount amount | 30022: Default region [{region}] is required | 30323: Target namespace is required | 30327: Invalid item trial price | 30330: Invalid item region price currency namespace [{namespace}])
 
         404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
 
@@ -260,7 +262,7 @@ class CreateItem(Operation):
 
         201: Created - FullItemInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (30322: Bundle item [{itemId}] can't be bundled | 30325: Code item [{itemId}] can't be bundled | 30326: Subscription item [{itemId}] can't be bundled | 30328: Season item [{itemId}] can't be bundled | 30021: Default language [{language}] required | 30321: Invalid item discount amount | 30022: Default region [{region}] is required | 30323: Target namespace is required | 30327: Invalid item trial price)
+        400: Bad Request - ErrorEntity (30322: Bundle item [{itemId}] can't be bundled | 30325: Code item [{itemId}] can't be bundled | 30326: Subscription item [{itemId}] can't be bundled | 30329: Invalid bundled item [{itemId}] quantity | 30021: Default language [{language}] required | 30321: Invalid item discount amount | 30022: Default region [{region}] is required | 30323: Target namespace is required | 30327: Invalid item trial price | 30330: Invalid item region price currency namespace [{namespace}])
 
         404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
 

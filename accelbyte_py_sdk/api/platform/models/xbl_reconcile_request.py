@@ -1,4 +1,4 @@
-# justice-platform-service (3.40.0)
+# justice-platform-service (4.1.1)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -30,16 +30,37 @@ class XblReconcileRequest(Model):
     """Xbl reconcile request (XblReconcileRequest)
 
     Properties:
+        currency_code: (currencyCode) OPTIONAL str
+
+        price: (price) OPTIONAL float
+
+        product_id: (productId) OPTIONAL str
+
         xsts_token: (xstsToken) OPTIONAL str
     """
 
     # region fields
 
+    currency_code: str                                                                             # OPTIONAL
+    price: float                                                                                   # OPTIONAL
+    product_id: str                                                                                # OPTIONAL
     xsts_token: str                                                                                # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
+
+    def with_currency_code(self, value: str) -> XblReconcileRequest:
+        self.currency_code = value
+        return self
+
+    def with_price(self, value: float) -> XblReconcileRequest:
+        self.price = value
+        return self
+
+    def with_product_id(self, value: str) -> XblReconcileRequest:
+        self.product_id = value
+        return self
 
     def with_xsts_token(self, value: str) -> XblReconcileRequest:
         self.xsts_token = value
@@ -51,6 +72,18 @@ class XblReconcileRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "currency_code"):
+            result["currencyCode"] = str(self.currency_code)
+        elif include_empty:
+            result["currencyCode"] = str()
+        if hasattr(self, "price"):
+            result["price"] = float(self.price)
+        elif include_empty:
+            result["price"] = float()
+        if hasattr(self, "product_id"):
+            result["productId"] = str(self.product_id)
+        elif include_empty:
+            result["productId"] = str()
         if hasattr(self, "xsts_token"):
             result["xstsToken"] = str(self.xsts_token)
         elif include_empty:
@@ -64,9 +97,18 @@ class XblReconcileRequest(Model):
     @classmethod
     def create(
         cls,
+        currency_code: Optional[str] = None,
+        price: Optional[float] = None,
+        product_id: Optional[str] = None,
         xsts_token: Optional[str] = None,
     ) -> XblReconcileRequest:
         instance = cls()
+        if currency_code is not None:
+            instance.currency_code = currency_code
+        if price is not None:
+            instance.price = price
+        if product_id is not None:
+            instance.product_id = product_id
         if xsts_token is not None:
             instance.xsts_token = xsts_token
         return instance
@@ -76,6 +118,18 @@ class XblReconcileRequest(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
+            instance.currency_code = str(dict_["currencyCode"])
+        elif include_empty:
+            instance.currency_code = str()
+        if "price" in dict_ and dict_["price"] is not None:
+            instance.price = float(dict_["price"])
+        elif include_empty:
+            instance.price = float()
+        if "productId" in dict_ and dict_["productId"] is not None:
+            instance.product_id = str(dict_["productId"])
+        elif include_empty:
+            instance.product_id = str()
         if "xstsToken" in dict_ and dict_["xstsToken"] is not None:
             instance.xsts_token = str(dict_["xstsToken"])
         elif include_empty:
@@ -85,6 +139,9 @@ class XblReconcileRequest(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "currencyCode": "currency_code",
+            "price": "price",
+            "productId": "product_id",
             "xstsToken": "xsts_token",
         }
 

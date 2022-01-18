@@ -1,4 +1,4 @@
-# justice-iam-service (4.10.0)
+# justice-iam-service (5.0.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -72,17 +72,20 @@ class PlatformTokenGrantV3(Operation):
     <li><strong>nintendo</strong>: The platform_token’s value is the authorization
     code(id_token) returned by Nintendo OAuth.</li>
     <li><strong>awscognito</strong>: The platform_token’s value is the aws cognito
-    access token (JWT).</li> </ul> <h2>Account Group</h2> <p>Several platforms are
-    grouped under account groups. The accounts on these platforms have the same
-    platform user id. Login using one of these platform will returns the same IAM
-    user. </p> <p>Following is the current registered account grouping: </p> <ul>
-    <li> (psn) ps4web </li> <li> (psn) ps4 </li> <li> (psn) ps5 </li> </ul>
-    <h2>Access Token Content</h2> <p>Following is the access token’s content:</p>
-    <ul> <li> <p><strong>namespace</strong>. It is the namespace the token was
-    generated from.</p> </li> <li> <p><strong>display_name</strong>. The display
-    name of the sub. It is empty if the token is generated from the client
-    credential</p> </li> <li> <p><strong>roles</strong>. The sub’s roles. It is
-    empty if the token is generated from the client credential</p> </li> <li>
+    access token or id token (JWT).</li> <li><strong>xbl</strong>: The
+    platform_token’s value is XSTS token</li> <li><strong>xblweb</strong>: The
+    platform_token’s value is code returned by xbox after login</li> </ul>
+    <h2>Account Group</h2> <p>Several platforms are grouped under account groups.
+    The accounts on these platforms have the same platform user id. Login using
+    one of these platform will returns the same IAM user. </p> <p>Following is the
+    current registered account grouping: </p> <ul> <li> (psn) ps4web </li> <li>
+    (psn) ps4 </li> <li> (psn) ps5 </li> </ul> <h2>Access Token Content</h2>
+    <p>Following is the access token’s content:</p> <ul> <li>
+    <p><strong>namespace</strong>. It is the namespace the token was generated
+    from.</p> </li> <li> <p><strong>display_name</strong>. The display name of the
+    sub. It is empty if the token is generated from the client credential</p>
+    </li> <li> <p><strong>roles</strong>. The sub’s roles. It is empty if the
+    token is generated from the client credential</p> </li> <li>
     <p><strong>namespace_roles</strong>. The sub’s roles scoped to namespace.
     Improvement from roles, which make the role scoped to specific namespace
     instead of global to publisher namespace</p> </li> <li>

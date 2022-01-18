@@ -1,6 +1,6 @@
 """Auto-generated package that contains models used by the justice-group-service."""
 
-__version__ = "2.9.0"
+__version__ = "2.10.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -41,7 +41,6 @@ from .models_update_group_configuration_request_v1 import ModelsUpdateGroupConfi
 from .models_update_group_configuration_response_v1 import ModelsUpdateGroupConfigurationResponseV1
 from .models_update_group_custom_attributes_request_v1 import ModelsUpdateGroupCustomAttributesRequestV1
 from .models_update_group_custom_rule_request_v1 import ModelsUpdateGroupCustomRuleRequestV1
-from .models_update_group_custom_rule_request_v1_group_custom_rule import ModelsUpdateGroupCustomRuleRequestV1GroupCustomRule
 from .models_update_group_predefined_rule_request_v1 import ModelsUpdateGroupPredefinedRuleRequestV1
 from .models_update_group_request_v1 import ModelsUpdateGroupRequestV1
 from .models_update_group_request_v1_custom_attributes import ModelsUpdateGroupRequestV1CustomAttributes

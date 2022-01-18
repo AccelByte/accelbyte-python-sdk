@@ -1,4 +1,4 @@
-# justice-leaderboard-service (2.11.1)
+# justice-leaderboard-service (2.11.2)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -61,10 +61,6 @@ class GetTodayLeaderboardRankingPublicV1(Operation):
         200: OK - ModelsGetLeaderboardRankingResp (OK)
 
         400: Bad Request - ResponseErrorResponse (Bad Request)
-
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
-
-        403: Forbidden - ResponseErrorResponse (Forbidden)
 
         404: Not Found - ResponseErrorResponse (Not Found)
 
@@ -225,10 +221,6 @@ class GetTodayLeaderboardRankingPublicV1(Operation):
 
         400: Bad Request - ResponseErrorResponse (Bad Request)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
-
-        403: Forbidden - ResponseErrorResponse (Forbidden)
-
         404: Not Found - ResponseErrorResponse (Not Found)
 
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
@@ -236,10 +228,6 @@ class GetTodayLeaderboardRankingPublicV1(Operation):
         if code == 200:
             return ModelsGetLeaderboardRankingResp.create_from_dict(content), None
         if code == 400:
-            return None, ResponseErrorResponse.create_from_dict(content)
-        if code == 401:
-            return None, ResponseErrorResponse.create_from_dict(content)
-        if code == 403:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 404:
             return None, ResponseErrorResponse.create_from_dict(content)

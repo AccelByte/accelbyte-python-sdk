@@ -42,7 +42,7 @@ from ..operations.group import GetSingleGroupPublicV1
 from ..operations.group import UpdateGroupCustomAttributesPublicV1
 from ..operations.group import UpdateGroupCustomRulePublicV1
 from ..operations.group import UpdateGroupPredefinedRulePublicV1
-from ..operations.group import UpdateSingleGroupPublicV1
+from ..operations.group import UpdatePatchSingleGroupPublicV1
 from ..operations.group import UpdateSingleGroupV1
 
 
@@ -356,13 +356,13 @@ async def update_group_predefined_rule_public_v1_async(allowed_action: str, body
     return await run_request_async(request, additional_headers=x_additional_headers)
 
 
-@same_doc_as(UpdateSingleGroupPublicV1)
-def update_single_group_public_v1(body: ModelsUpdateGroupRequestV1, group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+@same_doc_as(UpdatePatchSingleGroupPublicV1)
+def update_patch_single_group_public_v1(body: ModelsUpdateGroupRequestV1, group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = UpdateSingleGroupPublicV1.create(
+    request = UpdatePatchSingleGroupPublicV1.create(
         body=body,
         group_id=group_id,
         namespace=namespace,
@@ -370,13 +370,13 @@ def update_single_group_public_v1(body: ModelsUpdateGroupRequestV1, group_id: st
     return run_request(request, additional_headers=x_additional_headers)
 
 
-@same_doc_as(UpdateSingleGroupPublicV1)
-async def update_single_group_public_v1_async(body: ModelsUpdateGroupRequestV1, group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+@same_doc_as(UpdatePatchSingleGroupPublicV1)
+async def update_patch_single_group_public_v1_async(body: ModelsUpdateGroupRequestV1, group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = UpdateSingleGroupPublicV1.create(
+    request = UpdatePatchSingleGroupPublicV1.create(
         body=body,
         group_id=group_id,
         namespace=namespace,

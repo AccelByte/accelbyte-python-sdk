@@ -1,4 +1,4 @@
-# justice-iam-service (4.10.0)
+# justice-iam-service (5.0.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -36,18 +36,10 @@ class AdminUpdateMyUserV4(Operation):
 
     <p>Requires valid user access token </p> <br><p>This Endpoint support update
     user based on given data. <b>Single request can update single field or multi
-    fields.</b></p> <p>Supported field {country, displayName, emailAddress,
-    languageTag, dateOfBirth}</p> <p>Country use ISO3166-1 alpha-2 two letter,
-    e.g. US.</p> <p>Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.</p>
-    <br><b>Several case of updating email address</b> <ul><li>User want to update
-    email address of which have been verified, newEmailAddress response field will
-    be filled with new email address.</li> <li>User want to update email address
-    of which have not been verified, { oldEmailAddress, emailAddress} response
-    field will be filled with new email address. </li> <li>User want to update
-    email address of which have been verified and updated before, {
-    oldEmailAddress, emailAddress} response field will be filled with verified
-    email before. newEmailAddress response field will be filled with newest email
-    address. </li> <p>action code : 10103 </p>
+    fields.</b></p> <p>Supported field {country, displayName, languageTag,
+    dateOfBirth, userName}</p> <p>Country use ISO3166-1 alpha-2 two letter, e.g.
+    US.</p> <p>Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.</p> <p>action
+    code : 10103 </p>
 
 
     Properties:
@@ -72,7 +64,7 @@ class AdminUpdateMyUserV4(Operation):
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        409: Conflict - RestErrorResponse (10133: email already used | 10133: email already used)
+        409: Conflict - RestErrorResponse (10177: username already used)
 
         500: Internal Server Error - (Internal Server Error)
     """
@@ -189,7 +181,7 @@ class AdminUpdateMyUserV4(Operation):
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        409: Conflict - RestErrorResponse (10133: email already used | 10133: email already used)
+        409: Conflict - RestErrorResponse (10177: username already used)
 
         500: Internal Server Error - (Internal Server Error)
         """

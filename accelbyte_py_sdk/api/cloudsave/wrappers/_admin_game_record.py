@@ -143,7 +143,7 @@ async def admin_put_game_record_handler_v1_async(body: ModelsGameRecordRequest, 
 
 
 @same_doc_as(ListGameRecordsHandlerV1)
-def list_game_records_handler_v1(limit: int, offset: int, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def list_game_records_handler_v1(limit: int, offset: int, query: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -151,13 +151,14 @@ def list_game_records_handler_v1(limit: int, offset: int, namespace: Optional[st
     request = ListGameRecordsHandlerV1.create(
         limit=limit,
         offset=offset,
+        query=query,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ListGameRecordsHandlerV1)
-async def list_game_records_handler_v1_async(limit: int, offset: int, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def list_game_records_handler_v1_async(limit: int, offset: int, query: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -165,6 +166,7 @@ async def list_game_records_handler_v1_async(limit: int, offset: int, namespace:
     request = ListGameRecordsHandlerV1.create(
         limit=limit,
         offset=offset,
+        query=query,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)

@@ -1,4 +1,4 @@
-# justice-legal-service (1.15.1)
+# justice-platform-service (4.1.1)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -26,53 +26,53 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
-from ...models import AcceptAgreementRequest
-from ...models import AcceptAgreementResponse
+from ...models import PlatformDLCConfigInfo
+from ...models import PlatformDLCConfigUpdate
+from ...models import ValidationErrorEntity
 
 
-class IndirectBulkAcceptVersionedPolicy(Operation):
-    """Bulk Accept Policy Versions (Indirect) (indirectBulkAcceptVersionedPolicy)
+class UpdatePlatformDLCConfig(Operation):
+    """Update Platform DLC config (updatePlatformDLCConfig)
 
-    Accepts many legal policy versions all at once. Supply with localized version
-    policy id and userId to accept an agreement. This endpoint used by
-    Authentication Service during new user registration.<br><br/>Available Extra
-    Information to return: <br/><ul><li><b>userIds</b> : List of userId mapping
-    (<b>IMPORTANT: GOING TO DEPRECATE</b>)</li></ul>Other detail info:
-    <ul><li><i>Required permission</i>: login user</li></ul>
+    Update Platform DLC config. Other detail info: <ul><li><i>Required
+    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:DLC:CONFIG", action=4
+    (UPDATE)</li><li><i>Returns</i>: updated Platform DLC config</li></ul>
 
 
     Properties:
-        url: /agreement/public/agreements/policies/users/{userId}
+        url: /platform/admin/namespaces/{namespace}/dlc/config/platformMap
 
-        method: POST
+        method: PUT
 
-        tags: ["Agreement"]
+        tags: ["DLC"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         security_type: bearer
 
-        body: (body) OPTIONAL List[AcceptAgreementRequest] in body
+        body: (body) OPTIONAL PlatformDLCConfigUpdate in body
 
-        user_id: (userId) REQUIRED str in path
+        namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - AcceptAgreementResponse (successful operation)
+        200: OK - PlatformDLCConfigInfo (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
 
-    _url: str = "/agreement/public/agreements/policies/users/{userId}"
-    _method: str = "POST"
-    _consumes: List[str] = []
+    _url: str = "/platform/admin/namespaces/{namespace}/dlc/config/platformMap"
+    _method: str = "PUT"
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None
 
-    body: List[AcceptAgreementRequest]                                                             # OPTIONAL in [body]
-    user_id: str                                                                                   # REQUIRED in [path]
+    body: PlatformDLCConfigUpdate                                                                  # OPTIONAL in [body]
+    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -116,7 +116,7 @@ class IndirectBulkAcceptVersionedPolicy(Operation):
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "user_id",
+            "namespace",
         ]
 
     # endregion get methods
@@ -132,12 +132,12 @@ class IndirectBulkAcceptVersionedPolicy(Operation):
     def get_body_params(self) -> Any:
         if not hasattr(self, "body") or self.body is None:
             return None
-        return [i.to_dict() for i in self.body]
+        return self.body.to_dict()
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     # endregion get_x_params methods
@@ -145,7 +145,7 @@ class IndirectBulkAcceptVersionedPolicy(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
-        if not hasattr(self, "user_id") or self.user_id is None:
+        if not hasattr(self, "namespace") or self.namespace is None:
             return False
         return True
 
@@ -153,12 +153,12 @@ class IndirectBulkAcceptVersionedPolicy(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: List[AcceptAgreementRequest]) -> IndirectBulkAcceptVersionedPolicy:
+    def with_body(self, value: PlatformDLCConfigUpdate) -> UpdatePlatformDLCConfig:
         self.body = value
         return self
 
-    def with_user_id(self, value: str) -> IndirectBulkAcceptVersionedPolicy:
-        self.user_id = value
+    def with_namespace(self, value: str) -> UpdatePlatformDLCConfig:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -168,13 +168,13 @@ class IndirectBulkAcceptVersionedPolicy(Operation):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "body") and self.body:
-            result["body"] = [i0.to_dict(include_empty=include_empty) for i0 in self.body]
+            result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = []
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
+            result["body"] = PlatformDLCConfigUpdate()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["userId"] = str()
+            result["namespace"] = str()
         return result
 
     # endregion to methods
@@ -182,13 +182,17 @@ class IndirectBulkAcceptVersionedPolicy(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, AcceptAgreementResponse], Union[None, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, PlatformDLCConfigInfo], Union[None, ValidationErrorEntity]]:
         """Parse the given response.
 
-        201: Created - AcceptAgreementResponse (successful operation)
+        200: OK - PlatformDLCConfigInfo (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
-        if code == 201:
-            return AcceptAgreementResponse.create_from_dict(content), None
+        if code == 200:
+            return PlatformDLCConfigInfo.create_from_dict(content), None
+        if code == 422:
+            return None, ValidationErrorEntity.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
             if undocumented_response.is_no_content():
@@ -203,33 +207,33 @@ class IndirectBulkAcceptVersionedPolicy(Operation):
     @classmethod
     def create(
         cls,
-        user_id: str,
-        body: Optional[List[AcceptAgreementRequest]] = None,
-    ) -> IndirectBulkAcceptVersionedPolicy:
+        namespace: str,
+        body: Optional[PlatformDLCConfigUpdate] = None,
+    ) -> UpdatePlatformDLCConfig:
         instance = cls()
-        instance.user_id = user_id
+        instance.namespace = namespace
         if body is not None:
             instance.body = body
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> IndirectBulkAcceptVersionedPolicy:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> UpdatePlatformDLCConfig:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = [AcceptAgreementRequest.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["body"]]
+            instance.body = PlatformDLCConfigUpdate.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
-            instance.body = []
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
+            instance.body = PlatformDLCConfigUpdate()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.user_id = str()
+            instance.namespace = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
-            "userId": "user_id",
+            "namespace": "namespace",
         }
 
     # endregion static methods

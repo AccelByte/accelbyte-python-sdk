@@ -42,7 +42,6 @@ from ..models import ModelCountryV3Response
 from ..models import ModelCreateJusticeUserResponse
 from ..models import ModelDisableUserRequest
 from ..models import ModelForgotPasswordRequestV3
-from ..models import ModelGameUserIDsRequest
 from ..models import ModelGetAdminUsersResponse
 from ..models import ModelGetPublisherUserResponse
 from ..models import ModelGetUserBanV3Response
@@ -53,8 +52,9 @@ from ..models import ModelInviteUserRequestV3
 from ..models import ModelInviteUserResponseV3
 from ..models import ModelLinkPlatformAccountRequest
 from ..models import ModelLinkRequest
-from ..models import ModelListBulkUserGameResponse
+from ..models import ModelListBulkUserResponse
 from ..models import ModelListEmailAddressRequest
+from ..models import ModelListUserInformationResult
 from ..models import ModelListUserResponseV3
 from ..models import ModelLoginHistoriesResponse
 from ..models import ModelNamespaceRoleRequest
@@ -87,6 +87,7 @@ from ..models import ModelUserCreateRequestV3
 from ..models import ModelUserCreateResponse
 from ..models import ModelUserCreateResponseV3
 from ..models import ModelUserDeletionStatusResponse
+from ..models import ModelUserIDsRequest
 from ..models import ModelUserInformation
 from ..models import ModelUserInvitationV3
 from ..models import ModelUserPasswordUpdateRequest
@@ -135,6 +136,7 @@ from ..operations.users import AdminGetUserLoginHistoriesV3
 from ..operations.users import AdminGetUserPlatformAccountsV3
 from ..operations.users import AdminInviteUserV3
 from ..operations.users import AdminLinkPlatformAccount
+from ..operations.users import AdminListUserIDByUserIDsV3
 from ..operations.users import AdminListUsersV3
 from ..operations.users import AdminPlatformLinkV3
 from ..operations.users import AdminPlatformUnlinkV3
@@ -157,6 +159,7 @@ from ..operations.users import AdminUpgradeHeadlessAccountV3
 from ..operations.users import AdminVerifyAccountV3
 from ..operations.users import AdminVerifyUserWithoutVerificationCodeV3
 from ..operations.users import BanUser
+from ..operations.users import CheckUserAvailability
 from ..operations.users import CreateUser
 from ..operations.users import CreateUserFromInvitationV3
 from ..operations.users import DeleteUser
@@ -1138,6 +1141,32 @@ async def admin_link_platform_account_async(body: ModelLinkPlatformAccountReques
     return await run_request_async(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(AdminListUserIDByUserIDsV3)
+def admin_list_user_id_by_user_i_ds_v3(body: ModelUserIDsRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminListUserIDByUserIDsV3.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminListUserIDByUserIDsV3)
+async def admin_list_user_id_by_user_i_ds_v3_async(body: ModelUserIDsRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminListUserIDByUserIDsV3.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(AdminListUsersV3)
 def admin_list_users_v3(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -1775,6 +1804,34 @@ async def ban_user_async(body: ModelBanCreateRequest, user_id: str, namespace: O
     request = BanUser.create(
         body=body,
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(CheckUserAvailability)
+def check_user_availability(field: str, query: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CheckUserAvailability.create(
+        field=field,
+        query=query,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(CheckUserAvailability)
+async def check_user_availability_async(field: str, query: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CheckUserAvailability.create(
+        field=field,
+        query=query,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)
@@ -2673,7 +2730,7 @@ async def platform_unlink_async(platform_id: str, user_id: str, platform_namespa
 
 
 @same_doc_as(PublicBulkGetUsers)
-def public_bulk_get_users(body: ModelGameUserIDsRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_bulk_get_users(body: ModelUserIDsRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2686,7 +2743,7 @@ def public_bulk_get_users(body: ModelGameUserIDsRequest, namespace: Optional[str
 
 
 @same_doc_as(PublicBulkGetUsers)
-async def public_bulk_get_users_async(body: ModelGameUserIDsRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def public_bulk_get_users_async(body: ModelUserIDsRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

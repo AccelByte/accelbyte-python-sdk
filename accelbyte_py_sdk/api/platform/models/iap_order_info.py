@@ -1,4 +1,4 @@
-# justice-platform-service (3.40.0)
+# justice-platform-service (4.1.1)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -49,11 +49,15 @@ class IAPOrderInfo(Model):
 
         credits: (credits) OPTIONAL List[CreditSummary]
 
+        currency_code: (currencyCode) OPTIONAL str
+
         entitlements: (entitlements) OPTIONAL List[EntitlementSummary]
 
         fulfilled_time: (fulfilledTime) OPTIONAL str
 
         language: (language) OPTIONAL str
+
+        price: (price) OPTIONAL float
 
         product_id: (productId) OPTIONAL str
 
@@ -82,9 +86,11 @@ class IAPOrderInfo(Model):
     updated_at: str                                                                                # REQUIRED
     user_id: str                                                                                   # REQUIRED
     credits: List[CreditSummary]                                                                   # OPTIONAL
+    currency_code: str                                                                             # OPTIONAL
     entitlements: List[EntitlementSummary]                                                         # OPTIONAL
     fulfilled_time: str                                                                            # OPTIONAL
     language: str                                                                                  # OPTIONAL
+    price: float                                                                                   # OPTIONAL
     product_id: str                                                                                # OPTIONAL
     quantity: int                                                                                  # OPTIONAL
     receipt_data: str                                                                              # OPTIONAL
@@ -130,6 +136,10 @@ class IAPOrderInfo(Model):
         self.credits = value
         return self
 
+    def with_currency_code(self, value: str) -> IAPOrderInfo:
+        self.currency_code = value
+        return self
+
     def with_entitlements(self, value: List[EntitlementSummary]) -> IAPOrderInfo:
         self.entitlements = value
         return self
@@ -140,6 +150,10 @@ class IAPOrderInfo(Model):
 
     def with_language(self, value: str) -> IAPOrderInfo:
         self.language = value
+        return self
+
+    def with_price(self, value: float) -> IAPOrderInfo:
+        self.price = value
         return self
 
     def with_product_id(self, value: str) -> IAPOrderInfo:
@@ -212,6 +226,10 @@ class IAPOrderInfo(Model):
             result["credits"] = [i0.to_dict(include_empty=include_empty) for i0 in self.credits]
         elif include_empty:
             result["credits"] = []
+        if hasattr(self, "currency_code"):
+            result["currencyCode"] = str(self.currency_code)
+        elif include_empty:
+            result["currencyCode"] = str()
         if hasattr(self, "entitlements"):
             result["entitlements"] = [i0.to_dict(include_empty=include_empty) for i0 in self.entitlements]
         elif include_empty:
@@ -224,6 +242,10 @@ class IAPOrderInfo(Model):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = str()
+        if hasattr(self, "price"):
+            result["price"] = float(self.price)
+        elif include_empty:
+            result["price"] = float()
         if hasattr(self, "product_id"):
             result["productId"] = str(self.product_id)
         elif include_empty:
@@ -273,9 +295,11 @@ class IAPOrderInfo(Model):
         updated_at: str,
         user_id: str,
         credits: Optional[List[CreditSummary]] = None,
+        currency_code: Optional[str] = None,
         entitlements: Optional[List[EntitlementSummary]] = None,
         fulfilled_time: Optional[str] = None,
         language: Optional[str] = None,
+        price: Optional[float] = None,
         product_id: Optional[str] = None,
         quantity: Optional[int] = None,
         receipt_data: Optional[str] = None,
@@ -295,12 +319,16 @@ class IAPOrderInfo(Model):
         instance.user_id = user_id
         if credits is not None:
             instance.credits = credits
+        if currency_code is not None:
+            instance.currency_code = currency_code
         if entitlements is not None:
             instance.entitlements = entitlements
         if fulfilled_time is not None:
             instance.fulfilled_time = fulfilled_time
         if language is not None:
             instance.language = language
+        if price is not None:
+            instance.price = price
         if product_id is not None:
             instance.product_id = product_id
         if quantity is not None:
@@ -356,6 +384,10 @@ class IAPOrderInfo(Model):
             instance.credits = [CreditSummary.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["credits"]]
         elif include_empty:
             instance.credits = []
+        if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
+            instance.currency_code = str(dict_["currencyCode"])
+        elif include_empty:
+            instance.currency_code = str()
         if "entitlements" in dict_ and dict_["entitlements"] is not None:
             instance.entitlements = [EntitlementSummary.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["entitlements"]]
         elif include_empty:
@@ -368,6 +400,10 @@ class IAPOrderInfo(Model):
             instance.language = str(dict_["language"])
         elif include_empty:
             instance.language = str()
+        if "price" in dict_ and dict_["price"] is not None:
+            instance.price = float(dict_["price"])
+        elif include_empty:
+            instance.price = float()
         if "productId" in dict_ and dict_["productId"] is not None:
             instance.product_id = str(dict_["productId"])
         elif include_empty:
@@ -413,9 +449,11 @@ class IAPOrderInfo(Model):
             "updatedAt": "updated_at",
             "userId": "user_id",
             "credits": "credits",
+            "currencyCode": "currency_code",
             "entitlements": "entitlements",
             "fulfilledTime": "fulfilled_time",
             "language": "language",
+            "price": "price",
             "productId": "product_id",
             "quantity": "quantity",
             "receiptData": "receipt_data",

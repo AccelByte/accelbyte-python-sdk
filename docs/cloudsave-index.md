@@ -1,6 +1,6 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-cloudsave-service Index (1.9.2)
+# justice-cloudsave-service Index (2.1.0)
 
 
 ## Operations
@@ -45,6 +45,7 @@
 ### PublicPlayerRecord
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
+| /cloudsave/v1/namespaces/{namespace}/users/bulk/records/{key}/public | POST | bulkGetPlayerPublicRecordHandlerV1 | [BulkGetPlayerPublicRecordHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/public_player_record/bulk_get_player_public_record_handler_v1.py) | [bulk_get_player_public_record_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_public_player_record.py) |
 | /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key} | DELETE | deletePlayerRecordHandlerV1 | [DeletePlayerRecordHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/public_player_record/delete_player_record_handler_v1.py) | [delete_player_record_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_public_player_record.py) |
 | /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}/public | GET | getPlayerPublicRecordHandlerV1 | [GetPlayerPublicRecordHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/public_player_record/get_player_public_record_handler_v1.py) | [get_player_public_record_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_public_player_record.py) |
 | /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key} | GET | getPlayerRecordHandlerV1 | [GetPlayerRecordHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/public_player_record/get_player_record_handler_v1.py) | [get_player_record_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_public_player_record.py) |
@@ -58,6 +59,8 @@
 ## Models
 | Model | Class |
 |---|---|
+| models.BulkGetPlayerRecordResponse | [ModelsBulkGetPlayerRecordResponse](../accelbyte_py_sdk/api/cloudsave/models/models_bulk_get_player_record_response.py) |
+| models.BulkUserIDsRequest | [ModelsBulkUserIDsRequest](../accelbyte_py_sdk/api/cloudsave/models/models_bulk_user_i_ds_request.py) |
 | models.ConcurrentRecordRequest | [ModelsConcurrentRecordRequest](../accelbyte_py_sdk/api/cloudsave/models/models_concurrent_record_request.py) |
 | models.GameRecord | [ModelsGameRecord](../accelbyte_py_sdk/api/cloudsave/models/models_game_record.py) |
 | models.GameRecordRequest | [ModelsGameRecordRequest](../accelbyte_py_sdk/api/cloudsave/models/models_game_record_request.py) |

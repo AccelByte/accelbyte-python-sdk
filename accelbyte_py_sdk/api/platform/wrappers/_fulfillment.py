@@ -27,8 +27,10 @@ from ..models import FulfillCodeRequest
 from ..models import FulfillmentHistoryPagingSlicedResult
 from ..models import FulfillmentRequest
 from ..models import FulfillmentResult
+from ..models import RewardsRequest
 
 from ..operations.fulfillment import FulfillItem
+from ..operations.fulfillment import FulfillRewards
 from ..operations.fulfillment import PublicRedeemCode
 from ..operations.fulfillment import QueryFulfillmentHistories
 from ..operations.fulfillment import RedeemCode
@@ -55,6 +57,34 @@ async def fulfill_item_async(user_id: str, body: Optional[FulfillmentRequest] = 
         if error:
             return None, error
     request = FulfillItem.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(FulfillRewards)
+def fulfill_rewards(user_id: str, body: Optional[RewardsRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = FulfillRewards.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(FulfillRewards)
+async def fulfill_rewards_async(user_id: str, body: Optional[RewardsRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = FulfillRewards.create(
         user_id=user_id,
         body=body,
         namespace=namespace,

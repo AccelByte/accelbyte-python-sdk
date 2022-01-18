@@ -1,4 +1,4 @@
-# justice-cloudsave-service (1.9.2)
+# justice-cloudsave-service (2.1.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -22,6 +22,8 @@
 
 from .utils import randomize
 
+from ..api.cloudsave.models import ModelsBulkGetPlayerRecordResponse
+from ..api.cloudsave.models import ModelsBulkUserIDsRequest
 from ..api.cloudsave.models import ModelsConcurrentRecordRequest
 from ..api.cloudsave.models import ModelsGameRecord
 from ..api.cloudsave.models import ModelsGameRecordRequest
@@ -32,6 +34,18 @@ from ..api.cloudsave.models import ModelsPlayerRecord
 from ..api.cloudsave.models import ModelsPlayerRecordKey
 from ..api.cloudsave.models import ModelsPlayerRecordRequest
 from ..api.cloudsave.models import ModelsResponseError
+
+
+def create_models_bulk_get_player_record_response_example() -> ModelsBulkGetPlayerRecordResponse:
+    instance = ModelsBulkGetPlayerRecordResponse()
+    instance.data = [create_models_player_record_example()]
+    return instance
+
+
+def create_models_bulk_user_i_ds_request_example() -> ModelsBulkUserIDsRequest:
+    instance = ModelsBulkUserIDsRequest()
+    instance.user_ids = [randomize()]
+    return instance
 
 
 def create_models_concurrent_record_request_example() -> ModelsConcurrentRecordRequest:

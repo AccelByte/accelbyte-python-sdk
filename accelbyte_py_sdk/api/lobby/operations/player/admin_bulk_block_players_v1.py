@@ -59,7 +59,7 @@ class AdminBulkBlockPlayersV1(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - int (No Content)
+        204: No Content - (No Content)
 
         400: Bad Request - RestapiErrorResponseBody (Bad Request)
 
@@ -210,7 +210,7 @@ class AdminBulkBlockPlayersV1(Operation):
     def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, RestapiErrorResponseBody]]:
         """Parse the given response.
 
-        204: No Content - int (No Content)
+        204: No Content - (No Content)
 
         400: Bad Request - RestapiErrorResponseBody (Bad Request)
 

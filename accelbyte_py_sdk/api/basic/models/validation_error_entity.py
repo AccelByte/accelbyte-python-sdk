@@ -1,4 +1,4 @@
-# justice-basic-service (1.29.0)
+# justice-basic-service (1.31.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 

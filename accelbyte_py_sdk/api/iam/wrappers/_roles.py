@@ -489,25 +489,23 @@ async def admin_get_roles_v3_async(after: Optional[str] = None, before: Optional
 
 
 @same_doc_as(AdminGetRolesV4)
-def admin_get_roles_v4(admin_role: Optional[bool] = None, after: Optional[str] = None, before: Optional[str] = None, is_wildcard: Optional[bool] = None, limit: Optional[int] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_get_roles_v4(admin_role: Optional[bool] = None, is_wildcard: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = AdminGetRolesV4.create(
         admin_role=admin_role,
-        after=after,
-        before=before,
         is_wildcard=is_wildcard,
         limit=limit,
+        offset=offset,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminGetRolesV4)
-async def admin_get_roles_v4_async(admin_role: Optional[bool] = None, after: Optional[str] = None, before: Optional[str] = None, is_wildcard: Optional[bool] = None, limit: Optional[int] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_get_roles_v4_async(admin_role: Optional[bool] = None, is_wildcard: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = AdminGetRolesV4.create(
         admin_role=admin_role,
-        after=after,
-        before=before,
         is_wildcard=is_wildcard,
         limit=limit,
+        offset=offset,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)
 

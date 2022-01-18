@@ -22,10 +22,13 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import ModelsBulkGetPlayerRecordResponse
+from ..models import ModelsBulkUserIDsRequest
 from ..models import ModelsPlayerRecord
 from ..models import ModelsPlayerRecordRequest
 from ..models import ModelsResponseError
 
+from ..operations.public_player_record import BulkGetPlayerPublicRecordHandlerV1
 from ..operations.public_player_record import DeletePlayerRecordHandlerV1
 from ..operations.public_player_record import GetPlayerPublicRecordHandlerV1
 from ..operations.public_player_record import GetPlayerRecordHandlerV1
@@ -34,6 +37,34 @@ from ..operations.public_player_record import PostPlayerRecordHandlerV1
 from ..operations.public_player_record import PublicDeletePlayerPublicRecordHandlerV1
 from ..operations.public_player_record import PutPlayerPublicRecordHandlerV1
 from ..operations.public_player_record import PutPlayerRecordHandlerV1
+
+
+@same_doc_as(BulkGetPlayerPublicRecordHandlerV1)
+def bulk_get_player_public_record_handler_v1(body: ModelsBulkUserIDsRequest, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkGetPlayerPublicRecordHandlerV1.create(
+        body=body,
+        key=key,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(BulkGetPlayerPublicRecordHandlerV1)
+async def bulk_get_player_public_record_handler_v1_async(body: ModelsBulkUserIDsRequest, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkGetPlayerPublicRecordHandlerV1.create(
+        body=body,
+        key=key,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(DeletePlayerRecordHandlerV1)

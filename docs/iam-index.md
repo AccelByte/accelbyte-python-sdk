@@ -1,6 +1,6 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-iam-service Index (4.10.0)
+# justice-iam-service Index (5.0.0)
 
 
 ## Operations
@@ -38,6 +38,14 @@
 | /iam/clients/{clientId} | PUT | UpdateClient | [UpdateClient](../accelbyte_py_sdk/api/iam/operations/clients/update_client.py) | [update_client](../accelbyte_py_sdk/api/iam/wrappers/_clients.py) |
 | /iam/clients/{clientId}/clientpermissions | POST | UpdateClientPermission | [UpdateClientPermission](../accelbyte_py_sdk/api/iam/operations/clients/update_client_permission.py) | [update_client_permission](../accelbyte_py_sdk/api/iam/wrappers/_clients.py) |
 | /iam/clients/{clientId}/secret | PUT | UpdateClientSecret | [UpdateClientSecret](../accelbyte_py_sdk/api/iam/operations/clients/update_client_secret.py) | [update_client_secret](../accelbyte_py_sdk/api/iam/wrappers/_clients.py) |
+
+### InputValidations
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
+| /iam/v3/admin/inputValidations | GET | AdminGetInputValidations | [AdminGetInputValidations](../accelbyte_py_sdk/api/iam/operations/input_validations/admin_get_input_validations.py) | [admin_get_input_validations](../accelbyte_py_sdk/api/iam/wrappers/_input_validations.py) |
+| /iam/v3/admin/inputValidations/{field} | DELETE | AdminResetInputValidations | [AdminResetInputValidations](../accelbyte_py_sdk/api/iam/operations/input_validations/admin_reset_input_validations.py) | [admin_reset_input_validations](../accelbyte_py_sdk/api/iam/wrappers/_input_validations.py) |
+| /iam/v3/admin/inputValidations | PUT | AdminUpdateInputValidations | [AdminUpdateInputValidations](../accelbyte_py_sdk/api/iam/operations/input_validations/admin_update_input_validations.py) | [admin_update_input_validations](../accelbyte_py_sdk/api/iam/wrappers/_input_validations.py) |
+| /iam/v3/public/inputValidations | GET | PublicGetInputValidations | [PublicGetInputValidations](../accelbyte_py_sdk/api/iam/operations/input_validations/public_get_input_validations.py) | [public_get_input_validations](../accelbyte_py_sdk/api/iam/wrappers/_input_validations.py) |
 
 ### OAuth
 | Endpoint | Method | ID | Class | Wrapper |
@@ -194,6 +202,7 @@
 | /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms | GET | AdminGetUserPlatformAccountsV3 | [AdminGetUserPlatformAccountsV3](../accelbyte_py_sdk/api/iam/operations/users/admin_get_user_platform_accounts_v3.py) | [admin_get_user_platform_accounts_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/admin/namespaces/{namespace}/users/invite | POST | AdminInviteUserV3 | [AdminInviteUserV3](../accelbyte_py_sdk/api/iam/operations/users/admin_invite_user_v3.py) | [admin_invite_user_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/link | POST | AdminLinkPlatformAccount | [AdminLinkPlatformAccount](../accelbyte_py_sdk/api/iam/operations/users/admin_link_platform_account.py) | [admin_link_platform_account](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
+| /iam/v3/admin/namespaces/{namespace}/users/bulk | POST | AdminListUserIDByUserIDsV3 | [AdminListUserIDByUserIDsV3](../accelbyte_py_sdk/api/iam/operations/users/admin_list_user_id_by_user_i_ds_v3.py) | [admin_list_user_id_by_user_i_ds_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/admin/namespaces/{namespace}/users/platforms/justice | GET | AdminListUsersV3 | [AdminListUsersV3](../accelbyte_py_sdk/api/iam/operations/users/admin_list_users_v3.py) | [admin_list_users_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link | POST | AdminPlatformLinkV3 | [AdminPlatformLinkV3](../accelbyte_py_sdk/api/iam/operations/users/admin_platform_link_v3.py) | [admin_platform_link_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId} | DELETE | AdminPlatformUnlinkV3 | [AdminPlatformUnlinkV3](../accelbyte_py_sdk/api/iam/operations/users/admin_platform_unlink_v3.py) | [admin_platform_unlink_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
@@ -216,6 +225,7 @@
 | /iam/v3/admin/namespaces/{namespace}/users/{userId}/code/verify | POST | AdminVerifyAccountV3 | [AdminVerifyAccountV3](../accelbyte_py_sdk/api/iam/operations/users/admin_verify_account_v3.py) | [admin_verify_account_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/admin/namespaces/{namespace}/users/{userId}/verify | PUT | AdminVerifyUserWithoutVerificationCodeV3 | [AdminVerifyUserWithoutVerificationCodeV3](../accelbyte_py_sdk/api/iam/operations/users/admin_verify_user_without_verification_code_v3.py) | [admin_verify_user_without_verification_code_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/namespaces/{namespace}/users/{userId}/ban | POST | BanUser | [BanUser](../accelbyte_py_sdk/api/iam/operations/users/ban_user.py) | [ban_user](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
+| /iam/v3/public/namespaces/{namespace}/users/availability | GET | CheckUserAvailability | [CheckUserAvailability](../accelbyte_py_sdk/api/iam/operations/users/check_user_availability.py) | [check_user_availability](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/namespaces/{namespace}/users | POST | CreateUser | [CreateUser](../accelbyte_py_sdk/api/iam/operations/users/create_user.py) | [create_user](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/public/namespaces/{namespace}/users/invite/{invitationId} | POST | CreateUserFromInvitationV3 | [CreateUserFromInvitationV3](../accelbyte_py_sdk/api/iam/operations/users/create_user_from_invitation_v3.py) | [create_user_from_invitation_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/namespaces/{namespace}/users/{userId} | DELETE | DeleteUser | [DeleteUser](../accelbyte_py_sdk/api/iam/operations/users/delete_user.py) | [delete_user](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
@@ -343,6 +353,7 @@
 | accountcommon.ConflictedUserPlatformAccounts | [AccountcommonConflictedUserPlatformAccounts](../accelbyte_py_sdk/api/iam/models/accountcommon_conflicted_user_platform_accounts.py) |
 | accountcommon.CountryAgeRestriction | [AccountcommonCountryAgeRestriction](../accelbyte_py_sdk/api/iam/models/accountcommon_country_age_restriction.py) |
 | accountcommon.Description | [AccountcommonDescription](../accelbyte_py_sdk/api/iam/models/accountcommon_description.py) |
+| accountcommon.InputValidationDescription | [AccountcommonInputValidationDescription](../accelbyte_py_sdk/api/iam/models/accountcommon_input_validation_description.py) |
 | accountcommon.JWTBanV3 | [AccountcommonJWTBanV3](../accelbyte_py_sdk/api/iam/models/accountcommon_jwt_ban_v3.py) |
 | accountcommon.ListUsersWithPlatformAccountsResponse | [AccountcommonListUsersWithPlatformAccountsResponse](../accelbyte_py_sdk/api/iam/models/accountcommon_list_users_with_platform_accounts_response.py) |
 | accountcommon.NamespaceRole | [AccountcommonNamespaceRole](../accelbyte_py_sdk/api/iam/models/accountcommon_namespace_role.py) |
@@ -397,23 +408,27 @@
 | model.DisableUserRequest | [ModelDisableUserRequest](../accelbyte_py_sdk/api/iam/models/model_disable_user_request.py) |
 | model.EmailUpdateRequestV4 | [ModelEmailUpdateRequestV4](../accelbyte_py_sdk/api/iam/models/model_email_update_request_v4.py) |
 | model.ForgotPasswordRequestV3 | [ModelForgotPasswordRequestV3](../accelbyte_py_sdk/api/iam/models/model_forgot_password_request_v3.py) |
-| model.GameUserBaseInfo | [ModelGameUserBaseInfo](../accelbyte_py_sdk/api/iam/models/model_game_user_base_info.py) |
-| model.GameUserIDsRequest | [ModelGameUserIDsRequest](../accelbyte_py_sdk/api/iam/models/model_game_user_i_ds_request.py) |
 | model.GetAdminUsersResponse | [ModelGetAdminUsersResponse](../accelbyte_py_sdk/api/iam/models/model_get_admin_users_response.py) |
 | model.GetPublisherUserResponse | [ModelGetPublisherUserResponse](../accelbyte_py_sdk/api/iam/models/model_get_publisher_user_response.py) |
 | model.GetUserBanV3Response | [ModelGetUserBanV3Response](../accelbyte_py_sdk/api/iam/models/model_get_user_ban_v3_response.py) |
 | model.GetUserJusticePlatformAccountResponse | [ModelGetUserJusticePlatformAccountResponse](../accelbyte_py_sdk/api/iam/models/model_get_user_justice_platform_account_response.py) |
 | model.GetUserMapping | [ModelGetUserMapping](../accelbyte_py_sdk/api/iam/models/model_get_user_mapping.py) |
 | model.GetUsersResponseWithPaginationV3 | [ModelGetUsersResponseWithPaginationV3](../accelbyte_py_sdk/api/iam/models/model_get_users_response_with_pagination_v3.py) |
+| model.InputValidationData | [ModelInputValidationData](../accelbyte_py_sdk/api/iam/models/model_input_validation_data.py) |
+| model.InputValidationDataPublic | [ModelInputValidationDataPublic](../accelbyte_py_sdk/api/iam/models/model_input_validation_data_public.py) |
+| model.InputValidationUpdatePayload | [ModelInputValidationUpdatePayload](../accelbyte_py_sdk/api/iam/models/model_input_validation_update_payload.py) |
+| model.InputValidationsPublicResponse | [ModelInputValidationsPublicResponse](../accelbyte_py_sdk/api/iam/models/model_input_validations_public_response.py) |
+| model.InputValidationsResponse | [ModelInputValidationsResponse](../accelbyte_py_sdk/api/iam/models/model_input_validations_response.py) |
 | model.InviteUserRequestV3 | [ModelInviteUserRequestV3](../accelbyte_py_sdk/api/iam/models/model_invite_user_request_v3.py) |
 | model.InviteUserRequestV4 | [ModelInviteUserRequestV4](../accelbyte_py_sdk/api/iam/models/model_invite_user_request_v4.py) |
 | model.InviteUserResponseV3 | [ModelInviteUserResponseV3](../accelbyte_py_sdk/api/iam/models/model_invite_user_response_v3.py) |
 | model.LinkPlatformAccountRequest | [ModelLinkPlatformAccountRequest](../accelbyte_py_sdk/api/iam/models/model_link_platform_account_request.py) |
 | model.LinkRequest | [ModelLinkRequest](../accelbyte_py_sdk/api/iam/models/model_link_request.py) |
 | model.ListAssignedUsersV4Response | [ModelListAssignedUsersV4Response](../accelbyte_py_sdk/api/iam/models/model_list_assigned_users_v4_response.py) |
-| model.ListBulkUserGameResponse | [ModelListBulkUserGameResponse](../accelbyte_py_sdk/api/iam/models/model_list_bulk_user_game_response.py) |
+| model.ListBulkUserResponse | [ModelListBulkUserResponse](../accelbyte_py_sdk/api/iam/models/model_list_bulk_user_response.py) |
 | model.ListEmailAddressRequest | [ModelListEmailAddressRequest](../accelbyte_py_sdk/api/iam/models/model_list_email_address_request.py) |
 | model.ListRoleV4Response | [ModelListRoleV4Response](../accelbyte_py_sdk/api/iam/models/model_list_role_v4_response.py) |
+| model.ListUserInformationResult | [ModelListUserInformationResult](../accelbyte_py_sdk/api/iam/models/model_list_user_information_result.py) |
 | model.ListUserResponseV3 | [ModelListUserResponseV3](../accelbyte_py_sdk/api/iam/models/model_list_user_response_v3.py) |
 | model.ListUserRolesV4Response | [ModelListUserRolesV4Response](../accelbyte_py_sdk/api/iam/models/model_list_user_roles_v4_response.py) |
 | model.LoginHistoriesResponse | [ModelLoginHistoriesResponse](../accelbyte_py_sdk/api/iam/models/model_login_histories_response.py) |
@@ -474,6 +489,7 @@
 | model.UserActiveBanResponseV3 | [ModelUserActiveBanResponseV3](../accelbyte_py_sdk/api/iam/models/model_user_active_ban_response_v3.py) |
 | model.UserBanResponse | [ModelUserBanResponse](../accelbyte_py_sdk/api/iam/models/model_user_ban_response.py) |
 | model.UserBanResponseV3 | [ModelUserBanResponseV3](../accelbyte_py_sdk/api/iam/models/model_user_ban_response_v3.py) |
+| model.UserBaseInfo | [ModelUserBaseInfo](../accelbyte_py_sdk/api/iam/models/model_user_base_info.py) |
 | model.UserCreateFromInvitationRequestV3 | [ModelUserCreateFromInvitationRequestV3](../accelbyte_py_sdk/api/iam/models/model_user_create_from_invitation_request_v3.py) |
 | model.UserCreateFromInvitationRequestV4 | [ModelUserCreateFromInvitationRequestV4](../accelbyte_py_sdk/api/iam/models/model_user_create_from_invitation_request_v4.py) |
 | model.UserCreateRequest | [ModelUserCreateRequest](../accelbyte_py_sdk/api/iam/models/model_user_create_request.py) |
@@ -481,6 +497,8 @@
 | model.UserCreateResponse | [ModelUserCreateResponse](../accelbyte_py_sdk/api/iam/models/model_user_create_response.py) |
 | model.UserCreateResponseV3 | [ModelUserCreateResponseV3](../accelbyte_py_sdk/api/iam/models/model_user_create_response_v3.py) |
 | model.UserDeletionStatusResponse | [ModelUserDeletionStatusResponse](../accelbyte_py_sdk/api/iam/models/model_user_deletion_status_response.py) |
+| model.UserIDsRequest | [ModelUserIDsRequest](../accelbyte_py_sdk/api/iam/models/model_user_i_ds_request.py) |
+| model.UserInfoResponse | [ModelUserInfoResponse](../accelbyte_py_sdk/api/iam/models/model_user_info_response.py) |
 | model.UserInformation | [ModelUserInformation](../accelbyte_py_sdk/api/iam/models/model_user_information.py) |
 | model.UserInvitationV3 | [ModelUserInvitationV3](../accelbyte_py_sdk/api/iam/models/model_user_invitation_v3.py) |
 | model.UserLoginHistoryResponse | [ModelUserLoginHistoryResponse](../accelbyte_py_sdk/api/iam/models/model_user_login_history_response.py) |
@@ -494,6 +512,8 @@
 | model.UserUpdateRequestV3 | [ModelUserUpdateRequestV3](../accelbyte_py_sdk/api/iam/models/model_user_update_request_v3.py) |
 | model.UserVerificationRequest | [ModelUserVerificationRequest](../accelbyte_py_sdk/api/iam/models/model_user_verification_request.py) |
 | model.UserVerificationRequestV3 | [ModelUserVerificationRequestV3](../accelbyte_py_sdk/api/iam/models/model_user_verification_request_v3.py) |
+| model.ValidationDetail | [ModelValidationDetail](../accelbyte_py_sdk/api/iam/models/model_validation_detail.py) |
+| model.ValidationDetailPublic | [ModelValidationDetailPublic](../accelbyte_py_sdk/api/iam/models/model_validation_detail_public.py) |
 | model.VerificationCodeResponse | [ModelVerificationCodeResponse](../accelbyte_py_sdk/api/iam/models/model_verification_code_response.py) |
 | model.WebLinkingResponse | [ModelWebLinkingResponse](../accelbyte_py_sdk/api/iam/models/model_web_linking_response.py) |
 | oauthapi.RevocationList | [OauthapiRevocationList](../accelbyte_py_sdk/api/iam/models/oauthapi_revocation_list.py) |
@@ -508,3 +528,5 @@
 | oauthmodel.TokenThirdPartyResponse | [OauthmodelTokenThirdPartyResponse](../accelbyte_py_sdk/api/iam/models/oauthmodel_token_third_party_response.py) |
 | rest.ErrorResponse | [RestErrorResponse](../accelbyte_py_sdk/api/iam/models/rest_error_response.py) |
 | restapi.ErrorResponse | [RestapiErrorResponse](../accelbyte_py_sdk/api/iam/models/restapi_error_response.py) |
+| .validation | [Validation](../accelbyte_py_sdk/api/iam/models/validation.py) |
+| .validation.description | [ValidationDescription](../accelbyte_py_sdk/api/iam/models/validation_description.py) |

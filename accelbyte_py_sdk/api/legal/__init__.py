@@ -1,12 +1,20 @@
 """Auto-generated top-level package for the justice-legal-service."""
 
-__version__ = "1.15.1"
+__version__ = "1.16.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # template file: justice_py_sdk_codegen/__main__.py
 
 # pylint: disable=line-too-long
+
+# admin_user_agreement
+from .wrappers import indirect_bulk_accept_versioned_policy
+from .wrappers import indirect_bulk_accept_versioned_policy_async
+
+# admin_user_eligibilities
+from .wrappers import admin_retrieve_eligibilities
+from .wrappers import admin_retrieve_eligibilities_async
 
 # agreement
 from .wrappers import accept_versioned_policy
@@ -15,8 +23,8 @@ from .wrappers import bulk_accept_versioned_policy
 from .wrappers import bulk_accept_versioned_policy_async
 from .wrappers import change_preference_consent
 from .wrappers import change_preference_consent_async
-from .wrappers import indirect_bulk_accept_versioned_policy
-from .wrappers import indirect_bulk_accept_versioned_policy_async
+from .wrappers import indirect_bulk_accept_versioned_policy_1
+from .wrappers import indirect_bulk_accept_versioned_policy_1_async
 from .wrappers import indirect_bulk_accept_versioned_policy_v2
 from .wrappers import indirect_bulk_accept_versioned_policy_v2_async
 from .wrappers import retrieve_accepted_agreements

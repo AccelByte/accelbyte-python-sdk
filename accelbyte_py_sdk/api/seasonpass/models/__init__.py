@@ -1,6 +1,6 @@
 """Auto-generated package that contains models used by the justice-seasonpass-service."""
 
-__version__ = "1.6.0"
+__version__ = "1.7.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
