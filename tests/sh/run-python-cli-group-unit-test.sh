@@ -252,13 +252,13 @@ $PYTHON -m $MODULE 'group-delete-group-public-v1' \
 update_status $? 'DeleteGroupPublicV1'
 delete_file $TEMP_FILE
 
-#- 24 UpdateSingleGroupPublicV1
-$PYTHON -m $MODULE 'group-update-single-group-public-v1' \
+#- 24 UpdatePatchSingleGroupPublicV1
+$PYTHON -m $MODULE 'group-update-patch-single-group-public-v1' \
     '{"customAttributes": {}, "groupDescription": "RSOFQBtu", "groupIcon": "23REZ8hR", "groupName": "VX7LGOvD", "groupRegion": "dYiQS9i7", "groupType": "mV1C91pj"}' \
     'G9gpxL6y' \
     --login_as client \
     >$TEMP_FILE 2>&1
-update_status $? 'UpdateSingleGroupPublicV1'
+update_status $? 'UpdatePatchSingleGroupPublicV1'
 delete_file $TEMP_FILE
 
 #- 25 UpdateGroupCustomAttributesPublicV1
@@ -320,8 +320,8 @@ delete_file $TEMP_FILE
 
 #- 32 UpdateGroupCustomRulePublicV1
 $PYTHON -m $MODULE 'group-update-group-custom-rule-public-v1' \
-    '{"groupCustomRule": {}}' \
-    'dBBpdsJL' \
+    '{"groupCustomRule": {"dBBpdsJL": {}}}' \
+    'hsVyExrk' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateGroupCustomRulePublicV1'
@@ -329,9 +329,9 @@ delete_file $TEMP_FILE
 
 #- 33 UpdateGroupPredefinedRulePublicV1
 $PYTHON -m $MODULE 'group-update-group-predefined-rule-public-v1' \
-    '{"ruleDetail": [{"ruleAttribute": "hsVyExrk", "ruleCriteria": "xoot0B7W", "ruleValue": 0.6263244977624104}]}' \
-    'ercZdpMc' \
+    '{"ruleDetail": [{"ruleAttribute": "xoot0B7W", "ruleCriteria": "OfercZdp", "ruleValue": 0.5953687134744807}]}' \
     'i37Ds7YS' \
+    'fExaI3uz' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateGroupPredefinedRulePublicV1'
@@ -339,8 +339,8 @@ delete_file $TEMP_FILE
 
 #- 34 DeleteGroupPredefinedRulePublicV1
 $PYTHON -m $MODULE 'group-delete-group-predefined-rule-public-v1' \
-    'fExaI3uz' \
     'LteMbFAl' \
+    't4hr7HmO' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteGroupPredefinedRulePublicV1'
@@ -362,8 +362,8 @@ delete_file $TEMP_FILE
 
 #- 37 UpdateMemberRolePublicV1
 $PYTHON -m $MODULE 'group-update-member-role-public-v1' \
-    '{"userId": "t4hr7HmO"}' \
-    'YiBA5ltA' \
+    '{"userId": "YiBA5ltA"}' \
+    'OXmlG6eh' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateMemberRolePublicV1'
@@ -371,8 +371,8 @@ delete_file $TEMP_FILE
 
 #- 38 DeleteMemberRolePublicV1
 $PYTHON -m $MODULE 'group-delete-member-role-public-v1' \
-    '{"userId": "OXmlG6eh"}' \
-    '1dTdoTFp' \
+    '{"userId": "1dTdoTFp"}' \
+    'BIcuC1dQ' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteMemberRolePublicV1'
@@ -387,7 +387,7 @@ delete_file $TEMP_FILE
 
 #- 40 GetUserGroupInformationPublicV1
 $PYTHON -m $MODULE 'group-get-user-group-information-public-v1' \
-    'BIcuC1dQ' \
+    'Y93OJnJ6' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserGroupInformationPublicV1'
@@ -395,7 +395,7 @@ delete_file $TEMP_FILE
 
 #- 41 InviteGroupPublicV1
 $PYTHON -m $MODULE 'group-invite-group-public-v1' \
-    'Y93OJnJ6' \
+    'Te9vD8ld' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'InviteGroupPublicV1'
@@ -403,7 +403,7 @@ delete_file $TEMP_FILE
 
 #- 42 AcceptGroupJoinRequestPublicV1
 $PYTHON -m $MODULE 'group-accept-group-join-request-public-v1' \
-    'Te9vD8ld' \
+    'z7Hu8AD7' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'AcceptGroupJoinRequestPublicV1'
@@ -411,7 +411,7 @@ delete_file $TEMP_FILE
 
 #- 43 RejectGroupJoinRequestPublicV1
 $PYTHON -m $MODULE 'group-reject-group-join-request-public-v1' \
-    'z7Hu8AD7' \
+    '9kdWunvi' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'RejectGroupJoinRequestPublicV1'
@@ -419,7 +419,7 @@ delete_file $TEMP_FILE
 
 #- 44 KickGroupMemberPublicV1
 $PYTHON -m $MODULE 'group-kick-group-member-public-v1' \
-    '9kdWunvi' \
+    'zU0q1pHy' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'KickGroupMemberPublicV1'

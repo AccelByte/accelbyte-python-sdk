@@ -12,7 +12,7 @@ MODULE='accelbyte_py_sdk_cli'
 MODULE_PATH='../samples/cli'
 TEMP_FILE='file.tmp'
 
-OPERATIONS_COUNT=29
+OPERATIONS_COUNT=30
 
 FINISHED_COUNT=0
 SUCCESS_COUNT=0
@@ -239,86 +239,95 @@ $PYTHON -m $MODULE 'cloudsave-delete-game-record-handler-v1' \
 update_status $? 'DeleteGameRecordHandlerV1'
 delete_file $TEMP_FILE
 
-#- 21 PublicDeletePlayerPublicRecordHandlerV1
+#- 21 BulkGetPlayerPublicRecordHandlerV1
+$PYTHON -m $MODULE 'cloudsave-bulk-get-player-public-record-handler-v1' \
+    '{"userIds": ["8npLEKMf"]}' \
+    'jiX7jpkV' \
+    --login_as client \
+    >$TEMP_FILE 2>&1
+update_status $? 'BulkGetPlayerPublicRecordHandlerV1'
+delete_file $TEMP_FILE
+
+#- 22 PublicDeletePlayerPublicRecordHandlerV1
 $PYTHON -m $MODULE 'cloudsave-public-delete-player-public-record-handler-v1' \
-    '8npLEKMf' \
+    'Zk3IaQYE' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicDeletePlayerPublicRecordHandlerV1'
 delete_file $TEMP_FILE
 
-#- 22 PutPlayerPublicRecordConcurrentHandlerV1
+#- 23 PutPlayerPublicRecordConcurrentHandlerV1
 $PYTHON -m $MODULE 'cloudsave-put-player-public-record-concurrent-handler-v1' \
-    '{"updatedAt": "jiX7jpkV", "value": {"Zk3IaQYE": {}}}' \
-    'mqGodOEG' \
-    't9gPOj0c' \
+    '{"updatedAt": "mqGodOEG", "value": {"t9gPOj0c": {}}}' \
+    '6i0JkvIa' \
+    's73ucYnF' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PutPlayerPublicRecordConcurrentHandlerV1'
 delete_file $TEMP_FILE
 
-#- 23 GetPlayerRecordHandlerV1
+#- 24 GetPlayerRecordHandlerV1
 $PYTHON -m $MODULE 'cloudsave-get-player-record-handler-v1' \
-    '6i0JkvIa' \
-    's73ucYnF' \
+    'AJ3DK5T4' \
+    'Eogg0Y39' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetPlayerRecordHandlerV1'
 delete_file $TEMP_FILE
 
-#- 24 PutPlayerRecordHandlerV1
+#- 25 PutPlayerRecordHandlerV1
 $PYTHON -m $MODULE 'cloudsave-put-player-record-handler-v1' \
-    '{}' \
-    'AJ3DK5T4' \
-    'Eogg0Y39' \
-    --login_as client \
-    >$TEMP_FILE 2>&1
-update_status $? 'PutPlayerRecordHandlerV1'
-delete_file $TEMP_FILE
-
-#- 25 PostPlayerRecordHandlerV1
-$PYTHON -m $MODULE 'cloudsave-post-player-record-handler-v1' \
     '{}' \
     'UoYlpv5b' \
     'VAgtsDhU' \
     --login_as client \
     >$TEMP_FILE 2>&1
+update_status $? 'PutPlayerRecordHandlerV1'
+delete_file $TEMP_FILE
+
+#- 26 PostPlayerRecordHandlerV1
+$PYTHON -m $MODULE 'cloudsave-post-player-record-handler-v1' \
+    '{}' \
+    'TDUscbQD' \
+    'jbTQuPMz' \
+    --login_as client \
+    >$TEMP_FILE 2>&1
 update_status $? 'PostPlayerRecordHandlerV1'
 delete_file $TEMP_FILE
 
-#- 26 DeletePlayerRecordHandlerV1
+#- 27 DeletePlayerRecordHandlerV1
 $PYTHON -m $MODULE 'cloudsave-delete-player-record-handler-v1' \
-    'TDUscbQD' \
-    'jbTQuPMz' \
+    '2PTRlkyU' \
+    '89ZPOw6z' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'DeletePlayerRecordHandlerV1'
 delete_file $TEMP_FILE
 
-#- 27 GetPlayerPublicRecordHandlerV1
+#- 28 GetPlayerPublicRecordHandlerV1
 $PYTHON -m $MODULE 'cloudsave-get-player-public-record-handler-v1' \
-    '2PTRlkyU' \
-    '89ZPOw6z' \
+    'PFJ42cwm' \
+    'zBBSMNco' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'GetPlayerPublicRecordHandlerV1'
 delete_file $TEMP_FILE
 
-#- 28 PutPlayerPublicRecordHandlerV1
+#- 29 PutPlayerPublicRecordHandlerV1
 $PYTHON -m $MODULE 'cloudsave-put-player-public-record-handler-v1' \
     '{}' \
-    'PFJ42cwm' \
-    'zBBSMNco' \
+    'AAOjKNjf' \
+    'cYHm093a' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PutPlayerPublicRecordHandlerV1'
 delete_file $TEMP_FILE
 
-#- 29 PostPlayerPublicRecordHandlerV1
+#- 30 PostPlayerPublicRecordHandlerV1
 $PYTHON -m $MODULE 'cloudsave-post-player-public-record-handler-v1' \
     '{}' \
-    'AAOjKNjf' \
-    'cYHm093a' \
+    'YgBU1sqj' \
+    'yK0XH45P' \
     --login_as client \
     >$TEMP_FILE 2>&1
 update_status $? 'PostPlayerPublicRecordHandlerV1'
