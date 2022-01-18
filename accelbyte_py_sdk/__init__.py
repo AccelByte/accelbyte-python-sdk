@@ -1,6 +1,6 @@
 """The top-level package for the AccelByte Python SDK."""
 
-__version__ = "0.5.0"
+__version__ = "0.6.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
