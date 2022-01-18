@@ -1,5 +1,38 @@
 # Changelog
 
+## v0.6.0
+- Updated APIs
+    - basic
+        - version bump only
+    - cloudsave
+        - add, update endpoints
+    - dslogmanager
+        - version bump only
+    - dsmc
+        - version bump only
+    - gdpr
+        - version bump only
+    - group
+        - update endpoints
+    - iam
+        - add, update endpoints
+    - leaderboard
+        - update endpoints
+    - legal
+        - add, update endpoints
+    - lobby
+        - update endpoints
+    - matchmaking
+        - version bump only
+    - platform
+        - add, update endpoints
+    - seasonpass
+        - version bump only
+    - social
+        - version bump only
+    - ugc
+        - version bump only
+
 ## v0.5.0
 
 - Fix file uploads
