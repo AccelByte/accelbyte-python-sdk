@@ -1,6 +1,17 @@
 # Changelog
 
 ## v0.6.0
+- Fix handling of operations that don't have any parameters
+- Fix handling of bytes responses
+- Fix handling of empty models (open dictionaries)
+- Fix bytes treated as tokens
+- Fix checking if the body parameter was assigned
+- Add special handling of 204 responses
+- Add code snippets from the How To guides
+- Add custom query params formatting
+- Update CLI commands
+- Update auto-generated unit tests
+- Simplify WSClient creation
 - Updated APIs
     - basic
         - version bump only
