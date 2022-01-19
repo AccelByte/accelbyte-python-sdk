@@ -16,7 +16,8 @@ logger.addHandler(logging.StreamHandler())
 def print_file_content(line_num: int, str_path: str) -> str:
     path = get_path_from_str(str_path)
     if path is None:
-        log_error_then_exit(f"[PRINTFC:{line_num}] File not found: '{str_path}'")
+        logger.error(f"[PRINTFC:{line_num}] File not found: '{str_path}'")
+        exit(1)
     content = path.read_text()
     return content
 
@@ -24,7 +25,8 @@ def print_file_content(line_num: int, str_path: str) -> str:
 def print_file_snippet(line_num: int, str_path: str, start_token: str, end_token: str) -> str:
     path = get_path_from_str(str_path)
     if path is None:
-        log_error_then_exit(f"[PRINTFS:{line_num}] File not found: '{str_path}'")
+        logger.error(f"[PRINTFS:{line_num}] File not found: '{str_path}'")
+        exit(1)
     found = False
     ended = False
     snippet_lines = []
@@ -39,9 +41,11 @@ def print_file_snippet(line_num: int, str_path: str, start_token: str, end_token
                 ended = True
                 break
     if not found:
-        log_error_then_exit(f"[PRINTFS:{line_num}] Snippet not found in: '{str_path}'")
+        logger.error(f"[PRINTFS:{line_num}] Snippet not found in: '{str_path}'")
+        exit(1)
     if not ended:
-        log_error_then_exit(f"[PRINTFS:{line_num}] Snippet never terminated.")
+        logger.error(f"[PRINTFS:{line_num}] Snippet never terminated.")
+        exit(1)
     snippet = "\n".join(snippet_lines)
     return snippet
 
@@ -49,7 +53,8 @@ def print_file_snippet(line_num: int, str_path: str, start_token: str, end_token
 def print_json(line_num: int, str_path: str, json_ref: str = None, fmt: str = "json") -> str:
     path = get_path_from_str(str_path)
     if path is None:
-        log_error_then_exit(f"[PRINTJSON:{line_num}] File not found: '{str_path}'")
+        logger.error(f"[PRINTJSON:{line_num}] File not found: '{str_path}'")
+        exit(1)
     obj = yaml.safe_load(path.read_text())
     node = obj
     if json_ref:
@@ -60,11 +65,13 @@ def print_json(line_num: int, str_path: str, json_ref: str = None, fmt: str = "j
                     ref_part_index = int(ref_part)
                     node = node[ref_part_index]
                 except ValueError:
-                    log_error_then_exit(f"[PRINTJSON:{line_num}] Json Reference not found: '{json_ref}'")
+                    logger.error(f"[PRINTJSON:{line_num}] Json Reference not found: '{json_ref}'")
+                    exit(1)
             else:
                 ref_part = unquote(ref_part)
                 if ref_part not in node:
-                    log_error_then_exit(f"[PRINTJSON:{line_num}] Json Reference not found: '{json_ref}'")
+                    logger.error(f"[PRINTJSON:{line_num}] Json Reference not found: '{json_ref}'")
+                    exit(1)
                 node = node[ref_part]
     if fmt == "json":
         result = json.dumps(node, indent=2)
@@ -81,11 +88,13 @@ def main(
     src = Path(src)
 
     if not src.exists():
-        log_error_then_exit(f"[ERR] File not found: '{src}'")
+        logger.error(f"[ERR] File not found: '{src}'")
+        exit(1)
 
     src_file_ext = "".join(src.suffixes)
     if src_file_ext != ".t.md":
-        log_error_then_exit(f"[ERR] Incorrect file extension: '{src_file_ext}'")
+        logger.error(f"[ERR] Incorrect file extension: '{src_file_ext}'")
+        exit(1)
 
     if dst is None:
         dst = src.parent / f"{src.stem.rstrip('.'.join(src.suffixes))}.md"
@@ -131,11 +140,6 @@ def get_path_from_str(str_path: str) -> Optional[Path]:
     if path.exists():
         return path
     return None
-
-
-def log_error_then_exit(error: str) -> None:
-    logger.error(error)
-    exit(1)
 
 
 def parse_args() -> Dict[str, Any]:
