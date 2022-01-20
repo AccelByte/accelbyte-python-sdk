@@ -12,9 +12,9 @@ from .admin_add_role_permissions_v4 import AdminAddRolePermissionsV4
 from .admin_assign_user_to_role_v4 import AdminAssignUserToRoleV4
 from .admin_create_role_v3 import AdminCreateRoleV3
 from .admin_create_role_v4 import AdminCreateRoleV4
-from .admin_delete_role_permission_v3 import AdminDeleteRolePermissionV3
-from .admin_delete_role_permissions_v3 import AdminDeleteRolePermissionsV3
-from .admin_delete_role_permissions_v4 import AdminDeleteRolePermissionsV4
+from .admin_delete_role_permi_02ef33 import AdminDeleteRolePermissionV3
+from .admin_delete_role_permi_c227c5 import AdminDeleteRolePermissionsV3
+from .admin_delete_role_permi_22b25a import AdminDeleteRolePermissionsV4
 from .admin_delete_role_v3 import AdminDeleteRoleV3
 from .admin_delete_role_v4 import AdminDeleteRoleV4
 from .admin_get_role_admin_status_v3 import AdminGetRoleAdminStatusV3
@@ -29,9 +29,9 @@ from .admin_remove_role_admin_v3 import AdminRemoveRoleAdminV3
 from .admin_remove_role_managers_v3 import AdminRemoveRoleManagersV3
 from .admin_remove_role_members_v3 import AdminRemoveRoleMembersV3
 from .admin_revoke_user_from_role_v4 import AdminRevokeUserFromRoleV4
-from .admin_update_admin_role_status_v3 import AdminUpdateAdminRoleStatusV3
-from .admin_update_role_permissions_v3 import AdminUpdateRolePermissionsV3
-from .admin_update_role_permissions_v4 import AdminUpdateRolePermissionsV4
+from .admin_update_admin_role_5be907 import AdminUpdateAdminRoleStatusV3
+from .admin_update_role_permi_728d52 import AdminUpdateRolePermissionsV3
+from .admin_update_role_permi_e17189 import AdminUpdateRolePermissionsV4
 from .admin_update_role_v3 import AdminUpdateRoleV3
 from .admin_update_role_v4 import AdminUpdateRoleV4
 from .create_role import CreateRole

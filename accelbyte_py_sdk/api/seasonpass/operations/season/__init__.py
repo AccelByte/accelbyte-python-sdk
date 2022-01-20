@@ -8,7 +8,7 @@ from .create_season import CreateSeason
 from .delete_season import DeleteSeason
 from .exists_any_pass_by_pass_codes import ExistsAnyPassByPassCodes
 from .get_current_season import GetCurrentSeason
-from .get_current_user_season_progression import GetCurrentUserSeasonProgression
+from .get_current_user_season_eed4c8 import GetCurrentUserSeasonProgression
 from .get_season import GetSeason
 from .get_user_participated_seasons import GetUserParticipatedSeasons
 from .get_user_season import GetUserSeason

@@ -3,4 +3,4 @@
 # pylint: disable=line-too-long
 
 from .retrieve_eligibilities_public import RetrieveEligibilitiesPublic
-from .retrieve_eligibilities_public_indirect import RetrieveEligibilitiesPublicIndirect
+from .retrieve_eligibilities__345271 import RetrieveEligibilitiesPublicIndirect

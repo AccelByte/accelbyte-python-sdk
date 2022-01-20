@@ -2,7 +2,7 @@
 
 # pylint: disable=line-too-long
 
-from .add_friends_without_confirmation import AddFriendsWithoutConfirmation
+from .add_friends_without_con_a5cd59 import AddFriendsWithoutConfirmation
 from .get_list_of_friends import GetListOfFriends
 from .get_user_friends_updated import GetUserFriendsUpdated
 from .get_user_incoming_friends import GetUserIncomingFriends

@@ -2,4 +2,4 @@
 
 # pylint: disable=line-too-long
 
-from .platform_authenticate_samlv3_handler import PlatformAuthenticateSAMLV3Handler
+from .platform_authenticate_s_d9f573 import PlatformAuthenticateSAMLV3Handler

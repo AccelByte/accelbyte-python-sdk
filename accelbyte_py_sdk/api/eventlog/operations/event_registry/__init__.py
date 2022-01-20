@@ -2,8 +2,8 @@
 
 # pylint: disable=line-too-long
 
-from .get_registered_event_id_handler import GetRegisteredEventIDHandler
-from .get_registered_events_by_event_type_handler import GetRegisteredEventsByEventTypeHandler
+from .get_registered_event_id_f55558 import GetRegisteredEventIDHandler
+from .get_registered_events_b_671cec import GetRegisteredEventsByEventTypeHandler
 from .get_registered_events_handler import GetRegisteredEventsHandler
 from .register_event_handler import RegisterEventHandler
 from .unregister_event_id_handler import UnregisterEventIDHandler

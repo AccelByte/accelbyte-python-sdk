@@ -9,7 +9,7 @@ from .admin_list_achievements import AdminListAchievements
 from .admin_list_user_achievements import AdminListUserAchievements
 from .admin_unlock_achievement import AdminUnlockAchievement
 from .admin_update_achievement import AdminUpdateAchievement
-from .admin_update_achievement_list_order import AdminUpdateAchievementListOrder
+from .admin_update_achievemen_d288a7 import AdminUpdateAchievementListOrder
 from .export_achievements import ExportAchievements
 from .import_achievements import ImportAchievements
 from .public_get_achievement import PublicGetAchievement

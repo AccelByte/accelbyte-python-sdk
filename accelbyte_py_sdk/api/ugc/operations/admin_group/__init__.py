@@ -11,5 +11,5 @@ from .admin_update_group import AdminUpdateGroup
 from .single_admin_delete_group import SingleAdminDeleteGroup
 from .single_admin_get_all_groups import SingleAdminGetAllGroups
 from .single_admin_get_group import SingleAdminGetGroup
-from .single_admin_get_group_contents import SingleAdminGetGroupContents
+from .single_admin_get_group__c6800e import SingleAdminGetGroupContents
 from .single_admin_update_group import SingleAdminUpdateGroup

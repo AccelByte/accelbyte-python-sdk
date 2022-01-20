@@ -4,4 +4,4 @@
 
 from .delete_user_activities_handler import DeleteUserActivitiesHandler
 from .get_user_activities_handler import GetUserActivitiesHandler
-from .last_user_activity_time_handler import LastUserActivityTimeHandler
+from .last_user_activity_time_4f2a6a import LastUserActivityTimeHandler

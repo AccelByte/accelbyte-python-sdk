@@ -10,12 +10,12 @@ from .get_order_statistics import GetOrderStatistics
 from .get_user_order import GetUserOrder
 from .get_user_order_grant import GetUserOrderGrant
 from .get_user_order_histories import GetUserOrderHistories
-from .process_user_order_notification import ProcessUserOrderNotification
+from .process_user_order_noti_fdd9f8 import ProcessUserOrderNotification
 from .public_cancel_user_order import PublicCancelUserOrder
 from .public_create_user_order import PublicCreateUserOrder
-from .public_download_user_order_receipt import PublicDownloadUserOrderReceipt
+from .public_download_user_or_6ea3e8 import PublicDownloadUserOrderReceipt
 from .public_get_user_order import PublicGetUserOrder
-from .public_get_user_order_histories import PublicGetUserOrderHistories
+from .public_get_user_order_h_063753 import PublicGetUserOrderHistories
 from .public_query_user_orders import PublicQueryUserOrders
 from .query_orders import QueryOrders
 from .query_user_orders import QueryUserOrders

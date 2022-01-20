@@ -3,13 +3,13 @@
 # pylint: disable=line-too-long
 
 from .add_client_permission import AddClientPermission
-from .admin_add_client_permissions_v3 import AdminAddClientPermissionsV3
+from .admin_add_client_permis_b56057 import AdminAddClientPermissionsV3
 from .admin_create_client_v3 import AdminCreateClientV3
-from .admin_delete_client_permission_v3 import AdminDeleteClientPermissionV3
+from .admin_delete_client_per_ccba4f import AdminDeleteClientPermissionV3
 from .admin_delete_client_v3 import AdminDeleteClientV3
-from .admin_get_clients_by_namespace_v3 import AdminGetClientsByNamespaceV3
-from .admin_get_clientsby_namespaceby_idv3 import AdminGetClientsbyNamespacebyIDV3
-from .admin_update_client_permission_v3 import AdminUpdateClientPermissionV3
+from .admin_get_clients_by_na_e85014 import AdminGetClientsByNamespaceV3
+from .admin_get_clientsby_nam_ac2fda import AdminGetClientsbyNamespacebyIDV3
+from .admin_update_client_per_4db324 import AdminUpdateClientPermissionV3
 from .admin_update_client_v3 import AdminUpdateClientV3
 from .create_client import CreateClient
 from .create_client_by_namespace import CreateClientByNamespace

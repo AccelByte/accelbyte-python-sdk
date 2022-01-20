@@ -12,6 +12,6 @@ from .get_root_categories import GetRootCategories
 from .list_categories_basic import ListCategoriesBasic
 from .public_get_category import PublicGetCategory
 from .public_get_child_categories import PublicGetChildCategories
-from .public_get_descendant_categories import PublicGetDescendantCategories
+from .public_get_descendant_c_c5054d import PublicGetDescendantCategories
 from .public_get_root_categories import PublicGetRootCategories
 from .update_category import UpdateCategory

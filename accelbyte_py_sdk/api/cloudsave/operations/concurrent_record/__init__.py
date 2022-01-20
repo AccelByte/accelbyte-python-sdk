@@ -2,5 +2,5 @@
 
 # pylint: disable=line-too-long
 
-from .put_game_record_concurrent_handler_v1 import PutGameRecordConcurrentHandlerV1
-from .put_player_public_record_concurrent_handler_v1 import PutPlayerPublicRecordConcurrentHandlerV1
+from .put_game_record_concurr_33e39a import PutGameRecordConcurrentHandlerV1
+from .put_player_public_recor_3f1a7f import PutPlayerPublicRecordConcurrentHandlerV1

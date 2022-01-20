@@ -7,8 +7,8 @@ from .admin_get_session import AdminGetSession
 from .create_session import CreateSession
 from .delete_session import DeleteSession
 from .delete_session_local_ds import DeleteSessionLocalDS
-from .get_active_custom_game_sessions import GetActiveCustomGameSessions
-from .get_active_matchmaking_game_sessions import GetActiveMatchmakingGameSessions
+from .get_active_custom_game__cd6755 import GetActiveCustomGameSessions
+from .get_active_matchmaking__0b8050 import GetActiveMatchmakingGameSessions
 from .get_recent_player import GetRecentPlayer
 from .get_session import GetSession
 from .get_session_by_user_i_ds import GetSessionByUserIDs
