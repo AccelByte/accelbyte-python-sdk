@@ -11,8 +11,6 @@ library(
 bitbucketCredentialsHttps = "Bitbucket_Build_AccelByte"
 bitbucketCredentialsSsh = "build_account_bitbucket_key"
 
-codegenSdkMockServerCommit = "16188ff"
-
 bitbucketPayload = null
 bitbucketCommitHref = null
 
