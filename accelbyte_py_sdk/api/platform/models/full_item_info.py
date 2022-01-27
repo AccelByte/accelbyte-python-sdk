@@ -724,6 +724,24 @@ class FullItemInfo(Model):
             instance.use_count = int()
         return instance
 
+    @classmethod
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, FullItemInfo]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+
+    @classmethod
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[FullItemInfo]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+
+    @classmethod
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[FullItemInfo, List[FullItemInfo]]:
+        if many:
+            if isinstance(any_, dict):
+                cls.create_many_from_dict(any_, include_empty=include_empty)
+            elif isinstance(any_, list):
+                cls.create_many_from_list(any_, include_empty=include_empty)
+        else:
+            return cls.create_from_dict(any_, include_empty=include_empty)
+
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
