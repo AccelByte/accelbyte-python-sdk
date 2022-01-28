@@ -1,4 +1,4 @@
-# Justice Matchmaking Service (2.13.1)
+# Justice Matchmaking Service (2.13.2)
 
 # template file: justice_py_sdk_codegen/__main__.py
 

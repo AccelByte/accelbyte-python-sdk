@@ -1,6 +1,6 @@
 """Auto-generated top-level package for the justice-gdpr-service."""
 
-__version__ = "1.11.3"
+__version__ = "1.12.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

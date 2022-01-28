@@ -1,4 +1,4 @@
-# Justice Matchmaking Service (2.13.1)
+# Justice Matchmaking Service (2.13.2)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -63,6 +63,8 @@ from ..api.matchmaking.models import ResponseErrorV1
 from ..api.matchmaking.models import ServiceGetSessionHistoryDetailedResponseItem
 from ..api.matchmaking.models import ServiceGetSessionHistorySearchResponse
 from ..api.matchmaking.models import ServiceGetSessionHistorySearchResponseItem
+from ..api.matchmaking.models import ServiceGetSessionHistorySearchResponseItemV2
+from ..api.matchmaking.models import ServiceGetSessionHistorySearchResponseV2
 
 
 def create_log_app_message_declaration_example() -> LogAppMessageDeclaration:
@@ -468,4 +470,23 @@ def create_service_get_session_history_search_response_item_example() -> Service
     instance.server_name = randomize()
     instance.status = randomize()
     instance.party_id = randomize("uid")
+    return instance
+
+
+def create_service_get_session_history_search_response_item_v2_example() -> ServiceGetSessionHistorySearchResponseItemV2:
+    instance = ServiceGetSessionHistorySearchResponseItemV2()
+    instance.created_at = randomize("date")
+    instance.game_mode = randomize()
+    instance.id_ = randomize()
+    instance.joinable = randomize("bool")
+    instance.match_id = randomize()
+    instance.namespace = randomize("slug")
+    instance.status = randomize()
+    return instance
+
+
+def create_service_get_session_history_search_response_v2_example() -> ServiceGetSessionHistorySearchResponseV2:
+    instance = ServiceGetSessionHistorySearchResponseV2()
+    instance.data = [create_service_get_session_history_search_response_item_v2_example()]
+    instance.pagination = create_models_pagination_example()
     return instance

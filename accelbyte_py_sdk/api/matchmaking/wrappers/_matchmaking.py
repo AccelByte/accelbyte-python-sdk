@@ -38,6 +38,7 @@ from ..models import ResponseError
 from ..models import ResponseErrorV1
 from ..models import ServiceGetSessionHistoryDetailedResponseItem
 from ..models import ServiceGetSessionHistorySearchResponse
+from ..models import ServiceGetSessionHistorySearchResponseV2
 
 from ..operations.matchmaking import AddUserIntoSessionInChannel
 from ..operations.matchmaking import BulkGetSessions
@@ -59,6 +60,7 @@ from ..operations.matchmaking import PublicGetSingleMatchmakingChannel
 from ..operations.matchmaking import QuerySessionHandler
 from ..operations.matchmaking import QueueSessionHandler
 from ..operations.matchmaking import SearchSessions
+from ..operations.matchmaking import SearchSessionsV2
 from ..operations.matchmaking import StoreMatchResults
 from ..operations.matchmaking import UpdateMatchmakingChannel
 
@@ -591,6 +593,44 @@ async def search_sessions_async(limit: float, offset: float, channel: Optional[s
         if error:
             return None, error
     request = SearchSessions.create(
+        limit=limit,
+        offset=offset,
+        channel=channel,
+        deleted=deleted,
+        match_id=match_id,
+        party_id=party_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(SearchSessionsV2)
+def search_sessions_v2(limit: float, offset: float, channel: Optional[str] = None, deleted: Optional[bool] = None, match_id: Optional[str] = None, party_id: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = SearchSessionsV2.create(
+        limit=limit,
+        offset=offset,
+        channel=channel,
+        deleted=deleted,
+        match_id=match_id,
+        party_id=party_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(SearchSessionsV2)
+async def search_sessions_v2_async(limit: float, offset: float, channel: Optional[str] = None, deleted: Optional[bool] = None, match_id: Optional[str] = None, party_id: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = SearchSessionsV2.create(
         limit=limit,
         offset=offset,
         channel=channel,

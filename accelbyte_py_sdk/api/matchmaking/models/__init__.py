@@ -1,6 +1,6 @@
 """Auto-generated package that contains models used by the Justice Matchmaking Service."""
 
-__version__ = "2.13.1"
+__version__ = "2.13.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -49,3 +49,5 @@ from .response_error_v1 import ResponseErrorV1
 from .service_get_session_history_detailed_response_item import ServiceGetSessionHistoryDetailedResponseItem
 from .service_get_session_history_search_response import ServiceGetSessionHistorySearchResponse
 from .service_get_session_history_search_response_item import ServiceGetSessionHistorySearchResponseItem
+from .service_get_session_history_search_response_item_v2 import ServiceGetSessionHistorySearchResponseItemV2
+from .service_get_session_history_search_response_v2 import ServiceGetSessionHistorySearchResponseV2

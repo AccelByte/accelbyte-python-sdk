@@ -1,6 +1,6 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# Justice Matchmaking Service Index (2.13.1)
+# Justice Matchmaking Service Index (2.13.2)
 
 
 ## Operations
@@ -28,6 +28,7 @@
 | /matchmaking/namespaces/{namespace}/sessions/{matchID}/status | GET | QuerySessionHandler | [QuerySessionHandler](../accelbyte_py_sdk/api/matchmaking/operations/matchmaking/query_session_handler.py) | [query_session_handler](../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking.py) |
 | /matchmaking/namespaces/{namespace}/sessions | POST | QueueSessionHandler | [QueueSessionHandler](../accelbyte_py_sdk/api/matchmaking/operations/matchmaking/queue_session_handler.py) | [queue_session_handler](../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking.py) |
 | /matchmaking/v1/admin/namespaces/{namespace}/sessions/history/search | GET | SearchSessions | [SearchSessions](../accelbyte_py_sdk/api/matchmaking/operations/matchmaking/search_sessions.py) | [search_sessions](../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking.py) |
+| /matchmaking/v2/admin/namespaces/{namespace}/sessions/history/search | GET | SearchSessionsV2 | [SearchSessionsV2](../accelbyte_py_sdk/api/matchmaking/operations/matchmaking/search_sessions_v2.py) | [search_sessions_v2](../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking.py) |
 | /matchmaking/namespaces/{namespace}/matchresult | POST | StoreMatchResults | [StoreMatchResults](../accelbyte_py_sdk/api/matchmaking/operations/matchmaking/store_match_results.py) | [store_match_results](../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking.py) |
 | /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName} | PATCH | UpdateMatchmakingChannel | [UpdateMatchmakingChannel](../accelbyte_py_sdk/api/matchmaking/operations/matchmaking/update_matchmaking_channel.py) | [update_matchmaking_channel](../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking.py) |
 
@@ -89,3 +90,5 @@
 | service.GetSessionHistoryDetailedResponseItem | [ServiceGetSessionHistoryDetailedResponseItem](../accelbyte_py_sdk/api/matchmaking/models/service_get_session_history_detailed_response_item.py) |
 | service.GetSessionHistorySearchResponse | [ServiceGetSessionHistorySearchResponse](../accelbyte_py_sdk/api/matchmaking/models/service_get_session_history_search_response.py) |
 | service.GetSessionHistorySearchResponseItem | [ServiceGetSessionHistorySearchResponseItem](../accelbyte_py_sdk/api/matchmaking/models/service_get_session_history_search_response_item.py) |
+| service.GetSessionHistorySearchResponseItemV2 | [ServiceGetSessionHistorySearchResponseItemV2](../accelbyte_py_sdk/api/matchmaking/models/service_get_session_history_search_response_item_v2.py) |
+| service.GetSessionHistorySearchResponseV2 | [ServiceGetSessionHistorySearchResponseV2](../accelbyte_py_sdk/api/matchmaking/models/service_get_session_history_search_response_v2.py) |

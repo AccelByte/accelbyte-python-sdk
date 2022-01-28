@@ -1,4 +1,4 @@
-# justice-iam-service (5.0.0)
+# justice-iam-service (5.1.1)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -57,6 +57,7 @@ from ..api.iam.models import AccountcommonPermissionV3
 from ..api.iam.models import AccountcommonPermissions
 from ..api.iam.models import AccountcommonPermissionsV3
 from ..api.iam.models import AccountcommonPlatformAccount
+from ..api.iam.models import AccountcommonRegisteredDomain
 from ..api.iam.models import AccountcommonRole
 from ..api.iam.models import AccountcommonRoleManager
 from ..api.iam.models import AccountcommonRoleManagerV3
@@ -127,6 +128,9 @@ from ..api.iam.models import ModelListUserRolesV4Response
 from ..api.iam.models import ModelLoginHistoriesResponse
 from ..api.iam.models import ModelNamespaceRoleRequest
 from ..api.iam.models import ModelPermissionDeleteRequest
+from ..api.iam.models import ModelPlatformDomainDeleteRequest
+from ..api.iam.models import ModelPlatformDomainResponse
+from ..api.iam.models import ModelPlatformDomainUpdateRequest
 from ..api.iam.models import ModelPlatformUserIDRequest
 from ..api.iam.models import ModelPlatformUserInformation
 from ..api.iam.models import ModelPublicThirdPartyPlatformInfo
@@ -529,6 +533,15 @@ def create_accountcommon_platform_account_example() -> AccountcommonPlatformAcco
     instance = AccountcommonPlatformAccount()
     instance.namespace = randomize("slug")
     instance.platform_user_id = randomize()
+    return instance
+
+
+def create_accountcommon_registered_domain_example() -> AccountcommonRegisteredDomain:
+    instance = AccountcommonRegisteredDomain()
+    instance.affected_client_i_ds = [randomize()]
+    instance.domain = randomize()
+    instance.namespaces = [randomize()]
+    instance.role_id = randomize("uid")
     return instance
 
 
@@ -1106,6 +1119,27 @@ def create_model_permission_delete_request_example() -> ModelPermissionDeleteReq
     return instance
 
 
+def create_model_platform_domain_delete_request_example() -> ModelPlatformDomainDeleteRequest:
+    instance = ModelPlatformDomainDeleteRequest()
+    instance.domain = randomize()
+    return instance
+
+
+def create_model_platform_domain_response_example() -> ModelPlatformDomainResponse:
+    instance = ModelPlatformDomainResponse()
+    instance.registered_domains = [create_accountcommon_registered_domain_example()]
+    return instance
+
+
+def create_model_platform_domain_update_request_example() -> ModelPlatformDomainUpdateRequest:
+    instance = ModelPlatformDomainUpdateRequest()
+    instance.affected_client_i_ds = [randomize()]
+    instance.assigned_namespaces = [randomize()]
+    instance.domain = randomize()
+    instance.role_id = randomize("uid")
+    return instance
+
+
 def create_model_platform_user_id_request_example() -> ModelPlatformUserIDRequest:
     instance = ModelPlatformUserIDRequest()
     instance.platform_user_ids = [randomize()]
@@ -1500,6 +1534,7 @@ def create_model_third_party_login_platform_credential_response_example() -> Mod
     instance.organization_id = randomize()
     instance.platform_id = randomize()
     instance.redirect_uri = randomize()
+    instance.registered_domains = [create_accountcommon_registered_domain_example()]
     instance.secret = randomize()
     instance.team_id = randomize()
     return instance
@@ -2021,10 +2056,13 @@ def create_oauthmodel_token_response_v3_example() -> OauthmodelTokenResponseV3:
     instance.namespace = randomize("slug")
     instance.namespace_roles = [create_accountcommon_namespace_role_example()]
     instance.permissions = [create_accountcommon_permission_v3_example()]
+    instance.refresh_expires_in = randomize("int", min_val=1, max_val=1000)
     instance.refresh_token = randomize()
     instance.roles = [randomize()]
+    instance.scope = randomize()
     instance.token_type = randomize()
     instance.user_id = randomize("uid")
+    instance.xuid = randomize()
     instance.is_comply = randomize("bool")
     instance.jflgs = randomize("int", min_val=1, max_val=1000)
     instance.platform_id = randomize()

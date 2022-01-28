@@ -1,6 +1,6 @@
 """Auto-generated top-level package for the justice-leaderboard-service."""
 
-__version__ = "2.11.2"
+__version__ = "2.12.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

@@ -22,5 +22,6 @@ from .public_get_single_match_188a61 import PublicGetSingleMatchmakingChannel
 from .query_session_handler import QuerySessionHandler
 from .queue_session_handler import QueueSessionHandler
 from .search_sessions import SearchSessions
+from .search_sessions_v2 import SearchSessionsV2
 from .store_match_results import StoreMatchResults
 from .update_matchmaking_channel import UpdateMatchmakingChannel

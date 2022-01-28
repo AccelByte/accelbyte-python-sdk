@@ -1,6 +1,6 @@
 """Auto-generated top-level package for the justice-iam-service."""
 
-__version__ = "5.0.0"
+__version__ = "5.1.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -253,6 +253,8 @@ from .wrappers import add_third_party_login_platform_credential_v3
 from .wrappers import add_third_party_login_platform_credential_v3_async
 from .wrappers import delete_third_party_login_platform_credential_v3
 from .wrappers import delete_third_party_login_platform_credential_v3_async
+from .wrappers import delete_third_party_login_platform_domain_v3
+from .wrappers import delete_third_party_login_platform_domain_v3_async
 from .wrappers import retrieve_all_active_third_party_login_platform_credential_public_v3
 from .wrappers import retrieve_all_active_third_party_login_platform_credential_public_v3_async
 from .wrappers import retrieve_all_active_third_party_login_platform_credential_v3
@@ -263,6 +265,8 @@ from .wrappers import retrieve_third_party_login_platform_credential_v3
 from .wrappers import retrieve_third_party_login_platform_credential_v3_async
 from .wrappers import update_third_party_login_platform_credential_v3
 from .wrappers import update_third_party_login_platform_credential_v3_async
+from .wrappers import update_third_party_login_platform_domain_v3
+from .wrappers import update_third_party_login_platform_domain_v3_async
 
 # users
 from .wrappers import add_user_permission

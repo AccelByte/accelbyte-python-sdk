@@ -1,4 +1,4 @@
-# justice-iam-service (5.0.0)
+# justice-iam-service (5.1.1)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -48,13 +48,19 @@ class OauthmodelTokenResponseV3(Model):
 
         permissions: (permissions) REQUIRED List[AccountcommonPermissionV3]
 
+        refresh_expires_in: (refresh_expires_in) REQUIRED int
+
         refresh_token: (refresh_token) REQUIRED str
 
         roles: (roles) REQUIRED List[str]
 
+        scope: (scope) REQUIRED str
+
         token_type: (token_type) REQUIRED str
 
         user_id: (user_id) REQUIRED str
+
+        xuid: (xuid) REQUIRED str
 
         is_comply: (is_comply) OPTIONAL bool
 
@@ -74,10 +80,13 @@ class OauthmodelTokenResponseV3(Model):
     namespace: str                                                                                 # REQUIRED
     namespace_roles: List[AccountcommonNamespaceRole]                                              # REQUIRED
     permissions: List[AccountcommonPermissionV3]                                                   # REQUIRED
+    refresh_expires_in: int                                                                        # REQUIRED
     refresh_token: str                                                                             # REQUIRED
     roles: List[str]                                                                               # REQUIRED
+    scope: str                                                                                     # REQUIRED
     token_type: str                                                                                # REQUIRED
     user_id: str                                                                                   # REQUIRED
+    xuid: str                                                                                      # REQUIRED
     is_comply: bool                                                                                # OPTIONAL
     jflgs: int                                                                                     # OPTIONAL
     platform_id: str                                                                               # OPTIONAL
@@ -115,6 +124,10 @@ class OauthmodelTokenResponseV3(Model):
         self.permissions = value
         return self
 
+    def with_refresh_expires_in(self, value: int) -> OauthmodelTokenResponseV3:
+        self.refresh_expires_in = value
+        return self
+
     def with_refresh_token(self, value: str) -> OauthmodelTokenResponseV3:
         self.refresh_token = value
         return self
@@ -123,12 +136,20 @@ class OauthmodelTokenResponseV3(Model):
         self.roles = value
         return self
 
+    def with_scope(self, value: str) -> OauthmodelTokenResponseV3:
+        self.scope = value
+        return self
+
     def with_token_type(self, value: str) -> OauthmodelTokenResponseV3:
         self.token_type = value
         return self
 
     def with_user_id(self, value: str) -> OauthmodelTokenResponseV3:
         self.user_id = value
+        return self
+
+    def with_xuid(self, value: str) -> OauthmodelTokenResponseV3:
+        self.xuid = value
         return self
 
     def with_is_comply(self, value: bool) -> OauthmodelTokenResponseV3:
@@ -181,6 +202,10 @@ class OauthmodelTokenResponseV3(Model):
             result["permissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.permissions]
         elif include_empty:
             result["permissions"] = []
+        if hasattr(self, "refresh_expires_in"):
+            result["refresh_expires_in"] = int(self.refresh_expires_in)
+        elif include_empty:
+            result["refresh_expires_in"] = int()
         if hasattr(self, "refresh_token"):
             result["refresh_token"] = str(self.refresh_token)
         elif include_empty:
@@ -189,6 +214,10 @@ class OauthmodelTokenResponseV3(Model):
             result["roles"] = [str(i0) for i0 in self.roles]
         elif include_empty:
             result["roles"] = []
+        if hasattr(self, "scope"):
+            result["scope"] = str(self.scope)
+        elif include_empty:
+            result["scope"] = str()
         if hasattr(self, "token_type"):
             result["token_type"] = str(self.token_type)
         elif include_empty:
@@ -197,6 +226,10 @@ class OauthmodelTokenResponseV3(Model):
             result["user_id"] = str(self.user_id)
         elif include_empty:
             result["user_id"] = str()
+        if hasattr(self, "xuid"):
+            result["xuid"] = str(self.xuid)
+        elif include_empty:
+            result["xuid"] = str()
         if hasattr(self, "is_comply"):
             result["is_comply"] = bool(self.is_comply)
         elif include_empty:
@@ -229,10 +262,13 @@ class OauthmodelTokenResponseV3(Model):
         namespace: str,
         namespace_roles: List[AccountcommonNamespaceRole],
         permissions: List[AccountcommonPermissionV3],
+        refresh_expires_in: int,
         refresh_token: str,
         roles: List[str],
+        scope: str,
         token_type: str,
         user_id: str,
+        xuid: str,
         is_comply: Optional[bool] = None,
         jflgs: Optional[int] = None,
         platform_id: Optional[str] = None,
@@ -246,10 +282,13 @@ class OauthmodelTokenResponseV3(Model):
         instance.namespace = namespace
         instance.namespace_roles = namespace_roles
         instance.permissions = permissions
+        instance.refresh_expires_in = refresh_expires_in
         instance.refresh_token = refresh_token
         instance.roles = roles
+        instance.scope = scope
         instance.token_type = token_type
         instance.user_id = user_id
+        instance.xuid = xuid
         if is_comply is not None:
             instance.is_comply = is_comply
         if jflgs is not None:
@@ -293,6 +332,10 @@ class OauthmodelTokenResponseV3(Model):
             instance.permissions = [AccountcommonPermissionV3.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["permissions"]]
         elif include_empty:
             instance.permissions = []
+        if "refresh_expires_in" in dict_ and dict_["refresh_expires_in"] is not None:
+            instance.refresh_expires_in = int(dict_["refresh_expires_in"])
+        elif include_empty:
+            instance.refresh_expires_in = int()
         if "refresh_token" in dict_ and dict_["refresh_token"] is not None:
             instance.refresh_token = str(dict_["refresh_token"])
         elif include_empty:
@@ -301,6 +344,10 @@ class OauthmodelTokenResponseV3(Model):
             instance.roles = [str(i0) for i0 in dict_["roles"]]
         elif include_empty:
             instance.roles = []
+        if "scope" in dict_ and dict_["scope"] is not None:
+            instance.scope = str(dict_["scope"])
+        elif include_empty:
+            instance.scope = str()
         if "token_type" in dict_ and dict_["token_type"] is not None:
             instance.token_type = str(dict_["token_type"])
         elif include_empty:
@@ -309,6 +356,10 @@ class OauthmodelTokenResponseV3(Model):
             instance.user_id = str(dict_["user_id"])
         elif include_empty:
             instance.user_id = str()
+        if "xuid" in dict_ and dict_["xuid"] is not None:
+            instance.xuid = str(dict_["xuid"])
+        elif include_empty:
+            instance.xuid = str()
         if "is_comply" in dict_ and dict_["is_comply"] is not None:
             instance.is_comply = bool(dict_["is_comply"])
         elif include_empty:
@@ -355,10 +406,13 @@ class OauthmodelTokenResponseV3(Model):
             "namespace": "namespace",
             "namespace_roles": "namespace_roles",
             "permissions": "permissions",
+            "refresh_expires_in": "refresh_expires_in",
             "refresh_token": "refresh_token",
             "roles": "roles",
+            "scope": "scope",
             "token_type": "token_type",
             "user_id": "user_id",
+            "xuid": "xuid",
             "is_comply": "is_comply",
             "jflgs": "jflgs",
             "platform_id": "platform_id",

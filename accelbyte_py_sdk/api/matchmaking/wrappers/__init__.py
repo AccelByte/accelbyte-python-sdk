@@ -1,6 +1,6 @@
 """Auto-generated package that contains utility functions for the Justice Matchmaking Service."""
 
-__version__ = "2.13.1"
+__version__ = "2.13.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -48,6 +48,8 @@ from ._matchmaking import queue_session_handler
 from ._matchmaking import queue_session_handler_async
 from ._matchmaking import search_sessions
 from ._matchmaking import search_sessions_async
+from ._matchmaking import search_sessions_v2
+from ._matchmaking import search_sessions_v2_async
 from ._matchmaking import store_match_results
 from ._matchmaking import store_match_results_async
 from ._matchmaking import update_matchmaking_channel

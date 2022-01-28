@@ -1,4 +1,4 @@
-# justice-iam-service (5.0.0)
+# justice-iam-service (5.1.1)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -24,6 +24,8 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+
+from ..models.accountcommon_registered_domain import AccountcommonRegisteredDomain
 
 
 class ModelThirdPartyLoginPlatformCredentialResponse(Model):
@@ -56,6 +58,8 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
 
         redirect_uri: (RedirectUri) REQUIRED str
 
+        registered_domains: (registeredDomains) REQUIRED List[AccountcommonRegisteredDomain]
+
         secret: (Secret) REQUIRED str
 
         team_id: (TeamID) REQUIRED str
@@ -76,6 +80,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
     organization_id: str                                                                           # REQUIRED
     platform_id: str                                                                               # REQUIRED
     redirect_uri: str                                                                              # REQUIRED
+    registered_domains: List[AccountcommonRegisteredDomain]                                        # REQUIRED
     secret: str                                                                                    # REQUIRED
     team_id: str                                                                                   # REQUIRED
 
@@ -133,6 +138,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
 
     def with_redirect_uri(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.redirect_uri = value
+        return self
+
+    def with_registered_domains(self, value: List[AccountcommonRegisteredDomain]) -> ModelThirdPartyLoginPlatformCredentialResponse:
+        self.registered_domains = value
         return self
 
     def with_secret(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
@@ -201,6 +210,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             result["RedirectUri"] = str(self.redirect_uri)
         elif include_empty:
             result["RedirectUri"] = str()
+        if hasattr(self, "registered_domains"):
+            result["registeredDomains"] = [i0.to_dict(include_empty=include_empty) for i0 in self.registered_domains]
+        elif include_empty:
+            result["registeredDomains"] = []
         if hasattr(self, "secret"):
             result["Secret"] = str(self.secret)
         elif include_empty:
@@ -231,6 +244,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         organization_id: str,
         platform_id: str,
         redirect_uri: str,
+        registered_domains: List[AccountcommonRegisteredDomain],
         secret: str,
         team_id: str,
     ) -> ModelThirdPartyLoginPlatformCredentialResponse:
@@ -248,6 +262,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         instance.organization_id = organization_id
         instance.platform_id = platform_id
         instance.redirect_uri = redirect_uri
+        instance.registered_domains = registered_domains
         instance.secret = secret
         instance.team_id = team_id
         return instance
@@ -309,6 +324,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             instance.redirect_uri = str(dict_["RedirectUri"])
         elif include_empty:
             instance.redirect_uri = str()
+        if "registeredDomains" in dict_ and dict_["registeredDomains"] is not None:
+            instance.registered_domains = [AccountcommonRegisteredDomain.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["registeredDomains"]]
+        elif include_empty:
+            instance.registered_domains = []
         if "Secret" in dict_ and dict_["Secret"] is not None:
             instance.secret = str(dict_["Secret"])
         elif include_empty:
@@ -353,6 +372,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             "OrganizationId": "organization_id",
             "PlatformId": "platform_id",
             "RedirectUri": "redirect_uri",
+            "registeredDomains": "registered_domains",
             "Secret": "secret",
             "TeamID": "team_id",
         }

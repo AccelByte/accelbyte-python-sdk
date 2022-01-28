@@ -1,6 +1,6 @@
 """Auto-generated package that contains models used by the justice-iam-service."""
 
-__version__ = "5.0.0"
+__version__ = "5.1.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -43,6 +43,7 @@ from .accountcommon_permission_v3 import AccountcommonPermissionV3
 from .accountcommon_permissions import AccountcommonPermissions
 from .accountcommon_permissions_v3 import AccountcommonPermissionsV3
 from .accountcommon_platform_account import AccountcommonPlatformAccount
+from .accountcommon_registered_domain import AccountcommonRegisteredDomain
 from .accountcommon_role import AccountcommonRole
 from .accountcommon_role_manager import AccountcommonRoleManager
 from .accountcommon_role_manager_v3 import AccountcommonRoleManagerV3
@@ -113,6 +114,9 @@ from .model_list_user_roles_v4_response import ModelListUserRolesV4Response
 from .model_login_histories_response import ModelLoginHistoriesResponse
 from .model_namespace_role_request import ModelNamespaceRoleRequest
 from .model_permission_delete_request import ModelPermissionDeleteRequest
+from .model_platform_domain_delete_request import ModelPlatformDomainDeleteRequest
+from .model_platform_domain_response import ModelPlatformDomainResponse
+from .model_platform_domain_update_request import ModelPlatformDomainUpdateRequest
 from .model_platform_user_id_request import ModelPlatformUserIDRequest
 from .model_platform_user_information import ModelPlatformUserInformation
 from .model_public_third_party_platform_info import ModelPublicThirdPartyPlatformInfo

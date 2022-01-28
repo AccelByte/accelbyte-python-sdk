@@ -1,6 +1,6 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-iam-service Index (5.0.0)
+# justice-iam-service Index (5.1.1)
 
 
 ## Operations
@@ -160,11 +160,13 @@
 |---|---|---|---|---|
 | /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients | POST | AddThirdPartyLoginPlatformCredentialV3 | [AddThirdPartyLoginPlatformCredentialV3](../accelbyte_py_sdk/api/iam/operations/third_party_credential/add_third_party_login_p_99d6dd.py) | [add_third_party_login_platform_credential_v3](../accelbyte_py_sdk/api/iam/wrappers/_third_party_credential.py) |
 | /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients | DELETE | DeleteThirdPartyLoginPlatformCredentialV3 | [DeleteThirdPartyLoginPlatformCredentialV3](../accelbyte_py_sdk/api/iam/operations/third_party_credential/delete_third_party_logi_e29526.py) | [delete_third_party_login_platform_credential_v3](../accelbyte_py_sdk/api/iam/wrappers/_third_party_credential.py) |
+| /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients/domain | DELETE | DeleteThirdPartyLoginPlatformDomainV3 | [DeleteThirdPartyLoginPlatformDomainV3](../accelbyte_py_sdk/api/iam/operations/third_party_credential/delete_third_party_logi_e59b10.py) | [delete_third_party_login_platform_domain_v3](../accelbyte_py_sdk/api/iam/wrappers/_third_party_credential.py) |
 | /iam/v3/public/namespaces/{namespace}/platforms/clients/active | GET | RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3 | [RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3](../accelbyte_py_sdk/api/iam/operations/third_party_credential/retrieve_all_active_thi_cf6883.py) | [retrieve_all_active_third_party_login_platform_credential_public_v3](../accelbyte_py_sdk/api/iam/wrappers/_third_party_credential.py) |
 | /iam/v3/admin/namespaces/{namespace}/platforms/all/clients/active | GET | RetrieveAllActiveThirdPartyLoginPlatformCredentialV3 | [RetrieveAllActiveThirdPartyLoginPlatformCredentialV3](../accelbyte_py_sdk/api/iam/operations/third_party_credential/retrieve_all_active_thi_9dd8d4.py) | [retrieve_all_active_third_party_login_platform_credential_v3](../accelbyte_py_sdk/api/iam/wrappers/_third_party_credential.py) |
 | /iam/v3/admin/namespaces/{namespace}/platforms/all/clients | GET | RetrieveAllThirdPartyLoginPlatformCredentialV3 | [RetrieveAllThirdPartyLoginPlatformCredentialV3](../accelbyte_py_sdk/api/iam/operations/third_party_credential/retrieve_all_third_part_cc58d5.py) | [retrieve_all_third_party_login_platform_credential_v3](../accelbyte_py_sdk/api/iam/wrappers/_third_party_credential.py) |
 | /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients | GET | RetrieveThirdPartyLoginPlatformCredentialV3 | [RetrieveThirdPartyLoginPlatformCredentialV3](../accelbyte_py_sdk/api/iam/operations/third_party_credential/retrieve_third_party_lo_3cce91.py) | [retrieve_third_party_login_platform_credential_v3](../accelbyte_py_sdk/api/iam/wrappers/_third_party_credential.py) |
 | /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients | PATCH | UpdateThirdPartyLoginPlatformCredentialV3 | [UpdateThirdPartyLoginPlatformCredentialV3](../accelbyte_py_sdk/api/iam/operations/third_party_credential/update_third_party_logi_d9dd29.py) | [update_third_party_login_platform_credential_v3](../accelbyte_py_sdk/api/iam/wrappers/_third_party_credential.py) |
+| /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients/domain | PUT | UpdateThirdPartyLoginPlatformDomainV3 | [UpdateThirdPartyLoginPlatformDomainV3](../accelbyte_py_sdk/api/iam/operations/third_party_credential/update_third_party_logi_85d26c.py) | [update_third_party_login_platform_domain_v3](../accelbyte_py_sdk/api/iam/wrappers/_third_party_credential.py) |
 
 ### Users
 | Endpoint | Method | ID | Class | Wrapper |
@@ -364,6 +366,7 @@
 | accountcommon.Permissions | [AccountcommonPermissions](../accelbyte_py_sdk/api/iam/models/accountcommon_permissions.py) |
 | accountcommon.PermissionsV3 | [AccountcommonPermissionsV3](../accelbyte_py_sdk/api/iam/models/accountcommon_permissions_v3.py) |
 | accountcommon.PlatformAccount | [AccountcommonPlatformAccount](../accelbyte_py_sdk/api/iam/models/accountcommon_platform_account.py) |
+| accountcommon.RegisteredDomain | [AccountcommonRegisteredDomain](../accelbyte_py_sdk/api/iam/models/accountcommon_registered_domain.py) |
 | accountcommon.Role | [AccountcommonRole](../accelbyte_py_sdk/api/iam/models/accountcommon_role.py) |
 | accountcommon.RoleManager | [AccountcommonRoleManager](../accelbyte_py_sdk/api/iam/models/accountcommon_role_manager.py) |
 | accountcommon.RoleManagerV3 | [AccountcommonRoleManagerV3](../accelbyte_py_sdk/api/iam/models/accountcommon_role_manager_v3.py) |
@@ -434,6 +437,9 @@
 | model.LoginHistoriesResponse | [ModelLoginHistoriesResponse](../accelbyte_py_sdk/api/iam/models/model_login_histories_response.py) |
 | model.NamespaceRoleRequest | [ModelNamespaceRoleRequest](../accelbyte_py_sdk/api/iam/models/model_namespace_role_request.py) |
 | model.PermissionDeleteRequest | [ModelPermissionDeleteRequest](../accelbyte_py_sdk/api/iam/models/model_permission_delete_request.py) |
+| model.PlatformDomainDeleteRequest | [ModelPlatformDomainDeleteRequest](../accelbyte_py_sdk/api/iam/models/model_platform_domain_delete_request.py) |
+| model.PlatformDomainResponse | [ModelPlatformDomainResponse](../accelbyte_py_sdk/api/iam/models/model_platform_domain_response.py) |
+| model.PlatformDomainUpdateRequest | [ModelPlatformDomainUpdateRequest](../accelbyte_py_sdk/api/iam/models/model_platform_domain_update_request.py) |
 | model.PlatformUserIDRequest | [ModelPlatformUserIDRequest](../accelbyte_py_sdk/api/iam/models/model_platform_user_id_request.py) |
 | model.PlatformUserInformation | [ModelPlatformUserInformation](../accelbyte_py_sdk/api/iam/models/model_platform_user_information.py) |
 | model.PublicThirdPartyPlatformInfo | [ModelPublicThirdPartyPlatformInfo](../accelbyte_py_sdk/api/iam/models/model_public_third_party_platform_info.py) |

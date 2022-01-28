@@ -32,8 +32,9 @@ from ...models import HTTPValidationError
 class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut(Operation):
     """Protected Update Playtime (protected_update_playtime_game_telemetry_v1_protected_steamIds__steamId__playtime__playtime__put)
 
-    This endpoint update player's total playtime in a specific game (AppId) from
-    service's cache.
+    This endpoint requires valid JWT token. This endpoint does not require
+    permission. This endpoint update player's total playtime in a specific game
+    (AppId) from service's cache.
 
 
     Properties:

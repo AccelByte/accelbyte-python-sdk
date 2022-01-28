@@ -1,6 +1,6 @@
 """Auto-generated package that contains utility functions for the justice-iam-service."""
 
-__version__ = "5.0.0"
+__version__ = "5.1.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -242,6 +242,8 @@ from ._third_party_credential import add_third_party_login_platform_credential_v
 from ._third_party_credential import add_third_party_login_platform_credential_v3_async
 from ._third_party_credential import delete_third_party_login_platform_credential_v3
 from ._third_party_credential import delete_third_party_login_platform_credential_v3_async
+from ._third_party_credential import delete_third_party_login_platform_domain_v3
+from ._third_party_credential import delete_third_party_login_platform_domain_v3_async
 from ._third_party_credential import retrieve_all_active_third_party_login_platform_credential_public_v3
 from ._third_party_credential import retrieve_all_active_third_party_login_platform_credential_public_v3_async
 from ._third_party_credential import retrieve_all_active_third_party_login_platform_credential_v3
@@ -252,6 +254,8 @@ from ._third_party_credential import retrieve_third_party_login_platform_credent
 from ._third_party_credential import retrieve_third_party_login_platform_credential_v3_async
 from ._third_party_credential import update_third_party_login_platform_credential_v3
 from ._third_party_credential import update_third_party_login_platform_credential_v3_async
+from ._third_party_credential import update_third_party_login_platform_domain_v3
+from ._third_party_credential import update_third_party_login_platform_domain_v3_async
 
 from ._users import add_user_permission
 from ._users import add_user_permission_async

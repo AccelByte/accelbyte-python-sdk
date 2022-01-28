@@ -1,6 +1,6 @@
 """Auto-generated top-level package for the Justice Matchmaking Service."""
 
-__version__ = "2.13.1"
+__version__ = "2.13.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -49,6 +49,8 @@ from .wrappers import queue_session_handler
 from .wrappers import queue_session_handler_async
 from .wrappers import search_sessions
 from .wrappers import search_sessions_async
+from .wrappers import search_sessions_v2
+from .wrappers import search_sessions_v2_async
 from .wrappers import store_match_results
 from .wrappers import store_match_results_async
 from .wrappers import update_matchmaking_channel
