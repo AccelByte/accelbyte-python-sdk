@@ -1,4 +1,4 @@
-# justice-iam-service (5.0.0)
+# justice-iam-service (5.1.1)
 
 # Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -136,6 +136,8 @@ from ._retrieve_third_party_login_platform_credential_v3 import retrieve_third_p
 from ._add_third_party_login_platform_credential_v3 import add_third_party_login_platform_credential_v3
 from ._delete_third_party_login_platform_credential_v3 import delete_third_party_login_platform_credential_v3
 from ._update_third_party_login_platform_credential_v3 import update_third_party_login_platform_credential_v3
+from ._update_third_party_login_platform_domain_v3 import update_third_party_login_platform_domain_v3
+from ._delete_third_party_login_platform_domain_v3 import delete_third_party_login_platform_domain_v3
 from ._retrieve_sso_login_platform_credential import retrieve_sso_login_platform_credential
 from ._add_sso_login_platform_credential import add_sso_login_platform_credential
 from ._delete_sso_login_platform_credential_v3 import delete_sso_login_platform_credential_v3
@@ -407,6 +409,8 @@ commands = [
     add_third_party_login_platform_credential_v3,
     delete_third_party_login_platform_credential_v3,
     update_third_party_login_platform_credential_v3,
+    update_third_party_login_platform_domain_v3,
+    delete_third_party_login_platform_domain_v3,
     retrieve_sso_login_platform_credential,
     add_sso_login_platform_credential,
     delete_sso_login_platform_credential_v3,

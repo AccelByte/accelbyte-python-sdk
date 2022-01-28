@@ -1,4 +1,4 @@
-# Justice Matchmaking Service (2.13.1)
+# Justice Matchmaking Service (2.13.2)
 
 # Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -32,6 +32,7 @@ from ._get_session_history_detailed import get_session_history_detailed
 from ._public_get_messages import public_get_messages
 from ._public_get_all_matchmaking_channel import public_get_all_matchmaking_channel
 from ._public_get_single_matchmaking_channel import public_get_single_matchmaking_channel
+from ._search_sessions_v2 import search_sessions_v2
 from ._version_check_handler import version_check_handler
 
 
@@ -62,5 +63,6 @@ commands = [
     public_get_messages,
     public_get_all_matchmaking_channel,
     public_get_single_matchmaking_channel,
+    search_sessions_v2,
     version_check_handler,
 ]
