@@ -1,6 +1,8 @@
 # Changelog
 
 ## v0.7.0
+- Add additional object to class methods
+- Truncate file names that are too long
 - Updated APIs
     - gametelemetry
         - update descriptions in endpoints
