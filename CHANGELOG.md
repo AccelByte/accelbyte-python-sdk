@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.7.0
+- Updated APIs
+    - gametelemetry
+        - update descriptions in endpoints
+    - gdpr
+        - version bump only
+    - iam
+        - add, update endpoints
+    - leaderboard
+        - version bump only
+    - matchmaking
+        - add endpoints
+
 ## v0.6.0
 - Fix handling of operations that don't have any parameters
 - Fix handling of bytes responses
