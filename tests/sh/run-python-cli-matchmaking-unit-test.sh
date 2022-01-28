@@ -12,7 +12,7 @@ MODULE='accelbyte_py_sdk_cli'
 MODULE_PATH='../samples/cli'
 TEMP_FILE='file.tmp'
 
-OPERATIONS_COUNT=27
+OPERATIONS_COUNT=28
 
 FINISHED_COUNT=0
 SUCCESS_COUNT=0
@@ -272,7 +272,16 @@ $PYTHON -m $MODULE 'matchmaking-public-get-single-matchmaking-channel' \
 update_status $? 'PublicGetSingleMatchmakingChannel'
 delete_file $TEMP_FILE
 
-#- 27 VersionCheckHandler
+#- 27 SearchSessionsV2
+$PYTHON -m $MODULE 'matchmaking-search-sessions-v2' \
+    '0.9303222928912993' \
+    '0.2857255039397766' \
+    --login_as client \
+    >$TEMP_FILE 2>&1
+update_status $? 'SearchSessionsV2'
+delete_file $TEMP_FILE
+
+#- 28 VersionCheckHandler
 $PYTHON -m $MODULE 'matchmaking-version-check-handler' \
     --login_as client \
     >$TEMP_FILE 2>&1
