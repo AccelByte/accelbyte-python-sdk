@@ -1,7 +1,7 @@
 # Test Results
 
 ```tap
-./../../tests/sh/run-python-cli-dsmc-unit-test.sh
+sh/run-python-cli-dsmc-unit-test.sh
 
 TAP version 13
 1..63
@@ -71,7 +71,7 @@ ok 63 PublicGetMessages
 ```
 
 ```tap
-./../../tests/sh/run-python-cli-achievement-unit-test.sh
+sh/run-python-cli-achievement-unit-test.sh
 
 TAP version 13
 1..14
@@ -92,10 +92,10 @@ ok 14 PublicUnlockAchievement
 ```
 
 ```tap
-./../../tests/sh/run-python-cli-iam-unit-test.sh
+sh/run-python-cli-iam-unit-test.sh
 
 TAP version 13
-1..262
+1..270
 ok 1 GetBansType
 ok 2 GetListBanReason
 ok 3 GetClients (skipped deprecated)
@@ -201,167 +201,175 @@ ok 102 PublicPlatformLinkV2
 ok 103 PublicDeletePlatformLinkV2
 ok 104 AdminGetBansTypeV3
 ok 105 AdminGetListBanReasonV3
-ok 106 ListAdminsV3
-ok 107 AdminGetAgeRestrictionStatusV3
-ok 108 AdminUpdateAgeRestrictionConfigV3
-ok 109 AdminGetListCountryAgeRestrictionV3
-ok 110 AdminUpdateCountryAgeRestrictionV3
-ok 111 AdminGetBannedUsersV3
-ok 112 AdminGetBansTypeWithNamespaceV3
-ok 113 AdminGetClientsByNamespaceV3
-ok 114 AdminCreateClientV3
-ok 115 AdminGetClientsbyNamespacebyIDV3
-ok 116 AdminDeleteClientV3
-ok 117 AdminUpdateClientV3
-ok 118 AdminUpdateClientPermissionV3
-ok 119 AdminAddClientPermissionsV3
-ok 120 AdminDeleteClientPermissionV3
-ok 121 RetrieveAllThirdPartyLoginPlatformCredentialV3
-ok 122 RetrieveAllActiveThirdPartyLoginPlatformCredentialV3
-ok 123 RetrieveAllSSOLoginPlatformCredentialV3
-ok 124 RetrieveThirdPartyLoginPlatformCredentialV3
-ok 125 AddThirdPartyLoginPlatformCredentialV3
-ok 126 DeleteThirdPartyLoginPlatformCredentialV3
-ok 127 UpdateThirdPartyLoginPlatformCredentialV3
-ok 128 RetrieveSSOLoginPlatformCredential
-ok 129 AddSSOLoginPlatformCredential
-ok 130 DeleteSSOLoginPlatformCredentialV3
-ok 131 UpdateSSOPlatformCredential
-ok 132 AdminGetUserByPlatformUserIDV3
-ok 133 GetAdminUsersByRoleIdV3
-ok 134 AdminGetUserByEmailAddressV3
-ok 135 AdminInviteUserV3
-ok 136 AdminListUsersV3
-ok 137 AdminSearchUserV3
-ok 138 AdminGetBulkUserByEmailAddressV3
-ok 139 AdminGetUserByUserIdV3
-ok 140 AdminUpdateUserV3
-ok 141 AdminGetUserBanV3
-ok 142 AdminBanUserV3
-ok 143 AdminUpdateUserBanV3
-ok 144 AdminSendVerificationCodeV3
-ok 145 AdminVerifyAccountV3
-ok 146 GetUserVerificationCode
-ok 147 AdminGetUserDeletionStatusV3
-ok 148 AdminUpdateUserDeletionStatusV3
-ok 149 AdminUpgradeHeadlessAccountV3
-ok 150 AdminDeleteUserInformationV3
-ok 151 AdminGetUserLoginHistoriesV3
-ok 152 AdminUpdateUserPermissionV3
-ok 153 AdminAddUserPermissionsV3
-ok 154 AdminDeleteUserPermissionBulkV3
-ok 155 AdminDeleteUserPermissionV3
-ok 156 AdminGetUserPlatformAccountsV3
-ok 157 AdminGetListJusticePlatformAccounts
-ok 158 AdminCreateJusticeUser
-ok 159 AdminLinkPlatformAccount
-ok 160 AdminPlatformUnlinkV3
-ok 161 AdminPlatformLinkV3
-ok 162 AdminDeleteUserRolesV3
-ok 163 AdminSaveUserRoleV3
-ok 164 AdminAddUserRoleV3
-ok 165 AdminDeleteUserRoleV3
-ok 166 AdminUpdateUserStatusV3
-ok 167 AdminVerifyUserWithoutVerificationCodeV3
-ok 168 AdminGetRolesV3
-ok 169 AdminCreateRoleV3
-ok 170 AdminGetRoleV3
-ok 171 AdminDeleteRoleV3
-ok 172 AdminUpdateRoleV3
-ok 173 AdminGetRoleAdminStatusV3
-ok 174 AdminUpdateAdminRoleStatusV3
-ok 175 AdminRemoveRoleAdminV3
-ok 176 AdminGetRoleManagersV3
-ok 177 AdminAddRoleManagersV3
-ok 178 AdminRemoveRoleManagersV3
-ok 179 AdminGetRoleMembersV3
-ok 180 AdminAddRoleMembersV3
-ok 181 AdminRemoveRoleMembersV3
-ok 182 AdminUpdateRolePermissionsV3
-ok 183 AdminAddRolePermissionsV3
-ok 184 AdminDeleteRolePermissionsV3
-ok 185 AdminDeleteRolePermissionV3
-ok 186 AdminGetMyUserV3
-ok 187 UserAuthenticationV3
-ok 188 GetCountryLocationV3
-ok 189 Logout
-ok 190 AdminRetrieveUserThirdPartyPlatformTokenV3
-ok 191 RevokeUserV3
-ok 192 AuthorizeV3
-ok 193 TokenIntrospectionV3
-ok 194 GetJWKSV3
-ok 195 RetrieveUserThirdPartyPlatformTokenV3
-ok 196 AuthCodeRequestV3
-ok 197 PlatformTokenGrantV3
-ok 198 GetRevocationListV3
-ok 199 TokenRevocationV3
-ok 200 TokenGrantV3
-ok 201 PlatformAuthenticationV3
-ok 202 RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3
-ok 203 PublicListUserIDByPlatformUserIDsV3
-ok 204 PublicGetUserByPlatformUserIDV3
-ok 205 PublicGetAsyncStatus
-ok 206 PublicSearchUserV3
-ok 207 PublicCreateUserV3
-ok 208 PublicBulkGetUsers
-ok 209 PublicForgotPasswordV3
-ok 210 GetAdminInvitationV3
-ok 211 CreateUserFromInvitationV3
-ok 212 UpdateUserV3
-ok 213 PublicUpdateUserV3
-ok 214 PublicSendVerificationCodeV3
-ok 215 PublicUserVerificationV3
-ok 216 PublicUpgradeHeadlessAccountV3
-ok 217 PublicVerifyHeadlessAccountV3
-ok 218 PublicUpdatePasswordV3
-ok 219 PublicCreateJusticeUser
-ok 220 PublicPlatformLinkV3
-ok 221 PublicPlatformUnlinkV3
-ok 222 PublicWebLinkPlatform
-ok 223 PublicWebLinkPlatformEstablish
-ok 224 ResetPasswordV3
-ok 225 PublicGetUserByUserIdV3
-ok 226 PublicGetUserBanHistoryV3
-ok 227 PublicGetUserLoginHistoriesV3
-ok 228 PublicGetUserPlatformAccountsV3
-ok 229 PublicLinkPlatformAccount
-ok 230 PublicValidateUserByUserIDAndPasswordV3
-ok 231 PublicGetRolesV3
-ok 232 PublicGetRoleV3
-ok 233 PublicGetMyUserV3
-ok 234 PlatformAuthenticateSAMLV3Handler
-ok 235 LoginSSOClient
-ok 236 LogoutSSOClient
-ok 237 AdminUpdateUserV4
-ok 238 AdminUpdateUserEmailAddressV4
-ok 239 AdminListUserRolesV4
-ok 240 AdminUpdateUserRoleV4
-ok 241 AdminAddUserRoleV4
-ok 242 AdminRemoveUserRoleV4
-ok 243 AdminGetRolesV4
-ok 244 AdminCreateRoleV4
-ok 245 AdminGetRoleV4
-ok 246 AdminDeleteRoleV4
-ok 247 AdminUpdateRoleV4
-ok 248 AdminUpdateRolePermissionsV4
-ok 249 AdminAddRolePermissionsV4
-ok 250 AdminDeleteRolePermissionsV4
-ok 251 AdminListAssignedUsersV4
-ok 252 AdminAssignUserToRoleV4
-ok 253 AdminRevokeUserFromRoleV4
-ok 254 AdminUpdateMyUserV4
-ok 255 AdminInviteUserV4
-ok 256 PublicCreateTestUserV4
-ok 257 PublicCreateUserV4
-ok 258 CreateUserFromInvitationV4
-ok 259 PublicUpdateUserV4
-ok 260 PublicUpdateUserEmailAddressV4
-ok 261 PublicUpgradeHeadlessAccountWithVerificationCodeV4
-ok 262 PublicUpgradeHeadlessAccountV4
+ok 106 AdminGetInputValidations
+ok 107 AdminUpdateInputValidations
+ok 108 AdminResetInputValidations
+ok 109 ListAdminsV3
+ok 110 AdminGetAgeRestrictionStatusV3
+ok 111 AdminUpdateAgeRestrictionConfigV3
+ok 112 AdminGetListCountryAgeRestrictionV3
+ok 113 AdminUpdateCountryAgeRestrictionV3
+ok 114 AdminGetBannedUsersV3
+ok 115 AdminGetBansTypeWithNamespaceV3
+ok 116 AdminGetClientsByNamespaceV3
+ok 117 AdminCreateClientV3
+ok 118 AdminGetClientsbyNamespacebyIDV3
+ok 119 AdminDeleteClientV3
+ok 120 AdminUpdateClientV3
+ok 121 AdminUpdateClientPermissionV3
+ok 122 AdminAddClientPermissionsV3
+ok 123 AdminDeleteClientPermissionV3
+ok 124 RetrieveAllThirdPartyLoginPlatformCredentialV3
+ok 125 RetrieveAllActiveThirdPartyLoginPlatformCredentialV3
+ok 126 RetrieveAllSSOLoginPlatformCredentialV3
+ok 127 RetrieveThirdPartyLoginPlatformCredentialV3
+ok 128 AddThirdPartyLoginPlatformCredentialV3
+ok 129 DeleteThirdPartyLoginPlatformCredentialV3
+ok 130 UpdateThirdPartyLoginPlatformCredentialV3
+ok 131 UpdateThirdPartyLoginPlatformDomainV3
+ok 132 DeleteThirdPartyLoginPlatformDomainV3
+ok 133 RetrieveSSOLoginPlatformCredential
+ok 134 AddSSOLoginPlatformCredential
+ok 135 DeleteSSOLoginPlatformCredentialV3
+ok 136 UpdateSSOPlatformCredential
+ok 137 AdminGetUserByPlatformUserIDV3
+ok 138 GetAdminUsersByRoleIdV3
+ok 139 AdminGetUserByEmailAddressV3
+ok 140 AdminListUserIDByUserIDsV3
+ok 141 AdminInviteUserV3
+ok 142 AdminListUsersV3
+ok 143 AdminSearchUserV3
+ok 144 AdminGetBulkUserByEmailAddressV3
+ok 145 AdminGetUserByUserIdV3
+ok 146 AdminUpdateUserV3
+ok 147 AdminGetUserBanV3
+ok 148 AdminBanUserV3
+ok 149 AdminUpdateUserBanV3
+ok 150 AdminSendVerificationCodeV3
+ok 151 AdminVerifyAccountV3
+ok 152 GetUserVerificationCode
+ok 153 AdminGetUserDeletionStatusV3
+ok 154 AdminUpdateUserDeletionStatusV3
+ok 155 AdminUpgradeHeadlessAccountV3
+ok 156 AdminDeleteUserInformationV3
+ok 157 AdminGetUserLoginHistoriesV3
+ok 158 AdminUpdateUserPermissionV3
+ok 159 AdminAddUserPermissionsV3
+ok 160 AdminDeleteUserPermissionBulkV3
+ok 161 AdminDeleteUserPermissionV3
+ok 162 AdminGetUserPlatformAccountsV3
+ok 163 AdminGetListJusticePlatformAccounts
+ok 164 AdminCreateJusticeUser
+ok 165 AdminLinkPlatformAccount
+ok 166 AdminPlatformUnlinkV3
+ok 167 AdminPlatformLinkV3
+ok 168 AdminDeleteUserRolesV3
+ok 169 AdminSaveUserRoleV3
+ok 170 AdminAddUserRoleV3
+ok 171 AdminDeleteUserRoleV3
+ok 172 AdminUpdateUserStatusV3
+ok 173 AdminVerifyUserWithoutVerificationCodeV3
+ok 174 AdminGetRolesV3
+ok 175 AdminCreateRoleV3
+ok 176 AdminGetRoleV3
+ok 177 AdminDeleteRoleV3
+ok 178 AdminUpdateRoleV3
+ok 179 AdminGetRoleAdminStatusV3
+ok 180 AdminUpdateAdminRoleStatusV3
+ok 181 AdminRemoveRoleAdminV3
+ok 182 AdminGetRoleManagersV3
+ok 183 AdminAddRoleManagersV3
+ok 184 AdminRemoveRoleManagersV3
+ok 185 AdminGetRoleMembersV3
+ok 186 AdminAddRoleMembersV3
+ok 187 AdminRemoveRoleMembersV3
+ok 188 AdminUpdateRolePermissionsV3
+ok 189 AdminAddRolePermissionsV3
+ok 190 AdminDeleteRolePermissionsV3
+ok 191 AdminDeleteRolePermissionV3
+ok 192 AdminGetMyUserV3
+ok 193 UserAuthenticationV3
+ok 194 GetCountryLocationV3
+ok 195 Logout
+ok 196 AdminRetrieveUserThirdPartyPlatformTokenV3
+ok 197 RevokeUserV3
+ok 198 AuthorizeV3
+ok 199 TokenIntrospectionV3
+ok 200 GetJWKSV3
+ok 201 RetrieveUserThirdPartyPlatformTokenV3
+ok 202 AuthCodeRequestV3
+ok 203 PlatformTokenGrantV3
+ok 204 GetRevocationListV3
+ok 205 TokenRevocationV3
+ok 206 TokenGrantV3
+ok 207 PlatformAuthenticationV3
+ok 208 PublicGetInputValidations
+ok 209 RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3
+ok 210 PublicListUserIDByPlatformUserIDsV3
+ok 211 PublicGetUserByPlatformUserIDV3
+ok 212 PublicGetAsyncStatus
+ok 213 PublicSearchUserV3
+ok 214 PublicCreateUserV3
+ok 215 CheckUserAvailability
+ok 216 PublicBulkGetUsers
+ok 217 PublicForgotPasswordV3
+ok 218 GetAdminInvitationV3
+ok 219 CreateUserFromInvitationV3
+ok 220 UpdateUserV3
+ok 221 PublicUpdateUserV3
+ok 222 PublicSendVerificationCodeV3
+ok 223 PublicUserVerificationV3
+ok 224 PublicUpgradeHeadlessAccountV3
+ok 225 PublicVerifyHeadlessAccountV3
+ok 226 PublicUpdatePasswordV3
+ok 227 PublicCreateJusticeUser
+ok 228 PublicPlatformLinkV3
+ok 229 PublicPlatformUnlinkV3
+ok 230 PublicWebLinkPlatform
+ok 231 PublicWebLinkPlatformEstablish
+ok 232 ResetPasswordV3
+ok 233 PublicGetUserByUserIdV3
+ok 234 PublicGetUserBanHistoryV3
+ok 235 PublicGetUserLoginHistoriesV3
+ok 236 PublicGetUserPlatformAccountsV3
+ok 237 PublicLinkPlatformAccount
+ok 238 PublicValidateUserByUserIDAndPasswordV3
+ok 239 PublicGetRolesV3
+ok 240 PublicGetRoleV3
+ok 241 PublicGetMyUserV3
+ok 242 PlatformAuthenticateSAMLV3Handler
+ok 243 LoginSSOClient
+ok 244 LogoutSSOClient
+ok 245 AdminUpdateUserV4
+ok 246 AdminUpdateUserEmailAddressV4
+ok 247 AdminListUserRolesV4
+ok 248 AdminUpdateUserRoleV4
+ok 249 AdminAddUserRoleV4
+ok 250 AdminRemoveUserRoleV4
+ok 251 AdminGetRolesV4
+ok 252 AdminCreateRoleV4
+ok 253 AdminGetRoleV4
+ok 254 AdminDeleteRoleV4
+ok 255 AdminUpdateRoleV4
+ok 256 AdminUpdateRolePermissionsV4
+ok 257 AdminAddRolePermissionsV4
+ok 258 AdminDeleteRolePermissionsV4
+ok 259 AdminListAssignedUsersV4
+ok 260 AdminAssignUserToRoleV4
+ok 261 AdminRevokeUserFromRoleV4
+ok 262 AdminUpdateMyUserV4
+ok 263 AdminInviteUserV4
+ok 264 PublicCreateTestUserV4
+ok 265 PublicCreateUserV4
+ok 266 CreateUserFromInvitationV4
+ok 267 PublicUpdateUserV4
+ok 268 PublicUpdateUserEmailAddressV4
+ok 269 PublicUpgradeHeadlessAccountWithVerificationCodeV4
+ok 270 PublicUpgradeHeadlessAccountV4
 ```
 
 ```tap
-./../../tests/sh/run-python-cli-seasonpass-unit-test.sh
+sh/run-python-cli-seasonpass-unit-test.sh
 
 TAP version 13
 1..38
@@ -406,7 +414,7 @@ ok 38 PublicGetUserSeason
 ```
 
 ```tap
-./../../tests/sh/run-python-cli-lobby-unit-test.sh
+sh/run-python-cli-lobby-unit-test.sh
 
 TAP version 13
 1..89
@@ -502,7 +510,7 @@ ok 89 NotificationWithTemplateByUserID
 ```
 
 ```tap
-./../../tests/sh/run-python-cli-gdpr-unit-test.sh
+sh/run-python-cli-gdpr-unit-test.sh
 
 TAP version 13
 1..20
@@ -529,7 +537,7 @@ ok 20 PublicGeneratePersonalDataURL
 ```
 
 ```tap
-./../../tests/sh/run-python-cli-social-unit-test.sh
+sh/run-python-cli-social-unit-test.sh
 
 TAP version 13
 1..68
@@ -604,10 +612,10 @@ ok 68 UpdateUserStatItemValue1
 ```
 
 ```tap
-./../../tests/sh/run-python-cli-platform-unit-test.sh
+sh/run-python-cli-platform-unit-test.sh
 
 TAP version 13
-1..302
+1..316
 ok 1 ListFulfillmentScripts
 ok 2 TestFulfillmentScriptEval
 ok 3 GetFulfillmentScript
@@ -642,278 +650,292 @@ ok 31 UpdateCurrency
 ok 32 DeleteCurrency
 ok 33 GetCurrencyConfig
 ok 34 GetCurrencySummary
-ok 35 QueryEntitlements
-ok 36 GetEntitlement
-ok 37 QueryFulfillmentHistories
-ok 38 GetAppleIAPConfig
-ok 39 UpdateAppleIAPConfig
-ok 40 DeleteAppleIAPConfig
-ok 41 GetEpicGamesIAPConfig
-ok 42 UpdateEpicGamesIAPConfig
-ok 43 DeleteEpicGamesIAPConfig
-ok 44 GetGoogleIAPConfig
-ok 45 UpdateGoogleIAPConfig
-ok 46 DeleteGoogleIAPConfig
-ok 47 UpdateGoogleP12File
-ok 48 GetPlayStationIAPConfig
-ok 49 UpdatePlaystationIAPConfig
-ok 50 DeletePlaystationIAPConfig
-ok 51 GetStadiaIAPConfig
-ok 52 DeleteStadiaIAPConfig
-ok 53 UpdateStadiaJsonConfigFile
-ok 54 GetSteamIAPConfig
-ok 55 UpdateSteamIAPConfig
-ok 56 DeleteSteamIAPConfig
-ok 57 GetXblIAPConfig
-ok 58 UpdateXblIAPConfig
-ok 59 DeleteXblAPConfig
-ok 60 UpdateXblBPCertFile
-ok 61 SyncInGameItem
-ok 62 CreateItem
-ok 63 GetItemByAppId
-ok 64 QueryItems
-ok 65 ListBasicItemsByFeatures
-ok 66 GetItemBySku
-ok 67 GetLocaleItemBySku
-ok 68 GetItemIdBySku
-ok 69 BulkGetLocaleItems
-ok 70 SearchItems
-ok 71 QueryUncategorizedItems
-ok 72 GetItem
-ok 73 UpdateItem
-ok 74 DeleteItem
-ok 75 AcquireItem
-ok 76 GetApp
-ok 77 UpdateApp
-ok 78 DisableItem
-ok 79 GetItemDynamicData
-ok 80 EnableItem
-ok 81 FeatureItem
-ok 82 DefeatureItem
-ok 83 GetLocaleItem
-ok 84 ReturnItem
-ok 85 QueryKeyGroups
-ok 86 CreateKeyGroup
-ok 87 GetKeyGroup
-ok 88 UpdateKeyGroup
-ok 89 GetKeyGroupDynamic
-ok 90 ListKeys
-ok 91 UploadKeys
-ok 92 QueryOrders
-ok 93 GetOrderStatistics
-ok 94 GetOrder
-ok 95 RefundOrder
-ok 96 GetPaymentCallbackConfig
-ok 97 UpdatePaymentCallbackConfig
-ok 98 QueryPaymentNotifications
-ok 99 QueryPaymentOrders
-ok 100 CreatePaymentOrderByDedicated
-ok 101 ListExtOrderNoByExtTxId
-ok 102 GetPaymentOrder
-ok 103 ChargePaymentOrder
-ok 104 RefundPaymentOrderByDedicated
-ok 105 SimulatePaymentOrderNotification
-ok 106 GetPaymentOrderChargeStatus
-ok 107 CreateReward
-ok 108 QueryRewards
-ok 109 ExportRewards
-ok 110 ImportRewards
-ok 111 GetReward
-ok 112 UpdateReward
-ok 113 DeleteReward
-ok 114 CheckEventCondition
-ok 115 ListStores
-ok 116 CreateStore
-ok 117 ImportStore
-ok 118 GetPublishedStore
-ok 119 DeletePublishedStore
-ok 120 GetPublishedStoreBackup
-ok 121 RollbackPublishedStore
-ok 122 GetStore
-ok 123 UpdateStore
-ok 124 DeleteStore
-ok 125 CloneStore
-ok 126 ExportStore
-ok 127 QuerySubscriptions
-ok 128 RecurringChargeSubscription
-ok 129 GetTicketDynamic
-ok 130 DecreaseTicketSale
-ok 131 GetTicketBoothID
-ok 132 IncreaseTicketSale
-ok 133 AnonymizeCampaign
-ok 134 AnonymizeEntitlement
-ok 135 AnonymizeFulfillment
-ok 136 AnonymizeIntegration
-ok 137 AnonymizeOrder
-ok 138 AnonymizePayment
-ok 139 AnonymizeSubscription
-ok 140 AnonymizeWallet
-ok 141 QueryUserEntitlements
-ok 142 GrantUserEntitlement
-ok 143 GetUserAppEntitlementByAppId
-ok 144 QueryUserEntitlementsByAppType
-ok 145 GetUserEntitlementByItemId
-ok 146 GetUserEntitlementBySku
-ok 147 ExistsAnyUserActiveEntitlement
-ok 148 ExistsAnyUserActiveEntitlementByItemIds
-ok 149 GetUserAppEntitlementOwnershipByAppId
-ok 150 GetUserEntitlementOwnershipByItemId
-ok 151 GetUserEntitlementOwnershipBySku
-ok 152 RevokeUserEntitlements
-ok 153 GetUserEntitlement
-ok 154 UpdateUserEntitlement
-ok 155 ConsumeUserEntitlement
-ok 156 DisableUserEntitlement
-ok 157 EnableUserEntitlement
-ok 158 GetUserEntitlementHistories
-ok 159 RevokeUserEntitlement
-ok 160 FulfillItem
-ok 161 RedeemCode
-ok 162 QueryUserIAPOrders
-ok 163 MockFulfillIAPItem
-ok 164 QueryUserOrders
-ok 165 CountOfPurchasedItem
-ok 166 GetUserOrder
-ok 167 UpdateUserOrderStatus
-ok 168 FulfillUserOrder
-ok 169 GetUserOrderGrant
-ok 170 GetUserOrderHistories
-ok 171 ProcessUserOrderNotification
-ok 172 DownloadUserOrderReceipt
-ok 173 CreateUserPaymentOrder
-ok 174 RefundUserPaymentOrder
-ok 175 ApplyUserRedemption
-ok 176 QueryUserSubscriptions
-ok 177 GetUserSubscriptionActivities
-ok 178 PlatformSubscribeSubscription
-ok 179 CheckUserSubscriptionSubscribableByItemId
-ok 180 GetUserSubscription
-ok 181 DeleteUserSubscription
-ok 182 CancelSubscription
-ok 183 GrantDaysToSubscription
-ok 184 GetUserSubscriptionBillingHistories
-ok 185 ProcessUserSubscriptionNotification
-ok 186 AcquireUserTicket
-ok 187 CheckWallet
-ok 188 CreditUserWallet
-ok 189 PayWithUserWallet
-ok 190 GetUserWallet
-ok 191 DebitUserWallet
-ok 192 DisableUserWallet
-ok 193 EnableUserWallet
-ok 194 ListUserWalletTransactions
-ok 195 QueryWallets
-ok 196 GetWallet
-ok 197 SyncOrders
-ok 198 TestAdyenConfig
-ok 199 TestAliPayConfig
-ok 200 TestCheckoutConfig
-ok 201 DebugMatchedPaymentMerchantConfig
-ok 202 TestPayPalConfig
-ok 203 TestStripeConfig
-ok 204 TestWxPayConfig
-ok 205 TestXsollaConfig
-ok 206 GetPaymentMerchantConfig
-ok 207 UpdateAdyenConfig
-ok 208 TestAdyenConfigById
-ok 209 UpdateAliPayConfig
-ok 210 TestAliPayConfigById
-ok 211 UpdateCheckoutConfig
-ok 212 TestCheckoutConfigById
-ok 213 UpdatePayPalConfig
-ok 214 TestPayPalConfigById
-ok 215 UpdateStripeConfig
-ok 216 TestStripeConfigById
-ok 217 UpdateWxPayConfig
-ok 218 UpdateWxPayConfigCert
-ok 219 TestWxPayConfigById
-ok 220 UpdateXsollaConfig
-ok 221 TestXsollaConfigById
-ok 222 UpdateXsollaUIConfig
-ok 223 QueryPaymentProviderConfig
-ok 224 CreatePaymentProviderConfig
-ok 225 GetAggregatePaymentProviders
-ok 226 DebugMatchedPaymentProviderConfig
-ok 227 GetSpecialPaymentProviders
-ok 228 UpdatePaymentProviderConfig
-ok 229 DeletePaymentProviderConfig
-ok 230 GetPaymentTaxConfig
-ok 231 UpdatePaymentTaxConfig
-ok 232 SyncPaymentOrders
-ok 233 PublicGetRootCategories
-ok 234 DownloadCategories
-ok 235 PublicGetCategory
-ok 236 PublicGetChildCategories
-ok 237 PublicGetDescendantCategories
-ok 238 PublicListCurrencies
-ok 239 PublicGetItemByAppId
-ok 240 PublicQueryItems
-ok 241 PublicGetItemBySku
-ok 242 PublicBulkGetItems
-ok 243 PublicSearchItems
-ok 244 PublicGetApp
-ok 245 PublicGetItemDynamicData
-ok 246 PublicGetItem
-ok 247 GetPaymentCustomization
-ok 248 PublicGetPaymentUrl
-ok 249 PublicGetPaymentMethods
-ok 250 PublicGetUnpaidPaymentOrder
-ok 251 Pay
-ok 252 PublicCheckPaymentOrderPaidStatus
-ok 253 GetPaymentPublicConfig
-ok 254 PublicGetQRCode
-ok 255 PublicNormalizePaymentReturnUrl
-ok 256 GetPaymentTaxValue
-ok 257 GetRewardByCode
-ok 258 QueryRewards1
-ok 259 GetReward1
-ok 260 PublicListStores
-ok 261 PublicExistsAnyMyActiveEntitlement
-ok 262 PublicGetMyAppEntitlementOwnershipByAppId
-ok 263 PublicGetMyEntitlementOwnershipByItemId
-ok 264 PublicGetMyEntitlementOwnershipBySku
-ok 265 PublicGetEntitlementOwnershipToken
-ok 266 PublicGetMyWallet
-ok 267 PublicQueryUserEntitlements
-ok 268 PublicGetUserAppEntitlementByAppId
-ok 269 PublicQueryUserEntitlementsByAppType
-ok 270 PublicGetUserEntitlementByItemId
-ok 271 PublicGetUserEntitlementBySku
-ok 272 PublicExistsAnyUserActiveEntitlement
-ok 273 PublicGetUserAppEntitlementOwnershipByAppId
-ok 274 PublicGetUserEntitlementOwnershipByItemId
-ok 275 PublicGetUserEntitlementOwnershipBySku
-ok 276 PublicGetUserEntitlement
-ok 277 PublicConsumeUserEntitlement
-ok 278 PublicRedeemCode
-ok 279 PublicFulfillAppleIAPItem
-ok 280 SyncEpicGamesInventory
-ok 281 PublicFulfillGoogleIAPItem
-ok 282 PublicReconcilePlayStationStore
-ok 283 SyncStadiaEntitlement
-ok 284 SyncSteamInventory
-ok 285 SyncXboxInventory
-ok 286 PublicQueryUserOrders
-ok 287 PublicCreateUserOrder
-ok 288 PublicGetUserOrder
-ok 289 PublicCancelUserOrder
-ok 290 PublicGetUserOrderHistories
-ok 291 PublicDownloadUserOrderReceipt
-ok 292 PublicGetPaymentAccounts
-ok 293 PublicDeletePaymentAccount
-ok 294 PublicQueryUserSubscriptions
-ok 295 PublicSubscribeSubscription
-ok 296 PublicCheckUserSubscriptionSubscribableByItemId
-ok 297 PublicGetUserSubscription
-ok 298 PublicChangeSubscriptionBillingAccount
-ok 299 PublicCancelSubscription
-ok 300 PublicGetUserSubscriptionBillingHistories
-ok 301 PublicGetWallet
-ok 302 PublicListUserWalletTransactions
+ok 35 GetDLCItemConfig
+ok 36 UpdateDLCItemConfig
+ok 37 DeleteDLCItemConfig
+ok 38 GetPlatformDLCConfig
+ok 39 UpdatePlatformDLCConfig
+ok 40 DeletePlatformDLCConfig
+ok 41 QueryEntitlements
+ok 42 GetEntitlement
+ok 43 QueryFulfillmentHistories
+ok 44 GetAppleIAPConfig
+ok 45 UpdateAppleIAPConfig
+ok 46 DeleteAppleIAPConfig
+ok 47 GetEpicGamesIAPConfig
+ok 48 UpdateEpicGamesIAPConfig
+ok 49 DeleteEpicGamesIAPConfig
+ok 50 GetGoogleIAPConfig
+ok 51 UpdateGoogleIAPConfig
+ok 52 DeleteGoogleIAPConfig
+ok 53 UpdateGoogleP12File
+ok 54 GetIAPItemConfig
+ok 55 UpdateIAPItemConfig
+ok 56 DeleteIAPItemConfig
+ok 57 GetPlayStationIAPConfig
+ok 58 UpdatePlaystationIAPConfig
+ok 59 DeletePlaystationIAPConfig
+ok 60 GetStadiaIAPConfig
+ok 61 DeleteStadiaIAPConfig
+ok 62 UpdateStadiaJsonConfigFile
+ok 63 GetSteamIAPConfig
+ok 64 UpdateSteamIAPConfig
+ok 65 DeleteSteamIAPConfig
+ok 66 GetXblIAPConfig
+ok 67 UpdateXblIAPConfig
+ok 68 DeleteXblAPConfig
+ok 69 UpdateXblBPCertFile
+ok 70 SyncInGameItem
+ok 71 CreateItem
+ok 72 GetItemByAppId
+ok 73 QueryItems
+ok 74 ListBasicItemsByFeatures
+ok 75 GetItemBySku
+ok 76 GetLocaleItemBySku
+ok 77 GetItemIdBySku
+ok 78 BulkGetLocaleItems
+ok 79 SearchItems
+ok 80 QueryUncategorizedItems
+ok 81 GetItem
+ok 82 UpdateItem
+ok 83 DeleteItem
+ok 84 AcquireItem
+ok 85 GetApp
+ok 86 UpdateApp
+ok 87 DisableItem
+ok 88 GetItemDynamicData
+ok 89 EnableItem
+ok 90 FeatureItem
+ok 91 DefeatureItem
+ok 92 GetLocaleItem
+ok 93 ReturnItem
+ok 94 QueryKeyGroups
+ok 95 CreateKeyGroup
+ok 96 GetKeyGroup
+ok 97 UpdateKeyGroup
+ok 98 GetKeyGroupDynamic
+ok 99 ListKeys
+ok 100 UploadKeys
+ok 101 QueryOrders
+ok 102 GetOrderStatistics
+ok 103 GetOrder
+ok 104 RefundOrder
+ok 105 GetPaymentCallbackConfig
+ok 106 UpdatePaymentCallbackConfig
+ok 107 QueryPaymentNotifications
+ok 108 QueryPaymentOrders
+ok 109 CreatePaymentOrderByDedicated
+ok 110 ListExtOrderNoByExtTxId
+ok 111 GetPaymentOrder
+ok 112 ChargePaymentOrder
+ok 113 RefundPaymentOrderByDedicated
+ok 114 SimulatePaymentOrderNotification
+ok 115 GetPaymentOrderChargeStatus
+ok 116 CreateReward
+ok 117 QueryRewards
+ok 118 ExportRewards
+ok 119 ImportRewards
+ok 120 GetReward
+ok 121 UpdateReward
+ok 122 DeleteReward
+ok 123 CheckEventCondition
+ok 124 ListStores
+ok 125 CreateStore
+ok 126 ImportStore
+ok 127 GetPublishedStore
+ok 128 DeletePublishedStore
+ok 129 GetPublishedStoreBackup
+ok 130 RollbackPublishedStore
+ok 131 GetStore
+ok 132 UpdateStore
+ok 133 DeleteStore
+ok 134 CloneStore
+ok 135 ExportStore
+ok 136 QuerySubscriptions
+ok 137 RecurringChargeSubscription
+ok 138 GetTicketDynamic
+ok 139 DecreaseTicketSale
+ok 140 GetTicketBoothID
+ok 141 IncreaseTicketSale
+ok 142 AnonymizeCampaign
+ok 143 AnonymizeEntitlement
+ok 144 AnonymizeFulfillment
+ok 145 AnonymizeIntegration
+ok 146 AnonymizeOrder
+ok 147 AnonymizePayment
+ok 148 AnonymizeSubscription
+ok 149 AnonymizeWallet
+ok 150 QueryUserEntitlements
+ok 151 GrantUserEntitlement
+ok 152 GetUserAppEntitlementByAppId
+ok 153 QueryUserEntitlementsByAppType
+ok 154 GetUserEntitlementByItemId
+ok 155 GetUserEntitlementBySku
+ok 156 ExistsAnyUserActiveEntitlement
+ok 157 ExistsAnyUserActiveEntitlementByItemIds
+ok 158 GetUserAppEntitlementOwnershipByAppId
+ok 159 GetUserEntitlementOwnershipByItemId
+ok 160 GetUserEntitlementOwnershipBySku
+ok 161 RevokeUserEntitlements
+ok 162 GetUserEntitlement
+ok 163 UpdateUserEntitlement
+ok 164 ConsumeUserEntitlement
+ok 165 DisableUserEntitlement
+ok 166 EnableUserEntitlement
+ok 167 GetUserEntitlementHistories
+ok 168 RevokeUserEntitlement
+ok 169 FulfillItem
+ok 170 RedeemCode
+ok 171 FulfillRewards
+ok 172 QueryUserIAPOrders
+ok 173 QueryAllUserIAPOrders
+ok 174 MockFulfillIAPItem
+ok 175 QueryUserOrders
+ok 176 CountOfPurchasedItem
+ok 177 GetUserOrder
+ok 178 UpdateUserOrderStatus
+ok 179 FulfillUserOrder
+ok 180 GetUserOrderGrant
+ok 181 GetUserOrderHistories
+ok 182 ProcessUserOrderNotification
+ok 183 DownloadUserOrderReceipt
+ok 184 CreateUserPaymentOrder
+ok 185 RefundUserPaymentOrder
+ok 186 ApplyUserRedemption
+ok 187 QueryUserSubscriptions
+ok 188 GetUserSubscriptionActivities
+ok 189 PlatformSubscribeSubscription
+ok 190 CheckUserSubscriptionSubscribableByItemId
+ok 191 GetUserSubscription
+ok 192 DeleteUserSubscription
+ok 193 CancelSubscription
+ok 194 GrantDaysToSubscription
+ok 195 GetUserSubscriptionBillingHistories
+ok 196 ProcessUserSubscriptionNotification
+ok 197 AcquireUserTicket
+ok 198 CheckWallet
+ok 199 CreditUserWallet
+ok 200 PayWithUserWallet
+ok 201 GetUserWallet
+ok 202 DebitUserWallet
+ok 203 DisableUserWallet
+ok 204 EnableUserWallet
+ok 205 ListUserWalletTransactions
+ok 206 QueryWallets
+ok 207 GetWallet
+ok 208 SyncOrders
+ok 209 TestAdyenConfig
+ok 210 TestAliPayConfig
+ok 211 TestCheckoutConfig
+ok 212 DebugMatchedPaymentMerchantConfig
+ok 213 TestPayPalConfig
+ok 214 TestStripeConfig
+ok 215 TestWxPayConfig
+ok 216 TestXsollaConfig
+ok 217 GetPaymentMerchantConfig
+ok 218 UpdateAdyenConfig
+ok 219 TestAdyenConfigById
+ok 220 UpdateAliPayConfig
+ok 221 TestAliPayConfigById
+ok 222 UpdateCheckoutConfig
+ok 223 TestCheckoutConfigById
+ok 224 UpdatePayPalConfig
+ok 225 TestPayPalConfigById
+ok 226 UpdateStripeConfig
+ok 227 TestStripeConfigById
+ok 228 UpdateWxPayConfig
+ok 229 UpdateWxPayConfigCert
+ok 230 TestWxPayConfigById
+ok 231 UpdateXsollaConfig
+ok 232 TestXsollaConfigById
+ok 233 UpdateXsollaUIConfig
+ok 234 QueryPaymentProviderConfig
+ok 235 CreatePaymentProviderConfig
+ok 236 GetAggregatePaymentProviders
+ok 237 DebugMatchedPaymentProviderConfig
+ok 238 GetSpecialPaymentProviders
+ok 239 UpdatePaymentProviderConfig
+ok 240 DeletePaymentProviderConfig
+ok 241 GetPaymentTaxConfig
+ok 242 UpdatePaymentTaxConfig
+ok 243 SyncPaymentOrders
+ok 244 PublicGetRootCategories
+ok 245 DownloadCategories
+ok 246 PublicGetCategory
+ok 247 PublicGetChildCategories
+ok 248 PublicGetDescendantCategories
+ok 249 PublicListCurrencies
+ok 250 PublicGetItemByAppId
+ok 251 PublicQueryItems
+ok 252 PublicGetItemBySku
+ok 253 PublicBulkGetItems
+ok 254 PublicSearchItems
+ok 255 PublicGetApp
+ok 256 PublicGetItemDynamicData
+ok 257 PublicGetItem
+ok 258 GetPaymentCustomization
+ok 259 PublicGetPaymentUrl
+ok 260 PublicGetPaymentMethods
+ok 261 PublicGetUnpaidPaymentOrder
+ok 262 Pay
+ok 263 PublicCheckPaymentOrderPaidStatus
+ok 264 GetPaymentPublicConfig
+ok 265 PublicGetQRCode
+ok 266 PublicNormalizePaymentReturnUrl
+ok 267 GetPaymentTaxValue
+ok 268 GetRewardByCode
+ok 269 QueryRewards1
+ok 270 GetReward1
+ok 271 PublicListStores
+ok 272 PublicExistsAnyMyActiveEntitlement
+ok 273 PublicGetMyAppEntitlementOwnershipByAppId
+ok 274 PublicGetMyEntitlementOwnershipByItemId
+ok 275 PublicGetMyEntitlementOwnershipBySku
+ok 276 PublicGetEntitlementOwnershipToken
+ok 277 PublicGetMyWallet
+ok 278 PublicSyncPsnDlcInventory
+ok 279 SyncSteamDLC
+ok 280 SyncXboxDLC
+ok 281 PublicQueryUserEntitlements
+ok 282 PublicGetUserAppEntitlementByAppId
+ok 283 PublicQueryUserEntitlementsByAppType
+ok 284 PublicGetUserEntitlementByItemId
+ok 285 PublicGetUserEntitlementBySku
+ok 286 PublicExistsAnyUserActiveEntitlement
+ok 287 PublicGetUserAppEntitlementOwnershipByAppId
+ok 288 PublicGetUserEntitlementOwnershipByItemId
+ok 289 PublicGetUserEntitlementOwnershipBySku
+ok 290 PublicGetUserEntitlement
+ok 291 PublicConsumeUserEntitlement
+ok 292 PublicRedeemCode
+ok 293 PublicFulfillAppleIAPItem
+ok 294 SyncEpicGamesInventory
+ok 295 PublicFulfillGoogleIAPItem
+ok 296 PublicReconcilePlayStationStore
+ok 297 SyncStadiaEntitlement
+ok 298 SyncSteamInventory
+ok 299 SyncXboxInventory
+ok 300 PublicQueryUserOrders
+ok 301 PublicCreateUserOrder
+ok 302 PublicGetUserOrder
+ok 303 PublicCancelUserOrder
+ok 304 PublicGetUserOrderHistories
+ok 305 PublicDownloadUserOrderReceipt
+ok 306 PublicGetPaymentAccounts
+ok 307 PublicDeletePaymentAccount
+ok 308 PublicQueryUserSubscriptions
+ok 309 PublicSubscribeSubscription
+ok 310 PublicCheckUserSubscriptionSubscribableByItemId
+ok 311 PublicGetUserSubscription
+ok 312 PublicChangeSubscriptionBillingAccount
+ok 313 PublicCancelSubscription
+ok 314 PublicGetUserSubscriptionBillingHistories
+ok 315 PublicGetWallet
+ok 316 PublicListUserWalletTransactions
 ```
 
 ```tap
-./../../tests/sh/run-python-cli-sessionbrowser-unit-test.sh
+sh/run-python-cli-sessionbrowser-unit-test.sh
 
 TAP version 13
 1..15
@@ -935,7 +957,7 @@ ok 15 GetRecentPlayer
 ```
 
 ```tap
-./../../tests/sh/run-python-cli-leaderboard-unit-test.sh
+sh/run-python-cli-leaderboard-unit-test.sh
 
 TAP version 13
 1..34
@@ -976,7 +998,7 @@ ok 34 GetAllTimeLeaderboardRankingPublicV2
 ```
 
 ```tap
-./../../tests/sh/run-python-cli-eventlog-unit-test.sh
+sh/run-python-cli-eventlog-unit-test.sh
 
 TAP version 13
 1..32
@@ -1015,7 +1037,7 @@ ok 32 GetUserEventsV2Public
 ```
 
 ```tap
-./../../tests/sh/run-python-cli-ugc-unit-test.sh
+sh/run-python-cli-ugc-unit-test.sh
 
 TAP version 13
 1..84
@@ -1106,7 +1128,7 @@ ok 84 DeleteAllUserStates
 ```
 
 ```tap
-./../../tests/sh/run-python-cli-group-unit-test.sh
+sh/run-python-cli-group-unit-test.sh
 
 TAP version 13
 1..44
@@ -1133,7 +1155,7 @@ ok 20 CreateNewGroupPublicV1
 ok 21 GetSingleGroupPublicV1
 ok 22 UpdateSingleGroupV1
 ok 23 DeleteGroupPublicV1
-ok 24 UpdateSingleGroupPublicV1
+ok 24 UpdatePatchSingleGroupPublicV1
 ok 25 UpdateGroupCustomAttributesPublicV1
 ok 26 AcceptGroupInvitationPublicV1
 ok 27 RejectGroupInvitationPublicV1
@@ -1157,7 +1179,7 @@ ok 44 KickGroupMemberPublicV1
 ```
 
 ```tap
-./../../tests/sh/run-python-cli-qosm-unit-test.sh
+sh/run-python-cli-qosm-unit-test.sh
 
 TAP version 13
 1..4
@@ -1168,10 +1190,10 @@ ok 4 Heartbeat
 ```
 
 ```tap
-./../../tests/sh/run-python-cli-legal-unit-test.sh
+sh/run-python-cli-legal-unit-test.sh
 
 TAP version 13
-1..39
+1..41
 ok 1 RetrieveAcceptedAgreements
 ok 2 RetrieveAllUsersByPolicyVersion
 ok 3 RetrieveAllLegalPolicies
@@ -1185,39 +1207,41 @@ ok 10 RetrieveSingleLocalizedPolicyVersion
 ok 11 UpdateLocalizedPolicyVersion
 ok 12 RequestPresignedURL
 ok 13 SetDefaultPolicy
-ok 14 RetrievePolicies
-ok 15 UpdatePolicyVersion
-ok 16 PublishPolicyVersion
-ok 17 UpdatePolicy
-ok 18 SetDefaultPolicy1
-ok 19 RetrieveSinglePolicyVersion
-ok 20 CreatePolicyVersion
-ok 21 RetrieveAllPolicyTypes
-ok 22 GetUserInfoStatus
-ok 23 SyncUserInfo
-ok 24 InvalidateUserInfoCache
-ok 25 AnonymizeUserAgreement
-ok 26 ChangePreferenceConsent
-ok 27 AcceptVersionedPolicy
-ok 28 RetrieveAgreementsPublic
-ok 29 BulkAcceptVersionedPolicy
-ok 30 IndirectBulkAcceptVersionedPolicyV2
-ok 31 IndirectBulkAcceptVersionedPolicy
-ok 32 RetrieveEligibilitiesPublic
-ok 33 RetrieveEligibilitiesPublicIndirect
-ok 34 RetrieveSingleLocalizedPolicyVersion1
-ok 35 RetrievePolicyVersions
-ok 36 RetrieveLatestPolicies
-ok 37 RetrieveLatestPoliciesPublic
-ok 38 RetrieveLatestPoliciesByNamespaceAndCountryPublic
-ok 39 CheckReadiness
+ok 14 IndirectBulkAcceptVersionedPolicy
+ok 15 AdminRetrieveEligibilities
+ok 16 RetrievePolicies
+ok 17 UpdatePolicyVersion
+ok 18 PublishPolicyVersion
+ok 19 UpdatePolicy
+ok 20 SetDefaultPolicy1
+ok 21 RetrieveSinglePolicyVersion
+ok 22 CreatePolicyVersion
+ok 23 RetrieveAllPolicyTypes
+ok 24 GetUserInfoStatus
+ok 25 SyncUserInfo
+ok 26 InvalidateUserInfoCache
+ok 27 AnonymizeUserAgreement
+ok 28 ChangePreferenceConsent
+ok 29 AcceptVersionedPolicy
+ok 30 RetrieveAgreementsPublic
+ok 31 BulkAcceptVersionedPolicy
+ok 32 IndirectBulkAcceptVersionedPolicyV2
+ok 33 IndirectBulkAcceptVersionedPolicy1
+ok 34 RetrieveEligibilitiesPublic
+ok 35 RetrieveEligibilitiesPublicIndirect
+ok 36 RetrieveSingleLocalizedPolicyVersion1
+ok 37 RetrievePolicyVersions
+ok 38 RetrieveLatestPolicies
+ok 39 RetrieveLatestPoliciesPublic
+ok 40 RetrieveLatestPoliciesByNamespaceAndCountryPublic
+ok 41 CheckReadiness
 ```
 
 ```tap
-./../../tests/sh/run-python-cli-matchmaking-unit-test.sh
+sh/run-python-cli-matchmaking-unit-test.sh
 
 TAP version 13
-1..27
+1..28
 ok 1 GetHealthcheckInfo
 ok 2 HandlerV3Healthz
 ok 3 GetAllChannelsHandler
@@ -1244,14 +1268,15 @@ ok 23 GetSessionHistoryDetailed
 ok 24 PublicGetMessages
 ok 25 PublicGetAllMatchmakingChannel
 ok 26 PublicGetSingleMatchmakingChannel
-ok 27 VersionCheckHandler
+ok 27 SearchSessionsV2
+ok 28 VersionCheckHandler
 ```
 
 ```tap
-./../../tests/sh/run-python-cli-cloudsave-unit-test.sh
+sh/run-python-cli-cloudsave-unit-test.sh
 
 TAP version 13
-1..29
+1..30
 ok 1 ListGameRecordsHandlerV1
 ok 2 AdminGetGameRecordHandlerV1
 ok 3 AdminPutGameRecordHandlerV1
@@ -1272,19 +1297,20 @@ ok 17 GetGameRecordHandlerV1
 ok 18 PutGameRecordHandlerV1
 ok 19 PostGameRecordHandlerV1
 ok 20 DeleteGameRecordHandlerV1
-ok 21 PublicDeletePlayerPublicRecordHandlerV1
-ok 22 PutPlayerPublicRecordConcurrentHandlerV1
-ok 23 GetPlayerRecordHandlerV1
-ok 24 PutPlayerRecordHandlerV1
-ok 25 PostPlayerRecordHandlerV1
-ok 26 DeletePlayerRecordHandlerV1
-ok 27 GetPlayerPublicRecordHandlerV1
-ok 28 PutPlayerPublicRecordHandlerV1
-ok 29 PostPlayerPublicRecordHandlerV1
+ok 21 BulkGetPlayerPublicRecordHandlerV1
+ok 22 PublicDeletePlayerPublicRecordHandlerV1
+ok 23 PutPlayerPublicRecordConcurrentHandlerV1
+ok 24 GetPlayerRecordHandlerV1
+ok 25 PutPlayerRecordHandlerV1
+ok 26 PostPlayerRecordHandlerV1
+ok 27 DeletePlayerRecordHandlerV1
+ok 28 GetPlayerPublicRecordHandlerV1
+ok 29 PutPlayerPublicRecordHandlerV1
+ok 30 PostPlayerPublicRecordHandlerV1
 ```
 
 ```tap
-./../../tests/sh/run-python-cli-dslogmanager-unit-test.sh
+sh/run-python-cli-dslogmanager-unit-test.sh
 
 TAP version 13
 1..6
@@ -1297,7 +1323,7 @@ ok 6 PublicGetMessages
 ```
 
 ```tap
-./../../tests/sh/run-python-cli-basic-unit-test.sh
+sh/run-python-cli-basic-unit-test.sh
 
 TAP version 13
 1..57
@@ -1361,7 +1387,7 @@ ok 57 PublicUpdateUserProfileStatus
 ```
 
 ```tap
-./../../tests/sh/run-python-cli-gametelemetry-unit-test.sh
+sh/run-python-cli-gametelemetry-unit-test.sh
 
 TAP version 13
 1..3
