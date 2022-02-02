@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.platform.models import ItemPagingSlicedResult
 @click.option("--store_id", "store_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def public_search_items(
         keyword: str,
@@ -50,12 +51,19 @@ def public_search_items(
         store_id: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(public_search_items_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = public_search_items_internal(
         keyword=keyword,
         language=language,
@@ -64,6 +72,7 @@ def public_search_items(
         region=region,
         store_id=store_id,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"publicSearchItems failed: {str(error)}")

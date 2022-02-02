@@ -35,17 +35,25 @@ from accelbyte_py_sdk.api.dsmc.models import ResponseError
 @click.argument("body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def claim_server(
         body: str,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(claim_server_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     if body is not None:
         try:
             body_json = json.loads(body)
@@ -55,6 +63,7 @@ def claim_server(
     _, error = claim_server_internal(
         body=body,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"ClaimServer failed: {str(error)}")

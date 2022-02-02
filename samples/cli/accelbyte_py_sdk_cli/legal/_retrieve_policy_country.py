@@ -35,20 +35,29 @@ from accelbyte_py_sdk.api.legal.models import RetrievePolicyResponse
 @click.argument("base_policy_id", type=str)
 @click.argument("country_code", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def retrieve_policy_country(
         base_policy_id: str,
         country_code: str,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(retrieve_policy_country_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = retrieve_policy_country_internal(
         base_policy_id=base_policy_id,
         country_code=country_code,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"retrievePolicyCountry failed: {str(error)}")

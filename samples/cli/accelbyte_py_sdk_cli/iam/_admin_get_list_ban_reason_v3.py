@@ -33,16 +33,25 @@ from accelbyte_py_sdk.api.iam.models import RestapiErrorResponse
 
 @click.command()
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def admin_get_list_ban_reason_v3(
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(admin_get_list_ban_reason_v3_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = admin_get_list_ban_reason_v3_internal(
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"AdminGetListBanReasonV3 failed: {str(error)}")

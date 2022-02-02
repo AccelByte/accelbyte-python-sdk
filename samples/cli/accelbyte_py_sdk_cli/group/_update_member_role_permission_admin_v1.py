@@ -37,18 +37,26 @@ from accelbyte_py_sdk.api.group.models import ResponseErrorResponse
 @click.argument("member_role_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def update_member_role_permission_admin_v1(
         body: str,
         member_role_id: str,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(update_member_role_permission_admin_v1_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     if body is not None:
         try:
             body_json = json.loads(body)
@@ -59,6 +67,7 @@ def update_member_role_permission_admin_v1(
         body=body,
         member_role_id=member_role_id,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"updateMemberRolePermissionAdminV1 failed: {str(error)}")

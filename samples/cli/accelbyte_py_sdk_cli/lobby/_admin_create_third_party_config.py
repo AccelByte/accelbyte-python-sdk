@@ -36,17 +36,25 @@ from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseV1
 @click.argument("body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def admin_create_third_party_config(
         body: str,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(admin_create_third_party_config_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     if body is not None:
         try:
             body_json = json.loads(body)
@@ -56,6 +64,7 @@ def admin_create_third_party_config(
     _, error = admin_create_third_party_config_internal(
         body=body,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"adminCreateThirdPartyConfig failed: {str(error)}")

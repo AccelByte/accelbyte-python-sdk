@@ -34,17 +34,25 @@ from accelbyte_py_sdk.api.iam.models import ModelResetPasswordRequest
 @click.argument("body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def reset_password(
         body: str,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(reset_password_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     if body is not None:
         try:
             body_json = json.loads(body)
@@ -54,6 +62,7 @@ def reset_password(
     _, error = reset_password_internal(
         body=body,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"ResetPassword failed: {str(error)}")

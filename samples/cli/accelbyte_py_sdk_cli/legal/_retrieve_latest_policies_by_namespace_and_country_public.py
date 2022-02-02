@@ -38,6 +38,7 @@ from accelbyte_py_sdk.api.legal.models import RetrievePolicyPublicResponse
 @click.option("--tags", "tags", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def retrieve_latest_policies_by_namespace_and_country_public(
         country_code: str,
@@ -47,12 +48,19 @@ def retrieve_latest_policies_by_namespace_and_country_public(
         tags: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(retrieve_latest_policies_by_namespace_and_country_public_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = retrieve_latest_policies_by_namespace_and_country_public_internal(
         country_code=country_code,
         always_include_default=always_include_default,
@@ -60,6 +68,7 @@ def retrieve_latest_policies_by_namespace_and_country_public(
         policy_type=policy_type,
         tags=tags,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"retrieveLatestPoliciesByNamespaceAndCountryPublic failed: {str(error)}")

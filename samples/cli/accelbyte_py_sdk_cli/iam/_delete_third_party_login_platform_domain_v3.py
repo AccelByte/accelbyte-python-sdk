@@ -36,18 +36,26 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.argument("platform_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def delete_third_party_login_platform_domain_v3(
         body: str,
         platform_id: str,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(delete_third_party_login_platform_domain_v3_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     if body is not None:
         try:
             body_json = json.loads(body)
@@ -58,6 +66,7 @@ def delete_third_party_login_platform_domain_v3(
         body=body,
         platform_id=platform_id,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"DeleteThirdPartyLoginPlatformDomainV3 failed: {str(error)}")

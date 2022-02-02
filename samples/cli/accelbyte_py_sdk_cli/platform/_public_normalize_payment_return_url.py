@@ -45,6 +45,7 @@ from accelbyte_py_sdk.api.platform import public_normalize_payment_return_url as
 @click.option("--user_id", "user_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def public_normalize_payment_return_url(
         order_no: str,
@@ -62,12 +63,19 @@ def public_normalize_payment_return_url(
         user_id: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(public_normalize_payment_return_url_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = public_normalize_payment_return_url_internal(
         order_no=order_no,
         payment_order_no=payment_order_no,
@@ -83,6 +91,7 @@ def public_normalize_payment_return_url(
         type_=type_,
         user_id=user_id,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"publicNormalizePaymentReturnUrl failed: {str(error)}")

@@ -39,6 +39,7 @@ from accelbyte_py_sdk.api.platform.models import ItemInfo
 @click.option("--store_id", "store_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def bulk_get_locale_items(
         item_ids: str,
@@ -48,12 +49,19 @@ def bulk_get_locale_items(
         store_id: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(bulk_get_locale_items_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = bulk_get_locale_items_internal(
         item_ids=item_ids,
         active_only=active_only,
@@ -61,6 +69,7 @@ def bulk_get_locale_items(
         region=region,
         store_id=store_id,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"bulkGetLocaleItems failed: {str(error)}")

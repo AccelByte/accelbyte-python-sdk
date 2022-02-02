@@ -33,20 +33,29 @@ from accelbyte_py_sdk.api.iam import login_sso_client as login_sso_client_intern
 @click.argument("platform_id", type=str)
 @click.option("--payload", "payload", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def login_sso_client(
         platform_id: str,
         payload: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(login_sso_client_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = login_sso_client_internal(
         platform_id=platform_id,
         payload=payload,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"LoginSSOClient failed: {str(error)}")

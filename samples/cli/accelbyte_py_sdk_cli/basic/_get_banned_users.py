@@ -36,17 +36,25 @@ from accelbyte_py_sdk.api.basic.models import ValidationErrorEntity
 @click.argument("user_ids", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def get_banned_users(
         user_ids: str,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(get_banned_users_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     if user_ids is not None:
         try:
             user_ids_json = json.loads(user_ids)
@@ -56,6 +64,7 @@ def get_banned_users(
     _, error = get_banned_users_internal(
         user_ids=user_ids,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"getBannedUsers failed: {str(error)}")

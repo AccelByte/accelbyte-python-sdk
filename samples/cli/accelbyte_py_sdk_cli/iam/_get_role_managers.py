@@ -33,18 +33,27 @@ from accelbyte_py_sdk.api.iam.models import ModelRoleManagersResponse
 @click.command()
 @click.argument("role_id", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def get_role_managers(
         role_id: str,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(get_role_managers_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = get_role_managers_internal(
         role_id=role_id,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"GetRoleManagers failed: {str(error)}")

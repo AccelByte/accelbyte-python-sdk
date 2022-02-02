@@ -32,18 +32,27 @@ from accelbyte_py_sdk.api.iam import delete_client as delete_client_internal
 @click.command()
 @click.argument("client_id", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def delete_client(
         client_id: str,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(delete_client_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = delete_client_internal(
         client_id=client_id,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"DeleteClient failed: {str(error)}")

@@ -39,6 +39,7 @@ from accelbyte_py_sdk.api.legal.models import AcceptAgreementResponse
 @click.option("--publisher_user_id", "publisher_user_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def indirect_bulk_accept_versioned_policy(
         user_id: str,
@@ -48,12 +49,19 @@ def indirect_bulk_accept_versioned_policy(
         publisher_user_id: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(indirect_bulk_accept_versioned_policy_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     if body is not None:
         try:
             body_json = json.loads(body)
@@ -67,6 +75,7 @@ def indirect_bulk_accept_versioned_policy(
         body=body,
         publisher_user_id=publisher_user_id,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"indirectBulkAcceptVersionedPolicy failed: {str(error)}")

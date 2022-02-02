@@ -33,18 +33,27 @@ from accelbyte_py_sdk.api.gametelemetry.models import HTTPValidationError
 @click.command()
 @click.argument("steam_id", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get(
         steam_id: str,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get_internal(
         steam_id=steam_id,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"protected_get_playtime_game_telemetry_v1_protected_steamIds__steamId__playtime_get failed: {str(error)}")

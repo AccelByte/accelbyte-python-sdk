@@ -36,18 +36,26 @@ from accelbyte_py_sdk.api.iam.models import ModelCountryAgeRestrictionRequest
 @click.argument("country_code", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def update_country_age_restriction(
         body: str,
         country_code: str,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(update_country_age_restriction_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     if body is not None:
         try:
             body_json = json.loads(body)
@@ -58,6 +66,7 @@ def update_country_age_restriction(
         body=body,
         country_code=country_code,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"UpdateCountryAgeRestriction failed: {str(error)}")

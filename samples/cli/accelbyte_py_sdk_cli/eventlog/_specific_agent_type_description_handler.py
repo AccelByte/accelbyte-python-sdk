@@ -33,18 +33,27 @@ from accelbyte_py_sdk.api.eventlog.models import ModelsMultipleAgentType
 @click.command()
 @click.option("--agent_types", "agent_types", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def specific_agent_type_description_handler(
         agent_types: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(specific_agent_type_description_handler_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = specific_agent_type_description_handler_internal(
         agent_types=agent_types,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"SpecificAgentTypeDescriptionHandler failed: {str(error)}")

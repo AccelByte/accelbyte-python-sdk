@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.social.models import ValidationErrorEntity
 @click.option("--additional_key", "additional_key", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def update_user_stat_item_value_1(
         stat_code: str,
@@ -48,12 +49,19 @@ def update_user_stat_item_value_1(
         additional_key: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(update_user_stat_item_value_1_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     if body is not None:
         try:
             body_json = json.loads(body)
@@ -66,6 +74,7 @@ def update_user_stat_item_value_1(
         body=body,
         additional_key=additional_key,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"updateUserStatItemValue_1 failed: {str(error)}")

@@ -39,6 +39,7 @@ from accelbyte_py_sdk.api.platform.models import SubscriptionInfo
 @click.option("--force", "force", type=bool)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def cancel_subscription(
         subscription_id: str,
@@ -47,12 +48,19 @@ def cancel_subscription(
         force: Optional[bool] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(cancel_subscription_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     if body is not None:
         try:
             body_json = json.loads(body)
@@ -65,6 +73,7 @@ def cancel_subscription(
         body=body,
         force=force,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"cancelSubscription failed: {str(error)}")

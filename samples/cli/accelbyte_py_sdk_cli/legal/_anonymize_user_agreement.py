@@ -33,18 +33,27 @@ from accelbyte_py_sdk.api.legal.models import ErrorEntity
 @click.command()
 @click.argument("user_id", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def anonymize_user_agreement(
         user_id: str,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(anonymize_user_agreement_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = anonymize_user_agreement_internal(
         user_id=user_id,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"anonymizeUserAgreement failed: {str(error)}")

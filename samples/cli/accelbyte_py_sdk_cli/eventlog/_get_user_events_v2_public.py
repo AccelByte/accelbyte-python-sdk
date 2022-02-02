@@ -39,6 +39,7 @@ from accelbyte_py_sdk.api.eventlog.models import ModelsEventResponseV2
 @click.option("--start_date", "start_date", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def get_user_events_v2_public(
         user_id: str,
@@ -49,12 +50,19 @@ def get_user_events_v2_public(
         start_date: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(get_user_events_v2_public_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = get_user_events_v2_public_internal(
         user_id=user_id,
         end_date=end_date,
@@ -63,6 +71,7 @@ def get_user_events_v2_public(
         page_size=page_size,
         start_date=start_date,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"GetUserEventsV2Public failed: {str(error)}")

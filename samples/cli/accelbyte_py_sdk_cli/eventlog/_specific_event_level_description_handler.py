@@ -33,18 +33,27 @@ from accelbyte_py_sdk.api.eventlog.models import ModelsMultipleEventLevel
 @click.command()
 @click.option("--event_levels", "event_levels", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def specific_event_level_description_handler(
         event_levels: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(specific_event_level_description_handler_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = specific_event_level_description_handler_internal(
         event_levels=event_levels,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"SpecificEventLevelDescriptionHandler failed: {str(error)}")

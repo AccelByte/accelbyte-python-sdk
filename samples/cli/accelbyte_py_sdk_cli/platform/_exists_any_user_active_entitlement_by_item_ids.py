@@ -35,18 +35,26 @@ from accelbyte_py_sdk.api.platform.models import Ownership
 @click.argument("item_ids", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def exists_any_user_active_entitlement_by_item_ids(
         user_id: str,
         item_ids: str,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(exists_any_user_active_entitlement_by_item_ids_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     if item_ids is not None:
         try:
             item_ids_json = json.loads(item_ids)
@@ -57,6 +65,7 @@ def exists_any_user_active_entitlement_by_item_ids(
         user_id=user_id,
         item_ids=item_ids,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"existsAnyUserActiveEntitlementByItemIds failed: {str(error)}")

@@ -36,6 +36,7 @@ from accelbyte_py_sdk.api.social.models import ErrorEntity
 @click.option("--additional_key", "additional_key", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def delete_user_stat_items_2(
         stat_code: str,
@@ -43,17 +44,25 @@ def delete_user_stat_items_2(
         additional_key: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(delete_user_stat_items_2_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = delete_user_stat_items_2_internal(
         stat_code=stat_code,
         user_id=user_id,
         additional_key=additional_key,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"deleteUserStatItems_2 failed: {str(error)}")

@@ -49,6 +49,7 @@ from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 @click.option("--target_namespace", "target_namespace", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def query_items(
         active_only: Optional[bool] = None,
@@ -67,12 +68,19 @@ def query_items(
         target_namespace: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(query_items_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = query_items_internal(
         active_only=active_only,
         app_type=app_type,
@@ -89,6 +97,7 @@ def query_items(
         tags=tags,
         target_namespace=target_namespace,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"queryItems failed: {str(error)}")

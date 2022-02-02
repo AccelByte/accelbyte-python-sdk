@@ -37,6 +37,7 @@ from accelbyte_py_sdk.api.iam import user_authentication_v3 as user_authenticati
 @click.option("--extend_exp", "extend_exp", type=bool)
 @click.option("--redirect_uri", "redirect_uri", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def user_authentication_v3(
         password: str,
@@ -46,12 +47,19 @@ def user_authentication_v3(
         extend_exp: Optional[bool] = None,
         redirect_uri: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(user_authentication_v3_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = user_authentication_v3_internal(
         password=password,
         request_id=request_id,
@@ -59,6 +67,7 @@ def user_authentication_v3(
         client_id=client_id,
         extend_exp=extend_exp,
         redirect_uri=redirect_uri,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"UserAuthenticationV3 failed: {str(error)}")

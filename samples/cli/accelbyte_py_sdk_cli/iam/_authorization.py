@@ -38,6 +38,7 @@ from accelbyte_py_sdk.api.iam import authorization as authorization_internal
 @click.option("--scope", "scope", type=str)
 @click.option("--state", "state", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def authorization(
         client_id: str,
@@ -48,12 +49,19 @@ def authorization(
         scope: Optional[str] = None,
         state: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(authorization_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = authorization_internal(
         client_id=client_id,
         redirect_uri=redirect_uri,
@@ -62,6 +70,7 @@ def authorization(
         password=password,
         scope=scope,
         state=state,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"Authorization failed: {str(error)}")

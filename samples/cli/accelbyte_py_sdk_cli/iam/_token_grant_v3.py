@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelTokenResponseV3
 @click.option("--redirect_uri", "redirect_uri", type=str)
 @click.option("--refresh_token", "refresh_token", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def token_grant_v3(
         grant_type: str,
@@ -50,12 +51,19 @@ def token_grant_v3(
         redirect_uri: Optional[str] = None,
         refresh_token: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(token_grant_v3_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = token_grant_v3_internal(
         grant_type=grant_type,
         device_id=device_id,
@@ -64,6 +72,7 @@ def token_grant_v3(
         code_verifier=code_verifier,
         redirect_uri=redirect_uri,
         refresh_token=refresh_token,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"TokenGrantV3 failed: {str(error)}")

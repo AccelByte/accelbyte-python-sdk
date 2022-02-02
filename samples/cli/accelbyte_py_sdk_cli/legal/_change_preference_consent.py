@@ -34,16 +34,24 @@ from accelbyte_py_sdk.api.legal.models import ErrorEntity
 @click.command()
 @click.option("--body", "body", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def change_preference_consent(
         body: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(change_preference_consent_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     if body is not None:
         try:
             body_json = json.loads(body)
@@ -52,6 +60,7 @@ def change_preference_consent(
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     _, error = change_preference_consent_internal(
         body=body,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"changePreferenceConsent failed: {str(error)}")

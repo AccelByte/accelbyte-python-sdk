@@ -37,6 +37,7 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelTokenResponse
 @click.option("--platform_token", "platform_token", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def platform_token_request_handler(
         platform_id: str,
@@ -44,17 +45,25 @@ def platform_token_request_handler(
         platform_token: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(platform_token_request_handler_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = platform_token_request_handler_internal(
         platform_id=platform_id,
         device_id=device_id,
         platform_token=platform_token,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"PlatformTokenRequestHandler failed: {str(error)}")

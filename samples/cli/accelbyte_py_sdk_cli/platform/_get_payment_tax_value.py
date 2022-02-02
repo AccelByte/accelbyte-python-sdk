@@ -37,6 +37,7 @@ from accelbyte_py_sdk.api.platform.models import TaxResult
 @click.option("--zip_code", "zip_code", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def get_payment_tax_value(
         payment_order_no: str,
@@ -44,17 +45,25 @@ def get_payment_tax_value(
         zip_code: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(get_payment_tax_value_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = get_payment_tax_value_internal(
         payment_order_no=payment_order_no,
         payment_provider=payment_provider,
         zip_code=zip_code,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"getPaymentTaxValue failed: {str(error)}")

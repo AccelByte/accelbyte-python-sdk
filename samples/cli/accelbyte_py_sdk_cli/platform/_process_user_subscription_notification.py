@@ -36,6 +36,7 @@ from accelbyte_py_sdk.api.platform.models import TradeNotification
 @click.option("--body", "body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def process_user_subscription_notification(
         subscription_id: str,
@@ -43,12 +44,19 @@ def process_user_subscription_notification(
         body: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(process_user_subscription_notification_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     if body is not None:
         try:
             body_json = json.loads(body)
@@ -60,6 +68,7 @@ def process_user_subscription_notification(
         user_id=user_id,
         body=body,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"processUserSubscriptionNotification failed: {str(error)}")

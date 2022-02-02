@@ -37,17 +37,25 @@ from accelbyte_py_sdk.api.basic.models import ValidationErrorEntity
 @click.argument("user_zip_code_update", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def update_my_zip_code(
         user_zip_code_update: str,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(update_my_zip_code_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     if user_zip_code_update is not None:
         try:
             user_zip_code_update_json = json.loads(user_zip_code_update)
@@ -57,6 +65,7 @@ def update_my_zip_code(
     _, error = update_my_zip_code_internal(
         user_zip_code_update=user_zip_code_update,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"updateMyZipCode failed: {str(error)}")

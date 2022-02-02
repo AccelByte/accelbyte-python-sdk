@@ -42,6 +42,7 @@ from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 @click.option("--with_total", "with_total", type=bool)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def query_orders(
         end_time: Optional[str] = None,
@@ -54,12 +55,19 @@ def query_orders(
         with_total: Optional[bool] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(query_orders_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     if order_nos is not None:
         try:
             order_nos_json = json.loads(order_nos)
@@ -76,6 +84,7 @@ def query_orders(
         status=status,
         with_total=with_total,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"queryOrders failed: {str(error)}")

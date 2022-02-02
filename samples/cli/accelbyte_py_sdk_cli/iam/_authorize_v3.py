@@ -39,6 +39,7 @@ from accelbyte_py_sdk.api.iam import authorize_v3 as authorize_v3_internal
 @click.option("--state", "state", type=str)
 @click.option("--target_auth_page", "target_auth_page", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def authorize_v3(
         client_id: str,
@@ -50,12 +51,19 @@ def authorize_v3(
         state: Optional[str] = None,
         target_auth_page: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(authorize_v3_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = authorize_v3_internal(
         client_id=client_id,
         response_type=response_type,
@@ -65,6 +73,7 @@ def authorize_v3(
         scope=scope,
         state=state,
         target_auth_page=target_auth_page,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"AuthorizeV3 failed: {str(error)}")

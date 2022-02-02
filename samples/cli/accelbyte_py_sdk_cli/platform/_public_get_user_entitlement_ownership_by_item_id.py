@@ -36,6 +36,7 @@ from accelbyte_py_sdk.api.platform.models import TimedOwnership
 @click.option("--entitlement_clazz", "entitlement_clazz", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def public_get_user_entitlement_ownership_by_item_id(
         user_id: str,
@@ -43,17 +44,25 @@ def public_get_user_entitlement_ownership_by_item_id(
         entitlement_clazz: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(public_get_user_entitlement_ownership_by_item_id_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = public_get_user_entitlement_ownership_by_item_id_internal(
         user_id=user_id,
         item_id=item_id,
         entitlement_clazz=entitlement_clazz,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"publicGetUserEntitlementOwnershipByItemId failed: {str(error)}")

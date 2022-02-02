@@ -35,17 +35,25 @@ from accelbyte_py_sdk.api.qosm.models import ResponseError
 @click.argument("body", type=str)
 @click.argument("region", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def set_server_alias(
         body: str,
         region: str,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(set_server_alias_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     if body is not None:
         try:
             body_json = json.loads(body)
@@ -55,6 +63,7 @@ def set_server_alias(
     _, error = set_server_alias_internal(
         body=body,
         region=region,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"SetServerAlias failed: {str(error)}")

@@ -32,18 +32,27 @@ from accelbyte_py_sdk.api.legal import accept_versioned_policy as accept_version
 @click.command()
 @click.argument("localized_policy_version_id", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def accept_versioned_policy(
         localized_policy_version_id: str,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(accept_versioned_policy_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = accept_versioned_policy_internal(
         localized_policy_version_id=localized_policy_version_id,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"acceptVersionedPolicy failed: {str(error)}")

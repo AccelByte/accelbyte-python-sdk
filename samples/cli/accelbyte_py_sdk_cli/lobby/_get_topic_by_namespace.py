@@ -37,6 +37,7 @@ from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
 @click.option("--limit", "limit", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def get_topic_by_namespace(
         after: Optional[str] = None,
@@ -44,17 +45,25 @@ def get_topic_by_namespace(
         limit: Optional[int] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(get_topic_by_namespace_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = get_topic_by_namespace_internal(
         after=after,
         before=before,
         limit=limit,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"getTopicByNamespace failed: {str(error)}")

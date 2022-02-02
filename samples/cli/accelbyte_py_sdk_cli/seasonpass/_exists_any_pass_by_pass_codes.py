@@ -36,18 +36,26 @@ from accelbyte_py_sdk.api.seasonpass.models import Ownership
 @click.option("--pass_codes", "pass_codes", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def exists_any_pass_by_pass_codes(
         user_id: str,
         pass_codes: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(exists_any_pass_by_pass_codes_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     if pass_codes is not None:
         try:
             pass_codes_json = json.loads(pass_codes)
@@ -58,6 +66,7 @@ def exists_any_pass_by_pass_codes(
         user_id=user_id,
         pass_codes=pass_codes,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"existsAnyPassByPassCodes failed: {str(error)}")

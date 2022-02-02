@@ -35,22 +35,31 @@ from accelbyte_py_sdk.api.iam.models import ModelPublicUserResponse
 @click.argument("platform_user_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
+@click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def get_user_by_platform_user_id(
         platform_id: str,
         platform_user_id: str,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(get_user_by_platform_user_id_internal.__doc__)
         return
-    login_as_internal(login_as)
+    x_additional_headers = None
+    if login_with_auth:
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
+    else:
+        login_as_internal(login_as)
     _, error = get_user_by_platform_user_id_internal(
         platform_id=platform_id,
         platform_user_id=platform_user_id,
         namespace=namespace,
+        x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"GetUserByPlatformUserID failed: {str(error)}")
