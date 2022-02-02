@@ -69,7 +69,7 @@ echo "1..$OPERATIONS_COUNT"
 #- 1 DeleteServer
 $PYTHON -m $MODULE 'qosm-delete-server' \
     'FtBxyZcD' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteServer'
 delete_file $TEMP_FILE
@@ -78,14 +78,14 @@ delete_file $TEMP_FILE
 $PYTHON -m $MODULE 'qosm-set-server-alias' \
     '{"alias": "XBpGlsQu"}' \
     'Ju8vMf0I' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'SetServerAlias'
 delete_file $TEMP_FILE
 
 #- 3 ListServer
 $PYTHON -m $MODULE 'qosm-list-server' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'ListServer'
 delete_file $TEMP_FILE
@@ -93,7 +93,7 @@ delete_file $TEMP_FILE
 #- 4 Heartbeat
 $PYTHON -m $MODULE 'qosm-heartbeat' \
     '{"ip": "sJkTrd8I", "port": 59, "region": "cV2zXnTK"}' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'Heartbeat'
 delete_file $TEMP_FILE

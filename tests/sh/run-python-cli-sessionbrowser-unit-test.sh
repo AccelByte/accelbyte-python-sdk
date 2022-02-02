@@ -68,21 +68,21 @@ echo "1..$OPERATIONS_COUNT"
 
 #- 1 GetTotalActiveSession
 $PYTHON -m $MODULE 'sessionbrowser-get-total-active-session' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetTotalActiveSession'
 delete_file $TEMP_FILE
 
 #- 2 GetActiveCustomGameSessions
 $PYTHON -m $MODULE 'sessionbrowser-get-active-custom-game-sessions' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetActiveCustomGameSessions'
 delete_file $TEMP_FILE
 
 #- 3 GetActiveMatchmakingGameSessions
 $PYTHON -m $MODULE 'sessionbrowser-get-active-matchmaking-game-sessions' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetActiveMatchmakingGameSessions'
 delete_file $TEMP_FILE
@@ -90,7 +90,7 @@ delete_file $TEMP_FILE
 #- 4 AdminGetSession
 $PYTHON -m $MODULE 'sessionbrowser-admin-get-session' \
     'FtBxyZcD' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetSession'
 delete_file $TEMP_FILE
@@ -98,7 +98,7 @@ delete_file $TEMP_FILE
 #- 5 QuerySession
 $PYTHON -m $MODULE 'sessionbrowser-query-session' \
     'XBpGlsQu' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'QuerySession'
 delete_file $TEMP_FILE
@@ -106,7 +106,7 @@ delete_file $TEMP_FILE
 #- 6 CreateSession
 $PYTHON -m $MODULE 'sessionbrowser-create-session' \
     '{"game_session_setting": {"allow_join_in_progress": true, "current_internal_player": 42, "current_player": 77, "map_name": "f0IsJkTr", "max_internal_player": 6, "max_player": 68, "mode": "DcV2zXnT", "num_bot": 72, "password": "jXY1bPqa", "settings": {"miBxx9Cs": {}}}, "game_version": "18EY84ek", "namespace": "ItqRzHU1", "session_type": "oh570KQB", "username": "Vaewc72k"}' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateSession'
 delete_file $TEMP_FILE
@@ -114,7 +114,7 @@ delete_file $TEMP_FILE
 #- 7 GetSessionByUserIDs
 $PYTHON -m $MODULE 'sessionbrowser-get-session-by-user-i-ds' \
     'rSha68n3' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetSessionByUserIDs'
 delete_file $TEMP_FILE
@@ -122,7 +122,7 @@ delete_file $TEMP_FILE
 #- 8 GetSession
 $PYTHON -m $MODULE 'sessionbrowser-get-session' \
     'Ynozp1C2' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetSession'
 delete_file $TEMP_FILE
@@ -131,7 +131,7 @@ delete_file $TEMP_FILE
 $PYTHON -m $MODULE 'sessionbrowser-update-session' \
     '{"game_current_player": 72, "game_max_player": 24}' \
     'IQTuBdNE' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateSession'
 delete_file $TEMP_FILE
@@ -139,7 +139,7 @@ delete_file $TEMP_FILE
 #- 10 DeleteSession
 $PYTHON -m $MODULE 'sessionbrowser-delete-session' \
     'UsxFb8CJ' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteSession'
 delete_file $TEMP_FILE
@@ -148,7 +148,7 @@ delete_file $TEMP_FILE
 $PYTHON -m $MODULE 'sessionbrowser-join-session' \
     '{"password": "17M7DJZa"}' \
     'MSxECbZb' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'JoinSession'
 delete_file $TEMP_FILE
@@ -156,7 +156,7 @@ delete_file $TEMP_FILE
 #- 12 DeleteSessionLocalDS
 $PYTHON -m $MODULE 'sessionbrowser-delete-session-local-ds' \
     'ygyoarOR' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteSessionLocalDS'
 delete_file $TEMP_FILE
@@ -165,7 +165,7 @@ delete_file $TEMP_FILE
 $PYTHON -m $MODULE 'sessionbrowser-add-player-to-session' \
     '{"as_spectator": false, "user_id": "eNHSb8Rh"}' \
     '3kgs9qqJ' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AddPlayerToSession'
 delete_file $TEMP_FILE
@@ -174,7 +174,7 @@ delete_file $TEMP_FILE
 $PYTHON -m $MODULE 'sessionbrowser-remove-player-from-session' \
     'bnQsoBgi' \
     'VpP8Cm3y' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'RemovePlayerFromSession'
 delete_file $TEMP_FILE
@@ -182,7 +182,7 @@ delete_file $TEMP_FILE
 #- 15 GetRecentPlayer
 $PYTHON -m $MODULE 'sessionbrowser-get-recent-player' \
     'vASUoxdx' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetRecentPlayer'
 delete_file $TEMP_FILE

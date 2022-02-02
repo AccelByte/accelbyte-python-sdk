@@ -68,7 +68,7 @@ echo "1..$OPERATIONS_COUNT"
 
 #- 1 ListTerminatedServers
 $PYTHON -m $MODULE 'dslogmanager-list-terminated-servers' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'ListTerminatedServers'
 delete_file $TEMP_FILE
@@ -76,7 +76,7 @@ delete_file $TEMP_FILE
 #- 2 DownloadServerLogs
 $PYTHON -m $MODULE 'dslogmanager-download-server-logs' \
     'FtBxyZcD' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DownloadServerLogs'
 delete_file $TEMP_FILE
@@ -84,7 +84,7 @@ delete_file $TEMP_FILE
 #- 3 CheckServerLogs
 $PYTHON -m $MODULE 'dslogmanager-check-server-logs' \
     'XBpGlsQu' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'CheckServerLogs'
 delete_file $TEMP_FILE
@@ -92,21 +92,21 @@ delete_file $TEMP_FILE
 #- 4 BatchDownloadServerLogs
 $PYTHON -m $MODULE 'dslogmanager-batch-download-server-logs' \
     '{"Downloads": [{"alloc_id": "Ju8vMf0I", "namespace": "sJkTrd8I", "pod_name": "DcV2zXnT"}]}' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'BatchDownloadServerLogs'
 delete_file $TEMP_FILE
 
 #- 5 ListAllTerminatedServers
 $PYTHON -m $MODULE 'dslogmanager-list-all-terminated-servers' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'ListAllTerminatedServers'
 delete_file $TEMP_FILE
 
 #- 6 PublicGetMessages
 $PYTHON -m $MODULE 'dslogmanager-public-get-messages' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetMessages'
 delete_file $TEMP_FILE

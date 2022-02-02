@@ -153,7 +153,7 @@ update_status 0 'GetRegisteredEventsByEventTypeHandler (skipped deprecated)'
 #- 29 QueryEventStreamHandler
 $PYTHON -m $MODULE 'eventlog-query-event-stream-handler' \
     '{"clientId": "FtBxyZcD", "eventName": "XBpGlsQu", "payloadQuery": {"Ju8vMf0I": {}}, "sessionId": "sJkTrd8I", "traceId": "DcV2zXnT", "userId": "KjXY1bPq", "version": 1}' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'QueryEventStreamHandler'
 delete_file $TEMP_FILE
@@ -161,7 +161,7 @@ delete_file $TEMP_FILE
 #- 30 GetEventSpecificUserV2Handler
 $PYTHON -m $MODULE 'eventlog-get-event-specific-user-v2-handler' \
     'miBxx9Cs' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetEventSpecificUserV2Handler'
 delete_file $TEMP_FILE
@@ -169,7 +169,7 @@ delete_file $TEMP_FILE
 #- 31 GetPublicEditHistory
 $PYTHON -m $MODULE 'eventlog-get-public-edit-history' \
     '18EY84ek' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetPublicEditHistory'
 delete_file $TEMP_FILE
@@ -177,7 +177,7 @@ delete_file $TEMP_FILE
 #- 32 GetUserEventsV2Public
 $PYTHON -m $MODULE 'eventlog-get-user-events-v2-public' \
     'ItqRzHU1' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserEventsV2Public'
 delete_file $TEMP_FILE

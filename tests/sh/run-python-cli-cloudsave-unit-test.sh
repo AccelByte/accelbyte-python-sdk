@@ -70,7 +70,7 @@ echo "1..$OPERATIONS_COUNT"
 $PYTHON -m $MODULE 'cloudsave-list-game-records-handler-v1' \
     '62' \
     '39' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'ListGameRecordsHandlerV1'
 delete_file $TEMP_FILE
@@ -78,7 +78,7 @@ delete_file $TEMP_FILE
 #- 2 AdminGetGameRecordHandlerV1
 $PYTHON -m $MODULE 'cloudsave-admin-get-game-record-handler-v1' \
     'BxyZcDXB' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetGameRecordHandlerV1'
 delete_file $TEMP_FILE
@@ -87,7 +87,7 @@ delete_file $TEMP_FILE
 $PYTHON -m $MODULE 'cloudsave-admin-put-game-record-handler-v1' \
     '{}' \
     'pGlsQuJu' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminPutGameRecordHandlerV1'
 delete_file $TEMP_FILE
@@ -96,7 +96,7 @@ delete_file $TEMP_FILE
 $PYTHON -m $MODULE 'cloudsave-admin-post-game-record-handler-v1' \
     '{}' \
     '8vMf0IsJ' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminPostGameRecordHandlerV1'
 delete_file $TEMP_FILE
@@ -104,7 +104,7 @@ delete_file $TEMP_FILE
 #- 5 AdminDeleteGameRecordHandlerV1
 $PYTHON -m $MODULE 'cloudsave-admin-delete-game-record-handler-v1' \
     'kTrd8IDc' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminDeleteGameRecordHandlerV1'
 delete_file $TEMP_FILE
@@ -115,7 +115,7 @@ update_status 0 'ListPlayerRecordHandlerV1 (skipped deprecated)'
 #- 7 AdminRetrievePlayerRecords
 $PYTHON -m $MODULE 'cloudsave-admin-retrieve-player-records' \
     'V2zXnTKj' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminRetrievePlayerRecords'
 delete_file $TEMP_FILE
@@ -124,7 +124,7 @@ delete_file $TEMP_FILE
 $PYTHON -m $MODULE 'cloudsave-admin-get-player-record-handler-v1' \
     'XY1bPqam' \
     'iBxx9Cs1' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetPlayerRecordHandlerV1'
 delete_file $TEMP_FILE
@@ -134,7 +134,7 @@ $PYTHON -m $MODULE 'cloudsave-admin-put-player-record-handler-v1' \
     '{}' \
     '8EY84ekI' \
     'tqRzHU1o' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminPutPlayerRecordHandlerV1'
 delete_file $TEMP_FILE
@@ -144,7 +144,7 @@ $PYTHON -m $MODULE 'cloudsave-admin-post-player-record-handler-v1' \
     '{}' \
     'h570KQBV' \
     'aewc72kr' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminPostPlayerRecordHandlerV1'
 delete_file $TEMP_FILE
@@ -153,7 +153,7 @@ delete_file $TEMP_FILE
 $PYTHON -m $MODULE 'cloudsave-admin-delete-player-record-handler-v1' \
     'Sha68n3Y' \
     'nozp1C2K' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminDeletePlayerRecordHandlerV1'
 delete_file $TEMP_FILE
@@ -162,7 +162,7 @@ delete_file $TEMP_FILE
 $PYTHON -m $MODULE 'cloudsave-admin-get-player-public-record-handler-v1' \
     'mIQTuBdN' \
     'EUsxFb8C' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetPlayerPublicRecordHandlerV1'
 delete_file $TEMP_FILE
@@ -172,7 +172,7 @@ $PYTHON -m $MODULE 'cloudsave-admin-put-player-public-record-handler-v1' \
     '{}' \
     'J17M7DJZ' \
     'aMSxECbZ' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminPutPlayerPublicRecordHandlerV1'
 delete_file $TEMP_FILE
@@ -182,7 +182,7 @@ $PYTHON -m $MODULE 'cloudsave-admin-post-player-public-record-handler-v1' \
     '{}' \
     'bygyoarO' \
     'RoeNHSb8' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminPostPlayerPublicRecordHandlerV1'
 delete_file $TEMP_FILE
@@ -191,7 +191,7 @@ delete_file $TEMP_FILE
 $PYTHON -m $MODULE 'cloudsave-admin-delete-player-public-record-handler-v1' \
     'Rh3kgs9q' \
     'qJbnQsoB' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminDeletePlayerPublicRecordHandlerV1'
 delete_file $TEMP_FILE
@@ -200,7 +200,7 @@ delete_file $TEMP_FILE
 $PYTHON -m $MODULE 'cloudsave-put-game-record-concurrent-handler-v1' \
     '{"updatedAt": "giVpP8Cm", "value": {"3yvASUox": {}}}' \
     'dxxFqmAG' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PutGameRecordConcurrentHandlerV1'
 delete_file $TEMP_FILE
@@ -208,7 +208,7 @@ delete_file $TEMP_FILE
 #- 17 GetGameRecordHandlerV1
 $PYTHON -m $MODULE 'cloudsave-get-game-record-handler-v1' \
     'TJ8IEdag' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetGameRecordHandlerV1'
 delete_file $TEMP_FILE
@@ -217,7 +217,7 @@ delete_file $TEMP_FILE
 $PYTHON -m $MODULE 'cloudsave-put-game-record-handler-v1' \
     '{}' \
     'Etp4w29K' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PutGameRecordHandlerV1'
 delete_file $TEMP_FILE
@@ -226,7 +226,7 @@ delete_file $TEMP_FILE
 $PYTHON -m $MODULE 'cloudsave-post-game-record-handler-v1' \
     '{}' \
     'Ou9c19R6' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PostGameRecordHandlerV1'
 delete_file $TEMP_FILE
@@ -234,7 +234,7 @@ delete_file $TEMP_FILE
 #- 20 DeleteGameRecordHandlerV1
 $PYTHON -m $MODULE 'cloudsave-delete-game-record-handler-v1' \
     'XDqWHkkP' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteGameRecordHandlerV1'
 delete_file $TEMP_FILE
@@ -243,7 +243,7 @@ delete_file $TEMP_FILE
 $PYTHON -m $MODULE 'cloudsave-bulk-get-player-public-record-handler-v1' \
     '{"userIds": ["8npLEKMf"]}' \
     'jiX7jpkV' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'BulkGetPlayerPublicRecordHandlerV1'
 delete_file $TEMP_FILE
@@ -251,7 +251,7 @@ delete_file $TEMP_FILE
 #- 22 PublicDeletePlayerPublicRecordHandlerV1
 $PYTHON -m $MODULE 'cloudsave-public-delete-player-public-record-handler-v1' \
     'Zk3IaQYE' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicDeletePlayerPublicRecordHandlerV1'
 delete_file $TEMP_FILE
@@ -261,7 +261,7 @@ $PYTHON -m $MODULE 'cloudsave-put-player-public-record-concurrent-handler-v1' \
     '{"updatedAt": "mqGodOEG", "value": {"t9gPOj0c": {}}}' \
     '6i0JkvIa' \
     's73ucYnF' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PutPlayerPublicRecordConcurrentHandlerV1'
 delete_file $TEMP_FILE
@@ -270,7 +270,7 @@ delete_file $TEMP_FILE
 $PYTHON -m $MODULE 'cloudsave-get-player-record-handler-v1' \
     'AJ3DK5T4' \
     'Eogg0Y39' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetPlayerRecordHandlerV1'
 delete_file $TEMP_FILE
@@ -280,7 +280,7 @@ $PYTHON -m $MODULE 'cloudsave-put-player-record-handler-v1' \
     '{}' \
     'UoYlpv5b' \
     'VAgtsDhU' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PutPlayerRecordHandlerV1'
 delete_file $TEMP_FILE
@@ -290,7 +290,7 @@ $PYTHON -m $MODULE 'cloudsave-post-player-record-handler-v1' \
     '{}' \
     'TDUscbQD' \
     'jbTQuPMz' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PostPlayerRecordHandlerV1'
 delete_file $TEMP_FILE
@@ -299,7 +299,7 @@ delete_file $TEMP_FILE
 $PYTHON -m $MODULE 'cloudsave-delete-player-record-handler-v1' \
     '2PTRlkyU' \
     '89ZPOw6z' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeletePlayerRecordHandlerV1'
 delete_file $TEMP_FILE
@@ -308,7 +308,7 @@ delete_file $TEMP_FILE
 $PYTHON -m $MODULE 'cloudsave-get-player-public-record-handler-v1' \
     'PFJ42cwm' \
     'zBBSMNco' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetPlayerPublicRecordHandlerV1'
 delete_file $TEMP_FILE
@@ -318,7 +318,7 @@ $PYTHON -m $MODULE 'cloudsave-put-player-public-record-handler-v1' \
     '{}' \
     'AAOjKNjf' \
     'cYHm093a' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PutPlayerPublicRecordHandlerV1'
 delete_file $TEMP_FILE
@@ -328,7 +328,7 @@ $PYTHON -m $MODULE 'cloudsave-post-player-public-record-handler-v1' \
     '{}' \
     'YgBU1sqj' \
     'yK0XH45P' \
-    --login_as client \
+    --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PostPlayerPublicRecordHandlerV1'
 delete_file $TEMP_FILE
