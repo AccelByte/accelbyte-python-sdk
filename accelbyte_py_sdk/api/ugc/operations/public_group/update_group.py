@@ -38,6 +38,9 @@ class UpdateGroup(Operation):
     replace group name and contents with new ones
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [UPDATE]
+
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}
 

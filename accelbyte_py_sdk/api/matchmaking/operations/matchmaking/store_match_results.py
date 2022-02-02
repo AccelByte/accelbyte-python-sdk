@@ -39,6 +39,12 @@ class StoreMatchResults(Operation):
     player attribute Will return final attribute value
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHRESULT [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /matchmaking/namespaces/{namespace}/matchresult
 

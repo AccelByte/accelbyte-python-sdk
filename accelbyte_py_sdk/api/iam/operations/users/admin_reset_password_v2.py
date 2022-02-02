@@ -36,6 +36,9 @@ class AdminResetPasswordV2(Operation):
     [UPDATE]'
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/password
 

@@ -38,6 +38,9 @@ class AdminVerifyAccountV3(Operation):
     <b>phone<b/> </p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/code/verify
 

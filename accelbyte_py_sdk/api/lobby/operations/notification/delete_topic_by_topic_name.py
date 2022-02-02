@@ -39,6 +39,12 @@ class DeleteTopicByTopicName(Operation):
     created
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:TOPIC [DELETE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /notification/namespaces/{namespace}/topics/{topic}
 

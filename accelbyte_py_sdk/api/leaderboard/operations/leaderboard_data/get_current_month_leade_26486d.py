@@ -37,6 +37,9 @@ class GetCurrentMonthLeaderboardRankingAdminV1(Operation):
     <p>Get rankings in current month leaderboard.</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
+
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/month
 

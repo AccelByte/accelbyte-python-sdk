@@ -39,6 +39,12 @@ class AdminGetPlayerPublicRecordHandlerV1(Operation):
     key.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}/public
 

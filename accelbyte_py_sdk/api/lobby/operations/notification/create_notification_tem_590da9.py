@@ -42,6 +42,12 @@ class CreateNotificationTemplateV1Admin(Operation):
     50204
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates
 

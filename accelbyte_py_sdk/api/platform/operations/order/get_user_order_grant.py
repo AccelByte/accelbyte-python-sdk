@@ -38,6 +38,9 @@ class GetUserOrderGrant(Operation):
     (READ)</li><li><i>Returns</i>: get order grant</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/grant
 

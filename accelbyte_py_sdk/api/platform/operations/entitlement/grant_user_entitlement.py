@@ -41,6 +41,9 @@ class GrantUserEntitlement(Operation):
     (CREATE)</li><li><i>Returns</i>: granted entitlement</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [CREATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements
 

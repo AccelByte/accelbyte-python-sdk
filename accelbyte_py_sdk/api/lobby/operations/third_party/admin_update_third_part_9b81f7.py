@@ -39,6 +39,12 @@ class AdminUpdateThirdPartyConfig(Operation):
     in a namespace.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam
 

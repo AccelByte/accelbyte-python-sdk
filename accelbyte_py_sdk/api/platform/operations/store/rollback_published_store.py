@@ -39,6 +39,9 @@ class RollbackPublishedStore(Operation):
     (UPDATE)</li><li><i>Returns</i>: updated store info</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/published/rollback
 

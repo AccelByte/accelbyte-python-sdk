@@ -39,6 +39,9 @@ class AdminGetBulkUserByEmailAddressV3(Operation):
     10132
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/search/bulk
 

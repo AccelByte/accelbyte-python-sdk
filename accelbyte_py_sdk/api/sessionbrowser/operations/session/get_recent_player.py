@@ -37,6 +37,12 @@ class GetRecentPlayer(Operation):
     Required scope: social Query recent player by user ID
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:SESSIONBROWSER:RECENTPLAYER [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/recentplayer/{userID}
 

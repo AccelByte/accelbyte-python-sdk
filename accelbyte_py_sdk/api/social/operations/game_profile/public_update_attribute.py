@@ -40,6 +40,9 @@ class PublicUpdateAttribute(Operation):
     (UPDATE)</li><li><i>Returns</i>: updated attribute</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [UPDATE]
+
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/profiles/{profileId}/attributes/{attributeName}
 

@@ -38,6 +38,9 @@ class GetSingleMemberRoleAdminV1(Operation):
     Code: 73203</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [READ]
+
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/roles/{memberRoleId}
 

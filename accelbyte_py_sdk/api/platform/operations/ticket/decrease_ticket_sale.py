@@ -40,6 +40,9 @@ class DecreaseTicketSale(Operation):
     resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=4 (UPDATE)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:TICKET [UPDATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/tickets/{boothName}/decrement
 

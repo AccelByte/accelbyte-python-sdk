@@ -37,6 +37,9 @@ class AdminGetRoleMembersV3(Operation):
     listed in the role.</p> <p>action code: 10416</p>
 
 
+    Required Permission(s):
+        - ADMIN:ROLE [READ]
+
     Properties:
         url: /iam/v3/admin/roles/{roleId}/members
 

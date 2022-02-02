@@ -40,6 +40,12 @@ class ListPlayerRecordHandlerV1(Operation):
     given namespace.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/records
 

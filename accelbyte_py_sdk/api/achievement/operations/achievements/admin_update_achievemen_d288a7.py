@@ -37,6 +37,12 @@ class AdminUpdateAchievementListOrder(Operation):
     [UPDATE]</code> and scope <code>social</code></p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements/{achievementCode}
 

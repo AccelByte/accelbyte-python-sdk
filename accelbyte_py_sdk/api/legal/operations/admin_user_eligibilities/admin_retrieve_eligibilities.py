@@ -41,6 +41,9 @@ class AdminRetrieveEligibilities(Operation):
     action=2 (READ)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:LEGAL [READ]
+
     Properties:
         url: /agreement/admin/namespaces/{namespace}/users/{userId}/eligibilities
 

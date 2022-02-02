@@ -39,6 +39,9 @@ class UpdateUserSlotConfig(Operation):
     (UPDATE)</li><li><i>Returns</i>: updated slot config</li>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG [UPDATE]
+
     Properties:
         url: /social/admin/namespaces/{namespace}/users/{userId}/config
 

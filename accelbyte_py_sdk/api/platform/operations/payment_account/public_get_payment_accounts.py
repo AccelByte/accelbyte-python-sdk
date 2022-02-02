@@ -38,6 +38,9 @@ class PublicGetPaymentAccounts(Operation):
     (READ)</li><li><i>Returns</i>: Payment account list</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT [READ]
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/payment/accounts
 

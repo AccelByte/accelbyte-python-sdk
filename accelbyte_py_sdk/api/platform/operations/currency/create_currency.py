@@ -40,6 +40,9 @@ class CreateCurrency(Operation):
     (CREATE)</li><li><i>Returns</i>: created currency</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CURRENCY [CREATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/currencies
 

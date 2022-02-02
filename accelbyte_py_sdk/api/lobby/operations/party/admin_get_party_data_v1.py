@@ -38,6 +38,12 @@ class AdminGetPartyDataV1(Operation):
     namespace.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}
 

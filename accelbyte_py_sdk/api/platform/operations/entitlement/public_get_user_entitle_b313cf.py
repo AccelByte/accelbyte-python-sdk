@@ -38,6 +38,9 @@ class PublicGetUserEntitlementOwnershipByItemId(Operation):
     (READ)</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/ownership/byItemId
 

@@ -38,6 +38,9 @@ class GetIAPItemConfig(Operation):
     <b>(READ)</b></li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/item
 

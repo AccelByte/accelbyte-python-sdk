@@ -33,6 +33,9 @@ class AdminDeleteUserRolesV3(Operation):
     Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]'
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles
 

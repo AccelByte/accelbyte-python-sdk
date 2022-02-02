@@ -38,6 +38,12 @@ class CountSession(Operation):
     this service.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SESSION [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/sessions/count
 

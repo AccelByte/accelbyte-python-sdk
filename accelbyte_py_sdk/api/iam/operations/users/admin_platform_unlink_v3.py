@@ -52,6 +52,9 @@ class AdminPlatformUnlinkV3(Operation):
     </p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}
 

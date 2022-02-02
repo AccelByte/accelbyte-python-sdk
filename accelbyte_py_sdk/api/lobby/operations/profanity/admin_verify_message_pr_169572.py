@@ -39,6 +39,12 @@ class AdminVerifyMessageProfanityResponse(Operation):
     from the UI or other services
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/verify
 

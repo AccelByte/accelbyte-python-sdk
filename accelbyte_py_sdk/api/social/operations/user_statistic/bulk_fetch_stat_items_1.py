@@ -39,6 +39,9 @@ class BulkFetchStatItems1(Operation):
     of user's statItem
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:STATITEM [READ]
+
     Properties:
         url: /social/v1/public/namespaces/{namespace}/statitems/bulk
 

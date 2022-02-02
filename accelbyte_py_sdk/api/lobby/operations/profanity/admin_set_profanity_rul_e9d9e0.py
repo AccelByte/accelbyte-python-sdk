@@ -37,6 +37,12 @@ class AdminSetProfanityRuleForNamespace(Operation):
     [UPDATE]</code> with scope <code>social</code> <br>set current profanity rule
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/rule
 

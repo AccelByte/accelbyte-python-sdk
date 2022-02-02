@@ -37,6 +37,11 @@ class RemoveRoleAdmin(Operation):
     [UPDATE]' instead.</p>
 
 
+    Required Permission(s):
+        - ROLE:ADMIN [UPDATE]
+
+        - ADMIN:ROLE [UPDATE]
+
     Properties:
         url: /iam/roles/{roleId}/admin
 

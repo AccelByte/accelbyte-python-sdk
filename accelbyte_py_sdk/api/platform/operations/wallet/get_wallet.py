@@ -38,6 +38,9 @@ class GetWallet(Operation):
     (READ)</li><li><i>Returns</i>: wallet info</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:WALLET [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/wallets/{walletId}
 

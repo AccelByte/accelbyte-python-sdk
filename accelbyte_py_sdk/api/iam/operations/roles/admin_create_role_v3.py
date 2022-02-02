@@ -37,6 +37,9 @@ class AdminCreateRoleV3(Operation):
     Required permission 'ADMIN:ROLE [CREATE]' <br>action code: 10401
 
 
+    Required Permission(s):
+        - ADMIN:ROLE [CREATE]
+
     Properties:
         url: /iam/v3/admin/roles
 

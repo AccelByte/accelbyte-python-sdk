@@ -49,6 +49,11 @@ class GetUserJusticePlatformAccount(Operation):
     with “Redacted” text.</p>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:JUSTICE:USER:{userId} [UPDATE]
+
+        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
 

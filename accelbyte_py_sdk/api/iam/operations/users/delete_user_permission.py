@@ -34,6 +34,9 @@ class DeleteUserPermission(Operation):
     [DELETE]'
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action}
 

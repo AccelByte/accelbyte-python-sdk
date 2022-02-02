@@ -38,6 +38,12 @@ class FreeFormNotification(Operation):
     in a namespace.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /notification/namespaces/{namespace}/freeform
 

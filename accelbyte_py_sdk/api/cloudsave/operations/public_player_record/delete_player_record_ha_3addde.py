@@ -39,6 +39,12 @@ class DeletePlayerRecordHandlerV1(Operation):
     key
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}
 

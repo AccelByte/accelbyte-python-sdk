@@ -59,6 +59,9 @@ class AdminAddUserPermissionsV3(Operation):
     month.</li> </ol>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [CREATE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions
 

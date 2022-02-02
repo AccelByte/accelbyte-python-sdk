@@ -39,6 +39,12 @@ class GetServerSession(Operation):
     connection, to see if it is actually claimed```
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/{podName}/session
 

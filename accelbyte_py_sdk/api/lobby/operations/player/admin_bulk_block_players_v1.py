@@ -39,6 +39,12 @@ class AdminBulkBlockPlayersV1(Operation):
     user id
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/bulk/block
 

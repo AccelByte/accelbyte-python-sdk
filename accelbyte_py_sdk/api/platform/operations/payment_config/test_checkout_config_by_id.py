@@ -38,6 +38,9 @@ class TestCheckoutConfigById(Operation):
     (READ)</li><li><i>Returns</i>: test result</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:PAYMENT:CONFIG [READ]
+
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/checkoutconfig/test
 

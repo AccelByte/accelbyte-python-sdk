@@ -40,6 +40,9 @@ class GetNamespace(Operation):
     namespace</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
+
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}
 

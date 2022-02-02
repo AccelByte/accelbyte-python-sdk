@@ -38,6 +38,9 @@ class GetStat(Operation):
     (READ)</li><li><i>Returns</i>: stat info</ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [READ]
+
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/stats/{statCode}
 

@@ -50,6 +50,9 @@ class UpdateMyProfile(Operation):
     Asia/Shanghai</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PROFILE [UPDATE]
+
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/me/profiles
 

@@ -37,6 +37,9 @@ class QueryUserOrders(Operation):
     (READ)</li><li><i>Returns</i>: get order</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders
 

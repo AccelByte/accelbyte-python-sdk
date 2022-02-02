@@ -41,6 +41,12 @@ class ImportImages(Operation):
     dewa:0.0.1-alpha", "version": "0.0.1", "persistent": true } ]
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /dsmcontroller/admin/images/import
 

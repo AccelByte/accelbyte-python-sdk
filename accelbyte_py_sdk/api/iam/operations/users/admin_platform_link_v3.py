@@ -59,6 +59,9 @@ class AdminPlatformLinkV3(Operation):
     which can be obtained after calling the Stadia SDK's function.</li> </ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link
 

@@ -38,6 +38,9 @@ class PublicGetCustomAttributesInfo(Operation):
     11404</li><li><i>Returns</i>: user custom attributes</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
+
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles/customAttributes
 

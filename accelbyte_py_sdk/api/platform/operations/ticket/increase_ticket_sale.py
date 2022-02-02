@@ -41,6 +41,9 @@ class IncreaseTicketSale(Operation):
     (UPDATE)</li><li><i>Returns</i>: Ticket sale increment result</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:TICKET [UPDATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/tickets/{boothName}/increment
 

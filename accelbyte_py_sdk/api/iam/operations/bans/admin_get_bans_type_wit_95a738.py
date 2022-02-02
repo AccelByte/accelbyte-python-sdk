@@ -38,6 +38,9 @@ class AdminGetBansTypeWithNamespaceV3(Operation):
     10201
 
 
+    Required Permission(s):
+        - ADMIN:BAN [READ]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/bantypes
 

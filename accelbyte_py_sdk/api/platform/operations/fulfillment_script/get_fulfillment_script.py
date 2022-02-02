@@ -38,6 +38,9 @@ class GetFulfillmentScript(Operation):
     (READ)</li><li><i>Returns</i>: get fulfillment script</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:FULFILLMENT [READ]
+
     Properties:
         url: /platform/admin/fulfillment/scripts/{id}
 

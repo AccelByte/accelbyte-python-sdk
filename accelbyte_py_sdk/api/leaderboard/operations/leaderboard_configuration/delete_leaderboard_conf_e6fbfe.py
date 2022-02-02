@@ -36,6 +36,9 @@ class DeleteLeaderboardConfigurationAdminV1(Operation):
     <p>This endpoint delete a leaderboard configuration</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
+
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}
 

@@ -39,6 +39,9 @@ class QueryRewards(Operation):
     (READ)</li><li><i>Returns</i>: the list of rewards</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REWARD [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/byCriteria
 

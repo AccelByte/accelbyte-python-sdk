@@ -38,6 +38,12 @@ class AdminGetProfanityListFiltersV1(Operation):
     inside the list.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters
 

@@ -38,6 +38,9 @@ class QueryFulfillmentHistories(Operation):
     (READ)</li><li><i>Returns</i>: query fulfillment history</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:FULFILLMENT [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/fulfillment/history
 

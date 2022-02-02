@@ -37,6 +37,12 @@ class ExportAchievements(Operation):
     Scope: social
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements/export
 

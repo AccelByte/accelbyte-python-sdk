@@ -51,6 +51,9 @@ class CreatePaymentProviderConfig(Operation):
     (CREATE)</li><li><i>Returns</i>: payment provider config</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:PAYMENT:CONFIG [CREATE]
+
     Properties:
         url: /platform/admin/payment/config/provider
 

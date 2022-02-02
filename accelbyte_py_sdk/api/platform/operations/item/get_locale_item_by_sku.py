@@ -40,6 +40,9 @@ class GetLocaleItemBySku(Operation):
     (READ)</li><li><i>Returns</i>: item data</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/items/bySku/locale
 

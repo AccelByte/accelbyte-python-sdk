@@ -40,6 +40,9 @@ class ResetUserStatItemValue1(Operation):
     *Returns*: updated user's statItem
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value/reset
 

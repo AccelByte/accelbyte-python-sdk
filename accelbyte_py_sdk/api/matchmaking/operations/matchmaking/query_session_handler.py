@@ -40,6 +40,12 @@ class QuerySessionHandler(Operation):
     "sessionInQueue", "sessionFull", and "sessionTimeout".
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:SESSION [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /matchmaking/namespaces/{namespace}/sessions/{matchID}/status
 

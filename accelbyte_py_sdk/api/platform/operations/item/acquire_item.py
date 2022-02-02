@@ -41,6 +41,9 @@ class AcquireItem(Operation):
     (UPDATE)</li><li><i>Returns</i>: acquire result</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/items/{itemId}/acquire
 

@@ -37,6 +37,9 @@ class AdminListAssignedUsersV4(Operation):
     role. action code: 10416
 
 
+    Required Permission(s):
+        - ADMIN:ROLE [READ]
+
     Properties:
         url: /iam/v4/admin/roles/{roleId}/users
 

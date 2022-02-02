@@ -41,6 +41,9 @@ class AdminGetUserProfilePublicInfoByIds(Operation):
     public profiles</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFILE []
+
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/profiles/public
 

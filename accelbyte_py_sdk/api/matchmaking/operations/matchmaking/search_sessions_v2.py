@@ -42,6 +42,12 @@ class SearchSessionsV2(Operation):
     include session data.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /matchmaking/v2/admin/namespaces/{namespace}/sessions/history/search
 

@@ -36,6 +36,9 @@ class Download(Operation):
     (READ)</li><li><i>Returns</i>: codes csv file</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/codes.csv
 

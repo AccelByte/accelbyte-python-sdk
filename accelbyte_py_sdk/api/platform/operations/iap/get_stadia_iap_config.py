@@ -37,6 +37,9 @@ class GetStadiaIAPConfig(Operation):
     (READ)</li><li><i>Returns</i>: stadia iap config</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/stadia
 

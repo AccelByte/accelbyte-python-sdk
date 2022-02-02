@@ -36,6 +36,9 @@ class ResetPassword(Operation):
     valid basic auth header
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/resetPassword
 

@@ -35,6 +35,9 @@ class AdminDeleteAllUserStates(Operation):
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]
+
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/states
 

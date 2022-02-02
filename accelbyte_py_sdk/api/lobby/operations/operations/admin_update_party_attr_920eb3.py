@@ -39,6 +39,12 @@ class AdminUpdatePartyAttributesV1(Operation):
     a namespace.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}/attributes
 

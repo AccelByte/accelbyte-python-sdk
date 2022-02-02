@@ -40,6 +40,12 @@ class CreateNotificationTopicV1Admin(Operation):
     not be created<br/> Action Code: 50214
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics
 

@@ -55,6 +55,9 @@ class AdminUpdateInputValidations(Operation):
     as much as the number of criteria enabled.</p>
 
 
+    Required Permission(s):
+        - ADMIN:CONFIGURATION [UPDATE]
+
     Properties:
         url: /iam/v3/admin/inputValidations
 

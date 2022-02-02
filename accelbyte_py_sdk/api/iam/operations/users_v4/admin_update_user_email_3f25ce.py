@@ -39,6 +39,9 @@ class AdminUpdateUserEmailAddressV4(Operation):
     its identity (email) before updating a user.</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/email
 

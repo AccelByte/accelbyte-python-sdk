@@ -41,6 +41,9 @@ class UpdateMyZipCode(Operation):
     zip code</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PROFILE [UPDATE]
+
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/me/profiles/zipCode
 

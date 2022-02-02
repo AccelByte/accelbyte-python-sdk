@@ -37,6 +37,12 @@ class PublishTemplateLocalizationV1Admin(Operation):
     template draft. Empty draft can not be published.<br/> Action Code: 50210
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}/publish
 

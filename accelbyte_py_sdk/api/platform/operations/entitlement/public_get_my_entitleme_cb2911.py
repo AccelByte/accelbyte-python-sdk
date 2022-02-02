@@ -41,6 +41,9 @@ class PublicGetMyEntitlementOwnershipByItemId(Operation):
     to get <b>game namespace entitlement ownership by sku</b></li></ul></li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:ENTITLEMENT [READ]
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/me/entitlements/ownership/byItemId
 

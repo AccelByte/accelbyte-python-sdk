@@ -46,6 +46,12 @@ class PostPlayerRecordHandlerV1(Operation):
     } </pre>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [WRITE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}
 

@@ -36,6 +36,9 @@ class SyncUserInfo(Operation):
     (UPDATE)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
+
     Properties:
         url: /agreement/admin/userInfo
 

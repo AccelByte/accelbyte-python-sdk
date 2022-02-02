@@ -42,6 +42,12 @@ class NotificationWithTemplate(Operation):
     published before it can be use to send notifications
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /notification/namespaces/{namespace}/templated
 

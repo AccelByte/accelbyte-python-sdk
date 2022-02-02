@@ -38,6 +38,9 @@ class ListCategoriesBasic(Operation):
     (READ)</li><li><i>Returns</i>: list of categories' paths</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories/basic
 

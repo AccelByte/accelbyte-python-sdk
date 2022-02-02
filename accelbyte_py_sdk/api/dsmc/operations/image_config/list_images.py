@@ -37,6 +37,12 @@ class ListImages(Operation):
     scope: social This endpoint lists all of dedicated servers images.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/images
 

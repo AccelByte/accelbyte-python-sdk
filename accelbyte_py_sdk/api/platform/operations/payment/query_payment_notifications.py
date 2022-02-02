@@ -37,6 +37,9 @@ class QueryPaymentNotifications(Operation):
     action=2 (READ)</li><li><i>Returns</i>: Payment notifications</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT:NOTIFICATION [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/notifications
 

@@ -38,6 +38,9 @@ class GetEpicGamesIAPConfig(Operation):
     (READ)</li><li><i>Returns</i>: epic games iap config</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/epicgames
 

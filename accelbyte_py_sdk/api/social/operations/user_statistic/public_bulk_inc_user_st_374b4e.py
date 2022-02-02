@@ -40,6 +40,9 @@ class PublicBulkIncUserStatItemValue(Operation):
     (UPDATE)</li><li><i>Returns</i>: bulk updated result</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:STATITEM [UPDATE]
+
     Properties:
         url: /social/v1/public/namespaces/{namespace}/statitems/value/bulk
 

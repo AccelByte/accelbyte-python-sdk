@@ -37,6 +37,12 @@ class AdminGetSession(Operation):
     Required scope: social Get the session by session ID for admin user
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /sessionbrowser/admin/namespaces/{namespace}/gamesession/{sessionID}
 

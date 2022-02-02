@@ -40,6 +40,9 @@ class CloneStore(Operation):
     (CREATE)</li><li><i>Returns</i>: clone store info</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [CREATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}/clone
 

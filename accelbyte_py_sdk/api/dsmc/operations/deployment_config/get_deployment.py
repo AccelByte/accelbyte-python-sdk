@@ -37,6 +37,12 @@ class GetDeployment(Operation):
     scope: social This endpoint get a dedicated server deployment in a namespace
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}
 

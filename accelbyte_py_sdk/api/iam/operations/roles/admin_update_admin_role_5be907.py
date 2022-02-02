@@ -37,6 +37,9 @@ class AdminUpdateAdminRoleStatusV3(Operation):
     has at least 1 manager.</p> <br>action code: 10412
 
 
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
     Properties:
         url: /iam/v3/admin/roles/{roleId}/admin
 

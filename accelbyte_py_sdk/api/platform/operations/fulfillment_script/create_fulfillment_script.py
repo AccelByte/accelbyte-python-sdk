@@ -43,6 +43,9 @@ class CreateFulfillmentScript(Operation):
     : -1</code><br>
 
 
+    Required Permission(s):
+        - ADMIN:FULFILLMENT [CREATE]
+
     Properties:
         url: /platform/admin/fulfillment/scripts/{id}
 

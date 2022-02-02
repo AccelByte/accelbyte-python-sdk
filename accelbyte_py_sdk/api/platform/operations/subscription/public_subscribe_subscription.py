@@ -47,6 +47,9 @@ class PublicSubscribeSubscription(Operation):
     or ORDER_AND_PAYMENT</li><li><i>Returns</i>: created subscription</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [CREATE]
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions
 

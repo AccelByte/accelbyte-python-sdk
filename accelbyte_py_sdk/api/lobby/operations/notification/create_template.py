@@ -41,6 +41,12 @@ class CreateTemplate(Operation):
     description for detailed input restrictions.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:TEMPLATE [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /notification/namespaces/{namespace}/templates
 

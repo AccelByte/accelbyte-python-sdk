@@ -37,6 +37,12 @@ class GetServerLogs(Operation):
     scope: social This endpoint queries a specified dedicated server's logs.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/servers/{podName}/logs
 

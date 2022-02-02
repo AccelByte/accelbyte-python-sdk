@@ -42,6 +42,12 @@ class AdminPostPlayerPublicRecordHandlerV1(Operation):
     public (is_public false) then this endpoint won't make it public.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}/public
 

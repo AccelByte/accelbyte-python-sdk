@@ -40,6 +40,9 @@ class AddThirdPartyLoginPlatformCredentialV3(Operation):
     private key.</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
 

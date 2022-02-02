@@ -38,6 +38,9 @@ class CreateChannel(Operation):
     [CREATE]</b>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
+
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels
 

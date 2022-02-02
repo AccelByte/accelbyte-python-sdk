@@ -42,6 +42,9 @@ class ListCrossNamespaceAccountLink(Operation):
     from second hand device usage. </p>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/crosslink
 

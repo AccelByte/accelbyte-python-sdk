@@ -38,6 +38,9 @@ class GetKeyGroupDynamic(Operation):
     (READ)</li><li><i>Returns</i>: key group info</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/keygroups/{keyGroupId}/dynamic
 

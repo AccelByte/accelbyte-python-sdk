@@ -40,6 +40,9 @@ class RefundOrder(Operation):
     (UPDATE)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ORDER [UPDATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/orders/{orderNo}/refund
 

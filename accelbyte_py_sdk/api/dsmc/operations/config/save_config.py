@@ -63,6 +63,12 @@ class SaveConfig(Operation):
     "buffer_count": 5 }, }, } ```
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /dsmcontroller/admin/configs
 

@@ -38,6 +38,9 @@ class PublicCheckUserSubscriptionSubscribableByItemId(Operation):
     (READ)</li><li><i>Returns</i>: subscribable info</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions/subscribable/byItemId
 

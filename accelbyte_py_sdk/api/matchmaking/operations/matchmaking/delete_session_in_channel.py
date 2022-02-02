@@ -37,6 +37,12 @@ class DeleteSessionInChannel(Operation):
     Required Scope: social Delete a session in a channel.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/sessions/{matchID}
 

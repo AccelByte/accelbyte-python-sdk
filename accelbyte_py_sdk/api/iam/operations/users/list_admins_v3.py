@@ -38,6 +38,9 @@ class ListAdminsV3(Operation):
     true).
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/admins
 

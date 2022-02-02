@@ -40,6 +40,12 @@ class CreateSession(Operation):
     game client host or by DSMC
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession
 

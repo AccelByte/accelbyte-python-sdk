@@ -38,6 +38,9 @@ class UpdateChannel(Operation):
     [UPDATE]</b>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [UPDATE]
+
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}
 

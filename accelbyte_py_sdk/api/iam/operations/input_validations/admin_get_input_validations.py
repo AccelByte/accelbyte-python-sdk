@@ -38,6 +38,9 @@ class AdminGetInputValidations(Operation):
     it will be empty.</p>
 
 
+    Required Permission(s):
+        - ADMIN:CONFIGURATION [READ]
+
     Properties:
         url: /iam/v3/admin/inputValidations
 

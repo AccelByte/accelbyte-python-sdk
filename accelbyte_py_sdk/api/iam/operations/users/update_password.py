@@ -40,6 +40,9 @@ class UpdatePassword(Operation):
     [UPDATE]'<p>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/password
 

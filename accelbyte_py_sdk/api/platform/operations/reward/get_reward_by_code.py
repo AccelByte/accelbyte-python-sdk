@@ -38,6 +38,9 @@ class GetRewardByCode(Operation):
     action=2 (READ)</li><li><i>Returns</i>: reward instance</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:REWARD [READ]
+
     Properties:
         url: /platform/public/namespaces/{namespace}/rewards/byCode
 

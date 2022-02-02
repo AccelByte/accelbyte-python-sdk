@@ -38,6 +38,9 @@ class PublicQueryUserStatItems(Operation):
     (READ)</li><li><i>Returns</i>: stat items</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
+
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems
 

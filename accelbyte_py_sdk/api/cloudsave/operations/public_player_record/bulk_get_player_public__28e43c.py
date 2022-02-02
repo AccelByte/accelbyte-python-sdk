@@ -42,6 +42,12 @@ class BulkGetPlayerPublicRecordHandlerV1(Operation):
     using this endpoint.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PUBLIC:CLOUDSAVE:RECORD [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/bulk/records/{key}/public
 

@@ -38,6 +38,11 @@ class GetUserPlatformAccounts(Operation):
     order to read the UserID who linked with the user.</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
+
+        - NAMESPACE:{namespace}:USER:{userId} [READ]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms
 

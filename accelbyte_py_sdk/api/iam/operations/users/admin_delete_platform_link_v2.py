@@ -43,6 +43,9 @@ class AdminDeletePlatformLinkV2(Operation):
     platform will enable password token grant and password update. </p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]
+
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link
 

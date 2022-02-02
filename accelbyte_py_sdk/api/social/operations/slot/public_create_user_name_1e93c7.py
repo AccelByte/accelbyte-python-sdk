@@ -37,6 +37,9 @@ class PublicCreateUserNamespaceSlot(Operation):
     (CREATE)</li><li><i>Returns</i>: created slot info</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [CREATE]
+
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/slots
 

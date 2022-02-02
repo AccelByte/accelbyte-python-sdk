@@ -36,6 +36,9 @@ class AdminDeleteAllUserGroup(Operation):
     [DELETE]
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
+
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/groups
 

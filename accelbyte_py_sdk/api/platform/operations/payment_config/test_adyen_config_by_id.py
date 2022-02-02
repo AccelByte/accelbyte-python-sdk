@@ -38,6 +38,9 @@ class TestAdyenConfigById(Operation):
     (READ)</li><li><i>Returns</i>: test adyen config</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:PAYMENT:CONFIG [READ]
+
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/adyenconfig/test
 

@@ -42,6 +42,9 @@ class GetUserLoginHistories(Operation):
     valid data Unix timestamp.</li><ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:HISTORY:LOGIN:USER:{userId} [READ]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/logins/histories
 

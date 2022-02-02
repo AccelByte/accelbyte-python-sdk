@@ -86,6 +86,9 @@ class CreateItem(Operation):
     (CREATE)</li><li><i>Returns</i>: created item data</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [CREATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/items
 

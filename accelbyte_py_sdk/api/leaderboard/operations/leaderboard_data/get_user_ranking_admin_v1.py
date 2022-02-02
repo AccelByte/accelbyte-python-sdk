@@ -37,6 +37,9 @@ class GetUserRankingAdminV1(Operation):
     <p>Get user ranking in leaderboard</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
+
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}
 

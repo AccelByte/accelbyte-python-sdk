@@ -39,6 +39,11 @@ class GetBansType(Operation):
     instead.</p>
 
 
+    Required Permission(s):
+        - ADMIN:BAN [READ]
+
+        - BAN:ADMIN [READ]
+
     Properties:
         url: /iam/bans
 

@@ -41,6 +41,9 @@ class CreateCodes(Operation):
     (CREATE)<li><i>Returns</i>: number of codes created</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [CREATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}
 

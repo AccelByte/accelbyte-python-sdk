@@ -47,6 +47,9 @@ class CreateGroupConfigurationAdminV1(Operation):
     is <b>"createGroup"</b></p> <p>Action Code: 73103</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [CREATE]
+
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/configuration
 

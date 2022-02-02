@@ -42,6 +42,9 @@ class UploadContentScreenshot(Operation):
     bmp, png. n Maximum description length: 1024.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
+
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/contents/{contentId}/screenshots
 

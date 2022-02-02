@@ -40,6 +40,9 @@ class TestXsollaConfigById(Operation):
     xsolla config</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:PAYMENT:CONFIG [READ]
+
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/xsollaconfig/test
 

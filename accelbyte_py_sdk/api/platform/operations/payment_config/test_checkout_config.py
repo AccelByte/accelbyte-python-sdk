@@ -39,6 +39,9 @@ class TestCheckoutConfig(Operation):
     (UPDATE)</li><li><i>Returns</i>: test result</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:PAYMENT:CONFIG [UPDATE]
+
     Properties:
         url: /platform/admin/payment/config/merchant/checkoutconfig/test
 

@@ -38,6 +38,9 @@ class DeleteBulkLeaderboardConfigurationAdminV1(Operation):
     <p>This endpoint delete multiple leaderboards configuration in one request</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
+
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/delete
 

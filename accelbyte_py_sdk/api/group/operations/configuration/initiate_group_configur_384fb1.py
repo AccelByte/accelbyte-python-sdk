@@ -43,6 +43,9 @@ class InitiateGroupConfigurationAdminV1(Operation):
     rules will be empty</p> <p>Action Code: 73104</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [CREATE]
+
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/configuration/initiate
 

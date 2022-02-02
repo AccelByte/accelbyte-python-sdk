@@ -37,6 +37,9 @@ class GetUserOrderHistories(Operation):
     action=2 (READ)</li><li><i>Returns</i>: get order history</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/history
 

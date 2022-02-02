@@ -41,6 +41,9 @@ class AdminUpdateRoleV4(Operation):
     action code: 10402
 
 
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
     Properties:
         url: /iam/v4/admin/roles/{roleId}
 

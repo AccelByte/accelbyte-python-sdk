@@ -37,6 +37,9 @@ class QueryCodes(Operation):
     (READ) (READ)</li><li><i>Returns</i>: list of codes</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}
 

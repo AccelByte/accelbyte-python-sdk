@@ -38,6 +38,12 @@ class DeleteAdminEmailConfiguration(Operation):
     scope <code>account</code></p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [DELETE]
+
+    Required Scope(s):
+        - account
+
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/emails/configurations
 

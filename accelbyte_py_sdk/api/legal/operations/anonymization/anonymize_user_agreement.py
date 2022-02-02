@@ -37,6 +37,9 @@ class AnonymizeUserAgreement(Operation):
     action=8 (DELETE)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [DELETE]
+
     Properties:
         url: /agreement/admin/users/{userId}/anonymization/agreements
 

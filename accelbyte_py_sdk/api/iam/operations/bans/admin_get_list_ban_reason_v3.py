@@ -38,6 +38,9 @@ class AdminGetListBanReasonV3(Operation):
     namespace. <p>action code : 10202</p>
 
 
+    Required Permission(s):
+        - ADMIN:BAN [READ]
+
     Properties:
         url: /iam/v3/admin/bans/reasons
 

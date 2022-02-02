@@ -38,6 +38,9 @@ class PublicDownloadUserOrderReceipt(Operation):
     (READ)</li><li><i>Returns</i>: order receipt pdf</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/receipt.pdf
 

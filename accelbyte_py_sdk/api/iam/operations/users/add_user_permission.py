@@ -60,6 +60,9 @@ class AddUserPermission(Operation):
     month.</li> </ol>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action}
 

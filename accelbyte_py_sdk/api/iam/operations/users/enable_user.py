@@ -37,6 +37,9 @@ class EnableUser(Operation):
     permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'<p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/enable
 

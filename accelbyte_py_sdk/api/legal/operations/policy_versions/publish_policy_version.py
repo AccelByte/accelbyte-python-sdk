@@ -37,6 +37,9 @@ class PublishPolicyVersion(Operation):
     resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
+
     Properties:
         url: /agreement/admin/policies/versions/{policyVersionId}/latest
 

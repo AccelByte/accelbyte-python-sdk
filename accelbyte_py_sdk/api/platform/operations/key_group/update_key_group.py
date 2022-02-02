@@ -40,6 +40,9 @@ class UpdateKeyGroup(Operation):
     (UPDATE)</li><li><i>Returns</i>: updated key group</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [UPDATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/keygroups/{keyGroupId}
 

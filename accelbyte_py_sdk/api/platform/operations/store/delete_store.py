@@ -39,6 +39,9 @@ class DeleteStore(Operation):
     (DELETE)</li><li><i>Returns</i>: store</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [DELETE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}
 

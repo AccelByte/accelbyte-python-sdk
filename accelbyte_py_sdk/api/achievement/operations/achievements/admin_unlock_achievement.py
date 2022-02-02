@@ -37,6 +37,12 @@ class AdminUnlockAchievement(Operation):
     and scope <code>social</code></p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements/{achievementCode}/unlock
 

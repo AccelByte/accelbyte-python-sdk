@@ -37,6 +37,9 @@ class DeleteStat(Operation):
     (DELETE)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [DELETE]
+
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/stats/{statCode}
 

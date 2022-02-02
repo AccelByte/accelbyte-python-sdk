@@ -41,6 +41,9 @@ class SingleAdminUpdateContentS3(Operation):
     specified, it will use fileExtension value.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents/s3/{contentId}
 

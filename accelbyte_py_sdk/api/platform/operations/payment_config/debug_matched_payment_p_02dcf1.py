@@ -38,6 +38,9 @@ class DebugMatchedPaymentProviderConfig(Operation):
     (READ)</li><li><i>Returns</i>: payment provider config</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:PAYMENT:CONFIG [READ]
+
     Properties:
         url: /platform/admin/payment/config/provider/matched
 

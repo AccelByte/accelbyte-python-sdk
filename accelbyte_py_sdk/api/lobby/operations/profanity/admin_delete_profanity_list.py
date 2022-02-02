@@ -37,6 +37,12 @@ class AdminDeleteProfanityList(Operation):
     filters inside of it
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [DELETE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/lists/{list}
 

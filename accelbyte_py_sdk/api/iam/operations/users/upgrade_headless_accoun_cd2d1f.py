@@ -42,6 +42,9 @@ class UpgradeHeadlessAccountWithVerificationCode(Operation):
     endpoint, please check the send verification code endpoint.</p>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/upgradeHeadlessAccountWithVerificationCode
 

@@ -39,6 +39,9 @@ class ListGroupConfigurationAdminV1(Operation):
     have its own configuration</p> <p>Action Code: 73101</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [READ]
+
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/configuration
 

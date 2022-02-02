@@ -38,6 +38,9 @@ class CheckReadiness(Operation):
     (READ)</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:LEGAL [READ]
+
     Properties:
         url: /agreement/public/readiness
 

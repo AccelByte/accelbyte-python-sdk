@@ -39,6 +39,12 @@ class DeleteChannelHandler(Operation):
     result deletion success
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /matchmaking/namespaces/{namespace}/channels/{channel}
 

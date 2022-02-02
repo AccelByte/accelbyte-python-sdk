@@ -38,6 +38,12 @@ class AdminGetLobbyCCU(Operation):
     connected to the Lobby in the given namespace.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LOBBY:CCU [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/player/namespaces/{namespace}/ccu
 

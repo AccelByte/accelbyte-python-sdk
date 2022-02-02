@@ -42,6 +42,9 @@ class ChargePaymentOrder(Operation):
     (UPDATE)</li><li><i>Returns</i>: payment order instance</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT [UPDATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}
 

@@ -39,6 +39,9 @@ class UploadKeys(Operation):
     (UPDATE)</li><li><i>Returns</i>: item data</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [UPDATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/keygroups/{keyGroupId}/keys
 

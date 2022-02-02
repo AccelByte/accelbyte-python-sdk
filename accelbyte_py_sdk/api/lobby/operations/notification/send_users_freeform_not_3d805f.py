@@ -38,6 +38,12 @@ class SendUsersFreeformNotificationV1Admin(Operation):
     connected users in a namespace.<br> Action Code: 50201
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/freeform/notify
 

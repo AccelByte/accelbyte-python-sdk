@@ -34,6 +34,9 @@ class DeleteFulfillmentScript(Operation):
     permission</i>: resource="ADMIN:FULFILLMENT", action=8 (DELETE)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:FULFILLMENT [DELETE]
+
     Properties:
         url: /platform/admin/fulfillment/scripts/{id}
 

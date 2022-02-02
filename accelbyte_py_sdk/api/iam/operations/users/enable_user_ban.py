@@ -35,6 +35,9 @@ class EnableUserBan(Operation):
     Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]'.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/bans/{banId}/enable
 

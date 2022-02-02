@@ -40,6 +40,12 @@ class ShutdownServer(Operation):
     itself down.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/shutdown
 

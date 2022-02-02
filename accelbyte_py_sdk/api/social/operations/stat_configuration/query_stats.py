@@ -37,6 +37,9 @@ class QueryStats(Operation):
     (READ)</li><li><i>Returns<i>: stats</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [READ]
+
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/stats/search
 

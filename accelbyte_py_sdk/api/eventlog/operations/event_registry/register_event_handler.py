@@ -38,6 +38,12 @@ class RegisterEventHandler(Operation):
     scope <code>analytics</code>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:EVENT [CREATE]
+
+    Required Scope(s):
+        - analytics
+
     Properties:
         url: /event/registry/eventIds
 

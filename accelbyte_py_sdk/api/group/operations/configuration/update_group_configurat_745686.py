@@ -41,6 +41,9 @@ class UpdateGroupConfigurationAdminV1(Operation):
     role</p> <p>Action Code: 73102</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]
+
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}
 

@@ -37,6 +37,9 @@ class QueryAllUserIAPOrders(Operation):
     action=2 (READ)</li><li><i>Returns</i>: list of iap orders</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/iap/all
 

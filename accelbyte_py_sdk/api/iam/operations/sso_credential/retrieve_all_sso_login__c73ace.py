@@ -37,6 +37,9 @@ class RetrieveAllSSOLoginPlatformCredentialV3(Operation):
     ADMIN:NAMESPACE:{namespace}:PLATFORM:*:SSO [READ] resource
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:*:SSO [READ]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/sso
 

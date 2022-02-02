@@ -37,6 +37,9 @@ class AdminGetChannel(Operation):
     [READ]</b>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
+
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/channels
 

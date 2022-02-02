@@ -40,6 +40,9 @@ class BulkResetUserStatItem1(Operation):
     (UPDATE) + *Returns*: bulk updated result
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems/value/reset/bulk
 

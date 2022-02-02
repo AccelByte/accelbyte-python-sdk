@@ -38,6 +38,9 @@ class GetSingleGroupAdminV1(Operation):
     groupId</p> <p>Action Code: 73306</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP [READ]
+
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/groups/{groupId}
 

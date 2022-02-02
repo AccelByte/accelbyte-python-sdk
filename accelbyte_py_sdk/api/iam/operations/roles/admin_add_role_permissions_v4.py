@@ -60,6 +60,9 @@ class AdminAddRolePermissionsV4(Operation):
     "the second Friday" of a given month.</li> </ol>
 
 
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
     Properties:
         url: /iam/v4/admin/roles/{roleId}/permissions
 

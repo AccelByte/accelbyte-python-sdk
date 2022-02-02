@@ -37,6 +37,12 @@ class GetTopicByNamespace(Operation):
     scope <code>social</code> <br>get topic by namespace.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:TOPIC [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /notification/namespaces/{namespace}/topics
 

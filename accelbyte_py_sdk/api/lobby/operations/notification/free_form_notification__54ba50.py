@@ -38,6 +38,12 @@ class FreeFormNotificationByUserID(Operation):
     user.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /notification/namespaces/{namespace}/users/{userId}/freeform
 

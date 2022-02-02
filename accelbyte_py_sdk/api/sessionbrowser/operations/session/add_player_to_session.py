@@ -38,6 +38,12 @@ class AddPlayerToSession(Operation):
     Required scope: social Add player to game session
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}/player
 

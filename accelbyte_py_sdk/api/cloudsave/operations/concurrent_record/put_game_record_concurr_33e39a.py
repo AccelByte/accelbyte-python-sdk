@@ -48,6 +48,12 @@ class PutGameRecordConcurrentHandlerV1(Operation):
     Otherwise, the server will process the request.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/concurrent/records/{key}
 

@@ -39,6 +39,9 @@ class MockFulfillIAPItem(Operation):
     action=4 (UPDATE)</li><li><i>Returns</i>: </li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/iap/mock/receipt
 

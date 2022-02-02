@@ -37,6 +37,12 @@ class GetTopicByTopicName(Operation):
     scope <code>social</code> <br>get topic information by topic name.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:TOPIC [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /notification/namespaces/{namespace}/topics/{topic}
 

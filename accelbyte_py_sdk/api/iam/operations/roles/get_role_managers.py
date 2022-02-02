@@ -36,6 +36,9 @@ class GetRoleManagers(Operation):
     users by the role's manager.</p>
 
 
+    Required Permission(s):
+        - ROLE [READ]
+
     Properties:
         url: /iam/roles/{roleId}/managers
 

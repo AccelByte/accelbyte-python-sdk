@@ -39,6 +39,9 @@ class DeleteUserRankingsAdminV1(Operation):
     found and no entry found in it, it will still return success (204)
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
+
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/users/{userId}
 

@@ -35,6 +35,9 @@ class DeletePlatformDLCConfig(Operation):
     action=8 <b>(DELETE)</b></li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [DELETE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/dlc/config/platformMap
 

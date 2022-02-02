@@ -37,6 +37,9 @@ class AdminListUserRolesV4(Operation):
     permission. List roles assigned to a user
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:* [READ]
+
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles
 

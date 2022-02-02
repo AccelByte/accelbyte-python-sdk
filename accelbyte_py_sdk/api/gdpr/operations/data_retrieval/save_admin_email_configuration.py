@@ -37,6 +37,12 @@ class SaveAdminEmailConfiguration(Operation):
     [CREATE]</code> and scope <code>account</code></p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [CREATE]
+
+    Required Scope(s):
+        - account
+
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/emails/configurations
 

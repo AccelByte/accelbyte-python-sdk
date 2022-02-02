@@ -38,6 +38,12 @@ class AddFriendsWithoutConfirmation(Operation):
     namespace.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:FRIENDS [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /friends/namespaces/{namespace}/users/{userId}/add/bulk
 

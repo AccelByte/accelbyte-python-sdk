@@ -37,6 +37,12 @@ class AdminGetGameRecordHandlerV1(Operation):
     Required scope: social Get a record by its key in namespace-level.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}
 

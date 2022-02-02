@@ -47,6 +47,9 @@ class CreateMyProfile(Operation):
     US </li><li><i>Timezone</i> : IANA time zone, e.g. Asia/Shanghai</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PROFILE [CREATE]
+
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/me/profiles
 

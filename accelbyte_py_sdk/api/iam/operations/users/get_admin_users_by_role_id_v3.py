@@ -40,6 +40,9 @@ class GetAdminUsersByRoleIdV3(Operation):
     <br>action code : 10140
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/roles/{roleId}/users
 

@@ -41,6 +41,12 @@ class GetSession(Operation):
     /namespaces/{namespace}/sessions/{sessionID}/claim endpoint
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SESSION [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/sessions/{sessionID}
 

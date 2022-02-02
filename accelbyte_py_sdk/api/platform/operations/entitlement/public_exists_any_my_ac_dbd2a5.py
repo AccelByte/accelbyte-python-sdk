@@ -37,6 +37,9 @@ class PublicExistsAnyMyActiveEntitlement(Operation):
     resource="NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:ENTITLEMENT [READ]
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/me/entitlements/ownership/any
 

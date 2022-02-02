@@ -36,6 +36,9 @@ class SingleAdminDeleteChannel(Operation):
     [DELETE]</b>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}
 

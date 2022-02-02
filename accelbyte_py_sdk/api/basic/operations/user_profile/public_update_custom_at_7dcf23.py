@@ -41,6 +41,9 @@ class PublicUpdateCustomAttributesPartially(Operation):
     attributes</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
+
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles/customAttributes
 

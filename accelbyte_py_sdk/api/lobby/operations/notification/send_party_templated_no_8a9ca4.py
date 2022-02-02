@@ -42,6 +42,12 @@ class SendPartyTemplatedNotificationV1Admin(Operation):
     published before it can be use to send notifications<br>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/parties/{partyId}/templates/notify
 

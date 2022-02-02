@@ -37,6 +37,9 @@ class QueryUserIAPOrders(Operation):
     (READ)</li><li><i>Returns</i>: paginated iap orders</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/iap
 

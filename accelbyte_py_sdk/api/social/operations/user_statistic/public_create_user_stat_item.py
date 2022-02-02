@@ -37,6 +37,9 @@ class PublicCreateUserStatItem(Operation):
     action=1 (CREATE)</li><li><i>Returns</i>: created user's statItem</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [CREATE]
+
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
 

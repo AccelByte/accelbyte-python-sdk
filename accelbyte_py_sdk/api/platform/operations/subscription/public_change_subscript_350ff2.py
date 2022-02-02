@@ -41,6 +41,9 @@ class PublicChangeSubscriptionBillingAccount(Operation):
     action=4 (UPDATE)</li><li><i>Returns</i>: updated subscription</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/billingAccount
 

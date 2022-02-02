@@ -46,6 +46,9 @@ class PlatformUnlink(Operation):
     update. </p>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms/{platformId}/unlink
 

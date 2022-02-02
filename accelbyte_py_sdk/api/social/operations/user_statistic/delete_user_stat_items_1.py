@@ -38,6 +38,9 @@ class DeleteUserStatItems1(Operation):
     (DELETE)</li><li><i>Returns</i>: no content</li></li>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [DELETE]
+
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
 

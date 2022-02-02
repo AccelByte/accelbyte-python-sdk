@@ -39,6 +39,9 @@ class PublicRedeemCode(Operation):
     action=1 (CREATED)</li><li><i>Returns</i>: fulfillment result</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT []
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/fulfillment/code
 

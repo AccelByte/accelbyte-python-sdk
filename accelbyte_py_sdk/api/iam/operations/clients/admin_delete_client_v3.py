@@ -36,6 +36,9 @@ class AdminDeleteClientV3(Operation):
     code : 10310
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLIENT [DELETE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}
 

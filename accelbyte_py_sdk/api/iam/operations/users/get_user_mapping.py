@@ -41,6 +41,9 @@ class GetUserMapping(Operation):
     publisher user id and publisher namespace</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
 

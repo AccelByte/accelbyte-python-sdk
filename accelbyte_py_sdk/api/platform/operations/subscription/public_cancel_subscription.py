@@ -43,6 +43,9 @@ class PublicCancelSubscription(Operation):
     (UPDATE)</li><li><i>Returns</i>: cancelled subscription</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/cancel
 

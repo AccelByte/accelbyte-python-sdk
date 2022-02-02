@@ -38,6 +38,9 @@ class GetDescendantCategories(Operation):
     (READ)</li><li><i>Returns</i>: list of descendant categories data</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}/descendants
 

@@ -36,6 +36,9 @@ class AdminGetUserByUserIdV3(Operation):
     Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]'
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}
 

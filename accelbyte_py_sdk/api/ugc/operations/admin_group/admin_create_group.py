@@ -38,6 +38,9 @@ class AdminCreateGroup(Operation):
     [CREATE]
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [CREATE]
+
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/groups
 

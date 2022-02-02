@@ -40,6 +40,9 @@ class CreateCampaign(Operation):
     (CREATE)</li><li><i>Returns</i>: created campaign</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [CREATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/campaigns
 

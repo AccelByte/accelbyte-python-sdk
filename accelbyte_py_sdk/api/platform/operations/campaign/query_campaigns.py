@@ -38,6 +38,9 @@ class QueryCampaigns(Operation):
     (READ)</li><li><i>Returns</i>: slice of campaigns</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/campaigns
 

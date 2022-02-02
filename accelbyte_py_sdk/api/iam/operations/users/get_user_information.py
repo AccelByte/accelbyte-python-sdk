@@ -35,6 +35,9 @@ class GetUserInformation(Operation):
     Required permissions 'NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]'.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/information
 

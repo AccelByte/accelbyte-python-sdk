@@ -38,6 +38,9 @@ class GetNamespaces(Operation):
     code</i>: 11303</li><li><i>Returns</i>: list of namespaces</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE [READ]
+
     Properties:
         url: /basic/v1/admin/namespaces
 

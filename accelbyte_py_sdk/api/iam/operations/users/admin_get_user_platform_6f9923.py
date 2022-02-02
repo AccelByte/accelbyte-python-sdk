@@ -40,6 +40,11 @@ class AdminGetUserPlatformAccountsV3(Operation):
     accounts that are already linked with user account <br>action code : 10128
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
+
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms
 

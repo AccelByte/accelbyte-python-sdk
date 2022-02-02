@@ -36,6 +36,9 @@ class AdminDownloadContentPreview(Operation):
     Required permission <b>ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]</b>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
+
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/preview
 

@@ -38,6 +38,12 @@ class UpdateSession(Operation):
     Required scope: social Update game session, used to update the current player
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}
 

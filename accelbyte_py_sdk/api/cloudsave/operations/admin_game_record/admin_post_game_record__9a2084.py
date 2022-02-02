@@ -38,6 +38,12 @@ class AdminPostGameRecordHandlerV1(Operation):
     namespace-level.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [WRITE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}
 

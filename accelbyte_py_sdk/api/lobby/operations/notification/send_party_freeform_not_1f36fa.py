@@ -38,6 +38,12 @@ class SendPartyFreeformNotificationV1Admin(Operation):
     party.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/parties/{partyId}/freeform/notify
 

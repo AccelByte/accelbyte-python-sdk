@@ -38,6 +38,12 @@ class GetSessionHistoryDetailed(Operation):
     Required Scope: social Get session history detailed.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/sessions/{matchID}/history/detailed
 

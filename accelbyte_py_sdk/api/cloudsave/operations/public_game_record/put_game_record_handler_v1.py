@@ -43,6 +43,12 @@ class PutGameRecordHandlerV1(Operation):
     "bar_new" } // result { "foo_new": "bar_new" } </pre>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/records/{key}
 

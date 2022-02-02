@@ -38,6 +38,9 @@ class ReportUser(Operation):
     resource="ADMIN:NAMESPACE:{namespace}:ACTION", action=1 (CREATE)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACTION [CREATE]
+
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/actions/report
 

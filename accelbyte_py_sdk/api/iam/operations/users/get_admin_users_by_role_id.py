@@ -39,6 +39,9 @@ class GetAdminUsersByRoleID(Operation):
     members. Use endpoint [GET] /roles/{roleId}/admin to check the role status</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/admin
 

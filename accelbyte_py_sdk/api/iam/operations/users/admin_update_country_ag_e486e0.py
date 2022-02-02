@@ -38,6 +38,9 @@ class AdminUpdateCountryAgeRestrictionV3(Operation):
     [UPDATE]'<br>action code: 10123
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries/{countryCode}
 

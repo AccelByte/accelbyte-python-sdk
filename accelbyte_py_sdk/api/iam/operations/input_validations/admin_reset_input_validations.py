@@ -37,6 +37,9 @@ class AdminResetInputValidations(Operation):
     configurations</p>
 
 
+    Required Permission(s):
+        - ADMIN:CONFIGURATION [DELETE]
+
     Properties:
         url: /iam/v3/admin/inputValidations/{field}
 

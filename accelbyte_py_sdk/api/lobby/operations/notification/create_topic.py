@@ -39,6 +39,12 @@ class CreateTopic(Operation):
     example: TOPIC_TEST. Already existing topic can not be created
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:TOPIC [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /notification/namespaces/{namespace}/topics
 

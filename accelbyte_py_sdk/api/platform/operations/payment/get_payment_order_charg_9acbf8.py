@@ -38,6 +38,9 @@ class GetPaymentOrderChargeStatus(Operation):
     (READ)</li><li><i>Returns</i>: payment order charge status</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}/status
 

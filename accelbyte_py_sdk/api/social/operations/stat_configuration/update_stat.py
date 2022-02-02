@@ -39,6 +39,9 @@ class UpdateStat(Operation):
     (UPDATE)</li><li><i>Returns</i>: updated stat</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [UPDATE]
+
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/stats/{statCode}
 

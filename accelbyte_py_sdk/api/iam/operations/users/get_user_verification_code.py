@@ -40,6 +40,9 @@ class GetUserVerificationCode(Operation):
     <br>action code: 10146
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CODE [READ]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/codes
 

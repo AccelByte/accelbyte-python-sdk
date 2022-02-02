@@ -37,6 +37,9 @@ class PublicDeleteUserNamespaceSlot(Operation):
     (DELETE)</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [DELETE]
+
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}
 

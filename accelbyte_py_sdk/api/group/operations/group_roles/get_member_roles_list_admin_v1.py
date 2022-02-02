@@ -38,6 +38,9 @@ class GetMemberRolesListAdminV1(Operation):
     73201</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [READ]
+
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/roles
 

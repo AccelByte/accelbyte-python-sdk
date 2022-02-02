@@ -39,6 +39,12 @@ class CreateImage(Operation):
     west-2.amazonaws.com/dewa:1.0.0", "persistent":false } ```
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /dsmcontroller/admin/images
 

@@ -37,6 +37,12 @@ class QuerySession(Operation):
     Required scope: social Query available game session
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession
 

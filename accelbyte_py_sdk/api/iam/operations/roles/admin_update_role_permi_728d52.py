@@ -60,6 +60,9 @@ class AdminUpdateRolePermissionsV3(Operation):
     month.</li> </ol>
 
 
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
     Properties:
         url: /iam/v3/admin/roles/{roleId}/permissions
 

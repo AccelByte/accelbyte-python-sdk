@@ -37,6 +37,9 @@ class AdminRemoveUserRoleV4(Operation):
     permission. Remove a role from user's roles.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:* [Delete]
+
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles
 

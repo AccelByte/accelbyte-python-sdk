@@ -38,6 +38,12 @@ class AdminPutGameRecordHandlerV1(Operation):
     or insert new data in namespace-level
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}
 

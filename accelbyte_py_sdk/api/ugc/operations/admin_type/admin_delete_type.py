@@ -35,6 +35,9 @@ class AdminDeleteType(Operation):
     Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [DELETE]
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [DELETE]
+
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/types/{typeId}
 

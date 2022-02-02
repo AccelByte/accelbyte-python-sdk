@@ -41,6 +41,9 @@ class CreateContentS3(Operation):
     specified, it will use fileExtension value.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
+
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3
 

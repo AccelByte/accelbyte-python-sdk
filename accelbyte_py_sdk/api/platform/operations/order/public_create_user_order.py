@@ -46,6 +46,9 @@ class PublicCreateUserOrder(Operation):
     ORDER_AND_PAYMENT</li><li><i>Returns</i>: created order</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ORDER [CREATE]
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/orders
 

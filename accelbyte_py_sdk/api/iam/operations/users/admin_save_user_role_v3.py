@@ -41,6 +41,9 @@ class AdminSaveUserRoleV3(Operation):
     role manager / assigner.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles
 

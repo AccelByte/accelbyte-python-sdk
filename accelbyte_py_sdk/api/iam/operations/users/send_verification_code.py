@@ -48,6 +48,9 @@ class SendVerificationCode(Operation):
     returning HTTP Status Code 409.</p></li> </ol>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/verificationcode
 

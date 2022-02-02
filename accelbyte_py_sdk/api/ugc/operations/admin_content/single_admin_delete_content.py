@@ -36,6 +36,9 @@ class SingleAdminDeleteContent(Operation):
     [DELETE]</b>.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents/{contentId}
 

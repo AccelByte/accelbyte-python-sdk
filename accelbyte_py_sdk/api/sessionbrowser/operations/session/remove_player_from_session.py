@@ -37,6 +37,12 @@ class RemovePlayerFromSession(Operation):
     Required scope: social Remove player from game session
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}/player/{userID}
 

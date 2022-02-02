@@ -40,6 +40,9 @@ class AdminAssignUserToRoleV4(Operation):
     (required) action code: 10410
 
 
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
     Properties:
         url: /iam/v4/admin/roles/{roleId}/users
 

@@ -38,6 +38,9 @@ class SyncXboxInventory(Operation):
     (UPDATE)</li><li><i>Returns</i>: </li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/xbl/sync
 

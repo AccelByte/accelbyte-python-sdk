@@ -38,6 +38,12 @@ class GetNotificationTopicV1Admin(Operation):
     topic name.<br/> Action Code: 50215
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName}
 

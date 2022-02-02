@@ -37,6 +37,9 @@ class RetrieveThirdPartyLoginPlatformCredentialV3(Operation):
     ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [READ] resource
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [READ]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
 

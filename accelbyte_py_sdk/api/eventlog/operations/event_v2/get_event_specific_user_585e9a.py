@@ -36,6 +36,12 @@ class GetEventSpecificUserV2Handler(Operation):
     scope <code>analytics</code>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:EVENT [READ]
+
+    Required Scope(s):
+        - analytics
+
     Properties:
         url: /event/v2/admin/namespaces/{namespace}/users/{userId}/event
 

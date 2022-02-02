@@ -39,6 +39,12 @@ class DeregisterLocalServer(Operation):
     records from DB.```
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/local/deregister
 

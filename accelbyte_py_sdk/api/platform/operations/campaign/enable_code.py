@@ -38,6 +38,9 @@ class EnableCode(Operation):
     (UPDATE)</li><li><i>Returns</i>: enabled code</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/{code}/enable
 

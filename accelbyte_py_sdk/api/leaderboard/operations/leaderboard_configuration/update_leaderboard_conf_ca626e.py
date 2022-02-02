@@ -46,6 +46,9 @@ class UpdateLeaderboardConfigurationAdminV1(Operation):
     format e.g. 01:30, 10:30, 15:30, 23:15.</li> </ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [UPDATE]
+
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}
 

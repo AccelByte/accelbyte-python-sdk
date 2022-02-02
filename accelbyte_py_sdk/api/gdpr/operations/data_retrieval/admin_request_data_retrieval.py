@@ -39,6 +39,12 @@ class AdminRequestDataRetrieval(Operation):
     password is need to be set</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [CREATE]
+
+    Required Scope(s):
+        - account
+
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/{userId}/requests
 

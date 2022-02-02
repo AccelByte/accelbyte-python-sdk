@@ -37,6 +37,12 @@ class UpdateLocalizationTemplate(Operation):
     with scope <code>social</code> <br>Modify draft template
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:TEMPLATE [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
 

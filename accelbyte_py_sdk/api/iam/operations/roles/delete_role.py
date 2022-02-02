@@ -36,6 +36,11 @@ class DeleteRole(Operation):
     2019</strong>, please use permission 'ADMIN:ROLE [DELETE]' instead.</p>
 
 
+    Required Permission(s):
+        - ADMIN:ROLE [DELETE]
+
+        - ROLE:ADMIN [DELETE]
+
     Properties:
         url: /iam/roles/{roleId}
 

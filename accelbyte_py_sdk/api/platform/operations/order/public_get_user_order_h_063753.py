@@ -37,6 +37,9 @@ class PublicGetUserOrderHistories(Operation):
     (READ)</li><li><i>Returns</i>: get order history</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/history
 

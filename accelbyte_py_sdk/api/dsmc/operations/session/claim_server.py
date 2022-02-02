@@ -39,6 +39,12 @@ class ClaimServer(Operation):
     cannot be claimed unless the status is READY
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SESSION [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/sessions/claim
 

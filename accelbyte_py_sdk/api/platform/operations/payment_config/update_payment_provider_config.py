@@ -51,6 +51,9 @@ class UpdatePaymentProviderConfig(Operation):
     (UPDATE)</li><li><i>Returns</i>: payment provider config</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:PAYMENT:CONFIG [UPDATE]
+
     Properties:
         url: /platform/admin/payment/config/provider/{id}
 

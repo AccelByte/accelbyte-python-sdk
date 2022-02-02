@@ -42,6 +42,12 @@ class NotificationWithTemplateByUserID(Operation):
     published before it can be use to send notifications
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /notification/namespaces/{namespace}/users/{userId}/templated
 

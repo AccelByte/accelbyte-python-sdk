@@ -35,6 +35,9 @@ class AdminRemoveRoleAdminV3(Operation):
     <p>Required permission 'ADMIN:ROLE [UPDATE]'</p> code: 10413
 
 
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
     Properties:
         url: /iam/v3/admin/roles/{roleId}/admin
 

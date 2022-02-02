@@ -36,6 +36,12 @@ class DeleteTemplateLocalization(Operation):
     with scope <code>social</code> <br>Delete all template in a slug
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:TEMPLATE [DELETE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
 

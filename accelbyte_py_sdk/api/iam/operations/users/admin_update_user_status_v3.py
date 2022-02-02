@@ -42,6 +42,9 @@ class AdminUpdateUserStatusV3(Operation):
     ignore field 'reason' in the request body. </p> <br>action code : 10143
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status
 

@@ -37,6 +37,9 @@ class GetGroup(Operation):
     [READ]</b>.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ]
+
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}
 

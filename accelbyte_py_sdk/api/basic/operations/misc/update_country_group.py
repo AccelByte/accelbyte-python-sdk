@@ -46,6 +46,9 @@ class UpdateCountryGroup(Operation):
     updated country group</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MISC [UPDATE]
+
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups/{countryGroupCode}
 

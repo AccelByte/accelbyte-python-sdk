@@ -37,6 +37,9 @@ class PublicQueryUserOrders(Operation):
     (READ)</li><li><i>Returns</i>: get order</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/orders
 

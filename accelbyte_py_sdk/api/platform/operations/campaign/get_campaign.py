@@ -38,6 +38,9 @@ class GetCampaign(Operation):
     (READ)</li><li><i>Returns</i>: campaign info</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/campaigns/{campaignId}
 

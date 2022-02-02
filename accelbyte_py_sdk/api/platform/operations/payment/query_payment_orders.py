@@ -37,6 +37,9 @@ class QueryPaymentOrders(Operation):
     (READ)</li><li><i>Returns</i>: query payment orders</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders
 

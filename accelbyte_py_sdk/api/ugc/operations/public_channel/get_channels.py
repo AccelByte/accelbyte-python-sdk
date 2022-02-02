@@ -36,6 +36,9 @@ class GetChannels(Operation):
     Required permission <b>NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]</b>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
+
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels
 

@@ -35,6 +35,9 @@ class AdminDeleteRoleV3(Operation):
     Required permission ''ADMIN:ROLE [DELETE]'' <br>action code: 10403
 
 
+    Required Permission(s):
+        - ADMIN:ROLE [DELETE]
+
     Properties:
         url: /iam/v3/admin/roles/{roleId}
 

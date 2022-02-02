@@ -38,6 +38,12 @@ class GetSingleTemplateLocalizationV1Admin(Operation):
     localization<br/> Action Code: 50207
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
 

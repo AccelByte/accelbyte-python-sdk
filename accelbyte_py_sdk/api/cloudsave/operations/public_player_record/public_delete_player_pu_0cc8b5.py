@@ -36,6 +36,9 @@ class PublicDeletePlayerPublicRecordHandlerV1(Operation):
     record (arbitrary JSON data) in user-level with given key.
 
 
+    Required Scope(s):
+        - social
+
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/me/records/{key}/public
 

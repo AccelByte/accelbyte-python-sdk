@@ -58,6 +58,9 @@ class AuthorizeV3(Operation):
     https://tools.ietf.org/html/rfc6749#section-4.1</p><br> action code: 10701
 
 
+    Required Scope(s):
+        - The
+
     Properties:
         url: /iam/v3/oauth/authorize
 

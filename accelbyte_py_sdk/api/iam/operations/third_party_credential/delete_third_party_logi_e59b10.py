@@ -37,6 +37,9 @@ class DeleteThirdPartyLoginPlatformDomainV3(Operation):
     ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [DELETE] resource.</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [DELETE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients/domain
 

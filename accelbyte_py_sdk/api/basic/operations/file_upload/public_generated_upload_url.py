@@ -41,6 +41,9 @@ class PublicGeneratedUploadUrl(Operation):
     data</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:FILEUPLOAD [CREATE]
+
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/folders/{folder}/files
 

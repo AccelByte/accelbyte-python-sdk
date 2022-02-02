@@ -39,6 +39,12 @@ class UpdatePort(Operation):
     namespace.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/ports/{name}
 

@@ -46,6 +46,12 @@ class PostGameRecordHandlerV1(Operation):
     "foo_new": "bar_new" } </pre>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/records/{key}
 

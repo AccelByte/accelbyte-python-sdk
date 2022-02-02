@@ -38,6 +38,9 @@ class GetPaymentMerchantConfig(Operation):
     (READ)</li><li><i>Returns</i>: payment merchant config info</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:PAYMENT:CONFIG [READ]
+
     Properties:
         url: /platform/admin/payment/config/merchant/{id}
 

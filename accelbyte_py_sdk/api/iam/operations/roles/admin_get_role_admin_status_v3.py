@@ -37,6 +37,9 @@ class AdminGetRoleAdminStatusV3(Operation):
     listed in the role.</p> <p>action code: 10420</p>
 
 
+    Required Permission(s):
+        - ADMIN:ROLE [READ]
+
     Properties:
         url: /iam/v3/admin/roles/{roleId}/admin
 

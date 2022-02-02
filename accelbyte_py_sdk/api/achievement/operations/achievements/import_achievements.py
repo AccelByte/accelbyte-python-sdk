@@ -41,6 +41,12 @@ class ImportAchievements(Operation):
     will be used and existing one will be removed
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements/import
 

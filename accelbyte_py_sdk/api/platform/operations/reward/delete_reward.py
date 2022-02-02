@@ -39,6 +39,9 @@ class DeleteReward(Operation):
     (DELETE)</li><li><i>Returns</i>: the deleted reward data</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REWARD [DELETE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}
 

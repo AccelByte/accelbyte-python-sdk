@@ -43,6 +43,9 @@ class CreateCategory(Operation):
     (CREATE)</li><li><i>Returns</i>: created category data</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CATEGORY [CREATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories
 

@@ -38,6 +38,9 @@ class AdminCreateChannel(Operation):
     [CREATE]</b>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
+
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels
 

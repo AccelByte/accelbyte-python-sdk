@@ -40,6 +40,9 @@ class SingleAdminUpdateContentDirect(Operation):
     [UPDATE]</b>.n All request body are required except preview and tags.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents/{contentId}
 

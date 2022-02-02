@@ -35,6 +35,9 @@ class AdminDeleteRolePermissionV3(Operation):
     Required permission 'ADMIN:ROLE [UPDATE]' <br>action code: 10406<br>
 
 
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
     Properties:
         url: /iam/v3/admin/roles/{roleId}/permissions/{resource}/{action}
 

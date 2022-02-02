@@ -37,6 +37,9 @@ class PublicQueryUserSubscriptions(Operation):
     action=2 (READ)</li><li><i>Returns</i>: paginated subscription</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions
 

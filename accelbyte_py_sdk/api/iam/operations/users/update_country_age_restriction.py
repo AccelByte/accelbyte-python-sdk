@@ -36,6 +36,9 @@ class UpdateCountryAgeRestriction(Operation):
     Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]'
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]
+
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/countries/{countryCode}
 

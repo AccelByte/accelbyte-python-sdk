@@ -42,6 +42,9 @@ class SearchUser(Operation):
     namespace. Required permission 'ADMIN:NAMESPACE:{namespace}:USER:* [READ]'</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:* [READ]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/search
 

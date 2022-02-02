@@ -39,6 +39,9 @@ class UpdatePayPalConfig(Operation):
     (UPDATE)</li><li><i>Returns</i>: updated payment merchant config</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:PAYMENT:CONFIG [UPDATE]
+
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/paypalconfig
 

@@ -37,6 +37,12 @@ class DeleteUserFromSessionInChannel(Operation):
     Required Scope: social Delete a user from a session in the channel.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/sessions/{matchID}/users/{userID}
 

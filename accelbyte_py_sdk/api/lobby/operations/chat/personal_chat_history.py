@@ -38,6 +38,12 @@ class PersonalChatHistory(Operation):
     a namespace.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CHAT [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/chat/namespaces/{namespace}/users/{userId}/friend/{friendId}
 

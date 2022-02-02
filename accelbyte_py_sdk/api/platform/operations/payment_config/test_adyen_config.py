@@ -41,6 +41,9 @@ class TestAdyenConfig(Operation):
     test adyen config</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:PAYMENT:CONFIG [UPDATE]
+
     Properties:
         url: /platform/admin/payment/config/merchant/adyenconfig/test
 

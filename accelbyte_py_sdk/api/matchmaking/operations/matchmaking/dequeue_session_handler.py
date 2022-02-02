@@ -40,6 +40,12 @@ class DequeueSessionHandler(Operation):
     session, even though it is not full.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:SESSION [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /matchmaking/namespaces/{namespace}/sessions/dequeue
 

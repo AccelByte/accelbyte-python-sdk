@@ -39,6 +39,9 @@ class PublicGetUserGameProfiles(Operation):
     <li><i>Returns</i>: list of profiles</ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:GAMEPROFILE [READ]
+
     Properties:
         url: /social/public/namespaces/{namespace}/profiles
 

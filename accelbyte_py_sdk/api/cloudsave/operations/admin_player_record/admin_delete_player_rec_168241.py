@@ -38,6 +38,12 @@ class AdminDeletePlayerRecordHandlerV1(Operation):
     key. It will delete the record whether it's private or public record.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
 

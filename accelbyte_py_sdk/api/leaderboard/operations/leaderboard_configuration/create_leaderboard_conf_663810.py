@@ -49,6 +49,9 @@ class CreateLeaderboardConfigurationAdminV1(Operation):
     statistic service. <b>(required)</b>.</li> </ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]
+
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards
 

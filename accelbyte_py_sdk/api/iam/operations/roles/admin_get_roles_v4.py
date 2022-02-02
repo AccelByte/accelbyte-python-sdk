@@ -36,6 +36,9 @@ class AdminGetRolesV4(Operation):
     Required permission ADMIN:ROLE [READ] action code: 10414
 
 
+    Required Permission(s):
+        - ADMIN:ROLE [READ]
+
     Properties:
         url: /iam/v4/admin/roles
 

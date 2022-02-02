@@ -38,6 +38,9 @@ class UpdateSSOPlatformCredential(Operation):
     ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [UPDATE] resource
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [UPDATE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/sso
 

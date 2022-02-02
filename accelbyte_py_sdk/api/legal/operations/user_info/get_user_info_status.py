@@ -39,6 +39,9 @@ class GetUserInfoStatus(Operation):
     permission</i>: resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [READ]
+
     Properties:
         url: /agreement/admin/userInfo
 

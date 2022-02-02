@@ -38,6 +38,9 @@ class GetEntitlement(Operation):
     (READ)</li><li><i>Returns</i>: entitlement</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ENTITLEMENT [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/entitlements/{entitlementId}
 

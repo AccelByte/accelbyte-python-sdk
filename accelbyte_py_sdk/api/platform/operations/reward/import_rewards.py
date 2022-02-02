@@ -37,6 +37,9 @@ class ImportRewards(Operation):
     resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=1 (CREATE)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REWARD [CREATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/import
 

@@ -76,6 +76,9 @@ class TokenGrantV3(Operation):
     10703
 
 
+    Required Scope(s):
+        - of
+
     Properties:
         url: /iam/v3/oauth/token
 

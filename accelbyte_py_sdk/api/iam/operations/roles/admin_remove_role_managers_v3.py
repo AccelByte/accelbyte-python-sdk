@@ -37,6 +37,9 @@ class AdminRemoveRoleManagersV3(Operation):
     to other users by the role's manager.</p> <br> action code: 10409
 
 
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
     Properties:
         url: /iam/v3/admin/roles/{roleId}/managers
 

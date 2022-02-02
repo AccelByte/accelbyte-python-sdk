@@ -36,6 +36,12 @@ class AdminDeleteGameRecordHandlerV1(Operation):
     Required scope: social This endpoints delete game record in namespace-level
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}
 

@@ -38,6 +38,9 @@ class AdminCreateType(Operation):
     new type and subtype
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [CREATE]
+
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/types
 

@@ -36,6 +36,9 @@ class DeleteAllUserChannel(Operation):
     [DELETE]</b>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels
 

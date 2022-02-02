@@ -40,6 +40,9 @@ class BulkGetLocaleItems(Operation):
     (READ)</li><li><i>Returns</i>: the list of items info</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/items/locale/byIds
 

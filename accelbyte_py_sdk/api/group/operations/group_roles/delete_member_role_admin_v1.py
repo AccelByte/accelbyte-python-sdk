@@ -38,6 +38,9 @@ class DeleteMemberRoleAdminV1(Operation):
     role)</p> <p>Action Code: 73207</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [DELETE]
+
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/roles/{memberRoleId}
 

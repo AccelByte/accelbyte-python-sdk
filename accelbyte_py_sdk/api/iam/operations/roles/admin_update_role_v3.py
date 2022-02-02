@@ -37,6 +37,9 @@ class AdminUpdateRoleV3(Operation):
     Required permission 'ADMIN:ROLE [UPDATE]' <br>action code: 10402
 
 
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
     Properties:
         url: /iam/v3/admin/roles/{roleId}
 

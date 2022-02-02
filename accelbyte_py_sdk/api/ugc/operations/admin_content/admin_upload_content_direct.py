@@ -40,6 +40,9 @@ class AdminUploadContentDirect(Operation):
     [CREATE]</b>.n All request body are required except preview and tags.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
+
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents
 

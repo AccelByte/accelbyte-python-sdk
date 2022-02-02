@@ -42,6 +42,9 @@ class AdminAddUserRoleV4(Operation):
     assigner.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:* [UPDATE]
+
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles
 

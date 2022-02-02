@@ -39,6 +39,12 @@ class JoinSession(Operation):
     game required a password to join
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}/join
 

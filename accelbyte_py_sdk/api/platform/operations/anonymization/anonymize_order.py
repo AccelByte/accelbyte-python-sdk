@@ -36,6 +36,9 @@ class AnonymizeOrder(Operation):
     (DELETE)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/orders
 

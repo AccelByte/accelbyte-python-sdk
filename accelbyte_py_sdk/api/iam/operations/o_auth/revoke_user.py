@@ -39,6 +39,9 @@ class RevokeUser(Operation):
     period of time.</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/oauth/namespaces/{namespace}/users/{userId}/revoke
 

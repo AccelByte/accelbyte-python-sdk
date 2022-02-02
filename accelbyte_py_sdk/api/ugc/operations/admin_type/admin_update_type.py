@@ -38,6 +38,9 @@ class AdminUpdateType(Operation):
     type and subtype
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [UPDATE]
+
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/types/{typeId}
 

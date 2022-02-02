@@ -37,6 +37,9 @@ class GetUserNamespaceSlots(Operation):
     action=2 (READ)</li><li><i>Returns</i>: list of slots</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [READ]
+
     Properties:
         url: /social/admin/namespaces/{namespace}/users/{userId}/slots
 

@@ -38,6 +38,9 @@ class PublicListUserWalletTransactions(Operation):
     (READ)</li><li><i>Returns</i>: wallet transaction info</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/transactions
 

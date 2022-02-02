@@ -35,6 +35,9 @@ class AdminSearchUsersV2(Operation):
     Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users
 

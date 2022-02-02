@@ -37,6 +37,9 @@ class GetPaymentTaxConfig(Operation):
     (READ)</li><li><i>Returns</i>: payment provider list</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:PAYMENT:CONFIG [READ]
+
     Properties:
         url: /platform/admin/payment/config/tax
 

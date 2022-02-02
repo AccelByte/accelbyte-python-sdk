@@ -42,6 +42,9 @@ class UpdateUserProfileStatus(Operation):
     profile</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
+
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/status
 

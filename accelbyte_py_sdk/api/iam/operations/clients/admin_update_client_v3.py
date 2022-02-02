@@ -53,6 +53,9 @@ class AdminUpdateClientV3(Operation):
     Contains the client's permissions</li> </ul> </p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLIENT [UPDATE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}
 

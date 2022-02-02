@@ -42,6 +42,9 @@ class UpdatePatchSingleGroupPublicV1(Operation):
     73307</p>
 
 
+    Required Permission(s):
+        - GROUP [UPDATE]
+
     Properties:
         url: /group/v1/public/namespaces/{namespace}/groups/{groupId}
 

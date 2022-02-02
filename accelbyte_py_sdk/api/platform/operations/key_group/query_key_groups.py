@@ -38,6 +38,9 @@ class QueryKeyGroups(Operation):
     (READ)</li><li><i>Returns</i>: slice of key group</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/keygroups
 

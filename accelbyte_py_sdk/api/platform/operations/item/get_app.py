@@ -37,6 +37,9 @@ class GetApp(Operation):
     (READ)</li><li><i>Returns</i>: app data</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/items/{itemId}/app
 

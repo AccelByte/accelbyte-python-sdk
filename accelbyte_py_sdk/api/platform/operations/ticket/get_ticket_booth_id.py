@@ -38,6 +38,9 @@ class GetTicketBoothID(Operation):
     (READ)</li><li><i>Returns</i>: ticket booth id</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/tickets/{boothName}/id
 

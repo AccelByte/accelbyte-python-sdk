@@ -38,6 +38,9 @@ class GetUserProfiles(Operation):
     (READ)</li><li><i>Returns</i>: list of profiles</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [READ]
+
     Properties:
         url: /social/admin/namespaces/{namespace}/users/{userId}/profiles
 

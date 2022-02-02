@@ -39,6 +39,12 @@ class AdminGetPlayerBlockedPlayersV1(Operation):
     namespace.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/blocked
 

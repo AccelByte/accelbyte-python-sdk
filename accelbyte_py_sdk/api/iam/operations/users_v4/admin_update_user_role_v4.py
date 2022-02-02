@@ -38,6 +38,9 @@ class AdminUpdateUserRoleV4(Operation):
     permission. User's roles will be replaced with roles from request body.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:* [UPDATE]
+
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles
 

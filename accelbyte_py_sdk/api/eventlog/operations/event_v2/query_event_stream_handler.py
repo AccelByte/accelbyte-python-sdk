@@ -41,6 +41,9 @@ class QueryEventStreamHandler(Operation):
     <code>"+scope+"</code></p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:EVENT [READ]
+
     Properties:
         url: /event/v2/admin/namespaces/{namespace}/query
 

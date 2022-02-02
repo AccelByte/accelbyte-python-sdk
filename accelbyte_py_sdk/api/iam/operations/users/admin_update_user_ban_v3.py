@@ -40,6 +40,9 @@ class AdminUpdateUserBanV3(Operation):
     the ban. <br>action code : 10142'
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId}
 

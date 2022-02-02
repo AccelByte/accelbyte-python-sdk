@@ -48,6 +48,9 @@ class UpdateUser(Operation):
     NewEmailAddress response field will be filled with newest email address. </li>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}
 

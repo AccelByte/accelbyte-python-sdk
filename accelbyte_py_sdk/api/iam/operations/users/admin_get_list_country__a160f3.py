@@ -37,6 +37,9 @@ class AdminGetListCountryAgeRestrictionV3(Operation):
     [READ]<br>action code : 10139
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries
 

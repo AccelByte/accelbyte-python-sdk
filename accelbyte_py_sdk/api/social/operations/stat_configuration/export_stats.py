@@ -36,6 +36,9 @@ class ExportStats(Operation):
     (READ)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [READ]
+
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/stats/export
 

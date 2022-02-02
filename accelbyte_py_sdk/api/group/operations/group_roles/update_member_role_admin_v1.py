@@ -38,6 +38,9 @@ class UpdateMemberRoleAdminV1(Operation):
     <p>This endpoint is used to get member role</p> <p>Action Code: 73204</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]
+
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/roles/{memberRoleId}
 

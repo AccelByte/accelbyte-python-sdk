@@ -38,6 +38,9 @@ class QueryOrders(Operation):
     (READ)</li><li><i>Returns</i>: query orders</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ORDER [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/orders
 

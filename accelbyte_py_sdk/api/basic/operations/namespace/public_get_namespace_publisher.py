@@ -41,6 +41,9 @@ class PublicGetNamespacePublisher(Operation):
     Namespace info related publisher namespace</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:NAMESPACE [READ]
+
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/publisher
 

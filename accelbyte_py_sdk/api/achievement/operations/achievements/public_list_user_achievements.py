@@ -37,6 +37,12 @@ class PublicListUserAchievements(Operation):
     [READ]</code> and scope <code>social</code></p>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /achievement/v1/public/namespaces/{namespace}/users/{userId}/achievements
 

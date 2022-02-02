@@ -38,6 +38,9 @@ class AdminCreateJusticeUser(Operation):
     User on target namespace already exist.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [CREATE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
 

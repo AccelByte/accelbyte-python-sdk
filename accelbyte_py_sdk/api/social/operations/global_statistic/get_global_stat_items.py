@@ -37,6 +37,9 @@ class GetGlobalStatItems(Operation):
     (READ)</li><li><i>Returns</i>: stat items</li>ul
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STATITEM [READ]
+
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/globalstatitems
 

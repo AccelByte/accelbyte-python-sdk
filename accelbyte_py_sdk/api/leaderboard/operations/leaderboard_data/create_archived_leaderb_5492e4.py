@@ -40,6 +40,9 @@ class CreateArchivedLeaderboardRankingDataV1Handler(Operation):
     reset. This will be a bulk endpoint</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]
+
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/archived
 

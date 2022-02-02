@@ -37,6 +37,9 @@ class AdminGetClientsByNamespaceV3(Operation):
     <p>action code: 10308</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLIENT [READ]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients
 

@@ -53,6 +53,9 @@ class PlatformLink(Operation):
     returned by Discord OAuth.</li> </ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link
 

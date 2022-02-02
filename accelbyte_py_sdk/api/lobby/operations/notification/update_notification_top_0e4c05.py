@@ -40,6 +40,12 @@ class UpdateNotificationTopicV1Admin(Operation):
     not be created <br/> Action Code: 50216
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName}
 

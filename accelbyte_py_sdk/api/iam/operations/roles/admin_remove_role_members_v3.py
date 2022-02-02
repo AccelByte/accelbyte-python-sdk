@@ -38,6 +38,9 @@ class AdminRemoveRoleMembersV3(Operation):
     the role's manager.</p> <br> action code: 10411
 
 
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
     Properties:
         url: /iam/v3/admin/roles/{roleId}/members
 

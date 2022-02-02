@@ -43,6 +43,11 @@ class CreateRole(Operation):
     created only when at least 1 manager is specified.</p>
 
 
+    Required Permission(s):
+        - ROLE:ADMIN [CREATE]
+
+        - ADMIN:ROLE [CREATE]
+
     Properties:
         url: /iam/roles
 

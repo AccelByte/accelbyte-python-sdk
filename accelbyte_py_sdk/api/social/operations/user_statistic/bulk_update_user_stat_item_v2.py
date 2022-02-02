@@ -44,6 +44,9 @@ class BulkUpdateUserStatItemV2(Operation):
     action=4 (UPDATE) + *Returns*: bulk updated result
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STATITEM [UPDATE]
+
     Properties:
         url: /social/v2/admin/namespaces/{namespace}/statitems/value/bulk
 

@@ -39,6 +39,9 @@ class GetCurrencyConfig(Operation):
     (READ)</li><li><i>Returns</i>: simplified Currency</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CURRENCY [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/currencies/{currencyCode}/config
 

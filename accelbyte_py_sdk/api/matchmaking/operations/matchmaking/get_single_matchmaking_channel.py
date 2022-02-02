@@ -38,6 +38,12 @@ class GetSingleMatchmakingChannel(Operation):
     name Action Code: 510112
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}
 

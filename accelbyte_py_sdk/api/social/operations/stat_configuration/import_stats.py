@@ -38,6 +38,9 @@ class ImportStats(Operation):
     resource="ADMIN:NAMESPACE:{namespace}:STAT", action=1 (CREATE)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [CREATE]
+
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/stats/import
 

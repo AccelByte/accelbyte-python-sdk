@@ -38,6 +38,9 @@ class GetActions(Operation):
     <b>(READ)</b></li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACTION [READ]
+
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/actions
 

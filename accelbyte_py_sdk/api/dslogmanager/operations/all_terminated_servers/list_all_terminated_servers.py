@@ -37,6 +37,9 @@ class ListAllTerminatedServers(Operation):
     endpoint used to retrieve terminated servers in all namespace ```
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
+
     Properties:
         url: /dslogmanager/servers/search
 

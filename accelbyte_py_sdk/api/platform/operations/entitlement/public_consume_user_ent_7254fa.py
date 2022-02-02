@@ -40,6 +40,9 @@ class PublicConsumeUserEntitlement(Operation):
     (UPDATE)</li><li><i>Returns</i>: consumed entitlement</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/decrement
 

@@ -36,6 +36,9 @@ class AdminGetTag(Operation):
     Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
+
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/tags
 

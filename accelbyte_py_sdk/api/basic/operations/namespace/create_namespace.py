@@ -41,6 +41,9 @@ class CreateNamespace(Operation):
     11301</li><li><i>Returns</i>: created namespace</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE [CREATE]
+
     Properties:
         url: /basic/v1/admin/namespaces
 

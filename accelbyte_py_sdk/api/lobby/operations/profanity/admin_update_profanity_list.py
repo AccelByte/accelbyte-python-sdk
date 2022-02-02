@@ -37,6 +37,12 @@ class AdminUpdateProfanityList(Operation):
     [UPDATE]</code> with scope <code>social</code> <br>update the list
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/lists/{list}
 

@@ -38,6 +38,9 @@ class AdminAddRoleMembersV3(Operation):
     the role's manager.</p> <br>action code: 10410</br>
 
 
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
     Properties:
         url: /iam/v3/admin/roles/{roleId}/members
 

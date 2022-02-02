@@ -40,6 +40,9 @@ class CheckEventCondition(Operation):
     (READ)</li><li><i>Returns</i>: match result</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REWARD [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}/match
 

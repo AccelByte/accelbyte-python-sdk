@@ -37,6 +37,9 @@ class AdminVerifyUserWithoutVerificationCodeV3(Operation):
     10118</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/verify
 

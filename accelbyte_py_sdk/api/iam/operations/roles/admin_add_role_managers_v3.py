@@ -37,6 +37,9 @@ class AdminAddRoleManagersV3(Operation):
     <br><p>Required permission 'ADMIN:ROLE [UPDATE]'</p><br>action code: 10408
 
 
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
     Properties:
         url: /iam/v3/admin/roles/{roleId}/managers
 

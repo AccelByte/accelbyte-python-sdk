@@ -37,6 +37,12 @@ class AdminGetListPersonalDataRequest(Operation):
     [READ]</code> and scope <code>account</code></p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER [READ]
+
+    Required Scope(s):
+        - account
+
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/requests
 

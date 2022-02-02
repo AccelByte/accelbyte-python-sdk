@@ -39,6 +39,9 @@ class AdminListUserIDByUserIDsV3(Operation):
     given list of userID and namespace
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/bulk
 

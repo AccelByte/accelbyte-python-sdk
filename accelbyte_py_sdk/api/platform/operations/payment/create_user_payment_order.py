@@ -44,6 +44,9 @@ class CreateUserPaymentOrder(Operation):
     order</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT [CREATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/payment/orders
 

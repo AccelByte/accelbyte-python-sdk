@@ -39,6 +39,9 @@ class UpdatePaymentCallbackConfig(Operation):
     (UPDATE)</li><li><i>Returns</i>: Payment callback config</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG [UPDATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/config/callback
 

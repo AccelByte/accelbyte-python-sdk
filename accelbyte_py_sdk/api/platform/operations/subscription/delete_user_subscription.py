@@ -36,6 +36,9 @@ class DeleteUserSubscription(Operation):
     (DELETE)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [DELETE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}
 

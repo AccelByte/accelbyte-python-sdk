@@ -53,6 +53,9 @@ class AdminSearchUserV3(Operation):
     default limit is 100</li> </ul></p> <br>action code : 10133
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/search
 

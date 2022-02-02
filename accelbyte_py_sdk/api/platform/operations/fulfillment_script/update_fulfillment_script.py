@@ -38,6 +38,9 @@ class UpdateFulfillmentScript(Operation):
     permission</i>: resource="ADMIN:FULFILLMENT", action=4 (UPDATE)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:FULFILLMENT [UPDATE]
+
     Properties:
         url: /platform/admin/fulfillment/scripts/{id}
 

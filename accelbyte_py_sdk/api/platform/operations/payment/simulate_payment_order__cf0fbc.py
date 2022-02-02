@@ -41,6 +41,9 @@ class SimulatePaymentOrderNotification(Operation):
     (UPDATE)</li><li><i>Returns</i>: notification process result</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT [UPDATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}/simulate-notification
 

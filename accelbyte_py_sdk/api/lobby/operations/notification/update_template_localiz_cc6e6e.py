@@ -38,6 +38,12 @@ class UpdateTemplateLocalizationV1Admin(Operation):
     localization<br/> Action Code: 50208
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
 

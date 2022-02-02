@@ -41,6 +41,9 @@ class PlatformSubscribeSubscription(Operation):
     (CREATE)</li><li><i>Returns</i>: result subscription</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [CREATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/platformSubscribe
 

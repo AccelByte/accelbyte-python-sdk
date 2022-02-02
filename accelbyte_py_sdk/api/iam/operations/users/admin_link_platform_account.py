@@ -38,6 +38,9 @@ class AdminLinkPlatformAccount(Operation):
     endpoint intended for admin to forcefully link account to user.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/link
 

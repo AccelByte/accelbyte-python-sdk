@@ -42,6 +42,9 @@ class ApplyUserRedemption(Operation):
     (CREATE)</li><li><i>Returns</i>: Redeem result</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:REDEMPTION [CREATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/redemption
 

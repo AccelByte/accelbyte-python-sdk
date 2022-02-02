@@ -39,6 +39,9 @@ class GetItemIdBySku(Operation):
     (READ)<li><i>Returns</i>: the itemId with sku</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/items/itemId/bySku
 

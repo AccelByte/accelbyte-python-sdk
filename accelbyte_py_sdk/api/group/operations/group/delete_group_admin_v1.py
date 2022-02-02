@@ -38,6 +38,9 @@ class DeleteGroupAdminV1(Operation):
     73302</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:{groupId} [DELETE]
+
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/groups/{groupId}
 

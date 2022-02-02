@@ -38,6 +38,12 @@ class SendSpecificUserFreeformNotificationV1Admin(Operation):
     user. Action Code: 50211
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/users/{userId}/freeform/notify
 

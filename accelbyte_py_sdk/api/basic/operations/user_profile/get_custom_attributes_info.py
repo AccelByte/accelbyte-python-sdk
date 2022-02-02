@@ -39,6 +39,9 @@ class GetCustomAttributesInfo(Operation):
     code</i>: 11403</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
+
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/customAttributes
 

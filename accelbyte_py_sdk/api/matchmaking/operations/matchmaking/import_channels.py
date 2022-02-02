@@ -41,6 +41,12 @@ class ImportChannels(Operation):
     channel will be used and existing one will be removed Action Code: 510113
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/import
 

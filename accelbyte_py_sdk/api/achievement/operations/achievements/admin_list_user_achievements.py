@@ -38,6 +38,12 @@ class AdminListUserAchievements(Operation):
     scope <code>social</code></p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements
 

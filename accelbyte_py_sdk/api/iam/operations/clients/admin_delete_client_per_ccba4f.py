@@ -36,6 +36,9 @@ class AdminDeleteClientPermissionV3(Operation):
     code : 10304
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLIENT [UPDATE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions/{resource}/{action}
 

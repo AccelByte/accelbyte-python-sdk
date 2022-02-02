@@ -40,6 +40,9 @@ class RecurringChargeSubscription(Operation):
     (UPDATE)</li><li><i>Returns</i>: recurring charge result</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION [UPDATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/subscriptions/{subscriptionId}/recurring
 

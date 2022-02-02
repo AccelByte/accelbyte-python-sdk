@@ -37,6 +37,12 @@ class AdminCreateProfanityList(Operation):
     [CREATE]</code> with scope <code>social</code> <br>create a new list
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/lists
 

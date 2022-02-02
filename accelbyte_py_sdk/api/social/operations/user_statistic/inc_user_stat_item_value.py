@@ -39,6 +39,9 @@ class IncUserStatItemValue(Operation):
     action=4 (UPDATE)</li><li><i>Returns</i>: updated user's statItem</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value
 

@@ -36,6 +36,9 @@ class BanUser(Operation):
     Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]'.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/ban
 

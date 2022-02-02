@@ -39,6 +39,9 @@ class UpdatePlatformDLCConfig(Operation):
     (UPDATE)</li><li><i>Returns</i>: updated Platform DLC config</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [UPDATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/dlc/config/platformMap
 

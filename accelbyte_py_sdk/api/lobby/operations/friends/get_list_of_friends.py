@@ -38,6 +38,12 @@ class GetListOfFriends(Operation):
     namespace.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:FRIENDS [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/friend/namespaces/{namespace}/users/{userId}
 

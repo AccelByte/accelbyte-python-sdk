@@ -40,6 +40,12 @@ class UpdateTopicByTopicName(Operation):
     created
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:TOPIC [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /notification/namespaces/{namespace}/topics/{topic}
 

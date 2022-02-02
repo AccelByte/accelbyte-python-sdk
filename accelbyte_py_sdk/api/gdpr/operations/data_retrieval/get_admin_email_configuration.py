@@ -37,6 +37,12 @@ class GetAdminEmailConfiguration(Operation):
     <code>account</code></p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [READ]
+
+    Required Scope(s):
+        - account
+
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/emails/configurations
 

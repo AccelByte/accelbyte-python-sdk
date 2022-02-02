@@ -35,6 +35,9 @@ class GetClient(Operation):
     Required permission 'CLIENT [READ]'
 
 
+    Required Permission(s):
+        - CLIENT [READ]
+
     Properties:
         url: /iam/clients/{clientId}
 

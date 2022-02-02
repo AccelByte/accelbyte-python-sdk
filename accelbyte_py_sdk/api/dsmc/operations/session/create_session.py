@@ -46,6 +46,12 @@ class CreateSession(Operation):
     session using the registered local DS
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SESSION [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/sessions
 

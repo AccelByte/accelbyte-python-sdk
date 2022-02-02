@@ -46,6 +46,12 @@ class QueueSessionHandler(Operation):
     updated session data.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:SESSION [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /matchmaking/namespaces/{namespace}/sessions
 

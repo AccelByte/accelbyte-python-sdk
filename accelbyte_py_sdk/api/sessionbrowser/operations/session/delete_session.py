@@ -37,6 +37,12 @@ class DeleteSession(Operation):
     Required scope: social Delete the session by session ID
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [DELETE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}
 

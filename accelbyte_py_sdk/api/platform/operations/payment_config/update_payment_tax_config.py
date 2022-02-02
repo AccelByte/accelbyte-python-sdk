@@ -46,6 +46,9 @@ class UpdatePaymentTaxConfig(Operation):
     (UPDATE)</li><li><i>Returns</i>: payment global tax config</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:PAYMENT:CONFIG [UPDATE]
+
     Properties:
         url: /platform/admin/payment/config/tax
 

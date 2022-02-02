@@ -42,6 +42,9 @@ class DisableUserBan(Operation):
     return 403: Forbidden.</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/bans/{banId}/disable
 

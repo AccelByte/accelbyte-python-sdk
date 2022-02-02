@@ -37,6 +37,9 @@ class RetrieveLocalizedPolicyVersions(Operation):
     action=2 (READ)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [READ]
+
     Properties:
         url: /agreement/admin/localized-policy-versions/versions/{policyVersionId}
 

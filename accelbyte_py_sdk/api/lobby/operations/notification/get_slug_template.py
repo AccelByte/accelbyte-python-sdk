@@ -37,6 +37,12 @@ class GetSlugTemplate(Operation):
     scope <code>social</code> <br>Get all templates in a namespace
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:TEMPLATE [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /notification/namespaces/{namespace}/templates/{templateSlug}
 

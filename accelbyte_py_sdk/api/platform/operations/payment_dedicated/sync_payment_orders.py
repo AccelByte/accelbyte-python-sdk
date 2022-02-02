@@ -39,6 +39,9 @@ class SyncPaymentOrders(Operation):
     orders</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:PAYMENT [READ]
+
     Properties:
         url: /platform/admin/payment/orders
 

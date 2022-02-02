@@ -36,6 +36,9 @@ class DeleteThirdPartyLoginPlatformCredentialV3(Operation):
     ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [DELETE] resource
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [DELETE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
 

@@ -38,6 +38,9 @@ class AdminGetUserBanV3(Operation):
     before parameters is empty</p> <p>action code : 10126</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans
 

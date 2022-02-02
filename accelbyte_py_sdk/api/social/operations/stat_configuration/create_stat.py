@@ -39,6 +39,9 @@ class CreateStat(Operation):
     (CREATE)</li><li><i>Returns</i>: created stat template</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [CREATE]
+
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/stats
 

@@ -37,6 +37,12 @@ class GetActiveCustomGameSessions(Operation):
     Required scope: social
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /sessionbrowser/admin/namespaces/{namespace}/gamesession/active/custom-game
 

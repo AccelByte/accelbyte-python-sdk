@@ -39,6 +39,12 @@ class ImportConfig(Operation):
     the /export endpoint.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/config/namespaces/{namespace}/import
 

@@ -37,6 +37,12 @@ class AdminCancelUserAccountDeletionRequest(Operation):
     and scope <code>account</code></p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]
+
+    Required Scope(s):
+        - account
+
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/{userId}/deletions
 

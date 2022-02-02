@@ -40,6 +40,9 @@ class CreateClient(Operation):
     <p>Required permission 'CLIENT:ADMIN [CREATE]'</p>
 
 
+    Required Permission(s):
+        - CLIENT:ADMIN [CREATE]
+
     Properties:
         url: /iam/clients
 

@@ -38,6 +38,9 @@ class CreateClientByNamespace(Operation):
     'ADMIN:NAMESPACE:{namespace}:CLIENT [CREATE]'
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLIENT [CREATE]
+
     Properties:
         url: /iam/namespaces/{namespace}/clients
 

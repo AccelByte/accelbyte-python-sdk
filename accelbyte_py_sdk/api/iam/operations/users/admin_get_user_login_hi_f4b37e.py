@@ -42,6 +42,9 @@ class AdminGetUserLoginHistoriesV3(Operation):
     valid data Unix timestamp.</li><ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:HISTORY:LOGIN:USER:{userId} [READ]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/logins/histories
 

@@ -38,6 +38,9 @@ class PublicGetUserNamespaceSlots(Operation):
     (READ)</li><li><i>Returns</i>: list of slots</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [READ]
+
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/slots
 

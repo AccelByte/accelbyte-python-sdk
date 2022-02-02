@@ -39,6 +39,9 @@ class GetNamespaceSlotConfig(Operation):
     (READ)</li><li><i>Returns</i>: namespace slot config info</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SLOTCONFIG [READ]
+
     Properties:
         url: /social/admin/namespaces/{namespace}/config
 

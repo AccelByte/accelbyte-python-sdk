@@ -37,6 +37,9 @@ class GetOrderStatistics(Operation):
     (READ)</li><li><i>Returns</i>: order statistics</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ORDER [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/orders/stats
 

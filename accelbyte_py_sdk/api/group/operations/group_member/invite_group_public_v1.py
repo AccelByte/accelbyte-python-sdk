@@ -42,6 +42,9 @@ class InviteGroupPublicV1(Operation):
     73406</p>
 
 
+    Required Permission(s):
+        - GROUP:INVITE [CREATE]
+
     Properties:
         url: /group/v1/public/namespaces/{namespace}/users/{userId}/invite
 

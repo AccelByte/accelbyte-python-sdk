@@ -39,6 +39,9 @@ class SyncOrders(Operation):
     orders</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:ORDER [READ]
+
     Properties:
         url: /platform/admin/orders
 

@@ -38,6 +38,9 @@ class GetOrder(Operation):
     (READ)</li><li><i>Returns</i>: order instance</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ORDER [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/orders/{orderNo}
 

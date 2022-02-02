@@ -40,6 +40,9 @@ class PublicReportUser(Operation):
     (CREATE)</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ACTION [CREATE]
+
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/{userId}/actions/report
 

@@ -40,6 +40,9 @@ class DeleteNamespace(Operation):
     deleted namespace</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [DELETE]
+
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}
 

@@ -36,6 +36,9 @@ class AdminGetRoleV3(Operation):
     Required permission 'ADMIN:ROLE [READ]'<br> <p>action code: 10419</p>
 
 
+    Required Permission(s):
+        - ADMIN:ROLE [READ]
+
     Properties:
         url: /iam/v3/admin/roles/{roleId}
 

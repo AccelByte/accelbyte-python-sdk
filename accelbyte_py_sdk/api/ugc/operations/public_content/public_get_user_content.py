@@ -36,6 +36,9 @@ class PublicGetUserContent(Operation):
     Required permission <b>NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]</b>.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/contents
 

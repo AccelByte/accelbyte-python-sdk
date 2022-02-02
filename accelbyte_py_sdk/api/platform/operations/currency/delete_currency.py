@@ -38,6 +38,9 @@ class DeleteCurrency(Operation):
     (DELETE)</li><li><i>Returns</i>: </li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CURRENCY [DELETE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/currencies/{currencyCode}
 

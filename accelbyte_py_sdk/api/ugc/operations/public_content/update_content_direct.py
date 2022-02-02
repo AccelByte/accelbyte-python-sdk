@@ -40,6 +40,9 @@ class UpdateContentDirect(Operation):
     [UPDATE]</b>.n All request body are required except preview and tags.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}
 

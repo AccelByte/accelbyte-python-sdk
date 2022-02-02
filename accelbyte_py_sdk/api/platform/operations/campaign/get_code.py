@@ -39,6 +39,9 @@ class GetCode(Operation):
     (READ)</li><li><i>Returns</i>: code info</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/{code}
 

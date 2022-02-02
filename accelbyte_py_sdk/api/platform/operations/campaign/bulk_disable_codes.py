@@ -40,6 +40,9 @@ class BulkDisableCodes(Operation):
     disabled</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/disable/bulk
 

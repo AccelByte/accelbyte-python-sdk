@@ -63,6 +63,11 @@ class AddRolePermission(Operation):
     month.</li> </ol>
 
 
+    Required Permission(s):
+        - ROLE:ADMIN [UPDATE]
+
+        - ADMIN:ROLE [UPDATE]
+
     Properties:
         url: /iam/roles/{roleId}/permissions/{resource}/{action}
 

@@ -39,6 +39,9 @@ class FulfillRewards(Operation):
     (CREATED)</li><li><i>Returns</i>: fulfillment result</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT []
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/fulfillment/rewards
 

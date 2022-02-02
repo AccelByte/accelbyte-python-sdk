@@ -38,6 +38,9 @@ class UpdateThirdPartyLoginPlatformDomainV3(Operation):
     ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [UPDATE] resource.</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [UPDATE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients/domain
 

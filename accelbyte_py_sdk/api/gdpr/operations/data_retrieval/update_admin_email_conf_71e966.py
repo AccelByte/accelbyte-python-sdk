@@ -37,6 +37,9 @@ class UpdateAdminEmailConfiguration(Operation):
     [UPDATE]</code></p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [UPDATE]
+
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/emails/configurations
 

@@ -41,6 +41,9 @@ class UpdateXsollaConfig(Operation):
     updated payment merchant config</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:PAYMENT:CONFIG [UPDATE]
+
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/xsollaconfig
 

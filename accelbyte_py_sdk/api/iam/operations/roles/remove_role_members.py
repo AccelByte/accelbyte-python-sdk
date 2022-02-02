@@ -40,6 +40,11 @@ class RemoveRoleMembers(Operation):
     <p>Role can only be assigned to other users by the role's manager.</p>
 
 
+    Required Permission(s):
+        - ROLE:ADMIN [UPDATE]
+
+        - ADMIN:ROLE [UPDATE]
+
     Properties:
         url: /iam/roles/{roleId}/members
 

@@ -38,6 +38,9 @@ class PublicCancelUserOrder(Operation):
     (UPDATE)</li><li><i>Returns</i>: cancelled order</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ORDER [UPDATE]
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/cancel
 

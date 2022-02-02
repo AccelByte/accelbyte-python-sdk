@@ -39,6 +39,9 @@ class DeleteGroupPublicV1(Operation):
     the access token</p> <p>Action Code: 73305</p>
 
 
+    Required Permission(s):
+        - GROUP [DELETE]
+
     Properties:
         url: /group/v1/public/namespaces/{namespace}/groups/{groupId}
 

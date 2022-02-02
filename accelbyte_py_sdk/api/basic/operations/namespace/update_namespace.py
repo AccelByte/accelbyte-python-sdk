@@ -41,6 +41,9 @@ class UpdateNamespace(Operation):
     11302</li><li><i>Returns</i>: updated namespace</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [UPDATE]
+
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/basic
 

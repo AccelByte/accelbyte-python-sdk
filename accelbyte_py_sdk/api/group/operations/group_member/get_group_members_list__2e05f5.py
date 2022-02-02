@@ -38,6 +38,9 @@ class GetGroupMembersListAdminV1(Operation):
     73410</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER [READ]
+
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/groups/{groupId}/members
 

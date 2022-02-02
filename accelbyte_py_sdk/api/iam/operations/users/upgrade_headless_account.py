@@ -36,6 +36,9 @@ class UpgradeHeadlessAccount(Operation):
     Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/upgradeHeadlessAccount
 

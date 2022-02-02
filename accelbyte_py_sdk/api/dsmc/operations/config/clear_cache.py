@@ -36,6 +36,12 @@ class ClearCache(Operation):
     scope: social This endpoint clears config cache in a namespace
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/cache
 

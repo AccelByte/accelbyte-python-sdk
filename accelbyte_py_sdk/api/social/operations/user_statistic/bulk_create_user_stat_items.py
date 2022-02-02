@@ -39,6 +39,9 @@ class BulkCreateUserStatItems(Operation):
     action=1 (CREATE)</li><li><i>Returns</i>: bulk created result</li>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [CREATE]
+
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems/bulk
 

@@ -35,6 +35,9 @@ class GetUserByLoginID(Operation):
     Required permission 'NAMESPACE:{namespace}:USER [READ]'
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER [READ]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/byLoginId
 

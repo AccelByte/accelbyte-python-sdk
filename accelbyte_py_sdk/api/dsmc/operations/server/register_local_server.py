@@ -44,6 +44,12 @@ class RegisterLocalServer(Operation):
     endpoint, the dedicated server is listed under READY local servers.```
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/local/register
 

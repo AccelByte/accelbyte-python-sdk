@@ -36,6 +36,12 @@ class AdminImportProfanityFiltersFromFile(Operation):
     [CREATE]</code> with scope <code>social</code> <br>import a file with filters
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters/bulk-file
 

@@ -44,6 +44,12 @@ class PutPlayerPublicRecordHandlerV1(Operation):
     { "foo_new": "bar_new" } </pre>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}/public
 

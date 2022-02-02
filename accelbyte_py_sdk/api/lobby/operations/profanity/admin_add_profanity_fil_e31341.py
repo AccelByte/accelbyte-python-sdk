@@ -38,6 +38,12 @@ class AdminAddProfanityFilterIntoList(Operation):
     the list
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters
 

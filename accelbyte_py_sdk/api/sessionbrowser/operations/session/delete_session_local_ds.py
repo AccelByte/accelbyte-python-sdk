@@ -38,6 +38,12 @@ class DeleteSessionLocalDS(Operation):
     non local DS entry
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [DELETE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}/localds
 

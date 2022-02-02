@@ -39,6 +39,9 @@ class FulfillUserOrder(Operation):
     (UPDATE)</li><li><i>Returns</i>: fulfilled order</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [UPDATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/fulfill
 

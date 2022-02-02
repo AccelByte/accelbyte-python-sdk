@@ -39,6 +39,9 @@ class CreateMemberRoleAdminV1(Operation):
     73202</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [CREATE]
+
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/roles
 

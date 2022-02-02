@@ -40,6 +40,9 @@ class UpdateGroupConfigurationGlobalRuleAdminV1(Operation):
     the request</p> <p>Action Code: 73106</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]
+
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}/rules/{allowedAction}
 

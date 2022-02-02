@@ -40,6 +40,9 @@ class TestWxPayConfig(Operation):
     test WxPay config</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:PAYMENT:CONFIG [UPDATE]
+
     Properties:
         url: /platform/admin/payment/config/merchant/wxpayconfig/test
 

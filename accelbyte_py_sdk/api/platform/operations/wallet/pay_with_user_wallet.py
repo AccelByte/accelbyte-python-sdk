@@ -41,6 +41,9 @@ class PayWithUserWallet(Operation):
     (UPDATE)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [UPDATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/payment
 

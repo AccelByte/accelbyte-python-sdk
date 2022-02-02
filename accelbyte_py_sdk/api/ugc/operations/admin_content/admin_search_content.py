@@ -36,6 +36,9 @@ class AdminSearchContent(Operation):
     Required permission <b>ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [CREATE]</b>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [CREATE]
+
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/search
 

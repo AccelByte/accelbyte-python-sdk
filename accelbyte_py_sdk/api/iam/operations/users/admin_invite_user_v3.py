@@ -43,6 +43,9 @@ class AdminInviteUserV3(Operation):
     assigned with "User" role by default.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:INVITE [CREATE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/invite
 

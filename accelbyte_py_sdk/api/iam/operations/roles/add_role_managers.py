@@ -40,6 +40,11 @@ class AddRoleManagers(Operation):
     role's manager.</p>
 
 
+    Required Permission(s):
+        - ROLE:ADMIN [UPDATE]
+
+        - ADMIN:ROLE [UPDATE]
+
     Properties:
         url: /iam/roles/{roleId}/managers
 

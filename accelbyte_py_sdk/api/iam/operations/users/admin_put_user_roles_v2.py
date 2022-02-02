@@ -33,6 +33,9 @@ class AdminPutUserRolesV2(Operation):
     Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]'
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/roles
 

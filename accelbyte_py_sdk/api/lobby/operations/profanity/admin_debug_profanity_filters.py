@@ -39,6 +39,12 @@ class AdminDebugProfanityFilters(Operation):
     would modify the phrase
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/filters/debug
 

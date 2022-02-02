@@ -42,6 +42,9 @@ class RevokeAUser(Operation):
     banned permissions. </p>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userID}:ADMIN [UPDATE]
+
     Properties:
         url: /iam/oauth/revoke/user
 

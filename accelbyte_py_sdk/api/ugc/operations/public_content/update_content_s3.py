@@ -41,6 +41,9 @@ class UpdateContentS3(Operation):
     specified, it will use fileExtension value.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3/{contentId}
 

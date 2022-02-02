@@ -39,6 +39,12 @@ class GetGameRecordHandlerV1(Operation):
     game record by its key.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/records/{key}
 

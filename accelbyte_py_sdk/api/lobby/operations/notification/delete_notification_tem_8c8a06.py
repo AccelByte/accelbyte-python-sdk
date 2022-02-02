@@ -37,6 +37,12 @@ class DeleteNotificationTemplateSlugV1Admin(Operation):
     notification template<br> Action Code: 50206
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}
 

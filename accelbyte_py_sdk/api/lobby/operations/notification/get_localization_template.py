@@ -37,6 +37,12 @@ class GetLocalizationTemplate(Operation):
     scope <code>social</code> <br>Get a template localization
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:TEMPLATE [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
 

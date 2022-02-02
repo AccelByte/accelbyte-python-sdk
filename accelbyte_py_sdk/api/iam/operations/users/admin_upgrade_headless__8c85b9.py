@@ -48,6 +48,9 @@ class AdminUpgradeHeadlessAccountV3(Operation):
     ISO3166-1 alpha-2 two letter, e.g. US</li> </ul> <br>action code : 10124</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/headless/code/verify
 

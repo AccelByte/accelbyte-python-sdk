@@ -35,6 +35,9 @@ class DeleteNamespaceSlotConfig(Operation):
     resource="ADMIN:NAMESPACE:{namespace}:SLOTCONFIG", action=8 (DELETE)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SLOTCONFIG [DELETE]
+
     Properties:
         url: /social/admin/namespaces/{namespace}/config
 

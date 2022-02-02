@@ -39,6 +39,9 @@ class GetUserEntitlementBySku(Operation):
     (READ)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/bySku
 

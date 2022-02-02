@@ -38,6 +38,12 @@ class AdminChatHistory(Operation):
     namespace.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CHAT [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/chat/namespaces/{namespace}/users/{userId}/friends/{friendId}
 

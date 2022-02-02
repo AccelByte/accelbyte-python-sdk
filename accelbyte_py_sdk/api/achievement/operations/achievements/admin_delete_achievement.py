@@ -36,6 +36,12 @@ class AdminDeleteAchievement(Operation):
     [DELETE]</code> and scope <code>social</code></p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [DELETE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements/{achievementCode}
 

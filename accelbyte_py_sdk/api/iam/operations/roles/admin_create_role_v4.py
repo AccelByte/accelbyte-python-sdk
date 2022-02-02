@@ -41,6 +41,9 @@ class AdminCreateRoleV4(Operation):
     false) action code: 10401
 
 
+    Required Permission(s):
+        - ADMIN:ROLE [CREATE]
+
     Properties:
         url: /iam/v4/admin/roles
 

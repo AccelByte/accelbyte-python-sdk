@@ -37,6 +37,9 @@ class GetTodayLeaderboardRankingAdminV1(Operation):
     <p>Get rankings in today leaderboard.</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
+
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/today
 

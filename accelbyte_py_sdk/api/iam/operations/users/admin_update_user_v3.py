@@ -51,6 +51,9 @@ class AdminUpdateUserV3(Operation):
     address. </li> <p>action code : 10103 </p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}
 

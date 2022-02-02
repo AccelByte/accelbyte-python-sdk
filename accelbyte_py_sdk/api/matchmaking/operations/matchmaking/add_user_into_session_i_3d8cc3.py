@@ -38,6 +38,12 @@ class AddUserIntoSessionInChannel(Operation):
     Required Scope: social Add user into the session in a channel.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Create]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/sessions/{matchID}
 

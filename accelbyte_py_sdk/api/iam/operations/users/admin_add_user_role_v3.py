@@ -37,6 +37,9 @@ class AdminAddUserRoleV3(Operation):
     10109</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId}
 

@@ -43,6 +43,9 @@ class AdminInviteUserV4(Operation):
     role by default.
 
 
+    Required Permission(s):
+        - ADMIN:USER:INVITE [CREATE]
+
     Properties:
         url: /iam/v4/admin/users/users/invite
 

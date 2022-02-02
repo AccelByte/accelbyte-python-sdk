@@ -39,6 +39,12 @@ class UpdateMatchmakingChannel(Operation):
     Action Code: 510111
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}
 

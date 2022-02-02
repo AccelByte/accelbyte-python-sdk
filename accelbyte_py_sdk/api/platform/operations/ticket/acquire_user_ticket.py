@@ -41,6 +41,9 @@ class AcquireUserTicket(Operation):
     (CREATE)</li><li><i>Returns</i>: acquire result</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:TICKET [CREATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/tickets/{boothName}
 

@@ -37,6 +37,9 @@ class QueryWallets(Operation):
     (READ)</li><li><i>Returns</i>: paginated wallets info</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:WALLET [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/wallets
 

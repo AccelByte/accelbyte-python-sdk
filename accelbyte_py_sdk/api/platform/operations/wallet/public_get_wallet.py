@@ -37,6 +37,9 @@ class PublicGetWallet(Operation):
     action=2 (READ)</li><li><i>Returns</i>: wallet info</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}
 

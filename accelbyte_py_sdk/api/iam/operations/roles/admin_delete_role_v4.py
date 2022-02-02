@@ -36,6 +36,9 @@ class AdminDeleteRoleV4(Operation):
     NamespaceRoles before deleting the role. action code: 10403
 
 
+    Required Permission(s):
+        - ADMIN:ROLE [DELETE]
+
     Properties:
         url: /iam/v4/admin/roles/{roleId}
 

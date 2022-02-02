@@ -36,6 +36,9 @@ class PublicDeletePaymentAccount(Operation):
     (DELETE)</li><li><i>Returns</i>:</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT [DELETE]
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/payment/accounts/{type}/{id}
 

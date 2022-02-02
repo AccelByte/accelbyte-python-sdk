@@ -39,6 +39,9 @@ class UpdateReward(Operation):
     (UPDATE)</li><li><i>Returns</i>: reward instance</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REWARD [UPDATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}
 

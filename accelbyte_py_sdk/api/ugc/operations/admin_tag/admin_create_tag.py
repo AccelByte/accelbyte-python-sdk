@@ -38,6 +38,9 @@ class AdminCreateTag(Operation):
     new tag
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [CREATE]
+
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/tags
 

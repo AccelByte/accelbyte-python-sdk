@@ -37,6 +37,12 @@ class AdminGetAllConfigV1(Operation):
     scope <code>social</code> <br>get lobby config of all namespaces.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LOBBY:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/config
 

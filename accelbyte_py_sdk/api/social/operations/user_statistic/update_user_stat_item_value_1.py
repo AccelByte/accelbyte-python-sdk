@@ -49,6 +49,9 @@ class UpdateUserStatItemValue1(Operation):
     *Returns*: updated user's statItem
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
     Properties:
         url: /social/v2/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value
 

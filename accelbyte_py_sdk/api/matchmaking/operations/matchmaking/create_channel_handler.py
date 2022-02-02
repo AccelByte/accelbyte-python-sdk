@@ -45,6 +45,12 @@ class CreateChannelHandler(Operation):
     criteria is "distance"
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /matchmaking/namespaces/{namespace}/channels
 

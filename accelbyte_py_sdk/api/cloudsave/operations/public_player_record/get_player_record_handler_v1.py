@@ -39,6 +39,12 @@ class GetPlayerRecordHandlerV1(Operation):
     <td><code>social</code></td> </tr> </table> <br/> Get player record by its key
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}
 

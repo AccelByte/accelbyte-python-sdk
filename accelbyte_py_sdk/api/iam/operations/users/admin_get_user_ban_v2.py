@@ -35,6 +35,9 @@ class AdminGetUserBanV2(Operation):
     Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]'.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]
+
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/bans
 

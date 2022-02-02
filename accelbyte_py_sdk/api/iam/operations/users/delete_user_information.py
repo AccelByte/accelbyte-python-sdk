@@ -34,6 +34,9 @@ class DeleteUserInformation(Operation):
     [DELETE]'.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/information
 

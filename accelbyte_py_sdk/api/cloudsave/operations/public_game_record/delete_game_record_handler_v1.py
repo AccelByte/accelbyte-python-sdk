@@ -38,6 +38,12 @@ class DeleteGameRecordHandlerV1(Operation):
     Delete records by its key
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/records/{key}
 

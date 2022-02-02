@@ -43,6 +43,9 @@ class AdminRetrieveUserThirdPartyPlatformTokenV3(Operation):
     <li>steam</li> </ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+
     Properties:
         url: /iam/v3/oauth/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/platformToken
 

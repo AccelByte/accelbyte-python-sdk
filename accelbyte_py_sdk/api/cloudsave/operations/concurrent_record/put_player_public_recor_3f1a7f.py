@@ -49,6 +49,12 @@ class PutPlayerPublicRecordConcurrentHandlerV1(Operation):
     request.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/concurrent/records/{key}/public
 

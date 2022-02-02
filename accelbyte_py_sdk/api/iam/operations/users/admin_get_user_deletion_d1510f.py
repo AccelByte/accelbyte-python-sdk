@@ -37,6 +37,9 @@ class AdminGetUserDeletionStatusV3(Operation):
     [READ]' <br>action code : 10145
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DELETIONSTATUS:USER:{userId} [READ]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/deletion/status
 

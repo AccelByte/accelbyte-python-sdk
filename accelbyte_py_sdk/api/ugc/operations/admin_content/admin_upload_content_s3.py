@@ -41,6 +41,9 @@ class AdminUploadContentS3(Operation):
     not specified, it will use fileExtension value.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
+
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents/s3
 

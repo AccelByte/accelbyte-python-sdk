@@ -38,6 +38,9 @@ class AdminGetListDeletionDataRequest(Operation):
     <code>account</code></p>
 
 
+    Required Scope(s):
+        - account
+
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/deletions
 

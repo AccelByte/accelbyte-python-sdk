@@ -41,6 +41,9 @@ class RevokeUserV3(Operation):
     code : 10707</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/v3/oauth/admin/namespaces/{namespace}/users/{userId}/revoke
 

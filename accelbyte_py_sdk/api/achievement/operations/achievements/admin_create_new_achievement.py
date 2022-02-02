@@ -49,6 +49,12 @@ class AdminCreateNewAchievement(Operation):
     achievement icon.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements
 

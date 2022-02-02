@@ -37,6 +37,9 @@ class SingleAdminGetGroup(Operation):
     [READ]</b>.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ]
+
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/groups/{groupId}
 

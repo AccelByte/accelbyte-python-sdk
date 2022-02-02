@@ -37,6 +37,9 @@ class GetLeaderboardConfigurationAdminV1(Operation):
     <p>This endpoint returns a leaderboard configuration</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
+
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}
 

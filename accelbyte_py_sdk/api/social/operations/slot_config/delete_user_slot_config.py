@@ -37,6 +37,9 @@ class DeleteUserSlotConfig(Operation):
     (DELETE)</li></li>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG [DELETE]
+
     Properties:
         url: /social/admin/namespaces/{namespace}/users/{userId}/config
 

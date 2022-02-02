@@ -38,6 +38,9 @@ class RevokeUserEntitlements(Operation):
     (UPDATE)</li><li><i>Returns</i>: revoke entitlements count</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/revoke/byIds
 

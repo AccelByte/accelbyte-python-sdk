@@ -38,6 +38,12 @@ class GetRegisteredEventsHandler(Operation):
     scope <code>analytics</code>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:EVENT [READ]
+
+    Required Scope(s):
+        - analytics
+
     Properties:
         url: /event/registry/eventIds
 

@@ -37,6 +37,9 @@ class ListCurrencies(Operation):
     (READ)</li><li><i>Returns</i>: Currency List</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CURRENCY [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/currencies
 

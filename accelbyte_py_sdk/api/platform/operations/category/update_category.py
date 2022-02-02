@@ -43,6 +43,9 @@ class UpdateCategory(Operation):
     (UPDATE)</li><li><i>Returns</i>: the updated category data</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CATEGORY [UPDATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}
 

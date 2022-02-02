@@ -35,6 +35,9 @@ class DeleteStadiaIAPConfig(Operation):
     (DELETE)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [DELETE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/stadia
 

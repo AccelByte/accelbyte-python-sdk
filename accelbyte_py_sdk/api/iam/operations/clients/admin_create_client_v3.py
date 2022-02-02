@@ -61,6 +61,9 @@ class AdminCreateClientV3(Operation):
     permissions</li> </ul> </p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLIENT [CREATE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients
 

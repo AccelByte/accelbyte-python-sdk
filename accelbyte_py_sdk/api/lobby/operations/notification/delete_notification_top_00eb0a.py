@@ -39,6 +39,12 @@ class DeleteNotificationTopicV1Admin(Operation):
     not be created <br/> Action Code: 50217
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName}
 

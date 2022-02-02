@@ -37,6 +37,12 @@ class PublishTemplate(Operation):
     draft can not be published.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:TEMPLATE [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}/publish
 

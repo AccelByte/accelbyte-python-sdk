@@ -39,6 +39,12 @@ class AdminSetPlayerSessionAttribute(Operation):
     attribute by user id in a namespace.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:ATTRIBUTES [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/attributes
 

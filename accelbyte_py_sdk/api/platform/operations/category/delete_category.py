@@ -39,6 +39,9 @@ class DeleteCategory(Operation):
     (DELETE)</li><li><i>Returns</i>: the deleted category data</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CATEGORY [DELETE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}
 

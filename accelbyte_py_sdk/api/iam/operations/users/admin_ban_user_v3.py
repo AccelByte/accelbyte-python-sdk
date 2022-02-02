@@ -39,6 +39,9 @@ class AdminBanUserV3(Operation):
     can be queried. </p> <p>action code : 10141 </p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans
 

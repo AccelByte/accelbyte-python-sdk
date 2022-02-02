@@ -41,6 +41,9 @@ class CreateStore(Operation):
     (CREATE)</li><li><i>Returns</i>: created store data</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [CREATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores
 

@@ -38,6 +38,12 @@ class AdminGetConfigV1(Operation):
     namespace.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/config/namespaces/{namespace}
 

@@ -124,6 +124,9 @@ class RefundPaymentOrderByDedicated(Operation):
     (UPDATE)</li><li><b>cross namespace allowed</b></li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT [UPDATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}/refund
 

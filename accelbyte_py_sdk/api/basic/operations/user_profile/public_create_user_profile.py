@@ -42,6 +42,9 @@ class PublicCreateUserProfile(Operation):
     Asia/Shanghai</li><li><i>Returns</i>: Created user profile</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [CREATE]
+
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles
 

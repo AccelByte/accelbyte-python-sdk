@@ -38,6 +38,9 @@ class DeleteClient(Operation):
     'CLIENT:ADMIN [DELETE]'</p>
 
 
+    Required Permission(s):
+        - CLIENT:ADMIN [DELETE]
+
     Properties:
         url: /iam/clients/{clientId}
 

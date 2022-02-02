@@ -38,6 +38,9 @@ class PublicGetUserSubscriptionBillingHistories(Operation):
     (READ)</li><li><i>Returns</i>: paginated subscription history</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/history
 

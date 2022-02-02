@@ -37,6 +37,12 @@ class ListGameRecordsHandlerV1(Operation):
     Required scope: social Retrieve list of records key by namespace
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/records
 

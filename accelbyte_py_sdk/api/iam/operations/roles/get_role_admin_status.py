@@ -36,6 +36,9 @@ class GetRoleAdminStatus(Operation):
     in the role.</p>
 
 
+    Required Permission(s):
+        - ROLE [READ]
+
     Properties:
         url: /iam/roles/{roleId}/admin
 

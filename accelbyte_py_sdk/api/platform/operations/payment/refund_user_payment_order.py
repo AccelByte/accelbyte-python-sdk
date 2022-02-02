@@ -41,6 +41,9 @@ class RefundUserPaymentOrder(Operation):
     action=4 (UPDATE)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT [UPDATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/payment/orders/{paymentOrderNo}/refund
 

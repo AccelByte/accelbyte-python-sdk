@@ -40,6 +40,12 @@ class AdminPutPlayerPublicRecordHandlerV1(Operation):
     else it will create new Record. Record saved will be a public record.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}/public
 

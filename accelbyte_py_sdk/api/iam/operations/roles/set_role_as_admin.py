@@ -38,6 +38,11 @@ class SetRoleAsAdmin(Operation):
     <p>Role can be set as admin role only when it has at least 1 manager.</p>
 
 
+    Required Permission(s):
+        - ROLE:ADMIN [UPDATE]
+
+        - ADMIN:ROLE [UPDATE]
+
     Properties:
         url: /iam/roles/{roleId}/admin
 

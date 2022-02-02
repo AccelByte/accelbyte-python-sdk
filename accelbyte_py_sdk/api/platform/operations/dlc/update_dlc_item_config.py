@@ -39,6 +39,9 @@ class UpdateDLCItemConfig(Operation):
     (UPDATE)</li><li><i>Returns</i>: updated DLC item config</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [UPDATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/dlc/config/item
 

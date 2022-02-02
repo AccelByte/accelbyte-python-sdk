@@ -40,6 +40,9 @@ class UpdateMemberRolePermissionAdminV1(Operation):
     Code: 73205</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]
+
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/roles/{memberRoleId}/permissions
 

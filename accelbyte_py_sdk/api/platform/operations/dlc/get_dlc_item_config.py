@@ -38,6 +38,9 @@ class GetDLCItemConfig(Operation):
     <b>(READ)</b></li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/dlc/config/item
 

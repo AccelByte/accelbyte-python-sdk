@@ -40,6 +40,9 @@ class PublicGetUserProfileInfo(Operation):
     profile</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
+
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles
 

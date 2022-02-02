@@ -41,6 +41,12 @@ class UpdatePlayTimeWeight(Operation):
     social matchmaking rule.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [UPDATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /matchmaking/social/playtime/namespaces/{namespace}/weight
 

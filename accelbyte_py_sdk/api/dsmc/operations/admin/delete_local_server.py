@@ -37,6 +37,12 @@ class DeleteLocalServer(Operation):
     DB. Note that DSM has no ability to shutdown local DS.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/servers/local/{name}
 

@@ -38,6 +38,9 @@ class QueryUserEntitlementsByAppType(Operation):
     action=2<li><i>Returns</i>: app entitlement pagination</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT []
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/byAppType
 

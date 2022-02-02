@@ -39,6 +39,9 @@ class AnonymizeUserProfile(Operation):
     action=8 <b>(DELETE)</b></li><li><i>Action code</i>: 11501</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
+
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/anonymization/profiles
 

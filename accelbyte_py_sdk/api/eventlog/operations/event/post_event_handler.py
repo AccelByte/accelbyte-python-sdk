@@ -38,6 +38,12 @@ class PostEventHandler(Operation):
     <code>analytics</code>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:EVENT [CREATE]
+
+    Required Scope(s):
+        - analytics
+
     Properties:
         url: /event/namespaces/{namespace}
 

@@ -37,6 +37,9 @@ class AdminUpdateUserDeletionStatusV3(Operation):
     [UPDATE]' <br>action code : 10144
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DELETIONSTATUS:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/deletion/status
 

@@ -37,6 +37,9 @@ class DeletePaymentProviderConfig(Operation):
     (DELETE)</li><li><i>Returns</i>: payment provider config</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:PAYMENT:CONFIG [DELETE]
+
     Properties:
         url: /platform/admin/payment/config/provider/{id}
 

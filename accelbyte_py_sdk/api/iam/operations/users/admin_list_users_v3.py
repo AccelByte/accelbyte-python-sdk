@@ -39,6 +39,9 @@ class AdminListUsersV3(Operation):
     linkedPlatforms will be empty array.'
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/platforms/justice
 

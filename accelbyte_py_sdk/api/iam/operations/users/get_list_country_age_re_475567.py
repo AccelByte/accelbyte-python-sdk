@@ -35,6 +35,9 @@ class GetListCountryAgeRestriction(Operation):
     Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]'
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]
+
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/countries/agerestrictions
 

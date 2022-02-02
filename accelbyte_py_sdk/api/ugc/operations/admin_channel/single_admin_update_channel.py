@@ -38,6 +38,9 @@ class SingleAdminUpdateChannel(Operation):
     [UPDATE]</b>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [UPDATE]
+
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}
 

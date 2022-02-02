@@ -48,6 +48,9 @@ class AdminUpdateUserV2(Operation):
     NewEmailAddress response field will be filled with newest email address. </li>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}
 

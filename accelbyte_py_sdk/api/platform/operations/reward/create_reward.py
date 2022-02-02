@@ -40,6 +40,9 @@ class CreateReward(Operation):
     (CREATE)</li><li><i>Returns</i>: created reward data</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REWARD [CREATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards
 

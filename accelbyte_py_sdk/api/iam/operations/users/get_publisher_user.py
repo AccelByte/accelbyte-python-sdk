@@ -38,6 +38,9 @@ class GetPublisherUser(Operation):
     <strong>namespace</strong> can be provided only with game namespace</p>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PUBLISHER:USER:{userId} [READ]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/publisher
 

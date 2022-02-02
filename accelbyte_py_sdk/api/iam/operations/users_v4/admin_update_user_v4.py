@@ -43,6 +43,9 @@ class AdminUpdateUserV4(Operation):
     email address</b> <p>action code : 10103 </p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}
 

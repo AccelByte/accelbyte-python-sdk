@@ -37,6 +37,12 @@ class AdminGetProfanityRule(Operation):
     [READ]</code> with scope <code>social</code> <br>get current profanity rule
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/rule
 

@@ -38,6 +38,9 @@ class ListStores(Operation):
     (READ)</li><li><i>Returns</i>: the list of stores</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores
 

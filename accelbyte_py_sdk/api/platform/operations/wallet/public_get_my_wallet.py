@@ -40,6 +40,9 @@ class PublicGetMyWallet(Operation):
     namespace</b> in order to get <b>game user wallet</b></li> </ul></li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:WALLET [READ]
+
     Properties:
         url: /platform/public/namespaces/{namespace}/users/me/wallets/{currencyCode}
 

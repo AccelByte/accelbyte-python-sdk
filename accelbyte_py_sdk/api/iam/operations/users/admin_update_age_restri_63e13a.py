@@ -38,6 +38,9 @@ class AdminUpdateAgeRestrictionConfigV3(Operation):
     action code: 10122
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/agerestrictions
 

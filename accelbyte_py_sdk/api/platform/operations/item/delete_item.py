@@ -38,6 +38,9 @@ class DeleteItem(Operation):
     resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=8 (DELETE)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [DELETE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/items/{itemId}
 

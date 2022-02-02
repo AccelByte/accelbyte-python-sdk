@@ -35,6 +35,9 @@ class SetDefaultPolicy1(Operation):
     (UPDATE)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
+
     Properties:
         url: /agreement/admin/policies/{policyId}/default
 

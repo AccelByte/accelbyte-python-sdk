@@ -39,6 +39,9 @@ class DeleteGroupConfigurationGlobalRuleAdminV1(Operation):
     allowed action is not existed in the global rule</p> <p>Action Code: 73105</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]
+
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}/rules/{allowedAction}
 

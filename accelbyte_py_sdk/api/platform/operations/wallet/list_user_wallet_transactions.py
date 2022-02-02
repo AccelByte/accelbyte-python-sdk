@@ -39,6 +39,9 @@ class ListUserWalletTransactions(Operation):
     (READ)</li><li><i>Returns</i>: wallet transaction info</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{walletId}/transactions
 

@@ -37,6 +37,9 @@ class PublicDeleteProfile(Operation):
     (DELETE)</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [DELETE]
+
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/profiles/{profileId}
 

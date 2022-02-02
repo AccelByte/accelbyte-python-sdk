@@ -41,6 +41,9 @@ class IndirectBulkAcceptVersionedPolicyV2(Operation):
     resource="NAMESPACE:{namespace}:LEGAL", action=1 (CREATE)</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:LEGAL [CREATE]
+
     Properties:
         url: /agreement/public/agreements/policies/namespaces/{namespace}/countries/{countryCode}/clients/{clientId}/users/{userId}
 

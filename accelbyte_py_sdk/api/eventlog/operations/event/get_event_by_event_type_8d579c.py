@@ -38,6 +38,12 @@ class GetEventByEventTypeAndEventIDHandler(Operation):
     <code>analytics</code>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:EVENT [UPDATE]
+
+    Required Scope(s):
+        - analytics
+
     Properties:
         url: /event/namespaces/{namespace}/eventType/{eventType}/eventId/{eventId}
 

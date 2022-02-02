@@ -39,6 +39,9 @@ class CheckWallet(Operation):
     (READ)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/check
 

@@ -37,6 +37,9 @@ class AdminGetRoleManagersV3(Operation):
     other users by the role's manager.</p><br/> action code: 10415
 
 
+    Required Permission(s):
+        - ADMIN:ROLE [READ]
+
     Properties:
         url: /iam/v3/admin/roles/{roleId}/managers
 

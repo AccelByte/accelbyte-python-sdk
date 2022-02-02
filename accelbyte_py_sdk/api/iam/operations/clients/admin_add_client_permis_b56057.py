@@ -37,6 +37,9 @@ class AdminAddClientPermissionsV3(Operation):
     <p>action code: 10303</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLIENT [UPDATE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions
 

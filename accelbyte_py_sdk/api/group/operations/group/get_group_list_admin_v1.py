@@ -38,6 +38,9 @@ class GetGroupListAdminV1(Operation):
     73301</p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP [READ]
+
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/groups
 

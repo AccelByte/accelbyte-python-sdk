@@ -38,6 +38,9 @@ class AdminUpdateGroup(Operation):
     [UPDATE] replace group name and contents with new ones.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [UPDATE]
+
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/groups/{groupId}
 

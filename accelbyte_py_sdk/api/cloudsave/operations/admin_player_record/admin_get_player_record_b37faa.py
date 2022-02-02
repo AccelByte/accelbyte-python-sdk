@@ -38,6 +38,12 @@ class AdminGetPlayerRecordHandlerV1(Operation):
     scope: social Get a record in user-level (arbitrary JSON data) by its key.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
 

@@ -39,6 +39,9 @@ class DeleteCountryGroup(Operation):
     <b>"ADMIN:NAMESPACE:{namespace}:MISC"</b>, action=8 <b>(DELETE)</b></li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MISC [DELETE]
+
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups/{countryGroupCode}
 

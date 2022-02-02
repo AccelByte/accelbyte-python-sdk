@@ -40,6 +40,9 @@ class ForgotPassword(Operation):
     address. </p>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]
+
     Properties:
         url: /iam/namespaces/{namespace}/users/forgotPassword
 

@@ -39,6 +39,9 @@ class GetUserSlotConfig(Operation):
     (READ)</li><li>Returns</i>: slot config info</li>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG [READ]
+
     Properties:
         url: /social/admin/namespaces/{namespace}/users/{userId}/config
 

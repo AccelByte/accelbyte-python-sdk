@@ -42,6 +42,12 @@ class SendSpecificUserTemplatedNotificationV1Admin(Operation):
     published before it can be use to send notifications<br> Action Code: 50212
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/users/{userId}/templates/notify
 

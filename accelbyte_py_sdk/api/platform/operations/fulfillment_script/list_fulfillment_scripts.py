@@ -36,6 +36,9 @@ class ListFulfillmentScripts(Operation):
     permission</i>: resource="ADMIN:FULFILLMENT", action=2 (READ)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:FULFILLMENT [READ]
+
     Properties:
         url: /platform/admin/fulfillment/scripts
 

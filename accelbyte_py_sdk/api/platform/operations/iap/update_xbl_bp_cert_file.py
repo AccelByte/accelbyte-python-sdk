@@ -38,6 +38,9 @@ class UpdateXblBPCertFile(Operation):
     (UPDATE)</li><li><i>Returns</i>: updated xbl iap config</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/xbl/cert
 

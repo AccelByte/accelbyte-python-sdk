@@ -47,6 +47,9 @@ class AddSSOLoginPlatformCredential(Operation):
     for service provider to build trust relationship </ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [CREATE]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/sso
 

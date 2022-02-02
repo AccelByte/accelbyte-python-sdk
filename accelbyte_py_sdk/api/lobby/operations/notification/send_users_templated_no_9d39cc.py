@@ -43,6 +43,12 @@ class SendUsersTemplatedNotificationV1Admin(Operation):
     Action Code: 50202
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/notify
 

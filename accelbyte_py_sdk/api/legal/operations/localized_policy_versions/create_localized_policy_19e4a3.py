@@ -39,6 +39,9 @@ class CreateLocalizedPolicyVersion(Operation):
     action=1 (CREATE)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [CREATE]
+
     Properties:
         url: /agreement/admin/localized-policy-versions/versions/{policyVersionId}
 

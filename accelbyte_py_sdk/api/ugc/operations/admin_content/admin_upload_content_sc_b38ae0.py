@@ -42,6 +42,9 @@ class AdminUploadContentScreenshot(Operation):
     bmp, png. n Maximum description length: 1024.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
+
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/screenshots
 

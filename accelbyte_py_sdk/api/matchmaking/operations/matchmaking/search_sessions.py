@@ -38,6 +38,12 @@ class SearchSessions(Operation):
     Required Scope: social Search sessions.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/sessions/history/search
 

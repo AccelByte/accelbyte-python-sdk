@@ -41,6 +41,9 @@ class GetCountryGroups(Operation):
     of country groups</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MISC [READ]
+
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups
 

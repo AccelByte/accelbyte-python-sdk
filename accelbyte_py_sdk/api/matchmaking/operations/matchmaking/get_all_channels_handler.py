@@ -37,6 +37,12 @@ class GetAllChannelsHandler(Operation):
     Scope: social Reads all available channels in a namespace
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /matchmaking/namespaces/{namespace}/channels
 

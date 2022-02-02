@@ -39,6 +39,9 @@ class UpdateNamespaceSlotConfig(Operation):
     (UPDATE)</li><li><i>Returns</i>: updated namespace slot config</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SLOTCONFIG [UPDATE]
+
     Properties:
         url: /social/admin/namespaces/{namespace}/config
 

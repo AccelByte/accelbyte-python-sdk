@@ -38,6 +38,9 @@ class QueryUserSubscriptions(Operation):
     (READ)</li><li><i>Returns</i>: paginated subscription</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions
 

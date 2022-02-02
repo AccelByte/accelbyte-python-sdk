@@ -39,6 +39,9 @@ class AdminDisableUserV2(Operation):
     your deletion request comes from admin</li> </ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]
+
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/disable
 

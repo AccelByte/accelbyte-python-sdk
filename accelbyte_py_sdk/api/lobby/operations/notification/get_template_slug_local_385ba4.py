@@ -38,6 +38,12 @@ class GetTemplateSlugLocalizationsTemplateV1Admin(Operation):
     namespace<br> Action Code: 50205
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}
 

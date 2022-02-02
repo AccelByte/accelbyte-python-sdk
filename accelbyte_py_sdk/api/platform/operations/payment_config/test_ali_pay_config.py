@@ -40,6 +40,9 @@ class TestAliPayConfig(Operation):
     test result</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:PAYMENT:CONFIG [UPDATE]
+
     Properties:
         url: /platform/admin/payment/config/merchant/alipayconfig/test
 

@@ -38,6 +38,9 @@ class GetPaymentCallbackConfig(Operation):
     action=2 (READ)</li><li><i>Returns</i>: Payment callback config</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG [READ]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/config/callback
 

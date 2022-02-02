@@ -38,6 +38,9 @@ class AdminUpdateScreenshots(Operation):
     [UPDATE]</b>.n Maximum description length: 1024.
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/screenshots
 

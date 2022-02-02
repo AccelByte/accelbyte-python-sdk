@@ -38,6 +38,9 @@ class AdminUpdateTag(Operation):
     tag
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [UPDATE]
+
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/tags/{tagId}
 

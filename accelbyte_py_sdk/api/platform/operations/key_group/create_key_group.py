@@ -40,6 +40,9 @@ class CreateKeyGroup(Operation):
     (CREATE)</li><li><i>Returns</i>: created key group</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [CREATE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/keygroups
 

@@ -41,6 +41,12 @@ class GetPlayerPublicRecordHandlerV1(Operation):
     retrieved using this endpoint.
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}/public
 

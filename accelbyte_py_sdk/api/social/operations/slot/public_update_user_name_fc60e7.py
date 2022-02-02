@@ -39,6 +39,9 @@ class PublicUpdateUserNamespaceSlotMetadata(Operation):
     action=4 (UPDATE)</li><li><i>Returns</i>: updated slot</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [UPDATE]
+
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}/metadata
 

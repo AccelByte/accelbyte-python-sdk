@@ -41,6 +41,9 @@ class CreateUser(Operation):
     two letter, e.g. US.</p>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER [CREATE]
+
     Properties:
         url: /iam/namespaces/{namespace}/users
 

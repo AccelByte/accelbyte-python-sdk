@@ -41,6 +41,9 @@ class AddCountryGroup(Operation):
     newly created country group</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MISC [CREATE]
+
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups
 

@@ -35,6 +35,9 @@ class InvalidateUserInfoCache(Operation):
     resource="ADMIN:NAMESPACE:*:LEGAL", action=8 (DELETE)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [DELETE]
+
     Properties:
         url: /agreement/admin/userInfo
 

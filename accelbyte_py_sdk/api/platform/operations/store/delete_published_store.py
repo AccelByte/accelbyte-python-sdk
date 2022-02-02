@@ -39,6 +39,9 @@ class DeletePublishedStore(Operation):
     resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8 (DELETE)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [DELETE]
+
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/published
 

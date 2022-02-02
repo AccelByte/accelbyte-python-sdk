@@ -37,6 +37,12 @@ class GetSessionByUserIDs(Operation):
     Required scope: social Query game sessions by comma separated user ids
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/bulk
 

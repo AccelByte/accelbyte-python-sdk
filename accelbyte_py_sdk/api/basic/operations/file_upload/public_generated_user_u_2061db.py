@@ -43,6 +43,9 @@ class PublicGeneratedUserUploadContentUrl(Operation):
     user</i>: 104857600 bytes</li><li><i>Returns</i>: URL data</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD [CREATE]
+
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/{userId}/files
 

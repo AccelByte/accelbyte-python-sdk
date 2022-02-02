@@ -38,6 +38,12 @@ class GetAllNotificationTopicsV1Admin(Operation):
     Action Code: 50213
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]
+
+    Required Scope(s):
+        - social
+
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics
 

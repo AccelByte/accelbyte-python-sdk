@@ -40,6 +40,9 @@ class IndirectBulkAcceptVersionedPolicy(Operation):
     (CREATE)</li></ul>
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:LEGAL [CREATE]
+
     Properties:
         url: /agreement/admin/namespaces/{namespace}/users/{userId}/agreements/policies
 

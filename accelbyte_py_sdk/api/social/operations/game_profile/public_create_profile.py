@@ -38,6 +38,9 @@ class PublicCreateProfile(Operation):
     action=1 (CREATE)</li><li><i>Returns</li>: created game profile</li></ul>
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [CREATE]
+
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/profiles
 
