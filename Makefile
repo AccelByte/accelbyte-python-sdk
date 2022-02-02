@@ -24,7 +24,7 @@ test_cli:
 					(cd /server && /tmp/server/bin/pip install -r requirements.txt) && \
 					python -m venv /tmp/client && \
 					(cd samples/cli && /tmp/client/bin/pip install -r requirements.txt) && \
-					(PYTHONPATH=/server:$$PYTHONPATH /tmp/server/bin/python -m justice_sdk_mock_server -s spec &) && \
+					(PYTHONPATH=/server:$$PYTHONPATH /tmp/server/bin/python -m justice_sdk_mock_server -s /data/spec &) && \
 					(for i in $$(seq 1 10); do python -c "import sys;import socket;sys.exit(socket.socket(socket.AF_INET,socket.SOCK_STREAM).connect_ex((\"localhost\",8080)))" && exit 0 || sleep 10; done; exit 1) && \
 					sed -i "s/\r//" tests/sh/* && \
 					(cd samples/cli && . /tmp/client/bin/activate && for FILE in /data/tests/sh/*.sh; do bash $$FILE || touch /data/test.err; done)'
