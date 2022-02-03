@@ -34,8 +34,9 @@ from ...models import RestErrorResponse
 class UpdateThirdPartyLoginPlatformDomainV3(Operation):
     """Set Third Party Platform Credential's domain (UpdateThirdPartyLoginPlatformDomainV3)
 
-    <p>This is the API to set 3rd Platform domain.</p> <p>It needs
-    ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [UPDATE] resource.</p>
+    This is the API to set 3rd Platform domain.
+
+    It needs ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [UPDATE] resource.
 
 
     Required Permission(s):

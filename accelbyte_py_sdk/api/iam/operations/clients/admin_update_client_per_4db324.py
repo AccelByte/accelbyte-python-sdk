@@ -33,8 +33,9 @@ from ...models import RestapiErrorResponse
 class AdminUpdateClientPermissionV3(Operation):
     """Update Client Permissions (AdminUpdateClientPermissionV3)
 
-    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT [UPDATE]'</p>
-    <p>action code: 10307</p>
+    Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT [UPDATE]'
+
+    action code: 10307
 
 
     Required Permission(s):

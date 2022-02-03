@@ -33,9 +33,12 @@ from ...models import RestErrorResponse
 class AdminGetUserByEmailAddressV3(Operation):
     """Get User By Email Address (AdminGetUserByEmailAddressV3)
 
-    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'</p> <p>This
-    endpoint search user who owns the given email address</p> <br>action code :
-    10132
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
+
+    This endpoint search user who owns the given email address
+
+
+    action code : 10132
 
 
     Required Permission(s):

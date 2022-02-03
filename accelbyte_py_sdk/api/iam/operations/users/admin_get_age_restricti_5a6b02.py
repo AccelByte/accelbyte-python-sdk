@@ -33,8 +33,8 @@ from ...models import RestErrorResponse
 class AdminGetAgeRestrictionStatusV3(Operation):
     """Get age restriction status (AdminGetAgeRestrictionStatusV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION
-    [READ]'<br>action code: 10138
+    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]'
+    action code: 10138
 
 
     Required Permission(s):

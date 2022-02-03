@@ -33,8 +33,9 @@ from ...models import RestErrorResponse
 class DeleteThirdPartyLoginPlatformDomainV3(Operation):
     """Unregister Third Party Platform Credential's domain (DeleteThirdPartyLoginPlatformDomainV3)
 
-    <p>This is the API to unregister 3rd Platform domain.</p> <p>It needs
-    ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [DELETE] resource.</p>
+    This is the API to unregister 3rd Platform domain.
+
+    It needs ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [DELETE] resource.
 
 
     Required Permission(s):

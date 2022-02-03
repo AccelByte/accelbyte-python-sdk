@@ -34,12 +34,20 @@ from ...models import RestErrorResponse
 class AdminUpdateMyUserV4(Operation):
     """Admin Update My User (AdminUpdateMyUserV4)
 
-    <p>Requires valid user access token </p> <br><p>This Endpoint support update
-    user based on given data. <b>Single request can update single field or multi
-    fields.</b></p> <p>Supported field {country, displayName, languageTag,
-    dateOfBirth, userName}</p> <p>Country use ISO3166-1 alpha-2 two letter, e.g.
-    US.</p> <p>Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.</p> <p>action
-    code : 10103 </p>
+    Requires valid user access token
+
+
+
+    This Endpoint support update user based on given data. Single request can
+    update single field or multi fields.
+
+    Supported field {country, displayName, languageTag, dateOfBirth, userName}
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+    Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
+
+    action code : 10103
 
 
     Properties:

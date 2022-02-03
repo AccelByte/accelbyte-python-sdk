@@ -33,69 +33,82 @@ from ...models import OauthmodelTokenResponse
 class TokenGrant(Operation):
     """OAuth2 access token generation endpoint (TokenGrant)
 
-    <p>This endpoint requires all requests to have <code>Authorization</code>
-    header set with <code>Basic</code> access authentication constructed from
-    client id and client secret.</p> <p>This endpoint supports different
-    <strong>grant types</strong>:</p><ol> <li>Grant Type ==
-    <code>client_credentials</code>:<br /> &nbsp;&nbsp;&nbsp; This endpoint will
-    check the client credentials provided through Authorization header.</li>
-    <li>Grant Type == <code>password</code>:<br /> &nbsp;&nbsp;&nbsp; The grant
-    type to use for authenticating a user, whether it's by email / username and
-    password combination or through platform.</li> <li>Grant Type ==
-    <code>refresh_token</code>:<br /> &nbsp;&nbsp;&nbsp; Used to get a new access
-    token for a valid refresh token.</li> <li>Grant Type ==
-    <code>authorization_code<code>:<br /> &nbsp;&nbsp;&nbsp; It generates the user
-    token by given the authorization code which generated in "/authorize" API
-    response. It should also pass in the redirect_uri, which should be the same as
-    generating the authorization code request.</li></ol> <p>For platform
-    authentication, use grant type <code>password</code>. The
-    <code>username</code> field would be in form of <code>platform:&lt;platform
-    type&gt;</code>, for example <code>platform:steam</code> for Steam. For the
-    <code>password</code> field, set it to the authentication/authorization ticket
-    or token obtainable through the respective platform SDK after authenticated
-    the user to the platform. Supported platforms:</p><ul>
-    <li><strong>steam</strong> - use <code>platform:steam</code> as the username
-    and use the authentication ticket obtained from Steam through the Steam SDK as
-    the password.</li> <li><strong>ps4</strong> - use <code>platform:ps4</code>
-    as the username and use the authorization code obtained from the PlayStation
-    Network through a player PS4 unit as the password.</li>
-    <li><strong>live</strong> - use <code>platform:live</code> as the username
-    and use token obtained from Xbox Secure Token Service (XSTS) as the
-    password.</li> <li><strong>oculus</strong> - use <code>platform:oculus</code>
-    as the username and use the <code>user_id:nonce</code> as password obtained
-    from Oculus through the Oculus SDK.</li></ul></p> <p>The access token and
-    refresh token are in form of JWT token. An access token JWT contains data
-    which structure is similar to the Response Class below, but without OAuth-
-    related data. To verify a token, use the public keys obtained from the
-    <code>/jwks</code> endpoint below.</p> <h2>Access Token Content</h2>
-    <p>Following is the access token’s content:</p> <ul> <li>
-    <p><strong>namespace</strong>. It is the namespace the token was generated
-    from.</p> </li> <li> <p><strong>display_name</strong>. The display name of the
-    sub. It is empty if the token is generated from the client credential</p>
-    </li> <li> <p><strong>roles</strong>. The sub’s roles. It is empty if the
-    token is generated from the client credential</p> </li> <li>
-    <p><strong>namespace_roles</strong>. The sub’s roles scoped to namespace.
-    Improvement from roles, which make the role scoped to specific namespace
-    instead of global to publisher namespace</p> </li> <li>
-    <p><strong>permissions</strong>. The sub or aud’ permissions</p> </li> <li>
-    <p><strong>bans</strong>. The sub’s list of bans. It is used by the IAM client
-    for validating the token.</p> </li> <li> <p><strong>jflgs</strong>. It stands
-    for Justice Flags. It is a special flag used for storing additional status
-    information regarding the sub. It is implemented as a bit mask. Following
-    explains what each bit represents:</p> <ul> <li><p>1: Email Address
-    Verified</p></li> <li><p>2: Phone Number Verified</p></li> <li><p>4:
-    Anonymous</p></li> </ul> </li> <li> <p><strong>aud</strong>. The aud is the
-    client ID.</p> </li> <li> <p><strong>iat</strong>. The time the token issues
-    at. It is in Epoch time format</p> </li> <li> <p><strong>exp</strong>. The
-    time the token expires. It is in Epoch time format</p> </li> <li>
-    <p><strong>sub</strong>. The UserID. The sub is omitted if the token is
-    generated from client credential</p> </li> </ul> <h2>Bans</h2> <p>The JWT
-    contains user's active bans with its expiry date. List of ban types can be
-    obtained from /bans.</p> <h2>Track Login History</h2> <p>This endpoint will
-    track login history to detect suspicious login activity, please provide
-    "device_id" (alphanumeric) in request header parameter otherwise we will set
-    to "unknown".</p> <p>Align with General Data Protection Regulation in Europe,
-    user login history will be kept within 28 days by default"</p>
+    This endpoint requires all requests to have `Authorization` header set with
+    `Basic` access authentication constructed from client id and client secret.
+
+    This endpoint supports different grant types :
+
+      1. Grant Type == `client_credentials`:
+        This endpoint will check the client credentials provided through Authorization header.
+      2. Grant Type == `password`:
+        The grant type to use for authenticating a user, whether it's by email / username and password combination or through platform.
+      3. Grant Type == `refresh_token`:
+        Used to get a new access token for a valid refresh token.
+      4. Grant Type == `authorization_code`:
+        It generates the user token by given the authorization code which generated in "/authorize" API response. It should also pass in the redirect_uri, which should be the same as generating the authorization code request.
+
+    For platform authentication, use grant type `password`. The `username` field
+    would be in form of `platform:<platform type>`, for example `platform:steam`
+    for Steam. For the `password` field, set it to the
+    authentication/authorization ticket or token obtainable through the respective
+    platform SDK after authenticated the user to the platform. Supported
+    platforms:
+
+      * steam - use `platform:steam` as the username and use the authentication ticket obtained from Steam through the Steam SDK as the password.
+      * ps4 - use `platform:ps4` as the username and use the authorization code obtained from the PlayStation Network through a player PS4 unit as the password.
+      * live - use `platform:live` as the username and use token obtained from Xbox Secure Token Service (XSTS) as the password.
+      * oculus - use `platform:oculus` as the username and use the `user_id:nonce` as password obtained from Oculus through the Oculus SDK.
+
+    The access token and refresh token are in form of JWT token. An access token
+    JWT contains data which structure is similar to the Response Class below, but
+    without OAuth-related data. To verify a token, use the public keys obtained
+    from the `/jwks` endpoint below.
+
+    ## Access Token Content
+
+    Following is the access token’s content:
+
+      * namespace. It is the namespace the token was generated from.
+
+      * display_name. The display name of the sub. It is empty if the token is generated from the client credential
+
+      * roles. The sub’s roles. It is empty if the token is generated from the client credential
+
+      * namespace_roles. The sub’s roles scoped to namespace. Improvement from roles, which make the role scoped to specific namespace instead of global to publisher namespace
+
+      * permissions. The sub or aud’ permissions
+
+      * bans. The sub’s list of bans. It is used by the IAM client for validating the token.
+
+      * jflgs. It stands for Justice Flags. It is a special flag used for storing additional status information regarding the sub. It is implemented as a bit mask. Following explains what each bit represents:
+
+        * 1: Email Address Verified
+
+        * 2: Phone Number Verified
+
+        * 4: Anonymous
+
+      * aud. The aud is the client ID.
+
+      * iat. The time the token issues at. It is in Epoch time format
+
+      * exp. The time the token expires. It is in Epoch time format
+
+      * sub. The UserID. The sub is omitted if the token is generated from client credential
+
+    ## Bans
+
+    The JWT contains user's active bans with its expiry date. List of ban types
+    can be obtained from /bans.
+
+    ## Track Login History
+
+    This endpoint will track login history to detect suspicious login activity,
+    please provide "device_id" (alphanumeric) in request header parameter
+    otherwise we will set to "unknown".
+
+    Align with General Data Protection Regulation in Europe, user login history
+    will be kept within 28 days by default"
 
 
     Properties:

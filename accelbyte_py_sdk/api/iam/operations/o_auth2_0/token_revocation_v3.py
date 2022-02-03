@@ -32,9 +32,13 @@ from ...models import OauthmodelErrorResponse
 class TokenRevocationV3(Operation):
     """OAuth2 token revocation API (TokenRevocationV3)
 
-    <p>This endpoint revokes a token.</p> <p>This endpoint requires authorized
-    requests header with Basic Authentication from client that establish the
-    token.</p><br>action code: 10706
+    This endpoint revokes a token.
+
+    This endpoint requires authorized requests header with Basic Authentication
+    from client that establish the token.
+
+
+    action code: 10706
 
 
     Properties:

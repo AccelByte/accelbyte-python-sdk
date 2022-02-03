@@ -33,7 +33,7 @@ from ...models import RestErrorResponse
 class PublicGetUserByUserIdV3(Operation):
     """Get User By User ID (PublicGetUserByUserIdV3)
 
-    <p>This endpoint retrieve user attributes. action code: 10129</p>
+    This endpoint retrieve user attributes. action code: 10129
 
 
     Properties:

@@ -33,10 +33,17 @@ from ...models import RestErrorResponse
 class AdminUpdateUserEmailAddressV4(Operation):
     """Update a User Email Address (AdminUpdateUserEmailAddressV4)
 
-    <p>Required permission <pre>'ADMIN:NAMESPACE:{namespace}:USER:{userId}
-    [UPDATE]'</pre></p> <br><p>This is the endpoint for an admin to update a user
-    email address. This endpoint need a valid user token from an admin to verify
-    its identity (email) before updating a user.</p>
+    Required permission
+
+
+
+        'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+
+
+    This is the endpoint for an admin to update a user email address. This
+    endpoint need a valid user token from an admin to verify its identity (email)
+    before updating a user.
 
 
     Required Permission(s):

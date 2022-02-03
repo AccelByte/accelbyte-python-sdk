@@ -33,7 +33,7 @@ from ...models import RestErrorResponse
 class ResetPasswordV3(Operation):
     """Reset User Password (ResetPasswordV3)
 
-    <p>action code: 10105</p>
+    action code: 10105
 
 
     Properties:

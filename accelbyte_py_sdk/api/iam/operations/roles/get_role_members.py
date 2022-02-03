@@ -32,8 +32,9 @@ from ...models import ModelRoleMembersResponse
 class GetRoleMembers(Operation):
     """Get Role Members (GetRoleMembers)
 
-    <p>Required permission 'ROLE [READ]'</p> <p>Admin roles has its members listed
-    in the role.</p>
+    Required permission 'ROLE [READ]'
+
+    Admin roles has its members listed in the role.
 
 
     Required Permission(s):

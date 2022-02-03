@@ -33,9 +33,12 @@ from ...models import RestErrorResponse
 class AdminGetUserBanV3(Operation):
     """Get user's bans (AdminGetUserBanV3)
 
-    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId}
-    [READ]'</p> <p>This endpoint retrieve the first page of the data if after and
-    before parameters is empty</p> <p>action code : 10126</p>
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]'
+
+    This endpoint retrieve the first page of the data if after and before
+    parameters is empty
+
+    action code : 10126
 
 
     Required Permission(s):

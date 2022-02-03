@@ -33,23 +33,37 @@ from ...models import RestapiErrorResponse
 class AdminPlatformUnlinkV3(Operation):
     """Unlink user's account from specific platform (AdminPlatformUnlinkV3)
 
-    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]'.
-    <h2>Supported platforms:</h2> <ul> <li><strong>steam</strong></li>
-    <li><strong>steamopenid</strong></li> <li><strong>facebook</strong></li>
-    <li><strong>google</strong></li> <li><strong>oculus</strong></li>
-    <li><strong>twitch</strong></li> <li><strong>android</strong></li>
-    <li><strong>ios</strong></li> <li><strong>apple</strong></li>
-    <li><strong>device</strong></li> <li><strong>discord</strong></li>
-    <li><strong>awscognito</strong></li> <li><strong>epicgames</strong></li>
-    <li><strong>nintendo</strong></li> <li><strong>stadia</strong></li> </ul>
-    <p>Unlink user's account from a specific platform. 'justice' platform might
-    have multiple accounts from different namespaces linked.
-    <br><i>platformNamespace</i> need to be specified when the platform ID is
-    'justice'. <br> <br>Unlink user's account from justice platform will enable
-    password token grant and password update. <br> <br>If you want to unlink
-    user's account in a game namespace, you have to specify
-    <i>platformNamespace</i> to that game namespace. <br> <br>action code : 10121
-    </p>
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]'.
+
+    ## Supported platforms:
+
+      * steam
+      * steamopenid
+      * facebook
+      * google
+      * oculus
+      * twitch
+      * android
+      * ios
+      * apple
+      * device
+      * discord
+      * awscognito
+      * epicgames
+      * nintendo
+      * stadia
+
+    Unlink user's account from a specific platform. 'justice' platform might have
+    multiple accounts from different namespaces linked.
+    platformNamespace need to be specified when the platform ID is 'justice'.
+
+    Unlink user's account from justice platform will enable password token grant
+    and password update.
+
+    If you want to unlink user's account in a game namespace, you have to specify
+    platformNamespace to that game namespace.
+
+    action code : 10121
 
 
     Required Permission(s):

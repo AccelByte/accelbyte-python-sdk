@@ -32,7 +32,9 @@ from ...models import RestErrorResponse
 class AdminRemoveRoleAdminV3(Operation):
     """Remove Role Admin Status (AdminRemoveRoleAdminV3)
 
-    <p>Required permission 'ADMIN:ROLE [UPDATE]'</p> code: 10413
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+    code: 10413
 
 
     Required Permission(s):

@@ -30,30 +30,43 @@ from .....core import HttpResponse
 class Authorization(Operation):
     """OAuth2 authorize API (Authorization)
 
-    The endpoint supports two response types:<br/> <p><strong>1. Response Type ==
-    "code":</strong></p> <p>The endpoint returns an authorization code that will
-    be used by the IAM client to exchange for an access token. It supports two
-    different headers, the basic and the bearer header. Each behaves
-    differently.</p> <ul> <li> <p><strong>The basic header</strong></p> <p>The
-    basic header’s value is the base64 of the client ID and client secret. It is
-    used by the developer whenever the developer authorizes a user on a same
-    namespace.</p> </li> <li> <p><strong>The bearer header</strong></p> <p>The
-    bearer header’s value is an access token. It is used by the developer whenever
-    the developer authorizes a user on a different namespace. The endpoint
-    validates user’s entitlement on the designated namespace for making sure the
-    user is authorized for a designated namespace.</p> </li> </ul> <p>Following
-    are the responses returned by the endpoint:</p> <ul> <li><p><strong>Authorize
-    success</strong>: redirects to the given URL with the following information:
-    ?code={authorization code}&state={state}</p></li> <li><p><strong>Authorize
-    failure</strong>: redirects to the given URL with the following
-    information:?error=access_denied&error_description=...</p></li> </ul>
-    <p><strong>2. Response Type == "token":</strong></p> <ul> <li>
-    <p><strong>Authorize success</strong>: redirects to the given URL with the
-    following information:</p>
-    <p>#access_token={accesstoken}&expires_in={expiration duration in
-    seconds}&token_type=Bearer</p> </li> <li> <p><strong>Authorize
-    failure</strong>: redirects to the given URL with the following
-    information:</p> <p>?error=access_denied&error_description=...</p> </li> </ul>
+    The endpoint supports two response types:
+
+    1. Response Type == "code":
+
+    The endpoint returns an authorization code that will be used by the IAM client
+    to exchange for an access token. It supports two different headers, the basic
+    and the bearer header. Each behaves differently.
+
+      * The basic header
+
+    The basic header’s value is the base64 of the client ID and client secret. It
+    is used by the developer whenever the developer authorizes a user on a same
+    namespace.
+
+      * The bearer header
+
+    The bearer header’s value is an access token. It is used by the developer
+    whenever the developer authorizes a user on a different namespace. The
+    endpoint validates user’s entitlement on the designated namespace for making
+    sure the user is authorized for a designated namespace.
+
+    Following are the responses returned by the endpoint:
+
+      * Authorize success : redirects to the given URL with the following information: ?code={authorization code}&state;={state}
+
+      * Authorize failure : redirects to the given URL with the following information:?error=access_denied&error;_description=...
+
+    2. Response Type == "token":
+
+      * Authorize success : redirects to the given URL with the following information:
+
+    #access_token={accesstoken}&expires;_in={expiration duration in
+    seconds}&token;_type=Bearer
+
+      * Authorize failure : redirects to the given URL with the following information:
+
+    ?error=access_denied&error;_description=...
 
 
     Properties:

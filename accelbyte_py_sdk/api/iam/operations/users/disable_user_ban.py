@@ -32,14 +32,17 @@ from ...models import ModelUserBanResponse
 class DisableUserBan(Operation):
     """Disable ban for a single user. (DisableUserBan)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId}
-    [UPDATE]'.<br><br><b>Notes for using IAM in publisher - game studio
-    scenarios</b><br><p>The endpoint allows:</p> <ul><li>The admin user in
-    publisher namespace disables user’s ban in publisher namespace.</li><li>The
-    admin user in game namespace disables user’s ban in game
-    namespace.</li><li>The admin user in publisher namespace disables user’s ban
-    in publisher namespace.</li></ul><p>Other scenarios are not supported and will
-    return 403: Forbidden.</p>
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]'.
+
+     Notes for using IAM in publisher - game studio scenarios
+
+    The endpoint allows:
+
+      * The admin user in publisher namespace disables user’s ban in publisher namespace.
+      * The admin user in game namespace disables user’s ban in game namespace.
+      * The admin user in publisher namespace disables user’s ban in publisher namespace.
+
+    Other scenarios are not supported and will return 403: Forbidden.
 
 
     Required Permission(s):

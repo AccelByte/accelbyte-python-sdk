@@ -33,8 +33,9 @@ from ...models import RestErrorResponse
 class PublicGetUserPlatformAccountsV3(Operation):
     """Get platform accounts linked to the user (PublicGetUserPlatformAccountsV3)
 
-    <p>This endpoint retrieves platform accounts linked to user. Required valid
-    user authorization. <br>action code: 10128 </p>
+    This endpoint retrieves platform accounts linked to user. Required valid user
+    authorization.
+    action code: 10128
 
 
     Properties:

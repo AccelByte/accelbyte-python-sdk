@@ -33,7 +33,8 @@ from ...models import RestErrorResponse
 class PublicUpdatePasswordV3(Operation):
     """Update User Password (PublicUpdatePasswordV3)
 
-    Required valid user authorization. <br> action code: 10107
+    Required valid user authorization.
+    action code: 10107
 
 
     Properties:

@@ -30,10 +30,11 @@ from .....core import HttpResponse
 class DeleteRole(Operation):
     """Delete Role (DeleteRole)
 
-    Required permission 'ROLE:ADMIN [DELETE]' or 'ADMIN:ROLE [DELETE]' <p>Required
-    Permission 'ROLE:ADMIN [DELETE]' is going to be <strong>DEPRECATED</strong>
-    for security purpose. It is going to be deprecated on <strong>31 JANUARY
-    2019</strong>, please use permission 'ADMIN:ROLE [DELETE]' instead.</p>
+    Required permission 'ROLE:ADMIN [DELETE]' or 'ADMIN:ROLE [DELETE]'
+
+    Required Permission 'ROLE:ADMIN [DELETE]' is going to be DEPRECATED for
+    security purpose. It is going to be deprecated on 31 JANUARY 2019 , please use
+    permission 'ADMIN:ROLE [DELETE]' instead.
 
 
     Required Permission(s):

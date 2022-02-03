@@ -32,9 +32,10 @@ from ...models import RestErrorResponse
 class AdminAddUserRoleV3(Operation):
     """Add User Role (AdminAddUserRoleV3)
 
-    <p>This endpoint adds role to user. Required permission
-    ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]</p> <p>action code:
-    10109</p>
+    This endpoint adds role to user. Required permission
+    ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+
+    action code: 10109
 
 
     Required Permission(s):

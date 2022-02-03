@@ -33,10 +33,13 @@ from ...models import RestErrorResponse
 class GetAdminUsersByRoleID(Operation):
     """Get Admin Users By RoleId (GetAdminUsersByRoleID)
 
-    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'</p> <p>This
-    endpoint search admin users which have the roleId</p> <p>Notes : this endpoint
-    only accept admin role. Admin Role is role which have admin status and
-    members. Use endpoint [GET] /roles/{roleId}/admin to check the role status</p>
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
+
+    This endpoint search admin users which have the roleId
+
+    Notes : this endpoint only accept admin role. Admin Role is role which have
+    admin status and members. Use endpoint [GET] /roles/{roleId}/admin to check
+    the role status
 
 
     Required Permission(s):

@@ -33,10 +33,14 @@ from ...models import RestErrorResponse
 class PublicSearchUserV3(Operation):
     """Search User (PublicSearchUserV3)
 
-    <p>Requires valid user access token</p> <p>This endpoint search all users on
-    the specified namespace that match the query on these fields: display name,
-    and username. The query length should greater than 1，otherwise will not query
-    the database. The default limit value is 100</p> <br>action code : 10132
+    Requires valid user access token
+
+    This endpoint search all users on the specified namespace that match the query
+    on these fields: display name, and username. The query length should greater
+    than 1，otherwise will not query the database. The default limit value is 100
+
+
+    action code : 10132
 
 
     Properties:

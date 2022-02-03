@@ -32,13 +32,18 @@ from ...models import OauthmodelErrorResponse
 class RevokeUserV3(Operation):
     """Revokes user's tokens' (RevokeUserV3)
 
-    <p>This endpoint revokes all access tokens and refresh tokens a user has prior
-    the revocation time.</p> <p>This endpoint requires authorized requests header
-    with valid access token.</p> <p>Required permission
-    'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'</p> <p>It is a convenient
-    feature for the developer (or admin) who wanted to revokes all user's access
-    tokens and refresh tokens generated before some period of time.</p> <p>action
-    code : 10707</p>
+    This endpoint revokes all access tokens and refresh tokens a user has prior
+    the revocation time.
+
+    This endpoint requires authorized requests header with valid access token.
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+    It is a convenient feature for the developer (or admin) who wanted to revokes
+    all user's access tokens and refresh tokens generated before some period of
+    time.
+
+    action code : 10707
 
 
     Required Permission(s):

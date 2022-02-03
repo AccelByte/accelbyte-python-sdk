@@ -34,12 +34,16 @@ from ...models import RestErrorResponse
 class PublicCreateUserV3(Operation):
     """Create User (PublicCreateUserV3)
 
-    <p>Available Authentication Types:</p> <ol> <li><strong>EMAILPASSWD</strong>:
-    an authentication type used for new user registration through email.</li>
-    </ol> <p>Country use ISO3166-1 alpha-2 two letter, e.g. US.</p> <p>Date of
-    Birth format : YYYY-MM-DD, e.g. 2019-04-29.</p> <p>This endpoint support
-    accepting agreements for the created user. Supply the accepted agreements in
-    acceptedPolicies attribute.</p>
+    Available Authentication Types:
+
+      1. EMAILPASSWD : an authentication type used for new user registration through email.
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+    Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
+
+    This endpoint support accepting agreements for the created user. Supply the
+    accepted agreements in acceptedPolicies attribute.
 
 
     Properties:

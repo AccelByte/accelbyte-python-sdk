@@ -33,11 +33,13 @@ class ForgotPassword(Operation):
     """Request Password Reset Code (ForgotPassword)
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]' or
-    valid basic auth header<p><strong>Special note for publisher-game
-    scenario:</strong> Game Client should provide game namespace path parameter
-    and Publisher Client should provide publisher namespace path parameter.
-    </p><p>The password reset code will be sent to the publisher account's email
-    address. </p>
+    valid basic auth header
+
+     Special note for publisher-game scenario: Game Client should provide game
+    namespace path parameter and Publisher Client should provide publisher
+    namespace path parameter.
+
+    The password reset code will be sent to the publisher account's email address.
 
 
     Required Permission(s):

@@ -34,7 +34,8 @@ class AdminGetUserDeletionStatusV3(Operation):
     """Get User Deletion Status (AdminGetUserDeletionStatusV3)
 
     Required permissions 'ADMIN:NAMESPACE:{namespace}:DELETIONSTATUS:USER:{userId}
-    [READ]' <br>action code : 10145
+    [READ]'
+    action code : 10145
 
 
     Required Permission(s):

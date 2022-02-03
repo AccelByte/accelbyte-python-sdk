@@ -30,8 +30,7 @@ from .....core import HttpResponse
 class Logout(Operation):
     """Logout (Logout)
 
-    <p>This endpoint is used to remove <b>access_token</b> cookie and
-    <b>refresh_token</b> cookie.</p>
+    This endpoint is used to remove access_token cookie and refresh_token cookie.
 
 
     Properties:

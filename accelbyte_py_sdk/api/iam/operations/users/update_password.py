@@ -34,10 +34,12 @@ from ...models import ModelUserPasswordUpdateRequest
 class UpdatePassword(Operation):
     """Update User Password (UpdatePassword)
 
-    <h2>The endpoint is going to be deprecated. Admin user please use this
-    instead: iam/v2/admin/namespaces/{namespace}/users/{userId}/password</h2> +
-    <p>Required permission 'NAMESPACE:{namespace}:PASSWORD:USER:{userId}
-    [UPDATE]'<p>
+    ## The endpoint is going to be deprecated. Admin user please use this instead:
+    iam/v2/admin/namespaces/{namespace}/users/{userId}/password
+
+    +
+
+    Required permission 'NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]'
 
 
     Required Permission(s):

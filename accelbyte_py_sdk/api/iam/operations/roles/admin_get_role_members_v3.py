@@ -33,8 +33,11 @@ from ...models import RestErrorResponse
 class AdminGetRoleMembersV3(Operation):
     """Get Role Members (AdminGetRoleMembersV3)
 
-    <p>Required permission 'ADMIN:ROLE [READ]'</p> <p>Admin roles has its members
-    listed in the role.</p> <p>action code: 10416</p>
+    Required permission 'ADMIN:ROLE [READ]'
+
+    Admin roles has its members listed in the role.
+
+    action code: 10416
 
 
     Required Permission(s):

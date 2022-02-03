@@ -32,10 +32,12 @@ from ...models import ModelInputValidationsResponse
 class AdminGetInputValidations(Operation):
     """Admin Get Input Validations (AdminGetInputValidations)
 
-    <p>Required permission 'ADMIN:CONFIGURATION'[READ]</p> <p>This endpoint is to
-    get list of input validation configuration.</p> <p><code>regex</code>
-    parameter will be returned if <code>isCustomRegex</code> is true. Otherwise,
-    it will be empty.</p>
+    Required permission 'ADMIN:CONFIGURATION'[READ]
+
+    This endpoint is to get list of input validation configuration.
+
+    `regex` parameter will be returned if `isCustomRegex` is true. Otherwise, it
+    will be empty.
 
 
     Required Permission(s):

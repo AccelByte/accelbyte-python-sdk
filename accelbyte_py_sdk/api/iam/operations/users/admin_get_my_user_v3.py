@@ -33,8 +33,9 @@ from ...models import RestErrorResponse
 class AdminGetMyUserV3(Operation):
     """Get My User (AdminGetMyUserV3)
 
-    <p>Require valid user authorization<br>Get my user data<br>action code : 10147
-    </p>
+    Require valid user authorization
+    Get my user data
+    action code : 10147
 
 
     Properties:

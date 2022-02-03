@@ -32,9 +32,12 @@ from ...models import ModelGetUserBanV3Response
 class PublicGetUserBanHistoryV3(Operation):
     """Get user's bans (PublicGetUserBanHistoryV3)
 
-    Required valid user authorization. <p>Notes:</p> <ul> <li>This endpoint
-    retrieve the first page of the data if after and before parameters is
-    empty</li> <li><strong>The pagination is not working yet</strong></li> </ul>
+    Required valid user authorization.
+
+    Notes:
+
+      * This endpoint retrieve the first page of the data if after and before parameters is empty
+      * The pagination is not working yet
 
 
     Properties:

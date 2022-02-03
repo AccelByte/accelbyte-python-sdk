@@ -32,7 +32,7 @@ from ...models import OauthmodelCountryLocationResponse
 class GetCountryLocationV3(Operation):
     """Get Country Location (GetCountryLocationV3)
 
-    <p>This endpoint get country location based on the request.</p>
+    This endpoint get country location based on the request.
 
 
     Properties:

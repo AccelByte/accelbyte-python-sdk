@@ -34,7 +34,8 @@ from ...models import RestapiErrorResponse
 class AdminUpdateRoleV3(Operation):
     """Update Role (AdminUpdateRoleV3)
 
-    Required permission 'ADMIN:ROLE [UPDATE]' <br>action code: 10402
+    Required permission 'ADMIN:ROLE [UPDATE]'
+    action code: 10402
 
 
     Required Permission(s):

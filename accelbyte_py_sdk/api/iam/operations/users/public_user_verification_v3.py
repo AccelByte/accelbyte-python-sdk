@@ -33,9 +33,14 @@ from ...models import RestErrorResponse
 class PublicUserVerificationV3(Operation):
     """Redeem verification code sent to user (PublicUserVerificationV3)
 
-    <p>Required valid user authorization</p> <p>Redeems a verification code sent
-    to a user to verify the user's contact address is correct</p> <p>Available
-    ContactType : <b>email</b></p> <p>action code: 10107</p>
+    Required valid user authorization
+
+    Redeems a verification code sent to a user to verify the user's contact
+    address is correct
+
+    Available ContactType : email
+
+    action code: 10107
 
 
     Properties:

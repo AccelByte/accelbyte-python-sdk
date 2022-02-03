@@ -31,8 +31,11 @@ class PublicValidateUserByUserIDAndPasswordV3(Operation):
     """Validate user password by user ID and password (PublicValidateUserByUserIDAndPasswordV3)
 
     This endpoint is used to validate the user password. Required valid user
-    authorization and valid user ID. <p>Notes:</p> <ul> <li>This endpoint validate
-    the user password by specifying the userId and password</li> </ul>
+    authorization and valid user ID.
+
+    Notes:
+
+      * This endpoint validate the user password by specifying the userId and password
 
 
     Properties:

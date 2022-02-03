@@ -33,7 +33,9 @@ from ...models import RestErrorResponse
 class AdminGetRolesV3(Operation):
     """Get Roles (AdminGetRolesV3)
 
-    Required permission 'ADMIN:ROLE [READ]'<br> <p>action code: 10414</p>
+    Required permission 'ADMIN:ROLE [READ]'
+
+    action code: 10414
 
 
     Required Permission(s):

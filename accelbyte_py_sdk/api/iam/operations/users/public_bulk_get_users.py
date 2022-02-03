@@ -34,10 +34,11 @@ from ...models import RestErrorResponse
 class PublicBulkGetUsers(Operation):
     """Bulk get users' basic info by user Id (PublicBulkGetUsers)
 
-    <p>Notes:</p> <ul> <li>This endpoint bulk get users' basic info by userId, max
-    allowed 20 at a time</li> <li>If namespace is game, will search by game user
-    Id, other wise will search by publisher namespace</li> <li><strong>Result will
-    include displayName(if it exists)</strong></li> </ul>
+    Notes:
+
+      * This endpoint bulk get users' basic info by userId, max allowed 20 at a time
+      * If namespace is game, will search by game user Id, other wise will search by publisher namespace
+      * Result will include displayName(if it exists)
 
 
     Properties:

@@ -33,9 +33,10 @@ from ...models import RestapiErrorResponse
 class AdminGetBansTypeV3(Operation):
     """Get list of ban types (AdminGetBansTypeV3)
 
-    Required permission 'ADMIN:BAN [READ]' <br>Ban type is the code available for
-    ban assignment. It is applicable globally for any namespace. <br>action code :
-    10201
+    Required permission 'ADMIN:BAN [READ]'
+    Ban type is the code available for ban assignment. It is applicable globally
+    for any namespace.
+    action code : 10201
 
 
     Required Permission(s):

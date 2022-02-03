@@ -33,8 +33,12 @@ from ...models import RestErrorResponse
 class AdminGetRoleManagersV3(Operation):
     """Get Role Managers (AdminGetRoleManagersV3)
 
-    <p>Required permission 'ADMIN:ROLE [READ]'</p> <p>Role can only be assigned to
-    other users by the role's manager.</p><br/> action code: 10415
+    Required permission 'ADMIN:ROLE [READ]'
+
+    Role can only be assigned to other users by the role's manager.
+
+
+    action code: 10415
 
 
     Required Permission(s):

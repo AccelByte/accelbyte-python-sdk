@@ -30,20 +30,26 @@ from .....core import HttpResponse
 class PlatformUnlink(Operation):
     """Unlink user's account with platform (PlatformUnlink)
 
-    <p>Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'.</p>
-    <h2>Supported platforms:</h2> <ul> <li><strong>steam</strong></li>
-    <li><strong>steamopenid</strong></li> <li><strong>facebook</strong></li>
-    <li><strong>google</strong></li> <li><strong>oculus</strong></li>
-    <li><strong>twitch</strong></li> <li><strong>android</strong></li>
-    <li><strong>ios</strong></li> <li><strong>device</strong></li>
-    <li><strong>justice</strong>: A user might have several 'justice’ platform on
-    different namespaces. That’s why the platform_namespace need to be specified
-    when the platform ID is ‘justice’. The platform_namespace is the designated
-    user’s namespace.</li> </ul> <p>Unlink user's account with platform. 'justice'
-    platform might have multiple accounts from different namespaces linked.
-    platform_namespace need to be specified when the platform ID is 'justice'.
-    <br>Unlinking justice platform will enable password token grant and password
-    update. </p>
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'.
+
+    ## Supported platforms:
+
+      * steam
+      * steamopenid
+      * facebook
+      * google
+      * oculus
+      * twitch
+      * android
+      * ios
+      * device
+      * justice : A user might have several 'justice’ platform on different namespaces. That’s why the platform_namespace need to be specified when the platform ID is ‘justice’. The platform_namespace is the designated user’s namespace.
+
+    Unlink user's account with platform. 'justice' platform might have multiple
+    accounts from different namespaces linked. platform_namespace need to be
+    specified when the platform ID is 'justice'.
+    Unlinking justice platform will enable password token grant and password
+    update.
 
 
     Required Permission(s):

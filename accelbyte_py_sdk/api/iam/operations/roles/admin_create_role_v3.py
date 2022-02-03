@@ -34,7 +34,8 @@ from ...models import RestErrorResponse
 class AdminCreateRoleV3(Operation):
     """Create Role (AdminCreateRoleV3)
 
-    Required permission 'ADMIN:ROLE [CREATE]' <br>action code: 10401
+    Required permission 'ADMIN:ROLE [CREATE]'
+    action code: 10401
 
 
     Required Permission(s):

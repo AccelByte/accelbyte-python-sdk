@@ -34,9 +34,11 @@ from ...models import RestErrorResponse
 class AdminBanUserV3(Operation):
     """Ban a single user (AdminBanUserV3)
 
-    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId}
-    [CREATE]'.</p> <p>Bans a user with specific type of ban. Ban types and reason
-    can be queried. </p> <p>action code : 10141 </p>
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]'.
+
+    Bans a user with specific type of ban. Ban types and reason can be queried.
+
+    action code : 10141
 
 
     Required Permission(s):

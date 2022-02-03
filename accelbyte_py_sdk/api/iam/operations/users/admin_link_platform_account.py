@@ -33,9 +33,10 @@ from ...models import RestErrorResponse
 class AdminLinkPlatformAccount(Operation):
     """Link a Platform User Account to User Account (AdminLinkPlatformAccount)
 
-    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId}
-    [UPDATE]'</p> Force linking platform account to user User Account. This
-    endpoint intended for admin to forcefully link account to user.
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+    Force linking platform account to user User Account. This endpoint intended
+    for admin to forcefully link account to user.
 
 
     Required Permission(s):

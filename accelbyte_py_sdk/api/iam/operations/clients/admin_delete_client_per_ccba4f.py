@@ -32,8 +32,8 @@ from ...models import RestapiErrorResponse
 class AdminDeleteClientPermissionV3(Operation):
     """Delete Client Permission (AdminDeleteClientPermissionV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT [UPDATE]'<br>action
-    code : 10304
+    Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT [UPDATE]'
+    action code : 10304
 
 
     Required Permission(s):

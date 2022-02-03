@@ -33,9 +33,15 @@ from ...models import RestErrorResponse
 class PublicUpdateUserEmailAddressV4(Operation):
     """Update My Email Address (PublicUpdateUserEmailAddressV4)
 
-    <p>The endpoint to update my email address. </p> <p>It requires a verification
-    code from <pre>/users/me/code/request</pre> with <b>UpdateEmailAddress</b>
-    context.</p>
+    The endpoint to update my email address.
+
+    It requires a verification code from
+
+
+
+        /users/me/code/request
+
+    with UpdateEmailAddress context.
 
 
     Properties:

@@ -34,8 +34,8 @@ from ...models import RestErrorResponse
 class AdminUpdateCountryAgeRestrictionV3(Operation):
     """Update country's age restriction (AdminUpdateCountryAgeRestrictionV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION
-    [UPDATE]'<br>action code: 10123
+    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]'
+    action code: 10123
 
 
     Required Permission(s):

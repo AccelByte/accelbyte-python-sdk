@@ -32,9 +32,10 @@ from ...models import RestErrorResponse
 class AdminDeleteUserRoleV3(Operation):
     """Delete User Role (AdminDeleteUserRoleV3)
 
-    <p>This endpoint removes role from user. Required permission
-    ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]</p> <p>action code:
-    10110</p>
+    This endpoint removes role from user. Required permission
+    ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]
+
+    action code: 10110
 
 
     Required Permission(s):

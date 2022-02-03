@@ -33,10 +33,14 @@ from ...models import ModelUserUpdateRequest
 class PublicUpdateUserV2(Operation):
     """Update User (PublicUpdateUserV2)
 
-    <br><p>This Endpoint support update user based on given data. <b>Single
-    request can update single field or multi fields.</b></p> This endpoint require
-    valid user access token to accessed. <p>Supported field {Country, DisplayName,
-    LanguageTag}</p>
+
+
+    This Endpoint support update user based on given data. Single request can
+    update single field or multi fields.
+
+    This endpoint require valid user access token to accessed.
+
+    Supported field {Country, DisplayName, LanguageTag}
 
 
     Properties:

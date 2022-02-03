@@ -33,9 +33,10 @@ from ...models import ClientmodelClientCreationResponse
 class CreateClientByNamespace(Operation):
     """Create Client (CreateClientByNamespace)
 
-    <h2>The endpoint is going to be deprecated. Please use this instead:
-    /v3/admin/namespaces/{namespace}/clients</h2>Required permission
-    'ADMIN:NAMESPACE:{namespace}:CLIENT [CREATE]'
+    ## The endpoint is going to be deprecated. Please use this instead:
+    /v3/admin/namespaces/{namespace}/clients
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT [CREATE]'
 
 
     Required Permission(s):

@@ -33,30 +33,45 @@ from ...models import RestErrorResponse
 class AdminAddRolePermissionsV3(Operation):
     """Add Role Permissions (AdminAddRolePermissionsV3)
 
-    <p>Required permission 'ADMIN:ROLE [UPDATE]'</p> <p>This endpoint will ATTACH
-    permission(s) into the role</p> <br>action code: 10404<br> <p>Schedule
-    contains cron string or date range (both are UTC, also in cron syntax) to
-    indicate when a permission and action are in effect.</p> <p>Both schedule
-    types accepts quartz compatible cron syntax e.g. * * * * * * *.</p> <p>In
-    ranged schedule, first element will be start date, and second one will be end
-    date</p> <p>If schedule is set, the scheduled action must be valid too, that
-    is between 1 to 15, inclusive</p> <p>Syntax reference</p> <p>Fields:</p> <ol>
-    <li>Seconds: 0-59 * / , -</li> <li>Minutes: 0-59 * / , -</li> <li>Hours: 0-23
-    * / , -</li> <li>Day of month: 1-31 * / , - L W</li> <li>Month: 1-12 JAN-DEC *
-    / , -</li> <li>Day of week: 0-6 SUN-SAT * / , - L #</li> <li>Year: 1970-2099 *
-    / , -</li> </ol> <p>Special characters:</p> <ol> <li>*: all values in the
-    fields, e.g. * in seconds fields indicates every second</li> <li>/: increments
-    of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the
-    hour and every 15 minutes thereafter</li> <li>,: separate items of a list,
-    e.g. MON,WED,FRI in day of week</li> <li>-: range, e.g. 2010-2018 indicates
-    every year between 2010 and 2018, inclusive</li> <li>L: last, e.g. When used
-    in the day-of-week field, it allows you to specify constructs such as "the
-    last Friday" (5L) of a given month. In the day-of-month field, it specifies
-    the last day of the month.</li> <li>W: business day, e.g. if you were to
-    specify 15W as the value for the day-of-month field, the meaning is: "the
-    nearest business day to the 15th of the month."</li> <li>#: must be followed
-    by a number between one and five. It allows you to specify constructs such as
-    "the second Friday" of a given month.</li> </ol>
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+    This endpoint will ATTACH permission(s) into the role
+
+
+    action code: 10404
+
+    Schedule contains cron string or date range (both are UTC, also in cron
+    syntax) to indicate when a permission and action are in effect.
+
+    Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
+
+    In ranged schedule, first element will be start date, and second one will be
+    end date
+
+    If schedule is set, the scheduled action must be valid too, that is between 1
+    to 15, inclusive
+
+    Syntax reference
+
+    Fields:
+
+      1. Seconds: 0-59 * / , -
+      2. Minutes: 0-59 * / , -
+      3. Hours: 0-23 * / , -
+      4. Day of month: 1-31 * / , - L W
+      5. Month: 1-12 JAN-DEC * / , -
+      6. Day of week: 0-6 SUN-SAT * / , - L #
+      7. Year: 1970-2099 * / , -
+
+    Special characters:
+
+      1. *: all values in the fields, e.g. * in seconds fields indicates every second
+      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
 
 
     Required Permission(s):

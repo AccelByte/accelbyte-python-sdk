@@ -34,9 +34,8 @@ class AdminGetUserByPlatformUserIDV3(Operation):
     """Admin Get User By Platform User ID (AdminGetUserByPlatformUserIDV3)
 
     Get User By Platform User ID This endpoint return user information by given
-    platform ID and platform user ID <strong>nintendo platform user ID</strong>:
-    NSA ID need to be appended with Environment ID using colon as separator. e.g
-    kmzwa8awaa:dd1
+    platform ID and platform user ID nintendo platform user ID : NSA ID need to be
+    appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
 
 
     Properties:

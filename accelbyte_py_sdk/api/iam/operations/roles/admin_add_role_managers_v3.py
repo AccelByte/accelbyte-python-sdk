@@ -33,8 +33,14 @@ from ...models import RestErrorResponse
 class AdminAddRoleManagersV3(Operation):
     """Add Role Managers (AdminAddRoleManagersV3)
 
-    <p>Role can only be assigned to other users by the role's manager.</p>
-    <br><p>Required permission 'ADMIN:ROLE [UPDATE]'</p><br>action code: 10408
+    Role can only be assigned to other users by the role's manager.
+
+
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+
+    action code: 10408
 
 
     Required Permission(s):

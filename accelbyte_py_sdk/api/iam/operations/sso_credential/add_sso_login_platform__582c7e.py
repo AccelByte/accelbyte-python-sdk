@@ -35,16 +35,21 @@ class AddSSOLoginPlatformCredential(Operation):
     """Add SSO Platform Credential (AddSSOLoginPlatformCredential)
 
     This is the API to Add SSO Platform Credential. It needs
-    ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [CREATE]
-    resource.<h2>Supported platforms:</h2><ul>
-    <li><strong>discourse</strong></li>the ssoUrl of the discourse is the
-    discourse forum url. example: https://forum.example.com <li><strong>azure with
-    SAML</strong></li><b>appId</b> is an application identifier in IdP, in azure
-    it's called EntityID <b>acsUrl</b> is an endpoint on the service provider
-    where the identity provider will redirect to with its authentication response.
-    example: /iam/v3/sso/saml/azuresaml/authenticate <b>federationMetadataUrl</b>
-    is an endpoint on the Identity Provider(IdP) to get IdP federation metadata
-    for service provider to build trust relationship </ul>
+    ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [CREATE] resource.
+
+    ## Supported platforms:
+
+      * discourse
+    the ssoUrl of the discourse is the discourse forum url. example:
+    https://forum.example.com
+
+      * azure with SAML
+     appId is an application identifier in IdP, in azure it's called EntityID
+    acsUrl is an endpoint on the service provider where the identity provider will
+    redirect to with its authentication response. example:
+    /iam/v3/sso/saml/azuresaml/authenticate federationMetadataUrl is an endpoint
+    on the Identity Provider(IdP) to get IdP federation metadata for service
+    provider to build trust relationship
 
 
     Required Permission(s):

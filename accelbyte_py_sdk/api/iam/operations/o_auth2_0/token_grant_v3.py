@@ -33,47 +33,66 @@ from ...models import OauthmodelTokenResponseV3
 class TokenGrantV3(Operation):
     """OAuth2 access token generation endpoint (TokenGrantV3)
 
-    <p>This endpoint supports grant type:</p><ol> <li>Grant Type ==
-    <code>authorization_code</code>:<br /> &nbsp;&nbsp;&nbsp; It generates the
-    user token by given the authorization code which generated in "/v3/oauth/auth"
-    API response. It should also pass in the redirect_uri, which should be the
-    same as generating the authorization code request. </li> <li>Grant Type ==
-    <code>refresh_token</code>:<br /> &nbsp;&nbsp;&nbsp; Used to get a new access
-    token for a valid refresh token. </li> <li>Grant Type ==
-    <code>client_credentials</code>:<br /> &nbsp;&nbsp;&nbsp; It generates a token
-    by checking the client credentials provided through Authorization header.
-    </li></ol> <h2>Access Token Content</h2> <p>Following is the access token’s
-    content:</p> <ul> <li> <p><strong>namespace</strong>. It is the namespace the
-    token was generated from.</p> </li> <li> <p><strong>display_name</strong>. The
-    display name of the sub. It is empty if the token is generated from the client
-    credential</p> </li> <li> <p><strong>roles</strong>. The sub’s roles. It is
-    empty if the token is generated from the client credential</p> </li> <li>
-    <p><strong>namespace_roles</strong>. The sub’s roles scoped to namespace.
-    Improvement from roles, which make the role scoped to specific namespace
-    instead of global to publisher namespace</p> </li> <li>
-    <p><strong>permissions</strong>. The sub or aud’ permissions</p> </li> <li>
-    <p><strong>bans</strong>. The sub’s list of bans. It is used by the IAM client
-    for validating the token.</p> </li> <li> <p><strong>jflgs</strong>. It stands
-    for Justice Flags. It is a special flag used for storing additional status
-    information regarding the sub. It is implemented as a bit mask. Following
-    explains what each bit represents:</p> <ul> <li><p>1: Email Address
-    Verified</p></li> <li><p>2: Phone Number Verified</p></li> <li><p>4:
-    Anonymous</p></li> <li><p>8: Suspicious Login</p></li> </ul> </li> <li>
-    <p><strong>aud</strong>. The aud is the targeted resource server.</p> </li>
-    <li> <p><strong>iat</strong>. The time the token issues at. It is in Epoch
-    time format</p> </li> <li> <p><strong>exp</strong>. The time the token
-    expires. It is in Epoch time format</p> </li> <li>
-    <p><strong>client_id</strong>. The UserID. The sub is omitted if the token is
-    generated from client credential</p> </li> <li> <p><strong>scope</strong>. The
-    scope of the access request, expressed as a list of space-delimited, case-
-    sensitive strings</p> </li> </ul> <h2>Bans</h2> <p>The JWT contains user's
-    active bans with its expiry date. List of ban types can be obtained from
-    /bans.</p> <h2>Track Login History</h2> <p>This endpoint will track login
-    history to detect suspicious login activity, please provide "device_id"
-    (alphanumeric) in request header parameter otherwise we will set to
-    "unknown".</p> <p>Align with General Data Protection Regulation in Europe,
-    user login history will be kept within 28 days by default"</p> <p>action code:
-    10703
+    This endpoint supports grant type:
+
+      1. Grant Type == `authorization_code`:
+        It generates the user token by given the authorization code which generated in "/v3/oauth/auth" API response. It should also pass in the redirect_uri, which should be the same as generating the authorization code request.
+      2. Grant Type == `refresh_token`:
+        Used to get a new access token for a valid refresh token.
+      3. Grant Type == `client_credentials`:
+        It generates a token by checking the client credentials provided through Authorization header.
+
+    ## Access Token Content
+
+    Following is the access token’s content:
+
+      * namespace. It is the namespace the token was generated from.
+
+      * display_name. The display name of the sub. It is empty if the token is generated from the client credential
+
+      * roles. The sub’s roles. It is empty if the token is generated from the client credential
+
+      * namespace_roles. The sub’s roles scoped to namespace. Improvement from roles, which make the role scoped to specific namespace instead of global to publisher namespace
+
+      * permissions. The sub or aud’ permissions
+
+      * bans. The sub’s list of bans. It is used by the IAM client for validating the token.
+
+      * jflgs. It stands for Justice Flags. It is a special flag used for storing additional status information regarding the sub. It is implemented as a bit mask. Following explains what each bit represents:
+
+        * 1: Email Address Verified
+
+        * 2: Phone Number Verified
+
+        * 4: Anonymous
+
+        * 8: Suspicious Login
+
+      * aud. The aud is the targeted resource server.
+
+      * iat. The time the token issues at. It is in Epoch time format
+
+      * exp. The time the token expires. It is in Epoch time format
+
+      * client_id. The UserID. The sub is omitted if the token is generated from client credential
+
+      * scope. The scope of the access request, expressed as a list of space-delimited, case-sensitive strings
+
+    ## Bans
+
+    The JWT contains user's active bans with its expiry date. List of ban types
+    can be obtained from /bans.
+
+    ## Track Login History
+
+    This endpoint will track login history to detect suspicious login activity,
+    please provide "device_id" (alphanumeric) in request header parameter
+    otherwise we will set to "unknown".
+
+    Align with General Data Protection Regulation in Europe, user login history
+    will be kept within 28 days by default"
+
+    action code: 10703
 
 
     Required Scope(s):

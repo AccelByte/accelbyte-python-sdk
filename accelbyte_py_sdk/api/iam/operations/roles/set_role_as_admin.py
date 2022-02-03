@@ -30,18 +30,21 @@ from .....core import HttpResponse
 class SetRoleAsAdmin(Operation):
     """Set Role as Admin Role (SetRoleAsAdmin)
 
-    <p>Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'</p>
-    <p>Required Permission 'ROLE:ADMIN [UPDATE]' is going to be
-    <strong>DEPRECATED</strong> for security purpose. It is going to be deprecated
-    on <strong>31 JANUARY 2019</strong>, please use permission 'ADMIN:ROLE
-    [UPDATE]' instead.</p> <p>Admin roles has its members listed in the role.</p>
-    <p>Role can be set as admin role only when it has at least 1 manager.</p>
+    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
+
+    Required Permission 'ROLE:ADMIN [UPDATE]' is going to be DEPRECATED for
+    security purpose. It is going to be deprecated on 31 JANUARY 2019 , please use
+    permission 'ADMIN:ROLE [UPDATE]' instead.
+
+    Admin roles has its members listed in the role.
+
+    Role can be set as admin role only when it has at least 1 manager.
 
 
     Required Permission(s):
-        - ROLE:ADMIN [UPDATE]
-
         - ADMIN:ROLE [UPDATE]
+
+        - ROLE:ADMIN [UPDATE]
 
     Properties:
         url: /iam/roles/{roleId}/admin

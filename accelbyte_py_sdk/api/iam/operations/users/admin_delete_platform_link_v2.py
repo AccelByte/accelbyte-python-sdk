@@ -30,17 +30,26 @@ from .....core import HttpResponse
 class AdminDeletePlatformLinkV2(Operation):
     """Delete the link of user's account with platform (AdminDeletePlatformLinkV2)
 
-    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId}
-    [DELETE]'.</p> <h2>Supported platforms:</h2> <ul>
-    <li><strong>steam</strong></li> <li><strong>steamopenid</strong></li>
-    <li><strong>facebook</strong></li> <li><strong>google</strong></li>
-    <li><strong>oculus</strong></li> <li><strong>twitch</strong></li>
-    <li><strong>android</strong></li> <li><strong>ios</strong></li>
-    <li><strong>device</strong></li> <li><strong>discord</strong></li> </ul>
-    <p>Delete link of user's account with platform. 'justice' platform might have
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]'.
+
+    ## Supported platforms:
+
+      * steam
+      * steamopenid
+      * facebook
+      * google
+      * oculus
+      * twitch
+      * android
+      * ios
+      * device
+      * discord
+
+    Delete link of user's account with platform. 'justice' platform might have
     multiple accounts from different namespaces linked. platform_namespace need to
-    be specified when the platform ID is 'justice'. <br>Delete link of justice
-    platform will enable password token grant and password update. </p>
+    be specified when the platform ID is 'justice'.
+    Delete link of justice platform will enable password token grant and password
+    update.
 
 
     Required Permission(s):

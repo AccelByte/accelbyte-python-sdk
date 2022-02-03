@@ -35,9 +35,10 @@ class AdminUpdateUserBanV3(Operation):
     """Enable or disable ban for a single user (AdminUpdateUserBanV3)
 
     Required permission ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]
-    <br>Set ban status for a single user for a specific ban. Retrieve user ban and
+    Set ban status for a single user for a specific ban. Retrieve user ban and
     choose the ban ID. Set the form parameter to true/false to enable or disable
-    the ban. <br>action code : 10142'
+    the ban.
+    action code : 10142'
 
 
     Required Permission(s):

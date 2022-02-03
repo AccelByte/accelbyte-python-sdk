@@ -32,9 +32,12 @@ from ...models import ModelInputValidationsPublicResponse
 class PublicGetInputValidations(Operation):
     """Public Get Input Validations (PublicGetInputValidations)
 
-    <p>No role required</p> <p>This endpoint is to get list of input validation
-    configuration.</p> <p><code>regex</code> parameter will be returned if
-    <code>isCustomRegex</code> is true. Otherwise, it will be empty.</p>
+    No role required
+
+    This endpoint is to get list of input validation configuration.
+
+    `regex` parameter will be returned if `isCustomRegex` is true. Otherwise, it
+    will be empty.
 
 
     Properties:

@@ -33,8 +33,12 @@ from ...models import RestErrorResponse
 class AdminRemoveRoleManagersV3(Operation):
     """Remove Role Managers (AdminRemoveRoleManagersV3)
 
-    <p>Required permission 'ADMIN:ROLE [UPDATE]'</p> <p>Role can only be assigned
-    to other users by the role's manager.</p> <br> action code: 10409
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+    Role can only be assigned to other users by the role's manager.
+
+
+    action code: 10409
 
 
     Required Permission(s):

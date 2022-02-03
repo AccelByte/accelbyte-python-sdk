@@ -33,9 +33,12 @@ from ...models import RestapiErrorResponse
 class AdminGetListBanReasonV3(Operation):
     """Get list of ban reasons (AdminGetListBanReasonV3)
 
-    <p>Required permission 'ADMIN:BAN [READ]'</p> Ban reasons is the code
-    available to justify ban assignment. It is applicable globally for any
-    namespace. <p>action code : 10202</p>
+    Required permission 'ADMIN:BAN [READ]'
+
+    Ban reasons is the code available to justify ban assignment. It is applicable
+    globally for any namespace.
+
+    action code : 10202
 
 
     Required Permission(s):

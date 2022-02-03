@@ -33,26 +33,43 @@ from ...models import RestErrorResponse
 class AdminUpdateInputValidations(Operation):
     """Admin Update Input Validations (AdminUpdateInputValidations)
 
-    <p>Required permission 'ADMIN:CONFIGURATION' [UPDATE]</p> <p>This endpoint is
-    used to update input validation configuration.</p> Supported
-    <code>field</code>:<br> <ul> <li>displayName</li> <li>password</li>
-    <li>username</li> </ul> <p>If <code>isCustomRegex</code> is set to true,
-    <code>regex</code> parameter will be used as input validation and the other
-    parameters will be ignored. Otherwise, <code>regex</code> parameter will be
-    ignored and regex for input validation will be generated based on the
-    combination of the other parameters. </p> <p>If <code>allowUnicode</code> is
-    set to true, unicode regex pattern will be use as the input validation and the
-    other parameters will be ignored.</p> Supported <code>letterCase</code>:<br>
-    <ul> <li>lowercase</li> <li>uppercase</li> <li>mixed: uppercase and
-    lowercase</li> <li>mixed: uppercase and/or lowercase</li> </ul> Supported
-    <code>specialCharacterLocation</code>:<br> <ul> <li>anywhere</li>
-    <li>middle</li> </ul> <p>If <code>specialCharacters</code> is empty,
-    <code>specialCharacterLocation</code> and
-    <code>maxRepeatingSpecialCharacter</code> will be ignored.</p>
-    <p><code>minCharType</code> is used to identify how many required criteria in
-    the regex. The supported criteria are number, letter, special character, and
-    letter case. If set to 0 or 1 means all criteria are optional. It can be set
-    as much as the number of criteria enabled.</p>
+    Required permission 'ADMIN:CONFIGURATION' [UPDATE]
+
+    This endpoint is used to update input validation configuration.
+
+    Supported `field`:
+
+      * displayName
+      * password
+      * username
+
+    If `isCustomRegex` is set to true, `regex` parameter will be used as input
+    validation and the other parameters will be ignored. Otherwise, `regex`
+    parameter will be ignored and regex for input validation will be generated
+    based on the combination of the other parameters.
+
+    If `allowUnicode` is set to true, unicode regex pattern will be use as the
+    input validation and the other parameters will be ignored.
+
+    Supported `letterCase`:
+
+      * lowercase
+      * uppercase
+      * mixed: uppercase and lowercase
+      * mixed: uppercase and/or lowercase
+
+    Supported `specialCharacterLocation`:
+
+      * anywhere
+      * middle
+
+    If `specialCharacters` is empty, `specialCharacterLocation` and
+    `maxRepeatingSpecialCharacter` will be ignored.
+
+    `minCharType` is used to identify how many required criteria in the regex. The
+    supported criteria are number, letter, special character, and letter case. If
+    set to 0 or 1 means all criteria are optional. It can be set as much as the
+    number of criteria enabled.
 
 
     Required Permission(s):

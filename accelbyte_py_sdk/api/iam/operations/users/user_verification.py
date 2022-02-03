@@ -32,10 +32,12 @@ from ...models import ModelUserVerificationRequest
 class UserVerification(Operation):
     """Redeem verification code sent to user (UserVerification)
 
-    <p>Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'</p>
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
     Redeems a verification code sent to a user to verify the user's contact
-    address is correct <p>Available ContactType : <b>email<b/> or <b>phone<b/>
-    </p>
+    address is correct
+
+    Available ContactType : email or phone
 
 
     Required Permission(s):

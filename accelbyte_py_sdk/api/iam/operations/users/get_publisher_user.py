@@ -33,9 +33,9 @@ from ...models import RestErrorResponse
 class GetPublisherUser(Operation):
     """Get Publisher User (GetPublisherUser)
 
-    <p>Required permissions 'NAMESPACE:{namespace}:PUBLISHER:USER:{userId}
-    [READ].</p> <p><strong>Restriction:</strong> Path Parameter
-    <strong>namespace</strong> can be provided only with game namespace</p>
+    Required permissions 'NAMESPACE:{namespace}:PUBLISHER:USER:{userId} [READ].
+
+    Restriction: Path Parameter namespace can be provided only with game namespace
 
 
     Required Permission(s):

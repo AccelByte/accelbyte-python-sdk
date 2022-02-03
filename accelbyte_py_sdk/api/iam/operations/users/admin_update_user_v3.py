@@ -34,21 +34,27 @@ from ...models import RestErrorResponse
 class AdminUpdateUserV3(Operation):
     """Update User (AdminUpdateUserV3)
 
-    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId}
-    [UPDATE]'</p> <br><p>This Endpoint support update user based on given data.
-    <b>Single request can update single field or multi fields.</b></p>
-    <p>Supported field {country, displayName, emailAddress, languageTag,
-    dateOfBirth}</p> <p>Country use ISO3166-1 alpha-2 two letter, e.g. US.</p>
-    <p>Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.</p> <br><b>Several case
-    of updating email address</b> <ul><li>User want to update email address of
-    which have been verified, NewEmailAddress response field will be filled with
-    new email address.</li> <li>User want to update email address of which have
-    not been verified, {LoginId, OldEmailAddress, EmailAddress} response field
-    will be filled with new email address. </li> <li>User want to update email
-    address of which have been verified and updated before, {LoginId,
-    OldEmailAddress, EmailAddress} response field will be filled with verified
-    email before. NewEmailAddress response field will be filled with newest email
-    address. </li> <p>action code : 10103 </p>
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+
+
+    This Endpoint support update user based on given data. Single request can
+    update single field or multi fields.
+
+    Supported field {country, displayName, emailAddress, languageTag, dateOfBirth}
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+    Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
+
+
+    Several case of updating email address
+
+      * User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
+      * User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
+      * User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
+
+    action code : 10103
 
 
     Required Permission(s):

@@ -32,9 +32,14 @@ from ...models import RestErrorResponse
 class AdminUpdateAdminRoleStatusV3(Operation):
     """Set Role as Admin Role (AdminUpdateAdminRoleStatusV3)
 
-    <p>Required permission 'ADMIN:ROLE [UPDATE]'</p> <p>Admin roles has its
-    members listed in the role.</p> <p>Role can be set as admin role only when it
-    has at least 1 manager.</p> <br>action code: 10412
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+    Admin roles has its members listed in the role.
+
+    Role can be set as admin role only when it has at least 1 manager.
+
+
+    action code: 10412
 
 
     Required Permission(s):

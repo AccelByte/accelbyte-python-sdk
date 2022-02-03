@@ -33,8 +33,8 @@ from ...models import RestErrorResponse
 class AdminGetClientsbyNamespacebyIDV3(Operation):
     """Get clients by namespace and client id (AdminGetClientsbyNamespacebyIDV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT [READ]'<br>action
-    code: 10309
+    Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT [READ]'
+    action code: 10309
 
 
     Required Permission(s):

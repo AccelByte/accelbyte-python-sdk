@@ -32,10 +32,10 @@ from .....core import deprecated
 class DeleteClient(Operation):
     """Delete Client (DeleteClient)
 
-    <h2>The endpoint is going to be deprecated at <strong>16 August,
-    2018</strong>. Please use this instead:
-    namespaces/{namespace}/clients/{clientId}</h2> <p>Required permission
-    'CLIENT:ADMIN [DELETE]'</p>
+    ## The endpoint is going to be deprecated at 16 August, 2018. Please use this
+    instead: namespaces/{namespace}/clients/{clientId}
+
+    Required permission 'CLIENT:ADMIN [DELETE]'
 
 
     Required Permission(s):

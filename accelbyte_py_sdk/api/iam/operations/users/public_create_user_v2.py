@@ -33,9 +33,11 @@ from ...models import ModelUserCreateResponse
 class PublicCreateUserV2(Operation):
     """Create User (PublicCreateUserV2)
 
-    <p>Available Authentication Types:</p> <ol> <li><strong>EMAILPASSWD</strong>:
-    an authentication type used for new user registration through email.</li>
-    </ol> <p>Country use ISO3166-1 alpha-2 two letter, e.g. US.</p>
+    Available Authentication Types:
+
+      1. EMAILPASSWD : an authentication type used for new user registration through email.
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
 
 
     Properties:

@@ -33,11 +33,13 @@ from ...models import RestErrorResponse
 class PublicForgotPasswordV3(Operation):
     """Request Password Reset Code (PublicForgotPasswordV3)
 
-    <p><strong>Special note for publisher-game scenario:</strong> Game Client
-    should provide game namespace path parameter and Publisher Client should
-    provide publisher namespace path parameter. </p> <p>The password reset code
-    will be sent to the publisher account's email address. </p> <p>action code :
-    10104 </p>
+    Special note for publisher-game scenario: Game Client should provide game
+    namespace path parameter and Publisher Client should provide publisher
+    namespace path parameter.
+
+    The password reset code will be sent to the publisher account's email address.
+
+    action code : 10104
 
 
     Properties:

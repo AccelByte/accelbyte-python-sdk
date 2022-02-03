@@ -33,11 +33,14 @@ from ...models import RestErrorResponse
 class GetRevocationListV3(Operation):
     """OAuth2 revocation list API (GetRevocationListV3)
 
-    <p>This endpoint will return a list of revoked users and revoked tokens. List
-    of revoked tokens in bloom filter format.</p> <p>This endpoint requires
-    authorized requests header with valid access token.</p> <p>The bloom filter
-    uses MurmurHash3 algorithm for hashing the values</p> <p>action code :
-    10708</p>
+    This endpoint will return a list of revoked users and revoked tokens. List of
+    revoked tokens in bloom filter format.
+
+    This endpoint requires authorized requests header with valid access token.
+
+    The bloom filter uses MurmurHash3 algorithm for hashing the values
+
+    action code : 10708
 
 
     Properties:

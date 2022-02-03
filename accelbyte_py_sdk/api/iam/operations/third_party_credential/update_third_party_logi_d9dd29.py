@@ -34,10 +34,12 @@ from ...models import RestErrorResponse
 class UpdateThirdPartyLoginPlatformCredentialV3(Operation):
     """Update Third Party Platform Credential (UpdateThirdPartyLoginPlatformCredentialV3)
 
-    <p>This is the API to Add 3rd Platform Credential.</p> <p>It needs
-    ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE]
-    resource.</p> <p>The secret for <strong>apple</strong> is base64 encoded
-    private key.</p>
+    This is the API to Add 3rd Platform Credential.
+
+    It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE]
+    resource.
+
+    The secret for apple is base64 encoded private key.
 
 
     Required Permission(s):

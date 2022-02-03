@@ -32,10 +32,12 @@ from ...models import ModelUserVerificationRequest
 class AdminVerifyAccountV3(Operation):
     """Verify account by validating verification code (AdminVerifyAccountV3)
 
-    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId}
-    [UPDATE]'</p> Redeems a verification code sent to a user to verify the user's
-    contact address is correct <p>Available ContactType : <b>email<b/> or
-    <b>phone<b/> </p>
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+    Redeems a verification code sent to a user to verify the user's contact
+    address is correct
+
+    Available ContactType : email or phone
 
 
     Required Permission(s):

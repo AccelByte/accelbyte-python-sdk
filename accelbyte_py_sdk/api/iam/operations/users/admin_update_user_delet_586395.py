@@ -34,7 +34,8 @@ class AdminUpdateUserDeletionStatusV3(Operation):
     """Update User Deletion Status (AdminUpdateUserDeletionStatusV3)
 
     Required permissions 'ADMIN:NAMESPACE:{namespace}:DELETIONSTATUS:USER:{userId}
-    [UPDATE]' <br>action code : 10144
+    [UPDATE]'
+    action code : 10144
 
 
     Required Permission(s):

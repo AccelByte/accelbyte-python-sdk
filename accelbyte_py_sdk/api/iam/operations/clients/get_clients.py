@@ -34,9 +34,10 @@ from ...models import ClientmodelClientResponse
 class GetClients(Operation):
     """Get All Clients (GetClients)
 
-    <h2>The endpoint is going to be deprecated at <strong>10 August,
-    2018</strong>. Please use this instead: namespaces/{namespace}/clients</h2>
-    <p>Required permission 'CLIENT [READ]'</p>
+    ## The endpoint is going to be deprecated at 10 August, 2018. Please use this
+    instead: namespaces/{namespace}/clients
+
+    Required permission 'CLIENT [READ]'
 
 
     Required Permission(s):

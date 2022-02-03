@@ -32,13 +32,14 @@ from ...models import ModelLoginHistoriesResponse
 class PublicGetUserLoginHistoriesV3(Operation):
     """Get User's Login Histories (PublicGetUserLoginHistoriesV3)
 
-    Required valid user authorization.<p>Notes for this endpoint: </p>
-    <ul><li>This endpoint retrieve the first page of the data if `after` and
-    `before` parameters is empty.</li><li>The maximum value of the limit is 100
-    and the minimum value of the limit is 1.</li><li>This endpoint retrieve the
-    next page of the data if we provide `after` parameters with valid Unix
-    timestamp.</li><li>This endpoint retrieve the previous page of the data if we
-    provide `before` parameter with valid data Unix timestamp.</li><ul>
+    Required valid user authorization.
+
+    Notes for this endpoint:
+
+      * This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
+      * The maximum value of the limit is 100 and the minimum value of the limit is 1.
+      * This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
+      * This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
 
 
     Properties:

@@ -32,9 +32,10 @@ from ...models import RestErrorResponse
 class AdminResetInputValidations(Operation):
     """Admin Reset Input Validations (AdminResetInputValidations)
 
-    <p>Required permission 'ADMIN:CONFIGURATION' [DELETE]</p><p>This endpoint is
-    used to reset input validation to the default input validation
-    configurations</p>
+    Required permission 'ADMIN:CONFIGURATION' [DELETE]
+
+    This endpoint is used to reset input validation to the default input
+    validation configurations
 
 
     Required Permission(s):

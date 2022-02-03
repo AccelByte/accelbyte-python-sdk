@@ -33,14 +33,23 @@ from ...models import OauthmodelTokenThirdPartyResponse
 class AdminRetrieveUserThirdPartyPlatformTokenV3(Operation):
     """Admin Retrieve User Third Party Platform Token (AdminRetrieveUserThirdPartyPlatformTokenV3)
 
-    Admin Retrieve User Third Party Platform Token<br/> <p> This endpoint used for
-    retrieving third party platform token for user that login using third party.
-    Passing platform group name or it's member will return same access token that
-    can be used across the platform members. </p> <p>Notes:</p> <ul> <li>Required
-    permission: ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]</li> </ul> <p>The
-    third party platform and platform group covered for this is:</p> <ul>
-    <li>(psn) ps4web</li> <li>(psn) ps4</li> <li>(psn) ps5</li> <li>xbox live</li>
-    <li>steam</li> </ul>
+    Admin Retrieve User Third Party Platform Token
+
+    This endpoint used for retrieving third party platform token for user that
+    login using third party. Passing platform group name or it's member will
+    return same access token that can be used across the platform members.
+
+    Notes:
+
+      * Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+
+    The third party platform and platform group covered for this is:
+
+      * (psn) ps4web
+      * (psn) ps4
+      * (psn) ps5
+      * xbox live
+      * steam
 
 
     Required Permission(s):

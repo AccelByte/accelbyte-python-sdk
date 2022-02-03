@@ -33,17 +33,22 @@ from ...models import RestErrorResponse
 class AdminGetUserPlatformAccountsV3(Operation):
     """Get platform accounts linked to the user (AdminGetUserPlatformAccountsV3)
 
-    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]'.</p>
-    <h2>Justice Platform Account</h2> <p>The permission
-    ’ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId}’ [READ] is required in
-    order to read the UserID who linked with the user.</p> <br>Gets platform
-    accounts that are already linked with user account <br>action code : 10128
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]'.
+
+    ## Justice Platform Account
+
+    The permission ’ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId}’ [READ] is
+    required in order to read the UserID who linked with the user.
+
+
+    Gets platform accounts that are already linked with user account
+    action code : 10128
 
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
-
         - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+
+        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms
