@@ -1,5 +1,39 @@
 # Changelog
 
+## v0.8.0
+- Updated APIs
+    - Add 'x-nullable' property to all date-time and date properties
+    - basic
+        - version bump only
+    - cloudsave
+        - version bump only
+    - dsmc
+        - version bump only
+    - gdpr
+        - version bump only
+    - iam
+        - version bump
+        - remove incorrectly parsed scopes
+        - replace confusable unicode characters
+        - update endpoints
+    - leaderboard
+        - version bump only
+    - legal
+        - version bump only
+    - lobby
+        - add, update endpoints
+    - platform
+        - version bump
+        - add, update endpoints
+    - seasonpass
+        - version bump
+        - add security definitions
+        - sort schema
+    - social
+        - version bump
+        - add endpoints
+    - ugc
+        - version bump only
 ## v0.7.0
 - Add additional object to class methods
 - Truncate file names that are too long
