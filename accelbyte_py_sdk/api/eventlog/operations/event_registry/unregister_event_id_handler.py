@@ -32,8 +32,8 @@ from .....core import deprecated
 class UnregisterEventIDHandler(Operation):
     """Unregister eventID from the Event Registry (UnregisterEventIDHandler)
 
-    Required permission <code>ADMIN:NAMESPACE:{namespace}:EVENT [DELETE]</code>and
-    scope <code>analytics</code>
+    Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [DELETE]`and scope
+    `analytics`
 
 
     Required Permission(s):

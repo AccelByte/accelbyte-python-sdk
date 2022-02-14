@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -36,11 +36,15 @@ class SyncInGameItem(Operation):
     """Sync an in game item (syncInGameItem)
 
     This API is used to sync an in game item in game namespace to publisher
-    namespace, at current BUNDLE can't be synced.<p>The synced item has an
-    additional field targetItemId besides targetNamespace, mostly this item should
-    not modified manually again. <p>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4
-    (UPDATE)</li><li><i>Returns</i>: item data</li></ul>
+    namespace, at current BUNDLE can't be synced.
+
+    The synced item has an additional field targetItemId besides targetNamespace,
+    mostly this item should not modified manually again.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+      *  Returns : item data
 
 
     Required Permission(s):

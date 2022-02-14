@@ -1,4 +1,4 @@
-# justice-ugc-service (1.12.0)
+# justice-ugc-service (1.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,8 +34,7 @@ from ...models import ResponseError
 class CreateChannel(Operation):
     """Create Channel (CreateChannel)
 
-    Required permission <b>NAMESPACE:{namespace}:USER:{userId}:CHANNEL
-    [CREATE]</b>
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
 
 
     Required Permission(s):

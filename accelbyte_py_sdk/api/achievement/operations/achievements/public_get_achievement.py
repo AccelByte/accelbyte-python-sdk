@@ -33,8 +33,8 @@ from ...models import ResponseError
 class PublicGetAchievement(Operation):
     """Get an achievement (PublicGetAchievement)
 
-    <p>Required permission <code>NAMESPACE:{namespace}:ACHIEVEMENT [READ]</code>
-    and scope <code>social</code></p>
+    Required permission `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope
+    `social`
 
 
     Required Permission(s):

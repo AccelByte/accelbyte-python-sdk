@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,11 +33,12 @@ from ...models import TestResult
 class TestXsollaConfigById(Operation):
     """Test xsolla configuration by id (testXsollaConfigById)
 
-    Test xsolla configuration in payment merchant config. Reference: <a
-    href="https://developers.xsolla.com/?#simple-checkout">Xsolla
-    Document</a>.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)</li><li><i>Returns</i>: test
-    xsolla config</li></ul>
+    Test xsolla configuration in payment merchant config. Reference: [Xsolla
+    Document](https://developers.xsolla.com/?#simple-checkout).
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
+      *  Returns : test xsolla config
 
 
     Required Permission(s):

@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -30,9 +30,10 @@ from .....core import HttpResponse
 class DeleteIAPItemConfig(Operation):
     """delete a iap item config (deleteIAPItemConfig)
 
-    delete a iap item config.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource=<b>"ADMIN:NAMESPACE:{namespace}:IAP:CONFIG"</b>,
-    action=8 <b>(DELETE)</b></li></ul>
+    delete a iap item config.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:IAP:CONFIG" , action=8 (DELETE)
 
 
     Required Permission(s):

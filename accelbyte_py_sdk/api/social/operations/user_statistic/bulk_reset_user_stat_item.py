@@ -1,4 +1,4 @@
-# justice-social-service (1.23.0)
+# justice-social-service (1.24.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 

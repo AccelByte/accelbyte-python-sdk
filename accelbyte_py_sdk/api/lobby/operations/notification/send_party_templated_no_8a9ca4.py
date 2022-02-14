@@ -33,13 +33,14 @@ from ...models import RestapiErrorResponseV1
 class SendPartyTemplatedNotificationV1Admin(Operation):
     """send templated notification to a party (sendPartyTemplatedNotificationV1Admin)
 
-    Required permission : <code>ADMIN:NAMESPACE:{namespace}:NOTIFICATION
-    [CREATE]</code> with scope <code>social</code> <br>Sends templated
-    notification to a party. <br>In the request body, specify which template slug
-    (template identifier) to use and the template language.
-    <br>NotificationTemplate context is the key-value pair defining the value of
-    each handlebar specified in the template content. Template need to be
-    published before it can be use to send notifications<br>
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with
+    scope `social`
+    Sends templated notification to a party.
+    In the request body, specify which template slug (template identifier) to use
+    and the template language.
+    NotificationTemplate context is the key-value pair defining the value of each
+    handlebar specified in the template content. Template need to be published
+    before it can be use to send notifications
 
 
     Required Permission(s):

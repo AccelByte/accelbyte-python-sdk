@@ -1,4 +1,4 @@
-# justice-seasonpass-service (1.7.0)
+# justice-seasonpass-service (1.8.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -40,6 +40,9 @@ class CheckSeasonPurchasable(Operation):
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
 
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/purchasable

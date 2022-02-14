@@ -1,4 +1,4 @@
-# justice-legal-service (1.16.0)
+# justice-legal-service (1.17.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,8 +34,10 @@ class BulkAcceptVersionedPolicy(Operation):
     """Bulk Accept Policy Versions (bulkAcceptVersionedPolicy)
 
     Accepts many legal policy versions all at once. Supply with localized version
-    policy id to accept an agreement.<br>Other detail info: <ul><li><i>Required
-    permission</i>: login user</li></ul>
+    policy id to accept an agreement.
+    Other detail info:
+
+      * Required permission : login user
 
 
     Properties:

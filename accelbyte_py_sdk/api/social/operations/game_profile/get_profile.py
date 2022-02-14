@@ -1,4 +1,4 @@
-# justice-social-service (1.23.0)
+# justice-social-service (1.24.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,10 +33,11 @@ from ...models import GameProfileInfo
 class GetProfile(Operation):
     """Returns profile for a user (getProfile)
 
-    Returns profile for a user.<br>Other detail info:<ul><li><i>Required
-    permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=2
-    (READ)</li><li><i>Returns</i>: game profile info</li></ul>
+    Returns profile for a user.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=2 (READ)
+      *  Returns : game profile info
 
 
     Required Permission(s):

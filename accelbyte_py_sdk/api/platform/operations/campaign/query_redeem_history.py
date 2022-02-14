@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,9 +32,11 @@ from ...models import RedeemHistoryPagingSlicedResult
 class QueryRedeemHistory(Operation):
     """Query redeem history (queryRedeemHistory)
 
-    Query redeem history.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2
-    (READ)</li><li><i>Returns</i>: slice of redeem history</li></ul>
+    Query redeem history.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)
+      *  Returns : slice of redeem history
 
 
     Required Permission(s):

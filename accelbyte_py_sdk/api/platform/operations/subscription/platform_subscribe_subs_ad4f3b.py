@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -36,9 +36,11 @@ class PlatformSubscribeSubscription(Operation):
     """Free subscribe by platform (platformSubscribeSubscription)
 
     Free subscribe by platform, can used by other justice service to redeem/reward
-    the subscription.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=1
-    (CREATE)</li><li><i>Returns</i>: result subscription</li></ul>
+    the subscription.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=1 (CREATE)
+      *  Returns : result subscription
 
 
     Required Permission(s):

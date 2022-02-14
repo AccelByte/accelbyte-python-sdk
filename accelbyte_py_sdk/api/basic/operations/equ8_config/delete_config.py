@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -30,9 +30,10 @@ from .....core import HttpResponse
 class DeleteConfig(Operation):
     """Delete equ8 config (deleteConfig)
 
-    Delete equ8 config.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource=<b>"ADMIN:NAMESPACE:{namespace}:EQU8CONFIG"</b>, action=8
-    <b>(DELETE)</b></li></ul>
+    Delete equ8 config.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:EQU8CONFIG" , action=8 (DELETE)
 
 
     Properties:

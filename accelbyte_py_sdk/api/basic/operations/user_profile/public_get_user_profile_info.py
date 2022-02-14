@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,10 +34,12 @@ from ...models import ValidationErrorEntity
 class PublicGetUserProfileInfo(Operation):
     """Get user profile (publicGetUserProfileInfo)
 
-    Get user profile.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource=<b>"NAMESPACE:{namespace}:USER:{userId}:PROFILE"</b>, action=2
-    <b>(READ)</b></li><li><i>Action code</i>: 11403</li><li><i>Returns</i>: user
-    profile</li></ul>
+    Get user profile.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)
+      *  Action code : 11403
+      *  Returns : user profile
 
 
     Required Permission(s):

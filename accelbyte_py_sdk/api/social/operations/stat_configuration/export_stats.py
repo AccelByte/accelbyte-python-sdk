@@ -1,4 +1,4 @@
-# justice-social-service (1.23.0)
+# justice-social-service (1.24.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -31,9 +31,11 @@ class ExportStats(Operation):
     """Export all stat configurations (exportStats)
 
     Export all stat configurations for a given namespace into file At current,
-    only JSON file is supported.<p>Other detail info:<ul><li><i>*Required
-    permission*: resource="ADMIN:NAMESPACE:{namespace}:STAT", action=2
-    (READ)</li></ul>
+    only JSON file is supported.
+
+    Other detail info:
+
+      *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STAT", action=2 (READ)
 
 
     Required Permission(s):

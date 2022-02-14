@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,10 +33,13 @@ from ...models import MockIAPReceipt
 class MockFulfillIAPItem(Operation):
     """Mock fulfill iap item. (mockFulfillIAPItem)
 
-    <b>[TEST FACILITY ONLY] Forbidden in live environment. </b> Mock fulfill iap
-    item without validate receipt.<p>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP",
-    action=4 (UPDATE)</li><li><i>Returns</i>: </li></ul>
+    [TEST FACILITY ONLY] Forbidden in live environment. Mock fulfill iap item
+    without validate receipt.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
+      *  Returns :
 
 
     Required Permission(s):

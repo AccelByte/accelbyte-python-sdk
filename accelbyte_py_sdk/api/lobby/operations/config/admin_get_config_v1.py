@@ -33,9 +33,9 @@ from ...models import RestapiErrorResponseBody
 class AdminGetConfigV1(Operation):
     """admin get namespace config (adminGetConfigV1)
 
-    Required permission : <code>ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG
-    [READ]</code> with scope <code>social</code> <br>get lobby config of a
-    namespace.
+    Required permission : `ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]` with
+    scope `social`
+    get lobby config of a namespace.
 
 
     Required Permission(s):

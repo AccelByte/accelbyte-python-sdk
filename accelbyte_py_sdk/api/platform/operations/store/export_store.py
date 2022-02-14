@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,9 +32,11 @@ from ...models import ErrorEntity
 class ExportStore(Operation):
     """Export a store (exportStore)
 
-    This API is used to export a store.<p>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2
-    (READ)</li></ul>
+    This API is used to export a store.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
 
 
     Required Permission(s):

@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,123 +35,167 @@ from ...models import ValidationErrorEntity
 class CreatePaymentOrderByDedicated(Operation):
     """Create payment order by dedicated server (createPaymentOrderByDedicated)
 
-    <p>This API is used to create payment order from non justice service. e.g.
-    from dedicated server, the result contains the payment station
-    url.</p><p><strong>Path
-    Parameter:</strong></p><pre><table><tr><td>Parameter</td><td>Type</td><td>Required</td><td>Description</td></tr><tr><td>namespace</td><td>String</td><td>Yes</td><td>Namespace
-    that payment order resides in, should be publisher namespace if it's a Steam
-    like platform that share <br>payment config cross namespaces, otherwise it's
-    the game namespace</td></tr></table><p><strong>Request Body
-    Parameters:</strong></p><pre><table><tr><td>Parameter</td><td>Type</td><td>Required</td><td>Description</td></tr><tr><td>extOrderNo</td><td>String</td><td>Yes</td><td>External
-    order number, it should be unique in invoker order
-    system</td></tr><tr><td>sku</td><td>String</td><td>No</td><td>Item
-    identity</td></tr><tr><td>targetNamespace</td><td>String</td><td>Yes</td><td>The
-    game
-    namespace</td></tr><tr><td>targetUserId</td><td>String</td><td>Yes</td><td>User
-    id for the order owner in game
-    namespace</td></tr><tr><td>extUserId</td><td>String</td><td>No</td><td>External
-    user id, can be user character id
-    </td></tr><tr><td>price</td><td>int</td><td>Yes</td><td>price which should be
-    greater than 0</td></tr><tr><td>title</td><td>String</td><td>Yes</td><td>Item
-    title</td></tr><tr><td>description</td><td>String</td><td>Yes</td><td>Item
-    description</td></tr><tr><td>currencyCode</td><td>String</td><td>No</td><td>Currency
-    code, default is
-    USD</td></tr><tr><td>currencyNamespace</td><td>String</td><td>No</td><td>Currency
-    namespace, default is publisher
-    namespace</td></tr><tr><td>region</td><td>String</td><td>No</td><td>Country of
-    the user, will get from user info if not
-    present</td></tr><tr><td>language</td><td>String</td><td>No</td><td>Language
-    of the user</td></tr><tr><td>sandbox</td><td>Boolean</td><td>No</td><td>set to
-    true will create sandbox order that not real paid for xsolla/alipay and will
-    not validate <br>price for
-    wxpay.</td></tr><tr><td>returnUrl</td><td>String</td><td>No</td><td>customized
-    return url for redirect once payment finished, leave unset to use
-    configuration in
-    <br>namespace</td></tr><tr><td>notifyUrl</td><td>String</td><td>No</td><td>customized
-    notify url for payment web hook, leave unset to use configuration in
-    namespace</td></tr><tr><td>customParameters</td><td>String</td><td>No</td><td>Custom
-    parameters</td></tr></table></pre><p><strong>Request Body
-    Example:</strong></p><pre><code style='overflow: auto'>{ "extOrderNo":
-    "123456789", "sku": "sku", "targetNamespace": "game1", "targetUserId":
-    "94451623768940d58416ca33ca767ec3", "extUserId": "678", "title":
-    "Frostmourne", "description": "Here was power. Here was despair", "price":
-    100, "region": "CN", "language": "zh-CN", "currencyCode": "USD",
-    "currencyNamespace": "accelbyte" }</pre></code><h4>Payment
-    Notification:</h4><p>After user complete the payment, it will send
-    notification to configured web hook, http status code should return 200 or 204
-    once you resolve notification successfully, otherwise payment system will
-    retry notification in interval</p><p><strong>Payment notification
-    parameter:</strong></p><pre><table><tr><td>Parameter</td><td>Type</td><td>Required</td><td>Description</td></tr><tr><td>payload</td><td>String</td><td>Yes</td><td>Payment
-    notification payload in json string
-    </td></tr><tr><td>sign</td><td>String</td><td>Yes</td><td>sha1 hex signature
-    for payload and private key</td></tr></table></pre><p><strong>Payment
-    notification parameter Example:</strong></p><pre><code style='overflow:
-    auto'>{ "payload": "{ "type": "payment", "nonceStr":
-    "34c1dcf3eb58455eb161465bbfc0b590", "paymentOrderNo": "18081239088",
-    "namespace": "accelbyte", "targetNamespace": "game1",
-    "targetUserId": "94451623768940d58416ca33ca767ec3", "extOrderNo":
-    "123456789", "sku": "sku", "extUserId": "678", "price": 100,
-    "paymentProvider": "XSOLLA", "vat": 0, "salesTax": 0,
-    "paymentProviderFee": 0, "paymentMethodFee": 0, "currency": {
-    "currencyCode": "USD", "currencySymbol": "$", "currencyType":
-    "REAL", "namespace": "accelbyte", "decimals": 2 }, "status":
-    "CHARGED", "createdTime": "2018-07-28T00:39:16.274Z", "chargedTime":
-    "2018-07-28T00:39:16.274Z" }",
-    "sign":"e31fb92516cc9faaf50ad70343e1293acec6f3d5"
-    }</pre></code><p><strong>Payment notification payload parameter
-    list:</strong></p><pre><table><tr><td>Parameter</td><td>Type</td><td>Required</td><td>Description</td></tr><tr><td>type</td><td>String</td><td>Yes</td><td>Notification
-    type:
-    'payment'</td></tr><tr><td>paymentOrderNo</td><td>String</td><td>Yes</td><td>Payment
-    system generated order
-    number</td></tr><tr><td>extOrderNo</td><td>String</td><td>No</td><td>External
-    order number that passed by
-    invoker</td></tr><tr><td>namespace</td><td>String</td><td>Yes</td><td>Namespace
-    that related payment order resides
-    in</td></tr><tr><td>targetNamespace</td><td>String</td><td>Yes</td><td>The
-    game
-    namespace</td></tr><tr><td>targetUserId</td><td>String</td><td>Yes</td><td>The
-    user id in game
-    namespace</td></tr><tr><td>sku</td><td>String</td><td>No</td><td>Item
-    identify, it will return if pass it when create
-    payment</td></tr><tr><td>extUserId</td><td>String</td><td>No</td><td>External
-    user id, can be character id, it will return if pass it when create
-    payment</td></tr><tr><td>price</td><td>int</td><td>Yes</td><td>Price of
-    item</td></tr><tr><td>paymentProvider</td><td>String</td><td>Yes</td><td>Payment
-    provider, allowed values:
-    xsolla/alipay/wxpay/wallet</td></tr><tr><td>vat</td><td>int</td><td>Yes</td><td>Payment
-    order VAT</td></tr><tr><td>salesTax</td><td>int</td><td>Yes</td><td>Payment
-    order sales
-    tax</td></tr><tr><td>paymentProviderFee</td><td>int</td><td>Yes</td><td>Payment
-    provider
-    fee</td></tr><tr><td>paymentMethodFee</td><td>int</td><td>Yes</td><td>Payment
-    method fee</td></tr><tr><td>currency</td><td>Map</td><td>Yes</td><td>Payment
-    order currency
-    info</td></tr><tr><td>status</td><td>String</td><td>Yes</td><td>Payment order
-    status</td></tr><tr><td>statusReason</td><td>String</td><td>No</td><td>Payment
-    order status
-    reason</td></tr><tr><td>createdTime</td><td>Datetime</td><td>No</td><td>The
-    time of the order
-    created</td></tr><tr><td>chargedTime</td><td>Datetime</td><td>No</td><td>The
-    time of the order
-    charged</td></tr><tr><td>customParameters</td><td>Map</td><td>No</td><td>custom
-    parameters, will return if pass it when create
-    payment</td></tr><tr><td>nonceStr</td><td>String</td><td>Yes</td><td>Random
-    string, max length is 32, can be timestamp or
-    uuid</td></tr></table></pre><p><strong>Currency info parameter
-    list:</strong></p><pre><table><tr><td>Parameter</td><td>Type</td><td>Required</td><td>Description</td></tr><tr><td>currencyCode</td><td>String</td><td>Yes</td><td>Currency
-    Code</td></tr><tr><td>currencySymbol</td><td>String</td><td>Yes</td><td>Currency
-    Symbol</td></tr><tr><td>currencyType</td><td>String</td><td>Yes</td><td>Currency
-    type(REAL/VIRTUAL)</td></tr><tr><td>namespace</td><td>String</td><td>Yes</td><td>Currency
-    namespace</td></tr><tr><td>decimals</td><td>int</td><td>Yes</td><td>Currency
-    decimals</td></tr></table></pre><h4>Encryption Rule:</h4><p>Concat payload
-    json string and private key and then do sha1Hex.</p><h4>Other detail
-    info:</h4> <ul><li><i>Token type</i>: client token</li><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=1
-    (CREATE)</li><li><i>Optional permission(user with this permission will create
-    sandbox order)</i>: resource="SANDBOX", action=1 (CREATE)</li><li>It will be
-    forbidden while the target user is banned: PAYMENT_INITIATE or
-    ORDER_AND_PAYMENT</li><li><b>cross namespace
-    allowed</b></li><li><i>Returns</i>: created payment order info</li></ul>
+    This API is used to create payment order from non justice service. e.g. from
+    dedicated server, the result contains the payment station url.
+
+     Path Parameter:
+
+
+
+         Parameter| Type| Required| Description
+        ---|---|---|---
+        namespace| String| Yes| Namespace that payment order resides in, should be publisher namespace if it's a Steam like platform that share
+        payment config cross namespaces, otherwise it's the game namespace
+
+         Request Body Parameters:
+
+
+         Parameter| Type| Required| Description
+        ---|---|---|---
+        extOrderNo| String| Yes| External order number, it should be unique in invoker order system
+        sku| String| No| Item identity
+        targetNamespace| String| Yes| The game namespace
+        targetUserId| String| Yes| User id for the order owner in game namespace
+        extUserId| String| No| External user id, can be user character id
+        price| int| Yes| price which should be greater than 0
+        title| String| Yes| Item title
+        description| String| Yes| Item description
+        currencyCode| String| No| Currency code, default is USD
+        currencyNamespace| String| No| Currency namespace, default is publisher namespace
+        region| String| No| Country of the user, will get from user info if not present
+        language| String| No| Language of the user
+        sandbox| Boolean| No| set to true will create sandbox order that not real paid for xsolla/alipay and will not validate
+        price for wxpay.
+        returnUrl| String| No| customized return url for redirect once payment finished, leave unset to use configuration in
+        namespace
+        notifyUrl| String| No| customized notify url for payment web hook, leave unset to use configuration in namespace
+        customParameters| String| No| Custom parameters
+
+     Request Body Example:
+
+
+
+        {
+                   "extOrderNo": "123456789",
+                   "sku": "sku",
+                   "targetNamespace": "game1",
+                   "targetUserId": "94451623768940d58416ca33ca767ec3",
+                   "extUserId": "678",
+                   "title": "Frostmourne",
+                   "description": "Here was power. Here was despair",
+                   "price": 100,
+                   "region": "CN",
+                   "language": "zh-CN",
+                   "currencyCode": "USD",
+                   "currencyNamespace": "accelbyte"
+        }
+
+    `
+
+    #### Payment Notification:
+
+    After user complete the payment, it will send notification to configured web
+    hook, http status code should return 200 or 204 once you resolve notification
+    successfully, otherwise payment system will retry notification in interval
+
+     Payment notification parameter:
+
+
+
+         Parameter| Type| Required| Description
+        ---|---|---|---
+        payload| String| Yes| Payment notification payload in json string
+        sign| String| Yes| sha1 hex signature for payload and private key
+
+     Payment notification parameter Example:
+
+
+
+        {
+               "payload": "{
+                   "type": "payment",
+                   "nonceStr": "34c1dcf3eb58455eb161465bbfc0b590",
+                   "paymentOrderNo": "18081239088",
+                   "namespace": "accelbyte",
+                   "targetNamespace": "game1",
+                   "targetUserId": "94451623768940d58416ca33ca767ec3",
+                   "extOrderNo": "123456789",
+                   "sku": "sku",
+                   "extUserId": "678",
+                   "price": 100,
+                   "paymentProvider": "XSOLLA",
+                   "vat": 0,
+                   "salesTax": 0,
+                   "paymentProviderFee": 0,
+                   "paymentMethodFee": 0,
+                   "currency": {
+                           "currencyCode": "USD",
+                           "currencySymbol": "$",
+                           "currencyType": "REAL",
+                           "namespace": "accelbyte",
+                           "decimals": 2
+                       },
+                   "status": "CHARGED",
+                   "createdTime": "2018-07-28T00:39:16.274Z",
+                   "chargedTime": "2018-07-28T00:39:16.274Z"
+               }",
+               "sign":"e31fb92516cc9faaf50ad70343e1293acec6f3d5"
+        }
+
+    `
+
+     Payment notification payload parameter list:
+
+
+
+         Parameter| Type| Required| Description
+        ---|---|---|---
+        type| String| Yes| Notification type: 'payment'
+        paymentOrderNo| String| Yes| Payment system generated order number
+        extOrderNo| String| No| External order number that passed by invoker
+        namespace| String| Yes| Namespace that related payment order resides in
+        targetNamespace| String| Yes| The game namespace
+        targetUserId| String| Yes| The user id in game namespace
+        sku| String| No| Item identify, it will return if pass it when create payment
+        extUserId| String| No| External user id, can be character id, it will return if pass it when create payment
+        price| int| Yes| Price of item
+        paymentProvider| String| Yes| Payment provider, allowed values: xsolla/alipay/wxpay/wallet
+        vat| int| Yes| Payment order VAT
+        salesTax| int| Yes| Payment order sales tax
+        paymentProviderFee| int| Yes| Payment provider fee
+        paymentMethodFee| int| Yes| Payment method fee
+        currency| Map| Yes| Payment order currency info
+        status| String| Yes| Payment order status
+        statusReason| String| No| Payment order status reason
+        createdTime| Datetime| No| The time of the order created
+        chargedTime| Datetime| No| The time of the order charged
+        customParameters| Map| No| custom parameters, will return if pass it when create payment
+        nonceStr| String| Yes| Random string, max length is 32, can be timestamp or uuid
+
+     Currency info parameter list:
+
+
+
+         Parameter| Type| Required| Description
+        ---|---|---|---
+        currencyCode| String| Yes| Currency Code
+        currencySymbol| String| Yes| Currency Symbol
+        currencyType| String| Yes| Currency type(REAL/VIRTUAL)
+        namespace| String| Yes| Currency namespace
+        decimals| int| Yes| Currency decimals
+
+    #### Encryption Rule:
+
+    Concat payload json string and private key and then do sha1Hex.
+
+    #### Other detail info:
+
+      * Token type : client token
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=1 (CREATE)
+      *  Optional permission(user with this permission will create sandbox order) : resource="SANDBOX", action=1 (CREATE)
+      * It will be forbidden while the target user is banned: PAYMENT_INITIATE or ORDER_AND_PAYMENT
+      *  cross namespace allowed
+      *  Returns : created payment order info
 
 
     Required Permission(s):

@@ -1,4 +1,4 @@
-# justice-seasonpass-service (1.7.0)
+# justice-seasonpass-service (1.8.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -41,6 +41,9 @@ class GetPass(Operation):
       *  Returns : pass data
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/passes/{code}
 
@@ -63,9 +66,9 @@ class GetPass(Operation):
     Responses:
         200: OK - PassInfo (successful operation)
 
-        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 49145: Pass [{code}] does not exist)
-
         400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 49145: Pass [{code}] does not exist)
     """
 
     # region fields
@@ -206,15 +209,15 @@ class GetPass(Operation):
 
         200: OK - PassInfo (successful operation)
 
-        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 49145: Pass [{code}] does not exist)
-
         400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 49145: Pass [{code}] does not exist)
         """
         if code == 200:
             return PassInfo.create_from_dict(content), None
-        if code == 404:
-            return None, ErrorEntity.create_from_dict(content)
         if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:

@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,12 @@ class ListCategoriesBasic(Operation):
     """List categories' basic info (listCategoriesBasic)
 
     This API is used to list all categories' basic info of a store ordered by
-    category path.<p>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2
-    (READ)</li><li><i>Returns</i>: list of categories' paths</li></ul>
+    category path.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
+      *  Returns : list of categories' paths
 
 
     Required Permission(s):

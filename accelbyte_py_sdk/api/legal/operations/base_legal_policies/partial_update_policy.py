@@ -1,4 +1,4 @@
-# justice-legal-service (1.16.0)
+# justice-legal-service (1.17.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,9 +34,10 @@ from ...models import UpdateBasePolicyResponse
 class PartialUpdatePolicy(Operation):
     """Update Base Legal Policy (partialUpdatePolicy)
 
-    Update an existing base policy.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:*:LEGAL", action=4
-    (UPDATE)</li></ul>
+    Update an existing base policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
 
 
     Required Permission(s):

@@ -33,9 +33,9 @@ from ...models import RestapiErrorResponseBody
 class AdminChatHistory(Operation):
     """admin get chat history (adminChatHistory)
 
-    Required permission : <code>NAMESPACE:{namespace}:USER:{userId}:CHAT
-    [READ]</code> with scope <code>social</code> <br>get chat history in a
-    namespace.
+    Required permission : `NAMESPACE:{namespace}:USER:{userId}:CHAT [READ]` with
+    scope `social`
+    get chat history in a namespace.
 
 
     Required Permission(s):

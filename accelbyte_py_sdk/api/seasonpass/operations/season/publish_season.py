@@ -1,4 +1,4 @@
-# justice-seasonpass-service (1.7.0)
+# justice-seasonpass-service (1.8.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -42,6 +42,9 @@ class PublishSeason(Operation):
       *  Returns : published season
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/publish
 
@@ -62,9 +65,9 @@ class PublishSeason(Operation):
     Responses:
         200: OK - SeasonInfo (successful operation)
 
-        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 49141: Tier item does not exist in the store of namespace [{namespace}] | 49142: Pass item does not exist in the store of namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 49144: Reward [{code}] does not exist)
-
         400: Bad Request - ErrorEntity (20026: publisher namespace not allowed | 49121: Default language [{language}] required in localizations)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 49141: Tier item does not exist in the store of namespace [{namespace}] | 49142: Pass item does not exist in the store of namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 49144: Reward [{code}] does not exist)
 
         409: Conflict - ErrorEntity (49171: Invalid season status [{status}] | 49172: Season is already ended | 49175: Published season already exists in namespace [{namespace}] | 49176: Rewards are not provided | 49177: Passes are not provided | 49178: Tiers are not provided | 49189: Duplicate season name [{name}] for publishing in namespace [{namespace}])
     """
@@ -193,17 +196,17 @@ class PublishSeason(Operation):
 
         200: OK - SeasonInfo (successful operation)
 
-        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 49141: Tier item does not exist in the store of namespace [{namespace}] | 49142: Pass item does not exist in the store of namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 49144: Reward [{code}] does not exist)
-
         400: Bad Request - ErrorEntity (20026: publisher namespace not allowed | 49121: Default language [{language}] required in localizations)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 49141: Tier item does not exist in the store of namespace [{namespace}] | 49142: Pass item does not exist in the store of namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 49144: Reward [{code}] does not exist)
 
         409: Conflict - ErrorEntity (49171: Invalid season status [{status}] | 49172: Season is already ended | 49175: Published season already exists in namespace [{namespace}] | 49176: Rewards are not provided | 49177: Passes are not provided | 49178: Tiers are not provided | 49189: Duplicate season name [{name}] for publishing in namespace [{namespace}])
         """
         if code == 200:
             return SeasonInfo.create_from_dict(content), None
-        if code == 404:
-            return None, ErrorEntity.create_from_dict(content)
         if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 409:
             return None, ErrorEntity.create_from_dict(content)

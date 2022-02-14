@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,11 +34,12 @@ from ...models import ValidationErrorEntity
 class ReturnItem(Operation):
     """Return item (returnItem)
 
-    <b>[SERVICE COMMUNICATION ONLY]</b> This api is used for returning a published
-    item while the item is maxCount limited, it will increase the sale available
-    count if orderNo already acquired.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4
-    (UPDATE)</li></ul>
+    [SERVICE COMMUNICATION ONLY] This api is used for returning a published item
+    while the item is maxCount limited, it will increase the sale available count
+    if orderNo already acquired.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
 
 
     Required Permission(s):

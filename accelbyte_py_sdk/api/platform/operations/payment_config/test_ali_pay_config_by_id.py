@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,11 +33,12 @@ from ...models import TestResult
 class TestAliPayConfigById(Operation):
     """Test Alipay configuration by id (testAliPayConfigById)
 
-    Test AliPay configuration in payment merchant config. Reference: <a
-    href="https://docs.open.alipay.com/270/alipay.trade.page.pay">Alipay
-    Document</a>.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)</li><li><i>Returns</i>: test
-    alipay config</li></ul>
+    Test AliPay configuration in payment merchant config. Reference: [Alipay
+    Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
+      *  Returns : test alipay config
 
 
     Required Permission(s):

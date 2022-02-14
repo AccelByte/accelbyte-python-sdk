@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,11 @@ from ...models import FullItemInfo
 class DefeatureItem(Operation):
     """Defeature an item (defeatureItem)
 
-    Remove a feature from an item.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4
-    (UPDATE)</li><li><i>Returns</i>: updated item</li></ul>
+    Remove a feature from an item.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+      *  Returns : updated item
 
 
     Required Permission(s):

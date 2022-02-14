@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,10 +33,11 @@ from ...models import PaymentCallbackConfigUpdate
 class UpdatePaymentCallbackConfig(Operation):
     """Update payment callback configuration (updatePaymentCallbackConfig)
 
-    Update payment callback configuration.<br>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG", action=4
-    (UPDATE)</li><li><i>Returns</i>: Payment callback config</li></ul>
+    Update payment callback configuration.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG", action=4 (UPDATE)
+      *  Returns : Payment callback config
 
 
     Required Permission(s):

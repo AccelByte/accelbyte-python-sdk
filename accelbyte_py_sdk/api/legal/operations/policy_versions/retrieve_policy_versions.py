@@ -1,4 +1,4 @@
-# justice-legal-service (1.16.0)
+# justice-legal-service (1.17.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,10 +33,12 @@ from ...models import RetrievePolicyVersionResponse
 class RetrievePolicyVersions(Operation):
     """Bulk Retrieve Version of Base Policy (retrievePolicyVersions)
 
-    [TODO] Retrieve one or more legal policies with its versions.<br>If the
-    basePolicyId not supplied, then retrieve only all latest policies version with
-    localeId matched.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)</li></ul>
+    [TODO] Retrieve one or more legal policies with its versions.
+    If the basePolicyId not supplied, then retrieve only all latest policies
+    version with localeId matched.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
 
 
     Required Permission(s):

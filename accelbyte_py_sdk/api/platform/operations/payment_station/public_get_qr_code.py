@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -30,8 +30,10 @@ from .....core import HttpResponse
 class PublicGetQRCode(Operation):
     """Get qrcode (publicGetQRCode)
 
-    Get qrcode.<br>Other detail info: <ul><li><i>Returns</i>: QRCode image
-    stream</li></ul>
+    Get qrcode.
+    Other detail info:
+
+      * Returns : QRCode image stream
 
 
     Properties:

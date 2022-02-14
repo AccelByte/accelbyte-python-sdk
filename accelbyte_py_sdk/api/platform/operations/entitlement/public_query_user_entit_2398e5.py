@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,9 +32,12 @@ from ...models import AppEntitlementPagingSlicedResult
 class PublicQueryUserEntitlementsByAppType(Operation):
     """Query app entitlements by appType (publicQueryUserEntitlementsByAppType)
 
-    Query app entitlements by appType.<p>Other detail info: <ul><li><i>Required
-    permission</i>: resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT",
-    action=2 (READ)</li><li><i>Returns</i>: app entitlement pagination</li></ul>
+    Query app entitlements by appType.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+      *  Returns : app entitlement pagination
 
 
     Required Permission(s):

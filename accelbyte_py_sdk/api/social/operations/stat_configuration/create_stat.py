@@ -1,4 +1,4 @@
-# justice-social-service (1.23.0)
+# justice-social-service (1.24.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,9 +34,11 @@ from ...models import StatInfo
 class CreateStat(Operation):
     """Create stat (createStat)
 
-    Create stat.<br>Other detail info:<ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:STAT", action=1
-    (CREATE)</li><li><i>Returns</i>: created stat template</li></ul>
+    Create stat.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=1 (CREATE)
+      *  Returns : created stat template
 
 
     Required Permission(s):

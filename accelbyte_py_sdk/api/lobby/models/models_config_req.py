@@ -42,6 +42,8 @@ class ModelsConfigReq(Model):
 
         concurrent_users_limit: (concurrentUsersLimit) OPTIONAL int
 
+        disable_party_invitation_token: (disablePartyInvitationToken) OPTIONAL bool
+
         enable_chat: (enableChat) OPTIONAL bool
 
         entitlement_check: (entitlementCheck) OPTIONAL bool
@@ -67,6 +69,7 @@ class ModelsConfigReq(Model):
     chat_rate_limit_burst: int                                                                     # OPTIONAL
     chat_rate_limit_duration: int                                                                  # OPTIONAL
     concurrent_users_limit: int                                                                    # OPTIONAL
+    disable_party_invitation_token: bool                                                           # OPTIONAL
     enable_chat: bool                                                                              # OPTIONAL
     entitlement_check: bool                                                                        # OPTIONAL
     entitlement_item_id: str                                                                       # OPTIONAL
@@ -102,6 +105,10 @@ class ModelsConfigReq(Model):
 
     def with_concurrent_users_limit(self, value: int) -> ModelsConfigReq:
         self.concurrent_users_limit = value
+        return self
+
+    def with_disable_party_invitation_token(self, value: bool) -> ModelsConfigReq:
+        self.disable_party_invitation_token = value
         return self
 
     def with_enable_chat(self, value: bool) -> ModelsConfigReq:
@@ -166,6 +173,10 @@ class ModelsConfigReq(Model):
             result["concurrentUsersLimit"] = int(self.concurrent_users_limit)
         elif include_empty:
             result["concurrentUsersLimit"] = int()
+        if hasattr(self, "disable_party_invitation_token"):
+            result["disablePartyInvitationToken"] = bool(self.disable_party_invitation_token)
+        elif include_empty:
+            result["disablePartyInvitationToken"] = bool()
         if hasattr(self, "enable_chat"):
             result["enableChat"] = bool(self.enable_chat)
         elif include_empty:
@@ -213,6 +224,7 @@ class ModelsConfigReq(Model):
         chat_rate_limit_burst: Optional[int] = None,
         chat_rate_limit_duration: Optional[int] = None,
         concurrent_users_limit: Optional[int] = None,
+        disable_party_invitation_token: Optional[bool] = None,
         enable_chat: Optional[bool] = None,
         entitlement_check: Optional[bool] = None,
         entitlement_item_id: Optional[str] = None,
@@ -235,6 +247,8 @@ class ModelsConfigReq(Model):
             instance.chat_rate_limit_duration = chat_rate_limit_duration
         if concurrent_users_limit is not None:
             instance.concurrent_users_limit = concurrent_users_limit
+        if disable_party_invitation_token is not None:
+            instance.disable_party_invitation_token = disable_party_invitation_token
         if enable_chat is not None:
             instance.enable_chat = enable_chat
         if entitlement_check is not None:
@@ -282,6 +296,10 @@ class ModelsConfigReq(Model):
             instance.concurrent_users_limit = int(dict_["concurrentUsersLimit"])
         elif include_empty:
             instance.concurrent_users_limit = int()
+        if "disablePartyInvitationToken" in dict_ and dict_["disablePartyInvitationToken"] is not None:
+            instance.disable_party_invitation_token = bool(dict_["disablePartyInvitationToken"])
+        elif include_empty:
+            instance.disable_party_invitation_token = bool()
         if "enableChat" in dict_ and dict_["enableChat"] is not None:
             instance.enable_chat = bool(dict_["enableChat"])
         elif include_empty:
@@ -343,6 +361,7 @@ class ModelsConfigReq(Model):
             "chatRateLimitBurst": "chat_rate_limit_burst",
             "chatRateLimitDuration": "chat_rate_limit_duration",
             "concurrentUsersLimit": "concurrent_users_limit",
+            "disablePartyInvitationToken": "disable_party_invitation_token",
             "enableChat": "enable_chat",
             "entitlementCheck": "entitlement_check",
             "entitlementItemID": "entitlement_item_id",

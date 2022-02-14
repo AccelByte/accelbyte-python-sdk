@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,8 +33,11 @@ class ImportRewards(Operation):
     """Import reward configurations (importRewards)
 
     Import reward configurations for a given namespace from file. At current, only
-    JSON file is supported.<p>Other detail info:<ul><li><i>*Required permission*:
-    resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=1 (CREATE)</li></ul>
+    JSON file is supported.
+
+    Other detail info:
+
+      *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=1 (CREATE)
 
 
     Required Permission(s):

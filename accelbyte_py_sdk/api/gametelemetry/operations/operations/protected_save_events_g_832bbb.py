@@ -35,14 +35,23 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
 
     This endpoint requires valid JWT token. This endpoint does not require
     permission. This endpoint send events into designated streaming pipeline and
-    each request can contain single or multiple events. <p> Format of the event:
-    - **EventNamespace (required)**: namespace of the relevant game with domain
-    name format. <p> Only accept input with valid characters. Allowed characters:
-    <b>Aa-Zz0-9_.-</b> <p> <p> Example: io.accelbyte.justice.dev.samplegame </p>
-    - **EventName (required)**: name of the event. <p> Only accept input with
-    valid characters. Allowed characters: <b>Aa-Zz0-9_.-</b> <p> <p> Example:
-    player_killed, mission_accomplished </p> - **Payload (required)**: an
-    arbitrary json with the payload of the said event
+    each request can contain single or multiple events.
+
+    Format of the event: - **EventNamespace (required)**: namespace of the
+    relevant game with domain name format.
+
+    Only accept input with valid characters. Allowed characters: Aa-Zz0-9_.-
+
+    Example: io.accelbyte.justice.dev.samplegame
+
+    - **EventName (required)**: name of the event.
+
+    Only accept input with valid characters. Allowed characters: Aa-Zz0-9_.-
+
+    Example: player_killed, mission_accomplished
+
+    - **Payload (required)**: an arbitrary json with the payload of the said
+    event
 
 
     Properties:

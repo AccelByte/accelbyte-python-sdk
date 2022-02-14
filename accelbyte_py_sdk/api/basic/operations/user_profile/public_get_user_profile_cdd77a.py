@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,8 +33,11 @@ from ...models import ValidationErrorEntity
 class PublicGetUserProfilePublicInfoByIds(Operation):
     """Get user profile public info by ids (publicGetUserProfilePublicInfoByIds)
 
-    Get user public profile by ids.<br>Other detail info: <ul><li><i>Action
-    code</i>: 11405</li><li><i>Returns</i>: user public profiles</li></ul>
+    Get user public profile by ids.
+    Other detail info:
+
+      * Action code : 11405
+      *  Returns : user public profiles
 
 
     Properties:

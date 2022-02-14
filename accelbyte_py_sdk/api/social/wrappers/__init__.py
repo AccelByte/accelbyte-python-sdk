@@ -1,6 +1,6 @@
 """Auto-generated package that contains utility functions for the justice-social-service."""
 
-__version__ = "1.23.0"
+__version__ = "1.24.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -105,6 +105,8 @@ from ._user_statistic import bulk_reset_user_stat_item_2
 from ._user_statistic import bulk_reset_user_stat_item_2_async
 from ._user_statistic import bulk_reset_user_stat_item_3
 from ._user_statistic import bulk_reset_user_stat_item_3_async
+from ._user_statistic import bulk_reset_user_stat_item_values
+from ._user_statistic import bulk_reset_user_stat_item_values_async
 from ._user_statistic import bulk_update_user_stat_item
 from ._user_statistic import bulk_update_user_stat_item_async
 from ._user_statistic import bulk_update_user_stat_item_1

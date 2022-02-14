@@ -1,4 +1,4 @@
-# justice-legal-service (1.16.0)
+# justice-legal-service (1.17.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,12 +33,15 @@ from ...models import AcceptAgreementResponse
 class IndirectBulkAcceptVersionedPolicyV2(Operation):
     """Bulk Accept Policy Versions (Indirect) (indirectBulkAcceptVersionedPolicyV2)
 
-    <b>IMPORTANT: GOING TO DEPRECATE</b><br/><br/>Accepts many legal policy
-    versions all at once. Supply with localized version policy id, version policy
-    id, policy id, userId, namespace, country code and client id to accept an
-    agreement. This endpoint used by APIGateway during new user
-    registration.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource="NAMESPACE:{namespace}:LEGAL", action=1 (CREATE)</li></ul>
+    IMPORTANT: GOING TO DEPRECATE
+
+    Accepts many legal policy versions all at once. Supply with localized version
+    policy id, version policy id, policy id, userId, namespace, country code and
+    client id to accept an agreement. This endpoint used by APIGateway during new
+    user registration.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:LEGAL", action=1 (CREATE)
 
 
     Required Permission(s):

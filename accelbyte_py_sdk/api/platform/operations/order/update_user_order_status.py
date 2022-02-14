@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,9 +35,11 @@ from ...models import ValidationErrorEntity
 class UpdateUserOrderStatus(Operation):
     """Update order status (updateUserOrderStatus)
 
-    Update order status.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4
-    (UPDATE)</li><li><i>Returns</i>: updated order</li></ul>
+    Update order status.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
+      *  Returns : updated order
 
 
     Required Permission(s):

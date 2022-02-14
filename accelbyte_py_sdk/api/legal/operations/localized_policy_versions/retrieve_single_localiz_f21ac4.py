@@ -1,4 +1,4 @@
-# justice-legal-service (1.16.0)
+# justice-legal-service (1.17.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,8 +34,8 @@ class RetrieveSingleLocalizedPolicyVersion1(Operation):
     """Retrieve a Localized Version (retrieveSingleLocalizedPolicyVersion_1)
 
     Retrieve specific localized policy version including the policy version and
-    base policy version where the localized policy version located.<br>Other
-    detail info: <ul></ul>
+    base policy version where the localized policy version located.
+    Other detail info:
 
 
     Properties:

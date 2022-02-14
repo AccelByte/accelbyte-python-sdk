@@ -33,8 +33,11 @@ from ...models import ResponseErrorResponse
 class CancelGroupJoinRequestV1(Operation):
     """Cancel request to join group (CancelGroupJoinRequestV1)
 
-    <p>Requires valid user authentication</p> <p>This endpoint allows user to
-    cancel request to join specific group.</p> <p>Action Code: 73411</p>
+    Requires valid user authentication
+
+    This endpoint allows user to cancel request to join specific group.
+
+    Action Code: 73411
 
 
     Properties:

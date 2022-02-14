@@ -1,4 +1,4 @@
-# justice-gdpr-service (1.12.0)
+# justice-gdpr-service (1.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,8 @@ from ...models import ResponseError
 class AdminSubmitUserAccountDeletionRequest(Operation):
     """Submit user's account deletion requests (AdminSubmitUserAccountDeletionRequest)
 
-    <p>Required permission
-    <code>ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [CREATE]</code>
-    and scope <code>account</code></p>
+    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId}
+    [CREATE]` and scope `account`
 
 
     Required Permission(s):

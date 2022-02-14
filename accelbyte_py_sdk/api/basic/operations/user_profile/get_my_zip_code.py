@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,10 +33,12 @@ from ...models import UserZipCode
 class GetMyZipCode(Operation):
     """Get my zip code (getMyZipCode)
 
-    Get my zip code.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource=<b>"NAMESPACE:{namespace}:PROFILE"</b>, action=2
-    <b>(READ)</b></li><li><i>Action code</i>: 11407</li><li><i>Returns</i>: user
-    zip code</li></ul>
+    Get my zip code.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=2 (READ)
+      *  Action code : 11407
+      *  Returns : user zip code
 
 
     Required Permission(s):

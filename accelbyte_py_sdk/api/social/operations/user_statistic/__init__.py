@@ -14,6 +14,7 @@ from .bulk_reset_user_stat_item import BulkResetUserStatItem
 from .bulk_reset_user_stat_item_1 import BulkResetUserStatItem1
 from .bulk_reset_user_stat_item_2 import BulkResetUserStatItem2
 from .bulk_reset_user_stat_item_3 import BulkResetUserStatItem3
+from .bulk_reset_user_stat_it_ed9334 import BulkResetUserStatItemValues
 from .bulk_update_user_stat_item import BulkUpdateUserStatItem
 from .bulk_update_user_stat_item_1 import BulkUpdateUserStatItem1
 from .bulk_update_user_stat_item_2 import BulkUpdateUserStatItem2

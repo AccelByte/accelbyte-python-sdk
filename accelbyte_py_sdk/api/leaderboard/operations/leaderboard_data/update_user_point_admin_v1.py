@@ -1,4 +1,4 @@
-# justice-leaderboard-service (2.12.0)
+# justice-leaderboard-service (2.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,10 +34,12 @@ from ...models import ResponseErrorResponse
 class UpdateUserPointAdminV1(Operation):
     """Update user point (updateUserPointAdminV1)
 
-    <p>Update user point in a leaderboard. This endpoint uses for test utility
-    only.</p> <p>Other detail info:</p> <ul> <li>Required permission:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:(userId):LEADERBOARD", action=4
-    (UPDATE)</li> <li>Returns: user ranking</li> </ul>
+    Update user point in a leaderboard. This endpoint uses for test utility only.
+
+    Other detail info:
+
+      * Required permission: resource="ADMIN:NAMESPACE:{namespace}:USER:(userId):LEADERBOARD", action=4 (UPDATE)
+      * Returns: user ranking
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,10 @@ from ...models import ErrorEntity
 class GetConfig(Operation):
     """Get equ8 config (getConfig)
 
-    Get equ8 config.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource=<b>"ADMIN:NAMESPACE:{namespace}:EQU8CONFIG"</b>, action=2
-    <b>(READ)</b></li></ul>
+    Get equ8 config.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:EQU8CONFIG" , action=2 (READ)
 
 
     Properties:

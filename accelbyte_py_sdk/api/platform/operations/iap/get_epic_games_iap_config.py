@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,11 @@ from ...models import ErrorEntity
 class GetEpicGamesIAPConfig(Operation):
     """Get epicgames iap config (getEpicGamesIAPConfig)
 
-    Get epic games iap config.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2
-    (READ)</li><li><i>Returns</i>: epic games iap config</li></ul>
+    Get epic games iap config.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
+      *  Returns : epic games iap config
 
 
     Required Permission(s):

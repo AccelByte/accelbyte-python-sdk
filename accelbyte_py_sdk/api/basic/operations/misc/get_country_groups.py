@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,10 +35,12 @@ class GetCountryGroups(Operation):
     """List country groups (getCountryGroups)
 
     List country groups. Will return all available country groups if the query
-    param is not specified<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource = <b>"ADMIN:NAMESPACE:{namespace}:MISC"</b>, action=2
-    <b>(READ)</b></li><li><i>Action code</i>: 11203</li><li><i>Returns</i>: list
-    of country groups</li></ul>
+    param is not specified
+    Other detail info:
+
+      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=2 (READ)
+      *  Action code : 11203
+      *  Returns : list of country groups
 
 
     Required Permission(s):

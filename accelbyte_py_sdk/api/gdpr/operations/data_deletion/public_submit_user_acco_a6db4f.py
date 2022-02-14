@@ -1,4 +1,4 @@
-# justice-gdpr-service (1.12.0)
+# justice-gdpr-service (1.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,7 +33,7 @@ from ...models import ResponseError
 class PublicSubmitUserAccountDeletionRequest(Operation):
     """Submit user's account deletion requests (PublicSubmitUserAccountDeletionRequest)
 
-    <p>Requires valid user access token and password
+    Requires valid user access token and password
 
 
     Properties:

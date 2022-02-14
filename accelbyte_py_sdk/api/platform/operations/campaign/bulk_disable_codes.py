@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,12 +32,14 @@ from ...models import BulkOperationResult
 class BulkDisableCodes(Operation):
     """Bulk disable codes (bulkDisableCodes)
 
-    Bulk disable codes.<p>Bulk disable campaign codes, all matched codes will be
-    disabled except those have already been redeemed.<br>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4
-    (UPDATE)</li><li><i>Returns</i>: the number of code actually
-    disabled</li></ul>
+    Bulk disable codes.
+
+    Bulk disable campaign codes, all matched codes will be disabled except those
+    have already been redeemed.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
+      *  Returns : the number of code actually disabled
 
 
     Required Permission(s):

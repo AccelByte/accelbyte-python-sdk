@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,12 +32,14 @@ from ...models import RecurringChargeResult
 class RecurringChargeSubscription(Operation):
     """Recurring charge subscription (recurringChargeSubscription)
 
-    <b>[TEST FACILITY ONLY] Forbidden in live environment. </b> Recurring charge
+    [TEST FACILITY ONLY] Forbidden in live environment. Recurring charge
     subscription, it will trigger recurring charge if the USER subscription status
     is ACTIVE, nextBillingDate is before now and no fail recurring charge within
-    X(default 12) hours.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION", action=4
-    (UPDATE)</li><li><i>Returns</i>: recurring charge result</li></ul>
+    X(default 12) hours.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION", action=4 (UPDATE)
+      *  Returns : recurring charge result
 
 
     Required Permission(s):

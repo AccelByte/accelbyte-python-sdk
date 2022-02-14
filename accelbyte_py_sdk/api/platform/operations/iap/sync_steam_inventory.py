@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,9 +32,12 @@ from ...models import SteamSyncRequest
 class SyncSteamInventory(Operation):
     """Sync steam inventory. (syncSteamInventory)
 
-    Sync steam inventory's items.<p>Other detail info: <ul><li><i>Required
-    permission</i>: resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4
-    (UPDATE)</li><li><i>Returns</i>: </li></ul>
+    Sync steam inventory's items.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
+      *  Returns :
 
 
     Required Permission(s):

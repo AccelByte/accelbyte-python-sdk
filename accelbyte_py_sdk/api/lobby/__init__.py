@@ -129,6 +129,8 @@ from .wrappers import update_topic_by_topic_name
 from .wrappers import update_topic_by_topic_name_async
 
 # operations
+from .wrappers import admin_join_party_v1
+from .wrappers import admin_join_party_v1_async
 from .wrappers import admin_update_party_attributes_v1
 from .wrappers import admin_update_party_attributes_v1_async
 from .wrappers import public_get_messages

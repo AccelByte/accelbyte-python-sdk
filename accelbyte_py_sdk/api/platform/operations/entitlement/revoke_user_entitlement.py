@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,10 +33,11 @@ from ...models import ErrorEntity
 class RevokeUserEntitlement(Operation):
     """Revoke user entitlement (revokeUserEntitlement)
 
-    Revoke user entitlement.<br>Other detail info: <ul><li><i>Required
-    permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4
-    (UPDATE)</li><li><i>Returns</i>: revoke entitlement</li></ul>
+    Revoke user entitlement.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : revoke entitlement
 
 
     Required Permission(s):

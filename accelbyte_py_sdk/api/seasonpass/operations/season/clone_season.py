@@ -1,4 +1,4 @@
-# justice-seasonpass-service (1.7.0)
+# justice-seasonpass-service (1.8.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -43,6 +43,9 @@ class CloneSeason(Operation):
       *  Returns : cloned season info
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [CREATE]
+
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/clone
 
@@ -65,9 +68,9 @@ class CloneSeason(Operation):
     Responses:
         200: OK - SeasonInfo (successful operation)
 
-        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
-
         400: Bad Request - ErrorEntity (20026: publisher namespace not allowed | 49122: Invalid time range)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -211,17 +214,17 @@ class CloneSeason(Operation):
 
         200: OK - SeasonInfo (successful operation)
 
-        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
-
         400: Bad Request - ErrorEntity (20026: publisher namespace not allowed | 49122: Invalid time range)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
         """
         if code == 200:
             return SeasonInfo.create_from_dict(content), None
-        if code == 404:
-            return None, ErrorEntity.create_from_dict(content)
         if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 422:
             return None, ValidationErrorEntity.create_from_dict(content)

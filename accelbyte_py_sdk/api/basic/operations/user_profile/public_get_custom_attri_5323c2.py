@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,10 +32,12 @@ from ...models import ErrorEntity
 class PublicGetCustomAttributesInfo(Operation):
     """Get custom attributes info (publicGetCustomAttributesInfo)
 
-    Get custom attributes info.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource=<b>"NAMESPACE:{namespace}:USER:{userId}:PROFILE"</b>,
-    action=2 <b>(READ)</b></li><li><i>Action code</i>:
-    11404</li><li><i>Returns</i>: user custom attributes</li></ul>
+    Get custom attributes info.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)
+      *  Action code : 11404
+      *  Returns : user custom attributes
 
 
     Required Permission(s):

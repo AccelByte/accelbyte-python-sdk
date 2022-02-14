@@ -1,4 +1,4 @@
-# justice-seasonpass-service (1.7.0)
+# justice-seasonpass-service (1.8.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -43,6 +43,9 @@ class CreatePass(Operation):
       *  Returns : created pass
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [CREATE]
+
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/passes
 
@@ -65,9 +68,9 @@ class CreatePass(Operation):
     Responses:
         201: Created - PassInfo (successful operation)
 
-        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 49142: Pass item does not exist in the store of namespace [{namespace}] | 49143: Season [{seasonId}] does not exist in namespace [{namespace}])
-
         400: Bad Request - ErrorEntity (20026: publisher namespace not allowed | 49121: Default language [{language}] required in localizations)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 49142: Pass item does not exist in the store of namespace [{namespace}] | 49143: Season [{seasonId}] does not exist in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (49171: Invalid season status [{status}] | 49174: Pass [{code}] already exists in the season)
 
@@ -213,9 +216,9 @@ class CreatePass(Operation):
 
         201: Created - PassInfo (successful operation)
 
-        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 49142: Pass item does not exist in the store of namespace [{namespace}] | 49143: Season [{seasonId}] does not exist in namespace [{namespace}])
-
         400: Bad Request - ErrorEntity (20026: publisher namespace not allowed | 49121: Default language [{language}] required in localizations)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 49142: Pass item does not exist in the store of namespace [{namespace}] | 49143: Season [{seasonId}] does not exist in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (49171: Invalid season status [{status}] | 49174: Pass [{code}] already exists in the season)
 
@@ -223,9 +226,9 @@ class CreatePass(Operation):
         """
         if code == 201:
             return PassInfo.create_from_dict(content), None
-        if code == 404:
-            return None, ErrorEntity.create_from_dict(content)
         if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 409:
             return None, ErrorEntity.create_from_dict(content)

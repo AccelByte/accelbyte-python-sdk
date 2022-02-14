@@ -1,4 +1,4 @@
-# justice-social-service (1.23.0)
+# justice-social-service (1.24.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,10 +34,11 @@ from ...models import GameProfileInfo
 class PublicUpdateAttribute(Operation):
     """Updates game profile attribute (publicUpdateAttribute)
 
-    Updates game profile attribute, returns updated profile.<br>Other detail
-    info:<ul><li><i>Required permission</i>:
-    resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=4
-    (UPDATE)</li><li><i>Returns</i>: updated attribute</li></ul>
+    Updates game profile attribute, returns updated profile.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=4 (UPDATE)
+      *  Returns : updated attribute
 
 
     Required Permission(s):

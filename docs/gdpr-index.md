@@ -1,6 +1,6 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-gdpr-service Index (1.12.0)
+# justice-gdpr-service Index (1.13.0)
 
 
 ## Operations

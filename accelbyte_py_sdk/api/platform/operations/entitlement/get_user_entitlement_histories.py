@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,10 +32,12 @@ from ...models import EntitlementHistoryInfo
 class GetUserEntitlementHistories(Operation):
     """Get user entitlement history (getUserEntitlementHistories)
 
-    Get user entitlement histories.<p>Other detail info: <ul><li><i>Required
-    permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2
-    (READ)</li><li><i>Returns</i>: list of entitlement history</li></ul>
+    Get user entitlement histories.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+      *  Returns : list of entitlement history
 
 
     Required Permission(s):

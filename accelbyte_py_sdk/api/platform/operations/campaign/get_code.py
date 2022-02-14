@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,9 +34,11 @@ class GetCode(Operation):
     """Get code info (getCode)
 
     Get campaign code, it will check code whether available to redeem if
-    redeemable true.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)
-    (READ)</li><li><i>Returns</i>: code info</li></ul>
+    redeemable true.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ) (READ)
+      *  Returns : code info
 
 
     Required Permission(s):

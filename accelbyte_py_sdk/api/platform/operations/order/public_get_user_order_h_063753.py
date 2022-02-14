@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,9 +32,11 @@ from ...models import OrderHistoryInfo
 class PublicGetUserOrderHistories(Operation):
     """Get user order histories (publicGetUserOrderHistories)
 
-    Get user order histories.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2
-    (READ)</li><li><i>Returns</i>: get order history</li></ul>
+    Get user order histories.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
+      *  Returns : get order history
 
 
     Required Permission(s):

@@ -1,4 +1,4 @@
-# justice-legal-service (1.16.0)
+# justice-legal-service (1.17.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,10 +35,15 @@ class IndirectBulkAcceptVersionedPolicy1(Operation):
 
     Accepts many legal policy versions all at once. Supply with localized version
     policy id and userId to accept an agreement. This endpoint used by
-    Authentication Service during new user registration.<br><br/>Available Extra
-    Information to return: <br/><ul><li><b>userIds</b> : List of userId mapping
-    (<b>IMPORTANT: GOING TO DEPRECATE</b>)</li></ul>Other detail info:
-    <ul><li><i>Required permission</i>: login user</li></ul>
+    Authentication Service during new user registration.
+
+    Available Extra Information to return:
+
+      * userIds : List of userId mapping ( IMPORTANT: GOING TO DEPRECATE )
+
+    Other detail info:
+
+      * Required permission : login user
 
 
     Properties:

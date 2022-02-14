@@ -34,9 +34,11 @@ from ...models import ResponseErrorResponse
 class CreateMemberRoleAdminV1(Operation):
     """create new member role (createMemberRoleAdminV1)
 
-    <p>Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [CREATE]</p>
-    <p>This endpoint is used to create new member role</p> <p>Action Code:
-    73202</p>
+    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [CREATE]
+
+    This endpoint is used to create new member role
+
+    Action Code: 73202
 
 
     Required Permission(s):

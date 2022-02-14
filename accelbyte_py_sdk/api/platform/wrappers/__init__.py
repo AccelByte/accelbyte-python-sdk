@@ -1,6 +1,6 @@
 """Auto-generated package that contains utility functions for the justice-platform-service."""
 
-__version__ = "4.1.1"
+__version__ = "4.2.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -230,6 +230,8 @@ from ._iap import delete_stadia_iap_config
 from ._iap import delete_stadia_iap_config_async
 from ._iap import delete_steam_iap_config
 from ._iap import delete_steam_iap_config_async
+from ._iap import delete_twitch_iap_config
+from ._iap import delete_twitch_iap_config_async
 from ._iap import delete_xbl_ap_config
 from ._iap import delete_xbl_ap_config_async
 from ._iap import get_apple_iap_config
@@ -246,6 +248,8 @@ from ._iap import get_stadia_iap_config
 from ._iap import get_stadia_iap_config_async
 from ._iap import get_steam_iap_config
 from ._iap import get_steam_iap_config_async
+from ._iap import get_twitch_iap_config
+from ._iap import get_twitch_iap_config_async
 from ._iap import get_xbl_iap_config
 from ._iap import get_xbl_iap_config_async
 from ._iap import mock_fulfill_iap_item
@@ -266,6 +270,8 @@ from ._iap import sync_stadia_entitlement
 from ._iap import sync_stadia_entitlement_async
 from ._iap import sync_steam_inventory
 from ._iap import sync_steam_inventory_async
+from ._iap import sync_twitch_drops_entitlement
+from ._iap import sync_twitch_drops_entitlement_async
 from ._iap import sync_xbox_inventory
 from ._iap import sync_xbox_inventory_async
 from ._iap import update_apple_iap_config
@@ -284,6 +290,8 @@ from ._iap import update_stadia_json_config_file
 from ._iap import update_stadia_json_config_file_async
 from ._iap import update_steam_iap_config
 from ._iap import update_steam_iap_config_async
+from ._iap import update_twitch_iap_config
+from ._iap import update_twitch_iap_config_async
 from ._iap import update_xbl_bp_cert_file
 from ._iap import update_xbl_bp_cert_file_async
 from ._iap import update_xbl_iap_config

@@ -1,4 +1,4 @@
-# justice-leaderboard-service (2.12.0)
+# justice-leaderboard-service (2.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,8 +32,9 @@ from ...models import ResponseErrorResponse
 class DeleteLeaderboardConfigurationAdminV1(Operation):
     """delete leaderboard by leaderboardCode (deleteLeaderboardConfigurationAdminV1)
 
-    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'</p>
-    <p>This endpoint delete a leaderboard configuration</p>
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
+
+    This endpoint delete a leaderboard configuration
 
 
     Required Permission(s):

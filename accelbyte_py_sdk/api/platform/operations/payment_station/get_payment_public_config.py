@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -31,7 +31,10 @@ class GetPaymentPublicConfig(Operation):
     """Get payment provider public config (getPaymentPublicConfig)
 
     Get payment provider public config, at current only Strip provide public
-    config.<br>Other detail info: <ul><li><i>Returns</i>: Public config</li></ul>
+    config.
+    Other detail info:
+
+      * Returns : Public config
 
 
     Properties:

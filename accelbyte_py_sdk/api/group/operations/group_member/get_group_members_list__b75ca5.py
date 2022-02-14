@@ -33,8 +33,11 @@ from ...models import ResponseErrorResponse
 class GetGroupMembersListPublicV1(Operation):
     """Get list of group members (getGroupMembersListPublicV1)
 
-    <p>Required valid user authentication </p> <p>This endpoint is used to get
-    list of group members.</p> <p>Action Code: 73410</p>
+    Required valid user authentication
+
+    This endpoint is used to get list of group members.
+
+    Action Code: 73410
 
 
     Properties:

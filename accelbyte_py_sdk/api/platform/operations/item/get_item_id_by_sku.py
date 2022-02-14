@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,10 +33,12 @@ from ...models import ItemId
 class GetItemIdBySku(Operation):
     """Get itemId by sku (getItemIdBySku)
 
-    <b>[SERVICE COMMUNICATION ONLY]</b> This API is used to get the itemId by
-    sku.<p>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2
-    (READ)<li><i>Returns</i>: the itemId with sku</li></ul>
+    [SERVICE COMMUNICATION ONLY] This API is used to get the itemId by sku.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the itemId with sku
 
 
     Required Permission(s):

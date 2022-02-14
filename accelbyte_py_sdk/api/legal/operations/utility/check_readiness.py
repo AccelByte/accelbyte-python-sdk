@@ -1,4 +1,4 @@
-# justice-legal-service (1.16.0)
+# justice-legal-service (1.17.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,10 @@ class CheckReadiness(Operation):
     """Check Legal Data Readiness (checkReadiness)
 
     Readiness status defined as at least one legal basePolicy is present and
-    having active basePolicy.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="NAMESPACE:{namespace}:LEGAL", action=2
-    (READ)</li></ul>
+    having active basePolicy.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:LEGAL", action=2 (READ)
 
 
     Required Permission(s):

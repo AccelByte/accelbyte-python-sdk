@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,10 +32,11 @@ from ...models import ErrorEntity
 class DownloadUserOrderReceipt(Operation):
     """Download user order receipt (downloadUserOrderReceipt)
 
-    Download user order receipt by orderNo.<br>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2
-    (READ)</li><li><i>Returns</i>: order receipt pdf</li></ul>
+    Download user order receipt by orderNo.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
+      *  Returns : order receipt pdf
 
 
     Required Permission(s):

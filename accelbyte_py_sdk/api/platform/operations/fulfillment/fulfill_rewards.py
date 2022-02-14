@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,10 +33,11 @@ from ...models import RewardsRequest
 class FulfillRewards(Operation):
     """Fulfill rewards (fulfillRewards)
 
-    <b>[SERVICE COMMUNICATION ONLY]</b> Fulfill rewards.<br>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=1
-    (CREATED)</li><li><i>Returns</i>: fulfillment result</li></ul>
+    [SERVICE COMMUNICATION ONLY] Fulfill rewards.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=1 (CREATED)
+      *  Returns : fulfillment result
 
 
     Required Permission(s):

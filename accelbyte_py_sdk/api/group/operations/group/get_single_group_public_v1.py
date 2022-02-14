@@ -33,9 +33,12 @@ from ...models import ResponseErrorResponse
 class GetSingleGroupPublicV1(Operation):
     """get single group (getSingleGroupPublicV1)
 
-    <p>Required valid user authentication </p> <p>Get single group information.
-    This endpoint will show the group information by the groupId</p> <p>Action
-    Code: 73306</p>
+    Required valid user authentication
+
+    Get single group information. This endpoint will show the group information by
+    the groupId
+
+    Action Code: 73306
 
 
     Properties:

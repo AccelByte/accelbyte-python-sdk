@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,11 @@ from ...models import ValidationErrorEntity
 class ReportUser(Operation):
     """Report a game player(for game service) (reportUser)
 
-    This API is for game service to report a game player.<p>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:ACTION", action=1 (CREATE)</li></ul>
+    This API is for game service to report a game player.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ACTION", action=1 (CREATE)
 
 
     Required Permission(s):

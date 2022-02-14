@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,16 +34,18 @@ from ...models import ValidationErrorEntity
 class GetMyProfileInfo(Operation):
     """Get my profile (getMyProfileInfo)
 
-    Get my profile<br><b>Client with user token can get user profile in target
-    namespace</b><br>Other detail info: <ul><li><i>Required permission</i>:
-    resource=<b>"NAMESPACE:{namespace}:PROFILE"</b>, action=2
-    <b>(READ)</b></li><li><i>Action code</i>: 11403</li><li><i>Returns</i>: user
-    profile</li><li><i>Path's namespace</i> : <ul><li>can be filled with
-    <b>publisher namespace</b> in order to get <b>publisher user
-    profile</b></li><li>can be filled with <b>game namespace</b> in order to get
-    <b>game user profile</b></li></ul></li><li><i>Language</i> : allowed format:
-    en, en-US</li><li><i>Timezone</i> : IANA time zone, e.g.
-    Asia/Shanghai</li></ul>
+    Get my profile
+     Client with user token can get user profile in target namespace
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=2 (READ)
+      *  Action code : 11403
+      *  Returns : user profile
+      *  Path's namespace :
+        * can be filled with publisher namespace in order to get publisher user profile
+        * can be filled with game namespace in order to get game user profile
+      *  Language : allowed format: en, en-US
+      *  Timezone : IANA time zone, e.g. Asia/Shanghai
 
 
     Required Permission(s):

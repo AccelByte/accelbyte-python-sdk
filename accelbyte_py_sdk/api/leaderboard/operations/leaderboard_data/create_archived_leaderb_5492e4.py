@@ -1,4 +1,4 @@
-# justice-leaderboard-service (2.12.0)
+# justice-leaderboard-service (2.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,11 +33,12 @@ from ...models import ResponseErrorResponse
 class CreateArchivedLeaderboardRankingDataV1Handler(Operation):
     """Archive a leadeboard data ranking (CreateArchivedLeaderboardRankingDataV1Handler)
 
-    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]'</p>
-    <p>Archive leaderboard ranking data for specified leaderboard codes. NOTE:
-    This will remove all data of the leaderboard on every slug, remove the
-    leaderboard code on stat mapping, and remove the leaderboard on the queue
-    reset. This will be a bulk endpoint</p>
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]'
+
+    Archive leaderboard ranking data for specified leaderboard codes. NOTE: This
+    will remove all data of the leaderboard on every slug, remove the leaderboard
+    code on stat mapping, and remove the leaderboard on the queue reset. This will
+    be a bulk endpoint
 
 
     Required Permission(s):

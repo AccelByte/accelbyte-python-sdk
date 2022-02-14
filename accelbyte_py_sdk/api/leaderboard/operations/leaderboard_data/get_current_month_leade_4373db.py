@@ -1,4 +1,4 @@
-# justice-leaderboard-service (2.12.0)
+# justice-leaderboard-service (2.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,7 +33,7 @@ from ...models import ResponseErrorResponse
 class GetCurrentMonthLeaderboardRankingPublicV1(Operation):
     """Get current month leaderboard ranking data (GetCurrentMonthLeaderboardRankingPublicV1)
 
-    <p>Get rankings in current month leaderboard.</p>
+    Get rankings in current month leaderboard.
 
 
     Properties:

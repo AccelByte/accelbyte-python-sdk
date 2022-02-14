@@ -1,4 +1,4 @@
-# justice-social-service (1.23.0)
+# justice-social-service (1.24.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,9 +32,11 @@ from ...models import ErrorEntity
 class CreateUserStatItem(Operation):
     """Create user's statItem (createUserStatItem)
 
-    Create statItem for a user.<br>Other detail info:<ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM",
-    action=1 (CREATE)</li><li><i>Returns</i>: created user's statItem</li></ul>
+    Create statItem for a user.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
+      *  Returns : created user's statItem
 
 
     Required Permission(s):

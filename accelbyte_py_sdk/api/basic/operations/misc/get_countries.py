@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,9 +34,12 @@ from ...models import ValidationErrorEntity
 class GetCountries(Operation):
     """List countries (getCountries)
 
-    List countries.<br>Other detail info: <ul><li><i>Required permission</i>:
-    login user</li><li><i>Action code</i>: 11204</li><li><i>Returns</i>: country
-    code list</li></ul>
+    List countries.
+    Other detail info:
+
+      * Required permission : login user
+      *  Action code : 11204
+      *  Returns : country code list
 
 
     Properties:

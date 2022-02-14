@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,10 +32,11 @@ from ...models import BillingHistoryPagingSlicedResult
 class PublicGetUserSubscriptionBillingHistories(Operation):
     """Get user subscription billing histories (publicGetUserSubscriptionBillingHistories)
 
-    Get user subscription billing histories.<br>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2
-    (READ)</li><li><i>Returns</i>: paginated subscription history</li></ul>
+    Get user subscription billing histories.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
+      *  Returns : paginated subscription history
 
 
     Required Permission(s):

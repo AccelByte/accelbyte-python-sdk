@@ -33,9 +33,12 @@ from ...models import ResponseErrorResponse
 class GetSingleGroupAdminV1(Operation):
     """get single group (getSingleGroupAdminV1)
 
-    <p>Required Permission: "ADMIN:NAMESPACE:{namespace}:GROUP [READ]"</p> <p>Get
-    single group information. This endpoint will show the group information by the
-    groupId</p> <p>Action Code: 73306</p>
+    Required Permission: "ADMIN:NAMESPACE:{namespace}:GROUP [READ]"
+
+    Get single group information. This endpoint will show the group information by
+    the groupId
+
+    Action Code: 73306
 
 
     Required Permission(s):

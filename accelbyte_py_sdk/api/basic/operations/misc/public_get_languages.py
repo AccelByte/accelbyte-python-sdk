@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,8 +32,10 @@ from ...models import ValidationErrorEntity
 class PublicGetLanguages(Operation):
     """List languages. (publicGetLanguages)
 
-    List languages.<br>Other detail info: <ul><li><i>Returns</i>: language
-    list</li></ul>
+    List languages.
+    Other detail info:
+
+      * Returns : language list
 
 
     Properties:

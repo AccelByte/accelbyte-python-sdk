@@ -1,4 +1,4 @@
-# justice-social-service (1.23.0)
+# justice-social-service (1.24.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -31,8 +31,10 @@ class DeleteNamespaceSlotConfig(Operation):
     """Deletes a namespace slot configuration (deleteNamespaceSlotConfig)
 
     Deletes a namespace slot configuration, the configuration will be default
-    after delete.<br>Other detail info:<ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:SLOTCONFIG", action=8 (DELETE)</li></ul>
+    after delete.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:SLOTCONFIG", action=8 (DELETE)
 
 
     Required Permission(s):

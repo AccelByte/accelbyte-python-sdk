@@ -34,8 +34,8 @@ from ...models import ModelsEventResponse
 class GetEventByUserIDHandler(Operation):
     """Get events from specific user (GetEventByUserIDHandler)
 
-    Required permission <code>NAMESPACE:{namespace}:EVENT [UPDATE]</code> and
-    scope <code>analytics</code>
+    Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]` and scope
+    `analytics`
 
 
     Required Permission(s):

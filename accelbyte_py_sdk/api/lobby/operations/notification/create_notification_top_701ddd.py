@@ -33,11 +33,12 @@ from ...models import RestapiErrorResponseV1
 class CreateNotificationTopicV1Admin(Operation):
     """create new notification topic (createNotificationTopicV1Admin)
 
-    Required permission : <code>ADMIN:NAMESPACE:{namespace}:NOTIFICATION
-    [CREATE]</code> with scope <code>social</code> <br>Create new notification
-    topic. <br>topic should be alphabets, no special char except underscore,
-    uppercase and no spacing. for example: TOPIC_TEST. Already existing topic can
-    not be created<br/> Action Code: 50214
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with
+    scope `social`
+    Create new notification topic.
+    topic should be alphabets, no special char except underscore, uppercase and no
+    spacing. for example: TOPIC_TEST. Already existing topic can not be created
+    Action Code: 50214
 
 
     Required Permission(s):

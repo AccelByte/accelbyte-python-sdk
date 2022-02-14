@@ -1,4 +1,4 @@
-# justice-gdpr-service (1.12.0)
+# justice-gdpr-service (1.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,8 +33,8 @@ class UpdateAdminEmailConfiguration(Operation):
     """Update admin email address configuration (UpdateAdminEmailConfiguration)
 
     Update admin email address for receiving personal data request notification.
-    <p>Required permission <code>ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION
-    [UPDATE]</code></p>
+
+    Required permission `ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [UPDATE]`
 
 
     Required Permission(s):

@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,12 @@ from ...models import StoreInfo
 class GetStore(Operation):
     """Get a store (getStore)
 
-    This API is used to get a store.<p>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2
-    (READ)</li><li><i>Returns</i>: store data</li></ul>
+    This API is used to get a store.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
+      *  Returns : store data
 
 
     Required Permission(s):

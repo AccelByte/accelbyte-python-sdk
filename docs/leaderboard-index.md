@@ -1,6 +1,6 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-leaderboard-service Index (2.12.0)
+# justice-leaderboard-service Index (2.13.0)
 
 
 ## Operations

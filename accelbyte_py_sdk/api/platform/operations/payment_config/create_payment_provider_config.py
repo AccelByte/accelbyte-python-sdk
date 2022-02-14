@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,20 +35,31 @@ from ...models import ValidationErrorEntity
 class CreatePaymentProviderConfig(Operation):
     """Create payment provider config (createPaymentProviderConfig)
 
-    Create payment provider config.<br><pre><p><strong>Request Body
-    Parameters:</strong></p><pre><table><tr><td>Parameter</td><td>Type</td><td>Required</td><td>Description</td></tr><tr><td>namespace</td><td>String</td><td>Yes</td><td>namespace,
-    * indicates all
-    namespace</td></tr><tr><td>region</td><td>String</td><td>Yes</td><td>region, *
-    indicates all
-    regions</td></tr><tr><td>aggregate</td><td>String</td><td>No</td><td>aggregate
-    payment provider, such as XSOLLA, ADYEN,
-    STRIPE</td></tr><tr><td>specials</td><td>List</td><td>No</td><td>special
-    payment provider, such as ALIPAY, WXPAY</td></tr></table></pre>payment
-    provider applied has priority: <ol><li>namespace and region
-    match</li><li>namespace matches and region is *</li><li>region matches and
-    namespace is *</li><li>namespace and region are *</li></ol>Other detail info:
-    <ul><li><i>Required permission</i>: resource="ADMIN:PAYMENT:CONFIG", action=1
-    (CREATE)</li><li><i>Returns</i>: payment provider config</li></ul>
+    Create payment provider config.
+
+
+
+         Request Body Parameters:
+
+
+         Parameter| Type| Required| Description
+        ---|---|---|---
+        namespace| String| Yes| namespace, * indicates all namespace
+        region| String| Yes| region, * indicates all regions
+        aggregate| String| No| aggregate payment provider, such as XSOLLA, ADYEN, STRIPE
+        specials| List| No| special payment provider, such as ALIPAY, WXPAY
+
+    payment provider applied has priority:
+
+      1. namespace and region match
+      2. namespace matches and region is *
+      3. region matches and namespace is *
+      4. namespace and region are *
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=1 (CREATE)
+      *  Returns : payment provider config
 
 
     Required Permission(s):

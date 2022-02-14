@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,10 +35,11 @@ from ...models import ValidationErrorEntity
 class AcquireUserTicket(Operation):
     """Acquire ticket (acquireUserTicket)
 
-    <b>[SERVICE COMMUNICATION ONLY]</b> Acquire ticket(code/key) based on booth
-    name.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:TICKET", action=1
-    (CREATE)</li><li><i>Returns</i>: acquire result</li></ul>
+    [SERVICE COMMUNICATION ONLY] Acquire ticket(code/key) based on booth name.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:TICKET", action=1 (CREATE)
+      *  Returns : acquire result
 
 
     Required Permission(s):

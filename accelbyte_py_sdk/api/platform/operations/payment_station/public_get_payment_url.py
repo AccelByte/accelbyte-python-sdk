@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,8 +34,10 @@ from ...models import PaymentUrlCreate
 class PublicGetPaymentUrl(Operation):
     """Get payment url (publicGetPaymentUrl)
 
-    Get payment url.<br>Other detail info: <ul><li><i>Returns</i>: Get payment
-    link</li></ul>
+    Get payment url.
+    Other detail info:
+
+      * Returns : Get payment link
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-social-service (1.23.0)
+# justice-social-service (1.24.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,10 +35,11 @@ from ...models import ValidationErrorEntity
 class PublicUpdateProfile(Operation):
     """Updates user game profile (publicUpdateProfile)
 
-    Updates user game profile, returns updated profile.<br>Other detail
-    info:<ul><li><i>Required permission</i>:
-    resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=4
-    (UPDATE)</li><li><i>Returns</i>: updated game profile</li></ul>
+    Updates user game profile, returns updated profile.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=4 (UPDATE)
+      *  Returns : updated game profile
 
 
     Required Permission(s):

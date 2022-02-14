@@ -1,4 +1,4 @@
-# justice-seasonpass-service (1.7.0)
+# justice-seasonpass-service (1.8.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -40,6 +40,9 @@ class QueryRewards(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
       *  Returns : the list of rewards
 
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/rewards

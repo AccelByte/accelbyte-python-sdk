@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,11 @@ from ...models import ErrorEntity
 class PublicGetUserEntitlementBySku(Operation):
     """Get user entitlement by sku (publicGetUserEntitlementBySku)
 
-    Get user entitlement by sku.<p>Other detail info: <ul><li><i>Required
-    permission</i>: resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT",
-    action=2 (READ)</li></ul>
+    Get user entitlement by sku.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
 
 
     Required Permission(s):

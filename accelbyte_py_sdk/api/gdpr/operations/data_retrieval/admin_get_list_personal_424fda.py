@@ -1,4 +1,4 @@
-# justice-gdpr-service (1.12.0)
+# justice-gdpr-service (1.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,8 +33,8 @@ from ...models import ResponseError
 class AdminGetListPersonalDataRequest(Operation):
     """Get list personal data requests (AdminGetListPersonalDataRequest)
 
-    <p>Required permission <code>ADMIN:NAMESPACE:{namespace}:INFORMATION:USER
-    [READ]</code> and scope <code>account</code></p>
+    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER [READ]` and
+    scope `account`
 
 
     Required Permission(s):

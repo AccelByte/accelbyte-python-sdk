@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,8 +32,10 @@ from ...models import FulfillmentScriptInfo
 class ListFulfillmentScripts(Operation):
     """List all fulfillment scripts (listFulfillmentScripts)
 
-    List all fulfillment scripts.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:FULFILLMENT", action=2 (READ)</li></ul>
+    List all fulfillment scripts.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:FULFILLMENT", action=2 (READ)
 
 
     Required Permission(s):

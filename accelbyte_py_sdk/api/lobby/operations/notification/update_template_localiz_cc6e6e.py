@@ -33,9 +33,10 @@ from ...models import RestapiErrorResponseV1
 class UpdateTemplateLocalizationV1Admin(Operation):
     """update template localization (updateTemplateLocalizationV1Admin)
 
-    Required permission : <code>ADMIN:NAMESPACE:{namespace}:NOTIFICATION
-    [UPDATE]</code> with scope <code>social</code> <br/>update template
-    localization<br/> Action Code: 50208
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [UPDATE]` with
+    scope `social`
+    update template localization
+    Action Code: 50208
 
 
     Required Permission(s):

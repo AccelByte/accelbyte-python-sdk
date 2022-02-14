@@ -1,4 +1,4 @@
-# justice-leaderboard-service (2.12.0)
+# justice-leaderboard-service (2.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,7 +33,7 @@ from ...models import ResponseErrorResponse
 class GetLeaderboardConfigurationsPublicV1(Operation):
     """list all leaderboards by given namespace (getLeaderboardConfigurationsPublicV1)
 
-    <p>This endpoint return all leaderboard configurations</p>
+    This endpoint return all leaderboard configurations
 
 
     Properties:

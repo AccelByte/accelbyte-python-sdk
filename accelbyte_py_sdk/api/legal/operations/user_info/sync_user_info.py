@@ -1,4 +1,4 @@
-# justice-legal-service (1.16.0)
+# justice-legal-service (1.17.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -30,10 +30,12 @@ from .....core import HttpResponse
 class SyncUserInfo(Operation):
     """Sync user info with iam service  (syncUserInfo)
 
-    <b>Important: GOING TO DEPRECATE</b><br/><br/>Sync user info cache in
-    agreement service with iam service.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:*:LEGAL", action=4
-    (UPDATE)</li></ul>
+    Important: GOING TO DEPRECATE
+
+    Sync user info cache in agreement service with iam service.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
 
 
     Required Permission(s):

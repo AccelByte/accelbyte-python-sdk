@@ -1,6 +1,6 @@
 """Auto-generated package that contains utility functions for the justice-seasonpass-service."""
 
-__version__ = "1.7.0"
+__version__ = "1.8.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -85,5 +85,7 @@ from ._tier import grant_user_tier
 from ._tier import grant_user_tier_async
 from ._tier import query_tiers
 from ._tier import query_tiers_async
+from ._tier import reorder_tier
+from ._tier import reorder_tier_async
 from ._tier import update_tier
 from ._tier import update_tier_async

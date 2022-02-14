@@ -1,6 +1,6 @@
 """Auto-generated top-level package for the justice-seasonpass-service."""
 
-__version__ = "1.7.0"
+__version__ = "1.8.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -89,5 +89,7 @@ from .wrappers import grant_user_tier
 from .wrappers import grant_user_tier_async
 from .wrappers import query_tiers
 from .wrappers import query_tiers_async
+from .wrappers import reorder_tier
+from .wrappers import reorder_tier_async
 from .wrappers import update_tier
 from .wrappers import update_tier_async

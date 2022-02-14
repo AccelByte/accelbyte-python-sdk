@@ -1,4 +1,4 @@
-# justice-ugc-service (1.12.0)
+# justice-ugc-service (1.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -36,8 +36,8 @@ from ...models import ResponseError
 class CreateContentDirect(Operation):
     """Upload content to a channel (CreateContentDirect)
 
-    Required permission <b>NAMESPACE:{namespace}:USER:{userId}:CONTENT
-    [CREATE]</b>.n All request body are required except preview and tags.
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].n
+    All request body are required except preview and tags.
 
 
     Required Permission(s):

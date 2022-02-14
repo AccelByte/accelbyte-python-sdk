@@ -1,4 +1,4 @@
-# justice-social-service (1.23.0)
+# justice-social-service (1.24.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,9 +32,10 @@ from ...models import ErrorEntity
 class PublicDeleteUserNamespaceSlot(Operation):
     """Deletes the slot (publicDeleteUserNamespaceSlot)
 
-    Deletes the slot.<br>Other detail info:<ul><li><i>Required permission</i>:
-    resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=8
-    (DELETE)</li></ul>
+    Deletes the slot.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=8 (DELETE)
 
 
     Required Permission(s):

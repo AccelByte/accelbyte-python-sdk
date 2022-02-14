@@ -33,13 +33,19 @@ from ...models import ResponseErrorResponse
 class InviteGroupPublicV1(Operation):
     """Invite user to group (inviteGroupPublicV1)
 
-    <p>Required valid user authentication </p> <p>Required Member Role Permission:
-    "GROUP:INVITE [CREATE]"</p> <p>This endpoint is used to invite specific user
-    to the group.</p> <p>invite specific user to the group. If specific user is
-    already have the join request to the group, this endpoint will notify if this
-    user already have join request that needs to be accepted / rejected</p>
-    <p>Invited user will receive notification through lobby.</p> <p>Action Code:
-    73406</p>
+    Required valid user authentication
+
+    Required Member Role Permission: "GROUP:INVITE [CREATE]"
+
+    This endpoint is used to invite specific user to the group.
+
+    invite specific user to the group. If specific user is already have the join
+    request to the group, this endpoint will notify if this user already have join
+    request that needs to be accepted / rejected
+
+    Invited user will receive notification through lobby.
+
+    Action Code: 73406
 
 
     Required Permission(s):

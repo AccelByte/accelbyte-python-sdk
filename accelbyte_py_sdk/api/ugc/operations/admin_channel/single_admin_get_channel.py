@@ -1,4 +1,4 @@
-# justice-ugc-service (1.12.0)
+# justice-ugc-service (1.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,8 +33,7 @@ from ...models import ResponseError
 class SingleAdminGetChannel(Operation):
     """Get Channels (SingleAdminGetChannel)
 
-    Required permission <b>ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL
-    [READ]</b>
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
 
 
     Required Permission(s):

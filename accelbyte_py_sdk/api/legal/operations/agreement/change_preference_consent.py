@@ -1,4 +1,4 @@
-# justice-legal-service (1.16.0)
+# justice-legal-service (1.17.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,8 +33,10 @@ from ...models import ErrorEntity
 class ChangePreferenceConsent(Operation):
     """Accept/Revoke Marketing Preference Consent (changePreferenceConsent)
 
-    Change marketing preference consent.<br>Other detail info: <ul><li><i>Required
-    permission</i>: login user</li></ul>
+    Change marketing preference consent.
+    Other detail info:
+
+      * Required permission : login user
 
 
     Properties:

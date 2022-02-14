@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,10 +35,11 @@ from ...models import ValidationErrorEntity
 class IncreaseTicketSale(Operation):
     """Increase ticket sale (increaseTicketSale)
 
-    <b>[SERVICE COMMUNICATION ONLY]</b> increase ticket(code/key) sale.<br>Other
-    detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=4
-    (UPDATE)</li><li><i>Returns</i>: Ticket sale increment result</li></ul>
+    [SERVICE COMMUNICATION ONLY] increase ticket(code/key) sale.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=4 (UPDATE)
+      *  Returns : Ticket sale increment result
 
 
     Required Permission(s):

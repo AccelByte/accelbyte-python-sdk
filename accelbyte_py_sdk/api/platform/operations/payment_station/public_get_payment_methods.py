@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,8 +33,10 @@ from ...models import PaymentMethod
 class PublicGetPaymentMethods(Operation):
     """Get payment methods (publicGetPaymentMethods)
 
-    Get payment methods.<br>Other detail info: <ul><li><i>Returns</i>: Payment
-    method list</li></ul>
+    Get payment methods.
+    Other detail info:
+
+      * Returns : Payment method list
 
 
     Properties:

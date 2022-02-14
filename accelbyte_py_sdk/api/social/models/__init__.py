@@ -1,6 +1,6 @@
 """Auto-generated package that contains models used by the justice-social-service."""
 
-__version__ = "1.23.0"
+__version__ = "1.24.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -8,6 +8,7 @@ __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .a_dto_object_for_resetting_user_stat_items import ADTOObjectForResettingUserStatItems
 from .attribute import Attribute
 from .bulk_stat_item_create import BulkStatItemCreate
 from .bulk_stat_item_inc import BulkStatItemInc

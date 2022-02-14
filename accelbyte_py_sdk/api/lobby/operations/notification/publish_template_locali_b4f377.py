@@ -32,9 +32,10 @@ from ...models import RestapiErrorResponseV1
 class PublishTemplateLocalizationV1Admin(Operation):
     """publish template localization draft (publishTemplateLocalizationV1Admin)
 
-    Required permission : <code>ADMIN:NAMESPACE:{namespace}:NOTIFICATION
-    [CREATE]</code> with scope <code>social</code> <br>Publish notification
-    template draft. Empty draft can not be published.<br/> Action Code: 50210
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with
+    scope `social`
+    Publish notification template draft. Empty draft can not be published.
+    Action Code: 50210
 
 
     Required Permission(s):

@@ -1,6 +1,6 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-platform-service Index (4.1.1)
+# justice-platform-service Index (4.2.0)
 
 
 ## Operations
@@ -147,6 +147,7 @@
 | /platform/admin/namespaces/{namespace}/iap/config/playstation | DELETE | deletePlaystationIAPConfig | [DeletePlaystationIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/delete_playstation_iap_config.py) | [delete_playstation_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/stadia | DELETE | deleteStadiaIAPConfig | [DeleteStadiaIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/delete_stadia_iap_config.py) | [delete_stadia_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/steam | DELETE | deleteSteamIAPConfig | [DeleteSteamIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/delete_steam_iap_config.py) | [delete_steam_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
+| /platform/admin/namespaces/{namespace}/iap/config/twitch | DELETE | deleteTwitchIAPConfig | [DeleteTwitchIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/delete_twitch_iap_config.py) | [delete_twitch_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/xbl | DELETE | deleteXblAPConfig | [DeleteXblAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/delete_xbl_ap_config.py) | [delete_xbl_ap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/apple | GET | getAppleIAPConfig | [GetAppleIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/get_apple_iap_config.py) | [get_apple_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/epicgames | GET | getEpicGamesIAPConfig | [GetEpicGamesIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/get_epic_games_iap_config.py) | [get_epic_games_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
@@ -155,6 +156,7 @@
 | /platform/admin/namespaces/{namespace}/iap/config/playstation | GET | getPlayStationIAPConfig | [GetPlayStationIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/get_play_station_iap_config.py) | [get_play_station_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/stadia | GET | getStadiaIAPConfig | [GetStadiaIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/get_stadia_iap_config.py) | [get_stadia_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/steam | GET | getSteamIAPConfig | [GetSteamIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/get_steam_iap_config.py) | [get_steam_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
+| /platform/admin/namespaces/{namespace}/iap/config/twitch | GET | getTwitchIAPConfig | [GetTwitchIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/get_twitch_iap_config.py) | [get_twitch_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/xbl | GET | getXblIAPConfig | [GetXblIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/get_xbl_iap_config.py) | [get_xbl_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/iap/mock/receipt | PUT | mockFulfillIAPItem | [MockFulfillIAPItem](../accelbyte_py_sdk/api/platform/operations/iap/mock_fulfill_iap_item.py) | [mock_fulfill_iap_item](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/apple/receipt | PUT | publicFulfillAppleIAPItem | [PublicFulfillAppleIAPItem](../accelbyte_py_sdk/api/platform/operations/iap/public_fulfill_apple_iap_item.py) | [public_fulfill_apple_iap_item](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
@@ -165,6 +167,7 @@
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/epicgames/sync | PUT | syncEpicGamesInventory | [SyncEpicGamesInventory](../accelbyte_py_sdk/api/platform/operations/iap/sync_epic_games_inventory.py) | [sync_epic_games_inventory](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/stadia/sync | PUT | syncStadiaEntitlement | [SyncStadiaEntitlement](../accelbyte_py_sdk/api/platform/operations/iap/sync_stadia_entitlement.py) | [sync_stadia_entitlement](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/steam/sync | PUT | syncSteamInventory | [SyncSteamInventory](../accelbyte_py_sdk/api/platform/operations/iap/sync_steam_inventory.py) | [sync_steam_inventory](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
+| /platform/public/namespaces/{namespace}/users/{userId}/iap/twitch/sync | PUT | syncTwitchDropsEntitlement | [SyncTwitchDropsEntitlement](../accelbyte_py_sdk/api/platform/operations/iap/sync_twitch_drops_entitlement.py) | [sync_twitch_drops_entitlement](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/xbl/sync | PUT | syncXboxInventory | [SyncXboxInventory](../accelbyte_py_sdk/api/platform/operations/iap/sync_xbox_inventory.py) | [sync_xbox_inventory](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/apple | PUT | updateAppleIAPConfig | [UpdateAppleIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/update_apple_iap_config.py) | [update_apple_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/epicgames | PUT | updateEpicGamesIAPConfig | [UpdateEpicGamesIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/update_epic_games_iap_config.py) | [update_epic_games_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
@@ -174,6 +177,7 @@
 | /platform/admin/namespaces/{namespace}/iap/config/playstation | PUT | updatePlaystationIAPConfig | [UpdatePlaystationIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/update_playstation_iap_config.py) | [update_playstation_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/stadia/cert | PUT | updateStadiaJsonConfigFile | [UpdateStadiaJsonConfigFile](../accelbyte_py_sdk/api/platform/operations/iap/update_stadia_json_config_file.py) | [update_stadia_json_config_file](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/steam | PUT | updateSteamIAPConfig | [UpdateSteamIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/update_steam_iap_config.py) | [update_steam_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
+| /platform/admin/namespaces/{namespace}/iap/config/twitch | PUT | updateTwitchIAPConfig | [UpdateTwitchIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/update_twitch_iap_config.py) | [update_twitch_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/xbl/cert | PUT | updateXblBPCertFile | [UpdateXblBPCertFile](../accelbyte_py_sdk/api/platform/operations/iap/update_xbl_bp_cert_file.py) | [update_xbl_bp_cert_file](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/xbl | PUT | updateXblIAPConfig | [UpdateXblIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/update_xbl_iap_config.py) | [update_xbl_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) |
 
@@ -501,6 +505,7 @@
 | GoogleIAPConfigInfo | [GoogleIAPConfigInfo](../accelbyte_py_sdk/api/platform/models/google_iap_config_info.py) |
 | GoogleIAPConfigRequest | [GoogleIAPConfigRequest](../accelbyte_py_sdk/api/platform/models/google_iap_config_request.py) |
 | GoogleIAPReceipt | [GoogleIAPReceipt](../accelbyte_py_sdk/api/platform/models/google_iap_receipt.py) |
+| GoogleReceiptResolveResult | [GoogleReceiptResolveResult](../accelbyte_py_sdk/api/platform/models/google_receipt_resolve_result.py) |
 | GrantSubscriptionDaysRequest | [GrantSubscriptionDaysRequest](../accelbyte_py_sdk/api/platform/models/grant_subscription_days_request.py) |
 | HierarchicalCategoryInfo | [HierarchicalCategoryInfo](../accelbyte_py_sdk/api/platform/models/hierarchical_category_info.py) |
 | IAPItemConfigInfo | [IAPItemConfigInfo](../accelbyte_py_sdk/api/platform/models/iap_item_config_info.py) |
@@ -639,6 +644,9 @@
 | TimedOwnership | [TimedOwnership](../accelbyte_py_sdk/api/platform/models/timed_ownership.py) |
 | TradeNotification | [TradeNotification](../accelbyte_py_sdk/api/platform/models/trade_notification.py) |
 | Transaction | [Transaction](../accelbyte_py_sdk/api/platform/models/transaction.py) |
+| TwitchIAPConfigInfo | [TwitchIAPConfigInfo](../accelbyte_py_sdk/api/platform/models/twitch_iap_config_info.py) |
+| TwitchIAPConfigRequest | [TwitchIAPConfigRequest](../accelbyte_py_sdk/api/platform/models/twitch_iap_config_request.py) |
+| TwitchSyncRequest | [TwitchSyncRequest](../accelbyte_py_sdk/api/platform/models/twitch_sync_request.py) |
 | ValidationErrorEntity | [ValidationErrorEntity](../accelbyte_py_sdk/api/platform/models/validation_error_entity.py) |
 | WalletInfo | [WalletInfo](../accelbyte_py_sdk/api/platform/models/wallet_info.py) |
 | WalletPagingSlicedResult | [WalletPagingSlicedResult](../accelbyte_py_sdk/api/platform/models/wallet_paging_sliced_result.py) |

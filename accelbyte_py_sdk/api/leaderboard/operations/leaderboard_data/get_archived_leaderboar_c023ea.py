@@ -1,4 +1,4 @@
-# justice-leaderboard-service (2.12.0)
+# justice-leaderboard-service (2.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,8 +33,8 @@ from ...models import ResponseErrorResponse
 class GetArchivedLeaderboardRankingDataV1Handler(Operation):
     """Get signed url for archive all time leaderboard ranking data (GetArchivedLeaderboardRankingDataV1Handler)
 
-    <p>Get signed url in an all time leaderboard that archived. NOTE: This will be
-    a bulk endpoint to get sign url</p>
+    Get signed url in an all time leaderboard that archived. NOTE: This will be a
+    bulk endpoint to get sign url
 
 
     Properties:

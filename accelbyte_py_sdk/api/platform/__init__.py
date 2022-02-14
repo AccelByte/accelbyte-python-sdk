@@ -1,6 +1,6 @@
 """Auto-generated top-level package for the justice-platform-service."""
 
-__version__ = "4.1.1"
+__version__ = "4.2.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -239,6 +239,8 @@ from .wrappers import delete_stadia_iap_config
 from .wrappers import delete_stadia_iap_config_async
 from .wrappers import delete_steam_iap_config
 from .wrappers import delete_steam_iap_config_async
+from .wrappers import delete_twitch_iap_config
+from .wrappers import delete_twitch_iap_config_async
 from .wrappers import delete_xbl_ap_config
 from .wrappers import delete_xbl_ap_config_async
 from .wrappers import get_apple_iap_config
@@ -255,6 +257,8 @@ from .wrappers import get_stadia_iap_config
 from .wrappers import get_stadia_iap_config_async
 from .wrappers import get_steam_iap_config
 from .wrappers import get_steam_iap_config_async
+from .wrappers import get_twitch_iap_config
+from .wrappers import get_twitch_iap_config_async
 from .wrappers import get_xbl_iap_config
 from .wrappers import get_xbl_iap_config_async
 from .wrappers import mock_fulfill_iap_item
@@ -275,6 +279,8 @@ from .wrappers import sync_stadia_entitlement
 from .wrappers import sync_stadia_entitlement_async
 from .wrappers import sync_steam_inventory
 from .wrappers import sync_steam_inventory_async
+from .wrappers import sync_twitch_drops_entitlement
+from .wrappers import sync_twitch_drops_entitlement_async
 from .wrappers import sync_xbox_inventory
 from .wrappers import sync_xbox_inventory_async
 from .wrappers import update_apple_iap_config
@@ -293,6 +299,8 @@ from .wrappers import update_stadia_json_config_file
 from .wrappers import update_stadia_json_config_file_async
 from .wrappers import update_steam_iap_config
 from .wrappers import update_steam_iap_config_async
+from .wrappers import update_twitch_iap_config
+from .wrappers import update_twitch_iap_config_async
 from .wrappers import update_xbl_bp_cert_file
 from .wrappers import update_xbl_bp_cert_file_async
 from .wrappers import update_xbl_iap_config

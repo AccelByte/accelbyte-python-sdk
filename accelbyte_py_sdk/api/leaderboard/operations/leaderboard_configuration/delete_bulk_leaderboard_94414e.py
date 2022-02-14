@@ -1,4 +1,4 @@
-# justice-leaderboard-service (2.12.0)
+# justice-leaderboard-service (2.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,8 +34,9 @@ from ...models import ResponseErrorResponse
 class DeleteBulkLeaderboardConfigurationAdminV1(Operation):
     """delete bulk leaderboards. response body will contains failed leaderboard with the reason why it's failed to delete (deleteBulkLeaderboardConfigurationAdminV1)
 
-    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'</p>
-    <p>This endpoint delete multiple leaderboards configuration in one request</p>
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
+
+    This endpoint delete multiple leaderboards configuration in one request
 
 
     Required Permission(s):

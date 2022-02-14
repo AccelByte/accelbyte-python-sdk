@@ -1,4 +1,4 @@
-# justice-ugc-service (1.12.0)
+# justice-ugc-service (1.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,9 +34,9 @@ from ...models import ResponseError
 class AdminUpdateContentS3(Operation):
     """Update content to S3 bucket (AdminUpdateContentS3)
 
-    Required permission <b>ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT
-    [UPDATE]</b>.n All request body are required except payload, preview, tags,
-    and contentType. contentType values is used to enforce the Content-Type header
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT
+    [UPDATE].n All request body are required except payload, preview, tags, and
+    contentType. contentType values is used to enforce the Content-Type header
     needed by the client to upload the content using the S3 presigned URL. If not
     specified, it will use fileExtension value.
 

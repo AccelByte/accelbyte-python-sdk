@@ -1,4 +1,4 @@
-# justice-gdpr-service (1.12.0)
+# justice-gdpr-service (1.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,9 +32,10 @@ from ...models import ResponseError
 class GetAdminEmailConfiguration(Operation):
     """Get admin email addresses configuration (GetAdminEmailConfiguration)
 
-    Get list of admin email address configuration. <p>Required permission
-    <code>ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [READ]</code> and scope
-    <code>account</code></p>
+    Get list of admin email address configuration.
+
+    Required permission `ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [READ]`
+    and scope `account`
 
 
     Required Permission(s):

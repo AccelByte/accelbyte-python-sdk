@@ -34,21 +34,24 @@ from ...models import ResponseErrorResponse
 class CreateNewGroupPublicV1(Operation):
     """create new group (createNewGroupPublicV1)
 
-    <p>Required valid user authentication </p> <p>This endpoint is used to create
-    new group</p> <p>There are some fields that needs to be fulfilled</p> <ul>
-    <li><b>groupDescription</b>: the description of the group (optional)</li>
-    <li><b>groupIcon</b>: group icon URL link (optional)</li>
-    <li><b>groupName</b>: name of the group</li> <li><b>groupRegion</b>: region of
-    the group</li> <li><b>groupRules</b>: rules for specific group. It consists of
-    groupCustomRule that can be used to save custom rule, and groupPredefinedRules
-    that has similar usage with configuration, but this rule only works in
-    specific group</li> <li><b>allowedAction</b>: available action in group
-    service. It consist of joinGroup and inviteGroup</li>
-    <li><b>ruleAttribute</b>: attribute of the player that needs to be
-    checked</li> <li><b>ruleCriteria</b>: criteria of the value. The value will be
-    in enum of EQUAL, MINIMUM, MAXIMUM</li> <li><b>ruleValue</b>: value that needs
-    to be checked</li> <li><b>customAttributes</b>: additional custom group
-    attributes (optional)</li> </ul> <p>Action Code: 73304</p>
+    Required valid user authentication
+
+    This endpoint is used to create new group
+
+    There are some fields that needs to be fulfilled
+
+      * groupDescription : the description of the group (optional)
+      * groupIcon : group icon URL link (optional)
+      * groupName : name of the group
+      * groupRegion : region of the group
+      * groupRules : rules for specific group. It consists of groupCustomRule that can be used to save custom rule, and groupPredefinedRules that has similar usage with configuration, but this rule only works in specific group
+      * allowedAction : available action in group service. It consist of joinGroup and inviteGroup
+      * ruleAttribute : attribute of the player that needs to be checked
+      * ruleCriteria : criteria of the value. The value will be in enum of EQUAL, MINIMUM, MAXIMUM
+      * ruleValue : value that needs to be checked
+      * customAttributes : additional custom group attributes (optional)
+
+    Action Code: 73304
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,8 +34,10 @@ from ...models import PaymentToken
 class Pay(Operation):
     """Do payment (pay)
 
-    Do payment(For now, this only support checkout.com).<br>Other detail info:
-    <ul><li><i>Returns</i>: Payment process result</li></ul>
+    Do payment(For now, this only support checkout.com).
+    Other detail info:
+
+      * Returns : Payment process result
 
 
     Properties:

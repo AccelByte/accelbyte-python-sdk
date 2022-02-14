@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,12 +33,13 @@ from ...models import ItemInfo
 class PublicGetItemBySku(Operation):
     """Get item by sku (publicGetItemBySku)
 
-    This API is used to get the item by sku.<p>Other detail info:
-    <ul><li><i>Optional permission</i>: resource="PREVIEW", action=1(CREATE) (user
-    with this permission can view draft store item)</li><li><i>Optional
-    permission</i>: resource="SANDBOX", action=1(CREATE) (user with this
-    permission can view draft store item)</li><li><i>Returns</i>: the item with
-    sku</li></ul>
+    This API is used to get the item by sku.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store item)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store item)
+      *  Returns : the item with sku
 
 
     Properties:

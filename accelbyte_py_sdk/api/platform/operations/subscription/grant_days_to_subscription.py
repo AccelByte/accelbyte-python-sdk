@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,12 +35,14 @@ class GrantDaysToSubscription(Operation):
     """Grant days to a subscription (grantDaysToSubscription)
 
     Grant days to a subscription, if grantDays is positive, it will add free days
-    and push the next billing date by the amount of day.<br>if the grantDays is
-    negative or zero, it only apply to active/cancelled subscription, remove days
-    will decrease current period end, and move the next billing date
-    closer.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4
-    (UPDATE)</li><li><i>Returns</i>: updated subscription</li></ul>
+    and push the next billing date by the amount of day.
+    if the grantDays is negative or zero, it only apply to active/cancelled
+    subscription, remove days will decrease current period end, and move the next
+    billing date closer.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
+      *  Returns : updated subscription
 
 
     Required Permission(s):

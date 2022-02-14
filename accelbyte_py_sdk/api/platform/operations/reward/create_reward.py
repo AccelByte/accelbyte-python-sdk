@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,9 +35,11 @@ from ...models import ValidationErrorEntity
 class CreateReward(Operation):
     """Create a reward (createReward)
 
-    This API is used to create a reward.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=1
-    (CREATE)</li><li><i>Returns</i>: created reward data</li></ul>
+    This API is used to create a reward.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=1 (CREATE)
+      *  Returns : created reward data
 
 
     Required Permission(s):

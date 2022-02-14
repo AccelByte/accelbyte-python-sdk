@@ -1,4 +1,4 @@
-# justice-ugc-service (1.12.0)
+# justice-ugc-service (1.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -36,8 +36,8 @@ from ...models import ResponseError
 class AdminUploadContentDirect(Operation):
     """Upload content to a channel (AdminUploadContentDirect)
 
-    Required permission <b>ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT
-    [CREATE]</b>.n All request body are required except preview and tags.
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT
+    [CREATE].n All request body are required except preview and tags.
 
 
     Required Permission(s):

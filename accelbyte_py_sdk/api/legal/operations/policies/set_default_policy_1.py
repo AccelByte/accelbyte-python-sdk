@@ -1,4 +1,4 @@
-# justice-legal-service (1.16.0)
+# justice-legal-service (1.17.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -30,9 +30,10 @@ from .....core import HttpResponse
 class SetDefaultPolicy1(Operation):
     """Set Default Policy (setDefaultPolicy_1)
 
-    Update a policy to be the default.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:*:LEGAL", action=4
-    (UPDATE)</li></ul>
+    Update a policy to be the default.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
 
 
     Required Permission(s):

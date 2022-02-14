@@ -1,4 +1,4 @@
-# justice-iam-service (5.1.1)
+# justice-iam-service (5.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -37,9 +37,11 @@ class TokenGrantV3(Operation):
 
       1. Grant Type == `authorization_code`:
         It generates the user token by given the authorization code which generated in "/v3/oauth/auth" API response. It should also pass in the redirect_uri, which should be the same as generating the authorization code request.
-      2. Grant Type == `refresh_token`:
+      2. Grant Type == `password`:
+        The grant type to use for authenticating a user, whether it's by email / username and password combination or through platform.
+      3. Grant Type == `refresh_token`:
         Used to get a new access token for a valid refresh token.
-      3. Grant Type == `client_credentials`:
+      4. Grant Type == `client_credentials`:
         It generates a token by checking the client credentials provided through Authorization header.
 
     ## Access Token Content
@@ -95,9 +97,6 @@ class TokenGrantV3(Operation):
     action code: 10703
 
 
-    Required Scope(s):
-        - of
-
     Properties:
         url: /iam/v3/oauth/token
 
@@ -119,9 +118,15 @@ class TokenGrantV3(Operation):
 
         code_verifier: (code_verifier) OPTIONAL str in form_data
 
+        extend_exp: (extend_exp) OPTIONAL bool in form_data
+
+        password: (password) OPTIONAL str in form_data
+
         redirect_uri: (redirect_uri) OPTIONAL str in form_data
 
         refresh_token: (refresh_token) OPTIONAL str in form_data
+
+        username: (username) OPTIONAL str in form_data
 
         grant_type: (grant_type) REQUIRED str in form_data
 
@@ -148,8 +153,11 @@ class TokenGrantV3(Operation):
     client_id: str                                                                                 # OPTIONAL in [form_data]
     code: str                                                                                      # OPTIONAL in [form_data]
     code_verifier: str                                                                             # OPTIONAL in [form_data]
+    extend_exp: bool                                                                               # OPTIONAL in [form_data]
+    password: str                                                                                  # OPTIONAL in [form_data]
     redirect_uri: str                                                                              # OPTIONAL in [form_data]
     refresh_token: str                                                                             # OPTIONAL in [form_data]
+    username: str                                                                                  # OPTIONAL in [form_data]
     grant_type: str                                                                                # REQUIRED in [form_data]
 
     # endregion fields
@@ -220,10 +228,16 @@ class TokenGrantV3(Operation):
             result["code"] = self.code
         if hasattr(self, "code_verifier"):
             result["code_verifier"] = self.code_verifier
+        if hasattr(self, "extend_exp"):
+            result["extend_exp"] = self.extend_exp
+        if hasattr(self, "password"):
+            result["password"] = self.password
         if hasattr(self, "redirect_uri"):
             result["redirect_uri"] = self.redirect_uri
         if hasattr(self, "refresh_token"):
             result["refresh_token"] = self.refresh_token
+        if hasattr(self, "username"):
+            result["username"] = self.username
         if hasattr(self, "grant_type"):
             result["grant_type"] = self.grant_type
         return result
@@ -257,12 +271,24 @@ class TokenGrantV3(Operation):
         self.code_verifier = value
         return self
 
+    def with_extend_exp(self, value: bool) -> TokenGrantV3:
+        self.extend_exp = value
+        return self
+
+    def with_password(self, value: str) -> TokenGrantV3:
+        self.password = value
+        return self
+
     def with_redirect_uri(self, value: str) -> TokenGrantV3:
         self.redirect_uri = value
         return self
 
     def with_refresh_token(self, value: str) -> TokenGrantV3:
         self.refresh_token = value
+        return self
+
+    def with_username(self, value: str) -> TokenGrantV3:
+        self.username = value
         return self
 
     def with_grant_type(self, value: str) -> TokenGrantV3:
@@ -291,6 +317,14 @@ class TokenGrantV3(Operation):
             result["code_verifier"] = str(self.code_verifier)
         elif include_empty:
             result["code_verifier"] = str()
+        if hasattr(self, "extend_exp") and self.extend_exp:
+            result["extend_exp"] = bool(self.extend_exp)
+        elif include_empty:
+            result["extend_exp"] = bool()
+        if hasattr(self, "password") and self.password:
+            result["password"] = str(self.password)
+        elif include_empty:
+            result["password"] = str()
         if hasattr(self, "redirect_uri") and self.redirect_uri:
             result["redirect_uri"] = str(self.redirect_uri)
         elif include_empty:
@@ -299,6 +333,10 @@ class TokenGrantV3(Operation):
             result["refresh_token"] = str(self.refresh_token)
         elif include_empty:
             result["refresh_token"] = str()
+        if hasattr(self, "username") and self.username:
+            result["username"] = str(self.username)
+        elif include_empty:
+            result["username"] = str()
         if hasattr(self, "grant_type") and self.grant_type:
             result["grant_type"] = str(self.grant_type)
         elif include_empty:
@@ -348,8 +386,11 @@ class TokenGrantV3(Operation):
         client_id: Optional[str] = None,
         code: Optional[str] = None,
         code_verifier: Optional[str] = None,
+        extend_exp: Optional[bool] = None,
+        password: Optional[str] = None,
         redirect_uri: Optional[str] = None,
         refresh_token: Optional[str] = None,
+        username: Optional[str] = None,
     ) -> TokenGrantV3:
         instance = cls()
         instance.grant_type = grant_type
@@ -361,10 +402,16 @@ class TokenGrantV3(Operation):
             instance.code = code
         if code_verifier is not None:
             instance.code_verifier = code_verifier
+        if extend_exp is not None:
+            instance.extend_exp = extend_exp
+        if password is not None:
+            instance.password = password
         if redirect_uri is not None:
             instance.redirect_uri = redirect_uri
         if refresh_token is not None:
             instance.refresh_token = refresh_token
+        if username is not None:
+            instance.username = username
         return instance
 
     @classmethod
@@ -386,6 +433,14 @@ class TokenGrantV3(Operation):
             instance.code_verifier = str(dict_["code_verifier"])
         elif include_empty:
             instance.code_verifier = str()
+        if "extend_exp" in dict_ and dict_["extend_exp"] is not None:
+            instance.extend_exp = bool(dict_["extend_exp"])
+        elif include_empty:
+            instance.extend_exp = bool()
+        if "password" in dict_ and dict_["password"] is not None:
+            instance.password = str(dict_["password"])
+        elif include_empty:
+            instance.password = str()
         if "redirect_uri" in dict_ and dict_["redirect_uri"] is not None:
             instance.redirect_uri = str(dict_["redirect_uri"])
         elif include_empty:
@@ -394,6 +449,10 @@ class TokenGrantV3(Operation):
             instance.refresh_token = str(dict_["refresh_token"])
         elif include_empty:
             instance.refresh_token = str()
+        if "username" in dict_ and dict_["username"] is not None:
+            instance.username = str(dict_["username"])
+        elif include_empty:
+            instance.username = str()
         if "grant_type" in dict_ and dict_["grant_type"] is not None:
             instance.grant_type = str(dict_["grant_type"])
         elif include_empty:
@@ -407,8 +466,11 @@ class TokenGrantV3(Operation):
             "client_id": "client_id",
             "code": "code",
             "code_verifier": "code_verifier",
+            "extend_exp": "extend_exp",
+            "password": "password",
             "redirect_uri": "redirect_uri",
             "refresh_token": "refresh_token",
+            "username": "username",
             "grant_type": "grant_type",
         }
 

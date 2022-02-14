@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,10 +33,12 @@ from ...models import StoreBackupInfo
 class GetPublishedStoreBackup(Operation):
     """Get a published store's backup (getPublishedStoreBackup)
 
-    This API is used to get a store's backup. <p>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2
-    (READ)</li><li><i>Returns</i>: store backup info</li></ul>
+    This API is used to get a store's backup.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
+      *  Returns : store backup info
 
 
     Required Permission(s):

@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,11 +34,13 @@ from ...models import ErrorEntity
 class AddCountryGroup(Operation):
     """Add a country group (addCountryGroup)
 
-    Add a country groups<br>Country code must follow ISO3166-1 alpha-2.<br/>Other
-    detail info: <ul><li><i>Required permission</i>: resource =
-    <b>"ADMIN:NAMESPACE:{namespace}:MISC"</b>, action=1
-    <b>(CREATE)</b></li><li><i>Action code</i>: 11201</li><li><i>Returns</i>:
-    newly created country group</li></ul>
+    Add a country groups
+    Country code must follow ISO3166-1 alpha-2.
+    Other detail info:
+
+      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=1 (CREATE)
+      *  Action code : 11201
+      *  Returns : newly created country group
 
 
     Required Permission(s):

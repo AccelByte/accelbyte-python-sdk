@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,10 +33,11 @@ from ...models import RewardInfo
 class GetReward(Operation):
     """Get a reward (getReward)
 
-    This API is used to get reward by reward Id.<br>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2
-    (READ)</li><li><i>Returns</i>: reward instance</li></ul>
+    This API is used to get reward by reward Id.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
+      *  Returns : reward instance
 
 
     Required Permission(s):

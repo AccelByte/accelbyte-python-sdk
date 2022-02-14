@@ -32,10 +32,12 @@ from ...models import ResponseErrorResponse
 class DeleteGroupAdminV1(Operation):
     """Delete existing group (deleteGroupAdminV1)
 
-    <p>Required Permission: "ADMIN:NAMESPACE:{namespace}:GROUP:{groupId}
-    [DELETE]"</p> <p>Delete existing group. It will check whether the groupID is
-    exist before doing the process to delete the group.</p> <p>Action Code:
-    73302</p>
+    Required Permission: "ADMIN:NAMESPACE:{namespace}:GROUP:{groupId} [DELETE]"
+
+    Delete existing group. It will check whether the groupID is exist before doing
+    the process to delete the group.
+
+    Action Code: 73302
 
 
     Required Permission(s):

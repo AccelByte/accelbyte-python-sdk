@@ -1,4 +1,4 @@
-# justice-iam-service (5.1.1)
+# justice-iam-service (5.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -46,9 +46,9 @@ class AdminGetUserPlatformAccountsV3(Operation):
 
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
-
         - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
+
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms

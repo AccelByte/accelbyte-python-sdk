@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,9 +32,11 @@ from ...models import CodeInfoPagingSlicedResult
 class QueryCodes(Operation):
     """Query codes (queryCodes)
 
-    Query campaign codes.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2
-    (READ) (READ)</li><li><i>Returns</i>: list of codes</li></ul>
+    Query campaign codes.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ) (READ)
+      *  Returns : list of codes
 
 
     Required Permission(s):

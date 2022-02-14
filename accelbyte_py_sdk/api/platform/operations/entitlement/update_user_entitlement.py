@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -36,10 +36,11 @@ class UpdateUserEntitlement(Operation):
     """Update user entitlement (updateUserEntitlement)
 
     Update user entitlement. If update CONSUMABLE entitlement useCount to 0, the
-    status will be CONSUMED.<br>Other detail info: <ul><li><i>Required
-    permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4
-    (UPDATE)</li><li><i>Returns</i>: updated entitlement</li></ul>
+    status will be CONSUMED.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : updated entitlement
 
 
     Required Permission(s):

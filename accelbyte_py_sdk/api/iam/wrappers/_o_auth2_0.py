@@ -225,29 +225,35 @@ async def revoke_user_v3_async(user_id: str, namespace: Optional[str] = None, x_
 
 
 @same_doc_as(TokenGrantV3)
-def token_grant_v3(grant_type: str, client_id: Optional[str] = None, code: Optional[str] = None, code_verifier: Optional[str] = None, device_id: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def token_grant_v3(grant_type: str, client_id: Optional[str] = None, code: Optional[str] = None, code_verifier: Optional[str] = None, device_id: Optional[str] = None, extend_exp: Optional[bool] = None, password: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, username: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = TokenGrantV3.create(
         grant_type=grant_type,
         client_id=client_id,
         code=code,
         code_verifier=code_verifier,
         device_id=device_id,
+        extend_exp=extend_exp,
+        password=password,
         redirect_uri=redirect_uri,
         refresh_token=refresh_token,
+        username=username,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(TokenGrantV3)
-async def token_grant_v3_async(grant_type: str, client_id: Optional[str] = None, code: Optional[str] = None, code_verifier: Optional[str] = None, device_id: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def token_grant_v3_async(grant_type: str, client_id: Optional[str] = None, code: Optional[str] = None, code_verifier: Optional[str] = None, device_id: Optional[str] = None, extend_exp: Optional[bool] = None, password: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, username: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = TokenGrantV3.create(
         grant_type=grant_type,
         client_id=client_id,
         code=code,
         code_verifier=code_verifier,
         device_id=device_id,
+        extend_exp=extend_exp,
+        password=password,
         redirect_uri=redirect_uri,
         refresh_token=refresh_token,
+        username=username,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)
 

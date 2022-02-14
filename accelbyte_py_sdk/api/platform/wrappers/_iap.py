@@ -33,6 +33,7 @@ from ..models import ErrorEntity
 from ..models import GoogleIAPConfigInfo
 from ..models import GoogleIAPConfigRequest
 from ..models import GoogleIAPReceipt
+from ..models import GoogleReceiptResolveResult
 from ..models import IAPItemConfigInfo
 from ..models import IAPItemConfigUpdate
 from ..models import IAPOrderPagingSlicedResult
@@ -47,6 +48,9 @@ from ..models import SteamIAPConfig
 from ..models import SteamIAPConfigInfo
 from ..models import SteamIAPConfigRequest
 from ..models import SteamSyncRequest
+from ..models import TwitchIAPConfigInfo
+from ..models import TwitchIAPConfigRequest
+from ..models import TwitchSyncRequest
 from ..models import ValidationErrorEntity
 from ..models import XblIAPConfigInfo
 from ..models import XblIAPConfigRequest
@@ -60,6 +64,7 @@ from ..operations.iap import DeleteIAPItemConfig
 from ..operations.iap import DeletePlaystationIAPConfig
 from ..operations.iap import DeleteStadiaIAPConfig
 from ..operations.iap import DeleteSteamIAPConfig
+from ..operations.iap import DeleteTwitchIAPConfig
 from ..operations.iap import DeleteXblAPConfig
 from ..operations.iap import GetAppleIAPConfig
 from ..operations.iap import GetEpicGamesIAPConfig
@@ -68,6 +73,7 @@ from ..operations.iap import GetIAPItemConfig
 from ..operations.iap import GetPlayStationIAPConfig
 from ..operations.iap import GetStadiaIAPConfig
 from ..operations.iap import GetSteamIAPConfig
+from ..operations.iap import GetTwitchIAPConfig
 from ..operations.iap import GetXblIAPConfig
 from ..operations.iap import MockFulfillIAPItem
 from ..operations.iap import PublicFulfillAppleIAPItem
@@ -78,6 +84,7 @@ from ..operations.iap import QueryUserIAPOrders
 from ..operations.iap import SyncEpicGamesInventory
 from ..operations.iap import SyncStadiaEntitlement
 from ..operations.iap import SyncSteamInventory
+from ..operations.iap import SyncTwitchDropsEntitlement
 from ..operations.iap import SyncXboxInventory
 from ..operations.iap import UpdateAppleIAPConfig
 from ..operations.iap import UpdateEpicGamesIAPConfig
@@ -87,6 +94,7 @@ from ..operations.iap import UpdateIAPItemConfig
 from ..operations.iap import UpdatePlaystationIAPConfig
 from ..operations.iap import UpdateStadiaJsonConfigFile
 from ..operations.iap import UpdateSteamIAPConfig
+from ..operations.iap import UpdateTwitchIAPConfig
 from ..operations.iap import UpdateXblBPCertFile
 from ..operations.iap import UpdateXblIAPConfig
 
@@ -254,6 +262,30 @@ async def delete_steam_iap_config_async(namespace: Optional[str] = None, x_addit
         if error:
             return None, error
     request = DeleteSteamIAPConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(DeleteTwitchIAPConfig)
+def delete_twitch_iap_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteTwitchIAPConfig.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(DeleteTwitchIAPConfig)
+async def delete_twitch_iap_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteTwitchIAPConfig.create(
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)
@@ -446,6 +478,30 @@ async def get_steam_iap_config_async(namespace: Optional[str] = None, x_addition
         if error:
             return None, error
     request = GetSteamIAPConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetTwitchIAPConfig)
+def get_twitch_iap_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetTwitchIAPConfig.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetTwitchIAPConfig)
+async def get_twitch_iap_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetTwitchIAPConfig.create(
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)
@@ -737,6 +793,34 @@ async def sync_steam_inventory_async(user_id: str, body: Optional[SteamSyncReque
     return await run_request_async(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(SyncTwitchDropsEntitlement)
+def sync_twitch_drops_entitlement(user_id: str, body: Optional[TwitchSyncRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = SyncTwitchDropsEntitlement.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(SyncTwitchDropsEntitlement)
+async def sync_twitch_drops_entitlement_async(user_id: str, body: Optional[TwitchSyncRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = SyncTwitchDropsEntitlement.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(SyncXboxInventory)
 def sync_xbox_inventory(user_id: str, body: Optional[XblReconcileRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -967,6 +1051,32 @@ async def update_steam_iap_config_async(body: Optional[SteamIAPConfigRequest] = 
         if error:
             return None, error
     request = UpdateSteamIAPConfig.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdateTwitchIAPConfig)
+def update_twitch_iap_config(body: Optional[TwitchIAPConfigRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateTwitchIAPConfig.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdateTwitchIAPConfig)
+async def update_twitch_iap_config_async(body: Optional[TwitchIAPConfigRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateTwitchIAPConfig.create(
         body=body,
         namespace=namespace,
     )

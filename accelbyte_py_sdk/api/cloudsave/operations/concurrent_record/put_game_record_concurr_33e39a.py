@@ -1,4 +1,4 @@
-# justice-cloudsave-service (2.1.0)
+# justice-cloudsave-service (2.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,19 +33,38 @@ from ...models import ModelsResponseError
 class PutGameRecordConcurrentHandlerV1(Operation):
     """Create or replace game record (putGameRecordConcurrentHandlerV1)
 
-    <table> <tr> <td>Required Permission</td>
-    <td><code>NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]</code></td> </tr>
-    <tr> <td>Required Scope</td> <td><code>social</code></td> </tr> </table> <br/>
+    Required Permission | `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]`
+    ---|---
+    Required Scope | `social`
+
     If record already exists, it will be replaced with the one from request body
     (all fields will be deleted). If record is not exists, it will create a new
-    one with value from request body. Example: Replace all records <pre> //
-    existed record { "foo": "bar" } // new update (request body) { "foo_new":
-    "bar_new" } // result { "foo_new": "bar_new" } </pre> <b>Optimistic
-    Concurrency Control</b><br> This endpoint implement optimistic concurrency
-    control to avoid race condition. If the record has been updated since the
-    client fetch it, the server will return HTTP status code 412 (precondition
-    failed) and client need to redo the operation (fetch data and do update).
-    Otherwise, the server will process the request.
+    one with value from request body. Example: Replace all records
+
+
+
+            // existed record
+            {
+                "foo": "bar"
+            }
+
+            // new update (request body)
+            {
+                "foo_new": "bar_new"
+            }
+
+            // result
+            {
+                "foo_new": "bar_new"
+            }
+
+
+    Optimistic Concurrency Control
+    This endpoint implement optimistic concurrency control to avoid race
+    condition. If the record has been updated since the client fetch it, the
+    server will return HTTP status code 412 (precondition failed) and client need
+    to redo the operation (fetch data and do update). Otherwise, the server will
+    process the request.
 
 
     Required Permission(s):

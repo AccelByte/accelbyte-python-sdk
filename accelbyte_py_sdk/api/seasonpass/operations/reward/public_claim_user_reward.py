@@ -1,4 +1,4 @@
-# justice-seasonpass-service (1.7.0)
+# justice-seasonpass-service (1.8.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -43,6 +43,9 @@ class PublicClaimUserReward(Operation):
       *  Returns : user season data
 
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [UPDATE]
+
     Properties:
         url: /seasonpass/public/namespaces/{namespace}/users/{userId}/seasons/current/rewards
 
@@ -65,9 +68,9 @@ class PublicClaimUserReward(Operation):
     Responses:
         200: OK - ClaimableRewards (successful operation)
 
-        404: Not Found - ErrorEntity (49144: Reward [{code}] does not exist | 49148: User season does not exist | 49147: Published season does not exist)
-
         400: Bad Request - ErrorEntity (49124: Manual claim not supported | 20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49144: Reward [{code}] does not exist | 49148: User season does not exist | 49147: Published season does not exist)
 
         409: Conflict - ErrorEntity (49182: Reward is already claimed | 49188: Reward is claiming)
     """
@@ -211,17 +214,17 @@ class PublicClaimUserReward(Operation):
 
         200: OK - ClaimableRewards (successful operation)
 
-        404: Not Found - ErrorEntity (49144: Reward [{code}] does not exist | 49148: User season does not exist | 49147: Published season does not exist)
-
         400: Bad Request - ErrorEntity (49124: Manual claim not supported | 20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49144: Reward [{code}] does not exist | 49148: User season does not exist | 49147: Published season does not exist)
 
         409: Conflict - ErrorEntity (49182: Reward is already claimed | 49188: Reward is claiming)
         """
         if code == 200:
             return ClaimableRewards.create_from_dict(content), None
-        if code == 404:
-            return None, ErrorEntity.create_from_dict(content)
         if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 409:
             return None, ErrorEntity.create_from_dict(content)

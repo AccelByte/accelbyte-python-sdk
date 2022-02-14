@@ -1,6 +1,6 @@
 """Auto-generated package that contains models used by the justice-platform-service."""
 
-__version__ = "4.1.1"
+__version__ = "4.2.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -88,6 +88,7 @@ from .full_item_paging_sliced_result import FullItemPagingSlicedResult
 from .google_iap_config_info import GoogleIAPConfigInfo
 from .google_iap_config_request import GoogleIAPConfigRequest
 from .google_iap_receipt import GoogleIAPReceipt
+from .google_receipt_resolve_result import GoogleReceiptResolveResult
 from .grant_subscription_days_request import GrantSubscriptionDaysRequest
 from .hierarchical_category_info import HierarchicalCategoryInfo
 from .iap_item_config_info import IAPItemConfigInfo
@@ -226,6 +227,9 @@ from .ticket_sale_increment_result import TicketSaleIncrementResult
 from .timed_ownership import TimedOwnership
 from .trade_notification import TradeNotification
 from .transaction import Transaction
+from .twitch_iap_config_info import TwitchIAPConfigInfo
+from .twitch_iap_config_request import TwitchIAPConfigRequest
+from .twitch_sync_request import TwitchSyncRequest
 from .validation_error_entity import ValidationErrorEntity
 from .wallet_info import WalletInfo
 from .wallet_paging_sliced_result import WalletPagingSlicedResult

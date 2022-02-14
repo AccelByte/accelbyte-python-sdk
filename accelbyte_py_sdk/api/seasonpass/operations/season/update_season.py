@@ -1,4 +1,4 @@
-# justice-seasonpass-service (1.7.0)
+# justice-seasonpass-service (1.8.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -43,6 +43,9 @@ class UpdateSeason(Operation):
       *  Returns : updated season
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}
 
@@ -65,9 +68,9 @@ class UpdateSeason(Operation):
     Responses:
         200: OK - SeasonInfo (successful operation)
 
-        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 49141: Tier item does not exist in the store of namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
-
         400: Bad Request - ErrorEntity (20026: publisher namespace not allowed | 49121: Default language [{language}] required in localizations | 49122: Invalid time range)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 49141: Tier item does not exist in the store of namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (49171: Invalid season status [{status}])
 
@@ -213,9 +216,9 @@ class UpdateSeason(Operation):
 
         200: OK - SeasonInfo (successful operation)
 
-        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 49141: Tier item does not exist in the store of namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
-
         400: Bad Request - ErrorEntity (20026: publisher namespace not allowed | 49121: Default language [{language}] required in localizations | 49122: Invalid time range)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 49141: Tier item does not exist in the store of namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (49171: Invalid season status [{status}])
 
@@ -223,9 +226,9 @@ class UpdateSeason(Operation):
         """
         if code == 200:
             return SeasonInfo.create_from_dict(content), None
-        if code == 404:
-            return None, ErrorEntity.create_from_dict(content)
         if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 409:
             return None, ErrorEntity.create_from_dict(content)

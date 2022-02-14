@@ -1,4 +1,4 @@
-# justice-cloudsave-service (2.1.0)
+# justice-cloudsave-service (2.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,10 +33,12 @@ from ...models import ModelsResponseError
 class GetPlayerRecordHandlerV1(Operation):
     """Get player record (getPlayerRecordHandlerV1)
 
-    <table> <tr> <td>Required Permission</td>
-    <td><code>NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD
-    [READ]</code></td> </tr> <tr> <td>Required Scope</td>
-    <td><code>social</code></td> </tr> </table> <br/> Get player record by its key
+    Required Permission | `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD
+    [READ]`
+    ---|---
+    Required Scope | `social`
+
+    Get player record by its key
 
 
     Required Permission(s):

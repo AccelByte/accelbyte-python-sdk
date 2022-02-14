@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,10 +35,12 @@ from ...models import ValidationErrorEntity
 class CreateStore(Operation):
     """Create a store (createStore)
 
-    This API is used to create a non published store in a namespace.<p>Other
-    detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1
-    (CREATE)</li><li><i>Returns</i>: created store data</li></ul>
+    This API is used to create a non published store in a namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
+      *  Returns : created store data
 
 
     Required Permission(s):

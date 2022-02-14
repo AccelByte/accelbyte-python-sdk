@@ -1,6 +1,6 @@
 """Auto-generated top-level package for the justice-social-service."""
 
-__version__ = "1.23.0"
+__version__ = "1.24.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -111,6 +111,8 @@ from .wrappers import bulk_reset_user_stat_item_2
 from .wrappers import bulk_reset_user_stat_item_2_async
 from .wrappers import bulk_reset_user_stat_item_3
 from .wrappers import bulk_reset_user_stat_item_3_async
+from .wrappers import bulk_reset_user_stat_item_values
+from .wrappers import bulk_reset_user_stat_item_values_async
 from .wrappers import bulk_update_user_stat_item
 from .wrappers import bulk_update_user_stat_item_async
 from .wrappers import bulk_update_user_stat_item_1

@@ -34,8 +34,8 @@ from ...models import ModelsEventRegistry
 class UpdateEventRegistryHandler(Operation):
     """Update an eventID data in the Event Registry (UpdateEventRegistryHandler)
 
-    Required permission <code>ADMIN:NAMESPACE:{namespace}:EVENT [UPDATE]</code>and
-    scope <code>analytics</code>
+    Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [UPDATE]`and scope
+    `analytics`
 
 
     Required Permission(s):

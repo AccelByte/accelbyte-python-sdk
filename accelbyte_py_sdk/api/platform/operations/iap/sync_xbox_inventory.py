@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,12 @@ from ...models import XblReconcileResult
 class SyncXboxInventory(Operation):
     """Sync Xbox inventory. (syncXboxInventory)
 
-    Sync Xbox inventory's items.<p>Other detail info: <ul><li><i>Required
-    permission</i>: resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4
-    (UPDATE)</li><li><i>Returns</i>: </li></ul>
+    Sync Xbox inventory's items.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
+      *  Returns :
 
 
     Required Permission(s):

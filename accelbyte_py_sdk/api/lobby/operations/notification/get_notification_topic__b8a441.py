@@ -33,9 +33,10 @@ from ...models import RestapiErrorResponseV1
 class GetNotificationTopicV1Admin(Operation):
     """get topic information by topic name (getNotificationTopicV1Admin)
 
-    Required permission : <code>ADMIN:NAMESPACE:{namespace}:NOTIFICATION
-    [READ]</code> with scope <code>social</code> <br>get topic information by
-    topic name.<br/> Action Code: 50215
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with
+    scope `social`
+    get topic information by topic name.
+    Action Code: 50215
 
 
     Required Permission(s):

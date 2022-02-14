@@ -33,8 +33,9 @@ from ...models import RestapiErrorResponseBody
 class AdminUpdateProfanityList(Operation):
     """update the list (adminUpdateProfanityList)
 
-    Required permission : <code>ADMIN:NAMESPACE:{namespace}:PROFANITY
-    [UPDATE]</code> with scope <code>social</code> <br>update the list
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [UPDATE]` with
+    scope `social`
+    update the list
 
 
     Required Permission(s):

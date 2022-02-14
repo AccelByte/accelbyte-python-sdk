@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,10 +35,11 @@ from ...models import ValidationErrorEntity
 class GrantUserEntitlement(Operation):
     """Grant user entitlement (grantUserEntitlement)
 
-    Grant user entitlement.<br>Other detail info: <ul><li><i>Required
-    permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=1
-    (CREATE)</li><li><i>Returns</i>: granted entitlement</li></ul>
+    Grant user entitlement.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=1 (CREATE)
+      *  Returns : granted entitlement
 
 
     Required Permission(s):

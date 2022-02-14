@@ -1,4 +1,4 @@
-# justice-leaderboard-service (2.12.0)
+# justice-leaderboard-service (2.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,7 +33,7 @@ from ...models import ResponseErrorResponse
 class GetAllTimeLeaderboardRankingPublicV1(Operation):
     """Get all time leaderboard ranking data (GetAllTimeLeaderboardRankingPublicV1)
 
-    <p>Get rankings in an all time leaderboard.</p>
+    Get rankings in an all time leaderboard.
 
 
     Properties:

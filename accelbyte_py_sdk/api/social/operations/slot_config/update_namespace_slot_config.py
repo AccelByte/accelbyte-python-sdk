@@ -1,4 +1,4 @@
-# justice-social-service (1.23.0)
+# justice-social-service (1.24.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,10 +33,11 @@ from ...models import SlotConfigUpdate
 class UpdateNamespaceSlotConfig(Operation):
     """Update a namespace slot configuration (updateNamespaceSlotConfig)
 
-    Update a slot namespace configuration.<br>Other detail
-    info:<ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:SLOTCONFIG", action=4
-    (UPDATE)</li><li><i>Returns</i>: updated namespace slot config</li></ul>
+    Update a slot namespace configuration.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:SLOTCONFIG", action=4 (UPDATE)
+      *  Returns : updated namespace slot config
 
 
     Required Permission(s):

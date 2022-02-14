@@ -1,4 +1,4 @@
-# justice-ugc-service (1.12.0)
+# justice-ugc-service (1.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,8 +32,7 @@ from ...models import ResponseError
 class DeleteChannel(Operation):
     """Delete Channel (DeleteChannel)
 
-    Required permission <b>NAMESPACE:{namespace}:USER:{userId}:CHANNEL
-    [DELETE]</b>
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
 
 
     Required Permission(s):

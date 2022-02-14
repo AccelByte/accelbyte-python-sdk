@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,11 +33,22 @@ from ...models import TestResult
 class TestStripeConfig(Operation):
     """Test stripe configuration (testStripeConfig)
 
-    Test stripe configuration. <h4>Check List:</h4>
-    <ul><li>secretKey</li><li>allowedPaymentMethodTypes</li></ul><h4>Non-check
-    list:</h4><ul><li>publishableKey</li><li>webhookSecret</li></ul>Other detail
-    info: <ul><li><i>Required permission</i>: resource="ADMIN:PAYMENT:CONFIG",
-    action=4 (UPDATE)</li><li><i>Returns</i>: test adyen config</li></ul>
+    Test stripe configuration.
+
+    #### Check List:
+
+      * secretKey
+      * allowedPaymentMethodTypes
+
+    #### Non-check list:
+
+      * publishableKey
+      * webhookSecret
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
+      *  Returns : test adyen config
 
 
     Required Permission(s):

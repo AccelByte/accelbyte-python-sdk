@@ -33,16 +33,23 @@ from ...models import ResponseErrorResponse
 class JoinGroupV1(Operation):
     """Join to group (JoinGroupV1)
 
-    <p>Required valid user authentication </p> <p>This endpoint is used to join as
-    group member</p> <p>Join to the group. This endpoint will check the the the
-    type of the group based on the groupID.</p> <p>Additional Information:</p>
-    <ul> <li>User cannot join to the group with PRIVATE type</li> <li>Joining
-    PUBLIC group type will create join request and need approval from the
-    privileged group member to accept the request to become the member</li>
-    <li>Joining OPEN group type will make this user become member of that group
-    immediately</li> </ul> <p>This endpoint will return status field to give
-    information whether the user is JOINED or REQUESTED to join to the specific
-    group</p> <p>Action Code: 73403</p>
+    Required valid user authentication
+
+    This endpoint is used to join as group member
+
+    Join to the group. This endpoint will check the the the type of the group
+    based on the groupID.
+
+    Additional Information:
+
+      * User cannot join to the group with PRIVATE type
+      * Joining PUBLIC group type will create join request and need approval from the privileged group member to accept the request to become the member
+      * Joining OPEN group type will make this user become member of that group immediately
+
+    This endpoint will return status field to give information whether the user is
+    JOINED or REQUESTED to join to the specific group
+
+    Action Code: 73403
 
 
     Properties:

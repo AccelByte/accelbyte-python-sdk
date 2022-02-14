@@ -34,8 +34,8 @@ from ...models import ModelsEventRegistry
 class RegisterEventHandler(Operation):
     """Register an eventID to the Event Registry (RegisterEventHandler)
 
-    Required permission <code>ADMIN:NAMESPACE:{namespace}:EVENT [CREATE]</code>and
-    scope <code>analytics</code>
+    Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [CREATE]`and scope
+    `analytics`
 
 
     Required Permission(s):

@@ -1,4 +1,4 @@
-# justice-seasonpass-service (1.7.0)
+# justice-seasonpass-service (1.8.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -43,6 +43,9 @@ class GrantUserExp(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=4 (UPDATE)
       *  Returns : user season data
 
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [UPDATE]
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/exp

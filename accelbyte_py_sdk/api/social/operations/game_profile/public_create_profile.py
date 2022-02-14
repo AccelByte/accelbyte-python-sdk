@@ -1,4 +1,4 @@
-# justice-social-service (1.23.0)
+# justice-social-service (1.24.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,15 @@ from ...models import ValidationErrorEntity
 class PublicCreateProfile(Operation):
     """Create a new profile for user (publicCreateProfile)
 
-    Create new profile for user.<br>Other detail info:<ul><li><i>Required
-    permission</li>: resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE",
-    action=1 (CREATE)</li><li><i>Returns</li>: created game profile</li></ul>
+    Create new profile for user.
+    Other detail info:
+
+      *  Required permission
+    : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=1
+    (CREATE)
+
+      *  Returns
+    : created game profile
 
 
     Required Permission(s):

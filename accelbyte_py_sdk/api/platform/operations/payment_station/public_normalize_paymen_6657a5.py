@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -30,23 +30,25 @@ from .....core import HttpResponse
 class PublicNormalizePaymentReturnUrl(Operation):
     """Normalize payment return url (publicNormalizePaymentReturnUrl)
 
-    Normalize payment return url for payment provider<br>Payment response:
-    <table><tr><td>Field</td><td>Type</td><td>Required</td><td>Description</td></tr><tr><td>orderNo</td><td>String</td><td>Yes</td><td>order
-    no</td></tr><tr><td>paymentStatus</td><td>String</td><td>Yes</td><td><ul><li>DONE:
-    The payment was successfully completed.</li><li>CANCELLED: The payment was
-    cancelled by the shopper before completion, or the shopper returned to the
-    merchant's site before completing the transaction.</li><li>PENDING: Inform the
-    shopper that you've received their order, and are waiting for the payment to
-    be completed. When the shopper has completed the payment you will receive a
-    successful AUTHORISATION.</li><li>RECEIVED: Inform the shopper that you've
-    received their order, and are waiting for the payment to
-    clear.</li><li>UNKNOWN: An error occurred during the payment
-    processing.</li><li>FAILED: Shopper paid failed because of various
-    reasons.</li></ul></td></tr><tr><td>reason</td><td>String</td><td>No</td><td>payment
-    status reason</td></tr></table>Other detail info: <ul><li><i>xsolla</i>:
-    parameters 'user_id', 'foreinginvoice', 'invoice_id' and 'status' will be
-    automatically added to the link</li><li><i>adyen</i>:
-    https://docs.adyen.com/developers/checkout/web-sdk</li></ul>
+    Normalize payment return url for payment provider
+    Payment response: Field| Type| Required| Description
+    ---|---|---|---
+    orderNo| String| Yes| order no
+    paymentStatus| String| Yes|
+
+      * DONE: The payment was successfully completed.
+      * CANCELLED: The payment was cancelled by the shopper before completion, or the shopper returned to the merchant's site before completing the transaction.
+      * PENDING: Inform the shopper that you've received their order, and are waiting for the payment to be completed. When the shopper has completed the payment you will receive a successful AUTHORISATION.
+      * RECEIVED: Inform the shopper that you've received their order, and are waiting for the payment to clear.
+      * UNKNOWN: An error occurred during the payment processing.
+      * FAILED: Shopper paid failed because of various reasons.
+
+
+    reason| String| No| payment status reason
+    Other detail info:
+
+      * xsolla : parameters 'user_id', 'foreinginvoice', 'invoice_id' and 'status' will be automatically added to the link
+      *  adyen : https://docs.adyen.com/developers/checkout/web-sdk
 
 
     Properties:

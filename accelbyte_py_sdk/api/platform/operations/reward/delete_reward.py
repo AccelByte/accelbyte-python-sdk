@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,10 +33,12 @@ from ...models import RewardInfo
 class DeleteReward(Operation):
     """Delete a reward (deleteReward)
 
-    This API is used to delete a reward by reward Id. <p>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=8
-    (DELETE)</li><li><i>Returns</i>: the deleted reward data</li></ul>
+    This API is used to delete a reward by reward Id.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=8 (DELETE)
+      *  Returns : the deleted reward data
 
 
     Required Permission(s):

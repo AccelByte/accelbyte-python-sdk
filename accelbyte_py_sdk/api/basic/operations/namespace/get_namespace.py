@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,10 +34,12 @@ from ...models import ValidationErrorEntity
 class GetNamespace(Operation):
     """Get a namespace (getNamespace)
 
-    Get a namespace.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource=<b>"ADMIN:NAMESPACE:{namespace}:NAMESPACE"</b>, action=2
-    <b>(READ)</b></li><li><i>Action code</i>: 11304</li><li><i>Returns</i>:
-    namespace</li></ul>
+    Get a namespace.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
+      *  Action code : 11304
+      *  Returns : namespace
 
 
     Required Permission(s):

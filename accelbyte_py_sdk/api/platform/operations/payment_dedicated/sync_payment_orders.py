@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,9 +34,11 @@ class SyncPaymentOrders(Operation):
 
     Sync payment orders. If response contains nextEvaluatedKey, please use it as
     query param in the next call to fetch the next batch, a batch has 1000
-    elements or less.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:PAYMENT", action=2 (READ)</li><li><i>Returns</i>: sync payment
-    orders</li></ul>
+    elements or less.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT", action=2 (READ)
+      *  Returns : sync payment orders
 
 
     Required Permission(s):

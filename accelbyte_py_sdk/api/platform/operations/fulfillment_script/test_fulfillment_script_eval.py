@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,10 @@ from ...models import FulfillmentScriptEvalTestResult
 class TestFulfillmentScriptEval(Operation):
     """Test eval fulfillment script (testFulfillmentScriptEval)
 
-    <b>[TEST FACILITY ONLY]</b>Test eval fulfillment script.<br>Other detail info:
-    <ul><li><i>Required permission</i>: resource="ADMIN:FULFILLMENT", action=2
-    (READ)</li></ul>
+    [TEST FACILITY ONLY] Test eval fulfillment script.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:FULFILLMENT", action=2 (READ)
 
 
     Required Permission(s):

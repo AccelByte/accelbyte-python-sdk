@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -30,10 +30,11 @@ from .....core import HttpResponse
 class PublicDeletePaymentAccount(Operation):
     """Delete payment account (publicDeletePaymentAccount)
 
-    Delete payment account.<br>Other detail info: <ul><li><i>Required
-    permission</i>:
-    resource="NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT", action=8
-    (DELETE)</li><li><i>Returns</i>:</li></ul>
+    Delete payment account.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT", action=8 (DELETE)
+      *  Returns :
 
 
     Required Permission(s):

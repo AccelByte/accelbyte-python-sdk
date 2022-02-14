@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,10 +32,11 @@ from ...models import PurchasedItemCount
 class CountOfPurchasedItem(Operation):
     """Get the count of purchased item (countOfPurchasedItem)
 
-    This API is used to get the count of purchased item which is the order
-    target.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2
-    (READ)</li><li><i>Returns</i>: Item purchased count</li></ul>
+    This API is used to get the count of purchased item which is the order target.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
+      *  Returns : Item purchased count
 
 
     Required Permission(s):

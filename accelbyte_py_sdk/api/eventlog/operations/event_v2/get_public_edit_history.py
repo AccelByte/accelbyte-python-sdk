@@ -32,9 +32,16 @@ from ...models import ModelsEventResponseV2
 class GetPublicEditHistory(Operation):
     """Get a user edit history based on the provided type (GetPublicEditHistory)
 
-    <p>Available Type: </p> <ul> <li>email</li> <li>password</li>
-    <li>displayname</li> <li>dateofbirth</li> <li>country</li> <li>language</li>
-    </ul> <p>Requires a valid user access token</p>
+    Available Type:
+
+      * email
+      * password
+      * displayname
+      * dateofbirth
+      * country
+      * language
+
+    Requires a valid user access token
 
 
     Properties:

@@ -34,8 +34,11 @@ from ...models import ResponseErrorResponse
 class UpdateMemberRoleAdminV1(Operation):
     """update member role (updateMemberRoleAdminV1)
 
-    <p>Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]</p>
-    <p>This endpoint is used to get member role</p> <p>Action Code: 73204</p>
+    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]
+
+    This endpoint is used to get member role
+
+    Action Code: 73204
 
 
     Required Permission(s):

@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,10 +32,12 @@ from ...models import ErrorEntity
 class DeleteItem(Operation):
     """Delete an item (deleteItem)
 
-    This API is used to delete an item permanently, usually for test purpose.<b>DO
-    NOT delete already published item.</b><p>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=8 (DELETE)</li></ul>
+    This API is used to delete an item permanently, usually for test purpose. DO
+    NOT delete already published item.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=8 (DELETE)
 
 
     Required Permission(s):

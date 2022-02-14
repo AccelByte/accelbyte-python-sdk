@@ -1,4 +1,4 @@
-# justice-legal-service (1.16.0)
+# justice-legal-service (1.17.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,12 +32,12 @@ from ...models import RetrievePolicyPublicResponse
 class RetrieveLatestPolicies(Operation):
     """Retrieve Latest Policies by Country (retrieveLatestPolicies)
 
-    Retrieve all active latest policies based on a country.<br>Other detail info:
-    <ul><li><i>Leave the policyType empty if you want to be responded with all
-    policy type</i></li><li><i>Fill the tags if you want to filter the responded
-    policy by tags</i></li><li><i>Fill the defaultOnEmpty with true if you want to
-    be responded with default country-specific policy if your requested country is
-    not exist</i></li></ul>
+    Retrieve all active latest policies based on a country.
+    Other detail info:
+
+      * Leave the policyType empty if you want to be responded with all policy type
+      *  Fill the tags if you want to filter the responded policy by tags
+      *  Fill the defaultOnEmpty with true if you want to be responded with default country-specific policy if your requested country is not exist
 
 
     Properties:

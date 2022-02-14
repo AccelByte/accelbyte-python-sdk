@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,10 +32,12 @@ from ...models import BasicItem
 class ListBasicItemsByFeatures(Operation):
     """List basic items by features (listBasicItemsByFeatures)
 
-    <b>[SERVICE COMMUNICATION ONLY]</b> This API is used to list basic items by
-    features.<p>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2
-    (READ)</li><li><i>Returns</i>: the list of basic items</li></ul>
+    [SERVICE COMMUNICATION ONLY] This API is used to list basic items by features.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the list of basic items
 
 
     Required Permission(s):

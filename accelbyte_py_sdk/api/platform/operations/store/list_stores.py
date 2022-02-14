@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,10 +32,12 @@ from ...models import StoreInfo
 class ListStores(Operation):
     """List stores (listStores)
 
-    This API is used to list stores in a namespace.<p>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2
-    (READ)</li><li><i>Returns</i>: the list of stores</li></ul>
+    This API is used to list stores in a namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
+      *  Returns : the list of stores
 
 
     Required Permission(s):

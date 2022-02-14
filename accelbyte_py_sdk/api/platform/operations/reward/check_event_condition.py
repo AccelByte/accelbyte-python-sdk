@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,10 +34,10 @@ from ...models import EventPayload
 class CheckEventCondition(Operation):
     """Check if event payload match reward condition (checkEventCondition)
 
-    <b>[TEST FACILITY ONLY] Forbidden in live environment. </b>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2
-    (READ)</li><li><i>Returns</i>: match result</li></ul>
+    [TEST FACILITY ONLY] Forbidden in live environment. Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
+      *  Returns : match result
 
 
     Required Permission(s):

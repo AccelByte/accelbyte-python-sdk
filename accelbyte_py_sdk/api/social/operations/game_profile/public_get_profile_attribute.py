@@ -1,4 +1,4 @@
-# justice-social-service (1.23.0)
+# justice-social-service (1.24.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,11 @@ from ...models import ErrorEntity
 class PublicGetProfileAttribute(Operation):
     """Returns game profile attribute (publicGetProfileAttribute)
 
-    Returns game profile attribute.<br>Other detail info:<ul><li><i>Required
-    permission</i>: resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE",
-    action=2 (READ)</li><li><i>Returns</i>: attribute info</li></ul>
+    Returns game profile attribute.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=2 (READ)
+      *  Returns : attribute info
 
 
     Required Permission(s):

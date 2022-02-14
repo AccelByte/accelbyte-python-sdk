@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,12 @@ from ...models import ErrorEntity
 class GetEntitlement(Operation):
     """Get entitlement (getEntitlement)
 
-    Get entitlement.<p>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT", action=2
-    (READ)</li><li><i>Returns</i>: entitlement</li></ul>
+    Get entitlement.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
+      *  Returns : entitlement
 
 
     Required Permission(s):

@@ -27,6 +27,7 @@ from ..models import Tier
 from ..models import TierCreate
 from ..models import TierInput
 from ..models import TierPagingSlicedResult
+from ..models import TierReorder
 from ..models import UserExpGrant
 from ..models import UserSeasonSummary
 from ..models import UserTierGrant
@@ -37,6 +38,7 @@ from ..operations.tier import DeleteTier
 from ..operations.tier import GrantUserExp
 from ..operations.tier import GrantUserTier
 from ..operations.tier import QueryTiers
+from ..operations.tier import ReorderTier
 from ..operations.tier import UpdateTier
 
 
@@ -177,6 +179,36 @@ async def query_tiers_async(season_id: str, limit: Optional[int] = None, offset:
         season_id=season_id,
         limit=limit,
         offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(ReorderTier)
+def reorder_tier(id_: str, season_id: str, body: Optional[TierReorder] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ReorderTier.create(
+        id_=id_,
+        season_id=season_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(ReorderTier)
+async def reorder_tier_async(id_: str, season_id: str, body: Optional[TierReorder] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ReorderTier.create(
+        id_=id_,
+        season_id=season_id,
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)

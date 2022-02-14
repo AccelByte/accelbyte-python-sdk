@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,11 @@ from ...models import PaymentProviderConfigInfo
 class DebugMatchedPaymentProviderConfig(Operation):
     """Debug matched payment provider config(internal) (debugMatchedPaymentProviderConfig)
 
-    Debug matched payment provider config.<br>Other detail info:
-    <ul><li><i>Required permission</i>: resource="ADMIN:PAYMENT:CONFIG", action=2
-    (READ)</li><li><i>Returns</i>: payment provider config</li></ul>
+    Debug matched payment provider config.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
+      *  Returns : payment provider config
 
 
     Required Permission(s):

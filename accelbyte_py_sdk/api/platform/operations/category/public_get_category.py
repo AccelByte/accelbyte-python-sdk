@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,12 +33,13 @@ from ...models import ErrorEntity
 class PublicGetCategory(Operation):
     """Get Category (publicGetCategory)
 
-    This API is used to get category by category path.<p>Other detail info:
-    <ul><li><i>Optional permission</i>: resource="PREVIEW", action=1(CREATE) (user
-    with this permission can view draft store category)</li><li><i>Optional
-    permission</i>: resource="SANDBOX", action=1 (CREATE)(user with this
-    permission can view draft store category)</li><li><i>Returns</i>: category
-    data</li></ul>
+    This API is used to get category by category path.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store category)
+      *  Optional permission : resource="SANDBOX", action=1 (CREATE)(user with this permission can view draft store category)
+      *  Returns : category data
 
 
     Properties:

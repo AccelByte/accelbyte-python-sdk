@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,9 +35,10 @@ from ...models import ValidationErrorEntity
 class RefundOrder(Operation):
     """Refund order (refundOrder)
 
-    Refund order by orderNo.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=4
-    (UPDATE)</li></ul>
+    Refund order by orderNo.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=4 (UPDATE)
 
 
     Required Permission(s):

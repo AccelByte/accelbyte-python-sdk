@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,10 +33,11 @@ from ...models import StoreInfo
 class DeleteStore(Operation):
     """Delete a store (deleteStore)
 
-    This API is used to delete a store. Only non published store can be
-    deleted.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8
-    (DELETE)</li><li><i>Returns</i>: store</li></ul>
+    This API is used to delete a store. Only non published store can be deleted.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8 (DELETE)
+      *  Returns : store
 
 
     Required Permission(s):

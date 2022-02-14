@@ -124,6 +124,8 @@ from ._notification import update_template_localization_v1_admin_async
 from ._notification import update_topic_by_topic_name
 from ._notification import update_topic_by_topic_name_async
 
+from ._operations import admin_join_party_v1
+from ._operations import admin_join_party_v1_async
 from ._operations import admin_update_party_attributes_v1
 from ._operations import admin_update_party_attributes_v1_async
 from ._operations import public_get_messages

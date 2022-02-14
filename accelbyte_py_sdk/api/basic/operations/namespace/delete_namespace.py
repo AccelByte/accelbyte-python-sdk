@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,10 +34,12 @@ from ...models import ValidationErrorEntity
 class DeleteNamespace(Operation):
     """Delete a namespace (deleteNamespace)
 
-    Delete a namespace.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource=<b>"ADMIN:NAMESPACE:{namespace}:NAMESPACE"</b>, action=8
-    <b>(DELETE)</b></li><li><i>Action code</i>: 11307</li><li><i>Returns</i>:
-    deleted namespace</li></ul>
+    Delete a namespace.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=8 (DELETE)
+      *  Action code : 11307
+      *  Returns : deleted namespace
 
 
     Required Permission(s):

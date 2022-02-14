@@ -33,8 +33,8 @@ from ...models import RestapiErrorResponseBody
 class GetTopicByNamespace(Operation):
     """get topic by namespace (getTopicByNamespace)
 
-    Required permission : <code>NAMESPACE:{namespace}:TOPIC [READ]</code> with
-    scope <code>social</code> <br>get topic by namespace.
+    Required permission : `NAMESPACE:{namespace}:TOPIC [READ]` with scope `social`
+    get topic by namespace.
 
 
     Required Permission(s):

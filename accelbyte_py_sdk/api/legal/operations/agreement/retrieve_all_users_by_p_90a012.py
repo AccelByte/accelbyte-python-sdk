@@ -1,4 +1,4 @@
-# justice-legal-service (1.16.0)
+# justice-legal-service (1.17.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,8 +34,9 @@ class RetrieveAllUsersByPolicyVersion(Operation):
     """Retrieve All Users Accepting Legal Agreements (retrieveAllUsersByPolicyVersion)
 
     This API will return all users who has accepted a specific policy
-    version.Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)</li></ul>
+    version.Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
 
 
     Required Permission(s):

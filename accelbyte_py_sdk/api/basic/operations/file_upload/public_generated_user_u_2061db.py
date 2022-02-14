@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,13 +34,16 @@ from ...models import ValidationErrorEntity
 class PublicGeneratedUserUploadContentUrl(Operation):
     """Generate Upload URL For User Content (publicGeneratedUserUploadContentUrl)
 
-    Generate an upload URL for user content. It's valid for 10 minutes.<br/>There
-    are 2 kinds of storage limitation per user : maximum file count and maximum
-    file size.<br/>Other detail info: <ul><li><i>Required permission</i>: resource
-    = <b>"NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD"</b>, action=1
-    <b>(CREATE)</b></li><li><i>Action code</i>: 11102</li><li><i>Default maximum
-    file count per user</i>: 10 files</li><li><i>Default maximum file size per
-    user</i>: 104857600 bytes</li><li><i>Returns</i>: URL data</li></ul>
+    Generate an upload URL for user content. It's valid for 10 minutes.
+    There are 2 kinds of storage limitation per user : maximum file count and
+    maximum file size.
+    Other detail info:
+
+      * Required permission : resource = "NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD" , action=1 (CREATE)
+      *  Action code : 11102
+      *  Default maximum file count per user : 10 files
+      *  Default maximum file size per user : 104857600 bytes
+      *  Returns : URL data
 
 
     Required Permission(s):

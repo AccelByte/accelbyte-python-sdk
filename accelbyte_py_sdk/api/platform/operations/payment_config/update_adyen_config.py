@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,9 +34,11 @@ from ...models import PaymentMerchantConfigInfo
 class UpdateAdyenConfig(Operation):
     """Update adyen config (updateAdyenConfig)
 
-    Update adyen config.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)</li><li><i>Returns</i>:
-    updated payment merchant config</li></ul>
+    Update adyen config.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
+      *  Returns : updated payment merchant config
 
 
     Required Permission(s):

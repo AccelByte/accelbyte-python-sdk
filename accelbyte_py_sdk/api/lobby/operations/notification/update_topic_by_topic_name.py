@@ -33,11 +33,11 @@ from ...models import RestapiErrorResponseBody
 class UpdateTopicByTopicName(Operation):
     """update topic information by topic name (updateTopicByTopicName)
 
-    Required permission : <code>NAMESPACE:{namespace}:TOPIC [UPDATE]</code> with
-    scope <code>social</code> <br>update topic information by topic name.
-    <br>topic should be alphabets, no special char except underscore, uppercase
-    and no spacing. for example: TOPIC_TEST. Already existing topic can not be
-    created
+    Required permission : `NAMESPACE:{namespace}:TOPIC [UPDATE]` with scope
+    `social`
+    update topic information by topic name.
+    topic should be alphabets, no special char except underscore, uppercase and no
+    spacing. for example: TOPIC_TEST. Already existing topic can not be created
 
 
     Required Permission(s):

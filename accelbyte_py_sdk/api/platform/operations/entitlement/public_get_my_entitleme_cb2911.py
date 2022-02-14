@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,13 +32,14 @@ from ...models import TimedOwnership
 class PublicGetMyEntitlementOwnershipByItemId(Operation):
     """Get my entitlement ownership by itemId (publicGetMyEntitlementOwnershipByItemId)
 
-    Get my entitlement ownership by itemId.<p>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="NAMESPACE:{namespace}:ENTITLEMENT", action=2
-    (READ)</li><li><i>Path's namespace</i> : <ul><li>can be filled with
-    <b>publisher namespace</b> in order to get <b>publisher namespace entitlement
-    ownership by sku</b></li><li>can be filled with <b>game namespace</b> in order
-    to get <b>game namespace entitlement ownership by sku</b></li></ul></li></ul>
+    Get my entitlement ownership by itemId.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
+      *  Path's namespace :
+        * can be filled with publisher namespace in order to get publisher namespace entitlement ownership by sku
+        * can be filled with game namespace in order to get game namespace entitlement ownership by sku
 
 
     Required Permission(s):

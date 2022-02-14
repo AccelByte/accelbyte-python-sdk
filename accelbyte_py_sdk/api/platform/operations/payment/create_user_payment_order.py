@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,13 +35,13 @@ from ...models import ValidationErrorEntity
 class CreateUserPaymentOrder(Operation):
     """Create payment order (createUserPaymentOrder)
 
-    <b>[SERVICE COMMUNICATION ONLY]</b> This API is used to create payment order
-    from justice service. The result contains the payment station url.<br>Other
-    detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT", action=1
-    (CREATE)</li><li>It will be forbidden while the user is banned:
-    PAYMENT_INITIATE or ORDER_AND_PAYMENT</li><li><i>Returns</i>: created
-    order</li></ul>
+    [SERVICE COMMUNICATION ONLY] This API is used to create payment order from
+    justice service. The result contains the payment station url.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT", action=1 (CREATE)
+      * It will be forbidden while the user is banned: PAYMENT_INITIATE or ORDER_AND_PAYMENT
+      *  Returns : created order
 
 
     Required Permission(s):

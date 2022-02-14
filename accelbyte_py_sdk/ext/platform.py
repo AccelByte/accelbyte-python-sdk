@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -102,6 +102,7 @@ from ..api.platform.models import FullItemPagingSlicedResult
 from ..api.platform.models import GoogleIAPConfigInfo
 from ..api.platform.models import GoogleIAPConfigRequest
 from ..api.platform.models import GoogleIAPReceipt
+from ..api.platform.models import GoogleReceiptResolveResult
 from ..api.platform.models import GrantSubscriptionDaysRequest
 from ..api.platform.models import HierarchicalCategoryInfo
 from ..api.platform.models import IAPItemConfigInfo
@@ -240,6 +241,9 @@ from ..api.platform.models import TicketSaleIncrementResult
 from ..api.platform.models import TimedOwnership
 from ..api.platform.models import TradeNotification
 from ..api.platform.models import Transaction
+from ..api.platform.models import TwitchIAPConfigInfo
+from ..api.platform.models import TwitchIAPConfigRequest
+from ..api.platform.models import TwitchSyncRequest
 from ..api.platform.models import ValidationErrorEntity
 from ..api.platform.models import WalletInfo
 from ..api.platform.models import WalletPagingSlicedResult
@@ -1181,6 +1185,12 @@ def create_google_iap_receipt_example() -> GoogleIAPReceipt:
     instance.purchase_token = randomize()
     instance.language = randomize()
     instance.region = randomize()
+    return instance
+
+
+def create_google_receipt_resolve_result_example() -> GoogleReceiptResolveResult:
+    instance = GoogleReceiptResolveResult()
+    instance.need_consume = randomize("bool")
     return instance
 
 
@@ -2417,7 +2427,9 @@ def create_reward_create_example() -> RewardCreate:
     instance.description = randomize()
     instance.max_awarded = randomize("int", min_val=1, max_val=1000)
     instance.max_awarded_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.namespace_expression = randomize()
     instance.reward_conditions = [create_reward_condition_example()]
+    instance.user_id_expression = randomize()
     return instance
 
 
@@ -2430,9 +2442,11 @@ def create_reward_info_example() -> RewardInfo:
     instance.description = randomize()
     instance.max_awarded = randomize("int", min_val=1, max_val=1000)
     instance.max_awarded_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.namespace_expression = randomize()
     instance.reward_code = randomize()
     instance.reward_conditions = [create_reward_condition_example()]
     instance.updated_at = randomize("date")
+    instance.user_id_expression = randomize()
     return instance
 
 
@@ -2458,7 +2472,9 @@ def create_reward_update_example() -> RewardUpdate:
     instance.description = randomize()
     instance.max_awarded = randomize("int", min_val=1, max_val=1000)
     instance.max_awarded_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.namespace_expression = randomize()
     instance.reward_conditions = [create_reward_condition_example()]
+    instance.user_id_expression = randomize()
     return instance
 
 
@@ -2874,6 +2890,31 @@ def create_transaction_example() -> Transaction:
     instance.tx_id = randomize()
     instance.type_ = randomize()
     instance.vat = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_twitch_iap_config_info_example() -> TwitchIAPConfigInfo:
+    instance = TwitchIAPConfigInfo()
+    instance.namespace = randomize("slug")
+    instance.client_id = randomize("uid")
+    instance.client_secret = randomize()
+    instance.organization_id = randomize()
+    return instance
+
+
+def create_twitch_iap_config_request_example() -> TwitchIAPConfigRequest:
+    instance = TwitchIAPConfigRequest()
+    instance.client_id = randomize("uid")
+    instance.client_secret = randomize()
+    instance.organization_id = randomize()
+    return instance
+
+
+def create_twitch_sync_request_example() -> TwitchSyncRequest:
+    instance = TwitchSyncRequest()
+    instance.game_id = randomize()
+    instance.language = randomize()
+    instance.region = randomize()
     return instance
 
 

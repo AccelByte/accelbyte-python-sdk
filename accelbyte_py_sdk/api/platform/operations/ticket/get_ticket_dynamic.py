@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,10 +33,11 @@ from ...models import TicketDynamicInfo
 class GetTicketDynamic(Operation):
     """Get ticket dynamic (getTicketDynamic)
 
-    <b>[SERVICE COMMUNICATION ONLY]</b> Get ticket(code/key) dynamic based on
-    booth name.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=2
-    (READ)</li><li><i>Returns</i>: ticket dynamic</li></ul>
+    [SERVICE COMMUNICATION ONLY] Get ticket(code/key) dynamic based on booth name.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=2 (READ)
+      *  Returns : ticket dynamic
 
 
     Required Permission(s):

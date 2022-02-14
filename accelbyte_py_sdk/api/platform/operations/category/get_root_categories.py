@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,10 +32,12 @@ from ...models import FullCategoryInfo
 class GetRootCategories(Operation):
     """Get root categories (getRootCategories)
 
-    This API is used to get root categories.<p>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2
-    (READ)</li><li><i>Returns</i>: root category data</li></ul>
+    This API is used to get root categories.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
+      *  Returns : root category data
 
 
     Required Permission(s):

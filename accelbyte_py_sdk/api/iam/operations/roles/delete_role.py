@@ -1,4 +1,4 @@
-# justice-iam-service (5.1.1)
+# justice-iam-service (5.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -38,9 +38,9 @@ class DeleteRole(Operation):
 
 
     Required Permission(s):
-        - ADMIN:ROLE [DELETE]
-
         - ROLE:ADMIN [DELETE]
+
+        - ADMIN:ROLE [DELETE]
 
     Properties:
         url: /iam/roles/{roleId}

@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,11 +34,12 @@ from ...models import ValidationErrorEntity
 class GeneratedUploadUrl(Operation):
     """Generate Upload URL (generatedUploadUrl)
 
-    Generate an upload URL. It's valid for 10 minutes.<br/>Other detail info:
-    <ul><li><i>Required permission</i>: resource =
-    <b>"ADMIN:NAMESPACE:{namespace}:FILEUPLOAD"</b>, action=1
-    <b>(CREATE)</b></li><li><i>Action code</i>: 11101</li><li><i>Returns</i>: URL
-    data</li></ul>
+    Generate an upload URL. It's valid for 10 minutes.
+    Other detail info:
+
+      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:FILEUPLOAD" , action=1 (CREATE)
+      *  Action code : 11101
+      *  Returns : URL data
 
 
     Required Permission(s):

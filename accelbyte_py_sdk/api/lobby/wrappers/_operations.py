@@ -27,8 +27,37 @@ from ..models import ModelsPartyData
 from ..models import ModelsPartyPUTCustomAttributesRequest
 from ..models import RestapiErrorResponseBody
 
+from ..operations.operations import AdminJoinPartyV1
 from ..operations.operations import AdminUpdatePartyAttributesV1
 from ..operations.operations import PublicGetMessages
+
+
+@same_doc_as(AdminJoinPartyV1)
+def admin_join_party_v1(party_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminJoinPartyV1.create(
+        party_id=party_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminJoinPartyV1)
+async def admin_join_party_v1_async(party_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminJoinPartyV1.create(
+        party_id=party_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(AdminUpdatePartyAttributesV1)

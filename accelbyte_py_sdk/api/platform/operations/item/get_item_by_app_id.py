@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,10 +33,12 @@ from ...models import FullItemInfo
 class GetItemByAppId(Operation):
     """Get item by appId (getItemByAppId)
 
-    This API is used to get the item by appId.<p>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2
-    (READ)<li><i>Returns</i>: the item with that appId</li></ul>
+    This API is used to get the item by appId.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the item with that appId
 
 
     Required Permission(s):

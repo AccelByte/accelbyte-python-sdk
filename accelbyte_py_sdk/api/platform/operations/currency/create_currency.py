@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,9 +35,11 @@ from ...models import ValidationErrorEntity
 class CreateCurrency(Operation):
     """Create a currency (createCurrency)
 
-    Create a currency.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=1
-    (CREATE)</li><li><i>Returns</i>: created currency</li></ul>
+    Create a currency.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=1 (CREATE)
+      *  Returns : created currency
 
 
     Required Permission(s):

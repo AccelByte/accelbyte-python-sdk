@@ -34,8 +34,8 @@ from ...models import ModelsEventResponse
 class GetEventByNamespaceHandler(Operation):
     """Get events from all users in a namespace (GetEventByNamespaceHandler)
 
-    Required permission <code>NAMESPACE:{namespace}:EVENT [UPDATE]</code> and
-    scope <code>analytics</code>
+    Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]` and scope
+    `analytics`
 
 
     Required Permission(s):

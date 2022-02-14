@@ -1,4 +1,4 @@
-# justice-gdpr-service (1.12.0)
+# justice-gdpr-service (1.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,9 +32,8 @@ from ...models import ResponseError
 class AdminCancelUserPersonalDataRequest(Operation):
     """Cancel user's personal data requests (AdminCancelUserPersonalDataRequest)
 
-    <p>Required permission
-    <code>ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]</code>
-    and scope <code>account</code></p>
+    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId}
+    [DELETE]` and scope `account`
 
 
     Required Permission(s):

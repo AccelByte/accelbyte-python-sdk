@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,9 +34,10 @@ from ...models import ValidationErrorEntity
 class UpdatePlatformDLCConfig(Operation):
     """Update Platform DLC config (updatePlatformDLCConfig)
 
-    Update Platform DLC config. Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:DLC:CONFIG", action=4
-    (UPDATE)</li><li><i>Returns</i>: updated Platform DLC config</li></ul>
+    Update Platform DLC config. Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:DLC:CONFIG", action=4 (UPDATE)
+      *  Returns : updated Platform DLC config
 
 
     Required Permission(s):

@@ -33,12 +33,20 @@ from ...models import ResponseErrorResponse
 class AcceptGroupJoinRequestPublicV1(Operation):
     """Accept Group Join Request (acceptGroupJoinRequestPublicV1)
 
-    <p>Required valid user authentication </p> <p>Required Member Role Permission:
-    "GROUP:JOIN [CREATE]"</p> <p>This endpoint is used to accept group join
-    request.</p> <p>Accept group join request. If specific user is not asked to
-    join the specific group ID, it will show the the error to show if the user is
-    not asked to join yet.</p> <p>This endpoint will also check if the specific
-    user is already joined to specific group</p> <p>Action Code: 73407</p>
+    Required valid user authentication
+
+    Required Member Role Permission: "GROUP:JOIN [CREATE]"
+
+    This endpoint is used to accept group join request.
+
+    Accept group join request. If specific user is not asked to join the specific
+    group ID, it will show the the error to show if the user is not asked to join
+    yet.
+
+    This endpoint will also check if the specific user is already joined to
+    specific group
+
+    Action Code: 73407
 
 
     Properties:

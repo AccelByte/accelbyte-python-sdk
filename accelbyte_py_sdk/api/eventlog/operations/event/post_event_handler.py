@@ -34,8 +34,8 @@ from ...models import ModelsEvent
 class PostEventHandler(Operation):
     """Post an activity log (PostEventHandler)
 
-    Required permission <code>NAMESPACE:{namespace}:EVENT [CREATE]</code>and scope
-    <code>analytics</code>
+    Required permission `NAMESPACE:{namespace}:EVENT [CREATE]`and scope
+    `analytics`
 
 
     Required Permission(s):

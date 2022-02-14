@@ -33,9 +33,9 @@ from ...models import RestapiErrorResponseBody
 class FreeFormNotificationByUserID(Operation):
     """send freeform notification to a user (freeFormNotificationByUserID)
 
-    Required permission : <code>NAMESPACE:{namespace}:USER:{userId}:NOTIFICATION
-    [CREATE]</code> with scope <code>social</code> <br>Sends notification to a
-    user.
+    Required permission : `NAMESPACE:{namespace}:USER:{userId}:NOTIFICATION
+    [CREATE]` with scope `social`
+    Sends notification to a user.
 
 
     Required Permission(s):

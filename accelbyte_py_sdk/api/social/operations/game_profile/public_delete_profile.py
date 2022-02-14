@@ -1,4 +1,4 @@
-# justice-social-service (1.23.0)
+# justice-social-service (1.24.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,9 +32,10 @@ from ...models import ErrorEntity
 class PublicDeleteProfile(Operation):
     """Deletes game profile (publicDeleteProfile)
 
-    Deletes game profile.<br>Other detail info:<ul><li><i>Required permission</i>:
-    resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=8
-    (DELETE)</li></ul>
+    Deletes game profile.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=8 (DELETE)
 
 
     Required Permission(s):

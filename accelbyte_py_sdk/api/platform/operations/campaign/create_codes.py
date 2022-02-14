@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -36,9 +36,11 @@ class CreateCodes(Operation):
     """Create campaign codes (createCodes)
 
     This API is used to create campaign codes, it will increase the batch No.
-    based on last creation.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=1
-    (CREATE)<li><i>Returns</i>: number of codes created</li></ul>
+    based on last creation.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=1 (CREATE)
+      *  Returns : number of codes created
 
 
     Required Permission(s):

@@ -1,4 +1,4 @@
-# justice-legal-service (1.16.0)
+# justice-legal-service (1.17.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,8 +32,10 @@ from ...models import RetrieveAcceptedAgreementResponse
 class RetrieveAgreementsPublic(Operation):
     """Retrieve the accepted Legal Agreements (retrieveAgreementsPublic)
 
-    Retrieve accepted Legal Agreements.<br>Other detail info: <ul><li><i>Required
-    permission</i>: login user</li></ul>
+    Retrieve accepted Legal Agreements.
+    Other detail info:
+
+      * Required permission : login user
 
 
     Properties:

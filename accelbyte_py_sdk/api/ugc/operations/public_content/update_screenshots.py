@@ -1,4 +1,4 @@
-# justice-ugc-service (1.12.0)
+# justice-ugc-service (1.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,8 +34,8 @@ from ...models import ResponseError
 class UpdateScreenshots(Operation):
     """Update screenshot of content (UpdateScreenshots)
 
-    Required permission <b>NAMESPACE:{namespace}:USER:{userId}:CONTENT
-    [UPDATE]</b>.n Maximum description length: 1024.
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].n
+    Maximum description length: 1024.
 
 
     Required Permission(s):

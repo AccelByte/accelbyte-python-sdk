@@ -1,6 +1,6 @@
 """Auto-generated package that contains models used by the justice-seasonpass-service."""
 
-__version__ = "1.7.0"
+__version__ = "1.8.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -39,6 +39,7 @@ from .tier import Tier
 from .tier_create import TierCreate
 from .tier_input import TierInput
 from .tier_paging_sliced_result import TierPagingSlicedResult
+from .tier_reorder import TierReorder
 from .user_exp_grant import UserExpGrant
 from .user_pass_grant import UserPassGrant
 from .user_purchasable import UserPurchasable

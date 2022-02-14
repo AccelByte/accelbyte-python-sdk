@@ -32,12 +32,16 @@ from ...models import ResponseErrorResponse
 class DeleteGroupPredefinedRulePublicV1(Operation):
     """Delete group predefined rule (deleteGroupPredefinedRulePublicV1)
 
-    <p>Required valid user authentication </p> <p>Required Member Role Permission:
-    "GROUP [UPDATE]"</p> <p>Delete group predefined rule based on the allowed
-    action. This endpoint will check the group ID of the user based on the access
-    token and compare it with the group ID in path parameter. It will also check
-    the member role of the user based on the access token</p> <p>Action Code:
-    73309</p>
+    Required valid user authentication
+
+    Required Member Role Permission: "GROUP [UPDATE]"
+
+    Delete group predefined rule based on the allowed action. This endpoint will
+    check the group ID of the user based on the access token and compare it with
+    the group ID in path parameter. It will also check the member role of the user
+    based on the access token
+
+    Action Code: 73309
 
 
     Required Permission(s):

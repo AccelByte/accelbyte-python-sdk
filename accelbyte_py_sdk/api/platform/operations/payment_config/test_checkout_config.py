@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,10 +33,17 @@ from ...models import TestResult
 class TestCheckoutConfig(Operation):
     """Test checkout.com configuration (testCheckoutConfig)
 
-    Test checkout.com configuration. <h4>Check List:</h4>
-    <ul><li>publicKey</li><li>secretKey</li></ul>Other detail info:
-    <ul><li><i>Required permission</i>: resource="ADMIN:PAYMENT:CONFIG", action=4
-    (UPDATE)</li><li><i>Returns</i>: test result</li></ul>
+    Test checkout.com configuration.
+
+    #### Check List:
+
+      * publicKey
+      * secretKey
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
+      *  Returns : test result
 
 
     Required Permission(s):

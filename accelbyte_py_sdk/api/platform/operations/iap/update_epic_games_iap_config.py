@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,10 @@ from ...models import EpicGamesIAPConfigRequest
 class UpdateEpicGamesIAPConfig(Operation):
     """Update epic games iap config (updateEpicGamesIAPConfig)
 
-    Update epic games iap config. Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4
-    (UPDATE)</li><li><i>Returns</i>: updated epic games iap config</li></ul>
+    Update epic games iap config. Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
+      *  Returns : updated epic games iap config
 
 
     Required Permission(s):

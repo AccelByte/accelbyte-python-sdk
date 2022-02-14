@@ -32,7 +32,7 @@ from ...models import ModelsEventResponseV2
 class GetUserEventsV2Public(Operation):
     """Get events from a specific user (GetUserEventsV2Public)
 
-    <p>Requires valid user access token</p>
+    Requires valid user access token
 
 
     Properties:

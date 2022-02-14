@@ -1,4 +1,4 @@
-# justice-social-service (1.23.0)
+# justice-social-service (1.24.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,9 +34,11 @@ from ...models import StatItemIncResult
 class PublicIncUserStatItem(Operation):
     """Public update user's statitem value (publicIncUserStatItem)
 
-    Public update user's statitem value.<br>Other detail info:<ul><li><i>Required
-    permission</i>: resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM",
-    action=4 (UPDATE)</li><li><i>Returns</i>: updated user's statItem</li></ul>
+    Public update user's statitem value.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+      *  Returns : updated user's statItem
 
 
     Required Permission(s):

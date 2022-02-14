@@ -1,4 +1,4 @@
-# justice-gdpr-service (1.12.0)
+# justice-gdpr-service (1.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,10 @@ class DeleteAdminEmailConfiguration(Operation):
     """Delete admin emails configurations (DeleteAdminEmailConfiguration)
 
     Delete a list of admin email addresses to stop receiving personal data request
-    notification. <p>Required permission
-    <code>ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [DELETE]</code> and
-    scope <code>account</code></p>
+    notification.
+
+    Required permission `ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [DELETE]`
+    and scope `account`
 
 
     Required Permission(s):

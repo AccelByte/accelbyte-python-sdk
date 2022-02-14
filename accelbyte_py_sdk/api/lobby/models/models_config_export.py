@@ -42,6 +42,8 @@ class ModelsConfigExport(Model):
 
         concurrent_users_limit: (concurrentUsersLimit) REQUIRED int
 
+        disable_party_invitation_token: (disablePartyInvitationToken) REQUIRED bool
+
         enable_chat: (enableChat) REQUIRED bool
 
         entitlement_check: (entitlementCheck) REQUIRED bool
@@ -69,6 +71,7 @@ class ModelsConfigExport(Model):
     chat_rate_limit_burst: int                                                                     # REQUIRED
     chat_rate_limit_duration: int                                                                  # REQUIRED
     concurrent_users_limit: int                                                                    # REQUIRED
+    disable_party_invitation_token: bool                                                           # REQUIRED
     enable_chat: bool                                                                              # REQUIRED
     entitlement_check: bool                                                                        # REQUIRED
     entitlement_item_id: str                                                                       # REQUIRED
@@ -105,6 +108,10 @@ class ModelsConfigExport(Model):
 
     def with_concurrent_users_limit(self, value: int) -> ModelsConfigExport:
         self.concurrent_users_limit = value
+        return self
+
+    def with_disable_party_invitation_token(self, value: bool) -> ModelsConfigExport:
+        self.disable_party_invitation_token = value
         return self
 
     def with_enable_chat(self, value: bool) -> ModelsConfigExport:
@@ -173,6 +180,10 @@ class ModelsConfigExport(Model):
             result["concurrentUsersLimit"] = int(self.concurrent_users_limit)
         elif include_empty:
             result["concurrentUsersLimit"] = int()
+        if hasattr(self, "disable_party_invitation_token"):
+            result["disablePartyInvitationToken"] = bool(self.disable_party_invitation_token)
+        elif include_empty:
+            result["disablePartyInvitationToken"] = bool()
         if hasattr(self, "enable_chat"):
             result["enableChat"] = bool(self.enable_chat)
         elif include_empty:
@@ -224,6 +235,7 @@ class ModelsConfigExport(Model):
         chat_rate_limit_burst: int,
         chat_rate_limit_duration: int,
         concurrent_users_limit: int,
+        disable_party_invitation_token: bool,
         enable_chat: bool,
         entitlement_check: bool,
         entitlement_item_id: str,
@@ -241,6 +253,7 @@ class ModelsConfigExport(Model):
         instance.chat_rate_limit_burst = chat_rate_limit_burst
         instance.chat_rate_limit_duration = chat_rate_limit_duration
         instance.concurrent_users_limit = concurrent_users_limit
+        instance.disable_party_invitation_token = disable_party_invitation_token
         instance.enable_chat = enable_chat
         instance.entitlement_check = entitlement_check
         instance.entitlement_item_id = entitlement_item_id
@@ -281,6 +294,10 @@ class ModelsConfigExport(Model):
             instance.concurrent_users_limit = int(dict_["concurrentUsersLimit"])
         elif include_empty:
             instance.concurrent_users_limit = int()
+        if "disablePartyInvitationToken" in dict_ and dict_["disablePartyInvitationToken"] is not None:
+            instance.disable_party_invitation_token = bool(dict_["disablePartyInvitationToken"])
+        elif include_empty:
+            instance.disable_party_invitation_token = bool()
         if "enableChat" in dict_ and dict_["enableChat"] is not None:
             instance.enable_chat = bool(dict_["enableChat"])
         elif include_empty:
@@ -346,6 +363,7 @@ class ModelsConfigExport(Model):
             "chatRateLimitBurst": "chat_rate_limit_burst",
             "chatRateLimitDuration": "chat_rate_limit_duration",
             "concurrentUsersLimit": "concurrent_users_limit",
+            "disablePartyInvitationToken": "disable_party_invitation_token",
             "enableChat": "enable_chat",
             "entitlementCheck": "entitlement_check",
             "entitlementItemID": "entitlement_item_id",

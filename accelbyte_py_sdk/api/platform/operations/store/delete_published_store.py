@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,9 +34,13 @@ class DeletePublishedStore(Operation):
     """Delete published store (deletePublishedStore)
 
     This API is used to delete published store including category and items before
-    release to public.<p><b>Warning: Please do not use this API once published to
-    public user.</b><p>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8 (DELETE)</li></ul>
+    release to public.
+
+     Warning: Please do not use this API once published to public user.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8 (DELETE)
 
 
     Required Permission(s):

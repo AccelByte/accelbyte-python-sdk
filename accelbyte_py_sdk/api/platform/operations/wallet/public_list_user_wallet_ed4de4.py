@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,10 +32,11 @@ from ...models import WalletTransactionPagingSlicedResult
 class PublicListUserWalletTransactions(Operation):
     """List wallet transactions by currency code (publicListUserWalletTransactions)
 
-    List wallet transactions by currency code ordered by create time
-    desc.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource="NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2
-    (READ)</li><li><i>Returns</i>: wallet transaction info</li></ul>
+    List wallet transactions by currency code ordered by create time desc.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
+      *  Returns : wallet transaction info
 
 
     Required Permission(s):

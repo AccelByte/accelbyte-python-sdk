@@ -34,10 +34,12 @@ from ...models import ResponseErrorResponse
 class UpdateGroupConfigurationGlobalRuleAdminV1(Operation):
     """update existing configuration global rule (updateGroupConfigurationGlobalRuleAdminV1)
 
-    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION
-    [UPDATE]'</p> <p>This endpoint is used to update existing global rule
-    configuration based on the allowed action. It will replace the permission with
-    the request</p> <p>Action Code: 73106</p>
+    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]'
+
+    This endpoint is used to update existing global rule configuration based on
+    the allowed action. It will replace the permission with the request
+
+    Action Code: 73106
 
 
     Required Permission(s):

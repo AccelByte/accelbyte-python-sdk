@@ -1,4 +1,4 @@
-# justice-leaderboard-service (2.12.0)
+# justice-leaderboard-service (2.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,8 +34,8 @@ from ...models import ResponseErrorResponse
 class SetUserLeaderboardVisibilityStatusV2(Operation):
     """Set user visibility status on a specific leaderboard code (SetUserLeaderboardVisibilityStatusV2)
 
-    User with false visibility status will have <b>hidden</b> attribute set to
-    true on it's leaderboard entry
+    User with false visibility status will have hidden attribute set to true on
+    it's leaderboard entry
 
 
     Properties:

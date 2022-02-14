@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,9 +32,11 @@ from ...models import AppleIAPConfigInfo
 class GetAppleIAPConfig(Operation):
     """Get apple iap config (getAppleIAPConfig)
 
-    Get apple iap config.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2
-    (READ)</li><li><i>Returns</i>: apple iap config</li></ul>
+    Get apple iap config.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
+      *  Returns : apple iap config
 
 
     Required Permission(s):

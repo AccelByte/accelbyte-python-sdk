@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,11 +32,12 @@ from ...models import TradeNotification
 class ProcessUserOrderNotification(Operation):
     """Web hook for payment notification (processUserOrderNotification)
 
-    <b>[SERVICE COMMUNICATION ONLY]</b> This API is used as a web hook for payment
-    notification from justice payment service.<br>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4
-    (UPDATE)</li><li><i>Returns</i>: Process result</li></ul>
+    [SERVICE COMMUNICATION ONLY] This API is used as a web hook for payment
+    notification from justice payment service.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
+      *  Returns : Process result
 
 
     Required Permission(s):

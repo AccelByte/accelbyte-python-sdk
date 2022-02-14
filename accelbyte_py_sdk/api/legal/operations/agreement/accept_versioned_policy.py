@@ -1,4 +1,4 @@
-# justice-legal-service (1.16.0)
+# justice-legal-service (1.17.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -31,8 +31,10 @@ class AcceptVersionedPolicy(Operation):
     """Accept a Policy Version (acceptVersionedPolicy)
 
     Accepts a legal policy version. Supply with localized version policy id to
-    accept an agreement.<br>Other detail info: <ul><li><i>Required permission</i>:
-    login user</li></ul>
+    accept an agreement.
+    Other detail info:
+
+      * Required permission : login user
 
 
     Properties:

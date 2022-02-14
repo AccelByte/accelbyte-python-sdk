@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,13 +34,17 @@ from ...models import FulfillmentScriptInfo
 class CreateFulfillmentScript(Operation):
     """Create fulfillment script (createFulfillmentScript)
 
-    Create fulfillment script.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:FULFILLMENT", action=1
-    (CREATE)</li></ul>Fulfillment scripts are used for adding custom fulfillment
-    logic based on <b>ITEM_TYPE</b>: [MEDIA,INGAMEITEM] for now, and the custom
-    scripts only cover grantDays.<br>Example for grantDays: <br><code>order &&
-    ((order.currency && order.currency.currencyCode) == 'LP' || order.isFree) ? 30
-    : -1</code><br>
+    Create fulfillment script.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:FULFILLMENT", action=1 (CREATE)
+
+    Fulfillment scripts are used for adding custom fulfillment logic based on
+    ITEM_TYPE : [MEDIA,INGAMEITEM] for now, and the custom scripts only cover
+    grantDays.
+    Example for grantDays:
+    `order && ((order.currency && order.currency.currencyCode) == 'LP' ||
+    order.isFree) ? 30 : -1`
 
 
     Required Permission(s):

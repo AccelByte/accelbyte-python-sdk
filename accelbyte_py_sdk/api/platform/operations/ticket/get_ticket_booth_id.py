@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,11 @@ from ...models import TicketBoothID
 class GetTicketBoothID(Operation):
     """Get ticket booth ID (getTicketBoothID)
 
-    Get ticket(code/key) booth ID.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=2
-    (READ)</li><li><i>Returns</i>: ticket booth id</li></ul>
+    Get ticket(code/key) booth ID.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=2 (READ)
+      *  Returns : ticket booth id
 
 
     Required Permission(s):

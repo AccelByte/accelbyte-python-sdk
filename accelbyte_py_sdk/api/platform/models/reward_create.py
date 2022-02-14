@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -42,7 +42,11 @@ class RewardCreate(Model):
 
         max_awarded_per_user: (maxAwardedPerUser) OPTIONAL int
 
+        namespace_expression: (namespaceExpression) OPTIONAL str
+
         reward_conditions: (rewardConditions) OPTIONAL List[RewardCondition]
+
+        user_id_expression: (userIdExpression) OPTIONAL str
     """
 
     # region fields
@@ -52,7 +56,9 @@ class RewardCreate(Model):
     description: str                                                                               # OPTIONAL
     max_awarded: int                                                                               # OPTIONAL
     max_awarded_per_user: int                                                                      # OPTIONAL
+    namespace_expression: str                                                                      # OPTIONAL
     reward_conditions: List[RewardCondition]                                                       # OPTIONAL
+    user_id_expression: str                                                                        # OPTIONAL
 
     # endregion fields
 
@@ -78,8 +84,16 @@ class RewardCreate(Model):
         self.max_awarded_per_user = value
         return self
 
+    def with_namespace_expression(self, value: str) -> RewardCreate:
+        self.namespace_expression = value
+        return self
+
     def with_reward_conditions(self, value: List[RewardCondition]) -> RewardCreate:
         self.reward_conditions = value
+        return self
+
+    def with_user_id_expression(self, value: str) -> RewardCreate:
+        self.user_id_expression = value
         return self
 
     # endregion with_x methods
@@ -108,10 +122,18 @@ class RewardCreate(Model):
             result["maxAwardedPerUser"] = int(self.max_awarded_per_user)
         elif include_empty:
             result["maxAwardedPerUser"] = int()
+        if hasattr(self, "namespace_expression"):
+            result["namespaceExpression"] = str(self.namespace_expression)
+        elif include_empty:
+            result["namespaceExpression"] = str()
         if hasattr(self, "reward_conditions"):
             result["rewardConditions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.reward_conditions]
         elif include_empty:
             result["rewardConditions"] = []
+        if hasattr(self, "user_id_expression"):
+            result["userIdExpression"] = str(self.user_id_expression)
+        elif include_empty:
+            result["userIdExpression"] = str()
         return result
 
     # endregion to methods
@@ -126,7 +148,9 @@ class RewardCreate(Model):
         description: Optional[str] = None,
         max_awarded: Optional[int] = None,
         max_awarded_per_user: Optional[int] = None,
+        namespace_expression: Optional[str] = None,
         reward_conditions: Optional[List[RewardCondition]] = None,
+        user_id_expression: Optional[str] = None,
     ) -> RewardCreate:
         instance = cls()
         instance.event_topic = event_topic
@@ -137,8 +161,12 @@ class RewardCreate(Model):
             instance.max_awarded = max_awarded
         if max_awarded_per_user is not None:
             instance.max_awarded_per_user = max_awarded_per_user
+        if namespace_expression is not None:
+            instance.namespace_expression = namespace_expression
         if reward_conditions is not None:
             instance.reward_conditions = reward_conditions
+        if user_id_expression is not None:
+            instance.user_id_expression = user_id_expression
         return instance
 
     @classmethod
@@ -166,10 +194,18 @@ class RewardCreate(Model):
             instance.max_awarded_per_user = int(dict_["maxAwardedPerUser"])
         elif include_empty:
             instance.max_awarded_per_user = int()
+        if "namespaceExpression" in dict_ and dict_["namespaceExpression"] is not None:
+            instance.namespace_expression = str(dict_["namespaceExpression"])
+        elif include_empty:
+            instance.namespace_expression = str()
         if "rewardConditions" in dict_ and dict_["rewardConditions"] is not None:
             instance.reward_conditions = [RewardCondition.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["rewardConditions"]]
         elif include_empty:
             instance.reward_conditions = []
+        if "userIdExpression" in dict_ and dict_["userIdExpression"] is not None:
+            instance.user_id_expression = str(dict_["userIdExpression"])
+        elif include_empty:
+            instance.user_id_expression = str()
         return instance
 
     @classmethod
@@ -198,7 +234,9 @@ class RewardCreate(Model):
             "description": "description",
             "maxAwarded": "max_awarded",
             "maxAwardedPerUser": "max_awarded_per_user",
+            "namespaceExpression": "namespace_expression",
             "rewardConditions": "reward_conditions",
+            "userIdExpression": "user_id_expression",
         }
 
     # endregion static methods

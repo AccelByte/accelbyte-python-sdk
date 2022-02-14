@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,10 +32,11 @@ from ...models import Ownership
 class ExistsAnyUserActiveEntitlementByItemIds(Operation):
     """Exists any user active entitlement (existsAnyUserActiveEntitlementByItemIds)
 
-    Exists any user active entitlement of specified items.<p>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2
-    (READ)</li></ul>
+    Exists any user active entitlement of specified items.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
 
 
     Required Permission(s):

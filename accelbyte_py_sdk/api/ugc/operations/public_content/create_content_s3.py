@@ -1,4 +1,4 @@
-# justice-ugc-service (1.12.0)
+# justice-ugc-service (1.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,11 +34,11 @@ from ...models import ResponseError
 class CreateContentS3(Operation):
     """Upload content to S3 bucket (CreateContentS3)
 
-    Required permission <b>NAMESPACE:{namespace}:USER:{userId}:CONTENT
-    [CREATE]</b>.n All request body are required except payload, preview, tags,
-    and contentType. contentType values is used to enforce the Content-Type header
-    needed by the client to upload the content using the S3 presigned URL. If not
-    specified, it will use fileExtension value.
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].n
+    All request body are required except payload, preview, tags, and contentType.
+    contentType values is used to enforce the Content-Type header needed by the
+    client to upload the content using the S3 presigned URL. If not specified, it
+    will use fileExtension value.
 
 
     Required Permission(s):

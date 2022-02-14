@@ -33,10 +33,14 @@ from ...models import ResponseErrorResponse
 class GetGroupInvitationRequestPublicV1(Operation):
     """Get Group Invitation Request List (getGroupInvitationRequestPublicV1)
 
-    <p>Required valid user authentication </p> <p>This endpoint is used to Get
-    Group Invitation Request List</p> <p>Get Group Invitation Request List for
-    specific group. It will check any group invitation for this user</p> <p>Action
-    Code: 73502</p>
+    Required valid user authentication
+
+    This endpoint is used to Get Group Invitation Request List
+
+    Get Group Invitation Request List for specific group. It will check any group
+    invitation for this user
+
+    Action Code: 73502
 
 
     Properties:

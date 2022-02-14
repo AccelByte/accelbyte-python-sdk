@@ -1,4 +1,4 @@
-# justice-ugc-service (1.12.0)
+# justice-ugc-service (1.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,8 +33,7 @@ from ...models import ResponseError
 class GetGroup(Operation):
     """Get user's groups (GetGroup)
 
-    Required permission <b>NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP
-    [READ]</b>.
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ].
 
 
     Required Permission(s):

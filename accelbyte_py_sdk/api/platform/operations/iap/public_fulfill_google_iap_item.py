@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -28,15 +28,18 @@ from .....core import HttpResponse
 
 from ...models import ErrorEntity
 from ...models import GoogleIAPReceipt
+from ...models import GoogleReceiptResolveResult
 
 
 class PublicFulfillGoogleIAPItem(Operation):
     """Fulfill google iap item. (publicFulfillGoogleIAPItem)
 
-    Verify google iap receipt and fulfill item.<p>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4
-    (UPDATE)</li><li><i>Returns</i>: </li></ul>
+    Verify google iap receipt and fulfill item.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
+      *  Returns :
 
 
     Required Permission(s):
@@ -62,7 +65,7 @@ class PublicFulfillGoogleIAPItem(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (Fulfill item successfully)
+        200: OK - GoogleReceiptResolveResult (Successful operation)
 
         400: Bad Request - ErrorEntity (39122: Google iap receipt is invalid with status code [{statusCode}] and error message [{message}] | 35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists | 38122: Subscription endDate required)
 
@@ -205,10 +208,10 @@ class PublicFulfillGoogleIAPItem(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, ErrorEntity]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, GoogleReceiptResolveResult], Union[None, ErrorEntity]]:
         """Parse the given response.
 
-        204: No Content - (Fulfill item successfully)
+        200: OK - GoogleReceiptResolveResult (Successful operation)
 
         400: Bad Request - ErrorEntity (39122: Google iap receipt is invalid with status code [{statusCode}] and error message [{message}] | 35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists | 38122: Subscription endDate required)
 
@@ -216,8 +219,8 @@ class PublicFulfillGoogleIAPItem(Operation):
 
         409: Conflict - ErrorEntity (39172: The order id in namespace [{namespace}] expect [{expected}] but was [{actual}] | 39173: The purchase status of google play order [{orderId}] in namespace [{namespace}] expect [{expected}] but was [{actual}] | 39174: The google iap purchase time of order [{orderId}] in namespace [{namespace}] expect [{expected}] but was [{actual}] | 20006: optimistic lock)
         """
-        if code == 204:
-            return None, None
+        if code == 200:
+            return GoogleReceiptResolveResult.create_from_dict(content), None
         if code == 400:
             return None, ErrorEntity.create_from_dict(content)
         if code == 404:

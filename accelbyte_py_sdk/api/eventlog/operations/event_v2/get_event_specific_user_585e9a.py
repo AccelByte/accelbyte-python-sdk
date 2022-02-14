@@ -32,8 +32,8 @@ from ...models import ModelsEventResponseV2
 class GetEventSpecificUserV2Handler(Operation):
     """Get events from a specific user (GetEventSpecificUserV2Handler)
 
-    Required permission <code>ADMIN:NAMESPACE:{namespace}:EVENT [READ]</code>and
-    scope <code>analytics</code>
+    Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [READ]`and scope
+    `analytics`
 
 
     Required Permission(s):

@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,11 @@ from ...models import PaymentMerchantConfigInfo
 class GetPaymentMerchantConfig(Operation):
     """Get payment merchant config (getPaymentMerchantConfig)
 
-    Get payment merchant config by id.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:PAYMENT:CONFIG", action=2
-    (READ)</li><li><i>Returns</i>: payment merchant config info</li></ul>
+    Get payment merchant config by id.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
+      *  Returns : payment merchant config info
 
 
     Required Permission(s):

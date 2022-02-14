@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,9 +32,11 @@ from ...models import PaymentOrderPagingSlicedResult
 class QueryPaymentOrders(Operation):
     """Query payment orders (queryPaymentOrders)
 
-    Query payment orders.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2
-    (READ)</li><li><i>Returns</i>: query payment orders</li></ul>
+    Query payment orders.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
+      *  Returns : query payment orders
 
 
     Required Permission(s):

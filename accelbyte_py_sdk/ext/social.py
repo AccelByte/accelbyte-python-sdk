@@ -1,4 +1,4 @@
-# justice-social-service (1.23.0)
+# justice-social-service (1.24.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -22,6 +22,7 @@
 
 from .utils import randomize
 
+from ..api.social.models import ADTOObjectForResettingUserStatItems
 from ..api.social.models import Attribute
 from ..api.social.models import BulkStatItemCreate
 from ..api.social.models import BulkStatItemInc
@@ -58,6 +59,13 @@ from ..api.social.models import UserSlotConfigInfo
 from ..api.social.models import UserStatItemInfo
 from ..api.social.models import UserStatItemPagingSlicedResult
 from ..api.social.models import ValidationErrorEntity
+
+
+def create_a_dto_object_for_resetting_user_stat_items_example() -> ADTOObjectForResettingUserStatItems:
+    instance = ADTOObjectForResettingUserStatItems()
+    instance.stat_code = randomize()
+    instance.additional_data = {randomize(): randomize()}
+    return instance
 
 
 def create_attribute_example() -> Attribute:

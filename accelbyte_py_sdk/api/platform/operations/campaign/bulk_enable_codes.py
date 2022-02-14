@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,9 +32,11 @@ from ...models import BulkOperationResult
 class BulkEnableCodes(Operation):
     """Bulk enable codes (bulkEnableCodes)
 
-    Bulk enable campaign codes.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4
-    (UPDATE)</li><li><i>Returns</i>: the number of code actually enabled</li></ul>
+    Bulk enable campaign codes.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
+      *  Returns : the number of code actually enabled
 
 
     Required Permission(s):

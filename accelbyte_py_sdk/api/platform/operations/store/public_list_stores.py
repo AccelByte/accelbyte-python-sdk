@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,11 +32,13 @@ from ...models import StoreInfo
 class PublicListStores(Operation):
     """List all stores (publicListStores)
 
-    This API is used to list all stores in a namespace.<p>Other detail info:
-    <ul><li><i>Optional permission</i>: resource="PREVIEW", action=1(CREATE) (user
-    with this permission can view draft store)</li><li><i>Optional permission</i>:
-    resource="SANDBOX", action=1(CREATE) (user with this permission can view draft
-    store)</li><li><i>Returns</i>: the list of stores</li></ul>
+    This API is used to list all stores in a namespace.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store)
+      *  Returns : the list of stores
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,9 +35,11 @@ class ConsumeUserEntitlement(Operation):
     """Consume user entitlement (consumeUserEntitlement)
 
     Consume user entitlement. If the entitlement useCount is 0, the status will be
-    CONSUMED.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4
-    (UPDATE)</li><li><i>Returns</i>: consumed entitlement</li></ul>
+    CONSUMED.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : consumed entitlement
 
 
     Required Permission(s):

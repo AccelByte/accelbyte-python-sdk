@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,9 +32,11 @@ from ...models import SubscriptionPagingSlicedResult
 class QuerySubscriptions(Operation):
     """Query subscriptions (querySubscriptions)
 
-    Query subscriptions.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION", action=2
-    (READ)</li><li><i>Returns</i>: paginated subscriptions</li></ul>
+    Query subscriptions.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION", action=2 (READ)
+      *  Returns : paginated subscriptions
 
 
     Required Permission(s):

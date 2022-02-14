@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,10 @@ from ...models import XblIAPConfigRequest
 class UpdateXblIAPConfig(Operation):
     """Update xbl iap config (updateXblIAPConfig)
 
-    Update xbl iap config. Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4
-    (UPDATE)</li><li><i>Returns</i>: updated xbl iap config</li></ul>
+    Update xbl iap config. Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
+      *  Returns : updated xbl iap config
 
 
     Required Permission(s):

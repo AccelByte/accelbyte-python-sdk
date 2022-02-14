@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,10 +34,12 @@ class BulkGetLocaleItems(Operation):
     """Bulk get locale items (bulkGetLocaleItems)
 
     This API is used to bulk get locale items. If item not exist in specific
-    region, default region item will return.<p>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2
-    (READ)</li><li><i>Returns</i>: the list of items info</li></ul>
+    region, default region item will return.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the list of items info
 
 
     Required Permission(s):

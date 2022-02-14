@@ -33,8 +33,9 @@ from ...models import RestapiErrorResponseBody
 class GetSlugTemplate(Operation):
     """get all notification template in a slug (getSlugTemplate)
 
-    Required permission : <code>NAMESPACE:{namespace}:TEMPLATE [READ]</code> with
-    scope <code>social</code> <br>Get all templates in a namespace
+    Required permission : `NAMESPACE:{namespace}:TEMPLATE [READ]` with scope
+    `social`
+    Get all templates in a namespace
 
 
     Required Permission(s):

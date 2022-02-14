@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,10 +35,12 @@ from ...models import ValidationErrorEntity
 class UpdateUserProfile(Operation):
     """Update user profile (updateUserProfile)
 
-    Update user profile.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource=<b>"ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE"</b>, action=4
-    <b>(UPDATE)</b></li><li><i>Action code</i>: 11402</li><li><i>Returns</i>:
-    Updated user profile</li></ul>
+    Update user profile.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
+      *  Action code : 11402
+      *  Returns : Updated user profile
 
 
     Required Permission(s):

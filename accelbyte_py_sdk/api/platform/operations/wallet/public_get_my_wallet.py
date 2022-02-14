@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,12 +32,14 @@ from ...models import WalletInfo
 class PublicGetMyWallet(Operation):
     """Get my wallet by currency code and namespace (publicGetMyWallet)
 
-    get my wallet by currency code and namespace.<br>Other detail info:
-    <ul><li><i>Required permission</i>: resource="NAMESPACE:{namespace}:WALLET",
-    action=2 (READ)</li><li><i>Returns</i>: wallet info</li><li><i>Path's
-    namespace</i> : <ul> <li>can be filled with <b>publisher namespace</b> in
-    order to get <b>publisher user wallet</b></li> <li>can be filled with <b>game
-    namespace</b> in order to get <b>game user wallet</b></li> </ul></li></ul>
+    get my wallet by currency code and namespace.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:WALLET", action=2 (READ)
+      *  Returns : wallet info
+      *  Path's namespace :
+        * can be filled with publisher namespace in order to get publisher user wallet
+        * can be filled with game namespace in order to get game user wallet
 
 
     Required Permission(s):

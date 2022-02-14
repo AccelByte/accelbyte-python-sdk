@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,9 +32,12 @@ from ...models import SteamDLCSyncRequest
 class SyncSteamDLC(Operation):
     """Sync steam dlc. (syncSteamDLC)
 
-    Sync steam dlc.<p>Other detail info: <ul><li><i>Required permission</i>:
-    resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4
-    (UPDATE)</li><li><i>Returns</i>: </li></ul>
+    Sync steam dlc.
+
+    Other detail info:
+
+      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
+      *  Returns :
 
 
     Properties:

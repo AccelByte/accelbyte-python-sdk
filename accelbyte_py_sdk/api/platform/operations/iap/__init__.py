@@ -9,6 +9,7 @@ from .delete_iap_item_config import DeleteIAPItemConfig
 from .delete_playstation_iap_config import DeletePlaystationIAPConfig
 from .delete_stadia_iap_config import DeleteStadiaIAPConfig
 from .delete_steam_iap_config import DeleteSteamIAPConfig
+from .delete_twitch_iap_config import DeleteTwitchIAPConfig
 from .delete_xbl_ap_config import DeleteXblAPConfig
 from .get_apple_iap_config import GetAppleIAPConfig
 from .get_epic_games_iap_config import GetEpicGamesIAPConfig
@@ -17,6 +18,7 @@ from .get_iap_item_config import GetIAPItemConfig
 from .get_play_station_iap_config import GetPlayStationIAPConfig
 from .get_stadia_iap_config import GetStadiaIAPConfig
 from .get_steam_iap_config import GetSteamIAPConfig
+from .get_twitch_iap_config import GetTwitchIAPConfig
 from .get_xbl_iap_config import GetXblIAPConfig
 from .mock_fulfill_iap_item import MockFulfillIAPItem
 from .public_fulfill_apple_iap_item import PublicFulfillAppleIAPItem
@@ -27,6 +29,7 @@ from .query_user_iap_orders import QueryUserIAPOrders
 from .sync_epic_games_inventory import SyncEpicGamesInventory
 from .sync_stadia_entitlement import SyncStadiaEntitlement
 from .sync_steam_inventory import SyncSteamInventory
+from .sync_twitch_drops_entitlement import SyncTwitchDropsEntitlement
 from .sync_xbox_inventory import SyncXboxInventory
 from .update_apple_iap_config import UpdateAppleIAPConfig
 from .update_epic_games_iap_config import UpdateEpicGamesIAPConfig
@@ -36,5 +39,6 @@ from .update_iap_item_config import UpdateIAPItemConfig
 from .update_playstation_iap_config import UpdatePlaystationIAPConfig
 from .update_stadia_json_config_file import UpdateStadiaJsonConfigFile
 from .update_steam_iap_config import UpdateSteamIAPConfig
+from .update_twitch_iap_config import UpdateTwitchIAPConfig
 from .update_xbl_bp_cert_file import UpdateXblBPCertFile
 from .update_xbl_iap_config import UpdateXblIAPConfig

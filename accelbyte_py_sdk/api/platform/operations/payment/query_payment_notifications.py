@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,9 +32,11 @@ from ...models import PaymentNotificationPagingSlicedResult
 class QueryPaymentNotifications(Operation):
     """Query payment notifications (queryPaymentNotifications)
 
-    Query payment notifications.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:NOTIFICATION",
-    action=2 (READ)</li><li><i>Returns</i>: Payment notifications</li></ul>
+    Query payment notifications.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:NOTIFICATION", action=2 (READ)
+      *  Returns : Payment notifications
 
 
     Required Permission(s):

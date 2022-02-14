@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,10 +32,11 @@ from ...models import CampaignPagingSlicedResult
 class QueryCampaigns(Operation):
     """Query campaigns (queryCampaigns)
 
-    Query campaigns, if name is presented, it's fuzzy match.<br>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)
-    (READ)</li><li><i>Returns</i>: slice of campaigns</li></ul>
+    Query campaigns, if name is presented, it's fuzzy match.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ) (READ)
+      *  Returns : slice of campaigns
 
 
     Required Permission(s):

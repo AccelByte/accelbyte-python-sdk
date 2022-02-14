@@ -1,4 +1,4 @@
-# justice-social-service (1.23.0)
+# justice-social-service (1.24.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,9 +32,12 @@ from ...models import GlobalStatItemPagingSlicedResult
 class GetGlobalStatItems(Operation):
     """List global statItems (getGlobalStatItems)
 
-    List global statItems by pagination.<br>Other detail info:<ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=2
-    (READ)</li><li><i>Returns</i>: stat items</li>ul
+    List global statItems by pagination.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=2 (READ)
+      *  Returns : stat items
+    ul
 
 
     Required Permission(s):

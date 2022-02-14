@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,8 +33,10 @@ from ...models import TaxResult
 class GetPaymentTaxValue(Operation):
     """get tax result of a payment order (getPaymentTaxValue)
 
-    Check and get a payment order's should pay tax.<br>Other detail info:
-    <ul><li><i>Returns</i>: tax result</li></ul>
+    Check and get a payment order's should pay tax.
+    Other detail info:
+
+      * Returns : tax result
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,10 +33,11 @@ from ...models import ValidationErrorEntity
 class AnonymizeUserProfile(Operation):
     """anonymize user profile (anonymizeUserProfile)
 
-    Anonymize user profile.<br>Other detail info: <ul><li><i>Required
-    permission</i>:
-    resource=<b>"ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION"</b>,
-    action=8 <b>(DELETE)</b></li><li><i>Action code</i>: 11501</li></ul>
+    Anonymize user profile.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION" , action=8 (DELETE)
+      *  Action code : 11501
 
 
     Required Permission(s):

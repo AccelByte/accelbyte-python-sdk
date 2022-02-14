@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,10 +34,10 @@ from ...models import ErrorEntity
 class UpdateConfig(Operation):
     """Create or Update equ8 config (updateConfig)
 
-    Update equ8 config, create if not exists.<br>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource=<b>"ADMIN:NAMESPACE:{namespace}:EQU8CONFIG"</b>, action=4
-    <b>(UPDATE)</b></li></ul>
+    Update equ8 config, create if not exists.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:EQU8CONFIG" , action=4 (UPDATE)
 
 
     Properties:

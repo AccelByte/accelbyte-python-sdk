@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,10 +34,12 @@ from ...models import PlayStationReconcileResult
 class PublicReconcilePlayStationStore(Operation):
     """Synchronize with entitlements in PSN Store. (publicReconcilePlayStationStore)
 
-    Synchronize with entitlements in PSN Store.<p>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4
-    (UPDATE)</li><li><i>Returns</i>: result of synchronization</li></ul>
+    Synchronize with entitlements in PSN Store.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
+      *  Returns : result of synchronization
 
 
     Required Permission(s):

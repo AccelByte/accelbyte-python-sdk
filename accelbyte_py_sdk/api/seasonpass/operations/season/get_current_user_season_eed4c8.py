@@ -1,4 +1,4 @@
-# justice-seasonpass-service (1.7.0)
+# justice-seasonpass-service (1.8.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -42,6 +42,9 @@ class GetCurrentUserSeasonProgression(Operation):
       *  Returns : user season progression
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/progression
 
@@ -62,9 +65,9 @@ class GetCurrentUserSeasonProgression(Operation):
     Responses:
         200: OK - UserSeasonSummary (successful operation)
 
-        404: Not Found - ErrorEntity (49147: Published season does not exist | 49148: User season does not exist)
-
         400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49147: Published season does not exist | 49148: User season does not exist)
     """
 
     # region fields
@@ -191,15 +194,15 @@ class GetCurrentUserSeasonProgression(Operation):
 
         200: OK - UserSeasonSummary (successful operation)
 
-        404: Not Found - ErrorEntity (49147: Published season does not exist | 49148: User season does not exist)
-
         400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49147: Published season does not exist | 49148: User season does not exist)
         """
         if code == 200:
             return UserSeasonSummary.create_from_dict(content), None
-        if code == 404:
-            return None, ErrorEntity.create_from_dict(content)
         if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:

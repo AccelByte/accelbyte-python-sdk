@@ -1,4 +1,4 @@
-# justice-cloudsave-service (2.1.0)
+# justice-cloudsave-service (2.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,9 +32,10 @@ from ...models import ModelsResponseError
 class DeleteGameRecordHandlerV1(Operation):
     """Delete game record (deleteGameRecordHandlerV1)
 
-    <table> <tr> <td>Required Permission</td>
-    <td><code>NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]</code></td> </tr>
-    <tr> <td>Required Scope</td> <td><code>social</code></td> </tr> </table> <br/>
+    Required Permission | `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]`
+    ---|---
+    Required Scope | `social`
+
     Delete records by its key
 
 

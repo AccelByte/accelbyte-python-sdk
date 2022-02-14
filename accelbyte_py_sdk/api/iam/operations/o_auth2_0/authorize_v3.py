@@ -1,4 +1,4 @@
-# justice-iam-service (5.1.1)
+# justice-iam-service (5.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -66,9 +66,6 @@ class AuthorizeV3(Operation):
 
     action code: 10701
 
-
-    Required Scope(s):
-        - The
 
     Properties:
         url: /iam/v3/oauth/authorize

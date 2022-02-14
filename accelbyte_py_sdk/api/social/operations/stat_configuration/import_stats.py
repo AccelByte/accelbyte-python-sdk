@@ -1,4 +1,4 @@
-# justice-social-service (1.23.0)
+# justice-social-service (1.24.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,8 +34,11 @@ class ImportStats(Operation):
     """Import stat configurations (importStats)
 
     Import stat configurations for a given namespace from file. At current, only
-    JSON file is supported.<p>Other detail info:<ul><li><i>*Required permission*:
-    resource="ADMIN:NAMESPACE:{namespace}:STAT", action=1 (CREATE)</li></ul>
+    JSON file is supported.
+
+    Other detail info:
+
+      *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STAT", action=1 (CREATE)
 
 
     Required Permission(s):

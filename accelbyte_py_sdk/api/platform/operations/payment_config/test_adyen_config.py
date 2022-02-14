@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,12 +33,27 @@ from ...models import TestResult
 class TestAdyenConfig(Operation):
     """Test adyen configuration (testAdyenConfig)
 
-    Test adyen configuration. <h4>Check List:</h4>
-    <ul><li>apiKey</li><li>merchantAccount</li></ul><h4>Non-check
-    list:</h4><ul><li>notificationHmacKey</li><li>notificationUsername</li><li>notificationPassword</li><li>liveEndpointUrlPrefix</li><li>allowedPaymentMethods</li><li>blockedPaymentMethods</li><li>settings</li></ul>Other
-    detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)</li><li><i>Returns</i>:
-    test adyen config</li></ul>
+    Test adyen configuration.
+
+    #### Check List:
+
+      * apiKey
+      * merchantAccount
+
+    #### Non-check list:
+
+      * notificationHmacKey
+      * notificationUsername
+      * notificationPassword
+      * liveEndpointUrlPrefix
+      * allowedPaymentMethods
+      * blockedPaymentMethods
+      * settings
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
+      *  Returns : test adyen config
 
 
     Required Permission(s):

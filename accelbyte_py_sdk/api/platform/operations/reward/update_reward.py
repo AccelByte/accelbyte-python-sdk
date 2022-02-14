@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,9 +34,11 @@ from ...models import RewardUpdate
 class UpdateReward(Operation):
     """Update a reward (updateReward)
 
-    This API is used to update a reward.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=4
-    (UPDATE)</li><li><i>Returns</i>: reward instance</li></ul>
+    This API is used to update a reward.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=4 (UPDATE)
+      *  Returns : reward instance
 
 
     Required Permission(s):

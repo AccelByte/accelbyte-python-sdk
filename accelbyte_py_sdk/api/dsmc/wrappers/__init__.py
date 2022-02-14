@@ -1,6 +1,6 @@
 """Auto-generated package that contains utility functions for the justice-dsm-controller-service."""
 
-__version__ = "2.13.1"
+__version__ = "2.14.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

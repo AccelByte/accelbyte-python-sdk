@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,9 +32,11 @@ from ...models import IAPOrderPagingSlicedResult
 class QueryAllUserIAPOrders(Operation):
     """Query all user IAP orders (queryAllUserIAPOrders)
 
-    Query all user IAP orders.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP",
-    action=2 (READ)</li><li><i>Returns</i>: list of iap orders</li></ul>
+    Query all user IAP orders.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=2 (READ)
+      *  Returns : list of iap orders
 
 
     Required Permission(s):

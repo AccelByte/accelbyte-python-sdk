@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,8 +32,10 @@ from ...models import CurrencyInfo
 class PublicListCurrencies(Operation):
     """list currencies (publicListCurrencies)
 
-    List currencies of a namespace.<br>Other detail info: <ul><li><i>Returns</i>:
-    Currency List</li></ul>
+    List currencies of a namespace.
+    Other detail info:
+
+      * Returns : Currency List
 
 
     Properties:

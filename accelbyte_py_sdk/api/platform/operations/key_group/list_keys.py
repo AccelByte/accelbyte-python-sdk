@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,10 +32,11 @@ from ...models import KeyPagingSliceResult
 class ListKeys(Operation):
     """List keys of a key group (listKeys)
 
-    This API is used to list keys of a key group.<br>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2
-    (READ)</li><li><i>Returns</i>: keys</li></ul>
+    This API is used to list keys of a key group.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2 (READ)
+      *  Returns : keys
 
 
     Required Permission(s):

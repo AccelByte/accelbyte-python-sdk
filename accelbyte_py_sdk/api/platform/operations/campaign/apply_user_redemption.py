@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,11 +35,13 @@ from ...models import ValidationErrorEntity
 class ApplyUserRedemption(Operation):
     """Redeem code (applyUserRedemption)
 
-    <b>[SERVICE COMMUNICATION ONLY]</b> Redeem code. If the campaign which the
-    code belongs to is INACTIVE, the code couldn't be redeemed even if its status
-    is ACTIVE.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:REDEMPTION", action=1
-    (CREATE)</li><li><i>Returns</i>: Redeem result</li></ul>
+    [SERVICE COMMUNICATION ONLY] Redeem code. If the campaign which the code
+    belongs to is INACTIVE, the code couldn't be redeemed even if its status is
+    ACTIVE.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:REDEMPTION", action=1 (CREATE)
+      *  Returns : Redeem result
 
 
     Required Permission(s):

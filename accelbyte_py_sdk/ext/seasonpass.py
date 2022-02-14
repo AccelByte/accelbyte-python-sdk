@@ -1,4 +1,4 @@
-# justice-seasonpass-service (1.7.0)
+# justice-seasonpass-service (1.8.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -53,6 +53,7 @@ from ..api.seasonpass.models import Tier
 from ..api.seasonpass.models import TierCreate
 from ..api.seasonpass.models import TierInput
 from ..api.seasonpass.models import TierPagingSlicedResult
+from ..api.seasonpass.models import TierReorder
 from ..api.seasonpass.models import UserExpGrant
 from ..api.seasonpass.models import UserPassGrant
 from ..api.seasonpass.models import UserPurchasable
@@ -422,6 +423,12 @@ def create_tier_paging_sliced_result_example() -> TierPagingSlicedResult:
     instance.data = [create_tier_example()]
     instance.paging = create_paging_example()
     instance.total = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_tier_reorder_example() -> TierReorder:
+    instance = TierReorder()
+    instance.new_index = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

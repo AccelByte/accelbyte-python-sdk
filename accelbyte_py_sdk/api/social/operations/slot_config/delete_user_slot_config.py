@@ -1,4 +1,4 @@
-# justice-social-service (1.23.0)
+# justice-social-service (1.24.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -31,10 +31,10 @@ class DeleteUserSlotConfig(Operation):
     """Deletes a user slot configuration (deleteUserSlotConfig)
 
     Deletes a user slot configuration in given namespace, the namespace slot
-    configuration will be returned after delete.<br>Other detail
-    info:<ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG", action=8
-    (DELETE)</li></li>
+    configuration will be returned after delete.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG", action=8 (DELETE)
 
 
     Required Permission(s):

@@ -1,4 +1,4 @@
-# justice-social-service (1.23.0)
+# justice-social-service (1.24.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,9 +34,11 @@ from ...models import ValidationErrorEntity
 class BulkCreateUserStatItems(Operation):
     """Bulk create user's statItems (bulkCreateUserStatItems)
 
-    Bulk create user's statItems.<br>Other detail info:<ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM",
-    action=1 (CREATE)</li><li><i>Returns</i>: bulk created result</li>
+    Bulk create user's statItems.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
+      *  Returns : bulk created result
 
 
     Required Permission(s):

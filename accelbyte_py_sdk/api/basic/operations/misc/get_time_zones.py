@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,12 @@ from ...models import ValidationErrorEntity
 class GetTimeZones(Operation):
     """List time zones (getTimeZones)
 
-    List time zones.<br>Other detail info: <ul><li><i>Required permission</i>:
-    login user</li><li><i>Action code</i>: 11205</li><li><i>Returns</i>: time
-    zones</li></ul>
+    List time zones.
+    Other detail info:
+
+      * Required permission : login user
+      *  Action code : 11205
+      *  Returns : time zones
 
 
     Properties:

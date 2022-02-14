@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,9 +34,12 @@ class GetPublishedStore(Operation):
     """Get published store (getPublishedStore)
 
     This API is used to get a published store basic info, exclude category and
-    item information.<p>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2
-    (READ)</li><li><i>Returns</i>: store data</li></ul>
+    item information.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
+      *  Returns : store data
 
 
     Required Permission(s):

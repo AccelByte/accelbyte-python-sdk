@@ -1,4 +1,4 @@
-# justice-legal-service (1.16.0)
+# justice-legal-service (1.17.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -30,9 +30,12 @@ from .....core import HttpResponse
 class InvalidateUserInfoCache(Operation):
     """Invalidate user info cache (invalidateUserInfoCache)
 
-    <b>Important: GOING TO DEPRECATE</b><br/><br/>Invalidate user info cache in
-    agreement service.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:*:LEGAL", action=8 (DELETE)</li></ul>
+    Important: GOING TO DEPRECATE
+
+    Invalidate user info cache in agreement service.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=8 (DELETE)
 
 
     Required Permission(s):

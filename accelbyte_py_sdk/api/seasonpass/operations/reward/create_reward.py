@@ -1,4 +1,4 @@
-# justice-seasonpass-service (1.7.0)
+# justice-seasonpass-service (1.8.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -43,6 +43,9 @@ class CreateReward(Operation):
       *  Returns : created reward
 
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [CREATE]
+
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/rewards
 
@@ -65,9 +68,9 @@ class CreateReward(Operation):
     Responses:
         201: Created - RewardInfo (successful operation)
 
-        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
-
         400: Bad Request - ErrorEntity (20026: publisher namespace not allowed | 49143: Item type not match)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (49171: Invalid season status [{status}] | 49173: Reward [{code}] already exists in the season)
 
@@ -213,9 +216,9 @@ class CreateReward(Operation):
 
         201: Created - RewardInfo (successful operation)
 
-        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
-
         400: Bad Request - ErrorEntity (20026: publisher namespace not allowed | 49143: Item type not match)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (49171: Invalid season status [{status}] | 49173: Reward [{code}] already exists in the season)
 
@@ -223,9 +226,9 @@ class CreateReward(Operation):
         """
         if code == 201:
             return RewardInfo.create_from_dict(content), None
-        if code == 404:
-            return None, ErrorEntity.create_from_dict(content)
         if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 409:
             return None, ErrorEntity.create_from_dict(content)

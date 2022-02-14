@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,12 +35,22 @@ from ...models import ValidationErrorEntity
 class CreateCategory(Operation):
     """Create category (createCategory)
 
-    This API is used to create category.<p>A category is a path separated by "/".
-    A category also has localized display names. Example:<p><pre><code>{
-    "categoryPath": "/games", "localizationDisplayNames": {"en" : "Games"}
-    }</code></pre>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=1
-    (CREATE)</li><li><i>Returns</i>: created category data</li></ul>
+    This API is used to create category.
+
+    A category is a path separated by "/". A category also has localized display
+    names. Example:
+
+
+
+        {
+            "categoryPath": "/games",
+            "localizationDisplayNames": {"en" : "Games"}
+        }
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=1 (CREATE)
+      *  Returns : created category data
 
 
     Required Permission(s):

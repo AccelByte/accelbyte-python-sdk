@@ -33,10 +33,13 @@ from ...models import ResponseErrorResponse
 class GetGroupConfigurationAdminV1(Operation):
     """get existing configuration (getGroupConfigurationAdminV1)
 
-    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION
-    [READ]'</p> <p>This endpoint is used to get existing configuration. This
-    Configuration is used to be the main rule of the service. Each namespace will
-    have its own configuration</p> <p>Action Code: 73101</p>
+    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [READ]'
+
+    This endpoint is used to get existing configuration. This Configuration is
+    used to be the main rule of the service. Each namespace will have its own
+    configuration
+
+    Action Code: 73101
 
 
     Required Permission(s):

@@ -1,4 +1,4 @@
-# justice-social-service (1.23.0)
+# justice-social-service (1.24.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,10 +33,11 @@ class GetUserSlotConfig(Operation):
     """Returns a user slot configuration (getUserSlotConfig)
 
     Get a user slot configuration in given namespace. In case the user slot
-    configuration is not set, the namespace configuration will be
-    returned.<br>Other detail info:<ul><li>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG", action=2
-    (READ)</li><li>Returns</i>: slot config info</li>
+    configuration is not set, the namespace configuration will be returned.
+    Other detail info:
+
+      * Required permission: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG", action=2 (READ)
+      * Returns: slot config info
 
 
     Required Permission(s):

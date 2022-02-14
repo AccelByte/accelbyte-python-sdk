@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,10 +35,13 @@ class PublicChangeSubscriptionBillingAccount(Operation):
 
     Request to change a subscription billing account, this will guide user to
     payment station. The actual change will happen at the 0 payment notification
-    successfully handled.<br>Only ACTIVE USER subscription with real currency
-    billing account can be changed.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION",
-    action=4 (UPDATE)</li><li><i>Returns</i>: updated subscription</li></ul>
+    successfully handled.
+    Only ACTIVE USER subscription with real currency billing account can be
+    changed.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
+      *  Returns : updated subscription
 
 
     Required Permission(s):

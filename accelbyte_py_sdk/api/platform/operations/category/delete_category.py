@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,10 +33,12 @@ from ...models import FullCategoryInfo
 class DeleteCategory(Operation):
     """Delete category (deleteCategory)
 
-    This API is used to delete category by category path. <p>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=8
-    (DELETE)</li><li><i>Returns</i>: the deleted category data</li></ul>
+    This API is used to delete category by category path.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=8 (DELETE)
+      *  Returns : the deleted category data
 
 
     Required Permission(s):

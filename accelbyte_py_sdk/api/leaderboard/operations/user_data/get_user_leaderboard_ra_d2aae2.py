@@ -1,4 +1,4 @@
-# justice-leaderboard-service (2.12.0)
+# justice-leaderboard-service (2.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,8 +33,9 @@ from ...models import ResponseErrorResponse
 class GetUserLeaderboardRankingsAdminV1(Operation):
     """Get user rankings (getUserLeaderboardRankingsAdminV1)
 
-    <p>Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'</p>
-    <p>Get user leaderboard rankings</p>
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
+
+    Get user leaderboard rankings
 
 
     Required Permission(s):

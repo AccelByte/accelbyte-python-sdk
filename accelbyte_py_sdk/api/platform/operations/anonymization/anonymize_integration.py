@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -30,10 +30,10 @@ from .....core import HttpResponse
 class AnonymizeIntegration(Operation):
     """anonymize integrations (anonymizeIntegration)
 
-    Anonymize integrations. At current it will only anonymize iap
-    histories.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8
-    (DELETE)</li></ul>
+    Anonymize integrations. At current it will only anonymize iap histories.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
 
 
     Required Permission(s):

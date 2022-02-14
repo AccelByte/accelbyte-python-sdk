@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,10 +35,12 @@ from ...models import ValidationErrorEntity
 class ChangeNamespaceStatus(Operation):
     """Change namespace status (changeNamespaceStatus)
 
-    Change a namespace status.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource=<b>"ADMIN:NAMESPACE:{namespace}:NAMESPACE"</b>,
-    action=4 <b>(UPDATE)</b></li><li>Action code<i></i>:
-    11306</li><li><i>Returns</i>: updated namespace</li></ul>
+    Change a namespace status.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=4 (UPDATE)
+      * Action code : 11306
+      *  Returns : updated namespace
 
 
     Required Permission(s):

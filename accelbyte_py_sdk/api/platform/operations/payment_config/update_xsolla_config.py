@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,11 +34,12 @@ from ...models import XsollaConfig
 class UpdateXsollaConfig(Operation):
     """Update xsolla configuration (updateXsollaConfig)
 
-    Update xsolla configuration. Reference: <a
-    href="https://developers.xsolla.com/?#simple-checkout">Xsolla
-    Document</a>.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)</li><li><i>Returns</i>:
-    updated payment merchant config</li></ul>
+    Update xsolla configuration. Reference: [Xsolla
+    Document](https://developers.xsolla.com/?#simple-checkout).
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
+      *  Returns : updated payment merchant config
 
 
     Required Permission(s):

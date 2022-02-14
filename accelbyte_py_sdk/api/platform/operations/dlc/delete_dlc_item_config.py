@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -30,9 +30,10 @@ from .....core import HttpResponse
 class DeleteDLCItemConfig(Operation):
     """delete a DLC item config (deleteDLCItemConfig)
 
-    delete a DLC item config.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource=<b>"ADMIN:NAMESPACE:{namespace}:DLC:CONFIG"</b>,
-    action=8 <b>(DELETE)</b></li></ul>
+    delete a DLC item config.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:DLC:CONFIG" , action=8 (DELETE)
 
 
     Required Permission(s):

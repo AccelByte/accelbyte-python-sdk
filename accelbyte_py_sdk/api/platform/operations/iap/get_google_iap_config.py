@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,9 +32,11 @@ from ...models import GoogleIAPConfigInfo
 class GetGoogleIAPConfig(Operation):
     """Get google iap config (getGoogleIAPConfig)
 
-    Get google iap config.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2
-    (READ)</li><li><i>Returns</i>: google iap config</li></ul>
+    Get google iap config.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
+      *  Returns : google iap config
 
 
     Required Permission(s):

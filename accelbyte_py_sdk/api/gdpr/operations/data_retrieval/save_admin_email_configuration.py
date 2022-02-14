@@ -1,4 +1,4 @@
-# justice-gdpr-service (1.12.0)
+# justice-gdpr-service (1.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,8 +33,9 @@ class SaveAdminEmailConfiguration(Operation):
     """Add admin email address configuration (SaveAdminEmailConfiguration)
 
     Add admin email address for receiving personal data request notification.
-    <p>Required permission <code>ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION
-    [CREATE]</code> and scope <code>account</code></p>
+
+    Required permission `ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [CREATE]`
+    and scope `account`
 
 
     Required Permission(s):

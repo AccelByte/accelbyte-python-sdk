@@ -34,8 +34,9 @@ from ...models import RestapiErrorResponseBody
 class PublicUpdatePartyAttributesV1(Operation):
     """update party attributes (publicUpdatePartyAttributesV1)
 
-    Required valid user authorization <br/> <br>update party attributes in a
-    namespace.
+    Required valid user authorization
+
+    update party attributes in a namespace.
 
 
     Properties:

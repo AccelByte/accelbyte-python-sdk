@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,16 +35,18 @@ class PublicSubscribeSubscription(Operation):
     """Subscribe a subscription (publicSubscribeSubscription)
 
     Subscribe a subscription. Support both real and virtual payment. Need go
-    through payment flow using the paymentOrderNo if paymentFlowRequired
-    true.<br><b>ACTIVE USER subscription can't do subscribe again.</b><br><b>The
-    next billing date will be X(default 4) hours before the current period ends if
-    correctly subscribed.</b><br>User with permission SANDBOX will create sandbox
-    subscription that not real paid.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION",
-    action=1 (CREATE)</li><li><i>Optional permission(user with this permission
-    will create sandbox subscription)</i>: resource="SANDBOX", action=1
-    (CREATE)</li><li>It will be forbidden while the user is banned: ORDER_INITIATE
-    or ORDER_AND_PAYMENT</li><li><i>Returns</i>: created subscription</li></ul>
+    through payment flow using the paymentOrderNo if paymentFlowRequired true.
+     ACTIVE USER subscription can't do subscribe again.
+     The next billing date will be X(default 4) hours before the current period
+    ends if correctly subscribed.
+    User with permission SANDBOX will create sandbox subscription that not real
+    paid.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=1 (CREATE)
+      *  Optional permission(user with this permission will create sandbox subscription) : resource="SANDBOX", action=1 (CREATE)
+      * It will be forbidden while the user is banned: ORDER_INITIATE or ORDER_AND_PAYMENT
+      *  Returns : created subscription
 
 
     Required Permission(s):

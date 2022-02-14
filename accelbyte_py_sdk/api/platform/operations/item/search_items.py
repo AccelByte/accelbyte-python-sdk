@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,9 +34,12 @@ class SearchItems(Operation):
     """Search items by keyword (searchItems)
 
     This API is used to search items by keyword in title, description and long
-    description within a store.<p>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2
-    (READ)<li><i>Returns</i>: the list of items</li></ul>
+    description within a store.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the list of items
 
 
     Required Permission(s):

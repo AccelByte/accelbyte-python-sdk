@@ -33,8 +33,9 @@ from ...models import RestapiErrorResponseBody
 class AdminGetProfanityRule(Operation):
     """get current profanity rule (adminGetProfanityRule)
 
-    Required permission : <code>ADMIN:NAMESPACE:{namespace}:PROFANITY
-    [READ]</code> with scope <code>social</code> <br>get current profanity rule
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with
+    scope `social`
+    get current profanity rule
 
 
     Required Permission(s):

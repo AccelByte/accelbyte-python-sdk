@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,8 +33,10 @@ from ...models import PaymentOrderDetails
 class PublicGetUnpaidPaymentOrder(Operation):
     """Get payment order info (publicGetUnpaidPaymentOrder)
 
-    Get payment order info.<br>Other detail info: <ul><li><i>Returns</i>: Payment
-    order details</li></ul>
+    Get payment order info.
+    Other detail info:
+
+      * Returns : Payment order details
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-cloudsave-service (2.1.0)
+# justice-cloudsave-service (2.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,20 +33,56 @@ from ...models import ModelsResponseError
 class PostPlayerPublicRecordHandlerV1(Operation):
     """Create public player record (postPlayerPublicRecordHandlerV1)
 
-    <table> <tr> <td>Required Permission</td>
-    <td><code>NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD
-    [WRITE]</code></td> </tr> <tr> <td>Required Scope</td>
-    <td><code>social</code></td> </tr> </table> <br/> This endpoint will create or
-    update player record with <code>isPublic=true</code> meaning that the record
-    will be available for other player to be retrieved. Other player can only
-    retrieve the record and not create, update or even delete. This endpoint will
-    create public player record if it is not exists otherwise merge with these
-    criteria: - If field name is already exists, replace the value - If field
-    name is not exists, append it Example Replace value: <pre> // existed record {
-    "foo": "bar" } // new record (request body) { "foo": "bar_updated" } // result
-    { "foo": "bar_updated" } </pre> Append value: <pre> // existed record { "foo":
-    "bar" } // new record (request body) { "foo_new": "bar_new" } // result {
-    "foo": "bar", "foo_new": "bar_new" } </pre>
+    Required Permission |
+    `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [WRITE]`
+    ---|---
+    Required Scope | `social`
+
+    This endpoint will create or update player record with `isPublic=true` meaning
+    that the record will be available for other player to be retrieved. Other
+    player can only retrieve the record and not create, update or even delete.
+    This endpoint will create public player record if it is not exists otherwise
+    merge with these criteria: - If field name is already exists, replace the
+    value - If field name is not exists, append it Example Replace value:
+
+
+
+            // existed record
+            {
+                "foo": "bar"
+            }
+
+            // new record (request body)
+            {
+                "foo": "bar_updated"
+            }
+
+            // result
+            {
+                "foo": "bar_updated"
+            }
+
+
+    Append value:
+
+
+
+            // existed record
+            {
+                "foo": "bar"
+            }
+
+            // new record (request body)
+            {
+                "foo_new": "bar_new"
+            }
+
+            // result
+            {
+                "foo": "bar",
+                "foo_new": "bar_new"
+            }
+
 
 
     Required Permission(s):

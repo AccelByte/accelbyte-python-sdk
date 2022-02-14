@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -30,10 +30,11 @@ from .....core import HttpResponse
 class ListExtOrderNoByExtTxId(Operation):
     """List external order No by external transaction id (listExtOrderNoByExtTxId)
 
-    List external order No by external transaction id.<br>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2
-    (READ)</li><li><i>Returns</i>: payment orders</li></ul>
+    List external order No by external transaction id.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
+      *  Returns : payment orders
 
 
     Required Permission(s):

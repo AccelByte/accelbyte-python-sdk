@@ -1,4 +1,4 @@
-# justice-legal-service (1.16.0)
+# justice-legal-service (1.17.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,20 +32,19 @@ from ...models import RetrievePolicyPublicResponse
 class RetrieveLatestPoliciesByNamespaceAndCountryPublic(Operation):
     """Retrieve Latest Policies by Namespace and Country (retrieveLatestPoliciesByNamespaceAndCountryPublic)
 
-    Retrieve all active latest policies based on a namespace and country.<br>Other
-    detail info: <ul><li><i>Leave the policyType empty if you want to be responded
-    with all policy type</i></li><li><i>Fill the tags if you want to filter the
-    responded policy by tags</i></li><li><i>Fill the defaultOnEmpty with true if
-    you want to be responded with default country-specific policy if your
-    requested country is not exist</i></li><li><i>Fill the alwaysIncludeDefault
-    with true if you want to be responded with always include default policy. If
-    there are duplicate policies (default policies and country specific policies
-    with same base policy) it'll include policy with same country code, for
-    example:<ul><li>Document 1 (default): Region US (default), UA</li><li>Document
-    2 (default): Region US (default)</li><li>Document 3 (default): Region US
-    (default)</li><li>User: Region UA</li><li>Query: alwaysIncludeDefault:
-    true</li><li>Response: Document 1 (UA), Document 2 (US), Document 3
-    (US)</li></ul>
+    Retrieve all active latest policies based on a namespace and country.
+    Other detail info:
+
+      * Leave the policyType empty if you want to be responded with all policy type
+      *  Fill the tags if you want to filter the responded policy by tags
+      *  Fill the defaultOnEmpty with true if you want to be responded with default country-specific policy if your requested country is not exist
+      *  Fill the alwaysIncludeDefault with true if you want to be responded with always include default policy. If there are duplicate policies (default policies and country specific policies with same base policy) it'll include policy with same country code, for example:
+        * Document 1 (default): Region US (default), UA
+        * Document 2 (default): Region US (default)
+        * Document 3 (default): Region US (default)
+        * User: Region UA
+        * Query: alwaysIncludeDefault: true
+        * Response: Document 1 (UA), Document 2 (US), Document 3 (US)
 
 
     Properties:

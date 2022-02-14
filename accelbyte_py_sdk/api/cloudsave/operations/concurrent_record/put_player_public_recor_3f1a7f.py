@@ -1,4 +1,4 @@
-# justice-cloudsave-service (2.1.0)
+# justice-cloudsave-service (2.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,20 +33,39 @@ from ...models import ModelsResponseError
 class PutPlayerPublicRecordConcurrentHandlerV1(Operation):
     """Create or replace player record (putPlayerPublicRecordConcurrentHandlerV1)
 
-    <table> <tr> <td>Required Permission</td>
-    <td><code>NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD
-    [UPDATE]</code></td> </tr> <tr> <td>Required Scope</td>
-    <td><code>social</code></td> </tr> </table> <br/> If the record is not exist,
-    it will create. If the record already exist, it will replace the record
-    instead. And this operation can only be applied to record with
-    <code>isPublic=true</code>. Example Replace record <pre> // existed record {
-    "foo": "bar" } // new record (request body) { "foo_new": "bar_new" } // result
-    { "foo_new": "bar_new" } </pre> <b>Optimistic Concurrency Control</b><br> This
-    endpoint implement optimistic concurrency control to avoid race condition. If
-    the record has been updated since the client fetch it, the server will return
-    HTTP status code 412 (precondition failed) and client need to redo the
-    operation (fetch data and do update). Otherwise, the server will process the
-    request.
+    Required Permission |
+    `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]`
+    ---|---
+    Required Scope | `social`
+
+    If the record is not exist, it will create. If the record already exist, it
+    will replace the record instead. And this operation can only be applied to
+    record with `isPublic=true`. Example Replace record
+
+
+
+        // existed record
+        {
+            "foo": "bar"
+        }
+
+        // new record (request body)
+        {
+            "foo_new": "bar_new"
+        }
+
+        // result
+        {
+            "foo_new": "bar_new"
+        }
+
+
+    Optimistic Concurrency Control
+    This endpoint implement optimistic concurrency control to avoid race
+    condition. If the record has been updated since the client fetch it, the
+    server will return HTTP status code 412 (precondition failed) and client need
+    to redo the operation (fetch data and do update). Otherwise, the server will
+    process the request.
 
 
     Required Permission(s):

@@ -34,8 +34,11 @@ from ...models import ResponseErrorResponse
 class UpdateMemberRolePublicV1(Operation):
     """Assign role to group member (updateMemberRolePublicV1)
 
-    Required Member Role Permission: "GROUP:ROLE [UPDATE]</p> <p>This endpoint is
-    used to assign role to group member</p> <p>Action Code: 73204</p>
+    Required Member Role Permission: "GROUP:ROLE [UPDATE]
+
+    This endpoint is used to assign role to group member
+
+    Action Code: 73204
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,8 +33,10 @@ from ...models import ItemDynamicDataInfo
 class PublicGetItemDynamicData(Operation):
     """Get item dynamic data (publicGetItemDynamicData)
 
-    Get item dynamic data for a published item.<br>Other detail info:
-    <ul><li><i>Returns</i>: item dynamic data</li></ul>
+    Get item dynamic data for a published item.
+    Other detail info:
+
+      * Returns : item dynamic data
 
 
     Properties:

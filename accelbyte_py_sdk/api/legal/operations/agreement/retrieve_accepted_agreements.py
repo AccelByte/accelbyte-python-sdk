@@ -1,4 +1,4 @@
-# justice-legal-service (1.16.0)
+# justice-legal-service (1.17.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,8 +33,9 @@ class RetrieveAcceptedAgreements(Operation):
     """Retrieve Accepted Legal Agreements (retrieveAcceptedAgreements)
 
     This API will return all accepted Legal Agreements for specified user. Other
-    detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)</li></ul>
+    detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
 
 
     Required Permission(s):

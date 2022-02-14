@@ -1,4 +1,4 @@
-# justice-social-service (1.23.0)
+# justice-social-service (1.24.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,10 +34,11 @@ from ...models import ValidationErrorEntity
 class BulkIncUserStatItemValue(Operation):
     """Bulk update multiple user's statitems value (bulkIncUserStatItemValue)
 
-    Bulk update multiple user's statitems value.<br>Other detail
-    info:<ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=4
-    (UPDATE)</li><li><i>Returns</i>: bulk updated result</li></ul>
+    Bulk update multiple user's statitems value.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
+      *  Returns : bulk updated result
 
 
     Required Permission(s):

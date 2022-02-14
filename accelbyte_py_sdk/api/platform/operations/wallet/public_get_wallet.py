@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,9 +32,11 @@ from ...models import WalletInfo
 class PublicGetWallet(Operation):
     """Get a wallet by currency code (publicGetWallet)
 
-    get a wallet by currency code.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="NAMESPACE:{namespace}:USER:{userId}:WALLET",
-    action=2 (READ)</li><li><i>Returns</i>: wallet info</li></ul>
+    get a wallet by currency code.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
+      *  Returns : wallet info
 
 
     Required Permission(s):

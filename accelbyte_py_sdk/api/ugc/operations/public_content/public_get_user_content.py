@@ -1,4 +1,4 @@
-# justice-ugc-service (1.12.0)
+# justice-ugc-service (1.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,7 +33,7 @@ from ...models import ResponseError
 class PublicGetUserContent(Operation):
     """Get user's generated contents (PublicGetUserContent)
 
-    Required permission <b>NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]</b>.
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
 
 
     Required Permission(s):

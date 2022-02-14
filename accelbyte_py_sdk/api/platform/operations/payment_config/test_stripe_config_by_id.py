@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,8 +34,9 @@ class TestStripeConfigById(Operation):
     """Test stripe configuration by id (testStripeConfigById)
 
     Test stripe configuration in payment merchant config. Other detail info:
-    <ul><li><i>Required permission</i>: resource="ADMIN:PAYMENT:CONFIG", action=2
-    (READ)</li><li><i>Returns</i>: test adyen config</li></ul>
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
+      *  Returns : test adyen config
 
 
     Required Permission(s):

@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,11 +34,12 @@ from ...models import ItemAcquireResult
 class AcquireItem(Operation):
     """Acquire item (acquireItem)
 
-    <b>[SERVICE COMMUNICATION ONLY]</b> This api is used for acquiring a published
-    item while the item is maxCount limited, it will decrease the sale available
-    count.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4
-    (UPDATE)</li><li><i>Returns</i>: acquire result</li></ul>
+    [SERVICE COMMUNICATION ONLY] This api is used for acquiring a published item
+    while the item is maxCount limited, it will decrease the sale available count.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+      *  Returns : acquire result
 
 
     Required Permission(s):

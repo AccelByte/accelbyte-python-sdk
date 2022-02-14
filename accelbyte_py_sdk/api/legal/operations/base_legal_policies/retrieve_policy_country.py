@@ -1,4 +1,4 @@
-# justice-legal-service (1.16.0)
+# justice-legal-service (1.17.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,10 @@ from ...models import RetrievePolicyResponse
 class RetrievePolicyCountry(Operation):
     """Retrieve a Base Legal Policy based on a Particular Country (retrievePolicyCountry)
 
-    Retrieve a Base Legal Policy based on a Particular Country.<br>Other detail
-    info: <ul><li><i>Required permission</i>: resource="ADMIN:NAMESPACE:*:LEGAL",
-    action=2 (READ)</li></ul>
+    Retrieve a Base Legal Policy based on a Particular Country.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
 
 
     Required Permission(s):

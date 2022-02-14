@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,10 +34,11 @@ from ...models import ValidationErrorEntity
 class BanUsers(Operation):
     """Ban user(temporarily or permanently) (banUsers)
 
-    Ban user.<br> actionId: 1 means permanent ban, actionId: 10 means Temporary
-    ban.Other detail info: <ul><li><i>Required permission</i>:
-    resource=<b>"ADMIN:NAMESPACE:{namespace}:ACTION"</b>, action=4
-    <b>(UPDATE)</b></li></ul>
+    Ban user.
+    actionId: 1 means permanent ban, actionId: 10 means Temporary ban.Other detail
+    info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:ACTION" , action=4 (UPDATE)
 
 
     Required Permission(s):

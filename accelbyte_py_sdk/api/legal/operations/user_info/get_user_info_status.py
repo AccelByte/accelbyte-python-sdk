@@ -1,4 +1,4 @@
-# justice-legal-service (1.16.0)
+# justice-legal-service (1.17.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,11 +32,13 @@ from ...models import RetrieveUserInfoCacheStatusResponse
 class GetUserInfoStatus(Operation):
     """Get user info cache status (getUserInfoStatus)
 
-    Get user info cache last updated time per namespace.<br>The query parameter
-    namespaces can be a list of namespace separated by comma.<br>If query
-    parameter namespaces is empty, user info cache status for all available
-    namespaces will be returned. <br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)</li></ul>
+    Get user info cache last updated time per namespace.
+    The query parameter namespaces can be a list of namespace separated by comma.
+    If query parameter namespaces is empty, user info cache status for all
+    available namespaces will be returned.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
 
 
     Required Permission(s):

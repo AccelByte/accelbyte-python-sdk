@@ -1,4 +1,4 @@
-# justice-gdpr-service (1.12.0)
+# justice-gdpr-service (1.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,7 +33,7 @@ from ...models import ResponseError
 class PublicGeneratePersonalDataURL(Operation):
     """Generate personal data download url (PublicGeneratePersonalDataURL)
 
-    <p>Requires valid user access token</p>
+    Requires valid user access token
 
 
     Properties:

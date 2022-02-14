@@ -34,8 +34,8 @@ from ...models import ModelsEventRegistry
 class GetRegisteredEventsByEventTypeHandler(Operation):
     """Get registered eventID data from the Event Registry based on the event type (GetRegisteredEventsByEventTypeHandler)
 
-    Required permission <code>ADMIN:NAMESPACE:{namespace}:EVENT [READ]</code>and
-    scope <code>analytics</code>
+    Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [READ]`and scope
+    `analytics`
 
 
     Required Permission(s):

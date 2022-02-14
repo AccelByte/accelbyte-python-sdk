@@ -33,9 +33,9 @@ from ...models import RestapiErrorResponseBody
 class AdminGetProfanityListFiltersV1(Operation):
     """get the list of filters inside the list (adminGetProfanityListFiltersV1)
 
-    Required permission : <code>ADMIN:NAMESPACE:{namespace}:PROFANITY
-    [READ]</code> with scope <code>social</code> <br>get the list of filters
-    inside the list.
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with
+    scope `social`
+    get the list of filters inside the list.
 
 
     Required Permission(s):

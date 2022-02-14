@@ -1,4 +1,4 @@
-# justice-legal-service (1.16.0)
+# justice-legal-service (1.17.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,9 +35,8 @@ class IndirectBulkAcceptVersionedPolicy(Operation):
 
     Accepts many legal policy versions all at once. Supply with localized version
     policy id and userId to accept an agreement. Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:LEGAL", action=1
-    (CREATE)</li></ul>
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:LEGAL", action=1 (CREATE)
 
 
     Required Permission(s):

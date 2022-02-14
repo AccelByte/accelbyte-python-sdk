@@ -1,4 +1,4 @@
-# justice-social-service (1.23.0)
+# justice-social-service (1.24.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,9 +32,11 @@ from ...models import SlotInfo
 class GetUserNamespaceSlots(Operation):
     """Returns list of slots for given user (getUserNamespaceSlots)
 
-    Get slots for a given user.<br>Other detail info:<ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTDATA",
-    action=2 (READ)</li><li><i>Returns</i>: list of slots</li></ul>
+    Get slots for a given user.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)
+      *  Returns : list of slots
 
 
     Required Permission(s):

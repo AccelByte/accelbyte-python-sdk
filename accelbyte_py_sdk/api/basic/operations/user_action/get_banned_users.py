@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,11 +34,11 @@ from ...models import ValidationErrorEntity
 class GetBannedUsers(Operation):
     """Get banned user (getBannedUsers)
 
-    Get banned status.<br>Unbanned users will not return, for example: request has
-    8 userIds, only 5 of then were banned, then the api will these 5 user
-    status.Other detail info: <ul><li><i>Required permission</i>:
-    resource=<b>"ADMIN:NAMESPACE:{namespace}:ACTION"</b>, action=2
-    <b>(READ)</b></li></ul>
+    Get banned status.
+    Unbanned users will not return, for example: request has 8 userIds, only 5 of
+    then were banned, then the api will these 5 user status.Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:ACTION" , action=2 (READ)
 
 
     Required Permission(s):

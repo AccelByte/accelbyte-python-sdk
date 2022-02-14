@@ -1,4 +1,4 @@
-# justice-legal-service (1.16.0)
+# justice-legal-service (1.17.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,8 +33,9 @@ class AnonymizeUserAgreement(Operation):
     """Anonymize user's agreement record (anonymizeUserAgreement)
 
     This API will anonymize agreement record for specified user. Other detail
-    info: <ul><li><i>Required permission</i>: resource="ADMIN:NAMESPACE:*:LEGAL",
-    action=8 (DELETE)</li></ul>
+    info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=8 (DELETE)
 
 
     Required Permission(s):

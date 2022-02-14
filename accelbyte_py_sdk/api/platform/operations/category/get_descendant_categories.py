@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,10 +32,12 @@ from ...models import FullCategoryInfo
 class GetDescendantCategories(Operation):
     """Get descendant categories (getDescendantCategories)
 
-    This API is used to get descendant categories by category path.<p>Other detail
-    info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2
-    (READ)</li><li><i>Returns</i>: list of descendant categories data</li></ul>
+    This API is used to get descendant categories by category path.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
+      *  Returns : list of descendant categories data
 
 
     Required Permission(s):

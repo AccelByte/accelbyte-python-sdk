@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,10 +32,11 @@ from ...models import Ownership
 class PublicGetUserAppEntitlementOwnershipByAppId(Operation):
     """Get user app entitlement ownership by appId (publicGetUserAppEntitlementOwnershipByAppId)
 
-    Get user app entitlement ownership by appId.<p>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2
-    (READ)</li></ul>
+    Get user app entitlement ownership by appId.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
 
 
     Required Permission(s):

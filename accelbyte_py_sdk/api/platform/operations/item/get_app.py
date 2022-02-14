@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,9 +32,12 @@ from ...models import FullAppInfo
 class GetApp(Operation):
     """Get an app info (getApp)
 
-    This API is used to get an app info.<p>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2
-    (READ)</li><li><i>Returns</i>: app data</li></ul>
+    This API is used to get an app info.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : app data
 
 
     Required Permission(s):

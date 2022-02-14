@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,9 +35,11 @@ from ...models import ValidationErrorEntity
 class CreateKeyGroup(Operation):
     """Create key group (createKeyGroup)
 
-    Create key group.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=1
-    (CREATE)</li><li><i>Returns</i>: created key group</li></ul>
+    Create key group.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=1 (CREATE)
+      *  Returns : created key group
 
 
     Required Permission(s):

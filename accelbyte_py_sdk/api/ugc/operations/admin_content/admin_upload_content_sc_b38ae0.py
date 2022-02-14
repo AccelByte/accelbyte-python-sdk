@@ -1,4 +1,4 @@
-# justice-ugc-service (1.12.0)
+# justice-ugc-service (1.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,8 +34,8 @@ from ...models import ResponseError
 class AdminUploadContentScreenshot(Operation):
     """Upload screenshots for content (AdminUploadContentScreenshot)
 
-    Required permission <b>ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT
-    [CREATE]</b>.n All request body are required except for contentType field.
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT
+    [CREATE].n All request body are required except for contentType field.
     contentType values is used to enforce the Content-Type header needed by the
     client to upload the content using the presigned URL. If not specified, it
     will use fileExtension value. Supported file extensions: pjp, jpg, jpeg, jfif,

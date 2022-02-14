@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,10 +35,10 @@ from ...models import WalletInfo
 class PayWithUserWallet(Operation):
     """Pay with user wallet by currency code (payWithUserWallet)
 
-    Pay with user wallet by currency code.<br>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4
-    (UPDATE)</li></ul>
+    Pay with user wallet by currency code.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4 (UPDATE)
 
 
     Required Permission(s):

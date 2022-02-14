@@ -80,6 +80,7 @@
 ### Operations
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
+| /lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}/join/{userId} | POST | adminJoinPartyV1 | [AdminJoinPartyV1](../accelbyte_py_sdk/api/lobby/operations/operations/admin_join_party_v1.py) | [admin_join_party_v1](../accelbyte_py_sdk/api/lobby/wrappers/_operations.py) |
 | /lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}/attributes | PUT | adminUpdatePartyAttributesV1 | [AdminUpdatePartyAttributesV1](../accelbyte_py_sdk/api/lobby/operations/operations/admin_update_party_attr_920eb3.py) | [admin_update_party_attributes_v1](../accelbyte_py_sdk/api/lobby/wrappers/_operations.py) |
 | /lobby/v1/messages | GET | publicGetMessages | [PublicGetMessages](../accelbyte_py_sdk/api/lobby/operations/operations/public_get_messages.py) | [public_get_messages](../accelbyte_py_sdk/api/lobby/wrappers/_operations.py) |
 

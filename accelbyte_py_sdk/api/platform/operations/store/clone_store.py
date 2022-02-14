@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,10 +34,12 @@ class CloneStore(Operation):
     """Clone a store (cloneStore)
 
     This API is used to clone a store. Usually clone a draft store to published
-    store because published store can't directly edit content.<p>Other detail
-    info: <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1
-    (CREATE)</li><li><i>Returns</i>: clone store info</li></ul>
+    store because published store can't directly edit content.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
+      *  Returns : clone store info
 
 
     Required Permission(s):

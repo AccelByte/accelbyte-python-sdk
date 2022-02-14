@@ -1,4 +1,4 @@
-# justice-social-service (1.23.0)
+# justice-social-service (1.24.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,10 +32,11 @@ from ...models import ErrorEntity
 class DeleteUserStatItems1(Operation):
     """Delete User's statItems (deleteUserStatItems_1)
 
-    Delete user's statItems given stat code.<br>Other detail
-    info:<ul><li><i>Required permission</i>:
-    resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=8
-    (DELETE)</li><li><i>Returns</i>: no content</li></li>
+    Delete user's statItems given stat code.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=8 (DELETE)
+      *  Returns : no content
 
 
     Required Permission(s):

@@ -33,10 +33,14 @@ from ...models import ResponseErrorResponse
 class RejectGroupInvitationPublicV1(Operation):
     """Reject Group Invitation (rejectGroupInvitationPublicV1)
 
-    <p>Required valid user authentication </p> <p>This endpoint is used to reject
-    group invitation.</p> <p>Reject group invitation. If specific user is not
-    invited in the specific group ID, it will show the the error to show if the
-    user is not invited yet.</p> <p>Action Code: 73402</p>
+    Required valid user authentication
+
+    This endpoint is used to reject group invitation.
+
+    Reject group invitation. If specific user is not invited in the specific group
+    ID, it will show the the error to show if the user is not invited yet.
+
+    Action Code: 73402
 
 
     Properties:

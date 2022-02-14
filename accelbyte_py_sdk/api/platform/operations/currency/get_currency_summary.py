@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,11 @@ from ...models import ErrorEntity
 class GetCurrencySummary(Operation):
     """Get currency summary (getCurrencySummary)
 
-    Get currency summary by code.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=2
-    (READ)</li><li><i>Returns</i>: simplified Currency</li></ul>
+    Get currency summary by code.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=2 (READ)
+      *  Returns : simplified Currency
 
 
     Required Permission(s):

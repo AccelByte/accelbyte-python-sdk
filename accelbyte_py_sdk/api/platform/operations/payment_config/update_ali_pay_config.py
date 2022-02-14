@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,9 +34,11 @@ from ...models import PaymentMerchantConfigInfo
 class UpdateAliPayConfig(Operation):
     """Update alipay configuration (updateAliPayConfig)
 
-    Update alipay configuration.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:PAYMENT:CONFIG", action=4
-    (UPDATE)</li><li><i>Returns</i>: updated payment merchant config</li></ul>
+    Update alipay configuration.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
+      *  Returns : updated payment merchant config
 
 
     Required Permission(s):

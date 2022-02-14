@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,12 @@ from ...models import NamespaceInfo
 class GetNamespaces(Operation):
     """Get all namespaces (getNamespaces)
 
-    Get all namespaces.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource=<b>"ADMIN:NAMESPACE"</b>, action=2 <b>(READ)</b></li><li><i>Action
-    code</i>: 11303</li><li><i>Returns</i>: list of namespaces</li></ul>
+    Get all namespaces.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE" , action=2 (READ)
+      *  Action code : 11303
+      *  Returns : list of namespaces
 
 
     Required Permission(s):

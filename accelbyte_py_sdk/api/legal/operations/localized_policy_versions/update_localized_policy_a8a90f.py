@@ -1,4 +1,4 @@
-# justice-legal-service (1.16.0)
+# justice-legal-service (1.17.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,9 +34,10 @@ from ...models import UpdateLocalizedPolicyVersionResponse
 class UpdateLocalizedPolicyVersion(Operation):
     """Update a Localized Version from Country-Specific Policy (updateLocalizedPolicyVersion)
 
-    Update a version of a particular country-specific policy.<br>Other detail
-    info: <ul><li><i>Required permission</i>: resource="ADMIN:NAMESPACE:*:LEGAL",
-    action=4 (UPDATE)</li></ul>
+    Update a version of a particular country-specific policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
 
 
     Required Permission(s):

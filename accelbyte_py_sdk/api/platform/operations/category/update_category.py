@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,12 +35,21 @@ from ...models import ValidationErrorEntity
 class UpdateCategory(Operation):
     """Update category (updateCategory)
 
-    This API is used to update category. <p> The category update data is a
-    category object, example as:<pre><code>{ "storeId": "store-id",
-    "localizationDisplayNames": {"en" : "Games"} }</code></pre>Other detail info:
-    <ul><li><i>Required permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=4
-    (UPDATE)</li><li><i>Returns</i>: the updated category data</li></ul>
+    This API is used to update category.
+
+    The category update data is a category object, example as:
+
+
+
+        {
+            "storeId": "store-id",
+            "localizationDisplayNames": {"en" : "Games"}
+        }
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=4 (UPDATE)
+      *  Returns : the updated category data
 
 
     Required Permission(s):

@@ -22,6 +22,7 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import ADTOObjectForResettingUserStatItems
 from ..models import BulkStatItemCreate
 from ..models import BulkStatItemInc
 from ..models import BulkStatItemOperationResult
@@ -51,6 +52,7 @@ from ..operations.user_statistic import BulkResetUserStatItem
 from ..operations.user_statistic import BulkResetUserStatItem1
 from ..operations.user_statistic import BulkResetUserStatItem2
 from ..operations.user_statistic import BulkResetUserStatItem3
+from ..operations.user_statistic import BulkResetUserStatItemValues
 from ..operations.user_statistic import BulkUpdateUserStatItem
 from ..operations.user_statistic import BulkUpdateUserStatItem1
 from ..operations.user_statistic import BulkUpdateUserStatItem2
@@ -397,6 +399,36 @@ async def bulk_reset_user_stat_item_3_async(user_id: str, body: Optional[List[Bu
             return None, error
     request = BulkResetUserStatItem3.create(
         user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(BulkResetUserStatItemValues)
+def bulk_reset_user_stat_item_values(user_id: str, additional_key: Optional[str] = None, body: Optional[List[ADTOObjectForResettingUserStatItems]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkResetUserStatItemValues.create(
+        user_id=user_id,
+        additional_key=additional_key,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(BulkResetUserStatItemValues)
+async def bulk_reset_user_stat_item_values_async(user_id: str, additional_key: Optional[str] = None, body: Optional[List[ADTOObjectForResettingUserStatItems]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkResetUserStatItemValues.create(
+        user_id=user_id,
+        additional_key=additional_key,
         body=body,
         namespace=namespace,
     )

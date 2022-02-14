@@ -1,6 +1,6 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-social-service Index (1.23.0)
+# justice-social-service Index (1.24.0)
 
 
 ## Operations
@@ -74,6 +74,7 @@
 | /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems/value/reset/bulk | PUT | bulkResetUserStatItem_1 | [BulkResetUserStatItem1](../accelbyte_py_sdk/api/social/operations/user_statistic/bulk_reset_user_stat_item_1.py) | [bulk_reset_user_stat_item_1](../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) |
 | /social/v1/public/namespaces/{namespace}/statitems/value/reset/bulk | PUT | bulkResetUserStatItem_2 | [BulkResetUserStatItem2](../accelbyte_py_sdk/api/social/operations/user_statistic/bulk_reset_user_stat_item_2.py) | [bulk_reset_user_stat_item_2](../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) |
 | /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/reset/bulk | PUT | bulkResetUserStatItem_3 | [BulkResetUserStatItem3](../accelbyte_py_sdk/api/social/operations/user_statistic/bulk_reset_user_stat_item_3.py) | [bulk_reset_user_stat_item_3](../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) |
+| /social/v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/reset/bulk | PUT | bulkResetUserStatItemValues | [BulkResetUserStatItemValues](../accelbyte_py_sdk/api/social/operations/user_statistic/bulk_reset_user_stat_it_ed9334.py) | [bulk_reset_user_stat_item_values](../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) |
 | /social/v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk | PUT | bulkUpdateUserStatItem | [BulkUpdateUserStatItem](../accelbyte_py_sdk/api/social/operations/user_statistic/bulk_update_user_stat_item.py) | [bulk_update_user_stat_item](../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) |
 | /social/v2/public/namespaces/{namespace}/statitems/value/bulk | PUT | bulkUpdateUserStatItem_1 | [BulkUpdateUserStatItem1](../accelbyte_py_sdk/api/social/operations/user_statistic/bulk_update_user_stat_item_1.py) | [bulk_update_user_stat_item_1](../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) |
 | /social/v2/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk | PUT | bulkUpdateUserStatItem_2 | [BulkUpdateUserStatItem2](../accelbyte_py_sdk/api/social/operations/user_statistic/bulk_update_user_stat_item_2.py) | [bulk_update_user_stat_item_2](../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) |
@@ -101,6 +102,7 @@
 ## Models
 | Model | Class |
 |---|---|
+| A DTO object for resetting user stat items | [ADTOObjectForResettingUserStatItems](../accelbyte_py_sdk/api/social/models/a_dto_object_for_resetting_user_stat_items.py) |
 | Attribute | [Attribute](../accelbyte_py_sdk/api/social/models/attribute.py) |
 | BulkStatItemCreate | [BulkStatItemCreate](../accelbyte_py_sdk/api/social/models/bulk_stat_item_create.py) |
 | BulkStatItemInc | [BulkStatItemInc](../accelbyte_py_sdk/api/social/models/bulk_stat_item_inc.py) |

@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -35,11 +35,14 @@ from ...models import ValidationErrorEntity
 class PublicCreateUserProfile(Operation):
     """Create user profile (publicCreateUserProfile)
 
-    Create user profile.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource=<b>"NAMESPACE:{namespace}:USER:{userId}:PROFILE"</b>, action=1
-    <b>(CREATE)</b></li><li><i>Action code</i>: 11401</li><li><i>Language</i> :
-    allowed format: en, en-US</li><li><i>Timezone</i> : IANA time zone, e.g.
-    Asia/Shanghai</li><li><i>Returns</i>: Created user profile</li></ul>
+    Create user profile.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=1 (CREATE)
+      *  Action code : 11401
+      *  Language : allowed format: en, en-US
+      *  Timezone : IANA time zone, e.g. Asia/Shanghai
+      *  Returns : Created user profile
 
 
     Required Permission(s):

@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,11 @@ from ...models import KeyGroupDynamicInfo
 class GetKeyGroupDynamic(Operation):
     """Get key group dynamic (getKeyGroupDynamic)
 
-    Get key group dynamic.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2
-    (READ)</li><li><i>Returns</i>: key group info</li></ul>
+    Get key group dynamic.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2 (READ)
+      *  Returns : key group info
 
 
     Required Permission(s):

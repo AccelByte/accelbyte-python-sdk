@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -32,10 +32,11 @@ from ...models import BulkOperationResult
 class RevokeUserEntitlements(Operation):
     """Revoke user's entitlements by ids (revokeUserEntitlements)
 
-    Revoke user's entitlements by ids.<br>Other detail info: <ul><li><i>Required
-    permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4
-    (UPDATE)</li><li><i>Returns</i>: revoke entitlements count</li></ul>
+    Revoke user's entitlements by ids.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : revoke entitlements count
 
 
     Required Permission(s):

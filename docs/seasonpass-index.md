@@ -1,6 +1,6 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-seasonpass-service Index (1.7.0)
+# justice-seasonpass-service Index (1.8.0)
 
 
 ## Operations
@@ -57,6 +57,7 @@
 | /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/exp | POST | grantUserExp | [GrantUserExp](../accelbyte_py_sdk/api/seasonpass/operations/tier/grant_user_exp.py) | [grant_user_exp](../accelbyte_py_sdk/api/seasonpass/wrappers/_tier.py) |
 | /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/tiers | POST | grantUserTier | [GrantUserTier](../accelbyte_py_sdk/api/seasonpass/operations/tier/grant_user_tier.py) | [grant_user_tier](../accelbyte_py_sdk/api/seasonpass/wrappers/_tier.py) |
 | /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers | GET | queryTiers | [QueryTiers](../accelbyte_py_sdk/api/seasonpass/operations/tier/query_tiers.py) | [query_tiers](../accelbyte_py_sdk/api/seasonpass/wrappers/_tier.py) |
+| /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers/{id}/reorder | PUT | reorderTier | [ReorderTier](../accelbyte_py_sdk/api/seasonpass/operations/tier/reorder_tier.py) | [reorder_tier](../accelbyte_py_sdk/api/seasonpass/wrappers/_tier.py) |
 | /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers/{id} | PUT | updateTier | [UpdateTier](../accelbyte_py_sdk/api/seasonpass/operations/tier/update_tier.py) | [update_tier](../accelbyte_py_sdk/api/seasonpass/wrappers/_tier.py) |
 
 
@@ -94,6 +95,7 @@
 | TierCreate | [TierCreate](../accelbyte_py_sdk/api/seasonpass/models/tier_create.py) |
 | TierInput | [TierInput](../accelbyte_py_sdk/api/seasonpass/models/tier_input.py) |
 | TierPagingSlicedResult | [TierPagingSlicedResult](../accelbyte_py_sdk/api/seasonpass/models/tier_paging_sliced_result.py) |
+| TierReorder | [TierReorder](../accelbyte_py_sdk/api/seasonpass/models/tier_reorder.py) |
 | UserExpGrant | [UserExpGrant](../accelbyte_py_sdk/api/seasonpass/models/user_exp_grant.py) |
 | UserPassGrant | [UserPassGrant](../accelbyte_py_sdk/api/seasonpass/models/user_pass_grant.py) |
 | UserPurchasable | [UserPurchasable](../accelbyte_py_sdk/api/seasonpass/models/user_purchasable.py) |

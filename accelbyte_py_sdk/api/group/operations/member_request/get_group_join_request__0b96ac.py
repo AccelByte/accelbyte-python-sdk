@@ -33,11 +33,16 @@ from ...models import ResponseErrorResponse
 class GetGroupJoinRequestPublicV1(Operation):
     """Get Group Join Request List (getGroupJoinRequestPublicV1)
 
-    <p>Required valid user authentication </p> <p>Required Member Role Permission:
-    "GROUP:JOIN [READ]"</p> <p>This endpoint is used to Get Group Join Request
-    List</p> <p>Get Group Join Request List for specific group. Group members
-    needs to have permission and also belong to the group to access this
-    endpoint</p> <p>Action Code: 73501</p>
+    Required valid user authentication
+
+    Required Member Role Permission: "GROUP:JOIN [READ]"
+
+    This endpoint is used to Get Group Join Request List
+
+    Get Group Join Request List for specific group. Group members needs to have
+    permission and also belong to the group to access this endpoint
+
+    Action Code: 73501
 
 
     Properties:

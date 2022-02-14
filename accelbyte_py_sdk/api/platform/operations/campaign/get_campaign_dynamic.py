@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,9 +33,11 @@ from ...models import ErrorEntity
 class GetCampaignDynamic(Operation):
     """Get campaign dynamic (getCampaignDynamic)
 
-    Get campaign dynamic.<br>Other detail info: <ul><li><i>Required
-    permission</i>: resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2
-    (READ)</li><li><i>Returns</i>: campaign dynamic</li></ul>
+    Get campaign dynamic.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)
+      *  Returns : campaign dynamic
 
 
     Required Permission(s):

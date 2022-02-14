@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -46,11 +46,15 @@ class RewardInfo(Model):
 
         max_awarded_per_user: (maxAwardedPerUser) OPTIONAL int
 
+        namespace_expression: (namespaceExpression) OPTIONAL str
+
         reward_code: (rewardCode) OPTIONAL str
 
         reward_conditions: (rewardConditions) OPTIONAL List[RewardCondition]
 
         updated_at: (updatedAt) OPTIONAL str
+
+        user_id_expression: (userIdExpression) OPTIONAL str
     """
 
     # region fields
@@ -62,9 +66,11 @@ class RewardInfo(Model):
     description: str                                                                               # OPTIONAL
     max_awarded: int                                                                               # OPTIONAL
     max_awarded_per_user: int                                                                      # OPTIONAL
+    namespace_expression: str                                                                      # OPTIONAL
     reward_code: str                                                                               # OPTIONAL
     reward_conditions: List[RewardCondition]                                                       # OPTIONAL
     updated_at: str                                                                                # OPTIONAL
+    user_id_expression: str                                                                        # OPTIONAL
 
     # endregion fields
 
@@ -98,6 +104,10 @@ class RewardInfo(Model):
         self.max_awarded_per_user = value
         return self
 
+    def with_namespace_expression(self, value: str) -> RewardInfo:
+        self.namespace_expression = value
+        return self
+
     def with_reward_code(self, value: str) -> RewardInfo:
         self.reward_code = value
         return self
@@ -108,6 +118,10 @@ class RewardInfo(Model):
 
     def with_updated_at(self, value: str) -> RewardInfo:
         self.updated_at = value
+        return self
+
+    def with_user_id_expression(self, value: str) -> RewardInfo:
+        self.user_id_expression = value
         return self
 
     # endregion with_x methods
@@ -144,6 +158,10 @@ class RewardInfo(Model):
             result["maxAwardedPerUser"] = int(self.max_awarded_per_user)
         elif include_empty:
             result["maxAwardedPerUser"] = int()
+        if hasattr(self, "namespace_expression"):
+            result["namespaceExpression"] = str(self.namespace_expression)
+        elif include_empty:
+            result["namespaceExpression"] = str()
         if hasattr(self, "reward_code"):
             result["rewardCode"] = str(self.reward_code)
         elif include_empty:
@@ -156,6 +174,10 @@ class RewardInfo(Model):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = str()
+        if hasattr(self, "user_id_expression"):
+            result["userIdExpression"] = str(self.user_id_expression)
+        elif include_empty:
+            result["userIdExpression"] = str()
         return result
 
     # endregion to methods
@@ -172,9 +194,11 @@ class RewardInfo(Model):
         description: Optional[str] = None,
         max_awarded: Optional[int] = None,
         max_awarded_per_user: Optional[int] = None,
+        namespace_expression: Optional[str] = None,
         reward_code: Optional[str] = None,
         reward_conditions: Optional[List[RewardCondition]] = None,
         updated_at: Optional[str] = None,
+        user_id_expression: Optional[str] = None,
     ) -> RewardInfo:
         instance = cls()
         instance.event_topic = event_topic
@@ -188,12 +212,16 @@ class RewardInfo(Model):
             instance.max_awarded = max_awarded
         if max_awarded_per_user is not None:
             instance.max_awarded_per_user = max_awarded_per_user
+        if namespace_expression is not None:
+            instance.namespace_expression = namespace_expression
         if reward_code is not None:
             instance.reward_code = reward_code
         if reward_conditions is not None:
             instance.reward_conditions = reward_conditions
         if updated_at is not None:
             instance.updated_at = updated_at
+        if user_id_expression is not None:
+            instance.user_id_expression = user_id_expression
         return instance
 
     @classmethod
@@ -229,6 +257,10 @@ class RewardInfo(Model):
             instance.max_awarded_per_user = int(dict_["maxAwardedPerUser"])
         elif include_empty:
             instance.max_awarded_per_user = int()
+        if "namespaceExpression" in dict_ and dict_["namespaceExpression"] is not None:
+            instance.namespace_expression = str(dict_["namespaceExpression"])
+        elif include_empty:
+            instance.namespace_expression = str()
         if "rewardCode" in dict_ and dict_["rewardCode"] is not None:
             instance.reward_code = str(dict_["rewardCode"])
         elif include_empty:
@@ -241,6 +273,10 @@ class RewardInfo(Model):
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = str()
+        if "userIdExpression" in dict_ and dict_["userIdExpression"] is not None:
+            instance.user_id_expression = str(dict_["userIdExpression"])
+        elif include_empty:
+            instance.user_id_expression = str()
         return instance
 
     @classmethod
@@ -271,9 +307,11 @@ class RewardInfo(Model):
             "description": "description",
             "maxAwarded": "max_awarded",
             "maxAwardedPerUser": "max_awarded_per_user",
+            "namespaceExpression": "namespace_expression",
             "rewardCode": "reward_code",
             "rewardConditions": "reward_conditions",
             "updatedAt": "updated_at",
+            "userIdExpression": "user_id_expression",
         }
 
     # endregion static methods

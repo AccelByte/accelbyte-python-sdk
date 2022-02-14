@@ -34,8 +34,11 @@ from ...models import ResponseErrorResponse
 class DeleteMemberRolePublicV1(Operation):
     """Remove role from group member (deleteMemberRolePublicV1)
 
-    Required Member Role Permission: "GROUP:ROLE [UPDATE]"</p> <p>This endpoint is
-    used to remove role from group member</p> <p>Action Code: 73204</p>
+    Required Member Role Permission: "GROUP:ROLE [UPDATE]"
+
+    This endpoint is used to remove role from group member
+
+    Action Code: 73204
 
 
     Properties:

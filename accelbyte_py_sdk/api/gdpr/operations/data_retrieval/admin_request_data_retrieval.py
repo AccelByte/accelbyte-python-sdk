@@ -1,4 +1,4 @@
-# justice-gdpr-service (1.12.0)
+# justice-gdpr-service (1.13.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -33,10 +33,10 @@ from ...models import ResponseError
 class AdminRequestDataRetrieval(Operation):
     """Submit user personal data retrieval request (AdminRequestDataRetrieval)
 
-    <p>Required permission
-    <code>ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [CREATE]</code>
-    and scope <code>account</code></p> <p>If admin request data for themselves,
-    password is need to be set</p>
+    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId}
+    [CREATE]` and scope `account`
+
+    If admin request data for themselves, password is need to be set
 
 
     Required Permission(s):

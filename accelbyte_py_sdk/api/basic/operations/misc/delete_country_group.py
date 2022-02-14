@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,9 +34,10 @@ class DeleteCountryGroup(Operation):
     """Delete a country group (deleteCountryGroup)
 
     Delete a country groups by its country group code. This endpoint usually used
-    for testing purpose to cleanup test data.<br>Other detail info:
-    <ul><li><i>Required permission</i>: resource =
-    <b>"ADMIN:NAMESPACE:{namespace}:MISC"</b>, action=8 <b>(DELETE)</b></li></ul>
+    for testing purpose to cleanup test data.
+    Other detail info:
+
+      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=8 (DELETE)
 
 
     Required Permission(s):

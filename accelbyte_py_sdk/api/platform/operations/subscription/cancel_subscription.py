@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,15 +34,17 @@ from ...models import SubscriptionInfo
 class CancelSubscription(Operation):
     """Cancel a subscription (cancelSubscription)
 
-    Cancel a subscription, only ACTIVE subscription can be cancelled. <b>Ensure
+    Cancel a subscription, only ACTIVE subscription can be cancelled. Ensure
     successfully cancel, recommend at least 1 day before current period ends,
-    otherwise it may be charging or charged.</b><br>Set immediate true, the
-    subscription will be terminated immediately, otherwise till the end of current
-    billing cycle.<br>Set force true, will ignore the error if subscription is
-    during recurring charging.<br>Other detail info: <ul><li><i>Required
-    permission</i>:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4
-    (UPDATE)</li><li><i>Returns</i>: cancelled subscription</li></ul>
+    otherwise it may be charging or charged.
+    Set immediate true, the subscription will be terminated immediately, otherwise
+    till the end of current billing cycle.
+    Set force true, will ignore the error if subscription is during recurring
+    charging.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
+      *  Returns : cancelled subscription
 
 
     Required Permission(s):

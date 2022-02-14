@@ -1,4 +1,4 @@
-# justice-legal-service (1.16.0)
+# justice-legal-service (1.17.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -36,8 +36,11 @@ class RetrieveEligibilitiesPublicIndirect(Operation):
     only supports cross-namespace checking between game namespace and publisher
     namespace , that means if the active policy already accepted by the same user
     in publisher namespace, then it will also be considered as eligible in non-
-    publisher namespace.<br/><br/>Other detail info: <ul><li><i>Required
-    permission</i>: login user</li></ul>
+    publisher namespace.
+
+    Other detail info:
+
+      * Required permission : login user
 
 
     Properties:

@@ -1,4 +1,4 @@
-# justice-basic-service (1.31.0)
+# justice-basic-service (1.32.0)
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -34,10 +34,12 @@ from ...models import ValidationErrorEntity
 class DeleteUserProfile(Operation):
     """Delete user profile (deleteUserProfile)
 
-    Delete user profile.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource=<b>"ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE"</b>, action=8
-    <b>(DELETE)</b></li><li><i>Action code</i>: 11407</li><li><i>Returns</i>:
-    Delete user profile</li></ul>
+    Delete user profile.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=8 (DELETE)
+      *  Action code : 11407
+      *  Returns : Delete user profile
 
 
     Required Permission(s):
