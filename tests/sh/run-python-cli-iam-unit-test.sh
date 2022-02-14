@@ -1724,7 +1724,7 @@ delete_file $TEMP_FILE
 
 #- 206 TokenGrantV3
 $PYTHON -m $MODULE 'iam-token-grant-v3' \
-    'authorization_code' \
+    'client_credentials' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'TokenGrantV3'

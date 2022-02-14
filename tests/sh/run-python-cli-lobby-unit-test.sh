@@ -12,7 +12,7 @@ MODULE='accelbyte_py_sdk_cli'
 MODULE_PATH='../samples/cli'
 TEMP_FILE='file.tmp'
 
-OPERATIONS_COUNT=89
+OPERATIONS_COUNT=90
 
 FINISHED_COUNT=0
 SUCCESS_COUNT=0
@@ -178,7 +178,7 @@ delete_file $TEMP_FILE
 
 #- 15 AdminUpdateConfigV1
 $PYTHON -m $MODULE 'lobby-admin-update-config-v1' \
-    '{"autoKickOnDisconnect": false, "autoKickOnDisconnectDelay": 29, "cancelTicketOnDisconnect": true, "chatRateLimitBurst": 31, "chatRateLimitDuration": 56, "concurrentUsersLimit": 72, "enableChat": false, "entitlementCheck": true, "entitlementItemID": "BdNEUsxF", "generalRateLimitBurst": 2, "generalRateLimitDuration": 56, "maxPartyMember": 70, "profanityFilter": true, "readyConsentTimeout": 70}' \
+    '{"autoKickOnDisconnect": false, "autoKickOnDisconnectDelay": 29, "cancelTicketOnDisconnect": true, "chatRateLimitBurst": 31, "chatRateLimitDuration": 56, "concurrentUsersLimit": 72, "disablePartyInvitationToken": false, "enableChat": true, "entitlementCheck": true, "entitlementItemID": "dNEUsxFb", "generalRateLimitBurst": 56, "generalRateLimitDuration": 70, "maxPartyMember": 76, "profanityFilter": true, "readyConsentTimeout": 70}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminUpdateConfigV1'
@@ -391,400 +391,409 @@ $PYTHON -m $MODULE 'lobby-admin-update-party-attributes-v1' \
 update_status $? 'AdminUpdatePartyAttributesV1'
 delete_file $TEMP_FILE
 
-#- 41 AdminGetUserPartyV1
-$PYTHON -m $MODULE 'lobby-admin-get-user-party-v1' \
+#- 41 AdminJoinPartyV1
+$PYTHON -m $MODULE 'lobby-admin-join-party-v1' \
     '7YSfExaI' \
+    '3uzLteMb' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'AdminJoinPartyV1'
+delete_file $TEMP_FILE
+
+#- 42 AdminGetUserPartyV1
+$PYTHON -m $MODULE 'lobby-admin-get-user-party-v1' \
+    'FAlt4hr7' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetUserPartyV1'
 delete_file $TEMP_FILE
 
-#- 42 AdminGetLobbyCCU
+#- 43 AdminGetLobbyCCU
 $PYTHON -m $MODULE 'lobby-admin-get-lobby-ccu' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetLobbyCCU'
 delete_file $TEMP_FILE
 
-#- 43 AdminGetAllPlayerSessionAttribute
+#- 44 AdminGetAllPlayerSessionAttribute
 $PYTHON -m $MODULE 'lobby-admin-get-all-player-session-attribute' \
-    '3uzLteMb' \
+    'HmOYiBA5' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetAllPlayerSessionAttribute'
 delete_file $TEMP_FILE
 
-#- 44 AdminSetPlayerSessionAttribute
+#- 45 AdminSetPlayerSessionAttribute
 $PYTHON -m $MODULE 'lobby-admin-set-player-session-attribute' \
-    '{"attributes": {"FAlt4hr7": "HmOYiBA5"}}' \
-    'ltAOXmlG' \
+    '{"attributes": {"ltAOXmlG": "6eh1dTdo"}}' \
+    'TFpBIcuC' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminSetPlayerSessionAttribute'
 delete_file $TEMP_FILE
 
-#- 45 AdminGetPlayerSessionAttribute
+#- 46 AdminGetPlayerSessionAttribute
 $PYTHON -m $MODULE 'lobby-admin-get-player-session-attribute' \
-    '6eh1dTdo' \
-    'TFpBIcuC' \
+    '1dQY93OJ' \
+    'nJ6Te9vD' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetPlayerSessionAttribute'
 delete_file $TEMP_FILE
 
-#- 46 AdminGetPlayerBlockedPlayersV1
+#- 47 AdminGetPlayerBlockedPlayersV1
 $PYTHON -m $MODULE 'lobby-admin-get-player-blocked-players-v1' \
-    '1dQY93OJ' \
+    '8ldz7Hu8' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetPlayerBlockedPlayersV1'
 delete_file $TEMP_FILE
 
-#- 47 AdminGetPlayerBlockedByPlayersV1
+#- 48 AdminGetPlayerBlockedByPlayersV1
 $PYTHON -m $MODULE 'lobby-admin-get-player-blocked-by-players-v1' \
-    'nJ6Te9vD' \
+    'AD79kdWu' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetPlayerBlockedByPlayersV1'
 delete_file $TEMP_FILE
 
-#- 48 AdminBulkBlockPlayersV1
+#- 49 AdminBulkBlockPlayersV1
 $PYTHON -m $MODULE 'lobby-admin-bulk-block-players-v1' \
-    '{"listBlockedUserId": ["8ldz7Hu8"]}' \
-    'AD79kdWu' \
+    '{"listBlockedUserId": ["nvizU0q1"]}' \
+    'pHyhhERo' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminBulkBlockPlayersV1'
 delete_file $TEMP_FILE
 
-#- 49 AdminDebugProfanityFilters
+#- 50 AdminDebugProfanityFilters
 $PYTHON -m $MODULE 'lobby-admin-debug-profanity-filters' \
-    '{"text": "nvizU0q1"}' \
+    '{"text": "GgdrysMi"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminDebugProfanityFilters'
 delete_file $TEMP_FILE
 
-#- 50 AdminGetProfanityListFiltersV1
+#- 51 AdminGetProfanityListFiltersV1
 $PYTHON -m $MODULE 'lobby-admin-get-profanity-list-filters-v1' \
-    'pHyhhERo' \
+    'zBGSRdP2' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetProfanityListFiltersV1'
 delete_file $TEMP_FILE
 
-#- 51 AdminAddProfanityFilterIntoList
+#- 52 AdminAddProfanityFilterIntoList
 $PYTHON -m $MODULE 'lobby-admin-add-profanity-filter-into-list' \
-    '{"filter": "GgdrysMi", "note": "zBGSRdP2"}' \
-    'l7DNSZ8A' \
+    '{"filter": "l7DNSZ8A", "note": "q0XiPLQX"}' \
+    'Se07ZddO' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminAddProfanityFilterIntoList'
 delete_file $TEMP_FILE
 
-#- 52 AdminAddProfanityFilters
+#- 53 AdminAddProfanityFilters
 $PYTHON -m $MODULE 'lobby-admin-add-profanity-filters' \
-    '{"filters": [{"filter": "q0XiPLQX", "note": "Se07ZddO"}]}' \
-    'GTMlJjBw' \
+    '{"filters": [{"filter": "GTMlJjBw", "note": "j9HJHQKs"}]}' \
+    'eEdSXRDS' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminAddProfanityFilters'
 delete_file $TEMP_FILE
 
-#- 53 AdminImportProfanityFiltersFromFile
+#- 54 AdminImportProfanityFiltersFromFile
 $PYTHON -m $MODULE 'lobby-admin-import-profanity-filters-from-file' \
-    '[19]' \
-    '9HJHQKse' \
+    '[43]' \
+    'guauw1xT' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminImportProfanityFiltersFromFile'
 delete_file $TEMP_FILE
 
-#- 54 AdminDeleteProfanityFilter
+#- 55 AdminDeleteProfanityFilter
 $PYTHON -m $MODULE 'lobby-admin-delete-profanity-filter' \
-    '{"filter": "EdSXRDSv"}' \
-    'guauw1xT' \
+    '{"filter": "7eMwSl9M"}' \
+    'LH0NnTJ2' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminDeleteProfanityFilter'
 delete_file $TEMP_FILE
 
-#- 55 AdminGetProfanityLists
+#- 56 AdminGetProfanityLists
 $PYTHON -m $MODULE 'lobby-admin-get-profanity-lists' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetProfanityLists'
 delete_file $TEMP_FILE
 
-#- 56 AdminCreateProfanityList
+#- 57 AdminCreateProfanityList
 $PYTHON -m $MODULE 'lobby-admin-create-profanity-list' \
-    '{"isEnabled": false, "isMandatory": true, "name": "Sl9MLH0N"}' \
+    '{"isEnabled": true, "isMandatory": false, "name": "NzBvwJaQ"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminCreateProfanityList'
 delete_file $TEMP_FILE
 
-#- 57 AdminUpdateProfanityList
+#- 58 AdminUpdateProfanityList
 $PYTHON -m $MODULE 'lobby-admin-update-profanity-list' \
-    '{"isEnabled": false, "isMandatory": true, "newName": "lNzBvwJa"}' \
-    'Qa547Jll' \
+    '{"isEnabled": false, "isMandatory": false, "newName": "lvA8RWSp"}' \
+    'abUt7xk6' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminUpdateProfanityList'
 delete_file $TEMP_FILE
 
-#- 58 AdminDeleteProfanityList
+#- 59 AdminDeleteProfanityList
 $PYTHON -m $MODULE 'lobby-admin-delete-profanity-list' \
-    'vA8RWSpa' \
+    'QxyWhfqo' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminDeleteProfanityList'
 delete_file $TEMP_FILE
 
-#- 59 AdminGetProfanityRule
+#- 60 AdminGetProfanityRule
 $PYTHON -m $MODULE 'lobby-admin-get-profanity-rule' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetProfanityRule'
 delete_file $TEMP_FILE
 
-#- 60 AdminSetProfanityRuleForNamespace
+#- 61 AdminSetProfanityRuleForNamespace
 $PYTHON -m $MODULE 'lobby-admin-set-profanity-rule-for-namespace' \
-    '{"rule": "bUt7xk6Q"}' \
+    '{"rule": "WfJw2o8o"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminSetProfanityRuleForNamespace'
 delete_file $TEMP_FILE
 
-#- 61 AdminVerifyMessageProfanityResponse
+#- 62 AdminVerifyMessageProfanityResponse
 $PYTHON -m $MODULE 'lobby-admin-verify-message-profanity-response' \
-    '{"message": "xyWhfqoW", "profanityLevel": "fJw2o8oW"}' \
+    '{"message": "WUqvPCZ2", "profanityLevel": "HzT7NXmW"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminVerifyMessageProfanityResponse'
 delete_file $TEMP_FILE
 
-#- 62 AdminGetThirdPartyConfig
+#- 63 AdminGetThirdPartyConfig
 $PYTHON -m $MODULE 'lobby-admin-get-third-party-config' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetThirdPartyConfig'
 delete_file $TEMP_FILE
 
-#- 63 AdminUpdateThirdPartyConfig
+#- 64 AdminUpdateThirdPartyConfig
 $PYTHON -m $MODULE 'lobby-admin-update-third-party-config' \
-    '{"apiKey": "UqvPCZ2H"}' \
+    '{"apiKey": "DlXsuNId"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminUpdateThirdPartyConfig'
 delete_file $TEMP_FILE
 
-#- 64 AdminCreateThirdPartyConfig
+#- 65 AdminCreateThirdPartyConfig
 $PYTHON -m $MODULE 'lobby-admin-create-third-party-config' \
-    '{"apiKey": "zT7NXmWD"}' \
+    '{"apiKey": "QJR5lsNO"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminCreateThirdPartyConfig'
 delete_file $TEMP_FILE
 
-#- 65 AdminDeleteThirdPartyConfig
+#- 66 AdminDeleteThirdPartyConfig
 $PYTHON -m $MODULE 'lobby-admin-delete-third-party-config' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminDeleteThirdPartyConfig'
 delete_file $TEMP_FILE
 
-#- 66 PublicGetMessages
+#- 67 PublicGetMessages
 $PYTHON -m $MODULE 'lobby-public-get-messages' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetMessages'
 delete_file $TEMP_FILE
 
-#- 67 GetPersonalChatHistoryV1Public
+#- 68 GetPersonalChatHistoryV1Public
 $PYTHON -m $MODULE 'lobby-get-personal-chat-history-v1-public' \
-    'lXsuNIdQ' \
+    'lvkfwaSb' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetPersonalChatHistoryV1Public'
 delete_file $TEMP_FILE
 
-#- 68 PublicGetPartyDataV1
+#- 69 PublicGetPartyDataV1
 $PYTHON -m $MODULE 'lobby-public-get-party-data-v1' \
-    'JR5lsNOl' \
+    'nsuLCgTo' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetPartyDataV1'
 delete_file $TEMP_FILE
 
-#- 69 PublicUpdatePartyAttributesV1
+#- 70 PublicUpdatePartyAttributesV1
 $PYTHON -m $MODULE 'lobby-public-update-party-attributes-v1' \
-    '{"custom_attribute": {"vkfwaSbn": {}}, "updatedAt": 37}' \
-    'uLCgToxu' \
+    '{"custom_attribute": {"xuVTekJg": {}}, "updatedAt": 43}' \
+    'g6h5HIpH' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicUpdatePartyAttributesV1'
 delete_file $TEMP_FILE
 
-#- 70 PublicGetPlayerBlockedPlayersV1
+#- 71 PublicGetPlayerBlockedPlayersV1
 $PYTHON -m $MODULE 'lobby-public-get-player-blocked-players-v1' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetPlayerBlockedPlayersV1'
 delete_file $TEMP_FILE
 
-#- 71 PublicGetPlayerBlockedByPlayersV1
+#- 72 PublicGetPlayerBlockedByPlayersV1
 $PYTHON -m $MODULE 'lobby-public-get-player-blocked-by-players-v1' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetPlayerBlockedByPlayersV1'
 delete_file $TEMP_FILE
 
-#- 72 UsersPresenceHandlerV1
+#- 73 UsersPresenceHandlerV1
 $PYTHON -m $MODULE 'lobby-users-presence-handler-v1' \
-    'VTekJgvg' \
+    '0DviplEk' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UsersPresenceHandlerV1'
 delete_file $TEMP_FILE
 
-#- 73 FreeFormNotification
+#- 74 FreeFormNotification
 $PYTHON -m $MODULE 'lobby-free-form-notification' \
-    '{"message": "6h5HIpH0", "topic": "DviplEk4"}' \
+    '{"message": "4vj3LDp4", "topic": "yqDt8QUZ"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'FreeFormNotification'
 delete_file $TEMP_FILE
 
-#- 74 NotificationWithTemplate
+#- 75 NotificationWithTemplate
 $PYTHON -m $MODULE 'lobby-notification-with-template' \
-    '{"templateContext": {"vj3LDp4y": "qDt8QUZD"}, "templateLanguage": "pxlHasin", "templateSlug": "GcjrkmRM", "topic": "ttgjDSaI"}' \
+    '{"templateContext": {"DpxlHasi": "nGcjrkmR"}, "templateLanguage": "MttgjDSa", "templateSlug": "IVBmft3U", "topic": "dg7p9PGm"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'NotificationWithTemplate'
 delete_file $TEMP_FILE
 
-#- 75 GetGameTemplate
+#- 76 GetGameTemplate
 $PYTHON -m $MODULE 'lobby-get-game-template' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetGameTemplate'
 delete_file $TEMP_FILE
 
-#- 76 CreateTemplate
+#- 77 CreateTemplate
 $PYTHON -m $MODULE 'lobby-create-template' \
-    '{"templateContent": "VBmft3Ud", "templateLanguage": "g7p9PGmY", "templateSlug": "2H5kX4Ms"}' \
+    '{"templateContent": "Y2H5kX4M", "templateLanguage": "sisSX28n", "templateSlug": "ARxWRpv5"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateTemplate'
 delete_file $TEMP_FILE
 
-#- 77 GetSlugTemplate
+#- 78 GetSlugTemplate
 $PYTHON -m $MODULE 'lobby-get-slug-template' \
-    'isSX28nA' \
+    'ou5xtvd2' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetSlugTemplate'
 delete_file $TEMP_FILE
 
-#- 78 DeleteTemplateSlug
+#- 79 DeleteTemplateSlug
 $PYTHON -m $MODULE 'lobby-delete-template-slug' \
-    'RxWRpv5o' \
+    '8OUfCt8U' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteTemplateSlug'
 delete_file $TEMP_FILE
 
-#- 79 GetLocalizationTemplate
+#- 80 GetLocalizationTemplate
 $PYTHON -m $MODULE 'lobby-get-localization-template' \
-    'u5xtvd28' \
-    'OUfCt8UJ' \
+    'JC5flNyj' \
+    '6HsTtX8P' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetLocalizationTemplate'
 delete_file $TEMP_FILE
 
-#- 80 UpdateLocalizationTemplate
+#- 81 UpdateLocalizationTemplate
 $PYTHON -m $MODULE 'lobby-update-localization-template' \
-    '{"templateContent": "C5flNyj6"}' \
-    'HsTtX8P3' \
-    'llnaaS9l' \
+    '{"templateContent": "3llnaaS9"}' \
+    'lqyygPcf' \
+    'kJIxfQZz' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateLocalizationTemplate'
 delete_file $TEMP_FILE
 
-#- 81 DeleteTemplateLocalization
+#- 82 DeleteTemplateLocalization
 $PYTHON -m $MODULE 'lobby-delete-template-localization' \
-    'qyygPcfk' \
-    'JIxfQZza' \
+    'a8kNVbDx' \
+    'VMq7HJk0' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteTemplateLocalization'
 delete_file $TEMP_FILE
 
-#- 82 PublishTemplate
+#- 83 PublishTemplate
 $PYTHON -m $MODULE 'lobby-publish-template' \
-    '8kNVbDxV' \
-    'Mq7HJk0F' \
+    'F89xAc3Y' \
+    'VfaENtrl' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublishTemplate'
 delete_file $TEMP_FILE
 
-#- 83 GetTopicByNamespace
+#- 84 GetTopicByNamespace
 $PYTHON -m $MODULE 'lobby-get-topic-by-namespace' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetTopicByNamespace'
 delete_file $TEMP_FILE
 
-#- 84 CreateTopic
+#- 85 CreateTopic
 $PYTHON -m $MODULE 'lobby-create-topic' \
-    '{"description": "89xAc3YV", "topic": "faENtrl0"}' \
+    '{"description": "0pTKZTXq", "topic": "zHuBMYQS"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateTopic'
 delete_file $TEMP_FILE
 
-#- 85 GetTopicByTopicName
+#- 86 GetTopicByTopicName
 $PYTHON -m $MODULE 'lobby-get-topic-by-topic-name' \
-    'pTKZTXqz' \
+    'A2jz1ZOp' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetTopicByTopicName'
 delete_file $TEMP_FILE
 
-#- 86 UpdateTopicByTopicName
+#- 87 UpdateTopicByTopicName
 $PYTHON -m $MODULE 'lobby-update-topic-by-topic-name' \
-    '{"description": "HuBMYQSA"}' \
-    '2jz1ZOpd' \
+    '{"description": "dOjSyMdd"}' \
+    'B41JuMf7' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateTopicByTopicName'
 delete_file $TEMP_FILE
 
-#- 87 DeleteTopicByTopicName
+#- 88 DeleteTopicByTopicName
 $PYTHON -m $MODULE 'lobby-delete-topic-by-topic-name' \
-    'OjSyMddB' \
+    'RUyBHRj8' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteTopicByTopicName'
 delete_file $TEMP_FILE
 
-#- 88 FreeFormNotificationByUserID
+#- 89 FreeFormNotificationByUserID
 $PYTHON -m $MODULE 'lobby-free-form-notification-by-user-id' \
-    '{"message": "41JuMf7R", "topic": "UyBHRj8I"}' \
-    'iRimRllH' \
+    '{"message": "IiRimRll", "topic": "HT6Dc40v"}' \
+    'FFA6gpU7' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'FreeFormNotificationByUserID'
 delete_file $TEMP_FILE
 
-#- 89 NotificationWithTemplateByUserID
+#- 90 NotificationWithTemplateByUserID
 $PYTHON -m $MODULE 'lobby-notification-with-template-by-user-id' \
-    '{"templateContext": {"T6Dc40vF": "FA6gpU7E"}, "templateLanguage": "W3x1dCpm", "templateSlug": "55gOeqQI", "topic": "qcJVKmBM"}' \
-    '1J1IbuTr' \
+    '{"templateContext": {"EW3x1dCp": "m55gOeqQ"}, "templateLanguage": "IqcJVKmB", "templateSlug": "M1J1IbuT", "topic": "rrkbmuT1"}' \
+    'whOqmEnD' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'NotificationWithTemplateByUserID'

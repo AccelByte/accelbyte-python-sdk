@@ -12,7 +12,7 @@ MODULE='accelbyte_py_sdk_cli'
 MODULE_PATH='../samples/cli'
 TEMP_FILE='file.tmp'
 
-OPERATIONS_COUNT=38
+OPERATIONS_COUNT=39
 
 FINISHED_COUNT=0
 SUCCESS_COUNT=0
@@ -66,325 +66,335 @@ create_file 'tmp.dat'
 echo 'TAP version 13'
 echo "1..$OPERATIONS_COUNT"
 
-#- 1 GetPass
-$PYTHON -m $MODULE 'seasonpass-get-pass' \
-    'FtBxyZcD' \
-    'XBpGlsQu' \
-    --login_with_auth "Bearer foo" \
-    >$TEMP_FILE 2>&1
-update_status $? 'GetPass'
-delete_file $TEMP_FILE
-
-#- 2 DeletePass
-$PYTHON -m $MODULE 'seasonpass-delete-pass' \
-    'Ju8vMf0I' \
-    'sJkTrd8I' \
-    --login_with_auth "Bearer foo" \
-    >$TEMP_FILE 2>&1
-update_status $? 'DeletePass'
-delete_file $TEMP_FILE
-
-#- 3 UpdatePass
-$PYTHON -m $MODULE 'seasonpass-update-pass' \
-    'DcV2zXnT' \
-    'KjXY1bPq' \
-    --body '{"displayOrder": 1, "autoEnroll": false, "passItemId": "iBxx9Cs1", "localizations": {"8EY84ekI": {"title": "tqRzHU1o", "description": "h570KQBV"}}, "images": [{"as": "aewc72kr", "caption": "Sha68n3Y", "height": 26, "width": 29, "imageUrl": "zp1C2KmI", "smallImageUrl": "QTuBdNEU"}]}' \
-    --login_with_auth "Bearer foo" \
-    >$TEMP_FILE 2>&1
-update_status $? 'UpdatePass'
-delete_file $TEMP_FILE
-
-#- 4 QueryPasses
-$PYTHON -m $MODULE 'seasonpass-query-passes' \
-    'sxFb8CJ1' \
-    --login_with_auth "Bearer foo" \
-    >$TEMP_FILE 2>&1
-update_status $? 'QueryPasses'
-delete_file $TEMP_FILE
-
-#- 5 CreatePass
-$PYTHON -m $MODULE 'seasonpass-create-pass' \
-    '7M7DJZaM' \
-    --body '{"code": "SxECbZby", "displayOrder": 13, "autoEnroll": true, "passItemId": "oarORoeN", "localizations": {"HSb8Rh3k": {"title": "gs9qqJbn", "description": "QsoBgiVp"}}, "images": [{"as": "P8Cm3yvA", "caption": "SUoxdxxF", "height": 32, "width": 24, "imageUrl": "AGTJ8IEd", "smallImageUrl": "agEtp4w2"}]}' \
-    --login_with_auth "Bearer foo" \
-    >$TEMP_FILE 2>&1
-update_status $? 'CreatePass'
-delete_file $TEMP_FILE
-
-#- 6 GetReward
-$PYTHON -m $MODULE 'seasonpass-get-reward' \
-    '9KOu9c19' \
-    'R6XDqWHk' \
-    --login_with_auth "Bearer foo" \
-    >$TEMP_FILE 2>&1
-update_status $? 'GetReward'
-delete_file $TEMP_FILE
-
-#- 7 DeleteReward
-$PYTHON -m $MODULE 'seasonpass-delete-reward' \
-    'kP8npLEK' \
-    'MfjiX7jp' \
-    --login_with_auth "Bearer foo" \
-    >$TEMP_FILE 2>&1
-update_status $? 'DeleteReward'
-delete_file $TEMP_FILE
-
-#- 8 UpdateReward
-$PYTHON -m $MODULE 'seasonpass-update-reward' \
-    'kVZk3IaQ' \
-    'YEmqGodO' \
-    --body '{"type": "CURRENCY", "itemId": "Gt9gPOj0", "currency": {"namespace": "c6i0JkvI", "currencyCode": "as73ucYn"}, "quantity": 63, "image": {"as": "AJ3DK5T4", "caption": "Eogg0Y39", "height": 93, "width": 29, "imageUrl": "Ylpv5bVA", "smallImageUrl": "gtsDhUTD"}, "nullFields": ["UscbQDjb"]}' \
-    --login_with_auth "Bearer foo" \
-    >$TEMP_FILE 2>&1
-update_status $? 'UpdateReward'
-delete_file $TEMP_FILE
-
-#- 9 QueryRewards
-$PYTHON -m $MODULE 'seasonpass-query-rewards' \
-    'TQuPMz2P' \
-    --login_with_auth "Bearer foo" \
-    >$TEMP_FILE 2>&1
-update_status $? 'QueryRewards'
-delete_file $TEMP_FILE
-
-#- 10 CreateReward
-$PYTHON -m $MODULE 'seasonpass-create-reward' \
-    'TRlkyU89' \
-    --body '{"code": "ZPOw6zPF", "type": "ITEM", "itemId": "wmzBBSMN", "currency": {"namespace": "coAAOjKN", "currencyCode": "jfcYHm09"}, "quantity": 0, "image": {"as": "YgBU1sqj", "caption": "yK0XH45P", "height": 0, "width": 87, "imageUrl": "SOFQBtu2", "smallImageUrl": "3REZ8hRV"}}' \
-    --login_with_auth "Bearer foo" \
-    >$TEMP_FILE 2>&1
-update_status $? 'CreateReward'
-delete_file $TEMP_FILE
-
-#- 11 UnpublishSeason
-$PYTHON -m $MODULE 'seasonpass-unpublish-season' \
-    'X7LGOvDd' \
-    --login_with_auth "Bearer foo" \
-    >$TEMP_FILE 2>&1
-update_status $? 'UnpublishSeason'
-delete_file $TEMP_FILE
-
-#- 12 GetSeason
-$PYTHON -m $MODULE 'seasonpass-get-season' \
-    'YiQS9i7m' \
-    --login_with_auth "Bearer foo" \
-    >$TEMP_FILE 2>&1
-update_status $? 'GetSeason'
-delete_file $TEMP_FILE
-
-#- 13 DeleteSeason
-$PYTHON -m $MODULE 'seasonpass-delete-season' \
-    'V1C91pjG' \
-    --login_with_auth "Bearer foo" \
-    >$TEMP_FILE 2>&1
-update_status $? 'DeleteSeason'
-delete_file $TEMP_FILE
-
-#- 14 UpdateSeason
-$PYTHON -m $MODULE 'seasonpass-update-season' \
-    '9gpxL6yc' \
-    --body '{"name": "TQdvln2L", "start": "1984-06-12T00:00:00Z", "end": "1993-12-03T00:00:00Z", "defaultLanguage": "WEXL6LFE", "defaultRequiredExp": 67, "draftStoreId": "o9m126ZW", "tierItemId": "c8hHtWvb", "autoClaim": true, "excessStrategy": {"method": "NONE", "currency": "UqslArFP", "percentPerExp": 17}, "localizations": {"HUIvaCv8": {"title": "kU9dBBpd", "description": "sJLhsVyE"}}, "images": [{"as": "xrkxoot0", "caption": "B7WOferc", "height": 7, "width": 31, "imageUrl": "Mci37Ds7", "smallImageUrl": "YSfExaI3"}]}' \
-    --login_with_auth "Bearer foo" \
-    >$TEMP_FILE 2>&1
-update_status $? 'UpdateSeason'
-delete_file $TEMP_FILE
-
-#- 15 CloneSeason
-$PYTHON -m $MODULE 'seasonpass-clone-season' \
-    'uzLteMbF' \
-    --body '{"name": "Alt4hr7H", "start": "1977-11-23T00:00:00Z", "end": "1996-02-29T00:00:00Z"}' \
-    --login_with_auth "Bearer foo" \
-    >$TEMP_FILE 2>&1
-update_status $? 'CloneSeason'
-delete_file $TEMP_FILE
-
-#- 16 QuerySeasons
+#- 1 QuerySeasons
 $PYTHON -m $MODULE 'seasonpass-query-seasons' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'QuerySeasons'
 delete_file $TEMP_FILE
 
-#- 17 CreateSeason
+#- 2 CreateSeason
 $PYTHON -m $MODULE 'seasonpass-create-season' \
-    --body '{"name": "BA5ltAOX", "start": "1977-03-30T00:00:00Z", "end": "1987-02-03T00:00:00Z", "defaultLanguage": "h1dTdoTF", "defaultRequiredExp": 31, "draftStoreId": "BIcuC1dQ", "tierItemId": "Y93OJnJ6", "autoClaim": false, "excessStrategy": {"method": "CURRENCY", "currency": "D8ldz7Hu", "percentPerExp": 53}, "localizations": {"D79kdWun": {"title": "vizU0q1p", "description": "HyhhERoG"}}, "images": [{"as": "gdrysMiz", "caption": "BGSRdP2l", "height": 59, "width": 79, "imageUrl": "SZ8Aq0Xi", "smallImageUrl": "PLQXSe07"}]}' \
+    --body '{"autoClaim": true, "defaultLanguage": "tBxyZcDX", "defaultRequiredExp": 55, "draftStoreId": "pGlsQuJu", "end": "1981-11-03T00:00:00Z", "excessStrategy": {"currency": "f0IsJkTr", "method": "NONE", "percentPerExp": 68}, "images": [{"as": "DcV2zXnT", "caption": "KjXY1bPq", "height": 1, "imageUrl": "miBxx9Cs", "smallImageUrl": "18EY84ek", "width": 69}], "localizations": {"tqRzHU1o": {"description": "h570KQBV", "title": "aewc72kr"}}, "name": "Sha68n3Y", "start": "1977-04-27T00:00:00Z", "tierItemId": "zp1C2KmI"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateSeason'
 delete_file $TEMP_FILE
 
-#- 18 RetireSeason
-$PYTHON -m $MODULE 'seasonpass-retire-season' \
-    'ZddOGTMl' \
-    --login_with_auth "Bearer foo" \
-    >$TEMP_FILE 2>&1
-update_status $? 'RetireSeason'
-delete_file $TEMP_FILE
-
-#- 19 PublishSeason
-$PYTHON -m $MODULE 'seasonpass-publish-season' \
-    'JjBwj9HJ' \
-    --login_with_auth "Bearer foo" \
-    >$TEMP_FILE 2>&1
-update_status $? 'PublishSeason'
-delete_file $TEMP_FILE
-
-#- 20 GetCurrentSeason
+#- 3 GetCurrentSeason
 $PYTHON -m $MODULE 'seasonpass-get-current-season' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetCurrentSeason'
 delete_file $TEMP_FILE
 
-#- 21 UpdateTier
-$PYTHON -m $MODULE 'seasonpass-update-tier' \
-    'HQKseEdS' \
-    'XRDSvgua' \
-    --body '{"requiredExp": 40, "rewards": {"w1xT7eMw": ["Sl9MLH0N"]}}' \
+#- 4 GetSeason
+$PYTHON -m $MODULE 'seasonpass-get-season' \
+    'QTuBdNEU' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
-update_status $? 'UpdateTier'
+update_status $? 'GetSeason'
 delete_file $TEMP_FILE
 
-#- 22 DeleteTier
-$PYTHON -m $MODULE 'seasonpass-delete-tier' \
-    'nTJ2ulNz' \
-    'BvwJaQa5' \
+#- 5 DeleteSeason
+$PYTHON -m $MODULE 'seasonpass-delete-season' \
+    'sxFb8CJ1' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
-update_status $? 'DeleteTier'
+update_status $? 'DeleteSeason'
 delete_file $TEMP_FILE
 
-#- 23 QueryTiers
+#- 6 UpdateSeason
+$PYTHON -m $MODULE 'seasonpass-update-season' \
+    '7M7DJZaM' \
+    --body '{"autoClaim": true, "defaultLanguage": "ECbZbygy", "defaultRequiredExp": 29, "draftStoreId": "arORoeNH", "end": "1993-01-05T00:00:00Z", "excessStrategy": {"currency": "8Rh3kgs9", "method": "CURRENCY", "percentPerExp": 33}, "images": [{"as": "JbnQsoBg", "caption": "iVpP8Cm3", "height": 49, "imageUrl": "vASUoxdx", "smallImageUrl": "xFqmAGTJ", "width": 68}], "localizations": {"EdagEtp4": {"description": "w29KOu9c", "title": "19R6XDqW"}}, "name": "HkkP8npL", "start": "1986-10-17T00:00:00Z", "tierItemId": "MfjiX7jp"}' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'UpdateSeason'
+delete_file $TEMP_FILE
+
+#- 7 CloneSeason
+$PYTHON -m $MODULE 'seasonpass-clone-season' \
+    'kVZk3IaQ' \
+    --body '{"end": "1996-08-25T00:00:00Z", "name": "mqGodOEG", "start": "1980-02-22T00:00:00Z"}' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'CloneSeason'
+delete_file $TEMP_FILE
+
+#- 8 QueryPasses
+$PYTHON -m $MODULE 'seasonpass-query-passes' \
+    'POj0c6i0' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'QueryPasses'
+delete_file $TEMP_FILE
+
+#- 9 CreatePass
+$PYTHON -m $MODULE 'seasonpass-create-pass' \
+    'JkvIas73' \
+    --body '{"autoEnroll": true, "code": "cYnFAJ3D", "displayOrder": 72, "images": [{"as": "5T4Eogg0", "caption": "Y39UoYlp", "height": 43, "imageUrl": "5bVAgtsD", "smallImageUrl": "hUTDUscb", "width": 85}], "localizations": {"DjbTQuPM": {"description": "z2PTRlky", "title": "U89ZPOw6"}}, "passItemId": "zPFJ42cw"}' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'CreatePass'
+delete_file $TEMP_FILE
+
+#- 10 GetPass
+$PYTHON -m $MODULE 'seasonpass-get-pass' \
+    'mzBBSMNc' \
+    'oAAOjKNj' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'GetPass'
+delete_file $TEMP_FILE
+
+#- 11 DeletePass
+$PYTHON -m $MODULE 'seasonpass-delete-pass' \
+    'fcYHm093' \
+    'aYgBU1sq' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'DeletePass'
+delete_file $TEMP_FILE
+
+#- 12 UpdatePass
+$PYTHON -m $MODULE 'seasonpass-update-pass' \
+    'jyK0XH45' \
+    'PaRSOFQB' \
+    --body '{"autoEnroll": true, "displayOrder": 41, "images": [{"as": "23REZ8hR", "caption": "VX7LGOvD", "height": 6, "imageUrl": "YiQS9i7m", "smallImageUrl": "V1C91pjG", "width": 13}], "localizations": {"pxL6ycTQ": {"description": "dvln2LAu", "title": "SQWEXL6L"}}, "passItemId": "FE1YHo9m"}' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'UpdatePass'
+delete_file $TEMP_FILE
+
+#- 13 PublishSeason
+$PYTHON -m $MODULE 'seasonpass-publish-season' \
+    '126ZWc8h' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'PublishSeason'
+delete_file $TEMP_FILE
+
+#- 14 RetireSeason
+$PYTHON -m $MODULE 'seasonpass-retire-season' \
+    'HtWvbNYq' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'RetireSeason'
+delete_file $TEMP_FILE
+
+#- 15 QueryRewards
+$PYTHON -m $MODULE 'seasonpass-query-rewards' \
+    'gUqslArF' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'QueryRewards'
+delete_file $TEMP_FILE
+
+#- 16 CreateReward
+$PYTHON -m $MODULE 'seasonpass-create-reward' \
+    'PiHUIvaC' \
+    --body '{"code": "v8kU9dBB", "currency": {"currencyCode": "pdsJLhsV", "namespace": "yExrkxoo"}, "image": {"as": "t0B7WOfe", "caption": "rcZdpMci", "height": 58, "imageUrl": "s7YSfExa", "smallImageUrl": "I3uzLteM", "width": 3}, "itemId": "FAlt4hr7", "quantity": 67, "type": "ITEM"}' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'CreateReward'
+delete_file $TEMP_FILE
+
+#- 17 GetReward
+$PYTHON -m $MODULE 'seasonpass-get-reward' \
+    'OYiBA5lt' \
+    'AOXmlG6e' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'GetReward'
+delete_file $TEMP_FILE
+
+#- 18 DeleteReward
+$PYTHON -m $MODULE 'seasonpass-delete-reward' \
+    'h1dTdoTF' \
+    'pBIcuC1d' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'DeleteReward'
+delete_file $TEMP_FILE
+
+#- 19 UpdateReward
+$PYTHON -m $MODULE 'seasonpass-update-reward' \
+    'QY93OJnJ' \
+    '6Te9vD8l' \
+    --body '{"currency": {"currencyCode": "dz7Hu8AD", "namespace": "79kdWunv"}, "image": {"as": "izU0q1pH", "caption": "yhhERoGg", "height": 7, "imageUrl": "rysMizBG", "smallImageUrl": "SRdP2l7D", "width": 79}, "itemId": "SZ8Aq0Xi", "nullFields": ["PLQXSe07"], "quantity": 7, "type": "ITEM"}' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'UpdateReward'
+delete_file $TEMP_FILE
+
+#- 20 QueryTiers
 $PYTHON -m $MODULE 'seasonpass-query-tiers' \
-    '47JllvA8' \
+    'OGTMlJjB' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'QueryTiers'
 delete_file $TEMP_FILE
 
-#- 24 CreateTier
+#- 21 CreateTier
 $PYTHON -m $MODULE 'seasonpass-create-tier' \
-    'RWSpabUt' \
-    --body '{"index": 47, "quantity": 21, "tier": {"requiredExp": 85, "rewards": {"xyWhfqoW": ["fJw2o8oW"]}}}' \
+    'wj9HJHQK' \
+    --body '{"index": 36, "quantity": 8, "tier": {"requiredExp": 60, "rewards": {"dSXRDSvg": ["uauw1xT7"]}}}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateTier'
 delete_file $TEMP_FILE
 
-#- 25 ExistsAnyPassByPassCodes
-$PYTHON -m $MODULE 'seasonpass-exists-any-pass-by-pass-codes' \
-    'UqvPCZ2H' \
+#- 22 UpdateTier
+$PYTHON -m $MODULE 'seasonpass-update-tier' \
+    'eMwSl9ML' \
+    'H0NnTJ2u' \
+    --body '{"requiredExp": 22, "rewards": {"NzBvwJaQ": ["a547Jllv"]}}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
-update_status $? 'ExistsAnyPassByPassCodes'
+update_status $? 'UpdateTier'
 delete_file $TEMP_FILE
 
-#- 26 GrantUserTier
-$PYTHON -m $MODULE 'seasonpass-grant-user-tier' \
-    'zT7NXmWD' \
-    --body '{"count": 23}' \
+#- 23 DeleteTier
+$PYTHON -m $MODULE 'seasonpass-delete-tier' \
+    'A8RWSpab' \
+    'Ut7xk6Qx' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
-update_status $? 'GrantUserTier'
+update_status $? 'DeleteTier'
 delete_file $TEMP_FILE
 
-#- 27 GetUserSeason
-$PYTHON -m $MODULE 'seasonpass-get-user-season' \
-    'XsuNIdQJ' \
-    'R5lsNOlv' \
+#- 24 ReorderTier
+$PYTHON -m $MODULE 'seasonpass-reorder-tier' \
+    'yWhfqoWf' \
+    'Jw2o8oWU' \
+    --body '{"newIndex": 32}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
-update_status $? 'GetUserSeason'
+update_status $? 'ReorderTier'
 delete_file $TEMP_FILE
 
-#- 28 CheckSeasonPurchasable
-$PYTHON -m $MODULE 'seasonpass-check-season-purchasable' \
-    'kfwaSbns' \
-    --body '{"passItemId": "uLCgToxu", "tierItemId": "VTekJgvg", "tierItemCount": 15}' \
+#- 25 UnpublishSeason
+$PYTHON -m $MODULE 'seasonpass-unpublish-season' \
+    'vPCZ2HzT' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
-update_status $? 'CheckSeasonPurchasable'
+update_status $? 'UnpublishSeason'
 delete_file $TEMP_FILE
 
-#- 29 GetCurrentUserSeasonProgression
-$PYTHON -m $MODULE 'seasonpass-get-current-user-season-progression' \
-    '5HIpH0Dv' \
-    --login_with_auth "Bearer foo" \
-    >$TEMP_FILE 2>&1
-update_status $? 'GetCurrentUserSeasonProgression'
-delete_file $TEMP_FILE
-
-#- 30 ResetUserSeason
-$PYTHON -m $MODULE 'seasonpass-reset-user-season' \
-    'iplEk4vj' \
-    --login_with_auth "Bearer foo" \
-    >$TEMP_FILE 2>&1
-update_status $? 'ResetUserSeason'
-delete_file $TEMP_FILE
-
-#- 31 GrantUserPass
-$PYTHON -m $MODULE 'seasonpass-grant-user-pass' \
-    '3LDp4yqD' \
-    --body '{"passItemId": "t8QUZDpx", "passCode": "lHasinGc"}' \
-    --login_with_auth "Bearer foo" \
-    >$TEMP_FILE 2>&1
-update_status $? 'GrantUserPass'
-delete_file $TEMP_FILE
-
-#- 32 GetUserParticipatedSeasons
+#- 26 GetUserParticipatedSeasons
 $PYTHON -m $MODULE 'seasonpass-get-user-participated-seasons' \
-    'jrkmRMtt' \
+    '7NXmWDlX' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserParticipatedSeasons'
 delete_file $TEMP_FILE
 
-#- 33 GrantUserExp
+#- 27 GrantUserExp
 $PYTHON -m $MODULE 'seasonpass-grant-user-exp' \
-    'gjDSaIVB' \
-    --body '{"exp": 25}' \
+    'suNIdQJR' \
+    --body '{"exp": 23}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GrantUserExp'
 delete_file $TEMP_FILE
 
-#- 34 PublicGetCurrentSeason
+#- 28 GrantUserPass
+$PYTHON -m $MODULE 'seasonpass-grant-user-pass' \
+    'sNOlvkfw' \
+    --body '{"passCode": "aSbnsuLC", "passItemId": "gToxuVTe"}' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'GrantUserPass'
+delete_file $TEMP_FILE
+
+#- 29 ExistsAnyPassByPassCodes
+$PYTHON -m $MODULE 'seasonpass-exists-any-pass-by-pass-codes' \
+    'kJgvg6h5' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'ExistsAnyPassByPassCodes'
+delete_file $TEMP_FILE
+
+#- 30 GetCurrentUserSeasonProgression
+$PYTHON -m $MODULE 'seasonpass-get-current-user-season-progression' \
+    'HIpH0Dvi' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'GetCurrentUserSeasonProgression'
+delete_file $TEMP_FILE
+
+#- 31 CheckSeasonPurchasable
+$PYTHON -m $MODULE 'seasonpass-check-season-purchasable' \
+    'plEk4vj3' \
+    --body '{"passItemId": "LDp4yqDt", "tierItemCount": 85, "tierItemId": "UZDpxlHa"}' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'CheckSeasonPurchasable'
+delete_file $TEMP_FILE
+
+#- 32 ResetUserSeason
+$PYTHON -m $MODULE 'seasonpass-reset-user-season' \
+    'sinGcjrk' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'ResetUserSeason'
+delete_file $TEMP_FILE
+
+#- 33 GrantUserTier
+$PYTHON -m $MODULE 'seasonpass-grant-user-tier' \
+    'mRMttgjD' \
+    --body '{"count": 88}' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'GrantUserTier'
+delete_file $TEMP_FILE
+
+#- 34 GetUserSeason
+$PYTHON -m $MODULE 'seasonpass-get-user-season' \
+    'aIVBmft3' \
+    'Udg7p9PG' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'GetUserSeason'
+delete_file $TEMP_FILE
+
+#- 35 PublicGetCurrentSeason
 $PYTHON -m $MODULE 'seasonpass-public-get-current-season' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetCurrentSeason'
 delete_file $TEMP_FILE
 
-#- 35 PublicClaimUserReward
-$PYTHON -m $MODULE 'seasonpass-public-claim-user-reward' \
-    'ft3Udg7p' \
-    --body '{"passCode": "9PGmY2H5", "tierIndex": 20, "rewardCode": "X4MsisSX"}' \
-    --login_with_auth "Bearer foo" \
-    >$TEMP_FILE 2>&1
-update_status $? 'PublicClaimUserReward'
-delete_file $TEMP_FILE
-
 #- 36 PublicGetCurrentUserSeason
 $PYTHON -m $MODULE 'seasonpass-public-get-current-user-season' \
-    '28nARxWR' \
+    'mY2H5kX4' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetCurrentUserSeason'
 delete_file $TEMP_FILE
 
-#- 37 PublicBulkClaimUserRewards
+#- 37 PublicClaimUserReward
+$PYTHON -m $MODULE 'seasonpass-public-claim-user-reward' \
+    'MsisSX28' \
+    --body '{"passCode": "nARxWRpv", "rewardCode": "5ou5xtvd", "tierIndex": 80}' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'PublicClaimUserReward'
+delete_file $TEMP_FILE
+
+#- 38 PublicBulkClaimUserRewards
 $PYTHON -m $MODULE 'seasonpass-public-bulk-claim-user-rewards' \
-    'pv5ou5xt' \
+    'UfCt8UJC' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicBulkClaimUserRewards'
 delete_file $TEMP_FILE
 
-#- 38 PublicGetUserSeason
+#- 39 PublicGetUserSeason
 $PYTHON -m $MODULE 'seasonpass-public-get-user-season' \
-    'vd28OUfC' \
-    't8UJC5fl' \
+    '5flNyj6H' \
+    'sTtX8P3l' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserSeason'

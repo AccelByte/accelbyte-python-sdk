@@ -12,7 +12,7 @@ MODULE='accelbyte_py_sdk_cli'
 MODULE_PATH='../samples/cli'
 TEMP_FILE='file.tmp'
 
-OPERATIONS_COUNT=68
+OPERATIONS_COUNT=69
 
 FINISHED_COUNT=0
 SUCCESS_COUNT=0
@@ -607,47 +607,56 @@ $PYTHON -m $MODULE 'social-bulk-update-user-stat-item' \
 update_status $? 'BulkUpdateUserStatItem'
 delete_file $TEMP_FILE
 
-#- 64 DeleteUserStatItems2
-$PYTHON -m $MODULE 'social-delete-user-stat-items-2' \
+#- 64 BulkResetUserStatItemValues
+$PYTHON -m $MODULE 'social-bulk-reset-user-stat-item-values' \
     'm55gOeqQ' \
-    'IqcJVKmB' \
+    --body '[{"additionalData": {"IqcJVKmB": {}}, "statCode": "M1J1IbuT"}]' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'BulkResetUserStatItemValues'
+delete_file $TEMP_FILE
+
+#- 65 DeleteUserStatItems2
+$PYTHON -m $MODULE 'social-delete-user-stat-items-2' \
+    'rrkbmuT1' \
+    'whOqmEnD' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteUserStatItems2'
 delete_file $TEMP_FILE
 
-#- 65 UpdateUserStatItemValue
+#- 66 UpdateUserStatItemValue
 $PYTHON -m $MODULE 'social-update-user-stat-item-value' \
-    'M1J1IbuT' \
-    'rrkbmuT1' \
-    --body '{"additionalData": {"whOqmEnD": {}}, "updateStrategy": "MAX", "value": 0.42244767130149086}' \
+    'XIWrBPlS' \
+    'ay46mv71' \
+    --body '{"additionalData": {"BAZAOjtF": {}}, "updateStrategy": "MAX", "value": 0.19538688444595897}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateUserStatItemValue'
 delete_file $TEMP_FILE
 
-#- 66 BulkUpdateUserStatItem1
+#- 67 BulkUpdateUserStatItem1
 $PYTHON -m $MODULE 'social-bulk-update-user-stat-item-1' \
-    --body '[{"additionalData": {"lSay46mv": {}}, "additionalKey": "71BAZAOj", "statCode": "tFJ2vmTj", "updateStrategy": "MAX", "userId": "T7TZHWDd", "value": 0.45245199023493055}]' \
+    --body '[{"additionalData": {"j7tT7TZH": {}}, "additionalKey": "WDdCkIsZ", "statCode": "oArWwPHc", "updateStrategy": "MIN", "userId": "FAdAtYci", "value": 0.591101780521284}]' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'BulkUpdateUserStatItem1'
 delete_file $TEMP_FILE
 
-#- 67 BulkUpdateUserStatItem2
+#- 68 BulkUpdateUserStatItem2
 $PYTHON -m $MODULE 'social-bulk-update-user-stat-item-2' \
-    'IsZoArWw' \
-    --body '[{"additionalData": {"PHcyFAdA": {}}, "statCode": "tYciLIgR", "updateStrategy": "MAX", "value": 0.49006656321603914}]' \
+    'IgRwFRr0' \
+    --body '[{"additionalData": {"gwB9tz3v": {}}, "statCode": "p99XVlV8", "updateStrategy": "MAX", "value": 0.5689362203332181}]' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'BulkUpdateUserStatItem2'
 delete_file $TEMP_FILE
 
-#- 68 UpdateUserStatItemValue1
+#- 69 UpdateUserStatItemValue1
 $PYTHON -m $MODULE 'social-update-user-stat-item-value-1' \
-    'r0gwB9tz' \
-    '3vp99XVl' \
-    --body '{"additionalData": {"V8rK3tE6": {}}, "updateStrategy": "INCREMENT", "value": 0.820145728309544}' \
+    'tE6n0smi' \
+    'p1tw3L7c' \
+    --body '{"additionalData": {"Ud9pqtv6": {}}, "updateStrategy": "OVERRIDE", "value": 0.6502290130313825}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateUserStatItemValue1'
