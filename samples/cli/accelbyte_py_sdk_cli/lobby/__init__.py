@@ -46,6 +46,7 @@ from ._send_specific_user_freeform_notification_v1_admin import send_specific_us
 from ._send_specific_user_templated_notification_v1_admin import send_specific_user_templated_notification_v1_admin
 from ._admin_get_party_data_v1 import admin_get_party_data_v1
 from ._admin_update_party_attributes_v1 import admin_update_party_attributes_v1
+from ._admin_join_party_v1 import admin_join_party_v1
 from ._admin_get_user_party_v1 import admin_get_user_party_v1
 from ._admin_get_lobby_ccu import admin_get_lobby_ccu
 from ._admin_get_all_player_session_attribute import admin_get_all_player_session_attribute
@@ -138,6 +139,7 @@ commands = [
     send_specific_user_templated_notification_v1_admin,
     admin_get_party_data_v1,
     admin_update_party_attributes_v1,
+    admin_join_party_v1,
     admin_get_user_party_v1,
     admin_get_lobby_ccu,
     admin_get_all_player_session_attribute,

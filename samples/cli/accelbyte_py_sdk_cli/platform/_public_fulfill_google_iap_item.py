@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -29,6 +29,7 @@ from .._utils import login_as as login_as_internal
 from accelbyte_py_sdk.api.platform import public_fulfill_google_iap_item as public_fulfill_google_iap_item_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import GoogleIAPReceipt
+from accelbyte_py_sdk.api.platform.models import GoogleReceiptResolveResult
 
 
 @click.command()

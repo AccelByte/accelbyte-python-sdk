@@ -1,4 +1,4 @@
-# justice-platform-service (4.1.1)
+# justice-platform-service (4.2.0)
 
 # Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -71,6 +71,9 @@ from ._update_stadia_json_config_file import update_stadia_json_config_file
 from ._get_steam_iap_config import get_steam_iap_config
 from ._update_steam_iap_config import update_steam_iap_config
 from ._delete_steam_iap_config import delete_steam_iap_config
+from ._get_twitch_iap_config import get_twitch_iap_config
+from ._update_twitch_iap_config import update_twitch_iap_config
+from ._delete_twitch_iap_config import delete_twitch_iap_config
 from ._get_xbl_iap_config import get_xbl_iap_config
 from ._update_xbl_iap_config import update_xbl_iap_config
 from ._delete_xbl_ap_config import delete_xbl_ap_config
@@ -304,6 +307,7 @@ from ._public_fulfill_google_iap_item import public_fulfill_google_iap_item
 from ._public_reconcile_play_station_store import public_reconcile_play_station_store
 from ._sync_stadia_entitlement import sync_stadia_entitlement
 from ._sync_steam_inventory import sync_steam_inventory
+from ._sync_twitch_drops_entitlement import sync_twitch_drops_entitlement
 from ._sync_xbox_inventory import sync_xbox_inventory
 from ._public_query_user_orders import public_query_user_orders
 from ._public_create_user_order import public_create_user_order
@@ -390,6 +394,9 @@ commands = [
     get_steam_iap_config,
     update_steam_iap_config,
     delete_steam_iap_config,
+    get_twitch_iap_config,
+    update_twitch_iap_config,
+    delete_twitch_iap_config,
     get_xbl_iap_config,
     update_xbl_iap_config,
     delete_xbl_ap_config,
@@ -623,6 +630,7 @@ commands = [
     public_reconcile_play_station_store,
     sync_stadia_entitlement,
     sync_steam_inventory,
+    sync_twitch_drops_entitlement,
     sync_xbox_inventory,
     public_query_user_orders,
     public_create_user_order,

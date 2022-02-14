@@ -1,4 +1,4 @@
-# justice-iam-service (5.1.1)
+# justice-iam-service (5.2.0)
 
 # Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -37,8 +37,11 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelTokenResponseV3
 @click.option("--client_id", "client_id", type=str)
 @click.option("--code", "code", type=str)
 @click.option("--code_verifier", "code_verifier", type=str)
+@click.option("--extend_exp", "extend_exp", type=bool)
+@click.option("--password", "password", type=str)
 @click.option("--redirect_uri", "redirect_uri", type=str)
 @click.option("--refresh_token", "refresh_token", type=str)
+@click.option("--username", "username", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
@@ -48,8 +51,11 @@ def token_grant_v3(
         client_id: Optional[str] = None,
         code: Optional[str] = None,
         code_verifier: Optional[str] = None,
+        extend_exp: Optional[bool] = None,
+        password: Optional[str] = None,
         redirect_uri: Optional[str] = None,
         refresh_token: Optional[str] = None,
+        username: Optional[str] = None,
         login_as: Optional[str] = None,
         login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -70,8 +76,11 @@ def token_grant_v3(
         client_id=client_id,
         code=code,
         code_verifier=code_verifier,
+        extend_exp=extend_exp,
+        password=password,
         redirect_uri=redirect_uri,
         refresh_token=refresh_token,
+        username=username,
         x_additional_headers=x_additional_headers,
     )
     if error:

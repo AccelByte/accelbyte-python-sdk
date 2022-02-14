@@ -1,4 +1,4 @@
-# justice-social-service (1.23.0)
+# justice-social-service (1.24.0)
 
 # Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
@@ -69,6 +69,7 @@ from ._public_inc_user_stat_item_value import public_inc_user_stat_item_value
 from ._reset_user_stat_item_value_1 import reset_user_stat_item_value_1
 from ._bulk_update_user_stat_item_v2 import bulk_update_user_stat_item_v2
 from ._bulk_update_user_stat_item import bulk_update_user_stat_item
+from ._bulk_reset_user_stat_item_values import bulk_reset_user_stat_item_values
 from ._delete_user_stat_items_2 import delete_user_stat_items_2
 from ._update_user_stat_item_value import update_user_stat_item_value
 from ._bulk_update_user_stat_item_1 import bulk_update_user_stat_item_1
@@ -140,6 +141,7 @@ commands = [
     reset_user_stat_item_value_1,
     bulk_update_user_stat_item_v2,
     bulk_update_user_stat_item,
+    bulk_reset_user_stat_item_values,
     delete_user_stat_items_2,
     update_user_stat_item_value,
     bulk_update_user_stat_item_1,
