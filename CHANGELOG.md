@@ -1,8 +1,17 @@
 # Changelog
 
 ## v0.8.0
+- Move `samples/how_to` folder contents into `samples/how-to`.
+- Update tests.
+- Update CLI commands.
+    - An optional parameter `--login_with_auth` is added. Users can now specify the value of the `Authorization` header directly when running a CLI command.
+    ```sh
+    python -m accelbyte_py_sdk_cli achievement-admin-list-achievement --login_with_auth "Bearer foo"
+    ```
 - Updated APIs
     - Add 'x-nullable' property to all date-time and date properties
+    - Add 'Required Permission(s)' and 'Required Scope(s)' section in each operation description.
+    - Strip HTML tags in operation descriptions.
     - basic
         - version bump only
     - cloudsave
