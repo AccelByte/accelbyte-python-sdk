@@ -38,7 +38,6 @@ class CheckWallet(Operation):
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]
 

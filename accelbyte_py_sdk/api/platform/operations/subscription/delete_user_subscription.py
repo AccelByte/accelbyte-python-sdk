@@ -35,7 +35,6 @@ class DeleteUserSubscription(Operation):
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=8 (DELETE)
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [DELETE]
 

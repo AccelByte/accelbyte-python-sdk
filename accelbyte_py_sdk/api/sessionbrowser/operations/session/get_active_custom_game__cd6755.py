@@ -34,8 +34,8 @@ class GetActiveCustomGameSessions(Operation):
     """Get all active session for custom game, this return only dedicated session type (GetActiveCustomGameSessions)
 
     Required permission: ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-    Required scope: social
 
+    Required scope: social
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]

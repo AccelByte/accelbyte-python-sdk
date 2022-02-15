@@ -33,11 +33,9 @@ from ...models import RestErrorResponse
 class PublicLinkPlatformAccount(Operation):
     """Link a Platform User Account to User Account (PublicLinkPlatformAccount)
 
-    Update Platform Account relation to current User Account. Note: Game
-    progression data (statistics, reward, etc) associated with previous User
-    Account will not be transferred. If the data is tight to game user ID, the
-    user will have the game progression data.
-
+    Update Platform Account relation to current User Account.
+    Note: Game progression data (statistics, reward, etc) associated with previous User Account will not be
+    transferred. If the data is tight to game user ID, the user will have the game progression data.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms/link

@@ -35,36 +35,77 @@ class AdminPlatformUnlinkV3(Operation):
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]'.
 
+
     ## Supported platforms:
 
+
+
+
+
+
       * steam
+
+
       * steamopenid
+
+
       * facebook
+
+
       * google
+
+
       * oculus
+
+
       * twitch
+
+
       * android
+
+
       * ios
+
+
       * apple
+
+
       * device
+
+
       * discord
+
+
       * awscognito
+
+
       * epicgames
+
+
       * nintendo
+
+
       * stadia
 
-    Unlink user's account from a specific platform. 'justice' platform might have
-    multiple accounts from different namespaces linked.
+
+
+
+
+    Unlink user's account from a specific platform. 'justice' platform might have multiple accounts from different namespaces linked.
+
     platformNamespace need to be specified when the platform ID is 'justice'.
 
-    Unlink user's account from justice platform will enable password token grant
-    and password update.
 
-    If you want to unlink user's account in a game namespace, you have to specify
-    platformNamespace to that game namespace.
+
+    Unlink user's account from justice platform will enable password token grant and password update.
+
+
+
+    If you want to unlink user's account in a game namespace, you have to specify platformNamespace to that game namespace.
+
+
 
     action code : 10121
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]

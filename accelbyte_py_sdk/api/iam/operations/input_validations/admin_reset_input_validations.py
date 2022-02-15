@@ -34,9 +34,7 @@ class AdminResetInputValidations(Operation):
 
     Required permission 'ADMIN:CONFIGURATION' [DELETE]
 
-    This endpoint is used to reset input validation to the default input
-    validation configurations
-
+    This endpoint is used to reset input validation to the default input validation configurations
 
     Required Permission(s):
         - ADMIN:CONFIGURATION [DELETE]

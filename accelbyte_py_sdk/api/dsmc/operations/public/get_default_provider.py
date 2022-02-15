@@ -34,7 +34,6 @@ class GetDefaultProvider(Operation):
 
     This endpoints returns the default provider.
 
-
     Properties:
         url: /dsmcontroller/public/provider/default
 

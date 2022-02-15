@@ -35,7 +35,6 @@ class GetCurrentWeekLeaderboardRankingPublicV1(Operation):
 
     Get rankings in current week leaderboard.
 
-
     Properties:
         url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/week
 

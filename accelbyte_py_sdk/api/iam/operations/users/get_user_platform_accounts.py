@@ -32,18 +32,25 @@ from ...models import AccountcommonUserLinkedPlatform
 class GetUserPlatformAccounts(Operation):
     """Get platform accounts linked to the user (GetUserPlatformAccounts)
 
+
+
+
     Required permission 'NAMESPACE:{namespace}:USER:{userId} [READ]'.
+
+
+
 
     ## Justice Platform Account
 
-    The permission ’ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId}’ [READ] is
-    required in order to read the UserID who linked with the user.
 
+
+
+    The permission âADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId}â [READ] is required in order to read the UserID who linked with the user.
 
     Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [READ]
-
         - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
+
+        - NAMESPACE:{namespace}:USER:{userId} [READ]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms

@@ -33,9 +33,11 @@ from ...models import ResponseError
 class GetAllDeployment(Operation):
     """Get All Deployments (GetAllDeployment)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ] Required
-    scope: social This endpoint get a all deployments in a namespace
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
 
+    Required scope: social
+
+    This endpoint get a all deployments in a namespace
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]

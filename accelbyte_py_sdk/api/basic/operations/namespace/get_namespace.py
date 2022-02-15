@@ -41,7 +41,6 @@ class GetNamespace(Operation):
       *  Action code : 11304
       *  Returns : namespace
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
 

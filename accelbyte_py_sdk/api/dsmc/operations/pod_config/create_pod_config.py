@@ -34,10 +34,11 @@ from ...models import ResponseError
 class CreatePodConfig(Operation):
     """Create pod config (CreatePodConfig)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE] Required
-    scope: social This endpoint create a dedicated servers pod config in a
-    namespace.
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
 
+    Required scope: social
+
+    This endpoint create a dedicated servers pod config in a namespace.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]

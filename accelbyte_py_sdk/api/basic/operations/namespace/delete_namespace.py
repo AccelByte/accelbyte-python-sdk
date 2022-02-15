@@ -41,7 +41,6 @@ class DeleteNamespace(Operation):
       *  Action code : 11307
       *  Returns : deleted namespace
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:NAMESPACE [DELETE]
 

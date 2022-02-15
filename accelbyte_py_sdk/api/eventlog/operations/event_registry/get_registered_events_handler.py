@@ -34,9 +34,7 @@ from ...models import ModelsEventRegistry
 class GetRegisteredEventsHandler(Operation):
     """Get registered events in the Event Registry (GetRegisteredEventsHandler)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [READ]`and scope
-    `analytics`
-
+    Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [READ]`and scope `analytics`
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:EVENT [READ]

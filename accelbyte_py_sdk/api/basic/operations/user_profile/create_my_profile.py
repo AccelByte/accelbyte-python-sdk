@@ -49,7 +49,6 @@ class CreateMyProfile(Operation):
       *  Country : ISO3166-1 alpha-2 two letter, e.g. US
       * Timezone : IANA time zone, e.g. Asia/Shanghai
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:PROFILE [CREATE]
 

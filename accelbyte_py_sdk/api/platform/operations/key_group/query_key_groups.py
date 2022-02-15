@@ -38,7 +38,6 @@ class QueryKeyGroups(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2 (READ)
       *  Returns : slice of key group
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:KEYGROUP [READ]
 

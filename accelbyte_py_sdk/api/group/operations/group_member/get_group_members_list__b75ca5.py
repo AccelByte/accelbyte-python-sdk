@@ -35,10 +35,15 @@ class GetGroupMembersListPublicV1(Operation):
 
     Required valid user authentication
 
+
+
+
     This endpoint is used to get list of group members.
 
-    Action Code: 73410
 
+
+
+    Action Code: 73410
 
     Properties:
         url: /group/v1/public/namespaces/{namespace}/groups/{groupId}/members

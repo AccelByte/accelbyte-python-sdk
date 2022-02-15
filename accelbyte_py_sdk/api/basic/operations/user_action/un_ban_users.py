@@ -39,7 +39,6 @@ class UnBanUsers(Operation):
 
       * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:ACTION" , action=4 (UPDATE)
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ACTION [UPDATE]
 

@@ -33,12 +33,20 @@ from ...models import ResponseError
 class UpdateImage(Operation):
     """Update image (UpdateImage)
 
-    ``` Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
-    Required scope: social This endpoint will update an image name and/or image
-    persistent flag. Sample image: { "namespace":"dewa", "version":"1.0.0",
-    "image":"144436415367.dkr.ecr.us-west-2.amazonaws.com/dewa:1.0.0",
-    "persistent":false } ```
+    ```
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+    Required scope: social
 
+    This endpoint will update an image name and/or image persistent flag.
+
+    Sample image:
+    {
+    "namespace":"dewa",
+    "version":"1.0.0",
+    "image":"144436415367.dkr.ecr.us-west-2.amazonaws.com/dewa:1.0.0",
+    "persistent":false
+    }
+    ```
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]

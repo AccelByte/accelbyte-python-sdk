@@ -35,7 +35,6 @@ class AnonymizeCampaign(Operation):
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
 

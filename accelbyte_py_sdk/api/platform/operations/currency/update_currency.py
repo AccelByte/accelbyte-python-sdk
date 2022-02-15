@@ -41,7 +41,6 @@ class UpdateCurrency(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=4 (UPDATE)
       *  Returns : updated currency
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CURRENCY [UPDATE]
 

@@ -38,17 +38,29 @@ class AdminUpdateMyUserV4(Operation):
 
 
 
-    This Endpoint support update user based on given data. Single request can
-    update single field or multi fields.
+
+
+    This Endpoint support update user based on given data. Single request can update single field or multi fields.
+
+
+
 
     Supported field {country, displayName, languageTag, dateOfBirth, userName}
 
+
+
+
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+
+
 
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
 
-    action code : 10103
 
+
+
+    action code : 10103
 
     Properties:
         url: /iam/v4/admin/users/me

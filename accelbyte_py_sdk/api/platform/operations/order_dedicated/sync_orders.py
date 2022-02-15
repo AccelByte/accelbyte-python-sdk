@@ -32,14 +32,11 @@ from ...models import OrderSyncResult
 class SyncOrders(Operation):
     """Sync orders (syncOrders)
 
-    Sync orders. If response contains nextEvaluatedKey, please use it as query
-    param in the next call to fetch the next batch, a batch has 1000 elements or
-    less.
+    Sync orders. If response contains nextEvaluatedKey, please use it as query param in the next call to fetch the next batch, a batch has 1000 elements or less.
     Other detail info:
 
       * Required permission : resource="ADMIN:ORDER", action=2 (READ)
       *  Returns : sync orders
-
 
     Required Permission(s):
         - ADMIN:ORDER [READ]

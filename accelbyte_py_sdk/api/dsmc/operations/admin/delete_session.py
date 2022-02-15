@@ -32,10 +32,11 @@ from ...models import ResponseError
 class DeleteSession(Operation):
     """Delete a session in a region (DeleteSession)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SESSION [DELETE] Required
-    scope: social This endpoint deletes a specified session and its corresponding
-    match result from DB.
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SESSION [DELETE]
 
+    Required scope: social
+
+    This endpoint deletes a specified session and its corresponding match result from DB.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:SESSION [DELETE]

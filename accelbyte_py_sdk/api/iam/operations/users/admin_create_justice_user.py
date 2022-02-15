@@ -33,10 +33,9 @@ from ...models import RestErrorResponse
 class AdminCreateJusticeUser(Operation):
     """Create Justice User from Publisher User (AdminCreateJusticeUser)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId} [CREATE] Create
-    Justice User from Publisher User information. It will check first if Justice
-    User on target namespace already exist.
+    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId} [CREATE]
 
+    Create Justice User from Publisher User information. It will check first if Justice User on target namespace already exist.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId} [CREATE]

@@ -38,7 +38,6 @@ class QueryWallets(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:WALLET", action=2 (READ)
       *  Returns : paginated wallets info
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:WALLET [READ]
 

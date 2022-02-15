@@ -42,7 +42,6 @@ class ChangeNamespaceStatus(Operation):
       * Action code : 11306
       *  Returns : updated namespace
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:NAMESPACE [UPDATE]
 

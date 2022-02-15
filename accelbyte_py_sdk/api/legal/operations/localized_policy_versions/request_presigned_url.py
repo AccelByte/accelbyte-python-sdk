@@ -34,12 +34,10 @@ from ...models import UploadPolicyVersionAttachmentRequest
 class RequestPresignedURL(Operation):
     """Request Presigned URL for Upload Document (requestPresignedURL)
 
-    Request presigned URL for upload attachment for a particular localized version
-    of base policy.
+    Request presigned URL for upload attachment for a particular localized version of base policy.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=1 (CREATE)
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:*:LEGAL [CREATE]

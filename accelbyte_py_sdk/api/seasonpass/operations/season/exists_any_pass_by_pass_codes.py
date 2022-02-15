@@ -33,14 +33,12 @@ from ...models import Ownership
 class ExistsAnyPassByPassCodes(Operation):
     """Get ownership for any pass codes (existsAnyPassByPassCodes)
 
-    [SERVICE COMMUNICATION ONLY]This API is used to get ownership for any pass
-    codes, season only located in non-publisher namespace.
+    [SERVICE COMMUNICATION ONLY]This API is used to get ownership for any pass codes, season only located in non-publisher namespace.
 
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
       *  Returns : ownership
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]

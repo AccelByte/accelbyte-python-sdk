@@ -30,15 +30,14 @@ from .....core import HttpResponse
 class UserAuthenticationV3(Operation):
     """Authentication API (UserAuthenticationV3)
 
-    This endpoint is being used to authenticate a user account. It validates
-    user's email / username and password. Deactivated or login-banned users are
-    unable to login Redirect URI and Client ID must be specified as a pair and
-    only used to redirect to the specified redirect URI in case the requestId is
-    no longer valid.
+    This endpoint is being used to authenticate a user account.
+    It validates user's email / username and password. Deactivated or login-banned users are unable to login
+    Redirect URI and Client ID must be specified as a pair and only used to redirect to the specified
+    redirect URI in case the requestId is no longer valid.
+
 
 
     action code: 10801
-
 
     Properties:
         url: /iam/v3/authenticate

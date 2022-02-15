@@ -39,7 +39,6 @@ class GetTicketDynamic(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=2 (READ)
       *  Returns : ticket dynamic
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
 

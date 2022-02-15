@@ -36,9 +36,9 @@ from ...models import ResponseError
 class CreateContentDirect(Operation):
     """Upload content to a channel (CreateContentDirect)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].n
-    All request body are required except preview and tags.
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
 
+    All request body are required except preview and tags.
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]

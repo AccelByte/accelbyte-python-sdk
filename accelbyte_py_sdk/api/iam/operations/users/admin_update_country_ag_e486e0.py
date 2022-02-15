@@ -37,7 +37,6 @@ class AdminUpdateCountryAgeRestrictionV3(Operation):
     Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]'
     action code: 10123
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]
 

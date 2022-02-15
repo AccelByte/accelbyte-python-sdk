@@ -41,7 +41,6 @@ class UpdateCampaign(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
       *  Returns : updated campaign
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
 

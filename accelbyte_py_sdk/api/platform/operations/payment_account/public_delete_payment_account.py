@@ -36,7 +36,6 @@ class PublicDeletePaymentAccount(Operation):
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT", action=8 (DELETE)
       *  Returns :
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT [DELETE]
 

@@ -32,7 +32,11 @@ class AuthCodeRequestV3(Operation):
 
     Generate url to request auth code from third party platform
 
+
+
     ## Supported platforms:
+
+
 
       * steamopenid
     This endpoint redirects to steam login page, then redirect back to platform
@@ -47,9 +51,8 @@ class AuthCodeRequestV3(Operation):
     authenticate endpoint after successfully authenticating psn user.
 
       * epicgames
-    This endpoint redirects to Epicgames OAuth login page. then redirect to
-    platform authenticate endpoint after successfully authenticating an Epicgames
-    credential
+    This endpoint redirects to Epicgames OAuth login page. then redirect to platform
+    authenticate endpoint after successfully authenticating an Epicgames credential
 
       * twitch
     This endpoint redirects to twitch login page, then redirect back to platform
@@ -68,7 +71,6 @@ class AuthCodeRequestV3(Operation):
     authenticate endpoint after successfully authenticating google user.
 
     action code : 10702'
-
 
     Properties:
         url: /iam/v3/oauth/platforms/{platformId}/authorize

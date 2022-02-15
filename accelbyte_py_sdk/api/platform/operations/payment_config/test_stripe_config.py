@@ -40,16 +40,16 @@ class TestStripeConfig(Operation):
       * secretKey
       * allowedPaymentMethodTypes
 
+
+
     #### Non-check list:
 
       * publishableKey
       * webhookSecret
 
     Other detail info:
-
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
       *  Returns : test adyen config
-
 
     Required Permission(s):
         - ADMIN:PAYMENT:CONFIG [UPDATE]

@@ -35,13 +35,20 @@ class LeaveGroupPublicV1(Operation):
 
     Required valid user authentication
 
+
+
+
     This endpoint is used to leave from group.
 
-    leave from group. Admin is not allowed to leave the group. This endpoint will
-    also give response if the user is not belong to any group.
+
+
+
+    leave from group. Admin is not allowed to leave the group. This endpoint will also give response if the user is not belong to any group.
+
+
+
 
     Action Code: 73404
-
 
     Properties:
         url: /group/v1/public/namespaces/{namespace}/leave

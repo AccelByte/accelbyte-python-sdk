@@ -33,14 +33,12 @@ from ...models import ListSeasonInfoPagingSlicedResult
 class QuerySeasons(Operation):
     """Query seasons (querySeasons)
 
-    This API is used to query seasons, seasons only located in non-publisher
-    namespace.
+    This API is used to query seasons, seasons only located in non-publisher namespace.
 
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
       *  Returns : the list of season basic info
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]

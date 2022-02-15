@@ -40,7 +40,6 @@ class GetPublishedStoreBackup(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
       *  Returns : store backup info
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:STORE [READ]
 

@@ -32,12 +32,10 @@ from ...models import ResponseError
 class DeleteAdminEmailConfiguration(Operation):
     """Delete admin emails configurations (DeleteAdminEmailConfiguration)
 
-    Delete a list of admin email addresses to stop receiving personal data request
-    notification.
+    Delete a list of admin email addresses to stop receiving personal data request notification.
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [DELETE]`
-    and scope `account`
 
+    Required permission `ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [DELETE]` and scope `account`
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [DELETE]

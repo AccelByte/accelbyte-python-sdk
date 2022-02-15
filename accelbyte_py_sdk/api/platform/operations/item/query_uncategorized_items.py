@@ -41,7 +41,6 @@ class QueryUncategorizedItems(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
       *  Returns : the list of uncategorized items
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
 

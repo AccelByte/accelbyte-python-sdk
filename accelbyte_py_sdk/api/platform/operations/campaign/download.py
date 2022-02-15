@@ -36,7 +36,6 @@ class Download(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)
       *  Returns : codes csv file
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
 

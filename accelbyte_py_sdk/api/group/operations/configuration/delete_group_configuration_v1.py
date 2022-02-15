@@ -34,12 +34,15 @@ class DeleteGroupConfigurationV1(Operation):
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [DELETE]'
 
-    This endpoint is used to delete group configuration. This Configuration is
-    used to be the main rule of the service. Each namespace will have its own
-    configuration
+
+
+
+    This endpoint is used to delete group configuration. This Configuration is used to be the main rule of the service. Each namespace will have its own configuration
+
+
+
 
     Action Code: 73101
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [DELETE]

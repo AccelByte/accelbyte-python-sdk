@@ -38,7 +38,6 @@ class RevokeUserEntitlements(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
       *  Returns : revoke entitlements count
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
 

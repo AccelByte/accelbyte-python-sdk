@@ -35,7 +35,6 @@ class AdminSearchContent(Operation):
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [CREATE]
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [CREATE]
 

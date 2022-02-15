@@ -35,18 +35,30 @@ class InviteGroupPublicV1(Operation):
 
     Required valid user authentication
 
+
+
+
     Required Member Role Permission: "GROUP:INVITE [CREATE]"
+
+
+
 
     This endpoint is used to invite specific user to the group.
 
-    invite specific user to the group. If specific user is already have the join
-    request to the group, this endpoint will notify if this user already have join
-    request that needs to be accepted / rejected
+
+
+
+    invite specific user to the group. If specific user is already have the join request to the group, this endpoint will notify if this user already have join request that needs to be accepted / rejected
+
+
+
 
     Invited user will receive notification through lobby.
 
-    Action Code: 73406
 
+
+
+    Action Code: 73406
 
     Required Permission(s):
         - GROUP:INVITE [CREATE]

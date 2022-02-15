@@ -33,9 +33,11 @@ from ...models import ResponseError
 class ExportConfigV1(Operation):
     """export DSM Controller configuration for a namespace (exportConfigV1)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ] Required
-    scope: social This endpoint export a dedicated servers config in a namespace.
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
 
+    Required scope: social
+
+    This endpoint export a dedicated servers config in a namespace.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]

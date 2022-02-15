@@ -33,8 +33,10 @@ class AdminDeleteGameRecordHandlerV1(Operation):
     """Purge all records under the given key (adminDeleteGameRecordHandlerV1)
 
     Required permission: ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]
-    Required scope: social This endpoints delete game record in namespace-level
 
+    Required scope: social
+
+    This endpoints delete game record in namespace-level
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]

@@ -39,7 +39,6 @@ class GetRewardByCode(Operation):
       * Required permission : resource="NAMESPACE:{namespace}:REWARD", action=2 (READ)
       *  Returns : reward instance
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:REWARD [READ]
 

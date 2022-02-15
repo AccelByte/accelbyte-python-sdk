@@ -40,7 +40,6 @@ class GetReward(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
       *  Returns : reward data
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
 

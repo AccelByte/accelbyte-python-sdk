@@ -40,7 +40,6 @@ class GetCategory(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
       *  Returns : category data
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
 

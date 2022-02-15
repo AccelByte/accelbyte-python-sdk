@@ -34,8 +34,10 @@ class DeleteSession(Operation):
     """Delete specified session by session ID (DeleteSession)
 
     Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [DELETE]
-    Required scope: social Delete the session by session ID
 
+    Required scope: social
+
+    Delete the session by session ID
 
     Required Permission(s):
         - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [DELETE]

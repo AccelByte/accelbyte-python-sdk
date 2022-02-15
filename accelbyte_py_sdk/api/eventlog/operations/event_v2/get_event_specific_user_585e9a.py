@@ -32,9 +32,7 @@ from ...models import ModelsEventResponseV2
 class GetEventSpecificUserV2Handler(Operation):
     """Get events from a specific user (GetEventSpecificUserV2Handler)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [READ]`and scope
-    `analytics`
-
+    Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [READ]`and scope `analytics`
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:EVENT [READ]

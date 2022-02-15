@@ -36,18 +36,27 @@ class UpdateGroupPredefinedRulePublicV1(Operation):
 
     Required valid user authentication
 
+
+
+
     Required Member Role Permission: "GROUP [UPDATE]"
 
-    Update predefined group rule. This endpoint will check the group ID of the
-    user based on the access token and compare it with the group ID in path
-    parameter. It will also check the member role of the user based on the access
-    token
 
-    If the rule action is not defined in the group, it will be added immediately
-    to the predefined group rule
+
+
+    Update predefined group rule. This endpoint will check the group ID of the user based on the access token
+    and compare it with the group ID in path parameter. It will also check the member role of the user based on
+    the access token
+
+
+
+
+    If the rule action is not defined in the group, it will be added immediately to the predefined group rule
+
+
+
 
     Action Code: 73310
-
 
     Required Permission(s):
         - GROUP [UPDATE]

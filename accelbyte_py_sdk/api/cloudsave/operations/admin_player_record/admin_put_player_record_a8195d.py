@@ -33,12 +33,13 @@ from ...models import ModelsResponseError
 class AdminPutPlayerRecordHandlerV1(Operation):
     """Create or replace player record (adminPutPlayerRecordHandlerV1)
 
-    Required permission:
-    ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE] Required
-    scope: social Save a record (arbitrary JSON data) in user-level. If a record
-    already exist with given key, this endpoint will replace the record, else will
-    create new Record. Record saved will be a private record.
+    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]
 
+    Required scope: social
+
+    Save a record (arbitrary JSON data) in user-level.
+    If a record already exist with given key, this endpoint will replace the record, else will create new Record.
+    Record saved will be a private record.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]

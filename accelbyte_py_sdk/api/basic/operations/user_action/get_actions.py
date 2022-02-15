@@ -38,7 +38,6 @@ class GetActions(Operation):
 
       * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:ACTION" , action=2 (READ)
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ACTION [READ]
 

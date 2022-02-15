@@ -32,12 +32,10 @@ from ...models import LegalReadinessStatusResponse
 class CheckReadiness(Operation):
     """Check Legal Data Readiness (checkReadiness)
 
-    Readiness status defined as at least one legal basePolicy is present and
-    having active basePolicy.
+    Readiness status defined as at least one legal basePolicy is present and having active basePolicy.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:LEGAL", action=2 (READ)
-
 
     Required Permission(s):
         - NAMESPACE:{namespace}:LEGAL [READ]

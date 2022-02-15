@@ -34,8 +34,8 @@ class GetTopicByNamespace(Operation):
     """get topic by namespace (getTopicByNamespace)
 
     Required permission : `NAMESPACE:{namespace}:TOPIC [READ]` with scope `social`
-    get topic by namespace.
 
+    get topic by namespace.
 
     Required Permission(s):
         - NAMESPACE:{namespace}:TOPIC [READ]

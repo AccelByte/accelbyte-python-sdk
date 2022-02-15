@@ -34,10 +34,13 @@ from ...models import ResponseError
 class StoreMatchResults(Operation):
     """Store match result (StoreMatchResults)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHRESULT [CREATE] Required
-    Scope: social Process match result into final attribute value and stores it to
-    player attribute Will return final attribute value
+    Required Permission: NAMESPACE:{namespace}:MATCHRESULT [CREATE]
 
+    Required Scope: social
+
+    Process match result into final attribute value and stores it to player attribute
+
+    Will return final attribute value
 
     Required Permission(s):
         - NAMESPACE:{namespace}:MATCHRESULT [CREATE]

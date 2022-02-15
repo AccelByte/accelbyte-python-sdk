@@ -32,15 +32,11 @@ from ...models import RecurringChargeResult
 class RecurringChargeSubscription(Operation):
     """Recurring charge subscription (recurringChargeSubscription)
 
-    [TEST FACILITY ONLY] Forbidden in live environment. Recurring charge
-    subscription, it will trigger recurring charge if the USER subscription status
-    is ACTIVE, nextBillingDate is before now and no fail recurring charge within
-    X(default 12) hours.
+    [TEST FACILITY ONLY] Forbidden in live environment. Recurring charge subscription, it will trigger recurring charge if the USER subscription status is ACTIVE, nextBillingDate is before now and no fail recurring charge within X(default 12) hours.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION", action=4 (UPDATE)
       *  Returns : recurring charge result
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION [UPDATE]

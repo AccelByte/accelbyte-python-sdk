@@ -35,7 +35,6 @@ class RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3(Operation):
 
     This is the Public API to Get All Active 3rd Platform Credential.
 
-
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/platforms/clients/active
 

@@ -33,10 +33,12 @@ from ...models import ResponseError
 class ExportConfig(Operation):
     """Export lobby config to a json file. (ExportConfig)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ] Required
-    Scope: social Export lobby configuration to a json file. The file can then be
-    imported from the /import endpoint.
 
+    Required permission ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]
+
+    Required Scope: social
+
+    Export lobby configuration to a json file. The file can then be imported from the /import endpoint.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]

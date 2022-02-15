@@ -41,7 +41,6 @@ class ReorderTier(Operation):
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
 

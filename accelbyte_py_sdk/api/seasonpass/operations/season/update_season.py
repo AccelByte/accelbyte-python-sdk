@@ -42,7 +42,6 @@ class UpdateSeason(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
       *  Returns : updated season
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
 

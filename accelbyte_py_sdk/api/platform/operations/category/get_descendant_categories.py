@@ -39,7 +39,6 @@ class GetDescendantCategories(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
       *  Returns : list of descendant categories data
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
 

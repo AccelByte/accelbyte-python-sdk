@@ -33,21 +33,32 @@ from ...models import RestErrorResponse
 class AdminUpdateUserStatusV3(Operation):
     """Update user status (AdminUpdateUserStatusV3)
 
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId}
-    [UPDATE]'
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
 
-    This endpoint disable or enable user account. Set the enable status on the
-    request body to true to enable user account or set to false to disable it.
+
+    This endpoint disable or enable user account. Set the enable status on the request body to true to enable user account or set to false to disable it.
+
+
+
 
     Disable user for Account Disable purpose fill the reason with:
 
+
+
+
+
+
       * AdminDeactivateAccount : if your disable account request comes from admin
+
+
+
+
 
     Enable user ignore field 'reason' in the request body.
 
 
-    action code : 10143
 
+    action code : 10143
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]

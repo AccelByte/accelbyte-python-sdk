@@ -30,12 +30,10 @@ from .....core import HttpResponse
 class AnonymizeEntitlement(Operation):
     """anonymize entitlement (anonymizeEntitlement)
 
-    Anonymize entitlement. At current it will only anonymize entitlement,
-    entitlement history.
+    Anonymize entitlement. At current it will only anonymize entitlement, entitlement history.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]

@@ -37,7 +37,6 @@ class AdminUpdateRoleV3(Operation):
     Required permission 'ADMIN:ROLE [UPDATE]'
     action code: 10402
 
-
     Required Permission(s):
         - ADMIN:ROLE [UPDATE]
 

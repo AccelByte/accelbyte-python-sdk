@@ -38,7 +38,6 @@ class PublicListUserWalletTransactions(Operation):
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
       *  Returns : wallet transaction info
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]
 

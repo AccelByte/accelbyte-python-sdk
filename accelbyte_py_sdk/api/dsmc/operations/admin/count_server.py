@@ -33,10 +33,11 @@ from ...models import ResponseError
 class CountServer(Operation):
     """Count all managed servers (CountServer)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ] Required
-    scope: social This endpoint counts all of dedicated servers in a namespace
-    managed by this service.
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
 
+    Required scope: social
+
+    This endpoint counts all of dedicated servers in a namespace managed by this service.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]

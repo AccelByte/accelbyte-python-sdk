@@ -34,9 +34,9 @@ from ...models import RestErrorResponse
 class AdminUpdateUserRoleV4(Operation):
     """Admin Update User's Role V4 (AdminUpdateUserRoleV4)
 
-    This endpoint requires ADMIN:NAMESPACE:{namespace}:ROLE:USER:* [UPDATE]
-    permission. User's roles will be replaced with roles from request body.
+    This endpoint requires ADMIN:NAMESPACE:{namespace}:ROLE:USER:* [UPDATE] permission.
 
+    User's roles will be replaced with roles from request body.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ROLE:USER:* [UPDATE]

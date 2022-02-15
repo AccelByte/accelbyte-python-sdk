@@ -35,7 +35,6 @@ class PublicGetMessages(Operation):
 
     get the list of messages.
 
-
     Properties:
         url: /dsmcontroller/v1/messages
 

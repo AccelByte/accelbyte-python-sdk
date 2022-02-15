@@ -38,7 +38,6 @@ class ExportStore(Operation):
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:STORE [READ]
 

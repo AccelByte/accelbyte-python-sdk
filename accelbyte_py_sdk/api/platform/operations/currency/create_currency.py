@@ -41,7 +41,6 @@ class CreateCurrency(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=1 (CREATE)
       *  Returns : created currency
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CURRENCY [CREATE]
 

@@ -36,11 +36,15 @@ class UpdateThirdPartyLoginPlatformCredentialV3(Operation):
 
     This is the API to Add 3rd Platform Credential.
 
-    It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE]
-    resource.
+
+
+
+    It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE] resource.
+
+
+
 
     The secret for apple is base64 encoded private key.
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE]

@@ -33,26 +33,39 @@ from ...models import TelemetryBody
 class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
     """Protected Save Events (protected_save_events_game_telemetry_v1_protected_events_post)
 
-    This endpoint requires valid JWT token. This endpoint does not require
-    permission. This endpoint send events into designated streaming pipeline and
-    each request can contain single or multiple events.
+    This endpoint requires valid JWT token.
+    This endpoint does not require permission.
 
-    Format of the event: - **EventNamespace (required)**: namespace of the
-    relevant game with domain name format.
+    This endpoint send events into designated streaming pipeline and each request can contain single or multiple events.
+
+
+    Format of the event:
+
+    - **EventNamespace (required)**: namespace of the relevant game with domain name format.
+
 
     Only accept input with valid characters. Allowed characters: Aa-Zz0-9_.-
+
+
+
 
     Example: io.accelbyte.justice.dev.samplegame
 
+
+
     - **EventName (required)**: name of the event.
+
 
     Only accept input with valid characters. Allowed characters: Aa-Zz0-9_.-
 
+
+
+
     Example: player_killed, mission_accomplished
 
-    - **Payload (required)**: an arbitrary json with the payload of the said
-    event
 
+
+    - **Payload (required)**: an arbitrary json with the payload of the said event
 
     Properties:
         url: /game-telemetry/v1/protected/events

@@ -39,7 +39,6 @@ class GetUserSubscription(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
       *  Returns : subscription
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
 

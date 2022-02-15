@@ -33,9 +33,11 @@ from ...models import ResponseError
 class ExportImages(Operation):
     """export DSM Controller images for a namespace (ExportImages)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ] Required
-    scope: social This endpoint export a dedicated servers images in a namespace.
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
 
+    Required scope: social
+
+    This endpoint export a dedicated servers images in a namespace.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]

@@ -32,9 +32,7 @@ from ...models import ResponseError
 class AdminDeleteAllUserGroup(Operation):
     """Delete all user group (AdminDeleteAllUserGroup)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP
-    [DELETE]
-
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]

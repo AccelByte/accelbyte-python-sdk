@@ -32,9 +32,7 @@ from ...models import ResponseError
 class AdminDeleteContentScreenshot(Operation):
     """Delete screenshots content (AdminDeleteContentScreenshot)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT
-    [DELETE].
-
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]

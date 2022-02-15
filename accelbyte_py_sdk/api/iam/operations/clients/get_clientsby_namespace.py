@@ -34,7 +34,6 @@ class GetClientsbyNamespace(Operation):
 
     Required permission 'NAMESPACE:{namespace}:CLIENT [READ]'
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:CLIENT [READ]
 

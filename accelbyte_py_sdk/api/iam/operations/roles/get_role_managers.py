@@ -34,8 +34,10 @@ class GetRoleManagers(Operation):
 
     Required permission 'ROLE [READ]'
 
-    Role can only be assigned to other users by the role's manager.
 
+
+
+    Role can only be assigned to other users by the role's manager.
 
     Required Permission(s):
         - ROLE [READ]

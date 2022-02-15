@@ -37,7 +37,6 @@ class PublicGetLanguages(Operation):
 
       * Returns : language list
 
-
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/misc/languages
 

@@ -32,9 +32,7 @@ from ...models import ModelUserPasswordUpdateRequest
 class AdminResetPasswordV2(Operation):
     """Update User Password (AdminResetPasswordV2)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PASSWORD:USER:{userId}
-    [UPDATE]'
-
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]'
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]

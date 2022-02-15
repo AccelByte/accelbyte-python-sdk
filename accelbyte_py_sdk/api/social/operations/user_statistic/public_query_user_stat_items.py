@@ -38,7 +38,6 @@ class PublicQueryUserStatItems(Operation):
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
       *  Returns : stat items
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
 

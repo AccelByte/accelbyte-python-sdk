@@ -35,8 +35,10 @@ class BulkGetSessions(Operation):
     """Bulk get sessions (BulkGetSessions)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-    Required Scope: social Bulk get sessions.
 
+    Required Scope: social
+
+    Bulk get sessions.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]

@@ -39,7 +39,6 @@ class ReportUser(Operation):
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ACTION", action=1 (CREATE)
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ACTION [CREATE]
 

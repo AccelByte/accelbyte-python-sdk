@@ -35,7 +35,6 @@ class PublicGetMessages(Operation):
 
     get the list of messages.
 
-
     Properties:
         url: /lobby/v1/messages
 

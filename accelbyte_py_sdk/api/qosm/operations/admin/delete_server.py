@@ -32,9 +32,12 @@ from ...models import ResponseError
 class DeleteServer(Operation):
     """Delete a QoS service record (DeleteServer)
 
-    ``` Required permission: ADMIN:QOS:SERVER [DELETE] Required scope: social This
-    endpoint delete a registered QoS service record. ```
+    ```
+    Required permission: ADMIN:QOS:SERVER [DELETE]
+    Required scope: social
 
+    This endpoint delete a registered QoS service record.
+    ```
 
     Required Permission(s):
         - ADMIN:QOS:SERVER [DELETE]

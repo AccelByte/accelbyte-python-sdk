@@ -33,10 +33,11 @@ from ...models import ResponseError
 class ListSession(Operation):
     """List all managed sessions in a region (ListSession)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SESSION [READ] Required
-    scope: social This endpoint lists all of sessions in a namespace managed by
-    this service.
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SESSION [READ]
 
+    Required scope: social
+
+    This endpoint lists all of sessions in a namespace managed by this service.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:SESSION [READ]

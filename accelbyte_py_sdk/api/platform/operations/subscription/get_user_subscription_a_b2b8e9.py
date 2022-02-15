@@ -38,7 +38,6 @@ class GetUserSubscriptionActivities(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
       *  Returns : paginated subscription activity
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
 

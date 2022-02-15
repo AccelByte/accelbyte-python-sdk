@@ -33,10 +33,9 @@ from ...models import RestErrorResponse
 class PublicGetUserPlatformAccountsV3(Operation):
     """Get platform accounts linked to the user (PublicGetUserPlatformAccountsV3)
 
-    This endpoint retrieves platform accounts linked to user. Required valid user
-    authorization.
-    action code: 10128
+    This endpoint retrieves platform accounts linked to user. Required valid user authorization.
 
+    action code: 10128
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms

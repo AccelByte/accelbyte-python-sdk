@@ -40,7 +40,6 @@ class PublicGetChildCategories(Operation):
       *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store category)
       *  Returns : list of child categories data
 
-
     Properties:
         url: /platform/public/namespaces/{namespace}/categories/{categoryPath}/children
 

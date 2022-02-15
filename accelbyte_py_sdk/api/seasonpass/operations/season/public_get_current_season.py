@@ -33,13 +33,11 @@ from ...models import LocalizedSeasonInfo
 class PublicGetCurrentSeason(Operation):
     """Get current published season (publicGetCurrentSeason)
 
-    This API is used to get current published season, season only located in non-
-    publisher namespace.
+    This API is used to get current published season, season only located in non-publisher namespace.
 
     Other detail info:
 
       * Returns : localized season data
-
 
     Properties:
         url: /seasonpass/public/namespaces/{namespace}/seasons/current

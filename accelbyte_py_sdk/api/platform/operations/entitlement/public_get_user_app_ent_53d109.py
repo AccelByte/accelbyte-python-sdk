@@ -38,7 +38,6 @@ class PublicGetUserAppEntitlementOwnershipByAppId(Operation):
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
 

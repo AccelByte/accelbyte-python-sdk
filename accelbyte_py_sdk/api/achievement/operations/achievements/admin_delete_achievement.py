@@ -32,9 +32,8 @@ from ...models import ResponseError
 class AdminDeleteAchievement(Operation):
     """Delete an achievement (AdminDeleteAchievement)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [DELETE]` and
-    scope `social`
-
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [DELETE]` and scope `social`
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [DELETE]

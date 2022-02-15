@@ -38,7 +38,6 @@ class CountOfPurchasedItem(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
       *  Returns : Item purchased count
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
 

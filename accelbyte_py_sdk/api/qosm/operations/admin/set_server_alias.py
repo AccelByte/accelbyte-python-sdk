@@ -33,9 +33,12 @@ from ...models import ResponseError
 class SetServerAlias(Operation):
     """Modify a QoS service's region alias (SetServerAlias)
 
-    ``` Required permission: ADMIN:QOS:SERVER [UDPATE] Required scope: social This
-    endpoint modifies a registered QoS service's region alias. ```
+    ```
+    Required permission: ADMIN:QOS:SERVER [UDPATE]
+    Required scope: social
 
+    This endpoint modifies a registered QoS service's region alias.
+    ```
 
     Required Permission(s):
         - ADMIN:QOS:SERVER []

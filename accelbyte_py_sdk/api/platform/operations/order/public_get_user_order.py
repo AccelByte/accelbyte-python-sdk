@@ -39,7 +39,6 @@ class PublicGetUserOrder(Operation):
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
       *  Returns : get order
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
 

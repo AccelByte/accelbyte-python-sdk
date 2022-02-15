@@ -35,10 +35,15 @@ class GetGroupMembersListAdminV1(Operation):
 
     Required permission ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER [READ]
 
+
+
+
     This endpoint is used to get list of group members.
 
-    Action Code: 73410
 
+
+
+    Action Code: 73410
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER [READ]

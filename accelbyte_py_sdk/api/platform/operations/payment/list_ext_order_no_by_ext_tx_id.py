@@ -36,7 +36,6 @@ class ListExtOrderNoByExtTxId(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
       *  Returns : payment orders
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PAYMENT [READ]
 

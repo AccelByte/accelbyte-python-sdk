@@ -34,8 +34,10 @@ class GetRoleAdminStatus(Operation):
 
     Required permission 'ROLE [READ]'
 
-    Admin roles has its members listed in the role.
 
+
+
+    Admin roles has its members listed in the role.
 
     Required Permission(s):
         - ROLE [READ]

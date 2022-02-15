@@ -35,8 +35,10 @@ class AddPlayerToSession(Operation):
     """Add player to game session (AddPlayerToSession)
 
     Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]
-    Required scope: social Add player to game session
 
+    Required scope: social
+
+    Add player to game session
 
     Required Permission(s):
         - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]

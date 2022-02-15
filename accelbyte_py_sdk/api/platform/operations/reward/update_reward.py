@@ -40,7 +40,6 @@ class UpdateReward(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=4 (UPDATE)
       *  Returns : reward instance
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:REWARD [UPDATE]
 

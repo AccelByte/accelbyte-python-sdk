@@ -33,13 +33,10 @@ from ...models import RestErrorResponse
 class AdminSaveUserRoleV3(Operation):
     """Admin Save User Role V3 (AdminSaveUserRoleV3)
 
-    This endpoint requires ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
-    permission. User's roles will be updated with given roles (replacing current
-    user's role). Request body need to specify allowed namespace for given role to
-    support new role restriction. Skipped the check whether the user performing
-    the request is a role manager / assigner since there is a plan to discard the
-    role manager / assigner.
+    This endpoint requires ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE] permission.
 
+    User's roles will be updated with given roles (replacing current user's role). Request body need to specify allowed namespace for given role to support new role restriction.
+    Skipped the check whether the user performing the request is a role manager / assigner since there is a plan to discard the role manager / assigner.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]

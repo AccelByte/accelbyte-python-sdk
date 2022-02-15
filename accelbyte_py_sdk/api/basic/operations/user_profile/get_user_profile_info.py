@@ -41,7 +41,6 @@ class GetUserProfileInfo(Operation):
       *  Returns : user profile
       *  Action code : 11403
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
 

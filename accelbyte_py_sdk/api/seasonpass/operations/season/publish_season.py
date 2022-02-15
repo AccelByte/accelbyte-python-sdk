@@ -33,14 +33,12 @@ from ...models import SeasonInfo
 class PublishSeason(Operation):
     """Publish a season (publishSeason)
 
-    This API is used to publish a draft season, only one published season allowed
-    at same time in a namespace.
+    This API is used to publish a draft season, only one published season allowed at same time in a namespace.
 
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
       *  Returns : published season
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]

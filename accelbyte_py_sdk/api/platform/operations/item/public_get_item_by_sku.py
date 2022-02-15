@@ -41,7 +41,6 @@ class PublicGetItemBySku(Operation):
       *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store item)
       *  Returns : the item with sku
 
-
     Properties:
         url: /platform/public/namespaces/{namespace}/items/bySku
 

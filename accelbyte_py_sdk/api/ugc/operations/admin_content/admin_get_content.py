@@ -35,7 +35,6 @@ class AdminGetContent(Operation):
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
 

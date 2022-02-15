@@ -34,12 +34,12 @@ from ...models import RestErrorResponse
 class AdminUpdateUserBanV3(Operation):
     """Enable or disable ban for a single user (AdminUpdateUserBanV3)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]
-    Set ban status for a single user for a specific ban. Retrieve user ban and
-    choose the ban ID. Set the form parameter to true/false to enable or disable
-    the ban.
+    Required permission ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId}
+    [UPDATE]
+    Set ban status for a single user for a specific ban. Retrieve
+    user ban and choose the ban ID. Set the form parameter to true/false to enable
+    or disable the ban.
     action code : 10142'
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]

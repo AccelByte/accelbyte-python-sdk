@@ -40,7 +40,6 @@ class PublicBulkCreateUserStatItems(Operation):
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
       *  Returns : bulk created result
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:STATITEM [CREATE]
 

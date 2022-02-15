@@ -36,10 +36,15 @@ class AdminBanUserV3(Operation):
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]'.
 
+
+
+
     Bans a user with specific type of ban. Ban types and reason can be queried.
 
-    action code : 10141
 
+
+
+    action code : 10141
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]

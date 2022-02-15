@@ -33,10 +33,13 @@ from ...models import ResponseError
 class ImportConfigV1(Operation):
     """import config for a namespace (importConfigV1)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE] Required
-    scope: social This endpoint import a dedicated servers config in a namespace.
-    If there is an existing configuration, the configuration would be replaced.
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
 
+    Required scope: social
+
+    This endpoint import a dedicated servers config in a namespace.
+
+    If there is an existing configuration, the configuration would be replaced.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]

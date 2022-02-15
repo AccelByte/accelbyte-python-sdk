@@ -41,7 +41,6 @@ class CreateReward(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=1 (CREATE)
       *  Returns : created reward data
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:REWARD [CREATE]
 

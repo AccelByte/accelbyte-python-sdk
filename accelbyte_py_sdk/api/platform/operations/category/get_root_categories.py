@@ -39,7 +39,6 @@ class GetRootCategories(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
       *  Returns : root category data
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
 

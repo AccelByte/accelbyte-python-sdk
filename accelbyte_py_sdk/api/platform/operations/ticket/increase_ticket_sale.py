@@ -41,7 +41,6 @@ class IncreaseTicketSale(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=4 (UPDATE)
       *  Returns : Ticket sale increment result
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:TICKET [UPDATE]
 

@@ -35,8 +35,10 @@ class AdminAddClientPermissionsV3(Operation):
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT' [UPDATE]'
 
-    action code: 10303
 
+
+
+    action code: 10303
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CLIENT [UPDATE]

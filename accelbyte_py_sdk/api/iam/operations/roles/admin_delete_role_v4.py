@@ -32,9 +32,11 @@ from ...models import RestapiErrorResponse
 class AdminDeleteRoleV4(Operation):
     """Delete Role (AdminDeleteRoleV4)
 
-    Required permission ADMIN:ROLE [DELETE] Removes role ID from user's Roles and
-    NamespaceRoles before deleting the role. action code: 10403
+    Required permission ADMIN:ROLE [DELETE]
 
+    Removes role ID from user's Roles and NamespaceRoles before deleting the role.
+
+    action code: 10403
 
     Required Permission(s):
         - ADMIN:ROLE [DELETE]

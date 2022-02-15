@@ -32,9 +32,11 @@ from ...models import ModelsResponseError
 class PublicDeletePlayerPublicRecordHandlerV1(Operation):
     """Delete player public record based on its key (publicDeletePlayerPublicRecordHandlerV1)
 
-    Required scope: social Required valid user authorization Delete player public
-    record (arbitrary JSON data) in user-level with given key.
+    Required scope: social
 
+    Required valid user authorization
+
+    Delete player public record (arbitrary JSON data) in user-level with given key.
 
     Required Scope(s):
         - social

@@ -38,7 +38,6 @@ class QuerySubscriptions(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION", action=2 (READ)
       *  Returns : paginated subscriptions
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION [READ]
 

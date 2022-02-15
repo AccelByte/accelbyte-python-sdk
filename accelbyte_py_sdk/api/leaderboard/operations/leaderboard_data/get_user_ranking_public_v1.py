@@ -35,7 +35,6 @@ class GetUserRankingPublicV1(Operation):
 
     Get user ranking in leaderboard
 
-
     Properties:
         url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}
 

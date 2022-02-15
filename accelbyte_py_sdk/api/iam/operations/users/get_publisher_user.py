@@ -35,8 +35,11 @@ class GetPublisherUser(Operation):
 
     Required permissions 'NAMESPACE:{namespace}:PUBLISHER:USER:{userId} [READ].
 
-    Restriction: Path Parameter namespace can be provided only with game namespace
 
+
+
+    Restriction:
+    Path Parameter namespace can be provided only with game namespace
 
     Required Permission(s):
         - NAMESPACE:{namespace}:PUBLISHER:USER:{userId} [READ]

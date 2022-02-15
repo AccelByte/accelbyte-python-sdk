@@ -34,8 +34,10 @@ class GetAllPartyInAllChannel(Operation):
     """Get all party in all channels (GetAllPartyInAllChannel)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-    Required Scope: social Get all parties queueing in all channels.
 
+    Required Scope: social
+
+    Get all parties queueing in all channels.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]

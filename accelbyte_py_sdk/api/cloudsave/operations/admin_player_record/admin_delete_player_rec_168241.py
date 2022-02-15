@@ -32,11 +32,11 @@ from ...models import ModelsResponseError
 class AdminDeletePlayerRecordHandlerV1(Operation):
     """Purge player record based on its key (adminDeletePlayerRecordHandlerV1)
 
-    Required permission:
-    ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE] Required
-    scope: social Delete a record (arbitrary JSON data) in user-level with given
-    key. It will delete the record whether it's private or public record.
+    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]
 
+    Required scope: social
+
+    Delete a record (arbitrary JSON data) in user-level with given key. It will delete the record whether it's private or public record.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]

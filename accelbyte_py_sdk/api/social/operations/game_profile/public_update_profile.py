@@ -41,7 +41,6 @@ class PublicUpdateProfile(Operation):
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=4 (UPDATE)
       *  Returns : updated game profile
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [UPDATE]
 

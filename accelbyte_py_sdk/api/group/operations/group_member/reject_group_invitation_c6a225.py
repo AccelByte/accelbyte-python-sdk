@@ -35,13 +35,20 @@ class RejectGroupInvitationPublicV1(Operation):
 
     Required valid user authentication
 
+
+
+
     This endpoint is used to reject group invitation.
 
-    Reject group invitation. If specific user is not invited in the specific group
-    ID, it will show the the error to show if the user is not invited yet.
+
+
+
+    Reject group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
+
+
+
 
     Action Code: 73402
-
 
     Properties:
         url: /group/v1/public/namespaces/{namespace}/groups/{groupId}/invite/reject

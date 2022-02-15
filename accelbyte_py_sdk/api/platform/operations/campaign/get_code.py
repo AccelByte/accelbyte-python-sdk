@@ -33,13 +33,11 @@ from ...models import ErrorEntity
 class GetCode(Operation):
     """Get code info (getCode)
 
-    Get campaign code, it will check code whether available to redeem if
-    redeemable true.
+    Get campaign code, it will check code whether available to redeem if redeemable true.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ) (READ)
       *  Returns : code info
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]

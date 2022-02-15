@@ -32,12 +32,9 @@ from ...models import ModelSendVerificationCodeRequest
 class PublicForgotPasswordV2(Operation):
     """Request Password Reset Code (PublicForgotPasswordV2)
 
-    Special note for publisher-game scenario: Game Client should provide game
-    namespace path parameter and Publisher Client should provide publisher
-    namespace path parameter.
+    Special note for publisher-game scenario: Game Client should provide game namespace path parameter and Publisher Client should provide publisher namespace path parameter.
 
     The password reset code will be sent to the publisher account's email address.
-
 
     Properties:
         url: /iam/v2/public/namespaces/{namespace}/users/forgotPassword

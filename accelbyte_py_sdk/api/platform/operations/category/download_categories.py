@@ -41,7 +41,6 @@ class DownloadCategories(Operation):
       *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store content)
       *  Returns : structured categories
 
-
     Properties:
         url: /platform/public/namespaces/{namespace}/categories/download
 

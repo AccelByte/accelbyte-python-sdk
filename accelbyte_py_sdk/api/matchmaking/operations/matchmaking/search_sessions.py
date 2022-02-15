@@ -35,8 +35,10 @@ class SearchSessions(Operation):
     """Search sessions (SearchSessions)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-    Required Scope: social Search sessions.
 
+    Required Scope: social
+
+    Search sessions.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]

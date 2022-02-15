@@ -35,7 +35,6 @@ class AdminGetType(Operation):
 
     Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
 

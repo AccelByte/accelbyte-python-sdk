@@ -38,7 +38,6 @@ class QueryRedeemHistory(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)
       *  Returns : slice of redeem history
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
 

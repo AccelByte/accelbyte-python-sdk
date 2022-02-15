@@ -32,9 +32,11 @@ from ...models import ResponseError
 class ClearCache(Operation):
     """Clear config cache (ClearCache)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE] Required
-    scope: social This endpoint clears config cache in a namespace
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
 
+    Required scope: social
+
+    This endpoint clears config cache in a namespace
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]

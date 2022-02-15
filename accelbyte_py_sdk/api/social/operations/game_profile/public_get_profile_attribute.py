@@ -39,7 +39,6 @@ class PublicGetProfileAttribute(Operation):
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=2 (READ)
       *  Returns : attribute info
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [READ]
 

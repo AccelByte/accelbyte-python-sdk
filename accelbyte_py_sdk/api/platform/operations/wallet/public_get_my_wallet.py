@@ -41,7 +41,6 @@ class PublicGetMyWallet(Operation):
         * can be filled with publisher namespace in order to get publisher user wallet
         * can be filled with game namespace in order to get game user wallet
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:WALLET [READ]
 

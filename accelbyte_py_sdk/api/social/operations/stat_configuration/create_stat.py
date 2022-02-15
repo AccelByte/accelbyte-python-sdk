@@ -40,7 +40,6 @@ class CreateStat(Operation):
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=1 (CREATE)
       *  Returns : created stat template
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:STAT [CREATE]
 

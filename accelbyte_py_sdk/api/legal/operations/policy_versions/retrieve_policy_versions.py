@@ -34,12 +34,10 @@ class RetrievePolicyVersions(Operation):
     """Bulk Retrieve Version of Base Policy (retrievePolicyVersions)
 
     [TODO] Retrieve one or more legal policies with its versions.
-    If the basePolicyId not supplied, then retrieve only all latest policies
-    version with localeId matched.
+    If the basePolicyId not supplied, then retrieve only all latest policies version with localeId matched.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:*:LEGAL [READ]

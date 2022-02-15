@@ -34,10 +34,11 @@ from ...models import ResponseError
 class UpdateDeployment(Operation):
     """Update deployment (UpdateDeployment)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE] Required
-    scope: social This endpoint update a dedicated servers deployment in a
-    namespace.
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
 
+    Required scope: social
+
+    This endpoint update a dedicated servers deployment in a namespace.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]

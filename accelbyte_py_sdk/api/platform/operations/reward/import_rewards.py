@@ -32,13 +32,11 @@ from ...models import ErrorEntity
 class ImportRewards(Operation):
     """Import reward configurations (importRewards)
 
-    Import reward configurations for a given namespace from file. At current, only
-    JSON file is supported.
+    Import reward configurations for a given namespace from file. At current, only JSON file is supported.
 
     Other detail info:
 
       *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=1 (CREATE)
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:REWARD [CREATE]

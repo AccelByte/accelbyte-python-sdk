@@ -39,7 +39,6 @@ class SyncStadiaEntitlement(Operation):
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
       *  Returns :
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
 

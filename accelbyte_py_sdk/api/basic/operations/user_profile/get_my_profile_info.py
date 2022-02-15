@@ -47,7 +47,6 @@ class GetMyProfileInfo(Operation):
       *  Language : allowed format: en, en-US
       *  Timezone : IANA time zone, e.g. Asia/Shanghai
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:PROFILE [READ]
 

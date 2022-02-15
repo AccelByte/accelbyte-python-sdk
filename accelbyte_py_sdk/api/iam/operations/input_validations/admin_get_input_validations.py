@@ -34,11 +34,15 @@ class AdminGetInputValidations(Operation):
 
     Required permission 'ADMIN:CONFIGURATION'[READ]
 
+
+
+
     This endpoint is to get list of input validation configuration.
 
-    `regex` parameter will be returned if `isCustomRegex` is true. Otherwise, it
-    will be empty.
 
+
+
+    `regex` parameter will be returned if `isCustomRegex` is true. Otherwise, it will be empty.
 
     Required Permission(s):
         - ADMIN:CONFIGURATION [READ]

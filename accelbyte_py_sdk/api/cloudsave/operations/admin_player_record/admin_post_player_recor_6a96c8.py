@@ -33,13 +33,14 @@ from ...models import ModelsResponseError
 class AdminPostPlayerRecordHandlerV1(Operation):
     """Save user level record (adminPostPlayerRecordHandlerV1)
 
-    Required permission:
-    ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE] Required
-    scope: social Save a record (arbitrary JSON data) in user-level. If a record
-    already exist with given record key, this endpoint will try to merge. Same top
-    level key inside body will be replaced, different top level key will be
-    appended. Record saved will be a private record.
+    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]
 
+    Required scope: social
+
+    Save a record (arbitrary JSON data) in user-level.
+    If a record already exist with given record key, this endpoint will try to merge.
+    Same top level key inside body will be replaced, different top level key will be appended.
+    Record saved will be a private record.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]

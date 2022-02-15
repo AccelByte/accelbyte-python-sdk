@@ -38,7 +38,6 @@ class GetUserSubscriptionBillingHistories(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
       *  Returns : paginated subscription billing history
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
 

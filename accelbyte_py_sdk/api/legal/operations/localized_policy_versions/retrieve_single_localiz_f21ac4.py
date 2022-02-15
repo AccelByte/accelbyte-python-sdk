@@ -33,10 +33,8 @@ from ...models import RetrieveLocalizedPolicyVersionPublicResponse
 class RetrieveSingleLocalizedPolicyVersion1(Operation):
     """Retrieve a Localized Version (retrieveSingleLocalizedPolicyVersion_1)
 
-    Retrieve specific localized policy version including the policy version and
-    base policy version where the localized policy version located.
+    Retrieve specific localized policy version including the policy version and base policy version where the localized policy version located.
     Other detail info:
-
 
     Properties:
         url: /agreement/public/localized-policy-versions/{localizedPolicyVersionId}

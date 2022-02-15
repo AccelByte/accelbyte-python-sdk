@@ -37,7 +37,6 @@ class PublicVerifyHeadlessAccountV3(Operation):
     Require valid user authorization
     action code : 10124
 
-
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/headless/verify
 

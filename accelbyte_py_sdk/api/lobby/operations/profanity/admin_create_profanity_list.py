@@ -33,10 +33,9 @@ from ...models import RestapiErrorResponseBody
 class AdminCreateProfanityList(Operation):
     """create a new list (adminCreateProfanityList)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with
-    scope `social`
-    create a new list
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with scope `social`
 
+    create a new list
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]

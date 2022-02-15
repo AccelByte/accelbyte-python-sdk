@@ -38,7 +38,6 @@ class DeleteUserStatItems1(Operation):
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=8 (DELETE)
       *  Returns : no content
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:STATITEM [DELETE]
 

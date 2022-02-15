@@ -30,9 +30,7 @@ from .....core import HttpResponse
 class PublicWebLinkPlatformEstablish(Operation):
     """Establish Link Progress  (PublicWebLinkPlatformEstablish)
 
-    This endpoint is used by third party to redirect the code for the purpose of
-    linking the account third party to IAM account.
-
+    This endpoint is used by third party to redirect the code for the purpose of linking the account third party to IAM account.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/link/establish

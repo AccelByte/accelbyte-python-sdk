@@ -32,7 +32,6 @@ class DeleteUserRole(Operation):
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]'
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]
 

@@ -46,7 +46,6 @@ class RetrieveLatestPoliciesByNamespaceAndCountryPublic(Operation):
         * Query: alwaysIncludeDefault: true
         * Response: Document 1 (UA), Document 2 (US), Document 3 (US)
 
-
     Properties:
         url: /agreement/public/policies/namespaces/{namespace}/countries/{countryCode}
 

@@ -33,9 +33,11 @@ from ...models import ResponseError
 class ListConfig(Operation):
     """List all configs (ListConfig)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ] Required
-    scope: social This endpoint lists all of dedicated servers configs.
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
 
+    Required scope: social
+
+    This endpoint lists all of dedicated servers configs.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]

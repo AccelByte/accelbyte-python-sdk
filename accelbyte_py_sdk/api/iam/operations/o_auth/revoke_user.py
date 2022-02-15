@@ -30,16 +30,17 @@ from .....core import HttpResponse
 class RevokeUser(Operation):
     """Revokes user's tokens' (RevokeUser)
 
-    This endpoint requires all requests to have authorization header set with
-    bearer token.
+    This endpoint requires all requests to have authorization header set with bearer token.
+
+
+
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
 
-    The endpoint revokes all access tokens and refresh tokens a user has prior the
-    revocation time. It is a convenient feature for the developer (or admin) who
-    wanted to revokes all user's access tokens and refresh tokens generated before
-    some period of time.
 
+
+
+    The endpoint revokes all access tokens and refresh tokens a user has prior the revocation time. It is a convenient feature for the developer (or admin) who wanted to revokes all user's access tokens and refresh tokens generated before some period of time.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]

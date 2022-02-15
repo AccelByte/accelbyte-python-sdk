@@ -39,7 +39,6 @@ class EnableCode(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
       *  Returns : enabled code
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
 

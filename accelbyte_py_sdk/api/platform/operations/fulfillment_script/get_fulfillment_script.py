@@ -39,7 +39,6 @@ class GetFulfillmentScript(Operation):
       * Required permission : resource="ADMIN:FULFILLMENT", action=2 (READ)
       *  Returns : get fulfillment script
 
-
     Required Permission(s):
         - ADMIN:FULFILLMENT [READ]
 

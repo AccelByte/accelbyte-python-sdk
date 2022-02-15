@@ -35,13 +35,11 @@ from ...models import ValidationErrorEntity
 class UpdateUserEntitlement(Operation):
     """Update user entitlement (updateUserEntitlement)
 
-    Update user entitlement. If update CONSUMABLE entitlement useCount to 0, the
-    status will be CONSUMED.
+    Update user entitlement. If update CONSUMABLE entitlement useCount to 0, the status will be CONSUMED.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
       *  Returns : updated entitlement
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]

@@ -32,15 +32,17 @@ from .....core import deprecated
 class RevokeToken(Operation):
     """OAuth2 token revocation API (RevokeToken)
 
-    # Deprecated at August 30, 2019. Please use the /v3/oauth/revoke endpoint
-    instead
+    # Deprecated at August 30, 2019. Please use the /v3/oauth/revoke endpoint instead
+
+
+
 
     Revokes a token.
 
-    This endpoint requires all requests to have Authorization header set with
-    Basic access authentication constructed from client id and client secret or
-    Bearer access authentication with valid access token.
 
+
+
+    This endpoint requires all requests to have Authorization header set with Basic access authentication constructed from client id and client secret or Bearer access authentication with valid access token.
 
     Properties:
         url: /iam/oauth/revoke/token

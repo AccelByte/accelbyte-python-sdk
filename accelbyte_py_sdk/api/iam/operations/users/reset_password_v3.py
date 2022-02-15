@@ -35,7 +35,6 @@ class ResetPasswordV3(Operation):
 
     action code: 10105
 
-
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/reset
 

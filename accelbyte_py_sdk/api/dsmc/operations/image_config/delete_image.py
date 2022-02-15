@@ -32,10 +32,11 @@ from ...models import ResponseError
 class DeleteImage(Operation):
     """Delete an image (DeleteImage)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE] Required
-    scope: social This endpoint will delete an image that specified in the request
-    parameter
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
 
+    Required scope: social
+
+    This endpoint will delete an image that specified in the request parameter
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]

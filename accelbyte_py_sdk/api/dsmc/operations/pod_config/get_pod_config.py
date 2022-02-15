@@ -33,9 +33,11 @@ from ...models import ResponseError
 class GetPodConfig(Operation):
     """Get Pod Config (GetPodConfig)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ] Required
-    scope: social This endpoint get a dedicated server pod config in a namespace
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
 
+    Required scope: social
+
+    This endpoint get a dedicated server pod config in a namespace
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]

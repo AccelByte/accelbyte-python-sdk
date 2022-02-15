@@ -33,9 +33,7 @@ from ...models import RestErrorResponse
 class RetrieveAllThirdPartyLoginPlatformCredentialV3(Operation):
     """Get All Third Party Platform Credential (RetrieveAllThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Get All Active 3rd Platform Credential. It needs
-    ADMIN:NAMESPACE:{namespace}:PLATFORM:*:CLIENT [READ] resource
-
+    This is the API to Get All Active 3rd Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:*:CLIENT [READ] resource
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PLATFORM:*:CLIENT [READ]

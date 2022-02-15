@@ -33,9 +33,9 @@ from ...models import RestErrorResponse
 class AdminRemoveUserRoleV4(Operation):
     """Admin Remove User Role v4 (AdminRemoveUserRoleV4)
 
-    This endpoint requires ADMIN:NAMESPACE:{namespace}:ROLE:USER:* [Delete]
-    permission. Remove a role from user's roles.
+    This endpoint requires ADMIN:NAMESPACE:{namespace}:ROLE:USER:* [Delete] permission.
 
+    Remove a role from user's roles.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ROLE:USER:* [Delete]

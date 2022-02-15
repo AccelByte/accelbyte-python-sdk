@@ -33,9 +33,11 @@ from ...models import ResponseError
 class GetConfig(Operation):
     """Get config for a namespace (GetConfig)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ] Required
-    scope: social This endpoint get a dedicated servers config in a namespace.
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
 
+    Required scope: social
+
+    This endpoint get a dedicated servers config in a namespace.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]

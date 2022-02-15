@@ -39,7 +39,6 @@ class ListStores(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
       *  Returns : the list of stores
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:STORE [READ]
 

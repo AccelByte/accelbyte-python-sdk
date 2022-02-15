@@ -39,7 +39,6 @@ class GetPaymentMerchantConfig(Operation):
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
       *  Returns : payment merchant config info
 
-
     Required Permission(s):
         - ADMIN:PAYMENT:CONFIG [READ]
 

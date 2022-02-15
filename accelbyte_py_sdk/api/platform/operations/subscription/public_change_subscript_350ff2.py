@@ -33,16 +33,12 @@ from ...models import SubscriptionInfo
 class PublicChangeSubscriptionBillingAccount(Operation):
     """Request to change a subscription billing account (publicChangeSubscriptionBillingAccount)
 
-    Request to change a subscription billing account, this will guide user to
-    payment station. The actual change will happen at the 0 payment notification
-    successfully handled.
-    Only ACTIVE USER subscription with real currency billing account can be
-    changed.
+    Request to change a subscription billing account, this will guide user to payment station. The actual change will happen at the 0 payment notification successfully handled.
+    Only ACTIVE USER subscription with real currency billing account can be changed.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
       *  Returns : updated subscription
-
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]

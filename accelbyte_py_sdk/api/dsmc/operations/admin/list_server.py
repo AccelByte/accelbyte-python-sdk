@@ -33,10 +33,11 @@ from ...models import ResponseError
 class ListServer(Operation):
     """List all managed servers in a region (ListServer)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ] Required
-    scope: social This endpoint lists all of dedicated servers in a namespace
-    managed by this service.
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
 
+    Required scope: social
+
+    This endpoint lists all of dedicated servers in a namespace managed by this service.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]

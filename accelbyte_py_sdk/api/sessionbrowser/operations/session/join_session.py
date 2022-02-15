@@ -35,9 +35,10 @@ class JoinSession(Operation):
     """Join specified session by session ID (JoinSession)
 
     Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-    Required scope: social Join the specified session by session ID. Possible the
-    game required a password to join
 
+    Required scope: social
+
+    Join the specified session by session ID. Possible the game required a password to join
 
     Required Permission(s):
         - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]

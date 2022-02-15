@@ -39,7 +39,6 @@ class GetCustomAttributesInfo(Operation):
       *  Returns : custom attributes
       *  Action code : 11403
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
 

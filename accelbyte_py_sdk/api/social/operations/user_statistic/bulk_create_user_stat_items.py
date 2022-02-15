@@ -40,7 +40,6 @@ class BulkCreateUserStatItems(Operation):
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
       *  Returns : bulk created result
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [CREATE]
 

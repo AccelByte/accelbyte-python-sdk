@@ -33,15 +33,13 @@ from ...models import ErrorEntity
 class PublicGetApp(Operation):
     """Get an app in locale (publicGetApp)
 
-    This API is used to get an app in locale. If app not exist in specific region,
-    default region app will return.
+    This API is used to get an app in locale. If app not exist in specific region, default region app will return.
 
     Other detail info:
 
       * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store app)
       *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store app)
       *  Returns : app data
-
 
     Properties:
         url: /platform/public/namespaces/{namespace}/items/{itemId}/app/locale

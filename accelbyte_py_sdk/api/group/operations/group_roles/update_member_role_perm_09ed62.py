@@ -36,11 +36,15 @@ class UpdateMemberRolePermissionAdminV1(Operation):
 
     Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]
 
-    This endpoint is used to update member role permission. It will replace the
-    existing permission based on the request from this endpoint
+
+
+
+    This endpoint is used to update member role permission. It will replace the existing permission based on the request from this endpoint
+
+
+
 
     Action Code: 73205
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]

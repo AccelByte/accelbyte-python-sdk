@@ -32,10 +32,9 @@ from ...models import RestapiErrorResponseBody
 class AdminJoinPartyV1(Operation):
     """admin join a player into a party (adminJoinPartyV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]`
-    with scope `social`
-    admin join a player into a party.
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]` with scope `social`
 
+    admin join a player into a party.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]

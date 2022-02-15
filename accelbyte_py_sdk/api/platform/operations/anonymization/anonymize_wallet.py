@@ -30,12 +30,10 @@ from .....core import HttpResponse
 class AnonymizeWallet(Operation):
     """anonymize wallet (anonymizeWallet)
 
-    Anonymize wallet. At current it will only anonymize wallet, wallet
-    transaction.
+    Anonymize wallet. At current it will only anonymize wallet, wallet transaction.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]

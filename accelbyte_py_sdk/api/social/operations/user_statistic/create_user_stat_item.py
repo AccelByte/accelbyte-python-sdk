@@ -38,7 +38,6 @@ class CreateUserStatItem(Operation):
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
       *  Returns : created user's statItem
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [CREATE]
 

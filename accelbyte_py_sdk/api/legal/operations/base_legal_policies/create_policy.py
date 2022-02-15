@@ -40,7 +40,6 @@ class CreatePolicy(Operation):
 
       * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=1 (CREATE)
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:*:LEGAL [CREATE]
 

@@ -34,9 +34,7 @@ from ...models import ResponseErrorResponse
 class SetUserLeaderboardVisibilityStatusV2(Operation):
     """Set user visibility status on a specific leaderboard code (SetUserLeaderboardVisibilityStatusV2)
 
-    User with false visibility status will have hidden attribute set to true on
-    it's leaderboard entry
-
+    User with false visibility status will have hidden attribute set to true on it's leaderboard entry
 
     Properties:
         url: /leaderboard/v2/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}/visibility

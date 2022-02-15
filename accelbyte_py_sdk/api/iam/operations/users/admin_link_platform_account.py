@@ -35,9 +35,8 @@ class AdminLinkPlatformAccount(Operation):
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
 
-    Force linking platform account to user User Account. This endpoint intended
-    for admin to forcefully link account to user.
 
+    Force linking platform account to user User Account. This endpoint intended for admin to forcefully link account to user.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]

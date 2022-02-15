@@ -34,11 +34,11 @@ class AdminVerifyAccountV3(Operation):
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
 
-    Redeems a verification code sent to a user to verify the user's contact
-    address is correct
+
+    Redeems a verification code sent to a user to verify the user's contact address is correct
+
 
     Available ContactType : email or phone
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]

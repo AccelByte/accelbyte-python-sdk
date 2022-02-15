@@ -32,14 +32,20 @@ from ...models import ModelDisableUserRequest
 class AdminDisableUserV2(Operation):
     """Disable a user (AdminDisableUserV2)
 
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId}
-    [UPDATE]'
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
+
 
     For Deletion Account purpose fill the reason with:
 
-      * DeactivateAccount : if your deletion request comes from user
-      * AdminDeactivateAccount : if your deletion request comes from admin
 
+
+
+
+
+      * DeactivateAccount : if your deletion request comes from user
+
+
+      * AdminDeactivateAccount : if your deletion request comes from admin
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]

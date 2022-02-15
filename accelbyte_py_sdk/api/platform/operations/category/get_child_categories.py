@@ -39,7 +39,6 @@ class GetChildCategories(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
       *  Returns : list of child categories data
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
 

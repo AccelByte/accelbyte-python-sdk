@@ -34,14 +34,12 @@ from ...models import UserRewardClaim
 class PublicClaimUserReward(Operation):
     """Claim tier reward (publicClaimUserReward)
 
-    This API is used to claim reward, season only located in non-publisher
-    namespace.
+    This API is used to claim reward, season only located in non-publisher namespace.
 
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=4 (UPDATE)
       *  Returns : user season data
-
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [UPDATE]

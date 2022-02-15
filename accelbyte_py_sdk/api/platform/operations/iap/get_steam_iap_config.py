@@ -38,7 +38,6 @@ class GetSteamIAPConfig(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
       *  Returns : steam iap config
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
 

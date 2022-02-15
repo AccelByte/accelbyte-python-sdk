@@ -40,7 +40,6 @@ class PublicGetNamespaces(Operation):
       *  Action code : 11303
       *  Returns : list of namespaces
 
-
     Properties:
         url: /basic/v1/public/namespaces
 

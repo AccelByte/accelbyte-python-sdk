@@ -34,7 +34,6 @@ class AdminDeleteTag(Operation):
 
     Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [DELETE]
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [DELETE]
 

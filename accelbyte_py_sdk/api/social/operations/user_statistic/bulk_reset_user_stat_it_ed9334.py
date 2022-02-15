@@ -34,11 +34,10 @@ from ...models import ValidationErrorEntity
 class BulkResetUserStatItemValues(Operation):
     """Bulk reset user's statitem values (bulkResetUserStatItemValues)
 
-    Bulk reset user's statitem values for given namespace and user. Other detail
-    info: + *Required permission*:
-    resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4
-    (UPDATE) + *Returns*: bulk updated result
-
+    Bulk reset user's statitem values for given namespace and user.
+    Other detail info:
+    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+    + *Returns*: bulk updated result
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]

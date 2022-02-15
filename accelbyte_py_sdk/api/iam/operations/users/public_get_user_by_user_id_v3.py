@@ -35,7 +35,6 @@ class PublicGetUserByUserIdV3(Operation):
 
     This endpoint retrieve user attributes. action code: 10129
 
-
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}
 

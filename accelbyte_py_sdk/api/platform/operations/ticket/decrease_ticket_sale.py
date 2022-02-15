@@ -34,12 +34,10 @@ from ...models import ValidationErrorEntity
 class DecreaseTicketSale(Operation):
     """Decrease ticket sale (decreaseTicketSale)
 
-    [SERVICE COMMUNICATION ONLY] Decrease ticket(code/key) sale if requested
-    orderNo is already increased.
+    [SERVICE COMMUNICATION ONLY] Decrease ticket(code/key) sale if requested orderNo is already increased.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=4 (UPDATE)
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:TICKET [UPDATE]

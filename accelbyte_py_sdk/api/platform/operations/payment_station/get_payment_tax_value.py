@@ -38,7 +38,6 @@ class GetPaymentTaxValue(Operation):
 
       * Returns : tax result
 
-
     Properties:
         url: /platform/public/namespaces/{namespace}/payment/tax
 

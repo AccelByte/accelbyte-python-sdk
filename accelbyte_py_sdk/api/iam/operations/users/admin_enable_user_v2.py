@@ -30,9 +30,7 @@ from .....core import HttpResponse
 class AdminEnableUserV2(Operation):
     """Enable a user (AdminEnableUserV2)
 
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId}
-    [UPDATE]'
-
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]

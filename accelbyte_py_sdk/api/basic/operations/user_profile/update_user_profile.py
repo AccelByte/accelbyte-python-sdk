@@ -42,7 +42,6 @@ class UpdateUserProfile(Operation):
       *  Action code : 11402
       *  Returns : Updated user profile
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
 

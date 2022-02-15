@@ -39,7 +39,6 @@ class GetCampaignDynamic(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)
       *  Returns : campaign dynamic
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
 

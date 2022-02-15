@@ -39,7 +39,6 @@ class UpdatePaymentCallbackConfig(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG", action=4 (UPDATE)
       *  Returns : Payment callback config
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG [UPDATE]
 

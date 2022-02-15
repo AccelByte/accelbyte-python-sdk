@@ -33,12 +33,23 @@ from ...models import ModelUserCreateResponse
 class PublicCreateUserV2(Operation):
     """Create User (PublicCreateUserV2)
 
+
+
+
     Available Authentication Types:
 
-      1. EMAILPASSWD : an authentication type used for new user registration through email.
+
+
+
+
+
+      1.  EMAILPASSWD : an authentication type used for new user registration through email.
+
+
+
+
 
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
-
 
     Properties:
         url: /iam/v2/public/namespaces/{namespace}/users

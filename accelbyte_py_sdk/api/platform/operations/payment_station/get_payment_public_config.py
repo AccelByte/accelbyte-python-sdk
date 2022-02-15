@@ -30,12 +30,10 @@ from .....core import HttpResponse
 class GetPaymentPublicConfig(Operation):
     """Get payment provider public config (getPaymentPublicConfig)
 
-    Get payment provider public config, at current only Strip provide public
-    config.
+    Get payment provider public config, at current only Strip provide public config.
     Other detail info:
 
       * Returns : Public config
-
 
     Properties:
         url: /platform/public/namespaces/{namespace}/payment/publicconfig

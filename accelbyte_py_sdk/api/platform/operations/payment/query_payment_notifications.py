@@ -38,7 +38,6 @@ class QueryPaymentNotifications(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:NOTIFICATION", action=2 (READ)
       *  Returns : Payment notifications
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PAYMENT:NOTIFICATION [READ]
 

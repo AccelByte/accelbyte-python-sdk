@@ -33,15 +33,13 @@ from ...models import StoreInfo
 class DeletePublishedStore(Operation):
     """Delete published store (deletePublishedStore)
 
-    This API is used to delete published store including category and items before
-    release to public.
+    This API is used to delete published store including category and items before release to public.
 
      Warning: Please do not use this API once published to public user.
 
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8 (DELETE)
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:STORE [DELETE]

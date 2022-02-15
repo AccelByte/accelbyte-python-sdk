@@ -33,14 +33,12 @@ from ...models import MockIAPReceipt
 class MockFulfillIAPItem(Operation):
     """Mock fulfill iap item. (mockFulfillIAPItem)
 
-    [TEST FACILITY ONLY] Forbidden in live environment. Mock fulfill iap item
-    without validate receipt.
+    [TEST FACILITY ONLY] Forbidden in live environment. Mock fulfill iap item without validate receipt.
 
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
       *  Returns :
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]

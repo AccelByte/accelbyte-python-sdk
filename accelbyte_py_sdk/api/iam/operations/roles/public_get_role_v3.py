@@ -37,7 +37,6 @@ class PublicGetRoleV3(Operation):
     This endpoint is used to get non-admin role based on specify roleId.
     action code : 10417
 
-
     Properties:
         url: /iam/v3/public/roles/{roleId}
 

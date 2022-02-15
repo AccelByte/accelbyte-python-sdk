@@ -34,9 +34,7 @@ from ...models import ModelsUserLastActivity
 class LastUserActivityTimeHandler(Operation):
     """Get last activity time of a user in a namespace (LastUserActivityTimeHandler)
 
-    Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]`and scope
-    `analytics`
-
+    Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]`and scope `analytics`
 
     Required Permission(s):
         - NAMESPACE:{namespace}:EVENT [UPDATE]

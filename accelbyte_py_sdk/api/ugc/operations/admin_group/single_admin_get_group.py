@@ -33,9 +33,7 @@ from ...models import ResponseError
 class SingleAdminGetGroup(Operation):
     """Get specific user group (SingleAdminGetGroup)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP
-    [READ].
-
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ].
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ]

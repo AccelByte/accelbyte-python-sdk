@@ -33,9 +33,9 @@ from ...models import RestErrorResponse
 class AdminListUserRolesV4(Operation):
     """Admin List User's Roles V4 (AdminListUserRolesV4)
 
-    This endpoint requires ADMIN:NAMESPACE:{namespace}:ROLE:USER:* [READ]
-    permission. List roles assigned to a user
+    This endpoint requires ADMIN:NAMESPACE:{namespace}:ROLE:USER:* [READ] permission.
 
+    List roles assigned to a user
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ROLE:USER:* [READ]

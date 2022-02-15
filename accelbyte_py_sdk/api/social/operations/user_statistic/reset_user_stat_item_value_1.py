@@ -33,12 +33,12 @@ from ...models import StatItemIncResult
 class ResetUserStatItemValue1(Operation):
     """Public reset user's statitem value (resetUserStatItemValue_1)
 
-    Reset user's statitem value for a given namespace and user. User's statitem
-    value will be reset to the default value defined in the statistic
-    configuration. Other detail info: + *Required permission*:
-    resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE) +
-    *Returns*: updated user's statItem
+    Reset user's statitem value for a given namespace and user.
+    User's statitem value will be reset to the default value defined in the statistic configuration.
 
+    Other detail info:
+    + *Required permission*: resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+    + *Returns*: updated user's statItem
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]

@@ -32,9 +32,7 @@ from ...models import ModelGetUserMapping
 class GetListJusticePlatformAccounts(Operation):
     """Get User Justice Platform Accounts (GetListJusticePlatformAccounts)
 
-    This endpoint gets list justice platform account by providing publisher
-    namespace and publisher userID.
-
+    This endpoint gets list justice platform account by providing publisher namespace and publisher userID.
 
     Properties:
         url: /iam/v2/public/namespaces/{namespace}/users/{userId}/platforms/justice

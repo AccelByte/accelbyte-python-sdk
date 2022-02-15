@@ -33,13 +33,10 @@ from ...models import RetrievePolicyVersionResponse
 class RetrieveSinglePolicyVersion(Operation):
     """Retrieve a Version from Country-Specific Policy (retrieveSinglePolicyVersion)
 
-    Retrieve a version of a particular country specific policy. If version is not
-    provided, the Legal Service will assume caller requesting all versions from
-    country-specific policy.
+    Retrieve a version of a particular country specific policy. If version is not provided, the Legal Service will assume caller requesting all versions from country-specific policy.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:*:LEGAL [READ]

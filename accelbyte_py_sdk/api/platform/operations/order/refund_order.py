@@ -40,7 +40,6 @@ class RefundOrder(Operation):
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=4 (UPDATE)
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ORDER [UPDATE]
 

@@ -34,10 +34,9 @@ class AdminListUsersV3(Operation):
     """Admin List Users V3 (AdminListUsersV3)
 
     This endpoint requires ADMIN:NAMESPACE:{namespace}:USER [READ] permission.
-    Returns list of users ID and namespace with their Justice platform account,
-    under a namespace. If user doesn't have Justice platform account, the
-    linkedPlatforms will be empty array.'
 
+    Returns list of users ID and namespace with their Justice platform account, under a namespace. If user
+    doesn't have Justice platform account, the linkedPlatforms will be empty array.'
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER [READ]

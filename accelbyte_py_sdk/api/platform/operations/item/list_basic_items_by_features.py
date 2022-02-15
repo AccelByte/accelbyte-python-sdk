@@ -39,7 +39,6 @@ class ListBasicItemsByFeatures(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
       *  Returns : the list of basic items
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
 

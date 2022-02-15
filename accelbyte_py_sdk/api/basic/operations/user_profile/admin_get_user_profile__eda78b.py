@@ -41,7 +41,6 @@ class AdminGetUserProfilePublicInfoByIds(Operation):
       *  Action code : 11405
       *  Returns : user public profiles
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PROFILE []
 

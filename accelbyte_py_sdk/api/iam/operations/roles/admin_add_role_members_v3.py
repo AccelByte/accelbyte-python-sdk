@@ -35,13 +35,18 @@ class AdminAddRoleMembersV3(Operation):
 
     Required permission 'ADMIN:ROLE [UPDATE]'
 
+
+
+
     Admin roles has its members listed in the role.
+
+
+
 
     Role can only be assigned to other users by the role's manager.
 
 
     action code: 10410
-
 
     Required Permission(s):
         - ADMIN:ROLE [UPDATE]

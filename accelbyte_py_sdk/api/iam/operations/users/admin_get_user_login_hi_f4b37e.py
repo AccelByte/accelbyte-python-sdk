@@ -32,8 +32,7 @@ from ...models import ModelLoginHistoriesResponse
 class AdminGetUserLoginHistoriesV3(Operation):
     """Get User's Login Histories (AdminGetUserLoginHistoriesV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:HISTORY:LOGIN:USER:{userId}
-    [READ]'
+    Required permission 'ADMIN:NAMESPACE:{namespace}:HISTORY:LOGIN:USER:{userId} [READ]'
 
     Notes for this endpoint:
 
@@ -41,7 +40,6 @@ class AdminGetUserLoginHistoriesV3(Operation):
       * The maximum value of the limit is 100 and the minimum value of the limit is 1.
       * This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
       * This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:HISTORY:LOGIN:USER:{userId} [READ]

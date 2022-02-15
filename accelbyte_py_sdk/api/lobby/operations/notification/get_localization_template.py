@@ -33,10 +33,9 @@ from ...models import RestapiErrorResponseBody
 class GetLocalizationTemplate(Operation):
     """get a template localization (getLocalizationTemplate)
 
-    Required permission : `NAMESPACE:{namespace}:TEMPLATE [READ]` with scope
-    `social`
-    Get a template localization
+    Required permission : `NAMESPACE:{namespace}:TEMPLATE [READ]` with scope `social`
 
+    Get a template localization
 
     Required Permission(s):
         - NAMESPACE:{namespace}:TEMPLATE [READ]

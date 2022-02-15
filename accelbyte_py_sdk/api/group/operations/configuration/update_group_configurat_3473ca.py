@@ -36,11 +36,15 @@ class UpdateGroupConfigurationGlobalRuleAdminV1(Operation):
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]'
 
-    This endpoint is used to update existing global rule configuration based on
-    the allowed action. It will replace the permission with the request
+
+
+
+    This endpoint is used to update existing global rule configuration based on the allowed action. It will replace the permission with the request
+
+
+
 
     Action Code: 73106
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]

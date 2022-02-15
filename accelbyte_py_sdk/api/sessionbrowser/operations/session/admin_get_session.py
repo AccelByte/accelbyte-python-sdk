@@ -34,8 +34,10 @@ class AdminGetSession(Operation):
     """Admin get specified session by session ID (AdminGetSession)
 
     Required permission: ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-    Required scope: social Get the session by session ID for admin user
 
+    Required scope: social
+
+    Get the session by session ID for admin user
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]

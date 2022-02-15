@@ -34,11 +34,18 @@ class PublicGetUserBanHistoryV3(Operation):
 
     Required valid user authorization.
 
+
     Notes:
 
-      * This endpoint retrieve the first page of the data if after and before parameters is empty
-      * The pagination is not working yet
 
+
+
+
+
+      * This endpoint retrieve the first page of the data if after and before parameters is empty
+
+
+      * The pagination is not working yet
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/bans

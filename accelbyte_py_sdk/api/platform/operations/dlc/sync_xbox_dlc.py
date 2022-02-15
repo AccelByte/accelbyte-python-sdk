@@ -39,7 +39,6 @@ class SyncXboxDLC(Operation):
       * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
       *  Returns :
 
-
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/xbl/sync
 

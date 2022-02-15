@@ -33,9 +33,8 @@ from ...models import ResponseError
 class AdminListAchievements(Operation):
     """Query achievements (AdminListAchievements)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope
-    `social`
-
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]

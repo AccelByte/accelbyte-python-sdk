@@ -35,7 +35,6 @@ class AdminUpdateAgeRestrictionConfigV2(Operation):
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]'
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]
 

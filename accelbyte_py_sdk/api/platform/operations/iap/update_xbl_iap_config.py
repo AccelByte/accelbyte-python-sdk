@@ -38,7 +38,6 @@ class UpdateXblIAPConfig(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
       *  Returns : updated xbl iap config
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
 

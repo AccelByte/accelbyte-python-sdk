@@ -39,7 +39,6 @@ class PublicCancelUserOrder(Operation):
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
       *  Returns : cancelled order
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:ORDER [UPDATE]
 

@@ -37,12 +37,9 @@ class PublicCreateProfile(Operation):
     Other detail info:
 
       *  Required permission
-    : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=1
-    (CREATE)
-
+    : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=1 (CREATE)
       *  Returns
     : created game profile
-
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [CREATE]

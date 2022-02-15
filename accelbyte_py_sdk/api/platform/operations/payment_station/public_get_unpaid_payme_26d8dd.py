@@ -38,7 +38,6 @@ class PublicGetUnpaidPaymentOrder(Operation):
 
       * Returns : Payment order details
 
-
     Properties:
         url: /platform/public/namespaces/{namespace}/payment/orders/{paymentOrderNo}/info
 

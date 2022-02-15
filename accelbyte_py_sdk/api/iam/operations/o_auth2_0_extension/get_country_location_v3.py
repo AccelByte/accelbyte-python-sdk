@@ -34,7 +34,6 @@ class GetCountryLocationV3(Operation):
 
     This endpoint get country location based on the request.
 
-
     Properties:
         url: /iam/v3/location/country
 

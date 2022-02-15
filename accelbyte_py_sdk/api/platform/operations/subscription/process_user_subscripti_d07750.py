@@ -32,13 +32,11 @@ from ...models import TradeNotification
 class ProcessUserSubscriptionNotification(Operation):
     """Web hook for payment notification (processUserSubscriptionNotification)
 
-    [SERVICE COMMUNICATION ONLY] This API is used as a web hook for payment
-    notification from justice payment service.
+    [SERVICE COMMUNICATION ONLY] This API is used as a web hook for payment notification from justice payment service.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
       *  Returns : Process result
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]

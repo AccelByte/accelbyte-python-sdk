@@ -39,7 +39,6 @@ class GetWallet(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:WALLET", action=2 (READ)
       *  Returns : wallet info
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:WALLET [READ]
 

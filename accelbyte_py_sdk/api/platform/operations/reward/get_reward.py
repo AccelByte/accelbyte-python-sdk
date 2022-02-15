@@ -39,7 +39,6 @@ class GetReward(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
       *  Returns : reward instance
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:REWARD [READ]
 

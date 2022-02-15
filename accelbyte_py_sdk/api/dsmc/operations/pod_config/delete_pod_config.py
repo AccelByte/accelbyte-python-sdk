@@ -32,10 +32,11 @@ from ...models import ResponseError
 class DeletePodConfig(Operation):
     """Delete pod config (DeletePodConfig)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE] Required
-    scope: social This endpoint delete a dedicated server pod config in a
-    namespace
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
 
+    Required scope: social
+
+    This endpoint delete a dedicated server pod config in a namespace
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]

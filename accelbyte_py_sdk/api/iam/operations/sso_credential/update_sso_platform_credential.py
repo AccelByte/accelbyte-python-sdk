@@ -34,9 +34,7 @@ from ...models import RestErrorResponse
 class UpdateSSOPlatformCredential(Operation):
     """Update SSO Platform Credential (UpdateSSOPlatformCredential)
 
-    This is the API to Delete SSO Platform Credential. It needs
-    ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [UPDATE] resource
-
+    This is the API to Delete SSO Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [UPDATE] resource
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [UPDATE]

@@ -35,8 +35,10 @@ class GetCurrentMonthLeaderboardRankingAdminV1(Operation):
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
 
-    Get rankings in current month leaderboard.
 
+
+
+    Get rankings in current month leaderboard.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]

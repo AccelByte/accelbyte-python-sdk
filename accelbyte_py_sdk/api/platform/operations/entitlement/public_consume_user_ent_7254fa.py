@@ -34,13 +34,11 @@ from ...models import ErrorEntity
 class PublicConsumeUserEntitlement(Operation):
     """Consume user entitlement (publicConsumeUserEntitlement)
 
-    Consume user entitlement. If the entitlement useCount is 0, the status will be
-    CONSUMED.
+    Consume user entitlement. If the entitlement useCount is 0, the status will be CONSUMED.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
       *  Returns : consumed entitlement
-
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]

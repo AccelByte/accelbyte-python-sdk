@@ -34,12 +34,20 @@ class PutGameRecordConcurrentHandlerV1(Operation):
     """Create or replace game record (putGameRecordConcurrentHandlerV1)
 
     Required Permission | `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]`
-    ---|---
-    Required Scope | `social`
+    --------------------|---------------------------------------------------
+    Required Scope      | `social`
 
-    If record already exists, it will be replaced with the one from request body
-    (all fields will be deleted). If record is not exists, it will create a new
-    one with value from request body. Example: Replace all records
+
+
+
+
+    If record already exists, it will be replaced with the one from request body (all fields will be
+    deleted). If record is not exists, it will create a new one with value from request body.
+
+    Example:
+
+    Replace all records
+
 
 
 
@@ -59,13 +67,14 @@ class PutGameRecordConcurrentHandlerV1(Operation):
             }
 
 
-    Optimistic Concurrency Control
-    This endpoint implement optimistic concurrency control to avoid race
-    condition. If the record has been updated since the client fetch it, the
-    server will return HTTP status code 412 (precondition failed) and client need
-    to redo the operation (fetch data and do update). Otherwise, the server will
-    process the request.
 
+
+     Optimistic Concurrency Control
+
+    This endpoint implement optimistic concurrency control to avoid race condition.
+    If the record has been updated since the client fetch it, the server will return HTTP status code 412 (precondition failed)
+    and client need to redo the operation (fetch data and do update).
+    Otherwise, the server will process the request.
 
     Required Permission(s):
         - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]

@@ -40,7 +40,6 @@ class PublicBulkIncUserStatItem1(Operation):
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
       *  Returns : bulk updated result
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 

@@ -33,9 +33,11 @@ from ...models import ResponseError
 class GetAllChannelsHandler(Operation):
     """Get all channels (GetAllChannelsHandler)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [READ] Required
-    Scope: social Reads all available channels in a namespace
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [READ]
 
+    Required Scope: social
+
+    Reads all available channels in a namespace
 
     Required Permission(s):
         - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [READ]

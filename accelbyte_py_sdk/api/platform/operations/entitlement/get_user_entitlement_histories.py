@@ -39,7 +39,6 @@ class GetUserEntitlementHistories(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
       *  Returns : list of entitlement history
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
 

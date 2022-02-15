@@ -33,15 +33,13 @@ from ...models import ItemInfo
 class PublicBulkGetItems(Operation):
     """Bulk get locale items (publicBulkGetItems)
 
-    This API is used to bulk get locale items. If item not exist in specific
-    region, default region item will return.
+    This API is used to bulk get locale items. If item not exist in specific region, default region item will return.
 
     Other detail info:
 
       * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store items)
       *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store items)
       *  Returns : the list of items info
-
 
     Properties:
         url: /platform/public/namespaces/{namespace}/items/locale/byIds

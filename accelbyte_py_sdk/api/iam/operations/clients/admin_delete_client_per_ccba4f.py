@@ -35,7 +35,6 @@ class AdminDeleteClientPermissionV3(Operation):
     Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT [UPDATE]'
     action code : 10304
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CLIENT [UPDATE]
 

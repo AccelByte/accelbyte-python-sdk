@@ -41,7 +41,6 @@ class UpdateUserOrderStatus(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
       *  Returns : updated order
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [UPDATE]
 

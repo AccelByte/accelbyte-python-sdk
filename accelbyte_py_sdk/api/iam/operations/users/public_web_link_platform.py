@@ -33,9 +33,7 @@ from ...models import RestErrorResponse
 class PublicWebLinkPlatform(Operation):
     """Create Public Web Linking (PublicWebLinkPlatform)
 
-    This endpoint is used to generate third party login page which will redirected
-    to establish endpoint.
-
+    This endpoint is used to generate third party login page which will redirected to establish endpoint.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/link

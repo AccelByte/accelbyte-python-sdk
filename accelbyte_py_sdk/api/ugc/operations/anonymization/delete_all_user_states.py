@@ -34,7 +34,6 @@ class DeleteAllUserStates(Operation):
 
     Required permission NAMESPACE:{namespace}:USER:{userId}" [DELETE]
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId} [DELETE]
 

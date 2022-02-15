@@ -33,10 +33,9 @@ from ...models import RestapiErrorResponseV1
 class AddFriendsWithoutConfirmation(Operation):
     """Add friends without confirmation (addFriendsWithoutConfirmation)
 
-    Required permission : `NAMESPACE:{namespace}:USER:{userId}:FRIENDS [CREATE]`
-    with scope `social`
-    friends request in a namespace.
+    Required permission : `NAMESPACE:{namespace}:USER:{userId}:FRIENDS [CREATE]` with scope `social`
 
+    friends request in a namespace.
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:FRIENDS [CREATE]

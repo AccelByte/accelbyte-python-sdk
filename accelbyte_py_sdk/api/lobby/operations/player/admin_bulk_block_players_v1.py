@@ -33,10 +33,9 @@ from ...models import RestapiErrorResponseBody
 class AdminBulkBlockPlayersV1(Operation):
     """Admin bulk blocks player by list user id (adminBulkBlockPlayersV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK
-    [CREATE]` with scope `social`
-    Bulk block player in a namespace by list of user id
+    Required permission : `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [CREATE]` with scope `social`
 
+    Bulk block player in a namespace by list of user id
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [CREATE]

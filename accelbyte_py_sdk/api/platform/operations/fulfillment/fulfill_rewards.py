@@ -39,7 +39,6 @@ class FulfillRewards(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=1 (CREATED)
       *  Returns : fulfillment result
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT []
 

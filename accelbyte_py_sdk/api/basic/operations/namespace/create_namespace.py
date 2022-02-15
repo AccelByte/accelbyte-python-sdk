@@ -43,7 +43,6 @@ class CreateNamespace(Operation):
       *  Action code : 11301
       *  Returns : created namespace
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE [CREATE]
 

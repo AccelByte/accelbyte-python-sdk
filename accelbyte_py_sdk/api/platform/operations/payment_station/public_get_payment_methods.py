@@ -38,7 +38,6 @@ class PublicGetPaymentMethods(Operation):
 
       * Returns : Payment method list
 
-
     Properties:
         url: /platform/public/namespaces/{namespace}/payment/methods
 

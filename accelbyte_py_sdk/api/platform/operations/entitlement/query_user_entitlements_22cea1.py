@@ -39,7 +39,6 @@ class QueryUserEntitlementsByAppType(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2
       *  Returns : app entitlement pagination
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT []
 

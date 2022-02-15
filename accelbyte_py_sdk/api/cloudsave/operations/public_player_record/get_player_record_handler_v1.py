@@ -33,13 +33,15 @@ from ...models import ModelsResponseError
 class GetPlayerRecordHandlerV1(Operation):
     """Get player record (getPlayerRecordHandlerV1)
 
-    Required Permission | `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD
-    [READ]`
-    ---|---
-    Required Scope | `social`
+    Required Permission | `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]`
+    --------------------|---------------------------------------------------------------
+    Required Scope      | `social`
+
+
+
+
 
     Get player record by its key
-
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]

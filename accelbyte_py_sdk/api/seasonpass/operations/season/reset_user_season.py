@@ -32,13 +32,11 @@ from ...models import ErrorEntity
 class ResetUserSeason(Operation):
     """Reset user data in current season (resetUserSeason)
 
-    [TEST FACILITY ONLY] Forbidden in live environment. This API is used to reset
-    user data in current season, it will not revoke the rewarded entitlements.
+    [TEST FACILITY ONLY] Forbidden in live environment. This API is used to reset user data in current season, it will not revoke the rewarded entitlements.
 
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=8 (DELETE)
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [DELETE]

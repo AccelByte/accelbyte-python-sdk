@@ -36,8 +36,8 @@ class PublicUpdatePartyAttributesV1(Operation):
 
     Required valid user authorization
 
-    update party attributes in a namespace.
 
+    update party attributes in a namespace.
 
     Properties:
         url: /lobby/v1/public/party/namespaces/{namespace}/parties/{partyId}/attributes

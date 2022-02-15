@@ -35,7 +35,6 @@ class AdminDeleteRoleV3(Operation):
     Required permission ''ADMIN:ROLE [DELETE]''
     action code: 10403
 
-
     Required Permission(s):
         - ADMIN:ROLE [DELETE]
 

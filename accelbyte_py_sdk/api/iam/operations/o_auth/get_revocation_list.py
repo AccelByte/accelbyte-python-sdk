@@ -32,13 +32,12 @@ from ...models import OauthapiRevocationList
 class GetRevocationList(Operation):
     """OAuth2 revocation list API (GetRevocationList)
 
-    This endpoint will return a list of revoked users and revoked tokens. List of
-    revoked tokens in bloom filter format. This endpoint requires all requests to
-    have Authorization header set with Basic access authentication constructed
-    from client id and client secret.
+    This endpoint will return a list of revoked users and revoked tokens. List of revoked tokens in bloom filter format. This endpoint requires all requests to have Authorization header set with Basic access authentication constructed from client id and client secret.
+
+
+
 
     The bloom filter uses MurmurHash3 algorithm for hashing the values
-
 
     Properties:
         url: /iam/oauth/revocationlist

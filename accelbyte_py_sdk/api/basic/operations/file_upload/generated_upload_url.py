@@ -41,7 +41,6 @@ class GeneratedUploadUrl(Operation):
       *  Action code : 11101
       *  Returns : URL data
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:FILEUPLOAD [CREATE]
 

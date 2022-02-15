@@ -38,7 +38,6 @@ class PublicGetItemDynamicData(Operation):
 
       * Returns : item dynamic data
 
-
     Properties:
         url: /platform/public/namespaces/{namespace}/items/{itemId}/dynamic
 

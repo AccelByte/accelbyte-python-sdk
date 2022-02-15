@@ -33,14 +33,12 @@ from ...models import ItemInfo
 class BulkGetLocaleItems(Operation):
     """Bulk get locale items (bulkGetLocaleItems)
 
-    This API is used to bulk get locale items. If item not exist in specific
-    region, default region item will return.
+    This API is used to bulk get locale items. If item not exist in specific region, default region item will return.
 
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
       *  Returns : the list of items info
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ITEM [READ]

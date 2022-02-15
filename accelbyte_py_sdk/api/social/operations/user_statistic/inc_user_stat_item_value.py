@@ -40,7 +40,6 @@ class IncUserStatItemValue(Operation):
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
       *  Returns : updated user's statItem
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 

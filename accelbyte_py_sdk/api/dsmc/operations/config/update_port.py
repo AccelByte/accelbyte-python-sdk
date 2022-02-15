@@ -34,10 +34,11 @@ from ...models import ResponseError
 class UpdatePort(Operation):
     """Update port config (UpdatePort)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE] Required
-    scope: social This endpoint update a dedicated servers port config in a
-    namespace.
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
 
+    Required scope: social
+
+    This endpoint update a dedicated servers port config in a namespace.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]

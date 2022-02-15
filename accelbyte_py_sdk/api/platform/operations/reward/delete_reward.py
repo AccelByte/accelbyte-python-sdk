@@ -40,7 +40,6 @@ class DeleteReward(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=8 (DELETE)
       *  Returns : the deleted reward data
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:REWARD [DELETE]
 

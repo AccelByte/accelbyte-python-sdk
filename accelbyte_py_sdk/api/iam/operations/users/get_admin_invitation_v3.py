@@ -33,9 +33,7 @@ from ...models import RestErrorResponse
 class GetAdminInvitationV3(Operation):
     """Get User Invitation (GetAdminInvitationV3)
 
-    Endpoint to validate user invitation. When not found, it could also means the
-    invitation has expired.
-
+    Endpoint to validate user invitation. When not found, it could also means the invitation has expired.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/invite/{invitationId}

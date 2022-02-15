@@ -38,7 +38,6 @@ class ListCurrencies(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=2 (READ)
       *  Returns : Currency List
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CURRENCY [READ]
 

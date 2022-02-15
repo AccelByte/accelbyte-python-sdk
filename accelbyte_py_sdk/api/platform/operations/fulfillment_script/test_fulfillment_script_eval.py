@@ -38,7 +38,6 @@ class TestFulfillmentScriptEval(Operation):
 
       * Required permission : resource="ADMIN:FULFILLMENT", action=2 (READ)
 
-
     Required Permission(s):
         - ADMIN:FULFILLMENT [READ]
 

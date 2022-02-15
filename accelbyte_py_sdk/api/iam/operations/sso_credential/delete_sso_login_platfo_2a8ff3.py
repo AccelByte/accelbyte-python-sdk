@@ -32,9 +32,7 @@ from ...models import RestErrorResponse
 class DeleteSSOLoginPlatformCredentialV3(Operation):
     """Delete SSO Platform Credential (DeleteSSOLoginPlatformCredentialV3)
 
-    This is the API to Delete SSO Platform Credential. It needs
-    ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [DELETE] resource
-
+    This is the API to Delete SSO Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [DELETE] resource
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [DELETE]

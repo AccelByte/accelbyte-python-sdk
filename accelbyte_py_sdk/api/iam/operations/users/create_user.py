@@ -35,13 +35,26 @@ class CreateUser(Operation):
 
     Required permission 'NAMESPACE:{namespace}:USER [CREATE]'.
 
+
+
+
     Available Authentication Types:
 
-      1. EMAILPASSWD : an authentication type used for new user registration through email.
-      2. PHONEPASSWD : an authentication type used for new user registration through phone number.
+
+
+
+
+
+      1.  EMAILPASSWD : an authentication type used for new user registration through email.
+
+
+      2.  PHONEPASSWD : an authentication type used for new user registration through phone number.
+
+
+
+
 
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
-
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER [CREATE]

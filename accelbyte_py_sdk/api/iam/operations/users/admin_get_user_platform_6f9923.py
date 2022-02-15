@@ -35,15 +35,22 @@ class AdminGetUserPlatformAccountsV3(Operation):
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]'.
 
+
+
+
     ## Justice Platform Account
 
-    The permission ’ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId}’ [READ] is
-    required in order to read the UserID who linked with the user.
+
+
+
+    The permission âADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId}â [READ]
+    is required in order to read the UserID who linked with the user.
+
 
 
     Gets platform accounts that are already linked with user account
-    action code : 10128
 
+    action code : 10128
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]

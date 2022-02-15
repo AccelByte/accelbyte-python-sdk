@@ -34,12 +34,11 @@ from ...models import ResponseError
 class UpdateContentS3(Operation):
     """Update content to S3 bucket (UpdateContentS3)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].n
-    All request body are required except payload, preview, tags, and contentType.
-    contentType values is used to enforce the Content-Type header needed by the
-    client to upload the content using the S3 presigned URL. If not specified, it
-    will use fileExtension value.
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
 
+    All request body are required except payload, preview, tags, and contentType.
+    contentType values is used to enforce the Content-Type header needed by the client to upload the content using the S3 presigned URL.
+    If not specified, it will use fileExtension value.
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]

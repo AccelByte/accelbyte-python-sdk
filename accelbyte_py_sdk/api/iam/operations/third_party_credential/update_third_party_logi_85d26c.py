@@ -36,8 +36,10 @@ class UpdateThirdPartyLoginPlatformDomainV3(Operation):
 
     This is the API to set 3rd Platform domain.
 
-    It needs ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [UPDATE] resource.
 
+
+
+    It needs ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [UPDATE] resource.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [UPDATE]

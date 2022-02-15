@@ -39,7 +39,6 @@ class UpdateUserSlotConfig(Operation):
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG", action=4 (UPDATE)
       *  Returns : updated slot config
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG [UPDATE]
 

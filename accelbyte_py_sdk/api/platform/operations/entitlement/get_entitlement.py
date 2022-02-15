@@ -40,7 +40,6 @@ class GetEntitlement(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
       *  Returns : entitlement
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ENTITLEMENT [READ]
 

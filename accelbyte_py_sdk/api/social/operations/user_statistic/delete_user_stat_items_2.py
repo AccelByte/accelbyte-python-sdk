@@ -32,16 +32,15 @@ from ...models import ErrorEntity
 class DeleteUserStatItems2(Operation):
     """Delete User's statItems (deleteUserStatItems_2)
 
-    Delete user's stat items for given namespace, statCode, and user Id. If query
-    param *additionalKey* is provided, it will delete user stat items of specific
-    key (i.e. characterName). Otherwise, it will delete all stat items related to
-    the user Id.
+    Delete user's stat items for given namespace, statCode, and user Id.
+    If query param *additionalKey* is provided, it will delete user stat items of specific key (i.e. characterName).
+    Otherwise, it will delete all stat items related to the user Id.
+
     Delete user's statItems given stat code.
     Other detail info:
 
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=8 (DELETE)
       *  Returns : no content
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [DELETE]

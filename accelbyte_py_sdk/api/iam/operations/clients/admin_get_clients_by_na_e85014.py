@@ -35,8 +35,10 @@ class AdminGetClientsByNamespaceV3(Operation):
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT [READ]'
 
-    action code: 10308
 
+
+
+    action code: 10308
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CLIENT [READ]

@@ -32,9 +32,7 @@ from .....core import deprecated
 class DeleteUserActivitiesHandler(Operation):
     """Delete all user's activities (DeleteUserActivitiesHandler)
 
-    Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]`and scope
-    `analytics`
-
+    Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]`and scope `analytics`
 
     Required Permission(s):
         - NAMESPACE:{namespace}:EVENT [UPDATE]

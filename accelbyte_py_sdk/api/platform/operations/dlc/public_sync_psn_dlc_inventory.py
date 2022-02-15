@@ -40,7 +40,6 @@ class PublicSyncPsnDlcInventory(Operation):
       * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
       *  Returns : result of synchronization
 
-
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/psn/sync
 

@@ -35,14 +35,12 @@ from ...models import ValidationErrorEntity
 class CreateUserPaymentOrder(Operation):
     """Create payment order (createUserPaymentOrder)
 
-    [SERVICE COMMUNICATION ONLY] This API is used to create payment order from
-    justice service. The result contains the payment station url.
+    [SERVICE COMMUNICATION ONLY] This API is used to create payment order from justice service. The result contains the payment station url.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT", action=1 (CREATE)
       * It will be forbidden while the user is banned: PAYMENT_INITIATE or ORDER_AND_PAYMENT
       *  Returns : created order
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT [CREATE]

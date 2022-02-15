@@ -38,7 +38,6 @@ class PublicCheckPaymentOrderPaidStatus(Operation):
 
       * Returns : Payment order paid result
 
-
     Properties:
         url: /platform/public/namespaces/{namespace}/payment/orders/{paymentOrderNo}/status
 

@@ -33,10 +33,9 @@ class AdminGetBannedUsersV3(Operation):
     """Get list of user filtered by ban types (AdminGetBannedUsersV3)
 
     Required permission 'ADMIN:BAN [READ]'
-    Ban type is the code available for ban assignment. It is applicable globally
-    for any namespace.
+    Ban type is the code
+    available for ban assignment. It is applicable globally for any namespace.
     action code : 10201
-
 
     Required Permission(s):
         - ADMIN:BAN [READ]

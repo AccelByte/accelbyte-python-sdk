@@ -32,9 +32,7 @@ from ...models import ModelResetPasswordRequest
 class ResetPassword(Operation):
     """Reset User Password (ResetPassword)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]' or
-    valid basic auth header
-
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]' or valid basic auth header
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]

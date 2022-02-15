@@ -33,11 +33,14 @@ from ...models import ResponseError
 class GetServerSession(Operation):
     """Get Session ID (GetServerSession)
 
-    ``` Required permission: NAMESPACE:{namespace}:DSM:SERVER [UPDATE] Required
-    scope: social This endpoint is intended to be called by dedicated server to
-    query its session ID. DS should call this when it first receive player
-    connection, to see if it is actually claimed```
+    ```
+    Required permission: NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+    Required scope: social
 
+    This endpoint is intended to be called by dedicated server
+    to query its session ID.
+    DS should call this when it first receive player connection,
+    to see if it is actually claimed```
 
     Required Permission(s):
         - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]

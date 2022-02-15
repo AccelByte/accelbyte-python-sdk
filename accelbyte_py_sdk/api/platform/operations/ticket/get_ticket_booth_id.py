@@ -39,7 +39,6 @@ class GetTicketBoothID(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=2 (READ)
       *  Returns : ticket booth id
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
 

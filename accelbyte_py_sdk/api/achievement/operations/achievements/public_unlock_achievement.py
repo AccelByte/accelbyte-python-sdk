@@ -32,9 +32,8 @@ from ...models import ResponseError
 class PublicUnlockAchievement(Operation):
     """Unlock an achievement (PublicUnlockAchievement)
 
-    Required permission `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]`
-    and scope `social`
-
+    Required permission
+    `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]

@@ -39,7 +39,6 @@ class GetPaymentOrder(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
       *  Returns : payment order instance
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PAYMENT [READ]
 

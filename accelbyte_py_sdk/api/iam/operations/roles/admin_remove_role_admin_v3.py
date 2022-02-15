@@ -36,7 +36,6 @@ class AdminRemoveRoleAdminV3(Operation):
 
     code: 10413
 
-
     Required Permission(s):
         - ADMIN:ROLE [UPDATE]
 

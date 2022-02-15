@@ -38,7 +38,6 @@ class ListKeys(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2 (READ)
       *  Returns : keys
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:KEYGROUP [READ]
 

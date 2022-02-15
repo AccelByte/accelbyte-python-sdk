@@ -35,7 +35,6 @@ class AdminDeleteClientV3(Operation):
     Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT [DELETE]'
     action code : 10310
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CLIENT [DELETE]
 

@@ -33,9 +33,11 @@ from ...models import ResponseError
 class ListAllTerminatedServers(Operation):
     """Retrieve All Terminated Servers (listAllTerminatedServers)
 
-    ``` Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ] This
-    endpoint used to retrieve terminated servers in all namespace ```
+    ```
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
 
+    This endpoint used to retrieve terminated servers in all namespace
+    ```
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]

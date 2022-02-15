@@ -35,9 +35,10 @@ class PublicGetPlayerBlockedByPlayersV1(Operation):
 
     Required valid user authorization
 
-    load get players who blocked this player in a namespace based on user id
-    Action Code: 50101
 
+    load get players who blocked this player in a namespace based on user id
+
+    Action Code: 50101
 
     Properties:
         url: /lobby/v1/public/player/namespaces/{namespace}/users/me/blocked-by

@@ -35,8 +35,10 @@ class AdminUpdateClientPermissionV3(Operation):
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT [UPDATE]'
 
-    action code: 10307
 
+
+
+    action code: 10307
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CLIENT [UPDATE]

@@ -36,7 +36,6 @@ class AdminCreateChannel(Operation):
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
 

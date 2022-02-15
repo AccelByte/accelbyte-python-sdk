@@ -41,7 +41,6 @@ class PublicGetItemByAppId(Operation):
       *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store item)
       *  Returns : the item with that appId
 
-
     Properties:
         url: /platform/public/namespaces/{namespace}/items/byAppId
 

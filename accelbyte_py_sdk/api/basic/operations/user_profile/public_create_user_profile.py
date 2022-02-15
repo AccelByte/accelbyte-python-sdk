@@ -44,7 +44,6 @@ class PublicCreateUserProfile(Operation):
       *  Timezone : IANA time zone, e.g. Asia/Shanghai
       *  Returns : Created user profile
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:PROFILE [CREATE]
 

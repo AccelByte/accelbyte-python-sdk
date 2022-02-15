@@ -38,7 +38,6 @@ class GetPlatformDLCConfig(Operation):
 
       * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:DLC:CONFIG" , action=2 (READ)
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [READ]
 

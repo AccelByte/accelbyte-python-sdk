@@ -33,14 +33,12 @@ from ...models import PopulatedItemInfo
 class GetLocaleItemBySku(Operation):
     """Get an item by sku in locale (getLocaleItemBySku)
 
-    This API is used to get an item by sku in specific locale. If item not exist
-    in specific region, default region item will return.
+    This API is used to get an item by sku in specific locale. If item not exist in specific region, default region item will return.
 
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
       *  Returns : item data
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ITEM [READ]

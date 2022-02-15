@@ -34,12 +34,11 @@ from ...models import ResponseError
 class AdminUploadContentS3(Operation):
     """Upload content to S3 bucket (AdminUploadContentS3)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT
-    [CREATE].n All request body are required except preview, tags, and
-    contentType. contentType values is used to enforce the Content-Type header
-    needed by the client when uploading the content using the S3 presigned URL. If
-    not specified, it will use fileExtension value.
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
 
+    All request body are required except preview, tags, and contentType.
+    contentType values is used to enforce the Content-Type header needed by the client when uploading the content using the S3 presigned URL.
+    If not specified, it will use fileExtension value.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]

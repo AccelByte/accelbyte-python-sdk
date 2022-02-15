@@ -38,7 +38,6 @@ class GetUserStatItems(Operation):
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
       *  Returns : stat items
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
 

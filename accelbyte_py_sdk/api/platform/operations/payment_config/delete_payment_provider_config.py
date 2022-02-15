@@ -38,7 +38,6 @@ class DeletePaymentProviderConfig(Operation):
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=8 (DELETE)
       *  Returns : payment provider config
 
-
     Required Permission(s):
         - ADMIN:PAYMENT:CONFIG [DELETE]
 

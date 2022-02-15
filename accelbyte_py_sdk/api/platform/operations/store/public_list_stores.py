@@ -40,7 +40,6 @@ class PublicListStores(Operation):
       *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store)
       *  Returns : the list of stores
 
-
     Properties:
         url: /platform/public/namespaces/{namespace}/stores
 

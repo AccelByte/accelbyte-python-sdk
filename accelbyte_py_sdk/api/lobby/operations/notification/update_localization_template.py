@@ -33,10 +33,9 @@ from ...models import RestapiErrorResponseBody
 class UpdateLocalizationTemplate(Operation):
     """update template draft (updateLocalizationTemplate)
 
-    Required permission : `NAMESPACE:{namespace}:TEMPLATE [UPDATE]` with scope
-    `social`
-    Modify draft template
+    Required permission : `NAMESPACE:{namespace}:TEMPLATE [UPDATE]` with scope `social`
 
+    Modify draft template
 
     Required Permission(s):
         - NAMESPACE:{namespace}:TEMPLATE [UPDATE]

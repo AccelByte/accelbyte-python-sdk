@@ -35,9 +35,10 @@ class GetPersonalChatHistoryV1Public(Operation):
 
     Required valid user authorization
 
-    load personal chat history in a namespace based on Friend User ID
-    Action Code: 50101
 
+    load personal chat history in a namespace based on Friend User ID
+
+    Action Code: 50101
 
     Properties:
         url: /lobby/v1/public/chat/namespaces/{namespace}/users/me/friends/{friendId}

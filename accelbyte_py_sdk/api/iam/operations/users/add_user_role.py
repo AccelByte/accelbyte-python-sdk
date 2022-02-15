@@ -32,7 +32,6 @@ class AddUserRole(Operation):
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]'
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
 

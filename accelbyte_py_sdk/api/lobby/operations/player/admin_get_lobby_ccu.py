@@ -33,10 +33,9 @@ from ...models import RestapiErrorResponseBody
 class AdminGetLobbyCCU(Operation):
     """admin get number of players currently connected to the lobby. (adminGetLobbyCCU)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:LOBBY:CCU [READ]` with
-    scope `social`
-    Get the number of players connected to the Lobby in the given namespace.
+    Required permission : `ADMIN:NAMESPACE:{namespace}:LOBBY:CCU [READ]` with scope `social`
 
+    Get the number of players connected to the Lobby in the given namespace.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:LOBBY:CCU [READ]

@@ -42,7 +42,6 @@ class CloneSeason(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=1 (CREATE)
       *  Returns : cloned season info
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:SEASONPASS [CREATE]
 

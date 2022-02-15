@@ -32,13 +32,11 @@ from ...models import ErrorEntity
 class DeleteItem(Operation):
     """Delete an item (deleteItem)
 
-    This API is used to delete an item permanently, usually for test purpose. DO
-    NOT delete already published item.
+    This API is used to delete an item permanently, usually for test purpose. DO NOT delete already published item.
 
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=8 (DELETE)
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ITEM [DELETE]

@@ -40,7 +40,6 @@ class GetNamespaces(Operation):
       *  Action code : 11303
       *  Returns : list of namespaces
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE [READ]
 

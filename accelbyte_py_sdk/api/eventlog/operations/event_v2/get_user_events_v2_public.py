@@ -34,7 +34,6 @@ class GetUserEventsV2Public(Operation):
 
     Requires valid user access token
 
-
     Properties:
         url: /event/v2/public/namespaces/{namespace}/users/{userId}/event
 

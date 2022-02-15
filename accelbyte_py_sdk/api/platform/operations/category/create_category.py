@@ -37,21 +37,21 @@ class CreateCategory(Operation):
 
     This API is used to create category.
 
-    A category is a path separated by "/". A category also has localized display
-    names. Example:
-
+    A category is a path separated by "/". A category also has localized display names. Example:
 
 
         {
+
             "categoryPath": "/games",
+
             "localizationDisplayNames": {"en" : "Games"}
+
         }
 
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=1 (CREATE)
       *  Returns : created category data
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CATEGORY [CREATE]

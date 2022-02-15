@@ -32,9 +32,7 @@ from ...models import RestErrorResponse
 class DeleteThirdPartyLoginPlatformCredentialV3(Operation):
     """Delete Third Party Platform Credential (DeleteThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Delete 3rd Platform Credential. It needs
-    ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [DELETE] resource
-
+    This is the API to Delete 3rd Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [DELETE] resource
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [DELETE]

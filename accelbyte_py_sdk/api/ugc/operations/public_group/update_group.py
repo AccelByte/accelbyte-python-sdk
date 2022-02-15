@@ -37,7 +37,6 @@ class UpdateGroup(Operation):
     Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [UPDATE]
     replace group name and contents with new ones
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [UPDATE]
 

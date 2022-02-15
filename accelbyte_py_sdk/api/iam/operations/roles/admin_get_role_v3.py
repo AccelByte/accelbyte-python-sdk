@@ -35,8 +35,8 @@ class AdminGetRoleV3(Operation):
 
     Required permission 'ADMIN:ROLE [READ]'
 
-    action code: 10419
 
+    action code: 10419
 
     Required Permission(s):
         - ADMIN:ROLE [READ]

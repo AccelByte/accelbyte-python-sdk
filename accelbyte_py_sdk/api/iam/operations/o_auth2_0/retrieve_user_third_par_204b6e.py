@@ -35,19 +35,39 @@ class RetrieveUserThirdPartyPlatformTokenV3(Operation):
 
     Retrieve User Third Party Platform Token
 
-    This endpoint used for retrieving third party platform token for user that
-    login using third party. Passing platform group name or it's member will
-    return same access token that can be used across the platform members.
+
+
+
+    This endpoint used for retrieving third party platform token for user that login using third party.
+    Passing platform group name or it's member will return same access token that can be used across the platform members.
+
+
+
+
 
     The third party platform and platform group covered for this is:
 
-      * (psn) ps4web
-      * (psn) ps4
-      * (psn) ps5
-      * epicgames
-      * twitch
-      * awscognito
 
+
+
+
+
+      * (psn) ps4web
+
+
+      * (psn) ps4
+
+
+      * (psn) ps5
+
+
+      * epicgames
+
+
+      * twitch
+
+
+      * awscognito
 
     Properties:
         url: /iam/v3/oauth/namespaces/{namespace}/users/{userId}/platforms/{platformId}/platformToken

@@ -34,28 +34,33 @@ from ...models import ModelGetUserJusticePlatformAccountResponse
 class GetUserJusticePlatformAccount(Operation):
     """Get the Justice linked accounts on the designated namespace (GetUserJusticePlatformAccount)
 
-    This endpoint requires the client access token as the bearer token. Required
-    permission 'ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [UPDATE]'
+    This endpoint requires the client access token as the bearer token. Required permission 'ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [UPDATE]'
 
-    It is going to be removed on November 26th, 2018
 
-    The endpoint returns user Justice platform account linked with the given user.
-    If the user Justice platform account doesn't exist in the designated
-    namespace, the endpoint is going to create and return the new Justice platform
-    account. The newly user Justice platform account is going to be forced to
-    perform token grant through the given user and can't perform password update
+
+
+     It is going to be removed on November 26th, 2018
+
+
+
+
+    The endpoint returns user Justice platform account linked with the given user. If the user Justice platform account doesn't exist in the designated namespace, the endpoint is going toÂ create and return the new Justice platform account.
+    The newly user Justice platform account is going to be forced to perform token grant through the given user and can't perform password update
+
+
+
 
     ### Read Justice Platform Account UserID
 
-    In order to read the Justice platform account UserID, it is required to have
-    the permission: NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ] , otherwise
-    the UserID is going to be censored and replaced with “Redacted” text.
 
+
+
+    In order to read the Justice platform account UserID, it is required to have the permission: NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ] , otherwise the UserID is going to be censored and replaced with âRedactedâ text.
 
     Required Permission(s):
-        - NAMESPACE:{namespace}:JUSTICE:USER:{userId} [UPDATE]
-
         - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [UPDATE]
+
+        - NAMESPACE:{namespace}:JUSTICE:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}

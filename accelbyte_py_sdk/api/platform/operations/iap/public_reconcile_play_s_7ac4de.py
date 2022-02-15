@@ -41,7 +41,6 @@ class PublicReconcilePlayStationStore(Operation):
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
       *  Returns : result of synchronization
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
 

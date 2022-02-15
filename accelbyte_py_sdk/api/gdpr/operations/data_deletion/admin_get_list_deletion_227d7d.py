@@ -33,9 +33,7 @@ from ...models import ResponseError
 class AdminGetListDeletionDataRequest(Operation):
     """Retrieve all user's account deletion requests in specified date (AdminGetListDeletionDataRequest)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER[READ]` and
-    scope `account`
-
+    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER[READ]` and scope `account`
 
     Required Scope(s):
         - account

@@ -38,7 +38,6 @@ class DownloadUserOrderReceipt(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
       *  Returns : order receipt pdf
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
 

@@ -38,7 +38,6 @@ class PublicCreateUserNamespaceSlot(Operation):
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=1 (CREATE)
       *  Returns : created slot info
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [CREATE]
 

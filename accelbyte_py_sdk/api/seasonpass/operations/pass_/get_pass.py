@@ -40,7 +40,6 @@ class GetPass(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
       *  Returns : pass data
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
 

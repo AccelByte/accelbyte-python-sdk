@@ -33,13 +33,11 @@ from ...models import UserPurchasable
 class CheckSeasonPurchasable(Operation):
     """Check pass or tier purchasable (checkSeasonPurchasable)
 
-    This API is used to check pass or tier purchasable, season only located in
-    non-publisher namespace.
+    This API is used to check pass or tier purchasable, season only located in non-publisher namespace.
 
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]

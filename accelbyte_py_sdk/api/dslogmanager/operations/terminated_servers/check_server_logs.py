@@ -33,10 +33,11 @@ from ...models import ResponseError
 class CheckServerLogs(Operation):
     """Check dedicated server log files existence (checkServerLogs)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ] Required
-    scope: social This endpoint will check log file existence before download
-    file.
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]
 
+    Required scope: social
+
+    This endpoint will check log file existence before download file.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]

@@ -34,9 +34,8 @@ from ...models import ResponseError
 class AdminUpdateType(Operation):
     """Update types (AdminUpdateType)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [UPDATE] updates a
-    type and subtype
-
+    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [UPDATE]
+    updates a type and subtype
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [UPDATE]

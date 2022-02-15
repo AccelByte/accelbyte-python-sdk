@@ -33,10 +33,9 @@ from ...models import RestapiErrorResponseBody
 class AdminAddProfanityFilters(Operation):
     """add multiple filters into the list (adminAddProfanityFilters)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with
-    scope `social`
-    add multiple filters into the list
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with scope `social`
 
+    add multiple filters into the list
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]

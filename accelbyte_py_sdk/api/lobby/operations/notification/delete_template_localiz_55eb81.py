@@ -32,11 +32,11 @@ from ...models import RestapiErrorResponseV1
 class DeleteTemplateLocalizationV1Admin(Operation):
     """delete template localization (deleteTemplateLocalizationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]` with
-    scope `social`
-    delete template localization
-    Action Code: 50209
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]` with scope `social`
 
+    delete template localization
+
+    Action Code: 50209
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]

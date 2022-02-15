@@ -33,9 +33,11 @@ from ...models import ResponseError
 class BatchDownloadServerLogs(Operation):
     """Batch Download dedicated server log files (batchDownloadServerLogs)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ] Required
-    scope: social This endpoint will download dedicated server's log file (.zip).
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]
 
+    Required scope: social
+
+    This endpoint will download dedicated server's log file (.zip).
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]

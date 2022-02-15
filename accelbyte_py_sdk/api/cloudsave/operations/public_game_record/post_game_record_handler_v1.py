@@ -34,13 +34,21 @@ class PostGameRecordHandlerV1(Operation):
     """Create or append game record (postGameRecordHandlerV1)
 
     Required Permission | `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]`
-    ---|---
-    Required Scope | `social`
+    --------------------|---------------------------------------------------
+    Required Scope      | `social`
 
-    If there's already record, the record will be merged with conditions: - If
-    field name is already exist, the value will be replaced - If field name is
-    not exists it will append the field and its value Example: Replace value in a
-    specific JSON key
+
+
+
+
+    If there's already record, the record will be merged with conditions:
+    - If field name is already exist, the value will be replaced
+    - If field name is not exists it will append the field and its value
+
+    Example:
+
+    Replace value in a specific JSON key
+
 
 
 
@@ -60,7 +68,10 @@ class PostGameRecordHandlerV1(Operation):
         }
 
 
+
+
     Append new json item
+
 
 
 
@@ -79,8 +90,6 @@ class PostGameRecordHandlerV1(Operation):
             "foo": "bar",
             "foo_new": "bar_new"
         }
-
-
 
     Required Permission(s):
         - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]

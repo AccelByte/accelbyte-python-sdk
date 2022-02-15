@@ -32,7 +32,6 @@ class DeleteClientByNamespace(Operation):
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT:{clientId} [DELETE]'
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CLIENT:{clientId} [DELETE]
 

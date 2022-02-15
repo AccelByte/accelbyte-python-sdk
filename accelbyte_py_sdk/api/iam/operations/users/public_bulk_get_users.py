@@ -36,10 +36,18 @@ class PublicBulkGetUsers(Operation):
 
     Notes:
 
-      * This endpoint bulk get users' basic info by userId, max allowed 20 at a time
-      * If namespace is game, will search by game user Id, other wise will search by publisher namespace
-      * Result will include displayName(if it exists)
 
+
+
+
+
+      * This endpoint bulk get users' basic info by userId, max allowed 20 at a time
+
+
+      * If namespace is game, will search by game user Id, other wise will search by publisher namespace
+
+
+      * Result will include displayName(if it exists)
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/bulk/basic

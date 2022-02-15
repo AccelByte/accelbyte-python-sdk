@@ -36,9 +36,10 @@ class ListPlayerRecordHandlerV1(Operation):
     """Retrieve list of public player records (listPlayerRecordHandlerV1)
 
     Required permission: ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-    Required scope: social Retrieve list of player records key and userID under
-    given namespace.
 
+    Required scope: social
+
+    Retrieve list of player records key and userID under given namespace.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]

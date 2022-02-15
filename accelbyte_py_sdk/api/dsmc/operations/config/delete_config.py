@@ -32,10 +32,13 @@ from ...models import ResponseError
 class DeleteConfig(Operation):
     """Delete config (DeleteConfig)
 
-    ``` Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-    Required scope: social This endpoint removes config. When there are ready
-    servers, those servers will be removed. ```
+    ```
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+    Required scope: social
 
+    This endpoint removes config. When there are ready servers,
+    those servers will be removed.
+    ```
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]

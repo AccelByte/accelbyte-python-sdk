@@ -33,8 +33,7 @@ from ...models import RetrievePolicyPublicResponse
 class RetrieveLatestPoliciesPublic(Operation):
     """Retrieve Latest Policies by Namespace and Country (retrieveLatestPoliciesPublic)
 
-    Retrieve all active latest policies based on a namespace and country. The
-    country will be read from user token.
+    Retrieve all active latest policies based on a namespace and country. The country will be read from user token.
     Other detail info:
 
       * Leave the policyType empty if you want to be responded with all policy type
@@ -48,7 +47,6 @@ class RetrieveLatestPoliciesPublic(Operation):
         * Query: alwaysIncludeDefault: true
         * Response: Document 1 (UA), Document 2 (US), Document 3 (US)
       *  Required permission: login user
-
 
     Properties:
         url: /agreement/public/policies/namespaces/{namespace}

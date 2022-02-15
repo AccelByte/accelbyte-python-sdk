@@ -35,7 +35,6 @@ class PublicGetAsyncStatus(Operation):
 
     This endpoint is used to get linking status.
 
-
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/requests/{requestId}/async/status
 

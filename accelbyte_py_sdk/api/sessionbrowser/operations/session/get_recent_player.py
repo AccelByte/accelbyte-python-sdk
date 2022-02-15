@@ -34,8 +34,10 @@ class GetRecentPlayer(Operation):
     """Query recent players with given user id (GetRecentPlayer)
 
     Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:RECENTPLAYER [READ]
-    Required scope: social Query recent player by user ID
 
+    Required scope: social
+
+    Query recent player by user ID
 
     Required Permission(s):
         - NAMESPACE:{namespace}:SESSIONBROWSER:RECENTPLAYER [READ]

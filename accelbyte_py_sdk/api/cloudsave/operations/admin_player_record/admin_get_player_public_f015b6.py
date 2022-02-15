@@ -33,11 +33,11 @@ from ...models import ModelsResponseError
 class AdminGetPlayerPublicRecordHandlerV1(Operation):
     """Retrieve a player public record value by its key (adminGetPlayerPublicRecordHandlerV1)
 
-    Required permission:
-    ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]
-    Required scope: social Get a record in user-level (arbitrary JSON data) by its
-    key.
+    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]
 
+    Required scope: social
+
+    Get a record in user-level (arbitrary JSON data) by its key.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]

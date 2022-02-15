@@ -35,11 +35,12 @@ from ...models import ClientmodelClientCreationResponse
 class CreateClient(Operation):
     """Create Client (CreateClient)
 
-    ## The endpoint is going to be deprecated at 16 August, 2018. Please use this
-    instead: namespaces/{namespace}/clients
+    ## The endpoint is going to be deprecated at 16 August, 2018. Please use this instead: namespaces/{namespace}/clients
+
+
+
 
     Required permission 'CLIENT:ADMIN [CREATE]'
-
 
     Required Permission(s):
         - CLIENT:ADMIN [CREATE]

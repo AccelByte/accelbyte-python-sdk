@@ -39,7 +39,6 @@ class DeleteStore(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8 (DELETE)
       *  Returns : store
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:STORE [DELETE]
 

@@ -33,11 +33,11 @@ from ...models import RestapiErrorResponseV1
 class GetTemplateSlugLocalizationsTemplateV1Admin(Operation):
     """get all notification template localization in a slug (getTemplateSlugLocalizationsTemplateV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with
-    scope `social`
-    Get all templates in a namespace
-    Action Code: 50205
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with scope `social`
 
+    Get all templates in a namespace
+
+    Action Code: 50205
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]

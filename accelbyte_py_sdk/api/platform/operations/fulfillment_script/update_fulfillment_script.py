@@ -39,7 +39,6 @@ class UpdateFulfillmentScript(Operation):
 
       * Required permission : resource="ADMIN:FULFILLMENT", action=4 (UPDATE)
 
-
     Required Permission(s):
         - ADMIN:FULFILLMENT [UPDATE]
 

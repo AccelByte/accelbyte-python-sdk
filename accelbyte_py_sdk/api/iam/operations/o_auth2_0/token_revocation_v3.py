@@ -34,12 +34,13 @@ class TokenRevocationV3(Operation):
 
     This endpoint revokes a token.
 
-    This endpoint requires authorized requests header with Basic Authentication
-    from client that establish the token.
+
+
+
+    This endpoint requires authorized requests header with Basic Authentication from client that establish the token.
 
 
     action code: 10706
-
 
     Properties:
         url: /iam/v3/oauth/revoke

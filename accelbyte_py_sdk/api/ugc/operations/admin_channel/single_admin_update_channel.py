@@ -36,7 +36,6 @@ class SingleAdminUpdateChannel(Operation):
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [UPDATE]
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [UPDATE]
 

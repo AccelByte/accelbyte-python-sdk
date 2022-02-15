@@ -36,9 +36,10 @@ class CreateSession(Operation):
     """Register a new game session (CreateSession)
 
     Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [CREATE]
-    Required scope: social This end point intended to be called directly by P2P
-    game client host or by DSMC
 
+    Required scope: social
+
+    This end point intended to be called directly by P2P game client host or by DSMC
 
     Required Permission(s):
         - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [CREATE]

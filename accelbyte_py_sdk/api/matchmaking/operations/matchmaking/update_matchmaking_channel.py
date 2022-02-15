@@ -35,9 +35,12 @@ class UpdateMatchmakingChannel(Operation):
     """Update a channel (UpdateMatchmakingChannel)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]
-    Required Scope: social Update channel based on namespace and channel name
-    Action Code: 510111
 
+    Required Scope: social
+
+    Update channel based on namespace and channel name
+
+    Action Code: 510111
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]

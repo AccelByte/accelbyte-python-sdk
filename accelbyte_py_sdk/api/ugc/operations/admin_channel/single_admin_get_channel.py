@@ -35,7 +35,6 @@ class SingleAdminGetChannel(Operation):
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
 

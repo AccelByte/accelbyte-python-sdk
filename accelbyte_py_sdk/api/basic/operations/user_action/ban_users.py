@@ -35,11 +35,9 @@ class BanUsers(Operation):
     """Ban user(temporarily or permanently) (banUsers)
 
     Ban user.
-    actionId: 1 means permanent ban, actionId: 10 means Temporary ban.Other detail
-    info:
+    actionId: 1 means permanent ban, actionId: 10 means Temporary ban.Other detail info:
 
       * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:ACTION" , action=4 (UPDATE)
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ACTION [UPDATE]

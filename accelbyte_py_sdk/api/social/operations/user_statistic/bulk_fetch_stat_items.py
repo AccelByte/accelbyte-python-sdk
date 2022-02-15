@@ -34,10 +34,9 @@ class BulkFetchStatItems(Operation):
     """Bulk fetch statitems value (bulkFetchStatItems)
 
     Bulk fetch multiple user's statitem value for a given namespace and statCode.
-    Other detail info: + *Required permission*:
-    resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=2 (READ) + *Returns*:
-    list of user's statItem
-
+    Other detail info:
+    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=2 (READ)
+    + *Returns*: list of user's statItem
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:STATITEM [READ]

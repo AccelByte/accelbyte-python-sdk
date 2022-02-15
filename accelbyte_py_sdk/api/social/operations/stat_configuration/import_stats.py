@@ -33,13 +33,11 @@ from ...models import StatImportInfo
 class ImportStats(Operation):
     """Import stat configurations (importStats)
 
-    Import stat configurations for a given namespace from file. At current, only
-    JSON file is supported.
+    Import stat configurations for a given namespace from file. At current, only JSON file is supported.
 
     Other detail info:
 
       *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STAT", action=1 (CREATE)
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:STAT [CREATE]

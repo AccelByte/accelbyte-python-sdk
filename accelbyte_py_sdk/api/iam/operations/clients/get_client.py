@@ -34,7 +34,6 @@ class GetClient(Operation):
 
     Required permission 'CLIENT [READ]'
 
-
     Required Permission(s):
         - CLIENT [READ]
 

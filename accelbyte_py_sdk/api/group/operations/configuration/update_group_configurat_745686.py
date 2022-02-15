@@ -36,12 +36,15 @@ class UpdateGroupConfigurationAdminV1(Operation):
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]'
 
-    This endpoint is used to update existing configuration. groupAdminRoleId and
-    groupMemberRoleId won't be able to be updated. User can try to change the
-    member role permission instead for each of those member role
+
+
+
+    This endpoint is used to update existing configuration. groupAdminRoleId and groupMemberRoleId won't be able to be updated. User can try to change the member role permission instead for each of those member role
+
+
+
 
     Action Code: 73102
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]

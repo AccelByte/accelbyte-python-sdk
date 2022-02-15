@@ -33,11 +33,11 @@ from ...models import ResponseError
 class ClaimServer(Operation):
     """Claim a DS for a game session (ClaimServer)
 
-    Required permission: NAMESPACE:{namespace}:DSM:SESSION [UPDATE] Required
-    scope: social This endpoint is intended to be called by game session manager
-    (matchmaker, lobby, etc.) to claim a dedicated server. The dedicated server
-    cannot be claimed unless the status is READY
+    Required permission: NAMESPACE:{namespace}:DSM:SESSION [UPDATE]
 
+    Required scope: social
+
+    This endpoint is intended to be called by game session manager (matchmaker, lobby, etc.) to claim a dedicated server. The dedicated server cannot be claimed unless the status is READY
 
     Required Permission(s):
         - NAMESPACE:{namespace}:DSM:SESSION [UPDATE]

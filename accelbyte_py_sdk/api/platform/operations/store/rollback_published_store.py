@@ -40,7 +40,6 @@ class RollbackPublishedStore(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
       *  Returns : updated store info
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
 

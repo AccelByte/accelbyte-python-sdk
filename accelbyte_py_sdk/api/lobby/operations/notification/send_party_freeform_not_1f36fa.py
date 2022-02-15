@@ -33,10 +33,9 @@ from ...models import RestapiErrorResponseV1
 class SendPartyFreeformNotificationV1Admin(Operation):
     """send freeform notification to a party (sendPartyFreeformNotificationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with
-    scope `social`
-    Sends notification to a party.
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
 
+    Sends notification to a party.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]

@@ -32,12 +32,12 @@ from .....core import deprecated
 class EnableUser(Operation):
     """Enable a user (EnableUser)
 
-    ## The endpoint is going to be deprecated. Please use this instead:
-    iam/v2/admin/namespaces/{namespace}/users/{userId}/enable
+    ## The endpoint is going to be deprecated. Please use this instead: iam/v2/admin/namespaces/{namespace}/users/{userId}/enable
 
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId}
-    [UPDATE]'
 
+
+
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]

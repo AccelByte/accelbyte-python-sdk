@@ -34,8 +34,10 @@ class ListGameRecordsHandlerV1(Operation):
     """Retrieve list of records key by namespace (listGameRecordsHandlerV1)
 
     Required permission: ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-    Required scope: social Retrieve list of records key by namespace
 
+    Required scope: social
+
+    Retrieve list of records key by namespace
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]

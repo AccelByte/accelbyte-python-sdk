@@ -34,11 +34,15 @@ class DeleteGroupAdminV1(Operation):
 
     Required Permission: "ADMIN:NAMESPACE:{namespace}:GROUP:{groupId} [DELETE]"
 
-    Delete existing group. It will check whether the groupID is exist before doing
-    the process to delete the group.
+
+
+
+    Delete existing group. It will check whether the groupID is exist before doing the process to delete the group.
+
+
+
 
     Action Code: 73302
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:GROUP:{groupId} [DELETE]

@@ -38,7 +38,6 @@ class GetOrderStatistics(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)
       *  Returns : order statistics
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ORDER [READ]
 

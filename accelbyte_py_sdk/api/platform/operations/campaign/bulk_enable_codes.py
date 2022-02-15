@@ -38,7 +38,6 @@ class BulkEnableCodes(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
       *  Returns : the number of code actually enabled
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
 

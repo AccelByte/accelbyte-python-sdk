@@ -35,10 +35,15 @@ class AdminGetRoleAdminStatusV3(Operation):
 
     Required permission 'ADMIN:ROLE [READ]'
 
+
+
+
     Admin roles has its members listed in the role.
 
-    action code: 10420
 
+
+
+    action code: 10420
 
     Required Permission(s):
         - ADMIN:ROLE [READ]

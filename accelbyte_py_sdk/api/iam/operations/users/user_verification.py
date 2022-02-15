@@ -34,11 +34,11 @@ class UserVerification(Operation):
 
     Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
 
-    Redeems a verification code sent to a user to verify the user's contact
-    address is correct
+
+    Redeems a verification code sent to a user to verify the user's contact address is correct
+
 
     Available ContactType : email or phone
-
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId} [UPDATE]

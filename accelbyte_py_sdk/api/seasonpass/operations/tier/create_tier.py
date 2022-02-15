@@ -35,13 +35,11 @@ from ...models import ValidationErrorEntity
 class CreateTier(Operation):
     """Create tier (createTier)
 
-    This API is used to create tier for a draft season, can create multiple tiers
-    at same time.
+    This API is used to create tier for a draft season, can create multiple tiers at same time.
 
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=1 (CREATE)
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:SEASONPASS [CREATE]

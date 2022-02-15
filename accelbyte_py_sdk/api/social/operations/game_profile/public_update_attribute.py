@@ -40,7 +40,6 @@ class PublicUpdateAttribute(Operation):
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=4 (UPDATE)
       *  Returns : updated attribute
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [UPDATE]
 

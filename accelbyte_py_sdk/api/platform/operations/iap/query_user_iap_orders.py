@@ -38,7 +38,6 @@ class QueryUserIAPOrders(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=2 (READ)
       *  Returns : paginated iap orders
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [READ]
 

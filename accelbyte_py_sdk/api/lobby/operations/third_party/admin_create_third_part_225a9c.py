@@ -34,10 +34,9 @@ from ...models import RestapiErrorResponseV1
 class AdminCreateThirdPartyConfig(Operation):
     """Create Third Party Steam Config (adminCreateThirdPartyConfig)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [CREATE]`
-    with scope `social`
-    create third party config in a namespace.
+    Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [CREATE]` with scope `social`
 
+    create third party config in a namespace.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [CREATE]

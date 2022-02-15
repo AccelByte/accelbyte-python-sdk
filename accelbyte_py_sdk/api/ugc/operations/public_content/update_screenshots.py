@@ -34,9 +34,9 @@ from ...models import ResponseError
 class UpdateScreenshots(Operation):
     """Update screenshot of content (UpdateScreenshots)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].n
-    Maximum description length: 1024.
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
 
+    Maximum description length: 1024.
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]

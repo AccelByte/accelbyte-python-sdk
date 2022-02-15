@@ -32,14 +32,11 @@ from ...models import PaymentOrderSyncResult
 class SyncPaymentOrders(Operation):
     """Sync payment orders (syncPaymentOrders)
 
-    Sync payment orders. If response contains nextEvaluatedKey, please use it as
-    query param in the next call to fetch the next batch, a batch has 1000
-    elements or less.
+    Sync payment orders. If response contains nextEvaluatedKey, please use it as query param in the next call to fetch the next batch, a batch has 1000 elements or less.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT", action=2 (READ)
       *  Returns : sync payment orders
-
 
     Required Permission(s):
         - ADMIN:PAYMENT [READ]

@@ -32,7 +32,6 @@ class Logout(Operation):
 
     This endpoint is used to remove access_token cookie and refresh_token cookie.
 
-
     Properties:
         url: /iam/v3/logout
 

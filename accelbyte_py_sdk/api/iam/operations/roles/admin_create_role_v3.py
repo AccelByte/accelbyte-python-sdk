@@ -37,7 +37,6 @@ class AdminCreateRoleV3(Operation):
     Required permission 'ADMIN:ROLE [CREATE]'
     action code: 10401
 
-
     Required Permission(s):
         - ADMIN:ROLE [CREATE]
 

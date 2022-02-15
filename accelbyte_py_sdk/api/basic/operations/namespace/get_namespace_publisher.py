@@ -41,7 +41,6 @@ class GetNamespacePublisher(Operation):
       *  Action code : 11305
       *  Returns : Namespace info related publisher namespace
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
 

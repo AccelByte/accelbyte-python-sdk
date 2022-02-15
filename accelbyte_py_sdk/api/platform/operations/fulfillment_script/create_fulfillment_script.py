@@ -39,13 +39,9 @@ class CreateFulfillmentScript(Operation):
 
       * Required permission : resource="ADMIN:FULFILLMENT", action=1 (CREATE)
 
-    Fulfillment scripts are used for adding custom fulfillment logic based on
-    ITEM_TYPE : [MEDIA,INGAMEITEM] for now, and the custom scripts only cover
-    grantDays.
+    Fulfillment scripts are used for adding custom fulfillment logic based on ITEM_TYPE : [MEDIA,INGAMEITEM] for now, and the custom scripts only cover grantDays.
     Example for grantDays:
-    `order && ((order.currency && order.currency.currencyCode) == 'LP' ||
-    order.isFree) ? 30 : -1`
-
+    `order && ((order.currency && order.currency.currencyCode) == 'LP' || order.isFree) ? 30 : -1`
 
     Required Permission(s):
         - ADMIN:FULFILLMENT [CREATE]

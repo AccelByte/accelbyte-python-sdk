@@ -36,7 +36,6 @@ class GetEventByUserIDAndEventTypeHandler(Operation):
 
     Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]and scope `analytics`
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:EVENT [UPDATE]
 

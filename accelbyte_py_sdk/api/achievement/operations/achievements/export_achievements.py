@@ -33,9 +33,10 @@ from ...models import ResponseError
 class ExportAchievements(Operation):
     """Export achievements configuration into a json file (ExportAchievements)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ] Required
-    Scope: social
 
+    Required permission ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
+
+    Required Scope: social
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]

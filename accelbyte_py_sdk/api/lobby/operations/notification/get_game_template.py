@@ -33,10 +33,9 @@ from ...models import RestapiErrorResponseBody
 class GetGameTemplate(Operation):
     """get all notification template in a namespace (getGameTemplate)
 
-    Required permission : `NAMESPACE:{namespace}:TEMPLATE [READ]` with scope
-    `social`
-    Get all templates in a namespace
+    Required permission : `NAMESPACE:{namespace}:TEMPLATE [READ]` with scope `social`
 
+    Get all templates in a namespace
 
     Required Permission(s):
         - NAMESPACE:{namespace}:TEMPLATE [READ]

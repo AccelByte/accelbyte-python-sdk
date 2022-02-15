@@ -34,12 +34,12 @@ from ...models import ValidationErrorEntity
 class BulkResetUserStatItem2(Operation):
     """Public bulk reset multiple user's statitems value (bulkResetUserStatItem_2)
 
-    Bulk reset multiple user's statitems value. User's statitem value will be
-    reset to the default value defined in the statistic configuration. Other
-    detail info: + *Required permission*:
-    resource="NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE) + *Returns*:
-    bulk updated result
+    Bulk reset multiple user's statitems value.
+    User's statitem value will be reset to the default value defined in the statistic configuration.
 
+    Other detail info:
+    + *Required permission*: resource="NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
+    + *Returns*: bulk updated result
 
     Required Permission(s):
         - NAMESPACE:{namespace}:STATITEM [UPDATE]

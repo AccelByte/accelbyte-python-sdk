@@ -39,7 +39,6 @@ class QueryOrders(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)
       *  Returns : query orders
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ORDER [READ]
 

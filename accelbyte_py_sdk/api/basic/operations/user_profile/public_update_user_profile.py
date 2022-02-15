@@ -44,7 +44,6 @@ class PublicUpdateUserProfile(Operation):
       *  Timezone : IANA time zone, e.g. Asia/Shanghai
       *  Returns : Updated user profile
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
 

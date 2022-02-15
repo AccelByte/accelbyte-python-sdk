@@ -35,8 +35,10 @@ class UpdateSession(Operation):
     """Update session (UpdateSession)
 
     Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]
-    Required scope: social Update game session, used to update the current player
 
+    Required scope: social
+
+    Update game session, used to update the current player
 
     Required Permission(s):
         - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]

@@ -38,7 +38,6 @@ class PublicGetPaymentAccounts(Operation):
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT", action=2 (READ)
       *  Returns : Payment account list
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT [READ]
 

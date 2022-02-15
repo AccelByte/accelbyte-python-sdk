@@ -40,7 +40,6 @@ class PublicReportUser(Operation):
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ACTION", action=1 (CREATE)
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:ACTION [CREATE]
 

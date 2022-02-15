@@ -34,12 +34,14 @@ from ...models import RestErrorResponse
 class AdminCreateRoleV4(Operation):
     """Create Role (AdminCreateRoleV4)
 
-    Required permission: ADMIN:ROLE [CREATE] Create role request body: -
-    roleName: specify role name, alphanumeric, cannot have special character
-    (required) - adminRole: specify if role is for admin user (default false) -
-    isWildcard: specify if role can be assigned to wildcard (*) namespace (default
-    false) action code: 10401
+    Required permission: ADMIN:ROLE [CREATE]
 
+    Create role request body:
+    - roleName: specify role name, alphanumeric, cannot have special character (required)
+    - adminRole: specify if role is for admin user (default false)
+    - isWildcard: specify if role can be assigned to wildcard (*) namespace (default false)
+
+    action code: 10401
 
     Required Permission(s):
         - ADMIN:ROLE [CREATE]

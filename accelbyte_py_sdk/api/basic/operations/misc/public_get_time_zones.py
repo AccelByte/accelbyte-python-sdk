@@ -37,7 +37,6 @@ class PublicGetTimeZones(Operation):
 
       * Returns : time zones
 
-
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/misc/timezones
 

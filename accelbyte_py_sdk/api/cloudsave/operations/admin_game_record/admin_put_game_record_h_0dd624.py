@@ -34,9 +34,10 @@ class AdminPutGameRecordHandlerV1(Operation):
     """Save or replace game record (adminPutGameRecordHandlerV1)
 
     Required permission: ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]
-    Required scope: social This endpoints is to replace game record data if exists
-    or insert new data in namespace-level
 
+    Required scope: social
+
+    This endpoints is to replace game record data if exists or insert new data in namespace-level
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]

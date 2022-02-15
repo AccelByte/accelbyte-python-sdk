@@ -33,14 +33,12 @@ from ...models import SeasonInfo
 class GetSeason(Operation):
     """Get a season (getSeason)
 
-    This API is used to get a season, season only located in non-publisher
-    namespace.
+    This API is used to get a season, season only located in non-publisher namespace.
 
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
       *  Returns : season data
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]

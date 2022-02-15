@@ -33,11 +33,13 @@ from ...models import ResponseError
 class ImportConfig(Operation):
     """Import lobby config from a json file. (ImportConfig)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE] Required
-    Scope: social Import config configuration from file. The existing
-    configuration will be replaced. The json file to import can be obtained from
-    the /export endpoint.
 
+    Required permission ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]
+
+    Required Scope: social
+
+    Import config configuration from file. The existing configuration will be replaced.
+    The json file to import can be obtained from the /export endpoint.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]

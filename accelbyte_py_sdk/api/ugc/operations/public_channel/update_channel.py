@@ -36,7 +36,6 @@ class UpdateChannel(Operation):
 
     Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [UPDATE]
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [UPDATE]
 

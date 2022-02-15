@@ -35,7 +35,6 @@ class UsersPresenceHandlerV1(Operation):
 
     Query users presence with given namespace and userIds.
 
-
     Properties:
         url: /lobby/v1/public/presence/namespaces/{namespace}/users/presence
 

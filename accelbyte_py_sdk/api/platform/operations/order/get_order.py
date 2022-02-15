@@ -39,7 +39,6 @@ class GetOrder(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)
       *  Returns : order instance
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ORDER [READ]
 

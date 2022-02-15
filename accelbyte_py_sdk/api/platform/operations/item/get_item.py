@@ -40,7 +40,6 @@ class GetItem(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
       *  Returns : item data
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
 

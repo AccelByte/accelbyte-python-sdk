@@ -32,10 +32,9 @@ from ...models import RestapiErrorResponseBody
 class DeleteTemplateSlug(Operation):
     """delete template localization (deleteTemplateSlug)
 
-    Required permission : `NAMESPACE:{namespace}:TEMPLATE [DELETE]` with scope
-    `social`
-    Delete localization template
+    Required permission : `NAMESPACE:{namespace}:TEMPLATE [DELETE]` with scope `social`
 
+    Delete localization template
 
     Required Permission(s):
         - NAMESPACE:{namespace}:TEMPLATE [DELETE]

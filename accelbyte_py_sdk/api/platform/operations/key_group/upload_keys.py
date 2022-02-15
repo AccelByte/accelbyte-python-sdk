@@ -40,7 +40,6 @@ class UploadKeys(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=4 (UPDATE)
       *  Returns : item data
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:KEYGROUP [UPDATE]
 

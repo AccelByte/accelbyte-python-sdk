@@ -37,7 +37,6 @@ class RetrieveAgreementsPublic(Operation):
 
       * Required permission : login user
 
-
     Properties:
         url: /agreement/public/agreements/policies
 

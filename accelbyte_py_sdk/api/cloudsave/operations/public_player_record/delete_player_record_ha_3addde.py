@@ -32,13 +32,15 @@ from ...models import ModelsResponseError
 class DeletePlayerRecordHandlerV1(Operation):
     """Delete player record (deletePlayerRecordHandlerV1)
 
-    Required Permission | `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD
-    [DELETE]`
-    ---|---
-    Required Scope | `social`
+    Required Permission | `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]`
+    --------------------|-----------------------------------------------------------------
+    Required Scope      | `social`
+
+
+
+
 
     Delete player record by its key
-
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]

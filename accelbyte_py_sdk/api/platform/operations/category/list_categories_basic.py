@@ -32,14 +32,12 @@ from ...models import BasicCategoryInfo
 class ListCategoriesBasic(Operation):
     """List categories' basic info (listCategoriesBasic)
 
-    This API is used to list all categories' basic info of a store ordered by
-    category path.
+    This API is used to list all categories' basic info of a store ordered by category path.
 
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
       *  Returns : list of categories' paths
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]

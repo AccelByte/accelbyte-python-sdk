@@ -35,7 +35,6 @@ class GetAllTimeLeaderboardRankingPublicV2(Operation):
 
     Get rankings in an all time leaderboard.
 
-
     Properties:
         url: /leaderboard/v2/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/alltime
 

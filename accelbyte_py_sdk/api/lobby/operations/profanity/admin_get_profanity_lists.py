@@ -33,10 +33,9 @@ from ...models import RestapiErrorResponseBody
 class AdminGetProfanityLists(Operation):
     """get lists (adminGetProfanityLists)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with
-    scope `social`
-    get lists
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with scope `social`
 
+    get lists
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]

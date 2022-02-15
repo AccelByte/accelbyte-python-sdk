@@ -37,7 +37,6 @@ class PublicListCurrencies(Operation):
 
       * Returns : Currency List
 
-
     Properties:
         url: /platform/public/namespaces/{namespace}/currencies
 

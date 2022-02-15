@@ -34,10 +34,11 @@ from ...models import ResponseError
 class UpdateRootRegionOverride(Operation):
     """Update region override (UpdateRootRegionOverride)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE] Required
-    scope: social This endpoint update a dedicated servers deployment override in
-    a namespace in a region for root deployment.
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
 
+    Required scope: social
+
+    This endpoint update a dedicated servers deployment override in a namespace in a region for root deployment.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]

@@ -39,7 +39,6 @@ class GetKeyGroupDynamic(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2 (READ)
       *  Returns : key group info
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:KEYGROUP [READ]
 

@@ -35,7 +35,6 @@ class PublicGetSingleMatchmakingChannel(Operation):
 
     Reads single channel based on namespace and channel name
 
-
     Properties:
         url: /matchmaking/v1/public/namespaces/{namespace}/channels/{channelName}
 

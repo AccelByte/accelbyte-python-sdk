@@ -35,7 +35,6 @@ class PublicGetAllMatchmakingChannel(Operation):
 
     Reads all available channels in a namespace
 
-
     Properties:
         url: /matchmaking/v1/public/namespaces/{namespace}/channels
 

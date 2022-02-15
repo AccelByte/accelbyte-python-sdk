@@ -32,9 +32,7 @@ from ...models import ModelPermissionDeleteRequest
 class AdminDeleteUserPermissionBulkV3(Operation):
     """Delete User Permission (AdminDeleteUserPermissionBulkV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId}
-    [DELETE]'
-
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]'
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]

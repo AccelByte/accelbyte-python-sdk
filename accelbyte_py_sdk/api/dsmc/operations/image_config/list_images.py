@@ -33,9 +33,11 @@ from ...models import ResponseError
 class ListImages(Operation):
     """List all DS images (ListImages)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ] Required
-    scope: social This endpoint lists all of dedicated servers images.
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
 
+    Required scope: social
+
+    This endpoint lists all of dedicated servers images.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]

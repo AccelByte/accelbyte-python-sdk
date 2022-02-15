@@ -34,7 +34,6 @@ class GetUserBanHistory(Operation):
 
     Required permissions 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]'.
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]
 

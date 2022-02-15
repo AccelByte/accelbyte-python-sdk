@@ -35,8 +35,7 @@ class GeneratedUserUploadContentUrl(Operation):
     """Generate Upload URL For User Content (generatedUserUploadContentUrl)
 
     Generate an upload URL for user content. It's valid for 10 minutes.
-    There are 2 kinds of storage limitation per user : maximum file count and
-    maximum file size.
+    There are 2 kinds of storage limitation per user : maximum file count and maximum file size.
     Other detail info:
 
       * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD" , action=1 (CREATE)
@@ -44,7 +43,6 @@ class GeneratedUserUploadContentUrl(Operation):
       *  Default maximum file count per user : 10 files
       *  Default maximum file size per user : 104857600 bytes
       *  Returns : URL data
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD [CREATE]

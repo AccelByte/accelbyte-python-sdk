@@ -37,7 +37,6 @@ class PublicGetMyUserV3(Operation):
     Get my user data
     action code : 10147
 
-
     Properties:
         url: /iam/v3/public/users/me
 

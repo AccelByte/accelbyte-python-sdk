@@ -34,9 +34,8 @@ class SaveAdminEmailConfiguration(Operation):
 
     Add admin email address for receiving personal data request notification.
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [CREATE]`
-    and scope `account`
 
+    Required permission `ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [CREATE]` and scope `account`
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [CREATE]

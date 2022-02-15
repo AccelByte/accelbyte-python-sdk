@@ -34,9 +34,12 @@ class ExportChannels(Operation):
     """Export channels (ExportChannels)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-    Required Scope: social Export channels configuration to file. Action Code:
-    510114
 
+    Required Scope: social
+
+    Export channels configuration to file.
+
+    Action Code: 510114
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]

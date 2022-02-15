@@ -35,13 +35,20 @@ class PublicUserVerificationV3(Operation):
 
     Required valid user authorization
 
-    Redeems a verification code sent to a user to verify the user's contact
-    address is correct
+
+
+
+    Redeems a verification code sent to a user to verify the user's contact address is correct
+
+
+
 
     Available ContactType : email
 
-    action code: 10107
 
+
+
+    action code: 10107
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/code/verify

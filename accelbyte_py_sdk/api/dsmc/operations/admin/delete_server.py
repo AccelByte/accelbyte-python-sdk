@@ -32,10 +32,11 @@ from ...models import ResponseError
 class DeleteServer(Operation):
     """Delete a server in a region (DeleteServer)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE] Required
-    scope: social This endpoint deletes a specified dedicated server from DB and
-    terminates the DS pod.
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE]
 
+    Required scope: social
+
+    This endpoint deletes a specified dedicated server from DB and terminates the DS pod.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE]

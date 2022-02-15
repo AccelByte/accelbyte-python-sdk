@@ -39,7 +39,6 @@ class GetGlobalStatItems(Operation):
       *  Returns : stat items
     ul
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:STATITEM [READ]
 

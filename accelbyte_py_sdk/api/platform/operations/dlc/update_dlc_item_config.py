@@ -39,7 +39,6 @@ class UpdateDLCItemConfig(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:DLC:CONFIG", action=4 (UPDATE)
       *  Returns : updated DLC item config
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [UPDATE]
 

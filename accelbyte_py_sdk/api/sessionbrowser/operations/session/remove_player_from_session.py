@@ -34,8 +34,10 @@ class RemovePlayerFromSession(Operation):
     """remove player from game session (RemovePlayerFromSession)
 
     Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]
-    Required scope: social Remove player from game session
 
+    Required scope: social
+
+    Remove player from game session
 
     Required Permission(s):
         - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]

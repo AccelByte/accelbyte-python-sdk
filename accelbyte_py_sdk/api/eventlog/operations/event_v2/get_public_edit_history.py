@@ -34,15 +34,33 @@ class GetPublicEditHistory(Operation):
 
     Available Type:
 
+
+
+
+
+
       * email
+
+
       * password
+
+
       * displayname
+
+
       * dateofbirth
+
+
       * country
+
+
       * language
 
-    Requires a valid user access token
 
+
+
+
+    Requires a valid user access token
 
     Properties:
         url: /event/v2/public/namespaces/{namespace}/users/{userId}/edithistory

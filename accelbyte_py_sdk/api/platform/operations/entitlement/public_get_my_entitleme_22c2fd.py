@@ -41,7 +41,6 @@ class PublicGetMyEntitlementOwnershipBySku(Operation):
         * can be filled with publisher namespace in order to get publisher namespace entitlement ownership by sku
         * can be filled with game namespace in order to get game namespace entitlement ownership by sku
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:ENTITLEMENT [READ]
 

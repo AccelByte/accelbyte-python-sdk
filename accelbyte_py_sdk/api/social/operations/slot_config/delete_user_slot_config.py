@@ -30,12 +30,10 @@ from .....core import HttpResponse
 class DeleteUserSlotConfig(Operation):
     """Deletes a user slot configuration (deleteUserSlotConfig)
 
-    Deletes a user slot configuration in given namespace, the namespace slot
-    configuration will be returned after delete.
+    Deletes a user slot configuration in given namespace, the namespace slot configuration will be returned after delete.
     Other detail info:
 
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG", action=8 (DELETE)
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG [DELETE]

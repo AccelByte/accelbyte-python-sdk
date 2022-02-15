@@ -42,7 +42,6 @@ class PublicUpdateUserProfileStatus(Operation):
       *  Action code : 11406
       *  Returns : user profile
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
 

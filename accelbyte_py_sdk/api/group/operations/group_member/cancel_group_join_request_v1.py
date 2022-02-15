@@ -35,10 +35,15 @@ class CancelGroupJoinRequestV1(Operation):
 
     Requires valid user authentication
 
+
+
+
     This endpoint allows user to cancel request to join specific group.
 
-    Action Code: 73411
 
+
+
+    Action Code: 73411
 
     Properties:
         url: /group/v1/public/namespaces/{namespace}/groups/{groupId}/join/cancel

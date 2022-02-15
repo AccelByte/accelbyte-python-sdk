@@ -32,11 +32,11 @@ from ...models import RestapiErrorResponseV1
 class DeleteNotificationTemplateSlugV1Admin(Operation):
     """delete template slug in notification template (deleteNotificationTemplateSlugV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]` with
-    scope `social`
-    Delete template slug in notification template
-    Action Code: 50206
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]` with scope `social`
 
+    Delete template slug in notification template
+
+    Action Code: 50206
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]

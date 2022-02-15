@@ -36,9 +36,9 @@ from ...models import ResponseError
 class AdminUploadContentDirect(Operation):
     """Upload content to a channel (AdminUploadContentDirect)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT
-    [CREATE].n All request body are required except preview and tags.
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
 
+    All request body are required except preview and tags.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]

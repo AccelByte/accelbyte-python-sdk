@@ -41,10 +41,8 @@ class TestCheckoutConfig(Operation):
       * secretKey
 
     Other detail info:
-
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
       *  Returns : test result
-
 
     Required Permission(s):
         - ADMIN:PAYMENT:CONFIG [UPDATE]

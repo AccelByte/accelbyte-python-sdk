@@ -35,15 +35,25 @@ class GetGroupJoinRequestPublicV1(Operation):
 
     Required valid user authentication
 
+
+
+
     Required Member Role Permission: "GROUP:JOIN [READ]"
+
+
+
 
     This endpoint is used to Get Group Join Request List
 
-    Get Group Join Request List for specific group. Group members needs to have
-    permission and also belong to the group to access this endpoint
+
+
+
+    Get Group Join Request List for specific group. Group members needs to have permission and also belong to the group to access this endpoint
+
+
+
 
     Action Code: 73501
-
 
     Properties:
         url: /group/v1/public/namespaces/{namespace}/groups/{groupId}/join/request

@@ -35,8 +35,10 @@ class AddUserIntoSessionInChannel(Operation):
     """Add user into the session in a channel (AddUserIntoSessionInChannel)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Create]
-    Required Scope: social Add user into the session in a channel.
 
+    Required Scope: social
+
+    Add user into the session in a channel.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Create]

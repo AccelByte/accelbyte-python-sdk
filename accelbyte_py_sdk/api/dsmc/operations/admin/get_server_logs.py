@@ -33,9 +33,11 @@ from ...models import ResponseError
 class GetServerLogs(Operation):
     """Queries server logs (getServerLogs)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ] Required
-    scope: social This endpoint queries a specified dedicated server's logs.
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
 
+    Required scope: social
+
+    This endpoint queries a specified dedicated server's logs.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]

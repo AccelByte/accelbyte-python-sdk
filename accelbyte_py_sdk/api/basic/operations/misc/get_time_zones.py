@@ -40,7 +40,6 @@ class GetTimeZones(Operation):
       *  Action code : 11205
       *  Returns : time zones
 
-
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/misc/timezones
 

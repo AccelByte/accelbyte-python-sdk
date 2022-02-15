@@ -33,11 +33,15 @@ from ...models import RestErrorResponse
 class AdminRevokeUserFromRoleV4(Operation):
     """Revoke User from Role (AdminRevokeUserFromRoleV4)
 
-    Required permission ADMIN:ROLE [UPDATE] Current implementation will revoke
-    user from role in all assigned namespaces. Parameters: - userId: string
-    (required) - namespace: string (user’s namespace) (required) action code:
-    10411
+    Required permission ADMIN:ROLE [UPDATE]
 
+    Current implementation will revoke user from role in all assigned namespaces.
+
+    Parameters:
+    - userId: string (required)
+    - namespace: string (userâs namespace) (required)
+
+    action code: 10411
 
     Required Permission(s):
         - ADMIN:ROLE [UPDATE]

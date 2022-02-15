@@ -34,7 +34,6 @@ class ListProvidersByRegion(Operation):
 
     This endpoint returns the providers by region.
 
-
     Properties:
         url: /dsmcontroller/public/providers/regions/{region}
 

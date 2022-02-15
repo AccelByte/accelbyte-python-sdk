@@ -34,8 +34,8 @@ class GetActiveMatchmakingGameSessions(Operation):
     """Get all active session for matchmaking game, this return only dedicated session type (GetActiveMatchmakingGameSessions)
 
     Required permission: ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-    Required scope: social
 
+    Required scope: social
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]

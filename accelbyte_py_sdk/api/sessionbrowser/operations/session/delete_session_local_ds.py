@@ -34,9 +34,10 @@ class DeleteSessionLocalDS(Operation):
     """Only use for local DS entry, will error when calling non local DS entry (DeleteSessionLocalDS)
 
     Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [DELETE]
-    Required scope: social Only use for local DS entry, will error when calling
-    non local DS entry
 
+    Required scope: social
+
+    Only use for local DS entry, will error when calling non local DS entry
 
     Required Permission(s):
         - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [DELETE]

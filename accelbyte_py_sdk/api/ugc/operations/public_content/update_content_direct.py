@@ -36,9 +36,9 @@ from ...models import ResponseError
 class UpdateContentDirect(Operation):
     """Update content to a channel (UpdateContentDirect)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].n
-    All request body are required except preview and tags.
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
 
+    All request body are required except preview and tags.
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]

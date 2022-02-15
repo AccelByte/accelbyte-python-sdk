@@ -39,7 +39,6 @@ class DeleteCurrency(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=8 (DELETE)
       *  Returns :
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CURRENCY [DELETE]
 

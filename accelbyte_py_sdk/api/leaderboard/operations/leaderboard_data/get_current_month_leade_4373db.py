@@ -35,7 +35,6 @@ class GetCurrentMonthLeaderboardRankingPublicV1(Operation):
 
     Get rankings in current month leaderboard.
 
-
     Properties:
         url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/month
 

@@ -38,7 +38,6 @@ class ChangePreferenceConsent(Operation):
 
       * Required permission : login user
 
-
     Properties:
         url: /agreement/public/agreements/localized-policy-versions/preferences
 

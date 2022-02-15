@@ -34,7 +34,6 @@ class GetRoles(Operation):
 
     Required permission 'ROLE [READ]'
 
-
     Required Permission(s):
         - ROLE [READ]
 

@@ -34,10 +34,11 @@ from ...models import ResponseError
 class CreateDeployment(Operation):
     """Create deployment (CreateDeployment)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE] Required
-    scope: social This endpoint create a dedicated servers deployment in a
-    namespace.
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
 
+    Required scope: social
+
+    This endpoint create a dedicated servers deployment in a namespace.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]

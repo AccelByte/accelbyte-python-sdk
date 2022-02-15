@@ -38,7 +38,6 @@ class PublicGetSlotData(Operation):
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)
       *  Returns : slot data
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [READ]
 

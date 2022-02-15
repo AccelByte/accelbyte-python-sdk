@@ -35,7 +35,6 @@ class PublicSubmitUserAccountDeletionRequest(Operation):
 
     Requires valid user access token and password
 
-
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/deletions
 

@@ -39,7 +39,6 @@ class ImportStore(Operation):
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
 

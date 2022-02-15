@@ -39,7 +39,6 @@ class Pay(Operation):
 
       * Returns : Payment process result
 
-
     Properties:
         url: /platform/public/namespaces/{namespace}/payment/orders/{paymentOrderNo}/pay
 

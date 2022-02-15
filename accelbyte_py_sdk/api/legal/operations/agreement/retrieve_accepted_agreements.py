@@ -32,11 +32,9 @@ from ...models import RetrieveAcceptedAgreementResponse
 class RetrieveAcceptedAgreements(Operation):
     """Retrieve Accepted Legal Agreements (retrieveAcceptedAgreements)
 
-    This API will return all accepted Legal Agreements for specified user. Other
-    detail info:
+    This API will return all accepted Legal Agreements for specified user. Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:*:LEGAL [READ]

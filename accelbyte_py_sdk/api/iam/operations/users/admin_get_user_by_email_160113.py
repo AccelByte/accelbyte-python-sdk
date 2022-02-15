@@ -35,11 +35,14 @@ class AdminGetUserByEmailAddressV3(Operation):
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
 
+
+
+
     This endpoint search user who owns the given email address
 
 
-    action code : 10132
 
+    action code : 10132
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER [READ]

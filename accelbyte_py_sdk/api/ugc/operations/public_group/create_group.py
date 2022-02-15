@@ -36,7 +36,6 @@ class CreateGroup(Operation):
 
     Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [CREATE]
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [CREATE]
 

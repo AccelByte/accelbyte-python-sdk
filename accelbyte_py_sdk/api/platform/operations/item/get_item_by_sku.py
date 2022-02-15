@@ -40,7 +40,6 @@ class GetItemBySku(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
       *  Returns : the item with sku
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
 

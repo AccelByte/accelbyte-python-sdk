@@ -30,13 +30,11 @@ from .....core import HttpResponse
 class ExportRewards(Operation):
     """Export all reward configurations (exportRewards)
 
-    Export reward configurations for a given namespace into file. At current, only
-    JSON file is supported.
+    Export reward configurations for a given namespace into file. At current, only JSON file is supported.
 
     Other detail info:
 
       *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:REWARD [READ]

@@ -37,8 +37,8 @@ class UpdateUser(Operation):
 
 
 
-    This Endpoint support update user based on given data. Single request can
-    update single field or multi fields.
+
+    This Endpoint support update user based on given data. Single request can update single field or multi fields.
 
     Supported field {Country, DisplayName, LanguageTag}
 
@@ -50,7 +50,6 @@ class UpdateUser(Operation):
       * User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
       * User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
       * User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
-
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId} [UPDATE]

@@ -35,7 +35,6 @@ class GetGroup(Operation):
 
     Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ].
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ]
 

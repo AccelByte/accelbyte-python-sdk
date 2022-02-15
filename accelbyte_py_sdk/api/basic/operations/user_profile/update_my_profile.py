@@ -36,10 +36,7 @@ class UpdateMyProfile(Operation):
     """Update my profile (updateMyProfile)
 
     Update my profile.
-    Updates user profile in the target namespace (namespace in the path). If
-    token's namespace doesn't match the target namespace, the service
-    automatically maps the token's user ID into the user ID in the target
-    namespace. The endpoint returns the updated user profile on a successful call.
+    Updates user profile in the target namespace (namespace in the path). If token's namespace doesn't match the target namespace, the service automatically maps the token's user ID into the user ID in the target namespace. The endpoint returns the updated user profile on a successful call.
     Other detail info:
 
       * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=4 (UPDATE)
@@ -50,7 +47,6 @@ class UpdateMyProfile(Operation):
         * can be filled with game namespace in order to update game user profile
       *  Language : allowed format: en, en-US
       *  Timezone : IANA time zone, e.g. Asia/Shanghai
-
 
     Required Permission(s):
         - NAMESPACE:{namespace}:PROFILE [UPDATE]

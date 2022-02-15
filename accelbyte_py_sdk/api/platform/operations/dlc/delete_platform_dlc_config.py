@@ -35,7 +35,6 @@ class DeletePlatformDLCConfig(Operation):
 
       * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:DLC:CONFIG" , action=8 (DELETE)
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [DELETE]
 

@@ -39,7 +39,6 @@ class PublicGetPaymentUrl(Operation):
 
       * Returns : Get payment link
 
-
     Properties:
         url: /platform/public/namespaces/{namespace}/payment/link
 

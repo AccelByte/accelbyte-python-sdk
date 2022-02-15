@@ -34,10 +34,9 @@ from ...models import RestErrorResponse
 class AdminListUserIDByUserIDsV3(Operation):
     """List User By User ID (AdminListUserIDByUserIDsV3)
 
-    List User By User ID This endpoint requires ADMIN:NAMESPACE:{namespace}:USER
-    [READ] permission. This endpoint intended to list user information from the
-    given list of userID and namespace
-
+    List User By User ID
+    This endpoint requires ADMIN:NAMESPACE:{namespace}:USER [READ] permission.
+    This endpoint intended to list user information from the given list of userID and namespace
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER [READ]

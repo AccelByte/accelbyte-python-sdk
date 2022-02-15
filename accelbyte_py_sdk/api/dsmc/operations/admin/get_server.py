@@ -33,9 +33,11 @@ from ...models import ResponseError
 class GetServer(Operation):
     """Query a server in a region (GetServer)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ] Required
-    scope: social This endpoint queries a specified dedicated server from DB.
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
 
+    Required scope: social
+
+    This endpoint queries a specified dedicated server from DB.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]

@@ -34,14 +34,12 @@ from ...models import ValidationErrorEntity
 class GetCountryGroups(Operation):
     """List country groups (getCountryGroups)
 
-    List country groups. Will return all available country groups if the query
-    param is not specified
+    List country groups. Will return all available country groups if the query param is not specified
     Other detail info:
 
       * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=2 (READ)
       *  Action code : 11203
       *  Returns : list of country groups
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:MISC [READ]

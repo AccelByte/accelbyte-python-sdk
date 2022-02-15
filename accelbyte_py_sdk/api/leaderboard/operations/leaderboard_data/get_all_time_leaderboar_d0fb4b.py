@@ -35,8 +35,10 @@ class GetAllTimeLeaderboardRankingAdminV1(Operation):
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
 
-    Get rankings in an all time leaderboard.
 
+
+
+    Get rankings in an all time leaderboard.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]

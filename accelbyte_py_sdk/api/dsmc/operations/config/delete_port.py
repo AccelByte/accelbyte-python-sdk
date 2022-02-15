@@ -33,10 +33,11 @@ from ...models import ResponseError
 class DeletePort(Operation):
     """Delete port config (DeletePort)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE] Required
-    scope: social This endpoint delete a dedicated server port config in a
-    namespace
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
 
+    Required scope: social
+
+    This endpoint delete a dedicated server port config in a namespace
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]

@@ -33,11 +33,14 @@ from ...models import ResponseError
 class DeregisterLocalServer(Operation):
     """Deregister local DS (DeregisterLocalServer)
 
-    ``` Required permission: NAMESPACE:{namespace}:DSM:SERVER [UPDATE] Required
-    scope: social This endpoint is intended to be called by local dedicated server
-    to let DSM know that it is shutting down. Calling this will remove the server
-    records from DB.```
+    ```
+    Required permission: NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+    Required scope: social
 
+    This endpoint is intended to be called by local dedicated server
+    to let DSM know that it is shutting down.
+
+    Calling this will remove the server records from DB.```
 
     Required Permission(s):
         - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]

@@ -37,7 +37,6 @@ class DeleteStat(Operation):
 
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=8 (DELETE)
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:STAT [DELETE]
 

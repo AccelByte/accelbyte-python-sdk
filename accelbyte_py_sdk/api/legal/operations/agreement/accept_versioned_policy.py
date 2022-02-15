@@ -30,12 +30,10 @@ from .....core import HttpResponse
 class AcceptVersionedPolicy(Operation):
     """Accept a Policy Version (acceptVersionedPolicy)
 
-    Accepts a legal policy version. Supply with localized version policy id to
-    accept an agreement.
+    Accepts a legal policy version. Supply with localized version policy id to accept an agreement.
     Other detail info:
 
       * Required permission : login user
-
 
     Properties:
         url: /agreement/public/agreements/localized-policy-versions/{localizedPolicyVersionId}

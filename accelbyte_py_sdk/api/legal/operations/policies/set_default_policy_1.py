@@ -35,7 +35,6 @@ class SetDefaultPolicy1(Operation):
 
       * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
 

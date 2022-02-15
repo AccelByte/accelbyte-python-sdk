@@ -40,7 +40,6 @@ class BulkIncUserStatItemValue(Operation):
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
       *  Returns : bulk updated result
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:STATITEM [UPDATE]
 

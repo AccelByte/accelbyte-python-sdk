@@ -34,13 +34,11 @@ from ...models import ItemAcquireResult
 class AcquireItem(Operation):
     """Acquire item (acquireItem)
 
-    [SERVICE COMMUNICATION ONLY] This api is used for acquiring a published item
-    while the item is maxCount limited, it will decrease the sale available count.
+    [SERVICE COMMUNICATION ONLY] This api is used for acquiring a published item while the item is maxCount limited, it will decrease the sale available count.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
       *  Returns : acquire result
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]

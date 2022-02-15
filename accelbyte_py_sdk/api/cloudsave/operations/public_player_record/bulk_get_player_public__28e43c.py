@@ -35,13 +35,15 @@ class BulkGetPlayerPublicRecordHandlerV1(Operation):
     """Bulk get other player's public record (bulkGetPlayerPublicRecordHandlerV1)
 
     Required Permission | `NAMESPACE:{namespace}:PUBLIC:CLOUDSAVE:RECORD [READ]`
-    ---|---
-    Required Scope | `social`
+    --------------------|--------------------------------------------------------
+    Required Scope      | `social`
 
-    Bulk get other player's record that is public by userIds, max allowed 20 at a
-    time. Only record with `isPublic=true` that can be retrieved using this
-    endpoint.
 
+
+
+
+    Bulk get other player's record that is public by userIds, max allowed 20 at a time. Only record with `isPublic=true` that can be
+    retrieved using this endpoint.
 
     Required Permission(s):
         - NAMESPACE:{namespace}:PUBLIC:CLOUDSAVE:RECORD [READ]

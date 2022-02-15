@@ -32,11 +32,12 @@ from ...models import RestErrorResponse
 class AdminVerifyUserWithoutVerificationCodeV3(Operation):
     """Verify user without verification code (AdminVerifyUserWithoutVerificationCodeV3)
 
-    This endpoint force verify user. Required permission
-    ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+    This endpoint force verify user. Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+
+
 
     action code: 10118
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]

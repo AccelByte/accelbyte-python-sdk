@@ -33,14 +33,21 @@ from ...models import ModelsResponseError
 class PutPlayerPublicRecordHandlerV1(Operation):
     """Create or replace player record (putPlayerPublicRecordHandlerV1)
 
-    Required Permission |
-    `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]`
-    ---|---
-    Required Scope | `social`
+    Required Permission | `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]`
+    --------------------|------------------------------------------------------------------------
+    Required Scope      | `social`
 
-    If the record is not exist, it will create. If the record already exist, it
-    will replace the record instead. And this operation can only be applied to
-    record with `isPublic=true`. Example Replace record
+
+
+
+
+    If the record is not exist, it will create. If the record already exist, it will replace the record
+    instead. And this operation can only be applied to record with `isPublic=true`.
+
+    Example
+
+    Replace record
+
 
 
 
@@ -58,8 +65,6 @@ class PutPlayerPublicRecordHandlerV1(Operation):
         {
             "foo_new": "bar_new"
         }
-
-
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]

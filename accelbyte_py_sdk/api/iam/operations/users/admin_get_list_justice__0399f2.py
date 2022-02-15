@@ -33,9 +33,7 @@ from ...models import RestErrorResponse
 class AdminGetListJusticePlatformAccounts(Operation):
     """Get User Justice Platform Accounts (AdminGetListJusticePlatformAccounts)
 
-    This endpoint gets list justice platform account by providing publisher
-    namespace and publisher userID.
-
+    This endpoint gets list justice platform account by providing publisher namespace and publisher userID.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice

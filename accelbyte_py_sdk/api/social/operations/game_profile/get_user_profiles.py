@@ -38,7 +38,6 @@ class GetUserProfiles(Operation):
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=2 (READ)
       *  Returns : list of profiles
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [READ]
 

@@ -38,7 +38,6 @@ class QueryAllUserIAPOrders(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=2 (READ)
       *  Returns : list of iap orders
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [READ]
 

@@ -38,7 +38,6 @@ class TestPayPalConfigById(Operation):
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
       *  Returns : test result
 
-
     Required Permission(s):
         - ADMIN:PAYMENT:CONFIG [READ]
 

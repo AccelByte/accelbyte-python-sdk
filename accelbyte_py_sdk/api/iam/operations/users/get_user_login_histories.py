@@ -41,7 +41,6 @@ class GetUserLoginHistories(Operation):
       * This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
       * This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:HISTORY:LOGIN:USER:{userId} [READ]
 

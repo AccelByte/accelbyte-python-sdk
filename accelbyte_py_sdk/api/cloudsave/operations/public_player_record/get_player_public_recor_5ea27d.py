@@ -33,14 +33,16 @@ from ...models import ModelsResponseError
 class GetPlayerPublicRecordHandlerV1(Operation):
     """Get other player's public record (getPlayerPublicRecordHandlerV1)
 
-    Required Permission |
-    `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]`
-    ---|---
-    Required Scope | `social`
+    Required Permission | `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]`
+    --------------------|----------------------------------------------------------------------
+    Required Scope      | `social`
 
-    Get other player's record that is public. Only record with `isPublic=true`
-    that can be retrieved using this endpoint.
 
+
+
+
+    Get other player's record that is public. Only record with `isPublic=true` that can be
+    retrieved using this endpoint.
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]

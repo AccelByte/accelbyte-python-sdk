@@ -33,9 +33,11 @@ from ...models import ResponseError
 class ImageDetailClient(Operation):
     """DS Image Detail Client (ImageDetailClient)
 
-    Required permission: NAMESPACE:{namespace}:DSM:CONFIG [READ] Required scope:
-    social This endpoint get specific version of dedicated servers images.
+    Required permission: NAMESPACE:{namespace}:DSM:CONFIG [READ]
 
+    Required scope: social
+
+    This endpoint get specific version of dedicated servers images.
 
     Required Permission(s):
         - NAMESPACE:{namespace}:DSM:CONFIG [READ]

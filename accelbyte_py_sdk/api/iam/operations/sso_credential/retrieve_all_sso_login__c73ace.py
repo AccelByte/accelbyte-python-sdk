@@ -33,9 +33,7 @@ from ...models import RestErrorResponse
 class RetrieveAllSSOLoginPlatformCredentialV3(Operation):
     """Get All SSO Platform Credential (RetrieveAllSSOLoginPlatformCredentialV3)
 
-    This is the API to Get All Active SSO Platform Credential. It needs
-    ADMIN:NAMESPACE:{namespace}:PLATFORM:*:SSO [READ] resource
-
+    This is the API to Get All Active SSO Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:*:SSO [READ] resource
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PLATFORM:*:SSO [READ]

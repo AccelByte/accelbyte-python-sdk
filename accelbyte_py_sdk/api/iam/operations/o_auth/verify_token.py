@@ -32,9 +32,7 @@ from ...models import OauthmodelTokenResponse
 class VerifyToken(Operation):
     """OAuth2 token verification API (VerifyToken)
 
-    This endpoint requires all requests to have Authorization header set with
-    Basic access authentication constructed from client id and client secret.
-
+    This endpoint requires all requests to have Authorization header set with Basic access authentication constructed from client id and client secret.
 
     Properties:
         url: /iam/oauth/verify

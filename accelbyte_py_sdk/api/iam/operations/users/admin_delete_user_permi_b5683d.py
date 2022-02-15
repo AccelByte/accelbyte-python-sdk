@@ -30,9 +30,7 @@ from .....core import HttpResponse
 class AdminDeleteUserPermissionV3(Operation):
     """Delete User Permission (AdminDeleteUserPermissionV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId}
-    [DELETE]'
-
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]'
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]

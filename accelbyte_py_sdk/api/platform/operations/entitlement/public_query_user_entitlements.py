@@ -39,7 +39,6 @@ class PublicQueryUserEntitlements(Operation):
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
       *  Returns : entitlement list
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
 

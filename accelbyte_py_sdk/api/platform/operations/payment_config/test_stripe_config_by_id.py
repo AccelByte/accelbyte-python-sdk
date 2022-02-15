@@ -38,7 +38,6 @@ class TestStripeConfigById(Operation):
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
       *  Returns : test adyen config
 
-
     Required Permission(s):
         - ADMIN:PAYMENT:CONFIG [READ]
 

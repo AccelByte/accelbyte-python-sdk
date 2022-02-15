@@ -42,7 +42,6 @@ class CreateStore(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
       *  Returns : created store data
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:STORE [CREATE]
 

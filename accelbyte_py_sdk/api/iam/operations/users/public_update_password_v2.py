@@ -34,7 +34,6 @@ class PublicUpdatePasswordV2(Operation):
 
     This endpoint need a valid user access token
 
-
     Properties:
         url: /iam/v2/public/namespaces/{namespace}/users/{userId}/password
 

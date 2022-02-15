@@ -35,11 +35,11 @@ class AdminGetListBanReasonV3(Operation):
 
     Required permission 'ADMIN:BAN [READ]'
 
-    Ban reasons is the code available to justify ban assignment. It is applicable
-    globally for any namespace.
+
+    Ban reasons is the code available to justify ban assignment. It is applicable globally for any namespace.
+
 
     action code : 10202
-
 
     Required Permission(s):
         - ADMIN:BAN [READ]

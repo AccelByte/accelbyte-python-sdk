@@ -35,9 +35,10 @@ class PublicGetPartyDataV1(Operation):
 
     Required valid user authorization
 
-    load personal party data in a namespace based on Party ID
-    Action Code: 50101
 
+    load personal party data in a namespace based on Party ID
+
+    Action Code: 50101
 
     Properties:
         url: /lobby/v1/public/party/namespaces/{namespace}/parties/{partyId}

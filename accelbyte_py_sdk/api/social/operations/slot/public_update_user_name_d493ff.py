@@ -39,7 +39,6 @@ class PublicUpdateUserNamespaceSlot(Operation):
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=4 (UPDATE)
       *  Returns : updated slot
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [UPDATE]
 

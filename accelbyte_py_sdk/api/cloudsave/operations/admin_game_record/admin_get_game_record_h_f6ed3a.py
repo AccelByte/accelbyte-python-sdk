@@ -34,8 +34,10 @@ class AdminGetGameRecordHandlerV1(Operation):
     """Retrieve a record value by its key (adminGetGameRecordHandlerV1)
 
     Required permission: ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-    Required scope: social Get a record by its key in namespace-level.
 
+    Required scope: social
+
+    Get a record by its key in namespace-level.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]

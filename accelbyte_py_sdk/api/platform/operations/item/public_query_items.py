@@ -34,15 +34,13 @@ from ...models import ValidationErrorEntity
 class PublicQueryItems(Operation):
     """Query items by criteria (publicQueryItems)
 
-    This API is used to query items by criteria within a store. If item not exist
-    in specific region, default region item will return.
+    This API is used to query items by criteria within a store. If item not exist in specific region, default region item will return.
 
     Other detail info:
 
       * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store item)
       *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store item)
       *  Returns : the list of items
-
 
     Properties:
         url: /platform/public/namespaces/{namespace}/items/byCriteria

@@ -35,13 +35,12 @@ class PublicUpdateUserV2(Operation):
 
 
 
-    This Endpoint support update user based on given data. Single request can
-    update single field or multi fields.
+
+    This Endpoint support update user based on given data. Single request can update single field or multi fields.
 
     This endpoint require valid user access token to accessed.
 
     Supported field {Country, DisplayName, LanguageTag}
-
 
     Properties:
         url: /iam/v2/public/namespaces/{namespace}/users/{userId}

@@ -32,9 +32,11 @@ from ...models import ResponseError
 class DownloadServerLogs(Operation):
     """Download dedicated server log files (downloadServerLogs)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ] Required
-    scope: social This endpoint will download dedicated server's log file (.log).
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]
 
+    Required scope: social
+
+    This endpoint will download dedicated server's log file (.log).
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]

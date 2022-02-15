@@ -41,7 +41,6 @@ class UpdatePrivateCustomAttributesPartially(Operation):
       *  Request body : allowed format: JSON object
       *  Returns : Updated custom attributes
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
 

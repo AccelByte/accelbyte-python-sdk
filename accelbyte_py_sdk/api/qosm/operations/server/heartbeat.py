@@ -33,10 +33,13 @@ from ...models import ResponseError
 class Heartbeat(Operation):
     """Send heartbeat (Heartbeat)
 
-    ``` Required permission: QOS:SERVER [CREATE][UPDATE] Required scope: social
-    This endpoint is intended to be called by QoS service to register and
-    periodically let QoS Manager know that it is still alive. ```
+    ```
+    Required permission: QOS:SERVER [CREATE][UPDATE]
+    Required scope: social
 
+    This endpoint is intended to be called by QoS service
+    to register and periodically let QoS Manager know that it is still alive.
+    ```
 
     Required Scope(s):
         - social

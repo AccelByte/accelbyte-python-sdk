@@ -39,7 +39,6 @@ class CheckEventCondition(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
       *  Returns : match result
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:REWARD [READ]
 

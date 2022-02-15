@@ -39,7 +39,6 @@ class GetPaymentCallbackConfig(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG", action=2 (READ)
       *  Returns : Payment callback config
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG [READ]
 

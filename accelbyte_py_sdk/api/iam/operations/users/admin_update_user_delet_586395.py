@@ -33,10 +33,8 @@ from ...models import RestErrorResponse
 class AdminUpdateUserDeletionStatusV3(Operation):
     """Update User Deletion Status (AdminUpdateUserDeletionStatusV3)
 
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:DELETIONSTATUS:USER:{userId}
-    [UPDATE]'
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:DELETIONSTATUS:USER:{userId} [UPDATE]'
     action code : 10144
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DELETIONSTATUS:USER:{userId} [UPDATE]

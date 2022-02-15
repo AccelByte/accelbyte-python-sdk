@@ -33,14 +33,12 @@ from ...models import ErrorEntity
 class PublicBulkClaimUserRewards(Operation):
     """Bulk claim all remained rewards (publicBulkClaimUserRewards)
 
-    This API is used to bulk claim all remained rewards, season only located in
-    non-publisher namespace.
+    This API is used to bulk claim all remained rewards, season only located in non-publisher namespace.
 
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=4 (UPDATE)
       *  Returns : user season data
-
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [UPDATE]

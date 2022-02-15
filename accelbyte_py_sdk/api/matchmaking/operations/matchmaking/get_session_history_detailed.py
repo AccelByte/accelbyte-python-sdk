@@ -35,8 +35,10 @@ class GetSessionHistoryDetailed(Operation):
     """Get session history detailed (GetSessionHistoryDetailed)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-    Required Scope: social Get session history detailed.
 
+    Required Scope: social
+
+    Get session history detailed.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]

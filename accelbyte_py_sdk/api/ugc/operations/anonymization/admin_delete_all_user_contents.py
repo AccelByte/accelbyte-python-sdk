@@ -32,9 +32,7 @@ from ...models import ResponseError
 class AdminDeleteAllUserContents(Operation):
     """Delete all user content (AdminDeleteAllUserContents)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT
-    [DELETE].
-
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]

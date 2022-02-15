@@ -39,7 +39,6 @@ class GetStat(Operation):
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=2 (READ)
       *  Returns : stat info
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:STAT [READ]
 

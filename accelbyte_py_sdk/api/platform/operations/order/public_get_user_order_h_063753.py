@@ -38,7 +38,6 @@ class PublicGetUserOrderHistories(Operation):
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
       *  Returns : get order history
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
 

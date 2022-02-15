@@ -34,9 +34,8 @@ class GetAdminEmailConfiguration(Operation):
 
     Get list of admin email address configuration.
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [READ]`
-    and scope `account`
 
+    Required permission `ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [READ]` and scope `account`
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [READ]

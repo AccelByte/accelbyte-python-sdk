@@ -33,9 +33,9 @@ from ...models import RestErrorResponse
 class AdminListAssignedUsersV4(Operation):
     """Get Role's Assigned Users (AdminListAssignedUsersV4)
 
-    Required permission ADMIN:ROLE [READ] Query all users that has the specified
-    role. action code: 10416
-
+    Required permission ADMIN:ROLE [READ]
+    Query all users that has the specified role.
+    action code: 10416
 
     Required Permission(s):
         - ADMIN:ROLE [READ]

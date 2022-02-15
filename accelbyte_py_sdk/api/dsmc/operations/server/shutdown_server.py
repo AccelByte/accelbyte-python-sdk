@@ -33,12 +33,11 @@ from ...models import ResponseError
 class ShutdownServer(Operation):
     """Mark a DS is shutting down (ShutdownServer)
 
-    Required permission: NAMESPACE:{namespace}:DSM:SERVER [UPDATE] Required scope:
-    social This endpoint is intended to be called by dedicated server to let DSM
-    know that it is shutting down. Calling this will remove the server and session
-    records from DB.Set 'kill_me' in request to 'true' if the DS cannot shut
-    itself down.
+    Required permission: NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
 
+    Required scope: social
+
+    This endpoint is intended to be called by dedicated server to let DSM know that it is shutting down. Calling this will remove the server and session records from DB.Set 'kill_me' in request to 'true' if the DS cannot shut itself down.
 
     Required Permission(s):
         - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]

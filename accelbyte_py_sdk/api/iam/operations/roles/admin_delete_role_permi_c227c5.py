@@ -32,7 +32,6 @@ class AdminDeleteRolePermissionsV3(Operation):
 
     Required permission 'ADMIN:ROLE [UPDATE]'
 
-
     Required Permission(s):
         - ADMIN:ROLE [UPDATE]
 

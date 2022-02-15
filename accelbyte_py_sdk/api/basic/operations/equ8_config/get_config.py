@@ -38,7 +38,6 @@ class GetConfig(Operation):
 
       * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:EQU8CONFIG" , action=2 (READ)
 
-
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/equ8/config
 

@@ -35,7 +35,6 @@ class GetHiddenUsersV2(Operation):
 
     Return hidden users on a leaderboard
 
-
     Properties:
         url: /leaderboard/v2/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/hidden
 

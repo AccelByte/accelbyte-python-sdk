@@ -34,7 +34,6 @@ class DeleteContentScreenshot(Operation):
 
     Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
 

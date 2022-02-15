@@ -33,9 +33,11 @@ from ...models import ResponseError
 class GetDeployment(Operation):
     """Get Deployment (GetDeployment)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ] Required
-    scope: social This endpoint get a dedicated server deployment in a namespace
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
 
+    Required scope: social
+
+    This endpoint get a dedicated server deployment in a namespace
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]

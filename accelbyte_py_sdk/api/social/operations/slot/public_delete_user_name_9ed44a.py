@@ -37,7 +37,6 @@ class PublicDeleteUserNamespaceSlot(Operation):
 
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=8 (DELETE)
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [DELETE]
 

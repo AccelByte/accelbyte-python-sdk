@@ -33,12 +33,15 @@ from ...models import ResponseError
 class QuerySessionHandler(Operation):
     """Query joinable session status (QuerySessionHandler)
 
-    Required Permission: NAMESPACE:{namespace}:SESSION [READ] Required Scope:
-    social Queries the specified session's status. Game servers are expected to
-    call this periodically as long as it has a session in queue to see if there
-    are new players being matched to the session. Possible session statuses are
-    "sessionInQueue", "sessionFull", and "sessionTimeout".
+    Required Permission: NAMESPACE:{namespace}:SESSION [READ]
 
+    Required Scope: social
+
+    Queries the specified session's status. Game servers are expected to
+    call this periodically as long as it has a session in queue to see
+    if there are new players being matched to the session.
+
+    Possible session statuses are "sessionInQueue", "sessionFull", and "sessionTimeout".
 
     Required Permission(s):
         - NAMESPACE:{namespace}:SESSION [READ]

@@ -34,8 +34,8 @@ class GetTotalActiveSession(Operation):
     """Get all active session (GetTotalActiveSession)
 
     Required permission: ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-    Required scope: social
 
+    Required scope: social
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]

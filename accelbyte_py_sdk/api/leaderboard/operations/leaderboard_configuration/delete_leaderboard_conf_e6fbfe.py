@@ -34,8 +34,10 @@ class DeleteLeaderboardConfigurationAdminV1(Operation):
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
 
-    This endpoint delete a leaderboard configuration
 
+
+
+    This endpoint delete a leaderboard configuration
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]

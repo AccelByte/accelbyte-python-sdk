@@ -32,15 +32,14 @@ class DeleteRole(Operation):
 
     Required permission 'ROLE:ADMIN [DELETE]' or 'ADMIN:ROLE [DELETE]'
 
-    Required Permission 'ROLE:ADMIN [DELETE]' is going to be DEPRECATED for
-    security purpose. It is going to be deprecated on 31 JANUARY 2019 , please use
-    permission 'ADMIN:ROLE [DELETE]' instead.
 
+    Required Permission 'ROLE:ADMIN [DELETE]' is going to be DEPRECATED for security purpose.
+    It is going to be deprecated on 31 JANUARY 2019 , please use permission 'ADMIN:ROLE [DELETE]' instead.
 
     Required Permission(s):
-        - ROLE:ADMIN [DELETE]
-
         - ADMIN:ROLE [DELETE]
+
+        - ROLE:ADMIN [DELETE]
 
     Properties:
         url: /iam/roles/{roleId}

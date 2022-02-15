@@ -34,8 +34,10 @@ class QuerySession(Operation):
     """Query to available game session (QuerySession)
 
     Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-    Required scope: social Query available game session
 
+    Required scope: social
+
+    Query available game session
 
     Required Permission(s):
         - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]

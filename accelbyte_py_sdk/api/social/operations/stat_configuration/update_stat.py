@@ -40,7 +40,6 @@ class UpdateStat(Operation):
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=4 (UPDATE)
       *  Returns : updated stat
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:STAT [UPDATE]
 

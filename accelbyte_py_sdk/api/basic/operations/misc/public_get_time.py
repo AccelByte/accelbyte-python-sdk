@@ -34,7 +34,6 @@ class PublicGetTime(Operation):
 
     Get server time
 
-
     Properties:
         url: /basic/v1/public/misc/time
 

@@ -35,7 +35,6 @@ class AdminDeleteRolePermissionV3(Operation):
     Required permission 'ADMIN:ROLE [UPDATE]'
     action code: 10406
 
-
     Required Permission(s):
         - ADMIN:ROLE [UPDATE]
 

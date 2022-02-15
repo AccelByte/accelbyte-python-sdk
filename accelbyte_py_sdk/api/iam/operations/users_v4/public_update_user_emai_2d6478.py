@@ -35,14 +35,15 @@ class PublicUpdateUserEmailAddressV4(Operation):
 
     The endpoint to update my email address.
 
-    It requires a verification code from
 
+
+
+    It requires a verification code from
 
 
         /users/me/code/request
 
     with UpdateEmailAddress context.
-
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/email

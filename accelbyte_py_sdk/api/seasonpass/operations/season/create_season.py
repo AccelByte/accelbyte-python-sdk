@@ -35,14 +35,12 @@ from ...models import ValidationErrorEntity
 class CreateSeason(Operation):
     """Create a season (createSeason)
 
-    This API is used to create a season, season only allowed in non-publisher
-    namespace.
+    This API is used to create a season, season only allowed in non-publisher namespace.
 
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=1 (CREATE)
       *  Returns : created season
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:SEASONPASS [CREATE]

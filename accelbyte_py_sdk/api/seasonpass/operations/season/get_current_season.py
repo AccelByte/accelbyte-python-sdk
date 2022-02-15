@@ -33,14 +33,11 @@ from ...models import SeasonSummary
 class GetCurrentSeason(Operation):
     """Get current published season summary (getCurrentSeason)
 
-    [SERVICE COMMUNICATION ONLY]This API is used to get current published season
-    summary which includes previous published season summary if exists, season
-    only located in non-publisher namespace.
+    [SERVICE COMMUNICATION ONLY]This API is used to get current published season summary which includes previous published season summary if exists, season only located in non-publisher namespace.
 
     Other detail info:
 
       * Returns : season summary data
-
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/current

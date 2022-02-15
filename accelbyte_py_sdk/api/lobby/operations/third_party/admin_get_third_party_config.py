@@ -33,10 +33,9 @@ from ...models import RestapiErrorResponseV1
 class AdminGetThirdPartyConfig(Operation):
     """Get Third Party Steam Config (adminGetThirdPartyConfig)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [READ]`
-    with scope `social`
-    get third party config for specified namespace.
+    Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [READ]` with scope `social`
 
+    get third party config for specified namespace.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [READ]

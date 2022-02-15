@@ -34,10 +34,11 @@ from ...models import ResponseError
 class AddPort(Operation):
     """Create port config (AddPort)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE] Required
-    scope: social This endpoint create a dedicated servers port config in a
-    namespace.
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
 
+    Required scope: social
+
+    This endpoint create a dedicated servers port config in a namespace.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]

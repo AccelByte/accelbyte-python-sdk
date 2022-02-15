@@ -36,15 +36,15 @@ class AdminUpdateUserEmailAddressV4(Operation):
     Required permission
 
 
-
         'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
 
 
 
-    This is the endpoint for an admin to update a user email address. This
-    endpoint need a valid user token from an admin to verify its identity (email)
-    before updating a user.
 
+
+
+    This is the endpoint for an admin to update a user email address.
+    This endpoint need a valid user token from an admin to verify its identity (email) before updating a user.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]

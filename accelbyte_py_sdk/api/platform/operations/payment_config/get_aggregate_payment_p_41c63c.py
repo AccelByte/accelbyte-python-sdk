@@ -36,7 +36,6 @@ class GetAggregatePaymentProviders(Operation):
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
       *  Returns : payment provider list
 
-
     Required Permission(s):
         - ADMIN:PAYMENT:CONFIG [READ]
 

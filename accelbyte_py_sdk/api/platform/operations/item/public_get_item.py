@@ -33,15 +33,13 @@ from ...models import PopulatedItemInfo
 class PublicGetItem(Operation):
     """Get an item in locale (publicGetItem)
 
-    This API is used to get an item in locale. If item not exist in specific
-    region, default region item will return.
+    This API is used to get an item in locale. If item not exist in specific region, default region item will return.
 
     Other detail info:
 
       * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store item)
       *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store item)
       *  Returns : item data
-
 
     Properties:
         url: /platform/public/namespaces/{namespace}/items/{itemId}/locale

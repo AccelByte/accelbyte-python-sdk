@@ -33,10 +33,9 @@ from ...models import RestapiErrorResponseBody
 class AdminGetUserPartyV1(Operation):
     """admin get user party data (adminGetUserPartyV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [READ]` with
-    scope `social`
-    get party data in a namespace.
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [READ]` with scope `social`
 
+    get party data in a namespace.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [READ]

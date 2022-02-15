@@ -41,7 +41,6 @@ class AcquireUserTicket(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:TICKET", action=1 (CREATE)
       *  Returns : acquire result
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:TICKET [CREATE]
 

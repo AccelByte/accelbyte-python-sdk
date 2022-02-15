@@ -34,17 +34,17 @@ from ...models import ResponseError
 class CreateSession(Operation):
     """Register a new game session (CreateSession)
 
-    Required permission: NAMESPACE:{namespace}:DSM:SESSION [CREATE] Required
-    scope: social This endpoint is intended to be called by game session manager
-    (matchmaker, lobby, etc.) to get a dedicated server for a game session. If a
-    dedicated server is available, it will respond with a dedicated server details
-    ready to be used. Otherwise it will trigger new dedicated server creation and
-    respond with a server status CREATING. The game session manager then expected
-    to wait and query the server readiness with GET
-    /namespaces/{namespace}/sessions/{sessionID} endpoint until the serverstatus
-    is READY Specify pod_name with name of local DS in the request to create a
-    session using the registered local DS
+    Required permission: NAMESPACE:{namespace}:DSM:SESSION [CREATE]
 
+    Required scope: social
+
+    This endpoint is intended to be called by game session manager (matchmaker, lobby, etc.) to get a dedicated server for a game session.
+
+    If a dedicated server is available, it will respond with a dedicated server details ready to be used.
+
+    Otherwise it will trigger new dedicated server creation and respond with a server status CREATING. The game session manager then expected to wait and query the server readiness with GET /namespaces/{namespace}/sessions/{sessionID} endpoint until the serverstatus is READY
+
+    Specify pod_name with name of local DS in the request to create a session using the registered local DS
 
     Required Permission(s):
         - NAMESPACE:{namespace}:DSM:SESSION [CREATE]

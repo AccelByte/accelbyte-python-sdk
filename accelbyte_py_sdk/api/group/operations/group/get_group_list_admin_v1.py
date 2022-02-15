@@ -35,10 +35,15 @@ class GetGroupListAdminV1(Operation):
 
     Required Permission: "ADMIN:NAMESPACE:{namespace}:GROUP [READ]"
 
+
+
+
     Get list of groups. This endpoint will show any types of group
 
-    Action Code: 73301
 
+
+
+    Action Code: 73301
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:GROUP [READ]

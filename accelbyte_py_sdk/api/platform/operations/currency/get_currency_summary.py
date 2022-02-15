@@ -39,7 +39,6 @@ class GetCurrencySummary(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=2 (READ)
       *  Returns : simplified Currency
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CURRENCY [READ]
 

@@ -32,10 +32,12 @@ from ...models import ResponseError
 class DeleteLocalServer(Operation):
     """Delete a local server (DeleteLocalServer)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE] Required
-    scope: social This endpoint deletes a specified local dedicated server from
-    DB. Note that DSM has no ability to shutdown local DS.
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE]
 
+    Required scope: social
+
+    This endpoint deletes a specified local dedicated server from DB.
+    Note that DSM has no ability to shutdown local DS.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE]

@@ -35,7 +35,6 @@ class DeleteConfig(Operation):
 
       * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:EQU8CONFIG" , action=8 (DELETE)
 
-
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/equ8/config
 

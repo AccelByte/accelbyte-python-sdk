@@ -33,14 +33,12 @@ from ...models import StoreInfo
 class GetPublishedStore(Operation):
     """Get published store (getPublishedStore)
 
-    This API is used to get a published store basic info, exclude category and
-    item information.
+    This API is used to get a published store basic info, exclude category and item information.
 
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
       *  Returns : store data
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:STORE [READ]

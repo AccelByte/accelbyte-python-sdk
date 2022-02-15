@@ -36,11 +36,20 @@ class UpdateUserPointAdminV1(Operation):
 
     Update user point in a leaderboard. This endpoint uses for test utility only.
 
+
+
+
     Other detail info:
 
-      * Required permission: resource="ADMIN:NAMESPACE:{namespace}:USER:(userId):LEADERBOARD", action=4 (UPDATE)
-      * Returns: user ranking
 
+
+
+
+
+      * Required permission: resource="ADMIN:NAMESPACE:{namespace}:USER:(userId):LEADERBOARD", action=4 (UPDATE)
+
+
+      * Returns: user ranking
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}

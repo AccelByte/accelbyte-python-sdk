@@ -35,8 +35,10 @@ class GetAllSessionsInChannel(Operation):
     """Get all channel sessions (GetAllSessionsInChannel)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-    Required Scope: social Get all sessions in a channel.
 
+    Required Scope: social
+
+    Get all sessions in a channel.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]

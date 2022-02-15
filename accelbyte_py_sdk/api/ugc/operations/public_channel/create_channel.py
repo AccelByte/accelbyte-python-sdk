@@ -36,7 +36,6 @@ class CreateChannel(Operation):
 
     Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
 

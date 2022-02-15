@@ -30,9 +30,7 @@ from .....core import HttpResponse
 class ListProviders(Operation):
     """List all supported providers (ListProviders)
 
-    This endpoints returns list of supported providers. Armada is the default
-    provider.
-
+    This endpoints returns list of supported providers. Armada is the default provider.
 
     Properties:
         url: /dsmcontroller/public/providers

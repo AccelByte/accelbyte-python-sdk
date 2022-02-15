@@ -40,7 +40,6 @@ class QueryRewards(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
       *  Returns : the list of rewards
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:REWARD [READ]
 

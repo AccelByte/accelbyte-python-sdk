@@ -34,8 +34,10 @@ class GetSession(Operation):
     """Get specified session by session ID (GetSession)
 
     Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-    Required scope: social Get the session by session ID
 
+    Required scope: social
+
+    Get the session by session ID
 
     Required Permission(s):
         - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]

@@ -39,7 +39,6 @@ class GetPaymentOrderChargeStatus(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
       *  Returns : payment order charge status
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PAYMENT [READ]
 

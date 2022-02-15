@@ -39,7 +39,6 @@ class UpdateConfig(Operation):
 
       * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:EQU8CONFIG" , action=4 (UPDATE)
 
-
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/equ8/config
 

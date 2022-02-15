@@ -42,7 +42,6 @@ class UpdateMyZipCode(Operation):
       *  Action code : 11408
       *  Returns : user zip code
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:PROFILE [UPDATE]
 

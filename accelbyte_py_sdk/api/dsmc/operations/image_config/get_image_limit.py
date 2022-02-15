@@ -33,9 +33,11 @@ from ...models import ResponseError
 class GetImageLimit(Operation):
     """DS Image Limit (GetImageLimit)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ] Required
-    scope: social This endpoint get ds image limit for specific namespace
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
 
+    Required scope: social
+
+    This endpoint get ds image limit for specific namespace
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]

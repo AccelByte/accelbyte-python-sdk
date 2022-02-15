@@ -33,10 +33,11 @@ from ...models import ResponseError
 class DeleteDeploymentOverride(Operation):
     """Delete Deployment Override (DeleteDeploymentOverride)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE] Required
-    scope: social This endpoint delete a dedicated server deployment override in a
-    namespace
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
 
+    Required scope: social
+
+    This endpoint delete a dedicated server deployment override in a namespace
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]

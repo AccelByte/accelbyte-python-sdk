@@ -40,7 +40,6 @@ class PublicGetMyAppEntitlementOwnershipByAppId(Operation):
       *  Path's namespace :
         * can be filled with publisher namespace in order to get publisher namespace app entitlement ownership
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:ENTITLEMENT [READ]
 

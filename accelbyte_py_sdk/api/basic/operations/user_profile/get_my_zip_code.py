@@ -40,7 +40,6 @@ class GetMyZipCode(Operation):
       *  Action code : 11407
       *  Returns : user zip code
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:PROFILE [READ]
 

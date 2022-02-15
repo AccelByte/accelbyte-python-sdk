@@ -33,14 +33,12 @@ from ...models import ListUserSeasonInfoPagingSlicedResult
 class GetUserParticipatedSeasons(Operation):
     """Get user participated season data (getUserParticipatedSeasons)
 
-    This API is used to get user participated season data, season only located in
-    non-publisher namespace.
+    This API is used to get user participated season data, season only located in non-publisher namespace.
 
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
       *  Returns : user participated season data
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]

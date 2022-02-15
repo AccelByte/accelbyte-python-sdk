@@ -33,9 +33,7 @@ from ...models import ResponseErrorResponse
 class AdminGetArchivedLeaderboardRankingDataV1Handler(Operation):
     """Admin Get signed url for archive all time leaderboard ranking data (AdminGetArchivedLeaderboardRankingDataV1Handler)
 
-    Admin Get signed url in an all time leaderboard that archived. Notes: This
-    will be a bulk endpoint to get sign url
-
+    Admin Get signed url in an all time leaderboard that archived. Notes: This will be a bulk endpoint to get sign url
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/archived

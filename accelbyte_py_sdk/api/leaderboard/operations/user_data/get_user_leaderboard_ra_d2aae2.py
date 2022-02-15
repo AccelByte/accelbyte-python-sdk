@@ -35,8 +35,10 @@ class GetUserLeaderboardRankingsAdminV1(Operation):
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
 
-    Get user leaderboard rankings
 
+
+
+    Get user leaderboard rankings
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]

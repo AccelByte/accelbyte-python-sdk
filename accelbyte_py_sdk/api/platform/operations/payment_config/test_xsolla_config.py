@@ -33,8 +33,7 @@ from ...models import XsollaConfig
 class TestXsollaConfig(Operation):
     """Test xsolla configuration (testXsollaConfig)
 
-    Check xsolla configuration, Reference: [Xsolla
-    Document](https://developers.xsolla.com/?#simple-checkout).
+    Check xsolla configuration, Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
 
     #### Check List:
 
@@ -42,15 +41,15 @@ class TestXsollaConfig(Operation):
       * projectId
       * apiKey
 
+
+
     #### Non-check list:
 
       * projectSecretKey
 
     Other detail info:
-
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
       *  Returns : test result
-
 
     Required Permission(s):
         - ADMIN:PAYMENT:CONFIG [UPDATE]

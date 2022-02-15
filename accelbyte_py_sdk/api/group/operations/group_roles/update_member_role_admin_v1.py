@@ -36,10 +36,15 @@ class UpdateMemberRoleAdminV1(Operation):
 
     Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]
 
+
+
+
     This endpoint is used to get member role
 
-    Action Code: 73204
 
+
+
+    Action Code: 73204
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]

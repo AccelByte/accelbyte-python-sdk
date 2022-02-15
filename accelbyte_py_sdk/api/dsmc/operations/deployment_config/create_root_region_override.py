@@ -34,10 +34,11 @@ from ...models import ResponseError
 class CreateRootRegionOverride(Operation):
     """Create region override (CreateRootRegionOverride)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE] Required
-    scope: social This endpoint creates a dedicated servers deployment override in
-    a namespace in a region for root deployment.
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
 
+    Required scope: social
+
+    This endpoint creates a dedicated servers deployment override in a namespace in a region for root deployment.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]

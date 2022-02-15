@@ -34,7 +34,6 @@ class DeleteAllUserGroup(Operation):
 
     Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
 

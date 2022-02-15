@@ -40,7 +40,6 @@ class DeleteCategory(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=8 (DELETE)
       *  Returns : the deleted category data
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CATEGORY [DELETE]
 

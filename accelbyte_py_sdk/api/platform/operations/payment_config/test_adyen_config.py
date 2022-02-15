@@ -40,6 +40,8 @@ class TestAdyenConfig(Operation):
       * apiKey
       * merchantAccount
 
+
+
     #### Non-check list:
 
       * notificationHmacKey
@@ -51,10 +53,8 @@ class TestAdyenConfig(Operation):
       * settings
 
     Other detail info:
-
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
       *  Returns : test adyen config
-
 
     Required Permission(s):
         - ADMIN:PAYMENT:CONFIG [UPDATE]

@@ -34,8 +34,10 @@ class GetSessionByUserIDs(Operation):
     """Query game sessions by comma separated user ids (GetSessionByUserIDs)
 
     Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-    Required scope: social Query game sessions by comma separated user ids
 
+    Required scope: social
+
+    Query game sessions by comma separated user ids
 
     Required Permission(s):
         - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]

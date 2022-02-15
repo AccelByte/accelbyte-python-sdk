@@ -35,7 +35,6 @@ class GetLikedContent(Operation):
 
     Requires valid user token
 
-
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/contents/liked
 

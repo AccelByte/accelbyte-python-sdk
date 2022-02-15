@@ -36,10 +36,15 @@ class CreateMemberRoleAdminV1(Operation):
 
     Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [CREATE]
 
+
+
+
     This endpoint is used to create new member role
 
-    Action Code: 73202
 
+
+
+    Action Code: 73202
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [CREATE]

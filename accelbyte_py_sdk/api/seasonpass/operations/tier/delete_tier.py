@@ -32,13 +32,11 @@ from ...models import ErrorEntity
 class DeleteTier(Operation):
     """Delete a tier (deleteTier)
 
-    This API is used to delete a tier permanently, only draft season pass can be
-    deleted.
+    This API is used to delete a tier permanently, only draft season pass can be deleted.
 
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=8 (DELETE)
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:SEASONPASS [DELETE]

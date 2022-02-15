@@ -34,15 +34,12 @@ from ...models import UserSeasonSummary
 class GrantUserPass(Operation):
     """Grant pass to user (grantUserPass)
 
-    This API is used to grant pass to user, it will auto enroll if there's no user
-    season but active published season exist, season only located in non-publisher
-    namespace, otherwise ignore.
+    This API is used to grant pass to user, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace, otherwise ignore.
 
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=4 (UPDATE)
       *  Returns : user season data
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [UPDATE]

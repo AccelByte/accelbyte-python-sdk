@@ -39,7 +39,6 @@ class QueryEntitlements(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
       *  Returns : entitlement list
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ENTITLEMENT [READ]
 

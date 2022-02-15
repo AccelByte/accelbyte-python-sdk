@@ -34,7 +34,6 @@ class DeleteChannel(Operation):
 
     Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
 

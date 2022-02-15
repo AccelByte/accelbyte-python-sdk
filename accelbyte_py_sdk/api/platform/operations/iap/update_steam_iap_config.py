@@ -38,7 +38,6 @@ class UpdateSteamIAPConfig(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
       *  Returns : updated steam iap config
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
 

@@ -38,7 +38,6 @@ class QueryFulfillmentHistories(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:FULFILLMENT", action=2 (READ)
       *  Returns : query fulfillment history
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:FULFILLMENT [READ]
 

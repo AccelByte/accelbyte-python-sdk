@@ -33,11 +33,11 @@ from ...models import RestapiErrorResponseV1
 class SendUsersFreeformNotificationV1Admin(Operation):
     """send freeform notification to connected users (sendUsersFreeformNotificationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with
-    scope `social`
-    Sends notification to all connected users in a namespace.
-    Action Code: 50201
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
 
+    Sends notification to all connected users in a namespace.
+
+    Action Code: 50201
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]

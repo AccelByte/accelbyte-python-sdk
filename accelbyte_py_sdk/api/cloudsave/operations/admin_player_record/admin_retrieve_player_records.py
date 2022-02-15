@@ -34,9 +34,10 @@ class AdminRetrievePlayerRecords(Operation):
     """Retrieve list of player records (AdminRetrievePlayerRecords)
 
     Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:RECORD [READ]
-    Required scope: social Retrieve list of player records key and userID under
-    given namespace.
 
+    Required scope: social
+
+    Retrieve list of player records key and userID under given namespace.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:RECORD [READ]

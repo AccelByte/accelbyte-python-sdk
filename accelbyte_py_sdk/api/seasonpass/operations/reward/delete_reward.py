@@ -32,13 +32,11 @@ from ...models import ErrorEntity
 class DeleteReward(Operation):
     """Delete a reward (deleteReward)
 
-    This API is used to delete a reward permanently, only draft season reward can
-    be deleted.
+    This API is used to delete a reward permanently, only draft season reward can be deleted.
 
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=8 (DELETE)
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:SEASONPASS [DELETE]

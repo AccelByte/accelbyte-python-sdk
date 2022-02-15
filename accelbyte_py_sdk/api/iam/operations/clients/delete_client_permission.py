@@ -32,7 +32,6 @@ class DeleteClientPermission(Operation):
 
     Required permission 'CLIENT:ADMIN [UPDATE]'
 
-
     Required Permission(s):
         - CLIENT:ADMIN [UPDATE]
 

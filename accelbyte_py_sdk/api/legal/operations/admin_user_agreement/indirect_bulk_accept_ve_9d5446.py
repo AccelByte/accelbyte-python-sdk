@@ -33,11 +33,9 @@ from ...models import AcceptAgreementResponse
 class IndirectBulkAcceptVersionedPolicy(Operation):
     """Admin bulk accept Policy Versions (indirectBulkAcceptVersionedPolicy)
 
-    Accepts many legal policy versions all at once. Supply with localized version
-    policy id and userId to accept an agreement. Other detail info:
+    Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:LEGAL", action=1 (CREATE)
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:LEGAL [CREATE]

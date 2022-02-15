@@ -35,8 +35,10 @@ class GetCurrentSeasonLeaderboardRankingAdminV1(Operation):
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
 
-    Get rankings in current season leaderboard.
 
+
+
+    Get rankings in current season leaderboard.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]

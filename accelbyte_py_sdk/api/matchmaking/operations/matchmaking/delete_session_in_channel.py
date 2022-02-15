@@ -34,8 +34,10 @@ class DeleteSessionInChannel(Operation):
     """Delete session in a channel (DeleteSessionInChannel)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
-    Required Scope: social Delete a session in a channel.
 
+    Required Scope: social
+
+    Delete a session in a channel.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]

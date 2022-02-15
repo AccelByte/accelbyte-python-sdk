@@ -35,8 +35,10 @@ class DeleteThirdPartyLoginPlatformDomainV3(Operation):
 
     This is the API to unregister 3rd Platform domain.
 
-    It needs ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [DELETE] resource.
 
+
+
+    It needs ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [DELETE] resource.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [DELETE]

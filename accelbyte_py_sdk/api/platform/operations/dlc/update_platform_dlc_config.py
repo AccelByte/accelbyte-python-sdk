@@ -39,7 +39,6 @@ class UpdatePlatformDLCConfig(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:DLC:CONFIG", action=4 (UPDATE)
       *  Returns : updated Platform DLC config
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [UPDATE]
 

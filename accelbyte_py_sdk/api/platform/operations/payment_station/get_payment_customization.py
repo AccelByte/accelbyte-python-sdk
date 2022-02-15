@@ -32,12 +32,10 @@ from ...models import Customization
 class GetPaymentCustomization(Operation):
     """Get payment provider customization (getPaymentCustomization)
 
-    Get payment provider customization, at current only Adyen provide
-    customization.
+    Get payment provider customization, at current only Adyen provide customization.
     Other detail info:
 
       * Returns : customization
-
 
     Properties:
         url: /platform/public/namespaces/{namespace}/payment/customization

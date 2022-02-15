@@ -33,10 +33,9 @@ from ...models import RestapiErrorResponseBody
 class AdminGetPlayerBlockedByPlayersV1(Operation):
     """get players who blocked this player by user id (adminGetPlayerBlockedByPlayersV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK
-    [READ]` with scope `social`
-    load get players who blocked this player in a namespace based on user id
+    Required permission : `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [READ]` with scope `social`
 
+    load get players who blocked this player in a namespace based on user id
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [READ]

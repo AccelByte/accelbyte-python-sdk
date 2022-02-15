@@ -35,7 +35,6 @@ class PublicGetQRCode(Operation):
 
       * Returns : QRCode image stream
 
-
     Properties:
         url: /platform/public/namespaces/{namespace}/payment/qrcode
 

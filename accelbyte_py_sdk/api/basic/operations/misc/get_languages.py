@@ -40,7 +40,6 @@ class GetLanguages(Operation):
       *  Action code : 11206
       *  Returns : language list
 
-
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/misc/languages
 

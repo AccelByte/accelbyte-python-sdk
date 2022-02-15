@@ -33,14 +33,12 @@ from ...models import ErrorEntity
 class GetUserSeason(Operation):
     """Get user season data (getUserSeason)
 
-    This API is used to get user season data, season only located in non-publisher
-    namespace.
+    This API is used to get user season data, season only located in non-publisher namespace.
 
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
       *  Returns : user season data
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]

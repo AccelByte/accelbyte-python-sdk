@@ -33,16 +33,16 @@ from ...models import RestapiErrorResponseV1
 class SendSpecificUserTemplatedNotificationV1Admin(Operation):
     """send templated notification to specific user (sendSpecificUserTemplatedNotificationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with
-    scope `social`
-    Sends templated notification to a user.
-    In the request body, specify which template slug (template identifier) to use
-    and the template language.
-    NotificationTemplate context is the key-value pair defining the value of each
-    handlebar specified in the template content. Template need to be published
-    before it can be use to send notifications
-    Action Code: 50212
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
 
+    Sends templated notification to a user.
+
+    In the request body, specify which template slug (template identifier) to use and the template language.
+
+    NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
+    Template need to be published before it can be use to send notifications
+
+    Action Code: 50212
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]

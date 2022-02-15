@@ -35,7 +35,6 @@ class GetChannels(Operation):
 
     Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
 
-
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
 

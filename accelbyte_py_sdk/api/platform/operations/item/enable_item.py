@@ -39,7 +39,6 @@ class EnableItem(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
       *  Returns : updated item
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
 

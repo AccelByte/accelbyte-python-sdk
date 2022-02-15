@@ -33,12 +33,12 @@ from ...models import RestapiErrorResponseBody
 class CreateTopic(Operation):
     """create new notification topic (createTopic)
 
-    Required permission : `NAMESPACE:{namespace}:TOPIC [CREATE]` with scope
-    `social`
-    Create new notification topic.
-    topic should be alphabets, no special char except underscore, uppercase and no
-    spacing. for example: TOPIC_TEST. Already existing topic can not be created
+    Required permission : `NAMESPACE:{namespace}:TOPIC [CREATE]` with scope `social`
 
+    Create new notification topic.
+
+    topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
+    Already existing topic can not be created
 
     Required Permission(s):
         - NAMESPACE:{namespace}:TOPIC [CREATE]

@@ -42,7 +42,6 @@ class UpdateNamespace(Operation):
       *  Action code : 11302
       *  Returns : updated namespace
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:NAMESPACE [UPDATE]
 

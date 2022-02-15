@@ -38,7 +38,6 @@ class UpdateStadiaJsonConfigFile(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
       *  Returns : updated stadia iap config
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
 

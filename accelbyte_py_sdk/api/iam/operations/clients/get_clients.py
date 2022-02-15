@@ -34,11 +34,12 @@ from ...models import ClientmodelClientResponse
 class GetClients(Operation):
     """Get All Clients (GetClients)
 
-    ## The endpoint is going to be deprecated at 10 August, 2018. Please use this
-    instead: namespaces/{namespace}/clients
+    ## The endpoint is going to be deprecated at 10 August, 2018. Please use this instead: namespaces/{namespace}/clients
+
+
+
 
     Required permission 'CLIENT [READ]'
-
 
     Required Permission(s):
         - CLIENT [READ]

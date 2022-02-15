@@ -33,9 +33,7 @@ from ...models import RestErrorResponse
 class PublicCreateJusticeUser(Operation):
     """Create Justice User from Publisher User (PublicCreateJusticeUser)
 
-    Create Justice User from Publisher User information. It will check first if
-    Justice User on target namespace already exist.
-
+    Create Justice User from Publisher User information. It will check first if Justice User on target namespace already exist.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/justice/{targetNamespace}

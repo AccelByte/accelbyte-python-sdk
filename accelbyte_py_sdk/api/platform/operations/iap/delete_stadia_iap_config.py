@@ -35,7 +35,6 @@ class DeleteStadiaIAPConfig(Operation):
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [DELETE]
 

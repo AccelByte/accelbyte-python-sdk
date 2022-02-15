@@ -41,7 +41,6 @@ class CreateKeyGroup(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=1 (CREATE)
       *  Returns : created key group
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:KEYGROUP [CREATE]
 

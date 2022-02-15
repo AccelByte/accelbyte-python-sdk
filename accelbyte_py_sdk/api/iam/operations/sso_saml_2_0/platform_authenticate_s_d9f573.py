@@ -30,16 +30,18 @@ from .....core import HttpResponse
 class PlatformAuthenticateSAMLV3Handler(Operation):
     """SAML platform Authentication API (platformAuthenticateSAMLV3Handler)
 
-    This endpoint authenticates user platform for SAML protocol. It validates user
-    to its respective platforms. Deactivated or login-banned users are unable to
-    login.
+    This endpoint authenticates user platform for SAML protocol. It validates user to its
+    respective platforms. Deactivated or login-banned users are unable to login.
+
+
 
     ## Supported platforms:
 
-      * azure
-    Microsoft login page will redirects to this endpoint after login success as
-    previously defined on authentication request SAML
 
+
+      * azure
+    Microsoft login page will redirects to this endpoint after login success
+    as previously defined on authentication request SAML
 
     Properties:
         url: /iam/v3/sso/saml/platforms/{platformId}/authenticate

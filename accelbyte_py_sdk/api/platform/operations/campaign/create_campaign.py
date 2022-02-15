@@ -41,7 +41,6 @@ class CreateCampaign(Operation):
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=1 (CREATE)
       *  Returns : created campaign
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [CREATE]
 

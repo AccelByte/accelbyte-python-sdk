@@ -32,12 +32,16 @@ from ...models import RestErrorResponse
 class CheckUserAvailability(Operation):
     """Check user's account availability (CheckUserAvailability)
 
-    Check user's account availability. Available field : - displayName If request
-    include access token with user ID data, that user ID will be excluded from
-    availability check. For example, in case user update his emailAddress, he can
-    use his own emailAddress to update his account. Response Code : - Account
-    Available : 404 (not found) - Account Not Available : 204 (no content)
+    Check user's account availability.
+    Available field :
+    - displayName
 
+    If request include access token with user ID data, that user ID will be excluded from availability check.
+    For example, in case user update his emailAddress, he can use his own emailAddress to update his account.
+
+    Response Code :
+    - Account Available : 404 (not found)
+    - Account Not Available : 204 (no content)
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/availability

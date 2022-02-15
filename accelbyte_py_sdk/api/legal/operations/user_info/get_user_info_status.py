@@ -34,12 +34,10 @@ class GetUserInfoStatus(Operation):
 
     Get user info cache last updated time per namespace.
     The query parameter namespaces can be a list of namespace separated by comma.
-    If query parameter namespaces is empty, user info cache status for all
-    available namespaces will be returned.
+    If query parameter namespaces is empty, user info cache status for all available namespaces will be returned.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:*:LEGAL [READ]

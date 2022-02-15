@@ -34,9 +34,7 @@ from ...models import ResponseError
 class AdminHideUserContent(Operation):
     """Hide/Unhide user's generated contents (AdminHideUserContent)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT
-    [UPDATE].
-
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]

@@ -36,7 +36,6 @@ class UpdateAdminEmailConfiguration(Operation):
 
     Required permission `ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [UPDATE]`
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [UPDATE]
 

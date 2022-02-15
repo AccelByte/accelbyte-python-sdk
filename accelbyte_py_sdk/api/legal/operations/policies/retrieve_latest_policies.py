@@ -39,7 +39,6 @@ class RetrieveLatestPolicies(Operation):
       *  Fill the tags if you want to filter the responded policy by tags
       *  Fill the defaultOnEmpty with true if you want to be responded with default country-specific policy if your requested country is not exist
 
-
     Properties:
         url: /agreement/public/policies/countries/{countryCode}
 

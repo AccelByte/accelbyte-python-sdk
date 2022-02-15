@@ -35,7 +35,6 @@ class PublicGeneratePersonalDataURL(Operation):
 
     Requires valid user access token
 
-
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate
 

@@ -40,7 +40,6 @@ class UpdateStripeConfig(Operation):
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
       *  Returns : updated payment merchant config
 
-
     Required Permission(s):
         - ADMIN:PAYMENT:CONFIG [UPDATE]
 

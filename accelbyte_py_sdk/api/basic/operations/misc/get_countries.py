@@ -41,7 +41,6 @@ class GetCountries(Operation):
       *  Action code : 11204
       *  Returns : country code list
 
-
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/misc/countries
 

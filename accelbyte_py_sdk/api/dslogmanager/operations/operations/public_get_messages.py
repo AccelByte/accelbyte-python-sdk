@@ -35,7 +35,6 @@ class PublicGetMessages(Operation):
 
     get the list of messages.
 
-
     Properties:
         url: /dslogmanager/v1/messages
 

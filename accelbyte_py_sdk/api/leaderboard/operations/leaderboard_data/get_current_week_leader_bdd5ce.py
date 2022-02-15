@@ -35,8 +35,10 @@ class GetCurrentWeekLeaderboardRankingAdminV1(Operation):
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
 
-    Get rankings in current week leaderboard.
 
+
+
+    Get rankings in current week leaderboard.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]

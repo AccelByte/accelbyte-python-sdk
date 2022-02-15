@@ -39,7 +39,6 @@ class PublicGetUserProfilePublicInfoByIds(Operation):
       * Action code : 11405
       *  Returns : user public profiles
 
-
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/profiles/public
 

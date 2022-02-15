@@ -33,9 +33,8 @@ from ...models import ResponseError
 class AdminUpdateAchievementListOrder(Operation):
     """Update achievements listOrder (AdminUpdateAchievementListOrder)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]` and
-    scope `social`
-
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]` and scope `social`
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]

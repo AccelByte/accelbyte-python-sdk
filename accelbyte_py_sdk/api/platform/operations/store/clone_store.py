@@ -33,14 +33,12 @@ from ...models import StoreInfo
 class CloneStore(Operation):
     """Clone a store (cloneStore)
 
-    This API is used to clone a store. Usually clone a draft store to published
-    store because published store can't directly edit content.
+    This API is used to clone a store. Usually clone a draft store to published store because published store can't directly edit content.
 
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
       *  Returns : clone store info
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:STORE [CREATE]

@@ -38,7 +38,6 @@ class PublicGetCountries(Operation):
 
       * Returns : country code list
 
-
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/misc/countries
 

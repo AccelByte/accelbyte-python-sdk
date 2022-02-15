@@ -42,7 +42,6 @@ class AddCountryGroup(Operation):
       *  Action code : 11201
       *  Returns : newly created country group
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:MISC [CREATE]
 

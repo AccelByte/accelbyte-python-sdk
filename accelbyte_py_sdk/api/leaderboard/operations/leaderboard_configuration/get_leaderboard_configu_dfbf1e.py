@@ -35,8 +35,10 @@ class GetLeaderboardConfigurationAdminV1(Operation):
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
 
-    This endpoint returns a leaderboard configuration
 
+
+
+    This endpoint returns a leaderboard configuration
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]

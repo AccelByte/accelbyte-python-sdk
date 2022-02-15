@@ -34,10 +34,9 @@ from ...models import RestapiErrorResponseBody
 class AdminDeleteProfanityFilter(Operation):
     """delete the filter from the list (adminDeleteProfanityFilter)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [DELETE]` with
-    scope `social`
-    delete the filter from the list
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [DELETE]` with scope `social`
 
+    delete the filter from the list
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PROFANITY [DELETE]

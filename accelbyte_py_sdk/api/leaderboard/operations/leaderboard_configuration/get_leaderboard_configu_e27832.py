@@ -35,7 +35,6 @@ class GetLeaderboardConfigurationsPublicV1(Operation):
 
     This endpoint return all leaderboard configurations
 
-
     Properties:
         url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards
 

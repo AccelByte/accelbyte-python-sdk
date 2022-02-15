@@ -36,7 +36,6 @@ class AdminGetAgeRestrictionStatusV3(Operation):
     Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]'
     action code: 10138
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]
 

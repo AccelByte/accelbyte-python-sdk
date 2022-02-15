@@ -34,9 +34,7 @@ from ...models import ModelsEventResponse
 class GetUserActivitiesHandler(Operation):
     """Get all user's activities (GetUserActivitiesHandler)
 
-    Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]`and scope
-    `analytics`
-
+    Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]`and scope `analytics`
 
     Required Permission(s):
         - NAMESPACE:{namespace}:EVENT [UPDATE]

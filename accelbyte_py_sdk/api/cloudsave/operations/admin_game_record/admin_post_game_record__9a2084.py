@@ -34,9 +34,10 @@ class AdminPostGameRecordHandlerV1(Operation):
     """Save namespace level record (adminPostGameRecordHandlerV1)
 
     Required permission: ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [WRITE]
-    Required scope: social This endpoints is to create new game record in
-    namespace-level.
 
+    Required scope: social
+
+    This endpoints is to create new game record in namespace-level.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [WRITE]

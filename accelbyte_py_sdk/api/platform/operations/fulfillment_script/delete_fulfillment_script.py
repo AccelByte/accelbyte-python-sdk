@@ -35,7 +35,6 @@ class DeleteFulfillmentScript(Operation):
 
       * Required permission : resource="ADMIN:FULFILLMENT", action=8 (DELETE)
 
-
     Required Permission(s):
         - ADMIN:FULFILLMENT [DELETE]
 

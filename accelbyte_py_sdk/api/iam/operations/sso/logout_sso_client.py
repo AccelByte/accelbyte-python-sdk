@@ -32,9 +32,10 @@ from ...models import RestErrorResponse
 class LogoutSSOClient(Operation):
     """Logout (LogoutSSOClient)
 
-    Logout user's session on platform that logged in using SSO. Supported
-    platforms: - discourse
+    Logout user's session on platform that logged in using SSO.
 
+    Supported platforms:
+    - discourse
 
     Properties:
         url: /iam/v3/sso/{platformId}/logout

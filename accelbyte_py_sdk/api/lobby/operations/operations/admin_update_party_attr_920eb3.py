@@ -34,10 +34,9 @@ from ...models import RestapiErrorResponseBody
 class AdminUpdatePartyAttributesV1(Operation):
     """admin update party attributes (adminUpdatePartyAttributesV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]`
-    with scope `social`
-    update party attributes in a namespace.
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]` with scope `social`
 
+    update party attributes in a namespace.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]

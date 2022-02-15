@@ -34,10 +34,9 @@ from ...models import RestapiErrorResponseBody
 class AdminDebugProfanityFilters(Operation):
     """get the list of filters that would modify the phrase (adminDebugProfanityFilters)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with
-    scope `social`
-    get the list of filters that would modify the phrase
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with scope `social`
 
+    get the list of filters that would modify the phrase
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]

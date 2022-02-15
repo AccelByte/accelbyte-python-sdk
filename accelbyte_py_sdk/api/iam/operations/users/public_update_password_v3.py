@@ -36,7 +36,6 @@ class PublicUpdatePasswordV3(Operation):
     Required valid user authorization.
     action code: 10107
 
-
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/password
 

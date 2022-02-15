@@ -34,9 +34,8 @@ class ListAdminsV3(Operation):
     """List User Admins (ListAdminsV3)
 
     This endpoint requires ADMIN:NAMESPACE:{namespace}:USER [READ] permission.
-    List all users that has admin role (role that has admin_role attribute set to
-    true).
 
+    List all users that has admin role (role that has admin_role attribute set to true).
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER [READ]

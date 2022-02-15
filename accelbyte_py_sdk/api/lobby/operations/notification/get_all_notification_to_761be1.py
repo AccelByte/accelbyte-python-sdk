@@ -33,11 +33,11 @@ from ...models import RestapiErrorResponseV1
 class GetAllNotificationTopicsV1Admin(Operation):
     """get topic by namespace (getAllNotificationTopicsV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with
-    scope `social`
-    get topic by namespace.
-    Action Code: 50213
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with scope `social`
 
+    get topic by namespace.
+
+    Action Code: 50213
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]

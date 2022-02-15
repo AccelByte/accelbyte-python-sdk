@@ -35,19 +35,39 @@ class GetUserGroupInformationPublicV1(Operation):
 
     Required valid user authentication
 
+
+
+
     This endpoint is used to get user group information.
 
-    Get user group information. If user is not belong to any group, it will return
-    warning to give information about it
+
+
+
+    Get user group information. If user is not belong to any group, it will return warning to give information about it
+
+
+
 
     Group Member Status:
 
+
+
+
+
+
       * JOIN : status of user requested to join group
+
+
       * INVITE: status of user invited to a group
+
+
       * JOINED: status of user already joined to a group
 
-    Action Code: 73405
 
+
+
+
+    Action Code: 73405
 
     Properties:
         url: /group/v1/public/namespaces/{namespace}/users/{userId}

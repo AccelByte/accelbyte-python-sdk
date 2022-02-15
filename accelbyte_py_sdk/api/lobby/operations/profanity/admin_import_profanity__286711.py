@@ -32,10 +32,9 @@ from ...models import RestapiErrorResponseBody
 class AdminImportProfanityFiltersFromFile(Operation):
     """import a file with filters (adminImportProfanityFiltersFromFile)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with
-    scope `social`
-    import a file with filters
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with scope `social`
 
+    import a file with filters
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]

@@ -37,16 +37,13 @@ class UpdateCountryGroup(Operation):
 
     Update a country groups. The countryGroupCode must be exist beforehand.
     Valid update behaviour :
-    - To update countryGroupName only, do not include countries key or just
-    specify it with empty array.
-    - To update countries only, do not include countryGroupName key or just
-    specify it with blank value.
+    - To update countryGroupName only, do not include countries key or just specify it with empty array.
+    - To update countries only, do not include countryGroupName key or just specify it with blank value.
     Other detail info:
 
       * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=4 (UPDATE)
       *  Action code : 11202
       *  Returns : updated country group
-
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:MISC [UPDATE]

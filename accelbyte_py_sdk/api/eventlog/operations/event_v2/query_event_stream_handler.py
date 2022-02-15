@@ -33,15 +33,18 @@ from ...models import ModelsGenericQueryPayload
 class QueryEventStreamHandler(Operation):
     """A generic query to get a set of events based on the provided filters (QueryEventStreamHandler)
 
-    This endpoint is using POST which is somewhat unfamiliar, but it's logical
-    that we have to send/post a filter (search term) in order to get the data.
+    This endpoint is using POST which is somewhat unfamiliar,
+    but it's logical that we have to send/post a filter (search term) in order to get the data.
 
-    This endpoint will not return anything if you give it an empty filters in the
-    request body.
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [READ]` and scope
-    `"+scope+"`
 
+
+    This endpoint will not return anything if you give it an empty filters in the request body.
+
+
+
+
+    Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [READ]` and scope `"+scope+"`
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:EVENT [READ]

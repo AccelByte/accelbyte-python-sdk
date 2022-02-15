@@ -33,13 +33,11 @@ from ...models import TestResult
 class TestXsollaConfigById(Operation):
     """Test xsolla configuration by id (testXsollaConfigById)
 
-    Test xsolla configuration in payment merchant config. Reference: [Xsolla
-    Document](https://developers.xsolla.com/?#simple-checkout).
+    Test xsolla configuration in payment merchant config. Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
       *  Returns : test xsolla config
-
 
     Required Permission(s):
         - ADMIN:PAYMENT:CONFIG [READ]

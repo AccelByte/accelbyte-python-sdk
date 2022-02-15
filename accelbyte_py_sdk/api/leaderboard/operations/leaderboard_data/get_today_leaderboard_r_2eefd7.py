@@ -35,8 +35,10 @@ class GetTodayLeaderboardRankingAdminV1(Operation):
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
 
-    Get rankings in today leaderboard.
 
+
+
+    Get rankings in today leaderboard.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]

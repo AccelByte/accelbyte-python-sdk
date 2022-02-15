@@ -35,19 +35,19 @@ from ...models import ValidationErrorEntity
 class UpdateUserStatItemValue1(Operation):
     """Public update user's statitem value (updateUserStatItemValue_1)
 
-    Public update user's statitem value for a given namespace and user with a
-    certain update strategy. There are four supported update strategies: +
-    *OVERRIDE*: update user statitem with the new value + *INCREMENT*: increment
-    user statitem with the specified value + *MAX*: update user statitem with the
-    specified value if it's larger than the existing value + *MIN*: update user
-    statitem with the specified value if it's lower than the existing value The
-    *additionalKey* parameter will be suffixed to *userId* and is used to support
-    multi level user's statitems, such as character's statitems. If provided,
-    user's statitems will be saved with key: *userId_additionalKey* Other detail
-    info: + *Required permission*:
-    resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE) +
-    *Returns*: updated user's statItem
+    Public update user's statitem value for a given namespace and user with a certain update strategy.
+    There are four supported update strategies:
+    + *OVERRIDE*: update user statitem with the new value
+    + *INCREMENT*: increment user statitem with the specified value
+    + *MAX*: update user statitem with the specified value if it's larger than the existing value
+    + *MIN*: update user statitem with the specified value if it's lower than the existing value
 
+    The *additionalKey* parameter will be suffixed to *userId* and is used to support multi level user's statitems, such as character's statitems.
+    If provided, user's statitems will be saved with key: *userId_additionalKey*
+
+    Other detail info:
+    + *Required permission*: resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+    + *Returns*: updated user's statItem
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]

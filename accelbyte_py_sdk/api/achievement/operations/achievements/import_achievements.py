@@ -33,13 +33,15 @@ from ...models import ServiceImportConfigResponse
 class ImportAchievements(Operation):
     """Import achievements from file (ImportAchievements)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE] Required
-    Scope: social Import channels configuration from file. It will merge with
-    existing channels. Available import strategy: - leaveOut: if channel with
-    same key exist, the existing will be used and imported one will be ignored
-    (default) - replace: if channel with same key exist, the imported channel
-    will be used and existing one will be removed
 
+    Required permission ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]
+
+    Required Scope: social
+
+    Import channels configuration from file. It will merge with existing channels.
+    Available import strategy:
+    - leaveOut: if channel with same key exist, the existing will be used and imported one will be ignored (default)
+    - replace: if channel with same key exist, the imported channel will be used and existing one will be removed
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]

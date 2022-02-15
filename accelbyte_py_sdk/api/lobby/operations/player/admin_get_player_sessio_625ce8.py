@@ -33,11 +33,9 @@ from ...models import RestapiErrorResponseBody
 class AdminGetPlayerSessionAttribute(Operation):
     """admin get player's session attribute (adminGetPlayerSessionAttribute)
 
-    Required permission :
-    `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:ATTRIBUTES [READ]` with
-    scope `social`
-    get player's specific session attribute by user id in a namespace.
+    Required permission : `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:ATTRIBUTES [READ]` with scope `social`
 
+    get player's specific session attribute by user id in a namespace.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:ATTRIBUTES [READ]

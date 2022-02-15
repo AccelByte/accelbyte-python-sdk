@@ -34,12 +34,11 @@ from ...models import ResponseError
 class CreateContentS3(Operation):
     """Upload content to S3 bucket (CreateContentS3)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].n
-    All request body are required except payload, preview, tags, and contentType.
-    contentType values is used to enforce the Content-Type header needed by the
-    client to upload the content using the S3 presigned URL. If not specified, it
-    will use fileExtension value.
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
 
+    All request body are required except payload, preview, tags, and contentType.
+    contentType values is used to enforce the Content-Type header needed by the client to upload the content using the S3 presigned URL.
+    If not specified, it will use fileExtension value.
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]

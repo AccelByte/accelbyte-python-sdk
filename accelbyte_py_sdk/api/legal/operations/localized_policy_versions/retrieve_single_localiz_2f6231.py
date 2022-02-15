@@ -38,7 +38,6 @@ class RetrieveSingleLocalizedPolicyVersion(Operation):
 
       * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
 
-
     Required Permission(s):
         - ADMIN:NAMESPACE:*:LEGAL [READ]
 
