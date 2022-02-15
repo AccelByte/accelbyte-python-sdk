@@ -1,10 +1,10 @@
-# justice-ugc-service (1.13.0)
-
-# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
 # template_file: python-cli-init.j2
+
+# justice-ugc-service (1.13.0)
 
 from ._single_admin_get_channel import single_admin_get_channel
 from ._admin_create_channel import admin_create_channel

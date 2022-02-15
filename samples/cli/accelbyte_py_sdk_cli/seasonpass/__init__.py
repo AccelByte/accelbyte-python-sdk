@@ -1,10 +1,10 @@
-# justice-seasonpass-service (1.8.0)
-
-# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
 # template_file: python-cli-init.j2
+
+# justice-seasonpass-service (1.8.0)
 
 from ._query_seasons import query_seasons
 from ._create_season import create_season

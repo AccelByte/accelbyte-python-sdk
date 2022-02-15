@@ -1,10 +1,10 @@
-# justice-platform-service (4.2.0)
-
-# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
 # template_file: python-cli-init.j2
+
+# justice-platform-service (4.2.0)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._test_fulfillment_script_eval import test_fulfillment_script_eval

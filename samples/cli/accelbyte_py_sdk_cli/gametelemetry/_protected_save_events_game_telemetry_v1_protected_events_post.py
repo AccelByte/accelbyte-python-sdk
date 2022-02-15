@@ -1,10 +1,10 @@
-# Analytics Game Telemetry (0.0.1)
-
-# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
 # template_file: python-cli-command.j2
+
+# Analytics Game Telemetry (0.0.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

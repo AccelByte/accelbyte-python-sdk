@@ -1,10 +1,10 @@
-# justice-cloudsave-service (2.2.0)
-
-# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
 # template_file: python-cli-init.j2
+
+# justice-cloudsave-service (2.2.0)
 
 from ._list_game_records_handler_v1 import list_game_records_handler_v1
 from ._admin_get_game_record_handler_v1 import admin_get_game_record_handler_v1

@@ -1,10 +1,10 @@
-# Analytics Game Telemetry (0.0.1)
-
-# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
 # template_file: python-cli-init.j2
+
+# Analytics Game Telemetry (0.0.1)
 
 from ._protected_save_events_game_telemetry_v1_protected_events_post import protected_save_events_game_telemetry_v1_protected_events_post
 from ._protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get import protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get

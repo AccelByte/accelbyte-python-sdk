@@ -1,10 +1,10 @@
-# Justice Matchmaking Service (2.13.2)
-
-# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
 # template_file: python-cli-init.j2
+
+# Justice Matchmaking Service (2.13.2)
 
 from ._get_healthcheck_info import get_healthcheck_info
 from ._handler_v3_healthz import handler_v3_healthz

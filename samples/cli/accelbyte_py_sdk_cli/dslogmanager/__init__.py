@@ -1,10 +1,10 @@
-# justice-ds-log-manager-service (2.0.0)
-
-# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
 # template_file: python-cli-init.j2
+
+# justice-ds-log-manager-service (2.0.0)
 
 from ._list_terminated_servers import list_terminated_servers
 from ._download_server_logs import download_server_logs
