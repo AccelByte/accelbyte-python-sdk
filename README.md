@@ -67,6 +67,8 @@ if __name__ == "__main__":
         namespace=namespace,
     )
     options = {
+        "app_name": "MyApp",
+        "app_version": "0.1.0",
         "config": my_config_repository
     }
 
