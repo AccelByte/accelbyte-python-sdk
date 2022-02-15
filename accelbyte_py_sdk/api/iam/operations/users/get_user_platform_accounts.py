@@ -1,10 +1,8 @@
-# justice-iam-service (5.2.0)
-
-# template file: justice_py_sdk_codegen/__main__.py
-
-# Copyright (c) 2018 - 2022 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
+
+# template file: justice_py_sdk_codegen/__main__.py
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -19,6 +17,8 @@
 # pylint: disable=too-many-return-statements
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
+
+# justice-iam-service (5.2.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -41,9 +41,9 @@ class GetUserPlatformAccounts(Operation):
 
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
-
         - NAMESPACE:{namespace}:USER:{userId} [READ]
+
+        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms
