@@ -23,7 +23,7 @@ class Header(dict):
     def add_amazon_xray_trace_id(self, amazon_xray_trace_id: Union[None, str] = None) -> Header:
         if amazon_xray_trace_id is None:
             amazon_xray_trace_id = generate_amazon_xray_trace_id()
-        self["X-Amzn-TraceId"] = amazon_xray_trace_id
+        self["X-Amzn-Trace-Id"] = amazon_xray_trace_id
         return self
 
     @classmethod
