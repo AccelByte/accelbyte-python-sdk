@@ -516,6 +516,7 @@ def get_final_headers(
                 headers.add_bearer_authorization(access_token)
 
     headers.add_amazon_xray_trace_id()
+    headers.add_user_agent()
 
     if additional_headers:
         for k, v in additional_headers.items():
