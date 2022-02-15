@@ -1,6 +1,8 @@
 import logging
 from typing import Any, Dict, Optional, Tuple, Union
 
+from ._app_info import AppInfo
+
 from ._config_repository import ConfigRepository
 from ._config_repository import DictConfigRepository
 from ._config_repository import EnvironmentConfigRepository
@@ -58,6 +60,8 @@ def initialize(
 
     Args:
         options (dict): Options used by the SDK. It can contain any of the following:
+         -- app_name: (Optional[str]): App name.
+         -- app_version: (Optional[str]): App version.
          -- config (Optional[Union[str, Type[ConfigRepository]]]): Config Repository to use.
          -- config_params (Optional[Tuple[List[Any], Dict[str, Any]]]): Config Repository parameters.
          -- token (Optional[Union[str, Type[TokenRepository]]]): Token Repository to use.
@@ -66,6 +70,8 @@ def initialize(
          -- http_params (Optional[Tuple[List[Any], Dict[str, Any]]]): Http Client parameters.
 
      Raises:
+         ValueError: If 'options.app_name' is not str.
+         ValueError: If 'options.app_version' is not str.
          ValueError: If 'options.config_params' is not Tuple[List[Any], Dict[str, Any]].
          ValueError: If 'options.config' is not recognized.
          ValueError: If 'options.token_params' is not Tuple[List[Any], Dict[str, Any]].
@@ -93,6 +99,18 @@ def initialize(
         return
 
     options = options if options is not None else {}
+
+    # region app info
+
+    app_name = options.get("app_name", None)
+    if app_name is not None:
+        set_app_name(app_name)
+
+    app_version = options.get("app_version", None)
+    if app_version is not None:
+        set_app_version(app_version)
+
+    # endregion app info
 
     # region config repository
 
@@ -168,6 +186,28 @@ def reset() -> None:
     _CONFIG_REPOSITORY = None
     _TOKEN_REPOSITORY = None
     _HTTP_CLIENT = None
+
+    AppInfo().reset()
+
+
+# region App Info
+
+def get_app_name() -> str:
+    return AppInfo().name
+
+
+def set_app_name(app_name: str) -> None:
+    AppInfo().name = app_name
+
+
+def get_app_version() -> str:
+    return AppInfo().version
+
+
+def set_app_version(app_version: str) -> None:
+    AppInfo().version = app_version
+
+# endregion App Info
 
 
 # region ConfigRepository

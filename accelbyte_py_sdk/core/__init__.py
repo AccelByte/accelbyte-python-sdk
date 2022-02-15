@@ -48,6 +48,11 @@ from ._core import is_initialized
 from ._core import initialize
 from ._core import reset
 
+from ._core import get_app_name
+from ._core import set_app_name
+from ._core import get_app_version
+from ._core import set_app_version
+
 from ._core import get_config_repository
 from ._core import set_config_repository
 from ._core import get_base_url

@@ -4,6 +4,9 @@ from typing import Dict, Tuple, Union
 from ._utils import create_basic_authentication
 from ._utils import generate_amazon_xray_trace_id
 
+import accelbyte_py_sdk
+from ._app_info import AppInfo
+
 
 class Header(dict):
 
@@ -24,6 +27,17 @@ class Header(dict):
         if amazon_xray_trace_id is None:
             amazon_xray_trace_id = generate_amazon_xray_trace_id()
         self["X-Amzn-Trace-Id"] = amazon_xray_trace_id
+        return self
+
+    def add_user_agent(self, user_agent: Union[None, str] = None) -> Header:
+        if user_agent is None:
+            product = "AccelBytePythonSDK"
+            product_version = accelbyte_py_sdk.__version__
+            app_info = AppInfo()
+            app_name = app_info.name
+            app_version = app_info.version
+            user_agent = f"{product}/{product_version} ({app_name}/{app_version})"
+        self["User-Agent"] = user_agent
         return self
 
     @classmethod
