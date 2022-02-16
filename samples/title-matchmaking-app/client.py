@@ -1,4 +1,5 @@
 import asyncio
+import os
 import requests as rq
 
 try:
@@ -10,17 +11,16 @@ except ImportError:
 
 import accelbyte_py_sdk
 from accelbyte_py_sdk.core import MyConfigRepository
-from accelbyte_py_sdk.core import Websockets2WSClient
+from accelbyte_py_sdk.core import WebsocketsWSClient
 from accelbyte_py_sdk.core import get_access_token
 from accelbyte_py_sdk.core import get_env_config
 from accelbyte_py_sdk.services.auth import login_user
 from accelbyte_py_sdk.api.lobby.wss_models import MessageNotif
 
-HOST = "http://127.0.0.1:3000"
-ENDPOINT = "/"
-
 
 async def main():
+    CREATE_TITLE_MATCHMAKING_URL = os.environ.get("CREATE_TITLE_MATCHMAKING_URL", "http://127.0.0.1:3000")
+
     username = input("Input username: ")
     password = input("Input password: ")
 
@@ -52,11 +52,8 @@ async def main():
     async def on_message(message: str):
         print_wsm(message, "recv")
 
-    scheme, uri = base_url.split("://")
-    ws_uri = f"wss://{uri}/lobby"
-
-    ws_client = Websockets2WSClient(
-        uri=ws_uri,
+    ws_client = WebsocketsWSClient(
+        uri=base_url,
         username=username,
         password=password,
         access_token=access_token
@@ -73,9 +70,8 @@ async def main():
     await ws_client.send("\n".join([i.removeprefix("id: ") for i in message_notif.splitlines(keepends=False)]))
     print_wsm(message_notif, "sent")
 
-    mm_uri = f"{HOST}{ENDPOINT}"
     r = rq.post(
-        url=mm_uri,
+        url=CREATE_TITLE_MATCHMAKING_URL,
         headers={
             "Authorization": f"Bearer {access_token}"
         }
