@@ -1,6 +1,13 @@
+import asyncio
+from pathlib import Path
+
 import click
+from aioconsole import ainput
 
 from accelbyte_py_sdk import initialize
+from accelbyte_py_sdk.core import get_base_url
+from accelbyte_py_sdk.core import WebsocketsWSClient
+
 from .iam import commands as iam_commands
 from .achievement import commands as achievement_commands
 from .basic import commands as basic_commands
@@ -28,6 +35,82 @@ def entry_point():
     initialize()
 
 
+@click.command()
+def enter_websocket_mode():
+    asyncio.run(websocket_mode())
+
+
+async def websocket_mode():
+    base_url, error = get_base_url()
+    if error:
+        exit(1)
+
+    wd = Path(__file__).parent.parent
+    pipeline_path = wd / "tmp.pipe"
+
+    try:
+        ws_client = WebsocketsWSClient(uri=base_url, uri_prefix="ws://")
+        ws_client.listeners.append(websocket_listener)
+
+        click.echo("[INFO]: connecting")
+        await ws_client.connect()
+        click.echo("[INFO]: connected")
+
+        while True:
+            inp, src = await get_input(pipeline_path)
+            if inp:
+                if inp == ":q":
+                    break
+                if inp is not None:
+                    print(inp)
+                    await ws_client.send(inp)
+                    click.echo(f"[SEND]: {inp}")
+
+        click.echo("[INFO]: disconnecting")
+        await ws_client.disconnect()
+        click.echo("[INFO]: disconnected")
+    finally:
+        pipeline_path.unlink(missing_ok=True)
+
+
+async def get_input(pipeline_path):
+    tasks = [
+        asyncio.create_task(read_line_from_stdin()),
+        asyncio.create_task(read_line_from_file(pipeline_path)),
+    ]
+    finished, unfinished = await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
+    for finished_item in finished:
+        result = finished_item.result()
+        if result:
+            for unfinished_item in unfinished:
+                unfinished_item.cancel()
+            await asyncio.wait(unfinished)
+            return result
+
+
+async def read_line_from_stdin():
+    result = await ainput()
+    result = str(result)
+    result = result.replace("\\n", "\n")
+    return result, "stdin"
+
+
+async def read_line_from_file(path, sleep_duration=None):
+    sleep_duration = sleep_duration or 0.016
+    while True:
+        if path.exists():
+            text = path.read_text(encoding="utf-8", errors="ignore").rstrip()
+            if text:
+                if text:
+                    path.unlink()
+                    return text, "file"
+        await asyncio.sleep(sleep_duration)
+
+
+async def websocket_listener(message: str):
+    click.echo(f"[RECV]: {message}")
+
+
 def add_commands(grp, cmds, prefix: str = None):
     for cmd in cmds:
         grp.add_command(cmd, name=f"{f'{prefix}-' if prefix is not None else ''}{cmd.name}")
@@ -53,6 +136,8 @@ add_commands(entry_point, seasonpass_commands, prefix="seasonpass")
 add_commands(entry_point, sessionbrowser_commands, prefix="sessionbrowser")
 add_commands(entry_point, social_commands, prefix="social")
 add_commands(entry_point, ugc_commands, prefix="ugc")
+
+entry_point.add_command(enter_websocket_mode)
 
 
 if __name__ == "__main__":
