@@ -3,6 +3,7 @@
 # and restrictions contact your company contract manager.
 
 import base64
+import binascii
 import hashlib
 import logging
 import os
@@ -59,10 +60,11 @@ def create_pkce_verifier_and_challenge_s256(
     return verifier_str, challenge_str, method
 
 
-def generate_amazon_xray_trace_id(version: int = 1) -> str:
-    unix_timestamp_hex = format(int(time()), "X")
-    uuid_str = str(uuid4()).replace("-", "")[0:24]
-    return f"{version}-{unix_timestamp_hex}-{uuid_str}"
+def generate_amazon_xray_trace_id(version: int = 1, request_time: Union[None, float] = None) -> str:
+    request_time = request_time or time()
+    current_time_hex = hex(int(request_time))[2:]                  # time of the original request, in Unix epoch time, in 8 hexadecimal digits
+    request_id = binascii.hexlify(os.urandom(12)).decode("utf-8")  # 96-bit guid, in 24 hexadecimal digits
+    return f"{version}-{current_time_hex}-{request_id}"            # see: https://docs.aws.amazon.com/xray/latest/devguide/xray-api-sendingdata.html
 
 
 def generate_websocket_message_id() -> str:
