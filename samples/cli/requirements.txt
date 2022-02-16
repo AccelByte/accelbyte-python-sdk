@@ -1,5 +1,6 @@
 ../..   # accelbyte-py-sdk
 
+aioconsole
 anyio==3.3.4
 certifi==2021.10.8
 charset-normalizer==2.0.7
