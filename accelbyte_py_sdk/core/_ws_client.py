@@ -66,10 +66,10 @@ class WebsocketsWSClient:
         elif username and password:
             authorization = create_basic_authentication(username, password)
         else:
-            raise ValueError("Either 'access_token' or ('username', 'password') tuple is required.")
+            authorization = None
 
         self._uri: str = uri
-        self._headers: Dict[str, str] = {"Authorization": authorization}
+        self._headers: Optional[Dict[str, str]] = {"Authorization": authorization} if authorization is not None else None
 
         self._connection: Optional[websockets.WebSocketClientProtocol] = None
         self._is_closed: bool = False
