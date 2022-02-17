@@ -57,13 +57,17 @@ async def websocket_mode():
         click.echo("[INFO]: connected")
 
         while True:
+            await wait_for_response()
+            if websocket_mode.should_quit:
+                break
             inp, src = await get_input(pipeline_path)
             if inp:
                 if inp == ":q":
                     break
                 if inp is not None:
-                    print(inp)
                     await ws_client.send(inp)
+                    websocket_mode.is_waiting_for_response = True
+                    websocket_mode.last_message = inp
                     click.echo(f"[SEND]: {inp}")
 
         click.echo("[INFO]: disconnecting")
@@ -72,11 +76,15 @@ async def websocket_mode():
     finally:
         pipeline_path.unlink(missing_ok=True)
 
+websocket_mode.is_waiting_for_response = False
+websocket_mode.last_message = None
+websocket_mode.should_quit = False
+
 
 async def get_input(pipeline_path):
     tasks = [
         asyncio.create_task(read_line_from_stdin()),
-        asyncio.create_task(read_line_from_file(pipeline_path)),
+        asyncio.create_task(read_line_from_file(pipeline_path)),  # TODO(elmer): remove?
     ]
     finished, unfinished = await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
     for finished_item in finished:
@@ -107,7 +115,20 @@ async def read_line_from_file(path, sleep_duration=None):
         await asyncio.sleep(sleep_duration)
 
 
+async def wait_for_response():
+    sleep_duration = 0.016
+    while websocket_mode.is_waiting_for_response:
+        await asyncio.sleep(sleep_duration)
+
+
 async def websocket_listener(message: str):
+    websocket_mode.is_waiting_for_response = False
+    if websocket_mode.last_message != message:
+        websocket_mode.should_quit = False  # TODO(elmer): add option to quit (or not quit) when encountering an error.
+        flattened_message = "\\n".join(message.splitlines(keepends=False))
+        error = f"'{websocket_mode.last_message}' != '{flattened_message}'"
+        click.echo(f"[ERRO]: {error}")
+        return
     click.echo(f"[RECV]: {message}")
 
 
