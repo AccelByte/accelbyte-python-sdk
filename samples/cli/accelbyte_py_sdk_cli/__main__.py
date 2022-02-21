@@ -45,55 +45,34 @@ async def websocket_mode():
     if error:
         exit(1)
 
-    wd = Path(__file__).parent.parent
-    pipeline_path = wd / "tmp.pipe"
+    ws_client = WebsocketsWSClient(uri=base_url, uri_prefix="ws://")
+    ws_client.listeners.append(websocket_listener)
 
-    try:
-        ws_client = WebsocketsWSClient(uri=base_url, uri_prefix="ws://")
-        ws_client.listeners.append(websocket_listener)
+    click.echo("[INFO]: connecting")
+    await ws_client.connect()
+    click.echo("[INFO]: connected")
 
-        click.echo("[INFO]: connecting")
-        await ws_client.connect()
-        click.echo("[INFO]: connected")
-
-        while True:
-            await wait_for_response()
-            if websocket_mode.should_quit:
+    while True:
+        await wait_for_response()
+        if websocket_mode.should_quit:
+            break
+        inp, src = await read_line_from_stdin()
+        if inp:
+            if inp == ":q":
                 break
-            inp, src = await get_input(pipeline_path)
-            if inp:
-                if inp == ":q":
-                    break
-                if inp is not None:
-                    await ws_client.send(inp)
-                    websocket_mode.is_waiting_for_response = True
-                    websocket_mode.last_message = inp
-                    click.echo(f"[SEND]: {inp}")
+            if inp is not None:
+                await ws_client.send(inp)
+                websocket_mode.is_waiting_for_response = True
+                websocket_mode.last_message = inp
+                click.echo(f"[SEND]: {inp}")
 
-        click.echo("[INFO]: disconnecting")
-        await ws_client.disconnect()
-        click.echo("[INFO]: disconnected")
-    finally:
-        pipeline_path.unlink(missing_ok=True)
+    click.echo("[INFO]: disconnecting")
+    await ws_client.disconnect()
+    click.echo("[INFO]: disconnected")
 
 websocket_mode.is_waiting_for_response = False
 websocket_mode.last_message = None
 websocket_mode.should_quit = False
-
-
-async def get_input(pipeline_path):
-    tasks = [
-        asyncio.create_task(read_line_from_stdin()),
-        asyncio.create_task(read_line_from_file(pipeline_path)),  # TODO(elmer): remove?
-    ]
-    finished, unfinished = await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
-    for finished_item in finished:
-        result = finished_item.result()
-        if result:
-            for unfinished_item in unfinished:
-                unfinished_item.cancel()
-            await asyncio.wait(unfinished)
-            return result
 
 
 async def read_line_from_stdin():
@@ -101,18 +80,6 @@ async def read_line_from_stdin():
     result = str(result)
     result = result.replace("\\n", "\n")
     return result, "stdin"
-
-
-async def read_line_from_file(path, sleep_duration=None):
-    sleep_duration = sleep_duration or 0.016
-    while True:
-        if path.exists():
-            text = path.read_text(encoding="utf-8", errors="ignore").rstrip()
-            if text:
-                if text:
-                    path.unlink()
-                    return text, "file"
-        await asyncio.sleep(sleep_duration)
 
 
 async def wait_for_response():
