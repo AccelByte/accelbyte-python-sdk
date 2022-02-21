@@ -79,6 +79,10 @@ class WebsocketsWSClient:
 
         self.listeners: List[Callable[[str], Awaitable[None]]] = []
 
+    @property
+    def uri(self) -> str:
+        return self._uri
+
     async def connect(self) -> None:
         # pylint: disable=no-member
 
