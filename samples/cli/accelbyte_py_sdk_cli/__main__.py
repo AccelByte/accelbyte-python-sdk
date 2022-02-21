@@ -1,5 +1,5 @@
 import asyncio
-from pathlib import Path
+from typing import Optional
 
 import click
 from aioconsole import ainput
@@ -36,19 +36,41 @@ def entry_point():
 
 
 @click.command()
-def enter_websocket_mode():
-    asyncio.run(websocket_mode())
+@click.option("--compare_with_last_message/--no_compare_with_last_message", default=False)
+@click.option("--exit_on_error/--no_exit_on_error", default=bool)
+@click.option("--uri_prefix", type=str)
+def enter_websocket_mode(
+        compare_with_last_message: bool,
+        exit_on_error: bool,
+        uri_prefix: Optional[str] = None
+):
+    asyncio.run(websocket_mode(
+        compare_with_last_message=compare_with_last_message,
+        exit_on_error=exit_on_error,
+        uri_prefix=uri_prefix
+    ))
 
 
-async def websocket_mode():
+async def websocket_mode(
+        compare_with_last_message: Optional[bool] = None,
+        exit_on_error: Optional[bool] = None,
+        uri_prefix: Optional[str] = None
+):
+    compare_with_last_message = compare_with_last_message or False
+    exit_on_error = exit_on_error or False
+    uri_prefix = uri_prefix or "ws://"
+
+    websocket_mode.compare_with_last_message = compare_with_last_message
+    websocket_mode.exit_on_error = exit_on_error
+
     base_url, error = get_base_url()
     if error:
         exit(1)
 
-    ws_client = WebsocketsWSClient(uri=base_url, uri_prefix="ws://")
+    ws_client = WebsocketsWSClient(uri=base_url, uri_prefix=uri_prefix)
     ws_client.listeners.append(websocket_listener)
 
-    click.echo("[INFO]: connecting")
+    click.echo(f"[INFO]: connecting to {ws_client.uri}")
     await ws_client.connect()
     click.echo("[INFO]: connected")
 
@@ -70,6 +92,12 @@ async def websocket_mode():
     await ws_client.disconnect()
     click.echo("[INFO]: disconnected")
 
+    if websocket_mode.error is not None:
+        raise Exception(f"WebSocket Mode Error: {str(websocket_mode.error)}")
+
+websocket_mode.compare_with_last_message = False
+websocket_mode.error = None
+websocket_mode.exit_on_error = False
 websocket_mode.is_waiting_for_response = False
 websocket_mode.last_message = None
 websocket_mode.should_quit = False
@@ -90,11 +118,13 @@ async def wait_for_response():
 
 async def websocket_listener(message: str):
     websocket_mode.is_waiting_for_response = False
-    if websocket_mode.last_message != message:
-        websocket_mode.should_quit = False  # TODO(elmer): add option to quit (or not quit) when encountering an error.
+    if websocket_mode.compare_with_last_message and websocket_mode.last_message != message:
         flattened_message = "\\n".join(message.splitlines(keepends=False))
         error = f"'{websocket_mode.last_message}' != '{flattened_message}'"
         click.echo(f"[ERRO]: {error}")
+        if websocket_mode.exit_on_error:
+            websocket_mode.error = error
+            websocket_mode.should_quit = True
         return
     click.echo(f"[RECV]: {message}")
 

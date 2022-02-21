@@ -35,10 +35,14 @@ delete_file() {
 delete_file $PIPE_FILE
 MKFIFO $PIPE_FILE
 
-echo 'TAP version 13'
-echo "1..$MODELS_COUNT"
+#echo 'TAP version 13'
+#echo "1..$MODELS_COUNT"
 
-$PYTHON -m $MODULE enter-websocket-mode < $PIPE_FILE &
+$PYTHON -m $MODULE enter-websocket-mode \
+    --compare_with_last_message \
+    --exit_on_error \
+    --uri_prefix 'ws://' \
+    < $PIPE_FILE &
 
 sleep 1
 
