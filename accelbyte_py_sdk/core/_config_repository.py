@@ -28,6 +28,14 @@ class ConfigRepository(ABC):
     def get_namespace(self) -> str:
         pass
 
+    @abstractmethod
+    def get_app_name(self) -> str:
+        pass
+
+    @abstractmethod
+    def get_app_version(self) -> str:
+        pass
+
     def get_client_auth(self) -> Tuple[str, str]:
         return self.get_client_id(), self.get_client_secret()
 
@@ -40,11 +48,15 @@ class MyConfigRepository(ConfigRepository):
             client_id: str,
             client_secret: str,
             namespace: Optional[str] = None,
+            app_name: Optional[str] = None,
+            app_version: Optional[str] = None,
     ) -> None:
         self._base_url = base_url
         self._client_id = client_id
         self._client_secret = client_secret
         self._namespace = namespace if namespace else ""
+        self._app_name = app_name if app_name else ""
+        self._app_version = app_version if app_version else ""
 
     def get_base_url(self) -> str:
         return self._base_url
@@ -57,6 +69,12 @@ class MyConfigRepository(ConfigRepository):
 
     def get_namespace(self) -> str:
         return self._namespace
+
+    def get_app_name(self) -> str:
+        return self._app_name
+
+    def get_app_version(self) -> str:
+        return self._app_version
 
 
 class DictConfigRepository(ConfigRepository):
@@ -65,6 +83,8 @@ class DictConfigRepository(ConfigRepository):
     client_id_keys: List[str] = ["AB_CLIENT_ID", "clientId", "clientID", "client-id", "ClientId", "ClientID", "cliend_id"]
     client_secret_keys: List[str] = ["AB_CLIENT_SECRET", "clientSecret", "client-secret", "ClientSecret", "cliend_secret"]
     namespace_keys: List[str] = ["AB_NAMESPACE", "namespace", "Namespace"]
+    app_name_keys: List[str] = ["AB_APP_NAME", "appName", "AppName"]
+    app_version_keys: List[str] = ["AB_APP_VERSION", "appVersion", "AppVersion"]
 
     def __init__(self, dict_: dict):
         self._dict = dict_
@@ -72,6 +92,8 @@ class DictConfigRepository(ConfigRepository):
         self._client_id = self._try_get_value(self.client_id_keys)
         self._client_secret = self._try_get_value(self.client_secret_keys)
         self._namespace = self._try_get_value(self.namespace_keys)
+        self._app_name = self._try_get_value(self.app_name_keys)
+        self._app_version = self._try_get_value(self.app_version_keys)
 
     def get_base_url(self) -> str:
         return self._base_url
@@ -84,6 +106,12 @@ class DictConfigRepository(ConfigRepository):
 
     def get_namespace(self) -> str:
         return self._namespace
+
+    def get_app_name(self) -> str:
+        return self._app_name
+
+    def get_app_version(self) -> str:
+        return self._app_version
 
     def _try_get_value(self, keys: Union[str, List[str]]) -> Optional[str]:
         if isinstance(keys, str):
@@ -101,18 +129,6 @@ class EnvironmentConfigRepository(DictConfigRepository):
     def __init__(self):
         super().__init__(dict(environ))
 
-    def get_base_url(self) -> str:
-        return self._base_url
-
-    def get_client_id(self) -> str:
-        return self._client_id
-
-    def get_client_secret(self) -> str:
-        return self._client_secret
-
-    def get_namespace(self) -> str:
-        return self._namespace
-
 
 class JsonConfigRepository(DictConfigRepository):
 
@@ -120,18 +136,6 @@ class JsonConfigRepository(DictConfigRepository):
         if isinstance(json_, str):
             json_ = json.loads(json_)
         super().__init__(json_)
-
-    def get_base_url(self) -> str:
-        return self._base_url
-
-    def get_client_id(self) -> str:
-        return self._client_id
-
-    def get_client_secret(self) -> str:
-        return self._client_secret
-
-    def get_namespace(self) -> str:
-        return self._namespace
 
 
 class JsonFileConfigRepository(JsonConfigRepository):
@@ -143,15 +147,3 @@ class JsonFileConfigRepository(JsonConfigRepository):
             raise FileExistsError
         json_ = json_file.read_text()
         super().__init__(json_)
-
-    def get_base_url(self) -> str:
-        return self._base_url
-
-    def get_client_id(self) -> str:
-        return self._client_id
-
-    def get_client_secret(self) -> str:
-        return self._client_secret
-
-    def get_namespace(self) -> str:
-        return self._namespace

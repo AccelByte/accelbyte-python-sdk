@@ -9,7 +9,6 @@ from ._utils import create_basic_authentication
 from ._utils import generate_amazon_xray_trace_id
 
 import accelbyte_py_sdk
-from ._app_info import AppInfo
 
 
 class Header(dict):
@@ -33,14 +32,27 @@ class Header(dict):
         self["X-Amzn-Trace-Id"] = amazon_xray_trace_id
         return self
 
-    def add_user_agent(self, user_agent: Union[None, str] = None) -> Header:
+    def add_user_agent(
+            self,
+            user_agent: Union[None, str] = None,
+            app_info: Union[None, Union[str, Tuple[str, str]]] = None,
+    ) -> Header:
         if user_agent is None:
-            product = "AccelBytePythonSDK"
+            product = accelbyte_py_sdk.__product__
             product_version = accelbyte_py_sdk.__version__
-            app_info = AppInfo()
-            app_name = app_info.name
-            app_version = app_info.version
-            user_agent = f"{product}/{product_version} ({app_name}/{app_version})"
+            user_agent = f"{product}/{product_version}"
+            if app_info is not None:
+                app_name = None
+                app_version = None
+                if isinstance(app_info, tuple):
+                    app_name, app_version = app_info
+                elif isinstance(app_info, str):
+                    app_name = app_info
+                if app_name is not None:
+                    user_agent += f" ({app_name}"
+                if app_version is not None:
+                    user_agent += f"/{app_version}"
+                user_agent += ")"
         self["User-Agent"] = user_agent
         return self
 

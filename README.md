@@ -59,16 +59,18 @@ if __name__ == "__main__":
     client_id = environ["MY_CLIENT_ID"]
     client_secret = environ["MY_CLIENT_SECRET"]
     namespace = environ["MY_NAMESPACE"]
+    app_name = environ["MY_APP_NAME"]
+    app_version = environ["MY_APP_VERSIOn"]
 
     my_config_repository = MyConfigRepository(
         base_url=base_url,
         client_id=client_id,
         client_secret=client_secret,
         namespace=namespace,
+        app_name=app_name,
+        app_version=app_version
     )
     options = {
-        "app_name": "MyApp",
-        "app_version": "0.1.0",
         "config": my_config_repository
     }
 
