@@ -17,6 +17,8 @@ from accelbyte_py_sdk.core import get_client_auth
 from accelbyte_py_sdk.core import get_client_id
 from accelbyte_py_sdk.core import get_client_secret
 from accelbyte_py_sdk.core import get_namespace
+from accelbyte_py_sdk.core import get_app_name
+from accelbyte_py_sdk.core import get_app_version
 from accelbyte_py_sdk.core import get_token_repository
 from accelbyte_py_sdk.core import get_access_token
 from accelbyte_py_sdk.core import get_http_client
@@ -151,7 +153,9 @@ class CoreTestCase(TestCase):
             base_url="http://0.0.0.0:8080",
             client_id="admin",
             client_secret="pass",
-            namespace="spam&eggs"
+            namespace="spam&eggs",
+            app_name="TestApp",
+            app_version="0.1.0",
         )
         options = {"config": config}
         accelbyte_py_sdk.initialize(options=options)
@@ -167,6 +171,8 @@ class CoreTestCase(TestCase):
         self.assertEqual(("admin", None), get_client_id())
         self.assertEqual(("pass", None), get_client_secret())
         self.assertEqual(("spam&eggs", None), get_namespace())
+        self.assertEqual(("TestApp", None), get_app_name())
+        self.assertEqual(("0.1.0", None), get_app_version())
 
     def test_initialize_with_instance_config_option_throws_type_error_when_not_recognized(self):
         options = {"config": {}}
@@ -297,6 +303,28 @@ class CoreTestCase(TestCase):
         header.add_bearer_authorization("spam&eggs")
         self.assertTrue("Authorization" in header)
         self.assertEqual("Bearer spam&eggs", header["Authorization"])
+
+    def test_header_add_user_agent_directly(self):
+        header = Header()
+        header.add_user_agent(user_agent="spam&eggs")
+        self.assertTrue("User-Agent" in header)
+        self.assertEqual("spam&eggs", header["User-Agent"])
+
+    def test_header_add_user_agent_from_app_info_name(self):
+        product = accelbyte_py_sdk.__product__
+        product_version = accelbyte_py_sdk.__version__
+        header = Header()
+        header.add_user_agent(app_info="AppName")
+        self.assertTrue("User-Agent" in header)
+        self.assertEqual(f"{product}/{product_version} (AppName)", header["User-Agent"])
+
+    def test_header_add_user_agent_from_app_info_name_version(self):
+        product = accelbyte_py_sdk.__product__
+        product_version = accelbyte_py_sdk.__version__
+        header = Header()
+        header.add_user_agent(app_info=("AppName", "0.1.0"))
+        self.assertTrue("User-Agent" in header)
+        self.assertEqual(f"{product}/{product_version} (AppName/0.1.0)", header["User-Agent"])
 
     def test_url_creation_with_path_params(self):
         full_url = Operation.create_full_url(
