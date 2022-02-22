@@ -50,11 +50,20 @@ class Header(dict):
                     app_name = app_info
                 if app_name is not None:
                     user_agent += f" ({app_name}"
-                if app_version is not None:
-                    user_agent += f"/{app_version}"
-                user_agent += ")"
+                    if app_version is not None:
+                        user_agent += f"/{app_version}"
+                    user_agent += ")"
         self["User-Agent"] = user_agent
         return self
+
+    def has_amazon_xray_trace_id(self) -> bool:
+        return "X-Amzn-Trace-Id" in self
+
+    def has_authorization(self) -> bool:
+        return "Authorization" in self
+
+    def has_user_agent(self) -> bool:
+        return "User-Agent" in self
 
     @classmethod
     def create_from_dict(cls, dict_: Dict[str, str]):

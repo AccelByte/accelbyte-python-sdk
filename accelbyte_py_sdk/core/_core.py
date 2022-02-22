@@ -476,7 +476,7 @@ def get_final_headers(
 ) -> Tuple[Optional[Header], Optional[HttpResponse]]:
     headers = headers if headers is not None else operation.get_headers()
 
-    if "Authorization" in headers:
+    if headers.has_authorization():
         add_authorization = False
     elif additional_headers and "Authorization" in additional_headers:
         add_authorization = False
@@ -499,11 +499,14 @@ def get_final_headers(
             if access_token:
                 headers.add_bearer_authorization(access_token)
 
-    headers.add_amazon_xray_trace_id()
-
-    app_name, _ = get_app_name()
-    app_version, _ = get_app_version()
-    headers.add_user_agent(app_info=(app_name, app_version))
+    config_repo = _CONFIG_REPOSITORY
+    if config_repo is not None:
+        if not headers.has_amazon_xray_trace_id() and config_repo.auto_add_amazon_trace_id():
+            headers.add_amazon_xray_trace_id()
+        if not headers.has_user_agent() and config_repo.auto_add_user_agent():
+            app_name = config_repo.get_app_name()
+            app_version = config_repo.get_app_version()
+            headers.add_user_agent(app_info=(app_name, app_version))
 
     if additional_headers:
         for k, v in additional_headers.items():

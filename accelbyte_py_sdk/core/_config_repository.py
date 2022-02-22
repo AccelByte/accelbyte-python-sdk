@@ -7,10 +7,18 @@ import json
 from abc import ABC, abstractmethod
 from os import environ
 from pathlib import Path
-from typing import List, Optional, Tuple, Union
+from typing import Any, List, Optional, Tuple, Union
 
 
 class ConfigRepository(ABC):
+
+    @abstractmethod
+    def auto_add_amazon_trace_id(self) -> bool:
+        pass
+
+    @abstractmethod
+    def auto_add_user_agent(self) -> bool:
+        pass
 
     @abstractmethod
     def get_base_url(self) -> str:
@@ -50,6 +58,8 @@ class MyConfigRepository(ConfigRepository):
             namespace: Optional[str] = None,
             app_name: Optional[str] = None,
             app_version: Optional[str] = None,
+            auto_add_amazon_trace_id: Optional[bool] = None,
+            auto_add_user_agent: Optional[bool] = None,
     ) -> None:
         self._base_url = base_url
         self._client_id = client_id
@@ -57,6 +67,14 @@ class MyConfigRepository(ConfigRepository):
         self._namespace = namespace if namespace else ""
         self._app_name = app_name if app_name else ""
         self._app_version = app_version if app_version else ""
+        self._auto_add_amazon_trace_id = auto_add_amazon_trace_id if auto_add_amazon_trace_id is not None else True
+        self._auto_add_user_agent = auto_add_user_agent if auto_add_user_agent is not None else True
+
+    def auto_add_amazon_trace_id(self) -> bool:
+        return self._auto_add_amazon_trace_id
+
+    def auto_add_user_agent(self) -> bool:
+        return self._auto_add_user_agent
 
     def get_base_url(self) -> str:
         return self._base_url
@@ -85,6 +103,8 @@ class DictConfigRepository(ConfigRepository):
     namespace_keys: List[str] = ["AB_NAMESPACE", "namespace", "Namespace"]
     app_name_keys: List[str] = ["AB_APP_NAME", "appName", "AppName"]
     app_version_keys: List[str] = ["AB_APP_VERSION", "appVersion", "AppVersion"]
+    auto_add_amazon_trace_id_keys: List[str] = ["AB_AUTO_ADD_AMAZON_TRACE_ID", "autoAddAmazonTraceId", "AutoAddAmazonTraceId"]
+    auto_add_user_agent_keys: List[str] = ["AB_AUTO_ADD_USER_AGENT", "autoAddUserAgent", "AutoAddUserAgent"]
 
     def __init__(self, dict_: dict):
         self._dict = dict_
@@ -94,6 +114,14 @@ class DictConfigRepository(ConfigRepository):
         self._namespace = self._try_get_value(self.namespace_keys)
         self._app_name = self._try_get_value(self.app_name_keys)
         self._app_version = self._try_get_value(self.app_version_keys)
+        self._auto_add_amazon_trace_id = DictConfigRepository._force_cast_to_bool(self._try_get_value(self.auto_add_amazon_trace_id_keys, True))
+        self._auto_add_user_agent = DictConfigRepository._force_cast_to_bool(self._try_get_value(self.auto_add_user_agent_keys, True))
+
+    def auto_add_amazon_trace_id(self) -> bool:
+        return self._auto_add_amazon_trace_id
+
+    def auto_add_user_agent(self) -> bool:
+        return self._auto_add_user_agent
 
     def get_base_url(self) -> str:
         return self._base_url
@@ -113,7 +141,7 @@ class DictConfigRepository(ConfigRepository):
     def get_app_version(self) -> str:
         return self._app_version
 
-    def _try_get_value(self, keys: Union[str, List[str]]) -> Optional[str]:
+    def _try_get_value(self, keys: Union[str, List[str]], default: Union[None, Any] = None) -> Optional[Any]:
         if isinstance(keys, str):
             return self._dict.get(keys)
         else:
@@ -121,7 +149,19 @@ class DictConfigRepository(ConfigRepository):
                 value = self._dict.get(key)
                 if value is not None:
                     return value
-            return None
+            return default
+
+    @staticmethod
+    def _force_cast_to_bool(value: Any) -> bool:
+        if isinstance(value, bool):
+            return value
+        if isinstance(value, (dict, list, set, tuple)):
+            return len(value) > 0
+        if isinstance(value, (int, float)):
+            return value != 0
+        if isinstance(value, str):
+            return value.lower() in ["1", "true", "y", "yes"]
+        return False
 
 
 class EnvironmentConfigRepository(DictConfigRepository):
