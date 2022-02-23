@@ -130,7 +130,7 @@ def get_env_user_credentials() -> Tuple[str, str]:
 def get_logger(additional_scope: Union[None, str] = None) -> logging.Logger:
     additional_scope = additional_scope or ""
     base_logger_name = "accelbyte_py_sdk"
-    logger_name = ".".join([base_logger_name, additional_scope])
+    logger_name = ".".join([base_logger_name, additional_scope]) if additional_scope else base_logger_name
     logger = logging.getLogger(logger_name)
     return logger
 
