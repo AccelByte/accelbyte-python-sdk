@@ -20,9 +20,12 @@ from ._http_response import HttpResponse
 def add_buffered_file_handler_to_logger(
         filename: Union[str, os.PathLike[str]],
         capacity: int,
-        additional_scope: Union[None, str] = None
+        level: Union[None, int] = None,
+        additional_scope: Union[None, str] = None,
 ) -> logging.Handler:
     logger = get_logger(additional_scope)
+    if level is not None:
+        logger.setLevel(level=level)
     buffered_file_handler = create_buffered_file_handler(
         f_filename=filename,
         m_capacity=capacity,
