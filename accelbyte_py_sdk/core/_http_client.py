@@ -118,7 +118,7 @@ class RequestsHttpClient(HttpClient):
     ) -> Tuple[Any, Union[None, HttpResponse]]:
         if "allow_redirects" not in kwargs:
             kwargs["allow_redirects"] = self.allow_redirects
-        _LOGGER.debug(RequestsHttpClient.convert_to_curl(request))
+        _LOGGER.debug(RequestsHttpClient.convert_request_to_dict(request))
         try:
             raw_response = self.session.send(request, **kwargs)
         except requests.exceptions.ConnectionError as e:
@@ -171,6 +171,8 @@ class RequestsHttpClient(HttpClient):
             content_type = None
             content = None
 
+        _LOGGER.debug(RequestsHttpClient.convert_response_to_dict(raw_response))
+
         return (status_code, content_type, content), None
 
     @staticmethod
@@ -181,6 +183,25 @@ class RequestsHttpClient(HttpClient):
             headers={k: v for k, v in prepared_request.headers.items()},
             data=prepared_request.body
         )
+
+    @staticmethod
+    def convert_request_to_dict(prepared_request: requests.PreparedRequest) -> dict:
+        return {
+            "url": prepared_request.url,
+            "method": prepared_request.method,
+            "headers": {k: v for k, v in prepared_request.headers.items()},
+            "data": prepared_request.body
+        }
+
+    @staticmethod
+    def convert_response_to_dict(response: requests.Response) -> dict:
+        return {
+            "url": response.url,
+            "status_code": response.status_code,
+            "elapsed": response.elapsed.total_seconds(),
+            "headers": {k: v for k, v in response.headers.items()},
+            "body": response.content,
+        }
 
 
 class HttpxHttpClient(HttpClient):
@@ -243,7 +264,7 @@ class HttpxHttpClient(HttpClient):
             request: Any,
             **kwargs
     ) -> Tuple[Any, Union[None, HttpResponse]]:
-        _LOGGER.debug(HttpxHttpClient.convert_to_curl(request))
+        _LOGGER.debug(HttpxHttpClient.convert_request_to_dict(request))
         return self.client.send(request), None
 
     async def send_request_async(
@@ -251,7 +272,7 @@ class HttpxHttpClient(HttpClient):
             request: Any,
             **kwargs
     ) -> Tuple[Any, Union[None, HttpResponse]]:
-        _LOGGER.debug(HttpxHttpClient.convert_to_curl(request))
+        _LOGGER.debug(HttpxHttpClient.convert_request_to_dict(request))
         return await self.client_async.send(request), None
 
     def handle_response(
@@ -296,6 +317,8 @@ class HttpxHttpClient(HttpClient):
             content_type = None
             content = None
 
+        _LOGGER.debug(HttpxHttpClient.convert_response_to_dict(raw_response))
+
         return (status_code, content_type, content), None
 
     @staticmethod
@@ -304,9 +327,27 @@ class HttpxHttpClient(HttpClient):
             uri=httpx_request.url,
             method=httpx_request.method,
             headers={k: v for k, v in httpx_request.headers.items()},
-            data=None
-            # data=httpx_request.stream
+            data=httpx_request.content
         )
+
+    @staticmethod
+    def convert_request_to_dict(httpx_request: httpx.Request) -> dict:
+        return {
+            "url": httpx_request.url,
+            "method": httpx_request.method,
+            "headers": {k: v for k, v in httpx_request.headers.items()},
+            "data": httpx_request.content,
+        }
+
+    @staticmethod
+    def convert_response_to_dict(httpx_response: httpx.Response) -> dict:
+        return {
+            "url": httpx_response.url,
+            "status_code": httpx_response.status_code,
+            "elapsed": httpx_response.elapsed.total_seconds(),
+            "headers": {k: v for k, v in httpx_response.headers.items()},
+            "body": httpx_response.content,
+        }
 
 
 # TODO(elmer): convert into a dataclass?

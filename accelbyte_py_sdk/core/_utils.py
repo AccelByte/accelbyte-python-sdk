@@ -6,6 +6,7 @@ import base64
 import binascii
 import hashlib
 import logging
+import logging.handlers
 import os
 
 from base64 import b64encode
@@ -16,13 +17,56 @@ from uuid import uuid4
 from ._http_response import HttpResponse
 
 
-def add_stream_handler_to_logger(additional_scope: Union[None, str] = None) -> None:
+def add_buffered_file_handler_to_logger(
+        filename: Union[str, os.PathLike[str]],
+        capacity: int,
+        additional_scope: Union[None, str] = None
+) -> logging.Handler:
     logger = get_logger(additional_scope)
-    logger.addHandler(logging.StreamHandler())
+    buffered_file_handler = create_buffered_file_handler(
+        f_filename=filename,
+        m_capacity=capacity,
+    )
+    logger.addHandler(buffered_file_handler)
+    return buffered_file_handler
+
+
+def add_stream_handler_to_logger(additional_scope: Union[None, str] = None) -> logging.Handler:
+    logger = get_logger(additional_scope)
+    stream_handler = logging.StreamHandler()
+    logger.addHandler(stream_handler)
+    return stream_handler
 
 
 def create_basic_authentication(username: str, password: str) -> str:
     return f'Basic {b64encode(f"{username}:{password}".encode("utf-8")).decode("utf-8")}'
+
+
+def create_buffered_file_handler(
+        f_filename: Union[str, os.PathLike[str]],
+        m_capacity: int,
+        f_mode: Union[None, str] = None,
+        f_encoding: Union[None, str] = None,
+        f_delay: bool = False,
+        f_errors: Union[None, str] = None,
+        m_flush_level: int = logging.ERROR,
+        m_flush_on_close: bool = True,
+) -> logging.handlers.MemoryHandler:
+    f_mode = f_mode or "a"
+    file_handler = logging.FileHandler(
+        filename=f_filename,
+        mode=f_mode,
+        encoding=f_encoding,
+        delay=f_delay,
+        errors=f_errors,
+    )
+    memory_handler = logging.handlers.MemoryHandler(
+        capacity=m_capacity,
+        flushLevel=m_flush_level,
+        target=file_handler,
+        flushOnClose=m_flush_on_close,
+    )
+    return memory_handler
 
 
 def create_curl_request(uri: str, method: str, headers: Dict[str, str], data: Any, delimiter: str = "\n"):
@@ -125,23 +169,6 @@ def infer_content_type_from_params(params: dict, default: Union[None, str] = Non
     return content_type_default
 
 
-def set_env_config(base_url: str, client_id: str, client_secret: str, namespace: str) -> None:
-    os.environ["AB_BASE_URL"] = base_url
-    os.environ["AB_CLIENT_ID"] = client_id
-    os.environ["AB_CLIENT_SECRET"] = client_secret
-    os.environ["AB_NAMESPACE"] = namespace
-
-
-def set_env_user_credentials(username: str, password: str) -> None:
-    os.environ["AB_USERNAME"] = username
-    os.environ["AB_PASSWORD"] = password
-
-
-def set_logger_level(level: Union[int, str], additional_scope: Union[None, str] = None) -> None:
-    logger = get_logger(additional_scope)
-    logger.setLevel(level)
-
-
 # TODO(elmer): set flag to allow overwrites?
 def infer_headers_from_operation(operation, existing: Union[None, dict] = None) -> Dict[str, str]:
     result = existing if existing is not None else {}
@@ -164,3 +191,20 @@ def infer_headers_from_operation(operation, existing: Union[None, dict] = None) 
             result["Content-Type"] = content_type
 
     return result
+
+
+def set_env_config(base_url: str, client_id: str, client_secret: str, namespace: str) -> None:
+    os.environ["AB_BASE_URL"] = base_url
+    os.environ["AB_CLIENT_ID"] = client_id
+    os.environ["AB_CLIENT_SECRET"] = client_secret
+    os.environ["AB_NAMESPACE"] = namespace
+
+
+def set_env_user_credentials(username: str, password: str) -> None:
+    os.environ["AB_USERNAME"] = username
+    os.environ["AB_PASSWORD"] = password
+
+
+def set_logger_level(level: Union[int, str], additional_scope: Union[None, str] = None) -> None:
+    logger = get_logger(additional_scope)
+    logger.setLevel(level)

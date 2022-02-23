@@ -22,6 +22,7 @@ from ._http_response import HttpResponse
 from ._model import Model
 from ._operation import Operation
 
+from ._utils import add_buffered_file_handler_to_logger
 from ._utils import add_stream_handler_to_logger
 from ._utils import create_basic_authentication
 from ._utils import create_pkce_verifier_and_challenge_plain

@@ -48,9 +48,9 @@ class Header(dict):
                     app_name, app_version = app_info
                 elif isinstance(app_info, str):
                     app_name = app_info
-                if app_name is not None:
+                if app_name:
                     user_agent += f" ({app_name}"
-                    if app_version is not None:
+                    if app_version:
                         user_agent += f"/{app_version}"
                     user_agent += ")"
         self["User-Agent"] = user_agent
