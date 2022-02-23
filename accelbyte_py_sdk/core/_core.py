@@ -3,6 +3,7 @@
 # and restrictions contact your company contract manager.
 
 import logging
+from os import PathLike
 from typing import Any, Dict, Optional, Tuple, Union
 
 from ._config_repository import ConfigRepository
@@ -23,6 +24,7 @@ from ._http_client import HttpxHttpClient
 from ._header import Header
 from ._http_response import HttpResponse
 from ._operation import Operation
+from ._utils import add_buffered_file_handler_to_logger
 from ._utils import get_query_from_http_redirect_response
 
 _LOGGER = logging.getLogger("accelbyte_py_sdk")
@@ -68,6 +70,7 @@ def initialize(
          -- token_params (Optional[Tuple[List[Any], Dict[str, Any]]]): Token Repository parameters.
          -- http (Optional[Union[str, Type[HttpClient]]]): Http Client to use.
          -- http_params (Optional[Tuple[List[Any], Dict[str, Any]]]): Http Client parameters.
+         -- log_files (Optional[Dict[str], Tuple[str, PathLike[str], dict]]): Log files.
 
      Raises:
          ValueError: If 'options.config_params' is not Tuple[List[Any], Dict[str, Any]].
@@ -76,6 +79,7 @@ def initialize(
          ValueError: If 'options.token' is not recognized.
          ValueError: If 'options.http_params' is not Tuple[List[Any], Dict[str, Any]].
          ValueError: If 'options.http' is not recognized.
+         ValueError: If 'options.log_files' is not Dict[str], Tuple[str, PathLike[str], dict].
     """
     def is_valid_params(params) -> Tuple[bool, list, dict]:
         if params is None:
@@ -97,6 +101,29 @@ def initialize(
         return
 
     options = options if options is not None else {}
+
+    # region log files
+
+    if "log_files" in options:
+        log_files = options["log_files"]
+        if not isinstance(log_files, dict):
+            raise ValueError(f"Log files must be a Dict[str], Tuple[str, PathLike[str], dict].")
+        for additional_scope, log_file_options in log_files.items():
+            log_file_kwargs = {}
+            if isinstance(log_file_options, dict):
+                log_file_kwargs = log_file_options
+            elif isinstance(log_file_options, (str, PathLike)):
+                log_file_kwargs["filename"] = log_file_options
+            if "capacity" not in log_file_kwargs:
+                log_file_kwargs["capacity"] = 10
+            if additional_scope == "accelbyte_py_sdk":
+                additional_scope = None
+            elif additional_scope.startswith("accelbyte_py_sdk."):
+                additional_scope = additional_scope.removeprefix("accelbyte_py_sdk.")
+            log_file_kwargs["additional_scope"] = additional_scope
+            add_buffered_file_handler_to_logger(**log_file_kwargs)
+
+    # endregion log files
 
     # region config repository
 
