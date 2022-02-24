@@ -21,6 +21,8 @@ def add_buffered_file_handler_to_logger(
         filename: Union[str, os.PathLike[str]],
         capacity: int,
         level: Union[None, int] = None,
+        flush_level: Union[None, int] = None,
+        flush_on_close: Union[None, bool] = None,
         additional_scope: Union[None, str] = None,
 ) -> logging.Handler:
     logger = get_logger(additional_scope)
@@ -29,13 +31,20 @@ def add_buffered_file_handler_to_logger(
     buffered_file_handler = create_buffered_file_handler(
         f_filename=filename,
         m_capacity=capacity,
+        m_flush_level=flush_level,
+        m_flush_on_close=flush_on_close,
     )
     logger.addHandler(buffered_file_handler)
     return buffered_file_handler
 
 
-def add_stream_handler_to_logger(additional_scope: Union[None, str] = None) -> logging.Handler:
+def add_stream_handler_to_logger(
+        level: Union[None, int] = None,
+        additional_scope: Union[None, str] = None
+) -> logging.Handler:
     logger = get_logger(additional_scope)
+    if level is not None:
+        logger.setLevel(level=level)
     stream_handler = logging.StreamHandler()
     logger.addHandler(stream_handler)
     return stream_handler
@@ -50,12 +59,15 @@ def create_buffered_file_handler(
         m_capacity: int,
         f_mode: Union[None, str] = None,
         f_encoding: Union[None, str] = None,
-        f_delay: bool = False,
+        f_delay: Union[None, bool] = None,
         f_errors: Union[None, str] = None,
-        m_flush_level: int = logging.ERROR,
-        m_flush_on_close: bool = True,
+        m_flush_level: Union[None, int] = None,
+        m_flush_on_close: Union[None, bool] = None,
 ) -> logging.handlers.MemoryHandler:
-    f_mode = f_mode or "a"
+    f_mode = f_mode if f_mode is not None else "a"
+    f_delay = f_delay if f_delay is not None else False
+    m_flush_level = m_flush_level if m_flush_level is not None else logging.ERROR
+    m_flush_on_close = m_flush_on_close if m_flush_on_close is not None else True
     file_handler = logging.FileHandler(
         filename=f_filename,
         mode=f_mode,
