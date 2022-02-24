@@ -59,12 +59,16 @@ if __name__ == "__main__":
     client_id = environ["MY_CLIENT_ID"]
     client_secret = environ["MY_CLIENT_SECRET"]
     namespace = environ["MY_NAMESPACE"]
+    app_name = environ["MY_APP_NAME"]
+    app_version = environ["MY_APP_VERSION"]
 
     my_config_repository = MyConfigRepository(
         base_url=base_url,
         client_id=client_id,
         client_secret=client_secret,
         namespace=namespace,
+        app_name=app_name,
+        app_version=app_version
     )
     options = {
         "config": my_config_repository
@@ -199,7 +203,7 @@ if __name__ == "__main__":
 
 All wrapper functions have an asynchronous counterpart that ends with `_async`.
 
-### Example A (`aync`)
+### Example A (`async`)
 
 To convert `Example A` asynchronously the following steps are needed.
 
@@ -385,12 +389,46 @@ Set logger level and add logger handlers.
 ```python
 import logging
 
+# 1. The SDK has helper functions for logging.
 
-accelbyte_py_sdk.core.set_logger_level(logging.INFO)
-accelbyte_py_sdk.core.set_logger_level(logging.INFO, "http")
-accelbyte_py_sdk.core.set_logger_level(logging.INFO, "ws")
+accelbyte_py_sdk.core.set_logger_level(logging.INFO)          # 'accelbyte_py_sdk'
+accelbyte_py_sdk.core.set_logger_level(logging.INFO, "http")  # 'accelbyte_py_sdk.http'
+accelbyte_py_sdk.core.set_logger_level(logging.INFO, "ws")    # 'accelbyte_py_sdk.ws'
 
-accelbyte_py_sdk.core.add_stream_handler_to_logger()
+
+# 2. You could also use this helper function for debugging.
+
+accelbyte_py_sdk.core.add_stream_handler_to_logger()          # sends content of the 'accelbyte_py_sdk' logger to 'sys.stderr'.
+
+
+# 3. There is a helper function that helps you get started with log files.
+
+accelbyte_py_sdk.core.add_buffered_file_handler_to_logger(    # flushes content of the 'accelbyte_py_sdk' logger to a file named 'sdk.log' every 10 logs.
+    filename="/path/to/sdk.log",
+    capacity=10,
+    level=logging.INFO
+)
+accelbyte_py_sdk.core.add_buffered_file_handler_to_logger(    # flushes content of the 'accelbyte_py_sdk.http' logger to a file named 'http.log' every 3 logs.
+    filename="/path/to/http.log",
+    capacity=3,
+    level=logging.INFO,
+    additional_scope="http"
+)
+
+# 3.a. Or you could the same thing when initializing the SDK.
+
+accelbyte_py_sdk.initialize(
+    options={
+        "log_files": {
+            "": "/path/to/sdk.log",                           # flushes content of the 'accelbyte_py_sdk' logger to a file named 'sdk.log' every 10 logs.
+            "http": {                                         # flushes content of the 'accelbyte_py_sdk.http' logger to a file named 'http.log' every 3 logs.
+                "filename": "/path/to/http.log",
+                "capacity": 3,
+                "level": logging.INFO
+            }
+        }
+    }
+)
 ```
 
 ---

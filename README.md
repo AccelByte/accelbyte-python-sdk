@@ -60,7 +60,7 @@ if __name__ == "__main__":
     client_secret = environ["MY_CLIENT_SECRET"]
     namespace = environ["MY_NAMESPACE"]
     app_name = environ["MY_APP_NAME"]
-    app_version = environ["MY_APP_VERSIOn"]
+    app_version = environ["MY_APP_VERSION"]
 
     my_config_repository = MyConfigRepository(
         base_url=base_url,
@@ -203,7 +203,7 @@ if __name__ == "__main__":
 
 All wrapper functions have an asynchronous counterpart that ends with `_async`.
 
-### Example A (`aync`)
+### Example A (`async`)
 
 To convert `Example A` asynchronously the following steps are needed.
 
@@ -389,12 +389,46 @@ Set logger level and add logger handlers.
 ```python
 import logging
 
+# 1. The SDK has helper functions for logging.
 
-accelbyte_py_sdk.core.set_logger_level(logging.INFO)
-accelbyte_py_sdk.core.set_logger_level(logging.INFO, "http")
-accelbyte_py_sdk.core.set_logger_level(logging.INFO, "ws")
+accelbyte_py_sdk.core.set_logger_level(logging.INFO)          # 'accelbyte_py_sdk'
+accelbyte_py_sdk.core.set_logger_level(logging.INFO, "http")  # 'accelbyte_py_sdk.http'
+accelbyte_py_sdk.core.set_logger_level(logging.INFO, "ws")    # 'accelbyte_py_sdk.ws'
 
-accelbyte_py_sdk.core.add_stream_handler_to_logger()
+
+# 2. You could also use this helper function for debugging.
+
+accelbyte_py_sdk.core.add_stream_handler_to_logger()          # sends content of the 'accelbyte_py_sdk' logger to 'sys.stderr'.
+
+
+# 3. There is a helper function that helps you get started with log files.
+
+accelbyte_py_sdk.core.add_buffered_file_handler_to_logger(    # flushes content of the 'accelbyte_py_sdk' logger to a file named 'sdk.log' every 10 logs.
+    filename="/path/to/sdk.log",
+    capacity=10,
+    level=logging.INFO
+)
+accelbyte_py_sdk.core.add_buffered_file_handler_to_logger(    # flushes content of the 'accelbyte_py_sdk.http' logger to a file named 'http.log' every 3 logs.
+    filename="/path/to/http.log",
+    capacity=3,
+    level=logging.INFO,
+    additional_scope="http"
+)
+
+# 3.a. Or you could the same thing when initializing the SDK.
+
+accelbyte_py_sdk.initialize(
+    options={
+        "log_files": {
+            "": "/path/to/sdk.log",                           # flushes content of the 'accelbyte_py_sdk' logger to a file named 'sdk.log' every 10 logs.
+            "http": {                                         # flushes content of the 'accelbyte_py_sdk.http' logger to a file named 'http.log' every 3 logs.
+                "filename": "/path/to/http.log",
+                "capacity": 3,
+                "level": logging.INFO
+            }
+        }
+    }
+)
 ```
 
 ---
@@ -425,6 +459,7 @@ properties:
   dateOfBirth:
     format: date
     type: string
+    x-nullable: true
   firstName:
     type: string
   language:
@@ -636,11 +671,11 @@ same with the models there are also a number of utility functions generated with
 ```python
 # accelbyte_py_sdk/api/basic/operations/user_profile/get_user_profile_info.py
 
-# justice-basic-service (1.28.0)
-
-# Copyright (c) 2018 - 2021 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
+
+# template file: justice_py_sdk_codegen/__main__.py
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -656,6 +691,8 @@ same with the models there are also a number of utility functions generated with
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
+# justice-basic-service (1.32.0)
+
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
@@ -670,11 +707,15 @@ from ...models import ValidationErrorEntity
 class GetUserProfileInfo(Operation):
     """Get user profile (getUserProfileInfo)
 
-    Get user profile.<br>Other detail info: <ul><li><i>Required permission</i>:
-    resource=<b>"ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE"</b>, action=2
-    <b>(READ)</b></li><li><i>Returns</i>: user profile</li><li><i>Action code</i>:
-    11403</li></ul>
+    Get user profile.
+    Other detail info:
 
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)
+      *  Returns : user profile
+      *  Action code : 11403
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles
@@ -687,7 +728,7 @@ class GetUserProfileInfo(Operation):
 
         produces: ["application/json"]
 
-        security: bearer
+        security_type: bearer
 
         namespace: (namespace) REQUIRED str in path
 
@@ -711,7 +752,7 @@ class GetUserProfileInfo(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security: Optional[str] = "bearer"
+    _security_type: Optional[str] = "bearer"
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
@@ -738,8 +779,8 @@ class GetUserProfileInfo(Operation):
         return self._produces
 
     @property
-    def security(self) -> Optional[str]:
-        return self._security
+    def security_type(self) -> Optional[str]:
+        return self._security_type
 
     @property
     def location_query(self) -> str:
@@ -749,7 +790,7 @@ class GetUserProfileInfo(Operation):
 
     # region get methods
 
-    def get_full_url(self, base_url: Union[None, str] = None) -> str:
+    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
         return self.create_full_url(
             url=self.url,
             base_url=base_url,
@@ -849,6 +890,8 @@ class GetUserProfileInfo(Operation):
             return None, ErrorEntity.create_from_dict(content)
         was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
         if was_handled:
+            if undocumented_response.is_no_content():
+                return None, None
             return None, undocumented_response
         return None, HttpResponse.create_unhandled_error()
 
