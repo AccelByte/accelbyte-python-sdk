@@ -7,7 +7,7 @@ import logging
 import time
 from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import Any, IO, Optional, Tuple, Union
+from typing import Any, Callable, IO, Optional, Tuple, Union
 
 import httpx
 import requests
@@ -24,6 +24,9 @@ HttpRawResponse = Tuple[int, str, Any]  # code, content-type, content
 
 
 class HttpClient(ABC):
+
+    request_log_formatter: Optional[Callable[[dict], str]] = None
+    response_log_formatter: Optional[Callable[[dict], str]] = None
 
     # noinspection PyMethodMayBeStatic
     def is_async_compatible(self) -> bool:
@@ -85,6 +88,14 @@ class HttpClient(ABC):
 
         return response, None
 
+    def _log_request(self, request_dict: dict) -> None:
+        req_fmt = self.request_log_formatter or format_request_log
+        _LOGGER.debug(req_fmt(request_dict))
+
+    def _log_response(self, response_dict: dict):
+        res_fmt = self.response_log_formatter or format_response_log
+        _LOGGER.debug(res_fmt(response_dict))
+
 
 # TODO(elmer): move to a separate file once it gets too big
 class RequestsHttpClient(HttpClient):
@@ -119,7 +130,7 @@ class RequestsHttpClient(HttpClient):
     ) -> Tuple[Any, Union[None, HttpResponse]]:
         if "allow_redirects" not in kwargs:
             kwargs["allow_redirects"] = self.allow_redirects
-        RequestsHttpClient.log_request(request)
+        self.log_request(request)
         try:
             raw_response = self.session.send(request, **kwargs)
         except requests.exceptions.ConnectionError as e:
@@ -172,9 +183,21 @@ class RequestsHttpClient(HttpClient):
             content_type = None
             content = None
 
-        RequestsHttpClient.log_response(raw_response)
+        self.log_response(raw_response)
 
         return (status_code, content_type, content), None
+
+    def log_request(self, prepared_request: requests.PreparedRequest) -> None:
+        if _LOGGER.isEnabledFor(logging.DEBUG):
+            request_dict = RequestsHttpClient.convert_request_to_dict(prepared_request)
+            request_dict["timestamp"] = int(time.time())
+            self._log_request(request_dict)
+
+    def log_response(self, response: requests.Response) -> None:
+        if _LOGGER.isEnabledFor(logging.DEBUG):
+            response_dict = RequestsHttpClient.convert_response_to_dict(response)
+            response_dict["timestamp"] = int(time.time())
+            self._log_response(response_dict)
 
     @staticmethod
     def convert_to_curl(prepared_request: requests.PreparedRequest) -> str:
@@ -203,20 +226,6 @@ class RequestsHttpClient(HttpClient):
             "headers": {k: v for k, v in response.headers.items()},
             "body": response.content,
         }
-
-    @staticmethod
-    def log_request(prepared_request: requests.PreparedRequest) -> None:
-        if _LOGGER.isEnabledFor(logging.DEBUG):
-            request_dict = RequestsHttpClient.convert_request_to_dict(prepared_request)
-            request_dict["timestamp"] = int(time.time())
-            _LOGGER.debug(request_dict)  # TODO(elmer): separate formatter
-
-    @staticmethod
-    def log_response(response: requests.Response) -> None:
-        if _LOGGER.isEnabledFor(logging.DEBUG):
-            response_dict = RequestsHttpClient.convert_response_to_dict(response)
-            response_dict["timestamp"] = int(time.time())
-            _LOGGER.debug(response_dict)  # TODO(elmer): separate formatter
 
 
 class HttpxHttpClient(HttpClient):
@@ -279,7 +288,7 @@ class HttpxHttpClient(HttpClient):
             request: Any,
             **kwargs
     ) -> Tuple[Any, Union[None, HttpResponse]]:
-        HttpxHttpClient.log_request(request)
+        self.log_request(request)
         return self.client.send(request), None
 
     async def send_request_async(
@@ -287,7 +296,7 @@ class HttpxHttpClient(HttpClient):
             request: Any,
             **kwargs
     ) -> Tuple[Any, Union[None, HttpResponse]]:
-        _LOGGER.debug(HttpxHttpClient.convert_request_to_dict(request))
+        self.log_request(request)
         return await self.client_async.send(request), None
 
     def handle_response(
@@ -332,9 +341,21 @@ class HttpxHttpClient(HttpClient):
             content_type = None
             content = None
 
-        HttpxHttpClient.log_response(raw_response)
+        self.log_response(raw_response)
 
         return (status_code, content_type, content), None
+
+    def log_request(self, httpx_request: httpx.Request) -> None:
+        if _LOGGER.isEnabledFor(logging.DEBUG):
+            request_dict = HttpxHttpClient.convert_request_to_dict(httpx_request)
+            request_dict["timestamp"] = int(time.time())
+            self._log_request(request_dict)
+
+    def log_response(self, httpx_response: httpx.Response) -> None:
+        if _LOGGER.isEnabledFor(logging.DEBUG):
+            response_dict = HttpxHttpClient.convert_response_to_dict(httpx_response)
+            response_dict["timestamp"] = int(time.time())
+            self._log_request(response_dict)
 
     @staticmethod
     def convert_to_curl(httpx_request: httpx.Request) -> str:
@@ -363,20 +384,6 @@ class HttpxHttpClient(HttpClient):
             "headers": {k: v for k, v in httpx_response.headers.items()},
             "body": httpx_response.content,
         }
-
-    @staticmethod
-    def log_request(httpx_request: httpx.Request) -> None:
-        if _LOGGER.isEnabledFor(logging.DEBUG):
-            request_dict = HttpxHttpClient.convert_request_to_dict(httpx_request)
-            request_dict["timestamp"] = int(time.time())
-            _LOGGER.debug(request_dict)  # TODO(elmer): separate formatter
-
-    @staticmethod
-    def log_response(httpx_response: httpx.Response) -> None:
-        if _LOGGER.isEnabledFor(logging.DEBUG):
-            response_dict = HttpxHttpClient.convert_response_to_dict(httpx_response)
-            response_dict["timestamp"] = int(time.time())
-            _LOGGER.debug(response_dict)  # TODO(elmer): separate formatter
 
 
 # TODO(elmer): convert into a dataclass?
@@ -446,6 +453,14 @@ def convert_any_to_file_tuple(name: str, file: Any) -> Tuple[str, IO]:
         return file.name, file.open()
 
     raise ValueError
+
+
+def format_request_log(request_dict: dict) -> str:
+    return str(request_dict)
+
+
+def format_response_log(response_dict: dict) -> str:
+    return str(response_dict)
 
 
 def is_file(key: str) -> bool:
