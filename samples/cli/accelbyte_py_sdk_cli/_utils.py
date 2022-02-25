@@ -1,5 +1,5 @@
 import os
-from typing import Optional
+from typing import Any, Optional
 
 from accelbyte_py_sdk.services.auth import login_client
 from accelbyte_py_sdk.services.auth import login_user
@@ -28,3 +28,13 @@ def logout():
     _, error = logout_internal()
     if error:
         raise Exception(str(error))
+
+
+def to_dict(obj: Any) -> Any:
+    if isinstance(obj, dict):
+        obj = {k: to_dict(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        obj = [to_dict(i) for i in obj]
+    elif hasattr(obj, "to_dict"):
+        obj = obj.to_dict()
+    return obj
