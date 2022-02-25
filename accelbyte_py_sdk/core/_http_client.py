@@ -4,6 +4,7 @@
 
 import json
 import logging
+import time
 from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import Any, IO, Optional, Tuple, Union
@@ -118,7 +119,7 @@ class RequestsHttpClient(HttpClient):
     ) -> Tuple[Any, Union[None, HttpResponse]]:
         if "allow_redirects" not in kwargs:
             kwargs["allow_redirects"] = self.allow_redirects
-        _LOGGER.debug(RequestsHttpClient.convert_request_to_dict(request))
+        RequestsHttpClient.log_request(request)
         try:
             raw_response = self.session.send(request, **kwargs)
         except requests.exceptions.ConnectionError as e:
@@ -171,7 +172,7 @@ class RequestsHttpClient(HttpClient):
             content_type = None
             content = None
 
-        _LOGGER.debug(RequestsHttpClient.convert_response_to_dict(raw_response))
+        RequestsHttpClient.log_response(raw_response)
 
         return (status_code, content_type, content), None
 
@@ -202,6 +203,20 @@ class RequestsHttpClient(HttpClient):
             "headers": {k: v for k, v in response.headers.items()},
             "body": response.content,
         }
+
+    @staticmethod
+    def log_request(prepared_request: requests.PreparedRequest) -> None:
+        if _LOGGER.isEnabledFor(logging.DEBUG):
+            request_dict = RequestsHttpClient.convert_request_to_dict(prepared_request)
+            request_dict["timestamp"] = int(time.time())
+            _LOGGER.debug(request_dict)  # TODO(elmer): separate formatter
+
+    @staticmethod
+    def log_response(response: requests.Response) -> None:
+        if _LOGGER.isEnabledFor(logging.DEBUG):
+            response_dict = RequestsHttpClient.convert_response_to_dict(response)
+            response_dict["timestamp"] = int(time.time())
+            _LOGGER.debug(response_dict)  # TODO(elmer): separate formatter
 
 
 class HttpxHttpClient(HttpClient):
@@ -264,7 +279,7 @@ class HttpxHttpClient(HttpClient):
             request: Any,
             **kwargs
     ) -> Tuple[Any, Union[None, HttpResponse]]:
-        _LOGGER.debug(HttpxHttpClient.convert_request_to_dict(request))
+        HttpxHttpClient.log_request(request)
         return self.client.send(request), None
 
     async def send_request_async(
@@ -317,7 +332,7 @@ class HttpxHttpClient(HttpClient):
             content_type = None
             content = None
 
-        _LOGGER.debug(HttpxHttpClient.convert_response_to_dict(raw_response))
+        HttpxHttpClient.log_response(raw_response)
 
         return (status_code, content_type, content), None
 
@@ -348,6 +363,20 @@ class HttpxHttpClient(HttpClient):
             "headers": {k: v for k, v in httpx_response.headers.items()},
             "body": httpx_response.content,
         }
+
+    @staticmethod
+    def log_request(httpx_request: httpx.Request) -> None:
+        if _LOGGER.isEnabledFor(logging.DEBUG):
+            request_dict = HttpxHttpClient.convert_request_to_dict(httpx_request)
+            request_dict["timestamp"] = int(time.time())
+            _LOGGER.debug(request_dict)  # TODO(elmer): separate formatter
+
+    @staticmethod
+    def log_response(httpx_response: httpx.Response) -> None:
+        if _LOGGER.isEnabledFor(logging.DEBUG):
+            response_dict = HttpxHttpClient.convert_response_to_dict(httpx_response)
+            response_dict["timestamp"] = int(time.time())
+            _LOGGER.debug(response_dict)  # TODO(elmer): separate formatter
 
 
 # TODO(elmer): convert into a dataclass?
