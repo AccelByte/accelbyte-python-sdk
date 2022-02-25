@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.sessionbrowser import update_session as update_session_internal
 from accelbyte_py_sdk.api.sessionbrowser.models import ModelsSessionResponse
 from accelbyte_py_sdk.api.sessionbrowser.models import ModelsUpdateSessionRequest
@@ -63,7 +65,7 @@ def update_session(
             body = ModelsUpdateSessionRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = update_session_internal(
+    result, error = update_session_internal(
         body=body,
         session_id=session_id,
         namespace=namespace,
@@ -71,4 +73,4 @@ def update_session(
     )
     if error:
         raise Exception(f"UpdateSession failed: {str(error)}")
-    click.echo("UpdateSession success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

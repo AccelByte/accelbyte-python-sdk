@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import exists_any_user_active_entitlement_by_item_ids as exists_any_user_active_entitlement_by_item_ids_internal
 from accelbyte_py_sdk.api.platform.models import Ownership
 
@@ -61,7 +63,7 @@ def exists_any_user_active_entitlement_by_item_ids(
             item_ids = [str(i0) for i0 in item_ids_json]
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'itemIds'. {str(e)}") from e
-    _, error = exists_any_user_active_entitlement_by_item_ids_internal(
+    result, error = exists_any_user_active_entitlement_by_item_ids_internal(
         user_id=user_id,
         item_ids=item_ids,
         namespace=namespace,
@@ -69,4 +71,4 @@ def exists_any_user_active_entitlement_by_item_ids(
     )
     if error:
         raise Exception(f"existsAnyUserActiveEntitlementByItemIds failed: {str(error)}")
-    click.echo("existsAnyUserActiveEntitlementByItemIds success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

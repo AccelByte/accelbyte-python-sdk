@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.dsmc import add_port as add_port_internal
 from accelbyte_py_sdk.api.dsmc.models import ModelsCreatePortRequest
 from accelbyte_py_sdk.api.dsmc.models import ModelsDSMConfigRecord
@@ -63,7 +65,7 @@ def add_port(
             body = ModelsCreatePortRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = add_port_internal(
+    result, error = add_port_internal(
         body=body,
         name=name,
         namespace=namespace,
@@ -71,4 +73,4 @@ def add_port(
     )
     if error:
         raise Exception(f"AddPort failed: {str(error)}")
-    click.echo("AddPort success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

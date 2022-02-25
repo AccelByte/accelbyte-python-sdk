@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.legal import request_presigned_url as request_presigned_url_internal
 from accelbyte_py_sdk.api.legal.models import ErrorEntity
 from accelbyte_py_sdk.api.legal.models import UploadLocalizedPolicyVersionAttachmentResponse
@@ -61,11 +63,11 @@ def request_presigned_url(
             body = UploadPolicyVersionAttachmentRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = request_presigned_url_internal(
+    result, error = request_presigned_url_internal(
         localized_policy_version_id=localized_policy_version_id,
         body=body,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"requestPresignedURL failed: {str(error)}")
-    click.echo("requestPresignedURL success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

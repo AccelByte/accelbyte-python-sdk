@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import update_stadia_json_config_file as update_stadia_json_config_file_internal
 from accelbyte_py_sdk.api.platform.models import StadiaIAPConfigInfo
 
@@ -53,11 +55,11 @@ def update_stadia_json_config_file(
         }
     else:
         login_as_internal(login_as)
-    _, error = update_stadia_json_config_file_internal(
+    result, error = update_stadia_json_config_file_internal(
         file=file,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"updateStadiaJsonConfigFile failed: {str(error)}")
-    click.echo("updateStadiaJsonConfigFile success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

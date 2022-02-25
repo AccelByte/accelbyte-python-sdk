@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.ugc import admin_get_all_groups as admin_get_all_groups_internal
 from accelbyte_py_sdk.api.ugc.models import ModelsPaginatedGroupResponse
 from accelbyte_py_sdk.api.ugc.models import ResponseError
@@ -58,7 +60,7 @@ def admin_get_all_groups(
         }
     else:
         login_as_internal(login_as)
-    _, error = admin_get_all_groups_internal(
+    result, error = admin_get_all_groups_internal(
         user_id=user_id,
         limit=limit,
         offset=offset,
@@ -67,4 +69,4 @@ def admin_get_all_groups(
     )
     if error:
         raise Exception(f"AdminGetAllGroups failed: {str(error)}")
-    click.echo("AdminGetAllGroups success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

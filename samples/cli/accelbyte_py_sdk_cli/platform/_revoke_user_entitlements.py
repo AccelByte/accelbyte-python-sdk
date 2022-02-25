@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import revoke_user_entitlements as revoke_user_entitlements_internal
 from accelbyte_py_sdk.api.platform.models import BulkOperationResult
 
@@ -55,7 +57,7 @@ def revoke_user_entitlements(
         }
     else:
         login_as_internal(login_as)
-    _, error = revoke_user_entitlements_internal(
+    result, error = revoke_user_entitlements_internal(
         user_id=user_id,
         entitlement_ids=entitlement_ids,
         namespace=namespace,
@@ -63,4 +65,4 @@ def revoke_user_entitlements(
     )
     if error:
         raise Exception(f"revokeUserEntitlements failed: {str(error)}")
-    click.echo("revokeUserEntitlements success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

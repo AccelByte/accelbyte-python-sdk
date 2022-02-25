@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import public_normalize_payment_return_url as public_normalize_payment_return_url_internal
 
 
@@ -76,7 +78,7 @@ def public_normalize_payment_return_url(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_normalize_payment_return_url_internal(
+    result, error = public_normalize_payment_return_url_internal(
         order_no=order_no,
         payment_order_no=payment_order_no,
         payment_provider=payment_provider,
@@ -95,4 +97,4 @@ def public_normalize_payment_return_url(
     )
     if error:
         raise Exception(f"publicNormalizePaymentReturnUrl failed: {str(error)}")
-    click.echo("publicNormalizePaymentReturnUrl success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

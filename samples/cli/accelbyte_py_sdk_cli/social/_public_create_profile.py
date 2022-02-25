@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.social import public_create_profile as public_create_profile_internal
 from accelbyte_py_sdk.api.social.models import GameProfileRequest
 from accelbyte_py_sdk.api.social.models import ValidationErrorEntity
@@ -62,7 +64,7 @@ def public_create_profile(
             body = GameProfileRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = public_create_profile_internal(
+    result, error = public_create_profile_internal(
         user_id=user_id,
         body=body,
         namespace=namespace,
@@ -70,4 +72,4 @@ def public_create_profile(
     )
     if error:
         raise Exception(f"publicCreateProfile failed: {str(error)}")
-    click.echo("publicCreateProfile success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

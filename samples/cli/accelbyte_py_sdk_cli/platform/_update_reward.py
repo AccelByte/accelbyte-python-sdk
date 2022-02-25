@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import update_reward as update_reward_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import RewardInfo
@@ -63,7 +65,7 @@ def update_reward(
             body = RewardUpdate.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = update_reward_internal(
+    result, error = update_reward_internal(
         reward_id=reward_id,
         body=body,
         namespace=namespace,
@@ -71,4 +73,4 @@ def update_reward(
     )
     if error:
         raise Exception(f"updateReward failed: {str(error)}")
-    click.echo("updateReward success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.social import public_create_user_namespace_slot as public_create_user_namespace_slot_internal
 from accelbyte_py_sdk.api.social.models import ErrorEntity
 
@@ -69,7 +71,7 @@ def public_create_user_namespace_slot(
             tags = [str(i0) for i0 in tags_json]
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'tags'. {str(e)}") from e
-    _, error = public_create_user_namespace_slot_internal(
+    result, error = public_create_user_namespace_slot_internal(
         user_id=user_id,
         checksum=checksum,
         custom_attribute=custom_attribute,
@@ -81,4 +83,4 @@ def public_create_user_namespace_slot(
     )
     if error:
         raise Exception(f"publicCreateUserNamespaceSlot failed: {str(error)}")
-    click.echo("publicCreateUserNamespaceSlot success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

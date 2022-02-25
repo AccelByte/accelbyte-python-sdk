@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.dsmc import count_server_detailed as count_server_detailed_internal
 from accelbyte_py_sdk.api.dsmc.models import ModelsDetailedCountServerResponse
 from accelbyte_py_sdk.api.dsmc.models import ResponseError
@@ -54,11 +56,11 @@ def count_server_detailed(
         }
     else:
         login_as_internal(login_as)
-    _, error = count_server_detailed_internal(
+    result, error = count_server_detailed_internal(
         region=region,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"CountServerDetailed failed: {str(error)}")
-    click.echo("CountServerDetailed success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

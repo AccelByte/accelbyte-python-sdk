@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import notification_with_template as notification_with_template_internal
 from accelbyte_py_sdk.api.lobby.models import ModelNotificationWithTemplateRequest
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
@@ -60,11 +62,11 @@ def notification_with_template(
             body = ModelNotificationWithTemplateRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = notification_with_template_internal(
+    result, error = notification_with_template_internal(
         body=body,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"notificationWithTemplate failed: {str(error)}")
-    click.echo("notificationWithTemplate success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

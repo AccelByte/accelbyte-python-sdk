@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import get_user_order_histories as get_user_order_histories_internal
 from accelbyte_py_sdk.api.platform.models import OrderHistoryInfo
 
@@ -55,7 +57,7 @@ def get_user_order_histories(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_user_order_histories_internal(
+    result, error = get_user_order_histories_internal(
         order_no=order_no,
         user_id=user_id,
         namespace=namespace,
@@ -63,4 +65,4 @@ def get_user_order_histories(
     )
     if error:
         raise Exception(f"getUserOrderHistories failed: {str(error)}")
-    click.echo("getUserOrderHistories success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

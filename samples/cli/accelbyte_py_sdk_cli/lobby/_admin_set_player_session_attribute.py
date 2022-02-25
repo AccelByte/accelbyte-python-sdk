@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import admin_set_player_session_attribute as admin_set_player_session_attribute_internal
 from accelbyte_py_sdk.api.lobby.models import ModelsSetPlayerSessionAttributeRequest
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
@@ -62,7 +64,7 @@ def admin_set_player_session_attribute(
             body = ModelsSetPlayerSessionAttributeRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = admin_set_player_session_attribute_internal(
+    result, error = admin_set_player_session_attribute_internal(
         body=body,
         user_id=user_id,
         namespace=namespace,
@@ -70,4 +72,4 @@ def admin_set_player_session_attribute(
     )
     if error:
         raise Exception(f"adminSetPlayerSessionAttribute failed: {str(error)}")
-    click.echo("adminSetPlayerSessionAttribute success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

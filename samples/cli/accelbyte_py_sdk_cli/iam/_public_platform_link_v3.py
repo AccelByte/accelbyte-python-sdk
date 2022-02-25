@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import public_platform_link_v3 as public_platform_link_v3_internal
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
@@ -57,7 +59,7 @@ def public_platform_link_v3(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_platform_link_v3_internal(
+    result, error = public_platform_link_v3_internal(
         ticket=ticket,
         platform_id=platform_id,
         redirect_uri=redirect_uri,
@@ -66,4 +68,4 @@ def public_platform_link_v3(
     )
     if error:
         raise Exception(f"PublicPlatformLinkV3 failed: {str(error)}")
-    click.echo("PublicPlatformLinkV3 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.legal import partial_update_policy as partial_update_policy_internal
 from accelbyte_py_sdk.api.legal.models import ErrorEntity
 from accelbyte_py_sdk.api.legal.models import UpdateBasePolicyRequest
@@ -61,11 +63,11 @@ def partial_update_policy(
             body = UpdateBasePolicyRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = partial_update_policy_internal(
+    result, error = partial_update_policy_internal(
         base_policy_id=base_policy_id,
         body=body,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"partialUpdatePolicy failed: {str(error)}")
-    click.echo("partialUpdatePolicy success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

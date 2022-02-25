@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import public_list_stores as public_list_stores_internal
 from accelbyte_py_sdk.api.platform.models import StoreInfo
 
@@ -51,10 +53,10 @@ def public_list_stores(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_list_stores_internal(
+    result, error = public_list_stores_internal(
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"publicListStores failed: {str(error)}")
-    click.echo("publicListStores success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

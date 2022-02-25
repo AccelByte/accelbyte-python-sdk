@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import public_get_user_subscription_billing_histories as public_get_user_subscription_billing_histories_internal
 from accelbyte_py_sdk.api.platform.models import BillingHistoryPagingSlicedResult
 
@@ -61,7 +63,7 @@ def public_get_user_subscription_billing_histories(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_get_user_subscription_billing_histories_internal(
+    result, error = public_get_user_subscription_billing_histories_internal(
         subscription_id=subscription_id,
         user_id=user_id,
         exclude_free=exclude_free,
@@ -72,4 +74,4 @@ def public_get_user_subscription_billing_histories(
     )
     if error:
         raise Exception(f"publicGetUserSubscriptionBillingHistories failed: {str(error)}")
-    click.echo("publicGetUserSubscriptionBillingHistories success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

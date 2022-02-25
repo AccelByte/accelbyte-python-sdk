@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.cloudsave import admin_post_player_public_record_handler_v1 as admin_post_player_public_record_handler_v1_internal
 from accelbyte_py_sdk.api.cloudsave.models import ModelsPlayerRecordRequest
 from accelbyte_py_sdk.api.cloudsave.models import ModelsResponseError
@@ -64,7 +66,7 @@ def admin_post_player_public_record_handler_v1(
             body = ModelsPlayerRecordRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = admin_post_player_public_record_handler_v1_internal(
+    result, error = admin_post_player_public_record_handler_v1_internal(
         body=body,
         key=key,
         user_id=user_id,
@@ -73,4 +75,4 @@ def admin_post_player_public_record_handler_v1(
     )
     if error:
         raise Exception(f"adminPostPlayerPublicRecordHandlerV1 failed: {str(error)}")
-    click.echo("adminPostPlayerPublicRecordHandlerV1 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

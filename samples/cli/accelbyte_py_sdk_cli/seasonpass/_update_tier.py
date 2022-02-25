@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.seasonpass import update_tier as update_tier_internal
 from accelbyte_py_sdk.api.seasonpass.models import ErrorEntity
 from accelbyte_py_sdk.api.seasonpass.models import Tier
@@ -66,7 +68,7 @@ def update_tier(
             body = TierInput.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = update_tier_internal(
+    result, error = update_tier_internal(
         id_=id_,
         season_id=season_id,
         body=body,
@@ -75,4 +77,4 @@ def update_tier(
     )
     if error:
         raise Exception(f"updateTier failed: {str(error)}")
-    click.echo("updateTier success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

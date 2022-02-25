@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.seasonpass import get_pass as get_pass_internal
 from accelbyte_py_sdk.api.seasonpass.models import ErrorEntity
 from accelbyte_py_sdk.api.seasonpass.models import PassInfo
@@ -56,7 +58,7 @@ def get_pass(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_pass_internal(
+    result, error = get_pass_internal(
         code=code,
         season_id=season_id,
         namespace=namespace,
@@ -64,4 +66,4 @@ def get_pass(
     )
     if error:
         raise Exception(f"getPass failed: {str(error)}")
-    click.echo("getPass success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

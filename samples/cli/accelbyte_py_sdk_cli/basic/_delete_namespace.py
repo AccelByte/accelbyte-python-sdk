@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.basic import delete_namespace as delete_namespace_internal
 from accelbyte_py_sdk.api.basic.models import ErrorEntity
 from accelbyte_py_sdk.api.basic.models import NamespaceInfo
@@ -53,10 +55,10 @@ def delete_namespace(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_namespace_internal(
+    result, error = delete_namespace_internal(
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"deleteNamespace failed: {str(error)}")
-    click.echo("deleteNamespace success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

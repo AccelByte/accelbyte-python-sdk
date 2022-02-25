@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.seasonpass import get_current_user_season_progression as get_current_user_season_progression_internal
 from accelbyte_py_sdk.api.seasonpass.models import ErrorEntity
 from accelbyte_py_sdk.api.seasonpass.models import UserSeasonSummary
@@ -54,11 +56,11 @@ def get_current_user_season_progression(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_current_user_season_progression_internal(
+    result, error = get_current_user_season_progression_internal(
         user_id=user_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"getCurrentUserSeasonProgression failed: {str(error)}")
-    click.echo("getCurrentUserSeasonProgression success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

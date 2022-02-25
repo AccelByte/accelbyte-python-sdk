@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import public_get_category as public_get_category_internal
 from accelbyte_py_sdk.api.platform.models import CategoryInfo
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
@@ -58,7 +60,7 @@ def public_get_category(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_get_category_internal(
+    result, error = public_get_category_internal(
         category_path=category_path,
         language=language,
         store_id=store_id,
@@ -67,4 +69,4 @@ def public_get_category(
     )
     if error:
         raise Exception(f"publicGetCategory failed: {str(error)}")
-    click.echo("publicGetCategory success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

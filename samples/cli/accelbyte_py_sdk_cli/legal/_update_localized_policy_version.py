@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.legal import update_localized_policy_version as update_localized_policy_version_internal
 from accelbyte_py_sdk.api.legal.models import ErrorEntity
 from accelbyte_py_sdk.api.legal.models import UpdateLocalizedPolicyVersionRequest
@@ -61,11 +63,11 @@ def update_localized_policy_version(
             body = UpdateLocalizedPolicyVersionRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = update_localized_policy_version_internal(
+    result, error = update_localized_policy_version_internal(
         localized_policy_version_id=localized_policy_version_id,
         body=body,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"updateLocalizedPolicyVersion failed: {str(error)}")
-    click.echo("updateLocalizedPolicyVersion success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

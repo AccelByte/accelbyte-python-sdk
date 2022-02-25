@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.gdpr import admin_generate_personal_data_url as admin_generate_personal_data_url_internal
 from accelbyte_py_sdk.api.gdpr.models import ModelsUserDataURL
 from accelbyte_py_sdk.api.gdpr.models import ResponseError
@@ -58,7 +60,7 @@ def admin_generate_personal_data_url(
         }
     else:
         login_as_internal(login_as)
-    _, error = admin_generate_personal_data_url_internal(
+    result, error = admin_generate_personal_data_url_internal(
         password=password,
         request_date=request_date,
         user_id=user_id,
@@ -67,4 +69,4 @@ def admin_generate_personal_data_url(
     )
     if error:
         raise Exception(f"AdminGeneratePersonalDataURL failed: {str(error)}")
-    click.echo("AdminGeneratePersonalDataURL success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

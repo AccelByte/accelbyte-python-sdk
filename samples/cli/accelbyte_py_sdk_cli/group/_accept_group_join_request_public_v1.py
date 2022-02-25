@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.group import accept_group_join_request_public_v1 as accept_group_join_request_public_v1_internal
 from accelbyte_py_sdk.api.group.models import ModelsMemberRequestGroupResponseV1
 from accelbyte_py_sdk.api.group.models import ResponseErrorResponse
@@ -54,11 +56,11 @@ def accept_group_join_request_public_v1(
         }
     else:
         login_as_internal(login_as)
-    _, error = accept_group_join_request_public_v1_internal(
+    result, error = accept_group_join_request_public_v1_internal(
         user_id=user_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"acceptGroupJoinRequestPublicV1 failed: {str(error)}")
-    click.echo("acceptGroupJoinRequestPublicV1 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

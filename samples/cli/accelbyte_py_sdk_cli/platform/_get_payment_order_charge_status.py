@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import get_payment_order_charge_status as get_payment_order_charge_status_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import PaymentOrderChargeStatus
@@ -54,11 +56,11 @@ def get_payment_order_charge_status(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_payment_order_charge_status_internal(
+    result, error = get_payment_order_charge_status_internal(
         payment_order_no=payment_order_no,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"getPaymentOrderChargeStatus failed: {str(error)}")
-    click.echo("getPaymentOrderChargeStatus success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

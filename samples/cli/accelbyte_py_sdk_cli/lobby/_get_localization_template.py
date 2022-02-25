@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import get_localization_template as get_localization_template_internal
 from accelbyte_py_sdk.api.lobby.models import ModelTemplateLocalization
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
@@ -56,7 +58,7 @@ def get_localization_template(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_localization_template_internal(
+    result, error = get_localization_template_internal(
         template_language=template_language,
         template_slug=template_slug,
         namespace=namespace,
@@ -64,4 +66,4 @@ def get_localization_template(
     )
     if error:
         raise Exception(f"getLocalizationTemplate failed: {str(error)}")
-    click.echo("getLocalizationTemplate success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

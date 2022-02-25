@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import update_key_group as update_key_group_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import KeyGroupInfo
@@ -64,7 +66,7 @@ def update_key_group(
             body = KeyGroupUpdate.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = update_key_group_internal(
+    result, error = update_key_group_internal(
         key_group_id=key_group_id,
         body=body,
         namespace=namespace,
@@ -72,4 +74,4 @@ def update_key_group(
     )
     if error:
         raise Exception(f"updateKeyGroup failed: {str(error)}")
-    click.echo("updateKeyGroup success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

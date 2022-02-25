@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import list_fulfillment_scripts as list_fulfillment_scripts_internal
 from accelbyte_py_sdk.api.platform.models import FulfillmentScriptInfo
 
@@ -49,9 +51,9 @@ def list_fulfillment_scripts(
         }
     else:
         login_as_internal(login_as)
-    _, error = list_fulfillment_scripts_internal(
+    result, error = list_fulfillment_scripts_internal(
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"listFulfillmentScripts failed: {str(error)}")
-    click.echo("listFulfillmentScripts success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

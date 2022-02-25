@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.sessionbrowser import delete_session_local_ds as delete_session_local_ds_internal
 from accelbyte_py_sdk.api.sessionbrowser.models import ModelsSessionResponse
 from accelbyte_py_sdk.api.sessionbrowser.models import ResponseError
@@ -54,11 +56,11 @@ def delete_session_local_ds(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_session_local_ds_internal(
+    result, error = delete_session_local_ds_internal(
         session_id=session_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"DeleteSessionLocalDS failed: {str(error)}")
-    click.echo("DeleteSessionLocalDS success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

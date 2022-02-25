@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import public_download_user_order_receipt as public_download_user_order_receipt_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 
@@ -55,7 +57,7 @@ def public_download_user_order_receipt(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_download_user_order_receipt_internal(
+    result, error = public_download_user_order_receipt_internal(
         order_no=order_no,
         user_id=user_id,
         namespace=namespace,
@@ -63,4 +65,4 @@ def public_download_user_order_receipt(
     )
     if error:
         raise Exception(f"publicDownloadUserOrderReceipt failed: {str(error)}")
-    click.echo("publicDownloadUserOrderReceipt success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

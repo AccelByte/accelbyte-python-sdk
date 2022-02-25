@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import get_currency_summary as get_currency_summary_internal
 from accelbyte_py_sdk.api.platform.models import CurrencySummary
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
@@ -54,11 +56,11 @@ def get_currency_summary(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_currency_summary_internal(
+    result, error = get_currency_summary_internal(
         currency_code=currency_code,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"getCurrencySummary failed: {str(error)}")
-    click.echo("getCurrencySummary success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

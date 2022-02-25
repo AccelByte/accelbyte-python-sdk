@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.dsmc import create_root_region_override as create_root_region_override_internal
 from accelbyte_py_sdk.api.dsmc.models import ModelsCreateRegionOverrideRequest
 from accelbyte_py_sdk.api.dsmc.models import ModelsDeploymentWithOverride
@@ -65,7 +67,7 @@ def create_root_region_override(
             body = ModelsCreateRegionOverrideRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = create_root_region_override_internal(
+    result, error = create_root_region_override_internal(
         body=body,
         deployment=deployment,
         region=region,
@@ -74,4 +76,4 @@ def create_root_region_override(
     )
     if error:
         raise Exception(f"CreateRootRegionOverride failed: {str(error)}")
-    click.echo("CreateRootRegionOverride success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

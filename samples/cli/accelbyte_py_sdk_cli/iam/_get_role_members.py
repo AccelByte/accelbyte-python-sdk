@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import get_role_members as get_role_members_internal
 from accelbyte_py_sdk.api.iam.models import ModelRoleMembersResponse
 
@@ -51,10 +53,10 @@ def get_role_members(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_role_members_internal(
+    result, error = get_role_members_internal(
         role_id=role_id,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"GetRoleMembers failed: {str(error)}")
-    click.echo("GetRoleMembers success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

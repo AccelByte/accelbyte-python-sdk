@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import login_sso_client as login_sso_client_internal
 
 
@@ -52,11 +54,11 @@ def login_sso_client(
         }
     else:
         login_as_internal(login_as)
-    _, error = login_sso_client_internal(
+    result, error = login_sso_client_internal(
         platform_id=platform_id,
         payload=payload,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"LoginSSOClient failed: {str(error)}")
-    click.echo("LoginSSOClient success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

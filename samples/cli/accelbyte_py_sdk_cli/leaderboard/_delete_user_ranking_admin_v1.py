@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.leaderboard import delete_user_ranking_admin_v1 as delete_user_ranking_admin_v1_internal
 from accelbyte_py_sdk.api.leaderboard.models import ResponseErrorResponse
 
@@ -55,7 +57,7 @@ def delete_user_ranking_admin_v1(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_user_ranking_admin_v1_internal(
+    result, error = delete_user_ranking_admin_v1_internal(
         leaderboard_code=leaderboard_code,
         user_id=user_id,
         namespace=namespace,
@@ -63,4 +65,4 @@ def delete_user_ranking_admin_v1(
     )
     if error:
         raise Exception(f"deleteUserRankingAdminV1 failed: {str(error)}")
-    click.echo("deleteUserRankingAdminV1 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

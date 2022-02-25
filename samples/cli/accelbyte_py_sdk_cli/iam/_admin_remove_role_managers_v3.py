@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import admin_remove_role_managers_v3 as admin_remove_role_managers_v3_internal
 from accelbyte_py_sdk.api.iam.models import ModelRoleManagersRequestV3
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
@@ -60,11 +62,11 @@ def admin_remove_role_managers_v3(
             body = ModelRoleManagersRequestV3.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = admin_remove_role_managers_v3_internal(
+    result, error = admin_remove_role_managers_v3_internal(
         body=body,
         role_id=role_id,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"AdminRemoveRoleManagersV3 failed: {str(error)}")
-    click.echo("AdminRemoveRoleManagersV3 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

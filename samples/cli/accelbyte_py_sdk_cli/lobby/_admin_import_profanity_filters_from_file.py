@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import admin_import_profanity_filters_from_file as admin_import_profanity_filters_from_file_internal
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
 
@@ -61,7 +63,7 @@ def admin_import_profanity_filters_from_file(
             body = [int(i0) for i0 in body_json]
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = admin_import_profanity_filters_from_file_internal(
+    result, error = admin_import_profanity_filters_from_file_internal(
         body=body,
         list_=list_,
         namespace=namespace,
@@ -69,4 +71,4 @@ def admin_import_profanity_filters_from_file(
     )
     if error:
         raise Exception(f"adminImportProfanityFiltersFromFile failed: {str(error)}")
-    click.echo("adminImportProfanityFiltersFromFile success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

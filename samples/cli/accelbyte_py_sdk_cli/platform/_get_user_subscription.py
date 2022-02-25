@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import get_user_subscription as get_user_subscription_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import SubscriptionInfo
@@ -56,7 +58,7 @@ def get_user_subscription(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_user_subscription_internal(
+    result, error = get_user_subscription_internal(
         subscription_id=subscription_id,
         user_id=user_id,
         namespace=namespace,
@@ -64,4 +66,4 @@ def get_user_subscription(
     )
     if error:
         raise Exception(f"getUserSubscription failed: {str(error)}")
-    click.echo("getUserSubscription success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

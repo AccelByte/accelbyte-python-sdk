@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.social import get_profile as get_profile_internal
 from accelbyte_py_sdk.api.social.models import ErrorEntity
 from accelbyte_py_sdk.api.social.models import GameProfileInfo
@@ -56,7 +58,7 @@ def get_profile(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_profile_internal(
+    result, error = get_profile_internal(
         profile_id=profile_id,
         user_id=user_id,
         namespace=namespace,
@@ -64,4 +66,4 @@ def get_profile(
     )
     if error:
         raise Exception(f"getProfile failed: {str(error)}")
-    click.echo("getProfile success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

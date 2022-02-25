@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.eventlog import get_public_edit_history as get_public_edit_history_internal
 from accelbyte_py_sdk.api.eventlog.models import ModelsEventResponseV2
 
@@ -63,7 +65,7 @@ def get_public_edit_history(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_public_edit_history_internal(
+    result, error = get_public_edit_history_internal(
         user_id=user_id,
         end_date=end_date,
         offset=offset,
@@ -75,4 +77,4 @@ def get_public_edit_history(
     )
     if error:
         raise Exception(f"GetPublicEditHistory failed: {str(error)}")
-    click.echo("GetPublicEditHistory success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

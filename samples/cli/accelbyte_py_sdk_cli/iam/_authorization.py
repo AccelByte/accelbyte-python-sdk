@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import authorization as authorization_internal
 
 
@@ -62,7 +64,7 @@ def authorization(
         }
     else:
         login_as_internal(login_as)
-    _, error = authorization_internal(
+    result, error = authorization_internal(
         client_id=client_id,
         redirect_uri=redirect_uri,
         response_type=response_type,
@@ -74,4 +76,4 @@ def authorization(
     )
     if error:
         raise Exception(f"Authorization failed: {str(error)}")
-    click.echo("Authorization success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

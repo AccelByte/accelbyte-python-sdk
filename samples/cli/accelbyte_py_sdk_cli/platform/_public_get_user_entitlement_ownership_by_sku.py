@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import public_get_user_entitlement_ownership_by_sku as public_get_user_entitlement_ownership_by_sku_internal
 from accelbyte_py_sdk.api.platform.models import TimedOwnership
 
@@ -57,7 +59,7 @@ def public_get_user_entitlement_ownership_by_sku(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_get_user_entitlement_ownership_by_sku_internal(
+    result, error = public_get_user_entitlement_ownership_by_sku_internal(
         user_id=user_id,
         sku=sku,
         entitlement_clazz=entitlement_clazz,
@@ -66,4 +68,4 @@ def public_get_user_entitlement_ownership_by_sku(
     )
     if error:
         raise Exception(f"publicGetUserEntitlementOwnershipBySku failed: {str(error)}")
-    click.echo("publicGetUserEntitlementOwnershipBySku success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

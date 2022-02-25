@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.group import create_member_role_admin_v1 as create_member_role_admin_v1_internal
 from accelbyte_py_sdk.api.group.models import ModelsCreateMemberRoleRequestV1
 from accelbyte_py_sdk.api.group.models import ModelsCreateMemberRoleResponseV1
@@ -61,11 +63,11 @@ def create_member_role_admin_v1(
             body = ModelsCreateMemberRoleRequestV1.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = create_member_role_admin_v1_internal(
+    result, error = create_member_role_admin_v1_internal(
         body=body,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"createMemberRoleAdminV1 failed: {str(error)}")
-    click.echo("createMemberRoleAdminV1 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

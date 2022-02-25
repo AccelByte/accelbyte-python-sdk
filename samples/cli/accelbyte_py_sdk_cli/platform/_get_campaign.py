@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import get_campaign as get_campaign_internal
 from accelbyte_py_sdk.api.platform.models import CampaignInfo
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
@@ -54,11 +56,11 @@ def get_campaign(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_campaign_internal(
+    result, error = get_campaign_internal(
         campaign_id=campaign_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"getCampaign failed: {str(error)}")
-    click.echo("getCampaign success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

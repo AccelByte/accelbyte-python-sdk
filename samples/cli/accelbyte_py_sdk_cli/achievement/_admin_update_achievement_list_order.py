@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.achievement import admin_update_achievement_list_order as admin_update_achievement_list_order_internal
 from accelbyte_py_sdk.api.achievement.models import ModelsAchievementOrderUpdateRequest
 from accelbyte_py_sdk.api.achievement.models import ResponseError
@@ -62,7 +64,7 @@ def admin_update_achievement_list_order(
             body = ModelsAchievementOrderUpdateRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = admin_update_achievement_list_order_internal(
+    result, error = admin_update_achievement_list_order_internal(
         body=body,
         achievement_code=achievement_code,
         namespace=namespace,
@@ -70,4 +72,4 @@ def admin_update_achievement_list_order(
     )
     if error:
         raise Exception(f"AdminUpdateAchievementListOrder failed: {str(error)}")
-    click.echo("AdminUpdateAchievementListOrder success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

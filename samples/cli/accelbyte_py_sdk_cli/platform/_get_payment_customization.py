@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import get_payment_customization as get_payment_customization_internal
 from accelbyte_py_sdk.api.platform.models import Customization
 
@@ -57,7 +59,7 @@ def get_payment_customization(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_payment_customization_internal(
+    result, error = get_payment_customization_internal(
         payment_provider=payment_provider,
         region=region,
         sandbox=sandbox,
@@ -66,4 +68,4 @@ def get_payment_customization(
     )
     if error:
         raise Exception(f"getPaymentCustomization failed: {str(error)}")
-    click.echo("getPaymentCustomization success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import test_adyen_config_by_id as test_adyen_config_by_id_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import TestResult
@@ -54,11 +56,11 @@ def test_adyen_config_by_id(
         }
     else:
         login_as_internal(login_as)
-    _, error = test_adyen_config_by_id_internal(
+    result, error = test_adyen_config_by_id_internal(
         id_=id_,
         sandbox=sandbox,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"testAdyenConfigById failed: {str(error)}")
-    click.echo("testAdyenConfigById success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

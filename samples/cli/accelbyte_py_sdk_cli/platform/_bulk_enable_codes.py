@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import bulk_enable_codes as bulk_enable_codes_internal
 from accelbyte_py_sdk.api.platform.models import BulkOperationResult
 
@@ -55,7 +57,7 @@ def bulk_enable_codes(
         }
     else:
         login_as_internal(login_as)
-    _, error = bulk_enable_codes_internal(
+    result, error = bulk_enable_codes_internal(
         campaign_id=campaign_id,
         batch_no=batch_no,
         namespace=namespace,
@@ -63,4 +65,4 @@ def bulk_enable_codes(
     )
     if error:
         raise Exception(f"bulkEnableCodes failed: {str(error)}")
-    click.echo("bulkEnableCodes success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

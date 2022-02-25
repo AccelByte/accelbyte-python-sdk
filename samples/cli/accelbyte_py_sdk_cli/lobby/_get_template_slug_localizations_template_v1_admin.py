@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import get_template_slug_localizations_template_v1_admin as get_template_slug_localizations_template_v1_admin_internal
 from accelbyte_py_sdk.api.lobby.models import ModelGetAllNotificationTemplateSlugResp
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseV1
@@ -60,7 +62,7 @@ def get_template_slug_localizations_template_v1_admin(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_template_slug_localizations_template_v1_admin_internal(
+    result, error = get_template_slug_localizations_template_v1_admin_internal(
         template_slug=template_slug,
         after=after,
         before=before,
@@ -70,4 +72,4 @@ def get_template_slug_localizations_template_v1_admin(
     )
     if error:
         raise Exception(f"getTemplateSlugLocalizationsTemplateV1Admin failed: {str(error)}")
-    click.echo("getTemplateSlugLocalizationsTemplateV1Admin success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

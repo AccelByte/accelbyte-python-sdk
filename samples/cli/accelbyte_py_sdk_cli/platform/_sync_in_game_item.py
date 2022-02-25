@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import sync_in_game_item as sync_in_game_item_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import FullItemInfo
@@ -64,7 +66,7 @@ def sync_in_game_item(
             body = InGameItemSync.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = sync_in_game_item_internal(
+    result, error = sync_in_game_item_internal(
         store_id=store_id,
         body=body,
         namespace=namespace,
@@ -72,4 +74,4 @@ def sync_in_game_item(
     )
     if error:
         raise Exception(f"syncInGameItem failed: {str(error)}")
-    click.echo("syncInGameItem success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

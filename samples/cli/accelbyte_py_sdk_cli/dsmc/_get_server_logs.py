@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.dsmc import get_server_logs as get_server_logs_internal
 from accelbyte_py_sdk.api.dsmc.models import ModelsServerLogs
 from accelbyte_py_sdk.api.dsmc.models import ResponseError
@@ -54,11 +56,11 @@ def get_server_logs(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_server_logs_internal(
+    result, error = get_server_logs_internal(
         pod_name=pod_name,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"getServerLogs failed: {str(error)}")
-    click.echo("getServerLogs success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

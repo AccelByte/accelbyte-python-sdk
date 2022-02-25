@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import create_payment_order_by_dedicated as create_payment_order_by_dedicated_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import ExternalPaymentOrderCreate
@@ -62,11 +64,11 @@ def create_payment_order_by_dedicated(
             body = ExternalPaymentOrderCreate.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = create_payment_order_by_dedicated_internal(
+    result, error = create_payment_order_by_dedicated_internal(
         body=body,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"createPaymentOrderByDedicated failed: {str(error)}")
-    click.echo("createPaymentOrderByDedicated success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

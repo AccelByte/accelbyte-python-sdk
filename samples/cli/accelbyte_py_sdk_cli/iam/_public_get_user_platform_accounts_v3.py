@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import public_get_user_platform_accounts_v3 as public_get_user_platform_accounts_v3_internal
 from accelbyte_py_sdk.api.iam.models import AccountcommonUserLinkedPlatformsResponseV3
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
@@ -60,7 +62,7 @@ def public_get_user_platform_accounts_v3(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_get_user_platform_accounts_v3_internal(
+    result, error = public_get_user_platform_accounts_v3_internal(
         user_id=user_id,
         after=after,
         before=before,
@@ -70,4 +72,4 @@ def public_get_user_platform_accounts_v3(
     )
     if error:
         raise Exception(f"PublicGetUserPlatformAccountsV3 failed: {str(error)}")
-    click.echo("PublicGetUserPlatformAccountsV3 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import admin_delete_platform_link_v2 as admin_delete_platform_link_v2_internal
 
 
@@ -56,7 +58,7 @@ def admin_delete_platform_link_v2(
         }
     else:
         login_as_internal(login_as)
-    _, error = admin_delete_platform_link_v2_internal(
+    result, error = admin_delete_platform_link_v2_internal(
         platform_id=platform_id,
         user_id=user_id,
         platform_namespace=platform_namespace,
@@ -65,4 +67,4 @@ def admin_delete_platform_link_v2(
     )
     if error:
         raise Exception(f"AdminDeletePlatformLinkV2 failed: {str(error)}")
-    click.echo("AdminDeletePlatformLinkV2 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

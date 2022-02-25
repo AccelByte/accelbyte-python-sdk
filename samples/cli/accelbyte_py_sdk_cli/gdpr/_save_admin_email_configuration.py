@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.gdpr import save_admin_email_configuration as save_admin_email_configuration_internal
 from accelbyte_py_sdk.api.gdpr.models import ResponseError
 
@@ -59,11 +61,11 @@ def save_admin_email_configuration(
             body = [str(i0) for i0 in body_json]
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = save_admin_email_configuration_internal(
+    result, error = save_admin_email_configuration_internal(
         body=body,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"SaveAdminEmailConfiguration failed: {str(error)}")
-    click.echo("SaveAdminEmailConfiguration success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

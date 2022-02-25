@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import delete_user_permission as delete_user_permission_internal
 
 
@@ -56,7 +58,7 @@ def delete_user_permission(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_user_permission_internal(
+    result, error = delete_user_permission_internal(
         action=action,
         resource=resource,
         user_id=user_id,
@@ -65,4 +67,4 @@ def delete_user_permission(
     )
     if error:
         raise Exception(f"DeleteUserPermission failed: {str(error)}")
-    click.echo("DeleteUserPermission success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

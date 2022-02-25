@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import sync_payment_orders as sync_payment_orders_internal
 from accelbyte_py_sdk.api.platform.models import PaymentOrderSyncResult
 
@@ -55,7 +57,7 @@ def sync_payment_orders(
         }
     else:
         login_as_internal(login_as)
-    _, error = sync_payment_orders_internal(
+    result, error = sync_payment_orders_internal(
         end=end,
         start=start,
         next_evaluated_key=next_evaluated_key,
@@ -63,4 +65,4 @@ def sync_payment_orders(
     )
     if error:
         raise Exception(f"syncPaymentOrders failed: {str(error)}")
-    click.echo("syncPaymentOrders success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

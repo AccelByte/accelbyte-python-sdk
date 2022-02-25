@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.seasonpass import get_user_season as get_user_season_internal
 from accelbyte_py_sdk.api.seasonpass.models import ClaimableUserSeasonInfo
 from accelbyte_py_sdk.api.seasonpass.models import ErrorEntity
@@ -56,7 +58,7 @@ def get_user_season(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_user_season_internal(
+    result, error = get_user_season_internal(
         season_id=season_id,
         user_id=user_id,
         namespace=namespace,
@@ -64,4 +66,4 @@ def get_user_season(
     )
     if error:
         raise Exception(f"getUserSeason failed: {str(error)}")
-    click.echo("getUserSeason success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

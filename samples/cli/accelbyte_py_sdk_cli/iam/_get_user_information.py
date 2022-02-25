@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import get_user_information as get_user_information_internal
 from accelbyte_py_sdk.api.iam.models import ModelUserInformation
 
@@ -53,11 +55,11 @@ def get_user_information(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_user_information_internal(
+    result, error = get_user_information_internal(
         user_id=user_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"GetUserInformation failed: {str(error)}")
-    click.echo("GetUserInformation success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import admin_get_banned_users_v3 as admin_get_banned_users_v3_internal
 from accelbyte_py_sdk.api.iam.models import ModelGetUserBanV3Response
 
@@ -59,7 +61,7 @@ def admin_get_banned_users_v3(
         }
     else:
         login_as_internal(login_as)
-    _, error = admin_get_banned_users_v3_internal(
+    result, error = admin_get_banned_users_v3_internal(
         active_only=active_only,
         ban_type=ban_type,
         limit=limit,
@@ -69,4 +71,4 @@ def admin_get_banned_users_v3(
     )
     if error:
         raise Exception(f"AdminGetBannedUsersV3 failed: {str(error)}")
-    click.echo("AdminGetBannedUsersV3 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.eventlog import get_registered_events_by_event_type_handler as get_registered_events_by_event_type_handler_internal
 from accelbyte_py_sdk.api.eventlog.models import ModelsEventRegistry
 
@@ -51,10 +53,10 @@ def get_registered_events_by_event_type_handler(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_registered_events_by_event_type_handler_internal(
+    result, error = get_registered_events_by_event_type_handler_internal(
         event_type=event_type,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"GetRegisteredEventsByEventTypeHandler failed: {str(error)}")
-    click.echo("GetRegisteredEventsByEventTypeHandler success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

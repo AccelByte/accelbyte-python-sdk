@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.social import delete_user_stat_items_2 as delete_user_stat_items_2_internal
 from accelbyte_py_sdk.api.social.models import ErrorEntity
 
@@ -57,7 +59,7 @@ def delete_user_stat_items_2(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_user_stat_items_2_internal(
+    result, error = delete_user_stat_items_2_internal(
         stat_code=stat_code,
         user_id=user_id,
         additional_key=additional_key,
@@ -66,4 +68,4 @@ def delete_user_stat_items_2(
     )
     if error:
         raise Exception(f"deleteUserStatItems_2 failed: {str(error)}")
-    click.echo("deleteUserStatItems_2 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import update_user_entitlement as update_user_entitlement_internal
 from accelbyte_py_sdk.api.platform.models import EntitlementInfo
 from accelbyte_py_sdk.api.platform.models import EntitlementUpdate
@@ -66,7 +68,7 @@ def update_user_entitlement(
             body = EntitlementUpdate.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = update_user_entitlement_internal(
+    result, error = update_user_entitlement_internal(
         entitlement_id=entitlement_id,
         user_id=user_id,
         body=body,
@@ -75,4 +77,4 @@ def update_user_entitlement(
     )
     if error:
         raise Exception(f"updateUserEntitlement failed: {str(error)}")
-    click.echo("updateUserEntitlement success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

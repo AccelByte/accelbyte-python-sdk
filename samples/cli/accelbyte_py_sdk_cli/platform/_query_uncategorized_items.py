@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import query_uncategorized_items as query_uncategorized_items_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import FullItemPagingSlicedResult
@@ -63,7 +65,7 @@ def query_uncategorized_items(
         }
     else:
         login_as_internal(login_as)
-    _, error = query_uncategorized_items_internal(
+    result, error = query_uncategorized_items_internal(
         active_only=active_only,
         limit=limit,
         offset=offset,
@@ -74,4 +76,4 @@ def query_uncategorized_items(
     )
     if error:
         raise Exception(f"queryUncategorizedItems failed: {str(error)}")
-    click.echo("queryUncategorizedItems success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

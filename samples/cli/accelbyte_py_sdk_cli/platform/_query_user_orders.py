@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import query_user_orders as query_user_orders_internal
 from accelbyte_py_sdk.api.platform.models import OrderPagingSlicedResult
 
@@ -61,7 +63,7 @@ def query_user_orders(
         }
     else:
         login_as_internal(login_as)
-    _, error = query_user_orders_internal(
+    result, error = query_user_orders_internal(
         user_id=user_id,
         item_id=item_id,
         limit=limit,
@@ -72,4 +74,4 @@ def query_user_orders(
     )
     if error:
         raise Exception(f"queryUserOrders failed: {str(error)}")
-    click.echo("queryUserOrders success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

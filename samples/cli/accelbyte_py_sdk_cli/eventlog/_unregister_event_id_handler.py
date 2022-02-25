@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.eventlog import unregister_event_id_handler as unregister_event_id_handler_internal
 
 
@@ -50,10 +52,10 @@ def unregister_event_id_handler(
         }
     else:
         login_as_internal(login_as)
-    _, error = unregister_event_id_handler_internal(
+    result, error = unregister_event_id_handler_internal(
         event_id=event_id,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"UnregisterEventIDHandler failed: {str(error)}")
-    click.echo("UnregisterEventIDHandler success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

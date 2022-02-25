@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.basic import get_namespaces as get_namespaces_internal
 from accelbyte_py_sdk.api.basic.models import ErrorEntity
 from accelbyte_py_sdk.api.basic.models import NamespaceInfo
@@ -52,10 +54,10 @@ def get_namespaces(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_namespaces_internal(
+    result, error = get_namespaces_internal(
         active_only=active_only,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"getNamespaces failed: {str(error)}")
-    click.echo("getNamespaces success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

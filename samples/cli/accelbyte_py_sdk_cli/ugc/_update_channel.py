@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.ugc import update_channel as update_channel_internal
 from accelbyte_py_sdk.api.ugc.models import ModelsChannelRequest
 from accelbyte_py_sdk.api.ugc.models import ModelsChannelResponse
@@ -65,7 +67,7 @@ def update_channel(
             body = ModelsChannelRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = update_channel_internal(
+    result, error = update_channel_internal(
         body=body,
         channel_id=channel_id,
         user_id=user_id,
@@ -74,4 +76,4 @@ def update_channel(
     )
     if error:
         raise Exception(f"UpdateChannel failed: {str(error)}")
-    click.echo("UpdateChannel success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

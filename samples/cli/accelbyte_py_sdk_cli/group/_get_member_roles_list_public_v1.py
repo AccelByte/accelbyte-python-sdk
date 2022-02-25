@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.group import get_member_roles_list_public_v1 as get_member_roles_list_public_v1_internal
 from accelbyte_py_sdk.api.group.models import ModelsGetMemberRolesListResponseV1
 from accelbyte_py_sdk.api.group.models import ResponseErrorResponse
@@ -56,7 +58,7 @@ def get_member_roles_list_public_v1(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_member_roles_list_public_v1_internal(
+    result, error = get_member_roles_list_public_v1_internal(
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -64,4 +66,4 @@ def get_member_roles_list_public_v1(
     )
     if error:
         raise Exception(f"getMemberRolesListPublicV1 failed: {str(error)}")
-    click.echo("getMemberRolesListPublicV1 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

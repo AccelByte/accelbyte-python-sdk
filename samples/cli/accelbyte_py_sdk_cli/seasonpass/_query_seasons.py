@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.seasonpass import query_seasons as query_seasons_internal
 from accelbyte_py_sdk.api.seasonpass.models import ErrorEntity
 from accelbyte_py_sdk.api.seasonpass.models import ListSeasonInfoPagingSlicedResult
@@ -64,7 +66,7 @@ def query_seasons(
             status = [str(i0) for i0 in status_json]
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'status'. {str(e)}") from e
-    _, error = query_seasons_internal(
+    result, error = query_seasons_internal(
         limit=limit,
         offset=offset,
         status=status,
@@ -73,4 +75,4 @@ def query_seasons(
     )
     if error:
         raise Exception(f"querySeasons failed: {str(error)}")
-    click.echo("querySeasons success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import query_campaigns as query_campaigns_internal
 from accelbyte_py_sdk.api.platform.models import CampaignPagingSlicedResult
 
@@ -59,7 +61,7 @@ def query_campaigns(
         }
     else:
         login_as_internal(login_as)
-    _, error = query_campaigns_internal(
+    result, error = query_campaigns_internal(
         limit=limit,
         name=name,
         offset=offset,
@@ -69,4 +71,4 @@ def query_campaigns(
     )
     if error:
         raise Exception(f"queryCampaigns failed: {str(error)}")
-    click.echo("queryCampaigns success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

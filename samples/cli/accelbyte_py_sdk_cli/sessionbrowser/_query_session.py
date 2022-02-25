@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.sessionbrowser import query_session as query_session_internal
 from accelbyte_py_sdk.api.sessionbrowser.models import ModelsSessionQueryResponse
 from accelbyte_py_sdk.api.sessionbrowser.models import ResponseError
@@ -72,7 +74,7 @@ def query_session(
         }
     else:
         login_as_internal(login_as)
-    _, error = query_session_internal(
+    result, error = query_session_internal(
         session_type=session_type,
         game_mode=game_mode,
         game_version=game_version,
@@ -88,4 +90,4 @@ def query_session(
     )
     if error:
         raise Exception(f"QuerySession failed: {str(error)}")
-    click.echo("QuerySession success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

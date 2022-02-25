@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import admin_get_user_ban_v3 as admin_get_user_ban_v3_internal
 from accelbyte_py_sdk.api.iam.models import ModelGetUserBanV3Response
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
@@ -62,7 +64,7 @@ def admin_get_user_ban_v3(
         }
     else:
         login_as_internal(login_as)
-    _, error = admin_get_user_ban_v3_internal(
+    result, error = admin_get_user_ban_v3_internal(
         user_id=user_id,
         active_only=active_only,
         after=after,
@@ -73,4 +75,4 @@ def admin_get_user_ban_v3(
     )
     if error:
         raise Exception(f"AdminGetUserBanV3 failed: {str(error)}")
-    click.echo("AdminGetUserBanV3 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

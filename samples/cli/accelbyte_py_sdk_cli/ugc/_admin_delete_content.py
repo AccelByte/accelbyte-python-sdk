@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.ugc import admin_delete_content as admin_delete_content_internal
 from accelbyte_py_sdk.api.ugc.models import ResponseError
 
@@ -57,7 +59,7 @@ def admin_delete_content(
         }
     else:
         login_as_internal(login_as)
-    _, error = admin_delete_content_internal(
+    result, error = admin_delete_content_internal(
         channel_id=channel_id,
         content_id=content_id,
         user_id=user_id,
@@ -66,4 +68,4 @@ def admin_delete_content(
     )
     if error:
         raise Exception(f"AdminDeleteContent failed: {str(error)}")
-    click.echo("AdminDeleteContent success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

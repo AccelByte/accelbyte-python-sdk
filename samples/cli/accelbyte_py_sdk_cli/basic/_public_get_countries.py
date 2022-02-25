@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.basic import public_get_countries as public_get_countries_internal
 from accelbyte_py_sdk.api.basic.models import CountryObject
 from accelbyte_py_sdk.api.basic.models import ValidationErrorEntity
@@ -54,11 +56,11 @@ def public_get_countries(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_get_countries_internal(
+    result, error = public_get_countries_internal(
         lang=lang,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"publicGetCountries failed: {str(error)}")
-    click.echo("publicGetCountries success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

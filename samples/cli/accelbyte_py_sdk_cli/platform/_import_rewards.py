@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import import_rewards as import_rewards_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 
@@ -55,7 +57,7 @@ def import_rewards(
         }
     else:
         login_as_internal(login_as)
-    _, error = import_rewards_internal(
+    result, error = import_rewards_internal(
         replace_existing=replace_existing,
         file=file,
         namespace=namespace,
@@ -63,4 +65,4 @@ def import_rewards(
     )
     if error:
         raise Exception(f"importRewards failed: {str(error)}")
-    click.echo("importRewards success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

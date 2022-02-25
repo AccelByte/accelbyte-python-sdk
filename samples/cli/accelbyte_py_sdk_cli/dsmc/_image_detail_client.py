@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.dsmc import image_detail_client as image_detail_client_internal
 from accelbyte_py_sdk.api.dsmc.models import ModelsGetImageDetailResponse
 from accelbyte_py_sdk.api.dsmc.models import ResponseError
@@ -54,11 +56,11 @@ def image_detail_client(
         }
     else:
         login_as_internal(login_as)
-    _, error = image_detail_client_internal(
+    result, error = image_detail_client_internal(
         version=version,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"ImageDetailClient failed: {str(error)}")
-    click.echo("ImageDetailClient success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

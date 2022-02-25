@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.dsmc import delete_image as delete_image_internal
 from accelbyte_py_sdk.api.dsmc.models import ResponseError
 
@@ -55,7 +57,7 @@ def delete_image(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_image_internal(
+    result, error = delete_image_internal(
         image_uri=image_uri,
         version=version,
         namespace=namespace,
@@ -63,4 +65,4 @@ def delete_image(
     )
     if error:
         raise Exception(f"DeleteImage failed: {str(error)}")
-    click.echo("DeleteImage success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

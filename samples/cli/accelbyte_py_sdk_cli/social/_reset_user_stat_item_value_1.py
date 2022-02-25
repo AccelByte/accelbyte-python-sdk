@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.social import reset_user_stat_item_value_1 as reset_user_stat_item_value_1_internal
 from accelbyte_py_sdk.api.social.models import ErrorEntity
 from accelbyte_py_sdk.api.social.models import StatItemIncResult
@@ -56,7 +58,7 @@ def reset_user_stat_item_value_1(
         }
     else:
         login_as_internal(login_as)
-    _, error = reset_user_stat_item_value_1_internal(
+    result, error = reset_user_stat_item_value_1_internal(
         stat_code=stat_code,
         user_id=user_id,
         namespace=namespace,
@@ -64,4 +66,4 @@ def reset_user_stat_item_value_1(
     )
     if error:
         raise Exception(f"resetUserStatItemValue_1 failed: {str(error)}")
-    click.echo("resetUserStatItemValue_1 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import update_wx_pay_config_cert as update_wx_pay_config_cert_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import PaymentMerchantConfigInfo
@@ -54,11 +56,11 @@ def update_wx_pay_config_cert(
         }
     else:
         login_as_internal(login_as)
-    _, error = update_wx_pay_config_cert_internal(
+    result, error = update_wx_pay_config_cert_internal(
         id_=id_,
         file=file,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"updateWxPayConfigCert failed: {str(error)}")
-    click.echo("updateWxPayConfigCert success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.legal import get_user_info_status as get_user_info_status_internal
 from accelbyte_py_sdk.api.legal.models import RetrieveUserInfoCacheStatusResponse
 
@@ -51,10 +53,10 @@ def get_user_info_status(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_user_info_status_internal(
+    result, error = get_user_info_status_internal(
         namespaces=namespaces,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"getUserInfoStatus failed: {str(error)}")
-    click.echo("getUserInfoStatus success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

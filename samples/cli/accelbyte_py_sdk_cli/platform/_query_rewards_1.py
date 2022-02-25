@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import query_rewards_1 as query_rewards_1_internal
 from accelbyte_py_sdk.api.platform.models import RewardPagingSlicedResult
 from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
@@ -60,7 +62,7 @@ def query_rewards_1(
         }
     else:
         login_as_internal(login_as)
-    _, error = query_rewards_1_internal(
+    result, error = query_rewards_1_internal(
         event_topic=event_topic,
         limit=limit,
         offset=offset,
@@ -70,4 +72,4 @@ def query_rewards_1(
     )
     if error:
         raise Exception(f"queryRewards_1 failed: {str(error)}")
-    click.echo("queryRewards_1 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

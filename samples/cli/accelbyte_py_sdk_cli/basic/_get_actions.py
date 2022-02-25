@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.basic import get_actions as get_actions_internal
 from accelbyte_py_sdk.api.basic.models import Action
 from accelbyte_py_sdk.api.basic.models import ErrorEntity
@@ -52,10 +54,10 @@ def get_actions(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_actions_internal(
+    result, error = get_actions_internal(
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"getActions failed: {str(error)}")
-    click.echo("getActions success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

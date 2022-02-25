@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.matchmaking import version_check_handler as version_check_handler_internal
 
 
@@ -48,9 +50,9 @@ def version_check_handler(
         }
     else:
         login_as_internal(login_as)
-    _, error = version_check_handler_internal(
+    result, error = version_check_handler_internal(
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"versionCheckHandler failed: {str(error)}")
-    click.echo("versionCheckHandler success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

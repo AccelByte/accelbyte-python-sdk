@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.social import public_query_user_stat_items as public_query_user_stat_items_internal
 from accelbyte_py_sdk.api.social.models import UserStatItemPagingSlicedResult
 
@@ -61,7 +63,7 @@ def public_query_user_stat_items(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_query_user_stat_items_internal(
+    result, error = public_query_user_stat_items_internal(
         user_id=user_id,
         limit=limit,
         offset=offset,
@@ -72,4 +74,4 @@ def public_query_user_stat_items(
     )
     if error:
         raise Exception(f"publicQueryUserStatItems failed: {str(error)}")
-    click.echo("publicQueryUserStatItems success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

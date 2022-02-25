@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import authorize_v3 as authorize_v3_internal
 
 
@@ -64,7 +66,7 @@ def authorize_v3(
         }
     else:
         login_as_internal(login_as)
-    _, error = authorize_v3_internal(
+    result, error = authorize_v3_internal(
         client_id=client_id,
         response_type=response_type,
         code_challenge=code_challenge,
@@ -77,4 +79,4 @@ def authorize_v3(
     )
     if error:
         raise Exception(f"AuthorizeV3 failed: {str(error)}")
-    click.echo("AuthorizeV3 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import admin_get_bans_type_with_namespace_v3 as admin_get_bans_type_with_namespace_v3_internal
 from accelbyte_py_sdk.api.iam.models import AccountcommonBansV3
 from accelbyte_py_sdk.api.iam.models import RestapiErrorResponse
@@ -52,10 +54,10 @@ def admin_get_bans_type_with_namespace_v3(
         }
     else:
         login_as_internal(login_as)
-    _, error = admin_get_bans_type_with_namespace_v3_internal(
+    result, error = admin_get_bans_type_with_namespace_v3_internal(
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"AdminGetBansTypeWithNamespaceV3 failed: {str(error)}")
-    click.echo("AdminGetBansTypeWithNamespaceV3 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

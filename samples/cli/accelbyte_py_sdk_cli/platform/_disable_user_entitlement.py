@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import disable_user_entitlement as disable_user_entitlement_internal
 from accelbyte_py_sdk.api.platform.models import EntitlementInfo
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
@@ -56,7 +58,7 @@ def disable_user_entitlement(
         }
     else:
         login_as_internal(login_as)
-    _, error = disable_user_entitlement_internal(
+    result, error = disable_user_entitlement_internal(
         entitlement_id=entitlement_id,
         user_id=user_id,
         namespace=namespace,
@@ -64,4 +66,4 @@ def disable_user_entitlement(
     )
     if error:
         raise Exception(f"disableUserEntitlement failed: {str(error)}")
-    click.echo("disableUserEntitlement success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

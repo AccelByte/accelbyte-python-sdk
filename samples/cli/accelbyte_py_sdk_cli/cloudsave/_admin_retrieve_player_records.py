@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.cloudsave import admin_retrieve_player_records as admin_retrieve_player_records_internal
 from accelbyte_py_sdk.api.cloudsave.models import ModelsListPlayerRecordKeys
 from accelbyte_py_sdk.api.cloudsave.models import ModelsResponseError
@@ -58,7 +60,7 @@ def admin_retrieve_player_records(
         }
     else:
         login_as_internal(login_as)
-    _, error = admin_retrieve_player_records_internal(
+    result, error = admin_retrieve_player_records_internal(
         user_id=user_id,
         limit=limit,
         offset=offset,
@@ -67,4 +69,4 @@ def admin_retrieve_player_records(
     )
     if error:
         raise Exception(f"AdminRetrievePlayerRecords failed: {str(error)}")
-    click.echo("AdminRetrievePlayerRecords success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

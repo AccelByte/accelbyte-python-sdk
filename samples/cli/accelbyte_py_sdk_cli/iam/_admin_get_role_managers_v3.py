@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import admin_get_role_managers_v3 as admin_get_role_managers_v3_internal
 from accelbyte_py_sdk.api.iam.models import ModelRoleManagersResponsesV3
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
@@ -58,7 +60,7 @@ def admin_get_role_managers_v3(
         }
     else:
         login_as_internal(login_as)
-    _, error = admin_get_role_managers_v3_internal(
+    result, error = admin_get_role_managers_v3_internal(
         role_id=role_id,
         after=after,
         before=before,
@@ -67,4 +69,4 @@ def admin_get_role_managers_v3(
     )
     if error:
         raise Exception(f"AdminGetRoleManagersV3 failed: {str(error)}")
-    click.echo("AdminGetRoleManagersV3 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import export_store as export_store_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 
@@ -53,11 +55,11 @@ def export_store(
         }
     else:
         login_as_internal(login_as)
-    _, error = export_store_internal(
+    result, error = export_store_internal(
         store_id=store_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"exportStore failed: {str(error)}")
-    click.echo("exportStore success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

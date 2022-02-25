@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.sessionbrowser import join_session as join_session_internal
 from accelbyte_py_sdk.api.sessionbrowser.models import ModelsJoinGameSessionRequest
 from accelbyte_py_sdk.api.sessionbrowser.models import ModelsSessionResponse
@@ -63,7 +65,7 @@ def join_session(
             body = ModelsJoinGameSessionRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = join_session_internal(
+    result, error = join_session_internal(
         body=body,
         session_id=session_id,
         namespace=namespace,
@@ -71,4 +73,4 @@ def join_session(
     )
     if error:
         raise Exception(f"JoinSession failed: {str(error)}")
-    click.echo("JoinSession success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

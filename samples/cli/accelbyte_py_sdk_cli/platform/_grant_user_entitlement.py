@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import grant_user_entitlement as grant_user_entitlement_internal
 from accelbyte_py_sdk.api.platform.models import EntitlementGrant
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
@@ -64,7 +66,7 @@ def grant_user_entitlement(
             body = [EntitlementGrant.create_from_dict(i0) for i0 in body_json]
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = grant_user_entitlement_internal(
+    result, error = grant_user_entitlement_internal(
         user_id=user_id,
         body=body,
         namespace=namespace,
@@ -72,4 +74,4 @@ def grant_user_entitlement(
     )
     if error:
         raise Exception(f"grantUserEntitlement failed: {str(error)}")
-    click.echo("grantUserEntitlement success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

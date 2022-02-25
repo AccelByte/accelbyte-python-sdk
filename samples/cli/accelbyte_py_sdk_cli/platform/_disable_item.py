@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import disable_item as disable_item_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import FullItemInfo
@@ -56,7 +58,7 @@ def disable_item(
         }
     else:
         login_as_internal(login_as)
-    _, error = disable_item_internal(
+    result, error = disable_item_internal(
         item_id=item_id,
         store_id=store_id,
         namespace=namespace,
@@ -64,4 +66,4 @@ def disable_item(
     )
     if error:
         raise Exception(f"disableItem failed: {str(error)}")
-    click.echo("disableItem success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

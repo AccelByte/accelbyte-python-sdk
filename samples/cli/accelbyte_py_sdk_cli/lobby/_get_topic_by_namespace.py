@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import get_topic_by_namespace as get_topic_by_namespace_internal
 from accelbyte_py_sdk.api.lobby.models import ModelTopicByNamespacesResponse
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
@@ -58,7 +60,7 @@ def get_topic_by_namespace(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_topic_by_namespace_internal(
+    result, error = get_topic_by_namespace_internal(
         after=after,
         before=before,
         limit=limit,
@@ -67,4 +69,4 @@ def get_topic_by_namespace(
     )
     if error:
         raise Exception(f"getTopicByNamespace failed: {str(error)}")
-    click.echo("getTopicByNamespace success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

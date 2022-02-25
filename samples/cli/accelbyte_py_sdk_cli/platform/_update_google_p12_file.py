@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import update_google_p12_file as update_google_p12_file_internal
 from accelbyte_py_sdk.api.platform.models import GoogleIAPConfigInfo
 
@@ -53,11 +55,11 @@ def update_google_p12_file(
         }
     else:
         login_as_internal(login_as)
-    _, error = update_google_p12_file_internal(
+    result, error = update_google_p12_file_internal(
         file=file,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"updateGoogleP12File failed: {str(error)}")
-    click.echo("updateGoogleP12File success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

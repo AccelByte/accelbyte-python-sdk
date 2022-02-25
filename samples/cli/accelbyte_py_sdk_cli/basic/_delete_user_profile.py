@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.basic import delete_user_profile as delete_user_profile_internal
 from accelbyte_py_sdk.api.basic.models import ErrorEntity
 from accelbyte_py_sdk.api.basic.models import UserProfilePrivateInfo
@@ -55,11 +57,11 @@ def delete_user_profile(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_user_profile_internal(
+    result, error = delete_user_profile_internal(
         user_id=user_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"deleteUserProfile failed: {str(error)}")
-    click.echo("deleteUserProfile success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

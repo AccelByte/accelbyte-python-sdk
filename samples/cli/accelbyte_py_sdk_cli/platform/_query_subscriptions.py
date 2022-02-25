@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import query_subscriptions as query_subscriptions_internal
 from accelbyte_py_sdk.api.platform.models import SubscriptionPagingSlicedResult
 
@@ -67,7 +69,7 @@ def query_subscriptions(
         }
     else:
         login_as_internal(login_as)
-    _, error = query_subscriptions_internal(
+    result, error = query_subscriptions_internal(
         charge_status=charge_status,
         item_id=item_id,
         limit=limit,
@@ -81,4 +83,4 @@ def query_subscriptions(
     )
     if error:
         raise Exception(f"querySubscriptions failed: {str(error)}")
-    click.echo("querySubscriptions success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

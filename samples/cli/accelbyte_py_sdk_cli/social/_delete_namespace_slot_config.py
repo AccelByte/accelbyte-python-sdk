@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.social import delete_namespace_slot_config as delete_namespace_slot_config_internal
 
 
@@ -50,10 +52,10 @@ def delete_namespace_slot_config(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_namespace_slot_config_internal(
+    result, error = delete_namespace_slot_config_internal(
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"deleteNamespaceSlotConfig failed: {str(error)}")
-    click.echo("deleteNamespaceSlotConfig success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

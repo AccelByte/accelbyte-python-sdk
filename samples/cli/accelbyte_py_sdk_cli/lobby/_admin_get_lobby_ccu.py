@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import admin_get_lobby_ccu as admin_get_lobby_ccu_internal
 from accelbyte_py_sdk.api.lobby.models import ModelsGetLobbyCcuResponse
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
@@ -52,10 +54,10 @@ def admin_get_lobby_ccu(
         }
     else:
         login_as_internal(login_as)
-    _, error = admin_get_lobby_ccu_internal(
+    result, error = admin_get_lobby_ccu_internal(
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"adminGetLobbyCCU failed: {str(error)}")
-    click.echo("adminGetLobbyCCU success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

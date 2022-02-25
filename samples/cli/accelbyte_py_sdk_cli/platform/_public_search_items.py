@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import public_search_items as public_search_items_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import ItemPagingSlicedResult
@@ -64,7 +66,7 @@ def public_search_items(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_search_items_internal(
+    result, error = public_search_items_internal(
         keyword=keyword,
         language=language,
         limit=limit,
@@ -76,4 +78,4 @@ def public_search_items(
     )
     if error:
         raise Exception(f"publicSearchItems failed: {str(error)}")
-    click.echo("publicSearchItems success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

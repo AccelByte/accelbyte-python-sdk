@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import public_web_link_platform_establish as public_web_link_platform_establish_internal
 
 
@@ -54,7 +56,7 @@ def public_web_link_platform_establish(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_web_link_platform_establish_internal(
+    result, error = public_web_link_platform_establish_internal(
         platform_id=platform_id,
         state=state,
         namespace=namespace,
@@ -62,4 +64,4 @@ def public_web_link_platform_establish(
     )
     if error:
         raise Exception(f"PublicWebLinkPlatformEstablish failed: {str(error)}")
-    click.echo("PublicWebLinkPlatformEstablish success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

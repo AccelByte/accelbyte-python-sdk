@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import get_user_login_histories as get_user_login_histories_internal
 from accelbyte_py_sdk.api.iam.models import ModelLoginHistoriesResponse
 
@@ -59,7 +61,7 @@ def get_user_login_histories(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_user_login_histories_internal(
+    result, error = get_user_login_histories_internal(
         user_id=user_id,
         after=after,
         before=before,
@@ -69,4 +71,4 @@ def get_user_login_histories(
     )
     if error:
         raise Exception(f"GetUserLoginHistories failed: {str(error)}")
-    click.echo("GetUserLoginHistories success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import check_wallet as check_wallet_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
@@ -56,7 +58,7 @@ def check_wallet(
         }
     else:
         login_as_internal(login_as)
-    _, error = check_wallet_internal(
+    result, error = check_wallet_internal(
         currency_code=currency_code,
         user_id=user_id,
         namespace=namespace,
@@ -64,4 +66,4 @@ def check_wallet(
     )
     if error:
         raise Exception(f"checkWallet failed: {str(error)}")
-    click.echo("checkWallet success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

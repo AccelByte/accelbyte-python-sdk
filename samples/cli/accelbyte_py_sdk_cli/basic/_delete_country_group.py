@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.basic import delete_country_group as delete_country_group_internal
 from accelbyte_py_sdk.api.basic.models import ErrorEntity
 from accelbyte_py_sdk.api.basic.models import ValidationErrorEntity
@@ -54,11 +56,11 @@ def delete_country_group(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_country_group_internal(
+    result, error = delete_country_group_internal(
         country_group_code=country_group_code,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"deleteCountryGroup failed: {str(error)}")
-    click.echo("deleteCountryGroup success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

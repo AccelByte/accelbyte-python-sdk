@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import admin_search_users_v2 as admin_search_users_v2_internal
 from accelbyte_py_sdk.api.iam.models import ModelSearchUsersByPlatformIDResponse
 
@@ -69,7 +71,7 @@ def admin_search_users_v2(
         }
     else:
         login_as_internal(login_as)
-    _, error = admin_search_users_v2_internal(
+    result, error = admin_search_users_v2_internal(
         platform_id=platform_id,
         after=after,
         before=before,
@@ -84,4 +86,4 @@ def admin_search_users_v2(
     )
     if error:
         raise Exception(f"AdminSearchUsersV2 failed: {str(error)}")
-    click.echo("AdminSearchUsersV2 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

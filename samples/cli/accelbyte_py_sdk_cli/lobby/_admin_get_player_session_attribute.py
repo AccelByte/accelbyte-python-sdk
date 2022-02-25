@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import admin_get_player_session_attribute as admin_get_player_session_attribute_internal
 from accelbyte_py_sdk.api.lobby.models import ModelsGetPlayerSessionAttributeResponse
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
@@ -56,7 +58,7 @@ def admin_get_player_session_attribute(
         }
     else:
         login_as_internal(login_as)
-    _, error = admin_get_player_session_attribute_internal(
+    result, error = admin_get_player_session_attribute_internal(
         attribute=attribute,
         user_id=user_id,
         namespace=namespace,
@@ -64,4 +66,4 @@ def admin_get_player_session_attribute(
     )
     if error:
         raise Exception(f"adminGetPlayerSessionAttribute failed: {str(error)}")
-    click.echo("adminGetPlayerSessionAttribute success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

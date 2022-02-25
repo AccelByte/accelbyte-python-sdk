@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.social import bulk_fetch_stat_items_1 as bulk_fetch_stat_items_1_internal
 from accelbyte_py_sdk.api.social.models import UserStatItemInfo
 from accelbyte_py_sdk.api.social.models import ValidationErrorEntity
@@ -56,7 +58,7 @@ def bulk_fetch_stat_items_1(
         }
     else:
         login_as_internal(login_as)
-    _, error = bulk_fetch_stat_items_1_internal(
+    result, error = bulk_fetch_stat_items_1_internal(
         stat_code=stat_code,
         user_ids=user_ids,
         namespace=namespace,
@@ -64,4 +66,4 @@ def bulk_fetch_stat_items_1(
     )
     if error:
         raise Exception(f"bulkFetchStatItems_1 failed: {str(error)}")
-    click.echo("bulkFetchStatItems_1 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

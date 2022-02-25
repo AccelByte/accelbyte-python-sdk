@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import get_locale_item_by_sku as get_locale_item_by_sku_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import PopulatedItemInfo
@@ -64,7 +66,7 @@ def get_locale_item_by_sku(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_locale_item_by_sku_internal(
+    result, error = get_locale_item_by_sku_internal(
         sku=sku,
         active_only=active_only,
         language=language,
@@ -76,4 +78,4 @@ def get_locale_item_by_sku(
     )
     if error:
         raise Exception(f"getLocaleItemBySku failed: {str(error)}")
-    click.echo("getLocaleItemBySku success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

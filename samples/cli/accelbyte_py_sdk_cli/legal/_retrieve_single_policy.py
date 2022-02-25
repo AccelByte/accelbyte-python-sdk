@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.legal import retrieve_single_policy as retrieve_single_policy_internal
 from accelbyte_py_sdk.api.legal.models import ErrorEntity
 from accelbyte_py_sdk.api.legal.models import RetrieveBasePolicyResponse
@@ -52,10 +54,10 @@ def retrieve_single_policy(
         }
     else:
         login_as_internal(login_as)
-    _, error = retrieve_single_policy_internal(
+    result, error = retrieve_single_policy_internal(
         base_policy_id=base_policy_id,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"retrieveSinglePolicy failed: {str(error)}")
-    click.echo("retrieveSinglePolicy success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.group import delete_member_role_admin_v1 as delete_member_role_admin_v1_internal
 from accelbyte_py_sdk.api.group.models import ResponseErrorResponse
 
@@ -53,11 +55,11 @@ def delete_member_role_admin_v1(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_member_role_admin_v1_internal(
+    result, error = delete_member_role_admin_v1_internal(
         member_role_id=member_role_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"deleteMemberRoleAdminV1 failed: {str(error)}")
-    click.echo("deleteMemberRoleAdminV1 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

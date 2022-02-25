@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.seasonpass import query_rewards as query_rewards_internal
 from accelbyte_py_sdk.api.seasonpass.models import ErrorEntity
 from accelbyte_py_sdk.api.seasonpass.models import RewardInfo
@@ -56,7 +58,7 @@ def query_rewards(
         }
     else:
         login_as_internal(login_as)
-    _, error = query_rewards_internal(
+    result, error = query_rewards_internal(
         season_id=season_id,
         q=q,
         namespace=namespace,
@@ -64,4 +66,4 @@ def query_rewards(
     )
     if error:
         raise Exception(f"queryRewards failed: {str(error)}")
-    click.echo("queryRewards success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

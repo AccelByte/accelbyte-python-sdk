@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.matchmaking import public_get_single_matchmaking_channel as public_get_single_matchmaking_channel_internal
 from accelbyte_py_sdk.api.matchmaking.models import ModelsChannelV1
 from accelbyte_py_sdk.api.matchmaking.models import ResponseErrorV1
@@ -54,11 +56,11 @@ def public_get_single_matchmaking_channel(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_get_single_matchmaking_channel_internal(
+    result, error = public_get_single_matchmaking_channel_internal(
         channel_name=channel_name,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"PublicGetSingleMatchmakingChannel failed: {str(error)}")
-    click.echo("PublicGetSingleMatchmakingChannel success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

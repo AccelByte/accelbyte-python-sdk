@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.matchmaking import get_all_channels_handler as get_all_channels_handler_internal
 from accelbyte_py_sdk.api.matchmaking.models import ModelsGetChannelsResponse
 from accelbyte_py_sdk.api.matchmaking.models import ResponseError
@@ -56,7 +58,7 @@ def get_all_channels_handler(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_all_channels_handler_internal(
+    result, error = get_all_channels_handler_internal(
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -64,4 +66,4 @@ def get_all_channels_handler(
     )
     if error:
         raise Exception(f"GetAllChannelsHandler failed: {str(error)}")
-    click.echo("GetAllChannelsHandler success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

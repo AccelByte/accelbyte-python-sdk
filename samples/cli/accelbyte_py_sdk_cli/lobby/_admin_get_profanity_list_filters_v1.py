@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import admin_get_profanity_list_filters_v1 as admin_get_profanity_list_filters_v1_internal
 from accelbyte_py_sdk.api.lobby.models import ModelsAdminGetProfanityListFiltersV1Response
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
@@ -54,11 +56,11 @@ def admin_get_profanity_list_filters_v1(
         }
     else:
         login_as_internal(login_as)
-    _, error = admin_get_profanity_list_filters_v1_internal(
+    result, error = admin_get_profanity_list_filters_v1_internal(
         list_=list_,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"adminGetProfanityListFiltersV1 failed: {str(error)}")
-    click.echo("adminGetProfanityListFiltersV1 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

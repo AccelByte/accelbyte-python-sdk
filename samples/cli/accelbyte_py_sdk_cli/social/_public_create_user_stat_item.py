@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.social import public_create_user_stat_item as public_create_user_stat_item_internal
 from accelbyte_py_sdk.api.social.models import ErrorEntity
 
@@ -55,7 +57,7 @@ def public_create_user_stat_item(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_create_user_stat_item_internal(
+    result, error = public_create_user_stat_item_internal(
         stat_code=stat_code,
         user_id=user_id,
         namespace=namespace,
@@ -63,4 +65,4 @@ def public_create_user_stat_item(
     )
     if error:
         raise Exception(f"publicCreateUserStatItem failed: {str(error)}")
-    click.echo("publicCreateUserStatItem success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

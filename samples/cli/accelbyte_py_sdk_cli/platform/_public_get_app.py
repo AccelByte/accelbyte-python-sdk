@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import public_get_app as public_get_app_internal
 from accelbyte_py_sdk.api.platform.models import AppInfo
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
@@ -60,7 +62,7 @@ def public_get_app(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_get_app_internal(
+    result, error = public_get_app_internal(
         item_id=item_id,
         language=language,
         region=region,
@@ -70,4 +72,4 @@ def public_get_app(
     )
     if error:
         raise Exception(f"publicGetApp failed: {str(error)}")
-    click.echo("publicGetApp success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

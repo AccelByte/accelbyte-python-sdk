@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.seasonpass import delete_reward as delete_reward_internal
 from accelbyte_py_sdk.api.seasonpass.models import ErrorEntity
 
@@ -55,7 +57,7 @@ def delete_reward(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_reward_internal(
+    result, error = delete_reward_internal(
         code=code,
         season_id=season_id,
         namespace=namespace,
@@ -63,4 +65,4 @@ def delete_reward(
     )
     if error:
         raise Exception(f"deleteReward failed: {str(error)}")
-    click.echo("deleteReward success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

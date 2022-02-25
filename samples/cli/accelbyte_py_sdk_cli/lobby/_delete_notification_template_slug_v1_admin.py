@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import delete_notification_template_slug_v1_admin as delete_notification_template_slug_v1_admin_internal
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseV1
 
@@ -53,11 +55,11 @@ def delete_notification_template_slug_v1_admin(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_notification_template_slug_v1_admin_internal(
+    result, error = delete_notification_template_slug_v1_admin_internal(
         template_slug=template_slug,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"deleteNotificationTemplateSlugV1Admin failed: {str(error)}")
-    click.echo("deleteNotificationTemplateSlugV1Admin success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

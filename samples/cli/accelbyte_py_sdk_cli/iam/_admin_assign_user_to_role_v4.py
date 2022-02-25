@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import admin_assign_user_to_role_v4 as admin_assign_user_to_role_v4_internal
 from accelbyte_py_sdk.api.iam.models import ModelAssignUserV4Request
 from accelbyte_py_sdk.api.iam.models import ModelAssignedUserV4Response
@@ -61,11 +63,11 @@ def admin_assign_user_to_role_v4(
             body = ModelAssignUserV4Request.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = admin_assign_user_to_role_v4_internal(
+    result, error = admin_assign_user_to_role_v4_internal(
         body=body,
         role_id=role_id,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"AdminAssignUserToRoleV4 failed: {str(error)}")
-    click.echo("AdminAssignUserToRoleV4 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

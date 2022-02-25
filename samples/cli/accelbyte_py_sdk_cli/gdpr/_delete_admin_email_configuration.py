@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.gdpr import delete_admin_email_configuration as delete_admin_email_configuration_internal
 from accelbyte_py_sdk.api.gdpr.models import ResponseError
 
@@ -59,11 +61,11 @@ def delete_admin_email_configuration(
             emails = [str(i0) for i0 in emails_json]
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'emails'. {str(e)}") from e
-    _, error = delete_admin_email_configuration_internal(
+    result, error = delete_admin_email_configuration_internal(
         emails=emails,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"DeleteAdminEmailConfiguration failed: {str(error)}")
-    click.echo("DeleteAdminEmailConfiguration success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import admin_add_profanity_filters as admin_add_profanity_filters_internal
 from accelbyte_py_sdk.api.lobby.models import ModelsAdminAddProfanityFiltersRequest
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
@@ -62,7 +64,7 @@ def admin_add_profanity_filters(
             body = ModelsAdminAddProfanityFiltersRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = admin_add_profanity_filters_internal(
+    result, error = admin_add_profanity_filters_internal(
         body=body,
         list_=list_,
         namespace=namespace,
@@ -70,4 +72,4 @@ def admin_add_profanity_filters(
     )
     if error:
         raise Exception(f"adminAddProfanityFilters failed: {str(error)}")
-    click.echo("adminAddProfanityFilters success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

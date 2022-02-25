@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import public_platform_link_v2 as public_platform_link_v2_internal
 
 
@@ -56,7 +58,7 @@ def public_platform_link_v2(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_platform_link_v2_internal(
+    result, error = public_platform_link_v2_internal(
         ticket=ticket,
         platform_id=platform_id,
         user_id=user_id,
@@ -65,4 +67,4 @@ def public_platform_link_v2(
     )
     if error:
         raise Exception(f"PublicPlatformLinkV2 failed: {str(error)}")
-    click.echo("PublicPlatformLinkV2 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

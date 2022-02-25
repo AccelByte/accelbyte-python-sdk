@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.social import import_stats as import_stats_internal
 from accelbyte_py_sdk.api.social.models import ErrorEntity
 from accelbyte_py_sdk.api.social.models import StatImportInfo
@@ -56,7 +58,7 @@ def import_stats(
         }
     else:
         login_as_internal(login_as)
-    _, error = import_stats_internal(
+    result, error = import_stats_internal(
         file=file,
         replace_existing=replace_existing,
         namespace=namespace,
@@ -64,4 +66,4 @@ def import_stats(
     )
     if error:
         raise Exception(f"importStats failed: {str(error)}")
-    click.echo("importStats success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

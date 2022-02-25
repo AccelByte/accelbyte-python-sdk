@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import query_all_user_iap_orders as query_all_user_iap_orders_internal
 from accelbyte_py_sdk.api.platform.models import IAPOrderPagingSlicedResult
 
@@ -53,11 +55,11 @@ def query_all_user_iap_orders(
         }
     else:
         login_as_internal(login_as)
-    _, error = query_all_user_iap_orders_internal(
+    result, error = query_all_user_iap_orders_internal(
         user_id=user_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"queryAllUserIAPOrders failed: {str(error)}")
-    click.echo("queryAllUserIAPOrders success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

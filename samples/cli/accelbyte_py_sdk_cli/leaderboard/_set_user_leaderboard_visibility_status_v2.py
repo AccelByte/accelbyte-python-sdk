@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.leaderboard import set_user_leaderboard_visibility_status_v2 as set_user_leaderboard_visibility_status_v2_internal
 from accelbyte_py_sdk.api.leaderboard.models import ModelsGetUserVisibilityResponse
 from accelbyte_py_sdk.api.leaderboard.models import ModelsSetUserVisibilityRequest
@@ -65,7 +67,7 @@ def set_user_leaderboard_visibility_status_v2(
             body = ModelsSetUserVisibilityRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = set_user_leaderboard_visibility_status_v2_internal(
+    result, error = set_user_leaderboard_visibility_status_v2_internal(
         body=body,
         leaderboard_code=leaderboard_code,
         user_id=user_id,
@@ -74,4 +76,4 @@ def set_user_leaderboard_visibility_status_v2(
     )
     if error:
         raise Exception(f"SetUserLeaderboardVisibilityStatusV2 failed: {str(error)}")
-    click.echo("SetUserLeaderboardVisibilityStatusV2 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

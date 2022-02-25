@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import auth_code_request_v3 as auth_code_request_v3_internal
 
 
@@ -56,7 +58,7 @@ def auth_code_request_v3(
         }
     else:
         login_as_internal(login_as)
-    _, error = auth_code_request_v3_internal(
+    result, error = auth_code_request_v3_internal(
         platform_id=platform_id,
         request_id=request_id,
         client_id=client_id,
@@ -65,4 +67,4 @@ def auth_code_request_v3(
     )
     if error:
         raise Exception(f"AuthCodeRequestV3 failed: {str(error)}")
-    click.echo("AuthCodeRequestV3 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

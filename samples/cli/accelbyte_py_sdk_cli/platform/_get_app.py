@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import get_app as get_app_internal
 from accelbyte_py_sdk.api.platform.models import FullAppInfo
 
@@ -57,7 +59,7 @@ def get_app(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_app_internal(
+    result, error = get_app_internal(
         item_id=item_id,
         active_only=active_only,
         store_id=store_id,
@@ -66,4 +68,4 @@ def get_app(
     )
     if error:
         raise Exception(f"getApp failed: {str(error)}")
-    click.echo("getApp success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

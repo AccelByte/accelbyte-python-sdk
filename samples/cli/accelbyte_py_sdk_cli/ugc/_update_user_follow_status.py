@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.ugc import update_user_follow_status as update_user_follow_status_internal
 from accelbyte_py_sdk.api.ugc.models import ModelsUserFollowRequest
 from accelbyte_py_sdk.api.ugc.models import ModelsUserFollowResponse
@@ -63,7 +65,7 @@ def update_user_follow_status(
             body = ModelsUserFollowRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = update_user_follow_status_internal(
+    result, error = update_user_follow_status_internal(
         body=body,
         user_id=user_id,
         namespace=namespace,
@@ -71,4 +73,4 @@ def update_user_follow_status(
     )
     if error:
         raise Exception(f"UpdateUserFollowStatus failed: {str(error)}")
-    click.echo("UpdateUserFollowStatus success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

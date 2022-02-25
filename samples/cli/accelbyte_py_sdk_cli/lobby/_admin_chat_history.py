@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import admin_chat_history as admin_chat_history_internal
 from accelbyte_py_sdk.api.lobby.models import ModelChatMessageResponse
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
@@ -56,7 +58,7 @@ def admin_chat_history(
         }
     else:
         login_as_internal(login_as)
-    _, error = admin_chat_history_internal(
+    result, error = admin_chat_history_internal(
         friend_id=friend_id,
         user_id=user_id,
         namespace=namespace,
@@ -64,4 +66,4 @@ def admin_chat_history(
     )
     if error:
         raise Exception(f"adminChatHistory failed: {str(error)}")
-    click.echo("adminChatHistory success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

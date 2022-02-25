@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import retrieve_third_party_login_platform_credential_v3 as retrieve_third_party_login_platform_credential_v3_internal
 from accelbyte_py_sdk.api.iam.models import ModelThirdPartyLoginPlatformCredentialResponse
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
@@ -54,11 +56,11 @@ def retrieve_third_party_login_platform_credential_v3(
         }
     else:
         login_as_internal(login_as)
-    _, error = retrieve_third_party_login_platform_credential_v3_internal(
+    result, error = retrieve_third_party_login_platform_credential_v3_internal(
         platform_id=platform_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"RetrieveThirdPartyLoginPlatformCredentialV3 failed: {str(error)}")
-    click.echo("RetrieveThirdPartyLoginPlatformCredentialV3 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

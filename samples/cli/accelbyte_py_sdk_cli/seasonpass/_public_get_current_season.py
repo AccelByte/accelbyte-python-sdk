@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.seasonpass import public_get_current_season as public_get_current_season_internal
 from accelbyte_py_sdk.api.seasonpass.models import ErrorEntity
 from accelbyte_py_sdk.api.seasonpass.models import LocalizedSeasonInfo
@@ -54,11 +56,11 @@ def public_get_current_season(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_get_current_season_internal(
+    result, error = public_get_current_season_internal(
         language=language,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"publicGetCurrentSeason failed: {str(error)}")
-    click.echo("publicGetCurrentSeason success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

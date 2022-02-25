@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import public_validate_user_by_user_id_and_password_v3 as public_validate_user_by_user_id_and_password_v3_internal
 
 
@@ -54,7 +56,7 @@ def public_validate_user_by_user_id_and_password_v3(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_validate_user_by_user_id_and_password_v3_internal(
+    result, error = public_validate_user_by_user_id_and_password_v3_internal(
         password=password,
         user_id=user_id,
         namespace=namespace,
@@ -62,4 +64,4 @@ def public_validate_user_by_user_id_and_password_v3(
     )
     if error:
         raise Exception(f"PublicValidateUserByUserIDAndPasswordV3 failed: {str(error)}")
-    click.echo("PublicValidateUserByUserIDAndPasswordV3 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

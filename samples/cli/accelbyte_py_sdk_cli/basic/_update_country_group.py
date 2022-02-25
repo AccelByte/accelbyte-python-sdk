@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.basic import update_country_group as update_country_group_internal
 from accelbyte_py_sdk.api.basic.models import CountryGroupObject
 from accelbyte_py_sdk.api.basic.models import ErrorEntity
@@ -64,7 +66,7 @@ def update_country_group(
             body = UpdateCountryGroupRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = update_country_group_internal(
+    result, error = update_country_group_internal(
         country_group_code=country_group_code,
         body=body,
         namespace=namespace,
@@ -72,4 +74,4 @@ def update_country_group(
     )
     if error:
         raise Exception(f"updateCountryGroup failed: {str(error)}")
-    click.echo("updateCountryGroup success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import token_grant as token_grant_internal
 from accelbyte_py_sdk.api.iam.models import OauthmodelErrorResponse
 from accelbyte_py_sdk.api.iam.models import OauthmodelTokenResponse
@@ -68,7 +70,7 @@ def token_grant(
         }
     else:
         login_as_internal(login_as)
-    _, error = token_grant_internal(
+    result, error = token_grant_internal(
         grant_type=grant_type,
         device_id=device_id,
         code=code,
@@ -82,4 +84,4 @@ def token_grant(
     )
     if error:
         raise Exception(f"TokenGrant failed: {str(error)}")
-    click.echo("TokenGrant success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

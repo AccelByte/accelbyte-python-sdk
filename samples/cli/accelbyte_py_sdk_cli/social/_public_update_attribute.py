@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.social import public_update_attribute as public_update_attribute_internal
 from accelbyte_py_sdk.api.social.models import Attribute
 from accelbyte_py_sdk.api.social.models import ErrorEntity
@@ -67,7 +69,7 @@ def public_update_attribute(
             body = Attribute.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = public_update_attribute_internal(
+    result, error = public_update_attribute_internal(
         attribute_name=attribute_name,
         profile_id=profile_id,
         user_id=user_id,
@@ -77,4 +79,4 @@ def public_update_attribute(
     )
     if error:
         raise Exception(f"publicUpdateAttribute failed: {str(error)}")
-    click.echo("publicUpdateAttribute success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

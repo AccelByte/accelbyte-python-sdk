@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.basic import update_private_custom_attributes_partially as update_private_custom_attributes_partially_internal
 from accelbyte_py_sdk.api.basic.models import ErrorEntity
 from accelbyte_py_sdk.api.basic.models import ValidationErrorEntity
@@ -62,7 +64,7 @@ def update_private_custom_attributes_partially(
             body = {k: v for k, v in body_json.items()}
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = update_private_custom_attributes_partially_internal(
+    result, error = update_private_custom_attributes_partially_internal(
         user_id=user_id,
         body=body,
         namespace=namespace,
@@ -70,4 +72,4 @@ def update_private_custom_attributes_partially(
     )
     if error:
         raise Exception(f"updatePrivateCustomAttributesPartially failed: {str(error)}")
-    click.echo("updatePrivateCustomAttributesPartially success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

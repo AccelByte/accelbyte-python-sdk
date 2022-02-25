@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import enable_code as enable_code_internal
 from accelbyte_py_sdk.api.platform.models import CodeInfo
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
@@ -54,11 +56,11 @@ def enable_code(
         }
     else:
         login_as_internal(login_as)
-    _, error = enable_code_internal(
+    result, error = enable_code_internal(
         code=code,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"enableCode failed: {str(error)}")
-    click.echo("enableCode success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import create_category as create_category_internal
 from accelbyte_py_sdk.api.platform.models import CategoryCreate
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
@@ -64,7 +66,7 @@ def create_category(
             body = CategoryCreate.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = create_category_internal(
+    result, error = create_category_internal(
         store_id=store_id,
         body=body,
         namespace=namespace,
@@ -72,4 +74,4 @@ def create_category(
     )
     if error:
         raise Exception(f"createCategory failed: {str(error)}")
-    click.echo("createCategory success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

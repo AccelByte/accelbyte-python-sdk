@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.achievement import public_get_achievement as public_get_achievement_internal
 from accelbyte_py_sdk.api.achievement.models import ModelsPublicAchievementResponse
 from accelbyte_py_sdk.api.achievement.models import ResponseError
@@ -56,7 +58,7 @@ def public_get_achievement(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_get_achievement_internal(
+    result, error = public_get_achievement_internal(
         achievement_code=achievement_code,
         language=language,
         namespace=namespace,
@@ -64,4 +66,4 @@ def public_get_achievement(
     )
     if error:
         raise Exception(f"PublicGetAchievement failed: {str(error)}")
-    click.echo("PublicGetAchievement success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

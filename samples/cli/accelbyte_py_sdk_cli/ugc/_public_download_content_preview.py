@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.ugc import public_download_content_preview as public_download_content_preview_internal
 from accelbyte_py_sdk.api.ugc.models import ModelsGetContentPreviewResponse
 from accelbyte_py_sdk.api.ugc.models import ResponseError
@@ -54,11 +56,11 @@ def public_download_content_preview(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_download_content_preview_internal(
+    result, error = public_download_content_preview_internal(
         content_id=content_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"PublicDownloadContentPreview failed: {str(error)}")
-    click.echo("PublicDownloadContentPreview success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

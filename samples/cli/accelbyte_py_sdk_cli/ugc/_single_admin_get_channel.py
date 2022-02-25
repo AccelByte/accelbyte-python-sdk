@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.ugc import single_admin_get_channel as single_admin_get_channel_internal
 from accelbyte_py_sdk.api.ugc.models import ModelsPaginatedGetChannelResponse
 from accelbyte_py_sdk.api.ugc.models import ResponseError
@@ -56,7 +58,7 @@ def single_admin_get_channel(
         }
     else:
         login_as_internal(login_as)
-    _, error = single_admin_get_channel_internal(
+    result, error = single_admin_get_channel_internal(
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -64,4 +66,4 @@ def single_admin_get_channel(
     )
     if error:
         raise Exception(f"SingleAdminGetChannel failed: {str(error)}")
-    click.echo("SingleAdminGetChannel success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

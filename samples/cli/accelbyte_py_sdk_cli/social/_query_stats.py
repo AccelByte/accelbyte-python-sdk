@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.social import query_stats as query_stats_internal
 from accelbyte_py_sdk.api.social.models import StatPagingSlicedResult
 
@@ -57,7 +59,7 @@ def query_stats(
         }
     else:
         login_as_internal(login_as)
-    _, error = query_stats_internal(
+    result, error = query_stats_internal(
         keyword=keyword,
         limit=limit,
         offset=offset,
@@ -66,4 +68,4 @@ def query_stats(
     )
     if error:
         raise Exception(f"queryStats failed: {str(error)}")
-    click.echo("queryStats success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.leaderboard import delete_bulk_leaderboard_configuration_admin_v1 as delete_bulk_leaderboard_configuration_admin_v1_internal
 from accelbyte_py_sdk.api.leaderboard.models import ModelsDeleteBulkLeaderboardsReq
 from accelbyte_py_sdk.api.leaderboard.models import ModelsDeleteBulkLeaderboardsResp
@@ -61,11 +63,11 @@ def delete_bulk_leaderboard_configuration_admin_v1(
             body = ModelsDeleteBulkLeaderboardsReq.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = delete_bulk_leaderboard_configuration_admin_v1_internal(
+    result, error = delete_bulk_leaderboard_configuration_admin_v1_internal(
         body=body,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"deleteBulkLeaderboardConfigurationAdminV1 failed: {str(error)}")
-    click.echo("deleteBulkLeaderboardConfigurationAdminV1 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import admin_delete_profanity_list as admin_delete_profanity_list_internal
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
 
@@ -53,11 +55,11 @@ def admin_delete_profanity_list(
         }
     else:
         login_as_internal(login_as)
-    _, error = admin_delete_profanity_list_internal(
+    result, error = admin_delete_profanity_list_internal(
         list_=list_,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"adminDeleteProfanityList failed: {str(error)}")
-    click.echo("adminDeleteProfanityList success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

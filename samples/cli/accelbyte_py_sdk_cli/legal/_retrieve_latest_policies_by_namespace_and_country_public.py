@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.legal import retrieve_latest_policies_by_namespace_and_country_public as retrieve_latest_policies_by_namespace_and_country_public_internal
 from accelbyte_py_sdk.api.legal.models import RetrievePolicyPublicResponse
 
@@ -61,7 +63,7 @@ def retrieve_latest_policies_by_namespace_and_country_public(
         }
     else:
         login_as_internal(login_as)
-    _, error = retrieve_latest_policies_by_namespace_and_country_public_internal(
+    result, error = retrieve_latest_policies_by_namespace_and_country_public_internal(
         country_code=country_code,
         always_include_default=always_include_default,
         default_on_empty=default_on_empty,
@@ -72,4 +74,4 @@ def retrieve_latest_policies_by_namespace_and_country_public(
     )
     if error:
         raise Exception(f"retrieveLatestPoliciesByNamespaceAndCountryPublic failed: {str(error)}")
-    click.echo("retrieveLatestPoliciesByNamespaceAndCountryPublic success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

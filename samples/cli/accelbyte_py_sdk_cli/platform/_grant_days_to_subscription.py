@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import grant_days_to_subscription as grant_days_to_subscription_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import GrantSubscriptionDaysRequest
@@ -65,7 +67,7 @@ def grant_days_to_subscription(
             body = GrantSubscriptionDaysRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = grant_days_to_subscription_internal(
+    result, error = grant_days_to_subscription_internal(
         subscription_id=subscription_id,
         user_id=user_id,
         body=body,
@@ -74,4 +76,4 @@ def grant_days_to_subscription(
     )
     if error:
         raise Exception(f"grantDaysToSubscription failed: {str(error)}")
-    click.echo("grantDaysToSubscription success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

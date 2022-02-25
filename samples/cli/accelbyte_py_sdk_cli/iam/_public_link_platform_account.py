@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import public_link_platform_account as public_link_platform_account_internal
 from accelbyte_py_sdk.api.iam.models import ModelLinkPlatformAccountRequest
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
@@ -62,7 +64,7 @@ def public_link_platform_account(
             body = ModelLinkPlatformAccountRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = public_link_platform_account_internal(
+    result, error = public_link_platform_account_internal(
         body=body,
         user_id=user_id,
         namespace=namespace,
@@ -70,4 +72,4 @@ def public_link_platform_account(
     )
     if error:
         raise Exception(f"PublicLinkPlatformAccount failed: {str(error)}")
-    click.echo("PublicLinkPlatformAccount success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

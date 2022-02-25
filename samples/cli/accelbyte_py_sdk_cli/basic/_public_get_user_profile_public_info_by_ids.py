@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.basic import public_get_user_profile_public_info_by_ids as public_get_user_profile_public_info_by_ids_internal
 from accelbyte_py_sdk.api.basic.models import UserProfilePublicInfo
 from accelbyte_py_sdk.api.basic.models import ValidationErrorEntity
@@ -54,11 +56,11 @@ def public_get_user_profile_public_info_by_ids(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_get_user_profile_public_info_by_ids_internal(
+    result, error = public_get_user_profile_public_info_by_ids_internal(
         user_ids=user_ids,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"publicGetUserProfilePublicInfoByIds failed: {str(error)}")
-    click.echo("publicGetUserProfilePublicInfoByIds success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

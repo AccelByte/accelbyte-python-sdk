@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import delete_client as delete_client_internal
 
 
@@ -50,10 +52,10 @@ def delete_client(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_client_internal(
+    result, error = delete_client_internal(
         client_id=client_id,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"DeleteClient failed: {str(error)}")
-    click.echo("DeleteClient success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.legal import invalidate_user_info_cache as invalidate_user_info_cache_internal
 
 
@@ -50,10 +52,10 @@ def invalidate_user_info_cache(
         }
     else:
         login_as_internal(login_as)
-    _, error = invalidate_user_info_cache_internal(
+    result, error = invalidate_user_info_cache_internal(
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"invalidateUserInfoCache failed: {str(error)}")
-    click.echo("invalidateUserInfoCache success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

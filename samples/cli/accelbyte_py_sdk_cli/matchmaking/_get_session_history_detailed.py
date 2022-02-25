@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.matchmaking import get_session_history_detailed as get_session_history_detailed_internal
 from accelbyte_py_sdk.api.matchmaking.models import ResponseError
 from accelbyte_py_sdk.api.matchmaking.models import ResponseErrorV1
@@ -55,11 +57,11 @@ def get_session_history_detailed(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_session_history_detailed_internal(
+    result, error = get_session_history_detailed_internal(
         match_id=match_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"GetSessionHistoryDetailed failed: {str(error)}")
-    click.echo("GetSessionHistoryDetailed success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

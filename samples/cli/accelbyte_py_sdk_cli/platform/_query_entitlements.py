@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import query_entitlements as query_entitlements_internal
 from accelbyte_py_sdk.api.platform.models import EntitlementPagingSlicedResult
 
@@ -73,7 +75,7 @@ def query_entitlements(
             item_id = [str(i0) for i0 in item_id_json]
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'itemId'. {str(e)}") from e
-    _, error = query_entitlements_internal(
+    result, error = query_entitlements_internal(
         active_only=active_only,
         app_type=app_type,
         entitlement_clazz=entitlement_clazz,
@@ -87,4 +89,4 @@ def query_entitlements(
     )
     if error:
         raise Exception(f"queryEntitlements failed: {str(error)}")
-    click.echo("queryEntitlements success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.achievement import public_list_user_achievements as public_list_user_achievements_internal
 from accelbyte_py_sdk.api.achievement.models import ModelsPaginatedUserAchievementResponse
 from accelbyte_py_sdk.api.achievement.models import ResponseError
@@ -60,7 +62,7 @@ def public_list_user_achievements(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_list_user_achievements_internal(
+    result, error = public_list_user_achievements_internal(
         user_id=user_id,
         limit=limit,
         offset=offset,
@@ -70,4 +72,4 @@ def public_list_user_achievements(
     )
     if error:
         raise Exception(f"PublicListUserAchievements failed: {str(error)}")
-    click.echo("PublicListUserAchievements success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

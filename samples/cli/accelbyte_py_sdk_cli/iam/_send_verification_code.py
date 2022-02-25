@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import send_verification_code as send_verification_code_internal
 from accelbyte_py_sdk.api.iam.models import ModelSendVerificationCodeRequest
 
@@ -61,7 +63,7 @@ def send_verification_code(
             body = ModelSendVerificationCodeRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = send_verification_code_internal(
+    result, error = send_verification_code_internal(
         body=body,
         user_id=user_id,
         namespace=namespace,
@@ -69,4 +71,4 @@ def send_verification_code(
     )
     if error:
         raise Exception(f"SendVerificationCode failed: {str(error)}")
-    click.echo("SendVerificationCode success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

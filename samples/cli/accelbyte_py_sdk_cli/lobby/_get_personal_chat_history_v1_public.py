@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import get_personal_chat_history_v1_public as get_personal_chat_history_v1_public_internal
 from accelbyte_py_sdk.api.lobby.models import ModelChatMessageResponse
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
@@ -54,11 +56,11 @@ def get_personal_chat_history_v1_public(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_personal_chat_history_v1_public_internal(
+    result, error = get_personal_chat_history_v1_public_internal(
         friend_id=friend_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"getPersonalChatHistoryV1Public failed: {str(error)}")
-    click.echo("getPersonalChatHistoryV1Public success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

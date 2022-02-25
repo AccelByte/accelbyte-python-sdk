@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import platform_token_request_handler as platform_token_request_handler_internal
 from accelbyte_py_sdk.api.iam.models import OauthmodelErrorResponse
 from accelbyte_py_sdk.api.iam.models import OauthmodelTokenResponse
@@ -58,7 +60,7 @@ def platform_token_request_handler(
         }
     else:
         login_as_internal(login_as)
-    _, error = platform_token_request_handler_internal(
+    result, error = platform_token_request_handler_internal(
         platform_id=platform_id,
         device_id=device_id,
         platform_token=platform_token,
@@ -67,4 +69,4 @@ def platform_token_request_handler(
     )
     if error:
         raise Exception(f"PlatformTokenRequestHandler failed: {str(error)}")
-    click.echo("PlatformTokenRequestHandler success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

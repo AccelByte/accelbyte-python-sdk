@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.basic import get_banned_users as get_banned_users_internal
 from accelbyte_py_sdk.api.basic.models import ADTOObjectForEqu8UserBanStatus
 from accelbyte_py_sdk.api.basic.models import ErrorEntity
@@ -61,11 +63,11 @@ def get_banned_users(
             user_ids = [str(i0) for i0 in user_ids_json]
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'userIds'. {str(e)}") from e
-    _, error = get_banned_users_internal(
+    result, error = get_banned_users_internal(
         user_ids=user_ids,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"getBannedUsers failed: {str(error)}")
-    click.echo("getBannedUsers success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import get_all_notification_topics_v1_admin as get_all_notification_topics_v1_admin_internal
 from accelbyte_py_sdk.api.lobby.models import ModelGetAllNotificationTopicsResponse
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseV1
@@ -58,7 +60,7 @@ def get_all_notification_topics_v1_admin(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_all_notification_topics_v1_admin_internal(
+    result, error = get_all_notification_topics_v1_admin_internal(
         after=after,
         before=before,
         limit=limit,
@@ -67,4 +69,4 @@ def get_all_notification_topics_v1_admin(
     )
     if error:
         raise Exception(f"getAllNotificationTopicsV1Admin failed: {str(error)}")
-    click.echo("getAllNotificationTopicsV1Admin success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

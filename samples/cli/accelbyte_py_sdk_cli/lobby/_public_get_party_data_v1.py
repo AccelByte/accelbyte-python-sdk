@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import public_get_party_data_v1 as public_get_party_data_v1_internal
 from accelbyte_py_sdk.api.lobby.models import ModelsPartyData
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
@@ -54,11 +56,11 @@ def public_get_party_data_v1(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_get_party_data_v1_internal(
+    result, error = public_get_party_data_v1_internal(
         party_id=party_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"publicGetPartyDataV1 failed: {str(error)}")
-    click.echo("publicGetPartyDataV1 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

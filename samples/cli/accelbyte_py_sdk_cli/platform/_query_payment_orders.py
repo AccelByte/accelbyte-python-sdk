@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import query_payment_orders as query_payment_orders_internal
 from accelbyte_py_sdk.api.platform.models import PaymentOrderPagingSlicedResult
 
@@ -61,7 +63,7 @@ def query_payment_orders(
         }
     else:
         login_as_internal(login_as)
-    _, error = query_payment_orders_internal(
+    result, error = query_payment_orders_internal(
         channel=channel,
         ext_tx_id=ext_tx_id,
         limit=limit,
@@ -72,4 +74,4 @@ def query_payment_orders(
     )
     if error:
         raise Exception(f"queryPaymentOrders failed: {str(error)}")
-    click.echo("queryPaymentOrders success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

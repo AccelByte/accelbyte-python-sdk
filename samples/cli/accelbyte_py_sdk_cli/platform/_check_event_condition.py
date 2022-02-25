@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import check_event_condition as check_event_condition_internal
 from accelbyte_py_sdk.api.platform.models import ConditionMatchResult
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
@@ -63,7 +65,7 @@ def check_event_condition(
             body = EventPayload.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = check_event_condition_internal(
+    result, error = check_event_condition_internal(
         reward_id=reward_id,
         body=body,
         namespace=namespace,
@@ -71,4 +73,4 @@ def check_event_condition(
     )
     if error:
         raise Exception(f"checkEventCondition failed: {str(error)}")
-    click.echo("checkEventCondition success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

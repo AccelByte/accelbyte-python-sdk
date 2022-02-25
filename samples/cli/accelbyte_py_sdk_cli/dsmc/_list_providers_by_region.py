@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.dsmc import list_providers_by_region as list_providers_by_region_internal
 from accelbyte_py_sdk.api.dsmc.models import ModelsDefaultProvider
 
@@ -51,10 +53,10 @@ def list_providers_by_region(
         }
     else:
         login_as_internal(login_as)
-    _, error = list_providers_by_region_internal(
+    result, error = list_providers_by_region_internal(
         region=region,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"ListProvidersByRegion failed: {str(error)}")
-    click.echo("ListProvidersByRegion success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

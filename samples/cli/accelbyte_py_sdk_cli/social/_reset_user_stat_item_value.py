@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.social import reset_user_stat_item_value as reset_user_stat_item_value_internal
 from accelbyte_py_sdk.api.social.models import ErrorEntity
 from accelbyte_py_sdk.api.social.models import StatItemIncResult
@@ -67,7 +69,7 @@ def reset_user_stat_item_value(
             body = StatResetInfo.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = reset_user_stat_item_value_internal(
+    result, error = reset_user_stat_item_value_internal(
         stat_code=stat_code,
         user_id=user_id,
         body=body,
@@ -77,4 +79,4 @@ def reset_user_stat_item_value(
     )
     if error:
         raise Exception(f"resetUserStatItemValue failed: {str(error)}")
-    click.echo("resetUserStatItemValue success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

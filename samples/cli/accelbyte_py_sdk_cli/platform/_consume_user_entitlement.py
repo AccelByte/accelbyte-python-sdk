@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import consume_user_entitlement as consume_user_entitlement_internal
 from accelbyte_py_sdk.api.platform.models import EntitlementDecrement
 from accelbyte_py_sdk.api.platform.models import EntitlementInfo
@@ -65,7 +67,7 @@ def consume_user_entitlement(
             body = EntitlementDecrement.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = consume_user_entitlement_internal(
+    result, error = consume_user_entitlement_internal(
         entitlement_id=entitlement_id,
         user_id=user_id,
         body=body,
@@ -74,4 +76,4 @@ def consume_user_entitlement(
     )
     if error:
         raise Exception(f"consumeUserEntitlement failed: {str(error)}")
-    click.echo("consumeUserEntitlement success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

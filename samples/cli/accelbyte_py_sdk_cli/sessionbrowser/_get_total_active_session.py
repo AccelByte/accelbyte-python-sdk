@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.sessionbrowser import get_total_active_session as get_total_active_session_internal
 from accelbyte_py_sdk.api.sessionbrowser.models import ModelsCountActiveSessionResponse
 from accelbyte_py_sdk.api.sessionbrowser.models import RestapiErrorResponseV2
@@ -54,11 +56,11 @@ def get_total_active_session(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_total_active_session_internal(
+    result, error = get_total_active_session_internal(
         session_type=session_type,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"GetTotalActiveSession failed: {str(error)}")
-    click.echo("GetTotalActiveSession success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.matchmaking import delete_channel_handler as delete_channel_handler_internal
 from accelbyte_py_sdk.api.matchmaking.models import ResponseError
 
@@ -53,11 +55,11 @@ def delete_channel_handler(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_channel_handler_internal(
+    result, error = delete_channel_handler_internal(
         channel=channel,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"DeleteChannelHandler failed: {str(error)}")
-    click.echo("DeleteChannelHandler success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import refund_order as refund_order_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import OrderInfo
@@ -64,7 +66,7 @@ def refund_order(
             body = OrderRefundCreate.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = refund_order_internal(
+    result, error = refund_order_internal(
         order_no=order_no,
         body=body,
         namespace=namespace,
@@ -72,4 +74,4 @@ def refund_order(
     )
     if error:
         raise Exception(f"refundOrder failed: {str(error)}")
-    click.echo("refundOrder success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

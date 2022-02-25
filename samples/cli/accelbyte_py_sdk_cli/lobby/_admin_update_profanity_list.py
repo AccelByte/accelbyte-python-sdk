@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import admin_update_profanity_list as admin_update_profanity_list_internal
 from accelbyte_py_sdk.api.lobby.models import ModelsAdminUpdateProfanityList
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
@@ -62,7 +64,7 @@ def admin_update_profanity_list(
             body = ModelsAdminUpdateProfanityList.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = admin_update_profanity_list_internal(
+    result, error = admin_update_profanity_list_internal(
         body=body,
         list_=list_,
         namespace=namespace,
@@ -70,4 +72,4 @@ def admin_update_profanity_list(
     )
     if error:
         raise Exception(f"adminUpdateProfanityList failed: {str(error)}")
-    click.echo("adminUpdateProfanityList success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

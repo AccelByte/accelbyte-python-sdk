@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.achievement import import_achievements as import_achievements_internal
 from accelbyte_py_sdk.api.achievement.models import ResponseError
 from accelbyte_py_sdk.api.achievement.models import ServiceImportConfigResponse
@@ -56,7 +58,7 @@ def import_achievements(
         }
     else:
         login_as_internal(login_as)
-    _, error = import_achievements_internal(
+    result, error = import_achievements_internal(
         file=file,
         strategy=strategy,
         namespace=namespace,
@@ -64,4 +66,4 @@ def import_achievements(
     )
     if error:
         raise Exception(f"ImportAchievements failed: {str(error)}")
-    click.echo("ImportAchievements success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

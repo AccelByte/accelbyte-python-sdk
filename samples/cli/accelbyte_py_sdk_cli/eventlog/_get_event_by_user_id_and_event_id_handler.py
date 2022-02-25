@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.eventlog import get_event_by_user_id_and_event_id_handler as get_event_by_user_id_and_event_id_handler_internal
 from accelbyte_py_sdk.api.eventlog.models import ModelsEventResponse
 
@@ -63,7 +65,7 @@ def get_event_by_user_id_and_event_id_handler(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_event_by_user_id_and_event_id_handler_internal(
+    result, error = get_event_by_user_id_and_event_id_handler_internal(
         event_id=event_id,
         user_id=user_id,
         end_date=end_date,
@@ -75,4 +77,4 @@ def get_event_by_user_id_and_event_id_handler(
     )
     if error:
         raise Exception(f"GetEventByUserIDAndEventIDHandler failed: {str(error)}")
-    click.echo("GetEventByUserIDAndEventIDHandler success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

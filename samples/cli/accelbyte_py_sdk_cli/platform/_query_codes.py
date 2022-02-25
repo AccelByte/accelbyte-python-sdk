@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import query_codes as query_codes_internal
 from accelbyte_py_sdk.api.platform.models import CodeInfoPagingSlicedResult
 
@@ -63,7 +65,7 @@ def query_codes(
         }
     else:
         login_as_internal(login_as)
-    _, error = query_codes_internal(
+    result, error = query_codes_internal(
         campaign_id=campaign_id,
         active_only=active_only,
         batch_no=batch_no,
@@ -75,4 +77,4 @@ def query_codes(
     )
     if error:
         raise Exception(f"queryCodes failed: {str(error)}")
-    click.echo("queryCodes success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

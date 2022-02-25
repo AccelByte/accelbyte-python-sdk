@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.dsmc import list_session as list_session_internal
 from accelbyte_py_sdk.api.dsmc.models import ModelsListSessionResponse
 from accelbyte_py_sdk.api.dsmc.models import ResponseError
@@ -60,7 +62,7 @@ def list_session(
         }
     else:
         login_as_internal(login_as)
-    _, error = list_session_internal(
+    result, error = list_session_internal(
         count=count,
         offset=offset,
         region=region,
@@ -70,4 +72,4 @@ def list_session(
     )
     if error:
         raise Exception(f"ListSession failed: {str(error)}")
-    click.echo("ListSession success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.social import get_stats as get_stats_internal
 from accelbyte_py_sdk.api.social.models import StatPagingSlicedResult
 
@@ -55,7 +57,7 @@ def get_stats(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_stats_internal(
+    result, error = get_stats_internal(
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -63,4 +65,4 @@ def get_stats(
     )
     if error:
         raise Exception(f"getStats failed: {str(error)}")
-    click.echo("getStats success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

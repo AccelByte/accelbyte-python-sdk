@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import free_form_notification_by_user_id as free_form_notification_by_user_id_internal
 from accelbyte_py_sdk.api.lobby.models import ModelFreeFormNotificationRequest
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
@@ -62,7 +64,7 @@ def free_form_notification_by_user_id(
             body = ModelFreeFormNotificationRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = free_form_notification_by_user_id_internal(
+    result, error = free_form_notification_by_user_id_internal(
         body=body,
         user_id=user_id,
         namespace=namespace,
@@ -70,4 +72,4 @@ def free_form_notification_by_user_id(
     )
     if error:
         raise Exception(f"freeFormNotificationByUserID failed: {str(error)}")
-    click.echo("freeFormNotificationByUserID success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

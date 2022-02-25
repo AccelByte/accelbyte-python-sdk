@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import delete_payment_provider_config as delete_payment_provider_config_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 
@@ -51,10 +53,10 @@ def delete_payment_provider_config(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_payment_provider_config_internal(
+    result, error = delete_payment_provider_config_internal(
         id_=id_,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"deletePaymentProviderConfig failed: {str(error)}")
-    click.echo("deletePaymentProviderConfig success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

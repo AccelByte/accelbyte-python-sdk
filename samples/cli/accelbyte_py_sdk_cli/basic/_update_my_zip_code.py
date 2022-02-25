@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.basic import update_my_zip_code as update_my_zip_code_internal
 from accelbyte_py_sdk.api.basic.models import ErrorEntity
 from accelbyte_py_sdk.api.basic.models import UserZipCode
@@ -62,11 +64,11 @@ def update_my_zip_code(
             user_zip_code_update = UserZipCodeUpdate.create_from_dict(user_zip_code_update_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'userZipCodeUpdate'. {str(e)}") from e
-    _, error = update_my_zip_code_internal(
+    result, error = update_my_zip_code_internal(
         user_zip_code_update=user_zip_code_update,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"updateMyZipCode failed: {str(error)}")
-    click.echo("updateMyZipCode success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

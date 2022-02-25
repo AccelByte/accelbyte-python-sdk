@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import get_topic_by_topic_name as get_topic_by_topic_name_internal
 from accelbyte_py_sdk.api.lobby.models import ModelNotificationTopicResponse
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
@@ -54,11 +56,11 @@ def get_topic_by_topic_name(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_topic_by_topic_name_internal(
+    result, error = get_topic_by_topic_name_internal(
         topic=topic,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"getTopicByTopicName failed: {str(error)}")
-    click.echo("getTopicByTopicName success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

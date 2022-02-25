@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.ugc import create_group as create_group_internal
 from accelbyte_py_sdk.api.ugc.models import ModelsCreateGroupRequest
 from accelbyte_py_sdk.api.ugc.models import ModelsCreateGroupResponse
@@ -63,7 +65,7 @@ def create_group(
             body = ModelsCreateGroupRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = create_group_internal(
+    result, error = create_group_internal(
         body=body,
         user_id=user_id,
         namespace=namespace,
@@ -71,4 +73,4 @@ def create_group(
     )
     if error:
         raise Exception(f"CreateGroup failed: {str(error)}")
-    click.echo("CreateGroup success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

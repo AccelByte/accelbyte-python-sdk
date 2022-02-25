@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.eventlog import query_event_stream_handler as query_event_stream_handler_internal
 from accelbyte_py_sdk.api.eventlog.models import ModelsEventResponseV2
 from accelbyte_py_sdk.api.eventlog.models import ModelsGenericQueryPayload
@@ -68,7 +70,7 @@ def query_event_stream_handler(
             body = ModelsGenericQueryPayload.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = query_event_stream_handler_internal(
+    result, error = query_event_stream_handler_internal(
         body=body,
         end_date=end_date,
         offset=offset,
@@ -79,4 +81,4 @@ def query_event_stream_handler(
     )
     if error:
         raise Exception(f"QueryEventStreamHandler failed: {str(error)}")
-    click.echo("QueryEventStreamHandler success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

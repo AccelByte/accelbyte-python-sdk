@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.gdpr import admin_get_list_personal_data_request as admin_get_list_personal_data_request_internal
 from accelbyte_py_sdk.api.gdpr.models import ModelsListPersonalDataResponse
 from accelbyte_py_sdk.api.gdpr.models import ResponseError
@@ -58,7 +60,7 @@ def admin_get_list_personal_data_request(
         }
     else:
         login_as_internal(login_as)
-    _, error = admin_get_list_personal_data_request_internal(
+    result, error = admin_get_list_personal_data_request_internal(
         limit=limit,
         offset=offset,
         request_date=request_date,
@@ -67,4 +69,4 @@ def admin_get_list_personal_data_request(
     )
     if error:
         raise Exception(f"AdminGetListPersonalDataRequest failed: {str(error)}")
-    click.echo("AdminGetListPersonalDataRequest success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

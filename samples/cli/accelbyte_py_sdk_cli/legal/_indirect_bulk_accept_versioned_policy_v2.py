@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.legal import indirect_bulk_accept_versioned_policy_v2 as indirect_bulk_accept_versioned_policy_v2_internal
 from accelbyte_py_sdk.api.legal.models import AcceptAgreementRequest
 from accelbyte_py_sdk.api.legal.models import AcceptAgreementResponse
@@ -66,7 +68,7 @@ def indirect_bulk_accept_versioned_policy_v2(
             body = [AcceptAgreementRequest.create_from_dict(i0) for i0 in body_json]
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = indirect_bulk_accept_versioned_policy_v2_internal(
+    result, error = indirect_bulk_accept_versioned_policy_v2_internal(
         client_id=client_id,
         country_code=country_code,
         user_id=user_id,
@@ -76,4 +78,4 @@ def indirect_bulk_accept_versioned_policy_v2(
     )
     if error:
         raise Exception(f"indirectBulkAcceptVersionedPolicyV2 failed: {str(error)}")
-    click.echo("indirectBulkAcceptVersionedPolicyV2 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.seasonpass import exists_any_pass_by_pass_codes as exists_any_pass_by_pass_codes_internal
 from accelbyte_py_sdk.api.seasonpass.models import ErrorEntity
 from accelbyte_py_sdk.api.seasonpass.models import Ownership
@@ -62,7 +64,7 @@ def exists_any_pass_by_pass_codes(
             pass_codes = [str(i0) for i0 in pass_codes_json]
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'passCodes'. {str(e)}") from e
-    _, error = exists_any_pass_by_pass_codes_internal(
+    result, error = exists_any_pass_by_pass_codes_internal(
         user_id=user_id,
         pass_codes=pass_codes,
         namespace=namespace,
@@ -70,4 +72,4 @@ def exists_any_pass_by_pass_codes(
     )
     if error:
         raise Exception(f"existsAnyPassByPassCodes failed: {str(error)}")
-    click.echo("existsAnyPassByPassCodes success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

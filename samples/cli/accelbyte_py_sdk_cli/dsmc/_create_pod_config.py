@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.dsmc import create_pod_config as create_pod_config_internal
 from accelbyte_py_sdk.api.dsmc.models import ModelsCreatePodConfigRequest
 from accelbyte_py_sdk.api.dsmc.models import ModelsPodConfigRecord
@@ -63,7 +65,7 @@ def create_pod_config(
             body = ModelsCreatePodConfigRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = create_pod_config_internal(
+    result, error = create_pod_config_internal(
         body=body,
         name=name,
         namespace=namespace,
@@ -71,4 +73,4 @@ def create_pod_config(
     )
     if error:
         raise Exception(f"CreatePodConfig failed: {str(error)}")
-    click.echo("CreatePodConfig success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

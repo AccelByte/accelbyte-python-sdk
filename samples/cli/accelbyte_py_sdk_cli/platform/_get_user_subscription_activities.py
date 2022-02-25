@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import get_user_subscription_activities as get_user_subscription_activities_internal
 from accelbyte_py_sdk.api.platform.models import SubscriptionActivityPagingSlicedResult
 
@@ -61,7 +63,7 @@ def get_user_subscription_activities(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_user_subscription_activities_internal(
+    result, error = get_user_subscription_activities_internal(
         user_id=user_id,
         exclude_system=exclude_system,
         limit=limit,
@@ -72,4 +74,4 @@ def get_user_subscription_activities(
     )
     if error:
         raise Exception(f"getUserSubscriptionActivities failed: {str(error)}")
-    click.echo("getUserSubscriptionActivities success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import list_cross_namespace_account_link as list_cross_namespace_account_link_internal
 
 
@@ -56,7 +58,7 @@ def list_cross_namespace_account_link(
         }
     else:
         login_as_internal(login_as)
-    _, error = list_cross_namespace_account_link_internal(
+    result, error = list_cross_namespace_account_link_internal(
         linking_token=linking_token,
         user_id=user_id,
         platform_id=platform_id,
@@ -65,4 +67,4 @@ def list_cross_namespace_account_link(
     )
     if error:
         raise Exception(f"ListCrossNamespaceAccountLink failed: {str(error)}")
-    click.echo("ListCrossNamespaceAccountLink success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

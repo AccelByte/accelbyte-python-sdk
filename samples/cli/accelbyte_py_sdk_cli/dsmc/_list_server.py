@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.dsmc import list_server as list_server_internal
 from accelbyte_py_sdk.api.dsmc.models import ModelsListServerResponse
 from accelbyte_py_sdk.api.dsmc.models import ResponseError
@@ -58,7 +60,7 @@ def list_server(
         }
     else:
         login_as_internal(login_as)
-    _, error = list_server_internal(
+    result, error = list_server_internal(
         count=count,
         offset=offset,
         region=region,
@@ -67,4 +69,4 @@ def list_server(
     )
     if error:
         raise Exception(f"ListServer failed: {str(error)}")
-    click.echo("ListServer success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

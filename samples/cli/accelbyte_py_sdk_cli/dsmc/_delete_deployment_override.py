@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.dsmc import delete_deployment_override as delete_deployment_override_internal
 from accelbyte_py_sdk.api.dsmc.models import ModelsDeploymentWithOverride
 from accelbyte_py_sdk.api.dsmc.models import ResponseError
@@ -56,7 +58,7 @@ def delete_deployment_override(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_deployment_override_internal(
+    result, error = delete_deployment_override_internal(
         deployment=deployment,
         version=version,
         namespace=namespace,
@@ -64,4 +66,4 @@ def delete_deployment_override(
     )
     if error:
         raise Exception(f"DeleteDeploymentOverride failed: {str(error)}")
-    click.echo("DeleteDeploymentOverride success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import publish_template_localization_v1_admin as publish_template_localization_v1_admin_internal
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseV1
 
@@ -55,7 +57,7 @@ def publish_template_localization_v1_admin(
         }
     else:
         login_as_internal(login_as)
-    _, error = publish_template_localization_v1_admin_internal(
+    result, error = publish_template_localization_v1_admin_internal(
         template_language=template_language,
         template_slug=template_slug,
         namespace=namespace,
@@ -63,4 +65,4 @@ def publish_template_localization_v1_admin(
     )
     if error:
         raise Exception(f"publishTemplateLocalizationV1Admin failed: {str(error)}")
-    click.echo("publishTemplateLocalizationV1Admin success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

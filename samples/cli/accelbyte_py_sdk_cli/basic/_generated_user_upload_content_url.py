@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.basic import generated_user_upload_content_url as generated_user_upload_content_url_internal
 from accelbyte_py_sdk.api.basic.models import ErrorEntity
 from accelbyte_py_sdk.api.basic.models import FileUploadUrlInfo
@@ -57,7 +59,7 @@ def generated_user_upload_content_url(
         }
     else:
         login_as_internal(login_as)
-    _, error = generated_user_upload_content_url_internal(
+    result, error = generated_user_upload_content_url_internal(
         user_id=user_id,
         file_type=file_type,
         namespace=namespace,
@@ -65,4 +67,4 @@ def generated_user_upload_content_url(
     )
     if error:
         raise Exception(f"generatedUserUploadContentUrl failed: {str(error)}")
-    click.echo("generatedUserUploadContentUrl success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

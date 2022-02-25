@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import public_bulk_get_items as public_bulk_get_items_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import ItemInfo
@@ -60,7 +62,7 @@ def public_bulk_get_items(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_bulk_get_items_internal(
+    result, error = public_bulk_get_items_internal(
         item_ids=item_ids,
         language=language,
         region=region,
@@ -70,4 +72,4 @@ def public_bulk_get_items(
     )
     if error:
         raise Exception(f"publicBulkGetItems failed: {str(error)}")
-    click.echo("publicBulkGetItems success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.ugc import get_channels as get_channels_internal
 from accelbyte_py_sdk.api.ugc.models import ModelsPaginatedGetChannelResponse
 from accelbyte_py_sdk.api.ugc.models import ResponseError
@@ -58,7 +60,7 @@ def get_channels(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_channels_internal(
+    result, error = get_channels_internal(
         user_id=user_id,
         limit=limit,
         offset=offset,
@@ -67,4 +69,4 @@ def get_channels(
     )
     if error:
         raise Exception(f"GetChannels failed: {str(error)}")
-    click.echo("GetChannels success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

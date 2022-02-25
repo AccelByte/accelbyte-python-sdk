@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.dsmc import list_images as list_images_internal
 from accelbyte_py_sdk.api.dsmc.models import ModelsListImageResponse
 from accelbyte_py_sdk.api.dsmc.models import ResponseError
@@ -62,7 +64,7 @@ def list_images(
         }
     else:
         login_as_internal(login_as)
-    _, error = list_images_internal(
+    result, error = list_images_internal(
         count=count,
         offset=offset,
         q=q,
@@ -73,4 +75,4 @@ def list_images(
     )
     if error:
         raise Exception(f"ListImages failed: {str(error)}")
-    click.echo("ListImages success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

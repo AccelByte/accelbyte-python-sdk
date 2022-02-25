@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.dslogmanager import list_terminated_servers as list_terminated_servers_internal
 from accelbyte_py_sdk.api.dslogmanager.models import ModelsListTerminatedServersResponse
 from accelbyte_py_sdk.api.dslogmanager.models import ResponseError
@@ -78,7 +80,7 @@ def list_terminated_servers(
         }
     else:
         login_as_internal(login_as)
-    _, error = list_terminated_servers_internal(
+    result, error = list_terminated_servers_internal(
         deployment=deployment,
         end_date=end_date,
         game_mode=game_mode,
@@ -97,4 +99,4 @@ def list_terminated_servers(
     )
     if error:
         raise Exception(f"listTerminatedServers failed: {str(error)}")
-    click.echo("listTerminatedServers success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

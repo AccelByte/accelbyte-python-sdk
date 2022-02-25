@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import check_user_availability as check_user_availability_internal
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
@@ -55,7 +57,7 @@ def check_user_availability(
         }
     else:
         login_as_internal(login_as)
-    _, error = check_user_availability_internal(
+    result, error = check_user_availability_internal(
         field=field,
         query=query,
         namespace=namespace,
@@ -63,4 +65,4 @@ def check_user_availability(
     )
     if error:
         raise Exception(f"CheckUserAvailability failed: {str(error)}")
-    click.echo("CheckUserAvailability success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

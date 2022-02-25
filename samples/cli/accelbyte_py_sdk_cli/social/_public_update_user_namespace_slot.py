@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.social import public_update_user_namespace_slot as public_update_user_namespace_slot_internal
 from accelbyte_py_sdk.api.social.models import ErrorEntity
 from accelbyte_py_sdk.api.social.models import SlotInfo
@@ -72,7 +74,7 @@ def public_update_user_namespace_slot(
             tags = [str(i0) for i0 in tags_json]
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'tags'. {str(e)}") from e
-    _, error = public_update_user_namespace_slot_internal(
+    result, error = public_update_user_namespace_slot_internal(
         slot_id=slot_id,
         user_id=user_id,
         checksum=checksum,
@@ -85,4 +87,4 @@ def public_update_user_namespace_slot(
     )
     if error:
         raise Exception(f"publicUpdateUserNamespaceSlot failed: {str(error)}")
-    click.echo("publicUpdateUserNamespaceSlot success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

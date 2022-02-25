@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.matchmaking import get_healthcheck_info as get_healthcheck_info_internal
 
 
@@ -48,9 +50,9 @@ def get_healthcheck_info(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_healthcheck_info_internal(
+    result, error = get_healthcheck_info_internal(
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"GetHealthcheckInfo failed: {str(error)}")
-    click.echo("GetHealthcheckInfo success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

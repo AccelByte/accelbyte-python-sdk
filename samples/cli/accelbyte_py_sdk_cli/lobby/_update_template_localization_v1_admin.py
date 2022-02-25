@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import update_template_localization_v1_admin as update_template_localization_v1_admin_internal
 from accelbyte_py_sdk.api.lobby.models import ModelUpdateTemplateRequest
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseV1
@@ -64,7 +66,7 @@ def update_template_localization_v1_admin(
             body = ModelUpdateTemplateRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = update_template_localization_v1_admin_internal(
+    result, error = update_template_localization_v1_admin_internal(
         body=body,
         template_language=template_language,
         template_slug=template_slug,
@@ -73,4 +75,4 @@ def update_template_localization_v1_admin(
     )
     if error:
         raise Exception(f"updateTemplateLocalizationV1Admin failed: {str(error)}")
-    click.echo("updateTemplateLocalizationV1Admin success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

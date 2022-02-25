@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import admin_disable_user_v2 as admin_disable_user_v2_internal
 from accelbyte_py_sdk.api.iam.models import ModelDisableUserRequest
 
@@ -61,7 +63,7 @@ def admin_disable_user_v2(
             body = ModelDisableUserRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = admin_disable_user_v2_internal(
+    result, error = admin_disable_user_v2_internal(
         body=body,
         user_id=user_id,
         namespace=namespace,
@@ -69,4 +71,4 @@ def admin_disable_user_v2(
     )
     if error:
         raise Exception(f"AdminDisableUserV2 failed: {str(error)}")
-    click.echo("AdminDisableUserV2 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

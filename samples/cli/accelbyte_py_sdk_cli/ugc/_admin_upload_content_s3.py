@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.ugc import admin_upload_content_s3 as admin_upload_content_s3_internal
 from accelbyte_py_sdk.api.ugc.models import ModelsCreateContentRequestS3
 from accelbyte_py_sdk.api.ugc.models import ModelsCreateContentResponse
@@ -63,7 +65,7 @@ def admin_upload_content_s3(
             body = ModelsCreateContentRequestS3.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = admin_upload_content_s3_internal(
+    result, error = admin_upload_content_s3_internal(
         body=body,
         channel_id=channel_id,
         namespace=namespace,
@@ -71,4 +73,4 @@ def admin_upload_content_s3(
     )
     if error:
         raise Exception(f"AdminUploadContentS3 failed: {str(error)}")
-    click.echo("AdminUploadContentS3 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.qosm import set_server_alias as set_server_alias_internal
 from accelbyte_py_sdk.api.qosm.models import ModelsSetAliasRequest
 from accelbyte_py_sdk.api.qosm.models import ResponseError
@@ -60,11 +62,11 @@ def set_server_alias(
             body = ModelsSetAliasRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = set_server_alias_internal(
+    result, error = set_server_alias_internal(
         body=body,
         region=region,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"SetServerAlias failed: {str(error)}")
-    click.echo("SetServerAlias success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

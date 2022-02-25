@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import count_of_purchased_item as count_of_purchased_item_internal
 from accelbyte_py_sdk.api.platform.models import PurchasedItemCount
 
@@ -55,7 +57,7 @@ def count_of_purchased_item(
         }
     else:
         login_as_internal(login_as)
-    _, error = count_of_purchased_item_internal(
+    result, error = count_of_purchased_item_internal(
         user_id=user_id,
         item_id=item_id,
         namespace=namespace,
@@ -63,4 +65,4 @@ def count_of_purchased_item(
     )
     if error:
         raise Exception(f"countOfPurchasedItem failed: {str(error)}")
-    click.echo("countOfPurchasedItem success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

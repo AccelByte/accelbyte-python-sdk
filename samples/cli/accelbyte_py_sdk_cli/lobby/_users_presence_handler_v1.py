@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import users_presence_handler_v1 as users_presence_handler_v1_internal
 from accelbyte_py_sdk.api.lobby.models import HandlersGetUsersPresenceResponse
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
@@ -56,7 +58,7 @@ def users_presence_handler_v1(
         }
     else:
         login_as_internal(login_as)
-    _, error = users_presence_handler_v1_internal(
+    result, error = users_presence_handler_v1_internal(
         user_ids=user_ids,
         count_only=count_only,
         namespace=namespace,
@@ -64,4 +66,4 @@ def users_presence_handler_v1(
     )
     if error:
         raise Exception(f"UsersPresenceHandlerV1 failed: {str(error)}")
-    click.echo("UsersPresenceHandlerV1 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

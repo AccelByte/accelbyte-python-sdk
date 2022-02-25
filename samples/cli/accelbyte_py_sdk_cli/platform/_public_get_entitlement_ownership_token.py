@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import public_get_entitlement_ownership_token as public_get_entitlement_ownership_token_internal
 from accelbyte_py_sdk.api.platform.models import OwnershipToken
 
@@ -75,7 +77,7 @@ def public_get_entitlement_ownership_token(
             skus = [str(i0) for i0 in skus_json]
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'skus'. {str(e)}") from e
-    _, error = public_get_entitlement_ownership_token_internal(
+    result, error = public_get_entitlement_ownership_token_internal(
         app_ids=app_ids,
         item_ids=item_ids,
         skus=skus,
@@ -84,4 +86,4 @@ def public_get_entitlement_ownership_token(
     )
     if error:
         raise Exception(f"publicGetEntitlementOwnershipToken failed: {str(error)}")
-    click.echo("publicGetEntitlementOwnershipToken success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

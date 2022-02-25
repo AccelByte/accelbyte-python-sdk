@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import query_fulfillment_histories as query_fulfillment_histories_internal
 from accelbyte_py_sdk.api.platform.models import FulfillmentHistoryPagingSlicedResult
 
@@ -59,7 +61,7 @@ def query_fulfillment_histories(
         }
     else:
         login_as_internal(login_as)
-    _, error = query_fulfillment_histories_internal(
+    result, error = query_fulfillment_histories_internal(
         limit=limit,
         offset=offset,
         status=status,
@@ -69,4 +71,4 @@ def query_fulfillment_histories(
     )
     if error:
         raise Exception(f"queryFulfillmentHistories failed: {str(error)}")
-    click.echo("queryFulfillmentHistories success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

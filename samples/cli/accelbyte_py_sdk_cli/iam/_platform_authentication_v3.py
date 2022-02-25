@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import platform_authentication_v3 as platform_authentication_v3_internal
 
 
@@ -76,7 +78,7 @@ def platform_authentication_v3(
         }
     else:
         login_as_internal(login_as)
-    _, error = platform_authentication_v3_internal(
+    result, error = platform_authentication_v3_internal(
         platform_id=platform_id,
         state=state,
         code=code,
@@ -95,4 +97,4 @@ def platform_authentication_v3(
     )
     if error:
         raise Exception(f"PlatformAuthenticationV3 failed: {str(error)}")
-    click.echo("PlatformAuthenticationV3 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

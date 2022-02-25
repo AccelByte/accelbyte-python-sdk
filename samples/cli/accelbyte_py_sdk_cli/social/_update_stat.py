@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.social import update_stat as update_stat_internal
 from accelbyte_py_sdk.api.social.models import ErrorEntity
 from accelbyte_py_sdk.api.social.models import StatInfo
@@ -63,7 +65,7 @@ def update_stat(
             body = StatUpdate.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = update_stat_internal(
+    result, error = update_stat_internal(
         stat_code=stat_code,
         body=body,
         namespace=namespace,
@@ -71,4 +73,4 @@ def update_stat(
     )
     if error:
         raise Exception(f"updateStat failed: {str(error)}")
-    click.echo("updateStat success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

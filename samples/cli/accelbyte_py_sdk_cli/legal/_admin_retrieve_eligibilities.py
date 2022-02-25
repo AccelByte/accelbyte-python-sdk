@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.legal import admin_retrieve_eligibilities as admin_retrieve_eligibilities_internal
 from accelbyte_py_sdk.api.legal.models import RetrieveUserEligibilitiesIndirectResponse
 
@@ -59,7 +61,7 @@ def admin_retrieve_eligibilities(
         }
     else:
         login_as_internal(login_as)
-    _, error = admin_retrieve_eligibilities_internal(
+    result, error = admin_retrieve_eligibilities_internal(
         user_id=user_id,
         client_id=client_id,
         country_code=country_code,
@@ -69,4 +71,4 @@ def admin_retrieve_eligibilities(
     )
     if error:
         raise Exception(f"adminRetrieveEligibilities failed: {str(error)}")
-    click.echo("adminRetrieveEligibilities success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

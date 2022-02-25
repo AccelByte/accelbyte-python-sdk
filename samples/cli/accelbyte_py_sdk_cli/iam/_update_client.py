@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import update_client as update_client_internal
 from accelbyte_py_sdk.api.iam.models import ClientmodelClientResponse
 from accelbyte_py_sdk.api.iam.models import ClientmodelClientUpdateRequest
@@ -60,11 +62,11 @@ def update_client(
             body = ClientmodelClientUpdateRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = update_client_internal(
+    result, error = update_client_internal(
         body=body,
         client_id=client_id,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"UpdateClient failed: {str(error)}")
-    click.echo("UpdateClient success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.ugc import public_get_user_content as public_get_user_content_internal
 from accelbyte_py_sdk.api.ugc.models import ModelsPaginatedContentDownloadResponse
 from accelbyte_py_sdk.api.ugc.models import ResponseError
@@ -58,7 +60,7 @@ def public_get_user_content(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_get_user_content_internal(
+    result, error = public_get_user_content_internal(
         user_id=user_id,
         limit=limit,
         offset=offset,
@@ -67,4 +69,4 @@ def public_get_user_content(
     )
     if error:
         raise Exception(f"PublicGetUserContent failed: {str(error)}")
-    click.echo("PublicGetUserContent success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

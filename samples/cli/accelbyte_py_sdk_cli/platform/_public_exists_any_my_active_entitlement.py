@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import public_exists_any_my_active_entitlement as public_exists_any_my_active_entitlement_internal
 from accelbyte_py_sdk.api.platform.models import Ownership
 
@@ -75,7 +77,7 @@ def public_exists_any_my_active_entitlement(
             skus = [str(i0) for i0 in skus_json]
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'skus'. {str(e)}") from e
-    _, error = public_exists_any_my_active_entitlement_internal(
+    result, error = public_exists_any_my_active_entitlement_internal(
         app_ids=app_ids,
         item_ids=item_ids,
         skus=skus,
@@ -84,4 +86,4 @@ def public_exists_any_my_active_entitlement(
     )
     if error:
         raise Exception(f"publicExistsAnyMyActiveEntitlement failed: {str(error)}")
-    click.echo("publicExistsAnyMyActiveEntitlement success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

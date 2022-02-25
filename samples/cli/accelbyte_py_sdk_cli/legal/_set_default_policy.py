@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.legal import set_default_policy as set_default_policy_internal
 
 
@@ -50,10 +52,10 @@ def set_default_policy(
         }
     else:
         login_as_internal(login_as)
-    _, error = set_default_policy_internal(
+    result, error = set_default_policy_internal(
         localized_policy_version_id=localized_policy_version_id,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"setDefaultPolicy failed: {str(error)}")
-    click.echo("setDefaultPolicy success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

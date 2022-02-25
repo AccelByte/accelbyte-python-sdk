@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import user_authentication_v3 as user_authentication_v3_internal
 
 
@@ -60,7 +62,7 @@ def user_authentication_v3(
         }
     else:
         login_as_internal(login_as)
-    _, error = user_authentication_v3_internal(
+    result, error = user_authentication_v3_internal(
         password=password,
         request_id=request_id,
         user_name=user_name,
@@ -71,4 +73,4 @@ def user_authentication_v3(
     )
     if error:
         raise Exception(f"UserAuthenticationV3 failed: {str(error)}")
-    click.echo("UserAuthenticationV3 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

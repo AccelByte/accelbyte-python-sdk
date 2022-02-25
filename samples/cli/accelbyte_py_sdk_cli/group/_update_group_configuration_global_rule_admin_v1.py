@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.group import update_group_configuration_global_rule_admin_v1 as update_group_configuration_global_rule_admin_v1_internal
 from accelbyte_py_sdk.api.group.models import ModelsUpdateGroupConfigurationGlobalRulesRequestV1
 from accelbyte_py_sdk.api.group.models import ModelsUpdateGroupConfigurationResponseV1
@@ -65,7 +67,7 @@ def update_group_configuration_global_rule_admin_v1(
             body = ModelsUpdateGroupConfigurationGlobalRulesRequestV1.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = update_group_configuration_global_rule_admin_v1_internal(
+    result, error = update_group_configuration_global_rule_admin_v1_internal(
         body=body,
         allowed_action=allowed_action,
         configuration_code=configuration_code,
@@ -74,4 +76,4 @@ def update_group_configuration_global_rule_admin_v1(
     )
     if error:
         raise Exception(f"updateGroupConfigurationGlobalRuleAdminV1 failed: {str(error)}")
-    click.echo("updateGroupConfigurationGlobalRuleAdminV1 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

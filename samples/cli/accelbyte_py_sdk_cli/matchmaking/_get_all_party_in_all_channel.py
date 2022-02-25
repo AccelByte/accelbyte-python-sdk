@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.matchmaking import get_all_party_in_all_channel as get_all_party_in_all_channel_internal
 from accelbyte_py_sdk.api.matchmaking.models import ModelsMatchingParty
 from accelbyte_py_sdk.api.matchmaking.models import ResponseErrorV1
@@ -52,10 +54,10 @@ def get_all_party_in_all_channel(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_all_party_in_all_channel_internal(
+    result, error = get_all_party_in_all_channel_internal(
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"GetAllPartyInAllChannel failed: {str(error)}")
-    click.echo("GetAllPartyInAllChannel success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

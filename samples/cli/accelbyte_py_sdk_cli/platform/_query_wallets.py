@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import query_wallets as query_wallets_internal
 from accelbyte_py_sdk.api.platform.models import WalletPagingSlicedResult
 
@@ -59,7 +61,7 @@ def query_wallets(
         }
     else:
         login_as_internal(login_as)
-    _, error = query_wallets_internal(
+    result, error = query_wallets_internal(
         currency_code=currency_code,
         limit=limit,
         offset=offset,
@@ -69,4 +71,4 @@ def query_wallets(
     )
     if error:
         raise Exception(f"queryWallets failed: {str(error)}")
-    click.echo("queryWallets success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.eventlog import specific_ux_description_handler as specific_ux_description_handler_internal
 from accelbyte_py_sdk.api.eventlog.models import ModelsMultipleUX
 
@@ -51,10 +53,10 @@ def specific_ux_description_handler(
         }
     else:
         login_as_internal(login_as)
-    _, error = specific_ux_description_handler_internal(
+    result, error = specific_ux_description_handler_internal(
         ux=ux,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"SpecificUXDescriptionHandler failed: {str(error)}")
-    click.echo("SpecificUXDescriptionHandler success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

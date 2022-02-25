@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.ugc import upload_content_screenshot as upload_content_screenshot_internal
 from accelbyte_py_sdk.api.ugc.models import ModelsCreateScreenshotRequest
 from accelbyte_py_sdk.api.ugc.models import ModelsCreateScreenshotResponse
@@ -65,7 +67,7 @@ def upload_content_screenshot(
             body = ModelsCreateScreenshotRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = upload_content_screenshot_internal(
+    result, error = upload_content_screenshot_internal(
         body=body,
         content_id=content_id,
         user_id=user_id,
@@ -74,4 +76,4 @@ def upload_content_screenshot(
     )
     if error:
         raise Exception(f"UploadContentScreenshot failed: {str(error)}")
-    click.echo("UploadContentScreenshot success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

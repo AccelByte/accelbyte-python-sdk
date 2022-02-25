@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import get_payment_merchant_config as get_payment_merchant_config_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import PaymentMerchantConfigInfo
@@ -52,10 +54,10 @@ def get_payment_merchant_config(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_payment_merchant_config_internal(
+    result, error = get_payment_merchant_config_internal(
         id_=id_,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"getPaymentMerchantConfig failed: {str(error)}")
-    click.echo("getPaymentMerchantConfig success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.seasonpass import retire_season as retire_season_internal
 from accelbyte_py_sdk.api.seasonpass.models import ErrorEntity
 from accelbyte_py_sdk.api.seasonpass.models import SeasonInfo
@@ -56,7 +58,7 @@ def retire_season(
         }
     else:
         login_as_internal(login_as)
-    _, error = retire_season_internal(
+    result, error = retire_season_internal(
         season_id=season_id,
         force=force,
         namespace=namespace,
@@ -64,4 +66,4 @@ def retire_season(
     )
     if error:
         raise Exception(f"retireSeason failed: {str(error)}")
-    click.echo("retireSeason success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

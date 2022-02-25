@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import update_password as update_password_internal
 from accelbyte_py_sdk.api.iam.models import ModelUserPasswordUpdateRequest
 
@@ -61,7 +63,7 @@ def update_password(
             body = ModelUserPasswordUpdateRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = update_password_internal(
+    result, error = update_password_internal(
         body=body,
         user_id=user_id,
         namespace=namespace,
@@ -69,4 +71,4 @@ def update_password(
     )
     if error:
         raise Exception(f"UpdatePassword failed: {str(error)}")
-    click.echo("UpdatePassword success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

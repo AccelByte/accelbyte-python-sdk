@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import public_bulk_get_users as public_bulk_get_users_internal
 from accelbyte_py_sdk.api.iam.models import ModelListBulkUserResponse
 from accelbyte_py_sdk.api.iam.models import ModelUserIDsRequest
@@ -61,11 +63,11 @@ def public_bulk_get_users(
             body = ModelUserIDsRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = public_bulk_get_users_internal(
+    result, error = public_bulk_get_users_internal(
         body=body,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"PublicBulkGetUsers failed: {str(error)}")
-    click.echo("PublicBulkGetUsers success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import get_user_friends_updated as get_user_friends_updated_internal
 from accelbyte_py_sdk.api.lobby.models import ModelGetUserFriendsResponse
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseV1
@@ -56,7 +58,7 @@ def get_user_friends_updated(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_user_friends_updated_internal(
+    result, error = get_user_friends_updated_internal(
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -64,4 +66,4 @@ def get_user_friends_updated(
     )
     if error:
         raise Exception(f"getUserFriendsUpdated failed: {str(error)}")
-    click.echo("getUserFriendsUpdated success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

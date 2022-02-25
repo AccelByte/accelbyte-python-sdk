@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.matchmaking import delete_user_from_session_in_channel as delete_user_from_session_in_channel_internal
 from accelbyte_py_sdk.api.matchmaking.models import ResponseError
 from accelbyte_py_sdk.api.matchmaking.models import ResponseErrorV1
@@ -58,7 +60,7 @@ def delete_user_from_session_in_channel(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_user_from_session_in_channel_internal(
+    result, error = delete_user_from_session_in_channel_internal(
         channel_name=channel_name,
         match_id=match_id,
         user_id=user_id,
@@ -67,4 +69,4 @@ def delete_user_from_session_in_channel(
     )
     if error:
         raise Exception(f"DeleteUserFromSessionInChannel failed: {str(error)}")
-    click.echo("DeleteUserFromSessionInChannel success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

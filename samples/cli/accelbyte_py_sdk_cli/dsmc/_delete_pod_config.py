@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.dsmc import delete_pod_config as delete_pod_config_internal
 from accelbyte_py_sdk.api.dsmc.models import ResponseError
 
@@ -53,11 +55,11 @@ def delete_pod_config(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_pod_config_internal(
+    result, error = delete_pod_config_internal(
         name=name,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"DeletePodConfig failed: {str(error)}")
-    click.echo("DeletePodConfig success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

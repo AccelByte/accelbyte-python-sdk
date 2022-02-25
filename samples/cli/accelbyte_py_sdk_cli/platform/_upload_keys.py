@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import upload_keys as upload_keys_internal
 from accelbyte_py_sdk.api.platform.models import BulkOperationResult
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
@@ -56,7 +58,7 @@ def upload_keys(
         }
     else:
         login_as_internal(login_as)
-    _, error = upload_keys_internal(
+    result, error = upload_keys_internal(
         key_group_id=key_group_id,
         file=file,
         namespace=namespace,
@@ -64,4 +66,4 @@ def upload_keys(
     )
     if error:
         raise Exception(f"uploadKeys failed: {str(error)}")
-    click.echo("uploadKeys success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

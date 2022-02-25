@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import add_client_permission as add_client_permission_internal
 
 
@@ -54,7 +56,7 @@ def add_client_permission(
         }
     else:
         login_as_internal(login_as)
-    _, error = add_client_permission_internal(
+    result, error = add_client_permission_internal(
         action=action,
         client_id=client_id,
         resource=resource,
@@ -62,4 +64,4 @@ def add_client_permission(
     )
     if error:
         raise Exception(f"AddClientPermission failed: {str(error)}")
-    click.echo("AddClientPermission success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

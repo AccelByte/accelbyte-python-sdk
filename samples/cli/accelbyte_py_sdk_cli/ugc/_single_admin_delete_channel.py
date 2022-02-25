@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.ugc import single_admin_delete_channel as single_admin_delete_channel_internal
 from accelbyte_py_sdk.api.ugc.models import ResponseError
 
@@ -53,11 +55,11 @@ def single_admin_delete_channel(
         }
     else:
         login_as_internal(login_as)
-    _, error = single_admin_delete_channel_internal(
+    result, error = single_admin_delete_channel_internal(
         channel_id=channel_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"SingleAdminDeleteChannel failed: {str(error)}")
-    click.echo("SingleAdminDeleteChannel success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

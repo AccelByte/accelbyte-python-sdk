@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.eventlog import get_user_events_v2_public as get_user_events_v2_public_internal
 from accelbyte_py_sdk.api.eventlog.models import ModelsEventResponseV2
 
@@ -63,7 +65,7 @@ def get_user_events_v2_public(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_user_events_v2_public_internal(
+    result, error = get_user_events_v2_public_internal(
         user_id=user_id,
         end_date=end_date,
         event_name=event_name,
@@ -75,4 +77,4 @@ def get_user_events_v2_public(
     )
     if error:
         raise Exception(f"GetUserEventsV2Public failed: {str(error)}")
-    click.echo("GetUserEventsV2Public success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

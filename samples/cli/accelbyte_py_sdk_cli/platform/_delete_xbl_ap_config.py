@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import delete_xbl_ap_config as delete_xbl_ap_config_internal
 
 
@@ -50,10 +52,10 @@ def delete_xbl_ap_config(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_xbl_ap_config_internal(
+    result, error = delete_xbl_ap_config_internal(
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"deleteXblAPConfig failed: {str(error)}")
-    click.echo("deleteXblAPConfig success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import get_role_admin_status as get_role_admin_status_internal
 from accelbyte_py_sdk.api.iam.models import ModelRoleAdminStatusResponse
 
@@ -51,10 +53,10 @@ def get_role_admin_status(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_role_admin_status_internal(
+    result, error = get_role_admin_status_internal(
         role_id=role_id,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"GetRoleAdminStatus failed: {str(error)}")
-    click.echo("GetRoleAdminStatus success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

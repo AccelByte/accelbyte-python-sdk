@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import get_list_ban_reason as get_list_ban_reason_internal
 from accelbyte_py_sdk.api.iam.models import AccountcommonBanReasons
 
@@ -49,9 +51,9 @@ def get_list_ban_reason(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_list_ban_reason_internal(
+    result, error = get_list_ban_reason_internal(
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"GetListBanReason failed: {str(error)}")
-    click.echo("GetListBanReason success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

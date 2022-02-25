@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import query_payment_notifications as query_payment_notifications_internal
 from accelbyte_py_sdk.api.platform.models import PaymentNotificationPagingSlicedResult
 
@@ -69,7 +71,7 @@ def query_payment_notifications(
         }
     else:
         login_as_internal(login_as)
-    _, error = query_payment_notifications_internal(
+    result, error = query_payment_notifications_internal(
         end_date=end_date,
         external_id=external_id,
         limit=limit,
@@ -84,4 +86,4 @@ def query_payment_notifications(
     )
     if error:
         raise Exception(f"queryPaymentNotifications failed: {str(error)}")
-    click.echo("queryPaymentNotifications success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

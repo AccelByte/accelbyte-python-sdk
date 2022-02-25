@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.gametelemetry import protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get as protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get_internal
 from accelbyte_py_sdk.api.gametelemetry.models import HTTPValidationError
 
@@ -51,10 +53,10 @@ def protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playti
         }
     else:
         login_as_internal(login_as)
-    _, error = protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get_internal(
+    result, error = protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get_internal(
         steam_id=steam_id,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"protected_get_playtime_game_telemetry_v1_protected_steamIds__steamId__playtime_get failed: {str(error)}")
-    click.echo("protected_get_playtime_game_telemetry_v1_protected_steamIds__steamId__playtime_get success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

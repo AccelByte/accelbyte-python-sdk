@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.legal import retrieve_policy_versions as retrieve_policy_versions_internal
 from accelbyte_py_sdk.api.legal.models import ErrorEntity
 from accelbyte_py_sdk.api.legal.models import RetrievePolicyVersionResponse
@@ -56,7 +58,7 @@ def retrieve_policy_versions(
         }
     else:
         login_as_internal(login_as)
-    _, error = retrieve_policy_versions_internal(
+    result, error = retrieve_policy_versions_internal(
         base_policy_id=base_policy_id,
         locale_id=locale_id,
         namespace=namespace,
@@ -64,4 +66,4 @@ def retrieve_policy_versions(
     )
     if error:
         raise Exception(f"retrievePolicyVersions failed: {str(error)}")
-    click.echo("retrievePolicyVersions success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

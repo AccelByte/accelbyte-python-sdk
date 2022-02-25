@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import get_admin_users_by_role_id_v3 as get_admin_users_by_role_id_v3_internal
 from accelbyte_py_sdk.api.iam.models import ModelGetUsersResponseWithPaginationV3
 from accelbyte_py_sdk.api.iam.models import RestapiErrorResponse
@@ -60,7 +62,7 @@ def get_admin_users_by_role_id_v3(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_admin_users_by_role_id_v3_internal(
+    result, error = get_admin_users_by_role_id_v3_internal(
         role_id=role_id,
         after=after,
         before=before,
@@ -70,4 +72,4 @@ def get_admin_users_by_role_id_v3(
     )
     if error:
         raise Exception(f"GetAdminUsersByRoleIdV3 failed: {str(error)}")
-    click.echo("GetAdminUsersByRoleIdV3 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

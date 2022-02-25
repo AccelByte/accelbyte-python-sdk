@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import query_orders as query_orders_internal
 from accelbyte_py_sdk.api.platform.models import OrderPagingResult
 from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
@@ -74,7 +76,7 @@ def query_orders(
             order_nos = [str(i0) for i0 in order_nos_json]
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'orderNos'. {str(e)}") from e
-    _, error = query_orders_internal(
+    result, error = query_orders_internal(
         end_time=end_time,
         limit=limit,
         offset=offset,
@@ -88,4 +90,4 @@ def query_orders(
     )
     if error:
         raise Exception(f"queryOrders failed: {str(error)}")
-    click.echo("queryOrders success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

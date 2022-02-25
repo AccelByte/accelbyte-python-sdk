@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import get_key_group_dynamic as get_key_group_dynamic_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import KeyGroupDynamicInfo
@@ -54,11 +56,11 @@ def get_key_group_dynamic(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_key_group_dynamic_internal(
+    result, error = get_key_group_dynamic_internal(
         key_group_id=key_group_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"getKeyGroupDynamic failed: {str(error)}")
-    click.echo("getKeyGroupDynamic success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

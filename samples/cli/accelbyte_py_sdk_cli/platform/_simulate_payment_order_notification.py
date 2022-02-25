@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import simulate_payment_order_notification as simulate_payment_order_notification_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import NotificationProcessResult
@@ -63,7 +65,7 @@ def simulate_payment_order_notification(
             body = PaymentOrderNotifySimulation.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = simulate_payment_order_notification_internal(
+    result, error = simulate_payment_order_notification_internal(
         payment_order_no=payment_order_no,
         body=body,
         namespace=namespace,
@@ -71,4 +73,4 @@ def simulate_payment_order_notification(
     )
     if error:
         raise Exception(f"simulatePaymentOrderNotification failed: {str(error)}")
-    click.echo("simulatePaymentOrderNotification success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

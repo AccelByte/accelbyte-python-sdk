@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.legal import retrieve_policies as retrieve_policies_internal
 from accelbyte_py_sdk.api.legal.models import RetrievePolicyResponse
 
@@ -51,10 +53,10 @@ def retrieve_policies(
         }
     else:
         login_as_internal(login_as)
-    _, error = retrieve_policies_internal(
+    result, error = retrieve_policies_internal(
         country_code=country_code,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"retrievePolicies failed: {str(error)}")
-    click.echo("retrievePolicies success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

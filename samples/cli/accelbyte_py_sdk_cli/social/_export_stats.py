@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.social import export_stats as export_stats_internal
 
 
@@ -50,10 +52,10 @@ def export_stats(
         }
     else:
         login_as_internal(login_as)
-    _, error = export_stats_internal(
+    result, error = export_stats_internal(
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"exportStats failed: {str(error)}")
-    click.echo("exportStats success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

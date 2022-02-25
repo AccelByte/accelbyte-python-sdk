@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import get_user_entitlement_by_item_id as get_user_entitlement_by_item_id_internal
 from accelbyte_py_sdk.api.platform.models import EntitlementInfo
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
@@ -60,7 +62,7 @@ def get_user_entitlement_by_item_id(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_user_entitlement_by_item_id_internal(
+    result, error = get_user_entitlement_by_item_id_internal(
         user_id=user_id,
         item_id=item_id,
         active_only=active_only,
@@ -70,4 +72,4 @@ def get_user_entitlement_by_item_id(
     )
     if error:
         raise Exception(f"getUserEntitlementByItemId failed: {str(error)}")
-    click.echo("getUserEntitlementByItemId success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

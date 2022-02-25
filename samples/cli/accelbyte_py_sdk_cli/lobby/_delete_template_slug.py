@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import delete_template_slug as delete_template_slug_internal
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
 
@@ -53,11 +55,11 @@ def delete_template_slug(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_template_slug_internal(
+    result, error = delete_template_slug_internal(
         template_slug=template_slug,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"deleteTemplateSlug failed: {str(error)}")
-    click.echo("deleteTemplateSlug success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

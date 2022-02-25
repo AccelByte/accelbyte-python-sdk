@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.seasonpass import query_passes as query_passes_internal
 from accelbyte_py_sdk.api.seasonpass.models import ErrorEntity
 from accelbyte_py_sdk.api.seasonpass.models import PassInfo
@@ -54,11 +56,11 @@ def query_passes(
         }
     else:
         login_as_internal(login_as)
-    _, error = query_passes_internal(
+    result, error = query_passes_internal(
         season_id=season_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"queryPasses failed: {str(error)}")
-    click.echo("queryPasses success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

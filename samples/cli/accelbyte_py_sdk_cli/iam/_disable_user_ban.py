@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import disable_user_ban as disable_user_ban_internal
 from accelbyte_py_sdk.api.iam.models import ModelUserBanResponse
 
@@ -55,7 +57,7 @@ def disable_user_ban(
         }
     else:
         login_as_internal(login_as)
-    _, error = disable_user_ban_internal(
+    result, error = disable_user_ban_internal(
         ban_id=ban_id,
         user_id=user_id,
         namespace=namespace,
@@ -63,4 +65,4 @@ def disable_user_ban(
     )
     if error:
         raise Exception(f"DisableUserBan failed: {str(error)}")
-    click.echo("DisableUserBan success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

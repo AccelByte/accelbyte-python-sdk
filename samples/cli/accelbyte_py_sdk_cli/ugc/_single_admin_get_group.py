@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.ugc import single_admin_get_group as single_admin_get_group_internal
 from accelbyte_py_sdk.api.ugc.models import ModelsCreateGroupResponse
 from accelbyte_py_sdk.api.ugc.models import ResponseError
@@ -54,11 +56,11 @@ def single_admin_get_group(
         }
     else:
         login_as_internal(login_as)
-    _, error = single_admin_get_group_internal(
+    result, error = single_admin_get_group_internal(
         group_id=group_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"SingleAdminGetGroup failed: {str(error)}")
-    click.echo("SingleAdminGetGroup success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

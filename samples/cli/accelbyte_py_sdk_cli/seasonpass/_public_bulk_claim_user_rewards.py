@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.seasonpass import public_bulk_claim_user_rewards as public_bulk_claim_user_rewards_internal
 from accelbyte_py_sdk.api.seasonpass.models import ClaimableRewards
 from accelbyte_py_sdk.api.seasonpass.models import ErrorEntity
@@ -54,11 +56,11 @@ def public_bulk_claim_user_rewards(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_bulk_claim_user_rewards_internal(
+    result, error = public_bulk_claim_user_rewards_internal(
         user_id=user_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"publicBulkClaimUserRewards failed: {str(error)}")
-    click.echo("publicBulkClaimUserRewards success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

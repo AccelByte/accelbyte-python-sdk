@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import admin_list_assigned_users_v4 as admin_list_assigned_users_v4_internal
 from accelbyte_py_sdk.api.iam.models import ModelListAssignedUsersV4Response
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
@@ -58,7 +60,7 @@ def admin_list_assigned_users_v4(
         }
     else:
         login_as_internal(login_as)
-    _, error = admin_list_assigned_users_v4_internal(
+    result, error = admin_list_assigned_users_v4_internal(
         role_id=role_id,
         after=after,
         before=before,
@@ -67,4 +69,4 @@ def admin_list_assigned_users_v4(
     )
     if error:
         raise Exception(f"AdminListAssignedUsersV4 failed: {str(error)}")
-    click.echo("AdminListAssignedUsersV4 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.ugc import get_followed_content as get_followed_content_internal
 from accelbyte_py_sdk.api.ugc.models import ModelsPaginatedContentDownloadResponse
 from accelbyte_py_sdk.api.ugc.models import ResponseError
@@ -56,7 +58,7 @@ def get_followed_content(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_followed_content_internal(
+    result, error = get_followed_content_internal(
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -64,4 +66,4 @@ def get_followed_content(
     )
     if error:
         raise Exception(f"GetFollowedContent failed: {str(error)}")
-    click.echo("GetFollowedContent success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

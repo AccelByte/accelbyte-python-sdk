@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import get_special_payment_providers as get_special_payment_providers_internal
 
 
@@ -48,9 +50,9 @@ def get_special_payment_providers(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_special_payment_providers_internal(
+    result, error = get_special_payment_providers_internal(
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"getSpecialPaymentProviders failed: {str(error)}")
-    click.echo("getSpecialPaymentProviders success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

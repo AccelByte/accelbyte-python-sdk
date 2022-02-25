@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import query_redeem_history as query_redeem_history_internal
 from accelbyte_py_sdk.api.platform.models import RedeemHistoryPagingSlicedResult
 
@@ -61,7 +63,7 @@ def query_redeem_history(
         }
     else:
         login_as_internal(login_as)
-    _, error = query_redeem_history_internal(
+    result, error = query_redeem_history_internal(
         campaign_id=campaign_id,
         code=code,
         limit=limit,
@@ -72,4 +74,4 @@ def query_redeem_history(
     )
     if error:
         raise Exception(f"queryRedeemHistory failed: {str(error)}")
-    click.echo("queryRedeemHistory success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

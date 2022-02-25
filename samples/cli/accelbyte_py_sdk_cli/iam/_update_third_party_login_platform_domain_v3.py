@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import update_third_party_login_platform_domain_v3 as update_third_party_login_platform_domain_v3_internal
 from accelbyte_py_sdk.api.iam.models import ModelPlatformDomainResponse
 from accelbyte_py_sdk.api.iam.models import ModelPlatformDomainUpdateRequest
@@ -63,7 +65,7 @@ def update_third_party_login_platform_domain_v3(
             body = ModelPlatformDomainUpdateRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = update_third_party_login_platform_domain_v3_internal(
+    result, error = update_third_party_login_platform_domain_v3_internal(
         body=body,
         platform_id=platform_id,
         namespace=namespace,
@@ -71,4 +73,4 @@ def update_third_party_login_platform_domain_v3(
     )
     if error:
         raise Exception(f"UpdateThirdPartyLoginPlatformDomainV3 failed: {str(error)}")
-    click.echo("UpdateThirdPartyLoginPlatformDomainV3 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

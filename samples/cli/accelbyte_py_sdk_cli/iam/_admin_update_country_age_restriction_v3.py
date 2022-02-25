@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import admin_update_country_age_restriction_v3 as admin_update_country_age_restriction_v3_internal
 from accelbyte_py_sdk.api.iam.models import ModelCountryAgeRestrictionV3Request
 from accelbyte_py_sdk.api.iam.models import ModelCountryV3Response
@@ -63,7 +65,7 @@ def admin_update_country_age_restriction_v3(
             body = ModelCountryAgeRestrictionV3Request.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = admin_update_country_age_restriction_v3_internal(
+    result, error = admin_update_country_age_restriction_v3_internal(
         body=body,
         country_code=country_code,
         namespace=namespace,
@@ -71,4 +73,4 @@ def admin_update_country_age_restriction_v3(
     )
     if error:
         raise Exception(f"AdminUpdateCountryAgeRestrictionV3 failed: {str(error)}")
-    click.echo("AdminUpdateCountryAgeRestrictionV3 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

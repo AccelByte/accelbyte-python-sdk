@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import public_web_link_platform as public_web_link_platform_internal
 from accelbyte_py_sdk.api.iam.models import ModelWebLinkingResponse
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
@@ -58,7 +60,7 @@ def public_web_link_platform(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_web_link_platform_internal(
+    result, error = public_web_link_platform_internal(
         platform_id=platform_id,
         client_id=client_id,
         redirect_uri=redirect_uri,
@@ -67,4 +69,4 @@ def public_web_link_platform(
     )
     if error:
         raise Exception(f"PublicWebLinkPlatform failed: {str(error)}")
-    click.echo("PublicWebLinkPlatform success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

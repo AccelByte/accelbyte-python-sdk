@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.basic import add_country_group as add_country_group_internal
 from accelbyte_py_sdk.api.basic.models import AddCountryGroupRequest
 from accelbyte_py_sdk.api.basic.models import AddCountryGroupResponse
@@ -61,11 +63,11 @@ def add_country_group(
             body = AddCountryGroupRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = add_country_group_internal(
+    result, error = add_country_group_internal(
         body=body,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"addCountryGroup failed: {str(error)}")
-    click.echo("addCountryGroup success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

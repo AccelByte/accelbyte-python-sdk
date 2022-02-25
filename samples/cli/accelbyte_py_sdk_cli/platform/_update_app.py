@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import update_app as update_app_internal
 from accelbyte_py_sdk.api.platform.models import AppUpdate
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
@@ -66,7 +68,7 @@ def update_app(
             body = AppUpdate.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = update_app_internal(
+    result, error = update_app_internal(
         item_id=item_id,
         store_id=store_id,
         body=body,
@@ -75,4 +77,4 @@ def update_app(
     )
     if error:
         raise Exception(f"updateApp failed: {str(error)}")
-    click.echo("updateApp success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

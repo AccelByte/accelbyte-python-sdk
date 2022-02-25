@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import mock_fulfill_iap_item as mock_fulfill_iap_item_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import MockIAPReceipt
@@ -62,7 +64,7 @@ def mock_fulfill_iap_item(
             body = MockIAPReceipt.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = mock_fulfill_iap_item_internal(
+    result, error = mock_fulfill_iap_item_internal(
         user_id=user_id,
         body=body,
         namespace=namespace,
@@ -70,4 +72,4 @@ def mock_fulfill_iap_item(
     )
     if error:
         raise Exception(f"mockFulfillIAPItem failed: {str(error)}")
-    click.echo("mockFulfillIAPItem success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

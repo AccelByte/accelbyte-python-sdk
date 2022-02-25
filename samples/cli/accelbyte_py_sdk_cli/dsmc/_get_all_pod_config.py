@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.dsmc import get_all_pod_config as get_all_pod_config_internal
 from accelbyte_py_sdk.api.dsmc.models import ModelsListPodConfigResponse
 from accelbyte_py_sdk.api.dsmc.models import ResponseError
@@ -56,7 +58,7 @@ def get_all_pod_config(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_all_pod_config_internal(
+    result, error = get_all_pod_config_internal(
         count=count,
         offset=offset,
         namespace=namespace,
@@ -64,4 +66,4 @@ def get_all_pod_config(
     )
     if error:
         raise Exception(f"GetAllPodConfig failed: {str(error)}")
-    click.echo("GetAllPodConfig success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

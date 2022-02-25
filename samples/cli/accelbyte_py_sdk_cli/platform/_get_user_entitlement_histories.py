@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import get_user_entitlement_histories as get_user_entitlement_histories_internal
 from accelbyte_py_sdk.api.platform.models import EntitlementHistoryInfo
 
@@ -55,7 +57,7 @@ def get_user_entitlement_histories(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_user_entitlement_histories_internal(
+    result, error = get_user_entitlement_histories_internal(
         entitlement_id=entitlement_id,
         user_id=user_id,
         namespace=namespace,
@@ -63,4 +65,4 @@ def get_user_entitlement_histories(
     )
     if error:
         raise Exception(f"getUserEntitlementHistories failed: {str(error)}")
-    click.echo("getUserEntitlementHistories success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.seasonpass import delete_pass as delete_pass_internal
 from accelbyte_py_sdk.api.seasonpass.models import ErrorEntity
 
@@ -55,7 +57,7 @@ def delete_pass(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_pass_internal(
+    result, error = delete_pass_internal(
         code=code,
         season_id=season_id,
         namespace=namespace,
@@ -63,4 +65,4 @@ def delete_pass(
     )
     if error:
         raise Exception(f"deletePass failed: {str(error)}")
-    click.echo("deletePass success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

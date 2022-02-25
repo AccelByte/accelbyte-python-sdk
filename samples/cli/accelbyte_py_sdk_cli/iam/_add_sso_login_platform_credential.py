@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import add_sso_login_platform_credential as add_sso_login_platform_credential_internal
 from accelbyte_py_sdk.api.iam.models import ModelSSOPlatformCredentialRequest
 from accelbyte_py_sdk.api.iam.models import ModelSSOPlatformCredentialResponse
@@ -63,7 +65,7 @@ def add_sso_login_platform_credential(
             body = ModelSSOPlatformCredentialRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = add_sso_login_platform_credential_internal(
+    result, error = add_sso_login_platform_credential_internal(
         body=body,
         platform_id=platform_id,
         namespace=namespace,
@@ -71,4 +73,4 @@ def add_sso_login_platform_credential(
     )
     if error:
         raise Exception(f"AddSSOLoginPlatformCredential failed: {str(error)}")
-    click.echo("AddSSOLoginPlatformCredential success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

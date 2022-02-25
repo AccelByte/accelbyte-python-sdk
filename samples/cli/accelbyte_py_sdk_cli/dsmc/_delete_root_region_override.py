@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.dsmc import delete_root_region_override as delete_root_region_override_internal
 from accelbyte_py_sdk.api.dsmc.models import ModelsDeploymentWithOverride
 from accelbyte_py_sdk.api.dsmc.models import ResponseError
@@ -56,7 +58,7 @@ def delete_root_region_override(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_root_region_override_internal(
+    result, error = delete_root_region_override_internal(
         deployment=deployment,
         region=region,
         namespace=namespace,
@@ -64,4 +66,4 @@ def delete_root_region_override(
     )
     if error:
         raise Exception(f"DeleteRootRegionOverride failed: {str(error)}")
-    click.echo("DeleteRootRegionOverride success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

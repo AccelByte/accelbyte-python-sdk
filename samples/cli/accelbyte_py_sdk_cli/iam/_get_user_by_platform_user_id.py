@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import get_user_by_platform_user_id as get_user_by_platform_user_id_internal
 from accelbyte_py_sdk.api.iam.models import ModelPublicUserResponse
 
@@ -55,7 +57,7 @@ def get_user_by_platform_user_id(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_user_by_platform_user_id_internal(
+    result, error = get_user_by_platform_user_id_internal(
         platform_id=platform_id,
         platform_user_id=platform_user_id,
         namespace=namespace,
@@ -63,4 +65,4 @@ def get_user_by_platform_user_id(
     )
     if error:
         raise Exception(f"GetUserByPlatformUserID failed: {str(error)}")
-    click.echo("GetUserByPlatformUserID success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

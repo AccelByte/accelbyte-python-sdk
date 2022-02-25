@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import enable_user as enable_user_internal
 
 
@@ -52,11 +54,11 @@ def enable_user(
         }
     else:
         login_as_internal(login_as)
-    _, error = enable_user_internal(
+    result, error = enable_user_internal(
         user_id=user_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"EnableUser failed: {str(error)}")
-    click.echo("EnableUser success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

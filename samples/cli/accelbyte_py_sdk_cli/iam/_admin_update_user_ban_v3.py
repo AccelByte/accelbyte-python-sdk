@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import admin_update_user_ban_v3 as admin_update_user_ban_v3_internal
 from accelbyte_py_sdk.api.iam.models import ModelBanUpdateRequest
 from accelbyte_py_sdk.api.iam.models import ModelUserBanResponseV3
@@ -65,7 +67,7 @@ def admin_update_user_ban_v3(
             body = ModelBanUpdateRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = admin_update_user_ban_v3_internal(
+    result, error = admin_update_user_ban_v3_internal(
         body=body,
         ban_id=ban_id,
         user_id=user_id,
@@ -74,4 +76,4 @@ def admin_update_user_ban_v3(
     )
     if error:
         raise Exception(f"AdminUpdateUserBanV3 failed: {str(error)}")
-    click.echo("AdminUpdateUserBanV3 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

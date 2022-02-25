@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.matchmaking import bulk_get_sessions as bulk_get_sessions_internal
 from accelbyte_py_sdk.api.matchmaking.models import ModelsMatchmakingResult
 from accelbyte_py_sdk.api.matchmaking.models import ResponseError
@@ -55,11 +57,11 @@ def bulk_get_sessions(
         }
     else:
         login_as_internal(login_as)
-    _, error = bulk_get_sessions_internal(
+    result, error = bulk_get_sessions_internal(
         match_i_ds=match_i_ds,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"BulkGetSessions failed: {str(error)}")
-    click.echo("BulkGetSessions success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

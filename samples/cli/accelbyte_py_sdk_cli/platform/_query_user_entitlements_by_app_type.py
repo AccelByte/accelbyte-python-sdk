@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import query_user_entitlements_by_app_type as query_user_entitlements_by_app_type_internal
 from accelbyte_py_sdk.api.platform.models import AppEntitlementPagingSlicedResult
 
@@ -61,7 +63,7 @@ def query_user_entitlements_by_app_type(
         }
     else:
         login_as_internal(login_as)
-    _, error = query_user_entitlements_by_app_type_internal(
+    result, error = query_user_entitlements_by_app_type_internal(
         user_id=user_id,
         app_type=app_type,
         active_only=active_only,
@@ -72,4 +74,4 @@ def query_user_entitlements_by_app_type(
     )
     if error:
         raise Exception(f"queryUserEntitlementsByAppType failed: {str(error)}")
-    click.echo("queryUserEntitlementsByAppType success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

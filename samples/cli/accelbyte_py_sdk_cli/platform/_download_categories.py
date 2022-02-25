@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import download_categories as download_categories_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import HierarchicalCategoryInfo
@@ -56,7 +58,7 @@ def download_categories(
         }
     else:
         login_as_internal(login_as)
-    _, error = download_categories_internal(
+    result, error = download_categories_internal(
         language=language,
         store_id=store_id,
         namespace=namespace,
@@ -64,4 +66,4 @@ def download_categories(
     )
     if error:
         raise Exception(f"downloadCategories failed: {str(error)}")
-    click.echo("downloadCategories success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

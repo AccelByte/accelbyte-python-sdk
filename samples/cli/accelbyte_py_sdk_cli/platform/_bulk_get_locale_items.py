@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import bulk_get_locale_items as bulk_get_locale_items_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import ItemInfo
@@ -62,7 +64,7 @@ def bulk_get_locale_items(
         }
     else:
         login_as_internal(login_as)
-    _, error = bulk_get_locale_items_internal(
+    result, error = bulk_get_locale_items_internal(
         item_ids=item_ids,
         active_only=active_only,
         language=language,
@@ -73,4 +75,4 @@ def bulk_get_locale_items(
     )
     if error:
         raise Exception(f"bulkGetLocaleItems failed: {str(error)}")
-    click.echo("bulkGetLocaleItems success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.matchmaking import dequeue_session_handler as dequeue_session_handler_internal
 from accelbyte_py_sdk.api.matchmaking.models import ModelsDequeueRequest
 from accelbyte_py_sdk.api.matchmaking.models import ResponseError
@@ -60,11 +62,11 @@ def dequeue_session_handler(
             body = ModelsDequeueRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = dequeue_session_handler_internal(
+    result, error = dequeue_session_handler_internal(
         body=body,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"DequeueSessionHandler failed: {str(error)}")
-    click.echo("DequeueSessionHandler success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

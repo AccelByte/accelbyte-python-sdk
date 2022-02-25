@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import delete_user_subscription as delete_user_subscription_internal
 
 
@@ -54,7 +56,7 @@ def delete_user_subscription(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_user_subscription_internal(
+    result, error = delete_user_subscription_internal(
         subscription_id=subscription_id,
         user_id=user_id,
         namespace=namespace,
@@ -62,4 +64,4 @@ def delete_user_subscription(
     )
     if error:
         raise Exception(f"deleteUserSubscription failed: {str(error)}")
-    click.echo("deleteUserSubscription success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

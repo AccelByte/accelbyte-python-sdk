@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.seasonpass import query_tiers as query_tiers_internal
 from accelbyte_py_sdk.api.seasonpass.models import ErrorEntity
 from accelbyte_py_sdk.api.seasonpass.models import TierPagingSlicedResult
@@ -58,7 +60,7 @@ def query_tiers(
         }
     else:
         login_as_internal(login_as)
-    _, error = query_tiers_internal(
+    result, error = query_tiers_internal(
         season_id=season_id,
         limit=limit,
         offset=offset,
@@ -67,4 +69,4 @@ def query_tiers(
     )
     if error:
         raise Exception(f"queryTiers failed: {str(error)}")
-    click.echo("queryTiers success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

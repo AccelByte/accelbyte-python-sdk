@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.legal import check_readiness as check_readiness_internal
 from accelbyte_py_sdk.api.legal.models import LegalReadinessStatusResponse
 
@@ -49,9 +51,9 @@ def check_readiness(
         }
     else:
         login_as_internal(login_as)
-    _, error = check_readiness_internal(
+    result, error = check_readiness_internal(
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"checkReadiness failed: {str(error)}")
-    click.echo("checkReadiness success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

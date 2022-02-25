@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.matchmaking import import_channels as import_channels_internal
 from accelbyte_py_sdk.api.matchmaking.models import ModelsImportConfigResponse
 from accelbyte_py_sdk.api.matchmaking.models import ResponseErrorV1
@@ -56,7 +58,7 @@ def import_channels(
         }
     else:
         login_as_internal(login_as)
-    _, error = import_channels_internal(
+    result, error = import_channels_internal(
         file=file,
         strategy=strategy,
         namespace=namespace,
@@ -64,4 +66,4 @@ def import_channels(
     )
     if error:
         raise Exception(f"ImportChannels failed: {str(error)}")
-    click.echo("ImportChannels success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

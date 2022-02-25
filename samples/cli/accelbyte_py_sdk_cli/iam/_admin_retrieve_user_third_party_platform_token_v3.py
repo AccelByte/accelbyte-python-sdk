@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import admin_retrieve_user_third_party_platform_token_v3 as admin_retrieve_user_third_party_platform_token_v3_internal
 from accelbyte_py_sdk.api.iam.models import OauthmodelErrorResponse
 from accelbyte_py_sdk.api.iam.models import OauthmodelTokenThirdPartyResponse
@@ -56,7 +58,7 @@ def admin_retrieve_user_third_party_platform_token_v3(
         }
     else:
         login_as_internal(login_as)
-    _, error = admin_retrieve_user_third_party_platform_token_v3_internal(
+    result, error = admin_retrieve_user_third_party_platform_token_v3_internal(
         platform_id=platform_id,
         user_id=user_id,
         namespace=namespace,
@@ -64,4 +66,4 @@ def admin_retrieve_user_third_party_platform_token_v3(
     )
     if error:
         raise Exception(f"AdminRetrieveUserThirdPartyPlatformTokenV3 failed: {str(error)}")
-    click.echo("AdminRetrieveUserThirdPartyPlatformTokenV3 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import public_get_input_validations as public_get_input_validations_internal
 from accelbyte_py_sdk.api.iam.models import ModelInputValidationsPublicResponse
 
@@ -53,11 +55,11 @@ def public_get_input_validations(
         }
     else:
         login_as_internal(login_as)
-    _, error = public_get_input_validations_internal(
+    result, error = public_get_input_validations_internal(
         default_on_empty=default_on_empty,
         language_code=language_code,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"PublicGetInputValidations failed: {str(error)}")
-    click.echo("PublicGetInputValidations success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

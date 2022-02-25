@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import platform_unlink as platform_unlink_internal
 
 
@@ -56,7 +58,7 @@ def platform_unlink(
         }
     else:
         login_as_internal(login_as)
-    _, error = platform_unlink_internal(
+    result, error = platform_unlink_internal(
         platform_id=platform_id,
         user_id=user_id,
         platform_namespace=platform_namespace,
@@ -65,4 +67,4 @@ def platform_unlink(
     )
     if error:
         raise Exception(f"PlatformUnlink failed: {str(error)}")
-    click.echo("PlatformUnlink success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

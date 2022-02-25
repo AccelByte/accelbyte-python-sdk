@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.group import delete_group_configuration_global_rule_admin_v1 as delete_group_configuration_global_rule_admin_v1_internal
 from accelbyte_py_sdk.api.group.models import ModelsUpdateGroupConfigurationResponseV1
 from accelbyte_py_sdk.api.group.models import ResponseErrorResponse
@@ -56,7 +58,7 @@ def delete_group_configuration_global_rule_admin_v1(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_group_configuration_global_rule_admin_v1_internal(
+    result, error = delete_group_configuration_global_rule_admin_v1_internal(
         allowed_action=allowed_action,
         configuration_code=configuration_code,
         namespace=namespace,
@@ -64,4 +66,4 @@ def delete_group_configuration_global_rule_admin_v1(
     )
     if error:
         raise Exception(f"deleteGroupConfigurationGlobalRuleAdminV1 failed: {str(error)}")
-    click.echo("deleteGroupConfigurationGlobalRuleAdminV1 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

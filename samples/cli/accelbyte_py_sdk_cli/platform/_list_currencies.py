@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import list_currencies as list_currencies_internal
 from accelbyte_py_sdk.api.platform.models import CurrencyInfo
 
@@ -51,10 +53,10 @@ def list_currencies(
         }
     else:
         login_as_internal(login_as)
-    _, error = list_currencies_internal(
+    result, error = list_currencies_internal(
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"listCurrencies failed: {str(error)}")
-    click.echo("listCurrencies success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

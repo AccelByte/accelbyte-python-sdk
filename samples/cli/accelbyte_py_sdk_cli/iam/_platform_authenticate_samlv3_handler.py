@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import platform_authenticate_samlv3_handler as platform_authenticate_samlv3_handler_internal
 
 
@@ -56,7 +58,7 @@ def platform_authenticate_samlv3_handler(
         }
     else:
         login_as_internal(login_as)
-    _, error = platform_authenticate_samlv3_handler_internal(
+    result, error = platform_authenticate_samlv3_handler_internal(
         platform_id=platform_id,
         state=state,
         code=code,
@@ -65,4 +67,4 @@ def platform_authenticate_samlv3_handler(
     )
     if error:
         raise Exception(f"platformAuthenticateSAMLV3Handler failed: {str(error)}")
-    click.echo("platformAuthenticateSAMLV3Handler success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

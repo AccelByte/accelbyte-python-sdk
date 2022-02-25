@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import admin_delete_role_permissions_v4 as admin_delete_role_permissions_v4_internal
 
 
@@ -58,11 +60,11 @@ def admin_delete_role_permissions_v4(
             body = [str(i0) for i0 in body_json]
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = admin_delete_role_permissions_v4_internal(
+    result, error = admin_delete_role_permissions_v4_internal(
         body=body,
         role_id=role_id,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"AdminDeleteRolePermissionsV4 failed: {str(error)}")
-    click.echo("AdminDeleteRolePermissionsV4 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

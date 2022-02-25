@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.ugc import delete_group as delete_group_internal
 from accelbyte_py_sdk.api.ugc.models import ResponseError
 
@@ -55,7 +57,7 @@ def delete_group(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_group_internal(
+    result, error = delete_group_internal(
         group_id=group_id,
         user_id=user_id,
         namespace=namespace,
@@ -63,4 +65,4 @@ def delete_group(
     )
     if error:
         raise Exception(f"DeleteGroup failed: {str(error)}")
-    click.echo("DeleteGroup success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

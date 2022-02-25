@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import admin_add_user_permissions_v3 as admin_add_user_permissions_v3_internal
 from accelbyte_py_sdk.api.iam.models import AccountcommonPermissions
 
@@ -61,7 +63,7 @@ def admin_add_user_permissions_v3(
             body = AccountcommonPermissions.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = admin_add_user_permissions_v3_internal(
+    result, error = admin_add_user_permissions_v3_internal(
         body=body,
         user_id=user_id,
         namespace=namespace,
@@ -69,4 +71,4 @@ def admin_add_user_permissions_v3(
     )
     if error:
         raise Exception(f"AdminAddUserPermissionsV3 failed: {str(error)}")
-    click.echo("AdminAddUserPermissionsV3 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

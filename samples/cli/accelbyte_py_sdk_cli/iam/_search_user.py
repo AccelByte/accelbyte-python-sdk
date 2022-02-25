@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import search_user as search_user_internal
 from accelbyte_py_sdk.api.iam.models import ModelSearchUsersResponse
 
@@ -53,11 +55,11 @@ def search_user(
         }
     else:
         login_as_internal(login_as)
-    _, error = search_user_internal(
+    result, error = search_user_internal(
         query=query,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"SearchUser failed: {str(error)}")
-    click.echo("SearchUser success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

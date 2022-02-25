@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.matchmaking import add_user_into_session_in_channel as add_user_into_session_in_channel_internal
 from accelbyte_py_sdk.api.matchmaking.models import ModelsMatchAddUserIntoSessionRequest
 from accelbyte_py_sdk.api.matchmaking.models import ResponseError
@@ -65,7 +67,7 @@ def add_user_into_session_in_channel(
             body = ModelsMatchAddUserIntoSessionRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = add_user_into_session_in_channel_internal(
+    result, error = add_user_into_session_in_channel_internal(
         body=body,
         channel_name=channel_name,
         match_id=match_id,
@@ -74,4 +76,4 @@ def add_user_into_session_in_channel(
     )
     if error:
         raise Exception(f"AddUserIntoSessionInChannel failed: {str(error)}")
-    click.echo("AddUserIntoSessionInChannel success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import retrieve_all_sso_login_platform_credential_v3 as retrieve_all_sso_login_platform_credential_v3_internal
 from accelbyte_py_sdk.api.iam.models import ModelSSOPlatformCredentialResponse
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
@@ -56,7 +58,7 @@ def retrieve_all_sso_login_platform_credential_v3(
         }
     else:
         login_as_internal(login_as)
-    _, error = retrieve_all_sso_login_platform_credential_v3_internal(
+    result, error = retrieve_all_sso_login_platform_credential_v3_internal(
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -64,4 +66,4 @@ def retrieve_all_sso_login_platform_credential_v3(
     )
     if error:
         raise Exception(f"RetrieveAllSSOLoginPlatformCredentialV3 failed: {str(error)}")
-    click.echo("RetrieveAllSSOLoginPlatformCredentialV3 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

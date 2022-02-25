@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import get_jwksv3 as get_jwksv3_internal
 from accelbyte_py_sdk.api.iam.models import OauthcommonJWKSet
 
@@ -49,9 +51,9 @@ def get_jwksv3(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_jwksv3_internal(
+    result, error = get_jwksv3_internal(
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"GetJWKSV3 failed: {str(error)}")
-    click.echo("GetJWKSV3 success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

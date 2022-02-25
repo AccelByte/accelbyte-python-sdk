@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import revoke_a_user as revoke_a_user_internal
 
 
@@ -50,10 +52,10 @@ def revoke_a_user(
         }
     else:
         login_as_internal(login_as)
-    _, error = revoke_a_user_internal(
+    result, error = revoke_a_user_internal(
         user_id=user_id,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"RevokeAUser failed: {str(error)}")
-    click.echo("RevokeAUser success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

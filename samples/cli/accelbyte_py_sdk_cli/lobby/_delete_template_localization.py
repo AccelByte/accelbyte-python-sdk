@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import delete_template_localization as delete_template_localization_internal
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
 
@@ -55,7 +57,7 @@ def delete_template_localization(
         }
     else:
         login_as_internal(login_as)
-    _, error = delete_template_localization_internal(
+    result, error = delete_template_localization_internal(
         template_language=template_language,
         template_slug=template_slug,
         namespace=namespace,
@@ -63,4 +65,4 @@ def delete_template_localization(
     )
     if error:
         raise Exception(f"deleteTemplateLocalization failed: {str(error)}")
-    click.echo("deleteTemplateLocalization success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.ugc import update_screenshots as update_screenshots_internal
 from accelbyte_py_sdk.api.ugc.models import ModelsUpdateScreenshotRequest
 from accelbyte_py_sdk.api.ugc.models import ModelsUpdateScreenshotResponse
@@ -65,7 +67,7 @@ def update_screenshots(
             body = ModelsUpdateScreenshotRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    _, error = update_screenshots_internal(
+    result, error = update_screenshots_internal(
         body=body,
         content_id=content_id,
         user_id=user_id,
@@ -74,4 +76,4 @@ def update_screenshots(
     )
     if error:
         raise Exception(f"UpdateScreenshots failed: {str(error)}")
-    click.echo("UpdateScreenshots success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

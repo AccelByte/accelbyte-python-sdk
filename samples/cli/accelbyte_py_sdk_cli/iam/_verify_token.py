@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import verify_token as verify_token_internal
 from accelbyte_py_sdk.api.iam.models import OauthmodelTokenResponse
 
@@ -51,10 +53,10 @@ def verify_token(
         }
     else:
         login_as_internal(login_as)
-    _, error = verify_token_internal(
+    result, error = verify_token_internal(
         token=token,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(f"VerifyToken failed: {str(error)}")
-    click.echo("VerifyToken success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

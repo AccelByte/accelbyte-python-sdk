@@ -21,11 +21,13 @@
 # pylint: disable=unused-import
 
 import json
+import yaml
 from typing import Optional
 
 import click
 
 from .._utils import login_as as login_as_internal
+from .._utils import to_dict
 from accelbyte_py_sdk.api.leaderboard import get_archived_leaderboard_ranking_data_v1_handler as get_archived_leaderboard_ranking_data_v1_handler_internal
 from accelbyte_py_sdk.api.leaderboard.models import ModelsArchiveLeaderboardSignedURLResponse
 from accelbyte_py_sdk.api.leaderboard.models import ResponseErrorResponse
@@ -58,7 +60,7 @@ def get_archived_leaderboard_ranking_data_v1_handler(
         }
     else:
         login_as_internal(login_as)
-    _, error = get_archived_leaderboard_ranking_data_v1_handler_internal(
+    result, error = get_archived_leaderboard_ranking_data_v1_handler_internal(
         leaderboard_code=leaderboard_code,
         leaderboard_codes=leaderboard_codes,
         slug=slug,
@@ -67,4 +69,4 @@ def get_archived_leaderboard_ranking_data_v1_handler(
     )
     if error:
         raise Exception(f"GetArchivedLeaderboardRankingDataV1Handler failed: {str(error)}")
-    click.echo("GetArchivedLeaderboardRankingDataV1Handler success")
+    click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
