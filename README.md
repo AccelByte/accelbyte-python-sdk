@@ -429,6 +429,15 @@ accelbyte_py_sdk.initialize(
         }
     }
 )
+
+# 4. By default logs from 'accelbyte_py_sdk.http' are stringified dictionaries, you can set your own formatter like so.
+
+def format_request_response_as_yaml(data: dict) -> str:
+    return f"---\n{yaml.safe_dump(data, sort_keys=False).rstrip()}\n..."
+
+http_client = accelbyte_py_sdk.core.get_http_client()
+http_client.request_log_formatter = format_request_response_as_yaml
+http_client.response_log_formatter = format_request_response_as_yaml
 ```
 
 ---
