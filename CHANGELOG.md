@@ -1,7 +1,17 @@
 # Changelog
 
 ## v0.9.0
-- Updated APIs
+- Add `X-Amzn-Trace-Id` automatically on each request
+    - You can enable/disable this feature when you use `initialize()`
+- Add `User-Agent` automatically on each request
+    - You can enable/disable this feature when you use `initialize()`
+    - You can specify your `App Name` and `App Version`
+- Add WebSocket capability in the CLI app
+- Add log file helpers
+    - You can enable/disable this feature when you use `initialize()`
+- Remove authentication requirement optional in `WSClients`
+- Update Copyright Headers
+- Update APIs
     - basic
         - version bump only
     - dsmc
