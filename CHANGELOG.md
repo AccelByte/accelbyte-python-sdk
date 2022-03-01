@@ -1,5 +1,29 @@
 # Changelog
 
+## v0.9.0
+- Updated APIs
+    - basic
+        - version bump only
+    - dsmc
+        - version bump
+        - add, update: endpoints, models
+    - gdpr
+        - version bump only
+    - iam
+        - version bump only
+        - *security schema fixes*
+    - leaderboard
+        - version bump only
+    - platform
+        - version bump
+        - update model
+    - seasonpass
+        - version bump only
+    - social
+        - version bump only
+    - ugc
+        - version bump only
+
 ## v0.8.0
 - Move `samples/how_to` folder contents into `samples/how-to`.
 - Update tests.

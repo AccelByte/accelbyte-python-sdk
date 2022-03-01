@@ -26,7 +26,7 @@ definitions:
   acceptFriendsResponse:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
     type: object
@@ -63,7 +63,7 @@ definitions:
       blockUserId:
         type: string
       code:
-        type: string
+        type: integer
       id:
         type: string
       namespace:
@@ -95,7 +95,7 @@ definitions:
   cancelFriendsResponse:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
     type: object
@@ -121,7 +121,7 @@ definitions:
   cancelMatchmakingResponse:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
     type: object
@@ -254,7 +254,7 @@ definitions:
         items:
           type: integer
       code:
-        type: string
+        type: integer
       friendIds:
         type: array
         items:
@@ -286,7 +286,7 @@ definitions:
         additionalProperties:
           type: string
       code:
-        type: string
+        type: integer
       id:
         type: string
     type: object
@@ -309,7 +309,7 @@ definitions:
   getFriendshipStatusResponse:
     properties:
       code:
-        type: string
+        type: integer
       friendshipStatus:
         type: string
       id:
@@ -334,7 +334,7 @@ definitions:
   getSessionAttributeResponse:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
       value:
@@ -361,7 +361,7 @@ definitions:
       channelSlug:
         type: string
       code:
-        type: string
+        type: integer
       id:
         type: string
     type: object
@@ -381,7 +381,7 @@ definitions:
   listIncomingFriendsResponse:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
       userIds:
@@ -408,7 +408,7 @@ definitions:
   listOfFriendsResponse:
     properties:
       code:
-        type: string
+        type: integer
       friendIds:
         type: array
         items:
@@ -441,7 +441,7 @@ definitions:
   listOutgoingFriendsResponse:
     properties:
       code:
-        type: string
+        type: integer
       friendIds:
         type: array
         items:
@@ -503,7 +503,7 @@ definitions:
   offlineNotificationResponse:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
     type: object
@@ -513,7 +513,7 @@ definitions:
   onlineFriends:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
       onlineFriendIds:
@@ -562,7 +562,7 @@ definitions:
   partyChatResponse:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
     type: object
@@ -582,7 +582,7 @@ definitions:
   partyCreateResponse:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
       invitationToken:
@@ -647,7 +647,7 @@ definitions:
   partyInfoResponse:
     properties:
       code:
-        type: string
+        type: integer
       customAttributes:
         type: object
         additionalProperties: true
@@ -692,7 +692,7 @@ definitions:
   partyInviteResponse:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
     type: object
@@ -725,7 +725,7 @@ definitions:
   partyJoinResponse:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
       invitationToken:
@@ -769,7 +769,7 @@ definitions:
   partyKickResponse:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
     type: object
@@ -801,7 +801,7 @@ definitions:
   partyLeaveResponse:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
     type: object
@@ -824,7 +824,7 @@ definitions:
   partyPromoteLeaderResponse:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
       invitationToken:
@@ -871,7 +871,7 @@ definitions:
   partyRejectResponse:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
       partyId:
@@ -898,7 +898,7 @@ definitions:
       chat:
         type: string
       code:
-        type: string
+        type: integer
       friendId:
         type: string
       id:
@@ -947,7 +947,7 @@ definitions:
   personalChatResponse:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
     type: object
@@ -977,7 +977,7 @@ definitions:
   rejectFriendsResponse:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
     type: object
@@ -1014,7 +1014,7 @@ definitions:
   requestFriendsResponse:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
     type: object
@@ -1040,7 +1040,7 @@ definitions:
   sendChannelChatResponse:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
     type: object
@@ -1072,7 +1072,7 @@ definitions:
   setReadyConsentResponse:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
     type: object
@@ -1101,7 +1101,7 @@ definitions:
   setSessionAttributeResponse:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
     type: object
@@ -1127,7 +1127,7 @@ definitions:
   setUserStatusResponse:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
     type: object
@@ -1179,7 +1179,7 @@ definitions:
   startMatchmakingResponse:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
     type: object
@@ -1222,7 +1222,7 @@ definitions:
   unblockPlayerResponse:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
       namespace:
@@ -1256,7 +1256,7 @@ definitions:
   unfriendResponse:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
     type: object
@@ -1279,7 +1279,7 @@ definitions:
   userMetricResponse:
     properties:
       code:
-        type: string
+        type: integer
       id:
         type: string
       playerCount:
