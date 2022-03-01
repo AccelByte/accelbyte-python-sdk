@@ -4,13 +4,14 @@
 
 # template_file: python-cli-init.j2
 
-# justice-dsm-controller-service (2.14.0)
+# justice-dsm-controller-service (2.14.1)
 
 from ._list_config import list_config
 from ._save_config import save_config
 from ._update_image import update_image
 from ._create_image import create_image
 from ._import_images import import_images
+from ._create_image_patch import create_image_patch
 from ._get_config import get_config
 from ._create_config import create_config
 from ._delete_config import delete_config
@@ -42,7 +43,10 @@ from ._list_images import list_images
 from ._delete_image import delete_image
 from ._export_images import export_images
 from ._get_image_limit import get_image_limit
+from ._delete_image_patch import delete_image_patch
 from ._get_image_detail import get_image_detail
+from ._get_image_patches import get_image_patches
+from ._get_image_patch_detail import get_image_patch_detail
 from ._list_server import list_server
 from ._count_server import count_server
 from ._count_server_detailed import count_server_detailed
@@ -77,6 +81,7 @@ commands = [
     update_image,
     create_image,
     import_images,
+    create_image_patch,
     get_config,
     create_config,
     delete_config,
@@ -108,7 +113,10 @@ commands = [
     delete_image,
     export_images,
     get_image_limit,
+    delete_image_patch,
     get_image_detail,
+    get_image_patches,
+    get_image_patch_detail,
     list_server,
     count_server,
     count_server_detailed,

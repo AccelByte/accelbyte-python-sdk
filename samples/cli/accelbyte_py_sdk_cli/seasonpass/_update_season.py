@@ -4,7 +4,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-seasonpass-service (1.8.0)
+# justice-seasonpass-service (1.9.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
