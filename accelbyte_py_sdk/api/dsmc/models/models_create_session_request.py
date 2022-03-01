@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-dsm-controller-service (2.14.0)
+# justice-dsm-controller-service (2.14.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -25,6 +25,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.models_match_result_notification_payload import ModelsMatchResultNotificationPayload
 from ..models.models_request_matching_ally import ModelsRequestMatchingAlly
 
 
@@ -49,6 +50,8 @@ class ModelsCreateSessionRequest(Model):
         region: (region) REQUIRED str
 
         session_id: (session_id) REQUIRED str
+
+        notification_payload: (notification_payload) OPTIONAL ModelsMatchResultNotificationPayload
     """
 
     # region fields
@@ -62,6 +65,7 @@ class ModelsCreateSessionRequest(Model):
     pod_name: str                                                                                  # REQUIRED
     region: str                                                                                    # REQUIRED
     session_id: str                                                                                # REQUIRED
+    notification_payload: ModelsMatchResultNotificationPayload                                     # OPTIONAL
 
     # endregion fields
 
@@ -101,6 +105,10 @@ class ModelsCreateSessionRequest(Model):
 
     def with_session_id(self, value: str) -> ModelsCreateSessionRequest:
         self.session_id = value
+        return self
+
+    def with_notification_payload(self, value: ModelsMatchResultNotificationPayload) -> ModelsCreateSessionRequest:
+        self.notification_payload = value
         return self
 
     # endregion with_x methods
@@ -145,6 +153,10 @@ class ModelsCreateSessionRequest(Model):
             result["session_id"] = str(self.session_id)
         elif include_empty:
             result["session_id"] = str()
+        if hasattr(self, "notification_payload"):
+            result["notification_payload"] = self.notification_payload.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["notification_payload"] = ModelsMatchResultNotificationPayload()
         return result
 
     # endregion to methods
@@ -163,6 +175,7 @@ class ModelsCreateSessionRequest(Model):
         pod_name: str,
         region: str,
         session_id: str,
+        notification_payload: Optional[ModelsMatchResultNotificationPayload] = None,
     ) -> ModelsCreateSessionRequest:
         instance = cls()
         instance.client_version = client_version
@@ -174,6 +187,8 @@ class ModelsCreateSessionRequest(Model):
         instance.pod_name = pod_name
         instance.region = region
         instance.session_id = session_id
+        if notification_payload is not None:
+            instance.notification_payload = notification_payload
         return instance
 
     @classmethod
@@ -217,6 +232,10 @@ class ModelsCreateSessionRequest(Model):
             instance.session_id = str(dict_["session_id"])
         elif include_empty:
             instance.session_id = str()
+        if "notification_payload" in dict_ and dict_["notification_payload"] is not None:
+            instance.notification_payload = ModelsMatchResultNotificationPayload.create_from_dict(dict_["notification_payload"], include_empty=include_empty)
+        elif include_empty:
+            instance.notification_payload = ModelsMatchResultNotificationPayload()
         return instance
 
     @classmethod
@@ -249,6 +268,7 @@ class ModelsCreateSessionRequest(Model):
             "pod_name": "pod_name",
             "region": "region",
             "session_id": "session_id",
+            "notification_payload": "notification_payload",
         }
 
     # endregion static methods

@@ -1,6 +1,6 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-dsm-controller-service Index (2.14.0)
+# justice-dsm-controller-service Index (2.14.1)
 
 
 ## Operations
@@ -58,10 +58,14 @@
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /dsmcontroller/admin/images | POST | CreateImage | [CreateImage](../accelbyte_py_sdk/api/dsmc/operations/image_config/create_image.py) | [create_image](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) |
+| /dsmcontroller/admin/images/patches | POST | CreateImagePatch | [CreateImagePatch](../accelbyte_py_sdk/api/dsmc/operations/image_config/create_image_patch.py) | [create_image_patch](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/images | DELETE | DeleteImage | [DeleteImage](../accelbyte_py_sdk/api/dsmc/operations/image_config/delete_image.py) | [delete_image](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) |
+| /dsmcontroller/admin/namespaces/{namespace}/images/patches | DELETE | DeleteImagePatch | [DeleteImagePatch](../accelbyte_py_sdk/api/dsmc/operations/image_config/delete_image_patch.py) | [delete_image_patch](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/images/export | GET | ExportImages | [ExportImages](../accelbyte_py_sdk/api/dsmc/operations/image_config/export_images.py) | [export_images](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/images/versions/{version} | GET | GetImageDetail | [GetImageDetail](../accelbyte_py_sdk/api/dsmc/operations/image_config/get_image_detail.py) | [get_image_detail](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/images/limit | GET | GetImageLimit | [GetImageLimit](../accelbyte_py_sdk/api/dsmc/operations/image_config/get_image_limit.py) | [get_image_limit](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) |
+| /dsmcontroller/admin/namespaces/{namespace}/images/versions/{version}/patches/{versionPatch} | GET | GetImagePatchDetail | [GetImagePatchDetail](../accelbyte_py_sdk/api/dsmc/operations/image_config/get_image_patch_detail.py) | [get_image_patch_detail](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) |
+| /dsmcontroller/admin/namespaces/{namespace}/images/versions/{version}/patches | GET | GetImagePatches | [GetImagePatches](../accelbyte_py_sdk/api/dsmc/operations/image_config/get_image_patches.py) | [get_image_patches](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) |
 | /dsmcontroller/namespaces/{namespace}/images/versions/{version} | GET | ImageDetailClient | [ImageDetailClient](../accelbyte_py_sdk/api/dsmc/operations/image_config/image_detail_client.py) | [image_detail_client](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) |
 | /dsmcontroller/admin/images/import | POST | ImportImages | [ImportImages](../accelbyte_py_sdk/api/dsmc/operations/image_config/import_images.py) | [import_images](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/images | GET | ListImages | [ListImages](../accelbyte_py_sdk/api/dsmc/operations/image_config/list_images.py) | [list_images](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) |
@@ -115,6 +119,7 @@
 | models.CreateDeploymentOverrideRequest | [ModelsCreateDeploymentOverrideRequest](../accelbyte_py_sdk/api/dsmc/models/models_create_deployment_override_request.py) |
 | models.CreateDeploymentRequest | [ModelsCreateDeploymentRequest](../accelbyte_py_sdk/api/dsmc/models/models_create_deployment_request.py) |
 | models.CreateDSMConfigRequest | [ModelsCreateDSMConfigRequest](../accelbyte_py_sdk/api/dsmc/models/models_create_dsm_config_request.py) |
+| models.CreateImagePatchRequest | [ModelsCreateImagePatchRequest](../accelbyte_py_sdk/api/dsmc/models/models_create_image_patch_request.py) |
 | models.CreateImageRequest | [ModelsCreateImageRequest](../accelbyte_py_sdk/api/dsmc/models/models_create_image_request.py) |
 | models.CreatePodConfigRequest | [ModelsCreatePodConfigRequest](../accelbyte_py_sdk/api/dsmc/models/models_create_pod_config_request.py) |
 | models.CreatePortRequest | [ModelsCreatePortRequest](../accelbyte_py_sdk/api/dsmc/models/models_create_port_request.py) |
@@ -130,16 +135,20 @@
 | models.GetImageDetailResponse | [ModelsGetImageDetailResponse](../accelbyte_py_sdk/api/dsmc/models/models_get_image_detail_response.py) |
 | models.GetImageLimitResponse | [ModelsGetImageLimitResponse](../accelbyte_py_sdk/api/dsmc/models/models_get_image_limit_response.py) |
 | models.GetImageLimitResponseData | [ModelsGetImageLimitResponseData](../accelbyte_py_sdk/api/dsmc/models/models_get_image_limit_response_data.py) |
+| models.GetImagePatchDetailResponse | [ModelsGetImagePatchDetailResponse](../accelbyte_py_sdk/api/dsmc/models/models_get_image_patch_detail_response.py) |
 | models.ImageRecord | [ModelsImageRecord](../accelbyte_py_sdk/api/dsmc/models/models_image_record.py) |
 | models.ImageRecordUpdate | [ModelsImageRecordUpdate](../accelbyte_py_sdk/api/dsmc/models/models_image_record_update.py) |
 | models.ImportResponse | [ModelsImportResponse](../accelbyte_py_sdk/api/dsmc/models/models_import_response.py) |
 | models.ListConfigResponse | [ModelsListConfigResponse](../accelbyte_py_sdk/api/dsmc/models/models_list_config_response.py) |
 | models.ListDeploymentResponse | [ModelsListDeploymentResponse](../accelbyte_py_sdk/api/dsmc/models/models_list_deployment_response.py) |
+| models.ListImagePatchesResponse | [ModelsListImagePatchesResponse](../accelbyte_py_sdk/api/dsmc/models/models_list_image_patches_response.py) |
 | models.ListImageResponse | [ModelsListImageResponse](../accelbyte_py_sdk/api/dsmc/models/models_list_image_response.py) |
 | models.ListPodConfigResponse | [ModelsListPodConfigResponse](../accelbyte_py_sdk/api/dsmc/models/models_list_pod_config_response.py) |
 | models.ListServerResponse | [ModelsListServerResponse](../accelbyte_py_sdk/api/dsmc/models/models_list_server_response.py) |
 | models.ListSessionResponse | [ModelsListSessionResponse](../accelbyte_py_sdk/api/dsmc/models/models_list_session_response.py) |
+| models.MatchResult.notification_payload | [ModelsMatchResultNotificationPayload](../accelbyte_py_sdk/api/dsmc/models/models_match_result_notification_payload.py) |
 | models.PagingCursor | [ModelsPagingCursor](../accelbyte_py_sdk/api/dsmc/models/models_paging_cursor.py) |
+| models.PatchImageRecord | [ModelsPatchImageRecord](../accelbyte_py_sdk/api/dsmc/models/models_patch_image_record.py) |
 | models.PodConfigRecord | [ModelsPodConfigRecord](../accelbyte_py_sdk/api/dsmc/models/models_pod_config_record.py) |
 | models.PodCountConfigOverride | [ModelsPodCountConfigOverride](../accelbyte_py_sdk/api/dsmc/models/models_pod_count_config_override.py) |
 | models.RegisterLocalServerRequest | [ModelsRegisterLocalServerRequest](../accelbyte_py_sdk/api/dsmc/models/models_register_local_server_request.py) |

@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-dsm-controller-service (2.14.0)
+# justice-dsm-controller-service (2.14.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -29,6 +29,7 @@ from ..api.dsmc.models import ModelsCountSessionResponse
 from ..api.dsmc.models import ModelsCreateDSMConfigRequest
 from ..api.dsmc.models import ModelsCreateDeploymentOverrideRequest
 from ..api.dsmc.models import ModelsCreateDeploymentRequest
+from ..api.dsmc.models import ModelsCreateImagePatchRequest
 from ..api.dsmc.models import ModelsCreateImageRequest
 from ..api.dsmc.models import ModelsCreatePodConfigRequest
 from ..api.dsmc.models import ModelsCreatePortRequest
@@ -44,16 +45,20 @@ from ..api.dsmc.models import ModelsDetailedCountServerResponse
 from ..api.dsmc.models import ModelsGetImageDetailResponse
 from ..api.dsmc.models import ModelsGetImageLimitResponse
 from ..api.dsmc.models import ModelsGetImageLimitResponseData
+from ..api.dsmc.models import ModelsGetImagePatchDetailResponse
 from ..api.dsmc.models import ModelsImageRecord
 from ..api.dsmc.models import ModelsImageRecordUpdate
 from ..api.dsmc.models import ModelsImportResponse
 from ..api.dsmc.models import ModelsListConfigResponse
 from ..api.dsmc.models import ModelsListDeploymentResponse
+from ..api.dsmc.models import ModelsListImagePatchesResponse
 from ..api.dsmc.models import ModelsListImageResponse
 from ..api.dsmc.models import ModelsListPodConfigResponse
 from ..api.dsmc.models import ModelsListServerResponse
 from ..api.dsmc.models import ModelsListSessionResponse
+from ..api.dsmc.models import ModelsMatchResultNotificationPayload
 from ..api.dsmc.models import ModelsPagingCursor
+from ..api.dsmc.models import ModelsPatchImageRecord
 from ..api.dsmc.models import ModelsPodConfigRecord
 from ..api.dsmc.models import ModelsPodCountConfigOverride
 from ..api.dsmc.models import ModelsRegisterLocalServerRequest
@@ -152,6 +157,18 @@ def create_models_create_dsm_config_request_example() -> ModelsCreateDSMConfigRe
     return instance
 
 
+def create_models_create_image_patch_request_example() -> ModelsCreateImagePatchRequest:
+    instance = ModelsCreateImagePatchRequest()
+    instance.artifact_path = randomize()
+    instance.docker_path = randomize()
+    instance.image = randomize()
+    instance.namespace = randomize("slug")
+    instance.patch_version = randomize()
+    instance.persistent = randomize("bool")
+    instance.version = randomize("version")
+    return instance
+
+
 def create_models_create_image_request_example() -> ModelsCreateImageRequest:
     instance = ModelsCreateImageRequest()
     instance.artifact_path = randomize()
@@ -198,6 +215,7 @@ def create_models_create_session_request_example() -> ModelsCreateSessionRequest
     instance.pod_name = randomize()
     instance.region = randomize()
     instance.session_id = randomize("uid")
+    instance.notification_payload = create_models_match_result_notification_payload_example()
     return instance
 
 
@@ -317,6 +335,12 @@ def create_models_get_image_limit_response_data_example() -> ModelsGetImageLimit
     return instance
 
 
+def create_models_get_image_patch_detail_response_example() -> ModelsGetImagePatchDetailResponse:
+    instance = ModelsGetImagePatchDetailResponse()
+    instance.data = create_models_patch_image_record_example()
+    return instance
+
+
 def create_models_image_record_example() -> ModelsImageRecord:
     instance = ModelsImageRecord()
     instance.artifact_path = randomize()
@@ -361,6 +385,12 @@ def create_models_list_deployment_response_example() -> ModelsListDeploymentResp
     return instance
 
 
+def create_models_list_image_patches_response_example() -> ModelsListImagePatchesResponse:
+    instance = ModelsListImagePatchesResponse()
+    instance.images = [create_models_patch_image_record_example()]
+    return instance
+
+
 def create_models_list_image_response_example() -> ModelsListImageResponse:
     instance = ModelsListImageResponse()
     instance.images = [create_models_image_record_example()]
@@ -389,10 +419,30 @@ def create_models_list_session_response_example() -> ModelsListSessionResponse:
     return instance
 
 
+def create_models_match_result_notification_payload_example() -> ModelsMatchResultNotificationPayload:
+    instance = ModelsMatchResultNotificationPayload()
+    return instance
+
+
 def create_models_paging_cursor_example() -> ModelsPagingCursor:
     instance = ModelsPagingCursor()
     instance.next_ = randomize()
     instance.previous = randomize()
+    return instance
+
+
+def create_models_patch_image_record_example() -> ModelsPatchImageRecord:
+    instance = ModelsPatchImageRecord()
+    instance.artifact_path = randomize()
+    instance.created_at = randomize("date")
+    instance.docker_path = randomize()
+    instance.image = randomize()
+    instance.modified_by = randomize()
+    instance.namespace = randomize("slug")
+    instance.patch_version = randomize()
+    instance.persistent = randomize("bool")
+    instance.updated_at = randomize("date")
+    instance.version = randomize("version")
     return instance
 
 

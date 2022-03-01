@@ -6,17 +6,21 @@
 
 """Auto-generated package that contains models used by the justice-dsm-controller-service."""
 
-__version__ = "2.14.0"
+__version__ = "2.14.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .create_image import CreateImage
+from .create_image_patch import CreateImagePatch
 from .delete_image import DeleteImage
+from .delete_image_patch import DeleteImagePatch
 from .export_images import ExportImages
 from .get_image_detail import GetImageDetail
 from .get_image_limit import GetImageLimit
+from .get_image_patch_detail import GetImagePatchDetail
+from .get_image_patches import GetImagePatches
 from .image_detail_client import ImageDetailClient
 from .import_images import ImportImages
 from .list_images import ListImages

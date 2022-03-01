@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-leaderboard-service (2.13.0)
+# justice-leaderboard-service (2.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

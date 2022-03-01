@@ -1,6 +1,6 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-iam-service Index (5.2.0)
+# justice-iam-service Index (5.3.0)
 
 
 ## Operations

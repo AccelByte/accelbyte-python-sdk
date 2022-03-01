@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.2.0)
+# justice-platform-service (4.3.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -1183,6 +1183,7 @@ def create_google_iap_receipt_example() -> GoogleIAPReceipt:
     instance.product_id = randomize("uid")
     instance.purchase_time = randomize("int", min_val=1, max_val=1000)
     instance.purchase_token = randomize()
+    instance.auto_ack = randomize("bool")
     instance.language = randomize()
     instance.region = randomize()
     return instance

@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.2.0)
+# justice-platform-service (4.3.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,8 @@ class GoogleIAPReceipt(Model):
 
         purchase_token: (purchaseToken) REQUIRED str
 
+        auto_ack: (autoAck) OPTIONAL bool
+
         language: (language) OPTIONAL str
 
         region: (region) OPTIONAL str
@@ -52,6 +54,7 @@ class GoogleIAPReceipt(Model):
     product_id: str                                                                                # REQUIRED
     purchase_time: int                                                                             # REQUIRED
     purchase_token: str                                                                            # REQUIRED
+    auto_ack: bool                                                                                 # OPTIONAL
     language: str                                                                                  # OPTIONAL
     region: str                                                                                    # OPTIONAL
 
@@ -77,6 +80,10 @@ class GoogleIAPReceipt(Model):
 
     def with_purchase_token(self, value: str) -> GoogleIAPReceipt:
         self.purchase_token = value
+        return self
+
+    def with_auto_ack(self, value: bool) -> GoogleIAPReceipt:
+        self.auto_ack = value
         return self
 
     def with_language(self, value: str) -> GoogleIAPReceipt:
@@ -113,6 +120,10 @@ class GoogleIAPReceipt(Model):
             result["purchaseToken"] = str(self.purchase_token)
         elif include_empty:
             result["purchaseToken"] = str()
+        if hasattr(self, "auto_ack"):
+            result["autoAck"] = bool(self.auto_ack)
+        elif include_empty:
+            result["autoAck"] = bool()
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
@@ -135,6 +146,7 @@ class GoogleIAPReceipt(Model):
         product_id: str,
         purchase_time: int,
         purchase_token: str,
+        auto_ack: Optional[bool] = None,
         language: Optional[str] = None,
         region: Optional[str] = None,
     ) -> GoogleIAPReceipt:
@@ -144,6 +156,8 @@ class GoogleIAPReceipt(Model):
         instance.product_id = product_id
         instance.purchase_time = purchase_time
         instance.purchase_token = purchase_token
+        if auto_ack is not None:
+            instance.auto_ack = auto_ack
         if language is not None:
             instance.language = language
         if region is not None:
@@ -175,6 +189,10 @@ class GoogleIAPReceipt(Model):
             instance.purchase_token = str(dict_["purchaseToken"])
         elif include_empty:
             instance.purchase_token = str()
+        if "autoAck" in dict_ and dict_["autoAck"] is not None:
+            instance.auto_ack = bool(dict_["autoAck"])
+        elif include_empty:
+            instance.auto_ack = bool()
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
@@ -211,6 +229,7 @@ class GoogleIAPReceipt(Model):
             "productId": "product_id",
             "purchaseTime": "purchase_time",
             "purchaseToken": "purchase_token",
+            "autoAck": "auto_ack",
             "language": "language",
             "region": "region",
         }

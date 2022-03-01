@@ -26,20 +26,27 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import ModelsCreateImagePatchRequest
 from ..models import ModelsCreateImageRequest
 from ..models import ModelsGetImageDetailResponse
 from ..models import ModelsGetImageLimitResponse
+from ..models import ModelsGetImagePatchDetailResponse
 from ..models import ModelsImageRecord
 from ..models import ModelsImageRecordUpdate
 from ..models import ModelsImportResponse
+from ..models import ModelsListImagePatchesResponse
 from ..models import ModelsListImageResponse
 from ..models import ResponseError
 
 from ..operations.image_config import CreateImage
+from ..operations.image_config import CreateImagePatch
 from ..operations.image_config import DeleteImage
+from ..operations.image_config import DeleteImagePatch
 from ..operations.image_config import ExportImages
 from ..operations.image_config import GetImageDetail
 from ..operations.image_config import GetImageLimit
+from ..operations.image_config import GetImagePatchDetail
+from ..operations.image_config import GetImagePatches
 from ..operations.image_config import ImageDetailClient
 from ..operations.image_config import ImportImages
 from ..operations.image_config import ListImages
@@ -57,6 +64,22 @@ def create_image(body: ModelsCreateImageRequest, x_additional_headers: Optional[
 @same_doc_as(CreateImage)
 async def create_image_async(body: ModelsCreateImageRequest, x_additional_headers: Optional[Dict[str, str]] = None):
     request = CreateImage.create(
+        body=body,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(CreateImagePatch)
+def create_image_patch(body: ModelsCreateImagePatchRequest, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = CreateImagePatch.create(
+        body=body,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(CreateImagePatch)
+async def create_image_patch_async(body: ModelsCreateImagePatchRequest, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = CreateImagePatch.create(
         body=body,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)
@@ -85,6 +108,36 @@ async def delete_image_async(image_uri: str, version: str, namespace: Optional[s
     request = DeleteImage.create(
         image_uri=image_uri,
         version=version,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(DeleteImagePatch)
+def delete_image_patch(image_uri: str, version: str, version_patch: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteImagePatch.create(
+        image_uri=image_uri,
+        version=version,
+        version_patch=version_patch,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(DeleteImagePatch)
+async def delete_image_patch_async(image_uri: str, version: str, version_patch: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteImagePatch.create(
+        image_uri=image_uri,
+        version=version,
+        version_patch=version_patch,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)
@@ -159,6 +212,60 @@ async def get_image_limit_async(namespace: Optional[str] = None, x_additional_he
         if error:
             return None, error
     request = GetImageLimit.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetImagePatchDetail)
+def get_image_patch_detail(version: str, version_patch: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetImagePatchDetail.create(
+        version=version,
+        version_patch=version_patch,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetImagePatchDetail)
+async def get_image_patch_detail_async(version: str, version_patch: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetImagePatchDetail.create(
+        version=version,
+        version_patch=version_patch,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetImagePatches)
+def get_image_patches(version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetImagePatches.create(
+        version=version,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetImagePatches)
+async def get_image_patches_async(version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetImagePatches.create(
+        version=version,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)
