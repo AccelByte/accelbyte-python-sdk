@@ -16,7 +16,7 @@ MODULE='accelbyte_py_sdk_cli'
 MODULE_PATH='../samples/cli'
 TEMP_FILE='file.tmp'
 
-OPERATIONS_COUNT=63
+OPERATIONS_COUNT=67
 
 FINISHED_COUNT=0
 SUCCESS_COUNT=0
@@ -104,470 +104,505 @@ $PYTHON -m $MODULE 'dsmc-import-images' \
 update_status $? 'ImportImages'
 delete_file $TEMP_FILE
 
-#- 6 GetConfig
+#- 6 CreateImagePatch
+$PYTHON -m $MODULE 'dsmc-create-image-patch' \
+    '{"artifactPath": "570KQBVa", "dockerPath": "ewc72krS", "image": "ha68n3Yn", "namespace": "ozp1C2Km", "patchVersion": "IQTuBdNE", "persistent": true, "version": "xFb8CJ17"}' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'CreateImagePatch'
+delete_file $TEMP_FILE
+
+#- 7 GetConfig
 $PYTHON -m $MODULE 'dsmc-get-config' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetConfig'
 delete_file $TEMP_FILE
 
-#- 7 CreateConfig
+#- 8 CreateConfig
 $PYTHON -m $MODULE 'dsmc-create-config' \
-    '{"claim_timeout": 72, "creation_timeout": 84, "default_version": "BVaewc72", "port": 21, "ports": {"rSha68n3": 100}, "protocol": "nozp1C2K", "providers": ["mIQTuBdN"], "session_timeout": 61, "unreachable_timeout": 93}' \
+    '{"claim_timeout": 76, "creation_timeout": 59, "default_version": "JZaMSxEC", "port": 2, "ports": {"Zbygyoar": 81}, "protocol": "RoeNHSb8", "providers": ["Rh3kgs9q"], "session_timeout": 33, "unreachable_timeout": 71}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateConfig'
 delete_file $TEMP_FILE
 
-#- 8 DeleteConfig
+#- 9 DeleteConfig
 $PYTHON -m $MODULE 'dsmc-delete-config' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteConfig'
 delete_file $TEMP_FILE
 
-#- 9 UpdateConfig
+#- 10 UpdateConfig
 $PYTHON -m $MODULE 'dsmc-update-config' \
-    '{"claim_timeout": 37, "creation_timeout": 46, "default_version": "Fb8CJ17M", "port": 59, "protocol": "JZaMSxEC", "providers": ["bZbygyoa"], "session_timeout": 35, "unreachable_timeout": 81}' \
+    '{"claim_timeout": 2, "creation_timeout": 27, "default_version": "QsoBgiVp", "port": 82, "protocol": "8Cm3yvAS", "providers": ["UoxdxxFq"], "session_timeout": 24, "unreachable_timeout": 52}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateConfig'
 delete_file $TEMP_FILE
 
-#- 10 ClearCache
+#- 11 ClearCache
 $PYTHON -m $MODULE 'dsmc-clear-cache' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'ClearCache'
 delete_file $TEMP_FILE
 
-#- 11 GetAllDeployment
+#- 12 GetAllDeployment
 $PYTHON -m $MODULE 'dsmc-get-all-deployment' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetAllDeployment'
 delete_file $TEMP_FILE
 
-#- 12 GetDeployment
+#- 13 GetDeployment
 $PYTHON -m $MODULE 'dsmc-get-deployment' \
-    'RoeNHSb8' \
+    'GTJ8IEda' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetDeployment'
 delete_file $TEMP_FILE
 
-#- 13 CreateDeployment
+#- 14 CreateDeployment
 $PYTHON -m $MODULE 'dsmc-create-deployment' \
-    '{"allow_version_override": false, "buffer_count": 21, "buffer_percent": 13, "configuration": "s9qqJbnQ", "enable_region_overrides": true, "game_version": "oBgiVpP8", "max_count": 56, "min_count": 24, "overrides": {"3yvASUox": {"buffer_count": 7, "buffer_percent": 46, "configuration": "xFqmAGTJ", "enable_region_overrides": true, "game_version": "dagEtp4w", "max_count": 73, "min_count": 81, "name": "u9c19R6X", "region_overrides": {"DqWHkkP8": {"buffer_count": 26, "buffer_percent": 30, "max_count": 75, "min_count": 61, "name": "KMfjiX7j", "use_buffer_percent": false}}, "regions": ["kVZk3IaQ"], "use_buffer_percent": true}}, "region_overrides": {"mqGodOEG": {"buffer_count": 39, "buffer_percent": 13, "max_count": 83, "min_count": 81, "name": "j0c6i0Jk", "use_buffer_percent": true}}, "regions": ["Ias73ucY"], "use_buffer_percent": false}' \
-    'FAJ3DK5T' \
+    '{"allow_version_override": false, "buffer_count": 60, "buffer_percent": 38, "configuration": "p4w29KOu", "enable_region_overrides": false, "game_version": "19R6XDqW", "max_count": 67, "min_count": 20, "overrides": {"kP8npLEK": {"buffer_count": 76, "buffer_percent": 11, "configuration": "jiX7jpkV", "enable_region_overrides": false, "game_version": "3IaQYEmq", "max_count": 64, "min_count": 29, "name": "dOEGt9gP", "region_overrides": {"Oj0c6i0J": {"buffer_count": 21, "buffer_percent": 42, "max_count": 69, "min_count": 0, "name": "s73ucYnF", "use_buffer_percent": true}}, "regions": ["J3DK5T4E"], "use_buffer_percent": false}}, "region_overrides": {"gg0Y39Uo": {"buffer_count": 23, "buffer_percent": 31, "max_count": 43, "min_count": 3, "name": "VAgtsDhU", "use_buffer_percent": true}}, "regions": ["UscbQDjb"], "use_buffer_percent": true}' \
+    'PMz2PTRl' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateDeployment'
 delete_file $TEMP_FILE
 
-#- 14 DeleteDeployment
+#- 15 DeleteDeployment
 $PYTHON -m $MODULE 'dsmc-delete-deployment' \
-    '4Eogg0Y3' \
+    'kyU89ZPO' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteDeployment'
 delete_file $TEMP_FILE
 
-#- 15 UpdateDeployment
+#- 16 UpdateDeployment
 $PYTHON -m $MODULE 'dsmc-update-deployment' \
-    '{"allow_version_override": false, "buffer_count": 23, "buffer_percent": 31, "configuration": "v5bVAgts", "enable_region_overrides": true, "game_version": "hUTDUscb", "max_count": 85, "min_count": 59, "regions": ["jbTQuPMz"], "use_buffer_percent": false}' \
-    'kyU89ZPO' \
+    '{"allow_version_override": true, "buffer_count": 50, "buffer_percent": 83, "configuration": "FJ42cwmz", "enable_region_overrides": true, "game_version": "BSMNcoAA", "max_count": 81, "min_count": 19, "regions": ["KNjfcYHm"], "use_buffer_percent": false}' \
+    'YgBU1sqj' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateDeployment'
 delete_file $TEMP_FILE
 
-#- 16 CreateRootRegionOverride
+#- 17 CreateRootRegionOverride
 $PYTHON -m $MODULE 'dsmc-create-root-region-override' \
-    '{"buffer_count": 44, "buffer_percent": 50, "max_count": 83, "min_count": 63, "use_buffer_percent": false}' \
-    'wmzBBSMN' \
-    'coAAOjKN' \
+    '{"buffer_count": 49, "buffer_percent": 72, "max_count": 99, "min_count": 66, "use_buffer_percent": false}' \
+    'RSOFQBtu' \
+    '23REZ8hR' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateRootRegionOverride'
 delete_file $TEMP_FILE
 
-#- 17 DeleteRootRegionOverride
+#- 18 DeleteRootRegionOverride
 $PYTHON -m $MODULE 'dsmc-delete-root-region-override' \
-    'jfcYHm09' \
-    '3aYgBU1s' \
+    'VX7LGOvD' \
+    'dYiQS9i7' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteRootRegionOverride'
 delete_file $TEMP_FILE
 
-#- 18 UpdateRootRegionOverride
+#- 19 UpdateRootRegionOverride
 $PYTHON -m $MODULE 'dsmc-update-root-region-override' \
-    '{"buffer_count": 33, "buffer_percent": 19, "max_count": 49, "min_count": 72, "use_buffer_percent": false}' \
-    'RSOFQBtu' \
-    '23REZ8hR' \
+    '{"buffer_count": 24, "buffer_percent": 94, "max_count": 57, "min_count": 30, "use_buffer_percent": false}' \
+    'G9gpxL6y' \
+    'cTQdvln2' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateRootRegionOverride'
 delete_file $TEMP_FILE
 
-#- 19 CreateDeploymentOverride
+#- 20 CreateDeploymentOverride
 $PYTHON -m $MODULE 'dsmc-create-deployment-override' \
-    '{"buffer_count": 94, "buffer_percent": 98, "configuration": "7LGOvDdY", "enable_region_overrides": false, "game_version": "QS9i7mV1", "max_count": 57, "min_count": 30, "region_overrides": {"jG9gpxL6": {"buffer_count": 48, "buffer_percent": 4, "max_count": 90, "min_count": 84, "name": "dvln2LAu", "use_buffer_percent": true}}, "regions": ["XL6LFE1Y"], "use_buffer_percent": false}' \
-    '9m126ZWc' \
-    '8hHtWvbN' \
+    '{"buffer_count": 74, "buffer_percent": 52, "configuration": "uSQWEXL6", "enable_region_overrides": true, "game_version": "E1YHo9m1", "max_count": 96, "min_count": 4, "region_overrides": {"8hHtWvbN": {"buffer_count": 33, "buffer_percent": 12, "max_count": 92, "min_count": 33, "name": "slArFPiH", "use_buffer_percent": true}}, "regions": ["aCv8kU9d"], "use_buffer_percent": true}' \
+    'BpdsJLhs' \
+    'VyExrkxo' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateDeploymentOverride'
 delete_file $TEMP_FILE
 
-#- 20 DeleteDeploymentOverride
+#- 21 DeleteDeploymentOverride
 $PYTHON -m $MODULE 'dsmc-delete-deployment-override' \
-    'YqgUqslA' \
-    'rFPiHUIv' \
+    'ot0B7WOf' \
+    'ercZdpMc' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteDeploymentOverride'
 delete_file $TEMP_FILE
 
-#- 21 UpdateDeploymentOverride
+#- 22 UpdateDeploymentOverride
 $PYTHON -m $MODULE 'dsmc-update-deployment-override' \
-    '{"buffer_count": 0, "buffer_percent": 56, "configuration": "v8kU9dBB", "enable_region_overrides": false, "game_version": "dsJLhsVy", "max_count": 61, "min_count": 46, "regions": ["rkxoot0B"], "use_buffer_percent": false}' \
-    'ercZdpMc' \
-    'i37Ds7YS' \
+    '{"buffer_count": 17, "buffer_percent": 58, "configuration": "s7YSfExa", "enable_region_overrides": true, "game_version": "zLteMbFA", "max_count": 23, "min_count": 39, "regions": ["4hr7HmOY"], "use_buffer_percent": false}' \
+    'BA5ltAOX' \
+    'mlG6eh1d' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateDeploymentOverride'
 delete_file $TEMP_FILE
 
-#- 22 CreateOverrideRegionOverride
+#- 23 CreateOverrideRegionOverride
 $PYTHON -m $MODULE 'dsmc-create-override-region-override' \
-    '{"buffer_count": 10, "buffer_percent": 61, "max_count": 46, "min_count": 1, "use_buffer_percent": true}' \
-    'zLteMbFA' \
-    'lt4hr7Hm' \
-    'OYiBA5lt' \
+    '{"buffer_count": 90, "buffer_percent": 6, "max_count": 29, "min_count": 91, "use_buffer_percent": true}' \
+    'pBIcuC1d' \
+    'QY93OJnJ' \
+    '6Te9vD8l' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateOverrideRegionOverride'
 delete_file $TEMP_FILE
 
-#- 23 DeleteOverrideRegionOverride
+#- 24 DeleteOverrideRegionOverride
 $PYTHON -m $MODULE 'dsmc-delete-override-region-override' \
-    'AOXmlG6e' \
-    'h1dTdoTF' \
-    'pBIcuC1d' \
+    'dz7Hu8AD' \
+    '79kdWunv' \
+    'izU0q1pH' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteOverrideRegionOverride'
 delete_file $TEMP_FILE
 
-#- 24 UpdateOverrideRegionOverride
+#- 25 UpdateOverrideRegionOverride
 $PYTHON -m $MODULE 'dsmc-update-override-region-override' \
-    '{"buffer_count": 85, "buffer_percent": 100, "max_count": 80, "min_count": 70, "use_buffer_percent": false}' \
-    'J6Te9vD8' \
-    'ldz7Hu8A' \
-    'D79kdWun' \
+    '{"buffer_count": 49, "buffer_percent": 15, "max_count": 15, "min_count": 61, "use_buffer_percent": false}' \
+    'GgdrysMi' \
+    'zBGSRdP2' \
+    'l7DNSZ8A' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateOverrideRegionOverride'
 delete_file $TEMP_FILE
 
-#- 25 GetAllPodConfig
+#- 26 GetAllPodConfig
 $PYTHON -m $MODULE 'dsmc-get-all-pod-config' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetAllPodConfig'
 delete_file $TEMP_FILE
 
-#- 26 GetPodConfig
+#- 27 GetPodConfig
 $PYTHON -m $MODULE 'dsmc-get-pod-config' \
-    'vizU0q1p' \
+    'q0XiPLQX' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetPodConfig'
 delete_file $TEMP_FILE
 
-#- 27 CreatePodConfig
+#- 28 CreatePodConfig
 $PYTHON -m $MODULE 'dsmc-create-pod-config' \
-    '{"cpu_limit": 66, "mem_limit": 49, "params": "hhERoGgd"}' \
-    'rysMizBG' \
+    '{"cpu_limit": 89, "mem_limit": 9, "params": "07ZddOGT"}' \
+    'MlJjBwj9' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'CreatePodConfig'
 delete_file $TEMP_FILE
 
-#- 28 DeletePodConfig
+#- 29 DeletePodConfig
 $PYTHON -m $MODULE 'dsmc-delete-pod-config' \
-    'SRdP2l7D' \
+    'HJHQKseE' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeletePodConfig'
 delete_file $TEMP_FILE
 
-#- 29 UpdatePodConfig
+#- 30 UpdatePodConfig
 $PYTHON -m $MODULE 'dsmc-update-pod-config' \
-    '{"cpu_limit": 79, "mem_limit": 89, "name": "Z8Aq0XiP", "params": "LQXSe07Z"}' \
-    'ddOGTMlJ' \
+    '{"cpu_limit": 6, "mem_limit": 88, "name": "XRDSvgua", "params": "uw1xT7eM"}' \
+    'wSl9MLH0' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdatePodConfig'
 delete_file $TEMP_FILE
 
-#- 30 AddPort
+#- 31 AddPort
 $PYTHON -m $MODULE 'dsmc-add-port' \
-    '{"port": 19}' \
-    'Bwj9HJHQ' \
+    '{"port": 79}' \
+    'nTJ2ulNz' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AddPort'
 delete_file $TEMP_FILE
 
-#- 31 DeletePort
+#- 32 DeletePort
 $PYTHON -m $MODULE 'dsmc-delete-port' \
-    'KseEdSXR' \
+    'BvwJaQa5' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeletePort'
 delete_file $TEMP_FILE
 
-#- 32 UpdatePort
+#- 33 UpdatePort
 $PYTHON -m $MODULE 'dsmc-update-port' \
-    '{"name": "DSvguauw", "port": 47}' \
-    'T7eMwSl9' \
+    '{"name": "47JllvA8", "port": 86}' \
+    'WSpabUt7' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdatePort'
 delete_file $TEMP_FILE
 
-#- 33 ListImages
+#- 34 ListImages
 $PYTHON -m $MODULE 'dsmc-list-images' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'ListImages'
 delete_file $TEMP_FILE
 
-#- 34 DeleteImage
+#- 35 DeleteImage
 $PYTHON -m $MODULE 'dsmc-delete-image' \
-    'MLH0NnTJ' \
-    '2ulNzBvw' \
+    'xk6QxyWh' \
+    'fqoWfJw2' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteImage'
 delete_file $TEMP_FILE
 
-#- 35 ExportImages
+#- 36 ExportImages
 $PYTHON -m $MODULE 'dsmc-export-images' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'ExportImages'
 delete_file $TEMP_FILE
 
-#- 36 GetImageLimit
+#- 37 GetImageLimit
 $PYTHON -m $MODULE 'dsmc-get-image-limit' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetImageLimit'
 delete_file $TEMP_FILE
 
-#- 37 GetImageDetail
+#- 38 DeleteImagePatch
+$PYTHON -m $MODULE 'dsmc-delete-image-patch' \
+    'o8oWUqvP' \
+    'CZ2HzT7N' \
+    'XmWDlXsu' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'DeleteImagePatch'
+delete_file $TEMP_FILE
+
+#- 39 GetImageDetail
 $PYTHON -m $MODULE 'dsmc-get-image-detail' \
-    'JaQa547J' \
+    'NIdQJR5l' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetImageDetail'
 delete_file $TEMP_FILE
 
-#- 38 ListServer
+#- 40 GetImagePatches
+$PYTHON -m $MODULE 'dsmc-get-image-patches' \
+    'sNOlvkfw' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'GetImagePatches'
+delete_file $TEMP_FILE
+
+#- 41 GetImagePatchDetail
+$PYTHON -m $MODULE 'dsmc-get-image-patch-detail' \
+    'aSbnsuLC' \
+    'gToxuVTe' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'GetImagePatchDetail'
+delete_file $TEMP_FILE
+
+#- 42 ListServer
 $PYTHON -m $MODULE 'dsmc-list-server' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'ListServer'
 delete_file $TEMP_FILE
 
-#- 39 CountServer
+#- 43 CountServer
 $PYTHON -m $MODULE 'dsmc-count-server' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'CountServer'
 delete_file $TEMP_FILE
 
-#- 40 CountServerDetailed
+#- 44 CountServerDetailed
 $PYTHON -m $MODULE 'dsmc-count-server-detailed' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'CountServerDetailed'
 delete_file $TEMP_FILE
 
-#- 41 ListLocalServer
+#- 45 ListLocalServer
 $PYTHON -m $MODULE 'dsmc-list-local-server' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'ListLocalServer'
 delete_file $TEMP_FILE
 
-#- 42 DeleteLocalServer
+#- 46 DeleteLocalServer
 $PYTHON -m $MODULE 'dsmc-delete-local-server' \
-    'llvA8RWS' \
+    'kJgvg6h5' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteLocalServer'
 delete_file $TEMP_FILE
 
-#- 43 GetServer
+#- 47 GetServer
 $PYTHON -m $MODULE 'dsmc-get-server' \
-    'pabUt7xk' \
+    'HIpH0Dvi' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetServer'
 delete_file $TEMP_FILE
 
-#- 44 DeleteServer
+#- 48 DeleteServer
 $PYTHON -m $MODULE 'dsmc-delete-server' \
-    '6QxyWhfq' \
+    'plEk4vj3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteServer'
 delete_file $TEMP_FILE
 
-#- 45 GetServerLogs
+#- 49 GetServerLogs
 $PYTHON -m $MODULE 'dsmc-get-server-logs' \
-    'oWfJw2o8' \
+    'LDp4yqDt' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetServerLogs'
 delete_file $TEMP_FILE
 
-#- 46 ListSession
+#- 50 ListSession
 $PYTHON -m $MODULE 'dsmc-list-session' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'ListSession'
 delete_file $TEMP_FILE
 
-#- 47 CountSession
+#- 51 CountSession
 $PYTHON -m $MODULE 'dsmc-count-session' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'CountSession'
 delete_file $TEMP_FILE
 
-#- 48 DeleteSession
+#- 52 DeleteSession
 $PYTHON -m $MODULE 'dsmc-delete-session' \
-    'oWUqvPCZ' \
+    '8QUZDpxl' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteSession'
 delete_file $TEMP_FILE
 
-#- 49 ExportConfigV1
+#- 53 ExportConfigV1
 $PYTHON -m $MODULE 'dsmc-export-config-v1' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'ExportConfigV1'
 delete_file $TEMP_FILE
 
-#- 50 ImportConfigV1
+#- 54 ImportConfigV1
 $PYTHON -m $MODULE 'dsmc-import-config-v1' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'ImportConfigV1'
 delete_file $TEMP_FILE
 
-#- 51 ImageDetailClient
+#- 55 ImageDetailClient
 $PYTHON -m $MODULE 'dsmc-image-detail-client' \
-    '2HzT7NXm' \
+    'HasinGcj' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'ImageDetailClient'
 delete_file $TEMP_FILE
 
-#- 52 DeregisterLocalServer
+#- 56 DeregisterLocalServer
 $PYTHON -m $MODULE 'dsmc-deregister-local-server' \
-    '{"name": "WDlXsuNI"}' \
+    '{"name": "rkmRMttg"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeregisterLocalServer'
 delete_file $TEMP_FILE
 
-#- 53 RegisterLocalServer
+#- 57 RegisterLocalServer
 $PYTHON -m $MODULE 'dsmc-register-local-server' \
-    '{"custom_attribute": "dQJR5lsN", "ip": "OlvkfwaS", "name": "bnsuLCgT", "port": 28}' \
+    '{"custom_attribute": "jDSaIVBm", "ip": "ft3Udg7p", "name": "9PGmY2H5", "port": 20}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'RegisterLocalServer'
 delete_file $TEMP_FILE
 
-#- 54 RegisterServer
+#- 58 RegisterServer
 $PYTHON -m $MODULE 'dsmc-register-server' \
-    '{"custom_attribute": "xuVTekJg", "pod_name": "vg6h5HIp"}' \
+    '{"custom_attribute": "X4MsisSX", "pod_name": "28nARxWR"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'RegisterServer'
 delete_file $TEMP_FILE
 
-#- 55 ShutdownServer
+#- 59 ShutdownServer
 $PYTHON -m $MODULE 'dsmc-shutdown-server' \
-    '{"kill_me": true, "pod_name": "viplEk4v"}' \
+    '{"kill_me": false, "pod_name": "v5ou5xtv"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'ShutdownServer'
 delete_file $TEMP_FILE
 
-#- 56 GetServerSession
+#- 60 GetServerSession
 $PYTHON -m $MODULE 'dsmc-get-server-session' \
-    'j3LDp4yq' \
+    'd28OUfCt' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetServerSession'
 delete_file $TEMP_FILE
 
-#- 57 CreateSession
+#- 61 CreateSession
 $PYTHON -m $MODULE 'dsmc-create-session' \
-    '{"client_version": "Dt8QUZDp", "configuration": "xlHasinG", "deployment": "cjrkmRMt", "game_mode": "tgjDSaIV", "matching_allies": [{"matching_parties": [{"party_attributes": {"Bmft3Udg": {}}, "party_id": "7p9PGmY2", "party_members": [{"user_id": "H5kX4Msi"}]}]}], "namespace": "sSX28nAR", "pod_name": "xWRpv5ou", "region": "5xtvd28O", "session_id": "UfCt8UJC"}' \
+    '{"client_version": "8UJC5flN", "configuration": "yj6HsTtX", "deployment": "8P3llnaa", "game_mode": "S9lqyygP", "matching_allies": [{"matching_parties": [{"party_attributes": {"cfkJIxfQ": {}}, "party_id": "Zza8kNVb", "party_members": [{"user_id": "DxVMq7HJ"}]}]}], "namespace": "k0F89xAc", "notification_payload": {}, "pod_name": "3YVfaENt", "region": "rl0pTKZT", "session_id": "XqzHuBMY"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateSession'
 delete_file $TEMP_FILE
 
-#- 58 ClaimServer
+#- 62 ClaimServer
 $PYTHON -m $MODULE 'dsmc-claim-server' \
-    '{"session_id": "5flNyj6H"}' \
+    '{"session_id": "QSA2jz1Z"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'ClaimServer'
 delete_file $TEMP_FILE
 
-#- 59 GetSession
+#- 63 GetSession
 $PYTHON -m $MODULE 'dsmc-get-session' \
-    'sTtX8P3l' \
+    'OpdOjSyM' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetSession'
 delete_file $TEMP_FILE
 
-#- 60 GetDefaultProvider
+#- 64 GetDefaultProvider
 $PYTHON -m $MODULE 'dsmc-get-default-provider' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetDefaultProvider'
 delete_file $TEMP_FILE
 
-#- 61 ListProviders
+#- 65 ListProviders
 $PYTHON -m $MODULE 'dsmc-list-providers' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'ListProviders'
 delete_file $TEMP_FILE
 
-#- 62 ListProvidersByRegion
+#- 66 ListProvidersByRegion
 $PYTHON -m $MODULE 'dsmc-list-providers-by-region' \
-    'lnaaS9lq' \
+    'ddB41JuM' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'ListProvidersByRegion'
 delete_file $TEMP_FILE
 
-#- 63 PublicGetMessages
+#- 67 PublicGetMessages
 $PYTHON -m $MODULE 'dsmc-public-get-messages' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1

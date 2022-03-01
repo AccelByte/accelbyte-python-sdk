@@ -1625,7 +1625,7 @@ $PYTHON -m $MODULE 'iam-user-authentication-v3' \
     'uYWDTtL6' \
     'MTTRkCbb' \
     '9S5Q1IVH' \
-    --login_with_auth "Bearer foo" \
+    --login_with_auth "Basic YWRtaW46YWRtaW4=" \
     >$TEMP_FILE 2>&1
 update_status $? 'UserAuthenticationV3'
 delete_file $TEMP_FILE
@@ -1665,7 +1665,7 @@ delete_file $TEMP_FILE
 $PYTHON -m $MODULE 'iam-authorize-v3' \
     '13gf7TRi' \
     'code' \
-    --login_with_auth "Bearer foo" \
+    --login_with_auth "Basic YWRtaW46YWRtaW4=" \
     >$TEMP_FILE 2>&1
 update_status $? 'AuthorizeV3'
 delete_file $TEMP_FILE
@@ -1706,7 +1706,7 @@ delete_file $TEMP_FILE
 #- 203 PlatformTokenGrantV3
 $PYTHON -m $MODULE 'iam-platform-token-grant-v3' \
     'zopFmeRw' \
-    --login_with_auth "Bearer foo" \
+    --login_with_auth "Basic YWRtaW46YWRtaW4=" \
     >$TEMP_FILE 2>&1
 update_status $? 'PlatformTokenGrantV3'
 delete_file $TEMP_FILE
@@ -1729,7 +1729,7 @@ delete_file $TEMP_FILE
 #- 206 TokenGrantV3
 $PYTHON -m $MODULE 'iam-token-grant-v3' \
     'client_credentials' \
-    --login_with_auth "Bearer foo" \
+    --login_with_auth "Basic YWRtaW46YWRtaW4=" \
     >$TEMP_FILE 2>&1
 update_status $? 'TokenGrantV3'
 delete_file $TEMP_FILE

@@ -2514,7 +2514,7 @@ delete_file $TEMP_FILE
 #- 298 PublicFulfillGoogleIAPItem
 $PYTHON -m $MODULE 'platform-public-fulfill-google-iap-item' \
     'wtw2Mjcy' \
-    --body '{"language": "9ZL6Zs5B", "orderId": "u2XYopLW", "packageName": "ZeUKJJNf", "productId": "tRpGgk1i", "purchaseTime": 36, "purchaseToken": "eREzzRG6", "region": "z9wmuHdd"}' \
+    --body '{"autoAck": true, "language": "5Bu2XYop", "orderId": "LWZeUKJJ", "packageName": "NftRpGgk", "productId": "1iseREzz", "purchaseTime": 86, "purchaseToken": "G6z9wmuH", "region": "ddyOdibI"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicFulfillGoogleIAPItem'
@@ -2522,8 +2522,8 @@ delete_file $TEMP_FILE
 
 #- 299 PublicReconcilePlayStationStore
 $PYTHON -m $MODULE 'platform-public-reconcile-play-station-store' \
-    'yOdibI1L' \
-    --body '{"currencyCode": "VyqbdY8D", "price": 0.5120745585035149, "productId": "KAuoIKz3", "serviceLabel": 83}' \
+    '1LVyqbdY' \
+    --body '{"currencyCode": "8DGZKAuo", "price": 0.545408047519613, "productId": "Kz3Pp3zL", "serviceLabel": 97}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicReconcilePlayStationStore'
@@ -2531,8 +2531,8 @@ delete_file $TEMP_FILE
 
 #- 300 SyncStadiaEntitlement
 $PYTHON -m $MODULE 'platform-sync-stadia-entitlement' \
-    'p3zLWUxM' \
-    --body '{"appId": "zMtSmMmZ", "language": "P8nG0FoQ", "region": "P8q7aSsb", "stadiaPlayerId": "85gAh9RD"}' \
+    'UxMzMtSm' \
+    --body '{"appId": "MmZP8nG0", "language": "FoQP8q7a", "region": "Ssb85gAh", "stadiaPlayerId": "9RD3ZzN6"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'SyncStadiaEntitlement'
@@ -2540,8 +2540,8 @@ delete_file $TEMP_FILE
 
 #- 301 SyncSteamInventory
 $PYTHON -m $MODULE 'platform-sync-steam-inventory' \
-    '3ZzN6N1i' \
-    --body '{"appId": "J8ltt9IR", "currencyCode": "qCflgln6", "language": "r5f0s5H6", "price": 0.17876118748963976, "productId": "f3QHa11h", "region": "LLCgw5av", "steamId": "4LExdabD"}' \
+    'N1iJ8ltt' \
+    --body '{"appId": "9IRqCflg", "currencyCode": "ln6r5f0s", "language": "5H6lCf3Q", "price": 0.5255558268132179, "productId": "11hLLCgw", "region": "5av4LExd", "steamId": "abD8g2cv"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'SyncSteamInventory'
@@ -2549,8 +2549,8 @@ delete_file $TEMP_FILE
 
 #- 302 SyncTwitchDropsEntitlement
 $PYTHON -m $MODULE 'platform-sync-twitch-drops-entitlement' \
-    '8g2cvHfM' \
-    --body '{"gameId": "RupDA5xb", "language": "js3XRdHU", "region": "J0GCmflI"}' \
+    'HfMRupDA' \
+    --body '{"gameId": "5xbjs3XR", "language": "dHUJ0GCm", "region": "flIXkgJ6"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'SyncTwitchDropsEntitlement'
@@ -2558,8 +2558,8 @@ delete_file $TEMP_FILE
 
 #- 303 SyncXboxInventory
 $PYTHON -m $MODULE 'platform-sync-xbox-inventory' \
-    'XkgJ6zkT' \
-    --body '{"currencyCode": "woakq7sE", "price": 0.07083368406806057, "productId": "FZ1NtONX", "xstsToken": "b9w9hsQH"}' \
+    'zkTwoakq' \
+    --body '{"currencyCode": "7sEejFZ1", "price": 0.6098341965022664, "productId": "ONXb9w9h", "xstsToken": "sQHszIsf"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'SyncXboxInventory'
@@ -2567,7 +2567,7 @@ delete_file $TEMP_FILE
 
 #- 304 PublicQueryUserOrders
 $PYTHON -m $MODULE 'platform-public-query-user-orders' \
-    'szIsfrlz' \
+    'rlzKpQdd' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicQueryUserOrders'
@@ -2575,8 +2575,8 @@ delete_file $TEMP_FILE
 
 #- 305 PublicCreateUserOrder
 $PYTHON -m $MODULE 'platform-public-create-user-order' \
-    'KpQdd58d' \
-    --body '{"currencyCode": "ZP5Rvrin", "discountedPrice": 78, "ext": {"tvBtqFSk": {}}, "itemId": "A68mIVYJ", "language": "5pSVxBsL", "price": 14, "quantity": 39, "region": "y3pecToX", "returnUrl": "A4M1oUFP"}' \
+    '58dZP5Rv' \
+    --body '{"currencyCode": "rinNtvBt", "discountedPrice": 32, "ext": {"FSkA68mI": {}}, "itemId": "VYJ5pSVx", "language": "BsLhty3p", "price": 9, "quantity": 4, "region": "ToXA4M1o", "returnUrl": "UFPhgo7Z"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicCreateUserOrder'
@@ -2584,8 +2584,8 @@ delete_file $TEMP_FILE
 
 #- 306 PublicGetUserOrder
 $PYTHON -m $MODULE 'platform-public-get-user-order' \
-    'hgo7Z6mw' \
-    'NC4FY69m' \
+    '6mwNC4FY' \
+    '69mM87jo' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserOrder'
@@ -2593,8 +2593,8 @@ delete_file $TEMP_FILE
 
 #- 307 PublicCancelUserOrder
 $PYTHON -m $MODULE 'platform-public-cancel-user-order' \
-    'M87joJNO' \
-    'GB83Ns6H' \
+    'JNOGB83N' \
+    's6Hl5Poa' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicCancelUserOrder'
@@ -2602,8 +2602,8 @@ delete_file $TEMP_FILE
 
 #- 308 PublicGetUserOrderHistories
 $PYTHON -m $MODULE 'platform-public-get-user-order-histories' \
-    'l5Poab6l' \
-    'KoVqNBUz' \
+    'b6lKoVqN' \
+    'BUzIxOfg' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserOrderHistories'
@@ -2611,8 +2611,8 @@ delete_file $TEMP_FILE
 
 #- 309 PublicDownloadUserOrderReceipt
 $PYTHON -m $MODULE 'platform-public-download-user-order-receipt' \
-    'IxOfglqu' \
-    'S2q2DoWr' \
+    'lquS2q2D' \
+    'oWr9zvFt' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicDownloadUserOrderReceipt'
@@ -2620,7 +2620,7 @@ delete_file $TEMP_FILE
 
 #- 310 PublicGetPaymentAccounts
 $PYTHON -m $MODULE 'platform-public-get-payment-accounts' \
-    '9zvFtKa2' \
+    'Ka2mOAqO' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetPaymentAccounts'
@@ -2628,9 +2628,9 @@ delete_file $TEMP_FILE
 
 #- 311 PublicDeletePaymentAccount
 $PYTHON -m $MODULE 'platform-public-delete-payment-account' \
-    'mOAqOokV' \
-    'card' \
-    'lxQ2YriT' \
+    'okV1plxQ' \
+    'paypal' \
+    'iTPfipD6' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicDeletePaymentAccount'
@@ -2638,7 +2638,7 @@ delete_file $TEMP_FILE
 
 #- 312 PublicQueryUserSubscriptions
 $PYTHON -m $MODULE 'platform-public-query-user-subscriptions' \
-    'PfipD67j' \
+    '7jI2hiZk' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicQueryUserSubscriptions'
@@ -2646,8 +2646,8 @@ delete_file $TEMP_FILE
 
 #- 313 PublicSubscribeSubscription
 $PYTHON -m $MODULE 'platform-public-subscribe-subscription' \
-    'I2hiZkrt' \
-    --body '{"currencyCode": "Lnh2U1RQ", "itemId": "lMxkfNMP", "language": "Ntqv2TMz", "region": "1b7SnzkX", "returnUrl": "Oek83Igm", "source": "1wkSWsYv"}' \
+    'rtLnh2U1' \
+    --body '{"currencyCode": "RQlMxkfN", "itemId": "MPNtqv2T", "language": "Mz1b7Snz", "region": "kXOek83I", "returnUrl": "gm1wkSWs", "source": "YvAsu18o"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicSubscribeSubscription'
@@ -2655,8 +2655,8 @@ delete_file $TEMP_FILE
 
 #- 314 PublicCheckUserSubscriptionSubscribableByItemId
 $PYTHON -m $MODULE 'platform-public-check-user-subscription-subscribable-by-item-id' \
-    'Asu18obU' \
-    'dc8mbvXc' \
+    'bUdc8mbv' \
+    'XcwcgMqO' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicCheckUserSubscriptionSubscribableByItemId'
@@ -2664,8 +2664,8 @@ delete_file $TEMP_FILE
 
 #- 315 PublicGetUserSubscription
 $PYTHON -m $MODULE 'platform-public-get-user-subscription' \
-    'wcgMqOXM' \
-    'ziXrVdsE' \
+    'XMziXrVd' \
+    'sEc3ClFP' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserSubscription'
@@ -2673,8 +2673,8 @@ delete_file $TEMP_FILE
 
 #- 316 PublicChangeSubscriptionBillingAccount
 $PYTHON -m $MODULE 'platform-public-change-subscription-billing-account' \
-    'c3ClFP3m' \
-    'JwusCBTe' \
+    '3mJwusCB' \
+    'Te4kLcuq' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicChangeSubscriptionBillingAccount'
@@ -2682,9 +2682,9 @@ delete_file $TEMP_FILE
 
 #- 317 PublicCancelSubscription
 $PYTHON -m $MODULE 'platform-public-cancel-subscription' \
-    '4kLcuqL4' \
-    '0NYgekRa' \
-    --body '{"immediate": true, "reason": "paGTA9BT"}' \
+    'L40NYgek' \
+    'RavpaGTA' \
+    --body '{"immediate": true, "reason": "TyCCyN4F"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicCancelSubscription'
@@ -2692,8 +2692,8 @@ delete_file $TEMP_FILE
 
 #- 318 PublicGetUserSubscriptionBillingHistories
 $PYTHON -m $MODULE 'platform-public-get-user-subscription-billing-histories' \
-    'yCCyN4Fw' \
-    '9i6mI2W3' \
+    'w9i6mI2W' \
+    '3tjjCqPV' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserSubscriptionBillingHistories'
@@ -2701,8 +2701,8 @@ delete_file $TEMP_FILE
 
 #- 319 PublicGetWallet
 $PYTHON -m $MODULE 'platform-public-get-wallet' \
-    'tjjCqPVy' \
-    'Ys01hEYz' \
+    'yYs01hEY' \
+    'zWw3qrcx' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetWallet'
@@ -2710,8 +2710,8 @@ delete_file $TEMP_FILE
 
 #- 320 PublicListUserWalletTransactions
 $PYTHON -m $MODULE 'platform-public-list-user-wallet-transactions' \
-    'Ww3qrcxM' \
-    '0DPAXQBN' \
+    'M0DPAXQB' \
+    'NMP7j3xf' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicListUserWalletTransactions'
