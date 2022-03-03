@@ -61,3 +61,4 @@ run_script sh/run-python-cli-cloudsave-unit-test.sh
 run_script sh/run-python-cli-dslogmanager-unit-test.sh
 run_script sh/run-python-cli-basic-unit-test.sh
 run_script sh/run-python-cli-gametelemetry-unit-test.sh
+run_script sh/run-python-cli-lobby-ws-unit-test.sh

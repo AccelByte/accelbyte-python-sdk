@@ -35,6 +35,86 @@ def entry_point():
     initialize()
 
 
+async def one_shot_websocket_async(
+        raw_text: str,
+        mode: Optional[str] = None,
+        timeout: Optional[float] = None,
+        uri_prefix: Optional[str] = None,
+):
+    mode = mode or "echo"
+    sleep_interval = 0.03
+    timeout = timeout or 10.0
+    uri_prefix = uri_prefix or "ws://"
+
+    base_url, error = get_base_url()
+    if error:
+        exit(1)
+
+    elapsed: float = 0.0
+    raw_request: str = raw_text.replace("\\n", "\n")
+    raw_response: Optional[str] = None
+
+    async def on_message(msg: str):
+        nonlocal raw_response
+        raw_response = msg
+        click.echo(f"[RECV]: {msg}")
+
+    ws_client = WebsocketsWSClient(
+        uri=base_url,
+        uri_prefix=uri_prefix
+    )
+    ws_client.listeners.append(on_message)
+
+    click.echo(f"[INFO]: connecting to {ws_client.uri}")
+    await ws_client.connect()
+    click.echo("[INFO]: connected")
+
+    await ws_client.send(raw_request)
+    click.echo(f"[SEND]: {raw_request}")
+
+    while elapsed < timeout and raw_response is None:
+        await asyncio.sleep(sleep_interval)
+        elapsed += sleep_interval
+
+    click.echo("[INFO]: disconnecting")
+    await ws_client.disconnect()
+    click.echo("[INFO]: disconnected")
+
+    if elapsed >= timeout:
+        raise TimeoutError
+    elif raw_response is None:
+        raise Exception("NoResponse")
+
+    if mode == "echo":
+        if raw_request != raw_response:
+            flat_request = "\\n".join(raw_request.splitlines(keepends=False))
+            flat_response = "\\n".join(raw_response.splitlines(keepends=False))
+            raise Exception(f"'{flat_request}' != '{flat_response}'")
+    else:
+        raise NotImplementedError
+
+
+@click.command()
+@click.argument("raw_text", type=str)
+@click.option("--mode", type=click.Choice(["echo"], case_sensitive=False))
+@click.option("--timeout", type=float)
+@click.option("--uri_prefix", type=str)
+def one_shot_websocket(
+        raw_text: str,
+        mode: Optional[str] = None,
+        timeout: Optional[float] = None,
+        uri_prefix: Optional[str] = None,
+):
+    asyncio.run(
+        one_shot_websocket_async(
+            raw_text=raw_text,
+            mode=mode,
+            timeout=timeout,
+            uri_prefix=uri_prefix,
+        )
+    )
+
+
 @click.command()
 @click.option("--compare_with_last_message/--no_compare_with_last_message", default=False)
 @click.option("--exit_on_error/--no_exit_on_error", default=bool)
@@ -156,6 +236,7 @@ add_commands(entry_point, social_commands, prefix="social")
 add_commands(entry_point, ugc_commands, prefix="ugc")
 
 entry_point.add_command(enter_websocket_mode)
+entry_point.add_command(one_shot_websocket)
 
 
 if __name__ == "__main__":
