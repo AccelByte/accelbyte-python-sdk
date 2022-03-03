@@ -25,6 +25,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
+from .....core import clean_content_type
+from .....core import try_convert_content_type
 
 from ...models import AccountUserResponseV4
 from ...models import AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4
@@ -233,7 +235,21 @@ class PublicUpgradeHeadlessAccountWithVerificationCodeV4(Operation):
         409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account)
 
         500: Internal Server Error - (Internal Server Error)
+
+        ---: HttpResponse (Undocumented Response)
+
+        ---: HttpResponse (Unexpected Content-Type Error)
+
+        ---: HttpResponse (Unhandled Error)
         """
+        if content:
+            actual_content_type = clean_content_type(content_type)
+            if actual_content_type not in self.produces:
+                was_converted, converted_content = try_convert_content_type(actual_content_type, self.produces, content)
+                if was_converted:
+                    content = converted_content
+                else:
+                    return None, HttpResponse.create_unexpected_content_type_error(actual=actual_content_type, expected=self.produces)
         if code == 200:
             return AccountUserResponseV4.create_from_dict(content), None
         if code == 400:

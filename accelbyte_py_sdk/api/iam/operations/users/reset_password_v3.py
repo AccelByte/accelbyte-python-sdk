@@ -25,6 +25,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
+from .....core import clean_content_type
+from .....core import try_convert_content_type
 
 from ...models import ModelResetPasswordRequestV3
 from ...models import RestErrorResponse
@@ -195,7 +197,21 @@ class ResetPasswordV3(Operation):
         403: Forbidden - RestErrorResponse (10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10152: verification code not found)
 
         404: Not Found - RestErrorResponse (20008: user not found)
+
+        ---: HttpResponse (Undocumented Response)
+
+        ---: HttpResponse (Unexpected Content-Type Error)
+
+        ---: HttpResponse (Unhandled Error)
         """
+        if content:
+            actual_content_type = clean_content_type(content_type)
+            if actual_content_type not in self.produces:
+                was_converted, converted_content = try_convert_content_type(actual_content_type, self.produces, content)
+                if was_converted:
+                    content = converted_content
+                else:
+                    return None, HttpResponse.create_unexpected_content_type_error(actual=actual_content_type, expected=self.produces)
         if code == 204:
             return None, None
         if code == 400:

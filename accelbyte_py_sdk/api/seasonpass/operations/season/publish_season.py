@@ -25,6 +25,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
+from .....core import clean_content_type
+from .....core import try_convert_content_type
 
 from ...models import ErrorEntity
 from ...models import SeasonInfo
@@ -199,7 +201,21 @@ class PublishSeason(Operation):
         404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 49141: Tier item does not exist in the store of namespace [{namespace}] | 49142: Pass item does not exist in the store of namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 49144: Reward [{code}] does not exist)
 
         409: Conflict - ErrorEntity (49171: Invalid season status [{status}] | 49172: Season is already ended | 49175: Published season already exists in namespace [{namespace}] | 49176: Rewards are not provided | 49177: Passes are not provided | 49178: Tiers are not provided | 49189: Duplicate season name [{name}] for publishing in namespace [{namespace}])
+
+        ---: HttpResponse (Undocumented Response)
+
+        ---: HttpResponse (Unexpected Content-Type Error)
+
+        ---: HttpResponse (Unhandled Error)
         """
+        if content:
+            actual_content_type = clean_content_type(content_type)
+            if actual_content_type not in self.produces:
+                was_converted, converted_content = try_convert_content_type(actual_content_type, self.produces, content)
+                if was_converted:
+                    content = converted_content
+                else:
+                    return None, HttpResponse.create_unexpected_content_type_error(actual=actual_content_type, expected=self.produces)
         if code == 200:
             return SeasonInfo.create_from_dict(content), None
         if code == 400:

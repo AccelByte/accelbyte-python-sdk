@@ -25,6 +25,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
+from .....core import clean_content_type
+from .....core import try_convert_content_type
 
 from ...models import Attribute
 from ...models import ErrorEntity
@@ -244,7 +246,21 @@ class PublicUpdateAttribute(Operation):
         400: Bad Request - ErrorEntity (12022: Game profile attribute name [{attrName1}] passed in request url mismatch the name [{attrName2}] in body)
 
         404: Not Found - ErrorEntity (12041: Game profile with id [{profileId}] is not found)
+
+        ---: HttpResponse (Undocumented Response)
+
+        ---: HttpResponse (Unexpected Content-Type Error)
+
+        ---: HttpResponse (Unhandled Error)
         """
+        if content:
+            actual_content_type = clean_content_type(content_type)
+            if actual_content_type not in self.produces:
+                was_converted, converted_content = try_convert_content_type(actual_content_type, self.produces, content)
+                if was_converted:
+                    content = converted_content
+                else:
+                    return None, HttpResponse.create_unexpected_content_type_error(actual=actual_content_type, expected=self.produces)
         if code == 200:
             return GameProfileInfo.create_from_dict(content), None
         if code == 400:

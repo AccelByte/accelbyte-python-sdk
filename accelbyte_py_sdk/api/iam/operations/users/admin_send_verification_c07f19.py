@@ -25,6 +25,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
+from .....core import clean_content_type
+from .....core import try_convert_content_type
 
 from ...models import ModelSendVerificationCodeRequestV3
 from ...models import RestErrorResponse
@@ -273,7 +275,21 @@ class AdminSendVerificationCodeV3(Operation):
         409: Conflict - RestErrorResponse (10140: user verified | 10133: email already used)
 
         429: Too Many Requests - RestErrorResponse (20007: too many requests)
+
+        ---: HttpResponse (Undocumented Response)
+
+        ---: HttpResponse (Unexpected Content-Type Error)
+
+        ---: HttpResponse (Unhandled Error)
         """
+        if content:
+            actual_content_type = clean_content_type(content_type)
+            if actual_content_type not in self.produces:
+                was_converted, converted_content = try_convert_content_type(actual_content_type, self.produces, content)
+                if was_converted:
+                    content = converted_content
+                else:
+                    return None, HttpResponse.create_unexpected_content_type_error(actual=actual_content_type, expected=self.produces)
         if code == 204:
             return None, None
         if code == 400:

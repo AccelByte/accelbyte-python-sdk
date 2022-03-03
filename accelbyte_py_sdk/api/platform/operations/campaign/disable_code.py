@@ -25,6 +25,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
+from .....core import clean_content_type
+from .....core import try_convert_content_type
 
 from ...models import CodeInfo
 from ...models import ErrorEntity
@@ -192,7 +194,21 @@ class DisableCode(Operation):
         200: OK - CodeInfo (successful operation)
 
         404: Not Found - ErrorEntity (37142: Code [{code}] does not exist in namespace [{namespace}] | 37176: Code [{code}] has been redeemed in namespace [{namespace}])
+
+        ---: HttpResponse (Undocumented Response)
+
+        ---: HttpResponse (Unexpected Content-Type Error)
+
+        ---: HttpResponse (Unhandled Error)
         """
+        if content:
+            actual_content_type = clean_content_type(content_type)
+            if actual_content_type not in self.produces:
+                was_converted, converted_content = try_convert_content_type(actual_content_type, self.produces, content)
+                if was_converted:
+                    content = converted_content
+                else:
+                    return None, HttpResponse.create_unexpected_content_type_error(actual=actual_content_type, expected=self.produces)
         if code == 200:
             return CodeInfo.create_from_dict(content), None
         if code == 404:
