@@ -5,13 +5,14 @@
 import base64
 import binascii
 import hashlib
+import json
 import logging
 import logging.handlers
 import os
 
 from base64 import b64encode
 from time import time
-from typing import Any, Dict, Tuple, Union
+from typing import Any, Dict, List, Optional, Tuple, Union
 from uuid import uuid4
 
 from ._http_response import HttpResponse
@@ -48,6 +49,14 @@ def add_stream_handler_to_logger(
     stream_handler = logging.StreamHandler()
     logger.addHandler(stream_handler)
     return stream_handler
+
+
+def clean_content_type(content_type: Optional[str]) -> Optional[str]:
+    if content_type is None:
+        return None
+    parts = content_type.split(";", maxsplit=1)
+    content_type = parts[0].strip()
+    return content_type
 
 
 def create_basic_authentication(username: str, password: str) -> str:
@@ -223,3 +232,17 @@ def set_env_user_credentials(username: str, password: str) -> None:
 def set_logger_level(level: Union[int, str], additional_scope: Union[None, str] = None) -> None:
     logger = get_logger(additional_scope)
     logger.setLevel(level)
+
+
+def try_convert_content_type(actual_content_type: str, expected_content_types: List[str], content: Any) -> Tuple[bool, Any]:
+    for expected_content_type in expected_content_types:
+        if actual_content_type == "text/plain":
+            if expected_content_type == "application/json":
+                # noinspection PyBroadException
+                # pylint: disable=broad-except
+                try:
+                    new_content = json.loads(content)
+                    return True, new_content
+                except Exception:
+                    pass
+    return False, content

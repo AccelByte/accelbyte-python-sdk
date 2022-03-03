@@ -4,7 +4,7 @@
 
 import urllib.parse
 
-from typing import Any, Dict
+from typing import Any, Dict, List, Optional, Union
 
 from ._http_status_codes import HTTP_STATUS_CODES
 from ._model import Model
@@ -70,6 +70,25 @@ class HttpResponse(Model):
         instance.code = 0
         instance.content_type = "error"
         instance.content = "Connection Error"
+        return instance
+
+    @classmethod
+    def create_unexpected_content_type_error(
+            cls,
+            actual: Optional[str] = None,
+            expected: Optional[Union[str, List[str]]] = None,
+    ):
+        content = "Unexpected Content-Type Error"
+        if actual is not None and expected is not None:
+            content += f" (actual: {actual} expected: {expected})"
+        elif actual is not None:
+            content += f" (actual: {actual})"
+        elif expected is not None:
+            content += f" (expected: {expected})"
+        instance = cls()
+        instance.code = -1
+        instance.content_type = "error"
+        instance.content = content
         return instance
 
     @classmethod
