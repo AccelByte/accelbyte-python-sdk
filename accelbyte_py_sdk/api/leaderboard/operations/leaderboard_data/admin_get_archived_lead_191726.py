@@ -227,7 +227,7 @@ class AdminGetArchivedLeaderboardRankingDataV1Handler(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        if content:
+        if content and content_type != "location":
             actual_content_type = clean_content_type(content_type)
             if actual_content_type not in self.produces:
                 was_converted, converted_content = try_convert_content_type(actual_content_type, self.produces, content)
