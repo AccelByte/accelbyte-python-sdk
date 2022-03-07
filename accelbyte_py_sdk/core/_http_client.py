@@ -1,13 +1,13 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-
+import asyncio
 import json
 import logging
 import time
 from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import Any, Callable, IO, Optional, Tuple, Union
+from typing import Any, Callable, Dict, IO, List, Optional, Tuple, Union
 
 import httpx
 import requests
@@ -27,6 +27,10 @@ class HttpClient(ABC):
 
     request_log_formatter: Optional[Callable[[dict], str]] = None
     response_log_formatter: Optional[Callable[[dict], str]] = None
+
+    # noinspection PyMethodMayBeStatic
+    def close(self) -> None:
+        pass
 
     # noinspection PyMethodMayBeStatic
     def is_async_compatible(self) -> bool:
@@ -104,6 +108,10 @@ class RequestsHttpClient(HttpClient):
         self.allow_redirects = allow_redirects
         self.session = requests.Session()
 
+    def close(self) -> None:
+        if self.session is not None:
+            self.session.close()
+
     def create_request(
             self,
             operation: Operation,
@@ -120,7 +128,6 @@ class RequestsHttpClient(HttpClient):
             data=data,
             json=json_,
         ).prepare()
-
         return prepared_request, None
 
     def send_request(
@@ -143,49 +150,17 @@ class RequestsHttpClient(HttpClient):
             raw_response: requests.Response,
             **kwargs
     ) -> Tuple[Union[None, HttpRawResponse], Union[None, HttpResponse]]:
-        status_code = raw_response.status_code
-        if 400 <= status_code <= 599:
-            _LOGGER.error(f"[{status_code}] {raw_response.text}")
-
-        if status_code == 201:
-            content_type = "location"
-            content = raw_response.headers.get("location", "")
-        elif raw_response.is_redirect:
-            content_type = "location"
-            content = raw_response.headers["location"]
-        elif raw_response.history:
-            content_type = "location"
-            content = None
-            history = next(filter(lambda h: "location" in h.headers, raw_response.history))
-            if history:
-                status_code = history.status_code
-                content = history.headers["location"]
-            if content is None:
-                return None, HttpResponse.create_unhandled_error()
-        elif "Content-Type" in raw_response.headers:
-            content_type = raw_response.headers["Content-Type"]
-            if is_json_mime_type(content_type):
-                try:
-                    content = raw_response.json()
-                    if content is None:
-                        _LOGGER.warning(f"Expecting 'application/json' content received null.")
-                        content = ""
-                except ValueError:
-                    content = ""
-            elif content_type.startswith("text/"):
-                content = raw_response.text
-                if content is None:
-                    _LOGGER.warning(f"Expecting 'text/*' content received null.")
-                    content = ""
-            else:
-                content = raw_response.raw.data
-        else:
-            content_type = None
-            content = None
-
+        http_raw_response, http_response = process_response(
+            status_code=raw_response.status_code,
+            content_json=lambda: raw_response.json(),
+            content_raw=lambda: raw_response.raw.data,
+            content_text=lambda: raw_response.text,
+            headers=raw_response.headers,
+            is_redirect=raw_response.is_redirect,
+            history=raw_response.history,
+        )
         self.log_response(raw_response)
-
-        return (status_code, content_type, content), None
+        return http_raw_response, http_response
 
     def log_request(self, prepared_request: requests.PreparedRequest) -> None:
         if _LOGGER.isEnabledFor(logging.DEBUG):
@@ -258,6 +233,16 @@ class HttpxHttpClient(HttpClient):
         self.client = httpx.Client(transport=self.transport)
         self.client_async = httpx.AsyncClient(transport=self.transport_async)
 
+    def close(self) -> None:
+        if self.client is not None:
+            self.client.close()
+        if self.transport is not None:
+            self.transport.close()
+        if self.client_async is not None:
+            _ = asyncio.create_task(self.client_async.aclose())
+        if self.transport_async is not None:
+            _ = asyncio.create_task(self.transport_async.aclose())
+
     # noinspection PyMethodMayBeStatic
     def is_async_compatible(self) -> bool:
         return True
@@ -269,9 +254,7 @@ class HttpxHttpClient(HttpClient):
             headers: Union[None, Header] = None,
             **kwargs
     ) -> Tuple[Any, Union[None, HttpResponse]]:
-
         method, url, headers, files, data, json_ = convert_operation(operation, base_url, headers)
-
         httpx_request = httpx.Request(
             method=method,
             url=url,
@@ -280,7 +263,6 @@ class HttpxHttpClient(HttpClient):
             data=data,
             json=json_,
         )
-
         return httpx_request, None
 
     def send_request(
@@ -304,46 +286,17 @@ class HttpxHttpClient(HttpClient):
             raw_response: httpx.Response,
             **kwargs
     ) -> Tuple[Union[None, HttpRawResponse], Union[None, HttpResponse]]:
-        status_code = raw_response.status_code
-        if 400 <= status_code <= 599:
-            _LOGGER.error(f"[{status_code}] {raw_response.text}")
-
-        if raw_response.is_redirect:
-            content_type = "location"
-            content = raw_response.headers["location"]
-        elif raw_response.history:
-            content_type = "location"
-            content = None
-            history = next(filter(lambda h: "location" in h.headers, raw_response.history))
-            if history:
-                status_code = history.status_code
-                content = history.headers["location"]
-            if content is None:
-                return None, HttpResponse.create_unhandled_error()
-        elif "Content-Type" in raw_response.headers:
-            content_type = raw_response.headers["Content-Type"]
-            if is_json_mime_type(content_type):
-                try:
-                    content = raw_response.json()
-                    if content is None:
-                        _LOGGER.warning(f"Expecting 'application/json' content received null.")
-                        content = ""
-                except ValueError:
-                    content = ""
-            elif content_type.startswith("text/"):
-                content = raw_response.text
-                if content is None:
-                    _LOGGER.warning(f"Expecting 'text/*' content received null.")
-                    content = ""
-            else:
-                return None, HttpResponse.create_unhandled_error()
-        else:
-            content_type = None
-            content = None
-
+        http_raw_response, http_response = process_response(
+            status_code=raw_response.status_code,
+            content_json=lambda: raw_response.json(),
+            content_raw=lambda: raw_response.content,
+            content_text=lambda: raw_response.text,
+            headers=raw_response.headers,
+            is_redirect=raw_response.is_redirect,
+            history=raw_response.history,
+        )
         self.log_response(raw_response)
-
-        return (status_code, content_type, content), None
+        return http_raw_response, http_response
 
     def log_request(self, httpx_request: httpx.Request) -> None:
         if _LOGGER.isEnabledFor(logging.DEBUG):
@@ -482,3 +435,65 @@ def preprocess_form_data_params(form_data_params: dict) -> None:
     for form_data_key in form_data_params.keys():
         if is_file(form_data_key):
             form_data_params[form_data_key] = convert_any_to_file_tuple(form_data_key, form_data_params[form_data_key])
+
+
+def process_response(
+        status_code: int,
+        content_json: Callable[[], Any],
+        content_raw: Callable[[], Any],
+        content_text: Callable[[], Optional[str]],
+        headers: Dict[str, str],
+        is_redirect: Optional[bool] = None,
+        history: Optional[List[Any]] = None,
+) -> Tuple[Union[None, HttpRawResponse], Union[None, HttpResponse]]:
+    is_redirect = is_redirect if is_redirect is not None else False
+    history = history if history is not None else []
+
+    if 400 <= status_code <= 599:
+        _LOGGER.error(f"[{status_code}] {str(content_text())}")
+
+    if is_redirect:
+        content_type = "location"
+        content = headers["Location"]
+    elif history:
+        temp_status_code: int = status_code
+        temp_content: Optional[str] = None
+        for h in history:
+            if not hasattr(h, "headers"):
+                continue
+            h_headers = h.headers
+            if not isinstance(h_headers, dict):
+                continue
+            if "Location" not in h_headers:
+                continue
+            temp_status_code = h.status_code if hasattr(h, "status_code") and isinstance(h.status_code, int) else status_code
+            temp_content = h_headers["Location"]
+            break
+        if temp_content is None:
+            return None, HttpResponse.create_unhandled_error()
+        status_code, content_type, content = temp_status_code, "location", temp_content
+    elif "Content-Type" in headers:
+        content_type = headers.get("Content-Type")
+        if is_json_mime_type(content_type):
+            try:
+                content = content_json()
+                if content is None:
+                    _LOGGER.warning("Expecting 'application/json' content received null.")
+                    content = ""
+            except ValueError:
+                content = ""
+        elif content_type.startswith("text/"):
+            content = content_text()
+            if content is None:
+                _LOGGER.warning("Expecting 'text/*' content received null.")
+                content = ""
+        else:
+            content = content_raw()
+    elif status_code == 201:
+        content_type = "location"
+        content = headers.get("Location", "")
+    else:
+        content_type = None
+        content = None
+
+    return (status_code, content_type, content), None

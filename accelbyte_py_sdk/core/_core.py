@@ -195,6 +195,9 @@ def reset() -> None:
     global _TOKEN_REPOSITORY
     global _HTTP_CLIENT
 
+    if _HTTP_CLIENT is not None:
+        _HTTP_CLIENT.close()
+
     _IS_INITIALIZED = False
     _CONFIG_REPOSITORY = None
     _TOKEN_REPOSITORY = None
