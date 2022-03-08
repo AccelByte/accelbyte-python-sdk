@@ -8,6 +8,7 @@ from typing import Any, Dict, Optional, Tuple, Union
 
 from ._config_repository import ConfigRepository
 from ._config_repository import DictConfigRepository
+from ._config_repository import DotEnvFileConfigRepository
 from ._config_repository import EnvironmentConfigRepository
 from ._config_repository import JsonConfigRepository
 from ._config_repository import JsonFileConfigRepository
@@ -39,6 +40,7 @@ _HTTP_CLIENT: Union[None, HttpClient] = None
 _CONFIG_REPOSITORY_IMPL = [
     EnvironmentConfigRepository,
     DictConfigRepository,
+    DotEnvFileConfigRepository,
     JsonConfigRepository,
     JsonFileConfigRepository,
     MyConfigRepository,

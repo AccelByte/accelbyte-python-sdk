@@ -4,6 +4,7 @@
 
 from __future__ import annotations
 import json
+import os
 import yaml
 from abc import ABC, abstractmethod
 from os import environ
@@ -163,6 +164,32 @@ class DictConfigRepository(ConfigRepository):
         if isinstance(value, str):
             return value.lower() in ["1", "true", "y", "yes"]
         return False
+
+
+class DotEnvFileConfigRepository(DictConfigRepository):
+
+    def __init__(self, dotenv_file: Union[str, Path], set_env_var: Union[None, bool] = None):
+        set_env_var = set_env_var if set_env_var is not None else False
+
+        if isinstance(dotenv_file, str):
+            dotenv_file = Path(dotenv_file)
+        if not dotenv_file.exists():
+            raise FileExistsError
+        dotenv = dotenv_file.read_text()
+        dict_ = {}
+        for line in dotenv.splitlines(keepends=False):
+            parts = line.split("=", maxsplit=1)
+            if len(parts) != 2:
+                raise ValueError
+            key, value = parts[0], parts[1]
+            if (value.startswith('"') and value.endswith('"')) or \
+                    value.startswith("'") and value.endswith("'"):
+                value = value[1:-1]
+            dict_[key] = value
+        if set_env_var:
+            for k, v in dict_.items():
+                os.environ[k] = v
+        super().__init__(dict_)
 
 
 class EnvironmentConfigRepository(DictConfigRepository):
