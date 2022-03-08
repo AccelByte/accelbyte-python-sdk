@@ -25,8 +25,6 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
-from .....core import clean_content_type
-from .....core import try_convert_content_type
 
 from ...models import ModelsMemberRequestGroupResponseV1
 from ...models import ResponseErrorResponse
@@ -204,7 +202,7 @@ class RejectGroupInvitationPublicV1(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsMemberRequestGroupResponseV1], Union[None, ResponseErrorResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsMemberRequestGroupResponseV1], Union[None, HttpResponse, ResponseErrorResponse]]:
         """Parse the given response.
 
         200: OK - ModelsMemberRequestGroupResponseV1 (OK)
@@ -227,14 +225,11 @@ class RejectGroupInvitationPublicV1(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        if content and content_type != "location":
-            actual_content_type = clean_content_type(content_type)
-            if actual_content_type not in self.produces:
-                was_converted, converted_content = try_convert_content_type(actual_content_type, self.produces, content)
-                if was_converted:
-                    content = converted_content
-                else:
-                    return None, HttpResponse.create_unexpected_content_type_error(actual=actual_content_type, expected=self.produces)
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        if error is not None:
+            return None, None if error.is_no_content() else error
+        code, content_type, content = pre_processed_response
+
         if code == 200:
             return ModelsMemberRequestGroupResponseV1.create_from_dict(content), None
         if code == 400:
@@ -249,12 +244,8 @@ class RejectGroupInvitationPublicV1(Operation):
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 500:
             return None, ResponseErrorResponse.create_from_dict(content)
-        was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
-        if was_handled:
-            if undocumented_response.is_no_content():
-                return None, None
-            return None, undocumented_response
-        return None, HttpResponse.create_unhandled_error()
+
+        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
