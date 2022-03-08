@@ -59,7 +59,7 @@ class WebsocketsWSClient:
             raise ValueError
         scheme, uri = uri.split("://")
         uri_prefix = uri_prefix or "wss://"
-        uri_suffix = uri_suffix or "/lobby"
+        uri_suffix = uri_suffix or "/lobby/"
         uri = f"{uri_prefix}{uri}{uri_suffix}"
         if access_token:
             authorization = f"Bearer {access_token}"
