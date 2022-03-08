@@ -12,6 +12,8 @@ from ._config_repository import EnvironmentConfigRepository
 from ._config_repository import JsonConfigRepository
 from ._config_repository import JsonFileConfigRepository
 from ._config_repository import MyConfigRepository
+from ._config_repository import YamlConfigRepository
+from ._config_repository import YamlFileConfigRepository
 
 from ._token_repository import TokenRepository
 from ._token_repository import InMemoryTokenRepository
@@ -40,6 +42,8 @@ _CONFIG_REPOSITORY_IMPL = [
     JsonConfigRepository,
     JsonFileConfigRepository,
     MyConfigRepository,
+    YamlConfigRepository,
+    YamlFileConfigRepository
 ]
 
 _TOKEN_REPOSITORY_IMPL = [

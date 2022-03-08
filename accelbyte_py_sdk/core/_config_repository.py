@@ -4,6 +4,7 @@
 
 from __future__ import annotations
 import json
+import yaml
 from abc import ABC, abstractmethod
 from os import environ
 from pathlib import Path
@@ -187,3 +188,22 @@ class JsonFileConfigRepository(JsonConfigRepository):
             raise FileExistsError
         json_ = json_file.read_text()
         super().__init__(json_)
+
+
+class YamlConfigRepository(DictConfigRepository):
+
+    def __init__(self, yaml_: Union[str, dict]):
+        if isinstance(yaml_, str):
+            yaml_ = yaml.safe_load(yaml_)
+        super().__init__(yaml_)
+
+
+class YamlFileConfigRepository(YamlConfigRepository):
+
+    def __init__(self, yaml_file: Union[str, Path]):
+        if isinstance(yaml_file, str):
+            yaml_file = Path(yaml_file)
+        if not yaml_file.exists():
+            raise FileExistsError
+        yaml_ = yaml_file.read_text()
+        super().__init__(yaml_)
