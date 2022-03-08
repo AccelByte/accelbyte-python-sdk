@@ -2,10 +2,14 @@
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
-from typing import Any, Dict, List, Optional, Union
+from __future__ import annotations
+from typing import Any, Dict, List, Optional, Tuple, Union
 
+from ._http_response import HttpResponse
 from ._header import Header
+from ._utils import clean_content_type
 from ._utils import infer_headers_from_operation
+from ._utils import try_convert_content_type
 
 
 class Operation:
@@ -64,6 +68,54 @@ class Operation:
         headers.update(self.get_header_params())
         infer_headers_from_operation(self, existing=headers)
         return headers
+
+    # noinspection PyMethodMayBeStatic
+    def pre_process_response(
+            self,
+            code: int,
+            content_type: str,
+            content: Any
+    ) -> Tuple[Tuple[int, str, Any], Optional[HttpResponse]]:
+        # pylint: disable=no-self-use
+        if len(self.produces) > 0 and \
+                content and \
+                content_type not in ["location"]:
+            actual_content_type = clean_content_type(content_type)
+            if actual_content_type not in self.produces:
+                was_converted, converted_content = try_convert_content_type(
+                    actual_content_type=actual_content_type,
+                    expected_content_types=self.produces,
+                    content=content
+                )
+                if was_converted:
+                    content = converted_content
+                else:
+                    return (code, content_type, content), \
+                           HttpResponse.create_unexpected_content_type_error(
+                               actual=actual_content_type,
+                               expected=self.produces
+                           )
+        return (code, content_type, content), None
+
+    # noinspection PyMethodMayBeStatic
+    def handle_undocumented_response(
+            self,
+            code: int,
+            content_type: str,
+            content: Any
+    ) -> Optional[HttpResponse]:
+        # pylint: disable=no-self-use
+        undocumented_response = HttpResponse.create_undocumented_response(
+            code=code,
+            content=content
+        )
+        if undocumented_response is not None:
+            if undocumented_response.is_no_content():
+                return None
+            else:
+                return undocumented_response
+        else:
+            return HttpResponse.create_unhandled_error()
 
     # region overrideable members
 

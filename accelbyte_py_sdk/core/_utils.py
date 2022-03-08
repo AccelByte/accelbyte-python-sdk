@@ -54,8 +54,13 @@ def add_stream_handler_to_logger(
 def clean_content_type(content_type: Optional[str]) -> Optional[str]:
     if content_type is None:
         return None
+    clean_content_type_map = {
+        "application/problem+json": "application/json"
+    }
     parts = content_type.split(";", maxsplit=1)
     content_type = parts[0].strip()
+    if content_type in clean_content_type_map:
+        content_type = clean_content_type_map[content_type]
     return content_type
 
 

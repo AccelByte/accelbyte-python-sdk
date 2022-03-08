@@ -73,6 +73,20 @@ class HttpResponse(Model):
         return instance
 
     @classmethod
+    def create_undocumented_response(cls, code: int, content: Any):
+        if code not in HTTP_STATUS_CODES:
+            return None
+        content_type = "error"
+        if code == 204:
+            content_type = "no_content"
+            content = None
+        instance = cls()
+        instance.code = code
+        instance.content_type = content_type
+        instance.content = content
+        return instance
+
+    @classmethod
     def create_unexpected_content_type_error(
             cls,
             actual: Optional[str] = None,
@@ -80,7 +94,7 @@ class HttpResponse(Model):
     ):
         content = "Unexpected Content-Type Error"
         if actual is not None and expected is not None:
-            content += f" (actual: {actual} expected: {expected})"
+            content += f" (actual: {actual} expected one in: {expected})"
         elif actual is not None:
             content += f" (actual: {actual})"
         elif expected is not None:
