@@ -3,6 +3,33 @@
 # 2. Login as either a Client or a User
 
 
+def example_add_user_into_session_in_channel():
+    from accelbyte_py_sdk.api.matchmaking import add_user_into_session_in_channel
+    from accelbyte_py_sdk.api.matchmaking.models import ModelsMatchAddUserIntoSessionRequest
+
+    result, error = add_user_into_session_in_channel(
+        body=ModelsMatchAddUserIntoSessionRequest.create(
+            user_id="<user-id>"
+        ),
+        channel_name="<channel-name>",
+        match_id="<match_id>"
+    )
+    if error:
+        print(error)
+
+
+def example_delete_user_into_session_in_channel():
+    from accelbyte_py_sdk.api.matchmaking import delete_user_from_session_in_channel
+
+    result, error = delete_user_from_session_in_channel(
+        channel_name="<channel-name>",
+        match_id="<match_id>",
+        user_id="<user-id>"
+    )
+    if error:
+        print(error)
+
+
 def example_create_matchmaking():
     from accelbyte_py_sdk.api.matchmaking import create_channel_handler
     from accelbyte_py_sdk.api.matchmaking.models import ModelsAllianceRule

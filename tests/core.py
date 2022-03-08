@@ -252,7 +252,7 @@ class CoreTestCase(TestCase):
         http_reponse = HttpResponse.create_redirect(302, "https://localhost:8080/?order-spam-with=eggs")
         order_spam_with, error = get_query_from_http_redirect_response(http_reponse, "order-spam-with")
         self.assertEqual("eggs", order_spam_with)
-        self.assertIsNone(error)
+        self.assertIsNone(error, error)
 
     def test_get_query_from_http_redirect_response_returns_cant_find_location_in_header_error_when_response_is_not_location_type(self):
         http_response = HttpResponse.create_error(404, "Not Found")

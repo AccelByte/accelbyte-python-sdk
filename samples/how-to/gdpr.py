@@ -23,23 +23,45 @@ def example_get_user_personal_data():
         print(error)
 
 
-def example_get_game_record():
-    from accelbyte_py_sdk.api.cloudsave import get_game_record_handler_v1
+def example_create_admin_email_configuration():
+    from accelbyte_py_sdk.api.gdpr import save_admin_email_configuration
 
-    result, error = get_game_record_handler_v1(
-        key="<your-key>"
+    result, error = save_admin_email_configuration(
+        body=[
+            "foo"
+        ]
     )
     if error:
         print(error)
 
 
-def example_update_game_record():
-    from accelbyte_py_sdk.api.cloudsave import put_game_record_handler_v1
-    from accelbyte_py_sdk.api.cloudsave.models import ModelsGameRecordRequest
+def example_delete_admin_email_configuration():
+    from accelbyte_py_sdk.api.gdpr import delete_admin_email_configuration
 
-    result, error = put_game_record_handler_v1(
-        body=ModelsGameRecordRequest.create(dict_={"foo": "bar"}),
-        key="<your-key>"
+    result, error = delete_admin_email_configuration(
+        emails=[
+            "email@email.foo"
+        ]
+    )
+    if error:
+        print(error)
+
+
+def example_get_admin_email_configuration():
+    from accelbyte_py_sdk.api.gdpr import get_admin_email_configuration
+
+    result, error = get_admin_email_configuration()
+    if error:
+        print(error)
+
+
+def example_update_admin_email_configuration():
+    from accelbyte_py_sdk.api.gdpr import update_admin_email_configuration
+
+    result, error = update_admin_email_configuration(
+        body=[
+            "foo"
+        ]
     )
     if error:
         print(error)
