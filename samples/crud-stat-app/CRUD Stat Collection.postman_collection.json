@@ -1,0 +1,183 @@
+{
+	"info": {
+		"_postman_id": "a6dee424-f7b6-4183-89d3-14104e59227a",
+		"name": "CRUD Stat Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetUserStat",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/user-stats?namespace={{namespace}}&userId={{userId}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user-stats"
+					],
+					"query": [
+						{
+							"key": "namespace",
+							"value": "{{namespace}}"
+						},
+						{
+							"key": "userId",
+							"value": "{{userId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostUserStat",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/user-stats?namespace={{namespace}}&userId={{userId}}&statCode={{statCode}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user-stats"
+					],
+					"query": [
+						{
+							"key": "namespace",
+							"value": "{{namespace}}"
+						},
+						{
+							"key": "userId",
+							"value": "{{userId}}"
+						},
+						{
+							"key": "statCode",
+							"value": "{{statCode}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteUserStat",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/user-stats?namespace={{namespace}}&userId={{userId}}&statCode={{statCode}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user-stats"
+					],
+					"query": [
+						{
+							"key": "namespace",
+							"value": "{{namespace}}"
+						},
+						{
+							"key": "userId",
+							"value": "{{userId}}"
+						},
+						{
+							"key": "statCode",
+							"value": "{{statCode}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PutUserStat",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"inc\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user-stats?namespace={{namespace}}&userId={{userId}}&statCode={{statCode}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user-stats"
+					],
+					"query": [
+						{
+							"key": "namespace",
+							"value": "{{namespace}}"
+						},
+						{
+							"key": "userId",
+							"value": "{{userId}}"
+						},
+						{
+							"key": "statCode",
+							"value": "{{statCode}}"
+						},
+						{
+							"key": "inc",
+							"value": "1.3",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
