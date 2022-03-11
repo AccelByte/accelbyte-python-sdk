@@ -10,3 +10,5 @@ from ._auth import login_user
 from ._auth import login_user_async
 from ._auth import logout
 from ._auth import logout_async
+
+from ._auth import convert_bearer_auth_token_to_oauth_token_dict
