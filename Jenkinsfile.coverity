@@ -23,7 +23,7 @@ pipeline {
       steps {
         script {
           sh "rm -rfv cov-int python-server-sdk.bz2"
-          sh "cov-build --dir cov-int --no-command --fs-capture-search ./ --fs-capture-search-exclude-regex /venv/"
+          sh "cov-build --dir cov-int --no-command --fs-capture-search ./ --fs-capture-search-exclude-regex './(spec|venv)'"
           sh "tar caf python-server-sdk.bz2 cov-int"
           withCredentials([usernamePassword(credentialsId: 'coverity-accelbyte-python-sdk', passwordVariable: 'COVERITY_TOKEN', usernameVariable: 'COVERITY_EMAIL')]) {
             gitCommitHashShort = git.getCommitHashShort()
