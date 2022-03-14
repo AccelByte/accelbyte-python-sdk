@@ -4,7 +4,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-iam-service (5.3.0)
+# justice-iam-service (5.4.0)
 
 from ._get_bans_type import get_bans_type
 from ._get_list_ban_reason import get_list_ban_reason
@@ -99,6 +99,7 @@ from ._admin_reset_password_v2 import admin_reset_password_v2
 from ._admin_delete_platform_link_v2 import admin_delete_platform_link_v2
 from ._admin_put_user_roles_v2 import admin_put_user_roles_v2
 from ._admin_create_user_roles_v2 import admin_create_user_roles_v2
+from ._public_get_country_age_restriction import public_get_country_age_restriction
 from ._public_create_user_v2 import public_create_user_v2
 from ._public_forgot_password_v2 import public_forgot_password_v2
 from ._public_reset_password_v2 import public_reset_password_v2
@@ -222,6 +223,8 @@ from ._public_search_user_v3 import public_search_user_v3
 from ._public_create_user_v3 import public_create_user_v3
 from ._check_user_availability import check_user_availability
 from ._public_bulk_get_users import public_bulk_get_users
+from ._public_send_registration_code import public_send_registration_code
+from ._public_verify_registration_code import public_verify_registration_code
 from ._public_forgot_password_v3 import public_forgot_password_v3
 from ._get_admin_invitation_v3 import get_admin_invitation_v3
 from ._create_user_from_invitation_v3 import create_user_from_invitation_v3
@@ -372,6 +375,7 @@ commands = [
     admin_delete_platform_link_v2,
     admin_put_user_roles_v2,
     admin_create_user_roles_v2,
+    public_get_country_age_restriction,
     public_create_user_v2,
     public_forgot_password_v2,
     public_reset_password_v2,
@@ -495,6 +499,8 @@ commands = [
     public_create_user_v3,
     check_user_availability,
     public_bulk_get_users,
+    public_send_registration_code,
+    public_verify_registration_code,
     public_forgot_password_v3,
     get_admin_invitation_v3,
     create_user_from_invitation_v3,

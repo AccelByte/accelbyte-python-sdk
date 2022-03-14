@@ -4,7 +4,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-group-service (2.10.0)
+# justice-group-service (2.11.0)
 
 from ._list_group_configuration_admin_v1 import list_group_configuration_admin_v1
 from ._create_group_configuration_admin_v1 import create_group_configuration_admin_v1

@@ -4,7 +4,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-platform-service (4.3.2)
+# justice-platform-service (4.4.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,7 +40,9 @@ from accelbyte_py_sdk.api.platform import public_normalize_payment_return_url as
 @click.option("--foreinginvoice", "foreinginvoice", type=str)
 @click.option("--invoice_id", "invoice_id", type=str)
 @click.option("--payload", "payload", type=str)
+@click.option("--redirect_result", "redirect_result", type=str)
 @click.option("--result_code", "result_code", type=str)
+@click.option("--session_id", "session_id", type=str)
 @click.option("--status", "status", type=str)
 @click.option("--token", "token", type=str)
 @click.option("--type", "type_", type=str)
@@ -58,7 +60,9 @@ def public_normalize_payment_return_url(
         foreinginvoice: Optional[str] = None,
         invoice_id: Optional[str] = None,
         payload: Optional[str] = None,
+        redirect_result: Optional[str] = None,
         result_code: Optional[str] = None,
+        session_id: Optional[str] = None,
         status: Optional[str] = None,
         token: Optional[str] = None,
         type_: Optional[str] = None,
@@ -87,7 +91,9 @@ def public_normalize_payment_return_url(
         foreinginvoice=foreinginvoice,
         invoice_id=invoice_id,
         payload=payload,
+        redirect_result=redirect_result,
         result_code=result_code,
+        session_id=session_id,
         status=status,
         token=token,
         type_=type_,

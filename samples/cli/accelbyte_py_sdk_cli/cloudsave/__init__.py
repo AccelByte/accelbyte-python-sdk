@@ -4,7 +4,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-cloudsave-service (2.2.0)
+# justice-cloudsave-service (2.3.0)
 
 from ._list_game_records_handler_v1 import list_game_records_handler_v1
 from ._admin_get_game_record_handler_v1 import admin_get_game_record_handler_v1

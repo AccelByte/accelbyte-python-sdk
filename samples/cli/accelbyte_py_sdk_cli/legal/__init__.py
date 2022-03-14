@@ -4,7 +4,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-legal-service (1.17.0)
+# justice-legal-service (1.18.1)
 
 from ._retrieve_accepted_agreements import retrieve_accepted_agreements
 from ._retrieve_all_users_by_policy_version import retrieve_all_users_by_policy_version
