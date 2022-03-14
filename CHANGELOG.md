@@ -1,6 +1,13 @@
 # Changelog
 
 ## v0.10.0
+- Add utility function to deal with conflicting content types (i.e. server is returning a different content-type from what is documented in the specification)
+- Add `YamlConfigRepository`, `YamlFileConfigRepository`, `DotEnvFileConfigRepository`
+- Add integration tests on for endpoints found in the `AccelByte Python SDK: Getting Started Guide`
+- Add AWS Lambda User Stat Crud App
+- Fix missing required `/` on WebSocketClient
+- Move response handling logic from each operation to the base operation class
+- Refactor WebSocket capability in CLI app
 - Update APIs
     - Add `x-omitempty` to boolean properties
     - Move `basePath`(s) into each `pathItem`
