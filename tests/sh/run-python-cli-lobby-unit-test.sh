@@ -182,7 +182,7 @@ delete_file $TEMP_FILE
 
 #- 15 AdminUpdateConfigV1
 $PYTHON -m $MODULE 'lobby-admin-update-config-v1' \
-    '{"autoKickOnDisconnect": false, "autoKickOnDisconnectDelay": 29, "cancelTicketOnDisconnect": true, "chatRateLimitBurst": 31, "chatRateLimitDuration": 56, "concurrentUsersLimit": 72, "disablePartyInvitationToken": false, "enableChat": true, "entitlementCheck": true, "entitlementItemID": "dNEUsxFb", "generalRateLimitBurst": 56, "generalRateLimitDuration": 70, "maxPartyMember": 76, "profanityFilter": true, "readyConsentTimeout": 70}' \
+    '{"allowInviteNonConnectedUser": false, "autoKickOnDisconnect": false, "autoKickOnDisconnectDelay": 51, "cancelTicketOnDisconnect": false, "chatRateLimitBurst": 56, "chatRateLimitDuration": 72, "concurrentUsersLimit": 24, "disablePartyInvitationToken": true, "enableChat": true, "entitlementCheck": false, "entitlementItemID": "NEUsxFb8", "generalRateLimitBurst": 56, "generalRateLimitDuration": 70, "maxPartyMember": 76, "profanityFilter": true, "readyConsentTimeout": 70}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminUpdateConfigV1'

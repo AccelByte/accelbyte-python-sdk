@@ -289,7 +289,7 @@ delete_file $TEMP_FILE
 #- 29 UpdateUserProfile
 $PYTHON -m $MODULE 'basic-update-user-profile' \
     'GodOEGt9' \
-    --body '{"avatarLargeUrl": "gPOj0c6i", "avatarSmallUrl": "0JkvIas7", "avatarUrl": "3ucYnFAJ", "customAttributes": {"3DK5T4Eo": {}}, "dateOfBirth": "1974-02-20", "firstName": "0Y39UoYl", "language": "pv5bVAgt", "lastName": "sDhUTDUs", "status": "ACTIVE", "timeZone": "bQDjbTQu", "zipCode": "PMz2PTRl"}' \
+    --body '{"avatarLargeUrl": "gPOj0c6i", "avatarSmallUrl": "0JkvIas7", "avatarUrl": "3ucYnFAJ", "customAttributes": {"3DK5T4Eo": {}}, "dateOfBirth": "1323-10-31", "firstName": "gtsDhUTD", "language": "SCBq_tqUp_uz", "lastName": "POw6zPFJ", "status": "ACTIVE", "timeZone": "wmzBBSMN", "zipCode": "coAAOjKN"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateUserProfile'
@@ -297,7 +297,7 @@ delete_file $TEMP_FILE
 
 #- 30 DeleteUserProfile
 $PYTHON -m $MODULE 'basic-delete-user-profile' \
-    'kyU89ZPO' \
+    'jfcYHm09' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteUserProfile'
@@ -305,7 +305,7 @@ delete_file $TEMP_FILE
 
 #- 31 GetCustomAttributesInfo
 $PYTHON -m $MODULE 'basic-get-custom-attributes-info' \
-    'w6zPFJ42' \
+    '3aYgBU1s' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetCustomAttributesInfo'
@@ -313,8 +313,8 @@ delete_file $TEMP_FILE
 
 #- 32 UpdateCustomAttributesPartially
 $PYTHON -m $MODULE 'basic-update-custom-attributes-partially' \
-    'cwmzBBSM' \
-    --body '{"NcoAAOjK": {}}' \
+    'qjyK0XH4' \
+    --body '{"5PaRSOFQ": {}}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateCustomAttributesPartially'
@@ -322,7 +322,7 @@ delete_file $TEMP_FILE
 
 #- 33 GetPrivateCustomAttributesInfo
 $PYTHON -m $MODULE 'basic-get-private-custom-attributes-info' \
-    'NjfcYHm0' \
+    'Btu23REZ' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetPrivateCustomAttributesInfo'
@@ -330,8 +330,8 @@ delete_file $TEMP_FILE
 
 #- 34 UpdatePrivateCustomAttributesPartially
 $PYTHON -m $MODULE 'basic-update-private-custom-attributes-partially' \
-    '93aYgBU1' \
-    --body '{"sqjyK0XH": {}}' \
+    '8hRVX7LG' \
+    --body '{"OvDdYiQS": {}}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdatePrivateCustomAttributesPartially'
@@ -339,8 +339,8 @@ delete_file $TEMP_FILE
 
 #- 35 UpdateUserProfileStatus
 $PYTHON -m $MODULE 'basic-update-user-profile-status' \
-    '45PaRSOF' \
-    --body '{"status": "INACTIVE"}' \
+    '9i7mV1C9' \
+    --body '{"status": "ACTIVE"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateUserProfileStatus'
@@ -362,8 +362,8 @@ delete_file $TEMP_FILE
 
 #- 38 PublicGeneratedUploadUrl
 $PYTHON -m $MODULE 'basic-public-generated-upload-url' \
-    'tu23REZ8' \
-    'hRVX7LGO' \
+    'jG9gpxL6' \
+    'ycTQdvln' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGeneratedUploadUrl'
@@ -392,7 +392,7 @@ delete_file $TEMP_FILE
 
 #- 42 PublicGetUserProfilePublicInfoByIds
 $PYTHON -m $MODULE 'basic-public-get-user-profile-public-info-by-ids' \
-    'vDdYiQS9' \
+    '2LAuSQWE' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserProfilePublicInfoByIds'
@@ -414,7 +414,7 @@ delete_file $TEMP_FILE
 
 #- 45 UpdateMyProfile
 $PYTHON -m $MODULE 'basic-update-my-profile' \
-    --body '{"avatarLargeUrl": "i7mV1C91", "avatarSmallUrl": "pjG9gpxL", "avatarUrl": "6ycTQdvl", "customAttributes": {"n2LAuSQW": {}}, "dateOfBirth": "1986-10-24", "firstName": "6LFE1YHo", "language": "9m126ZWc", "lastName": "8hHtWvbN", "privateCustomAttributes": {"YqgUqslA": {}}, "timeZone": "rFPiHUIv", "zipCode": "aCv8kU9d"}' \
+    --body '{"avatarLargeUrl": "XL6LFE1Y", "avatarSmallUrl": "Ho9m126Z", "avatarUrl": "Wc8hHtWv", "customAttributes": {"bNYqgUqs": {}}, "dateOfBirth": "6472-10-22", "firstName": "U9dBBpds", "language": "lHSv-RKXO", "lastName": "t0B7WOfe", "privateCustomAttributes": {"rcZdpMci": {}}, "timeZone": "37Ds7YSf", "zipCode": "ExaI3uzL"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateMyProfile'
@@ -422,7 +422,7 @@ delete_file $TEMP_FILE
 
 #- 46 CreateMyProfile
 $PYTHON -m $MODULE 'basic-create-my-profile' \
-    --body '{"avatarLargeUrl": "BBpdsJLh", "avatarSmallUrl": "sVyExrkx", "avatarUrl": "oot0B7WO", "customAttributes": {"fercZdpM": {}}, "dateOfBirth": "1972-03-11", "firstName": "37Ds7YSf", "language": "ExaI3uzL", "lastName": "teMbFAlt", "privateCustomAttributes": {"4hr7HmOY": {}}, "timeZone": "iBA5ltAO"}' \
+    --body '{"avatarLargeUrl": "teMbFAlt", "avatarSmallUrl": "4hr7HmOY", "avatarUrl": "iBA5ltAO", "customAttributes": {"XmlG6eh1": {}}, "dateOfBirth": "0373-12-06", "firstName": "C1dQY93O", "language": "NjtE-DZhU-wU", "lastName": "nvizU0q1", "privateCustomAttributes": {"pHyhhERo": {}}, "timeZone": "GgdrysMi"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateMyProfile'
@@ -437,7 +437,7 @@ delete_file $TEMP_FILE
 
 #- 48 UpdateMyZipCode
 $PYTHON -m $MODULE 'basic-update-my-zip-code' \
-    '{"zipCode": "XmlG6eh1"}' \
+    '{"zipCode": "zBGSRdP2"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateMyZipCode'
@@ -445,8 +445,8 @@ delete_file $TEMP_FILE
 
 #- 49 PublicReportUser
 $PYTHON -m $MODULE 'basic-public-report-user' \
-    'dTdoTFpB' \
-    --body '{"category": "IcuC1dQY", "description": "93OJnJ6T", "gameSessionId": "e9vD8ldz", "subcategory": "7Hu8AD79", "userId": "kdWunviz"}' \
+    'l7DNSZ8A' \
+    --body '{"category": "q0XiPLQX", "description": "Se07ZddO", "gameSessionId": "GTMlJjBw", "subcategory": "j9HJHQKs", "userId": "eEdSXRDS"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicReportUser'
@@ -454,8 +454,8 @@ delete_file $TEMP_FILE
 
 #- 50 PublicGeneratedUserUploadContentUrl
 $PYTHON -m $MODULE 'basic-public-generated-user-upload-content-url' \
-    'U0q1pHyh' \
-    'hERoGgdr' \
+    'vguauw1x' \
+    'T7eMwSl9' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGeneratedUserUploadContentUrl'
@@ -463,7 +463,7 @@ delete_file $TEMP_FILE
 
 #- 51 PublicGetUserProfileInfo
 $PYTHON -m $MODULE 'basic-public-get-user-profile-info' \
-    'ysMizBGS' \
+    'MLH0NnTJ' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserProfileInfo'
@@ -471,8 +471,8 @@ delete_file $TEMP_FILE
 
 #- 52 PublicUpdateUserProfile
 $PYTHON -m $MODULE 'basic-public-update-user-profile' \
-    'RdP2l7DN' \
-    --body '{"avatarLargeUrl": "SZ8Aq0Xi", "avatarSmallUrl": "PLQXSe07", "avatarUrl": "ZddOGTMl", "customAttributes": {"JjBwj9HJ": {}}, "dateOfBirth": "1987-12-05", "firstName": "KseEdSXR", "language": "DSvguauw", "lastName": "1xT7eMwS", "timeZone": "l9MLH0Nn", "zipCode": "TJ2ulNzB"}' \
+    '2ulNzBvw' \
+    --body '{"avatarLargeUrl": "JaQa547J", "avatarSmallUrl": "llvA8RWS", "avatarUrl": "pabUt7xk", "customAttributes": {"6QxyWhfq": {}}, "dateOfBirth": "1853-05-28", "firstName": "zT7NXmWD", "language": "xS_SnoL_As", "lastName": "bnsuLCgT", "timeZone": "oxuVTekJ", "zipCode": "gvg6h5HI"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicUpdateUserProfile'
@@ -480,8 +480,8 @@ delete_file $TEMP_FILE
 
 #- 53 PublicCreateUserProfile
 $PYTHON -m $MODULE 'basic-public-create-user-profile' \
-    'vwJaQa54' \
-    --body '{"avatarLargeUrl": "7JllvA8R", "avatarSmallUrl": "WSpabUt7", "avatarUrl": "xk6QxyWh", "customAttributes": {"fqoWfJw2": {}}, "dateOfBirth": "1978-04-24", "firstName": "WUqvPCZ2", "language": "HzT7NXmW", "lastName": "DlXsuNId", "timeZone": "QJR5lsNO"}' \
+    'pH0Dvipl' \
+    --body '{"avatarLargeUrl": "Ek4vj3LD", "avatarSmallUrl": "p4yqDt8Q", "avatarUrl": "UZDpxlHa", "customAttributes": {"sinGcjrk": {}}, "dateOfBirth": "9441-08-30", "firstName": "IVBmft3U", "language": "GP", "lastName": "X4MsisSX", "timeZone": "28nARxWR"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicCreateUserProfile'
@@ -489,7 +489,7 @@ delete_file $TEMP_FILE
 
 #- 54 PublicGetCustomAttributesInfo
 $PYTHON -m $MODULE 'basic-public-get-custom-attributes-info' \
-    'lvkfwaSb' \
+    'pv5ou5xt' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetCustomAttributesInfo'
@@ -497,8 +497,8 @@ delete_file $TEMP_FILE
 
 #- 55 PublicUpdateCustomAttributesPartially
 $PYTHON -m $MODULE 'basic-public-update-custom-attributes-partially' \
-    'nsuLCgTo' \
-    --body '{"xuVTekJg": {}}' \
+    'vd28OUfC' \
+    --body '{"t8UJC5fl": {}}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicUpdateCustomAttributesPartially'
@@ -506,7 +506,7 @@ delete_file $TEMP_FILE
 
 #- 56 PublicGetUserProfilePublicInfo
 $PYTHON -m $MODULE 'basic-public-get-user-profile-public-info' \
-    'vg6h5HIp' \
+    'Nyj6HsTt' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserProfilePublicInfo'
@@ -514,7 +514,7 @@ delete_file $TEMP_FILE
 
 #- 57 PublicUpdateUserProfileStatus
 $PYTHON -m $MODULE 'basic-public-update-user-profile-status' \
-    'H0DviplE' \
+    'X8P3llna' \
     --body '{"status": "ACTIVE"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1

@@ -16,7 +16,7 @@ MODULE='accelbyte_py_sdk_cli'
 MODULE_PATH='../samples/cli'
 TEMP_FILE='file.tmp'
 
-OPERATIONS_COUNT=270
+OPERATIONS_COUNT=273
 
 FINISHED_COUNT=0
 SUCCESS_COUNT=0
@@ -448,8 +448,8 @@ delete_file $TEMP_FILE
 
 #- 51 UserVerification
 $PYTHON -m $MODULE 'iam-user-verification' \
-    '{"Code": "vguauw1x", "ContactType": "T7eMwSl9", "LanguageTag": "MLH0NnTJ"}' \
-    '2ulNzBvw' \
+    '{"Code": "vguauw1x", "ContactType": "T7eMwSl9", "LanguageTag": "MLH0NnTJ", "validateOnly": true}' \
+    'lNzBvwJa' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UserVerification'
@@ -457,8 +457,8 @@ delete_file $TEMP_FILE
 
 #- 52 SendVerificationCode
 $PYTHON -m $MODULE 'iam-send-verification-code' \
-    '{"Context": "JaQa547J", "LanguageTag": "llvA8RWS", "LoginID": "pabUt7xk"}' \
-    '6QxyWhfq' \
+    '{"Context": "Qa547Jll", "LanguageTag": "vA8RWSpa", "LoginID": "bUt7xk6Q"}' \
+    'xyWhfqoW' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'SendVerificationCode'
@@ -466,8 +466,8 @@ delete_file $TEMP_FILE
 
 #- 53 Authorization
 $PYTHON -m $MODULE 'iam-authorization' \
-    'oWfJw2o8' \
-    'oWUqvPCZ' \
+    'fJw2o8oW' \
+    'UqvPCZ2H' \
     'token' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
@@ -793,1471 +793,1495 @@ $PYTHON -m $MODULE 'iam-admin-create-user-roles-v2' \
 update_status $? 'AdminCreateUserRolesV2'
 delete_file $TEMP_FILE
 
-#- 94 PublicCreateUserV2
+#- 94 PublicGetCountryAgeRestriction
+$PYTHON -m $MODULE 'iam-public-get-country-age-restriction' \
+    'PBtkZMio' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'PublicGetCountryAgeRestriction'
+delete_file $TEMP_FILE
+
+#- 95 PublicCreateUserV2
 $PYTHON -m $MODULE 'iam-public-create-user-v2' \
-    '{"AuthType": "PBtkZMio", "Country": "4wcyhloV", "DisplayName": "S3rYp8Qt", "LoginId": "cEmCEVc7", "Password": "5UfeypWj", "PasswordMD5Sum": "DNhzCL5s"}' \
+    '{"AuthType": "4wcyhloV", "Country": "S3rYp8Qt", "DisplayName": "cEmCEVc7", "LoginId": "5UfeypWj", "Password": "DNhzCL5s", "PasswordMD5Sum": "WS2qwO76"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicCreateUserV2'
 delete_file $TEMP_FILE
 
-#- 95 PublicForgotPasswordV2
+#- 96 PublicForgotPasswordV2
 $PYTHON -m $MODULE 'iam-public-forgot-password-v2' \
-    '{"Context": "WS2qwO76", "LanguageTag": "3iEklkzL", "LoginID": "m88LpLuY"}' \
+    '{"Context": "3iEklkzL", "LanguageTag": "m88LpLuY", "LoginID": "RO3C55yH"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicForgotPasswordV2'
 delete_file $TEMP_FILE
 
-#- 96 PublicResetPasswordV2
+#- 97 PublicResetPasswordV2
 $PYTHON -m $MODULE 'iam-public-reset-password-v2' \
-    '{"Code": "RO3C55yH", "LoginID": "pwK2Jaqe", "NewPassword": "nDGn7a2N"}' \
+    '{"Code": "pwK2Jaqe", "LoginID": "nDGn7a2N", "NewPassword": "UplWiLjq"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicResetPasswordV2'
 delete_file $TEMP_FILE
 
-#- 97 PublicGetUserByUserIDV2
+#- 98 PublicGetUserByUserIDV2
 $PYTHON -m $MODULE 'iam-public-get-user-by-user-idv2' \
-    'UplWiLjq' \
+    '06n6a0rW' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserByUserIDV2'
 delete_file $TEMP_FILE
 
-#- 98 PublicUpdateUserV2
+#- 99 PublicUpdateUserV2
 $PYTHON -m $MODULE 'iam-public-update-user-v2' \
-    '{"Country": "06n6a0rW", "DateOfBirth": "8EfkpaXt", "DisplayName": "wYZJaQ4W", "LanguageTag": "bwNmsFYe"}' \
-    'tjEurH8e' \
+    '{"Country": "8EfkpaXt", "DateOfBirth": "wYZJaQ4W", "DisplayName": "bwNmsFYe", "LanguageTag": "tjEurH8e"}' \
+    'loJzNKtR' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicUpdateUserV2'
 delete_file $TEMP_FILE
 
-#- 99 PublicGetUserBan
+#- 100 PublicGetUserBan
 $PYTHON -m $MODULE 'iam-public-get-user-ban' \
-    'loJzNKtR' \
+    'UaTz1ETd' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserBan'
 delete_file $TEMP_FILE
 
-#- 100 PublicUpdatePasswordV2
+#- 101 PublicUpdatePasswordV2
 $PYTHON -m $MODULE 'iam-public-update-password-v2' \
-    '{"LanguageTag": "UaTz1ETd", "NewPassword": "smwzjkkn", "OldPassword": "9oiQl05g"}' \
-    '7cO3ZMb6' \
+    '{"LanguageTag": "smwzjkkn", "NewPassword": "9oiQl05g", "OldPassword": "7cO3ZMb6"}' \
+    'Ojlo6DMN' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicUpdatePasswordV2'
 delete_file $TEMP_FILE
 
-#- 101 GetListJusticePlatformAccounts
+#- 102 GetListJusticePlatformAccounts
 $PYTHON -m $MODULE 'iam-get-list-justice-platform-accounts' \
-    'Ojlo6DMN' \
+    'pP2qMrTQ' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetListJusticePlatformAccounts'
 delete_file $TEMP_FILE
 
-#- 102 PublicPlatformLinkV2
+#- 103 PublicPlatformLinkV2
 $PYTHON -m $MODULE 'iam-public-platform-link-v2' \
-    'pP2qMrTQ' \
     '1UpjfU6w' \
     'Jhy1jOVk' \
+    'kUlS7952' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicPlatformLinkV2'
 delete_file $TEMP_FILE
 
-#- 103 PublicDeletePlatformLinkV2
+#- 104 PublicDeletePlatformLinkV2
 $PYTHON -m $MODULE 'iam-public-delete-platform-link-v2' \
-    'kUlS7952' \
     '7EZ25Ia8' \
+    'uCeZFlLt' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicDeletePlatformLinkV2'
 delete_file $TEMP_FILE
 
-#- 104 AdminGetBansTypeV3
+#- 105 AdminGetBansTypeV3
 $PYTHON -m $MODULE 'iam-admin-get-bans-type-v3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetBansTypeV3'
 delete_file $TEMP_FILE
 
-#- 105 AdminGetListBanReasonV3
+#- 106 AdminGetListBanReasonV3
 $PYTHON -m $MODULE 'iam-admin-get-list-ban-reason-v3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetListBanReasonV3'
 delete_file $TEMP_FILE
 
-#- 106 AdminGetInputValidations
+#- 107 AdminGetInputValidations
 $PYTHON -m $MODULE 'iam-admin-get-input-validations' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetInputValidations'
 delete_file $TEMP_FILE
 
-#- 107 AdminUpdateInputValidations
+#- 108 AdminUpdateInputValidations
 $PYTHON -m $MODULE 'iam-admin-update-input-validations' \
-    '[{"field": "uCeZFlLt", "validation": {"allowDigit": true, "allowLetter": false, "allowSpace": true, "allowUnicode": true, "description": [{"language": "EbA82jy7", "message": ["4lq0pDE5"]}], "isCustomRegex": true, "letterCase": "Rwh5b45e", "maxLength": 3, "maxRepeatingAlphaNum": 30, "maxRepeatingSpecialCharacter": 5, "minCharType": 77, "minLength": 88, "regex": "cSs3UOpA", "specialCharacterLocation": "wIp9rRtn", "specialCharacters": ["1PcCxdbu"]}}]' \
+    '[{"field": "EVpDAEbA", "validation": {"allowDigit": false, "allowLetter": true, "allowSpace": false, "allowUnicode": true, "description": [{"language": "0pDE5xRw", "message": ["h5b45ebp"]}], "isCustomRegex": false, "letterCase": "M7ScSs3U", "maxLength": 80, "maxRepeatingAlphaNum": 30, "maxRepeatingSpecialCharacter": 53, "minCharType": 44, "minLength": 68, "regex": "p9rRtn1P", "specialCharacterLocation": "cCxdbume", "specialCharacters": ["YgOdEBWR"]}}]' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminUpdateInputValidations'
 delete_file $TEMP_FILE
 
-#- 108 AdminResetInputValidations
+#- 109 AdminResetInputValidations
 $PYTHON -m $MODULE 'iam-admin-reset-input-validations' \
-    'meYgOdEB' \
+    'QiW3KFfU' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminResetInputValidations'
 delete_file $TEMP_FILE
 
-#- 109 ListAdminsV3
+#- 110 ListAdminsV3
 $PYTHON -m $MODULE 'iam-list-admins-v3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'ListAdminsV3'
 delete_file $TEMP_FILE
 
-#- 110 AdminGetAgeRestrictionStatusV3
+#- 111 AdminGetAgeRestrictionStatusV3
 $PYTHON -m $MODULE 'iam-admin-get-age-restriction-status-v3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetAgeRestrictionStatusV3'
 delete_file $TEMP_FILE
 
-#- 111 AdminUpdateAgeRestrictionConfigV3
+#- 112 AdminUpdateAgeRestrictionConfigV3
 $PYTHON -m $MODULE 'iam-admin-update-age-restriction-config-v3' \
-    '{"ageRestriction": 96, "enable": false}' \
+    '{"ageRestriction": 16, "enable": false}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminUpdateAgeRestrictionConfigV3'
 delete_file $TEMP_FILE
 
-#- 112 AdminGetListCountryAgeRestrictionV3
+#- 113 AdminGetListCountryAgeRestrictionV3
 $PYTHON -m $MODULE 'iam-admin-get-list-country-age-restriction-v3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetListCountryAgeRestrictionV3'
 delete_file $TEMP_FILE
 
-#- 113 AdminUpdateCountryAgeRestrictionV3
+#- 114 AdminUpdateCountryAgeRestrictionV3
 $PYTHON -m $MODULE 'iam-admin-update-country-age-restriction-v3' \
-    '{"ageRestriction": 97}' \
-    '3KFfU8ic' \
+    '{"ageRestriction": 67}' \
+    '4081gRB1' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminUpdateCountryAgeRestrictionV3'
 delete_file $TEMP_FILE
 
-#- 114 AdminGetBannedUsersV3
+#- 115 AdminGetBannedUsersV3
 $PYTHON -m $MODULE 'iam-admin-get-banned-users-v3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetBannedUsersV3'
 delete_file $TEMP_FILE
 
-#- 115 AdminGetBansTypeWithNamespaceV3
+#- 116 AdminGetBansTypeWithNamespaceV3
 $PYTHON -m $MODULE 'iam-admin-get-bans-type-with-namespace-v3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetBansTypeWithNamespaceV3'
 delete_file $TEMP_FILE
 
-#- 116 AdminGetClientsByNamespaceV3
+#- 117 AdminGetClientsByNamespaceV3
 $PYTHON -m $MODULE 'iam-admin-get-clients-by-namespace-v3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetClientsByNamespaceV3'
 delete_file $TEMP_FILE
 
-#- 117 AdminCreateClientV3
+#- 118 AdminCreateClientV3
 $PYTHON -m $MODULE 'iam-admin-create-client-v3' \
-    '{"audiences": ["H4081gRB"], "baseUri": "1GyLfLg4", "clientId": "RYuEbgUD", "clientName": "EcJyIvsP", "clientPermissions": [{"action": 44, "resource": "Or0BmV5i", "schedAction": 63, "schedCron": "vfwFjTSm", "schedRange": ["IEqoLyLe"]}], "namespace": "UGmomGX9", "oauthClientType": "sXTZ0v8p", "redirectUri": "qLfc5SwG", "secret": "nReUULDX"}' \
+    '{"audiences": ["GyLfLg4R"], "baseUri": "YuEbgUDE", "clientId": "cJyIvsPw", "clientName": "Or0BmV5i", "clientPermissions": [{"action": 63, "resource": "vfwFjTSm", "schedAction": 69, "schedCron": "EqoLyLeU", "schedRange": ["GmomGX9s"]}], "deletable": true, "namespace": "8pqLfc5S", "oauthClientType": "wGnReUUL", "redirectUri": "DX4QUIbb", "secret": "5nh68Zny"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminCreateClientV3'
 delete_file $TEMP_FILE
 
-#- 118 AdminGetClientsbyNamespacebyIDV3
+#- 119 AdminGetClientsbyNamespacebyIDV3
 $PYTHON -m $MODULE 'iam-admin-get-clientsby-namespaceby-idv3' \
-    '4QUIbb5n' \
+    'UtRvW9hN' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetClientsbyNamespacebyIDV3'
 delete_file $TEMP_FILE
 
-#- 119 AdminDeleteClientV3
+#- 120 AdminDeleteClientV3
 $PYTHON -m $MODULE 'iam-admin-delete-client-v3' \
-    'h68ZnyUt' \
+    'BSFTtFrO' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminDeleteClientV3'
 delete_file $TEMP_FILE
 
-#- 120 AdminUpdateClientV3
+#- 121 AdminUpdateClientV3
 $PYTHON -m $MODULE 'iam-admin-update-client-v3' \
-    '{"audiences": ["RvW9hNBS"], "baseUri": "FTtFrOmj", "clientName": "kFrFVA8t", "clientPermissions": [{"action": 47, "resource": "F34Xpt6Z", "schedAction": 23, "schedCron": "TTic0kr2", "schedRange": ["a0nI2oo7"]}], "namespace": "UHCJK5sp", "redirectUri": "0aCvIq3a"}' \
-    'HVYIlewL' \
+    '{"audiences": ["mjkFrFVA"], "baseUri": "8t0xF34X", "clientName": "pt6ZlTTi", "clientPermissions": [{"action": 4, "resource": "0kr2a0nI", "schedAction": 28, "schedCron": "o7UHCJK5", "schedRange": ["sp0aCvIq"]}], "deletable": false, "namespace": "HVYIlewL", "redirectUri": "RuHY83bG"}' \
+    'j0HTeeWX' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminUpdateClientV3'
 delete_file $TEMP_FILE
 
-#- 121 AdminUpdateClientPermissionV3
+#- 122 AdminUpdateClientPermissionV3
 $PYTHON -m $MODULE 'iam-admin-update-client-permission-v3' \
-    '{"permissions": [{"action": 86, "resource": "uHY83bGj"}]}' \
-    '0HTeeWXl' \
+    '{"permissions": [{"action": 23, "resource": "IcRidqct"}]}' \
+    'DpygY0ax' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminUpdateClientPermissionV3'
 delete_file $TEMP_FILE
 
-#- 122 AdminAddClientPermissionsV3
+#- 123 AdminAddClientPermissionsV3
 $PYTHON -m $MODULE 'iam-admin-add-client-permissions-v3' \
-    '{"permissions": [{"action": 69, "resource": "cRidqctD"}]}' \
-    'pygY0ax4' \
+    '{"permissions": [{"action": 61, "resource": "D4MMO9Tw"}]}' \
+    '2JH0qhWI' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminAddClientPermissionsV3'
 delete_file $TEMP_FILE
 
-#- 123 AdminDeleteClientPermissionV3
+#- 124 AdminDeleteClientPermissionV3
 $PYTHON -m $MODULE 'iam-admin-delete-client-permission-v3' \
-    '61' \
-    'D4MMO9Tw' \
-    '2JH0qhWI' \
+    '45' \
+    'HWTgzJFR' \
+    'Yw6t1IKZ' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminDeleteClientPermissionV3'
 delete_file $TEMP_FILE
 
-#- 124 RetrieveAllThirdPartyLoginPlatformCredentialV3
+#- 125 RetrieveAllThirdPartyLoginPlatformCredentialV3
 $PYTHON -m $MODULE 'iam-retrieve-all-third-party-login-platform-credential-v3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'RetrieveAllThirdPartyLoginPlatformCredentialV3'
 delete_file $TEMP_FILE
 
-#- 125 RetrieveAllActiveThirdPartyLoginPlatformCredentialV3
+#- 126 RetrieveAllActiveThirdPartyLoginPlatformCredentialV3
 $PYTHON -m $MODULE 'iam-retrieve-all-active-third-party-login-platform-credential-v3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'RetrieveAllActiveThirdPartyLoginPlatformCredentialV3'
 delete_file $TEMP_FILE
 
-#- 126 RetrieveAllSSOLoginPlatformCredentialV3
+#- 127 RetrieveAllSSOLoginPlatformCredentialV3
 $PYTHON -m $MODULE 'iam-retrieve-all-sso-login-platform-credential-v3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'RetrieveAllSSOLoginPlatformCredentialV3'
 delete_file $TEMP_FILE
 
-#- 127 RetrieveThirdPartyLoginPlatformCredentialV3
+#- 128 RetrieveThirdPartyLoginPlatformCredentialV3
 $PYTHON -m $MODULE 'iam-retrieve-third-party-login-platform-credential-v3' \
-    'wHWTgzJF' \
+    'LO6V4Ode' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'RetrieveThirdPartyLoginPlatformCredentialV3'
 delete_file $TEMP_FILE
 
-#- 128 AddThirdPartyLoginPlatformCredentialV3
+#- 129 AddThirdPartyLoginPlatformCredentialV3
 $PYTHON -m $MODULE 'iam-add-third-party-login-platform-credential-v3' \
-    '{"ACSURL": "RYw6t1IK", "AWSCognitoRegion": "ZLO6V4Od", "AWSCognitoUserPool": "e46QmCid", "AppId": "gdpP7RTC", "ClientId": "587lmUmB", "Environment": "ziPZBnpO", "FederationMetadataURL": "fkllxfq0", "IsActive": true, "KeyID": "rSjw5Hog", "OrganizationId": "0blM1d5M", "RedirectUri": "StYGczLI", "Secret": "NlEC0OEs", "TeamID": "E3yzIsUP"}' \
-    '0NjluOrG' \
+    '{"ACSURL": "46QmCidg", "AWSCognitoRegion": "dpP7RTC5", "AWSCognitoUserPool": "87lmUmBz", "AppId": "iPZBnpOf", "ClientId": "kllxfq0N", "Environment": "srSjw5Ho", "FederationMetadataURL": "g0blM1d5", "IsActive": true, "KeyID": "YGczLINl", "OrganizationId": "EC0OEsE3", "RedirectUri": "yzIsUP0N", "Secret": "jluOrGZT", "TeamID": "zsLW7Fjf"}' \
+    's9nIkcZ3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AddThirdPartyLoginPlatformCredentialV3'
 delete_file $TEMP_FILE
 
-#- 129 DeleteThirdPartyLoginPlatformCredentialV3
+#- 130 DeleteThirdPartyLoginPlatformCredentialV3
 $PYTHON -m $MODULE 'iam-delete-third-party-login-platform-credential-v3' \
-    'ZTzsLW7F' \
+    '8fUEanjK' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteThirdPartyLoginPlatformCredentialV3'
 delete_file $TEMP_FILE
 
-#- 130 UpdateThirdPartyLoginPlatformCredentialV3
+#- 131 UpdateThirdPartyLoginPlatformCredentialV3
 $PYTHON -m $MODULE 'iam-update-third-party-login-platform-credential-v3' \
-    '{"ACSURL": "jfs9nIkc", "AWSCognitoRegion": "Z38fUEan", "AWSCognitoUserPool": "jKHbXfk1", "AppId": "zxdzxg0U", "ClientId": "XcRyHi3u", "Environment": "8BzVWu1t", "FederationMetadataURL": "OmhUtCgc", "IsActive": false, "KeyID": "vGrEbcZU", "OrganizationId": "DExH1tay", "RedirectUri": "OGXIHzMR", "Secret": "jMCtOJsE", "TeamID": "ijlrbpyy"}' \
-    'EcQxVgJI' \
+    '{"ACSURL": "HbXfk1zx", "AWSCognitoRegion": "dzxg0UXc", "AWSCognitoUserPool": "RyHi3u8B", "AppId": "zVWu1tOm", "ClientId": "hUtCgcpv", "Environment": "GrEbcZUD", "FederationMetadataURL": "ExH1tayO", "IsActive": true, "KeyID": "MRjMCtOJ", "OrganizationId": "sEijlrbp", "RedirectUri": "yyEcQxVg", "Secret": "JIjMZqcW", "TeamID": "fMl6dqrp"}' \
+    'D4tnc3ZR' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateThirdPartyLoginPlatformCredentialV3'
 delete_file $TEMP_FILE
 
-#- 131 UpdateThirdPartyLoginPlatformDomainV3
+#- 132 UpdateThirdPartyLoginPlatformDomainV3
 $PYTHON -m $MODULE 'iam-update-third-party-login-platform-domain-v3' \
-    '{"affectedClientIDs": ["jMZqcWfM"], "assignedNamespaces": ["l6dqrpD4"], "domain": "tnc3ZRB3", "roleId": "IkdtPfAJ"}' \
-    'EomwenJv' \
+    '{"affectedClientIDs": ["B3IkdtPf"], "assignedNamespaces": ["AJEomwen"], "domain": "JvQ8grtQ", "roleId": "Sv6EcALc"}' \
+    'MIPms5bT' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateThirdPartyLoginPlatformDomainV3'
 delete_file $TEMP_FILE
 
-#- 132 DeleteThirdPartyLoginPlatformDomainV3
+#- 133 DeleteThirdPartyLoginPlatformDomainV3
 $PYTHON -m $MODULE 'iam-delete-third-party-login-platform-domain-v3' \
-    '{"domain": "Q8grtQSv"}' \
-    '6EcALcMI' \
+    '{"domain": "51M4yko8"}' \
+    'S0EnGLvG' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteThirdPartyLoginPlatformDomainV3'
 delete_file $TEMP_FILE
 
-#- 133 RetrieveSSOLoginPlatformCredential
+#- 134 RetrieveSSOLoginPlatformCredential
 $PYTHON -m $MODULE 'iam-retrieve-sso-login-platform-credential' \
-    'Pms5bT51' \
+    'vfuSyCTy' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'RetrieveSSOLoginPlatformCredential'
 delete_file $TEMP_FILE
 
-#- 134 AddSSOLoginPlatformCredential
+#- 135 AddSSOLoginPlatformCredential
 $PYTHON -m $MODULE 'iam-add-sso-login-platform-credential' \
-    '{"acsUrl": "M4yko8S0", "apiKey": "EnGLvGvf", "appId": "uSyCTyjj", "federationMetadataUrl": "4mCaiuMG", "isActive": true, "redirectUri": "5GJJooSX", "secret": "Ul3YU35Q", "ssoUrl": "HGpBABnO"}' \
-    'lxDznICQ' \
+    '{"acsUrl": "jj4mCaiu", "apiKey": "MGKOF5GJ", "appId": "JooSXUl3", "federationMetadataUrl": "YU35QHGp", "isActive": true, "redirectUri": "ABnOlxDz", "secret": "nICQVyqB", "ssoUrl": "g34WTtDk"}' \
+    'n0rtn6t0' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AddSSOLoginPlatformCredential'
 delete_file $TEMP_FILE
 
-#- 135 DeleteSSOLoginPlatformCredentialV3
+#- 136 DeleteSSOLoginPlatformCredentialV3
 $PYTHON -m $MODULE 'iam-delete-sso-login-platform-credential-v3' \
-    'VyqBg34W' \
+    'Yx4z12Ea' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteSSOLoginPlatformCredentialV3'
 delete_file $TEMP_FILE
 
-#- 136 UpdateSSOPlatformCredential
+#- 137 UpdateSSOPlatformCredential
 $PYTHON -m $MODULE 'iam-update-sso-platform-credential' \
-    '{"acsUrl": "TtDkn0rt", "apiKey": "n6t0Yx4z", "appId": "12EaQ1rU", "federationMetadataUrl": "QYCNTiDX", "isActive": false, "redirectUri": "E3M2IsTH", "secret": "u8QwNyOl", "ssoUrl": "XfIWd0mc"}' \
-    'q5T4SUc7' \
+    '{"acsUrl": "Q1rUQYCN", "apiKey": "TiDX4jE3", "appId": "M2IsTHu8", "federationMetadataUrl": "QwNyOlXf", "isActive": false, "redirectUri": "0mcq5T4S", "secret": "Uc7cWfCK", "ssoUrl": "K6Dij1gF"}' \
+    'cenEMySP' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateSSOPlatformCredential'
 delete_file $TEMP_FILE
 
-#- 137 AdminGetUserByPlatformUserIDV3
+#- 138 AdminGetUserByPlatformUserIDV3
 $PYTHON -m $MODULE 'iam-admin-get-user-by-platform-user-idv3' \
-    'cWfCKK6D' \
-    'ij1gFcen' \
+    'fhxBenDi' \
+    'TiAqFYmF' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetUserByPlatformUserIDV3'
 delete_file $TEMP_FILE
 
-#- 138 GetAdminUsersByRoleIdV3
+#- 139 GetAdminUsersByRoleIdV3
 $PYTHON -m $MODULE 'iam-get-admin-users-by-role-id-v3' \
-    'EMySPfhx' \
+    'KjaELmml' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetAdminUsersByRoleIdV3'
 delete_file $TEMP_FILE
 
-#- 139 AdminGetUserByEmailAddressV3
+#- 140 AdminGetUserByEmailAddressV3
 $PYTHON -m $MODULE 'iam-admin-get-user-by-email-address-v3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetUserByEmailAddressV3'
 delete_file $TEMP_FILE
 
-#- 140 AdminListUserIDByUserIDsV3
+#- 141 AdminListUserIDByUserIDsV3
 $PYTHON -m $MODULE 'iam-admin-list-user-id-by-user-i-ds-v3' \
-    '{"userIds": ["BenDiTiA"]}' \
+    '{"userIds": ["l6oexId1"]}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminListUserIDByUserIDsV3'
 delete_file $TEMP_FILE
 
-#- 141 AdminInviteUserV3
+#- 142 AdminInviteUserV3
 $PYTHON -m $MODULE 'iam-admin-invite-user-v3' \
-    '{"emailAddresses": ["qFYmFKja"], "isAdmin": true, "roles": ["Lmmll6oe"]}' \
+    '{"emailAddresses": ["OKGUN2Uz"], "isAdmin": false, "roles": ["d7uVa7t1"]}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminInviteUserV3'
 delete_file $TEMP_FILE
 
-#- 142 AdminListUsersV3
+#- 143 AdminListUsersV3
 $PYTHON -m $MODULE 'iam-admin-list-users-v3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminListUsersV3'
 delete_file $TEMP_FILE
 
-#- 143 AdminSearchUserV3
+#- 144 AdminSearchUserV3
 $PYTHON -m $MODULE 'iam-admin-search-user-v3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminSearchUserV3'
 delete_file $TEMP_FILE
 
-#- 144 AdminGetBulkUserByEmailAddressV3
+#- 145 AdminGetBulkUserByEmailAddressV3
 $PYTHON -m $MODULE 'iam-admin-get-bulk-user-by-email-address-v3' \
-    '{"listEmailAddressRequest": ["xId1OKGU"]}' \
+    '{"listEmailAddressRequest": ["4yvSYSV5"]}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetBulkUserByEmailAddressV3'
 delete_file $TEMP_FILE
 
-#- 145 AdminGetUserByUserIdV3
+#- 146 AdminGetUserByUserIdV3
 $PYTHON -m $MODULE 'iam-admin-get-user-by-user-id-v3' \
-    'N2Uznd7u' \
+    '2bHifCIf' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetUserByUserIdV3'
 delete_file $TEMP_FILE
 
-#- 146 AdminUpdateUserV3
+#- 147 AdminUpdateUserV3
 $PYTHON -m $MODULE 'iam-admin-update-user-v3' \
-    '{"country": "Va7t14yv", "dateOfBirth": "SYSV52bH", "displayName": "ifCIf4ts", "languageTag": "uu6Pkam6", "userName": "tFSYFt4Z"}' \
-    'xA2PzZFR' \
+    '{"country": "4tsuu6Pk", "dateOfBirth": "am6tFSYF", "displayName": "t4ZxA2Pz", "languageTag": "ZFRkBNlg", "userName": "6hn5qusK"}' \
+    'yZAuV6uU' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminUpdateUserV3'
 delete_file $TEMP_FILE
 
-#- 147 AdminGetUserBanV3
+#- 148 AdminGetUserBanV3
 $PYTHON -m $MODULE 'iam-admin-get-user-ban-v3' \
-    'kBNlg6hn' \
+    'vqM0lV6U' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetUserBanV3'
 delete_file $TEMP_FILE
 
-#- 148 AdminBanUserV3
+#- 149 AdminBanUserV3
 $PYTHON -m $MODULE 'iam-admin-ban-user-v3' \
-    '{"ban": "5qusKyZA", "comment": "uV6uUvqM", "endDate": "0lV6UZMl", "reason": "EbxHNgJR", "skipNotif": false}' \
-    'QExaunjd' \
+    '{"ban": "ZMlEbxHN", "comment": "gJRiQExa", "endDate": "unjdAqnH", "reason": "Uz44tx4O", "skipNotif": false}' \
+    'amPwNoi0' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminBanUserV3'
 delete_file $TEMP_FILE
 
-#- 149 AdminUpdateUserBanV3
+#- 150 AdminUpdateUserBanV3
 $PYTHON -m $MODULE 'iam-admin-update-user-ban-v3' \
-    '{"enabled": true, "skipNotif": true}' \
-    'nHUz44tx' \
-    '4O6hamPw' \
+    '{"enabled": false, "skipNotif": true}' \
+    'DK56JFIG' \
+    'e1IMUCLc' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminUpdateUserBanV3'
 delete_file $TEMP_FILE
 
-#- 150 AdminSendVerificationCodeV3
+#- 151 AdminSendVerificationCodeV3
 $PYTHON -m $MODULE 'iam-admin-send-verification-code-v3' \
-    '{"context": "Noi071ez", "emailAddress": "DK56JFIG", "languageTag": "e1IMUCLc"}' \
-    'N0DsaD5F' \
+    '{"context": "N0DsaD5F", "emailAddress": "yBsFe9OY", "languageTag": "EJVsYffm"}' \
+    'hyx6J25P' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminSendVerificationCodeV3'
 delete_file $TEMP_FILE
 
-#- 151 AdminVerifyAccountV3
+#- 152 AdminVerifyAccountV3
 $PYTHON -m $MODULE 'iam-admin-verify-account-v3' \
-    '{"Code": "yBsFe9OY", "ContactType": "EJVsYffm", "LanguageTag": "hyx6J25P"}' \
-    'rM4S3cB8' \
+    '{"Code": "rM4S3cB8", "ContactType": "m17hEeLL", "LanguageTag": "goaYth6z", "validateOnly": false}' \
+    'f8eA45OM' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminVerifyAccountV3'
 delete_file $TEMP_FILE
 
-#- 152 GetUserVerificationCode
+#- 153 GetUserVerificationCode
 $PYTHON -m $MODULE 'iam-get-user-verification-code' \
-    'm17hEeLL' \
+    'vObWejo9' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetUserVerificationCode'
 delete_file $TEMP_FILE
 
-#- 153 AdminGetUserDeletionStatusV3
+#- 154 AdminGetUserDeletionStatusV3
 $PYTHON -m $MODULE 'iam-admin-get-user-deletion-status-v3' \
-    'goaYth6z' \
+    'LfGeegJM' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetUserDeletionStatusV3'
 delete_file $TEMP_FILE
 
-#- 154 AdminUpdateUserDeletionStatusV3
+#- 155 AdminUpdateUserDeletionStatusV3
 $PYTHON -m $MODULE 'iam-admin-update-user-deletion-status-v3' \
     '{"enabled": false}' \
-    'f8eA45OM' \
+    'BGR6D1Zo' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminUpdateUserDeletionStatusV3'
 delete_file $TEMP_FILE
 
-#- 155 AdminUpgradeHeadlessAccountV3
+#- 156 AdminUpgradeHeadlessAccountV3
 $PYTHON -m $MODULE 'iam-admin-upgrade-headless-account-v3' \
-    '{"code": "vObWejo9", "country": "LfGeegJM", "dateOfBirth": "aBGR6D1Z", "displayName": "oZEZQkJ8", "emailAddress": "DSqFnhdK", "password": "vjFCFbSF"}' \
-    'lEWoMPdg' \
+    '{"code": "ZEZQkJ8D", "country": "SqFnhdKv", "dateOfBirth": "jFCFbSFl", "displayName": "EWoMPdgK", "emailAddress": "5zn62mhn", "password": "FSpCTlDN", "validateOnly": true}' \
+    'Ocygvv2L' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminUpgradeHeadlessAccountV3'
 delete_file $TEMP_FILE
 
-#- 156 AdminDeleteUserInformationV3
+#- 157 AdminDeleteUserInformationV3
 $PYTHON -m $MODULE 'iam-admin-delete-user-information-v3' \
-    'K5zn62mh' \
+    'AgfBGVza' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminDeleteUserInformationV3'
 delete_file $TEMP_FILE
 
-#- 157 AdminGetUserLoginHistoriesV3
+#- 158 AdminGetUserLoginHistoriesV3
 $PYTHON -m $MODULE 'iam-admin-get-user-login-histories-v3' \
-    'nFSpCTlD' \
+    'nbKYsB0g' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetUserLoginHistoriesV3'
 delete_file $TEMP_FILE
 
-#- 158 AdminUpdateUserPermissionV3
+#- 159 AdminUpdateUserPermissionV3
 $PYTHON -m $MODULE 'iam-admin-update-user-permission-v3' \
-    '{"Permissions": [{"Action": 78, "Resource": "BOcygvv2", "SchedAction": 75, "SchedCron": "AgfBGVza", "SchedRange": ["nbKYsB0g"]}]}' \
-    'qJ8VhYSi' \
+    '{"Permissions": [{"Action": 33, "Resource": "J8VhYSik", "SchedAction": 71, "SchedCron": "l2p9rBx8", "SchedRange": ["N5egapqx"]}]}' \
+    'Dy4cLfNj' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminUpdateUserPermissionV3'
 delete_file $TEMP_FILE
 
-#- 159 AdminAddUserPermissionsV3
+#- 160 AdminAddUserPermissionsV3
 $PYTHON -m $MODULE 'iam-admin-add-user-permissions-v3' \
-    '{"Permissions": [{"Action": 21, "Resource": "Jl2p9rBx", "SchedAction": 79, "SchedCron": "5egapqxD", "SchedRange": ["y4cLfNjz"]}]}' \
-    'zEZYA8jI' \
+    '{"Permissions": [{"Action": 51, "Resource": "zEZYA8jI", "SchedAction": 20, "SchedCron": "MJb7cZ2b", "SchedRange": ["PsaLLpEB"]}]}' \
+    'VEMk5AsK' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminAddUserPermissionsV3'
 delete_file $TEMP_FILE
 
-#- 160 AdminDeleteUserPermissionBulkV3
+#- 161 AdminDeleteUserPermissionBulkV3
 $PYTHON -m $MODULE 'iam-admin-delete-user-permission-bulk-v3' \
-    '[{"Action": 20, "Resource": "MJb7cZ2b"}]' \
-    'PsaLLpEB' \
+    '[{"Action": 0, "Resource": "F2P44lXk"}]' \
+    'I3zdiRiC' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminDeleteUserPermissionBulkV3'
 delete_file $TEMP_FILE
 
-#- 161 AdminDeleteUserPermissionV3
+#- 162 AdminDeleteUserPermissionV3
 $PYTHON -m $MODULE 'iam-admin-delete-user-permission-v3' \
-    '95' \
-    'EMk5AsKa' \
-    'F2P44lXk' \
+    '68' \
+    'bPit71JW' \
+    'lYCoi4nD' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminDeleteUserPermissionV3'
 delete_file $TEMP_FILE
 
-#- 162 AdminGetUserPlatformAccountsV3
+#- 163 AdminGetUserPlatformAccountsV3
 $PYTHON -m $MODULE 'iam-admin-get-user-platform-accounts-v3' \
-    'I3zdiRiC' \
+    'fPu5V6QS' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetUserPlatformAccountsV3'
 delete_file $TEMP_FILE
 
-#- 163 AdminGetListJusticePlatformAccounts
+#- 164 AdminGetListJusticePlatformAccounts
 $PYTHON -m $MODULE 'iam-admin-get-list-justice-platform-accounts' \
-    '5IbPit71' \
+    'YxEVOryV' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetListJusticePlatformAccounts'
 delete_file $TEMP_FILE
 
-#- 164 AdminCreateJusticeUser
+#- 165 AdminCreateJusticeUser
 $PYTHON -m $MODULE 'iam-admin-create-justice-user' \
-    'JWlYCoi4' \
-    'nDfPu5V6' \
+    'uZYmgUeE' \
+    'PB5AGPgv' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminCreateJusticeUser'
 delete_file $TEMP_FILE
 
-#- 165 AdminLinkPlatformAccount
+#- 166 AdminLinkPlatformAccount
 $PYTHON -m $MODULE 'iam-admin-link-platform-account' \
-    '{"platformId": "QSYxEVOr", "platformUserId": "yVuZYmgU"}' \
-    'eEPB5AGP' \
+    '{"platformId": "k0Zthaj0", "platformUserId": "EBA4azRz"}' \
+    '0d56smob' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminLinkPlatformAccount'
 delete_file $TEMP_FILE
 
-#- 166 AdminPlatformUnlinkV3
+#- 167 AdminPlatformUnlinkV3
 $PYTHON -m $MODULE 'iam-admin-platform-unlink-v3' \
-    '{"platformNamespace": "gvk0Ztha"}' \
-    'j0EBA4az' \
-    'Rz0d56sm' \
+    '{"platformNamespace": "or4p1Plg"}' \
+    'QB9EcNGO' \
+    'eBRY6G5a' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminPlatformUnlinkV3'
 delete_file $TEMP_FILE
 
-#- 167 AdminPlatformLinkV3
+#- 168 AdminPlatformLinkV3
 $PYTHON -m $MODULE 'iam-admin-platform-link-v3' \
-    'obor4p1P' \
-    'lgQB9EcN' \
-    'GOeBRY6G' \
+    'e07deDLa' \
+    'Z8JCvbeT' \
+    'fW0hgzra' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminPlatformLinkV3'
 delete_file $TEMP_FILE
 
-#- 168 AdminDeleteUserRolesV3
+#- 169 AdminDeleteUserRolesV3
 $PYTHON -m $MODULE 'iam-admin-delete-user-roles-v3' \
-    '["5ae07deD"]' \
-    'LaZ8JCvb' \
+    '["bLJxEwJr"]' \
+    'EBmQ64ha' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminDeleteUserRolesV3'
 delete_file $TEMP_FILE
 
-#- 169 AdminSaveUserRoleV3
+#- 170 AdminSaveUserRoleV3
 $PYTHON -m $MODULE 'iam-admin-save-user-role-v3' \
-    '[{"namespace": "eTfW0hgz", "roleId": "rabLJxEw"}]' \
-    'JrEBmQ64' \
+    '[{"namespace": "NOzlGu68", "roleId": "UYyupjdD"}]' \
+    'etnoT0rf' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminSaveUserRoleV3'
 delete_file $TEMP_FILE
 
-#- 170 AdminAddUserRoleV3
+#- 171 AdminAddUserRoleV3
 $PYTHON -m $MODULE 'iam-admin-add-user-role-v3' \
-    'haNOzlGu' \
-    '68UYyupj' \
+    'WtVPwQfq' \
+    '6V92gbfP' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminAddUserRoleV3'
 delete_file $TEMP_FILE
 
-#- 171 AdminDeleteUserRoleV3
+#- 172 AdminDeleteUserRoleV3
 $PYTHON -m $MODULE 'iam-admin-delete-user-role-v3' \
-    'dDetnoT0' \
-    'rfWtVPwQ' \
+    'ouNdmP7f' \
+    'ckVnuDGv' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminDeleteUserRoleV3'
 delete_file $TEMP_FILE
 
-#- 172 AdminUpdateUserStatusV3
+#- 173 AdminUpdateUserStatusV3
 $PYTHON -m $MODULE 'iam-admin-update-user-status-v3' \
-    '{"enabled": false, "reason": "q6V92gbf"}' \
-    'PouNdmP7' \
+    '{"enabled": false, "reason": "1p5tcR5z"}' \
+    '8ZJLjSHc' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminUpdateUserStatusV3'
 delete_file $TEMP_FILE
 
-#- 173 AdminVerifyUserWithoutVerificationCodeV3
+#- 174 AdminVerifyUserWithoutVerificationCodeV3
 $PYTHON -m $MODULE 'iam-admin-verify-user-without-verification-code-v3' \
-    'fckVnuDG' \
+    'aR3X4tZm' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminVerifyUserWithoutVerificationCodeV3'
 delete_file $TEMP_FILE
 
-#- 174 AdminGetRolesV3
+#- 175 AdminGetRolesV3
 $PYTHON -m $MODULE 'iam-admin-get-roles-v3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetRolesV3'
 delete_file $TEMP_FILE
 
-#- 175 AdminCreateRoleV3
+#- 176 AdminCreateRoleV3
 $PYTHON -m $MODULE 'iam-admin-create-role-v3' \
-    '{"adminRole": true, "isWildcard": false, "managers": [{"displayName": "1p5tcR5z", "namespace": "8ZJLjSHc", "userId": "aR3X4tZm"}], "members": [{"displayName": "wr0QmOns", "namespace": "Eg49eXp0", "userId": "xQkZ2Jju"}], "permissions": [{"action": 44, "resource": "WWy0tU11", "schedAction": 82, "schedCron": "CeSrvejU", "schedRange": ["KwVfF37V"]}], "roleName": "r7mkDzFB"}' \
+    '{"adminRole": true, "deletable": true, "isWildcard": false, "managers": [{"displayName": "OnsEg49e", "namespace": "Xp0xQkZ2", "userId": "JjuwWWy0"}], "members": [{"displayName": "tU11PCeS", "namespace": "rvejUKwV", "userId": "fF37Vr7m"}], "permissions": [{"action": 20, "resource": "DzFBI1Vw", "schedAction": 14, "schedCron": "kVSKDlNF", "schedRange": ["OUHBJsvT"]}], "roleName": "sqk9hg4h"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminCreateRoleV3'
 delete_file $TEMP_FILE
 
-#- 176 AdminGetRoleV3
+#- 177 AdminGetRoleV3
 $PYTHON -m $MODULE 'iam-admin-get-role-v3' \
-    'I1VwhkVS' \
+    'j6nUdebW' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetRoleV3'
 delete_file $TEMP_FILE
 
-#- 177 AdminDeleteRoleV3
+#- 178 AdminDeleteRoleV3
 $PYTHON -m $MODULE 'iam-admin-delete-role-v3' \
-    'KDlNFOUH' \
+    '6UskbPkk' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminDeleteRoleV3'
 delete_file $TEMP_FILE
 
-#- 178 AdminUpdateRoleV3
+#- 179 AdminUpdateRoleV3
 $PYTHON -m $MODULE 'iam-admin-update-role-v3' \
-    '{"isWildcard": true, "roleName": "JsvTsqk9"}' \
-    'hg4hj6nU' \
+    '{"deletable": true, "isWildcard": false, "roleName": "01f1KxCt"}' \
+    'WADU2guN' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminUpdateRoleV3'
 delete_file $TEMP_FILE
 
-#- 179 AdminGetRoleAdminStatusV3
+#- 180 AdminGetRoleAdminStatusV3
 $PYTHON -m $MODULE 'iam-admin-get-role-admin-status-v3' \
-    'debW6Usk' \
+    '6U9w13W1' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetRoleAdminStatusV3'
 delete_file $TEMP_FILE
 
-#- 180 AdminUpdateAdminRoleStatusV3
+#- 181 AdminUpdateAdminRoleStatusV3
 $PYTHON -m $MODULE 'iam-admin-update-admin-role-status-v3' \
-    'bPkkZAk0' \
+    'K9TZQ4qR' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminUpdateAdminRoleStatusV3'
 delete_file $TEMP_FILE
 
-#- 181 AdminRemoveRoleAdminV3
+#- 182 AdminRemoveRoleAdminV3
 $PYTHON -m $MODULE 'iam-admin-remove-role-admin-v3' \
-    '1f1KxCtW' \
+    'LEi5wowE' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminRemoveRoleAdminV3'
 delete_file $TEMP_FILE
 
-#- 182 AdminGetRoleManagersV3
+#- 183 AdminGetRoleManagersV3
 $PYTHON -m $MODULE 'iam-admin-get-role-managers-v3' \
-    'ADU2guN6' \
+    '36rfmM0C' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetRoleManagersV3'
 delete_file $TEMP_FILE
 
-#- 183 AdminAddRoleManagersV3
+#- 184 AdminAddRoleManagersV3
 $PYTHON -m $MODULE 'iam-admin-add-role-managers-v3' \
-    '{"managers": [{"displayName": "U9w13W1K", "namespace": "9TZQ4qRL", "userId": "Ei5wowE3"}]}' \
-    '6rfmM0CC' \
+    '{"managers": [{"displayName": "Cs35TPUP", "namespace": "LmsY8Wgw", "userId": "Sx1DI5GH"}]}' \
+    '9bv9ZTo2' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminAddRoleManagersV3'
 delete_file $TEMP_FILE
 
-#- 184 AdminRemoveRoleManagersV3
+#- 185 AdminRemoveRoleManagersV3
 $PYTHON -m $MODULE 'iam-admin-remove-role-managers-v3' \
-    '{"managers": [{"displayName": "s35TPUPL", "namespace": "msY8WgwS", "userId": "x1DI5GH9"}]}' \
-    'bv9ZTo2H' \
+    '{"managers": [{"displayName": "HpA6pzjH", "namespace": "pZO0E9iL", "userId": "gRPJK3nB"}]}' \
+    'ae3GOgbQ' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminRemoveRoleManagersV3'
 delete_file $TEMP_FILE
 
-#- 185 AdminGetRoleMembersV3
+#- 186 AdminGetRoleMembersV3
 $PYTHON -m $MODULE 'iam-admin-get-role-members-v3' \
-    'pA6pzjHp' \
+    'rqra0Ptk' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetRoleMembersV3'
 delete_file $TEMP_FILE
 
-#- 186 AdminAddRoleMembersV3
+#- 187 AdminAddRoleMembersV3
 $PYTHON -m $MODULE 'iam-admin-add-role-members-v3' \
-    '{"members": [{"displayName": "ZO0E9iLg", "namespace": "RPJK3nBa", "userId": "e3GOgbQr"}]}' \
-    'qra0Ptkf' \
+    '{"members": [{"displayName": "fvOpY2ra", "namespace": "mp5lnBn6", "userId": "xmBkfMtC"}]}' \
+    '66hFq0kP' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminAddRoleMembersV3'
 delete_file $TEMP_FILE
 
-#- 187 AdminRemoveRoleMembersV3
+#- 188 AdminRemoveRoleMembersV3
 $PYTHON -m $MODULE 'iam-admin-remove-role-members-v3' \
-    '{"members": [{"displayName": "vOpY2ram", "namespace": "p5lnBn6x", "userId": "mBkfMtC6"}]}' \
-    '6hFq0kPO' \
+    '{"members": [{"displayName": "OkORm2Xj", "namespace": "lNEE5ecP", "userId": "zAmi0ySJ"}]}' \
+    'HfPloP1X' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminRemoveRoleMembersV3'
 delete_file $TEMP_FILE
 
-#- 188 AdminUpdateRolePermissionsV3
+#- 189 AdminUpdateRolePermissionsV3
 $PYTHON -m $MODULE 'iam-admin-update-role-permissions-v3' \
-    '{"permissions": [{"action": 21, "resource": "ORm2XjlN", "schedAction": 60, "schedCron": "E5ecPzAm", "schedRange": ["i0ySJHfP"]}]}' \
-    'loP1XkYK' \
+    '{"permissions": [{"action": 20, "resource": "YK4MgIsD", "schedAction": 89, "schedCron": "FMPyMhyw", "schedRange": ["1OLZPVww"]}]}' \
+    'xH4BIDJu' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminUpdateRolePermissionsV3'
 delete_file $TEMP_FILE
 
-#- 189 AdminAddRolePermissionsV3
+#- 190 AdminAddRolePermissionsV3
 $PYTHON -m $MODULE 'iam-admin-add-role-permissions-v3' \
-    '{"permissions": [{"action": 76, "resource": "gIsDSFMP", "schedAction": 48, "schedCron": "Mhyw1OLZ", "schedRange": ["PVwwxH4B"]}]}' \
-    'IDJuDoSh' \
+    '{"permissions": [{"action": 58, "resource": "oShMMftl", "schedAction": 23, "schedCron": "8N0VvChH", "schedRange": ["z9urmt7Q"]}]}' \
+    'WvE8s6Uz' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminAddRolePermissionsV3'
 delete_file $TEMP_FILE
 
-#- 190 AdminDeleteRolePermissionsV3
+#- 191 AdminDeleteRolePermissionsV3
 $PYTHON -m $MODULE 'iam-admin-delete-role-permissions-v3' \
-    '["MMftll8N"]' \
-    '0VvChHz9' \
+    '["8BRuYWDT"]' \
+    'tL6MTTRk' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminDeleteRolePermissionsV3'
 delete_file $TEMP_FILE
 
-#- 191 AdminDeleteRolePermissionV3
+#- 192 AdminDeleteRolePermissionV3
 $PYTHON -m $MODULE 'iam-admin-delete-role-permission-v3' \
-    '40' \
-    'rmt7QWvE' \
-    '8s6Uz8BR' \
+    '56' \
+    'bb9S5Q1I' \
+    'VHGT88pr' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminDeleteRolePermissionV3'
 delete_file $TEMP_FILE
 
-#- 192 AdminGetMyUserV3
+#- 193 AdminGetMyUserV3
 $PYTHON -m $MODULE 'iam-admin-get-my-user-v3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetMyUserV3'
 delete_file $TEMP_FILE
 
-#- 193 UserAuthenticationV3
+#- 194 UserAuthenticationV3
 $PYTHON -m $MODULE 'iam-user-authentication-v3' \
-    'uYWDTtL6' \
-    'MTTRkCbb' \
-    '9S5Q1IVH' \
+    'REBgYOWd' \
+    'HJ9Jumoh' \
+    'tU13gf7T' \
     --login_with_auth "Basic YWRtaW46YWRtaW4=" \
     >$TEMP_FILE 2>&1
 update_status $? 'UserAuthenticationV3'
 delete_file $TEMP_FILE
 
-#- 194 GetCountryLocationV3
+#- 195 GetCountryLocationV3
 $PYTHON -m $MODULE 'iam-get-country-location-v3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetCountryLocationV3'
 delete_file $TEMP_FILE
 
-#- 195 Logout
+#- 196 Logout
 $PYTHON -m $MODULE 'iam-logout' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'Logout'
 delete_file $TEMP_FILE
 
-#- 196 AdminRetrieveUserThirdPartyPlatformTokenV3
+#- 197 AdminRetrieveUserThirdPartyPlatformTokenV3
 $PYTHON -m $MODULE 'iam-admin-retrieve-user-third-party-platform-token-v3' \
-    'GT88prRE' \
-    'BgYOWdHJ' \
+    'RigNZj5w' \
+    '5y3HmK8Q' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminRetrieveUserThirdPartyPlatformTokenV3'
 delete_file $TEMP_FILE
 
-#- 197 RevokeUserV3
+#- 198 RevokeUserV3
 $PYTHON -m $MODULE 'iam-revoke-user-v3' \
-    '9JumohtU' \
+    'VOa62eQZ' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'RevokeUserV3'
 delete_file $TEMP_FILE
 
-#- 198 AuthorizeV3
+#- 199 AuthorizeV3
 $PYTHON -m $MODULE 'iam-authorize-v3' \
-    '13gf7TRi' \
+    'tbLLcF67' \
     'code' \
     --login_with_auth "Basic YWRtaW46YWRtaW4=" \
     >$TEMP_FILE 2>&1
 update_status $? 'AuthorizeV3'
 delete_file $TEMP_FILE
 
-#- 199 TokenIntrospectionV3
+#- 200 TokenIntrospectionV3
 $PYTHON -m $MODULE 'iam-token-introspection-v3' \
-    'NZj5w5y3' \
+    'v38Heccz' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'TokenIntrospectionV3'
 delete_file $TEMP_FILE
 
-#- 200 GetJWKSV3
+#- 201 GetJWKSV3
 $PYTHON -m $MODULE 'iam-get-jwksv3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetJWKSV3'
 delete_file $TEMP_FILE
 
-#- 201 RetrieveUserThirdPartyPlatformTokenV3
+#- 202 RetrieveUserThirdPartyPlatformTokenV3
 $PYTHON -m $MODULE 'iam-retrieve-user-third-party-platform-token-v3' \
-    'HmK8QVOa' \
-    '62eQZtbL' \
+    'opFmeRwp' \
+    'cJBZyi3m' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'RetrieveUserThirdPartyPlatformTokenV3'
 delete_file $TEMP_FILE
 
-#- 202 AuthCodeRequestV3
+#- 203 AuthCodeRequestV3
 $PYTHON -m $MODULE 'iam-auth-code-request-v3' \
-    'LcF671WL' \
-    'tv38Hecc' \
+    'LC4Kzeki' \
+    'SzeyolnO' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AuthCodeRequestV3'
 delete_file $TEMP_FILE
 
-#- 203 PlatformTokenGrantV3
+#- 204 PlatformTokenGrantV3
 $PYTHON -m $MODULE 'iam-platform-token-grant-v3' \
-    'zopFmeRw' \
+    'Qt0joVHg' \
     --login_with_auth "Basic YWRtaW46YWRtaW4=" \
     >$TEMP_FILE 2>&1
 update_status $? 'PlatformTokenGrantV3'
 delete_file $TEMP_FILE
 
-#- 204 GetRevocationListV3
+#- 205 GetRevocationListV3
 $PYTHON -m $MODULE 'iam-get-revocation-list-v3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetRevocationListV3'
 delete_file $TEMP_FILE
 
-#- 205 TokenRevocationV3
+#- 206 TokenRevocationV3
 $PYTHON -m $MODULE 'iam-token-revocation-v3' \
-    'pcJBZyi3' \
+    'CytC6lRG' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'TokenRevocationV3'
 delete_file $TEMP_FILE
 
-#- 206 TokenGrantV3
+#- 207 TokenGrantV3
 $PYTHON -m $MODULE 'iam-token-grant-v3' \
-    'client_credentials' \
+    'password' \
     --login_with_auth "Basic YWRtaW46YWRtaW4=" \
     >$TEMP_FILE 2>&1
 update_status $? 'TokenGrantV3'
 delete_file $TEMP_FILE
 
-#- 207 PlatformAuthenticationV3
+#- 208 PlatformAuthenticationV3
 $PYTHON -m $MODULE 'iam-platform-authentication-v3' \
-    'LC4Kzeki' \
-    'SzeyolnO' \
+    'nHbRdoTK' \
+    'KeuSjfZe' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PlatformAuthenticationV3'
 delete_file $TEMP_FILE
 
-#- 208 PublicGetInputValidations
+#- 209 PublicGetInputValidations
 $PYTHON -m $MODULE 'iam-public-get-input-validations' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetInputValidations'
 delete_file $TEMP_FILE
 
-#- 209 RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3
+#- 210 RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3
 $PYTHON -m $MODULE 'iam-retrieve-all-active-third-party-login-platform-credential-public-v3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3'
 delete_file $TEMP_FILE
 
-#- 210 PublicListUserIDByPlatformUserIDsV3
+#- 211 PublicListUserIDByPlatformUserIDsV3
 $PYTHON -m $MODULE 'iam-public-list-user-id-by-platform-user-i-ds-v3' \
-    '{"platformUserIds": ["Qt0joVHg"]}' \
-    'CytC6lRG' \
+    '{"platformUserIds": ["9i1osghF"]}' \
+    '1hzi1Nl4' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicListUserIDByPlatformUserIDsV3'
 delete_file $TEMP_FILE
 
-#- 211 PublicGetUserByPlatformUserIDV3
+#- 212 PublicGetUserByPlatformUserIDV3
 $PYTHON -m $MODULE 'iam-public-get-user-by-platform-user-idv3' \
-    '98YxnHbR' \
-    'doTKKeuS' \
+    '7syJ5ibz' \
+    'SHZeCLIv' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserByPlatformUserIDV3'
 delete_file $TEMP_FILE
 
-#- 212 PublicGetAsyncStatus
+#- 213 PublicGetAsyncStatus
 $PYTHON -m $MODULE 'iam-public-get-async-status' \
-    'jfZe9i1o' \
+    'WPVRsdEq' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetAsyncStatus'
 delete_file $TEMP_FILE
 
-#- 213 PublicSearchUserV3
+#- 214 PublicSearchUserV3
 $PYTHON -m $MODULE 'iam-public-search-user-v3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicSearchUserV3'
 delete_file $TEMP_FILE
 
-#- 214 PublicCreateUserV3
+#- 215 PublicCreateUserV3
 $PYTHON -m $MODULE 'iam-public-create-user-v3' \
-    '{"PasswordMD5Sum": "sghF1hzi", "acceptedPolicies": [{"isAccepted": false, "localizedPolicyVersionId": "47syJ5ib", "policyId": "zSHZeCLI", "policyVersionId": "vWPVRsdE"}], "authType": "qA61yTrM", "country": "gsycTgmP", "dateOfBirth": "zc20EuO5", "displayName": "dMqGDlSZ", "emailAddress": "PY07rEVS", "password": "jzHjL6Zb"}' \
+    '{"PasswordMD5Sum": "A61yTrMg", "acceptedPolicies": [{"isAccepted": true, "localizedPolicyVersionId": "ycTgmPzc", "policyId": "20EuO5dM", "policyVersionId": "qGDlSZPY"}], "authType": "07rEVSjz", "code": "HjL6ZbXj", "country": "G6DSmpp3", "dateOfBirth": "op8htaRL", "displayName": "xtW4PvFk", "emailAddress": "ESTULat5", "password": "F1Le7cR7", "reachMinimumAge": true}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicCreateUserV3'
 delete_file $TEMP_FILE
 
-#- 215 CheckUserAvailability
+#- 216 CheckUserAvailability
 $PYTHON -m $MODULE 'iam-check-user-availability' \
-    'XjG6DSmp' \
-    'p3op8hta' \
+    '6PWhZmmK' \
+    'z41i1Tp7' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'CheckUserAvailability'
 delete_file $TEMP_FILE
 
-#- 216 PublicBulkGetUsers
+#- 217 PublicBulkGetUsers
 $PYTHON -m $MODULE 'iam-public-bulk-get-users' \
-    '{"userIds": ["RLxtW4Pv"]}' \
+    '{"userIds": ["8FipJHah"]}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicBulkGetUsers'
 delete_file $TEMP_FILE
 
-#- 217 PublicForgotPasswordV3
+#- 218 PublicSendRegistrationCode
+$PYTHON -m $MODULE 'iam-public-send-registration-code' \
+    '{"emailAddress": "ViJvLYW0", "languageTag": "kdmlk2lu"}' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'PublicSendRegistrationCode'
+delete_file $TEMP_FILE
+
+#- 219 PublicVerifyRegistrationCode
+$PYTHON -m $MODULE 'iam-public-verify-registration-code' \
+    '{"code": "qSOOA2VO", "emailAddress": "ZBoNbB98"}' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'PublicVerifyRegistrationCode'
+delete_file $TEMP_FILE
+
+#- 220 PublicForgotPasswordV3
 $PYTHON -m $MODULE 'iam-public-forgot-password-v3' \
-    '{"emailAddress": "FkESTULa", "languageTag": "t5F1Le7c"}' \
+    '{"emailAddress": "PuSGykqF", "languageTag": "zPwSMXT5"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicForgotPasswordV3'
 delete_file $TEMP_FILE
 
-#- 218 GetAdminInvitationV3
+#- 221 GetAdminInvitationV3
 $PYTHON -m $MODULE 'iam-get-admin-invitation-v3' \
-    'R7q6PWhZ' \
+    '3bBuL38b' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetAdminInvitationV3'
 delete_file $TEMP_FILE
 
-#- 219 CreateUserFromInvitationV3
+#- 222 CreateUserFromInvitationV3
 $PYTHON -m $MODULE 'iam-create-user-from-invitation-v3' \
-    '{"acceptedPolicies": [{"isAccepted": false, "localizedPolicyVersionId": "mKz41i1T", "policyId": "p78FipJH", "policyVersionId": "ahViJvLY"}], "authType": "W0kdmlk2", "country": "luqSOOA2", "dateOfBirth": "VOZBoNbB", "displayName": "98PuSGyk", "password": "qFzPwSMX"}' \
-    'T53bBuL3' \
+    '{"acceptedPolicies": [{"isAccepted": false, "localizedPolicyVersionId": "OYDVuHZQ", "policyId": "9LYt6w23", "policyVersionId": "Wf8iEQo7"}], "authType": "2sH0aRdc", "country": "DlDyGcsf", "dateOfBirth": "IuI4Dv5l", "displayName": "EJpK1AyR", "password": "lzsrRXEF", "reachMinimumAge": false}' \
+    'vQOHG6wV' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateUserFromInvitationV3'
 delete_file $TEMP_FILE
 
-#- 220 UpdateUserV3
+#- 223 UpdateUserV3
 $PYTHON -m $MODULE 'iam-update-user-v3' \
-    '{"country": "8beOYDVu", "dateOfBirth": "HZQ9LYt6", "displayName": "w23Wf8iE", "languageTag": "Qo72sH0a", "userName": "RdcDlDyG"}' \
+    '{"country": "icNratsv", "dateOfBirth": "vHLmIohf", "displayName": "NISLXMDW", "languageTag": "Ddm5FE4l", "userName": "liQMnutJ"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateUserV3'
 delete_file $TEMP_FILE
 
-#- 221 PublicUpdateUserV3
+#- 224 PublicUpdateUserV3
 $PYTHON -m $MODULE 'iam-public-update-user-v3' \
-    '{"country": "csfIuI4D", "dateOfBirth": "v5lEJpK1", "displayName": "AyRlzsrR", "languageTag": "XEFZivQO", "userName": "HG6wVicN"}' \
+    '{"country": "bpEo4mUN", "dateOfBirth": "HFtdml2x", "displayName": "NviWacJc", "languageTag": "3Fm7Z548", "userName": "uuKgoCBq"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicUpdateUserV3'
 delete_file $TEMP_FILE
 
-#- 222 PublicSendVerificationCodeV3
+#- 225 PublicSendVerificationCodeV3
 $PYTHON -m $MODULE 'iam-public-send-verification-code-v3' \
-    '{"context": "ratsvvHL", "emailAddress": "mIohfNIS", "languageTag": "LXMDWDdm"}' \
+    '{"context": "S5uIdCbw", "emailAddress": "Ceeq9ouE", "languageTag": "dDtjOgsy"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicSendVerificationCodeV3'
 delete_file $TEMP_FILE
 
-#- 223 PublicUserVerificationV3
+#- 226 PublicUserVerificationV3
 $PYTHON -m $MODULE 'iam-public-user-verification-v3' \
-    '{"code": "5FE4lliQ", "contactType": "MnutJbpE", "languageTag": "o4mUNHFt"}' \
+    '{"code": "pLkm2ZYe", "contactType": "w5H7Zm0g", "languageTag": "nYyj6MXf", "validateOnly": false}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicUserVerificationV3'
 delete_file $TEMP_FILE
 
-#- 224 PublicUpgradeHeadlessAccountV3
+#- 227 PublicUpgradeHeadlessAccountV3
 $PYTHON -m $MODULE 'iam-public-upgrade-headless-account-v3' \
-    '{"code": "dml2xNvi", "country": "WacJc3Fm", "dateOfBirth": "7Z548uuK", "displayName": "goCBqS5u", "emailAddress": "IdCbwCee", "password": "q9ouEdDt"}' \
+    '{"code": "tyebvoeH", "country": "enAALKt7", "dateOfBirth": "EfxIH446", "displayName": "oUnP2S74", "emailAddress": "unXwg0JK", "password": "qVWW1rjK", "validateOnly": false}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicUpgradeHeadlessAccountV3'
 delete_file $TEMP_FILE
 
-#- 225 PublicVerifyHeadlessAccountV3
+#- 228 PublicVerifyHeadlessAccountV3
 $PYTHON -m $MODULE 'iam-public-verify-headless-account-v3' \
-    '{"emailAddress": "jOgsypLk", "password": "m2ZYew5H"}' \
+    '{"emailAddress": "pwkAvcsY", "password": "vbgfBVPp"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicVerifyHeadlessAccountV3'
 delete_file $TEMP_FILE
 
-#- 226 PublicUpdatePasswordV3
+#- 229 PublicUpdatePasswordV3
 $PYTHON -m $MODULE 'iam-public-update-password-v3' \
-    '{"languageTag": "7Zm0gnYy", "newPassword": "j6MXf9G1", "oldPassword": "ntyebvoe"}' \
+    '{"languageTag": "Ta8Yuq7T", "newPassword": "KiNXmz7e", "oldPassword": "MrMD5Tba"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicUpdatePasswordV3'
 delete_file $TEMP_FILE
 
-#- 227 PublicCreateJusticeUser
+#- 230 PublicCreateJusticeUser
 $PYTHON -m $MODULE 'iam-public-create-justice-user' \
-    'HenAALKt' \
+    'UxTCTng0' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicCreateJusticeUser'
 delete_file $TEMP_FILE
 
-#- 228 PublicPlatformLinkV3
+#- 231 PublicPlatformLinkV3
 $PYTHON -m $MODULE 'iam-public-platform-link-v3' \
-    '7EfxIH44' \
-    '6oUnP2S7' \
+    'xjtdBrjs' \
+    '3Kiykt2C' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicPlatformLinkV3'
 delete_file $TEMP_FILE
 
-#- 229 PublicPlatformUnlinkV3
+#- 232 PublicPlatformUnlinkV3
 $PYTHON -m $MODULE 'iam-public-platform-unlink-v3' \
-    '{"platformNamespace": "4unXwg0J"}' \
-    'KqVWW1rj' \
+    '{"platformNamespace": "k2gOlSat"}' \
+    'ECZ2UgwQ' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicPlatformUnlinkV3'
 delete_file $TEMP_FILE
 
-#- 230 PublicWebLinkPlatform
+#- 233 PublicWebLinkPlatform
 $PYTHON -m $MODULE 'iam-public-web-link-platform' \
-    'K1epwkAv' \
+    'LqDqYSxT' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicWebLinkPlatform'
 delete_file $TEMP_FILE
 
-#- 231 PublicWebLinkPlatformEstablish
+#- 234 PublicWebLinkPlatformEstablish
 $PYTHON -m $MODULE 'iam-public-web-link-platform-establish' \
-    'csYvbgfB' \
-    'VPpTa8Yu' \
+    'PuVlBqir' \
+    'dp3yxnsE' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicWebLinkPlatformEstablish'
 delete_file $TEMP_FILE
 
-#- 232 ResetPasswordV3
+#- 235 ResetPasswordV3
 $PYTHON -m $MODULE 'iam-reset-password-v3' \
-    '{"code": "q7TKiNXm", "emailAddress": "z7eMrMD5", "newPassword": "TbaUxTCT"}' \
+    '{"code": "Tl1SvhQu", "emailAddress": "dsjIhXdx", "newPassword": "iSoWpnnx"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'ResetPasswordV3'
 delete_file $TEMP_FILE
 
-#- 233 PublicGetUserByUserIdV3
+#- 236 PublicGetUserByUserIdV3
 $PYTHON -m $MODULE 'iam-public-get-user-by-user-id-v3' \
-    'ng0xjtdB' \
+    'gX7BCPMq' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserByUserIdV3'
 delete_file $TEMP_FILE
 
-#- 234 PublicGetUserBanHistoryV3
+#- 237 PublicGetUserBanHistoryV3
 $PYTHON -m $MODULE 'iam-public-get-user-ban-history-v3' \
-    'rjs3Kiyk' \
+    'zQIxibhp' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserBanHistoryV3'
 delete_file $TEMP_FILE
 
-#- 235 PublicGetUserLoginHistoriesV3
+#- 238 PublicGetUserLoginHistoriesV3
 $PYTHON -m $MODULE 'iam-public-get-user-login-histories-v3' \
-    't2Ck2gOl' \
+    'NYsHtdB3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserLoginHistoriesV3'
 delete_file $TEMP_FILE
 
-#- 236 PublicGetUserPlatformAccountsV3
+#- 239 PublicGetUserPlatformAccountsV3
 $PYTHON -m $MODULE 'iam-public-get-user-platform-accounts-v3' \
-    'SatECZ2U' \
+    'IkjuaZqh' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserPlatformAccountsV3'
 delete_file $TEMP_FILE
 
-#- 237 PublicLinkPlatformAccount
+#- 240 PublicLinkPlatformAccount
 $PYTHON -m $MODULE 'iam-public-link-platform-account' \
-    '{"platformId": "gwQLqDqY", "platformUserId": "SxTPuVlB"}' \
-    'qirdp3yx' \
+    '{"platformId": "JilrZkSS", "platformUserId": "KgP5rxCR"}' \
+    '77G9d5CA' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicLinkPlatformAccount'
 delete_file $TEMP_FILE
 
-#- 238 PublicValidateUserByUserIDAndPasswordV3
+#- 241 PublicValidateUserByUserIDAndPasswordV3
 $PYTHON -m $MODULE 'iam-public-validate-user-by-user-id-and-password-v3' \
-    'nsETl1Sv' \
-    'hQudsjIh' \
+    '1GORSbL9' \
+    'n0dbWDEu' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicValidateUserByUserIDAndPasswordV3'
 delete_file $TEMP_FILE
 
-#- 239 PublicGetRolesV3
+#- 242 PublicGetRolesV3
 $PYTHON -m $MODULE 'iam-public-get-roles-v3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetRolesV3'
 delete_file $TEMP_FILE
 
-#- 240 PublicGetRoleV3
+#- 243 PublicGetRoleV3
 $PYTHON -m $MODULE 'iam-public-get-role-v3' \
-    'XdxiSoWp' \
+    'pmdLQzPn' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetRoleV3'
 delete_file $TEMP_FILE
 
-#- 241 PublicGetMyUserV3
+#- 244 PublicGetMyUserV3
 $PYTHON -m $MODULE 'iam-public-get-my-user-v3' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetMyUserV3'
 delete_file $TEMP_FILE
 
-#- 242 PlatformAuthenticateSAMLV3Handler
+#- 245 PlatformAuthenticateSAMLV3Handler
 $PYTHON -m $MODULE 'iam-platform-authenticate-samlv3-handler' \
-    'nnxgX7BC' \
-    'PMqzQIxi' \
+    'NfBAcWAr' \
+    'bkCfdHIZ' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PlatformAuthenticateSAMLV3Handler'
 delete_file $TEMP_FILE
 
-#- 243 LoginSSOClient
+#- 246 LoginSSOClient
 $PYTHON -m $MODULE 'iam-login-sso-client' \
-    'bhpNYsHt' \
+    'b03otqmB' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'LoginSSOClient'
 delete_file $TEMP_FILE
 
-#- 244 LogoutSSOClient
+#- 247 LogoutSSOClient
 $PYTHON -m $MODULE 'iam-logout-sso-client' \
-    'dB3Ikjua' \
+    'uS9V2pCZ' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'LogoutSSOClient'
 delete_file $TEMP_FILE
 
-#- 245 AdminUpdateUserV4
+#- 248 AdminUpdateUserV4
 $PYTHON -m $MODULE 'iam-admin-update-user-v4' \
-    '{"country": "ZqhJilrZ", "dateOfBirth": "kSSKgP5r", "displayName": "xCR77G9d", "languageTag": "5CA1GORS", "userName": "bL9n0dbW"}' \
-    'DEupmdLQ' \
+    '{"country": "23UHmk0l", "dateOfBirth": "pJ4JLl01", "displayName": "qi7L2oDU", "languageTag": "oVRUb39j", "userName": "22P4Sp09"}' \
+    'cKmjRUbZ' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminUpdateUserV4'
 delete_file $TEMP_FILE
 
-#- 246 AdminUpdateUserEmailAddressV4
+#- 249 AdminUpdateUserEmailAddressV4
 $PYTHON -m $MODULE 'iam-admin-update-user-email-address-v4' \
-    '{"code": "zPnNfBAc", "emailAddress": "WArbkCfd"}' \
-    'HIZb03ot' \
+    '{"code": "VBVS7OK2", "emailAddress": "ZrdcsckM"}' \
+    'ekROWZ2K' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminUpdateUserEmailAddressV4'
 delete_file $TEMP_FILE
 
-#- 247 AdminListUserRolesV4
+#- 250 AdminListUserRolesV4
 $PYTHON -m $MODULE 'iam-admin-list-user-roles-v4' \
-    'qmBuS9V2' \
+    'UTqkK2eF' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminListUserRolesV4'
 delete_file $TEMP_FILE
 
-#- 248 AdminUpdateUserRoleV4
+#- 251 AdminUpdateUserRoleV4
 $PYTHON -m $MODULE 'iam-admin-update-user-role-v4' \
-    '{"assignedNamespaces": ["pCZ23UHm"], "roleId": "k0lpJ4JL"}' \
-    'l01qi7L2' \
+    '{"assignedNamespaces": ["aGLoSmEE"], "roleId": "PbLywJsy"}' \
+    'Uie6fZgL' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminUpdateUserRoleV4'
 delete_file $TEMP_FILE
 
-#- 249 AdminAddUserRoleV4
+#- 252 AdminAddUserRoleV4
 $PYTHON -m $MODULE 'iam-admin-add-user-role-v4' \
-    '{"assignedNamespaces": ["oDUoVRUb"], "roleId": "39j22P4S"}' \
-    'p09cKmjR' \
+    '{"assignedNamespaces": ["llUPsO8l"], "roleId": "g46Si700"}' \
+    '6vL2w4aa' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminAddUserRoleV4'
 delete_file $TEMP_FILE
 
-#- 250 AdminRemoveUserRoleV4
+#- 253 AdminRemoveUserRoleV4
 $PYTHON -m $MODULE 'iam-admin-remove-user-role-v4' \
-    '{"assignedNamespaces": ["UbZVBVS7"], "roleId": "OK2Zrdcs"}' \
-    'ckMekROW' \
+    '{"assignedNamespaces": ["jDAOx0iJ"], "roleId": "jYleaktq"}' \
+    'v2WkljQu' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminRemoveUserRoleV4'
 delete_file $TEMP_FILE
 
-#- 251 AdminGetRolesV4
+#- 254 AdminGetRolesV4
 $PYTHON -m $MODULE 'iam-admin-get-roles-v4' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetRolesV4'
 delete_file $TEMP_FILE
 
-#- 252 AdminCreateRoleV4
+#- 255 AdminCreateRoleV4
 $PYTHON -m $MODULE 'iam-admin-create-role-v4' \
-    '{"adminRole": true, "isWildcard": false, "roleName": "K2eFaGLo"}' \
+    '{"adminRole": true, "deletable": false, "isWildcard": false, "roleName": "JONqHGq8"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminCreateRoleV4'
 delete_file $TEMP_FILE
 
-#- 253 AdminGetRoleV4
+#- 256 AdminGetRoleV4
 $PYTHON -m $MODULE 'iam-admin-get-role-v4' \
-    'SmEEPbLy' \
+    'mB7mF2lM' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminGetRoleV4'
 delete_file $TEMP_FILE
 
-#- 254 AdminDeleteRoleV4
+#- 257 AdminDeleteRoleV4
 $PYTHON -m $MODULE 'iam-admin-delete-role-v4' \
-    'wJsyUie6' \
+    'FcaghFXJ' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminDeleteRoleV4'
 delete_file $TEMP_FILE
 
-#- 255 AdminUpdateRoleV4
+#- 258 AdminUpdateRoleV4
 $PYTHON -m $MODULE 'iam-admin-update-role-v4' \
-    '{"adminRole": false, "isWildcard": false, "roleName": "LllUPsO8"}' \
-    'lg46Si70' \
+    '{"adminRole": false, "deletable": false, "isWildcard": true, "roleName": "csIqCy4x"}' \
+    'DifSSQ5O' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminUpdateRoleV4'
 delete_file $TEMP_FILE
 
-#- 256 AdminUpdateRolePermissionsV4
+#- 259 AdminUpdateRolePermissionsV4
 $PYTHON -m $MODULE 'iam-admin-update-role-permissions-v4' \
-    '{"permissions": [{"action": 42, "resource": "L2w4aajD", "schedAction": 53, "schedCron": "Ox0iJjYl", "schedRange": ["eaktqv2W"]}]}' \
-    'kljQuD5m' \
+    '{"permissions": [{"action": 26, "resource": "2ccEcl3x", "schedAction": 9, "schedCron": "iO4bwF5J", "schedRange": ["OjGoGxKM"]}]}' \
+    '3qMce5tf' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminUpdateRolePermissionsV4'
 delete_file $TEMP_FILE
 
-#- 257 AdminAddRolePermissionsV4
+#- 260 AdminAddRolePermissionsV4
 $PYTHON -m $MODULE 'iam-admin-add-role-permissions-v4' \
-    '{"permissions": [{"action": 26, "resource": "JONqHGq8", "schedAction": 24, "schedCron": "B7mF2lMF", "schedRange": ["caghFXJI"]}]}' \
-    'JflRHFcs' \
+    '{"permissions": [{"action": 74, "resource": "cpjFZMKC", "schedAction": 2, "schedCron": "p0pEbLCL", "schedRange": ["FpHxMYF8"]}]}' \
+    '36075xEp' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminAddRolePermissionsV4'
 delete_file $TEMP_FILE
 
-#- 258 AdminDeleteRolePermissionsV4
+#- 261 AdminDeleteRolePermissionsV4
 $PYTHON -m $MODULE 'iam-admin-delete-role-permissions-v4' \
-    '["IqCy4xDi"]' \
-    'fSSQ5On2' \
+    '["zdnYtpja"]' \
+    '5ig2isQZ' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminDeleteRolePermissionsV4'
 delete_file $TEMP_FILE
 
-#- 259 AdminListAssignedUsersV4
+#- 262 AdminListAssignedUsersV4
 $PYTHON -m $MODULE 'iam-admin-list-assigned-users-v4' \
-    'ccEcl3xe' \
+    'ga6Vy76i' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminListAssignedUsersV4'
 delete_file $TEMP_FILE
 
-#- 260 AdminAssignUserToRoleV4
+#- 263 AdminAssignUserToRoleV4
 $PYTHON -m $MODULE 'iam-admin-assign-user-to-role-v4' \
-    '{"assignedNamespaces": ["iO4bwF5J"], "namespace": "OjGoGxKM", "userId": "3qMce5tf"}' \
-    'LcpjFZMK' \
+    '{"assignedNamespaces": ["zPiQRjYa"], "namespace": "8fv5fIt2", "userId": "2tIZhjhg"}' \
+    'kigW22zX' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminAssignUserToRoleV4'
 delete_file $TEMP_FILE
 
-#- 261 AdminRevokeUserFromRoleV4
+#- 264 AdminRevokeUserFromRoleV4
 $PYTHON -m $MODULE 'iam-admin-revoke-user-from-role-v4' \
-    '{"namespace": "Cbp0pEbL", "userId": "CLFpHxMY"}' \
-    'F836075x' \
+    '{"namespace": "MWXfbcM0", "userId": "GIALIbFC"}' \
+    'QgBcLNT6' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminRevokeUserFromRoleV4'
 delete_file $TEMP_FILE
 
-#- 262 AdminUpdateMyUserV4
+#- 265 AdminUpdateMyUserV4
 $PYTHON -m $MODULE 'iam-admin-update-my-user-v4' \
-    '{"country": "EpzdnYtp", "dateOfBirth": "ja5ig2is", "displayName": "QZga6Vy7", "languageTag": "6izPiQRj", "userName": "Ya8fv5fI"}' \
+    '{"country": "iOQVYx5r", "dateOfBirth": "W2gMsI1a", "displayName": "YBitSn3U", "languageTag": "DeKj97I4", "userName": "WYXLqjN7"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminUpdateMyUserV4'
 delete_file $TEMP_FILE
 
-#- 263 AdminInviteUserV4
+#- 266 AdminInviteUserV4
 $PYTHON -m $MODULE 'iam-admin-invite-user-v4' \
-    '{"assignedNamespaces": ["t22tIZhj"], "emailAddresses": ["hgkigW22"], "isAdmin": true, "roleId": "XMWXfbcM"}' \
+    '{"assignedNamespaces": ["ktOBTraB"], "emailAddresses": ["xWRTVuYE"], "isAdmin": true, "roleId": "GlKDwTKX"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminInviteUserV4'
 delete_file $TEMP_FILE
 
-#- 264 PublicCreateTestUserV4
+#- 267 PublicCreateTestUserV4
 $PYTHON -m $MODULE 'iam-public-create-test-user-v4' \
-    '{"acceptedPolicies": [{"isAccepted": true, "localizedPolicyVersionId": "LIbFCQgB", "policyId": "cLNT6iOQ", "policyVersionId": "VYx5rW2g"}], "authType": "MsI1aYBi", "country": "tSn3UDeK", "dateOfBirth": "j97I4WYX", "displayName": "LqjN7ktO", "emailAddress": "BTraBxWR", "password": "TVuYEqGl", "passwordMD5Sum": "KDwTKXBr", "username": "XiQcd9IW", "verified": false}' \
+    '{"acceptedPolicies": [{"isAccepted": true, "localizedPolicyVersionId": "rXiQcd9I", "policyId": "W8kiCKeQ", "policyVersionId": "JWZBvcq1"}], "authType": "ETvWBxYZ", "country": "Jh7B8gbn", "dateOfBirth": "Su9M2OxD", "displayName": "2udaeYpC", "emailAddress": "XYSMiy87", "password": "CTqEQBg3", "passwordMD5Sum": "6my3sY2c", "username": "lrDcain0", "verified": false}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicCreateTestUserV4'
 delete_file $TEMP_FILE
 
-#- 265 PublicCreateUserV4
+#- 268 PublicCreateUserV4
 $PYTHON -m $MODULE 'iam-public-create-user-v4' \
-    '{"acceptedPolicies": [{"isAccepted": false, "localizedPolicyVersionId": "CKeQJWZB", "policyId": "vcq1ETvW", "policyVersionId": "BxYZJh7B"}], "authType": "8gbnSu9M", "country": "2OxD2uda", "dateOfBirth": "eYpCXYSM", "displayName": "iy87CTqE", "emailAddress": "QBg36my3", "password": "sY2clrDc", "passwordMD5Sum": "ain0cOVF", "username": "1zHwDTI0"}' \
+    '{"acceptedPolicies": [{"isAccepted": true, "localizedPolicyVersionId": "1zHwDTI0", "policyId": "sJ1Q0kph", "policyVersionId": "MTggSP2S"}], "authType": "LcuAP7vU", "code": "971Czw2n", "country": "bg8C7Mvy", "dateOfBirth": "whu6MjOj", "displayName": "uGzo1Fz4", "emailAddress": "tU0aSn98", "password": "N8qOUA0z", "passwordMD5Sum": "92RaDe8n", "reachMinimumAge": false, "username": "T8LRQkMn"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicCreateUserV4'
 delete_file $TEMP_FILE
 
-#- 266 CreateUserFromInvitationV4
+#- 269 CreateUserFromInvitationV4
 $PYTHON -m $MODULE 'iam-create-user-from-invitation-v4' \
-    '{"acceptedPolicies": [{"isAccepted": true, "localizedPolicyVersionId": "J1Q0kphM", "policyId": "TggSP2SL", "policyVersionId": "cuAP7vU9"}], "authType": "71Czw2nb", "country": "g8C7Mvyw", "dateOfBirth": "hu6MjOju", "displayName": "Gzo1Fz4t", "password": "U0aSn98N", "username": "8qOUA0z9"}' \
-    '2RaDe8ng' \
+    '{"acceptedPolicies": [{"isAccepted": true, "localizedPolicyVersionId": "F2mdYY6Z", "policyId": "MfuTYTKs", "policyVersionId": "ue48qBEB"}], "authType": "NAV5BTe6", "country": "ec1zA92U", "dateOfBirth": "RCLSGPmR", "displayName": "BZWunHW7", "password": "MYvr6QA7", "reachMinimumAge": false, "username": "epc92HA9"}' \
+    '4eACdeyf' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateUserFromInvitationV4'
 delete_file $TEMP_FILE
 
-#- 267 PublicUpdateUserV4
+#- 270 PublicUpdateUserV4
 $PYTHON -m $MODULE 'iam-public-update-user-v4' \
-    '{"country": "T8LRQkMn", "dateOfBirth": "G1LZyF2m", "displayName": "dYY6ZMfu", "languageTag": "TYTKsue4", "userName": "8qBEBNAV"}' \
+    '{"country": "UpgiPpf8", "dateOfBirth": "nxKJ3dnm", "displayName": "tPwa64Y4", "languageTag": "gPEKMhhu", "userName": "9a6f3xJN"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicUpdateUserV4'
 delete_file $TEMP_FILE
 
-#- 268 PublicUpdateUserEmailAddressV4
+#- 271 PublicUpdateUserEmailAddressV4
 $PYTHON -m $MODULE 'iam-public-update-user-email-address-v4' \
-    '{"code": "5BTe6ec1", "emailAddress": "zA92URCL"}' \
+    '{"code": "tUlKLlII", "emailAddress": "AeHbm5M6"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicUpdateUserEmailAddressV4'
 delete_file $TEMP_FILE
 
-#- 269 PublicUpgradeHeadlessAccountWithVerificationCodeV4
+#- 272 PublicUpgradeHeadlessAccountWithVerificationCodeV4
 $PYTHON -m $MODULE 'iam-public-upgrade-headless-account-with-verification-code-v4' \
-    '{"code": "SGPmRBZW", "country": "unHW7MYv", "dateOfBirth": "r6QA7Ppe", "displayName": "pc92HA94", "emailAddress": "eACdeyfU", "password": "pgiPpf8n", "username": "xKJ3dnmt"}' \
+    '{"code": "LsY1VMuI", "country": "EcRls68M", "dateOfBirth": "3MPMRPBe", "displayName": "pyyMz6zf", "emailAddress": "R1pvTYYt", "password": "DOiEi4Ru", "reachMinimumAge": true, "username": "cHCSGhpO", "validateOnly": true}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicUpgradeHeadlessAccountWithVerificationCodeV4'
 delete_file $TEMP_FILE
 
-#- 270 PublicUpgradeHeadlessAccountV4
+#- 273 PublicUpgradeHeadlessAccountV4
 $PYTHON -m $MODULE 'iam-public-upgrade-headless-account-v4' \
-    '{"emailAddress": "Pwa64Y4g", "password": "PEKMhhu9", "username": "a6f3xJNt"}' \
+    '{"emailAddress": "lwOiuKGD", "password": "FgK49YuK", "username": "nXks0m8A"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicUpgradeHeadlessAccountV4'
