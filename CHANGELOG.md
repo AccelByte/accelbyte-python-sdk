@@ -1,5 +1,44 @@
 # Changelog
 
+## v0.10.0
+- Update APIs
+    - Add `x-omitempty` to boolean properties
+    - Move `basePath`(s) into each `pathItem`
+    - basic
+        - version bump only
+        - add `pattern` property to `dateOfBirth` and `language` fields
+    - cloudsave
+        - version bump only
+    - dslogmanager
+        - version bump only
+    - dsmc
+        - version bump only
+    - group
+        - version bump only
+    - iam
+        - version bump,
+        - add, update endpoint(s)
+        - add, update model(s)
+    - leaderboard
+        - version bump only
+    - legal
+        - version bump only
+    - lobby
+        - version bump only
+        - update 1 model
+    - matchmaking
+        - version bump only
+    - platform
+        - version bump
+        - update endpoint(s)
+    - seasonpass
+        - version bump only
+    - social
+        - version bump only
+    - ugc
+        - version bump only
+
+
 ## v0.9.0
 - Add `X-Amzn-Trace-Id` automatically on each request
     - You can enable/disable this feature when you use `initialize()`
