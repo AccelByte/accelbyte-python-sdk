@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.3.2)
+# justice-platform-service (4.4.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -38,6 +38,10 @@ class AdyenConfig(Model):
 
         blocked_payment_methods: (blockedPaymentMethods) OPTIONAL List[str]
 
+        client_key: (clientKey) OPTIONAL str
+
+        drop_in_settings: (dropInSettings) OPTIONAL str
+
         live_endpoint_url_prefix: (liveEndpointUrlPrefix) OPTIONAL str
 
         merchant_account: (merchantAccount) OPTIONAL str
@@ -59,6 +63,8 @@ class AdyenConfig(Model):
     api_key: str                                                                                   # OPTIONAL
     authorise_as_capture: bool                                                                     # OPTIONAL
     blocked_payment_methods: List[str]                                                             # OPTIONAL
+    client_key: str                                                                                # OPTIONAL
+    drop_in_settings: str                                                                          # OPTIONAL
     live_endpoint_url_prefix: str                                                                  # OPTIONAL
     merchant_account: str                                                                          # OPTIONAL
     notification_hmac_key: str                                                                     # OPTIONAL
@@ -85,6 +91,14 @@ class AdyenConfig(Model):
 
     def with_blocked_payment_methods(self, value: List[str]) -> AdyenConfig:
         self.blocked_payment_methods = value
+        return self
+
+    def with_client_key(self, value: str) -> AdyenConfig:
+        self.client_key = value
+        return self
+
+    def with_drop_in_settings(self, value: str) -> AdyenConfig:
+        self.drop_in_settings = value
         return self
 
     def with_live_endpoint_url_prefix(self, value: str) -> AdyenConfig:
@@ -137,6 +151,14 @@ class AdyenConfig(Model):
             result["blockedPaymentMethods"] = [str(i0) for i0 in self.blocked_payment_methods]
         elif include_empty:
             result["blockedPaymentMethods"] = []
+        if hasattr(self, "client_key"):
+            result["clientKey"] = str(self.client_key)
+        elif include_empty:
+            result["clientKey"] = str()
+        if hasattr(self, "drop_in_settings"):
+            result["dropInSettings"] = str(self.drop_in_settings)
+        elif include_empty:
+            result["dropInSettings"] = str()
         if hasattr(self, "live_endpoint_url_prefix"):
             result["liveEndpointUrlPrefix"] = str(self.live_endpoint_url_prefix)
         elif include_empty:
@@ -178,6 +200,8 @@ class AdyenConfig(Model):
         api_key: Optional[str] = None,
         authorise_as_capture: Optional[bool] = None,
         blocked_payment_methods: Optional[List[str]] = None,
+        client_key: Optional[str] = None,
+        drop_in_settings: Optional[str] = None,
         live_endpoint_url_prefix: Optional[str] = None,
         merchant_account: Optional[str] = None,
         notification_hmac_key: Optional[str] = None,
@@ -195,6 +219,10 @@ class AdyenConfig(Model):
             instance.authorise_as_capture = authorise_as_capture
         if blocked_payment_methods is not None:
             instance.blocked_payment_methods = blocked_payment_methods
+        if client_key is not None:
+            instance.client_key = client_key
+        if drop_in_settings is not None:
+            instance.drop_in_settings = drop_in_settings
         if live_endpoint_url_prefix is not None:
             instance.live_endpoint_url_prefix = live_endpoint_url_prefix
         if merchant_account is not None:
@@ -232,6 +260,14 @@ class AdyenConfig(Model):
             instance.blocked_payment_methods = [str(i0) for i0 in dict_["blockedPaymentMethods"]]
         elif include_empty:
             instance.blocked_payment_methods = []
+        if "clientKey" in dict_ and dict_["clientKey"] is not None:
+            instance.client_key = str(dict_["clientKey"])
+        elif include_empty:
+            instance.client_key = str()
+        if "dropInSettings" in dict_ and dict_["dropInSettings"] is not None:
+            instance.drop_in_settings = str(dict_["dropInSettings"])
+        elif include_empty:
+            instance.drop_in_settings = str()
         if "liveEndpointUrlPrefix" in dict_ and dict_["liveEndpointUrlPrefix"] is not None:
             instance.live_endpoint_url_prefix = str(dict_["liveEndpointUrlPrefix"])
         elif include_empty:
@@ -287,6 +323,8 @@ class AdyenConfig(Model):
             "apiKey": "api_key",
             "authoriseAsCapture": "authorise_as_capture",
             "blockedPaymentMethods": "blocked_payment_methods",
+            "clientKey": "client_key",
+            "dropInSettings": "drop_in_settings",
             "liveEndpointUrlPrefix": "live_endpoint_url_prefix",
             "merchantAccount": "merchant_account",
             "notificationHmacKey": "notification_hmac_key",

@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-ds-log-manager-service (2.0.0)
+# justice-ds-log-manager-service (2.1.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

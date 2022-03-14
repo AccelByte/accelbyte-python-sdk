@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.2.0)
+# justice-cloudsave-service (2.3.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union

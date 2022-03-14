@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.3.0)
+# justice-iam-service (5.4.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -30,7 +30,12 @@ from ...models import ModelUserVerificationRequest
 
 
 class AdminVerifyAccountV3(Operation):
-    """Verify account by validating verification code (AdminVerifyAccountV3)
+    """Verify or consume verification code sent to user (AdminVerifyAccountV3)
+
+    Will verify account and consume code if validateOnly is set false in request body
+
+
+
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
 

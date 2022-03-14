@@ -6,7 +6,7 @@
 
 """Auto-generated package that contains models used by the justice-iam-service."""
 
-__version__ = "5.3.0"
+__version__ = "5.4.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -158,6 +158,7 @@ from .model_role_v4_response import ModelRoleV4Response
 from .model_search_users_by_platform_id_response import ModelSearchUsersByPlatformIDResponse
 from .model_search_users_response import ModelSearchUsersResponse
 from .model_search_users_response_with_pagination_v3 import ModelSearchUsersResponseWithPaginationV3
+from .model_send_register_verification_code_request import ModelSendRegisterVerificationCodeRequest
 from .model_send_verification_code_request import ModelSendVerificationCodeRequest
 from .model_send_verification_code_request_v3 import ModelSendVerificationCodeRequestV3
 from .model_sso_platform_credential_request import ModelSSOPlatformCredentialRequest
@@ -202,6 +203,7 @@ from .model_user_verification_request_v3 import ModelUserVerificationRequestV3
 from .model_validation_detail import ModelValidationDetail
 from .model_validation_detail_public import ModelValidationDetailPublic
 from .model_verification_code_response import ModelVerificationCodeResponse
+from .model_verify_registration_code import ModelVerifyRegistrationCode
 from .model_web_linking_response import ModelWebLinkingResponse
 from .oauthapi_revocation_list import OauthapiRevocationList
 from .oauthcommon_jwk_key import OauthcommonJWKKey

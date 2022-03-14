@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.3.0)
+# justice-iam-service (5.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,6 +36,8 @@ class AccountcommonRole(Model):
     Properties:
         admin_role: (AdminRole) REQUIRED bool
 
+        deletable: (Deletable) REQUIRED bool
+
         is_wildcard: (IsWildcard) REQUIRED bool
 
         managers: (Managers) REQUIRED List[AccountcommonRoleManager]
@@ -52,6 +54,7 @@ class AccountcommonRole(Model):
     # region fields
 
     admin_role: bool                                                                               # REQUIRED
+    deletable: bool                                                                                # REQUIRED
     is_wildcard: bool                                                                              # REQUIRED
     managers: List[AccountcommonRoleManager]                                                       # REQUIRED
     members: List[AccountcommonRoleMember]                                                         # REQUIRED
@@ -65,6 +68,10 @@ class AccountcommonRole(Model):
 
     def with_admin_role(self, value: bool) -> AccountcommonRole:
         self.admin_role = value
+        return self
+
+    def with_deletable(self, value: bool) -> AccountcommonRole:
+        self.deletable = value
         return self
 
     def with_is_wildcard(self, value: bool) -> AccountcommonRole:
@@ -101,6 +108,10 @@ class AccountcommonRole(Model):
             result["AdminRole"] = bool(self.admin_role)
         elif include_empty:
             result["AdminRole"] = bool()
+        if hasattr(self, "deletable"):
+            result["Deletable"] = bool(self.deletable)
+        elif include_empty:
+            result["Deletable"] = bool()
         if hasattr(self, "is_wildcard"):
             result["IsWildcard"] = bool(self.is_wildcard)
         elif include_empty:
@@ -135,6 +146,7 @@ class AccountcommonRole(Model):
     def create(
         cls,
         admin_role: bool,
+        deletable: bool,
         is_wildcard: bool,
         managers: List[AccountcommonRoleManager],
         members: List[AccountcommonRoleMember],
@@ -144,6 +156,7 @@ class AccountcommonRole(Model):
     ) -> AccountcommonRole:
         instance = cls()
         instance.admin_role = admin_role
+        instance.deletable = deletable
         instance.is_wildcard = is_wildcard
         instance.managers = managers
         instance.members = members
@@ -161,6 +174,10 @@ class AccountcommonRole(Model):
             instance.admin_role = bool(dict_["AdminRole"])
         elif include_empty:
             instance.admin_role = bool()
+        if "Deletable" in dict_ and dict_["Deletable"] is not None:
+            instance.deletable = bool(dict_["Deletable"])
+        elif include_empty:
+            instance.deletable = bool()
         if "IsWildcard" in dict_ and dict_["IsWildcard"] is not None:
             instance.is_wildcard = bool(dict_["IsWildcard"])
         elif include_empty:
@@ -209,6 +226,7 @@ class AccountcommonRole(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "AdminRole": "admin_role",
+            "Deletable": "deletable",
             "IsWildcard": "is_wildcard",
             "Managers": "managers",
             "Members": "members",

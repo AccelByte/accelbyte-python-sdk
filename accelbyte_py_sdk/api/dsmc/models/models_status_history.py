@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-dsm-controller-service (2.14.1)
+# justice-dsm-controller-service (2.15.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

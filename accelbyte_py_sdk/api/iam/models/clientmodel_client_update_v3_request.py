@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.3.0)
+# justice-iam-service (5.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,8 @@ class ClientmodelClientUpdateV3Request(Model):
 
         client_permissions: (clientPermissions) OPTIONAL List[AccountcommonPermissionV3]
 
+        deletable: (deletable) OPTIONAL bool
+
         namespace: (namespace) OPTIONAL str
 
         redirect_uri: (redirectUri) OPTIONAL str
@@ -51,6 +53,7 @@ class ClientmodelClientUpdateV3Request(Model):
     base_uri: str                                                                                  # OPTIONAL
     client_name: str                                                                               # OPTIONAL
     client_permissions: List[AccountcommonPermissionV3]                                            # OPTIONAL
+    deletable: bool                                                                                # OPTIONAL
     namespace: str                                                                                 # OPTIONAL
     redirect_uri: str                                                                              # OPTIONAL
 
@@ -72,6 +75,10 @@ class ClientmodelClientUpdateV3Request(Model):
 
     def with_client_permissions(self, value: List[AccountcommonPermissionV3]) -> ClientmodelClientUpdateV3Request:
         self.client_permissions = value
+        return self
+
+    def with_deletable(self, value: bool) -> ClientmodelClientUpdateV3Request:
+        self.deletable = value
         return self
 
     def with_namespace(self, value: str) -> ClientmodelClientUpdateV3Request:
@@ -104,6 +111,10 @@ class ClientmodelClientUpdateV3Request(Model):
             result["clientPermissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.client_permissions]
         elif include_empty:
             result["clientPermissions"] = []
+        if hasattr(self, "deletable"):
+            result["deletable"] = bool(self.deletable)
+        elif include_empty:
+            result["deletable"] = bool()
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -125,6 +136,7 @@ class ClientmodelClientUpdateV3Request(Model):
         base_uri: Optional[str] = None,
         client_name: Optional[str] = None,
         client_permissions: Optional[List[AccountcommonPermissionV3]] = None,
+        deletable: Optional[bool] = None,
         namespace: Optional[str] = None,
         redirect_uri: Optional[str] = None,
     ) -> ClientmodelClientUpdateV3Request:
@@ -137,6 +149,8 @@ class ClientmodelClientUpdateV3Request(Model):
             instance.client_name = client_name
         if client_permissions is not None:
             instance.client_permissions = client_permissions
+        if deletable is not None:
+            instance.deletable = deletable
         if namespace is not None:
             instance.namespace = namespace
         if redirect_uri is not None:
@@ -164,6 +178,10 @@ class ClientmodelClientUpdateV3Request(Model):
             instance.client_permissions = [AccountcommonPermissionV3.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["clientPermissions"]]
         elif include_empty:
             instance.client_permissions = []
+        if "deletable" in dict_ and dict_["deletable"] is not None:
+            instance.deletable = bool(dict_["deletable"])
+        elif include_empty:
+            instance.deletable = bool()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -199,6 +217,7 @@ class ClientmodelClientUpdateV3Request(Model):
             "baseUri": "base_uri",
             "clientName": "client_name",
             "clientPermissions": "client_permissions",
+            "deletable": "deletable",
             "namespace": "namespace",
             "redirectUri": "redirect_uri",
         }

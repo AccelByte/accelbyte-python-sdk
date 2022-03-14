@@ -24,6 +24,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import Customization
@@ -49,6 +50,7 @@ from ..operations.payment_station import PublicGetUnpaidPaymentOrder
 from ..operations.payment_station import PublicNormalizePaymentReturnUrl
 
 
+@deprecated
 @same_doc_as(GetPaymentCustomization)
 def get_payment_customization(payment_provider: str, region: str, sandbox: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -64,6 +66,7 @@ def get_payment_customization(payment_provider: str, region: str, sandbox: Optio
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@deprecated
 @same_doc_as(GetPaymentCustomization)
 async def get_payment_customization_async(payment_provider: str, region: str, sandbox: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -302,7 +305,7 @@ async def public_get_unpaid_payment_order_async(payment_order_no: str, namespace
 
 
 @same_doc_as(PublicNormalizePaymentReturnUrl)
-def public_normalize_payment_return_url(order_no: str, payment_order_no: str, payment_provider: str, return_url: str, foreinginvoice: Optional[str] = None, invoice_id: Optional[str] = None, payer_id: Optional[str] = None, payload: Optional[str] = None, result_code: Optional[str] = None, status: Optional[str] = None, token: Optional[str] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_normalize_payment_return_url(order_no: str, payment_order_no: str, payment_provider: str, return_url: str, foreinginvoice: Optional[str] = None, invoice_id: Optional[str] = None, payer_id: Optional[str] = None, payload: Optional[str] = None, redirect_result: Optional[str] = None, result_code: Optional[str] = None, session_id: Optional[str] = None, status: Optional[str] = None, token: Optional[str] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -316,7 +319,9 @@ def public_normalize_payment_return_url(order_no: str, payment_order_no: str, pa
         invoice_id=invoice_id,
         payer_id=payer_id,
         payload=payload,
+        redirect_result=redirect_result,
         result_code=result_code,
+        session_id=session_id,
         status=status,
         token=token,
         type_=type_,
@@ -327,7 +332,7 @@ def public_normalize_payment_return_url(order_no: str, payment_order_no: str, pa
 
 
 @same_doc_as(PublicNormalizePaymentReturnUrl)
-async def public_normalize_payment_return_url_async(order_no: str, payment_order_no: str, payment_provider: str, return_url: str, foreinginvoice: Optional[str] = None, invoice_id: Optional[str] = None, payer_id: Optional[str] = None, payload: Optional[str] = None, result_code: Optional[str] = None, status: Optional[str] = None, token: Optional[str] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def public_normalize_payment_return_url_async(order_no: str, payment_order_no: str, payment_provider: str, return_url: str, foreinginvoice: Optional[str] = None, invoice_id: Optional[str] = None, payer_id: Optional[str] = None, payload: Optional[str] = None, redirect_result: Optional[str] = None, result_code: Optional[str] = None, session_id: Optional[str] = None, status: Optional[str] = None, token: Optional[str] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -341,7 +346,9 @@ async def public_normalize_payment_return_url_async(order_no: str, payment_order
         invoice_id=invoice_id,
         payer_id=payer_id,
         payload=payload,
+        redirect_result=redirect_result,
         result_code=result_code,
+        session_id=session_id,
         status=status,
         token=token,
         type_=type_,

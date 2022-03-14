@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.3.0)
+# justice-iam-service (5.4.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -63,6 +63,8 @@ class AdminDeleteRoleV3(Operation):
         403: Forbidden - RestapiErrorResponse (20013: insufficient permissions)
 
         404: Not Found - RestapiErrorResponse (10456: role not found)
+
+        409: Conflict - RestapiErrorResponse (20009: request_conflict)
 
         500: Internal Server Error - (Internal Server Error)
     """
@@ -185,6 +187,8 @@ class AdminDeleteRoleV3(Operation):
 
         404: Not Found - RestapiErrorResponse (10456: role not found)
 
+        409: Conflict - RestapiErrorResponse (20009: request_conflict)
+
         500: Internal Server Error - (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
@@ -207,6 +211,8 @@ class AdminDeleteRoleV3(Operation):
         if code == 403:
             return None, RestapiErrorResponse.create_from_dict(content)
         if code == 404:
+            return None, RestapiErrorResponse.create_from_dict(content)
+        if code == 409:
             return None, RestapiErrorResponse.create_from_dict(content)
         if code == 500:
             return None, HttpResponse.create(code, "Internal Server Error")

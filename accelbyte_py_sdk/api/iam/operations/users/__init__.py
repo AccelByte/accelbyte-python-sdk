@@ -6,7 +6,7 @@
 
 """Auto-generated package that contains models used by the justice-iam-service."""
 
-__version__ = "5.3.0"
+__version__ = "5.4.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -109,6 +109,7 @@ from .public_delete_platform_link_v2 import PublicDeletePlatformLinkV2
 from .public_forgot_password_v2 import PublicForgotPasswordV2
 from .public_forgot_password_v3 import PublicForgotPasswordV3
 from .public_get_async_status import PublicGetAsyncStatus
+from .public_get_country_age__7cfd03 import PublicGetCountryAgeRestriction
 from .public_get_my_user_v3 import PublicGetMyUserV3
 from .public_get_user_ban import PublicGetUserBan
 from .public_get_user_ban_history_v3 import PublicGetUserBanHistoryV3
@@ -124,6 +125,7 @@ from .public_platform_link_v3 import PublicPlatformLinkV3
 from .public_platform_unlink_v3 import PublicPlatformUnlinkV3
 from .public_reset_password_v2 import PublicResetPasswordV2
 from .public_search_user_v3 import PublicSearchUserV3
+from .public_send_registration_code import PublicSendRegistrationCode
 from .public_send_verificatio_dc732c import PublicSendVerificationCodeV3
 from .public_update_password_v2 import PublicUpdatePasswordV2
 from .public_update_password_v3 import PublicUpdatePasswordV3
@@ -133,6 +135,7 @@ from .public_upgrade_headless_a93947 import PublicUpgradeHeadlessAccountV3
 from .public_user_verification_v3 import PublicUserVerificationV3
 from .public_validate_user_by_fc4982 import PublicValidateUserByUserIDAndPasswordV3
 from .public_verify_headless__2e6c24 import PublicVerifyHeadlessAccountV3
+from .public_verify_registrat_4d06db import PublicVerifyRegistrationCode
 from .public_web_link_platform import PublicWebLinkPlatform
 from .public_web_link_platfor_667cbd import PublicWebLinkPlatformEstablish
 from .reset_password import ResetPassword

@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.3.0)
+# justice-iam-service (5.4.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -32,7 +32,10 @@ from ...models import RestErrorResponse
 
 
 class AdminUpgradeHeadlessAccountV3(Operation):
-    """Upgrade headless account with verification code (AdminUpgradeHeadlessAccountV3)
+    """Verify or consume verification code.  (AdminUpgradeHeadlessAccountV3)
+
+    If validateOnly is set false, will upgrade headless account with verification code
+
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
 

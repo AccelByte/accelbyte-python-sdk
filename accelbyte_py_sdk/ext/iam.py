@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.3.0)
+# justice-iam-service (5.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -170,6 +170,7 @@ from ..api.iam.models import ModelSSOPlatformCredentialResponse
 from ..api.iam.models import ModelSearchUsersByPlatformIDResponse
 from ..api.iam.models import ModelSearchUsersResponse
 from ..api.iam.models import ModelSearchUsersResponseWithPaginationV3
+from ..api.iam.models import ModelSendRegisterVerificationCodeRequest
 from ..api.iam.models import ModelSendVerificationCodeRequest
 from ..api.iam.models import ModelSendVerificationCodeRequestV3
 from ..api.iam.models import ModelThirdPartyLoginPlatformCredentialRequest
@@ -212,6 +213,7 @@ from ..api.iam.models import ModelUserVerificationRequestV3
 from ..api.iam.models import ModelValidationDetail
 from ..api.iam.models import ModelValidationDetailPublic
 from ..api.iam.models import ModelVerificationCodeResponse
+from ..api.iam.models import ModelVerifyRegistrationCode
 from ..api.iam.models import ModelWebLinkingResponse
 from ..api.iam.models import OauthapiRevocationList
 from ..api.iam.models import OauthcommonJWKKey
@@ -247,14 +249,16 @@ def create_account_create_test_user_request_v4_example() -> AccountCreateTestUse
 def create_account_create_user_request_v4_example() -> AccountCreateUserRequestV4:
     instance = AccountCreateUserRequestV4()
     instance.auth_type = randomize()
+    instance.code = randomize()
     instance.country = randomize("country")
-    instance.date_of_birth = randomize()
     instance.display_name = randomize("slug")
     instance.email_address = randomize("email")
     instance.password = randomize("password")
     instance.password_md5_sum = randomize()
+    instance.reach_minimum_age = randomize("bool")
     instance.username = randomize("slug")
     instance.accepted_policies = [create_legal_accepted_policies_request_example()]
+    instance.date_of_birth = randomize()
     return instance
 
 
@@ -284,7 +288,9 @@ def create_account_upgrade_headless_account_with_verification_code_request_v4_ex
     instance.code = randomize()
     instance.email_address = randomize("email")
     instance.password = randomize("password")
+    instance.reach_minimum_age = randomize("bool")
     instance.username = randomize("slug")
+    instance.validate_only = randomize("bool")
     instance.country = randomize("country")
     instance.date_of_birth = randomize()
     instance.display_name = randomize("slug")
@@ -548,6 +554,7 @@ def create_accountcommon_registered_domain_example() -> AccountcommonRegisteredD
 def create_accountcommon_role_example() -> AccountcommonRole:
     instance = AccountcommonRole()
     instance.admin_role = randomize("bool")
+    instance.deletable = randomize("bool")
     instance.is_wildcard = randomize("bool")
     instance.managers = [create_accountcommon_role_manager_example()]
     instance.members = [create_accountcommon_role_member_example()]
@@ -735,6 +742,7 @@ def create_clientmodel_client_creation_v3_request_example() -> ClientmodelClient
     instance.oauth_client_type = randomize()
     instance.redirect_uri = randomize()
     instance.secret = randomize()
+    instance.deletable = randomize("bool")
     return instance
 
 
@@ -768,6 +776,7 @@ def create_clientmodel_client_update_v3_request_example() -> ClientmodelClientUp
     instance.base_uri = randomize()
     instance.client_name = randomize()
     instance.client_permissions = [create_accountcommon_permission_v3_example()]
+    instance.deletable = randomize("bool")
     instance.namespace = randomize("slug")
     instance.redirect_uri = randomize()
     return instance
@@ -1298,6 +1307,7 @@ def create_model_role_create_v3_request_example() -> ModelRoleCreateV3Request:
     instance.members = [create_accountcommon_role_member_v3_example()]
     instance.permissions = [create_accountcommon_permission_v3_example()]
     instance.role_name = randomize()
+    instance.deletable = randomize("bool")
     return instance
 
 
@@ -1415,6 +1425,7 @@ def create_model_role_update_request_v3_example() -> ModelRoleUpdateRequestV3:
     instance = ModelRoleUpdateRequestV3()
     instance.is_wildcard = randomize("bool")
     instance.role_name = randomize()
+    instance.deletable = randomize("bool")
     return instance
 
 
@@ -1423,6 +1434,7 @@ def create_model_role_v4_request_example() -> ModelRoleV4Request:
     instance.admin_role = randomize("bool")
     instance.is_wildcard = randomize("bool")
     instance.role_name = randomize()
+    instance.deletable = randomize("bool")
     return instance
 
 
@@ -1454,6 +1466,13 @@ def create_model_search_users_response_with_pagination_v3_example() -> ModelSear
     instance.data = [create_model_user_response_v3_example()]
     instance.paging = create_accountcommon_pagination_v3_example()
     instance.total_data = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_model_send_register_verification_code_request_example() -> ModelSendRegisterVerificationCodeRequest:
+    instance = ModelSendRegisterVerificationCodeRequest()
+    instance.email_address = randomize("email")
+    instance.language_tag = randomize()
     return instance
 
 
@@ -1594,6 +1613,7 @@ def create_model_upgrade_headless_account_with_verification_code_request_v3_exam
     instance.code = randomize()
     instance.email_address = randomize("email")
     instance.password = randomize("password")
+    instance.validate_only = randomize("bool")
     instance.country = randomize("country")
     instance.date_of_birth = randomize()
     instance.display_name = randomize("slug")
@@ -1660,10 +1680,11 @@ def create_model_user_create_from_invitation_request_v3_example() -> ModelUserCr
     instance = ModelUserCreateFromInvitationRequestV3()
     instance.auth_type = randomize()
     instance.country = randomize("country")
-    instance.date_of_birth = randomize()
     instance.display_name = randomize("slug")
     instance.password = randomize("password")
+    instance.reach_minimum_age = randomize("bool")
     instance.accepted_policies = [create_legal_accepted_policies_request_example()]
+    instance.date_of_birth = randomize()
     return instance
 
 
@@ -1671,11 +1692,12 @@ def create_model_user_create_from_invitation_request_v4_example() -> ModelUserCr
     instance = ModelUserCreateFromInvitationRequestV4()
     instance.auth_type = randomize()
     instance.country = randomize("country")
-    instance.date_of_birth = randomize()
     instance.display_name = randomize("slug")
     instance.password = randomize("password")
+    instance.reach_minimum_age = randomize("bool")
     instance.username = randomize("slug")
     instance.accepted_policies = [create_legal_accepted_policies_request_example()]
+    instance.date_of_birth = randomize()
     return instance
 
 
@@ -1693,12 +1715,14 @@ def create_model_user_create_request_example() -> ModelUserCreateRequest:
 def create_model_user_create_request_v3_example() -> ModelUserCreateRequestV3:
     instance = ModelUserCreateRequestV3()
     instance.auth_type = randomize()
+    instance.code = randomize()
     instance.country = randomize("country")
-    instance.date_of_birth = randomize()
     instance.display_name = randomize("slug")
     instance.email_address = randomize("email")
     instance.password = randomize("password")
+    instance.reach_minimum_age = randomize("bool")
     instance.accepted_policies = [create_legal_accepted_policies_request_example()]
+    instance.date_of_birth = randomize()
     instance.password_md5_sum = randomize()
     return instance
 
@@ -1901,6 +1925,7 @@ def create_model_user_verification_request_example() -> ModelUserVerificationReq
     instance.code = randomize()
     instance.contact_type = randomize()
     instance.language_tag = randomize()
+    instance.validate_only = randomize("bool")
     return instance
 
 
@@ -1909,6 +1934,7 @@ def create_model_user_verification_request_v3_example() -> ModelUserVerification
     instance.code = randomize()
     instance.contact_type = randomize()
     instance.language_tag = randomize()
+    instance.validate_only = randomize("bool")
     return instance
 
 
@@ -1958,6 +1984,13 @@ def create_model_verification_code_response_example() -> ModelVerificationCodeRe
     instance.account_upgrade = randomize()
     instance.password_reset = randomize()
     instance.update_email = randomize()
+    return instance
+
+
+def create_model_verify_registration_code_example() -> ModelVerifyRegistrationCode:
+    instance = ModelVerifyRegistrationCode()
+    instance.code = randomize()
+    instance.email_address = randomize("email")
     return instance
 
 

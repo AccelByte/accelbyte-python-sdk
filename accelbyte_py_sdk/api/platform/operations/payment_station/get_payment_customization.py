@@ -18,21 +18,23 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-platform-service (4.3.2)
+# justice-platform-service (4.4.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import Customization
 
 
+@deprecated
 class GetPaymentCustomization(Operation):
     """Get payment provider customization (getPaymentCustomization)
 
-    Get payment provider customization, at current only Adyen provide customization.
+    Get payment provider customization, at current only Adyen provide customization. This api has been deprecated, pls use /public/namespaces/{namespace}/payment/publicconfig to get adyen config
     Other detail info:
 
       * Returns : customization

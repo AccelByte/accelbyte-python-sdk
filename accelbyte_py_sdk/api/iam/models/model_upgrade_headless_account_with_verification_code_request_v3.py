@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.3.0)
+# justice-iam-service (5.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,6 +36,8 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3(Model):
 
         password: (password) REQUIRED str
 
+        validate_only: (validateOnly) REQUIRED bool
+
         country: (country) OPTIONAL str
 
         date_of_birth: (dateOfBirth) OPTIONAL str
@@ -48,6 +50,7 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3(Model):
     code: str                                                                                      # REQUIRED
     email_address: str                                                                             # REQUIRED
     password: str                                                                                  # REQUIRED
+    validate_only: bool                                                                            # REQUIRED
     country: str                                                                                   # OPTIONAL
     date_of_birth: str                                                                             # OPTIONAL
     display_name: str                                                                              # OPTIONAL
@@ -66,6 +69,10 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3(Model):
 
     def with_password(self, value: str) -> ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3:
         self.password = value
+        return self
+
+    def with_validate_only(self, value: bool) -> ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3:
+        self.validate_only = value
         return self
 
     def with_country(self, value: str) -> ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3:
@@ -98,6 +105,10 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3(Model):
             result["password"] = str(self.password)
         elif include_empty:
             result["password"] = str()
+        if hasattr(self, "validate_only"):
+            result["validateOnly"] = bool(self.validate_only)
+        elif include_empty:
+            result["validateOnly"] = bool()
         if hasattr(self, "country"):
             result["country"] = str(self.country)
         elif include_empty:
@@ -122,6 +133,7 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3(Model):
         code: str,
         email_address: str,
         password: str,
+        validate_only: bool,
         country: Optional[str] = None,
         date_of_birth: Optional[str] = None,
         display_name: Optional[str] = None,
@@ -130,6 +142,7 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3(Model):
         instance.code = code
         instance.email_address = email_address
         instance.password = password
+        instance.validate_only = validate_only
         if country is not None:
             instance.country = country
         if date_of_birth is not None:
@@ -155,6 +168,10 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3(Model):
             instance.password = str(dict_["password"])
         elif include_empty:
             instance.password = str()
+        if "validateOnly" in dict_ and dict_["validateOnly"] is not None:
+            instance.validate_only = bool(dict_["validateOnly"])
+        elif include_empty:
+            instance.validate_only = bool()
         if "country" in dict_ and dict_["country"] is not None:
             instance.country = str(dict_["country"])
         elif include_empty:
@@ -193,6 +210,7 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3(Model):
             "code": "code",
             "emailAddress": "email_address",
             "password": "password",
+            "validateOnly": "validate_only",
             "country": "country",
             "dateOfBirth": "date_of_birth",
             "displayName": "display_name",

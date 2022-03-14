@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.3.0)
+# justice-iam-service (5.4.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,6 +35,17 @@ class AdminCreateRoleV3(Operation):
     """Create Role (AdminCreateRoleV3)
 
     Required permission 'ADMIN:ROLE [CREATE]'
+
+    Create role request body:
+    - roleName: specify role name, alphanumeric, cannot have special character (required)
+    - permissions: specify the permission that this role have
+    - managers: specify list of user that will act as the managers of this role
+    - members: specify list of user that will act as the members of this role
+    - adminRole: specify if role is for admin user (default false)
+    - isWildcard: specify if role can be assigned to wildcard (*) namespace (default false)
+    - deletable: specify if role can be deleted or not (default true)
+
+
     action code: 10401
 
     Required Permission(s):

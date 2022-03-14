@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.3.2)
+# justice-platform-service (4.4.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -273,6 +273,8 @@ def create_adyen_config_example() -> AdyenConfig:
     instance.api_key = randomize()
     instance.authorise_as_capture = randomize("bool")
     instance.blocked_payment_methods = [randomize()]
+    instance.client_key = randomize()
+    instance.drop_in_settings = randomize()
     instance.live_endpoint_url_prefix = randomize()
     instance.merchant_account = randomize()
     instance.notification_hmac_key = randomize()
@@ -2162,6 +2164,8 @@ def create_payment_url_example() -> PaymentUrl:
     instance.payment_type = randomize()
     instance.payment_url = randomize("url")
     instance.return_url = randomize("url")
+    instance.session_data = randomize()
+    instance.session_id = randomize("uid")
     return instance
 
 

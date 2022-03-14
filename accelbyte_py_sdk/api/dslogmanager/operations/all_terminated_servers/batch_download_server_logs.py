@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-ds-log-manager-service (2.0.0)
+# justice-ds-log-manager-service (2.1.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union

@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.3.0)
+# justice-iam-service (5.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -49,6 +49,8 @@ class ClientmodelClientCreationV3Request(Model):
         redirect_uri: (redirectUri) REQUIRED str
 
         secret: (secret) REQUIRED str
+
+        deletable: (deletable) OPTIONAL bool
     """
 
     # region fields
@@ -62,6 +64,7 @@ class ClientmodelClientCreationV3Request(Model):
     oauth_client_type: str                                                                         # REQUIRED
     redirect_uri: str                                                                              # REQUIRED
     secret: str                                                                                    # REQUIRED
+    deletable: bool                                                                                # OPTIONAL
 
     # endregion fields
 
@@ -101,6 +104,10 @@ class ClientmodelClientCreationV3Request(Model):
 
     def with_secret(self, value: str) -> ClientmodelClientCreationV3Request:
         self.secret = value
+        return self
+
+    def with_deletable(self, value: bool) -> ClientmodelClientCreationV3Request:
+        self.deletable = value
         return self
 
     # endregion with_x methods
@@ -145,6 +152,10 @@ class ClientmodelClientCreationV3Request(Model):
             result["secret"] = str(self.secret)
         elif include_empty:
             result["secret"] = str()
+        if hasattr(self, "deletable"):
+            result["deletable"] = bool(self.deletable)
+        elif include_empty:
+            result["deletable"] = bool()
         return result
 
     # endregion to methods
@@ -163,6 +174,7 @@ class ClientmodelClientCreationV3Request(Model):
         oauth_client_type: str,
         redirect_uri: str,
         secret: str,
+        deletable: Optional[bool] = None,
     ) -> ClientmodelClientCreationV3Request:
         instance = cls()
         instance.audiences = audiences
@@ -174,6 +186,8 @@ class ClientmodelClientCreationV3Request(Model):
         instance.oauth_client_type = oauth_client_type
         instance.redirect_uri = redirect_uri
         instance.secret = secret
+        if deletable is not None:
+            instance.deletable = deletable
         return instance
 
     @classmethod
@@ -217,6 +231,10 @@ class ClientmodelClientCreationV3Request(Model):
             instance.secret = str(dict_["secret"])
         elif include_empty:
             instance.secret = str()
+        if "deletable" in dict_ and dict_["deletable"] is not None:
+            instance.deletable = bool(dict_["deletable"])
+        elif include_empty:
+            instance.deletable = bool()
         return instance
 
     @classmethod
@@ -249,6 +267,7 @@ class ClientmodelClientCreationV3Request(Model):
             "oauthClientType": "oauth_client_type",
             "redirectUri": "redirect_uri",
             "secret": "secret",
+            "deletable": "deletable",
         }
 
     # endregion static methods

@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.3.0)
+# justice-iam-service (5.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,6 +35,8 @@ class ModelUserVerificationRequestV3(Model):
         contact_type: (contactType) REQUIRED str
 
         language_tag: (languageTag) REQUIRED str
+
+        validate_only: (validateOnly) REQUIRED bool
     """
 
     # region fields
@@ -42,6 +44,7 @@ class ModelUserVerificationRequestV3(Model):
     code: str                                                                                      # REQUIRED
     contact_type: str                                                                              # REQUIRED
     language_tag: str                                                                              # REQUIRED
+    validate_only: bool                                                                            # REQUIRED
 
     # endregion fields
 
@@ -57,6 +60,10 @@ class ModelUserVerificationRequestV3(Model):
 
     def with_language_tag(self, value: str) -> ModelUserVerificationRequestV3:
         self.language_tag = value
+        return self
+
+    def with_validate_only(self, value: bool) -> ModelUserVerificationRequestV3:
+        self.validate_only = value
         return self
 
     # endregion with_x methods
@@ -77,6 +84,10 @@ class ModelUserVerificationRequestV3(Model):
             result["languageTag"] = str(self.language_tag)
         elif include_empty:
             result["languageTag"] = str()
+        if hasattr(self, "validate_only"):
+            result["validateOnly"] = bool(self.validate_only)
+        elif include_empty:
+            result["validateOnly"] = bool()
         return result
 
     # endregion to methods
@@ -89,11 +100,13 @@ class ModelUserVerificationRequestV3(Model):
         code: str,
         contact_type: str,
         language_tag: str,
+        validate_only: bool,
     ) -> ModelUserVerificationRequestV3:
         instance = cls()
         instance.code = code
         instance.contact_type = contact_type
         instance.language_tag = language_tag
+        instance.validate_only = validate_only
         return instance
 
     @classmethod
@@ -113,6 +126,10 @@ class ModelUserVerificationRequestV3(Model):
             instance.language_tag = str(dict_["languageTag"])
         elif include_empty:
             instance.language_tag = str()
+        if "validateOnly" in dict_ and dict_["validateOnly"] is not None:
+            instance.validate_only = bool(dict_["validateOnly"])
+        elif include_empty:
+            instance.validate_only = bool()
         return instance
 
     @classmethod
@@ -139,6 +156,7 @@ class ModelUserVerificationRequestV3(Model):
             "code": "code",
             "contactType": "contact_type",
             "languageTag": "language_tag",
+            "validateOnly": "validate_only",
         }
 
     # endregion static methods

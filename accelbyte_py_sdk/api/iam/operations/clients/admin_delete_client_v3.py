@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.3.0)
+# justice-iam-service (5.4.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -65,6 +65,8 @@ class AdminDeleteClientV3(Operation):
         403: Forbidden - RestapiErrorResponse (20013: insufficient permissions)
 
         404: Not Found - RestapiErrorResponse (10365: client not found)
+
+        409: Conflict - RestapiErrorResponse (20009: request_conflict)
     """
 
     # region fields
@@ -199,6 +201,8 @@ class AdminDeleteClientV3(Operation):
 
         404: Not Found - RestapiErrorResponse (10365: client not found)
 
+        409: Conflict - RestapiErrorResponse (20009: request_conflict)
+
         ---: HttpResponse (Undocumented Response)
 
         ---: HttpResponse (Unexpected Content-Type Error)
@@ -219,6 +223,8 @@ class AdminDeleteClientV3(Operation):
         if code == 403:
             return None, RestapiErrorResponse.create_from_dict(content)
         if code == 404:
+            return None, RestapiErrorResponse.create_from_dict(content)
+        if code == 409:
             return None, RestapiErrorResponse.create_from_dict(content)
 
         return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)

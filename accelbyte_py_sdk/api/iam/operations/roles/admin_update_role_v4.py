@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.3.0)
+# justice-iam-service (5.4.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -40,6 +40,7 @@ class AdminUpdateRoleV4(Operation):
     - roleName: specify role name, alphanumeric, cannot have special character (required)
     - adminRole: specify if role is for admin user (default false)
     - isWildcard: specify if role can be assigned to wildcard (*) namespace (default false)
+    - deletable: specify if role can be deleted (optional)
 
     action code: 10402
 

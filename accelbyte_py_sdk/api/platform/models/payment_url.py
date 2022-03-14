@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.3.2)
+# justice-platform-service (4.4.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,17 +34,23 @@ class PaymentUrl(Model):
 
         payment_type: (paymentType) REQUIRED str
 
-        payment_url: (paymentUrl) REQUIRED str
+        payment_url: (paymentUrl) OPTIONAL str
 
         return_url: (returnUrl) OPTIONAL str
+
+        session_data: (sessionData) OPTIONAL str
+
+        session_id: (sessionId) OPTIONAL str
     """
 
     # region fields
 
     payment_provider: str                                                                          # REQUIRED
     payment_type: str                                                                              # REQUIRED
-    payment_url: str                                                                               # REQUIRED
+    payment_url: str                                                                               # OPTIONAL
     return_url: str                                                                                # OPTIONAL
+    session_data: str                                                                              # OPTIONAL
+    session_id: str                                                                                # OPTIONAL
 
     # endregion fields
 
@@ -64,6 +70,14 @@ class PaymentUrl(Model):
 
     def with_return_url(self, value: str) -> PaymentUrl:
         self.return_url = value
+        return self
+
+    def with_session_data(self, value: str) -> PaymentUrl:
+        self.session_data = value
+        return self
+
+    def with_session_id(self, value: str) -> PaymentUrl:
+        self.session_id = value
         return self
 
     # endregion with_x methods
@@ -88,6 +102,14 @@ class PaymentUrl(Model):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
             result["returnUrl"] = str()
+        if hasattr(self, "session_data"):
+            result["sessionData"] = str(self.session_data)
+        elif include_empty:
+            result["sessionData"] = str()
+        if hasattr(self, "session_id"):
+            result["sessionId"] = str(self.session_id)
+        elif include_empty:
+            result["sessionId"] = str()
         return result
 
     # endregion to methods
@@ -99,15 +121,22 @@ class PaymentUrl(Model):
         cls,
         payment_provider: str,
         payment_type: str,
-        payment_url: str,
+        payment_url: Optional[str] = None,
         return_url: Optional[str] = None,
+        session_data: Optional[str] = None,
+        session_id: Optional[str] = None,
     ) -> PaymentUrl:
         instance = cls()
         instance.payment_provider = payment_provider
         instance.payment_type = payment_type
-        instance.payment_url = payment_url
+        if payment_url is not None:
+            instance.payment_url = payment_url
         if return_url is not None:
             instance.return_url = return_url
+        if session_data is not None:
+            instance.session_data = session_data
+        if session_id is not None:
+            instance.session_id = session_id
         return instance
 
     @classmethod
@@ -131,6 +160,14 @@ class PaymentUrl(Model):
             instance.return_url = str(dict_["returnUrl"])
         elif include_empty:
             instance.return_url = str()
+        if "sessionData" in dict_ and dict_["sessionData"] is not None:
+            instance.session_data = str(dict_["sessionData"])
+        elif include_empty:
+            instance.session_data = str()
+        if "sessionId" in dict_ and dict_["sessionId"] is not None:
+            instance.session_id = str(dict_["sessionId"])
+        elif include_empty:
+            instance.session_id = str()
         return instance
 
     @classmethod
@@ -158,6 +195,8 @@ class PaymentUrl(Model):
             "paymentType": "payment_type",
             "paymentUrl": "payment_url",
             "returnUrl": "return_url",
+            "sessionData": "session_data",
+            "sessionId": "session_id",
         }
 
     # endregion static methods

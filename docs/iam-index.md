@@ -1,6 +1,6 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-iam-service Index (5.3.0)
+# justice-iam-service Index (5.4.0)
 
 
 ## Operations
@@ -268,6 +268,7 @@
 | /iam/v2/public/namespaces/{namespace}/users/forgotPassword | POST | PublicForgotPasswordV2 | [PublicForgotPasswordV2](../accelbyte_py_sdk/api/iam/operations/users/public_forgot_password_v2.py) | [public_forgot_password_v2](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/public/namespaces/{namespace}/users/forgot | POST | PublicForgotPasswordV3 | [PublicForgotPasswordV3](../accelbyte_py_sdk/api/iam/operations/users/public_forgot_password_v3.py) | [public_forgot_password_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/public/namespaces/{namespace}/requests/{requestId}/async/status | GET | PublicGetAsyncStatus | [PublicGetAsyncStatus](../accelbyte_py_sdk/api/iam/operations/users/public_get_async_status.py) | [public_get_async_status](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
+| /iam/v2/public/namespaces/{namespace}/countries/{countryCode}/agerestrictions | GET | PublicGetCountryAgeRestriction | [PublicGetCountryAgeRestriction](../accelbyte_py_sdk/api/iam/operations/users/public_get_country_age__7cfd03.py) | [public_get_country_age_restriction](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/public/users/me | GET | PublicGetMyUserV3 | [PublicGetMyUserV3](../accelbyte_py_sdk/api/iam/operations/users/public_get_my_user_v3.py) | [public_get_my_user_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v2/public/namespaces/{namespace}/users/{userId}/bans | GET | PublicGetUserBan | [PublicGetUserBan](../accelbyte_py_sdk/api/iam/operations/users/public_get_user_ban.py) | [public_get_user_ban](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/public/namespaces/{namespace}/users/{userId}/bans | GET | PublicGetUserBanHistoryV3 | [PublicGetUserBanHistoryV3](../accelbyte_py_sdk/api/iam/operations/users/public_get_user_ban_history_v3.py) | [public_get_user_ban_history_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
@@ -283,6 +284,7 @@
 | /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} | DELETE | PublicPlatformUnlinkV3 | [PublicPlatformUnlinkV3](../accelbyte_py_sdk/api/iam/operations/users/public_platform_unlink_v3.py) | [public_platform_unlink_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v2/public/namespaces/{namespace}/users/resetPassword | POST | PublicResetPasswordV2 | [PublicResetPasswordV2](../accelbyte_py_sdk/api/iam/operations/users/public_reset_password_v2.py) | [public_reset_password_v2](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/public/namespaces/{namespace}/users | GET | PublicSearchUserV3 | [PublicSearchUserV3](../accelbyte_py_sdk/api/iam/operations/users/public_search_user_v3.py) | [public_search_user_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
+| /iam/v3/public/namespaces/{namespace}/users/code/request | POST | PublicSendRegistrationCode | [PublicSendRegistrationCode](../accelbyte_py_sdk/api/iam/operations/users/public_send_registration_code.py) | [public_send_registration_code](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/public/namespaces/{namespace}/users/me/code/request | POST | PublicSendVerificationCodeV3 | [PublicSendVerificationCodeV3](../accelbyte_py_sdk/api/iam/operations/users/public_send_verificatio_dc732c.py) | [public_send_verification_code_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v2/public/namespaces/{namespace}/users/{userId}/password | PUT | PublicUpdatePasswordV2 | [PublicUpdatePasswordV2](../accelbyte_py_sdk/api/iam/operations/users/public_update_password_v2.py) | [public_update_password_v2](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/public/namespaces/{namespace}/users/me/password | PUT | PublicUpdatePasswordV3 | [PublicUpdatePasswordV3](../accelbyte_py_sdk/api/iam/operations/users/public_update_password_v3.py) | [public_update_password_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
@@ -292,6 +294,7 @@
 | /iam/v3/public/namespaces/{namespace}/users/me/code/verify | POST | PublicUserVerificationV3 | [PublicUserVerificationV3](../accelbyte_py_sdk/api/iam/operations/users/public_user_verification_v3.py) | [public_user_verification_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/public/namespaces/{namespace}/users/{userId}/validate | POST | PublicValidateUserByUserIDAndPasswordV3 | [PublicValidateUserByUserIDAndPasswordV3](../accelbyte_py_sdk/api/iam/operations/users/public_validate_user_by_fc4982.py) | [public_validate_user_by_user_id_and_password_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/public/namespaces/{namespace}/users/me/headless/verify | POST | PublicVerifyHeadlessAccountV3 | [PublicVerifyHeadlessAccountV3](../accelbyte_py_sdk/api/iam/operations/users/public_verify_headless__2e6c24.py) | [public_verify_headless_account_v3](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
+| /iam/v3/public/namespaces/{namespace}/users/code/verify | POST | PublicVerifyRegistrationCode | [PublicVerifyRegistrationCode](../accelbyte_py_sdk/api/iam/operations/users/public_verify_registrat_4d06db.py) | [public_verify_registration_code](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/link | GET | PublicWebLinkPlatform | [PublicWebLinkPlatform](../accelbyte_py_sdk/api/iam/operations/users/public_web_link_platform.py) | [public_web_link_platform](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/link/establish | GET | PublicWebLinkPlatformEstablish | [PublicWebLinkPlatformEstablish](../accelbyte_py_sdk/api/iam/operations/users/public_web_link_platfor_667cbd.py) | [public_web_link_platform_establish](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
 | /iam/namespaces/{namespace}/users/resetPassword | POST | ResetPassword | [ResetPassword](../accelbyte_py_sdk/api/iam/operations/users/reset_password.py) | [reset_password](../accelbyte_py_sdk/api/iam/wrappers/_users.py) |
@@ -477,6 +480,7 @@
 | model.SearchUsersByPlatformIDResponse | [ModelSearchUsersByPlatformIDResponse](../accelbyte_py_sdk/api/iam/models/model_search_users_by_platform_id_response.py) |
 | model.SearchUsersResponse | [ModelSearchUsersResponse](../accelbyte_py_sdk/api/iam/models/model_search_users_response.py) |
 | model.SearchUsersResponseWithPaginationV3 | [ModelSearchUsersResponseWithPaginationV3](../accelbyte_py_sdk/api/iam/models/model_search_users_response_with_pagination_v3.py) |
+| model.SendRegisterVerificationCodeRequest | [ModelSendRegisterVerificationCodeRequest](../accelbyte_py_sdk/api/iam/models/model_send_register_verification_code_request.py) |
 | model.SendVerificationCodeRequest | [ModelSendVerificationCodeRequest](../accelbyte_py_sdk/api/iam/models/model_send_verification_code_request.py) |
 | model.SendVerificationCodeRequestV3 | [ModelSendVerificationCodeRequestV3](../accelbyte_py_sdk/api/iam/models/model_send_verification_code_request_v3.py) |
 | model.SSOPlatformCredentialRequest | [ModelSSOPlatformCredentialRequest](../accelbyte_py_sdk/api/iam/models/model_sso_platform_credential_request.py) |
@@ -521,6 +525,7 @@
 | model.ValidationDetail | [ModelValidationDetail](../accelbyte_py_sdk/api/iam/models/model_validation_detail.py) |
 | model.ValidationDetailPublic | [ModelValidationDetailPublic](../accelbyte_py_sdk/api/iam/models/model_validation_detail_public.py) |
 | model.VerificationCodeResponse | [ModelVerificationCodeResponse](../accelbyte_py_sdk/api/iam/models/model_verification_code_response.py) |
+| model.VerifyRegistrationCode | [ModelVerifyRegistrationCode](../accelbyte_py_sdk/api/iam/models/model_verify_registration_code.py) |
 | model.WebLinkingResponse | [ModelWebLinkingResponse](../accelbyte_py_sdk/api/iam/models/model_web_linking_response.py) |
 | oauthapi.RevocationList | [OauthapiRevocationList](../accelbyte_py_sdk/api/iam/models/oauthapi_revocation_list.py) |
 | oauthcommon.JWKKey | [OauthcommonJWKKey](../accelbyte_py_sdk/api/iam/models/oauthcommon_jwk_key.py) |

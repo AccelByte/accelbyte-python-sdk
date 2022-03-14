@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.3.0)
+# justice-iam-service (5.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,23 +36,26 @@ class ModelUserCreateFromInvitationRequestV3(Model):
 
         country: (country) REQUIRED str
 
-        date_of_birth: (dateOfBirth) REQUIRED str
-
         display_name: (displayName) REQUIRED str
 
         password: (password) REQUIRED str
 
+        reach_minimum_age: (reachMinimumAge) REQUIRED bool
+
         accepted_policies: (acceptedPolicies) OPTIONAL List[LegalAcceptedPoliciesRequest]
+
+        date_of_birth: (dateOfBirth) OPTIONAL str
     """
 
     # region fields
 
     auth_type: str                                                                                 # REQUIRED
     country: str                                                                                   # REQUIRED
-    date_of_birth: str                                                                             # REQUIRED
     display_name: str                                                                              # REQUIRED
     password: str                                                                                  # REQUIRED
+    reach_minimum_age: bool                                                                        # REQUIRED
     accepted_policies: List[LegalAcceptedPoliciesRequest]                                          # OPTIONAL
+    date_of_birth: str                                                                             # OPTIONAL
 
     # endregion fields
 
@@ -66,10 +69,6 @@ class ModelUserCreateFromInvitationRequestV3(Model):
         self.country = value
         return self
 
-    def with_date_of_birth(self, value: str) -> ModelUserCreateFromInvitationRequestV3:
-        self.date_of_birth = value
-        return self
-
     def with_display_name(self, value: str) -> ModelUserCreateFromInvitationRequestV3:
         self.display_name = value
         return self
@@ -78,8 +77,16 @@ class ModelUserCreateFromInvitationRequestV3(Model):
         self.password = value
         return self
 
+    def with_reach_minimum_age(self, value: bool) -> ModelUserCreateFromInvitationRequestV3:
+        self.reach_minimum_age = value
+        return self
+
     def with_accepted_policies(self, value: List[LegalAcceptedPoliciesRequest]) -> ModelUserCreateFromInvitationRequestV3:
         self.accepted_policies = value
+        return self
+
+    def with_date_of_birth(self, value: str) -> ModelUserCreateFromInvitationRequestV3:
+        self.date_of_birth = value
         return self
 
     # endregion with_x methods
@@ -96,10 +103,6 @@ class ModelUserCreateFromInvitationRequestV3(Model):
             result["country"] = str(self.country)
         elif include_empty:
             result["country"] = str()
-        if hasattr(self, "date_of_birth"):
-            result["dateOfBirth"] = str(self.date_of_birth)
-        elif include_empty:
-            result["dateOfBirth"] = str()
         if hasattr(self, "display_name"):
             result["displayName"] = str(self.display_name)
         elif include_empty:
@@ -108,10 +111,18 @@ class ModelUserCreateFromInvitationRequestV3(Model):
             result["password"] = str(self.password)
         elif include_empty:
             result["password"] = str()
+        if hasattr(self, "reach_minimum_age"):
+            result["reachMinimumAge"] = bool(self.reach_minimum_age)
+        elif include_empty:
+            result["reachMinimumAge"] = bool()
         if hasattr(self, "accepted_policies"):
             result["acceptedPolicies"] = [i0.to_dict(include_empty=include_empty) for i0 in self.accepted_policies]
         elif include_empty:
             result["acceptedPolicies"] = []
+        if hasattr(self, "date_of_birth"):
+            result["dateOfBirth"] = str(self.date_of_birth)
+        elif include_empty:
+            result["dateOfBirth"] = str()
         return result
 
     # endregion to methods
@@ -123,19 +134,22 @@ class ModelUserCreateFromInvitationRequestV3(Model):
         cls,
         auth_type: str,
         country: str,
-        date_of_birth: str,
         display_name: str,
         password: str,
+        reach_minimum_age: bool,
         accepted_policies: Optional[List[LegalAcceptedPoliciesRequest]] = None,
+        date_of_birth: Optional[str] = None,
     ) -> ModelUserCreateFromInvitationRequestV3:
         instance = cls()
         instance.auth_type = auth_type
         instance.country = country
-        instance.date_of_birth = date_of_birth
         instance.display_name = display_name
         instance.password = password
+        instance.reach_minimum_age = reach_minimum_age
         if accepted_policies is not None:
             instance.accepted_policies = accepted_policies
+        if date_of_birth is not None:
+            instance.date_of_birth = date_of_birth
         return instance
 
     @classmethod
@@ -151,10 +165,6 @@ class ModelUserCreateFromInvitationRequestV3(Model):
             instance.country = str(dict_["country"])
         elif include_empty:
             instance.country = str()
-        if "dateOfBirth" in dict_ and dict_["dateOfBirth"] is not None:
-            instance.date_of_birth = str(dict_["dateOfBirth"])
-        elif include_empty:
-            instance.date_of_birth = str()
         if "displayName" in dict_ and dict_["displayName"] is not None:
             instance.display_name = str(dict_["displayName"])
         elif include_empty:
@@ -163,10 +173,18 @@ class ModelUserCreateFromInvitationRequestV3(Model):
             instance.password = str(dict_["password"])
         elif include_empty:
             instance.password = str()
+        if "reachMinimumAge" in dict_ and dict_["reachMinimumAge"] is not None:
+            instance.reach_minimum_age = bool(dict_["reachMinimumAge"])
+        elif include_empty:
+            instance.reach_minimum_age = bool()
         if "acceptedPolicies" in dict_ and dict_["acceptedPolicies"] is not None:
             instance.accepted_policies = [LegalAcceptedPoliciesRequest.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["acceptedPolicies"]]
         elif include_empty:
             instance.accepted_policies = []
+        if "dateOfBirth" in dict_ and dict_["dateOfBirth"] is not None:
+            instance.date_of_birth = str(dict_["dateOfBirth"])
+        elif include_empty:
+            instance.date_of_birth = str()
         return instance
 
     @classmethod
@@ -192,10 +210,11 @@ class ModelUserCreateFromInvitationRequestV3(Model):
         return {
             "authType": "auth_type",
             "country": "country",
-            "dateOfBirth": "date_of_birth",
             "displayName": "display_name",
             "password": "password",
+            "reachMinimumAge": "reach_minimum_age",
             "acceptedPolicies": "accepted_policies",
+            "dateOfBirth": "date_of_birth",
         }
 
     # endregion static methods

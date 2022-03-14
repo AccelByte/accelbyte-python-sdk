@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.3.0)
+# justice-iam-service (5.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,6 +35,8 @@ class ModelRoleV4Request(Model):
         is_wildcard: (isWildcard) REQUIRED bool
 
         role_name: (roleName) REQUIRED str
+
+        deletable: (deletable) OPTIONAL bool
     """
 
     # region fields
@@ -42,6 +44,7 @@ class ModelRoleV4Request(Model):
     admin_role: bool                                                                               # REQUIRED
     is_wildcard: bool                                                                              # REQUIRED
     role_name: str                                                                                 # REQUIRED
+    deletable: bool                                                                                # OPTIONAL
 
     # endregion fields
 
@@ -57,6 +60,10 @@ class ModelRoleV4Request(Model):
 
     def with_role_name(self, value: str) -> ModelRoleV4Request:
         self.role_name = value
+        return self
+
+    def with_deletable(self, value: bool) -> ModelRoleV4Request:
+        self.deletable = value
         return self
 
     # endregion with_x methods
@@ -77,6 +84,10 @@ class ModelRoleV4Request(Model):
             result["roleName"] = str(self.role_name)
         elif include_empty:
             result["roleName"] = str()
+        if hasattr(self, "deletable"):
+            result["deletable"] = bool(self.deletable)
+        elif include_empty:
+            result["deletable"] = bool()
         return result
 
     # endregion to methods
@@ -89,11 +100,14 @@ class ModelRoleV4Request(Model):
         admin_role: bool,
         is_wildcard: bool,
         role_name: str,
+        deletable: Optional[bool] = None,
     ) -> ModelRoleV4Request:
         instance = cls()
         instance.admin_role = admin_role
         instance.is_wildcard = is_wildcard
         instance.role_name = role_name
+        if deletable is not None:
+            instance.deletable = deletable
         return instance
 
     @classmethod
@@ -113,6 +127,10 @@ class ModelRoleV4Request(Model):
             instance.role_name = str(dict_["roleName"])
         elif include_empty:
             instance.role_name = str()
+        if "deletable" in dict_ and dict_["deletable"] is not None:
+            instance.deletable = bool(dict_["deletable"])
+        elif include_empty:
+            instance.deletable = bool()
         return instance
 
     @classmethod
@@ -139,6 +157,7 @@ class ModelRoleV4Request(Model):
             "adminRole": "admin_role",
             "isWildcard": "is_wildcard",
             "roleName": "role_name",
+            "deletable": "deletable",
         }
 
     # endregion static methods

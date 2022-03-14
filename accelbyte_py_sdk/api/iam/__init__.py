@@ -6,7 +6,7 @@
 
 """Auto-generated package that contains models used by the justice-iam-service."""
 
-__version__ = "5.3.0"
+__version__ = "5.4.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -467,6 +467,8 @@ from .wrappers import public_forgot_password_v3
 from .wrappers import public_forgot_password_v3_async
 from .wrappers import public_get_async_status
 from .wrappers import public_get_async_status_async
+from .wrappers import public_get_country_age_restriction
+from .wrappers import public_get_country_age_restriction_async
 from .wrappers import public_get_my_user_v3
 from .wrappers import public_get_my_user_v3_async
 from .wrappers import public_get_user_ban
@@ -497,6 +499,8 @@ from .wrappers import public_reset_password_v2
 from .wrappers import public_reset_password_v2_async
 from .wrappers import public_search_user_v3
 from .wrappers import public_search_user_v3_async
+from .wrappers import public_send_registration_code
+from .wrappers import public_send_registration_code_async
 from .wrappers import public_send_verification_code_v3
 from .wrappers import public_send_verification_code_v3_async
 from .wrappers import public_update_password_v2
@@ -515,6 +519,8 @@ from .wrappers import public_validate_user_by_user_id_and_password_v3
 from .wrappers import public_validate_user_by_user_id_and_password_v3_async
 from .wrappers import public_verify_headless_account_v3
 from .wrappers import public_verify_headless_account_v3_async
+from .wrappers import public_verify_registration_code
+from .wrappers import public_verify_registration_code_async
 from .wrappers import public_web_link_platform
 from .wrappers import public_web_link_platform_async
 from .wrappers import public_web_link_platform_establish

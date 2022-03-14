@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.3.0)
+# justice-iam-service (5.4.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -80,6 +80,9 @@ class AdminCreateClientV3(Operation):
 
 
       * clientPermissions : Contains the client's permissions
+
+
+      * deletable : The flag to identify whether client is deletable (optional). default value: true
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CLIENT [CREATE]

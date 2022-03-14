@@ -6,7 +6,7 @@
 
 """Auto-generated package that contains models used by the justice-legal-service."""
 
-__version__ = "1.17.0"
+__version__ = "1.18.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

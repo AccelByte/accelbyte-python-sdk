@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-platform-service (4.3.2)
+# justice-platform-service (4.4.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -76,7 +76,11 @@ class PublicNormalizePaymentReturnUrl(Operation):
 
         payload: (payload) OPTIONAL str in query
 
+        redirect_result: (redirectResult) OPTIONAL str in query
+
         result_code: (resultCode) OPTIONAL str in query
+
+        session_id: (sessionId) OPTIONAL str in query
 
         status: (status) OPTIONAL str in query
 
@@ -114,7 +118,9 @@ class PublicNormalizePaymentReturnUrl(Operation):
     foreinginvoice: str                                                                            # OPTIONAL in [query]
     invoice_id: str                                                                                # OPTIONAL in [query]
     payload: str                                                                                   # OPTIONAL in [query]
+    redirect_result: str                                                                           # OPTIONAL in [query]
     result_code: str                                                                               # OPTIONAL in [query]
+    session_id: str                                                                                # OPTIONAL in [query]
     status: str                                                                                    # OPTIONAL in [query]
     token: str                                                                                     # OPTIONAL in [query]
     type_: str                                                                                     # OPTIONAL in [query]
@@ -200,8 +206,12 @@ class PublicNormalizePaymentReturnUrl(Operation):
             result["invoice_id"] = self.invoice_id
         if hasattr(self, "payload"):
             result["payload"] = self.payload
+        if hasattr(self, "redirect_result"):
+            result["redirectResult"] = self.redirect_result
         if hasattr(self, "result_code"):
             result["resultCode"] = self.result_code
+        if hasattr(self, "session_id"):
+            result["sessionId"] = self.session_id
         if hasattr(self, "status"):
             result["status"] = self.status
         if hasattr(self, "token"):
@@ -269,8 +279,16 @@ class PublicNormalizePaymentReturnUrl(Operation):
         self.payload = value
         return self
 
+    def with_redirect_result(self, value: str) -> PublicNormalizePaymentReturnUrl:
+        self.redirect_result = value
+        return self
+
     def with_result_code(self, value: str) -> PublicNormalizePaymentReturnUrl:
         self.result_code = value
+        return self
+
+    def with_session_id(self, value: str) -> PublicNormalizePaymentReturnUrl:
+        self.session_id = value
         return self
 
     def with_status(self, value: str) -> PublicNormalizePaymentReturnUrl:
@@ -331,10 +349,18 @@ class PublicNormalizePaymentReturnUrl(Operation):
             result["payload"] = str(self.payload)
         elif include_empty:
             result["payload"] = str()
+        if hasattr(self, "redirect_result") and self.redirect_result:
+            result["redirectResult"] = str(self.redirect_result)
+        elif include_empty:
+            result["redirectResult"] = str()
         if hasattr(self, "result_code") and self.result_code:
             result["resultCode"] = str(self.result_code)
         elif include_empty:
             result["resultCode"] = str()
+        if hasattr(self, "session_id") and self.session_id:
+            result["sessionId"] = str(self.session_id)
+        elif include_empty:
+            result["sessionId"] = str()
         if hasattr(self, "status") and self.status:
             result["status"] = str(self.status)
         elif include_empty:
@@ -415,7 +441,9 @@ class PublicNormalizePaymentReturnUrl(Operation):
         foreinginvoice: Optional[str] = None,
         invoice_id: Optional[str] = None,
         payload: Optional[str] = None,
+        redirect_result: Optional[str] = None,
         result_code: Optional[str] = None,
+        session_id: Optional[str] = None,
         status: Optional[str] = None,
         token: Optional[str] = None,
         type_: Optional[str] = None,
@@ -435,8 +463,12 @@ class PublicNormalizePaymentReturnUrl(Operation):
             instance.invoice_id = invoice_id
         if payload is not None:
             instance.payload = payload
+        if redirect_result is not None:
+            instance.redirect_result = redirect_result
         if result_code is not None:
             instance.result_code = result_code
+        if session_id is not None:
+            instance.session_id = session_id
         if status is not None:
             instance.status = status
         if token is not None:
@@ -470,10 +502,18 @@ class PublicNormalizePaymentReturnUrl(Operation):
             instance.payload = str(dict_["payload"])
         elif include_empty:
             instance.payload = str()
+        if "redirectResult" in dict_ and dict_["redirectResult"] is not None:
+            instance.redirect_result = str(dict_["redirectResult"])
+        elif include_empty:
+            instance.redirect_result = str()
         if "resultCode" in dict_ and dict_["resultCode"] is not None:
             instance.result_code = str(dict_["resultCode"])
         elif include_empty:
             instance.result_code = str()
+        if "sessionId" in dict_ and dict_["sessionId"] is not None:
+            instance.session_id = str(dict_["sessionId"])
+        elif include_empty:
+            instance.session_id = str()
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -516,7 +556,9 @@ class PublicNormalizePaymentReturnUrl(Operation):
             "foreinginvoice": "foreinginvoice",
             "invoice_id": "invoice_id",
             "payload": "payload",
+            "redirectResult": "redirect_result",
             "resultCode": "result_code",
+            "sessionId": "session_id",
             "status": "status",
             "token": "token",
             "type": "type_",

@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.3.0)
+# justice-iam-service (5.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -45,6 +45,8 @@ class ModelRoleCreateV3Request(Model):
         permissions: (permissions) REQUIRED List[AccountcommonPermissionV3]
 
         role_name: (roleName) REQUIRED str
+
+        deletable: (deletable) OPTIONAL bool
     """
 
     # region fields
@@ -55,6 +57,7 @@ class ModelRoleCreateV3Request(Model):
     members: List[AccountcommonRoleMemberV3]                                                       # REQUIRED
     permissions: List[AccountcommonPermissionV3]                                                   # REQUIRED
     role_name: str                                                                                 # REQUIRED
+    deletable: bool                                                                                # OPTIONAL
 
     # endregion fields
 
@@ -82,6 +85,10 @@ class ModelRoleCreateV3Request(Model):
 
     def with_role_name(self, value: str) -> ModelRoleCreateV3Request:
         self.role_name = value
+        return self
+
+    def with_deletable(self, value: bool) -> ModelRoleCreateV3Request:
+        self.deletable = value
         return self
 
     # endregion with_x methods
@@ -114,6 +121,10 @@ class ModelRoleCreateV3Request(Model):
             result["roleName"] = str(self.role_name)
         elif include_empty:
             result["roleName"] = str()
+        if hasattr(self, "deletable"):
+            result["deletable"] = bool(self.deletable)
+        elif include_empty:
+            result["deletable"] = bool()
         return result
 
     # endregion to methods
@@ -129,6 +140,7 @@ class ModelRoleCreateV3Request(Model):
         members: List[AccountcommonRoleMemberV3],
         permissions: List[AccountcommonPermissionV3],
         role_name: str,
+        deletable: Optional[bool] = None,
     ) -> ModelRoleCreateV3Request:
         instance = cls()
         instance.admin_role = admin_role
@@ -137,6 +149,8 @@ class ModelRoleCreateV3Request(Model):
         instance.members = members
         instance.permissions = permissions
         instance.role_name = role_name
+        if deletable is not None:
+            instance.deletable = deletable
         return instance
 
     @classmethod
@@ -168,6 +182,10 @@ class ModelRoleCreateV3Request(Model):
             instance.role_name = str(dict_["roleName"])
         elif include_empty:
             instance.role_name = str()
+        if "deletable" in dict_ and dict_["deletable"] is not None:
+            instance.deletable = bool(dict_["deletable"])
+        elif include_empty:
+            instance.deletable = bool()
         return instance
 
     @classmethod
@@ -197,6 +215,7 @@ class ModelRoleCreateV3Request(Model):
             "members": "members",
             "permissions": "permissions",
             "roleName": "role_name",
+            "deletable": "deletable",
         }
 
     # endregion static methods

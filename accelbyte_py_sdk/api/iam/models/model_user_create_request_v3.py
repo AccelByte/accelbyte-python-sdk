@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.3.0)
+# justice-iam-service (5.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,9 +34,9 @@ class ModelUserCreateRequestV3(Model):
     Properties:
         auth_type: (authType) REQUIRED str
 
-        country: (country) REQUIRED str
+        code: (code) REQUIRED str
 
-        date_of_birth: (dateOfBirth) REQUIRED str
+        country: (country) REQUIRED str
 
         display_name: (displayName) REQUIRED str
 
@@ -44,7 +44,11 @@ class ModelUserCreateRequestV3(Model):
 
         password: (password) REQUIRED str
 
+        reach_minimum_age: (reachMinimumAge) REQUIRED bool
+
         accepted_policies: (acceptedPolicies) OPTIONAL List[LegalAcceptedPoliciesRequest]
+
+        date_of_birth: (dateOfBirth) OPTIONAL str
 
         password_md5_sum: (PasswordMD5Sum) OPTIONAL str
     """
@@ -52,12 +56,14 @@ class ModelUserCreateRequestV3(Model):
     # region fields
 
     auth_type: str                                                                                 # REQUIRED
+    code: str                                                                                      # REQUIRED
     country: str                                                                                   # REQUIRED
-    date_of_birth: str                                                                             # REQUIRED
     display_name: str                                                                              # REQUIRED
     email_address: str                                                                             # REQUIRED
     password: str                                                                                  # REQUIRED
+    reach_minimum_age: bool                                                                        # REQUIRED
     accepted_policies: List[LegalAcceptedPoliciesRequest]                                          # OPTIONAL
+    date_of_birth: str                                                                             # OPTIONAL
     password_md5_sum: str                                                                          # OPTIONAL
 
     # endregion fields
@@ -68,12 +74,12 @@ class ModelUserCreateRequestV3(Model):
         self.auth_type = value
         return self
 
-    def with_country(self, value: str) -> ModelUserCreateRequestV3:
-        self.country = value
+    def with_code(self, value: str) -> ModelUserCreateRequestV3:
+        self.code = value
         return self
 
-    def with_date_of_birth(self, value: str) -> ModelUserCreateRequestV3:
-        self.date_of_birth = value
+    def with_country(self, value: str) -> ModelUserCreateRequestV3:
+        self.country = value
         return self
 
     def with_display_name(self, value: str) -> ModelUserCreateRequestV3:
@@ -88,8 +94,16 @@ class ModelUserCreateRequestV3(Model):
         self.password = value
         return self
 
+    def with_reach_minimum_age(self, value: bool) -> ModelUserCreateRequestV3:
+        self.reach_minimum_age = value
+        return self
+
     def with_accepted_policies(self, value: List[LegalAcceptedPoliciesRequest]) -> ModelUserCreateRequestV3:
         self.accepted_policies = value
+        return self
+
+    def with_date_of_birth(self, value: str) -> ModelUserCreateRequestV3:
+        self.date_of_birth = value
         return self
 
     def with_password_md5_sum(self, value: str) -> ModelUserCreateRequestV3:
@@ -106,14 +120,14 @@ class ModelUserCreateRequestV3(Model):
             result["authType"] = str(self.auth_type)
         elif include_empty:
             result["authType"] = str()
+        if hasattr(self, "code"):
+            result["code"] = str(self.code)
+        elif include_empty:
+            result["code"] = str()
         if hasattr(self, "country"):
             result["country"] = str(self.country)
         elif include_empty:
             result["country"] = str()
-        if hasattr(self, "date_of_birth"):
-            result["dateOfBirth"] = str(self.date_of_birth)
-        elif include_empty:
-            result["dateOfBirth"] = str()
         if hasattr(self, "display_name"):
             result["displayName"] = str(self.display_name)
         elif include_empty:
@@ -126,10 +140,18 @@ class ModelUserCreateRequestV3(Model):
             result["password"] = str(self.password)
         elif include_empty:
             result["password"] = str()
+        if hasattr(self, "reach_minimum_age"):
+            result["reachMinimumAge"] = bool(self.reach_minimum_age)
+        elif include_empty:
+            result["reachMinimumAge"] = bool()
         if hasattr(self, "accepted_policies"):
             result["acceptedPolicies"] = [i0.to_dict(include_empty=include_empty) for i0 in self.accepted_policies]
         elif include_empty:
             result["acceptedPolicies"] = []
+        if hasattr(self, "date_of_birth"):
+            result["dateOfBirth"] = str(self.date_of_birth)
+        elif include_empty:
+            result["dateOfBirth"] = str()
         if hasattr(self, "password_md5_sum"):
             result["PasswordMD5Sum"] = str(self.password_md5_sum)
         elif include_empty:
@@ -144,23 +166,28 @@ class ModelUserCreateRequestV3(Model):
     def create(
         cls,
         auth_type: str,
+        code: str,
         country: str,
-        date_of_birth: str,
         display_name: str,
         email_address: str,
         password: str,
+        reach_minimum_age: bool,
         accepted_policies: Optional[List[LegalAcceptedPoliciesRequest]] = None,
+        date_of_birth: Optional[str] = None,
         password_md5_sum: Optional[str] = None,
     ) -> ModelUserCreateRequestV3:
         instance = cls()
         instance.auth_type = auth_type
+        instance.code = code
         instance.country = country
-        instance.date_of_birth = date_of_birth
         instance.display_name = display_name
         instance.email_address = email_address
         instance.password = password
+        instance.reach_minimum_age = reach_minimum_age
         if accepted_policies is not None:
             instance.accepted_policies = accepted_policies
+        if date_of_birth is not None:
+            instance.date_of_birth = date_of_birth
         if password_md5_sum is not None:
             instance.password_md5_sum = password_md5_sum
         return instance
@@ -174,14 +201,14 @@ class ModelUserCreateRequestV3(Model):
             instance.auth_type = str(dict_["authType"])
         elif include_empty:
             instance.auth_type = str()
+        if "code" in dict_ and dict_["code"] is not None:
+            instance.code = str(dict_["code"])
+        elif include_empty:
+            instance.code = str()
         if "country" in dict_ and dict_["country"] is not None:
             instance.country = str(dict_["country"])
         elif include_empty:
             instance.country = str()
-        if "dateOfBirth" in dict_ and dict_["dateOfBirth"] is not None:
-            instance.date_of_birth = str(dict_["dateOfBirth"])
-        elif include_empty:
-            instance.date_of_birth = str()
         if "displayName" in dict_ and dict_["displayName"] is not None:
             instance.display_name = str(dict_["displayName"])
         elif include_empty:
@@ -194,10 +221,18 @@ class ModelUserCreateRequestV3(Model):
             instance.password = str(dict_["password"])
         elif include_empty:
             instance.password = str()
+        if "reachMinimumAge" in dict_ and dict_["reachMinimumAge"] is not None:
+            instance.reach_minimum_age = bool(dict_["reachMinimumAge"])
+        elif include_empty:
+            instance.reach_minimum_age = bool()
         if "acceptedPolicies" in dict_ and dict_["acceptedPolicies"] is not None:
             instance.accepted_policies = [LegalAcceptedPoliciesRequest.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["acceptedPolicies"]]
         elif include_empty:
             instance.accepted_policies = []
+        if "dateOfBirth" in dict_ and dict_["dateOfBirth"] is not None:
+            instance.date_of_birth = str(dict_["dateOfBirth"])
+        elif include_empty:
+            instance.date_of_birth = str()
         if "PasswordMD5Sum" in dict_ and dict_["PasswordMD5Sum"] is not None:
             instance.password_md5_sum = str(dict_["PasswordMD5Sum"])
         elif include_empty:
@@ -226,12 +261,14 @@ class ModelUserCreateRequestV3(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "authType": "auth_type",
+            "code": "code",
             "country": "country",
-            "dateOfBirth": "date_of_birth",
             "displayName": "display_name",
             "emailAddress": "email_address",
             "password": "password",
+            "reachMinimumAge": "reach_minimum_age",
             "acceptedPolicies": "accepted_policies",
+            "dateOfBirth": "date_of_birth",
             "PasswordMD5Sum": "password_md5_sum",
         }
 

@@ -30,6 +30,8 @@ class ModelsConfig(Model):
     """Models config (models.Config)
 
     Properties:
+        allow_invite_non_connected_user: (allowInviteNonConnectedUser) OPTIONAL bool
+
         auto_kick_on_disconnect: (autoKickOnDisconnect) OPTIONAL bool
 
         auto_kick_on_disconnect_delay: (autoKickOnDisconnectDelay) OPTIONAL int
@@ -65,6 +67,7 @@ class ModelsConfig(Model):
 
     # region fields
 
+    allow_invite_non_connected_user: bool                                                          # OPTIONAL
     auto_kick_on_disconnect: bool                                                                  # OPTIONAL
     auto_kick_on_disconnect_delay: int                                                             # OPTIONAL
     cancel_ticket_on_disconnect: bool                                                              # OPTIONAL
@@ -85,6 +88,10 @@ class ModelsConfig(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_allow_invite_non_connected_user(self, value: bool) -> ModelsConfig:
+        self.allow_invite_non_connected_user = value
+        return self
 
     def with_auto_kick_on_disconnect(self, value: bool) -> ModelsConfig:
         self.auto_kick_on_disconnect = value
@@ -156,6 +163,10 @@ class ModelsConfig(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "allow_invite_non_connected_user"):
+            result["allowInviteNonConnectedUser"] = bool(self.allow_invite_non_connected_user)
+        elif include_empty:
+            result["allowInviteNonConnectedUser"] = bool()
         if hasattr(self, "auto_kick_on_disconnect"):
             result["autoKickOnDisconnect"] = bool(self.auto_kick_on_disconnect)
         elif include_empty:
@@ -229,6 +240,7 @@ class ModelsConfig(Model):
     @classmethod
     def create(
         cls,
+        allow_invite_non_connected_user: Optional[bool] = None,
         auto_kick_on_disconnect: Optional[bool] = None,
         auto_kick_on_disconnect_delay: Optional[int] = None,
         cancel_ticket_on_disconnect: Optional[bool] = None,
@@ -247,6 +259,8 @@ class ModelsConfig(Model):
         ready_consent_timeout: Optional[int] = None,
     ) -> ModelsConfig:
         instance = cls()
+        if allow_invite_non_connected_user is not None:
+            instance.allow_invite_non_connected_user = allow_invite_non_connected_user
         if auto_kick_on_disconnect is not None:
             instance.auto_kick_on_disconnect = auto_kick_on_disconnect
         if auto_kick_on_disconnect_delay is not None:
@@ -286,6 +300,10 @@ class ModelsConfig(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "allowInviteNonConnectedUser" in dict_ and dict_["allowInviteNonConnectedUser"] is not None:
+            instance.allow_invite_non_connected_user = bool(dict_["allowInviteNonConnectedUser"])
+        elif include_empty:
+            instance.allow_invite_non_connected_user = bool()
         if "autoKickOnDisconnect" in dict_ and dict_["autoKickOnDisconnect"] is not None:
             instance.auto_kick_on_disconnect = bool(dict_["autoKickOnDisconnect"])
         elif include_empty:
@@ -373,6 +391,7 @@ class ModelsConfig(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "allowInviteNonConnectedUser": "allow_invite_non_connected_user",
             "autoKickOnDisconnect": "auto_kick_on_disconnect",
             "autoKickOnDisconnectDelay": "auto_kick_on_disconnect_delay",
             "cancelTicketOnDisconnect": "cancel_ticket_on_disconnect",

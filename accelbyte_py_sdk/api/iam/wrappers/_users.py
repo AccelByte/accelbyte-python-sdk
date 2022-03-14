@@ -73,6 +73,7 @@ from ..models import ModelResetPasswordRequestV3
 from ..models import ModelSearchUsersByPlatformIDResponse
 from ..models import ModelSearchUsersResponse
 from ..models import ModelSearchUsersResponseWithPaginationV3
+from ..models import ModelSendRegisterVerificationCodeRequest
 from ..models import ModelSendVerificationCodeRequest
 from ..models import ModelSendVerificationCodeRequestV3
 from ..models import ModelUnlinkUserPlatformRequest
@@ -103,6 +104,7 @@ from ..models import ModelUserUpdateRequestV3
 from ..models import ModelUserVerificationRequest
 from ..models import ModelUserVerificationRequestV3
 from ..models import ModelVerificationCodeResponse
+from ..models import ModelVerifyRegistrationCode
 from ..models import ModelWebLinkingResponse
 from ..models import RestErrorResponse
 from ..models import RestapiErrorResponse
@@ -204,6 +206,7 @@ from ..operations.users import PublicDeletePlatformLinkV2
 from ..operations.users import PublicForgotPasswordV2
 from ..operations.users import PublicForgotPasswordV3
 from ..operations.users import PublicGetAsyncStatus
+from ..operations.users import PublicGetCountryAgeRestriction
 from ..operations.users import PublicGetMyUserV3
 from ..operations.users import PublicGetUserBan
 from ..operations.users import PublicGetUserBanHistoryV3
@@ -219,6 +222,7 @@ from ..operations.users import PublicPlatformLinkV3
 from ..operations.users import PublicPlatformUnlinkV3
 from ..operations.users import PublicResetPasswordV2
 from ..operations.users import PublicSearchUserV3
+from ..operations.users import PublicSendRegistrationCode
 from ..operations.users import PublicSendVerificationCodeV3
 from ..operations.users import PublicUpdatePasswordV2
 from ..operations.users import PublicUpdatePasswordV3
@@ -228,6 +232,7 @@ from ..operations.users import PublicUpgradeHeadlessAccountV3
 from ..operations.users import PublicUserVerificationV3
 from ..operations.users import PublicValidateUserByUserIDAndPasswordV3
 from ..operations.users import PublicVerifyHeadlessAccountV3
+from ..operations.users import PublicVerifyRegistrationCode
 from ..operations.users import PublicWebLinkPlatform
 from ..operations.users import PublicWebLinkPlatformEstablish
 from ..operations.users import ResetPassword
@@ -2945,6 +2950,32 @@ async def public_get_async_status_async(request_id: str, namespace: Optional[str
     return await run_request_async(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(PublicGetCountryAgeRestriction)
+def public_get_country_age_restriction(country_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetCountryAgeRestriction.create(
+        country_code=country_code,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicGetCountryAgeRestriction)
+async def public_get_country_age_restriction_async(country_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetCountryAgeRestriction.create(
+        country_code=country_code,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(PublicGetMyUserV3)
 def public_get_my_user_v3(x_additional_headers: Optional[Dict[str, str]] = None):
     request = PublicGetMyUserV3.create()
@@ -3361,6 +3392,32 @@ async def public_search_user_v3_async(by: Optional[str] = None, query: Optional[
     return await run_request_async(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(PublicSendRegistrationCode)
+def public_send_registration_code(body: ModelSendRegisterVerificationCodeRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicSendRegistrationCode.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicSendRegistrationCode)
+async def public_send_registration_code_async(body: ModelSendRegisterVerificationCodeRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicSendRegistrationCode.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(PublicSendVerificationCodeV3)
 def public_send_verification_code_v3(body: ModelSendVerificationCodeRequestV3, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -3595,6 +3652,32 @@ async def public_verify_headless_account_v3_async(body: ModelUpgradeHeadlessAcco
         if error:
             return None, error
     request = PublicVerifyHeadlessAccountV3.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicVerifyRegistrationCode)
+def public_verify_registration_code(body: ModelVerifyRegistrationCode, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicVerifyRegistrationCode.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicVerifyRegistrationCode)
+async def public_verify_registration_code_async(body: ModelVerifyRegistrationCode, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicVerifyRegistrationCode.create(
         body=body,
         namespace=namespace,
     )

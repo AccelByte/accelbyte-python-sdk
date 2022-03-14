@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.3.0)
+# justice-iam-service (5.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,7 +36,11 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
 
         password: (password) REQUIRED str
 
+        reach_minimum_age: (reachMinimumAge) REQUIRED bool
+
         username: (username) REQUIRED str
+
+        validate_only: (validateOnly) REQUIRED bool
 
         country: (country) OPTIONAL str
 
@@ -50,7 +54,9 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
     code: str                                                                                      # REQUIRED
     email_address: str                                                                             # REQUIRED
     password: str                                                                                  # REQUIRED
+    reach_minimum_age: bool                                                                        # REQUIRED
     username: str                                                                                  # REQUIRED
+    validate_only: bool                                                                            # REQUIRED
     country: str                                                                                   # OPTIONAL
     date_of_birth: str                                                                             # OPTIONAL
     display_name: str                                                                              # OPTIONAL
@@ -71,8 +77,16 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
         self.password = value
         return self
 
+    def with_reach_minimum_age(self, value: bool) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
+        self.reach_minimum_age = value
+        return self
+
     def with_username(self, value: str) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
         self.username = value
+        return self
+
+    def with_validate_only(self, value: bool) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
+        self.validate_only = value
         return self
 
     def with_country(self, value: str) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
@@ -105,10 +119,18 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
             result["password"] = str(self.password)
         elif include_empty:
             result["password"] = str()
+        if hasattr(self, "reach_minimum_age"):
+            result["reachMinimumAge"] = bool(self.reach_minimum_age)
+        elif include_empty:
+            result["reachMinimumAge"] = bool()
         if hasattr(self, "username"):
             result["username"] = str(self.username)
         elif include_empty:
             result["username"] = str()
+        if hasattr(self, "validate_only"):
+            result["validateOnly"] = bool(self.validate_only)
+        elif include_empty:
+            result["validateOnly"] = bool()
         if hasattr(self, "country"):
             result["country"] = str(self.country)
         elif include_empty:
@@ -133,7 +155,9 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
         code: str,
         email_address: str,
         password: str,
+        reach_minimum_age: bool,
         username: str,
+        validate_only: bool,
         country: Optional[str] = None,
         date_of_birth: Optional[str] = None,
         display_name: Optional[str] = None,
@@ -142,7 +166,9 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
         instance.code = code
         instance.email_address = email_address
         instance.password = password
+        instance.reach_minimum_age = reach_minimum_age
         instance.username = username
+        instance.validate_only = validate_only
         if country is not None:
             instance.country = country
         if date_of_birth is not None:
@@ -168,10 +194,18 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
             instance.password = str(dict_["password"])
         elif include_empty:
             instance.password = str()
+        if "reachMinimumAge" in dict_ and dict_["reachMinimumAge"] is not None:
+            instance.reach_minimum_age = bool(dict_["reachMinimumAge"])
+        elif include_empty:
+            instance.reach_minimum_age = bool()
         if "username" in dict_ and dict_["username"] is not None:
             instance.username = str(dict_["username"])
         elif include_empty:
             instance.username = str()
+        if "validateOnly" in dict_ and dict_["validateOnly"] is not None:
+            instance.validate_only = bool(dict_["validateOnly"])
+        elif include_empty:
+            instance.validate_only = bool()
         if "country" in dict_ and dict_["country"] is not None:
             instance.country = str(dict_["country"])
         elif include_empty:
@@ -210,7 +244,9 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
             "code": "code",
             "emailAddress": "email_address",
             "password": "password",
+            "reachMinimumAge": "reach_minimum_age",
             "username": "username",
+            "validateOnly": "validate_only",
             "country": "country",
             "dateOfBirth": "date_of_birth",
             "displayName": "display_name",

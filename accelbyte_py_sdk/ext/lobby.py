@@ -478,6 +478,7 @@ def create_models_blocked_player_data_example() -> ModelsBlockedPlayerData:
 
 def create_models_config_example() -> ModelsConfig:
     instance = ModelsConfig()
+    instance.allow_invite_non_connected_user = randomize("bool")
     instance.auto_kick_on_disconnect = randomize("bool")
     instance.auto_kick_on_disconnect_delay = randomize("int", min_val=1, max_val=1000)
     instance.cancel_ticket_on_disconnect = randomize("bool")
@@ -515,6 +516,7 @@ def create_models_config_export_example() -> ModelsConfigExport:
     instance.namespace = randomize("slug")
     instance.profanity_filter = randomize("bool")
     instance.ready_consent_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.allow_invite_non_connected_user = randomize("bool")
     return instance
 
 
@@ -526,6 +528,7 @@ def create_models_config_list_example() -> ModelsConfigList:
 
 def create_models_config_req_example() -> ModelsConfigReq:
     instance = ModelsConfigReq()
+    instance.allow_invite_non_connected_user = randomize("bool")
     instance.auto_kick_on_disconnect = randomize("bool")
     instance.auto_kick_on_disconnect_delay = randomize("int", min_val=1, max_val=1000)
     instance.cancel_ticket_on_disconnect = randomize("bool")

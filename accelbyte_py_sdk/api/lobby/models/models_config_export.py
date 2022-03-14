@@ -61,6 +61,8 @@ class ModelsConfigExport(Model):
         profanity_filter: (profanityFilter) REQUIRED bool
 
         ready_consent_timeout: (readyConsentTimeout) REQUIRED int
+
+        allow_invite_non_connected_user: (allowInviteNonConnectedUser) OPTIONAL bool
     """
 
     # region fields
@@ -81,6 +83,7 @@ class ModelsConfigExport(Model):
     namespace: str                                                                                 # REQUIRED
     profanity_filter: bool                                                                         # REQUIRED
     ready_consent_timeout: int                                                                     # REQUIRED
+    allow_invite_non_connected_user: bool                                                          # OPTIONAL
 
     # endregion fields
 
@@ -148,6 +151,10 @@ class ModelsConfigExport(Model):
 
     def with_ready_consent_timeout(self, value: int) -> ModelsConfigExport:
         self.ready_consent_timeout = value
+        return self
+
+    def with_allow_invite_non_connected_user(self, value: bool) -> ModelsConfigExport:
+        self.allow_invite_non_connected_user = value
         return self
 
     # endregion with_x methods
@@ -220,6 +227,10 @@ class ModelsConfigExport(Model):
             result["readyConsentTimeout"] = int(self.ready_consent_timeout)
         elif include_empty:
             result["readyConsentTimeout"] = int()
+        if hasattr(self, "allow_invite_non_connected_user"):
+            result["allowInviteNonConnectedUser"] = bool(self.allow_invite_non_connected_user)
+        elif include_empty:
+            result["allowInviteNonConnectedUser"] = bool()
         return result
 
     # endregion to methods
@@ -245,6 +256,7 @@ class ModelsConfigExport(Model):
         namespace: str,
         profanity_filter: bool,
         ready_consent_timeout: int,
+        allow_invite_non_connected_user: Optional[bool] = None,
     ) -> ModelsConfigExport:
         instance = cls()
         instance.auto_kick_on_disconnect = auto_kick_on_disconnect
@@ -263,6 +275,8 @@ class ModelsConfigExport(Model):
         instance.namespace = namespace
         instance.profanity_filter = profanity_filter
         instance.ready_consent_timeout = ready_consent_timeout
+        if allow_invite_non_connected_user is not None:
+            instance.allow_invite_non_connected_user = allow_invite_non_connected_user
         return instance
 
     @classmethod
@@ -334,6 +348,10 @@ class ModelsConfigExport(Model):
             instance.ready_consent_timeout = int(dict_["readyConsentTimeout"])
         elif include_empty:
             instance.ready_consent_timeout = int()
+        if "allowInviteNonConnectedUser" in dict_ and dict_["allowInviteNonConnectedUser"] is not None:
+            instance.allow_invite_non_connected_user = bool(dict_["allowInviteNonConnectedUser"])
+        elif include_empty:
+            instance.allow_invite_non_connected_user = bool()
         return instance
 
     @classmethod
@@ -373,6 +391,7 @@ class ModelsConfigExport(Model):
             "namespace": "namespace",
             "profanityFilter": "profanity_filter",
             "readyConsentTimeout": "ready_consent_timeout",
+            "allowInviteNonConnectedUser": "allow_invite_non_connected_user",
         }
 
     # endregion static methods
