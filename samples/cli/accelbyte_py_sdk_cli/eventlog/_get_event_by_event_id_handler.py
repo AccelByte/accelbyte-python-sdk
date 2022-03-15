@@ -35,9 +35,9 @@ from accelbyte_py_sdk.api.eventlog.models import ModelsEventResponse
 @click.command()
 @click.argument("event_id", type=float)
 @click.argument("end_date", type=str)
-@click.argument("page_size", type=float)
+@click.argument("page_size", type=int)
 @click.argument("start_date", type=str)
-@click.option("--offset", "offset", type=float)
+@click.option("--offset", "offset", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -45,9 +45,9 @@ from accelbyte_py_sdk.api.eventlog.models import ModelsEventResponse
 def get_event_by_event_id_handler(
         event_id: float,
         end_date: str,
-        page_size: float,
+        page_size: int,
         start_date: str,
-        offset: Optional[float] = None,
+        offset: Optional[int] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         login_with_auth: Optional[str] = None,

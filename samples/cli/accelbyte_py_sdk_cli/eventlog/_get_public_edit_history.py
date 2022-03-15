@@ -35,8 +35,8 @@ from accelbyte_py_sdk.api.eventlog.models import ModelsEventResponseV2
 @click.command()
 @click.argument("user_id", type=str)
 @click.option("--end_date", "end_date", type=str)
-@click.option("--offset", "offset", type=float)
-@click.option("--page_size", "page_size", type=float)
+@click.option("--offset", "offset", type=int)
+@click.option("--page_size", "page_size", type=int)
 @click.option("--start_date", "start_date", type=str)
 @click.option("--type", "type_", type=str)
 @click.option("--namespace", type=str)
@@ -46,8 +46,8 @@ from accelbyte_py_sdk.api.eventlog.models import ModelsEventResponseV2
 def get_public_edit_history(
         user_id: str,
         end_date: Optional[str] = None,
-        offset: Optional[float] = None,
-        page_size: Optional[float] = None,
+        offset: Optional[int] = None,
+        page_size: Optional[int] = None,
         start_date: Optional[str] = None,
         type_: Optional[str] = None,
         namespace: Optional[str] = None,

@@ -36,8 +36,8 @@ from accelbyte_py_sdk.api.eventlog.models import ModelsEventResponseV2
 @click.argument("user_id", type=str)
 @click.option("--end_date", "end_date", type=str)
 @click.option("--event_name", "event_name", type=str)
-@click.option("--offset", "offset", type=float)
-@click.option("--page_size", "page_size", type=float)
+@click.option("--offset", "offset", type=int)
+@click.option("--page_size", "page_size", type=int)
 @click.option("--start_date", "start_date", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
@@ -47,8 +47,8 @@ def get_user_events_v2_public(
         user_id: str,
         end_date: Optional[str] = None,
         event_name: Optional[str] = None,
-        offset: Optional[float] = None,
-        page_size: Optional[float] = None,
+        offset: Optional[int] = None,
+        page_size: Optional[int] = None,
         start_date: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,

@@ -35,8 +35,8 @@ from accelbyte_py_sdk.api.matchmaking.models import ServiceGetSessionHistorySear
 
 
 @click.command()
-@click.argument("limit", type=float)
-@click.argument("offset", type=float)
+@click.argument("limit", type=int)
+@click.argument("offset", type=int)
 @click.option("--channel", "channel", type=str)
 @click.option("--deleted", "deleted", type=bool)
 @click.option("--match_id", "match_id", type=str)
@@ -47,8 +47,8 @@ from accelbyte_py_sdk.api.matchmaking.models import ServiceGetSessionHistorySear
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def search_sessions_v2(
-        limit: float,
-        offset: float,
+        limit: int,
+        offset: int,
         channel: Optional[str] = None,
         deleted: Optional[bool] = None,
         match_id: Optional[str] = None,

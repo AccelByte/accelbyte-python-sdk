@@ -36,7 +36,7 @@ from accelbyte_py_sdk.api.iam.models import ModelLoginHistoriesResponse
 @click.argument("user_id", type=str)
 @click.option("--after", "after", type=float)
 @click.option("--before", "before", type=float)
-@click.option("--limit", "limit", type=float)
+@click.option("--limit", "limit", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -45,7 +45,7 @@ def get_user_login_histories(
         user_id: str,
         after: Optional[float] = None,
         before: Optional[float] = None,
-        limit: Optional[float] = None,
+        limit: Optional[int] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         login_with_auth: Optional[str] = None,
