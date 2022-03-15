@@ -294,7 +294,7 @@ class PlatformTokenGrantV3(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        security_type: basic
 
         client_id: (client_id) OPTIONAL str in form_data
 
@@ -318,7 +318,7 @@ class PlatformTokenGrantV3(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _security_type: Optional[str] = "basic"
     _location_query: str = None
 
     client_id: str                                                                                 # OPTIONAL in [form_data]

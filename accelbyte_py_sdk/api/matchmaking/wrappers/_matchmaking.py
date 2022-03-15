@@ -572,7 +572,7 @@ async def queue_session_handler_async(body: ModelsMatchmakingResult, namespace: 
 
 
 @same_doc_as(SearchSessions)
-def search_sessions(limit: float, offset: float, channel: Optional[str] = None, deleted: Optional[bool] = None, match_id: Optional[str] = None, party_id: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def search_sessions(limit: int, offset: int, channel: Optional[str] = None, deleted: Optional[bool] = None, match_id: Optional[str] = None, party_id: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -591,7 +591,7 @@ def search_sessions(limit: float, offset: float, channel: Optional[str] = None, 
 
 
 @same_doc_as(SearchSessions)
-async def search_sessions_async(limit: float, offset: float, channel: Optional[str] = None, deleted: Optional[bool] = None, match_id: Optional[str] = None, party_id: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def search_sessions_async(limit: int, offset: int, channel: Optional[str] = None, deleted: Optional[bool] = None, match_id: Optional[str] = None, party_id: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -610,7 +610,7 @@ async def search_sessions_async(limit: float, offset: float, channel: Optional[s
 
 
 @same_doc_as(SearchSessionsV2)
-def search_sessions_v2(limit: float, offset: float, channel: Optional[str] = None, deleted: Optional[bool] = None, match_id: Optional[str] = None, party_id: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def search_sessions_v2(limit: int, offset: int, channel: Optional[str] = None, deleted: Optional[bool] = None, match_id: Optional[str] = None, party_id: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -629,7 +629,7 @@ def search_sessions_v2(limit: float, offset: float, channel: Optional[str] = Non
 
 
 @same_doc_as(SearchSessionsV2)
-async def search_sessions_v2_async(limit: float, offset: float, channel: Optional[str] = None, deleted: Optional[bool] = None, match_id: Optional[str] = None, party_id: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def search_sessions_v2_async(limit: int, offset: int, channel: Optional[str] = None, deleted: Optional[bool] = None, match_id: Optional[str] = None, party_id: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

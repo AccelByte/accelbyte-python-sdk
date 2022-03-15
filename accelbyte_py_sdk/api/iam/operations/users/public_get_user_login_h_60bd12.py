@@ -62,7 +62,7 @@ class PublicGetUserLoginHistoriesV3(Operation):
 
         before: (before) OPTIONAL float in query
 
-        limit: (limit) OPTIONAL float in query
+        limit: (limit) OPTIONAL int in query
 
     Responses:
         200: OK - ModelLoginHistoriesResponse (OK)
@@ -87,7 +87,7 @@ class PublicGetUserLoginHistoriesV3(Operation):
     user_id: str                                                                                   # REQUIRED in [path]
     after: float                                                                                   # OPTIONAL in [query]
     before: float                                                                                  # OPTIONAL in [query]
-    limit: float                                                                                   # OPTIONAL in [query]
+    limit: int                                                                                     # OPTIONAL in [query]
 
     # endregion fields
 
@@ -195,7 +195,7 @@ class PublicGetUserLoginHistoriesV3(Operation):
         self.before = value
         return self
 
-    def with_limit(self, value: float) -> PublicGetUserLoginHistoriesV3:
+    def with_limit(self, value: int) -> PublicGetUserLoginHistoriesV3:
         self.limit = value
         return self
 
@@ -222,9 +222,9 @@ class PublicGetUserLoginHistoriesV3(Operation):
         elif include_empty:
             result["before"] = float()
         if hasattr(self, "limit") and self.limit:
-            result["limit"] = float(self.limit)
+            result["limit"] = int(self.limit)
         elif include_empty:
-            result["limit"] = float()
+            result["limit"] = int()
         return result
 
     # endregion to methods
@@ -276,7 +276,7 @@ class PublicGetUserLoginHistoriesV3(Operation):
         user_id: str,
         after: Optional[float] = None,
         before: Optional[float] = None,
-        limit: Optional[float] = None,
+        limit: Optional[int] = None,
     ) -> PublicGetUserLoginHistoriesV3:
         instance = cls()
         instance.namespace = namespace
@@ -309,9 +309,9 @@ class PublicGetUserLoginHistoriesV3(Operation):
         elif include_empty:
             instance.before = float()
         if "limit" in dict_ and dict_["limit"] is not None:
-            instance.limit = float(dict_["limit"])
+            instance.limit = int(dict_["limit"])
         elif include_empty:
-            instance.limit = float()
+            instance.limit = int()
         return instance
 
     @staticmethod

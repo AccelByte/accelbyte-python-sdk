@@ -43,7 +43,7 @@ from ..operations.event import PostEventHandler
 
 @deprecated
 @same_doc_as(GetEventByEventIDHandler)
-def get_event_by_event_id_handler(end_date: str, event_id: float, page_size: float, start_date: str, offset: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_event_by_event_id_handler(end_date: str, event_id: float, page_size: int, start_date: str, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -61,7 +61,7 @@ def get_event_by_event_id_handler(end_date: str, event_id: float, page_size: flo
 
 @deprecated
 @same_doc_as(GetEventByEventIDHandler)
-async def get_event_by_event_id_handler_async(end_date: str, event_id: float, page_size: float, start_date: str, offset: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_event_by_event_id_handler_async(end_date: str, event_id: float, page_size: int, start_date: str, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -79,7 +79,7 @@ async def get_event_by_event_id_handler_async(end_date: str, event_id: float, pa
 
 @deprecated
 @same_doc_as(GetEventByEventTypeAndEventIDHandler)
-def get_event_by_event_type_and_event_id_handler(end_date: str, event_id: float, event_type: float, page_size: float, start_date: str, offset: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_event_by_event_type_and_event_id_handler(end_date: str, event_id: float, event_type: float, page_size: int, start_date: str, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -98,7 +98,7 @@ def get_event_by_event_type_and_event_id_handler(end_date: str, event_id: float,
 
 @deprecated
 @same_doc_as(GetEventByEventTypeAndEventIDHandler)
-async def get_event_by_event_type_and_event_id_handler_async(end_date: str, event_id: float, event_type: float, page_size: float, start_date: str, offset: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_event_by_event_type_and_event_id_handler_async(end_date: str, event_id: float, event_type: float, page_size: int, start_date: str, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -117,7 +117,7 @@ async def get_event_by_event_type_and_event_id_handler_async(end_date: str, even
 
 @deprecated
 @same_doc_as(GetEventByEventTypeHandler)
-def get_event_by_event_type_handler(end_date: str, event_type: float, page_size: float, start_date: str, offset: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_event_by_event_type_handler(end_date: str, event_type: float, page_size: int, start_date: str, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -135,7 +135,7 @@ def get_event_by_event_type_handler(end_date: str, event_type: float, page_size:
 
 @deprecated
 @same_doc_as(GetEventByEventTypeHandler)
-async def get_event_by_event_type_handler_async(end_date: str, event_type: float, page_size: float, start_date: str, offset: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_event_by_event_type_handler_async(end_date: str, event_type: float, page_size: int, start_date: str, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -153,7 +153,7 @@ async def get_event_by_event_type_handler_async(end_date: str, event_type: float
 
 @deprecated
 @same_doc_as(GetEventByNamespaceHandler)
-def get_event_by_namespace_handler(end_date: str, page_size: float, start_date: str, offset: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_event_by_namespace_handler(end_date: str, page_size: int, start_date: str, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -170,7 +170,7 @@ def get_event_by_namespace_handler(end_date: str, page_size: float, start_date: 
 
 @deprecated
 @same_doc_as(GetEventByNamespaceHandler)
-async def get_event_by_namespace_handler_async(end_date: str, page_size: float, start_date: str, offset: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_event_by_namespace_handler_async(end_date: str, page_size: int, start_date: str, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -187,7 +187,7 @@ async def get_event_by_namespace_handler_async(end_date: str, page_size: float, 
 
 @deprecated
 @same_doc_as(GetEventByUserEventIDAndEventTypeHandler)
-def get_event_by_user_event_id_and_event_type_handler(end_date: str, event_id: float, event_type: float, page_size: float, start_date: str, user_id: str, offset: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_event_by_user_event_id_and_event_type_handler(end_date: str, event_id: float, event_type: float, page_size: int, start_date: str, user_id: str, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -207,7 +207,7 @@ def get_event_by_user_event_id_and_event_type_handler(end_date: str, event_id: f
 
 @deprecated
 @same_doc_as(GetEventByUserEventIDAndEventTypeHandler)
-async def get_event_by_user_event_id_and_event_type_handler_async(end_date: str, event_id: float, event_type: float, page_size: float, start_date: str, user_id: str, offset: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_event_by_user_event_id_and_event_type_handler_async(end_date: str, event_id: float, event_type: float, page_size: int, start_date: str, user_id: str, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -227,7 +227,7 @@ async def get_event_by_user_event_id_and_event_type_handler_async(end_date: str,
 
 @deprecated
 @same_doc_as(GetEventByUserIDAndEventIDHandler)
-def get_event_by_user_id_and_event_id_handler(end_date: str, event_id: float, page_size: float, start_date: str, user_id: str, offset: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_event_by_user_id_and_event_id_handler(end_date: str, event_id: float, page_size: int, start_date: str, user_id: str, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -246,7 +246,7 @@ def get_event_by_user_id_and_event_id_handler(end_date: str, event_id: float, pa
 
 @deprecated
 @same_doc_as(GetEventByUserIDAndEventIDHandler)
-async def get_event_by_user_id_and_event_id_handler_async(end_date: str, event_id: float, page_size: float, start_date: str, user_id: str, offset: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_event_by_user_id_and_event_id_handler_async(end_date: str, event_id: float, page_size: int, start_date: str, user_id: str, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -265,7 +265,7 @@ async def get_event_by_user_id_and_event_id_handler_async(end_date: str, event_i
 
 @deprecated
 @same_doc_as(GetEventByUserIDAndEventTypeHandler)
-def get_event_by_user_id_and_event_type_handler(end_date: str, event_type: float, page_size: float, start_date: str, user_id: str, offset: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_event_by_user_id_and_event_type_handler(end_date: str, event_type: float, page_size: int, start_date: str, user_id: str, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -284,7 +284,7 @@ def get_event_by_user_id_and_event_type_handler(end_date: str, event_type: float
 
 @deprecated
 @same_doc_as(GetEventByUserIDAndEventTypeHandler)
-async def get_event_by_user_id_and_event_type_handler_async(end_date: str, event_type: float, page_size: float, start_date: str, user_id: str, offset: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_event_by_user_id_and_event_type_handler_async(end_date: str, event_type: float, page_size: int, start_date: str, user_id: str, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -303,7 +303,7 @@ async def get_event_by_user_id_and_event_type_handler_async(end_date: str, event
 
 @deprecated
 @same_doc_as(GetEventByUserIDHandler)
-def get_event_by_user_id_handler(end_date: str, page_size: float, start_date: str, user_id: str, offset: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_event_by_user_id_handler(end_date: str, page_size: int, start_date: str, user_id: str, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -321,7 +321,7 @@ def get_event_by_user_id_handler(end_date: str, page_size: float, start_date: st
 
 @deprecated
 @same_doc_as(GetEventByUserIDHandler)
-async def get_event_by_user_id_handler_async(end_date: str, page_size: float, start_date: str, user_id: str, offset: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_event_by_user_id_handler_async(end_date: str, page_size: int, start_date: str, user_id: str, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

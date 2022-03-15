@@ -53,7 +53,7 @@ class TokenRevocationV3(Operation):
 
         produces: ["application/json"]
 
-        security_type: basic
+        security_type: bearer
 
         token: (token) REQUIRED str in form_data
 
@@ -71,7 +71,7 @@ class TokenRevocationV3(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "basic"
+    _security_type: Optional[str] = "bearer"
     _location_query: str = None
 
     token: str                                                                                     # REQUIRED in [form_data]

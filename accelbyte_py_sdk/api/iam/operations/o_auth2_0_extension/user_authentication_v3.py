@@ -50,7 +50,7 @@ class UserAuthenticationV3(Operation):
 
         produces: ["application/json"]
 
-        security_type: None
+        security_type: basic
 
         location query: code
 
@@ -76,7 +76,7 @@ class UserAuthenticationV3(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = None
+    _security_type: Optional[str] = "basic"
     _location_query: str = "code"
 
     client_id: str                                                                                 # OPTIONAL in [form_data]

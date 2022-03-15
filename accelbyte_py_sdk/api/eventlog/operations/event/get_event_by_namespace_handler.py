@@ -57,11 +57,11 @@ class GetEventByNamespaceHandler(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        offset: (offset) OPTIONAL float in query
+        offset: (offset) OPTIONAL int in query
 
         end_date: (endDate) REQUIRED str in query
 
-        page_size: (pageSize) REQUIRED float in query
+        page_size: (pageSize) REQUIRED int in query
 
         start_date: (startDate) REQUIRED str in query
 
@@ -89,9 +89,9 @@ class GetEventByNamespaceHandler(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    offset: float                                                                                  # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
     end_date: str                                                                                  # REQUIRED in [query]
-    page_size: float                                                                               # REQUIRED in [query]
+    page_size: int                                                                                 # REQUIRED in [query]
     start_date: str                                                                                # REQUIRED in [query]
 
     # endregion fields
@@ -194,7 +194,7 @@ class GetEventByNamespaceHandler(Operation):
         self.namespace = value
         return self
 
-    def with_offset(self, value: float) -> GetEventByNamespaceHandler:
+    def with_offset(self, value: int) -> GetEventByNamespaceHandler:
         self.offset = value
         return self
 
@@ -202,7 +202,7 @@ class GetEventByNamespaceHandler(Operation):
         self.end_date = value
         return self
 
-    def with_page_size(self, value: float) -> GetEventByNamespaceHandler:
+    def with_page_size(self, value: int) -> GetEventByNamespaceHandler:
         self.page_size = value
         return self
 
@@ -221,17 +221,17 @@ class GetEventByNamespaceHandler(Operation):
         elif include_empty:
             result["namespace"] = str()
         if hasattr(self, "offset") and self.offset:
-            result["offset"] = float(self.offset)
+            result["offset"] = int(self.offset)
         elif include_empty:
-            result["offset"] = float()
+            result["offset"] = int()
         if hasattr(self, "end_date") and self.end_date:
             result["endDate"] = str(self.end_date)
         elif include_empty:
             result["endDate"] = str()
         if hasattr(self, "page_size") and self.page_size:
-            result["pageSize"] = float(self.page_size)
+            result["pageSize"] = int(self.page_size)
         elif include_empty:
-            result["pageSize"] = float()
+            result["pageSize"] = int()
         if hasattr(self, "start_date") and self.start_date:
             result["startDate"] = str(self.start_date)
         elif include_empty:
@@ -293,9 +293,9 @@ class GetEventByNamespaceHandler(Operation):
         cls,
         namespace: str,
         end_date: str,
-        page_size: float,
+        page_size: int,
         start_date: str,
-        offset: Optional[float] = None,
+        offset: Optional[int] = None,
     ) -> GetEventByNamespaceHandler:
         instance = cls()
         instance.namespace = namespace
@@ -314,17 +314,17 @@ class GetEventByNamespaceHandler(Operation):
         elif include_empty:
             instance.namespace = str()
         if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = float(dict_["offset"])
+            instance.offset = int(dict_["offset"])
         elif include_empty:
-            instance.offset = float()
+            instance.offset = int()
         if "endDate" in dict_ and dict_["endDate"] is not None:
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
             instance.end_date = str()
         if "pageSize" in dict_ and dict_["pageSize"] is not None:
-            instance.page_size = float(dict_["pageSize"])
+            instance.page_size = int(dict_["pageSize"])
         elif include_empty:
-            instance.page_size = float()
+            instance.page_size = int()
         if "startDate" in dict_ and dict_["startDate"] is not None:
             instance.start_date = str(dict_["startDate"])
         elif include_empty:

@@ -65,7 +65,7 @@ async def delete_user_activities_handler_async(user_id: str, namespace: Optional
 
 @deprecated
 @same_doc_as(GetUserActivitiesHandler)
-def get_user_activities_handler(page_size: float, user_id: str, offset: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_user_activities_handler(page_size: int, user_id: str, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -81,7 +81,7 @@ def get_user_activities_handler(page_size: float, user_id: str, offset: Optional
 
 @deprecated
 @same_doc_as(GetUserActivitiesHandler)
-async def get_user_activities_handler_async(page_size: float, user_id: str, offset: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_user_activities_handler_async(page_size: int, user_id: str, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

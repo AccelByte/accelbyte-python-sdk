@@ -72,9 +72,9 @@ class SearchSessionsV2(Operation):
 
         user_id: (userID) OPTIONAL str in query
 
-        limit: (limit) REQUIRED float in query
+        limit: (limit) REQUIRED int in query
 
-        offset: (offset) REQUIRED float in query
+        offset: (offset) REQUIRED int in query
 
     Responses:
         200: OK - ServiceGetSessionHistorySearchResponseV2 (Operation succeeded)
@@ -105,8 +105,8 @@ class SearchSessionsV2(Operation):
     match_id: str                                                                                  # OPTIONAL in [query]
     party_id: str                                                                                  # OPTIONAL in [query]
     user_id: str                                                                                   # OPTIONAL in [query]
-    limit: float                                                                                   # REQUIRED in [query]
-    offset: float                                                                                  # REQUIRED in [query]
+    limit: int                                                                                     # REQUIRED in [query]
+    offset: int                                                                                    # REQUIRED in [query]
 
     # endregion fields
 
@@ -231,11 +231,11 @@ class SearchSessionsV2(Operation):
         self.user_id = value
         return self
 
-    def with_limit(self, value: float) -> SearchSessionsV2:
+    def with_limit(self, value: int) -> SearchSessionsV2:
         self.limit = value
         return self
 
-    def with_offset(self, value: float) -> SearchSessionsV2:
+    def with_offset(self, value: int) -> SearchSessionsV2:
         self.offset = value
         return self
 
@@ -270,13 +270,13 @@ class SearchSessionsV2(Operation):
         elif include_empty:
             result["userID"] = str()
         if hasattr(self, "limit") and self.limit:
-            result["limit"] = float(self.limit)
+            result["limit"] = int(self.limit)
         elif include_empty:
-            result["limit"] = float()
+            result["limit"] = int()
         if hasattr(self, "offset") and self.offset:
-            result["offset"] = float(self.offset)
+            result["offset"] = int(self.offset)
         elif include_empty:
-            result["offset"] = float()
+            result["offset"] = int()
         return result
 
     # endregion to methods
@@ -333,8 +333,8 @@ class SearchSessionsV2(Operation):
     def create(
         cls,
         namespace: str,
-        limit: float,
-        offset: float,
+        limit: int,
+        offset: int,
         channel: Optional[str] = None,
         deleted: Optional[bool] = None,
         match_id: Optional[str] = None,
@@ -385,13 +385,13 @@ class SearchSessionsV2(Operation):
         elif include_empty:
             instance.user_id = str()
         if "limit" in dict_ and dict_["limit"] is not None:
-            instance.limit = float(dict_["limit"])
+            instance.limit = int(dict_["limit"])
         elif include_empty:
-            instance.limit = float()
+            instance.limit = int()
         if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = float(dict_["offset"])
+            instance.offset = int(dict_["offset"])
         elif include_empty:
-            instance.offset = float()
+            instance.offset = int()
         return instance
 
     @staticmethod

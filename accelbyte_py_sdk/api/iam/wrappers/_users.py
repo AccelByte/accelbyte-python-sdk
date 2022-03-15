@@ -1033,7 +1033,7 @@ async def admin_get_user_deletion_status_v3_async(user_id: str, namespace: Optio
 
 
 @same_doc_as(AdminGetUserLoginHistoriesV3)
-def admin_get_user_login_histories_v3(user_id: str, after: Optional[float] = None, before: Optional[float] = None, limit: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_get_user_login_histories_v3(user_id: str, after: Optional[float] = None, before: Optional[float] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1049,7 +1049,7 @@ def admin_get_user_login_histories_v3(user_id: str, after: Optional[float] = Non
 
 
 @same_doc_as(AdminGetUserLoginHistoriesV3)
-async def admin_get_user_login_histories_v3_async(user_id: str, after: Optional[float] = None, before: Optional[float] = None, limit: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_get_user_login_histories_v3_async(user_id: str, after: Optional[float] = None, before: Optional[float] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2479,7 +2479,7 @@ async def get_user_justice_platform_account_async(target_namespace: str, user_id
 
 
 @same_doc_as(GetUserLoginHistories)
-def get_user_login_histories(user_id: str, after: Optional[float] = None, before: Optional[float] = None, limit: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_user_login_histories(user_id: str, after: Optional[float] = None, before: Optional[float] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2495,7 +2495,7 @@ def get_user_login_histories(user_id: str, after: Optional[float] = None, before
 
 
 @same_doc_as(GetUserLoginHistories)
-async def get_user_login_histories_async(user_id: str, after: Optional[float] = None, before: Optional[float] = None, limit: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_user_login_histories_async(user_id: str, after: Optional[float] = None, before: Optional[float] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3131,7 +3131,7 @@ async def public_get_user_by_user_idv2_async(user_id: str, namespace: Optional[s
 
 
 @same_doc_as(PublicGetUserLoginHistoriesV3)
-def public_get_user_login_histories_v3(user_id: str, after: Optional[float] = None, before: Optional[float] = None, limit: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_get_user_login_histories_v3(user_id: str, after: Optional[float] = None, before: Optional[float] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3147,7 +3147,7 @@ def public_get_user_login_histories_v3(user_id: str, after: Optional[float] = No
 
 
 @same_doc_as(PublicGetUserLoginHistoriesV3)
-async def public_get_user_login_histories_v3_async(user_id: str, after: Optional[float] = None, before: Optional[float] = None, limit: Optional[float] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def public_get_user_login_histories_v3_async(user_id: str, after: Optional[float] = None, before: Optional[float] = None, limit: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

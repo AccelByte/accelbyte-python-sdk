@@ -68,9 +68,9 @@ class QueryEventStreamHandler(Operation):
 
         end_date: (endDate) OPTIONAL str in query
 
-        offset: (offset) OPTIONAL float in query
+        offset: (offset) OPTIONAL int in query
 
-        page_size: (pageSize) OPTIONAL float in query
+        page_size: (pageSize) OPTIONAL int in query
 
         start_date: (startDate) OPTIONAL str in query
 
@@ -102,8 +102,8 @@ class QueryEventStreamHandler(Operation):
     body: ModelsGenericQueryPayload                                                                # REQUIRED in [body]
     namespace: str                                                                                 # REQUIRED in [path]
     end_date: str                                                                                  # OPTIONAL in [query]
-    offset: float                                                                                  # OPTIONAL in [query]
-    page_size: float                                                                               # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
+    page_size: int                                                                                 # OPTIONAL in [query]
     start_date: str                                                                                # OPTIONAL in [query]
 
     # endregion fields
@@ -214,11 +214,11 @@ class QueryEventStreamHandler(Operation):
         self.end_date = value
         return self
 
-    def with_offset(self, value: float) -> QueryEventStreamHandler:
+    def with_offset(self, value: int) -> QueryEventStreamHandler:
         self.offset = value
         return self
 
-    def with_page_size(self, value: float) -> QueryEventStreamHandler:
+    def with_page_size(self, value: int) -> QueryEventStreamHandler:
         self.page_size = value
         return self
 
@@ -245,13 +245,13 @@ class QueryEventStreamHandler(Operation):
         elif include_empty:
             result["endDate"] = str()
         if hasattr(self, "offset") and self.offset:
-            result["offset"] = float(self.offset)
+            result["offset"] = int(self.offset)
         elif include_empty:
-            result["offset"] = float()
+            result["offset"] = int()
         if hasattr(self, "page_size") and self.page_size:
-            result["pageSize"] = float(self.page_size)
+            result["pageSize"] = int(self.page_size)
         elif include_empty:
-            result["pageSize"] = float()
+            result["pageSize"] = int()
         if hasattr(self, "start_date") and self.start_date:
             result["startDate"] = str(self.start_date)
         elif include_empty:
@@ -318,8 +318,8 @@ class QueryEventStreamHandler(Operation):
         body: ModelsGenericQueryPayload,
         namespace: str,
         end_date: Optional[str] = None,
-        offset: Optional[float] = None,
-        page_size: Optional[float] = None,
+        offset: Optional[int] = None,
+        page_size: Optional[int] = None,
         start_date: Optional[str] = None,
     ) -> QueryEventStreamHandler:
         instance = cls()
@@ -351,13 +351,13 @@ class QueryEventStreamHandler(Operation):
         elif include_empty:
             instance.end_date = str()
         if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = float(dict_["offset"])
+            instance.offset = int(dict_["offset"])
         elif include_empty:
-            instance.offset = float()
+            instance.offset = int()
         if "pageSize" in dict_ and dict_["pageSize"] is not None:
-            instance.page_size = float(dict_["pageSize"])
+            instance.page_size = int(dict_["pageSize"])
         elif include_empty:
-            instance.page_size = float()
+            instance.page_size = int()
         if "startDate" in dict_ and dict_["startDate"] is not None:
             instance.start_date = str(dict_["startDate"])
         elif include_empty:

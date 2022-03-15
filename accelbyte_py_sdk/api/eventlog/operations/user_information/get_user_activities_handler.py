@@ -59,9 +59,9 @@ class GetUserActivitiesHandler(Operation):
 
         user_id: (userId) REQUIRED str in path
 
-        offset: (offset) OPTIONAL float in query
+        offset: (offset) OPTIONAL int in query
 
-        page_size: (pageSize) REQUIRED float in query
+        page_size: (pageSize) REQUIRED int in query
 
     Responses:
         200: OK - ModelsEventResponse (OK)
@@ -88,8 +88,8 @@ class GetUserActivitiesHandler(Operation):
 
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
-    offset: float                                                                                  # OPTIONAL in [query]
-    page_size: float                                                                               # REQUIRED in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
+    page_size: int                                                                                 # REQUIRED in [query]
 
     # endregion fields
 
@@ -190,11 +190,11 @@ class GetUserActivitiesHandler(Operation):
         self.user_id = value
         return self
 
-    def with_offset(self, value: float) -> GetUserActivitiesHandler:
+    def with_offset(self, value: int) -> GetUserActivitiesHandler:
         self.offset = value
         return self
 
-    def with_page_size(self, value: float) -> GetUserActivitiesHandler:
+    def with_page_size(self, value: int) -> GetUserActivitiesHandler:
         self.page_size = value
         return self
 
@@ -213,13 +213,13 @@ class GetUserActivitiesHandler(Operation):
         elif include_empty:
             result["userId"] = str()
         if hasattr(self, "offset") and self.offset:
-            result["offset"] = float(self.offset)
+            result["offset"] = int(self.offset)
         elif include_empty:
-            result["offset"] = float()
+            result["offset"] = int()
         if hasattr(self, "page_size") and self.page_size:
-            result["pageSize"] = float(self.page_size)
+            result["pageSize"] = int(self.page_size)
         elif include_empty:
-            result["pageSize"] = float()
+            result["pageSize"] = int()
         return result
 
     # endregion to methods
@@ -277,8 +277,8 @@ class GetUserActivitiesHandler(Operation):
         cls,
         namespace: str,
         user_id: str,
-        page_size: float,
-        offset: Optional[float] = None,
+        page_size: int,
+        offset: Optional[int] = None,
     ) -> GetUserActivitiesHandler:
         instance = cls()
         instance.namespace = namespace
@@ -300,13 +300,13 @@ class GetUserActivitiesHandler(Operation):
         elif include_empty:
             instance.user_id = str()
         if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = float(dict_["offset"])
+            instance.offset = int(dict_["offset"])
         elif include_empty:
-            instance.offset = float()
+            instance.offset = int()
         if "pageSize" in dict_ and dict_["pageSize"] is not None:
-            instance.page_size = float(dict_["pageSize"])
+            instance.page_size = int(dict_["pageSize"])
         elif include_empty:
-            instance.page_size = float()
+            instance.page_size = int()
         return instance
 
     @staticmethod

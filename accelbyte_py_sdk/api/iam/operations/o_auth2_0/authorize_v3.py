@@ -131,7 +131,7 @@ class AuthorizeV3(Operation):
 
         produces: ["application/json"]
 
-        security_type: None
+        security_type: basic
 
         location query: request_id
 
@@ -161,7 +161,7 @@ class AuthorizeV3(Operation):
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = None
+    _security_type: Optional[str] = "basic"
     _location_query: str = "request_id"
 
     code_challenge: str                                                                            # OPTIONAL in [query]

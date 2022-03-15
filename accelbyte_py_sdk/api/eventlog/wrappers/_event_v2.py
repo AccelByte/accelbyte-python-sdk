@@ -36,7 +36,7 @@ from ..operations.event_v2 import QueryEventStreamHandler
 
 
 @same_doc_as(GetEventSpecificUserV2Handler)
-def get_event_specific_user_v2_handler(user_id: str, end_date: Optional[str] = None, event_name: Optional[str] = None, offset: Optional[float] = None, page_size: Optional[float] = None, start_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_event_specific_user_v2_handler(user_id: str, end_date: Optional[str] = None, event_name: Optional[str] = None, offset: Optional[int] = None, page_size: Optional[int] = None, start_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -54,7 +54,7 @@ def get_event_specific_user_v2_handler(user_id: str, end_date: Optional[str] = N
 
 
 @same_doc_as(GetEventSpecificUserV2Handler)
-async def get_event_specific_user_v2_handler_async(user_id: str, end_date: Optional[str] = None, event_name: Optional[str] = None, offset: Optional[float] = None, page_size: Optional[float] = None, start_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_event_specific_user_v2_handler_async(user_id: str, end_date: Optional[str] = None, event_name: Optional[str] = None, offset: Optional[int] = None, page_size: Optional[int] = None, start_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -72,7 +72,7 @@ async def get_event_specific_user_v2_handler_async(user_id: str, end_date: Optio
 
 
 @same_doc_as(GetPublicEditHistory)
-def get_public_edit_history(user_id: str, end_date: Optional[str] = None, offset: Optional[float] = None, page_size: Optional[float] = None, start_date: Optional[str] = None, type_: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_public_edit_history(user_id: str, end_date: Optional[str] = None, offset: Optional[int] = None, page_size: Optional[int] = None, start_date: Optional[str] = None, type_: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -90,7 +90,7 @@ def get_public_edit_history(user_id: str, end_date: Optional[str] = None, offset
 
 
 @same_doc_as(GetPublicEditHistory)
-async def get_public_edit_history_async(user_id: str, end_date: Optional[str] = None, offset: Optional[float] = None, page_size: Optional[float] = None, start_date: Optional[str] = None, type_: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_public_edit_history_async(user_id: str, end_date: Optional[str] = None, offset: Optional[int] = None, page_size: Optional[int] = None, start_date: Optional[str] = None, type_: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -108,7 +108,7 @@ async def get_public_edit_history_async(user_id: str, end_date: Optional[str] = 
 
 
 @same_doc_as(GetUserEventsV2Public)
-def get_user_events_v2_public(user_id: str, end_date: Optional[str] = None, event_name: Optional[str] = None, offset: Optional[float] = None, page_size: Optional[float] = None, start_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_user_events_v2_public(user_id: str, end_date: Optional[str] = None, event_name: Optional[str] = None, offset: Optional[int] = None, page_size: Optional[int] = None, start_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -126,7 +126,7 @@ def get_user_events_v2_public(user_id: str, end_date: Optional[str] = None, even
 
 
 @same_doc_as(GetUserEventsV2Public)
-async def get_user_events_v2_public_async(user_id: str, end_date: Optional[str] = None, event_name: Optional[str] = None, offset: Optional[float] = None, page_size: Optional[float] = None, start_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_user_events_v2_public_async(user_id: str, end_date: Optional[str] = None, event_name: Optional[str] = None, offset: Optional[int] = None, page_size: Optional[int] = None, start_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -144,7 +144,7 @@ async def get_user_events_v2_public_async(user_id: str, end_date: Optional[str] 
 
 
 @same_doc_as(QueryEventStreamHandler)
-def query_event_stream_handler(body: ModelsGenericQueryPayload, end_date: Optional[str] = None, offset: Optional[float] = None, page_size: Optional[float] = None, start_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_event_stream_handler(body: ModelsGenericQueryPayload, end_date: Optional[str] = None, offset: Optional[int] = None, page_size: Optional[int] = None, start_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -161,7 +161,7 @@ def query_event_stream_handler(body: ModelsGenericQueryPayload, end_date: Option
 
 
 @same_doc_as(QueryEventStreamHandler)
-async def query_event_stream_handler_async(body: ModelsGenericQueryPayload, end_date: Optional[str] = None, offset: Optional[float] = None, page_size: Optional[float] = None, start_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def query_event_stream_handler_async(body: ModelsGenericQueryPayload, end_date: Optional[str] = None, offset: Optional[int] = None, page_size: Optional[int] = None, start_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
