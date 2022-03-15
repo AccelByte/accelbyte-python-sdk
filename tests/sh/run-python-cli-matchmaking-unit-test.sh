@@ -239,8 +239,8 @@ delete_file $TEMP_FILE
 
 #- 22 SearchSessions
 $PYTHON -m $MODULE 'matchmaking-search-sessions' \
-    '0.3615313562180734' \
-    '0.22741613764270863' \
+    '46' \
+    '29' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'SearchSessions'
@@ -248,7 +248,7 @@ delete_file $TEMP_FILE
 
 #- 23 GetSessionHistoryDetailed
 $PYTHON -m $MODULE 'matchmaking-get-session-history-detailed' \
-    '0B7WOfer' \
+    'ot0B7WOf' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetSessionHistoryDetailed'
@@ -270,7 +270,7 @@ delete_file $TEMP_FILE
 
 #- 26 PublicGetSingleMatchmakingChannel
 $PYTHON -m $MODULE 'matchmaking-public-get-single-matchmaking-channel' \
-    'cZdpMci3' \
+    'ercZdpMc' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetSingleMatchmakingChannel'
@@ -278,8 +278,8 @@ delete_file $TEMP_FILE
 
 #- 27 SearchSessionsV2
 $PYTHON -m $MODULE 'matchmaking-search-sessions-v2' \
-    '0.9303222928912993' \
-    '0.2857255039397766' \
+    '17' \
+    '58' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'SearchSessionsV2'
