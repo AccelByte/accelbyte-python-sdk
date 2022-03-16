@@ -174,7 +174,7 @@ class DotEnvFileConfigRepository(DictConfigRepository):
         if isinstance(dotenv_file, str):
             dotenv_file = Path(dotenv_file)
         if not dotenv_file.exists():
-            raise FileExistsError
+            raise FileNotFoundError(str(dotenv_file.resolve()))
         dotenv = dotenv_file.read_text()
         dict_ = {}
         for line in dotenv.splitlines(keepends=False):
@@ -186,7 +186,7 @@ class DotEnvFileConfigRepository(DictConfigRepository):
                     value.startswith("'") and value.endswith("'"):
                 value = value[1:-1]
             dict_[key] = value
-        if set_env_var:
+        if set_env_var and isinstance(dict_, dict):
             for k, v in dict_.items():
                 os.environ[k] = v
         super().__init__(dict_)
@@ -212,7 +212,7 @@ class JsonFileConfigRepository(JsonConfigRepository):
         if isinstance(json_file, str):
             json_file = Path(json_file)
         if not json_file.exists():
-            raise FileExistsError
+            raise FileNotFoundError(str(json_file.resolve()))
         json_ = json_file.read_text()
         super().__init__(json_)
 
@@ -231,6 +231,6 @@ class YamlFileConfigRepository(YamlConfigRepository):
         if isinstance(yaml_file, str):
             yaml_file = Path(yaml_file)
         if not yaml_file.exists():
-            raise FileExistsError
+            raise FileNotFoundError(str(yaml_file.resolve()))
         yaml_ = yaml_file.read_text()
         super().__init__(yaml_)
