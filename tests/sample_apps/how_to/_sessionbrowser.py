@@ -18,10 +18,10 @@ class SessionBrowserTestCase(IntegrationTestCase):
     map_name: str = "map_name"
     max_player: int = 10
     mode: str = "mode"
-    namespace: str = "namespace"
+    namespace: str = "accelbyte"
     num_bot: int = 0
     password: str = "password"
-    session_type: str = "session_type"
+    session_type: str = "p2p"
     username: str = "username"
     models_create_session_request: ModelsCreateSessionRequest = ModelsCreateSessionRequest.create(
         game_session_setting=ModelsGameSessionSetting.create(

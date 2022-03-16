@@ -11,6 +11,7 @@ from accelbyte_py_sdk.api.leaderboard.models import ModelsWeeklyConfig
 
 class LeaderboardTestCase(IntegrationTestCase):
 
+    leaderboard_code: str = ""
     reset_date: int = 1  # Reset Date must be a number 1 - 31. Default is 1.
     reset_day: int = 0  # Sunday
     reset_time: str = "23:59"
@@ -22,7 +23,7 @@ class LeaderboardTestCase(IntegrationTestCase):
         ),
         descending=True,
         icon_url="",
-        leaderboard_code=f"leaderboard",
+        leaderboard_code="",
         monthly=ModelsMonthlyConfig.create(
             reset_date=reset_date,
             reset_time=reset_time
@@ -37,16 +38,21 @@ class LeaderboardTestCase(IntegrationTestCase):
         )
     )
 
+    def init_leaderboard_config(self):
+        self.leaderboard_code = f"leaderboard{str(randint(0, 10_000)).rjust(5, '0')}"
+        self.models_leaderboard_config_req.leaderboard_code = self.leaderboard_code
+
     def tearDown(self) -> None:
         from accelbyte_py_sdk.api.leaderboard import delete_leaderboard_configuration_admin_v1
 
-        _, e = delete_leaderboard_configuration_admin_v1(leaderboard_code=self.models_leaderboard_config_req.leaderboard_code)
+        _, e = delete_leaderboard_configuration_admin_v1(leaderboard_code=self.leaderboard_code)
         super().tearDown()
 
     def test_create_leaderboard_configuration_admin_v1(self):
         from accelbyte_py_sdk.api.leaderboard import create_leaderboard_configuration_admin_v1
 
         # arrange
+        self.init_leaderboard_config()
 
         # act
         _, error = create_leaderboard_configuration_admin_v1(body=self.models_leaderboard_config_req)
@@ -59,6 +65,7 @@ class LeaderboardTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.leaderboard import delete_leaderboard_configuration_admin_v1
 
         # arrange
+        self.init_leaderboard_config()
         _, error = create_leaderboard_configuration_admin_v1(body=self.models_leaderboard_config_req)
         self.assertIsNone(error, error)
 
@@ -73,6 +80,7 @@ class LeaderboardTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.leaderboard import get_leaderboard_configuration_admin_v1
 
         # arrange
+        self.init_leaderboard_config()
         _, error = create_leaderboard_configuration_admin_v1(body=self.models_leaderboard_config_req)
         self.assertIsNone(error, error)
 
@@ -89,6 +97,7 @@ class LeaderboardTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.leaderboard.models import ModelsUpdateLeaderboardConfigReq
 
         # arrange
+        self.init_leaderboard_config()
         _, error = create_leaderboard_configuration_admin_v1(body=self.models_leaderboard_config_req)
         self.assertIsNone(error, error)
 

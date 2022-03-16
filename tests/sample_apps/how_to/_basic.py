@@ -14,13 +14,6 @@ class BasicTestCase(IntegrationTestCase):
         last_name="Last"
     )
 
-    def setUp(self) -> None:
-        from accelbyte_py_sdk.services.auth import login_user
-
-        super().setUp()
-        _, error = login_user(username=self.username, password=self.password)
-        self.assertIsNone(error, error)
-
     def tearDown(self) -> None:
         from accelbyte_py_sdk.api.basic import delete_user_profile
 

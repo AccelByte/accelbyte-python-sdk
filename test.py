@@ -1,7 +1,6 @@
 import logging
-from unittest import TestLoader, TextTestRunner
-
-import tests
+from argparse import ArgumentParser
+from pathlib import Path
 
 
 def set_logger_level(level):
@@ -10,9 +9,60 @@ def set_logger_level(level):
     logging.getLogger(module_name).setLevel(level)
 
 
-if __name__ == "__main__":
+def parse_args():
+    def file_path(value: str) -> str:
+        path = Path(value).resolve()
+        path_str = str(path)
+        if not path.exists():
+            raise FileNotFoundError(path_str)
+        return path_str
 
-    loader = TestLoader()
-    suite = loader.loadTestsFromModule(tests)
-    runner = TextTestRunner()
-    runner.run(suite)
+    def str_to_bool(value: str) -> bool:
+        return value.lower() in ["1", "t", "true", "y", "yes"]
+
+    parser = ArgumentParser()
+
+    parser.add_argument("--test_core", default=True, type=str_to_bool, required=False)
+    parser.add_argument("--test_integration", default=False, type=str_to_bool, required=False)
+    parser.add_argument("--test_all", action="store_true", default=False, required=False)
+
+    parser.add_argument("--dotenv_file", default="tests/sample_apps/how_to.env", type=file_path, required=False)
+
+    result = vars(parser.parse_args())
+
+    if result["test_all"]:
+        for k, v in result.items():
+            if not k.startswith("test_"):
+                continue
+            result[k] = True
+    del result["test_all"]
+
+    return result
+
+
+def main(*args, **kwargs) -> None:
+    import unittest
+
+    loader = unittest.TestLoader()
+
+    try:
+        import tap
+        runner = tap.TAPTestRunner()
+        runner.set_stream(True)
+    except ImportError as e:
+        runner = unittest.TextTestRunner()
+
+    if kwargs.get("test_core", False):
+        import tests.core
+        runner.run(loader.loadTestsFromModule(tests.core))
+
+    if kwargs.get("test_integration", False):
+        import tests.sample_apps.how_to
+        dotenv_file = kwargs.get("dotenv_file", None)
+        if dotenv_file:
+            tests.sample_apps.how_to.DOTENV_FILE = dotenv_file
+        runner.run(loader.loadTestsFromModule(tests.sample_apps.how_to))
+
+
+if __name__ == "__main__":
+    main(**parse_args())

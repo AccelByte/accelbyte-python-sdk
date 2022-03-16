@@ -3,13 +3,6 @@ from ._integration_test_case import IntegrationTestCase
 
 class LegalTestCase(IntegrationTestCase):
 
-    def setUp(self) -> None:
-        from accelbyte_py_sdk.services.auth import login_user
-
-        super().setUp()
-        _, error = login_user(username=self.username, password=self.password)
-        self.assertIsNone(error, error)
-
     def test_bulk_accept_versioned_policy(self):
         from accelbyte_py_sdk.api.legal import bulk_accept_versioned_policy
         from accelbyte_py_sdk.api.legal import retrieve_agreements_public
@@ -61,10 +54,14 @@ class LegalTestCase(IntegrationTestCase):
         self.assertIsNotNone(result)
         self.assertIsInstance(result, list)
         self.assertTrue(result)
-        self.assertIsNotNone(result[0])
+        self.assertTrue(len(result) > 0)
 
-        accepted_agreement: RetrieveAcceptedAgreementResponse = result[0]
-        self.assertIsInstance(accepted_agreement, RetrieveAcceptedAgreementResponse)
+        accepted_agreement: RetrieveAcceptedAgreementResponse = next(
+            (agreement for agreement in result if isinstance(agreement, RetrieveAcceptedAgreementResponse) and agreement.policy_type == "Marketing Preference"),
+            None
+        )
+        if accepted_agreement is None:
+            self.skipTest(reason="No policy with 'Marketing Preference' type found.")
 
         policy_id: str = accepted_agreement.policy_id
         self.assertIsNotNone(policy_id)

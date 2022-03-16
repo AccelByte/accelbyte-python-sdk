@@ -138,17 +138,14 @@ class IAMTestCase(IntegrationTestCase):
         self.assertIsNone(error, error)
 
     def test_logout(self):
-        from accelbyte_py_sdk.core import get_client_auth
-        from accelbyte_py_sdk.services.auth import login_client
+        from accelbyte_py_sdk.core import get_env_user_credentials
+        from accelbyte_py_sdk.services.auth import login_user
         from accelbyte_py_sdk.services.auth import logout
 
         # arrange
-        client_auth, error = get_client_auth()
-        self.assertIsNone(error, error)
+        username, password = get_env_user_credentials()
 
-        client_id, client_secret = client_auth
-
-        _, error = login_client(client_id=client_id, client_secret=client_secret)
+        _, error = login_user(username=username, password=password)
         self.assertIsNone(error, error)
 
         # act

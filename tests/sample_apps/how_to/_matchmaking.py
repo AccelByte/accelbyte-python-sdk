@@ -82,13 +82,6 @@ class MatchmakingTestCase(IntegrationTestCase):
         use_sub_gamemode=False
     )
 
-    def setUp(self) -> None:
-        from accelbyte_py_sdk.services.auth import login_user
-
-        super().setUp()
-        _, error = login_user(username=self.username, password=self.password)
-        self.assertIsNone(error, error)
-
     def tearDown(self) -> None:
         from accelbyte_py_sdk.api.matchmaking import delete_channel_handler
 

@@ -13,14 +13,13 @@ class GDPRTestCase(IntegrationTestCase):
         auth_type="EMAILPASSWD",
         country="US",
         display_name="testPythonServerSDKUser",
-        login_id=f"testPythonServerSDKUser+{str(randint(0, 10_000)).rjust(5, '0')}@test.com",
+        login_id=f"testPythonServerSDKUser{str(randint(0, 10_000)).rjust(5, '0')}@test.com",
         password="q!w@e#r$azsxdcfv"
     )
 
     def setUp(self) -> None:
         from accelbyte_py_sdk.api.iam import create_user
         from accelbyte_py_sdk.api.iam.models import ModelUserCreateResponse
-        from accelbyte_py_sdk.services.auth import login_user
 
         super().setUp()
 
@@ -31,9 +30,6 @@ class GDPRTestCase(IntegrationTestCase):
         self.assertIsNotNone(result.user_id)
 
         self.user_id = result.user_id
-
-        _, error = login_user(username=self.username, password=self.password)
-        self.assertIsNone(error, error)
 
     def tearDown(self) -> None:
         from accelbyte_py_sdk.api.iam import delete_user
@@ -51,9 +47,7 @@ class GDPRTestCase(IntegrationTestCase):
         # arrange
 
         # act
-        _, error = admin_get_user_personal_data_requests(
-            user_id=self.user_id
-        )
+        _, error = admin_get_user_personal_data_requests(user_id=self.user_id)
 
         # assert
         self.assertIsNone(error, error)
@@ -64,9 +58,7 @@ class GDPRTestCase(IntegrationTestCase):
         # arrange
 
         # act
-        _, error = admin_submit_user_account_deletion_request(
-            user_id=self.user_id
-        )
+        _, error = admin_submit_user_account_deletion_request(user_id=self.user_id)
 
         # assert
         self.assertIsNone(error, error)

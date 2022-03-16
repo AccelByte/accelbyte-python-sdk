@@ -9,7 +9,7 @@ class PlatformTestCase(IntegrationTestCase):
 
     store_id: Optional[str] = None
     store_create: StoreCreate = StoreCreate.create(
-        title="TITLE"
+        title="Python Server SDK Store"
     )
 
     def tearDown(self) -> None:
@@ -22,11 +22,20 @@ class PlatformTestCase(IntegrationTestCase):
 
     def test_create_store(self):
         from accelbyte_py_sdk.api.platform import create_store
+        from accelbyte_py_sdk.api.platform import list_stores
+        from accelbyte_py_sdk.api.platform.models import StoreInfo
 
         # arrange
+        result, error = list_stores()
 
         # act
-        _, error = create_store(body=self.store_create)
+        result, error = create_store(body=self.store_create)
+        self.assertIsNone(error, error)
+        self.assertIsNotNone(result)
+        self.assertIsInstance(result, StoreInfo)
+        self.assertIsNotNone(result.store_id)
+
+        self.store_id = result.store_id
 
         # assert
         self.assertIsNone(error, error)

@@ -1,3 +1,5 @@
+DOTENV_FILE = "how_to.env"
+
 from ._achievement import AchievementTestCase
 from ._basic import BasicTestCase
 from ._cloudsave import CloudSaveTestCase

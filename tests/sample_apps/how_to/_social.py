@@ -7,26 +7,25 @@ from accelbyte_py_sdk.api.social.models import StatCreate
 
 class SocialTestCase(IntegrationTestCase):
 
-    stat_code: Optional[str] = None
     stat_create: StatCreate = StatCreate.create(
         default_value=0,
         name="STAT",
-        set_by="server",
-        stat_code="STAT_CODE"
+        set_by="SERVER",
+        stat_code="stat"
     )
 
     def tearDown(self) -> None:
         from accelbyte_py_sdk.api.social import delete_stat
 
-        if self.stat_code is not None:
-            _, e = delete_stat(stat_code=self.stat_code)
-            self.stat_code = None
+        _, _ = delete_stat(stat_code=self.stat_create.stat_code)
         super().tearDown()
 
     def test_create_stat(self):
         from accelbyte_py_sdk.api.social import create_stat
+        from accelbyte_py_sdk.api.social import delete_stat
 
         # arrange
+        _, _ = delete_stat(stat_code=self.stat_create.stat_code)
 
         # act
         _, error = create_stat(body=self.stat_create)
@@ -49,7 +48,7 @@ class SocialTestCase(IntegrationTestCase):
         self.stat_code = result.stat_code
 
         # act
-        _, error = delete_stat(stat_code=self.stat_code)
+        _, error = delete_stat(stat_code=self.stat_create.stat_code)
 
         # assert
         self.assertIsNone(error, error)
@@ -71,7 +70,7 @@ class SocialTestCase(IntegrationTestCase):
         self.stat_code = result.stat_code
 
         # act
-        _, error = get_stat(stat_code=self.stat_code)
+        _, error = get_stat(stat_code=self.stat_create.stat_code)
 
         # assert
         self.assertIsNone(error, error)
@@ -93,7 +92,7 @@ class SocialTestCase(IntegrationTestCase):
 
         # act
         result, error = update_stat(
-            stat_code=self.stat_code,
+            stat_code=self.stat_create.stat_code,
             body=StatUpdate.create(
                 name="KODE_STATUS"
             )

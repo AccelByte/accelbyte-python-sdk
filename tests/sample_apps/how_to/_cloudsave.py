@@ -8,13 +8,6 @@ class CloudSaveTestCase(IntegrationTestCase):
     post_game_record_handler_key: str = "key"
     models_game_record_request: ModelsGameRecordRequest = ModelsGameRecordRequest.create(dict_={"foo": "bar"})
 
-    def setUp(self) -> None:
-        from accelbyte_py_sdk.services.auth import login_user
-
-        super().setUp()
-        _, error = login_user(username=self.username, password=self.password)
-        self.assertIsNone(error, error)
-
     def tearDown(self) -> None:
         from accelbyte_py_sdk.api.cloudsave import delete_game_record_handler_v1
 

@@ -13,7 +13,7 @@ class GroupTestCase(IntegrationTestCase):
 
     group_id: Optional[str] = None
     models_public_create_new_group_request_v1: ModelsPublicCreateNewGroupRequestV1 = ModelsPublicCreateNewGroupRequestV1.create(
-        configuration_code="CODE",
+        configuration_code="initialConfigurationCode",
         custom_attributes={},
         group_description="DESCRIPTION",
         group_icon="",
@@ -28,13 +28,6 @@ class GroupTestCase(IntegrationTestCase):
         ),
         group_type="PRIVATE"
     )
-
-    def setUp(self) -> None:
-        from accelbyte_py_sdk.services.auth import login_user
-
-        super().setUp()
-        _, error = login_user(username=self.username, password=self.password)
-        self.assertIsNone(error, error)
 
     def tearDown(self) -> None:
         from accelbyte_py_sdk.api.group import delete_group_public_v1
@@ -132,4 +125,4 @@ class GroupTestCase(IntegrationTestCase):
         self.assertIsNotNone(result)
         self.assertIsInstance(result, ModelsGroupResponseV1)
         self.assertIsNotNone(result.group_name)
-        self.assertEqual("NAME_GRUP", result.group_name)
+        self.assertEqual("NAMA_GRUP", result.group_name)

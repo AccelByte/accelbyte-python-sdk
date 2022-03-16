@@ -6,13 +6,6 @@ from ._integration_test_case import AsyncIntegrationTestCase
 
 class LobbyTestCase(IntegrationTestCase):
 
-    def setUp(self) -> None:
-        from accelbyte_py_sdk.services.auth import login_user
-
-        super().setUp()
-        _, error = login_user(username=self.username, password=self.password)
-        self.assertIsNone(error, error)
-
     def test_free_form_notification(self):
         from accelbyte_py_sdk.api.lobby import free_form_notification
         from accelbyte_py_sdk.api.lobby.models import ModelFreeFormNotificationRequest
