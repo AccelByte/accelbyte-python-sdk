@@ -7,6 +7,7 @@ from typing import Any, Dict, List, Union
 import jwt
 
 from ...core import get_access_token
+from ...core import get_client_auth
 from ...core import get_client_id
 from ...core import remove_token
 
@@ -195,6 +196,14 @@ def logout(x_additional_headers: Union[None, Dict[str, str]] = None):
     access_token, error = get_access_token()
     if error:
         return None, error
+
+    client_auth, error = get_client_auth()
+    if error:
+        return None, error
+
+    basic_auth = create_basic_authentication(*client_auth)
+    x_additional_headers = x_additional_headers if x_additional_headers is not None else {}
+    x_additional_headers["Authorization"] = basic_auth
 
     _, error = token_revocation_v3(
         token=access_token,
