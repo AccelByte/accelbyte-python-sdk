@@ -65,15 +65,15 @@ pipeline {
         }
       }
     }
-    //stage('Test') {
-    //  stages {
-    //    stage('Unit Tests') {
-    //      steps {
-    //        sh "make test SDK_MOCK_SERVER_PATH=.justice-codegen-sdk-mock-server"
-    //      }
-    //    }
-    //  }
-    //}
+    stage('Test') {
+      stages {
+        stage('Core Tests') {
+          steps {
+            sh "make test_core"
+          }
+        }
+      }
+    }
   }
   post {
     success {
