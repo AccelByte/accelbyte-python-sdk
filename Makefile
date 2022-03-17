@@ -2,6 +2,8 @@
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
+INTEGRATION_TEST_ENV_FILE_PATH ?= $(PWD)/tests/sample_apps/how_to.env
+
 lint:
 	rm -f lint.err
 	docker run -t --rm -v $$(pwd):/data -w /data --entrypoint /bin/sh dhanarab/python-pylint:3.9-2.12.2-2 \
@@ -17,18 +19,16 @@ lint:
 	[ ! -f lint.err ]
 
 test_core:
-	docker run --entrypoint /bin/sh --env PIP_CACHE_DIR=/tmp/pip --rm --tty --user $$(id -u):$$(id -g) --volume $$(pwd):/data --workdir /data python:3.9-slim \
-			-c '(python -m venv /tmp) && \
-				(/tmp/bin/pip install -r requirements.txt) && \
-				(PYTHONPATH=/data:$$PYTHONPATH) && \
-				(/tmp/bin/python test.py --test_core Y)'
+	docker run --rm --tty --user $$(id -u):$$(id -g) --env PIP_CACHE_DIR=/tmp/pip -v $$(pwd):/data -w /data --entrypoint /bin/sh python:3.9-slim \
+			-c 'python -m venv /tmp && \
+				/tmp/bin/pip install -r requirements.txt && \
+				PYTHONPATH=/data:$$PYTHONPATH /tmp/bin/python test.py --test_core Y'
 
 test_integration:
-	docker run --entrypoint /bin/sh --env PIP_CACHE_DIR=/tmp/pip --env-file $$(pwd)/tests/sample_apps/how_to.env --rm --tty --user $$(id -u):$$(id -g) --volume $$(pwd):/data --workdir /data python:3.9-slim \
-			-c '(python -m venv /tmp) && \
-				(/tmp/bin/pip install -r requirements.txt) && \
-				(PYTHONPATH=/data:$$PYTHONPATH) && \
-				(/tmp/bin/python test.py --test_core N --test_integration Y)'
+	docker run --rm --tty --user $$(id -u):$$(id -g) --env PIP_CACHE_DIR=/tmp/pip --env-file $(INTEGRATION_TEST_ENV_FILE_PATH) -v $$(pwd):/data -w /data --entrypoint /bin/sh python:3.9-slim \
+			-c 'python -m venv /tmp && \
+				/tmp/bin/pip install -r requirements.txt && \
+				PYTHONPATH=/data:$$PYTHONPATH /tmp/bin/python test.py --test_core N --test_integration Y'
 
 test_cli:
 	@test -n "$(SDK_MOCK_SERVER_PATH)" || (echo "SDK_MOCK_SERVER_PATH is not set" ; exit 1)
