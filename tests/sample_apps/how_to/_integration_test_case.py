@@ -100,7 +100,6 @@ class IntegrationTestCase(ABC, TestCase):
 
     def setUp(self) -> None:
         self.init_sdk()
-        # self.login_client()
         self.login_user()
 
     def tearDown(self) -> None:
