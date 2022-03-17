@@ -17,7 +17,7 @@ lint:
 	[ ! -f lint.err ]
 
 test_core:
-	docker run --entrypoint /bin/sh --env PIP_CACHE_DIR=/tmp/pip --env-file $$(pwd)/tests/sample_apps/how_to.env --rm --tty --user $$(id -u):$$(id -g) --volume $$(pwd):/data --workdir /data python:3.9-slim \
+	docker run --entrypoint /bin/sh --env PIP_CACHE_DIR=/tmp/pip --rm --tty --user $$(id -u):$$(id -g) --volume $$(pwd):/data --workdir /data python:3.9-slim \
 			-c '(python -m venv /tmp) && \
 				(/tmp/bin/pip install -r requirements.txt) && \
 				(PYTHONPATH=/data:$$PYTHONPATH) && \
