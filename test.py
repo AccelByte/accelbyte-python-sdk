@@ -1,6 +1,7 @@
 import logging
 from argparse import ArgumentParser
 from pathlib import Path
+from typing import Optional
 
 
 def set_logger_level(level):
@@ -10,11 +11,12 @@ def set_logger_level(level):
 
 
 def parse_args():
-    def file_path(value: str) -> str:
+    def file_path(value: str) -> Optional[str]:
         path = Path(value).resolve()
         path_str = str(path)
         if not path.exists():
-            raise FileNotFoundError(path_str)
+            logging.warning(f"FileNotFound: {path_str}")
+            path_str = None
         return path_str
 
     def str_to_bool(value: str) -> bool:
