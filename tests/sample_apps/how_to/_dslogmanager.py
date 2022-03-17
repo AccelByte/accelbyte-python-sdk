@@ -7,57 +7,68 @@ class DSLogManagerTestCase(IntegrationTestCase):
 
     pod_name: Optional[str] = None
 
-    def setUp(self) -> None:
+    # noinspection PyMethodMayBeStatic
+    def pre_fetch_pod_name(self):
+        # pylint: disable=no-self-use
         from accelbyte_py_sdk.api.dsmc import get_all_pod_config
         from accelbyte_py_sdk.api.dsmc.models import ModelsListPodConfigResponse
         from accelbyte_py_sdk.api.dsmc.models import ModelsPodConfigRecord
 
-        super().setUp()
-        result, error = get_all_pod_config(count=10, offset=0)
-        self.assertIsNone(error, error)
-        self.assertIsNotNone(result)
-        self.assertIsInstance(result, ModelsListPodConfigResponse)
-        self.assertTrue(len(result.pod_configs) > 0)
-        self.assertIsNotNone(result.pod_configs[0])
-        pod_config_record = result.pod_configs[0]
-        self.assertIsInstance(pod_config_record, ModelsPodConfigRecord)
-        self.assertIsNotNone(pod_config_record.name)
-        self.pod_name = pod_config_record.name
+        result, error = get_all_pod_config(count=1, offset=0)
+        if error is None and \
+                isinstance(result, ModelsListPodConfigResponse) and \
+                len(result.pod_configs) > 0 and \
+                result.pod_configs[0] is not None and \
+                isinstance(result.pod_configs[0], ModelsPodConfigRecord) and \
+                result.pod_configs[0].name is not None:
+            return result.pod_configs[0].name
+        else:
+            return None
 
-    def test_check_server_logs(self):
-        from accelbyte_py_sdk.api.dslogmanager import check_server_logs
+    # noinspection PyMethodMayBeStatic
+    def pre_fetch_terminated_servers(self):
+        # pylint: disable=no-self-use
         from accelbyte_py_sdk.api.dslogmanager import list_terminated_servers
         from accelbyte_py_sdk.api.dslogmanager.models import ModelsListTerminatedServersResponse
 
+        result, error = list_terminated_servers(limit=1)
+        if error is not None and \
+                isinstance(result, ModelsListTerminatedServersResponse) and \
+                len(result.data) > 0:
+            return result.data
+        else:
+            return []
+
+    def test_check_server_logs(self):
+        from accelbyte_py_sdk.api.dslogmanager import check_server_logs
+
         # arrange
-        result, error = list_terminated_servers(limit=20)
-        self.assertIsNone(error, error)
-        self.assertIsInstance(result, ModelsListTerminatedServersResponse)
+        pod_name = self.pre_fetch_pod_name()
+        if not pod_name:
+            self.skipTest(reason="Can't get a pod name to use.")
+
+        if not self.pre_fetch_terminated_servers():
+            self.skipTest(reason="No terminated servers to use.")
 
         # act
-        if result.data:
-            _, error = check_server_logs(pod_name=self.pod_name)
-        else:
-            self.skipTest(reason="No terminated servers to use.")
+        _, error = check_server_logs(pod_name=self.pod_name)
 
         # assert
         self.assertIsNone(error, error)
 
     def test_download_server_logs(self):
         from accelbyte_py_sdk.api.dslogmanager import download_server_logs
-        from accelbyte_py_sdk.api.dslogmanager import list_terminated_servers
-        from accelbyte_py_sdk.api.dslogmanager.models import ModelsListTerminatedServersResponse
 
         # arrange
-        result, error = list_terminated_servers(limit=20)
-        self.assertIsNone(error, error)
-        self.assertIsInstance(result, ModelsListTerminatedServersResponse)
+        pod_name = self.pre_fetch_pod_name()
+        if not pod_name:
+            self.skipTest(reason="Can't get a pod name to use.")
+
+        if not self.pre_fetch_terminated_servers():
+            self.skipTest(reason="No terminated servers to use.")
 
         # act
-        if result.data:
-            _, error = download_server_logs(pod_name=self.pod_name)
-        else:
-            self.skipTest(reason="No terminated servers to use.")
+        _, error = download_server_logs(pod_name=self.pod_name)
 
         # assert
         self.assertIsNone(error, error)

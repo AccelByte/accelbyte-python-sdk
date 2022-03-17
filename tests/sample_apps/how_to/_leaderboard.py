@@ -45,7 +45,8 @@ class LeaderboardTestCase(IntegrationTestCase):
     def tearDown(self) -> None:
         from accelbyte_py_sdk.api.leaderboard import delete_leaderboard_configuration_admin_v1
 
-        _, e = delete_leaderboard_configuration_admin_v1(leaderboard_code=self.leaderboard_code)
+        _, error = delete_leaderboard_configuration_admin_v1(leaderboard_code=self.leaderboard_code)
+        self.log_warning(msg=f"Failed to tear down leaderboard. {str(error)}", condition=error is not None)
         super().tearDown()
 
     def test_create_leaderboard_configuration_admin_v1(self):

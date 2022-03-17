@@ -8,86 +8,91 @@ from accelbyte_py_sdk.api.dsmc.models import ModelsRequestMatchMember
 from accelbyte_py_sdk.api.dsmc.models import ModelsRequestMatchParty
 from accelbyte_py_sdk.api.dsmc.models import ModelsRequestMatchingAlly
 
-from accelbyte_py_sdk.api.sessionbrowser import create_session as sb_create_session
-from accelbyte_py_sdk.api.sessionbrowser import delete_session as sb_delete_session
-from accelbyte_py_sdk.api.sessionbrowser.models import ModelsCreateSessionRequest as SBModelsCreateSessionRequest
-from accelbyte_py_sdk.api.sessionbrowser.models import ModelsGameSessionSetting as SBModelsGameSessionSetting
-from accelbyte_py_sdk.api.sessionbrowser.models import ModelsSessionResponse as SBModelsSessionResponse
-
 
 class DSMCTestCase(IntegrationTestCase):
 
+    session_id: Optional[str] = None
+    deployment: str = "deployruli"
+    game_mode: str = "soloyogs"
+    session_namespace: str = "armadademotestqa"
+    session_party_id = "PARTY_ID"
+    session_user_id = "USER_ID"
     models_create_session_request: Optional[ModelsCreateSessionRequest] = ModelsCreateSessionRequest.create(
         client_version="",
         configuration="",
-        deployment="deployruli",
-        game_mode="soloyogs",
+        deployment=deployment,
+        game_mode=game_mode,
         matching_allies=[
             ModelsRequestMatchingAlly.create(
                 matching_parties=[
                     ModelsRequestMatchParty.create(
                         party_attributes={},
-                        party_id="PARTY_ID",
-                        party_members=[ModelsRequestMatchMember.create(user_id="USER_ID")]
+                        party_id=session_party_id,
+                        party_members=[ModelsRequestMatchMember.create(user_id=session_user_id)]
                     )
                 ]
             )
         ],
-        namespace="armadademotestqa",
+        namespace=session_namespace,
         pod_name="",
         region="",
         session_id=""
     )
 
-    session_id: Optional[str] = None
+    # noinspection PyMethodMayBeStatic
+    def do_session_browser_create_session(self):
+        # pylint: disable=no-self-use
+        from accelbyte_py_sdk.api.sessionbrowser import create_session
+        from accelbyte_py_sdk.api.sessionbrowser.models import ModelsCreateSessionRequest
+        from accelbyte_py_sdk.api.sessionbrowser.models import ModelsGameSessionSetting
 
-    allow_join_in_progress: bool = False
-    current_player: int = 0
-    game_version: str = "0.1.0"
-    map_name: str = "map_name"
-    max_player: int = 10
-    mode: str = "mode"
-    namespace: str = "accelbyte"
-    num_bot: int = 0
-    password: str = "password"
-    session_type: str = "p2p"
-    username: str = "username"
-    sb_models_create_session_request: SBModelsCreateSessionRequest = SBModelsCreateSessionRequest.create(
-        game_session_setting=SBModelsGameSessionSetting.create(
-            allow_join_in_progress=allow_join_in_progress,
-            current_internal_player=current_player,
-            current_player=current_player,
-            map_name=map_name,
-            max_internal_player=max_player,
-            max_player=max_player,
-            mode=mode,
-            num_bot=num_bot,
-            password=password,
-            settings={}
-        ),
-        game_version=game_version,
-        namespace=namespace,
-        session_type=session_type,
-        username=username
-    )
+        current_player: int = 0
+        max_player: int = 10
+        models_create_session_request = ModelsCreateSessionRequest.create(
+            game_session_setting=ModelsGameSessionSetting.create(
+                allow_join_in_progress=False,
+                current_internal_player=current_player,
+                current_player=current_player,
+                map_name="map_name",
+                max_internal_player=max_player,
+                max_player=max_player,
+                mode="mode",
+                num_bot=0,
+                password="password",
+                settings={}
+            ),
+            game_version="0.1.0",
+            namespace="accelbyte",
+            session_type="p2p",
+            username="username"
+        )
+
+        result, error = create_session(body=models_create_session_request)
+
+        if error is None:
+            session_id = result.session_id
+        else:
+            session_id = None
+
+        return result, error, session_id
 
     def setUp(self) -> None:
         super().setUp()
-        result, error = sb_create_session(body=self.sb_models_create_session_request)
-        self.assertIsNone(error, error)
-        self.assertIsNotNone(result)
-        self.assertIsInstance(result, SBModelsSessionResponse)
-        self.assertIsNotNone(result.session_id)
-
-        self.session_id = result.session_id
+        _, error, session_id = self.do_session_browser_create_session()
+        if error is not None:
+            self.skipTest(reason=f"Failed to set up SessionBrowser session. {str(error)}")
+        self.session_id = session_id
         self.models_create_session_request.session_id = self.session_id
 
     def tearDown(self) -> None:
-        from accelbyte_py_sdk.api.dsmc import delete_session
+        from accelbyte_py_sdk.api.dsmc import delete_session as dsmc_delete_session
+        from accelbyte_py_sdk.api.sessionbrowser import delete_session as sb_delete_session
 
-        _, e = delete_session(session_id=self.models_create_session_request.session_id)
         if self.session_id is not None:
-            _, _ = sb_delete_session(session_id=self.session_id)
+            _, error = dsmc_delete_session(session_id=self.session_id)
+            self.log_warning(msg=f"Failed to tear down DSMC session. {str(error)}", condition=error is not None)
+            _, error = sb_delete_session(session_id=self.session_id)
+            self.log_warning(msg=f"Failed to tear down SessionBrowser session. {str(error)}", condition=error is not None)
             self.session_id = None
         super().tearDown()
 
@@ -101,7 +106,7 @@ class DSMCTestCase(IntegrationTestCase):
             body=self.models_create_session_request,
             namespace=self.models_create_session_request.namespace
         )
-        self.assertIsNone(error, error)
+        self.log_warning(msg=f"Failed to set up DSMC session. {str(error)}", condition=error is not None)
 
         time.sleep(5)
 
@@ -117,8 +122,11 @@ class DSMCTestCase(IntegrationTestCase):
 
     def test_create_session(self):
         from accelbyte_py_sdk.api.dsmc import create_session
+        from accelbyte_py_sdk.api.dsmc import delete_session
 
         # arrange
+        if self.session_id is not None:
+            _, _ = delete_session(session_id=self.session_id)
 
         # act
         _, error = create_session(
@@ -138,7 +146,7 @@ class DSMCTestCase(IntegrationTestCase):
             body=self.models_create_session_request,
             namespace=self.models_create_session_request.namespace
         )
-        self.assertIsNone(error, error)
+        self.log_warning(msg=f"Failed to set up DSMC session. {str(error)}", condition=error is not None)
 
         # act
         _, error = get_session(session_id=self.models_create_session_request.session_id)

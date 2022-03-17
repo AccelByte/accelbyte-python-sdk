@@ -11,12 +11,12 @@ class CloudSaveTestCase(IntegrationTestCase):
     def tearDown(self) -> None:
         from accelbyte_py_sdk.api.cloudsave import delete_game_record_handler_v1
 
-        _, _ = delete_game_record_handler_v1(key=self.post_game_record_handler_key)
+        _, error = delete_game_record_handler_v1(key=self.post_game_record_handler_key)
+        self.log_warning(msg=f"Failed to tear down game record handler. {str(error)}", condition=error is not None)
         super().tearDown()
 
     def test_delete_game_record_handler_v1(self):
         from accelbyte_py_sdk.api.cloudsave import delete_game_record_handler_v1
-        from accelbyte_py_sdk.api.cloudsave import get_game_record_handler_v1
         from accelbyte_py_sdk.api.cloudsave import post_game_record_handler_v1
 
         # arrange
@@ -24,16 +24,13 @@ class CloudSaveTestCase(IntegrationTestCase):
             body=self.models_game_record_request,
             key=self.post_game_record_handler_key
         )
-        self.assertIsNone(error, error)
+        self.log_warning(msg=f"Failed to set up game record handler. {str(error)}", condition=error is not None)
 
         # act
         _, error = delete_game_record_handler_v1(key=self.post_game_record_handler_key)
 
         # assert
         self.assertIsNone(error, error)
-
-        _, error = get_game_record_handler_v1(key=self.post_game_record_handler_key)
-        self.assertIsNotNone(error)
 
     def test_get_game_record_handler_v1(self):
         from accelbyte_py_sdk.api.cloudsave import get_game_record_handler_v1
@@ -44,7 +41,7 @@ class CloudSaveTestCase(IntegrationTestCase):
             body=self.models_game_record_request,
             key=self.post_game_record_handler_key
         )
-        self.assertIsNone(error, error)
+        self.log_warning(msg=f"Failed to set up game record handler. {str(error)}", condition=error is not None)
 
         # act
         _, error = get_game_record_handler_v1(key=self.post_game_record_handler_key)
@@ -53,9 +50,11 @@ class CloudSaveTestCase(IntegrationTestCase):
         self.assertIsNone(error, error)
 
     def test_post_game_record_handler_v1(self):
+        from accelbyte_py_sdk.api.cloudsave import delete_game_record_handler_v1
         from accelbyte_py_sdk.api.cloudsave import post_game_record_handler_v1
 
         # arrange
+        _, _ = delete_game_record_handler_v1(key=self.post_game_record_handler_key)
 
         # act
         _, error = post_game_record_handler_v1(
@@ -77,7 +76,7 @@ class CloudSaveTestCase(IntegrationTestCase):
             body=self.models_game_record_request,
             key=self.post_game_record_handler_key
         )
-        self.assertIsNone(error, error)
+        self.log_warning(msg=f"Failed to set up game record handler. {str(error)}", condition=error is not None)
 
         # act
         _, error = put_game_record_handler_v1(

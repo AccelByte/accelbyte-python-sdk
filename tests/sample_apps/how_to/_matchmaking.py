@@ -90,8 +90,10 @@ class MatchmakingTestCase(IntegrationTestCase):
 
     def test_create_channel_handler(self):
         from accelbyte_py_sdk.api.matchmaking import create_channel_handler
+        from accelbyte_py_sdk.api.matchmaking import delete_channel_handler
 
         # arrange
+        _, _ = delete_channel_handler(channel=self.models_channel_request.game_mode)
 
         # act
         _, error = create_channel_handler(body=self.models_channel_request)
@@ -105,7 +107,7 @@ class MatchmakingTestCase(IntegrationTestCase):
 
         # arrange
         _, error = create_channel_handler(body=self.models_channel_request)
-        self.assertIsNone(error, error)
+        self.log_warning(msg=f"Failed to set up channel handler. {str(error)}", condition=error is not None)
 
         # act
         _, error = delete_channel_handler(channel=self.models_channel_request.game_mode)
@@ -119,7 +121,7 @@ class MatchmakingTestCase(IntegrationTestCase):
 
         # arrange
         _, error = create_channel_handler(body=self.models_channel_request)
-        self.assertIsNone(error, error)
+        self.log_warning(msg=f"Failed to set up channel handler. {str(error)}", condition=error is not None)
 
         # act
         _, error = get_single_matchmaking_channel(channel_name=self.models_channel_request.game_mode)
@@ -136,7 +138,7 @@ class MatchmakingTestCase(IntegrationTestCase):
 
         # arrange
         _, error = create_channel_handler(body=self.models_channel_request)
-        self.assertIsNone(error, error)
+        self.log_warning(msg=f"Failed to set up channel handler. {str(error)}", condition=error is not None)
 
         # act
         _, error = update_matchmaking_channel(

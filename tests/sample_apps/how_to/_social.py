@@ -1,5 +1,3 @@
-from typing import Optional
-
 from ._integration_test_case import IntegrationTestCase
 
 from accelbyte_py_sdk.api.social.models import StatCreate
@@ -7,6 +5,7 @@ from accelbyte_py_sdk.api.social.models import StatCreate
 
 class SocialTestCase(IntegrationTestCase):
 
+    exist: bool = False
     stat_create: StatCreate = StatCreate.create(
         default_value=0,
         name="STAT",
@@ -17,7 +16,10 @@ class SocialTestCase(IntegrationTestCase):
     def tearDown(self) -> None:
         from accelbyte_py_sdk.api.social import delete_stat
 
-        _, _ = delete_stat(stat_code=self.stat_create.stat_code)
+        if self.exist:
+            _, error = delete_stat(stat_code=self.stat_create.stat_code)
+            self.log_warning(msg=f"Failed to tear down stat. {str(error)}", condition=error is not None)
+            self.exist = error is not None
         super().tearDown()
 
     def test_create_stat(self):
@@ -25,10 +27,12 @@ class SocialTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.social import delete_stat
 
         # arrange
-        _, _ = delete_stat(stat_code=self.stat_create.stat_code)
+        _, error = delete_stat(stat_code=self.stat_create.stat_code)
+        self.exist = error is not None
 
         # act
         _, error = create_stat(body=self.stat_create)
+        self.exist = error is None
 
         # assert
         self.assertIsNone(error, error)
@@ -36,38 +40,27 @@ class SocialTestCase(IntegrationTestCase):
     def test_delete_stat(self):
         from accelbyte_py_sdk.api.social import create_stat
         from accelbyte_py_sdk.api.social import delete_stat
-        from accelbyte_py_sdk.api.social.models import StatInfo
 
         # arrange
-        result, error = create_stat(body=self.stat_create)
-        self.assertIsNone(error, error)
-        self.assertIsNotNone(result)
-        self.assertIsInstance(result, StatInfo)
-        self.assertIsNotNone(result.stat_code)
-
-        self.stat_code = result.stat_code
+        _, error = create_stat(body=self.stat_create)
+        self.log_warning(msg=f"Failed to set up stat. {str(error)}", condition=error is not None)
+        self.exist = error is None
 
         # act
         _, error = delete_stat(stat_code=self.stat_create.stat_code)
+        self.exist = error is not None
 
         # assert
         self.assertIsNone(error, error)
 
-        self.stat_code = None
-
     def test_get_stat(self):
         from accelbyte_py_sdk.api.social import create_stat
         from accelbyte_py_sdk.api.social import get_stat
-        from accelbyte_py_sdk.api.social.models import StatInfo
 
         # arrange
-        result, error = create_stat(body=self.stat_create)
-        self.assertIsNone(error, error)
-        self.assertIsNotNone(result)
-        self.assertIsInstance(result, StatInfo)
-        self.assertIsNotNone(result.stat_code)
-
-        self.stat_code = result.stat_code
+        _, error = create_stat(body=self.stat_create)
+        self.log_warning(msg=f"Failed to set up stat. {str(error)}", condition=error is not None)
+        self.exist = error is None
 
         # act
         _, error = get_stat(stat_code=self.stat_create.stat_code)
@@ -82,13 +75,9 @@ class SocialTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.social.models import StatUpdate
 
         # arrange
-        result, error = create_stat(body=self.stat_create)
-        self.assertIsNone(error, error)
-        self.assertIsNotNone(result)
-        self.assertIsInstance(result, StatInfo)
-        self.assertIsNotNone(result.stat_code)
-
-        self.stat_code = result.stat_code
+        _, error = create_stat(body=self.stat_create)
+        self.log_warning(msg=f"Failed to set up stat. {str(error)}", condition=error is not None)
+        self.exist = error is None
 
         # act
         result, error = update_stat(

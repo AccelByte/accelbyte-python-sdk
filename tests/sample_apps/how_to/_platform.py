@@ -14,6 +14,22 @@ class PlatformTestCase(IntegrationTestCase):
         title="Python Server SDK Store"
     )
 
+    # noinspection PyMethodMayBeStatic
+    def do_create_store(self, body: Optional[StoreCreate]):
+        # pylint: disable=no-self-use
+        from accelbyte_py_sdk.api.platform import create_store
+
+        result, error = create_store(body=body)
+
+        store_id: Optional[str] = None
+
+        if error is None:
+            store_id = result.store_id
+        else:
+            store_id = None
+
+        return result, error, store_id
+
     @classmethod
     def setUpClass(cls) -> None:
         from accelbyte_py_sdk import initialize
@@ -47,63 +63,44 @@ class PlatformTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.platform import delete_store
 
         if self.store_id is not None:
-            _, e = delete_store(store_id=self.store_id)
+            _, error = delete_store(store_id=self.store_id)
+            self.log_warning(msg=f"Failed to tear down store. {str(error)}", condition=error is not None)
             self.store_id = None
         super().tearDown()
 
     def test_create_store(self):
-        from accelbyte_py_sdk.api.platform import create_store
-        from accelbyte_py_sdk.api.platform.models import StoreInfo
-
         # arrange
+        # NOTE(elmer): can't delete, need store id
 
         # act
-        result, error = create_store(body=self.store_create)
-        self.assertIsNone(error, error)
-        self.assertIsNotNone(result)
-        self.assertIsInstance(result, StoreInfo)
-        self.assertIsNotNone(result.store_id)
-
-        self.store_id = result.store_id
+        _, error, store_id = self.do_create_store(body=self.store_create)
+        self.store_id = store_id
 
         # assert
         self.assertIsNone(error, error)
 
     def test_delete_store(self):
-        from accelbyte_py_sdk.api.platform import create_store
         from accelbyte_py_sdk.api.platform import delete_store
-        from accelbyte_py_sdk.api.platform.models import StoreInfo
 
         # arrange
-        result, error = create_store(body=self.store_create)
-        self.assertIsNone(error, error)
-        self.assertIsNotNone(result)
-        self.assertIsInstance(result, StoreInfo)
-        self.assertIsNotNone(result.store_id)
-
-        self.store_id = result.store_id
+        _, error, store_id = self.do_create_store(body=self.store_create)
+        self.log_warning(msg=f"Failed to set up store. {str(error)}", condition=error is not None)
+        self.store_id = store_id
 
         # act
         _, error = delete_store(store_id=self.store_id)
 
         # assert
         self.assertIsNone(error, error)
-
         self.store_id = None
 
     def test_get_store(self):
-        from accelbyte_py_sdk.api.platform import create_store
         from accelbyte_py_sdk.api.platform import get_store
-        from accelbyte_py_sdk.api.platform.models import StoreInfo
 
         # arrange
-        result, error = create_store(body=self.store_create)
-        self.assertIsNone(error, error)
-        self.assertIsNotNone(result)
-        self.assertIsInstance(result, StoreInfo)
-        self.assertIsNotNone(result.store_id)
-
-        self.store_id = result.store_id
+        _, error, store_id = self.do_create_store(body=self.store_create)
+        self.log_warning(msg=f"Failed to set up store. {str(error)}", condition=error is not None)
+        self.store_id = store_id
 
         # act
         _, error = get_store(store_id=self.store_id)
@@ -112,19 +109,14 @@ class PlatformTestCase(IntegrationTestCase):
         self.assertIsNone(error, error)
 
     def test_update_store(self):
-        from accelbyte_py_sdk.api.platform import create_store
         from accelbyte_py_sdk.api.platform import update_store
         from accelbyte_py_sdk.api.platform.models import StoreInfo
         from accelbyte_py_sdk.api.platform.models import StoreUpdate
 
         # arrange
-        result, error = create_store(body=self.store_create)
-        self.assertIsNone(error, error)
-        self.assertIsNotNone(result)
-        self.assertIsInstance(result, StoreInfo)
-        self.assertIsNotNone(result.store_id)
-
-        self.store_id = result.store_id
+        _, error, store_id = self.do_create_store(body=self.store_create)
+        self.log_warning(msg=f"Failed to set up store. {str(error)}", condition=error is not None)
+        self.store_id = store_id
 
         # act
         result, error = update_store(

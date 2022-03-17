@@ -2,7 +2,6 @@ from typing import Optional
 
 from ._integration_test_case import IntegrationTestCase
 
-from accelbyte_py_sdk.api.sessionbrowser import create_session
 from accelbyte_py_sdk.api.sessionbrowser.models import ModelsCreateSessionRequest
 from accelbyte_py_sdk.api.sessionbrowser.models import ModelsGameSessionSetting
 from accelbyte_py_sdk.api.sessionbrowser.models import ModelsSessionResponse
@@ -42,59 +41,64 @@ class SessionBrowserTestCase(IntegrationTestCase):
         username=username
     )
 
+    # noinspection PyMethodMayBeStatic
+    def do_create_session(self, body: ModelsCreateSessionRequest = None):
+        # pylint: disable=no-self-use
+        from accelbyte_py_sdk.api.sessionbrowser import create_session
+
+        result, error = create_session(body=body)
+
+        session_id: Optional[str] = None
+
+        if error is None:
+            session_id = result.session_id
+        else:
+            session_id = None
+
+        return result, error, session_id
+
     def tearDown(self) -> None:
         from accelbyte_py_sdk.api.sessionbrowser import delete_session
 
         if self.session_id is not None:
-            _, _ = delete_session(session_id=self.session_id)
+            _, error = delete_session(session_id=self.session_id)
+            self.log_warning(msg=f"Failed to tear down session. {str(error)}", condition=error is not None)
             self.session_id = None
         super().tearDown()
 
     def test_create_session(self):
         # arrange
+        # NOTE(elmer): can't delete, need session id
 
         # act
-        result, error = create_session(body=self.models_create_session_request)
+        _, error, session_id = self.do_create_session(body=self.models_create_session_request)
+        self.session_id = session_id
 
         # assert
         self.assertIsNone(error, error)
-        self.assertIsNotNone(result)
-        self.assertIsInstance(result, ModelsSessionResponse)
-        self.assertIsNotNone(result.session_id)
-
-        self.session_id = result.session_id
 
     def test_delete_session(self):
         from accelbyte_py_sdk.api.sessionbrowser import delete_session
 
         # arrange
-        result, error = create_session(body=self.models_create_session_request)
-        self.assertIsNone(error, error)
-        self.assertIsNotNone(result)
-        self.assertIsInstance(result, ModelsSessionResponse)
-        self.assertIsNotNone(result.session_id)
-
-        self.session_id = result.session_id
+        _, error, session_id = self.do_create_session(body=self.models_create_session_request)
+        self.log_warning(msg=f"Failed to set up session. {str(error)}", condition=error is not None)
+        self.session_id = session_id
 
         # act
         _, error = delete_session(session_id=self.session_id)
 
         # assert
         self.assertIsNone(error, error)
-
         self.session_id = None
 
     def test_get_session(self):
         from accelbyte_py_sdk.api.sessionbrowser import get_session
 
         # arrange
-        result, error = create_session(body=self.models_create_session_request)
-        self.assertIsNone(error, error)
-        self.assertIsNotNone(result)
-        self.assertIsInstance(result, ModelsSessionResponse)
-        self.assertIsNotNone(result.session_id)
-
-        self.session_id = result.session_id
+        _, error, session_id = self.do_create_session(body=self.models_create_session_request)
+        self.log_warning(msg=f"Failed to set up session. {str(error)}", condition=error is not None)
+        self.session_id = session_id
 
         # act
         _, error = get_session(session_id=self.session_id)
@@ -107,13 +111,9 @@ class SessionBrowserTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.sessionbrowser.models import ModelsUpdateSessionRequest
 
         # arrange
-        result, error = create_session(body=self.models_create_session_request)
-        self.assertIsNone(error, error)
-        self.assertIsNotNone(result)
-        self.assertIsInstance(result, ModelsSessionResponse)
-        self.assertIsNotNone(result.session_id)
-
-        self.session_id = result.session_id
+        _, error, session_id = self.do_create_session(body=self.models_create_session_request)
+        self.log_warning(msg=f"Failed to set up session. {str(error)}", condition=error is not None)
+        self.session_id = session_id
 
         # act
         result, error = update_session(

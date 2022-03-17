@@ -46,6 +46,7 @@ class IntegrationTestCase(ABC, TestCase):
     def init_sdk(self):
         from accelbyte_py_sdk import initialize
         from accelbyte_py_sdk import is_initialized
+        from accelbyte_py_sdk.core import get_client_id
         from accelbyte_py_sdk.core import get_env_user_credentials
         from accelbyte_py_sdk.core import get_http_client
 
@@ -53,6 +54,8 @@ class IntegrationTestCase(ABC, TestCase):
         self.assertFalse(is_initialized(), msg="AccelByte Python SDK is already initialized.")
         initialize(options=get_init_options())
         self.assertTrue(is_initialized(), msg="AccelByte Python SDK is not initialized.")
+        client_id, error = get_client_id()
+        self.assertIsNone(error, msg=f"Client ID not found. {str(error)}")
 
         # setup http log formatter
         http_client = get_http_client()
@@ -61,6 +64,7 @@ class IntegrationTestCase(ABC, TestCase):
 
         # get values from env
         self.username, self.password = get_env_user_credentials()
+        self.assertTrue(self.username, msg="User not found.")
 
     # noinspection PyMethodMayBeStatic
     def reset_sdk(self):
@@ -71,32 +75,34 @@ class IntegrationTestCase(ABC, TestCase):
         from accelbyte_py_sdk.services.auth import login_client
 
         _, error = login_client()
-        self.assertIsNone(error, error)
+        self.assertIsNone(error, msg=f"Failed to log in the client. {str(error)}")
 
     def login_user(self):
         from accelbyte_py_sdk.services.auth import login_user
 
         _, error = login_user(username=self.username, password=self.password)
-        self.assertIsNone(error, error)
+        self.assertIsNone(error, msg=f"Failed to log in the user. {str(error)}")
 
-    def log(self, msg: object, level: Optional[int] = None):
+    def log(self, msg: object, level: Optional[int] = None, condition: Optional[bool] = None):
+        if condition is not None and condition is False:
+            return
         level = level if level is not None else logging.INFO
         self.logger.log(level=level, msg=msg)
 
-    def log_critical(self, msg: object, level: Optional[int] = None):
-        self.log(msg=msg, level=logging.CRITICAL)
+    def log_critical(self, msg: object, level: Optional[int] = None, condition: Optional[bool] = None):
+        self.log(msg=msg, level=logging.CRITICAL, condition=condition)
 
-    def log_debug(self, msg: object, level: Optional[int] = None):
-        self.log(msg=msg, level=logging.DEBUG)
+    def log_debug(self, msg: object, level: Optional[int] = None, condition: Optional[bool] = None):
+        self.log(msg=msg, level=logging.DEBUG, condition=condition)
 
-    def log_error(self, msg: object, level: Optional[int] = None):
-        self.log(msg=msg, level=logging.ERROR)
+    def log_error(self, msg: object, level: Optional[int] = None, condition: Optional[bool] = None):
+        self.log(msg=msg, level=logging.ERROR, condition=condition)
 
-    def log_info(self, msg: object, level: Optional[int] = None):
-        self.log(msg=msg, level=logging.INFO)
+    def log_info(self, msg: object, level: Optional[int] = None, condition: Optional[bool] = None):
+        self.log(msg=msg, level=logging.INFO, condition=condition)
 
-    def log_warning(self, msg: object, level: Optional[int] = None):
-        self.log(msg=msg, level=logging.WARNING)
+    def log_warning(self, msg: object, level: Optional[int] = None, condition: Optional[bool] = None):
+        self.log(msg=msg, level=logging.WARNING, condition=condition)
 
     def setUp(self) -> None:
         self.init_sdk()
@@ -118,13 +124,16 @@ class AsyncIntegrationTestCase(ABC, IsolatedAsyncioTestCase):
     def init_sdk(self):
         from accelbyte_py_sdk import initialize
         from accelbyte_py_sdk import is_initialized
+        from accelbyte_py_sdk.core import get_client_id
         from accelbyte_py_sdk.core import get_env_user_credentials
         from accelbyte_py_sdk.core import get_http_client
 
         # initialize
-        self.assertFalse(is_initialized())
+        self.assertFalse(is_initialized(), msg="AccelByte Python SDK is already initialized.")
         initialize(options=get_init_options())
-        self.assertTrue(is_initialized())
+        self.assertTrue(is_initialized(), msg="AccelByte Python SDK is not initialized.")
+        client_id, error = get_client_id()
+        self.assertIsNone(error, msg=f"Client ID not found. {str(error)}")
 
         # setup http log formatter
         http_client = get_http_client()
@@ -133,6 +142,7 @@ class AsyncIntegrationTestCase(ABC, IsolatedAsyncioTestCase):
 
         # get values from env
         self.username, self.password = get_env_user_credentials()
+        self.assertTrue(self.username, msg="User not found.")
 
     # noinspection PyMethodMayBeStatic
     def reset_sdk(self):
@@ -143,13 +153,13 @@ class AsyncIntegrationTestCase(ABC, IsolatedAsyncioTestCase):
         from accelbyte_py_sdk.services.auth import login_client
 
         _, error = login_client()
-        self.assertIsNone(error, error)
+        self.assertIsNone(error, msg=f"Failed to log in the client. {str(error)}")
 
     def login_user(self):
         from accelbyte_py_sdk.services.auth import login_user
 
         _, error = login_user(username=self.username, password=self.password)
-        self.assertIsNone(error, error)
+        self.assertIsNone(error, msg=f"Failed to log in the user. {str(error)}")
 
     def log(self, msg: object, level: Optional[int] = None):
         level = level if level is not None else logging.INFO
@@ -180,10 +190,10 @@ class AsyncIntegrationTestCase(ABC, IsolatedAsyncioTestCase):
         self.login_user()
 
         base_url, error = get_base_url()
-        self.assertIsNone(error, error)
+        self.assertIsNone(error, msg=f"Failed to get the base url. {str(error)}")
 
         access_token, error = get_access_token()
-        self.assertIsNone(error, error)
+        self.assertIsNone(error, msg=f"Failed to get the access token. {str(error)}")
 
         self.ws_client = WebsocketsWSClient(
             uri=base_url,
