@@ -11,6 +11,7 @@ from accelbyte_py_sdk.api.group.models import ModelsGroupResponseV1
 
 class GroupTestCase(IntegrationTestCase):
 
+    group_namespace: str = "accelbyte"
     group_id: Optional[str] = None
     models_public_create_new_group_request_v1: ModelsPublicCreateNewGroupRequestV1 = ModelsPublicCreateNewGroupRequestV1.create(
         configuration_code="initialConfigurationCode",
@@ -30,11 +31,14 @@ class GroupTestCase(IntegrationTestCase):
     )
 
     # noinspection PyMethodMayBeStatic
-    def do_create_new_group_public_v1(self, body: ModelsPublicCreateNewGroupRequestV1):
+    def do_create_new_group_public_v1(self, body: ModelsPublicCreateNewGroupRequestV1, namespace: Optional[str] = None):
         # pylint: disable=no-self-use
         from accelbyte_py_sdk.api.group import create_new_group_public_v1
 
-        result, error = create_new_group_public_v1(body=self.models_public_create_new_group_request_v1)
+        result, error = create_new_group_public_v1(
+            body=self.models_public_create_new_group_request_v1,
+            namespace=namespace
+        )
 
         group_id: Optional[str] = None
 
@@ -49,7 +53,7 @@ class GroupTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.group import delete_group_public_v1
 
         if self.group_id is not None:
-            _, error = delete_group_public_v1(group_id=self.group_id)
+            _, error = delete_group_public_v1(group_id=self.group_id, namespace=self.group_namespace)
             self.log_warning(msg=f"Failed to tear down group. {str(error)}", condition=error is not None)
         super().tearDown()
 
@@ -58,7 +62,7 @@ class GroupTestCase(IntegrationTestCase):
         # NOTE(elmer): can't delete, need group id
 
         # act
-        _, error, group_id = self.do_create_new_group_public_v1(body=self.models_public_create_new_group_request_v1)
+        _, error, group_id = self.do_create_new_group_public_v1(body=self.models_public_create_new_group_request_v1, namespace=self.group_namespace)
         self.group_id = group_id
 
         # assert
@@ -68,12 +72,12 @@ class GroupTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.group import delete_group_public_v1
 
         # arrange
-        _, error, group_id = self.do_create_new_group_public_v1(body=self.models_public_create_new_group_request_v1)
+        _, error, group_id = self.do_create_new_group_public_v1(body=self.models_public_create_new_group_request_v1, namespace=self.group_namespace)
         self.log_warning(msg=f"Failed to set up group. {str(error)}", condition=error is not None)
         self.group_id = group_id
 
         # act
-        _, error = delete_group_public_v1(group_id=self.group_id)
+        _, error = delete_group_public_v1(group_id=self.group_id, namespace=self.group_namespace)
 
         # assert
         self.assertIsNone(error, error)
@@ -83,12 +87,12 @@ class GroupTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.group import get_single_group_public_v1
 
         # arrange
-        _, error, group_id = self.do_create_new_group_public_v1(body=self.models_public_create_new_group_request_v1)
+        _, error, group_id = self.do_create_new_group_public_v1(body=self.models_public_create_new_group_request_v1, namespace=self.group_namespace)
         self.log_warning(msg=f"Failed to set up group. {str(error)}", condition=error is not None)
         self.group_id = group_id
 
         # act
-        _, error = get_single_group_public_v1(group_id=self.group_id)
+        _, error = get_single_group_public_v1(group_id=self.group_id, namespace=self.group_namespace)
 
         # assert
         self.assertIsNone(error, error)
@@ -99,7 +103,7 @@ class GroupTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.group.models import ModelsUpdateGroupRequestV1CustomAttributes
 
         # arrange
-        _, error, group_id = self.do_create_new_group_public_v1(body=self.models_public_create_new_group_request_v1)
+        _, error, group_id = self.do_create_new_group_public_v1(body=self.models_public_create_new_group_request_v1, namespace=self.group_namespace)
         self.log_warning(msg=f"Failed to set up group. {str(error)}", condition=error is not None)
         self.group_id = group_id
 
@@ -115,7 +119,8 @@ class GroupTestCase(IntegrationTestCase):
                 group_region="us-west-1",
                 group_type="PRIVATE"
             ),
-            group_id=self.group_id
+            group_id=self.group_id,
+            namespace=self.group_namespace
         )
 
         # assert

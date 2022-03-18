@@ -62,7 +62,7 @@ class DSMCTestCase(IntegrationTestCase):
                 settings={}
             ),
             game_version="0.1.0",
-            namespace="accelbyte",
+            namespace=self.namespace,
             session_type="p2p",
             username="username"
         )

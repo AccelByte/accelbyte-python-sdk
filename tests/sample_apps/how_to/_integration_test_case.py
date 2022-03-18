@@ -1,5 +1,6 @@
 import asyncio
 import logging
+
 import yaml
 from abc import ABC
 from pathlib import Path
@@ -37,51 +38,61 @@ def get_init_options() -> dict:
     return options
 
 
-class IntegrationTestCase(ABC, TestCase):
+class SDKTestCaseUtils:
 
     logger: logging.Logger = LOGGER
-    username: Optional[str] = None
-    password: Optional[str] = None
 
-    def init_sdk(self):
-        from accelbyte_py_sdk import initialize
+    sdk_initialized: bool = False
+    namespace_found: bool = False
+    client_found: bool = False
+    user_found: bool = False
+    logged_in: bool = False
+
+    namespace: str = ""
+    username: str = ""
+    password: str = ""
+
+    @classmethod
+    def do_setup_class(cls):
         from accelbyte_py_sdk import is_initialized
         from accelbyte_py_sdk.core import get_client_id
         from accelbyte_py_sdk.core import get_env_user_credentials
         from accelbyte_py_sdk.core import get_http_client
-
-        # initialize
-        self.assertFalse(is_initialized(), msg="AccelByte Python SDK is already initialized.")
-        initialize(options=get_init_options())
-        self.assertTrue(is_initialized(), msg="AccelByte Python SDK is not initialized.")
-        client_id, error = get_client_id()
-        self.assertIsNone(error, msg=f"Client ID not found. {str(error)}")
-
-        # setup http log formatter
-        http_client = get_http_client()
-        http_client.request_log_formatter = format_request_response_as_yaml
-        http_client.response_log_formatter = format_request_response_as_yaml
-
-        # get values from env
-        self.username, self.password = get_env_user_credentials()
-        self.assertTrue(self.username, msg="User not found.")
-
-    # noinspection PyMethodMayBeStatic
-    def reset_sdk(self):
-        # pylint: disable=no-self-use
-        accelbyte_py_sdk.reset()
-
-    def login_client(self):
-        from accelbyte_py_sdk.services.auth import login_client
-
-        _, error = login_client()
-        self.assertIsNone(error, msg=f"Failed to log in the client. {str(error)}")
-
-    def login_user(self):
+        from accelbyte_py_sdk.core import get_namespace
         from accelbyte_py_sdk.services.auth import login_user
 
-        _, error = login_user(username=self.username, password=self.password)
-        self.assertIsNone(error, msg=f"Failed to log in the user. {str(error)}")
+        if not is_initialized():
+            accelbyte_py_sdk.initialize(options=get_init_options())
+
+            # setup http log formatter
+            http_client = get_http_client()
+            http_client.request_log_formatter = format_request_response_as_yaml
+            http_client.response_log_formatter = format_request_response_as_yaml
+
+        cls.sdk_initialized = is_initialized()
+
+        namespace, error = get_namespace()
+        cls.namespace_found = error is None
+
+        client_id, error = get_client_id()
+        cls.client_found = error is None
+
+        username, password = get_env_user_credentials()
+        cls.user_found = bool(username)
+
+        _, error = login_user(username=username, password=password)
+        cls.logged_in = error is None
+
+        cls.namespace = namespace
+        cls.username = username
+        cls.password = password
+
+    def do_setup(self, test_case: TestCase):
+        test_case.assertTrue(self.sdk_initialized, msg=f"SDK not initialized.")
+        test_case.assertTrue(self.namespace_found, msg=f"Namespace not found.")
+        test_case.assertTrue(self.client_found, msg=f"Client not found.")
+        test_case.assertTrue(self.user_found, msg=f"User not found.")
+        test_case.assertTrue(self.logged_in, msg=f"Not logged in.")
 
     def log(self, msg: object, level: Optional[int] = None, condition: Optional[bool] = None):
         if condition is not None and condition is False:
@@ -104,90 +115,33 @@ class IntegrationTestCase(ABC, TestCase):
     def log_warning(self, msg: object, level: Optional[int] = None, condition: Optional[bool] = None):
         self.log(msg=msg, level=logging.WARNING, condition=condition)
 
+
+class IntegrationTestCase(ABC, SDKTestCaseUtils, TestCase):
+
+    login_type: Optional[str] = None
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.do_setup_class()
+
     def setUp(self) -> None:
-        self.init_sdk()
-        self.login_user()
-
-    def tearDown(self) -> None:
-        self.reset_sdk()
+        self.do_setup(self)
 
 
-class AsyncIntegrationTestCase(ABC, IsolatedAsyncioTestCase):
+class AsyncIntegrationTestCase(ABC, SDKTestCaseUtils, IsolatedAsyncioTestCase):
 
-    logger: logging.Logger = LOGGER
-    username: Optional[str] = None
-    password: Optional[str] = None
+    login_type: Optional[str] = None
 
     ws_client: Optional[WebsocketsWSClient] = None
     messages: Queue = Queue()
 
-    def init_sdk(self):
-        from accelbyte_py_sdk import initialize
-        from accelbyte_py_sdk import is_initialized
-        from accelbyte_py_sdk.core import get_client_id
-        from accelbyte_py_sdk.core import get_env_user_credentials
-        from accelbyte_py_sdk.core import get_http_client
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.do_setup_class()
 
-        # initialize
-        self.assertFalse(is_initialized(), msg="AccelByte Python SDK is already initialized.")
-        initialize(options=get_init_options())
-        self.assertTrue(is_initialized(), msg="AccelByte Python SDK is not initialized.")
-        client_id, error = get_client_id()
-        self.assertIsNone(error, msg=f"Client ID not found. {str(error)}")
-
-        # setup http log formatter
-        http_client = get_http_client()
-        http_client.request_log_formatter = format_request_response_as_yaml
-        http_client.response_log_formatter = format_request_response_as_yaml
-
-        # get values from env
-        self.username, self.password = get_env_user_credentials()
-        self.assertTrue(self.username, msg="User not found.")
-
-    # noinspection PyMethodMayBeStatic
-    def reset_sdk(self):
-        # pylint: disable=no-self-use
-        accelbyte_py_sdk.reset()
-
-    def login_client(self):
-        from accelbyte_py_sdk.services.auth import login_client
-
-        _, error = login_client()
-        self.assertIsNone(error, msg=f"Failed to log in the client. {str(error)}")
-
-    def login_user(self):
-        from accelbyte_py_sdk.services.auth import login_user
-
-        _, error = login_user(username=self.username, password=self.password)
-        self.assertIsNone(error, msg=f"Failed to log in the user. {str(error)}")
-
-    def log(self, msg: object, level: Optional[int] = None):
-        level = level if level is not None else logging.INFO
-        self.logger.log(level=level, msg=msg)
-
-    def log_critical(self, msg: object, level: Optional[int] = None):
-        self.log(msg=msg, level=logging.CRITICAL)
-
-    def log_debug(self, msg: object, level: Optional[int] = None):
-        self.log(msg=msg, level=logging.DEBUG)
-
-    def log_error(self, msg: object, level: Optional[int] = None):
-        self.log(msg=msg, level=logging.ERROR)
-
-    def log_info(self, msg: object, level: Optional[int] = None):
-        self.log(msg=msg, level=logging.INFO)
-
-    def log_warning(self, msg: object, level: Optional[int] = None):
-        self.log(msg=msg, level=logging.WARNING)
-
-    async def asyncSetUp(self) -> None:
-        asyncio.get_running_loop().set_debug(False)
-
+    async def do_setup_async(self) -> None:
         from accelbyte_py_sdk.core import get_access_token
         from accelbyte_py_sdk.core import get_base_url
-
-        self.init_sdk()
-        self.login_user()
 
         base_url, error = get_base_url()
         self.assertIsNone(error, msg=f"Failed to get the base url. {str(error)}")
@@ -195,20 +149,20 @@ class AsyncIntegrationTestCase(ABC, IsolatedAsyncioTestCase):
         access_token, error = get_access_token()
         self.assertIsNone(error, msg=f"Failed to get the access token. {str(error)}")
 
-        self.ws_client = WebsocketsWSClient(
-            uri=base_url,
-            access_token=access_token
-        )
+        self.ws_client = WebsocketsWSClient(uri=base_url, access_token=access_token)
 
         self.ws_client.listeners.append(self.on_receive)
 
         await self.ws_client.connect()
 
+    async def asyncSetUp(self) -> None:
+        self.do_setup(self)
+        await self.do_setup_async()
+
     async def asyncTearDown(self) -> None:
         if self.ws_client is not None:
             await self.ws_client.disconnect()
             self.ws_client = None
-        self.reset_sdk()
 
     async def on_receive(self, message: str):
         self.messages.put(message)

@@ -17,7 +17,6 @@ class SessionBrowserTestCase(IntegrationTestCase):
     map_name: str = "map_name"
     max_player: int = 10
     mode: str = "mode"
-    namespace: str = "accelbyte"
     num_bot: int = 0
     password: str = "password"
     session_type: str = "p2p"
@@ -36,7 +35,7 @@ class SessionBrowserTestCase(IntegrationTestCase):
             settings={}
         ),
         game_version=game_version,
-        namespace=namespace,
+        namespace="",
         session_type=session_type,
         username=username
     )
@@ -46,6 +45,7 @@ class SessionBrowserTestCase(IntegrationTestCase):
         # pylint: disable=no-self-use
         from accelbyte_py_sdk.api.sessionbrowser import create_session
 
+        body.namespace = self.namespace
         result, error = create_session(body=body)
 
         session_id: Optional[str] = None

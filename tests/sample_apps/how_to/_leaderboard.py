@@ -39,7 +39,7 @@ class LeaderboardTestCase(IntegrationTestCase):
     )
 
     def init_leaderboard_config(self):
-        self.leaderboard_code = f"leaderboard{str(randint(0, 10_000)).rjust(5, '0')}"
+        self.leaderboard_code = f"ldrbrd{str(randint(0, 1_000_000)).rjust(7, '0')}"
         self.models_leaderboard_config_req.leaderboard_code = self.leaderboard_code
 
     def tearDown(self) -> None:

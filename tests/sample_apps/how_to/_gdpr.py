@@ -9,21 +9,23 @@ from accelbyte_py_sdk.api.iam.models import ModelUserCreateRequest
 class GDPRTestCase(IntegrationTestCase):
 
     did_configure: bool = False
+    user_namespace: str = "accelbyte"
     user_id: Optional[str] = None
     model_user_create_request = ModelUserCreateRequest.create(
         auth_type="EMAILPASSWD",
         country="US",
         display_name="testPythonServerSDKUser",
-        login_id=f"testPythonServerSDKUser{str(randint(0, 10_000)).rjust(5, '0')}@test.com",
+        login_id="",
         password="q!w@e#r$azsxdcfv"
     )
 
     # noinspection PyMethodMayBeStatic
-    def do_create_user(self, body: ModelUserCreateRequest):
+    def do_create_user(self, body: ModelUserCreateRequest, namespace: Optional[str] = None):
         # pylint: disable=no-self-use
         from accelbyte_py_sdk.api.iam import create_user
 
-        result, error = create_user(body=body)
+        body.login_id = f"testPythonServerSDKUser{str(randint(0, 1_000_000)).rjust(7, '0')}@test.com"
+        result, error = create_user(body=body, namespace=namespace)
 
         user_id: Optional[str] = None
 
@@ -39,7 +41,7 @@ class GDPRTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.gdpr import delete_admin_email_configuration
 
         if self.user_id is not None:
-            _, error = delete_user(user_id=self.user_id)
+            _, error = delete_user(user_id=self.user_id, namespace=self.user_namespace)
             self.log_warning(msg=f"Failed to tear down user. {str(error)}", condition=error is not None)
             self.user_id = None
         if self.did_configure:
@@ -52,14 +54,14 @@ class GDPRTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.gdpr import admin_get_user_personal_data_requests
 
         # arrange
-        _, error, user_id = self.do_create_user(body=self.model_user_create_request)
+        _, error, user_id = self.do_create_user(body=self.model_user_create_request, namespace=self.user_namespace)
         if error is not None and not user_id:
             self.skipTest(reason=f"Failed to set up user. {str(error)}")
 
         self.user_id = user_id
 
         # act
-        _, error = admin_get_user_personal_data_requests(user_id=self.user_id)
+        _, error = admin_get_user_personal_data_requests(user_id=self.user_id, namespace=self.user_namespace)
 
         # assert
         self.assertIsNone(error, error)
@@ -68,14 +70,14 @@ class GDPRTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.gdpr import admin_submit_user_account_deletion_request
 
         # arrange
-        _, error, user_id = self.do_create_user(body=self.model_user_create_request)
+        _, error, user_id = self.do_create_user(body=self.model_user_create_request, namespace=self.user_namespace)
         if error is not None and not user_id:
             self.skipTest(reason=f"Failed to set up user. {str(error)}")
 
         self.user_id = user_id
 
         # act
-        _, error = admin_submit_user_account_deletion_request(user_id=self.user_id)
+        _, error = admin_submit_user_account_deletion_request(user_id=self.user_id, namespace=self.user_namespace)
 
         # assert
         self.assertIsNone(error, error)
