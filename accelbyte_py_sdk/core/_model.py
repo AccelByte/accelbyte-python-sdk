@@ -13,6 +13,11 @@ class Model:
     # region overrideable members
 
     # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use, disable=unused-argument
+        return True
+
+    # noinspection PyMethodMayBeStatic
     def to_dict(self, include_empty: bool = False) -> dict:
         # pylint: no-self-use, disable=unused-argument
         return {}
