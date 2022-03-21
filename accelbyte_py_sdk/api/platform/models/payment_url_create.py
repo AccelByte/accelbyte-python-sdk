@@ -80,7 +80,7 @@ class PaymentUrlCreate(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "payment_order_no") or self.payment_order_no is None:
             return False

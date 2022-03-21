@@ -87,7 +87,7 @@ class UpdatePolicyRequest(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "is_default_opted") or self.is_default_opted is None:
             return False

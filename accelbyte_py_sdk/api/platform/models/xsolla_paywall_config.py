@@ -73,7 +73,7 @@ class XsollaPaywallConfig(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "device") or self.device is None:
             return False

@@ -59,7 +59,7 @@ class OrderStatistics(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "status_count") or self.status_count is None:
             return False

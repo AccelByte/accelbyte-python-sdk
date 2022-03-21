@@ -73,7 +73,7 @@ class ModelsUpdatePodConfigRequest(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "cpu_limit") or self.cpu_limit is None:
             return False

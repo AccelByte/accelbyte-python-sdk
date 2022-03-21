@@ -59,7 +59,7 @@ class ModelsConcurrentRecordRequest(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "updated_at") or self.updated_at is None:
             return False

@@ -59,7 +59,7 @@ class ModelsCreateConfigResponse(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "api_key") or self.api_key is None:
             return False

@@ -82,7 +82,7 @@ class ModelsCreateSessionRequest(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "game_session_setting") or self.game_session_setting is None:
             return False

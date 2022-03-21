@@ -59,7 +59,7 @@ class ModelsCreateTypeRequest(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "subtype") or self.subtype is None:
             return False

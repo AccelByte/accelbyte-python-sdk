@@ -54,7 +54,7 @@ class AccountcommonBans(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "bans") or self.bans is None:
             return False

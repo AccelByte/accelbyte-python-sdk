@@ -66,7 +66,7 @@ class ModelsArchiveLeaderboardReq(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "leaderboard_codes") or self.leaderboard_codes is None:
             return False

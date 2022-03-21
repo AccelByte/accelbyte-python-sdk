@@ -66,7 +66,7 @@ class ModelsAdditionalInfo(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "number_of_achievements") or self.number_of_achievements is None:
             return False

@@ -59,7 +59,7 @@ class ModelsUpdateSessionRequest(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "game_current_player") or self.game_current_player is None:
             return False

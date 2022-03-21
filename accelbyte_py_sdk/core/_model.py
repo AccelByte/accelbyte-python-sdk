@@ -14,12 +14,12 @@ class Model:
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use, disable=unused-argument
+        # pylint: disable=no-self-use
         return True
 
     # noinspection PyMethodMayBeStatic
     def to_dict(self, include_empty: bool = False) -> dict:
-        # pylint: no-self-use, disable=unused-argument
+        # pylint: disable=no-self-use, unused-argument
         return {}
 
     @staticmethod

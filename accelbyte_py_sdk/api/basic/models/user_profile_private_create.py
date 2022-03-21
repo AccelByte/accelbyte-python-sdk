@@ -115,7 +115,7 @@ class UserProfilePrivateCreate(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         # pattern checks
         if hasattr(self, "date_of_birth") and not re.match(r"^(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$", self.date_of_birth):

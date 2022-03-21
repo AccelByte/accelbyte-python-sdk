@@ -66,7 +66,7 @@ class ModelInviteUserRequestV3(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "email_addresses") or self.email_addresses is None:
             return False

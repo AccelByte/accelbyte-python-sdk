@@ -73,7 +73,7 @@ class AcceptAgreementRequest(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "is_accepted") or self.is_accepted is None:
             return False

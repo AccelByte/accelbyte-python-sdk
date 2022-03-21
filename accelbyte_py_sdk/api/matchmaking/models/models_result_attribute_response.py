@@ -59,7 +59,7 @@ class ModelsResultAttributeResponse(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "attribute") or self.attribute is None:
             return False

@@ -66,7 +66,7 @@ class ModelsAdminUpdateProfanityList(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "is_enabled") or self.is_enabled is None:
             return False

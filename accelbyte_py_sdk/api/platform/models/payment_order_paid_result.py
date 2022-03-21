@@ -59,7 +59,7 @@ class PaymentOrderPaidResult(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "charging") or self.charging is None:
             return False

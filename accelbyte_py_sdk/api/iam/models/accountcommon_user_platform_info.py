@@ -66,7 +66,7 @@ class AccountcommonUserPlatformInfo(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "platform_id") or self.platform_id is None:
             return False

@@ -62,7 +62,7 @@ class ModelsListDeploymentResponse(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "deployments") or self.deployments is None:
             return False

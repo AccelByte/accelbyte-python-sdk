@@ -73,7 +73,7 @@ class AccountcommonRegisteredDomain(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "affected_client_i_ds") or self.affected_client_i_ds is None:
             return False

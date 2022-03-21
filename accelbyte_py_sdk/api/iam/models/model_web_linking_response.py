@@ -52,7 +52,7 @@ class ModelWebLinkingResponse(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "third_party_url") or self.third_party_url is None:
             return False

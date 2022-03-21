@@ -52,7 +52,7 @@ class CategoryUpdate(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "localization_display_names") or self.localization_display_names is None:
             return False

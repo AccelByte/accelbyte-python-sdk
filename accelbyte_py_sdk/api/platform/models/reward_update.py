@@ -103,7 +103,7 @@ class RewardUpdate(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "event_topic") or self.event_topic is None:
             return False

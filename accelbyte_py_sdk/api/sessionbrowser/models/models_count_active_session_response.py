@@ -66,7 +66,7 @@ class ModelsCountActiveSessionResponse(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "custom_game") or self.custom_game is None:
             return False

@@ -117,7 +117,7 @@ class ModelsAchievementUpdateRequest(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "default_language") or self.default_language is None:
             return False

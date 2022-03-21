@@ -52,7 +52,7 @@ class ModelListEmailAddressRequest(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "list_email_address_request") or self.list_email_address_request is None:
             return False

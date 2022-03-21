@@ -52,7 +52,7 @@ class XblIAPConfigRequest(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "relying_party_cert") or self.relying_party_cert is None:
             return False

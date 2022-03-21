@@ -115,7 +115,7 @@ class ModelsGameSessionSetting(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "allow_join_in_progress") or self.allow_join_in_progress is None:
             return False

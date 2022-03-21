@@ -108,7 +108,7 @@ class SeasonSummary(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "end") or self.end is None:
             return False

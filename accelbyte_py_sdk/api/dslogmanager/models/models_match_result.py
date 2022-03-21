@@ -75,7 +75,7 @@ class ModelsMatchResult(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "game_mode") or self.game_mode is None:
             return False

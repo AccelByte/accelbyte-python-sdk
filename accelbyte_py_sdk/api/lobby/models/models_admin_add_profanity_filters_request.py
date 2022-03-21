@@ -54,7 +54,7 @@ class ModelsAdminAddProfanityFiltersRequest(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "filters") or self.filters is None:
             return False

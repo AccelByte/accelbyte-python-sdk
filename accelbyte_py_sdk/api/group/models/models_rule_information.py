@@ -66,7 +66,7 @@ class ModelsRuleInformation(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "rule_attribute") or self.rule_attribute is None:
             return False

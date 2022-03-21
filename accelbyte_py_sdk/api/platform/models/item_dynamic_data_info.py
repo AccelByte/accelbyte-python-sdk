@@ -80,7 +80,7 @@ class ItemDynamicDataInfo(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "available_count") or self.available_count is None:
             return False

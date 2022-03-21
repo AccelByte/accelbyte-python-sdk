@@ -62,7 +62,7 @@ class OauthapiRevocationList(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "revoked_tokens") or self.revoked_tokens is None:
             return False

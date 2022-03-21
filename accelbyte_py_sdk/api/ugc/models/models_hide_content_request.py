@@ -52,7 +52,7 @@ class ModelsHideContentRequest(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "is_hidden") or self.is_hidden is None:
             return False

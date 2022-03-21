@@ -94,7 +94,7 @@ class ModelPlatformUserInformation(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "display_name") or self.display_name is None:
             return False

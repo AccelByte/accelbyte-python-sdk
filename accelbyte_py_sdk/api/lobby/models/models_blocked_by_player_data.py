@@ -59,7 +59,7 @@ class ModelsBlockedByPlayerData(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "blocked_at") or self.blocked_at is None:
             return False

@@ -73,7 +73,7 @@ class ModelVerificationCodeResponse(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "account_registration") or self.account_registration is None:
             return False

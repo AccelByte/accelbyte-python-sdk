@@ -52,7 +52,7 @@ class ModelsAchievementOrderUpdateRequest(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "target_order") or self.target_order is None:
             return False

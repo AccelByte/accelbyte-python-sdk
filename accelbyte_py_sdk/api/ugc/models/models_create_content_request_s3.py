@@ -94,7 +94,7 @@ class ModelsCreateContentRequestS3(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "content_type") or self.content_type is None:
             return False

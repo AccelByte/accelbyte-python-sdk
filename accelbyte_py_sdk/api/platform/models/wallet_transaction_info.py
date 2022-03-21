@@ -122,7 +122,7 @@ class WalletTransactionInfo(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "amount") or self.amount is None:
             return False

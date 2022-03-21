@@ -52,7 +52,7 @@ class Subscribable(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "subscribable") or self.subscribable is None:
             return False

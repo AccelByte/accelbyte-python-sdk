@@ -59,7 +59,7 @@ class ModelsPagingCursor(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "next_") or self.next_ is None:
             return False

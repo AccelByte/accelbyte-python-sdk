@@ -59,7 +59,7 @@ class ModelGetUserJusticePlatformAccountResponse(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "designated_namespace") or self.designated_namespace is None:
             return False

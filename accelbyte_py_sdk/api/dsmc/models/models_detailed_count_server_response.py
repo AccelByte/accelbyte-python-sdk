@@ -73,7 +73,7 @@ class ModelsDetailedCountServerResponse(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "busy_count") or self.busy_count is None:
             return False

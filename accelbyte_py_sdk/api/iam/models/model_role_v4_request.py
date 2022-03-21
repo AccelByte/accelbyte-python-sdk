@@ -73,7 +73,7 @@ class ModelRoleV4Request(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "admin_role") or self.admin_role is None:
             return False

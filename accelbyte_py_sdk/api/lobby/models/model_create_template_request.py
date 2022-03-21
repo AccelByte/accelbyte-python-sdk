@@ -66,7 +66,7 @@ class ModelCreateTemplateRequest(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "template_content") or self.template_content is None:
             return False

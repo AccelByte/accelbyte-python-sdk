@@ -131,7 +131,7 @@ class RetrievePolicyVersionResponse(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "display_version") or self.display_version is None:
             return False

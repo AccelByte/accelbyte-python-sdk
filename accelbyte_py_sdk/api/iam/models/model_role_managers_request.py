@@ -54,7 +54,7 @@ class ModelRoleManagersRequest(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "managers") or self.managers is None:
             return False

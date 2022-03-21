@@ -61,7 +61,7 @@ class ModelGetUserIncomingFriendsResponse(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "friend_i_ds") or self.friend_i_ds is None:
             return False

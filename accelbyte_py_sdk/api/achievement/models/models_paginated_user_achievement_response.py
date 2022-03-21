@@ -70,7 +70,7 @@ class ModelsPaginatedUserAchievementResponse(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "count_info") or self.count_info is None:
             return False

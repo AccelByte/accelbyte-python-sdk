@@ -66,7 +66,7 @@ class UserBanRequest(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "action_id") or self.action_id is None:
             return False

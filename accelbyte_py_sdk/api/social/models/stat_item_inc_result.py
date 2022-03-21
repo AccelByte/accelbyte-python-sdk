@@ -52,7 +52,7 @@ class StatItemIncResult(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "current_value") or self.current_value is None:
             return False

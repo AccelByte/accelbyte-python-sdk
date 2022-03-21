@@ -96,7 +96,7 @@ class ModelUserInformation(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "country") or self.country is None:
             return False

@@ -61,7 +61,7 @@ class AccountcommonConflictedUserPlatformAccounts(Model):
 
     # noinspection PyMethodMayBeStatic
     def is_valid(self) -> bool:
-        # pylint: no-self-use
+        # pylint: disable=no-self-use
         # required checks
         if not hasattr(self, "platform_user_id") or self.platform_user_id is None:
             return False
