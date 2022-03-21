@@ -1,11 +1,13 @@
 import base64
-from typing import Any, Tuple, Union
+import re
+from typing import Any, Tuple, List, Union, Dict, Optional
 from unittest import TestCase
 
 import accelbyte_py_sdk
 from accelbyte_py_sdk.core import MyConfigRepository
 from accelbyte_py_sdk.core import MyTokenRepository
 from accelbyte_py_sdk.core import RequestsHttpClient
+from accelbyte_py_sdk.core import Model
 from accelbyte_py_sdk.core import Operation
 from accelbyte_py_sdk.core import Header
 from accelbyte_py_sdk.core import HttpClient
@@ -51,6 +53,90 @@ class TestHttpClient(HttpClient):
             **kwargs
     ) -> Tuple[Union[None, HttpRawResponse], Union[None, HttpResponse]]:
         return None, HttpResponse.create_unhandled_error()
+
+
+class TestModel(Model):
+
+    date_of_birth: str
+
+    def with_date_of_birth(self, value: str):
+        self.date_of_birth = value
+        return self
+
+    def is_valid(self) -> bool:
+        if not re.match(r"^(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$", self.date_of_birth):
+            return False
+        return True
+
+    @staticmethod
+    def get_field_info() -> Dict[str, str]:
+        return {
+            "dateOfBirth": "date_of_birth"
+        }
+
+
+class TestOperation(Operation):
+
+    _url: str = "/test/profiles"
+    _method: str = "GET"
+    _consumes: List[str] = ["application/json"]
+    _produces: List[str] = ["application/json"]
+    _security_type: Optional[str] = "bearer"
+    _location_query: str = None
+
+    body: TestModel
+    namespace: str
+
+    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
+        return self.create_full_url(
+            url=self.url,
+            base_url=base_url,
+            path_params=self.get_path_params()
+        )
+
+    def get_all_params(self) -> dict:
+        return {
+            "body": self.get_body_params(),
+            "path": self.get_path_params(),
+        }
+
+    def get_body_params(self) -> Any:
+        if not hasattr(self, "body") or self.body is None:
+            return None
+        return self.body.to_dict()
+
+    def get_path_params(self) -> dict:
+        result = {}
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
+        return result
+
+    def is_valid(self) -> bool:
+        # required checks
+        if not hasattr(self, "namespace") or self.namespace is None:
+            return False
+        # pattern checks
+        if hasattr(self, "body") and not self.body.is_valid():
+            return False
+        return True
+
+    def with_body(self, value: TestModel):
+        self.body = value
+        return self
+
+    def with_namespace(self, value: str):
+        self.namespace = value
+        return self
+
+    def parse_response(self, code: int, content_type: str, content: Any):
+        return None, None
+
+    @staticmethod
+    def get_field_info() -> Dict[str, str]:
+        return {
+            "body": "body",
+            "namespace": "namespace",
+        }
 
 
 class CoreTestCase(TestCase):
@@ -361,3 +447,20 @@ class CoreTestCase(TestCase):
             }
         )
         self.assertEqual("http://0.0.0.0:8080/test?status=active&query=a&query=b", full_url)
+
+    def test_model_is_valid(self):
+        invalid_model = TestModel().with_date_of_birth("01-01-2000")
+        self.assertFalse(invalid_model.is_valid())
+
+        valid_model = TestModel().with_date_of_birth("2000-01-01")
+        self.assertTrue(valid_model.is_valid())
+
+    def test_operation_is_valid(self):
+        invalid_operation = TestOperation()
+        self.assertFalse(invalid_operation.is_valid())
+
+        invalid_operation = TestOperation().with_namespace("namespace").with_body(TestModel().with_date_of_birth("01-01-2000"))
+        self.assertFalse(invalid_operation.is_valid())
+
+        valid_operation = TestOperation().with_namespace("namespace").with_body(TestModel().with_date_of_birth("2000-01-01"))
+        self.assertTrue(valid_operation.is_valid())
