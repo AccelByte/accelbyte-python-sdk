@@ -11,10 +11,11 @@ from accelbyte_py_sdk.api.group.models import ModelsGroupResponseV1
 
 class GroupTestCase(IntegrationTestCase):
 
-    group_namespace: str = "accelbyte"
+    group_configuration_code = "pythonServerSDKConfigurationCode"
+    group_namespace: str = ""
     group_id: Optional[str] = None
     models_public_create_new_group_request_v1: ModelsPublicCreateNewGroupRequestV1 = ModelsPublicCreateNewGroupRequestV1.create(
-        configuration_code="initialConfigurationCode",
+        configuration_code=group_configuration_code,
         custom_attributes={},
         group_description="DESCRIPTION",
         group_icon="",
@@ -29,6 +30,26 @@ class GroupTestCase(IntegrationTestCase):
         ),
         group_type="PRIVATE"
     )
+
+    def setUp(self) -> None:
+        from accelbyte_py_sdk.api.group import create_group_configuration_admin_v1
+        from accelbyte_py_sdk.api.group.models import ModelsCreateGroupConfigurationRequestV1
+
+        super().setUp()
+
+        self.group_namespace = self.namespace
+
+        _, _ = create_group_configuration_admin_v1(
+            body=ModelsCreateGroupConfigurationRequestV1.create(
+                configuration_code=self.group_configuration_code,
+                description="DESCRIPTION",
+                global_rules=[],
+                group_admin_role_id="623295c3000e792bf1e902b7",
+                group_max_member=50,
+                group_member_role_id="623295c3000e792bf1e902b8",
+                name="Python Server SDK Configuration Code"
+            )
+        )
 
     # noinspection PyMethodMayBeStatic
     def do_create_new_group_public_v1(self, body: ModelsPublicCreateNewGroupRequestV1, namespace: Optional[str] = None):
