@@ -14,8 +14,9 @@ class LegalTestCase(IntegrationTestCase):
         result, error = retrieve_agreements_public()
         self.assertIsNotNone(result)
         self.assertIsInstance(result, list)
-        self.assertTrue(result)
-        self.assertIsNotNone(result[0])
+
+        if len(result) == 0:
+            self.skipTest(reason="No policy to accept found.")
 
         accepted_agreement: RetrieveAcceptedAgreementResponse = result[0]
         self.assertIsInstance(accepted_agreement, RetrieveAcceptedAgreementResponse)
@@ -53,9 +54,9 @@ class LegalTestCase(IntegrationTestCase):
         result, error = retrieve_agreements_public()
         self.assertIsNotNone(result)
         self.assertIsInstance(result, list)
-        self.assertTrue(result)
-        self.assertTrue(len(result) > 0)
 
+        if len(result) == 0:
+            self.skipTest(reason="No policy with 'Marketing Preference' type found.")
         accepted_agreement: RetrieveAcceptedAgreementResponse = next(
             (agreement for agreement in result if isinstance(agreement, RetrieveAcceptedAgreementResponse) and agreement.policy_type == "Marketing Preference"),
             None
