@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -144,6 +145,37 @@ class SubscriptionActivityInfo(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "action") or self.action is None:
+            return False
+        if not hasattr(self, "charged_cycles") or self.charged_cycles is None:
+            return False
+        if not hasattr(self, "created_at") or self.created_at is None:
+            return False
+        if not hasattr(self, "current_cycle") or self.current_cycle is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
+            return False
+        if not hasattr(self, "operator") or self.operator is None:
+            return False
+        if not hasattr(self, "subscribed_by") or self.subscribed_by is None:
+            return False
+        if not hasattr(self, "subscription_id") or self.subscription_id is None:
+            return False
+        if not hasattr(self, "updated_at") or self.updated_at is None:
+            return False
+        if not hasattr(self, "user_id") or self.user_id is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

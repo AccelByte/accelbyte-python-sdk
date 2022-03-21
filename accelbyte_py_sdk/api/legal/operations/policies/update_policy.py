@@ -21,6 +21,7 @@
 # justice-legal-service (1.18.1)
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
@@ -144,7 +145,11 @@ class UpdatePolicy(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
+        # required checks
         if not hasattr(self, "policy_id") or self.policy_id is None:
+            return False
+        # pattern checks
+        if hasattr(self, "body") and not self.body.is_valid():
             return False
         return True
 

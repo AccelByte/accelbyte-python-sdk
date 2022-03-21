@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -76,6 +77,27 @@ class ModelTemplateLocalization(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "last_draft_at") or self.last_draft_at is None:
+            return False
+        if not hasattr(self, "last_published_at") or self.last_published_at is None:
+            return False
+        if not hasattr(self, "template_content") or self.template_content is None:
+            return False
+        if not hasattr(self, "template_language") or self.template_language is None:
+            return False
+        if not hasattr(self, "template_slug") or self.template_slug is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

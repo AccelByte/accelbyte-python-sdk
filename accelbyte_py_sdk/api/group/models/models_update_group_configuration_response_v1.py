@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -90,6 +91,31 @@ class ModelsUpdateGroupConfigurationResponseV1(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "configuration_code") or self.configuration_code is None:
+            return False
+        if not hasattr(self, "description") or self.description is None:
+            return False
+        if not hasattr(self, "global_rules") or self.global_rules is None:
+            return False
+        if not hasattr(self, "group_admin_role_id") or self.group_admin_role_id is None:
+            return False
+        if not hasattr(self, "group_max_member") or self.group_max_member is None:
+            return False
+        if not hasattr(self, "group_member_role_id") or self.group_member_role_id is None:
+            return False
+        if not hasattr(self, "name") or self.name is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

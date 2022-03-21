@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -88,6 +89,31 @@ class ModelsPersonalData(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "data_expiration_date") or self.data_expiration_date is None:
+            return False
+        if not hasattr(self, "display_name") or self.display_name is None:
+            return False
+        if not hasattr(self, "request_date") or self.request_date is None:
+            return False
+        if not hasattr(self, "service_errors") or self.service_errors is None:
+            return False
+        if not hasattr(self, "service_statuses") or self.service_statuses is None:
+            return False
+        if not hasattr(self, "status") or self.status is None:
+            return False
+        if not hasattr(self, "user_id") or self.user_id is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

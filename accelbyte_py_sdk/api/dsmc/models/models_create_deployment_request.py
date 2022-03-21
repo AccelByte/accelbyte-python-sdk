@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -126,6 +127,41 @@ class ModelsCreateDeploymentRequest(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "allow_version_override") or self.allow_version_override is None:
+            return False
+        if not hasattr(self, "buffer_count") or self.buffer_count is None:
+            return False
+        if not hasattr(self, "buffer_percent") or self.buffer_percent is None:
+            return False
+        if not hasattr(self, "configuration") or self.configuration is None:
+            return False
+        if not hasattr(self, "enable_region_overrides") or self.enable_region_overrides is None:
+            return False
+        if not hasattr(self, "game_version") or self.game_version is None:
+            return False
+        if not hasattr(self, "max_count") or self.max_count is None:
+            return False
+        if not hasattr(self, "min_count") or self.min_count is None:
+            return False
+        if not hasattr(self, "overrides") or self.overrides is None:
+            return False
+        if not hasattr(self, "region_overrides") or self.region_overrides is None:
+            return False
+        if not hasattr(self, "regions") or self.regions is None:
+            return False
+        if not hasattr(self, "use_buffer_percent") or self.use_buffer_percent is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

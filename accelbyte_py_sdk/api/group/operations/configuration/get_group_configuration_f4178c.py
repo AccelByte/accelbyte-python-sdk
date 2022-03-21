@@ -21,6 +21,7 @@
 # justice-group-service (2.11.0)
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
@@ -159,10 +160,12 @@ class GetGroupConfigurationAdminV1(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
+        # required checks
         if not hasattr(self, "configuration_code") or self.configuration_code is None:
             return False
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
+        # pattern checks
         return True
 
     # endregion is/has methods

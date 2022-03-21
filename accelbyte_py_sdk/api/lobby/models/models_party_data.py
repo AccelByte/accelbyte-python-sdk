@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -88,6 +89,31 @@ class ModelsPartyData(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "custom_attribute") or self.custom_attribute is None:
+            return False
+        if not hasattr(self, "invitees") or self.invitees is None:
+            return False
+        if not hasattr(self, "leader") or self.leader is None:
+            return False
+        if not hasattr(self, "members") or self.members is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
+            return False
+        if not hasattr(self, "party_id") or self.party_id is None:
+            return False
+        if not hasattr(self, "updated_at") or self.updated_at is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

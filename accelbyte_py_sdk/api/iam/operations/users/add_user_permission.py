@@ -21,6 +21,7 @@
 # justice-iam-service (5.4.0)
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
@@ -259,6 +260,7 @@ class AddUserPermission(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
+        # required checks
         if not hasattr(self, "body") or self.body is None:
             return False
         if not hasattr(self, "action") or self.action is None:
@@ -268,6 +270,9 @@ class AddUserPermission(Operation):
         if not hasattr(self, "resource") or self.resource is None:
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
+            return False
+        # pattern checks
+        if hasattr(self, "body") and not self.body.is_valid():
             return False
         return True
 

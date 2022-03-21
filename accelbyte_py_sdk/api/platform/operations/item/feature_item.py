@@ -21,6 +21,7 @@
 # justice-platform-service (4.4.2)
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
@@ -165,6 +166,7 @@ class FeatureItem(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
+        # required checks
         if not hasattr(self, "feature") or self.feature is None:
             return False
         if not hasattr(self, "item_id") or self.item_id is None:
@@ -173,6 +175,7 @@ class FeatureItem(Operation):
             return False
         if not hasattr(self, "store_id") or self.store_id is None:
             return False
+        # pattern checks
         return True
 
     # endregion is/has methods

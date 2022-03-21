@@ -21,6 +21,7 @@
 # Justice QoS Manager Service ()
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
@@ -142,8 +143,10 @@ class DeleteServer(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
+        # required checks
         if not hasattr(self, "region") or self.region is None:
             return False
+        # pattern checks
         return True
 
     # endregion is/has methods

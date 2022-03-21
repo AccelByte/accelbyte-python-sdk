@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -210,6 +211,43 @@ class BillingHistoryInfo(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "amount") or self.amount is None:
+            return False
+        if not hasattr(self, "created_at") or self.created_at is None:
+            return False
+        if not hasattr(self, "currency") or self.currency is None:
+            return False
+        if not hasattr(self, "item_id") or self.item_id is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
+            return False
+        if not hasattr(self, "payment_order_no") or self.payment_order_no is None:
+            return False
+        if not hasattr(self, "recurring_order_no") or self.recurring_order_no is None:
+            return False
+        if not hasattr(self, "sandbox") or self.sandbox is None:
+            return False
+        if not hasattr(self, "status") or self.status is None:
+            return False
+        if not hasattr(self, "subscription_id") or self.subscription_id is None:
+            return False
+        if not hasattr(self, "title") or self.title is None:
+            return False
+        if not hasattr(self, "updated_at") or self.updated_at is None:
+            return False
+        if not hasattr(self, "user_id") or self.user_id is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

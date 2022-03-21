@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -74,6 +75,27 @@ class ModelPublicThirdPartyPlatformInfo(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "app_id") or self.app_id is None:
+            return False
+        if not hasattr(self, "client_id") or self.client_id is None:
+            return False
+        if not hasattr(self, "environment") or self.environment is None:
+            return False
+        if not hasattr(self, "is_active") or self.is_active is None:
+            return False
+        if not hasattr(self, "platform_id") or self.platform_id is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

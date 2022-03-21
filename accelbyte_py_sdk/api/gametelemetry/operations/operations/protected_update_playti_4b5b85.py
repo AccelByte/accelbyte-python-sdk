@@ -21,6 +21,7 @@
 # Analytics Game Telemetry (0.0.1)
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
@@ -140,10 +141,12 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
     # region is/has methods
 
     def is_valid(self) -> bool:
+        # required checks
         if not hasattr(self, "playtime") or self.playtime is None:
             return False
         if not hasattr(self, "steam_id") or self.steam_id is None:
             return False
+        # pattern checks
         return True
 
     # endregion is/has methods

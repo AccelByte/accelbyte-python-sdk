@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -81,6 +82,25 @@ class AppleIAPReceipt(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "product_id") or self.product_id is None:
+            return False
+        if not hasattr(self, "receipt_data") or self.receipt_data is None:
+            return False
+        if not hasattr(self, "transaction_id") or self.transaction_id is None:
+            return False
+        # pattern checks
+        if hasattr(self, "language") and not re.match(r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$", self.language):
+            return False
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

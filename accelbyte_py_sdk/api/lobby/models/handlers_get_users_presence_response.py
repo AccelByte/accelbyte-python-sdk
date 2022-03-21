@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -76,6 +77,27 @@ class HandlersGetUsersPresenceResponse(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "busy") or self.busy is None:
+            return False
+        if not hasattr(self, "data") or self.data is None:
+            return False
+        if not hasattr(self, "invisible") or self.invisible is None:
+            return False
+        if not hasattr(self, "offline") or self.offline is None:
+            return False
+        if not hasattr(self, "online") or self.online is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

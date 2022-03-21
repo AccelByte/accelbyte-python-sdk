@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -88,6 +89,29 @@ class ModelsRuleSet(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "alliance") or self.alliance is None:
+            return False
+        if not hasattr(self, "alliance_flexing_rule") or self.alliance_flexing_rule is None:
+            return False
+        if not hasattr(self, "flexing_rule") or self.flexing_rule is None:
+            return False
+        if not hasattr(self, "match_options") or self.match_options is None:
+            return False
+        if not hasattr(self, "matching_rule") or self.matching_rule is None:
+            return False
+        if not hasattr(self, "sub_game_modes") or self.sub_game_modes is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -111,6 +112,37 @@ class ModelsAchievementUpdateRequest(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "default_language") or self.default_language is None:
+            return False
+        if not hasattr(self, "description") or self.description is None:
+            return False
+        if not hasattr(self, "goal_value") or self.goal_value is None:
+            return False
+        if not hasattr(self, "hidden") or self.hidden is None:
+            return False
+        if not hasattr(self, "incremental") or self.incremental is None:
+            return False
+        if not hasattr(self, "locked_icons") or self.locked_icons is None:
+            return False
+        if not hasattr(self, "name") or self.name is None:
+            return False
+        if not hasattr(self, "stat_code") or self.stat_code is None:
+            return False
+        if not hasattr(self, "tags") or self.tags is None:
+            return False
+        if not hasattr(self, "unlocked_icons") or self.unlocked_icons is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

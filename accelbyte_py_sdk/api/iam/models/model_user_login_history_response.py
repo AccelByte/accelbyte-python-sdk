@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -88,6 +89,31 @@ class ModelUserLoginHistoryResponse(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "application_name") or self.application_name is None:
+            return False
+        if not hasattr(self, "city") or self.city is None:
+            return False
+        if not hasattr(self, "country") or self.country is None:
+            return False
+        if not hasattr(self, "device_id") or self.device_id is None:
+            return False
+        if not hasattr(self, "device_name") or self.device_name is None:
+            return False
+        if not hasattr(self, "state") or self.state is None:
+            return False
+        if not hasattr(self, "timestamp") or self.timestamp is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

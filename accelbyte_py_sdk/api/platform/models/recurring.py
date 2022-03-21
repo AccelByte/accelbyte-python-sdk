@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -67,6 +68,25 @@ class Recurring(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "cycle") or self.cycle is None:
+            return False
+        if not hasattr(self, "fixed_free_days") or self.fixed_free_days is None:
+            return False
+        if not hasattr(self, "fixed_trial_cycles") or self.fixed_trial_cycles is None:
+            return False
+        if not hasattr(self, "grace_days") or self.grace_days is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

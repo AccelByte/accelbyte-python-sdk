@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -74,6 +75,27 @@ class ItemDynamicDataInfo(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "available_count") or self.available_count is None:
+            return False
+        if not hasattr(self, "item_id") or self.item_id is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
+            return False
+        if not hasattr(self, "user_available_count") or self.user_available_count is None:
+            return False
+        if not hasattr(self, "user_purchase_limit") or self.user_purchase_limit is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

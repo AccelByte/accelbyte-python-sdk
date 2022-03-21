@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -67,6 +68,25 @@ class LegalAcceptedPoliciesRequest(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "is_accepted") or self.is_accepted is None:
+            return False
+        if not hasattr(self, "localized_policy_version_id") or self.localized_policy_version_id is None:
+            return False
+        if not hasattr(self, "policy_id") or self.policy_id is None:
+            return False
+        if not hasattr(self, "policy_version_id") or self.policy_version_id is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

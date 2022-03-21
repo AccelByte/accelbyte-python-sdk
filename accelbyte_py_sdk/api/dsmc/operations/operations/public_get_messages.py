@@ -21,6 +21,7 @@
 # justice-dsm-controller-service (2.15.0)
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
@@ -119,6 +120,8 @@ class PublicGetMessages(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
+        # required checks
+        # pattern checks
         return True
 
     # endregion is/has methods

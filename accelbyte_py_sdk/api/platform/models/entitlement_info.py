@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -209,6 +210,43 @@ class EntitlementInfo(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "clazz") or self.clazz is None:
+            return False
+        if not hasattr(self, "created_at") or self.created_at is None:
+            return False
+        if not hasattr(self, "granted_at") or self.granted_at is None:
+            return False
+        if not hasattr(self, "id_") or self.id_ is None:
+            return False
+        if not hasattr(self, "item_id") or self.item_id is None:
+            return False
+        if not hasattr(self, "item_namespace") or self.item_namespace is None:
+            return False
+        if not hasattr(self, "name") or self.name is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
+            return False
+        if not hasattr(self, "source") or self.source is None:
+            return False
+        if not hasattr(self, "status") or self.status is None:
+            return False
+        if not hasattr(self, "type_") or self.type_ is None:
+            return False
+        if not hasattr(self, "updated_at") or self.updated_at is None:
+            return False
+        if not hasattr(self, "user_id") or self.user_id is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

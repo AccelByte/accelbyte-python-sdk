@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -109,6 +110,37 @@ class ModelsGameSessionSetting(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "allow_join_in_progress") or self.allow_join_in_progress is None:
+            return False
+        if not hasattr(self, "current_internal_player") or self.current_internal_player is None:
+            return False
+        if not hasattr(self, "current_player") or self.current_player is None:
+            return False
+        if not hasattr(self, "map_name") or self.map_name is None:
+            return False
+        if not hasattr(self, "max_internal_player") or self.max_internal_player is None:
+            return False
+        if not hasattr(self, "max_player") or self.max_player is None:
+            return False
+        if not hasattr(self, "mode") or self.mode is None:
+            return False
+        if not hasattr(self, "num_bot") or self.num_bot is None:
+            return False
+        if not hasattr(self, "password") or self.password is None:
+            return False
+        if not hasattr(self, "settings") or self.settings is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

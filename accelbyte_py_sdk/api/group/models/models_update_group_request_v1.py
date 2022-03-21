@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -83,6 +84,29 @@ class ModelsUpdateGroupRequestV1(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "custom_attributes") or self.custom_attributes is None:
+            return False
+        if not hasattr(self, "group_description") or self.group_description is None:
+            return False
+        if not hasattr(self, "group_icon") or self.group_icon is None:
+            return False
+        if not hasattr(self, "group_name") or self.group_name is None:
+            return False
+        if not hasattr(self, "group_region") or self.group_region is None:
+            return False
+        if not hasattr(self, "group_type") or self.group_type is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

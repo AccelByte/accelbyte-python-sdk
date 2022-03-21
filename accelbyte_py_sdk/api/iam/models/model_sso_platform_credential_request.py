@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -95,6 +96,33 @@ class ModelSSOPlatformCredentialRequest(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "acs_url") or self.acs_url is None:
+            return False
+        if not hasattr(self, "api_key") or self.api_key is None:
+            return False
+        if not hasattr(self, "app_id") or self.app_id is None:
+            return False
+        if not hasattr(self, "federation_metadata_url") or self.federation_metadata_url is None:
+            return False
+        if not hasattr(self, "is_active") or self.is_active is None:
+            return False
+        if not hasattr(self, "redirect_uri") or self.redirect_uri is None:
+            return False
+        if not hasattr(self, "secret") or self.secret is None:
+            return False
+        if not hasattr(self, "sso_url") or self.sso_url is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

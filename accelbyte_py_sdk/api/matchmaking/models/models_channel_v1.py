@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -132,6 +133,43 @@ class ModelsChannelV1(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "deployment") or self.deployment is None:
+            return False
+        if not hasattr(self, "description") or self.description is None:
+            return False
+        if not hasattr(self, "find_match_timeout_seconds") or self.find_match_timeout_seconds is None:
+            return False
+        if not hasattr(self, "game_mode") or self.game_mode is None:
+            return False
+        if not hasattr(self, "joinable") or self.joinable is None:
+            return False
+        if not hasattr(self, "max_delay_ms") or self.max_delay_ms is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
+            return False
+        if not hasattr(self, "rule_set") or self.rule_set is None:
+            return False
+        if not hasattr(self, "session_queue_timeout_seconds") or self.session_queue_timeout_seconds is None:
+            return False
+        if not hasattr(self, "slug") or self.slug is None:
+            return False
+        if not hasattr(self, "social_matchmaking") or self.social_matchmaking is None:
+            return False
+        if not hasattr(self, "updated_at") or self.updated_at is None:
+            return False
+        if not hasattr(self, "use_sub_gamemode") or self.use_sub_gamemode is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

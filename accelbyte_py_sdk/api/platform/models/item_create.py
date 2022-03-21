@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -261,6 +262,31 @@ class ItemCreate(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "category_path") or self.category_path is None:
+            return False
+        if not hasattr(self, "entitlement_type") or self.entitlement_type is None:
+            return False
+        if not hasattr(self, "item_type") or self.item_type is None:
+            return False
+        if not hasattr(self, "localizations") or self.localizations is None:
+            return False
+        if not hasattr(self, "name") or self.name is None:
+            return False
+        if not hasattr(self, "region_data") or self.region_data is None:
+            return False
+        if not hasattr(self, "status") or self.status is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

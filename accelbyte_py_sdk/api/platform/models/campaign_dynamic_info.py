@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -74,6 +75,27 @@ class CampaignDynamicInfo(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "available_sale_count") or self.available_sale_count is None:
+            return False
+        if not hasattr(self, "last_batch_no") or self.last_batch_no is None:
+            return False
+        if not hasattr(self, "quantity") or self.quantity is None:
+            return False
+        if not hasattr(self, "remainder") or self.remainder is None:
+            return False
+        if not hasattr(self, "sale_count") or self.sale_count is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

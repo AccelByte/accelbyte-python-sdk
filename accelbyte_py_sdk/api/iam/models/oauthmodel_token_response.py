@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -148,6 +149,39 @@ class OauthmodelTokenResponse(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "access_token") or self.access_token is None:
+            return False
+        if not hasattr(self, "bans") or self.bans is None:
+            return False
+        if not hasattr(self, "display_name") or self.display_name is None:
+            return False
+        if not hasattr(self, "expires_in") or self.expires_in is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
+            return False
+        if not hasattr(self, "namespace_roles") or self.namespace_roles is None:
+            return False
+        if not hasattr(self, "permissions") or self.permissions is None:
+            return False
+        if not hasattr(self, "refresh_token") or self.refresh_token is None:
+            return False
+        if not hasattr(self, "roles") or self.roles is None:
+            return False
+        if not hasattr(self, "token_type") or self.token_type is None:
+            return False
+        if not hasattr(self, "user_id") or self.user_id is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

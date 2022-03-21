@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -99,6 +100,33 @@ class AccountcommonRole(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "admin_role") or self.admin_role is None:
+            return False
+        if not hasattr(self, "deletable") or self.deletable is None:
+            return False
+        if not hasattr(self, "is_wildcard") or self.is_wildcard is None:
+            return False
+        if not hasattr(self, "managers") or self.managers is None:
+            return False
+        if not hasattr(self, "members") or self.members is None:
+            return False
+        if not hasattr(self, "permissions") or self.permissions is None:
+            return False
+        if not hasattr(self, "role_id") or self.role_id is None:
+            return False
+        if not hasattr(self, "role_name") or self.role_name is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

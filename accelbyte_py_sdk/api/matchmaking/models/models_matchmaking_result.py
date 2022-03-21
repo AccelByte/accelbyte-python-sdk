@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -146,6 +147,43 @@ class ModelsMatchmakingResult(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "channel") or self.channel is None:
+            return False
+        if not hasattr(self, "client_version") or self.client_version is None:
+            return False
+        if not hasattr(self, "deployment") or self.deployment is None:
+            return False
+        if not hasattr(self, "game_mode") or self.game_mode is None:
+            return False
+        if not hasattr(self, "match_id") or self.match_id is None:
+            return False
+        if not hasattr(self, "matching_allies") or self.matching_allies is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
+            return False
+        if not hasattr(self, "party_attributes") or self.party_attributes is None:
+            return False
+        if not hasattr(self, "queued_at") or self.queued_at is None:
+            return False
+        if not hasattr(self, "region") or self.region is None:
+            return False
+        if not hasattr(self, "server_name") or self.server_name is None:
+            return False
+        if not hasattr(self, "status") or self.status is None:
+            return False
+        if not hasattr(self, "updated_at") or self.updated_at is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

@@ -21,6 +21,7 @@
 # justice-iam-service (5.4.0)
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
@@ -156,8 +157,10 @@ class SetRoleAsAdmin(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
+        # required checks
         if not hasattr(self, "role_id") or self.role_id is None:
             return False
+        # pattern checks
         return True
 
     # endregion is/has methods

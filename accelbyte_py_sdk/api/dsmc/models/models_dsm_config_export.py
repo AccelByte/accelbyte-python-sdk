@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -148,6 +149,47 @@ class ModelsDSMConfigExport(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "claim_timeout") or self.claim_timeout is None:
+            return False
+        if not hasattr(self, "created_at") or self.created_at is None:
+            return False
+        if not hasattr(self, "creation_timeout") or self.creation_timeout is None:
+            return False
+        if not hasattr(self, "default_version") or self.default_version is None:
+            return False
+        if not hasattr(self, "deployments") or self.deployments is None:
+            return False
+        if not hasattr(self, "images") or self.images is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
+            return False
+        if not hasattr(self, "pod_configs") or self.pod_configs is None:
+            return False
+        if not hasattr(self, "port") or self.port is None:
+            return False
+        if not hasattr(self, "ports") or self.ports is None:
+            return False
+        if not hasattr(self, "protocol") or self.protocol is None:
+            return False
+        if not hasattr(self, "providers") or self.providers is None:
+            return False
+        if not hasattr(self, "session_timeout") or self.session_timeout is None:
+            return False
+        if not hasattr(self, "unreachable_timeout") or self.unreachable_timeout is None:
+            return False
+        if not hasattr(self, "updated_at") or self.updated_at is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

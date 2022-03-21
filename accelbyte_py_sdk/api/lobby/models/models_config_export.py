@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -158,6 +159,49 @@ class ModelsConfigExport(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "auto_kick_on_disconnect") or self.auto_kick_on_disconnect is None:
+            return False
+        if not hasattr(self, "auto_kick_on_disconnect_delay") or self.auto_kick_on_disconnect_delay is None:
+            return False
+        if not hasattr(self, "cancel_ticket_on_disconnect") or self.cancel_ticket_on_disconnect is None:
+            return False
+        if not hasattr(self, "chat_rate_limit_burst") or self.chat_rate_limit_burst is None:
+            return False
+        if not hasattr(self, "chat_rate_limit_duration") or self.chat_rate_limit_duration is None:
+            return False
+        if not hasattr(self, "concurrent_users_limit") or self.concurrent_users_limit is None:
+            return False
+        if not hasattr(self, "disable_party_invitation_token") or self.disable_party_invitation_token is None:
+            return False
+        if not hasattr(self, "enable_chat") or self.enable_chat is None:
+            return False
+        if not hasattr(self, "entitlement_check") or self.entitlement_check is None:
+            return False
+        if not hasattr(self, "entitlement_item_id") or self.entitlement_item_id is None:
+            return False
+        if not hasattr(self, "general_rate_limit_burst") or self.general_rate_limit_burst is None:
+            return False
+        if not hasattr(self, "general_rate_limit_duration") or self.general_rate_limit_duration is None:
+            return False
+        if not hasattr(self, "max_party_member") or self.max_party_member is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
+            return False
+        if not hasattr(self, "profanity_filter") or self.profanity_filter is None:
+            return False
+        if not hasattr(self, "ready_consent_timeout") or self.ready_consent_timeout is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

@@ -21,6 +21,7 @@
 # Justice Matchmaking Service (2.14.0)
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
@@ -173,6 +174,7 @@ class AddUserIntoSessionInChannel(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
+        # required checks
         if not hasattr(self, "body") or self.body is None:
             return False
         if not hasattr(self, "channel_name") or self.channel_name is None:
@@ -180,6 +182,9 @@ class AddUserIntoSessionInChannel(Operation):
         if not hasattr(self, "match_id") or self.match_id is None:
             return False
         if not hasattr(self, "namespace") or self.namespace is None:
+            return False
+        # pattern checks
+        if hasattr(self, "body") and not self.body.is_valid():
             return False
         return True
 

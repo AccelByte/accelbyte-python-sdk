@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -118,6 +119,37 @@ class ModelUserBanResponse(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "ban") or self.ban is None:
+            return False
+        if not hasattr(self, "ban_id") or self.ban_id is None:
+            return False
+        if not hasattr(self, "banned_by") or self.banned_by is None:
+            return False
+        if not hasattr(self, "comment") or self.comment is None:
+            return False
+        if not hasattr(self, "created_at") or self.created_at is None:
+            return False
+        if not hasattr(self, "enabled") or self.enabled is None:
+            return False
+        if not hasattr(self, "end_date") or self.end_date is None:
+            return False
+        if not hasattr(self, "namespace") or self.namespace is None:
+            return False
+        if not hasattr(self, "reason") or self.reason is None:
+            return False
+        if not hasattr(self, "user_id") or self.user_id is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 

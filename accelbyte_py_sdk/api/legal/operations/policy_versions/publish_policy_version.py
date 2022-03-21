@@ -21,6 +21,7 @@
 # justice-legal-service (1.18.1)
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
@@ -148,8 +149,10 @@ class PublishPolicyVersion(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
+        # required checks
         if not hasattr(self, "policy_version_id") or self.policy_version_id is None:
             return False
+        # pattern checks
         return True
 
     # endregion is/has methods

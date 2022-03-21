@@ -21,6 +21,7 @@
 # pylint: disable=unused-import
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
@@ -97,6 +98,33 @@ class ModelsUserLeaderboardRanking(Model):
         return self
 
     # endregion with_x methods
+
+    # region is/has methods
+
+    # noinspection PyMethodMayBeStatic
+    def is_valid(self) -> bool:
+        # pylint: no-self-use
+        # required checks
+        if not hasattr(self, "all_time") or self.all_time is None:
+            return False
+        if not hasattr(self, "current") or self.current is None:
+            return False
+        if not hasattr(self, "daily") or self.daily is None:
+            return False
+        if not hasattr(self, "leaderboard_code") or self.leaderboard_code is None:
+            return False
+        if not hasattr(self, "leaderboard_name") or self.leaderboard_name is None:
+            return False
+        if not hasattr(self, "monthly") or self.monthly is None:
+            return False
+        if not hasattr(self, "user_id") or self.user_id is None:
+            return False
+        if not hasattr(self, "weekly") or self.weekly is None:
+            return False
+        # pattern checks
+        return True
+
+    # endregion is/has methods
 
     # region to methods
 
