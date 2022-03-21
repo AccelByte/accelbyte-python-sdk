@@ -353,7 +353,7 @@ def convert_operation(
     Any,     # json
 ]:
     if not operation.is_valid():
-        raise Exception("Missing required values.")
+        raise Exception("Missing required or invalid values.")
 
     headers = headers if headers is not None else operation.get_headers()
 
