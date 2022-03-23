@@ -16,3 +16,5 @@ from ._platform import PlatformTestCase
 from ._sessionbrowser import SessionBrowserTestCase
 from ._social import SocialTestCase
 from ._ugc import UGCTestCase
+
+from ._docs import DocsTestCase
