@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import time
 
 import yaml
 from abc import ABC
@@ -94,6 +95,11 @@ class SDKTestCaseUtils:
         test_case.assertTrue(self.user_found, msg=f"User not found.")
         test_case.assertTrue(self.logged_in, msg=f"Not logged in.")
 
+    # noinspection PyMethodMayBeStatic
+    def do_teardown(self, test_case: TestCase):
+        # pylint: disable=no-self-use
+        time.sleep(0.5)
+
     def log(self, msg: object, level: Optional[int] = None, condition: Optional[bool] = None):
         if condition is not None and condition is False:
             return
@@ -126,6 +132,9 @@ class IntegrationTestCase(ABC, SDKTestCaseUtils, TestCase):
 
     def setUp(self) -> None:
         self.do_setup(self)
+
+    def tearDown(self) -> None:
+        self.do_teardown(self)
 
 
 class AsyncIntegrationTestCase(ABC, SDKTestCaseUtils, IsolatedAsyncioTestCase):
@@ -163,6 +172,7 @@ class AsyncIntegrationTestCase(ABC, SDKTestCaseUtils, IsolatedAsyncioTestCase):
         if self.ws_client is not None:
             await self.ws_client.disconnect()
             self.ws_client = None
+        self.do_teardown(self)
 
     async def on_receive(self, message: str):
         self.messages.put(message)
