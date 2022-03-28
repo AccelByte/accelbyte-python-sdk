@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.3.0)
+# justice-cloudsave-service (2.3.1)
 
 from __future__ import annotations
 import re
@@ -33,7 +33,7 @@ from ...models import ModelsResponseError
 
 
 class BulkGetPlayerPublicRecordHandlerV1(Operation):
-    """Bulk get other player's public record (bulkGetPlayerPublicRecordHandlerV1)
+    """Bulk get player public records (bulkGetPlayerPublicRecordHandlerV1)
 
     Required Permission | `NAMESPACE:{namespace}:PUBLIC:CLOUDSAVE:RECORD [READ]`
     --------------------|--------------------------------------------------------

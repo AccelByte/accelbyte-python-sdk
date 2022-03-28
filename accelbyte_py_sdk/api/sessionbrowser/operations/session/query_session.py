@@ -67,13 +67,13 @@ class QuerySession(Operation):
 
         joinable: (joinable) OPTIONAL str in query
 
-        limit: (limit) OPTIONAL str in query
+        limit: (limit) OPTIONAL int in query
 
         match_exist: (match_exist) OPTIONAL str in query
 
         match_id: (match_id) OPTIONAL str in query
 
-        offset: (offset) OPTIONAL str in query
+        offset: (offset) OPTIONAL int in query
 
         server_status: (server_status) OPTIONAL str in query
 
@@ -102,10 +102,10 @@ class QuerySession(Operation):
     game_mode: str                                                                                 # OPTIONAL in [query]
     game_version: str                                                                              # OPTIONAL in [query]
     joinable: str                                                                                  # OPTIONAL in [query]
-    limit: str                                                                                     # OPTIONAL in [query]
+    limit: int                                                                                     # OPTIONAL in [query]
     match_exist: str                                                                               # OPTIONAL in [query]
     match_id: str                                                                                  # OPTIONAL in [query]
-    offset: str                                                                                    # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
     server_status: str                                                                             # OPTIONAL in [query]
     user_id: str                                                                                   # OPTIONAL in [query]
     session_type: str                                                                              # REQUIRED in [query]
@@ -230,7 +230,7 @@ class QuerySession(Operation):
         self.joinable = value
         return self
 
-    def with_limit(self, value: str) -> QuerySession:
+    def with_limit(self, value: int) -> QuerySession:
         self.limit = value
         return self
 
@@ -242,7 +242,7 @@ class QuerySession(Operation):
         self.match_id = value
         return self
 
-    def with_offset(self, value: str) -> QuerySession:
+    def with_offset(self, value: int) -> QuerySession:
         self.offset = value
         return self
 
@@ -281,9 +281,9 @@ class QuerySession(Operation):
         elif include_empty:
             result["joinable"] = str()
         if hasattr(self, "limit") and self.limit:
-            result["limit"] = str(self.limit)
+            result["limit"] = int(self.limit)
         elif include_empty:
-            result["limit"] = str()
+            result["limit"] = int()
         if hasattr(self, "match_exist") and self.match_exist:
             result["match_exist"] = str(self.match_exist)
         elif include_empty:
@@ -293,9 +293,9 @@ class QuerySession(Operation):
         elif include_empty:
             result["match_id"] = str()
         if hasattr(self, "offset") and self.offset:
-            result["offset"] = str(self.offset)
+            result["offset"] = int(self.offset)
         elif include_empty:
-            result["offset"] = str()
+            result["offset"] = int()
         if hasattr(self, "server_status") and self.server_status:
             result["server_status"] = str(self.server_status)
         elif include_empty:
@@ -356,10 +356,10 @@ class QuerySession(Operation):
         game_mode: Optional[str] = None,
         game_version: Optional[str] = None,
         joinable: Optional[str] = None,
-        limit: Optional[str] = None,
+        limit: Optional[int] = None,
         match_exist: Optional[str] = None,
         match_id: Optional[str] = None,
-        offset: Optional[str] = None,
+        offset: Optional[int] = None,
         server_status: Optional[str] = None,
         user_id: Optional[str] = None,
     ) -> QuerySession:
@@ -406,9 +406,9 @@ class QuerySession(Operation):
         elif include_empty:
             instance.joinable = str()
         if "limit" in dict_ and dict_["limit"] is not None:
-            instance.limit = str(dict_["limit"])
+            instance.limit = int(dict_["limit"])
         elif include_empty:
-            instance.limit = str()
+            instance.limit = int()
         if "match_exist" in dict_ and dict_["match_exist"] is not None:
             instance.match_exist = str(dict_["match_exist"])
         elif include_empty:
@@ -418,9 +418,9 @@ class QuerySession(Operation):
         elif include_empty:
             instance.match_id = str()
         if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = str(dict_["offset"])
+            instance.offset = int(dict_["offset"])
         elif include_empty:
-            instance.offset = str()
+            instance.offset = int()
         if "server_status" in dict_ and dict_["server_status"] is not None:
             instance.server_status = str(dict_["server_status"])
         elif include_empty:

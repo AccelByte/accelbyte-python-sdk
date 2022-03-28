@@ -27,9 +27,9 @@ from ....core import run_request_async
 from ....core import deprecated
 from ....core import same_doc_as
 
-from ..models import ModelsListPlayerRecordKeys
-from ..models import ModelsPlayerRecord
+from ..models import ModelsListPlayerRecordKeysResponse
 from ..models import ModelsPlayerRecordRequest
+from ..models import ModelsPlayerRecordResponse
 from ..models import ModelsResponseError
 
 from ..operations.admin_player_record import AdminDeletePlayerPublicRecordHandlerV1

@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.3.0)
+# justice-cloudsave-service (2.3.1)
 
 from __future__ import annotations
 import re
@@ -32,7 +32,7 @@ from ...models import ModelsResponseError
 
 
 class PostPlayerPublicRecordHandlerV1(Operation):
-    """Create public player record (postPlayerPublicRecordHandlerV1)
+    """Create or append player public record (postPlayerPublicRecordHandlerV1)
 
     Required Permission | `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [WRITE]`
     --------------------|-----------------------------------------------------------------------
@@ -42,59 +42,74 @@ class PostPlayerPublicRecordHandlerV1(Operation):
 
 
 
-    This endpoint will create or update player record with `isPublic=true` meaning that the
-    record will be available for other player to be retrieved. Other player can only retrieve the record
-    and not create, update or even delete.
 
-    This endpoint will create public player record if it is not exists otherwise merge with these criteria:
-    - If field name is already exists, replace the value
-    - If field name is not exists, append it
 
-    Example
-
-    Replace value:
+    ## Description
 
 
 
+    This endpoints will create new player public record or append the existing player public record.
 
-            // existed record
-            {
-                "foo": "bar"
-            }
+     Append example:
 
-            // new record (request body)
-            {
-                "foo": "bar_updated"
-            }
-
-            // result
-            {
-                "foo": "bar_updated"
-            }
+    Example 1
+    - Existing JSON:
 
 
 
-
-    Append value:
-
+        { "data1": "value" }
 
 
+    - New JSON:
 
-            // existed record
-            {
-                "foo": "bar"
-            }
 
-            // new record (request body)
-            {
-                "foo_new": "bar_new"
-            }
 
-            // result
-            {
-                "foo": "bar",
-                "foo_new": "bar_new"
-            }
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data1": "value", "data2": "new value" }
+
+
+
+    Example 2
+    - Existing JSON:
+
+
+
+        { "data1": { "data2": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data1": { "data3": "new value" }
+
+
+    - Result:
+
+
+
+        { "data1": { "data2": "value", "data3": "new value" }
+
+
+
+
+
+
+
+    ## Reserved Word
+
+
+
+    Reserved Word List: META
+
+    The reserved word cannot be used as a field in record value,
+    If still defining the field when creating or updating the record, it will be ignored.
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [WRITE]
@@ -125,6 +140,8 @@ class PostPlayerPublicRecordHandlerV1(Operation):
 
     Responses:
         201: Created - (Record saved)
+
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
 
         401: Unauthorized - ModelsResponseError (Unauthorized)
 
@@ -291,6 +308,8 @@ class PostPlayerPublicRecordHandlerV1(Operation):
 
         201: Created - (Record saved)
 
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
         401: Unauthorized - ModelsResponseError (Unauthorized)
 
         500: Internal Server Error - ModelsResponseError (Internal Server Error)
@@ -308,6 +327,8 @@ class PostPlayerPublicRecordHandlerV1(Operation):
 
         if code == 201:
             return HttpResponse.create(code, "Created"), None
+        if code == 400:
+            return None, ModelsResponseError.create_from_dict(content)
         if code == 401:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 500:

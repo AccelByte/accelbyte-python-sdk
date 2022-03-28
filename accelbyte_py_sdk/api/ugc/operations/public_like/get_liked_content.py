@@ -51,9 +51,9 @@ class GetLikedContent(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        limit: (limit) OPTIONAL str in query
+        limit: (limit) OPTIONAL int in query
 
-        offset: (offset) OPTIONAL str in query
+        offset: (offset) OPTIONAL int in query
 
     Responses:
         200: OK - ModelsPaginatedContentDownloadResponse (OK)
@@ -75,8 +75,8 @@ class GetLikedContent(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    limit: str                                                                                     # OPTIONAL in [query]
-    offset: str                                                                                    # OPTIONAL in [query]
+    limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
 
     # endregion fields
 
@@ -167,11 +167,11 @@ class GetLikedContent(Operation):
         self.namespace = value
         return self
 
-    def with_limit(self, value: str) -> GetLikedContent:
+    def with_limit(self, value: int) -> GetLikedContent:
         self.limit = value
         return self
 
-    def with_offset(self, value: str) -> GetLikedContent:
+    def with_offset(self, value: int) -> GetLikedContent:
         self.offset = value
         return self
 
@@ -186,13 +186,13 @@ class GetLikedContent(Operation):
         elif include_empty:
             result["namespace"] = str()
         if hasattr(self, "limit") and self.limit:
-            result["limit"] = str(self.limit)
+            result["limit"] = int(self.limit)
         elif include_empty:
-            result["limit"] = str()
+            result["limit"] = int()
         if hasattr(self, "offset") and self.offset:
-            result["offset"] = str(self.offset)
+            result["offset"] = int(self.offset)
         elif include_empty:
-            result["offset"] = str()
+            result["offset"] = int()
         return result
 
     # endregion to methods
@@ -241,8 +241,8 @@ class GetLikedContent(Operation):
     def create(
         cls,
         namespace: str,
-        limit: Optional[str] = None,
-        offset: Optional[str] = None,
+        limit: Optional[int] = None,
+        offset: Optional[int] = None,
     ) -> GetLikedContent:
         instance = cls()
         instance.namespace = namespace
@@ -260,13 +260,13 @@ class GetLikedContent(Operation):
         elif include_empty:
             instance.namespace = str()
         if "limit" in dict_ and dict_["limit"] is not None:
-            instance.limit = str(dict_["limit"])
+            instance.limit = int(dict_["limit"])
         elif include_empty:
-            instance.limit = str()
+            instance.limit = int()
         if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = str(dict_["offset"])
+            instance.offset = int(dict_["offset"])
         elif include_empty:
-            instance.offset = str()
+            instance.offset = int()
         return instance
 
     @staticmethod

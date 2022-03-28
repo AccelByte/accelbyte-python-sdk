@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-cloudsave-service (2.3.0)
+# justice-cloudsave-service (2.3.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -25,20 +25,20 @@ from .utils import randomize
 from ..api.cloudsave.models import ModelsBulkGetPlayerRecordResponse
 from ..api.cloudsave.models import ModelsBulkUserIDsRequest
 from ..api.cloudsave.models import ModelsConcurrentRecordRequest
-from ..api.cloudsave.models import ModelsGameRecord
 from ..api.cloudsave.models import ModelsGameRecordRequest
-from ..api.cloudsave.models import ModelsListGameRecordKeys
-from ..api.cloudsave.models import ModelsListPlayerRecordKeys
+from ..api.cloudsave.models import ModelsGameRecordResponse
+from ..api.cloudsave.models import ModelsListGameRecordKeysResponse
+from ..api.cloudsave.models import ModelsListPlayerRecordKeysResponse
 from ..api.cloudsave.models import ModelsPagination
-from ..api.cloudsave.models import ModelsPlayerRecord
-from ..api.cloudsave.models import ModelsPlayerRecordKey
+from ..api.cloudsave.models import ModelsPlayerRecordKeyInfo
 from ..api.cloudsave.models import ModelsPlayerRecordRequest
+from ..api.cloudsave.models import ModelsPlayerRecordResponse
 from ..api.cloudsave.models import ModelsResponseError
 
 
 def create_models_bulk_get_player_record_response_example() -> ModelsBulkGetPlayerRecordResponse:
     instance = ModelsBulkGetPlayerRecordResponse()
-    instance.data = [create_models_player_record_example()]
+    instance.data = [create_models_player_record_response_example()]
     return instance
 
 
@@ -55,31 +55,32 @@ def create_models_concurrent_record_request_example() -> ModelsConcurrentRecordR
     return instance
 
 
-def create_models_game_record_example() -> ModelsGameRecord:
-    instance = ModelsGameRecord()
-    instance.created_at = randomize("date")
-    instance.key = randomize()
-    instance.namespace = randomize("slug")
-    instance.updated_at = randomize("date")
-    instance.value = {randomize(): randomize()}
-    return instance
-
-
 def create_models_game_record_request_example() -> ModelsGameRecordRequest:
     instance = ModelsGameRecordRequest()
     return instance
 
 
-def create_models_list_game_record_keys_example() -> ModelsListGameRecordKeys:
-    instance = ModelsListGameRecordKeys()
+def create_models_game_record_response_example() -> ModelsGameRecordResponse:
+    instance = ModelsGameRecordResponse()
+    instance.created_at = randomize("date")
+    instance.key = randomize()
+    instance.namespace = randomize("slug")
+    instance.updated_at = randomize("date")
+    instance.value = {randomize(): randomize()}
+    instance.set_by = randomize()
+    return instance
+
+
+def create_models_list_game_record_keys_response_example() -> ModelsListGameRecordKeysResponse:
+    instance = ModelsListGameRecordKeysResponse()
     instance.data = [randomize()]
     instance.paging = create_models_pagination_example()
     return instance
 
 
-def create_models_list_player_record_keys_example() -> ModelsListPlayerRecordKeys:
-    instance = ModelsListPlayerRecordKeys()
-    instance.data = [create_models_player_record_key_example()]
+def create_models_list_player_record_keys_response_example() -> ModelsListPlayerRecordKeysResponse:
+    instance = ModelsListPlayerRecordKeysResponse()
+    instance.data = [create_models_player_record_key_info_example()]
     instance.paging = create_models_pagination_example()
     return instance
 
@@ -93,20 +94,8 @@ def create_models_pagination_example() -> ModelsPagination:
     return instance
 
 
-def create_models_player_record_example() -> ModelsPlayerRecord:
-    instance = ModelsPlayerRecord()
-    instance.created_at = randomize("date")
-    instance.is_public = randomize("bool")
-    instance.key = randomize()
-    instance.namespace = randomize("slug")
-    instance.updated_at = randomize("date")
-    instance.user_id = randomize("uid")
-    instance.value = {randomize(): randomize()}
-    return instance
-
-
-def create_models_player_record_key_example() -> ModelsPlayerRecordKey:
-    instance = ModelsPlayerRecordKey()
+def create_models_player_record_key_info_example() -> ModelsPlayerRecordKeyInfo:
+    instance = ModelsPlayerRecordKeyInfo()
     instance.key = randomize()
     instance.user_id = randomize("uid")
     return instance
@@ -114,6 +103,19 @@ def create_models_player_record_key_example() -> ModelsPlayerRecordKey:
 
 def create_models_player_record_request_example() -> ModelsPlayerRecordRequest:
     instance = ModelsPlayerRecordRequest()
+    return instance
+
+
+def create_models_player_record_response_example() -> ModelsPlayerRecordResponse:
+    instance = ModelsPlayerRecordResponse()
+    instance.created_at = randomize("date")
+    instance.is_public = randomize("bool")
+    instance.key = randomize()
+    instance.namespace = randomize("slug")
+    instance.updated_at = randomize("date")
+    instance.user_id = randomize("uid")
+    instance.value = {randomize(): randomize()}
+    instance.set_by = randomize()
     return instance
 
 

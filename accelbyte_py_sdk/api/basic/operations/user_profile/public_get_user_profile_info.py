@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-basic-service (1.34.0)
+# justice-basic-service (1.35.0)
 
 from __future__ import annotations
 import re

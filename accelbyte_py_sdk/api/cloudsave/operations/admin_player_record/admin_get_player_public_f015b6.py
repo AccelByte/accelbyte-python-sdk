@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.3.0)
+# justice-cloudsave-service (2.3.1)
 
 from __future__ import annotations
 import re
@@ -27,16 +27,16 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
-from ...models import ModelsPlayerRecord
+from ...models import ModelsPlayerRecordResponse
 from ...models import ModelsResponseError
 
 
 class AdminGetPlayerPublicRecordHandlerV1(Operation):
-    """Retrieve a player public record value by its key (adminGetPlayerPublicRecordHandlerV1)
+    """Get player public record (adminGetPlayerPublicRecordHandlerV1)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]
+    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]`
 
-    Required scope: social
+    Required scope: `social`
 
     Get a record in user-level (arbitrary JSON data) by its key.
 
@@ -66,7 +66,7 @@ class AdminGetPlayerPublicRecordHandlerV1(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsPlayerRecord (Successful operation)
+        200: OK - ModelsPlayerRecordResponse (Successful operation)
 
         401: Unauthorized - ModelsResponseError (Unauthorized)
 
@@ -210,10 +210,10 @@ class AdminGetPlayerPublicRecordHandlerV1(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsPlayerRecord], Union[None, HttpResponse, ModelsResponseError]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsPlayerRecordResponse], Union[None, HttpResponse, ModelsResponseError]]:
         """Parse the given response.
 
-        200: OK - ModelsPlayerRecord (Successful operation)
+        200: OK - ModelsPlayerRecordResponse (Successful operation)
 
         401: Unauthorized - ModelsResponseError (Unauthorized)
 
@@ -233,7 +233,7 @@ class AdminGetPlayerPublicRecordHandlerV1(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ModelsPlayerRecord.create_from_dict(content), None
+            return ModelsPlayerRecordResponse.create_from_dict(content), None
         if code == 401:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 404:

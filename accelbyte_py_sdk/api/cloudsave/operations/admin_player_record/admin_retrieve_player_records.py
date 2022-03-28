@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.3.0)
+# justice-cloudsave-service (2.3.1)
 
 from __future__ import annotations
 import re
@@ -27,16 +27,16 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
-from ...models import ModelsListPlayerRecordKeys
+from ...models import ModelsListPlayerRecordKeysResponse
 from ...models import ModelsResponseError
 
 
 class AdminRetrievePlayerRecords(Operation):
-    """Retrieve list of player records (AdminRetrievePlayerRecords)
+    """Query player records (AdminRetrievePlayerRecords)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:RECORD [READ]
+    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:RECORD [READ]`
 
-    Required scope: social
+    Required scope: `social`
 
     Retrieve list of player records key and userID under given namespace.
 
@@ -68,7 +68,7 @@ class AdminRetrievePlayerRecords(Operation):
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsListPlayerRecordKeys (Successful operation)
+        200: OK - ModelsListPlayerRecordKeysResponse (Successful operation)
 
         400: Bad Request - ModelsResponseError (Bad Request)
 
@@ -226,10 +226,10 @@ class AdminRetrievePlayerRecords(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsListPlayerRecordKeys], Union[None, HttpResponse, ModelsResponseError]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsListPlayerRecordKeysResponse], Union[None, HttpResponse, ModelsResponseError]]:
         """Parse the given response.
 
-        200: OK - ModelsListPlayerRecordKeys (Successful operation)
+        200: OK - ModelsListPlayerRecordKeysResponse (Successful operation)
 
         400: Bad Request - ModelsResponseError (Bad Request)
 
@@ -249,7 +249,7 @@ class AdminRetrievePlayerRecords(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ModelsListPlayerRecordKeys.create_from_dict(content), None
+            return ModelsListPlayerRecordKeysResponse.create_from_dict(content), None
         if code == 400:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 401:

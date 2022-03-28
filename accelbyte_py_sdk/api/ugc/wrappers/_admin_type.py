@@ -90,7 +90,7 @@ async def admin_delete_type_async(type_id: str, namespace: Optional[str] = None,
 
 
 @same_doc_as(AdminGetType)
-def admin_get_type(limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_get_type(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -104,7 +104,7 @@ def admin_get_type(limit: Optional[str] = None, offset: Optional[str] = None, na
 
 
 @same_doc_as(AdminGetType)
-async def admin_get_type_async(limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_get_type_async(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

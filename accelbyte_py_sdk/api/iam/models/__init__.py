@@ -6,7 +6,7 @@
 
 """Auto-generated package that contains models used by the justice-iam-service."""
 
-__version__ = "5.4.0"
+__version__ = "5.5.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -82,8 +82,11 @@ from .model_age_restriction_response import ModelAgeRestrictionResponse
 from .model_age_restriction_response_v3 import ModelAgeRestrictionResponseV3
 from .model_assign_user_v4_request import ModelAssignUserV4Request
 from .model_assigned_user_v4_response import ModelAssignedUserV4Response
+from .model_authenticator_key_response_v4 import ModelAuthenticatorKeyResponseV4
+from .model_backup_codes_response_v4 import ModelBackupCodesResponseV4
 from .model_ban_create_request import ModelBanCreateRequest
 from .model_ban_update_request import ModelBanUpdateRequest
+from .model_check_valid_user_id_request_v4 import ModelCheckValidUserIDRequestV4
 from .model_country import ModelCountry
 from .model_country_age_restriction_request import ModelCountryAgeRestrictionRequest
 from .model_country_age_restriction_v3_request import ModelCountryAgeRestrictionV3Request
@@ -91,6 +94,7 @@ from .model_country_v3_response import ModelCountryV3Response
 from .model_create_justice_user_response import ModelCreateJusticeUserResponse
 from .model_disable_user_request import ModelDisableUserRequest
 from .model_email_update_request_v4 import ModelEmailUpdateRequestV4
+from .model_enabled_factors_response_v4 import ModelEnabledFactorsResponseV4
 from .model_forgot_password_request_v3 import ModelForgotPasswordRequestV3
 from .model_get_admin_users_response import ModelGetAdminUsersResponse
 from .model_get_publisher_user_response import ModelGetPublisherUserResponse
@@ -115,6 +119,7 @@ from .model_list_role_v4_response import ModelListRoleV4Response
 from .model_list_user_information_result import ModelListUserInformationResult
 from .model_list_user_response_v3 import ModelListUserResponseV3
 from .model_list_user_roles_v4_response import ModelListUserRolesV4Response
+from .model_list_valid_user_id_response_v4 import ModelListValidUserIDResponseV4
 from .model_login_histories_response import ModelLoginHistoriesResponse
 from .model_namespace_role_request import ModelNamespaceRoleRequest
 from .model_permission_delete_request import ModelPermissionDeleteRequest
@@ -200,6 +205,7 @@ from .model_user_update_request import ModelUserUpdateRequest
 from .model_user_update_request_v3 import ModelUserUpdateRequestV3
 from .model_user_verification_request import ModelUserVerificationRequest
 from .model_user_verification_request_v3 import ModelUserVerificationRequestV3
+from .model_valid_user_id_response_v4 import ModelValidUserIDResponseV4
 from .model_validation_detail import ModelValidationDetail
 from .model_validation_detail_public import ModelValidationDetailPublic
 from .model_verification_code_response import ModelVerificationCodeResponse

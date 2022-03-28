@@ -94,7 +94,7 @@ async def delete_channel_async(channel_id: str, user_id: str, namespace: Optiona
 
 
 @same_doc_as(GetChannels)
-def get_channels(user_id: str, limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_channels(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -109,7 +109,7 @@ def get_channels(user_id: str, limit: Optional[str] = None, offset: Optional[str
 
 
 @same_doc_as(GetChannels)
-async def get_channels_async(user_id: str, limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_channels_async(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

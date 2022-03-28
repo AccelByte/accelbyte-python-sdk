@@ -38,6 +38,7 @@ from ..models import RestErrorResponse
 from ..operations.o_auth2_0 import AdminRetrieveUserThirdPartyPlatformTokenV3
 from ..operations.o_auth2_0 import AuthCodeRequestV3
 from ..operations.o_auth2_0 import AuthorizeV3
+from ..operations.o_auth2_0 import Change2faMethod
 from ..operations.o_auth2_0 import GetJWKSV3
 from ..operations.o_auth2_0 import GetRevocationListV3
 from ..operations.o_auth2_0 import PlatformTokenGrantV3
@@ -46,6 +47,7 @@ from ..operations.o_auth2_0 import RevokeUserV3
 from ..operations.o_auth2_0 import TokenGrantV3
 from ..operations.o_auth2_0 import TokenIntrospectionV3
 from ..operations.o_auth2_0 import TokenRevocationV3
+from ..operations.o_auth2_0 import Verify2faCode
 
 
 @same_doc_as(AdminRetrieveUserThirdPartyPlatformTokenV3)
@@ -124,6 +126,24 @@ async def authorize_v3_async(client_id: str, response_type: str, code_challenge:
         scope=scope,
         state=state,
         target_auth_page=target_auth_page,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(Change2faMethod)
+def change2fa_method(factor: str, mfa_token: str, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = Change2faMethod.create(
+        factor=factor,
+        mfa_token=mfa_token,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(Change2faMethod)
+async def change2fa_method_async(factor: str, mfa_token: str, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = Change2faMethod.create(
+        factor=factor,
+        mfa_token=mfa_token,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)
 
@@ -290,5 +310,27 @@ def token_revocation_v3(token: str, x_additional_headers: Optional[Dict[str, str
 async def token_revocation_v3_async(token: str, x_additional_headers: Optional[Dict[str, str]] = None):
     request = TokenRevocationV3.create(
         token=token,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(Verify2faCode)
+def verify2fa_code(code: str, factor: str, mfa_token: str, remember_device: bool, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = Verify2faCode.create(
+        code=code,
+        factor=factor,
+        mfa_token=mfa_token,
+        remember_device=remember_device,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(Verify2faCode)
+async def verify2fa_code_async(code: str, factor: str, mfa_token: str, remember_device: bool, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = Verify2faCode.create(
+        code=code,
+        factor=factor,
+        mfa_token=mfa_token,
+        remember_device=remember_device,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)

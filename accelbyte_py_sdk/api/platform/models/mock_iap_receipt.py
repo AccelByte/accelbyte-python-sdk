@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.4.2)
+# justice-platform-service (4.5.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,6 +35,8 @@ class MockIAPReceipt(Model):
 
         type_: (type) REQUIRED str
 
+        item_identity_type: (itemIdentityType) OPTIONAL str
+
         language: (language) OPTIONAL str
 
         region: (region) OPTIONAL str
@@ -44,6 +46,7 @@ class MockIAPReceipt(Model):
 
     product_id: str                                                                                # REQUIRED
     type_: str                                                                                     # REQUIRED
+    item_identity_type: str                                                                        # OPTIONAL
     language: str                                                                                  # OPTIONAL
     region: str                                                                                    # OPTIONAL
 
@@ -57,6 +60,10 @@ class MockIAPReceipt(Model):
 
     def with_type(self, value: str) -> MockIAPReceipt:
         self.type_ = value
+        return self
+
+    def with_item_identity_type(self, value: str) -> MockIAPReceipt:
+        self.item_identity_type = value
         return self
 
     def with_language(self, value: str) -> MockIAPReceipt:
@@ -98,6 +105,10 @@ class MockIAPReceipt(Model):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = str()
+        if hasattr(self, "item_identity_type"):
+            result["itemIdentityType"] = str(self.item_identity_type)
+        elif include_empty:
+            result["itemIdentityType"] = str()
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
@@ -117,12 +128,15 @@ class MockIAPReceipt(Model):
         cls,
         product_id: str,
         type_: str,
+        item_identity_type: Optional[str] = None,
         language: Optional[str] = None,
         region: Optional[str] = None,
     ) -> MockIAPReceipt:
         instance = cls()
         instance.product_id = product_id
         instance.type_ = type_
+        if item_identity_type is not None:
+            instance.item_identity_type = item_identity_type
         if language is not None:
             instance.language = language
         if region is not None:
@@ -142,6 +156,10 @@ class MockIAPReceipt(Model):
             instance.type_ = str(dict_["type"])
         elif include_empty:
             instance.type_ = str()
+        if "itemIdentityType" in dict_ and dict_["itemIdentityType"] is not None:
+            instance.item_identity_type = str(dict_["itemIdentityType"])
+        elif include_empty:
+            instance.item_identity_type = str()
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
@@ -175,6 +193,7 @@ class MockIAPReceipt(Model):
         return {
             "productId": "product_id",
             "type": "type_",
+            "itemIdentityType": "item_identity_type",
             "language": "language",
             "region": "region",
         }

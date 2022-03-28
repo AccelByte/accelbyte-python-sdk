@@ -19,16 +19,16 @@ from ._chat import get_personal_chat_history_v1_public_async
 from ._chat import personal_chat_history
 from ._chat import personal_chat_history_async
 
+from ._config import admin_export_config_v1
+from ._config import admin_export_config_v1_async
 from ._config import admin_get_all_config_v1
 from ._config import admin_get_all_config_v1_async
 from ._config import admin_get_config_v1
 from ._config import admin_get_config_v1_async
+from ._config import admin_import_config_v1
+from ._config import admin_import_config_v1_async
 from ._config import admin_update_config_v1
 from ._config import admin_update_config_v1_async
-from ._config import export_config
-from ._config import export_config_async
-from ._config import import_config
-from ._config import import_config_async
 
 from ._friends import add_friends_without_confirmation
 from ._friends import add_friends_without_confirmation_async

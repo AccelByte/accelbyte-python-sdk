@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.3.0)
+# justice-cloudsave-service (2.3.1)
 
 from __future__ import annotations
 import re
@@ -32,7 +32,7 @@ from ...models import ModelsResponseError
 
 
 class PutPlayerPublicRecordHandlerV1(Operation):
-    """Create or replace player record (putPlayerPublicRecordHandlerV1)
+    """Create or replace player public record (putPlayerPublicRecordHandlerV1)
 
     Required Permission | `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]`
     --------------------|------------------------------------------------------------------------
@@ -42,30 +42,62 @@ class PutPlayerPublicRecordHandlerV1(Operation):
 
 
 
-    If the record is not exist, it will create. If the record already exist, it will replace the record
-    instead. And this operation can only be applied to record with `isPublic=true`.
+
+
+    ## Description
+
+
+
+    This endpoints will create new player public record or replace the existing player public record.
+
+     Replace behaviour:
+    The existing value will be replaced completely with the new value.
 
     Example
-
-    Replace record
-
+    - Existing JSON:
 
 
 
-        // existed record
-        {
-            "foo": "bar"
-        }
+        { "data1": "value" }
 
-        // new record (request body)
-        {
-            "foo_new": "bar_new"
-        }
 
-        // result
-        {
-            "foo_new": "bar_new"
-        }
+    - New JSON:
+
+
+
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data2": "new value" }
+
+
+
+
+
+
+
+    ## Reserved Word
+
+
+
+    Reserved Word List: META
+
+    The reserved word cannot be used as a field in record value,
+    If still defining the field when creating or updating the record, it will be ignored.
+
+
+
+
+    ## Warning: Current Behaviour when Updating Private Record
+
+
+
+    When updating existing "Private Record", this endpoint will always convert the "Private Record" into "Public Record".
+    This behaviour might be deprecated sooner, please don't rely with that behaviour.
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]
@@ -96,6 +128,8 @@ class PutPlayerPublicRecordHandlerV1(Operation):
 
     Responses:
         200: OK - (Record saved)
+
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
 
         401: Unauthorized - ModelsResponseError (Unauthorized)
 
@@ -262,6 +296,8 @@ class PutPlayerPublicRecordHandlerV1(Operation):
 
         200: OK - (Record saved)
 
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
         401: Unauthorized - ModelsResponseError (Unauthorized)
 
         500: Internal Server Error - ModelsResponseError (Internal Server Error)
@@ -279,6 +315,8 @@ class PutPlayerPublicRecordHandlerV1(Operation):
 
         if code == 200:
             return HttpResponse.create(code, "OK"), None
+        if code == 400:
+            return None, ModelsResponseError.create_from_dict(content)
         if code == 401:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 500:

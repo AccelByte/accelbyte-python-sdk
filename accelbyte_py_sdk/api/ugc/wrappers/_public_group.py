@@ -125,7 +125,7 @@ async def get_group_async(group_id: str, user_id: str, namespace: Optional[str] 
 
 
 @same_doc_as(GetGroupContent)
-def get_group_content(group_id: str, user_id: str, limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_group_content(group_id: str, user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -141,7 +141,7 @@ def get_group_content(group_id: str, user_id: str, limit: Optional[str] = None, 
 
 
 @same_doc_as(GetGroupContent)
-async def get_group_content_async(group_id: str, user_id: str, limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_group_content_async(group_id: str, user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -157,7 +157,7 @@ async def get_group_content_async(group_id: str, user_id: str, limit: Optional[s
 
 
 @same_doc_as(GetGroups)
-def get_groups(user_id: str, limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_groups(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -172,7 +172,7 @@ def get_groups(user_id: str, limit: Optional[str] = None, offset: Optional[str] 
 
 
 @same_doc_as(GetGroups)
-async def get_groups_async(user_id: str, limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_groups_async(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

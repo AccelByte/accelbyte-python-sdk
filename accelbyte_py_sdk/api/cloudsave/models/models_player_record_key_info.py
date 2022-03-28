@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-cloudsave-service (2.3.0)
+# justice-cloudsave-service (2.3.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,34 +26,31 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.models_pagination import ModelsPagination
-from ..models.models_player_record_key import ModelsPlayerRecordKey
 
-
-class ModelsListPlayerRecordKeys(Model):
-    """Models list player record keys (models.ListPlayerRecordKeys)
+class ModelsPlayerRecordKeyInfo(Model):
+    """Models player record key info (models.PlayerRecordKeyInfo)
 
     Properties:
-        data: (data) REQUIRED List[ModelsPlayerRecordKey]
+        key: (key) REQUIRED str
 
-        paging: (paging) REQUIRED ModelsPagination
+        user_id: (user_id) REQUIRED str
     """
 
     # region fields
 
-    data: List[ModelsPlayerRecordKey]                                                              # REQUIRED
-    paging: ModelsPagination                                                                       # REQUIRED
+    key: str                                                                                       # REQUIRED
+    user_id: str                                                                                   # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_data(self, value: List[ModelsPlayerRecordKey]) -> ModelsListPlayerRecordKeys:
-        self.data = value
+    def with_key(self, value: str) -> ModelsPlayerRecordKeyInfo:
+        self.key = value
         return self
 
-    def with_paging(self, value: ModelsPagination) -> ModelsListPlayerRecordKeys:
-        self.paging = value
+    def with_user_id(self, value: str) -> ModelsPlayerRecordKeyInfo:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -64,9 +61,9 @@ class ModelsListPlayerRecordKeys(Model):
     def is_valid(self) -> bool:
         # pylint: disable=no-self-use
         # required checks
-        if not hasattr(self, "data") or self.data is None:
+        if not hasattr(self, "key") or self.key is None:
             return False
-        if not hasattr(self, "paging") or self.paging is None:
+        if not hasattr(self, "user_id") or self.user_id is None:
             return False
         # pattern checks
         return True
@@ -77,14 +74,14 @@ class ModelsListPlayerRecordKeys(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "data"):
-            result["data"] = [i0.to_dict(include_empty=include_empty) for i0 in self.data]
+        if hasattr(self, "key"):
+            result["key"] = str(self.key)
         elif include_empty:
-            result["data"] = []
-        if hasattr(self, "paging"):
-            result["paging"] = self.paging.to_dict(include_empty=include_empty)
+            result["key"] = str()
+        if hasattr(self, "user_id"):
+            result["user_id"] = str(self.user_id)
         elif include_empty:
-            result["paging"] = ModelsPagination()
+            result["user_id"] = str()
         return result
 
     # endregion to methods
@@ -94,39 +91,39 @@ class ModelsListPlayerRecordKeys(Model):
     @classmethod
     def create(
         cls,
-        data: List[ModelsPlayerRecordKey],
-        paging: ModelsPagination,
-    ) -> ModelsListPlayerRecordKeys:
+        key: str,
+        user_id: str,
+    ) -> ModelsPlayerRecordKeyInfo:
         instance = cls()
-        instance.data = data
-        instance.paging = paging
+        instance.key = key
+        instance.user_id = user_id
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsListPlayerRecordKeys:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsPlayerRecordKeyInfo:
         instance = cls()
         if not dict_:
             return instance
-        if "data" in dict_ and dict_["data"] is not None:
-            instance.data = [ModelsPlayerRecordKey.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["data"]]
+        if "key" in dict_ and dict_["key"] is not None:
+            instance.key = str(dict_["key"])
         elif include_empty:
-            instance.data = []
-        if "paging" in dict_ and dict_["paging"] is not None:
-            instance.paging = ModelsPagination.create_from_dict(dict_["paging"], include_empty=include_empty)
+            instance.key = str()
+        if "user_id" in dict_ and dict_["user_id"] is not None:
+            instance.user_id = str(dict_["user_id"])
         elif include_empty:
-            instance.paging = ModelsPagination()
+            instance.user_id = str()
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsListPlayerRecordKeys]:
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsPlayerRecordKeyInfo]:
         return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsListPlayerRecordKeys]:
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsPlayerRecordKeyInfo]:
         return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsListPlayerRecordKeys, List[ModelsListPlayerRecordKeys]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsPlayerRecordKeyInfo, List[ModelsPlayerRecordKeyInfo]]:
         if many:
             if isinstance(any_, dict):
                 cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -138,8 +135,8 @@ class ModelsListPlayerRecordKeys(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "data": "data",
-            "paging": "paging",
+            "key": "key",
+            "user_id": "user_id",
         }
 
     # endregion static methods

@@ -1,6 +1,6 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-cloudsave-service Index (2.3.0)
+# justice-cloudsave-service Index (2.3.1)
 
 
 ## Operations
@@ -62,12 +62,12 @@
 | models.BulkGetPlayerRecordResponse | [ModelsBulkGetPlayerRecordResponse](../accelbyte_py_sdk/api/cloudsave/models/models_bulk_get_player_record_response.py) |
 | models.BulkUserIDsRequest | [ModelsBulkUserIDsRequest](../accelbyte_py_sdk/api/cloudsave/models/models_bulk_user_i_ds_request.py) |
 | models.ConcurrentRecordRequest | [ModelsConcurrentRecordRequest](../accelbyte_py_sdk/api/cloudsave/models/models_concurrent_record_request.py) |
-| models.GameRecord | [ModelsGameRecord](../accelbyte_py_sdk/api/cloudsave/models/models_game_record.py) |
 | models.GameRecordRequest | [ModelsGameRecordRequest](../accelbyte_py_sdk/api/cloudsave/models/models_game_record_request.py) |
-| models.ListGameRecordKeys | [ModelsListGameRecordKeys](../accelbyte_py_sdk/api/cloudsave/models/models_list_game_record_keys.py) |
-| models.ListPlayerRecordKeys | [ModelsListPlayerRecordKeys](../accelbyte_py_sdk/api/cloudsave/models/models_list_player_record_keys.py) |
+| models.GameRecordResponse | [ModelsGameRecordResponse](../accelbyte_py_sdk/api/cloudsave/models/models_game_record_response.py) |
+| models.ListGameRecordKeysResponse | [ModelsListGameRecordKeysResponse](../accelbyte_py_sdk/api/cloudsave/models/models_list_game_record_keys_response.py) |
+| models.ListPlayerRecordKeysResponse | [ModelsListPlayerRecordKeysResponse](../accelbyte_py_sdk/api/cloudsave/models/models_list_player_record_keys_response.py) |
 | models.Pagination | [ModelsPagination](../accelbyte_py_sdk/api/cloudsave/models/models_pagination.py) |
-| models.PlayerRecord | [ModelsPlayerRecord](../accelbyte_py_sdk/api/cloudsave/models/models_player_record.py) |
-| models.PlayerRecordKey | [ModelsPlayerRecordKey](../accelbyte_py_sdk/api/cloudsave/models/models_player_record_key.py) |
+| models.PlayerRecordKeyInfo | [ModelsPlayerRecordKeyInfo](../accelbyte_py_sdk/api/cloudsave/models/models_player_record_key_info.py) |
 | models.PlayerRecordRequest | [ModelsPlayerRecordRequest](../accelbyte_py_sdk/api/cloudsave/models/models_player_record_request.py) |
+| models.PlayerRecordResponse | [ModelsPlayerRecordResponse](../accelbyte_py_sdk/api/cloudsave/models/models_player_record_response.py) |
 | models.ResponseError | [ModelsResponseError](../accelbyte_py_sdk/api/cloudsave/models/models_response_error.py) |

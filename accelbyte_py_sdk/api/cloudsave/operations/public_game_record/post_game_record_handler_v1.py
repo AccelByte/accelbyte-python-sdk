@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.3.0)
+# justice-cloudsave-service (2.3.1)
 
 from __future__ import annotations
 import re
@@ -34,63 +34,77 @@ from ...models import ModelsResponseError
 class PostGameRecordHandlerV1(Operation):
     """Create or append game record (postGameRecordHandlerV1)
 
-    Required Permission | `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]`
-    --------------------|---------------------------------------------------
-    Required Scope      | `social`
+    Required permission: `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]`
+    Required scope: `social`
+
+
+
+    ## Description
+
+
+
+    This endpoints will create new game record or append the existing game record.
+
+     Append example:
+
+    Example 1
+    - Existing JSON:
+
+
+
+        { "data1": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data1": "value", "data2": "new value" }
+
+
+
+    Example 2
+    - Existing JSON:
+
+
+
+        { "data1": { "data2": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data1": { "data3": "new value" }
+
+
+    - Result:
+
+
+
+        { "data1": { "data2": "value", "data3": "new value" }
 
 
 
 
 
-    If there's already record, the record will be merged with conditions:
-    - If field name is already exist, the value will be replaced
-    - If field name is not exists it will append the field and its value
 
-    Example:
 
-    Replace value in a specific JSON key
+    ## Reserved Word
 
 
 
+    Reserved Word List: META
 
-        // existed record
-        {
-            "foo": "bar"
-        }
-
-        // new update (request body)
-        {
-            "foo": "barUpdated"
-        }
-
-        // result
-        {
-            "foo": "barUpdated"
-        }
-
-
-
-
-    Append new json item
-
-
-
-
-        // existed record
-        {
-            "foo": "bar"
-        }
-
-        // new update (request body)
-        {
-            "foo_new": "bar_new"
-        }
-
-        // result
-        {
-            "foo": "bar",
-            "foo_new": "bar_new"
-        }
+    The reserved word cannot be used as a field in record value,
+    If still defining the field when creating or updating the record, it will be ignored.
 
     Required Permission(s):
         - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]
@@ -120,7 +134,7 @@ class PostGameRecordHandlerV1(Operation):
     Responses:
         201: Created - (Record saved)
 
-        400: Bad Request - ModelsResponseError (Bad Request)
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
 
         500: Internal Server Error - ModelsResponseError (Internal Server Error)
     """
@@ -271,7 +285,7 @@ class PostGameRecordHandlerV1(Operation):
 
         201: Created - (Record saved)
 
-        400: Bad Request - ModelsResponseError (Bad Request)
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
 
         500: Internal Server Error - ModelsResponseError (Internal Server Error)
 

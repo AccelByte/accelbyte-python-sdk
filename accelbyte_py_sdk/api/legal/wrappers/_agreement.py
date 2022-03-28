@@ -35,6 +35,7 @@ from ..models import RetrieveAcceptedAgreementResponse
 from ..operations.agreement import AcceptVersionedPolicy
 from ..operations.agreement import BulkAcceptVersionedPolicy
 from ..operations.agreement import ChangePreferenceConsent
+from ..operations.agreement import ChangePreferenceConsent1
 from ..operations.agreement import IndirectBulkAcceptVersionedPolicy1
 from ..operations.agreement import IndirectBulkAcceptVersionedPolicyV2
 from ..operations.agreement import RetrieveAcceptedAgreements
@@ -75,16 +76,44 @@ async def bulk_accept_versioned_policy_async(body: Optional[List[AcceptAgreement
 
 
 @same_doc_as(ChangePreferenceConsent)
-def change_preference_consent(body: Optional[List[AcceptAgreementRequest]] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def change_preference_consent(user_id: str, body: Optional[List[AcceptAgreementRequest]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
     request = ChangePreferenceConsent.create(
+        user_id=user_id,
         body=body,
+        namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ChangePreferenceConsent)
-async def change_preference_consent_async(body: Optional[List[AcceptAgreementRequest]] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def change_preference_consent_async(user_id: str, body: Optional[List[AcceptAgreementRequest]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
     request = ChangePreferenceConsent.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(ChangePreferenceConsent1)
+def change_preference_consent_1(body: Optional[List[AcceptAgreementRequest]] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = ChangePreferenceConsent1.create(
+        body=body,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(ChangePreferenceConsent1)
+async def change_preference_consent_1_async(body: Optional[List[AcceptAgreementRequest]] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = ChangePreferenceConsent1.create(
         body=body,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)

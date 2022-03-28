@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.3.0)
+# justice-cloudsave-service (2.3.1)
 
 from __future__ import annotations
 import re
@@ -34,38 +34,55 @@ from ...models import ModelsResponseError
 class PutGameRecordHandlerV1(Operation):
     """Create or replace game record (putGameRecordHandlerV1)
 
-    Required Permission | `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]`
-    --------------------|---------------------------------------------------
-    Required Scope      | `social`
+    Required permission: `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]`
+    Required scope: `social`
+
+
+
+    ## Description
+
+
+
+    This endpoints will create new game record or replace the existing game record.
+
+     Replace behaviour:
+    The existing value will be replaced completely with the new value.
+
+    Example
+    - Existing JSON:
+
+
+
+        { "data1": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data2": "new value" }
 
 
 
 
 
-    If record already exists, it will be replaced with the one from request body (all fields will be
-    deleted). If record is not exists, it will create a new one with value from request body.
 
-    Example:
 
-    Replace all records
+    ## Reserved Word
 
 
 
+    Reserved Word List: META
 
-            // existed record
-            {
-                "foo": "bar"
-            }
-
-            // new update (request body)
-            {
-                "foo_new": "bar_new"
-            }
-
-            // result
-            {
-                "foo_new": "bar_new"
-            }
+    The reserved word cannot be used as a field in record value,
+    If still defining the field when creating or updating the record, it will be ignored.
 
     Required Permission(s):
         - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]
@@ -95,7 +112,7 @@ class PutGameRecordHandlerV1(Operation):
     Responses:
         200: OK - (Record saved)
 
-        400: Bad Request - ModelsResponseError (Bad Request)
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
 
         500: Internal Server Error - ModelsResponseError (Internal Server Error)
     """
@@ -246,7 +263,7 @@ class PutGameRecordHandlerV1(Operation):
 
         200: OK - (Record saved)
 
-        400: Bad Request - ModelsResponseError (Bad Request)
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
 
         500: Internal Server Error - ModelsResponseError (Internal Server Error)
 

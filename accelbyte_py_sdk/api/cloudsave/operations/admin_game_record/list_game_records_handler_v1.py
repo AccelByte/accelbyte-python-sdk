@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.3.0)
+# justice-cloudsave-service (2.3.1)
 
 from __future__ import annotations
 import re
@@ -27,16 +27,16 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
-from ...models import ModelsListGameRecordKeys
+from ...models import ModelsListGameRecordKeysResponse
 from ...models import ModelsResponseError
 
 
 class ListGameRecordsHandlerV1(Operation):
-    """Retrieve list of records key by namespace (listGameRecordsHandlerV1)
+    """Query game records (listGameRecordsHandlerV1)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
+    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
 
-    Required scope: social
+    Required scope: `social`
 
     Retrieve list of records key by namespace
 
@@ -68,7 +68,7 @@ class ListGameRecordsHandlerV1(Operation):
         offset: (offset) REQUIRED int in query
 
     Responses:
-        200: OK - ModelsListGameRecordKeys (Retrieve list of records key by namespace)
+        200: OK - ModelsListGameRecordKeysResponse (Retrieve list of records key by namespace)
 
         401: Unauthorized - ModelsResponseError (Unauthorized)
 
@@ -227,10 +227,10 @@ class ListGameRecordsHandlerV1(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsListGameRecordKeys], Union[None, HttpResponse, ModelsResponseError]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsListGameRecordKeysResponse], Union[None, HttpResponse, ModelsResponseError]]:
         """Parse the given response.
 
-        200: OK - ModelsListGameRecordKeys (Retrieve list of records key by namespace)
+        200: OK - ModelsListGameRecordKeysResponse (Retrieve list of records key by namespace)
 
         401: Unauthorized - ModelsResponseError (Unauthorized)
 
@@ -248,7 +248,7 @@ class ListGameRecordsHandlerV1(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ModelsListGameRecordKeys.create_from_dict(content), None
+            return ModelsListGameRecordKeysResponse.create_from_dict(content), None
         if code == 401:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 500:

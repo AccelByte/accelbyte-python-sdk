@@ -95,7 +95,7 @@ async def admin_delete_channel_async(channel_id: str, user_id: str, namespace: O
 
 
 @same_doc_as(AdminGetChannel)
-def admin_get_channel(user_id: str, limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_get_channel(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -110,7 +110,7 @@ def admin_get_channel(user_id: str, limit: Optional[str] = None, offset: Optiona
 
 
 @same_doc_as(AdminGetChannel)
-async def admin_get_channel_async(user_id: str, limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_get_channel_async(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -181,7 +181,7 @@ async def single_admin_delete_channel_async(channel_id: str, namespace: Optional
 
 
 @same_doc_as(SingleAdminGetChannel)
-def single_admin_get_channel(limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def single_admin_get_channel(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -195,7 +195,7 @@ def single_admin_get_channel(limit: Optional[str] = None, offset: Optional[str] 
 
 
 @same_doc_as(SingleAdminGetChannel)
-async def single_admin_get_channel_async(limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def single_admin_get_channel_async(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

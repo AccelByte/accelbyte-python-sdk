@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.3.0)
+# justice-cloudsave-service (2.3.1)
 
 from __future__ import annotations
 import re
@@ -31,11 +31,11 @@ from ...models import ModelsResponseError
 
 
 class AdminDeletePlayerPublicRecordHandlerV1(Operation):
-    """Delete player public record based on its key (adminDeletePlayerPublicRecordHandlerV1)
+    """Delete player public record (adminDeletePlayerPublicRecordHandlerV1)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [DELETE]
+    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [DELETE]`
 
-    Required scope: social
+    Required scope: `social`
 
     Delete a public record (arbitrary JSON data) in user-level with given key.
 

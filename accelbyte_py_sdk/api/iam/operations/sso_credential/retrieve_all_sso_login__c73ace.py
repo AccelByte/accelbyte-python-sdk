@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.4.0)
+# justice-iam-service (5.5.1)
 
 from __future__ import annotations
 import re
@@ -56,7 +56,7 @@ class RetrieveAllSSOLoginPlatformCredentialV3(Operation):
 
         limit: (limit) OPTIONAL int in query
 
-        offset: (offset) OPTIONAL str in query
+        offset: (offset) OPTIONAL int in query
 
     Responses:
         200: OK - List[ModelSSOPlatformCredentialResponse] (All Active SSO Credential Retrieved)
@@ -81,7 +81,7 @@ class RetrieveAllSSOLoginPlatformCredentialV3(Operation):
 
     namespace: str                                                                                 # REQUIRED in [path]
     limit: int                                                                                     # OPTIONAL in [query]
-    offset: str                                                                                    # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
 
     # endregion fields
 
@@ -176,7 +176,7 @@ class RetrieveAllSSOLoginPlatformCredentialV3(Operation):
         self.limit = value
         return self
 
-    def with_offset(self, value: str) -> RetrieveAllSSOLoginPlatformCredentialV3:
+    def with_offset(self, value: int) -> RetrieveAllSSOLoginPlatformCredentialV3:
         self.offset = value
         return self
 
@@ -195,9 +195,9 @@ class RetrieveAllSSOLoginPlatformCredentialV3(Operation):
         elif include_empty:
             result["limit"] = int()
         if hasattr(self, "offset") and self.offset:
-            result["offset"] = str(self.offset)
+            result["offset"] = int(self.offset)
         elif include_empty:
-            result["offset"] = str()
+            result["offset"] = int()
         return result
 
     # endregion to methods
@@ -251,7 +251,7 @@ class RetrieveAllSSOLoginPlatformCredentialV3(Operation):
         cls,
         namespace: str,
         limit: Optional[int] = None,
-        offset: Optional[str] = None,
+        offset: Optional[int] = None,
     ) -> RetrieveAllSSOLoginPlatformCredentialV3:
         instance = cls()
         instance.namespace = namespace
@@ -273,9 +273,9 @@ class RetrieveAllSSOLoginPlatformCredentialV3(Operation):
         elif include_empty:
             instance.limit = int()
         if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = str(dict_["offset"])
+            instance.offset = int(dict_["offset"])
         elif include_empty:
-            instance.offset = str()
+            instance.offset = int()
         return instance
 
     @staticmethod

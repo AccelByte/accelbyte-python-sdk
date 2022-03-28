@@ -31,6 +31,8 @@ class ModelsConfigExport(Model):
     """Models config export (models.ConfigExport)
 
     Properties:
+        allow_invite_non_connected_user: (allowInviteNonConnectedUser) REQUIRED bool
+
         auto_kick_on_disconnect: (autoKickOnDisconnect) REQUIRED bool
 
         auto_kick_on_disconnect_delay: (autoKickOnDisconnectDelay) REQUIRED int
@@ -55,6 +57,8 @@ class ModelsConfigExport(Model):
 
         general_rate_limit_duration: (generalRateLimitDuration) REQUIRED int
 
+        keep_presence_activity_on_disconnect: (keepPresenceActivityOnDisconnect) REQUIRED bool
+
         max_party_member: (maxPartyMember) REQUIRED int
 
         namespace: (namespace) REQUIRED str
@@ -62,12 +66,11 @@ class ModelsConfigExport(Model):
         profanity_filter: (profanityFilter) REQUIRED bool
 
         ready_consent_timeout: (readyConsentTimeout) REQUIRED int
-
-        allow_invite_non_connected_user: (allowInviteNonConnectedUser) OPTIONAL bool
     """
 
     # region fields
 
+    allow_invite_non_connected_user: bool                                                          # REQUIRED
     auto_kick_on_disconnect: bool                                                                  # REQUIRED
     auto_kick_on_disconnect_delay: int                                                             # REQUIRED
     cancel_ticket_on_disconnect: bool                                                              # REQUIRED
@@ -80,15 +83,19 @@ class ModelsConfigExport(Model):
     entitlement_item_id: str                                                                       # REQUIRED
     general_rate_limit_burst: int                                                                  # REQUIRED
     general_rate_limit_duration: int                                                               # REQUIRED
+    keep_presence_activity_on_disconnect: bool                                                     # REQUIRED
     max_party_member: int                                                                          # REQUIRED
     namespace: str                                                                                 # REQUIRED
     profanity_filter: bool                                                                         # REQUIRED
     ready_consent_timeout: int                                                                     # REQUIRED
-    allow_invite_non_connected_user: bool                                                          # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
+
+    def with_allow_invite_non_connected_user(self, value: bool) -> ModelsConfigExport:
+        self.allow_invite_non_connected_user = value
+        return self
 
     def with_auto_kick_on_disconnect(self, value: bool) -> ModelsConfigExport:
         self.auto_kick_on_disconnect = value
@@ -138,6 +145,10 @@ class ModelsConfigExport(Model):
         self.general_rate_limit_duration = value
         return self
 
+    def with_keep_presence_activity_on_disconnect(self, value: bool) -> ModelsConfigExport:
+        self.keep_presence_activity_on_disconnect = value
+        return self
+
     def with_max_party_member(self, value: int) -> ModelsConfigExport:
         self.max_party_member = value
         return self
@@ -154,10 +165,6 @@ class ModelsConfigExport(Model):
         self.ready_consent_timeout = value
         return self
 
-    def with_allow_invite_non_connected_user(self, value: bool) -> ModelsConfigExport:
-        self.allow_invite_non_connected_user = value
-        return self
-
     # endregion with_x methods
 
     # region is/has methods
@@ -166,6 +173,8 @@ class ModelsConfigExport(Model):
     def is_valid(self) -> bool:
         # pylint: disable=no-self-use
         # required checks
+        if not hasattr(self, "allow_invite_non_connected_user") or self.allow_invite_non_connected_user is None:
+            return False
         if not hasattr(self, "auto_kick_on_disconnect") or self.auto_kick_on_disconnect is None:
             return False
         if not hasattr(self, "auto_kick_on_disconnect_delay") or self.auto_kick_on_disconnect_delay is None:
@@ -190,6 +199,8 @@ class ModelsConfigExport(Model):
             return False
         if not hasattr(self, "general_rate_limit_duration") or self.general_rate_limit_duration is None:
             return False
+        if not hasattr(self, "keep_presence_activity_on_disconnect") or self.keep_presence_activity_on_disconnect is None:
+            return False
         if not hasattr(self, "max_party_member") or self.max_party_member is None:
             return False
         if not hasattr(self, "namespace") or self.namespace is None:
@@ -207,6 +218,10 @@ class ModelsConfigExport(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "allow_invite_non_connected_user"):
+            result["allowInviteNonConnectedUser"] = bool(self.allow_invite_non_connected_user)
+        elif include_empty:
+            result["allowInviteNonConnectedUser"] = bool()
         if hasattr(self, "auto_kick_on_disconnect"):
             result["autoKickOnDisconnect"] = bool(self.auto_kick_on_disconnect)
         elif include_empty:
@@ -255,6 +270,10 @@ class ModelsConfigExport(Model):
             result["generalRateLimitDuration"] = int(self.general_rate_limit_duration)
         elif include_empty:
             result["generalRateLimitDuration"] = int()
+        if hasattr(self, "keep_presence_activity_on_disconnect"):
+            result["keepPresenceActivityOnDisconnect"] = bool(self.keep_presence_activity_on_disconnect)
+        elif include_empty:
+            result["keepPresenceActivityOnDisconnect"] = bool()
         if hasattr(self, "max_party_member"):
             result["maxPartyMember"] = int(self.max_party_member)
         elif include_empty:
@@ -271,10 +290,6 @@ class ModelsConfigExport(Model):
             result["readyConsentTimeout"] = int(self.ready_consent_timeout)
         elif include_empty:
             result["readyConsentTimeout"] = int()
-        if hasattr(self, "allow_invite_non_connected_user"):
-            result["allowInviteNonConnectedUser"] = bool(self.allow_invite_non_connected_user)
-        elif include_empty:
-            result["allowInviteNonConnectedUser"] = bool()
         return result
 
     # endregion to methods
@@ -284,6 +299,7 @@ class ModelsConfigExport(Model):
     @classmethod
     def create(
         cls,
+        allow_invite_non_connected_user: bool,
         auto_kick_on_disconnect: bool,
         auto_kick_on_disconnect_delay: int,
         cancel_ticket_on_disconnect: bool,
@@ -296,13 +312,14 @@ class ModelsConfigExport(Model):
         entitlement_item_id: str,
         general_rate_limit_burst: int,
         general_rate_limit_duration: int,
+        keep_presence_activity_on_disconnect: bool,
         max_party_member: int,
         namespace: str,
         profanity_filter: bool,
         ready_consent_timeout: int,
-        allow_invite_non_connected_user: Optional[bool] = None,
     ) -> ModelsConfigExport:
         instance = cls()
+        instance.allow_invite_non_connected_user = allow_invite_non_connected_user
         instance.auto_kick_on_disconnect = auto_kick_on_disconnect
         instance.auto_kick_on_disconnect_delay = auto_kick_on_disconnect_delay
         instance.cancel_ticket_on_disconnect = cancel_ticket_on_disconnect
@@ -315,12 +332,11 @@ class ModelsConfigExport(Model):
         instance.entitlement_item_id = entitlement_item_id
         instance.general_rate_limit_burst = general_rate_limit_burst
         instance.general_rate_limit_duration = general_rate_limit_duration
+        instance.keep_presence_activity_on_disconnect = keep_presence_activity_on_disconnect
         instance.max_party_member = max_party_member
         instance.namespace = namespace
         instance.profanity_filter = profanity_filter
         instance.ready_consent_timeout = ready_consent_timeout
-        if allow_invite_non_connected_user is not None:
-            instance.allow_invite_non_connected_user = allow_invite_non_connected_user
         return instance
 
     @classmethod
@@ -328,6 +344,10 @@ class ModelsConfigExport(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "allowInviteNonConnectedUser" in dict_ and dict_["allowInviteNonConnectedUser"] is not None:
+            instance.allow_invite_non_connected_user = bool(dict_["allowInviteNonConnectedUser"])
+        elif include_empty:
+            instance.allow_invite_non_connected_user = bool()
         if "autoKickOnDisconnect" in dict_ and dict_["autoKickOnDisconnect"] is not None:
             instance.auto_kick_on_disconnect = bool(dict_["autoKickOnDisconnect"])
         elif include_empty:
@@ -376,6 +396,10 @@ class ModelsConfigExport(Model):
             instance.general_rate_limit_duration = int(dict_["generalRateLimitDuration"])
         elif include_empty:
             instance.general_rate_limit_duration = int()
+        if "keepPresenceActivityOnDisconnect" in dict_ and dict_["keepPresenceActivityOnDisconnect"] is not None:
+            instance.keep_presence_activity_on_disconnect = bool(dict_["keepPresenceActivityOnDisconnect"])
+        elif include_empty:
+            instance.keep_presence_activity_on_disconnect = bool()
         if "maxPartyMember" in dict_ and dict_["maxPartyMember"] is not None:
             instance.max_party_member = int(dict_["maxPartyMember"])
         elif include_empty:
@@ -392,10 +416,6 @@ class ModelsConfigExport(Model):
             instance.ready_consent_timeout = int(dict_["readyConsentTimeout"])
         elif include_empty:
             instance.ready_consent_timeout = int()
-        if "allowInviteNonConnectedUser" in dict_ and dict_["allowInviteNonConnectedUser"] is not None:
-            instance.allow_invite_non_connected_user = bool(dict_["allowInviteNonConnectedUser"])
-        elif include_empty:
-            instance.allow_invite_non_connected_user = bool()
         return instance
 
     @classmethod
@@ -419,6 +439,7 @@ class ModelsConfigExport(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "allowInviteNonConnectedUser": "allow_invite_non_connected_user",
             "autoKickOnDisconnect": "auto_kick_on_disconnect",
             "autoKickOnDisconnectDelay": "auto_kick_on_disconnect_delay",
             "cancelTicketOnDisconnect": "cancel_ticket_on_disconnect",
@@ -431,11 +452,11 @@ class ModelsConfigExport(Model):
             "entitlementItemID": "entitlement_item_id",
             "generalRateLimitBurst": "general_rate_limit_burst",
             "generalRateLimitDuration": "general_rate_limit_duration",
+            "keepPresenceActivityOnDisconnect": "keep_presence_activity_on_disconnect",
             "maxPartyMember": "max_party_member",
             "namespace": "namespace",
             "profanityFilter": "profanity_filter",
             "readyConsentTimeout": "ready_consent_timeout",
-            "allowInviteNonConnectedUser": "allow_invite_non_connected_user",
         }
 
     # endregion static methods

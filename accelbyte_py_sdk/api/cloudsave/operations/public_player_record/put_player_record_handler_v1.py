@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.3.0)
+# justice-cloudsave-service (2.3.1)
 
 from __future__ import annotations
 import re
@@ -34,37 +34,86 @@ from ...models import ModelsResponseError
 class PutPlayerRecordHandlerV1(Operation):
     """Create or replace player record (putPlayerRecordHandlerV1)
 
-    Required Permission | `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]`
-    --------------------|-----------------------------------------------------------------
-    Required Scope      | `social`
+    Required permission: `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]`
+    Required scope: `social`
 
 
 
+    ## Description
 
 
-    This endpoint will create new record if it is not exists and it will replace if already exists.
+
+    This endpoints will create new player record or replace the existing player record.
+    Only user that own the existing player record could modify it.
+
+     Replace behaviour:
+    The existing value will be replaced completely with the new value.
 
     Example
-
-    Replace record
-
+    - Existing JSON:
 
 
 
-        // existed record
-        {
-            "foo": "bar"
-        }
+        { "data1": "value" }
 
-        // new record (request body)
-        {
-            "foo_new": "bar_new"
-        }
 
-        // result
-        {
-            "foo_new": "bar_new"
-        }
+    - New JSON:
+
+
+
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data2": "new value" }
+
+
+
+
+
+
+
+    ## Record Metadata
+
+
+
+    Metadata allows user to define the behaviour of the record.
+    Metadata can be defined in request body with field name META.
+    When creating record, if META field is not defined, the metadata value will use the default value.
+    When updating record, if META field is not defined, the existing metadata value will stay as is.
+
+     Metadata List:
+    1. is_public (default: false, type: bool)
+    Indicate whether the player record is a public record or not.
+
+     Request Body Example:
+
+
+
+
+            {
+                "META": {
+                    "is_public": true
+                }
+                ...
+            }
+
+
+
+
+
+
+
+    ## Warning: Current Behaviour when Updating Public Record
+
+
+
+    When updating existing "Public Record" and metadata is_public is not defined in the request body,
+    this endpoint will always convert the "Public Record" into "Private Record".
+    This behaviour might be deprecated sooner, please don't rely with that behaviour.
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]
@@ -96,7 +145,11 @@ class PutPlayerRecordHandlerV1(Operation):
     Responses:
         200: OK - (Record saved)
 
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
         401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        403: Forbidden - ModelsResponseError (18063: put action is forbidden on other user's record)
 
         500: Internal Server Error - ModelsResponseError (Internal Server Error)
     """
@@ -261,7 +314,11 @@ class PutPlayerRecordHandlerV1(Operation):
 
         200: OK - (Record saved)
 
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
         401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        403: Forbidden - ModelsResponseError (18063: put action is forbidden on other user's record)
 
         500: Internal Server Error - ModelsResponseError (Internal Server Error)
 
@@ -278,7 +335,11 @@ class PutPlayerRecordHandlerV1(Operation):
 
         if code == 200:
             return HttpResponse.create(code, "OK"), None
+        if code == 400:
+            return None, ModelsResponseError.create_from_dict(content)
         if code == 401:
+            return None, ModelsResponseError.create_from_dict(content)
+        if code == 403:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 500:
             return None, ModelsResponseError.create_from_dict(content)

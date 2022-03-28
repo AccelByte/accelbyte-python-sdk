@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.3.0)
+# justice-cloudsave-service (2.3.1)
 
 from __future__ import annotations
 import re
@@ -42,35 +42,60 @@ class PutGameRecordConcurrentHandlerV1(Operation):
 
 
 
-    If record already exists, it will be replaced with the one from request body (all fields will be
-    deleted). If record is not exists, it will create a new one with value from request body.
-
-    Example:
-
-    Replace all records
 
 
 
-
-            // existed record
-            {
-                "foo": "bar"
-            }
-
-            // new update (request body)
-            {
-                "foo_new": "bar_new"
-            }
-
-            // result
-            {
-                "foo_new": "bar_new"
-            }
+    ## Description
 
 
 
+    This endpoints will create new game record or replace the existing game record.
 
-     Optimistic Concurrency Control
+     Replace behaviour:
+    The existing value will be replaced completely with the new value.
+
+    Example
+    - Existing JSON:
+
+
+
+        { "data1": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data2": "new value" }
+
+
+
+
+
+
+
+    ## Reserved Word
+
+
+
+    Reserved Word List: META
+
+    The reserved word cannot be used as a field in record value,
+    If still defining the field when creating or updating the record, it will be ignored.
+
+
+
+
+    ## Optimistic Concurrency Control
+
+
 
     This endpoint implement optimistic concurrency control to avoid race condition.
     If the record has been updated since the client fetch it, the server will return HTTP status code 412 (precondition failed)
@@ -105,7 +130,7 @@ class PutGameRecordConcurrentHandlerV1(Operation):
     Responses:
         204: No Content - (Record saved)
 
-        400: Bad Request - ModelsResponseError (Bad Request)
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
 
         401: Unauthorized - ModelsResponseError (Unauthorized)
 
@@ -260,7 +285,7 @@ class PutGameRecordConcurrentHandlerV1(Operation):
 
         204: No Content - (Record saved)
 
-        400: Bad Request - ModelsResponseError (Bad Request)
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
 
         401: Unauthorized - ModelsResponseError (Unauthorized)
 

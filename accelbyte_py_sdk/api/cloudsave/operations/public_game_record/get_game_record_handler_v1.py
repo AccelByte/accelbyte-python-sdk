@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.3.0)
+# justice-cloudsave-service (2.3.1)
 
 from __future__ import annotations
 import re
@@ -27,7 +27,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
-from ...models import ModelsGameRecord
+from ...models import ModelsGameRecordResponse
 from ...models import ModelsResponseError
 
 
@@ -67,7 +67,7 @@ class GetGameRecordHandlerV1(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGameRecord (Record retrieved)
+        200: OK - ModelsGameRecordResponse (Record retrieved)
 
         401: Unauthorized - ModelsResponseError (Unauthorized)
 
@@ -197,10 +197,10 @@ class GetGameRecordHandlerV1(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsGameRecord], Union[None, HttpResponse, ModelsResponseError]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsGameRecordResponse], Union[None, HttpResponse, ModelsResponseError]]:
         """Parse the given response.
 
-        200: OK - ModelsGameRecord (Record retrieved)
+        200: OK - ModelsGameRecordResponse (Record retrieved)
 
         401: Unauthorized - ModelsResponseError (Unauthorized)
 
@@ -220,7 +220,7 @@ class GetGameRecordHandlerV1(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ModelsGameRecord.create_from_dict(content), None
+            return ModelsGameRecordResponse.create_from_dict(content), None
         if code == 401:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 404:

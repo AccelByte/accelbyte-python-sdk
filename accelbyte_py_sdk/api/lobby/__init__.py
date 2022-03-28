@@ -21,16 +21,16 @@ from .wrappers import personal_chat_history
 from .wrappers import personal_chat_history_async
 
 # config
+from .wrappers import admin_export_config_v1
+from .wrappers import admin_export_config_v1_async
 from .wrappers import admin_get_all_config_v1
 from .wrappers import admin_get_all_config_v1_async
 from .wrappers import admin_get_config_v1
 from .wrappers import admin_get_config_v1_async
+from .wrappers import admin_import_config_v1
+from .wrappers import admin_import_config_v1_async
 from .wrappers import admin_update_config_v1
 from .wrappers import admin_update_config_v1_async
-from .wrappers import export_config
-from .wrappers import export_config_async
-from .wrappers import import_config
-from .wrappers import import_config_async
 
 # friends
 from .wrappers import add_friends_without_confirmation

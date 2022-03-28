@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-cloudsave-service (2.3.0)
+# justice-cloudsave-service (2.3.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,25 +26,25 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.models_player_record import ModelsPlayerRecord
+from ..models.models_player_record_response import ModelsPlayerRecordResponse
 
 
 class ModelsBulkGetPlayerRecordResponse(Model):
     """Models bulk get player record response (models.BulkGetPlayerRecordResponse)
 
     Properties:
-        data: (data) REQUIRED List[ModelsPlayerRecord]
+        data: (data) REQUIRED List[ModelsPlayerRecordResponse]
     """
 
     # region fields
 
-    data: List[ModelsPlayerRecord]                                                                 # REQUIRED
+    data: List[ModelsPlayerRecordResponse]                                                         # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_data(self, value: List[ModelsPlayerRecord]) -> ModelsBulkGetPlayerRecordResponse:
+    def with_data(self, value: List[ModelsPlayerRecordResponse]) -> ModelsBulkGetPlayerRecordResponse:
         self.data = value
         return self
 
@@ -80,7 +80,7 @@ class ModelsBulkGetPlayerRecordResponse(Model):
     @classmethod
     def create(
         cls,
-        data: List[ModelsPlayerRecord],
+        data: List[ModelsPlayerRecordResponse],
     ) -> ModelsBulkGetPlayerRecordResponse:
         instance = cls()
         instance.data = data
@@ -92,7 +92,7 @@ class ModelsBulkGetPlayerRecordResponse(Model):
         if not dict_:
             return instance
         if "data" in dict_ and dict_["data"] is not None:
-            instance.data = [ModelsPlayerRecord.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["data"]]
+            instance.data = [ModelsPlayerRecordResponse.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["data"]]
         elif include_empty:
             instance.data = []
         return instance

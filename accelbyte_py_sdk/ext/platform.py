@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.4.2)
+# justice-platform-service (4.5.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -1232,6 +1232,7 @@ def create_iap_item_config_update_example() -> IAPItemConfigUpdate:
 def create_iap_item_entry_example() -> IAPItemEntry:
     instance = IAPItemEntry()
     instance.item_identity = randomize()
+    instance.item_identity_type = randomize()
     instance.platform_product_id_map = {randomize(): randomize()}
     return instance
 
@@ -1569,6 +1570,7 @@ def create_mock_iap_receipt_example() -> MockIAPReceipt:
     instance = MockIAPReceipt()
     instance.product_id = randomize("uid")
     instance.type_ = randomize()
+    instance.item_identity_type = randomize()
     instance.language = randomize()
     instance.region = randomize()
     return instance

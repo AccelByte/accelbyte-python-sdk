@@ -382,7 +382,7 @@ async def join_session_async(body: ModelsJoinGameSessionRequest, session_id: str
 
 
 @same_doc_as(QuerySession)
-def query_session(session_type: str, game_mode: Optional[str] = None, game_version: Optional[str] = None, joinable: Optional[str] = None, limit: Optional[str] = None, match_exist: Optional[str] = None, match_id: Optional[str] = None, offset: Optional[str] = None, server_status: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_session(session_type: str, game_mode: Optional[str] = None, game_version: Optional[str] = None, joinable: Optional[str] = None, limit: Optional[int] = None, match_exist: Optional[str] = None, match_id: Optional[str] = None, offset: Optional[int] = None, server_status: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -404,7 +404,7 @@ def query_session(session_type: str, game_mode: Optional[str] = None, game_versi
 
 
 @same_doc_as(QuerySession)
-async def query_session_async(session_type: str, game_mode: Optional[str] = None, game_version: Optional[str] = None, joinable: Optional[str] = None, limit: Optional[str] = None, match_exist: Optional[str] = None, match_id: Optional[str] = None, offset: Optional[str] = None, server_status: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def query_session_async(session_type: str, game_mode: Optional[str] = None, game_version: Optional[str] = None, joinable: Optional[str] = None, limit: Optional[int] = None, match_exist: Optional[str] = None, match_id: Optional[str] = None, offset: Optional[int] = None, server_status: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

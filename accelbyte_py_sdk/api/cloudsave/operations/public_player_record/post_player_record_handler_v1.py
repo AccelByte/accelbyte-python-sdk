@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.3.0)
+# justice-cloudsave-service (2.3.1)
 
 from __future__ import annotations
 import re
@@ -34,66 +34,97 @@ from ...models import ModelsResponseError
 class PostPlayerRecordHandlerV1(Operation):
     """Create or append player record (postPlayerRecordHandlerV1)
 
-    Required Permission | `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [WRITE]`
-    --------------------|----------------------------------------------------------------
-    Required Scope      | `social`
+    Required permission: `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]`
+    Required scope: `social`
+
+
+
+    ## Description
+
+
+
+    This endpoints will create new player record or append the existing player record.
+    Only user that own the existing player record could modify.
+
+     Append example:
+
+    Example 1
+    - Existing JSON:
+
+
+
+        { "data1": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data1": "value", "data2": "new value" }
+
+
+
+    Example 2
+    - Existing JSON:
+
+
+
+        { "data1": { "data2": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data1": { "data3": "new value" }
+
+
+    - Result:
+
+
+
+        { "data1": { "data2": "value", "data3": "new value" }
 
 
 
 
 
-    Create player record if it is not exists otherwise merge with these criteria:
-    - If field name is already exists, replace the value
-    - If field name is not exists, append it
 
-    Example
 
-    Replace value:
+    ## Record Metadata
 
 
 
+    Metadata allows user to define the behaviour of the record.
+    Metadata can be defined in request body with field name META.
+    When creating record, if META field is not defined, the metadata value will use the default value.
+    When updating record, if META field is not defined, the existing metadata value will stay as is.
 
-            // existed record
+     Metadata List:
+    1. is_public (default: false, type: bool)
+    Indicate whether the player record is a public record or not.
+
+     Request Body Example:
+
+
+
+
             {
-                "foo": "bar"
-            }
-
-            // new record (request body)
-            {
-                "foo": "bar_updated"
-            }
-
-            // result
-            {
-                "foo": "bar_updated"
-            }
-
-
-
-
-    Append value:
-
-
-
-
-            // existed record
-            {
-                "foo": "bar"
-            }
-
-            // new record (request body)
-            {
-                "foo_new": "bar_new"
-            }
-
-            // result
-            {
-                "foo": "bar",
-                "foo_new": "bar_new"
+                "META": {
+                    "is_public": true
+                }
+                ...
             }
 
     Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [WRITE]
+        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]
 
     Required Scope(s):
         - social
@@ -122,7 +153,11 @@ class PostPlayerRecordHandlerV1(Operation):
     Responses:
         201: Created - (Record saved)
 
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
         401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        403: Forbidden - ModelsResponseError (18035: post action is forbidden on other user's record)
 
         500: Internal Server Error - ModelsResponseError (Internal Server Error)
     """
@@ -287,7 +322,11 @@ class PostPlayerRecordHandlerV1(Operation):
 
         201: Created - (Record saved)
 
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
         401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        403: Forbidden - ModelsResponseError (18035: post action is forbidden on other user's record)
 
         500: Internal Server Error - ModelsResponseError (Internal Server Error)
 
@@ -304,7 +343,11 @@ class PostPlayerRecordHandlerV1(Operation):
 
         if code == 201:
             return HttpResponse.create(code, "Created"), None
+        if code == 400:
+            return None, ModelsResponseError.create_from_dict(content)
         if code == 401:
+            return None, ModelsResponseError.create_from_dict(content)
+        if code == 403:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 500:
             return None, ModelsResponseError.create_from_dict(content)

@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.3.0)
+# justice-cloudsave-service (2.3.1)
 
 from __future__ import annotations
 import re
@@ -31,11 +31,11 @@ from ...models import ModelsResponseError
 
 
 class AdminDeleteGameRecordHandlerV1(Operation):
-    """Purge all records under the given key (adminDeleteGameRecordHandlerV1)
+    """Delete game record (adminDeleteGameRecordHandlerV1)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]
+    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]`
 
-    Required scope: social
+    Required scope: `social`
 
     This endpoints delete game record in namespace-level
 

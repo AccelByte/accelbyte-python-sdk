@@ -55,11 +55,11 @@ class PublicSearchContent(Operation):
 
         isofficial: (isofficial) OPTIONAL str in query
 
-        limit: (limit) OPTIONAL str in query
+        limit: (limit) OPTIONAL int in query
 
         name: (name) OPTIONAL str in query
 
-        offset: (offset) OPTIONAL str in query
+        offset: (offset) OPTIONAL int in query
 
         orderby: (orderby) OPTIONAL str in query
 
@@ -95,9 +95,9 @@ class PublicSearchContent(Operation):
     namespace: str                                                                                 # REQUIRED in [path]
     creator: str                                                                                   # OPTIONAL in [query]
     isofficial: str                                                                                # OPTIONAL in [query]
-    limit: str                                                                                     # OPTIONAL in [query]
+    limit: int                                                                                     # OPTIONAL in [query]
     name: str                                                                                      # OPTIONAL in [query]
-    offset: str                                                                                    # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
     orderby: str                                                                                   # OPTIONAL in [query]
     sortby: str                                                                                    # OPTIONAL in [query]
     subtype: str                                                                                   # OPTIONAL in [query]
@@ -220,7 +220,7 @@ class PublicSearchContent(Operation):
         self.isofficial = value
         return self
 
-    def with_limit(self, value: str) -> PublicSearchContent:
+    def with_limit(self, value: int) -> PublicSearchContent:
         self.limit = value
         return self
 
@@ -228,7 +228,7 @@ class PublicSearchContent(Operation):
         self.name = value
         return self
 
-    def with_offset(self, value: str) -> PublicSearchContent:
+    def with_offset(self, value: int) -> PublicSearchContent:
         self.offset = value
         return self
 
@@ -275,17 +275,17 @@ class PublicSearchContent(Operation):
         elif include_empty:
             result["isofficial"] = str()
         if hasattr(self, "limit") and self.limit:
-            result["limit"] = str(self.limit)
+            result["limit"] = int(self.limit)
         elif include_empty:
-            result["limit"] = str()
+            result["limit"] = int()
         if hasattr(self, "name") and self.name:
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = str()
         if hasattr(self, "offset") and self.offset:
-            result["offset"] = str(self.offset)
+            result["offset"] = int(self.offset)
         elif include_empty:
-            result["offset"] = str()
+            result["offset"] = int()
         if hasattr(self, "orderby") and self.orderby:
             result["orderby"] = str(self.orderby)
         elif include_empty:
@@ -360,9 +360,9 @@ class PublicSearchContent(Operation):
         namespace: str,
         creator: Optional[str] = None,
         isofficial: Optional[str] = None,
-        limit: Optional[str] = None,
+        limit: Optional[int] = None,
         name: Optional[str] = None,
-        offset: Optional[str] = None,
+        offset: Optional[int] = None,
         orderby: Optional[str] = None,
         sortby: Optional[str] = None,
         subtype: Optional[str] = None,
@@ -412,17 +412,17 @@ class PublicSearchContent(Operation):
         elif include_empty:
             instance.isofficial = str()
         if "limit" in dict_ and dict_["limit"] is not None:
-            instance.limit = str(dict_["limit"])
+            instance.limit = int(dict_["limit"])
         elif include_empty:
-            instance.limit = str()
+            instance.limit = int()
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = str()
         if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = str(dict_["offset"])
+            instance.offset = int(dict_["offset"])
         elif include_empty:
-            instance.offset = str()
+            instance.offset = int()
         if "orderby" in dict_ and dict_["orderby"] is not None:
             instance.orderby = str(dict_["orderby"])
         elif include_empty:

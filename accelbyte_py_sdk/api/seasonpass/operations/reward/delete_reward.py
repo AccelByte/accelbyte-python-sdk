@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-seasonpass-service (1.10.0)
+# justice-seasonpass-service (1.11.0)
 
 from __future__ import annotations
 import re

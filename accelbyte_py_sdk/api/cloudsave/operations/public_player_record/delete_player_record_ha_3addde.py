@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.3.0)
+# justice-cloudsave-service (2.3.1)
 
 from __future__ import annotations
 import re
@@ -41,7 +41,8 @@ class DeletePlayerRecordHandlerV1(Operation):
 
 
 
-    Delete player record by its key
+    Delete player record by its key.
+    Only user that own the player record could delete it.
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]
@@ -71,7 +72,11 @@ class DeletePlayerRecordHandlerV1(Operation):
     Responses:
         204: No Content - (Record deleted)
 
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
         401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        403: Forbidden - ModelsResponseError (18072: delete action is forbidden on other user's record)
 
         500: Internal Server Error - ModelsResponseError (Internal Server Error)
     """
@@ -216,7 +221,11 @@ class DeletePlayerRecordHandlerV1(Operation):
 
         204: No Content - (Record deleted)
 
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
         401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        403: Forbidden - ModelsResponseError (18072: delete action is forbidden on other user's record)
 
         500: Internal Server Error - ModelsResponseError (Internal Server Error)
 
@@ -233,7 +242,11 @@ class DeletePlayerRecordHandlerV1(Operation):
 
         if code == 204:
             return None, None
+        if code == 400:
+            return None, ModelsResponseError.create_from_dict(content)
         if code == 401:
+            return None, ModelsResponseError.create_from_dict(content)
+        if code == 403:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 500:
             return None, ModelsResponseError.create_from_dict(content)

@@ -90,7 +90,7 @@ async def admin_delete_tag_async(tag_id: str, namespace: Optional[str] = None, x
 
 
 @same_doc_as(AdminGetTag)
-def admin_get_tag(limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_get_tag(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -104,7 +104,7 @@ def admin_get_tag(limit: Optional[str] = None, offset: Optional[str] = None, nam
 
 
 @same_doc_as(AdminGetTag)
-async def admin_get_tag_async(limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_get_tag_async(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

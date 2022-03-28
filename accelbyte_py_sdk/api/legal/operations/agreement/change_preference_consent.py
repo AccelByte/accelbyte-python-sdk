@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-legal-service (1.18.1)
+# justice-legal-service (1.19.0)
 
 from __future__ import annotations
 import re
@@ -28,19 +28,13 @@ from .....core import Operation
 from .....core import HttpResponse
 
 from ...models import AcceptAgreementRequest
-from ...models import ErrorEntity
 
 
 class ChangePreferenceConsent(Operation):
-    """Accept/Revoke Marketing Preference Consent (changePreferenceConsent)
-
-    Change marketing preference consent.
-    Other detail info:
-
-      * Required permission : login user
+    """Change preference consent (changePreferenceConsent)
 
     Properties:
-        url: /agreement/public/agreements/localized-policy-versions/preferences
+        url: /agreement/admin/agreements/localized-policy-versions/preferences/namespaces/{namespace}/userId/{userId}
 
         method: PATCH
 
@@ -54,15 +48,17 @@ class ChangePreferenceConsent(Operation):
 
         body: (body) OPTIONAL List[AcceptAgreementRequest] in body
 
-    Responses:
-        200: OK - (successful operation)
+        namespace: (namespace) REQUIRED str in path
 
-        400: Bad Request - ErrorEntity (40017: Policy with id : [{policyId}] is not marketing preference)
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        default: (successful operation)
     """
 
     # region fields
 
-    _url: str = "/agreement/public/agreements/localized-policy-versions/preferences"
+    _url: str = "/agreement/admin/agreements/localized-policy-versions/preferences/namespaces/{namespace}/userId/{userId}"
     _method: str = "PATCH"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
@@ -70,6 +66,8 @@ class ChangePreferenceConsent(Operation):
     _location_query: str = None
 
     body: List[AcceptAgreementRequest]                                                             # OPTIONAL in [body]
+    namespace: str                                                                                 # REQUIRED in [path]
+    user_id: str                                                                                   # REQUIRED in [path]
 
     # endregion fields
 
@@ -107,11 +105,14 @@ class ChangePreferenceConsent(Operation):
         return self.create_full_url(
             url=self.url,
             base_url=base_url,
+            path_params=self.get_path_params(),
         )
 
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
+            "namespace",
+            "user_id",
         ]
 
     # endregion get methods
@@ -121,6 +122,7 @@ class ChangePreferenceConsent(Operation):
     def get_all_params(self) -> dict:
         return {
             "body": self.get_body_params(),
+            "path": self.get_path_params(),
         }
 
     def get_body_params(self) -> Any:
@@ -128,12 +130,24 @@ class ChangePreferenceConsent(Operation):
             return None
         return [i.to_dict() for i in self.body]
 
+    def get_path_params(self) -> dict:
+        result = {}
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
+        if hasattr(self, "user_id"):
+            result["userId"] = self.user_id
+        return result
+
     # endregion get_x_params methods
 
     # region is/has methods
 
     def is_valid(self) -> bool:
         # required checks
+        if not hasattr(self, "namespace") or self.namespace is None:
+            return False
+        if not hasattr(self, "user_id") or self.user_id is None:
+            return False
         # pattern checks
         if hasattr(self, "body") and any(not x.is_valid() for x in self.body):
             return False
@@ -147,6 +161,14 @@ class ChangePreferenceConsent(Operation):
         self.body = value
         return self
 
+    def with_namespace(self, value: str) -> ChangePreferenceConsent:
+        self.namespace = value
+        return self
+
+    def with_user_id(self, value: str) -> ChangePreferenceConsent:
+        self.user_id = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -157,6 +179,14 @@ class ChangePreferenceConsent(Operation):
             result["body"] = [i0.to_dict(include_empty=include_empty) for i0 in self.body]
         elif include_empty:
             result["body"] = []
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
+        if hasattr(self, "user_id") and self.user_id:
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = str()
         return result
 
     # endregion to methods
@@ -164,12 +194,10 @@ class ChangePreferenceConsent(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ErrorEntity, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - (successful operation)
-
-        400: Bad Request - ErrorEntity (40017: Policy with id : [{policyId}] is not marketing preference)
+        default: (successful operation)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -184,8 +212,6 @@ class ChangePreferenceConsent(Operation):
 
         if code == 200:
             return HttpResponse.create(code, "OK"), None
-        if code == 400:
-            return None, ErrorEntity.create_from_dict(content)
 
         return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
@@ -196,9 +222,13 @@ class ChangePreferenceConsent(Operation):
     @classmethod
     def create(
         cls,
+        namespace: str,
+        user_id: str,
         body: Optional[List[AcceptAgreementRequest]] = None,
     ) -> ChangePreferenceConsent:
         instance = cls()
+        instance.namespace = namespace
+        instance.user_id = user_id
         if body is not None:
             instance.body = body
         return instance
@@ -210,12 +240,22 @@ class ChangePreferenceConsent(Operation):
             instance.body = [AcceptAgreementRequest.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["body"]]
         elif include_empty:
             instance.body = []
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
+            "namespace": "namespace",
+            "userId": "user_id",
         }
 
     # endregion static methods

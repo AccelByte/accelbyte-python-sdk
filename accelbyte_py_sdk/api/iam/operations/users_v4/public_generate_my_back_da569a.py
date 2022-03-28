@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-lobby-server (staging)
+# justice-iam-service (5.5.1)
 
 from __future__ import annotations
 import re
@@ -27,57 +27,56 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
-from ...models import ModelsConfigExport
-from ...models import ResponseError
+from ...models import ModelBackupCodesResponseV4
+from ...models import RestErrorResponse
 
 
-class ExportConfig(Operation):
-    """Export lobby config to a json file. (ExportConfig)
+class PublicGenerateMyBackupCodesV4(Operation):
+    """Generate backup codes (PublicGenerateMyBackupCodesV4)
+
+    (In Development)This endpoint is used to generate 8-digits backup codes.
+    Each code is a one-time code and will be deleted once used.
 
 
-    Required permission ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]
 
-    Required Scope: social
 
-    Export lobby configuration to a json file. The file can then be imported from the /import endpoint.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]
-
-    Required Scope(s):
-        - social
+    This endpoint Requires valid user access token
 
     Properties:
-        url: /lobby/v1/admin/config/namespaces/{namespace}/export
+        url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCode
 
-        method: GET
+        method: POST
 
-        tags: ["config"]
+        tags: ["Users V4"]
 
         consumes: []
 
-        produces: []
+        produces: ["application/json"]
 
         security_type: bearer
 
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - List[ModelsConfigExport] (OK)
+        200: OK - ModelBackupCodesResponseV4 (Backup codes generated)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10192: factor not enabled)
 
-        403: Forbidden - ResponseError (Forbidden)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 10171: email address not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
 
-    _url: str = "/lobby/v1/admin/config/namespaces/{namespace}/export"
-    _method: str = "GET"
+    _url: str = "/iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCode"
+    _method: str = "POST"
     _consumes: List[str] = []
-    _produces: List[str] = []
+    _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None
 
@@ -158,7 +157,7 @@ class ExportConfig(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> ExportConfig:
+    def with_namespace(self, value: str) -> PublicGenerateMyBackupCodesV4:
         self.namespace = value
         return self
 
@@ -179,16 +178,20 @@ class ExportConfig(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, List[ModelsConfigExport]], Union[None, HttpResponse, ResponseError]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelBackupCodesResponseV4], Union[None, HttpResponse, RestErrorResponse]]:
         """Parse the given response.
 
-        200: OK - List[ModelsConfigExport] (OK)
+        200: OK - ModelBackupCodesResponseV4 (Backup codes generated)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10192: factor not enabled)
 
-        403: Forbidden - ResponseError (Forbidden)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 10171: email address not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -202,13 +205,17 @@ class ExportConfig(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [ModelsConfigExport.create_from_dict(i) for i in content], None
+            return ModelBackupCodesResponseV4.create_from_dict(content), None
+        if code == 400:
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 401:
-            return None, ResponseError.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, ResponseError.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 404:
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 500:
-            return None, ResponseError.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
 
         return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
@@ -220,13 +227,13 @@ class ExportConfig(Operation):
     def create(
         cls,
         namespace: str,
-    ) -> ExportConfig:
+    ) -> PublicGenerateMyBackupCodesV4:
         instance = cls()
         instance.namespace = namespace
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ExportConfig:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PublicGenerateMyBackupCodesV4:
         instance = cls()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])

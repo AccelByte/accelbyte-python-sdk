@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.4.0)
+# justice-iam-service (5.5.1)
 
 from __future__ import annotations
 import re
@@ -59,7 +59,7 @@ class AdminSearchUsersV2(Operation):
 
         display_name: (displayName) OPTIONAL str in query
 
-        limit: (limit) OPTIONAL str in query
+        limit: (limit) OPTIONAL int in query
 
         login_id: (loginId) OPTIONAL str in query
 
@@ -94,7 +94,7 @@ class AdminSearchUsersV2(Operation):
     after: str                                                                                     # OPTIONAL in [query]
     before: str                                                                                    # OPTIONAL in [query]
     display_name: str                                                                              # OPTIONAL in [query]
-    limit: str                                                                                     # OPTIONAL in [query]
+    limit: int                                                                                     # OPTIONAL in [query]
     login_id: str                                                                                  # OPTIONAL in [query]
     platform_user_id: str                                                                          # OPTIONAL in [query]
     role_id: str                                                                                   # OPTIONAL in [query]
@@ -219,7 +219,7 @@ class AdminSearchUsersV2(Operation):
         self.display_name = value
         return self
 
-    def with_limit(self, value: str) -> AdminSearchUsersV2:
+    def with_limit(self, value: int) -> AdminSearchUsersV2:
         self.limit = value
         return self
 
@@ -266,9 +266,9 @@ class AdminSearchUsersV2(Operation):
         elif include_empty:
             result["displayName"] = str()
         if hasattr(self, "limit") and self.limit:
-            result["limit"] = str(self.limit)
+            result["limit"] = int(self.limit)
         elif include_empty:
-            result["limit"] = str()
+            result["limit"] = int()
         if hasattr(self, "login_id") and self.login_id:
             result["loginId"] = str(self.login_id)
         elif include_empty:
@@ -341,7 +341,7 @@ class AdminSearchUsersV2(Operation):
         after: Optional[str] = None,
         before: Optional[str] = None,
         display_name: Optional[str] = None,
-        limit: Optional[str] = None,
+        limit: Optional[int] = None,
         login_id: Optional[str] = None,
         platform_user_id: Optional[str] = None,
         role_id: Optional[str] = None,
@@ -388,9 +388,9 @@ class AdminSearchUsersV2(Operation):
         elif include_empty:
             instance.display_name = str()
         if "limit" in dict_ and dict_["limit"] is not None:
-            instance.limit = str(dict_["limit"])
+            instance.limit = int(dict_["limit"])
         elif include_empty:
-            instance.limit = str()
+            instance.limit = int()
         if "loginId" in dict_ and dict_["loginId"] is not None:
             instance.login_id = str(dict_["loginId"])
         elif include_empty:

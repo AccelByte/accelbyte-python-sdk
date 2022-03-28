@@ -6,7 +6,7 @@
 
 """Auto-generated package that contains models used by the justice-iam-service."""
 
-__version__ = "5.4.0"
+__version__ = "5.5.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -15,6 +15,7 @@ __email__ = "dev@accelbyte.net"
 from .admin_retrieve_user_thi_205ff1 import AdminRetrieveUserThirdPartyPlatformTokenV3
 from .auth_code_request_v3 import AuthCodeRequestV3
 from .authorize_v3 import AuthorizeV3
+from .change2fa_method import Change2faMethod
 from .get_jwksv3 import GetJWKSV3
 from .get_revocation_list_v3 import GetRevocationListV3
 from .platform_token_grant_v3 import PlatformTokenGrantV3
@@ -23,3 +24,4 @@ from .revoke_user_v3 import RevokeUserV3
 from .token_grant_v3 import TokenGrantV3
 from .token_introspection_v3 import TokenIntrospectionV3
 from .token_revocation_v3 import TokenRevocationV3
+from .verify2fa_code import Verify2faCode

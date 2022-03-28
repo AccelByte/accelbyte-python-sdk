@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-lobby-server (staging)
+# justice-iam-service (5.5.1)
 
 from __future__ import annotations
 import re
@@ -27,62 +27,56 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
-from ...models import ModelsImportConfigResponse
-from ...models import ResponseError
+from ...models import ModelBackupCodesResponseV4
+from ...models import RestErrorResponse
 
 
-class ImportConfig(Operation):
-    """Import lobby config from a json file. (ImportConfig)
+class AdminGetMyBackupCodesV4(Operation):
+    """Get backup codes (AdminGetMyBackupCodesV4)
+
+    (In Development)This endpoint is used to get 8-digits backup codes.
+    Each code is a one-time code and will be deleted once used.
 
 
-    Required permission ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]
 
-    Required Scope: social
 
-    Import config configuration from file. The existing configuration will be replaced.
-    The json file to import can be obtained from the /export endpoint.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
+    This endpoint Requires valid user access token
 
     Properties:
-        url: /lobby/v1/admin/config/namespaces/{namespace}/import
+        url: /iam/v4/admin/users/me/mfa/backupCode
 
-        method: POST
+        method: GET
 
-        tags: ["config"]
+        tags: ["Users V4"]
 
-        consumes: ["multipart/form-data"]
+        consumes: []
 
         produces: ["application/json"]
 
         security_type: bearer
 
-        namespace: (namespace) REQUIRED str in path
-
     Responses:
-        200: OK - ModelsImportConfigResponse (OK)
+        200: OK - ModelBackupCodesResponseV4 (Get backup codes)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10192: factor not enabled)
 
-        403: Forbidden - ResponseError (Forbidden)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 10171: email address not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
 
-    _url: str = "/lobby/v1/admin/config/namespaces/{namespace}/import"
-    _method: str = "POST"
-    _consumes: List[str] = ["multipart/form-data"]
+    _url: str = "/iam/v4/admin/users/me/mfa/backupCode"
+    _method: str = "GET"
+    _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None
-
-    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -120,13 +114,11 @@ class ImportConfig(Operation):
         return self.create_full_url(
             url=self.url,
             base_url=base_url,
-            path_params=self.get_path_params(),
         )
 
     # noinspection PyMethodMayBeStatic
     def get_all_required_fields(self) -> List[str]:
         return [
-            "namespace",
         ]
 
     # endregion get methods
@@ -135,14 +127,7 @@ class ImportConfig(Operation):
 
     def get_all_params(self) -> dict:
         return {
-            "path": self.get_path_params(),
         }
-
-    def get_path_params(self) -> dict:
-        result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
-        return result
 
     # endregion get_x_params methods
 
@@ -150,8 +135,6 @@ class ImportConfig(Operation):
 
     def is_valid(self) -> bool:
         # required checks
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
         # pattern checks
         return True
 
@@ -159,20 +142,12 @@ class ImportConfig(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> ImportConfig:
-        self.namespace = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = str()
         return result
 
     # endregion to methods
@@ -180,16 +155,20 @@ class ImportConfig(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsImportConfigResponse], Union[None, HttpResponse, ResponseError]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelBackupCodesResponseV4], Union[None, HttpResponse, RestErrorResponse]]:
         """Parse the given response.
 
-        200: OK - ModelsImportConfigResponse (OK)
+        200: OK - ModelBackupCodesResponseV4 (Get backup codes)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10192: factor not enabled)
 
-        403: Forbidden - ResponseError (Forbidden)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 10171: email address not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -203,13 +182,17 @@ class ImportConfig(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ModelsImportConfigResponse.create_from_dict(content), None
+            return ModelBackupCodesResponseV4.create_from_dict(content), None
+        if code == 400:
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 401:
-            return None, ResponseError.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, ResponseError.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 404:
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 500:
-            return None, ResponseError.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
 
         return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
@@ -220,25 +203,18 @@ class ImportConfig(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
-    ) -> ImportConfig:
+    ) -> AdminGetMyBackupCodesV4:
         instance = cls()
-        instance.namespace = namespace
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ImportConfig:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AdminGetMyBackupCodesV4:
         instance = cls()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
         }
 
     # endregion static methods

@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-ds-log-manager-service (2.1.0)
+# justice-ds-log-manager-service (2.2.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -47,7 +47,11 @@ class ModelsServer(Model):
 
         ip: (ip) REQUIRED str
 
+        is_override_game_version: (is_override_game_version) REQUIRED bool
+
         last_update: (last_update) REQUIRED str
+
+        match_id: (match_id) REQUIRED str
 
         mem_limit: (mem_limit) REQUIRED int
 
@@ -60,6 +64,8 @@ class ModelsServer(Model):
         port: (port) REQUIRED int
 
         ports: (ports) REQUIRED Dict[str, int]
+
+        protocol: (protocol) REQUIRED str
 
         provider: (provider) REQUIRED str
 
@@ -81,13 +87,16 @@ class ModelsServer(Model):
     game_version: str                                                                              # REQUIRED
     image_version: str                                                                             # REQUIRED
     ip: str                                                                                        # REQUIRED
+    is_override_game_version: bool                                                                 # REQUIRED
     last_update: str                                                                               # REQUIRED
+    match_id: str                                                                                  # REQUIRED
     mem_limit: int                                                                                 # REQUIRED
     namespace: str                                                                                 # REQUIRED
     params: str                                                                                    # REQUIRED
     pod_name: str                                                                                  # REQUIRED
     port: int                                                                                      # REQUIRED
     ports: Dict[str, int]                                                                          # REQUIRED
+    protocol: str                                                                                  # REQUIRED
     provider: str                                                                                  # REQUIRED
     region: str                                                                                    # REQUIRED
     session_id: str                                                                                # REQUIRED
@@ -126,8 +135,16 @@ class ModelsServer(Model):
         self.ip = value
         return self
 
+    def with_is_override_game_version(self, value: bool) -> ModelsServer:
+        self.is_override_game_version = value
+        return self
+
     def with_last_update(self, value: str) -> ModelsServer:
         self.last_update = value
+        return self
+
+    def with_match_id(self, value: str) -> ModelsServer:
+        self.match_id = value
         return self
 
     def with_mem_limit(self, value: int) -> ModelsServer:
@@ -152,6 +169,10 @@ class ModelsServer(Model):
 
     def with_ports(self, value: Dict[str, int]) -> ModelsServer:
         self.ports = value
+        return self
+
+    def with_protocol(self, value: str) -> ModelsServer:
+        self.protocol = value
         return self
 
     def with_provider(self, value: str) -> ModelsServer:
@@ -196,7 +217,11 @@ class ModelsServer(Model):
             return False
         if not hasattr(self, "ip") or self.ip is None:
             return False
+        if not hasattr(self, "is_override_game_version") or self.is_override_game_version is None:
+            return False
         if not hasattr(self, "last_update") or self.last_update is None:
+            return False
+        if not hasattr(self, "match_id") or self.match_id is None:
             return False
         if not hasattr(self, "mem_limit") or self.mem_limit is None:
             return False
@@ -209,6 +234,8 @@ class ModelsServer(Model):
         if not hasattr(self, "port") or self.port is None:
             return False
         if not hasattr(self, "ports") or self.ports is None:
+            return False
+        if not hasattr(self, "protocol") or self.protocol is None:
             return False
         if not hasattr(self, "provider") or self.provider is None:
             return False
@@ -257,10 +284,18 @@ class ModelsServer(Model):
             result["ip"] = str(self.ip)
         elif include_empty:
             result["ip"] = str()
+        if hasattr(self, "is_override_game_version"):
+            result["is_override_game_version"] = bool(self.is_override_game_version)
+        elif include_empty:
+            result["is_override_game_version"] = bool()
         if hasattr(self, "last_update"):
             result["last_update"] = str(self.last_update)
         elif include_empty:
             result["last_update"] = str()
+        if hasattr(self, "match_id"):
+            result["match_id"] = str(self.match_id)
+        elif include_empty:
+            result["match_id"] = str()
         if hasattr(self, "mem_limit"):
             result["mem_limit"] = int(self.mem_limit)
         elif include_empty:
@@ -285,6 +320,10 @@ class ModelsServer(Model):
             result["ports"] = {str(k0): int(v0) for k0, v0 in self.ports.items()}
         elif include_empty:
             result["ports"] = {}
+        if hasattr(self, "protocol"):
+            result["protocol"] = str(self.protocol)
+        elif include_empty:
+            result["protocol"] = str()
         if hasattr(self, "provider"):
             result["provider"] = str(self.provider)
         elif include_empty:
@@ -321,13 +360,16 @@ class ModelsServer(Model):
         game_version: str,
         image_version: str,
         ip: str,
+        is_override_game_version: bool,
         last_update: str,
+        match_id: str,
         mem_limit: int,
         namespace: str,
         params: str,
         pod_name: str,
         port: int,
         ports: Dict[str, int],
+        protocol: str,
         provider: str,
         region: str,
         session_id: str,
@@ -342,13 +384,16 @@ class ModelsServer(Model):
         instance.game_version = game_version
         instance.image_version = image_version
         instance.ip = ip
+        instance.is_override_game_version = is_override_game_version
         instance.last_update = last_update
+        instance.match_id = match_id
         instance.mem_limit = mem_limit
         instance.namespace = namespace
         instance.params = params
         instance.pod_name = pod_name
         instance.port = port
         instance.ports = ports
+        instance.protocol = protocol
         instance.provider = provider
         instance.region = region
         instance.session_id = session_id
@@ -389,10 +434,18 @@ class ModelsServer(Model):
             instance.ip = str(dict_["ip"])
         elif include_empty:
             instance.ip = str()
+        if "is_override_game_version" in dict_ and dict_["is_override_game_version"] is not None:
+            instance.is_override_game_version = bool(dict_["is_override_game_version"])
+        elif include_empty:
+            instance.is_override_game_version = bool()
         if "last_update" in dict_ and dict_["last_update"] is not None:
             instance.last_update = str(dict_["last_update"])
         elif include_empty:
             instance.last_update = str()
+        if "match_id" in dict_ and dict_["match_id"] is not None:
+            instance.match_id = str(dict_["match_id"])
+        elif include_empty:
+            instance.match_id = str()
         if "mem_limit" in dict_ and dict_["mem_limit"] is not None:
             instance.mem_limit = int(dict_["mem_limit"])
         elif include_empty:
@@ -417,6 +470,10 @@ class ModelsServer(Model):
             instance.ports = {str(k0): int(v0) for k0, v0 in dict_["ports"].items()}
         elif include_empty:
             instance.ports = {}
+        if "protocol" in dict_ and dict_["protocol"] is not None:
+            instance.protocol = str(dict_["protocol"])
+        elif include_empty:
+            instance.protocol = str()
         if "provider" in dict_ and dict_["provider"] is not None:
             instance.provider = str(dict_["provider"])
         elif include_empty:
@@ -467,13 +524,16 @@ class ModelsServer(Model):
             "game_version": "game_version",
             "image_version": "image_version",
             "ip": "ip",
+            "is_override_game_version": "is_override_game_version",
             "last_update": "last_update",
+            "match_id": "match_id",
             "mem_limit": "mem_limit",
             "namespace": "namespace",
             "params": "params",
             "pod_name": "pod_name",
             "port": "port",
             "ports": "ports",
+            "protocol": "protocol",
             "provider": "provider",
             "region": "region",
             "session_id": "session_id",

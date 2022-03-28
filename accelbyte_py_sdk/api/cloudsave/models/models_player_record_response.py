@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-cloudsave-service (2.3.0)
+# justice-cloudsave-service (2.3.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,8 +27,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 
-class ModelsPlayerRecord(Model):
-    """Models player record (models.PlayerRecord)
+class ModelsPlayerRecordResponse(Model):
+    """Models player record response (models.PlayerRecordResponse)
 
     Properties:
         created_at: (created_at) REQUIRED str
@@ -44,6 +44,8 @@ class ModelsPlayerRecord(Model):
         user_id: (user_id) REQUIRED str
 
         value: (value) REQUIRED Dict[str, Any]
+
+        set_by: (set_by) OPTIONAL str
     """
 
     # region fields
@@ -55,37 +57,42 @@ class ModelsPlayerRecord(Model):
     updated_at: str                                                                                # REQUIRED
     user_id: str                                                                                   # REQUIRED
     value: Dict[str, Any]                                                                          # REQUIRED
+    set_by: str                                                                                    # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_created_at(self, value: str) -> ModelsPlayerRecord:
+    def with_created_at(self, value: str) -> ModelsPlayerRecordResponse:
         self.created_at = value
         return self
 
-    def with_is_public(self, value: bool) -> ModelsPlayerRecord:
+    def with_is_public(self, value: bool) -> ModelsPlayerRecordResponse:
         self.is_public = value
         return self
 
-    def with_key(self, value: str) -> ModelsPlayerRecord:
+    def with_key(self, value: str) -> ModelsPlayerRecordResponse:
         self.key = value
         return self
 
-    def with_namespace(self, value: str) -> ModelsPlayerRecord:
+    def with_namespace(self, value: str) -> ModelsPlayerRecordResponse:
         self.namespace = value
         return self
 
-    def with_updated_at(self, value: str) -> ModelsPlayerRecord:
+    def with_updated_at(self, value: str) -> ModelsPlayerRecordResponse:
         self.updated_at = value
         return self
 
-    def with_user_id(self, value: str) -> ModelsPlayerRecord:
+    def with_user_id(self, value: str) -> ModelsPlayerRecordResponse:
         self.user_id = value
         return self
 
-    def with_value(self, value: Dict[str, Any]) -> ModelsPlayerRecord:
+    def with_value(self, value: Dict[str, Any]) -> ModelsPlayerRecordResponse:
         self.value = value
+        return self
+
+    def with_set_by(self, value: str) -> ModelsPlayerRecordResponse:
+        self.set_by = value
         return self
 
     # endregion with_x methods
@@ -147,6 +154,10 @@ class ModelsPlayerRecord(Model):
             result["value"] = {str(k0): v0 for k0, v0 in self.value.items()}
         elif include_empty:
             result["value"] = {}
+        if hasattr(self, "set_by"):
+            result["set_by"] = str(self.set_by)
+        elif include_empty:
+            result["set_by"] = str()
         return result
 
     # endregion to methods
@@ -163,7 +174,8 @@ class ModelsPlayerRecord(Model):
         updated_at: str,
         user_id: str,
         value: Dict[str, Any],
-    ) -> ModelsPlayerRecord:
+        set_by: Optional[str] = None,
+    ) -> ModelsPlayerRecordResponse:
         instance = cls()
         instance.created_at = created_at
         instance.is_public = is_public
@@ -172,10 +184,12 @@ class ModelsPlayerRecord(Model):
         instance.updated_at = updated_at
         instance.user_id = user_id
         instance.value = value
+        if set_by is not None:
+            instance.set_by = set_by
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsPlayerRecord:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsPlayerRecordResponse:
         instance = cls()
         if not dict_:
             return instance
@@ -207,18 +221,22 @@ class ModelsPlayerRecord(Model):
             instance.value = {str(k0): v0 for k0, v0 in dict_["value"].items()}
         elif include_empty:
             instance.value = {}
+        if "set_by" in dict_ and dict_["set_by"] is not None:
+            instance.set_by = str(dict_["set_by"])
+        elif include_empty:
+            instance.set_by = str()
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsPlayerRecord]:
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsPlayerRecordResponse]:
         return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsPlayerRecord]:
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsPlayerRecordResponse]:
         return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsPlayerRecord, List[ModelsPlayerRecord]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsPlayerRecordResponse, List[ModelsPlayerRecordResponse]]:
         if many:
             if isinstance(any_, dict):
                 cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -237,6 +255,7 @@ class ModelsPlayerRecord(Model):
             "updated_at": "updated_at",
             "user_id": "user_id",
             "value": "value",
+            "set_by": "set_by",
         }
 
     # endregion static methods

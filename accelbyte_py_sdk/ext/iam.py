@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.4.0)
+# justice-iam-service (5.5.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -92,8 +92,11 @@ from ..api.iam.models import ModelAgeRestrictionResponse
 from ..api.iam.models import ModelAgeRestrictionResponseV3
 from ..api.iam.models import ModelAssignUserV4Request
 from ..api.iam.models import ModelAssignedUserV4Response
+from ..api.iam.models import ModelAuthenticatorKeyResponseV4
+from ..api.iam.models import ModelBackupCodesResponseV4
 from ..api.iam.models import ModelBanCreateRequest
 from ..api.iam.models import ModelBanUpdateRequest
+from ..api.iam.models import ModelCheckValidUserIDRequestV4
 from ..api.iam.models import ModelCountry
 from ..api.iam.models import ModelCountryAgeRestrictionRequest
 from ..api.iam.models import ModelCountryAgeRestrictionV3Request
@@ -101,6 +104,7 @@ from ..api.iam.models import ModelCountryV3Response
 from ..api.iam.models import ModelCreateJusticeUserResponse
 from ..api.iam.models import ModelDisableUserRequest
 from ..api.iam.models import ModelEmailUpdateRequestV4
+from ..api.iam.models import ModelEnabledFactorsResponseV4
 from ..api.iam.models import ModelForgotPasswordRequestV3
 from ..api.iam.models import ModelGetAdminUsersResponse
 from ..api.iam.models import ModelGetPublisherUserResponse
@@ -125,6 +129,7 @@ from ..api.iam.models import ModelListRoleV4Response
 from ..api.iam.models import ModelListUserInformationResult
 from ..api.iam.models import ModelListUserResponseV3
 from ..api.iam.models import ModelListUserRolesV4Response
+from ..api.iam.models import ModelListValidUserIDResponseV4
 from ..api.iam.models import ModelLoginHistoriesResponse
 from ..api.iam.models import ModelNamespaceRoleRequest
 from ..api.iam.models import ModelPermissionDeleteRequest
@@ -210,6 +215,7 @@ from ..api.iam.models import ModelUserUpdateRequest
 from ..api.iam.models import ModelUserUpdateRequestV3
 from ..api.iam.models import ModelUserVerificationRequest
 from ..api.iam.models import ModelUserVerificationRequestV3
+from ..api.iam.models import ModelValidUserIDResponseV4
 from ..api.iam.models import ModelValidationDetail
 from ..api.iam.models import ModelValidationDetailPublic
 from ..api.iam.models import ModelVerificationCodeResponse
@@ -867,6 +873,21 @@ def create_model_assigned_user_v4_response_example() -> ModelAssignedUserV4Respo
     return instance
 
 
+def create_model_authenticator_key_response_v4_example() -> ModelAuthenticatorKeyResponseV4:
+    instance = ModelAuthenticatorKeyResponseV4()
+    instance.secret_key = randomize()
+    instance.uri = randomize()
+    return instance
+
+
+def create_model_backup_codes_response_v4_example() -> ModelBackupCodesResponseV4:
+    instance = ModelBackupCodesResponseV4()
+    instance.generated_at = randomize("int", min_val=1, max_val=1000)
+    instance.invalid_codes = [randomize()]
+    instance.valid_codes = [randomize()]
+    return instance
+
+
 def create_model_ban_create_request_example() -> ModelBanCreateRequest:
     instance = ModelBanCreateRequest()
     instance.ban = randomize()
@@ -881,6 +902,12 @@ def create_model_ban_update_request_example() -> ModelBanUpdateRequest:
     instance = ModelBanUpdateRequest()
     instance.enabled = randomize("bool")
     instance.skip_notif = randomize("bool")
+    return instance
+
+
+def create_model_check_valid_user_id_request_v4_example() -> ModelCheckValidUserIDRequestV4:
+    instance = ModelCheckValidUserIDRequestV4()
+    instance.user_ids = [randomize()]
     return instance
 
 
@@ -931,6 +958,13 @@ def create_model_email_update_request_v4_example() -> ModelEmailUpdateRequestV4:
     instance = ModelEmailUpdateRequestV4()
     instance.code = randomize()
     instance.email_address = randomize("email")
+    return instance
+
+
+def create_model_enabled_factors_response_v4_example() -> ModelEnabledFactorsResponseV4:
+    instance = ModelEnabledFactorsResponseV4()
+    instance.default = randomize()
+    instance.enabled = [randomize()]
     return instance
 
 
@@ -1104,6 +1138,12 @@ def create_model_list_user_roles_v4_response_example() -> ModelListUserRolesV4Re
     instance = ModelListUserRolesV4Response()
     instance.data = [create_model_user_roles_v4_response_example()]
     instance.paging = create_accountcommon_pagination_v3_example()
+    return instance
+
+
+def create_model_list_valid_user_id_response_v4_example() -> ModelListValidUserIDResponseV4:
+    instance = ModelListValidUserIDResponseV4()
+    instance.data = [create_model_valid_user_id_response_v4_example()]
     return instance
 
 
@@ -1935,6 +1975,13 @@ def create_model_user_verification_request_v3_example() -> ModelUserVerification
     instance.contact_type = randomize()
     instance.language_tag = randomize()
     instance.validate_only = randomize("bool")
+    return instance
+
+
+def create_model_valid_user_id_response_v4_example() -> ModelValidUserIDResponseV4:
+    instance = ModelValidUserIDResponseV4()
+    instance.exists = randomize("bool")
+    instance.user_id = randomize("uid")
     return instance
 
 

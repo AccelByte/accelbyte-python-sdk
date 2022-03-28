@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.3.0)
+# justice-cloudsave-service (2.3.1)
 
 from __future__ import annotations
 import re
@@ -27,7 +27,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
-from ...models import ModelsPlayerRecord
+from ...models import ModelsPlayerRecordResponse
 from ...models import ModelsResponseError
 
 
@@ -42,7 +42,8 @@ class GetPlayerRecordHandlerV1(Operation):
 
 
 
-    Get player record by its key
+    Get player record by its key.
+     Private Record: Only user that own the player record could retrieve it.
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]
@@ -70,9 +71,11 @@ class GetPlayerRecordHandlerV1(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsPlayerRecord (Record retrieved)
+        200: OK - ModelsPlayerRecordResponse (Record retrieved)
 
         401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        403: Forbidden - ModelsResponseError (18023: get action is forbidden on other user's record)
 
         404: Not Found - ModelsResponseError (Not Found)
 
@@ -214,12 +217,14 @@ class GetPlayerRecordHandlerV1(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsPlayerRecord], Union[None, HttpResponse, ModelsResponseError]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsPlayerRecordResponse], Union[None, HttpResponse, ModelsResponseError]]:
         """Parse the given response.
 
-        200: OK - ModelsPlayerRecord (Record retrieved)
+        200: OK - ModelsPlayerRecordResponse (Record retrieved)
 
         401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        403: Forbidden - ModelsResponseError (18023: get action is forbidden on other user's record)
 
         404: Not Found - ModelsResponseError (Not Found)
 
@@ -237,8 +242,10 @@ class GetPlayerRecordHandlerV1(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ModelsPlayerRecord.create_from_dict(content), None
+            return ModelsPlayerRecordResponse.create_from_dict(content), None
         if code == 401:
+            return None, ModelsResponseError.create_from_dict(content)
+        if code == 403:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 404:
             return None, ModelsResponseError.create_from_dict(content)

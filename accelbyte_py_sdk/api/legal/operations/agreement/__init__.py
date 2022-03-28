@@ -6,7 +6,7 @@
 
 """Auto-generated package that contains models used by the justice-legal-service."""
 
-__version__ = "1.18.1"
+__version__ = "1.19.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -15,6 +15,7 @@ __email__ = "dev@accelbyte.net"
 from .accept_versioned_policy import AcceptVersionedPolicy
 from .bulk_accept_versioned_policy import BulkAcceptVersionedPolicy
 from .change_preference_consent import ChangePreferenceConsent
+from .change_preference_consent_1 import ChangePreferenceConsent1
 from .indirect_bulk_accept_ve_f4345a import IndirectBulkAcceptVersionedPolicy1
 from .indirect_bulk_accept_ve_34e753 import IndirectBulkAcceptVersionedPolicyV2
 from .retrieve_accepted_agreements import RetrieveAcceptedAgreements

@@ -33,10 +33,15 @@ from ..models import AccountUpgradeHeadlessAccountRequestV4
 from ..models import AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4
 from ..models import AccountUserResponseV4
 from ..models import ModelAddUserRoleV4Request
+from ..models import ModelAuthenticatorKeyResponseV4
+from ..models import ModelBackupCodesResponseV4
+from ..models import ModelCheckValidUserIDRequestV4
 from ..models import ModelEmailUpdateRequestV4
+from ..models import ModelEnabledFactorsResponseV4
 from ..models import ModelInviteUserRequestV4
 from ..models import ModelInviteUserResponseV3
 from ..models import ModelListUserRolesV4Response
+from ..models import ModelListValidUserIDResponseV4
 from ..models import ModelRemoveUserRoleV4Request
 from ..models import ModelUserCreateFromInvitationRequestV4
 from ..models import ModelUserResponseV3
@@ -44,8 +49,19 @@ from ..models import ModelUserUpdateRequestV3
 from ..models import RestErrorResponse
 
 from ..operations.users_v4 import AdminAddUserRoleV4
+from ..operations.users_v4 import AdminBulkCheckValidUserIDV4
+from ..operations.users_v4 import AdminDisableMyAuthenticatorV4
+from ..operations.users_v4 import AdminDisableMyBackupCodesV4
+from ..operations.users_v4 import AdminDownloadMyBackupCodesV4
+from ..operations.users_v4 import AdminEnableMyAuthenticatorV4
+from ..operations.users_v4 import AdminEnableMyBackupCodesV4
+from ..operations.users_v4 import AdminGenerateMyAuthenticatorKeyV4
+from ..operations.users_v4 import AdminGenerateMyBackupCodesV4
+from ..operations.users_v4 import AdminGetMyBackupCodesV4
+from ..operations.users_v4 import AdminGetMyEnabledFactorsV4
 from ..operations.users_v4 import AdminInviteUserV4
 from ..operations.users_v4 import AdminListUserRolesV4
+from ..operations.users_v4 import AdminMakeFactorMyDefaultV4
 from ..operations.users_v4 import AdminRemoveUserRoleV4
 from ..operations.users_v4 import AdminUpdateMyUserV4
 from ..operations.users_v4 import AdminUpdateUserEmailAddressV4
@@ -54,6 +70,16 @@ from ..operations.users_v4 import AdminUpdateUserV4
 from ..operations.users_v4 import CreateUserFromInvitationV4
 from ..operations.users_v4 import PublicCreateTestUserV4
 from ..operations.users_v4 import PublicCreateUserV4
+from ..operations.users_v4 import PublicDisableMyAuthenticatorV4
+from ..operations.users_v4 import PublicDisableMyBackupCodesV4
+from ..operations.users_v4 import PublicDownloadMyBackupCodesV4
+from ..operations.users_v4 import PublicEnableMyAuthenticatorV4
+from ..operations.users_v4 import PublicEnableMyBackupCodesV4
+from ..operations.users_v4 import PublicGenerateMyAuthenticatorKeyV4
+from ..operations.users_v4 import PublicGenerateMyBackupCodesV4
+from ..operations.users_v4 import PublicGetMyBackupCodesV4
+from ..operations.users_v4 import PublicGetMyEnabledFactorsV4
+from ..operations.users_v4 import PublicMakeFactorMyDefaultV4
 from ..operations.users_v4 import PublicUpdateUserEmailAddressV4
 from ..operations.users_v4 import PublicUpdateUserV4
 from ..operations.users_v4 import PublicUpgradeHeadlessAccountV4
@@ -85,6 +111,144 @@ async def admin_add_user_role_v4_async(body: ModelAddUserRoleV4Request, user_id:
         user_id=user_id,
         namespace=namespace,
     )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminBulkCheckValidUserIDV4)
+def admin_bulk_check_valid_user_idv4(body: ModelCheckValidUserIDRequestV4, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminBulkCheckValidUserIDV4.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminBulkCheckValidUserIDV4)
+async def admin_bulk_check_valid_user_idv4_async(body: ModelCheckValidUserIDRequestV4, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminBulkCheckValidUserIDV4.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminDisableMyAuthenticatorV4)
+def admin_disable_my_authenticator_v4(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AdminDisableMyAuthenticatorV4.create()
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminDisableMyAuthenticatorV4)
+async def admin_disable_my_authenticator_v4_async(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AdminDisableMyAuthenticatorV4.create()
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminDisableMyBackupCodesV4)
+def admin_disable_my_backup_codes_v4(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AdminDisableMyBackupCodesV4.create()
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminDisableMyBackupCodesV4)
+async def admin_disable_my_backup_codes_v4_async(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AdminDisableMyBackupCodesV4.create()
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminDownloadMyBackupCodesV4)
+def admin_download_my_backup_codes_v4(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AdminDownloadMyBackupCodesV4.create()
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminDownloadMyBackupCodesV4)
+async def admin_download_my_backup_codes_v4_async(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AdminDownloadMyBackupCodesV4.create()
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminEnableMyAuthenticatorV4)
+def admin_enable_my_authenticator_v4(code: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AdminEnableMyAuthenticatorV4.create(
+        code=code,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminEnableMyAuthenticatorV4)
+async def admin_enable_my_authenticator_v4_async(code: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AdminEnableMyAuthenticatorV4.create(
+        code=code,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminEnableMyBackupCodesV4)
+def admin_enable_my_backup_codes_v4(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AdminEnableMyBackupCodesV4.create()
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminEnableMyBackupCodesV4)
+async def admin_enable_my_backup_codes_v4_async(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AdminEnableMyBackupCodesV4.create()
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminGenerateMyAuthenticatorKeyV4)
+def admin_generate_my_authenticator_key_v4(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AdminGenerateMyAuthenticatorKeyV4.create()
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminGenerateMyAuthenticatorKeyV4)
+async def admin_generate_my_authenticator_key_v4_async(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AdminGenerateMyAuthenticatorKeyV4.create()
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminGenerateMyBackupCodesV4)
+def admin_generate_my_backup_codes_v4(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AdminGenerateMyBackupCodesV4.create()
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminGenerateMyBackupCodesV4)
+async def admin_generate_my_backup_codes_v4_async(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AdminGenerateMyBackupCodesV4.create()
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminGetMyBackupCodesV4)
+def admin_get_my_backup_codes_v4(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AdminGetMyBackupCodesV4.create()
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminGetMyBackupCodesV4)
+async def admin_get_my_backup_codes_v4_async(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AdminGetMyBackupCodesV4.create()
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminGetMyEnabledFactorsV4)
+def admin_get_my_enabled_factors_v4(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AdminGetMyEnabledFactorsV4.create()
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminGetMyEnabledFactorsV4)
+async def admin_get_my_enabled_factors_v4_async(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AdminGetMyEnabledFactorsV4.create()
     return await run_request_async(request, additional_headers=x_additional_headers)
 
 
@@ -126,6 +290,22 @@ async def admin_list_user_roles_v4_async(user_id: str, namespace: Optional[str] 
     request = AdminListUserRolesV4.create(
         user_id=user_id,
         namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminMakeFactorMyDefaultV4)
+def admin_make_factor_my_default_v4(factor: str, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AdminMakeFactorMyDefaultV4.create(
+        factor=factor,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminMakeFactorMyDefaultV4)
+async def admin_make_factor_my_default_v4_async(factor: str, x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AdminMakeFactorMyDefaultV4.create(
+        factor=factor,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)
 
@@ -333,6 +513,250 @@ async def public_create_user_v4_async(body: AccountCreateUserRequestV4, namespac
             return None, error
     request = PublicCreateUserV4.create(
         body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicDisableMyAuthenticatorV4)
+def public_disable_my_authenticator_v4(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicDisableMyAuthenticatorV4.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicDisableMyAuthenticatorV4)
+async def public_disable_my_authenticator_v4_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicDisableMyAuthenticatorV4.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicDisableMyBackupCodesV4)
+def public_disable_my_backup_codes_v4(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicDisableMyBackupCodesV4.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicDisableMyBackupCodesV4)
+async def public_disable_my_backup_codes_v4_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicDisableMyBackupCodesV4.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicDownloadMyBackupCodesV4)
+def public_download_my_backup_codes_v4(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicDownloadMyBackupCodesV4.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicDownloadMyBackupCodesV4)
+async def public_download_my_backup_codes_v4_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicDownloadMyBackupCodesV4.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicEnableMyAuthenticatorV4)
+def public_enable_my_authenticator_v4(code: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicEnableMyAuthenticatorV4.create(
+        code=code,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicEnableMyAuthenticatorV4)
+async def public_enable_my_authenticator_v4_async(code: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicEnableMyAuthenticatorV4.create(
+        code=code,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicEnableMyBackupCodesV4)
+def public_enable_my_backup_codes_v4(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicEnableMyBackupCodesV4.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicEnableMyBackupCodesV4)
+async def public_enable_my_backup_codes_v4_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicEnableMyBackupCodesV4.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicGenerateMyAuthenticatorKeyV4)
+def public_generate_my_authenticator_key_v4(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGenerateMyAuthenticatorKeyV4.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicGenerateMyAuthenticatorKeyV4)
+async def public_generate_my_authenticator_key_v4_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGenerateMyAuthenticatorKeyV4.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicGenerateMyBackupCodesV4)
+def public_generate_my_backup_codes_v4(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGenerateMyBackupCodesV4.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicGenerateMyBackupCodesV4)
+async def public_generate_my_backup_codes_v4_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGenerateMyBackupCodesV4.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicGetMyBackupCodesV4)
+def public_get_my_backup_codes_v4(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetMyBackupCodesV4.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicGetMyBackupCodesV4)
+async def public_get_my_backup_codes_v4_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetMyBackupCodesV4.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicGetMyEnabledFactorsV4)
+def public_get_my_enabled_factors_v4(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetMyEnabledFactorsV4.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicGetMyEnabledFactorsV4)
+async def public_get_my_enabled_factors_v4_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetMyEnabledFactorsV4.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicMakeFactorMyDefaultV4)
+def public_make_factor_my_default_v4(factor: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicMakeFactorMyDefaultV4.create(
+        factor=factor,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicMakeFactorMyDefaultV4)
+async def public_make_factor_my_default_v4_async(factor: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicMakeFactorMyDefaultV4.create(
+        factor=factor,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)

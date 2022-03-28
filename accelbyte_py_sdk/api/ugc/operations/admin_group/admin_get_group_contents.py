@@ -58,9 +58,9 @@ class AdminGetGroupContents(Operation):
 
         user_id: (userId) REQUIRED str in path
 
-        limit: (limit) OPTIONAL str in query
+        limit: (limit) OPTIONAL int in query
 
-        offset: (offset) OPTIONAL str in query
+        offset: (offset) OPTIONAL int in query
 
     Responses:
         200: OK - ModelsPaginatedContentDownloadResponse (OK)
@@ -84,8 +84,8 @@ class AdminGetGroupContents(Operation):
     group_id: str                                                                                  # REQUIRED in [path]
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
-    limit: str                                                                                     # OPTIONAL in [query]
-    offset: str                                                                                    # OPTIONAL in [query]
+    limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
 
     # endregion fields
 
@@ -194,11 +194,11 @@ class AdminGetGroupContents(Operation):
         self.user_id = value
         return self
 
-    def with_limit(self, value: str) -> AdminGetGroupContents:
+    def with_limit(self, value: int) -> AdminGetGroupContents:
         self.limit = value
         return self
 
-    def with_offset(self, value: str) -> AdminGetGroupContents:
+    def with_offset(self, value: int) -> AdminGetGroupContents:
         self.offset = value
         return self
 
@@ -221,13 +221,13 @@ class AdminGetGroupContents(Operation):
         elif include_empty:
             result["userId"] = str()
         if hasattr(self, "limit") and self.limit:
-            result["limit"] = str(self.limit)
+            result["limit"] = int(self.limit)
         elif include_empty:
-            result["limit"] = str()
+            result["limit"] = int()
         if hasattr(self, "offset") and self.offset:
-            result["offset"] = str(self.offset)
+            result["offset"] = int(self.offset)
         elif include_empty:
-            result["offset"] = str()
+            result["offset"] = int()
         return result
 
     # endregion to methods
@@ -278,8 +278,8 @@ class AdminGetGroupContents(Operation):
         group_id: str,
         namespace: str,
         user_id: str,
-        limit: Optional[str] = None,
-        offset: Optional[str] = None,
+        limit: Optional[int] = None,
+        offset: Optional[int] = None,
     ) -> AdminGetGroupContents:
         instance = cls()
         instance.group_id = group_id
@@ -307,13 +307,13 @@ class AdminGetGroupContents(Operation):
         elif include_empty:
             instance.user_id = str()
         if "limit" in dict_ and dict_["limit"] is not None:
-            instance.limit = str(dict_["limit"])
+            instance.limit = int(dict_["limit"])
         elif include_empty:
-            instance.limit = str()
+            instance.limit = int()
         if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = str(dict_["offset"])
+            instance.offset = int(dict_["offset"])
         elif include_empty:
-            instance.offset = str()
+            instance.offset = int()
         return instance
 
     @staticmethod

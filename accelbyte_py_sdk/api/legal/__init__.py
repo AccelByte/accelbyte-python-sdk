@@ -6,7 +6,7 @@
 
 """Auto-generated package that contains models used by the justice-legal-service."""
 
-__version__ = "1.18.1"
+__version__ = "1.19.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -27,6 +27,8 @@ from .wrappers import bulk_accept_versioned_policy
 from .wrappers import bulk_accept_versioned_policy_async
 from .wrappers import change_preference_consent
 from .wrappers import change_preference_consent_async
+from .wrappers import change_preference_consent_1
+from .wrappers import change_preference_consent_1_async
 from .wrappers import indirect_bulk_accept_versioned_policy_1
 from .wrappers import indirect_bulk_accept_versioned_policy_1_async
 from .wrappers import indirect_bulk_accept_versioned_policy_v2

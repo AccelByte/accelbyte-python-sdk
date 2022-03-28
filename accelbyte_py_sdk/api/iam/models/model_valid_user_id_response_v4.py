@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-cloudsave-service (2.3.0)
+# justice-iam-service (5.5.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,29 +27,29 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 
-class ModelsPlayerRecordKey(Model):
-    """Models player record key (models.PlayerRecordKey)
+class ModelValidUserIDResponseV4(Model):
+    """Model valid user ID response V4 (model.ValidUserIDResponseV4)
 
     Properties:
-        key: (key) REQUIRED str
+        exists: (exists) REQUIRED bool
 
-        user_id: (user_id) REQUIRED str
+        user_id: (userId) REQUIRED str
     """
 
     # region fields
 
-    key: str                                                                                       # REQUIRED
+    exists: bool                                                                                   # REQUIRED
     user_id: str                                                                                   # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_key(self, value: str) -> ModelsPlayerRecordKey:
-        self.key = value
+    def with_exists(self, value: bool) -> ModelValidUserIDResponseV4:
+        self.exists = value
         return self
 
-    def with_user_id(self, value: str) -> ModelsPlayerRecordKey:
+    def with_user_id(self, value: str) -> ModelValidUserIDResponseV4:
         self.user_id = value
         return self
 
@@ -61,7 +61,7 @@ class ModelsPlayerRecordKey(Model):
     def is_valid(self) -> bool:
         # pylint: disable=no-self-use
         # required checks
-        if not hasattr(self, "key") or self.key is None:
+        if not hasattr(self, "exists") or self.exists is None:
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
             return False
@@ -74,14 +74,14 @@ class ModelsPlayerRecordKey(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "key"):
-            result["key"] = str(self.key)
+        if hasattr(self, "exists"):
+            result["exists"] = bool(self.exists)
         elif include_empty:
-            result["key"] = str()
+            result["exists"] = bool()
         if hasattr(self, "user_id"):
-            result["user_id"] = str(self.user_id)
+            result["userId"] = str(self.user_id)
         elif include_empty:
-            result["user_id"] = str()
+            result["userId"] = str()
         return result
 
     # endregion to methods
@@ -91,39 +91,39 @@ class ModelsPlayerRecordKey(Model):
     @classmethod
     def create(
         cls,
-        key: str,
+        exists: bool,
         user_id: str,
-    ) -> ModelsPlayerRecordKey:
+    ) -> ModelValidUserIDResponseV4:
         instance = cls()
-        instance.key = key
+        instance.exists = exists
         instance.user_id = user_id
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsPlayerRecordKey:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelValidUserIDResponseV4:
         instance = cls()
         if not dict_:
             return instance
-        if "key" in dict_ and dict_["key"] is not None:
-            instance.key = str(dict_["key"])
+        if "exists" in dict_ and dict_["exists"] is not None:
+            instance.exists = bool(dict_["exists"])
         elif include_empty:
-            instance.key = str()
-        if "user_id" in dict_ and dict_["user_id"] is not None:
-            instance.user_id = str(dict_["user_id"])
+            instance.exists = bool()
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsPlayerRecordKey]:
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelValidUserIDResponseV4]:
         return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsPlayerRecordKey]:
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelValidUserIDResponseV4]:
         return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsPlayerRecordKey, List[ModelsPlayerRecordKey]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelValidUserIDResponseV4, List[ModelValidUserIDResponseV4]]:
         if many:
             if isinstance(any_, dict):
                 cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -135,8 +135,8 @@ class ModelsPlayerRecordKey(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "key": "key",
-            "user_id": "user_id",
+            "exists": "exists",
+            "userId": "user_id",
         }
 
     # endregion static methods

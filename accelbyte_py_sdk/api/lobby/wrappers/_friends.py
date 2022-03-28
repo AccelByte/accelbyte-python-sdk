@@ -82,7 +82,7 @@ async def add_friends_without_confirmation_async(body: ModelBulkAddFriendsReques
 
 
 @same_doc_as(GetListOfFriends)
-def get_list_of_friends(user_id: str, limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_list_of_friends(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -97,7 +97,7 @@ def get_list_of_friends(user_id: str, limit: Optional[str] = None, offset: Optio
 
 
 @same_doc_as(GetListOfFriends)
-async def get_list_of_friends_async(user_id: str, limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_list_of_friends_async(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -112,7 +112,7 @@ async def get_list_of_friends_async(user_id: str, limit: Optional[str] = None, o
 
 
 @same_doc_as(GetUserFriendsUpdated)
-def get_user_friends_updated(limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_user_friends_updated(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -126,7 +126,7 @@ def get_user_friends_updated(limit: Optional[str] = None, offset: Optional[str] 
 
 
 @same_doc_as(GetUserFriendsUpdated)
-async def get_user_friends_updated_async(limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_user_friends_updated_async(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

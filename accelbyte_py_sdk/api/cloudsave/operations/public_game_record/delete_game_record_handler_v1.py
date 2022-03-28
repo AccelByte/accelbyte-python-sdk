@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.3.0)
+# justice-cloudsave-service (2.3.1)
 
 from __future__ import annotations
 import re
@@ -68,6 +68,8 @@ class DeleteGameRecordHandlerV1(Operation):
 
     Responses:
         204: No Content - (Record deleted)
+
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
 
         401: Unauthorized - ModelsResponseError (Unauthorized)
 
@@ -200,6 +202,8 @@ class DeleteGameRecordHandlerV1(Operation):
 
         204: No Content - (Record deleted)
 
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
         401: Unauthorized - ModelsResponseError (Unauthorized)
 
         500: Internal Server Error - ModelsResponseError (Internal Server Error)
@@ -217,6 +221,8 @@ class DeleteGameRecordHandlerV1(Operation):
 
         if code == 204:
             return None, None
+        if code == 400:
+            return None, ModelsResponseError.create_from_dict(content)
         if code == 401:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 500:

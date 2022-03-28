@@ -1,6 +1,6 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-legal-service Index (1.18.1)
+# justice-legal-service Index (1.19.0)
 
 
 ## Operations
@@ -20,7 +20,8 @@
 |---|---|---|---|---|
 | /agreement/public/agreements/localized-policy-versions/{localizedPolicyVersionId} | POST | acceptVersionedPolicy | [AcceptVersionedPolicy](../accelbyte_py_sdk/api/legal/operations/agreement/accept_versioned_policy.py) | [accept_versioned_policy](../accelbyte_py_sdk/api/legal/wrappers/_agreement.py) |
 | /agreement/public/agreements/policies | POST | bulkAcceptVersionedPolicy | [BulkAcceptVersionedPolicy](../accelbyte_py_sdk/api/legal/operations/agreement/bulk_accept_versioned_policy.py) | [bulk_accept_versioned_policy](../accelbyte_py_sdk/api/legal/wrappers/_agreement.py) |
-| /agreement/public/agreements/localized-policy-versions/preferences | PATCH | changePreferenceConsent | [ChangePreferenceConsent](../accelbyte_py_sdk/api/legal/operations/agreement/change_preference_consent.py) | [change_preference_consent](../accelbyte_py_sdk/api/legal/wrappers/_agreement.py) |
+| /agreement/admin/agreements/localized-policy-versions/preferences/namespaces/{namespace}/userId/{userId} | PATCH | changePreferenceConsent | [ChangePreferenceConsent](../accelbyte_py_sdk/api/legal/operations/agreement/change_preference_consent.py) | [change_preference_consent](../accelbyte_py_sdk/api/legal/wrappers/_agreement.py) |
+| /agreement/public/agreements/localized-policy-versions/preferences | PATCH | changePreferenceConsent_1 | [ChangePreferenceConsent1](../accelbyte_py_sdk/api/legal/operations/agreement/change_preference_consent_1.py) | [change_preference_consent_1](../accelbyte_py_sdk/api/legal/wrappers/_agreement.py) |
 | /agreement/public/agreements/policies/users/{userId} | POST | indirectBulkAcceptVersionedPolicy_1 | [IndirectBulkAcceptVersionedPolicy1](../accelbyte_py_sdk/api/legal/operations/agreement/indirect_bulk_accept_ve_f4345a.py) | [indirect_bulk_accept_versioned_policy_1](../accelbyte_py_sdk/api/legal/wrappers/_agreement.py) |
 | /agreement/public/agreements/policies/namespaces/{namespace}/countries/{countryCode}/clients/{clientId}/users/{userId} | POST | indirectBulkAcceptVersionedPolicyV2 | [IndirectBulkAcceptVersionedPolicyV2](../accelbyte_py_sdk/api/legal/operations/agreement/indirect_bulk_accept_ve_34e753.py) | [indirect_bulk_accept_versioned_policy_v2](../accelbyte_py_sdk/api/legal/wrappers/_agreement.py) |
 | /agreement/admin/agreements/policies/users/{userId} | GET | retrieveAcceptedAgreements | [RetrieveAcceptedAgreements](../accelbyte_py_sdk/api/legal/operations/agreement/retrieve_accepted_agreements.py) | [retrieve_accepted_agreements](../accelbyte_py_sdk/api/legal/wrappers/_agreement.py) |

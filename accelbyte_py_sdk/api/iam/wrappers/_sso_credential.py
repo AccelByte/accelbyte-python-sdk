@@ -92,7 +92,7 @@ async def delete_sso_login_platform_credential_v3_async(platform_id: str, namesp
 
 
 @same_doc_as(RetrieveAllSSOLoginPlatformCredentialV3)
-def retrieve_all_sso_login_platform_credential_v3(limit: Optional[int] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def retrieve_all_sso_login_platform_credential_v3(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -106,7 +106,7 @@ def retrieve_all_sso_login_platform_credential_v3(limit: Optional[int] = None, o
 
 
 @same_doc_as(RetrieveAllSSOLoginPlatformCredentialV3)
-async def retrieve_all_sso_login_platform_credential_v3_async(limit: Optional[int] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def retrieve_all_sso_login_platform_credential_v3_async(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

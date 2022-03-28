@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-platform-service (4.4.2)
+# justice-platform-service (4.5.1)
 
 from __future__ import annotations
 import re
@@ -69,8 +69,6 @@ class CreditUserWallet(Operation):
         200: OK - WalletInfo (successful operation)
 
         400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive)
-
-        409: Conflict - ErrorEntity (20006: optimistic lock)
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -234,8 +232,6 @@ class CreditUserWallet(Operation):
 
         400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive)
 
-        409: Conflict - ErrorEntity (20006: optimistic lock)
-
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
 
         ---: HttpResponse (Undocumented Response)
@@ -252,8 +248,6 @@ class CreditUserWallet(Operation):
         if code == 200:
             return WalletInfo.create_from_dict(content), None
         if code == 400:
-            return None, ErrorEntity.create_from_dict(content)
-        if code == 409:
             return None, ErrorEntity.create_from_dict(content)
         if code == 422:
             return None, ValidationErrorEntity.create_from_dict(content)

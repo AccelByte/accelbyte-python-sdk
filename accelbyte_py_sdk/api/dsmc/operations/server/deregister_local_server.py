@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-dsm-controller-service (2.15.0)
+# justice-dsm-controller-service (2.15.1)
 
 from __future__ import annotations
 import re

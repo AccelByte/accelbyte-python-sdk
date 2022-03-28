@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-cloudsave-service (2.3.0)
+# justice-iam-service (5.5.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,33 +26,26 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.models_pagination import ModelsPagination
+from ..models.model_valid_user_id_response_v4 import ModelValidUserIDResponseV4
 
 
-class ModelsListGameRecordKeys(Model):
-    """Models list game record keys (models.ListGameRecordKeys)
+class ModelListValidUserIDResponseV4(Model):
+    """Model list valid user ID response V4 (model.ListValidUserIDResponseV4)
 
     Properties:
-        data: (data) REQUIRED List[str]
-
-        paging: (paging) REQUIRED ModelsPagination
+        data: (data) REQUIRED List[ModelValidUserIDResponseV4]
     """
 
     # region fields
 
-    data: List[str]                                                                                # REQUIRED
-    paging: ModelsPagination                                                                       # REQUIRED
+    data: List[ModelValidUserIDResponseV4]                                                         # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_data(self, value: List[str]) -> ModelsListGameRecordKeys:
+    def with_data(self, value: List[ModelValidUserIDResponseV4]) -> ModelListValidUserIDResponseV4:
         self.data = value
-        return self
-
-    def with_paging(self, value: ModelsPagination) -> ModelsListGameRecordKeys:
-        self.paging = value
         return self
 
     # endregion with_x methods
@@ -65,8 +58,6 @@ class ModelsListGameRecordKeys(Model):
         # required checks
         if not hasattr(self, "data") or self.data is None:
             return False
-        if not hasattr(self, "paging") or self.paging is None:
-            return False
         # pattern checks
         return True
 
@@ -77,13 +68,9 @@ class ModelsListGameRecordKeys(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "data"):
-            result["data"] = [str(i0) for i0 in self.data]
+            result["data"] = [i0.to_dict(include_empty=include_empty) for i0 in self.data]
         elif include_empty:
             result["data"] = []
-        if hasattr(self, "paging"):
-            result["paging"] = self.paging.to_dict(include_empty=include_empty)
-        elif include_empty:
-            result["paging"] = ModelsPagination()
         return result
 
     # endregion to methods
@@ -93,39 +80,33 @@ class ModelsListGameRecordKeys(Model):
     @classmethod
     def create(
         cls,
-        data: List[str],
-        paging: ModelsPagination,
-    ) -> ModelsListGameRecordKeys:
+        data: List[ModelValidUserIDResponseV4],
+    ) -> ModelListValidUserIDResponseV4:
         instance = cls()
         instance.data = data
-        instance.paging = paging
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsListGameRecordKeys:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelListValidUserIDResponseV4:
         instance = cls()
         if not dict_:
             return instance
         if "data" in dict_ and dict_["data"] is not None:
-            instance.data = [str(i0) for i0 in dict_["data"]]
+            instance.data = [ModelValidUserIDResponseV4.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["data"]]
         elif include_empty:
             instance.data = []
-        if "paging" in dict_ and dict_["paging"] is not None:
-            instance.paging = ModelsPagination.create_from_dict(dict_["paging"], include_empty=include_empty)
-        elif include_empty:
-            instance.paging = ModelsPagination()
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsListGameRecordKeys]:
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelListValidUserIDResponseV4]:
         return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsListGameRecordKeys]:
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelListValidUserIDResponseV4]:
         return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsListGameRecordKeys, List[ModelsListGameRecordKeys]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelListValidUserIDResponseV4, List[ModelListValidUserIDResponseV4]]:
         if many:
             if isinstance(any_, dict):
                 cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -138,7 +119,6 @@ class ModelsListGameRecordKeys(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "data": "data",
-            "paging": "paging",
         }
 
     # endregion static methods

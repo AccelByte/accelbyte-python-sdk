@@ -15,11 +15,11 @@
 ### config
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
+| /lobby/v1/admin/config/namespaces/{namespace}/export | GET | adminExportConfigV1 | [AdminExportConfigV1](../accelbyte_py_sdk/api/lobby/operations/config/admin_export_config_v1.py) | [admin_export_config_v1](../accelbyte_py_sdk/api/lobby/wrappers/_config.py) |
 | /lobby/v1/admin/config | GET | adminGetAllConfigV1 | [AdminGetAllConfigV1](../accelbyte_py_sdk/api/lobby/operations/config/admin_get_all_config_v1.py) | [admin_get_all_config_v1](../accelbyte_py_sdk/api/lobby/wrappers/_config.py) |
 | /lobby/v1/admin/config/namespaces/{namespace} | GET | adminGetConfigV1 | [AdminGetConfigV1](../accelbyte_py_sdk/api/lobby/operations/config/admin_get_config_v1.py) | [admin_get_config_v1](../accelbyte_py_sdk/api/lobby/wrappers/_config.py) |
+| /lobby/v1/admin/config/namespaces/{namespace}/import | POST | adminImportConfigV1 | [AdminImportConfigV1](../accelbyte_py_sdk/api/lobby/operations/config/admin_import_config_v1.py) | [admin_import_config_v1](../accelbyte_py_sdk/api/lobby/wrappers/_config.py) |
 | /lobby/v1/admin/config/namespaces/{namespace} | PUT | adminUpdateConfigV1 | [AdminUpdateConfigV1](../accelbyte_py_sdk/api/lobby/operations/config/admin_update_config_v1.py) | [admin_update_config_v1](../accelbyte_py_sdk/api/lobby/wrappers/_config.py) |
-| /lobby/v1/admin/config/namespaces/{namespace}/export | GET | ExportConfig | [ExportConfig](../accelbyte_py_sdk/api/lobby/operations/config/export_config.py) | [export_config](../accelbyte_py_sdk/api/lobby/wrappers/_config.py) |
-| /lobby/v1/admin/config/namespaces/{namespace}/import | POST | ImportConfig | [ImportConfig](../accelbyte_py_sdk/api/lobby/operations/config/import_config.py) | [import_config](../accelbyte_py_sdk/api/lobby/wrappers/_config.py) |
 
 ### friends
 | Endpoint | Method | ID | Class | Wrapper |

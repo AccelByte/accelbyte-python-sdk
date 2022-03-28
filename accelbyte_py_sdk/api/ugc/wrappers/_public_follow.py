@@ -38,7 +38,7 @@ from ..operations.public_follow import UpdateUserFollowStatus
 
 
 @same_doc_as(GetFollowedContent)
-def get_followed_content(limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_followed_content(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -52,7 +52,7 @@ def get_followed_content(limit: Optional[str] = None, offset: Optional[str] = No
 
 
 @same_doc_as(GetFollowedContent)
-async def get_followed_content_async(limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_followed_content_async(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -66,7 +66,7 @@ async def get_followed_content_async(limit: Optional[str] = None, offset: Option
 
 
 @same_doc_as(GetFollowedUsers)
-def get_followed_users(limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_followed_users(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -80,7 +80,7 @@ def get_followed_users(limit: Optional[str] = None, offset: Optional[str] = None
 
 
 @same_doc_as(GetFollowedUsers)
-async def get_followed_users_async(limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_followed_users_async(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

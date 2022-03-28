@@ -26,8 +26,8 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
-from ..models import ModelsGameRecord
 from ..models import ModelsGameRecordRequest
+from ..models import ModelsGameRecordResponse
 from ..models import ModelsResponseError
 
 from ..operations.public_game_record import DeleteGameRecordHandlerV1

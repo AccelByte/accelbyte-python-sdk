@@ -36,7 +36,7 @@ from ..operations.public_like import UpdateContentLikeStatus
 
 
 @same_doc_as(GetLikedContent)
-def get_liked_content(limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_liked_content(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -50,7 +50,7 @@ def get_liked_content(limit: Optional[str] = None, offset: Optional[str] = None,
 
 
 @same_doc_as(GetLikedContent)
-async def get_liked_content_async(limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_liked_content_async(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

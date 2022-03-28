@@ -100,7 +100,7 @@ async def admin_delete_group_async(group_id: str, user_id: str, namespace: Optio
 
 
 @same_doc_as(AdminGetAllGroups)
-def admin_get_all_groups(user_id: str, limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_get_all_groups(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -115,7 +115,7 @@ def admin_get_all_groups(user_id: str, limit: Optional[str] = None, offset: Opti
 
 
 @same_doc_as(AdminGetAllGroups)
-async def admin_get_all_groups_async(user_id: str, limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_get_all_groups_async(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -158,7 +158,7 @@ async def admin_get_group_async(group_id: str, user_id: str, namespace: Optional
 
 
 @same_doc_as(AdminGetGroupContents)
-def admin_get_group_contents(group_id: str, user_id: str, limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_get_group_contents(group_id: str, user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -174,7 +174,7 @@ def admin_get_group_contents(group_id: str, user_id: str, limit: Optional[str] =
 
 
 @same_doc_as(AdminGetGroupContents)
-async def admin_get_group_contents_async(group_id: str, user_id: str, limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_get_group_contents_async(group_id: str, user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -246,7 +246,7 @@ async def single_admin_delete_group_async(group_id: str, namespace: Optional[str
 
 
 @same_doc_as(SingleAdminGetAllGroups)
-def single_admin_get_all_groups(limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def single_admin_get_all_groups(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -260,7 +260,7 @@ def single_admin_get_all_groups(limit: Optional[str] = None, offset: Optional[st
 
 
 @same_doc_as(SingleAdminGetAllGroups)
-async def single_admin_get_all_groups_async(limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def single_admin_get_all_groups_async(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -300,7 +300,7 @@ async def single_admin_get_group_async(group_id: str, namespace: Optional[str] =
 
 
 @same_doc_as(SingleAdminGetGroupContents)
-def single_admin_get_group_contents(group_id: str, limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def single_admin_get_group_contents(group_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -315,7 +315,7 @@ def single_admin_get_group_contents(group_id: str, limit: Optional[str] = None, 
 
 
 @same_doc_as(SingleAdminGetGroupContents)
-async def single_admin_get_group_contents_async(group_id: str, limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def single_admin_get_group_contents_async(group_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

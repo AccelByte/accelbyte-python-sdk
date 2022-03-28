@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.4.0)
+# justice-iam-service (5.5.1)
 
 from __future__ import annotations
 import re
@@ -99,7 +99,7 @@ class AdminSearchUserV3(Operation):
 
         limit: (limit) OPTIONAL int in query
 
-        offset: (offset) OPTIONAL str in query
+        offset: (offset) OPTIONAL int in query
 
         platform_by: (platformBy) OPTIONAL str in query
 
@@ -134,7 +134,7 @@ class AdminSearchUserV3(Operation):
     by: str                                                                                        # OPTIONAL in [query]
     end_date: str                                                                                  # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
-    offset: str                                                                                    # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
     platform_by: str                                                                               # OPTIONAL in [query]
     platform_id: str                                                                               # OPTIONAL in [query]
     query: str                                                                                     # OPTIONAL in [query]
@@ -253,7 +253,7 @@ class AdminSearchUserV3(Operation):
         self.limit = value
         return self
 
-    def with_offset(self, value: str) -> AdminSearchUserV3:
+    def with_offset(self, value: int) -> AdminSearchUserV3:
         self.offset = value
         return self
 
@@ -296,9 +296,9 @@ class AdminSearchUserV3(Operation):
         elif include_empty:
             result["limit"] = int()
         if hasattr(self, "offset") and self.offset:
-            result["offset"] = str(self.offset)
+            result["offset"] = int(self.offset)
         elif include_empty:
-            result["offset"] = str()
+            result["offset"] = int()
         if hasattr(self, "platform_by") and self.platform_by:
             result["platformBy"] = str(self.platform_by)
         elif include_empty:
@@ -370,7 +370,7 @@ class AdminSearchUserV3(Operation):
         by: Optional[str] = None,
         end_date: Optional[str] = None,
         limit: Optional[int] = None,
-        offset: Optional[str] = None,
+        offset: Optional[int] = None,
         platform_by: Optional[str] = None,
         platform_id: Optional[str] = None,
         query: Optional[str] = None,
@@ -416,9 +416,9 @@ class AdminSearchUserV3(Operation):
         elif include_empty:
             instance.limit = int()
         if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = str(dict_["offset"])
+            instance.offset = int(dict_["offset"])
         elif include_empty:
-            instance.offset = str()
+            instance.offset = int()
         if "platformBy" in dict_ and dict_["platformBy"] is not None:
             instance.platform_by = str(dict_["platformBy"])
         elif include_empty:

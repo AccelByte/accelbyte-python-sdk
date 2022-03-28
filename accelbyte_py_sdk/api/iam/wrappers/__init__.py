@@ -6,7 +6,7 @@
 
 """Auto-generated package that contains models used by the justice-iam-service."""
 
-__version__ = "5.4.0"
+__version__ = "5.5.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -100,6 +100,8 @@ from ._o_auth2_0 import auth_code_request_v3
 from ._o_auth2_0 import auth_code_request_v3_async
 from ._o_auth2_0 import authorize_v3
 from ._o_auth2_0 import authorize_v3_async
+from ._o_auth2_0 import change2fa_method
+from ._o_auth2_0 import change2fa_method_async
 from ._o_auth2_0 import get_jwksv3
 from ._o_auth2_0 import get_jwksv3_async
 from ._o_auth2_0 import get_revocation_list_v3
@@ -116,6 +118,8 @@ from ._o_auth2_0 import token_introspection_v3
 from ._o_auth2_0 import token_introspection_v3_async
 from ._o_auth2_0 import token_revocation_v3
 from ._o_auth2_0 import token_revocation_v3_async
+from ._o_auth2_0 import verify2fa_code
+from ._o_auth2_0 import verify2fa_code_async
 
 from ._o_auth2_0_extension import get_country_location_v3
 from ._o_auth2_0_extension import get_country_location_v3_async
@@ -542,10 +546,32 @@ from ._users import user_verification_async
 
 from ._users_v4 import admin_add_user_role_v4
 from ._users_v4 import admin_add_user_role_v4_async
+from ._users_v4 import admin_bulk_check_valid_user_idv4
+from ._users_v4 import admin_bulk_check_valid_user_idv4_async
+from ._users_v4 import admin_disable_my_authenticator_v4
+from ._users_v4 import admin_disable_my_authenticator_v4_async
+from ._users_v4 import admin_disable_my_backup_codes_v4
+from ._users_v4 import admin_disable_my_backup_codes_v4_async
+from ._users_v4 import admin_download_my_backup_codes_v4
+from ._users_v4 import admin_download_my_backup_codes_v4_async
+from ._users_v4 import admin_enable_my_authenticator_v4
+from ._users_v4 import admin_enable_my_authenticator_v4_async
+from ._users_v4 import admin_enable_my_backup_codes_v4
+from ._users_v4 import admin_enable_my_backup_codes_v4_async
+from ._users_v4 import admin_generate_my_authenticator_key_v4
+from ._users_v4 import admin_generate_my_authenticator_key_v4_async
+from ._users_v4 import admin_generate_my_backup_codes_v4
+from ._users_v4 import admin_generate_my_backup_codes_v4_async
+from ._users_v4 import admin_get_my_backup_codes_v4
+from ._users_v4 import admin_get_my_backup_codes_v4_async
+from ._users_v4 import admin_get_my_enabled_factors_v4
+from ._users_v4 import admin_get_my_enabled_factors_v4_async
 from ._users_v4 import admin_invite_user_v4
 from ._users_v4 import admin_invite_user_v4_async
 from ._users_v4 import admin_list_user_roles_v4
 from ._users_v4 import admin_list_user_roles_v4_async
+from ._users_v4 import admin_make_factor_my_default_v4
+from ._users_v4 import admin_make_factor_my_default_v4_async
 from ._users_v4 import admin_remove_user_role_v4
 from ._users_v4 import admin_remove_user_role_v4_async
 from ._users_v4 import admin_update_my_user_v4
@@ -562,6 +588,26 @@ from ._users_v4 import public_create_test_user_v4
 from ._users_v4 import public_create_test_user_v4_async
 from ._users_v4 import public_create_user_v4
 from ._users_v4 import public_create_user_v4_async
+from ._users_v4 import public_disable_my_authenticator_v4
+from ._users_v4 import public_disable_my_authenticator_v4_async
+from ._users_v4 import public_disable_my_backup_codes_v4
+from ._users_v4 import public_disable_my_backup_codes_v4_async
+from ._users_v4 import public_download_my_backup_codes_v4
+from ._users_v4 import public_download_my_backup_codes_v4_async
+from ._users_v4 import public_enable_my_authenticator_v4
+from ._users_v4 import public_enable_my_authenticator_v4_async
+from ._users_v4 import public_enable_my_backup_codes_v4
+from ._users_v4 import public_enable_my_backup_codes_v4_async
+from ._users_v4 import public_generate_my_authenticator_key_v4
+from ._users_v4 import public_generate_my_authenticator_key_v4_async
+from ._users_v4 import public_generate_my_backup_codes_v4
+from ._users_v4 import public_generate_my_backup_codes_v4_async
+from ._users_v4 import public_get_my_backup_codes_v4
+from ._users_v4 import public_get_my_backup_codes_v4_async
+from ._users_v4 import public_get_my_enabled_factors_v4
+from ._users_v4 import public_get_my_enabled_factors_v4_async
+from ._users_v4 import public_make_factor_my_default_v4
+from ._users_v4 import public_make_factor_my_default_v4_async
 from ._users_v4 import public_update_user_email_address_v4
 from ._users_v4 import public_update_user_email_address_v4_async
 from ._users_v4 import public_update_user_v4

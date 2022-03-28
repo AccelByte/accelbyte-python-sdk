@@ -57,6 +57,8 @@ class ModelsConfig(Model):
 
         general_rate_limit_duration: (generalRateLimitDuration) OPTIONAL int
 
+        keep_presence_activity_on_disconnect: (keepPresenceActivityOnDisconnect) OPTIONAL bool
+
         max_party_member: (maxPartyMember) OPTIONAL int
 
         namespace: (namespace) OPTIONAL str
@@ -81,6 +83,7 @@ class ModelsConfig(Model):
     entitlement_item_id: str                                                                       # OPTIONAL
     general_rate_limit_burst: int                                                                  # OPTIONAL
     general_rate_limit_duration: int                                                               # OPTIONAL
+    keep_presence_activity_on_disconnect: bool                                                     # OPTIONAL
     max_party_member: int                                                                          # OPTIONAL
     namespace: str                                                                                 # OPTIONAL
     profanity_filter: bool                                                                         # OPTIONAL
@@ -140,6 +143,10 @@ class ModelsConfig(Model):
 
     def with_general_rate_limit_duration(self, value: int) -> ModelsConfig:
         self.general_rate_limit_duration = value
+        return self
+
+    def with_keep_presence_activity_on_disconnect(self, value: bool) -> ModelsConfig:
+        self.keep_presence_activity_on_disconnect = value
         return self
 
     def with_max_party_member(self, value: int) -> ModelsConfig:
@@ -227,6 +234,10 @@ class ModelsConfig(Model):
             result["generalRateLimitDuration"] = int(self.general_rate_limit_duration)
         elif include_empty:
             result["generalRateLimitDuration"] = int()
+        if hasattr(self, "keep_presence_activity_on_disconnect"):
+            result["keepPresenceActivityOnDisconnect"] = bool(self.keep_presence_activity_on_disconnect)
+        elif include_empty:
+            result["keepPresenceActivityOnDisconnect"] = bool()
         if hasattr(self, "max_party_member"):
             result["maxPartyMember"] = int(self.max_party_member)
         elif include_empty:
@@ -265,6 +276,7 @@ class ModelsConfig(Model):
         entitlement_item_id: Optional[str] = None,
         general_rate_limit_burst: Optional[int] = None,
         general_rate_limit_duration: Optional[int] = None,
+        keep_presence_activity_on_disconnect: Optional[bool] = None,
         max_party_member: Optional[int] = None,
         namespace: Optional[str] = None,
         profanity_filter: Optional[bool] = None,
@@ -297,6 +309,8 @@ class ModelsConfig(Model):
             instance.general_rate_limit_burst = general_rate_limit_burst
         if general_rate_limit_duration is not None:
             instance.general_rate_limit_duration = general_rate_limit_duration
+        if keep_presence_activity_on_disconnect is not None:
+            instance.keep_presence_activity_on_disconnect = keep_presence_activity_on_disconnect
         if max_party_member is not None:
             instance.max_party_member = max_party_member
         if namespace is not None:
@@ -364,6 +378,10 @@ class ModelsConfig(Model):
             instance.general_rate_limit_duration = int(dict_["generalRateLimitDuration"])
         elif include_empty:
             instance.general_rate_limit_duration = int()
+        if "keepPresenceActivityOnDisconnect" in dict_ and dict_["keepPresenceActivityOnDisconnect"] is not None:
+            instance.keep_presence_activity_on_disconnect = bool(dict_["keepPresenceActivityOnDisconnect"])
+        elif include_empty:
+            instance.keep_presence_activity_on_disconnect = bool()
         if "maxPartyMember" in dict_ and dict_["maxPartyMember"] is not None:
             instance.max_party_member = int(dict_["maxPartyMember"])
         elif include_empty:
@@ -416,6 +434,7 @@ class ModelsConfig(Model):
             "entitlementItemID": "entitlement_item_id",
             "generalRateLimitBurst": "general_rate_limit_burst",
             "generalRateLimitDuration": "general_rate_limit_duration",
+            "keepPresenceActivityOnDisconnect": "keep_presence_activity_on_disconnect",
             "maxPartyMember": "max_party_member",
             "namespace": "namespace",
             "profanityFilter": "profanity_filter",

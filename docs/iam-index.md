@@ -1,6 +1,6 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-iam-service Index (5.4.0)
+# justice-iam-service Index (5.5.1)
 
 
 ## Operations
@@ -66,6 +66,7 @@
 | /iam/v3/oauth/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/platformToken | GET | AdminRetrieveUserThirdPartyPlatformTokenV3 | [AdminRetrieveUserThirdPartyPlatformTokenV3](../accelbyte_py_sdk/api/iam/operations/o_auth2_0/admin_retrieve_user_thi_205ff1.py) | [admin_retrieve_user_third_party_platform_token_v3](../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0.py) |
 | /iam/v3/oauth/platforms/{platformId}/authorize | GET | AuthCodeRequestV3 | [AuthCodeRequestV3](../accelbyte_py_sdk/api/iam/operations/o_auth2_0/auth_code_request_v3.py) | [auth_code_request_v3](../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0.py) |
 | /iam/v3/oauth/authorize | GET | AuthorizeV3 | [AuthorizeV3](../accelbyte_py_sdk/api/iam/operations/o_auth2_0/authorize_v3.py) | [authorize_v3](../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0.py) |
+| /iam/v3/oauth/mfa/factor/change | POST | Change2FAMethod | [Change2faMethod](../accelbyte_py_sdk/api/iam/operations/o_auth2_0/change2fa_method.py) | [change2fa_method](../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0.py) |
 | /iam/v3/oauth/jwks | GET | GetJWKSV3 | [GetJWKSV3](../accelbyte_py_sdk/api/iam/operations/o_auth2_0/get_jwksv3.py) | [get_jwksv3](../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0.py) |
 | /iam/v3/oauth/revocationlist | GET | GetRevocationListV3 | [GetRevocationListV3](../accelbyte_py_sdk/api/iam/operations/o_auth2_0/get_revocation_list_v3.py) | [get_revocation_list_v3](../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0.py) |
 | /iam/v3/oauth/platforms/{platformId}/token | POST | PlatformTokenGrantV3 | [PlatformTokenGrantV3](../accelbyte_py_sdk/api/iam/operations/o_auth2_0/platform_token_grant_v3.py) | [platform_token_grant_v3](../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0.py) |
@@ -74,6 +75,7 @@
 | /iam/v3/oauth/token | POST | TokenGrantV3 | [TokenGrantV3](../accelbyte_py_sdk/api/iam/operations/o_auth2_0/token_grant_v3.py) | [token_grant_v3](../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0.py) |
 | /iam/v3/oauth/introspect | POST | TokenIntrospectionV3 | [TokenIntrospectionV3](../accelbyte_py_sdk/api/iam/operations/o_auth2_0/token_introspection_v3.py) | [token_introspection_v3](../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0.py) |
 | /iam/v3/oauth/revoke | POST | TokenRevocationV3 | [TokenRevocationV3](../accelbyte_py_sdk/api/iam/operations/o_auth2_0/token_revocation_v3.py) | [token_revocation_v3](../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0.py) |
+| /iam/v3/oauth/mfa/verify | POST | Verify2FACode | [Verify2faCode](../accelbyte_py_sdk/api/iam/operations/o_auth2_0/verify2fa_code.py) | [verify2fa_code](../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0.py) |
 
 ### OAuth2.0 - Extension
 | Endpoint | Method | ID | Class | Wrapper |
@@ -315,8 +317,19 @@
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
 | /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles | POST | AdminAddUserRoleV4 | [AdminAddUserRoleV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_add_user_role_v4.py) | [admin_add_user_role_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
+| /iam/v4/admin/namespaces/{namespace}/users/bulk/validate | POST | AdminBulkCheckValidUserIDV4 | [AdminBulkCheckValidUserIDV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_bulk_check_valid__17860c.py) | [admin_bulk_check_valid_user_idv4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
+| /iam/v4/admin/users/me/mfa/authenticator/disable | DELETE | AdminDisableMyAuthenticatorV4 | [AdminDisableMyAuthenticatorV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_disable_my_authen_d71ec4.py) | [admin_disable_my_authenticator_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
+| /iam/v4/admin/users/me/mfa/backupCode/disable | DELETE | AdminDisableMyBackupCodesV4 | [AdminDisableMyBackupCodesV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_disable_my_backup_727b56.py) | [admin_disable_my_backup_codes_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
+| /iam/v4/admin/users/me/mfa/backupCode/download | GET | AdminDownloadMyBackupCodesV4 | [AdminDownloadMyBackupCodesV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_download_my_backu_29ee48.py) | [admin_download_my_backup_codes_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
+| /iam/v4/admin/users/me/mfa/authenticator/enable | POST | AdminEnableMyAuthenticatorV4 | [AdminEnableMyAuthenticatorV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_enable_my_authent_263fb3.py) | [admin_enable_my_authenticator_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
+| /iam/v4/admin/users/me/mfa/backupCode/enable | POST | AdminEnableMyBackupCodesV4 | [AdminEnableMyBackupCodesV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_enable_my_backup__1f7c71.py) | [admin_enable_my_backup_codes_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
+| /iam/v4/admin/users/me/mfa/authenticator/key | POST | AdminGenerateMyAuthenticatorKeyV4 | [AdminGenerateMyAuthenticatorKeyV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_generate_my_authe_b02d34.py) | [admin_generate_my_authenticator_key_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
+| /iam/v4/admin/users/me/mfa/backupCode | POST | AdminGenerateMyBackupCodesV4 | [AdminGenerateMyBackupCodesV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_generate_my_backu_fdd3aa.py) | [admin_generate_my_backup_codes_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
+| /iam/v4/admin/users/me/mfa/backupCode | GET | AdminGetMyBackupCodesV4 | [AdminGetMyBackupCodesV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_get_my_backup_codes_v4.py) | [admin_get_my_backup_codes_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
+| /iam/v4/admin/users/me/mfa/factor | GET | AdminGetMyEnabledFactorsV4 | [AdminGetMyEnabledFactorsV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_get_my_enabled_fa_206f77.py) | [admin_get_my_enabled_factors_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
 | /iam/v4/admin/users/users/invite | POST | AdminInviteUserV4 | [AdminInviteUserV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_invite_user_v4.py) | [admin_invite_user_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
 | /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles | GET | AdminListUserRolesV4 | [AdminListUserRolesV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_list_user_roles_v4.py) | [admin_list_user_roles_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
+| /iam/v4/admin/users/me/mfa/factor | POST | AdminMakeFactorMyDefaultV4 | [AdminMakeFactorMyDefaultV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_make_factor_my_de_88728e.py) | [admin_make_factor_my_default_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
 | /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles | DELETE | AdminRemoveUserRoleV4 | [AdminRemoveUserRoleV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_remove_user_role_v4.py) | [admin_remove_user_role_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
 | /iam/v4/admin/users/me | PATCH | AdminUpdateMyUserV4 | [AdminUpdateMyUserV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_update_my_user_v4.py) | [admin_update_my_user_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
 | /iam/v4/admin/namespaces/{namespace}/users/{userId}/email | PUT | AdminUpdateUserEmailAddressV4 | [AdminUpdateUserEmailAddressV4](../accelbyte_py_sdk/api/iam/operations/users_v4/admin_update_user_email_3f25ce.py) | [admin_update_user_email_address_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
@@ -325,6 +338,16 @@
 | /iam/v4/public/namespaces/{namespace}/users/invite/{invitationId} | POST | CreateUserFromInvitationV4 | [CreateUserFromInvitationV4](../accelbyte_py_sdk/api/iam/operations/users_v4/create_user_from_invitation_v4.py) | [create_user_from_invitation_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
 | /iam/v4/public/namespaces/{namespace}/test_users | POST | PublicCreateTestUserV4 | [PublicCreateTestUserV4](../accelbyte_py_sdk/api/iam/operations/users_v4/public_create_test_user_v4.py) | [public_create_test_user_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
 | /iam/v4/public/namespaces/{namespace}/users | POST | PublicCreateUserV4 | [PublicCreateUserV4](../accelbyte_py_sdk/api/iam/operations/users_v4/public_create_user_v4.py) | [public_create_user_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
+| /iam/v4/public/namespaces/{namespace}/users/me/mfa/authenticator/disable | DELETE | PublicDisableMyAuthenticatorV4 | [PublicDisableMyAuthenticatorV4](../accelbyte_py_sdk/api/iam/operations/users_v4/public_disable_my_authe_beac3e.py) | [public_disable_my_authenticator_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
+| /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCode/disable | DELETE | PublicDisableMyBackupCodesV4 | [PublicDisableMyBackupCodesV4](../accelbyte_py_sdk/api/iam/operations/users_v4/public_disable_my_backu_92ead1.py) | [public_disable_my_backup_codes_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
+| /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCode/download | GET | PublicDownloadMyBackupCodesV4 | [PublicDownloadMyBackupCodesV4](../accelbyte_py_sdk/api/iam/operations/users_v4/public_download_my_back_3f3640.py) | [public_download_my_backup_codes_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
+| /iam/v4/public/namespaces/{namespace}/users/me/mfa/authenticator/enable | POST | PublicEnableMyAuthenticatorV4 | [PublicEnableMyAuthenticatorV4](../accelbyte_py_sdk/api/iam/operations/users_v4/public_enable_my_authen_556050.py) | [public_enable_my_authenticator_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
+| /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCode/enable | POST | PublicEnableMyBackupCodesV4 | [PublicEnableMyBackupCodesV4](../accelbyte_py_sdk/api/iam/operations/users_v4/public_enable_my_backup_e6b7c1.py) | [public_enable_my_backup_codes_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
+| /iam/v4/public/namespaces/{namespace}/users/me/mfa/authenticator/key | POST | PublicGenerateMyAuthenticatorKeyV4 | [PublicGenerateMyAuthenticatorKeyV4](../accelbyte_py_sdk/api/iam/operations/users_v4/public_generate_my_auth_17372a.py) | [public_generate_my_authenticator_key_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
+| /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCode | POST | PublicGenerateMyBackupCodesV4 | [PublicGenerateMyBackupCodesV4](../accelbyte_py_sdk/api/iam/operations/users_v4/public_generate_my_back_da569a.py) | [public_generate_my_backup_codes_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
+| /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCode | GET | PublicGetMyBackupCodesV4 | [PublicGetMyBackupCodesV4](../accelbyte_py_sdk/api/iam/operations/users_v4/public_get_my_backup_codes_v4.py) | [public_get_my_backup_codes_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
+| /iam/v4/public/namespaces/{namespace}/users/me/mfa/factor | GET | PublicGetMyEnabledFactorsV4 | [PublicGetMyEnabledFactorsV4](../accelbyte_py_sdk/api/iam/operations/users_v4/public_get_my_enabled_f_a93b10.py) | [public_get_my_enabled_factors_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
+| /iam/v4/public/namespaces/{namespace}/users/me/mfa/factor | POST | PublicMakeFactorMyDefaultV4 | [PublicMakeFactorMyDefaultV4](../accelbyte_py_sdk/api/iam/operations/users_v4/public_make_factor_my_d_4f4f01.py) | [public_make_factor_my_default_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
 | /iam/v4/public/namespaces/{namespace}/users/me/email | PUT | PublicUpdateUserEmailAddressV4 | [PublicUpdateUserEmailAddressV4](../accelbyte_py_sdk/api/iam/operations/users_v4/public_update_user_emai_2d6478.py) | [public_update_user_email_address_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
 | /iam/v4/public/namespaces/{namespace}/users/me | PATCH | PublicUpdateUserV4 | [PublicUpdateUserV4](../accelbyte_py_sdk/api/iam/operations/users_v4/public_update_user_v4.py) | [public_update_user_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
 | /iam/v4/public/namespaces/{namespace}/users/me/headless/verify | POST | PublicUpgradeHeadlessAccountV4 | [PublicUpgradeHeadlessAccountV4](../accelbyte_py_sdk/api/iam/operations/users_v4/public_upgrade_headless_966239.py) | [public_upgrade_headless_account_v4](../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) |
@@ -404,8 +427,11 @@
 | model.AgeRestrictionResponseV3 | [ModelAgeRestrictionResponseV3](../accelbyte_py_sdk/api/iam/models/model_age_restriction_response_v3.py) |
 | model.AssignUserV4Request | [ModelAssignUserV4Request](../accelbyte_py_sdk/api/iam/models/model_assign_user_v4_request.py) |
 | model.AssignedUserV4Response | [ModelAssignedUserV4Response](../accelbyte_py_sdk/api/iam/models/model_assigned_user_v4_response.py) |
+| model.AuthenticatorKeyResponseV4 | [ModelAuthenticatorKeyResponseV4](../accelbyte_py_sdk/api/iam/models/model_authenticator_key_response_v4.py) |
+| model.BackupCodesResponseV4 | [ModelBackupCodesResponseV4](../accelbyte_py_sdk/api/iam/models/model_backup_codes_response_v4.py) |
 | model.BanCreateRequest | [ModelBanCreateRequest](../accelbyte_py_sdk/api/iam/models/model_ban_create_request.py) |
 | model.BanUpdateRequest | [ModelBanUpdateRequest](../accelbyte_py_sdk/api/iam/models/model_ban_update_request.py) |
+| model.CheckValidUserIDRequestV4 | [ModelCheckValidUserIDRequestV4](../accelbyte_py_sdk/api/iam/models/model_check_valid_user_id_request_v4.py) |
 | model.Country | [ModelCountry](../accelbyte_py_sdk/api/iam/models/model_country.py) |
 | model.CountryAgeRestrictionRequest | [ModelCountryAgeRestrictionRequest](../accelbyte_py_sdk/api/iam/models/model_country_age_restriction_request.py) |
 | model.CountryAgeRestrictionV3Request | [ModelCountryAgeRestrictionV3Request](../accelbyte_py_sdk/api/iam/models/model_country_age_restriction_v3_request.py) |
@@ -413,6 +439,7 @@
 | model.CreateJusticeUserResponse | [ModelCreateJusticeUserResponse](../accelbyte_py_sdk/api/iam/models/model_create_justice_user_response.py) |
 | model.DisableUserRequest | [ModelDisableUserRequest](../accelbyte_py_sdk/api/iam/models/model_disable_user_request.py) |
 | model.EmailUpdateRequestV4 | [ModelEmailUpdateRequestV4](../accelbyte_py_sdk/api/iam/models/model_email_update_request_v4.py) |
+| model.EnabledFactorsResponseV4 | [ModelEnabledFactorsResponseV4](../accelbyte_py_sdk/api/iam/models/model_enabled_factors_response_v4.py) |
 | model.ForgotPasswordRequestV3 | [ModelForgotPasswordRequestV3](../accelbyte_py_sdk/api/iam/models/model_forgot_password_request_v3.py) |
 | model.GetAdminUsersResponse | [ModelGetAdminUsersResponse](../accelbyte_py_sdk/api/iam/models/model_get_admin_users_response.py) |
 | model.GetPublisherUserResponse | [ModelGetPublisherUserResponse](../accelbyte_py_sdk/api/iam/models/model_get_publisher_user_response.py) |
@@ -437,6 +464,7 @@
 | model.ListUserInformationResult | [ModelListUserInformationResult](../accelbyte_py_sdk/api/iam/models/model_list_user_information_result.py) |
 | model.ListUserResponseV3 | [ModelListUserResponseV3](../accelbyte_py_sdk/api/iam/models/model_list_user_response_v3.py) |
 | model.ListUserRolesV4Response | [ModelListUserRolesV4Response](../accelbyte_py_sdk/api/iam/models/model_list_user_roles_v4_response.py) |
+| model.ListValidUserIDResponseV4 | [ModelListValidUserIDResponseV4](../accelbyte_py_sdk/api/iam/models/model_list_valid_user_id_response_v4.py) |
 | model.LoginHistoriesResponse | [ModelLoginHistoriesResponse](../accelbyte_py_sdk/api/iam/models/model_login_histories_response.py) |
 | model.NamespaceRoleRequest | [ModelNamespaceRoleRequest](../accelbyte_py_sdk/api/iam/models/model_namespace_role_request.py) |
 | model.PermissionDeleteRequest | [ModelPermissionDeleteRequest](../accelbyte_py_sdk/api/iam/models/model_permission_delete_request.py) |
@@ -522,6 +550,7 @@
 | model.UserUpdateRequestV3 | [ModelUserUpdateRequestV3](../accelbyte_py_sdk/api/iam/models/model_user_update_request_v3.py) |
 | model.UserVerificationRequest | [ModelUserVerificationRequest](../accelbyte_py_sdk/api/iam/models/model_user_verification_request.py) |
 | model.UserVerificationRequestV3 | [ModelUserVerificationRequestV3](../accelbyte_py_sdk/api/iam/models/model_user_verification_request_v3.py) |
+| model.ValidUserIDResponseV4 | [ModelValidUserIDResponseV4](../accelbyte_py_sdk/api/iam/models/model_valid_user_id_response_v4.py) |
 | model.ValidationDetail | [ModelValidationDetail](../accelbyte_py_sdk/api/iam/models/model_validation_detail.py) |
 | model.ValidationDetailPublic | [ModelValidationDetailPublic](../accelbyte_py_sdk/api/iam/models/model_validation_detail_public.py) |
 | model.VerificationCodeResponse | [ModelVerificationCodeResponse](../accelbyte_py_sdk/api/iam/models/model_verification_code_response.py) |

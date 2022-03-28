@@ -28,8 +28,8 @@ from ....core import same_doc_as
 
 from ..models import ModelsBulkGetPlayerRecordResponse
 from ..models import ModelsBulkUserIDsRequest
-from ..models import ModelsPlayerRecord
 from ..models import ModelsPlayerRecordRequest
+from ..models import ModelsPlayerRecordResponse
 from ..models import ModelsResponseError
 
 from ..operations.public_player_record import BulkGetPlayerPublicRecordHandlerV1

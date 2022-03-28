@@ -1349,7 +1349,7 @@ async def admin_save_user_role_v3_async(body: List[ModelNamespaceRoleRequest], u
 
 
 @same_doc_as(AdminSearchUserV3)
-def admin_search_user_v3(by: Optional[str] = None, end_date: Optional[str] = None, limit: Optional[int] = None, offset: Optional[str] = None, platform_by: Optional[str] = None, platform_id: Optional[str] = None, query: Optional[str] = None, start_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_search_user_v3(by: Optional[str] = None, end_date: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, platform_by: Optional[str] = None, platform_id: Optional[str] = None, query: Optional[str] = None, start_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1369,7 +1369,7 @@ def admin_search_user_v3(by: Optional[str] = None, end_date: Optional[str] = Non
 
 
 @same_doc_as(AdminSearchUserV3)
-async def admin_search_user_v3_async(by: Optional[str] = None, end_date: Optional[str] = None, limit: Optional[int] = None, offset: Optional[str] = None, platform_by: Optional[str] = None, platform_id: Optional[str] = None, query: Optional[str] = None, start_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_search_user_v3_async(by: Optional[str] = None, end_date: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, platform_by: Optional[str] = None, platform_id: Optional[str] = None, query: Optional[str] = None, start_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1389,7 +1389,7 @@ async def admin_search_user_v3_async(by: Optional[str] = None, end_date: Optiona
 
 
 @same_doc_as(AdminSearchUsersV2)
-def admin_search_users_v2(platform_id: str, after: Optional[str] = None, before: Optional[str] = None, display_name: Optional[str] = None, limit: Optional[str] = None, login_id: Optional[str] = None, platform_user_id: Optional[str] = None, role_id: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_search_users_v2(platform_id: str, after: Optional[str] = None, before: Optional[str] = None, display_name: Optional[str] = None, limit: Optional[int] = None, login_id: Optional[str] = None, platform_user_id: Optional[str] = None, role_id: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1410,7 +1410,7 @@ def admin_search_users_v2(platform_id: str, after: Optional[str] = None, before:
 
 
 @same_doc_as(AdminSearchUsersV2)
-async def admin_search_users_v2_async(platform_id: str, after: Optional[str] = None, before: Optional[str] = None, display_name: Optional[str] = None, limit: Optional[str] = None, login_id: Optional[str] = None, platform_user_id: Optional[str] = None, role_id: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_search_users_v2_async(platform_id: str, after: Optional[str] = None, before: Optional[str] = None, display_name: Optional[str] = None, limit: Optional[int] = None, login_id: Optional[str] = None, platform_user_id: Optional[str] = None, role_id: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
