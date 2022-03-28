@@ -1,5 +1,46 @@
 # Changelog
 
+## v0.11.0
+- Update APIs
+    - basic
+        - version bump only
+    - cloudsave
+        - version bump
+        - update permissions
+        - update endpoints
+        - update models
+    - dslogmanager
+        - version bump
+        - update model
+    - dsmc
+        - version bump only
+    - iam
+        - version bump
+        - change query parameter types
+        - new endpoints
+        - new models
+    - legal
+        - version bump
+        - update endpoints
+    - lobby
+        - version bump
+        - change query parameter types
+        - update endpoints
+        - update models
+    - platform
+        - version bump
+        - update endpoints
+        - update models
+    - seasonpass
+        - version bump only
+    - sessionbrowser
+        - change query parameter types
+    - social
+        - version bump
+        - update endpoint
+    - ugc
+        - change query parameter types
+
 ## v0.10.0
 - Add utility function to deal with conflicting content types (i.e. server is returning a different content-type from what is documented in the specification)
 - Add `YamlConfigRepository`, `YamlFileConfigRepository`, `DotEnvFileConfigRepository`
