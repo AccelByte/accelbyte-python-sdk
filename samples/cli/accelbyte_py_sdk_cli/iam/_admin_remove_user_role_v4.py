@@ -4,7 +4,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-iam-service (5.4.0)
+# justice-iam-service (5.5.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

@@ -35,16 +35,16 @@ from accelbyte_py_sdk.api.ugc.models import ResponseError
 
 @click.command()
 @click.argument("user_id", type=str)
-@click.option("--limit", "limit", type=str)
-@click.option("--offset", "offset", type=str)
+@click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def public_get_user_content(
         user_id: str,
-        limit: Optional[str] = None,
-        offset: Optional[str] = None,
+        limit: Optional[int] = None,
+        offset: Optional[int] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         login_with_auth: Optional[str] = None,

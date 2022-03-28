@@ -37,9 +37,9 @@ from accelbyte_py_sdk.api.ugc.models import ResponseError
 @click.argument("channel_id", type=str)
 @click.option("--creator", "creator", type=str)
 @click.option("--isofficial", "isofficial", type=str)
-@click.option("--limit", "limit", type=str)
+@click.option("--limit", "limit", type=int)
 @click.option("--name", "name", type=str)
-@click.option("--offset", "offset", type=str)
+@click.option("--offset", "offset", type=int)
 @click.option("--orderby", "orderby", type=str)
 @click.option("--sortby", "sortby", type=str)
 @click.option("--subtype", "subtype", type=str)
@@ -54,9 +54,9 @@ def search_channel_specific_content(
         channel_id: str,
         creator: Optional[str] = None,
         isofficial: Optional[str] = None,
-        limit: Optional[str] = None,
+        limit: Optional[int] = None,
         name: Optional[str] = None,
-        offset: Optional[str] = None,
+        offset: Optional[int] = None,
         orderby: Optional[str] = None,
         sortby: Optional[str] = None,
         subtype: Optional[str] = None,

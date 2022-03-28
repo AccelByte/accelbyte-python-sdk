@@ -36,8 +36,8 @@ from accelbyte_py_sdk.api.ugc.models import ResponseError
 @click.command()
 @click.argument("group_id", type=str)
 @click.argument("user_id", type=str)
-@click.option("--limit", "limit", type=str)
-@click.option("--offset", "offset", type=str)
+@click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -45,8 +45,8 @@ from accelbyte_py_sdk.api.ugc.models import ResponseError
 def admin_get_group_contents(
         group_id: str,
         user_id: str,
-        limit: Optional[str] = None,
-        offset: Optional[str] = None,
+        limit: Optional[int] = None,
+        offset: Optional[int] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         login_with_auth: Optional[str] = None,

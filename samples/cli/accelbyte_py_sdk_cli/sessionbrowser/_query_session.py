@@ -38,10 +38,10 @@ from accelbyte_py_sdk.api.sessionbrowser.models import ResponseError
 @click.option("--game_mode", "game_mode", type=str)
 @click.option("--game_version", "game_version", type=str)
 @click.option("--joinable", "joinable", type=str)
-@click.option("--limit", "limit", type=str)
+@click.option("--limit", "limit", type=int)
 @click.option("--match_exist", "match_exist", type=str)
 @click.option("--match_id", "match_id", type=str)
-@click.option("--offset", "offset", type=str)
+@click.option("--offset", "offset", type=int)
 @click.option("--server_status", "server_status", type=str)
 @click.option("--user_id", "user_id", type=str)
 @click.option("--namespace", type=str)
@@ -53,10 +53,10 @@ def query_session(
         game_mode: Optional[str] = None,
         game_version: Optional[str] = None,
         joinable: Optional[str] = None,
-        limit: Optional[str] = None,
+        limit: Optional[int] = None,
         match_exist: Optional[str] = None,
         match_id: Optional[str] = None,
-        offset: Optional[str] = None,
+        offset: Optional[int] = None,
         server_status: Optional[str] = None,
         user_id: Optional[str] = None,
         namespace: Optional[str] = None,

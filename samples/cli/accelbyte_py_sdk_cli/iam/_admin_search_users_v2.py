@@ -4,7 +4,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-iam-service (5.4.0)
+# justice-iam-service (5.5.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -37,7 +37,7 @@ from accelbyte_py_sdk.api.iam.models import ModelSearchUsersByPlatformIDResponse
 @click.option("--after", "after", type=str)
 @click.option("--before", "before", type=str)
 @click.option("--display_name", "display_name", type=str)
-@click.option("--limit", "limit", type=str)
+@click.option("--limit", "limit", type=int)
 @click.option("--login_id", "login_id", type=str)
 @click.option("--platform_user_id", "platform_user_id", type=str)
 @click.option("--role_id", "role_id", type=str)
@@ -51,7 +51,7 @@ def admin_search_users_v2(
         after: Optional[str] = None,
         before: Optional[str] = None,
         display_name: Optional[str] = None,
-        limit: Optional[str] = None,
+        limit: Optional[int] = None,
         login_id: Optional[str] = None,
         platform_user_id: Optional[str] = None,
         role_id: Optional[str] = None,

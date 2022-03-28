@@ -4,7 +4,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-lobby-server (staging)
+# justice-iam-service (5.5.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -28,24 +28,21 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.lobby import import_config as import_config_internal
-from accelbyte_py_sdk.api.lobby.models import ModelsImportConfigResponse
-from accelbyte_py_sdk.api.lobby.models import ResponseError
+from accelbyte_py_sdk.api.iam import admin_disable_my_backup_codes_v4 as admin_disable_my_backup_codes_v4_internal
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()
-@click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def import_config(
-        namespace: Optional[str] = None,
+def admin_disable_my_backup_codes_v4(
         login_as: Optional[str] = None,
         login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(import_config_internal.__doc__)
+        click.echo(admin_disable_my_backup_codes_v4_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
@@ -54,10 +51,9 @@ def import_config(
         }
     else:
         login_as_internal(login_as)
-    result, error = import_config_internal(
-        namespace=namespace,
+    result, error = admin_disable_my_backup_codes_v4_internal(
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"ImportConfig failed: {str(error)}")
+        raise Exception(f"AdminDisableMyBackupCodesV4 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

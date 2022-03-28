@@ -4,7 +4,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-iam-service (5.4.0)
+# justice-iam-service (5.5.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,14 +35,14 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 @click.command()
 @click.option("--limit", "limit", type=int)
-@click.option("--offset", "offset", type=str)
+@click.option("--offset", "offset", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def admin_get_clients_by_namespace_v3(
         limit: Optional[int] = None,
-        offset: Optional[str] = None,
+        offset: Optional[int] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         login_with_auth: Optional[str] = None,

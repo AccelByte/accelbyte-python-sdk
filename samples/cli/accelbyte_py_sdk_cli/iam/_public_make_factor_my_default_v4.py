@@ -4,7 +4,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-lobby-server (staging)
+# justice-iam-service (5.5.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -28,24 +28,25 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.lobby import export_config as export_config_internal
-from accelbyte_py_sdk.api.lobby.models import ModelsConfigExport
-from accelbyte_py_sdk.api.lobby.models import ResponseError
+from accelbyte_py_sdk.api.iam import public_make_factor_my_default_v4 as public_make_factor_my_default_v4_internal
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()
+@click.argument("factor", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def export_config(
+def public_make_factor_my_default_v4(
+        factor: str,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(export_config_internal.__doc__)
+        click.echo(public_make_factor_my_default_v4_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
@@ -54,10 +55,11 @@ def export_config(
         }
     else:
         login_as_internal(login_as)
-    result, error = export_config_internal(
+    result, error = public_make_factor_my_default_v4_internal(
+        factor=factor,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"ExportConfig failed: {str(error)}")
+        raise Exception(f"PublicMakeFactorMyDefaultV4 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

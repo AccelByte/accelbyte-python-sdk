@@ -4,8 +4,9 @@
 
 # template_file: python-cli-init.j2
 
-# justice-legal-service (1.18.1)
+# justice-legal-service (1.19.0)
 
+from ._change_preference_consent import change_preference_consent
 from ._retrieve_accepted_agreements import retrieve_accepted_agreements
 from ._retrieve_all_users_by_policy_version import retrieve_all_users_by_policy_version
 from ._retrieve_all_legal_policies import retrieve_all_legal_policies
@@ -33,7 +34,7 @@ from ._get_user_info_status import get_user_info_status
 from ._sync_user_info import sync_user_info
 from ._invalidate_user_info_cache import invalidate_user_info_cache
 from ._anonymize_user_agreement import anonymize_user_agreement
-from ._change_preference_consent import change_preference_consent
+from ._change_preference_consent_1 import change_preference_consent_1
 from ._accept_versioned_policy import accept_versioned_policy
 from ._retrieve_agreements_public import retrieve_agreements_public
 from ._bulk_accept_versioned_policy import bulk_accept_versioned_policy
@@ -50,6 +51,7 @@ from ._check_readiness import check_readiness
 
 
 commands = [
+    change_preference_consent,
     retrieve_accepted_agreements,
     retrieve_all_users_by_policy_version,
     retrieve_all_legal_policies,
@@ -77,7 +79,7 @@ commands = [
     sync_user_info,
     invalidate_user_info_cache,
     anonymize_user_agreement,
-    change_preference_consent,
+    change_preference_consent_1,
     accept_versioned_policy,
     retrieve_agreements_public,
     bulk_accept_versioned_policy,

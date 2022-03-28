@@ -21,8 +21,8 @@ from ._admin_chat_history import admin_chat_history
 from ._admin_get_all_config_v1 import admin_get_all_config_v1
 from ._admin_get_config_v1 import admin_get_config_v1
 from ._admin_update_config_v1 import admin_update_config_v1
-from ._export_config import export_config
-from ._import_config import import_config
+from ._admin_export_config_v1 import admin_export_config_v1
+from ._admin_import_config_v1 import admin_import_config_v1
 from ._get_list_of_friends import get_list_of_friends
 from ._send_multiple_users_freeform_notification_v1_admin import send_multiple_users_freeform_notification_v1_admin
 from ._send_users_freeform_notification_v1_admin import send_users_freeform_notification_v1_admin
@@ -114,8 +114,8 @@ commands = [
     admin_get_all_config_v1,
     admin_get_config_v1,
     admin_update_config_v1,
-    export_config,
-    import_config,
+    admin_export_config_v1,
+    admin_import_config_v1,
     get_list_of_friends,
     send_multiple_users_freeform_notification_v1_admin,
     send_users_freeform_notification_v1_admin,

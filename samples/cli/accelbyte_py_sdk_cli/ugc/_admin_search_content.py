@@ -36,9 +36,9 @@ from accelbyte_py_sdk.api.ugc.models import ResponseError
 @click.command()
 @click.option("--creator", "creator", type=str)
 @click.option("--isofficial", "isofficial", type=str)
-@click.option("--limit", "limit", type=str)
+@click.option("--limit", "limit", type=int)
 @click.option("--name", "name", type=str)
-@click.option("--offset", "offset", type=str)
+@click.option("--offset", "offset", type=int)
 @click.option("--orderby", "orderby", type=str)
 @click.option("--sortby", "sortby", type=str)
 @click.option("--subtype", "subtype", type=str)
@@ -52,9 +52,9 @@ from accelbyte_py_sdk.api.ugc.models import ResponseError
 def admin_search_content(
         creator: Optional[str] = None,
         isofficial: Optional[str] = None,
-        limit: Optional[str] = None,
+        limit: Optional[int] = None,
         name: Optional[str] = None,
-        offset: Optional[str] = None,
+        offset: Optional[int] = None,
         orderby: Optional[str] = None,
         sortby: Optional[str] = None,
         subtype: Optional[str] = None,

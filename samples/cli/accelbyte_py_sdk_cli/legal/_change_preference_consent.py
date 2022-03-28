@@ -4,7 +4,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-legal-service (1.18.1)
+# justice-legal-service (1.19.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,16 +30,19 @@ from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.legal import change_preference_consent as change_preference_consent_internal
 from accelbyte_py_sdk.api.legal.models import AcceptAgreementRequest
-from accelbyte_py_sdk.api.legal.models import ErrorEntity
 
 
 @click.command()
+@click.argument("user_id", type=str)
 @click.option("--body", "body", type=str)
+@click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def change_preference_consent(
+        user_id: str,
         body: Optional[str] = None,
+        namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -61,7 +64,9 @@ def change_preference_consent(
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = change_preference_consent_internal(
+        user_id=user_id,
         body=body,
+        namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:

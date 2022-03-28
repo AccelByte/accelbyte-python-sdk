@@ -4,7 +4,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-cloudsave-service (2.3.0)
+# justice-cloudsave-service (2.3.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -29,7 +29,7 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.cloudsave import list_player_record_handler_v1 as list_player_record_handler_v1_internal
-from accelbyte_py_sdk.api.cloudsave.models import ModelsListPlayerRecordKeys
+from accelbyte_py_sdk.api.cloudsave.models import ModelsListPlayerRecordKeysResponse
 from accelbyte_py_sdk.api.cloudsave.models import ModelsResponseError
 
 

@@ -4,7 +4,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-iam-service (5.4.0)
+# justice-iam-service (5.5.1)
 
 from ._get_bans_type import get_bans_type
 from ._get_list_ban_reason import get_list_ban_reason
@@ -207,6 +207,8 @@ from ._revoke_user_v3 import revoke_user_v3
 from ._authorize_v3 import authorize_v3
 from ._token_introspection_v3 import token_introspection_v3
 from ._get_jwksv3 import get_jwksv3
+from ._change2fa_method import change2fa_method
+from ._verify2fa_code import verify2fa_code
 from ._retrieve_user_third_party_platform_token_v3 import retrieve_user_third_party_platform_token_v3
 from ._auth_code_request_v3 import auth_code_request_v3
 from ._platform_token_grant_v3 import platform_token_grant_v3
@@ -253,6 +255,7 @@ from ._public_get_my_user_v3 import public_get_my_user_v3
 from ._platform_authenticate_samlv3_handler import platform_authenticate_samlv3_handler
 from ._login_sso_client import login_sso_client
 from ._logout_sso_client import logout_sso_client
+from ._admin_bulk_check_valid_user_idv4 import admin_bulk_check_valid_user_idv4
 from ._admin_update_user_v4 import admin_update_user_v4
 from ._admin_update_user_email_address_v4 import admin_update_user_email_address_v4
 from ._admin_list_user_roles_v4 import admin_list_user_roles_v4
@@ -271,6 +274,16 @@ from ._admin_list_assigned_users_v4 import admin_list_assigned_users_v4
 from ._admin_assign_user_to_role_v4 import admin_assign_user_to_role_v4
 from ._admin_revoke_user_from_role_v4 import admin_revoke_user_from_role_v4
 from ._admin_update_my_user_v4 import admin_update_my_user_v4
+from ._admin_disable_my_authenticator_v4 import admin_disable_my_authenticator_v4
+from ._admin_enable_my_authenticator_v4 import admin_enable_my_authenticator_v4
+from ._admin_generate_my_authenticator_key_v4 import admin_generate_my_authenticator_key_v4
+from ._admin_get_my_backup_codes_v4 import admin_get_my_backup_codes_v4
+from ._admin_generate_my_backup_codes_v4 import admin_generate_my_backup_codes_v4
+from ._admin_disable_my_backup_codes_v4 import admin_disable_my_backup_codes_v4
+from ._admin_download_my_backup_codes_v4 import admin_download_my_backup_codes_v4
+from ._admin_enable_my_backup_codes_v4 import admin_enable_my_backup_codes_v4
+from ._admin_get_my_enabled_factors_v4 import admin_get_my_enabled_factors_v4
+from ._admin_make_factor_my_default_v4 import admin_make_factor_my_default_v4
 from ._admin_invite_user_v4 import admin_invite_user_v4
 from ._public_create_test_user_v4 import public_create_test_user_v4
 from ._public_create_user_v4 import public_create_user_v4
@@ -279,6 +292,16 @@ from ._public_update_user_v4 import public_update_user_v4
 from ._public_update_user_email_address_v4 import public_update_user_email_address_v4
 from ._public_upgrade_headless_account_with_verification_code_v4 import public_upgrade_headless_account_with_verification_code_v4
 from ._public_upgrade_headless_account_v4 import public_upgrade_headless_account_v4
+from ._public_disable_my_authenticator_v4 import public_disable_my_authenticator_v4
+from ._public_enable_my_authenticator_v4 import public_enable_my_authenticator_v4
+from ._public_generate_my_authenticator_key_v4 import public_generate_my_authenticator_key_v4
+from ._public_get_my_backup_codes_v4 import public_get_my_backup_codes_v4
+from ._public_generate_my_backup_codes_v4 import public_generate_my_backup_codes_v4
+from ._public_disable_my_backup_codes_v4 import public_disable_my_backup_codes_v4
+from ._public_download_my_backup_codes_v4 import public_download_my_backup_codes_v4
+from ._public_enable_my_backup_codes_v4 import public_enable_my_backup_codes_v4
+from ._public_get_my_enabled_factors_v4 import public_get_my_enabled_factors_v4
+from ._public_make_factor_my_default_v4 import public_make_factor_my_default_v4
 
 
 commands = [
@@ -483,6 +506,8 @@ commands = [
     authorize_v3,
     token_introspection_v3,
     get_jwksv3,
+    change2fa_method,
+    verify2fa_code,
     retrieve_user_third_party_platform_token_v3,
     auth_code_request_v3,
     platform_token_grant_v3,
@@ -529,6 +554,7 @@ commands = [
     platform_authenticate_samlv3_handler,
     login_sso_client,
     logout_sso_client,
+    admin_bulk_check_valid_user_idv4,
     admin_update_user_v4,
     admin_update_user_email_address_v4,
     admin_list_user_roles_v4,
@@ -547,6 +573,16 @@ commands = [
     admin_assign_user_to_role_v4,
     admin_revoke_user_from_role_v4,
     admin_update_my_user_v4,
+    admin_disable_my_authenticator_v4,
+    admin_enable_my_authenticator_v4,
+    admin_generate_my_authenticator_key_v4,
+    admin_get_my_backup_codes_v4,
+    admin_generate_my_backup_codes_v4,
+    admin_disable_my_backup_codes_v4,
+    admin_download_my_backup_codes_v4,
+    admin_enable_my_backup_codes_v4,
+    admin_get_my_enabled_factors_v4,
+    admin_make_factor_my_default_v4,
     admin_invite_user_v4,
     public_create_test_user_v4,
     public_create_user_v4,
@@ -555,4 +591,14 @@ commands = [
     public_update_user_email_address_v4,
     public_upgrade_headless_account_with_verification_code_v4,
     public_upgrade_headless_account_v4,
+    public_disable_my_authenticator_v4,
+    public_enable_my_authenticator_v4,
+    public_generate_my_authenticator_key_v4,
+    public_get_my_backup_codes_v4,
+    public_generate_my_backup_codes_v4,
+    public_disable_my_backup_codes_v4,
+    public_download_my_backup_codes_v4,
+    public_enable_my_backup_codes_v4,
+    public_get_my_enabled_factors_v4,
+    public_make_factor_my_default_v4,
 ]

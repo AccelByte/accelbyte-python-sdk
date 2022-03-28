@@ -4,7 +4,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-iam-service (5.4.0)
+# justice-iam-service (5.5.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -37,7 +37,7 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.option("--by", "by", type=str)
 @click.option("--end_date", "end_date", type=str)
 @click.option("--limit", "limit", type=int)
-@click.option("--offset", "offset", type=str)
+@click.option("--offset", "offset", type=int)
 @click.option("--platform_by", "platform_by", type=str)
 @click.option("--platform_id", "platform_id", type=str)
 @click.option("--query", "query", type=str)
@@ -50,7 +50,7 @@ def admin_search_user_v3(
         by: Optional[str] = None,
         end_date: Optional[str] = None,
         limit: Optional[int] = None,
-        offset: Optional[str] = None,
+        offset: Optional[int] = None,
         platform_by: Optional[str] = None,
         platform_id: Optional[str] = None,
         query: Optional[str] = None,
