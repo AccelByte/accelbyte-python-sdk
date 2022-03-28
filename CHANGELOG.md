@@ -1,6 +1,10 @@
 # Changelog
 
 ## v0.11.0
+- Add integration tests for commonly used endpoints
+- Add `is_valid()` method for all Model classes
+- Fix logout not using basic auth
+- Update error messages for config repos
 - Update APIs
     - basic
         - version bump only
