@@ -1,3 +1,4 @@
+import time
 from random import randint
 from typing import Optional
 
@@ -89,6 +90,9 @@ class IAMTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.iam.models import ModelUserUpdateRequest
 
         # arrange
+        # add delay
+        time.sleep(3)
+
         _, error, user_id = self.do_create_user(body=self.model_user_create_request)
         self.log_warning(msg=f"Failed to set up user. {str(error)}", condition=error is not None)
         self.user_id = user_id
