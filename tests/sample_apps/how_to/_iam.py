@@ -15,7 +15,7 @@ class IAMTestCase(IntegrationTestCase):
         auth_type="EMAILPASSWD",
         country="US",
         display_name="testPythonServerSDKUser",
-        login_id=f"testPythonServerSDKUser+{str(randint(0, 10_000)).rjust(5, '0')}@test.com",
+        login_id="",
         password="q!w@e#r$azsxdcfv"
     )
 
@@ -24,6 +24,7 @@ class IAMTestCase(IntegrationTestCase):
         # pylint: disable=no-self-use
         from accelbyte_py_sdk.api.iam import create_user
 
+        body.login_id = f"testPythonServerSDKUser+{str(randint(0, 10_000)).rjust(5, '0')}@test.com"
         result, error = create_user(body=body)
 
         user_id: Optional[str] = None
