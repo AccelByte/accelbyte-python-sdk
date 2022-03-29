@@ -4,7 +4,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-cloudsave-service (2.3.1)
+# justice-cloudsave-service (2.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
