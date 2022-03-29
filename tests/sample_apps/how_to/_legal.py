@@ -1,7 +1,48 @@
+from random import randint
+from typing import Optional
+
 from ._integration_test_case import IntegrationTestCase
+
+from accelbyte_py_sdk.api.iam.models import ModelUserCreateRequest
 
 
 class LegalTestCase(IntegrationTestCase):
+
+    user_id: Optional[str] = None
+    scope: str = "commerce account social publishing analytics"
+    model_user_create_request = ModelUserCreateRequest.create(
+        auth_type="EMAILPASSWD",
+        country="US",
+        display_name="testPythonServerSDKUser",
+        login_id="",
+        password="q!w@e#r$azsxdcfv"
+    )
+
+    # noinspection PyMethodMayBeStatic
+    def do_create_user(self, body: ModelUserCreateRequest):
+        # pylint: disable=no-self-use
+        from accelbyte_py_sdk.api.iam import create_user
+
+        body.login_id = f"testPythonServerSDKUser+{str(randint(0, 1_000_000)).rjust(7, '0')}@test.com"
+        result, error = create_user(body=body)
+
+        user_id: Optional[str] = None
+
+        if error is None:
+            user_id = result.user_id
+        else:
+            user_id = None
+
+        return result, error, user_id
+
+    def tearDown(self) -> None:
+        from accelbyte_py_sdk.api.iam import delete_user
+
+        if self.user_id is not None:
+            _, error = delete_user(user_id=self.user_id)
+            self.log_warning(msg=f"Failed to tear down user. {str(error)}", condition=error is not None)
+            self.user_id = None
+        super().tearDown()
 
     def test_bulk_accept_versioned_policy(self):
         from accelbyte_py_sdk.api.legal import bulk_accept_versioned_policy
@@ -80,8 +121,15 @@ class LegalTestCase(IntegrationTestCase):
             policy_version_id=policy_id
         )
 
+        _, error, user_id = self.do_create_user(body=self.model_user_create_request)
+        self.log_warning(msg=f"Failed to set up user. {str(error)}", condition=error is not None)
+        self.user_id = user_id
+
         # act
-        _, error = change_preference_consent(body=[accept_agreement_request])
+        _, error = change_preference_consent(
+            user_id=self.user_id,
+            body=[accept_agreement_request]
+        )
 
         # assert
         self.assertIsNone(error, error)

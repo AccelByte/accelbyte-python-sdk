@@ -69,7 +69,8 @@ class CloudSaveTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.cloudsave import get_game_record_handler_v1
         from accelbyte_py_sdk.api.cloudsave import post_game_record_handler_v1
         from accelbyte_py_sdk.api.cloudsave import put_game_record_handler_v1
-        from accelbyte_py_sdk.api.cloudsave.models import ModelsGameRecord
+        from accelbyte_py_sdk.api.cloudsave.models import ModelsGameRecordRequest
+        from accelbyte_py_sdk.api.cloudsave.models import ModelsGameRecordResponse
 
         # arrange
         _, error = post_game_record_handler_v1(
@@ -91,7 +92,7 @@ class CloudSaveTestCase(IntegrationTestCase):
 
         result, error = get_game_record_handler_v1(key=self.post_game_record_handler_key)
         self.assertIsNotNone(result)
-        self.assertIsInstance(result, ModelsGameRecord)
+        self.assertIsInstance(result, ModelsGameRecordResponse)
         self.assertIsNotNone(result.value)
         self.assertIn("foo", result.value)
         self.assertEqual("baz", result.value["foo"])

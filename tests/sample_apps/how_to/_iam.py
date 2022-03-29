@@ -20,19 +20,24 @@ class IAMTestCase(IntegrationTestCase):
     )
 
     # noinspection PyMethodMayBeStatic
-    def do_create_user(self, body: ModelUserCreateRequest):
+    def do_create_user(self, body: ModelUserCreateRequest, retries: int = 3):
         # pylint: disable=no-self-use
         from accelbyte_py_sdk.api.iam import create_user
 
-        body.login_id = f"testPythonServerSDKUser+{str(randint(0, 10_000)).rjust(5, '0')}@test.com"
-        result, error = create_user(body=body)
-
+        tries = 0
+        result = None
+        error = None
         user_id: Optional[str] = None
+        while True:
+            body.login_id = f"testPythonServerSDKUser+{str(randint(0, 1_000_000)).rjust(7, '0')}@test.com"
+            result, error = create_user(body=body)
+            user_id = result.user_id if error is None else None
+            tries += 1
 
-        if error is None:
-            user_id = result.user_id
-        else:
-            user_id = None
+            if user_id is not None:
+                break
+            if tries >= retries:
+                break
 
         return result, error, user_id
 
