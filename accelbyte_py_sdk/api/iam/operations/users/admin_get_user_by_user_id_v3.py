@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.5.1)
+# justice-iam-service (5.6.0)
 
 from __future__ import annotations
 import re

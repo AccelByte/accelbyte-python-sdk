@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-legal-service (1.19.0)
+# justice-legal-service (1.20.0)
 
 from __future__ import annotations
 import re
@@ -50,7 +50,7 @@ class UpdatePolicyVersion(Operation):
 
         tags: ["Policy Versions"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
@@ -70,7 +70,7 @@ class UpdatePolicyVersion(Operation):
 
     _url: str = "/agreement/admin/policies/versions/{policyVersionId}"
     _method: str = "PATCH"
-    _consumes: List[str] = []
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None

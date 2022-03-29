@@ -51,7 +51,7 @@ class SimulatePaymentOrderNotification(Operation):
 
         tags: ["Payment"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
@@ -75,7 +75,7 @@ class SimulatePaymentOrderNotification(Operation):
 
     _url: str = "/platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}/simulate-notification"
     _method: str = "PUT"
-    _consumes: List[str] = []
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None

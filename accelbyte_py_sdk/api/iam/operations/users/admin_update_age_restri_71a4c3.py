@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.5.1)
+# justice-iam-service (5.6.0)
 
 from __future__ import annotations
 import re
@@ -46,7 +46,7 @@ class AdminUpdateAgeRestrictionConfigV2(Operation):
 
         tags: ["Users"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
@@ -72,7 +72,7 @@ class AdminUpdateAgeRestrictionConfigV2(Operation):
 
     _url: str = "/iam/v2/admin/namespaces/{namespace}/agerestrictions"
     _method: str = "PATCH"
-    _consumes: List[str] = []
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None

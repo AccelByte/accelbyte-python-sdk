@@ -50,7 +50,7 @@ class UpdateEventRegistryHandler(Operation):
 
         tags: ["Event Registry"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
@@ -78,7 +78,7 @@ class UpdateEventRegistryHandler(Operation):
 
     _url: str = "/event/registry/eventIds/{eventId}"
     _method: str = "POST"
-    _consumes: List[str] = []
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None

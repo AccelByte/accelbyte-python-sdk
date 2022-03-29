@@ -50,7 +50,7 @@ class DecreaseTicketSale(Operation):
 
         tags: ["Ticket"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
@@ -74,7 +74,7 @@ class DecreaseTicketSale(Operation):
 
     _url: str = "/platform/admin/namespaces/{namespace}/tickets/{boothName}/decrement"
     _method: str = "PUT"
-    _consumes: List[str] = []
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None

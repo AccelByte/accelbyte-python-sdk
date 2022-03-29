@@ -6,7 +6,7 @@
 
 """Auto-generated package that contains models used by the Justice Matchmaking Service."""
 
-__version__ = "2.14.0"
+__version__ = "2.14.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.5.1)
+# justice-iam-service (5.6.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

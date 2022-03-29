@@ -50,7 +50,7 @@ class PostEventHandler(Operation):
 
         tags: ["Event"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
@@ -76,7 +76,7 @@ class PostEventHandler(Operation):
 
     _url: str = "/event/namespaces/{namespace}"
     _method: str = "POST"
-    _consumes: List[str] = []
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None

@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.5.1)
+# justice-iam-service (5.6.0)
 
 from __future__ import annotations
 import re
@@ -47,7 +47,7 @@ class AdminMakeFactorMyDefaultV4(Operation):
 
         tags: ["Users V4"]
 
-        consumes: []
+        consumes: ["application/x-www-form-urlencoded"]
 
         produces: ["application/json"]
 
@@ -73,7 +73,7 @@ class AdminMakeFactorMyDefaultV4(Operation):
 
     _url: str = "/iam/v4/admin/users/me/mfa/factor"
     _method: str = "POST"
-    _consumes: List[str] = []
+    _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None

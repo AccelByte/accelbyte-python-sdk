@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-legal-service (1.19.0)
+# justice-legal-service (1.20.0)
 
 from __future__ import annotations
 import re
@@ -51,7 +51,7 @@ class IndirectBulkAcceptVersionedPolicy1(Operation):
 
         tags: ["Agreement"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
@@ -69,7 +69,7 @@ class IndirectBulkAcceptVersionedPolicy1(Operation):
 
     _url: str = "/agreement/public/agreements/policies/users/{userId}"
     _method: str = "POST"
-    _consumes: List[str] = []
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None

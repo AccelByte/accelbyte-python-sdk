@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-gdpr-service (1.14.0)
+# justice-gdpr-service (1.14.1)
 
 from __future__ import annotations
 import re

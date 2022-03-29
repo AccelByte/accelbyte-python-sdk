@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.5.1)
+# justice-iam-service (5.6.0)
 
 from __future__ import annotations
 import re
@@ -58,7 +58,7 @@ class AdminDisableUserV2(Operation):
 
         tags: ["Users"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
@@ -88,7 +88,7 @@ class AdminDisableUserV2(Operation):
 
     _url: str = "/iam/v2/admin/namespaces/{namespace}/users/{userId}/disable"
     _method: str = "PUT"
-    _consumes: List[str] = []
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None

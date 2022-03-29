@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-leaderboard-service (2.15.0)
+# justice-leaderboard-service (2.15.1)
 
 from __future__ import annotations
 import re
@@ -77,7 +77,7 @@ class UpdateLeaderboardConfigurationAdminV1(Operation):
 
         tags: ["LeaderboardConfiguration"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
@@ -107,7 +107,7 @@ class UpdateLeaderboardConfigurationAdminV1(Operation):
 
     _url: str = "/leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}"
     _method: str = "PUT"
-    _consumes: List[str] = []
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None

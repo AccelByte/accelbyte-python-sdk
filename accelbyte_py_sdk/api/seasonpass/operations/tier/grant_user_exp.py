@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-seasonpass-service (1.11.0)
+# justice-seasonpass-service (1.11.1)
 
 from __future__ import annotations
 import re
@@ -52,7 +52,7 @@ class GrantUserExp(Operation):
 
         tags: ["Tier"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
@@ -74,7 +74,7 @@ class GrantUserExp(Operation):
 
     _url: str = "/seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/exp"
     _method: str = "POST"
-    _consumes: List[str] = []
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None

@@ -52,7 +52,7 @@ class AdminUpdateThirdPartyConfig(Operation):
 
         tags: ["thirdParty"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
@@ -78,7 +78,7 @@ class AdminUpdateThirdPartyConfig(Operation):
 
     _url: str = "/lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam"
     _method: str = "PUT"
-    _consumes: List[str] = []
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None

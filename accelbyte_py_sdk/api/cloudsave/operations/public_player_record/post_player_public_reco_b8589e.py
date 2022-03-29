@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.3.1)
+# justice-cloudsave-service (2.4.0)
 
 from __future__ import annotations
 import re

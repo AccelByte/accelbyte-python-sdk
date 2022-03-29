@@ -49,7 +49,7 @@ class TestFulfillmentScriptEval(Operation):
 
         tags: ["FulfillmentScript"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: []
 
@@ -65,7 +65,7 @@ class TestFulfillmentScriptEval(Operation):
 
     _url: str = "/platform/admin/fulfillment/scripts/tests/eval"
     _method: str = "POST"
-    _consumes: List[str] = []
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = []
     _security_type: Optional[str] = "bearer"
     _location_query: str = None

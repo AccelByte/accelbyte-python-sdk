@@ -51,7 +51,7 @@ class UpdateReward(Operation):
 
         tags: ["Reward"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
@@ -75,7 +75,7 @@ class UpdateReward(Operation):
 
     _url: str = "/platform/admin/namespaces/{namespace}/rewards/{rewardId}"
     _method: str = "PUT"
-    _consumes: List[str] = []
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None

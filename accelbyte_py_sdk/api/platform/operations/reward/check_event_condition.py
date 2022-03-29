@@ -50,7 +50,7 @@ class CheckEventCondition(Operation):
 
         tags: ["Reward"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
@@ -72,7 +72,7 @@ class CheckEventCondition(Operation):
 
     _url: str = "/platform/admin/namespaces/{namespace}/rewards/{rewardId}/match"
     _method: str = "PUT"
-    _consumes: List[str] = []
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None

@@ -57,7 +57,7 @@ class QueryEventStreamHandler(Operation):
 
         tags: ["Event V2"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
@@ -95,7 +95,7 @@ class QueryEventStreamHandler(Operation):
 
     _url: str = "/event/v2/admin/namespaces/{namespace}/query"
     _method: str = "POST"
-    _consumes: List[str] = []
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None

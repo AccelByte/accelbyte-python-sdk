@@ -53,7 +53,7 @@ class AddCountryGroup(Operation):
 
         tags: ["Misc"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
@@ -79,7 +79,7 @@ class AddCountryGroup(Operation):
 
     _url: str = "/basic/v1/admin/namespaces/{namespace}/misc/countrygroups"
     _method: str = "POST"
-    _consumes: List[str] = []
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None

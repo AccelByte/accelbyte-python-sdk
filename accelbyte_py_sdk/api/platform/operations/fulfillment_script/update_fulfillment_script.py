@@ -50,7 +50,7 @@ class UpdateFulfillmentScript(Operation):
 
         tags: ["FulfillmentScript"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: []
 
@@ -70,7 +70,7 @@ class UpdateFulfillmentScript(Operation):
 
     _url: str = "/platform/admin/fulfillment/scripts/{id}"
     _method: str = "PATCH"
-    _consumes: List[str] = []
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = []
     _security_type: Optional[str] = "bearer"
     _location_query: str = None
