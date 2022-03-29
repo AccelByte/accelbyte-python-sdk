@@ -1,36 +1,41 @@
-import time
 from random import randint
 from typing import Optional
 
 from ._integration_test_case import IntegrationTestCase
 
-from accelbyte_py_sdk.api.iam.models import ModelUserCreateRequest
+from accelbyte_py_sdk.api.iam.models import AccountCreateUserRequestV4
 
 
 class IAMTestCase(IntegrationTestCase):
 
     user_id: Optional[str] = None
     scope: str = "commerce account social publishing analytics"
-    model_user_create_request = ModelUserCreateRequest.create(
+    model_user_create_request = AccountCreateUserRequestV4.create(
         auth_type="EMAILPASSWD",
+        code="",
         country="US",
-        display_name="testPythonServerSDKUser",
-        login_id="",
-        password="q!w@e#r$azsxdcfv"
+        date_of_birth="1990-01-01",
+        display_name="Python Server SDK Test",
+        email_address="",
+        username="",
+        password="q!w@e#r$azsxdcfv1",
+        password_md5_sum="",
+        reach_minimum_age=True,
     )
 
     # noinspection PyMethodMayBeStatic
-    def do_create_user(self, body: ModelUserCreateRequest, retries: int = 3):
+    def do_create_user(self, body: AccountCreateUserRequestV4, retries: int = 3):
         # pylint: disable=no-self-use
-        from accelbyte_py_sdk.api.iam import create_user
+        from accelbyte_py_sdk.api.iam import public_create_user_v4
 
         tries = 0
         result = None
         error = None
         user_id: Optional[str] = None
         while True:
-            body.login_id = f"testPythonServerSDKUser+{str(randint(0, 1_000_000)).rjust(7, '0')}@test.com"
-            result, error = create_user(body=body)
+            body.username = f"testPythonServerSDKUser_{str(randint(0, 1_000_000)).rjust(7, '0')}"
+            body.email_address = f"{body.username}@test.com"
+            result, error = public_create_user_v4(body=body)
             user_id = result.user_id if error is None else None
             tries += 1
 
@@ -96,9 +101,6 @@ class IAMTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.iam.models import ModelUserUpdateRequest
 
         # arrange
-        # add delay
-        time.sleep(3)
-
         _, error, user_id = self.do_create_user(body=self.model_user_create_request)
         self.log_warning(msg=f"Failed to set up user. {str(error)}", condition=error is not None)
         self.user_id = user_id
