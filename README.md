@@ -618,7 +618,7 @@ Each path item in `#/paths` is turned into an Operation.
 Example:
 
 ```yaml
-# GET /v1/public/namespaces/{namespace}/users/{userId}/profiles
+# GET /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles
 description: 'Get user profile.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Required
   permission&lt;/i&gt;: resource=&lt;b&gt;&#34;NAMESPACE:{namespace}:USER:{userId}:PROFILE&#34;&lt;/b&gt;,
   action=2 &lt;b&gt;(READ)&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;Action code&lt;/i&gt;:
@@ -700,9 +700,10 @@ same with the models there are also a number of utility functions generated with
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-basic-service (1.32.0)
+# justice-basic-service (1.35.0)
 
 from __future__ import annotations
+import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
@@ -835,10 +836,12 @@ class GetUserProfileInfo(Operation):
     # region is/has methods
 
     def is_valid(self) -> bool:
+        # required checks
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
             return False
+        # pattern checks
         return True
 
     # endregion is/has methods
@@ -874,7 +877,7 @@ class GetUserProfileInfo(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, UserProfilePrivateInfo], Union[None, ErrorEntity, ValidationErrorEntity]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, UserProfilePrivateInfo], Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]:
         """Parse the given response.
 
         200: OK - UserProfilePrivateInfo (successful operation)
@@ -886,7 +889,18 @@ class GetUserProfileInfo(Operation):
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
         404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+
+        ---: HttpResponse (Undocumented Response)
+
+        ---: HttpResponse (Unexpected Content-Type Error)
+
+        ---: HttpResponse (Unhandled Error)
         """
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        if error is not None:
+            return None, None if error.is_no_content() else error
+        code, content_type, content = pre_processed_response
+
         if code == 200:
             return UserProfilePrivateInfo.create_from_dict(content), None
         if code == 400:
@@ -897,12 +911,8 @@ class GetUserProfileInfo(Operation):
             return None, ErrorEntity.create_from_dict(content)
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
-        was_handled, undocumented_response = HttpResponse.try_create_undocumented_response(code, content)
-        if was_handled:
-            if undocumented_response.is_no_content():
-                return None, None
-            return None, undocumented_response
-        return None, HttpResponse.create_unhandled_error()
+
+        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 

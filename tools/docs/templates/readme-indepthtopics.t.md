@@ -57,8 +57,8 @@ Each path item in `#/paths` is turned into an Operation.
 Example:
 
 ```yaml
-# GET /v1/public/namespaces/{namespace}/users/{userId}/profiles
-[//]: # (<< PRINTJSON spec/basic.json '#/paths/%2Fv1%2Fpublic%2Fnamespaces%2F%7Bnamespace%7D%2Fusers%2F%7BuserId%7D%2Fprofiles/get' yaml)
+# GET /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles
+[//]: # (<< PRINTJSON spec/basic.json '#/paths/%2Fbasic%2Fv1%2Fpublic%2Fnamespaces%2F%7Bnamespace%7D%2Fusers%2F%7BuserId%7D%2Fprofiles/get' yaml)
 ```
 
 same with the models there are also a number of utility functions generated with each operation that should help in the ease of use.
