@@ -10,39 +10,31 @@ class IAMTestCase(IntegrationTestCase):
 
     user_id: Optional[str] = None
     scope: str = "commerce account social publishing analytics"
+    username = f"testPythonServerSDKUser_{str(randint(0, 1_000_000)).rjust(7, '0')}"
     model_user_create_request = AccountCreateUserRequestV4.create(
         auth_type="EMAILPASSWD",
         code="",
         country="US",
         date_of_birth="1990-01-01",
         display_name="Python Server SDK Test",
-        email_address="",
-        username="",
+        email_address=f"{username}@test.com",
+        username=username,
         password="q!w@e#r$azsxdcfv1",
         password_md5_sum="",
         reach_minimum_age=True,
     )
 
     # noinspection PyMethodMayBeStatic
-    def do_create_user(self, body: AccountCreateUserRequestV4, retries: int = 3):
+    def do_create_user(self, body: AccountCreateUserRequestV4):
         # pylint: disable=no-self-use
         from accelbyte_py_sdk.api.iam import public_create_user_v4
 
-        tries = 0
-        result = None
-        error = None
-        user_id: Optional[str] = None
-        while True:
-            body.username = f"testPythonServerSDKUser_{str(randint(0, 1_000_000)).rjust(7, '0')}"
-            body.email_address = f"{body.username}@test.com"
-            result, error = public_create_user_v4(body=body)
-            user_id = result.user_id if error is None else None
-            tries += 1
+        result, error = public_create_user_v4(body=body)
 
-            if user_id is not None:
-                break
-            if tries >= retries:
-                break
+        if error is None:
+            user_id = result.user_id
+        else:
+            user_id = None
 
         return result, error, user_id
 
@@ -266,4 +258,6 @@ class IAMTestCase(IntegrationTestCase):
         _, error = logout()
 
         # assert
+        self.assertIsNone(error, error)
+        _, error = login_user(username=username, password=password)
         self.assertIsNone(error, error)
