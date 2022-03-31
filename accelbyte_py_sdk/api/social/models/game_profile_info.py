@@ -118,18 +118,6 @@ class GameProfileInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -307,6 +295,22 @@ class GameProfileInfo(Model):
             "statistics": "statistics",
             "tags": "tags",
             "userId": "user_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "achievements": False,
+            "attributes": False,
+            "avatarUrl": False,
+            "inventories": False,
+            "label": False,
+            "namespace": False,
+            "profileId": False,
+            "profileName": False,
+            "statistics": False,
+            "tags": False,
+            "userId": False,
         }
 
     # endregion static methods

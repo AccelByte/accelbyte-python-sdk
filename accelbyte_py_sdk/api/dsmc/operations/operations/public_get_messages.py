@@ -119,12 +119,6 @@ class PublicGetMessages(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -185,6 +179,11 @@ class PublicGetMessages(Operation):
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
+        return {
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
         return {
         }
 

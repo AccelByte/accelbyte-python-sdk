@@ -122,32 +122,6 @@ class SeasonCreate(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "default_required_exp") or self.default_required_exp is None:
-            return False
-        if not hasattr(self, "draft_store_id") or self.draft_store_id is None:
-            return False
-        if not hasattr(self, "end") or self.end is None:
-            return False
-        if not hasattr(self, "localizations") or self.localizations is None:
-            return False
-        if not hasattr(self, "name") or self.name is None:
-            return False
-        if not hasattr(self, "start") or self.start is None:
-            return False
-        if not hasattr(self, "tier_item_id") or self.tier_item_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -318,6 +292,22 @@ class SeasonCreate(Model):
             "defaultLanguage": "default_language",
             "excessStrategy": "excess_strategy",
             "images": "images",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "defaultRequiredExp": True,
+            "draftStoreId": True,
+            "end": True,
+            "localizations": True,
+            "name": True,
+            "start": True,
+            "tierItemId": True,
+            "autoClaim": False,
+            "defaultLanguage": False,
+            "excessStrategy": False,
+            "images": False,
         }
 
     # endregion static methods

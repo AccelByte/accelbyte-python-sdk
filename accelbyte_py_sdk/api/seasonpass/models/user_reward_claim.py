@@ -62,24 +62,6 @@ class UserRewardClaim(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "pass_code") or self.pass_code is None:
-            return False
-        if not hasattr(self, "reward_code") or self.reward_code is None:
-            return False
-        if not hasattr(self, "tier_index") or self.tier_index is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -158,6 +140,14 @@ class UserRewardClaim(Model):
             "passCode": "pass_code",
             "rewardCode": "reward_code",
             "tierIndex": "tier_index",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "passCode": True,
+            "rewardCode": True,
+            "tierIndex": True,
         }
 
     # endregion static methods

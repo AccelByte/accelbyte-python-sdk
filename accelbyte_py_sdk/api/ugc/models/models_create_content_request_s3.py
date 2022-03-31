@@ -90,32 +90,6 @@ class ModelsCreateContentRequestS3(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "content_type") or self.content_type is None:
-            return False
-        if not hasattr(self, "file_extension") or self.file_extension is None:
-            return False
-        if not hasattr(self, "name") or self.name is None:
-            return False
-        if not hasattr(self, "preview") or self.preview is None:
-            return False
-        if not hasattr(self, "sub_type") or self.sub_type is None:
-            return False
-        if not hasattr(self, "tags") or self.tags is None:
-            return False
-        if not hasattr(self, "type_") or self.type_ is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -238,6 +212,18 @@ class ModelsCreateContentRequestS3(Model):
             "subType": "sub_type",
             "tags": "tags",
             "type": "type_",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "contentType": True,
+            "fileExtension": True,
+            "name": True,
+            "preview": True,
+            "subType": True,
+            "tags": True,
+            "type": True,
         }
 
     # endregion static methods

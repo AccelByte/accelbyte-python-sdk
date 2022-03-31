@@ -62,24 +62,6 @@ class ModelsCountActiveSessionResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "custom_game") or self.custom_game is None:
-            return False
-        if not hasattr(self, "matchmaking_game") or self.matchmaking_game is None:
-            return False
-        if not hasattr(self, "total") or self.total is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -158,6 +140,14 @@ class ModelsCountActiveSessionResponse(Model):
             "custom_game": "custom_game",
             "matchmaking_game": "matchmaking_game",
             "total": "total",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "custom_game": True,
+            "matchmaking_game": True,
+            "total": True,
         }
 
     # endregion static methods

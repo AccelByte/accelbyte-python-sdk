@@ -147,16 +147,6 @@ class SyncOrders(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "end") or self.end is None:
-            return False
-        if not hasattr(self, "start") or self.start is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -260,6 +250,14 @@ class SyncOrders(Operation):
             "nextEvaluatedKey": "next_evaluated_key",
             "end": "end",
             "start": "start",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "nextEvaluatedKey": False,
+            "end": True,
+            "start": True,
         }
 
     # endregion static methods

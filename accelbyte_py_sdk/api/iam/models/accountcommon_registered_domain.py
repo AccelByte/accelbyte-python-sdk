@@ -69,26 +69,6 @@ class AccountcommonRegisteredDomain(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "affected_client_i_ds") or self.affected_client_i_ds is None:
-            return False
-        if not hasattr(self, "domain") or self.domain is None:
-            return False
-        if not hasattr(self, "namespaces") or self.namespaces is None:
-            return False
-        if not hasattr(self, "role_id") or self.role_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -178,6 +158,15 @@ class AccountcommonRegisteredDomain(Model):
             "domain": "domain",
             "namespaces": "namespaces",
             "roleId": "role_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "affectedClientIDs": True,
+            "domain": True,
+            "namespaces": True,
+            "roleId": True,
         }
 
     # endregion static methods

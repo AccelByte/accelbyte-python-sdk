@@ -76,28 +76,6 @@ class ModelChatMessageResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "from_") or self.from_ is None:
-            return False
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        if not hasattr(self, "payload") or self.payload is None:
-            return False
-        if not hasattr(self, "received_at") or self.received_at is None:
-            return False
-        if not hasattr(self, "to") or self.to is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -198,6 +176,16 @@ class ModelChatMessageResponse(Model):
             "payload": "payload",
             "receivedAt": "received_at",
             "to": "to",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "from": True,
+            "id": True,
+            "payload": True,
+            "receivedAt": True,
+            "to": True,
         }
 
     # endregion static methods

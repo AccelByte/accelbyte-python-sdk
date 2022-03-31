@@ -62,24 +62,6 @@ class ModelsJoinGroupResponseV1(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "group_id") or self.group_id is None:
-            return False
-        if not hasattr(self, "status") or self.status is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -158,6 +140,14 @@ class ModelsJoinGroupResponseV1(Model):
             "groupId": "group_id",
             "status": "status",
             "userId": "user_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "groupId": True,
+            "status": True,
+            "userId": True,
         }
 
     # endregion static methods

@@ -69,26 +69,6 @@ class ModelUserVerificationRequestV3(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "code") or self.code is None:
-            return False
-        if not hasattr(self, "contact_type") or self.contact_type is None:
-            return False
-        if not hasattr(self, "language_tag") or self.language_tag is None:
-            return False
-        if not hasattr(self, "validate_only") or self.validate_only is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -178,6 +158,15 @@ class ModelUserVerificationRequestV3(Model):
             "contactType": "contact_type",
             "languageTag": "language_tag",
             "validateOnly": "validate_only",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "code": True,
+            "contactType": True,
+            "languageTag": True,
+            "validateOnly": True,
         }
 
     # endregion static methods

@@ -76,28 +76,6 @@ class ModelsCreateRegionOverrideRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "buffer_count") or self.buffer_count is None:
-            return False
-        if not hasattr(self, "buffer_percent") or self.buffer_percent is None:
-            return False
-        if not hasattr(self, "max_count") or self.max_count is None:
-            return False
-        if not hasattr(self, "min_count") or self.min_count is None:
-            return False
-        if not hasattr(self, "use_buffer_percent") or self.use_buffer_percent is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -198,6 +176,16 @@ class ModelsCreateRegionOverrideRequest(Model):
             "max_count": "max_count",
             "min_count": "min_count",
             "use_buffer_percent": "use_buffer_percent",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "buffer_count": True,
+            "buffer_percent": True,
+            "max_count": True,
+            "min_count": True,
+            "use_buffer_percent": True,
         }
 
     # endregion static methods

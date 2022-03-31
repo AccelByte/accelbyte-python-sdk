@@ -97,34 +97,6 @@ class EntitlementHistoryInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "action") or self.action is None:
-            return False
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "entitlement_id") or self.entitlement_id is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "operator") or self.operator is None:
-            return False
-        if not hasattr(self, "updated_at") or self.updated_at is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        if hasattr(self, "action") and self.action is not None and self.action not in EntitlementHistoryInfo.get_enum_map()["action"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -262,7 +234,20 @@ class EntitlementHistoryInfo(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "action": True,
+            "createdAt": True,
+            "entitlementId": True,
+            "namespace": True,
+            "operator": True,
+            "updatedAt": True,
+            "userId": True,
+            "useCount": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "action": ["GRANT", "UPDATE", "DECREMENT", "REVOKE", "DISABLE", "ENABLE"],
         }

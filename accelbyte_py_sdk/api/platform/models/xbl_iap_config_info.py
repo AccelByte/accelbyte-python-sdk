@@ -69,20 +69,6 @@ class XblIAPConfigInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -175,6 +161,15 @@ class XblIAPConfigInfo(Model):
             "businessPartnerCertFileName": "business_partner_cert_file_name",
             "password": "password",
             "relyingPartyCert": "relying_party_cert",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "namespace": True,
+            "businessPartnerCertFileName": False,
+            "password": False,
+            "relyingPartyCert": False,
         }
 
     # endregion static methods

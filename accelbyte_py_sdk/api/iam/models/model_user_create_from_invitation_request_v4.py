@@ -99,30 +99,6 @@ class ModelUserCreateFromInvitationRequestV4(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "auth_type") or self.auth_type is None:
-            return False
-        if not hasattr(self, "country") or self.country is None:
-            return False
-        if not hasattr(self, "display_name") or self.display_name is None:
-            return False
-        if not hasattr(self, "password") or self.password is None:
-            return False
-        if not hasattr(self, "reach_minimum_age") or self.reach_minimum_age is None:
-            return False
-        if not hasattr(self, "username") or self.username is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -258,6 +234,19 @@ class ModelUserCreateFromInvitationRequestV4(Model):
             "username": "username",
             "acceptedPolicies": "accepted_policies",
             "dateOfBirth": "date_of_birth",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "authType": True,
+            "country": True,
+            "displayName": True,
+            "password": True,
+            "reachMinimumAge": True,
+            "username": True,
+            "acceptedPolicies": False,
+            "dateOfBirth": False,
         }
 
     # endregion static methods

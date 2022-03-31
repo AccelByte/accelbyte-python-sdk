@@ -62,24 +62,6 @@ class ModelUserPasswordUpdateRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "language_tag") or self.language_tag is None:
-            return False
-        if not hasattr(self, "new_password") or self.new_password is None:
-            return False
-        if not hasattr(self, "old_password") or self.old_password is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -158,6 +140,14 @@ class ModelUserPasswordUpdateRequest(Model):
             "LanguageTag": "language_tag",
             "NewPassword": "new_password",
             "OldPassword": "old_password",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "LanguageTag": True,
+            "NewPassword": True,
+            "OldPassword": True,
         }
 
     # endregion static methods

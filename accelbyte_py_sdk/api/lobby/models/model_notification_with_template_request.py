@@ -69,26 +69,6 @@ class ModelNotificationWithTemplateRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "template_context") or self.template_context is None:
-            return False
-        if not hasattr(self, "template_language") or self.template_language is None:
-            return False
-        if not hasattr(self, "template_slug") or self.template_slug is None:
-            return False
-        if not hasattr(self, "topic") or self.topic is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -178,6 +158,15 @@ class ModelNotificationWithTemplateRequest(Model):
             "templateLanguage": "template_language",
             "templateSlug": "template_slug",
             "topic": "topic",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "templateContext": True,
+            "templateLanguage": True,
+            "templateSlug": True,
+            "topic": True,
         }
 
     # endregion static methods

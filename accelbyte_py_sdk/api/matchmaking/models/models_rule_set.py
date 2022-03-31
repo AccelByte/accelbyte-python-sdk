@@ -90,30 +90,6 @@ class ModelsRuleSet(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "alliance") or self.alliance is None:
-            return False
-        if not hasattr(self, "alliance_flexing_rule") or self.alliance_flexing_rule is None:
-            return False
-        if not hasattr(self, "flexing_rule") or self.flexing_rule is None:
-            return False
-        if not hasattr(self, "match_options") or self.match_options is None:
-            return False
-        if not hasattr(self, "matching_rule") or self.matching_rule is None:
-            return False
-        if not hasattr(self, "sub_game_modes") or self.sub_game_modes is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -225,6 +201,17 @@ class ModelsRuleSet(Model):
             "match_options": "match_options",
             "matching_rule": "matching_rule",
             "sub_game_modes": "sub_game_modes",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "alliance": True,
+            "alliance_flexing_rule": True,
+            "flexing_rule": True,
+            "match_options": True,
+            "matching_rule": True,
+            "sub_game_modes": True,
         }
 
     # endregion static methods

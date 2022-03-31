@@ -69,26 +69,6 @@ class ModelsAllianceRuleV1(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "max_number") or self.max_number is None:
-            return False
-        if not hasattr(self, "min_number") or self.min_number is None:
-            return False
-        if not hasattr(self, "player_max_number") or self.player_max_number is None:
-            return False
-        if not hasattr(self, "player_min_number") or self.player_min_number is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -178,6 +158,15 @@ class ModelsAllianceRuleV1(Model):
             "minNumber": "min_number",
             "playerMaxNumber": "player_max_number",
             "playerMinNumber": "player_min_number",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "maxNumber": True,
+            "minNumber": True,
+            "playerMaxNumber": True,
+            "playerMinNumber": True,
         }
 
     # endregion static methods

@@ -76,30 +76,6 @@ class CurrencySummary(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "currency_code") or self.currency_code is None:
-            return False
-        if not hasattr(self, "currency_symbol") or self.currency_symbol is None:
-            return False
-        if not hasattr(self, "currency_type") or self.currency_type is None:
-            return False
-        if not hasattr(self, "decimals") or self.decimals is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        # enum checks
-        if hasattr(self, "currency_type") and self.currency_type is not None and self.currency_type not in CurrencySummary.get_enum_map()["currencyType"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -203,7 +179,17 @@ class CurrencySummary(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "currencyCode": True,
+            "currencySymbol": True,
+            "currencyType": True,
+            "decimals": True,
+            "namespace": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "currencyType": ["REAL", "VIRTUAL"],
         }

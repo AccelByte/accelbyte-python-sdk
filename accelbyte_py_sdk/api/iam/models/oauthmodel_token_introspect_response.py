@@ -90,20 +90,6 @@ class OauthmodelTokenIntrospectResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "active") or self.active is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -232,6 +218,18 @@ class OauthmodelTokenIntrospectResponse(Model):
             "iat": "iat",
             "scope": "scope",
             "sub": "sub",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "active": True,
+            "aud": False,
+            "client_id": False,
+            "exp": False,
+            "iat": False,
+            "scope": False,
+            "sub": False,
         }
 
     # endregion static methods

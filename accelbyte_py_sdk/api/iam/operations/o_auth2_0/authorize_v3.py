@@ -253,20 +253,6 @@ class AuthorizeV3(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "client_id") or self.client_id is None:
-            return False
-        if not hasattr(self, "response_type") or self.response_type is None:
-            return False
-        # enum checks
-        if hasattr(self, "code_challenge_method") and self.code_challenge_method is not None and self.code_challenge_method not in AuthorizeV3.get_enum_map()["code_challenge_method"]:
-            return False
-        if hasattr(self, "response_type") and self.response_type is not None and self.response_type not in AuthorizeV3.get_enum_map()["response_type"]:
-            return False
-        # pattern checks
-        return True
-
     # noinspection PyMethodMayBeStatic
     def has_redirects(self) -> bool:
         """Returns True if this operation has redirects, otherwise False.
@@ -461,7 +447,20 @@ class AuthorizeV3(Operation):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "code_challenge": False,
+            "code_challenge_method": False,
+            "redirect_uri": False,
+            "scope": False,
+            "state": False,
+            "target_auth_page": False,
+            "client_id": True,
+            "response_type": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "code_challenge_method": ["S256", "plain"],                                            # in query
             "response_type": ["code"],                                                             # in query

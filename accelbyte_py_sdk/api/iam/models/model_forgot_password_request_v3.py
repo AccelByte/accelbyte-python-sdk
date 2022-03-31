@@ -55,20 +55,6 @@ class ModelForgotPasswordRequestV3(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "email_address") or self.email_address is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -137,6 +123,13 @@ class ModelForgotPasswordRequestV3(Model):
         return {
             "emailAddress": "email_address",
             "languageTag": "language_tag",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "emailAddress": True,
+            "languageTag": False,
         }
 
     # endregion static methods

@@ -76,18 +76,6 @@ class ADTOObjectForEqu8UserStatus(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -193,6 +181,16 @@ class ADTOObjectForEqu8UserStatus(Model):
             "expires": "expires",
             "userId": "user_id",
             "when": "when",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "actionComment": False,
+            "actionId": False,
+            "expires": False,
+            "userId": False,
+            "when": False,
         }
 
     # endregion static methods

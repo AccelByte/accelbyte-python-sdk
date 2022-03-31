@@ -229,18 +229,6 @@ class PublicPlatformLinkV3(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "ticket") or self.ticket is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "platform_id") or self.platform_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -379,6 +367,15 @@ class PublicPlatformLinkV3(Operation):
             "ticket": "ticket",
             "namespace": "namespace",
             "platformId": "platform_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "redirectUri": False,
+            "ticket": True,
+            "namespace": True,
+            "platformId": True,
         }
 
     # endregion static methods

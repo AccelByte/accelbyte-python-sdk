@@ -58,22 +58,6 @@ class ModelsEventResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "data") or self.data is None:
-            return False
-        if not hasattr(self, "pagination") or self.pagination is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -141,6 +125,13 @@ class ModelsEventResponse(Model):
         return {
             "Data": "data",
             "Pagination": "pagination",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "Data": True,
+            "Pagination": True,
         }
 
     # endregion static methods

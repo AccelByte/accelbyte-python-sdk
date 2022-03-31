@@ -69,26 +69,6 @@ class ModelsDetailedCountServerResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "busy_count") or self.busy_count is None:
-            return False
-        if not hasattr(self, "creating_count") or self.creating_count is None:
-            return False
-        if not hasattr(self, "ready_count") or self.ready_count is None:
-            return False
-        if not hasattr(self, "unreachable_count") or self.unreachable_count is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -178,6 +158,15 @@ class ModelsDetailedCountServerResponse(Model):
             "creating_count": "creating_count",
             "ready_count": "ready_count",
             "unreachable_count": "unreachable_count",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "busy_count": True,
+            "creating_count": True,
+            "ready_count": True,
+            "unreachable_count": True,
         }
 
     # endregion static methods

@@ -127,36 +127,6 @@ class LocalizedPassInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "auto_enroll") or self.auto_enroll is None:
-            return False
-        if not hasattr(self, "code") or self.code is None:
-            return False
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "display_order") or self.display_order is None:
-            return False
-        if not hasattr(self, "language") or self.language is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "pass_item_id") or self.pass_item_id is None:
-            return False
-        if not hasattr(self, "season_id") or self.season_id is None:
-            return False
-        if not hasattr(self, "updated_at") or self.updated_at is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -337,6 +307,23 @@ class LocalizedPassInfo(Model):
             "description": "description",
             "images": "images",
             "title": "title",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "autoEnroll": True,
+            "code": True,
+            "createdAt": True,
+            "displayOrder": True,
+            "language": True,
+            "namespace": True,
+            "passItemId": True,
+            "seasonId": True,
+            "updatedAt": True,
+            "description": False,
+            "images": False,
+            "title": False,
         }
 
     # endregion static methods

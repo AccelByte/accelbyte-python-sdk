@@ -62,24 +62,6 @@ class ModelInviteUserRequestV3(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "email_addresses") or self.email_addresses is None:
-            return False
-        if not hasattr(self, "is_admin") or self.is_admin is None:
-            return False
-        if not hasattr(self, "roles") or self.roles is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -158,6 +140,14 @@ class ModelInviteUserRequestV3(Model):
             "emailAddresses": "email_addresses",
             "isAdmin": "is_admin",
             "roles": "roles",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "emailAddresses": True,
+            "isAdmin": True,
+            "roles": True,
         }
 
     # endregion static methods

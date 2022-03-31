@@ -62,18 +62,6 @@ class PaymentCallbackConfigUpdate(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -155,6 +143,14 @@ class PaymentCallbackConfigUpdate(Model):
             "dryRun": "dry_run",
             "notifyUrl": "notify_url",
             "privateKey": "private_key",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "dryRun": False,
+            "notifyUrl": False,
+            "privateKey": False,
         }
 
     # endregion static methods

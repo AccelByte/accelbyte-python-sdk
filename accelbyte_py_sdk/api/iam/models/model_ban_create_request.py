@@ -76,28 +76,6 @@ class ModelBanCreateRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "ban") or self.ban is None:
-            return False
-        if not hasattr(self, "comment") or self.comment is None:
-            return False
-        if not hasattr(self, "end_date") or self.end_date is None:
-            return False
-        if not hasattr(self, "reason") or self.reason is None:
-            return False
-        if not hasattr(self, "skip_notif") or self.skip_notif is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -198,6 +176,16 @@ class ModelBanCreateRequest(Model):
             "endDate": "end_date",
             "reason": "reason",
             "skipNotif": "skip_notif",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "ban": True,
+            "comment": True,
+            "endDate": True,
+            "reason": True,
+            "skipNotif": True,
         }
 
     # endregion static methods

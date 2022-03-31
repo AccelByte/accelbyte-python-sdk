@@ -83,30 +83,6 @@ class LogAppMessageDeclaration(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "attributes") or self.attributes is None:
-            return False
-        if not hasattr(self, "code") or self.code is None:
-            return False
-        if not hasattr(self, "code_name") or self.code_name is None:
-            return False
-        if not hasattr(self, "section") or self.section is None:
-            return False
-        if not hasattr(self, "service") or self.service is None:
-            return False
-        if not hasattr(self, "text") or self.text is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -218,6 +194,17 @@ class LogAppMessageDeclaration(Model):
             "Section": "section",
             "Service": "service",
             "Text": "text",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "Attributes": True,
+            "Code": True,
+            "CodeName": True,
+            "Section": True,
+            "Service": True,
+            "Text": True,
         }
 
     # endregion static methods

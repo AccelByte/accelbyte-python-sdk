@@ -90,32 +90,6 @@ class ModelsCreateImagePatchRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "artifact_path") or self.artifact_path is None:
-            return False
-        if not hasattr(self, "docker_path") or self.docker_path is None:
-            return False
-        if not hasattr(self, "image") or self.image is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "patch_version") or self.patch_version is None:
-            return False
-        if not hasattr(self, "persistent") or self.persistent is None:
-            return False
-        if not hasattr(self, "version") or self.version is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -238,6 +212,18 @@ class ModelsCreateImagePatchRequest(Model):
             "patchVersion": "patch_version",
             "persistent": "persistent",
             "version": "version",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "artifactPath": True,
+            "dockerPath": True,
+            "image": True,
+            "namespace": True,
+            "patchVersion": True,
+            "persistent": True,
+            "version": True,
         }
 
     # endregion static methods

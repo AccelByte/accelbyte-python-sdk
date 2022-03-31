@@ -71,26 +71,6 @@ class ModelsMatchResult(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "game_mode") or self.game_mode is None:
-            return False
-        if not hasattr(self, "matching_allies") or self.matching_allies is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "session_id") or self.session_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -180,6 +160,15 @@ class ModelsMatchResult(Model):
             "matching_allies": "matching_allies",
             "namespace": "namespace",
             "session_id": "session_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "game_mode": True,
+            "matching_allies": True,
+            "namespace": True,
+            "session_id": True,
         }
 
     # endregion static methods

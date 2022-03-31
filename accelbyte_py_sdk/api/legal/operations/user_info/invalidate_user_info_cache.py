@@ -134,12 +134,6 @@ class InvalidateUserInfoCache(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -213,6 +207,12 @@ class InvalidateUserInfoCache(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "namespace": False,
         }
 
     # endregion static methods

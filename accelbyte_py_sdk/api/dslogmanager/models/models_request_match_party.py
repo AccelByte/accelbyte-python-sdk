@@ -64,24 +64,6 @@ class ModelsRequestMatchParty(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "party_attributes") or self.party_attributes is None:
-            return False
-        if not hasattr(self, "party_id") or self.party_id is None:
-            return False
-        if not hasattr(self, "party_members") or self.party_members is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -160,6 +142,14 @@ class ModelsRequestMatchParty(Model):
             "party_attributes": "party_attributes",
             "party_id": "party_id",
             "party_members": "party_members",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "party_attributes": True,
+            "party_id": True,
+            "party_members": True,
         }
 
     # endregion static methods

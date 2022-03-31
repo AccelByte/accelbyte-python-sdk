@@ -173,18 +173,6 @@ class RetrieveLatestPoliciesByNamespaceAndCountryPublic(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "country_code") or self.country_code is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        # enum checks
-        if hasattr(self, "policy_type") and self.policy_type is not None and self.policy_type not in RetrieveLatestPoliciesByNamespaceAndCountryPublic.get_enum_map()["policyType"]:
-            return False
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -339,7 +327,18 @@ class RetrieveLatestPoliciesByNamespaceAndCountryPublic(Operation):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "countryCode": True,
+            "namespace": True,
+            "alwaysIncludeDefault": False,
+            "defaultOnEmpty": False,
+            "policyType": False,
+            "tags": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "policyType": ["LEGAL_DOCUMENT_TYPE", "MARKETING_PREFERENCE_TYPE"],                    # in query
         }

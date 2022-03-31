@@ -104,30 +104,6 @@ class OrderCreate(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "currency_code") or self.currency_code is None:
-            return False
-        if not hasattr(self, "discounted_price") or self.discounted_price is None:
-            return False
-        if not hasattr(self, "item_id") or self.item_id is None:
-            return False
-        if not hasattr(self, "price") or self.price is None:
-            return False
-        if not hasattr(self, "quantity") or self.quantity is None:
-            return False
-        # enum checks
-        # pattern checks
-        if hasattr(self, "language") and self.language is not None and not re.match(r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$", self.language):
-            return False
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -276,6 +252,26 @@ class OrderCreate(Model):
             "language": "language",
             "region": "region",
             "returnUrl": "return_url",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "currencyCode": True,
+            "discountedPrice": True,
+            "itemId": True,
+            "price": True,
+            "quantity": True,
+            "ext": False,
+            "language": False,
+            "region": False,
+            "returnUrl": False,
+        }
+
+    @staticmethod
+    def get_pattern_map() -> Dict[str, re.Pattern]:
+        return {
+            "language": re.compile(r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$"),
         }
 
     # endregion static methods

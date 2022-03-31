@@ -152,14 +152,6 @@ class RetrieveAllUsersByPolicyVersion(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "policy_version_id") or self.policy_version_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -284,6 +276,15 @@ class RetrieveAllUsersByPolicyVersion(Operation):
             "limit": "limit",
             "offset": "offset",
             "policyVersionId": "policy_version_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "keyword": False,
+            "limit": False,
+            "offset": False,
+            "policyVersionId": True,
         }
 
     # endregion static methods

@@ -55,22 +55,6 @@ class ModelEnabledFactorsResponseV4(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "default") or self.default is None:
-            return False
-        if not hasattr(self, "enabled") or self.enabled is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -138,6 +122,13 @@ class ModelEnabledFactorsResponseV4(Model):
         return {
             "default": "default",
             "enabled": "enabled",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "default": True,
+            "enabled": True,
         }
 
     # endregion static methods

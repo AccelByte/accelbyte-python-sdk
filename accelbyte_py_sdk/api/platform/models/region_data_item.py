@@ -125,28 +125,6 @@ class RegionDataItem(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "currency_code") or self.currency_code is None:
-            return False
-        if not hasattr(self, "currency_namespace") or self.currency_namespace is None:
-            return False
-        if not hasattr(self, "currency_type") or self.currency_type is None:
-            return False
-        if not hasattr(self, "price") or self.price is None:
-            return False
-        # enum checks
-        if hasattr(self, "currency_type") and self.currency_type is not None and self.currency_type not in RegionDataItem.get_enum_map()["currencyType"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -335,7 +313,24 @@ class RegionDataItem(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "currencyCode": True,
+            "currencyNamespace": True,
+            "currencyType": True,
+            "price": True,
+            "discountAmount": False,
+            "discountExpireAt": False,
+            "discountPercentage": False,
+            "discountPurchaseAt": False,
+            "discountedPrice": False,
+            "expireAt": False,
+            "purchaseAt": False,
+            "trialPrice": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "currencyType": ["REAL", "VIRTUAL"],
         }

@@ -72,26 +72,6 @@ class FulfillmentScriptContext(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "item") or self.item is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "source") or self.source is None:
-            return False
-        # enum checks
-        if hasattr(self, "source") and self.source is not None and self.source not in FulfillmentScriptContext.get_enum_map()["source"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -185,7 +165,16 @@ class FulfillmentScriptContext(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "item": True,
+            "namespace": True,
+            "source": True,
+            "order": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "source": ["PURCHASE", "IAP", "PROMOTION", "ACHIEVEMENT", "REFERRAL_BONUS", "REDEEM_CODE", "REWARD", "GIFT", "DLC", "OTHER"],
         }

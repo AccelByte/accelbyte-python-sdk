@@ -99,22 +99,6 @@ class RewardCreate(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "event_topic") or self.event_topic is None:
-            return False
-        if not hasattr(self, "reward_code") or self.reward_code is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -254,6 +238,19 @@ class RewardCreate(Model):
             "namespaceExpression": "namespace_expression",
             "rewardConditions": "reward_conditions",
             "userIdExpression": "user_id_expression",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "eventTopic": True,
+            "rewardCode": True,
+            "description": False,
+            "maxAwarded": False,
+            "maxAwardedPerUser": False,
+            "namespaceExpression": False,
+            "rewardConditions": False,
+            "userIdExpression": False,
         }
 
     # endregion static methods

@@ -76,26 +76,6 @@ class AccountcommonJWTBanV3(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "ban") or self.ban is None:
-            return False
-        if not hasattr(self, "enabled") or self.enabled is None:
-            return False
-        if not hasattr(self, "end_date") or self.end_date is None:
-            return False
-        if not hasattr(self, "targeted_namespace") or self.targeted_namespace is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -197,6 +177,16 @@ class AccountcommonJWTBanV3(Model):
             "endDate": "end_date",
             "targetedNamespace": "targeted_namespace",
             "disabledDate": "disabled_date",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "ban": True,
+            "enabled": True,
+            "endDate": True,
+            "targetedNamespace": True,
+            "disabledDate": False,
         }
 
     # endregion static methods

@@ -58,20 +58,6 @@ class ListSeasonInfoPagingSlicedResult(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "data") or self.data is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -140,6 +126,13 @@ class ListSeasonInfoPagingSlicedResult(Model):
         return {
             "data": "data",
             "paging": "paging",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "data": True,
+            "paging": False,
         }
 
     # endregion static methods

@@ -130,12 +130,6 @@ class BulkAcceptVersionedPolicy(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -209,6 +203,12 @@ class BulkAcceptVersionedPolicy(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "body": False,
         }
 
     # endregion static methods

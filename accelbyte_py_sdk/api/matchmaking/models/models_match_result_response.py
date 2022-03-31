@@ -57,22 +57,6 @@ class ModelsMatchResultResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "match_id") or self.match_id is None:
-            return False
-        if not hasattr(self, "players") or self.players is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -140,6 +124,13 @@ class ModelsMatchResultResponse(Model):
         return {
             "match_id": "match_id",
             "players": "players",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "match_id": True,
+            "players": True,
         }
 
     # endregion static methods

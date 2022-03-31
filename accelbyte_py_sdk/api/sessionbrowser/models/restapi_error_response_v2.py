@@ -76,28 +76,6 @@ class RestapiErrorResponseV2(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "attributes") or self.attributes is None:
-            return False
-        if not hasattr(self, "error_code") or self.error_code is None:
-            return False
-        if not hasattr(self, "error_message") or self.error_message is None:
-            return False
-        if not hasattr(self, "message") or self.message is None:
-            return False
-        if not hasattr(self, "name") or self.name is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -198,6 +176,16 @@ class RestapiErrorResponseV2(Model):
             "errorMessage": "error_message",
             "message": "message",
             "name": "name",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "attributes": True,
+            "errorCode": True,
+            "errorMessage": True,
+            "message": True,
+            "name": True,
         }
 
     # endregion static methods

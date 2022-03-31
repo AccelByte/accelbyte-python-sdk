@@ -118,40 +118,6 @@ class PaymentNotificationInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "notification") or self.notification is None:
-            return False
-        if not hasattr(self, "notification_source") or self.notification_source is None:
-            return False
-        if not hasattr(self, "notification_type") or self.notification_type is None:
-            return False
-        if not hasattr(self, "payment_order_no") or self.payment_order_no is None:
-            return False
-        if not hasattr(self, "status") or self.status is None:
-            return False
-        if not hasattr(self, "updated_at") or self.updated_at is None:
-            return False
-        # enum checks
-        if hasattr(self, "notification_source") and self.notification_source is not None and self.notification_source not in PaymentNotificationInfo.get_enum_map()["notificationSource"]:
-            return False
-        if hasattr(self, "status") and self.status is not None and self.status not in PaymentNotificationInfo.get_enum_map()["status"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -323,7 +289,23 @@ class PaymentNotificationInfo(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "createdAt": True,
+            "id": True,
+            "namespace": True,
+            "notification": True,
+            "notificationSource": True,
+            "notificationType": True,
+            "paymentOrderNo": True,
+            "status": True,
+            "updatedAt": True,
+            "externalId": False,
+            "statusReason": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "notificationSource": ["WALLET", "XSOLLA", "ADYEN", "STRIPE", "CHECKOUT", "ALIPAY", "WXPAY", "PAYPAL"],
             "status": ["PROCESSED", "ERROR", "WARN", "IGNORED"],

@@ -254,20 +254,6 @@ class Authorization(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "client_id") or self.client_id is None:
-            return False
-        if not hasattr(self, "redirect_uri") or self.redirect_uri is None:
-            return False
-        if not hasattr(self, "response_type") or self.response_type is None:
-            return False
-        # enum checks
-        if hasattr(self, "response_type") and self.response_type is not None and self.response_type not in Authorization.get_enum_map()["response_type"]:
-            return False
-        # pattern checks
-        return True
-
     # noinspection PyMethodMayBeStatic
     def has_redirects(self) -> bool:
         """Returns True if this operation has redirects, otherwise False.
@@ -445,7 +431,19 @@ class Authorization(Operation):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "login": False,
+            "password": False,
+            "scope": False,
+            "state": False,
+            "client_id": True,
+            "redirect_uri": True,
+            "response_type": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "response_type": ["code", "token"],                                                    # in form_data
         }

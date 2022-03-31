@@ -90,18 +90,6 @@ class Action(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -231,6 +219,18 @@ class Action(Model):
             "id": "id_",
             "name": "name",
             "priority": "priority",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "color": False,
+            "description": False,
+            "duration": False,
+            "icon": False,
+            "id": False,
+            "name": False,
+            "priority": False,
         }
 
     # endregion static methods

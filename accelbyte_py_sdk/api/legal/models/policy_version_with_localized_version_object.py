@@ -113,26 +113,6 @@ class PolicyVersionWithLocalizedVersionObject(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "display_version") or self.display_version is None:
-            return False
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        if not hasattr(self, "is_committed") or self.is_committed is None:
-            return False
-        if not hasattr(self, "is_in_effect") or self.is_in_effect is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -294,6 +274,21 @@ class PolicyVersionWithLocalizedVersionObject(Model):
             "publishedDate": "published_date",
             "status": "status",
             "updatedAt": "updated_at",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "displayVersion": True,
+            "id": True,
+            "isCommitted": True,
+            "isInEffect": True,
+            "createdAt": False,
+            "description": False,
+            "localizedPolicyVersions": False,
+            "publishedDate": False,
+            "status": False,
+            "updatedAt": False,
         }
 
     # endregion static methods

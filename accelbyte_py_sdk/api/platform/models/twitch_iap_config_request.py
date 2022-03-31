@@ -62,18 +62,6 @@ class TwitchIAPConfigRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -155,6 +143,14 @@ class TwitchIAPConfigRequest(Model):
             "clientId": "client_id",
             "clientSecret": "client_secret",
             "organizationId": "organization_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "clientId": False,
+            "clientSecret": False,
+            "organizationId": False,
         }
 
     # endregion static methods

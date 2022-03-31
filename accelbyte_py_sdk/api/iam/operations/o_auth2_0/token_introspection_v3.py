@@ -143,14 +143,6 @@ class TokenIntrospectionV3(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "token") or self.token is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -231,6 +223,12 @@ class TokenIntrospectionV3(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "token": "token",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "token": True,
         }
 
     # endregion static methods

@@ -55,20 +55,6 @@ class GrantSubscriptionDaysRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "grant_days") or self.grant_days is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -137,6 +123,13 @@ class GrantSubscriptionDaysRequest(Model):
         return {
             "grantDays": "grant_days",
             "reason": "reason",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "grantDays": True,
+            "reason": False,
         }
 
     # endregion static methods

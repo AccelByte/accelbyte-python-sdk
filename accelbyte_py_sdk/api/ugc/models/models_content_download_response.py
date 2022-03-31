@@ -200,52 +200,6 @@ class ModelsContentDownloadResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "channel_id") or self.channel_id is None:
-            return False
-        if not hasattr(self, "created_time") or self.created_time is None:
-            return False
-        if not hasattr(self, "creator_follow_state") or self.creator_follow_state is None:
-            return False
-        if not hasattr(self, "creator_name") or self.creator_name is None:
-            return False
-        if not hasattr(self, "download_count") or self.download_count is None:
-            return False
-        if not hasattr(self, "file_extension") or self.file_extension is None:
-            return False
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        if not hasattr(self, "is_hidden") or self.is_hidden is None:
-            return False
-        if not hasattr(self, "is_official") or self.is_official is None:
-            return False
-        if not hasattr(self, "like_count") or self.like_count is None:
-            return False
-        if not hasattr(self, "name") or self.name is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "share_code") or self.share_code is None:
-            return False
-        if not hasattr(self, "sub_type") or self.sub_type is None:
-            return False
-        if not hasattr(self, "tags") or self.tags is None:
-            return False
-        if not hasattr(self, "type_") or self.type_ is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -538,6 +492,33 @@ class ModelsContentDownloadResponse(Model):
             "payload": "payload",
             "payloadURL": "payload_url",
             "screenshots": "screenshots",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "channelId": True,
+            "createdTime": True,
+            "creatorFollowState": True,
+            "creatorName": True,
+            "downloadCount": True,
+            "fileExtension": True,
+            "id": True,
+            "isHidden": True,
+            "isOfficial": True,
+            "likeCount": True,
+            "name": True,
+            "namespace": True,
+            "shareCode": True,
+            "subType": True,
+            "tags": True,
+            "type": True,
+            "userId": True,
+            "groups": False,
+            "likeState": False,
+            "payload": False,
+            "payloadURL": False,
+            "screenshots": False,
         }
 
     # endregion static methods

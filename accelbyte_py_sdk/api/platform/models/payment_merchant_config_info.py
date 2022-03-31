@@ -162,24 +162,6 @@ class PaymentMerchantConfigInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        if not hasattr(self, "updated_at") or self.updated_at is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -414,6 +396,27 @@ class PaymentMerchantConfigInfo(Model):
             "wxPayConfig": "wx_pay_config",
             "xsollaConfig": "xsolla_config",
             "xsollaPaywallConfig": "xsolla_paywall_config",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "createdAt": True,
+            "id": True,
+            "updatedAt": True,
+            "adyenConfig": False,
+            "adyenSandboxConfig": False,
+            "aliPayConfig": False,
+            "aliPaySandboxConfig": False,
+            "checkoutConfig": False,
+            "checkoutSandboxConfig": False,
+            "payPalConfig": False,
+            "payPalSandboxConfig": False,
+            "stripeConfig": False,
+            "stripeSandboxConfig": False,
+            "wxPayConfig": False,
+            "xsollaConfig": False,
+            "xsollaPaywallConfig": False,
         }
 
     # endregion static methods

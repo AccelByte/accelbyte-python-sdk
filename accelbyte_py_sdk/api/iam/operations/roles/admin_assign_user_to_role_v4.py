@@ -163,16 +163,6 @@ class AdminAssignUserToRoleV4(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "body") or self.body is None:
-            return False
-        if not hasattr(self, "role_id") or self.role_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -284,6 +274,13 @@ class AdminAssignUserToRoleV4(Operation):
         return {
             "body": "body",
             "roleId": "role_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "body": True,
+            "roleId": True,
         }
 
     # endregion static methods

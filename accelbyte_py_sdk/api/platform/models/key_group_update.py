@@ -69,22 +69,6 @@ class KeyGroupUpdate(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "name") or self.name is None:
-            return False
-        # enum checks
-        if hasattr(self, "status") and self.status is not None and self.status not in KeyGroupUpdate.get_enum_map()["status"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -180,7 +164,16 @@ class KeyGroupUpdate(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "name": True,
+            "description": False,
+            "status": False,
+            "tags": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "status": ["ACTIVE", "INACTIVE"],
         }

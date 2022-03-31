@@ -48,18 +48,6 @@ class StatItemInc(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -117,6 +105,12 @@ class StatItemInc(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "inc": "inc",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "inc": False,
         }
 
     # endregion static methods

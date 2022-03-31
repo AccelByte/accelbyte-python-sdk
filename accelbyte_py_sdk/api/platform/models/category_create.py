@@ -55,22 +55,6 @@ class CategoryCreate(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "category_path") or self.category_path is None:
-            return False
-        if not hasattr(self, "localization_display_names") or self.localization_display_names is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -138,6 +122,13 @@ class CategoryCreate(Model):
         return {
             "categoryPath": "category_path",
             "localizationDisplayNames": "localization_display_names",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "categoryPath": True,
+            "localizationDisplayNames": True,
         }
 
     # endregion static methods

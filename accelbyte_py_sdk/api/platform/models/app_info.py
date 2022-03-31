@@ -163,36 +163,6 @@ class AppInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "item_id") or self.item_id is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        # enum checks
-        if hasattr(self, "genres") and self.genres is not None:
-            valid_enum_values = AppInfo.get_enum_map()["genres"]
-            if not all(x in valid_enum_values for x in self.genres):
-                return False
-        if hasattr(self, "platforms") and self.platforms is not None:
-            valid_enum_values = AppInfo.get_enum_map()["platforms"]
-            if not all(x in valid_enum_values for x in self.platforms):
-                return False
-        if hasattr(self, "players") and self.players is not None:
-            valid_enum_values = AppInfo.get_enum_map()["players"]
-            if not all(x in valid_enum_values for x in self.players):
-                return False
-        if hasattr(self, "primary_genre") and self.primary_genre is not None and self.primary_genre not in AppInfo.get_enum_map()["primaryGenre"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -443,7 +413,29 @@ class AppInfo(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "itemId": True,
+            "namespace": True,
+            "announcement": False,
+            "carousel": False,
+            "developer": False,
+            "forumUrl": False,
+            "genres": False,
+            "language": False,
+            "platformRequirements": False,
+            "platforms": False,
+            "players": False,
+            "primaryGenre": False,
+            "publisher": False,
+            "region": False,
+            "releaseDate": False,
+            "slogan": False,
+            "websiteUrl": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "genres": ["Action", "Adventure", "Casual", "FreeToPlay", "Indie", "MassivelyMultiplayer", "Racing", "RPG", "Simulation", "Sports", "Strategy"],
             "platforms": ["Windows", "MacOS", "Linux", "IOS", "Android"],

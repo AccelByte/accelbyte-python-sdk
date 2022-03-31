@@ -170,18 +170,6 @@ class BulkGetPlayerPublicRecordHandlerV1(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "body") or self.body is None:
-            return False
-        if not hasattr(self, "key") or self.key is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -300,6 +288,14 @@ class BulkGetPlayerPublicRecordHandlerV1(Operation):
             "body": "body",
             "key": "key",
             "namespace": "namespace",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "body": True,
+            "key": True,
+            "namespace": True,
         }
 
     # endregion static methods

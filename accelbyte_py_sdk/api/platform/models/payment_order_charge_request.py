@@ -62,22 +62,6 @@ class PaymentOrderChargeRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "payment_provider") or self.payment_provider is None:
-            return False
-        # enum checks
-        if hasattr(self, "payment_provider") and self.payment_provider is not None and self.payment_provider not in PaymentOrderChargeRequest.get_enum_map()["paymentProvider"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -161,7 +145,15 @@ class PaymentOrderChargeRequest(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "paymentProvider": True,
+            "extTxId": False,
+            "paymentMethod": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "paymentProvider": ["WALLET", "XSOLLA", "ADYEN", "STRIPE", "CHECKOUT", "ALIPAY", "WXPAY", "PAYPAL"],
         }

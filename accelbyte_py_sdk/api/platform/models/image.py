@@ -83,26 +83,6 @@ class Image(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "height") or self.height is None:
-            return False
-        if not hasattr(self, "image_url") or self.image_url is None:
-            return False
-        if not hasattr(self, "small_image_url") or self.small_image_url is None:
-            return False
-        if not hasattr(self, "width") or self.width is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -216,6 +196,17 @@ class Image(Model):
             "width": "width",
             "as": "as_",
             "caption": "caption",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "height": True,
+            "imageUrl": True,
+            "smallImageUrl": True,
+            "width": True,
+            "as": False,
+            "caption": False,
         }
 
     # endregion static methods

@@ -120,24 +120,6 @@ class RetrieveBasePolicyResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "base_policy_name") or self.base_policy_name is None:
-            return False
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -312,6 +294,22 @@ class RetrieveBasePolicyResponse(Model):
             "policyTypeName": "policy_type_name",
             "tags": "tags",
             "updatedAt": "updated_at",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "basePolicyName": True,
+            "id": True,
+            "namespace": True,
+            "affectedClientIds": False,
+            "createdAt": False,
+            "description": False,
+            "policies": False,
+            "policyTypeId": False,
+            "policyTypeName": False,
+            "tags": False,
+            "updatedAt": False,
         }
 
     # endregion static methods

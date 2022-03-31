@@ -171,48 +171,6 @@ class ModelPublicUserResponseV3(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "auth_type") or self.auth_type is None:
-            return False
-        if not hasattr(self, "bans") or self.bans is None:
-            return False
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "deletion_status") or self.deletion_status is None:
-            return False
-        if not hasattr(self, "display_name") or self.display_name is None:
-            return False
-        if not hasattr(self, "email_verified") or self.email_verified is None:
-            return False
-        if not hasattr(self, "enabled") or self.enabled is None:
-            return False
-        if not hasattr(self, "last_date_of_birth_changed_time") or self.last_date_of_birth_changed_time is None:
-            return False
-        if not hasattr(self, "last_enabled_changed_time") or self.last_enabled_changed_time is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "namespace_roles") or self.namespace_roles is None:
-            return False
-        if not hasattr(self, "permissions") or self.permissions is None:
-            return False
-        if not hasattr(self, "phone_verified") or self.phone_verified is None:
-            return False
-        if not hasattr(self, "roles") or self.roles is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -459,6 +417,29 @@ class ModelPublicUserResponseV3(Model):
             "platformId": "platform_id",
             "platformUserId": "platform_user_id",
             "userName": "user_name",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "authType": True,
+            "bans": True,
+            "createdAt": True,
+            "deletionStatus": True,
+            "displayName": True,
+            "emailVerified": True,
+            "enabled": True,
+            "lastDateOfBirthChangedTime": True,
+            "lastEnabledChangedTime": True,
+            "namespace": True,
+            "namespaceRoles": True,
+            "permissions": True,
+            "phoneVerified": True,
+            "roles": True,
+            "userId": True,
+            "platformId": False,
+            "platformUserId": False,
+            "userName": False,
         }
 
     # endregion static methods

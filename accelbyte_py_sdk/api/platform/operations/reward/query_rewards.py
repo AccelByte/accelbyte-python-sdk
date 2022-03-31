@@ -166,14 +166,6 @@ class QueryRewards(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -314,6 +306,16 @@ class QueryRewards(Operation):
             "limit": "limit",
             "offset": "offset",
             "sortBy": "sort_by",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "namespace": True,
+            "eventTopic": False,
+            "limit": False,
+            "offset": False,
+            "sortBy": False,
         }
 
     # endregion static methods

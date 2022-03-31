@@ -195,18 +195,6 @@ class SearchSessionsV2(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "limit") or self.limit is None:
-            return False
-        if not hasattr(self, "offset") or self.offset is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -409,6 +397,19 @@ class SearchSessionsV2(Operation):
             "userID": "user_id",
             "limit": "limit",
             "offset": "offset",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "namespace": True,
+            "channel": False,
+            "deleted": False,
+            "matchID": False,
+            "partyID": False,
+            "userID": False,
+            "limit": True,
+            "offset": True,
         }
 
     # endregion static methods

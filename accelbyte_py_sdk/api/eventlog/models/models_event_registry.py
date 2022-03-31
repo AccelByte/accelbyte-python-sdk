@@ -69,26 +69,6 @@ class ModelsEventRegistry(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "event_id") or self.event_id is None:
-            return False
-        if not hasattr(self, "event_level") or self.event_level is None:
-            return False
-        if not hasattr(self, "event_type") or self.event_type is None:
-            return False
-        if not hasattr(self, "ux") or self.ux is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -178,6 +158,15 @@ class ModelsEventRegistry(Model):
             "EventLevel": "event_level",
             "EventType": "event_type",
             "UX": "ux",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "EventID": True,
+            "EventLevel": True,
+            "EventType": True,
+            "UX": True,
         }
 
     # endregion static methods

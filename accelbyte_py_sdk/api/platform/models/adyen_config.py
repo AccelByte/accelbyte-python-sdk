@@ -132,18 +132,6 @@ class AdyenConfig(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -345,6 +333,24 @@ class AdyenConfig(Model):
             "notificationUsername": "notification_username",
             "returnUrl": "return_url",
             "settings": "settings",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "allowedPaymentMethods": False,
+            "apiKey": False,
+            "authoriseAsCapture": False,
+            "blockedPaymentMethods": False,
+            "clientKey": False,
+            "dropInSettings": False,
+            "liveEndpointUrlPrefix": False,
+            "merchantAccount": False,
+            "notificationHmacKey": False,
+            "notificationPassword": False,
+            "notificationUsername": False,
+            "returnUrl": False,
+            "settings": False,
         }
 
     # endregion static methods

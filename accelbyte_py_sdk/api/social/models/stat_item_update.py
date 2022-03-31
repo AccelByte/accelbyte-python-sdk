@@ -62,24 +62,6 @@ class StatItemUpdate(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "update_strategy") or self.update_strategy is None:
-            return False
-        if not hasattr(self, "value") or self.value is None:
-            return False
-        # enum checks
-        if hasattr(self, "update_strategy") and self.update_strategy is not None and self.update_strategy not in StatItemUpdate.get_enum_map()["updateStrategy"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -162,7 +144,15 @@ class StatItemUpdate(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "updateStrategy": True,
+            "value": True,
+            "additionalData": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "updateStrategy": ["OVERRIDE", "INCREMENT", "MAX", "MIN"],
         }

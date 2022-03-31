@@ -90,32 +90,6 @@ class ModelsGenericQueryPayload(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "client_id") or self.client_id is None:
-            return False
-        if not hasattr(self, "event_name") or self.event_name is None:
-            return False
-        if not hasattr(self, "payload_query") or self.payload_query is None:
-            return False
-        if not hasattr(self, "session_id") or self.session_id is None:
-            return False
-        if not hasattr(self, "trace_id") or self.trace_id is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        if not hasattr(self, "version") or self.version is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -238,6 +212,18 @@ class ModelsGenericQueryPayload(Model):
             "traceId": "trace_id",
             "userId": "user_id",
             "version": "version",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "clientId": True,
+            "eventName": True,
+            "payloadQuery": True,
+            "sessionId": True,
+            "traceId": True,
+            "userId": True,
+            "version": True,
         }
 
     # endregion static methods

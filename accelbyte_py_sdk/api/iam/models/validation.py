@@ -148,48 +148,6 @@ class Validation(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "allow_digit") or self.allow_digit is None:
-            return False
-        if not hasattr(self, "allow_letter") or self.allow_letter is None:
-            return False
-        if not hasattr(self, "allow_space") or self.allow_space is None:
-            return False
-        if not hasattr(self, "allow_unicode") or self.allow_unicode is None:
-            return False
-        if not hasattr(self, "description") or self.description is None:
-            return False
-        if not hasattr(self, "is_custom_regex") or self.is_custom_regex is None:
-            return False
-        if not hasattr(self, "letter_case") or self.letter_case is None:
-            return False
-        if not hasattr(self, "max_length") or self.max_length is None:
-            return False
-        if not hasattr(self, "max_repeating_alpha_num") or self.max_repeating_alpha_num is None:
-            return False
-        if not hasattr(self, "max_repeating_special_character") or self.max_repeating_special_character is None:
-            return False
-        if not hasattr(self, "min_char_type") or self.min_char_type is None:
-            return False
-        if not hasattr(self, "min_length") or self.min_length is None:
-            return False
-        if not hasattr(self, "regex") or self.regex is None:
-            return False
-        if not hasattr(self, "special_character_location") or self.special_character_location is None:
-            return False
-        if not hasattr(self, "special_characters") or self.special_characters is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -400,6 +358,26 @@ class Validation(Model):
             "regex": "regex",
             "specialCharacterLocation": "special_character_location",
             "specialCharacters": "special_characters",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "allowDigit": True,
+            "allowLetter": True,
+            "allowSpace": True,
+            "allowUnicode": True,
+            "description": True,
+            "isCustomRegex": True,
+            "letterCase": True,
+            "maxLength": True,
+            "maxRepeatingAlphaNum": True,
+            "maxRepeatingSpecialCharacter": True,
+            "minCharType": True,
+            "minLength": True,
+            "regex": True,
+            "specialCharacterLocation": True,
+            "specialCharacters": True,
         }
 
     # endregion static methods

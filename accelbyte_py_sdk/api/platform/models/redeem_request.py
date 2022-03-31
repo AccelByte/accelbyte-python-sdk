@@ -55,20 +55,6 @@ class RedeemRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "code") or self.code is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -137,6 +123,13 @@ class RedeemRequest(Model):
         return {
             "code": "code",
             "orderNo": "order_no",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "code": True,
+            "orderNo": False,
         }
 
     # endregion static methods

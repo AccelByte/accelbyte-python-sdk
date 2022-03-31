@@ -69,24 +69,6 @@ class ModelsUserPoint(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "additional_data") or self.additional_data is None:
-            return False
-        if not hasattr(self, "point") or self.point is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -177,6 +159,15 @@ class ModelsUserPoint(Model):
             "point": "point",
             "userId": "user_id",
             "hidden": "hidden",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "additionalData": True,
+            "point": True,
+            "userId": True,
+            "hidden": False,
         }
 
     # endregion static methods

@@ -48,18 +48,6 @@ class EpicGamesReconcileRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -117,6 +105,12 @@ class EpicGamesReconcileRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "epicGamesJwtToken": "epic_games_jwt_token",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "epicGamesJwtToken": False,
         }
 
     # endregion static methods

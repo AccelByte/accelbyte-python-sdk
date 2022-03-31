@@ -101,34 +101,6 @@ class AccountcommonRole(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "admin_role") or self.admin_role is None:
-            return False
-        if not hasattr(self, "deletable") or self.deletable is None:
-            return False
-        if not hasattr(self, "is_wildcard") or self.is_wildcard is None:
-            return False
-        if not hasattr(self, "managers") or self.managers is None:
-            return False
-        if not hasattr(self, "members") or self.members is None:
-            return False
-        if not hasattr(self, "permissions") or self.permissions is None:
-            return False
-        if not hasattr(self, "role_id") or self.role_id is None:
-            return False
-        if not hasattr(self, "role_name") or self.role_name is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -262,6 +234,19 @@ class AccountcommonRole(Model):
             "Permissions": "permissions",
             "RoleId": "role_id",
             "RoleName": "role_name",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "AdminRole": True,
+            "Deletable": True,
+            "IsWildcard": True,
+            "Managers": True,
+            "Members": True,
+            "Permissions": True,
+            "RoleId": True,
+            "RoleName": True,
         }
 
     # endregion static methods

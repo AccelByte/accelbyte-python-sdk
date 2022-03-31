@@ -55,22 +55,6 @@ class ModelAgeRestrictionResponseV3(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "age_restriction") or self.age_restriction is None:
-            return False
-        if not hasattr(self, "enable") or self.enable is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -138,6 +122,13 @@ class ModelAgeRestrictionResponseV3(Model):
         return {
             "ageRestriction": "age_restriction",
             "enable": "enable",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "ageRestriction": True,
+            "enable": True,
         }
 
     # endregion static methods

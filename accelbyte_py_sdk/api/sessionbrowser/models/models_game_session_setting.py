@@ -111,38 +111,6 @@ class ModelsGameSessionSetting(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "allow_join_in_progress") or self.allow_join_in_progress is None:
-            return False
-        if not hasattr(self, "current_internal_player") or self.current_internal_player is None:
-            return False
-        if not hasattr(self, "current_player") or self.current_player is None:
-            return False
-        if not hasattr(self, "map_name") or self.map_name is None:
-            return False
-        if not hasattr(self, "max_internal_player") or self.max_internal_player is None:
-            return False
-        if not hasattr(self, "max_player") or self.max_player is None:
-            return False
-        if not hasattr(self, "mode") or self.mode is None:
-            return False
-        if not hasattr(self, "num_bot") or self.num_bot is None:
-            return False
-        if not hasattr(self, "password") or self.password is None:
-            return False
-        if not hasattr(self, "settings") or self.settings is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -298,6 +266,21 @@ class ModelsGameSessionSetting(Model):
             "num_bot": "num_bot",
             "password": "password",
             "settings": "settings",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "allow_join_in_progress": True,
+            "current_internal_player": True,
+            "current_player": True,
+            "map_name": True,
+            "max_internal_player": True,
+            "max_player": True,
+            "mode": True,
+            "num_bot": True,
+            "password": True,
+            "settings": True,
         }
 
     # endregion static methods

@@ -104,36 +104,6 @@ class ModelsCreateDSMConfigRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "claim_timeout") or self.claim_timeout is None:
-            return False
-        if not hasattr(self, "creation_timeout") or self.creation_timeout is None:
-            return False
-        if not hasattr(self, "default_version") or self.default_version is None:
-            return False
-        if not hasattr(self, "port") or self.port is None:
-            return False
-        if not hasattr(self, "ports") or self.ports is None:
-            return False
-        if not hasattr(self, "protocol") or self.protocol is None:
-            return False
-        if not hasattr(self, "providers") or self.providers is None:
-            return False
-        if not hasattr(self, "session_timeout") or self.session_timeout is None:
-            return False
-        if not hasattr(self, "unreachable_timeout") or self.unreachable_timeout is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -278,6 +248,20 @@ class ModelsCreateDSMConfigRequest(Model):
             "providers": "providers",
             "session_timeout": "session_timeout",
             "unreachable_timeout": "unreachable_timeout",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "claim_timeout": True,
+            "creation_timeout": True,
+            "default_version": True,
+            "port": True,
+            "ports": True,
+            "protocol": True,
+            "providers": True,
+            "session_timeout": True,
+            "unreachable_timeout": True,
         }
 
     # endregion static methods

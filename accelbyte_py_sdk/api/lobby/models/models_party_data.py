@@ -90,32 +90,6 @@ class ModelsPartyData(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "custom_attribute") or self.custom_attribute is None:
-            return False
-        if not hasattr(self, "invitees") or self.invitees is None:
-            return False
-        if not hasattr(self, "leader") or self.leader is None:
-            return False
-        if not hasattr(self, "members") or self.members is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "party_id") or self.party_id is None:
-            return False
-        if not hasattr(self, "updated_at") or self.updated_at is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -238,6 +212,18 @@ class ModelsPartyData(Model):
             "namespace": "namespace",
             "partyId": "party_id",
             "updatedAt": "updated_at",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "custom_attribute": True,
+            "invitees": True,
+            "leader": True,
+            "members": True,
+            "namespace": True,
+            "partyId": True,
+            "updatedAt": True,
         }
 
     # endregion static methods

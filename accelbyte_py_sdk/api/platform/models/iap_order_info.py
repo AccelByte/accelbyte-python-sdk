@@ -191,36 +191,6 @@ class IAPOrderInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "iap_order_no") or self.iap_order_no is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "status") or self.status is None:
-            return False
-        if not hasattr(self, "type_") or self.type_ is None:
-            return False
-        if not hasattr(self, "updated_at") or self.updated_at is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        if hasattr(self, "status") and self.status is not None and self.status not in IAPOrderInfo.get_enum_map()["status"]:
-            return False
-        if hasattr(self, "type_") and self.type_ is not None and self.type_ not in IAPOrderInfo.get_enum_map()["type"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -514,7 +484,33 @@ class IAPOrderInfo(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "createdAt": True,
+            "iapOrderNo": True,
+            "namespace": True,
+            "status": True,
+            "type": True,
+            "updatedAt": True,
+            "userId": True,
+            "credits": False,
+            "currencyCode": False,
+            "entitlements": False,
+            "fulfilledTime": False,
+            "language": False,
+            "price": False,
+            "productId": False,
+            "quantity": False,
+            "receiptData": False,
+            "region": False,
+            "retryCount": False,
+            "sandbox": False,
+            "statusReason": False,
+            "transactionId": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "status": ["VERIFIED", "FULFILLED", "FAILED"],
             "type": ["APPLE", "GOOGLE", "PLAYSTATION", "STEAM", "XBOX", "STADIA", "EPICGAMES", "TWITCH"],

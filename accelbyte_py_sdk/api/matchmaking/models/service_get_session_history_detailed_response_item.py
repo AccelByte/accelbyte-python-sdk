@@ -148,46 +148,6 @@ class ServiceGetSessionHistoryDetailedResponseItem(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "channel") or self.channel is None:
-            return False
-        if not hasattr(self, "client_version") or self.client_version is None:
-            return False
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "event_description") or self.event_description is None:
-            return False
-        if not hasattr(self, "event_name") or self.event_name is None:
-            return False
-        if not hasattr(self, "game_mode") or self.game_mode is None:
-            return False
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        if not hasattr(self, "joinable") or self.joinable is None:
-            return False
-        if not hasattr(self, "match_id") or self.match_id is None:
-            return False
-        if not hasattr(self, "matching_allies") or self.matching_allies is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "region") or self.region is None:
-            return False
-        if not hasattr(self, "server_name") or self.server_name is None:
-            return False
-        if not hasattr(self, "status") or self.status is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -399,6 +359,26 @@ class ServiceGetSessionHistoryDetailedResponseItem(Model):
             "server_name": "server_name",
             "status": "status",
             "party_id": "party_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "channel": True,
+            "client_version": True,
+            "created_at": True,
+            "event_description": True,
+            "event_name": True,
+            "game_mode": True,
+            "_id": True,
+            "joinable": True,
+            "match_id": True,
+            "matching_allies": True,
+            "namespace": True,
+            "region": True,
+            "server_name": True,
+            "status": True,
+            "party_id": False,
         }
 
     # endregion static methods

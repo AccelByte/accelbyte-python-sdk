@@ -83,26 +83,6 @@ class UpdatePolicyRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "is_default_opted") or self.is_default_opted is None:
-            return False
-        if not hasattr(self, "is_mandatory") or self.is_mandatory is None:
-            return False
-        if not hasattr(self, "policy_name") or self.policy_name is None:
-            return False
-        if not hasattr(self, "should_notify_on_update") or self.should_notify_on_update is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -216,6 +196,17 @@ class UpdatePolicyRequest(Model):
             "shouldNotifyOnUpdate": "should_notify_on_update",
             "description": "description",
             "readableId": "readable_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "isDefaultOpted": True,
+            "isMandatory": True,
+            "policyName": True,
+            "shouldNotifyOnUpdate": True,
+            "description": False,
+            "readableId": False,
         }
 
     # endregion static methods

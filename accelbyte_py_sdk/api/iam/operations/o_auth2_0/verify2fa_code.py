@@ -153,20 +153,6 @@ class Verify2faCode(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "code") or self.code is None:
-            return False
-        if not hasattr(self, "factor") or self.factor is None:
-            return False
-        if not hasattr(self, "mfa_token") or self.mfa_token is None:
-            return False
-        if not hasattr(self, "remember_device") or self.remember_device is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -288,6 +274,15 @@ class Verify2faCode(Operation):
             "factor": "factor",
             "mfaToken": "mfa_token",
             "rememberDevice": "remember_device",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "code": True,
+            "factor": True,
+            "mfaToken": True,
+            "rememberDevice": True,
         }
 
     # endregion static methods

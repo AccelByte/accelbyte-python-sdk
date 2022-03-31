@@ -106,32 +106,6 @@ class ModelLinkRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "client_id") or self.client_id is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "operation_name") or self.operation_name is None:
-            return False
-        if not hasattr(self, "payload") or self.payload is None:
-            return False
-        if not hasattr(self, "redirect_uri") or self.redirect_uri is None:
-            return False
-        if not hasattr(self, "request_id") or self.request_id is None:
-            return False
-        if not hasattr(self, "status") or self.status is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -278,6 +252,20 @@ class ModelLinkRequest(Model):
             "status": "status",
             "error": "error",
             "expiration": "expiration",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "client_id": True,
+            "namespace": True,
+            "operation_name": True,
+            "payload": True,
+            "redirect_uri": True,
+            "request_id": True,
+            "status": True,
+            "error": False,
+            "expiration": False,
         }
 
     # endregion static methods

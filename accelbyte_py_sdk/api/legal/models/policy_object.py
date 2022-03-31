@@ -125,32 +125,6 @@ class PolicyObject(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "country_code") or self.country_code is None:
-            return False
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        if not hasattr(self, "is_default_opted") or self.is_default_opted is None:
-            return False
-        if not hasattr(self, "is_default_selection") or self.is_default_selection is None:
-            return False
-        if not hasattr(self, "is_mandatory") or self.is_mandatory is None:
-            return False
-        if not hasattr(self, "policy_name") or self.policy_name is None:
-            return False
-        if not hasattr(self, "should_notify_on_update") or self.should_notify_on_update is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -333,6 +307,23 @@ class PolicyObject(Model):
             "description": "description",
             "readableId": "readable_id",
             "updatedAt": "updated_at",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "countryCode": True,
+            "id": True,
+            "isDefaultOpted": True,
+            "isDefaultSelection": True,
+            "isMandatory": True,
+            "policyName": True,
+            "shouldNotifyOnUpdate": True,
+            "countryGroupCode": False,
+            "createdAt": False,
+            "description": False,
+            "readableId": False,
+            "updatedAt": False,
         }
 
     # endregion static methods

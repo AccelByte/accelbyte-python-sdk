@@ -62,24 +62,6 @@ class ModelsHeartbeatRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "ip") or self.ip is None:
-            return False
-        if not hasattr(self, "port") or self.port is None:
-            return False
-        if not hasattr(self, "region") or self.region is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -158,6 +140,14 @@ class ModelsHeartbeatRequest(Model):
             "ip": "ip",
             "port": "port",
             "region": "region",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "ip": True,
+            "port": True,
+            "region": True,
         }
 
     # endregion static methods

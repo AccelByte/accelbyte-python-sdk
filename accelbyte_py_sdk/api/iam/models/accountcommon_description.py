@@ -55,22 +55,6 @@ class AccountcommonDescription(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "en_us") or self.en_us is None:
-            return False
-        if not hasattr(self, "zh_cn") or self.zh_cn is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -138,6 +122,13 @@ class AccountcommonDescription(Model):
         return {
             "en-US": "en_us",
             "zh-CN": "zh_cn",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "en-US": True,
+            "zh-CN": True,
         }
 
     # endregion static methods

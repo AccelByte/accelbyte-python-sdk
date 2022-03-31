@@ -50,20 +50,6 @@ class ModelsMultipleEventID(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "event_i_ds") or self.event_i_ds is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -120,6 +106,12 @@ class ModelsMultipleEventID(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "EventIDs": "event_i_ds",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "EventIDs": True,
         }
 
     # endregion static methods

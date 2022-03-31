@@ -148,16 +148,6 @@ class GetSeason(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "season_id") or self.season_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -253,6 +243,13 @@ class GetSeason(Operation):
         return {
             "namespace": "namespace",
             "seasonId": "season_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "namespace": True,
+            "seasonId": True,
         }
 
     # endregion static methods

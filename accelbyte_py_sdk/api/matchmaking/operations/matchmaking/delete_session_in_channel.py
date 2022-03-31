@@ -162,18 +162,6 @@ class DeleteSessionInChannel(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "channel_name") or self.channel_name is None:
-            return False
-        if not hasattr(self, "match_id") or self.match_id is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -296,6 +284,14 @@ class DeleteSessionInChannel(Operation):
             "channelName": "channel_name",
             "matchID": "match_id",
             "namespace": "namespace",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "channelName": True,
+            "matchID": True,
+            "namespace": True,
         }
 
     # endregion static methods

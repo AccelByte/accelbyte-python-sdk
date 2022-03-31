@@ -161,18 +161,6 @@ class AdminJoinPartyV1(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "party_id") or self.party_id is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -299,6 +287,14 @@ class AdminJoinPartyV1(Operation):
             "namespace": "namespace",
             "partyId": "party_id",
             "userId": "user_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "namespace": True,
+            "partyId": True,
+            "userId": True,
         }
 
     # endregion static methods

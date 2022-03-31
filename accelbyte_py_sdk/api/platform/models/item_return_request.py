@@ -48,20 +48,6 @@ class ItemReturnRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "order_no") or self.order_no is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -118,6 +104,12 @@ class ItemReturnRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "orderNo": "order_no",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "orderNo": True,
         }
 
     # endregion static methods

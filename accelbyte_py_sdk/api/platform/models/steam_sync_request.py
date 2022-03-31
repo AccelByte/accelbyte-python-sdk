@@ -90,24 +90,6 @@ class SteamSyncRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "app_id") or self.app_id is None:
-            return False
-        if not hasattr(self, "steam_id") or self.steam_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        if hasattr(self, "language") and self.language is not None and not re.match(r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$", self.language):
-            return False
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -235,6 +217,24 @@ class SteamSyncRequest(Model):
             "price": "price",
             "productId": "product_id",
             "region": "region",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "appId": True,
+            "steamId": True,
+            "currencyCode": False,
+            "language": False,
+            "price": False,
+            "productId": False,
+            "region": False,
+        }
+
+    @staticmethod
+    def get_pattern_map() -> Dict[str, re.Pattern]:
+        return {
+            "language": re.compile(r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$"),
         }
 
     # endregion static methods

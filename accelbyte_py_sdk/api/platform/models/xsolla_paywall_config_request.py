@@ -69,24 +69,6 @@ class XsollaPaywallConfigRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        if hasattr(self, "device") and self.device is not None and self.device not in XsollaPaywallConfigRequest.get_enum_map()["device"]:
-            return False
-        if hasattr(self, "size") and self.size is not None and self.size not in XsollaPaywallConfigRequest.get_enum_map()["size"]:
-            return False
-        if hasattr(self, "theme") and self.theme is not None and self.theme not in XsollaPaywallConfigRequest.get_enum_map()["theme"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -183,7 +165,16 @@ class XsollaPaywallConfigRequest(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "device": False,
+            "showCloseButton": False,
+            "size": False,
+            "theme": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "device": ["DESKTOP", "MOBILE"],
             "size": ["SMALL", "MEDIUM", "LARGE"],

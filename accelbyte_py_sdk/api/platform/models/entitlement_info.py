@@ -211,54 +211,6 @@ class EntitlementInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "clazz") or self.clazz is None:
-            return False
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "granted_at") or self.granted_at is None:
-            return False
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        if not hasattr(self, "item_id") or self.item_id is None:
-            return False
-        if not hasattr(self, "item_namespace") or self.item_namespace is None:
-            return False
-        if not hasattr(self, "name") or self.name is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "source") or self.source is None:
-            return False
-        if not hasattr(self, "status") or self.status is None:
-            return False
-        if not hasattr(self, "type_") or self.type_ is None:
-            return False
-        if not hasattr(self, "updated_at") or self.updated_at is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        if hasattr(self, "clazz") and self.clazz is not None and self.clazz not in EntitlementInfo.get_enum_map()["clazz"]:
-            return False
-        if hasattr(self, "source") and self.source is not None and self.source not in EntitlementInfo.get_enum_map()["source"]:
-            return False
-        if hasattr(self, "status") and self.status is not None and self.status not in EntitlementInfo.get_enum_map()["status"]:
-            return False
-        if hasattr(self, "type_") and self.type_ is not None and self.type_ not in EntitlementInfo.get_enum_map()["type"]:
-            return False
-        if hasattr(self, "app_type") and self.app_type is not None and self.app_type not in EntitlementInfo.get_enum_map()["appType"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -582,7 +534,36 @@ class EntitlementInfo(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "clazz": True,
+            "createdAt": True,
+            "grantedAt": True,
+            "id": True,
+            "itemId": True,
+            "itemNamespace": True,
+            "name": True,
+            "namespace": True,
+            "source": True,
+            "status": True,
+            "type": True,
+            "updatedAt": True,
+            "userId": True,
+            "appId": False,
+            "appType": False,
+            "endDate": False,
+            "features": False,
+            "grantedCode": False,
+            "itemSnapshot": False,
+            "sku": False,
+            "stackable": False,
+            "startDate": False,
+            "storeId": False,
+            "useCount": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "clazz": ["APP", "ENTITLEMENT", "CODE", "SUBSCRIPTION", "MEDIA"],
             "source": ["PURCHASE", "IAP", "PROMOTION", "ACHIEVEMENT", "REFERRAL_BONUS", "REDEEM_CODE", "REWARD", "GIFT", "OTHER"],

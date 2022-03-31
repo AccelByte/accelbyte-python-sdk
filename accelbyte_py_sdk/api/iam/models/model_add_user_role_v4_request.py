@@ -55,22 +55,6 @@ class ModelAddUserRoleV4Request(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "assigned_namespaces") or self.assigned_namespaces is None:
-            return False
-        if not hasattr(self, "role_id") or self.role_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -138,6 +122,13 @@ class ModelAddUserRoleV4Request(Model):
         return {
             "assignedNamespaces": "assigned_namespaces",
             "roleId": "role_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "assignedNamespaces": True,
+            "roleId": True,
         }
 
     # endregion static methods

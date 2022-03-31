@@ -55,22 +55,6 @@ class ModelsGetImageLimitResponseData(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "image_count") or self.image_count is None:
-            return False
-        if not hasattr(self, "image_limit") or self.image_limit is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -138,6 +122,13 @@ class ModelsGetImageLimitResponseData(Model):
         return {
             "image_count": "image_count",
             "image_limit": "image_limit",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "image_count": True,
+            "image_limit": True,
         }
 
     # endregion static methods

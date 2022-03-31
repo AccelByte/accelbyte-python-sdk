@@ -55,22 +55,6 @@ class ModelsPagingCursor(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "next_") or self.next_ is None:
-            return False
-        if not hasattr(self, "previous") or self.previous is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -138,6 +122,13 @@ class ModelsPagingCursor(Model):
         return {
             "next": "next_",
             "previous": "previous",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "next": True,
+            "previous": True,
         }
 
     # endregion static methods

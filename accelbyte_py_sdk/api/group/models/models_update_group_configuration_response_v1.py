@@ -92,32 +92,6 @@ class ModelsUpdateGroupConfigurationResponseV1(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "configuration_code") or self.configuration_code is None:
-            return False
-        if not hasattr(self, "description") or self.description is None:
-            return False
-        if not hasattr(self, "global_rules") or self.global_rules is None:
-            return False
-        if not hasattr(self, "group_admin_role_id") or self.group_admin_role_id is None:
-            return False
-        if not hasattr(self, "group_max_member") or self.group_max_member is None:
-            return False
-        if not hasattr(self, "group_member_role_id") or self.group_member_role_id is None:
-            return False
-        if not hasattr(self, "name") or self.name is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -240,6 +214,18 @@ class ModelsUpdateGroupConfigurationResponseV1(Model):
             "groupMaxMember": "group_max_member",
             "groupMemberRoleId": "group_member_role_id",
             "name": "name",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "configurationCode": True,
+            "description": True,
+            "globalRules": True,
+            "groupAdminRoleId": True,
+            "groupMaxMember": True,
+            "groupMemberRoleId": True,
+            "name": True,
         }
 
     # endregion static methods

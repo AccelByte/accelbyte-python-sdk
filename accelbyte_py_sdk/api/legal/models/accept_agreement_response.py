@@ -62,22 +62,6 @@ class AcceptAgreementResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "comply") or self.comply is None:
-            return False
-        if not hasattr(self, "proceed") or self.proceed is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -157,6 +141,14 @@ class AcceptAgreementResponse(Model):
             "comply": "comply",
             "proceed": "proceed",
             "ext": "ext",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "comply": True,
+            "proceed": True,
+            "ext": False,
         }
 
     # endregion static methods

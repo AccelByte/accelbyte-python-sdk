@@ -85,30 +85,6 @@ class ModelsUpdateGroupRequestV1(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "custom_attributes") or self.custom_attributes is None:
-            return False
-        if not hasattr(self, "group_description") or self.group_description is None:
-            return False
-        if not hasattr(self, "group_icon") or self.group_icon is None:
-            return False
-        if not hasattr(self, "group_name") or self.group_name is None:
-            return False
-        if not hasattr(self, "group_region") or self.group_region is None:
-            return False
-        if not hasattr(self, "group_type") or self.group_type is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -220,6 +196,17 @@ class ModelsUpdateGroupRequestV1(Model):
             "groupName": "group_name",
             "groupRegion": "group_region",
             "groupType": "group_type",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "customAttributes": True,
+            "groupDescription": True,
+            "groupIcon": True,
+            "groupName": True,
+            "groupRegion": True,
+            "groupType": True,
         }
 
     # endregion static methods

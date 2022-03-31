@@ -263,32 +263,6 @@ class ItemUpdate(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "entitlement_type") or self.entitlement_type is None:
-            return False
-        if not hasattr(self, "item_type") or self.item_type is None:
-            return False
-        # enum checks
-        if hasattr(self, "entitlement_type") and self.entitlement_type is not None and self.entitlement_type not in ItemUpdate.get_enum_map()["entitlementType"]:
-            return False
-        if hasattr(self, "item_type") and self.item_type is not None and self.item_type not in ItemUpdate.get_enum_map()["itemType"]:
-            return False
-        if hasattr(self, "app_type") and self.app_type is not None and self.app_type not in ItemUpdate.get_enum_map()["appType"]:
-            return False
-        if hasattr(self, "season_type") and self.season_type is not None and self.season_type not in ItemUpdate.get_enum_map()["seasonType"]:
-            return False
-        if hasattr(self, "status") and self.status is not None and self.status not in ItemUpdate.get_enum_map()["status"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -707,7 +681,43 @@ class ItemUpdate(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "entitlementType": True,
+            "itemType": True,
+            "appId": False,
+            "appType": False,
+            "baseAppId": False,
+            "boothName": False,
+            "categoryPath": False,
+            "clazz": False,
+            "displayOrder": False,
+            "ext": False,
+            "features": False,
+            "images": False,
+            "itemIds": False,
+            "itemQty": False,
+            "listable": False,
+            "localizations": False,
+            "maxCount": False,
+            "maxCountPerUser": False,
+            "name": False,
+            "purchasable": False,
+            "recurring": False,
+            "regionData": False,
+            "seasonType": False,
+            "sku": False,
+            "stackable": False,
+            "status": False,
+            "tags": False,
+            "targetCurrencyCode": False,
+            "targetNamespace": False,
+            "thumbnailUrl": False,
+            "useCount": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "entitlementType": ["DURABLE", "CONSUMABLE"],
             "itemType": ["APP", "COINS", "INGAMEITEM", "BUNDLE", "CODE", "SUBSCRIPTION", "SEASON", "MEDIA"],

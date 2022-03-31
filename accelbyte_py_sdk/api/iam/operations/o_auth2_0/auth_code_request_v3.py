@@ -191,16 +191,6 @@ class AuthCodeRequestV3(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "platform_id") or self.platform_id is None:
-            return False
-        if not hasattr(self, "request_id") or self.request_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # noinspection PyMethodMayBeStatic
     def has_redirects(self) -> bool:
         """Returns True if this operation has redirects, otherwise False.
@@ -328,6 +318,15 @@ class AuthCodeRequestV3(Operation):
             "client_id": "client_id",
             "redirect_uri": "redirect_uri",
             "request_id": "request_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "platformId": True,
+            "client_id": False,
+            "redirect_uri": False,
+            "request_id": True,
         }
 
     # endregion static methods

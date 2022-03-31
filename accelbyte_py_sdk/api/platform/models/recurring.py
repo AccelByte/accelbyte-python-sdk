@@ -69,28 +69,6 @@ class Recurring(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "cycle") or self.cycle is None:
-            return False
-        if not hasattr(self, "fixed_free_days") or self.fixed_free_days is None:
-            return False
-        if not hasattr(self, "fixed_trial_cycles") or self.fixed_trial_cycles is None:
-            return False
-        if not hasattr(self, "grace_days") or self.grace_days is None:
-            return False
-        # enum checks
-        if hasattr(self, "cycle") and self.cycle is not None and self.cycle not in Recurring.get_enum_map()["cycle"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -183,7 +161,16 @@ class Recurring(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "cycle": True,
+            "fixedFreeDays": True,
+            "fixedTrialCycles": True,
+            "graceDays": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "cycle": ["WEEKLY", "MONTHLY", "QUARTERLY", "YEARLY"],
         }

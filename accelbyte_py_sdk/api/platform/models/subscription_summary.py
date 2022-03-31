@@ -104,32 +104,6 @@ class SubscriptionSummary(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        if not hasattr(self, "item_id") or self.item_id is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "status") or self.status is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        if hasattr(self, "status") and self.status is not None and self.status not in SubscriptionSummary.get_enum_map()["status"]:
-            return False
-        if hasattr(self, "subscribed_by") and self.subscribed_by is not None and self.subscribed_by not in SubscriptionSummary.get_enum_map()["subscribedBy"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -281,7 +255,21 @@ class SubscriptionSummary(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "id": True,
+            "itemId": True,
+            "namespace": True,
+            "status": True,
+            "userId": True,
+            "currentPeriodEnd": False,
+            "currentPeriodStart": False,
+            "sku": False,
+            "subscribedBy": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "status": ["INIT", "ACTIVE", "CANCELLED", "EXPIRED"],
             "subscribedBy": ["USER", "PLATFORM"],

@@ -114,36 +114,6 @@ class ModelsCreateSessionRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "client_version") or self.client_version is None:
-            return False
-        if not hasattr(self, "configuration") or self.configuration is None:
-            return False
-        if not hasattr(self, "deployment") or self.deployment is None:
-            return False
-        if not hasattr(self, "game_mode") or self.game_mode is None:
-            return False
-        if not hasattr(self, "matching_allies") or self.matching_allies is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "pod_name") or self.pod_name is None:
-            return False
-        if not hasattr(self, "region") or self.region is None:
-            return False
-        if not hasattr(self, "session_id") or self.session_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -300,6 +270,21 @@ class ModelsCreateSessionRequest(Model):
             "region": "region",
             "session_id": "session_id",
             "notification_payload": "notification_payload",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "client_version": True,
+            "configuration": True,
+            "deployment": True,
+            "game_mode": True,
+            "matching_allies": True,
+            "namespace": True,
+            "pod_name": True,
+            "region": True,
+            "session_id": True,
+            "notification_payload": False,
         }
 
     # endregion static methods

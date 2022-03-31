@@ -132,12 +132,6 @@ class SpecificEventIDDescriptionHandler(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -219,6 +213,12 @@ class SpecificEventIDDescriptionHandler(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "eventIds": "event_ids",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "eventIds": False,
         }
 
     # endregion static methods

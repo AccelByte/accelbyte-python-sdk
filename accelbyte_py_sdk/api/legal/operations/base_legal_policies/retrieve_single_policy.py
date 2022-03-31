@@ -138,14 +138,6 @@ class RetrieveSinglePolicy(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "base_policy_id") or self.base_policy_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -222,6 +214,12 @@ class RetrieveSinglePolicy(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "basePolicyId": "base_policy_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "basePolicyId": True,
         }
 
     # endregion static methods

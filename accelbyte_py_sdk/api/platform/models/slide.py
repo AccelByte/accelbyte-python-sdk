@@ -83,22 +83,6 @@ class Slide(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        if hasattr(self, "type_") and self.type_ is not None and self.type_ not in Slide.get_enum_map()["type"]:
-            return False
-        if hasattr(self, "video_source") and self.video_source is not None and self.video_source not in Slide.get_enum_map()["videoSource"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -219,7 +203,18 @@ class Slide(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "alt": False,
+            "previewUrl": False,
+            "thumbnailUrl": False,
+            "type": False,
+            "url": False,
+            "videoSource": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "type": ["image", "video"],
             "videoSource": ["generic", "youtube", "vimeo"],

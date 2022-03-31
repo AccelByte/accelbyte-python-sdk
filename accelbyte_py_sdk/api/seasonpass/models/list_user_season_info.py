@@ -106,36 +106,6 @@ class ListUserSeasonInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "cleared") or self.cleared is None:
-            return False
-        if not hasattr(self, "current_tier_index") or self.current_tier_index is None:
-            return False
-        if not hasattr(self, "enrolled_at") or self.enrolled_at is None:
-            return False
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        if not hasattr(self, "last_tier_index") or self.last_tier_index is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "season") or self.season is None:
-            return False
-        if not hasattr(self, "season_id") or self.season_id is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -280,6 +250,20 @@ class ListUserSeasonInfo(Model):
             "season": "season",
             "seasonId": "season_id",
             "userId": "user_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "cleared": True,
+            "currentTierIndex": True,
+            "enrolledAt": True,
+            "id": True,
+            "lastTierIndex": True,
+            "namespace": True,
+            "season": True,
+            "seasonId": True,
+            "userId": True,
         }
 
     # endregion static methods

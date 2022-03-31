@@ -69,22 +69,6 @@ class PaymentProcessResult(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "pending") or self.pending is None:
-            return False
-        if not hasattr(self, "success") or self.success is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -176,6 +160,15 @@ class PaymentProcessResult(Model):
             "success": "success",
             "reason": "reason",
             "redirectUrl": "redirect_url",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "pending": True,
+            "success": True,
+            "reason": False,
+            "redirectUrl": False,
         }
 
     # endregion static methods

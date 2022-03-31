@@ -150,40 +150,6 @@ class OauthmodelTokenResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "access_token") or self.access_token is None:
-            return False
-        if not hasattr(self, "bans") or self.bans is None:
-            return False
-        if not hasattr(self, "display_name") or self.display_name is None:
-            return False
-        if not hasattr(self, "expires_in") or self.expires_in is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "namespace_roles") or self.namespace_roles is None:
-            return False
-        if not hasattr(self, "permissions") or self.permissions is None:
-            return False
-        if not hasattr(self, "refresh_token") or self.refresh_token is None:
-            return False
-        if not hasattr(self, "roles") or self.roles is None:
-            return False
-        if not hasattr(self, "token_type") or self.token_type is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -398,6 +364,26 @@ class OauthmodelTokenResponse(Model):
             "jflgs": "jflgs",
             "platform_id": "platform_id",
             "platform_user_id": "platform_user_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "access_token": True,
+            "bans": True,
+            "display_name": True,
+            "expires_in": True,
+            "namespace": True,
+            "namespace_roles": True,
+            "permissions": True,
+            "refresh_token": True,
+            "roles": True,
+            "token_type": True,
+            "user_id": True,
+            "is_comply": False,
+            "jflgs": False,
+            "platform_id": False,
+            "platform_user_id": False,
         }
 
     # endregion static methods

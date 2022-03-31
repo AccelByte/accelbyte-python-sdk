@@ -62,24 +62,6 @@ class ModelBulkUsersFreeFormNotificationRequestV1(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "message") or self.message is None:
-            return False
-        if not hasattr(self, "topic_name") or self.topic_name is None:
-            return False
-        if not hasattr(self, "user_ids") or self.user_ids is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -158,6 +140,14 @@ class ModelBulkUsersFreeFormNotificationRequestV1(Model):
             "message": "message",
             "topicName": "topic_name",
             "userIds": "user_ids",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "message": True,
+            "topicName": True,
+            "userIds": True,
         }
 
     # endregion static methods

@@ -55,22 +55,6 @@ class ModelsAdminVerifyMessageProfanityResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "filtered_message") or self.filtered_message is None:
-            return False
-        if not hasattr(self, "has_profanity") or self.has_profanity is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -138,6 +122,13 @@ class ModelsAdminVerifyMessageProfanityResponse(Model):
         return {
             "filteredMessage": "filtered_message",
             "hasProfanity": "has_profanity",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "filteredMessage": True,
+            "hasProfanity": True,
         }
 
     # endregion static methods

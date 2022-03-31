@@ -57,22 +57,6 @@ class AccountcommonConflictedUserPlatformAccounts(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "platform_user_id") or self.platform_user_id is None:
-            return False
-        if not hasattr(self, "publisher_accounts") or self.publisher_accounts is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -140,6 +124,13 @@ class AccountcommonConflictedUserPlatformAccounts(Model):
         return {
             "platformUserID": "platform_user_id",
             "publisherAccounts": "publisher_accounts",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "platformUserID": True,
+            "publisherAccounts": True,
         }
 
     # endregion static methods

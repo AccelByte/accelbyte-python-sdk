@@ -55,22 +55,6 @@ class TicketAcquireRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "count") or self.count is None:
-            return False
-        if not hasattr(self, "order_no") or self.order_no is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -138,6 +122,13 @@ class TicketAcquireRequest(Model):
         return {
             "count": "count",
             "orderNo": "order_no",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "count": True,
+            "orderNo": True,
         }
 
     # endregion static methods

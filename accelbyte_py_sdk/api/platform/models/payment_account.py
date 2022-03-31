@@ -62,26 +62,6 @@ class PaymentAccount(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        if not hasattr(self, "name") or self.name is None:
-            return False
-        if not hasattr(self, "type_") or self.type_ is None:
-            return False
-        # enum checks
-        if hasattr(self, "type_") and self.type_ is not None and self.type_ not in PaymentAccount.get_enum_map()["type"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -163,7 +143,15 @@ class PaymentAccount(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "id": True,
+            "name": True,
+            "type": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "type": ["card", "paypal"],
         }

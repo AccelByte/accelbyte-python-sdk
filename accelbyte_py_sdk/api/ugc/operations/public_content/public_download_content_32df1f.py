@@ -142,16 +142,6 @@ class PublicDownloadContentPreview(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "content_id") or self.content_id is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -251,6 +241,13 @@ class PublicDownloadContentPreview(Operation):
         return {
             "contentId": "content_id",
             "namespace": "namespace",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "contentId": True,
+            "namespace": True,
         }
 
     # endregion static methods

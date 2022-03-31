@@ -48,20 +48,6 @@ class CodeCreateResult(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "num_created") or self.num_created is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -118,6 +104,12 @@ class CodeCreateResult(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "numCreated": "num_created",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "numCreated": True,
         }
 
     # endregion static methods

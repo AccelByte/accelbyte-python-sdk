@@ -152,22 +152,6 @@ class PublicDeletePaymentAccount(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "type_") or self.type_ is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        if hasattr(self, "type_") and self.type_ is not None and self.type_ not in PublicDeletePaymentAccount.get_enum_map()["type"]:
-            return False
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -288,7 +272,16 @@ class PublicDeletePaymentAccount(Operation):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "id": True,
+            "namespace": True,
+            "type": True,
+            "userId": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "type": ["card", "paypal"],                                                            # in path
         }

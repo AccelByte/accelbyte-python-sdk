@@ -157,16 +157,6 @@ class GetAllPartyInChannel(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "channel_name") or self.channel_name is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -274,6 +264,13 @@ class GetAllPartyInChannel(Operation):
         return {
             "channelName": "channel_name",
             "namespace": "namespace",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "channelName": True,
+            "namespace": True,
         }
 
     # endregion static methods

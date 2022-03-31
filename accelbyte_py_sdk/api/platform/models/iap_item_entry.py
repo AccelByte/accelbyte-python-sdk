@@ -62,20 +62,6 @@ class IAPItemEntry(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        if hasattr(self, "item_identity_type") and self.item_identity_type is not None and self.item_identity_type not in IAPItemEntry.get_enum_map()["itemIdentityType"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -160,7 +146,15 @@ class IAPItemEntry(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "itemIdentity": False,
+            "itemIdentityType": False,
+            "platformProductIdMap": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "itemIdentityType": ["ITEM_ID", "ITEM_SKU"],
         }

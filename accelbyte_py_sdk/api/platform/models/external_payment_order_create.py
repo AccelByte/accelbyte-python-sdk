@@ -188,34 +188,6 @@ class ExternalPaymentOrderCreate(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "description") or self.description is None:
-            return False
-        if not hasattr(self, "ext_order_no") or self.ext_order_no is None:
-            return False
-        if not hasattr(self, "price") or self.price is None:
-            return False
-        if not hasattr(self, "target_namespace") or self.target_namespace is None:
-            return False
-        if not hasattr(self, "target_user_id") or self.target_user_id is None:
-            return False
-        if not hasattr(self, "title") or self.title is None:
-            return False
-        # enum checks
-        if hasattr(self, "item_type") and self.item_type is not None and self.item_type not in ExternalPaymentOrderCreate.get_enum_map()["itemType"]:
-            return False
-        # pattern checks
-        if hasattr(self, "language") and self.language is not None and not re.match(r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$", self.language):
-            return False
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -510,9 +482,41 @@ class ExternalPaymentOrderCreate(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "description": True,
+            "extOrderNo": True,
+            "price": True,
+            "targetNamespace": True,
+            "targetUserId": True,
+            "title": True,
+            "currencyCode": False,
+            "currencyNamespace": False,
+            "customParameters": False,
+            "extUserId": False,
+            "itemType": False,
+            "language": False,
+            "metadata": False,
+            "notifyUrl": False,
+            "omitNotification": False,
+            "recurringPaymentOrderNo": False,
+            "region": False,
+            "returnUrl": False,
+            "sandbox": False,
+            "sku": False,
+            "subscriptionId": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "itemType": ["APP", "COINS", "INGAMEITEM", "BUNDLE", "CODE", "SUBSCRIPTION", "SEASON", "MEDIA"],
+        }
+
+    @staticmethod
+    def get_pattern_map() -> Dict[str, re.Pattern]:
+        return {
+            "language": re.compile(r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$"),
         }
 
     # endregion static methods

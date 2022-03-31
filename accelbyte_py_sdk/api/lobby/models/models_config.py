@@ -167,18 +167,6 @@ class ModelsConfig(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -440,6 +428,29 @@ class ModelsConfig(Model):
             "namespace": "namespace",
             "profanityFilter": "profanity_filter",
             "readyConsentTimeout": "ready_consent_timeout",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "allowInviteNonConnectedUser": False,
+            "autoKickOnDisconnect": False,
+            "autoKickOnDisconnectDelay": False,
+            "cancelTicketOnDisconnect": False,
+            "chatRateLimitBurst": False,
+            "chatRateLimitDuration": False,
+            "concurrentUsersLimit": False,
+            "disablePartyInvitationToken": False,
+            "enableChat": False,
+            "entitlementCheck": False,
+            "entitlementItemID": False,
+            "generalRateLimitBurst": False,
+            "generalRateLimitDuration": False,
+            "keepPresenceActivityOnDisconnect": False,
+            "maxPartyMember": False,
+            "namespace": False,
+            "profanityFilter": False,
+            "readyConsentTimeout": False,
         }
 
     # endregion static methods

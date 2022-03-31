@@ -235,24 +235,6 @@ class PublicNormalizePaymentReturnUrl(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "order_no") or self.order_no is None:
-            return False
-        if not hasattr(self, "payment_order_no") or self.payment_order_no is None:
-            return False
-        if not hasattr(self, "payment_provider") or self.payment_provider is None:
-            return False
-        if not hasattr(self, "return_url") or self.return_url is None:
-            return False
-        # enum checks
-        if hasattr(self, "payment_provider") and self.payment_provider is not None and self.payment_provider not in PublicNormalizePaymentReturnUrl.get_enum_map()["paymentProvider"]:
-            return False
-        # pattern checks
-        return True
-
     # noinspection PyMethodMayBeStatic
     def has_redirects(self) -> bool:
         """Returns True if this operation has redirects, otherwise False.
@@ -576,7 +558,28 @@ class PublicNormalizePaymentReturnUrl(Operation):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "namespace": True,
+            "PayerID": False,
+            "foreinginvoice": False,
+            "invoice_id": False,
+            "payload": False,
+            "redirectResult": False,
+            "resultCode": False,
+            "sessionId": False,
+            "status": False,
+            "token": False,
+            "type": False,
+            "user_id": False,
+            "orderNo": True,
+            "paymentOrderNo": True,
+            "paymentProvider": True,
+            "returnUrl": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "paymentProvider": ["ADYEN", "ALIPAY", "CHECKOUT", "PAYPAL", "STRIPE", "WALLET", "WXPAY", "XSOLLA"],# in query
         }

@@ -55,22 +55,6 @@ class ModelsContentLikeResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "content_id") or self.content_id is None:
-            return False
-        if not hasattr(self, "like_status") or self.like_status is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -138,6 +122,13 @@ class ModelsContentLikeResponse(Model):
         return {
             "contentId": "content_id",
             "likeStatus": "like_status",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "contentId": True,
+            "likeStatus": True,
         }
 
     # endregion static methods

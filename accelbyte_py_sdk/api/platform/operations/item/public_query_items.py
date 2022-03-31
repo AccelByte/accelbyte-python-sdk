@@ -207,18 +207,6 @@ class PublicQueryItems(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        # enum checks
-        if hasattr(self, "app_type") and self.app_type is not None and self.app_type not in PublicQueryItems.get_enum_map()["appType"]:
-            return False
-        if hasattr(self, "item_type") and self.item_type is not None and self.item_type not in PublicQueryItems.get_enum_map()["itemType"]:
-            return False
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -494,7 +482,25 @@ class PublicQueryItems(Operation):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "namespace": True,
+            "appType": False,
+            "baseAppId": False,
+            "categoryPath": False,
+            "features": False,
+            "itemType": False,
+            "language": False,
+            "limit": False,
+            "offset": False,
+            "region": False,
+            "sortBy": False,
+            "storeId": False,
+            "tags": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "appType": ["DEMO", "DLC", "GAME", "SOFTWARE"],                                        # in query
             "itemType": ["APP", "BUNDLE", "CODE", "COINS", "INGAMEITEM", "MEDIA", "SEASON", "SUBSCRIPTION"],# in query

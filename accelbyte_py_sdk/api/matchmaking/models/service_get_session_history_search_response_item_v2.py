@@ -90,32 +90,6 @@ class ServiceGetSessionHistorySearchResponseItemV2(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "game_mode") or self.game_mode is None:
-            return False
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        if not hasattr(self, "joinable") or self.joinable is None:
-            return False
-        if not hasattr(self, "match_id") or self.match_id is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "status") or self.status is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -238,6 +212,18 @@ class ServiceGetSessionHistorySearchResponseItemV2(Model):
             "match_id": "match_id",
             "namespace": "namespace",
             "status": "status",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "created_at": True,
+            "game_mode": True,
+            "_id": True,
+            "joinable": True,
+            "match_id": True,
+            "namespace": True,
+            "status": True,
         }
 
     # endregion static methods

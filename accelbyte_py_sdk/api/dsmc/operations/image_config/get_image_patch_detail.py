@@ -158,18 +158,6 @@ class GetImagePatchDetail(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "version") or self.version is None:
-            return False
-        if not hasattr(self, "version_patch") or self.version_patch is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -284,6 +272,14 @@ class GetImagePatchDetail(Operation):
             "namespace": "namespace",
             "version": "version",
             "versionPatch": "version_patch",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "namespace": True,
+            "version": True,
+            "versionPatch": True,
         }
 
     # endregion static methods

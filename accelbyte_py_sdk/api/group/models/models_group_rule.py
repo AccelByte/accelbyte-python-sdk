@@ -58,22 +58,6 @@ class ModelsGroupRule(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "group_custom_rule") or self.group_custom_rule is None:
-            return False
-        if not hasattr(self, "group_predefined_rules") or self.group_predefined_rules is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -141,6 +125,13 @@ class ModelsGroupRule(Model):
         return {
             "groupCustomRule": "group_custom_rule",
             "groupPredefinedRules": "group_predefined_rules",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "groupCustomRule": True,
+            "groupPredefinedRules": True,
         }
 
     # endregion static methods

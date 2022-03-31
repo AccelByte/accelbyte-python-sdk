@@ -402,14 +402,6 @@ class PlatformTokenGrantV3(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "platform_id") or self.platform_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -538,6 +530,15 @@ class PlatformTokenGrantV3(Operation):
             "device_id": "device_id",
             "platform_token": "platform_token",
             "platformId": "platform_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "client_id": False,
+            "device_id": False,
+            "platform_token": False,
+            "platformId": True,
         }
 
     # endregion static methods

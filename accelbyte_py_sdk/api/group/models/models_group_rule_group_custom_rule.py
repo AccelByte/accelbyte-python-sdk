@@ -111,4 +111,9 @@ class ModelsGroupRuleGroupCustomRule(Model, MutableMapping):
         return {
         }
 
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+        }
+
     # endregion static methods

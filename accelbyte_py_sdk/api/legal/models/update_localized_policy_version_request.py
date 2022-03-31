@@ -76,18 +76,6 @@ class UpdateLocalizedPolicyVersionRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -193,6 +181,16 @@ class UpdateLocalizedPolicyVersionRequest(Model):
             "attachmentVersionIdentifier": "attachment_version_identifier",
             "contentType": "content_type",
             "description": "description",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "attachmentChecksum": False,
+            "attachmentLocation": False,
+            "attachmentVersionIdentifier": False,
+            "contentType": False,
+            "description": False,
         }
 
     # endregion static methods

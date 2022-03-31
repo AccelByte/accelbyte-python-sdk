@@ -83,28 +83,6 @@ class PaymentOrderNotifySimulation(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "currency_code") or self.currency_code is None:
-            return False
-        if not hasattr(self, "notify_type") or self.notify_type is None:
-            return False
-        if not hasattr(self, "payment_provider") or self.payment_provider is None:
-            return False
-        # enum checks
-        if hasattr(self, "notify_type") and self.notify_type is not None and self.notify_type not in PaymentOrderNotifySimulation.get_enum_map()["notifyType"]:
-            return False
-        if hasattr(self, "payment_provider") and self.payment_provider is not None and self.payment_provider not in PaymentOrderNotifySimulation.get_enum_map()["paymentProvider"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -222,7 +200,18 @@ class PaymentOrderNotifySimulation(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "currencyCode": True,
+            "notifyType": True,
+            "paymentProvider": True,
+            "amount": False,
+            "salesTax": False,
+            "vat": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "notifyType": ["CHARGE", "REFUND"],
             "paymentProvider": ["WALLET", "XSOLLA", "ADYEN", "STRIPE", "CHECKOUT", "ALIPAY", "WXPAY", "PAYPAL"],

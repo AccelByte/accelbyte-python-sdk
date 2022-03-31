@@ -150,12 +150,6 @@ class TestCheckoutConfig(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -245,6 +239,13 @@ class TestCheckoutConfig(Operation):
         return {
             "body": "body",
             "sandbox": "sandbox",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "body": False,
+            "sandbox": False,
         }
 
     # endregion static methods

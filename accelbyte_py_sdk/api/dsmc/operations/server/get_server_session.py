@@ -157,16 +157,6 @@ class GetServerSession(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "pod_name") or self.pod_name is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -270,6 +260,13 @@ class GetServerSession(Operation):
         return {
             "namespace": "namespace",
             "podName": "pod_name",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "namespace": True,
+            "podName": True,
         }
 
     # endregion static methods

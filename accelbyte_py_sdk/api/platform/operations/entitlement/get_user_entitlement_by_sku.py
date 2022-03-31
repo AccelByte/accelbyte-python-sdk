@@ -167,20 +167,6 @@ class GetUserEntitlementBySku(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        if not hasattr(self, "sku") or self.sku is None:
-            return False
-        # enum checks
-        if hasattr(self, "entitlement_clazz") and self.entitlement_clazz is not None and self.entitlement_clazz not in GetUserEntitlementBySku.get_enum_map()["entitlementClazz"]:
-            return False
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -322,7 +308,17 @@ class GetUserEntitlementBySku(Operation):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "namespace": True,
+            "userId": True,
+            "activeOnly": False,
+            "entitlementClazz": False,
+            "sku": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "entitlementClazz": ["APP", "CODE", "ENTITLEMENT", "MEDIA", "SUBSCRIPTION"],           # in query
         }

@@ -118,24 +118,6 @@ class UserProfileAdmin(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        if hasattr(self, "status") and self.status is not None and self.status not in UserProfileAdmin.get_enum_map()["status"]:
-            return False
-        # pattern checks
-        if hasattr(self, "date_of_birth") and self.date_of_birth is not None and not re.match(r"^(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$", self.date_of_birth):
-            return False
-        if hasattr(self, "language") and self.language is not None and not re.match(r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$", self.language):
-            return False
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -316,9 +298,32 @@ class UserProfileAdmin(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "avatarLargeUrl": False,
+            "avatarSmallUrl": False,
+            "avatarUrl": False,
+            "customAttributes": False,
+            "dateOfBirth": False,
+            "firstName": False,
+            "language": False,
+            "lastName": False,
+            "status": False,
+            "timeZone": False,
+            "zipCode": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "status": ["ACTIVE", "INACTIVE"],
+        }
+
+    @staticmethod
+    def get_pattern_map() -> Dict[str, re.Pattern]:
+        return {
+            "dateOfBirth": re.compile(r"^(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$"),
+            "language": re.compile(r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$"),
         }
 
     # endregion static methods

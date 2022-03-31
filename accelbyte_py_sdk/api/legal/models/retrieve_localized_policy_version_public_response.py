@@ -149,28 +149,6 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        if not hasattr(self, "locale_code") or self.locale_code is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "policy") or self.policy is None:
-            return False
-        if not hasattr(self, "policy_version") or self.policy_version is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -391,6 +369,26 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
             "description": "description",
             "tags": "tags",
             "updatedAt": "updated_at",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "id": True,
+            "localeCode": True,
+            "namespace": True,
+            "policy": True,
+            "policyVersion": True,
+            "attachmentChecksum": False,
+            "attachmentLocation": False,
+            "attachmentVersionIdentifier": False,
+            "basePolicyId": False,
+            "baseUrls": False,
+            "contentType": False,
+            "createdAt": False,
+            "description": False,
+            "tags": False,
+            "updatedAt": False,
         }
 
     # endregion static methods

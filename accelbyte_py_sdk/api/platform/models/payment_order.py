@@ -394,26 +394,6 @@ class PaymentOrder(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        if hasattr(self, "channel") and self.channel is not None and self.channel not in PaymentOrder.get_enum_map()["channel"]:
-            return False
-        if hasattr(self, "item_type") and self.item_type is not None and self.item_type not in PaymentOrder.get_enum_map()["itemType"]:
-            return False
-        if hasattr(self, "payment_provider") and self.payment_provider is not None and self.payment_provider not in PaymentOrder.get_enum_map()["paymentProvider"]:
-            return False
-        if hasattr(self, "status") and self.status is not None and self.status not in PaymentOrder.get_enum_map()["status"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -1062,7 +1042,62 @@ class PaymentOrder(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "authorisedTime": False,
+            "channel": False,
+            "chargebackReversedTime": False,
+            "chargebackTime": False,
+            "chargedTime": False,
+            "charging": False,
+            "createdAt": False,
+            "createdTime": False,
+            "currency": False,
+            "customParameters": False,
+            "description": False,
+            "extOrderNo": False,
+            "extUserId": False,
+            "itemType": False,
+            "language": False,
+            "metadata": False,
+            "namespace": False,
+            "notifyUrl": False,
+            "omitNotification": False,
+            "paymentMethod": False,
+            "paymentMethodFee": False,
+            "paymentOrderNo": False,
+            "paymentProvider": False,
+            "paymentProviderFee": False,
+            "paymentStationUrl": False,
+            "price": False,
+            "recurringPaymentOrderNo": False,
+            "refundedTime": False,
+            "region": False,
+            "returnUrl": False,
+            "rvn": False,
+            "salesTax": False,
+            "sandbox": False,
+            "sku": False,
+            "state": False,
+            "status": False,
+            "statusReason": False,
+            "subscriptionId": False,
+            "subtotalPrice": False,
+            "targetNamespace": False,
+            "targetUserId": False,
+            "tax": False,
+            "title": False,
+            "totalPrice": False,
+            "totalTax": False,
+            "transactions": False,
+            "updatedAt": False,
+            "userId": False,
+            "vat": False,
+            "zipCode": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "channel": ["EXTERNAL", "INTERNAL"],
             "itemType": ["APP", "COINS", "INGAMEITEM", "BUNDLE", "CODE", "SUBSCRIPTION", "SEASON", "MEDIA"],

@@ -55,22 +55,6 @@ class RetrieveUserInfoCacheStatusResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "last_updated_at") or self.last_updated_at is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -138,6 +122,13 @@ class RetrieveUserInfoCacheStatusResponse(Model):
         return {
             "lastUpdatedAt": "last_updated_at",
             "namespace": "namespace",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "lastUpdatedAt": True,
+            "namespace": True,
         }
 
     # endregion static methods

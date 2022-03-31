@@ -62,24 +62,6 @@ class ModelsDownloadLogsRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "alloc_id") or self.alloc_id is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "pod_name") or self.pod_name is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -158,6 +140,14 @@ class ModelsDownloadLogsRequest(Model):
             "alloc_id": "alloc_id",
             "namespace": "namespace",
             "pod_name": "pod_name",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "alloc_id": True,
+            "namespace": True,
+            "pod_name": True,
         }
 
     # endregion static methods

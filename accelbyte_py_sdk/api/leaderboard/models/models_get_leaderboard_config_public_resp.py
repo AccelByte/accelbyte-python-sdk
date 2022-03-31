@@ -69,26 +69,6 @@ class ModelsGetLeaderboardConfigPublicResp(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "icon_url") or self.icon_url is None:
-            return False
-        if not hasattr(self, "leaderboard_code") or self.leaderboard_code is None:
-            return False
-        if not hasattr(self, "name") or self.name is None:
-            return False
-        if not hasattr(self, "stat_code") or self.stat_code is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -178,6 +158,15 @@ class ModelsGetLeaderboardConfigPublicResp(Model):
             "leaderboardCode": "leaderboard_code",
             "name": "name",
             "statCode": "stat_code",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "iconURL": True,
+            "leaderboardCode": True,
+            "name": True,
+            "statCode": True,
         }
 
     # endregion static methods

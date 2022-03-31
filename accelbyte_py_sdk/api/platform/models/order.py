@@ -352,22 +352,6 @@ class Order(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        if hasattr(self, "payment_provider") and self.payment_provider is not None and self.payment_provider not in Order.get_enum_map()["paymentProvider"]:
-            return False
-        if hasattr(self, "status") and self.status is not None and self.status not in Order.get_enum_map()["status"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -944,7 +928,56 @@ class Order(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "chargebackReversedTime": False,
+            "chargebackTime": False,
+            "charged": False,
+            "chargedTime": False,
+            "countItemId": False,
+            "countNamespace": False,
+            "countUserId": False,
+            "createdAt": False,
+            "createdTime": False,
+            "currency": False,
+            "discountedPrice": False,
+            "expireTime": False,
+            "ext": False,
+            "free": False,
+            "fulfilledTime": False,
+            "itemId": False,
+            "itemSnapshot": False,
+            "language": False,
+            "namespace": False,
+            "orderNo": False,
+            "paymentMethod": False,
+            "paymentMethodFee": False,
+            "paymentOrderNo": False,
+            "paymentProvider": False,
+            "paymentProviderFee": False,
+            "paymentRemainSeconds": False,
+            "paymentStationUrl": False,
+            "price": False,
+            "quantity": False,
+            "refundedTime": False,
+            "region": False,
+            "returnUrl": False,
+            "rvn": False,
+            "salesTax": False,
+            "sandbox": False,
+            "status": False,
+            "statusReason": False,
+            "subtotalPrice": False,
+            "tax": False,
+            "totalPrice": False,
+            "totalTax": False,
+            "updatedAt": False,
+            "userId": False,
+            "vat": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "paymentProvider": ["WALLET", "XSOLLA", "ADYEN", "STRIPE", "CHECKOUT", "ALIPAY", "WXPAY", "PAYPAL"],
             "status": ["INIT", "CHARGED", "CHARGEBACK", "CHARGEBACK_REVERSED", "FULFILLED", "FULFILL_FAILED", "REFUNDING", "REFUNDED", "REFUND_FAILED", "CLOSED", "DELETED"],

@@ -167,54 +167,6 @@ class ModelsConfigExport(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "allow_invite_non_connected_user") or self.allow_invite_non_connected_user is None:
-            return False
-        if not hasattr(self, "auto_kick_on_disconnect") or self.auto_kick_on_disconnect is None:
-            return False
-        if not hasattr(self, "auto_kick_on_disconnect_delay") or self.auto_kick_on_disconnect_delay is None:
-            return False
-        if not hasattr(self, "cancel_ticket_on_disconnect") or self.cancel_ticket_on_disconnect is None:
-            return False
-        if not hasattr(self, "chat_rate_limit_burst") or self.chat_rate_limit_burst is None:
-            return False
-        if not hasattr(self, "chat_rate_limit_duration") or self.chat_rate_limit_duration is None:
-            return False
-        if not hasattr(self, "concurrent_users_limit") or self.concurrent_users_limit is None:
-            return False
-        if not hasattr(self, "disable_party_invitation_token") or self.disable_party_invitation_token is None:
-            return False
-        if not hasattr(self, "enable_chat") or self.enable_chat is None:
-            return False
-        if not hasattr(self, "entitlement_check") or self.entitlement_check is None:
-            return False
-        if not hasattr(self, "entitlement_item_id") or self.entitlement_item_id is None:
-            return False
-        if not hasattr(self, "general_rate_limit_burst") or self.general_rate_limit_burst is None:
-            return False
-        if not hasattr(self, "general_rate_limit_duration") or self.general_rate_limit_duration is None:
-            return False
-        if not hasattr(self, "keep_presence_activity_on_disconnect") or self.keep_presence_activity_on_disconnect is None:
-            return False
-        if not hasattr(self, "max_party_member") or self.max_party_member is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "profanity_filter") or self.profanity_filter is None:
-            return False
-        if not hasattr(self, "ready_consent_timeout") or self.ready_consent_timeout is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -458,6 +410,29 @@ class ModelsConfigExport(Model):
             "namespace": "namespace",
             "profanityFilter": "profanity_filter",
             "readyConsentTimeout": "ready_consent_timeout",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "allowInviteNonConnectedUser": True,
+            "autoKickOnDisconnect": True,
+            "autoKickOnDisconnectDelay": True,
+            "cancelTicketOnDisconnect": True,
+            "chatRateLimitBurst": True,
+            "chatRateLimitDuration": True,
+            "concurrentUsersLimit": True,
+            "disablePartyInvitationToken": True,
+            "enableChat": True,
+            "entitlementCheck": True,
+            "entitlementItemID": True,
+            "generalRateLimitBurst": True,
+            "generalRateLimitDuration": True,
+            "keepPresenceActivityOnDisconnect": True,
+            "maxPartyMember": True,
+            "namespace": True,
+            "profanityFilter": True,
+            "readyConsentTimeout": True,
         }
 
     # endregion static methods

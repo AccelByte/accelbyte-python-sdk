@@ -69,26 +69,6 @@ class ModelNotificationTopicResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "description") or self.description is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "topic") or self.topic is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -178,6 +158,15 @@ class ModelNotificationTopicResponse(Model):
             "description": "description",
             "namespace": "namespace",
             "topic": "topic",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "createdAt": True,
+            "description": True,
+            "namespace": True,
+            "topic": True,
         }
 
     # endregion static methods

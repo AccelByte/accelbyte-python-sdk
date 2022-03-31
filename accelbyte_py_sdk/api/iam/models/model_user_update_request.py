@@ -69,18 +69,6 @@ class ModelUserUpdateRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -174,6 +162,15 @@ class ModelUserUpdateRequest(Model):
             "DateOfBirth": "date_of_birth",
             "DisplayName": "display_name",
             "LanguageTag": "language_tag",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "Country": False,
+            "DateOfBirth": False,
+            "DisplayName": False,
+            "LanguageTag": False,
         }
 
     # endregion static methods

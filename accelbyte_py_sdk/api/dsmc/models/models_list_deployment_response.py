@@ -58,22 +58,6 @@ class ModelsListDeploymentResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "deployments") or self.deployments is None:
-            return False
-        if not hasattr(self, "paging") or self.paging is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -141,6 +125,13 @@ class ModelsListDeploymentResponse(Model):
         return {
             "deployments": "deployments",
             "paging": "paging",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "deployments": True,
+            "paging": True,
         }
 
     # endregion static methods

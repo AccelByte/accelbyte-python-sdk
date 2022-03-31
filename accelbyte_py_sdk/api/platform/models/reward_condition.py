@@ -71,18 +71,6 @@ class RewardCondition(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -176,6 +164,15 @@ class RewardCondition(Model):
             "conditionName": "condition_name",
             "eventName": "event_name",
             "rewardItems": "reward_items",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "condition": False,
+            "conditionName": False,
+            "eventName": False,
+            "rewardItems": False,
         }
 
     # endregion static methods

@@ -65,24 +65,6 @@ class ModelsSubGameMode(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "alliance") or self.alliance is None:
-            return False
-        if not hasattr(self, "alliance_flexing_rule") or self.alliance_flexing_rule is None:
-            return False
-        if not hasattr(self, "name") or self.name is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -161,6 +143,14 @@ class ModelsSubGameMode(Model):
             "alliance": "alliance",
             "alliance_flexing_rule": "alliance_flexing_rule",
             "name": "name",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "alliance": True,
+            "alliance_flexing_rule": True,
+            "name": True,
         }
 
     # endregion static methods

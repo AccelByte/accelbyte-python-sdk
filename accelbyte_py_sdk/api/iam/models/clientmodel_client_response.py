@@ -85,30 +85,6 @@ class ClientmodelClientResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "client_id") or self.client_id is None:
-            return False
-        if not hasattr(self, "client_name") or self.client_name is None:
-            return False
-        if not hasattr(self, "client_permissions") or self.client_permissions is None:
-            return False
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "redirect_uri") or self.redirect_uri is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -220,6 +196,17 @@ class ClientmodelClientResponse(Model):
             "CreatedAt": "created_at",
             "Namespace": "namespace",
             "RedirectUri": "redirect_uri",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "ClientId": True,
+            "ClientName": True,
+            "ClientPermissions": True,
+            "CreatedAt": True,
+            "Namespace": True,
+            "RedirectUri": True,
         }
 
     # endregion static methods

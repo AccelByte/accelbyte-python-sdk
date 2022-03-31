@@ -139,36 +139,6 @@ class EntitlementSummary(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "clazz") or self.clazz is None:
-            return False
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "type_") or self.type_ is None:
-            return False
-        if not hasattr(self, "updated_at") or self.updated_at is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        if hasattr(self, "clazz") and self.clazz is not None and self.clazz not in EntitlementSummary.get_enum_map()["clazz"]:
-            return False
-        if hasattr(self, "type_") and self.type_ is not None and self.type_ not in EntitlementSummary.get_enum_map()["type"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -378,7 +348,26 @@ class EntitlementSummary(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "clazz": True,
+            "createdAt": True,
+            "id": True,
+            "namespace": True,
+            "type": True,
+            "updatedAt": True,
+            "userId": True,
+            "endDate": False,
+            "grantedCode": False,
+            "itemId": False,
+            "stackable": False,
+            "stackedUseCount": False,
+            "startDate": False,
+            "storeId": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "clazz": ["APP", "ENTITLEMENT", "CODE", "SUBSCRIPTION", "MEDIA"],
             "type": ["DURABLE", "CONSUMABLE"],

@@ -55,22 +55,6 @@ class ModelLinkPlatformAccountRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "platform_id") or self.platform_id is None:
-            return False
-        if not hasattr(self, "platform_user_id") or self.platform_user_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -138,6 +122,13 @@ class ModelLinkPlatformAccountRequest(Model):
         return {
             "platformId": "platform_id",
             "platformUserId": "platform_user_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "platformId": True,
+            "platformUserId": True,
         }
 
     # endregion static methods

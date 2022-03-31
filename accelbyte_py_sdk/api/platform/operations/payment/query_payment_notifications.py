@@ -187,18 +187,6 @@ class QueryPaymentNotifications(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        # enum checks
-        if hasattr(self, "notification_source") and self.notification_source is not None and self.notification_source not in QueryPaymentNotifications.get_enum_map()["notificationSource"]:
-            return False
-        if hasattr(self, "status") and self.status is not None and self.status not in QueryPaymentNotifications.get_enum_map()["status"]:
-            return False
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -418,7 +406,22 @@ class QueryPaymentNotifications(Operation):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "namespace": True,
+            "endDate": False,
+            "externalId": False,
+            "limit": False,
+            "notificationSource": False,
+            "notificationType": False,
+            "offset": False,
+            "paymentOrderNo": False,
+            "startDate": False,
+            "status": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "notificationSource": ["ADYEN", "ALIPAY", "CHECKOUT", "PAYPAL", "STRIPE", "WALLET", "WXPAY", "XSOLLA"],# in query
             "status": ["ERROR", "IGNORED", "PROCESSED", "WARN"],                                   # in query

@@ -55,22 +55,6 @@ class ModelAuthenticatorKeyResponseV4(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "secret_key") or self.secret_key is None:
-            return False
-        if not hasattr(self, "uri") or self.uri is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -138,6 +122,13 @@ class ModelAuthenticatorKeyResponseV4(Model):
         return {
             "secretKey": "secret_key",
             "uri": "uri",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "secretKey": True,
+            "uri": True,
         }
 
     # endregion static methods

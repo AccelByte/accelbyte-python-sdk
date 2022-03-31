@@ -140,14 +140,6 @@ class AdminResetInputValidations(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "field") or self.field is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -232,6 +224,12 @@ class AdminResetInputValidations(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "field": "field",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "field": True,
         }
 
     # endregion static methods

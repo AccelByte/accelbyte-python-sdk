@@ -76,18 +76,6 @@ class SteamIAPConfig(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -193,6 +181,16 @@ class SteamIAPConfig(Model):
             "publisherAuthenticationKey": "publisher_authentication_key",
             "rvn": "rvn",
             "updatedAt": "updated_at",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "createdAt": False,
+            "namespace": False,
+            "publisherAuthenticationKey": False,
+            "rvn": False,
+            "updatedAt": False,
         }
 
     # endregion static methods

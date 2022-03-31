@@ -147,18 +147,6 @@ class PublicWebLinkPlatformEstablish(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "platform_id") or self.platform_id is None:
-            return False
-        if not hasattr(self, "state") or self.state is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # noinspection PyMethodMayBeStatic
     def has_redirects(self) -> bool:
         """Returns True if this operation has redirects, otherwise False.
@@ -269,6 +257,14 @@ class PublicWebLinkPlatformEstablish(Operation):
             "namespace": "namespace",
             "platformId": "platform_id",
             "state": "state",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "namespace": True,
+            "platformId": True,
+            "state": True,
         }
 
     # endregion static methods

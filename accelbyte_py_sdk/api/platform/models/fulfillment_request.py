@@ -127,22 +127,6 @@ class FulfillmentRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "quantity") or self.quantity is None:
-            return False
-        # enum checks
-        if hasattr(self, "source") and self.source is not None and self.source not in FulfillmentRequest.get_enum_map()["source"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -334,7 +318,24 @@ class FulfillmentRequest(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "quantity": True,
+            "duration": False,
+            "endDate": False,
+            "itemId": False,
+            "itemSku": False,
+            "language": False,
+            "order": False,
+            "orderNo": False,
+            "region": False,
+            "source": False,
+            "startDate": False,
+            "storeId": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "source": ["PURCHASE", "IAP", "PROMOTION", "ACHIEVEMENT", "REFERRAL_BONUS", "REDEEM_CODE", "REWARD", "GIFT", "DLC", "OTHER"],
         }

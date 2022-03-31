@@ -113,36 +113,6 @@ class ClientmodelClientCreationV3Request(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "audiences") or self.audiences is None:
-            return False
-        if not hasattr(self, "base_uri") or self.base_uri is None:
-            return False
-        if not hasattr(self, "client_id") or self.client_id is None:
-            return False
-        if not hasattr(self, "client_name") or self.client_name is None:
-            return False
-        if not hasattr(self, "client_permissions") or self.client_permissions is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "oauth_client_type") or self.oauth_client_type is None:
-            return False
-        if not hasattr(self, "redirect_uri") or self.redirect_uri is None:
-            return False
-        if not hasattr(self, "secret") or self.secret is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -299,6 +269,21 @@ class ClientmodelClientCreationV3Request(Model):
             "redirectUri": "redirect_uri",
             "secret": "secret",
             "deletable": "deletable",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "audiences": True,
+            "baseUri": True,
+            "clientId": True,
+            "clientName": True,
+            "clientPermissions": True,
+            "namespace": True,
+            "oauthClientType": True,
+            "redirectUri": True,
+            "secret": True,
+            "deletable": False,
         }
 
     # endregion static methods

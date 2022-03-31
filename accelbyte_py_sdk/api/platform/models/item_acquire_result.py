@@ -55,22 +55,6 @@ class ItemAcquireResult(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "max_count") or self.max_count is None:
-            return False
-        if not hasattr(self, "success") or self.success is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -138,6 +122,13 @@ class ItemAcquireResult(Model):
         return {
             "maxCount": "max_count",
             "success": "success",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "maxCount": True,
+            "success": True,
         }
 
     # endregion static methods

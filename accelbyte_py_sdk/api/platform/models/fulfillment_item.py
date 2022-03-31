@@ -90,22 +90,6 @@ class FulfillmentItem(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "quantity") or self.quantity is None:
-            return False
-        # enum checks
-        if hasattr(self, "item_type") and self.item_type is not None and self.item_type not in FulfillmentItem.get_enum_map()["itemType"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -237,7 +221,19 @@ class FulfillmentItem(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "quantity": True,
+            "extraSubscriptionDays": False,
+            "itemId": False,
+            "itemName": False,
+            "itemSku": False,
+            "itemType": False,
+            "storeId": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "itemType": ["APP", "COINS", "INGAMEITEM", "BUNDLE", "CODE", "SUBSCRIPTION", "SEASON", "MEDIA"],
         }

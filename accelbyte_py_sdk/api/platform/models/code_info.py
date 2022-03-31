@@ -183,54 +183,6 @@ class CodeInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "batch_no") or self.batch_no is None:
-            return False
-        if not hasattr(self, "campaign_id") or self.campaign_id is None:
-            return False
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        if not hasattr(self, "max_redeem_count_per_campaign_per_user") or self.max_redeem_count_per_campaign_per_user is None:
-            return False
-        if not hasattr(self, "max_redeem_count_per_code") or self.max_redeem_count_per_code is None:
-            return False
-        if not hasattr(self, "max_redeem_count_per_code_per_user") or self.max_redeem_count_per_code_per_user is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "redeem_type") or self.redeem_type is None:
-            return False
-        if not hasattr(self, "redeemed_count") or self.redeemed_count is None:
-            return False
-        if not hasattr(self, "remainder") or self.remainder is None:
-            return False
-        if not hasattr(self, "status") or self.status is None:
-            return False
-        if not hasattr(self, "type_") or self.type_ is None:
-            return False
-        if not hasattr(self, "updated_at") or self.updated_at is None:
-            return False
-        if not hasattr(self, "value") or self.value is None:
-            return False
-        # enum checks
-        if hasattr(self, "redeem_type") and self.redeem_type is not None and self.redeem_type not in CodeInfo.get_enum_map()["redeemType"]:
-            return False
-        if hasattr(self, "status") and self.status is not None and self.status not in CodeInfo.get_enum_map()["status"]:
-            return False
-        if hasattr(self, "type_") and self.type_ is not None and self.type_ not in CodeInfo.get_enum_map()["type"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -504,7 +456,32 @@ class CodeInfo(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "batchNo": True,
+            "campaignId": True,
+            "createdAt": True,
+            "id": True,
+            "maxRedeemCountPerCampaignPerUser": True,
+            "maxRedeemCountPerCode": True,
+            "maxRedeemCountPerCodePerUser": True,
+            "namespace": True,
+            "redeemType": True,
+            "redeemedCount": True,
+            "remainder": True,
+            "status": True,
+            "type": True,
+            "updatedAt": True,
+            "value": True,
+            "acquireOrderNo": False,
+            "acquireUserId": False,
+            "items": False,
+            "redeemEnd": False,
+            "redeemStart": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "redeemType": ["ITEM"],
             "status": ["ACTIVE", "INACTIVE"],

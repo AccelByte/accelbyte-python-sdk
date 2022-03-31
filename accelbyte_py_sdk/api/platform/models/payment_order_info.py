@@ -373,52 +373,6 @@ class PaymentOrderInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "channel") or self.channel is None:
-            return False
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "currency") or self.currency is None:
-            return False
-        if not hasattr(self, "ext_order_no") or self.ext_order_no is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "payment_order_no") or self.payment_order_no is None:
-            return False
-        if not hasattr(self, "payment_provider") or self.payment_provider is None:
-            return False
-        if not hasattr(self, "price") or self.price is None:
-            return False
-        if not hasattr(self, "sandbox") or self.sandbox is None:
-            return False
-        if not hasattr(self, "status") or self.status is None:
-            return False
-        if not hasattr(self, "title") or self.title is None:
-            return False
-        if not hasattr(self, "updated_at") or self.updated_at is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        if hasattr(self, "channel") and self.channel is not None and self.channel not in PaymentOrderInfo.get_enum_map()["channel"]:
-            return False
-        if hasattr(self, "payment_provider") and self.payment_provider is not None and self.payment_provider not in PaymentOrderInfo.get_enum_map()["paymentProvider"]:
-            return False
-        if hasattr(self, "status") and self.status is not None and self.status not in PaymentOrderInfo.get_enum_map()["status"]:
-            return False
-        if hasattr(self, "item_type") and self.item_type is not None and self.item_type not in PaymentOrderInfo.get_enum_map()["itemType"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -1018,7 +972,59 @@ class PaymentOrderInfo(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "channel": True,
+            "createdAt": True,
+            "currency": True,
+            "extOrderNo": True,
+            "namespace": True,
+            "paymentOrderNo": True,
+            "paymentProvider": True,
+            "price": True,
+            "sandbox": True,
+            "status": True,
+            "title": True,
+            "updatedAt": True,
+            "userId": True,
+            "authorisedTime": False,
+            "chargebackReversedTime": False,
+            "chargebackTime": False,
+            "chargedTime": False,
+            "charging": False,
+            "createdTime": False,
+            "customParameters": False,
+            "description": False,
+            "extUserId": False,
+            "itemType": False,
+            "language": False,
+            "metadata": False,
+            "notifyUrl": False,
+            "omitNotification": False,
+            "paymentMethod": False,
+            "paymentMethodFee": False,
+            "paymentProviderFee": False,
+            "paymentStationUrl": False,
+            "recurringPaymentOrderNo": False,
+            "refundedTime": False,
+            "region": False,
+            "returnUrl": False,
+            "salesTax": False,
+            "sku": False,
+            "statusReason": False,
+            "subscriptionId": False,
+            "subtotalPrice": False,
+            "targetNamespace": False,
+            "targetUserId": False,
+            "tax": False,
+            "totalPrice": False,
+            "totalTax": False,
+            "transactions": False,
+            "vat": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "channel": ["EXTERNAL", "INTERNAL"],
             "paymentProvider": ["WALLET", "XSOLLA", "ADYEN", "STRIPE", "CHECKOUT", "ALIPAY", "WXPAY", "PAYPAL"],

@@ -125,24 +125,6 @@ class LocalizedPolicyVersionObject(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        if not hasattr(self, "is_default_selection") or self.is_default_selection is None:
-            return False
-        if not hasattr(self, "locale_code") or self.locale_code is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -329,6 +311,23 @@ class LocalizedPolicyVersionObject(Model):
             "publishedDate": "published_date",
             "status": "status",
             "updatedAt": "updated_at",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "id": True,
+            "isDefaultSelection": True,
+            "localeCode": True,
+            "attachmentChecksum": False,
+            "attachmentLocation": False,
+            "attachmentVersionIdentifier": False,
+            "contentType": False,
+            "createdAt": False,
+            "description": False,
+            "publishedDate": False,
+            "status": False,
+            "updatedAt": False,
         }
 
     # endregion static methods

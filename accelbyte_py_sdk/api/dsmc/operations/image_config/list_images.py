@@ -177,18 +177,6 @@ class ListImages(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        # enum checks
-        if hasattr(self, "sort_by") and self.sort_by is not None and self.sort_by not in ListImages.get_enum_map()["sortBy"]:
-            return False
-        if hasattr(self, "sort_direction") and self.sort_direction is not None and self.sort_direction not in ListImages.get_enum_map()["sortDirection"]:
-            return False
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -356,7 +344,18 @@ class ListImages(Operation):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "namespace": True,
+            "count": False,
+            "offset": False,
+            "q": False,
+            "sortBy": False,
+            "sortDirection": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "sortBy": ["createdAt", "updatedAt", "version"],                                       # in query
             "sortDirection": ["asc", "desc"],                                                      # in query

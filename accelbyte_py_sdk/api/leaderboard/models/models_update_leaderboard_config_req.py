@@ -108,36 +108,6 @@ class ModelsUpdateLeaderboardConfigReq(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "daily") or self.daily is None:
-            return False
-        if not hasattr(self, "descending") or self.descending is None:
-            return False
-        if not hasattr(self, "icon_url") or self.icon_url is None:
-            return False
-        if not hasattr(self, "monthly") or self.monthly is None:
-            return False
-        if not hasattr(self, "name") or self.name is None:
-            return False
-        if not hasattr(self, "season_period") or self.season_period is None:
-            return False
-        if not hasattr(self, "start_time") or self.start_time is None:
-            return False
-        if not hasattr(self, "stat_code") or self.stat_code is None:
-            return False
-        if not hasattr(self, "weekly") or self.weekly is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -282,6 +252,20 @@ class ModelsUpdateLeaderboardConfigReq(Model):
             "startTime": "start_time",
             "statCode": "stat_code",
             "weekly": "weekly",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "daily": True,
+            "descending": True,
+            "iconURL": True,
+            "monthly": True,
+            "name": True,
+            "seasonPeriod": True,
+            "startTime": True,
+            "statCode": True,
+            "weekly": True,
         }
 
     # endregion static methods

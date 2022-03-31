@@ -76,28 +76,6 @@ class ModelPublicThirdPartyPlatformInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "app_id") or self.app_id is None:
-            return False
-        if not hasattr(self, "client_id") or self.client_id is None:
-            return False
-        if not hasattr(self, "environment") or self.environment is None:
-            return False
-        if not hasattr(self, "is_active") or self.is_active is None:
-            return False
-        if not hasattr(self, "platform_id") or self.platform_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -198,6 +176,16 @@ class ModelPublicThirdPartyPlatformInfo(Model):
             "Environment": "environment",
             "IsActive": "is_active",
             "PlatformId": "platform_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "AppId": True,
+            "ClientId": True,
+            "Environment": True,
+            "IsActive": True,
+            "PlatformId": True,
         }
 
     # endregion static methods

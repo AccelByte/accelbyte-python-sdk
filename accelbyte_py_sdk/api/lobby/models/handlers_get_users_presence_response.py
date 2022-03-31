@@ -78,28 +78,6 @@ class HandlersGetUsersPresenceResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "busy") or self.busy is None:
-            return False
-        if not hasattr(self, "data") or self.data is None:
-            return False
-        if not hasattr(self, "invisible") or self.invisible is None:
-            return False
-        if not hasattr(self, "offline") or self.offline is None:
-            return False
-        if not hasattr(self, "online") or self.online is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -200,6 +178,16 @@ class HandlersGetUsersPresenceResponse(Model):
             "invisible": "invisible",
             "offline": "offline",
             "online": "online",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "busy": True,
+            "data": True,
+            "invisible": True,
+            "offline": True,
+            "online": True,
         }
 
     # endregion static methods

@@ -146,42 +146,6 @@ class SubscriptionActivityInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "action") or self.action is None:
-            return False
-        if not hasattr(self, "charged_cycles") or self.charged_cycles is None:
-            return False
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "current_cycle") or self.current_cycle is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "operator") or self.operator is None:
-            return False
-        if not hasattr(self, "subscribed_by") or self.subscribed_by is None:
-            return False
-        if not hasattr(self, "subscription_id") or self.subscription_id is None:
-            return False
-        if not hasattr(self, "updated_at") or self.updated_at is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        if hasattr(self, "action") and self.action is not None and self.action not in SubscriptionActivityInfo.get_enum_map()["action"]:
-            return False
-        if hasattr(self, "subscribed_by") and self.subscribed_by is not None and self.subscribed_by not in SubscriptionActivityInfo.get_enum_map()["subscribedBy"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -400,7 +364,27 @@ class SubscriptionActivityInfo(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "action": True,
+            "chargedCycles": True,
+            "createdAt": True,
+            "currentCycle": True,
+            "namespace": True,
+            "operator": True,
+            "subscribedBy": True,
+            "subscriptionId": True,
+            "updatedAt": True,
+            "userId": True,
+            "grantDays": False,
+            "inFixedCycleTrial": False,
+            "inFixedFreeDays": False,
+            "reason": False,
+            "trialedCycles": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "action": ["SUBSCRIBE", "CANCEL", "IMMEDIATE_CANCEL", "RESUBSCRIBE", "GRANT_DAYS", "CHANGE_BILLING_ACCOUNT"],
             "subscribedBy": ["USER", "PLATFORM"],

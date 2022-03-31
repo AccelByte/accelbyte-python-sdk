@@ -55,22 +55,6 @@ class ModelsArchiveLeaderboardSignedURLResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "leaderboard_code") or self.leaderboard_code is None:
-            return False
-        if not hasattr(self, "url") or self.url is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -138,6 +122,13 @@ class ModelsArchiveLeaderboardSignedURLResponse(Model):
         return {
             "leaderboardCode": "leaderboard_code",
             "url": "url",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "leaderboardCode": True,
+            "url": True,
         }
 
     # endregion static methods

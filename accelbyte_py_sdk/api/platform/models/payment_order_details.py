@@ -104,30 +104,6 @@ class PaymentOrderDetails(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "charging") or self.charging is None:
-            return False
-        if not hasattr(self, "currency_code") or self.currency_code is None:
-            return False
-        if not hasattr(self, "currency_symbol") or self.currency_symbol is None:
-            return False
-        if not hasattr(self, "price") or self.price is None:
-            return False
-        if not hasattr(self, "sandbox") or self.sandbox is None:
-            return False
-        if not hasattr(self, "title") or self.title is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -275,6 +251,20 @@ class PaymentOrderDetails(Model):
             "description": "description",
             "displayName": "display_name",
             "region": "region",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "charging": True,
+            "currencyCode": True,
+            "currencySymbol": True,
+            "price": True,
+            "sandbox": True,
+            "title": True,
+            "description": False,
+            "displayName": False,
+            "region": False,
         }
 
     # endregion static methods

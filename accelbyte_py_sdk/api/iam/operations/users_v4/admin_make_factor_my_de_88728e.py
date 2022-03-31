@@ -143,14 +143,6 @@ class AdminMakeFactorMyDefaultV4(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "factor") or self.factor is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -243,6 +235,12 @@ class AdminMakeFactorMyDefaultV4(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "factor": "factor",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "factor": True,
         }
 
     # endregion static methods

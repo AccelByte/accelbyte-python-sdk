@@ -48,20 +48,6 @@ class ModelsListBlockedPlayerRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "list_blocked_user_id") or self.list_blocked_user_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -118,6 +104,12 @@ class ModelsListBlockedPlayerRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "listBlockedUserId": "list_blocked_user_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "listBlockedUserId": True,
         }
 
     # endregion static methods

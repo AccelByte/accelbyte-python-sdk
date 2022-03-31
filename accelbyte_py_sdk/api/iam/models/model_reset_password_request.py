@@ -62,24 +62,6 @@ class ModelResetPasswordRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "code") or self.code is None:
-            return False
-        if not hasattr(self, "login_id") or self.login_id is None:
-            return False
-        if not hasattr(self, "new_password") or self.new_password is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -158,6 +140,14 @@ class ModelResetPasswordRequest(Model):
             "Code": "code",
             "LoginID": "login_id",
             "NewPassword": "new_password",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "Code": True,
+            "LoginID": True,
+            "NewPassword": True,
         }
 
     # endregion static methods

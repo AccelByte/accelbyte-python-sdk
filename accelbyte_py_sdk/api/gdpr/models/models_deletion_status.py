@@ -76,26 +76,6 @@ class ModelsDeletionStatus(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "deletion_status") or self.deletion_status is None:
-            return False
-        if not hasattr(self, "display_name") or self.display_name is None:
-            return False
-        if not hasattr(self, "status") or self.status is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -197,6 +177,16 @@ class ModelsDeletionStatus(Model):
             "Status": "status",
             "UserID": "user_id",
             "ExecutionDate": "execution_date",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "DeletionStatus": True,
+            "DisplayName": True,
+            "Status": True,
+            "UserID": True,
+            "ExecutionDate": False,
         }
 
     # endregion static methods

@@ -150,48 +150,6 @@ class ModelsDSMConfigExport(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "claim_timeout") or self.claim_timeout is None:
-            return False
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "creation_timeout") or self.creation_timeout is None:
-            return False
-        if not hasattr(self, "default_version") or self.default_version is None:
-            return False
-        if not hasattr(self, "deployments") or self.deployments is None:
-            return False
-        if not hasattr(self, "images") or self.images is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "pod_configs") or self.pod_configs is None:
-            return False
-        if not hasattr(self, "port") or self.port is None:
-            return False
-        if not hasattr(self, "ports") or self.ports is None:
-            return False
-        if not hasattr(self, "protocol") or self.protocol is None:
-            return False
-        if not hasattr(self, "providers") or self.providers is None:
-            return False
-        if not hasattr(self, "session_timeout") or self.session_timeout is None:
-            return False
-        if not hasattr(self, "unreachable_timeout") or self.unreachable_timeout is None:
-            return False
-        if not hasattr(self, "updated_at") or self.updated_at is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -402,6 +360,26 @@ class ModelsDSMConfigExport(Model):
             "session_timeout": "session_timeout",
             "unreachable_timeout": "unreachable_timeout",
             "updatedAt": "updated_at",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "claim_timeout": True,
+            "createdAt": True,
+            "creation_timeout": True,
+            "default_version": True,
+            "deployments": True,
+            "images": True,
+            "namespace": True,
+            "pod_configs": True,
+            "port": True,
+            "ports": True,
+            "protocol": True,
+            "providers": True,
+            "session_timeout": True,
+            "unreachable_timeout": True,
+            "updatedAt": True,
         }
 
     # endregion static methods

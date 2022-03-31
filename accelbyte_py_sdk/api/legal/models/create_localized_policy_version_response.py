@@ -76,20 +76,6 @@ class CreateLocalizedPolicyVersionResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -194,6 +180,16 @@ class CreateLocalizedPolicyVersionResponse(Model):
             "description": "description",
             "localeCode": "locale_code",
             "updatedAt": "updated_at",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "id": True,
+            "createdAt": False,
+            "description": False,
+            "localeCode": False,
+            "updatedAt": False,
         }
 
     # endregion static methods

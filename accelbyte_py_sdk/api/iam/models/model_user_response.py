@@ -227,56 +227,6 @@ class ModelUserResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "auth_type") or self.auth_type is None:
-            return False
-        if not hasattr(self, "bans") or self.bans is None:
-            return False
-        if not hasattr(self, "country") or self.country is None:
-            return False
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "date_of_birth") or self.date_of_birth is None:
-            return False
-        if not hasattr(self, "deletion_status") or self.deletion_status is None:
-            return False
-        if not hasattr(self, "display_name") or self.display_name is None:
-            return False
-        if not hasattr(self, "email_verified") or self.email_verified is None:
-            return False
-        if not hasattr(self, "enabled") or self.enabled is None:
-            return False
-        if not hasattr(self, "last_date_of_birth_changed_time") or self.last_date_of_birth_changed_time is None:
-            return False
-        if not hasattr(self, "last_enabled_changed_time") or self.last_enabled_changed_time is None:
-            return False
-        if not hasattr(self, "login_id") or self.login_id is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "namespace_roles") or self.namespace_roles is None:
-            return False
-        if not hasattr(self, "old_email_address") or self.old_email_address is None:
-            return False
-        if not hasattr(self, "permissions") or self.permissions is None:
-            return False
-        if not hasattr(self, "phone_verified") or self.phone_verified is None:
-            return False
-        if not hasattr(self, "roles") or self.roles is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -615,6 +565,37 @@ class ModelUserResponse(Model):
             "PlatformUserId": "platform_user_id",
             "Username": "username",
             "XUID": "xuid",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "AuthType": True,
+            "Bans": True,
+            "Country": True,
+            "CreatedAt": True,
+            "DateOfBirth": True,
+            "DeletionStatus": True,
+            "DisplayName": True,
+            "EmailVerified": True,
+            "Enabled": True,
+            "LastDateOfBirthChangedTime": True,
+            "LastEnabledChangedTime": True,
+            "LoginId": True,
+            "Namespace": True,
+            "NamespaceRoles": True,
+            "OldEmailAddress": True,
+            "Permissions": True,
+            "PhoneVerified": True,
+            "Roles": True,
+            "UserId": True,
+            "EmailAddress": False,
+            "NewEmailAddress": False,
+            "PhoneNumber": False,
+            "PlatformId": False,
+            "PlatformUserId": False,
+            "Username": False,
+            "XUID": False,
         }
 
     # endregion static methods

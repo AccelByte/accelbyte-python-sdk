@@ -136,12 +136,6 @@ class GetUserInfoStatus(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -215,6 +209,12 @@ class GetUserInfoStatus(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespaces": "namespaces",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "namespaces": False,
         }
 
     # endregion static methods

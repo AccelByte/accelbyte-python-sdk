@@ -148,14 +148,6 @@ class PublishPolicyVersion(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "policy_version_id") or self.policy_version_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -248,6 +240,13 @@ class PublishPolicyVersion(Operation):
         return {
             "policyVersionId": "policy_version_id",
             "shouldNotify": "should_notify",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "policyVersionId": True,
+            "shouldNotify": False,
         }
 
     # endregion static methods

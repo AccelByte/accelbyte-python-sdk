@@ -55,22 +55,6 @@ class ModelsUpdateSessionRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "game_current_player") or self.game_current_player is None:
-            return False
-        if not hasattr(self, "game_max_player") or self.game_max_player is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -138,6 +122,13 @@ class ModelsUpdateSessionRequest(Model):
         return {
             "game_current_player": "game_current_player",
             "game_max_player": "game_max_player",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "game_current_player": True,
+            "game_max_player": True,
         }
 
     # endregion static methods

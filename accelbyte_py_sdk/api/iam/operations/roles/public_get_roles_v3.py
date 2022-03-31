@@ -150,12 +150,6 @@ class PublicGetRolesV3(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -281,6 +275,15 @@ class PublicGetRolesV3(Operation):
             "before": "before",
             "isWildcard": "is_wildcard",
             "limit": "limit",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "after": False,
+            "before": False,
+            "isWildcard": False,
+            "limit": False,
         }
 
     # endregion static methods

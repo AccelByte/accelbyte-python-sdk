@@ -86,26 +86,6 @@ class PassCreate(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "code") or self.code is None:
-            return False
-        if not hasattr(self, "display_order") or self.display_order is None:
-            return False
-        if not hasattr(self, "localizations") or self.localizations is None:
-            return False
-        if not hasattr(self, "pass_item_id") or self.pass_item_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -219,6 +199,17 @@ class PassCreate(Model):
             "passItemId": "pass_item_id",
             "autoEnroll": "auto_enroll",
             "images": "images",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "code": True,
+            "displayOrder": True,
+            "localizations": True,
+            "passItemId": True,
+            "autoEnroll": False,
+            "images": False,
         }
 
     # endregion static methods

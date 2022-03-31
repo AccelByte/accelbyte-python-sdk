@@ -58,22 +58,6 @@ class ModelsNotifPayloadServerStatusChange(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "match") or self.match is None:
-            return False
-        if not hasattr(self, "server") or self.server is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -141,6 +125,13 @@ class ModelsNotifPayloadServerStatusChange(Model):
         return {
             "match": "match",
             "server": "server",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "match": True,
+            "server": True,
         }
 
     # endregion static methods

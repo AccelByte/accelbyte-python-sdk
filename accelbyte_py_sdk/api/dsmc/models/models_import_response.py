@@ -55,22 +55,6 @@ class ModelsImportResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "affected") or self.affected is None:
-            return False
-        if not hasattr(self, "failed") or self.failed is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -138,6 +122,13 @@ class ModelsImportResponse(Model):
         return {
             "affected": "affected",
             "failed": "failed",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "affected": True,
+            "failed": True,
         }
 
     # endregion static methods

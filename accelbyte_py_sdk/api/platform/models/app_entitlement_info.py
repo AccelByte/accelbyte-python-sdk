@@ -127,30 +127,6 @@ class AppEntitlementInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "granted_at") or self.granted_at is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "status") or self.status is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        if hasattr(self, "status") and self.status is not None and self.status not in AppEntitlementInfo.get_enum_map()["status"]:
-            return False
-        if hasattr(self, "app_type") and self.app_type is not None and self.app_type not in AppEntitlementInfo.get_enum_map()["appType"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -339,7 +315,24 @@ class AppEntitlementInfo(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "grantedAt": True,
+            "namespace": True,
+            "status": True,
+            "userId": True,
+            "appId": False,
+            "appType": False,
+            "endDate": False,
+            "itemId": False,
+            "itemSnapshot": False,
+            "sku": False,
+            "startDate": False,
+            "storeId": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "status": ["ACTIVE", "INACTIVE", "CONSUMED", "REVOKED"],
             "appType": ["GAME", "SOFTWARE", "DLC", "DEMO"],

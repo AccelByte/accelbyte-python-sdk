@@ -57,18 +57,6 @@ class UpdateCountryGroupRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -138,6 +126,13 @@ class UpdateCountryGroupRequest(Model):
         return {
             "countries": "countries",
             "countryGroupName": "country_group_name",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "countries": False,
+            "countryGroupName": False,
         }
 
     # endregion static methods

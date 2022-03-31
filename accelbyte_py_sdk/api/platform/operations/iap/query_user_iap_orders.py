@@ -183,20 +183,6 @@ class QueryUserIAPOrders(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        if hasattr(self, "status") and self.status is not None and self.status not in QueryUserIAPOrders.get_enum_map()["status"]:
-            return False
-        if hasattr(self, "type_") and self.type_ is not None and self.type_ not in QueryUserIAPOrders.get_enum_map()["type"]:
-            return False
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -399,7 +385,21 @@ class QueryUserIAPOrders(Operation):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "namespace": True,
+            "userId": True,
+            "endTime": False,
+            "limit": False,
+            "offset": False,
+            "productId": False,
+            "startTime": False,
+            "status": False,
+            "type": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "status": ["FAILED", "FULFILLED", "VERIFIED"],                                         # in query
             "type": ["APPLE", "EPICGAMES", "GOOGLE", "PLAYSTATION", "STADIA", "STEAM", "TWITCH", "XBOX"],# in query

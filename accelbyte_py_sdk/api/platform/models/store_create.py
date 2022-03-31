@@ -83,20 +83,6 @@ class StoreCreate(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "title") or self.title is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -213,6 +199,17 @@ class StoreCreate(Model):
             "description": "description",
             "supportedLanguages": "supported_languages",
             "supportedRegions": "supported_regions",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "title": True,
+            "defaultLanguage": False,
+            "defaultRegion": False,
+            "description": False,
+            "supportedLanguages": False,
+            "supportedRegions": False,
         }
 
     # endregion static methods

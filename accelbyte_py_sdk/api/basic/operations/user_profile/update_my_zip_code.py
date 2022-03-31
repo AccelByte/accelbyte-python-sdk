@@ -156,16 +156,6 @@ class UpdateMyZipCode(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "user_zip_code_update") or self.user_zip_code_update is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -265,6 +255,13 @@ class UpdateMyZipCode(Operation):
         return {
             "userZipCodeUpdate": "user_zip_code_update",
             "namespace": "namespace",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "userZipCodeUpdate": True,
+            "namespace": True,
         }
 
     # endregion static methods

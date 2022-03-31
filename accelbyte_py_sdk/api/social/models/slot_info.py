@@ -139,18 +139,6 @@ class SlotInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -364,6 +352,25 @@ class SlotInfo(Model):
             "storedName": "stored_name",
             "tags": "tags",
             "userId": "user_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "checksum": False,
+            "customAttribute": False,
+            "dateAccessed": False,
+            "dateCreated": False,
+            "dateModified": False,
+            "label": False,
+            "mimeType": False,
+            "namespace": False,
+            "originalName": False,
+            "size": False,
+            "slotId": False,
+            "storedName": False,
+            "tags": False,
+            "userId": False,
         }
 
     # endregion static methods

@@ -127,32 +127,6 @@ class RetrieveUserEligibilitiesResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "country_code") or self.country_code is None:
-            return False
-        if not hasattr(self, "is_accepted") or self.is_accepted is None:
-            return False
-        if not hasattr(self, "is_mandatory") or self.is_mandatory is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "policy_id") or self.policy_id is None:
-            return False
-        if not hasattr(self, "policy_name") or self.policy_name is None:
-            return False
-        if not hasattr(self, "policy_type") or self.policy_type is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -335,6 +309,23 @@ class RetrieveUserEligibilitiesResponse(Model):
             "description": "description",
             "policyVersions": "policy_versions",
             "readableId": "readable_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "countryCode": True,
+            "isAccepted": True,
+            "isMandatory": True,
+            "namespace": True,
+            "policyId": True,
+            "policyName": True,
+            "policyType": True,
+            "baseUrls": False,
+            "countryGroupCode": False,
+            "description": False,
+            "policyVersions": False,
+            "readableId": False,
         }
 
     # endregion static methods

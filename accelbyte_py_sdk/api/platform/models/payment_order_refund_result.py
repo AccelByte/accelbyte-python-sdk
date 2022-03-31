@@ -90,28 +90,6 @@ class PaymentOrderRefundResult(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "created_time") or self.created_time is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "payment_order_no") or self.payment_order_no is None:
-            return False
-        if not hasattr(self, "status") or self.status is None:
-            return False
-        # enum checks
-        if hasattr(self, "status") and self.status is not None and self.status not in PaymentOrderRefundResult.get_enum_map()["status"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -240,7 +218,19 @@ class PaymentOrderRefundResult(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "createdTime": True,
+            "namespace": True,
+            "paymentOrderNo": True,
+            "status": True,
+            "refundedTime": False,
+            "targetNamespace": False,
+            "targetUserId": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "status": ["INIT", "AUTHORISED", "AUTHORISE_FAILED", "CHARGED", "CHARGE_FAILED", "NOTIFICATION_OF_CHARGEBACK", "REQUEST_FOR_INFORMATION", "CHARGEBACK", "CHARGEBACK_REVERSED", "REFUNDING", "REFUNDED", "REFUND_FAILED", "DELETED"],
         }

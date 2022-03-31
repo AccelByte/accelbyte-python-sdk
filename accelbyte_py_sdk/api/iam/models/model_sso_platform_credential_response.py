@@ -111,38 +111,6 @@ class ModelSSOPlatformCredentialResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "acs_url") or self.acs_url is None:
-            return False
-        if not hasattr(self, "app_id") or self.app_id is None:
-            return False
-        if not hasattr(self, "federation_metadata_url") or self.federation_metadata_url is None:
-            return False
-        if not hasattr(self, "is_active") or self.is_active is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "platform_id") or self.platform_id is None:
-            return False
-        if not hasattr(self, "redirect_uri") or self.redirect_uri is None:
-            return False
-        if not hasattr(self, "secret") or self.secret is None:
-            return False
-        if not hasattr(self, "sso_url") or self.sso_url is None:
-            return False
-        if not hasattr(self, "truncated_api_key") or self.truncated_api_key is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -298,6 +266,21 @@ class ModelSSOPlatformCredentialResponse(Model):
             "secret": "secret",
             "ssoUrl": "sso_url",
             "truncatedApiKey": "truncated_api_key",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "acsUrl": True,
+            "appId": True,
+            "federationMetadataUrl": True,
+            "isActive": True,
+            "namespace": True,
+            "platformId": True,
+            "redirectUri": True,
+            "secret": True,
+            "ssoUrl": True,
+            "truncatedApiKey": True,
         }
 
     # endregion static methods

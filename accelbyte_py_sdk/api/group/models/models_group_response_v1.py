@@ -121,40 +121,6 @@ class ModelsGroupResponseV1(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "configuration_code") or self.configuration_code is None:
-            return False
-        if not hasattr(self, "custom_attributes") or self.custom_attributes is None:
-            return False
-        if not hasattr(self, "group_description") or self.group_description is None:
-            return False
-        if not hasattr(self, "group_icon") or self.group_icon is None:
-            return False
-        if not hasattr(self, "group_id") or self.group_id is None:
-            return False
-        if not hasattr(self, "group_max_member") or self.group_max_member is None:
-            return False
-        if not hasattr(self, "group_members") or self.group_members is None:
-            return False
-        if not hasattr(self, "group_name") or self.group_name is None:
-            return False
-        if not hasattr(self, "group_region") or self.group_region is None:
-            return False
-        if not hasattr(self, "group_rules") or self.group_rules is None:
-            return False
-        if not hasattr(self, "group_type") or self.group_type is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -321,6 +287,22 @@ class ModelsGroupResponseV1(Model):
             "groupRegion": "group_region",
             "groupRules": "group_rules",
             "groupType": "group_type",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "configurationCode": True,
+            "customAttributes": True,
+            "groupDescription": True,
+            "groupIcon": True,
+            "groupId": True,
+            "groupMaxMember": True,
+            "groupMembers": True,
+            "groupName": True,
+            "groupRegion": True,
+            "groupRules": True,
+            "groupType": True,
         }
 
     # endregion static methods

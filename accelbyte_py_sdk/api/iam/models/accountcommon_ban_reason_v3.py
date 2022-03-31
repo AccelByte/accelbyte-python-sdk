@@ -55,22 +55,6 @@ class AccountcommonBanReasonV3(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "description") or self.description is None:
-            return False
-        if not hasattr(self, "reason") or self.reason is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -138,6 +122,13 @@ class AccountcommonBanReasonV3(Model):
         return {
             "description": "description",
             "reason": "reason",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "description": True,
+            "reason": True,
         }
 
     # endregion static methods

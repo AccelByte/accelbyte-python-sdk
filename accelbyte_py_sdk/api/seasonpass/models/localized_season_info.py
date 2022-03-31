@@ -179,48 +179,6 @@ class LocalizedSeasonInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "auto_claim") or self.auto_claim is None:
-            return False
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "end") or self.end is None:
-            return False
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        if not hasattr(self, "language") or self.language is None:
-            return False
-        if not hasattr(self, "name") or self.name is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "passes") or self.passes is None:
-            return False
-        if not hasattr(self, "rewards") or self.rewards is None:
-            return False
-        if not hasattr(self, "start") or self.start is None:
-            return False
-        if not hasattr(self, "status") or self.status is None:
-            return False
-        if not hasattr(self, "tier_item_id") or self.tier_item_id is None:
-            return False
-        if not hasattr(self, "tiers") or self.tiers is None:
-            return False
-        if not hasattr(self, "updated_at") or self.updated_at is None:
-            return False
-        # enum checks
-        if hasattr(self, "status") and self.status is not None and self.status not in LocalizedSeasonInfo.get_enum_map()["status"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -483,7 +441,31 @@ class LocalizedSeasonInfo(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "autoClaim": True,
+            "createdAt": True,
+            "end": True,
+            "id": True,
+            "language": True,
+            "name": True,
+            "namespace": True,
+            "passes": True,
+            "rewards": True,
+            "start": True,
+            "status": True,
+            "tierItemId": True,
+            "tiers": True,
+            "updatedAt": True,
+            "description": False,
+            "images": False,
+            "passCodes": False,
+            "publishedAt": False,
+            "title": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "status": ["DRAFT", "PUBLISHED", "RETIRED"],
         }

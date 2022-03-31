@@ -62,24 +62,6 @@ class ModelsAdminCreateProfanityListRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "is_enabled") or self.is_enabled is None:
-            return False
-        if not hasattr(self, "is_mandatory") or self.is_mandatory is None:
-            return False
-        if not hasattr(self, "name") or self.name is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -158,6 +140,14 @@ class ModelsAdminCreateProfanityListRequest(Model):
             "isEnabled": "is_enabled",
             "isMandatory": "is_mandatory",
             "name": "name",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "isEnabled": True,
+            "isMandatory": True,
+            "name": True,
         }
 
     # endregion static methods

@@ -155,48 +155,6 @@ class ClaimableUserSeasonInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "claiming_rewards") or self.claiming_rewards is None:
-            return False
-        if not hasattr(self, "cleared") or self.cleared is None:
-            return False
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "current_exp") or self.current_exp is None:
-            return False
-        if not hasattr(self, "current_tier_index") or self.current_tier_index is None:
-            return False
-        if not hasattr(self, "enrolled_at") or self.enrolled_at is None:
-            return False
-        if not hasattr(self, "enrolled_passes") or self.enrolled_passes is None:
-            return False
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        if not hasattr(self, "last_tier_index") or self.last_tier_index is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "required_exp") or self.required_exp is None:
-            return False
-        if not hasattr(self, "season_id") or self.season_id is None:
-            return False
-        if not hasattr(self, "to_claim_rewards") or self.to_claim_rewards is None:
-            return False
-        if not hasattr(self, "updated_at") or self.updated_at is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -419,6 +377,27 @@ class ClaimableUserSeasonInfo(Model):
             "updatedAt": "updated_at",
             "userId": "user_id",
             "season": "season",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "claimingRewards": True,
+            "cleared": True,
+            "createdAt": True,
+            "currentExp": True,
+            "currentTierIndex": True,
+            "enrolledAt": True,
+            "enrolledPasses": True,
+            "id": True,
+            "lastTierIndex": True,
+            "namespace": True,
+            "requiredExp": True,
+            "seasonId": True,
+            "toClaimRewards": True,
+            "updatedAt": True,
+            "userId": True,
+            "season": False,
         }
 
     # endregion static methods

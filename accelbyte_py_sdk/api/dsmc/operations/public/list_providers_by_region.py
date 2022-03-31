@@ -129,14 +129,6 @@ class ListProvidersByRegion(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "region") or self.region is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -209,6 +201,12 @@ class ListProvidersByRegion(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "region": "region",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "region": True,
         }
 
     # endregion static methods

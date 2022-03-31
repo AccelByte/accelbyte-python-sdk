@@ -76,20 +76,6 @@ class XblReconcileResult(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        if hasattr(self, "iap_order_status") and self.iap_order_status is not None and self.iap_order_status not in XblReconcileResult.get_enum_map()["iapOrderStatus"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -198,7 +184,17 @@ class XblReconcileResult(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "iapOrderStatus": False,
+            "itemId": False,
+            "sku": False,
+            "transactionId": False,
+            "xboxProductId": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "iapOrderStatus": ["VERIFIED", "FULFILLED", "FAILED"],
         }

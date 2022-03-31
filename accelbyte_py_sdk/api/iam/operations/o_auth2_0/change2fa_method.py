@@ -155,16 +155,6 @@ class Change2faMethod(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "factor") or self.factor is None:
-            return False
-        if not hasattr(self, "mfa_token") or self.mfa_token is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -256,6 +246,13 @@ class Change2faMethod(Operation):
         return {
             "factor": "factor",
             "mfaToken": "mfa_token",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "factor": True,
+            "mfaToken": True,
         }
 
     # endregion static methods

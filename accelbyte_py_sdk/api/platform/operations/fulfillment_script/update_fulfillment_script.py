@@ -148,14 +148,6 @@ class UpdateFulfillmentScript(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -248,6 +240,13 @@ class UpdateFulfillmentScript(Operation):
         return {
             "body": "body",
             "id": "id_",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "body": False,
+            "id": True,
         }
 
     # endregion static methods

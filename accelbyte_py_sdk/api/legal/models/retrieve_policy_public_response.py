@@ -169,38 +169,6 @@ class RetrievePolicyPublicResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "base_policy_id") or self.base_policy_id is None:
-            return False
-        if not hasattr(self, "country_code") or self.country_code is None:
-            return False
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        if not hasattr(self, "is_default_opted") or self.is_default_opted is None:
-            return False
-        if not hasattr(self, "is_default_selection") or self.is_default_selection is None:
-            return False
-        if not hasattr(self, "is_mandatory") or self.is_mandatory is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "policy_name") or self.policy_name is None:
-            return False
-        if not hasattr(self, "policy_type") or self.policy_type is None:
-            return False
-        if not hasattr(self, "should_notify_on_update") or self.should_notify_on_update is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -452,6 +420,29 @@ class RetrievePolicyPublicResponse(Model):
             "readableId": "readable_id",
             "tags": "tags",
             "updatedAt": "updated_at",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "basePolicyId": True,
+            "countryCode": True,
+            "id": True,
+            "isDefaultOpted": True,
+            "isDefaultSelection": True,
+            "isMandatory": True,
+            "namespace": True,
+            "policyName": True,
+            "policyType": True,
+            "shouldNotifyOnUpdate": True,
+            "baseUrls": False,
+            "countryGroupCode": False,
+            "createdAt": False,
+            "description": False,
+            "policyVersions": False,
+            "readableId": False,
+            "tags": False,
+            "updatedAt": False,
         }
 
     # endregion static methods

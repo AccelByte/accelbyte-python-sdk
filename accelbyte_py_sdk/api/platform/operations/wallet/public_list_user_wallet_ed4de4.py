@@ -164,18 +164,6 @@ class PublicListUserWalletTransactions(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "currency_code") or self.currency_code is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -310,6 +298,16 @@ class PublicListUserWalletTransactions(Operation):
             "userId": "user_id",
             "limit": "limit",
             "offset": "offset",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "currencyCode": True,
+            "namespace": True,
+            "userId": True,
+            "limit": False,
+            "offset": False,
         }
 
     # endregion static methods

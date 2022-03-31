@@ -76,28 +76,6 @@ class ItemDynamicDataInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "available_count") or self.available_count is None:
-            return False
-        if not hasattr(self, "item_id") or self.item_id is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "user_available_count") or self.user_available_count is None:
-            return False
-        if not hasattr(self, "user_purchase_limit") or self.user_purchase_limit is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -198,6 +176,16 @@ class ItemDynamicDataInfo(Model):
             "namespace": "namespace",
             "userAvailableCount": "user_available_count",
             "userPurchaseLimit": "user_purchase_limit",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "availableCount": True,
+            "itemId": True,
+            "namespace": True,
+            "userAvailableCount": True,
+            "userPurchaseLimit": True,
         }
 
     # endregion static methods

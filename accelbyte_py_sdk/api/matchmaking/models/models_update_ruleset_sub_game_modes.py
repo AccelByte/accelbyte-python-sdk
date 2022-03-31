@@ -80,4 +80,9 @@ class ModelsUpdateRulesetSubGameModes(Model):
         return {
         }
 
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+        }
+
     # endregion static methods

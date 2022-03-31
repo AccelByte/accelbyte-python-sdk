@@ -62,24 +62,6 @@ class ModelsArchiveLeaderboardReq(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "leaderboard_codes") or self.leaderboard_codes is None:
-            return False
-        if not hasattr(self, "limit") or self.limit is None:
-            return False
-        if not hasattr(self, "slug") or self.slug is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -158,6 +140,14 @@ class ModelsArchiveLeaderboardReq(Model):
             "leaderboardCodes": "leaderboard_codes",
             "limit": "limit",
             "slug": "slug",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "leaderboardCodes": True,
+            "limit": True,
+            "slug": True,
         }
 
     # endregion static methods

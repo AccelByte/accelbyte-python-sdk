@@ -143,14 +143,6 @@ class AdminGetRoleV4(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "role_id") or self.role_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -239,6 +231,12 @@ class AdminGetRoleV4(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "roleId": "role_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "roleId": True,
         }
 
     # endregion static methods

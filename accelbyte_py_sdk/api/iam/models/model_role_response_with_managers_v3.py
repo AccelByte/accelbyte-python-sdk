@@ -86,30 +86,6 @@ class ModelRoleResponseWithManagersV3(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "admin_role") or self.admin_role is None:
-            return False
-        if not hasattr(self, "is_wildcard") or self.is_wildcard is None:
-            return False
-        if not hasattr(self, "managers") or self.managers is None:
-            return False
-        if not hasattr(self, "permissions") or self.permissions is None:
-            return False
-        if not hasattr(self, "role_id") or self.role_id is None:
-            return False
-        if not hasattr(self, "role_name") or self.role_name is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -221,6 +197,17 @@ class ModelRoleResponseWithManagersV3(Model):
             "permissions": "permissions",
             "roleId": "role_id",
             "roleName": "role_name",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "adminRole": True,
+            "isWildcard": True,
+            "managers": True,
+            "permissions": True,
+            "roleId": True,
+            "roleName": True,
         }
 
     # endregion static methods

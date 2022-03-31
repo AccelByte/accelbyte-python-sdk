@@ -132,20 +132,6 @@ class UserProfileInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        if hasattr(self, "status") and self.status is not None and self.status not in UserProfileInfo.get_enum_map()["status"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -350,7 +336,25 @@ class UserProfileInfo(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "avatarLargeUrl": False,
+            "avatarSmallUrl": False,
+            "avatarUrl": False,
+            "customAttributes": False,
+            "dateOfBirth": False,
+            "firstName": False,
+            "language": False,
+            "lastName": False,
+            "namespace": False,
+            "status": False,
+            "timeZone": False,
+            "userId": False,
+            "zipCode": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "status": ["ACTIVE", "INACTIVE"],
         }

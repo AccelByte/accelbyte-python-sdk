@@ -133,14 +133,6 @@ class SetDefaultPolicy(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "localized_policy_version_id") or self.localized_policy_version_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -213,6 +205,12 @@ class SetDefaultPolicy(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "localizedPolicyVersionId": "localized_policy_version_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "localizedPolicyVersionId": True,
         }
 
     # endregion static methods

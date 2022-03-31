@@ -57,22 +57,6 @@ class ModelsPlayerResultResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "current_score") or self.current_score is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -140,6 +124,13 @@ class ModelsPlayerResultResponse(Model):
         return {
             "current_score": "current_score",
             "user_id": "user_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "current_score": True,
+            "user_id": True,
         }
 
     # endregion static methods

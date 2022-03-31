@@ -78,28 +78,6 @@ class AccountcommonUserWithLinkedPlatformAccounts(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "display_name") or self.display_name is None:
-            return False
-        if not hasattr(self, "email_address") or self.email_address is None:
-            return False
-        if not hasattr(self, "linked_platforms") or self.linked_platforms is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -200,6 +178,16 @@ class AccountcommonUserWithLinkedPlatformAccounts(Model):
             "linkedPlatforms": "linked_platforms",
             "namespace": "namespace",
             "userId": "user_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "displayName": True,
+            "emailAddress": True,
+            "linkedPlatforms": True,
+            "namespace": True,
+            "userId": True,
         }
 
     # endregion static methods

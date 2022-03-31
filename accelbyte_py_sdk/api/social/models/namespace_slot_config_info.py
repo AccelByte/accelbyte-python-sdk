@@ -62,18 +62,6 @@ class NamespaceSlotConfigInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -155,6 +143,14 @@ class NamespaceSlotConfigInfo(Model):
             "maxSlotSize": "max_slot_size",
             "maxSlots": "max_slots",
             "namespace": "namespace",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "maxSlotSize": False,
+            "maxSlots": False,
+            "namespace": False,
         }
 
     # endregion static methods

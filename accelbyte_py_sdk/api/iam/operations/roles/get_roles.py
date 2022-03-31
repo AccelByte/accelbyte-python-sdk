@@ -135,12 +135,6 @@ class GetRoles(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -222,6 +216,12 @@ class GetRoles(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "isWildcard": "is_wildcard",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "isWildcard": False,
         }
 
     # endregion static methods

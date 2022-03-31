@@ -120,40 +120,6 @@ class ClientmodelClientV3Response(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "audiences") or self.audiences is None:
-            return False
-        if not hasattr(self, "base_uri") or self.base_uri is None:
-            return False
-        if not hasattr(self, "client_id") or self.client_id is None:
-            return False
-        if not hasattr(self, "client_name") or self.client_name is None:
-            return False
-        if not hasattr(self, "client_permissions") or self.client_permissions is None:
-            return False
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "modified_at") or self.modified_at is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "oauth_client_type") or self.oauth_client_type is None:
-            return False
-        if not hasattr(self, "redirect_uri") or self.redirect_uri is None:
-            return False
-        if not hasattr(self, "scopes") or self.scopes is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -320,6 +286,22 @@ class ClientmodelClientV3Response(Model):
             "oauthClientType": "oauth_client_type",
             "redirectUri": "redirect_uri",
             "scopes": "scopes",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "audiences": True,
+            "baseUri": True,
+            "clientId": True,
+            "clientName": True,
+            "clientPermissions": True,
+            "createdAt": True,
+            "modifiedAt": True,
+            "namespace": True,
+            "oauthClientType": True,
+            "redirectUri": True,
+            "scopes": True,
         }
 
     # endregion static methods

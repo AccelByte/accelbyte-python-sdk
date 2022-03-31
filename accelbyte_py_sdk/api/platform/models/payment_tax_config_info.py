@@ -69,18 +69,6 @@ class PaymentTaxConfigInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -174,6 +162,15 @@ class PaymentTaxConfigInfo(Model):
             "taxJarApiToken": "tax_jar_api_token",
             "taxJarEnabled": "tax_jar_enabled",
             "taxJarProductCodesMapping": "tax_jar_product_codes_mapping",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "sandboxTaxJarApiToken": False,
+            "taxJarApiToken": False,
+            "taxJarEnabled": False,
+            "taxJarProductCodesMapping": False,
         }
 
     # endregion static methods

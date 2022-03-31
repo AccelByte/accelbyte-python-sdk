@@ -62,24 +62,6 @@ class ModelCreateTemplateRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "template_content") or self.template_content is None:
-            return False
-        if not hasattr(self, "template_language") or self.template_language is None:
-            return False
-        if not hasattr(self, "template_slug") or self.template_slug is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -158,6 +140,14 @@ class ModelCreateTemplateRequest(Model):
             "templateContent": "template_content",
             "templateLanguage": "template_language",
             "templateSlug": "template_slug",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "templateContent": True,
+            "templateLanguage": True,
+            "templateSlug": True,
         }
 
     # endregion static methods

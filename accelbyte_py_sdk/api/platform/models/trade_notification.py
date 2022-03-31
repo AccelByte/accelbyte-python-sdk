@@ -317,44 +317,6 @@ class TradeNotification(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "currency") or self.currency is None:
-            return False
-        if not hasattr(self, "ext_order_no") or self.ext_order_no is None:
-            return False
-        if not hasattr(self, "issued_at") or self.issued_at is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "nonce_str") or self.nonce_str is None:
-            return False
-        if not hasattr(self, "payment_order_no") or self.payment_order_no is None:
-            return False
-        if not hasattr(self, "payment_provider") or self.payment_provider is None:
-            return False
-        if not hasattr(self, "price") or self.price is None:
-            return False
-        if not hasattr(self, "sandbox") or self.sandbox is None:
-            return False
-        if not hasattr(self, "status") or self.status is None:
-            return False
-        if not hasattr(self, "type_") or self.type_ is None:
-            return False
-        # enum checks
-        if hasattr(self, "payment_provider") and self.payment_provider is not None and self.payment_provider not in TradeNotification.get_enum_map()["paymentProvider"]:
-            return False
-        if hasattr(self, "status") and self.status is not None and self.status not in TradeNotification.get_enum_map()["status"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -860,7 +822,51 @@ class TradeNotification(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "currency": True,
+            "extOrderNo": True,
+            "issuedAt": True,
+            "namespace": True,
+            "nonceStr": True,
+            "paymentOrderNo": True,
+            "paymentProvider": True,
+            "price": True,
+            "sandbox": True,
+            "status": True,
+            "type": True,
+            "additionalData": False,
+            "authorisedTime": False,
+            "chargebackReversedTime": False,
+            "chargebackTime": False,
+            "chargedTime": False,
+            "createdTime": False,
+            "customParameters": False,
+            "extTxId": False,
+            "extUserId": False,
+            "metadata": False,
+            "paymentMethod": False,
+            "paymentMethodFee": False,
+            "paymentProviderFee": False,
+            "paymentStationUrl": False,
+            "refundedTime": False,
+            "salesTax": False,
+            "sku": False,
+            "statusReason": False,
+            "subscriptionId": False,
+            "subtotalPrice": False,
+            "targetNamespace": False,
+            "targetUserId": False,
+            "tax": False,
+            "totalPrice": False,
+            "totalTax": False,
+            "txEndTime": False,
+            "userId": False,
+            "vat": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "paymentProvider": ["WALLET", "XSOLLA", "ADYEN", "STRIPE", "CHECKOUT", "ALIPAY", "WXPAY", "PAYPAL"],
             "status": ["INIT", "AUTHORISED", "AUTHORISE_FAILED", "CHARGED", "CHARGE_FAILED", "NOTIFICATION_OF_CHARGEBACK", "REQUEST_FOR_INFORMATION", "CHARGEBACK", "CHARGEBACK_REVERSED", "REFUNDING", "REFUNDED", "REFUND_FAILED", "DELETED"],

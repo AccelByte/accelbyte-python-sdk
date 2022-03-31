@@ -76,22 +76,6 @@ class CurrencyCreate(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "currency_code") or self.currency_code is None:
-            return False
-        # enum checks
-        if hasattr(self, "currency_type") and self.currency_type is not None and self.currency_type not in CurrencyCreate.get_enum_map()["currencyType"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -199,7 +183,17 @@ class CurrencyCreate(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "currencyCode": True,
+            "currencySymbol": False,
+            "currencyType": False,
+            "decimals": False,
+            "localizationDescriptions": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "currencyType": ["REAL", "VIRTUAL"],
         }

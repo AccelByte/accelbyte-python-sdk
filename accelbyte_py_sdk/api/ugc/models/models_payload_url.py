@@ -55,22 +55,6 @@ class ModelsPayloadURL(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "source") or self.source is None:
-            return False
-        if not hasattr(self, "url") or self.url is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -138,6 +122,13 @@ class ModelsPayloadURL(Model):
         return {
             "source": "source",
             "url": "url",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "source": True,
+            "url": True,
         }
 
     # endregion static methods

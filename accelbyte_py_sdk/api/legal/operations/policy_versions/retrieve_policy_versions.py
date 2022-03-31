@@ -148,12 +148,6 @@ class RetrievePolicyVersions(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -263,6 +257,14 @@ class RetrievePolicyVersions(Operation):
             "basePolicyId": "base_policy_id",
             "localeId": "locale_id",
             "namespace": "namespace",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "basePolicyId": False,
+            "localeId": False,
+            "namespace": False,
         }
 
     # endregion static methods

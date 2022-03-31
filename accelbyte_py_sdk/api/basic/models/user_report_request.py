@@ -76,22 +76,6 @@ class UserReportRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "category") or self.category is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -195,6 +179,16 @@ class UserReportRequest(Model):
             "description": "description",
             "gameSessionId": "game_session_id",
             "subcategory": "subcategory",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "category": True,
+            "userId": True,
+            "description": False,
+            "gameSessionId": False,
+            "subcategory": False,
         }
 
     # endregion static methods

@@ -62,22 +62,6 @@ class ExcessStrategy(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "method") or self.method is None:
-            return False
-        # enum checks
-        if hasattr(self, "method") and self.method is not None and self.method not in ExcessStrategy.get_enum_map()["method"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -161,7 +145,15 @@ class ExcessStrategy(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "method": True,
+            "currency": False,
+            "percentPerExp": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "method": ["NONE", "CURRENCY"],
         }

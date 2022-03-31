@@ -55,22 +55,6 @@ class ModelsRolePermission(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "action") or self.action is None:
-            return False
-        if not hasattr(self, "resource_name") or self.resource_name is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -138,6 +122,13 @@ class ModelsRolePermission(Model):
         return {
             "action": "action",
             "resourceName": "resource_name",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "action": True,
+            "resourceName": True,
         }
 
     # endregion static methods

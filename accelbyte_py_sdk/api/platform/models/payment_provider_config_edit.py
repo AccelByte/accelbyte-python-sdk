@@ -97,28 +97,6 @@ class PaymentProviderConfigEdit(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "region") or self.region is None:
-            return False
-        # enum checks
-        if hasattr(self, "aggregate") and self.aggregate is not None and self.aggregate not in PaymentProviderConfigEdit.get_enum_map()["aggregate"]:
-            return False
-        if hasattr(self, "specials") and self.specials is not None:
-            valid_enum_values = PaymentProviderConfigEdit.get_enum_map()["specials"]
-            if not all(x in valid_enum_values for x in self.specials):
-                return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -261,7 +239,20 @@ class PaymentProviderConfigEdit(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "namespace": True,
+            "region": True,
+            "aggregate": False,
+            "sandboxTaxJarApiToken": False,
+            "specials": False,
+            "taxJarApiToken": False,
+            "taxJarEnabled": False,
+            "useGlobalTaxJarApiToken": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "aggregate": ["XSOLLA", "ADYEN"],
             "specials": ["WALLET", "XSOLLA", "ADYEN", "STRIPE", "CHECKOUT", "ALIPAY", "WXPAY", "PAYPAL"],

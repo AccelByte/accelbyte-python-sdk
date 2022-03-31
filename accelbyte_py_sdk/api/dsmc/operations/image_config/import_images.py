@@ -159,14 +159,6 @@ class ImportImages(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "file") or self.file is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -255,6 +247,12 @@ class ImportImages(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "file": "file",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "file": True,
         }
 
     # endregion static methods

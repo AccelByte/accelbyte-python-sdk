@@ -136,12 +136,6 @@ class PublicGetNamespaces(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -219,6 +213,12 @@ class PublicGetNamespaces(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "activeOnly": "active_only",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "activeOnly": False,
         }
 
     # endregion static methods

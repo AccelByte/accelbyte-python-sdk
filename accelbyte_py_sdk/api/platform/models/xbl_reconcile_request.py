@@ -69,18 +69,6 @@ class XblReconcileRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -174,6 +162,15 @@ class XblReconcileRequest(Model):
             "price": "price",
             "productId": "product_id",
             "xstsToken": "xsts_token",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "currencyCode": False,
+            "price": False,
+            "productId": False,
+            "xstsToken": False,
         }
 
     # endregion static methods

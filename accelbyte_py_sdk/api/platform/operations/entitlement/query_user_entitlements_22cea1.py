@@ -170,20 +170,6 @@ class QueryUserEntitlementsByAppType(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        if not hasattr(self, "app_type") or self.app_type is None:
-            return False
-        # enum checks
-        if hasattr(self, "app_type") and self.app_type is not None and self.app_type not in QueryUserEntitlementsByAppType.get_enum_map()["appType"]:
-            return False
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -337,7 +323,18 @@ class QueryUserEntitlementsByAppType(Operation):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "namespace": True,
+            "userId": True,
+            "activeOnly": False,
+            "limit": False,
+            "offset": False,
+            "appType": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "appType": ["DEMO", "DLC", "GAME", "SOFTWARE"],                                        # in query
         }

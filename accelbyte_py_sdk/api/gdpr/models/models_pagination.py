@@ -69,26 +69,6 @@ class ModelsPagination(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "first") or self.first is None:
-            return False
-        if not hasattr(self, "last") or self.last is None:
-            return False
-        if not hasattr(self, "next_") or self.next_ is None:
-            return False
-        if not hasattr(self, "previous") or self.previous is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -178,6 +158,15 @@ class ModelsPagination(Model):
             "Last": "last",
             "Next": "next_",
             "Previous": "previous",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "First": True,
+            "Last": True,
+            "Next": True,
+            "Previous": True,
         }
 
     # endregion static methods

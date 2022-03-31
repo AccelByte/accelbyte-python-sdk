@@ -162,18 +162,6 @@ class UserAuthenticationV3(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "password") or self.password is None:
-            return False
-        if not hasattr(self, "request_id") or self.request_id is None:
-            return False
-        if not hasattr(self, "user_name") or self.user_name is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # noinspection PyMethodMayBeStatic
     def has_redirects(self) -> bool:
         """Returns True if this operation has redirects, otherwise False.
@@ -332,6 +320,17 @@ class UserAuthenticationV3(Operation):
             "password": "password",
             "request_id": "request_id",
             "user_name": "user_name",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "client_id": False,
+            "extend_exp": False,
+            "redirect_uri": False,
+            "password": True,
+            "request_id": True,
+            "user_name": True,
         }
 
     # endregion static methods

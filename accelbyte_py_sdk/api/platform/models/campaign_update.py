@@ -127,24 +127,6 @@ class CampaignUpdate(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "name") or self.name is None:
-            return False
-        # enum checks
-        if hasattr(self, "redeem_type") and self.redeem_type is not None and self.redeem_type not in CampaignUpdate.get_enum_map()["redeemType"]:
-            return False
-        if hasattr(self, "status") and self.status is not None and self.status not in CampaignUpdate.get_enum_map()["status"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -336,7 +318,24 @@ class CampaignUpdate(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "name": True,
+            "description": False,
+            "items": False,
+            "maxRedeemCountPerCampaignPerUser": False,
+            "maxRedeemCountPerCode": False,
+            "maxRedeemCountPerCodePerUser": False,
+            "maxSaleCount": False,
+            "redeemEnd": False,
+            "redeemStart": False,
+            "redeemType": False,
+            "status": False,
+            "tags": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "redeemType": ["ITEM"],
             "status": ["ACTIVE", "INACTIVE"],

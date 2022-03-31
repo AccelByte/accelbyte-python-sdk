@@ -170,14 +170,6 @@ class ListSession(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -322,6 +314,16 @@ class ListSession(Operation):
             "offset": "offset",
             "region": "region",
             "withServer": "with_server",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "namespace": True,
+            "count": False,
+            "offset": False,
+            "region": False,
+            "withServer": False,
         }
 
     # endregion static methods

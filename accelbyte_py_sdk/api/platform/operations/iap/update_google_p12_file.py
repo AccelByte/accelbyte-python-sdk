@@ -146,14 +146,6 @@ class UpdateGoogleP12File(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -242,6 +234,13 @@ class UpdateGoogleP12File(Operation):
         return {
             "file": "file",
             "namespace": "namespace",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "file": False,
+            "namespace": True,
         }
 
     # endregion static methods

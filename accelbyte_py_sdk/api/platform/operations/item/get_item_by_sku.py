@@ -162,16 +162,6 @@ class GetItemBySku(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "sku") or self.sku is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -295,6 +285,15 @@ class GetItemBySku(Operation):
             "activeOnly": "active_only",
             "storeId": "store_id",
             "sku": "sku",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "namespace": True,
+            "activeOnly": False,
+            "storeId": False,
+            "sku": True,
         }
 
     # endregion static methods

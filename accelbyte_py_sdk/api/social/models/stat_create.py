@@ -111,28 +111,6 @@ class StatCreate(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "default_value") or self.default_value is None:
-            return False
-        if not hasattr(self, "name") or self.name is None:
-            return False
-        if not hasattr(self, "set_by") or self.set_by is None:
-            return False
-        if not hasattr(self, "stat_code") or self.stat_code is None:
-            return False
-        # enum checks
-        if hasattr(self, "set_by") and self.set_by is not None and self.set_by not in StatCreate.get_enum_map()["setBy"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -297,7 +275,22 @@ class StatCreate(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "defaultValue": True,
+            "name": True,
+            "setBy": True,
+            "statCode": True,
+            "description": False,
+            "incrementOnly": False,
+            "maximum": False,
+            "minimum": False,
+            "setAsGlobal": False,
+            "tags": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "setBy": ["CLIENT", "SERVER"],
         }

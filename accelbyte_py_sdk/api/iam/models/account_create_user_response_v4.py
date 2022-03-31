@@ -97,34 +97,6 @@ class AccountCreateUserResponseV4(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "auth_type") or self.auth_type is None:
-            return False
-        if not hasattr(self, "country") or self.country is None:
-            return False
-        if not hasattr(self, "date_of_birth") or self.date_of_birth is None:
-            return False
-        if not hasattr(self, "display_name") or self.display_name is None:
-            return False
-        if not hasattr(self, "email_address") or self.email_address is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        if not hasattr(self, "username") or self.username is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -258,6 +230,19 @@ class AccountCreateUserResponseV4(Model):
             "namespace": "namespace",
             "userId": "user_id",
             "username": "username",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "authType": True,
+            "country": True,
+            "dateOfBirth": True,
+            "displayName": True,
+            "emailAddress": True,
+            "namespace": True,
+            "userId": True,
+            "username": True,
         }
 
     # endregion static methods

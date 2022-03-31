@@ -113,32 +113,6 @@ class ModelsChannelRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "deployment") or self.deployment is None:
-            return False
-        if not hasattr(self, "description") or self.description is None:
-            return False
-        if not hasattr(self, "find_match_timeout_seconds") or self.find_match_timeout_seconds is None:
-            return False
-        if not hasattr(self, "game_mode") or self.game_mode is None:
-            return False
-        if not hasattr(self, "max_delay_ms") or self.max_delay_ms is None:
-            return False
-        if not hasattr(self, "rule_set") or self.rule_set is None:
-            return False
-        if not hasattr(self, "session_queue_timeout_seconds") or self.session_queue_timeout_seconds is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -297,6 +271,21 @@ class ModelsChannelRequest(Model):
             "joinable": "joinable",
             "social_matchmaking": "social_matchmaking",
             "use_sub_gamemode": "use_sub_gamemode",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "deployment": True,
+            "description": True,
+            "find_match_timeout_seconds": True,
+            "game_mode": True,
+            "max_delay_ms": True,
+            "rule_set": True,
+            "session_queue_timeout_seconds": True,
+            "joinable": False,
+            "social_matchmaking": False,
+            "use_sub_gamemode": False,
         }
 
     # endregion static methods

@@ -305,50 +305,6 @@ class FullItemInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "category_path") or self.category_path is None:
-            return False
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "entitlement_type") or self.entitlement_type is None:
-            return False
-        if not hasattr(self, "item_id") or self.item_id is None:
-            return False
-        if not hasattr(self, "item_type") or self.item_type is None:
-            return False
-        if not hasattr(self, "localizations") or self.localizations is None:
-            return False
-        if not hasattr(self, "name") or self.name is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "region_data") or self.region_data is None:
-            return False
-        if not hasattr(self, "status") or self.status is None:
-            return False
-        if not hasattr(self, "updated_at") or self.updated_at is None:
-            return False
-        # enum checks
-        if hasattr(self, "entitlement_type") and self.entitlement_type is not None and self.entitlement_type not in FullItemInfo.get_enum_map()["entitlementType"]:
-            return False
-        if hasattr(self, "item_type") and self.item_type is not None and self.item_type not in FullItemInfo.get_enum_map()["itemType"]:
-            return False
-        if hasattr(self, "status") and self.status is not None and self.status not in FullItemInfo.get_enum_map()["status"]:
-            return False
-        if hasattr(self, "app_type") and self.app_type is not None and self.app_type not in FullItemInfo.get_enum_map()["appType"]:
-            return False
-        if hasattr(self, "season_type") and self.season_type is not None and self.season_type not in FullItemInfo.get_enum_map()["seasonType"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -830,7 +786,49 @@ class FullItemInfo(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "categoryPath": True,
+            "createdAt": True,
+            "entitlementType": True,
+            "itemId": True,
+            "itemType": True,
+            "localizations": True,
+            "name": True,
+            "namespace": True,
+            "regionData": True,
+            "status": True,
+            "updatedAt": True,
+            "appId": False,
+            "appType": False,
+            "baseAppId": False,
+            "boothName": False,
+            "boundItemIds": False,
+            "clazz": False,
+            "displayOrder": False,
+            "ext": False,
+            "features": False,
+            "images": False,
+            "itemIds": False,
+            "itemQty": False,
+            "listable": False,
+            "maxCount": False,
+            "maxCountPerUser": False,
+            "purchasable": False,
+            "recurring": False,
+            "seasonType": False,
+            "sku": False,
+            "stackable": False,
+            "tags": False,
+            "targetCurrencyCode": False,
+            "targetItemId": False,
+            "targetNamespace": False,
+            "thumbnailUrl": False,
+            "useCount": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "entitlementType": ["DURABLE", "CONSUMABLE"],
             "itemType": ["APP", "COINS", "INGAMEITEM", "BUNDLE", "CODE", "SUBSCRIPTION", "SEASON", "MEDIA"],

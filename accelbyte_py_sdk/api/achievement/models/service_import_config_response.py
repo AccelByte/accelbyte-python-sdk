@@ -69,26 +69,6 @@ class ServiceImportConfigResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "failed_configs") or self.failed_configs is None:
-            return False
-        if not hasattr(self, "ignored_configs") or self.ignored_configs is None:
-            return False
-        if not hasattr(self, "new_configs") or self.new_configs is None:
-            return False
-        if not hasattr(self, "replaced_configs") or self.replaced_configs is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -178,6 +158,15 @@ class ServiceImportConfigResponse(Model):
             "ignoredConfigs": "ignored_configs",
             "newConfigs": "new_configs",
             "replacedConfigs": "replaced_configs",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "failedConfigs": True,
+            "ignoredConfigs": True,
+            "newConfigs": True,
+            "replacedConfigs": True,
         }
 
     # endregion static methods

@@ -83,28 +83,6 @@ class BasicCategoryInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "category_path") or self.category_path is None:
-            return False
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "parent_category_path") or self.parent_category_path is None:
-            return False
-        if not hasattr(self, "updated_at") or self.updated_at is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -217,6 +195,17 @@ class BasicCategoryInfo(Model):
             "parentCategoryPath": "parent_category_path",
             "updatedAt": "updated_at",
             "root": "root",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "categoryPath": True,
+            "createdAt": True,
+            "namespace": True,
+            "parentCategoryPath": True,
+            "updatedAt": True,
+            "root": False,
         }
 
     # endregion static methods

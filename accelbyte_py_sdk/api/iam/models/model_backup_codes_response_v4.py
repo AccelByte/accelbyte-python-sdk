@@ -62,24 +62,6 @@ class ModelBackupCodesResponseV4(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "generated_at") or self.generated_at is None:
-            return False
-        if not hasattr(self, "invalid_codes") or self.invalid_codes is None:
-            return False
-        if not hasattr(self, "valid_codes") or self.valid_codes is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -158,6 +140,14 @@ class ModelBackupCodesResponseV4(Model):
             "generatedAt": "generated_at",
             "invalidCodes": "invalid_codes",
             "validCodes": "valid_codes",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "generatedAt": True,
+            "invalidCodes": True,
+            "validCodes": True,
         }
 
     # endregion static methods

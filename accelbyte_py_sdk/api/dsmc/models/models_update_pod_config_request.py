@@ -69,26 +69,6 @@ class ModelsUpdatePodConfigRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "cpu_limit") or self.cpu_limit is None:
-            return False
-        if not hasattr(self, "mem_limit") or self.mem_limit is None:
-            return False
-        if not hasattr(self, "name") or self.name is None:
-            return False
-        if not hasattr(self, "params") or self.params is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -178,6 +158,15 @@ class ModelsUpdatePodConfigRequest(Model):
             "mem_limit": "mem_limit",
             "name": "name",
             "params": "params",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "cpu_limit": True,
+            "mem_limit": True,
+            "name": True,
+            "params": True,
         }
 
     # endregion static methods

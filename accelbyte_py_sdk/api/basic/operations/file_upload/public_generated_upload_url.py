@@ -165,18 +165,6 @@ class PublicGeneratedUploadUrl(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "folder") or self.folder is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "file_type") or self.file_type is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -295,6 +283,14 @@ class PublicGeneratedUploadUrl(Operation):
             "folder": "folder",
             "namespace": "namespace",
             "fileType": "file_type",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "folder": True,
+            "namespace": True,
+            "fileType": True,
         }
 
     # endregion static methods

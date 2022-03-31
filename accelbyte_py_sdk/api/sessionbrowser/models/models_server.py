@@ -197,62 +197,6 @@ class ModelsServer(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "allocation_id") or self.allocation_id is None:
-            return False
-        if not hasattr(self, "alternate_ips") or self.alternate_ips is None:
-            return False
-        if not hasattr(self, "cpu_limit") or self.cpu_limit is None:
-            return False
-        if not hasattr(self, "cpu_request") or self.cpu_request is None:
-            return False
-        if not hasattr(self, "deployment") or self.deployment is None:
-            return False
-        if not hasattr(self, "game_version") or self.game_version is None:
-            return False
-        if not hasattr(self, "image_version") or self.image_version is None:
-            return False
-        if not hasattr(self, "ip") or self.ip is None:
-            return False
-        if not hasattr(self, "is_override_game_version") or self.is_override_game_version is None:
-            return False
-        if not hasattr(self, "last_update") or self.last_update is None:
-            return False
-        if not hasattr(self, "mem_limit") or self.mem_limit is None:
-            return False
-        if not hasattr(self, "mem_request") or self.mem_request is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "params") or self.params is None:
-            return False
-        if not hasattr(self, "pod_name") or self.pod_name is None:
-            return False
-        if not hasattr(self, "port") or self.port is None:
-            return False
-        if not hasattr(self, "ports") or self.ports is None:
-            return False
-        if not hasattr(self, "provider") or self.provider is None:
-            return False
-        if not hasattr(self, "region") or self.region is None:
-            return False
-        if not hasattr(self, "session_id") or self.session_id is None:
-            return False
-        if not hasattr(self, "status") or self.status is None:
-            return False
-        if not hasattr(self, "status_history") or self.status_history is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -540,6 +484,33 @@ class ModelsServer(Model):
             "session_id": "session_id",
             "status": "status",
             "status_history": "status_history",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "allocation_id": True,
+            "alternate_ips": True,
+            "cpu_limit": True,
+            "cpu_request": True,
+            "deployment": True,
+            "game_version": True,
+            "image_version": True,
+            "ip": True,
+            "is_override_game_version": True,
+            "last_update": True,
+            "mem_limit": True,
+            "mem_request": True,
+            "namespace": True,
+            "params": True,
+            "pod_name": True,
+            "port": True,
+            "ports": True,
+            "provider": True,
+            "region": True,
+            "session_id": True,
+            "status": True,
+            "status_history": True,
         }
 
     # endregion static methods

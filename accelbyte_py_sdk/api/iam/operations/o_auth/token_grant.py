@@ -399,16 +399,6 @@ class TokenGrant(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "grant_type") or self.grant_type is None:
-            return False
-        # enum checks
-        if hasattr(self, "grant_type") and self.grant_type is not None and self.grant_type not in TokenGrant.get_enum_map()["grant_type"]:
-            return False
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -620,7 +610,21 @@ class TokenGrant(Operation):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "Device-Id": False,
+            "code": False,
+            "extend_exp": False,
+            "namespace": False,
+            "password": False,
+            "redirect_uri": False,
+            "refresh_token": False,
+            "username": False,
+            "grant_type": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "grant_type": ["authorization_code", "client_credentials", "password", "refresh_token"],# in form_data
         }

@@ -163,18 +163,6 @@ class AddPlayerToSession(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "body") or self.body is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "session_id") or self.session_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -289,6 +277,14 @@ class AddPlayerToSession(Operation):
             "body": "body",
             "namespace": "namespace",
             "sessionID": "session_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "body": True,
+            "namespace": True,
+            "sessionID": True,
         }
 
     # endregion static methods

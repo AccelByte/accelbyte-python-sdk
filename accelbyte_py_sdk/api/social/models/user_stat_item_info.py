@@ -97,32 +97,6 @@ class UserStatItemInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "stat_code") or self.stat_code is None:
-            return False
-        if not hasattr(self, "stat_name") or self.stat_name is None:
-            return False
-        if not hasattr(self, "updated_at") or self.updated_at is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        if not hasattr(self, "value") or self.value is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -257,6 +231,19 @@ class UserStatItemInfo(Model):
             "userId": "user_id",
             "value": "value",
             "tags": "tags",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "createdAt": True,
+            "namespace": True,
+            "statCode": True,
+            "statName": True,
+            "updatedAt": True,
+            "userId": True,
+            "value": True,
+            "tags": False,
         }
 
     # endregion static methods

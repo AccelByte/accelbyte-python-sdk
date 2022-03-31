@@ -55,22 +55,6 @@ class ModelTemplateContent(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "draft") or self.draft is None:
-            return False
-        if not hasattr(self, "published") or self.published is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -138,6 +122,13 @@ class ModelTemplateContent(Model):
         return {
             "draft": "draft",
             "published": "published",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "draft": True,
+            "published": True,
         }
 
     # endregion static methods

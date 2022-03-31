@@ -62,24 +62,6 @@ class InGameItemSync(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "category_path") or self.category_path is None:
-            return False
-        if not hasattr(self, "target_item_id") or self.target_item_id is None:
-            return False
-        if not hasattr(self, "target_namespace") or self.target_namespace is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -158,6 +140,14 @@ class InGameItemSync(Model):
             "categoryPath": "category_path",
             "targetItemId": "target_item_id",
             "targetNamespace": "target_namespace",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "categoryPath": True,
+            "targetItemId": True,
+            "targetNamespace": True,
         }
 
     # endregion static methods

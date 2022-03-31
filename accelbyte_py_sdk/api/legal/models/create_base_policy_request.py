@@ -90,18 +90,6 @@ class CreateBasePolicyRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -231,6 +219,18 @@ class CreateBasePolicyRequest(Model):
             "namespace": "namespace",
             "tags": "tags",
             "typeId": "type_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "affectedClientIds": False,
+            "affectedCountries": False,
+            "basePolicyName": False,
+            "description": False,
+            "namespace": False,
+            "tags": False,
+            "typeId": False,
         }
 
     # endregion static methods

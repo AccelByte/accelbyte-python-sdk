@@ -55,22 +55,6 @@ class AccountcommonInputValidationDescription(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "language") or self.language is None:
-            return False
-        if not hasattr(self, "message") or self.message is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -138,6 +122,13 @@ class AccountcommonInputValidationDescription(Model):
         return {
             "language": "language",
             "message": "message",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "language": True,
+            "message": True,
         }
 
     # endregion static methods

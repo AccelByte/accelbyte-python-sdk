@@ -143,46 +143,6 @@ class ModelsGameSession(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "all_players") or self.all_players is None:
-            return False
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "game_session_setting") or self.game_session_setting is None:
-            return False
-        if not hasattr(self, "game_version") or self.game_version is None:
-            return False
-        if not hasattr(self, "joinable") or self.joinable is None:
-            return False
-        if not hasattr(self, "match") or self.match is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "players") or self.players is None:
-            return False
-        if not hasattr(self, "server") or self.server is None:
-            return False
-        if not hasattr(self, "session_id") or self.session_id is None:
-            return False
-        if not hasattr(self, "session_type") or self.session_type is None:
-            return False
-        if not hasattr(self, "spectators") or self.spectators is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        if not hasattr(self, "username") or self.username is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -382,6 +342,25 @@ class ModelsGameSession(Model):
             "spectators": "spectators",
             "user_id": "user_id",
             "username": "username",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "all_players": True,
+            "created_at": True,
+            "game_session_setting": True,
+            "game_version": True,
+            "joinable": True,
+            "match": True,
+            "namespace": True,
+            "players": True,
+            "server": True,
+            "session_id": True,
+            "session_type": True,
+            "spectators": True,
+            "user_id": True,
+            "username": True,
         }
 
     # endregion static methods

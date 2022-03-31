@@ -136,14 +136,6 @@ class LoginSSOClient(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "platform_id") or self.platform_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -232,6 +224,13 @@ class LoginSSOClient(Operation):
         return {
             "platformId": "platform_id",
             "payload": "payload",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "platformId": True,
+            "payload": False,
         }
 
     # endregion static methods

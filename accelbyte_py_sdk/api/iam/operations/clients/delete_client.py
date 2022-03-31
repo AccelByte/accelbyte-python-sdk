@@ -143,14 +143,6 @@ class DeleteClient(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "client_id") or self.client_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -235,6 +227,12 @@ class DeleteClient(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "clientId": "client_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "clientId": True,
         }
 
     # endregion static methods

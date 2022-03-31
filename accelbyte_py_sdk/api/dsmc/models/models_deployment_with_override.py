@@ -163,52 +163,6 @@ class ModelsDeploymentWithOverride(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "allow_version_override") or self.allow_version_override is None:
-            return False
-        if not hasattr(self, "buffer_count") or self.buffer_count is None:
-            return False
-        if not hasattr(self, "buffer_percent") or self.buffer_percent is None:
-            return False
-        if not hasattr(self, "configuration") or self.configuration is None:
-            return False
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "enable_region_overrides") or self.enable_region_overrides is None:
-            return False
-        if not hasattr(self, "game_version") or self.game_version is None:
-            return False
-        if not hasattr(self, "max_count") or self.max_count is None:
-            return False
-        if not hasattr(self, "min_count") or self.min_count is None:
-            return False
-        if not hasattr(self, "modified_by") or self.modified_by is None:
-            return False
-        if not hasattr(self, "name") or self.name is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "overrides") or self.overrides is None:
-            return False
-        if not hasattr(self, "region_overrides") or self.region_overrides is None:
-            return False
-        if not hasattr(self, "regions") or self.regions is None:
-            return False
-        if not hasattr(self, "updated_at") or self.updated_at is None:
-            return False
-        if not hasattr(self, "use_buffer_percent") or self.use_buffer_percent is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -441,6 +395,28 @@ class ModelsDeploymentWithOverride(Model):
             "regions": "regions",
             "updatedAt": "updated_at",
             "use_buffer_percent": "use_buffer_percent",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "allow_version_override": True,
+            "buffer_count": True,
+            "buffer_percent": True,
+            "configuration": True,
+            "createdAt": True,
+            "enable_region_overrides": True,
+            "game_version": True,
+            "max_count": True,
+            "min_count": True,
+            "modifiedBy": True,
+            "name": True,
+            "namespace": True,
+            "overrides": True,
+            "region_overrides": True,
+            "regions": True,
+            "updatedAt": True,
+            "use_buffer_percent": True,
         }
 
     # endregion static methods

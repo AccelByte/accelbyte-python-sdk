@@ -55,22 +55,6 @@ class ClaimableRewards(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "claiming_rewards") or self.claiming_rewards is None:
-            return False
-        if not hasattr(self, "to_claim_rewards") or self.to_claim_rewards is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -138,6 +122,13 @@ class ClaimableRewards(Model):
         return {
             "claimingRewards": "claiming_rewards",
             "toClaimRewards": "to_claim_rewards",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "claimingRewards": True,
+            "toClaimRewards": True,
         }
 
     # endregion static methods

@@ -69,22 +69,6 @@ class RedeemableItem(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "item_id") or self.item_id is None:
-            return False
-        if not hasattr(self, "item_name") or self.item_name is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -176,6 +160,15 @@ class RedeemableItem(Model):
             "itemName": "item_name",
             "extraSubscriptionDays": "extra_subscription_days",
             "quantity": "quantity",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "itemId": True,
+            "itemName": True,
+            "extraSubscriptionDays": False,
+            "quantity": False,
         }
 
     # endregion static methods

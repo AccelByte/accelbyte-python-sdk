@@ -62,26 +62,6 @@ class ModelsCreateScreenshotRequestItem(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "content_type") or self.content_type is None:
-            return False
-        if not hasattr(self, "description") or self.description is None:
-            return False
-        if not hasattr(self, "file_extension") or self.file_extension is None:
-            return False
-        # enum checks
-        if hasattr(self, "file_extension") and self.file_extension is not None and self.file_extension not in ModelsCreateScreenshotRequestItem.get_enum_map()["fileExtension"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -163,7 +143,15 @@ class ModelsCreateScreenshotRequestItem(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "contentType": True,
+            "description": True,
+            "fileExtension": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "fileExtension": ["pjp", "jpg", "jpeg", "jfif", "bmp", "png"],
         }

@@ -118,38 +118,6 @@ class ListSeasonInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "default_language") or self.default_language is None:
-            return False
-        if not hasattr(self, "end") or self.end is None:
-            return False
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        if not hasattr(self, "name") or self.name is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "start") or self.start is None:
-            return False
-        if not hasattr(self, "status") or self.status is None:
-            return False
-        if not hasattr(self, "updated_at") or self.updated_at is None:
-            return False
-        # enum checks
-        if hasattr(self, "status") and self.status is not None and self.status not in ListSeasonInfo.get_enum_map()["status"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -321,7 +289,23 @@ class ListSeasonInfo(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "createdAt": True,
+            "defaultLanguage": True,
+            "end": True,
+            "id": True,
+            "name": True,
+            "namespace": True,
+            "start": True,
+            "status": True,
+            "updatedAt": True,
+            "passCodes": False,
+            "publishedAt": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "status": ["DRAFT", "PUBLISHED", "RETIRED"],
         }

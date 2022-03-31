@@ -62,20 +62,6 @@ class OauthmodelErrorResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "error") or self.error is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -156,6 +142,14 @@ class OauthmodelErrorResponse(Model):
             "error": "error",
             "error_description": "error_description",
             "error_uri": "error_uri",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "error": True,
+            "error_description": False,
+            "error_uri": False,
         }
 
     # endregion static methods

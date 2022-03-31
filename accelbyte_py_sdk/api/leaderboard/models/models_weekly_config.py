@@ -55,22 +55,6 @@ class ModelsWeeklyConfig(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "reset_day") or self.reset_day is None:
-            return False
-        if not hasattr(self, "reset_time") or self.reset_time is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -138,6 +122,13 @@ class ModelsWeeklyConfig(Model):
         return {
             "resetDay": "reset_day",
             "resetTime": "reset_time",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "resetDay": True,
+            "resetTime": True,
         }
 
     # endregion static methods

@@ -69,20 +69,6 @@ class Localization(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "title") or self.title is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -175,6 +161,15 @@ class Localization(Model):
             "description": "description",
             "localExt": "local_ext",
             "longDescription": "long_description",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "title": True,
+            "description": False,
+            "localExt": False,
+            "longDescription": False,
         }
 
     # endregion static methods

@@ -62,20 +62,6 @@ class ModelsMatchAddUserIntoSessionRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -156,6 +142,14 @@ class ModelsMatchAddUserIntoSessionRequest(Model):
             "user_id": "user_id",
             "blocked_players": "blocked_players",
             "party_id": "party_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "user_id": True,
+            "blocked_players": False,
+            "party_id": False,
         }
 
     # endregion static methods

@@ -55,20 +55,6 @@ class PaymentOrderChargeStatus(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        if hasattr(self, "status") and self.status is not None and self.status not in PaymentOrderChargeStatus.get_enum_map()["status"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -141,7 +127,14 @@ class PaymentOrderChargeStatus(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "charging": False,
+            "status": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "status": ["INIT", "AUTHORISED", "AUTHORISE_FAILED", "CHARGED", "CHARGE_FAILED", "NOTIFICATION_OF_CHARGEBACK", "REQUEST_FOR_INFORMATION", "CHARGEBACK", "CHARGEBACK_REVERSED", "REFUNDING", "REFUNDED", "REFUND_FAILED", "DELETED"],
         }

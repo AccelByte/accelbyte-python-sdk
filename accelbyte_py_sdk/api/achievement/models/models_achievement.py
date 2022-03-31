@@ -155,50 +155,6 @@ class ModelsAchievement(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "achievement_code") or self.achievement_code is None:
-            return False
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "default_language") or self.default_language is None:
-            return False
-        if not hasattr(self, "description") or self.description is None:
-            return False
-        if not hasattr(self, "goal_value") or self.goal_value is None:
-            return False
-        if not hasattr(self, "hidden") or self.hidden is None:
-            return False
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        if not hasattr(self, "incremental") or self.incremental is None:
-            return False
-        if not hasattr(self, "list_order") or self.list_order is None:
-            return False
-        if not hasattr(self, "locked_icons") or self.locked_icons is None:
-            return False
-        if not hasattr(self, "name") or self.name is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "stat_code") or self.stat_code is None:
-            return False
-        if not hasattr(self, "tags") or self.tags is None:
-            return False
-        if not hasattr(self, "unlocked_icons") or self.unlocked_icons is None:
-            return False
-        if not hasattr(self, "updated_at") or self.updated_at is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -420,6 +376,27 @@ class ModelsAchievement(Model):
             "Tags": "tags",
             "UnlockedIcons": "unlocked_icons",
             "UpdatedAt": "updated_at",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "AchievementCode": True,
+            "CreatedAt": True,
+            "DefaultLanguage": True,
+            "Description": True,
+            "GoalValue": True,
+            "Hidden": True,
+            "ID": True,
+            "Incremental": True,
+            "ListOrder": True,
+            "LockedIcons": True,
+            "Name": True,
+            "Namespace": True,
+            "StatCode": True,
+            "Tags": True,
+            "UnlockedIcons": True,
+            "UpdatedAt": True,
         }
 
     # endregion static methods

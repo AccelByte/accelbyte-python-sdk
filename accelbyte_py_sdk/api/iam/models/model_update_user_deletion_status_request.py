@@ -48,20 +48,6 @@ class ModelUpdateUserDeletionStatusRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "enabled") or self.enabled is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -118,6 +104,12 @@ class ModelUpdateUserDeletionStatusRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "enabled": "enabled",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "enabled": True,
         }
 
     # endregion static methods

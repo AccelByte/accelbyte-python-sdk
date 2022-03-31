@@ -76,24 +76,6 @@ class TelemetryBody(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "event_name") or self.event_name is None:
-            return False
-        if not hasattr(self, "event_namespace") or self.event_namespace is None:
-            return False
-        if not hasattr(self, "payload") or self.payload is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -196,6 +178,16 @@ class TelemetryBody(Model):
             "Payload": "payload",
             "EventId": "event_id",
             "EventTimestamp": "event_timestamp",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "EventName": True,
+            "EventNamespace": True,
+            "Payload": True,
+            "EventId": False,
+            "EventTimestamp": False,
         }
 
     # endregion static methods

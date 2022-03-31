@@ -153,16 +153,6 @@ class DeleteNotificationTemplateSlugV1Admin(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "template_slug") or self.template_slug is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -266,6 +256,13 @@ class DeleteNotificationTemplateSlugV1Admin(Operation):
         return {
             "namespace": "namespace",
             "templateSlug": "template_slug",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "namespace": True,
+            "templateSlug": True,
         }
 
     # endregion static methods

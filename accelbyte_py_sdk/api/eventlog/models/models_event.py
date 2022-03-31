@@ -139,46 +139,6 @@ class ModelsEvent(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "agent_type") or self.agent_type is None:
-            return False
-        if not hasattr(self, "client_id") or self.client_id is None:
-            return False
-        if not hasattr(self, "component_id") or self.component_id is None:
-            return False
-        if not hasattr(self, "event_id") or self.event_id is None:
-            return False
-        if not hasattr(self, "event_level") or self.event_level is None:
-            return False
-        if not hasattr(self, "event_type") or self.event_type is None:
-            return False
-        if not hasattr(self, "ip_address") or self.ip_address is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "realm") or self.realm is None:
-            return False
-        if not hasattr(self, "target_namespace") or self.target_namespace is None:
-            return False
-        if not hasattr(self, "target_user_id") or self.target_user_id is None:
-            return False
-        if not hasattr(self, "time") or self.time is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        if not hasattr(self, "ux") or self.ux is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -378,6 +338,25 @@ class ModelsEvent(Model):
             "Time": "time",
             "UserID": "user_id",
             "UX": "ux",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "AgentType": True,
+            "ClientID": True,
+            "ComponentID": True,
+            "EventID": True,
+            "EventLevel": True,
+            "EventType": True,
+            "IPAddress": True,
+            "Namespace": True,
+            "Realm": True,
+            "TargetNamespace": True,
+            "TargetUserID": True,
+            "Time": True,
+            "UserID": True,
+            "UX": True,
         }
 
     # endregion static methods

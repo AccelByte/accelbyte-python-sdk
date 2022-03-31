@@ -155,46 +155,6 @@ class ModelsMatchMaking(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "channel") or self.channel is None:
-            return False
-        if not hasattr(self, "client_version") or self.client_version is None:
-            return False
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "deployment") or self.deployment is None:
-            return False
-        if not hasattr(self, "event") or self.event is None:
-            return False
-        if not hasattr(self, "game_mode") or self.game_mode is None:
-            return False
-        if not hasattr(self, "match_id") or self.match_id is None:
-            return False
-        if not hasattr(self, "matching_allies") or self.matching_allies is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "party_attributes") or self.party_attributes is None:
-            return False
-        if not hasattr(self, "queued_at") or self.queued_at is None:
-            return False
-        if not hasattr(self, "region") or self.region is None:
-            return False
-        if not hasattr(self, "server_name") or self.server_name is None:
-            return False
-        if not hasattr(self, "status") or self.status is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -418,6 +378,27 @@ class ModelsMatchMaking(Model):
             "status": "status",
             "joinable": "joinable",
             "party_id": "party_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "channel": True,
+            "client_version": True,
+            "created_at": True,
+            "deployment": True,
+            "event": True,
+            "game_mode": True,
+            "match_id": True,
+            "matching_allies": True,
+            "namespace": True,
+            "party_attributes": True,
+            "queued_at": True,
+            "region": True,
+            "server_name": True,
+            "status": True,
+            "joinable": False,
+            "party_id": False,
         }
 
     # endregion static methods

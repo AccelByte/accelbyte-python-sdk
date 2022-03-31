@@ -147,14 +147,6 @@ class GetRegisteredEventsByEventTypeHandler(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "event_type") or self.event_type is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -247,6 +239,12 @@ class GetRegisteredEventsByEventTypeHandler(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "eventType": "event_type",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "eventType": True,
         }
 
     # endregion static methods

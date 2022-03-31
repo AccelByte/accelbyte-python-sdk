@@ -55,20 +55,6 @@ class AppleIAPConfigRequest(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "bundle_id") or self.bundle_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -137,6 +123,13 @@ class AppleIAPConfigRequest(Model):
         return {
             "bundleId": "bundle_id",
             "password": "password",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "bundleId": True,
+            "password": False,
         }
 
     # endregion static methods

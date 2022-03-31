@@ -141,20 +141,6 @@ class RetrieveUserAcceptedAgreementResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "id_") or self.id_ is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -367,6 +353,25 @@ class RetrieveUserAcceptedAgreementResponse(Model):
             "updatedAt": "updated_at",
             "userId": "user_id",
             "username": "username",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "id": True,
+            "createdAt": False,
+            "displayName": False,
+            "email": False,
+            "isAccepted": False,
+            "localizedPolicyVersion": False,
+            "namespace": False,
+            "policyName": False,
+            "policyType": False,
+            "publisherUserId": False,
+            "signingDate": False,
+            "updatedAt": False,
+            "userId": False,
+            "username": False,
         }
 
     # endregion static methods

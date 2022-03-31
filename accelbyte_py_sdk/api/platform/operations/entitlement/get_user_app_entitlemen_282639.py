@@ -154,18 +154,6 @@ class GetUserAppEntitlementOwnershipByAppId(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        if not hasattr(self, "app_id") or self.app_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -268,6 +256,14 @@ class GetUserAppEntitlementOwnershipByAppId(Operation):
             "namespace": "namespace",
             "userId": "user_id",
             "appId": "app_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "namespace": True,
+            "userId": True,
+            "appId": True,
         }
 
     # endregion static methods

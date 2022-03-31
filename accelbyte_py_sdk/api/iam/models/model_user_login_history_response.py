@@ -90,32 +90,6 @@ class ModelUserLoginHistoryResponse(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "application_name") or self.application_name is None:
-            return False
-        if not hasattr(self, "city") or self.city is None:
-            return False
-        if not hasattr(self, "country") or self.country is None:
-            return False
-        if not hasattr(self, "device_id") or self.device_id is None:
-            return False
-        if not hasattr(self, "device_name") or self.device_name is None:
-            return False
-        if not hasattr(self, "state") or self.state is None:
-            return False
-        if not hasattr(self, "timestamp") or self.timestamp is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -238,6 +212,18 @@ class ModelUserLoginHistoryResponse(Model):
             "deviceName": "device_name",
             "State": "state",
             "Timestamp": "timestamp",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "ApplicationName": True,
+            "City": True,
+            "Country": True,
+            "DeviceId": True,
+            "deviceName": True,
+            "State": True,
+            "Timestamp": True,
         }
 
     # endregion static methods

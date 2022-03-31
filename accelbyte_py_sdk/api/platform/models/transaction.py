@@ -177,24 +177,6 @@ class Transaction(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        # enum checks
-        if hasattr(self, "provider") and self.provider is not None and self.provider not in Transaction.get_enum_map()["provider"]:
-            return False
-        if hasattr(self, "status") and self.status is not None and self.status not in Transaction.get_enum_map()["status"]:
-            return False
-        if hasattr(self, "type_") and self.type_ is not None and self.type_ not in Transaction.get_enum_map()["type"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -471,7 +453,31 @@ class Transaction(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "additionalData": False,
+            "amount": False,
+            "currency": False,
+            "extMessage": False,
+            "extStatusCode": False,
+            "extTxId": False,
+            "merchantId": False,
+            "notified": False,
+            "paymentMethod": False,
+            "paymentMethodFee": False,
+            "paymentProviderFee": False,
+            "provider": False,
+            "salesTax": False,
+            "status": False,
+            "tax": False,
+            "txEndTime": False,
+            "txId": False,
+            "type": False,
+            "vat": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "provider": ["WALLET", "XSOLLA", "ADYEN", "STRIPE", "CHECKOUT", "ALIPAY", "WXPAY", "PAYPAL"],
             "status": ["FINISHED", "FAILED"],

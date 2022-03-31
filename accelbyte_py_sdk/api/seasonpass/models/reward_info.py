@@ -121,30 +121,6 @@ class RewardInfo(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "code") or self.code is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "season_id") or self.season_id is None:
-            return False
-        if not hasattr(self, "type_") or self.type_ is None:
-            return False
-        # enum checks
-        if hasattr(self, "type_") and self.type_ is not None and self.type_ not in RewardInfo.get_enum_map()["type"]:
-            return False
-        if hasattr(self, "item_type") and self.item_type is not None and self.item_type not in RewardInfo.get_enum_map()["itemType"]:
-            return False
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -321,7 +297,23 @@ class RewardInfo(Model):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "code": True,
+            "namespace": True,
+            "seasonId": True,
+            "type": True,
+            "currency": False,
+            "image": False,
+            "itemId": False,
+            "itemName": False,
+            "itemSku": False,
+            "itemType": False,
+            "quantity": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "type": ["ITEM", "CURRENCY"],
             "itemType": ["APP", "COINS", "INGAMEITEM", "BUNDLE", "CODE", "SUBSCRIPTION", "SEASON"],

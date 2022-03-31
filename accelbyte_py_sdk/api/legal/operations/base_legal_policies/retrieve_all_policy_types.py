@@ -140,14 +140,6 @@ class RetrieveAllPolicyTypes(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "limit") or self.limit is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -236,6 +228,13 @@ class RetrieveAllPolicyTypes(Operation):
         return {
             "offset": "offset",
             "limit": "limit",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "offset": False,
+            "limit": True,
         }
 
     # endregion static methods

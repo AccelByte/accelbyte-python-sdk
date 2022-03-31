@@ -62,24 +62,6 @@ class ValidationError(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "loc") or self.loc is None:
-            return False
-        if not hasattr(self, "msg") or self.msg is None:
-            return False
-        if not hasattr(self, "type_") or self.type_ is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -158,6 +140,14 @@ class ValidationError(Model):
             "loc": "loc",
             "msg": "msg",
             "type": "type_",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "loc": True,
+            "msg": True,
+            "type": True,
         }
 
     # endregion static methods

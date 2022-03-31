@@ -83,30 +83,6 @@ class ModelsRecentPlayerHistory(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "created_at") or self.created_at is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "other_display_name") or self.other_display_name is None:
-            return False
-        if not hasattr(self, "other_id") or self.other_id is None:
-            return False
-        if not hasattr(self, "updated_at") or self.updated_at is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -218,6 +194,17 @@ class ModelsRecentPlayerHistory(Model):
             "other_id": "other_id",
             "updated_at": "updated_at",
             "user_id": "user_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "created_at": True,
+            "namespace": True,
+            "other_display_name": True,
+            "other_id": True,
+            "updated_at": True,
+            "user_id": True,
         }
 
     # endregion static methods

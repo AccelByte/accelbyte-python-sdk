@@ -62,24 +62,6 @@ class ModelUserRolesV4Response(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "assigned_namespaces") or self.assigned_namespaces is None:
-            return False
-        if not hasattr(self, "role_id") or self.role_id is None:
-            return False
-        if not hasattr(self, "role_name") or self.role_name is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -158,6 +140,14 @@ class ModelUserRolesV4Response(Model):
             "assignedNamespaces": "assigned_namespaces",
             "roleId": "role_id",
             "roleName": "role_name",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "assignedNamespaces": True,
+            "roleId": True,
+            "roleName": True,
         }
 
     # endregion static methods

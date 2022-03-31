@@ -62,24 +62,6 @@ class ModelUserActiveBanResponseV3(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "ban") or self.ban is None:
-            return False
-        if not hasattr(self, "ban_id") or self.ban_id is None:
-            return False
-        if not hasattr(self, "end_date") or self.end_date is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -158,6 +140,14 @@ class ModelUserActiveBanResponseV3(Model):
             "ban": "ban",
             "banId": "ban_id",
             "endDate": "end_date",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "ban": True,
+            "banId": True,
+            "endDate": True,
         }
 
     # endregion static methods

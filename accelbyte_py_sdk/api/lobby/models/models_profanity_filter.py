@@ -69,26 +69,6 @@ class ModelsProfanityFilter(Model):
 
     # endregion with_x methods
 
-    # region is/has methods
-
-    # noinspection PyMethodMayBeStatic
-    def is_valid(self) -> bool:
-        # pylint: disable=no-self-use
-        # required checks
-        if not hasattr(self, "filter_") or self.filter_ is None:
-            return False
-        if not hasattr(self, "list_name") or self.list_name is None:
-            return False
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "note") or self.note is None:
-            return False
-        # enum checks
-        # pattern checks
-        return True
-
-    # endregion is/has methods
-
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
@@ -178,6 +158,15 @@ class ModelsProfanityFilter(Model):
             "listName": "list_name",
             "namespace": "namespace",
             "note": "note",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "filter": True,
+            "listName": True,
+            "namespace": True,
+            "note": True,
         }
 
     # endregion static methods

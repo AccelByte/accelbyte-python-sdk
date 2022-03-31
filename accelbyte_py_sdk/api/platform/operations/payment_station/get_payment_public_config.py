@@ -153,20 +153,6 @@ class GetPaymentPublicConfig(Operation):
 
     # region is/has methods
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "payment_provider") or self.payment_provider is None:
-            return False
-        if not hasattr(self, "region") or self.region is None:
-            return False
-        # enum checks
-        if hasattr(self, "payment_provider") and self.payment_provider is not None and self.payment_provider not in GetPaymentPublicConfig.get_enum_map()["paymentProvider"]:
-            return False
-        # pattern checks
-        return True
-
     # endregion is/has methods
 
     # region with_x methods
@@ -288,7 +274,16 @@ class GetPaymentPublicConfig(Operation):
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "namespace": True,
+            "sandbox": False,
+            "paymentProvider": True,
+            "region": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "paymentProvider": ["ADYEN", "ALIPAY", "CHECKOUT", "PAYPAL", "STRIPE", "WALLET", "WXPAY", "XSOLLA"],# in query
         }
