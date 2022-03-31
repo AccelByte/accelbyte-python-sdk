@@ -119,7 +119,7 @@ class RequestsHttpClient(HttpClient):
             headers: Union[None, Header] = None,
             **kwargs
     ) -> Tuple[Any, Union[None, HttpResponse]]:
-        method, url, headers, files, data, json_ = convert_operation(operation, base_url, headers)
+        method, url, headers, files, data, json_ = convert_operation(operation, base_url, headers, **kwargs)
         prepared_request = requests.Request(
             method=method,
             url=url,
@@ -254,7 +254,7 @@ class HttpxHttpClient(HttpClient):
             headers: Union[None, Header] = None,
             **kwargs
     ) -> Tuple[Any, Union[None, HttpResponse]]:
-        method, url, headers, files, data, json_ = convert_operation(operation, base_url, headers)
+        method, url, headers, files, data, json_ = convert_operation(operation, base_url, headers, **kwargs)
         httpx_request = httpx.Request(
             method=method,
             url=url,
@@ -344,6 +344,8 @@ def convert_operation(
         operation: Operation,
         base_url: Union[None, str] = None,
         headers: Union[None, Header] = None,
+        validate: bool = True,
+        **kwargs
 ) -> Tuple[
     str,     # method
     str,     # url
@@ -352,8 +354,10 @@ def convert_operation(
     Any,     # data
     Any,     # json
 ]:
-    if not operation.is_valid():
-        raise Exception("Missing required or invalid values.")
+    if validate:
+        is_valid, error = operation.is_valid(**kwargs)
+        if not is_valid:
+            raise Exception(error)
 
     headers = headers if headers is not None else operation.get_headers()
 

@@ -63,15 +63,16 @@ class TestModel(Model):
         self.date_of_birth = value
         return self
 
-    def is_valid(self) -> bool:
-        if not re.match(r"^(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$", self.date_of_birth):
-            return False
-        return True
-
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "dateOfBirth": "date_of_birth"
+        }
+
+    @staticmethod
+    def get_pattern_map() -> Dict[str, re.Pattern]:
+        return {
+            "dateOfBirth": re.compile(r"^(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$"),
         }
 
 
@@ -86,6 +87,7 @@ class TestOperation(Operation):
 
     body: TestModel
     namespace: str
+    statuses: List[str]
 
     def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
         return self.create_full_url(
@@ -98,6 +100,7 @@ class TestOperation(Operation):
         return {
             "body": self.get_body_params(),
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_body_params(self) -> Any:
@@ -111,14 +114,11 @@ class TestOperation(Operation):
             result["namespace"] = self.namespace
         return result
 
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        # pattern checks
-        if hasattr(self, "body") and not self.body.is_valid():
-            return False
-        return True
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "statuses"):
+            result["statuses"] = self.statuses
+        return result
 
     def with_body(self, value: TestModel):
         self.body = value
@@ -126,6 +126,10 @@ class TestOperation(Operation):
 
     def with_namespace(self, value: str):
         self.namespace = value
+        return self
+
+    def with_statuses(self, value: List[str]):
+        self.statuses = value
         return self
 
     def parse_response(self, code: int, content_type: str, content: Any):
@@ -136,6 +140,19 @@ class TestOperation(Operation):
         return {
             "body": "body",
             "namespace": "namespace",
+            "statuses": "statuses",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "namespace": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "statuses": ["ACTIVE", "INACTIVE"]
         }
 
 
@@ -450,17 +467,28 @@ class CoreTestCase(TestCase):
 
     def test_model_is_valid(self):
         invalid_model = TestModel().with_date_of_birth("01-01-2000")
-        self.assertFalse(invalid_model.is_valid())
+        is_valid, error = invalid_model.is_valid()
+        self.assertFalse(is_valid, error)
 
         valid_model = TestModel().with_date_of_birth("2000-01-01")
-        self.assertTrue(valid_model.is_valid())
+        is_valid, error = valid_model.is_valid()
+        self.assertTrue(is_valid, error)
 
     def test_operation_is_valid(self):
         invalid_operation = TestOperation()
-        self.assertFalse(invalid_operation.is_valid())
+        is_valid, error = invalid_operation.is_valid()
+        self.assertFalse(is_valid, error)
+
+        invalid_operation = TestOperation().with_namespace("namespace").with_statuses(["inACTIVE"])
+        is_valid, error = invalid_operation.is_valid()
+        self.assertFalse(is_valid, error)
 
         invalid_operation = TestOperation().with_namespace("namespace").with_body(TestModel().with_date_of_birth("01-01-2000"))
-        self.assertFalse(invalid_operation.is_valid())
+        is_valid, error = invalid_operation.is_valid()
+        self.assertFalse(is_valid, error)
 
-        valid_operation = TestOperation().with_namespace("namespace").with_body(TestModel().with_date_of_birth("2000-01-01"))
-        self.assertTrue(valid_operation.is_valid())
+        valid_operation = TestOperation().with_body(TestModel().with_date_of_birth("2000-01-01")) \
+            .with_namespace("namespace") \
+            .with_statuses(["INACTIVE", "ACTIVE"])
+        is_valid, error = valid_operation.is_valid()
+        self.assertTrue(is_valid, error)
