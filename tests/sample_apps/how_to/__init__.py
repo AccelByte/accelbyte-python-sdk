@@ -17,4 +17,6 @@ from ._sessionbrowser import SessionBrowserTestCase
 from ._social import SocialTestCase
 from ._ugc import UGCTestCase
 
+from ._services_auth import AuthServicesTestCase
+
 from ._docs import DocsTestCase
